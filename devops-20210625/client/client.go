@@ -13,7 +13,7 @@ import (
 )
 
 type AddRepositoryMemberRequest struct {
-	AccessToken    *string `json:"AccessToken,omitempty" xml:"AccessToken,omitempty"`
+	AccessToken    *string `json:"accessToken,omitempty" xml:"accessToken,omitempty"`
 	AccessLevel    *int32  `json:"accessLevel,omitempty" xml:"accessLevel,omitempty"`
 	AliyunPks      *string `json:"aliyunPks,omitempty" xml:"aliyunPks,omitempty"`
 	OrganizationId *string `json:"organizationId,omitempty" xml:"organizationId,omitempty"`
@@ -48,11 +48,11 @@ func (s *AddRepositoryMemberRequest) SetOrganizationId(v string) *AddRepositoryM
 }
 
 type AddRepositoryMemberResponseBody struct {
-	ErrorCode    *string                                  `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage *string                                  `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	RequestId    *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result       []*AddRepositoryMemberResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
-	Success      *bool                                    `json:"Success,omitempty" xml:"Success,omitempty"`
+	ErrorCode    *string                                  `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMessage *string                                  `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	RequestId    *string                                  `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Result       []*AddRepositoryMemberResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Repeated"`
+	Success      *bool                                    `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s AddRepositoryMemberResponseBody) String() string {
@@ -89,12 +89,12 @@ func (s *AddRepositoryMemberResponseBody) SetSuccess(v bool) *AddRepositoryMembe
 }
 
 type AddRepositoryMemberResponseBodyResult struct {
-	AccessLevel  *int32  `json:"AccessLevel,omitempty" xml:"AccessLevel,omitempty"`
-	AvatarUrl    *string `json:"AvatarUrl,omitempty" xml:"AvatarUrl,omitempty"`
-	Email        *string `json:"Email,omitempty" xml:"Email,omitempty"`
-	ExternUserId *string `json:"ExternUserId,omitempty" xml:"ExternUserId,omitempty"`
-	Id           *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
-	State        *string `json:"State,omitempty" xml:"State,omitempty"`
+	AccessLevel  *int32  `json:"accessLevel,omitempty" xml:"accessLevel,omitempty"`
+	AvatarUrl    *string `json:"avatarUrl,omitempty" xml:"avatarUrl,omitempty"`
+	Email        *string `json:"email,omitempty" xml:"email,omitempty"`
+	ExternUserId *string `json:"externUserId,omitempty" xml:"externUserId,omitempty"`
+	Id           *int64  `json:"id,omitempty" xml:"id,omitempty"`
+	State        *string `json:"state,omitempty" xml:"state,omitempty"`
 }
 
 func (s AddRepositoryMemberResponseBodyResult) String() string {
@@ -165,8 +165,7 @@ func (s *AddRepositoryMemberResponse) SetBody(v *AddRepositoryMemberResponseBody
 }
 
 type AddWebhookRequest struct {
-	AccessToken           *string `json:"AccessToken,omitempty" xml:"AccessToken,omitempty"`
-	OrganizationId        *string `json:"OrganizationId,omitempty" xml:"OrganizationId,omitempty"`
+	AccessToken           *string `json:"accessToken,omitempty" xml:"accessToken,omitempty"`
 	Description           *string `json:"description,omitempty" xml:"description,omitempty"`
 	EnableSslVerification *bool   `json:"enableSslVerification,omitempty" xml:"enableSslVerification,omitempty"`
 	MergeRequestsEvents   *bool   `json:"mergeRequestsEvents,omitempty" xml:"mergeRequestsEvents,omitempty"`
@@ -175,6 +174,7 @@ type AddWebhookRequest struct {
 	SecretToken           *string `json:"secretToken,omitempty" xml:"secretToken,omitempty"`
 	TagPushEvents         *bool   `json:"tagPushEvents,omitempty" xml:"tagPushEvents,omitempty"`
 	Url                   *string `json:"url,omitempty" xml:"url,omitempty"`
+	OrganizationId        *string `json:"organizationId,omitempty" xml:"organizationId,omitempty"`
 }
 
 func (s AddWebhookRequest) String() string {
@@ -187,11 +187,6 @@ func (s AddWebhookRequest) GoString() string {
 
 func (s *AddWebhookRequest) SetAccessToken(v string) *AddWebhookRequest {
 	s.AccessToken = &v
-	return s
-}
-
-func (s *AddWebhookRequest) SetOrganizationId(v string) *AddWebhookRequest {
-	s.OrganizationId = &v
 	return s
 }
 
@@ -232,6 +227,11 @@ func (s *AddWebhookRequest) SetTagPushEvents(v bool) *AddWebhookRequest {
 
 func (s *AddWebhookRequest) SetUrl(v string) *AddWebhookRequest {
 	s.Url = &v
+	return s
+}
+
+func (s *AddWebhookRequest) SetOrganizationId(v string) *AddWebhookRequest {
+	s.OrganizationId = &v
 	return s
 }
 
@@ -1230,6 +1230,315 @@ func (s *CreateOAuthTokenResponse) SetBody(v *CreateOAuthTokenResponseBody) *Cre
 	return s
 }
 
+type CreatePipelineRequest struct {
+	BasicInfo    *CreatePipelineRequestBasicInfo   `json:"basicInfo,omitempty" xml:"basicInfo,omitempty" type:"Struct"`
+	PipelineYaml *string                           `json:"pipelineYaml,omitempty" xml:"pipelineYaml,omitempty"`
+	Settings     *CreatePipelineRequestSettings    `json:"settings,omitempty" xml:"settings,omitempty" type:"Struct"`
+	TriggerInfo  *CreatePipelineRequestTriggerInfo `json:"triggerInfo,omitempty" xml:"triggerInfo,omitempty" type:"Struct"`
+}
+
+func (s CreatePipelineRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreatePipelineRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreatePipelineRequest) SetBasicInfo(v *CreatePipelineRequestBasicInfo) *CreatePipelineRequest {
+	s.BasicInfo = v
+	return s
+}
+
+func (s *CreatePipelineRequest) SetPipelineYaml(v string) *CreatePipelineRequest {
+	s.PipelineYaml = &v
+	return s
+}
+
+func (s *CreatePipelineRequest) SetSettings(v *CreatePipelineRequestSettings) *CreatePipelineRequest {
+	s.Settings = v
+	return s
+}
+
+func (s *CreatePipelineRequest) SetTriggerInfo(v *CreatePipelineRequestTriggerInfo) *CreatePipelineRequest {
+	s.TriggerInfo = v
+	return s
+}
+
+type CreatePipelineRequestBasicInfo struct {
+	EnvId   *int64  `json:"envId,omitempty" xml:"envId,omitempty"`
+	GroupId *int64  `json:"groupId,omitempty" xml:"groupId,omitempty"`
+	Name    *string `json:"name,omitempty" xml:"name,omitempty"`
+	TagIds  *string `json:"tagIds,omitempty" xml:"tagIds,omitempty"`
+}
+
+func (s CreatePipelineRequestBasicInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreatePipelineRequestBasicInfo) GoString() string {
+	return s.String()
+}
+
+func (s *CreatePipelineRequestBasicInfo) SetEnvId(v int64) *CreatePipelineRequestBasicInfo {
+	s.EnvId = &v
+	return s
+}
+
+func (s *CreatePipelineRequestBasicInfo) SetGroupId(v int64) *CreatePipelineRequestBasicInfo {
+	s.GroupId = &v
+	return s
+}
+
+func (s *CreatePipelineRequestBasicInfo) SetName(v string) *CreatePipelineRequestBasicInfo {
+	s.Name = &v
+	return s
+}
+
+func (s *CreatePipelineRequestBasicInfo) SetTagIds(v string) *CreatePipelineRequestBasicInfo {
+	s.TagIds = &v
+	return s
+}
+
+type CreatePipelineRequestSettings struct {
+	Caches          []*CreatePipelineRequestSettingsCaches       `json:"caches,omitempty" xml:"caches,omitempty" type:"Repeated"`
+	GlobalParams    []*CreatePipelineRequestSettingsGlobalParams `json:"globalParams,omitempty" xml:"globalParams,omitempty" type:"Repeated"`
+	RunnerCacheMode *string                                      `json:"runnerCacheMode,omitempty" xml:"runnerCacheMode,omitempty"`
+}
+
+func (s CreatePipelineRequestSettings) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreatePipelineRequestSettings) GoString() string {
+	return s.String()
+}
+
+func (s *CreatePipelineRequestSettings) SetCaches(v []*CreatePipelineRequestSettingsCaches) *CreatePipelineRequestSettings {
+	s.Caches = v
+	return s
+}
+
+func (s *CreatePipelineRequestSettings) SetGlobalParams(v []*CreatePipelineRequestSettingsGlobalParams) *CreatePipelineRequestSettings {
+	s.GlobalParams = v
+	return s
+}
+
+func (s *CreatePipelineRequestSettings) SetRunnerCacheMode(v string) *CreatePipelineRequestSettings {
+	s.RunnerCacheMode = &v
+	return s
+}
+
+type CreatePipelineRequestSettingsCaches struct {
+	Desc      *string `json:"desc,omitempty" xml:"desc,omitempty"`
+	Directory *string `json:"directory,omitempty" xml:"directory,omitempty"`
+	Disable   *bool   `json:"disable,omitempty" xml:"disable,omitempty"`
+}
+
+func (s CreatePipelineRequestSettingsCaches) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreatePipelineRequestSettingsCaches) GoString() string {
+	return s.String()
+}
+
+func (s *CreatePipelineRequestSettingsCaches) SetDesc(v string) *CreatePipelineRequestSettingsCaches {
+	s.Desc = &v
+	return s
+}
+
+func (s *CreatePipelineRequestSettingsCaches) SetDirectory(v string) *CreatePipelineRequestSettingsCaches {
+	s.Directory = &v
+	return s
+}
+
+func (s *CreatePipelineRequestSettingsCaches) SetDisable(v bool) *CreatePipelineRequestSettingsCaches {
+	s.Disable = &v
+	return s
+}
+
+type CreatePipelineRequestSettingsGlobalParams struct {
+	Key           *string `json:"key,omitempty" xml:"key,omitempty"`
+	Mask          *bool   `json:"mask,omitempty" xml:"mask,omitempty"`
+	RunningConfig *bool   `json:"runningConfig,omitempty" xml:"runningConfig,omitempty"`
+	Value         *string `json:"value,omitempty" xml:"value,omitempty"`
+}
+
+func (s CreatePipelineRequestSettingsGlobalParams) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreatePipelineRequestSettingsGlobalParams) GoString() string {
+	return s.String()
+}
+
+func (s *CreatePipelineRequestSettingsGlobalParams) SetKey(v string) *CreatePipelineRequestSettingsGlobalParams {
+	s.Key = &v
+	return s
+}
+
+func (s *CreatePipelineRequestSettingsGlobalParams) SetMask(v bool) *CreatePipelineRequestSettingsGlobalParams {
+	s.Mask = &v
+	return s
+}
+
+func (s *CreatePipelineRequestSettingsGlobalParams) SetRunningConfig(v bool) *CreatePipelineRequestSettingsGlobalParams {
+	s.RunningConfig = &v
+	return s
+}
+
+func (s *CreatePipelineRequestSettingsGlobalParams) SetValue(v string) *CreatePipelineRequestSettingsGlobalParams {
+	s.Value = &v
+	return s
+}
+
+type CreatePipelineRequestTriggerInfo struct {
+	Scheduled     *CreatePipelineRequestTriggerInfoScheduled `json:"scheduled,omitempty" xml:"scheduled,omitempty" type:"Struct"`
+	WebhookEnable *bool                                      `json:"webhookEnable,omitempty" xml:"webhookEnable,omitempty"`
+}
+
+func (s CreatePipelineRequestTriggerInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreatePipelineRequestTriggerInfo) GoString() string {
+	return s.String()
+}
+
+func (s *CreatePipelineRequestTriggerInfo) SetScheduled(v *CreatePipelineRequestTriggerInfoScheduled) *CreatePipelineRequestTriggerInfo {
+	s.Scheduled = v
+	return s
+}
+
+func (s *CreatePipelineRequestTriggerInfo) SetWebhookEnable(v bool) *CreatePipelineRequestTriggerInfo {
+	s.WebhookEnable = &v
+	return s
+}
+
+type CreatePipelineRequestTriggerInfoScheduled struct {
+	DaysOfWeek       *string `json:"daysOfWeek,omitempty" xml:"daysOfWeek,omitempty"`
+	FixedTime        *string `json:"fixedTime,omitempty" xml:"fixedTime,omitempty"`
+	From             *string `json:"from,omitempty" xml:"from,omitempty"`
+	Interval         *int32  `json:"interval,omitempty" xml:"interval,omitempty"`
+	OnlySourceChange *bool   `json:"onlySourceChange,omitempty" xml:"onlySourceChange,omitempty"`
+	To               *string `json:"to,omitempty" xml:"to,omitempty"`
+	Type             *string `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s CreatePipelineRequestTriggerInfoScheduled) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreatePipelineRequestTriggerInfoScheduled) GoString() string {
+	return s.String()
+}
+
+func (s *CreatePipelineRequestTriggerInfoScheduled) SetDaysOfWeek(v string) *CreatePipelineRequestTriggerInfoScheduled {
+	s.DaysOfWeek = &v
+	return s
+}
+
+func (s *CreatePipelineRequestTriggerInfoScheduled) SetFixedTime(v string) *CreatePipelineRequestTriggerInfoScheduled {
+	s.FixedTime = &v
+	return s
+}
+
+func (s *CreatePipelineRequestTriggerInfoScheduled) SetFrom(v string) *CreatePipelineRequestTriggerInfoScheduled {
+	s.From = &v
+	return s
+}
+
+func (s *CreatePipelineRequestTriggerInfoScheduled) SetInterval(v int32) *CreatePipelineRequestTriggerInfoScheduled {
+	s.Interval = &v
+	return s
+}
+
+func (s *CreatePipelineRequestTriggerInfoScheduled) SetOnlySourceChange(v bool) *CreatePipelineRequestTriggerInfoScheduled {
+	s.OnlySourceChange = &v
+	return s
+}
+
+func (s *CreatePipelineRequestTriggerInfoScheduled) SetTo(v string) *CreatePipelineRequestTriggerInfoScheduled {
+	s.To = &v
+	return s
+}
+
+func (s *CreatePipelineRequestTriggerInfoScheduled) SetType(v string) *CreatePipelineRequestTriggerInfoScheduled {
+	s.Type = &v
+	return s
+}
+
+type CreatePipelineResponseBody struct {
+	ErrorCode    *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	Object       *int64  `json:"object,omitempty" xml:"object,omitempty"`
+	RequestId    *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success      *bool   `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s CreatePipelineResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreatePipelineResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreatePipelineResponseBody) SetErrorCode(v string) *CreatePipelineResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *CreatePipelineResponseBody) SetErrorMessage(v string) *CreatePipelineResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *CreatePipelineResponseBody) SetObject(v int64) *CreatePipelineResponseBody {
+	s.Object = &v
+	return s
+}
+
+func (s *CreatePipelineResponseBody) SetRequestId(v string) *CreatePipelineResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreatePipelineResponseBody) SetSuccess(v bool) *CreatePipelineResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreatePipelineResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreatePipelineResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreatePipelineResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreatePipelineResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreatePipelineResponse) SetHeaders(v map[string]*string) *CreatePipelineResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreatePipelineResponse) SetStatusCode(v int32) *CreatePipelineResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreatePipelineResponse) SetBody(v *CreatePipelineResponseBody) *CreatePipelineResponse {
+	s.Body = v
+	return s
+}
+
 type CreatePipelineGroupRequest struct {
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 }
@@ -1548,6 +1857,660 @@ func (s *CreateProjectResponse) SetStatusCode(v int32) *CreateProjectResponse {
 }
 
 func (s *CreateProjectResponse) SetBody(v *CreateProjectResponseBody) *CreateProjectResponse {
+	s.Body = v
+	return s
+}
+
+type CreateProtectdBranchRequest struct {
+	AccessToken         *string                                         `json:"accessToken,omitempty" xml:"accessToken,omitempty"`
+	AllowMergeRoles     []*int32                                        `json:"allowMergeRoles,omitempty" xml:"allowMergeRoles,omitempty" type:"Repeated"`
+	AllowMergeUserIds   []*string                                       `json:"allowMergeUserIds,omitempty" xml:"allowMergeUserIds,omitempty" type:"Repeated"`
+	AllowPushRoles      []*int32                                        `json:"allowPushRoles,omitempty" xml:"allowPushRoles,omitempty" type:"Repeated"`
+	AllowPushUserIds    []*string                                       `json:"allowPushUserIds,omitempty" xml:"allowPushUserIds,omitempty" type:"Repeated"`
+	Branch              *string                                         `json:"branch,omitempty" xml:"branch,omitempty"`
+	Id                  *int64                                          `json:"id,omitempty" xml:"id,omitempty"`
+	MergeRequestSetting *CreateProtectdBranchRequestMergeRequestSetting `json:"mergeRequestSetting,omitempty" xml:"mergeRequestSetting,omitempty" type:"Struct"`
+	TestSettingDTO      *CreateProtectdBranchRequestTestSettingDTO      `json:"testSettingDTO,omitempty" xml:"testSettingDTO,omitempty" type:"Struct"`
+	OrganizationId      *string                                         `json:"organizationId,omitempty" xml:"organizationId,omitempty"`
+}
+
+func (s CreateProtectdBranchRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProtectdBranchRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProtectdBranchRequest) SetAccessToken(v string) *CreateProtectdBranchRequest {
+	s.AccessToken = &v
+	return s
+}
+
+func (s *CreateProtectdBranchRequest) SetAllowMergeRoles(v []*int32) *CreateProtectdBranchRequest {
+	s.AllowMergeRoles = v
+	return s
+}
+
+func (s *CreateProtectdBranchRequest) SetAllowMergeUserIds(v []*string) *CreateProtectdBranchRequest {
+	s.AllowMergeUserIds = v
+	return s
+}
+
+func (s *CreateProtectdBranchRequest) SetAllowPushRoles(v []*int32) *CreateProtectdBranchRequest {
+	s.AllowPushRoles = v
+	return s
+}
+
+func (s *CreateProtectdBranchRequest) SetAllowPushUserIds(v []*string) *CreateProtectdBranchRequest {
+	s.AllowPushUserIds = v
+	return s
+}
+
+func (s *CreateProtectdBranchRequest) SetBranch(v string) *CreateProtectdBranchRequest {
+	s.Branch = &v
+	return s
+}
+
+func (s *CreateProtectdBranchRequest) SetId(v int64) *CreateProtectdBranchRequest {
+	s.Id = &v
+	return s
+}
+
+func (s *CreateProtectdBranchRequest) SetMergeRequestSetting(v *CreateProtectdBranchRequestMergeRequestSetting) *CreateProtectdBranchRequest {
+	s.MergeRequestSetting = v
+	return s
+}
+
+func (s *CreateProtectdBranchRequest) SetTestSettingDTO(v *CreateProtectdBranchRequestTestSettingDTO) *CreateProtectdBranchRequest {
+	s.TestSettingDTO = v
+	return s
+}
+
+func (s *CreateProtectdBranchRequest) SetOrganizationId(v string) *CreateProtectdBranchRequest {
+	s.OrganizationId = &v
+	return s
+}
+
+type CreateProtectdBranchRequestMergeRequestSetting struct {
+	AllowMergeRequestRoles       []*int32  `json:"allowMergeRequestRoles,omitempty" xml:"allowMergeRequestRoles,omitempty" type:"Repeated"`
+	DefaultAssignees             []*string `json:"defaultAssignees,omitempty" xml:"defaultAssignees,omitempty" type:"Repeated"`
+	IsAllowSelfApproval          *bool     `json:"isAllowSelfApproval,omitempty" xml:"isAllowSelfApproval,omitempty"`
+	IsRequireDiscussionProcessed *bool     `json:"isRequireDiscussionProcessed,omitempty" xml:"isRequireDiscussionProcessed,omitempty"`
+	IsRequired                   *bool     `json:"isRequired,omitempty" xml:"isRequired,omitempty"`
+	IsResetApprovalWhenNewPush   *bool     `json:"isResetApprovalWhenNewPush,omitempty" xml:"isResetApprovalWhenNewPush,omitempty"`
+	MinimumApproval              *int32    `json:"minimumApproval,omitempty" xml:"minimumApproval,omitempty"`
+	MrMode                       *string   `json:"mrMode,omitempty" xml:"mrMode,omitempty"`
+	WhiteList                    *string   `json:"whiteList,omitempty" xml:"whiteList,omitempty"`
+}
+
+func (s CreateProtectdBranchRequestMergeRequestSetting) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProtectdBranchRequestMergeRequestSetting) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProtectdBranchRequestMergeRequestSetting) SetAllowMergeRequestRoles(v []*int32) *CreateProtectdBranchRequestMergeRequestSetting {
+	s.AllowMergeRequestRoles = v
+	return s
+}
+
+func (s *CreateProtectdBranchRequestMergeRequestSetting) SetDefaultAssignees(v []*string) *CreateProtectdBranchRequestMergeRequestSetting {
+	s.DefaultAssignees = v
+	return s
+}
+
+func (s *CreateProtectdBranchRequestMergeRequestSetting) SetIsAllowSelfApproval(v bool) *CreateProtectdBranchRequestMergeRequestSetting {
+	s.IsAllowSelfApproval = &v
+	return s
+}
+
+func (s *CreateProtectdBranchRequestMergeRequestSetting) SetIsRequireDiscussionProcessed(v bool) *CreateProtectdBranchRequestMergeRequestSetting {
+	s.IsRequireDiscussionProcessed = &v
+	return s
+}
+
+func (s *CreateProtectdBranchRequestMergeRequestSetting) SetIsRequired(v bool) *CreateProtectdBranchRequestMergeRequestSetting {
+	s.IsRequired = &v
+	return s
+}
+
+func (s *CreateProtectdBranchRequestMergeRequestSetting) SetIsResetApprovalWhenNewPush(v bool) *CreateProtectdBranchRequestMergeRequestSetting {
+	s.IsResetApprovalWhenNewPush = &v
+	return s
+}
+
+func (s *CreateProtectdBranchRequestMergeRequestSetting) SetMinimumApproval(v int32) *CreateProtectdBranchRequestMergeRequestSetting {
+	s.MinimumApproval = &v
+	return s
+}
+
+func (s *CreateProtectdBranchRequestMergeRequestSetting) SetMrMode(v string) *CreateProtectdBranchRequestMergeRequestSetting {
+	s.MrMode = &v
+	return s
+}
+
+func (s *CreateProtectdBranchRequestMergeRequestSetting) SetWhiteList(v string) *CreateProtectdBranchRequestMergeRequestSetting {
+	s.WhiteList = &v
+	return s
+}
+
+type CreateProtectdBranchRequestTestSettingDTO struct {
+	CheckConfig             *CreateProtectdBranchRequestTestSettingDTOCheckConfig             `json:"checkConfig,omitempty" xml:"checkConfig,omitempty" type:"Struct"`
+	CheckTaskQualityConfig  *CreateProtectdBranchRequestTestSettingDTOCheckTaskQualityConfig  `json:"checkTaskQualityConfig,omitempty" xml:"checkTaskQualityConfig,omitempty" type:"Struct"`
+	CodeGuidelinesDetection *CreateProtectdBranchRequestTestSettingDTOCodeGuidelinesDetection `json:"codeGuidelinesDetection,omitempty" xml:"codeGuidelinesDetection,omitempty" type:"Struct"`
+	IsRequired              *bool                                                             `json:"isRequired,omitempty" xml:"isRequired,omitempty"`
+	SensitiveInfoDetection  *CreateProtectdBranchRequestTestSettingDTOSensitiveInfoDetection  `json:"sensitiveInfoDetection,omitempty" xml:"sensitiveInfoDetection,omitempty" type:"Struct"`
+}
+
+func (s CreateProtectdBranchRequestTestSettingDTO) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProtectdBranchRequestTestSettingDTO) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProtectdBranchRequestTestSettingDTO) SetCheckConfig(v *CreateProtectdBranchRequestTestSettingDTOCheckConfig) *CreateProtectdBranchRequestTestSettingDTO {
+	s.CheckConfig = v
+	return s
+}
+
+func (s *CreateProtectdBranchRequestTestSettingDTO) SetCheckTaskQualityConfig(v *CreateProtectdBranchRequestTestSettingDTOCheckTaskQualityConfig) *CreateProtectdBranchRequestTestSettingDTO {
+	s.CheckTaskQualityConfig = v
+	return s
+}
+
+func (s *CreateProtectdBranchRequestTestSettingDTO) SetCodeGuidelinesDetection(v *CreateProtectdBranchRequestTestSettingDTOCodeGuidelinesDetection) *CreateProtectdBranchRequestTestSettingDTO {
+	s.CodeGuidelinesDetection = v
+	return s
+}
+
+func (s *CreateProtectdBranchRequestTestSettingDTO) SetIsRequired(v bool) *CreateProtectdBranchRequestTestSettingDTO {
+	s.IsRequired = &v
+	return s
+}
+
+func (s *CreateProtectdBranchRequestTestSettingDTO) SetSensitiveInfoDetection(v *CreateProtectdBranchRequestTestSettingDTOSensitiveInfoDetection) *CreateProtectdBranchRequestTestSettingDTO {
+	s.SensitiveInfoDetection = v
+	return s
+}
+
+type CreateProtectdBranchRequestTestSettingDTOCheckConfig struct {
+	CheckItems []*CreateProtectdBranchRequestTestSettingDTOCheckConfigCheckItems `json:"checkItems,omitempty" xml:"checkItems,omitempty" type:"Repeated"`
+}
+
+func (s CreateProtectdBranchRequestTestSettingDTOCheckConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProtectdBranchRequestTestSettingDTOCheckConfig) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProtectdBranchRequestTestSettingDTOCheckConfig) SetCheckItems(v []*CreateProtectdBranchRequestTestSettingDTOCheckConfigCheckItems) *CreateProtectdBranchRequestTestSettingDTOCheckConfig {
+	s.CheckItems = v
+	return s
+}
+
+type CreateProtectdBranchRequestTestSettingDTOCheckConfigCheckItems struct {
+	IsRequired *bool   `json:"isRequired,omitempty" xml:"isRequired,omitempty"`
+	Name       *string `json:"name,omitempty" xml:"name,omitempty"`
+}
+
+func (s CreateProtectdBranchRequestTestSettingDTOCheckConfigCheckItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProtectdBranchRequestTestSettingDTOCheckConfigCheckItems) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProtectdBranchRequestTestSettingDTOCheckConfigCheckItems) SetIsRequired(v bool) *CreateProtectdBranchRequestTestSettingDTOCheckConfigCheckItems {
+	s.IsRequired = &v
+	return s
+}
+
+func (s *CreateProtectdBranchRequestTestSettingDTOCheckConfigCheckItems) SetName(v string) *CreateProtectdBranchRequestTestSettingDTOCheckConfigCheckItems {
+	s.Name = &v
+	return s
+}
+
+type CreateProtectdBranchRequestTestSettingDTOCheckTaskQualityConfig struct {
+	BizNo    *string `json:"bizNo,omitempty" xml:"bizNo,omitempty"`
+	Enabled  *bool   `json:"enabled,omitempty" xml:"enabled,omitempty"`
+	Message  *string `json:"message,omitempty" xml:"message,omitempty"`
+	TaskName *string `json:"taskName,omitempty" xml:"taskName,omitempty"`
+}
+
+func (s CreateProtectdBranchRequestTestSettingDTOCheckTaskQualityConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProtectdBranchRequestTestSettingDTOCheckTaskQualityConfig) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProtectdBranchRequestTestSettingDTOCheckTaskQualityConfig) SetBizNo(v string) *CreateProtectdBranchRequestTestSettingDTOCheckTaskQualityConfig {
+	s.BizNo = &v
+	return s
+}
+
+func (s *CreateProtectdBranchRequestTestSettingDTOCheckTaskQualityConfig) SetEnabled(v bool) *CreateProtectdBranchRequestTestSettingDTOCheckTaskQualityConfig {
+	s.Enabled = &v
+	return s
+}
+
+func (s *CreateProtectdBranchRequestTestSettingDTOCheckTaskQualityConfig) SetMessage(v string) *CreateProtectdBranchRequestTestSettingDTOCheckTaskQualityConfig {
+	s.Message = &v
+	return s
+}
+
+func (s *CreateProtectdBranchRequestTestSettingDTOCheckTaskQualityConfig) SetTaskName(v string) *CreateProtectdBranchRequestTestSettingDTOCheckTaskQualityConfig {
+	s.TaskName = &v
+	return s
+}
+
+type CreateProtectdBranchRequestTestSettingDTOCodeGuidelinesDetection struct {
+	Enabled *bool   `json:"enabled,omitempty" xml:"enabled,omitempty"`
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+}
+
+func (s CreateProtectdBranchRequestTestSettingDTOCodeGuidelinesDetection) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProtectdBranchRequestTestSettingDTOCodeGuidelinesDetection) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProtectdBranchRequestTestSettingDTOCodeGuidelinesDetection) SetEnabled(v bool) *CreateProtectdBranchRequestTestSettingDTOCodeGuidelinesDetection {
+	s.Enabled = &v
+	return s
+}
+
+func (s *CreateProtectdBranchRequestTestSettingDTOCodeGuidelinesDetection) SetMessage(v string) *CreateProtectdBranchRequestTestSettingDTOCodeGuidelinesDetection {
+	s.Message = &v
+	return s
+}
+
+type CreateProtectdBranchRequestTestSettingDTOSensitiveInfoDetection struct {
+	Enabled *bool   `json:"enabled,omitempty" xml:"enabled,omitempty"`
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+}
+
+func (s CreateProtectdBranchRequestTestSettingDTOSensitiveInfoDetection) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProtectdBranchRequestTestSettingDTOSensitiveInfoDetection) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProtectdBranchRequestTestSettingDTOSensitiveInfoDetection) SetEnabled(v bool) *CreateProtectdBranchRequestTestSettingDTOSensitiveInfoDetection {
+	s.Enabled = &v
+	return s
+}
+
+func (s *CreateProtectdBranchRequestTestSettingDTOSensitiveInfoDetection) SetMessage(v string) *CreateProtectdBranchRequestTestSettingDTOSensitiveInfoDetection {
+	s.Message = &v
+	return s
+}
+
+type CreateProtectdBranchResponseBody struct {
+	ErrorCode    *string                                 `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMessage *string                                 `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	RequestId    *string                                 `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Result       *CreateProtectdBranchResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
+	Success      *bool                                   `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s CreateProtectdBranchResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProtectdBranchResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProtectdBranchResponseBody) SetErrorCode(v string) *CreateProtectdBranchResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *CreateProtectdBranchResponseBody) SetErrorMessage(v string) *CreateProtectdBranchResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *CreateProtectdBranchResponseBody) SetRequestId(v string) *CreateProtectdBranchResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateProtectdBranchResponseBody) SetResult(v *CreateProtectdBranchResponseBodyResult) *CreateProtectdBranchResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *CreateProtectdBranchResponseBody) SetSuccess(v bool) *CreateProtectdBranchResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreateProtectdBranchResponseBodyResult struct {
+	AllowMergeRoles     []*int32                                                   `json:"allowMergeRoles,omitempty" xml:"allowMergeRoles,omitempty" type:"Repeated"`
+	AllowMergeUserIds   []*int64                                                   `json:"allowMergeUserIds,omitempty" xml:"allowMergeUserIds,omitempty" type:"Repeated"`
+	AllowPushRoles      []*int32                                                   `json:"allowPushRoles,omitempty" xml:"allowPushRoles,omitempty" type:"Repeated"`
+	AllowPushUserIds    []*int64                                                   `json:"allowPushUserIds,omitempty" xml:"allowPushUserIds,omitempty" type:"Repeated"`
+	Branch              *string                                                    `json:"branch,omitempty" xml:"branch,omitempty"`
+	Id                  *int64                                                     `json:"id,omitempty" xml:"id,omitempty"`
+	MergeRequestSetting *CreateProtectdBranchResponseBodyResultMergeRequestSetting `json:"mergeRequestSetting,omitempty" xml:"mergeRequestSetting,omitempty" type:"Struct"`
+	TestSettingDTO      *CreateProtectdBranchResponseBodyResultTestSettingDTO      `json:"testSettingDTO,omitempty" xml:"testSettingDTO,omitempty" type:"Struct"`
+}
+
+func (s CreateProtectdBranchResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProtectdBranchResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProtectdBranchResponseBodyResult) SetAllowMergeRoles(v []*int32) *CreateProtectdBranchResponseBodyResult {
+	s.AllowMergeRoles = v
+	return s
+}
+
+func (s *CreateProtectdBranchResponseBodyResult) SetAllowMergeUserIds(v []*int64) *CreateProtectdBranchResponseBodyResult {
+	s.AllowMergeUserIds = v
+	return s
+}
+
+func (s *CreateProtectdBranchResponseBodyResult) SetAllowPushRoles(v []*int32) *CreateProtectdBranchResponseBodyResult {
+	s.AllowPushRoles = v
+	return s
+}
+
+func (s *CreateProtectdBranchResponseBodyResult) SetAllowPushUserIds(v []*int64) *CreateProtectdBranchResponseBodyResult {
+	s.AllowPushUserIds = v
+	return s
+}
+
+func (s *CreateProtectdBranchResponseBodyResult) SetBranch(v string) *CreateProtectdBranchResponseBodyResult {
+	s.Branch = &v
+	return s
+}
+
+func (s *CreateProtectdBranchResponseBodyResult) SetId(v int64) *CreateProtectdBranchResponseBodyResult {
+	s.Id = &v
+	return s
+}
+
+func (s *CreateProtectdBranchResponseBodyResult) SetMergeRequestSetting(v *CreateProtectdBranchResponseBodyResultMergeRequestSetting) *CreateProtectdBranchResponseBodyResult {
+	s.MergeRequestSetting = v
+	return s
+}
+
+func (s *CreateProtectdBranchResponseBodyResult) SetTestSettingDTO(v *CreateProtectdBranchResponseBodyResultTestSettingDTO) *CreateProtectdBranchResponseBodyResult {
+	s.TestSettingDTO = v
+	return s
+}
+
+type CreateProtectdBranchResponseBodyResultMergeRequestSetting struct {
+	AllowMergeRequestRoles       []*int32  `json:"allowMergeRequestRoles,omitempty" xml:"allowMergeRequestRoles,omitempty" type:"Repeated"`
+	DefaultAssignees             []*string `json:"defaultAssignees,omitempty" xml:"defaultAssignees,omitempty" type:"Repeated"`
+	IsAllowSelfApproval          *bool     `json:"isAllowSelfApproval,omitempty" xml:"isAllowSelfApproval,omitempty"`
+	IsRequireDiscussionProcessed *bool     `json:"isRequireDiscussionProcessed,omitempty" xml:"isRequireDiscussionProcessed,omitempty"`
+	IsRequired                   *bool     `json:"isRequired,omitempty" xml:"isRequired,omitempty"`
+	IsResetApprovalWhenNewPush   *bool     `json:"isResetApprovalWhenNewPush,omitempty" xml:"isResetApprovalWhenNewPush,omitempty"`
+	MinimumApproval              *int32    `json:"minimumApproval,omitempty" xml:"minimumApproval,omitempty"`
+	MrMode                       *string   `json:"mrMode,omitempty" xml:"mrMode,omitempty"`
+	WhiteList                    *string   `json:"whiteList,omitempty" xml:"whiteList,omitempty"`
+}
+
+func (s CreateProtectdBranchResponseBodyResultMergeRequestSetting) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProtectdBranchResponseBodyResultMergeRequestSetting) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProtectdBranchResponseBodyResultMergeRequestSetting) SetAllowMergeRequestRoles(v []*int32) *CreateProtectdBranchResponseBodyResultMergeRequestSetting {
+	s.AllowMergeRequestRoles = v
+	return s
+}
+
+func (s *CreateProtectdBranchResponseBodyResultMergeRequestSetting) SetDefaultAssignees(v []*string) *CreateProtectdBranchResponseBodyResultMergeRequestSetting {
+	s.DefaultAssignees = v
+	return s
+}
+
+func (s *CreateProtectdBranchResponseBodyResultMergeRequestSetting) SetIsAllowSelfApproval(v bool) *CreateProtectdBranchResponseBodyResultMergeRequestSetting {
+	s.IsAllowSelfApproval = &v
+	return s
+}
+
+func (s *CreateProtectdBranchResponseBodyResultMergeRequestSetting) SetIsRequireDiscussionProcessed(v bool) *CreateProtectdBranchResponseBodyResultMergeRequestSetting {
+	s.IsRequireDiscussionProcessed = &v
+	return s
+}
+
+func (s *CreateProtectdBranchResponseBodyResultMergeRequestSetting) SetIsRequired(v bool) *CreateProtectdBranchResponseBodyResultMergeRequestSetting {
+	s.IsRequired = &v
+	return s
+}
+
+func (s *CreateProtectdBranchResponseBodyResultMergeRequestSetting) SetIsResetApprovalWhenNewPush(v bool) *CreateProtectdBranchResponseBodyResultMergeRequestSetting {
+	s.IsResetApprovalWhenNewPush = &v
+	return s
+}
+
+func (s *CreateProtectdBranchResponseBodyResultMergeRequestSetting) SetMinimumApproval(v int32) *CreateProtectdBranchResponseBodyResultMergeRequestSetting {
+	s.MinimumApproval = &v
+	return s
+}
+
+func (s *CreateProtectdBranchResponseBodyResultMergeRequestSetting) SetMrMode(v string) *CreateProtectdBranchResponseBodyResultMergeRequestSetting {
+	s.MrMode = &v
+	return s
+}
+
+func (s *CreateProtectdBranchResponseBodyResultMergeRequestSetting) SetWhiteList(v string) *CreateProtectdBranchResponseBodyResultMergeRequestSetting {
+	s.WhiteList = &v
+	return s
+}
+
+type CreateProtectdBranchResponseBodyResultTestSettingDTO struct {
+	CheckConfig             *CreateProtectdBranchResponseBodyResultTestSettingDTOCheckConfig             `json:"checkConfig,omitempty" xml:"checkConfig,omitempty" type:"Struct"`
+	CheckTaskQualityConfig  *CreateProtectdBranchResponseBodyResultTestSettingDTOCheckTaskQualityConfig  `json:"checkTaskQualityConfig,omitempty" xml:"checkTaskQualityConfig,omitempty" type:"Struct"`
+	CodeGuidelinesDetection *CreateProtectdBranchResponseBodyResultTestSettingDTOCodeGuidelinesDetection `json:"codeGuidelinesDetection,omitempty" xml:"codeGuidelinesDetection,omitempty" type:"Struct"`
+	IsRequired              *bool                                                                        `json:"isRequired,omitempty" xml:"isRequired,omitempty"`
+	SensitiveInfoDetection  *CreateProtectdBranchResponseBodyResultTestSettingDTOSensitiveInfoDetection  `json:"sensitiveInfoDetection,omitempty" xml:"sensitiveInfoDetection,omitempty" type:"Struct"`
+}
+
+func (s CreateProtectdBranchResponseBodyResultTestSettingDTO) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProtectdBranchResponseBodyResultTestSettingDTO) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProtectdBranchResponseBodyResultTestSettingDTO) SetCheckConfig(v *CreateProtectdBranchResponseBodyResultTestSettingDTOCheckConfig) *CreateProtectdBranchResponseBodyResultTestSettingDTO {
+	s.CheckConfig = v
+	return s
+}
+
+func (s *CreateProtectdBranchResponseBodyResultTestSettingDTO) SetCheckTaskQualityConfig(v *CreateProtectdBranchResponseBodyResultTestSettingDTOCheckTaskQualityConfig) *CreateProtectdBranchResponseBodyResultTestSettingDTO {
+	s.CheckTaskQualityConfig = v
+	return s
+}
+
+func (s *CreateProtectdBranchResponseBodyResultTestSettingDTO) SetCodeGuidelinesDetection(v *CreateProtectdBranchResponseBodyResultTestSettingDTOCodeGuidelinesDetection) *CreateProtectdBranchResponseBodyResultTestSettingDTO {
+	s.CodeGuidelinesDetection = v
+	return s
+}
+
+func (s *CreateProtectdBranchResponseBodyResultTestSettingDTO) SetIsRequired(v bool) *CreateProtectdBranchResponseBodyResultTestSettingDTO {
+	s.IsRequired = &v
+	return s
+}
+
+func (s *CreateProtectdBranchResponseBodyResultTestSettingDTO) SetSensitiveInfoDetection(v *CreateProtectdBranchResponseBodyResultTestSettingDTOSensitiveInfoDetection) *CreateProtectdBranchResponseBodyResultTestSettingDTO {
+	s.SensitiveInfoDetection = v
+	return s
+}
+
+type CreateProtectdBranchResponseBodyResultTestSettingDTOCheckConfig struct {
+	CheckItems []*CreateProtectdBranchResponseBodyResultTestSettingDTOCheckConfigCheckItems `json:"checkItems,omitempty" xml:"checkItems,omitempty" type:"Repeated"`
+}
+
+func (s CreateProtectdBranchResponseBodyResultTestSettingDTOCheckConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProtectdBranchResponseBodyResultTestSettingDTOCheckConfig) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProtectdBranchResponseBodyResultTestSettingDTOCheckConfig) SetCheckItems(v []*CreateProtectdBranchResponseBodyResultTestSettingDTOCheckConfigCheckItems) *CreateProtectdBranchResponseBodyResultTestSettingDTOCheckConfig {
+	s.CheckItems = v
+	return s
+}
+
+type CreateProtectdBranchResponseBodyResultTestSettingDTOCheckConfigCheckItems struct {
+	IsRequired *bool   `json:"isRequired,omitempty" xml:"isRequired,omitempty"`
+	Name       *string `json:"name,omitempty" xml:"name,omitempty"`
+}
+
+func (s CreateProtectdBranchResponseBodyResultTestSettingDTOCheckConfigCheckItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProtectdBranchResponseBodyResultTestSettingDTOCheckConfigCheckItems) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProtectdBranchResponseBodyResultTestSettingDTOCheckConfigCheckItems) SetIsRequired(v bool) *CreateProtectdBranchResponseBodyResultTestSettingDTOCheckConfigCheckItems {
+	s.IsRequired = &v
+	return s
+}
+
+func (s *CreateProtectdBranchResponseBodyResultTestSettingDTOCheckConfigCheckItems) SetName(v string) *CreateProtectdBranchResponseBodyResultTestSettingDTOCheckConfigCheckItems {
+	s.Name = &v
+	return s
+}
+
+type CreateProtectdBranchResponseBodyResultTestSettingDTOCheckTaskQualityConfig struct {
+	BizNo    *string `json:"bizNo,omitempty" xml:"bizNo,omitempty"`
+	Enabled  *bool   `json:"enabled,omitempty" xml:"enabled,omitempty"`
+	Message  *string `json:"message,omitempty" xml:"message,omitempty"`
+	TaskName *string `json:"taskName,omitempty" xml:"taskName,omitempty"`
+}
+
+func (s CreateProtectdBranchResponseBodyResultTestSettingDTOCheckTaskQualityConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProtectdBranchResponseBodyResultTestSettingDTOCheckTaskQualityConfig) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProtectdBranchResponseBodyResultTestSettingDTOCheckTaskQualityConfig) SetBizNo(v string) *CreateProtectdBranchResponseBodyResultTestSettingDTOCheckTaskQualityConfig {
+	s.BizNo = &v
+	return s
+}
+
+func (s *CreateProtectdBranchResponseBodyResultTestSettingDTOCheckTaskQualityConfig) SetEnabled(v bool) *CreateProtectdBranchResponseBodyResultTestSettingDTOCheckTaskQualityConfig {
+	s.Enabled = &v
+	return s
+}
+
+func (s *CreateProtectdBranchResponseBodyResultTestSettingDTOCheckTaskQualityConfig) SetMessage(v string) *CreateProtectdBranchResponseBodyResultTestSettingDTOCheckTaskQualityConfig {
+	s.Message = &v
+	return s
+}
+
+func (s *CreateProtectdBranchResponseBodyResultTestSettingDTOCheckTaskQualityConfig) SetTaskName(v string) *CreateProtectdBranchResponseBodyResultTestSettingDTOCheckTaskQualityConfig {
+	s.TaskName = &v
+	return s
+}
+
+type CreateProtectdBranchResponseBodyResultTestSettingDTOCodeGuidelinesDetection struct {
+	Enabled *bool   `json:"enabled,omitempty" xml:"enabled,omitempty"`
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+}
+
+func (s CreateProtectdBranchResponseBodyResultTestSettingDTOCodeGuidelinesDetection) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProtectdBranchResponseBodyResultTestSettingDTOCodeGuidelinesDetection) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProtectdBranchResponseBodyResultTestSettingDTOCodeGuidelinesDetection) SetEnabled(v bool) *CreateProtectdBranchResponseBodyResultTestSettingDTOCodeGuidelinesDetection {
+	s.Enabled = &v
+	return s
+}
+
+func (s *CreateProtectdBranchResponseBodyResultTestSettingDTOCodeGuidelinesDetection) SetMessage(v string) *CreateProtectdBranchResponseBodyResultTestSettingDTOCodeGuidelinesDetection {
+	s.Message = &v
+	return s
+}
+
+type CreateProtectdBranchResponseBodyResultTestSettingDTOSensitiveInfoDetection struct {
+	Enabled *bool   `json:"enabled,omitempty" xml:"enabled,omitempty"`
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+}
+
+func (s CreateProtectdBranchResponseBodyResultTestSettingDTOSensitiveInfoDetection) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProtectdBranchResponseBodyResultTestSettingDTOSensitiveInfoDetection) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProtectdBranchResponseBodyResultTestSettingDTOSensitiveInfoDetection) SetEnabled(v bool) *CreateProtectdBranchResponseBodyResultTestSettingDTOSensitiveInfoDetection {
+	s.Enabled = &v
+	return s
+}
+
+func (s *CreateProtectdBranchResponseBodyResultTestSettingDTOSensitiveInfoDetection) SetMessage(v string) *CreateProtectdBranchResponseBodyResultTestSettingDTOSensitiveInfoDetection {
+	s.Message = &v
+	return s
+}
+
+type CreateProtectdBranchResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateProtectdBranchResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateProtectdBranchResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProtectdBranchResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProtectdBranchResponse) SetHeaders(v map[string]*string) *CreateProtectdBranchResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateProtectdBranchResponse) SetStatusCode(v int32) *CreateProtectdBranchResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateProtectdBranchResponse) SetBody(v *CreateProtectdBranchResponseBody) *CreateProtectdBranchResponse {
 	s.Body = v
 	return s
 }
@@ -4637,6 +5600,200 @@ func (s *DeleteRepositoryResponse) SetBody(v *DeleteRepositoryResponseBody) *Del
 	return s
 }
 
+type DeleteRepositoryWebhookRequest struct {
+	AccessToken    *string `json:"accessToken,omitempty" xml:"accessToken,omitempty"`
+	OrganizationId *string `json:"organizationId,omitempty" xml:"organizationId,omitempty"`
+}
+
+func (s DeleteRepositoryWebhookRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteRepositoryWebhookRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteRepositoryWebhookRequest) SetAccessToken(v string) *DeleteRepositoryWebhookRequest {
+	s.AccessToken = &v
+	return s
+}
+
+func (s *DeleteRepositoryWebhookRequest) SetOrganizationId(v string) *DeleteRepositoryWebhookRequest {
+	s.OrganizationId = &v
+	return s
+}
+
+type DeleteRepositoryWebhookResponseBody struct {
+	ErrorCode    *string                                    `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMessage *string                                    `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	RequestId    *string                                    `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Result       *DeleteRepositoryWebhookResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
+	Success      *bool                                      `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s DeleteRepositoryWebhookResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteRepositoryWebhookResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteRepositoryWebhookResponseBody) SetErrorCode(v string) *DeleteRepositoryWebhookResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *DeleteRepositoryWebhookResponseBody) SetErrorMessage(v string) *DeleteRepositoryWebhookResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *DeleteRepositoryWebhookResponseBody) SetRequestId(v string) *DeleteRepositoryWebhookResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteRepositoryWebhookResponseBody) SetResult(v *DeleteRepositoryWebhookResponseBodyResult) *DeleteRepositoryWebhookResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *DeleteRepositoryWebhookResponseBody) SetSuccess(v bool) *DeleteRepositoryWebhookResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeleteRepositoryWebhookResponseBodyResult struct {
+	BuildEvents           *bool   `json:"buildEvents,omitempty" xml:"buildEvents,omitempty"`
+	CreatedAt             *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
+	Description           *string `json:"description,omitempty" xml:"description,omitempty"`
+	EnableSslVerification *bool   `json:"enableSslVerification,omitempty" xml:"enableSslVerification,omitempty"`
+	Id                    *int64  `json:"id,omitempty" xml:"id,omitempty"`
+	IssuesEvents          *bool   `json:"issuesEvents,omitempty" xml:"issuesEvents,omitempty"`
+	LastTestResult        *string `json:"lastTestResult,omitempty" xml:"lastTestResult,omitempty"`
+	MergeRequestsEvents   *bool   `json:"mergeRequestsEvents,omitempty" xml:"mergeRequestsEvents,omitempty"`
+	NoteEvents            *bool   `json:"noteEvents,omitempty" xml:"noteEvents,omitempty"`
+	ProjectId             *int64  `json:"projectId,omitempty" xml:"projectId,omitempty"`
+	PushEvents            *bool   `json:"pushEvents,omitempty" xml:"pushEvents,omitempty"`
+	SecretToken           *string `json:"secretToken,omitempty" xml:"secretToken,omitempty"`
+	TagPushEvents         *bool   `json:"tagPushEvents,omitempty" xml:"tagPushEvents,omitempty"`
+	Type                  *string `json:"type,omitempty" xml:"type,omitempty"`
+	Url                   *string `json:"url,omitempty" xml:"url,omitempty"`
+}
+
+func (s DeleteRepositoryWebhookResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteRepositoryWebhookResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteRepositoryWebhookResponseBodyResult) SetBuildEvents(v bool) *DeleteRepositoryWebhookResponseBodyResult {
+	s.BuildEvents = &v
+	return s
+}
+
+func (s *DeleteRepositoryWebhookResponseBodyResult) SetCreatedAt(v string) *DeleteRepositoryWebhookResponseBodyResult {
+	s.CreatedAt = &v
+	return s
+}
+
+func (s *DeleteRepositoryWebhookResponseBodyResult) SetDescription(v string) *DeleteRepositoryWebhookResponseBodyResult {
+	s.Description = &v
+	return s
+}
+
+func (s *DeleteRepositoryWebhookResponseBodyResult) SetEnableSslVerification(v bool) *DeleteRepositoryWebhookResponseBodyResult {
+	s.EnableSslVerification = &v
+	return s
+}
+
+func (s *DeleteRepositoryWebhookResponseBodyResult) SetId(v int64) *DeleteRepositoryWebhookResponseBodyResult {
+	s.Id = &v
+	return s
+}
+
+func (s *DeleteRepositoryWebhookResponseBodyResult) SetIssuesEvents(v bool) *DeleteRepositoryWebhookResponseBodyResult {
+	s.IssuesEvents = &v
+	return s
+}
+
+func (s *DeleteRepositoryWebhookResponseBodyResult) SetLastTestResult(v string) *DeleteRepositoryWebhookResponseBodyResult {
+	s.LastTestResult = &v
+	return s
+}
+
+func (s *DeleteRepositoryWebhookResponseBodyResult) SetMergeRequestsEvents(v bool) *DeleteRepositoryWebhookResponseBodyResult {
+	s.MergeRequestsEvents = &v
+	return s
+}
+
+func (s *DeleteRepositoryWebhookResponseBodyResult) SetNoteEvents(v bool) *DeleteRepositoryWebhookResponseBodyResult {
+	s.NoteEvents = &v
+	return s
+}
+
+func (s *DeleteRepositoryWebhookResponseBodyResult) SetProjectId(v int64) *DeleteRepositoryWebhookResponseBodyResult {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *DeleteRepositoryWebhookResponseBodyResult) SetPushEvents(v bool) *DeleteRepositoryWebhookResponseBodyResult {
+	s.PushEvents = &v
+	return s
+}
+
+func (s *DeleteRepositoryWebhookResponseBodyResult) SetSecretToken(v string) *DeleteRepositoryWebhookResponseBodyResult {
+	s.SecretToken = &v
+	return s
+}
+
+func (s *DeleteRepositoryWebhookResponseBodyResult) SetTagPushEvents(v bool) *DeleteRepositoryWebhookResponseBodyResult {
+	s.TagPushEvents = &v
+	return s
+}
+
+func (s *DeleteRepositoryWebhookResponseBodyResult) SetType(v string) *DeleteRepositoryWebhookResponseBodyResult {
+	s.Type = &v
+	return s
+}
+
+func (s *DeleteRepositoryWebhookResponseBodyResult) SetUrl(v string) *DeleteRepositoryWebhookResponseBodyResult {
+	s.Url = &v
+	return s
+}
+
+type DeleteRepositoryWebhookResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteRepositoryWebhookResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteRepositoryWebhookResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteRepositoryWebhookResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteRepositoryWebhookResponse) SetHeaders(v map[string]*string) *DeleteRepositoryWebhookResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteRepositoryWebhookResponse) SetStatusCode(v int32) *DeleteRepositoryWebhookResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteRepositoryWebhookResponse) SetBody(v *DeleteRepositoryWebhookResponseBody) *DeleteRepositoryWebhookResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteResourceMemberResponseBody struct {
 	ErrorCode    *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
@@ -5386,7 +6543,7 @@ func (s *GetBranchInfoResponse) SetBody(v *GetBranchInfoResponseBody) *GetBranch
 }
 
 type GetCodeupOrganizationRequest struct {
-	AccessToken *string `json:"AccessToken,omitempty" xml:"AccessToken,omitempty"`
+	AccessToken *string `json:"accessToken,omitempty" xml:"accessToken,omitempty"`
 }
 
 func (s GetCodeupOrganizationRequest) String() string {
@@ -5403,11 +6560,11 @@ func (s *GetCodeupOrganizationRequest) SetAccessToken(v string) *GetCodeupOrgani
 }
 
 type GetCodeupOrganizationResponseBody struct {
-	ErrorCode    *string                                  `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage *string                                  `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	RequestId    *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result       *GetCodeupOrganizationResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-	Success      *bool                                    `json:"Success,omitempty" xml:"Success,omitempty"`
+	ErrorCode    *string                                  `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMessage *string                                  `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	RequestId    *string                                  `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Result       *GetCodeupOrganizationResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
+	Success      *bool                                    `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s GetCodeupOrganizationResponseBody) String() string {
@@ -5444,13 +6601,13 @@ func (s *GetCodeupOrganizationResponseBody) SetSuccess(v bool) *GetCodeupOrganiz
 }
 
 type GetCodeupOrganizationResponseBodyResult struct {
-	CreatedAt      *string `json:"CreatedAt,omitempty" xml:"CreatedAt,omitempty"`
-	Id             *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
-	NamespaceId    *int64  `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
-	OrganizationId *string `json:"OrganizationId,omitempty" xml:"OrganizationId,omitempty"`
-	Path           *string `json:"Path,omitempty" xml:"Path,omitempty"`
-	UpdatedAt      *string `json:"UpdatedAt,omitempty" xml:"UpdatedAt,omitempty"`
-	UserRole       *string `json:"UserRole,omitempty" xml:"UserRole,omitempty"`
+	CreatedAt      *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
+	Id             *int64  `json:"id,omitempty" xml:"id,omitempty"`
+	NamespaceId    *int64  `json:"namespaceId,omitempty" xml:"namespaceId,omitempty"`
+	OrganizationId *string `json:"organizationId,omitempty" xml:"organizationId,omitempty"`
+	Path           *string `json:"path,omitempty" xml:"path,omitempty"`
+	UpdatedAt      *string `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
+	UserRole       *string `json:"userRole,omitempty" xml:"userRole,omitempty"`
 }
 
 func (s GetCodeupOrganizationResponseBodyResult) String() string {
@@ -5819,7 +6976,7 @@ func (s *GetFileBlobsResponse) SetBody(v *GetFileBlobsResponseBody) *GetFileBlob
 
 type GetFileLastCommitRequest struct {
 	AccessToken    *string `json:"accessToken,omitempty" xml:"accessToken,omitempty"`
-	Filepath       *string `json:"filepath,omitempty" xml:"filepath,omitempty"`
+	FilePath       *string `json:"filePath,omitempty" xml:"filePath,omitempty"`
 	OrganizationId *string `json:"organizationId,omitempty" xml:"organizationId,omitempty"`
 	Sha            *string `json:"sha,omitempty" xml:"sha,omitempty"`
 	ShowSignature  *bool   `json:"showSignature,omitempty" xml:"showSignature,omitempty"`
@@ -5838,8 +6995,8 @@ func (s *GetFileLastCommitRequest) SetAccessToken(v string) *GetFileLastCommitRe
 	return s
 }
 
-func (s *GetFileLastCommitRequest) SetFilepath(v string) *GetFileLastCommitRequest {
-	s.Filepath = &v
+func (s *GetFileLastCommitRequest) SetFilePath(v string) *GetFileLastCommitRequest {
+	s.FilePath = &v
 	return s
 }
 
@@ -5859,11 +7016,11 @@ func (s *GetFileLastCommitRequest) SetShowSignature(v bool) *GetFileLastCommitRe
 }
 
 type GetFileLastCommitResponseBody struct {
-	ErrorCode    *string                              `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage *string                              `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	RequestId    *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result       *GetFileLastCommitResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-	Success      *bool                                `json:"Success,omitempty" xml:"Success,omitempty"`
+	ErrorCode    *string                              `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMessage *string                              `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	RequestId    *string                              `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Result       *GetFileLastCommitResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
+	Success      *bool                                `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s GetFileLastCommitResponseBody) String() string {
@@ -5900,19 +7057,19 @@ func (s *GetFileLastCommitResponseBody) SetSuccess(v bool) *GetFileLastCommitRes
 }
 
 type GetFileLastCommitResponseBodyResult struct {
-	AuthorDate     *string                                       `json:"AuthorDate,omitempty" xml:"AuthorDate,omitempty"`
-	AuthorEmail    *string                                       `json:"AuthorEmail,omitempty" xml:"AuthorEmail,omitempty"`
-	AuthorName     *string                                       `json:"AuthorName,omitempty" xml:"AuthorName,omitempty"`
-	CommittedDate  *string                                       `json:"CommittedDate,omitempty" xml:"CommittedDate,omitempty"`
-	CommitterEmail *string                                       `json:"CommitterEmail,omitempty" xml:"CommitterEmail,omitempty"`
-	CommitterName  *string                                       `json:"CommitterName,omitempty" xml:"CommitterName,omitempty"`
-	CreatedAt      *string                                       `json:"CreatedAt,omitempty" xml:"CreatedAt,omitempty"`
-	Id             *string                                       `json:"Id,omitempty" xml:"Id,omitempty"`
-	Message        *string                                       `json:"Message,omitempty" xml:"Message,omitempty"`
-	ParentIds      []*string                                     `json:"ParentIds,omitempty" xml:"ParentIds,omitempty" type:"Repeated"`
-	ShortId        *string                                       `json:"ShortId,omitempty" xml:"ShortId,omitempty"`
-	Signature      *GetFileLastCommitResponseBodyResultSignature `json:"Signature,omitempty" xml:"Signature,omitempty" type:"Struct"`
-	Title          *string                                       `json:"Title,omitempty" xml:"Title,omitempty"`
+	AuthorDate     *string                                       `json:"authorDate,omitempty" xml:"authorDate,omitempty"`
+	AuthorEmail    *string                                       `json:"authorEmail,omitempty" xml:"authorEmail,omitempty"`
+	AuthorName     *string                                       `json:"authorName,omitempty" xml:"authorName,omitempty"`
+	CommittedDate  *string                                       `json:"committedDate,omitempty" xml:"committedDate,omitempty"`
+	CommitterEmail *string                                       `json:"committerEmail,omitempty" xml:"committerEmail,omitempty"`
+	CommitterName  *string                                       `json:"committerName,omitempty" xml:"committerName,omitempty"`
+	CreatedAt      *string                                       `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
+	Id             *string                                       `json:"id,omitempty" xml:"id,omitempty"`
+	Message        *string                                       `json:"message,omitempty" xml:"message,omitempty"`
+	ParentIds      []*string                                     `json:"parentIds,omitempty" xml:"parentIds,omitempty" type:"Repeated"`
+	ShortId        *string                                       `json:"shortId,omitempty" xml:"shortId,omitempty"`
+	Signature      *GetFileLastCommitResponseBodyResultSignature `json:"signature,omitempty" xml:"signature,omitempty" type:"Struct"`
+	Title          *string                                       `json:"title,omitempty" xml:"title,omitempty"`
 }
 
 func (s GetFileLastCommitResponseBodyResult) String() string {
@@ -7882,10 +9039,8 @@ func (s *GetProjectInfoResponse) SetBody(v *GetProjectInfoResponseBody) *GetProj
 }
 
 type GetProjectMemberRequest struct {
-	AccessToken    *string `json:"AccessToken,omitempty" xml:"AccessToken,omitempty"`
-	OrganizationId *string `json:"OrganizationId,omitempty" xml:"OrganizationId,omitempty"`
-	RepositoryId   *int64  `json:"repositoryId,omitempty" xml:"repositoryId,omitempty"`
-	UserAliyunPk   *string `json:"userAliyunPk,omitempty" xml:"userAliyunPk,omitempty"`
+	AccessToken    *string `json:"accessToken,omitempty" xml:"accessToken,omitempty"`
+	OrganizationId *string `json:"organizationId,omitempty" xml:"organizationId,omitempty"`
 }
 
 func (s GetProjectMemberRequest) String() string {
@@ -7903,16 +9058,6 @@ func (s *GetProjectMemberRequest) SetAccessToken(v string) *GetProjectMemberRequ
 
 func (s *GetProjectMemberRequest) SetOrganizationId(v string) *GetProjectMemberRequest {
 	s.OrganizationId = &v
-	return s
-}
-
-func (s *GetProjectMemberRequest) SetRepositoryId(v int64) *GetProjectMemberRequest {
-	s.RepositoryId = &v
-	return s
-}
-
-func (s *GetProjectMemberRequest) SetUserAliyunPk(v string) *GetProjectMemberRequest {
-	s.UserAliyunPk = &v
 	return s
 }
 
@@ -8306,6 +9451,365 @@ func (s *GetRepositoryResponse) SetStatusCode(v int32) *GetRepositoryResponse {
 }
 
 func (s *GetRepositoryResponse) SetBody(v *GetRepositoryResponseBody) *GetRepositoryResponse {
+	s.Body = v
+	return s
+}
+
+type GetRepositoryCommitRequest struct {
+	AccessToken    *string `json:"accessToken,omitempty" xml:"accessToken,omitempty"`
+	OrganizationId *string `json:"organizationId,omitempty" xml:"organizationId,omitempty"`
+	ShowSignature  *bool   `json:"showSignature,omitempty" xml:"showSignature,omitempty"`
+}
+
+func (s GetRepositoryCommitRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetRepositoryCommitRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetRepositoryCommitRequest) SetAccessToken(v string) *GetRepositoryCommitRequest {
+	s.AccessToken = &v
+	return s
+}
+
+func (s *GetRepositoryCommitRequest) SetOrganizationId(v string) *GetRepositoryCommitRequest {
+	s.OrganizationId = &v
+	return s
+}
+
+func (s *GetRepositoryCommitRequest) SetShowSignature(v bool) *GetRepositoryCommitRequest {
+	s.ShowSignature = &v
+	return s
+}
+
+type GetRepositoryCommitResponseBody struct {
+	ErrorCode    *string                                `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMessage *string                                `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	RequestId    *string                                `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Result       *GetRepositoryCommitResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
+	Success      *bool                                  `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s GetRepositoryCommitResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetRepositoryCommitResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetRepositoryCommitResponseBody) SetErrorCode(v string) *GetRepositoryCommitResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetRepositoryCommitResponseBody) SetErrorMessage(v string) *GetRepositoryCommitResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetRepositoryCommitResponseBody) SetRequestId(v string) *GetRepositoryCommitResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetRepositoryCommitResponseBody) SetResult(v *GetRepositoryCommitResponseBodyResult) *GetRepositoryCommitResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *GetRepositoryCommitResponseBody) SetSuccess(v bool) *GetRepositoryCommitResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetRepositoryCommitResponseBodyResult struct {
+	Author         *GetRepositoryCommitResponseBodyResultAuthor    `json:"author,omitempty" xml:"author,omitempty" type:"Struct"`
+	AuthorEmail    *string                                         `json:"authorEmail,omitempty" xml:"authorEmail,omitempty"`
+	AuthorName     *string                                         `json:"authorName,omitempty" xml:"authorName,omitempty"`
+	AuthoredDate   *string                                         `json:"authoredDate,omitempty" xml:"authoredDate,omitempty"`
+	CommentsCount  *int64                                          `json:"commentsCount,omitempty" xml:"commentsCount,omitempty"`
+	CommittedDate  *string                                         `json:"committedDate,omitempty" xml:"committedDate,omitempty"`
+	Committer      *GetRepositoryCommitResponseBodyResultCommitter `json:"committer,omitempty" xml:"committer,omitempty" type:"Struct"`
+	CommitterEmail *string                                         `json:"committerEmail,omitempty" xml:"committerEmail,omitempty"`
+	CommitterName  *string                                         `json:"committerName,omitempty" xml:"committerName,omitempty"`
+	CreatedAt      *string                                         `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
+	Id             *string                                         `json:"id,omitempty" xml:"id,omitempty"`
+	Message        *string                                         `json:"message,omitempty" xml:"message,omitempty"`
+	ParentIds      []*string                                       `json:"parentIds,omitempty" xml:"parentIds,omitempty" type:"Repeated"`
+	ShortId        *string                                         `json:"shortId,omitempty" xml:"shortId,omitempty"`
+	Signature      *GetRepositoryCommitResponseBodyResultSignature `json:"signature,omitempty" xml:"signature,omitempty" type:"Struct"`
+	Title          *string                                         `json:"title,omitempty" xml:"title,omitempty"`
+}
+
+func (s GetRepositoryCommitResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetRepositoryCommitResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *GetRepositoryCommitResponseBodyResult) SetAuthor(v *GetRepositoryCommitResponseBodyResultAuthor) *GetRepositoryCommitResponseBodyResult {
+	s.Author = v
+	return s
+}
+
+func (s *GetRepositoryCommitResponseBodyResult) SetAuthorEmail(v string) *GetRepositoryCommitResponseBodyResult {
+	s.AuthorEmail = &v
+	return s
+}
+
+func (s *GetRepositoryCommitResponseBodyResult) SetAuthorName(v string) *GetRepositoryCommitResponseBodyResult {
+	s.AuthorName = &v
+	return s
+}
+
+func (s *GetRepositoryCommitResponseBodyResult) SetAuthoredDate(v string) *GetRepositoryCommitResponseBodyResult {
+	s.AuthoredDate = &v
+	return s
+}
+
+func (s *GetRepositoryCommitResponseBodyResult) SetCommentsCount(v int64) *GetRepositoryCommitResponseBodyResult {
+	s.CommentsCount = &v
+	return s
+}
+
+func (s *GetRepositoryCommitResponseBodyResult) SetCommittedDate(v string) *GetRepositoryCommitResponseBodyResult {
+	s.CommittedDate = &v
+	return s
+}
+
+func (s *GetRepositoryCommitResponseBodyResult) SetCommitter(v *GetRepositoryCommitResponseBodyResultCommitter) *GetRepositoryCommitResponseBodyResult {
+	s.Committer = v
+	return s
+}
+
+func (s *GetRepositoryCommitResponseBodyResult) SetCommitterEmail(v string) *GetRepositoryCommitResponseBodyResult {
+	s.CommitterEmail = &v
+	return s
+}
+
+func (s *GetRepositoryCommitResponseBodyResult) SetCommitterName(v string) *GetRepositoryCommitResponseBodyResult {
+	s.CommitterName = &v
+	return s
+}
+
+func (s *GetRepositoryCommitResponseBodyResult) SetCreatedAt(v string) *GetRepositoryCommitResponseBodyResult {
+	s.CreatedAt = &v
+	return s
+}
+
+func (s *GetRepositoryCommitResponseBodyResult) SetId(v string) *GetRepositoryCommitResponseBodyResult {
+	s.Id = &v
+	return s
+}
+
+func (s *GetRepositoryCommitResponseBodyResult) SetMessage(v string) *GetRepositoryCommitResponseBodyResult {
+	s.Message = &v
+	return s
+}
+
+func (s *GetRepositoryCommitResponseBodyResult) SetParentIds(v []*string) *GetRepositoryCommitResponseBodyResult {
+	s.ParentIds = v
+	return s
+}
+
+func (s *GetRepositoryCommitResponseBodyResult) SetShortId(v string) *GetRepositoryCommitResponseBodyResult {
+	s.ShortId = &v
+	return s
+}
+
+func (s *GetRepositoryCommitResponseBodyResult) SetSignature(v *GetRepositoryCommitResponseBodyResultSignature) *GetRepositoryCommitResponseBodyResult {
+	s.Signature = v
+	return s
+}
+
+func (s *GetRepositoryCommitResponseBodyResult) SetTitle(v string) *GetRepositoryCommitResponseBodyResult {
+	s.Title = &v
+	return s
+}
+
+type GetRepositoryCommitResponseBodyResultAuthor struct {
+	AvatarUrl  *string `json:"avatarUrl,omitempty" xml:"avatarUrl,omitempty"`
+	Email      *string `json:"email,omitempty" xml:"email,omitempty"`
+	ExternUid  *string `json:"externUid,omitempty" xml:"externUid,omitempty"`
+	Id         *int64  `json:"id,omitempty" xml:"id,omitempty"`
+	Name       *string `json:"name,omitempty" xml:"name,omitempty"`
+	State      *string `json:"state,omitempty" xml:"state,omitempty"`
+	TbUserId   *string `json:"tbUserId,omitempty" xml:"tbUserId,omitempty"`
+	Username   *string `json:"username,omitempty" xml:"username,omitempty"`
+	WebsiteUrl *string `json:"websiteUrl,omitempty" xml:"websiteUrl,omitempty"`
+}
+
+func (s GetRepositoryCommitResponseBodyResultAuthor) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetRepositoryCommitResponseBodyResultAuthor) GoString() string {
+	return s.String()
+}
+
+func (s *GetRepositoryCommitResponseBodyResultAuthor) SetAvatarUrl(v string) *GetRepositoryCommitResponseBodyResultAuthor {
+	s.AvatarUrl = &v
+	return s
+}
+
+func (s *GetRepositoryCommitResponseBodyResultAuthor) SetEmail(v string) *GetRepositoryCommitResponseBodyResultAuthor {
+	s.Email = &v
+	return s
+}
+
+func (s *GetRepositoryCommitResponseBodyResultAuthor) SetExternUid(v string) *GetRepositoryCommitResponseBodyResultAuthor {
+	s.ExternUid = &v
+	return s
+}
+
+func (s *GetRepositoryCommitResponseBodyResultAuthor) SetId(v int64) *GetRepositoryCommitResponseBodyResultAuthor {
+	s.Id = &v
+	return s
+}
+
+func (s *GetRepositoryCommitResponseBodyResultAuthor) SetName(v string) *GetRepositoryCommitResponseBodyResultAuthor {
+	s.Name = &v
+	return s
+}
+
+func (s *GetRepositoryCommitResponseBodyResultAuthor) SetState(v string) *GetRepositoryCommitResponseBodyResultAuthor {
+	s.State = &v
+	return s
+}
+
+func (s *GetRepositoryCommitResponseBodyResultAuthor) SetTbUserId(v string) *GetRepositoryCommitResponseBodyResultAuthor {
+	s.TbUserId = &v
+	return s
+}
+
+func (s *GetRepositoryCommitResponseBodyResultAuthor) SetUsername(v string) *GetRepositoryCommitResponseBodyResultAuthor {
+	s.Username = &v
+	return s
+}
+
+func (s *GetRepositoryCommitResponseBodyResultAuthor) SetWebsiteUrl(v string) *GetRepositoryCommitResponseBodyResultAuthor {
+	s.WebsiteUrl = &v
+	return s
+}
+
+type GetRepositoryCommitResponseBodyResultCommitter struct {
+	AvatarUrl  *string `json:"avatarUrl,omitempty" xml:"avatarUrl,omitempty"`
+	Email      *string `json:"email,omitempty" xml:"email,omitempty"`
+	ExternUid  *string `json:"externUid,omitempty" xml:"externUid,omitempty"`
+	Id         *int64  `json:"id,omitempty" xml:"id,omitempty"`
+	Name       *string `json:"name,omitempty" xml:"name,omitempty"`
+	State      *string `json:"state,omitempty" xml:"state,omitempty"`
+	TbUserId   *string `json:"tbUserId,omitempty" xml:"tbUserId,omitempty"`
+	Username   *string `json:"username,omitempty" xml:"username,omitempty"`
+	WebsiteUrl *string `json:"websiteUrl,omitempty" xml:"websiteUrl,omitempty"`
+}
+
+func (s GetRepositoryCommitResponseBodyResultCommitter) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetRepositoryCommitResponseBodyResultCommitter) GoString() string {
+	return s.String()
+}
+
+func (s *GetRepositoryCommitResponseBodyResultCommitter) SetAvatarUrl(v string) *GetRepositoryCommitResponseBodyResultCommitter {
+	s.AvatarUrl = &v
+	return s
+}
+
+func (s *GetRepositoryCommitResponseBodyResultCommitter) SetEmail(v string) *GetRepositoryCommitResponseBodyResultCommitter {
+	s.Email = &v
+	return s
+}
+
+func (s *GetRepositoryCommitResponseBodyResultCommitter) SetExternUid(v string) *GetRepositoryCommitResponseBodyResultCommitter {
+	s.ExternUid = &v
+	return s
+}
+
+func (s *GetRepositoryCommitResponseBodyResultCommitter) SetId(v int64) *GetRepositoryCommitResponseBodyResultCommitter {
+	s.Id = &v
+	return s
+}
+
+func (s *GetRepositoryCommitResponseBodyResultCommitter) SetName(v string) *GetRepositoryCommitResponseBodyResultCommitter {
+	s.Name = &v
+	return s
+}
+
+func (s *GetRepositoryCommitResponseBodyResultCommitter) SetState(v string) *GetRepositoryCommitResponseBodyResultCommitter {
+	s.State = &v
+	return s
+}
+
+func (s *GetRepositoryCommitResponseBodyResultCommitter) SetTbUserId(v string) *GetRepositoryCommitResponseBodyResultCommitter {
+	s.TbUserId = &v
+	return s
+}
+
+func (s *GetRepositoryCommitResponseBodyResultCommitter) SetUsername(v string) *GetRepositoryCommitResponseBodyResultCommitter {
+	s.Username = &v
+	return s
+}
+
+func (s *GetRepositoryCommitResponseBodyResultCommitter) SetWebsiteUrl(v string) *GetRepositoryCommitResponseBodyResultCommitter {
+	s.WebsiteUrl = &v
+	return s
+}
+
+type GetRepositoryCommitResponseBodyResultSignature struct {
+	GpgKeyId           *string `json:"gpgKeyId,omitempty" xml:"gpgKeyId,omitempty"`
+	VerificationStatus *string `json:"verificationStatus,omitempty" xml:"verificationStatus,omitempty"`
+}
+
+func (s GetRepositoryCommitResponseBodyResultSignature) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetRepositoryCommitResponseBodyResultSignature) GoString() string {
+	return s.String()
+}
+
+func (s *GetRepositoryCommitResponseBodyResultSignature) SetGpgKeyId(v string) *GetRepositoryCommitResponseBodyResultSignature {
+	s.GpgKeyId = &v
+	return s
+}
+
+func (s *GetRepositoryCommitResponseBodyResultSignature) SetVerificationStatus(v string) *GetRepositoryCommitResponseBodyResultSignature {
+	s.VerificationStatus = &v
+	return s
+}
+
+type GetRepositoryCommitResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetRepositoryCommitResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetRepositoryCommitResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetRepositoryCommitResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetRepositoryCommitResponse) SetHeaders(v map[string]*string) *GetRepositoryCommitResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetRepositoryCommitResponse) SetStatusCode(v int32) *GetRepositoryCommitResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetRepositoryCommitResponse) SetBody(v *GetRepositoryCommitResponseBody) *GetRepositoryCommitResponse {
 	s.Body = v
 	return s
 }
@@ -13715,7 +15219,7 @@ type ListRepositoryBranchesResponseBody struct {
 	RequestId    *string                                     `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	Result       []*ListRepositoryBranchesResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Repeated"`
 	Success      *bool                                       `json:"success,omitempty" xml:"success,omitempty"`
-	Total        *string                                     `json:"total,omitempty" xml:"total,omitempty"`
+	Total        *int64                                      `json:"total,omitempty" xml:"total,omitempty"`
 }
 
 func (s ListRepositoryBranchesResponseBody) String() string {
@@ -13751,7 +15255,7 @@ func (s *ListRepositoryBranchesResponseBody) SetSuccess(v bool) *ListRepositoryB
 	return s
 }
 
-func (s *ListRepositoryBranchesResponseBody) SetTotal(v string) *ListRepositoryBranchesResponseBody {
+func (s *ListRepositoryBranchesResponseBody) SetTotal(v int64) *ListRepositoryBranchesResponseBody {
 	s.Total = &v
 	return s
 }
@@ -14081,6 +15585,419 @@ func (s *ListRepositoryCommitDiffResponse) SetStatusCode(v int32) *ListRepositor
 }
 
 func (s *ListRepositoryCommitDiffResponse) SetBody(v *ListRepositoryCommitDiffResponseBody) *ListRepositoryCommitDiffResponse {
+	s.Body = v
+	return s
+}
+
+type ListRepositoryCommitsRequest struct {
+	AccessToken       *string `json:"accessToken,omitempty" xml:"accessToken,omitempty"`
+	End               *string `json:"end,omitempty" xml:"end,omitempty"`
+	OrganizationId    *string `json:"organizationId,omitempty" xml:"organizationId,omitempty"`
+	Page              *int64  `json:"page,omitempty" xml:"page,omitempty"`
+	PageSize          *int64  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	Path              *string `json:"path,omitempty" xml:"path,omitempty"`
+	RefName           *string `json:"refName,omitempty" xml:"refName,omitempty"`
+	Search            *string `json:"search,omitempty" xml:"search,omitempty"`
+	ShowCommentsCount *bool   `json:"showCommentsCount,omitempty" xml:"showCommentsCount,omitempty"`
+	ShowSignature     *bool   `json:"showSignature,omitempty" xml:"showSignature,omitempty"`
+	Start             *string `json:"start,omitempty" xml:"start,omitempty"`
+}
+
+func (s ListRepositoryCommitsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRepositoryCommitsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListRepositoryCommitsRequest) SetAccessToken(v string) *ListRepositoryCommitsRequest {
+	s.AccessToken = &v
+	return s
+}
+
+func (s *ListRepositoryCommitsRequest) SetEnd(v string) *ListRepositoryCommitsRequest {
+	s.End = &v
+	return s
+}
+
+func (s *ListRepositoryCommitsRequest) SetOrganizationId(v string) *ListRepositoryCommitsRequest {
+	s.OrganizationId = &v
+	return s
+}
+
+func (s *ListRepositoryCommitsRequest) SetPage(v int64) *ListRepositoryCommitsRequest {
+	s.Page = &v
+	return s
+}
+
+func (s *ListRepositoryCommitsRequest) SetPageSize(v int64) *ListRepositoryCommitsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListRepositoryCommitsRequest) SetPath(v string) *ListRepositoryCommitsRequest {
+	s.Path = &v
+	return s
+}
+
+func (s *ListRepositoryCommitsRequest) SetRefName(v string) *ListRepositoryCommitsRequest {
+	s.RefName = &v
+	return s
+}
+
+func (s *ListRepositoryCommitsRequest) SetSearch(v string) *ListRepositoryCommitsRequest {
+	s.Search = &v
+	return s
+}
+
+func (s *ListRepositoryCommitsRequest) SetShowCommentsCount(v bool) *ListRepositoryCommitsRequest {
+	s.ShowCommentsCount = &v
+	return s
+}
+
+func (s *ListRepositoryCommitsRequest) SetShowSignature(v bool) *ListRepositoryCommitsRequest {
+	s.ShowSignature = &v
+	return s
+}
+
+func (s *ListRepositoryCommitsRequest) SetStart(v string) *ListRepositoryCommitsRequest {
+	s.Start = &v
+	return s
+}
+
+type ListRepositoryCommitsResponseBody struct {
+	ErrorCode    *string                                    `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMessage *string                                    `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	RequestId    *string                                    `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Result       []*ListRepositoryCommitsResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Repeated"`
+	Success      *bool                                      `json:"success,omitempty" xml:"success,omitempty"`
+	Total        *int64                                     `json:"total,omitempty" xml:"total,omitempty"`
+}
+
+func (s ListRepositoryCommitsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRepositoryCommitsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListRepositoryCommitsResponseBody) SetErrorCode(v string) *ListRepositoryCommitsResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ListRepositoryCommitsResponseBody) SetErrorMessage(v string) *ListRepositoryCommitsResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *ListRepositoryCommitsResponseBody) SetRequestId(v string) *ListRepositoryCommitsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListRepositoryCommitsResponseBody) SetResult(v []*ListRepositoryCommitsResponseBodyResult) *ListRepositoryCommitsResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *ListRepositoryCommitsResponseBody) SetSuccess(v bool) *ListRepositoryCommitsResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *ListRepositoryCommitsResponseBody) SetTotal(v int64) *ListRepositoryCommitsResponseBody {
+	s.Total = &v
+	return s
+}
+
+type ListRepositoryCommitsResponseBodyResult struct {
+	Author         *ListRepositoryCommitsResponseBodyResultAuthor    `json:"author,omitempty" xml:"author,omitempty" type:"Struct"`
+	AuthorEmail    *string                                           `json:"authorEmail,omitempty" xml:"authorEmail,omitempty"`
+	AuthorName     *string                                           `json:"authorName,omitempty" xml:"authorName,omitempty"`
+	AuthoredDate   *string                                           `json:"authoredDate,omitempty" xml:"authoredDate,omitempty"`
+	CommentsCount  *int64                                            `json:"commentsCount,omitempty" xml:"commentsCount,omitempty"`
+	CommittedDate  *string                                           `json:"committedDate,omitempty" xml:"committedDate,omitempty"`
+	Committer      *ListRepositoryCommitsResponseBodyResultCommitter `json:"committer,omitempty" xml:"committer,omitempty" type:"Struct"`
+	CommitterEmail *string                                           `json:"committerEmail,omitempty" xml:"committerEmail,omitempty"`
+	CommitterName  *string                                           `json:"committerName,omitempty" xml:"committerName,omitempty"`
+	CreatedAt      *string                                           `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
+	Id             *string                                           `json:"id,omitempty" xml:"id,omitempty"`
+	Message        *string                                           `json:"message,omitempty" xml:"message,omitempty"`
+	ParentIds      []*string                                         `json:"parentIds,omitempty" xml:"parentIds,omitempty" type:"Repeated"`
+	ShortId        *string                                           `json:"shortId,omitempty" xml:"shortId,omitempty"`
+	Signature      *ListRepositoryCommitsResponseBodyResultSignature `json:"signature,omitempty" xml:"signature,omitempty" type:"Struct"`
+	Title          *string                                           `json:"title,omitempty" xml:"title,omitempty"`
+}
+
+func (s ListRepositoryCommitsResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRepositoryCommitsResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *ListRepositoryCommitsResponseBodyResult) SetAuthor(v *ListRepositoryCommitsResponseBodyResultAuthor) *ListRepositoryCommitsResponseBodyResult {
+	s.Author = v
+	return s
+}
+
+func (s *ListRepositoryCommitsResponseBodyResult) SetAuthorEmail(v string) *ListRepositoryCommitsResponseBodyResult {
+	s.AuthorEmail = &v
+	return s
+}
+
+func (s *ListRepositoryCommitsResponseBodyResult) SetAuthorName(v string) *ListRepositoryCommitsResponseBodyResult {
+	s.AuthorName = &v
+	return s
+}
+
+func (s *ListRepositoryCommitsResponseBodyResult) SetAuthoredDate(v string) *ListRepositoryCommitsResponseBodyResult {
+	s.AuthoredDate = &v
+	return s
+}
+
+func (s *ListRepositoryCommitsResponseBodyResult) SetCommentsCount(v int64) *ListRepositoryCommitsResponseBodyResult {
+	s.CommentsCount = &v
+	return s
+}
+
+func (s *ListRepositoryCommitsResponseBodyResult) SetCommittedDate(v string) *ListRepositoryCommitsResponseBodyResult {
+	s.CommittedDate = &v
+	return s
+}
+
+func (s *ListRepositoryCommitsResponseBodyResult) SetCommitter(v *ListRepositoryCommitsResponseBodyResultCommitter) *ListRepositoryCommitsResponseBodyResult {
+	s.Committer = v
+	return s
+}
+
+func (s *ListRepositoryCommitsResponseBodyResult) SetCommitterEmail(v string) *ListRepositoryCommitsResponseBodyResult {
+	s.CommitterEmail = &v
+	return s
+}
+
+func (s *ListRepositoryCommitsResponseBodyResult) SetCommitterName(v string) *ListRepositoryCommitsResponseBodyResult {
+	s.CommitterName = &v
+	return s
+}
+
+func (s *ListRepositoryCommitsResponseBodyResult) SetCreatedAt(v string) *ListRepositoryCommitsResponseBodyResult {
+	s.CreatedAt = &v
+	return s
+}
+
+func (s *ListRepositoryCommitsResponseBodyResult) SetId(v string) *ListRepositoryCommitsResponseBodyResult {
+	s.Id = &v
+	return s
+}
+
+func (s *ListRepositoryCommitsResponseBodyResult) SetMessage(v string) *ListRepositoryCommitsResponseBodyResult {
+	s.Message = &v
+	return s
+}
+
+func (s *ListRepositoryCommitsResponseBodyResult) SetParentIds(v []*string) *ListRepositoryCommitsResponseBodyResult {
+	s.ParentIds = v
+	return s
+}
+
+func (s *ListRepositoryCommitsResponseBodyResult) SetShortId(v string) *ListRepositoryCommitsResponseBodyResult {
+	s.ShortId = &v
+	return s
+}
+
+func (s *ListRepositoryCommitsResponseBodyResult) SetSignature(v *ListRepositoryCommitsResponseBodyResultSignature) *ListRepositoryCommitsResponseBodyResult {
+	s.Signature = v
+	return s
+}
+
+func (s *ListRepositoryCommitsResponseBodyResult) SetTitle(v string) *ListRepositoryCommitsResponseBodyResult {
+	s.Title = &v
+	return s
+}
+
+type ListRepositoryCommitsResponseBodyResultAuthor struct {
+	AvatarUrl  *string `json:"avatarUrl,omitempty" xml:"avatarUrl,omitempty"`
+	Email      *string `json:"email,omitempty" xml:"email,omitempty"`
+	ExternUid  *string `json:"externUid,omitempty" xml:"externUid,omitempty"`
+	Id         *int64  `json:"id,omitempty" xml:"id,omitempty"`
+	Name       *string `json:"name,omitempty" xml:"name,omitempty"`
+	State      *string `json:"state,omitempty" xml:"state,omitempty"`
+	TbUserId   *string `json:"tbUserId,omitempty" xml:"tbUserId,omitempty"`
+	Username   *string `json:"username,omitempty" xml:"username,omitempty"`
+	WebsiteUrl *string `json:"websiteUrl,omitempty" xml:"websiteUrl,omitempty"`
+}
+
+func (s ListRepositoryCommitsResponseBodyResultAuthor) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRepositoryCommitsResponseBodyResultAuthor) GoString() string {
+	return s.String()
+}
+
+func (s *ListRepositoryCommitsResponseBodyResultAuthor) SetAvatarUrl(v string) *ListRepositoryCommitsResponseBodyResultAuthor {
+	s.AvatarUrl = &v
+	return s
+}
+
+func (s *ListRepositoryCommitsResponseBodyResultAuthor) SetEmail(v string) *ListRepositoryCommitsResponseBodyResultAuthor {
+	s.Email = &v
+	return s
+}
+
+func (s *ListRepositoryCommitsResponseBodyResultAuthor) SetExternUid(v string) *ListRepositoryCommitsResponseBodyResultAuthor {
+	s.ExternUid = &v
+	return s
+}
+
+func (s *ListRepositoryCommitsResponseBodyResultAuthor) SetId(v int64) *ListRepositoryCommitsResponseBodyResultAuthor {
+	s.Id = &v
+	return s
+}
+
+func (s *ListRepositoryCommitsResponseBodyResultAuthor) SetName(v string) *ListRepositoryCommitsResponseBodyResultAuthor {
+	s.Name = &v
+	return s
+}
+
+func (s *ListRepositoryCommitsResponseBodyResultAuthor) SetState(v string) *ListRepositoryCommitsResponseBodyResultAuthor {
+	s.State = &v
+	return s
+}
+
+func (s *ListRepositoryCommitsResponseBodyResultAuthor) SetTbUserId(v string) *ListRepositoryCommitsResponseBodyResultAuthor {
+	s.TbUserId = &v
+	return s
+}
+
+func (s *ListRepositoryCommitsResponseBodyResultAuthor) SetUsername(v string) *ListRepositoryCommitsResponseBodyResultAuthor {
+	s.Username = &v
+	return s
+}
+
+func (s *ListRepositoryCommitsResponseBodyResultAuthor) SetWebsiteUrl(v string) *ListRepositoryCommitsResponseBodyResultAuthor {
+	s.WebsiteUrl = &v
+	return s
+}
+
+type ListRepositoryCommitsResponseBodyResultCommitter struct {
+	AvatarUrl  *string `json:"avatarUrl,omitempty" xml:"avatarUrl,omitempty"`
+	Email      *string `json:"email,omitempty" xml:"email,omitempty"`
+	ExternUid  *string `json:"externUid,omitempty" xml:"externUid,omitempty"`
+	Id         *int64  `json:"id,omitempty" xml:"id,omitempty"`
+	Name       *string `json:"name,omitempty" xml:"name,omitempty"`
+	State      *string `json:"state,omitempty" xml:"state,omitempty"`
+	TbUserId   *string `json:"tbUserId,omitempty" xml:"tbUserId,omitempty"`
+	Username   *string `json:"username,omitempty" xml:"username,omitempty"`
+	WebsiteUrl *string `json:"websiteUrl,omitempty" xml:"websiteUrl,omitempty"`
+}
+
+func (s ListRepositoryCommitsResponseBodyResultCommitter) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRepositoryCommitsResponseBodyResultCommitter) GoString() string {
+	return s.String()
+}
+
+func (s *ListRepositoryCommitsResponseBodyResultCommitter) SetAvatarUrl(v string) *ListRepositoryCommitsResponseBodyResultCommitter {
+	s.AvatarUrl = &v
+	return s
+}
+
+func (s *ListRepositoryCommitsResponseBodyResultCommitter) SetEmail(v string) *ListRepositoryCommitsResponseBodyResultCommitter {
+	s.Email = &v
+	return s
+}
+
+func (s *ListRepositoryCommitsResponseBodyResultCommitter) SetExternUid(v string) *ListRepositoryCommitsResponseBodyResultCommitter {
+	s.ExternUid = &v
+	return s
+}
+
+func (s *ListRepositoryCommitsResponseBodyResultCommitter) SetId(v int64) *ListRepositoryCommitsResponseBodyResultCommitter {
+	s.Id = &v
+	return s
+}
+
+func (s *ListRepositoryCommitsResponseBodyResultCommitter) SetName(v string) *ListRepositoryCommitsResponseBodyResultCommitter {
+	s.Name = &v
+	return s
+}
+
+func (s *ListRepositoryCommitsResponseBodyResultCommitter) SetState(v string) *ListRepositoryCommitsResponseBodyResultCommitter {
+	s.State = &v
+	return s
+}
+
+func (s *ListRepositoryCommitsResponseBodyResultCommitter) SetTbUserId(v string) *ListRepositoryCommitsResponseBodyResultCommitter {
+	s.TbUserId = &v
+	return s
+}
+
+func (s *ListRepositoryCommitsResponseBodyResultCommitter) SetUsername(v string) *ListRepositoryCommitsResponseBodyResultCommitter {
+	s.Username = &v
+	return s
+}
+
+func (s *ListRepositoryCommitsResponseBodyResultCommitter) SetWebsiteUrl(v string) *ListRepositoryCommitsResponseBodyResultCommitter {
+	s.WebsiteUrl = &v
+	return s
+}
+
+type ListRepositoryCommitsResponseBodyResultSignature struct {
+	GpgKeyId           *string `json:"gpgKeyId,omitempty" xml:"gpgKeyId,omitempty"`
+	VerificationStatus *string `json:"verificationStatus,omitempty" xml:"verificationStatus,omitempty"`
+}
+
+func (s ListRepositoryCommitsResponseBodyResultSignature) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRepositoryCommitsResponseBodyResultSignature) GoString() string {
+	return s.String()
+}
+
+func (s *ListRepositoryCommitsResponseBodyResultSignature) SetGpgKeyId(v string) *ListRepositoryCommitsResponseBodyResultSignature {
+	s.GpgKeyId = &v
+	return s
+}
+
+func (s *ListRepositoryCommitsResponseBodyResultSignature) SetVerificationStatus(v string) *ListRepositoryCommitsResponseBodyResultSignature {
+	s.VerificationStatus = &v
+	return s
+}
+
+type ListRepositoryCommitsResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListRepositoryCommitsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListRepositoryCommitsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRepositoryCommitsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListRepositoryCommitsResponse) SetHeaders(v map[string]*string) *ListRepositoryCommitsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListRepositoryCommitsResponse) SetStatusCode(v int32) *ListRepositoryCommitsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListRepositoryCommitsResponse) SetBody(v *ListRepositoryCommitsResponseBody) *ListRepositoryCommitsResponse {
 	s.Body = v
 	return s
 }
@@ -18099,6 +20016,321 @@ func (s *UpdateHostGroupResponse) SetBody(v *UpdateHostGroupResponseBody) *Updat
 	return s
 }
 
+type UpdatePipelineRequest struct {
+	BasicInfo    *UpdatePipelineRequestBasicInfo   `json:"basicInfo,omitempty" xml:"basicInfo,omitempty" type:"Struct"`
+	PipelineYaml *string                           `json:"pipelineYaml,omitempty" xml:"pipelineYaml,omitempty"`
+	Settings     *UpdatePipelineRequestSettings    `json:"settings,omitempty" xml:"settings,omitempty" type:"Struct"`
+	TriggerInfo  *UpdatePipelineRequestTriggerInfo `json:"triggerInfo,omitempty" xml:"triggerInfo,omitempty" type:"Struct"`
+}
+
+func (s UpdatePipelineRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdatePipelineRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdatePipelineRequest) SetBasicInfo(v *UpdatePipelineRequestBasicInfo) *UpdatePipelineRequest {
+	s.BasicInfo = v
+	return s
+}
+
+func (s *UpdatePipelineRequest) SetPipelineYaml(v string) *UpdatePipelineRequest {
+	s.PipelineYaml = &v
+	return s
+}
+
+func (s *UpdatePipelineRequest) SetSettings(v *UpdatePipelineRequestSettings) *UpdatePipelineRequest {
+	s.Settings = v
+	return s
+}
+
+func (s *UpdatePipelineRequest) SetTriggerInfo(v *UpdatePipelineRequestTriggerInfo) *UpdatePipelineRequest {
+	s.TriggerInfo = v
+	return s
+}
+
+type UpdatePipelineRequestBasicInfo struct {
+	EnvId      *int64  `json:"envId,omitempty" xml:"envId,omitempty"`
+	GroupId    *int64  `json:"groupId,omitempty" xml:"groupId,omitempty"`
+	Name       *string `json:"name,omitempty" xml:"name,omitempty"`
+	PipelineId *int64  `json:"pipelineId,omitempty" xml:"pipelineId,omitempty"`
+	TagIds     *string `json:"tagIds,omitempty" xml:"tagIds,omitempty"`
+}
+
+func (s UpdatePipelineRequestBasicInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdatePipelineRequestBasicInfo) GoString() string {
+	return s.String()
+}
+
+func (s *UpdatePipelineRequestBasicInfo) SetEnvId(v int64) *UpdatePipelineRequestBasicInfo {
+	s.EnvId = &v
+	return s
+}
+
+func (s *UpdatePipelineRequestBasicInfo) SetGroupId(v int64) *UpdatePipelineRequestBasicInfo {
+	s.GroupId = &v
+	return s
+}
+
+func (s *UpdatePipelineRequestBasicInfo) SetName(v string) *UpdatePipelineRequestBasicInfo {
+	s.Name = &v
+	return s
+}
+
+func (s *UpdatePipelineRequestBasicInfo) SetPipelineId(v int64) *UpdatePipelineRequestBasicInfo {
+	s.PipelineId = &v
+	return s
+}
+
+func (s *UpdatePipelineRequestBasicInfo) SetTagIds(v string) *UpdatePipelineRequestBasicInfo {
+	s.TagIds = &v
+	return s
+}
+
+type UpdatePipelineRequestSettings struct {
+	Caches          []*UpdatePipelineRequestSettingsCaches       `json:"caches,omitempty" xml:"caches,omitempty" type:"Repeated"`
+	GlobalParams    []*UpdatePipelineRequestSettingsGlobalParams `json:"globalParams,omitempty" xml:"globalParams,omitempty" type:"Repeated"`
+	RunnerCacheMode *string                                      `json:"runnerCacheMode,omitempty" xml:"runnerCacheMode,omitempty"`
+}
+
+func (s UpdatePipelineRequestSettings) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdatePipelineRequestSettings) GoString() string {
+	return s.String()
+}
+
+func (s *UpdatePipelineRequestSettings) SetCaches(v []*UpdatePipelineRequestSettingsCaches) *UpdatePipelineRequestSettings {
+	s.Caches = v
+	return s
+}
+
+func (s *UpdatePipelineRequestSettings) SetGlobalParams(v []*UpdatePipelineRequestSettingsGlobalParams) *UpdatePipelineRequestSettings {
+	s.GlobalParams = v
+	return s
+}
+
+func (s *UpdatePipelineRequestSettings) SetRunnerCacheMode(v string) *UpdatePipelineRequestSettings {
+	s.RunnerCacheMode = &v
+	return s
+}
+
+type UpdatePipelineRequestSettingsCaches struct {
+	Desc      *string `json:"desc,omitempty" xml:"desc,omitempty"`
+	Directory *string `json:"directory,omitempty" xml:"directory,omitempty"`
+	Disable   *bool   `json:"disable,omitempty" xml:"disable,omitempty"`
+}
+
+func (s UpdatePipelineRequestSettingsCaches) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdatePipelineRequestSettingsCaches) GoString() string {
+	return s.String()
+}
+
+func (s *UpdatePipelineRequestSettingsCaches) SetDesc(v string) *UpdatePipelineRequestSettingsCaches {
+	s.Desc = &v
+	return s
+}
+
+func (s *UpdatePipelineRequestSettingsCaches) SetDirectory(v string) *UpdatePipelineRequestSettingsCaches {
+	s.Directory = &v
+	return s
+}
+
+func (s *UpdatePipelineRequestSettingsCaches) SetDisable(v bool) *UpdatePipelineRequestSettingsCaches {
+	s.Disable = &v
+	return s
+}
+
+type UpdatePipelineRequestSettingsGlobalParams struct {
+	Key           *string `json:"key,omitempty" xml:"key,omitempty"`
+	Mask          *bool   `json:"mask,omitempty" xml:"mask,omitempty"`
+	RunningConfig *bool   `json:"runningConfig,omitempty" xml:"runningConfig,omitempty"`
+	Value         *string `json:"value,omitempty" xml:"value,omitempty"`
+}
+
+func (s UpdatePipelineRequestSettingsGlobalParams) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdatePipelineRequestSettingsGlobalParams) GoString() string {
+	return s.String()
+}
+
+func (s *UpdatePipelineRequestSettingsGlobalParams) SetKey(v string) *UpdatePipelineRequestSettingsGlobalParams {
+	s.Key = &v
+	return s
+}
+
+func (s *UpdatePipelineRequestSettingsGlobalParams) SetMask(v bool) *UpdatePipelineRequestSettingsGlobalParams {
+	s.Mask = &v
+	return s
+}
+
+func (s *UpdatePipelineRequestSettingsGlobalParams) SetRunningConfig(v bool) *UpdatePipelineRequestSettingsGlobalParams {
+	s.RunningConfig = &v
+	return s
+}
+
+func (s *UpdatePipelineRequestSettingsGlobalParams) SetValue(v string) *UpdatePipelineRequestSettingsGlobalParams {
+	s.Value = &v
+	return s
+}
+
+type UpdatePipelineRequestTriggerInfo struct {
+	Scheduled     *UpdatePipelineRequestTriggerInfoScheduled `json:"scheduled,omitempty" xml:"scheduled,omitempty" type:"Struct"`
+	WebhookEnable *bool                                      `json:"webhookEnable,omitempty" xml:"webhookEnable,omitempty"`
+}
+
+func (s UpdatePipelineRequestTriggerInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdatePipelineRequestTriggerInfo) GoString() string {
+	return s.String()
+}
+
+func (s *UpdatePipelineRequestTriggerInfo) SetScheduled(v *UpdatePipelineRequestTriggerInfoScheduled) *UpdatePipelineRequestTriggerInfo {
+	s.Scheduled = v
+	return s
+}
+
+func (s *UpdatePipelineRequestTriggerInfo) SetWebhookEnable(v bool) *UpdatePipelineRequestTriggerInfo {
+	s.WebhookEnable = &v
+	return s
+}
+
+type UpdatePipelineRequestTriggerInfoScheduled struct {
+	DaysOfWeek       *string `json:"daysOfWeek,omitempty" xml:"daysOfWeek,omitempty"`
+	FixedTime        *string `json:"fixedTime,omitempty" xml:"fixedTime,omitempty"`
+	From             *string `json:"from,omitempty" xml:"from,omitempty"`
+	Interval         *int32  `json:"interval,omitempty" xml:"interval,omitempty"`
+	OnlySourceChange *bool   `json:"onlySourceChange,omitempty" xml:"onlySourceChange,omitempty"`
+	To               *string `json:"to,omitempty" xml:"to,omitempty"`
+	Type             *string `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s UpdatePipelineRequestTriggerInfoScheduled) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdatePipelineRequestTriggerInfoScheduled) GoString() string {
+	return s.String()
+}
+
+func (s *UpdatePipelineRequestTriggerInfoScheduled) SetDaysOfWeek(v string) *UpdatePipelineRequestTriggerInfoScheduled {
+	s.DaysOfWeek = &v
+	return s
+}
+
+func (s *UpdatePipelineRequestTriggerInfoScheduled) SetFixedTime(v string) *UpdatePipelineRequestTriggerInfoScheduled {
+	s.FixedTime = &v
+	return s
+}
+
+func (s *UpdatePipelineRequestTriggerInfoScheduled) SetFrom(v string) *UpdatePipelineRequestTriggerInfoScheduled {
+	s.From = &v
+	return s
+}
+
+func (s *UpdatePipelineRequestTriggerInfoScheduled) SetInterval(v int32) *UpdatePipelineRequestTriggerInfoScheduled {
+	s.Interval = &v
+	return s
+}
+
+func (s *UpdatePipelineRequestTriggerInfoScheduled) SetOnlySourceChange(v bool) *UpdatePipelineRequestTriggerInfoScheduled {
+	s.OnlySourceChange = &v
+	return s
+}
+
+func (s *UpdatePipelineRequestTriggerInfoScheduled) SetTo(v string) *UpdatePipelineRequestTriggerInfoScheduled {
+	s.To = &v
+	return s
+}
+
+func (s *UpdatePipelineRequestTriggerInfoScheduled) SetType(v string) *UpdatePipelineRequestTriggerInfoScheduled {
+	s.Type = &v
+	return s
+}
+
+type UpdatePipelineResponseBody struct {
+	ErrorCode    *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	Object       *int64  `json:"object,omitempty" xml:"object,omitempty"`
+	RequestId    *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success      *bool   `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s UpdatePipelineResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdatePipelineResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdatePipelineResponseBody) SetErrorCode(v string) *UpdatePipelineResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *UpdatePipelineResponseBody) SetErrorMessage(v string) *UpdatePipelineResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *UpdatePipelineResponseBody) SetObject(v int64) *UpdatePipelineResponseBody {
+	s.Object = &v
+	return s
+}
+
+func (s *UpdatePipelineResponseBody) SetRequestId(v string) *UpdatePipelineResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdatePipelineResponseBody) SetSuccess(v bool) *UpdatePipelineResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdatePipelineResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdatePipelineResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdatePipelineResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdatePipelineResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdatePipelineResponse) SetHeaders(v map[string]*string) *UpdatePipelineResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdatePipelineResponse) SetStatusCode(v int32) *UpdatePipelineResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdatePipelineResponse) SetBody(v *UpdatePipelineResponseBody) *UpdatePipelineResponse {
+	s.Body = v
+	return s
+}
+
 type UpdatePipelineBaseInfoRequest struct {
 	EnvId        *int64  `json:"envId,omitempty" xml:"envId,omitempty"`
 	PipelineName *string `json:"pipelineName,omitempty" xml:"pipelineName,omitempty"`
@@ -18446,9 +20678,9 @@ func (s *UpdateProjectMemberResponse) SetBody(v *UpdateProjectMemberResponseBody
 type UpdateProtectedBranchesRequest struct {
 	AccessToken         *string                                            `json:"accessToken,omitempty" xml:"accessToken,omitempty"`
 	AllowMergeRoles     []*int32                                           `json:"allowMergeRoles,omitempty" xml:"allowMergeRoles,omitempty" type:"Repeated"`
-	AllowMergeUserIds   []*int64                                           `json:"allowMergeUserIds,omitempty" xml:"allowMergeUserIds,omitempty" type:"Repeated"`
+	AllowMergeUserIds   []*string                                          `json:"allowMergeUserIds,omitempty" xml:"allowMergeUserIds,omitempty" type:"Repeated"`
 	AllowPushRoles      []*int32                                           `json:"allowPushRoles,omitempty" xml:"allowPushRoles,omitempty" type:"Repeated"`
-	AllowPushUserIds    []*int64                                           `json:"allowPushUserIds,omitempty" xml:"allowPushUserIds,omitempty" type:"Repeated"`
+	AllowPushUserIds    []*string                                          `json:"allowPushUserIds,omitempty" xml:"allowPushUserIds,omitempty" type:"Repeated"`
 	Branch              *string                                            `json:"branch,omitempty" xml:"branch,omitempty"`
 	Id                  *int64                                             `json:"id,omitempty" xml:"id,omitempty"`
 	MergeRequestSetting *UpdateProtectedBranchesRequestMergeRequestSetting `json:"mergeRequestSetting,omitempty" xml:"mergeRequestSetting,omitempty" type:"Struct"`
@@ -18474,7 +20706,7 @@ func (s *UpdateProtectedBranchesRequest) SetAllowMergeRoles(v []*int32) *UpdateP
 	return s
 }
 
-func (s *UpdateProtectedBranchesRequest) SetAllowMergeUserIds(v []*int64) *UpdateProtectedBranchesRequest {
+func (s *UpdateProtectedBranchesRequest) SetAllowMergeUserIds(v []*string) *UpdateProtectedBranchesRequest {
 	s.AllowMergeUserIds = v
 	return s
 }
@@ -18484,7 +20716,7 @@ func (s *UpdateProtectedBranchesRequest) SetAllowPushRoles(v []*int32) *UpdatePr
 	return s
 }
 
-func (s *UpdateProtectedBranchesRequest) SetAllowPushUserIds(v []*int64) *UpdateProtectedBranchesRequest {
+func (s *UpdateProtectedBranchesRequest) SetAllowPushUserIds(v []*string) *UpdateProtectedBranchesRequest {
 	s.AllowPushUserIds = v
 	return s
 }
@@ -18515,15 +20747,15 @@ func (s *UpdateProtectedBranchesRequest) SetOrganizationId(v string) *UpdateProt
 }
 
 type UpdateProtectedBranchesRequestMergeRequestSetting struct {
-	AllowMergeRequestRoles       []*int32 `json:"allowMergeRequestRoles,omitempty" xml:"allowMergeRequestRoles,omitempty" type:"Repeated"`
-	DefaultAssignees             []*int32 `json:"defaultAssignees,omitempty" xml:"defaultAssignees,omitempty" type:"Repeated"`
-	IsAllowSelfApproval          *bool    `json:"isAllowSelfApproval,omitempty" xml:"isAllowSelfApproval,omitempty"`
-	IsRequireDiscussionProcessed *bool    `json:"isRequireDiscussionProcessed,omitempty" xml:"isRequireDiscussionProcessed,omitempty"`
-	IsRequired                   *bool    `json:"isRequired,omitempty" xml:"isRequired,omitempty"`
-	IsResetApprovalWhenNewPush   *bool    `json:"isResetApprovalWhenNewPush,omitempty" xml:"isResetApprovalWhenNewPush,omitempty"`
-	MinimumApproval              *int32   `json:"minimumApproval,omitempty" xml:"minimumApproval,omitempty"`
-	MrMode                       *string  `json:"mrMode,omitempty" xml:"mrMode,omitempty"`
-	WhiteList                    *string  `json:"whiteList,omitempty" xml:"whiteList,omitempty"`
+	AllowMergeRequestRoles       []*int32  `json:"allowMergeRequestRoles,omitempty" xml:"allowMergeRequestRoles,omitempty" type:"Repeated"`
+	DefaultAssignees             []*string `json:"defaultAssignees,omitempty" xml:"defaultAssignees,omitempty" type:"Repeated"`
+	IsAllowSelfApproval          *bool     `json:"isAllowSelfApproval,omitempty" xml:"isAllowSelfApproval,omitempty"`
+	IsRequireDiscussionProcessed *bool     `json:"isRequireDiscussionProcessed,omitempty" xml:"isRequireDiscussionProcessed,omitempty"`
+	IsRequired                   *bool     `json:"isRequired,omitempty" xml:"isRequired,omitempty"`
+	IsResetApprovalWhenNewPush   *bool     `json:"isResetApprovalWhenNewPush,omitempty" xml:"isResetApprovalWhenNewPush,omitempty"`
+	MinimumApproval              *int32    `json:"minimumApproval,omitempty" xml:"minimumApproval,omitempty"`
+	MrMode                       *string   `json:"mrMode,omitempty" xml:"mrMode,omitempty"`
+	WhiteList                    *string   `json:"whiteList,omitempty" xml:"whiteList,omitempty"`
 }
 
 func (s UpdateProtectedBranchesRequestMergeRequestSetting) String() string {
@@ -18539,7 +20771,7 @@ func (s *UpdateProtectedBranchesRequestMergeRequestSetting) SetAllowMergeRequest
 	return s
 }
 
-func (s *UpdateProtectedBranchesRequestMergeRequestSetting) SetDefaultAssignees(v []*int32) *UpdateProtectedBranchesRequestMergeRequestSetting {
+func (s *UpdateProtectedBranchesRequestMergeRequestSetting) SetDefaultAssignees(v []*string) *UpdateProtectedBranchesRequestMergeRequestSetting {
 	s.DefaultAssignees = v
 	return s
 }
@@ -18842,15 +21074,15 @@ func (s *UpdateProtectedBranchesResponseBodyResult) SetTestSettingDTO(v *UpdateP
 }
 
 type UpdateProtectedBranchesResponseBodyResultMergeRequestSetting struct {
-	AllowMergeRequestRoles       []*int32 `json:"allowMergeRequestRoles,omitempty" xml:"allowMergeRequestRoles,omitempty" type:"Repeated"`
-	DefaultAssignees             []*int32 `json:"defaultAssignees,omitempty" xml:"defaultAssignees,omitempty" type:"Repeated"`
-	IsAllowSelfApproval          *bool    `json:"isAllowSelfApproval,omitempty" xml:"isAllowSelfApproval,omitempty"`
-	IsRequireDiscussionProcessed *bool    `json:"isRequireDiscussionProcessed,omitempty" xml:"isRequireDiscussionProcessed,omitempty"`
-	IsRequired                   *bool    `json:"isRequired,omitempty" xml:"isRequired,omitempty"`
-	IsResetApprovalWhenNewPush   *bool    `json:"isResetApprovalWhenNewPush,omitempty" xml:"isResetApprovalWhenNewPush,omitempty"`
-	MinimumApproval              *int32   `json:"minimumApproval,omitempty" xml:"minimumApproval,omitempty"`
-	MrMode                       *string  `json:"mrMode,omitempty" xml:"mrMode,omitempty"`
-	WhiteList                    *string  `json:"whiteList,omitempty" xml:"whiteList,omitempty"`
+	AllowMergeRequestRoles       []*int32  `json:"allowMergeRequestRoles,omitempty" xml:"allowMergeRequestRoles,omitempty" type:"Repeated"`
+	DefaultAssignees             []*string `json:"defaultAssignees,omitempty" xml:"defaultAssignees,omitempty" type:"Repeated"`
+	IsAllowSelfApproval          *bool     `json:"isAllowSelfApproval,omitempty" xml:"isAllowSelfApproval,omitempty"`
+	IsRequireDiscussionProcessed *bool     `json:"isRequireDiscussionProcessed,omitempty" xml:"isRequireDiscussionProcessed,omitempty"`
+	IsRequired                   *bool     `json:"isRequired,omitempty" xml:"isRequired,omitempty"`
+	IsResetApprovalWhenNewPush   *bool     `json:"isResetApprovalWhenNewPush,omitempty" xml:"isResetApprovalWhenNewPush,omitempty"`
+	MinimumApproval              *int32    `json:"minimumApproval,omitempty" xml:"minimumApproval,omitempty"`
+	MrMode                       *string   `json:"mrMode,omitempty" xml:"mrMode,omitempty"`
+	WhiteList                    *string   `json:"whiteList,omitempty" xml:"whiteList,omitempty"`
 }
 
 func (s UpdateProtectedBranchesResponseBodyResultMergeRequestSetting) String() string {
@@ -18866,7 +21098,7 @@ func (s *UpdateProtectedBranchesResponseBodyResultMergeRequestSetting) SetAllowM
 	return s
 }
 
-func (s *UpdateProtectedBranchesResponseBodyResultMergeRequestSetting) SetDefaultAssignees(v []*int32) *UpdateProtectedBranchesResponseBodyResultMergeRequestSetting {
+func (s *UpdateProtectedBranchesResponseBodyResultMergeRequestSetting) SetDefaultAssignees(v []*string) *UpdateProtectedBranchesResponseBodyResultMergeRequestSetting {
 	s.DefaultAssignees = v
 	return s
 }
@@ -20510,7 +22742,7 @@ func (client *Client) AddRepositoryMemberWithOptions(repositoryId *string, reque
 	}
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AccessToken)) {
-		query["AccessToken"] = request.AccessToken
+		query["accessToken"] = request.AccessToken
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.OrganizationId)) {
@@ -20570,11 +22802,11 @@ func (client *Client) AddWebhookWithOptions(repositoryId *string, request *AddWe
 	}
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AccessToken)) {
-		query["AccessToken"] = request.AccessToken
+		query["accessToken"] = request.AccessToken
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.OrganizationId)) {
-		query["OrganizationId"] = request.OrganizationId
+		query["organizationId"] = request.OrganizationId
 	}
 
 	body := map[string]interface{}{}
@@ -21015,6 +23247,64 @@ func (client *Client) CreateOAuthTokenWithOptions(request *CreateOAuthTokenReque
 	return _result, _err
 }
 
+func (client *Client) CreatePipeline(organizationId *string, request *CreatePipelineRequest) (_result *CreatePipelineResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreatePipelineResponse{}
+	_body, _err := client.CreatePipelineWithOptions(organizationId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreatePipelineWithOptions(organizationId *string, request *CreatePipelineRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreatePipelineResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.BasicInfo))) {
+		body["basicInfo"] = request.BasicInfo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PipelineYaml)) {
+		body["pipelineYaml"] = request.PipelineYaml
+	}
+
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.Settings))) {
+		body["settings"] = request.Settings
+	}
+
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.TriggerInfo))) {
+		body["triggerInfo"] = request.TriggerInfo
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreatePipeline"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/organization/" + tea.StringValue(openapiutil.GetEncodeParam(organizationId)) + "/pipelines"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreatePipelineResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
 func (client *Client) CreatePipelineGroup(organizationId *string, request *CreatePipelineGroupRequest) (_result *CreatePipelineGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -21111,6 +23401,90 @@ func (client *Client) CreateProjectWithOptions(organizationId *string, request *
 		BodyType:    tea.String("json"),
 	}
 	_result = &CreateProjectResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateProtectdBranch(repositoryId *string, request *CreateProtectdBranchRequest) (_result *CreateProtectdBranchResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateProtectdBranchResponse{}
+	_body, _err := client.CreateProtectdBranchWithOptions(repositoryId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateProtectdBranchWithOptions(repositoryId *string, request *CreateProtectdBranchRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateProtectdBranchResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccessToken)) {
+		query["accessToken"] = request.AccessToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrganizationId)) {
+		query["organizationId"] = request.OrganizationId
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AllowMergeRoles)) {
+		body["allowMergeRoles"] = request.AllowMergeRoles
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AllowMergeUserIds)) {
+		body["allowMergeUserIds"] = request.AllowMergeUserIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AllowPushRoles)) {
+		body["allowPushRoles"] = request.AllowPushRoles
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AllowPushUserIds)) {
+		body["allowPushUserIds"] = request.AllowPushUserIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Branch)) {
+		body["branch"] = request.Branch
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		body["id"] = request.Id
+	}
+
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.MergeRequestSetting))) {
+		body["mergeRequestSetting"] = request.MergeRequestSetting
+	}
+
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.TestSettingDTO))) {
+		body["testSettingDTO"] = request.TestSettingDTO
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateProtectdBranch"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/repository/" + tea.StringValue(openapiutil.GetEncodeParam(repositoryId)) + "/protect_branches"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateProtectdBranchResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -22263,6 +24637,56 @@ func (client *Client) DeleteRepositoryWithOptions(repositoryId *string, request 
 	return _result, _err
 }
 
+func (client *Client) DeleteRepositoryWebhook(repositoryId *string, hookId *string, request *DeleteRepositoryWebhookRequest) (_result *DeleteRepositoryWebhookResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteRepositoryWebhookResponse{}
+	_body, _err := client.DeleteRepositoryWebhookWithOptions(repositoryId, hookId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteRepositoryWebhookWithOptions(repositoryId *string, hookId *string, request *DeleteRepositoryWebhookRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteRepositoryWebhookResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccessToken)) {
+		query["accessToken"] = request.AccessToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrganizationId)) {
+		query["organizationId"] = request.OrganizationId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteRepositoryWebhook"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/repository/" + tea.StringValue(openapiutil.GetEncodeParam(repositoryId)) + "/hooks/" + tea.StringValue(openapiutil.GetEncodeParam(hookId))),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteRepositoryWebhookResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
 func (client *Client) DeleteResourceMember(organizationId *string, resourceType *string, resourceId *string, accountId *string) (_result *DeleteResourceMemberResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -22540,7 +24964,7 @@ func (client *Client) GetCodeupOrganizationWithOptions(identity *string, request
 	}
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AccessToken)) {
-		query["AccessToken"] = request.AccessToken
+		query["accessToken"] = request.AccessToken
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -22709,8 +25133,8 @@ func (client *Client) GetFileLastCommitWithOptions(repositoryId *string, request
 		query["accessToken"] = request.AccessToken
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.Filepath)) {
-		query["filepath"] = request.Filepath
+	if !tea.BoolValue(util.IsUnset(request.FilePath)) {
+		query["filePath"] = request.FilePath
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.OrganizationId)) {
@@ -23143,11 +25567,11 @@ func (client *Client) GetProjectInfoWithOptions(organizationId *string, projectI
 	return _result, _err
 }
 
-func (client *Client) GetProjectMember(request *GetProjectMemberRequest) (_result *GetProjectMemberResponse, _err error) {
+func (client *Client) GetProjectMember(repositoryId *string, aliyunPk *string, request *GetProjectMemberRequest) (_result *GetProjectMemberResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &GetProjectMemberResponse{}
-	_body, _err := client.GetProjectMemberWithOptions(request, headers, runtime)
+	_body, _err := client.GetProjectMemberWithOptions(repositoryId, aliyunPk, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -23155,26 +25579,18 @@ func (client *Client) GetProjectMember(request *GetProjectMemberRequest) (_resul
 	return _result, _err
 }
 
-func (client *Client) GetProjectMemberWithOptions(request *GetProjectMemberRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetProjectMemberResponse, _err error) {
+func (client *Client) GetProjectMemberWithOptions(repositoryId *string, aliyunPk *string, request *GetProjectMemberRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetProjectMemberResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AccessToken)) {
-		query["AccessToken"] = request.AccessToken
+		query["accessToken"] = request.AccessToken
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.OrganizationId)) {
-		query["OrganizationId"] = request.OrganizationId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.RepositoryId)) {
-		query["repositoryId"] = request.RepositoryId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.UserAliyunPk)) {
-		query["userAliyunPk"] = request.UserAliyunPk
+		query["organizationId"] = request.OrganizationId
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -23185,7 +25601,7 @@ func (client *Client) GetProjectMemberWithOptions(request *GetProjectMemberReque
 		Action:      tea.String("GetProjectMember"),
 		Version:     tea.String("2021-06-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/repository/member/get"),
+		Pathname:    tea.String("/repository/" + tea.StringValue(openapiutil.GetEncodeParam(repositoryId)) + "/members/get/" + tea.StringValue(openapiutil.GetEncodeParam(aliyunPk))),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -23247,6 +25663,60 @@ func (client *Client) GetRepositoryWithOptions(request *GetRepositoryRequest, he
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetRepositoryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetRepositoryCommit(repositoryId *string, sha *string, request *GetRepositoryCommitRequest) (_result *GetRepositoryCommitResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetRepositoryCommitResponse{}
+	_body, _err := client.GetRepositoryCommitWithOptions(repositoryId, sha, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetRepositoryCommitWithOptions(repositoryId *string, sha *string, request *GetRepositoryCommitRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetRepositoryCommitResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccessToken)) {
+		query["accessToken"] = request.AccessToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrganizationId)) {
+		query["organizationId"] = request.OrganizationId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ShowSignature)) {
+		query["showSignature"] = request.ShowSignature
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetRepositoryCommit"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/repository/" + tea.StringValue(openapiutil.GetEncodeParam(repositoryId)) + "/commits/" + tea.StringValue(openapiutil.GetEncodeParam(sha))),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetRepositoryCommitResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -24693,6 +27163,92 @@ func (client *Client) ListRepositoryCommitDiffWithOptions(repositoryId *string, 
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListRepositoryCommitDiffResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListRepositoryCommits(repositoryId *string, request *ListRepositoryCommitsRequest) (_result *ListRepositoryCommitsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListRepositoryCommitsResponse{}
+	_body, _err := client.ListRepositoryCommitsWithOptions(repositoryId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListRepositoryCommitsWithOptions(repositoryId *string, request *ListRepositoryCommitsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListRepositoryCommitsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccessToken)) {
+		query["accessToken"] = request.AccessToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.End)) {
+		query["end"] = request.End
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrganizationId)) {
+		query["organizationId"] = request.OrganizationId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Page)) {
+		query["page"] = request.Page
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["pageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Path)) {
+		query["path"] = request.Path
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RefName)) {
+		query["refName"] = request.RefName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Search)) {
+		query["search"] = request.Search
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ShowCommentsCount)) {
+		query["showCommentsCount"] = request.ShowCommentsCount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ShowSignature)) {
+		query["showSignature"] = request.ShowSignature
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Start)) {
+		query["start"] = request.Start
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListRepositoryCommits"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/repository/" + tea.StringValue(openapiutil.GetEncodeParam(repositoryId)) + "/commits"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListRepositoryCommitsResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -26233,6 +28789,64 @@ func (client *Client) UpdateHostGroupWithOptions(organizationId *string, id *str
 	return _result, _err
 }
 
+func (client *Client) UpdatePipeline(organizationId *string, request *UpdatePipelineRequest) (_result *UpdatePipelineResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdatePipelineResponse{}
+	_body, _err := client.UpdatePipelineWithOptions(organizationId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdatePipelineWithOptions(organizationId *string, request *UpdatePipelineRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdatePipelineResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.BasicInfo))) {
+		body["basicInfo"] = request.BasicInfo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PipelineYaml)) {
+		body["pipelineYaml"] = request.PipelineYaml
+	}
+
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.Settings))) {
+		body["settings"] = request.Settings
+	}
+
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.TriggerInfo))) {
+		body["triggerInfo"] = request.TriggerInfo
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdatePipeline"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/organization/" + tea.StringValue(openapiutil.GetEncodeParam(organizationId)) + "/pipelines"),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdatePipelineResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
 func (client *Client) UpdatePipelineBaseInfo(organizationId *string, pipelineId *string, request *UpdatePipelineBaseInfoRequest) (_result *UpdatePipelineBaseInfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -26599,11 +29213,11 @@ func (client *Client) UpdateRepositoryWithOptions(repositoryId *string, request 
 	return _result, _err
 }
 
-func (client *Client) UpdateRepositoryMember(repositoryId *string, userId *string, request *UpdateRepositoryMemberRequest) (_result *UpdateRepositoryMemberResponse, _err error) {
+func (client *Client) UpdateRepositoryMember(repositoryId *string, aliyunPk *string, request *UpdateRepositoryMemberRequest) (_result *UpdateRepositoryMemberResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &UpdateRepositoryMemberResponse{}
-	_body, _err := client.UpdateRepositoryMemberWithOptions(repositoryId, userId, request, headers, runtime)
+	_body, _err := client.UpdateRepositoryMemberWithOptions(repositoryId, aliyunPk, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -26611,7 +29225,7 @@ func (client *Client) UpdateRepositoryMember(repositoryId *string, userId *strin
 	return _result, _err
 }
 
-func (client *Client) UpdateRepositoryMemberWithOptions(repositoryId *string, userId *string, request *UpdateRepositoryMemberRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateRepositoryMemberResponse, _err error) {
+func (client *Client) UpdateRepositoryMemberWithOptions(repositoryId *string, aliyunPk *string, request *UpdateRepositoryMemberRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateRepositoryMemberResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
@@ -26655,7 +29269,7 @@ func (client *Client) UpdateRepositoryMemberWithOptions(repositoryId *string, us
 		Action:      tea.String("UpdateRepositoryMember"),
 		Version:     tea.String("2021-06-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/repository/" + tea.StringValue(openapiutil.GetEncodeParam(repositoryId)) + "/" + tea.StringValue(openapiutil.GetEncodeParam(userId))),
+		Pathname:    tea.String("/repository/" + tea.StringValue(openapiutil.GetEncodeParam(repositoryId)) + "/members/" + tea.StringValue(openapiutil.GetEncodeParam(aliyunPk))),
 		Method:      tea.String("PUT"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
