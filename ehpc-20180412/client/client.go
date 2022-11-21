@@ -7995,6 +7995,111 @@ func (s *GetIfEcsTypeSupportHtConfigResponse) SetBody(v *GetIfEcsTypeSupportHtCo
 	return s
 }
 
+type GetJobLogRequest struct {
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	ExecHost  *string `json:"ExecHost,omitempty" xml:"ExecHost,omitempty"`
+	JobId     *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	Offset    *int64  `json:"Offset,omitempty" xml:"Offset,omitempty"`
+	Size      *int32  `json:"Size,omitempty" xml:"Size,omitempty"`
+}
+
+func (s GetJobLogRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetJobLogRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetJobLogRequest) SetClusterId(v string) *GetJobLogRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *GetJobLogRequest) SetExecHost(v string) *GetJobLogRequest {
+	s.ExecHost = &v
+	return s
+}
+
+func (s *GetJobLogRequest) SetJobId(v string) *GetJobLogRequest {
+	s.JobId = &v
+	return s
+}
+
+func (s *GetJobLogRequest) SetOffset(v int64) *GetJobLogRequest {
+	s.Offset = &v
+	return s
+}
+
+func (s *GetJobLogRequest) SetSize(v int32) *GetJobLogRequest {
+	s.Size = &v
+	return s
+}
+
+type GetJobLogResponseBody struct {
+	ErrorLog  *string `json:"ErrorLog,omitempty" xml:"ErrorLog,omitempty"`
+	JobId     *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	OutputLog *string `json:"OutputLog,omitempty" xml:"OutputLog,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetJobLogResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetJobLogResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetJobLogResponseBody) SetErrorLog(v string) *GetJobLogResponseBody {
+	s.ErrorLog = &v
+	return s
+}
+
+func (s *GetJobLogResponseBody) SetJobId(v string) *GetJobLogResponseBody {
+	s.JobId = &v
+	return s
+}
+
+func (s *GetJobLogResponseBody) SetOutputLog(v string) *GetJobLogResponseBody {
+	s.OutputLog = &v
+	return s
+}
+
+func (s *GetJobLogResponseBody) SetRequestId(v string) *GetJobLogResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetJobLogResponse struct {
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetJobLogResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetJobLogResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetJobLogResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetJobLogResponse) SetHeaders(v map[string]*string) *GetJobLogResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetJobLogResponse) SetStatusCode(v int32) *GetJobLogResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetJobLogResponse) SetBody(v *GetJobLogResponseBody) *GetJobLogResponse {
+	s.Body = v
+	return s
+}
+
 type GetPostScriptsRequest struct {
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
@@ -21888,6 +21993,46 @@ func (client *Client) GetIfEcsTypeSupportHtConfig(request *GetIfEcsTypeSupportHt
 	runtime := &util.RuntimeOptions{}
 	_result = &GetIfEcsTypeSupportHtConfigResponse{}
 	_body, _err := client.GetIfEcsTypeSupportHtConfigWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetJobLogWithOptions(request *GetJobLogRequest, runtime *util.RuntimeOptions) (_result *GetJobLogResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetJobLog"),
+		Version:     tea.String("2018-04-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetJobLogResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetJobLog(request *GetJobLogRequest) (_result *GetJobLogResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetJobLogResponse{}
+	_body, _err := client.GetJobLogWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
