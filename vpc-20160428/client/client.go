@@ -11124,18 +11124,18 @@ func (s *CreateVpcGatewayEndpointResponse) SetBody(v *CreateVpcGatewayEndpointRe
 }
 
 type CreateVpcPrefixListRequest struct {
-	ClientToken           *string                                       `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	DryRun                *bool                                         `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	IpVersion             *string                                       `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
-	MaxEntries            *int32                                        `json:"MaxEntries,omitempty" xml:"MaxEntries,omitempty"`
-	OwnerAccount          *string                                       `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId               *int64                                        `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	PrefixListDescription *string                                       `json:"PrefixListDescription,omitempty" xml:"PrefixListDescription,omitempty"`
-	PrefixListEntrys      []*CreateVpcPrefixListRequestPrefixListEntrys `json:"PrefixListEntrys,omitempty" xml:"PrefixListEntrys,omitempty" type:"Repeated"`
-	PrefixListName        *string                                       `json:"PrefixListName,omitempty" xml:"PrefixListName,omitempty"`
-	RegionId              *string                                       `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceOwnerAccount  *string                                       `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId       *int64                                        `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	ClientToken           *string                                        `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DryRun                *bool                                          `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	IpVersion             *string                                        `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
+	MaxEntries            *int32                                         `json:"MaxEntries,omitempty" xml:"MaxEntries,omitempty"`
+	OwnerAccount          *string                                        `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId               *int64                                         `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	PrefixListDescription *string                                        `json:"PrefixListDescription,omitempty" xml:"PrefixListDescription,omitempty"`
+	PrefixListEntries     []*CreateVpcPrefixListRequestPrefixListEntries `json:"PrefixListEntries,omitempty" xml:"PrefixListEntries,omitempty" type:"Repeated"`
+	PrefixListName        *string                                        `json:"PrefixListName,omitempty" xml:"PrefixListName,omitempty"`
+	RegionId              *string                                        `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount  *string                                        `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId       *int64                                         `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 }
 
 func (s CreateVpcPrefixListRequest) String() string {
@@ -11181,8 +11181,8 @@ func (s *CreateVpcPrefixListRequest) SetPrefixListDescription(v string) *CreateV
 	return s
 }
 
-func (s *CreateVpcPrefixListRequest) SetPrefixListEntrys(v []*CreateVpcPrefixListRequestPrefixListEntrys) *CreateVpcPrefixListRequest {
-	s.PrefixListEntrys = v
+func (s *CreateVpcPrefixListRequest) SetPrefixListEntries(v []*CreateVpcPrefixListRequestPrefixListEntries) *CreateVpcPrefixListRequest {
+	s.PrefixListEntries = v
 	return s
 }
 
@@ -11206,25 +11206,25 @@ func (s *CreateVpcPrefixListRequest) SetResourceOwnerId(v int64) *CreateVpcPrefi
 	return s
 }
 
-type CreateVpcPrefixListRequestPrefixListEntrys struct {
+type CreateVpcPrefixListRequestPrefixListEntries struct {
 	Cidr        *string `json:"Cidr,omitempty" xml:"Cidr,omitempty"`
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 }
 
-func (s CreateVpcPrefixListRequestPrefixListEntrys) String() string {
+func (s CreateVpcPrefixListRequestPrefixListEntries) String() string {
 	return tea.Prettify(s)
 }
 
-func (s CreateVpcPrefixListRequestPrefixListEntrys) GoString() string {
+func (s CreateVpcPrefixListRequestPrefixListEntries) GoString() string {
 	return s.String()
 }
 
-func (s *CreateVpcPrefixListRequestPrefixListEntrys) SetCidr(v string) *CreateVpcPrefixListRequestPrefixListEntrys {
+func (s *CreateVpcPrefixListRequestPrefixListEntries) SetCidr(v string) *CreateVpcPrefixListRequestPrefixListEntries {
 	s.Cidr = &v
 	return s
 }
 
-func (s *CreateVpcPrefixListRequestPrefixListEntrys) SetDescription(v string) *CreateVpcPrefixListRequestPrefixListEntrys {
+func (s *CreateVpcPrefixListRequestPrefixListEntries) SetDescription(v string) *CreateVpcPrefixListRequestPrefixListEntries {
 	s.Description = &v
 	return s
 }
@@ -30797,6 +30797,7 @@ type DescribeVirtualBorderRoutersResponseBodyVirtualBorderRouterSetVirtualBorder
 	ActivationTime                   *string                                                                                                             `json:"ActivationTime,omitempty" xml:"ActivationTime,omitempty"`
 	AssociatedCens                   *DescribeVirtualBorderRoutersResponseBodyVirtualBorderRouterSetVirtualBorderRouterTypeAssociatedCens                `json:"AssociatedCens,omitempty" xml:"AssociatedCens,omitempty" type:"Struct"`
 	AssociatedPhysicalConnections    *DescribeVirtualBorderRoutersResponseBodyVirtualBorderRouterSetVirtualBorderRouterTypeAssociatedPhysicalConnections `json:"AssociatedPhysicalConnections,omitempty" xml:"AssociatedPhysicalConnections,omitempty" type:"Struct"`
+	Bandwidth                        *int32                                                                                                              `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
 	CircuitCode                      *string                                                                                                             `json:"CircuitCode,omitempty" xml:"CircuitCode,omitempty"`
 	CloudBoxInstanceId               *string                                                                                                             `json:"CloudBoxInstanceId,omitempty" xml:"CloudBoxInstanceId,omitempty"`
 	CreationTime                     *string                                                                                                             `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
@@ -30854,6 +30855,11 @@ func (s *DescribeVirtualBorderRoutersResponseBodyVirtualBorderRouterSetVirtualBo
 
 func (s *DescribeVirtualBorderRoutersResponseBodyVirtualBorderRouterSetVirtualBorderRouterType) SetAssociatedPhysicalConnections(v *DescribeVirtualBorderRoutersResponseBodyVirtualBorderRouterSetVirtualBorderRouterTypeAssociatedPhysicalConnections) *DescribeVirtualBorderRoutersResponseBodyVirtualBorderRouterSetVirtualBorderRouterType {
 	s.AssociatedPhysicalConnections = v
+	return s
+}
+
+func (s *DescribeVirtualBorderRoutersResponseBodyVirtualBorderRouterSetVirtualBorderRouterType) SetBandwidth(v int32) *DescribeVirtualBorderRoutersResponseBodyVirtualBorderRouterSetVirtualBorderRouterType {
+	s.Bandwidth = &v
 	return s
 }
 
@@ -61461,8 +61467,8 @@ func (client *Client) CreateVpcPrefixListWithOptions(request *CreateVpcPrefixLis
 		query["PrefixListDescription"] = request.PrefixListDescription
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.PrefixListEntrys)) {
-		query["PrefixListEntrys"] = request.PrefixListEntrys
+	if !tea.BoolValue(util.IsUnset(request.PrefixListEntries)) {
+		query["PrefixListEntries"] = request.PrefixListEntries
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.PrefixListName)) {
