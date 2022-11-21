@@ -1193,6 +1193,8 @@ type DescribeDiskReplicaGroupsRequest struct {
 	GroupIds   *string `json:"GroupIds,omitempty" xml:"GroupIds,omitempty"`
 	MaxResults *int64  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	NextToken  *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	Site       *string `json:"Site,omitempty" xml:"Site,omitempty"`
 }
@@ -1220,6 +1222,16 @@ func (s *DescribeDiskReplicaGroupsRequest) SetNextToken(v string) *DescribeDiskR
 	return s
 }
 
+func (s *DescribeDiskReplicaGroupsRequest) SetPageNumber(v int32) *DescribeDiskReplicaGroupsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeDiskReplicaGroupsRequest) SetPageSize(v int32) *DescribeDiskReplicaGroupsRequest {
+	s.PageSize = &v
+	return s
+}
+
 func (s *DescribeDiskReplicaGroupsRequest) SetRegionId(v string) *DescribeDiskReplicaGroupsRequest {
 	s.RegionId = &v
 	return s
@@ -1232,8 +1244,11 @@ func (s *DescribeDiskReplicaGroupsRequest) SetSite(v string) *DescribeDiskReplic
 
 type DescribeDiskReplicaGroupsResponseBody struct {
 	NextToken     *string                                               `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	PageNumber    *int32                                                `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize      *int32                                                `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	ReplicaGroups []*DescribeDiskReplicaGroupsResponseBodyReplicaGroups `json:"ReplicaGroups,omitempty" xml:"ReplicaGroups,omitempty" type:"Repeated"`
 	RequestId     *string                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount    *int64                                                `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeDiskReplicaGroupsResponseBody) String() string {
@@ -1249,6 +1264,16 @@ func (s *DescribeDiskReplicaGroupsResponseBody) SetNextToken(v string) *Describe
 	return s
 }
 
+func (s *DescribeDiskReplicaGroupsResponseBody) SetPageNumber(v int32) *DescribeDiskReplicaGroupsResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeDiskReplicaGroupsResponseBody) SetPageSize(v int32) *DescribeDiskReplicaGroupsResponseBody {
+	s.PageSize = &v
+	return s
+}
+
 func (s *DescribeDiskReplicaGroupsResponseBody) SetReplicaGroups(v []*DescribeDiskReplicaGroupsResponseBodyReplicaGroups) *DescribeDiskReplicaGroupsResponseBody {
 	s.ReplicaGroups = v
 	return s
@@ -1256,6 +1281,11 @@ func (s *DescribeDiskReplicaGroupsResponseBody) SetReplicaGroups(v []*DescribeDi
 
 func (s *DescribeDiskReplicaGroupsResponseBody) SetRequestId(v string) *DescribeDiskReplicaGroupsResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeDiskReplicaGroupsResponseBody) SetTotalCount(v int64) *DescribeDiskReplicaGroupsResponseBody {
+	s.TotalCount = &v
 	return s
 }
 
@@ -3848,6 +3878,14 @@ func (client *Client) DescribeDiskReplicaGroupsWithOptions(request *DescribeDisk
 
 	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
 		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
