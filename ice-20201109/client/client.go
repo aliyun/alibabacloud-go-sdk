@@ -573,87 +573,6 @@ func (s *AddFavoritePublicMediaResponse) SetBody(v *AddFavoritePublicMediaRespon
 	return s
 }
 
-type AddMediaMarksRequest struct {
-	MediaId    *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
-	MediaMarks *string `json:"MediaMarks,omitempty" xml:"MediaMarks,omitempty"`
-}
-
-func (s AddMediaMarksRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s AddMediaMarksRequest) GoString() string {
-	return s.String()
-}
-
-func (s *AddMediaMarksRequest) SetMediaId(v string) *AddMediaMarksRequest {
-	s.MediaId = &v
-	return s
-}
-
-func (s *AddMediaMarksRequest) SetMediaMarks(v string) *AddMediaMarksRequest {
-	s.MediaMarks = &v
-	return s
-}
-
-type AddMediaMarksResponseBody struct {
-	MediaId      *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
-	MediaMarkIds *string `json:"MediaMarkIds,omitempty" xml:"MediaMarkIds,omitempty"`
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s AddMediaMarksResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s AddMediaMarksResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *AddMediaMarksResponseBody) SetMediaId(v string) *AddMediaMarksResponseBody {
-	s.MediaId = &v
-	return s
-}
-
-func (s *AddMediaMarksResponseBody) SetMediaMarkIds(v string) *AddMediaMarksResponseBody {
-	s.MediaMarkIds = &v
-	return s
-}
-
-func (s *AddMediaMarksResponseBody) SetRequestId(v string) *AddMediaMarksResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type AddMediaMarksResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *AddMediaMarksResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s AddMediaMarksResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s AddMediaMarksResponse) GoString() string {
-	return s.String()
-}
-
-func (s *AddMediaMarksResponse) SetHeaders(v map[string]*string) *AddMediaMarksResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *AddMediaMarksResponse) SetStatusCode(v int32) *AddMediaMarksResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *AddMediaMarksResponse) SetBody(v *AddMediaMarksResponseBody) *AddMediaMarksResponse {
-	s.Body = v
-	return s
-}
-
 type AddTemplateRequest struct {
 	Config          *string `json:"Config,omitempty" xml:"Config,omitempty"`
 	CoverUrl        *string `json:"CoverUrl,omitempty" xml:"CoverUrl,omitempty"`
@@ -3354,87 +3273,6 @@ func (s *DeleteMediaInfosResponse) SetStatusCode(v int32) *DeleteMediaInfosRespo
 }
 
 func (s *DeleteMediaInfosResponse) SetBody(v *DeleteMediaInfosResponseBody) *DeleteMediaInfosResponse {
-	s.Body = v
-	return s
-}
-
-type DeleteMediaMarksRequest struct {
-	MediaId      *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
-	MediaMarkIds *string `json:"MediaMarkIds,omitempty" xml:"MediaMarkIds,omitempty"`
-}
-
-func (s DeleteMediaMarksRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteMediaMarksRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteMediaMarksRequest) SetMediaId(v string) *DeleteMediaMarksRequest {
-	s.MediaId = &v
-	return s
-}
-
-func (s *DeleteMediaMarksRequest) SetMediaMarkIds(v string) *DeleteMediaMarksRequest {
-	s.MediaMarkIds = &v
-	return s
-}
-
-type DeleteMediaMarksResponseBody struct {
-	MediaId      *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
-	MediaMarkIds *string `json:"MediaMarkIds,omitempty" xml:"MediaMarkIds,omitempty"`
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s DeleteMediaMarksResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteMediaMarksResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteMediaMarksResponseBody) SetMediaId(v string) *DeleteMediaMarksResponseBody {
-	s.MediaId = &v
-	return s
-}
-
-func (s *DeleteMediaMarksResponseBody) SetMediaMarkIds(v string) *DeleteMediaMarksResponseBody {
-	s.MediaMarkIds = &v
-	return s
-}
-
-func (s *DeleteMediaMarksResponseBody) SetRequestId(v string) *DeleteMediaMarksResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type DeleteMediaMarksResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteMediaMarksResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DeleteMediaMarksResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteMediaMarksResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteMediaMarksResponse) SetHeaders(v map[string]*string) *DeleteMediaMarksResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DeleteMediaMarksResponse) SetStatusCode(v int32) *DeleteMediaMarksResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *DeleteMediaMarksResponse) SetBody(v *DeleteMediaMarksResponseBody) *DeleteMediaMarksResponse {
 	s.Body = v
 	return s
 }
@@ -9885,6 +9723,7 @@ func (s *GetMediaInfoResponseBody) SetRequestId(v string) *GetMediaInfoResponseB
 }
 
 type GetMediaInfoResponseBodyMediaInfo struct {
+	AiRoughData    *GetMediaInfoResponseBodyMediaInfoAiRoughData    `json:"AiRoughData,omitempty" xml:"AiRoughData,omitempty" type:"Struct"`
 	FileInfoList   []*GetMediaInfoResponseBodyMediaInfoFileInfoList `json:"FileInfoList,omitempty" xml:"FileInfoList,omitempty" type:"Repeated"`
 	MediaBasicInfo *GetMediaInfoResponseBodyMediaInfoMediaBasicInfo `json:"MediaBasicInfo,omitempty" xml:"MediaBasicInfo,omitempty" type:"Struct"`
 	MediaId        *string                                          `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
@@ -9896,6 +9735,11 @@ func (s GetMediaInfoResponseBodyMediaInfo) String() string {
 
 func (s GetMediaInfoResponseBodyMediaInfo) GoString() string {
 	return s.String()
+}
+
+func (s *GetMediaInfoResponseBodyMediaInfo) SetAiRoughData(v *GetMediaInfoResponseBodyMediaInfoAiRoughData) *GetMediaInfoResponseBodyMediaInfo {
+	s.AiRoughData = v
+	return s
 }
 
 func (s *GetMediaInfoResponseBodyMediaInfo) SetFileInfoList(v []*GetMediaInfoResponseBodyMediaInfoFileInfoList) *GetMediaInfoResponseBodyMediaInfo {
@@ -9910,6 +9754,35 @@ func (s *GetMediaInfoResponseBodyMediaInfo) SetMediaBasicInfo(v *GetMediaInfoRes
 
 func (s *GetMediaInfoResponseBodyMediaInfo) SetMediaId(v string) *GetMediaInfoResponseBodyMediaInfo {
 	s.MediaId = &v
+	return s
+}
+
+type GetMediaInfoResponseBodyMediaInfoAiRoughData struct {
+	Result   *string `json:"Result,omitempty" xml:"Result,omitempty"`
+	SaveType *string `json:"SaveType,omitempty" xml:"SaveType,omitempty"`
+	Status   *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s GetMediaInfoResponseBodyMediaInfoAiRoughData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMediaInfoResponseBodyMediaInfoAiRoughData) GoString() string {
+	return s.String()
+}
+
+func (s *GetMediaInfoResponseBodyMediaInfoAiRoughData) SetResult(v string) *GetMediaInfoResponseBodyMediaInfoAiRoughData {
+	s.Result = &v
+	return s
+}
+
+func (s *GetMediaInfoResponseBodyMediaInfoAiRoughData) SetSaveType(v string) *GetMediaInfoResponseBodyMediaInfoAiRoughData {
+	s.SaveType = &v
+	return s
+}
+
+func (s *GetMediaInfoResponseBodyMediaInfoAiRoughData) SetStatus(v string) *GetMediaInfoResponseBodyMediaInfoAiRoughData {
+	s.Status = &v
 	return s
 }
 
@@ -11114,87 +10987,6 @@ func (s *GetMediaInfoJobResponse) SetBody(v *GetMediaInfoJobResponseBody) *GetMe
 	return s
 }
 
-type GetMediaMarksRequest struct {
-	MediaId      *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
-	MediaMarkIds *string `json:"MediaMarkIds,omitempty" xml:"MediaMarkIds,omitempty"`
-}
-
-func (s GetMediaMarksRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetMediaMarksRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetMediaMarksRequest) SetMediaId(v string) *GetMediaMarksRequest {
-	s.MediaId = &v
-	return s
-}
-
-func (s *GetMediaMarksRequest) SetMediaMarkIds(v string) *GetMediaMarksRequest {
-	s.MediaMarkIds = &v
-	return s
-}
-
-type GetMediaMarksResponseBody struct {
-	MediaId    *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
-	MediaMarks *string `json:"MediaMarks,omitempty" xml:"MediaMarks,omitempty"`
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s GetMediaMarksResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetMediaMarksResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetMediaMarksResponseBody) SetMediaId(v string) *GetMediaMarksResponseBody {
-	s.MediaId = &v
-	return s
-}
-
-func (s *GetMediaMarksResponseBody) SetMediaMarks(v string) *GetMediaMarksResponseBody {
-	s.MediaMarks = &v
-	return s
-}
-
-func (s *GetMediaMarksResponseBody) SetRequestId(v string) *GetMediaMarksResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type GetMediaMarksResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetMediaMarksResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetMediaMarksResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetMediaMarksResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetMediaMarksResponse) SetHeaders(v map[string]*string) *GetMediaMarksResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetMediaMarksResponse) SetStatusCode(v int32) *GetMediaMarksResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *GetMediaMarksResponse) SetBody(v *GetMediaMarksResponseBody) *GetMediaMarksResponse {
-	s.Body = v
-	return s
-}
-
 type GetMediaProducingJobRequest struct {
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 }
@@ -11727,7 +11519,8 @@ func (s *GetPipelineResponse) SetBody(v *GetPipelineResponseBody) *GetPipelineRe
 }
 
 type GetPlayInfoRequest struct {
-	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	InputURL *string `json:"InputURL,omitempty" xml:"InputURL,omitempty"`
+	MediaId  *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
 }
 
 func (s GetPlayInfoRequest) String() string {
@@ -11736,6 +11529,11 @@ func (s GetPlayInfoRequest) String() string {
 
 func (s GetPlayInfoRequest) GoString() string {
 	return s.String()
+}
+
+func (s *GetPlayInfoRequest) SetInputURL(v string) *GetPlayInfoRequest {
+	s.InputURL = &v
+	return s
 }
 
 func (s *GetPlayInfoRequest) SetMediaId(v string) *GetPlayInfoRequest {
@@ -11837,6 +11635,7 @@ type GetPlayInfoResponseBodyPlayInfoList struct {
 	PlayURL           *string `json:"PlayURL,omitempty" xml:"PlayURL,omitempty"`
 	Size              *int64  `json:"Size,omitempty" xml:"Size,omitempty"`
 	Status            *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	StreamTags        *string `json:"StreamTags,omitempty" xml:"StreamTags,omitempty"`
 	StreamType        *string `json:"StreamType,omitempty" xml:"StreamType,omitempty"`
 	TransTemplateType *string `json:"TransTemplateType,omitempty" xml:"TransTemplateType,omitempty"`
 	WatermarkId       *string `json:"WatermarkId,omitempty" xml:"WatermarkId,omitempty"`
@@ -11933,6 +11732,11 @@ func (s *GetPlayInfoResponseBodyPlayInfoList) SetSize(v int64) *GetPlayInfoRespo
 
 func (s *GetPlayInfoResponseBodyPlayInfoList) SetStatus(v string) *GetPlayInfoResponseBodyPlayInfoList {
 	s.Status = &v
+	return s
+}
+
+func (s *GetPlayInfoResponseBodyPlayInfoList) SetStreamTags(v string) *GetPlayInfoResponseBodyPlayInfoList {
+	s.StreamTags = &v
 	return s
 }
 
@@ -13651,7 +13455,7 @@ func (s *GetTemplateMaterialsResponse) SetBody(v *GetTemplateMaterialsResponseBo
 }
 
 type GetTranscodeJobRequest struct {
-	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	ParentJobId *string `json:"ParentJobId,omitempty" xml:"ParentJobId,omitempty"`
 }
 
 func (s GetTranscodeJobRequest) String() string {
@@ -13662,8 +13466,8 @@ func (s GetTranscodeJobRequest) GoString() string {
 	return s.String()
 }
 
-func (s *GetTranscodeJobRequest) SetJobId(v string) *GetTranscodeJobRequest {
-	s.JobId = &v
+func (s *GetTranscodeJobRequest) SetParentJobId(v string) *GetTranscodeJobRequest {
+	s.ParentJobId = &v
 	return s
 }
 
@@ -13838,8 +13642,9 @@ func (s *GetTranscodeJobResponseBodyTranscodeParentJobOutputGroup) SetProcessCon
 }
 
 type GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupOutput struct {
-	Media *string `json:"Media,omitempty" xml:"Media,omitempty"`
-	Type  *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Media     *string `json:"Media,omitempty" xml:"Media,omitempty"`
+	OutputUrl *string `json:"OutputUrl,omitempty" xml:"OutputUrl,omitempty"`
+	Type      *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupOutput) String() string {
@@ -13852,6 +13657,11 @@ func (s GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupOutput) GoString
 
 func (s *GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupOutput) SetMedia(v string) *GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupOutput {
 	s.Media = &v
+	return s
+}
+
+func (s *GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupOutput) SetOutputUrl(v string) *GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupOutput {
+	s.OutputUrl = &v
 	return s
 }
 
@@ -14715,8 +14525,9 @@ func (s *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobList) SetUserD
 }
 
 type GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListInputGroup struct {
-	Media *string `json:"Media,omitempty" xml:"Media,omitempty"`
-	Type  *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	InputUrl *string `json:"InputUrl,omitempty" xml:"InputUrl,omitempty"`
+	Media    *string `json:"Media,omitempty" xml:"Media,omitempty"`
+	Type     *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListInputGroup) String() string {
@@ -14725,6 +14536,11 @@ func (s GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListInputGroup)
 
 func (s GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListInputGroup) GoString() string {
 	return s.String()
+}
+
+func (s *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListInputGroup) SetInputUrl(v string) *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListInputGroup {
+	s.InputUrl = &v
+	return s
 }
 
 func (s *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListInputGroup) SetMedia(v string) *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListInputGroup {
@@ -15100,8 +14916,9 @@ func (s *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListOutFileMet
 }
 
 type GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListOutput struct {
-	Media *string `json:"Media,omitempty" xml:"Media,omitempty"`
-	Type  *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Media     *string `json:"Media,omitempty" xml:"Media,omitempty"`
+	OutputUrl *string `json:"OutputUrl,omitempty" xml:"OutputUrl,omitempty"`
+	Type      *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListOutput) String() string {
@@ -15117,6 +14934,11 @@ func (s *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListOutput) Se
 	return s
 }
 
+func (s *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListOutput) SetOutputUrl(v string) *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListOutput {
+	s.OutputUrl = &v
+	return s
+}
+
 func (s *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListOutput) SetType(v string) *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListOutput {
 	s.Type = &v
 	return s
@@ -15126,6 +14948,7 @@ type GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfig 
 	CombineConfigs  []*GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigCombineConfigs  `json:"CombineConfigs,omitempty" xml:"CombineConfigs,omitempty" type:"Repeated"`
 	Encryption      *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigEncryption        `json:"Encryption,omitempty" xml:"Encryption,omitempty" type:"Struct"`
 	ImageWatermarks []*GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigImageWatermarks `json:"ImageWatermarks,omitempty" xml:"ImageWatermarks,omitempty" type:"Repeated"`
+	IsInheritTags   *bool                                                                                        `json:"IsInheritTags,omitempty" xml:"IsInheritTags,omitempty"`
 	Subtitles       []*GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigSubtitles       `json:"Subtitles,omitempty" xml:"Subtitles,omitempty" type:"Repeated"`
 	TextWatermarks  []*GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTextWatermarks  `json:"TextWatermarks,omitempty" xml:"TextWatermarks,omitempty" type:"Repeated"`
 	Transcode       *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscode         `json:"Transcode,omitempty" xml:"Transcode,omitempty" type:"Struct"`
@@ -15151,6 +14974,11 @@ func (s *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessCon
 
 func (s *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfig) SetImageWatermarks(v []*GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigImageWatermarks) *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfig {
 	s.ImageWatermarks = v
+	return s
+}
+
+func (s *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfig) SetIsInheritTags(v bool) *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfig {
+	s.IsInheritTags = &v
 	return s
 }
 
@@ -15551,6 +15379,7 @@ type GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigT
 	Audio     *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParamsAudio     `json:"Audio,omitempty" xml:"Audio,omitempty" type:"Struct"`
 	Container *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParamsContainer `json:"Container,omitempty" xml:"Container,omitempty" type:"Struct"`
 	MuxConfig *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParamsMuxConfig `json:"MuxConfig,omitempty" xml:"MuxConfig,omitempty" type:"Struct"`
+	Tags      map[string]*string                                                                                           `json:"Tags,omitempty" xml:"Tags,omitempty"`
 	Video     *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParamsVideo     `json:"Video,omitempty" xml:"Video,omitempty" type:"Struct"`
 }
 
@@ -15574,6 +15403,11 @@ func (s *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessCon
 
 func (s *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParams) SetMuxConfig(v *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParamsMuxConfig) *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParams {
 	s.MuxConfig = v
+	return s
+}
+
+func (s *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParams) SetTags(v map[string]*string) *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParams {
+	s.Tags = v
 	return s
 }
 
@@ -19372,87 +19206,6 @@ func (s *ListMediaInfoJobsResponse) SetBody(v *ListMediaInfoJobsResponseBody) *L
 	return s
 }
 
-type ListMediaMarksRequest struct {
-	MediaId      *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
-	MediaMarkIds *string `json:"MediaMarkIds,omitempty" xml:"MediaMarkIds,omitempty"`
-}
-
-func (s ListMediaMarksRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListMediaMarksRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListMediaMarksRequest) SetMediaId(v string) *ListMediaMarksRequest {
-	s.MediaId = &v
-	return s
-}
-
-func (s *ListMediaMarksRequest) SetMediaMarkIds(v string) *ListMediaMarksRequest {
-	s.MediaMarkIds = &v
-	return s
-}
-
-type ListMediaMarksResponseBody struct {
-	MediaId    *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
-	MediaMarks *string `json:"MediaMarks,omitempty" xml:"MediaMarks,omitempty"`
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s ListMediaMarksResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListMediaMarksResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ListMediaMarksResponseBody) SetMediaId(v string) *ListMediaMarksResponseBody {
-	s.MediaId = &v
-	return s
-}
-
-func (s *ListMediaMarksResponseBody) SetMediaMarks(v string) *ListMediaMarksResponseBody {
-	s.MediaMarks = &v
-	return s
-}
-
-func (s *ListMediaMarksResponseBody) SetRequestId(v string) *ListMediaMarksResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type ListMediaMarksResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListMediaMarksResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ListMediaMarksResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListMediaMarksResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ListMediaMarksResponse) SetHeaders(v map[string]*string) *ListMediaMarksResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ListMediaMarksResponse) SetStatusCode(v int32) *ListMediaMarksResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *ListMediaMarksResponse) SetBody(v *ListMediaMarksResponseBody) *ListMediaMarksResponse {
-	s.Body = v
-	return s
-}
-
 type ListPackageJobsRequest struct {
 	EndOfCreateTime   *string `json:"EndOfCreateTime,omitempty" xml:"EndOfCreateTime,omitempty"`
 	JobId             *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
@@ -21102,10 +20855,10 @@ func (s *ListTemplatesResponse) SetBody(v *ListTemplatesResponseBody) *ListTempl
 
 type ListTranscodeJobsRequest struct {
 	EndOfCreateTime   *string `json:"EndOfCreateTime,omitempty" xml:"EndOfCreateTime,omitempty"`
-	JobId             *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	NextPageToken     *string `json:"NextPageToken,omitempty" xml:"NextPageToken,omitempty"`
 	OrderBy           *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
 	PageSize          *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ParentJobId       *string `json:"ParentJobId,omitempty" xml:"ParentJobId,omitempty"`
 	StartOfCreateTime *string `json:"StartOfCreateTime,omitempty" xml:"StartOfCreateTime,omitempty"`
 	Status            *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
@@ -21123,11 +20876,6 @@ func (s *ListTranscodeJobsRequest) SetEndOfCreateTime(v string) *ListTranscodeJo
 	return s
 }
 
-func (s *ListTranscodeJobsRequest) SetJobId(v string) *ListTranscodeJobsRequest {
-	s.JobId = &v
-	return s
-}
-
 func (s *ListTranscodeJobsRequest) SetNextPageToken(v string) *ListTranscodeJobsRequest {
 	s.NextPageToken = &v
 	return s
@@ -21140,6 +20888,11 @@ func (s *ListTranscodeJobsRequest) SetOrderBy(v string) *ListTranscodeJobsReques
 
 func (s *ListTranscodeJobsRequest) SetPageSize(v int32) *ListTranscodeJobsRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *ListTranscodeJobsRequest) SetParentJobId(v string) *ListTranscodeJobsRequest {
+	s.ParentJobId = &v
 	return s
 }
 
@@ -21278,8 +21031,9 @@ func (s *ListTranscodeJobsResponseBodyJobs) SetUserData(v string) *ListTranscode
 }
 
 type ListTranscodeJobsResponseBodyJobsInputGroup struct {
-	Media *string `json:"Media,omitempty" xml:"Media,omitempty"`
-	Type  *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	InputUrl *string `json:"InputUrl,omitempty" xml:"InputUrl,omitempty"`
+	Media    *string `json:"Media,omitempty" xml:"Media,omitempty"`
+	Type     *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s ListTranscodeJobsResponseBodyJobsInputGroup) String() string {
@@ -21288,6 +21042,11 @@ func (s ListTranscodeJobsResponseBodyJobsInputGroup) String() string {
 
 func (s ListTranscodeJobsResponseBodyJobsInputGroup) GoString() string {
 	return s.String()
+}
+
+func (s *ListTranscodeJobsResponseBodyJobsInputGroup) SetInputUrl(v string) *ListTranscodeJobsResponseBodyJobsInputGroup {
+	s.InputUrl = &v
+	return s
 }
 
 func (s *ListTranscodeJobsResponseBodyJobsInputGroup) SetMedia(v string) *ListTranscodeJobsResponseBodyJobsInputGroup {
@@ -21324,8 +21083,9 @@ func (s *ListTranscodeJobsResponseBodyJobsOutputGroup) SetProcessConfig(v *ListT
 }
 
 type ListTranscodeJobsResponseBodyJobsOutputGroupOutput struct {
-	Media *string `json:"Media,omitempty" xml:"Media,omitempty"`
-	Type  *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Media     *string `json:"Media,omitempty" xml:"Media,omitempty"`
+	OutputUrl *string `json:"OutputUrl,omitempty" xml:"OutputUrl,omitempty"`
+	Type      *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s ListTranscodeJobsResponseBodyJobsOutputGroupOutput) String() string {
@@ -21341,6 +21101,11 @@ func (s *ListTranscodeJobsResponseBodyJobsOutputGroupOutput) SetMedia(v string) 
 	return s
 }
 
+func (s *ListTranscodeJobsResponseBodyJobsOutputGroupOutput) SetOutputUrl(v string) *ListTranscodeJobsResponseBodyJobsOutputGroupOutput {
+	s.OutputUrl = &v
+	return s
+}
+
 func (s *ListTranscodeJobsResponseBodyJobsOutputGroupOutput) SetType(v string) *ListTranscodeJobsResponseBodyJobsOutputGroupOutput {
 	s.Type = &v
 	return s
@@ -21350,6 +21115,7 @@ type ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfig struct {
 	CombineConfigs  []*ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigCombineConfigs  `json:"CombineConfigs,omitempty" xml:"CombineConfigs,omitempty" type:"Repeated"`
 	Encryption      *ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigEncryption        `json:"Encryption,omitempty" xml:"Encryption,omitempty" type:"Struct"`
 	ImageWatermarks []*ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigImageWatermarks `json:"ImageWatermarks,omitempty" xml:"ImageWatermarks,omitempty" type:"Repeated"`
+	IsInheritTags   *bool                                                                       `json:"IsInheritTags,omitempty" xml:"IsInheritTags,omitempty"`
 	Subtitles       []*ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigSubtitles       `json:"Subtitles,omitempty" xml:"Subtitles,omitempty" type:"Repeated"`
 	TextWatermarks  []*ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigTextWatermarks  `json:"TextWatermarks,omitempty" xml:"TextWatermarks,omitempty" type:"Repeated"`
 	Transcode       *ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigTranscode         `json:"Transcode,omitempty" xml:"Transcode,omitempty" type:"Struct"`
@@ -21375,6 +21141,11 @@ func (s *ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfig) SetEncryptio
 
 func (s *ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfig) SetImageWatermarks(v []*ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigImageWatermarks) *ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfig {
 	s.ImageWatermarks = v
+	return s
+}
+
+func (s *ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfig) SetIsInheritTags(v bool) *ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfig {
+	s.IsInheritTags = &v
 	return s
 }
 
@@ -21775,6 +21546,7 @@ type ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigTranscodeOverwrite
 	Audio     *ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigTranscodeOverwriteParamsAudio     `json:"Audio,omitempty" xml:"Audio,omitempty" type:"Struct"`
 	Container *ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigTranscodeOverwriteParamsContainer `json:"Container,omitempty" xml:"Container,omitempty" type:"Struct"`
 	MuxConfig *ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigTranscodeOverwriteParamsMuxConfig `json:"MuxConfig,omitempty" xml:"MuxConfig,omitempty" type:"Struct"`
+	Tags      map[string]*string                                                                          `json:"Tags,omitempty" xml:"Tags,omitempty"`
 	Video     *ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigTranscodeOverwriteParamsVideo     `json:"Video,omitempty" xml:"Video,omitempty" type:"Struct"`
 }
 
@@ -21798,6 +21570,11 @@ func (s *ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigTranscodeOverw
 
 func (s *ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigTranscodeOverwriteParams) SetMuxConfig(v *ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigTranscodeOverwriteParamsMuxConfig) *ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigTranscodeOverwriteParams {
 	s.MuxConfig = v
+	return s
+}
+
+func (s *ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigTranscodeOverwriteParams) SetTags(v map[string]*string) *ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigTranscodeOverwriteParams {
+	s.Tags = v
 	return s
 }
 
@@ -22118,687 +21895,6 @@ func (s *ListTranscodeJobsResponse) SetStatusCode(v int32) *ListTranscodeJobsRes
 }
 
 func (s *ListTranscodeJobsResponse) SetBody(v *ListTranscodeJobsResponseBody) *ListTranscodeJobsResponse {
-	s.Body = v
-	return s
-}
-
-type QueryCensorJobListRequest struct {
-	JobIds               *string `json:"JobIds,omitempty" xml:"JobIds,omitempty"`
-	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-}
-
-func (s QueryCensorJobListRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s QueryCensorJobListRequest) GoString() string {
-	return s.String()
-}
-
-func (s *QueryCensorJobListRequest) SetJobIds(v string) *QueryCensorJobListRequest {
-	s.JobIds = &v
-	return s
-}
-
-func (s *QueryCensorJobListRequest) SetOwnerAccount(v string) *QueryCensorJobListRequest {
-	s.OwnerAccount = &v
-	return s
-}
-
-func (s *QueryCensorJobListRequest) SetOwnerId(v int64) *QueryCensorJobListRequest {
-	s.OwnerId = &v
-	return s
-}
-
-func (s *QueryCensorJobListRequest) SetResourceOwnerAccount(v string) *QueryCensorJobListRequest {
-	s.ResourceOwnerAccount = &v
-	return s
-}
-
-func (s *QueryCensorJobListRequest) SetResourceOwnerId(v int64) *QueryCensorJobListRequest {
-	s.ResourceOwnerId = &v
-	return s
-}
-
-type QueryCensorJobListResponseBody struct {
-	Jobs        *QueryCensorJobListResponseBodyJobs        `json:"Jobs,omitempty" xml:"Jobs,omitempty" type:"Struct"`
-	NonExistIds *QueryCensorJobListResponseBodyNonExistIds `json:"NonExistIds,omitempty" xml:"NonExistIds,omitempty" type:"Struct"`
-	RequestId   *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s QueryCensorJobListResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s QueryCensorJobListResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *QueryCensorJobListResponseBody) SetJobs(v *QueryCensorJobListResponseBodyJobs) *QueryCensorJobListResponseBody {
-	s.Jobs = v
-	return s
-}
-
-func (s *QueryCensorJobListResponseBody) SetNonExistIds(v *QueryCensorJobListResponseBodyNonExistIds) *QueryCensorJobListResponseBody {
-	s.NonExistIds = v
-	return s
-}
-
-func (s *QueryCensorJobListResponseBody) SetRequestId(v string) *QueryCensorJobListResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type QueryCensorJobListResponseBodyJobs struct {
-	CensorJob []*QueryCensorJobListResponseBodyJobsCensorJob `json:"CensorJob,omitempty" xml:"CensorJob,omitempty" type:"Repeated"`
-}
-
-func (s QueryCensorJobListResponseBodyJobs) String() string {
-	return tea.Prettify(s)
-}
-
-func (s QueryCensorJobListResponseBodyJobs) GoString() string {
-	return s.String()
-}
-
-func (s *QueryCensorJobListResponseBodyJobs) SetCensorJob(v []*QueryCensorJobListResponseBodyJobsCensorJob) *QueryCensorJobListResponseBodyJobs {
-	s.CensorJob = v
-	return s
-}
-
-type QueryCensorJobListResponseBodyJobsCensorJob struct {
-	BarrageCensorResult   *string                                                           `json:"BarrageCensorResult,omitempty" xml:"BarrageCensorResult,omitempty"`
-	CensorConfig          *QueryCensorJobListResponseBodyJobsCensorJobCensorConfig          `json:"CensorConfig,omitempty" xml:"CensorConfig,omitempty" type:"Struct"`
-	CensorPornResult      *QueryCensorJobListResponseBodyJobsCensorJobCensorPornResult      `json:"CensorPornResult,omitempty" xml:"CensorPornResult,omitempty" type:"Struct"`
-	CensorTerrorismResult *QueryCensorJobListResponseBodyJobsCensorJobCensorTerrorismResult `json:"CensorTerrorismResult,omitempty" xml:"CensorTerrorismResult,omitempty" type:"Struct"`
-	Code                  *string                                                           `json:"Code,omitempty" xml:"Code,omitempty"`
-	CreationTime          *string                                                           `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	DescCensorResult      *string                                                           `json:"DescCensorResult,omitempty" xml:"DescCensorResult,omitempty"`
-	Id                    *string                                                           `json:"Id,omitempty" xml:"Id,omitempty"`
-	ImageCensorResults    *QueryCensorJobListResponseBodyJobsCensorJobImageCensorResults    `json:"ImageCensorResults,omitempty" xml:"ImageCensorResults,omitempty" type:"Struct"`
-	Input                 *QueryCensorJobListResponseBodyJobsCensorJobInput                 `json:"Input,omitempty" xml:"Input,omitempty" type:"Struct"`
-	Message               *string                                                           `json:"Message,omitempty" xml:"Message,omitempty"`
-	PipelineId            *string                                                           `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
-	ResultSaveObject      *string                                                           `json:"ResultSaveObject,omitempty" xml:"ResultSaveObject,omitempty"`
-	State                 *string                                                           `json:"State,omitempty" xml:"State,omitempty"`
-	TitleCensorResult     *string                                                           `json:"TitleCensorResult,omitempty" xml:"TitleCensorResult,omitempty"`
-	UserData              *string                                                           `json:"UserData,omitempty" xml:"UserData,omitempty"`
-}
-
-func (s QueryCensorJobListResponseBodyJobsCensorJob) String() string {
-	return tea.Prettify(s)
-}
-
-func (s QueryCensorJobListResponseBodyJobsCensorJob) GoString() string {
-	return s.String()
-}
-
-func (s *QueryCensorJobListResponseBodyJobsCensorJob) SetBarrageCensorResult(v string) *QueryCensorJobListResponseBodyJobsCensorJob {
-	s.BarrageCensorResult = &v
-	return s
-}
-
-func (s *QueryCensorJobListResponseBodyJobsCensorJob) SetCensorConfig(v *QueryCensorJobListResponseBodyJobsCensorJobCensorConfig) *QueryCensorJobListResponseBodyJobsCensorJob {
-	s.CensorConfig = v
-	return s
-}
-
-func (s *QueryCensorJobListResponseBodyJobsCensorJob) SetCensorPornResult(v *QueryCensorJobListResponseBodyJobsCensorJobCensorPornResult) *QueryCensorJobListResponseBodyJobsCensorJob {
-	s.CensorPornResult = v
-	return s
-}
-
-func (s *QueryCensorJobListResponseBodyJobsCensorJob) SetCensorTerrorismResult(v *QueryCensorJobListResponseBodyJobsCensorJobCensorTerrorismResult) *QueryCensorJobListResponseBodyJobsCensorJob {
-	s.CensorTerrorismResult = v
-	return s
-}
-
-func (s *QueryCensorJobListResponseBodyJobsCensorJob) SetCode(v string) *QueryCensorJobListResponseBodyJobsCensorJob {
-	s.Code = &v
-	return s
-}
-
-func (s *QueryCensorJobListResponseBodyJobsCensorJob) SetCreationTime(v string) *QueryCensorJobListResponseBodyJobsCensorJob {
-	s.CreationTime = &v
-	return s
-}
-
-func (s *QueryCensorJobListResponseBodyJobsCensorJob) SetDescCensorResult(v string) *QueryCensorJobListResponseBodyJobsCensorJob {
-	s.DescCensorResult = &v
-	return s
-}
-
-func (s *QueryCensorJobListResponseBodyJobsCensorJob) SetId(v string) *QueryCensorJobListResponseBodyJobsCensorJob {
-	s.Id = &v
-	return s
-}
-
-func (s *QueryCensorJobListResponseBodyJobsCensorJob) SetImageCensorResults(v *QueryCensorJobListResponseBodyJobsCensorJobImageCensorResults) *QueryCensorJobListResponseBodyJobsCensorJob {
-	s.ImageCensorResults = v
-	return s
-}
-
-func (s *QueryCensorJobListResponseBodyJobsCensorJob) SetInput(v *QueryCensorJobListResponseBodyJobsCensorJobInput) *QueryCensorJobListResponseBodyJobsCensorJob {
-	s.Input = v
-	return s
-}
-
-func (s *QueryCensorJobListResponseBodyJobsCensorJob) SetMessage(v string) *QueryCensorJobListResponseBodyJobsCensorJob {
-	s.Message = &v
-	return s
-}
-
-func (s *QueryCensorJobListResponseBodyJobsCensorJob) SetPipelineId(v string) *QueryCensorJobListResponseBodyJobsCensorJob {
-	s.PipelineId = &v
-	return s
-}
-
-func (s *QueryCensorJobListResponseBodyJobsCensorJob) SetResultSaveObject(v string) *QueryCensorJobListResponseBodyJobsCensorJob {
-	s.ResultSaveObject = &v
-	return s
-}
-
-func (s *QueryCensorJobListResponseBodyJobsCensorJob) SetState(v string) *QueryCensorJobListResponseBodyJobsCensorJob {
-	s.State = &v
-	return s
-}
-
-func (s *QueryCensorJobListResponseBodyJobsCensorJob) SetTitleCensorResult(v string) *QueryCensorJobListResponseBodyJobsCensorJob {
-	s.TitleCensorResult = &v
-	return s
-}
-
-func (s *QueryCensorJobListResponseBodyJobsCensorJob) SetUserData(v string) *QueryCensorJobListResponseBodyJobsCensorJob {
-	s.UserData = &v
-	return s
-}
-
-type QueryCensorJobListResponseBodyJobsCensorJobCensorConfig struct {
-	BizType    *string                                                            `json:"BizType,omitempty" xml:"BizType,omitempty"`
-	Interval   *string                                                            `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	OutputFile *QueryCensorJobListResponseBodyJobsCensorJobCensorConfigOutputFile `json:"OutputFile,omitempty" xml:"OutputFile,omitempty" type:"Struct"`
-	SaveType   *string                                                            `json:"SaveType,omitempty" xml:"SaveType,omitempty"`
-	Scenes     *string                                                            `json:"Scenes,omitempty" xml:"Scenes,omitempty"`
-}
-
-func (s QueryCensorJobListResponseBodyJobsCensorJobCensorConfig) String() string {
-	return tea.Prettify(s)
-}
-
-func (s QueryCensorJobListResponseBodyJobsCensorJobCensorConfig) GoString() string {
-	return s.String()
-}
-
-func (s *QueryCensorJobListResponseBodyJobsCensorJobCensorConfig) SetBizType(v string) *QueryCensorJobListResponseBodyJobsCensorJobCensorConfig {
-	s.BizType = &v
-	return s
-}
-
-func (s *QueryCensorJobListResponseBodyJobsCensorJobCensorConfig) SetInterval(v string) *QueryCensorJobListResponseBodyJobsCensorJobCensorConfig {
-	s.Interval = &v
-	return s
-}
-
-func (s *QueryCensorJobListResponseBodyJobsCensorJobCensorConfig) SetOutputFile(v *QueryCensorJobListResponseBodyJobsCensorJobCensorConfigOutputFile) *QueryCensorJobListResponseBodyJobsCensorJobCensorConfig {
-	s.OutputFile = v
-	return s
-}
-
-func (s *QueryCensorJobListResponseBodyJobsCensorJobCensorConfig) SetSaveType(v string) *QueryCensorJobListResponseBodyJobsCensorJobCensorConfig {
-	s.SaveType = &v
-	return s
-}
-
-func (s *QueryCensorJobListResponseBodyJobsCensorJobCensorConfig) SetScenes(v string) *QueryCensorJobListResponseBodyJobsCensorJobCensorConfig {
-	s.Scenes = &v
-	return s
-}
-
-type QueryCensorJobListResponseBodyJobsCensorJobCensorConfigOutputFile struct {
-	Bucket   *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
-	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
-	Object   *string `json:"Object,omitempty" xml:"Object,omitempty"`
-}
-
-func (s QueryCensorJobListResponseBodyJobsCensorJobCensorConfigOutputFile) String() string {
-	return tea.Prettify(s)
-}
-
-func (s QueryCensorJobListResponseBodyJobsCensorJobCensorConfigOutputFile) GoString() string {
-	return s.String()
-}
-
-func (s *QueryCensorJobListResponseBodyJobsCensorJobCensorConfigOutputFile) SetBucket(v string) *QueryCensorJobListResponseBodyJobsCensorJobCensorConfigOutputFile {
-	s.Bucket = &v
-	return s
-}
-
-func (s *QueryCensorJobListResponseBodyJobsCensorJobCensorConfigOutputFile) SetLocation(v string) *QueryCensorJobListResponseBodyJobsCensorJobCensorConfigOutputFile {
-	s.Location = &v
-	return s
-}
-
-func (s *QueryCensorJobListResponseBodyJobsCensorJobCensorConfigOutputFile) SetObject(v string) *QueryCensorJobListResponseBodyJobsCensorJobCensorConfigOutputFile {
-	s.Object = &v
-	return s
-}
-
-type QueryCensorJobListResponseBodyJobsCensorJobCensorPornResult struct {
-	AverageScore    *string                                                                     `json:"AverageScore,omitempty" xml:"AverageScore,omitempty"`
-	Label           *string                                                                     `json:"Label,omitempty" xml:"Label,omitempty"`
-	MaxScore        *string                                                                     `json:"MaxScore,omitempty" xml:"MaxScore,omitempty"`
-	PornCounterList *QueryCensorJobListResponseBodyJobsCensorJobCensorPornResultPornCounterList `json:"PornCounterList,omitempty" xml:"PornCounterList,omitempty" type:"Struct"`
-	PornTopList     *QueryCensorJobListResponseBodyJobsCensorJobCensorPornResultPornTopList     `json:"PornTopList,omitempty" xml:"PornTopList,omitempty" type:"Struct"`
-	Suggestion      *string                                                                     `json:"Suggestion,omitempty" xml:"Suggestion,omitempty"`
-}
-
-func (s QueryCensorJobListResponseBodyJobsCensorJobCensorPornResult) String() string {
-	return tea.Prettify(s)
-}
-
-func (s QueryCensorJobListResponseBodyJobsCensorJobCensorPornResult) GoString() string {
-	return s.String()
-}
-
-func (s *QueryCensorJobListResponseBodyJobsCensorJobCensorPornResult) SetAverageScore(v string) *QueryCensorJobListResponseBodyJobsCensorJobCensorPornResult {
-	s.AverageScore = &v
-	return s
-}
-
-func (s *QueryCensorJobListResponseBodyJobsCensorJobCensorPornResult) SetLabel(v string) *QueryCensorJobListResponseBodyJobsCensorJobCensorPornResult {
-	s.Label = &v
-	return s
-}
-
-func (s *QueryCensorJobListResponseBodyJobsCensorJobCensorPornResult) SetMaxScore(v string) *QueryCensorJobListResponseBodyJobsCensorJobCensorPornResult {
-	s.MaxScore = &v
-	return s
-}
-
-func (s *QueryCensorJobListResponseBodyJobsCensorJobCensorPornResult) SetPornCounterList(v *QueryCensorJobListResponseBodyJobsCensorJobCensorPornResultPornCounterList) *QueryCensorJobListResponseBodyJobsCensorJobCensorPornResult {
-	s.PornCounterList = v
-	return s
-}
-
-func (s *QueryCensorJobListResponseBodyJobsCensorJobCensorPornResult) SetPornTopList(v *QueryCensorJobListResponseBodyJobsCensorJobCensorPornResultPornTopList) *QueryCensorJobListResponseBodyJobsCensorJobCensorPornResult {
-	s.PornTopList = v
-	return s
-}
-
-func (s *QueryCensorJobListResponseBodyJobsCensorJobCensorPornResult) SetSuggestion(v string) *QueryCensorJobListResponseBodyJobsCensorJobCensorPornResult {
-	s.Suggestion = &v
-	return s
-}
-
-type QueryCensorJobListResponseBodyJobsCensorJobCensorPornResultPornCounterList struct {
-	Counter []*QueryCensorJobListResponseBodyJobsCensorJobCensorPornResultPornCounterListCounter `json:"Counter,omitempty" xml:"Counter,omitempty" type:"Repeated"`
-}
-
-func (s QueryCensorJobListResponseBodyJobsCensorJobCensorPornResultPornCounterList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s QueryCensorJobListResponseBodyJobsCensorJobCensorPornResultPornCounterList) GoString() string {
-	return s.String()
-}
-
-func (s *QueryCensorJobListResponseBodyJobsCensorJobCensorPornResultPornCounterList) SetCounter(v []*QueryCensorJobListResponseBodyJobsCensorJobCensorPornResultPornCounterListCounter) *QueryCensorJobListResponseBodyJobsCensorJobCensorPornResultPornCounterList {
-	s.Counter = v
-	return s
-}
-
-type QueryCensorJobListResponseBodyJobsCensorJobCensorPornResultPornCounterListCounter struct {
-	Count *int32  `json:"Count,omitempty" xml:"Count,omitempty"`
-	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
-}
-
-func (s QueryCensorJobListResponseBodyJobsCensorJobCensorPornResultPornCounterListCounter) String() string {
-	return tea.Prettify(s)
-}
-
-func (s QueryCensorJobListResponseBodyJobsCensorJobCensorPornResultPornCounterListCounter) GoString() string {
-	return s.String()
-}
-
-func (s *QueryCensorJobListResponseBodyJobsCensorJobCensorPornResultPornCounterListCounter) SetCount(v int32) *QueryCensorJobListResponseBodyJobsCensorJobCensorPornResultPornCounterListCounter {
-	s.Count = &v
-	return s
-}
-
-func (s *QueryCensorJobListResponseBodyJobsCensorJobCensorPornResultPornCounterListCounter) SetLabel(v string) *QueryCensorJobListResponseBodyJobsCensorJobCensorPornResultPornCounterListCounter {
-	s.Label = &v
-	return s
-}
-
-type QueryCensorJobListResponseBodyJobsCensorJobCensorPornResultPornTopList struct {
-	Top []*QueryCensorJobListResponseBodyJobsCensorJobCensorPornResultPornTopListTop `json:"Top,omitempty" xml:"Top,omitempty" type:"Repeated"`
-}
-
-func (s QueryCensorJobListResponseBodyJobsCensorJobCensorPornResultPornTopList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s QueryCensorJobListResponseBodyJobsCensorJobCensorPornResultPornTopList) GoString() string {
-	return s.String()
-}
-
-func (s *QueryCensorJobListResponseBodyJobsCensorJobCensorPornResultPornTopList) SetTop(v []*QueryCensorJobListResponseBodyJobsCensorJobCensorPornResultPornTopListTop) *QueryCensorJobListResponseBodyJobsCensorJobCensorPornResultPornTopList {
-	s.Top = v
-	return s
-}
-
-type QueryCensorJobListResponseBodyJobsCensorJobCensorPornResultPornTopListTop struct {
-	Index     *string `json:"Index,omitempty" xml:"Index,omitempty"`
-	Label     *string `json:"Label,omitempty" xml:"Label,omitempty"`
-	Object    *string `json:"Object,omitempty" xml:"Object,omitempty"`
-	Score     *string `json:"Score,omitempty" xml:"Score,omitempty"`
-	Timestamp *string `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
-}
-
-func (s QueryCensorJobListResponseBodyJobsCensorJobCensorPornResultPornTopListTop) String() string {
-	return tea.Prettify(s)
-}
-
-func (s QueryCensorJobListResponseBodyJobsCensorJobCensorPornResultPornTopListTop) GoString() string {
-	return s.String()
-}
-
-func (s *QueryCensorJobListResponseBodyJobsCensorJobCensorPornResultPornTopListTop) SetIndex(v string) *QueryCensorJobListResponseBodyJobsCensorJobCensorPornResultPornTopListTop {
-	s.Index = &v
-	return s
-}
-
-func (s *QueryCensorJobListResponseBodyJobsCensorJobCensorPornResultPornTopListTop) SetLabel(v string) *QueryCensorJobListResponseBodyJobsCensorJobCensorPornResultPornTopListTop {
-	s.Label = &v
-	return s
-}
-
-func (s *QueryCensorJobListResponseBodyJobsCensorJobCensorPornResultPornTopListTop) SetObject(v string) *QueryCensorJobListResponseBodyJobsCensorJobCensorPornResultPornTopListTop {
-	s.Object = &v
-	return s
-}
-
-func (s *QueryCensorJobListResponseBodyJobsCensorJobCensorPornResultPornTopListTop) SetScore(v string) *QueryCensorJobListResponseBodyJobsCensorJobCensorPornResultPornTopListTop {
-	s.Score = &v
-	return s
-}
-
-func (s *QueryCensorJobListResponseBodyJobsCensorJobCensorPornResultPornTopListTop) SetTimestamp(v string) *QueryCensorJobListResponseBodyJobsCensorJobCensorPornResultPornTopListTop {
-	s.Timestamp = &v
-	return s
-}
-
-type QueryCensorJobListResponseBodyJobsCensorJobCensorTerrorismResult struct {
-	AverageScore         *string                                                                               `json:"AverageScore,omitempty" xml:"AverageScore,omitempty"`
-	Label                *string                                                                               `json:"Label,omitempty" xml:"Label,omitempty"`
-	MaxScore             *string                                                                               `json:"MaxScore,omitempty" xml:"MaxScore,omitempty"`
-	Suggestion           *string                                                                               `json:"Suggestion,omitempty" xml:"Suggestion,omitempty"`
-	TerrorismCounterList *QueryCensorJobListResponseBodyJobsCensorJobCensorTerrorismResultTerrorismCounterList `json:"TerrorismCounterList,omitempty" xml:"TerrorismCounterList,omitempty" type:"Struct"`
-	TerrorismTopList     *QueryCensorJobListResponseBodyJobsCensorJobCensorTerrorismResultTerrorismTopList     `json:"TerrorismTopList,omitempty" xml:"TerrorismTopList,omitempty" type:"Struct"`
-}
-
-func (s QueryCensorJobListResponseBodyJobsCensorJobCensorTerrorismResult) String() string {
-	return tea.Prettify(s)
-}
-
-func (s QueryCensorJobListResponseBodyJobsCensorJobCensorTerrorismResult) GoString() string {
-	return s.String()
-}
-
-func (s *QueryCensorJobListResponseBodyJobsCensorJobCensorTerrorismResult) SetAverageScore(v string) *QueryCensorJobListResponseBodyJobsCensorJobCensorTerrorismResult {
-	s.AverageScore = &v
-	return s
-}
-
-func (s *QueryCensorJobListResponseBodyJobsCensorJobCensorTerrorismResult) SetLabel(v string) *QueryCensorJobListResponseBodyJobsCensorJobCensorTerrorismResult {
-	s.Label = &v
-	return s
-}
-
-func (s *QueryCensorJobListResponseBodyJobsCensorJobCensorTerrorismResult) SetMaxScore(v string) *QueryCensorJobListResponseBodyJobsCensorJobCensorTerrorismResult {
-	s.MaxScore = &v
-	return s
-}
-
-func (s *QueryCensorJobListResponseBodyJobsCensorJobCensorTerrorismResult) SetSuggestion(v string) *QueryCensorJobListResponseBodyJobsCensorJobCensorTerrorismResult {
-	s.Suggestion = &v
-	return s
-}
-
-func (s *QueryCensorJobListResponseBodyJobsCensorJobCensorTerrorismResult) SetTerrorismCounterList(v *QueryCensorJobListResponseBodyJobsCensorJobCensorTerrorismResultTerrorismCounterList) *QueryCensorJobListResponseBodyJobsCensorJobCensorTerrorismResult {
-	s.TerrorismCounterList = v
-	return s
-}
-
-func (s *QueryCensorJobListResponseBodyJobsCensorJobCensorTerrorismResult) SetTerrorismTopList(v *QueryCensorJobListResponseBodyJobsCensorJobCensorTerrorismResultTerrorismTopList) *QueryCensorJobListResponseBodyJobsCensorJobCensorTerrorismResult {
-	s.TerrorismTopList = v
-	return s
-}
-
-type QueryCensorJobListResponseBodyJobsCensorJobCensorTerrorismResultTerrorismCounterList struct {
-	Counter []*QueryCensorJobListResponseBodyJobsCensorJobCensorTerrorismResultTerrorismCounterListCounter `json:"Counter,omitempty" xml:"Counter,omitempty" type:"Repeated"`
-}
-
-func (s QueryCensorJobListResponseBodyJobsCensorJobCensorTerrorismResultTerrorismCounterList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s QueryCensorJobListResponseBodyJobsCensorJobCensorTerrorismResultTerrorismCounterList) GoString() string {
-	return s.String()
-}
-
-func (s *QueryCensorJobListResponseBodyJobsCensorJobCensorTerrorismResultTerrorismCounterList) SetCounter(v []*QueryCensorJobListResponseBodyJobsCensorJobCensorTerrorismResultTerrorismCounterListCounter) *QueryCensorJobListResponseBodyJobsCensorJobCensorTerrorismResultTerrorismCounterList {
-	s.Counter = v
-	return s
-}
-
-type QueryCensorJobListResponseBodyJobsCensorJobCensorTerrorismResultTerrorismCounterListCounter struct {
-	Count *int32  `json:"Count,omitempty" xml:"Count,omitempty"`
-	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
-}
-
-func (s QueryCensorJobListResponseBodyJobsCensorJobCensorTerrorismResultTerrorismCounterListCounter) String() string {
-	return tea.Prettify(s)
-}
-
-func (s QueryCensorJobListResponseBodyJobsCensorJobCensorTerrorismResultTerrorismCounterListCounter) GoString() string {
-	return s.String()
-}
-
-func (s *QueryCensorJobListResponseBodyJobsCensorJobCensorTerrorismResultTerrorismCounterListCounter) SetCount(v int32) *QueryCensorJobListResponseBodyJobsCensorJobCensorTerrorismResultTerrorismCounterListCounter {
-	s.Count = &v
-	return s
-}
-
-func (s *QueryCensorJobListResponseBodyJobsCensorJobCensorTerrorismResultTerrorismCounterListCounter) SetLabel(v string) *QueryCensorJobListResponseBodyJobsCensorJobCensorTerrorismResultTerrorismCounterListCounter {
-	s.Label = &v
-	return s
-}
-
-type QueryCensorJobListResponseBodyJobsCensorJobCensorTerrorismResultTerrorismTopList struct {
-	Top []*QueryCensorJobListResponseBodyJobsCensorJobCensorTerrorismResultTerrorismTopListTop `json:"Top,omitempty" xml:"Top,omitempty" type:"Repeated"`
-}
-
-func (s QueryCensorJobListResponseBodyJobsCensorJobCensorTerrorismResultTerrorismTopList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s QueryCensorJobListResponseBodyJobsCensorJobCensorTerrorismResultTerrorismTopList) GoString() string {
-	return s.String()
-}
-
-func (s *QueryCensorJobListResponseBodyJobsCensorJobCensorTerrorismResultTerrorismTopList) SetTop(v []*QueryCensorJobListResponseBodyJobsCensorJobCensorTerrorismResultTerrorismTopListTop) *QueryCensorJobListResponseBodyJobsCensorJobCensorTerrorismResultTerrorismTopList {
-	s.Top = v
-	return s
-}
-
-type QueryCensorJobListResponseBodyJobsCensorJobCensorTerrorismResultTerrorismTopListTop struct {
-	Index     *string `json:"Index,omitempty" xml:"Index,omitempty"`
-	Label     *string `json:"Label,omitempty" xml:"Label,omitempty"`
-	Object    *string `json:"Object,omitempty" xml:"Object,omitempty"`
-	Score     *string `json:"Score,omitempty" xml:"Score,omitempty"`
-	Timestamp *string `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
-}
-
-func (s QueryCensorJobListResponseBodyJobsCensorJobCensorTerrorismResultTerrorismTopListTop) String() string {
-	return tea.Prettify(s)
-}
-
-func (s QueryCensorJobListResponseBodyJobsCensorJobCensorTerrorismResultTerrorismTopListTop) GoString() string {
-	return s.String()
-}
-
-func (s *QueryCensorJobListResponseBodyJobsCensorJobCensorTerrorismResultTerrorismTopListTop) SetIndex(v string) *QueryCensorJobListResponseBodyJobsCensorJobCensorTerrorismResultTerrorismTopListTop {
-	s.Index = &v
-	return s
-}
-
-func (s *QueryCensorJobListResponseBodyJobsCensorJobCensorTerrorismResultTerrorismTopListTop) SetLabel(v string) *QueryCensorJobListResponseBodyJobsCensorJobCensorTerrorismResultTerrorismTopListTop {
-	s.Label = &v
-	return s
-}
-
-func (s *QueryCensorJobListResponseBodyJobsCensorJobCensorTerrorismResultTerrorismTopListTop) SetObject(v string) *QueryCensorJobListResponseBodyJobsCensorJobCensorTerrorismResultTerrorismTopListTop {
-	s.Object = &v
-	return s
-}
-
-func (s *QueryCensorJobListResponseBodyJobsCensorJobCensorTerrorismResultTerrorismTopListTop) SetScore(v string) *QueryCensorJobListResponseBodyJobsCensorJobCensorTerrorismResultTerrorismTopListTop {
-	s.Score = &v
-	return s
-}
-
-func (s *QueryCensorJobListResponseBodyJobsCensorJobCensorTerrorismResultTerrorismTopListTop) SetTimestamp(v string) *QueryCensorJobListResponseBodyJobsCensorJobCensorTerrorismResultTerrorismTopListTop {
-	s.Timestamp = &v
-	return s
-}
-
-type QueryCensorJobListResponseBodyJobsCensorJobImageCensorResults struct {
-	ImageCensorResult []*QueryCensorJobListResponseBodyJobsCensorJobImageCensorResultsImageCensorResult `json:"ImageCensorResult,omitempty" xml:"ImageCensorResult,omitempty" type:"Repeated"`
-}
-
-func (s QueryCensorJobListResponseBodyJobsCensorJobImageCensorResults) String() string {
-	return tea.Prettify(s)
-}
-
-func (s QueryCensorJobListResponseBodyJobsCensorJobImageCensorResults) GoString() string {
-	return s.String()
-}
-
-func (s *QueryCensorJobListResponseBodyJobsCensorJobImageCensorResults) SetImageCensorResult(v []*QueryCensorJobListResponseBodyJobsCensorJobImageCensorResultsImageCensorResult) *QueryCensorJobListResponseBodyJobsCensorJobImageCensorResults {
-	s.ImageCensorResult = v
-	return s
-}
-
-type QueryCensorJobListResponseBodyJobsCensorJobImageCensorResultsImageCensorResult struct {
-	ImageBucket   *string `json:"ImageBucket,omitempty" xml:"ImageBucket,omitempty"`
-	ImageLocation *string `json:"ImageLocation,omitempty" xml:"ImageLocation,omitempty"`
-	ImageObject   *string `json:"ImageObject,omitempty" xml:"ImageObject,omitempty"`
-	Result        *string `json:"Result,omitempty" xml:"Result,omitempty"`
-}
-
-func (s QueryCensorJobListResponseBodyJobsCensorJobImageCensorResultsImageCensorResult) String() string {
-	return tea.Prettify(s)
-}
-
-func (s QueryCensorJobListResponseBodyJobsCensorJobImageCensorResultsImageCensorResult) GoString() string {
-	return s.String()
-}
-
-func (s *QueryCensorJobListResponseBodyJobsCensorJobImageCensorResultsImageCensorResult) SetImageBucket(v string) *QueryCensorJobListResponseBodyJobsCensorJobImageCensorResultsImageCensorResult {
-	s.ImageBucket = &v
-	return s
-}
-
-func (s *QueryCensorJobListResponseBodyJobsCensorJobImageCensorResultsImageCensorResult) SetImageLocation(v string) *QueryCensorJobListResponseBodyJobsCensorJobImageCensorResultsImageCensorResult {
-	s.ImageLocation = &v
-	return s
-}
-
-func (s *QueryCensorJobListResponseBodyJobsCensorJobImageCensorResultsImageCensorResult) SetImageObject(v string) *QueryCensorJobListResponseBodyJobsCensorJobImageCensorResultsImageCensorResult {
-	s.ImageObject = &v
-	return s
-}
-
-func (s *QueryCensorJobListResponseBodyJobsCensorJobImageCensorResultsImageCensorResult) SetResult(v string) *QueryCensorJobListResponseBodyJobsCensorJobImageCensorResultsImageCensorResult {
-	s.Result = &v
-	return s
-}
-
-type QueryCensorJobListResponseBodyJobsCensorJobInput struct {
-	Bucket   *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
-	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
-	Object   *string `json:"Object,omitempty" xml:"Object,omitempty"`
-}
-
-func (s QueryCensorJobListResponseBodyJobsCensorJobInput) String() string {
-	return tea.Prettify(s)
-}
-
-func (s QueryCensorJobListResponseBodyJobsCensorJobInput) GoString() string {
-	return s.String()
-}
-
-func (s *QueryCensorJobListResponseBodyJobsCensorJobInput) SetBucket(v string) *QueryCensorJobListResponseBodyJobsCensorJobInput {
-	s.Bucket = &v
-	return s
-}
-
-func (s *QueryCensorJobListResponseBodyJobsCensorJobInput) SetLocation(v string) *QueryCensorJobListResponseBodyJobsCensorJobInput {
-	s.Location = &v
-	return s
-}
-
-func (s *QueryCensorJobListResponseBodyJobsCensorJobInput) SetObject(v string) *QueryCensorJobListResponseBodyJobsCensorJobInput {
-	s.Object = &v
-	return s
-}
-
-type QueryCensorJobListResponseBodyNonExistIds struct {
-	String_ []*string `json:"String,omitempty" xml:"String,omitempty" type:"Repeated"`
-}
-
-func (s QueryCensorJobListResponseBodyNonExistIds) String() string {
-	return tea.Prettify(s)
-}
-
-func (s QueryCensorJobListResponseBodyNonExistIds) GoString() string {
-	return s.String()
-}
-
-func (s *QueryCensorJobListResponseBodyNonExistIds) SetString_(v []*string) *QueryCensorJobListResponseBodyNonExistIds {
-	s.String_ = v
-	return s
-}
-
-type QueryCensorJobListResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *QueryCensorJobListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s QueryCensorJobListResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s QueryCensorJobListResponse) GoString() string {
-	return s.String()
-}
-
-func (s *QueryCensorJobListResponse) SetHeaders(v map[string]*string) *QueryCensorJobListResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *QueryCensorJobListResponse) SetStatusCode(v int32) *QueryCensorJobListResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *QueryCensorJobListResponse) SetBody(v *QueryCensorJobListResponseBody) *QueryCensorJobListResponse {
 	s.Body = v
 	return s
 }
@@ -23718,6 +22814,763 @@ func (s *QueryMediaCensorJobDetailResponse) SetBody(v *QueryMediaCensorJobDetail
 	return s
 }
 
+type QueryMediaCensorJobListRequest struct {
+	EndOfJobCreatedTimeRange   *string `json:"EndOfJobCreatedTimeRange,omitempty" xml:"EndOfJobCreatedTimeRange,omitempty"`
+	JobIds                     *string `json:"JobIds,omitempty" xml:"JobIds,omitempty"`
+	MaximumPageSize            *int64  `json:"MaximumPageSize,omitempty" xml:"MaximumPageSize,omitempty"`
+	NextPageToken              *string `json:"NextPageToken,omitempty" xml:"NextPageToken,omitempty"`
+	OwnerAccount               *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId                    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	PipelineId                 *string `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
+	ResourceOwnerAccount       *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId            *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	StartOfJobCreatedTimeRange *string `json:"StartOfJobCreatedTimeRange,omitempty" xml:"StartOfJobCreatedTimeRange,omitempty"`
+	State                      *string `json:"State,omitempty" xml:"State,omitempty"`
+}
+
+func (s QueryMediaCensorJobListRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryMediaCensorJobListRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryMediaCensorJobListRequest) SetEndOfJobCreatedTimeRange(v string) *QueryMediaCensorJobListRequest {
+	s.EndOfJobCreatedTimeRange = &v
+	return s
+}
+
+func (s *QueryMediaCensorJobListRequest) SetJobIds(v string) *QueryMediaCensorJobListRequest {
+	s.JobIds = &v
+	return s
+}
+
+func (s *QueryMediaCensorJobListRequest) SetMaximumPageSize(v int64) *QueryMediaCensorJobListRequest {
+	s.MaximumPageSize = &v
+	return s
+}
+
+func (s *QueryMediaCensorJobListRequest) SetNextPageToken(v string) *QueryMediaCensorJobListRequest {
+	s.NextPageToken = &v
+	return s
+}
+
+func (s *QueryMediaCensorJobListRequest) SetOwnerAccount(v string) *QueryMediaCensorJobListRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *QueryMediaCensorJobListRequest) SetOwnerId(v int64) *QueryMediaCensorJobListRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *QueryMediaCensorJobListRequest) SetPipelineId(v string) *QueryMediaCensorJobListRequest {
+	s.PipelineId = &v
+	return s
+}
+
+func (s *QueryMediaCensorJobListRequest) SetResourceOwnerAccount(v string) *QueryMediaCensorJobListRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *QueryMediaCensorJobListRequest) SetResourceOwnerId(v int64) *QueryMediaCensorJobListRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *QueryMediaCensorJobListRequest) SetStartOfJobCreatedTimeRange(v string) *QueryMediaCensorJobListRequest {
+	s.StartOfJobCreatedTimeRange = &v
+	return s
+}
+
+func (s *QueryMediaCensorJobListRequest) SetState(v string) *QueryMediaCensorJobListRequest {
+	s.State = &v
+	return s
+}
+
+type QueryMediaCensorJobListResponseBody struct {
+	MediaCensorJobList *QueryMediaCensorJobListResponseBodyMediaCensorJobList `json:"MediaCensorJobList,omitempty" xml:"MediaCensorJobList,omitempty" type:"Struct"`
+	NextPageToken      *string                                                `json:"NextPageToken,omitempty" xml:"NextPageToken,omitempty"`
+	NonExistIds        *QueryMediaCensorJobListResponseBodyNonExistIds        `json:"NonExistIds,omitempty" xml:"NonExistIds,omitempty" type:"Struct"`
+	RequestId          *string                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s QueryMediaCensorJobListResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryMediaCensorJobListResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryMediaCensorJobListResponseBody) SetMediaCensorJobList(v *QueryMediaCensorJobListResponseBodyMediaCensorJobList) *QueryMediaCensorJobListResponseBody {
+	s.MediaCensorJobList = v
+	return s
+}
+
+func (s *QueryMediaCensorJobListResponseBody) SetNextPageToken(v string) *QueryMediaCensorJobListResponseBody {
+	s.NextPageToken = &v
+	return s
+}
+
+func (s *QueryMediaCensorJobListResponseBody) SetNonExistIds(v *QueryMediaCensorJobListResponseBodyNonExistIds) *QueryMediaCensorJobListResponseBody {
+	s.NonExistIds = v
+	return s
+}
+
+func (s *QueryMediaCensorJobListResponseBody) SetRequestId(v string) *QueryMediaCensorJobListResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type QueryMediaCensorJobListResponseBodyMediaCensorJobList struct {
+	MediaCensorJob []*QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJob `json:"MediaCensorJob,omitempty" xml:"MediaCensorJob,omitempty" type:"Repeated"`
+}
+
+func (s QueryMediaCensorJobListResponseBodyMediaCensorJobList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryMediaCensorJobListResponseBodyMediaCensorJobList) GoString() string {
+	return s.String()
+}
+
+func (s *QueryMediaCensorJobListResponseBodyMediaCensorJobList) SetMediaCensorJob(v []*QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJob) *QueryMediaCensorJobListResponseBodyMediaCensorJobList {
+	s.MediaCensorJob = v
+	return s
+}
+
+type QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJob struct {
+	BarrageCensorResult     *QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobBarrageCensorResult     `json:"BarrageCensorResult,omitempty" xml:"BarrageCensorResult,omitempty" type:"Struct"`
+	Code                    *string                                                                                     `json:"Code,omitempty" xml:"Code,omitempty"`
+	CoverImageCensorResults *QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobCoverImageCensorResults `json:"CoverImageCensorResults,omitempty" xml:"CoverImageCensorResults,omitempty" type:"Struct"`
+	CreationTime            *string                                                                                     `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	DescCensorResult        *QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobDescCensorResult        `json:"DescCensorResult,omitempty" xml:"DescCensorResult,omitempty" type:"Struct"`
+	FinishTime              *string                                                                                     `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
+	Input                   *QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobInput                   `json:"Input,omitempty" xml:"Input,omitempty" type:"Struct"`
+	JobId                   *string                                                                                     `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	Message                 *string                                                                                     `json:"Message,omitempty" xml:"Message,omitempty"`
+	PipelineId              *string                                                                                     `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
+	State                   *string                                                                                     `json:"State,omitempty" xml:"State,omitempty"`
+	Suggestion              *string                                                                                     `json:"Suggestion,omitempty" xml:"Suggestion,omitempty"`
+	TitleCensorResult       *QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobTitleCensorResult       `json:"TitleCensorResult,omitempty" xml:"TitleCensorResult,omitempty" type:"Struct"`
+	UserData                *string                                                                                     `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	VensorCensorResult      *QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobVensorCensorResult      `json:"VensorCensorResult,omitempty" xml:"VensorCensorResult,omitempty" type:"Struct"`
+	VideoCensorConfig       *QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobVideoCensorConfig       `json:"VideoCensorConfig,omitempty" xml:"VideoCensorConfig,omitempty" type:"Struct"`
+}
+
+func (s QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJob) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJob) GoString() string {
+	return s.String()
+}
+
+func (s *QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJob) SetBarrageCensorResult(v *QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobBarrageCensorResult) *QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJob {
+	s.BarrageCensorResult = v
+	return s
+}
+
+func (s *QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJob) SetCode(v string) *QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJob {
+	s.Code = &v
+	return s
+}
+
+func (s *QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJob) SetCoverImageCensorResults(v *QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobCoverImageCensorResults) *QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJob {
+	s.CoverImageCensorResults = v
+	return s
+}
+
+func (s *QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJob) SetCreationTime(v string) *QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJob {
+	s.CreationTime = &v
+	return s
+}
+
+func (s *QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJob) SetDescCensorResult(v *QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobDescCensorResult) *QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJob {
+	s.DescCensorResult = v
+	return s
+}
+
+func (s *QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJob) SetFinishTime(v string) *QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJob {
+	s.FinishTime = &v
+	return s
+}
+
+func (s *QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJob) SetInput(v *QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobInput) *QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJob {
+	s.Input = v
+	return s
+}
+
+func (s *QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJob) SetJobId(v string) *QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJob {
+	s.JobId = &v
+	return s
+}
+
+func (s *QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJob) SetMessage(v string) *QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJob {
+	s.Message = &v
+	return s
+}
+
+func (s *QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJob) SetPipelineId(v string) *QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJob {
+	s.PipelineId = &v
+	return s
+}
+
+func (s *QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJob) SetState(v string) *QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJob {
+	s.State = &v
+	return s
+}
+
+func (s *QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJob) SetSuggestion(v string) *QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJob {
+	s.Suggestion = &v
+	return s
+}
+
+func (s *QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJob) SetTitleCensorResult(v *QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobTitleCensorResult) *QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJob {
+	s.TitleCensorResult = v
+	return s
+}
+
+func (s *QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJob) SetUserData(v string) *QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJob {
+	s.UserData = &v
+	return s
+}
+
+func (s *QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJob) SetVensorCensorResult(v *QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobVensorCensorResult) *QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJob {
+	s.VensorCensorResult = v
+	return s
+}
+
+func (s *QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJob) SetVideoCensorConfig(v *QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobVideoCensorConfig) *QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJob {
+	s.VideoCensorConfig = v
+	return s
+}
+
+type QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobBarrageCensorResult struct {
+	Label      *string `json:"Label,omitempty" xml:"Label,omitempty"`
+	Rate       *string `json:"Rate,omitempty" xml:"Rate,omitempty"`
+	Scene      *string `json:"Scene,omitempty" xml:"Scene,omitempty"`
+	Suggestion *string `json:"Suggestion,omitempty" xml:"Suggestion,omitempty"`
+}
+
+func (s QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobBarrageCensorResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobBarrageCensorResult) GoString() string {
+	return s.String()
+}
+
+func (s *QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobBarrageCensorResult) SetLabel(v string) *QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobBarrageCensorResult {
+	s.Label = &v
+	return s
+}
+
+func (s *QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobBarrageCensorResult) SetRate(v string) *QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobBarrageCensorResult {
+	s.Rate = &v
+	return s
+}
+
+func (s *QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobBarrageCensorResult) SetScene(v string) *QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobBarrageCensorResult {
+	s.Scene = &v
+	return s
+}
+
+func (s *QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobBarrageCensorResult) SetSuggestion(v string) *QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobBarrageCensorResult {
+	s.Suggestion = &v
+	return s
+}
+
+type QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobCoverImageCensorResults struct {
+	CoverImageCensorResult []*QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobCoverImageCensorResultsCoverImageCensorResult `json:"CoverImageCensorResult,omitempty" xml:"CoverImageCensorResult,omitempty" type:"Repeated"`
+}
+
+func (s QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobCoverImageCensorResults) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobCoverImageCensorResults) GoString() string {
+	return s.String()
+}
+
+func (s *QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobCoverImageCensorResults) SetCoverImageCensorResult(v []*QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobCoverImageCensorResultsCoverImageCensorResult) *QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobCoverImageCensorResults {
+	s.CoverImageCensorResult = v
+	return s
+}
+
+type QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobCoverImageCensorResultsCoverImageCensorResult struct {
+	Bucket   *string                                                                                                                  `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
+	Location *string                                                                                                                  `json:"Location,omitempty" xml:"Location,omitempty"`
+	Object   *string                                                                                                                  `json:"Object,omitempty" xml:"Object,omitempty"`
+	Results  *QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobCoverImageCensorResultsCoverImageCensorResultResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Struct"`
+}
+
+func (s QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobCoverImageCensorResultsCoverImageCensorResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobCoverImageCensorResultsCoverImageCensorResult) GoString() string {
+	return s.String()
+}
+
+func (s *QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobCoverImageCensorResultsCoverImageCensorResult) SetBucket(v string) *QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobCoverImageCensorResultsCoverImageCensorResult {
+	s.Bucket = &v
+	return s
+}
+
+func (s *QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobCoverImageCensorResultsCoverImageCensorResult) SetLocation(v string) *QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobCoverImageCensorResultsCoverImageCensorResult {
+	s.Location = &v
+	return s
+}
+
+func (s *QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobCoverImageCensorResultsCoverImageCensorResult) SetObject(v string) *QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobCoverImageCensorResultsCoverImageCensorResult {
+	s.Object = &v
+	return s
+}
+
+func (s *QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobCoverImageCensorResultsCoverImageCensorResult) SetResults(v *QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobCoverImageCensorResultsCoverImageCensorResultResults) *QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobCoverImageCensorResultsCoverImageCensorResult {
+	s.Results = v
+	return s
+}
+
+type QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobCoverImageCensorResultsCoverImageCensorResultResults struct {
+	Result []*QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobCoverImageCensorResultsCoverImageCensorResultResultsResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+}
+
+func (s QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobCoverImageCensorResultsCoverImageCensorResultResults) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobCoverImageCensorResultsCoverImageCensorResultResults) GoString() string {
+	return s.String()
+}
+
+func (s *QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobCoverImageCensorResultsCoverImageCensorResultResults) SetResult(v []*QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobCoverImageCensorResultsCoverImageCensorResultResultsResult) *QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobCoverImageCensorResultsCoverImageCensorResultResults {
+	s.Result = v
+	return s
+}
+
+type QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobCoverImageCensorResultsCoverImageCensorResultResultsResult struct {
+	Label      *string `json:"Label,omitempty" xml:"Label,omitempty"`
+	Rate       *string `json:"Rate,omitempty" xml:"Rate,omitempty"`
+	Scene      *string `json:"Scene,omitempty" xml:"Scene,omitempty"`
+	Suggestion *string `json:"Suggestion,omitempty" xml:"Suggestion,omitempty"`
+}
+
+func (s QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobCoverImageCensorResultsCoverImageCensorResultResultsResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobCoverImageCensorResultsCoverImageCensorResultResultsResult) GoString() string {
+	return s.String()
+}
+
+func (s *QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobCoverImageCensorResultsCoverImageCensorResultResultsResult) SetLabel(v string) *QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobCoverImageCensorResultsCoverImageCensorResultResultsResult {
+	s.Label = &v
+	return s
+}
+
+func (s *QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobCoverImageCensorResultsCoverImageCensorResultResultsResult) SetRate(v string) *QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobCoverImageCensorResultsCoverImageCensorResultResultsResult {
+	s.Rate = &v
+	return s
+}
+
+func (s *QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobCoverImageCensorResultsCoverImageCensorResultResultsResult) SetScene(v string) *QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobCoverImageCensorResultsCoverImageCensorResultResultsResult {
+	s.Scene = &v
+	return s
+}
+
+func (s *QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobCoverImageCensorResultsCoverImageCensorResultResultsResult) SetSuggestion(v string) *QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobCoverImageCensorResultsCoverImageCensorResultResultsResult {
+	s.Suggestion = &v
+	return s
+}
+
+type QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobDescCensorResult struct {
+	Label      *string `json:"Label,omitempty" xml:"Label,omitempty"`
+	Rate       *string `json:"Rate,omitempty" xml:"Rate,omitempty"`
+	Scene      *string `json:"Scene,omitempty" xml:"Scene,omitempty"`
+	Suggestion *string `json:"Suggestion,omitempty" xml:"Suggestion,omitempty"`
+}
+
+func (s QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobDescCensorResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobDescCensorResult) GoString() string {
+	return s.String()
+}
+
+func (s *QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobDescCensorResult) SetLabel(v string) *QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobDescCensorResult {
+	s.Label = &v
+	return s
+}
+
+func (s *QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobDescCensorResult) SetRate(v string) *QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobDescCensorResult {
+	s.Rate = &v
+	return s
+}
+
+func (s *QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobDescCensorResult) SetScene(v string) *QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobDescCensorResult {
+	s.Scene = &v
+	return s
+}
+
+func (s *QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobDescCensorResult) SetSuggestion(v string) *QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobDescCensorResult {
+	s.Suggestion = &v
+	return s
+}
+
+type QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobInput struct {
+	Bucket   *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
+	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
+	Object   *string `json:"Object,omitempty" xml:"Object,omitempty"`
+}
+
+func (s QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobInput) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobInput) GoString() string {
+	return s.String()
+}
+
+func (s *QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobInput) SetBucket(v string) *QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobInput {
+	s.Bucket = &v
+	return s
+}
+
+func (s *QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobInput) SetLocation(v string) *QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobInput {
+	s.Location = &v
+	return s
+}
+
+func (s *QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobInput) SetObject(v string) *QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobInput {
+	s.Object = &v
+	return s
+}
+
+type QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobTitleCensorResult struct {
+	Label      *string `json:"Label,omitempty" xml:"Label,omitempty"`
+	Rate       *string `json:"Rate,omitempty" xml:"Rate,omitempty"`
+	Scene      *string `json:"Scene,omitempty" xml:"Scene,omitempty"`
+	Suggestion *string `json:"Suggestion,omitempty" xml:"Suggestion,omitempty"`
+}
+
+func (s QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobTitleCensorResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobTitleCensorResult) GoString() string {
+	return s.String()
+}
+
+func (s *QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobTitleCensorResult) SetLabel(v string) *QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobTitleCensorResult {
+	s.Label = &v
+	return s
+}
+
+func (s *QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobTitleCensorResult) SetRate(v string) *QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobTitleCensorResult {
+	s.Rate = &v
+	return s
+}
+
+func (s *QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobTitleCensorResult) SetScene(v string) *QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobTitleCensorResult {
+	s.Scene = &v
+	return s
+}
+
+func (s *QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobTitleCensorResult) SetSuggestion(v string) *QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobTitleCensorResult {
+	s.Suggestion = &v
+	return s
+}
+
+type QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobVensorCensorResult struct {
+	CensorResults  *QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobVensorCensorResultCensorResults  `json:"CensorResults,omitempty" xml:"CensorResults,omitempty" type:"Struct"`
+	NextPageToken  *string                                                                                              `json:"NextPageToken,omitempty" xml:"NextPageToken,omitempty"`
+	VideoTimelines *QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobVensorCensorResultVideoTimelines `json:"VideoTimelines,omitempty" xml:"VideoTimelines,omitempty" type:"Struct"`
+}
+
+func (s QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobVensorCensorResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobVensorCensorResult) GoString() string {
+	return s.String()
+}
+
+func (s *QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobVensorCensorResult) SetCensorResults(v *QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobVensorCensorResultCensorResults) *QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobVensorCensorResult {
+	s.CensorResults = v
+	return s
+}
+
+func (s *QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobVensorCensorResult) SetNextPageToken(v string) *QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobVensorCensorResult {
+	s.NextPageToken = &v
+	return s
+}
+
+func (s *QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobVensorCensorResult) SetVideoTimelines(v *QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobVensorCensorResultVideoTimelines) *QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobVensorCensorResult {
+	s.VideoTimelines = v
+	return s
+}
+
+type QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobVensorCensorResultCensorResults struct {
+	CensorResult []*QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobVensorCensorResultCensorResultsCensorResult `json:"CensorResult,omitempty" xml:"CensorResult,omitempty" type:"Repeated"`
+}
+
+func (s QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobVensorCensorResultCensorResults) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobVensorCensorResultCensorResults) GoString() string {
+	return s.String()
+}
+
+func (s *QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobVensorCensorResultCensorResults) SetCensorResult(v []*QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobVensorCensorResultCensorResultsCensorResult) *QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobVensorCensorResultCensorResults {
+	s.CensorResult = v
+	return s
+}
+
+type QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobVensorCensorResultCensorResultsCensorResult struct {
+	Label      *string `json:"Label,omitempty" xml:"Label,omitempty"`
+	Rate       *string `json:"Rate,omitempty" xml:"Rate,omitempty"`
+	Scene      *string `json:"Scene,omitempty" xml:"Scene,omitempty"`
+	Suggestion *string `json:"Suggestion,omitempty" xml:"Suggestion,omitempty"`
+}
+
+func (s QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobVensorCensorResultCensorResultsCensorResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobVensorCensorResultCensorResultsCensorResult) GoString() string {
+	return s.String()
+}
+
+func (s *QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobVensorCensorResultCensorResultsCensorResult) SetLabel(v string) *QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobVensorCensorResultCensorResultsCensorResult {
+	s.Label = &v
+	return s
+}
+
+func (s *QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobVensorCensorResultCensorResultsCensorResult) SetRate(v string) *QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobVensorCensorResultCensorResultsCensorResult {
+	s.Rate = &v
+	return s
+}
+
+func (s *QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobVensorCensorResultCensorResultsCensorResult) SetScene(v string) *QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobVensorCensorResultCensorResultsCensorResult {
+	s.Scene = &v
+	return s
+}
+
+func (s *QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobVensorCensorResultCensorResultsCensorResult) SetSuggestion(v string) *QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobVensorCensorResultCensorResultsCensorResult {
+	s.Suggestion = &v
+	return s
+}
+
+type QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobVensorCensorResultVideoTimelines struct {
+	VideoTimeline []*QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobVensorCensorResultVideoTimelinesVideoTimeline `json:"VideoTimeline,omitempty" xml:"VideoTimeline,omitempty" type:"Repeated"`
+}
+
+func (s QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobVensorCensorResultVideoTimelines) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobVensorCensorResultVideoTimelines) GoString() string {
+	return s.String()
+}
+
+func (s *QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobVensorCensorResultVideoTimelines) SetVideoTimeline(v []*QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobVensorCensorResultVideoTimelinesVideoTimeline) *QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobVensorCensorResultVideoTimelines {
+	s.VideoTimeline = v
+	return s
+}
+
+type QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobVensorCensorResultVideoTimelinesVideoTimeline struct {
+	CensorResults *QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobVensorCensorResultVideoTimelinesVideoTimelineCensorResults `json:"CensorResults,omitempty" xml:"CensorResults,omitempty" type:"Struct"`
+	Object        *string                                                                                                                        `json:"Object,omitempty" xml:"Object,omitempty"`
+	Timestamp     *string                                                                                                                        `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
+}
+
+func (s QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobVensorCensorResultVideoTimelinesVideoTimeline) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobVensorCensorResultVideoTimelinesVideoTimeline) GoString() string {
+	return s.String()
+}
+
+func (s *QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobVensorCensorResultVideoTimelinesVideoTimeline) SetCensorResults(v *QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobVensorCensorResultVideoTimelinesVideoTimelineCensorResults) *QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobVensorCensorResultVideoTimelinesVideoTimeline {
+	s.CensorResults = v
+	return s
+}
+
+func (s *QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobVensorCensorResultVideoTimelinesVideoTimeline) SetObject(v string) *QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobVensorCensorResultVideoTimelinesVideoTimeline {
+	s.Object = &v
+	return s
+}
+
+func (s *QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobVensorCensorResultVideoTimelinesVideoTimeline) SetTimestamp(v string) *QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobVensorCensorResultVideoTimelinesVideoTimeline {
+	s.Timestamp = &v
+	return s
+}
+
+type QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobVensorCensorResultVideoTimelinesVideoTimelineCensorResults struct {
+	CensorResult []*QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobVensorCensorResultVideoTimelinesVideoTimelineCensorResultsCensorResult `json:"CensorResult,omitempty" xml:"CensorResult,omitempty" type:"Repeated"`
+}
+
+func (s QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobVensorCensorResultVideoTimelinesVideoTimelineCensorResults) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobVensorCensorResultVideoTimelinesVideoTimelineCensorResults) GoString() string {
+	return s.String()
+}
+
+func (s *QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobVensorCensorResultVideoTimelinesVideoTimelineCensorResults) SetCensorResult(v []*QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobVensorCensorResultVideoTimelinesVideoTimelineCensorResultsCensorResult) *QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobVensorCensorResultVideoTimelinesVideoTimelineCensorResults {
+	s.CensorResult = v
+	return s
+}
+
+type QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobVensorCensorResultVideoTimelinesVideoTimelineCensorResultsCensorResult struct {
+	Label      *string `json:"Label,omitempty" xml:"Label,omitempty"`
+	Rate       *string `json:"Rate,omitempty" xml:"Rate,omitempty"`
+	Scene      *string `json:"Scene,omitempty" xml:"Scene,omitempty"`
+	Suggestion *string `json:"Suggestion,omitempty" xml:"Suggestion,omitempty"`
+}
+
+func (s QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobVensorCensorResultVideoTimelinesVideoTimelineCensorResultsCensorResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobVensorCensorResultVideoTimelinesVideoTimelineCensorResultsCensorResult) GoString() string {
+	return s.String()
+}
+
+func (s *QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobVensorCensorResultVideoTimelinesVideoTimelineCensorResultsCensorResult) SetLabel(v string) *QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobVensorCensorResultVideoTimelinesVideoTimelineCensorResultsCensorResult {
+	s.Label = &v
+	return s
+}
+
+func (s *QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobVensorCensorResultVideoTimelinesVideoTimelineCensorResultsCensorResult) SetRate(v string) *QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobVensorCensorResultVideoTimelinesVideoTimelineCensorResultsCensorResult {
+	s.Rate = &v
+	return s
+}
+
+func (s *QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobVensorCensorResultVideoTimelinesVideoTimelineCensorResultsCensorResult) SetScene(v string) *QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobVensorCensorResultVideoTimelinesVideoTimelineCensorResultsCensorResult {
+	s.Scene = &v
+	return s
+}
+
+func (s *QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobVensorCensorResultVideoTimelinesVideoTimelineCensorResultsCensorResult) SetSuggestion(v string) *QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobVensorCensorResultVideoTimelinesVideoTimelineCensorResultsCensorResult {
+	s.Suggestion = &v
+	return s
+}
+
+type QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobVideoCensorConfig struct {
+	BizType     *string                                                                                         `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	OutputFile  *QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobVideoCensorConfigOutputFile `json:"OutputFile,omitempty" xml:"OutputFile,omitempty" type:"Struct"`
+	VideoCensor *string                                                                                         `json:"VideoCensor,omitempty" xml:"VideoCensor,omitempty"`
+}
+
+func (s QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobVideoCensorConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobVideoCensorConfig) GoString() string {
+	return s.String()
+}
+
+func (s *QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobVideoCensorConfig) SetBizType(v string) *QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobVideoCensorConfig {
+	s.BizType = &v
+	return s
+}
+
+func (s *QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobVideoCensorConfig) SetOutputFile(v *QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobVideoCensorConfigOutputFile) *QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobVideoCensorConfig {
+	s.OutputFile = v
+	return s
+}
+
+func (s *QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobVideoCensorConfig) SetVideoCensor(v string) *QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobVideoCensorConfig {
+	s.VideoCensor = &v
+	return s
+}
+
+type QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobVideoCensorConfigOutputFile struct {
+	Bucket   *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
+	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
+	Object   *string `json:"Object,omitempty" xml:"Object,omitempty"`
+}
+
+func (s QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobVideoCensorConfigOutputFile) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobVideoCensorConfigOutputFile) GoString() string {
+	return s.String()
+}
+
+func (s *QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobVideoCensorConfigOutputFile) SetBucket(v string) *QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobVideoCensorConfigOutputFile {
+	s.Bucket = &v
+	return s
+}
+
+func (s *QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobVideoCensorConfigOutputFile) SetLocation(v string) *QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobVideoCensorConfigOutputFile {
+	s.Location = &v
+	return s
+}
+
+func (s *QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobVideoCensorConfigOutputFile) SetObject(v string) *QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobVideoCensorConfigOutputFile {
+	s.Object = &v
+	return s
+}
+
+type QueryMediaCensorJobListResponseBodyNonExistIds struct {
+	String_ []*string `json:"String,omitempty" xml:"String,omitempty" type:"Repeated"`
+}
+
+func (s QueryMediaCensorJobListResponseBodyNonExistIds) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryMediaCensorJobListResponseBodyNonExistIds) GoString() string {
+	return s.String()
+}
+
+func (s *QueryMediaCensorJobListResponseBodyNonExistIds) SetString_(v []*string) *QueryMediaCensorJobListResponseBodyNonExistIds {
+	s.String_ = v
+	return s
+}
+
+type QueryMediaCensorJobListResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *QueryMediaCensorJobListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s QueryMediaCensorJobListResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryMediaCensorJobListResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryMediaCensorJobListResponse) SetHeaders(v map[string]*string) *QueryMediaCensorJobListResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryMediaCensorJobListResponse) SetStatusCode(v int32) *QueryMediaCensorJobListResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QueryMediaCensorJobListResponse) SetBody(v *QueryMediaCensorJobListResponseBody) *QueryMediaCensorJobListResponse {
+	s.Body = v
+	return s
+}
+
 type QuerySmarttagJobRequest struct {
 	JobId  *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	Params *string `json:"Params,omitempty" xml:"Params,omitempty"`
@@ -24485,6 +24338,8 @@ func (s *SearchMediaResponseBody) SetTotal(v int64) *SearchMediaResponseBody {
 }
 
 type SearchMediaResponseBodyMediaInfoList struct {
+	AiData         *SearchMediaResponseBodyMediaInfoListAiData         `json:"AiData,omitempty" xml:"AiData,omitempty" type:"Struct"`
+	AiRoughData    *SearchMediaResponseBodyMediaInfoListAiRoughData    `json:"AiRoughData,omitempty" xml:"AiRoughData,omitempty" type:"Struct"`
 	FileInfoList   []*SearchMediaResponseBodyMediaInfoListFileInfoList `json:"FileInfoList,omitempty" xml:"FileInfoList,omitempty" type:"Repeated"`
 	MediaBasicInfo *SearchMediaResponseBodyMediaInfoListMediaBasicInfo `json:"MediaBasicInfo,omitempty" xml:"MediaBasicInfo,omitempty" type:"Struct"`
 	MediaId        *string                                             `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
@@ -24496,6 +24351,16 @@ func (s SearchMediaResponseBodyMediaInfoList) String() string {
 
 func (s SearchMediaResponseBodyMediaInfoList) GoString() string {
 	return s.String()
+}
+
+func (s *SearchMediaResponseBodyMediaInfoList) SetAiData(v *SearchMediaResponseBodyMediaInfoListAiData) *SearchMediaResponseBodyMediaInfoList {
+	s.AiData = v
+	return s
+}
+
+func (s *SearchMediaResponseBodyMediaInfoList) SetAiRoughData(v *SearchMediaResponseBodyMediaInfoListAiRoughData) *SearchMediaResponseBodyMediaInfoList {
+	s.AiRoughData = v
+	return s
 }
 
 func (s *SearchMediaResponseBodyMediaInfoList) SetFileInfoList(v []*SearchMediaResponseBodyMediaInfoListFileInfoList) *SearchMediaResponseBodyMediaInfoList {
@@ -24510,6 +24375,311 @@ func (s *SearchMediaResponseBodyMediaInfoList) SetMediaBasicInfo(v *SearchMediaR
 
 func (s *SearchMediaResponseBodyMediaInfoList) SetMediaId(v string) *SearchMediaResponseBodyMediaInfoList {
 	s.MediaId = &v
+	return s
+}
+
+type SearchMediaResponseBodyMediaInfoListAiData struct {
+	AiLabelInfo []*SearchMediaResponseBodyMediaInfoListAiDataAiLabelInfo `json:"AiLabelInfo,omitempty" xml:"AiLabelInfo,omitempty" type:"Repeated"`
+	AsrInfo     []*SearchMediaResponseBodyMediaInfoListAiDataAsrInfo     `json:"AsrInfo,omitempty" xml:"AsrInfo,omitempty" type:"Repeated"`
+	OcrInfo     []*SearchMediaResponseBodyMediaInfoListAiDataOcrInfo     `json:"OcrInfo,omitempty" xml:"OcrInfo,omitempty" type:"Repeated"`
+}
+
+func (s SearchMediaResponseBodyMediaInfoListAiData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchMediaResponseBodyMediaInfoListAiData) GoString() string {
+	return s.String()
+}
+
+func (s *SearchMediaResponseBodyMediaInfoListAiData) SetAiLabelInfo(v []*SearchMediaResponseBodyMediaInfoListAiDataAiLabelInfo) *SearchMediaResponseBodyMediaInfoListAiData {
+	s.AiLabelInfo = v
+	return s
+}
+
+func (s *SearchMediaResponseBodyMediaInfoListAiData) SetAsrInfo(v []*SearchMediaResponseBodyMediaInfoListAiDataAsrInfo) *SearchMediaResponseBodyMediaInfoListAiData {
+	s.AsrInfo = v
+	return s
+}
+
+func (s *SearchMediaResponseBodyMediaInfoListAiData) SetOcrInfo(v []*SearchMediaResponseBodyMediaInfoListAiDataOcrInfo) *SearchMediaResponseBodyMediaInfoListAiData {
+	s.OcrInfo = v
+	return s
+}
+
+type SearchMediaResponseBodyMediaInfoListAiDataAiLabelInfo struct {
+	Category    *string                                                             `json:"Category,omitempty" xml:"Category,omitempty"`
+	FaceId      *string                                                             `json:"FaceId,omitempty" xml:"FaceId,omitempty"`
+	LabelId     *string                                                             `json:"LabelId,omitempty" xml:"LabelId,omitempty"`
+	LabelName   *string                                                             `json:"LabelName,omitempty" xml:"LabelName,omitempty"`
+	LabelType   *string                                                             `json:"LabelType,omitempty" xml:"LabelType,omitempty"`
+	Occurrences []*SearchMediaResponseBodyMediaInfoListAiDataAiLabelInfoOccurrences `json:"Occurrences,omitempty" xml:"Occurrences,omitempty" type:"Repeated"`
+	Source      *string                                                             `json:"Source,omitempty" xml:"Source,omitempty"`
+}
+
+func (s SearchMediaResponseBodyMediaInfoListAiDataAiLabelInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchMediaResponseBodyMediaInfoListAiDataAiLabelInfo) GoString() string {
+	return s.String()
+}
+
+func (s *SearchMediaResponseBodyMediaInfoListAiDataAiLabelInfo) SetCategory(v string) *SearchMediaResponseBodyMediaInfoListAiDataAiLabelInfo {
+	s.Category = &v
+	return s
+}
+
+func (s *SearchMediaResponseBodyMediaInfoListAiDataAiLabelInfo) SetFaceId(v string) *SearchMediaResponseBodyMediaInfoListAiDataAiLabelInfo {
+	s.FaceId = &v
+	return s
+}
+
+func (s *SearchMediaResponseBodyMediaInfoListAiDataAiLabelInfo) SetLabelId(v string) *SearchMediaResponseBodyMediaInfoListAiDataAiLabelInfo {
+	s.LabelId = &v
+	return s
+}
+
+func (s *SearchMediaResponseBodyMediaInfoListAiDataAiLabelInfo) SetLabelName(v string) *SearchMediaResponseBodyMediaInfoListAiDataAiLabelInfo {
+	s.LabelName = &v
+	return s
+}
+
+func (s *SearchMediaResponseBodyMediaInfoListAiDataAiLabelInfo) SetLabelType(v string) *SearchMediaResponseBodyMediaInfoListAiDataAiLabelInfo {
+	s.LabelType = &v
+	return s
+}
+
+func (s *SearchMediaResponseBodyMediaInfoListAiDataAiLabelInfo) SetOccurrences(v []*SearchMediaResponseBodyMediaInfoListAiDataAiLabelInfoOccurrences) *SearchMediaResponseBodyMediaInfoListAiDataAiLabelInfo {
+	s.Occurrences = v
+	return s
+}
+
+func (s *SearchMediaResponseBodyMediaInfoListAiDataAiLabelInfo) SetSource(v string) *SearchMediaResponseBodyMediaInfoListAiDataAiLabelInfo {
+	s.Source = &v
+	return s
+}
+
+type SearchMediaResponseBodyMediaInfoListAiDataAiLabelInfoOccurrences struct {
+	Content         *string                                                                   `json:"Content,omitempty" xml:"Content,omitempty"`
+	FinegrainId     *string                                                                   `json:"FinegrainId,omitempty" xml:"FinegrainId,omitempty"`
+	FinegrainName   *string                                                                   `json:"FinegrainName,omitempty" xml:"FinegrainName,omitempty"`
+	From            *float64                                                                  `json:"From,omitempty" xml:"From,omitempty"`
+	Image           *string                                                                   `json:"Image,omitempty" xml:"Image,omitempty"`
+	Score           *float64                                                                  `json:"Score,omitempty" xml:"Score,omitempty"`
+	TableBatchSeqId *string                                                                   `json:"TableBatchSeqId,omitempty" xml:"TableBatchSeqId,omitempty"`
+	To              *float64                                                                  `json:"To,omitempty" xml:"To,omitempty"`
+	Tracks          []*SearchMediaResponseBodyMediaInfoListAiDataAiLabelInfoOccurrencesTracks `json:"Tracks,omitempty" xml:"Tracks,omitempty" type:"Repeated"`
+	ClipId          *string                                                                   `json:"clipId,omitempty" xml:"clipId,omitempty"`
+}
+
+func (s SearchMediaResponseBodyMediaInfoListAiDataAiLabelInfoOccurrences) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchMediaResponseBodyMediaInfoListAiDataAiLabelInfoOccurrences) GoString() string {
+	return s.String()
+}
+
+func (s *SearchMediaResponseBodyMediaInfoListAiDataAiLabelInfoOccurrences) SetContent(v string) *SearchMediaResponseBodyMediaInfoListAiDataAiLabelInfoOccurrences {
+	s.Content = &v
+	return s
+}
+
+func (s *SearchMediaResponseBodyMediaInfoListAiDataAiLabelInfoOccurrences) SetFinegrainId(v string) *SearchMediaResponseBodyMediaInfoListAiDataAiLabelInfoOccurrences {
+	s.FinegrainId = &v
+	return s
+}
+
+func (s *SearchMediaResponseBodyMediaInfoListAiDataAiLabelInfoOccurrences) SetFinegrainName(v string) *SearchMediaResponseBodyMediaInfoListAiDataAiLabelInfoOccurrences {
+	s.FinegrainName = &v
+	return s
+}
+
+func (s *SearchMediaResponseBodyMediaInfoListAiDataAiLabelInfoOccurrences) SetFrom(v float64) *SearchMediaResponseBodyMediaInfoListAiDataAiLabelInfoOccurrences {
+	s.From = &v
+	return s
+}
+
+func (s *SearchMediaResponseBodyMediaInfoListAiDataAiLabelInfoOccurrences) SetImage(v string) *SearchMediaResponseBodyMediaInfoListAiDataAiLabelInfoOccurrences {
+	s.Image = &v
+	return s
+}
+
+func (s *SearchMediaResponseBodyMediaInfoListAiDataAiLabelInfoOccurrences) SetScore(v float64) *SearchMediaResponseBodyMediaInfoListAiDataAiLabelInfoOccurrences {
+	s.Score = &v
+	return s
+}
+
+func (s *SearchMediaResponseBodyMediaInfoListAiDataAiLabelInfoOccurrences) SetTableBatchSeqId(v string) *SearchMediaResponseBodyMediaInfoListAiDataAiLabelInfoOccurrences {
+	s.TableBatchSeqId = &v
+	return s
+}
+
+func (s *SearchMediaResponseBodyMediaInfoListAiDataAiLabelInfoOccurrences) SetTo(v float64) *SearchMediaResponseBodyMediaInfoListAiDataAiLabelInfoOccurrences {
+	s.To = &v
+	return s
+}
+
+func (s *SearchMediaResponseBodyMediaInfoListAiDataAiLabelInfoOccurrences) SetTracks(v []*SearchMediaResponseBodyMediaInfoListAiDataAiLabelInfoOccurrencesTracks) *SearchMediaResponseBodyMediaInfoListAiDataAiLabelInfoOccurrences {
+	s.Tracks = v
+	return s
+}
+
+func (s *SearchMediaResponseBodyMediaInfoListAiDataAiLabelInfoOccurrences) SetClipId(v string) *SearchMediaResponseBodyMediaInfoListAiDataAiLabelInfoOccurrences {
+	s.ClipId = &v
+	return s
+}
+
+type SearchMediaResponseBodyMediaInfoListAiDataAiLabelInfoOccurrencesTracks struct {
+	Position  *string  `json:"Position,omitempty" xml:"Position,omitempty"`
+	Size      *float64 `json:"Size,omitempty" xml:"Size,omitempty"`
+	Timestamp *float64 `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
+}
+
+func (s SearchMediaResponseBodyMediaInfoListAiDataAiLabelInfoOccurrencesTracks) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchMediaResponseBodyMediaInfoListAiDataAiLabelInfoOccurrencesTracks) GoString() string {
+	return s.String()
+}
+
+func (s *SearchMediaResponseBodyMediaInfoListAiDataAiLabelInfoOccurrencesTracks) SetPosition(v string) *SearchMediaResponseBodyMediaInfoListAiDataAiLabelInfoOccurrencesTracks {
+	s.Position = &v
+	return s
+}
+
+func (s *SearchMediaResponseBodyMediaInfoListAiDataAiLabelInfoOccurrencesTracks) SetSize(v float64) *SearchMediaResponseBodyMediaInfoListAiDataAiLabelInfoOccurrencesTracks {
+	s.Size = &v
+	return s
+}
+
+func (s *SearchMediaResponseBodyMediaInfoListAiDataAiLabelInfoOccurrencesTracks) SetTimestamp(v float64) *SearchMediaResponseBodyMediaInfoListAiDataAiLabelInfoOccurrencesTracks {
+	s.Timestamp = &v
+	return s
+}
+
+type SearchMediaResponseBodyMediaInfoListAiDataAsrInfo struct {
+	ClipId    *string  `json:"ClipId,omitempty" xml:"ClipId,omitempty"`
+	Content   *string  `json:"Content,omitempty" xml:"Content,omitempty"`
+	From      *float64 `json:"From,omitempty" xml:"From,omitempty"`
+	Timestamp *float64 `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
+	To        *float64 `json:"To,omitempty" xml:"To,omitempty"`
+}
+
+func (s SearchMediaResponseBodyMediaInfoListAiDataAsrInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchMediaResponseBodyMediaInfoListAiDataAsrInfo) GoString() string {
+	return s.String()
+}
+
+func (s *SearchMediaResponseBodyMediaInfoListAiDataAsrInfo) SetClipId(v string) *SearchMediaResponseBodyMediaInfoListAiDataAsrInfo {
+	s.ClipId = &v
+	return s
+}
+
+func (s *SearchMediaResponseBodyMediaInfoListAiDataAsrInfo) SetContent(v string) *SearchMediaResponseBodyMediaInfoListAiDataAsrInfo {
+	s.Content = &v
+	return s
+}
+
+func (s *SearchMediaResponseBodyMediaInfoListAiDataAsrInfo) SetFrom(v float64) *SearchMediaResponseBodyMediaInfoListAiDataAsrInfo {
+	s.From = &v
+	return s
+}
+
+func (s *SearchMediaResponseBodyMediaInfoListAiDataAsrInfo) SetTimestamp(v float64) *SearchMediaResponseBodyMediaInfoListAiDataAsrInfo {
+	s.Timestamp = &v
+	return s
+}
+
+func (s *SearchMediaResponseBodyMediaInfoListAiDataAsrInfo) SetTo(v float64) *SearchMediaResponseBodyMediaInfoListAiDataAsrInfo {
+	s.To = &v
+	return s
+}
+
+type SearchMediaResponseBodyMediaInfoListAiDataOcrInfo struct {
+	ClipId    *string  `json:"ClipId,omitempty" xml:"ClipId,omitempty"`
+	Content   *string  `json:"Content,omitempty" xml:"Content,omitempty"`
+	From      *float64 `json:"From,omitempty" xml:"From,omitempty"`
+	Timestamp *float64 `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
+	To        *float64 `json:"To,omitempty" xml:"To,omitempty"`
+}
+
+func (s SearchMediaResponseBodyMediaInfoListAiDataOcrInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchMediaResponseBodyMediaInfoListAiDataOcrInfo) GoString() string {
+	return s.String()
+}
+
+func (s *SearchMediaResponseBodyMediaInfoListAiDataOcrInfo) SetClipId(v string) *SearchMediaResponseBodyMediaInfoListAiDataOcrInfo {
+	s.ClipId = &v
+	return s
+}
+
+func (s *SearchMediaResponseBodyMediaInfoListAiDataOcrInfo) SetContent(v string) *SearchMediaResponseBodyMediaInfoListAiDataOcrInfo {
+	s.Content = &v
+	return s
+}
+
+func (s *SearchMediaResponseBodyMediaInfoListAiDataOcrInfo) SetFrom(v float64) *SearchMediaResponseBodyMediaInfoListAiDataOcrInfo {
+	s.From = &v
+	return s
+}
+
+func (s *SearchMediaResponseBodyMediaInfoListAiDataOcrInfo) SetTimestamp(v float64) *SearchMediaResponseBodyMediaInfoListAiDataOcrInfo {
+	s.Timestamp = &v
+	return s
+}
+
+func (s *SearchMediaResponseBodyMediaInfoListAiDataOcrInfo) SetTo(v float64) *SearchMediaResponseBodyMediaInfoListAiDataOcrInfo {
+	s.To = &v
+	return s
+}
+
+type SearchMediaResponseBodyMediaInfoListAiRoughData struct {
+	AiCategoryLevel1 *string `json:"AiCategoryLevel1,omitempty" xml:"AiCategoryLevel1,omitempty"`
+	AiJobId          *string `json:"AiJobId,omitempty" xml:"AiJobId,omitempty"`
+	Result           *string `json:"Result,omitempty" xml:"Result,omitempty"`
+	SaveType         *string `json:"SaveType,omitempty" xml:"SaveType,omitempty"`
+	Status           *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s SearchMediaResponseBodyMediaInfoListAiRoughData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchMediaResponseBodyMediaInfoListAiRoughData) GoString() string {
+	return s.String()
+}
+
+func (s *SearchMediaResponseBodyMediaInfoListAiRoughData) SetAiCategoryLevel1(v string) *SearchMediaResponseBodyMediaInfoListAiRoughData {
+	s.AiCategoryLevel1 = &v
+	return s
+}
+
+func (s *SearchMediaResponseBodyMediaInfoListAiRoughData) SetAiJobId(v string) *SearchMediaResponseBodyMediaInfoListAiRoughData {
+	s.AiJobId = &v
+	return s
+}
+
+func (s *SearchMediaResponseBodyMediaInfoListAiRoughData) SetResult(v string) *SearchMediaResponseBodyMediaInfoListAiRoughData {
+	s.Result = &v
+	return s
+}
+
+func (s *SearchMediaResponseBodyMediaInfoListAiRoughData) SetSaveType(v string) *SearchMediaResponseBodyMediaInfoListAiRoughData {
+	s.SaveType = &v
+	return s
+}
+
+func (s *SearchMediaResponseBodyMediaInfoListAiRoughData) SetStatus(v string) *SearchMediaResponseBodyMediaInfoListAiRoughData {
+	s.Status = &v
 	return s
 }
 
@@ -29813,8 +29983,9 @@ func (s *SubmitTranscodeJobRequest) SetUserData(v string) *SubmitTranscodeJobReq
 }
 
 type SubmitTranscodeJobRequestInputGroup struct {
-	Media *string `json:"Media,omitempty" xml:"Media,omitempty"`
-	Type  *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	InputUrl *string `json:"InputUrl,omitempty" xml:"InputUrl,omitempty"`
+	Media    *string `json:"Media,omitempty" xml:"Media,omitempty"`
+	Type     *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s SubmitTranscodeJobRequestInputGroup) String() string {
@@ -29823,6 +29994,11 @@ func (s SubmitTranscodeJobRequestInputGroup) String() string {
 
 func (s SubmitTranscodeJobRequestInputGroup) GoString() string {
 	return s.String()
+}
+
+func (s *SubmitTranscodeJobRequestInputGroup) SetInputUrl(v string) *SubmitTranscodeJobRequestInputGroup {
+	s.InputUrl = &v
+	return s
 }
 
 func (s *SubmitTranscodeJobRequestInputGroup) SetMedia(v string) *SubmitTranscodeJobRequestInputGroup {
@@ -29859,8 +30035,9 @@ func (s *SubmitTranscodeJobRequestOutputGroup) SetProcessConfig(v *SubmitTransco
 }
 
 type SubmitTranscodeJobRequestOutputGroupOutput struct {
-	Media *string `json:"Media,omitempty" xml:"Media,omitempty"`
-	Type  *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Media     *string `json:"Media,omitempty" xml:"Media,omitempty"`
+	OutputUrl *string `json:"OutputUrl,omitempty" xml:"OutputUrl,omitempty"`
+	Type      *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s SubmitTranscodeJobRequestOutputGroupOutput) String() string {
@@ -29876,6 +30053,11 @@ func (s *SubmitTranscodeJobRequestOutputGroupOutput) SetMedia(v string) *SubmitT
 	return s
 }
 
+func (s *SubmitTranscodeJobRequestOutputGroupOutput) SetOutputUrl(v string) *SubmitTranscodeJobRequestOutputGroupOutput {
+	s.OutputUrl = &v
+	return s
+}
+
 func (s *SubmitTranscodeJobRequestOutputGroupOutput) SetType(v string) *SubmitTranscodeJobRequestOutputGroupOutput {
 	s.Type = &v
 	return s
@@ -29885,6 +30067,7 @@ type SubmitTranscodeJobRequestOutputGroupProcessConfig struct {
 	CombineConfigs  []*SubmitTranscodeJobRequestOutputGroupProcessConfigCombineConfigs  `json:"CombineConfigs,omitempty" xml:"CombineConfigs,omitempty" type:"Repeated"`
 	Encryption      *SubmitTranscodeJobRequestOutputGroupProcessConfigEncryption        `json:"Encryption,omitempty" xml:"Encryption,omitempty" type:"Struct"`
 	ImageWatermarks []*SubmitTranscodeJobRequestOutputGroupProcessConfigImageWatermarks `json:"ImageWatermarks,omitempty" xml:"ImageWatermarks,omitempty" type:"Repeated"`
+	IsInheritTags   *bool                                                               `json:"IsInheritTags,omitempty" xml:"IsInheritTags,omitempty"`
 	Subtitles       []*SubmitTranscodeJobRequestOutputGroupProcessConfigSubtitles       `json:"Subtitles,omitempty" xml:"Subtitles,omitempty" type:"Repeated"`
 	TextWatermarks  []*SubmitTranscodeJobRequestOutputGroupProcessConfigTextWatermarks  `json:"TextWatermarks,omitempty" xml:"TextWatermarks,omitempty" type:"Repeated"`
 	Transcode       *SubmitTranscodeJobRequestOutputGroupProcessConfigTranscode         `json:"Transcode,omitempty" xml:"Transcode,omitempty" type:"Struct"`
@@ -29910,6 +30093,11 @@ func (s *SubmitTranscodeJobRequestOutputGroupProcessConfig) SetEncryption(v *Sub
 
 func (s *SubmitTranscodeJobRequestOutputGroupProcessConfig) SetImageWatermarks(v []*SubmitTranscodeJobRequestOutputGroupProcessConfigImageWatermarks) *SubmitTranscodeJobRequestOutputGroupProcessConfig {
 	s.ImageWatermarks = v
+	return s
+}
+
+func (s *SubmitTranscodeJobRequestOutputGroupProcessConfig) SetIsInheritTags(v bool) *SubmitTranscodeJobRequestOutputGroupProcessConfig {
+	s.IsInheritTags = &v
 	return s
 }
 
@@ -30310,6 +30498,7 @@ type SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwriteParams s
 	Audio     *SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwriteParamsAudio     `json:"Audio,omitempty" xml:"Audio,omitempty" type:"Struct"`
 	Container *SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwriteParamsContainer `json:"Container,omitempty" xml:"Container,omitempty" type:"Struct"`
 	MuxConfig *SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwriteParamsMuxConfig `json:"MuxConfig,omitempty" xml:"MuxConfig,omitempty" type:"Struct"`
+	Tags      map[string]*string                                                                  `json:"Tags,omitempty" xml:"Tags,omitempty"`
 	Video     *SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwriteParamsVideo     `json:"Video,omitempty" xml:"Video,omitempty" type:"Struct"`
 }
 
@@ -30333,6 +30522,11 @@ func (s *SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwritePara
 
 func (s *SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwriteParams) SetMuxConfig(v *SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwriteParamsMuxConfig) *SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwriteParams {
 	s.MuxConfig = v
+	return s
+}
+
+func (s *SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwriteParams) SetTags(v map[string]*string) *SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwriteParams {
+	s.Tags = v
 	return s
 }
 
@@ -31717,8 +31911,9 @@ func (s *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobList) SetUs
 }
 
 type SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListInputGroup struct {
-	Media *string `json:"Media,omitempty" xml:"Media,omitempty"`
-	Type  *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	InputUrl *string `json:"InputUrl,omitempty" xml:"InputUrl,omitempty"`
+	Media    *string `json:"Media,omitempty" xml:"Media,omitempty"`
+	Type     *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListInputGroup) String() string {
@@ -31727,6 +31922,11 @@ func (s SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListInputGro
 
 func (s SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListInputGroup) GoString() string {
 	return s.String()
+}
+
+func (s *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListInputGroup) SetInputUrl(v string) *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListInputGroup {
+	s.InputUrl = &v
+	return s
 }
 
 func (s *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListInputGroup) SetMedia(v string) *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListInputGroup {
@@ -32102,8 +32302,9 @@ func (s *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListOutFile
 }
 
 type SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListOutput struct {
-	Media *string `json:"Media,omitempty" xml:"Media,omitempty"`
-	Type  *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Media     *string `json:"Media,omitempty" xml:"Media,omitempty"`
+	OutputUrl *string `json:"OutputUrl,omitempty" xml:"OutputUrl,omitempty"`
+	Type      *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListOutput) String() string {
@@ -32119,6 +32320,11 @@ func (s *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListOutput)
 	return s
 }
 
+func (s *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListOutput) SetOutputUrl(v string) *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListOutput {
+	s.OutputUrl = &v
+	return s
+}
+
 func (s *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListOutput) SetType(v string) *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListOutput {
 	s.Type = &v
 	return s
@@ -32128,6 +32334,7 @@ type SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConf
 	CombineConfigs  []*SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigCombineConfigs  `json:"CombineConfigs,omitempty" xml:"CombineConfigs,omitempty" type:"Repeated"`
 	Encryption      *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigEncryption        `json:"Encryption,omitempty" xml:"Encryption,omitempty" type:"Struct"`
 	ImageWatermarks []*SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigImageWatermarks `json:"ImageWatermarks,omitempty" xml:"ImageWatermarks,omitempty" type:"Repeated"`
+	IsInheritTags   *string                                                                                         `json:"IsInheritTags,omitempty" xml:"IsInheritTags,omitempty"`
 	Subtitles       []*SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigSubtitles       `json:"Subtitles,omitempty" xml:"Subtitles,omitempty" type:"Repeated"`
 	TextWatermarks  []*SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTextWatermarks  `json:"TextWatermarks,omitempty" xml:"TextWatermarks,omitempty" type:"Repeated"`
 	Transcode       *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscode         `json:"Transcode,omitempty" xml:"Transcode,omitempty" type:"Struct"`
@@ -32153,6 +32360,11 @@ func (s *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcess
 
 func (s *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfig) SetImageWatermarks(v []*SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigImageWatermarks) *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfig {
 	s.ImageWatermarks = v
+	return s
+}
+
+func (s *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfig) SetIsInheritTags(v string) *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfig {
+	s.IsInheritTags = &v
 	return s
 }
 
@@ -32553,6 +32765,7 @@ type SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConf
 	Audio     *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParamsAudio     `json:"Audio,omitempty" xml:"Audio,omitempty" type:"Struct"`
 	Container *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParamsContainer `json:"Container,omitempty" xml:"Container,omitempty" type:"Struct"`
 	MuxConfig *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParamsMuxConfig `json:"MuxConfig,omitempty" xml:"MuxConfig,omitempty" type:"Struct"`
+	Tags      map[string]interface{}                                                                                          `json:"Tags,omitempty" xml:"Tags,omitempty"`
 	Video     *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParamsVideo     `json:"Video,omitempty" xml:"Video,omitempty" type:"Struct"`
 }
 
@@ -32576,6 +32789,11 @@ func (s *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcess
 
 func (s *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParams) SetMuxConfig(v *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParamsMuxConfig) *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParams {
 	s.MuxConfig = v
+	return s
+}
+
+func (s *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParams) SetTags(v map[string]interface{}) *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParams {
+	s.Tags = v
 	return s
 }
 
@@ -33940,87 +34158,6 @@ func (s *UpdateMediaInfoResponse) SetBody(v *UpdateMediaInfoResponseBody) *Updat
 	return s
 }
 
-type UpdateMediaMarksRequest struct {
-	MediaId    *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
-	MediaMarks *string `json:"MediaMarks,omitempty" xml:"MediaMarks,omitempty"`
-}
-
-func (s UpdateMediaMarksRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateMediaMarksRequest) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateMediaMarksRequest) SetMediaId(v string) *UpdateMediaMarksRequest {
-	s.MediaId = &v
-	return s
-}
-
-func (s *UpdateMediaMarksRequest) SetMediaMarks(v string) *UpdateMediaMarksRequest {
-	s.MediaMarks = &v
-	return s
-}
-
-type UpdateMediaMarksResponseBody struct {
-	MediaId      *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
-	MediaMarkIds *string `json:"MediaMarkIds,omitempty" xml:"MediaMarkIds,omitempty"`
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s UpdateMediaMarksResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateMediaMarksResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateMediaMarksResponseBody) SetMediaId(v string) *UpdateMediaMarksResponseBody {
-	s.MediaId = &v
-	return s
-}
-
-func (s *UpdateMediaMarksResponseBody) SetMediaMarkIds(v string) *UpdateMediaMarksResponseBody {
-	s.MediaMarkIds = &v
-	return s
-}
-
-func (s *UpdateMediaMarksResponseBody) SetRequestId(v string) *UpdateMediaMarksResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type UpdateMediaMarksResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateMediaMarksResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s UpdateMediaMarksResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateMediaMarksResponse) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateMediaMarksResponse) SetHeaders(v map[string]*string) *UpdateMediaMarksResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *UpdateMediaMarksResponse) SetStatusCode(v int32) *UpdateMediaMarksResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *UpdateMediaMarksResponse) SetBody(v *UpdateMediaMarksResponseBody) *UpdateMediaMarksResponse {
-	s.Body = v
-	return s
-}
-
 type UpdatePipelineRequest struct {
 	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	PipelineId *string `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
@@ -34788,54 +34925,6 @@ func (client *Client) AddFavoritePublicMedia(request *AddFavoritePublicMediaRequ
 	runtime := &util.RuntimeOptions{}
 	_result = &AddFavoritePublicMediaResponse{}
 	_body, _err := client.AddFavoritePublicMediaWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) AddMediaMarksWithOptions(request *AddMediaMarksRequest, runtime *util.RuntimeOptions) (_result *AddMediaMarksResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.MediaId)) {
-		query["MediaId"] = request.MediaId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.MediaMarks)) {
-		query["MediaMarks"] = request.MediaMarks
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("AddMediaMarks"),
-		Version:     tea.String("2020-11-09"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &AddMediaMarksResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) AddMediaMarks(request *AddMediaMarksRequest) (_result *AddMediaMarksResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &AddMediaMarksResponse{}
-	_body, _err := client.AddMediaMarksWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -36046,54 +36135,6 @@ func (client *Client) DeleteMediaInfos(request *DeleteMediaInfosRequest) (_resul
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteMediaInfosResponse{}
 	_body, _err := client.DeleteMediaInfosWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DeleteMediaMarksWithOptions(request *DeleteMediaMarksRequest, runtime *util.RuntimeOptions) (_result *DeleteMediaMarksResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.MediaId)) {
-		query["MediaId"] = request.MediaId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.MediaMarkIds)) {
-		query["MediaMarkIds"] = request.MediaMarkIds
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DeleteMediaMarks"),
-		Version:     tea.String("2020-11-09"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DeleteMediaMarksResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DeleteMediaMarks(request *DeleteMediaMarksRequest) (_result *DeleteMediaMarksResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DeleteMediaMarksResponse{}
-	_body, _err := client.DeleteMediaMarksWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -38399,54 +38440,6 @@ func (client *Client) GetMediaInfoJob(request *GetMediaInfoJobRequest) (_result 
 	return _result, _err
 }
 
-func (client *Client) GetMediaMarksWithOptions(request *GetMediaMarksRequest, runtime *util.RuntimeOptions) (_result *GetMediaMarksResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.MediaId)) {
-		query["MediaId"] = request.MediaId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.MediaMarkIds)) {
-		query["MediaMarkIds"] = request.MediaMarkIds
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("GetMediaMarks"),
-		Version:     tea.String("2020-11-09"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &GetMediaMarksResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) GetMediaMarks(request *GetMediaMarksRequest) (_result *GetMediaMarksResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &GetMediaMarksResponse{}
-	_body, _err := client.GetMediaMarksWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) GetMediaProducingJobWithOptions(request *GetMediaProducingJobRequest, runtime *util.RuntimeOptions) (_result *GetMediaProducingJobResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -38581,6 +38574,10 @@ func (client *Client) GetPlayInfoWithOptions(request *GetPlayInfoRequest, runtim
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InputURL)) {
+		query["InputURL"] = request.InputURL
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.MediaId)) {
 		query["MediaId"] = request.MediaId
 	}
@@ -38953,8 +38950,8 @@ func (client *Client) GetTranscodeJobWithOptions(request *GetTranscodeJobRequest
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.JobId)) {
-		query["JobId"] = request.JobId
+	if !tea.BoolValue(util.IsUnset(request.ParentJobId)) {
+		query["ParentJobId"] = request.ParentJobId
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -39751,54 +39748,6 @@ func (client *Client) ListMediaInfoJobs(request *ListMediaInfoJobsRequest) (_res
 	return _result, _err
 }
 
-func (client *Client) ListMediaMarksWithOptions(request *ListMediaMarksRequest, runtime *util.RuntimeOptions) (_result *ListMediaMarksResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.MediaId)) {
-		query["MediaId"] = request.MediaId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.MediaMarkIds)) {
-		query["MediaMarkIds"] = request.MediaMarkIds
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("ListMediaMarks"),
-		Version:     tea.String("2020-11-09"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &ListMediaMarksResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ListMediaMarks(request *ListMediaMarksRequest) (_result *ListMediaMarksResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ListMediaMarksResponse{}
-	_body, _err := client.ListMediaMarksWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) ListPackageJobsWithOptions(request *ListPackageJobsRequest, runtime *util.RuntimeOptions) (_result *ListPackageJobsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -40229,10 +40178,6 @@ func (client *Client) ListTranscodeJobsWithOptions(request *ListTranscodeJobsReq
 		query["EndOfCreateTime"] = request.EndOfCreateTime
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.JobId)) {
-		query["JobId"] = request.JobId
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.NextPageToken)) {
 		query["NextPageToken"] = request.NextPageToken
 	}
@@ -40243,6 +40188,10 @@ func (client *Client) ListTranscodeJobsWithOptions(request *ListTranscodeJobsReq
 
 	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
 		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ParentJobId)) {
+		query["ParentJobId"] = request.ParentJobId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.StartOfCreateTime)) {
@@ -40280,66 +40229,6 @@ func (client *Client) ListTranscodeJobs(request *ListTranscodeJobsRequest) (_res
 	runtime := &util.RuntimeOptions{}
 	_result = &ListTranscodeJobsResponse{}
 	_body, _err := client.ListTranscodeJobsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) QueryCensorJobListWithOptions(request *QueryCensorJobListRequest, runtime *util.RuntimeOptions) (_result *QueryCensorJobListResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.JobIds)) {
-		query["JobIds"] = request.JobIds
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
-		query["OwnerAccount"] = request.OwnerAccount
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
-		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
-		query["ResourceOwnerId"] = request.ResourceOwnerId
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("QueryCensorJobList"),
-		Version:     tea.String("2020-11-09"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &QueryCensorJobListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) QueryCensorJobList(request *QueryCensorJobListRequest) (_result *QueryCensorJobListResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &QueryCensorJobListResponse{}
-	_body, _err := client.QueryCensorJobListWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -40456,6 +40345,90 @@ func (client *Client) QueryMediaCensorJobDetail(request *QueryMediaCensorJobDeta
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryMediaCensorJobDetailResponse{}
 	_body, _err := client.QueryMediaCensorJobDetailWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) QueryMediaCensorJobListWithOptions(request *QueryMediaCensorJobListRequest, runtime *util.RuntimeOptions) (_result *QueryMediaCensorJobListResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EndOfJobCreatedTimeRange)) {
+		query["EndOfJobCreatedTimeRange"] = request.EndOfJobCreatedTimeRange
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JobIds)) {
+		query["JobIds"] = request.JobIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaximumPageSize)) {
+		query["MaximumPageSize"] = request.MaximumPageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextPageToken)) {
+		query["NextPageToken"] = request.NextPageToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PipelineId)) {
+		query["PipelineId"] = request.PipelineId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartOfJobCreatedTimeRange)) {
+		query["StartOfJobCreatedTimeRange"] = request.StartOfJobCreatedTimeRange
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.State)) {
+		query["State"] = request.State
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryMediaCensorJobList"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QueryMediaCensorJobListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) QueryMediaCensorJobList(request *QueryMediaCensorJobListRequest) (_result *QueryMediaCensorJobListResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QueryMediaCensorJobListResponse{}
+	_body, _err := client.QueryMediaCensorJobListWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -43046,54 +43019,6 @@ func (client *Client) UpdateMediaInfo(request *UpdateMediaInfoRequest) (_result 
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateMediaInfoResponse{}
 	_body, _err := client.UpdateMediaInfoWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) UpdateMediaMarksWithOptions(request *UpdateMediaMarksRequest, runtime *util.RuntimeOptions) (_result *UpdateMediaMarksResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.MediaId)) {
-		query["MediaId"] = request.MediaId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.MediaMarks)) {
-		query["MediaMarks"] = request.MediaMarks
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("UpdateMediaMarks"),
-		Version:     tea.String("2020-11-09"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &UpdateMediaMarksResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) UpdateMediaMarks(request *UpdateMediaMarksRequest) (_result *UpdateMediaMarksResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &UpdateMediaMarksResponse{}
-	_body, _err := client.UpdateMediaMarksWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
