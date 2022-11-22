@@ -5,10 +5,10 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/client"
+	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
 	openapiutil "github.com/alibabacloud-go/openapi-util/service"
-	util "github.com/alibabacloud-go/tea-utils/service"
+	util "github.com/alibabacloud-go/tea-utils/v2/service"
 	"github.com/alibabacloud-go/tea/tea"
 )
 
@@ -7102,6 +7102,7 @@ func (s *UpdateInlinePolicyForAccessConfigurationResponse) SetBody(v *UpdateInli
 type UpdateMFAAuthenticationSettingsRequest struct {
 	DirectoryId               *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
 	MFAAuthenticationSettings *string `json:"MFAAuthenticationSettings,omitempty" xml:"MFAAuthenticationSettings,omitempty"`
+	OperationForRiskLogin     *string `json:"OperationForRiskLogin,omitempty" xml:"OperationForRiskLogin,omitempty"`
 }
 
 func (s UpdateMFAAuthenticationSettingsRequest) String() string {
@@ -7119,6 +7120,11 @@ func (s *UpdateMFAAuthenticationSettingsRequest) SetDirectoryId(v string) *Updat
 
 func (s *UpdateMFAAuthenticationSettingsRequest) SetMFAAuthenticationSettings(v string) *UpdateMFAAuthenticationSettingsRequest {
 	s.MFAAuthenticationSettings = &v
+	return s
+}
+
+func (s *UpdateMFAAuthenticationSettingsRequest) SetOperationForRiskLogin(v string) *UpdateMFAAuthenticationSettingsRequest {
+	s.OperationForRiskLogin = &v
 	return s
 }
 
@@ -10735,6 +10741,10 @@ func (client *Client) UpdateMFAAuthenticationSettingsWithOptions(request *Update
 
 	if !tea.BoolValue(util.IsUnset(request.MFAAuthenticationSettings)) {
 		query["MFAAuthenticationSettings"] = request.MFAAuthenticationSettings
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OperationForRiskLogin)) {
+		query["OperationForRiskLogin"] = request.OperationForRiskLogin
 	}
 
 	req := &openapi.OpenApiRequest{
