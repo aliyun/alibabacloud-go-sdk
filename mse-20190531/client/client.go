@@ -29788,20 +29788,20 @@ func (client *Client) AddGatewayRouteWithOptions(tmpReq *AddGatewayRouteRequest,
 	}
 	request := &AddGatewayRouteShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tmpReq.DirectResponseJSON)) {
-		request.DirectResponseJSONShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DirectResponseJSON, tea.String("DirectResponseJSON"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.DirectResponseJSON))) {
+		request.DirectResponseJSONShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.DirectResponseJSON), tea.String("DirectResponseJSON"), tea.String("json"))
 	}
 
 	if !tea.BoolValue(util.IsUnset(tmpReq.FallbackServices)) {
 		request.FallbackServicesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.FallbackServices, tea.String("FallbackServices"), tea.String("json"))
 	}
 
-	if !tea.BoolValue(util.IsUnset(tmpReq.Predicates)) {
-		request.PredicatesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Predicates, tea.String("Predicates"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.Predicates))) {
+		request.PredicatesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.Predicates), tea.String("Predicates"), tea.String("json"))
 	}
 
-	if !tea.BoolValue(util.IsUnset(tmpReq.RedirectJSON)) {
-		request.RedirectJSONShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RedirectJSON, tea.String("RedirectJSON"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.RedirectJSON))) {
+		request.RedirectJSONShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.RedirectJSON), tea.String("RedirectJSON"), tea.String("json"))
 	}
 
 	if !tea.BoolValue(util.IsUnset(tmpReq.Services)) {
@@ -30250,8 +30250,8 @@ func (client *Client) AddServiceSourceWithOptions(tmpReq *AddServiceSourceReques
 		request.GroupListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.GroupList, tea.String("GroupList"), tea.String("json"))
 	}
 
-	if !tea.BoolValue(util.IsUnset(tmpReq.IngressOptionsRequest)) {
-		request.IngressOptionsRequestShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.IngressOptionsRequest, tea.String("IngressOptionsRequest"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.IngressOptionsRequest))) {
+		request.IngressOptionsRequestShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.IngressOptionsRequest), tea.String("IngressOptionsRequest"), tea.String("json"))
 	}
 
 	if !tea.BoolValue(util.IsUnset(tmpReq.PathList)) {
@@ -34436,8 +34436,8 @@ func (client *Client) ListGatewayWithOptions(tmpReq *ListGatewayRequest, runtime
 	}
 	request := &ListGatewayShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tmpReq.FilterParams)) {
-		request.FilterParamsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.FilterParams, tea.String("FilterParams"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.FilterParams))) {
+		request.FilterParamsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.FilterParams), tea.String("FilterParams"), tea.String("json"))
 	}
 
 	query := map[string]interface{}{}
@@ -34558,8 +34558,8 @@ func (client *Client) ListGatewayRouteWithOptions(tmpReq *ListGatewayRouteReques
 	}
 	request := &ListGatewayRouteShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tmpReq.FilterParams)) {
-		request.FilterParamsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.FilterParams, tea.String("FilterParams"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.FilterParams))) {
+		request.FilterParamsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.FilterParams), tea.String("FilterParams"), tea.String("json"))
 	}
 
 	query := map[string]interface{}{}
@@ -34628,8 +34628,8 @@ func (client *Client) ListGatewayServiceWithOptions(tmpReq *ListGatewayServiceRe
 	}
 	request := &ListGatewayServiceShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tmpReq.FilterParams)) {
-		request.FilterParamsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.FilterParams, tea.String("FilterParams"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.FilterParams))) {
+		request.FilterParamsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.FilterParams), tea.String("FilterParams"), tea.String("json"))
 	}
 
 	query := map[string]interface{}{}
@@ -37132,8 +37132,8 @@ func (client *Client) UpdateGatewayOptionWithOptions(tmpReq *UpdateGatewayOption
 	}
 	request := &UpdateGatewayOptionShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tmpReq.GatewayOption)) {
-		request.GatewayOptionShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.GatewayOption, tea.String("GatewayOption"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.GatewayOption))) {
+		request.GatewayOptionShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.GatewayOption), tea.String("GatewayOption"), tea.String("json"))
 	}
 
 	query := map[string]interface{}{}
@@ -37194,20 +37194,20 @@ func (client *Client) UpdateGatewayRouteWithOptions(tmpReq *UpdateGatewayRouteRe
 	}
 	request := &UpdateGatewayRouteShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tmpReq.DirectResponseJSON)) {
-		request.DirectResponseJSONShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DirectResponseJSON, tea.String("DirectResponseJSON"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.DirectResponseJSON))) {
+		request.DirectResponseJSONShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.DirectResponseJSON), tea.String("DirectResponseJSON"), tea.String("json"))
 	}
 
 	if !tea.BoolValue(util.IsUnset(tmpReq.FallbackServices)) {
 		request.FallbackServicesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.FallbackServices, tea.String("FallbackServices"), tea.String("json"))
 	}
 
-	if !tea.BoolValue(util.IsUnset(tmpReq.Predicates)) {
-		request.PredicatesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Predicates, tea.String("Predicates"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.Predicates))) {
+		request.PredicatesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.Predicates), tea.String("Predicates"), tea.String("json"))
 	}
 
-	if !tea.BoolValue(util.IsUnset(tmpReq.RedirectJSON)) {
-		request.RedirectJSONShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RedirectJSON, tea.String("RedirectJSON"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.RedirectJSON))) {
+		request.RedirectJSONShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.RedirectJSON), tea.String("RedirectJSON"), tea.String("json"))
 	}
 
 	if !tea.BoolValue(util.IsUnset(tmpReq.Services)) {
@@ -37316,8 +37316,8 @@ func (client *Client) UpdateGatewayRouteCORSWithOptions(tmpReq *UpdateGatewayRou
 	}
 	request := &UpdateGatewayRouteCORSShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tmpReq.CorsJSON)) {
-		request.CorsJSONShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CorsJSON, tea.String("CorsJSON"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.CorsJSON))) {
+		request.CorsJSONShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.CorsJSON), tea.String("CorsJSON"), tea.String("json"))
 	}
 
 	query := map[string]interface{}{}
@@ -37502,8 +37502,8 @@ func (client *Client) UpdateGatewayRouteRetryWithOptions(tmpReq *UpdateGatewayRo
 	}
 	request := &UpdateGatewayRouteRetryShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tmpReq.RetryJSON)) {
-		request.RetryJSONShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RetryJSON, tea.String("RetryJSON"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.RetryJSON))) {
+		request.RetryJSONShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.RetryJSON), tea.String("RetryJSON"), tea.String("json"))
 	}
 
 	query := map[string]interface{}{}
@@ -37568,8 +37568,8 @@ func (client *Client) UpdateGatewayRouteTimeoutWithOptions(tmpReq *UpdateGateway
 	}
 	request := &UpdateGatewayRouteTimeoutShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tmpReq.TimeoutJSON)) {
-		request.TimeoutJSONShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TimeoutJSON, tea.String("TimeoutJSON"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.TimeoutJSON))) {
+		request.TimeoutJSONShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.TimeoutJSON), tea.String("TimeoutJSON"), tea.String("json"))
 	}
 
 	query := map[string]interface{}{}
@@ -37690,8 +37690,8 @@ func (client *Client) UpdateGatewayServiceTrafficPolicyWithOptions(tmpReq *Updat
 	}
 	request := &UpdateGatewayServiceTrafficPolicyShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tmpReq.GatewayTrafficPolicy)) {
-		request.GatewayTrafficPolicyShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.GatewayTrafficPolicy, tea.String("GatewayTrafficPolicy"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.GatewayTrafficPolicy))) {
+		request.GatewayTrafficPolicyShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.GatewayTrafficPolicy), tea.String("GatewayTrafficPolicy"), tea.String("json"))
 	}
 
 	query := map[string]interface{}{}
@@ -38452,8 +38452,8 @@ func (client *Client) UpdateServiceSourceWithOptions(tmpReq *UpdateServiceSource
 	}
 	request := &UpdateServiceSourceShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tmpReq.IngressOptionsRequest)) {
-		request.IngressOptionsRequestShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.IngressOptionsRequest, tea.String("IngressOptionsRequest"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.IngressOptionsRequest))) {
+		request.IngressOptionsRequestShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.IngressOptionsRequest), tea.String("IngressOptionsRequest"), tea.String("json"))
 	}
 
 	if !tea.BoolValue(util.IsUnset(tmpReq.PathList)) {
