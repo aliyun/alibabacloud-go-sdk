@@ -235,7 +235,6 @@ func (s *BindAuthToMachineRequest) SetUnBind(v []*string) *BindAuthToMachineRequ
 type BindAuthToMachineResponseBody struct {
 	BindCount             *int32  `json:"BindCount,omitempty" xml:"BindCount,omitempty"`
 	InsufficientCoreCount *int32  `json:"InsufficientCoreCount,omitempty" xml:"InsufficientCoreCount,omitempty"`
-	InsufficientCount     *int32  `json:"InsufficientCount,omitempty" xml:"InsufficientCount,omitempty"`
 	InsufficientEcsCount  *int32  `json:"InsufficientEcsCount,omitempty" xml:"InsufficientEcsCount,omitempty"`
 	RequestId             *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ResultCode            *int32  `json:"ResultCode,omitempty" xml:"ResultCode,omitempty"`
@@ -257,11 +256,6 @@ func (s *BindAuthToMachineResponseBody) SetBindCount(v int32) *BindAuthToMachine
 
 func (s *BindAuthToMachineResponseBody) SetInsufficientCoreCount(v int32) *BindAuthToMachineResponseBody {
 	s.InsufficientCoreCount = &v
-	return s
-}
-
-func (s *BindAuthToMachineResponseBody) SetInsufficientCount(v int32) *BindAuthToMachineResponseBody {
-	s.InsufficientCount = &v
 	return s
 }
 
@@ -762,7 +756,8 @@ func (s *CreateBackupPolicyShrinkRequest) SetUuidList(v []*string) *CreateBackup
 }
 
 type CreateBackupPolicyResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	BackupPolicy *CreateBackupPolicyResponseBodyBackupPolicy `json:"BackupPolicy,omitempty" xml:"BackupPolicy,omitempty" type:"Struct"`
+	RequestId    *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateBackupPolicyResponseBody) String() string {
@@ -773,8 +768,36 @@ func (s CreateBackupPolicyResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *CreateBackupPolicyResponseBody) SetBackupPolicy(v *CreateBackupPolicyResponseBodyBackupPolicy) *CreateBackupPolicyResponseBody {
+	s.BackupPolicy = v
+	return s
+}
+
 func (s *CreateBackupPolicyResponseBody) SetRequestId(v string) *CreateBackupPolicyResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+type CreateBackupPolicyResponseBodyBackupPolicy struct {
+	Id     *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s CreateBackupPolicyResponseBodyBackupPolicy) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateBackupPolicyResponseBodyBackupPolicy) GoString() string {
+	return s.String()
+}
+
+func (s *CreateBackupPolicyResponseBodyBackupPolicy) SetId(v string) *CreateBackupPolicyResponseBodyBackupPolicy {
+	s.Id = &v
+	return s
+}
+
+func (s *CreateBackupPolicyResponseBodyBackupPolicy) SetStatus(v string) *CreateBackupPolicyResponseBodyBackupPolicy {
+	s.Status = &v
 	return s
 }
 
@@ -1662,6 +1685,23 @@ func (s *CreateOrUpdateAssetGroupResponse) SetStatusCode(v int32) *CreateOrUpdat
 
 func (s *CreateOrUpdateAssetGroupResponse) SetBody(v *CreateOrUpdateAssetGroupResponseBody) *CreateOrUpdateAssetGroupResponse {
 	s.Body = v
+	return s
+}
+
+type CreateServiceLinkedRoleRequest struct {
+	ServiceLinkedRole *string `json:"ServiceLinkedRole,omitempty" xml:"ServiceLinkedRole,omitempty"`
+}
+
+func (s CreateServiceLinkedRoleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateServiceLinkedRoleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateServiceLinkedRoleRequest) SetServiceLinkedRole(v string) *CreateServiceLinkedRoleRequest {
+	s.ServiceLinkedRole = &v
 	return s
 }
 
@@ -3614,6 +3654,8 @@ type DescribeAlarmEventListRequest struct {
 	OperateTimeStart     *string   `json:"OperateTimeStart,omitempty" xml:"OperateTimeStart,omitempty"`
 	PageSize             *string   `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	Remark               *string   `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	SortColumn           *string   `json:"SortColumn,omitempty" xml:"SortColumn,omitempty"`
+	SortType             *string   `json:"SortType,omitempty" xml:"SortType,omitempty"`
 	SourceIp             *string   `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 	TacticId             *string   `json:"TacticId,omitempty" xml:"TacticId,omitempty"`
 	TimeEnd              *string   `json:"TimeEnd,omitempty" xml:"TimeEnd,omitempty"`
@@ -3697,6 +3739,16 @@ func (s *DescribeAlarmEventListRequest) SetPageSize(v string) *DescribeAlarmEven
 
 func (s *DescribeAlarmEventListRequest) SetRemark(v string) *DescribeAlarmEventListRequest {
 	s.Remark = &v
+	return s
+}
+
+func (s *DescribeAlarmEventListRequest) SetSortColumn(v string) *DescribeAlarmEventListRequest {
+	s.SortColumn = &v
+	return s
+}
+
+func (s *DescribeAlarmEventListRequest) SetSortType(v string) *DescribeAlarmEventListRequest {
+	s.SortType = &v
 	return s
 }
 
@@ -5271,10 +5323,11 @@ func (s *DescribeBackupClientsResponseBody) SetRequestId(v string) *DescribeBack
 }
 
 type DescribeBackupClientsResponseBodyClients struct {
-	ClientId     *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
-	ClientStatus *string `json:"ClientStatus,omitempty" xml:"ClientStatus,omitempty"`
-	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Uuid         *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
+	ClientId      *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	ClientStatus  *string `json:"ClientStatus,omitempty" xml:"ClientStatus,omitempty"`
+	ClientVersion *string `json:"ClientVersion,omitempty" xml:"ClientVersion,omitempty"`
+	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Uuid          *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
 }
 
 func (s DescribeBackupClientsResponseBodyClients) String() string {
@@ -5292,6 +5345,11 @@ func (s *DescribeBackupClientsResponseBodyClients) SetClientId(v string) *Descri
 
 func (s *DescribeBackupClientsResponseBodyClients) SetClientStatus(v string) *DescribeBackupClientsResponseBodyClients {
 	s.ClientStatus = &v
+	return s
+}
+
+func (s *DescribeBackupClientsResponseBodyClients) SetClientVersion(v string) *DescribeBackupClientsResponseBodyClients {
+	s.ClientVersion = &v
 	return s
 }
 
@@ -5620,6 +5678,7 @@ type DescribeBackupPoliciesResponseBodyPolicies struct {
 	PolicyRegionId       *string   `json:"PolicyRegionId,omitempty" xml:"PolicyRegionId,omitempty"`
 	PolicyVersion        *string   `json:"PolicyVersion,omitempty" xml:"PolicyVersion,omitempty"`
 	RemarkedUuidList     []*string `json:"RemarkedUuidList,omitempty" xml:"RemarkedUuidList,omitempty" type:"Repeated"`
+	ServerType           *string   `json:"ServerType,omitempty" xml:"ServerType,omitempty"`
 	ServiceErrorCount    *int32    `json:"ServiceErrorCount,omitempty" xml:"ServiceErrorCount,omitempty"`
 	ServiceErrorUuidList []*string `json:"ServiceErrorUuidList,omitempty" xml:"ServiceErrorUuidList,omitempty" type:"Repeated"`
 	Status               *string   `json:"Status,omitempty" xml:"Status,omitempty"`
@@ -5687,6 +5746,11 @@ func (s *DescribeBackupPoliciesResponseBodyPolicies) SetPolicyVersion(v string) 
 
 func (s *DescribeBackupPoliciesResponseBodyPolicies) SetRemarkedUuidList(v []*string) *DescribeBackupPoliciesResponseBodyPolicies {
 	s.RemarkedUuidList = v
+	return s
+}
+
+func (s *DescribeBackupPoliciesResponseBodyPolicies) SetServerType(v string) *DescribeBackupPoliciesResponseBodyPolicies {
+	s.ServerType = &v
 	return s
 }
 
@@ -11772,6 +11836,342 @@ func (s *DescribeImageGroupedVulListResponse) SetBody(v *DescribeImageGroupedVul
 	return s
 }
 
+type DescribeImageListBySensitiveFileRequest struct {
+	CurrentPage      *int32    `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	ImageDigest      *string   `json:"ImageDigest,omitempty" xml:"ImageDigest,omitempty"`
+	Lang             *string   `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	PageSize         *int32    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RepoInstanceId   *string   `json:"RepoInstanceId,omitempty" xml:"RepoInstanceId,omitempty"`
+	RepoName         *string   `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
+	RepoNamespace    *string   `json:"RepoNamespace,omitempty" xml:"RepoNamespace,omitempty"`
+	RiskLevel        *string   `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	ScanRange        []*string `json:"ScanRange,omitempty" xml:"ScanRange,omitempty" type:"Repeated"`
+	SensitiveFileKey *string   `json:"SensitiveFileKey,omitempty" xml:"SensitiveFileKey,omitempty"`
+}
+
+func (s DescribeImageListBySensitiveFileRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeImageListBySensitiveFileRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeImageListBySensitiveFileRequest) SetCurrentPage(v int32) *DescribeImageListBySensitiveFileRequest {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *DescribeImageListBySensitiveFileRequest) SetImageDigest(v string) *DescribeImageListBySensitiveFileRequest {
+	s.ImageDigest = &v
+	return s
+}
+
+func (s *DescribeImageListBySensitiveFileRequest) SetLang(v string) *DescribeImageListBySensitiveFileRequest {
+	s.Lang = &v
+	return s
+}
+
+func (s *DescribeImageListBySensitiveFileRequest) SetPageSize(v int32) *DescribeImageListBySensitiveFileRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeImageListBySensitiveFileRequest) SetRepoInstanceId(v string) *DescribeImageListBySensitiveFileRequest {
+	s.RepoInstanceId = &v
+	return s
+}
+
+func (s *DescribeImageListBySensitiveFileRequest) SetRepoName(v string) *DescribeImageListBySensitiveFileRequest {
+	s.RepoName = &v
+	return s
+}
+
+func (s *DescribeImageListBySensitiveFileRequest) SetRepoNamespace(v string) *DescribeImageListBySensitiveFileRequest {
+	s.RepoNamespace = &v
+	return s
+}
+
+func (s *DescribeImageListBySensitiveFileRequest) SetRiskLevel(v string) *DescribeImageListBySensitiveFileRequest {
+	s.RiskLevel = &v
+	return s
+}
+
+func (s *DescribeImageListBySensitiveFileRequest) SetScanRange(v []*string) *DescribeImageListBySensitiveFileRequest {
+	s.ScanRange = v
+	return s
+}
+
+func (s *DescribeImageListBySensitiveFileRequest) SetSensitiveFileKey(v string) *DescribeImageListBySensitiveFileRequest {
+	s.SensitiveFileKey = &v
+	return s
+}
+
+type DescribeImageListBySensitiveFileShrinkRequest struct {
+	CurrentPage      *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	ImageDigest      *string `json:"ImageDigest,omitempty" xml:"ImageDigest,omitempty"`
+	Lang             *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	PageSize         *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RepoInstanceId   *string `json:"RepoInstanceId,omitempty" xml:"RepoInstanceId,omitempty"`
+	RepoName         *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
+	RepoNamespace    *string `json:"RepoNamespace,omitempty" xml:"RepoNamespace,omitempty"`
+	RiskLevel        *string `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	ScanRangeShrink  *string `json:"ScanRange,omitempty" xml:"ScanRange,omitempty"`
+	SensitiveFileKey *string `json:"SensitiveFileKey,omitempty" xml:"SensitiveFileKey,omitempty"`
+}
+
+func (s DescribeImageListBySensitiveFileShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeImageListBySensitiveFileShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeImageListBySensitiveFileShrinkRequest) SetCurrentPage(v int32) *DescribeImageListBySensitiveFileShrinkRequest {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *DescribeImageListBySensitiveFileShrinkRequest) SetImageDigest(v string) *DescribeImageListBySensitiveFileShrinkRequest {
+	s.ImageDigest = &v
+	return s
+}
+
+func (s *DescribeImageListBySensitiveFileShrinkRequest) SetLang(v string) *DescribeImageListBySensitiveFileShrinkRequest {
+	s.Lang = &v
+	return s
+}
+
+func (s *DescribeImageListBySensitiveFileShrinkRequest) SetPageSize(v int32) *DescribeImageListBySensitiveFileShrinkRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeImageListBySensitiveFileShrinkRequest) SetRepoInstanceId(v string) *DescribeImageListBySensitiveFileShrinkRequest {
+	s.RepoInstanceId = &v
+	return s
+}
+
+func (s *DescribeImageListBySensitiveFileShrinkRequest) SetRepoName(v string) *DescribeImageListBySensitiveFileShrinkRequest {
+	s.RepoName = &v
+	return s
+}
+
+func (s *DescribeImageListBySensitiveFileShrinkRequest) SetRepoNamespace(v string) *DescribeImageListBySensitiveFileShrinkRequest {
+	s.RepoNamespace = &v
+	return s
+}
+
+func (s *DescribeImageListBySensitiveFileShrinkRequest) SetRiskLevel(v string) *DescribeImageListBySensitiveFileShrinkRequest {
+	s.RiskLevel = &v
+	return s
+}
+
+func (s *DescribeImageListBySensitiveFileShrinkRequest) SetScanRangeShrink(v string) *DescribeImageListBySensitiveFileShrinkRequest {
+	s.ScanRangeShrink = &v
+	return s
+}
+
+func (s *DescribeImageListBySensitiveFileShrinkRequest) SetSensitiveFileKey(v string) *DescribeImageListBySensitiveFileShrinkRequest {
+	s.SensitiveFileKey = &v
+	return s
+}
+
+type DescribeImageListBySensitiveFileResponseBody struct {
+	Code           *string                                                   `json:"Code,omitempty" xml:"Code,omitempty"`
+	HttpStatusCode *int32                                                    `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	ImageInfos     []*DescribeImageListBySensitiveFileResponseBodyImageInfos `json:"ImageInfos,omitempty" xml:"ImageInfos,omitempty" type:"Repeated"`
+	Message        *string                                                   `json:"Message,omitempty" xml:"Message,omitempty"`
+	PageInfo       *DescribeImageListBySensitiveFileResponseBodyPageInfo     `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
+	RequestId      *string                                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool                                                     `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DescribeImageListBySensitiveFileResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeImageListBySensitiveFileResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeImageListBySensitiveFileResponseBody) SetCode(v string) *DescribeImageListBySensitiveFileResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DescribeImageListBySensitiveFileResponseBody) SetHttpStatusCode(v int32) *DescribeImageListBySensitiveFileResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *DescribeImageListBySensitiveFileResponseBody) SetImageInfos(v []*DescribeImageListBySensitiveFileResponseBodyImageInfos) *DescribeImageListBySensitiveFileResponseBody {
+	s.ImageInfos = v
+	return s
+}
+
+func (s *DescribeImageListBySensitiveFileResponseBody) SetMessage(v string) *DescribeImageListBySensitiveFileResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DescribeImageListBySensitiveFileResponseBody) SetPageInfo(v *DescribeImageListBySensitiveFileResponseBodyPageInfo) *DescribeImageListBySensitiveFileResponseBody {
+	s.PageInfo = v
+	return s
+}
+
+func (s *DescribeImageListBySensitiveFileResponseBody) SetRequestId(v string) *DescribeImageListBySensitiveFileResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeImageListBySensitiveFileResponseBody) SetSuccess(v bool) *DescribeImageListBySensitiveFileResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DescribeImageListBySensitiveFileResponseBodyImageInfos struct {
+	Digest        *string `json:"Digest,omitempty" xml:"Digest,omitempty"`
+	FirstScanTime *int64  `json:"FirstScanTime,omitempty" xml:"FirstScanTime,omitempty"`
+	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	LastScanTime  *int64  `json:"LastScanTime,omitempty" xml:"LastScanTime,omitempty"`
+	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RepoName      *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
+	RepoNamespace *string `json:"RepoNamespace,omitempty" xml:"RepoNamespace,omitempty"`
+	RiskLevel     *string `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	Tag           *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	Uuid          *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
+}
+
+func (s DescribeImageListBySensitiveFileResponseBodyImageInfos) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeImageListBySensitiveFileResponseBodyImageInfos) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeImageListBySensitiveFileResponseBodyImageInfos) SetDigest(v string) *DescribeImageListBySensitiveFileResponseBodyImageInfos {
+	s.Digest = &v
+	return s
+}
+
+func (s *DescribeImageListBySensitiveFileResponseBodyImageInfos) SetFirstScanTime(v int64) *DescribeImageListBySensitiveFileResponseBodyImageInfos {
+	s.FirstScanTime = &v
+	return s
+}
+
+func (s *DescribeImageListBySensitiveFileResponseBodyImageInfos) SetInstanceId(v string) *DescribeImageListBySensitiveFileResponseBodyImageInfos {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeImageListBySensitiveFileResponseBodyImageInfos) SetLastScanTime(v int64) *DescribeImageListBySensitiveFileResponseBodyImageInfos {
+	s.LastScanTime = &v
+	return s
+}
+
+func (s *DescribeImageListBySensitiveFileResponseBodyImageInfos) SetRegionId(v string) *DescribeImageListBySensitiveFileResponseBodyImageInfos {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeImageListBySensitiveFileResponseBodyImageInfos) SetRepoName(v string) *DescribeImageListBySensitiveFileResponseBodyImageInfos {
+	s.RepoName = &v
+	return s
+}
+
+func (s *DescribeImageListBySensitiveFileResponseBodyImageInfos) SetRepoNamespace(v string) *DescribeImageListBySensitiveFileResponseBodyImageInfos {
+	s.RepoNamespace = &v
+	return s
+}
+
+func (s *DescribeImageListBySensitiveFileResponseBodyImageInfos) SetRiskLevel(v string) *DescribeImageListBySensitiveFileResponseBodyImageInfos {
+	s.RiskLevel = &v
+	return s
+}
+
+func (s *DescribeImageListBySensitiveFileResponseBodyImageInfos) SetTag(v string) *DescribeImageListBySensitiveFileResponseBodyImageInfos {
+	s.Tag = &v
+	return s
+}
+
+func (s *DescribeImageListBySensitiveFileResponseBodyImageInfos) SetUuid(v string) *DescribeImageListBySensitiveFileResponseBodyImageInfos {
+	s.Uuid = &v
+	return s
+}
+
+type DescribeImageListBySensitiveFileResponseBodyPageInfo struct {
+	Count       *int32  `json:"Count,omitempty" xml:"Count,omitempty"`
+	CurrentPage *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	LastRowKey  *string `json:"LastRowKey,omitempty" xml:"LastRowKey,omitempty"`
+	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	TotalCount  *int32  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeImageListBySensitiveFileResponseBodyPageInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeImageListBySensitiveFileResponseBodyPageInfo) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeImageListBySensitiveFileResponseBodyPageInfo) SetCount(v int32) *DescribeImageListBySensitiveFileResponseBodyPageInfo {
+	s.Count = &v
+	return s
+}
+
+func (s *DescribeImageListBySensitiveFileResponseBodyPageInfo) SetCurrentPage(v int32) *DescribeImageListBySensitiveFileResponseBodyPageInfo {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *DescribeImageListBySensitiveFileResponseBodyPageInfo) SetLastRowKey(v string) *DescribeImageListBySensitiveFileResponseBodyPageInfo {
+	s.LastRowKey = &v
+	return s
+}
+
+func (s *DescribeImageListBySensitiveFileResponseBodyPageInfo) SetPageSize(v int32) *DescribeImageListBySensitiveFileResponseBodyPageInfo {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeImageListBySensitiveFileResponseBodyPageInfo) SetTotalCount(v int32) *DescribeImageListBySensitiveFileResponseBodyPageInfo {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeImageListBySensitiveFileResponse struct {
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeImageListBySensitiveFileResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeImageListBySensitiveFileResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeImageListBySensitiveFileResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeImageListBySensitiveFileResponse) SetHeaders(v map[string]*string) *DescribeImageListBySensitiveFileResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeImageListBySensitiveFileResponse) SetStatusCode(v int32) *DescribeImageListBySensitiveFileResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeImageListBySensitiveFileResponse) SetBody(v *DescribeImageListBySensitiveFileResponseBody) *DescribeImageListBySensitiveFileResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeImageListWithBaselineNameRequest struct {
 	BaselineNameKey *string   `json:"BaselineNameKey,omitempty" xml:"BaselineNameKey,omitempty"`
 	ClusterId       *string   `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
@@ -12216,6 +12616,576 @@ func (s *DescribeImageScanAuthCountResponse) SetStatusCode(v int32) *DescribeIma
 }
 
 func (s *DescribeImageScanAuthCountResponse) SetBody(v *DescribeImageScanAuthCountResponseBody) *DescribeImageScanAuthCountResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeImageSensitiveFileByKeyRequest struct {
+	CurrentPage      *int32    `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	ImageUuid        *string   `json:"ImageUuid,omitempty" xml:"ImageUuid,omitempty"`
+	Lang             *string   `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	PageSize         *int32    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ScanRange        []*string `json:"ScanRange,omitempty" xml:"ScanRange,omitempty" type:"Repeated"`
+	SensitiveFileKey *string   `json:"SensitiveFileKey,omitempty" xml:"SensitiveFileKey,omitempty"`
+}
+
+func (s DescribeImageSensitiveFileByKeyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeImageSensitiveFileByKeyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeImageSensitiveFileByKeyRequest) SetCurrentPage(v int32) *DescribeImageSensitiveFileByKeyRequest {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *DescribeImageSensitiveFileByKeyRequest) SetImageUuid(v string) *DescribeImageSensitiveFileByKeyRequest {
+	s.ImageUuid = &v
+	return s
+}
+
+func (s *DescribeImageSensitiveFileByKeyRequest) SetLang(v string) *DescribeImageSensitiveFileByKeyRequest {
+	s.Lang = &v
+	return s
+}
+
+func (s *DescribeImageSensitiveFileByKeyRequest) SetPageSize(v int32) *DescribeImageSensitiveFileByKeyRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeImageSensitiveFileByKeyRequest) SetScanRange(v []*string) *DescribeImageSensitiveFileByKeyRequest {
+	s.ScanRange = v
+	return s
+}
+
+func (s *DescribeImageSensitiveFileByKeyRequest) SetSensitiveFileKey(v string) *DescribeImageSensitiveFileByKeyRequest {
+	s.SensitiveFileKey = &v
+	return s
+}
+
+type DescribeImageSensitiveFileByKeyShrinkRequest struct {
+	CurrentPage      *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	ImageUuid        *string `json:"ImageUuid,omitempty" xml:"ImageUuid,omitempty"`
+	Lang             *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	PageSize         *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ScanRangeShrink  *string `json:"ScanRange,omitempty" xml:"ScanRange,omitempty"`
+	SensitiveFileKey *string `json:"SensitiveFileKey,omitempty" xml:"SensitiveFileKey,omitempty"`
+}
+
+func (s DescribeImageSensitiveFileByKeyShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeImageSensitiveFileByKeyShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeImageSensitiveFileByKeyShrinkRequest) SetCurrentPage(v int32) *DescribeImageSensitiveFileByKeyShrinkRequest {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *DescribeImageSensitiveFileByKeyShrinkRequest) SetImageUuid(v string) *DescribeImageSensitiveFileByKeyShrinkRequest {
+	s.ImageUuid = &v
+	return s
+}
+
+func (s *DescribeImageSensitiveFileByKeyShrinkRequest) SetLang(v string) *DescribeImageSensitiveFileByKeyShrinkRequest {
+	s.Lang = &v
+	return s
+}
+
+func (s *DescribeImageSensitiveFileByKeyShrinkRequest) SetPageSize(v int32) *DescribeImageSensitiveFileByKeyShrinkRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeImageSensitiveFileByKeyShrinkRequest) SetScanRangeShrink(v string) *DescribeImageSensitiveFileByKeyShrinkRequest {
+	s.ScanRangeShrink = &v
+	return s
+}
+
+func (s *DescribeImageSensitiveFileByKeyShrinkRequest) SetSensitiveFileKey(v string) *DescribeImageSensitiveFileByKeyShrinkRequest {
+	s.SensitiveFileKey = &v
+	return s
+}
+
+type DescribeImageSensitiveFileByKeyResponseBody struct {
+	Code              *string                                                         `json:"Code,omitempty" xml:"Code,omitempty"`
+	HttpStatusCode    *int32                                                          `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message           *string                                                         `json:"Message,omitempty" xml:"Message,omitempty"`
+	PageInfo          *DescribeImageSensitiveFileByKeyResponseBodyPageInfo            `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
+	RequestId         *string                                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SensitiveFileList []*DescribeImageSensitiveFileByKeyResponseBodySensitiveFileList `json:"SensitiveFileList,omitempty" xml:"SensitiveFileList,omitempty" type:"Repeated"`
+	Success           *bool                                                           `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DescribeImageSensitiveFileByKeyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeImageSensitiveFileByKeyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeImageSensitiveFileByKeyResponseBody) SetCode(v string) *DescribeImageSensitiveFileByKeyResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DescribeImageSensitiveFileByKeyResponseBody) SetHttpStatusCode(v int32) *DescribeImageSensitiveFileByKeyResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *DescribeImageSensitiveFileByKeyResponseBody) SetMessage(v string) *DescribeImageSensitiveFileByKeyResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DescribeImageSensitiveFileByKeyResponseBody) SetPageInfo(v *DescribeImageSensitiveFileByKeyResponseBodyPageInfo) *DescribeImageSensitiveFileByKeyResponseBody {
+	s.PageInfo = v
+	return s
+}
+
+func (s *DescribeImageSensitiveFileByKeyResponseBody) SetRequestId(v string) *DescribeImageSensitiveFileByKeyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeImageSensitiveFileByKeyResponseBody) SetSensitiveFileList(v []*DescribeImageSensitiveFileByKeyResponseBodySensitiveFileList) *DescribeImageSensitiveFileByKeyResponseBody {
+	s.SensitiveFileList = v
+	return s
+}
+
+func (s *DescribeImageSensitiveFileByKeyResponseBody) SetSuccess(v bool) *DescribeImageSensitiveFileByKeyResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DescribeImageSensitiveFileByKeyResponseBodyPageInfo struct {
+	Count       *int32  `json:"Count,omitempty" xml:"Count,omitempty"`
+	CurrentPage *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	LastRowKey  *string `json:"LastRowKey,omitempty" xml:"LastRowKey,omitempty"`
+	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	TotalCount  *int32  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeImageSensitiveFileByKeyResponseBodyPageInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeImageSensitiveFileByKeyResponseBodyPageInfo) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeImageSensitiveFileByKeyResponseBodyPageInfo) SetCount(v int32) *DescribeImageSensitiveFileByKeyResponseBodyPageInfo {
+	s.Count = &v
+	return s
+}
+
+func (s *DescribeImageSensitiveFileByKeyResponseBodyPageInfo) SetCurrentPage(v int32) *DescribeImageSensitiveFileByKeyResponseBodyPageInfo {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *DescribeImageSensitiveFileByKeyResponseBodyPageInfo) SetLastRowKey(v string) *DescribeImageSensitiveFileByKeyResponseBodyPageInfo {
+	s.LastRowKey = &v
+	return s
+}
+
+func (s *DescribeImageSensitiveFileByKeyResponseBodyPageInfo) SetPageSize(v int32) *DescribeImageSensitiveFileByKeyResponseBodyPageInfo {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeImageSensitiveFileByKeyResponseBodyPageInfo) SetTotalCount(v int32) *DescribeImageSensitiveFileByKeyResponseBodyPageInfo {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeImageSensitiveFileByKeyResponseBodySensitiveFileList struct {
+	Advice            *string `json:"Advice,omitempty" xml:"Advice,omitempty"`
+	FilePath          *string `json:"FilePath,omitempty" xml:"FilePath,omitempty"`
+	FirstScanTime     *int64  `json:"FirstScanTime,omitempty" xml:"FirstScanTime,omitempty"`
+	LastScanTime      *int64  `json:"LastScanTime,omitempty" xml:"LastScanTime,omitempty"`
+	LayerDigest       *string `json:"LayerDigest,omitempty" xml:"LayerDigest,omitempty"`
+	Promt             *string `json:"Promt,omitempty" xml:"Promt,omitempty"`
+	RiskLevel         *string `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	SensitiveFileKey  *string `json:"SensitiveFileKey,omitempty" xml:"SensitiveFileKey,omitempty"`
+	SensitiveFileName *string `json:"SensitiveFileName,omitempty" xml:"SensitiveFileName,omitempty"`
+}
+
+func (s DescribeImageSensitiveFileByKeyResponseBodySensitiveFileList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeImageSensitiveFileByKeyResponseBodySensitiveFileList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeImageSensitiveFileByKeyResponseBodySensitiveFileList) SetAdvice(v string) *DescribeImageSensitiveFileByKeyResponseBodySensitiveFileList {
+	s.Advice = &v
+	return s
+}
+
+func (s *DescribeImageSensitiveFileByKeyResponseBodySensitiveFileList) SetFilePath(v string) *DescribeImageSensitiveFileByKeyResponseBodySensitiveFileList {
+	s.FilePath = &v
+	return s
+}
+
+func (s *DescribeImageSensitiveFileByKeyResponseBodySensitiveFileList) SetFirstScanTime(v int64) *DescribeImageSensitiveFileByKeyResponseBodySensitiveFileList {
+	s.FirstScanTime = &v
+	return s
+}
+
+func (s *DescribeImageSensitiveFileByKeyResponseBodySensitiveFileList) SetLastScanTime(v int64) *DescribeImageSensitiveFileByKeyResponseBodySensitiveFileList {
+	s.LastScanTime = &v
+	return s
+}
+
+func (s *DescribeImageSensitiveFileByKeyResponseBodySensitiveFileList) SetLayerDigest(v string) *DescribeImageSensitiveFileByKeyResponseBodySensitiveFileList {
+	s.LayerDigest = &v
+	return s
+}
+
+func (s *DescribeImageSensitiveFileByKeyResponseBodySensitiveFileList) SetPromt(v string) *DescribeImageSensitiveFileByKeyResponseBodySensitiveFileList {
+	s.Promt = &v
+	return s
+}
+
+func (s *DescribeImageSensitiveFileByKeyResponseBodySensitiveFileList) SetRiskLevel(v string) *DescribeImageSensitiveFileByKeyResponseBodySensitiveFileList {
+	s.RiskLevel = &v
+	return s
+}
+
+func (s *DescribeImageSensitiveFileByKeyResponseBodySensitiveFileList) SetSensitiveFileKey(v string) *DescribeImageSensitiveFileByKeyResponseBodySensitiveFileList {
+	s.SensitiveFileKey = &v
+	return s
+}
+
+func (s *DescribeImageSensitiveFileByKeyResponseBodySensitiveFileList) SetSensitiveFileName(v string) *DescribeImageSensitiveFileByKeyResponseBodySensitiveFileList {
+	s.SensitiveFileName = &v
+	return s
+}
+
+type DescribeImageSensitiveFileByKeyResponse struct {
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeImageSensitiveFileByKeyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeImageSensitiveFileByKeyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeImageSensitiveFileByKeyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeImageSensitiveFileByKeyResponse) SetHeaders(v map[string]*string) *DescribeImageSensitiveFileByKeyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeImageSensitiveFileByKeyResponse) SetStatusCode(v int32) *DescribeImageSensitiveFileByKeyResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeImageSensitiveFileByKeyResponse) SetBody(v *DescribeImageSensitiveFileByKeyResponseBody) *DescribeImageSensitiveFileByKeyResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeImageSensitiveFileListRequest struct {
+	Criteria     *string   `json:"Criteria,omitempty" xml:"Criteria,omitempty"`
+	CriteriaType *string   `json:"CriteriaType,omitempty" xml:"CriteriaType,omitempty"`
+	CurrentPage  *int32    `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	ImageUuid    *string   `json:"ImageUuid,omitempty" xml:"ImageUuid,omitempty"`
+	Lang         *string   `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	PageSize     *int32    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RiskLevel    *string   `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	ScanRange    []*string `json:"ScanRange,omitempty" xml:"ScanRange,omitempty" type:"Repeated"`
+}
+
+func (s DescribeImageSensitiveFileListRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeImageSensitiveFileListRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeImageSensitiveFileListRequest) SetCriteria(v string) *DescribeImageSensitiveFileListRequest {
+	s.Criteria = &v
+	return s
+}
+
+func (s *DescribeImageSensitiveFileListRequest) SetCriteriaType(v string) *DescribeImageSensitiveFileListRequest {
+	s.CriteriaType = &v
+	return s
+}
+
+func (s *DescribeImageSensitiveFileListRequest) SetCurrentPage(v int32) *DescribeImageSensitiveFileListRequest {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *DescribeImageSensitiveFileListRequest) SetImageUuid(v string) *DescribeImageSensitiveFileListRequest {
+	s.ImageUuid = &v
+	return s
+}
+
+func (s *DescribeImageSensitiveFileListRequest) SetLang(v string) *DescribeImageSensitiveFileListRequest {
+	s.Lang = &v
+	return s
+}
+
+func (s *DescribeImageSensitiveFileListRequest) SetPageSize(v int32) *DescribeImageSensitiveFileListRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeImageSensitiveFileListRequest) SetRiskLevel(v string) *DescribeImageSensitiveFileListRequest {
+	s.RiskLevel = &v
+	return s
+}
+
+func (s *DescribeImageSensitiveFileListRequest) SetScanRange(v []*string) *DescribeImageSensitiveFileListRequest {
+	s.ScanRange = v
+	return s
+}
+
+type DescribeImageSensitiveFileListShrinkRequest struct {
+	Criteria        *string `json:"Criteria,omitempty" xml:"Criteria,omitempty"`
+	CriteriaType    *string `json:"CriteriaType,omitempty" xml:"CriteriaType,omitempty"`
+	CurrentPage     *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	ImageUuid       *string `json:"ImageUuid,omitempty" xml:"ImageUuid,omitempty"`
+	Lang            *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	PageSize        *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RiskLevel       *string `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	ScanRangeShrink *string `json:"ScanRange,omitempty" xml:"ScanRange,omitempty"`
+}
+
+func (s DescribeImageSensitiveFileListShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeImageSensitiveFileListShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeImageSensitiveFileListShrinkRequest) SetCriteria(v string) *DescribeImageSensitiveFileListShrinkRequest {
+	s.Criteria = &v
+	return s
+}
+
+func (s *DescribeImageSensitiveFileListShrinkRequest) SetCriteriaType(v string) *DescribeImageSensitiveFileListShrinkRequest {
+	s.CriteriaType = &v
+	return s
+}
+
+func (s *DescribeImageSensitiveFileListShrinkRequest) SetCurrentPage(v int32) *DescribeImageSensitiveFileListShrinkRequest {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *DescribeImageSensitiveFileListShrinkRequest) SetImageUuid(v string) *DescribeImageSensitiveFileListShrinkRequest {
+	s.ImageUuid = &v
+	return s
+}
+
+func (s *DescribeImageSensitiveFileListShrinkRequest) SetLang(v string) *DescribeImageSensitiveFileListShrinkRequest {
+	s.Lang = &v
+	return s
+}
+
+func (s *DescribeImageSensitiveFileListShrinkRequest) SetPageSize(v int32) *DescribeImageSensitiveFileListShrinkRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeImageSensitiveFileListShrinkRequest) SetRiskLevel(v string) *DescribeImageSensitiveFileListShrinkRequest {
+	s.RiskLevel = &v
+	return s
+}
+
+func (s *DescribeImageSensitiveFileListShrinkRequest) SetScanRangeShrink(v string) *DescribeImageSensitiveFileListShrinkRequest {
+	s.ScanRangeShrink = &v
+	return s
+}
+
+type DescribeImageSensitiveFileListResponseBody struct {
+	Code              *string                                                        `json:"Code,omitempty" xml:"Code,omitempty"`
+	HttpStatusCode    *int32                                                         `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message           *string                                                        `json:"Message,omitempty" xml:"Message,omitempty"`
+	PageInfo          *DescribeImageSensitiveFileListResponseBodyPageInfo            `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
+	RequestId         *string                                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SensitiveFileList []*DescribeImageSensitiveFileListResponseBodySensitiveFileList `json:"SensitiveFileList,omitempty" xml:"SensitiveFileList,omitempty" type:"Repeated"`
+	Success           *bool                                                          `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DescribeImageSensitiveFileListResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeImageSensitiveFileListResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeImageSensitiveFileListResponseBody) SetCode(v string) *DescribeImageSensitiveFileListResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DescribeImageSensitiveFileListResponseBody) SetHttpStatusCode(v int32) *DescribeImageSensitiveFileListResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *DescribeImageSensitiveFileListResponseBody) SetMessage(v string) *DescribeImageSensitiveFileListResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DescribeImageSensitiveFileListResponseBody) SetPageInfo(v *DescribeImageSensitiveFileListResponseBodyPageInfo) *DescribeImageSensitiveFileListResponseBody {
+	s.PageInfo = v
+	return s
+}
+
+func (s *DescribeImageSensitiveFileListResponseBody) SetRequestId(v string) *DescribeImageSensitiveFileListResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeImageSensitiveFileListResponseBody) SetSensitiveFileList(v []*DescribeImageSensitiveFileListResponseBodySensitiveFileList) *DescribeImageSensitiveFileListResponseBody {
+	s.SensitiveFileList = v
+	return s
+}
+
+func (s *DescribeImageSensitiveFileListResponseBody) SetSuccess(v bool) *DescribeImageSensitiveFileListResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DescribeImageSensitiveFileListResponseBodyPageInfo struct {
+	Count       *int32  `json:"Count,omitempty" xml:"Count,omitempty"`
+	CurrentPage *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	LastRowKey  *string `json:"LastRowKey,omitempty" xml:"LastRowKey,omitempty"`
+	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	TotalCount  *int32  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeImageSensitiveFileListResponseBodyPageInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeImageSensitiveFileListResponseBodyPageInfo) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeImageSensitiveFileListResponseBodyPageInfo) SetCount(v int32) *DescribeImageSensitiveFileListResponseBodyPageInfo {
+	s.Count = &v
+	return s
+}
+
+func (s *DescribeImageSensitiveFileListResponseBodyPageInfo) SetCurrentPage(v int32) *DescribeImageSensitiveFileListResponseBodyPageInfo {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *DescribeImageSensitiveFileListResponseBodyPageInfo) SetLastRowKey(v string) *DescribeImageSensitiveFileListResponseBodyPageInfo {
+	s.LastRowKey = &v
+	return s
+}
+
+func (s *DescribeImageSensitiveFileListResponseBodyPageInfo) SetPageSize(v int32) *DescribeImageSensitiveFileListResponseBodyPageInfo {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeImageSensitiveFileListResponseBodyPageInfo) SetTotalCount(v int32) *DescribeImageSensitiveFileListResponseBodyPageInfo {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeImageSensitiveFileListResponseBodySensitiveFileList struct {
+	Count             *int32  `json:"Count,omitempty" xml:"Count,omitempty"`
+	FirstScanTime     *int64  `json:"FirstScanTime,omitempty" xml:"FirstScanTime,omitempty"`
+	LastScanTime      *int64  `json:"LastScanTime,omitempty" xml:"LastScanTime,omitempty"`
+	RiskLevel         *string `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	SensitiveFileKey  *string `json:"SensitiveFileKey,omitempty" xml:"SensitiveFileKey,omitempty"`
+	SensitiveFileName *string `json:"SensitiveFileName,omitempty" xml:"SensitiveFileName,omitempty"`
+}
+
+func (s DescribeImageSensitiveFileListResponseBodySensitiveFileList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeImageSensitiveFileListResponseBodySensitiveFileList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeImageSensitiveFileListResponseBodySensitiveFileList) SetCount(v int32) *DescribeImageSensitiveFileListResponseBodySensitiveFileList {
+	s.Count = &v
+	return s
+}
+
+func (s *DescribeImageSensitiveFileListResponseBodySensitiveFileList) SetFirstScanTime(v int64) *DescribeImageSensitiveFileListResponseBodySensitiveFileList {
+	s.FirstScanTime = &v
+	return s
+}
+
+func (s *DescribeImageSensitiveFileListResponseBodySensitiveFileList) SetLastScanTime(v int64) *DescribeImageSensitiveFileListResponseBodySensitiveFileList {
+	s.LastScanTime = &v
+	return s
+}
+
+func (s *DescribeImageSensitiveFileListResponseBodySensitiveFileList) SetRiskLevel(v string) *DescribeImageSensitiveFileListResponseBodySensitiveFileList {
+	s.RiskLevel = &v
+	return s
+}
+
+func (s *DescribeImageSensitiveFileListResponseBodySensitiveFileList) SetSensitiveFileKey(v string) *DescribeImageSensitiveFileListResponseBodySensitiveFileList {
+	s.SensitiveFileKey = &v
+	return s
+}
+
+func (s *DescribeImageSensitiveFileListResponseBodySensitiveFileList) SetSensitiveFileName(v string) *DescribeImageSensitiveFileListResponseBodySensitiveFileList {
+	s.SensitiveFileName = &v
+	return s
+}
+
+type DescribeImageSensitiveFileListResponse struct {
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeImageSensitiveFileListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeImageSensitiveFileListResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeImageSensitiveFileListResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeImageSensitiveFileListResponse) SetHeaders(v map[string]*string) *DescribeImageSensitiveFileListResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeImageSensitiveFileListResponse) SetStatusCode(v int32) *DescribeImageSensitiveFileListResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeImageSensitiveFileListResponse) SetBody(v *DescribeImageSensitiveFileListResponseBody) *DescribeImageSensitiveFileListResponse {
 	s.Body = v
 	return s
 }
@@ -13401,6 +14371,170 @@ func (s *DescribeInstanceStatisticsResponse) SetStatusCode(v int32) *DescribeIns
 }
 
 func (s *DescribeInstanceStatisticsResponse) SetBody(v *DescribeInstanceStatisticsResponseBody) *DescribeInstanceStatisticsResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeLogMetaRequest struct {
+	From     *string `json:"From,omitempty" xml:"From,omitempty"`
+	Lang     *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+}
+
+func (s DescribeLogMetaRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeLogMetaRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeLogMetaRequest) SetFrom(v string) *DescribeLogMetaRequest {
+	s.From = &v
+	return s
+}
+
+func (s *DescribeLogMetaRequest) SetLang(v string) *DescribeLogMetaRequest {
+	s.Lang = &v
+	return s
+}
+
+func (s *DescribeLogMetaRequest) SetSourceIp(v string) *DescribeLogMetaRequest {
+	s.SourceIp = &v
+	return s
+}
+
+type DescribeLogMetaResponseBody struct {
+	LogMetaList []*DescribeLogMetaResponseBodyLogMetaList `json:"LogMetaList,omitempty" xml:"LogMetaList,omitempty" type:"Repeated"`
+	RequestId   *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount  *int32                                    `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeLogMetaResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeLogMetaResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeLogMetaResponseBody) SetLogMetaList(v []*DescribeLogMetaResponseBodyLogMetaList) *DescribeLogMetaResponseBody {
+	s.LogMetaList = v
+	return s
+}
+
+func (s *DescribeLogMetaResponseBody) SetRequestId(v string) *DescribeLogMetaResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeLogMetaResponseBody) SetTotalCount(v int32) *DescribeLogMetaResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeLogMetaResponseBodyLogMetaList struct {
+	Category     *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	HotTtl       *int32  `json:"HotTtl,omitempty" xml:"HotTtl,omitempty"`
+	LogDesc      *string `json:"LogDesc,omitempty" xml:"LogDesc,omitempty"`
+	LogStore     *string `json:"LogStore,omitempty" xml:"LogStore,omitempty"`
+	Project      *string `json:"Project,omitempty" xml:"Project,omitempty"`
+	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Topic        *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
+	Ttl          *int32  `json:"Ttl,omitempty" xml:"Ttl,omitempty"`
+	UserLogStore *string `json:"UserLogStore,omitempty" xml:"UserLogStore,omitempty"`
+	UserProject  *string `json:"UserProject,omitempty" xml:"UserProject,omitempty"`
+	UserRegion   *string `json:"UserRegion,omitempty" xml:"UserRegion,omitempty"`
+}
+
+func (s DescribeLogMetaResponseBodyLogMetaList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeLogMetaResponseBodyLogMetaList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeLogMetaResponseBodyLogMetaList) SetCategory(v string) *DescribeLogMetaResponseBodyLogMetaList {
+	s.Category = &v
+	return s
+}
+
+func (s *DescribeLogMetaResponseBodyLogMetaList) SetHotTtl(v int32) *DescribeLogMetaResponseBodyLogMetaList {
+	s.HotTtl = &v
+	return s
+}
+
+func (s *DescribeLogMetaResponseBodyLogMetaList) SetLogDesc(v string) *DescribeLogMetaResponseBodyLogMetaList {
+	s.LogDesc = &v
+	return s
+}
+
+func (s *DescribeLogMetaResponseBodyLogMetaList) SetLogStore(v string) *DescribeLogMetaResponseBodyLogMetaList {
+	s.LogStore = &v
+	return s
+}
+
+func (s *DescribeLogMetaResponseBodyLogMetaList) SetProject(v string) *DescribeLogMetaResponseBodyLogMetaList {
+	s.Project = &v
+	return s
+}
+
+func (s *DescribeLogMetaResponseBodyLogMetaList) SetStatus(v string) *DescribeLogMetaResponseBodyLogMetaList {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeLogMetaResponseBodyLogMetaList) SetTopic(v string) *DescribeLogMetaResponseBodyLogMetaList {
+	s.Topic = &v
+	return s
+}
+
+func (s *DescribeLogMetaResponseBodyLogMetaList) SetTtl(v int32) *DescribeLogMetaResponseBodyLogMetaList {
+	s.Ttl = &v
+	return s
+}
+
+func (s *DescribeLogMetaResponseBodyLogMetaList) SetUserLogStore(v string) *DescribeLogMetaResponseBodyLogMetaList {
+	s.UserLogStore = &v
+	return s
+}
+
+func (s *DescribeLogMetaResponseBodyLogMetaList) SetUserProject(v string) *DescribeLogMetaResponseBodyLogMetaList {
+	s.UserProject = &v
+	return s
+}
+
+func (s *DescribeLogMetaResponseBodyLogMetaList) SetUserRegion(v string) *DescribeLogMetaResponseBodyLogMetaList {
+	s.UserRegion = &v
+	return s
+}
+
+type DescribeLogMetaResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeLogMetaResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeLogMetaResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeLogMetaResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeLogMetaResponse) SetHeaders(v map[string]*string) *DescribeLogMetaResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeLogMetaResponse) SetStatusCode(v int32) *DescribeLogMetaResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeLogMetaResponse) SetBody(v *DescribeLogMetaResponseBody) *DescribeLogMetaResponse {
 	s.Body = v
 	return s
 }
@@ -15941,6 +17075,75 @@ func (s *DescribePropertyScaDetailResponse) SetStatusCode(v int32) *DescribeProp
 }
 
 func (s *DescribePropertyScaDetailResponse) SetBody(v *DescribePropertyScaDetailResponseBody) *DescribePropertyScaDetailResponse {
+	s.Body = v
+	return s
+}
+
+type DescribePropertyScheduleConfigRequest struct {
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s DescribePropertyScheduleConfigRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePropertyScheduleConfigRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePropertyScheduleConfigRequest) SetType(v string) *DescribePropertyScheduleConfigRequest {
+	s.Type = &v
+	return s
+}
+
+type DescribePropertyScheduleConfigResponseBody struct {
+	Config    *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribePropertyScheduleConfigResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePropertyScheduleConfigResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePropertyScheduleConfigResponseBody) SetConfig(v string) *DescribePropertyScheduleConfigResponseBody {
+	s.Config = &v
+	return s
+}
+
+func (s *DescribePropertyScheduleConfigResponseBody) SetRequestId(v string) *DescribePropertyScheduleConfigResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribePropertyScheduleConfigResponse struct {
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribePropertyScheduleConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribePropertyScheduleConfigResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePropertyScheduleConfigResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePropertyScheduleConfigResponse) SetHeaders(v map[string]*string) *DescribePropertyScheduleConfigResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribePropertyScheduleConfigResponse) SetStatusCode(v int32) *DescribePropertyScheduleConfigResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribePropertyScheduleConfigResponse) SetBody(v *DescribePropertyScheduleConfigResponseBody) *DescribePropertyScheduleConfigResponse {
 	s.Body = v
 	return s
 }
@@ -19594,6 +20797,23 @@ func (s *DescribeSecurityStatInfoResponse) SetBody(v *DescribeSecurityStatInfoRe
 	return s
 }
 
+type DescribeServiceLinkedRoleStatusRequest struct {
+	ServiceLinkedRole *string `json:"ServiceLinkedRole,omitempty" xml:"ServiceLinkedRole,omitempty"`
+}
+
+func (s DescribeServiceLinkedRoleStatusRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeServiceLinkedRoleStatusRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeServiceLinkedRoleStatusRequest) SetServiceLinkedRole(v string) *DescribeServiceLinkedRoleStatusRequest {
+	s.ServiceLinkedRole = &v
+	return s
+}
+
 type DescribeServiceLinkedRoleStatusResponseBody struct {
 	RequestId  *string                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	RoleStatus *DescribeServiceLinkedRoleStatusResponseBodyRoleStatus `json:"RoleStatus,omitempty" xml:"RoleStatus,omitempty" type:"Struct"`
@@ -20012,12 +21232,14 @@ type DescribeStrategyResponseBodyStrategies struct {
 	CycleDays      *int32                                                 `json:"CycleDays,omitempty" xml:"CycleDays,omitempty"`
 	CycleStartTime *int32                                                 `json:"CycleStartTime,omitempty" xml:"CycleStartTime,omitempty"`
 	EcsCount       *int32                                                 `json:"EcsCount,omitempty" xml:"EcsCount,omitempty"`
+	EndTime        *string                                                `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	ExecStatus     *int32                                                 `json:"ExecStatus,omitempty" xml:"ExecStatus,omitempty"`
 	Id             *int32                                                 `json:"Id,omitempty" xml:"Id,omitempty"`
 	Name           *string                                                `json:"Name,omitempty" xml:"Name,omitempty"`
 	PassRate       *int32                                                 `json:"PassRate,omitempty" xml:"PassRate,omitempty"`
 	ProcessRate    *int32                                                 `json:"ProcessRate,omitempty" xml:"ProcessRate,omitempty"`
 	RiskCount      *int32                                                 `json:"RiskCount,omitempty" xml:"RiskCount,omitempty"`
+	StartTime      *string                                                `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	Type           *int32                                                 `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
@@ -20054,6 +21276,11 @@ func (s *DescribeStrategyResponseBodyStrategies) SetEcsCount(v int32) *DescribeS
 	return s
 }
 
+func (s *DescribeStrategyResponseBodyStrategies) SetEndTime(v string) *DescribeStrategyResponseBodyStrategies {
+	s.EndTime = &v
+	return s
+}
+
 func (s *DescribeStrategyResponseBodyStrategies) SetExecStatus(v int32) *DescribeStrategyResponseBodyStrategies {
 	s.ExecStatus = &v
 	return s
@@ -20081,6 +21308,11 @@ func (s *DescribeStrategyResponseBodyStrategies) SetProcessRate(v int32) *Descri
 
 func (s *DescribeStrategyResponseBodyStrategies) SetRiskCount(v int32) *DescribeStrategyResponseBodyStrategies {
 	s.RiskCount = &v
+	return s
+}
+
+func (s *DescribeStrategyResponseBodyStrategies) SetStartTime(v string) *DescribeStrategyResponseBodyStrategies {
+	s.StartTime = &v
 	return s
 }
 
@@ -20200,11 +21432,15 @@ func (s *DescribeStrategyDetailResponseBody) SetStrategy(v *DescribeStrategyDeta
 }
 
 type DescribeStrategyDetailResponseBodyStrategy struct {
+	CustomType                       *string                                                                       `json:"CustomType,omitempty" xml:"CustomType,omitempty"`
 	CycleDays                        *int32                                                                        `json:"CycleDays,omitempty" xml:"CycleDays,omitempty"`
 	CycleStartTime                   *int32                                                                        `json:"CycleStartTime,omitempty" xml:"CycleStartTime,omitempty"`
+	EndTime                          *string                                                                       `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	Id                               *int32                                                                        `json:"Id,omitempty" xml:"Id,omitempty"`
 	Name                             *string                                                                       `json:"Name,omitempty" xml:"Name,omitempty"`
 	RiskTypeWhiteListQueryResultList []*DescribeStrategyDetailResponseBodyStrategyRiskTypeWhiteListQueryResultList `json:"RiskTypeWhiteListQueryResultList,omitempty" xml:"RiskTypeWhiteListQueryResultList,omitempty" type:"Repeated"`
+	StartTime                        *string                                                                       `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	TargetType                       *string                                                                       `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
 	Type                             *int32                                                                        `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
@@ -20216,6 +21452,11 @@ func (s DescribeStrategyDetailResponseBodyStrategy) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeStrategyDetailResponseBodyStrategy) SetCustomType(v string) *DescribeStrategyDetailResponseBodyStrategy {
+	s.CustomType = &v
+	return s
+}
+
 func (s *DescribeStrategyDetailResponseBodyStrategy) SetCycleDays(v int32) *DescribeStrategyDetailResponseBodyStrategy {
 	s.CycleDays = &v
 	return s
@@ -20223,6 +21464,11 @@ func (s *DescribeStrategyDetailResponseBodyStrategy) SetCycleDays(v int32) *Desc
 
 func (s *DescribeStrategyDetailResponseBodyStrategy) SetCycleStartTime(v int32) *DescribeStrategyDetailResponseBodyStrategy {
 	s.CycleStartTime = &v
+	return s
+}
+
+func (s *DescribeStrategyDetailResponseBodyStrategy) SetEndTime(v string) *DescribeStrategyDetailResponseBodyStrategy {
+	s.EndTime = &v
 	return s
 }
 
@@ -20238,6 +21484,16 @@ func (s *DescribeStrategyDetailResponseBodyStrategy) SetName(v string) *Describe
 
 func (s *DescribeStrategyDetailResponseBodyStrategy) SetRiskTypeWhiteListQueryResultList(v []*DescribeStrategyDetailResponseBodyStrategyRiskTypeWhiteListQueryResultList) *DescribeStrategyDetailResponseBodyStrategy {
 	s.RiskTypeWhiteListQueryResultList = v
+	return s
+}
+
+func (s *DescribeStrategyDetailResponseBodyStrategy) SetStartTime(v string) *DescribeStrategyDetailResponseBodyStrategy {
+	s.StartTime = &v
+	return s
+}
+
+func (s *DescribeStrategyDetailResponseBodyStrategy) SetTargetType(v string) *DescribeStrategyDetailResponseBodyStrategy {
+	s.TargetType = &v
 	return s
 }
 
@@ -21374,6 +22630,8 @@ type DescribeSuspEventsRequest struct {
 	PageSize             *string   `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	ParentEventTypes     *string   `json:"ParentEventTypes,omitempty" xml:"ParentEventTypes,omitempty"`
 	Remark               *string   `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	SortColumn           *string   `json:"SortColumn,omitempty" xml:"SortColumn,omitempty"`
+	SortType             *string   `json:"SortType,omitempty" xml:"SortType,omitempty"`
 	Source               *string   `json:"Source,omitempty" xml:"Source,omitempty"`
 	SourceIp             *string   `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 	Status               *string   `json:"Status,omitempty" xml:"Status,omitempty"`
@@ -21490,6 +22748,16 @@ func (s *DescribeSuspEventsRequest) SetParentEventTypes(v string) *DescribeSuspE
 
 func (s *DescribeSuspEventsRequest) SetRemark(v string) *DescribeSuspEventsRequest {
 	s.Remark = &v
+	return s
+}
+
+func (s *DescribeSuspEventsRequest) SetSortColumn(v string) *DescribeSuspEventsRequest {
+	s.SortColumn = &v
+	return s
+}
+
+func (s *DescribeSuspEventsRequest) SetSortType(v string) *DescribeSuspEventsRequest {
+	s.SortType = &v
 	return s
 }
 
@@ -23350,6 +24618,116 @@ func (s *DescribeVpcListResponse) SetStatusCode(v int32) *DescribeVpcListRespons
 }
 
 func (s *DescribeVpcListResponse) SetBody(v *DescribeVpcListResponseBody) *DescribeVpcListResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeVulConfigRequest struct {
+	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	Type     *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s DescribeVulConfigRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVulConfigRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVulConfigRequest) SetSourceIp(v string) *DescribeVulConfigRequest {
+	s.SourceIp = &v
+	return s
+}
+
+func (s *DescribeVulConfigRequest) SetType(v string) *DescribeVulConfigRequest {
+	s.Type = &v
+	return s
+}
+
+type DescribeVulConfigResponseBody struct {
+	RequestId     *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TargetConfigs []*DescribeVulConfigResponseBodyTargetConfigs `json:"TargetConfigs,omitempty" xml:"TargetConfigs,omitempty" type:"Repeated"`
+	TotalCount    *int32                                        `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeVulConfigResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVulConfigResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVulConfigResponseBody) SetRequestId(v string) *DescribeVulConfigResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeVulConfigResponseBody) SetTargetConfigs(v []*DescribeVulConfigResponseBodyTargetConfigs) *DescribeVulConfigResponseBody {
+	s.TargetConfigs = v
+	return s
+}
+
+func (s *DescribeVulConfigResponseBody) SetTotalCount(v int32) *DescribeVulConfigResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeVulConfigResponseBodyTargetConfigs struct {
+	Config        *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	OverAllConfig *string `json:"OverAllConfig,omitempty" xml:"OverAllConfig,omitempty"`
+	Type          *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s DescribeVulConfigResponseBodyTargetConfigs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVulConfigResponseBodyTargetConfigs) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVulConfigResponseBodyTargetConfigs) SetConfig(v string) *DescribeVulConfigResponseBodyTargetConfigs {
+	s.Config = &v
+	return s
+}
+
+func (s *DescribeVulConfigResponseBodyTargetConfigs) SetOverAllConfig(v string) *DescribeVulConfigResponseBodyTargetConfigs {
+	s.OverAllConfig = &v
+	return s
+}
+
+func (s *DescribeVulConfigResponseBodyTargetConfigs) SetType(v string) *DescribeVulConfigResponseBodyTargetConfigs {
+	s.Type = &v
+	return s
+}
+
+type DescribeVulConfigResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeVulConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeVulConfigResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVulConfigResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVulConfigResponse) SetHeaders(v map[string]*string) *DescribeVulConfigResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeVulConfigResponse) SetStatusCode(v int32) *DescribeVulConfigResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeVulConfigResponse) SetBody(v *DescribeVulConfigResponseBody) *DescribeVulConfigResponse {
 	s.Body = v
 	return s
 }
@@ -27624,6 +29002,7 @@ type ListCheckResultResponseBodyChecks struct {
 	RiskLevel       *string                                           `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
 	Status          *string                                           `json:"Status,omitempty" xml:"Status,omitempty"`
 	TaskId          *string                                           `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	TrialPermission *bool                                             `json:"TrialPermission,omitempty" xml:"TrialPermission,omitempty"`
 	Vendor          *string                                           `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
 	VendorShowName  *string                                           `json:"VendorShowName,omitempty" xml:"VendorShowName,omitempty"`
 }
@@ -27678,6 +29057,11 @@ func (s *ListCheckResultResponseBodyChecks) SetStatus(v string) *ListCheckResult
 
 func (s *ListCheckResultResponseBodyChecks) SetTaskId(v string) *ListCheckResultResponseBodyChecks {
 	s.TaskId = &v
+	return s
+}
+
+func (s *ListCheckResultResponseBodyChecks) SetTrialPermission(v bool) *ListCheckResultResponseBodyChecks {
+	s.TrialPermission = &v
 	return s
 }
 
@@ -30371,11 +31755,14 @@ type ModifyStrategyRequest struct {
 	CustomType       *string `json:"CustomType,omitempty" xml:"CustomType,omitempty"`
 	CycleDays        *string `json:"CycleDays,omitempty" xml:"CycleDays,omitempty"`
 	CycleStartTime   *string `json:"CycleStartTime,omitempty" xml:"CycleStartTime,omitempty"`
+	EndTime          *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	Id               *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	Name             *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	RiskCustomParams *string `json:"RiskCustomParams,omitempty" xml:"RiskCustomParams,omitempty"`
 	RiskSubTypeName  *string `json:"RiskSubTypeName,omitempty" xml:"RiskSubTypeName,omitempty"`
 	SourceIp         *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	StartTime        *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	TargetType       *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
 }
 
 func (s ModifyStrategyRequest) String() string {
@@ -30401,6 +31788,11 @@ func (s *ModifyStrategyRequest) SetCycleStartTime(v string) *ModifyStrategyReque
 	return s
 }
 
+func (s *ModifyStrategyRequest) SetEndTime(v string) *ModifyStrategyRequest {
+	s.EndTime = &v
+	return s
+}
+
 func (s *ModifyStrategyRequest) SetId(v string) *ModifyStrategyRequest {
 	s.Id = &v
 	return s
@@ -30423,6 +31815,16 @@ func (s *ModifyStrategyRequest) SetRiskSubTypeName(v string) *ModifyStrategyRequ
 
 func (s *ModifyStrategyRequest) SetSourceIp(v string) *ModifyStrategyRequest {
 	s.SourceIp = &v
+	return s
+}
+
+func (s *ModifyStrategyRequest) SetStartTime(v string) *ModifyStrategyRequest {
+	s.StartTime = &v
+	return s
+}
+
+func (s *ModifyStrategyRequest) SetTargetType(v string) *ModifyStrategyRequest {
+	s.TargetType = &v
 	return s
 }
 
@@ -31356,8 +32758,119 @@ func (s *ModifyWebLockUpdateConfigResponse) SetBody(v *ModifyWebLockUpdateConfig
 	return s
 }
 
+type OpenSensitiveFileScanRequest struct {
+	SwitchOn *string `json:"SwitchOn,omitempty" xml:"SwitchOn,omitempty"`
+}
+
+func (s OpenSensitiveFileScanRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s OpenSensitiveFileScanRequest) GoString() string {
+	return s.String()
+}
+
+func (s *OpenSensitiveFileScanRequest) SetSwitchOn(v string) *OpenSensitiveFileScanRequest {
+	s.SwitchOn = &v
+	return s
+}
+
+type OpenSensitiveFileScanResponseBody struct {
+	Code           *string                                `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data           *OpenSensitiveFileScanResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	HttpStatusCode *int32                                 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string                                `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId      *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool                                  `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s OpenSensitiveFileScanResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s OpenSensitiveFileScanResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *OpenSensitiveFileScanResponseBody) SetCode(v string) *OpenSensitiveFileScanResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *OpenSensitiveFileScanResponseBody) SetData(v *OpenSensitiveFileScanResponseBodyData) *OpenSensitiveFileScanResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *OpenSensitiveFileScanResponseBody) SetHttpStatusCode(v int32) *OpenSensitiveFileScanResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *OpenSensitiveFileScanResponseBody) SetMessage(v string) *OpenSensitiveFileScanResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *OpenSensitiveFileScanResponseBody) SetRequestId(v string) *OpenSensitiveFileScanResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *OpenSensitiveFileScanResponseBody) SetSuccess(v bool) *OpenSensitiveFileScanResponseBody {
+	s.Success = &v
+	return s
+}
+
+type OpenSensitiveFileScanResponseBodyData struct {
+	SwitchOn *string `json:"SwitchOn,omitempty" xml:"SwitchOn,omitempty"`
+}
+
+func (s OpenSensitiveFileScanResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s OpenSensitiveFileScanResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *OpenSensitiveFileScanResponseBodyData) SetSwitchOn(v string) *OpenSensitiveFileScanResponseBodyData {
+	s.SwitchOn = &v
+	return s
+}
+
+type OpenSensitiveFileScanResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *OpenSensitiveFileScanResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s OpenSensitiveFileScanResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s OpenSensitiveFileScanResponse) GoString() string {
+	return s.String()
+}
+
+func (s *OpenSensitiveFileScanResponse) SetHeaders(v map[string]*string) *OpenSensitiveFileScanResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *OpenSensitiveFileScanResponse) SetStatusCode(v int32) *OpenSensitiveFileScanResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *OpenSensitiveFileScanResponse) SetBody(v *OpenSensitiveFileScanResponseBody) *OpenSensitiveFileScanResponse {
+	s.Body = v
+	return s
+}
+
 type OperateAgentClientInstallRequest struct {
 	InstanceIds *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
+	Lang        *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	Uuids       *string `json:"Uuids,omitempty" xml:"Uuids,omitempty"`
 }
 
@@ -31371,6 +32884,11 @@ func (s OperateAgentClientInstallRequest) GoString() string {
 
 func (s *OperateAgentClientInstallRequest) SetInstanceIds(v string) *OperateAgentClientInstallRequest {
 	s.InstanceIds = &v
+	return s
+}
+
+func (s *OperateAgentClientInstallRequest) SetLang(v string) *OperateAgentClientInstallRequest {
+	s.Lang = &v
 	return s
 }
 
@@ -34471,8 +35989,19 @@ func (client *Client) CreateOrUpdateAssetGroup(request *CreateOrUpdateAssetGroup
 	return _result, _err
 }
 
-func (client *Client) CreateServiceLinkedRoleWithOptions(runtime *util.RuntimeOptions) (_result *CreateServiceLinkedRoleResponse, _err error) {
-	req := &openapi.OpenApiRequest{}
+func (client *Client) CreateServiceLinkedRoleWithOptions(request *CreateServiceLinkedRoleRequest, runtime *util.RuntimeOptions) (_result *CreateServiceLinkedRoleResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ServiceLinkedRole)) {
+		query["ServiceLinkedRole"] = request.ServiceLinkedRole
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateServiceLinkedRole"),
 		Version:     tea.String("2018-12-03"),
@@ -34493,10 +36022,10 @@ func (client *Client) CreateServiceLinkedRoleWithOptions(runtime *util.RuntimeOp
 	return _result, _err
 }
 
-func (client *Client) CreateServiceLinkedRole() (_result *CreateServiceLinkedRoleResponse, _err error) {
+func (client *Client) CreateServiceLinkedRole(request *CreateServiceLinkedRoleRequest) (_result *CreateServiceLinkedRoleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateServiceLinkedRoleResponse{}
-	_body, _err := client.CreateServiceLinkedRoleWithOptions(runtime)
+	_body, _err := client.CreateServiceLinkedRoleWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -35348,6 +36877,14 @@ func (client *Client) DescribeAlarmEventListWithOptions(request *DescribeAlarmEv
 
 	if !tea.BoolValue(util.IsUnset(request.Remark)) {
 		query["Remark"] = request.Remark
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SortColumn)) {
+		query["SortColumn"] = request.SortColumn
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SortType)) {
+		query["SortType"] = request.SortType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SourceIp)) {
@@ -38075,6 +39612,92 @@ func (client *Client) DescribeImageGroupedVulList(request *DescribeImageGroupedV
 	return _result, _err
 }
 
+func (client *Client) DescribeImageListBySensitiveFileWithOptions(tmpReq *DescribeImageListBySensitiveFileRequest, runtime *util.RuntimeOptions) (_result *DescribeImageListBySensitiveFileResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &DescribeImageListBySensitiveFileShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.ScanRange)) {
+		request.ScanRangeShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ScanRange, tea.String("ScanRange"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CurrentPage)) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ImageDigest)) {
+		query["ImageDigest"] = request.ImageDigest
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RepoInstanceId)) {
+		query["RepoInstanceId"] = request.RepoInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RepoName)) {
+		query["RepoName"] = request.RepoName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RepoNamespace)) {
+		query["RepoNamespace"] = request.RepoNamespace
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RiskLevel)) {
+		query["RiskLevel"] = request.RiskLevel
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ScanRangeShrink)) {
+		query["ScanRange"] = request.ScanRangeShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SensitiveFileKey)) {
+		query["SensitiveFileKey"] = request.SensitiveFileKey
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeImageListBySensitiveFile"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeImageListBySensitiveFileResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeImageListBySensitiveFile(request *DescribeImageListBySensitiveFileRequest) (_result *DescribeImageListBySensitiveFileResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeImageListBySensitiveFileResponse{}
+	_body, _err := client.DescribeImageListBySensitiveFileWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DescribeImageListWithBaselineNameWithOptions(request *DescribeImageListWithBaselineNameRequest, runtime *util.RuntimeOptions) (_result *DescribeImageListWithBaselineNameResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -38209,6 +39832,154 @@ func (client *Client) DescribeImageScanAuthCount() (_result *DescribeImageScanAu
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeImageScanAuthCountResponse{}
 	_body, _err := client.DescribeImageScanAuthCountWithOptions(runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeImageSensitiveFileByKeyWithOptions(tmpReq *DescribeImageSensitiveFileByKeyRequest, runtime *util.RuntimeOptions) (_result *DescribeImageSensitiveFileByKeyResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &DescribeImageSensitiveFileByKeyShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.ScanRange)) {
+		request.ScanRangeShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ScanRange, tea.String("ScanRange"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CurrentPage)) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ImageUuid)) {
+		query["ImageUuid"] = request.ImageUuid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ScanRangeShrink)) {
+		query["ScanRange"] = request.ScanRangeShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SensitiveFileKey)) {
+		query["SensitiveFileKey"] = request.SensitiveFileKey
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeImageSensitiveFileByKey"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeImageSensitiveFileByKeyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeImageSensitiveFileByKey(request *DescribeImageSensitiveFileByKeyRequest) (_result *DescribeImageSensitiveFileByKeyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeImageSensitiveFileByKeyResponse{}
+	_body, _err := client.DescribeImageSensitiveFileByKeyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeImageSensitiveFileListWithOptions(tmpReq *DescribeImageSensitiveFileListRequest, runtime *util.RuntimeOptions) (_result *DescribeImageSensitiveFileListResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &DescribeImageSensitiveFileListShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.ScanRange)) {
+		request.ScanRangeShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ScanRange, tea.String("ScanRange"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Criteria)) {
+		query["Criteria"] = request.Criteria
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CriteriaType)) {
+		query["CriteriaType"] = request.CriteriaType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CurrentPage)) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ImageUuid)) {
+		query["ImageUuid"] = request.ImageUuid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RiskLevel)) {
+		query["RiskLevel"] = request.RiskLevel
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ScanRangeShrink)) {
+		query["ScanRange"] = request.ScanRangeShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeImageSensitiveFileList"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeImageSensitiveFileListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeImageSensitiveFileList(request *DescribeImageSensitiveFileListRequest) (_result *DescribeImageSensitiveFileListResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeImageSensitiveFileListResponse{}
+	_body, _err := client.DescribeImageSensitiveFileListWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -38639,6 +40410,58 @@ func (client *Client) DescribeInstanceStatistics(request *DescribeInstanceStatis
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeInstanceStatisticsResponse{}
 	_body, _err := client.DescribeInstanceStatisticsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeLogMetaWithOptions(request *DescribeLogMetaRequest, runtime *util.RuntimeOptions) (_result *DescribeLogMetaResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.From)) {
+		query["From"] = request.From
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceIp)) {
+		query["SourceIp"] = request.SourceIp
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeLogMeta"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeLogMetaResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeLogMeta(request *DescribeLogMetaRequest) (_result *DescribeLogMetaResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeLogMetaResponse{}
+	_body, _err := client.DescribeLogMetaWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -39456,6 +41279,50 @@ func (client *Client) DescribePropertyScaDetail(request *DescribePropertyScaDeta
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribePropertyScaDetailResponse{}
 	_body, _err := client.DescribePropertyScaDetailWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribePropertyScheduleConfigWithOptions(request *DescribePropertyScheduleConfigRequest, runtime *util.RuntimeOptions) (_result *DescribePropertyScheduleConfigResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribePropertyScheduleConfig"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribePropertyScheduleConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribePropertyScheduleConfig(request *DescribePropertyScheduleConfigRequest) (_result *DescribePropertyScheduleConfigResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribePropertyScheduleConfigResponse{}
+	_body, _err := client.DescribePropertyScheduleConfigWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -40563,8 +42430,19 @@ func (client *Client) DescribeSecurityStatInfo(request *DescribeSecurityStatInfo
 	return _result, _err
 }
 
-func (client *Client) DescribeServiceLinkedRoleStatusWithOptions(runtime *util.RuntimeOptions) (_result *DescribeServiceLinkedRoleStatusResponse, _err error) {
-	req := &openapi.OpenApiRequest{}
+func (client *Client) DescribeServiceLinkedRoleStatusWithOptions(request *DescribeServiceLinkedRoleStatusRequest, runtime *util.RuntimeOptions) (_result *DescribeServiceLinkedRoleStatusResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ServiceLinkedRole)) {
+		query["ServiceLinkedRole"] = request.ServiceLinkedRole
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeServiceLinkedRoleStatus"),
 		Version:     tea.String("2018-12-03"),
@@ -40585,10 +42463,10 @@ func (client *Client) DescribeServiceLinkedRoleStatusWithOptions(runtime *util.R
 	return _result, _err
 }
 
-func (client *Client) DescribeServiceLinkedRoleStatus() (_result *DescribeServiceLinkedRoleStatusResponse, _err error) {
+func (client *Client) DescribeServiceLinkedRoleStatus(request *DescribeServiceLinkedRoleStatusRequest) (_result *DescribeServiceLinkedRoleStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeServiceLinkedRoleStatusResponse{}
-	_body, _err := client.DescribeServiceLinkedRoleStatusWithOptions(runtime)
+	_body, _err := client.DescribeServiceLinkedRoleStatusWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -41223,6 +43101,14 @@ func (client *Client) DescribeSuspEventsWithOptions(request *DescribeSuspEventsR
 		query["Remark"] = request.Remark
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.SortColumn)) {
+		query["SortColumn"] = request.SortColumn
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SortType)) {
+		query["SortType"] = request.SortType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Source)) {
 		query["Source"] = request.Source
 	}
@@ -41828,6 +43714,54 @@ func (client *Client) DescribeVpcList() (_result *DescribeVpcListResponse, _err 
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeVpcListResponse{}
 	_body, _err := client.DescribeVpcListWithOptions(runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeVulConfigWithOptions(request *DescribeVulConfigRequest, runtime *util.RuntimeOptions) (_result *DescribeVulConfigResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.SourceIp)) {
+		query["SourceIp"] = request.SourceIp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeVulConfig"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeVulConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeVulConfig(request *DescribeVulConfigRequest) (_result *DescribeVulConfigResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeVulConfigResponse{}
+	_body, _err := client.DescribeVulConfigWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -44753,6 +46687,10 @@ func (client *Client) ModifyStrategyWithOptions(request *ModifyStrategyRequest, 
 		query["CycleStartTime"] = request.CycleStartTime
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Id)) {
 		query["Id"] = request.Id
 	}
@@ -44771,6 +46709,14 @@ func (client *Client) ModifyStrategyWithOptions(request *ModifyStrategyRequest, 
 
 	if !tea.BoolValue(util.IsUnset(request.SourceIp)) {
 		query["SourceIp"] = request.SourceIp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetType)) {
+		query["TargetType"] = request.TargetType
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -45391,6 +47337,50 @@ func (client *Client) ModifyWebLockUpdateConfig(request *ModifyWebLockUpdateConf
 	return _result, _err
 }
 
+func (client *Client) OpenSensitiveFileScanWithOptions(request *OpenSensitiveFileScanRequest, runtime *util.RuntimeOptions) (_result *OpenSensitiveFileScanResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.SwitchOn)) {
+		query["SwitchOn"] = request.SwitchOn
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("OpenSensitiveFileScan"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &OpenSensitiveFileScanResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) OpenSensitiveFileScan(request *OpenSensitiveFileScanRequest) (_result *OpenSensitiveFileScanResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &OpenSensitiveFileScanResponse{}
+	_body, _err := client.OpenSensitiveFileScanWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) OperateAgentClientInstallWithOptions(request *OperateAgentClientInstallRequest, runtime *util.RuntimeOptions) (_result *OperateAgentClientInstallResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -45399,6 +47389,10 @@ func (client *Client) OperateAgentClientInstallWithOptions(request *OperateAgent
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.InstanceIds)) {
 		query["InstanceIds"] = request.InstanceIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Uuids)) {
