@@ -2621,6 +2621,163 @@ func (s *QueryAuditResultResponse) SetBody(v *QueryAuditResultResponseBody) *Que
 	return s
 }
 
+type ReportImpressionRequest struct {
+	Impressionlink *string `json:"Impressionlink,omitempty" xml:"Impressionlink,omitempty"`
+}
+
+func (s ReportImpressionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ReportImpressionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ReportImpressionRequest) SetImpressionlink(v string) *ReportImpressionRequest {
+	s.Impressionlink = &v
+	return s
+}
+
+type ReportImpressionResponseBody struct {
+	ErrorCode *string                             `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMsg  *string                             `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	Ext       map[string]*string                  `json:"Ext,omitempty" xml:"Ext,omitempty"`
+	Header    *ReportImpressionResponseBodyHeader `json:"Header,omitempty" xml:"Header,omitempty" type:"Struct"`
+	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *ReportImpressionResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	Success   *bool                               `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ReportImpressionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ReportImpressionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ReportImpressionResponseBody) SetErrorCode(v string) *ReportImpressionResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ReportImpressionResponseBody) SetErrorMsg(v string) *ReportImpressionResponseBody {
+	s.ErrorMsg = &v
+	return s
+}
+
+func (s *ReportImpressionResponseBody) SetExt(v map[string]*string) *ReportImpressionResponseBody {
+	s.Ext = v
+	return s
+}
+
+func (s *ReportImpressionResponseBody) SetHeader(v *ReportImpressionResponseBodyHeader) *ReportImpressionResponseBody {
+	s.Header = v
+	return s
+}
+
+func (s *ReportImpressionResponseBody) SetRequestId(v string) *ReportImpressionResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ReportImpressionResponseBody) SetResult(v *ReportImpressionResponseBodyResult) *ReportImpressionResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *ReportImpressionResponseBody) SetSuccess(v bool) *ReportImpressionResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ReportImpressionResponseBodyHeader struct {
+	CostTime *int64  `json:"CostTime,omitempty" xml:"CostTime,omitempty"`
+	RpcId    *string `json:"RpcId,omitempty" xml:"RpcId,omitempty"`
+	TraceId  *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
+	Version  *string `json:"Version,omitempty" xml:"Version,omitempty"`
+}
+
+func (s ReportImpressionResponseBodyHeader) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ReportImpressionResponseBodyHeader) GoString() string {
+	return s.String()
+}
+
+func (s *ReportImpressionResponseBodyHeader) SetCostTime(v int64) *ReportImpressionResponseBodyHeader {
+	s.CostTime = &v
+	return s
+}
+
+func (s *ReportImpressionResponseBodyHeader) SetRpcId(v string) *ReportImpressionResponseBodyHeader {
+	s.RpcId = &v
+	return s
+}
+
+func (s *ReportImpressionResponseBodyHeader) SetTraceId(v string) *ReportImpressionResponseBodyHeader {
+	s.TraceId = &v
+	return s
+}
+
+func (s *ReportImpressionResponseBodyHeader) SetVersion(v string) *ReportImpressionResponseBodyHeader {
+	s.Version = &v
+	return s
+}
+
+type ReportImpressionResponseBodyResult struct {
+	Bidid   *string `json:"Bidid,omitempty" xml:"Bidid,omitempty"`
+	Success *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ReportImpressionResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ReportImpressionResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *ReportImpressionResponseBodyResult) SetBidid(v string) *ReportImpressionResponseBodyResult {
+	s.Bidid = &v
+	return s
+}
+
+func (s *ReportImpressionResponseBodyResult) SetSuccess(v bool) *ReportImpressionResponseBodyResult {
+	s.Success = &v
+	return s
+}
+
+type ReportImpressionResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ReportImpressionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ReportImpressionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ReportImpressionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ReportImpressionResponse) SetHeaders(v map[string]*string) *ReportImpressionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ReportImpressionResponse) SetStatusCode(v int32) *ReportImpressionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ReportImpressionResponse) SetBody(v *ReportImpressionResponseBody) *ReportImpressionResponse {
+	s.Body = v
+	return s
+}
+
 type SendSmsRequest struct {
 	NowStamp     *int64  `json:"NowStamp,omitempty" xml:"NowStamp,omitempty"`
 	PhoneNumbers *string `json:"PhoneNumbers,omitempty" xml:"PhoneNumbers,omitempty"`
@@ -3946,6 +4103,50 @@ func (client *Client) QueryAuditResult(request *QueryAuditResultRequest) (_resul
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryAuditResultResponse{}
 	_body, _err := client.QueryAuditResultWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ReportImpressionWithOptions(request *ReportImpressionRequest, runtime *util.RuntimeOptions) (_result *ReportImpressionResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Impressionlink)) {
+		query["Impressionlink"] = request.Impressionlink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ReportImpression"),
+		Version:     tea.String("2022-07-04"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ReportImpressionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ReportImpression(request *ReportImpressionRequest) (_result *ReportImpressionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ReportImpressionResponse{}
+	_body, _err := client.ReportImpressionWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
