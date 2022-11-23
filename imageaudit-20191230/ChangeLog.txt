@@ -1,3 +1,6 @@
+2022-11-23 Version: v3.0.1
+- Update imageaudit.
+
 2022-09-23 Version: v3.0.0
 - Generated golang 2019-12-30 for imageaudit.
 

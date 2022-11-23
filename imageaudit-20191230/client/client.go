@@ -5,11 +5,17 @@
 package client
 
 import (
+	number "github.com/alibabacloud-go/darabonba-number/client"
 	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
 	openapiutil "github.com/alibabacloud-go/openapi-util/service"
+	openplatform "github.com/alibabacloud-go/openplatform-20191219/v2/client"
+	fileform "github.com/alibabacloud-go/tea-fileform/service"
+	oss "github.com/alibabacloud-go/tea-oss-sdk/client"
+	ossutil "github.com/alibabacloud-go/tea-oss-utils/service"
 	util "github.com/alibabacloud-go/tea-utils/v2/service"
 	"github.com/alibabacloud-go/tea/tea"
+	"io"
 )
 
 type ScanImageRequest struct {
@@ -72,6 +78,70 @@ func (s *ScanImageRequestTask) SetInterval(v int32) *ScanImageRequestTask {
 }
 
 func (s *ScanImageRequestTask) SetMaxFrames(v int32) *ScanImageRequestTask {
+	s.MaxFrames = &v
+	return s
+}
+
+type ScanImageAdvanceRequest struct {
+	Scene []*string                      `json:"Scene,omitempty" xml:"Scene,omitempty" type:"Repeated"`
+	Task  []*ScanImageAdvanceRequestTask `json:"Task,omitempty" xml:"Task,omitempty" type:"Repeated"`
+}
+
+func (s ScanImageAdvanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ScanImageAdvanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ScanImageAdvanceRequest) SetScene(v []*string) *ScanImageAdvanceRequest {
+	s.Scene = v
+	return s
+}
+
+func (s *ScanImageAdvanceRequest) SetTask(v []*ScanImageAdvanceRequestTask) *ScanImageAdvanceRequest {
+	s.Task = v
+	return s
+}
+
+type ScanImageAdvanceRequestTask struct {
+	DataId               *string   `json:"DataId,omitempty" xml:"DataId,omitempty"`
+	ImageTimeMillisecond *int64    `json:"ImageTimeMillisecond,omitempty" xml:"ImageTimeMillisecond,omitempty"`
+	ImageURLObject       io.Reader `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
+	Interval             *int32    `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	MaxFrames            *int32    `json:"MaxFrames,omitempty" xml:"MaxFrames,omitempty"`
+}
+
+func (s ScanImageAdvanceRequestTask) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ScanImageAdvanceRequestTask) GoString() string {
+	return s.String()
+}
+
+func (s *ScanImageAdvanceRequestTask) SetDataId(v string) *ScanImageAdvanceRequestTask {
+	s.DataId = &v
+	return s
+}
+
+func (s *ScanImageAdvanceRequestTask) SetImageTimeMillisecond(v int64) *ScanImageAdvanceRequestTask {
+	s.ImageTimeMillisecond = &v
+	return s
+}
+
+func (s *ScanImageAdvanceRequestTask) SetImageURLObject(v io.Reader) *ScanImageAdvanceRequestTask {
+	s.ImageURLObject = v
+	return s
+}
+
+func (s *ScanImageAdvanceRequestTask) SetInterval(v int32) *ScanImageAdvanceRequestTask {
+	s.Interval = &v
+	return s
+}
+
+func (s *ScanImageAdvanceRequestTask) SetMaxFrames(v int32) *ScanImageAdvanceRequestTask {
 	s.MaxFrames = &v
 	return s
 }
@@ -759,6 +829,120 @@ func (client *Client) ScanImage(request *ScanImageRequest) (_result *ScanImageRe
 		return _result, _err
 	}
 	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ScanImageAdvance(request *ScanImageAdvanceRequest, runtime *util.RuntimeOptions) (_result *ScanImageResponse, _err error) {
+	// Step 0: init client
+	accessKeyId, _err := client.Credential.GetAccessKeyId()
+	if _err != nil {
+		return _result, _err
+	}
+
+	accessKeySecret, _err := client.Credential.GetAccessKeySecret()
+	if _err != nil {
+		return _result, _err
+	}
+
+	securityToken, _err := client.Credential.GetSecurityToken()
+	if _err != nil {
+		return _result, _err
+	}
+
+	credentialType := client.Credential.GetType()
+	openPlatformEndpoint := client.OpenPlatformEndpoint
+	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
+	}
+
+	if tea.BoolValue(util.IsUnset(credentialType)) {
+		credentialType = tea.String("access_key")
+	}
+
+	authConfig := &openapi.Config{
+		AccessKeyId:     accessKeyId,
+		AccessKeySecret: accessKeySecret,
+		SecurityToken:   securityToken,
+		Type:            credentialType,
+		Endpoint:        openPlatformEndpoint,
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	authClient, _err := openplatform.NewClient(authConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
+	authRequest := &openplatform.AuthorizeFileUploadRequest{
+		Product:  tea.String("imageaudit"),
+		RegionId: client.RegionId,
+	}
+	authResponse := &openplatform.AuthorizeFileUploadResponse{}
+	ossConfig := &oss.Config{
+		AccessKeySecret: accessKeySecret,
+		Type:            tea.String("access_key"),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	var ossClient *oss.Client
+	fileObj := &fileform.FileField{}
+	ossHeader := &oss.PostObjectRequestHeader{}
+	uploadRequest := &oss.PostObjectRequest{}
+	ossRuntime := &ossutil.RuntimeOptions{}
+	openapiutil.Convert(runtime, ossRuntime)
+	scanImageReq := &ScanImageRequest{}
+	openapiutil.Convert(request, scanImageReq)
+	if !tea.BoolValue(util.IsUnset(request.Task)) {
+		i := tea.Int(0)
+		for _, item0 := range request.Task {
+			if !tea.BoolValue(util.IsUnset(item0.ImageURLObject)) {
+				authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+				if _err != nil {
+					return _result, _err
+				}
+
+				ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
+				ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
+				ossClient, _err = oss.NewClient(ossConfig)
+				if _err != nil {
+					return _result, _err
+				}
+
+				fileObj = &fileform.FileField{
+					Filename:    authResponse.Body.ObjectKey,
+					Content:     item0.ImageURLObject,
+					ContentType: tea.String(""),
+				}
+				ossHeader = &oss.PostObjectRequestHeader{
+					AccessKeyId:         authResponse.Body.AccessKeyId,
+					Policy:              authResponse.Body.EncodedPolicy,
+					Signature:           authResponse.Body.Signature,
+					Key:                 authResponse.Body.ObjectKey,
+					File:                fileObj,
+					SuccessActionStatus: tea.String("201"),
+				}
+				uploadRequest = &oss.PostObjectRequest{
+					BucketName: authResponse.Body.Bucket,
+					Header:     ossHeader,
+				}
+				_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+				if _err != nil {
+					return _result, _err
+				}
+				tmp := scanImageReq.Task[tea.IntValue(i)]
+				tmp.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
+				i = number.Ltoi(number.Add(number.Itol(i), number.Itol(tea.Int(1))))
+			}
+
+		}
+	}
+
+	scanImageResp, _err := client.ScanImageWithOptions(scanImageReq, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+
+	_result = scanImageResp
 	return _result, _err
 }
 
