@@ -5,6 +5,7 @@
 package client
 
 import (
+	number "github.com/alibabacloud-go/darabonba-number/client"
 	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
 	openapiutil "github.com/alibabacloud-go/openapi-util/service"
@@ -1623,6 +1624,112 @@ func (s *GenerateVideoRequestFileList) SetFileUrl(v string) *GenerateVideoReques
 }
 
 func (s *GenerateVideoRequestFileList) SetType(v string) *GenerateVideoRequestFileList {
+	s.Type = &v
+	return s
+}
+
+type GenerateVideoAdvanceRequest struct {
+	Duration         *float32                               `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	DurationAdaption *bool                                  `json:"DurationAdaption,omitempty" xml:"DurationAdaption,omitempty"`
+	FileList         []*GenerateVideoAdvanceRequestFileList `json:"FileList,omitempty" xml:"FileList,omitempty" type:"Repeated"`
+	Height           *int32                                 `json:"Height,omitempty" xml:"Height,omitempty"`
+	Mute             *bool                                  `json:"Mute,omitempty" xml:"Mute,omitempty"`
+	PuzzleEffect     *bool                                  `json:"PuzzleEffect,omitempty" xml:"PuzzleEffect,omitempty"`
+	Scene            *string                                `json:"Scene,omitempty" xml:"Scene,omitempty"`
+	SmartEffect      *bool                                  `json:"SmartEffect,omitempty" xml:"SmartEffect,omitempty"`
+	Style            *string                                `json:"Style,omitempty" xml:"Style,omitempty"`
+	TransitionStyle  *string                                `json:"TransitionStyle,omitempty" xml:"TransitionStyle,omitempty"`
+	Width            *int32                                 `json:"Width,omitempty" xml:"Width,omitempty"`
+}
+
+func (s GenerateVideoAdvanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GenerateVideoAdvanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GenerateVideoAdvanceRequest) SetDuration(v float32) *GenerateVideoAdvanceRequest {
+	s.Duration = &v
+	return s
+}
+
+func (s *GenerateVideoAdvanceRequest) SetDurationAdaption(v bool) *GenerateVideoAdvanceRequest {
+	s.DurationAdaption = &v
+	return s
+}
+
+func (s *GenerateVideoAdvanceRequest) SetFileList(v []*GenerateVideoAdvanceRequestFileList) *GenerateVideoAdvanceRequest {
+	s.FileList = v
+	return s
+}
+
+func (s *GenerateVideoAdvanceRequest) SetHeight(v int32) *GenerateVideoAdvanceRequest {
+	s.Height = &v
+	return s
+}
+
+func (s *GenerateVideoAdvanceRequest) SetMute(v bool) *GenerateVideoAdvanceRequest {
+	s.Mute = &v
+	return s
+}
+
+func (s *GenerateVideoAdvanceRequest) SetPuzzleEffect(v bool) *GenerateVideoAdvanceRequest {
+	s.PuzzleEffect = &v
+	return s
+}
+
+func (s *GenerateVideoAdvanceRequest) SetScene(v string) *GenerateVideoAdvanceRequest {
+	s.Scene = &v
+	return s
+}
+
+func (s *GenerateVideoAdvanceRequest) SetSmartEffect(v bool) *GenerateVideoAdvanceRequest {
+	s.SmartEffect = &v
+	return s
+}
+
+func (s *GenerateVideoAdvanceRequest) SetStyle(v string) *GenerateVideoAdvanceRequest {
+	s.Style = &v
+	return s
+}
+
+func (s *GenerateVideoAdvanceRequest) SetTransitionStyle(v string) *GenerateVideoAdvanceRequest {
+	s.TransitionStyle = &v
+	return s
+}
+
+func (s *GenerateVideoAdvanceRequest) SetWidth(v int32) *GenerateVideoAdvanceRequest {
+	s.Width = &v
+	return s
+}
+
+type GenerateVideoAdvanceRequestFileList struct {
+	FileName      *string   `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	FileUrlObject io.Reader `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	Type          *string   `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s GenerateVideoAdvanceRequestFileList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GenerateVideoAdvanceRequestFileList) GoString() string {
+	return s.String()
+}
+
+func (s *GenerateVideoAdvanceRequestFileList) SetFileName(v string) *GenerateVideoAdvanceRequestFileList {
+	s.FileName = &v
+	return s
+}
+
+func (s *GenerateVideoAdvanceRequestFileList) SetFileUrlObject(v io.Reader) *GenerateVideoAdvanceRequestFileList {
+	s.FileUrlObject = v
+	return s
+}
+
+func (s *GenerateVideoAdvanceRequestFileList) SetType(v string) *GenerateVideoAdvanceRequestFileList {
 	s.Type = &v
 	return s
 }
@@ -4254,6 +4361,120 @@ func (client *Client) GenerateVideo(request *GenerateVideoRequest) (_result *Gen
 		return _result, _err
 	}
 	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GenerateVideoAdvance(request *GenerateVideoAdvanceRequest, runtime *util.RuntimeOptions) (_result *GenerateVideoResponse, _err error) {
+	// Step 0: init client
+	accessKeyId, _err := client.Credential.GetAccessKeyId()
+	if _err != nil {
+		return _result, _err
+	}
+
+	accessKeySecret, _err := client.Credential.GetAccessKeySecret()
+	if _err != nil {
+		return _result, _err
+	}
+
+	securityToken, _err := client.Credential.GetSecurityToken()
+	if _err != nil {
+		return _result, _err
+	}
+
+	credentialType := client.Credential.GetType()
+	openPlatformEndpoint := client.OpenPlatformEndpoint
+	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
+	}
+
+	if tea.BoolValue(util.IsUnset(credentialType)) {
+		credentialType = tea.String("access_key")
+	}
+
+	authConfig := &openapi.Config{
+		AccessKeyId:     accessKeyId,
+		AccessKeySecret: accessKeySecret,
+		SecurityToken:   securityToken,
+		Type:            credentialType,
+		Endpoint:        openPlatformEndpoint,
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	authClient, _err := openplatform.NewClient(authConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
+	authRequest := &openplatform.AuthorizeFileUploadRequest{
+		Product:  tea.String("videoenhan"),
+		RegionId: client.RegionId,
+	}
+	authResponse := &openplatform.AuthorizeFileUploadResponse{}
+	ossConfig := &oss.Config{
+		AccessKeySecret: accessKeySecret,
+		Type:            tea.String("access_key"),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	var ossClient *oss.Client
+	fileObj := &fileform.FileField{}
+	ossHeader := &oss.PostObjectRequestHeader{}
+	uploadRequest := &oss.PostObjectRequest{}
+	ossRuntime := &ossutil.RuntimeOptions{}
+	openapiutil.Convert(runtime, ossRuntime)
+	generateVideoReq := &GenerateVideoRequest{}
+	openapiutil.Convert(request, generateVideoReq)
+	if !tea.BoolValue(util.IsUnset(request.FileList)) {
+		i := tea.Int(0)
+		for _, item0 := range request.FileList {
+			if !tea.BoolValue(util.IsUnset(item0.FileUrlObject)) {
+				authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+				if _err != nil {
+					return _result, _err
+				}
+
+				ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
+				ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
+				ossClient, _err = oss.NewClient(ossConfig)
+				if _err != nil {
+					return _result, _err
+				}
+
+				fileObj = &fileform.FileField{
+					Filename:    authResponse.Body.ObjectKey,
+					Content:     item0.FileUrlObject,
+					ContentType: tea.String(""),
+				}
+				ossHeader = &oss.PostObjectRequestHeader{
+					AccessKeyId:         authResponse.Body.AccessKeyId,
+					Policy:              authResponse.Body.EncodedPolicy,
+					Signature:           authResponse.Body.Signature,
+					Key:                 authResponse.Body.ObjectKey,
+					File:                fileObj,
+					SuccessActionStatus: tea.String("201"),
+				}
+				uploadRequest = &oss.PostObjectRequest{
+					BucketName: authResponse.Body.Bucket,
+					Header:     ossHeader,
+				}
+				_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+				if _err != nil {
+					return _result, _err
+				}
+				tmp := generateVideoReq.FileList[tea.IntValue(i)]
+				tmp.FileUrl = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
+				i = number.Ltoi(number.Add(number.Itol(i), number.Itol(tea.Int(1))))
+			}
+
+		}
+	}
+
+	generateVideoResp, _err := client.GenerateVideoWithOptions(generateVideoReq, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+
+	_result = generateVideoResp
 	return _result, _err
 }
 
