@@ -800,6 +800,7 @@ type DescribeEaisResponseBodyInstancesInstance struct {
 	JupyterUrl                   *string                                        `json:"JupyterUrl,omitempty" xml:"JupyterUrl,omitempty"`
 	RegionId                     *string                                        `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	SecurityGroupId              *string                                        `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	StartTime                    *string                                        `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	Status                       *string                                        `json:"Status,omitempty" xml:"Status,omitempty"`
 	Tags                         *DescribeEaisResponseBodyInstancesInstanceTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
 	VSwitchId                    *string                                        `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
@@ -871,6 +872,11 @@ func (s *DescribeEaisResponseBodyInstancesInstance) SetRegionId(v string) *Descr
 
 func (s *DescribeEaisResponseBodyInstancesInstance) SetSecurityGroupId(v string) *DescribeEaisResponseBodyInstancesInstance {
 	s.SecurityGroupId = &v
+	return s
+}
+
+func (s *DescribeEaisResponseBodyInstancesInstance) SetStartTime(v string) *DescribeEaisResponseBodyInstancesInstance {
+	s.StartTime = &v
 	return s
 }
 
