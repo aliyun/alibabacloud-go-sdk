@@ -5,6 +5,7 @@
 package client
 
 import (
+	number "github.com/alibabacloud-go/darabonba-number/client"
 	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
 	openapiutil "github.com/alibabacloud-go/openapi-util/service"
@@ -16,168 +17,6 @@ import (
 	"github.com/alibabacloud-go/tea/tea"
 	"io"
 )
-
-type AddBodyTraceRequest struct {
-	DbId      *int64                       `json:"DbId,omitempty" xml:"DbId,omitempty"`
-	ExtraData *string                      `json:"ExtraData,omitempty" xml:"ExtraData,omitempty"`
-	Images    []*AddBodyTraceRequestImages `json:"Images,omitempty" xml:"Images,omitempty" type:"Repeated"`
-	PersonId  *int64                       `json:"PersonId,omitempty" xml:"PersonId,omitempty"`
-}
-
-func (s AddBodyTraceRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s AddBodyTraceRequest) GoString() string {
-	return s.String()
-}
-
-func (s *AddBodyTraceRequest) SetDbId(v int64) *AddBodyTraceRequest {
-	s.DbId = &v
-	return s
-}
-
-func (s *AddBodyTraceRequest) SetExtraData(v string) *AddBodyTraceRequest {
-	s.ExtraData = &v
-	return s
-}
-
-func (s *AddBodyTraceRequest) SetImages(v []*AddBodyTraceRequestImages) *AddBodyTraceRequest {
-	s.Images = v
-	return s
-}
-
-func (s *AddBodyTraceRequest) SetPersonId(v int64) *AddBodyTraceRequest {
-	s.PersonId = &v
-	return s
-}
-
-type AddBodyTraceRequestImages struct {
-	ImageData []byte  `json:"ImageData,omitempty" xml:"ImageData,omitempty"`
-	ImageURL  *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
-}
-
-func (s AddBodyTraceRequestImages) String() string {
-	return tea.Prettify(s)
-}
-
-func (s AddBodyTraceRequestImages) GoString() string {
-	return s.String()
-}
-
-func (s *AddBodyTraceRequestImages) SetImageData(v []byte) *AddBodyTraceRequestImages {
-	s.ImageData = v
-	return s
-}
-
-func (s *AddBodyTraceRequestImages) SetImageURL(v string) *AddBodyTraceRequestImages {
-	s.ImageURL = &v
-	return s
-}
-
-type AddBodyTraceShrinkRequest struct {
-	DbId         *int64  `json:"DbId,omitempty" xml:"DbId,omitempty"`
-	ExtraData    *string `json:"ExtraData,omitempty" xml:"ExtraData,omitempty"`
-	ImagesShrink *string `json:"Images,omitempty" xml:"Images,omitempty"`
-	PersonId     *int64  `json:"PersonId,omitempty" xml:"PersonId,omitempty"`
-}
-
-func (s AddBodyTraceShrinkRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s AddBodyTraceShrinkRequest) GoString() string {
-	return s.String()
-}
-
-func (s *AddBodyTraceShrinkRequest) SetDbId(v int64) *AddBodyTraceShrinkRequest {
-	s.DbId = &v
-	return s
-}
-
-func (s *AddBodyTraceShrinkRequest) SetExtraData(v string) *AddBodyTraceShrinkRequest {
-	s.ExtraData = &v
-	return s
-}
-
-func (s *AddBodyTraceShrinkRequest) SetImagesShrink(v string) *AddBodyTraceShrinkRequest {
-	s.ImagesShrink = &v
-	return s
-}
-
-func (s *AddBodyTraceShrinkRequest) SetPersonId(v int64) *AddBodyTraceShrinkRequest {
-	s.PersonId = &v
-	return s
-}
-
-type AddBodyTraceResponseBody struct {
-	Data      *AddBodyTraceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s AddBodyTraceResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s AddBodyTraceResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *AddBodyTraceResponseBody) SetData(v *AddBodyTraceResponseBodyData) *AddBodyTraceResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *AddBodyTraceResponseBody) SetRequestId(v string) *AddBodyTraceResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type AddBodyTraceResponseBodyData struct {
-	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-}
-
-func (s AddBodyTraceResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s AddBodyTraceResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *AddBodyTraceResponseBodyData) SetId(v int64) *AddBodyTraceResponseBodyData {
-	s.Id = &v
-	return s
-}
-
-type AddBodyTraceResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *AddBodyTraceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s AddBodyTraceResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s AddBodyTraceResponse) GoString() string {
-	return s.String()
-}
-
-func (s *AddBodyTraceResponse) SetHeaders(v map[string]*string) *AddBodyTraceResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *AddBodyTraceResponse) SetStatusCode(v int32) *AddBodyTraceResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *AddBodyTraceResponse) SetBody(v *AddBodyTraceResponseBody) *AddBodyTraceResponse {
-	s.Body = v
-	return s
-}
 
 type AddFaceRequest struct {
 	DbName                                *string  `json:"DbName,omitempty" xml:"DbName,omitempty"`
@@ -2095,184 +1934,6 @@ func (s *CountCrowdResponse) SetBody(v *CountCrowdResponseBody) *CountCrowdRespo
 	return s
 }
 
-type CreateBodyDbRequest struct {
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-}
-
-func (s CreateBodyDbRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateBodyDbRequest) GoString() string {
-	return s.String()
-}
-
-func (s *CreateBodyDbRequest) SetName(v string) *CreateBodyDbRequest {
-	s.Name = &v
-	return s
-}
-
-type CreateBodyDbResponseBody struct {
-	Data      *CreateBodyDbResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s CreateBodyDbResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateBodyDbResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *CreateBodyDbResponseBody) SetData(v *CreateBodyDbResponseBodyData) *CreateBodyDbResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *CreateBodyDbResponseBody) SetRequestId(v string) *CreateBodyDbResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type CreateBodyDbResponseBodyData struct {
-	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-}
-
-func (s CreateBodyDbResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateBodyDbResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *CreateBodyDbResponseBodyData) SetId(v int64) *CreateBodyDbResponseBodyData {
-	s.Id = &v
-	return s
-}
-
-type CreateBodyDbResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateBodyDbResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s CreateBodyDbResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateBodyDbResponse) GoString() string {
-	return s.String()
-}
-
-func (s *CreateBodyDbResponse) SetHeaders(v map[string]*string) *CreateBodyDbResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *CreateBodyDbResponse) SetStatusCode(v int32) *CreateBodyDbResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *CreateBodyDbResponse) SetBody(v *CreateBodyDbResponseBody) *CreateBodyDbResponse {
-	s.Body = v
-	return s
-}
-
-type CreateBodyPersonRequest struct {
-	DbId *int64  `json:"DbId,omitempty" xml:"DbId,omitempty"`
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-}
-
-func (s CreateBodyPersonRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateBodyPersonRequest) GoString() string {
-	return s.String()
-}
-
-func (s *CreateBodyPersonRequest) SetDbId(v int64) *CreateBodyPersonRequest {
-	s.DbId = &v
-	return s
-}
-
-func (s *CreateBodyPersonRequest) SetName(v string) *CreateBodyPersonRequest {
-	s.Name = &v
-	return s
-}
-
-type CreateBodyPersonResponseBody struct {
-	Data      *CreateBodyPersonResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s CreateBodyPersonResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateBodyPersonResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *CreateBodyPersonResponseBody) SetData(v *CreateBodyPersonResponseBodyData) *CreateBodyPersonResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *CreateBodyPersonResponseBody) SetRequestId(v string) *CreateBodyPersonResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type CreateBodyPersonResponseBodyData struct {
-	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-}
-
-func (s CreateBodyPersonResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateBodyPersonResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *CreateBodyPersonResponseBodyData) SetId(v int64) *CreateBodyPersonResponseBodyData {
-	s.Id = &v
-	return s
-}
-
-type CreateBodyPersonResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateBodyPersonResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s CreateBodyPersonResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateBodyPersonResponse) GoString() string {
-	return s.String()
-}
-
-func (s *CreateBodyPersonResponse) SetHeaders(v map[string]*string) *CreateBodyPersonResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *CreateBodyPersonResponse) SetStatusCode(v int32) *CreateBodyPersonResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *CreateBodyPersonResponse) SetBody(v *CreateBodyPersonResponseBody) *CreateBodyPersonResponse {
-	s.Body = v
-	return s
-}
-
 type CreateFaceDbRequest struct {
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
@@ -2332,138 +1993,6 @@ func (s *CreateFaceDbResponse) SetStatusCode(v int32) *CreateFaceDbResponse {
 }
 
 func (s *CreateFaceDbResponse) SetBody(v *CreateFaceDbResponseBody) *CreateFaceDbResponse {
-	s.Body = v
-	return s
-}
-
-type DeleteBodyDbRequest struct {
-	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-}
-
-func (s DeleteBodyDbRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteBodyDbRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteBodyDbRequest) SetId(v int64) *DeleteBodyDbRequest {
-	s.Id = &v
-	return s
-}
-
-type DeleteBodyDbResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s DeleteBodyDbResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteBodyDbResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteBodyDbResponseBody) SetRequestId(v string) *DeleteBodyDbResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type DeleteBodyDbResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteBodyDbResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DeleteBodyDbResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteBodyDbResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteBodyDbResponse) SetHeaders(v map[string]*string) *DeleteBodyDbResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DeleteBodyDbResponse) SetStatusCode(v int32) *DeleteBodyDbResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *DeleteBodyDbResponse) SetBody(v *DeleteBodyDbResponseBody) *DeleteBodyDbResponse {
-	s.Body = v
-	return s
-}
-
-type DeleteBodyPersonRequest struct {
-	DbId     *int64 `json:"DbId,omitempty" xml:"DbId,omitempty"`
-	PersonId *int64 `json:"PersonId,omitempty" xml:"PersonId,omitempty"`
-}
-
-func (s DeleteBodyPersonRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteBodyPersonRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteBodyPersonRequest) SetDbId(v int64) *DeleteBodyPersonRequest {
-	s.DbId = &v
-	return s
-}
-
-func (s *DeleteBodyPersonRequest) SetPersonId(v int64) *DeleteBodyPersonRequest {
-	s.PersonId = &v
-	return s
-}
-
-type DeleteBodyPersonResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s DeleteBodyPersonResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteBodyPersonResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteBodyPersonResponseBody) SetRequestId(v string) *DeleteBodyPersonResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type DeleteBodyPersonResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteBodyPersonResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DeleteBodyPersonResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteBodyPersonResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteBodyPersonResponse) SetHeaders(v map[string]*string) *DeleteBodyPersonResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DeleteBodyPersonResponse) SetStatusCode(v int32) *DeleteBodyPersonResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *DeleteBodyPersonResponse) SetBody(v *DeleteBodyPersonResponseBody) *DeleteBodyPersonResponse {
 	s.Body = v
 	return s
 }
@@ -3582,6 +3111,46 @@ func (s *DetectLivingFaceRequestTasks) SetImageURL(v string) *DetectLivingFaceRe
 	return s
 }
 
+type DetectLivingFaceAdvanceRequest struct {
+	Tasks []*DetectLivingFaceAdvanceRequestTasks `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Repeated"`
+}
+
+func (s DetectLivingFaceAdvanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetectLivingFaceAdvanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DetectLivingFaceAdvanceRequest) SetTasks(v []*DetectLivingFaceAdvanceRequestTasks) *DetectLivingFaceAdvanceRequest {
+	s.Tasks = v
+	return s
+}
+
+type DetectLivingFaceAdvanceRequestTasks struct {
+	ImageData      []byte    `json:"ImageData,omitempty" xml:"ImageData,omitempty"`
+	ImageURLObject io.Reader `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
+}
+
+func (s DetectLivingFaceAdvanceRequestTasks) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetectLivingFaceAdvanceRequestTasks) GoString() string {
+	return s.String()
+}
+
+func (s *DetectLivingFaceAdvanceRequestTasks) SetImageData(v []byte) *DetectLivingFaceAdvanceRequestTasks {
+	s.ImageData = v
+	return s
+}
+
+func (s *DetectLivingFaceAdvanceRequestTasks) SetImageURLObject(v io.Reader) *DetectLivingFaceAdvanceRequestTasks {
+	s.ImageURLObject = v
+	return s
+}
+
 type DetectLivingFaceResponseBody struct {
 	Data      *DetectLivingFaceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	RequestId *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -3623,9 +3192,10 @@ func (s *DetectLivingFaceResponseBodyData) SetElements(v []*DetectLivingFaceResp
 }
 
 type DetectLivingFaceResponseBodyDataElements struct {
-	ImageURL *string                                            `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
-	Results  []*DetectLivingFaceResponseBodyDataElementsResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Repeated"`
-	TaskId   *string                                            `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	FaceNumber *int64                                             `json:"FaceNumber,omitempty" xml:"FaceNumber,omitempty"`
+	ImageURL   *string                                            `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
+	Results    []*DetectLivingFaceResponseBodyDataElementsResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Repeated"`
+	TaskId     *string                                            `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s DetectLivingFaceResponseBodyDataElements) String() string {
@@ -3634,6 +3204,11 @@ func (s DetectLivingFaceResponseBodyDataElements) String() string {
 
 func (s DetectLivingFaceResponseBodyDataElements) GoString() string {
 	return s.String()
+}
+
+func (s *DetectLivingFaceResponseBodyDataElements) SetFaceNumber(v int64) *DetectLivingFaceResponseBodyDataElements {
+	s.FaceNumber = &v
+	return s
 }
 
 func (s *DetectLivingFaceResponseBodyDataElements) SetImageURL(v string) *DetectLivingFaceResponseBodyDataElements {
@@ -3652,10 +3227,12 @@ func (s *DetectLivingFaceResponseBodyDataElements) SetTaskId(v string) *DetectLi
 }
 
 type DetectLivingFaceResponseBodyDataElementsResults struct {
-	Frames     []*DetectLivingFaceResponseBodyDataElementsResultsFrames `json:"Frames,omitempty" xml:"Frames,omitempty" type:"Repeated"`
-	Label      *string                                                  `json:"Label,omitempty" xml:"Label,omitempty"`
-	Rate       *float32                                                 `json:"Rate,omitempty" xml:"Rate,omitempty"`
-	Suggestion *string                                                  `json:"Suggestion,omitempty" xml:"Suggestion,omitempty"`
+	Frames      []*DetectLivingFaceResponseBodyDataElementsResultsFrames `json:"Frames,omitempty" xml:"Frames,omitempty" type:"Repeated"`
+	Label       *string                                                  `json:"Label,omitempty" xml:"Label,omitempty"`
+	MessageTips *string                                                  `json:"MessageTips,omitempty" xml:"MessageTips,omitempty"`
+	Rate        *float32                                                 `json:"Rate,omitempty" xml:"Rate,omitempty"`
+	Rect        *DetectLivingFaceResponseBodyDataElementsResultsRect     `json:"Rect,omitempty" xml:"Rect,omitempty" type:"Struct"`
+	Suggestion  *string                                                  `json:"Suggestion,omitempty" xml:"Suggestion,omitempty"`
 }
 
 func (s DetectLivingFaceResponseBodyDataElementsResults) String() string {
@@ -3676,8 +3253,18 @@ func (s *DetectLivingFaceResponseBodyDataElementsResults) SetLabel(v string) *De
 	return s
 }
 
+func (s *DetectLivingFaceResponseBodyDataElementsResults) SetMessageTips(v string) *DetectLivingFaceResponseBodyDataElementsResults {
+	s.MessageTips = &v
+	return s
+}
+
 func (s *DetectLivingFaceResponseBodyDataElementsResults) SetRate(v float32) *DetectLivingFaceResponseBodyDataElementsResults {
 	s.Rate = &v
+	return s
+}
+
+func (s *DetectLivingFaceResponseBodyDataElementsResults) SetRect(v *DetectLivingFaceResponseBodyDataElementsResultsRect) *DetectLivingFaceResponseBodyDataElementsResults {
+	s.Rect = v
 	return s
 }
 
@@ -3706,6 +3293,41 @@ func (s *DetectLivingFaceResponseBodyDataElementsResultsFrames) SetRate(v float3
 
 func (s *DetectLivingFaceResponseBodyDataElementsResultsFrames) SetUrl(v string) *DetectLivingFaceResponseBodyDataElementsResultsFrames {
 	s.Url = &v
+	return s
+}
+
+type DetectLivingFaceResponseBodyDataElementsResultsRect struct {
+	Height *int64 `json:"Height,omitempty" xml:"Height,omitempty"`
+	Left   *int64 `json:"Left,omitempty" xml:"Left,omitempty"`
+	Top    *int64 `json:"Top,omitempty" xml:"Top,omitempty"`
+	Width  *int64 `json:"Width,omitempty" xml:"Width,omitempty"`
+}
+
+func (s DetectLivingFaceResponseBodyDataElementsResultsRect) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetectLivingFaceResponseBodyDataElementsResultsRect) GoString() string {
+	return s.String()
+}
+
+func (s *DetectLivingFaceResponseBodyDataElementsResultsRect) SetHeight(v int64) *DetectLivingFaceResponseBodyDataElementsResultsRect {
+	s.Height = &v
+	return s
+}
+
+func (s *DetectLivingFaceResponseBodyDataElementsResultsRect) SetLeft(v int64) *DetectLivingFaceResponseBodyDataElementsResultsRect {
+	s.Left = &v
+	return s
+}
+
+func (s *DetectLivingFaceResponseBodyDataElementsResultsRect) SetTop(v int64) *DetectLivingFaceResponseBodyDataElementsResultsRect {
+	s.Top = &v
+	return s
+}
+
+func (s *DetectLivingFaceResponseBodyDataElementsResultsRect) SetWidth(v int64) *DetectLivingFaceResponseBodyDataElementsResultsRect {
+	s.Width = &v
 	return s
 }
 
@@ -4903,348 +4525,6 @@ func (s *ExtractPedestrianFeatureAttrResponse) SetBody(v *ExtractPedestrianFeatu
 	return s
 }
 
-type ExtractPedestrianFeatureAttributeRequest struct {
-	ImageURL *string                                            `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
-	Mode     *string                                            `json:"Mode,omitempty" xml:"Mode,omitempty"`
-	UrlList  []*ExtractPedestrianFeatureAttributeRequestUrlList `json:"UrlList,omitempty" xml:"UrlList,omitempty" type:"Repeated"`
-}
-
-func (s ExtractPedestrianFeatureAttributeRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ExtractPedestrianFeatureAttributeRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ExtractPedestrianFeatureAttributeRequest) SetImageURL(v string) *ExtractPedestrianFeatureAttributeRequest {
-	s.ImageURL = &v
-	return s
-}
-
-func (s *ExtractPedestrianFeatureAttributeRequest) SetMode(v string) *ExtractPedestrianFeatureAttributeRequest {
-	s.Mode = &v
-	return s
-}
-
-func (s *ExtractPedestrianFeatureAttributeRequest) SetUrlList(v []*ExtractPedestrianFeatureAttributeRequestUrlList) *ExtractPedestrianFeatureAttributeRequest {
-	s.UrlList = v
-	return s
-}
-
-type ExtractPedestrianFeatureAttributeRequestUrlList struct {
-	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
-}
-
-func (s ExtractPedestrianFeatureAttributeRequestUrlList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ExtractPedestrianFeatureAttributeRequestUrlList) GoString() string {
-	return s.String()
-}
-
-func (s *ExtractPedestrianFeatureAttributeRequestUrlList) SetUrl(v string) *ExtractPedestrianFeatureAttributeRequestUrlList {
-	s.Url = &v
-	return s
-}
-
-type ExtractPedestrianFeatureAttributeResponseBody struct {
-	Data      *ExtractPedestrianFeatureAttributeResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s ExtractPedestrianFeatureAttributeResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ExtractPedestrianFeatureAttributeResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ExtractPedestrianFeatureAttributeResponseBody) SetData(v *ExtractPedestrianFeatureAttributeResponseBodyData) *ExtractPedestrianFeatureAttributeResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *ExtractPedestrianFeatureAttributeResponseBody) SetRequestId(v string) *ExtractPedestrianFeatureAttributeResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type ExtractPedestrianFeatureAttributeResponseBodyData struct {
-	Age             *string                                                      `json:"Age,omitempty" xml:"Age,omitempty"`
-	AgeScore        *float32                                                     `json:"AgeScore,omitempty" xml:"AgeScore,omitempty"`
-	Elements        []*ExtractPedestrianFeatureAttributeResponseBodyDataElements `json:"Elements,omitempty" xml:"Elements,omitempty" type:"Repeated"`
-	Feature         *string                                                      `json:"Feature,omitempty" xml:"Feature,omitempty"`
-	Gender          *string                                                      `json:"Gender,omitempty" xml:"Gender,omitempty"`
-	GenderScore     *float32                                                     `json:"GenderScore,omitempty" xml:"GenderScore,omitempty"`
-	Hair            *string                                                      `json:"Hair,omitempty" xml:"Hair,omitempty"`
-	HairScore       *float32                                                     `json:"HairScore,omitempty" xml:"HairScore,omitempty"`
-	LowerColor      *string                                                      `json:"LowerColor,omitempty" xml:"LowerColor,omitempty"`
-	LowerColorScore *float32                                                     `json:"LowerColorScore,omitempty" xml:"LowerColorScore,omitempty"`
-	LowerType       *string                                                      `json:"LowerType,omitempty" xml:"LowerType,omitempty"`
-	LowerTypeScore  *float32                                                     `json:"LowerTypeScore,omitempty" xml:"LowerTypeScore,omitempty"`
-	ObjType         *string                                                      `json:"ObjType,omitempty" xml:"ObjType,omitempty"`
-	ObjTypeScore    *float32                                                     `json:"ObjTypeScore,omitempty" xml:"ObjTypeScore,omitempty"`
-	QualityScore    *float32                                                     `json:"QualityScore,omitempty" xml:"QualityScore,omitempty"`
-	UpperColor      *string                                                      `json:"UpperColor,omitempty" xml:"UpperColor,omitempty"`
-	UpperColorScore *float32                                                     `json:"UpperColorScore,omitempty" xml:"UpperColorScore,omitempty"`
-	UpperType       *string                                                      `json:"UpperType,omitempty" xml:"UpperType,omitempty"`
-	UpperTypeScore  *float32                                                     `json:"UpperTypeScore,omitempty" xml:"UpperTypeScore,omitempty"`
-}
-
-func (s ExtractPedestrianFeatureAttributeResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ExtractPedestrianFeatureAttributeResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *ExtractPedestrianFeatureAttributeResponseBodyData) SetAge(v string) *ExtractPedestrianFeatureAttributeResponseBodyData {
-	s.Age = &v
-	return s
-}
-
-func (s *ExtractPedestrianFeatureAttributeResponseBodyData) SetAgeScore(v float32) *ExtractPedestrianFeatureAttributeResponseBodyData {
-	s.AgeScore = &v
-	return s
-}
-
-func (s *ExtractPedestrianFeatureAttributeResponseBodyData) SetElements(v []*ExtractPedestrianFeatureAttributeResponseBodyDataElements) *ExtractPedestrianFeatureAttributeResponseBodyData {
-	s.Elements = v
-	return s
-}
-
-func (s *ExtractPedestrianFeatureAttributeResponseBodyData) SetFeature(v string) *ExtractPedestrianFeatureAttributeResponseBodyData {
-	s.Feature = &v
-	return s
-}
-
-func (s *ExtractPedestrianFeatureAttributeResponseBodyData) SetGender(v string) *ExtractPedestrianFeatureAttributeResponseBodyData {
-	s.Gender = &v
-	return s
-}
-
-func (s *ExtractPedestrianFeatureAttributeResponseBodyData) SetGenderScore(v float32) *ExtractPedestrianFeatureAttributeResponseBodyData {
-	s.GenderScore = &v
-	return s
-}
-
-func (s *ExtractPedestrianFeatureAttributeResponseBodyData) SetHair(v string) *ExtractPedestrianFeatureAttributeResponseBodyData {
-	s.Hair = &v
-	return s
-}
-
-func (s *ExtractPedestrianFeatureAttributeResponseBodyData) SetHairScore(v float32) *ExtractPedestrianFeatureAttributeResponseBodyData {
-	s.HairScore = &v
-	return s
-}
-
-func (s *ExtractPedestrianFeatureAttributeResponseBodyData) SetLowerColor(v string) *ExtractPedestrianFeatureAttributeResponseBodyData {
-	s.LowerColor = &v
-	return s
-}
-
-func (s *ExtractPedestrianFeatureAttributeResponseBodyData) SetLowerColorScore(v float32) *ExtractPedestrianFeatureAttributeResponseBodyData {
-	s.LowerColorScore = &v
-	return s
-}
-
-func (s *ExtractPedestrianFeatureAttributeResponseBodyData) SetLowerType(v string) *ExtractPedestrianFeatureAttributeResponseBodyData {
-	s.LowerType = &v
-	return s
-}
-
-func (s *ExtractPedestrianFeatureAttributeResponseBodyData) SetLowerTypeScore(v float32) *ExtractPedestrianFeatureAttributeResponseBodyData {
-	s.LowerTypeScore = &v
-	return s
-}
-
-func (s *ExtractPedestrianFeatureAttributeResponseBodyData) SetObjType(v string) *ExtractPedestrianFeatureAttributeResponseBodyData {
-	s.ObjType = &v
-	return s
-}
-
-func (s *ExtractPedestrianFeatureAttributeResponseBodyData) SetObjTypeScore(v float32) *ExtractPedestrianFeatureAttributeResponseBodyData {
-	s.ObjTypeScore = &v
-	return s
-}
-
-func (s *ExtractPedestrianFeatureAttributeResponseBodyData) SetQualityScore(v float32) *ExtractPedestrianFeatureAttributeResponseBodyData {
-	s.QualityScore = &v
-	return s
-}
-
-func (s *ExtractPedestrianFeatureAttributeResponseBodyData) SetUpperColor(v string) *ExtractPedestrianFeatureAttributeResponseBodyData {
-	s.UpperColor = &v
-	return s
-}
-
-func (s *ExtractPedestrianFeatureAttributeResponseBodyData) SetUpperColorScore(v float32) *ExtractPedestrianFeatureAttributeResponseBodyData {
-	s.UpperColorScore = &v
-	return s
-}
-
-func (s *ExtractPedestrianFeatureAttributeResponseBodyData) SetUpperType(v string) *ExtractPedestrianFeatureAttributeResponseBodyData {
-	s.UpperType = &v
-	return s
-}
-
-func (s *ExtractPedestrianFeatureAttributeResponseBodyData) SetUpperTypeScore(v float32) *ExtractPedestrianFeatureAttributeResponseBodyData {
-	s.UpperTypeScore = &v
-	return s
-}
-
-type ExtractPedestrianFeatureAttributeResponseBodyDataElements struct {
-	Age             *string  `json:"Age,omitempty" xml:"Age,omitempty"`
-	AgeScore        *float32 `json:"AgeScore,omitempty" xml:"AgeScore,omitempty"`
-	Feature         *string  `json:"Feature,omitempty" xml:"Feature,omitempty"`
-	Gender          *string  `json:"Gender,omitempty" xml:"Gender,omitempty"`
-	GenderScore     *float32 `json:"GenderScore,omitempty" xml:"GenderScore,omitempty"`
-	Hair            *string  `json:"Hair,omitempty" xml:"Hair,omitempty"`
-	HairScore       *float32 `json:"HairScore,omitempty" xml:"HairScore,omitempty"`
-	LowerColor      *string  `json:"LowerColor,omitempty" xml:"LowerColor,omitempty"`
-	LowerColorScore *float32 `json:"LowerColorScore,omitempty" xml:"LowerColorScore,omitempty"`
-	LowerType       *string  `json:"LowerType,omitempty" xml:"LowerType,omitempty"`
-	LowerTypeScore  *float32 `json:"LowerTypeScore,omitempty" xml:"LowerTypeScore,omitempty"`
-	ObjType         *string  `json:"ObjType,omitempty" xml:"ObjType,omitempty"`
-	ObjTypeScore    *float32 `json:"ObjTypeScore,omitempty" xml:"ObjTypeScore,omitempty"`
-	QualityScore    *float32 `json:"QualityScore,omitempty" xml:"QualityScore,omitempty"`
-	UpperColor      *string  `json:"UpperColor,omitempty" xml:"UpperColor,omitempty"`
-	UpperColorScore *float32 `json:"UpperColorScore,omitempty" xml:"UpperColorScore,omitempty"`
-	UpperType       *string  `json:"UpperType,omitempty" xml:"UpperType,omitempty"`
-	UpperTypeScore  *float32 `json:"UpperTypeScore,omitempty" xml:"UpperTypeScore,omitempty"`
-}
-
-func (s ExtractPedestrianFeatureAttributeResponseBodyDataElements) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ExtractPedestrianFeatureAttributeResponseBodyDataElements) GoString() string {
-	return s.String()
-}
-
-func (s *ExtractPedestrianFeatureAttributeResponseBodyDataElements) SetAge(v string) *ExtractPedestrianFeatureAttributeResponseBodyDataElements {
-	s.Age = &v
-	return s
-}
-
-func (s *ExtractPedestrianFeatureAttributeResponseBodyDataElements) SetAgeScore(v float32) *ExtractPedestrianFeatureAttributeResponseBodyDataElements {
-	s.AgeScore = &v
-	return s
-}
-
-func (s *ExtractPedestrianFeatureAttributeResponseBodyDataElements) SetFeature(v string) *ExtractPedestrianFeatureAttributeResponseBodyDataElements {
-	s.Feature = &v
-	return s
-}
-
-func (s *ExtractPedestrianFeatureAttributeResponseBodyDataElements) SetGender(v string) *ExtractPedestrianFeatureAttributeResponseBodyDataElements {
-	s.Gender = &v
-	return s
-}
-
-func (s *ExtractPedestrianFeatureAttributeResponseBodyDataElements) SetGenderScore(v float32) *ExtractPedestrianFeatureAttributeResponseBodyDataElements {
-	s.GenderScore = &v
-	return s
-}
-
-func (s *ExtractPedestrianFeatureAttributeResponseBodyDataElements) SetHair(v string) *ExtractPedestrianFeatureAttributeResponseBodyDataElements {
-	s.Hair = &v
-	return s
-}
-
-func (s *ExtractPedestrianFeatureAttributeResponseBodyDataElements) SetHairScore(v float32) *ExtractPedestrianFeatureAttributeResponseBodyDataElements {
-	s.HairScore = &v
-	return s
-}
-
-func (s *ExtractPedestrianFeatureAttributeResponseBodyDataElements) SetLowerColor(v string) *ExtractPedestrianFeatureAttributeResponseBodyDataElements {
-	s.LowerColor = &v
-	return s
-}
-
-func (s *ExtractPedestrianFeatureAttributeResponseBodyDataElements) SetLowerColorScore(v float32) *ExtractPedestrianFeatureAttributeResponseBodyDataElements {
-	s.LowerColorScore = &v
-	return s
-}
-
-func (s *ExtractPedestrianFeatureAttributeResponseBodyDataElements) SetLowerType(v string) *ExtractPedestrianFeatureAttributeResponseBodyDataElements {
-	s.LowerType = &v
-	return s
-}
-
-func (s *ExtractPedestrianFeatureAttributeResponseBodyDataElements) SetLowerTypeScore(v float32) *ExtractPedestrianFeatureAttributeResponseBodyDataElements {
-	s.LowerTypeScore = &v
-	return s
-}
-
-func (s *ExtractPedestrianFeatureAttributeResponseBodyDataElements) SetObjType(v string) *ExtractPedestrianFeatureAttributeResponseBodyDataElements {
-	s.ObjType = &v
-	return s
-}
-
-func (s *ExtractPedestrianFeatureAttributeResponseBodyDataElements) SetObjTypeScore(v float32) *ExtractPedestrianFeatureAttributeResponseBodyDataElements {
-	s.ObjTypeScore = &v
-	return s
-}
-
-func (s *ExtractPedestrianFeatureAttributeResponseBodyDataElements) SetQualityScore(v float32) *ExtractPedestrianFeatureAttributeResponseBodyDataElements {
-	s.QualityScore = &v
-	return s
-}
-
-func (s *ExtractPedestrianFeatureAttributeResponseBodyDataElements) SetUpperColor(v string) *ExtractPedestrianFeatureAttributeResponseBodyDataElements {
-	s.UpperColor = &v
-	return s
-}
-
-func (s *ExtractPedestrianFeatureAttributeResponseBodyDataElements) SetUpperColorScore(v float32) *ExtractPedestrianFeatureAttributeResponseBodyDataElements {
-	s.UpperColorScore = &v
-	return s
-}
-
-func (s *ExtractPedestrianFeatureAttributeResponseBodyDataElements) SetUpperType(v string) *ExtractPedestrianFeatureAttributeResponseBodyDataElements {
-	s.UpperType = &v
-	return s
-}
-
-func (s *ExtractPedestrianFeatureAttributeResponseBodyDataElements) SetUpperTypeScore(v float32) *ExtractPedestrianFeatureAttributeResponseBodyDataElements {
-	s.UpperTypeScore = &v
-	return s
-}
-
-type ExtractPedestrianFeatureAttributeResponse struct {
-	Headers    map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ExtractPedestrianFeatureAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ExtractPedestrianFeatureAttributeResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ExtractPedestrianFeatureAttributeResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ExtractPedestrianFeatureAttributeResponse) SetHeaders(v map[string]*string) *ExtractPedestrianFeatureAttributeResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ExtractPedestrianFeatureAttributeResponse) SetStatusCode(v int32) *ExtractPedestrianFeatureAttributeResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *ExtractPedestrianFeatureAttributeResponse) SetBody(v *ExtractPedestrianFeatureAttributeResponseBody) *ExtractPedestrianFeatureAttributeResponse {
-	s.Body = v
-	return s
-}
-
 type FaceBeautyRequest struct {
 	ImageURL *string  `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
 	Sharp    *float32 `json:"Sharp,omitempty" xml:"Sharp,omitempty"`
@@ -6105,145 +5385,6 @@ func (s *GenerateHumanSketchStyleResponse) SetBody(v *GenerateHumanSketchStyleRe
 	return s
 }
 
-type GetBodyPersonRequest struct {
-	DbId     *int64 `json:"DbId,omitempty" xml:"DbId,omitempty"`
-	PersonId *int64 `json:"PersonId,omitempty" xml:"PersonId,omitempty"`
-}
-
-func (s GetBodyPersonRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetBodyPersonRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetBodyPersonRequest) SetDbId(v int64) *GetBodyPersonRequest {
-	s.DbId = &v
-	return s
-}
-
-func (s *GetBodyPersonRequest) SetPersonId(v int64) *GetBodyPersonRequest {
-	s.PersonId = &v
-	return s
-}
-
-type GetBodyPersonResponseBody struct {
-	Data      *GetBodyPersonResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s GetBodyPersonResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetBodyPersonResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetBodyPersonResponseBody) SetData(v *GetBodyPersonResponseBodyData) *GetBodyPersonResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *GetBodyPersonResponseBody) SetRequestId(v string) *GetBodyPersonResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type GetBodyPersonResponseBodyData struct {
-	DbId       *int64                                    `json:"DbId,omitempty" xml:"DbId,omitempty"`
-	Id         *int64                                    `json:"Id,omitempty" xml:"Id,omitempty"`
-	Name       *string                                   `json:"Name,omitempty" xml:"Name,omitempty"`
-	TraceCount *int64                                    `json:"TraceCount,omitempty" xml:"TraceCount,omitempty"`
-	TraceList  []*GetBodyPersonResponseBodyDataTraceList `json:"TraceList,omitempty" xml:"TraceList,omitempty" type:"Repeated"`
-}
-
-func (s GetBodyPersonResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetBodyPersonResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *GetBodyPersonResponseBodyData) SetDbId(v int64) *GetBodyPersonResponseBodyData {
-	s.DbId = &v
-	return s
-}
-
-func (s *GetBodyPersonResponseBodyData) SetId(v int64) *GetBodyPersonResponseBodyData {
-	s.Id = &v
-	return s
-}
-
-func (s *GetBodyPersonResponseBodyData) SetName(v string) *GetBodyPersonResponseBodyData {
-	s.Name = &v
-	return s
-}
-
-func (s *GetBodyPersonResponseBodyData) SetTraceCount(v int64) *GetBodyPersonResponseBodyData {
-	s.TraceCount = &v
-	return s
-}
-
-func (s *GetBodyPersonResponseBodyData) SetTraceList(v []*GetBodyPersonResponseBodyDataTraceList) *GetBodyPersonResponseBodyData {
-	s.TraceList = v
-	return s
-}
-
-type GetBodyPersonResponseBodyDataTraceList struct {
-	ExtraData *string `json:"ExtraData,omitempty" xml:"ExtraData,omitempty"`
-	Id        *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
-}
-
-func (s GetBodyPersonResponseBodyDataTraceList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetBodyPersonResponseBodyDataTraceList) GoString() string {
-	return s.String()
-}
-
-func (s *GetBodyPersonResponseBodyDataTraceList) SetExtraData(v string) *GetBodyPersonResponseBodyDataTraceList {
-	s.ExtraData = &v
-	return s
-}
-
-func (s *GetBodyPersonResponseBodyDataTraceList) SetId(v int64) *GetBodyPersonResponseBodyDataTraceList {
-	s.Id = &v
-	return s
-}
-
-type GetBodyPersonResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetBodyPersonResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetBodyPersonResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetBodyPersonResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetBodyPersonResponse) SetHeaders(v map[string]*string) *GetBodyPersonResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetBodyPersonResponse) SetStatusCode(v int32) *GetBodyPersonResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *GetBodyPersonResponse) SetBody(v *GetBodyPersonResponseBody) *GetBodyPersonResponse {
-	s.Body = v
-	return s
-}
-
 type GetFaceEntityRequest struct {
 	DbName   *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
 	EntityId *string `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
@@ -6372,7 +5513,6 @@ func (s *GetFaceEntityResponse) SetBody(v *GetFaceEntityResponseBody) *GetFaceEn
 }
 
 type GetRealPersonVerificationResultRequest struct {
-	MaterialHash      *string `json:"MaterialHash,omitempty" xml:"MaterialHash,omitempty"`
 	VerificationToken *string `json:"VerificationToken,omitempty" xml:"VerificationToken,omitempty"`
 }
 
@@ -6382,11 +5522,6 @@ func (s GetRealPersonVerificationResultRequest) String() string {
 
 func (s GetRealPersonVerificationResultRequest) GoString() string {
 	return s.String()
-}
-
-func (s *GetRealPersonVerificationResultRequest) SetMaterialHash(v string) *GetRealPersonVerificationResultRequest {
-	s.MaterialHash = &v
-	return s
 }
 
 func (s *GetRealPersonVerificationResultRequest) SetVerificationToken(v string) *GetRealPersonVerificationResultRequest {
@@ -6418,9 +5553,7 @@ func (s *GetRealPersonVerificationResultResponseBody) SetRequestId(v string) *Ge
 }
 
 type GetRealPersonVerificationResultResponseBodyData struct {
-	IdentityInfo  *string `json:"IdentityInfo,omitempty" xml:"IdentityInfo,omitempty"`
-	MaterialMatch *string `json:"MaterialMatch,omitempty" xml:"MaterialMatch,omitempty"`
-	Passed        *bool   `json:"Passed,omitempty" xml:"Passed,omitempty"`
+	Passed *bool `json:"Passed,omitempty" xml:"Passed,omitempty"`
 }
 
 func (s GetRealPersonVerificationResultResponseBodyData) String() string {
@@ -6429,16 +5562,6 @@ func (s GetRealPersonVerificationResultResponseBodyData) String() string {
 
 func (s GetRealPersonVerificationResultResponseBodyData) GoString() string {
 	return s.String()
-}
-
-func (s *GetRealPersonVerificationResultResponseBodyData) SetIdentityInfo(v string) *GetRealPersonVerificationResultResponseBodyData {
-	s.IdentityInfo = &v
-	return s
-}
-
-func (s *GetRealPersonVerificationResultResponseBodyData) SetMaterialMatch(v string) *GetRealPersonVerificationResultResponseBodyData {
-	s.MaterialMatch = &v
-	return s
 }
 
 func (s *GetRealPersonVerificationResultResponseBodyData) SetPassed(v bool) *GetRealPersonVerificationResultResponseBodyData {
@@ -6867,266 +5990,6 @@ func (s *LiquifyFaceResponse) SetStatusCode(v int32) *LiquifyFaceResponse {
 }
 
 func (s *LiquifyFaceResponse) SetBody(v *LiquifyFaceResponseBody) *LiquifyFaceResponse {
-	s.Body = v
-	return s
-}
-
-type ListBodyDbsRequest struct {
-	Limit  *int64 `json:"Limit,omitempty" xml:"Limit,omitempty"`
-	Offset *int64 `json:"Offset,omitempty" xml:"Offset,omitempty"`
-}
-
-func (s ListBodyDbsRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListBodyDbsRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListBodyDbsRequest) SetLimit(v int64) *ListBodyDbsRequest {
-	s.Limit = &v
-	return s
-}
-
-func (s *ListBodyDbsRequest) SetOffset(v int64) *ListBodyDbsRequest {
-	s.Offset = &v
-	return s
-}
-
-type ListBodyDbsResponseBody struct {
-	Data      *ListBodyDbsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s ListBodyDbsResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListBodyDbsResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ListBodyDbsResponseBody) SetData(v *ListBodyDbsResponseBodyData) *ListBodyDbsResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *ListBodyDbsResponseBody) SetRequestId(v string) *ListBodyDbsResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type ListBodyDbsResponseBodyData struct {
-	DbList []*ListBodyDbsResponseBodyDataDbList `json:"DbList,omitempty" xml:"DbList,omitempty" type:"Repeated"`
-	Total  *int64                               `json:"Total,omitempty" xml:"Total,omitempty"`
-}
-
-func (s ListBodyDbsResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListBodyDbsResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *ListBodyDbsResponseBodyData) SetDbList(v []*ListBodyDbsResponseBodyDataDbList) *ListBodyDbsResponseBodyData {
-	s.DbList = v
-	return s
-}
-
-func (s *ListBodyDbsResponseBodyData) SetTotal(v int64) *ListBodyDbsResponseBodyData {
-	s.Total = &v
-	return s
-}
-
-type ListBodyDbsResponseBodyDataDbList struct {
-	Id   *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-}
-
-func (s ListBodyDbsResponseBodyDataDbList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListBodyDbsResponseBodyDataDbList) GoString() string {
-	return s.String()
-}
-
-func (s *ListBodyDbsResponseBodyDataDbList) SetId(v int64) *ListBodyDbsResponseBodyDataDbList {
-	s.Id = &v
-	return s
-}
-
-func (s *ListBodyDbsResponseBodyDataDbList) SetName(v string) *ListBodyDbsResponseBodyDataDbList {
-	s.Name = &v
-	return s
-}
-
-type ListBodyDbsResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListBodyDbsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ListBodyDbsResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListBodyDbsResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ListBodyDbsResponse) SetHeaders(v map[string]*string) *ListBodyDbsResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ListBodyDbsResponse) SetStatusCode(v int32) *ListBodyDbsResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *ListBodyDbsResponse) SetBody(v *ListBodyDbsResponseBody) *ListBodyDbsResponse {
-	s.Body = v
-	return s
-}
-
-type ListBodyPersonRequest struct {
-	DbId   *int64 `json:"DbId,omitempty" xml:"DbId,omitempty"`
-	Limit  *int64 `json:"Limit,omitempty" xml:"Limit,omitempty"`
-	Offset *int64 `json:"Offset,omitempty" xml:"Offset,omitempty"`
-}
-
-func (s ListBodyPersonRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListBodyPersonRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListBodyPersonRequest) SetDbId(v int64) *ListBodyPersonRequest {
-	s.DbId = &v
-	return s
-}
-
-func (s *ListBodyPersonRequest) SetLimit(v int64) *ListBodyPersonRequest {
-	s.Limit = &v
-	return s
-}
-
-func (s *ListBodyPersonRequest) SetOffset(v int64) *ListBodyPersonRequest {
-	s.Offset = &v
-	return s
-}
-
-type ListBodyPersonResponseBody struct {
-	Data      *ListBodyPersonResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s ListBodyPersonResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListBodyPersonResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ListBodyPersonResponseBody) SetData(v *ListBodyPersonResponseBodyData) *ListBodyPersonResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *ListBodyPersonResponseBody) SetRequestId(v string) *ListBodyPersonResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type ListBodyPersonResponseBodyData struct {
-	PersonList []*ListBodyPersonResponseBodyDataPersonList `json:"PersonList,omitempty" xml:"PersonList,omitempty" type:"Repeated"`
-	Total      *int64                                      `json:"Total,omitempty" xml:"Total,omitempty"`
-}
-
-func (s ListBodyPersonResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListBodyPersonResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *ListBodyPersonResponseBodyData) SetPersonList(v []*ListBodyPersonResponseBodyDataPersonList) *ListBodyPersonResponseBodyData {
-	s.PersonList = v
-	return s
-}
-
-func (s *ListBodyPersonResponseBodyData) SetTotal(v int64) *ListBodyPersonResponseBodyData {
-	s.Total = &v
-	return s
-}
-
-type ListBodyPersonResponseBodyDataPersonList struct {
-	DbId       *int64  `json:"DbId,omitempty" xml:"DbId,omitempty"`
-	Id         *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
-	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	TraceCount *int64  `json:"TraceCount,omitempty" xml:"TraceCount,omitempty"`
-}
-
-func (s ListBodyPersonResponseBodyDataPersonList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListBodyPersonResponseBodyDataPersonList) GoString() string {
-	return s.String()
-}
-
-func (s *ListBodyPersonResponseBodyDataPersonList) SetDbId(v int64) *ListBodyPersonResponseBodyDataPersonList {
-	s.DbId = &v
-	return s
-}
-
-func (s *ListBodyPersonResponseBodyDataPersonList) SetId(v int64) *ListBodyPersonResponseBodyDataPersonList {
-	s.Id = &v
-	return s
-}
-
-func (s *ListBodyPersonResponseBodyDataPersonList) SetName(v string) *ListBodyPersonResponseBodyDataPersonList {
-	s.Name = &v
-	return s
-}
-
-func (s *ListBodyPersonResponseBodyDataPersonList) SetTraceCount(v int64) *ListBodyPersonResponseBodyDataPersonList {
-	s.TraceCount = &v
-	return s
-}
-
-type ListBodyPersonResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListBodyPersonResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ListBodyPersonResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListBodyPersonResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ListBodyPersonResponse) SetHeaders(v map[string]*string) *ListBodyPersonResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ListBodyPersonResponse) SetStatusCode(v int32) *ListBodyPersonResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *ListBodyPersonResponse) SetBody(v *ListBodyPersonResponseBody) *ListBodyPersonResponse {
 	s.Body = v
 	return s
 }
@@ -8532,6 +7395,64 @@ func (s *RecognizeActionRequestURLList) SetImageData(v []byte) *RecognizeActionR
 	return s
 }
 
+type RecognizeActionAdvanceRequest struct {
+	Type      *int32                                  `json:"Type,omitempty" xml:"Type,omitempty"`
+	URLList   []*RecognizeActionAdvanceRequestURLList `json:"URLList,omitempty" xml:"URLList,omitempty" type:"Repeated"`
+	VideoData []byte                                  `json:"VideoData,omitempty" xml:"VideoData,omitempty"`
+	VideoUrl  *string                                 `json:"VideoUrl,omitempty" xml:"VideoUrl,omitempty"`
+}
+
+func (s RecognizeActionAdvanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeActionAdvanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeActionAdvanceRequest) SetType(v int32) *RecognizeActionAdvanceRequest {
+	s.Type = &v
+	return s
+}
+
+func (s *RecognizeActionAdvanceRequest) SetURLList(v []*RecognizeActionAdvanceRequestURLList) *RecognizeActionAdvanceRequest {
+	s.URLList = v
+	return s
+}
+
+func (s *RecognizeActionAdvanceRequest) SetVideoData(v []byte) *RecognizeActionAdvanceRequest {
+	s.VideoData = v
+	return s
+}
+
+func (s *RecognizeActionAdvanceRequest) SetVideoUrl(v string) *RecognizeActionAdvanceRequest {
+	s.VideoUrl = &v
+	return s
+}
+
+type RecognizeActionAdvanceRequestURLList struct {
+	URLObject io.Reader `json:"URL,omitempty" xml:"URL,omitempty"`
+	ImageData []byte    `json:"imageData,omitempty" xml:"imageData,omitempty"`
+}
+
+func (s RecognizeActionAdvanceRequestURLList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeActionAdvanceRequestURLList) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeActionAdvanceRequestURLList) SetURLObject(v io.Reader) *RecognizeActionAdvanceRequestURLList {
+	s.URLObject = v
+	return s
+}
+
+func (s *RecognizeActionAdvanceRequestURLList) SetImageData(v []byte) *RecognizeActionAdvanceRequestURLList {
+	s.ImageData = v
+	return s
+}
+
 type RecognizeActionResponseBody struct {
 	Data      *RecognizeActionResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	RequestId *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -9383,6 +8304,46 @@ func (s *RecognizePublicFaceRequestTask) SetImageURL(v string) *RecognizePublicF
 	return s
 }
 
+type RecognizePublicFaceAdvanceRequest struct {
+	Task []*RecognizePublicFaceAdvanceRequestTask `json:"Task,omitempty" xml:"Task,omitempty" type:"Repeated"`
+}
+
+func (s RecognizePublicFaceAdvanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizePublicFaceAdvanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizePublicFaceAdvanceRequest) SetTask(v []*RecognizePublicFaceAdvanceRequestTask) *RecognizePublicFaceAdvanceRequest {
+	s.Task = v
+	return s
+}
+
+type RecognizePublicFaceAdvanceRequestTask struct {
+	ImageData      []byte    `json:"ImageData,omitempty" xml:"ImageData,omitempty"`
+	ImageURLObject io.Reader `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
+}
+
+func (s RecognizePublicFaceAdvanceRequestTask) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizePublicFaceAdvanceRequestTask) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizePublicFaceAdvanceRequestTask) SetImageData(v []byte) *RecognizePublicFaceAdvanceRequestTask {
+	s.ImageData = v
+	return s
+}
+
+func (s *RecognizePublicFaceAdvanceRequestTask) SetImageURLObject(v io.Reader) *RecognizePublicFaceAdvanceRequestTask {
+	s.ImageURLObject = v
+	return s
+}
+
 type RecognizePublicFaceResponseBody struct {
 	Data      *RecognizePublicFaceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -9836,209 +8797,6 @@ func (s *RetouchSkinResponse) SetStatusCode(v int32) *RetouchSkinResponse {
 }
 
 func (s *RetouchSkinResponse) SetBody(v *RetouchSkinResponseBody) *RetouchSkinResponse {
-	s.Body = v
-	return s
-}
-
-type SearchBodyTraceRequest struct {
-	DbId     *int64                          `json:"DbId,omitempty" xml:"DbId,omitempty"`
-	Images   []*SearchBodyTraceRequestImages `json:"Images,omitempty" xml:"Images,omitempty" type:"Repeated"`
-	Limit    *int64                          `json:"Limit,omitempty" xml:"Limit,omitempty"`
-	MinScore *float32                        `json:"MinScore,omitempty" xml:"MinScore,omitempty"`
-}
-
-func (s SearchBodyTraceRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SearchBodyTraceRequest) GoString() string {
-	return s.String()
-}
-
-func (s *SearchBodyTraceRequest) SetDbId(v int64) *SearchBodyTraceRequest {
-	s.DbId = &v
-	return s
-}
-
-func (s *SearchBodyTraceRequest) SetImages(v []*SearchBodyTraceRequestImages) *SearchBodyTraceRequest {
-	s.Images = v
-	return s
-}
-
-func (s *SearchBodyTraceRequest) SetLimit(v int64) *SearchBodyTraceRequest {
-	s.Limit = &v
-	return s
-}
-
-func (s *SearchBodyTraceRequest) SetMinScore(v float32) *SearchBodyTraceRequest {
-	s.MinScore = &v
-	return s
-}
-
-type SearchBodyTraceRequestImages struct {
-	ImageData []byte  `json:"ImageData,omitempty" xml:"ImageData,omitempty"`
-	ImageURL  *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
-}
-
-func (s SearchBodyTraceRequestImages) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SearchBodyTraceRequestImages) GoString() string {
-	return s.String()
-}
-
-func (s *SearchBodyTraceRequestImages) SetImageData(v []byte) *SearchBodyTraceRequestImages {
-	s.ImageData = v
-	return s
-}
-
-func (s *SearchBodyTraceRequestImages) SetImageURL(v string) *SearchBodyTraceRequestImages {
-	s.ImageURL = &v
-	return s
-}
-
-type SearchBodyTraceShrinkRequest struct {
-	DbId         *int64   `json:"DbId,omitempty" xml:"DbId,omitempty"`
-	ImagesShrink *string  `json:"Images,omitempty" xml:"Images,omitempty"`
-	Limit        *int64   `json:"Limit,omitempty" xml:"Limit,omitempty"`
-	MinScore     *float32 `json:"MinScore,omitempty" xml:"MinScore,omitempty"`
-}
-
-func (s SearchBodyTraceShrinkRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SearchBodyTraceShrinkRequest) GoString() string {
-	return s.String()
-}
-
-func (s *SearchBodyTraceShrinkRequest) SetDbId(v int64) *SearchBodyTraceShrinkRequest {
-	s.DbId = &v
-	return s
-}
-
-func (s *SearchBodyTraceShrinkRequest) SetImagesShrink(v string) *SearchBodyTraceShrinkRequest {
-	s.ImagesShrink = &v
-	return s
-}
-
-func (s *SearchBodyTraceShrinkRequest) SetLimit(v int64) *SearchBodyTraceShrinkRequest {
-	s.Limit = &v
-	return s
-}
-
-func (s *SearchBodyTraceShrinkRequest) SetMinScore(v float32) *SearchBodyTraceShrinkRequest {
-	s.MinScore = &v
-	return s
-}
-
-type SearchBodyTraceResponseBody struct {
-	Data      *SearchBodyTraceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s SearchBodyTraceResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SearchBodyTraceResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *SearchBodyTraceResponseBody) SetData(v *SearchBodyTraceResponseBodyData) *SearchBodyTraceResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *SearchBodyTraceResponseBody) SetRequestId(v string) *SearchBodyTraceResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type SearchBodyTraceResponseBodyData struct {
-	MatchList []*SearchBodyTraceResponseBodyDataMatchList `json:"MatchList,omitempty" xml:"MatchList,omitempty" type:"Repeated"`
-}
-
-func (s SearchBodyTraceResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SearchBodyTraceResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *SearchBodyTraceResponseBodyData) SetMatchList(v []*SearchBodyTraceResponseBodyDataMatchList) *SearchBodyTraceResponseBodyData {
-	s.MatchList = v
-	return s
-}
-
-type SearchBodyTraceResponseBodyDataMatchList struct {
-	DbId      *int64   `json:"DbId,omitempty" xml:"DbId,omitempty"`
-	ExtraData *string  `json:"ExtraData,omitempty" xml:"ExtraData,omitempty"`
-	PersonId  *int64   `json:"PersonId,omitempty" xml:"PersonId,omitempty"`
-	Score     *float32 `json:"Score,omitempty" xml:"Score,omitempty"`
-	TraceId   *int64   `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
-}
-
-func (s SearchBodyTraceResponseBodyDataMatchList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SearchBodyTraceResponseBodyDataMatchList) GoString() string {
-	return s.String()
-}
-
-func (s *SearchBodyTraceResponseBodyDataMatchList) SetDbId(v int64) *SearchBodyTraceResponseBodyDataMatchList {
-	s.DbId = &v
-	return s
-}
-
-func (s *SearchBodyTraceResponseBodyDataMatchList) SetExtraData(v string) *SearchBodyTraceResponseBodyDataMatchList {
-	s.ExtraData = &v
-	return s
-}
-
-func (s *SearchBodyTraceResponseBodyDataMatchList) SetPersonId(v int64) *SearchBodyTraceResponseBodyDataMatchList {
-	s.PersonId = &v
-	return s
-}
-
-func (s *SearchBodyTraceResponseBodyDataMatchList) SetScore(v float32) *SearchBodyTraceResponseBodyDataMatchList {
-	s.Score = &v
-	return s
-}
-
-func (s *SearchBodyTraceResponseBodyDataMatchList) SetTraceId(v int64) *SearchBodyTraceResponseBodyDataMatchList {
-	s.TraceId = &v
-	return s
-}
-
-type SearchBodyTraceResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SearchBodyTraceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s SearchBodyTraceResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SearchBodyTraceResponse) GoString() string {
-	return s.String()
-}
-
-func (s *SearchBodyTraceResponse) SetHeaders(v map[string]*string) *SearchBodyTraceResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *SearchBodyTraceResponse) SetStatusCode(v int32) *SearchBodyTraceResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *SearchBodyTraceResponse) SetBody(v *SearchBodyTraceResponseBody) *SearchBodyTraceResponse {
 	s.Body = v
 	return s
 }
@@ -10752,68 +9510,6 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	}
 
 	_body, _err := endpointutil.GetEndpointRules(productId, regionId, endpointRule, network, suffix)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) AddBodyTraceWithOptions(tmpReq *AddBodyTraceRequest, runtime *util.RuntimeOptions) (_result *AddBodyTraceResponse, _err error) {
-	_err = util.ValidateModel(tmpReq)
-	if _err != nil {
-		return _result, _err
-	}
-	request := &AddBodyTraceShrinkRequest{}
-	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tmpReq.Images)) {
-		request.ImagesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Images, tea.String("Images"), tea.String("json"))
-	}
-
-	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.DbId)) {
-		body["DbId"] = request.DbId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ExtraData)) {
-		body["ExtraData"] = request.ExtraData
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ImagesShrink)) {
-		body["Images"] = request.ImagesShrink
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PersonId)) {
-		body["PersonId"] = request.PersonId
-	}
-
-	req := &openapi.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("AddBodyTrace"),
-		Version:     tea.String("2019-12-30"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &AddBodyTraceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) AddBodyTrace(request *AddBodyTraceRequest) (_result *AddBodyTraceResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &AddBodyTraceResponse{}
-	_body, _err := client.AddBodyTraceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12140,98 +10836,6 @@ func (client *Client) CountCrowdAdvance(request *CountCrowdAdvanceRequest, runti
 	return _result, _err
 }
 
-func (client *Client) CreateBodyDbWithOptions(request *CreateBodyDbRequest, runtime *util.RuntimeOptions) (_result *CreateBodyDbResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.Name)) {
-		body["Name"] = request.Name
-	}
-
-	req := &openapi.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("CreateBodyDb"),
-		Version:     tea.String("2019-12-30"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &CreateBodyDbResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) CreateBodyDb(request *CreateBodyDbRequest) (_result *CreateBodyDbResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &CreateBodyDbResponse{}
-	_body, _err := client.CreateBodyDbWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) CreateBodyPersonWithOptions(request *CreateBodyPersonRequest, runtime *util.RuntimeOptions) (_result *CreateBodyPersonResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.DbId)) {
-		body["DbId"] = request.DbId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Name)) {
-		body["Name"] = request.Name
-	}
-
-	req := &openapi.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("CreateBodyPerson"),
-		Version:     tea.String("2019-12-30"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &CreateBodyPersonResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) CreateBodyPerson(request *CreateBodyPersonRequest) (_result *CreateBodyPersonResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &CreateBodyPersonResponse{}
-	_body, _err := client.CreateBodyPersonWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) CreateFaceDbWithOptions(request *CreateFaceDbRequest, runtime *util.RuntimeOptions) (_result *CreateFaceDbResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12269,98 +10873,6 @@ func (client *Client) CreateFaceDb(request *CreateFaceDbRequest) (_result *Creat
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateFaceDbResponse{}
 	_body, _err := client.CreateFaceDbWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DeleteBodyDbWithOptions(request *DeleteBodyDbRequest, runtime *util.RuntimeOptions) (_result *DeleteBodyDbResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.Id)) {
-		body["Id"] = request.Id
-	}
-
-	req := &openapi.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DeleteBodyDb"),
-		Version:     tea.String("2019-12-30"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DeleteBodyDbResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DeleteBodyDb(request *DeleteBodyDbRequest) (_result *DeleteBodyDbResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DeleteBodyDbResponse{}
-	_body, _err := client.DeleteBodyDbWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DeleteBodyPersonWithOptions(request *DeleteBodyPersonRequest, runtime *util.RuntimeOptions) (_result *DeleteBodyPersonResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.DbId)) {
-		body["DbId"] = request.DbId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PersonId)) {
-		body["PersonId"] = request.PersonId
-	}
-
-	req := &openapi.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DeleteBodyPerson"),
-		Version:     tea.String("2019-12-30"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DeleteBodyPersonResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DeleteBodyPerson(request *DeleteBodyPersonRequest) (_result *DeleteBodyPersonResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DeleteBodyPersonResponse{}
-	_body, _err := client.DeleteBodyPersonWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13378,6 +11890,120 @@ func (client *Client) DetectLivingFace(request *DetectLivingFaceRequest) (_resul
 	return _result, _err
 }
 
+func (client *Client) DetectLivingFaceAdvance(request *DetectLivingFaceAdvanceRequest, runtime *util.RuntimeOptions) (_result *DetectLivingFaceResponse, _err error) {
+	// Step 0: init client
+	accessKeyId, _err := client.Credential.GetAccessKeyId()
+	if _err != nil {
+		return _result, _err
+	}
+
+	accessKeySecret, _err := client.Credential.GetAccessKeySecret()
+	if _err != nil {
+		return _result, _err
+	}
+
+	securityToken, _err := client.Credential.GetSecurityToken()
+	if _err != nil {
+		return _result, _err
+	}
+
+	credentialType := client.Credential.GetType()
+	openPlatformEndpoint := client.OpenPlatformEndpoint
+	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
+	}
+
+	if tea.BoolValue(util.IsUnset(credentialType)) {
+		credentialType = tea.String("access_key")
+	}
+
+	authConfig := &openapi.Config{
+		AccessKeyId:     accessKeyId,
+		AccessKeySecret: accessKeySecret,
+		SecurityToken:   securityToken,
+		Type:            credentialType,
+		Endpoint:        openPlatformEndpoint,
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	authClient, _err := openplatform.NewClient(authConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
+	authRequest := &openplatform.AuthorizeFileUploadRequest{
+		Product:  tea.String("facebody"),
+		RegionId: client.RegionId,
+	}
+	authResponse := &openplatform.AuthorizeFileUploadResponse{}
+	ossConfig := &oss.Config{
+		AccessKeySecret: accessKeySecret,
+		Type:            tea.String("access_key"),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	var ossClient *oss.Client
+	fileObj := &fileform.FileField{}
+	ossHeader := &oss.PostObjectRequestHeader{}
+	uploadRequest := &oss.PostObjectRequest{}
+	ossRuntime := &ossutil.RuntimeOptions{}
+	openapiutil.Convert(runtime, ossRuntime)
+	detectLivingFaceReq := &DetectLivingFaceRequest{}
+	openapiutil.Convert(request, detectLivingFaceReq)
+	if !tea.BoolValue(util.IsUnset(request.Tasks)) {
+		i := tea.Int(0)
+		for _, item0 := range request.Tasks {
+			if !tea.BoolValue(util.IsUnset(item0.ImageURLObject)) {
+				authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+				if _err != nil {
+					return _result, _err
+				}
+
+				ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
+				ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
+				ossClient, _err = oss.NewClient(ossConfig)
+				if _err != nil {
+					return _result, _err
+				}
+
+				fileObj = &fileform.FileField{
+					Filename:    authResponse.Body.ObjectKey,
+					Content:     item0.ImageURLObject,
+					ContentType: tea.String(""),
+				}
+				ossHeader = &oss.PostObjectRequestHeader{
+					AccessKeyId:         authResponse.Body.AccessKeyId,
+					Policy:              authResponse.Body.EncodedPolicy,
+					Signature:           authResponse.Body.Signature,
+					Key:                 authResponse.Body.ObjectKey,
+					File:                fileObj,
+					SuccessActionStatus: tea.String("201"),
+				}
+				uploadRequest = &oss.PostObjectRequest{
+					BucketName: authResponse.Body.Bucket,
+					Header:     ossHeader,
+				}
+				_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+				if _err != nil {
+					return _result, _err
+				}
+				tmp := detectLivingFaceReq.Tasks[tea.IntValue(i)]
+				tmp.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
+				i = number.Ltoi(number.Add(number.Itol(i), number.Itol(tea.Int(1))))
+			}
+
+		}
+	}
+
+	detectLivingFaceResp, _err := client.DetectLivingFaceWithOptions(detectLivingFaceReq, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+
+	_result = detectLivingFaceResp
+	return _result, _err
+}
+
 func (client *Client) DetectPedestrianWithOptions(request *DetectPedestrianRequest, runtime *util.RuntimeOptions) (_result *DetectPedestrianResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14301,58 +12927,6 @@ func (client *Client) ExtractPedestrianFeatureAttrAdvance(request *ExtractPedest
 	}
 
 	_result = extractPedestrianFeatureAttrResp
-	return _result, _err
-}
-
-func (client *Client) ExtractPedestrianFeatureAttributeWithOptions(request *ExtractPedestrianFeatureAttributeRequest, runtime *util.RuntimeOptions) (_result *ExtractPedestrianFeatureAttributeResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ImageURL)) {
-		body["ImageURL"] = request.ImageURL
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Mode)) {
-		body["Mode"] = request.Mode
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.UrlList)) {
-		body["UrlList"] = request.UrlList
-	}
-
-	req := &openapi.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("ExtractPedestrianFeatureAttribute"),
-		Version:     tea.String("2019-12-30"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &ExtractPedestrianFeatureAttributeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ExtractPedestrianFeatureAttribute(request *ExtractPedestrianFeatureAttributeRequest) (_result *ExtractPedestrianFeatureAttributeResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ExtractPedestrianFeatureAttributeResponse{}
-	_body, _err := client.ExtractPedestrianFeatureAttributeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -15356,46 +13930,6 @@ func (client *Client) GenerateHumanSketchStyleAdvance(request *GenerateHumanSket
 	return _result, _err
 }
 
-func (client *Client) GetBodyPersonWithOptions(request *GetBodyPersonRequest, runtime *util.RuntimeOptions) (_result *GetBodyPersonResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := openapiutil.Query(util.ToMap(request))
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("GetBodyPerson"),
-		Version:     tea.String("2019-12-30"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("GET"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &GetBodyPersonResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) GetBodyPerson(request *GetBodyPersonRequest) (_result *GetBodyPersonResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &GetBodyPersonResponse{}
-	_body, _err := client.GetBodyPersonWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) GetFaceEntityWithOptions(request *GetFaceEntityRequest, runtime *util.RuntimeOptions) (_result *GetFaceEntityResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15450,10 +13984,6 @@ func (client *Client) GetRealPersonVerificationResultWithOptions(request *GetRea
 		return _result, _err
 	}
 	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.MaterialHash)) {
-		body["MaterialHash"] = request.MaterialHash
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.VerificationToken)) {
 		body["VerificationToken"] = request.VerificationToken
 	}
@@ -15793,86 +14323,6 @@ func (client *Client) LiquifyFaceAdvance(request *LiquifyFaceAdvanceRequest, run
 	}
 
 	_result = liquifyFaceResp
-	return _result, _err
-}
-
-func (client *Client) ListBodyDbsWithOptions(request *ListBodyDbsRequest, runtime *util.RuntimeOptions) (_result *ListBodyDbsResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := openapiutil.Query(util.ToMap(request))
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("ListBodyDbs"),
-		Version:     tea.String("2019-12-30"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("GET"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &ListBodyDbsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ListBodyDbs(request *ListBodyDbsRequest) (_result *ListBodyDbsResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ListBodyDbsResponse{}
-	_body, _err := client.ListBodyDbsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) ListBodyPersonWithOptions(request *ListBodyPersonRequest, runtime *util.RuntimeOptions) (_result *ListBodyPersonResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := openapiutil.Query(util.ToMap(request))
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("ListBodyPerson"),
-		Version:     tea.String("2019-12-30"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("GET"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &ListBodyPersonResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ListBodyPerson(request *ListBodyPersonRequest) (_result *ListBodyPersonResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ListBodyPersonResponse{}
-	_body, _err := client.ListBodyPersonWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -16550,6 +15000,120 @@ func (client *Client) RecognizeAction(request *RecognizeActionRequest) (_result 
 	return _result, _err
 }
 
+func (client *Client) RecognizeActionAdvance(request *RecognizeActionAdvanceRequest, runtime *util.RuntimeOptions) (_result *RecognizeActionResponse, _err error) {
+	// Step 0: init client
+	accessKeyId, _err := client.Credential.GetAccessKeyId()
+	if _err != nil {
+		return _result, _err
+	}
+
+	accessKeySecret, _err := client.Credential.GetAccessKeySecret()
+	if _err != nil {
+		return _result, _err
+	}
+
+	securityToken, _err := client.Credential.GetSecurityToken()
+	if _err != nil {
+		return _result, _err
+	}
+
+	credentialType := client.Credential.GetType()
+	openPlatformEndpoint := client.OpenPlatformEndpoint
+	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
+	}
+
+	if tea.BoolValue(util.IsUnset(credentialType)) {
+		credentialType = tea.String("access_key")
+	}
+
+	authConfig := &openapi.Config{
+		AccessKeyId:     accessKeyId,
+		AccessKeySecret: accessKeySecret,
+		SecurityToken:   securityToken,
+		Type:            credentialType,
+		Endpoint:        openPlatformEndpoint,
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	authClient, _err := openplatform.NewClient(authConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
+	authRequest := &openplatform.AuthorizeFileUploadRequest{
+		Product:  tea.String("facebody"),
+		RegionId: client.RegionId,
+	}
+	authResponse := &openplatform.AuthorizeFileUploadResponse{}
+	ossConfig := &oss.Config{
+		AccessKeySecret: accessKeySecret,
+		Type:            tea.String("access_key"),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	var ossClient *oss.Client
+	fileObj := &fileform.FileField{}
+	ossHeader := &oss.PostObjectRequestHeader{}
+	uploadRequest := &oss.PostObjectRequest{}
+	ossRuntime := &ossutil.RuntimeOptions{}
+	openapiutil.Convert(runtime, ossRuntime)
+	recognizeActionReq := &RecognizeActionRequest{}
+	openapiutil.Convert(request, recognizeActionReq)
+	if !tea.BoolValue(util.IsUnset(request.URLList)) {
+		i := tea.Int(0)
+		for _, item0 := range request.URLList {
+			if !tea.BoolValue(util.IsUnset(item0.URLObject)) {
+				authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+				if _err != nil {
+					return _result, _err
+				}
+
+				ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
+				ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
+				ossClient, _err = oss.NewClient(ossConfig)
+				if _err != nil {
+					return _result, _err
+				}
+
+				fileObj = &fileform.FileField{
+					Filename:    authResponse.Body.ObjectKey,
+					Content:     item0.URLObject,
+					ContentType: tea.String(""),
+				}
+				ossHeader = &oss.PostObjectRequestHeader{
+					AccessKeyId:         authResponse.Body.AccessKeyId,
+					Policy:              authResponse.Body.EncodedPolicy,
+					Signature:           authResponse.Body.Signature,
+					Key:                 authResponse.Body.ObjectKey,
+					File:                fileObj,
+					SuccessActionStatus: tea.String("201"),
+				}
+				uploadRequest = &oss.PostObjectRequest{
+					BucketName: authResponse.Body.Bucket,
+					Header:     ossHeader,
+				}
+				_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+				if _err != nil {
+					return _result, _err
+				}
+				tmp := recognizeActionReq.URLList[tea.IntValue(i)]
+				tmp.URL = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
+				i = number.Ltoi(number.Add(number.Itol(i), number.Itol(tea.Int(1))))
+			}
+
+		}
+	}
+
+	recognizeActionResp, _err := client.RecognizeActionWithOptions(recognizeActionReq, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+
+	_result = recognizeActionResp
+	return _result, _err
+}
+
 func (client *Client) RecognizeExpressionWithOptions(request *RecognizeExpressionRequest, runtime *util.RuntimeOptions) (_result *RecognizeExpressionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17088,6 +15652,120 @@ func (client *Client) RecognizePublicFace(request *RecognizePublicFaceRequest) (
 	return _result, _err
 }
 
+func (client *Client) RecognizePublicFaceAdvance(request *RecognizePublicFaceAdvanceRequest, runtime *util.RuntimeOptions) (_result *RecognizePublicFaceResponse, _err error) {
+	// Step 0: init client
+	accessKeyId, _err := client.Credential.GetAccessKeyId()
+	if _err != nil {
+		return _result, _err
+	}
+
+	accessKeySecret, _err := client.Credential.GetAccessKeySecret()
+	if _err != nil {
+		return _result, _err
+	}
+
+	securityToken, _err := client.Credential.GetSecurityToken()
+	if _err != nil {
+		return _result, _err
+	}
+
+	credentialType := client.Credential.GetType()
+	openPlatformEndpoint := client.OpenPlatformEndpoint
+	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
+	}
+
+	if tea.BoolValue(util.IsUnset(credentialType)) {
+		credentialType = tea.String("access_key")
+	}
+
+	authConfig := &openapi.Config{
+		AccessKeyId:     accessKeyId,
+		AccessKeySecret: accessKeySecret,
+		SecurityToken:   securityToken,
+		Type:            credentialType,
+		Endpoint:        openPlatformEndpoint,
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	authClient, _err := openplatform.NewClient(authConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
+	authRequest := &openplatform.AuthorizeFileUploadRequest{
+		Product:  tea.String("facebody"),
+		RegionId: client.RegionId,
+	}
+	authResponse := &openplatform.AuthorizeFileUploadResponse{}
+	ossConfig := &oss.Config{
+		AccessKeySecret: accessKeySecret,
+		Type:            tea.String("access_key"),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	var ossClient *oss.Client
+	fileObj := &fileform.FileField{}
+	ossHeader := &oss.PostObjectRequestHeader{}
+	uploadRequest := &oss.PostObjectRequest{}
+	ossRuntime := &ossutil.RuntimeOptions{}
+	openapiutil.Convert(runtime, ossRuntime)
+	recognizePublicFaceReq := &RecognizePublicFaceRequest{}
+	openapiutil.Convert(request, recognizePublicFaceReq)
+	if !tea.BoolValue(util.IsUnset(request.Task)) {
+		i := tea.Int(0)
+		for _, item0 := range request.Task {
+			if !tea.BoolValue(util.IsUnset(item0.ImageURLObject)) {
+				authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+				if _err != nil {
+					return _result, _err
+				}
+
+				ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
+				ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
+				ossClient, _err = oss.NewClient(ossConfig)
+				if _err != nil {
+					return _result, _err
+				}
+
+				fileObj = &fileform.FileField{
+					Filename:    authResponse.Body.ObjectKey,
+					Content:     item0.ImageURLObject,
+					ContentType: tea.String(""),
+				}
+				ossHeader = &oss.PostObjectRequestHeader{
+					AccessKeyId:         authResponse.Body.AccessKeyId,
+					Policy:              authResponse.Body.EncodedPolicy,
+					Signature:           authResponse.Body.Signature,
+					Key:                 authResponse.Body.ObjectKey,
+					File:                fileObj,
+					SuccessActionStatus: tea.String("201"),
+				}
+				uploadRequest = &oss.PostObjectRequest{
+					BucketName: authResponse.Body.Bucket,
+					Header:     ossHeader,
+				}
+				_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+				if _err != nil {
+					return _result, _err
+				}
+				tmp := recognizePublicFaceReq.Task[tea.IntValue(i)]
+				tmp.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
+				i = number.Ltoi(number.Add(number.Itol(i), number.Itol(tea.Int(1))))
+			}
+
+		}
+	}
+
+	recognizePublicFaceResp, _err := client.RecognizePublicFaceWithOptions(recognizePublicFaceReq, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+
+	_result = recognizePublicFaceResp
+	return _result, _err
+}
+
 func (client *Client) RetouchBodyWithOptions(request *RetouchBodyRequest, runtime *util.RuntimeOptions) (_result *RetouchBodyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17401,68 +16079,6 @@ func (client *Client) RetouchSkinAdvance(request *RetouchSkinAdvanceRequest, run
 	}
 
 	_result = retouchSkinResp
-	return _result, _err
-}
-
-func (client *Client) SearchBodyTraceWithOptions(tmpReq *SearchBodyTraceRequest, runtime *util.RuntimeOptions) (_result *SearchBodyTraceResponse, _err error) {
-	_err = util.ValidateModel(tmpReq)
-	if _err != nil {
-		return _result, _err
-	}
-	request := &SearchBodyTraceShrinkRequest{}
-	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tmpReq.Images)) {
-		request.ImagesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Images, tea.String("Images"), tea.String("json"))
-	}
-
-	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.DbId)) {
-		body["DbId"] = request.DbId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ImagesShrink)) {
-		body["Images"] = request.ImagesShrink
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Limit)) {
-		body["Limit"] = request.Limit
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.MinScore)) {
-		body["MinScore"] = request.MinScore
-	}
-
-	req := &openapi.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("SearchBodyTrace"),
-		Version:     tea.String("2019-12-30"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &SearchBodyTraceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) SearchBodyTrace(request *SearchBodyTraceRequest) (_result *SearchBodyTraceResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &SearchBodyTraceResponse{}
-	_body, _err := client.SearchBodyTraceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
