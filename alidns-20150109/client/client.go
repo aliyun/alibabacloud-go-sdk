@@ -17331,6 +17331,7 @@ type DescribeSubDomainRecordsResponseBodyDomainRecordsRecord struct {
 	Priority   *int64  `json:"Priority,omitempty" xml:"Priority,omitempty"`
 	RR         *string `json:"RR,omitempty" xml:"RR,omitempty"`
 	RecordId   *string `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
+	Remark     *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
 	Status     *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	TTL        *int64  `json:"TTL,omitempty" xml:"TTL,omitempty"`
 	Type       *string `json:"Type,omitempty" xml:"Type,omitempty"`
@@ -17373,6 +17374,11 @@ func (s *DescribeSubDomainRecordsResponseBodyDomainRecordsRecord) SetRR(v string
 
 func (s *DescribeSubDomainRecordsResponseBodyDomainRecordsRecord) SetRecordId(v string) *DescribeSubDomainRecordsResponseBodyDomainRecordsRecord {
 	s.RecordId = &v
+	return s
+}
+
+func (s *DescribeSubDomainRecordsResponseBodyDomainRecordsRecord) SetRemark(v string) *DescribeSubDomainRecordsResponseBodyDomainRecordsRecord {
+	s.Remark = &v
 	return s
 }
 
