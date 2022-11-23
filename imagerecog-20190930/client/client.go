@@ -5,6 +5,7 @@
 package client
 
 import (
+	number "github.com/alibabacloud-go/darabonba-number/client"
 	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
 	openapiutil "github.com/alibabacloud-go/openapi-util/service"
@@ -1107,6 +1108,40 @@ func (s RecognizeLogoRequestTasks) GoString() string {
 
 func (s *RecognizeLogoRequestTasks) SetImageURL(v string) *RecognizeLogoRequestTasks {
 	s.ImageURL = &v
+	return s
+}
+
+type RecognizeLogoAdvanceRequest struct {
+	Tasks []*RecognizeLogoAdvanceRequestTasks `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Repeated"`
+}
+
+func (s RecognizeLogoAdvanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeLogoAdvanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeLogoAdvanceRequest) SetTasks(v []*RecognizeLogoAdvanceRequestTasks) *RecognizeLogoAdvanceRequest {
+	s.Tasks = v
+	return s
+}
+
+type RecognizeLogoAdvanceRequestTasks struct {
+	ImageURLObject io.Reader `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
+}
+
+func (s RecognizeLogoAdvanceRequestTasks) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeLogoAdvanceRequestTasks) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeLogoAdvanceRequestTasks) SetImageURLObject(v io.Reader) *RecognizeLogoAdvanceRequestTasks {
+	s.ImageURLObject = v
 	return s
 }
 
@@ -2969,6 +3004,120 @@ func (client *Client) RecognizeLogo(request *RecognizeLogoRequest) (_result *Rec
 		return _result, _err
 	}
 	_result = _body
+	return _result, _err
+}
+
+func (client *Client) RecognizeLogoAdvance(request *RecognizeLogoAdvanceRequest, runtime *util.RuntimeOptions) (_result *RecognizeLogoResponse, _err error) {
+	// Step 0: init client
+	accessKeyId, _err := client.Credential.GetAccessKeyId()
+	if _err != nil {
+		return _result, _err
+	}
+
+	accessKeySecret, _err := client.Credential.GetAccessKeySecret()
+	if _err != nil {
+		return _result, _err
+	}
+
+	securityToken, _err := client.Credential.GetSecurityToken()
+	if _err != nil {
+		return _result, _err
+	}
+
+	credentialType := client.Credential.GetType()
+	openPlatformEndpoint := client.OpenPlatformEndpoint
+	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
+	}
+
+	if tea.BoolValue(util.IsUnset(credentialType)) {
+		credentialType = tea.String("access_key")
+	}
+
+	authConfig := &openapi.Config{
+		AccessKeyId:     accessKeyId,
+		AccessKeySecret: accessKeySecret,
+		SecurityToken:   securityToken,
+		Type:            credentialType,
+		Endpoint:        openPlatformEndpoint,
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	authClient, _err := openplatform.NewClient(authConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
+	authRequest := &openplatform.AuthorizeFileUploadRequest{
+		Product:  tea.String("imagerecog"),
+		RegionId: client.RegionId,
+	}
+	authResponse := &openplatform.AuthorizeFileUploadResponse{}
+	ossConfig := &oss.Config{
+		AccessKeySecret: accessKeySecret,
+		Type:            tea.String("access_key"),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	var ossClient *oss.Client
+	fileObj := &fileform.FileField{}
+	ossHeader := &oss.PostObjectRequestHeader{}
+	uploadRequest := &oss.PostObjectRequest{}
+	ossRuntime := &ossutil.RuntimeOptions{}
+	openapiutil.Convert(runtime, ossRuntime)
+	recognizeLogoReq := &RecognizeLogoRequest{}
+	openapiutil.Convert(request, recognizeLogoReq)
+	if !tea.BoolValue(util.IsUnset(request.Tasks)) {
+		i := tea.Int(0)
+		for _, item0 := range request.Tasks {
+			if !tea.BoolValue(util.IsUnset(item0.ImageURLObject)) {
+				authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+				if _err != nil {
+					return _result, _err
+				}
+
+				ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
+				ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
+				ossClient, _err = oss.NewClient(ossConfig)
+				if _err != nil {
+					return _result, _err
+				}
+
+				fileObj = &fileform.FileField{
+					Filename:    authResponse.Body.ObjectKey,
+					Content:     item0.ImageURLObject,
+					ContentType: tea.String(""),
+				}
+				ossHeader = &oss.PostObjectRequestHeader{
+					AccessKeyId:         authResponse.Body.AccessKeyId,
+					Policy:              authResponse.Body.EncodedPolicy,
+					Signature:           authResponse.Body.Signature,
+					Key:                 authResponse.Body.ObjectKey,
+					File:                fileObj,
+					SuccessActionStatus: tea.String("201"),
+				}
+				uploadRequest = &oss.PostObjectRequest{
+					BucketName: authResponse.Body.Bucket,
+					Header:     ossHeader,
+				}
+				_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+				if _err != nil {
+					return _result, _err
+				}
+				tmp := recognizeLogoReq.Tasks[tea.IntValue(i)]
+				tmp.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
+				i = number.Ltoi(number.Add(number.Itol(i), number.Itol(tea.Int(1))))
+			}
+
+		}
+	}
+
+	recognizeLogoResp, _err := client.RecognizeLogoWithOptions(recognizeLogoReq, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+
+	_result = recognizeLogoResp
 	return _result, _err
 }
 
