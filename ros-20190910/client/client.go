@@ -6380,6 +6380,7 @@ type GetTemplateParameterConstraintsRequest struct {
 	ClientToken         *string                                             `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	Parameters          []*GetTemplateParameterConstraintsRequestParameters `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Repeated"`
 	ParametersKeyFilter []*string                                           `json:"ParametersKeyFilter,omitempty" xml:"ParametersKeyFilter,omitempty" type:"Repeated"`
+	ParametersOrder     []*string                                           `json:"ParametersOrder,omitempty" xml:"ParametersOrder,omitempty" type:"Repeated"`
 	RegionId            *string                                             `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	TemplateBody        *string                                             `json:"TemplateBody,omitempty" xml:"TemplateBody,omitempty"`
 	TemplateId          *string                                             `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
@@ -6407,6 +6408,11 @@ func (s *GetTemplateParameterConstraintsRequest) SetParameters(v []*GetTemplateP
 
 func (s *GetTemplateParameterConstraintsRequest) SetParametersKeyFilter(v []*string) *GetTemplateParameterConstraintsRequest {
 	s.ParametersKeyFilter = v
+	return s
+}
+
+func (s *GetTemplateParameterConstraintsRequest) SetParametersOrder(v []*string) *GetTemplateParameterConstraintsRequest {
+	s.ParametersOrder = v
 	return s
 }
 
@@ -6462,6 +6468,7 @@ type GetTemplateParameterConstraintsShrinkRequest struct {
 	ClientToken               *string                                                   `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	Parameters                []*GetTemplateParameterConstraintsShrinkRequestParameters `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Repeated"`
 	ParametersKeyFilterShrink *string                                                   `json:"ParametersKeyFilter,omitempty" xml:"ParametersKeyFilter,omitempty"`
+	ParametersOrderShrink     *string                                                   `json:"ParametersOrder,omitempty" xml:"ParametersOrder,omitempty"`
 	RegionId                  *string                                                   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	TemplateBody              *string                                                   `json:"TemplateBody,omitempty" xml:"TemplateBody,omitempty"`
 	TemplateId                *string                                                   `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
@@ -6489,6 +6496,11 @@ func (s *GetTemplateParameterConstraintsShrinkRequest) SetParameters(v []*GetTem
 
 func (s *GetTemplateParameterConstraintsShrinkRequest) SetParametersKeyFilterShrink(v string) *GetTemplateParameterConstraintsShrinkRequest {
 	s.ParametersKeyFilterShrink = &v
+	return s
+}
+
+func (s *GetTemplateParameterConstraintsShrinkRequest) SetParametersOrderShrink(v string) *GetTemplateParameterConstraintsShrinkRequest {
+	s.ParametersOrderShrink = &v
 	return s
 }
 
@@ -12901,6 +12913,7 @@ func (s *ValidateTemplateResponseBody) SetResources(v []*ValidateTemplateRespons
 
 type ValidateTemplateResponseBodyOutputs struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Label       *string `json:"Label,omitempty" xml:"Label,omitempty"`
 	OutputKey   *string `json:"OutputKey,omitempty" xml:"OutputKey,omitempty"`
 }
 
@@ -12914,6 +12927,11 @@ func (s ValidateTemplateResponseBodyOutputs) GoString() string {
 
 func (s *ValidateTemplateResponseBodyOutputs) SetDescription(v string) *ValidateTemplateResponseBodyOutputs {
 	s.Description = &v
+	return s
+}
+
+func (s *ValidateTemplateResponseBodyOutputs) SetLabel(v string) *ValidateTemplateResponseBodyOutputs {
+	s.Label = &v
 	return s
 }
 
@@ -15351,6 +15369,10 @@ func (client *Client) GetTemplateParameterConstraintsWithOptions(tmpReq *GetTemp
 		request.ParametersKeyFilterShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ParametersKeyFilter, tea.String("ParametersKeyFilter"), tea.String("json"))
 	}
 
+	if !tea.BoolValue(util.IsUnset(tmpReq.ParametersOrder)) {
+		request.ParametersOrderShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ParametersOrder, tea.String("ParametersOrder"), tea.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
 		query["ClientToken"] = request.ClientToken
@@ -15362,6 +15384,10 @@ func (client *Client) GetTemplateParameterConstraintsWithOptions(tmpReq *GetTemp
 
 	if !tea.BoolValue(util.IsUnset(request.ParametersKeyFilterShrink)) {
 		query["ParametersKeyFilter"] = request.ParametersKeyFilterShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ParametersOrderShrink)) {
+		query["ParametersOrder"] = request.ParametersOrderShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
