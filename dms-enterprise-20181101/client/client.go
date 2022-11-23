@@ -7702,6 +7702,99 @@ func (s *GetDataCorrectOrderDetailResponse) SetBody(v *GetDataCorrectOrderDetail
 	return s
 }
 
+type GetDataCorrectRollbackFileRequest struct {
+	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	Tid     *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s GetDataCorrectRollbackFileRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDataCorrectRollbackFileRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetDataCorrectRollbackFileRequest) SetOrderId(v int64) *GetDataCorrectRollbackFileRequest {
+	s.OrderId = &v
+	return s
+}
+
+func (s *GetDataCorrectRollbackFileRequest) SetTid(v int64) *GetDataCorrectRollbackFileRequest {
+	s.Tid = &v
+	return s
+}
+
+type GetDataCorrectRollbackFileResponseBody struct {
+	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	FileUrl      *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetDataCorrectRollbackFileResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDataCorrectRollbackFileResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetDataCorrectRollbackFileResponseBody) SetErrorCode(v string) *GetDataCorrectRollbackFileResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetDataCorrectRollbackFileResponseBody) SetErrorMessage(v string) *GetDataCorrectRollbackFileResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetDataCorrectRollbackFileResponseBody) SetFileUrl(v string) *GetDataCorrectRollbackFileResponseBody {
+	s.FileUrl = &v
+	return s
+}
+
+func (s *GetDataCorrectRollbackFileResponseBody) SetRequestId(v string) *GetDataCorrectRollbackFileResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetDataCorrectRollbackFileResponseBody) SetSuccess(v bool) *GetDataCorrectRollbackFileResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetDataCorrectRollbackFileResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetDataCorrectRollbackFileResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetDataCorrectRollbackFileResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDataCorrectRollbackFileResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetDataCorrectRollbackFileResponse) SetHeaders(v map[string]*string) *GetDataCorrectRollbackFileResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetDataCorrectRollbackFileResponse) SetStatusCode(v int32) *GetDataCorrectRollbackFileResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetDataCorrectRollbackFileResponse) SetBody(v *GetDataCorrectRollbackFileResponseBody) *GetDataCorrectRollbackFileResponse {
+	s.Body = v
+	return s
+}
+
 type GetDataCorrectSQLFileRequest struct {
 	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
 	Tid     *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
@@ -7919,6 +8012,158 @@ func (s *GetDataCorrectTaskDetailResponse) SetStatusCode(v int32) *GetDataCorrec
 }
 
 func (s *GetDataCorrectTaskDetailResponse) SetBody(v *GetDataCorrectTaskDetailResponseBody) *GetDataCorrectTaskDetailResponse {
+	s.Body = v
+	return s
+}
+
+type GetDataCronClearConfigRequest struct {
+	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	Tid     *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s GetDataCronClearConfigRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDataCronClearConfigRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetDataCronClearConfigRequest) SetOrderId(v int64) *GetDataCronClearConfigRequest {
+	s.OrderId = &v
+	return s
+}
+
+func (s *GetDataCronClearConfigRequest) SetTid(v int64) *GetDataCronClearConfigRequest {
+	s.Tid = &v
+	return s
+}
+
+type GetDataCronClearConfigResponseBody struct {
+	DataCronClearConfig *GetDataCronClearConfigResponseBodyDataCronClearConfig `json:"DataCronClearConfig,omitempty" xml:"DataCronClearConfig,omitempty" type:"Struct"`
+	ErrorCode           *string                                                `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage        *string                                                `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId           *string                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success             *bool                                                  `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetDataCronClearConfigResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDataCronClearConfigResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetDataCronClearConfigResponseBody) SetDataCronClearConfig(v *GetDataCronClearConfigResponseBodyDataCronClearConfig) *GetDataCronClearConfigResponseBody {
+	s.DataCronClearConfig = v
+	return s
+}
+
+func (s *GetDataCronClearConfigResponseBody) SetErrorCode(v string) *GetDataCronClearConfigResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetDataCronClearConfigResponseBody) SetErrorMessage(v string) *GetDataCronClearConfigResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetDataCronClearConfigResponseBody) SetRequestId(v string) *GetDataCronClearConfigResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetDataCronClearConfigResponseBody) SetSuccess(v bool) *GetDataCronClearConfigResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetDataCronClearConfigResponseBodyDataCronClearConfig struct {
+	CronCallTimes                     *string `json:"CronCallTimes,omitempty" xml:"CronCallTimes,omitempty"`
+	CronFormat                        *string `json:"CronFormat,omitempty" xml:"CronFormat,omitempty"`
+	CronLastCallStartTime             *string `json:"CronLastCallStartTime,omitempty" xml:"CronLastCallStartTime,omitempty"`
+	CronNextCallTime                  *string `json:"CronNextCallTime,omitempty" xml:"CronNextCallTime,omitempty"`
+	CronStatus                        *string `json:"CronStatus,omitempty" xml:"CronStatus,omitempty"`
+	CurrentClearTaskCount             *int64  `json:"CurrentClearTaskCount,omitempty" xml:"CurrentClearTaskCount,omitempty"`
+	Duration                          *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	OptimizeTableAfterEveryClearTimes *int64  `json:"OptimizeTableAfterEveryClearTimes,omitempty" xml:"OptimizeTableAfterEveryClearTimes,omitempty"`
+}
+
+func (s GetDataCronClearConfigResponseBodyDataCronClearConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDataCronClearConfigResponseBodyDataCronClearConfig) GoString() string {
+	return s.String()
+}
+
+func (s *GetDataCronClearConfigResponseBodyDataCronClearConfig) SetCronCallTimes(v string) *GetDataCronClearConfigResponseBodyDataCronClearConfig {
+	s.CronCallTimes = &v
+	return s
+}
+
+func (s *GetDataCronClearConfigResponseBodyDataCronClearConfig) SetCronFormat(v string) *GetDataCronClearConfigResponseBodyDataCronClearConfig {
+	s.CronFormat = &v
+	return s
+}
+
+func (s *GetDataCronClearConfigResponseBodyDataCronClearConfig) SetCronLastCallStartTime(v string) *GetDataCronClearConfigResponseBodyDataCronClearConfig {
+	s.CronLastCallStartTime = &v
+	return s
+}
+
+func (s *GetDataCronClearConfigResponseBodyDataCronClearConfig) SetCronNextCallTime(v string) *GetDataCronClearConfigResponseBodyDataCronClearConfig {
+	s.CronNextCallTime = &v
+	return s
+}
+
+func (s *GetDataCronClearConfigResponseBodyDataCronClearConfig) SetCronStatus(v string) *GetDataCronClearConfigResponseBodyDataCronClearConfig {
+	s.CronStatus = &v
+	return s
+}
+
+func (s *GetDataCronClearConfigResponseBodyDataCronClearConfig) SetCurrentClearTaskCount(v int64) *GetDataCronClearConfigResponseBodyDataCronClearConfig {
+	s.CurrentClearTaskCount = &v
+	return s
+}
+
+func (s *GetDataCronClearConfigResponseBodyDataCronClearConfig) SetDuration(v string) *GetDataCronClearConfigResponseBodyDataCronClearConfig {
+	s.Duration = &v
+	return s
+}
+
+func (s *GetDataCronClearConfigResponseBodyDataCronClearConfig) SetOptimizeTableAfterEveryClearTimes(v int64) *GetDataCronClearConfigResponseBodyDataCronClearConfig {
+	s.OptimizeTableAfterEveryClearTimes = &v
+	return s
+}
+
+type GetDataCronClearConfigResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetDataCronClearConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetDataCronClearConfigResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDataCronClearConfigResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetDataCronClearConfigResponse) SetHeaders(v map[string]*string) *GetDataCronClearConfigResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetDataCronClearConfigResponse) SetStatusCode(v int32) *GetDataCronClearConfigResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetDataCronClearConfigResponse) SetBody(v *GetDataCronClearConfigResponseBody) *GetDataCronClearConfigResponse {
 	s.Body = v
 	return s
 }
@@ -10030,6 +10275,99 @@ func (s *GetOpLogResponse) SetStatusCode(v int32) *GetOpLogResponse {
 }
 
 func (s *GetOpLogResponse) SetBody(v *GetOpLogResponseBody) *GetOpLogResponse {
+	s.Body = v
+	return s
+}
+
+type GetOrderAttachmentFileRequest struct {
+	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	Tid     *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s GetOrderAttachmentFileRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetOrderAttachmentFileRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetOrderAttachmentFileRequest) SetOrderId(v int64) *GetOrderAttachmentFileRequest {
+	s.OrderId = &v
+	return s
+}
+
+func (s *GetOrderAttachmentFileRequest) SetTid(v int64) *GetOrderAttachmentFileRequest {
+	s.Tid = &v
+	return s
+}
+
+type GetOrderAttachmentFileResponseBody struct {
+	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	FileUrl      *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetOrderAttachmentFileResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetOrderAttachmentFileResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetOrderAttachmentFileResponseBody) SetErrorCode(v string) *GetOrderAttachmentFileResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetOrderAttachmentFileResponseBody) SetErrorMessage(v string) *GetOrderAttachmentFileResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetOrderAttachmentFileResponseBody) SetFileUrl(v string) *GetOrderAttachmentFileResponseBody {
+	s.FileUrl = &v
+	return s
+}
+
+func (s *GetOrderAttachmentFileResponseBody) SetRequestId(v string) *GetOrderAttachmentFileResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetOrderAttachmentFileResponseBody) SetSuccess(v bool) *GetOrderAttachmentFileResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetOrderAttachmentFileResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetOrderAttachmentFileResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetOrderAttachmentFileResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetOrderAttachmentFileResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetOrderAttachmentFileResponse) SetHeaders(v map[string]*string) *GetOrderAttachmentFileResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetOrderAttachmentFileResponse) SetStatusCode(v int32) *GetOrderAttachmentFileResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetOrderAttachmentFileResponse) SetBody(v *GetOrderAttachmentFileResponseBody) *GetOrderAttachmentFileResponse {
 	s.Body = v
 	return s
 }
@@ -21296,6 +21634,7 @@ func (s *ListStandardGroupsResponseBody) SetSuccess(v bool) *ListStandardGroupsR
 type ListStandardGroupsResponseBodyStandardGroupList struct {
 	DbType       *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
 	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	GroupId      *int64  `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	GroupMode    *string `json:"GroupMode,omitempty" xml:"GroupMode,omitempty"`
 	GroupName    *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 	LastMenderId *int64  `json:"LastMenderId,omitempty" xml:"LastMenderId,omitempty"`
@@ -21316,6 +21655,11 @@ func (s *ListStandardGroupsResponseBodyStandardGroupList) SetDbType(v string) *L
 
 func (s *ListStandardGroupsResponseBodyStandardGroupList) SetDescription(v string) *ListStandardGroupsResponseBodyStandardGroupList {
 	s.Description = &v
+	return s
+}
+
+func (s *ListStandardGroupsResponseBodyStandardGroupList) SetGroupId(v int64) *ListStandardGroupsResponseBodyStandardGroupList {
+	s.GroupId = &v
 	return s
 }
 
@@ -32306,6 +32650,54 @@ func (client *Client) GetDataCorrectOrderDetail(request *GetDataCorrectOrderDeta
 	return _result, _err
 }
 
+func (client *Client) GetDataCorrectRollbackFileWithOptions(request *GetDataCorrectRollbackFileRequest, runtime *util.RuntimeOptions) (_result *GetDataCorrectRollbackFileResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OrderId)) {
+		query["OrderId"] = request.OrderId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetDataCorrectRollbackFile"),
+		Version:     tea.String("2018-11-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetDataCorrectRollbackFileResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetDataCorrectRollbackFile(request *GetDataCorrectRollbackFileRequest) (_result *GetDataCorrectRollbackFileResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetDataCorrectRollbackFileResponse{}
+	_body, _err := client.GetDataCorrectRollbackFileWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) GetDataCorrectSQLFileWithOptions(request *GetDataCorrectSQLFileRequest, runtime *util.RuntimeOptions) (_result *GetDataCorrectSQLFileResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -32395,6 +32787,54 @@ func (client *Client) GetDataCorrectTaskDetail(request *GetDataCorrectTaskDetail
 	runtime := &util.RuntimeOptions{}
 	_result = &GetDataCorrectTaskDetailResponse{}
 	_body, _err := client.GetDataCorrectTaskDetailWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetDataCronClearConfigWithOptions(request *GetDataCronClearConfigRequest, runtime *util.RuntimeOptions) (_result *GetDataCronClearConfigResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OrderId)) {
+		query["OrderId"] = request.OrderId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetDataCronClearConfig"),
+		Version:     tea.String("2018-11-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetDataCronClearConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetDataCronClearConfig(request *GetDataCronClearConfigRequest) (_result *GetDataCronClearConfigResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetDataCronClearConfigResponse{}
+	_body, _err := client.GetDataCronClearConfigWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -32969,6 +33409,54 @@ func (client *Client) GetOpLog(request *GetOpLogRequest) (_result *GetOpLogRespo
 	runtime := &util.RuntimeOptions{}
 	_result = &GetOpLogResponse{}
 	_body, _err := client.GetOpLogWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetOrderAttachmentFileWithOptions(request *GetOrderAttachmentFileRequest, runtime *util.RuntimeOptions) (_result *GetOrderAttachmentFileResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OrderId)) {
+		query["OrderId"] = request.OrderId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetOrderAttachmentFile"),
+		Version:     tea.String("2018-11-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetOrderAttachmentFileResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetOrderAttachmentFile(request *GetOrderAttachmentFileRequest) (_result *GetOrderAttachmentFileResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetOrderAttachmentFileResponse{}
+	_body, _err := client.GetOrderAttachmentFileWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
