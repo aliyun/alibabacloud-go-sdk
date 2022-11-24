@@ -141,8 +141,9 @@ func (s *UpgradeDetailGatewayStatusRecordValue) SetVersion(v string) *UpgradeDet
 }
 
 type AddClusterIntoServiceMeshRequest struct {
-	ClusterId     *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	ServiceMeshId *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
+	ClusterId            *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	IgnoreNamespaceCheck *bool   `json:"IgnoreNamespaceCheck,omitempty" xml:"IgnoreNamespaceCheck,omitempty"`
+	ServiceMeshId        *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
 }
 
 func (s AddClusterIntoServiceMeshRequest) String() string {
@@ -155,6 +156,11 @@ func (s AddClusterIntoServiceMeshRequest) GoString() string {
 
 func (s *AddClusterIntoServiceMeshRequest) SetClusterId(v string) *AddClusterIntoServiceMeshRequest {
 	s.ClusterId = &v
+	return s
+}
+
+func (s *AddClusterIntoServiceMeshRequest) SetIgnoreNamespaceCheck(v bool) *AddClusterIntoServiceMeshRequest {
+	s.IgnoreNamespaceCheck = &v
 	return s
 }
 
@@ -1307,6 +1313,11 @@ type CreateServiceMeshRequest struct {
 	ExcludeIPRanges            *string  `json:"ExcludeIPRanges,omitempty" xml:"ExcludeIPRanges,omitempty"`
 	ExcludeInboundPorts        *string  `json:"ExcludeInboundPorts,omitempty" xml:"ExcludeInboundPorts,omitempty"`
 	ExcludeOutboundPorts       *string  `json:"ExcludeOutboundPorts,omitempty" xml:"ExcludeOutboundPorts,omitempty"`
+	ExistingCaCert             *string  `json:"ExistingCaCert,omitempty" xml:"ExistingCaCert,omitempty"`
+	ExistingCaKey              *string  `json:"ExistingCaKey,omitempty" xml:"ExistingCaKey,omitempty"`
+	ExistingCaType             *string  `json:"ExistingCaType,omitempty" xml:"ExistingCaType,omitempty"`
+	ExistingRootCaCert         *string  `json:"ExistingRootCaCert,omitempty" xml:"ExistingRootCaCert,omitempty"`
+	ExistingRootCaKey          *string  `json:"ExistingRootCaKey,omitempty" xml:"ExistingRootCaKey,omitempty"`
 	FilterGatewayClusterConfig *bool    `json:"FilterGatewayClusterConfig,omitempty" xml:"FilterGatewayClusterConfig,omitempty"`
 	GatewayAPIEnabled          *bool    `json:"GatewayAPIEnabled,omitempty" xml:"GatewayAPIEnabled,omitempty"`
 	GlobalRateLimitEnabled     *bool    `json:"GlobalRateLimitEnabled,omitempty" xml:"GlobalRateLimitEnabled,omitempty"`
@@ -1340,6 +1351,7 @@ type CreateServiceMeshRequest struct {
 	ThriftFilterEnabled        *bool    `json:"ThriftFilterEnabled,omitempty" xml:"ThriftFilterEnabled,omitempty"`
 	TraceSampling              *float32 `json:"TraceSampling,omitempty" xml:"TraceSampling,omitempty"`
 	Tracing                    *bool    `json:"Tracing,omitempty" xml:"Tracing,omitempty"`
+	UseExistingCA              *bool    `json:"UseExistingCA,omitempty" xml:"UseExistingCA,omitempty"`
 	VSwitches                  *string  `json:"VSwitches,omitempty" xml:"VSwitches,omitempty"`
 	VpcId                      *string  `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 	WebAssemblyFilterEnabled   *bool    `json:"WebAssemblyFilterEnabled,omitempty" xml:"WebAssemblyFilterEnabled,omitempty"`
@@ -1500,6 +1512,31 @@ func (s *CreateServiceMeshRequest) SetExcludeInboundPorts(v string) *CreateServi
 
 func (s *CreateServiceMeshRequest) SetExcludeOutboundPorts(v string) *CreateServiceMeshRequest {
 	s.ExcludeOutboundPorts = &v
+	return s
+}
+
+func (s *CreateServiceMeshRequest) SetExistingCaCert(v string) *CreateServiceMeshRequest {
+	s.ExistingCaCert = &v
+	return s
+}
+
+func (s *CreateServiceMeshRequest) SetExistingCaKey(v string) *CreateServiceMeshRequest {
+	s.ExistingCaKey = &v
+	return s
+}
+
+func (s *CreateServiceMeshRequest) SetExistingCaType(v string) *CreateServiceMeshRequest {
+	s.ExistingCaType = &v
+	return s
+}
+
+func (s *CreateServiceMeshRequest) SetExistingRootCaCert(v string) *CreateServiceMeshRequest {
+	s.ExistingRootCaCert = &v
+	return s
+}
+
+func (s *CreateServiceMeshRequest) SetExistingRootCaKey(v string) *CreateServiceMeshRequest {
+	s.ExistingRootCaKey = &v
 	return s
 }
 
@@ -1665,6 +1702,11 @@ func (s *CreateServiceMeshRequest) SetTraceSampling(v float32) *CreateServiceMes
 
 func (s *CreateServiceMeshRequest) SetTracing(v bool) *CreateServiceMeshRequest {
 	s.Tracing = &v
+	return s
+}
+
+func (s *CreateServiceMeshRequest) SetUseExistingCA(v bool) *CreateServiceMeshRequest {
+	s.UseExistingCA = &v
 	return s
 }
 
@@ -4970,6 +5012,140 @@ func (s *DescribeIstioGatewayRoutesResponse) SetStatusCode(v int32) *DescribeIst
 }
 
 func (s *DescribeIstioGatewayRoutesResponse) SetBody(v *DescribeIstioGatewayRoutesResponseBody) *DescribeIstioGatewayRoutesResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeMetadataResponseBody struct {
+	MetaData  *DescribeMetadataResponseBodyMetaData `json:"MetaData,omitempty" xml:"MetaData,omitempty" type:"Struct"`
+	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeMetadataResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeMetadataResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeMetadataResponseBody) SetMetaData(v *DescribeMetadataResponseBodyMetaData) *DescribeMetadataResponseBody {
+	s.MetaData = v
+	return s
+}
+
+func (s *DescribeMetadataResponseBody) SetRequestId(v string) *DescribeMetadataResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeMetadataResponseBodyMetaData struct {
+	CurrentVersion  *string                                         `json:"CurrentVersion,omitempty" xml:"CurrentVersion,omitempty"`
+	ProEdition      *DescribeMetadataResponseBodyMetaDataProEdition `json:"ProEdition,omitempty" xml:"ProEdition,omitempty" type:"Struct"`
+	Regions         []*string                                       `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Repeated"`
+	VersionCrds     []map[string]interface{}                        `json:"VersionCrds,omitempty" xml:"VersionCrds,omitempty" type:"Repeated"`
+	VersionRegistry []map[string]interface{}                        `json:"VersionRegistry,omitempty" xml:"VersionRegistry,omitempty" type:"Repeated"`
+	Versions        []*string                                       `json:"Versions,omitempty" xml:"Versions,omitempty" type:"Repeated"`
+}
+
+func (s DescribeMetadataResponseBodyMetaData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeMetadataResponseBodyMetaData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeMetadataResponseBodyMetaData) SetCurrentVersion(v string) *DescribeMetadataResponseBodyMetaData {
+	s.CurrentVersion = &v
+	return s
+}
+
+func (s *DescribeMetadataResponseBodyMetaData) SetProEdition(v *DescribeMetadataResponseBodyMetaDataProEdition) *DescribeMetadataResponseBodyMetaData {
+	s.ProEdition = v
+	return s
+}
+
+func (s *DescribeMetadataResponseBodyMetaData) SetRegions(v []*string) *DescribeMetadataResponseBodyMetaData {
+	s.Regions = v
+	return s
+}
+
+func (s *DescribeMetadataResponseBodyMetaData) SetVersionCrds(v []map[string]interface{}) *DescribeMetadataResponseBodyMetaData {
+	s.VersionCrds = v
+	return s
+}
+
+func (s *DescribeMetadataResponseBodyMetaData) SetVersionRegistry(v []map[string]interface{}) *DescribeMetadataResponseBodyMetaData {
+	s.VersionRegistry = v
+	return s
+}
+
+func (s *DescribeMetadataResponseBodyMetaData) SetVersions(v []*string) *DescribeMetadataResponseBodyMetaData {
+	s.Versions = v
+	return s
+}
+
+type DescribeMetadataResponseBodyMetaDataProEdition struct {
+	CurrentVersion  *string                  `json:"CurrentVersion,omitempty" xml:"CurrentVersion,omitempty"`
+	VersionCrds     []map[string]interface{} `json:"VersionCrds,omitempty" xml:"VersionCrds,omitempty" type:"Repeated"`
+	VersionRegistry []map[string]interface{} `json:"VersionRegistry,omitempty" xml:"VersionRegistry,omitempty" type:"Repeated"`
+	Versions        []*string                `json:"Versions,omitempty" xml:"Versions,omitempty" type:"Repeated"`
+}
+
+func (s DescribeMetadataResponseBodyMetaDataProEdition) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeMetadataResponseBodyMetaDataProEdition) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeMetadataResponseBodyMetaDataProEdition) SetCurrentVersion(v string) *DescribeMetadataResponseBodyMetaDataProEdition {
+	s.CurrentVersion = &v
+	return s
+}
+
+func (s *DescribeMetadataResponseBodyMetaDataProEdition) SetVersionCrds(v []map[string]interface{}) *DescribeMetadataResponseBodyMetaDataProEdition {
+	s.VersionCrds = v
+	return s
+}
+
+func (s *DescribeMetadataResponseBodyMetaDataProEdition) SetVersionRegistry(v []map[string]interface{}) *DescribeMetadataResponseBodyMetaDataProEdition {
+	s.VersionRegistry = v
+	return s
+}
+
+func (s *DescribeMetadataResponseBodyMetaDataProEdition) SetVersions(v []*string) *DescribeMetadataResponseBodyMetaDataProEdition {
+	s.Versions = v
+	return s
+}
+
+type DescribeMetadataResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeMetadataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeMetadataResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeMetadataResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeMetadataResponse) SetHeaders(v map[string]*string) *DescribeMetadataResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeMetadataResponse) SetStatusCode(v int32) *DescribeMetadataResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeMetadataResponse) SetBody(v *DescribeMetadataResponseBody) *DescribeMetadataResponse {
 	s.Body = v
 	return s
 }
@@ -10717,8 +10893,9 @@ func (s *ReActivateAuditResponse) SetBody(v *ReActivateAuditResponseBody) *ReAct
 }
 
 type RemoveClusterFromServiceMeshRequest struct {
-	ClusterId     *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	ServiceMeshId *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
+	ClusterId        *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	ReserveNamespace *bool   `json:"ReserveNamespace,omitempty" xml:"ReserveNamespace,omitempty"`
+	ServiceMeshId    *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
 }
 
 func (s RemoveClusterFromServiceMeshRequest) String() string {
@@ -10731,6 +10908,11 @@ func (s RemoveClusterFromServiceMeshRequest) GoString() string {
 
 func (s *RemoveClusterFromServiceMeshRequest) SetClusterId(v string) *RemoveClusterFromServiceMeshRequest {
 	s.ClusterId = &v
+	return s
+}
+
+func (s *RemoveClusterFromServiceMeshRequest) SetReserveNamespace(v bool) *RemoveClusterFromServiceMeshRequest {
+	s.ReserveNamespace = &v
 	return s
 }
 
@@ -11863,6 +12045,87 @@ func (s *UpdateIstioGatewayRoutesResponse) SetStatusCode(v int32) *UpdateIstioGa
 }
 
 func (s *UpdateIstioGatewayRoutesResponse) SetBody(v *UpdateIstioGatewayRoutesResponseBody) *UpdateIstioGatewayRoutesResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateIstioInjectionConfigRequest struct {
+	EnableIstioInjection      *bool   `json:"EnableIstioInjection,omitempty" xml:"EnableIstioInjection,omitempty"`
+	EnableSidecarSetInjection *bool   `json:"EnableSidecarSetInjection,omitempty" xml:"EnableSidecarSetInjection,omitempty"`
+	Namespace                 *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	ServiceMeshId             *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
+}
+
+func (s UpdateIstioInjectionConfigRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateIstioInjectionConfigRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateIstioInjectionConfigRequest) SetEnableIstioInjection(v bool) *UpdateIstioInjectionConfigRequest {
+	s.EnableIstioInjection = &v
+	return s
+}
+
+func (s *UpdateIstioInjectionConfigRequest) SetEnableSidecarSetInjection(v bool) *UpdateIstioInjectionConfigRequest {
+	s.EnableSidecarSetInjection = &v
+	return s
+}
+
+func (s *UpdateIstioInjectionConfigRequest) SetNamespace(v string) *UpdateIstioInjectionConfigRequest {
+	s.Namespace = &v
+	return s
+}
+
+func (s *UpdateIstioInjectionConfigRequest) SetServiceMeshId(v string) *UpdateIstioInjectionConfigRequest {
+	s.ServiceMeshId = &v
+	return s
+}
+
+type UpdateIstioInjectionConfigResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateIstioInjectionConfigResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateIstioInjectionConfigResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateIstioInjectionConfigResponseBody) SetRequestId(v string) *UpdateIstioInjectionConfigResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateIstioInjectionConfigResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateIstioInjectionConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateIstioInjectionConfigResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateIstioInjectionConfigResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateIstioInjectionConfigResponse) SetHeaders(v map[string]*string) *UpdateIstioInjectionConfigResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateIstioInjectionConfigResponse) SetStatusCode(v int32) *UpdateIstioInjectionConfigResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateIstioInjectionConfigResponse) SetBody(v *UpdateIstioInjectionConfigResponseBody) *UpdateIstioInjectionConfigResponse {
 	s.Body = v
 	return s
 }
@@ -13263,6 +13526,10 @@ func (client *Client) AddClusterIntoServiceMeshWithOptions(request *AddClusterIn
 		body["ClusterId"] = request.ClusterId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.IgnoreNamespaceCheck)) {
+		body["IgnoreNamespaceCheck"] = request.IgnoreNamespaceCheck
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ServiceMeshId)) {
 		body["ServiceMeshId"] = request.ServiceMeshId
 	}
@@ -13548,8 +13815,8 @@ func (client *Client) CreateIstioGatewayRoutesWithOptions(tmpReq *CreateIstioGat
 	}
 	request := &CreateIstioGatewayRoutesShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.GatewayRoute))) {
-		request.GatewayRouteShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.GatewayRoute), tea.String("GatewayRoute"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.GatewayRoute)) {
+		request.GatewayRouteShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.GatewayRoute, tea.String("GatewayRoute"), tea.String("json"))
 	}
 
 	body := map[string]interface{}{}
@@ -13737,6 +14004,26 @@ func (client *Client) CreateServiceMeshWithOptions(request *CreateServiceMeshReq
 		body["ExcludeOutboundPorts"] = request.ExcludeOutboundPorts
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ExistingCaCert)) {
+		body["ExistingCaCert"] = request.ExistingCaCert
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExistingCaKey)) {
+		body["ExistingCaKey"] = request.ExistingCaKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExistingCaType)) {
+		body["ExistingCaType"] = request.ExistingCaType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExistingRootCaCert)) {
+		body["ExistingRootCaCert"] = request.ExistingRootCaCert
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExistingRootCaKey)) {
+		body["ExistingRootCaKey"] = request.ExistingRootCaKey
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.FilterGatewayClusterConfig)) {
 		body["FilterGatewayClusterConfig"] = request.FilterGatewayClusterConfig
 	}
@@ -13867,6 +14154,10 @@ func (client *Client) CreateServiceMeshWithOptions(request *CreateServiceMeshReq
 
 	if !tea.BoolValue(util.IsUnset(request.Tracing)) {
 		body["Tracing"] = request.Tracing
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UseExistingCA)) {
+		body["UseExistingCA"] = request.UseExistingCA
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.VSwitches)) {
@@ -15224,6 +15515,39 @@ func (client *Client) DescribeIstioGatewayRoutes(request *DescribeIstioGatewayRo
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeIstioGatewayRoutesResponse{}
 	_body, _err := client.DescribeIstioGatewayRoutesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeMetadataWithOptions(runtime *util.RuntimeOptions) (_result *DescribeMetadataResponse, _err error) {
+	req := &openapi.OpenApiRequest{}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeMetadata"),
+		Version:     tea.String("2020-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeMetadataResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeMetadata() (_result *DescribeMetadataResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeMetadataResponse{}
+	_body, _err := client.DescribeMetadataWithOptions(runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -16785,6 +17109,10 @@ func (client *Client) RemoveClusterFromServiceMeshWithOptions(request *RemoveClu
 		body["ClusterId"] = request.ClusterId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ReserveNamespace)) {
+		body["ReserveNamespace"] = request.ReserveNamespace
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ServiceMeshId)) {
 		body["ServiceMeshId"] = request.ServiceMeshId
 	}
@@ -17082,8 +17410,8 @@ func (client *Client) UpdateIstioGatewayRoutesWithOptions(tmpReq *UpdateIstioGat
 	}
 	request := &UpdateIstioGatewayRoutesShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.GatewayRoute))) {
-		request.GatewayRouteShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.GatewayRoute), tea.String("GatewayRoute"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.GatewayRoute)) {
+		request.GatewayRouteShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.GatewayRoute, tea.String("GatewayRoute"), tea.String("json"))
 	}
 
 	body := map[string]interface{}{}
@@ -17138,6 +17466,62 @@ func (client *Client) UpdateIstioGatewayRoutes(request *UpdateIstioGatewayRoutes
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateIstioGatewayRoutesResponse{}
 	_body, _err := client.UpdateIstioGatewayRoutesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateIstioInjectionConfigWithOptions(request *UpdateIstioInjectionConfigRequest, runtime *util.RuntimeOptions) (_result *UpdateIstioInjectionConfigResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EnableIstioInjection)) {
+		body["EnableIstioInjection"] = request.EnableIstioInjection
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnableSidecarSetInjection)) {
+		body["EnableSidecarSetInjection"] = request.EnableSidecarSetInjection
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		body["Namespace"] = request.Namespace
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceMeshId)) {
+		body["ServiceMeshId"] = request.ServiceMeshId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateIstioInjectionConfig"),
+		Version:     tea.String("2020-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateIstioInjectionConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateIstioInjectionConfig(request *UpdateIstioInjectionConfigRequest) (_result *UpdateIstioInjectionConfigResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateIstioInjectionConfigResponse{}
+	_body, _err := client.UpdateIstioInjectionConfigWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
