@@ -855,6 +855,69 @@ func (s *DeletePCACertResponse) SetBody(v *DeletePCACertResponseBody) *DeletePCA
 	return s
 }
 
+type DeleteUserCertificateRequest struct {
+	CertId *int64 `json:"CertId,omitempty" xml:"CertId,omitempty"`
+}
+
+func (s DeleteUserCertificateRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteUserCertificateRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteUserCertificateRequest) SetCertId(v int64) *DeleteUserCertificateRequest {
+	s.CertId = &v
+	return s
+}
+
+type DeleteUserCertificateResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteUserCertificateResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteUserCertificateResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteUserCertificateResponseBody) SetRequestId(v string) *DeleteUserCertificateResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteUserCertificateResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteUserCertificateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteUserCertificateResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteUserCertificateResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteUserCertificateResponse) SetHeaders(v map[string]*string) *DeleteUserCertificateResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteUserCertificateResponse) SetStatusCode(v int32) *DeleteUserCertificateResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteUserCertificateResponse) SetBody(v *DeleteUserCertificateResponseBody) *DeleteUserCertificateResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeCertificateStateRequest struct {
 	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
 }
@@ -1212,6 +1275,165 @@ func (s *GetCertWarehouseQuotaResponse) SetStatusCode(v int32) *GetCertWarehouse
 }
 
 func (s *GetCertWarehouseQuotaResponse) SetBody(v *GetCertWarehouseQuotaResponseBody) *GetCertWarehouseQuotaResponse {
+	s.Body = v
+	return s
+}
+
+type GetUserCertificateDetailRequest struct {
+	CertId *int64 `json:"CertId,omitempty" xml:"CertId,omitempty"`
+}
+
+func (s GetUserCertificateDetailRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUserCertificateDetailRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetUserCertificateDetailRequest) SetCertId(v int64) *GetUserCertificateDetailRequest {
+	s.CertId = &v
+	return s
+}
+
+type GetUserCertificateDetailResponseBody struct {
+	BuyInAliyun *bool   `json:"BuyInAliyun,omitempty" xml:"BuyInAliyun,omitempty"`
+	Cert        *string `json:"Cert,omitempty" xml:"Cert,omitempty"`
+	City        *string `json:"City,omitempty" xml:"City,omitempty"`
+	Common      *string `json:"Common,omitempty" xml:"Common,omitempty"`
+	Country     *string `json:"Country,omitempty" xml:"Country,omitempty"`
+	EndDate     *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	Expired     *bool   `json:"Expired,omitempty" xml:"Expired,omitempty"`
+	Fingerprint *string `json:"Fingerprint,omitempty" xml:"Fingerprint,omitempty"`
+	Id          *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	Issuer      *string `json:"Issuer,omitempty" xml:"Issuer,omitempty"`
+	Key         *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	OrgName     *string `json:"OrgName,omitempty" xml:"OrgName,omitempty"`
+	Province    *string `json:"Province,omitempty" xml:"Province,omitempty"`
+	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Sans        *string `json:"Sans,omitempty" xml:"Sans,omitempty"`
+	StartDate   *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+}
+
+func (s GetUserCertificateDetailResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUserCertificateDetailResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetUserCertificateDetailResponseBody) SetBuyInAliyun(v bool) *GetUserCertificateDetailResponseBody {
+	s.BuyInAliyun = &v
+	return s
+}
+
+func (s *GetUserCertificateDetailResponseBody) SetCert(v string) *GetUserCertificateDetailResponseBody {
+	s.Cert = &v
+	return s
+}
+
+func (s *GetUserCertificateDetailResponseBody) SetCity(v string) *GetUserCertificateDetailResponseBody {
+	s.City = &v
+	return s
+}
+
+func (s *GetUserCertificateDetailResponseBody) SetCommon(v string) *GetUserCertificateDetailResponseBody {
+	s.Common = &v
+	return s
+}
+
+func (s *GetUserCertificateDetailResponseBody) SetCountry(v string) *GetUserCertificateDetailResponseBody {
+	s.Country = &v
+	return s
+}
+
+func (s *GetUserCertificateDetailResponseBody) SetEndDate(v string) *GetUserCertificateDetailResponseBody {
+	s.EndDate = &v
+	return s
+}
+
+func (s *GetUserCertificateDetailResponseBody) SetExpired(v bool) *GetUserCertificateDetailResponseBody {
+	s.Expired = &v
+	return s
+}
+
+func (s *GetUserCertificateDetailResponseBody) SetFingerprint(v string) *GetUserCertificateDetailResponseBody {
+	s.Fingerprint = &v
+	return s
+}
+
+func (s *GetUserCertificateDetailResponseBody) SetId(v int64) *GetUserCertificateDetailResponseBody {
+	s.Id = &v
+	return s
+}
+
+func (s *GetUserCertificateDetailResponseBody) SetIssuer(v string) *GetUserCertificateDetailResponseBody {
+	s.Issuer = &v
+	return s
+}
+
+func (s *GetUserCertificateDetailResponseBody) SetKey(v string) *GetUserCertificateDetailResponseBody {
+	s.Key = &v
+	return s
+}
+
+func (s *GetUserCertificateDetailResponseBody) SetName(v string) *GetUserCertificateDetailResponseBody {
+	s.Name = &v
+	return s
+}
+
+func (s *GetUserCertificateDetailResponseBody) SetOrgName(v string) *GetUserCertificateDetailResponseBody {
+	s.OrgName = &v
+	return s
+}
+
+func (s *GetUserCertificateDetailResponseBody) SetProvince(v string) *GetUserCertificateDetailResponseBody {
+	s.Province = &v
+	return s
+}
+
+func (s *GetUserCertificateDetailResponseBody) SetRequestId(v string) *GetUserCertificateDetailResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetUserCertificateDetailResponseBody) SetSans(v string) *GetUserCertificateDetailResponseBody {
+	s.Sans = &v
+	return s
+}
+
+func (s *GetUserCertificateDetailResponseBody) SetStartDate(v string) *GetUserCertificateDetailResponseBody {
+	s.StartDate = &v
+	return s
+}
+
+type GetUserCertificateDetailResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetUserCertificateDetailResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetUserCertificateDetailResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUserCertificateDetailResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetUserCertificateDetailResponse) SetHeaders(v map[string]*string) *GetUserCertificateDetailResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetUserCertificateDetailResponse) SetStatusCode(v int32) *GetUserCertificateDetailResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetUserCertificateDetailResponse) SetBody(v *GetUserCertificateDetailResponseBody) *GetUserCertificateDetailResponse {
 	s.Body = v
 	return s
 }
@@ -2224,6 +2446,111 @@ func (s *UploadPCACertResponse) SetBody(v *UploadPCACertResponseBody) *UploadPCA
 	return s
 }
 
+type UploadUserCertificateRequest struct {
+	Cert              *string `json:"Cert,omitempty" xml:"Cert,omitempty"`
+	EncryptCert       *string `json:"EncryptCert,omitempty" xml:"EncryptCert,omitempty"`
+	EncryptPrivateKey *string `json:"EncryptPrivateKey,omitempty" xml:"EncryptPrivateKey,omitempty"`
+	Key               *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Name              *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	SignCert          *string `json:"SignCert,omitempty" xml:"SignCert,omitempty"`
+	SignPrivateKey    *string `json:"SignPrivateKey,omitempty" xml:"SignPrivateKey,omitempty"`
+}
+
+func (s UploadUserCertificateRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UploadUserCertificateRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UploadUserCertificateRequest) SetCert(v string) *UploadUserCertificateRequest {
+	s.Cert = &v
+	return s
+}
+
+func (s *UploadUserCertificateRequest) SetEncryptCert(v string) *UploadUserCertificateRequest {
+	s.EncryptCert = &v
+	return s
+}
+
+func (s *UploadUserCertificateRequest) SetEncryptPrivateKey(v string) *UploadUserCertificateRequest {
+	s.EncryptPrivateKey = &v
+	return s
+}
+
+func (s *UploadUserCertificateRequest) SetKey(v string) *UploadUserCertificateRequest {
+	s.Key = &v
+	return s
+}
+
+func (s *UploadUserCertificateRequest) SetName(v string) *UploadUserCertificateRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *UploadUserCertificateRequest) SetSignCert(v string) *UploadUserCertificateRequest {
+	s.SignCert = &v
+	return s
+}
+
+func (s *UploadUserCertificateRequest) SetSignPrivateKey(v string) *UploadUserCertificateRequest {
+	s.SignPrivateKey = &v
+	return s
+}
+
+type UploadUserCertificateResponseBody struct {
+	CertId    *int64  `json:"CertId,omitempty" xml:"CertId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UploadUserCertificateResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UploadUserCertificateResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UploadUserCertificateResponseBody) SetCertId(v int64) *UploadUserCertificateResponseBody {
+	s.CertId = &v
+	return s
+}
+
+func (s *UploadUserCertificateResponseBody) SetRequestId(v string) *UploadUserCertificateResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UploadUserCertificateResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UploadUserCertificateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UploadUserCertificateResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UploadUserCertificateResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UploadUserCertificateResponse) SetHeaders(v map[string]*string) *UploadUserCertificateResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UploadUserCertificateResponse) SetStatusCode(v int32) *UploadUserCertificateResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UploadUserCertificateResponse) SetBody(v *UploadUserCertificateResponseBody) *UploadUserCertificateResponse {
+	s.Body = v
+	return s
+}
+
 type VerifyRequest struct {
 	CertIdentifier   *string `json:"CertIdentifier,omitempty" xml:"CertIdentifier,omitempty"`
 	Message          *string `json:"Message,omitempty" xml:"Message,omitempty"`
@@ -2955,6 +3282,50 @@ func (client *Client) DeletePCACert(request *DeletePCACertRequest) (_result *Del
 	return _result, _err
 }
 
+func (client *Client) DeleteUserCertificateWithOptions(request *DeleteUserCertificateRequest, runtime *util.RuntimeOptions) (_result *DeleteUserCertificateResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CertId)) {
+		query["CertId"] = request.CertId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteUserCertificate"),
+		Version:     tea.String("2020-04-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteUserCertificateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteUserCertificate(request *DeleteUserCertificateRequest) (_result *DeleteUserCertificateResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteUserCertificateResponse{}
+	_body, _err := client.DeleteUserCertificateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DescribeCertificateStateWithOptions(request *DescribeCertificateStateRequest, runtime *util.RuntimeOptions) (_result *DescribeCertificateStateResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3125,6 +3496,50 @@ func (client *Client) GetCertWarehouseQuota() (_result *GetCertWarehouseQuotaRes
 	runtime := &util.RuntimeOptions{}
 	_result = &GetCertWarehouseQuotaResponse{}
 	_body, _err := client.GetCertWarehouseQuotaWithOptions(runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetUserCertificateDetailWithOptions(request *GetUserCertificateDetailRequest, runtime *util.RuntimeOptions) (_result *GetUserCertificateDetailResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CertId)) {
+		query["CertId"] = request.CertId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetUserCertificateDetail"),
+		Version:     tea.String("2020-04-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetUserCertificateDetailResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetUserCertificateDetail(request *GetUserCertificateDetailRequest) (_result *GetUserCertificateDetailResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetUserCertificateDetailResponse{}
+	_body, _err := client.GetUserCertificateDetailWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3513,6 +3928,74 @@ func (client *Client) UploadPCACert(request *UploadPCACertRequest) (_result *Upl
 	runtime := &util.RuntimeOptions{}
 	_result = &UploadPCACertResponse{}
 	_body, _err := client.UploadPCACertWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UploadUserCertificateWithOptions(request *UploadUserCertificateRequest, runtime *util.RuntimeOptions) (_result *UploadUserCertificateResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Cert)) {
+		query["Cert"] = request.Cert
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EncryptCert)) {
+		query["EncryptCert"] = request.EncryptCert
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EncryptPrivateKey)) {
+		query["EncryptPrivateKey"] = request.EncryptPrivateKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Key)) {
+		query["Key"] = request.Key
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SignCert)) {
+		query["SignCert"] = request.SignCert
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SignPrivateKey)) {
+		query["SignPrivateKey"] = request.SignPrivateKey
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UploadUserCertificate"),
+		Version:     tea.String("2020-04-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UploadUserCertificateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UploadUserCertificate(request *UploadUserCertificateRequest) (_result *UploadUserCertificateResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UploadUserCertificateResponse{}
+	_body, _err := client.UploadUserCertificateWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
