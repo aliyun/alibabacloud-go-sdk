@@ -8749,11 +8749,12 @@ func (s *DescribeUserPermissionResponseBody) SetIsRamRole(v int64) *DescribeUser
 }
 
 type DescribeUserQuotaResponseBody struct {
-	AmkClusterQuota      *int64 `json:"amk_cluster_quota,omitempty" xml:"amk_cluster_quota,omitempty"`
-	AskClusterQuota      *int64 `json:"ask_cluster_quota,omitempty" xml:"ask_cluster_quota,omitempty"`
-	ClusterNodepoolQuota *int64 `json:"cluster_nodepool_quota,omitempty" xml:"cluster_nodepool_quota,omitempty"`
-	ClusterQuota         *int64 `json:"cluster_quota,omitempty" xml:"cluster_quota,omitempty"`
-	NodeQuota            *int64 `json:"node_quota,omitempty" xml:"node_quota,omitempty"`
+	AmkClusterQuota           *int64                                                  `json:"amk_cluster_quota,omitempty" xml:"amk_cluster_quota,omitempty"`
+	AskClusterQuota           *int64                                                  `json:"ask_cluster_quota,omitempty" xml:"ask_cluster_quota,omitempty"`
+	ClusterNodepoolQuota      *int64                                                  `json:"cluster_nodepool_quota,omitempty" xml:"cluster_nodepool_quota,omitempty"`
+	ClusterQuota              *int64                                                  `json:"cluster_quota,omitempty" xml:"cluster_quota,omitempty"`
+	EdgeImprovedNodepoolQuota *DescribeUserQuotaResponseBodyEdgeImprovedNodepoolQuota `json:"edge_improved_nodepool_quota,omitempty" xml:"edge_improved_nodepool_quota,omitempty" type:"Struct"`
+	NodeQuota                 *int64                                                  `json:"node_quota,omitempty" xml:"node_quota,omitempty"`
 }
 
 func (s DescribeUserQuotaResponseBody) String() string {
@@ -8784,8 +8785,42 @@ func (s *DescribeUserQuotaResponseBody) SetClusterQuota(v int64) *DescribeUserQu
 	return s
 }
 
+func (s *DescribeUserQuotaResponseBody) SetEdgeImprovedNodepoolQuota(v *DescribeUserQuotaResponseBodyEdgeImprovedNodepoolQuota) *DescribeUserQuotaResponseBody {
+	s.EdgeImprovedNodepoolQuota = v
+	return s
+}
+
 func (s *DescribeUserQuotaResponseBody) SetNodeQuota(v int64) *DescribeUserQuotaResponseBody {
 	s.NodeQuota = &v
+	return s
+}
+
+type DescribeUserQuotaResponseBodyEdgeImprovedNodepoolQuota struct {
+	Bandwidth *int32 `json:"bandwidth,omitempty" xml:"bandwidth,omitempty"`
+	Count     *int32 `json:"count,omitempty" xml:"count,omitempty"`
+	Period    *int32 `json:"period,omitempty" xml:"period,omitempty"`
+}
+
+func (s DescribeUserQuotaResponseBodyEdgeImprovedNodepoolQuota) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeUserQuotaResponseBodyEdgeImprovedNodepoolQuota) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeUserQuotaResponseBodyEdgeImprovedNodepoolQuota) SetBandwidth(v int32) *DescribeUserQuotaResponseBodyEdgeImprovedNodepoolQuota {
+	s.Bandwidth = &v
+	return s
+}
+
+func (s *DescribeUserQuotaResponseBodyEdgeImprovedNodepoolQuota) SetCount(v int32) *DescribeUserQuotaResponseBodyEdgeImprovedNodepoolQuota {
+	s.Count = &v
+	return s
+}
+
+func (s *DescribeUserQuotaResponseBodyEdgeImprovedNodepoolQuota) SetPeriod(v int32) *DescribeUserQuotaResponseBodyEdgeImprovedNodepoolQuota {
+	s.Period = &v
 	return s
 }
 
@@ -12666,7 +12701,7 @@ func (client *Client) AttachInstancesWithOptions(ClusterId *string, request *Att
 		body["rds_instances"] = request.RdsInstances
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.Runtime))) {
+	if !tea.BoolValue(util.IsUnset(request.Runtime)) {
 		body["runtime"] = request.Runtime
 	}
 
@@ -13180,7 +13215,7 @@ func (client *Client) CreateClusterWithOptions(request *CreateClusterRequest, he
 		body["resource_group_id"] = request.ResourceGroupId
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.Runtime))) {
+	if !tea.BoolValue(util.IsUnset(request.Runtime)) {
 		body["runtime"] = request.Runtime
 	}
 
@@ -13338,7 +13373,7 @@ func (client *Client) CreateClusterNodePoolWithOptions(ClusterId *string, reques
 		return _result, _err
 	}
 	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.AutoScaling))) {
+	if !tea.BoolValue(util.IsUnset(request.AutoScaling)) {
 		body["auto_scaling"] = request.AutoScaling
 	}
 
@@ -13346,7 +13381,7 @@ func (client *Client) CreateClusterNodePoolWithOptions(ClusterId *string, reques
 		body["count"] = request.Count
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.InterconnectConfig))) {
+	if !tea.BoolValue(util.IsUnset(request.InterconnectConfig)) {
 		body["interconnect_config"] = request.InterconnectConfig
 	}
 
@@ -13354,11 +13389,11 @@ func (client *Client) CreateClusterNodePoolWithOptions(ClusterId *string, reques
 		body["interconnect_mode"] = request.InterconnectMode
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.KubernetesConfig))) {
+	if !tea.BoolValue(util.IsUnset(request.KubernetesConfig)) {
 		body["kubernetes_config"] = request.KubernetesConfig
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.Management))) {
+	if !tea.BoolValue(util.IsUnset(request.Management)) {
 		body["management"] = request.Management
 	}
 
@@ -13366,15 +13401,15 @@ func (client *Client) CreateClusterNodePoolWithOptions(ClusterId *string, reques
 		body["max_nodes"] = request.MaxNodes
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.NodepoolInfo))) {
+	if !tea.BoolValue(util.IsUnset(request.NodepoolInfo)) {
 		body["nodepool_info"] = request.NodepoolInfo
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.ScalingGroup))) {
+	if !tea.BoolValue(util.IsUnset(request.ScalingGroup)) {
 		body["scaling_group"] = request.ScalingGroup
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.TeeConfig))) {
+	if !tea.BoolValue(util.IsUnset(request.TeeConfig)) {
 		body["tee_config"] = request.TeeConfig
 	}
 
@@ -15928,7 +15963,7 @@ func (client *Client) FixNodePoolVulsWithOptions(clusterId *string, nodepoolId *
 		body["nodes"] = request.Nodes
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.RolloutPolicy))) {
+	if !tea.BoolValue(util.IsUnset(request.RolloutPolicy)) {
 		body["rollout_policy"] = request.RolloutPolicy
 	}
 
@@ -16304,7 +16339,7 @@ func (client *Client) ModifyClusterWithOptions(ClusterId *string, request *Modif
 		body["instance_deletion_protection"] = request.InstanceDeletionProtection
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.MaintenanceWindow))) {
+	if !tea.BoolValue(util.IsUnset(request.MaintenanceWindow)) {
 		body["maintenance_window"] = request.MaintenanceWindow
 	}
 
@@ -16446,27 +16481,27 @@ func (client *Client) ModifyClusterNodePoolWithOptions(ClusterId *string, Nodepo
 		return _result, _err
 	}
 	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.AutoScaling))) {
+	if !tea.BoolValue(util.IsUnset(request.AutoScaling)) {
 		body["auto_scaling"] = request.AutoScaling
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.KubernetesConfig))) {
+	if !tea.BoolValue(util.IsUnset(request.KubernetesConfig)) {
 		body["kubernetes_config"] = request.KubernetesConfig
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.Management))) {
+	if !tea.BoolValue(util.IsUnset(request.Management)) {
 		body["management"] = request.Management
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.NodepoolInfo))) {
+	if !tea.BoolValue(util.IsUnset(request.NodepoolInfo)) {
 		body["nodepool_info"] = request.NodepoolInfo
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.ScalingGroup))) {
+	if !tea.BoolValue(util.IsUnset(request.ScalingGroup)) {
 		body["scaling_group"] = request.ScalingGroup
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.TeeConfig))) {
+	if !tea.BoolValue(util.IsUnset(request.TeeConfig)) {
 		body["tee_config"] = request.TeeConfig
 	}
 
@@ -16557,11 +16592,11 @@ func (client *Client) ModifyNodePoolNodeConfigWithOptions(ClusterId *string, Nod
 		return _result, _err
 	}
 	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.KubeletConfig))) {
+	if !tea.BoolValue(util.IsUnset(request.KubeletConfig)) {
 		body["kubelet_config"] = request.KubeletConfig
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.RollingPolicy))) {
+	if !tea.BoolValue(util.IsUnset(request.RollingPolicy)) {
 		body["rolling_policy"] = request.RollingPolicy
 	}
 
@@ -17315,7 +17350,7 @@ func (client *Client) ScaleOutClusterWithOptions(ClusterId *string, request *Sca
 		body["rds_instances"] = request.RdsInstances
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.Runtime))) {
+	if !tea.BoolValue(util.IsUnset(request.Runtime)) {
 		body["runtime"] = request.Runtime
 	}
 
