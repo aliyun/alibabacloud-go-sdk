@@ -3368,9 +3368,10 @@ func (s *RecognizeHouseholdResponse) SetBody(v *RecognizeHouseholdResponseBody) 
 }
 
 type RecognizeIdcardRequest struct {
-	OutputFigure *bool     `json:"OutputFigure,omitempty" xml:"OutputFigure,omitempty"`
-	Url          *string   `json:"Url,omitempty" xml:"Url,omitempty"`
-	Body         io.Reader `json:"body,omitempty" xml:"body,omitempty"`
+	OutputFigure      *bool     `json:"OutputFigure,omitempty" xml:"OutputFigure,omitempty"`
+	OutputQualityInfo *bool     `json:"OutputQualityInfo,omitempty" xml:"OutputQualityInfo,omitempty"`
+	Url               *string   `json:"Url,omitempty" xml:"Url,omitempty"`
+	Body              io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecognizeIdcardRequest) String() string {
@@ -3383,6 +3384,11 @@ func (s RecognizeIdcardRequest) GoString() string {
 
 func (s *RecognizeIdcardRequest) SetOutputFigure(v bool) *RecognizeIdcardRequest {
 	s.OutputFigure = &v
+	return s
+}
+
+func (s *RecognizeIdcardRequest) SetOutputQualityInfo(v bool) *RecognizeIdcardRequest {
+	s.OutputQualityInfo = &v
 	return s
 }
 
@@ -6621,6 +6627,180 @@ func (s *RecognizeWaybillResponse) SetBody(v *RecognizeWaybillResponseBody) *Rec
 	return s
 }
 
+type VerifyBusinessLicenseRequest struct {
+	CompanyName *string `json:"CompanyName,omitempty" xml:"CompanyName,omitempty"`
+	CreditCode  *string `json:"CreditCode,omitempty" xml:"CreditCode,omitempty"`
+	LegalPerson *string `json:"LegalPerson,omitempty" xml:"LegalPerson,omitempty"`
+}
+
+func (s VerifyBusinessLicenseRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s VerifyBusinessLicenseRequest) GoString() string {
+	return s.String()
+}
+
+func (s *VerifyBusinessLicenseRequest) SetCompanyName(v string) *VerifyBusinessLicenseRequest {
+	s.CompanyName = &v
+	return s
+}
+
+func (s *VerifyBusinessLicenseRequest) SetCreditCode(v string) *VerifyBusinessLicenseRequest {
+	s.CreditCode = &v
+	return s
+}
+
+func (s *VerifyBusinessLicenseRequest) SetLegalPerson(v string) *VerifyBusinessLicenseRequest {
+	s.LegalPerson = &v
+	return s
+}
+
+type VerifyBusinessLicenseResponseBody struct {
+	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s VerifyBusinessLicenseResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s VerifyBusinessLicenseResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *VerifyBusinessLicenseResponseBody) SetData(v string) *VerifyBusinessLicenseResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *VerifyBusinessLicenseResponseBody) SetRequestId(v string) *VerifyBusinessLicenseResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type VerifyBusinessLicenseResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *VerifyBusinessLicenseResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s VerifyBusinessLicenseResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s VerifyBusinessLicenseResponse) GoString() string {
+	return s.String()
+}
+
+func (s *VerifyBusinessLicenseResponse) SetHeaders(v map[string]*string) *VerifyBusinessLicenseResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *VerifyBusinessLicenseResponse) SetStatusCode(v int32) *VerifyBusinessLicenseResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *VerifyBusinessLicenseResponse) SetBody(v *VerifyBusinessLicenseResponseBody) *VerifyBusinessLicenseResponse {
+	s.Body = v
+	return s
+}
+
+type VerifyVATInvoiceRequest struct {
+	InvoiceCode *string `json:"InvoiceCode,omitempty" xml:"InvoiceCode,omitempty"`
+	InvoiceDate *string `json:"InvoiceDate,omitempty" xml:"InvoiceDate,omitempty"`
+	InvoiceNo   *string `json:"InvoiceNo,omitempty" xml:"InvoiceNo,omitempty"`
+	InvoiceSum  *string `json:"InvoiceSum,omitempty" xml:"InvoiceSum,omitempty"`
+	VerifyCode  *string `json:"VerifyCode,omitempty" xml:"VerifyCode,omitempty"`
+}
+
+func (s VerifyVATInvoiceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s VerifyVATInvoiceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *VerifyVATInvoiceRequest) SetInvoiceCode(v string) *VerifyVATInvoiceRequest {
+	s.InvoiceCode = &v
+	return s
+}
+
+func (s *VerifyVATInvoiceRequest) SetInvoiceDate(v string) *VerifyVATInvoiceRequest {
+	s.InvoiceDate = &v
+	return s
+}
+
+func (s *VerifyVATInvoiceRequest) SetInvoiceNo(v string) *VerifyVATInvoiceRequest {
+	s.InvoiceNo = &v
+	return s
+}
+
+func (s *VerifyVATInvoiceRequest) SetInvoiceSum(v string) *VerifyVATInvoiceRequest {
+	s.InvoiceSum = &v
+	return s
+}
+
+func (s *VerifyVATInvoiceRequest) SetVerifyCode(v string) *VerifyVATInvoiceRequest {
+	s.VerifyCode = &v
+	return s
+}
+
+type VerifyVATInvoiceResponseBody struct {
+	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s VerifyVATInvoiceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s VerifyVATInvoiceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *VerifyVATInvoiceResponseBody) SetData(v string) *VerifyVATInvoiceResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *VerifyVATInvoiceResponseBody) SetRequestId(v string) *VerifyVATInvoiceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type VerifyVATInvoiceResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *VerifyVATInvoiceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s VerifyVATInvoiceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s VerifyVATInvoiceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *VerifyVATInvoiceResponse) SetHeaders(v map[string]*string) *VerifyVATInvoiceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *VerifyVATInvoiceResponse) SetStatusCode(v int32) *VerifyVATInvoiceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *VerifyVATInvoiceResponse) SetBody(v *VerifyVATInvoiceResponseBody) *VerifyVATInvoiceResponse {
+	s.Body = v
+	return s
+}
+
 type Client struct {
 	openapi.Client
 }
@@ -8482,6 +8662,10 @@ func (client *Client) RecognizeIdcardWithOptions(request *RecognizeIdcardRequest
 		query["OutputFigure"] = request.OutputFigure
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.OutputQualityInfo)) {
+		query["OutputQualityInfo"] = request.OutputQualityInfo
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Url)) {
 		query["Url"] = request.Url
 	}
@@ -10185,6 +10369,118 @@ func (client *Client) RecognizeWaybill(request *RecognizeWaybillRequest) (_resul
 	runtime := &util.RuntimeOptions{}
 	_result = &RecognizeWaybillResponse{}
 	_body, _err := client.RecognizeWaybillWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) VerifyBusinessLicenseWithOptions(request *VerifyBusinessLicenseRequest, runtime *util.RuntimeOptions) (_result *VerifyBusinessLicenseResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CompanyName)) {
+		query["CompanyName"] = request.CompanyName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CreditCode)) {
+		query["CreditCode"] = request.CreditCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LegalPerson)) {
+		query["LegalPerson"] = request.LegalPerson
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("VerifyBusinessLicense"),
+		Version:     tea.String("2021-07-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &VerifyBusinessLicenseResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) VerifyBusinessLicense(request *VerifyBusinessLicenseRequest) (_result *VerifyBusinessLicenseResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &VerifyBusinessLicenseResponse{}
+	_body, _err := client.VerifyBusinessLicenseWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) VerifyVATInvoiceWithOptions(request *VerifyVATInvoiceRequest, runtime *util.RuntimeOptions) (_result *VerifyVATInvoiceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InvoiceCode)) {
+		query["InvoiceCode"] = request.InvoiceCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InvoiceDate)) {
+		query["InvoiceDate"] = request.InvoiceDate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InvoiceNo)) {
+		query["InvoiceNo"] = request.InvoiceNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InvoiceSum)) {
+		query["InvoiceSum"] = request.InvoiceSum
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VerifyCode)) {
+		query["VerifyCode"] = request.VerifyCode
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("VerifyVATInvoice"),
+		Version:     tea.String("2021-07-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &VerifyVATInvoiceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) VerifyVATInvoice(request *VerifyVATInvoiceRequest) (_result *VerifyVATInvoiceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &VerifyVATInvoiceResponse{}
+	_body, _err := client.VerifyVATInvoiceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
