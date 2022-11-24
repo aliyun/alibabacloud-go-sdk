@@ -96,13 +96,17 @@ func (s *ContinueDeployServiceInstanceResponse) SetBody(v *ContinueDeployService
 type CreateServiceInstanceRequest struct {
 	ClientToken       *string                                        `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	ContactGroup      *string                                        `json:"ContactGroup,omitempty" xml:"ContactGroup,omitempty"`
+	DryRun            *bool                                          `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	EnableInstanceOps *bool                                          `json:"EnableInstanceOps,omitempty" xml:"EnableInstanceOps,omitempty"`
+	Name              *string                                        `json:"Name,omitempty" xml:"Name,omitempty"`
 	OperationMetadata *CreateServiceInstanceRequestOperationMetadata `json:"OperationMetadata,omitempty" xml:"OperationMetadata,omitempty" type:"Struct"`
 	Parameters        map[string]interface{}                         `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
+	PayType           *int64                                         `json:"PayType,omitempty" xml:"PayType,omitempty"`
 	RegionId          *string                                        `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceGroupId   *string                                        `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ServiceId         *string                                        `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
 	ServiceVersion    *string                                        `json:"ServiceVersion,omitempty" xml:"ServiceVersion,omitempty"`
+	SpecificationCode *string                                        `json:"SpecificationCode,omitempty" xml:"SpecificationCode,omitempty"`
 	SpecificationName *string                                        `json:"SpecificationName,omitempty" xml:"SpecificationName,omitempty"`
 	Tag               []*CreateServiceInstanceRequestTag             `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	TemplateName      *string                                        `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
@@ -127,8 +131,18 @@ func (s *CreateServiceInstanceRequest) SetContactGroup(v string) *CreateServiceI
 	return s
 }
 
+func (s *CreateServiceInstanceRequest) SetDryRun(v bool) *CreateServiceInstanceRequest {
+	s.DryRun = &v
+	return s
+}
+
 func (s *CreateServiceInstanceRequest) SetEnableInstanceOps(v bool) *CreateServiceInstanceRequest {
 	s.EnableInstanceOps = &v
+	return s
+}
+
+func (s *CreateServiceInstanceRequest) SetName(v string) *CreateServiceInstanceRequest {
+	s.Name = &v
 	return s
 }
 
@@ -139,6 +153,11 @@ func (s *CreateServiceInstanceRequest) SetOperationMetadata(v *CreateServiceInst
 
 func (s *CreateServiceInstanceRequest) SetParameters(v map[string]interface{}) *CreateServiceInstanceRequest {
 	s.Parameters = v
+	return s
+}
+
+func (s *CreateServiceInstanceRequest) SetPayType(v int64) *CreateServiceInstanceRequest {
+	s.PayType = &v
 	return s
 }
 
@@ -159,6 +178,11 @@ func (s *CreateServiceInstanceRequest) SetServiceId(v string) *CreateServiceInst
 
 func (s *CreateServiceInstanceRequest) SetServiceVersion(v string) *CreateServiceInstanceRequest {
 	s.ServiceVersion = &v
+	return s
+}
+
+func (s *CreateServiceInstanceRequest) SetSpecificationCode(v string) *CreateServiceInstanceRequest {
+	s.SpecificationCode = &v
 	return s
 }
 
@@ -243,13 +267,17 @@ func (s *CreateServiceInstanceRequestTag) SetValue(v string) *CreateServiceInsta
 type CreateServiceInstanceShrinkRequest struct {
 	ClientToken       *string                                              `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	ContactGroup      *string                                              `json:"ContactGroup,omitempty" xml:"ContactGroup,omitempty"`
+	DryRun            *bool                                                `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	EnableInstanceOps *bool                                                `json:"EnableInstanceOps,omitempty" xml:"EnableInstanceOps,omitempty"`
+	Name              *string                                              `json:"Name,omitempty" xml:"Name,omitempty"`
 	OperationMetadata *CreateServiceInstanceShrinkRequestOperationMetadata `json:"OperationMetadata,omitempty" xml:"OperationMetadata,omitempty" type:"Struct"`
 	ParametersShrink  *string                                              `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
+	PayType           *int64                                               `json:"PayType,omitempty" xml:"PayType,omitempty"`
 	RegionId          *string                                              `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceGroupId   *string                                              `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ServiceId         *string                                              `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
 	ServiceVersion    *string                                              `json:"ServiceVersion,omitempty" xml:"ServiceVersion,omitempty"`
+	SpecificationCode *string                                              `json:"SpecificationCode,omitempty" xml:"SpecificationCode,omitempty"`
 	SpecificationName *string                                              `json:"SpecificationName,omitempty" xml:"SpecificationName,omitempty"`
 	Tag               []*CreateServiceInstanceShrinkRequestTag             `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	TemplateName      *string                                              `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
@@ -274,8 +302,18 @@ func (s *CreateServiceInstanceShrinkRequest) SetContactGroup(v string) *CreateSe
 	return s
 }
 
+func (s *CreateServiceInstanceShrinkRequest) SetDryRun(v bool) *CreateServiceInstanceShrinkRequest {
+	s.DryRun = &v
+	return s
+}
+
 func (s *CreateServiceInstanceShrinkRequest) SetEnableInstanceOps(v bool) *CreateServiceInstanceShrinkRequest {
 	s.EnableInstanceOps = &v
+	return s
+}
+
+func (s *CreateServiceInstanceShrinkRequest) SetName(v string) *CreateServiceInstanceShrinkRequest {
+	s.Name = &v
 	return s
 }
 
@@ -286,6 +324,11 @@ func (s *CreateServiceInstanceShrinkRequest) SetOperationMetadata(v *CreateServi
 
 func (s *CreateServiceInstanceShrinkRequest) SetParametersShrink(v string) *CreateServiceInstanceShrinkRequest {
 	s.ParametersShrink = &v
+	return s
+}
+
+func (s *CreateServiceInstanceShrinkRequest) SetPayType(v int64) *CreateServiceInstanceShrinkRequest {
+	s.PayType = &v
 	return s
 }
 
@@ -306,6 +349,11 @@ func (s *CreateServiceInstanceShrinkRequest) SetServiceId(v string) *CreateServi
 
 func (s *CreateServiceInstanceShrinkRequest) SetServiceVersion(v string) *CreateServiceInstanceShrinkRequest {
 	s.ServiceVersion = &v
+	return s
+}
+
+func (s *CreateServiceInstanceShrinkRequest) SetSpecificationCode(v string) *CreateServiceInstanceShrinkRequest {
+	s.SpecificationCode = &v
 	return s
 }
 
@@ -549,6 +597,7 @@ type GetServiceInstanceResponseBody struct {
 	EndTime                   *string                                      `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	IsOperated                *bool                                        `json:"IsOperated,omitempty" xml:"IsOperated,omitempty"`
 	LicenseEndTime            *string                                      `json:"LicenseEndTime,omitempty" xml:"LicenseEndTime,omitempty"`
+	Name                      *string                                      `json:"Name,omitempty" xml:"Name,omitempty"`
 	NetworkConfig             *GetServiceInstanceResponseBodyNetworkConfig `json:"NetworkConfig,omitempty" xml:"NetworkConfig,omitempty" type:"Struct"`
 	OperatedServiceInstanceId *string                                      `json:"OperatedServiceInstanceId,omitempty" xml:"OperatedServiceInstanceId,omitempty"`
 	OperationEndTime          *string                                      `json:"OperationEndTime,omitempty" xml:"OperationEndTime,omitempty"`
@@ -602,6 +651,11 @@ func (s *GetServiceInstanceResponseBody) SetIsOperated(v bool) *GetServiceInstan
 
 func (s *GetServiceInstanceResponseBody) SetLicenseEndTime(v string) *GetServiceInstanceResponseBody {
 	s.LicenseEndTime = &v
+	return s
+}
+
+func (s *GetServiceInstanceResponseBody) SetName(v string) *GetServiceInstanceResponseBody {
+	s.Name = &v
 	return s
 }
 
@@ -789,8 +843,10 @@ type GetServiceInstanceResponseBodyService struct {
 	DeployMetadata            *string                                              `json:"DeployMetadata,omitempty" xml:"DeployMetadata,omitempty"`
 	DeployType                *string                                              `json:"DeployType,omitempty" xml:"DeployType,omitempty"`
 	PublishTime               *string                                              `json:"PublishTime,omitempty" xml:"PublishTime,omitempty"`
+	ServiceDocUrl             *string                                              `json:"ServiceDocUrl,omitempty" xml:"ServiceDocUrl,omitempty"`
 	ServiceId                 *string                                              `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
 	ServiceInfos              []*GetServiceInstanceResponseBodyServiceServiceInfos `json:"ServiceInfos,omitempty" xml:"ServiceInfos,omitempty" type:"Repeated"`
+	ServiceProductUrl         *string                                              `json:"ServiceProductUrl,omitempty" xml:"ServiceProductUrl,omitempty"`
 	ServiceType               *string                                              `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
 	Status                    *string                                              `json:"Status,omitempty" xml:"Status,omitempty"`
 	SupplierName              *string                                              `json:"SupplierName,omitempty" xml:"SupplierName,omitempty"`
@@ -824,6 +880,11 @@ func (s *GetServiceInstanceResponseBodyService) SetPublishTime(v string) *GetSer
 	return s
 }
 
+func (s *GetServiceInstanceResponseBodyService) SetServiceDocUrl(v string) *GetServiceInstanceResponseBodyService {
+	s.ServiceDocUrl = &v
+	return s
+}
+
 func (s *GetServiceInstanceResponseBodyService) SetServiceId(v string) *GetServiceInstanceResponseBodyService {
 	s.ServiceId = &v
 	return s
@@ -831,6 +892,11 @@ func (s *GetServiceInstanceResponseBodyService) SetServiceId(v string) *GetServi
 
 func (s *GetServiceInstanceResponseBodyService) SetServiceInfos(v []*GetServiceInstanceResponseBodyServiceServiceInfos) *GetServiceInstanceResponseBodyService {
 	s.ServiceInfos = v
+	return s
+}
+
+func (s *GetServiceInstanceResponseBodyService) SetServiceProductUrl(v string) *GetServiceInstanceResponseBodyService {
+	s.ServiceProductUrl = &v
 	return s
 }
 
@@ -1462,6 +1528,8 @@ type ListServiceInstancesResponseBodyServiceInstances struct {
 	CreateTime                *string                                                  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	EnableInstanceOps         *bool                                                    `json:"EnableInstanceOps,omitempty" xml:"EnableInstanceOps,omitempty"`
 	EndTime                   *string                                                  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	MarketInstanceId          *string                                                  `json:"MarketInstanceId,omitempty" xml:"MarketInstanceId,omitempty"`
+	Name                      *string                                                  `json:"Name,omitempty" xml:"Name,omitempty"`
 	OperatedServiceInstanceId *string                                                  `json:"OperatedServiceInstanceId,omitempty" xml:"OperatedServiceInstanceId,omitempty"`
 	OperationEndTime          *string                                                  `json:"OperationEndTime,omitempty" xml:"OperationEndTime,omitempty"`
 	OperationStartTime        *string                                                  `json:"OperationStartTime,omitempty" xml:"OperationStartTime,omitempty"`
@@ -1501,6 +1569,16 @@ func (s *ListServiceInstancesResponseBodyServiceInstances) SetEnableInstanceOps(
 
 func (s *ListServiceInstancesResponseBodyServiceInstances) SetEndTime(v string) *ListServiceInstancesResponseBodyServiceInstances {
 	s.EndTime = &v
+	return s
+}
+
+func (s *ListServiceInstancesResponseBodyServiceInstances) SetMarketInstanceId(v string) *ListServiceInstancesResponseBodyServiceInstances {
+	s.MarketInstanceId = &v
+	return s
+}
+
+func (s *ListServiceInstancesResponseBodyServiceInstances) SetName(v string) *ListServiceInstancesResponseBodyServiceInstances {
+	s.Name = &v
 	return s
 }
 
@@ -1870,16 +1948,28 @@ func (client *Client) CreateServiceInstanceWithOptions(tmpReq *CreateServiceInst
 		query["ContactGroup"] = request.ContactGroup
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.EnableInstanceOps)) {
 		query["EnableInstanceOps"] = request.EnableInstanceOps
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.OperationMetadata))) {
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OperationMetadata)) {
 		query["OperationMetadata"] = request.OperationMetadata
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ParametersShrink)) {
 		query["Parameters"] = request.ParametersShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PayType)) {
+		query["PayType"] = request.PayType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
@@ -1896,6 +1986,10 @@ func (client *Client) CreateServiceInstanceWithOptions(tmpReq *CreateServiceInst
 
 	if !tea.BoolValue(util.IsUnset(request.ServiceVersion)) {
 		query["ServiceVersion"] = request.ServiceVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SpecificationCode)) {
+		query["SpecificationCode"] = request.SpecificationCode
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SpecificationName)) {
