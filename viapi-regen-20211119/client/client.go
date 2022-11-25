@@ -17,6 +17,104 @@ import (
 	"io"
 )
 
+type CheckDatasetOssBucketCORSRequest struct {
+	LabelsetId *int64 `json:"LabelsetId,omitempty" xml:"LabelsetId,omitempty"`
+}
+
+func (s CheckDatasetOssBucketCORSRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CheckDatasetOssBucketCORSRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CheckDatasetOssBucketCORSRequest) SetLabelsetId(v int64) *CheckDatasetOssBucketCORSRequest {
+	s.LabelsetId = &v
+	return s
+}
+
+type CheckDatasetOssBucketCORSResponseBody struct {
+	Data      *CheckDatasetOssBucketCORSResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CheckDatasetOssBucketCORSResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CheckDatasetOssBucketCORSResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CheckDatasetOssBucketCORSResponseBody) SetData(v *CheckDatasetOssBucketCORSResponseBodyData) *CheckDatasetOssBucketCORSResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *CheckDatasetOssBucketCORSResponseBody) SetRequestId(v string) *CheckDatasetOssBucketCORSResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CheckDatasetOssBucketCORSResponseBodyData struct {
+	Bucket                 *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
+	OssBucketCORSConfigUrl *string `json:"OssBucketCORSConfigUrl,omitempty" xml:"OssBucketCORSConfigUrl,omitempty"`
+	SetOssBucketCORSFlag   *bool   `json:"SetOssBucketCORSFlag,omitempty" xml:"SetOssBucketCORSFlag,omitempty"`
+}
+
+func (s CheckDatasetOssBucketCORSResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CheckDatasetOssBucketCORSResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *CheckDatasetOssBucketCORSResponseBodyData) SetBucket(v string) *CheckDatasetOssBucketCORSResponseBodyData {
+	s.Bucket = &v
+	return s
+}
+
+func (s *CheckDatasetOssBucketCORSResponseBodyData) SetOssBucketCORSConfigUrl(v string) *CheckDatasetOssBucketCORSResponseBodyData {
+	s.OssBucketCORSConfigUrl = &v
+	return s
+}
+
+func (s *CheckDatasetOssBucketCORSResponseBodyData) SetSetOssBucketCORSFlag(v bool) *CheckDatasetOssBucketCORSResponseBodyData {
+	s.SetOssBucketCORSFlag = &v
+	return s
+}
+
+type CheckDatasetOssBucketCORSResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CheckDatasetOssBucketCORSResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CheckDatasetOssBucketCORSResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CheckDatasetOssBucketCORSResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CheckDatasetOssBucketCORSResponse) SetHeaders(v map[string]*string) *CheckDatasetOssBucketCORSResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CheckDatasetOssBucketCORSResponse) SetStatusCode(v int32) *CheckDatasetOssBucketCORSResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CheckDatasetOssBucketCORSResponse) SetBody(v *CheckDatasetOssBucketCORSResponseBody) *CheckDatasetOssBucketCORSResponse {
+	s.Body = v
+	return s
+}
+
 type CreateDatasetRequest struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
@@ -4286,6 +4384,81 @@ func (s *GetUploadPolicyResponse) SetBody(v *GetUploadPolicyResponseBody) *GetUp
 	return s
 }
 
+type GetUserInfoResponseBody struct {
+	Data      *GetUserInfoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetUserInfoResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUserInfoResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetUserInfoResponseBody) SetData(v *GetUserInfoResponseBodyData) *GetUserInfoResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetUserInfoResponseBody) SetRequestId(v string) *GetUserInfoResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetUserInfoResponseBodyData struct {
+	ParentUid *string `json:"ParentUid,omitempty" xml:"ParentUid,omitempty"`
+	UserType  *string `json:"UserType,omitempty" xml:"UserType,omitempty"`
+}
+
+func (s GetUserInfoResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUserInfoResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetUserInfoResponseBodyData) SetParentUid(v string) *GetUserInfoResponseBodyData {
+	s.ParentUid = &v
+	return s
+}
+
+func (s *GetUserInfoResponseBodyData) SetUserType(v string) *GetUserInfoResponseBodyData {
+	s.UserType = &v
+	return s
+}
+
+type GetUserInfoResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetUserInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetUserInfoResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUserInfoResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetUserInfoResponse) SetHeaders(v map[string]*string) *GetUserInfoResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetUserInfoResponse) SetStatusCode(v int32) *GetUserInfoResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetUserInfoResponse) SetBody(v *GetUserInfoResponseBody) *GetUserInfoResponse {
+	s.Body = v
+	return s
+}
+
 type GetWorkspaceRequest struct {
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 }
@@ -6953,6 +7126,50 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+func (client *Client) CheckDatasetOssBucketCORSWithOptions(request *CheckDatasetOssBucketCORSRequest, runtime *util.RuntimeOptions) (_result *CheckDatasetOssBucketCORSResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.LabelsetId)) {
+		body["LabelsetId"] = request.LabelsetId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CheckDatasetOssBucketCORS"),
+		Version:     tea.String("2021-11-19"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CheckDatasetOssBucketCORSResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CheckDatasetOssBucketCORS(request *CheckDatasetOssBucketCORSRequest) (_result *CheckDatasetOssBucketCORSResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CheckDatasetOssBucketCORSResponse{}
+	_body, _err := client.CheckDatasetOssBucketCORSWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) CreateDatasetWithOptions(request *CreateDatasetRequest, runtime *util.RuntimeOptions) (_result *CreateDatasetResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8956,6 +9173,39 @@ func (client *Client) GetUploadPolicy(request *GetUploadPolicyRequest) (_result 
 	runtime := &util.RuntimeOptions{}
 	_result = &GetUploadPolicyResponse{}
 	_body, _err := client.GetUploadPolicyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetUserInfoWithOptions(runtime *util.RuntimeOptions) (_result *GetUserInfoResponse, _err error) {
+	req := &openapi.OpenApiRequest{}
+	params := &openapi.Params{
+		Action:      tea.String("GetUserInfo"),
+		Version:     tea.String("2021-11-19"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetUserInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetUserInfo() (_result *GetUserInfoResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetUserInfoResponse{}
+	_body, _err := client.GetUserInfoWithOptions(runtime)
 	if _err != nil {
 		return _result, _err
 	}
