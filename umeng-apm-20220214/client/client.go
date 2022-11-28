@@ -444,6 +444,93 @@ func (s *GetTodayStatTrendResponse) SetBody(v *GetTodayStatTrendResponseBody) *G
 	return s
 }
 
+type UpdateAlertPlanRequest struct {
+	DataSourceId *string `json:"dataSourceId,omitempty" xml:"dataSourceId,omitempty"`
+	PlanId       *int64  `json:"planId,omitempty" xml:"planId,omitempty"`
+	Versions     *string `json:"versions,omitempty" xml:"versions,omitempty"`
+}
+
+func (s UpdateAlertPlanRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAlertPlanRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAlertPlanRequest) SetDataSourceId(v string) *UpdateAlertPlanRequest {
+	s.DataSourceId = &v
+	return s
+}
+
+func (s *UpdateAlertPlanRequest) SetPlanId(v int64) *UpdateAlertPlanRequest {
+	s.PlanId = &v
+	return s
+}
+
+func (s *UpdateAlertPlanRequest) SetVersions(v string) *UpdateAlertPlanRequest {
+	s.Versions = &v
+	return s
+}
+
+type UpdateAlertPlanResponseBody struct {
+	Code    *int64  `json:"code,omitempty" xml:"code,omitempty"`
+	Msg     *string `json:"msg,omitempty" xml:"msg,omitempty"`
+	Success *bool   `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s UpdateAlertPlanResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAlertPlanResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAlertPlanResponseBody) SetCode(v int64) *UpdateAlertPlanResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UpdateAlertPlanResponseBody) SetMsg(v string) *UpdateAlertPlanResponseBody {
+	s.Msg = &v
+	return s
+}
+
+func (s *UpdateAlertPlanResponseBody) SetSuccess(v bool) *UpdateAlertPlanResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateAlertPlanResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateAlertPlanResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateAlertPlanResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAlertPlanResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAlertPlanResponse) SetHeaders(v map[string]*string) *UpdateAlertPlanResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateAlertPlanResponse) SetStatusCode(v int32) *UpdateAlertPlanResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateAlertPlanResponse) SetBody(v *UpdateAlertPlanResponseBody) *UpdateAlertPlanResponse {
+	s.Body = v
+	return s
+}
+
 type Client struct {
 	openapi.Client
 }
@@ -657,6 +744,60 @@ func (client *Client) GetTodayStatTrendWithOptions(request *GetTodayStatTrendReq
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetTodayStatTrendResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateAlertPlan(request *UpdateAlertPlanRequest) (_result *UpdateAlertPlanResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateAlertPlanResponse{}
+	_body, _err := client.UpdateAlertPlanWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateAlertPlanWithOptions(request *UpdateAlertPlanRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateAlertPlanResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DataSourceId)) {
+		query["dataSourceId"] = request.DataSourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PlanId)) {
+		query["planId"] = request.PlanId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Versions)) {
+		query["versions"] = request.Versions
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateAlertPlan"),
+		Version:     tea.String("2022-02-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/updateAlertPlan"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateAlertPlanResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
