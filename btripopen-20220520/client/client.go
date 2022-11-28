@@ -5748,6 +5748,584 @@ func (s *CarOrderListQueryResponse) SetBody(v *CarOrderListQueryResponseBody) *C
 	return s
 }
 
+type CarOrderQueryHeaders struct {
+	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsBtripSoCorpToken *string            `json:"x-acs-btrip-so-corp-token,omitempty" xml:"x-acs-btrip-so-corp-token,omitempty"`
+}
+
+func (s CarOrderQueryHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CarOrderQueryHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *CarOrderQueryHeaders) SetCommonHeaders(v map[string]*string) *CarOrderQueryHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *CarOrderQueryHeaders) SetXAcsBtripSoCorpToken(v string) *CarOrderQueryHeaders {
+	s.XAcsBtripSoCorpToken = &v
+	return s
+}
+
+type CarOrderQueryRequest struct {
+	OrderId    *int64 `json:"order_id,omitempty" xml:"order_id,omitempty"`
+	SubOrderId *int64 `json:"sub_order_id,omitempty" xml:"sub_order_id,omitempty"`
+}
+
+func (s CarOrderQueryRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CarOrderQueryRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CarOrderQueryRequest) SetOrderId(v int64) *CarOrderQueryRequest {
+	s.OrderId = &v
+	return s
+}
+
+func (s *CarOrderQueryRequest) SetSubOrderId(v int64) *CarOrderQueryRequest {
+	s.SubOrderId = &v
+	return s
+}
+
+type CarOrderQueryResponseBody struct {
+	Code      *string                          `json:"code,omitempty" xml:"code,omitempty"`
+	Message   *string                          `json:"message,omitempty" xml:"message,omitempty"`
+	Module    *CarOrderQueryResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
+	RequestId *string                          `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success   *bool                            `json:"success,omitempty" xml:"success,omitempty"`
+	TraceId   *string                          `json:"traceId,omitempty" xml:"traceId,omitempty"`
+}
+
+func (s CarOrderQueryResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CarOrderQueryResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CarOrderQueryResponseBody) SetCode(v string) *CarOrderQueryResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CarOrderQueryResponseBody) SetMessage(v string) *CarOrderQueryResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CarOrderQueryResponseBody) SetModule(v *CarOrderQueryResponseBodyModule) *CarOrderQueryResponseBody {
+	s.Module = v
+	return s
+}
+
+func (s *CarOrderQueryResponseBody) SetRequestId(v string) *CarOrderQueryResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CarOrderQueryResponseBody) SetSuccess(v bool) *CarOrderQueryResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *CarOrderQueryResponseBody) SetTraceId(v string) *CarOrderQueryResponseBody {
+	s.TraceId = &v
+	return s
+}
+
+type CarOrderQueryResponseBodyModule struct {
+	CarInfo       *CarOrderQueryResponseBodyModuleCarInfo         `json:"car_info,omitempty" xml:"car_info,omitempty" type:"Struct"`
+	InvoiceInfo   *CarOrderQueryResponseBodyModuleInvoiceInfo     `json:"invoice_info,omitempty" xml:"invoice_info,omitempty" type:"Struct"`
+	OrderBaseInfo *CarOrderQueryResponseBodyModuleOrderBaseInfo   `json:"order_base_info,omitempty" xml:"order_base_info,omitempty" type:"Struct"`
+	PassengerList []*CarOrderQueryResponseBodyModulePassengerList `json:"passenger_list,omitempty" xml:"passenger_list,omitempty" type:"Repeated"`
+	PriceInfoList []*CarOrderQueryResponseBodyModulePriceInfoList `json:"price_info_list,omitempty" xml:"price_info_list,omitempty" type:"Repeated"`
+}
+
+func (s CarOrderQueryResponseBodyModule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CarOrderQueryResponseBodyModule) GoString() string {
+	return s.String()
+}
+
+func (s *CarOrderQueryResponseBodyModule) SetCarInfo(v *CarOrderQueryResponseBodyModuleCarInfo) *CarOrderQueryResponseBodyModule {
+	s.CarInfo = v
+	return s
+}
+
+func (s *CarOrderQueryResponseBodyModule) SetInvoiceInfo(v *CarOrderQueryResponseBodyModuleInvoiceInfo) *CarOrderQueryResponseBodyModule {
+	s.InvoiceInfo = v
+	return s
+}
+
+func (s *CarOrderQueryResponseBodyModule) SetOrderBaseInfo(v *CarOrderQueryResponseBodyModuleOrderBaseInfo) *CarOrderQueryResponseBodyModule {
+	s.OrderBaseInfo = v
+	return s
+}
+
+func (s *CarOrderQueryResponseBodyModule) SetPassengerList(v []*CarOrderQueryResponseBodyModulePassengerList) *CarOrderQueryResponseBodyModule {
+	s.PassengerList = v
+	return s
+}
+
+func (s *CarOrderQueryResponseBodyModule) SetPriceInfoList(v []*CarOrderQueryResponseBodyModulePriceInfoList) *CarOrderQueryResponseBodyModule {
+	s.PriceInfoList = v
+	return s
+}
+
+type CarOrderQueryResponseBodyModuleCarInfo struct {
+	BusinessCategory  *string `json:"business_category,omitempty" xml:"business_category,omitempty"`
+	CancelTime        *int64  `json:"cancel_time,omitempty" xml:"cancel_time,omitempty"`
+	CarInfo           *string `json:"car_info,omitempty" xml:"car_info,omitempty"`
+	CarLevel          *int32  `json:"car_level,omitempty" xml:"car_level,omitempty"`
+	DriverConfirmTime *int64  `json:"driver_confirm_time,omitempty" xml:"driver_confirm_time,omitempty"`
+	EstimatePrice     *int64  `json:"estimate_price,omitempty" xml:"estimate_price,omitempty"`
+	FromAddress       *string `json:"from_address,omitempty" xml:"from_address,omitempty"`
+	FromCityName      *string `json:"from_city_name,omitempty" xml:"from_city_name,omitempty"`
+	IsSpecial         *bool   `json:"is_special,omitempty" xml:"is_special,omitempty"`
+	Memo              *string `json:"memo,omitempty" xml:"memo,omitempty"`
+	PayTime           *int64  `json:"pay_time,omitempty" xml:"pay_time,omitempty"`
+	PublishTime       *int64  `json:"publish_time,omitempty" xml:"publish_time,omitempty"`
+	RealFromAddress   *string `json:"real_from_address,omitempty" xml:"real_from_address,omitempty"`
+	RealFromCityName  *string `json:"real_from_city_name,omitempty" xml:"real_from_city_name,omitempty"`
+	RealToAddress     *string `json:"real_to_address,omitempty" xml:"real_to_address,omitempty"`
+	RealToCityName    *string `json:"real_to_city_name,omitempty" xml:"real_to_city_name,omitempty"`
+	ServiceType       *int32  `json:"service_type,omitempty" xml:"service_type,omitempty"`
+	SpecialTypes      *string `json:"special_types,omitempty" xml:"special_types,omitempty"`
+	TakenTime         *int64  `json:"taken_time,omitempty" xml:"taken_time,omitempty"`
+	ToAddress         *string `json:"to_address,omitempty" xml:"to_address,omitempty"`
+	ToCityName        *string `json:"to_city_name,omitempty" xml:"to_city_name,omitempty"`
+	TravelDistance    *string `json:"travel_distance,omitempty" xml:"travel_distance,omitempty"`
+}
+
+func (s CarOrderQueryResponseBodyModuleCarInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CarOrderQueryResponseBodyModuleCarInfo) GoString() string {
+	return s.String()
+}
+
+func (s *CarOrderQueryResponseBodyModuleCarInfo) SetBusinessCategory(v string) *CarOrderQueryResponseBodyModuleCarInfo {
+	s.BusinessCategory = &v
+	return s
+}
+
+func (s *CarOrderQueryResponseBodyModuleCarInfo) SetCancelTime(v int64) *CarOrderQueryResponseBodyModuleCarInfo {
+	s.CancelTime = &v
+	return s
+}
+
+func (s *CarOrderQueryResponseBodyModuleCarInfo) SetCarInfo(v string) *CarOrderQueryResponseBodyModuleCarInfo {
+	s.CarInfo = &v
+	return s
+}
+
+func (s *CarOrderQueryResponseBodyModuleCarInfo) SetCarLevel(v int32) *CarOrderQueryResponseBodyModuleCarInfo {
+	s.CarLevel = &v
+	return s
+}
+
+func (s *CarOrderQueryResponseBodyModuleCarInfo) SetDriverConfirmTime(v int64) *CarOrderQueryResponseBodyModuleCarInfo {
+	s.DriverConfirmTime = &v
+	return s
+}
+
+func (s *CarOrderQueryResponseBodyModuleCarInfo) SetEstimatePrice(v int64) *CarOrderQueryResponseBodyModuleCarInfo {
+	s.EstimatePrice = &v
+	return s
+}
+
+func (s *CarOrderQueryResponseBodyModuleCarInfo) SetFromAddress(v string) *CarOrderQueryResponseBodyModuleCarInfo {
+	s.FromAddress = &v
+	return s
+}
+
+func (s *CarOrderQueryResponseBodyModuleCarInfo) SetFromCityName(v string) *CarOrderQueryResponseBodyModuleCarInfo {
+	s.FromCityName = &v
+	return s
+}
+
+func (s *CarOrderQueryResponseBodyModuleCarInfo) SetIsSpecial(v bool) *CarOrderQueryResponseBodyModuleCarInfo {
+	s.IsSpecial = &v
+	return s
+}
+
+func (s *CarOrderQueryResponseBodyModuleCarInfo) SetMemo(v string) *CarOrderQueryResponseBodyModuleCarInfo {
+	s.Memo = &v
+	return s
+}
+
+func (s *CarOrderQueryResponseBodyModuleCarInfo) SetPayTime(v int64) *CarOrderQueryResponseBodyModuleCarInfo {
+	s.PayTime = &v
+	return s
+}
+
+func (s *CarOrderQueryResponseBodyModuleCarInfo) SetPublishTime(v int64) *CarOrderQueryResponseBodyModuleCarInfo {
+	s.PublishTime = &v
+	return s
+}
+
+func (s *CarOrderQueryResponseBodyModuleCarInfo) SetRealFromAddress(v string) *CarOrderQueryResponseBodyModuleCarInfo {
+	s.RealFromAddress = &v
+	return s
+}
+
+func (s *CarOrderQueryResponseBodyModuleCarInfo) SetRealFromCityName(v string) *CarOrderQueryResponseBodyModuleCarInfo {
+	s.RealFromCityName = &v
+	return s
+}
+
+func (s *CarOrderQueryResponseBodyModuleCarInfo) SetRealToAddress(v string) *CarOrderQueryResponseBodyModuleCarInfo {
+	s.RealToAddress = &v
+	return s
+}
+
+func (s *CarOrderQueryResponseBodyModuleCarInfo) SetRealToCityName(v string) *CarOrderQueryResponseBodyModuleCarInfo {
+	s.RealToCityName = &v
+	return s
+}
+
+func (s *CarOrderQueryResponseBodyModuleCarInfo) SetServiceType(v int32) *CarOrderQueryResponseBodyModuleCarInfo {
+	s.ServiceType = &v
+	return s
+}
+
+func (s *CarOrderQueryResponseBodyModuleCarInfo) SetSpecialTypes(v string) *CarOrderQueryResponseBodyModuleCarInfo {
+	s.SpecialTypes = &v
+	return s
+}
+
+func (s *CarOrderQueryResponseBodyModuleCarInfo) SetTakenTime(v int64) *CarOrderQueryResponseBodyModuleCarInfo {
+	s.TakenTime = &v
+	return s
+}
+
+func (s *CarOrderQueryResponseBodyModuleCarInfo) SetToAddress(v string) *CarOrderQueryResponseBodyModuleCarInfo {
+	s.ToAddress = &v
+	return s
+}
+
+func (s *CarOrderQueryResponseBodyModuleCarInfo) SetToCityName(v string) *CarOrderQueryResponseBodyModuleCarInfo {
+	s.ToCityName = &v
+	return s
+}
+
+func (s *CarOrderQueryResponseBodyModuleCarInfo) SetTravelDistance(v string) *CarOrderQueryResponseBodyModuleCarInfo {
+	s.TravelDistance = &v
+	return s
+}
+
+type CarOrderQueryResponseBodyModuleInvoiceInfo struct {
+	Id    *int64  `json:"id,omitempty" xml:"id,omitempty"`
+	Title *string `json:"title,omitempty" xml:"title,omitempty"`
+}
+
+func (s CarOrderQueryResponseBodyModuleInvoiceInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CarOrderQueryResponseBodyModuleInvoiceInfo) GoString() string {
+	return s.String()
+}
+
+func (s *CarOrderQueryResponseBodyModuleInvoiceInfo) SetId(v int64) *CarOrderQueryResponseBodyModuleInvoiceInfo {
+	s.Id = &v
+	return s
+}
+
+func (s *CarOrderQueryResponseBodyModuleInvoiceInfo) SetTitle(v string) *CarOrderQueryResponseBodyModuleInvoiceInfo {
+	s.Title = &v
+	return s
+}
+
+type CarOrderQueryResponseBodyModuleOrderBaseInfo struct {
+	ApplyId              *string `json:"apply_id,omitempty" xml:"apply_id,omitempty"`
+	BtripCause           *string `json:"btrip_cause,omitempty" xml:"btrip_cause,omitempty"`
+	BtripTitle           *string `json:"btrip_title,omitempty" xml:"btrip_title,omitempty"`
+	CorpId               *string `json:"corp_id,omitempty" xml:"corp_id,omitempty"`
+	CorpName             *string `json:"corp_name,omitempty" xml:"corp_name,omitempty"`
+	DepartId             *string `json:"depart_id,omitempty" xml:"depart_id,omitempty"`
+	DepartName           *string `json:"depart_name,omitempty" xml:"depart_name,omitempty"`
+	GmtCreate            *int64  `json:"gmt_create,omitempty" xml:"gmt_create,omitempty"`
+	GmtModified          *int64  `json:"gmt_modified,omitempty" xml:"gmt_modified,omitempty"`
+	ItineraryId          *string `json:"itinerary_id,omitempty" xml:"itinerary_id,omitempty"`
+	OrderId              *int64  `json:"order_id,omitempty" xml:"order_id,omitempty"`
+	OrderStatus          *int32  `json:"order_status,omitempty" xml:"order_status,omitempty"`
+	SubOrderId           *int64  `json:"sub_order_id,omitempty" xml:"sub_order_id,omitempty"`
+	ThirdDepartId        *string `json:"third_depart_id,omitempty" xml:"third_depart_id,omitempty"`
+	ThirdpartApplyId     *string `json:"thirdpart_apply_id,omitempty" xml:"thirdpart_apply_id,omitempty"`
+	ThirdpartItineraryId *string `json:"thirdpart_itinerary_id,omitempty" xml:"thirdpart_itinerary_id,omitempty"`
+	UserId               *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
+	UserName             *string `json:"user_name,omitempty" xml:"user_name,omitempty"`
+}
+
+func (s CarOrderQueryResponseBodyModuleOrderBaseInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CarOrderQueryResponseBodyModuleOrderBaseInfo) GoString() string {
+	return s.String()
+}
+
+func (s *CarOrderQueryResponseBodyModuleOrderBaseInfo) SetApplyId(v string) *CarOrderQueryResponseBodyModuleOrderBaseInfo {
+	s.ApplyId = &v
+	return s
+}
+
+func (s *CarOrderQueryResponseBodyModuleOrderBaseInfo) SetBtripCause(v string) *CarOrderQueryResponseBodyModuleOrderBaseInfo {
+	s.BtripCause = &v
+	return s
+}
+
+func (s *CarOrderQueryResponseBodyModuleOrderBaseInfo) SetBtripTitle(v string) *CarOrderQueryResponseBodyModuleOrderBaseInfo {
+	s.BtripTitle = &v
+	return s
+}
+
+func (s *CarOrderQueryResponseBodyModuleOrderBaseInfo) SetCorpId(v string) *CarOrderQueryResponseBodyModuleOrderBaseInfo {
+	s.CorpId = &v
+	return s
+}
+
+func (s *CarOrderQueryResponseBodyModuleOrderBaseInfo) SetCorpName(v string) *CarOrderQueryResponseBodyModuleOrderBaseInfo {
+	s.CorpName = &v
+	return s
+}
+
+func (s *CarOrderQueryResponseBodyModuleOrderBaseInfo) SetDepartId(v string) *CarOrderQueryResponseBodyModuleOrderBaseInfo {
+	s.DepartId = &v
+	return s
+}
+
+func (s *CarOrderQueryResponseBodyModuleOrderBaseInfo) SetDepartName(v string) *CarOrderQueryResponseBodyModuleOrderBaseInfo {
+	s.DepartName = &v
+	return s
+}
+
+func (s *CarOrderQueryResponseBodyModuleOrderBaseInfo) SetGmtCreate(v int64) *CarOrderQueryResponseBodyModuleOrderBaseInfo {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *CarOrderQueryResponseBodyModuleOrderBaseInfo) SetGmtModified(v int64) *CarOrderQueryResponseBodyModuleOrderBaseInfo {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *CarOrderQueryResponseBodyModuleOrderBaseInfo) SetItineraryId(v string) *CarOrderQueryResponseBodyModuleOrderBaseInfo {
+	s.ItineraryId = &v
+	return s
+}
+
+func (s *CarOrderQueryResponseBodyModuleOrderBaseInfo) SetOrderId(v int64) *CarOrderQueryResponseBodyModuleOrderBaseInfo {
+	s.OrderId = &v
+	return s
+}
+
+func (s *CarOrderQueryResponseBodyModuleOrderBaseInfo) SetOrderStatus(v int32) *CarOrderQueryResponseBodyModuleOrderBaseInfo {
+	s.OrderStatus = &v
+	return s
+}
+
+func (s *CarOrderQueryResponseBodyModuleOrderBaseInfo) SetSubOrderId(v int64) *CarOrderQueryResponseBodyModuleOrderBaseInfo {
+	s.SubOrderId = &v
+	return s
+}
+
+func (s *CarOrderQueryResponseBodyModuleOrderBaseInfo) SetThirdDepartId(v string) *CarOrderQueryResponseBodyModuleOrderBaseInfo {
+	s.ThirdDepartId = &v
+	return s
+}
+
+func (s *CarOrderQueryResponseBodyModuleOrderBaseInfo) SetThirdpartApplyId(v string) *CarOrderQueryResponseBodyModuleOrderBaseInfo {
+	s.ThirdpartApplyId = &v
+	return s
+}
+
+func (s *CarOrderQueryResponseBodyModuleOrderBaseInfo) SetThirdpartItineraryId(v string) *CarOrderQueryResponseBodyModuleOrderBaseInfo {
+	s.ThirdpartItineraryId = &v
+	return s
+}
+
+func (s *CarOrderQueryResponseBodyModuleOrderBaseInfo) SetUserId(v string) *CarOrderQueryResponseBodyModuleOrderBaseInfo {
+	s.UserId = &v
+	return s
+}
+
+func (s *CarOrderQueryResponseBodyModuleOrderBaseInfo) SetUserName(v string) *CarOrderQueryResponseBodyModuleOrderBaseInfo {
+	s.UserName = &v
+	return s
+}
+
+type CarOrderQueryResponseBodyModulePassengerList struct {
+	CostCenterId          *int64  `json:"cost_center_id,omitempty" xml:"cost_center_id,omitempty"`
+	CostCenterName        *string `json:"cost_center_name,omitempty" xml:"cost_center_name,omitempty"`
+	CostCenterNumber      *string `json:"cost_center_number,omitempty" xml:"cost_center_number,omitempty"`
+	ProjectCode           *string `json:"project_code,omitempty" xml:"project_code,omitempty"`
+	ProjectId             *int64  `json:"project_id,omitempty" xml:"project_id,omitempty"`
+	ProjectTitle          *string `json:"project_title,omitempty" xml:"project_title,omitempty"`
+	ThirdpartCostCenterId *string `json:"thirdpart_cost_center_id,omitempty" xml:"thirdpart_cost_center_id,omitempty"`
+	ThirdpartProjectId    *string `json:"thirdpart_project_id,omitempty" xml:"thirdpart_project_id,omitempty"`
+	UserId                *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
+	UserName              *string `json:"user_name,omitempty" xml:"user_name,omitempty"`
+	UserType              *int32  `json:"user_type,omitempty" xml:"user_type,omitempty"`
+}
+
+func (s CarOrderQueryResponseBodyModulePassengerList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CarOrderQueryResponseBodyModulePassengerList) GoString() string {
+	return s.String()
+}
+
+func (s *CarOrderQueryResponseBodyModulePassengerList) SetCostCenterId(v int64) *CarOrderQueryResponseBodyModulePassengerList {
+	s.CostCenterId = &v
+	return s
+}
+
+func (s *CarOrderQueryResponseBodyModulePassengerList) SetCostCenterName(v string) *CarOrderQueryResponseBodyModulePassengerList {
+	s.CostCenterName = &v
+	return s
+}
+
+func (s *CarOrderQueryResponseBodyModulePassengerList) SetCostCenterNumber(v string) *CarOrderQueryResponseBodyModulePassengerList {
+	s.CostCenterNumber = &v
+	return s
+}
+
+func (s *CarOrderQueryResponseBodyModulePassengerList) SetProjectCode(v string) *CarOrderQueryResponseBodyModulePassengerList {
+	s.ProjectCode = &v
+	return s
+}
+
+func (s *CarOrderQueryResponseBodyModulePassengerList) SetProjectId(v int64) *CarOrderQueryResponseBodyModulePassengerList {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *CarOrderQueryResponseBodyModulePassengerList) SetProjectTitle(v string) *CarOrderQueryResponseBodyModulePassengerList {
+	s.ProjectTitle = &v
+	return s
+}
+
+func (s *CarOrderQueryResponseBodyModulePassengerList) SetThirdpartCostCenterId(v string) *CarOrderQueryResponseBodyModulePassengerList {
+	s.ThirdpartCostCenterId = &v
+	return s
+}
+
+func (s *CarOrderQueryResponseBodyModulePassengerList) SetThirdpartProjectId(v string) *CarOrderQueryResponseBodyModulePassengerList {
+	s.ThirdpartProjectId = &v
+	return s
+}
+
+func (s *CarOrderQueryResponseBodyModulePassengerList) SetUserId(v string) *CarOrderQueryResponseBodyModulePassengerList {
+	s.UserId = &v
+	return s
+}
+
+func (s *CarOrderQueryResponseBodyModulePassengerList) SetUserName(v string) *CarOrderQueryResponseBodyModulePassengerList {
+	s.UserName = &v
+	return s
+}
+
+func (s *CarOrderQueryResponseBodyModulePassengerList) SetUserType(v int32) *CarOrderQueryResponseBodyModulePassengerList {
+	s.UserType = &v
+	return s
+}
+
+type CarOrderQueryResponseBodyModulePriceInfoList struct {
+	CategoryCode *int32  `json:"category_code,omitempty" xml:"category_code,omitempty"`
+	GmtCreate    *int64  `json:"gmt_create,omitempty" xml:"gmt_create,omitempty"`
+	PayType      *int32  `json:"pay_type,omitempty" xml:"pay_type,omitempty"`
+	PersonPrice  *int64  `json:"person_price,omitempty" xml:"person_price,omitempty"`
+	Price        *int64  `json:"price,omitempty" xml:"price,omitempty"`
+	TradeId      *string `json:"trade_id,omitempty" xml:"trade_id,omitempty"`
+	Type         *int32  `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s CarOrderQueryResponseBodyModulePriceInfoList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CarOrderQueryResponseBodyModulePriceInfoList) GoString() string {
+	return s.String()
+}
+
+func (s *CarOrderQueryResponseBodyModulePriceInfoList) SetCategoryCode(v int32) *CarOrderQueryResponseBodyModulePriceInfoList {
+	s.CategoryCode = &v
+	return s
+}
+
+func (s *CarOrderQueryResponseBodyModulePriceInfoList) SetGmtCreate(v int64) *CarOrderQueryResponseBodyModulePriceInfoList {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *CarOrderQueryResponseBodyModulePriceInfoList) SetPayType(v int32) *CarOrderQueryResponseBodyModulePriceInfoList {
+	s.PayType = &v
+	return s
+}
+
+func (s *CarOrderQueryResponseBodyModulePriceInfoList) SetPersonPrice(v int64) *CarOrderQueryResponseBodyModulePriceInfoList {
+	s.PersonPrice = &v
+	return s
+}
+
+func (s *CarOrderQueryResponseBodyModulePriceInfoList) SetPrice(v int64) *CarOrderQueryResponseBodyModulePriceInfoList {
+	s.Price = &v
+	return s
+}
+
+func (s *CarOrderQueryResponseBodyModulePriceInfoList) SetTradeId(v string) *CarOrderQueryResponseBodyModulePriceInfoList {
+	s.TradeId = &v
+	return s
+}
+
+func (s *CarOrderQueryResponseBodyModulePriceInfoList) SetType(v int32) *CarOrderQueryResponseBodyModulePriceInfoList {
+	s.Type = &v
+	return s
+}
+
+type CarOrderQueryResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CarOrderQueryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CarOrderQueryResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CarOrderQueryResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CarOrderQueryResponse) SetHeaders(v map[string]*string) *CarOrderQueryResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CarOrderQueryResponse) SetStatusCode(v int32) *CarOrderQueryResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CarOrderQueryResponse) SetBody(v *CarOrderQueryResponseBody) *CarOrderQueryResponse {
+	s.Body = v
+	return s
+}
+
 type CitySearchHeaders struct {
 	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	XAcsBtripSoCorpToken *string            `json:"x-acs-btrip-so-corp-token,omitempty" xml:"x-acs-btrip-so-corp-token,omitempty"`
@@ -11738,6 +12316,482 @@ func (s *HotelOrderListQueryResponse) SetBody(v *HotelOrderListQueryResponseBody
 	return s
 }
 
+type HotelOrderQueryHeaders struct {
+	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsBtripSoCorpToken *string            `json:"x-acs-btrip-so-corp-token,omitempty" xml:"x-acs-btrip-so-corp-token,omitempty"`
+}
+
+func (s HotelOrderQueryHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s HotelOrderQueryHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *HotelOrderQueryHeaders) SetCommonHeaders(v map[string]*string) *HotelOrderQueryHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *HotelOrderQueryHeaders) SetXAcsBtripSoCorpToken(v string) *HotelOrderQueryHeaders {
+	s.XAcsBtripSoCorpToken = &v
+	return s
+}
+
+type HotelOrderQueryRequest struct {
+	OrderId *int64 `json:"order_id,omitempty" xml:"order_id,omitempty"`
+}
+
+func (s HotelOrderQueryRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s HotelOrderQueryRequest) GoString() string {
+	return s.String()
+}
+
+func (s *HotelOrderQueryRequest) SetOrderId(v int64) *HotelOrderQueryRequest {
+	s.OrderId = &v
+	return s
+}
+
+type HotelOrderQueryResponseBody struct {
+	Code      *string                            `json:"code,omitempty" xml:"code,omitempty"`
+	Message   *string                            `json:"message,omitempty" xml:"message,omitempty"`
+	Module    *HotelOrderQueryResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
+	RequestId *string                            `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success   *bool                              `json:"success,omitempty" xml:"success,omitempty"`
+	TraceId   *string                            `json:"traceId,omitempty" xml:"traceId,omitempty"`
+}
+
+func (s HotelOrderQueryResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s HotelOrderQueryResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *HotelOrderQueryResponseBody) SetCode(v string) *HotelOrderQueryResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *HotelOrderQueryResponseBody) SetMessage(v string) *HotelOrderQueryResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *HotelOrderQueryResponseBody) SetModule(v *HotelOrderQueryResponseBodyModule) *HotelOrderQueryResponseBody {
+	s.Module = v
+	return s
+}
+
+func (s *HotelOrderQueryResponseBody) SetRequestId(v string) *HotelOrderQueryResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *HotelOrderQueryResponseBody) SetSuccess(v bool) *HotelOrderQueryResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *HotelOrderQueryResponseBody) SetTraceId(v string) *HotelOrderQueryResponseBody {
+	s.TraceId = &v
+	return s
+}
+
+type HotelOrderQueryResponseBodyModule struct {
+	HotelInfo     *HotelOrderQueryResponseBodyModuleHotelInfo       `json:"hotel_info,omitempty" xml:"hotel_info,omitempty" type:"Struct"`
+	InvoiceInfo   *HotelOrderQueryResponseBodyModuleInvoiceInfo     `json:"invoice_info,omitempty" xml:"invoice_info,omitempty" type:"Struct"`
+	OrderBaseInfo *HotelOrderQueryResponseBodyModuleOrderBaseInfo   `json:"order_base_info,omitempty" xml:"order_base_info,omitempty" type:"Struct"`
+	PassengerList []*HotelOrderQueryResponseBodyModulePassengerList `json:"passenger_list,omitempty" xml:"passenger_list,omitempty" type:"Repeated"`
+	PriceInfoList []*HotelOrderQueryResponseBodyModulePriceInfoList `json:"price_info_list,omitempty" xml:"price_info_list,omitempty" type:"Repeated"`
+}
+
+func (s HotelOrderQueryResponseBodyModule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s HotelOrderQueryResponseBodyModule) GoString() string {
+	return s.String()
+}
+
+func (s *HotelOrderQueryResponseBodyModule) SetHotelInfo(v *HotelOrderQueryResponseBodyModuleHotelInfo) *HotelOrderQueryResponseBodyModule {
+	s.HotelInfo = v
+	return s
+}
+
+func (s *HotelOrderQueryResponseBodyModule) SetInvoiceInfo(v *HotelOrderQueryResponseBodyModuleInvoiceInfo) *HotelOrderQueryResponseBodyModule {
+	s.InvoiceInfo = v
+	return s
+}
+
+func (s *HotelOrderQueryResponseBodyModule) SetOrderBaseInfo(v *HotelOrderQueryResponseBodyModuleOrderBaseInfo) *HotelOrderQueryResponseBodyModule {
+	s.OrderBaseInfo = v
+	return s
+}
+
+func (s *HotelOrderQueryResponseBodyModule) SetPassengerList(v []*HotelOrderQueryResponseBodyModulePassengerList) *HotelOrderQueryResponseBodyModule {
+	s.PassengerList = v
+	return s
+}
+
+func (s *HotelOrderQueryResponseBodyModule) SetPriceInfoList(v []*HotelOrderQueryResponseBodyModulePriceInfoList) *HotelOrderQueryResponseBodyModule {
+	s.PriceInfoList = v
+	return s
+}
+
+type HotelOrderQueryResponseBodyModuleHotelInfo struct {
+	CheckIn                    *int64  `json:"check_in,omitempty" xml:"check_in,omitempty"`
+	CheckOut                   *int64  `json:"check_out,omitempty" xml:"check_out,omitempty"`
+	City                       *string `json:"city,omitempty" xml:"city,omitempty"`
+	HotelName                  *string `json:"hotel_name,omitempty" xml:"hotel_name,omitempty"`
+	HotelSupportVatInvoiceType *int32  `json:"hotel_support_vat_invoice_type,omitempty" xml:"hotel_support_vat_invoice_type,omitempty"`
+	Night                      *int32  `json:"night,omitempty" xml:"night,omitempty"`
+	RoomNum                    *int32  `json:"room_num,omitempty" xml:"room_num,omitempty"`
+	RoomType                   *string `json:"room_type,omitempty" xml:"room_type,omitempty"`
+}
+
+func (s HotelOrderQueryResponseBodyModuleHotelInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s HotelOrderQueryResponseBodyModuleHotelInfo) GoString() string {
+	return s.String()
+}
+
+func (s *HotelOrderQueryResponseBodyModuleHotelInfo) SetCheckIn(v int64) *HotelOrderQueryResponseBodyModuleHotelInfo {
+	s.CheckIn = &v
+	return s
+}
+
+func (s *HotelOrderQueryResponseBodyModuleHotelInfo) SetCheckOut(v int64) *HotelOrderQueryResponseBodyModuleHotelInfo {
+	s.CheckOut = &v
+	return s
+}
+
+func (s *HotelOrderQueryResponseBodyModuleHotelInfo) SetCity(v string) *HotelOrderQueryResponseBodyModuleHotelInfo {
+	s.City = &v
+	return s
+}
+
+func (s *HotelOrderQueryResponseBodyModuleHotelInfo) SetHotelName(v string) *HotelOrderQueryResponseBodyModuleHotelInfo {
+	s.HotelName = &v
+	return s
+}
+
+func (s *HotelOrderQueryResponseBodyModuleHotelInfo) SetHotelSupportVatInvoiceType(v int32) *HotelOrderQueryResponseBodyModuleHotelInfo {
+	s.HotelSupportVatInvoiceType = &v
+	return s
+}
+
+func (s *HotelOrderQueryResponseBodyModuleHotelInfo) SetNight(v int32) *HotelOrderQueryResponseBodyModuleHotelInfo {
+	s.Night = &v
+	return s
+}
+
+func (s *HotelOrderQueryResponseBodyModuleHotelInfo) SetRoomNum(v int32) *HotelOrderQueryResponseBodyModuleHotelInfo {
+	s.RoomNum = &v
+	return s
+}
+
+func (s *HotelOrderQueryResponseBodyModuleHotelInfo) SetRoomType(v string) *HotelOrderQueryResponseBodyModuleHotelInfo {
+	s.RoomType = &v
+	return s
+}
+
+type HotelOrderQueryResponseBodyModuleInvoiceInfo struct {
+	Id    *int64  `json:"id,omitempty" xml:"id,omitempty"`
+	Title *string `json:"title,omitempty" xml:"title,omitempty"`
+}
+
+func (s HotelOrderQueryResponseBodyModuleInvoiceInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s HotelOrderQueryResponseBodyModuleInvoiceInfo) GoString() string {
+	return s.String()
+}
+
+func (s *HotelOrderQueryResponseBodyModuleInvoiceInfo) SetId(v int64) *HotelOrderQueryResponseBodyModuleInvoiceInfo {
+	s.Id = &v
+	return s
+}
+
+func (s *HotelOrderQueryResponseBodyModuleInvoiceInfo) SetTitle(v string) *HotelOrderQueryResponseBodyModuleInvoiceInfo {
+	s.Title = &v
+	return s
+}
+
+type HotelOrderQueryResponseBodyModuleOrderBaseInfo struct {
+	ApplyId              *string `json:"apply_id,omitempty" xml:"apply_id,omitempty"`
+	BtripTitle           *string `json:"btrip_title,omitempty" xml:"btrip_title,omitempty"`
+	CorpId               *string `json:"corp_id,omitempty" xml:"corp_id,omitempty"`
+	CorpName             *string `json:"corp_name,omitempty" xml:"corp_name,omitempty"`
+	DepartId             *string `json:"depart_id,omitempty" xml:"depart_id,omitempty"`
+	DepartName           *string `json:"depart_name,omitempty" xml:"depart_name,omitempty"`
+	GmtCreate            *int64  `json:"gmt_create,omitempty" xml:"gmt_create,omitempty"`
+	GmtModified          *int64  `json:"gmt_modified,omitempty" xml:"gmt_modified,omitempty"`
+	Id                   *int64  `json:"id,omitempty" xml:"id,omitempty"`
+	ItineraryId          *string `json:"itinerary_id,omitempty" xml:"itinerary_id,omitempty"`
+	OrderStatus          *int32  `json:"order_status,omitempty" xml:"order_status,omitempty"`
+	OrderType            *int32  `json:"order_type,omitempty" xml:"order_type,omitempty"`
+	ThirdpartApplyId     *string `json:"thirdpart_apply_id,omitempty" xml:"thirdpart_apply_id,omitempty"`
+	ThirdpartDepartId    *string `json:"thirdpart_depart_id,omitempty" xml:"thirdpart_depart_id,omitempty"`
+	ThirdpartItineraryId *string `json:"thirdpart_itinerary_id,omitempty" xml:"thirdpart_itinerary_id,omitempty"`
+	UserId               *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
+	UserName             *string `json:"user_name,omitempty" xml:"user_name,omitempty"`
+}
+
+func (s HotelOrderQueryResponseBodyModuleOrderBaseInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s HotelOrderQueryResponseBodyModuleOrderBaseInfo) GoString() string {
+	return s.String()
+}
+
+func (s *HotelOrderQueryResponseBodyModuleOrderBaseInfo) SetApplyId(v string) *HotelOrderQueryResponseBodyModuleOrderBaseInfo {
+	s.ApplyId = &v
+	return s
+}
+
+func (s *HotelOrderQueryResponseBodyModuleOrderBaseInfo) SetBtripTitle(v string) *HotelOrderQueryResponseBodyModuleOrderBaseInfo {
+	s.BtripTitle = &v
+	return s
+}
+
+func (s *HotelOrderQueryResponseBodyModuleOrderBaseInfo) SetCorpId(v string) *HotelOrderQueryResponseBodyModuleOrderBaseInfo {
+	s.CorpId = &v
+	return s
+}
+
+func (s *HotelOrderQueryResponseBodyModuleOrderBaseInfo) SetCorpName(v string) *HotelOrderQueryResponseBodyModuleOrderBaseInfo {
+	s.CorpName = &v
+	return s
+}
+
+func (s *HotelOrderQueryResponseBodyModuleOrderBaseInfo) SetDepartId(v string) *HotelOrderQueryResponseBodyModuleOrderBaseInfo {
+	s.DepartId = &v
+	return s
+}
+
+func (s *HotelOrderQueryResponseBodyModuleOrderBaseInfo) SetDepartName(v string) *HotelOrderQueryResponseBodyModuleOrderBaseInfo {
+	s.DepartName = &v
+	return s
+}
+
+func (s *HotelOrderQueryResponseBodyModuleOrderBaseInfo) SetGmtCreate(v int64) *HotelOrderQueryResponseBodyModuleOrderBaseInfo {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *HotelOrderQueryResponseBodyModuleOrderBaseInfo) SetGmtModified(v int64) *HotelOrderQueryResponseBodyModuleOrderBaseInfo {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *HotelOrderQueryResponseBodyModuleOrderBaseInfo) SetId(v int64) *HotelOrderQueryResponseBodyModuleOrderBaseInfo {
+	s.Id = &v
+	return s
+}
+
+func (s *HotelOrderQueryResponseBodyModuleOrderBaseInfo) SetItineraryId(v string) *HotelOrderQueryResponseBodyModuleOrderBaseInfo {
+	s.ItineraryId = &v
+	return s
+}
+
+func (s *HotelOrderQueryResponseBodyModuleOrderBaseInfo) SetOrderStatus(v int32) *HotelOrderQueryResponseBodyModuleOrderBaseInfo {
+	s.OrderStatus = &v
+	return s
+}
+
+func (s *HotelOrderQueryResponseBodyModuleOrderBaseInfo) SetOrderType(v int32) *HotelOrderQueryResponseBodyModuleOrderBaseInfo {
+	s.OrderType = &v
+	return s
+}
+
+func (s *HotelOrderQueryResponseBodyModuleOrderBaseInfo) SetThirdpartApplyId(v string) *HotelOrderQueryResponseBodyModuleOrderBaseInfo {
+	s.ThirdpartApplyId = &v
+	return s
+}
+
+func (s *HotelOrderQueryResponseBodyModuleOrderBaseInfo) SetThirdpartDepartId(v string) *HotelOrderQueryResponseBodyModuleOrderBaseInfo {
+	s.ThirdpartDepartId = &v
+	return s
+}
+
+func (s *HotelOrderQueryResponseBodyModuleOrderBaseInfo) SetThirdpartItineraryId(v string) *HotelOrderQueryResponseBodyModuleOrderBaseInfo {
+	s.ThirdpartItineraryId = &v
+	return s
+}
+
+func (s *HotelOrderQueryResponseBodyModuleOrderBaseInfo) SetUserId(v string) *HotelOrderQueryResponseBodyModuleOrderBaseInfo {
+	s.UserId = &v
+	return s
+}
+
+func (s *HotelOrderQueryResponseBodyModuleOrderBaseInfo) SetUserName(v string) *HotelOrderQueryResponseBodyModuleOrderBaseInfo {
+	s.UserName = &v
+	return s
+}
+
+type HotelOrderQueryResponseBodyModulePassengerList struct {
+	CostCenterId          *int64  `json:"cost_center_id,omitempty" xml:"cost_center_id,omitempty"`
+	CostCenterName        *string `json:"cost_center_name,omitempty" xml:"cost_center_name,omitempty"`
+	CostCenterNumber      *string `json:"cost_center_number,omitempty" xml:"cost_center_number,omitempty"`
+	ProjectCode           *string `json:"project_code,omitempty" xml:"project_code,omitempty"`
+	ProjectId             *int64  `json:"project_id,omitempty" xml:"project_id,omitempty"`
+	ProjectTitle          *string `json:"project_title,omitempty" xml:"project_title,omitempty"`
+	ThirdpartCostCenterId *string `json:"thirdpart_cost_center_id,omitempty" xml:"thirdpart_cost_center_id,omitempty"`
+	ThirdpartProjectId    *string `json:"thirdpart_project_id,omitempty" xml:"thirdpart_project_id,omitempty"`
+	UserId                *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
+	UserName              *string `json:"user_name,omitempty" xml:"user_name,omitempty"`
+	UserType              *int32  `json:"user_type,omitempty" xml:"user_type,omitempty"`
+}
+
+func (s HotelOrderQueryResponseBodyModulePassengerList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s HotelOrderQueryResponseBodyModulePassengerList) GoString() string {
+	return s.String()
+}
+
+func (s *HotelOrderQueryResponseBodyModulePassengerList) SetCostCenterId(v int64) *HotelOrderQueryResponseBodyModulePassengerList {
+	s.CostCenterId = &v
+	return s
+}
+
+func (s *HotelOrderQueryResponseBodyModulePassengerList) SetCostCenterName(v string) *HotelOrderQueryResponseBodyModulePassengerList {
+	s.CostCenterName = &v
+	return s
+}
+
+func (s *HotelOrderQueryResponseBodyModulePassengerList) SetCostCenterNumber(v string) *HotelOrderQueryResponseBodyModulePassengerList {
+	s.CostCenterNumber = &v
+	return s
+}
+
+func (s *HotelOrderQueryResponseBodyModulePassengerList) SetProjectCode(v string) *HotelOrderQueryResponseBodyModulePassengerList {
+	s.ProjectCode = &v
+	return s
+}
+
+func (s *HotelOrderQueryResponseBodyModulePassengerList) SetProjectId(v int64) *HotelOrderQueryResponseBodyModulePassengerList {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *HotelOrderQueryResponseBodyModulePassengerList) SetProjectTitle(v string) *HotelOrderQueryResponseBodyModulePassengerList {
+	s.ProjectTitle = &v
+	return s
+}
+
+func (s *HotelOrderQueryResponseBodyModulePassengerList) SetThirdpartCostCenterId(v string) *HotelOrderQueryResponseBodyModulePassengerList {
+	s.ThirdpartCostCenterId = &v
+	return s
+}
+
+func (s *HotelOrderQueryResponseBodyModulePassengerList) SetThirdpartProjectId(v string) *HotelOrderQueryResponseBodyModulePassengerList {
+	s.ThirdpartProjectId = &v
+	return s
+}
+
+func (s *HotelOrderQueryResponseBodyModulePassengerList) SetUserId(v string) *HotelOrderQueryResponseBodyModulePassengerList {
+	s.UserId = &v
+	return s
+}
+
+func (s *HotelOrderQueryResponseBodyModulePassengerList) SetUserName(v string) *HotelOrderQueryResponseBodyModulePassengerList {
+	s.UserName = &v
+	return s
+}
+
+func (s *HotelOrderQueryResponseBodyModulePassengerList) SetUserType(v int32) *HotelOrderQueryResponseBodyModulePassengerList {
+	s.UserType = &v
+	return s
+}
+
+type HotelOrderQueryResponseBodyModulePriceInfoList struct {
+	CategoryCode *int32   `json:"category_code,omitempty" xml:"category_code,omitempty"`
+	GmtCreate    *int64   `json:"gmt_create,omitempty" xml:"gmt_create,omitempty"`
+	PayType      *int32   `json:"pay_type,omitempty" xml:"pay_type,omitempty"`
+	Price        *float64 `json:"price,omitempty" xml:"price,omitempty"`
+	TradeId      *string  `json:"trade_id,omitempty" xml:"trade_id,omitempty"`
+	Type         *int32   `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s HotelOrderQueryResponseBodyModulePriceInfoList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s HotelOrderQueryResponseBodyModulePriceInfoList) GoString() string {
+	return s.String()
+}
+
+func (s *HotelOrderQueryResponseBodyModulePriceInfoList) SetCategoryCode(v int32) *HotelOrderQueryResponseBodyModulePriceInfoList {
+	s.CategoryCode = &v
+	return s
+}
+
+func (s *HotelOrderQueryResponseBodyModulePriceInfoList) SetGmtCreate(v int64) *HotelOrderQueryResponseBodyModulePriceInfoList {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *HotelOrderQueryResponseBodyModulePriceInfoList) SetPayType(v int32) *HotelOrderQueryResponseBodyModulePriceInfoList {
+	s.PayType = &v
+	return s
+}
+
+func (s *HotelOrderQueryResponseBodyModulePriceInfoList) SetPrice(v float64) *HotelOrderQueryResponseBodyModulePriceInfoList {
+	s.Price = &v
+	return s
+}
+
+func (s *HotelOrderQueryResponseBodyModulePriceInfoList) SetTradeId(v string) *HotelOrderQueryResponseBodyModulePriceInfoList {
+	s.TradeId = &v
+	return s
+}
+
+func (s *HotelOrderQueryResponseBodyModulePriceInfoList) SetType(v int32) *HotelOrderQueryResponseBodyModulePriceInfoList {
+	s.Type = &v
+	return s
+}
+
+type HotelOrderQueryResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *HotelOrderQueryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s HotelOrderQueryResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s HotelOrderQueryResponse) GoString() string {
+	return s.String()
+}
+
+func (s *HotelOrderQueryResponse) SetHeaders(v map[string]*string) *HotelOrderQueryResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *HotelOrderQueryResponse) SetStatusCode(v int32) *HotelOrderQueryResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *HotelOrderQueryResponse) SetBody(v *HotelOrderQueryResponseBody) *HotelOrderQueryResponse {
+	s.Body = v
+	return s
+}
+
 type IeFlightBillSettlementQueryHeaders struct {
 	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	XAcsBtripSoCorpToken *string            `json:"x-acs-btrip-so-corp-token,omitempty" xml:"x-acs-btrip-so-corp-token,omitempty"`
@@ -16682,12 +17736,12 @@ func (client *Client) ApplyAddWithOptions(tmpReq *ApplyAddRequest, headers *Appl
 		request.ExternalTravelerListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ExternalTravelerList, tea.String("external_traveler_list"), tea.String("json"))
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.ExternalTravelerStandard))) {
-		request.ExternalTravelerStandardShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.ExternalTravelerStandard), tea.String("external_traveler_standard"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.ExternalTravelerStandard)) {
+		request.ExternalTravelerStandardShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ExternalTravelerStandard, tea.String("external_traveler_standard"), tea.String("json"))
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.HotelShare))) {
-		request.HotelShareShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.HotelShare), tea.String("hotel_share"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.HotelShare)) {
+		request.HotelShareShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.HotelShare, tea.String("hotel_share"), tea.String("json"))
 	}
 
 	if !tea.BoolValue(util.IsUnset(tmpReq.ItineraryList)) {
@@ -17059,12 +18113,12 @@ func (client *Client) ApplyModifyWithOptions(tmpReq *ApplyModifyRequest, headers
 		request.ExternalTravelerListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ExternalTravelerList, tea.String("external_traveler_list"), tea.String("json"))
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.ExternalTravelerStandard))) {
-		request.ExternalTravelerStandardShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.ExternalTravelerStandard), tea.String("external_traveler_standard"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.ExternalTravelerStandard)) {
+		request.ExternalTravelerStandardShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ExternalTravelerStandard, tea.String("external_traveler_standard"), tea.String("json"))
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.HotelShare))) {
-		request.HotelShareShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.HotelShare), tea.String("hotel_share"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.HotelShare)) {
+		request.HotelShareShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.HotelShare, tea.String("hotel_share"), tea.String("json"))
 	}
 
 	if !tea.BoolValue(util.IsUnset(tmpReq.ItineraryList)) {
@@ -17711,6 +18765,65 @@ func (client *Client) CarOrderListQueryWithOptions(request *CarOrderListQueryReq
 		BodyType:    tea.String("json"),
 	}
 	_result = &CarOrderListQueryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CarOrderQuery(request *CarOrderQueryRequest) (_result *CarOrderQueryResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &CarOrderQueryHeaders{}
+	_result = &CarOrderQueryResponse{}
+	_body, _err := client.CarOrderQueryWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CarOrderQueryWithOptions(request *CarOrderQueryRequest, headers *CarOrderQueryHeaders, runtime *util.RuntimeOptions) (_result *CarOrderQueryResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OrderId)) {
+		query["order_id"] = request.OrderId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SubOrderId)) {
+		query["sub_order_id"] = request.SubOrderId
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsBtripSoCorpToken)) {
+		realHeaders["x-acs-btrip-so-corp-token"] = util.ToJSONString(headers.XAcsBtripSoCorpToken)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CarOrderQuery"),
+		Version:     tea.String("2022-05-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/car/v1/order"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CarOrderQueryResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -19061,6 +20174,61 @@ func (client *Client) HotelOrderListQueryWithOptions(request *HotelOrderListQuer
 		BodyType:    tea.String("json"),
 	}
 	_result = &HotelOrderListQueryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) HotelOrderQuery(request *HotelOrderQueryRequest) (_result *HotelOrderQueryResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &HotelOrderQueryHeaders{}
+	_result = &HotelOrderQueryResponse{}
+	_body, _err := client.HotelOrderQueryWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) HotelOrderQueryWithOptions(request *HotelOrderQueryRequest, headers *HotelOrderQueryHeaders, runtime *util.RuntimeOptions) (_result *HotelOrderQueryResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OrderId)) {
+		query["order_id"] = request.OrderId
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsBtripSoCorpToken)) {
+		realHeaders["x-acs-btrip-so-corp-token"] = util.ToJSONString(headers.XAcsBtripSoCorpToken)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("HotelOrderQuery"),
+		Version:     tea.String("2022-05-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/hotel/v1/order"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &HotelOrderQueryResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
