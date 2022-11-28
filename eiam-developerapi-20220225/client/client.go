@@ -140,17 +140,19 @@ func (s *CreateUserHeaders) SetAuthorization(v string) *CreateUserHeaders {
 }
 
 type CreateUserRequest struct {
-	Description                 *string `json:"description,omitempty" xml:"description,omitempty"`
-	DisplayName                 *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
-	Email                       *string `json:"email,omitempty" xml:"email,omitempty"`
-	EmailVerified               *bool   `json:"emailVerified,omitempty" xml:"emailVerified,omitempty"`
-	Password                    *string `json:"password,omitempty" xml:"password,omitempty"`
-	PhoneNumber                 *string `json:"phoneNumber,omitempty" xml:"phoneNumber,omitempty"`
-	PhoneNumberVerified         *bool   `json:"phoneNumberVerified,omitempty" xml:"phoneNumberVerified,omitempty"`
-	PhoneRegion                 *string `json:"phoneRegion,omitempty" xml:"phoneRegion,omitempty"`
-	PrimaryOrganizationalUnitId *string `json:"primaryOrganizationalUnitId,omitempty" xml:"primaryOrganizationalUnitId,omitempty"`
-	UserExternalId              *string `json:"userExternalId,omitempty" xml:"userExternalId,omitempty"`
-	Username                    *string `json:"username,omitempty" xml:"username,omitempty"`
+	CustomFields                 []*CreateUserRequestCustomFields               `json:"customFields,omitempty" xml:"customFields,omitempty" type:"Repeated"`
+	Description                  *string                                        `json:"description,omitempty" xml:"description,omitempty"`
+	DisplayName                  *string                                        `json:"displayName,omitempty" xml:"displayName,omitempty"`
+	Email                        *string                                        `json:"email,omitempty" xml:"email,omitempty"`
+	EmailVerified                *bool                                          `json:"emailVerified,omitempty" xml:"emailVerified,omitempty"`
+	Password                     *string                                        `json:"password,omitempty" xml:"password,omitempty"`
+	PasswordInitializationConfig *CreateUserRequestPasswordInitializationConfig `json:"passwordInitializationConfig,omitempty" xml:"passwordInitializationConfig,omitempty" type:"Struct"`
+	PhoneNumber                  *string                                        `json:"phoneNumber,omitempty" xml:"phoneNumber,omitempty"`
+	PhoneNumberVerified          *bool                                          `json:"phoneNumberVerified,omitempty" xml:"phoneNumberVerified,omitempty"`
+	PhoneRegion                  *string                                        `json:"phoneRegion,omitempty" xml:"phoneRegion,omitempty"`
+	PrimaryOrganizationalUnitId  *string                                        `json:"primaryOrganizationalUnitId,omitempty" xml:"primaryOrganizationalUnitId,omitempty"`
+	UserExternalId               *string                                        `json:"userExternalId,omitempty" xml:"userExternalId,omitempty"`
+	Username                     *string                                        `json:"username,omitempty" xml:"username,omitempty"`
 }
 
 func (s CreateUserRequest) String() string {
@@ -159,6 +161,11 @@ func (s CreateUserRequest) String() string {
 
 func (s CreateUserRequest) GoString() string {
 	return s.String()
+}
+
+func (s *CreateUserRequest) SetCustomFields(v []*CreateUserRequestCustomFields) *CreateUserRequest {
+	s.CustomFields = v
+	return s
 }
 
 func (s *CreateUserRequest) SetDescription(v string) *CreateUserRequest {
@@ -183,6 +190,11 @@ func (s *CreateUserRequest) SetEmailVerified(v bool) *CreateUserRequest {
 
 func (s *CreateUserRequest) SetPassword(v string) *CreateUserRequest {
 	s.Password = &v
+	return s
+}
+
+func (s *CreateUserRequest) SetPasswordInitializationConfig(v *CreateUserRequestPasswordInitializationConfig) *CreateUserRequest {
+	s.PasswordInitializationConfig = v
 	return s
 }
 
@@ -213,6 +225,64 @@ func (s *CreateUserRequest) SetUserExternalId(v string) *CreateUserRequest {
 
 func (s *CreateUserRequest) SetUsername(v string) *CreateUserRequest {
 	s.Username = &v
+	return s
+}
+
+type CreateUserRequestCustomFields struct {
+	FieldName  *string `json:"fieldName,omitempty" xml:"fieldName,omitempty"`
+	FieldValue *string `json:"fieldValue,omitempty" xml:"fieldValue,omitempty"`
+}
+
+func (s CreateUserRequestCustomFields) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateUserRequestCustomFields) GoString() string {
+	return s.String()
+}
+
+func (s *CreateUserRequestCustomFields) SetFieldName(v string) *CreateUserRequestCustomFields {
+	s.FieldName = &v
+	return s
+}
+
+func (s *CreateUserRequestCustomFields) SetFieldValue(v string) *CreateUserRequestCustomFields {
+	s.FieldValue = &v
+	return s
+}
+
+type CreateUserRequestPasswordInitializationConfig struct {
+	PasswordForcedUpdateStatus           *string   `json:"passwordForcedUpdateStatus,omitempty" xml:"passwordForcedUpdateStatus,omitempty"`
+	PasswordInitializationPolicyPriority *string   `json:"passwordInitializationPolicyPriority,omitempty" xml:"passwordInitializationPolicyPriority,omitempty"`
+	PasswordInitializationType           *string   `json:"passwordInitializationType,omitempty" xml:"passwordInitializationType,omitempty"`
+	UserNotificationChannels             []*string `json:"userNotificationChannels,omitempty" xml:"userNotificationChannels,omitempty" type:"Repeated"`
+}
+
+func (s CreateUserRequestPasswordInitializationConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateUserRequestPasswordInitializationConfig) GoString() string {
+	return s.String()
+}
+
+func (s *CreateUserRequestPasswordInitializationConfig) SetPasswordForcedUpdateStatus(v string) *CreateUserRequestPasswordInitializationConfig {
+	s.PasswordForcedUpdateStatus = &v
+	return s
+}
+
+func (s *CreateUserRequestPasswordInitializationConfig) SetPasswordInitializationPolicyPriority(v string) *CreateUserRequestPasswordInitializationConfig {
+	s.PasswordInitializationPolicyPriority = &v
+	return s
+}
+
+func (s *CreateUserRequestPasswordInitializationConfig) SetPasswordInitializationType(v string) *CreateUserRequestPasswordInitializationConfig {
+	s.PasswordInitializationType = &v
+	return s
+}
+
+func (s *CreateUserRequestPasswordInitializationConfig) SetUserNotificationChannels(v []*string) *CreateUserRequestPasswordInitializationConfig {
+	s.UserNotificationChannels = v
 	return s
 }
 
@@ -350,6 +420,98 @@ func (s *DeleteUserResponse) SetHeaders(v map[string]*string) *DeleteUserRespons
 }
 
 func (s *DeleteUserResponse) SetStatusCode(v int32) *DeleteUserResponse {
+	s.StatusCode = &v
+	return s
+}
+
+type DisableUserHeaders struct {
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	Authorization *string            `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
+}
+
+func (s DisableUserHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DisableUserHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *DisableUserHeaders) SetCommonHeaders(v map[string]*string) *DisableUserHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *DisableUserHeaders) SetAuthorization(v string) *DisableUserHeaders {
+	s.Authorization = &v
+	return s
+}
+
+type DisableUserResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+}
+
+func (s DisableUserResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DisableUserResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DisableUserResponse) SetHeaders(v map[string]*string) *DisableUserResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DisableUserResponse) SetStatusCode(v int32) *DisableUserResponse {
+	s.StatusCode = &v
+	return s
+}
+
+type EnableUserHeaders struct {
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	Authorization *string            `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
+}
+
+func (s EnableUserHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EnableUserHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *EnableUserHeaders) SetCommonHeaders(v map[string]*string) *EnableUserHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *EnableUserHeaders) SetAuthorization(v string) *EnableUserHeaders {
+	s.Authorization = &v
+	return s
+}
+
+type EnableUserResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+}
+
+func (s EnableUserResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EnableUserResponse) GoString() string {
+	return s.String()
+}
+
+func (s *EnableUserResponse) SetHeaders(v map[string]*string) *EnableUserResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *EnableUserResponse) SetStatusCode(v int32) *EnableUserResponse {
 	s.StatusCode = &v
 	return s
 }
@@ -928,6 +1090,7 @@ func (s *GetUserHeaders) SetAuthorization(v string) *GetUserHeaders {
 type GetUserResponseBody struct {
 	AccountExpireTime           *int64                                    `json:"accountExpireTime,omitempty" xml:"accountExpireTime,omitempty"`
 	CreateTime                  *int64                                    `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	CustomFields                []*GetUserResponseBodyCustomFields        `json:"customFields,omitempty" xml:"customFields,omitempty" type:"Repeated"`
 	Description                 *string                                   `json:"description,omitempty" xml:"description,omitempty"`
 	DisplayName                 *string                                   `json:"displayName,omitempty" xml:"displayName,omitempty"`
 	Email                       *string                                   `json:"email,omitempty" xml:"email,omitempty"`
@@ -935,6 +1098,7 @@ type GetUserResponseBody struct {
 	InstanceId                  *string                                   `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
 	LockExpireTime              *int64                                    `json:"lockExpireTime,omitempty" xml:"lockExpireTime,omitempty"`
 	OrganizationalUnits         []*GetUserResponseBodyOrganizationalUnits `json:"organizationalUnits,omitempty" xml:"organizationalUnits,omitempty" type:"Repeated"`
+	PasswordSet                 *bool                                     `json:"passwordSet,omitempty" xml:"passwordSet,omitempty"`
 	PhoneNumber                 *string                                   `json:"phoneNumber,omitempty" xml:"phoneNumber,omitempty"`
 	PhoneNumberVerified         *bool                                     `json:"phoneNumberVerified,omitempty" xml:"phoneNumberVerified,omitempty"`
 	PhoneRegion                 *string                                   `json:"phoneRegion,omitempty" xml:"phoneRegion,omitempty"`
@@ -964,6 +1128,11 @@ func (s *GetUserResponseBody) SetAccountExpireTime(v int64) *GetUserResponseBody
 
 func (s *GetUserResponseBody) SetCreateTime(v int64) *GetUserResponseBody {
 	s.CreateTime = &v
+	return s
+}
+
+func (s *GetUserResponseBody) SetCustomFields(v []*GetUserResponseBodyCustomFields) *GetUserResponseBody {
+	s.CustomFields = v
 	return s
 }
 
@@ -999,6 +1168,11 @@ func (s *GetUserResponseBody) SetLockExpireTime(v int64) *GetUserResponseBody {
 
 func (s *GetUserResponseBody) SetOrganizationalUnits(v []*GetUserResponseBodyOrganizationalUnits) *GetUserResponseBody {
 	s.OrganizationalUnits = v
+	return s
+}
+
+func (s *GetUserResponseBody) SetPasswordSet(v bool) *GetUserResponseBody {
+	s.PasswordSet = &v
 	return s
 }
 
@@ -1059,6 +1233,29 @@ func (s *GetUserResponseBody) SetUserSourceType(v string) *GetUserResponseBody {
 
 func (s *GetUserResponseBody) SetUsername(v string) *GetUserResponseBody {
 	s.Username = &v
+	return s
+}
+
+type GetUserResponseBodyCustomFields struct {
+	FieldName  *string `json:"fieldName,omitempty" xml:"fieldName,omitempty"`
+	FieldValue *string `json:"fieldValue,omitempty" xml:"fieldValue,omitempty"`
+}
+
+func (s GetUserResponseBodyCustomFields) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUserResponseBodyCustomFields) GoString() string {
+	return s.String()
+}
+
+func (s *GetUserResponseBodyCustomFields) SetFieldName(v string) *GetUserResponseBodyCustomFields {
+	s.FieldName = &v
+	return s
+}
+
+func (s *GetUserResponseBodyCustomFields) SetFieldValue(v string) *GetUserResponseBodyCustomFields {
+	s.FieldValue = &v
 	return s
 }
 
@@ -1856,6 +2053,7 @@ type ListUsersResponseBodyData struct {
 	EmailVerified       *bool   `json:"emailVerified,omitempty" xml:"emailVerified,omitempty"`
 	InstanceId          *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
 	LockExpireTime      *int64  `json:"lockExpireTime,omitempty" xml:"lockExpireTime,omitempty"`
+	PasswordSet         *bool   `json:"passwordSet,omitempty" xml:"passwordSet,omitempty"`
 	PhoneNumber         *string `json:"phoneNumber,omitempty" xml:"phoneNumber,omitempty"`
 	PhoneNumberVerified *bool   `json:"phoneNumberVerified,omitempty" xml:"phoneNumberVerified,omitempty"`
 	PhoneRegion         *string `json:"phoneRegion,omitempty" xml:"phoneRegion,omitempty"`
@@ -1914,6 +2112,11 @@ func (s *ListUsersResponseBodyData) SetInstanceId(v string) *ListUsersResponseBo
 
 func (s *ListUsersResponseBodyData) SetLockExpireTime(v int64) *ListUsersResponseBodyData {
 	s.LockExpireTime = &v
+	return s
+}
+
+func (s *ListUsersResponseBodyData) SetPasswordSet(v bool) *ListUsersResponseBodyData {
+	s.PasswordSet = &v
 	return s
 }
 
@@ -2094,13 +2297,14 @@ func (s *PatchUserHeaders) SetAuthorization(v string) *PatchUserHeaders {
 }
 
 type PatchUserRequest struct {
-	DisplayName         *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
-	Email               *string `json:"email,omitempty" xml:"email,omitempty"`
-	EmailVerified       *bool   `json:"emailVerified,omitempty" xml:"emailVerified,omitempty"`
-	PhoneNumber         *string `json:"phoneNumber,omitempty" xml:"phoneNumber,omitempty"`
-	PhoneNumberVerified *bool   `json:"phoneNumberVerified,omitempty" xml:"phoneNumberVerified,omitempty"`
-	PhoneRegion         *string `json:"phoneRegion,omitempty" xml:"phoneRegion,omitempty"`
-	Username            *string `json:"username,omitempty" xml:"username,omitempty"`
+	CustomFields        []*PatchUserRequestCustomFields `json:"customFields,omitempty" xml:"customFields,omitempty" type:"Repeated"`
+	DisplayName         *string                         `json:"displayName,omitempty" xml:"displayName,omitempty"`
+	Email               *string                         `json:"email,omitempty" xml:"email,omitempty"`
+	EmailVerified       *bool                           `json:"emailVerified,omitempty" xml:"emailVerified,omitempty"`
+	PhoneNumber         *string                         `json:"phoneNumber,omitempty" xml:"phoneNumber,omitempty"`
+	PhoneNumberVerified *bool                           `json:"phoneNumberVerified,omitempty" xml:"phoneNumberVerified,omitempty"`
+	PhoneRegion         *string                         `json:"phoneRegion,omitempty" xml:"phoneRegion,omitempty"`
+	Username            *string                         `json:"username,omitempty" xml:"username,omitempty"`
 }
 
 func (s PatchUserRequest) String() string {
@@ -2109,6 +2313,11 @@ func (s PatchUserRequest) String() string {
 
 func (s PatchUserRequest) GoString() string {
 	return s.String()
+}
+
+func (s *PatchUserRequest) SetCustomFields(v []*PatchUserRequestCustomFields) *PatchUserRequest {
+	s.CustomFields = v
+	return s
 }
 
 func (s *PatchUserRequest) SetDisplayName(v string) *PatchUserRequest {
@@ -2143,6 +2352,35 @@ func (s *PatchUserRequest) SetPhoneRegion(v string) *PatchUserRequest {
 
 func (s *PatchUserRequest) SetUsername(v string) *PatchUserRequest {
 	s.Username = &v
+	return s
+}
+
+type PatchUserRequestCustomFields struct {
+	FieldName  *string `json:"fieldName,omitempty" xml:"fieldName,omitempty"`
+	FieldValue *string `json:"fieldValue,omitempty" xml:"fieldValue,omitempty"`
+	Operator   *string `json:"operator,omitempty" xml:"operator,omitempty"`
+}
+
+func (s PatchUserRequestCustomFields) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PatchUserRequestCustomFields) GoString() string {
+	return s.String()
+}
+
+func (s *PatchUserRequestCustomFields) SetFieldName(v string) *PatchUserRequestCustomFields {
+	s.FieldName = &v
+	return s
+}
+
+func (s *PatchUserRequestCustomFields) SetFieldValue(v string) *PatchUserRequestCustomFields {
+	s.FieldValue = &v
+	return s
+}
+
+func (s *PatchUserRequestCustomFields) SetOperator(v string) *PatchUserRequestCustomFields {
+	s.Operator = &v
 	return s
 }
 
@@ -2366,6 +2604,10 @@ func (client *Client) CreateUserWithOptions(instanceId *string, applicationId *s
 		return _result, _err
 	}
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CustomFields)) {
+		body["customFields"] = request.CustomFields
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Description)) {
 		body["description"] = request.Description
 	}
@@ -2384,6 +2626,10 @@ func (client *Client) CreateUserWithOptions(instanceId *string, applicationId *s
 
 	if !tea.BoolValue(util.IsUnset(request.Password)) {
 		body["password"] = request.Password
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PasswordInitializationConfig)) {
+		body["passwordInitializationConfig"] = request.PasswordInitializationConfig
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.PhoneNumber)) {
@@ -2525,6 +2771,96 @@ func (client *Client) DeleteUserWithOptions(instanceId *string, applicationId *s
 		BodyType:    tea.String("none"),
 	}
 	_result = &DeleteUserResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DisableUser(instanceId *string, applicationId *string, userId *string) (_result *DisableUserResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &DisableUserHeaders{}
+	_result = &DisableUserResponse{}
+	_body, _err := client.DisableUserWithOptions(instanceId, applicationId, userId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DisableUserWithOptions(instanceId *string, applicationId *string, userId *string, headers *DisableUserHeaders, runtime *util.RuntimeOptions) (_result *DisableUserResponse, _err error) {
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.Authorization)) {
+		realHeaders["Authorization"] = util.ToJSONString(headers.Authorization)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DisableUser"),
+		Version:     tea.String("2022-02-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v2/" + tea.StringValue(openapiutil.GetEncodeParam(instanceId)) + "/" + tea.StringValue(openapiutil.GetEncodeParam(applicationId)) + "/users/" + tea.StringValue(openapiutil.GetEncodeParam(userId)) + "/actions/disable"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("Anonymous"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
+	_result = &DisableUserResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) EnableUser(instanceId *string, applicationId *string, userId *string) (_result *EnableUserResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &EnableUserHeaders{}
+	_result = &EnableUserResponse{}
+	_body, _err := client.EnableUserWithOptions(instanceId, applicationId, userId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) EnableUserWithOptions(instanceId *string, applicationId *string, userId *string, headers *EnableUserHeaders, runtime *util.RuntimeOptions) (_result *EnableUserResponse, _err error) {
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.Authorization)) {
+		realHeaders["Authorization"] = util.ToJSONString(headers.Authorization)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("EnableUser"),
+		Version:     tea.String("2022-02-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v2/" + tea.StringValue(openapiutil.GetEncodeParam(instanceId)) + "/" + tea.StringValue(openapiutil.GetEncodeParam(applicationId)) + "/users/" + tea.StringValue(openapiutil.GetEncodeParam(userId)) + "/actions/enable"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("Anonymous"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
+	_result = &EnableUserResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -3388,6 +3724,10 @@ func (client *Client) PatchUserWithOptions(instanceId *string, applicationId *st
 		return _result, _err
 	}
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CustomFields)) {
+		body["customFields"] = request.CustomFields
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.DisplayName)) {
 		body["displayName"] = request.DisplayName
 	}
