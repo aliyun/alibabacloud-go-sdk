@@ -11259,6 +11259,7 @@ func (s *GetImportFileUrlResponse) SetBody(v *GetImportFileUrlResponseBody) *Get
 type GetKubernetesSourceRequest struct {
 	AcceptLanguage  *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
+	VpcId           *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s GetKubernetesSourceRequest) String() string {
@@ -11276,6 +11277,11 @@ func (s *GetKubernetesSourceRequest) SetAcceptLanguage(v string) *GetKubernetesS
 
 func (s *GetKubernetesSourceRequest) SetGatewayUniqueId(v string) *GetKubernetesSourceRequest {
 	s.GatewayUniqueId = &v
+	return s
+}
+
+func (s *GetKubernetesSourceRequest) SetVpcId(v string) *GetKubernetesSourceRequest {
+	s.VpcId = &v
 	return s
 }
 
@@ -20377,6 +20383,266 @@ func (s *ListTagResourcesResponse) SetStatusCode(v int32) *ListTagResourcesRespo
 }
 
 func (s *ListTagResourcesResponse) SetBody(v *ListTagResourcesResponseBody) *ListTagResourcesResponse {
+	s.Body = v
+	return s
+}
+
+type ListZkTrackRequest struct {
+	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	EndTs          *int64  `json:"EndTs,omitempty" xml:"EndTs,omitempty"`
+	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	PageNum        *int64  `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	PageSize       *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Path           *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	RequestPars    *string `json:"RequestPars,omitempty" xml:"RequestPars,omitempty"`
+	Reverse        *bool   `json:"Reverse,omitempty" xml:"Reverse,omitempty"`
+	SessionId      *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	StartTs        *int64  `json:"StartTs,omitempty" xml:"StartTs,omitempty"`
+}
+
+func (s ListZkTrackRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListZkTrackRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListZkTrackRequest) SetAcceptLanguage(v string) *ListZkTrackRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *ListZkTrackRequest) SetEndTs(v int64) *ListZkTrackRequest {
+	s.EndTs = &v
+	return s
+}
+
+func (s *ListZkTrackRequest) SetInstanceId(v string) *ListZkTrackRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListZkTrackRequest) SetPageNum(v int64) *ListZkTrackRequest {
+	s.PageNum = &v
+	return s
+}
+
+func (s *ListZkTrackRequest) SetPageSize(v int64) *ListZkTrackRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListZkTrackRequest) SetPath(v string) *ListZkTrackRequest {
+	s.Path = &v
+	return s
+}
+
+func (s *ListZkTrackRequest) SetRequestPars(v string) *ListZkTrackRequest {
+	s.RequestPars = &v
+	return s
+}
+
+func (s *ListZkTrackRequest) SetReverse(v bool) *ListZkTrackRequest {
+	s.Reverse = &v
+	return s
+}
+
+func (s *ListZkTrackRequest) SetSessionId(v string) *ListZkTrackRequest {
+	s.SessionId = &v
+	return s
+}
+
+func (s *ListZkTrackRequest) SetStartTs(v int64) *ListZkTrackRequest {
+	s.StartTs = &v
+	return s
+}
+
+type ListZkTrackResponseBody struct {
+	ErrorCode  *string                          `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	HttpCode   *string                          `json:"HttpCode,omitempty" xml:"HttpCode,omitempty"`
+	Message    *string                          `json:"Message,omitempty" xml:"Message,omitempty"`
+	PageNumber *int64                           `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int64                           `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId  *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success    *bool                            `json:"Success,omitempty" xml:"Success,omitempty"`
+	TotalCount *int64                           `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	Traces     []*ListZkTrackResponseBodyTraces `json:"Traces,omitempty" xml:"Traces,omitempty" type:"Repeated"`
+}
+
+func (s ListZkTrackResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListZkTrackResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListZkTrackResponseBody) SetErrorCode(v string) *ListZkTrackResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ListZkTrackResponseBody) SetHttpCode(v string) *ListZkTrackResponseBody {
+	s.HttpCode = &v
+	return s
+}
+
+func (s *ListZkTrackResponseBody) SetMessage(v string) *ListZkTrackResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListZkTrackResponseBody) SetPageNumber(v int64) *ListZkTrackResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListZkTrackResponseBody) SetPageSize(v int64) *ListZkTrackResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListZkTrackResponseBody) SetRequestId(v string) *ListZkTrackResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListZkTrackResponseBody) SetSuccess(v bool) *ListZkTrackResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *ListZkTrackResponseBody) SetTotalCount(v int64) *ListZkTrackResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *ListZkTrackResponseBody) SetTraces(v []*ListZkTrackResponseBodyTraces) *ListZkTrackResponseBody {
+	s.Traces = v
+	return s
+}
+
+type ListZkTrackResponseBodyTraces struct {
+	Acl       *string `json:"Acl,omitempty" xml:"Acl,omitempty"`
+	DataType  *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
+	EventType *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
+	Finished  *bool   `json:"Finished,omitempty" xml:"Finished,omitempty"`
+	LogDate   *string `json:"LogDate,omitempty" xml:"LogDate,omitempty"`
+	MultiSize *int64  `json:"MultiSize,omitempty" xml:"MultiSize,omitempty"`
+	OpType    *string `json:"OpType,omitempty" xml:"OpType,omitempty"`
+	Path      *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	Result    *string `json:"Result,omitempty" xml:"Result,omitempty"`
+	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	Timestamp *string `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
+	TraceType *string `json:"TraceType,omitempty" xml:"TraceType,omitempty"`
+	Ttl       *int64  `json:"Ttl,omitempty" xml:"Ttl,omitempty"`
+	Watch     *bool   `json:"Watch,omitempty" xml:"Watch,omitempty"`
+}
+
+func (s ListZkTrackResponseBodyTraces) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListZkTrackResponseBodyTraces) GoString() string {
+	return s.String()
+}
+
+func (s *ListZkTrackResponseBodyTraces) SetAcl(v string) *ListZkTrackResponseBodyTraces {
+	s.Acl = &v
+	return s
+}
+
+func (s *ListZkTrackResponseBodyTraces) SetDataType(v string) *ListZkTrackResponseBodyTraces {
+	s.DataType = &v
+	return s
+}
+
+func (s *ListZkTrackResponseBodyTraces) SetEventType(v string) *ListZkTrackResponseBodyTraces {
+	s.EventType = &v
+	return s
+}
+
+func (s *ListZkTrackResponseBodyTraces) SetFinished(v bool) *ListZkTrackResponseBodyTraces {
+	s.Finished = &v
+	return s
+}
+
+func (s *ListZkTrackResponseBodyTraces) SetLogDate(v string) *ListZkTrackResponseBodyTraces {
+	s.LogDate = &v
+	return s
+}
+
+func (s *ListZkTrackResponseBodyTraces) SetMultiSize(v int64) *ListZkTrackResponseBodyTraces {
+	s.MultiSize = &v
+	return s
+}
+
+func (s *ListZkTrackResponseBodyTraces) SetOpType(v string) *ListZkTrackResponseBodyTraces {
+	s.OpType = &v
+	return s
+}
+
+func (s *ListZkTrackResponseBodyTraces) SetPath(v string) *ListZkTrackResponseBodyTraces {
+	s.Path = &v
+	return s
+}
+
+func (s *ListZkTrackResponseBodyTraces) SetResult(v string) *ListZkTrackResponseBodyTraces {
+	s.Result = &v
+	return s
+}
+
+func (s *ListZkTrackResponseBodyTraces) SetSessionId(v string) *ListZkTrackResponseBodyTraces {
+	s.SessionId = &v
+	return s
+}
+
+func (s *ListZkTrackResponseBodyTraces) SetTimestamp(v string) *ListZkTrackResponseBodyTraces {
+	s.Timestamp = &v
+	return s
+}
+
+func (s *ListZkTrackResponseBodyTraces) SetTraceType(v string) *ListZkTrackResponseBodyTraces {
+	s.TraceType = &v
+	return s
+}
+
+func (s *ListZkTrackResponseBodyTraces) SetTtl(v int64) *ListZkTrackResponseBodyTraces {
+	s.Ttl = &v
+	return s
+}
+
+func (s *ListZkTrackResponseBodyTraces) SetWatch(v bool) *ListZkTrackResponseBodyTraces {
+	s.Watch = &v
+	return s
+}
+
+type ListZkTrackResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListZkTrackResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListZkTrackResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListZkTrackResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListZkTrackResponse) SetHeaders(v map[string]*string) *ListZkTrackResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListZkTrackResponse) SetStatusCode(v int32) *ListZkTrackResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListZkTrackResponse) SetBody(v *ListZkTrackResponseBody) *ListZkTrackResponse {
 	s.Body = v
 	return s
 }
@@ -29788,20 +30054,20 @@ func (client *Client) AddGatewayRouteWithOptions(tmpReq *AddGatewayRouteRequest,
 	}
 	request := &AddGatewayRouteShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.DirectResponseJSON))) {
-		request.DirectResponseJSONShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.DirectResponseJSON), tea.String("DirectResponseJSON"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.DirectResponseJSON)) {
+		request.DirectResponseJSONShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DirectResponseJSON, tea.String("DirectResponseJSON"), tea.String("json"))
 	}
 
 	if !tea.BoolValue(util.IsUnset(tmpReq.FallbackServices)) {
 		request.FallbackServicesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.FallbackServices, tea.String("FallbackServices"), tea.String("json"))
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.Predicates))) {
-		request.PredicatesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.Predicates), tea.String("Predicates"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.Predicates)) {
+		request.PredicatesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Predicates, tea.String("Predicates"), tea.String("json"))
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.RedirectJSON))) {
-		request.RedirectJSONShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.RedirectJSON), tea.String("RedirectJSON"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.RedirectJSON)) {
+		request.RedirectJSONShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RedirectJSON, tea.String("RedirectJSON"), tea.String("json"))
 	}
 
 	if !tea.BoolValue(util.IsUnset(tmpReq.Services)) {
@@ -30250,8 +30516,8 @@ func (client *Client) AddServiceSourceWithOptions(tmpReq *AddServiceSourceReques
 		request.GroupListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.GroupList, tea.String("GroupList"), tea.String("json"))
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.IngressOptionsRequest))) {
-		request.IngressOptionsRequestShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.IngressOptionsRequest), tea.String("IngressOptionsRequest"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.IngressOptionsRequest)) {
+		request.IngressOptionsRequestShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.IngressOptionsRequest, tea.String("IngressOptionsRequest"), tea.String("json"))
 	}
 
 	if !tea.BoolValue(util.IsUnset(tmpReq.PathList)) {
@@ -33157,6 +33423,10 @@ func (client *Client) GetKubernetesSourceWithOptions(request *GetKubernetesSourc
 		query["GatewayUniqueId"] = request.GatewayUniqueId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.VpcId)) {
+		query["VpcId"] = request.VpcId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -34436,8 +34706,8 @@ func (client *Client) ListGatewayWithOptions(tmpReq *ListGatewayRequest, runtime
 	}
 	request := &ListGatewayShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.FilterParams))) {
-		request.FilterParamsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.FilterParams), tea.String("FilterParams"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.FilterParams)) {
+		request.FilterParamsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.FilterParams, tea.String("FilterParams"), tea.String("json"))
 	}
 
 	query := map[string]interface{}{}
@@ -34558,8 +34828,8 @@ func (client *Client) ListGatewayRouteWithOptions(tmpReq *ListGatewayRouteReques
 	}
 	request := &ListGatewayRouteShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.FilterParams))) {
-		request.FilterParamsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.FilterParams), tea.String("FilterParams"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.FilterParams)) {
+		request.FilterParamsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.FilterParams, tea.String("FilterParams"), tea.String("json"))
 	}
 
 	query := map[string]interface{}{}
@@ -34628,8 +34898,8 @@ func (client *Client) ListGatewayServiceWithOptions(tmpReq *ListGatewayServiceRe
 	}
 	request := &ListGatewayServiceShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.FilterParams))) {
-		request.FilterParamsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.FilterParams), tea.String("FilterParams"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.FilterParams)) {
+		request.FilterParamsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.FilterParams, tea.String("FilterParams"), tea.String("json"))
 	}
 
 	query := map[string]interface{}{}
@@ -35332,6 +35602,46 @@ func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_resul
 	runtime := &util.RuntimeOptions{}
 	_result = &ListTagResourcesResponse{}
 	_body, _err := client.ListTagResourcesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListZkTrackWithOptions(request *ListZkTrackRequest, runtime *util.RuntimeOptions) (_result *ListZkTrackResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListZkTrack"),
+		Version:     tea.String("2019-05-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListZkTrackResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListZkTrack(request *ListZkTrackRequest) (_result *ListZkTrackResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListZkTrackResponse{}
+	_body, _err := client.ListZkTrackWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -37132,8 +37442,8 @@ func (client *Client) UpdateGatewayOptionWithOptions(tmpReq *UpdateGatewayOption
 	}
 	request := &UpdateGatewayOptionShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.GatewayOption))) {
-		request.GatewayOptionShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.GatewayOption), tea.String("GatewayOption"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.GatewayOption)) {
+		request.GatewayOptionShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.GatewayOption, tea.String("GatewayOption"), tea.String("json"))
 	}
 
 	query := map[string]interface{}{}
@@ -37194,20 +37504,20 @@ func (client *Client) UpdateGatewayRouteWithOptions(tmpReq *UpdateGatewayRouteRe
 	}
 	request := &UpdateGatewayRouteShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.DirectResponseJSON))) {
-		request.DirectResponseJSONShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.DirectResponseJSON), tea.String("DirectResponseJSON"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.DirectResponseJSON)) {
+		request.DirectResponseJSONShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DirectResponseJSON, tea.String("DirectResponseJSON"), tea.String("json"))
 	}
 
 	if !tea.BoolValue(util.IsUnset(tmpReq.FallbackServices)) {
 		request.FallbackServicesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.FallbackServices, tea.String("FallbackServices"), tea.String("json"))
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.Predicates))) {
-		request.PredicatesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.Predicates), tea.String("Predicates"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.Predicates)) {
+		request.PredicatesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Predicates, tea.String("Predicates"), tea.String("json"))
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.RedirectJSON))) {
-		request.RedirectJSONShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.RedirectJSON), tea.String("RedirectJSON"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.RedirectJSON)) {
+		request.RedirectJSONShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RedirectJSON, tea.String("RedirectJSON"), tea.String("json"))
 	}
 
 	if !tea.BoolValue(util.IsUnset(tmpReq.Services)) {
@@ -37316,8 +37626,8 @@ func (client *Client) UpdateGatewayRouteCORSWithOptions(tmpReq *UpdateGatewayRou
 	}
 	request := &UpdateGatewayRouteCORSShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.CorsJSON))) {
-		request.CorsJSONShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.CorsJSON), tea.String("CorsJSON"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.CorsJSON)) {
+		request.CorsJSONShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CorsJSON, tea.String("CorsJSON"), tea.String("json"))
 	}
 
 	query := map[string]interface{}{}
@@ -37502,8 +37812,8 @@ func (client *Client) UpdateGatewayRouteRetryWithOptions(tmpReq *UpdateGatewayRo
 	}
 	request := &UpdateGatewayRouteRetryShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.RetryJSON))) {
-		request.RetryJSONShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.RetryJSON), tea.String("RetryJSON"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.RetryJSON)) {
+		request.RetryJSONShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RetryJSON, tea.String("RetryJSON"), tea.String("json"))
 	}
 
 	query := map[string]interface{}{}
@@ -37568,8 +37878,8 @@ func (client *Client) UpdateGatewayRouteTimeoutWithOptions(tmpReq *UpdateGateway
 	}
 	request := &UpdateGatewayRouteTimeoutShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.TimeoutJSON))) {
-		request.TimeoutJSONShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.TimeoutJSON), tea.String("TimeoutJSON"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.TimeoutJSON)) {
+		request.TimeoutJSONShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TimeoutJSON, tea.String("TimeoutJSON"), tea.String("json"))
 	}
 
 	query := map[string]interface{}{}
@@ -37690,8 +38000,8 @@ func (client *Client) UpdateGatewayServiceTrafficPolicyWithOptions(tmpReq *Updat
 	}
 	request := &UpdateGatewayServiceTrafficPolicyShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.GatewayTrafficPolicy))) {
-		request.GatewayTrafficPolicyShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.GatewayTrafficPolicy), tea.String("GatewayTrafficPolicy"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.GatewayTrafficPolicy)) {
+		request.GatewayTrafficPolicyShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.GatewayTrafficPolicy, tea.String("GatewayTrafficPolicy"), tea.String("json"))
 	}
 
 	query := map[string]interface{}{}
@@ -38452,8 +38762,8 @@ func (client *Client) UpdateServiceSourceWithOptions(tmpReq *UpdateServiceSource
 	}
 	request := &UpdateServiceSourceShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.IngressOptionsRequest))) {
-		request.IngressOptionsRequestShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.IngressOptionsRequest), tea.String("IngressOptionsRequest"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.IngressOptionsRequest)) {
+		request.IngressOptionsRequestShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.IngressOptionsRequest, tea.String("IngressOptionsRequest"), tea.String("json"))
 	}
 
 	if !tea.BoolValue(util.IsUnset(tmpReq.PathList)) {
