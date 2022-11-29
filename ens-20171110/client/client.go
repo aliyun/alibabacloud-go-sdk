@@ -254,6 +254,46 @@ func (s *HttpConfig) SetXForwardedFor(v string) *HttpConfig {
 	return s
 }
 
+type InstanceActiveOpsGroup struct {
+	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
+}
+
+func (s InstanceActiveOpsGroup) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InstanceActiveOpsGroup) GoString() string {
+	return s.String()
+}
+
+func (s *InstanceActiveOpsGroup) SetInstanceIds(v []*string) *InstanceActiveOpsGroup {
+	s.InstanceIds = v
+	return s
+}
+
+type InstanceActiveOpsTask struct {
+	InstanceActiveOpsTaskId     *string `json:"InstanceActiveOpsTaskId,omitempty" xml:"InstanceActiveOpsTaskId,omitempty"`
+	InstanceActiveOpsTaskStatus *string `json:"InstanceActiveOpsTaskStatus,omitempty" xml:"InstanceActiveOpsTaskStatus,omitempty"`
+}
+
+func (s InstanceActiveOpsTask) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InstanceActiveOpsTask) GoString() string {
+	return s.String()
+}
+
+func (s *InstanceActiveOpsTask) SetInstanceActiveOpsTaskId(v string) *InstanceActiveOpsTask {
+	s.InstanceActiveOpsTaskId = &v
+	return s
+}
+
+func (s *InstanceActiveOpsTask) SetInstanceActiveOpsTaskStatus(v string) *InstanceActiveOpsTask {
+	s.InstanceActiveOpsTaskStatus = &v
+	return s
+}
+
 type SecurityGroupRule struct {
 	Description     *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	DestCidrIp      *string `json:"DestCidrIp,omitempty" xml:"DestCidrIp,omitempty"`
@@ -2791,6 +2831,92 @@ func (s *CreateInstanceResponse) SetStatusCode(v int32) *CreateInstanceResponse 
 }
 
 func (s *CreateInstanceResponse) SetBody(v *CreateInstanceResponseBody) *CreateInstanceResponse {
+	s.Body = v
+	return s
+}
+
+type CreateInstanceActiveOpsTaskRequest struct {
+	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
+}
+
+func (s CreateInstanceActiveOpsTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateInstanceActiveOpsTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateInstanceActiveOpsTaskRequest) SetInstanceIds(v []*string) *CreateInstanceActiveOpsTaskRequest {
+	s.InstanceIds = v
+	return s
+}
+
+type CreateInstanceActiveOpsTaskShrinkRequest struct {
+	InstanceIdsShrink *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
+}
+
+func (s CreateInstanceActiveOpsTaskShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateInstanceActiveOpsTaskShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateInstanceActiveOpsTaskShrinkRequest) SetInstanceIdsShrink(v string) *CreateInstanceActiveOpsTaskShrinkRequest {
+	s.InstanceIdsShrink = &v
+	return s
+}
+
+type CreateInstanceActiveOpsTaskResponseBody struct {
+	InstanceActiveOpsTask *InstanceActiveOpsTask `json:"InstanceActiveOpsTask,omitempty" xml:"InstanceActiveOpsTask,omitempty"`
+	RequestId             *string                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateInstanceActiveOpsTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateInstanceActiveOpsTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateInstanceActiveOpsTaskResponseBody) SetInstanceActiveOpsTask(v *InstanceActiveOpsTask) *CreateInstanceActiveOpsTaskResponseBody {
+	s.InstanceActiveOpsTask = v
+	return s
+}
+
+func (s *CreateInstanceActiveOpsTaskResponseBody) SetRequestId(v string) *CreateInstanceActiveOpsTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateInstanceActiveOpsTaskResponse struct {
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateInstanceActiveOpsTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateInstanceActiveOpsTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateInstanceActiveOpsTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateInstanceActiveOpsTaskResponse) SetHeaders(v map[string]*string) *CreateInstanceActiveOpsTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateInstanceActiveOpsTaskResponse) SetStatusCode(v int32) *CreateInstanceActiveOpsTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateInstanceActiveOpsTaskResponse) SetBody(v *CreateInstanceActiveOpsTaskResponseBody) *CreateInstanceActiveOpsTaskResponse {
 	s.Body = v
 	return s
 }
@@ -5739,8 +5865,11 @@ func (s *DescribeARMServerInstancesShrinkRequest) SetServerIdsShrink(v string) *
 }
 
 type DescribeARMServerInstancesResponseBody struct {
-	RequestId *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Servers   []*DescribeARMServerInstancesResponseBodyServers `json:"Servers,omitempty" xml:"Servers,omitempty" type:"Repeated"`
+	PageNumber *int32                                           `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32                                           `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId  *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Servers    []*DescribeARMServerInstancesResponseBodyServers `json:"Servers,omitempty" xml:"Servers,omitempty" type:"Repeated"`
+	TotalCount *int32                                           `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeARMServerInstancesResponseBody) String() string {
@@ -5751,6 +5880,16 @@ func (s DescribeARMServerInstancesResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeARMServerInstancesResponseBody) SetPageNumber(v int32) *DescribeARMServerInstancesResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeARMServerInstancesResponseBody) SetPageSize(v int32) *DescribeARMServerInstancesResponseBody {
+	s.PageSize = &v
+	return s
+}
+
 func (s *DescribeARMServerInstancesResponseBody) SetRequestId(v string) *DescribeARMServerInstancesResponseBody {
 	s.RequestId = &v
 	return s
@@ -5758,6 +5897,11 @@ func (s *DescribeARMServerInstancesResponseBody) SetRequestId(v string) *Describ
 
 func (s *DescribeARMServerInstancesResponseBody) SetServers(v []*DescribeARMServerInstancesResponseBodyServers) *DescribeARMServerInstancesResponseBody {
 	s.Servers = v
+	return s
+}
+
+func (s *DescribeARMServerInstancesResponseBody) SetTotalCount(v int32) *DescribeARMServerInstancesResponseBody {
+	s.TotalCount = &v
 	return s
 }
 
@@ -26894,7 +27038,7 @@ func (client *Client) CreateInstanceWithOptions(request *CreateInstanceRequest, 
 		query["DataDisk"] = request.DataDisk
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.SystemDisk))) {
+	if !tea.BoolValue(util.IsUnset(request.SystemDisk)) {
 		query["SystemDisk"] = request.SystemDisk
 	}
 
@@ -26925,6 +27069,56 @@ func (client *Client) CreateInstance(request *CreateInstanceRequest) (_result *C
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateInstanceResponse{}
 	_body, _err := client.CreateInstanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateInstanceActiveOpsTaskWithOptions(tmpReq *CreateInstanceActiveOpsTaskRequest, runtime *util.RuntimeOptions) (_result *CreateInstanceActiveOpsTaskResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CreateInstanceActiveOpsTaskShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.InstanceIds)) {
+		request.InstanceIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.InstanceIds, tea.String("InstanceIds"), tea.String("simple"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceIdsShrink)) {
+		query["InstanceIds"] = request.InstanceIdsShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateInstanceActiveOpsTask"),
+		Version:     tea.String("2017-11-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateInstanceActiveOpsTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateInstanceActiveOpsTask(request *CreateInstanceActiveOpsTaskRequest) (_result *CreateInstanceActiveOpsTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateInstanceActiveOpsTaskResponse{}
+	_body, _err := client.CreateInstanceActiveOpsTaskWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -32001,7 +32195,7 @@ func (client *Client) DescribePriceWithOptions(tmpReq *DescribePriceRequest, run
 		query["DataDisk"] = request.DataDisk
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.SystemDisk))) {
+	if !tea.BoolValue(util.IsUnset(request.SystemDisk)) {
 		query["SystemDisk"] = request.SystemDisk
 	}
 
@@ -35186,8 +35380,8 @@ func (client *Client) RunInstancesWithOptions(tmpReq *RunInstancesRequest, runti
 		request.DataDiskShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DataDisk, tea.String("DataDisk"), tea.String("json"))
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.SystemDisk))) {
-		request.SystemDiskShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.SystemDisk), tea.String("SystemDisk"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.SystemDisk)) {
+		request.SystemDiskShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SystemDisk, tea.String("SystemDisk"), tea.String("json"))
 	}
 
 	query := map[string]interface{}{}
