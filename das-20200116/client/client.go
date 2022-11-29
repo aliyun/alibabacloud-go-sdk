@@ -8605,6 +8605,152 @@ func (s *GetInstanceInspectionsResponse) SetBody(v *GetInstanceInspectionsRespon
 	return s
 }
 
+type GetInstanceSqlOptimizeStatisticRequest struct {
+	EndTime      *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	FilterEnable *string `json:"FilterEnable,omitempty" xml:"FilterEnable,omitempty"`
+	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	NodeId       *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	StartTime    *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Threshold    *string `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
+	UseMerging   *string `json:"UseMerging,omitempty" xml:"UseMerging,omitempty"`
+}
+
+func (s GetInstanceSqlOptimizeStatisticRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetInstanceSqlOptimizeStatisticRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetInstanceSqlOptimizeStatisticRequest) SetEndTime(v string) *GetInstanceSqlOptimizeStatisticRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *GetInstanceSqlOptimizeStatisticRequest) SetFilterEnable(v string) *GetInstanceSqlOptimizeStatisticRequest {
+	s.FilterEnable = &v
+	return s
+}
+
+func (s *GetInstanceSqlOptimizeStatisticRequest) SetInstanceId(v string) *GetInstanceSqlOptimizeStatisticRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *GetInstanceSqlOptimizeStatisticRequest) SetNodeId(v string) *GetInstanceSqlOptimizeStatisticRequest {
+	s.NodeId = &v
+	return s
+}
+
+func (s *GetInstanceSqlOptimizeStatisticRequest) SetStartTime(v string) *GetInstanceSqlOptimizeStatisticRequest {
+	s.StartTime = &v
+	return s
+}
+
+func (s *GetInstanceSqlOptimizeStatisticRequest) SetThreshold(v string) *GetInstanceSqlOptimizeStatisticRequest {
+	s.Threshold = &v
+	return s
+}
+
+func (s *GetInstanceSqlOptimizeStatisticRequest) SetUseMerging(v string) *GetInstanceSqlOptimizeStatisticRequest {
+	s.UseMerging = &v
+	return s
+}
+
+type GetInstanceSqlOptimizeStatisticResponseBody struct {
+	Code      *string                                          `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *GetInstanceSqlOptimizeStatisticResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                                          `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *string                                          `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetInstanceSqlOptimizeStatisticResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetInstanceSqlOptimizeStatisticResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetInstanceSqlOptimizeStatisticResponseBody) SetCode(v string) *GetInstanceSqlOptimizeStatisticResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetInstanceSqlOptimizeStatisticResponseBody) SetData(v *GetInstanceSqlOptimizeStatisticResponseBodyData) *GetInstanceSqlOptimizeStatisticResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetInstanceSqlOptimizeStatisticResponseBody) SetMessage(v string) *GetInstanceSqlOptimizeStatisticResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetInstanceSqlOptimizeStatisticResponseBody) SetRequestId(v string) *GetInstanceSqlOptimizeStatisticResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetInstanceSqlOptimizeStatisticResponseBody) SetSuccess(v string) *GetInstanceSqlOptimizeStatisticResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetInstanceSqlOptimizeStatisticResponseBodyData struct {
+	Count       *int32   `json:"count,omitempty" xml:"count,omitempty"`
+	Improvement *float64 `json:"improvement,omitempty" xml:"improvement,omitempty"`
+}
+
+func (s GetInstanceSqlOptimizeStatisticResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetInstanceSqlOptimizeStatisticResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetInstanceSqlOptimizeStatisticResponseBodyData) SetCount(v int32) *GetInstanceSqlOptimizeStatisticResponseBodyData {
+	s.Count = &v
+	return s
+}
+
+func (s *GetInstanceSqlOptimizeStatisticResponseBodyData) SetImprovement(v float64) *GetInstanceSqlOptimizeStatisticResponseBodyData {
+	s.Improvement = &v
+	return s
+}
+
+type GetInstanceSqlOptimizeStatisticResponse struct {
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetInstanceSqlOptimizeStatisticResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetInstanceSqlOptimizeStatisticResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetInstanceSqlOptimizeStatisticResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetInstanceSqlOptimizeStatisticResponse) SetHeaders(v map[string]*string) *GetInstanceSqlOptimizeStatisticResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetInstanceSqlOptimizeStatisticResponse) SetStatusCode(v int32) *GetInstanceSqlOptimizeStatisticResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetInstanceSqlOptimizeStatisticResponse) SetBody(v *GetInstanceSqlOptimizeStatisticResponseBody) *GetInstanceSqlOptimizeStatisticResponse {
+	s.Body = v
+	return s
+}
+
 type GetQueryOptimizeDataStatsRequest struct {
 	Asc              *string `json:"Asc,omitempty" xml:"Asc,omitempty"`
 	DbNames          *string `json:"DbNames,omitempty" xml:"DbNames,omitempty"`
@@ -15258,6 +15404,74 @@ func (client *Client) GetInstanceInspections(request *GetInstanceInspectionsRequ
 	runtime := &util.RuntimeOptions{}
 	_result = &GetInstanceInspectionsResponse{}
 	_body, _err := client.GetInstanceInspectionsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetInstanceSqlOptimizeStatisticWithOptions(request *GetInstanceSqlOptimizeStatisticRequest, runtime *util.RuntimeOptions) (_result *GetInstanceSqlOptimizeStatisticResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FilterEnable)) {
+		query["FilterEnable"] = request.FilterEnable
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NodeId)) {
+		query["NodeId"] = request.NodeId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Threshold)) {
+		query["Threshold"] = request.Threshold
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UseMerging)) {
+		query["UseMerging"] = request.UseMerging
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetInstanceSqlOptimizeStatistic"),
+		Version:     tea.String("2020-01-16"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetInstanceSqlOptimizeStatisticResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetInstanceSqlOptimizeStatistic(request *GetInstanceSqlOptimizeStatisticRequest) (_result *GetInstanceSqlOptimizeStatisticResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetInstanceSqlOptimizeStatisticResponse{}
+	_body, _err := client.GetInstanceSqlOptimizeStatisticWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}

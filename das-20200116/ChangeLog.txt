@@ -1,3 +1,6 @@
+2022-11-29 Version: v3.0.2
+- Public NEW API.
+
 2022-11-17 Version: v3.0.1
 - Add Parameter change.
 
