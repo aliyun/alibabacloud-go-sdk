@@ -12,6 +12,139 @@ import (
 	"github.com/alibabacloud-go/tea/tea"
 )
 
+type ImageModerationRequest struct {
+	Service           *string `json:"Service,omitempty" xml:"Service,omitempty"`
+	ServiceParameters *string `json:"ServiceParameters,omitempty" xml:"ServiceParameters,omitempty"`
+}
+
+func (s ImageModerationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImageModerationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ImageModerationRequest) SetService(v string) *ImageModerationRequest {
+	s.Service = &v
+	return s
+}
+
+func (s *ImageModerationRequest) SetServiceParameters(v string) *ImageModerationRequest {
+	s.ServiceParameters = &v
+	return s
+}
+
+type ImageModerationResponseBody struct {
+	Code      *int32                           `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *ImageModerationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Msg       *string                          `json:"Msg,omitempty" xml:"Msg,omitempty"`
+	RequestId *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ImageModerationResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImageModerationResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ImageModerationResponseBody) SetCode(v int32) *ImageModerationResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ImageModerationResponseBody) SetData(v *ImageModerationResponseBodyData) *ImageModerationResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ImageModerationResponseBody) SetMsg(v string) *ImageModerationResponseBody {
+	s.Msg = &v
+	return s
+}
+
+func (s *ImageModerationResponseBody) SetRequestId(v string) *ImageModerationResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ImageModerationResponseBodyData struct {
+	DataId *string                                  `json:"DataId,omitempty" xml:"DataId,omitempty"`
+	Result []*ImageModerationResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+}
+
+func (s ImageModerationResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImageModerationResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ImageModerationResponseBodyData) SetDataId(v string) *ImageModerationResponseBodyData {
+	s.DataId = &v
+	return s
+}
+
+func (s *ImageModerationResponseBodyData) SetResult(v []*ImageModerationResponseBodyDataResult) *ImageModerationResponseBodyData {
+	s.Result = v
+	return s
+}
+
+type ImageModerationResponseBodyDataResult struct {
+	Confidence *float32 `json:"Confidence,omitempty" xml:"Confidence,omitempty"`
+	Label      *string  `json:"Label,omitempty" xml:"Label,omitempty"`
+}
+
+func (s ImageModerationResponseBodyDataResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImageModerationResponseBodyDataResult) GoString() string {
+	return s.String()
+}
+
+func (s *ImageModerationResponseBodyDataResult) SetConfidence(v float32) *ImageModerationResponseBodyDataResult {
+	s.Confidence = &v
+	return s
+}
+
+func (s *ImageModerationResponseBodyDataResult) SetLabel(v string) *ImageModerationResponseBodyDataResult {
+	s.Label = &v
+	return s
+}
+
+type ImageModerationResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ImageModerationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ImageModerationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImageModerationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ImageModerationResponse) SetHeaders(v map[string]*string) *ImageModerationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ImageModerationResponse) SetStatusCode(v int32) *ImageModerationResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ImageModerationResponse) SetBody(v *ImageModerationResponseBody) *ImageModerationResponse {
+	s.Body = v
+	return s
+}
+
 type TextModerationRequest struct {
 	Service           *string `json:"Service,omitempty" xml:"Service,omitempty"`
 	ServiceParameters *string `json:"ServiceParameters,omitempty" xml:"ServiceParameters,omitempty"`
@@ -182,6 +315,54 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	}
 
 	_body, _err := endpointutil.GetEndpointRules(productId, regionId, endpointRule, network, suffix)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ImageModerationWithOptions(request *ImageModerationRequest, runtime *util.RuntimeOptions) (_result *ImageModerationResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Service)) {
+		body["Service"] = request.Service
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceParameters)) {
+		body["ServiceParameters"] = request.ServiceParameters
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ImageModeration"),
+		Version:     tea.String("2022-03-02"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ImageModerationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ImageModeration(request *ImageModerationRequest) (_result *ImageModerationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ImageModerationResponse{}
+	_body, _err := client.ImageModerationWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
