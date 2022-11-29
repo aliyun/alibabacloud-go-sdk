@@ -656,8 +656,9 @@ func (s *BatchDeployApisResponse) SetBody(v *BatchDeployApisResponseBody) *Batch
 }
 
 type CreateAccessControlListRequest struct {
-	AclName       *string `json:"AclName,omitempty" xml:"AclName,omitempty"`
-	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	AclName          *string `json:"AclName,omitempty" xml:"AclName,omitempty"`
+	AddressIPVersion *string `json:"AddressIPVersion,omitempty" xml:"AddressIPVersion,omitempty"`
+	SecurityToken    *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 }
 
 func (s CreateAccessControlListRequest) String() string {
@@ -670,6 +671,11 @@ func (s CreateAccessControlListRequest) GoString() string {
 
 func (s *CreateAccessControlListRequest) SetAclName(v string) *CreateAccessControlListRequest {
 	s.AclName = &v
+	return s
+}
+
+func (s *CreateAccessControlListRequest) SetAddressIPVersion(v string) *CreateAccessControlListRequest {
+	s.AddressIPVersion = &v
 	return s
 }
 
@@ -4664,10 +4670,11 @@ func (s *DescribeAccessControlListAttributeResponse) SetBody(v *DescribeAccessCo
 }
 
 type DescribeAccessControlListsRequest struct {
-	AclName       *string `json:"AclName,omitempty" xml:"AclName,omitempty"`
-	PageNumber    *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	AclName          *string `json:"AclName,omitempty" xml:"AclName,omitempty"`
+	AddressIPVersion *string `json:"AddressIPVersion,omitempty" xml:"AddressIPVersion,omitempty"`
+	PageNumber       *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize         *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	SecurityToken    *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 }
 
 func (s DescribeAccessControlListsRequest) String() string {
@@ -4680,6 +4687,11 @@ func (s DescribeAccessControlListsRequest) GoString() string {
 
 func (s *DescribeAccessControlListsRequest) SetAclName(v string) *DescribeAccessControlListsRequest {
 	s.AclName = &v
+	return s
+}
+
+func (s *DescribeAccessControlListsRequest) SetAddressIPVersion(v string) *DescribeAccessControlListsRequest {
+	s.AddressIPVersion = &v
 	return s
 }
 
@@ -4757,8 +4769,9 @@ func (s *DescribeAccessControlListsResponseBodyAcls) SetAcl(v []*DescribeAccessC
 }
 
 type DescribeAccessControlListsResponseBodyAclsAcl struct {
-	AclId   *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
-	AclName *string `json:"AclName,omitempty" xml:"AclName,omitempty"`
+	AclId            *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
+	AclName          *string `json:"AclName,omitempty" xml:"AclName,omitempty"`
+	AddressIPVersion *string `json:"AddressIPVersion,omitempty" xml:"AddressIPVersion,omitempty"`
 }
 
 func (s DescribeAccessControlListsResponseBodyAclsAcl) String() string {
@@ -4776,6 +4789,11 @@ func (s *DescribeAccessControlListsResponseBodyAclsAcl) SetAclId(v string) *Desc
 
 func (s *DescribeAccessControlListsResponseBodyAclsAcl) SetAclName(v string) *DescribeAccessControlListsResponseBodyAclsAcl {
 	s.AclName = &v
+	return s
+}
+
+func (s *DescribeAccessControlListsResponseBodyAclsAcl) SetAddressIPVersion(v string) *DescribeAccessControlListsResponseBodyAclsAcl {
+	s.AddressIPVersion = &v
 	return s
 }
 
@@ -15513,6 +15531,10 @@ type DescribeInstancesResponseBodyInstancesInstanceAttribute struct {
 	EgressIpv6Enable       *bool                                                                          `json:"EgressIpv6Enable,omitempty" xml:"EgressIpv6Enable,omitempty"`
 	ExpiredTime            *string                                                                        `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
 	HttpsPolicies          *string                                                                        `json:"HttpsPolicies,omitempty" xml:"HttpsPolicies,omitempty"`
+	IPV6AclId              *string                                                                        `json:"IPV6AclId,omitempty" xml:"IPV6AclId,omitempty"`
+	IPV6AclName            *string                                                                        `json:"IPV6AclName,omitempty" xml:"IPV6AclName,omitempty"`
+	IPV6AclStatus          *string                                                                        `json:"IPV6AclStatus,omitempty" xml:"IPV6AclStatus,omitempty"`
+	IPV6AclType            *string                                                                        `json:"IPV6AclType,omitempty" xml:"IPV6AclType,omitempty"`
 	InstanceChargeType     *string                                                                        `json:"InstanceChargeType,omitempty" xml:"InstanceChargeType,omitempty"`
 	InstanceId             *string                                                                        `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	InstanceName           *string                                                                        `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
@@ -15586,6 +15608,26 @@ func (s *DescribeInstancesResponseBodyInstancesInstanceAttribute) SetExpiredTime
 
 func (s *DescribeInstancesResponseBodyInstancesInstanceAttribute) SetHttpsPolicies(v string) *DescribeInstancesResponseBodyInstancesInstanceAttribute {
 	s.HttpsPolicies = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstancesInstanceAttribute) SetIPV6AclId(v string) *DescribeInstancesResponseBodyInstancesInstanceAttribute {
+	s.IPV6AclId = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstancesInstanceAttribute) SetIPV6AclName(v string) *DescribeInstancesResponseBodyInstancesInstanceAttribute {
+	s.IPV6AclName = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstancesInstanceAttribute) SetIPV6AclStatus(v string) *DescribeInstancesResponseBodyInstancesInstanceAttribute {
+	s.IPV6AclStatus = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstancesInstanceAttribute) SetIPV6AclType(v string) *DescribeInstancesResponseBodyInstancesInstanceAttribute {
+	s.IPV6AclType = &v
 	return s
 }
 
@@ -16504,6 +16546,229 @@ func (s *DescribeModelsResponse) SetStatusCode(v int32) *DescribeModelsResponse 
 }
 
 func (s *DescribeModelsResponse) SetBody(v *DescribeModelsResponseBody) *DescribeModelsResponse {
+	s.Body = v
+	return s
+}
+
+type DescribePluginApisRequest struct {
+	ApiId         *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
+	ApiName       *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
+	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	GroupId       *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	Method        *string `json:"Method,omitempty" xml:"Method,omitempty"`
+	PageNumber    *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Path          *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	PluginId      *string `json:"PluginId,omitempty" xml:"PluginId,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+}
+
+func (s DescribePluginApisRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePluginApisRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePluginApisRequest) SetApiId(v string) *DescribePluginApisRequest {
+	s.ApiId = &v
+	return s
+}
+
+func (s *DescribePluginApisRequest) SetApiName(v string) *DescribePluginApisRequest {
+	s.ApiName = &v
+	return s
+}
+
+func (s *DescribePluginApisRequest) SetDescription(v string) *DescribePluginApisRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *DescribePluginApisRequest) SetGroupId(v string) *DescribePluginApisRequest {
+	s.GroupId = &v
+	return s
+}
+
+func (s *DescribePluginApisRequest) SetMethod(v string) *DescribePluginApisRequest {
+	s.Method = &v
+	return s
+}
+
+func (s *DescribePluginApisRequest) SetPageNumber(v int32) *DescribePluginApisRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribePluginApisRequest) SetPageSize(v int32) *DescribePluginApisRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribePluginApisRequest) SetPath(v string) *DescribePluginApisRequest {
+	s.Path = &v
+	return s
+}
+
+func (s *DescribePluginApisRequest) SetPluginId(v string) *DescribePluginApisRequest {
+	s.PluginId = &v
+	return s
+}
+
+func (s *DescribePluginApisRequest) SetSecurityToken(v string) *DescribePluginApisRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+type DescribePluginApisResponseBody struct {
+	ApiSummarys *DescribePluginApisResponseBodyApiSummarys `json:"ApiSummarys,omitempty" xml:"ApiSummarys,omitempty" type:"Struct"`
+	PageNumber  *int32                                     `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize    *int32                                     `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId   *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount  *int32                                     `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribePluginApisResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePluginApisResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePluginApisResponseBody) SetApiSummarys(v *DescribePluginApisResponseBodyApiSummarys) *DescribePluginApisResponseBody {
+	s.ApiSummarys = v
+	return s
+}
+
+func (s *DescribePluginApisResponseBody) SetPageNumber(v int32) *DescribePluginApisResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribePluginApisResponseBody) SetPageSize(v int32) *DescribePluginApisResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribePluginApisResponseBody) SetRequestId(v string) *DescribePluginApisResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribePluginApisResponseBody) SetTotalCount(v int32) *DescribePluginApisResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribePluginApisResponseBodyApiSummarys struct {
+	ApiPluginSummary []*DescribePluginApisResponseBodyApiSummarysApiPluginSummary `json:"ApiPluginSummary,omitempty" xml:"ApiPluginSummary,omitempty" type:"Repeated"`
+}
+
+func (s DescribePluginApisResponseBodyApiSummarys) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePluginApisResponseBodyApiSummarys) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePluginApisResponseBodyApiSummarys) SetApiPluginSummary(v []*DescribePluginApisResponseBodyApiSummarysApiPluginSummary) *DescribePluginApisResponseBodyApiSummarys {
+	s.ApiPluginSummary = v
+	return s
+}
+
+type DescribePluginApisResponseBodyApiSummarysApiPluginSummary struct {
+	ApiId       *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
+	ApiName     *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	GroupId     *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	GroupName   *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	Method      *string `json:"Method,omitempty" xml:"Method,omitempty"`
+	Path        *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	StageName   *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
+}
+
+func (s DescribePluginApisResponseBodyApiSummarysApiPluginSummary) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePluginApisResponseBodyApiSummarysApiPluginSummary) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePluginApisResponseBodyApiSummarysApiPluginSummary) SetApiId(v string) *DescribePluginApisResponseBodyApiSummarysApiPluginSummary {
+	s.ApiId = &v
+	return s
+}
+
+func (s *DescribePluginApisResponseBodyApiSummarysApiPluginSummary) SetApiName(v string) *DescribePluginApisResponseBodyApiSummarysApiPluginSummary {
+	s.ApiName = &v
+	return s
+}
+
+func (s *DescribePluginApisResponseBodyApiSummarysApiPluginSummary) SetDescription(v string) *DescribePluginApisResponseBodyApiSummarysApiPluginSummary {
+	s.Description = &v
+	return s
+}
+
+func (s *DescribePluginApisResponseBodyApiSummarysApiPluginSummary) SetGroupId(v string) *DescribePluginApisResponseBodyApiSummarysApiPluginSummary {
+	s.GroupId = &v
+	return s
+}
+
+func (s *DescribePluginApisResponseBodyApiSummarysApiPluginSummary) SetGroupName(v string) *DescribePluginApisResponseBodyApiSummarysApiPluginSummary {
+	s.GroupName = &v
+	return s
+}
+
+func (s *DescribePluginApisResponseBodyApiSummarysApiPluginSummary) SetMethod(v string) *DescribePluginApisResponseBodyApiSummarysApiPluginSummary {
+	s.Method = &v
+	return s
+}
+
+func (s *DescribePluginApisResponseBodyApiSummarysApiPluginSummary) SetPath(v string) *DescribePluginApisResponseBodyApiSummarysApiPluginSummary {
+	s.Path = &v
+	return s
+}
+
+func (s *DescribePluginApisResponseBodyApiSummarysApiPluginSummary) SetRegionId(v string) *DescribePluginApisResponseBodyApiSummarysApiPluginSummary {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribePluginApisResponseBodyApiSummarysApiPluginSummary) SetStageName(v string) *DescribePluginApisResponseBodyApiSummarysApiPluginSummary {
+	s.StageName = &v
+	return s
+}
+
+type DescribePluginApisResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribePluginApisResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribePluginApisResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePluginApisResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePluginApisResponse) SetHeaders(v map[string]*string) *DescribePluginApisResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribePluginApisResponse) SetStatusCode(v int32) *DescribePluginApisResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribePluginApisResponse) SetBody(v *DescribePluginApisResponseBody) *DescribePluginApisResponse {
 	s.Body = v
 	return s
 }
@@ -19492,9 +19757,10 @@ func (s *DetachPluginResponse) SetBody(v *DetachPluginResponseBody) *DetachPlugi
 }
 
 type DisableInstanceAccessControlRequest struct {
-	AclId         *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
-	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	AclId            *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
+	AddressIPVersion *string `json:"AddressIPVersion,omitempty" xml:"AddressIPVersion,omitempty"`
+	InstanceId       *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	SecurityToken    *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 }
 
 func (s DisableInstanceAccessControlRequest) String() string {
@@ -19507,6 +19773,11 @@ func (s DisableInstanceAccessControlRequest) GoString() string {
 
 func (s *DisableInstanceAccessControlRequest) SetAclId(v string) *DisableInstanceAccessControlRequest {
 	s.AclId = &v
+	return s
+}
+
+func (s *DisableInstanceAccessControlRequest) SetAddressIPVersion(v string) *DisableInstanceAccessControlRequest {
+	s.AddressIPVersion = &v
 	return s
 }
 
@@ -19939,10 +20210,11 @@ func (s *DryRunSwaggerResponse) SetBody(v *DryRunSwaggerResponseBody) *DryRunSwa
 }
 
 type EnableInstanceAccessControlRequest struct {
-	AclId         *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
-	AclType       *string `json:"AclType,omitempty" xml:"AclType,omitempty"`
-	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	AclId            *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
+	AclType          *string `json:"AclType,omitempty" xml:"AclType,omitempty"`
+	AddressIPVersion *string `json:"AddressIPVersion,omitempty" xml:"AddressIPVersion,omitempty"`
+	InstanceId       *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	SecurityToken    *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 }
 
 func (s EnableInstanceAccessControlRequest) String() string {
@@ -19960,6 +20232,11 @@ func (s *EnableInstanceAccessControlRequest) SetAclId(v string) *EnableInstanceA
 
 func (s *EnableInstanceAccessControlRequest) SetAclType(v string) *EnableInstanceAccessControlRequest {
 	s.AclType = &v
+	return s
+}
+
+func (s *EnableInstanceAccessControlRequest) SetAddressIPVersion(v string) *EnableInstanceAccessControlRequest {
+	s.AddressIPVersion = &v
 	return s
 }
 
@@ -26495,6 +26772,10 @@ func (client *Client) CreateAccessControlListWithOptions(request *CreateAccessCo
 		query["AclName"] = request.AclName
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.AddressIPVersion)) {
+		query["AddressIPVersion"] = request.AddressIPVersion
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
 		query["SecurityToken"] = request.SecurityToken
 	}
@@ -28893,6 +29174,10 @@ func (client *Client) DescribeAccessControlListsWithOptions(request *DescribeAcc
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AclName)) {
 		query["AclName"] = request.AclName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AddressIPVersion)) {
+		query["AddressIPVersion"] = request.AddressIPVersion
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
@@ -31533,6 +31818,86 @@ func (client *Client) DescribeModels(request *DescribeModelsRequest) (_result *D
 	return _result, _err
 }
 
+func (client *Client) DescribePluginApisWithOptions(request *DescribePluginApisRequest, runtime *util.RuntimeOptions) (_result *DescribePluginApisResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ApiId)) {
+		query["ApiId"] = request.ApiId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ApiName)) {
+		query["ApiName"] = request.ApiName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Method)) {
+		query["Method"] = request.Method
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Path)) {
+		query["Path"] = request.Path
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PluginId)) {
+		query["PluginId"] = request.PluginId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribePluginApis"),
+		Version:     tea.String("2016-07-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribePluginApisResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribePluginApis(request *DescribePluginApisRequest) (_result *DescribePluginApisResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribePluginApisResponse{}
+	_body, _err := client.DescribePluginApisWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DescribePluginSchemasWithOptions(request *DescribePluginSchemasRequest, runtime *util.RuntimeOptions) (_result *DescribePluginSchemasResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -32551,6 +32916,10 @@ func (client *Client) DisableInstanceAccessControlWithOptions(request *DisableIn
 		query["AclId"] = request.AclId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.AddressIPVersion)) {
+		query["AddressIPVersion"] = request.AddressIPVersion
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
 		query["InstanceId"] = request.InstanceId
 	}
@@ -32677,6 +33046,10 @@ func (client *Client) EnableInstanceAccessControlWithOptions(request *EnableInst
 
 	if !tea.BoolValue(util.IsUnset(request.AclType)) {
 		query["AclType"] = request.AclType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AddressIPVersion)) {
+		query["AddressIPVersion"] = request.AddressIPVersion
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
