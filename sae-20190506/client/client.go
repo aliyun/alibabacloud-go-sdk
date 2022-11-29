@@ -765,6 +765,7 @@ type CreateApplicationRequest struct {
 	Deploy                        *bool   `json:"Deploy,omitempty" xml:"Deploy,omitempty"`
 	EdasContainerVersion          *string `json:"EdasContainerVersion,omitempty" xml:"EdasContainerVersion,omitempty"`
 	Envs                          *string `json:"Envs,omitempty" xml:"Envs,omitempty"`
+	ImagePullSecrets              *string `json:"ImagePullSecrets,omitempty" xml:"ImagePullSecrets,omitempty"`
 	ImageUrl                      *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
 	JarStartArgs                  *string `json:"JarStartArgs,omitempty" xml:"JarStartArgs,omitempty"`
 	JarStartOptions               *string `json:"JarStartOptions,omitempty" xml:"JarStartOptions,omitempty"`
@@ -791,6 +792,8 @@ type CreateApplicationRequest struct {
 	PreStop                       *string `json:"PreStop,omitempty" xml:"PreStop,omitempty"`
 	ProgrammingLanguage           *string `json:"ProgrammingLanguage,omitempty" xml:"ProgrammingLanguage,omitempty"`
 	PvtzDiscoverySvc              *string `json:"PvtzDiscoverySvc,omitempty" xml:"PvtzDiscoverySvc,omitempty"`
+	Python                        *string `json:"Python,omitempty" xml:"Python,omitempty"`
+	PythonModules                 *string `json:"PythonModules,omitempty" xml:"PythonModules,omitempty"`
 	Readiness                     *string `json:"Readiness,omitempty" xml:"Readiness,omitempty"`
 	Replicas                      *int32  `json:"Replicas,omitempty" xml:"Replicas,omitempty"`
 	SecurityGroupId               *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
@@ -879,6 +882,11 @@ func (s *CreateApplicationRequest) SetEdasContainerVersion(v string) *CreateAppl
 
 func (s *CreateApplicationRequest) SetEnvs(v string) *CreateApplicationRequest {
 	s.Envs = &v
+	return s
+}
+
+func (s *CreateApplicationRequest) SetImagePullSecrets(v string) *CreateApplicationRequest {
+	s.ImagePullSecrets = &v
 	return s
 }
 
@@ -1009,6 +1017,16 @@ func (s *CreateApplicationRequest) SetProgrammingLanguage(v string) *CreateAppli
 
 func (s *CreateApplicationRequest) SetPvtzDiscoverySvc(v string) *CreateApplicationRequest {
 	s.PvtzDiscoverySvc = &v
+	return s
+}
+
+func (s *CreateApplicationRequest) SetPython(v string) *CreateApplicationRequest {
+	s.Python = &v
+	return s
+}
+
+func (s *CreateApplicationRequest) SetPythonModules(v string) *CreateApplicationRequest {
+	s.PythonModules = &v
 	return s
 }
 
@@ -1599,6 +1617,7 @@ func (s *CreateConfigMapResponse) SetBody(v *CreateConfigMapResponseBody) *Creat
 }
 
 type CreateGreyTagRouteRequest struct {
+	AlbRules    *string `json:"AlbRules,omitempty" xml:"AlbRules,omitempty"`
 	AppId       *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	DubboRules  *string `json:"DubboRules,omitempty" xml:"DubboRules,omitempty"`
@@ -1612,6 +1631,11 @@ func (s CreateGreyTagRouteRequest) String() string {
 
 func (s CreateGreyTagRouteRequest) GoString() string {
 	return s.String()
+}
+
+func (s *CreateGreyTagRouteRequest) SetAlbRules(v string) *CreateGreyTagRouteRequest {
+	s.AlbRules = &v
+	return s
 }
 
 func (s *CreateGreyTagRouteRequest) SetAppId(v string) *CreateGreyTagRouteRequest {
@@ -1918,6 +1942,7 @@ type CreateJobRequest struct {
 	Deploy                        *bool   `json:"Deploy,omitempty" xml:"Deploy,omitempty"`
 	EdasContainerVersion          *string `json:"EdasContainerVersion,omitempty" xml:"EdasContainerVersion,omitempty"`
 	Envs                          *string `json:"Envs,omitempty" xml:"Envs,omitempty"`
+	ImagePullSecrets              *string `json:"ImagePullSecrets,omitempty" xml:"ImagePullSecrets,omitempty"`
 	ImageUrl                      *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
 	JarStartArgs                  *string `json:"JarStartArgs,omitempty" xml:"JarStartArgs,omitempty"`
 	JarStartOptions               *string `json:"JarStartOptions,omitempty" xml:"JarStartOptions,omitempty"`
@@ -1940,6 +1965,8 @@ type CreateJobRequest struct {
 	PostStart                     *string `json:"PostStart,omitempty" xml:"PostStart,omitempty"`
 	PreStop                       *string `json:"PreStop,omitempty" xml:"PreStop,omitempty"`
 	ProgrammingLanguage           *string `json:"ProgrammingLanguage,omitempty" xml:"ProgrammingLanguage,omitempty"`
+	Python                        *string `json:"Python,omitempty" xml:"Python,omitempty"`
+	PythonModules                 *string `json:"PythonModules,omitempty" xml:"PythonModules,omitempty"`
 	Readiness                     *string `json:"Readiness,omitempty" xml:"Readiness,omitempty"`
 	RefAppId                      *string `json:"RefAppId,omitempty" xml:"RefAppId,omitempty"`
 	Replicas                      *int32  `json:"Replicas,omitempty" xml:"Replicas,omitempty"`
@@ -2039,6 +2066,11 @@ func (s *CreateJobRequest) SetEdasContainerVersion(v string) *CreateJobRequest {
 
 func (s *CreateJobRequest) SetEnvs(v string) *CreateJobRequest {
 	s.Envs = &v
+	return s
+}
+
+func (s *CreateJobRequest) SetImagePullSecrets(v string) *CreateJobRequest {
+	s.ImagePullSecrets = &v
 	return s
 }
 
@@ -2149,6 +2181,16 @@ func (s *CreateJobRequest) SetPreStop(v string) *CreateJobRequest {
 
 func (s *CreateJobRequest) SetProgrammingLanguage(v string) *CreateJobRequest {
 	s.ProgrammingLanguage = &v
+	return s
+}
+
+func (s *CreateJobRequest) SetPython(v string) *CreateJobRequest {
+	s.Python = &v
+	return s
+}
+
+func (s *CreateJobRequest) SetPythonModules(v string) *CreateJobRequest {
+	s.PythonModules = &v
 	return s
 }
 
@@ -2484,6 +2526,140 @@ func (s *CreateNamespaceResponse) SetStatusCode(v int32) *CreateNamespaceRespons
 }
 
 func (s *CreateNamespaceResponse) SetBody(v *CreateNamespaceResponseBody) *CreateNamespaceResponse {
+	s.Body = v
+	return s
+}
+
+type CreateSecretRequest struct {
+	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+	SecretData  *string `json:"SecretData,omitempty" xml:"SecretData,omitempty"`
+	SecretName  *string `json:"SecretName,omitempty" xml:"SecretName,omitempty"`
+	SecretType  *string `json:"SecretType,omitempty" xml:"SecretType,omitempty"`
+}
+
+func (s CreateSecretRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSecretRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSecretRequest) SetNamespaceId(v string) *CreateSecretRequest {
+	s.NamespaceId = &v
+	return s
+}
+
+func (s *CreateSecretRequest) SetSecretData(v string) *CreateSecretRequest {
+	s.SecretData = &v
+	return s
+}
+
+func (s *CreateSecretRequest) SetSecretName(v string) *CreateSecretRequest {
+	s.SecretName = &v
+	return s
+}
+
+func (s *CreateSecretRequest) SetSecretType(v string) *CreateSecretRequest {
+	s.SecretType = &v
+	return s
+}
+
+type CreateSecretResponseBody struct {
+	Code      *string                       `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *CreateSecretResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	ErrorCode *string                       `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	Message   *string                       `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                         `json:"Success,omitempty" xml:"Success,omitempty"`
+	TraceId   *string                       `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
+}
+
+func (s CreateSecretResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSecretResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSecretResponseBody) SetCode(v string) *CreateSecretResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CreateSecretResponseBody) SetData(v *CreateSecretResponseBodyData) *CreateSecretResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *CreateSecretResponseBody) SetErrorCode(v string) *CreateSecretResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *CreateSecretResponseBody) SetMessage(v string) *CreateSecretResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CreateSecretResponseBody) SetRequestId(v string) *CreateSecretResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateSecretResponseBody) SetSuccess(v bool) *CreateSecretResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *CreateSecretResponseBody) SetTraceId(v string) *CreateSecretResponseBody {
+	s.TraceId = &v
+	return s
+}
+
+type CreateSecretResponseBodyData struct {
+	SecretId *int64 `json:"SecretId,omitempty" xml:"SecretId,omitempty"`
+}
+
+func (s CreateSecretResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSecretResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSecretResponseBodyData) SetSecretId(v int64) *CreateSecretResponseBodyData {
+	s.SecretId = &v
+	return s
+}
+
+type CreateSecretResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateSecretResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateSecretResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSecretResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSecretResponse) SetHeaders(v map[string]*string) *CreateSecretResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateSecretResponse) SetStatusCode(v int32) *CreateSecretResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateSecretResponse) SetBody(v *CreateSecretResponseBody) *CreateSecretResponse {
 	s.Body = v
 	return s
 }
@@ -3324,6 +3500,128 @@ func (s *DeleteNamespaceResponse) SetBody(v *DeleteNamespaceResponseBody) *Delet
 	return s
 }
 
+type DeleteSecretRequest struct {
+	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+	SecretId    *int64  `json:"SecretId,omitempty" xml:"SecretId,omitempty"`
+}
+
+func (s DeleteSecretRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteSecretRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteSecretRequest) SetNamespaceId(v string) *DeleteSecretRequest {
+	s.NamespaceId = &v
+	return s
+}
+
+func (s *DeleteSecretRequest) SetSecretId(v int64) *DeleteSecretRequest {
+	s.SecretId = &v
+	return s
+}
+
+type DeleteSecretResponseBody struct {
+	Code      *string                       `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *DeleteSecretResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	ErrorCode *string                       `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	Message   *string                       `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                         `json:"Success,omitempty" xml:"Success,omitempty"`
+	TraceId   *string                       `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
+}
+
+func (s DeleteSecretResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteSecretResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteSecretResponseBody) SetCode(v string) *DeleteSecretResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DeleteSecretResponseBody) SetData(v *DeleteSecretResponseBodyData) *DeleteSecretResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DeleteSecretResponseBody) SetErrorCode(v string) *DeleteSecretResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *DeleteSecretResponseBody) SetMessage(v string) *DeleteSecretResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DeleteSecretResponseBody) SetRequestId(v string) *DeleteSecretResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteSecretResponseBody) SetSuccess(v bool) *DeleteSecretResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *DeleteSecretResponseBody) SetTraceId(v string) *DeleteSecretResponseBody {
+	s.TraceId = &v
+	return s
+}
+
+type DeleteSecretResponseBodyData struct {
+	SecretId *int64 `json:"SecretId,omitempty" xml:"SecretId,omitempty"`
+}
+
+func (s DeleteSecretResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteSecretResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteSecretResponseBodyData) SetSecretId(v int64) *DeleteSecretResponseBodyData {
+	s.SecretId = &v
+	return s
+}
+
+type DeleteSecretResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteSecretResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteSecretResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteSecretResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteSecretResponse) SetHeaders(v map[string]*string) *DeleteSecretResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteSecretResponse) SetStatusCode(v int32) *DeleteSecretResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteSecretResponse) SetBody(v *DeleteSecretResponseBody) *DeleteSecretResponse {
+	s.Body = v
+	return s
+}
+
 type DeployApplicationRequest struct {
 	AcrAssumeRoleArn                 *string `json:"AcrAssumeRoleArn,omitempty" xml:"AcrAssumeRoleArn,omitempty"`
 	AcrInstanceId                    *string `json:"AcrInstanceId,omitempty" xml:"AcrInstanceId,omitempty"`
@@ -3340,6 +3638,7 @@ type DeployApplicationRequest struct {
 	EnableAhas                       *string `json:"EnableAhas,omitempty" xml:"EnableAhas,omitempty"`
 	EnableGreyTagRoute               *bool   `json:"EnableGreyTagRoute,omitempty" xml:"EnableGreyTagRoute,omitempty"`
 	Envs                             *string `json:"Envs,omitempty" xml:"Envs,omitempty"`
+	ImagePullSecrets                 *string `json:"ImagePullSecrets,omitempty" xml:"ImagePullSecrets,omitempty"`
 	ImageUrl                         *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
 	JarStartArgs                     *string `json:"JarStartArgs,omitempty" xml:"JarStartArgs,omitempty"`
 	JarStartOptions                  *string `json:"JarStartOptions,omitempty" xml:"JarStartOptions,omitempty"`
@@ -3364,6 +3663,8 @@ type DeployApplicationRequest struct {
 	PostStart                        *string `json:"PostStart,omitempty" xml:"PostStart,omitempty"`
 	PreStop                          *string `json:"PreStop,omitempty" xml:"PreStop,omitempty"`
 	PvtzDiscoverySvc                 *string `json:"PvtzDiscoverySvc,omitempty" xml:"PvtzDiscoverySvc,omitempty"`
+	Python                           *string `json:"Python,omitempty" xml:"Python,omitempty"`
+	PythonModules                    *string `json:"PythonModules,omitempty" xml:"PythonModules,omitempty"`
 	Readiness                        *string `json:"Readiness,omitempty" xml:"Readiness,omitempty"`
 	SlsConfigs                       *string `json:"SlsConfigs,omitempty" xml:"SlsConfigs,omitempty"`
 	TerminationGracePeriodSeconds    *int32  `json:"TerminationGracePeriodSeconds,omitempty" xml:"TerminationGracePeriodSeconds,omitempty"`
@@ -3454,6 +3755,11 @@ func (s *DeployApplicationRequest) SetEnableGreyTagRoute(v bool) *DeployApplicat
 
 func (s *DeployApplicationRequest) SetEnvs(v string) *DeployApplicationRequest {
 	s.Envs = &v
+	return s
+}
+
+func (s *DeployApplicationRequest) SetImagePullSecrets(v string) *DeployApplicationRequest {
+	s.ImagePullSecrets = &v
 	return s
 }
 
@@ -3574,6 +3880,16 @@ func (s *DeployApplicationRequest) SetPreStop(v string) *DeployApplicationReques
 
 func (s *DeployApplicationRequest) SetPvtzDiscoverySvc(v string) *DeployApplicationRequest {
 	s.PvtzDiscoverySvc = &v
+	return s
+}
+
+func (s *DeployApplicationRequest) SetPython(v string) *DeployApplicationRequest {
+	s.Python = &v
+	return s
+}
+
+func (s *DeployApplicationRequest) SetPythonModules(v string) *DeployApplicationRequest {
+	s.PythonModules = &v
 	return s
 }
 
@@ -4109,6 +4425,7 @@ type DescribeApplicationConfigResponseBodyData struct {
 	EnableAhas                    *string                                                        `json:"EnableAhas,omitempty" xml:"EnableAhas,omitempty"`
 	EnableGreyTagRoute            *bool                                                          `json:"EnableGreyTagRoute,omitempty" xml:"EnableGreyTagRoute,omitempty"`
 	Envs                          *string                                                        `json:"Envs,omitempty" xml:"Envs,omitempty"`
+	ImagePullSecrets              *string                                                        `json:"ImagePullSecrets,omitempty" xml:"ImagePullSecrets,omitempty"`
 	ImageUrl                      *string                                                        `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
 	JarStartArgs                  *string                                                        `json:"JarStartArgs,omitempty" xml:"JarStartArgs,omitempty"`
 	JarStartOptions               *string                                                        `json:"JarStartOptions,omitempty" xml:"JarStartOptions,omitempty"`
@@ -4138,6 +4455,8 @@ type DescribeApplicationConfigResponseBodyData struct {
 	PreStop                       *string                                                        `json:"PreStop,omitempty" xml:"PreStop,omitempty"`
 	ProgrammingLanguage           *string                                                        `json:"ProgrammingLanguage,omitempty" xml:"ProgrammingLanguage,omitempty"`
 	PvtzDiscovery                 *string                                                        `json:"PvtzDiscovery,omitempty" xml:"PvtzDiscovery,omitempty"`
+	Python                        *string                                                        `json:"Python,omitempty" xml:"Python,omitempty"`
+	PythonModules                 *string                                                        `json:"PythonModules,omitempty" xml:"PythonModules,omitempty"`
 	Readiness                     *string                                                        `json:"Readiness,omitempty" xml:"Readiness,omitempty"`
 	RegionId                      *string                                                        `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	Replicas                      *int32                                                         `json:"Replicas,omitempty" xml:"Replicas,omitempty"`
@@ -4239,6 +4558,11 @@ func (s *DescribeApplicationConfigResponseBodyData) SetEnableGreyTagRoute(v bool
 
 func (s *DescribeApplicationConfigResponseBodyData) SetEnvs(v string) *DescribeApplicationConfigResponseBodyData {
 	s.Envs = &v
+	return s
+}
+
+func (s *DescribeApplicationConfigResponseBodyData) SetImagePullSecrets(v string) *DescribeApplicationConfigResponseBodyData {
+	s.ImagePullSecrets = &v
 	return s
 }
 
@@ -4384,6 +4708,16 @@ func (s *DescribeApplicationConfigResponseBodyData) SetProgrammingLanguage(v str
 
 func (s *DescribeApplicationConfigResponseBodyData) SetPvtzDiscovery(v string) *DescribeApplicationConfigResponseBodyData {
 	s.PvtzDiscovery = &v
+	return s
+}
+
+func (s *DescribeApplicationConfigResponseBodyData) SetPython(v string) *DescribeApplicationConfigResponseBodyData {
+	s.Python = &v
+	return s
+}
+
+func (s *DescribeApplicationConfigResponseBodyData) SetPythonModules(v string) *DescribeApplicationConfigResponseBodyData {
+	s.PythonModules = &v
 	return s
 }
 
@@ -7533,6 +7867,7 @@ func (s *DescribeGreyTagRouteResponseBody) SetTraceId(v string) *DescribeGreyTag
 }
 
 type DescribeGreyTagRouteResponseBodyData struct {
+	AlbRules       []*DescribeGreyTagRouteResponseBodyDataAlbRules   `json:"AlbRules,omitempty" xml:"AlbRules,omitempty" type:"Repeated"`
 	AppId          *string                                           `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	CreateTime     *int64                                            `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	Description    *string                                           `json:"Description,omitempty" xml:"Description,omitempty"`
@@ -7549,6 +7884,11 @@ func (s DescribeGreyTagRouteResponseBodyData) String() string {
 
 func (s DescribeGreyTagRouteResponseBodyData) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeGreyTagRouteResponseBodyData) SetAlbRules(v []*DescribeGreyTagRouteResponseBodyDataAlbRules) *DescribeGreyTagRouteResponseBodyData {
+	s.AlbRules = v
+	return s
 }
 
 func (s *DescribeGreyTagRouteResponseBodyData) SetAppId(v string) *DescribeGreyTagRouteResponseBodyData {
@@ -7588,6 +7928,94 @@ func (s *DescribeGreyTagRouteResponseBodyData) SetScRules(v []*DescribeGreyTagRo
 
 func (s *DescribeGreyTagRouteResponseBodyData) SetUpdateTime(v int64) *DescribeGreyTagRouteResponseBodyData {
 	s.UpdateTime = &v
+	return s
+}
+
+type DescribeGreyTagRouteResponseBodyDataAlbRules struct {
+	Condition *string                                              `json:"condition,omitempty" xml:"condition,omitempty"`
+	IngressId *string                                              `json:"ingressId,omitempty" xml:"ingressId,omitempty"`
+	Items     []*DescribeGreyTagRouteResponseBodyDataAlbRulesItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
+	ServiceId *string                                              `json:"serviceId,omitempty" xml:"serviceId,omitempty"`
+}
+
+func (s DescribeGreyTagRouteResponseBodyDataAlbRules) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeGreyTagRouteResponseBodyDataAlbRules) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeGreyTagRouteResponseBodyDataAlbRules) SetCondition(v string) *DescribeGreyTagRouteResponseBodyDataAlbRules {
+	s.Condition = &v
+	return s
+}
+
+func (s *DescribeGreyTagRouteResponseBodyDataAlbRules) SetIngressId(v string) *DescribeGreyTagRouteResponseBodyDataAlbRules {
+	s.IngressId = &v
+	return s
+}
+
+func (s *DescribeGreyTagRouteResponseBodyDataAlbRules) SetItems(v []*DescribeGreyTagRouteResponseBodyDataAlbRulesItems) *DescribeGreyTagRouteResponseBodyDataAlbRules {
+	s.Items = v
+	return s
+}
+
+func (s *DescribeGreyTagRouteResponseBodyDataAlbRules) SetServiceId(v string) *DescribeGreyTagRouteResponseBodyDataAlbRules {
+	s.ServiceId = &v
+	return s
+}
+
+type DescribeGreyTagRouteResponseBodyDataAlbRulesItems struct {
+	Cond     *string `json:"cond,omitempty" xml:"cond,omitempty"`
+	Expr     *string `json:"expr,omitempty" xml:"expr,omitempty"`
+	Index    *int32  `json:"index,omitempty" xml:"index,omitempty"`
+	Name     *string `json:"name,omitempty" xml:"name,omitempty"`
+	Operator *string `json:"operator,omitempty" xml:"operator,omitempty"`
+	Type     *string `json:"type,omitempty" xml:"type,omitempty"`
+	Value    *string `json:"value,omitempty" xml:"value,omitempty"`
+}
+
+func (s DescribeGreyTagRouteResponseBodyDataAlbRulesItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeGreyTagRouteResponseBodyDataAlbRulesItems) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeGreyTagRouteResponseBodyDataAlbRulesItems) SetCond(v string) *DescribeGreyTagRouteResponseBodyDataAlbRulesItems {
+	s.Cond = &v
+	return s
+}
+
+func (s *DescribeGreyTagRouteResponseBodyDataAlbRulesItems) SetExpr(v string) *DescribeGreyTagRouteResponseBodyDataAlbRulesItems {
+	s.Expr = &v
+	return s
+}
+
+func (s *DescribeGreyTagRouteResponseBodyDataAlbRulesItems) SetIndex(v int32) *DescribeGreyTagRouteResponseBodyDataAlbRulesItems {
+	s.Index = &v
+	return s
+}
+
+func (s *DescribeGreyTagRouteResponseBodyDataAlbRulesItems) SetName(v string) *DescribeGreyTagRouteResponseBodyDataAlbRulesItems {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeGreyTagRouteResponseBodyDataAlbRulesItems) SetOperator(v string) *DescribeGreyTagRouteResponseBodyDataAlbRulesItems {
+	s.Operator = &v
+	return s
+}
+
+func (s *DescribeGreyTagRouteResponseBodyDataAlbRulesItems) SetType(v string) *DescribeGreyTagRouteResponseBodyDataAlbRulesItems {
+	s.Type = &v
+	return s
+}
+
+func (s *DescribeGreyTagRouteResponseBodyDataAlbRulesItems) SetValue(v string) *DescribeGreyTagRouteResponseBodyDataAlbRulesItems {
+	s.Value = &v
 	return s
 }
 
@@ -8394,6 +8822,7 @@ type DescribeJobResponseBodyData struct {
 	EnableAhas                    *string                                          `json:"EnableAhas,omitempty" xml:"EnableAhas,omitempty"`
 	EnableGreyTagRoute            *bool                                            `json:"EnableGreyTagRoute,omitempty" xml:"EnableGreyTagRoute,omitempty"`
 	Envs                          *string                                          `json:"Envs,omitempty" xml:"Envs,omitempty"`
+	ImagePullSecrets              *string                                          `json:"ImagePullSecrets,omitempty" xml:"ImagePullSecrets,omitempty"`
 	ImageUrl                      *string                                          `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
 	JarStartArgs                  *string                                          `json:"JarStartArgs,omitempty" xml:"JarStartArgs,omitempty"`
 	JarStartOptions               *string                                          `json:"JarStartOptions,omitempty" xml:"JarStartOptions,omitempty"`
@@ -8420,6 +8849,8 @@ type DescribeJobResponseBodyData struct {
 	PreStop                       *string                                          `json:"PreStop,omitempty" xml:"PreStop,omitempty"`
 	ProgrammingLanguage           *string                                          `json:"ProgrammingLanguage,omitempty" xml:"ProgrammingLanguage,omitempty"`
 	PublicWebHookUrls             []*string                                        `json:"PublicWebHookUrls,omitempty" xml:"PublicWebHookUrls,omitempty" type:"Repeated"`
+	Python                        *string                                          `json:"Python,omitempty" xml:"Python,omitempty"`
+	PythonModules                 *string                                          `json:"PythonModules,omitempty" xml:"PythonModules,omitempty"`
 	Readiness                     *string                                          `json:"Readiness,omitempty" xml:"Readiness,omitempty"`
 	RefAppId                      *string                                          `json:"RefAppId,omitempty" xml:"RefAppId,omitempty"`
 	RefedAppIds                   []*string                                        `json:"RefedAppIds,omitempty" xml:"RefedAppIds,omitempty" type:"Repeated"`
@@ -8533,6 +8964,11 @@ func (s *DescribeJobResponseBodyData) SetEnableGreyTagRoute(v bool) *DescribeJob
 
 func (s *DescribeJobResponseBodyData) SetEnvs(v string) *DescribeJobResponseBodyData {
 	s.Envs = &v
+	return s
+}
+
+func (s *DescribeJobResponseBodyData) SetImagePullSecrets(v string) *DescribeJobResponseBodyData {
+	s.ImagePullSecrets = &v
 	return s
 }
 
@@ -8663,6 +9099,16 @@ func (s *DescribeJobResponseBodyData) SetProgrammingLanguage(v string) *Describe
 
 func (s *DescribeJobResponseBodyData) SetPublicWebHookUrls(v []*string) *DescribeJobResponseBodyData {
 	s.PublicWebHookUrls = v
+	return s
+}
+
+func (s *DescribeJobResponseBodyData) SetPython(v string) *DescribeJobResponseBodyData {
+	s.Python = &v
+	return s
+}
+
+func (s *DescribeJobResponseBodyData) SetPythonModules(v string) *DescribeJobResponseBodyData {
+	s.PythonModules = &v
 	return s
 }
 
@@ -9932,6 +10378,7 @@ func (s *DescribeNamespacesResponseBodyData) SetTotalSize(v int32) *DescribeName
 
 type DescribeNamespacesResponseBodyDataNamespaces struct {
 	AccessKey            *string `json:"AccessKey,omitempty" xml:"AccessKey,omitempty"`
+	AddressServerHost    *string `json:"AddressServerHost,omitempty" xml:"AddressServerHost,omitempty"`
 	NamespaceDescription *string `json:"NamespaceDescription,omitempty" xml:"NamespaceDescription,omitempty"`
 	NamespaceId          *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
 	NamespaceName        *string `json:"NamespaceName,omitempty" xml:"NamespaceName,omitempty"`
@@ -9950,6 +10397,11 @@ func (s DescribeNamespacesResponseBodyDataNamespaces) GoString() string {
 
 func (s *DescribeNamespacesResponseBodyDataNamespaces) SetAccessKey(v string) *DescribeNamespacesResponseBodyDataNamespaces {
 	s.AccessKey = &v
+	return s
+}
+
+func (s *DescribeNamespacesResponseBodyDataNamespaces) SetAddressServerHost(v string) *DescribeNamespacesResponseBodyDataNamespaces {
+	s.AddressServerHost = &v
 	return s
 }
 
@@ -10409,6 +10861,193 @@ func (s *DescribeRegionsResponse) SetBody(v *DescribeRegionsResponseBody) *Descr
 	return s
 }
 
+type DescribeSecretRequest struct {
+	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+	SecretId    *int64  `json:"SecretId,omitempty" xml:"SecretId,omitempty"`
+}
+
+func (s DescribeSecretRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSecretRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSecretRequest) SetNamespaceId(v string) *DescribeSecretRequest {
+	s.NamespaceId = &v
+	return s
+}
+
+func (s *DescribeSecretRequest) SetSecretId(v int64) *DescribeSecretRequest {
+	s.SecretId = &v
+	return s
+}
+
+type DescribeSecretResponseBody struct {
+	Code      *string                         `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *DescribeSecretResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	ErrorCode *string                         `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	Message   *string                         `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                           `json:"Success,omitempty" xml:"Success,omitempty"`
+	TraceId   *string                         `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
+}
+
+func (s DescribeSecretResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSecretResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSecretResponseBody) SetCode(v string) *DescribeSecretResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DescribeSecretResponseBody) SetData(v *DescribeSecretResponseBodyData) *DescribeSecretResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DescribeSecretResponseBody) SetErrorCode(v string) *DescribeSecretResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *DescribeSecretResponseBody) SetMessage(v string) *DescribeSecretResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DescribeSecretResponseBody) SetRequestId(v string) *DescribeSecretResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeSecretResponseBody) SetSuccess(v bool) *DescribeSecretResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *DescribeSecretResponseBody) SetTraceId(v string) *DescribeSecretResponseBody {
+	s.TraceId = &v
+	return s
+}
+
+type DescribeSecretResponseBodyData struct {
+	CreateTime  *int64                                      `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	NamespaceId *string                                     `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+	RelateApps  []*DescribeSecretResponseBodyDataRelateApps `json:"RelateApps,omitempty" xml:"RelateApps,omitempty" type:"Repeated"`
+	SecretData  map[string]*string                          `json:"SecretData,omitempty" xml:"SecretData,omitempty"`
+	SecretId    *int64                                      `json:"SecretId,omitempty" xml:"SecretId,omitempty"`
+	SecretName  *string                                     `json:"SecretName,omitempty" xml:"SecretName,omitempty"`
+	SecretType  *string                                     `json:"SecretType,omitempty" xml:"SecretType,omitempty"`
+	UpdateTime  *int64                                      `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+}
+
+func (s DescribeSecretResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSecretResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSecretResponseBodyData) SetCreateTime(v int64) *DescribeSecretResponseBodyData {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *DescribeSecretResponseBodyData) SetNamespaceId(v string) *DescribeSecretResponseBodyData {
+	s.NamespaceId = &v
+	return s
+}
+
+func (s *DescribeSecretResponseBodyData) SetRelateApps(v []*DescribeSecretResponseBodyDataRelateApps) *DescribeSecretResponseBodyData {
+	s.RelateApps = v
+	return s
+}
+
+func (s *DescribeSecretResponseBodyData) SetSecretData(v map[string]*string) *DescribeSecretResponseBodyData {
+	s.SecretData = v
+	return s
+}
+
+func (s *DescribeSecretResponseBodyData) SetSecretId(v int64) *DescribeSecretResponseBodyData {
+	s.SecretId = &v
+	return s
+}
+
+func (s *DescribeSecretResponseBodyData) SetSecretName(v string) *DescribeSecretResponseBodyData {
+	s.SecretName = &v
+	return s
+}
+
+func (s *DescribeSecretResponseBodyData) SetSecretType(v string) *DescribeSecretResponseBodyData {
+	s.SecretType = &v
+	return s
+}
+
+func (s *DescribeSecretResponseBodyData) SetUpdateTime(v int64) *DescribeSecretResponseBodyData {
+	s.UpdateTime = &v
+	return s
+}
+
+type DescribeSecretResponseBodyDataRelateApps struct {
+	AppId   *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+}
+
+func (s DescribeSecretResponseBodyDataRelateApps) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSecretResponseBodyDataRelateApps) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSecretResponseBodyDataRelateApps) SetAppId(v string) *DescribeSecretResponseBodyDataRelateApps {
+	s.AppId = &v
+	return s
+}
+
+func (s *DescribeSecretResponseBodyDataRelateApps) SetAppName(v string) *DescribeSecretResponseBodyDataRelateApps {
+	s.AppName = &v
+	return s
+}
+
+type DescribeSecretResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeSecretResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeSecretResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSecretResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSecretResponse) SetHeaders(v map[string]*string) *DescribeSecretResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeSecretResponse) SetStatusCode(v int32) *DescribeSecretResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeSecretResponse) SetBody(v *DescribeSecretResponseBody) *DescribeSecretResponse {
+	s.Body = v
+	return s
+}
+
 type DisableApplicationScalingRuleRequest struct {
 	AppId           *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	ScalingRuleName *string `json:"ScalingRuleName,omitempty" xml:"ScalingRuleName,omitempty"`
@@ -10567,6 +11206,7 @@ type ExecJobRequest struct {
 	EventId         *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
 	JarStartArgs    *string `json:"JarStartArgs,omitempty" xml:"JarStartArgs,omitempty"`
 	JarStartOptions *string `json:"JarStartOptions,omitempty" xml:"JarStartOptions,omitempty"`
+	Time            *string `json:"Time,omitempty" xml:"Time,omitempty"`
 	WarStartOptions *string `json:"WarStartOptions,omitempty" xml:"WarStartOptions,omitempty"`
 }
 
@@ -10610,6 +11250,11 @@ func (s *ExecJobRequest) SetJarStartArgs(v string) *ExecJobRequest {
 
 func (s *ExecJobRequest) SetJarStartOptions(v string) *ExecJobRequest {
 	s.JarStartOptions = &v
+	return s
+}
+
+func (s *ExecJobRequest) SetTime(v string) *ExecJobRequest {
+	s.Time = &v
 	return s
 }
 
@@ -12295,6 +12940,7 @@ func (s *ListGreyTagRouteResponseBodyData) SetTotalSize(v int64) *ListGreyTagRou
 }
 
 type ListGreyTagRouteResponseBodyDataResult struct {
+	AlbRules       []*ListGreyTagRouteResponseBodyDataResultAlbRules   `json:"AlbRules,omitempty" xml:"AlbRules,omitempty" type:"Repeated"`
 	CreateTime     *int64                                              `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	Description    *string                                             `json:"Description,omitempty" xml:"Description,omitempty"`
 	DubboRules     []*ListGreyTagRouteResponseBodyDataResultDubboRules `json:"DubboRules,omitempty" xml:"DubboRules,omitempty" type:"Repeated"`
@@ -12310,6 +12956,11 @@ func (s ListGreyTagRouteResponseBodyDataResult) String() string {
 
 func (s ListGreyTagRouteResponseBodyDataResult) GoString() string {
 	return s.String()
+}
+
+func (s *ListGreyTagRouteResponseBodyDataResult) SetAlbRules(v []*ListGreyTagRouteResponseBodyDataResultAlbRules) *ListGreyTagRouteResponseBodyDataResult {
+	s.AlbRules = v
+	return s
 }
 
 func (s *ListGreyTagRouteResponseBodyDataResult) SetCreateTime(v int64) *ListGreyTagRouteResponseBodyDataResult {
@@ -12344,6 +12995,94 @@ func (s *ListGreyTagRouteResponseBodyDataResult) SetScRules(v []*ListGreyTagRout
 
 func (s *ListGreyTagRouteResponseBodyDataResult) SetUpdateTime(v int64) *ListGreyTagRouteResponseBodyDataResult {
 	s.UpdateTime = &v
+	return s
+}
+
+type ListGreyTagRouteResponseBodyDataResultAlbRules struct {
+	Condition *string                                                `json:"condition,omitempty" xml:"condition,omitempty"`
+	IngressId *string                                                `json:"ingressId,omitempty" xml:"ingressId,omitempty"`
+	Items     []*ListGreyTagRouteResponseBodyDataResultAlbRulesItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
+	ServiceId *string                                                `json:"serviceId,omitempty" xml:"serviceId,omitempty"`
+}
+
+func (s ListGreyTagRouteResponseBodyDataResultAlbRules) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListGreyTagRouteResponseBodyDataResultAlbRules) GoString() string {
+	return s.String()
+}
+
+func (s *ListGreyTagRouteResponseBodyDataResultAlbRules) SetCondition(v string) *ListGreyTagRouteResponseBodyDataResultAlbRules {
+	s.Condition = &v
+	return s
+}
+
+func (s *ListGreyTagRouteResponseBodyDataResultAlbRules) SetIngressId(v string) *ListGreyTagRouteResponseBodyDataResultAlbRules {
+	s.IngressId = &v
+	return s
+}
+
+func (s *ListGreyTagRouteResponseBodyDataResultAlbRules) SetItems(v []*ListGreyTagRouteResponseBodyDataResultAlbRulesItems) *ListGreyTagRouteResponseBodyDataResultAlbRules {
+	s.Items = v
+	return s
+}
+
+func (s *ListGreyTagRouteResponseBodyDataResultAlbRules) SetServiceId(v string) *ListGreyTagRouteResponseBodyDataResultAlbRules {
+	s.ServiceId = &v
+	return s
+}
+
+type ListGreyTagRouteResponseBodyDataResultAlbRulesItems struct {
+	Cond     *string `json:"cond,omitempty" xml:"cond,omitempty"`
+	Expr     *string `json:"expr,omitempty" xml:"expr,omitempty"`
+	Index    *int32  `json:"index,omitempty" xml:"index,omitempty"`
+	Name     *string `json:"name,omitempty" xml:"name,omitempty"`
+	Operator *string `json:"operator,omitempty" xml:"operator,omitempty"`
+	Type     *string `json:"type,omitempty" xml:"type,omitempty"`
+	Value    *string `json:"value,omitempty" xml:"value,omitempty"`
+}
+
+func (s ListGreyTagRouteResponseBodyDataResultAlbRulesItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListGreyTagRouteResponseBodyDataResultAlbRulesItems) GoString() string {
+	return s.String()
+}
+
+func (s *ListGreyTagRouteResponseBodyDataResultAlbRulesItems) SetCond(v string) *ListGreyTagRouteResponseBodyDataResultAlbRulesItems {
+	s.Cond = &v
+	return s
+}
+
+func (s *ListGreyTagRouteResponseBodyDataResultAlbRulesItems) SetExpr(v string) *ListGreyTagRouteResponseBodyDataResultAlbRulesItems {
+	s.Expr = &v
+	return s
+}
+
+func (s *ListGreyTagRouteResponseBodyDataResultAlbRulesItems) SetIndex(v int32) *ListGreyTagRouteResponseBodyDataResultAlbRulesItems {
+	s.Index = &v
+	return s
+}
+
+func (s *ListGreyTagRouteResponseBodyDataResultAlbRulesItems) SetName(v string) *ListGreyTagRouteResponseBodyDataResultAlbRulesItems {
+	s.Name = &v
+	return s
+}
+
+func (s *ListGreyTagRouteResponseBodyDataResultAlbRulesItems) SetOperator(v string) *ListGreyTagRouteResponseBodyDataResultAlbRulesItems {
+	s.Operator = &v
+	return s
+}
+
+func (s *ListGreyTagRouteResponseBodyDataResultAlbRulesItems) SetType(v string) *ListGreyTagRouteResponseBodyDataResultAlbRulesItems {
+	s.Type = &v
+	return s
+}
+
+func (s *ListGreyTagRouteResponseBodyDataResultAlbRulesItems) SetValue(v string) *ListGreyTagRouteResponseBodyDataResultAlbRulesItems {
+	s.Value = &v
 	return s
 }
 
@@ -12923,22 +13662,24 @@ func (s *ListJobsResponseBodyData) SetTotalSize(v int32) *ListJobsResponseBodyDa
 }
 
 type ListJobsResponseBodyDataApplications struct {
-	Active            *int64                                      `json:"Active,omitempty" xml:"Active,omitempty"`
-	AppDeletingStatus *bool                                       `json:"AppDeletingStatus,omitempty" xml:"AppDeletingStatus,omitempty"`
-	AppDescription    *string                                     `json:"AppDescription,omitempty" xml:"AppDescription,omitempty"`
-	AppId             *string                                     `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	AppName           *string                                     `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	CompletionTime    *int64                                      `json:"CompletionTime,omitempty" xml:"CompletionTime,omitempty"`
-	Failed            *int64                                      `json:"Failed,omitempty" xml:"Failed,omitempty"`
-	Instances         *int32                                      `json:"Instances,omitempty" xml:"Instances,omitempty"`
-	LastStartTime     *int64                                      `json:"LastStartTime,omitempty" xml:"LastStartTime,omitempty"`
-	NamespaceId       *string                                     `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
-	RegionId          *string                                     `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RunningInstances  *int32                                      `json:"RunningInstances,omitempty" xml:"RunningInstances,omitempty"`
-	Succeeded         *int64                                      `json:"Succeeded,omitempty" xml:"Succeeded,omitempty"`
-	Suspend           *bool                                       `json:"Suspend,omitempty" xml:"Suspend,omitempty"`
-	Tags              []*ListJobsResponseBodyDataApplicationsTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	TriggerConfig     *string                                     `json:"TriggerConfig,omitempty" xml:"TriggerConfig,omitempty"`
+	Active               *int64                                      `json:"Active,omitempty" xml:"Active,omitempty"`
+	AppDeletingStatus    *bool                                       `json:"AppDeletingStatus,omitempty" xml:"AppDeletingStatus,omitempty"`
+	AppDescription       *string                                     `json:"AppDescription,omitempty" xml:"AppDescription,omitempty"`
+	AppId                *string                                     `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppName              *string                                     `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	CompletionTime       *int64                                      `json:"CompletionTime,omitempty" xml:"CompletionTime,omitempty"`
+	Failed               *int64                                      `json:"Failed,omitempty" xml:"Failed,omitempty"`
+	Instances            *int32                                      `json:"Instances,omitempty" xml:"Instances,omitempty"`
+	LastChangeorderState *string                                     `json:"LastChangeorderState,omitempty" xml:"LastChangeorderState,omitempty"`
+	LastJobState         *string                                     `json:"LastJobState,omitempty" xml:"LastJobState,omitempty"`
+	LastStartTime        *int64                                      `json:"LastStartTime,omitempty" xml:"LastStartTime,omitempty"`
+	NamespaceId          *string                                     `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+	RegionId             *string                                     `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RunningInstances     *int32                                      `json:"RunningInstances,omitempty" xml:"RunningInstances,omitempty"`
+	Succeeded            *int64                                      `json:"Succeeded,omitempty" xml:"Succeeded,omitempty"`
+	Suspend              *bool                                       `json:"Suspend,omitempty" xml:"Suspend,omitempty"`
+	Tags                 []*ListJobsResponseBodyDataApplicationsTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	TriggerConfig        *string                                     `json:"TriggerConfig,omitempty" xml:"TriggerConfig,omitempty"`
 }
 
 func (s ListJobsResponseBodyDataApplications) String() string {
@@ -12986,6 +13727,16 @@ func (s *ListJobsResponseBodyDataApplications) SetFailed(v int64) *ListJobsRespo
 
 func (s *ListJobsResponseBodyDataApplications) SetInstances(v int32) *ListJobsResponseBodyDataApplications {
 	s.Instances = &v
+	return s
+}
+
+func (s *ListJobsResponseBodyDataApplications) SetLastChangeorderState(v string) *ListJobsResponseBodyDataApplications {
+	s.LastChangeorderState = &v
+	return s
+}
+
+func (s *ListJobsResponseBodyDataApplications) SetLastJobState(v string) *ListJobsResponseBodyDataApplications {
+	s.LastJobState = &v
 	return s
 }
 
@@ -13897,6 +14648,198 @@ func (s *ListPublishedServicesResponse) SetStatusCode(v int32) *ListPublishedSer
 }
 
 func (s *ListPublishedServicesResponse) SetBody(v *ListPublishedServicesResponseBody) *ListPublishedServicesResponse {
+	s.Body = v
+	return s
+}
+
+type ListSecretsRequest struct {
+	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+}
+
+func (s ListSecretsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSecretsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListSecretsRequest) SetNamespaceId(v string) *ListSecretsRequest {
+	s.NamespaceId = &v
+	return s
+}
+
+type ListSecretsResponseBody struct {
+	Code      *string                      `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *ListSecretsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	ErrorCode *string                      `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	Message   *string                      `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                        `json:"Success,omitempty" xml:"Success,omitempty"`
+	TraceId   *string                      `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
+}
+
+func (s ListSecretsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSecretsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListSecretsResponseBody) SetCode(v string) *ListSecretsResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListSecretsResponseBody) SetData(v *ListSecretsResponseBodyData) *ListSecretsResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListSecretsResponseBody) SetErrorCode(v string) *ListSecretsResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ListSecretsResponseBody) SetMessage(v string) *ListSecretsResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListSecretsResponseBody) SetRequestId(v string) *ListSecretsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListSecretsResponseBody) SetSuccess(v bool) *ListSecretsResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *ListSecretsResponseBody) SetTraceId(v string) *ListSecretsResponseBody {
+	s.TraceId = &v
+	return s
+}
+
+type ListSecretsResponseBodyData struct {
+	Secrets []*ListSecretsResponseBodyDataSecrets `json:"Secrets,omitempty" xml:"Secrets,omitempty" type:"Repeated"`
+}
+
+func (s ListSecretsResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSecretsResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListSecretsResponseBodyData) SetSecrets(v []*ListSecretsResponseBodyDataSecrets) *ListSecretsResponseBodyData {
+	s.Secrets = v
+	return s
+}
+
+type ListSecretsResponseBodyDataSecrets struct {
+	CreateTime  *int64                                          `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	NamespaceId *string                                         `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+	RelateApps  []*ListSecretsResponseBodyDataSecretsRelateApps `json:"RelateApps,omitempty" xml:"RelateApps,omitempty" type:"Repeated"`
+	SecretId    *int64                                          `json:"SecretId,omitempty" xml:"SecretId,omitempty"`
+	SecretName  *string                                         `json:"SecretName,omitempty" xml:"SecretName,omitempty"`
+	SecretType  *string                                         `json:"SecretType,omitempty" xml:"SecretType,omitempty"`
+	UpdateTime  *int64                                          `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+}
+
+func (s ListSecretsResponseBodyDataSecrets) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSecretsResponseBodyDataSecrets) GoString() string {
+	return s.String()
+}
+
+func (s *ListSecretsResponseBodyDataSecrets) SetCreateTime(v int64) *ListSecretsResponseBodyDataSecrets {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListSecretsResponseBodyDataSecrets) SetNamespaceId(v string) *ListSecretsResponseBodyDataSecrets {
+	s.NamespaceId = &v
+	return s
+}
+
+func (s *ListSecretsResponseBodyDataSecrets) SetRelateApps(v []*ListSecretsResponseBodyDataSecretsRelateApps) *ListSecretsResponseBodyDataSecrets {
+	s.RelateApps = v
+	return s
+}
+
+func (s *ListSecretsResponseBodyDataSecrets) SetSecretId(v int64) *ListSecretsResponseBodyDataSecrets {
+	s.SecretId = &v
+	return s
+}
+
+func (s *ListSecretsResponseBodyDataSecrets) SetSecretName(v string) *ListSecretsResponseBodyDataSecrets {
+	s.SecretName = &v
+	return s
+}
+
+func (s *ListSecretsResponseBodyDataSecrets) SetSecretType(v string) *ListSecretsResponseBodyDataSecrets {
+	s.SecretType = &v
+	return s
+}
+
+func (s *ListSecretsResponseBodyDataSecrets) SetUpdateTime(v int64) *ListSecretsResponseBodyDataSecrets {
+	s.UpdateTime = &v
+	return s
+}
+
+type ListSecretsResponseBodyDataSecretsRelateApps struct {
+	AppId   *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+}
+
+func (s ListSecretsResponseBodyDataSecretsRelateApps) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSecretsResponseBodyDataSecretsRelateApps) GoString() string {
+	return s.String()
+}
+
+func (s *ListSecretsResponseBodyDataSecretsRelateApps) SetAppId(v string) *ListSecretsResponseBodyDataSecretsRelateApps {
+	s.AppId = &v
+	return s
+}
+
+func (s *ListSecretsResponseBodyDataSecretsRelateApps) SetAppName(v string) *ListSecretsResponseBodyDataSecretsRelateApps {
+	s.AppName = &v
+	return s
+}
+
+type ListSecretsResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListSecretsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListSecretsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSecretsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListSecretsResponse) SetHeaders(v map[string]*string) *ListSecretsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListSecretsResponse) SetStatusCode(v int32) *ListSecretsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListSecretsResponse) SetBody(v *ListSecretsResponseBody) *ListSecretsResponse {
 	s.Body = v
 	return s
 }
@@ -16505,6 +17448,7 @@ func (s *UpdateConfigMapResponse) SetBody(v *UpdateConfigMapResponseBody) *Updat
 }
 
 type UpdateGreyTagRouteRequest struct {
+	AlbRules       *string `json:"AlbRules,omitempty" xml:"AlbRules,omitempty"`
 	Description    *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	DubboRules     *string `json:"DubboRules,omitempty" xml:"DubboRules,omitempty"`
 	GreyTagRouteId *int64  `json:"GreyTagRouteId,omitempty" xml:"GreyTagRouteId,omitempty"`
@@ -16517,6 +17461,11 @@ func (s UpdateGreyTagRouteRequest) String() string {
 
 func (s UpdateGreyTagRouteRequest) GoString() string {
 	return s.String()
+}
+
+func (s *UpdateGreyTagRouteRequest) SetAlbRules(v string) *UpdateGreyTagRouteRequest {
+	s.AlbRules = &v
+	return s
 }
 
 func (s *UpdateGreyTagRouteRequest) SetDescription(v string) *UpdateGreyTagRouteRequest {
@@ -17041,6 +17990,134 @@ func (s *UpdateNamespaceVpcResponse) SetBody(v *UpdateNamespaceVpcResponseBody) 
 	return s
 }
 
+type UpdateSecretRequest struct {
+	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+	SecretData  *string `json:"SecretData,omitempty" xml:"SecretData,omitempty"`
+	SecretId    *int64  `json:"SecretId,omitempty" xml:"SecretId,omitempty"`
+}
+
+func (s UpdateSecretRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSecretRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSecretRequest) SetNamespaceId(v string) *UpdateSecretRequest {
+	s.NamespaceId = &v
+	return s
+}
+
+func (s *UpdateSecretRequest) SetSecretData(v string) *UpdateSecretRequest {
+	s.SecretData = &v
+	return s
+}
+
+func (s *UpdateSecretRequest) SetSecretId(v int64) *UpdateSecretRequest {
+	s.SecretId = &v
+	return s
+}
+
+type UpdateSecretResponseBody struct {
+	Code      *string                       `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *UpdateSecretResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	ErrorCode *string                       `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	Message   *string                       `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                         `json:"Success,omitempty" xml:"Success,omitempty"`
+	TraceId   *string                       `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
+}
+
+func (s UpdateSecretResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSecretResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSecretResponseBody) SetCode(v string) *UpdateSecretResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UpdateSecretResponseBody) SetData(v *UpdateSecretResponseBodyData) *UpdateSecretResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *UpdateSecretResponseBody) SetErrorCode(v string) *UpdateSecretResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *UpdateSecretResponseBody) SetMessage(v string) *UpdateSecretResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UpdateSecretResponseBody) SetRequestId(v string) *UpdateSecretResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateSecretResponseBody) SetSuccess(v bool) *UpdateSecretResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *UpdateSecretResponseBody) SetTraceId(v string) *UpdateSecretResponseBody {
+	s.TraceId = &v
+	return s
+}
+
+type UpdateSecretResponseBodyData struct {
+	SecretId *string `json:"SecretId,omitempty" xml:"SecretId,omitempty"`
+}
+
+func (s UpdateSecretResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSecretResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSecretResponseBodyData) SetSecretId(v string) *UpdateSecretResponseBodyData {
+	s.SecretId = &v
+	return s
+}
+
+type UpdateSecretResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateSecretResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateSecretResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSecretResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSecretResponse) SetHeaders(v map[string]*string) *UpdateSecretResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateSecretResponse) SetStatusCode(v int32) *UpdateSecretResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateSecretResponse) SetBody(v *UpdateSecretResponseBody) *UpdateSecretResponse {
+	s.Body = v
+	return s
+}
+
 type Client struct {
 	openapi.Client
 }
@@ -17454,6 +18531,10 @@ func (client *Client) CreateApplicationWithOptions(request *CreateApplicationReq
 		query["Envs"] = request.Envs
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ImagePullSecrets)) {
+		query["ImagePullSecrets"] = request.ImagePullSecrets
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ImageUrl)) {
 		query["ImageUrl"] = request.ImageUrl
 	}
@@ -17540,6 +18621,14 @@ func (client *Client) CreateApplicationWithOptions(request *CreateApplicationReq
 
 	if !tea.BoolValue(util.IsUnset(request.PvtzDiscoverySvc)) {
 		query["PvtzDiscoverySvc"] = request.PvtzDiscoverySvc
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Python)) {
+		query["Python"] = request.Python
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PythonModules)) {
+		query["PythonModules"] = request.PythonModules
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Readiness)) {
@@ -17792,6 +18881,10 @@ func (client *Client) CreateGreyTagRouteWithOptions(request *CreateGreyTagRouteR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AlbRules)) {
+		query["AlbRules"] = request.AlbRules
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.AppId)) {
 		query["AppId"] = request.AppId
 	}
@@ -17986,6 +19079,10 @@ func (client *Client) CreateJobWithOptions(request *CreateJobRequest, headers ma
 		query["Envs"] = request.Envs
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ImagePullSecrets)) {
+		query["ImagePullSecrets"] = request.ImagePullSecrets
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ImageUrl)) {
 		query["ImageUrl"] = request.ImageUrl
 	}
@@ -18056,6 +19153,14 @@ func (client *Client) CreateJobWithOptions(request *CreateJobRequest, headers ma
 
 	if !tea.BoolValue(util.IsUnset(request.ProgrammingLanguage)) {
 		query["ProgrammingLanguage"] = request.ProgrammingLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Python)) {
+		query["Python"] = request.Python
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PythonModules)) {
+		query["PythonModules"] = request.PythonModules
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Readiness)) {
@@ -18222,6 +19327,66 @@ func (client *Client) CreateNamespaceWithOptions(request *CreateNamespaceRequest
 		BodyType:    tea.String("json"),
 	}
 	_result = &CreateNamespaceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateSecret(request *CreateSecretRequest) (_result *CreateSecretResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateSecretResponse{}
+	_body, _err := client.CreateSecretWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateSecretWithOptions(request *CreateSecretRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateSecretResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.NamespaceId)) {
+		query["NamespaceId"] = request.NamespaceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecretName)) {
+		query["SecretName"] = request.SecretName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecretType)) {
+		query["SecretType"] = request.SecretType
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.SecretData)) {
+		body["SecretData"] = request.SecretData
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateSecret"),
+		Version:     tea.String("2019-05-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/pop/v1/sam/secret/secret"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateSecretResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -18606,6 +19771,56 @@ func (client *Client) DeleteNamespaceWithOptions(request *DeleteNamespaceRequest
 	return _result, _err
 }
 
+func (client *Client) DeleteSecret(request *DeleteSecretRequest) (_result *DeleteSecretResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteSecretResponse{}
+	_body, _err := client.DeleteSecretWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteSecretWithOptions(request *DeleteSecretRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteSecretResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.NamespaceId)) {
+		query["NamespaceId"] = request.NamespaceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecretId)) {
+		query["SecretId"] = request.SecretId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteSecret"),
+		Version:     tea.String("2019-05-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/pop/v1/sam/secret/secret"),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteSecretResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
 func (client *Client) DeployApplication(request *DeployApplicationRequest) (_result *DeployApplicationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -18670,6 +19885,10 @@ func (client *Client) DeployApplicationWithOptions(request *DeployApplicationReq
 
 	if !tea.BoolValue(util.IsUnset(request.Envs)) {
 		query["Envs"] = request.Envs
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ImagePullSecrets)) {
+		query["ImagePullSecrets"] = request.ImagePullSecrets
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ImageUrl)) {
@@ -18750,6 +19969,14 @@ func (client *Client) DeployApplicationWithOptions(request *DeployApplicationReq
 
 	if !tea.BoolValue(util.IsUnset(request.PvtzDiscoverySvc)) {
 		query["PvtzDiscoverySvc"] = request.PvtzDiscoverySvc
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Python)) {
+		query["Python"] = request.Python
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PythonModules)) {
+		query["PythonModules"] = request.PythonModules
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Readiness)) {
@@ -20146,6 +21373,56 @@ func (client *Client) DescribeRegionsWithOptions(headers map[string]*string, run
 	return _result, _err
 }
 
+func (client *Client) DescribeSecret(request *DescribeSecretRequest) (_result *DescribeSecretResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DescribeSecretResponse{}
+	_body, _err := client.DescribeSecretWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeSecretWithOptions(request *DescribeSecretRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DescribeSecretResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.NamespaceId)) {
+		query["NamespaceId"] = request.NamespaceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecretId)) {
+		query["SecretId"] = request.SecretId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeSecret"),
+		Version:     tea.String("2019-05-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/pop/v1/sam/secret/secret"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeSecretResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
 func (client *Client) DisableApplicationScalingRule(request *DisableApplicationScalingRuleRequest) (_result *DisableApplicationScalingRuleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -20290,6 +21567,10 @@ func (client *Client) ExecJobWithOptions(request *ExecJobRequest, headers map[st
 
 	if !tea.BoolValue(util.IsUnset(request.JarStartOptions)) {
 		query["JarStartOptions"] = request.JarStartOptions
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Time)) {
+		query["Time"] = request.Time
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.WarStartOptions)) {
@@ -21124,6 +22405,52 @@ func (client *Client) ListPublishedServicesWithOptions(request *ListPublishedSer
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListPublishedServicesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListSecrets(request *ListSecretsRequest) (_result *ListSecretsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListSecretsResponse{}
+	_body, _err := client.ListSecretsWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListSecretsWithOptions(request *ListSecretsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListSecretsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.NamespaceId)) {
+		query["NamespaceId"] = request.NamespaceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListSecrets"),
+		Version:     tea.String("2019-05-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/pop/v1/sam/secret/secrets"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListSecretsResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -22222,6 +23549,10 @@ func (client *Client) UpdateGreyTagRouteWithOptions(request *UpdateGreyTagRouteR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AlbRules)) {
+		query["AlbRules"] = request.AlbRules
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Description)) {
 		query["Description"] = request.Description
 	}
@@ -22434,6 +23765,62 @@ func (client *Client) UpdateNamespaceVpcWithOptions(request *UpdateNamespaceVpcR
 		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateNamespaceVpcResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateSecret(request *UpdateSecretRequest) (_result *UpdateSecretResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateSecretResponse{}
+	_body, _err := client.UpdateSecretWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateSecretWithOptions(request *UpdateSecretRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateSecretResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.NamespaceId)) {
+		query["NamespaceId"] = request.NamespaceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecretId)) {
+		query["SecretId"] = request.SecretId
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.SecretData)) {
+		body["SecretData"] = request.SecretData
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateSecret"),
+		Version:     tea.String("2019-05-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/pop/v1/sam/secret/secret"),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateSecretResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
