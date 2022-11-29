@@ -1,3 +1,6 @@
+2022-11-29 Version: v3.0.5
+- Add custom content for QueryCardSmsTemplateReport.
+
 2022-10-11 Version: v3.0.4
 - Add custom content for QueryCardSmsTemplateReport.
 
