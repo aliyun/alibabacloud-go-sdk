@@ -5,44 +5,28 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/client"
+	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
 	openapiutil "github.com/alibabacloud-go/openapi-util/service"
-	util "github.com/alibabacloud-go/tea-utils/service"
+	util "github.com/alibabacloud-go/tea-utils/v2/service"
 	"github.com/alibabacloud-go/tea/tea"
 )
 
 type Application struct {
-	// 是否直接跳过plan直接进行发布
-	AutoDeploy *string `json:"autoDeploy,omitempty" xml:"autoDeploy,omitempty"`
-	// 应用创建时间
-	CreatedTime *string `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
-	// 应用描述
-	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// 环境变量
-	EnvVars map[string]interface{} `json:"envVars,omitempty" xml:"envVars,omitempty"`
-	// 指定本地代码源
-	LocalSource *string `json:"localSource,omitempty" xml:"localSource,omitempty"`
-	// 应用名称，同账号下唯一，创建后不允许变更
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// 指定OSS的代码源
-	OssSource *ApplicationOssSource `json:"ossSource,omitempty" xml:"ossSource,omitempty" type:"Struct"`
-	// 应用参数，schema由应用模板所定义
-	Parameter map[string]interface{} `json:"parameter,omitempty" xml:"parameter,omitempty"`
-	// 指定仓库的代码源
-	RepoSource *ApplicationRepoSource `json:"repoSource,omitempty" xml:"repoSource,omitempty" type:"Struct"`
-	// 指定role进行角色扮演
-	RoleArn *string `json:"roleArn,omitempty" xml:"roleArn,omitempty"`
-	// 关联的模板，用于Web应用、模板应用的创建
-	Template *string `json:"template,omitempty" xml:"template,omitempty"`
-	// 触发配置，不指定表示手动触发
-	Trigger *ApplicationTrigger `json:"trigger,omitempty" xml:"trigger,omitempty" type:"Struct"`
-	// 阿里云主账号ID，只读
-	Uid *string `json:"uid,omitempty" xml:"uid,omitempty"`
-	// 应用更新时间
-	UpdatedTime *string `json:"updatedTime,omitempty" xml:"updatedTime,omitempty"`
-	// s.yaml所在目录，不指定则默认使用当前目录
-	WorkDir *string `json:"workDir,omitempty" xml:"workDir,omitempty"`
+	AutoDeploy  *string                `json:"autoDeploy,omitempty" xml:"autoDeploy,omitempty"`
+	CreatedTime *string                `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
+	Description *string                `json:"description,omitempty" xml:"description,omitempty"`
+	EnvVars     map[string]interface{} `json:"envVars,omitempty" xml:"envVars,omitempty"`
+	LastRelease map[string]interface{} `json:"lastRelease,omitempty" xml:"lastRelease,omitempty"`
+	Name        *string                `json:"name,omitempty" xml:"name,omitempty"`
+	Output      map[string]interface{} `json:"output,omitempty" xml:"output,omitempty"`
+	Parameters  map[string]interface{} `json:"parameters,omitempty" xml:"parameters,omitempty"`
+	RepoSource  *ApplicationRepoSource `json:"repoSource,omitempty" xml:"repoSource,omitempty" type:"Struct"`
+	RoleArn     *string                `json:"roleArn,omitempty" xml:"roleArn,omitempty"`
+	Template    *string                `json:"template,omitempty" xml:"template,omitempty"`
+	Trigger     *ApplicationTrigger    `json:"trigger,omitempty" xml:"trigger,omitempty" type:"Struct"`
+	UpdatedTime *string                `json:"updatedTime,omitempty" xml:"updatedTime,omitempty"`
+	WorkDir     *string                `json:"workDir,omitempty" xml:"workDir,omitempty"`
 }
 
 func (s Application) String() string {
@@ -73,8 +57,8 @@ func (s *Application) SetEnvVars(v map[string]interface{}) *Application {
 	return s
 }
 
-func (s *Application) SetLocalSource(v string) *Application {
-	s.LocalSource = &v
+func (s *Application) SetLastRelease(v map[string]interface{}) *Application {
+	s.LastRelease = v
 	return s
 }
 
@@ -83,13 +67,13 @@ func (s *Application) SetName(v string) *Application {
 	return s
 }
 
-func (s *Application) SetOssSource(v *ApplicationOssSource) *Application {
-	s.OssSource = v
+func (s *Application) SetOutput(v map[string]interface{}) *Application {
+	s.Output = v
 	return s
 }
 
-func (s *Application) SetParameter(v map[string]interface{}) *Application {
-	s.Parameter = v
+func (s *Application) SetParameters(v map[string]interface{}) *Application {
+	s.Parameters = v
 	return s
 }
 
@@ -113,11 +97,6 @@ func (s *Application) SetTrigger(v *ApplicationTrigger) *Application {
 	return s
 }
 
-func (s *Application) SetUid(v string) *Application {
-	s.Uid = &v
-	return s
-}
-
 func (s *Application) SetUpdatedTime(v string) *Application {
 	s.UpdatedTime = &v
 	return s
@@ -128,38 +107,10 @@ func (s *Application) SetWorkDir(v string) *Application {
 	return s
 }
 
-type ApplicationOssSource struct {
-	// OSS Bucket名字
-	BucketName *string `json:"bucketName,omitempty" xml:"bucketName,omitempty"`
-	// OSS Object名字
-	ObjectName *string `json:"objectName,omitempty" xml:"objectName,omitempty"`
-}
-
-func (s ApplicationOssSource) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ApplicationOssSource) GoString() string {
-	return s.String()
-}
-
-func (s *ApplicationOssSource) SetBucketName(v string) *ApplicationOssSource {
-	s.BucketName = &v
-	return s
-}
-
-func (s *ApplicationOssSource) SetObjectName(v string) *ApplicationOssSource {
-	s.ObjectName = &v
-	return s
-}
-
 type ApplicationRepoSource struct {
-	// 代码库owner
-	Owner *string `json:"owner,omitempty" xml:"owner,omitempty"`
-	// 代码源VCS
+	Owner    *string `json:"owner,omitempty" xml:"owner,omitempty"`
 	Provider *string `json:"provider,omitempty" xml:"provider,omitempty"`
-	// 代码库名称
-	Repo *string `json:"repo,omitempty" xml:"repo,omitempty"`
+	Repo     *string `json:"repo,omitempty" xml:"repo,omitempty"`
 }
 
 func (s ApplicationRepoSource) String() string {
@@ -186,12 +137,9 @@ func (s *ApplicationRepoSource) SetRepo(v string) *ApplicationRepoSource {
 }
 
 type ApplicationTrigger struct {
-	// 代码分支
-	Branch []*string `json:"branch,omitempty" xml:"branch,omitempty" type:"Repeated"`
-	// 触发条件
-	On *string `json:"on,omitempty" xml:"on,omitempty"`
-	// 代码路径。指定时，只有当匹配的path变化才触发
-	Paths []*string `json:"paths,omitempty" xml:"paths,omitempty" type:"Repeated"`
+	Branch *string `json:"branch,omitempty" xml:"branch,omitempty"`
+	Commit *string `json:"commit,omitempty" xml:"commit,omitempty"`
+	On     *string `json:"on,omitempty" xml:"on,omitempty"`
 }
 
 func (s ApplicationTrigger) String() string {
@@ -202,8 +150,13 @@ func (s ApplicationTrigger) GoString() string {
 	return s.String()
 }
 
-func (s *ApplicationTrigger) SetBranch(v []*string) *ApplicationTrigger {
-	s.Branch = v
+func (s *ApplicationTrigger) SetBranch(v string) *ApplicationTrigger {
+	s.Branch = &v
+	return s
+}
+
+func (s *ApplicationTrigger) SetCommit(v string) *ApplicationTrigger {
+	s.Commit = &v
 	return s
 }
 
@@ -212,30 +165,91 @@ func (s *ApplicationTrigger) SetOn(v string) *ApplicationTrigger {
 	return s
 }
 
-func (s *ApplicationTrigger) SetPaths(v []*string) *ApplicationTrigger {
-	s.Paths = v
+type Condition struct {
+	Expression *string `json:"expression,omitempty" xml:"expression,omitempty"`
+}
+
+func (s Condition) String() string {
+	return tea.Prettify(s)
+}
+
+func (s Condition) GoString() string {
+	return s.String()
+}
+
+func (s *Condition) SetExpression(v string) *Condition {
+	s.Expression = &v
+	return s
+}
+
+type Context struct {
+	Data map[string]interface{} `json:"data,omitempty" xml:"data,omitempty"`
+}
+
+func (s Context) String() string {
+	return tea.Prettify(s)
+}
+
+func (s Context) GoString() string {
+	return s.String()
+}
+
+func (s *Context) SetData(v map[string]interface{}) *Context {
+	s.Data = v
+	return s
+}
+
+type ContextSchema struct {
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	Hint        *string `json:"hint,omitempty" xml:"hint,omitempty"`
+	Name        *string `json:"name,omitempty" xml:"name,omitempty"`
+	Required    *bool   `json:"required,omitempty" xml:"required,omitempty"`
+	Type        *string `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s ContextSchema) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ContextSchema) GoString() string {
+	return s.String()
+}
+
+func (s *ContextSchema) SetDescription(v string) *ContextSchema {
+	s.Description = &v
+	return s
+}
+
+func (s *ContextSchema) SetHint(v string) *ContextSchema {
+	s.Hint = &v
+	return s
+}
+
+func (s *ContextSchema) SetName(v string) *ContextSchema {
+	s.Name = &v
+	return s
+}
+
+func (s *ContextSchema) SetRequired(v bool) *ContextSchema {
+	s.Required = &v
+	return s
+}
+
+func (s *ContextSchema) SetType(v string) *ContextSchema {
+	s.Type = &v
 	return s
 }
 
 type Environment struct {
-	// A time representing the server time when this object was created. Clients may not set this value. Populated by the system. Read-only.
-	CreatedTime *string `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
-	// Date and time at which a deletion is requested by the user. Null when the resource has not been requested for deletion. This field is set by the server, not directly settable by a client. Populated by the system. Read-only.
-	DeletionTime *string `json:"deletionTime,omitempty" xml:"deletionTime,omitempty"`
-	// Human-readable description of the resource
-	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// A sequence number representing a specific generation of the desired state. Populated by the system. Read-only.
-	Generation *int32 `json:"generation,omitempty" xml:"generation,omitempty"`
-	// The kind of the resource
-	Kind *string `json:"kind,omitempty" xml:"kind,omitempty"`
-	// Name must be unique within a namespace. Is required when creating resources. Cannot be updated.
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// Specification of the desired behavior of the Environment.
-	Spec *EnvironmentSpec `json:"spec,omitempty" xml:"spec,omitempty"`
-	// Most recently observed status of the Environment. This data may not be up-to-date. Populated by the system. Read-only.
-	Status *EnvironmentStatus `json:"status,omitempty" xml:"status,omitempty"`
-	// Main user ID of an Aliyun account
-	Uid *string `json:"uid,omitempty" xml:"uid,omitempty"`
+	CreatedTime  *string            `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
+	DeletionTime *string            `json:"deletionTime,omitempty" xml:"deletionTime,omitempty"`
+	Description  *string            `json:"description,omitempty" xml:"description,omitempty"`
+	Generation   *int32             `json:"generation,omitempty" xml:"generation,omitempty"`
+	Kind         *string            `json:"kind,omitempty" xml:"kind,omitempty"`
+	Name         *string            `json:"name,omitempty" xml:"name,omitempty"`
+	Spec         *EnvironmentSpec   `json:"spec,omitempty" xml:"spec,omitempty"`
+	Status       *EnvironmentStatus `json:"status,omitempty" xml:"status,omitempty"`
+	Uid          *string            `json:"uid,omitempty" xml:"uid,omitempty"`
 }
 
 func (s Environment) String() string {
@@ -292,20 +306,13 @@ func (s *Environment) SetUid(v string) *Environment {
 }
 
 type EnvironmentRevision struct {
-	// A time representing the server time when this object was created. Clients may not set this value. Populated by the system. Read-only.
-	CreatedTime *string `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
-	// The generation of the environment.
-	EnvironmentGeneration *int32 `json:"environmentGeneration,omitempty" xml:"environmentGeneration,omitempty"`
-	// The name of an environment.
-	EnvironmentName *string `json:"environmentName,omitempty" xml:"environmentName,omitempty"`
-	// The kind of the resource.
-	Kind *string `json:"kind,omitempty" xml:"kind,omitempty"`
-	// Specification of the desired behavior of the Environment.
-	Spec *EnvironmentSpec `json:"spec,omitempty" xml:"spec,omitempty"`
-	// Most recently observed status of the Environment. This data may not be up-to-date. Populated by the system. Read-only.
-	Status *EnvironmentStatus `json:"status,omitempty" xml:"status,omitempty"`
-	// Main user ID of an Aliyun account.
-	Uid *string `json:"uid,omitempty" xml:"uid,omitempty"`
+	CreatedTime           *string            `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
+	EnvironmentGeneration *int32             `json:"environmentGeneration,omitempty" xml:"environmentGeneration,omitempty"`
+	EnvironmentName       *string            `json:"environmentName,omitempty" xml:"environmentName,omitempty"`
+	Kind                  *string            `json:"kind,omitempty" xml:"kind,omitempty"`
+	Spec                  *EnvironmentSpec   `json:"spec,omitempty" xml:"spec,omitempty"`
+	Status                *EnvironmentStatus `json:"status,omitempty" xml:"status,omitempty"`
+	Uid                   *string            `json:"uid,omitempty" xml:"uid,omitempty"`
 }
 
 func (s EnvironmentRevision) String() string {
@@ -352,16 +359,11 @@ func (s *EnvironmentRevision) SetUid(v string) *EnvironmentRevision {
 }
 
 type EnvironmentSpec struct {
-	// A region ID at Aliyun. For example, "cn-hangzhou"
-	Region *string `json:"region,omitempty" xml:"region,omitempty"`
-	// The ARN (Aliyun Resource Name) of the role designated by a user to allow the system to manage his Aliyun resources. If null, use roleArn of role AliyunFCDefaultRole.
-	RoleArn *string `json:"roleArn,omitempty" xml:"roleArn,omitempty"`
-	// The name of the template for the Environment
-	Template *string `json:"template,omitempty" xml:"template,omitempty"`
-	// Variables for specified template
+	Region            *string                `json:"region,omitempty" xml:"region,omitempty"`
+	RoleArn           *string                `json:"roleArn,omitempty" xml:"roleArn,omitempty"`
+	Template          *string                `json:"template,omitempty" xml:"template,omitempty"`
 	TemplateVariables map[string]interface{} `json:"templateVariables,omitempty" xml:"templateVariables,omitempty"`
-	// The major version of the template. "1" by default.
-	TemplateVersion *int32 `json:"templateVersion,omitempty" xml:"templateVersion,omitempty"`
+	TemplateVersion   *int32                 `json:"templateVersion,omitempty" xml:"templateVersion,omitempty"`
 }
 
 func (s EnvironmentSpec) String() string {
@@ -398,16 +400,11 @@ func (s *EnvironmentSpec) SetTemplateVersion(v int32) *EnvironmentSpec {
 }
 
 type EnvironmentStatus struct {
-	// A human-readable message indicating details about why the Environment is in this condition
-	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The most recent generation observed
-	ObservedGeneration *int32 `json:"observedGeneration,omitempty" xml:"observedGeneration,omitempty"`
-	// Time when the last update of the status is observed
-	ObservedTime *string `json:"observedTime,omitempty" xml:"observedTime,omitempty"`
-	// Details of current state of the Environment
-	Output map[string]interface{} `json:"output,omitempty" xml:"output,omitempty"`
-	// A simple, high-level summary of where the Environment is in its lifecycle
-	Phase *string `json:"phase,omitempty" xml:"phase,omitempty"`
+	Message            *string                `json:"message,omitempty" xml:"message,omitempty"`
+	ObservedGeneration *int32                 `json:"observedGeneration,omitempty" xml:"observedGeneration,omitempty"`
+	ObservedTime       *string                `json:"observedTime,omitempty" xml:"observedTime,omitempty"`
+	Output             map[string]interface{} `json:"output,omitempty" xml:"output,omitempty"`
+	Phase              *string                `json:"phase,omitempty" xml:"phase,omitempty"`
 }
 
 func (s EnvironmentStatus) String() string {
@@ -444,18 +441,12 @@ func (s *EnvironmentStatus) SetPhase(v string) *EnvironmentStatus {
 }
 
 type InputVariable struct {
-	// A default value (as JSON string) which then makes the variable optional.
 	DefaultJson *string `json:"defaultJson,omitempty" xml:"defaultJson,omitempty"`
-	// This specifies the input variable's documentation.
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The identifier of an input variable. Identifiers can contain letters, digits, underscores (_), and hyphens (-). The first character of an identifier must not be a digit, to avoid ambiguity with literal numbers.
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// Specify if the variable can be null. True by default.
-	Nullable *bool `json:"nullable,omitempty" xml:"nullable,omitempty"`
-	// Specify if the variable contains sensitive material. False by default.
-	Sensitive *bool `json:"sensitive,omitempty" xml:"sensitive,omitempty"`
-	// This argument specifies what value types are accepted for the variable.
-	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	Name        *string `json:"name,omitempty" xml:"name,omitempty"`
+	Nullable    *bool   `json:"nullable,omitempty" xml:"nullable,omitempty"`
+	Sensitive   *bool   `json:"sensitive,omitempty" xml:"sensitive,omitempty"`
+	Type        *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s InputVariable) String() string {
@@ -497,12 +488,9 @@ func (s *InputVariable) SetType(v string) *InputVariable {
 }
 
 type OutputValue struct {
-	// The description should concisely explain the purpose of the output and what kind of value is expected.
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The identifier of an output value. Identifiers can contain letters, digits, underscores (_), and hyphens (-). The first character of an identifier must not be a digit, to avoid ambiguity with literal numbers.
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// Specify if the output value contains sensitive material. False by default.
-	Sensitive *bool `json:"sensitive,omitempty" xml:"sensitive,omitempty"`
+	Name        *string `json:"name,omitempty" xml:"name,omitempty"`
+	Sensitive   *bool   `json:"sensitive,omitempty" xml:"sensitive,omitempty"`
 }
 
 func (s OutputValue) String() string {
@@ -528,27 +516,231 @@ func (s *OutputValue) SetSensitive(v bool) *OutputValue {
 	return s
 }
 
+type Pipeline struct {
+	CreatedTime     *string            `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
+	DeletionTime    *string            `json:"deletionTime,omitempty" xml:"deletionTime,omitempty"`
+	Description     *string            `json:"description,omitempty" xml:"description,omitempty"`
+	Generation      *int32             `json:"generation,omitempty" xml:"generation,omitempty"`
+	Kind            *string            `json:"kind,omitempty" xml:"kind,omitempty"`
+	Labels          map[string]*string `json:"labels,omitempty" xml:"labels,omitempty"`
+	Name            *string            `json:"name,omitempty" xml:"name,omitempty"`
+	ResourceVersion *int32             `json:"resourceVersion,omitempty" xml:"resourceVersion,omitempty"`
+	Spec            *PipelineSpec      `json:"spec,omitempty" xml:"spec,omitempty"`
+	Status          *PipelineStatus    `json:"status,omitempty" xml:"status,omitempty"`
+	Uid             *string            `json:"uid,omitempty" xml:"uid,omitempty"`
+}
+
+func (s Pipeline) String() string {
+	return tea.Prettify(s)
+}
+
+func (s Pipeline) GoString() string {
+	return s.String()
+}
+
+func (s *Pipeline) SetCreatedTime(v string) *Pipeline {
+	s.CreatedTime = &v
+	return s
+}
+
+func (s *Pipeline) SetDeletionTime(v string) *Pipeline {
+	s.DeletionTime = &v
+	return s
+}
+
+func (s *Pipeline) SetDescription(v string) *Pipeline {
+	s.Description = &v
+	return s
+}
+
+func (s *Pipeline) SetGeneration(v int32) *Pipeline {
+	s.Generation = &v
+	return s
+}
+
+func (s *Pipeline) SetKind(v string) *Pipeline {
+	s.Kind = &v
+	return s
+}
+
+func (s *Pipeline) SetLabels(v map[string]*string) *Pipeline {
+	s.Labels = v
+	return s
+}
+
+func (s *Pipeline) SetName(v string) *Pipeline {
+	s.Name = &v
+	return s
+}
+
+func (s *Pipeline) SetResourceVersion(v int32) *Pipeline {
+	s.ResourceVersion = &v
+	return s
+}
+
+func (s *Pipeline) SetSpec(v *PipelineSpec) *Pipeline {
+	s.Spec = v
+	return s
+}
+
+func (s *Pipeline) SetStatus(v *PipelineStatus) *Pipeline {
+	s.Status = v
+	return s
+}
+
+func (s *Pipeline) SetUid(v string) *Pipeline {
+	s.Uid = &v
+	return s
+}
+
+type PipelineSpec struct {
+	Context      *Context `json:"context,omitempty" xml:"context,omitempty"`
+	TemplateName *string  `json:"templateName,omitempty" xml:"templateName,omitempty"`
+}
+
+func (s PipelineSpec) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PipelineSpec) GoString() string {
+	return s.String()
+}
+
+func (s *PipelineSpec) SetContext(v *Context) *PipelineSpec {
+	s.Context = v
+	return s
+}
+
+func (s *PipelineSpec) SetTemplateName(v string) *PipelineSpec {
+	s.TemplateName = &v
+	return s
+}
+
+type PipelineStatus struct {
+	Phase *string `json:"phase,omitempty" xml:"phase,omitempty"`
+}
+
+func (s PipelineStatus) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PipelineStatus) GoString() string {
+	return s.String()
+}
+
+func (s *PipelineStatus) SetPhase(v string) *PipelineStatus {
+	s.Phase = &v
+	return s
+}
+
+type PipelineTemplate struct {
+	CreatedTime     *string               `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
+	DeletionTime    *string               `json:"deletionTime,omitempty" xml:"deletionTime,omitempty"`
+	Description     *string               `json:"description,omitempty" xml:"description,omitempty"`
+	Generation      *int32                `json:"generation,omitempty" xml:"generation,omitempty"`
+	Kind            *string               `json:"kind,omitempty" xml:"kind,omitempty"`
+	Labels          map[string]*string    `json:"labels,omitempty" xml:"labels,omitempty"`
+	Name            *string               `json:"name,omitempty" xml:"name,omitempty"`
+	ResourceVersion *int32                `json:"resourceVersion,omitempty" xml:"resourceVersion,omitempty"`
+	Spec            *PipelineTemplateSpec `json:"spec,omitempty" xml:"spec,omitempty"`
+	Uid             *string               `json:"uid,omitempty" xml:"uid,omitempty"`
+}
+
+func (s PipelineTemplate) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PipelineTemplate) GoString() string {
+	return s.String()
+}
+
+func (s *PipelineTemplate) SetCreatedTime(v string) *PipelineTemplate {
+	s.CreatedTime = &v
+	return s
+}
+
+func (s *PipelineTemplate) SetDeletionTime(v string) *PipelineTemplate {
+	s.DeletionTime = &v
+	return s
+}
+
+func (s *PipelineTemplate) SetDescription(v string) *PipelineTemplate {
+	s.Description = &v
+	return s
+}
+
+func (s *PipelineTemplate) SetGeneration(v int32) *PipelineTemplate {
+	s.Generation = &v
+	return s
+}
+
+func (s *PipelineTemplate) SetKind(v string) *PipelineTemplate {
+	s.Kind = &v
+	return s
+}
+
+func (s *PipelineTemplate) SetLabels(v map[string]*string) *PipelineTemplate {
+	s.Labels = v
+	return s
+}
+
+func (s *PipelineTemplate) SetName(v string) *PipelineTemplate {
+	s.Name = &v
+	return s
+}
+
+func (s *PipelineTemplate) SetResourceVersion(v int32) *PipelineTemplate {
+	s.ResourceVersion = &v
+	return s
+}
+
+func (s *PipelineTemplate) SetSpec(v *PipelineTemplateSpec) *PipelineTemplate {
+	s.Spec = v
+	return s
+}
+
+func (s *PipelineTemplate) SetUid(v string) *PipelineTemplate {
+	s.Uid = &v
+	return s
+}
+
+type PipelineTemplateSpec struct {
+	Context       *Context               `json:"context,omitempty" xml:"context,omitempty"`
+	ContextSchema map[string]interface{} `json:"contextSchema,omitempty" xml:"contextSchema,omitempty"`
+	Tasks         []*TaskExec            `json:"tasks,omitempty" xml:"tasks,omitempty" type:"Repeated"`
+}
+
+func (s PipelineTemplateSpec) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PipelineTemplateSpec) GoString() string {
+	return s.String()
+}
+
+func (s *PipelineTemplateSpec) SetContext(v *Context) *PipelineTemplateSpec {
+	s.Context = v
+	return s
+}
+
+func (s *PipelineTemplateSpec) SetContextSchema(v map[string]interface{}) *PipelineTemplateSpec {
+	s.ContextSchema = v
+	return s
+}
+
+func (s *PipelineTemplateSpec) SetTasks(v []*TaskExec) *PipelineTemplateSpec {
+	s.Tasks = v
+	return s
+}
+
 type Release struct {
-	// 本次发布的应用快照，只读
-	AppConfig map[string]interface{} `json:"appConfig,omitempty" xml:"appConfig,omitempty"`
-	// 代码版本，不指定则使用最新的commit
-	CodeVersion *ReleaseCodeVersion `json:"codeVersion,omitempty" xml:"codeVersion,omitempty" type:"Struct"`
-	// 创建时间，只读
-	CreatedTime *string `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
-	// 本地发布描述
-	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// 完成时间，只读
-	FinishedTime *string `json:"finishedTime,omitempty" xml:"finishedTime,omitempty"`
-	// 本次发布的输出，只读
-	Output map[string]interface{} `json:"output,omitempty" xml:"output,omitempty"`
-	// 流水线配置，不指定则直接部署
-	Pipeline *ReleasePipeline `json:"pipeline,omitempty" xml:"pipeline,omitempty" type:"Struct"`
-	// 本地发布状态：published: 发布完成 publishing：发布中 failed：发布失败 canceled：已撤销
-	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// 阿里云主账号ID，只读
-	Uid *string `json:"uid,omitempty" xml:"uid,omitempty"`
-	// 本次发布版本号，由系统生成，只读
-	VersionId *int64 `json:"versionId,omitempty" xml:"versionId,omitempty"`
+	AppConfig   map[string]interface{} `json:"appConfig,omitempty" xml:"appConfig,omitempty"`
+	CodeVersion *ReleaseCodeVersion    `json:"codeVersion,omitempty" xml:"codeVersion,omitempty" type:"Struct"`
+	CreatedTime *string                `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
+	Description *string                `json:"description,omitempty" xml:"description,omitempty"`
+	Output      map[string]interface{} `json:"output,omitempty" xml:"output,omitempty"`
+	Status      *string                `json:"status,omitempty" xml:"status,omitempty"`
+	VersionId   *int64                 `json:"versionId,omitempty" xml:"versionId,omitempty"`
 }
 
 func (s Release) String() string {
@@ -579,28 +771,13 @@ func (s *Release) SetDescription(v string) *Release {
 	return s
 }
 
-func (s *Release) SetFinishedTime(v string) *Release {
-	s.FinishedTime = &v
-	return s
-}
-
 func (s *Release) SetOutput(v map[string]interface{}) *Release {
 	s.Output = v
 	return s
 }
 
-func (s *Release) SetPipeline(v *ReleasePipeline) *Release {
-	s.Pipeline = v
-	return s
-}
-
 func (s *Release) SetStatus(v string) *Release {
 	s.Status = &v
-	return s
-}
-
-func (s *Release) SetUid(v string) *Release {
-	s.Uid = &v
 	return s
 }
 
@@ -610,9 +787,7 @@ func (s *Release) SetVersionId(v int64) *Release {
 }
 
 type ReleaseCodeVersion struct {
-	// 代码分支，不指定则使用default分支
 	Branch *string `json:"branch,omitempty" xml:"branch,omitempty"`
-	// commit id
 	Commit *string `json:"commit,omitempty" xml:"commit,omitempty"`
 }
 
@@ -634,68 +809,62 @@ func (s *ReleaseCodeVersion) SetCommit(v string) *ReleaseCodeVersion {
 	return s
 }
 
-type ReleasePipeline struct {
-	// stage配置
-	Stages []*ReleasePipelineStages `json:"stages,omitempty" xml:"stages,omitempty" type:"Repeated"`
+type RepoSource struct {
+	Owner    *string `json:"owner,omitempty" xml:"owner,omitempty"`
+	Provider *string `json:"provider,omitempty" xml:"provider,omitempty"`
+	Repo     *string `json:"repo,omitempty" xml:"repo,omitempty"`
 }
 
-func (s ReleasePipeline) String() string {
+func (s RepoSource) String() string {
 	return tea.Prettify(s)
 }
 
-func (s ReleasePipeline) GoString() string {
+func (s RepoSource) GoString() string {
 	return s.String()
 }
 
-func (s *ReleasePipeline) SetStages(v []*ReleasePipelineStages) *ReleasePipeline {
-	s.Stages = v
+func (s *RepoSource) SetOwner(v string) *RepoSource {
+	s.Owner = &v
 	return s
 }
 
-type ReleasePipelineStages struct {
-	// 执行环境
-	Environment *string `json:"environment,omitempty" xml:"environment,omitempty"`
-	// stage名字
+func (s *RepoSource) SetProvider(v string) *RepoSource {
+	s.Provider = &v
+	return s
+}
+
+func (s *RepoSource) SetRepo(v string) *RepoSource {
+	s.Repo = &v
+	return s
+}
+
+type RunAfter struct {
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 }
 
-func (s ReleasePipelineStages) String() string {
+func (s RunAfter) String() string {
 	return tea.Prettify(s)
 }
 
-func (s ReleasePipelineStages) GoString() string {
+func (s RunAfter) GoString() string {
 	return s.String()
 }
 
-func (s *ReleasePipelineStages) SetEnvironment(v string) *ReleasePipelineStages {
-	s.Environment = &v
-	return s
-}
-
-func (s *ReleasePipelineStages) SetName(v string) *ReleasePipelineStages {
+func (s *RunAfter) SetName(v string) *RunAfter {
 	s.Name = &v
 	return s
 }
 
 type Service struct {
-	// A time representing the server time when this object was created. Clients may not set this value. Populated by the system. Read-only.
-	CreatedTime *string `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
-	// Date and time at which a deletion is requested by the user. Null when the resource has not been requested for deletion. This field is set by the server, not directly settable by a client. Populated by the system. Read-only.
-	DeletionTime *string `json:"deletionTime,omitempty" xml:"deletionTime,omitempty"`
-	// Human-readable description of the resource
-	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// A sequence number representing a specific generation of the desired state. Populated by the system. Read-only.
-	Generation *int32 `json:"generation,omitempty" xml:"generation,omitempty"`
-	// The kind of the resource
-	Kind *string `json:"kind,omitempty" xml:"kind,omitempty"`
-	// Name must be unique within a namespace. Is required when creating resources. Cannot be updated.
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// Specification of the desired behavior of the Service.
-	Spec *ServiceSpec `json:"spec,omitempty" xml:"spec,omitempty"`
-	// Most recently observed status of the Service. This data may not be up-to-date. Populated by the system. Read-only.
-	Status *ServiceStatus `json:"status,omitempty" xml:"status,omitempty"`
-	// Main user ID of an Aliyun account
-	Uid *string `json:"uid,omitempty" xml:"uid,omitempty"`
+	CreatedTime  *string        `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
+	DeletionTime *string        `json:"deletionTime,omitempty" xml:"deletionTime,omitempty"`
+	Description  *string        `json:"description,omitempty" xml:"description,omitempty"`
+	Generation   *int32         `json:"generation,omitempty" xml:"generation,omitempty"`
+	Kind         *string        `json:"kind,omitempty" xml:"kind,omitempty"`
+	Name         *string        `json:"name,omitempty" xml:"name,omitempty"`
+	Spec         *ServiceSpec   `json:"spec,omitempty" xml:"spec,omitempty"`
+	Status       *ServiceStatus `json:"status,omitempty" xml:"status,omitempty"`
+	Uid          *string        `json:"uid,omitempty" xml:"uid,omitempty"`
 }
 
 func (s Service) String() string {
@@ -752,20 +921,13 @@ func (s *Service) SetUid(v string) *Service {
 }
 
 type ServiceRevision struct {
-	// A time representing the server time when this object was created. Clients may not set this value. Populated by the system. Read-only.
-	CreatedTime *string `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
-	// The kind of the resource.
-	Kind *string `json:"kind,omitempty" xml:"kind,omitempty"`
-	// The generation of the service.
-	ServiceGeneration *int32 `json:"serviceGeneration,omitempty" xml:"serviceGeneration,omitempty"`
-	// The name of a service.
-	ServiceName *string `json:"serviceName,omitempty" xml:"serviceName,omitempty"`
-	// Specification of the desired behavior of the Service.
-	Spec *ServiceSpec `json:"spec,omitempty" xml:"spec,omitempty"`
-	// Most recently observed status of the Environment. This data may not be up-to-date. Populated by the system. Read-only.
-	Status *EnvironmentStatus `json:"status,omitempty" xml:"status,omitempty"`
-	// Main user ID of an Aliyun account.
-	Uid *string `json:"uid,omitempty" xml:"uid,omitempty"`
+	CreatedTime       *string            `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
+	Kind              *string            `json:"kind,omitempty" xml:"kind,omitempty"`
+	ServiceGeneration *int32             `json:"serviceGeneration,omitempty" xml:"serviceGeneration,omitempty"`
+	ServiceName       *string            `json:"serviceName,omitempty" xml:"serviceName,omitempty"`
+	Spec              *ServiceSpec       `json:"spec,omitempty" xml:"spec,omitempty"`
+	Status            *EnvironmentStatus `json:"status,omitempty" xml:"status,omitempty"`
+	Uid               *string            `json:"uid,omitempty" xml:"uid,omitempty"`
 }
 
 func (s ServiceRevision) String() string {
@@ -812,16 +974,11 @@ func (s *ServiceRevision) SetUid(v string) *ServiceRevision {
 }
 
 type ServiceSpec struct {
-	// The name of the associated Environment for the Service
-	Environment *string `json:"environment,omitempty" xml:"environment,omitempty"`
-	// The ARN (Aliyun Resource Name) of the role designated by a user to allow the system to manage his Aliyun resources. If null, use roleArn of role AliyunFCDefaultRole.
-	RoleArn *string `json:"roleArn,omitempty" xml:"roleArn,omitempty"`
-	// The name of the template for the Service
-	Template *string `json:"template,omitempty" xml:"template,omitempty"`
-	// Variables for specified template
+	Environment       *string                `json:"environment,omitempty" xml:"environment,omitempty"`
+	RoleArn           *string                `json:"roleArn,omitempty" xml:"roleArn,omitempty"`
+	Template          *string                `json:"template,omitempty" xml:"template,omitempty"`
 	TemplateVariables map[string]interface{} `json:"templateVariables,omitempty" xml:"templateVariables,omitempty"`
-	// The major version of the template. "1" by default.
-	TemplateVersion *int32 `json:"templateVersion,omitempty" xml:"templateVersion,omitempty"`
+	TemplateVersion   *int32                 `json:"templateVersion,omitempty" xml:"templateVersion,omitempty"`
 }
 
 func (s ServiceSpec) String() string {
@@ -858,16 +1015,11 @@ func (s *ServiceSpec) SetTemplateVersion(v int32) *ServiceSpec {
 }
 
 type ServiceStatus struct {
-	// A human-readable message indicating details about why the Service is in this condition
-	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The most recent generation observed
-	ObservedGeneration *int32 `json:"observedGeneration,omitempty" xml:"observedGeneration,omitempty"`
-	// Time when the last update of the status is observed
-	ObservedTime *string `json:"observedTime,omitempty" xml:"observedTime,omitempty"`
-	// Details of current state of the Service
-	Output map[string]interface{} `json:"output,omitempty" xml:"output,omitempty"`
-	// A simple, high-level summary of where the Service is in its lifecycle
-	Phase *string `json:"phase,omitempty" xml:"phase,omitempty"`
+	Message            *string                `json:"message,omitempty" xml:"message,omitempty"`
+	ObservedGeneration *int32                 `json:"observedGeneration,omitempty" xml:"observedGeneration,omitempty"`
+	ObservedTime       *string                `json:"observedTime,omitempty" xml:"observedTime,omitempty"`
+	Output             map[string]interface{} `json:"output,omitempty" xml:"output,omitempty"`
+	Phase              *string                `json:"phase,omitempty" xml:"phase,omitempty"`
 }
 
 func (s ServiceStatus) String() string {
@@ -904,14 +1056,10 @@ func (s *ServiceStatus) SetPhase(v string) *ServiceStatus {
 }
 
 type Status struct {
-	// A machine-readable description of why this operation is in the failure status. If this value is empty there is no information available.
-	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// A human-readable description of the status of this operation.
-	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// ID of the request. May be null.
+	Code      *string `json:"code,omitempty" xml:"code,omitempty"`
+	Message   *string `json:"message,omitempty" xml:"message,omitempty"`
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Whether the operation is successful.
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	Success   *bool   `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s Status) String() string {
@@ -943,16 +1091,11 @@ func (s *Status) SetSuccess(v bool) *Status {
 }
 
 type StsCredentials struct {
-	// Access key ID
-	AccessKeyId *string `json:"accessKeyId,omitempty" xml:"accessKeyId,omitempty"`
-	// Expiration time of the credentials
-	ExpirationTime *string `json:"expirationTime,omitempty" xml:"expirationTime,omitempty"`
-	// The kind of the credentials
-	Kind *string `json:"kind,omitempty" xml:"kind,omitempty"`
-	// Secret access key
+	AccessKeyId     *string `json:"accessKeyId,omitempty" xml:"accessKeyId,omitempty"`
+	ExpirationTime  *string `json:"expirationTime,omitempty" xml:"expirationTime,omitempty"`
+	Kind            *string `json:"kind,omitempty" xml:"kind,omitempty"`
 	SecretAccessKey *string `json:"secretAccessKey,omitempty" xml:"secretAccessKey,omitempty"`
-	// Token
-	Token *string `json:"token,omitempty" xml:"token,omitempty"`
+	Token           *string `json:"token,omitempty" xml:"token,omitempty"`
 }
 
 func (s StsCredentials) String() string {
@@ -988,27 +1131,310 @@ func (s *StsCredentials) SetToken(v string) *StsCredentials {
 	return s
 }
 
+type Task struct {
+	CreatedTime     *string            `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
+	DeletionTime    *string            `json:"deletionTime,omitempty" xml:"deletionTime,omitempty"`
+	Description     *string            `json:"description,omitempty" xml:"description,omitempty"`
+	Generation      *int32             `json:"generation,omitempty" xml:"generation,omitempty"`
+	Kind            *string            `json:"kind,omitempty" xml:"kind,omitempty"`
+	Labels          map[string]*string `json:"labels,omitempty" xml:"labels,omitempty"`
+	Name            *string            `json:"name,omitempty" xml:"name,omitempty"`
+	ResourceVersion *int32             `json:"resourceVersion,omitempty" xml:"resourceVersion,omitempty"`
+	Spec            *TaskSpec          `json:"spec,omitempty" xml:"spec,omitempty"`
+	Status          *TaskStatus        `json:"status,omitempty" xml:"status,omitempty"`
+	Uid             *string            `json:"uid,omitempty" xml:"uid,omitempty"`
+}
+
+func (s Task) String() string {
+	return tea.Prettify(s)
+}
+
+func (s Task) GoString() string {
+	return s.String()
+}
+
+func (s *Task) SetCreatedTime(v string) *Task {
+	s.CreatedTime = &v
+	return s
+}
+
+func (s *Task) SetDeletionTime(v string) *Task {
+	s.DeletionTime = &v
+	return s
+}
+
+func (s *Task) SetDescription(v string) *Task {
+	s.Description = &v
+	return s
+}
+
+func (s *Task) SetGeneration(v int32) *Task {
+	s.Generation = &v
+	return s
+}
+
+func (s *Task) SetKind(v string) *Task {
+	s.Kind = &v
+	return s
+}
+
+func (s *Task) SetLabels(v map[string]*string) *Task {
+	s.Labels = v
+	return s
+}
+
+func (s *Task) SetName(v string) *Task {
+	s.Name = &v
+	return s
+}
+
+func (s *Task) SetResourceVersion(v int32) *Task {
+	s.ResourceVersion = &v
+	return s
+}
+
+func (s *Task) SetSpec(v *TaskSpec) *Task {
+	s.Spec = v
+	return s
+}
+
+func (s *Task) SetStatus(v *TaskStatus) *Task {
+	s.Status = v
+	return s
+}
+
+func (s *Task) SetUid(v string) *Task {
+	s.Uid = &v
+	return s
+}
+
+type TaskExec struct {
+	Context      *Context    `json:"context,omitempty" xml:"context,omitempty"`
+	Name         *string     `json:"name,omitempty" xml:"name,omitempty"`
+	RunAfters    []*RunAfter `json:"runAfters,omitempty" xml:"runAfters,omitempty" type:"Repeated"`
+	TaskTemplate *string     `json:"taskTemplate,omitempty" xml:"taskTemplate,omitempty"`
+}
+
+func (s TaskExec) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TaskExec) GoString() string {
+	return s.String()
+}
+
+func (s *TaskExec) SetContext(v *Context) *TaskExec {
+	s.Context = v
+	return s
+}
+
+func (s *TaskExec) SetName(v string) *TaskExec {
+	s.Name = &v
+	return s
+}
+
+func (s *TaskExec) SetRunAfters(v []*RunAfter) *TaskExec {
+	s.RunAfters = v
+	return s
+}
+
+func (s *TaskExec) SetTaskTemplate(v string) *TaskExec {
+	s.TaskTemplate = &v
+	return s
+}
+
+type TaskSpec struct {
+	Context      *Context `json:"context,omitempty" xml:"context,omitempty"`
+	TemplateName *string  `json:"templateName,omitempty" xml:"templateName,omitempty"`
+}
+
+func (s TaskSpec) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TaskSpec) GoString() string {
+	return s.String()
+}
+
+func (s *TaskSpec) SetContext(v *Context) *TaskSpec {
+	s.Context = v
+	return s
+}
+
+func (s *TaskSpec) SetTemplateName(v string) *TaskSpec {
+	s.TemplateName = &v
+	return s
+}
+
+type TaskStatus struct {
+	ExecutionDetails []*string `json:"executionDetails,omitempty" xml:"executionDetails,omitempty" type:"Repeated"`
+	Phase            *string   `json:"phase,omitempty" xml:"phase,omitempty"`
+	StatusGeneration *int64    `json:"statusGeneration,omitempty" xml:"statusGeneration,omitempty"`
+}
+
+func (s TaskStatus) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TaskStatus) GoString() string {
+	return s.String()
+}
+
+func (s *TaskStatus) SetExecutionDetails(v []*string) *TaskStatus {
+	s.ExecutionDetails = v
+	return s
+}
+
+func (s *TaskStatus) SetPhase(v string) *TaskStatus {
+	s.Phase = &v
+	return s
+}
+
+func (s *TaskStatus) SetStatusGeneration(v int64) *TaskStatus {
+	s.StatusGeneration = &v
+	return s
+}
+
+type TaskTemplate struct {
+	CreatedTime     *string            `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
+	DeletionTime    *string            `json:"deletionTime,omitempty" xml:"deletionTime,omitempty"`
+	Description     *string            `json:"description,omitempty" xml:"description,omitempty"`
+	Generation      *int32             `json:"generation,omitempty" xml:"generation,omitempty"`
+	Kind            *string            `json:"kind,omitempty" xml:"kind,omitempty"`
+	Labels          map[string]*string `json:"labels,omitempty" xml:"labels,omitempty"`
+	Name            *string            `json:"name,omitempty" xml:"name,omitempty"`
+	ResourceVersion *int32             `json:"resourceVersion,omitempty" xml:"resourceVersion,omitempty"`
+	Spec            *TaskTemplateSpec  `json:"spec,omitempty" xml:"spec,omitempty"`
+	Uid             *string            `json:"uid,omitempty" xml:"uid,omitempty"`
+}
+
+func (s TaskTemplate) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TaskTemplate) GoString() string {
+	return s.String()
+}
+
+func (s *TaskTemplate) SetCreatedTime(v string) *TaskTemplate {
+	s.CreatedTime = &v
+	return s
+}
+
+func (s *TaskTemplate) SetDeletionTime(v string) *TaskTemplate {
+	s.DeletionTime = &v
+	return s
+}
+
+func (s *TaskTemplate) SetDescription(v string) *TaskTemplate {
+	s.Description = &v
+	return s
+}
+
+func (s *TaskTemplate) SetGeneration(v int32) *TaskTemplate {
+	s.Generation = &v
+	return s
+}
+
+func (s *TaskTemplate) SetKind(v string) *TaskTemplate {
+	s.Kind = &v
+	return s
+}
+
+func (s *TaskTemplate) SetLabels(v map[string]*string) *TaskTemplate {
+	s.Labels = v
+	return s
+}
+
+func (s *TaskTemplate) SetName(v string) *TaskTemplate {
+	s.Name = &v
+	return s
+}
+
+func (s *TaskTemplate) SetResourceVersion(v int32) *TaskTemplate {
+	s.ResourceVersion = &v
+	return s
+}
+
+func (s *TaskTemplate) SetSpec(v *TaskTemplateSpec) *TaskTemplate {
+	s.Spec = v
+	return s
+}
+
+func (s *TaskTemplate) SetUid(v string) *TaskTemplate {
+	s.Uid = &v
+	return s
+}
+
+type TaskTemplateSpec struct {
+	Context          *Context               `json:"context,omitempty" xml:"context,omitempty"`
+	ContextSchema    map[string]interface{} `json:"contextSchema,omitempty" xml:"contextSchema,omitempty"`
+	Description      *string                `json:"description,omitempty" xml:"description,omitempty"`
+	ExecuteCondition *Condition             `json:"executeCondition,omitempty" xml:"executeCondition,omitempty"`
+	Worker           *TaskWorker            `json:"worker,omitempty" xml:"worker,omitempty"`
+}
+
+func (s TaskTemplateSpec) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TaskTemplateSpec) GoString() string {
+	return s.String()
+}
+
+func (s *TaskTemplateSpec) SetContext(v *Context) *TaskTemplateSpec {
+	s.Context = v
+	return s
+}
+
+func (s *TaskTemplateSpec) SetContextSchema(v map[string]interface{}) *TaskTemplateSpec {
+	s.ContextSchema = v
+	return s
+}
+
+func (s *TaskTemplateSpec) SetDescription(v string) *TaskTemplateSpec {
+	s.Description = &v
+	return s
+}
+
+func (s *TaskTemplateSpec) SetExecuteCondition(v *Condition) *TaskTemplateSpec {
+	s.ExecuteCondition = v
+	return s
+}
+
+func (s *TaskTemplateSpec) SetWorker(v *TaskWorker) *TaskTemplateSpec {
+	s.Worker = v
+	return s
+}
+
+type TaskWorker struct {
+	PresetWorker *string `json:"presetWorker,omitempty" xml:"presetWorker,omitempty"`
+}
+
+func (s TaskWorker) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TaskWorker) GoString() string {
+	return s.String()
+}
+
+func (s *TaskWorker) SetPresetWorker(v string) *TaskWorker {
+	s.PresetWorker = &v
+	return s
+}
+
 type Template struct {
-	// A time representing the server time when this object was created. Clients may not set this value. Populated by the system. Read-only.
-	CreatedTime *string `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
-	// Date and time at which a deletion is requested by the user. Null when the resource has not been requested for deletion. This field is set by the server, not directly settable by a client. Populated by the system. Read-only.
-	DeletionTime *string `json:"deletionTime,omitempty" xml:"deletionTime,omitempty"`
-	// Human-readable description of the resource
-	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// A sequence number representing a specific generation of the desired state. Populated by the system. Read-only.
-	Generation *int32 `json:"generation,omitempty" xml:"generation,omitempty"`
-	// The kind of the resource
-	Kind *string `json:"kind,omitempty" xml:"kind,omitempty"`
-	// Name must be unique within a namespace. Is required when creating resources. Cannot be updated.
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// Specification of the desired behavior of the Template.
-	Spec *TemplateSpec `json:"spec,omitempty" xml:"spec,omitempty"`
-	// Most recently observed status of the Template. This data may not be up-to-date. Populated by the system. Read-only.
-	Status *TemplateStatus `json:"status,omitempty" xml:"status,omitempty"`
-	// Main user ID of an Aliyun account
-	Uid *string `json:"uid,omitempty" xml:"uid,omitempty"`
-	// The major version of the template. "1" by default. You should ONLY increment the major version when the template are not backwards compatible with the previous major version.
-	Version *int32 `json:"version,omitempty" xml:"version,omitempty"`
+	CreatedTime  *string         `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
+	DeletionTime *string         `json:"deletionTime,omitempty" xml:"deletionTime,omitempty"`
+	Description  *string         `json:"description,omitempty" xml:"description,omitempty"`
+	Generation   *int32          `json:"generation,omitempty" xml:"generation,omitempty"`
+	Kind         *string         `json:"kind,omitempty" xml:"kind,omitempty"`
+	Name         *string         `json:"name,omitempty" xml:"name,omitempty"`
+	Spec         *TemplateSpec   `json:"spec,omitempty" xml:"spec,omitempty"`
+	Status       *TemplateStatus `json:"status,omitempty" xml:"status,omitempty"`
+	Uid          *string         `json:"uid,omitempty" xml:"uid,omitempty"`
+	Version      *int32          `json:"version,omitempty" xml:"version,omitempty"`
 }
 
 func (s Template) String() string {
@@ -1070,22 +1496,14 @@ func (s *Template) SetVersion(v int32) *Template {
 }
 
 type TemplateRevision struct {
-	// A time representing the server time when this object was created. Clients may not set this value. Populated by the system. Read-only.
-	CreatedTime *string `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
-	// The kind of the resource.
-	Kind *string `json:"kind,omitempty" xml:"kind,omitempty"`
-	// Specification of the desired behavior of the Template.
-	Spec *TemplateSpec `json:"spec,omitempty" xml:"spec,omitempty"`
-	// Most recently observed status of the Template. This data may not be up-to-date. Populated by the system. Read-only.
-	Status *TemplateStatus `json:"status,omitempty" xml:"status,omitempty"`
-	// The generation of the template.
-	TemplateGeneration *int32 `json:"templateGeneration,omitempty" xml:"templateGeneration,omitempty"`
-	// The name of a template.
-	TemplateName *string `json:"templateName,omitempty" xml:"templateName,omitempty"`
-	// The version of a template.
-	TemplateVersion *int32 `json:"templateVersion,omitempty" xml:"templateVersion,omitempty"`
-	// Main user ID of an Aliyun account.
-	Uid *string `json:"uid,omitempty" xml:"uid,omitempty"`
+	CreatedTime        *string         `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
+	Kind               *string         `json:"kind,omitempty" xml:"kind,omitempty"`
+	Spec               *TemplateSpec   `json:"spec,omitempty" xml:"spec,omitempty"`
+	Status             *TemplateStatus `json:"status,omitempty" xml:"status,omitempty"`
+	TemplateGeneration *int32          `json:"templateGeneration,omitempty" xml:"templateGeneration,omitempty"`
+	TemplateName       *string         `json:"templateName,omitempty" xml:"templateName,omitempty"`
+	TemplateVersion    *int32          `json:"templateVersion,omitempty" xml:"templateVersion,omitempty"`
+	Uid                *string         `json:"uid,omitempty" xml:"uid,omitempty"`
 }
 
 func (s TemplateRevision) String() string {
@@ -1137,14 +1555,10 @@ func (s *TemplateRevision) SetUid(v string) *TemplateRevision {
 }
 
 type TemplateSpec struct {
-	// The raw content of the template.
-	Content *string `json:"content,omitempty" xml:"content,omitempty"`
-	// The media type of the template content. At the moment, only "application/hcl+terraform" is supported.
+	Content     *string `json:"content,omitempty" xml:"content,omitempty"`
 	ContentType *string `json:"contentType,omitempty" xml:"contentType,omitempty"`
-	// The content of RAM policy  required for this template.
-	RamPolicy *string `json:"ramPolicy,omitempty" xml:"ramPolicy,omitempty"`
-	// The type of the applicable resource for this template. Must be either "Environment" or "Service".
-	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	RamPolicy   *string `json:"ramPolicy,omitempty" xml:"ramPolicy,omitempty"`
+	Type        *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s TemplateSpec) String() string {
@@ -1176,18 +1590,12 @@ func (s *TemplateSpec) SetType(v string) *TemplateSpec {
 }
 
 type TemplateStatus struct {
-	// A human-readable message indicating details about why the Template is in this condition.
-	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The most recent generation observed.
-	ObservedGeneration *int32 `json:"observedGeneration,omitempty" xml:"observedGeneration,omitempty"`
-	// Time when the last update of the status is observed.
-	ObservedTime *string `json:"observedTime,omitempty" xml:"observedTime,omitempty"`
-	// The definition of output values of the template parsed from the template content.
-	Outputs []*OutputValue `json:"outputs,omitempty" xml:"outputs,omitempty" type:"Repeated"`
-	// A simple, high-level summary of where the Template is in its lifecycle.
-	Phase *string `json:"phase,omitempty" xml:"phase,omitempty"`
-	// The definition of input variables of the template parsed from the template content.
-	Variables []*InputVariable `json:"variables,omitempty" xml:"variables,omitempty" type:"Repeated"`
+	Message            *string          `json:"message,omitempty" xml:"message,omitempty"`
+	ObservedGeneration *int32           `json:"observedGeneration,omitempty" xml:"observedGeneration,omitempty"`
+	ObservedTime       *string          `json:"observedTime,omitempty" xml:"observedTime,omitempty"`
+	Outputs            []*OutputValue   `json:"outputs,omitempty" xml:"outputs,omitempty" type:"Repeated"`
+	Phase              *string          `json:"phase,omitempty" xml:"phase,omitempty"`
+	Variables          []*InputVariable `json:"variables,omitempty" xml:"variables,omitempty" type:"Repeated"`
 }
 
 func (s TemplateStatus) String() string {
@@ -1228,8 +1636,45 @@ func (s *TemplateStatus) SetVariables(v []*InputVariable) *TemplateStatus {
 	return s
 }
 
+type TriggerConfig struct {
+	Branch *string `json:"branch,omitempty" xml:"branch,omitempty"`
+	Commit *string `json:"commit,omitempty" xml:"commit,omitempty"`
+	On     *string `json:"on,omitempty" xml:"on,omitempty"`
+}
+
+func (s TriggerConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TriggerConfig) GoString() string {
+	return s.String()
+}
+
+func (s *TriggerConfig) SetBranch(v string) *TriggerConfig {
+	s.Branch = &v
+	return s
+}
+
+func (s *TriggerConfig) SetCommit(v string) *TriggerConfig {
+	s.Commit = &v
+	return s
+}
+
+func (s *TriggerConfig) SetOn(v string) *TriggerConfig {
+	s.On = &v
+	return s
+}
+
 type CreateApplicationRequest struct {
-	Body *Application `json:"body,omitempty" xml:"body,omitempty"`
+	AutoDeploy  *bool              `json:"autoDeploy,omitempty" xml:"autoDeploy,omitempty"`
+	Description *string            `json:"description,omitempty" xml:"description,omitempty"`
+	EnvVars     map[string]*string `json:"envVars,omitempty" xml:"envVars,omitempty"`
+	Name        *string            `json:"name,omitempty" xml:"name,omitempty"`
+	Parameters  map[string]*string `json:"parameters,omitempty" xml:"parameters,omitempty"`
+	RepoSource  *RepoSource        `json:"repoSource,omitempty" xml:"repoSource,omitempty"`
+	RoleArn     *string            `json:"roleArn,omitempty" xml:"roleArn,omitempty"`
+	Template    *string            `json:"template,omitempty" xml:"template,omitempty"`
+	Trigger     *TriggerConfig     `json:"trigger,omitempty" xml:"trigger,omitempty"`
 }
 
 func (s CreateApplicationRequest) String() string {
@@ -1240,14 +1685,55 @@ func (s CreateApplicationRequest) GoString() string {
 	return s.String()
 }
 
-func (s *CreateApplicationRequest) SetBody(v *Application) *CreateApplicationRequest {
-	s.Body = v
+func (s *CreateApplicationRequest) SetAutoDeploy(v bool) *CreateApplicationRequest {
+	s.AutoDeploy = &v
+	return s
+}
+
+func (s *CreateApplicationRequest) SetDescription(v string) *CreateApplicationRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateApplicationRequest) SetEnvVars(v map[string]*string) *CreateApplicationRequest {
+	s.EnvVars = v
+	return s
+}
+
+func (s *CreateApplicationRequest) SetName(v string) *CreateApplicationRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateApplicationRequest) SetParameters(v map[string]*string) *CreateApplicationRequest {
+	s.Parameters = v
+	return s
+}
+
+func (s *CreateApplicationRequest) SetRepoSource(v *RepoSource) *CreateApplicationRequest {
+	s.RepoSource = v
+	return s
+}
+
+func (s *CreateApplicationRequest) SetRoleArn(v string) *CreateApplicationRequest {
+	s.RoleArn = &v
+	return s
+}
+
+func (s *CreateApplicationRequest) SetTemplate(v string) *CreateApplicationRequest {
+	s.Template = &v
+	return s
+}
+
+func (s *CreateApplicationRequest) SetTrigger(v *TriggerConfig) *CreateApplicationRequest {
+	s.Trigger = v
 	return s
 }
 
 type CreateApplicationResponse struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *Application       `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *Application       `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateApplicationResponse) String() string {
@@ -1263,13 +1749,110 @@ func (s *CreateApplicationResponse) SetHeaders(v map[string]*string) *CreateAppl
 	return s
 }
 
+func (s *CreateApplicationResponse) SetStatusCode(v int32) *CreateApplicationResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *CreateApplicationResponse) SetBody(v *Application) *CreateApplicationResponse {
 	s.Body = v
 	return s
 }
 
+type CreatePipelineRequest struct {
+	Body *Pipeline `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreatePipelineRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreatePipelineRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreatePipelineRequest) SetBody(v *Pipeline) *CreatePipelineRequest {
+	s.Body = v
+	return s
+}
+
+type CreatePipelineResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *Pipeline          `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreatePipelineResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreatePipelineResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreatePipelineResponse) SetHeaders(v map[string]*string) *CreatePipelineResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreatePipelineResponse) SetStatusCode(v int32) *CreatePipelineResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreatePipelineResponse) SetBody(v *Pipeline) *CreatePipelineResponse {
+	s.Body = v
+	return s
+}
+
+type CreatePipelineTemplateRequest struct {
+	Body *PipelineTemplate `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreatePipelineTemplateRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreatePipelineTemplateRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreatePipelineTemplateRequest) SetBody(v *PipelineTemplate) *CreatePipelineTemplateRequest {
+	s.Body = v
+	return s
+}
+
+type CreatePipelineTemplateResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *PipelineTemplate  `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreatePipelineTemplateResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreatePipelineTemplateResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreatePipelineTemplateResponse) SetHeaders(v map[string]*string) *CreatePipelineTemplateResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreatePipelineTemplateResponse) SetStatusCode(v int32) *CreatePipelineTemplateResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreatePipelineTemplateResponse) SetBody(v *PipelineTemplate) *CreatePipelineTemplateResponse {
+	s.Body = v
+	return s
+}
+
 type CreateReleaseRequest struct {
-	Body *Release `json:"body,omitempty" xml:"body,omitempty"`
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 }
 
 func (s CreateReleaseRequest) String() string {
@@ -1280,14 +1863,15 @@ func (s CreateReleaseRequest) GoString() string {
 	return s.String()
 }
 
-func (s *CreateReleaseRequest) SetBody(v *Release) *CreateReleaseRequest {
-	s.Body = v
+func (s *CreateReleaseRequest) SetDescription(v string) *CreateReleaseRequest {
+	s.Description = &v
 	return s
 }
 
 type CreateReleaseResponse struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *Release           `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *Release           `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateReleaseResponse) String() string {
@@ -1303,14 +1887,112 @@ func (s *CreateReleaseResponse) SetHeaders(v map[string]*string) *CreateReleaseR
 	return s
 }
 
+func (s *CreateReleaseResponse) SetStatusCode(v int32) *CreateReleaseResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *CreateReleaseResponse) SetBody(v *Release) *CreateReleaseResponse {
 	s.Body = v
 	return s
 }
 
+type CreateTaskRequest struct {
+	Body *Task `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTaskRequest) SetBody(v *Task) *CreateTaskRequest {
+	s.Body = v
+	return s
+}
+
+type CreateTaskResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *Task              `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTaskResponse) SetHeaders(v map[string]*string) *CreateTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateTaskResponse) SetStatusCode(v int32) *CreateTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateTaskResponse) SetBody(v *Task) *CreateTaskResponse {
+	s.Body = v
+	return s
+}
+
+type CreateTaskTemplateRequest struct {
+	Body *TaskTemplate `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateTaskTemplateRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTaskTemplateRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTaskTemplateRequest) SetBody(v *TaskTemplate) *CreateTaskTemplateRequest {
+	s.Body = v
+	return s
+}
+
+type CreateTaskTemplateResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *TaskTemplate      `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateTaskTemplateResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTaskTemplateResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTaskTemplateResponse) SetHeaders(v map[string]*string) *CreateTaskTemplateResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateTaskTemplateResponse) SetStatusCode(v int32) *CreateTaskTemplateResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateTaskTemplateResponse) SetBody(v *TaskTemplate) *CreateTaskTemplateResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteApplicationResponse struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *string            `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *string            `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteApplicationResponse) String() string {
@@ -1326,13 +2008,132 @@ func (s *DeleteApplicationResponse) SetHeaders(v map[string]*string) *DeleteAppl
 	return s
 }
 
+func (s *DeleteApplicationResponse) SetStatusCode(v int32) *DeleteApplicationResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DeleteApplicationResponse) SetBody(v string) *DeleteApplicationResponse {
 	s.Body = &v
 	return s
 }
 
+type DeleteEnvironmentResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+}
+
+func (s DeleteEnvironmentResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteEnvironmentResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteEnvironmentResponse) SetHeaders(v map[string]*string) *DeleteEnvironmentResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteEnvironmentResponse) SetStatusCode(v int32) *DeleteEnvironmentResponse {
+	s.StatusCode = &v
+	return s
+}
+
+type DeletePipelineTemplateResponseBody struct {
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s DeletePipelineTemplateResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeletePipelineTemplateResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeletePipelineTemplateResponseBody) SetRequestId(v string) *DeletePipelineTemplateResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeletePipelineTemplateResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeletePipelineTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeletePipelineTemplateResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeletePipelineTemplateResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeletePipelineTemplateResponse) SetHeaders(v map[string]*string) *DeletePipelineTemplateResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeletePipelineTemplateResponse) SetStatusCode(v int32) *DeletePipelineTemplateResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeletePipelineTemplateResponse) SetBody(v *DeletePipelineTemplateResponseBody) *DeletePipelineTemplateResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteTaskTemplateResponseBody struct {
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s DeleteTaskTemplateResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteTaskTemplateResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteTaskTemplateResponseBody) SetRequestId(v string) *DeleteTaskTemplateResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteTaskTemplateResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteTaskTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteTaskTemplateResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteTaskTemplateResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteTaskTemplateResponse) SetHeaders(v map[string]*string) *DeleteTaskTemplateResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteTaskTemplateResponse) SetStatusCode(v int32) *DeleteTaskTemplateResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteTaskTemplateResponse) SetBody(v *DeleteTaskTemplateResponseBody) *DeleteTaskTemplateResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteTemplateRequest struct {
-	// The major version of the template. "1" by default.
 	Version *int32 `json:"version,omitempty" xml:"version,omitempty"`
 }
 
@@ -1350,8 +2151,9 @@ func (s *DeleteTemplateRequest) SetVersion(v int32) *DeleteTemplateRequest {
 }
 
 type DeleteTemplateResponse struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *Status            `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *Status            `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteTemplateResponse) String() string {
@@ -1367,14 +2169,20 @@ func (s *DeleteTemplateResponse) SetHeaders(v map[string]*string) *DeleteTemplat
 	return s
 }
 
+func (s *DeleteTemplateResponse) SetStatusCode(v int32) *DeleteTemplateResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DeleteTemplateResponse) SetBody(v *Status) *DeleteTemplateResponse {
 	s.Body = v
 	return s
 }
 
 type GetApplicationResponse struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *Application       `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *Application       `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetApplicationResponse) String() string {
@@ -1390,14 +2198,20 @@ func (s *GetApplicationResponse) SetHeaders(v map[string]*string) *GetApplicatio
 	return s
 }
 
+func (s *GetApplicationResponse) SetStatusCode(v int32) *GetApplicationResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *GetApplicationResponse) SetBody(v *Application) *GetApplicationResponse {
 	s.Body = v
 	return s
 }
 
 type GetEnvironmentResponse struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *Environment       `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *Environment       `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetEnvironmentResponse) String() string {
@@ -1413,14 +2227,78 @@ func (s *GetEnvironmentResponse) SetHeaders(v map[string]*string) *GetEnvironmen
 	return s
 }
 
+func (s *GetEnvironmentResponse) SetStatusCode(v int32) *GetEnvironmentResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *GetEnvironmentResponse) SetBody(v *Environment) *GetEnvironmentResponse {
 	s.Body = v
 	return s
 }
 
+type GetPipelineResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *Pipeline          `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetPipelineResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPipelineResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetPipelineResponse) SetHeaders(v map[string]*string) *GetPipelineResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetPipelineResponse) SetStatusCode(v int32) *GetPipelineResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetPipelineResponse) SetBody(v *Pipeline) *GetPipelineResponse {
+	s.Body = v
+	return s
+}
+
+type GetPipelineTemplateResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *PipelineTemplate  `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetPipelineTemplateResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPipelineTemplateResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetPipelineTemplateResponse) SetHeaders(v map[string]*string) *GetPipelineTemplateResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetPipelineTemplateResponse) SetStatusCode(v int32) *GetPipelineTemplateResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetPipelineTemplateResponse) SetBody(v *PipelineTemplate) *GetPipelineTemplateResponse {
+	s.Body = v
+	return s
+}
+
 type GetReleaseResponse struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *Release           `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *Release           `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetReleaseResponse) String() string {
@@ -1436,14 +2314,20 @@ func (s *GetReleaseResponse) SetHeaders(v map[string]*string) *GetReleaseRespons
 	return s
 }
 
+func (s *GetReleaseResponse) SetStatusCode(v int32) *GetReleaseResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *GetReleaseResponse) SetBody(v *Release) *GetReleaseResponse {
 	s.Body = v
 	return s
 }
 
 type GetServiceResponse struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *Service           `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *Service           `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetServiceResponse) String() string {
@@ -1459,13 +2343,75 @@ func (s *GetServiceResponse) SetHeaders(v map[string]*string) *GetServiceRespons
 	return s
 }
 
+func (s *GetServiceResponse) SetStatusCode(v int32) *GetServiceResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *GetServiceResponse) SetBody(v *Service) *GetServiceResponse {
 	s.Body = v
 	return s
 }
 
+type GetTaskResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *Task              `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetTaskResponse) SetHeaders(v map[string]*string) *GetTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetTaskResponse) SetStatusCode(v int32) *GetTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetTaskResponse) SetBody(v *Task) *GetTaskResponse {
+	s.Body = v
+	return s
+}
+
+type GetTaskTemplateResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *TaskTemplate      `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetTaskTemplateResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTaskTemplateResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetTaskTemplateResponse) SetHeaders(v map[string]*string) *GetTaskTemplateResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetTaskTemplateResponse) SetStatusCode(v int32) *GetTaskTemplateResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetTaskTemplateResponse) SetBody(v *TaskTemplate) *GetTaskTemplateResponse {
+	s.Body = v
+	return s
+}
+
 type GetTemplateRequest struct {
-	// The major version of the template. "1" by default.
 	Version *int32 `json:"version,omitempty" xml:"version,omitempty"`
 }
 
@@ -1483,8 +2429,9 @@ func (s *GetTemplateRequest) SetVersion(v int32) *GetTemplateRequest {
 }
 
 type GetTemplateResponse struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *Template          `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *Template          `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetTemplateResponse) String() string {
@@ -1500,13 +2447,17 @@ func (s *GetTemplateResponse) SetHeaders(v map[string]*string) *GetTemplateRespo
 	return s
 }
 
+func (s *GetTemplateResponse) SetStatusCode(v int32) *GetTemplateResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *GetTemplateResponse) SetBody(v *Template) *GetTemplateResponse {
 	s.Body = v
 	return s
 }
 
 type ListEnvironmentRevisionsRequest struct {
-	// The name of an environment.
 	EnvironmentName *string `json:"environmentName,omitempty" xml:"environmentName,omitempty"`
 }
 
@@ -1524,8 +2475,9 @@ func (s *ListEnvironmentRevisionsRequest) SetEnvironmentName(v string) *ListEnvi
 }
 
 type ListEnvironmentRevisionsResponse struct {
-	Headers map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    []*EnvironmentRevision `json:"body,omitempty" xml:"body,omitempty" require:"true" type:"Repeated"`
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       []*EnvironmentRevision `json:"body,omitempty" xml:"body,omitempty" require:"true" type:"Repeated"`
 }
 
 func (s ListEnvironmentRevisionsResponse) String() string {
@@ -1541,14 +2493,20 @@ func (s *ListEnvironmentRevisionsResponse) SetHeaders(v map[string]*string) *Lis
 	return s
 }
 
+func (s *ListEnvironmentRevisionsResponse) SetStatusCode(v int32) *ListEnvironmentRevisionsResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ListEnvironmentRevisionsResponse) SetBody(v []*EnvironmentRevision) *ListEnvironmentRevisionsResponse {
 	s.Body = v
 	return s
 }
 
 type ListEnvironmentsResponse struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    []*Environment     `json:"body,omitempty" xml:"body,omitempty" require:"true" type:"Repeated"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       []*Environment     `json:"body,omitempty" xml:"body,omitempty" require:"true" type:"Repeated"`
 }
 
 func (s ListEnvironmentsResponse) String() string {
@@ -1564,13 +2522,143 @@ func (s *ListEnvironmentsResponse) SetHeaders(v map[string]*string) *ListEnviron
 	return s
 }
 
+func (s *ListEnvironmentsResponse) SetStatusCode(v int32) *ListEnvironmentsResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ListEnvironmentsResponse) SetBody(v []*Environment) *ListEnvironmentsResponse {
 	s.Body = v
 	return s
 }
 
+type ListPipelineTemplatesRequest struct {
+	LabelSelector []*string `json:"labelSelector,omitempty" xml:"labelSelector,omitempty" type:"Repeated"`
+}
+
+func (s ListPipelineTemplatesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPipelineTemplatesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListPipelineTemplatesRequest) SetLabelSelector(v []*string) *ListPipelineTemplatesRequest {
+	s.LabelSelector = v
+	return s
+}
+
+type ListPipelineTemplatesShrinkRequest struct {
+	LabelSelectorShrink *string `json:"labelSelector,omitempty" xml:"labelSelector,omitempty"`
+}
+
+func (s ListPipelineTemplatesShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPipelineTemplatesShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListPipelineTemplatesShrinkRequest) SetLabelSelectorShrink(v string) *ListPipelineTemplatesShrinkRequest {
+	s.LabelSelectorShrink = &v
+	return s
+}
+
+type ListPipelineTemplatesResponse struct {
+	Headers    map[string]*string  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       []*PipelineTemplate `json:"body,omitempty" xml:"body,omitempty" require:"true" type:"Repeated"`
+}
+
+func (s ListPipelineTemplatesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPipelineTemplatesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListPipelineTemplatesResponse) SetHeaders(v map[string]*string) *ListPipelineTemplatesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListPipelineTemplatesResponse) SetStatusCode(v int32) *ListPipelineTemplatesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListPipelineTemplatesResponse) SetBody(v []*PipelineTemplate) *ListPipelineTemplatesResponse {
+	s.Body = v
+	return s
+}
+
+type ListPipelinesRequest struct {
+	LabelSelector []*string `json:"labelSelector,omitempty" xml:"labelSelector,omitempty" type:"Repeated"`
+}
+
+func (s ListPipelinesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPipelinesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListPipelinesRequest) SetLabelSelector(v []*string) *ListPipelinesRequest {
+	s.LabelSelector = v
+	return s
+}
+
+type ListPipelinesShrinkRequest struct {
+	LabelSelectorShrink *string `json:"labelSelector,omitempty" xml:"labelSelector,omitempty"`
+}
+
+func (s ListPipelinesShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPipelinesShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListPipelinesShrinkRequest) SetLabelSelectorShrink(v string) *ListPipelinesShrinkRequest {
+	s.LabelSelectorShrink = &v
+	return s
+}
+
+type ListPipelinesResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       []*Pipeline        `json:"body,omitempty" xml:"body,omitempty" require:"true" type:"Repeated"`
+}
+
+func (s ListPipelinesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPipelinesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListPipelinesResponse) SetHeaders(v map[string]*string) *ListPipelinesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListPipelinesResponse) SetStatusCode(v int32) *ListPipelinesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListPipelinesResponse) SetBody(v []*Pipeline) *ListPipelinesResponse {
+	s.Body = v
+	return s
+}
+
 type ListServiceRevisionsRequest struct {
-	// The name of a service.
 	ServiceName *string `json:"serviceName,omitempty" xml:"serviceName,omitempty"`
 }
 
@@ -1588,8 +2676,9 @@ func (s *ListServiceRevisionsRequest) SetServiceName(v string) *ListServiceRevis
 }
 
 type ListServiceRevisionsResponse struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    []*ServiceRevision `json:"body,omitempty" xml:"body,omitempty" require:"true" type:"Repeated"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       []*ServiceRevision `json:"body,omitempty" xml:"body,omitempty" require:"true" type:"Repeated"`
 }
 
 func (s ListServiceRevisionsResponse) String() string {
@@ -1605,14 +2694,20 @@ func (s *ListServiceRevisionsResponse) SetHeaders(v map[string]*string) *ListSer
 	return s
 }
 
+func (s *ListServiceRevisionsResponse) SetStatusCode(v int32) *ListServiceRevisionsResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ListServiceRevisionsResponse) SetBody(v []*ServiceRevision) *ListServiceRevisionsResponse {
 	s.Body = v
 	return s
 }
 
 type ListServicesResponse struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    []*Service         `json:"body,omitempty" xml:"body,omitempty" require:"true" type:"Repeated"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       []*Service         `json:"body,omitempty" xml:"body,omitempty" require:"true" type:"Repeated"`
 }
 
 func (s ListServicesResponse) String() string {
@@ -1628,16 +2723,145 @@ func (s *ListServicesResponse) SetHeaders(v map[string]*string) *ListServicesRes
 	return s
 }
 
+func (s *ListServicesResponse) SetStatusCode(v int32) *ListServicesResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ListServicesResponse) SetBody(v []*Service) *ListServicesResponse {
 	s.Body = v
 	return s
 }
 
+type ListTaskTemplatesRequest struct {
+	LabelSelector []*string `json:"labelSelector,omitempty" xml:"labelSelector,omitempty" type:"Repeated"`
+}
+
+func (s ListTaskTemplatesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTaskTemplatesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListTaskTemplatesRequest) SetLabelSelector(v []*string) *ListTaskTemplatesRequest {
+	s.LabelSelector = v
+	return s
+}
+
+type ListTaskTemplatesShrinkRequest struct {
+	LabelSelectorShrink *string `json:"labelSelector,omitempty" xml:"labelSelector,omitempty"`
+}
+
+func (s ListTaskTemplatesShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTaskTemplatesShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListTaskTemplatesShrinkRequest) SetLabelSelectorShrink(v string) *ListTaskTemplatesShrinkRequest {
+	s.LabelSelectorShrink = &v
+	return s
+}
+
+type ListTaskTemplatesResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       []*TaskTemplate    `json:"body,omitempty" xml:"body,omitempty" require:"true" type:"Repeated"`
+}
+
+func (s ListTaskTemplatesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTaskTemplatesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListTaskTemplatesResponse) SetHeaders(v map[string]*string) *ListTaskTemplatesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListTaskTemplatesResponse) SetStatusCode(v int32) *ListTaskTemplatesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListTaskTemplatesResponse) SetBody(v []*TaskTemplate) *ListTaskTemplatesResponse {
+	s.Body = v
+	return s
+}
+
+type ListTasksRequest struct {
+	LabelSelector []*string `json:"labelSelector,omitempty" xml:"labelSelector,omitempty" type:"Repeated"`
+}
+
+func (s ListTasksRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTasksRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListTasksRequest) SetLabelSelector(v []*string) *ListTasksRequest {
+	s.LabelSelector = v
+	return s
+}
+
+type ListTasksShrinkRequest struct {
+	LabelSelectorShrink *string `json:"labelSelector,omitempty" xml:"labelSelector,omitempty"`
+}
+
+func (s ListTasksShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTasksShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListTasksShrinkRequest) SetLabelSelectorShrink(v string) *ListTasksShrinkRequest {
+	s.LabelSelectorShrink = &v
+	return s
+}
+
+type ListTasksResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       []*Task            `json:"body,omitempty" xml:"body,omitempty" require:"true" type:"Repeated"`
+}
+
+func (s ListTasksResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTasksResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListTasksResponse) SetHeaders(v map[string]*string) *ListTasksResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListTasksResponse) SetStatusCode(v int32) *ListTasksResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListTasksResponse) SetBody(v []*Task) *ListTasksResponse {
+	s.Body = v
+	return s
+}
+
 type ListTemplateRevisionsRequest struct {
-	// The name of a template.
-	TemplateName *string `json:"templateName,omitempty" xml:"templateName,omitempty"`
-	// The major version of the template. "1" by default.
-	TemplateVersion *int32 `json:"templateVersion,omitempty" xml:"templateVersion,omitempty"`
+	TemplateName    *string `json:"templateName,omitempty" xml:"templateName,omitempty"`
+	TemplateVersion *int32  `json:"templateVersion,omitempty" xml:"templateVersion,omitempty"`
 }
 
 func (s ListTemplateRevisionsRequest) String() string {
@@ -1659,8 +2883,9 @@ func (s *ListTemplateRevisionsRequest) SetTemplateVersion(v int32) *ListTemplate
 }
 
 type ListTemplateRevisionsResponse struct {
-	Headers map[string]*string  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    []*TemplateRevision `json:"body,omitempty" xml:"body,omitempty" require:"true" type:"Repeated"`
+	Headers    map[string]*string  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       []*TemplateRevision `json:"body,omitempty" xml:"body,omitempty" require:"true" type:"Repeated"`
 }
 
 func (s ListTemplateRevisionsResponse) String() string {
@@ -1676,13 +2901,17 @@ func (s *ListTemplateRevisionsResponse) SetHeaders(v map[string]*string) *ListTe
 	return s
 }
 
+func (s *ListTemplateRevisionsResponse) SetStatusCode(v int32) *ListTemplateRevisionsResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ListTemplateRevisionsResponse) SetBody(v []*TemplateRevision) *ListTemplateRevisionsResponse {
 	s.Body = v
 	return s
 }
 
 type ListTemplatesRequest struct {
-	// The type of the applicable resource for this template. Must be either "Environment" or "Service".
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
@@ -1700,8 +2929,9 @@ func (s *ListTemplatesRequest) SetType(v string) *ListTemplatesRequest {
 }
 
 type ListTemplatesResponse struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    []*Template        `json:"body,omitempty" xml:"body,omitempty" require:"true" type:"Repeated"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       []*Template        `json:"body,omitempty" xml:"body,omitempty" require:"true" type:"Repeated"`
 }
 
 func (s ListTemplatesResponse) String() string {
@@ -1717,13 +2947,17 @@ func (s *ListTemplatesResponse) SetHeaders(v map[string]*string) *ListTemplatesR
 	return s
 }
 
+func (s *ListTemplatesResponse) SetStatusCode(v int32) *ListTemplatesResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ListTemplatesResponse) SetBody(v []*Template) *ListTemplatesResponse {
 	s.Body = v
 	return s
 }
 
 type PutEnvironmentRequest struct {
-	// An environment for serverless deployments
 	Body *Environment `json:"body,omitempty" xml:"body,omitempty"`
 }
 
@@ -1741,8 +2975,9 @@ func (s *PutEnvironmentRequest) SetBody(v *Environment) *PutEnvironmentRequest {
 }
 
 type PutEnvironmentResponse struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *Environment       `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *Environment       `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s PutEnvironmentResponse) String() string {
@@ -1758,13 +2993,17 @@ func (s *PutEnvironmentResponse) SetHeaders(v map[string]*string) *PutEnvironmen
 	return s
 }
 
+func (s *PutEnvironmentResponse) SetStatusCode(v int32) *PutEnvironmentResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *PutEnvironmentResponse) SetBody(v *Environment) *PutEnvironmentResponse {
 	s.Body = v
 	return s
 }
 
 type PutServiceRequest struct {
-	// A service for serverless deployments
 	Body *Service `json:"body,omitempty" xml:"body,omitempty"`
 }
 
@@ -1782,8 +3021,9 @@ func (s *PutServiceRequest) SetBody(v *Service) *PutServiceRequest {
 }
 
 type PutServiceResponse struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *Service           `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *Service           `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s PutServiceResponse) String() string {
@@ -1799,16 +3039,19 @@ func (s *PutServiceResponse) SetHeaders(v map[string]*string) *PutServiceRespons
 	return s
 }
 
+func (s *PutServiceResponse) SetStatusCode(v int32) *PutServiceResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *PutServiceResponse) SetBody(v *Service) *PutServiceResponse {
 	s.Body = v
 	return s
 }
 
 type PutTemplateRequest struct {
-	// A custom template
-	Body *Template `json:"body,omitempty" xml:"body,omitempty"`
-	// The major version of the template. "1" by default.
-	Version *int32 `json:"version,omitempty" xml:"version,omitempty"`
+	Body    *Template `json:"body,omitempty" xml:"body,omitempty"`
+	Version *int32    `json:"version,omitempty" xml:"version,omitempty"`
 }
 
 func (s PutTemplateRequest) String() string {
@@ -1830,8 +3073,9 @@ func (s *PutTemplateRequest) SetVersion(v int32) *PutTemplateRequest {
 }
 
 type PutTemplateResponse struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *Template          `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *Template          `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s PutTemplateResponse) String() string {
@@ -1847,7 +3091,99 @@ func (s *PutTemplateResponse) SetHeaders(v map[string]*string) *PutTemplateRespo
 	return s
 }
 
+func (s *PutTemplateResponse) SetStatusCode(v int32) *PutTemplateResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *PutTemplateResponse) SetBody(v *Template) *PutTemplateResponse {
+	s.Body = v
+	return s
+}
+
+type ResumeTaskResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *Task              `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ResumeTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ResumeTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ResumeTaskResponse) SetHeaders(v map[string]*string) *ResumeTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ResumeTaskResponse) SetStatusCode(v int32) *ResumeTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ResumeTaskResponse) SetBody(v *Task) *ResumeTaskResponse {
+	s.Body = v
+	return s
+}
+
+type StartPipelineResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *Pipeline          `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s StartPipelineResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartPipelineResponse) GoString() string {
+	return s.String()
+}
+
+func (s *StartPipelineResponse) SetHeaders(v map[string]*string) *StartPipelineResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *StartPipelineResponse) SetStatusCode(v int32) *StartPipelineResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *StartPipelineResponse) SetBody(v *Pipeline) *StartPipelineResponse {
+	s.Body = v
+	return s
+}
+
+type StartTaskResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *Task              `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s StartTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *StartTaskResponse) SetHeaders(v map[string]*string) *StartTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *StartTaskResponse) SetStatusCode(v int32) *StartTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *StartTaskResponse) SetBody(v *Task) *StartTaskResponse {
 	s.Body = v
 	return s
 }
@@ -1870,8 +3206,9 @@ func (s *UpdateApplicationRequest) SetBody(v *Application) *UpdateApplicationReq
 }
 
 type UpdateApplicationResponse struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *Application       `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *Application       `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s UpdateApplicationResponse) String() string {
@@ -1884,6 +3221,11 @@ func (s UpdateApplicationResponse) GoString() string {
 
 func (s *UpdateApplicationResponse) SetHeaders(v map[string]*string) *UpdateApplicationResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *UpdateApplicationResponse) SetStatusCode(v int32) *UpdateApplicationResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1956,9 +3298,46 @@ func (client *Client) CreateApplicationWithOptions(request *CreateApplicationReq
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AutoDeploy)) {
+		body["autoDeploy"] = request.AutoDeploy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		body["description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnvVars)) {
+		body["envVars"] = request.EnvVars
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Parameters)) {
+		body["parameters"] = request.Parameters
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RepoSource)) {
+		body["repoSource"] = request.RepoSource
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoleArn)) {
+		body["roleArn"] = request.RoleArn
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Template)) {
+		body["template"] = request.Template
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Trigger)) {
+		body["trigger"] = request.Trigger
+	}
+
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
-		Body:    openapiutil.ParseToMap(tea.ToMap(request.Body)),
+		Body:    openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateApplication"),
@@ -1972,6 +3351,88 @@ func (client *Client) CreateApplicationWithOptions(request *CreateApplicationReq
 		BodyType:    tea.String("json"),
 	}
 	_result = &CreateApplicationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreatePipeline(request *CreatePipelineRequest) (_result *CreatePipelineResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreatePipelineResponse{}
+	_body, _err := client.CreatePipelineWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreatePipelineWithOptions(request *CreatePipelineRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreatePipelineResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(request.Body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreatePipeline"),
+		Version:     tea.String("2021-09-24"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/apis/serverlessdeployment/v1/pipelines"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreatePipelineResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreatePipelineTemplate(request *CreatePipelineTemplateRequest) (_result *CreatePipelineTemplateResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreatePipelineTemplateResponse{}
+	_body, _err := client.CreatePipelineTemplateWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreatePipelineTemplateWithOptions(request *CreatePipelineTemplateRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreatePipelineTemplateResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(request.Body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreatePipelineTemplate"),
+		Version:     tea.String("2021-09-24"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/apis/serverlessdeployment/v1/pipelinetemplates"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreatePipelineTemplateResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -1997,16 +3458,20 @@ func (client *Client) CreateReleaseWithOptions(appName *string, request *CreateR
 	if _err != nil {
 		return _result, _err
 	}
-	appName = openapiutil.GetEncodeParam(appName)
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["description"] = request.Description
+	}
+
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
-		Body:    openapiutil.ParseToMap(tea.ToMap(request.Body)),
+		Query:   openapiutil.Query(query),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateRelease"),
 		Version:     tea.String("2021-09-24"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/apis/serverlessdeployment/v1/applications/" + tea.StringValue(appName) + "/releases"),
+		Pathname:    tea.String("/apis/serverlessdeployment/v1/applications/" + tea.StringValue(openapiutil.GetEncodeParam(appName)) + "/releases"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -2014,6 +3479,88 @@ func (client *Client) CreateReleaseWithOptions(appName *string, request *CreateR
 		BodyType:    tea.String("json"),
 	}
 	_result = &CreateReleaseResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateTask(request *CreateTaskRequest) (_result *CreateTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateTaskResponse{}
+	_body, _err := client.CreateTaskWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateTaskWithOptions(request *CreateTaskRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateTaskResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(request.Body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateTask"),
+		Version:     tea.String("2021-09-24"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/apis/serverlessdeployment/v1/tasks"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateTaskTemplate(request *CreateTaskTemplateRequest) (_result *CreateTaskTemplateResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateTaskTemplateResponse{}
+	_body, _err := client.CreateTaskTemplateWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateTaskTemplateWithOptions(request *CreateTaskTemplateRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateTaskTemplateResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(request.Body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateTaskTemplate"),
+		Version:     tea.String("2021-09-24"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/apis/serverlessdeployment/v1/tasktemplates"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateTaskTemplateResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -2035,7 +3582,6 @@ func (client *Client) DeleteApplication(name *string) (_result *DeleteApplicatio
 }
 
 func (client *Client) DeleteApplicationWithOptions(name *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteApplicationResponse, _err error) {
-	name = openapiutil.GetEncodeParam(name)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -2043,7 +3589,7 @@ func (client *Client) DeleteApplicationWithOptions(name *string, headers map[str
 		Action:      tea.String("DeleteApplication"),
 		Version:     tea.String("2021-09-24"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/apis/serverlessdeployment/v1/applications/" + tea.StringValue(name)),
+		Pathname:    tea.String("/apis/serverlessdeployment/v1/applications/" + tea.StringValue(openapiutil.GetEncodeParam(name))),
 		Method:      tea.String("DELETE"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -2051,6 +3597,114 @@ func (client *Client) DeleteApplicationWithOptions(name *string, headers map[str
 		BodyType:    tea.String("string"),
 	}
 	_result = &DeleteApplicationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteEnvironment(name *string) (_result *DeleteEnvironmentResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteEnvironmentResponse{}
+	_body, _err := client.DeleteEnvironmentWithOptions(name, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteEnvironmentWithOptions(name *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteEnvironmentResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteEnvironment"),
+		Version:     tea.String("2021-09-24"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/apis/serverlessdeployment/v1/environments/" + tea.StringValue(openapiutil.GetEncodeParam(name))),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
+	_result = &DeleteEnvironmentResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeletePipelineTemplate(name *string) (_result *DeletePipelineTemplateResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeletePipelineTemplateResponse{}
+	_body, _err := client.DeletePipelineTemplateWithOptions(name, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeletePipelineTemplateWithOptions(name *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeletePipelineTemplateResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeletePipelineTemplate"),
+		Version:     tea.String("2021-09-24"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/apis/serverlessdeployment/v1/pipelinetemplates/" + tea.StringValue(openapiutil.GetEncodeParam(name))),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeletePipelineTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteTaskTemplate(name *string) (_result *DeleteTaskTemplateResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteTaskTemplateResponse{}
+	_body, _err := client.DeleteTaskTemplateWithOptions(name, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteTaskTemplateWithOptions(name *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteTaskTemplateResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteTaskTemplate"),
+		Version:     tea.String("2021-09-24"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/apis/serverlessdeployment/v1/tasktemplates/" + tea.StringValue(openapiutil.GetEncodeParam(name))),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteTaskTemplateResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -2076,7 +3730,6 @@ func (client *Client) DeleteTemplateWithOptions(name *string, request *DeleteTem
 	if _err != nil {
 		return _result, _err
 	}
-	name = openapiutil.GetEncodeParam(name)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Version)) {
 		query["version"] = request.Version
@@ -2090,7 +3743,7 @@ func (client *Client) DeleteTemplateWithOptions(name *string, request *DeleteTem
 		Action:      tea.String("DeleteTemplate"),
 		Version:     tea.String("2021-09-24"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/apis/serverlessdeployment/v1/templates/" + tea.StringValue(name)),
+		Pathname:    tea.String("/apis/serverlessdeployment/v1/templates/" + tea.StringValue(openapiutil.GetEncodeParam(name))),
 		Method:      tea.String("DELETE"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -2119,7 +3772,6 @@ func (client *Client) GetApplication(name *string) (_result *GetApplicationRespo
 }
 
 func (client *Client) GetApplicationWithOptions(name *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetApplicationResponse, _err error) {
-	name = openapiutil.GetEncodeParam(name)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -2127,7 +3779,7 @@ func (client *Client) GetApplicationWithOptions(name *string, headers map[string
 		Action:      tea.String("GetApplication"),
 		Version:     tea.String("2021-09-24"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/apis/serverlessdeployment/v1/applications/" + tea.StringValue(name)),
+		Pathname:    tea.String("/apis/serverlessdeployment/v1/applications/" + tea.StringValue(openapiutil.GetEncodeParam(name))),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -2156,7 +3808,6 @@ func (client *Client) GetEnvironment(name *string) (_result *GetEnvironmentRespo
 }
 
 func (client *Client) GetEnvironmentWithOptions(name *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetEnvironmentResponse, _err error) {
-	name = openapiutil.GetEncodeParam(name)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -2164,7 +3815,7 @@ func (client *Client) GetEnvironmentWithOptions(name *string, headers map[string
 		Action:      tea.String("GetEnvironment"),
 		Version:     tea.String("2021-09-24"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/apis/serverlessdeployment/v1/environments/" + tea.StringValue(name)),
+		Pathname:    tea.String("/apis/serverlessdeployment/v1/environments/" + tea.StringValue(openapiutil.GetEncodeParam(name))),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -2172,6 +3823,78 @@ func (client *Client) GetEnvironmentWithOptions(name *string, headers map[string
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetEnvironmentResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetPipeline(name *string) (_result *GetPipelineResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetPipelineResponse{}
+	_body, _err := client.GetPipelineWithOptions(name, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetPipelineWithOptions(name *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetPipelineResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetPipeline"),
+		Version:     tea.String("2021-09-24"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/apis/serverlessdeployment/v1/pipelines/" + tea.StringValue(openapiutil.GetEncodeParam(name))),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetPipelineResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetPipelineTemplate(name *string) (_result *GetPipelineTemplateResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetPipelineTemplateResponse{}
+	_body, _err := client.GetPipelineTemplateWithOptions(name, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetPipelineTemplateWithOptions(name *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetPipelineTemplateResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetPipelineTemplate"),
+		Version:     tea.String("2021-09-24"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/apis/serverlessdeployment/v1/pipelinetemplates/" + tea.StringValue(openapiutil.GetEncodeParam(name))),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetPipelineTemplateResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -2193,8 +3916,6 @@ func (client *Client) GetRelease(appName *string, versionId *string) (_result *G
 }
 
 func (client *Client) GetReleaseWithOptions(appName *string, versionId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetReleaseResponse, _err error) {
-	appName = openapiutil.GetEncodeParam(appName)
-	versionId = openapiutil.GetEncodeParam(versionId)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -2202,7 +3923,7 @@ func (client *Client) GetReleaseWithOptions(appName *string, versionId *string, 
 		Action:      tea.String("GetRelease"),
 		Version:     tea.String("2021-09-24"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/apis/serverlessdeployment/v1/applications/" + tea.StringValue(appName) + "/releases/" + tea.StringValue(versionId)),
+		Pathname:    tea.String("/apis/serverlessdeployment/v1/applications/" + tea.StringValue(openapiutil.GetEncodeParam(appName)) + "/releases/" + tea.StringValue(openapiutil.GetEncodeParam(versionId))),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -2231,7 +3952,6 @@ func (client *Client) GetService(name *string) (_result *GetServiceResponse, _er
 }
 
 func (client *Client) GetServiceWithOptions(name *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetServiceResponse, _err error) {
-	name = openapiutil.GetEncodeParam(name)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -2239,7 +3959,7 @@ func (client *Client) GetServiceWithOptions(name *string, headers map[string]*st
 		Action:      tea.String("GetService"),
 		Version:     tea.String("2021-09-24"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/apis/serverlessdeployment/v1/services/" + tea.StringValue(name)),
+		Pathname:    tea.String("/apis/serverlessdeployment/v1/services/" + tea.StringValue(openapiutil.GetEncodeParam(name))),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -2247,6 +3967,78 @@ func (client *Client) GetServiceWithOptions(name *string, headers map[string]*st
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetServiceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetTask(name *string) (_result *GetTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetTaskResponse{}
+	_body, _err := client.GetTaskWithOptions(name, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetTaskWithOptions(name *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetTaskResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetTask"),
+		Version:     tea.String("2021-09-24"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/apis/serverlessdeployment/v1/tasks/" + tea.StringValue(openapiutil.GetEncodeParam(name))),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetTaskTemplate(name *string) (_result *GetTaskTemplateResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetTaskTemplateResponse{}
+	_body, _err := client.GetTaskTemplateWithOptions(name, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetTaskTemplateWithOptions(name *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetTaskTemplateResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetTaskTemplate"),
+		Version:     tea.String("2021-09-24"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/apis/serverlessdeployment/v1/tasktemplates/" + tea.StringValue(openapiutil.GetEncodeParam(name))),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetTaskTemplateResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -2272,7 +4064,6 @@ func (client *Client) GetTemplateWithOptions(name *string, request *GetTemplateR
 	if _err != nil {
 		return _result, _err
 	}
-	name = openapiutil.GetEncodeParam(name)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Version)) {
 		query["version"] = request.Version
@@ -2286,7 +4077,7 @@ func (client *Client) GetTemplateWithOptions(name *string, request *GetTemplateR
 		Action:      tea.String("GetTemplate"),
 		Version:     tea.String("2021-09-24"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/apis/serverlessdeployment/v1/templates/" + tea.StringValue(name)),
+		Pathname:    tea.String("/apis/serverlessdeployment/v1/templates/" + tea.StringValue(openapiutil.GetEncodeParam(name))),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -2384,6 +4175,110 @@ func (client *Client) ListEnvironmentsWithOptions(headers map[string]*string, ru
 	return _result, _err
 }
 
+func (client *Client) ListPipelineTemplates(request *ListPipelineTemplatesRequest) (_result *ListPipelineTemplatesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListPipelineTemplatesResponse{}
+	_body, _err := client.ListPipelineTemplatesWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListPipelineTemplatesWithOptions(tmpReq *ListPipelineTemplatesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListPipelineTemplatesResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ListPipelineTemplatesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.LabelSelector)) {
+		request.LabelSelectorShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.LabelSelector, tea.String("labelSelector"), tea.String("simple"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.LabelSelectorShrink)) {
+		query["labelSelector"] = request.LabelSelectorShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListPipelineTemplates"),
+		Version:     tea.String("2021-09-24"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/apis/serverlessdeployment/v1/pipelinetemplates"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("array"),
+	}
+	_result = &ListPipelineTemplatesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListPipelines(request *ListPipelinesRequest) (_result *ListPipelinesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListPipelinesResponse{}
+	_body, _err := client.ListPipelinesWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListPipelinesWithOptions(tmpReq *ListPipelinesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListPipelinesResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ListPipelinesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.LabelSelector)) {
+		request.LabelSelectorShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.LabelSelector, tea.String("labelSelector"), tea.String("simple"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.LabelSelectorShrink)) {
+		query["labelSelector"] = request.LabelSelectorShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListPipelines"),
+		Version:     tea.String("2021-09-24"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/apis/serverlessdeployment/v1/pipelines"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("array"),
+	}
+	_result = &ListPipelinesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
 func (client *Client) ListServiceRevisions(request *ListServiceRevisionsRequest) (_result *ListServiceRevisionsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -2458,6 +4353,110 @@ func (client *Client) ListServicesWithOptions(headers map[string]*string, runtim
 		BodyType:    tea.String("array"),
 	}
 	_result = &ListServicesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListTaskTemplates(request *ListTaskTemplatesRequest) (_result *ListTaskTemplatesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListTaskTemplatesResponse{}
+	_body, _err := client.ListTaskTemplatesWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListTaskTemplatesWithOptions(tmpReq *ListTaskTemplatesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListTaskTemplatesResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ListTaskTemplatesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.LabelSelector)) {
+		request.LabelSelectorShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.LabelSelector, tea.String("labelSelector"), tea.String("simple"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.LabelSelectorShrink)) {
+		query["labelSelector"] = request.LabelSelectorShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListTaskTemplates"),
+		Version:     tea.String("2021-09-24"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/apis/serverlessdeployment/v1/tasktemplates"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("array"),
+	}
+	_result = &ListTaskTemplatesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListTasks(request *ListTasksRequest) (_result *ListTasksResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListTasksResponse{}
+	_body, _err := client.ListTasksWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListTasksWithOptions(tmpReq *ListTasksRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListTasksResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ListTasksShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.LabelSelector)) {
+		request.LabelSelectorShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.LabelSelector, tea.String("labelSelector"), tea.String("simple"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.LabelSelectorShrink)) {
+		query["labelSelector"] = request.LabelSelectorShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListTasks"),
+		Version:     tea.String("2021-09-24"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/apis/serverlessdeployment/v1/tasks"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("array"),
+	}
+	_result = &ListTasksResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -2579,16 +4578,15 @@ func (client *Client) PutEnvironmentWithOptions(name *string, request *PutEnviro
 	if _err != nil {
 		return _result, _err
 	}
-	name = openapiutil.GetEncodeParam(name)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
-		Body:    openapiutil.ParseToMap(tea.ToMap(request.Body)),
+		Body:    openapiutil.ParseToMap(request.Body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("PutEnvironment"),
 		Version:     tea.String("2021-09-24"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/apis/serverlessdeployment/v1/environments/" + tea.StringValue(name)),
+		Pathname:    tea.String("/apis/serverlessdeployment/v1/environments/" + tea.StringValue(openapiutil.GetEncodeParam(name))),
 		Method:      tea.String("PUT"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -2621,16 +4619,15 @@ func (client *Client) PutServiceWithOptions(name *string, request *PutServiceReq
 	if _err != nil {
 		return _result, _err
 	}
-	name = openapiutil.GetEncodeParam(name)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
-		Body:    openapiutil.ParseToMap(tea.ToMap(request.Body)),
+		Body:    openapiutil.ParseToMap(request.Body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("PutService"),
 		Version:     tea.String("2021-09-24"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/apis/serverlessdeployment/v1/services/" + tea.StringValue(name)),
+		Pathname:    tea.String("/apis/serverlessdeployment/v1/services/" + tea.StringValue(openapiutil.GetEncodeParam(name))),
 		Method:      tea.String("PUT"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -2663,7 +4660,6 @@ func (client *Client) PutTemplateWithOptions(name *string, request *PutTemplateR
 	if _err != nil {
 		return _result, _err
 	}
-	name = openapiutil.GetEncodeParam(name)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Version)) {
 		query["version"] = request.Version
@@ -2672,13 +4668,13 @@ func (client *Client) PutTemplateWithOptions(name *string, request *PutTemplateR
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),
-		Body:    openapiutil.ParseToMap(tea.ToMap(request.Body)),
+		Body:    openapiutil.ParseToMap(request.Body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("PutTemplate"),
 		Version:     tea.String("2021-09-24"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/apis/serverlessdeployment/v1/templates/" + tea.StringValue(name)),
+		Pathname:    tea.String("/apis/serverlessdeployment/v1/templates/" + tea.StringValue(openapiutil.GetEncodeParam(name))),
 		Method:      tea.String("PUT"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -2686,6 +4682,114 @@ func (client *Client) PutTemplateWithOptions(name *string, request *PutTemplateR
 		BodyType:    tea.String("json"),
 	}
 	_result = &PutTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ResumeTask(name *string) (_result *ResumeTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ResumeTaskResponse{}
+	_body, _err := client.ResumeTaskWithOptions(name, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ResumeTaskWithOptions(name *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ResumeTaskResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ResumeTask"),
+		Version:     tea.String("2021-09-24"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/apis/serverlessdeployment/v1/tasks/" + tea.StringValue(openapiutil.GetEncodeParam(name)) + "/resume"),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ResumeTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) StartPipeline(name *string) (_result *StartPipelineResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &StartPipelineResponse{}
+	_body, _err := client.StartPipelineWithOptions(name, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) StartPipelineWithOptions(name *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *StartPipelineResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("StartPipeline"),
+		Version:     tea.String("2021-09-24"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/apis/serverlessdeployment/v1/pipelines/" + tea.StringValue(openapiutil.GetEncodeParam(name)) + "/start"),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &StartPipelineResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) StartTask(name *string) (_result *StartTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &StartTaskResponse{}
+	_body, _err := client.StartTaskWithOptions(name, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) StartTaskWithOptions(name *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *StartTaskResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("StartTask"),
+		Version:     tea.String("2021-09-24"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/apis/serverlessdeployment/v1/tasks/" + tea.StringValue(openapiutil.GetEncodeParam(name)) + "/start"),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &StartTaskResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -2711,16 +4815,15 @@ func (client *Client) UpdateApplicationWithOptions(name *string, request *Update
 	if _err != nil {
 		return _result, _err
 	}
-	name = openapiutil.GetEncodeParam(name)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
-		Body:    openapiutil.ParseToMap(tea.ToMap(request.Body)),
+		Body:    openapiutil.ParseToMap(request.Body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateApplication"),
 		Version:     tea.String("2021-09-24"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/apis/serverlessdeployment/v1/applications/" + tea.StringValue(name)),
+		Pathname:    tea.String("/apis/serverlessdeployment/v1/applications/" + tea.StringValue(openapiutil.GetEncodeParam(name))),
 		Method:      tea.String("PUT"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
