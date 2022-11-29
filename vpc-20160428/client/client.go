@@ -38440,6 +38440,146 @@ func (s *GrantInstanceToCenResponse) SetBody(v *GrantInstanceToCenResponseBody) 
 	return s
 }
 
+type GrantInstanceToVbrRequest struct {
+	GrantType      *string   `json:"GrantType,omitempty" xml:"GrantType,omitempty"`
+	InstanceId     *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	RegionId       *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	VbrInstanceIds []*string `json:"VbrInstanceIds,omitempty" xml:"VbrInstanceIds,omitempty" type:"Repeated"`
+	VbrOwnerUid    *int64    `json:"VbrOwnerUid,omitempty" xml:"VbrOwnerUid,omitempty"`
+	VbrRegionNo    *string   `json:"VbrRegionNo,omitempty" xml:"VbrRegionNo,omitempty"`
+}
+
+func (s GrantInstanceToVbrRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GrantInstanceToVbrRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GrantInstanceToVbrRequest) SetGrantType(v string) *GrantInstanceToVbrRequest {
+	s.GrantType = &v
+	return s
+}
+
+func (s *GrantInstanceToVbrRequest) SetInstanceId(v string) *GrantInstanceToVbrRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *GrantInstanceToVbrRequest) SetRegionId(v string) *GrantInstanceToVbrRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *GrantInstanceToVbrRequest) SetVbrInstanceIds(v []*string) *GrantInstanceToVbrRequest {
+	s.VbrInstanceIds = v
+	return s
+}
+
+func (s *GrantInstanceToVbrRequest) SetVbrOwnerUid(v int64) *GrantInstanceToVbrRequest {
+	s.VbrOwnerUid = &v
+	return s
+}
+
+func (s *GrantInstanceToVbrRequest) SetVbrRegionNo(v string) *GrantInstanceToVbrRequest {
+	s.VbrRegionNo = &v
+	return s
+}
+
+type GrantInstanceToVbrShrinkRequest struct {
+	GrantType            *string `json:"GrantType,omitempty" xml:"GrantType,omitempty"`
+	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	VbrInstanceIdsShrink *string `json:"VbrInstanceIds,omitempty" xml:"VbrInstanceIds,omitempty"`
+	VbrOwnerUid          *int64  `json:"VbrOwnerUid,omitempty" xml:"VbrOwnerUid,omitempty"`
+	VbrRegionNo          *string `json:"VbrRegionNo,omitempty" xml:"VbrRegionNo,omitempty"`
+}
+
+func (s GrantInstanceToVbrShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GrantInstanceToVbrShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GrantInstanceToVbrShrinkRequest) SetGrantType(v string) *GrantInstanceToVbrShrinkRequest {
+	s.GrantType = &v
+	return s
+}
+
+func (s *GrantInstanceToVbrShrinkRequest) SetInstanceId(v string) *GrantInstanceToVbrShrinkRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *GrantInstanceToVbrShrinkRequest) SetRegionId(v string) *GrantInstanceToVbrShrinkRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *GrantInstanceToVbrShrinkRequest) SetVbrInstanceIdsShrink(v string) *GrantInstanceToVbrShrinkRequest {
+	s.VbrInstanceIdsShrink = &v
+	return s
+}
+
+func (s *GrantInstanceToVbrShrinkRequest) SetVbrOwnerUid(v int64) *GrantInstanceToVbrShrinkRequest {
+	s.VbrOwnerUid = &v
+	return s
+}
+
+func (s *GrantInstanceToVbrShrinkRequest) SetVbrRegionNo(v string) *GrantInstanceToVbrShrinkRequest {
+	s.VbrRegionNo = &v
+	return s
+}
+
+type GrantInstanceToVbrResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GrantInstanceToVbrResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GrantInstanceToVbrResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GrantInstanceToVbrResponseBody) SetRequestId(v string) *GrantInstanceToVbrResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GrantInstanceToVbrResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GrantInstanceToVbrResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GrantInstanceToVbrResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GrantInstanceToVbrResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GrantInstanceToVbrResponse) SetHeaders(v map[string]*string) *GrantInstanceToVbrResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GrantInstanceToVbrResponse) SetStatusCode(v int32) *GrantInstanceToVbrResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GrantInstanceToVbrResponse) SetBody(v *GrantInstanceToVbrResponseBody) *GrantInstanceToVbrResponse {
+	s.Body = v
+	return s
+}
+
 type ListDhcpOptionsSetsRequest struct {
 	DhcpOptionsSetId     []*string `json:"DhcpOptionsSetId,omitempty" xml:"DhcpOptionsSetId,omitempty" type:"Repeated"`
 	DhcpOptionsSetName   *string   `json:"DhcpOptionsSetName,omitempty" xml:"DhcpOptionsSetName,omitempty"`
@@ -40752,12 +40892,13 @@ type ListPublicIpAddressPoolsResponseBodyPublicIpAddressPoolList struct {
 	IpAddressRemaining    *bool   `json:"IpAddressRemaining,omitempty" xml:"IpAddressRemaining,omitempty"`
 	Isp                   *string `json:"Isp,omitempty" xml:"Isp,omitempty"`
 	Name                  *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	OwnerId               *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	PublicIpAddressPoolId *string `json:"PublicIpAddressPoolId,omitempty" xml:"PublicIpAddressPoolId,omitempty"`
 	RegionId              *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ShareType             *string `json:"ShareType,omitempty" xml:"ShareType,omitempty"`
 	Status                *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	TotalIpNum            *int32  `json:"TotalIpNum,omitempty" xml:"TotalIpNum,omitempty"`
 	UsedIpNum             *int32  `json:"UsedIpNum,omitempty" xml:"UsedIpNum,omitempty"`
-	UserType              *bool   `json:"UserType,omitempty" xml:"UserType,omitempty"`
 }
 
 func (s ListPublicIpAddressPoolsResponseBodyPublicIpAddressPoolList) String() string {
@@ -40793,6 +40934,11 @@ func (s *ListPublicIpAddressPoolsResponseBodyPublicIpAddressPoolList) SetName(v 
 	return s
 }
 
+func (s *ListPublicIpAddressPoolsResponseBodyPublicIpAddressPoolList) SetOwnerId(v int64) *ListPublicIpAddressPoolsResponseBodyPublicIpAddressPoolList {
+	s.OwnerId = &v
+	return s
+}
+
 func (s *ListPublicIpAddressPoolsResponseBodyPublicIpAddressPoolList) SetPublicIpAddressPoolId(v string) *ListPublicIpAddressPoolsResponseBodyPublicIpAddressPoolList {
 	s.PublicIpAddressPoolId = &v
 	return s
@@ -40800,6 +40946,11 @@ func (s *ListPublicIpAddressPoolsResponseBodyPublicIpAddressPoolList) SetPublicI
 
 func (s *ListPublicIpAddressPoolsResponseBodyPublicIpAddressPoolList) SetRegionId(v string) *ListPublicIpAddressPoolsResponseBodyPublicIpAddressPoolList {
 	s.RegionId = &v
+	return s
+}
+
+func (s *ListPublicIpAddressPoolsResponseBodyPublicIpAddressPoolList) SetShareType(v string) *ListPublicIpAddressPoolsResponseBodyPublicIpAddressPoolList {
+	s.ShareType = &v
 	return s
 }
 
@@ -40815,11 +40966,6 @@ func (s *ListPublicIpAddressPoolsResponseBodyPublicIpAddressPoolList) SetTotalIp
 
 func (s *ListPublicIpAddressPoolsResponseBodyPublicIpAddressPoolList) SetUsedIpNum(v int32) *ListPublicIpAddressPoolsResponseBodyPublicIpAddressPoolList {
 	s.UsedIpNum = &v
-	return s
-}
-
-func (s *ListPublicIpAddressPoolsResponseBodyPublicIpAddressPoolList) SetUserType(v bool) *ListPublicIpAddressPoolsResponseBodyPublicIpAddressPoolList {
-	s.UserType = &v
 	return s
 }
 
@@ -72294,6 +72440,76 @@ func (client *Client) GrantInstanceToCen(request *GrantInstanceToCenRequest) (_r
 	runtime := &util.RuntimeOptions{}
 	_result = &GrantInstanceToCenResponse{}
 	_body, _err := client.GrantInstanceToCenWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GrantInstanceToVbrWithOptions(tmpReq *GrantInstanceToVbrRequest, runtime *util.RuntimeOptions) (_result *GrantInstanceToVbrResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &GrantInstanceToVbrShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.VbrInstanceIds)) {
+		request.VbrInstanceIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.VbrInstanceIds, tea.String("VbrInstanceIds"), tea.String("simple"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.GrantType)) {
+		query["GrantType"] = request.GrantType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VbrInstanceIdsShrink)) {
+		query["VbrInstanceIds"] = request.VbrInstanceIdsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VbrOwnerUid)) {
+		query["VbrOwnerUid"] = request.VbrOwnerUid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VbrRegionNo)) {
+		query["VbrRegionNo"] = request.VbrRegionNo
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GrantInstanceToVbr"),
+		Version:     tea.String("2016-04-28"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GrantInstanceToVbrResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GrantInstanceToVbr(request *GrantInstanceToVbrRequest) (_result *GrantInstanceToVbrResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GrantInstanceToVbrResponse{}
+	_body, _err := client.GrantInstanceToVbrWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
