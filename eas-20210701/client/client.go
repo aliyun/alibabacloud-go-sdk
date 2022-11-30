@@ -482,6 +482,7 @@ type Service struct {
 	Role             *string `json:"Role,omitempty" xml:"Role,omitempty"`
 	RoleAttrs        *string `json:"RoleAttrs,omitempty" xml:"RoleAttrs,omitempty"`
 	RunningInstance  *int32  `json:"RunningInstance,omitempty" xml:"RunningInstance,omitempty"`
+	SafetyLock       *string `json:"SafetyLock,omitempty" xml:"SafetyLock,omitempty"`
 	ServiceConfig    *string `json:"ServiceConfig,omitempty" xml:"ServiceConfig,omitempty"`
 	ServiceGroup     *string `json:"ServiceGroup,omitempty" xml:"ServiceGroup,omitempty"`
 	ServiceId        *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
@@ -619,6 +620,11 @@ func (s *Service) SetRoleAttrs(v string) *Service {
 
 func (s *Service) SetRunningInstance(v int32) *Service {
 	s.RunningInstance = &v
+	return s
+}
+
+func (s *Service) SetSafetyLock(v string) *Service {
+	s.SafetyLock = &v
 	return s
 }
 
@@ -3080,7 +3086,7 @@ func (s *DescribeServiceMirrorResponse) SetBody(v *DescribeServiceMirrorResponse
 }
 
 type ListBenchmarkTaskRequest struct {
-	Fileter     *string `json:"Fileter,omitempty" xml:"Fileter,omitempty"`
+	Filter      *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
 	PageNumber  *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize    *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
@@ -3094,8 +3100,8 @@ func (s ListBenchmarkTaskRequest) GoString() string {
 	return s.String()
 }
 
-func (s *ListBenchmarkTaskRequest) SetFileter(v string) *ListBenchmarkTaskRequest {
-	s.Fileter = &v
+func (s *ListBenchmarkTaskRequest) SetFilter(v string) *ListBenchmarkTaskRequest {
+	s.Filter = &v
 	return s
 }
 
@@ -3442,9 +3448,11 @@ func (s *ListResourceInstanceWorkerResponse) SetBody(v *ListResourceInstanceWork
 }
 
 type ListResourceInstancesRequest struct {
-	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ChargeType   *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	PageNumber   *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize     *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
 func (s ListResourceInstancesRequest) String() string {
@@ -3457,6 +3465,16 @@ func (s ListResourceInstancesRequest) GoString() string {
 
 func (s *ListResourceInstancesRequest) SetChargeType(v string) *ListResourceInstancesRequest {
 	s.ChargeType = &v
+	return s
+}
+
+func (s *ListResourceInstancesRequest) SetInstanceId(v string) *ListResourceInstancesRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListResourceInstancesRequest) SetInstanceName(v string) *ListResourceInstancesRequest {
+	s.InstanceName = &v
 	return s
 }
 
@@ -3634,8 +3652,10 @@ func (s *ListResourceServicesResponse) SetBody(v *ListResourceServicesResponseBo
 }
 
 type ListResourcesRequest struct {
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageNumber   *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize     *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ResourceId   *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
 }
 
 func (s ListResourcesRequest) String() string {
@@ -3653,6 +3673,16 @@ func (s *ListResourcesRequest) SetPageNumber(v int32) *ListResourcesRequest {
 
 func (s *ListResourcesRequest) SetPageSize(v int32) *ListResourcesRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *ListResourcesRequest) SetResourceId(v string) *ListResourcesRequest {
+	s.ResourceId = &v
+	return s
+}
+
+func (s *ListResourcesRequest) SetResourceName(v string) *ListResourcesRequest {
+	s.ResourceName = &v
 	return s
 }
 
@@ -4584,6 +4614,81 @@ func (s *UpdateResourceDLinkResponse) SetBody(v *UpdateResourceDLinkResponseBody
 	return s
 }
 
+type UpdateResourceInstanceRequest struct {
+	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
+}
+
+func (s UpdateResourceInstanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateResourceInstanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateResourceInstanceRequest) SetAction(v string) *UpdateResourceInstanceRequest {
+	s.Action = &v
+	return s
+}
+
+type UpdateResourceInstanceResponseBody struct {
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+}
+
+func (s UpdateResourceInstanceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateResourceInstanceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateResourceInstanceResponseBody) SetInstanceId(v string) *UpdateResourceInstanceResponseBody {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *UpdateResourceInstanceResponseBody) SetRequestId(v string) *UpdateResourceInstanceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateResourceInstanceResponseBody) SetResourceId(v string) *UpdateResourceInstanceResponseBody {
+	s.ResourceId = &v
+	return s
+}
+
+type UpdateResourceInstanceResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateResourceInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateResourceInstanceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateResourceInstanceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateResourceInstanceResponse) SetHeaders(v map[string]*string) *UpdateResourceInstanceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateResourceInstanceResponse) SetStatusCode(v int32) *UpdateResourceInstanceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateResourceInstanceResponse) SetBody(v *UpdateResourceInstanceResponseBody) *UpdateResourceInstanceResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateServiceRequest struct {
 	Body *string `json:"body,omitempty" xml:"body,omitempty"`
 }
@@ -4938,6 +5043,75 @@ func (s *UpdateServiceMirrorResponse) SetStatusCode(v int32) *UpdateServiceMirro
 }
 
 func (s *UpdateServiceMirrorResponse) SetBody(v *UpdateServiceMirrorResponseBody) *UpdateServiceMirrorResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateServiceSafetyLockRequest struct {
+	Lock *string `json:"Lock,omitempty" xml:"Lock,omitempty"`
+}
+
+func (s UpdateServiceSafetyLockRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateServiceSafetyLockRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateServiceSafetyLockRequest) SetLock(v string) *UpdateServiceSafetyLockRequest {
+	s.Lock = &v
+	return s
+}
+
+type UpdateServiceSafetyLockResponseBody struct {
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateServiceSafetyLockResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateServiceSafetyLockResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateServiceSafetyLockResponseBody) SetMessage(v string) *UpdateServiceSafetyLockResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UpdateServiceSafetyLockResponseBody) SetRequestId(v string) *UpdateServiceSafetyLockResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateServiceSafetyLockResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateServiceSafetyLockResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateServiceSafetyLockResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateServiceSafetyLockResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateServiceSafetyLockResponse) SetHeaders(v map[string]*string) *UpdateServiceSafetyLockResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateServiceSafetyLockResponse) SetStatusCode(v int32) *UpdateServiceSafetyLockResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateServiceSafetyLockResponse) SetBody(v *UpdateServiceSafetyLockResponseBody) *UpdateServiceSafetyLockResponse {
 	s.Body = v
 	return s
 }
@@ -6377,8 +6551,8 @@ func (client *Client) ListBenchmarkTaskWithOptions(request *ListBenchmarkTaskReq
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.Fileter)) {
-		query["Fileter"] = request.Fileter
+	if !tea.BoolValue(util.IsUnset(request.Filter)) {
+		query["Filter"] = request.Filter
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
@@ -6543,6 +6717,14 @@ func (client *Client) ListResourceInstancesWithOptions(ClusterId *string, Resour
 		query["ChargeType"] = request.ChargeType
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceName)) {
+		query["InstanceName"] = request.InstanceName
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
 		query["PageNumber"] = request.PageNumber
 	}
@@ -6649,6 +6831,14 @@ func (client *Client) ListResourcesWithOptions(request *ListResourcesRequest, he
 
 	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
 		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
+		query["ResourceId"] = request.ResourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceName)) {
+		query["ResourceName"] = request.ResourceName
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -7180,6 +7370,52 @@ func (client *Client) UpdateResourceDLinkWithOptions(ClusterId *string, Resource
 	return _result, _err
 }
 
+func (client *Client) UpdateResourceInstance(ClusterId *string, ResourceId *string, InstanceId *string, request *UpdateResourceInstanceRequest) (_result *UpdateResourceInstanceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateResourceInstanceResponse{}
+	_body, _err := client.UpdateResourceInstanceWithOptions(ClusterId, ResourceId, InstanceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateResourceInstanceWithOptions(ClusterId *string, ResourceId *string, InstanceId *string, request *UpdateResourceInstanceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateResourceInstanceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Action)) {
+		body["Action"] = request.Action
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateResourceInstance"),
+		Version:     tea.String("2021-07-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/resources/" + tea.StringValue(openapiutil.GetEncodeParam(ClusterId)) + "/" + tea.StringValue(openapiutil.GetEncodeParam(ResourceId)) + "/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId))),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateResourceInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
 func (client *Client) UpdateService(ClusterId *string, ServiceName *string, request *UpdateServiceRequest) (_result *UpdateServiceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -7367,6 +7603,52 @@ func (client *Client) UpdateServiceMirrorWithOptions(ClusterId *string, ServiceN
 		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateServiceMirrorResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateServiceSafetyLock(ClusterId *string, ServiceName *string, request *UpdateServiceSafetyLockRequest) (_result *UpdateServiceSafetyLockResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateServiceSafetyLockResponse{}
+	_body, _err := client.UpdateServiceSafetyLockWithOptions(ClusterId, ServiceName, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateServiceSafetyLockWithOptions(ClusterId *string, ServiceName *string, request *UpdateServiceSafetyLockRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateServiceSafetyLockResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Lock)) {
+		body["Lock"] = request.Lock
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateServiceSafetyLock"),
+		Version:     tea.String("2021-07-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/services/" + tea.StringValue(openapiutil.GetEncodeParam(ClusterId)) + "/" + tea.StringValue(openapiutil.GetEncodeParam(ServiceName)) + "/lock"),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateServiceSafetyLockResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
