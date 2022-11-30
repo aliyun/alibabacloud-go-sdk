@@ -8455,6 +8455,422 @@ func (s *EntitySetResponse) SetBody(v *EntitySetResponseBody) *EntitySetResponse
 	return s
 }
 
+type EstimatedPriceQueryHeaders struct {
+	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsBtripSoCorpToken *string            `json:"x-acs-btrip-so-corp-token,omitempty" xml:"x-acs-btrip-so-corp-token,omitempty"`
+}
+
+func (s EstimatedPriceQueryHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EstimatedPriceQueryHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *EstimatedPriceQueryHeaders) SetCommonHeaders(v map[string]*string) *EstimatedPriceQueryHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *EstimatedPriceQueryHeaders) SetXAcsBtripSoCorpToken(v string) *EstimatedPriceQueryHeaders {
+	s.XAcsBtripSoCorpToken = &v
+	return s
+}
+
+type EstimatedPriceQueryRequest struct {
+	ArrCity     *string `json:"arr_city,omitempty" xml:"arr_city,omitempty"`
+	Category    *string `json:"category,omitempty" xml:"category,omitempty"`
+	DepCity     *string `json:"dep_city,omitempty" xml:"dep_city,omitempty"`
+	EndTime     *int64  `json:"end_time,omitempty" xml:"end_time,omitempty"`
+	ItineraryId *string `json:"itinerary_id,omitempty" xml:"itinerary_id,omitempty"`
+	StartTime   *int64  `json:"start_time,omitempty" xml:"start_time,omitempty"`
+	UserId      *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
+}
+
+func (s EstimatedPriceQueryRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EstimatedPriceQueryRequest) GoString() string {
+	return s.String()
+}
+
+func (s *EstimatedPriceQueryRequest) SetArrCity(v string) *EstimatedPriceQueryRequest {
+	s.ArrCity = &v
+	return s
+}
+
+func (s *EstimatedPriceQueryRequest) SetCategory(v string) *EstimatedPriceQueryRequest {
+	s.Category = &v
+	return s
+}
+
+func (s *EstimatedPriceQueryRequest) SetDepCity(v string) *EstimatedPriceQueryRequest {
+	s.DepCity = &v
+	return s
+}
+
+func (s *EstimatedPriceQueryRequest) SetEndTime(v int64) *EstimatedPriceQueryRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *EstimatedPriceQueryRequest) SetItineraryId(v string) *EstimatedPriceQueryRequest {
+	s.ItineraryId = &v
+	return s
+}
+
+func (s *EstimatedPriceQueryRequest) SetStartTime(v int64) *EstimatedPriceQueryRequest {
+	s.StartTime = &v
+	return s
+}
+
+func (s *EstimatedPriceQueryRequest) SetUserId(v string) *EstimatedPriceQueryRequest {
+	s.UserId = &v
+	return s
+}
+
+type EstimatedPriceQueryResponseBody struct {
+	Code      *int32                                 `json:"code,omitempty" xml:"code,omitempty"`
+	Message   *string                                `json:"message,omitempty" xml:"message,omitempty"`
+	Module    *EstimatedPriceQueryResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
+	RequestId *string                                `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success   *bool                                  `json:"success,omitempty" xml:"success,omitempty"`
+	TraceId   *string                                `json:"traceId,omitempty" xml:"traceId,omitempty"`
+}
+
+func (s EstimatedPriceQueryResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EstimatedPriceQueryResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *EstimatedPriceQueryResponseBody) SetCode(v int32) *EstimatedPriceQueryResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *EstimatedPriceQueryResponseBody) SetMessage(v string) *EstimatedPriceQueryResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *EstimatedPriceQueryResponseBody) SetModule(v *EstimatedPriceQueryResponseBodyModule) *EstimatedPriceQueryResponseBody {
+	s.Module = v
+	return s
+}
+
+func (s *EstimatedPriceQueryResponseBody) SetRequestId(v string) *EstimatedPriceQueryResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *EstimatedPriceQueryResponseBody) SetSuccess(v bool) *EstimatedPriceQueryResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *EstimatedPriceQueryResponseBody) SetTraceId(v string) *EstimatedPriceQueryResponseBody {
+	s.TraceId = &v
+	return s
+}
+
+type EstimatedPriceQueryResponseBodyModule struct {
+	HotelFeeDetail []*EstimatedPriceQueryResponseBodyModuleHotelFeeDetail `json:"hotel_fee_detail,omitempty" xml:"hotel_fee_detail,omitempty" type:"Repeated"`
+	TrafficFee     *EstimatedPriceQueryResponseBodyModuleTrafficFee       `json:"traffic_fee,omitempty" xml:"traffic_fee,omitempty" type:"Struct"`
+}
+
+func (s EstimatedPriceQueryResponseBodyModule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EstimatedPriceQueryResponseBodyModule) GoString() string {
+	return s.String()
+}
+
+func (s *EstimatedPriceQueryResponseBodyModule) SetHotelFeeDetail(v []*EstimatedPriceQueryResponseBodyModuleHotelFeeDetail) *EstimatedPriceQueryResponseBodyModule {
+	s.HotelFeeDetail = v
+	return s
+}
+
+func (s *EstimatedPriceQueryResponseBodyModule) SetTrafficFee(v *EstimatedPriceQueryResponseBodyModuleTrafficFee) *EstimatedPriceQueryResponseBodyModule {
+	s.TrafficFee = v
+	return s
+}
+
+type EstimatedPriceQueryResponseBodyModuleHotelFeeDetail struct {
+	City        *string `json:"city,omitempty" xml:"city,omitempty"`
+	Criterion   *int64  `json:"criterion,omitempty" xml:"criterion,omitempty"`
+	ItineraryId *string `json:"itinerary_id,omitempty" xml:"itinerary_id,omitempty"`
+	Total       *int64  `json:"total,omitempty" xml:"total,omitempty"`
+	TripDays    *int32  `json:"trip_days,omitempty" xml:"trip_days,omitempty"`
+}
+
+func (s EstimatedPriceQueryResponseBodyModuleHotelFeeDetail) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EstimatedPriceQueryResponseBodyModuleHotelFeeDetail) GoString() string {
+	return s.String()
+}
+
+func (s *EstimatedPriceQueryResponseBodyModuleHotelFeeDetail) SetCity(v string) *EstimatedPriceQueryResponseBodyModuleHotelFeeDetail {
+	s.City = &v
+	return s
+}
+
+func (s *EstimatedPriceQueryResponseBodyModuleHotelFeeDetail) SetCriterion(v int64) *EstimatedPriceQueryResponseBodyModuleHotelFeeDetail {
+	s.Criterion = &v
+	return s
+}
+
+func (s *EstimatedPriceQueryResponseBodyModuleHotelFeeDetail) SetItineraryId(v string) *EstimatedPriceQueryResponseBodyModuleHotelFeeDetail {
+	s.ItineraryId = &v
+	return s
+}
+
+func (s *EstimatedPriceQueryResponseBodyModuleHotelFeeDetail) SetTotal(v int64) *EstimatedPriceQueryResponseBodyModuleHotelFeeDetail {
+	s.Total = &v
+	return s
+}
+
+func (s *EstimatedPriceQueryResponseBodyModuleHotelFeeDetail) SetTripDays(v int32) *EstimatedPriceQueryResponseBodyModuleHotelFeeDetail {
+	s.TripDays = &v
+	return s
+}
+
+type EstimatedPriceQueryResponseBodyModuleTrafficFee struct {
+	BtripRoutes []*EstimatedPriceQueryResponseBodyModuleTrafficFeeBtripRoutes `json:"btrip_routes,omitempty" xml:"btrip_routes,omitempty" type:"Repeated"`
+	ErrMsg      *string                                                       `json:"err_msg,omitempty" xml:"err_msg,omitempty"`
+	MaxFee      *int64                                                        `json:"max_fee,omitempty" xml:"max_fee,omitempty"`
+	MinFee      *int64                                                        `json:"min_fee,omitempty" xml:"min_fee,omitempty"`
+	Success     *bool                                                         `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s EstimatedPriceQueryResponseBodyModuleTrafficFee) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EstimatedPriceQueryResponseBodyModuleTrafficFee) GoString() string {
+	return s.String()
+}
+
+func (s *EstimatedPriceQueryResponseBodyModuleTrafficFee) SetBtripRoutes(v []*EstimatedPriceQueryResponseBodyModuleTrafficFeeBtripRoutes) *EstimatedPriceQueryResponseBodyModuleTrafficFee {
+	s.BtripRoutes = v
+	return s
+}
+
+func (s *EstimatedPriceQueryResponseBodyModuleTrafficFee) SetErrMsg(v string) *EstimatedPriceQueryResponseBodyModuleTrafficFee {
+	s.ErrMsg = &v
+	return s
+}
+
+func (s *EstimatedPriceQueryResponseBodyModuleTrafficFee) SetMaxFee(v int64) *EstimatedPriceQueryResponseBodyModuleTrafficFee {
+	s.MaxFee = &v
+	return s
+}
+
+func (s *EstimatedPriceQueryResponseBodyModuleTrafficFee) SetMinFee(v int64) *EstimatedPriceQueryResponseBodyModuleTrafficFee {
+	s.MinFee = &v
+	return s
+}
+
+func (s *EstimatedPriceQueryResponseBodyModuleTrafficFee) SetSuccess(v bool) *EstimatedPriceQueryResponseBodyModuleTrafficFee {
+	s.Success = &v
+	return s
+}
+
+type EstimatedPriceQueryResponseBodyModuleTrafficFeeBtripRoutes struct {
+	ArrDate        *string                                                                  `json:"arr_date,omitempty" xml:"arr_date,omitempty"`
+	BtripType      *int32                                                                   `json:"btrip_type,omitempty" xml:"btrip_type,omitempty"`
+	Cheapest       *EstimatedPriceQueryResponseBodyModuleTrafficFeeBtripRoutesCheapest      `json:"cheapest,omitempty" xml:"cheapest,omitempty" type:"Struct"`
+	DepDate        *string                                                                  `json:"dep_date,omitempty" xml:"dep_date,omitempty"`
+	DestCity       *string                                                                  `json:"dest_city,omitempty" xml:"dest_city,omitempty"`
+	ErrMsg         *string                                                                  `json:"err_msg,omitempty" xml:"err_msg,omitempty"`
+	ItineraryId    *string                                                                  `json:"itinerary_id,omitempty" xml:"itinerary_id,omitempty"`
+	ItineraryIndex *int32                                                                   `json:"itinerary_index,omitempty" xml:"itinerary_index,omitempty"`
+	MostExpensive  *EstimatedPriceQueryResponseBodyModuleTrafficFeeBtripRoutesMostExpensive `json:"most_expensive,omitempty" xml:"most_expensive,omitempty" type:"Struct"`
+	OrgCity        *string                                                                  `json:"org_city,omitempty" xml:"org_city,omitempty"`
+	Success        *bool                                                                    `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s EstimatedPriceQueryResponseBodyModuleTrafficFeeBtripRoutes) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EstimatedPriceQueryResponseBodyModuleTrafficFeeBtripRoutes) GoString() string {
+	return s.String()
+}
+
+func (s *EstimatedPriceQueryResponseBodyModuleTrafficFeeBtripRoutes) SetArrDate(v string) *EstimatedPriceQueryResponseBodyModuleTrafficFeeBtripRoutes {
+	s.ArrDate = &v
+	return s
+}
+
+func (s *EstimatedPriceQueryResponseBodyModuleTrafficFeeBtripRoutes) SetBtripType(v int32) *EstimatedPriceQueryResponseBodyModuleTrafficFeeBtripRoutes {
+	s.BtripType = &v
+	return s
+}
+
+func (s *EstimatedPriceQueryResponseBodyModuleTrafficFeeBtripRoutes) SetCheapest(v *EstimatedPriceQueryResponseBodyModuleTrafficFeeBtripRoutesCheapest) *EstimatedPriceQueryResponseBodyModuleTrafficFeeBtripRoutes {
+	s.Cheapest = v
+	return s
+}
+
+func (s *EstimatedPriceQueryResponseBodyModuleTrafficFeeBtripRoutes) SetDepDate(v string) *EstimatedPriceQueryResponseBodyModuleTrafficFeeBtripRoutes {
+	s.DepDate = &v
+	return s
+}
+
+func (s *EstimatedPriceQueryResponseBodyModuleTrafficFeeBtripRoutes) SetDestCity(v string) *EstimatedPriceQueryResponseBodyModuleTrafficFeeBtripRoutes {
+	s.DestCity = &v
+	return s
+}
+
+func (s *EstimatedPriceQueryResponseBodyModuleTrafficFeeBtripRoutes) SetErrMsg(v string) *EstimatedPriceQueryResponseBodyModuleTrafficFeeBtripRoutes {
+	s.ErrMsg = &v
+	return s
+}
+
+func (s *EstimatedPriceQueryResponseBodyModuleTrafficFeeBtripRoutes) SetItineraryId(v string) *EstimatedPriceQueryResponseBodyModuleTrafficFeeBtripRoutes {
+	s.ItineraryId = &v
+	return s
+}
+
+func (s *EstimatedPriceQueryResponseBodyModuleTrafficFeeBtripRoutes) SetItineraryIndex(v int32) *EstimatedPriceQueryResponseBodyModuleTrafficFeeBtripRoutes {
+	s.ItineraryIndex = &v
+	return s
+}
+
+func (s *EstimatedPriceQueryResponseBodyModuleTrafficFeeBtripRoutes) SetMostExpensive(v *EstimatedPriceQueryResponseBodyModuleTrafficFeeBtripRoutesMostExpensive) *EstimatedPriceQueryResponseBodyModuleTrafficFeeBtripRoutes {
+	s.MostExpensive = v
+	return s
+}
+
+func (s *EstimatedPriceQueryResponseBodyModuleTrafficFeeBtripRoutes) SetOrgCity(v string) *EstimatedPriceQueryResponseBodyModuleTrafficFeeBtripRoutes {
+	s.OrgCity = &v
+	return s
+}
+
+func (s *EstimatedPriceQueryResponseBodyModuleTrafficFeeBtripRoutes) SetSuccess(v bool) *EstimatedPriceQueryResponseBodyModuleTrafficFeeBtripRoutes {
+	s.Success = &v
+	return s
+}
+
+type EstimatedPriceQueryResponseBodyModuleTrafficFeeBtripRoutesCheapest struct {
+	ArrTime   *string `json:"arr_time,omitempty" xml:"arr_time,omitempty"`
+	DepTime   *string `json:"dep_time,omitempty" xml:"dep_time,omitempty"`
+	Fee       *int64  `json:"fee,omitempty" xml:"fee,omitempty"`
+	SeatGrade *string `json:"seat_grade,omitempty" xml:"seat_grade,omitempty"`
+	VehicleNo *string `json:"vehicle_no,omitempty" xml:"vehicle_no,omitempty"`
+}
+
+func (s EstimatedPriceQueryResponseBodyModuleTrafficFeeBtripRoutesCheapest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EstimatedPriceQueryResponseBodyModuleTrafficFeeBtripRoutesCheapest) GoString() string {
+	return s.String()
+}
+
+func (s *EstimatedPriceQueryResponseBodyModuleTrafficFeeBtripRoutesCheapest) SetArrTime(v string) *EstimatedPriceQueryResponseBodyModuleTrafficFeeBtripRoutesCheapest {
+	s.ArrTime = &v
+	return s
+}
+
+func (s *EstimatedPriceQueryResponseBodyModuleTrafficFeeBtripRoutesCheapest) SetDepTime(v string) *EstimatedPriceQueryResponseBodyModuleTrafficFeeBtripRoutesCheapest {
+	s.DepTime = &v
+	return s
+}
+
+func (s *EstimatedPriceQueryResponseBodyModuleTrafficFeeBtripRoutesCheapest) SetFee(v int64) *EstimatedPriceQueryResponseBodyModuleTrafficFeeBtripRoutesCheapest {
+	s.Fee = &v
+	return s
+}
+
+func (s *EstimatedPriceQueryResponseBodyModuleTrafficFeeBtripRoutesCheapest) SetSeatGrade(v string) *EstimatedPriceQueryResponseBodyModuleTrafficFeeBtripRoutesCheapest {
+	s.SeatGrade = &v
+	return s
+}
+
+func (s *EstimatedPriceQueryResponseBodyModuleTrafficFeeBtripRoutesCheapest) SetVehicleNo(v string) *EstimatedPriceQueryResponseBodyModuleTrafficFeeBtripRoutesCheapest {
+	s.VehicleNo = &v
+	return s
+}
+
+type EstimatedPriceQueryResponseBodyModuleTrafficFeeBtripRoutesMostExpensive struct {
+	ArrTime   *string `json:"arr_time,omitempty" xml:"arr_time,omitempty"`
+	DepTime   *string `json:"dep_time,omitempty" xml:"dep_time,omitempty"`
+	Fee       *int64  `json:"fee,omitempty" xml:"fee,omitempty"`
+	SeatGrade *string `json:"seat_grade,omitempty" xml:"seat_grade,omitempty"`
+	VehicleNo *string `json:"vehicle_no,omitempty" xml:"vehicle_no,omitempty"`
+}
+
+func (s EstimatedPriceQueryResponseBodyModuleTrafficFeeBtripRoutesMostExpensive) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EstimatedPriceQueryResponseBodyModuleTrafficFeeBtripRoutesMostExpensive) GoString() string {
+	return s.String()
+}
+
+func (s *EstimatedPriceQueryResponseBodyModuleTrafficFeeBtripRoutesMostExpensive) SetArrTime(v string) *EstimatedPriceQueryResponseBodyModuleTrafficFeeBtripRoutesMostExpensive {
+	s.ArrTime = &v
+	return s
+}
+
+func (s *EstimatedPriceQueryResponseBodyModuleTrafficFeeBtripRoutesMostExpensive) SetDepTime(v string) *EstimatedPriceQueryResponseBodyModuleTrafficFeeBtripRoutesMostExpensive {
+	s.DepTime = &v
+	return s
+}
+
+func (s *EstimatedPriceQueryResponseBodyModuleTrafficFeeBtripRoutesMostExpensive) SetFee(v int64) *EstimatedPriceQueryResponseBodyModuleTrafficFeeBtripRoutesMostExpensive {
+	s.Fee = &v
+	return s
+}
+
+func (s *EstimatedPriceQueryResponseBodyModuleTrafficFeeBtripRoutesMostExpensive) SetSeatGrade(v string) *EstimatedPriceQueryResponseBodyModuleTrafficFeeBtripRoutesMostExpensive {
+	s.SeatGrade = &v
+	return s
+}
+
+func (s *EstimatedPriceQueryResponseBodyModuleTrafficFeeBtripRoutesMostExpensive) SetVehicleNo(v string) *EstimatedPriceQueryResponseBodyModuleTrafficFeeBtripRoutesMostExpensive {
+	s.VehicleNo = &v
+	return s
+}
+
+type EstimatedPriceQueryResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *EstimatedPriceQueryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s EstimatedPriceQueryResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EstimatedPriceQueryResponse) GoString() string {
+	return s.String()
+}
+
+func (s *EstimatedPriceQueryResponse) SetHeaders(v map[string]*string) *EstimatedPriceQueryResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *EstimatedPriceQueryResponse) SetStatusCode(v int32) *EstimatedPriceQueryResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *EstimatedPriceQueryResponse) SetBody(v *EstimatedPriceQueryResponseBody) *EstimatedPriceQueryResponse {
+	s.Body = v
+	return s
+}
+
 type ExceedApplySyncHeaders struct {
 	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	XAcsBtripSoCorpToken *string            `json:"x-acs-btrip-so-corp-token,omitempty" xml:"x-acs-btrip-so-corp-token,omitempty"`
@@ -19606,6 +20022,85 @@ func (client *Client) EntitySetWithOptions(tmpReq *EntitySetRequest, headers *En
 		BodyType:    tea.String("json"),
 	}
 	_result = &EntitySetResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) EstimatedPriceQuery(request *EstimatedPriceQueryRequest) (_result *EstimatedPriceQueryResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &EstimatedPriceQueryHeaders{}
+	_result = &EstimatedPriceQueryResponse{}
+	_body, _err := client.EstimatedPriceQueryWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) EstimatedPriceQueryWithOptions(request *EstimatedPriceQueryRequest, headers *EstimatedPriceQueryHeaders, runtime *util.RuntimeOptions) (_result *EstimatedPriceQueryResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ArrCity)) {
+		query["arr_city"] = request.ArrCity
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Category)) {
+		query["category"] = request.Category
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DepCity)) {
+		query["dep_city"] = request.DepCity
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["end_time"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ItineraryId)) {
+		query["itinerary_id"] = request.ItineraryId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["start_time"] = request.StartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		query["user_id"] = request.UserId
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsBtripSoCorpToken)) {
+		realHeaders["x-acs-btrip-so-corp-token"] = util.ToJSONString(headers.XAcsBtripSoCorpToken)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("EstimatedPriceQuery"),
+		Version:     tea.String("2022-05-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/costcenter/v1/estimated-price"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &EstimatedPriceQueryResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
