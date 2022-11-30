@@ -200,8 +200,9 @@ func (s *ContinueCreateStackRequestParameters) SetParameterValue(v string) *Cont
 }
 
 type ContinueCreateStackResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	StackId   *string `json:"StackId,omitempty" xml:"StackId,omitempty"`
+	DryRunResult *ContinueCreateStackResponseBodyDryRunResult `json:"DryRunResult,omitempty" xml:"DryRunResult,omitempty" type:"Struct"`
+	RequestId    *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	StackId      *string                                      `json:"StackId,omitempty" xml:"StackId,omitempty"`
 }
 
 func (s ContinueCreateStackResponseBody) String() string {
@@ -212,6 +213,11 @@ func (s ContinueCreateStackResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *ContinueCreateStackResponseBody) SetDryRunResult(v *ContinueCreateStackResponseBodyDryRunResult) *ContinueCreateStackResponseBody {
+	s.DryRunResult = v
+	return s
+}
+
 func (s *ContinueCreateStackResponseBody) SetRequestId(v string) *ContinueCreateStackResponseBody {
 	s.RequestId = &v
 	return s
@@ -219,6 +225,35 @@ func (s *ContinueCreateStackResponseBody) SetRequestId(v string) *ContinueCreate
 
 func (s *ContinueCreateStackResponseBody) SetStackId(v string) *ContinueCreateStackResponseBody {
 	s.StackId = &v
+	return s
+}
+
+type ContinueCreateStackResponseBodyDryRunResult struct {
+	ParametersAllowedToBeModified              []*string `json:"ParametersAllowedToBeModified,omitempty" xml:"ParametersAllowedToBeModified,omitempty" type:"Repeated"`
+	ParametersConditionallyAllowedToBeModified []*string `json:"ParametersConditionallyAllowedToBeModified,omitempty" xml:"ParametersConditionallyAllowedToBeModified,omitempty" type:"Repeated"`
+	ParametersNotAllowedToBeModified           []*string `json:"ParametersNotAllowedToBeModified,omitempty" xml:"ParametersNotAllowedToBeModified,omitempty" type:"Repeated"`
+}
+
+func (s ContinueCreateStackResponseBodyDryRunResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ContinueCreateStackResponseBodyDryRunResult) GoString() string {
+	return s.String()
+}
+
+func (s *ContinueCreateStackResponseBodyDryRunResult) SetParametersAllowedToBeModified(v []*string) *ContinueCreateStackResponseBodyDryRunResult {
+	s.ParametersAllowedToBeModified = v
+	return s
+}
+
+func (s *ContinueCreateStackResponseBodyDryRunResult) SetParametersConditionallyAllowedToBeModified(v []*string) *ContinueCreateStackResponseBodyDryRunResult {
+	s.ParametersConditionallyAllowedToBeModified = v
+	return s
+}
+
+func (s *ContinueCreateStackResponseBodyDryRunResult) SetParametersNotAllowedToBeModified(v []*string) *ContinueCreateStackResponseBodyDryRunResult {
+	s.ParametersNotAllowedToBeModified = v
 	return s
 }
 
@@ -13483,8 +13518,8 @@ func (client *Client) CreateStackGroupWithOptions(tmpReq *CreateStackGroupReques
 	}
 	request := &CreateStackGroupShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.AutoDeployment))) {
-		request.AutoDeploymentShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.AutoDeployment), tea.String("AutoDeployment"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.AutoDeployment)) {
+		request.AutoDeploymentShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.AutoDeployment, tea.String("AutoDeployment"), tea.String("json"))
 	}
 
 	query := map[string]interface{}{}
@@ -13593,8 +13628,8 @@ func (client *Client) CreateStackInstancesWithOptions(tmpReq *CreateStackInstanc
 		request.AccountIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.AccountIds, tea.String("AccountIds"), tea.String("json"))
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.DeploymentTargets))) {
-		request.DeploymentTargetsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.DeploymentTargets), tea.String("DeploymentTargets"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.DeploymentTargets)) {
+		request.DeploymentTargetsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DeploymentTargets, tea.String("DeploymentTargets"), tea.String("json"))
 	}
 
 	if !tea.BoolValue(util.IsUnset(tmpReq.OperationPreferences)) {
@@ -13759,16 +13794,16 @@ func (client *Client) CreateTemplateScratchWithOptions(tmpReq *CreateTemplateScr
 		request.PreferenceParametersShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.PreferenceParameters, tea.String("PreferenceParameters"), tea.String("json"))
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.SourceResourceGroup))) {
-		request.SourceResourceGroupShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.SourceResourceGroup), tea.String("SourceResourceGroup"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.SourceResourceGroup)) {
+		request.SourceResourceGroupShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SourceResourceGroup, tea.String("SourceResourceGroup"), tea.String("json"))
 	}
 
 	if !tea.BoolValue(util.IsUnset(tmpReq.SourceResources)) {
 		request.SourceResourcesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SourceResources, tea.String("SourceResources"), tea.String("json"))
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.SourceTag))) {
-		request.SourceTagShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.SourceTag), tea.String("SourceTag"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.SourceTag)) {
+		request.SourceTagShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SourceTag, tea.String("SourceTag"), tea.String("json"))
 	}
 
 	query := map[string]interface{}{}
@@ -14017,8 +14052,8 @@ func (client *Client) DeleteStackInstancesWithOptions(tmpReq *DeleteStackInstanc
 		request.AccountIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.AccountIds, tea.String("AccountIds"), tea.String("json"))
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.DeploymentTargets))) {
-		request.DeploymentTargetsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.DeploymentTargets), tea.String("DeploymentTargets"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.DeploymentTargets)) {
+		request.DeploymentTargetsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DeploymentTargets, tea.String("DeploymentTargets"), tea.String("json"))
 	}
 
 	if !tea.BoolValue(util.IsUnset(tmpReq.OperationPreferences)) {
@@ -17323,12 +17358,12 @@ func (client *Client) UpdateStackGroupWithOptions(tmpReq *UpdateStackGroupReques
 		request.AccountIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.AccountIds, tea.String("AccountIds"), tea.String("json"))
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.AutoDeployment))) {
-		request.AutoDeploymentShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.AutoDeployment), tea.String("AutoDeployment"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.AutoDeployment)) {
+		request.AutoDeploymentShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.AutoDeployment, tea.String("AutoDeployment"), tea.String("json"))
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.DeploymentTargets))) {
-		request.DeploymentTargetsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.DeploymentTargets), tea.String("DeploymentTargets"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.DeploymentTargets)) {
+		request.DeploymentTargetsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DeploymentTargets, tea.String("DeploymentTargets"), tea.String("json"))
 	}
 
 	if !tea.BoolValue(util.IsUnset(tmpReq.OperationPreferences)) {
@@ -17457,8 +17492,8 @@ func (client *Client) UpdateStackInstancesWithOptions(tmpReq *UpdateStackInstanc
 		request.AccountIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.AccountIds, tea.String("AccountIds"), tea.String("json"))
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.DeploymentTargets))) {
-		request.DeploymentTargetsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.DeploymentTargets), tea.String("DeploymentTargets"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.DeploymentTargets)) {
+		request.DeploymentTargetsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DeploymentTargets, tea.String("DeploymentTargets"), tea.String("json"))
 	}
 
 	if !tea.BoolValue(util.IsUnset(tmpReq.OperationPreferences)) {
@@ -17679,16 +17714,16 @@ func (client *Client) UpdateTemplateScratchWithOptions(tmpReq *UpdateTemplateScr
 		request.PreferenceParametersShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.PreferenceParameters, tea.String("PreferenceParameters"), tea.String("json"))
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.SourceResourceGroup))) {
-		request.SourceResourceGroupShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.SourceResourceGroup), tea.String("SourceResourceGroup"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.SourceResourceGroup)) {
+		request.SourceResourceGroupShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SourceResourceGroup, tea.String("SourceResourceGroup"), tea.String("json"))
 	}
 
 	if !tea.BoolValue(util.IsUnset(tmpReq.SourceResources)) {
 		request.SourceResourcesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SourceResources, tea.String("SourceResources"), tea.String("json"))
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.SourceTag))) {
-		request.SourceTagShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.SourceTag), tea.String("SourceTag"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.SourceTag)) {
+		request.SourceTagShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SourceTag, tea.String("SourceTag"), tea.String("json"))
 	}
 
 	query := map[string]interface{}{}
