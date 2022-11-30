@@ -14,14 +14,24 @@ import (
 
 type CreateVerifySchemeRequest struct {
 	AppName              *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	AuthType             *string `json:"AuthType,omitempty" xml:"AuthType,omitempty"`
 	BundleId             *string `json:"BundleId,omitempty" xml:"BundleId,omitempty"`
+	CmApiCode            *int64  `json:"CmApiCode,omitempty" xml:"CmApiCode,omitempty"`
+	CtApiCode            *int64  `json:"CtApiCode,omitempty" xml:"CtApiCode,omitempty"`
+	CuApiCode            *int64  `json:"CuApiCode,omitempty" xml:"CuApiCode,omitempty"`
+	Email                *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	IpWhiteList          *string `json:"IpWhiteList,omitempty" xml:"IpWhiteList,omitempty"`
+	Origin               *string `json:"Origin,omitempty" xml:"Origin,omitempty"`
 	OsType               *string `json:"OsType,omitempty" xml:"OsType,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	PackName             *string `json:"PackName,omitempty" xml:"PackName,omitempty"`
 	PackSign             *string `json:"PackSign,omitempty" xml:"PackSign,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	SceneType            *string `json:"SceneType,omitempty" xml:"SceneType,omitempty"`
 	SchemeName           *string `json:"SchemeName,omitempty" xml:"SchemeName,omitempty"`
+	SmsSignName          *string `json:"SmsSignName,omitempty" xml:"SmsSignName,omitempty"`
+	Url                  *string `json:"Url,omitempty" xml:"Url,omitempty"`
 }
 
 func (s CreateVerifySchemeRequest) String() string {
@@ -37,8 +47,43 @@ func (s *CreateVerifySchemeRequest) SetAppName(v string) *CreateVerifySchemeRequ
 	return s
 }
 
+func (s *CreateVerifySchemeRequest) SetAuthType(v string) *CreateVerifySchemeRequest {
+	s.AuthType = &v
+	return s
+}
+
 func (s *CreateVerifySchemeRequest) SetBundleId(v string) *CreateVerifySchemeRequest {
 	s.BundleId = &v
+	return s
+}
+
+func (s *CreateVerifySchemeRequest) SetCmApiCode(v int64) *CreateVerifySchemeRequest {
+	s.CmApiCode = &v
+	return s
+}
+
+func (s *CreateVerifySchemeRequest) SetCtApiCode(v int64) *CreateVerifySchemeRequest {
+	s.CtApiCode = &v
+	return s
+}
+
+func (s *CreateVerifySchemeRequest) SetCuApiCode(v int64) *CreateVerifySchemeRequest {
+	s.CuApiCode = &v
+	return s
+}
+
+func (s *CreateVerifySchemeRequest) SetEmail(v string) *CreateVerifySchemeRequest {
+	s.Email = &v
+	return s
+}
+
+func (s *CreateVerifySchemeRequest) SetIpWhiteList(v string) *CreateVerifySchemeRequest {
+	s.IpWhiteList = &v
+	return s
+}
+
+func (s *CreateVerifySchemeRequest) SetOrigin(v string) *CreateVerifySchemeRequest {
+	s.Origin = &v
 	return s
 }
 
@@ -72,16 +117,33 @@ func (s *CreateVerifySchemeRequest) SetResourceOwnerId(v int64) *CreateVerifySch
 	return s
 }
 
+func (s *CreateVerifySchemeRequest) SetSceneType(v string) *CreateVerifySchemeRequest {
+	s.SceneType = &v
+	return s
+}
+
 func (s *CreateVerifySchemeRequest) SetSchemeName(v string) *CreateVerifySchemeRequest {
 	s.SchemeName = &v
+	return s
+}
+
+func (s *CreateVerifySchemeRequest) SetSmsSignName(v string) *CreateVerifySchemeRequest {
+	s.SmsSignName = &v
+	return s
+}
+
+func (s *CreateVerifySchemeRequest) SetUrl(v string) *CreateVerifySchemeRequest {
+	s.Url = &v
 	return s
 }
 
 type CreateVerifySchemeResponseBody struct {
 	Code                *string                                            `json:"Code,omitempty" xml:"Code,omitempty"`
 	GateVerifySchemeDTO *CreateVerifySchemeResponseBodyGateVerifySchemeDTO `json:"GateVerifySchemeDTO,omitempty" xml:"GateVerifySchemeDTO,omitempty" type:"Struct"`
+	HttpStatusCode      *int64                                             `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
 	Message             *string                                            `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId           *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success             *bool                                              `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CreateVerifySchemeResponseBody) String() string {
@@ -102,6 +164,11 @@ func (s *CreateVerifySchemeResponseBody) SetGateVerifySchemeDTO(v *CreateVerifyS
 	return s
 }
 
+func (s *CreateVerifySchemeResponseBody) SetHttpStatusCode(v int64) *CreateVerifySchemeResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
 func (s *CreateVerifySchemeResponseBody) SetMessage(v string) *CreateVerifySchemeResponseBody {
 	s.Message = &v
 	return s
@@ -109,6 +176,11 @@ func (s *CreateVerifySchemeResponseBody) SetMessage(v string) *CreateVerifySchem
 
 func (s *CreateVerifySchemeResponseBody) SetRequestId(v string) *CreateVerifySchemeResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *CreateVerifySchemeResponseBody) SetSuccess(v bool) *CreateVerifySchemeResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -899,6 +971,122 @@ func (s *GetMobileResponse) SetStatusCode(v int32) *GetMobileResponse {
 }
 
 func (s *GetMobileResponse) SetBody(v *GetMobileResponseBody) *GetMobileResponse {
+	s.Body = v
+	return s
+}
+
+type GetPhoneWithTokenRequest struct {
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	SpToken              *string `json:"SpToken,omitempty" xml:"SpToken,omitempty"`
+}
+
+func (s GetPhoneWithTokenRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPhoneWithTokenRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetPhoneWithTokenRequest) SetOwnerId(v int64) *GetPhoneWithTokenRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *GetPhoneWithTokenRequest) SetResourceOwnerAccount(v string) *GetPhoneWithTokenRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *GetPhoneWithTokenRequest) SetResourceOwnerId(v int64) *GetPhoneWithTokenRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *GetPhoneWithTokenRequest) SetSpToken(v string) *GetPhoneWithTokenRequest {
+	s.SpToken = &v
+	return s
+}
+
+type GetPhoneWithTokenResponseBody struct {
+	Code      *string                            `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *GetPhoneWithTokenResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                            `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetPhoneWithTokenResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPhoneWithTokenResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetPhoneWithTokenResponseBody) SetCode(v string) *GetPhoneWithTokenResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetPhoneWithTokenResponseBody) SetData(v *GetPhoneWithTokenResponseBodyData) *GetPhoneWithTokenResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetPhoneWithTokenResponseBody) SetMessage(v string) *GetPhoneWithTokenResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetPhoneWithTokenResponseBody) SetRequestId(v string) *GetPhoneWithTokenResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetPhoneWithTokenResponseBodyData struct {
+	Mobile *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
+}
+
+func (s GetPhoneWithTokenResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPhoneWithTokenResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetPhoneWithTokenResponseBodyData) SetMobile(v string) *GetPhoneWithTokenResponseBodyData {
+	s.Mobile = &v
+	return s
+}
+
+type GetPhoneWithTokenResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetPhoneWithTokenResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetPhoneWithTokenResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPhoneWithTokenResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetPhoneWithTokenResponse) SetHeaders(v map[string]*string) *GetPhoneWithTokenResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetPhoneWithTokenResponse) SetStatusCode(v int32) *GetPhoneWithTokenResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetPhoneWithTokenResponse) SetBody(v *GetPhoneWithTokenResponseBody) *GetPhoneWithTokenResponse {
 	s.Body = v
 	return s
 }
@@ -1823,6 +2011,7 @@ func (client *Client) Init(config *openapi.Config) (_err error) {
 	if _err != nil {
 		return _err
 	}
+	client.SignatureAlgorithm = tea.String("v2")
 	client.EndpointRule = tea.String("central")
 	_err = client.CheckConfig(config)
 	if _err != nil {
@@ -1865,8 +2054,36 @@ func (client *Client) CreateVerifySchemeWithOptions(request *CreateVerifySchemeR
 		query["AppName"] = request.AppName
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.AuthType)) {
+		query["AuthType"] = request.AuthType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.BundleId)) {
 		query["BundleId"] = request.BundleId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CmApiCode)) {
+		query["CmApiCode"] = request.CmApiCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CtApiCode)) {
+		query["CtApiCode"] = request.CtApiCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CuApiCode)) {
+		query["CuApiCode"] = request.CuApiCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Email)) {
+		query["Email"] = request.Email
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IpWhiteList)) {
+		query["IpWhiteList"] = request.IpWhiteList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Origin)) {
+		query["Origin"] = request.Origin
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.OsType)) {
@@ -1893,8 +2110,20 @@ func (client *Client) CreateVerifySchemeWithOptions(request *CreateVerifySchemeR
 		query["ResourceOwnerId"] = request.ResourceOwnerId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.SceneType)) {
+		query["SceneType"] = request.SceneType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.SchemeName)) {
 		query["SchemeName"] = request.SchemeName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SmsSignName)) {
+		query["SmsSignName"] = request.SmsSignName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Url)) {
+		query["Url"] = request.Url
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -2284,6 +2513,62 @@ func (client *Client) GetMobile(request *GetMobileRequest) (_result *GetMobileRe
 	runtime := &util.RuntimeOptions{}
 	_result = &GetMobileResponse{}
 	_body, _err := client.GetMobileWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetPhoneWithTokenWithOptions(request *GetPhoneWithTokenRequest, runtime *util.RuntimeOptions) (_result *GetPhoneWithTokenResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SpToken)) {
+		query["SpToken"] = request.SpToken
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetPhoneWithToken"),
+		Version:     tea.String("2017-05-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetPhoneWithTokenResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetPhoneWithToken(request *GetPhoneWithTokenRequest) (_result *GetPhoneWithTokenResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetPhoneWithTokenResponse{}
+	_body, _err := client.GetPhoneWithTokenWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
