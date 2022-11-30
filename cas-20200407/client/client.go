@@ -1297,23 +1297,29 @@ func (s *GetUserCertificateDetailRequest) SetCertId(v int64) *GetUserCertificate
 }
 
 type GetUserCertificateDetailResponseBody struct {
-	BuyInAliyun *bool   `json:"BuyInAliyun,omitempty" xml:"BuyInAliyun,omitempty"`
-	Cert        *string `json:"Cert,omitempty" xml:"Cert,omitempty"`
-	City        *string `json:"City,omitempty" xml:"City,omitempty"`
-	Common      *string `json:"Common,omitempty" xml:"Common,omitempty"`
-	Country     *string `json:"Country,omitempty" xml:"Country,omitempty"`
-	EndDate     *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	Expired     *bool   `json:"Expired,omitempty" xml:"Expired,omitempty"`
-	Fingerprint *string `json:"Fingerprint,omitempty" xml:"Fingerprint,omitempty"`
-	Id          *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
-	Issuer      *string `json:"Issuer,omitempty" xml:"Issuer,omitempty"`
-	Key         *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	OrgName     *string `json:"OrgName,omitempty" xml:"OrgName,omitempty"`
-	Province    *string `json:"Province,omitempty" xml:"Province,omitempty"`
-	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Sans        *string `json:"Sans,omitempty" xml:"Sans,omitempty"`
-	StartDate   *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	BuyInAliyun       *bool   `json:"BuyInAliyun,omitempty" xml:"BuyInAliyun,omitempty"`
+	Cert              *string `json:"Cert,omitempty" xml:"Cert,omitempty"`
+	City              *string `json:"City,omitempty" xml:"City,omitempty"`
+	Common            *string `json:"Common,omitempty" xml:"Common,omitempty"`
+	Country           *string `json:"Country,omitempty" xml:"Country,omitempty"`
+	EncryptCert       *string `json:"EncryptCert,omitempty" xml:"EncryptCert,omitempty"`
+	EncryptPrivateKey *string `json:"EncryptPrivateKey,omitempty" xml:"EncryptPrivateKey,omitempty"`
+	EndDate           *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	Expired           *bool   `json:"Expired,omitempty" xml:"Expired,omitempty"`
+	Fingerprint       *string `json:"Fingerprint,omitempty" xml:"Fingerprint,omitempty"`
+	Id                *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	Issuer            *string `json:"Issuer,omitempty" xml:"Issuer,omitempty"`
+	Key               *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Name              *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	OrderId           *int64  `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	OrgName           *string `json:"OrgName,omitempty" xml:"OrgName,omitempty"`
+	Province          *string `json:"Province,omitempty" xml:"Province,omitempty"`
+	RequestId         *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResourceGroupId   *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	Sans              *string `json:"Sans,omitempty" xml:"Sans,omitempty"`
+	SignCert          *string `json:"SignCert,omitempty" xml:"SignCert,omitempty"`
+	SignPrivateKey    *string `json:"SignPrivateKey,omitempty" xml:"SignPrivateKey,omitempty"`
+	StartDate         *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
 }
 
 func (s GetUserCertificateDetailResponseBody) String() string {
@@ -1346,6 +1352,16 @@ func (s *GetUserCertificateDetailResponseBody) SetCommon(v string) *GetUserCerti
 
 func (s *GetUserCertificateDetailResponseBody) SetCountry(v string) *GetUserCertificateDetailResponseBody {
 	s.Country = &v
+	return s
+}
+
+func (s *GetUserCertificateDetailResponseBody) SetEncryptCert(v string) *GetUserCertificateDetailResponseBody {
+	s.EncryptCert = &v
+	return s
+}
+
+func (s *GetUserCertificateDetailResponseBody) SetEncryptPrivateKey(v string) *GetUserCertificateDetailResponseBody {
+	s.EncryptPrivateKey = &v
 	return s
 }
 
@@ -1384,6 +1400,11 @@ func (s *GetUserCertificateDetailResponseBody) SetName(v string) *GetUserCertifi
 	return s
 }
 
+func (s *GetUserCertificateDetailResponseBody) SetOrderId(v int64) *GetUserCertificateDetailResponseBody {
+	s.OrderId = &v
+	return s
+}
+
 func (s *GetUserCertificateDetailResponseBody) SetOrgName(v string) *GetUserCertificateDetailResponseBody {
 	s.OrgName = &v
 	return s
@@ -1399,8 +1420,23 @@ func (s *GetUserCertificateDetailResponseBody) SetRequestId(v string) *GetUserCe
 	return s
 }
 
+func (s *GetUserCertificateDetailResponseBody) SetResourceGroupId(v string) *GetUserCertificateDetailResponseBody {
+	s.ResourceGroupId = &v
+	return s
+}
+
 func (s *GetUserCertificateDetailResponseBody) SetSans(v string) *GetUserCertificateDetailResponseBody {
 	s.Sans = &v
+	return s
+}
+
+func (s *GetUserCertificateDetailResponseBody) SetSignCert(v string) *GetUserCertificateDetailResponseBody {
+	s.SignCert = &v
+	return s
+}
+
+func (s *GetUserCertificateDetailResponseBody) SetSignPrivateKey(v string) *GetUserCertificateDetailResponseBody {
+	s.SignPrivateKey = &v
 	return s
 }
 
@@ -1803,11 +1839,12 @@ func (s *ListCertWarehouseResponse) SetBody(v *ListCertWarehouseResponseBody) *L
 }
 
 type ListUserCertificateOrderRequest struct {
-	CurrentPage *int64  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	Keyword     *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
-	OrderType   *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
-	ShowSize    *int64  `json:"ShowSize,omitempty" xml:"ShowSize,omitempty"`
-	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	CurrentPage     *int64  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	Keyword         *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	OrderType       *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ShowSize        *int64  `json:"ShowSize,omitempty" xml:"ShowSize,omitempty"`
+	Status          *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ListUserCertificateOrderRequest) String() string {
@@ -1830,6 +1867,11 @@ func (s *ListUserCertificateOrderRequest) SetKeyword(v string) *ListUserCertific
 
 func (s *ListUserCertificateOrderRequest) SetOrderType(v string) *ListUserCertificateOrderRequest {
 	s.OrderType = &v
+	return s
+}
+
+func (s *ListUserCertificateOrderRequest) SetResourceGroupId(v string) *ListUserCertificateOrderRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -1910,6 +1952,7 @@ type ListUserCertificateOrderResponseBodyCertificateOrderList struct {
 	ProductCode     *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
 	ProductName     *string `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
 	Province        *string `json:"Province,omitempty" xml:"Province,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	RootBrand       *string `json:"RootBrand,omitempty" xml:"RootBrand,omitempty"`
 	Sans            *string `json:"Sans,omitempty" xml:"Sans,omitempty"`
 	SerialNo        *string `json:"SerialNo,omitempty" xml:"SerialNo,omitempty"`
@@ -2052,6 +2095,11 @@ func (s *ListUserCertificateOrderResponseBodyCertificateOrderList) SetProductNam
 
 func (s *ListUserCertificateOrderResponseBodyCertificateOrderList) SetProvince(v string) *ListUserCertificateOrderResponseBodyCertificateOrderList {
 	s.Province = &v
+	return s
+}
+
+func (s *ListUserCertificateOrderResponseBodyCertificateOrderList) SetResourceGroupId(v string) *ListUserCertificateOrderResponseBodyCertificateOrderList {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -2452,6 +2500,7 @@ type UploadUserCertificateRequest struct {
 	EncryptPrivateKey *string `json:"EncryptPrivateKey,omitempty" xml:"EncryptPrivateKey,omitempty"`
 	Key               *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	Name              *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	ResourceGroupId   *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	SignCert          *string `json:"SignCert,omitempty" xml:"SignCert,omitempty"`
 	SignPrivateKey    *string `json:"SignPrivateKey,omitempty" xml:"SignPrivateKey,omitempty"`
 }
@@ -2486,6 +2535,11 @@ func (s *UploadUserCertificateRequest) SetKey(v string) *UploadUserCertificateRe
 
 func (s *UploadUserCertificateRequest) SetName(v string) *UploadUserCertificateRequest {
 	s.Name = &v
+	return s
+}
+
+func (s *UploadUserCertificateRequest) SetResourceGroupId(v string) *UploadUserCertificateRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -3689,6 +3743,10 @@ func (client *Client) ListUserCertificateOrderWithOptions(request *ListUserCerti
 		query["OrderType"] = request.OrderType
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ShowSize)) {
 		query["ShowSize"] = request.ShowSize
 	}
@@ -3959,6 +4017,10 @@ func (client *Client) UploadUserCertificateWithOptions(request *UploadUserCertif
 
 	if !tea.BoolValue(util.IsUnset(request.Name)) {
 		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SignCert)) {
