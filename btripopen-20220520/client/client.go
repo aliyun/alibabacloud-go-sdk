@@ -500,6 +500,175 @@ func (s *AirportSearchResponse) SetBody(v *AirportSearchResponseBody) *AirportSe
 	return s
 }
 
+type AllBaseCityInfoQueryHeaders struct {
+	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsBtripAccessToken *string            `json:"x-acs-btrip-access-token,omitempty" xml:"x-acs-btrip-access-token,omitempty"`
+}
+
+func (s AllBaseCityInfoQueryHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AllBaseCityInfoQueryHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *AllBaseCityInfoQueryHeaders) SetCommonHeaders(v map[string]*string) *AllBaseCityInfoQueryHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *AllBaseCityInfoQueryHeaders) SetXAcsBtripAccessToken(v string) *AllBaseCityInfoQueryHeaders {
+	s.XAcsBtripAccessToken = &v
+	return s
+}
+
+type AllBaseCityInfoQueryResponseBody struct {
+	Code      *string                                 `json:"code,omitempty" xml:"code,omitempty"`
+	Message   *string                                 `json:"message,omitempty" xml:"message,omitempty"`
+	Module    *AllBaseCityInfoQueryResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
+	RequestId *string                                 `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success   *bool                                   `json:"success,omitempty" xml:"success,omitempty"`
+	TraceId   *string                                 `json:"traceId,omitempty" xml:"traceId,omitempty"`
+}
+
+func (s AllBaseCityInfoQueryResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AllBaseCityInfoQueryResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AllBaseCityInfoQueryResponseBody) SetCode(v string) *AllBaseCityInfoQueryResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *AllBaseCityInfoQueryResponseBody) SetMessage(v string) *AllBaseCityInfoQueryResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *AllBaseCityInfoQueryResponseBody) SetModule(v *AllBaseCityInfoQueryResponseBodyModule) *AllBaseCityInfoQueryResponseBody {
+	s.Module = v
+	return s
+}
+
+func (s *AllBaseCityInfoQueryResponseBody) SetRequestId(v string) *AllBaseCityInfoQueryResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *AllBaseCityInfoQueryResponseBody) SetSuccess(v bool) *AllBaseCityInfoQueryResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *AllBaseCityInfoQueryResponseBody) SetTraceId(v string) *AllBaseCityInfoQueryResponseBody {
+	s.TraceId = &v
+	return s
+}
+
+type AllBaseCityInfoQueryResponseBodyModule struct {
+	AllCityBaseInfoList []*AllBaseCityInfoQueryResponseBodyModuleAllCityBaseInfoList `json:"all_city_base_info_list,omitempty" xml:"all_city_base_info_list,omitempty" type:"Repeated"`
+}
+
+func (s AllBaseCityInfoQueryResponseBodyModule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AllBaseCityInfoQueryResponseBodyModule) GoString() string {
+	return s.String()
+}
+
+func (s *AllBaseCityInfoQueryResponseBodyModule) SetAllCityBaseInfoList(v []*AllBaseCityInfoQueryResponseBodyModuleAllCityBaseInfoList) *AllBaseCityInfoQueryResponseBodyModule {
+	s.AllCityBaseInfoList = v
+	return s
+}
+
+type AllBaseCityInfoQueryResponseBodyModuleAllCityBaseInfoList struct {
+	Adcode        *string   `json:"adcode,omitempty" xml:"adcode,omitempty"`
+	CityCode      *string   `json:"city_code,omitempty" xml:"city_code,omitempty"`
+	CityLevel     *string   `json:"city_level,omitempty" xml:"city_level,omitempty"`
+	CityName      *string   `json:"city_name,omitempty" xml:"city_name,omitempty"`
+	CnNameTree    *string   `json:"cn_name_tree,omitempty" xml:"cn_name_tree,omitempty"`
+	Id            *int64    `json:"id,omitempty" xml:"id,omitempty"`
+	OtherNameList []*string `json:"other_name_list,omitempty" xml:"other_name_list,omitempty" type:"Repeated"`
+}
+
+func (s AllBaseCityInfoQueryResponseBodyModuleAllCityBaseInfoList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AllBaseCityInfoQueryResponseBodyModuleAllCityBaseInfoList) GoString() string {
+	return s.String()
+}
+
+func (s *AllBaseCityInfoQueryResponseBodyModuleAllCityBaseInfoList) SetAdcode(v string) *AllBaseCityInfoQueryResponseBodyModuleAllCityBaseInfoList {
+	s.Adcode = &v
+	return s
+}
+
+func (s *AllBaseCityInfoQueryResponseBodyModuleAllCityBaseInfoList) SetCityCode(v string) *AllBaseCityInfoQueryResponseBodyModuleAllCityBaseInfoList {
+	s.CityCode = &v
+	return s
+}
+
+func (s *AllBaseCityInfoQueryResponseBodyModuleAllCityBaseInfoList) SetCityLevel(v string) *AllBaseCityInfoQueryResponseBodyModuleAllCityBaseInfoList {
+	s.CityLevel = &v
+	return s
+}
+
+func (s *AllBaseCityInfoQueryResponseBodyModuleAllCityBaseInfoList) SetCityName(v string) *AllBaseCityInfoQueryResponseBodyModuleAllCityBaseInfoList {
+	s.CityName = &v
+	return s
+}
+
+func (s *AllBaseCityInfoQueryResponseBodyModuleAllCityBaseInfoList) SetCnNameTree(v string) *AllBaseCityInfoQueryResponseBodyModuleAllCityBaseInfoList {
+	s.CnNameTree = &v
+	return s
+}
+
+func (s *AllBaseCityInfoQueryResponseBodyModuleAllCityBaseInfoList) SetId(v int64) *AllBaseCityInfoQueryResponseBodyModuleAllCityBaseInfoList {
+	s.Id = &v
+	return s
+}
+
+func (s *AllBaseCityInfoQueryResponseBodyModuleAllCityBaseInfoList) SetOtherNameList(v []*string) *AllBaseCityInfoQueryResponseBodyModuleAllCityBaseInfoList {
+	s.OtherNameList = v
+	return s
+}
+
+type AllBaseCityInfoQueryResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *AllBaseCityInfoQueryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s AllBaseCityInfoQueryResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AllBaseCityInfoQueryResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AllBaseCityInfoQueryResponse) SetHeaders(v map[string]*string) *AllBaseCityInfoQueryResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AllBaseCityInfoQueryResponse) SetStatusCode(v int32) *AllBaseCityInfoQueryResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *AllBaseCityInfoQueryResponse) SetBody(v *AllBaseCityInfoQueryResponseBody) *AllBaseCityInfoQueryResponse {
+	s.Body = v
+	return s
+}
+
 type ApplyAddHeaders struct {
 	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	XAcsBtripSoCorpToken *string            `json:"x-acs-btrip-so-corp-token,omitempty" xml:"x-acs-btrip-so-corp-token,omitempty"`
@@ -18121,6 +18290,51 @@ func (client *Client) AirportSearchWithOptions(request *AirportSearchRequest, he
 		BodyType:    tea.String("json"),
 	}
 	_result = &AirportSearchResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) AllBaseCityInfoQuery() (_result *AllBaseCityInfoQueryResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &AllBaseCityInfoQueryHeaders{}
+	_result = &AllBaseCityInfoQueryResponse{}
+	_body, _err := client.AllBaseCityInfoQueryWithOptions(headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) AllBaseCityInfoQueryWithOptions(headers *AllBaseCityInfoQueryHeaders, runtime *util.RuntimeOptions) (_result *AllBaseCityInfoQueryResponse, _err error) {
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsBtripAccessToken)) {
+		realHeaders["x-acs-btrip-access-token"] = util.ToJSONString(headers.XAcsBtripAccessToken)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AllBaseCityInfoQuery"),
+		Version:     tea.String("2022-05-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/city/v1/code"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &AllBaseCityInfoQueryResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
