@@ -5205,6 +5205,7 @@ type DescribeNamespaceScopeSidecarConfigResponseBodyConfigPatches struct {
 	IncludeInboundPorts             *string                                                                                      `json:"IncludeInboundPorts,omitempty" xml:"IncludeInboundPorts,omitempty"`
 	IncludeOutboundIPRanges         *string                                                                                      `json:"IncludeOutboundIPRanges,omitempty" xml:"IncludeOutboundIPRanges,omitempty"`
 	IncludeOutboundPorts            *string                                                                                      `json:"IncludeOutboundPorts,omitempty" xml:"IncludeOutboundPorts,omitempty"`
+	InterceptionMode                *string                                                                                      `json:"InterceptionMode,omitempty" xml:"InterceptionMode,omitempty"`
 	IstioDNSProxyEnabled            *bool                                                                                        `json:"IstioDNSProxyEnabled,omitempty" xml:"IstioDNSProxyEnabled,omitempty"`
 	LifecycleStr                    *string                                                                                      `json:"LifecycleStr,omitempty" xml:"LifecycleStr,omitempty"`
 	LogLevel                        *string                                                                                      `json:"LogLevel,omitempty" xml:"LogLevel,omitempty"`
@@ -5262,6 +5263,11 @@ func (s *DescribeNamespaceScopeSidecarConfigResponseBodyConfigPatches) SetInclud
 
 func (s *DescribeNamespaceScopeSidecarConfigResponseBodyConfigPatches) SetIncludeOutboundPorts(v string) *DescribeNamespaceScopeSidecarConfigResponseBodyConfigPatches {
 	s.IncludeOutboundPorts = &v
+	return s
+}
+
+func (s *DescribeNamespaceScopeSidecarConfigResponseBodyConfigPatches) SetInterceptionMode(v string) *DescribeNamespaceScopeSidecarConfigResponseBodyConfigPatches {
+	s.InterceptionMode = &v
 	return s
 }
 
@@ -12363,6 +12369,7 @@ type UpdateMeshFeatureRequest struct {
 	IncludeInboundPorts             *string  `json:"IncludeInboundPorts,omitempty" xml:"IncludeInboundPorts,omitempty"`
 	IncludeOutboundPorts            *string  `json:"IncludeOutboundPorts,omitempty" xml:"IncludeOutboundPorts,omitempty"`
 	IntegrateKiali                  *bool    `json:"IntegrateKiali,omitempty" xml:"IntegrateKiali,omitempty"`
+	InterceptionMode                *string  `json:"InterceptionMode,omitempty" xml:"InterceptionMode,omitempty"`
 	KialiEnabled                    *bool    `json:"KialiEnabled,omitempty" xml:"KialiEnabled,omitempty"`
 	Lifecycle                       *string  `json:"Lifecycle,omitempty" xml:"Lifecycle,omitempty"`
 	LocalityLBConf                  *string  `json:"LocalityLBConf,omitempty" xml:"LocalityLBConf,omitempty"`
@@ -12623,6 +12630,11 @@ func (s *UpdateMeshFeatureRequest) SetIncludeOutboundPorts(v string) *UpdateMesh
 
 func (s *UpdateMeshFeatureRequest) SetIntegrateKiali(v bool) *UpdateMeshFeatureRequest {
 	s.IntegrateKiali = &v
+	return s
+}
+
+func (s *UpdateMeshFeatureRequest) SetInterceptionMode(v string) *UpdateMeshFeatureRequest {
+	s.InterceptionMode = &v
 	return s
 }
 
@@ -12946,6 +12958,7 @@ type UpdateNamespaceScopeSidecarConfigRequest struct {
 	IncludeIPRanges                   *string `json:"IncludeIPRanges,omitempty" xml:"IncludeIPRanges,omitempty"`
 	IncludeInboundPorts               *string `json:"IncludeInboundPorts,omitempty" xml:"IncludeInboundPorts,omitempty"`
 	IncludeOutboundPorts              *string `json:"IncludeOutboundPorts,omitempty" xml:"IncludeOutboundPorts,omitempty"`
+	InterceptionMode                  *string `json:"InterceptionMode,omitempty" xml:"InterceptionMode,omitempty"`
 	IstioDNSProxyEnabled              *bool   `json:"IstioDNSProxyEnabled,omitempty" xml:"IstioDNSProxyEnabled,omitempty"`
 	Lifecycle                         *string `json:"Lifecycle,omitempty" xml:"Lifecycle,omitempty"`
 	LogLevel                          *string `json:"LogLevel,omitempty" xml:"LogLevel,omitempty"`
@@ -13011,6 +13024,11 @@ func (s *UpdateNamespaceScopeSidecarConfigRequest) SetIncludeInboundPorts(v stri
 
 func (s *UpdateNamespaceScopeSidecarConfigRequest) SetIncludeOutboundPorts(v string) *UpdateNamespaceScopeSidecarConfigRequest {
 	s.IncludeOutboundPorts = &v
+	return s
+}
+
+func (s *UpdateNamespaceScopeSidecarConfigRequest) SetInterceptionMode(v string) *UpdateNamespaceScopeSidecarConfigRequest {
+	s.InterceptionMode = &v
 	return s
 }
 
@@ -17829,6 +17847,10 @@ func (client *Client) UpdateMeshFeatureWithOptions(request *UpdateMeshFeatureReq
 		body["IntegrateKiali"] = request.IntegrateKiali
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.InterceptionMode)) {
+		body["InterceptionMode"] = request.InterceptionMode
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.KialiEnabled)) {
 		body["KialiEnabled"] = request.KialiEnabled
 	}
@@ -18111,6 +18133,10 @@ func (client *Client) UpdateNamespaceScopeSidecarConfigWithOptions(request *Upda
 
 	if !tea.BoolValue(util.IsUnset(request.IncludeOutboundPorts)) {
 		body["IncludeOutboundPorts"] = request.IncludeOutboundPorts
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InterceptionMode)) {
+		body["InterceptionMode"] = request.InterceptionMode
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.IstioDNSProxyEnabled)) {

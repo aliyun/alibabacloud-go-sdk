@@ -1,3 +1,6 @@
+2022-12-01 Version: v3.0.4
+- Support setting TPROXY mode.
+
 2022-11-24 Version: v3.0.3
 - Update ASM APIs.
 
