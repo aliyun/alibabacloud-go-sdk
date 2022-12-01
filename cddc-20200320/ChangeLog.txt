@@ -1,3 +1,6 @@
+2022-12-01 Version: v2.0.1
+- Build SDK for multiple languages.
+
 2022-09-23 Version: v2.0.0
 - Generated golang 2020-03-20 for cddc.
 

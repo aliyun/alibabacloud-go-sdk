@@ -488,8 +488,11 @@ type CreateMyBaseRequest struct {
 	DedicatedHostGroupId          *string                            `json:"DedicatedHostGroupId,omitempty" xml:"DedicatedHostGroupId,omitempty"`
 	ECSClassList                  []*CreateMyBaseRequestECSClassList `json:"ECSClassList,omitempty" xml:"ECSClassList,omitempty" type:"Repeated"`
 	Engine                        *string                            `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	ImageId                       *string                            `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	KeyPairName                   *string                            `json:"KeyPairName,omitempty" xml:"KeyPairName,omitempty"`
 	OsPassword                    *string                            `json:"OsPassword,omitempty" xml:"OsPassword,omitempty"`
 	OwnerId                       *int64                             `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	PasswordInherit               *string                            `json:"PasswordInherit,omitempty" xml:"PasswordInherit,omitempty"`
 	PayType                       *string                            `json:"PayType,omitempty" xml:"PayType,omitempty"`
 	Period                        *string                            `json:"Period,omitempty" xml:"Period,omitempty"`
 	PeriodType                    *string                            `json:"PeriodType,omitempty" xml:"PeriodType,omitempty"`
@@ -540,6 +543,16 @@ func (s *CreateMyBaseRequest) SetEngine(v string) *CreateMyBaseRequest {
 	return s
 }
 
+func (s *CreateMyBaseRequest) SetImageId(v string) *CreateMyBaseRequest {
+	s.ImageId = &v
+	return s
+}
+
+func (s *CreateMyBaseRequest) SetKeyPairName(v string) *CreateMyBaseRequest {
+	s.KeyPairName = &v
+	return s
+}
+
 func (s *CreateMyBaseRequest) SetOsPassword(v string) *CreateMyBaseRequest {
 	s.OsPassword = &v
 	return s
@@ -547,6 +560,11 @@ func (s *CreateMyBaseRequest) SetOsPassword(v string) *CreateMyBaseRequest {
 
 func (s *CreateMyBaseRequest) SetOwnerId(v int64) *CreateMyBaseRequest {
 	s.OwnerId = &v
+	return s
+}
+
+func (s *CreateMyBaseRequest) SetPasswordInherit(v string) *CreateMyBaseRequest {
+	s.PasswordInherit = &v
 	return s
 }
 
@@ -601,13 +619,15 @@ func (s *CreateMyBaseRequest) SetZoneId(v string) *CreateMyBaseRequest {
 }
 
 type CreateMyBaseRequestECSClassList struct {
-	DiskCapacity    *int32  `json:"diskCapacity,omitempty" xml:"diskCapacity,omitempty"`
-	DiskCount       *int32  `json:"diskCount,omitempty" xml:"diskCount,omitempty"`
-	DiskType        *string `json:"diskType,omitempty" xml:"diskType,omitempty"`
-	InstanceType    *string `json:"instanceType,omitempty" xml:"instanceType,omitempty"`
-	NodeCount       *int32  `json:"nodeCount,omitempty" xml:"nodeCount,omitempty"`
-	SysDiskCapacity *int32  `json:"sysDiskCapacity,omitempty" xml:"sysDiskCapacity,omitempty"`
-	SysDiskType     *string `json:"sysDiskType,omitempty" xml:"sysDiskType,omitempty"`
+	DataDiskPerformanceLevel   *string `json:"dataDiskPerformanceLevel,omitempty" xml:"dataDiskPerformanceLevel,omitempty"`
+	DiskCapacity               *int32  `json:"diskCapacity,omitempty" xml:"diskCapacity,omitempty"`
+	DiskCount                  *int32  `json:"diskCount,omitempty" xml:"diskCount,omitempty"`
+	DiskType                   *string `json:"diskType,omitempty" xml:"diskType,omitempty"`
+	InstanceType               *string `json:"instanceType,omitempty" xml:"instanceType,omitempty"`
+	NodeCount                  *int32  `json:"nodeCount,omitempty" xml:"nodeCount,omitempty"`
+	SysDiskCapacity            *int32  `json:"sysDiskCapacity,omitempty" xml:"sysDiskCapacity,omitempty"`
+	SysDiskType                *string `json:"sysDiskType,omitempty" xml:"sysDiskType,omitempty"`
+	SystemDiskPerformanceLevel *string `json:"systemDiskPerformanceLevel,omitempty" xml:"systemDiskPerformanceLevel,omitempty"`
 }
 
 func (s CreateMyBaseRequestECSClassList) String() string {
@@ -616,6 +636,11 @@ func (s CreateMyBaseRequestECSClassList) String() string {
 
 func (s CreateMyBaseRequestECSClassList) GoString() string {
 	return s.String()
+}
+
+func (s *CreateMyBaseRequestECSClassList) SetDataDiskPerformanceLevel(v string) *CreateMyBaseRequestECSClassList {
+	s.DataDiskPerformanceLevel = &v
+	return s
 }
 
 func (s *CreateMyBaseRequestECSClassList) SetDiskCapacity(v int32) *CreateMyBaseRequestECSClassList {
@@ -653,6 +678,11 @@ func (s *CreateMyBaseRequestECSClassList) SetSysDiskType(v string) *CreateMyBase
 	return s
 }
 
+func (s *CreateMyBaseRequestECSClassList) SetSystemDiskPerformanceLevel(v string) *CreateMyBaseRequestECSClassList {
+	s.SystemDiskPerformanceLevel = &v
+	return s
+}
+
 type CreateMyBaseShrinkRequest struct {
 	AutoRenew                     *string `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
 	ClientToken                   *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
@@ -660,8 +690,11 @@ type CreateMyBaseShrinkRequest struct {
 	DedicatedHostGroupId          *string `json:"DedicatedHostGroupId,omitempty" xml:"DedicatedHostGroupId,omitempty"`
 	ECSClassListShrink            *string `json:"ECSClassList,omitempty" xml:"ECSClassList,omitempty"`
 	Engine                        *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	ImageId                       *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	KeyPairName                   *string `json:"KeyPairName,omitempty" xml:"KeyPairName,omitempty"`
 	OsPassword                    *string `json:"OsPassword,omitempty" xml:"OsPassword,omitempty"`
 	OwnerId                       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	PasswordInherit               *string `json:"PasswordInherit,omitempty" xml:"PasswordInherit,omitempty"`
 	PayType                       *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
 	Period                        *string `json:"Period,omitempty" xml:"Period,omitempty"`
 	PeriodType                    *string `json:"PeriodType,omitempty" xml:"PeriodType,omitempty"`
@@ -712,6 +745,16 @@ func (s *CreateMyBaseShrinkRequest) SetEngine(v string) *CreateMyBaseShrinkReque
 	return s
 }
 
+func (s *CreateMyBaseShrinkRequest) SetImageId(v string) *CreateMyBaseShrinkRequest {
+	s.ImageId = &v
+	return s
+}
+
+func (s *CreateMyBaseShrinkRequest) SetKeyPairName(v string) *CreateMyBaseShrinkRequest {
+	s.KeyPairName = &v
+	return s
+}
+
 func (s *CreateMyBaseShrinkRequest) SetOsPassword(v string) *CreateMyBaseShrinkRequest {
 	s.OsPassword = &v
 	return s
@@ -719,6 +762,11 @@ func (s *CreateMyBaseShrinkRequest) SetOsPassword(v string) *CreateMyBaseShrinkR
 
 func (s *CreateMyBaseShrinkRequest) SetOwnerId(v int64) *CreateMyBaseShrinkRequest {
 	s.OwnerId = &v
+	return s
+}
+
+func (s *CreateMyBaseShrinkRequest) SetPasswordInherit(v string) *CreateMyBaseShrinkRequest {
+	s.PasswordInherit = &v
 	return s
 }
 
@@ -4638,12 +4686,24 @@ func (client *Client) CreateMyBaseWithOptions(tmpReq *CreateMyBaseRequest, runti
 		query["Engine"] = request.Engine
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ImageId)) {
+		query["ImageId"] = request.ImageId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.KeyPairName)) {
+		query["KeyPairName"] = request.KeyPairName
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.OsPassword)) {
 		query["OsPassword"] = request.OsPassword
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
 		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PasswordInherit)) {
+		query["PasswordInherit"] = request.PasswordInherit
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.PayType)) {
