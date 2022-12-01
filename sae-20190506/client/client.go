@@ -1764,6 +1764,7 @@ func (s *CreateGreyTagRouteResponse) SetBody(v *CreateGreyTagRouteResponseBody) 
 
 type CreateIngressRequest struct {
 	CertId           *string `json:"CertId,omitempty" xml:"CertId,omitempty"`
+	CertIds          *string `json:"CertIds,omitempty" xml:"CertIds,omitempty"`
 	DefaultRule      *string `json:"DefaultRule,omitempty" xml:"DefaultRule,omitempty"`
 	Description      *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	ListenerPort     *int32  `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
@@ -1784,6 +1785,11 @@ func (s CreateIngressRequest) GoString() string {
 
 func (s *CreateIngressRequest) SetCertId(v string) *CreateIngressRequest {
 	s.CertId = &v
+	return s
+}
+
+func (s *CreateIngressRequest) SetCertIds(v string) *CreateIngressRequest {
+	s.CertIds = &v
 	return s
 }
 
@@ -8302,6 +8308,7 @@ func (s *DescribeIngressResponseBody) SetTraceId(v string) *DescribeIngressRespo
 
 type DescribeIngressResponseBodyData struct {
 	CertId           *string                                     `json:"CertId,omitempty" xml:"CertId,omitempty"`
+	CertIds          *string                                     `json:"CertIds,omitempty" xml:"CertIds,omitempty"`
 	DefaultRule      *DescribeIngressResponseBodyDataDefaultRule `json:"DefaultRule,omitempty" xml:"DefaultRule,omitempty" type:"Struct"`
 	Description      *string                                     `json:"Description,omitempty" xml:"Description,omitempty"`
 	Id               *int64                                      `json:"Id,omitempty" xml:"Id,omitempty"`
@@ -8325,6 +8332,11 @@ func (s DescribeIngressResponseBodyData) GoString() string {
 
 func (s *DescribeIngressResponseBodyData) SetCertId(v string) *DescribeIngressResponseBodyData {
 	s.CertId = &v
+	return s
+}
+
+func (s *DescribeIngressResponseBodyData) SetCertIds(v string) *DescribeIngressResponseBodyData {
+	s.CertIds = &v
 	return s
 }
 
@@ -13392,6 +13404,7 @@ func (s *ListIngressesResponseBodyData) SetIngressList(v []*ListIngressesRespons
 
 type ListIngressesResponseBodyDataIngressList struct {
 	CertId           *string `json:"CertId,omitempty" xml:"CertId,omitempty"`
+	CertIds          *string `json:"CertIds,omitempty" xml:"CertIds,omitempty"`
 	Description      *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	Id               *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
 	ListenerPort     *string `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
@@ -13413,6 +13426,11 @@ func (s ListIngressesResponseBodyDataIngressList) GoString() string {
 
 func (s *ListIngressesResponseBodyDataIngressList) SetCertId(v string) *ListIngressesResponseBodyDataIngressList {
 	s.CertId = &v
+	return s
+}
+
+func (s *ListIngressesResponseBodyDataIngressList) SetCertIds(v string) *ListIngressesResponseBodyDataIngressList {
+	s.CertIds = &v
 	return s
 }
 
@@ -17589,6 +17607,7 @@ func (s *UpdateGreyTagRouteResponse) SetBody(v *UpdateGreyTagRouteResponseBody) 
 
 type UpdateIngressRequest struct {
 	CertId           *string `json:"CertId,omitempty" xml:"CertId,omitempty"`
+	CertIds          *string `json:"CertIds,omitempty" xml:"CertIds,omitempty"`
 	DefaultRule      *string `json:"DefaultRule,omitempty" xml:"DefaultRule,omitempty"`
 	Description      *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	IngressId        *int64  `json:"IngressId,omitempty" xml:"IngressId,omitempty"`
@@ -17608,6 +17627,11 @@ func (s UpdateIngressRequest) GoString() string {
 
 func (s *UpdateIngressRequest) SetCertId(v string) *UpdateIngressRequest {
 	s.CertId = &v
+	return s
+}
+
+func (s *UpdateIngressRequest) SetCertIds(v string) *UpdateIngressRequest {
+	s.CertIds = &v
 	return s
 }
 
@@ -17741,6 +17765,440 @@ func (s *UpdateIngressResponse) SetStatusCode(v int32) *UpdateIngressResponse {
 }
 
 func (s *UpdateIngressResponse) SetBody(v *UpdateIngressResponseBody) *UpdateIngressResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateJobRequest struct {
+	AcrAssumeRoleArn                 *string `json:"AcrAssumeRoleArn,omitempty" xml:"AcrAssumeRoleArn,omitempty"`
+	AppId                            *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AssociateEip                     *bool   `json:"AssociateEip,omitempty" xml:"AssociateEip,omitempty"`
+	AutoEnableApplicationScalingRule *bool   `json:"AutoEnableApplicationScalingRule,omitempty" xml:"AutoEnableApplicationScalingRule,omitempty"`
+	BackoffLimit                     *int64  `json:"BackoffLimit,omitempty" xml:"BackoffLimit,omitempty"`
+	BatchWaitTime                    *int32  `json:"BatchWaitTime,omitempty" xml:"BatchWaitTime,omitempty"`
+	ChangeOrderDesc                  *string `json:"ChangeOrderDesc,omitempty" xml:"ChangeOrderDesc,omitempty"`
+	Command                          *string `json:"Command,omitempty" xml:"Command,omitempty"`
+	CommandArgs                      *string `json:"CommandArgs,omitempty" xml:"CommandArgs,omitempty"`
+	ConcurrencyPolicy                *string `json:"ConcurrencyPolicy,omitempty" xml:"ConcurrencyPolicy,omitempty"`
+	ConfigMapMountDesc               *string `json:"ConfigMapMountDesc,omitempty" xml:"ConfigMapMountDesc,omitempty"`
+	CustomHostAlias                  *string `json:"CustomHostAlias,omitempty" xml:"CustomHostAlias,omitempty"`
+	EdasContainerVersion             *string `json:"EdasContainerVersion,omitempty" xml:"EdasContainerVersion,omitempty"`
+	EnableAhas                       *string `json:"EnableAhas,omitempty" xml:"EnableAhas,omitempty"`
+	EnableGreyTagRoute               *bool   `json:"EnableGreyTagRoute,omitempty" xml:"EnableGreyTagRoute,omitempty"`
+	Envs                             *string `json:"Envs,omitempty" xml:"Envs,omitempty"`
+	ImagePullSecrets                 *string `json:"ImagePullSecrets,omitempty" xml:"ImagePullSecrets,omitempty"`
+	ImageUrl                         *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
+	JarStartArgs                     *string `json:"JarStartArgs,omitempty" xml:"JarStartArgs,omitempty"`
+	JarStartOptions                  *string `json:"JarStartOptions,omitempty" xml:"JarStartOptions,omitempty"`
+	Jdk                              *string `json:"Jdk,omitempty" xml:"Jdk,omitempty"`
+	Liveness                         *string `json:"Liveness,omitempty" xml:"Liveness,omitempty"`
+	MinReadyInstances                *int32  `json:"MinReadyInstances,omitempty" xml:"MinReadyInstances,omitempty"`
+	MountDesc                        *string `json:"MountDesc,omitempty" xml:"MountDesc,omitempty"`
+	MountHost                        *string `json:"MountHost,omitempty" xml:"MountHost,omitempty"`
+	NasId                            *string `json:"NasId,omitempty" xml:"NasId,omitempty"`
+	OssAkId                          *string `json:"OssAkId,omitempty" xml:"OssAkId,omitempty"`
+	OssAkSecret                      *string `json:"OssAkSecret,omitempty" xml:"OssAkSecret,omitempty"`
+	OssMountDescs                    *string `json:"OssMountDescs,omitempty" xml:"OssMountDescs,omitempty"`
+	PackageUrl                       *string `json:"PackageUrl,omitempty" xml:"PackageUrl,omitempty"`
+	PackageVersion                   *string `json:"PackageVersion,omitempty" xml:"PackageVersion,omitempty"`
+	PhpArmsConfigLocation            *string `json:"PhpArmsConfigLocation,omitempty" xml:"PhpArmsConfigLocation,omitempty"`
+	PhpConfig                        *string `json:"PhpConfig,omitempty" xml:"PhpConfig,omitempty"`
+	PhpConfigLocation                *string `json:"PhpConfigLocation,omitempty" xml:"PhpConfigLocation,omitempty"`
+	PostStart                        *string `json:"PostStart,omitempty" xml:"PostStart,omitempty"`
+	PreStop                          *string `json:"PreStop,omitempty" xml:"PreStop,omitempty"`
+	ProgrammingLanguage              *string `json:"ProgrammingLanguage,omitempty" xml:"ProgrammingLanguage,omitempty"`
+	Python                           *string `json:"Python,omitempty" xml:"Python,omitempty"`
+	PythonModules                    *string `json:"PythonModules,omitempty" xml:"PythonModules,omitempty"`
+	Readiness                        *string `json:"Readiness,omitempty" xml:"Readiness,omitempty"`
+	RefAppId                         *string `json:"RefAppId,omitempty" xml:"RefAppId,omitempty"`
+	Replicas                         *string `json:"Replicas,omitempty" xml:"Replicas,omitempty"`
+	Slice                            *bool   `json:"Slice,omitempty" xml:"Slice,omitempty"`
+	SliceEnvs                        *string `json:"SliceEnvs,omitempty" xml:"SliceEnvs,omitempty"`
+	SlsConfigs                       *string `json:"SlsConfigs,omitempty" xml:"SlsConfigs,omitempty"`
+	TerminationGracePeriodSeconds    *int32  `json:"TerminationGracePeriodSeconds,omitempty" xml:"TerminationGracePeriodSeconds,omitempty"`
+	Timeout                          *int64  `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+	Timezone                         *string `json:"Timezone,omitempty" xml:"Timezone,omitempty"`
+	TomcatConfig                     *string `json:"TomcatConfig,omitempty" xml:"TomcatConfig,omitempty"`
+	TriggerConfig                    *string `json:"TriggerConfig,omitempty" xml:"TriggerConfig,omitempty"`
+	UpdateStrategy                   *string `json:"UpdateStrategy,omitempty" xml:"UpdateStrategy,omitempty"`
+	WarStartOptions                  *string `json:"WarStartOptions,omitempty" xml:"WarStartOptions,omitempty"`
+	WebContainer                     *string `json:"WebContainer,omitempty" xml:"WebContainer,omitempty"`
+}
+
+func (s UpdateJobRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateJobRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateJobRequest) SetAcrAssumeRoleArn(v string) *UpdateJobRequest {
+	s.AcrAssumeRoleArn = &v
+	return s
+}
+
+func (s *UpdateJobRequest) SetAppId(v string) *UpdateJobRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *UpdateJobRequest) SetAssociateEip(v bool) *UpdateJobRequest {
+	s.AssociateEip = &v
+	return s
+}
+
+func (s *UpdateJobRequest) SetAutoEnableApplicationScalingRule(v bool) *UpdateJobRequest {
+	s.AutoEnableApplicationScalingRule = &v
+	return s
+}
+
+func (s *UpdateJobRequest) SetBackoffLimit(v int64) *UpdateJobRequest {
+	s.BackoffLimit = &v
+	return s
+}
+
+func (s *UpdateJobRequest) SetBatchWaitTime(v int32) *UpdateJobRequest {
+	s.BatchWaitTime = &v
+	return s
+}
+
+func (s *UpdateJobRequest) SetChangeOrderDesc(v string) *UpdateJobRequest {
+	s.ChangeOrderDesc = &v
+	return s
+}
+
+func (s *UpdateJobRequest) SetCommand(v string) *UpdateJobRequest {
+	s.Command = &v
+	return s
+}
+
+func (s *UpdateJobRequest) SetCommandArgs(v string) *UpdateJobRequest {
+	s.CommandArgs = &v
+	return s
+}
+
+func (s *UpdateJobRequest) SetConcurrencyPolicy(v string) *UpdateJobRequest {
+	s.ConcurrencyPolicy = &v
+	return s
+}
+
+func (s *UpdateJobRequest) SetConfigMapMountDesc(v string) *UpdateJobRequest {
+	s.ConfigMapMountDesc = &v
+	return s
+}
+
+func (s *UpdateJobRequest) SetCustomHostAlias(v string) *UpdateJobRequest {
+	s.CustomHostAlias = &v
+	return s
+}
+
+func (s *UpdateJobRequest) SetEdasContainerVersion(v string) *UpdateJobRequest {
+	s.EdasContainerVersion = &v
+	return s
+}
+
+func (s *UpdateJobRequest) SetEnableAhas(v string) *UpdateJobRequest {
+	s.EnableAhas = &v
+	return s
+}
+
+func (s *UpdateJobRequest) SetEnableGreyTagRoute(v bool) *UpdateJobRequest {
+	s.EnableGreyTagRoute = &v
+	return s
+}
+
+func (s *UpdateJobRequest) SetEnvs(v string) *UpdateJobRequest {
+	s.Envs = &v
+	return s
+}
+
+func (s *UpdateJobRequest) SetImagePullSecrets(v string) *UpdateJobRequest {
+	s.ImagePullSecrets = &v
+	return s
+}
+
+func (s *UpdateJobRequest) SetImageUrl(v string) *UpdateJobRequest {
+	s.ImageUrl = &v
+	return s
+}
+
+func (s *UpdateJobRequest) SetJarStartArgs(v string) *UpdateJobRequest {
+	s.JarStartArgs = &v
+	return s
+}
+
+func (s *UpdateJobRequest) SetJarStartOptions(v string) *UpdateJobRequest {
+	s.JarStartOptions = &v
+	return s
+}
+
+func (s *UpdateJobRequest) SetJdk(v string) *UpdateJobRequest {
+	s.Jdk = &v
+	return s
+}
+
+func (s *UpdateJobRequest) SetLiveness(v string) *UpdateJobRequest {
+	s.Liveness = &v
+	return s
+}
+
+func (s *UpdateJobRequest) SetMinReadyInstances(v int32) *UpdateJobRequest {
+	s.MinReadyInstances = &v
+	return s
+}
+
+func (s *UpdateJobRequest) SetMountDesc(v string) *UpdateJobRequest {
+	s.MountDesc = &v
+	return s
+}
+
+func (s *UpdateJobRequest) SetMountHost(v string) *UpdateJobRequest {
+	s.MountHost = &v
+	return s
+}
+
+func (s *UpdateJobRequest) SetNasId(v string) *UpdateJobRequest {
+	s.NasId = &v
+	return s
+}
+
+func (s *UpdateJobRequest) SetOssAkId(v string) *UpdateJobRequest {
+	s.OssAkId = &v
+	return s
+}
+
+func (s *UpdateJobRequest) SetOssAkSecret(v string) *UpdateJobRequest {
+	s.OssAkSecret = &v
+	return s
+}
+
+func (s *UpdateJobRequest) SetOssMountDescs(v string) *UpdateJobRequest {
+	s.OssMountDescs = &v
+	return s
+}
+
+func (s *UpdateJobRequest) SetPackageUrl(v string) *UpdateJobRequest {
+	s.PackageUrl = &v
+	return s
+}
+
+func (s *UpdateJobRequest) SetPackageVersion(v string) *UpdateJobRequest {
+	s.PackageVersion = &v
+	return s
+}
+
+func (s *UpdateJobRequest) SetPhpArmsConfigLocation(v string) *UpdateJobRequest {
+	s.PhpArmsConfigLocation = &v
+	return s
+}
+
+func (s *UpdateJobRequest) SetPhpConfig(v string) *UpdateJobRequest {
+	s.PhpConfig = &v
+	return s
+}
+
+func (s *UpdateJobRequest) SetPhpConfigLocation(v string) *UpdateJobRequest {
+	s.PhpConfigLocation = &v
+	return s
+}
+
+func (s *UpdateJobRequest) SetPostStart(v string) *UpdateJobRequest {
+	s.PostStart = &v
+	return s
+}
+
+func (s *UpdateJobRequest) SetPreStop(v string) *UpdateJobRequest {
+	s.PreStop = &v
+	return s
+}
+
+func (s *UpdateJobRequest) SetProgrammingLanguage(v string) *UpdateJobRequest {
+	s.ProgrammingLanguage = &v
+	return s
+}
+
+func (s *UpdateJobRequest) SetPython(v string) *UpdateJobRequest {
+	s.Python = &v
+	return s
+}
+
+func (s *UpdateJobRequest) SetPythonModules(v string) *UpdateJobRequest {
+	s.PythonModules = &v
+	return s
+}
+
+func (s *UpdateJobRequest) SetReadiness(v string) *UpdateJobRequest {
+	s.Readiness = &v
+	return s
+}
+
+func (s *UpdateJobRequest) SetRefAppId(v string) *UpdateJobRequest {
+	s.RefAppId = &v
+	return s
+}
+
+func (s *UpdateJobRequest) SetReplicas(v string) *UpdateJobRequest {
+	s.Replicas = &v
+	return s
+}
+
+func (s *UpdateJobRequest) SetSlice(v bool) *UpdateJobRequest {
+	s.Slice = &v
+	return s
+}
+
+func (s *UpdateJobRequest) SetSliceEnvs(v string) *UpdateJobRequest {
+	s.SliceEnvs = &v
+	return s
+}
+
+func (s *UpdateJobRequest) SetSlsConfigs(v string) *UpdateJobRequest {
+	s.SlsConfigs = &v
+	return s
+}
+
+func (s *UpdateJobRequest) SetTerminationGracePeriodSeconds(v int32) *UpdateJobRequest {
+	s.TerminationGracePeriodSeconds = &v
+	return s
+}
+
+func (s *UpdateJobRequest) SetTimeout(v int64) *UpdateJobRequest {
+	s.Timeout = &v
+	return s
+}
+
+func (s *UpdateJobRequest) SetTimezone(v string) *UpdateJobRequest {
+	s.Timezone = &v
+	return s
+}
+
+func (s *UpdateJobRequest) SetTomcatConfig(v string) *UpdateJobRequest {
+	s.TomcatConfig = &v
+	return s
+}
+
+func (s *UpdateJobRequest) SetTriggerConfig(v string) *UpdateJobRequest {
+	s.TriggerConfig = &v
+	return s
+}
+
+func (s *UpdateJobRequest) SetUpdateStrategy(v string) *UpdateJobRequest {
+	s.UpdateStrategy = &v
+	return s
+}
+
+func (s *UpdateJobRequest) SetWarStartOptions(v string) *UpdateJobRequest {
+	s.WarStartOptions = &v
+	return s
+}
+
+func (s *UpdateJobRequest) SetWebContainer(v string) *UpdateJobRequest {
+	s.WebContainer = &v
+	return s
+}
+
+type UpdateJobResponseBody struct {
+	Code      *string                    `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *UpdateJobResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	ErrorCode *string                    `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	Message   *string                    `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                      `json:"Success,omitempty" xml:"Success,omitempty"`
+	TraceId   *string                    `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
+}
+
+func (s UpdateJobResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateJobResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateJobResponseBody) SetCode(v string) *UpdateJobResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UpdateJobResponseBody) SetData(v *UpdateJobResponseBodyData) *UpdateJobResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *UpdateJobResponseBody) SetErrorCode(v string) *UpdateJobResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *UpdateJobResponseBody) SetMessage(v string) *UpdateJobResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UpdateJobResponseBody) SetRequestId(v string) *UpdateJobResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateJobResponseBody) SetSuccess(v bool) *UpdateJobResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *UpdateJobResponseBody) SetTraceId(v string) *UpdateJobResponseBody {
+	s.TraceId = &v
+	return s
+}
+
+type UpdateJobResponseBodyData struct {
+	AppId         *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	ChangeOrderId *string `json:"ChangeOrderId,omitempty" xml:"ChangeOrderId,omitempty"`
+}
+
+func (s UpdateJobResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateJobResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateJobResponseBodyData) SetAppId(v string) *UpdateJobResponseBodyData {
+	s.AppId = &v
+	return s
+}
+
+func (s *UpdateJobResponseBodyData) SetChangeOrderId(v string) *UpdateJobResponseBodyData {
+	s.ChangeOrderId = &v
+	return s
+}
+
+type UpdateJobResponse struct {
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateJobResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateJobResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateJobResponse) SetHeaders(v map[string]*string) *UpdateJobResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateJobResponse) SetStatusCode(v int32) *UpdateJobResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateJobResponse) SetBody(v *UpdateJobResponseBody) *UpdateJobResponse {
 	s.Body = v
 	return s
 }
@@ -18949,6 +19407,10 @@ func (client *Client) CreateIngressWithOptions(request *CreateIngressRequest, he
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.CertId)) {
 		query["CertId"] = request.CertId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CertIds)) {
+		query["CertIds"] = request.CertIds
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.DefaultRule)) {
@@ -23615,6 +24077,10 @@ func (client *Client) UpdateIngressWithOptions(request *UpdateIngressRequest, he
 		query["CertId"] = request.CertId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.CertIds)) {
+		query["CertIds"] = request.CertIds
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.DefaultRule)) {
 		query["DefaultRule"] = request.DefaultRule
 	}
@@ -23661,6 +24127,262 @@ func (client *Client) UpdateIngressWithOptions(request *UpdateIngressRequest, he
 		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateIngressResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateJob(request *UpdateJobRequest) (_result *UpdateJobResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateJobResponse{}
+	_body, _err := client.UpdateJobWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateJobWithOptions(request *UpdateJobRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateJobResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcrAssumeRoleArn)) {
+		query["AcrAssumeRoleArn"] = request.AcrAssumeRoleArn
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AutoEnableApplicationScalingRule)) {
+		query["AutoEnableApplicationScalingRule"] = request.AutoEnableApplicationScalingRule
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BackoffLimit)) {
+		query["BackoffLimit"] = request.BackoffLimit
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BatchWaitTime)) {
+		query["BatchWaitTime"] = request.BatchWaitTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ChangeOrderDesc)) {
+		query["ChangeOrderDesc"] = request.ChangeOrderDesc
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Command)) {
+		query["Command"] = request.Command
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CommandArgs)) {
+		query["CommandArgs"] = request.CommandArgs
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConcurrencyPolicy)) {
+		query["ConcurrencyPolicy"] = request.ConcurrencyPolicy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CustomHostAlias)) {
+		query["CustomHostAlias"] = request.CustomHostAlias
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EdasContainerVersion)) {
+		query["EdasContainerVersion"] = request.EdasContainerVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnableAhas)) {
+		query["EnableAhas"] = request.EnableAhas
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnableGreyTagRoute)) {
+		query["EnableGreyTagRoute"] = request.EnableGreyTagRoute
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Envs)) {
+		query["Envs"] = request.Envs
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ImagePullSecrets)) {
+		query["ImagePullSecrets"] = request.ImagePullSecrets
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ImageUrl)) {
+		query["ImageUrl"] = request.ImageUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JarStartArgs)) {
+		query["JarStartArgs"] = request.JarStartArgs
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JarStartOptions)) {
+		query["JarStartOptions"] = request.JarStartOptions
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Jdk)) {
+		query["Jdk"] = request.Jdk
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Liveness)) {
+		query["Liveness"] = request.Liveness
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MinReadyInstances)) {
+		query["MinReadyInstances"] = request.MinReadyInstances
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MountDesc)) {
+		query["MountDesc"] = request.MountDesc
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MountHost)) {
+		query["MountHost"] = request.MountHost
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NasId)) {
+		query["NasId"] = request.NasId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PackageUrl)) {
+		query["PackageUrl"] = request.PackageUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PackageVersion)) {
+		query["PackageVersion"] = request.PackageVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PhpArmsConfigLocation)) {
+		query["PhpArmsConfigLocation"] = request.PhpArmsConfigLocation
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PhpConfigLocation)) {
+		query["PhpConfigLocation"] = request.PhpConfigLocation
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PostStart)) {
+		query["PostStart"] = request.PostStart
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PreStop)) {
+		query["PreStop"] = request.PreStop
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProgrammingLanguage)) {
+		query["ProgrammingLanguage"] = request.ProgrammingLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Python)) {
+		query["Python"] = request.Python
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PythonModules)) {
+		query["PythonModules"] = request.PythonModules
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Readiness)) {
+		query["Readiness"] = request.Readiness
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RefAppId)) {
+		query["RefAppId"] = request.RefAppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Replicas)) {
+		query["Replicas"] = request.Replicas
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Slice)) {
+		query["Slice"] = request.Slice
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SliceEnvs)) {
+		query["SliceEnvs"] = request.SliceEnvs
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SlsConfigs)) {
+		query["SlsConfigs"] = request.SlsConfigs
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TerminationGracePeriodSeconds)) {
+		query["TerminationGracePeriodSeconds"] = request.TerminationGracePeriodSeconds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Timeout)) {
+		query["Timeout"] = request.Timeout
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Timezone)) {
+		query["Timezone"] = request.Timezone
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TomcatConfig)) {
+		query["TomcatConfig"] = request.TomcatConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TriggerConfig)) {
+		query["TriggerConfig"] = request.TriggerConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UpdateStrategy)) {
+		query["UpdateStrategy"] = request.UpdateStrategy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WarStartOptions)) {
+		query["WarStartOptions"] = request.WarStartOptions
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WebContainer)) {
+		query["WebContainer"] = request.WebContainer
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AssociateEip)) {
+		body["AssociateEip"] = request.AssociateEip
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConfigMapMountDesc)) {
+		body["ConfigMapMountDesc"] = request.ConfigMapMountDesc
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OssAkId)) {
+		body["OssAkId"] = request.OssAkId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OssAkSecret)) {
+		body["OssAkSecret"] = request.OssAkSecret
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OssMountDescs)) {
+		body["OssMountDescs"] = request.OssMountDescs
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PhpConfig)) {
+		body["PhpConfig"] = request.PhpConfig
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateJob"),
+		Version:     tea.String("2019-05-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/pop/v1/sam/job/updateJob"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateJobResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
