@@ -1,3 +1,6 @@
+2022-12-01 Version: v3.0.1
+- Update Go SDK.
+
 2022-09-23 Version: v3.0.0
 - Generated golang 2021-05-19 for ARMS.
 

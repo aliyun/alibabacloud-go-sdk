@@ -3716,6 +3716,75 @@ func (s *GetAppApiByPageResponse) SetBody(v *GetAppApiByPageResponseBody) *GetAp
 	return s
 }
 
+type GetArmsConsoleUrlRequest struct {
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s GetArmsConsoleUrlRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetArmsConsoleUrlRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetArmsConsoleUrlRequest) SetRegionId(v string) *GetArmsConsoleUrlRequest {
+	s.RegionId = &v
+	return s
+}
+
+type GetArmsConsoleUrlResponseBody struct {
+	ArmsConsoleUrl *string `json:"ArmsConsoleUrl,omitempty" xml:"ArmsConsoleUrl,omitempty"`
+	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetArmsConsoleUrlResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetArmsConsoleUrlResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetArmsConsoleUrlResponseBody) SetArmsConsoleUrl(v string) *GetArmsConsoleUrlResponseBody {
+	s.ArmsConsoleUrl = &v
+	return s
+}
+
+func (s *GetArmsConsoleUrlResponseBody) SetRequestId(v string) *GetArmsConsoleUrlResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetArmsConsoleUrlResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetArmsConsoleUrlResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetArmsConsoleUrlResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetArmsConsoleUrlResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetArmsConsoleUrlResponse) SetHeaders(v map[string]*string) *GetArmsConsoleUrlResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetArmsConsoleUrlResponse) SetStatusCode(v int32) *GetArmsConsoleUrlResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetArmsConsoleUrlResponse) SetBody(v *GetArmsConsoleUrlResponseBody) *GetArmsConsoleUrlResponse {
+	s.Body = v
+	return s
+}
+
 type GetConsistencySnapshotRequest struct {
 	AppType          *string `json:"AppType,omitempty" xml:"AppType,omitempty"`
 	CurrentTimestamp *int64  `json:"CurrentTimestamp,omitempty" xml:"CurrentTimestamp,omitempty"`
@@ -4529,8 +4598,10 @@ func (s *GetStackResponse) SetBody(v *GetStackResponseBody) *GetStackResponse {
 }
 
 type GetTraceRequest struct {
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	TraceID  *string `json:"TraceID,omitempty" xml:"TraceID,omitempty"`
+	EndTime   *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	StartTime *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	TraceID   *string `json:"TraceID,omitempty" xml:"TraceID,omitempty"`
 }
 
 func (s GetTraceRequest) String() string {
@@ -4541,8 +4612,18 @@ func (s GetTraceRequest) GoString() string {
 	return s.String()
 }
 
+func (s *GetTraceRequest) SetEndTime(v int64) *GetTraceRequest {
+	s.EndTime = &v
+	return s
+}
+
 func (s *GetTraceRequest) SetRegionId(v string) *GetTraceRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *GetTraceRequest) SetStartTime(v int64) *GetTraceRequest {
+	s.StartTime = &v
 	return s
 }
 
@@ -14300,6 +14381,46 @@ func (client *Client) GetAppApiByPage(request *GetAppApiByPageRequest) (_result 
 	return _result, _err
 }
 
+func (client *Client) GetArmsConsoleUrlWithOptions(request *GetArmsConsoleUrlRequest, runtime *util.RuntimeOptions) (_result *GetArmsConsoleUrlResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetArmsConsoleUrl"),
+		Version:     tea.String("2021-05-19"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetArmsConsoleUrlResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetArmsConsoleUrl(request *GetArmsConsoleUrlRequest) (_result *GetArmsConsoleUrlResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetArmsConsoleUrlResponse{}
+	_body, _err := client.GetArmsConsoleUrlWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) GetConsistencySnapshotWithOptions(request *GetConsistencySnapshotRequest, runtime *util.RuntimeOptions) (_result *GetConsistencySnapshotResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14654,8 +14775,16 @@ func (client *Client) GetTraceWithOptions(request *GetTraceRequest, runtime *uti
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.TraceID)) {
