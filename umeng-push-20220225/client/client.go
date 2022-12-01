@@ -323,6 +323,217 @@ func (s *Policy) SetStartTime(v string) *Policy {
 	return s
 }
 
+type SendByAppRequest struct {
+	AndroidPayload    *AndroidPayload    `json:"AndroidPayload,omitempty" xml:"AndroidPayload,omitempty"`
+	ChannelProperties *ChannelProperties `json:"ChannelProperties,omitempty" xml:"ChannelProperties,omitempty"`
+	Description       *string            `json:"Description,omitempty" xml:"Description,omitempty"`
+	IosPayload        *IosPayload        `json:"IosPayload,omitempty" xml:"IosPayload,omitempty"`
+	Policy            *Policy            `json:"Policy,omitempty" xml:"Policy,omitempty"`
+	ProductionMode    *bool              `json:"ProductionMode,omitempty" xml:"ProductionMode,omitempty"`
+	ReceiptType       *int32             `json:"ReceiptType,omitempty" xml:"ReceiptType,omitempty"`
+	ReceiptUrl        *string            `json:"ReceiptUrl,omitempty" xml:"ReceiptUrl,omitempty"`
+}
+
+func (s SendByAppRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SendByAppRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SendByAppRequest) SetAndroidPayload(v *AndroidPayload) *SendByAppRequest {
+	s.AndroidPayload = v
+	return s
+}
+
+func (s *SendByAppRequest) SetChannelProperties(v *ChannelProperties) *SendByAppRequest {
+	s.ChannelProperties = v
+	return s
+}
+
+func (s *SendByAppRequest) SetDescription(v string) *SendByAppRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *SendByAppRequest) SetIosPayload(v *IosPayload) *SendByAppRequest {
+	s.IosPayload = v
+	return s
+}
+
+func (s *SendByAppRequest) SetPolicy(v *Policy) *SendByAppRequest {
+	s.Policy = v
+	return s
+}
+
+func (s *SendByAppRequest) SetProductionMode(v bool) *SendByAppRequest {
+	s.ProductionMode = &v
+	return s
+}
+
+func (s *SendByAppRequest) SetReceiptType(v int32) *SendByAppRequest {
+	s.ReceiptType = &v
+	return s
+}
+
+func (s *SendByAppRequest) SetReceiptUrl(v string) *SendByAppRequest {
+	s.ReceiptUrl = &v
+	return s
+}
+
+type SendByAppShrinkRequest struct {
+	AndroidPayloadShrink    *string `json:"AndroidPayload,omitempty" xml:"AndroidPayload,omitempty"`
+	ChannelPropertiesShrink *string `json:"ChannelProperties,omitempty" xml:"ChannelProperties,omitempty"`
+	Description             *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	IosPayloadShrink        *string `json:"IosPayload,omitempty" xml:"IosPayload,omitempty"`
+	PolicyShrink            *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
+	ProductionMode          *bool   `json:"ProductionMode,omitempty" xml:"ProductionMode,omitempty"`
+	ReceiptType             *int32  `json:"ReceiptType,omitempty" xml:"ReceiptType,omitempty"`
+	ReceiptUrl              *string `json:"ReceiptUrl,omitempty" xml:"ReceiptUrl,omitempty"`
+}
+
+func (s SendByAppShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SendByAppShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SendByAppShrinkRequest) SetAndroidPayloadShrink(v string) *SendByAppShrinkRequest {
+	s.AndroidPayloadShrink = &v
+	return s
+}
+
+func (s *SendByAppShrinkRequest) SetChannelPropertiesShrink(v string) *SendByAppShrinkRequest {
+	s.ChannelPropertiesShrink = &v
+	return s
+}
+
+func (s *SendByAppShrinkRequest) SetDescription(v string) *SendByAppShrinkRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *SendByAppShrinkRequest) SetIosPayloadShrink(v string) *SendByAppShrinkRequest {
+	s.IosPayloadShrink = &v
+	return s
+}
+
+func (s *SendByAppShrinkRequest) SetPolicyShrink(v string) *SendByAppShrinkRequest {
+	s.PolicyShrink = &v
+	return s
+}
+
+func (s *SendByAppShrinkRequest) SetProductionMode(v bool) *SendByAppShrinkRequest {
+	s.ProductionMode = &v
+	return s
+}
+
+func (s *SendByAppShrinkRequest) SetReceiptType(v int32) *SendByAppShrinkRequest {
+	s.ReceiptType = &v
+	return s
+}
+
+func (s *SendByAppShrinkRequest) SetReceiptUrl(v string) *SendByAppShrinkRequest {
+	s.ReceiptUrl = &v
+	return s
+}
+
+type SendByAppResponseBody struct {
+	Code           *string                    `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data           *SendByAppResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	HttpStatusCode *int32                     `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string                    `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId      *string                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool                      `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s SendByAppResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SendByAppResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SendByAppResponseBody) SetCode(v string) *SendByAppResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *SendByAppResponseBody) SetData(v *SendByAppResponseBodyData) *SendByAppResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *SendByAppResponseBody) SetHttpStatusCode(v int32) *SendByAppResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *SendByAppResponseBody) SetMessage(v string) *SendByAppResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *SendByAppResponseBody) SetRequestId(v string) *SendByAppResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SendByAppResponseBody) SetSuccess(v bool) *SendByAppResponseBody {
+	s.Success = &v
+	return s
+}
+
+type SendByAppResponseBodyData struct {
+	MsgId *string `json:"MsgId,omitempty" xml:"MsgId,omitempty"`
+}
+
+func (s SendByAppResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SendByAppResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *SendByAppResponseBodyData) SetMsgId(v string) *SendByAppResponseBodyData {
+	s.MsgId = &v
+	return s
+}
+
+type SendByAppResponse struct {
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SendByAppResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SendByAppResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SendByAppResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SendByAppResponse) SetHeaders(v map[string]*string) *SendByAppResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SendByAppResponse) SetStatusCode(v int32) *SendByAppResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SendByAppResponse) SetBody(v *SendByAppResponseBody) *SendByAppResponse {
+	s.Body = v
+	return s
+}
+
 type SendByDeviceRequest struct {
 	AndroidPayload    *AndroidPayload    `json:"AndroidPayload,omitempty" xml:"AndroidPayload,omitempty"`
 	ChannelProperties *ChannelProperties `json:"ChannelProperties,omitempty" xml:"ChannelProperties,omitempty"`
@@ -590,6 +801,98 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 		return _result, _err
 	}
 	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SendByApp(request *SendByAppRequest) (_result *SendByAppResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &SendByAppResponse{}
+	_body, _err := client.SendByAppWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SendByAppWithOptions(tmpReq *SendByAppRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *SendByAppResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &SendByAppShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.AndroidPayload)) {
+		request.AndroidPayloadShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.AndroidPayload, tea.String("AndroidPayload"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.ChannelProperties)) {
+		request.ChannelPropertiesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ChannelProperties, tea.String("ChannelProperties"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.IosPayload)) {
+		request.IosPayloadShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.IosPayload, tea.String("IosPayload"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.Policy)) {
+		request.PolicyShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Policy, tea.String("Policy"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AndroidPayloadShrink)) {
+		body["AndroidPayload"] = request.AndroidPayloadShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ChannelPropertiesShrink)) {
+		body["ChannelProperties"] = request.ChannelPropertiesShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		body["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IosPayloadShrink)) {
+		body["IosPayload"] = request.IosPayloadShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PolicyShrink)) {
+		body["Policy"] = request.PolicyShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductionMode)) {
+		body["ProductionMode"] = request.ProductionMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ReceiptType)) {
+		body["ReceiptType"] = request.ReceiptType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ReceiptUrl)) {
+		body["ReceiptUrl"] = request.ReceiptUrl
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SendByApp"),
+		Version:     tea.String("2022-02-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/SendByApp"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SendByAppResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
 	return _result, _err
 }
 
