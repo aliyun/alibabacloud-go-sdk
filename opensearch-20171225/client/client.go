@@ -3017,8 +3017,8 @@ func (s *DescribeAppGroupResponseBodyResultQuota) SetSpec(v string) *DescribeApp
 }
 
 type DescribeAppGroupResponseBodyResultTags struct {
-	TagKey   *string `json:"tagKey,omitempty" xml:"tagKey,omitempty"`
-	TagValue *string `json:"tagValue,omitempty" xml:"tagValue,omitempty"`
+	Key   *string `json:"key,omitempty" xml:"key,omitempty"`
+	Value *string `json:"value,omitempty" xml:"value,omitempty"`
 }
 
 func (s DescribeAppGroupResponseBodyResultTags) String() string {
@@ -3029,13 +3029,13 @@ func (s DescribeAppGroupResponseBodyResultTags) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeAppGroupResponseBodyResultTags) SetTagKey(v string) *DescribeAppGroupResponseBodyResultTags {
-	s.TagKey = &v
+func (s *DescribeAppGroupResponseBodyResultTags) SetKey(v string) *DescribeAppGroupResponseBodyResultTags {
+	s.Key = &v
 	return s
 }
 
-func (s *DescribeAppGroupResponseBodyResultTags) SetTagValue(v string) *DescribeAppGroupResponseBodyResultTags {
-	s.TagValue = &v
+func (s *DescribeAppGroupResponseBodyResultTags) SetValue(v string) *DescribeAppGroupResponseBodyResultTags {
+	s.Value = &v
 	return s
 }
 
@@ -5856,6 +5856,7 @@ type GetScriptFileNamesResponseBodyResult struct {
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
 	FileName   *string `json:"fileName,omitempty" xml:"fileName,omitempty"`
 	ModifyTime *string `json:"modifyTime,omitempty" xml:"modifyTime,omitempty"`
+	PathName   *string `json:"pathName,omitempty" xml:"pathName,omitempty"`
 }
 
 func (s GetScriptFileNamesResponseBodyResult) String() string {
@@ -5878,6 +5879,11 @@ func (s *GetScriptFileNamesResponseBodyResult) SetFileName(v string) *GetScriptF
 
 func (s *GetScriptFileNamesResponseBodyResult) SetModifyTime(v string) *GetScriptFileNamesResponseBodyResult {
 	s.ModifyTime = &v
+	return s
+}
+
+func (s *GetScriptFileNamesResponseBodyResult) SetPathName(v string) *GetScriptFileNamesResponseBodyResult {
+	s.PathName = &v
 	return s
 }
 
@@ -7287,8 +7293,8 @@ func (s *ListAppGroupsResponseBodyResultQuota) SetSpec(v string) *ListAppGroupsR
 }
 
 type ListAppGroupsResponseBodyResultTags struct {
-	TagKey   *string `json:"tagKey,omitempty" xml:"tagKey,omitempty"`
-	TagValue *string `json:"tagValue,omitempty" xml:"tagValue,omitempty"`
+	Key   *string `json:"key,omitempty" xml:"key,omitempty"`
+	Value *string `json:"value,omitempty" xml:"value,omitempty"`
 }
 
 func (s ListAppGroupsResponseBodyResultTags) String() string {
@@ -7299,13 +7305,13 @@ func (s ListAppGroupsResponseBodyResultTags) GoString() string {
 	return s.String()
 }
 
-func (s *ListAppGroupsResponseBodyResultTags) SetTagKey(v string) *ListAppGroupsResponseBodyResultTags {
-	s.TagKey = &v
+func (s *ListAppGroupsResponseBodyResultTags) SetKey(v string) *ListAppGroupsResponseBodyResultTags {
+	s.Key = &v
 	return s
 }
 
-func (s *ListAppGroupsResponseBodyResultTags) SetTagValue(v string) *ListAppGroupsResponseBodyResultTags {
-	s.TagValue = &v
+func (s *ListAppGroupsResponseBodyResultTags) SetValue(v string) *ListAppGroupsResponseBodyResultTags {
+	s.Value = &v
 	return s
 }
 
@@ -12833,6 +12839,7 @@ func (s *RenewAppGroupRequest) SetClientToken(v string) *RenewAppGroupRequest {
 
 type RenewAppGroupResponseBody struct {
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Result    *bool   `json:"result,omitempty" xml:"result,omitempty"`
 }
 
 func (s RenewAppGroupResponseBody) String() string {
@@ -12845,6 +12852,11 @@ func (s RenewAppGroupResponseBody) GoString() string {
 
 func (s *RenewAppGroupResponseBody) SetRequestId(v string) *RenewAppGroupResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *RenewAppGroupResponseBody) SetResult(v bool) *RenewAppGroupResponseBody {
+	s.Result = &v
 	return s
 }
 
