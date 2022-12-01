@@ -17771,6 +17771,7 @@ func (s *UpdateIngressResponse) SetBody(v *UpdateIngressResponseBody) *UpdateIng
 
 type UpdateJobRequest struct {
 	AcrAssumeRoleArn                 *string `json:"AcrAssumeRoleArn,omitempty" xml:"AcrAssumeRoleArn,omitempty"`
+	AcrInstanceId                    *string `json:"AcrInstanceId,omitempty" xml:"AcrInstanceId,omitempty"`
 	AppId                            *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	AssociateEip                     *bool   `json:"AssociateEip,omitempty" xml:"AssociateEip,omitempty"`
 	AutoEnableApplicationScalingRule *bool   `json:"AutoEnableApplicationScalingRule,omitempty" xml:"AutoEnableApplicationScalingRule,omitempty"`
@@ -17801,9 +17802,12 @@ type UpdateJobRequest struct {
 	OssMountDescs                    *string `json:"OssMountDescs,omitempty" xml:"OssMountDescs,omitempty"`
 	PackageUrl                       *string `json:"PackageUrl,omitempty" xml:"PackageUrl,omitempty"`
 	PackageVersion                   *string `json:"PackageVersion,omitempty" xml:"PackageVersion,omitempty"`
+	Php                              *string `json:"Php,omitempty" xml:"Php,omitempty"`
 	PhpArmsConfigLocation            *string `json:"PhpArmsConfigLocation,omitempty" xml:"PhpArmsConfigLocation,omitempty"`
 	PhpConfig                        *string `json:"PhpConfig,omitempty" xml:"PhpConfig,omitempty"`
 	PhpConfigLocation                *string `json:"PhpConfigLocation,omitempty" xml:"PhpConfigLocation,omitempty"`
+	PhpExtensions                    *string `json:"PhpExtensions,omitempty" xml:"PhpExtensions,omitempty"`
+	PhpPECLExtensions                *string `json:"PhpPECLExtensions,omitempty" xml:"PhpPECLExtensions,omitempty"`
 	PostStart                        *string `json:"PostStart,omitempty" xml:"PostStart,omitempty"`
 	PreStop                          *string `json:"PreStop,omitempty" xml:"PreStop,omitempty"`
 	ProgrammingLanguage              *string `json:"ProgrammingLanguage,omitempty" xml:"ProgrammingLanguage,omitempty"`
@@ -17835,6 +17839,11 @@ func (s UpdateJobRequest) GoString() string {
 
 func (s *UpdateJobRequest) SetAcrAssumeRoleArn(v string) *UpdateJobRequest {
 	s.AcrAssumeRoleArn = &v
+	return s
+}
+
+func (s *UpdateJobRequest) SetAcrInstanceId(v string) *UpdateJobRequest {
+	s.AcrInstanceId = &v
 	return s
 }
 
@@ -17988,6 +17997,11 @@ func (s *UpdateJobRequest) SetPackageVersion(v string) *UpdateJobRequest {
 	return s
 }
 
+func (s *UpdateJobRequest) SetPhp(v string) *UpdateJobRequest {
+	s.Php = &v
+	return s
+}
+
 func (s *UpdateJobRequest) SetPhpArmsConfigLocation(v string) *UpdateJobRequest {
 	s.PhpArmsConfigLocation = &v
 	return s
@@ -18000,6 +18014,16 @@ func (s *UpdateJobRequest) SetPhpConfig(v string) *UpdateJobRequest {
 
 func (s *UpdateJobRequest) SetPhpConfigLocation(v string) *UpdateJobRequest {
 	s.PhpConfigLocation = &v
+	return s
+}
+
+func (s *UpdateJobRequest) SetPhpExtensions(v string) *UpdateJobRequest {
+	s.PhpExtensions = &v
+	return s
+}
+
+func (s *UpdateJobRequest) SetPhpPECLExtensions(v string) *UpdateJobRequest {
+	s.PhpPECLExtensions = &v
 	return s
 }
 
@@ -24342,6 +24366,10 @@ func (client *Client) UpdateJobWithOptions(request *UpdateJobRequest, headers ma
 	}
 
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcrInstanceId)) {
+		body["AcrInstanceId"] = request.AcrInstanceId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.AssociateEip)) {
 		body["AssociateEip"] = request.AssociateEip
 	}
@@ -24362,8 +24390,20 @@ func (client *Client) UpdateJobWithOptions(request *UpdateJobRequest, headers ma
 		body["OssMountDescs"] = request.OssMountDescs
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Php)) {
+		body["Php"] = request.Php
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.PhpConfig)) {
 		body["PhpConfig"] = request.PhpConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PhpExtensions)) {
+		body["PhpExtensions"] = request.PhpExtensions
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PhpPECLExtensions)) {
+		body["PhpPECLExtensions"] = request.PhpPECLExtensions
 	}
 
 	req := &openapi.OpenApiRequest{
