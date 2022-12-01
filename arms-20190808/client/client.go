@@ -2239,6 +2239,7 @@ type CreateOrUpdateContactRequest struct {
 	ContactId         *int64  `json:"ContactId,omitempty" xml:"ContactId,omitempty"`
 	ContactName       *string `json:"ContactName,omitempty" xml:"ContactName,omitempty"`
 	Email             *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	IsEmailVerify     *bool   `json:"IsEmailVerify,omitempty" xml:"IsEmailVerify,omitempty"`
 	Phone             *string `json:"Phone,omitempty" xml:"Phone,omitempty"`
 	ReissueSendNotice *int64  `json:"ReissueSendNotice,omitempty" xml:"ReissueSendNotice,omitempty"`
 }
@@ -2263,6 +2264,11 @@ func (s *CreateOrUpdateContactRequest) SetContactName(v string) *CreateOrUpdateC
 
 func (s *CreateOrUpdateContactRequest) SetEmail(v string) *CreateOrUpdateContactRequest {
 	s.Email = &v
+	return s
+}
+
+func (s *CreateOrUpdateContactRequest) SetIsEmailVerify(v bool) *CreateOrUpdateContactRequest {
+	s.IsEmailVerify = &v
 	return s
 }
 
@@ -2306,6 +2312,7 @@ type CreateOrUpdateContactResponseBodyAlertContact struct {
 	IsVerify          *bool    `json:"IsVerify,omitempty" xml:"IsVerify,omitempty"`
 	Phone             *string  `json:"Phone,omitempty" xml:"Phone,omitempty"`
 	ReissueSendNotice *int64   `json:"ReissueSendNotice,omitempty" xml:"ReissueSendNotice,omitempty"`
+	IsEmailVerify     *bool    `json:"isEmailVerify,omitempty" xml:"isEmailVerify,omitempty"`
 }
 
 func (s CreateOrUpdateContactResponseBodyAlertContact) String() string {
@@ -2343,6 +2350,11 @@ func (s *CreateOrUpdateContactResponseBodyAlertContact) SetPhone(v string) *Crea
 
 func (s *CreateOrUpdateContactResponseBodyAlertContact) SetReissueSendNotice(v int64) *CreateOrUpdateContactResponseBodyAlertContact {
 	s.ReissueSendNotice = &v
+	return s
+}
+
+func (s *CreateOrUpdateContactResponseBodyAlertContact) SetIsEmailVerify(v bool) *CreateOrUpdateContactResponseBodyAlertContact {
+	s.IsEmailVerify = &v
 	return s
 }
 
@@ -6926,6 +6938,7 @@ func (s *DeleteWebhookContactResponse) SetBody(v *DeleteWebhookContactResponseBo
 
 type DescribeContactGroupsRequest struct {
 	ContactGroupName *string `json:"ContactGroupName,omitempty" xml:"ContactGroupName,omitempty"`
+	GroupIds         *string `json:"GroupIds,omitempty" xml:"GroupIds,omitempty"`
 	IsDetail         *bool   `json:"IsDetail,omitempty" xml:"IsDetail,omitempty"`
 	Page             *int64  `json:"Page,omitempty" xml:"Page,omitempty"`
 	Size             *int64  `json:"Size,omitempty" xml:"Size,omitempty"`
@@ -6941,6 +6954,11 @@ func (s DescribeContactGroupsRequest) GoString() string {
 
 func (s *DescribeContactGroupsRequest) SetContactGroupName(v string) *DescribeContactGroupsRequest {
 	s.ContactGroupName = &v
+	return s
+}
+
+func (s *DescribeContactGroupsRequest) SetGroupIds(v string) *DescribeContactGroupsRequest {
+	s.GroupIds = &v
 	return s
 }
 
@@ -7018,9 +7036,10 @@ func (s *DescribeContactGroupsResponseBodyPageBean) SetTotal(v int64) *DescribeC
 }
 
 type DescribeContactGroupsResponseBodyPageBeanAlertContactGroups struct {
-	ContactGroupId   *float32                                                               `json:"ContactGroupId,omitempty" xml:"ContactGroupId,omitempty"`
-	ContactGroupName *string                                                                `json:"ContactGroupName,omitempty" xml:"ContactGroupName,omitempty"`
-	Contacts         []*DescribeContactGroupsResponseBodyPageBeanAlertContactGroupsContacts `json:"Contacts,omitempty" xml:"Contacts,omitempty" type:"Repeated"`
+	ArmsContactGroupId *int64                                                                 `json:"ArmsContactGroupId,omitempty" xml:"ArmsContactGroupId,omitempty"`
+	ContactGroupId     *float32                                                               `json:"ContactGroupId,omitempty" xml:"ContactGroupId,omitempty"`
+	ContactGroupName   *string                                                                `json:"ContactGroupName,omitempty" xml:"ContactGroupName,omitempty"`
+	Contacts           []*DescribeContactGroupsResponseBodyPageBeanAlertContactGroupsContacts `json:"Contacts,omitempty" xml:"Contacts,omitempty" type:"Repeated"`
 }
 
 func (s DescribeContactGroupsResponseBodyPageBeanAlertContactGroups) String() string {
@@ -7029,6 +7048,11 @@ func (s DescribeContactGroupsResponseBodyPageBeanAlertContactGroups) String() st
 
 func (s DescribeContactGroupsResponseBodyPageBeanAlertContactGroups) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeContactGroupsResponseBodyPageBeanAlertContactGroups) SetArmsContactGroupId(v int64) *DescribeContactGroupsResponseBodyPageBeanAlertContactGroups {
+	s.ArmsContactGroupId = &v
+	return s
 }
 
 func (s *DescribeContactGroupsResponseBodyPageBeanAlertContactGroups) SetContactGroupId(v float32) *DescribeContactGroupsResponseBodyPageBeanAlertContactGroups {
@@ -7047,10 +7071,11 @@ func (s *DescribeContactGroupsResponseBodyPageBeanAlertContactGroups) SetContact
 }
 
 type DescribeContactGroupsResponseBodyPageBeanAlertContactGroupsContacts struct {
-	ContactId   *float32 `json:"ContactId,omitempty" xml:"ContactId,omitempty"`
-	ContactName *string  `json:"ContactName,omitempty" xml:"ContactName,omitempty"`
-	Email       *string  `json:"Email,omitempty" xml:"Email,omitempty"`
-	Phone       *string  `json:"Phone,omitempty" xml:"Phone,omitempty"`
+	ArmsContactId *int64   `json:"ArmsContactId,omitempty" xml:"ArmsContactId,omitempty"`
+	ContactId     *float32 `json:"ContactId,omitempty" xml:"ContactId,omitempty"`
+	ContactName   *string  `json:"ContactName,omitempty" xml:"ContactName,omitempty"`
+	Email         *string  `json:"Email,omitempty" xml:"Email,omitempty"`
+	Phone         *string  `json:"Phone,omitempty" xml:"Phone,omitempty"`
 }
 
 func (s DescribeContactGroupsResponseBodyPageBeanAlertContactGroupsContacts) String() string {
@@ -7059,6 +7084,11 @@ func (s DescribeContactGroupsResponseBodyPageBeanAlertContactGroupsContacts) Str
 
 func (s DescribeContactGroupsResponseBodyPageBeanAlertContactGroupsContacts) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeContactGroupsResponseBodyPageBeanAlertContactGroupsContacts) SetArmsContactId(v int64) *DescribeContactGroupsResponseBodyPageBeanAlertContactGroupsContacts {
+	s.ArmsContactId = &v
+	return s
 }
 
 func (s *DescribeContactGroupsResponseBodyPageBeanAlertContactGroupsContacts) SetContactId(v float32) *DescribeContactGroupsResponseBodyPageBeanAlertContactGroupsContacts {
@@ -7111,11 +7141,13 @@ func (s *DescribeContactGroupsResponse) SetBody(v *DescribeContactGroupsResponse
 }
 
 type DescribeContactsRequest struct {
+	ContactIds  *string `json:"ContactIds,omitempty" xml:"ContactIds,omitempty"`
 	ContactName *string `json:"ContactName,omitempty" xml:"ContactName,omitempty"`
 	Email       *string `json:"Email,omitempty" xml:"Email,omitempty"`
 	Page        *int64  `json:"Page,omitempty" xml:"Page,omitempty"`
 	Phone       *string `json:"Phone,omitempty" xml:"Phone,omitempty"`
 	Size        *int64  `json:"Size,omitempty" xml:"Size,omitempty"`
+	Verbose     *string `json:"Verbose,omitempty" xml:"Verbose,omitempty"`
 }
 
 func (s DescribeContactsRequest) String() string {
@@ -7124,6 +7156,11 @@ func (s DescribeContactsRequest) String() string {
 
 func (s DescribeContactsRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeContactsRequest) SetContactIds(v string) *DescribeContactsRequest {
+	s.ContactIds = &v
+	return s
 }
 
 func (s *DescribeContactsRequest) SetContactName(v string) *DescribeContactsRequest {
@@ -7148,6 +7185,11 @@ func (s *DescribeContactsRequest) SetPhone(v string) *DescribeContactsRequest {
 
 func (s *DescribeContactsRequest) SetSize(v int64) *DescribeContactsRequest {
 	s.Size = &v
+	return s
+}
+
+func (s *DescribeContactsRequest) SetVerbose(v string) *DescribeContactsRequest {
+	s.Verbose = &v
 	return s
 }
 
@@ -7210,9 +7252,11 @@ func (s *DescribeContactsResponseBodyPageBean) SetTotal(v int64) *DescribeContac
 }
 
 type DescribeContactsResponseBodyPageBeanAlertContacts struct {
+	ArmsContactId     *int64   `json:"ArmsContactId,omitempty" xml:"ArmsContactId,omitempty"`
 	ContactId         *float32 `json:"ContactId,omitempty" xml:"ContactId,omitempty"`
 	ContactName       *string  `json:"ContactName,omitempty" xml:"ContactName,omitempty"`
 	Email             *string  `json:"Email,omitempty" xml:"Email,omitempty"`
+	IsEmailVerify     *bool    `json:"IsEmailVerify,omitempty" xml:"IsEmailVerify,omitempty"`
 	IsVerify          *bool    `json:"IsVerify,omitempty" xml:"IsVerify,omitempty"`
 	Phone             *string  `json:"Phone,omitempty" xml:"Phone,omitempty"`
 	ReissueSendNotice *int64   `json:"ReissueSendNotice,omitempty" xml:"ReissueSendNotice,omitempty"`
@@ -7224,6 +7268,11 @@ func (s DescribeContactsResponseBodyPageBeanAlertContacts) String() string {
 
 func (s DescribeContactsResponseBodyPageBeanAlertContacts) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeContactsResponseBodyPageBeanAlertContacts) SetArmsContactId(v int64) *DescribeContactsResponseBodyPageBeanAlertContacts {
+	s.ArmsContactId = &v
+	return s
 }
 
 func (s *DescribeContactsResponseBodyPageBeanAlertContacts) SetContactId(v float32) *DescribeContactsResponseBodyPageBeanAlertContacts {
@@ -7238,6 +7287,11 @@ func (s *DescribeContactsResponseBodyPageBeanAlertContacts) SetContactName(v str
 
 func (s *DescribeContactsResponseBodyPageBeanAlertContacts) SetEmail(v string) *DescribeContactsResponseBodyPageBeanAlertContacts {
 	s.Email = &v
+	return s
+}
+
+func (s *DescribeContactsResponseBodyPageBeanAlertContacts) SetIsEmailVerify(v bool) *DescribeContactsResponseBodyPageBeanAlertContacts {
+	s.IsEmailVerify = &v
 	return s
 }
 
@@ -7577,6 +7631,7 @@ func (s *DescribeDispatchRuleResponse) SetBody(v *DescribeDispatchRuleResponseBo
 
 type DescribeIMRobotsRequest struct {
 	Page      *int64  `json:"Page,omitempty" xml:"Page,omitempty"`
+	RobotIds  *string `json:"RobotIds,omitempty" xml:"RobotIds,omitempty"`
 	RobotName *string `json:"RobotName,omitempty" xml:"RobotName,omitempty"`
 	Size      *int64  `json:"Size,omitempty" xml:"Size,omitempty"`
 }
@@ -7591,6 +7646,11 @@ func (s DescribeIMRobotsRequest) GoString() string {
 
 func (s *DescribeIMRobotsRequest) SetPage(v int64) *DescribeIMRobotsRequest {
 	s.Page = &v
+	return s
+}
+
+func (s *DescribeIMRobotsRequest) SetRobotIds(v string) *DescribeIMRobotsRequest {
+	s.RobotIds = &v
 	return s
 }
 
@@ -8012,6 +8072,7 @@ func (s *DescribeTraceLicenseKeyResponse) SetBody(v *DescribeTraceLicenseKeyResp
 }
 
 type DescribeWebhookContactsRequest struct {
+	ContactIds  *string `json:"ContactIds,omitempty" xml:"ContactIds,omitempty"`
 	Page        *int64  `json:"Page,omitempty" xml:"Page,omitempty"`
 	Size        *int64  `json:"Size,omitempty" xml:"Size,omitempty"`
 	WebhookName *string `json:"WebhookName,omitempty" xml:"WebhookName,omitempty"`
@@ -8023,6 +8084,11 @@ func (s DescribeWebhookContactsRequest) String() string {
 
 func (s DescribeWebhookContactsRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeWebhookContactsRequest) SetContactIds(v string) *DescribeWebhookContactsRequest {
+	s.ContactIds = &v
+	return s
 }
 
 func (s *DescribeWebhookContactsRequest) SetPage(v int64) *DescribeWebhookContactsRequest {
@@ -9274,6 +9340,7 @@ type GetManagedPrometheusStatusRequest struct {
 	ClusterId   *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	ClusterType *string `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
 	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	VpcId       *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s GetManagedPrometheusStatusRequest) String() string {
@@ -9296,6 +9363,11 @@ func (s *GetManagedPrometheusStatusRequest) SetClusterType(v string) *GetManaged
 
 func (s *GetManagedPrometheusStatusRequest) SetRegionId(v string) *GetManagedPrometheusStatusRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *GetManagedPrometheusStatusRequest) SetVpcId(v string) *GetManagedPrometheusStatusRequest {
+	s.VpcId = &v
 	return s
 }
 
@@ -10212,6 +10284,250 @@ func (s *GetRecordingRuleResponse) SetStatusCode(v int32) *GetRecordingRuleRespo
 }
 
 func (s *GetRecordingRuleResponse) SetBody(v *GetRecordingRuleResponseBody) *GetRecordingRuleResponse {
+	s.Body = v
+	return s
+}
+
+type GetRetcodeDataByQueryRequest struct {
+	From     *int64  `json:"From,omitempty" xml:"From,omitempty"`
+	Pid      *string `json:"Pid,omitempty" xml:"Pid,omitempty"`
+	Query    *string `json:"Query,omitempty" xml:"Query,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	To       *int64  `json:"To,omitempty" xml:"To,omitempty"`
+}
+
+func (s GetRetcodeDataByQueryRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetRetcodeDataByQueryRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetRetcodeDataByQueryRequest) SetFrom(v int64) *GetRetcodeDataByQueryRequest {
+	s.From = &v
+	return s
+}
+
+func (s *GetRetcodeDataByQueryRequest) SetPid(v string) *GetRetcodeDataByQueryRequest {
+	s.Pid = &v
+	return s
+}
+
+func (s *GetRetcodeDataByQueryRequest) SetQuery(v string) *GetRetcodeDataByQueryRequest {
+	s.Query = &v
+	return s
+}
+
+func (s *GetRetcodeDataByQueryRequest) SetRegionId(v string) *GetRetcodeDataByQueryRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *GetRetcodeDataByQueryRequest) SetTo(v int64) *GetRetcodeDataByQueryRequest {
+	s.To = &v
+	return s
+}
+
+type GetRetcodeDataByQueryResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetRetcodeDataByQueryResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetRetcodeDataByQueryResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetRetcodeDataByQueryResponseBody) SetCode(v string) *GetRetcodeDataByQueryResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetRetcodeDataByQueryResponseBody) SetData(v string) *GetRetcodeDataByQueryResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *GetRetcodeDataByQueryResponseBody) SetMessage(v string) *GetRetcodeDataByQueryResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetRetcodeDataByQueryResponseBody) SetRequestId(v string) *GetRetcodeDataByQueryResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetRetcodeDataByQueryResponseBody) SetSuccess(v bool) *GetRetcodeDataByQueryResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetRetcodeDataByQueryResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetRetcodeDataByQueryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetRetcodeDataByQueryResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetRetcodeDataByQueryResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetRetcodeDataByQueryResponse) SetHeaders(v map[string]*string) *GetRetcodeDataByQueryResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetRetcodeDataByQueryResponse) SetStatusCode(v int32) *GetRetcodeDataByQueryResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetRetcodeDataByQueryResponse) SetBody(v *GetRetcodeDataByQueryResponseBody) *GetRetcodeDataByQueryResponse {
+	s.Body = v
+	return s
+}
+
+type GetRetcodeLogstoreRequest struct {
+	Pid      *string `json:"Pid,omitempty" xml:"Pid,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s GetRetcodeLogstoreRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetRetcodeLogstoreRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetRetcodeLogstoreRequest) SetPid(v string) *GetRetcodeLogstoreRequest {
+	s.Pid = &v
+	return s
+}
+
+func (s *GetRetcodeLogstoreRequest) SetRegionId(v string) *GetRetcodeLogstoreRequest {
+	s.RegionId = &v
+	return s
+}
+
+type GetRetcodeLogstoreResponseBody struct {
+	Data      *GetRetcodeLogstoreResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetRetcodeLogstoreResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetRetcodeLogstoreResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetRetcodeLogstoreResponseBody) SetData(v *GetRetcodeLogstoreResponseBodyData) *GetRetcodeLogstoreResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetRetcodeLogstoreResponseBody) SetRequestId(v string) *GetRetcodeLogstoreResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetRetcodeLogstoreResponseBodyData struct {
+	Message          *string                                             `json:"Message,omitempty" xml:"Message,omitempty"`
+	RetcodeSLSConfig *GetRetcodeLogstoreResponseBodyDataRetcodeSLSConfig `json:"RetcodeSLSConfig,omitempty" xml:"RetcodeSLSConfig,omitempty" type:"Struct"`
+	Status           *string                                             `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s GetRetcodeLogstoreResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetRetcodeLogstoreResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetRetcodeLogstoreResponseBodyData) SetMessage(v string) *GetRetcodeLogstoreResponseBodyData {
+	s.Message = &v
+	return s
+}
+
+func (s *GetRetcodeLogstoreResponseBodyData) SetRetcodeSLSConfig(v *GetRetcodeLogstoreResponseBodyDataRetcodeSLSConfig) *GetRetcodeLogstoreResponseBodyData {
+	s.RetcodeSLSConfig = v
+	return s
+}
+
+func (s *GetRetcodeLogstoreResponseBodyData) SetStatus(v string) *GetRetcodeLogstoreResponseBodyData {
+	s.Status = &v
+	return s
+}
+
+type GetRetcodeLogstoreResponseBodyDataRetcodeSLSConfig struct {
+	Logstore *string `json:"Logstore,omitempty" xml:"Logstore,omitempty"`
+	Project  *string `json:"Project,omitempty" xml:"Project,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s GetRetcodeLogstoreResponseBodyDataRetcodeSLSConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetRetcodeLogstoreResponseBodyDataRetcodeSLSConfig) GoString() string {
+	return s.String()
+}
+
+func (s *GetRetcodeLogstoreResponseBodyDataRetcodeSLSConfig) SetLogstore(v string) *GetRetcodeLogstoreResponseBodyDataRetcodeSLSConfig {
+	s.Logstore = &v
+	return s
+}
+
+func (s *GetRetcodeLogstoreResponseBodyDataRetcodeSLSConfig) SetProject(v string) *GetRetcodeLogstoreResponseBodyDataRetcodeSLSConfig {
+	s.Project = &v
+	return s
+}
+
+func (s *GetRetcodeLogstoreResponseBodyDataRetcodeSLSConfig) SetRegionId(v string) *GetRetcodeLogstoreResponseBodyDataRetcodeSLSConfig {
+	s.RegionId = &v
+	return s
+}
+
+type GetRetcodeLogstoreResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetRetcodeLogstoreResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetRetcodeLogstoreResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetRetcodeLogstoreResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetRetcodeLogstoreResponse) SetHeaders(v map[string]*string) *GetRetcodeLogstoreResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetRetcodeLogstoreResponse) SetStatusCode(v int32) *GetRetcodeLogstoreResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetRetcodeLogstoreResponse) SetBody(v *GetRetcodeLogstoreResponseBody) *GetRetcodeLogstoreResponse {
 	s.Body = v
 	return s
 }
@@ -12246,16 +12562,17 @@ func (s *GetTraceAppResponseBody) SetTraceApp(v *GetTraceAppResponseBodyTraceApp
 }
 
 type GetTraceAppResponseBodyTraceApp struct {
-	AppId      *int64    `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	AppName    *string   `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	CreateTime *int64    `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Labels     []*string `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
-	Pid        *string   `json:"Pid,omitempty" xml:"Pid,omitempty"`
-	RegionId   *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Show       *bool     `json:"Show,omitempty" xml:"Show,omitempty"`
-	Type       *string   `json:"Type,omitempty" xml:"Type,omitempty"`
-	UpdateTime *int64    `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	UserId     *string   `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	AppId      *int64                                 `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppName    *string                                `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	CreateTime *int64                                 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Labels     []*string                              `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	Pid        *string                                `json:"Pid,omitempty" xml:"Pid,omitempty"`
+	RegionId   *string                                `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Show       *bool                                  `json:"Show,omitempty" xml:"Show,omitempty"`
+	Tags       []*GetTraceAppResponseBodyTraceAppTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	Type       *string                                `json:"Type,omitempty" xml:"Type,omitempty"`
+	UpdateTime *int64                                 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	UserId     *string                                `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s GetTraceAppResponseBodyTraceApp) String() string {
@@ -12301,6 +12618,11 @@ func (s *GetTraceAppResponseBodyTraceApp) SetShow(v bool) *GetTraceAppResponseBo
 	return s
 }
 
+func (s *GetTraceAppResponseBodyTraceApp) SetTags(v []*GetTraceAppResponseBodyTraceAppTags) *GetTraceAppResponseBodyTraceApp {
+	s.Tags = v
+	return s
+}
+
 func (s *GetTraceAppResponseBodyTraceApp) SetType(v string) *GetTraceAppResponseBodyTraceApp {
 	s.Type = &v
 	return s
@@ -12313,6 +12635,29 @@ func (s *GetTraceAppResponseBodyTraceApp) SetUpdateTime(v int64) *GetTraceAppRes
 
 func (s *GetTraceAppResponseBodyTraceApp) SetUserId(v string) *GetTraceAppResponseBodyTraceApp {
 	s.UserId = &v
+	return s
+}
+
+type GetTraceAppResponseBodyTraceAppTags struct {
+	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+}
+
+func (s GetTraceAppResponseBodyTraceAppTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTraceAppResponseBodyTraceAppTags) GoString() string {
+	return s.String()
+}
+
+func (s *GetTraceAppResponseBodyTraceAppTags) SetTagKey(v string) *GetTraceAppResponseBodyTraceAppTags {
+	s.TagKey = &v
+	return s
+}
+
+func (s *GetTraceAppResponseBodyTraceAppTags) SetTagValue(v string) *GetTraceAppResponseBodyTraceAppTags {
+	s.TagValue = &v
 	return s
 }
 
@@ -12538,13 +12883,15 @@ func (s *InstallCmsExporterResponse) SetBody(v *InstallCmsExporterResponseBody) 
 }
 
 type InstallManagedPrometheusRequest struct {
-	ClusterId       *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	ClusterType     *string `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
-	KubeConfig      *string `json:"KubeConfig,omitempty" xml:"KubeConfig,omitempty"`
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	VSwitchId       *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	VpcId           *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	ClusterId         *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	ClusterName       *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
+	ClusterType       *string `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
+	GrafanaInstanceId *string `json:"GrafanaInstanceId,omitempty" xml:"GrafanaInstanceId,omitempty"`
+	KubeConfig        *string `json:"KubeConfig,omitempty" xml:"KubeConfig,omitempty"`
+	RegionId          *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	SecurityGroupId   *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	VSwitchId         *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	VpcId             *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s InstallManagedPrometheusRequest) String() string {
@@ -12560,8 +12907,18 @@ func (s *InstallManagedPrometheusRequest) SetClusterId(v string) *InstallManaged
 	return s
 }
 
+func (s *InstallManagedPrometheusRequest) SetClusterName(v string) *InstallManagedPrometheusRequest {
+	s.ClusterName = &v
+	return s
+}
+
 func (s *InstallManagedPrometheusRequest) SetClusterType(v string) *InstallManagedPrometheusRequest {
 	s.ClusterType = &v
+	return s
+}
+
+func (s *InstallManagedPrometheusRequest) SetGrafanaInstanceId(v string) *InstallManagedPrometheusRequest {
+	s.GrafanaInstanceId = &v
 	return s
 }
 
@@ -15151,6 +15508,7 @@ func (s *ListIntegrationResponse) SetBody(v *ListIntegrationResponseBody) *ListI
 }
 
 type ListNotificationPoliciesRequest struct {
+	Ids      *string `json:"Ids,omitempty" xml:"Ids,omitempty"`
 	IsDetail *bool   `json:"IsDetail,omitempty" xml:"IsDetail,omitempty"`
 	Name     *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	Page     *int64  `json:"Page,omitempty" xml:"Page,omitempty"`
@@ -15164,6 +15522,11 @@ func (s ListNotificationPoliciesRequest) String() string {
 
 func (s ListNotificationPoliciesRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ListNotificationPoliciesRequest) SetIds(v string) *ListNotificationPoliciesRequest {
+	s.Ids = &v
+	return s
 }
 
 func (s *ListNotificationPoliciesRequest) SetIsDetail(v bool) *ListNotificationPoliciesRequest {
@@ -16792,16 +17155,17 @@ func (s *ListTraceAppsResponseBody) SetTraceApps(v []*ListTraceAppsResponseBodyT
 }
 
 type ListTraceAppsResponseBodyTraceApps struct {
-	AppId      *int64    `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	AppName    *string   `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	CreateTime *int64    `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Labels     []*string `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
-	Pid        *string   `json:"Pid,omitempty" xml:"Pid,omitempty"`
-	RegionId   *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Show       *bool     `json:"Show,omitempty" xml:"Show,omitempty"`
-	Type       *string   `json:"Type,omitempty" xml:"Type,omitempty"`
-	UpdateTime *int64    `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	UserId     *string   `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	AppId      *int64                                    `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppName    *string                                   `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	CreateTime *int64                                    `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Labels     []*string                                 `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	Pid        *string                                   `json:"Pid,omitempty" xml:"Pid,omitempty"`
+	RegionId   *string                                   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Show       *bool                                     `json:"Show,omitempty" xml:"Show,omitempty"`
+	Tags       []*ListTraceAppsResponseBodyTraceAppsTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	Type       *string                                   `json:"Type,omitempty" xml:"Type,omitempty"`
+	UpdateTime *int64                                    `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	UserId     *string                                   `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s ListTraceAppsResponseBodyTraceApps) String() string {
@@ -16847,6 +17211,11 @@ func (s *ListTraceAppsResponseBodyTraceApps) SetShow(v bool) *ListTraceAppsRespo
 	return s
 }
 
+func (s *ListTraceAppsResponseBodyTraceApps) SetTags(v []*ListTraceAppsResponseBodyTraceAppsTags) *ListTraceAppsResponseBodyTraceApps {
+	s.Tags = v
+	return s
+}
+
 func (s *ListTraceAppsResponseBodyTraceApps) SetType(v string) *ListTraceAppsResponseBodyTraceApps {
 	s.Type = &v
 	return s
@@ -16859,6 +17228,29 @@ func (s *ListTraceAppsResponseBodyTraceApps) SetUpdateTime(v int64) *ListTraceAp
 
 func (s *ListTraceAppsResponseBodyTraceApps) SetUserId(v string) *ListTraceAppsResponseBodyTraceApps {
 	s.UserId = &v
+	return s
+}
+
+type ListTraceAppsResponseBodyTraceAppsTags struct {
+	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+}
+
+func (s ListTraceAppsResponseBodyTraceAppsTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTraceAppsResponseBodyTraceAppsTags) GoString() string {
+	return s.String()
+}
+
+func (s *ListTraceAppsResponseBodyTraceAppsTags) SetTagKey(v string) *ListTraceAppsResponseBodyTraceAppsTags {
+	s.TagKey = &v
+	return s
+}
+
+func (s *ListTraceAppsResponseBodyTraceAppsTags) SetTagValue(v string) *ListTraceAppsResponseBodyTraceAppsTags {
+	s.TagValue = &v
 	return s
 }
 
@@ -19579,6 +19971,7 @@ type SearchRetcodeAppByPageResponseBodyPageBeanRetcodeApps struct {
 	AppId          *int64  `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	AppName        *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
 	CreateTime     *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	NickName       *string `json:"NickName,omitempty" xml:"NickName,omitempty"`
 	Pid            *string `json:"Pid,omitempty" xml:"Pid,omitempty"`
 	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	RetcodeAppType *string `json:"RetcodeAppType,omitempty" xml:"RetcodeAppType,omitempty"`
@@ -19607,6 +20000,11 @@ func (s *SearchRetcodeAppByPageResponseBodyPageBeanRetcodeApps) SetAppName(v str
 
 func (s *SearchRetcodeAppByPageResponseBodyPageBeanRetcodeApps) SetCreateTime(v int64) *SearchRetcodeAppByPageResponseBodyPageBeanRetcodeApps {
 	s.CreateTime = &v
+	return s
+}
+
+func (s *SearchRetcodeAppByPageResponseBodyPageBeanRetcodeApps) SetNickName(v string) *SearchRetcodeAppByPageResponseBodyPageBeanRetcodeApps {
+	s.NickName = &v
 	return s
 }
 
@@ -23423,6 +23821,10 @@ func (client *Client) CreateOrUpdateContactWithOptions(request *CreateOrUpdateCo
 		body["Email"] = request.Email
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.IsEmailVerify)) {
+		body["IsEmailVerify"] = request.IsEmailVerify
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Phone)) {
 		body["Phone"] = request.Phone
 	}
@@ -24032,32 +24434,32 @@ func (client *Client) CreateSyntheticTaskWithOptions(tmpReq *CreateSyntheticTask
 	}
 	request := &CreateSyntheticTaskShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.CommonParam))) {
-		request.CommonParamShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.CommonParam), tea.String("CommonParam"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.CommonParam)) {
+		request.CommonParamShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CommonParam, tea.String("CommonParam"), tea.String("json"))
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.Download))) {
-		request.DownloadShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.Download), tea.String("Download"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.Download)) {
+		request.DownloadShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Download, tea.String("Download"), tea.String("json"))
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.ExtendInterval))) {
-		request.ExtendIntervalShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.ExtendInterval), tea.String("ExtendInterval"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.ExtendInterval)) {
+		request.ExtendIntervalShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ExtendInterval, tea.String("ExtendInterval"), tea.String("json"))
 	}
 
 	if !tea.BoolValue(util.IsUnset(tmpReq.MonitorList)) {
 		request.MonitorListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.MonitorList, tea.String("MonitorList"), tea.String("json"))
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.Navigation))) {
-		request.NavigationShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.Navigation), tea.String("Navigation"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.Navigation)) {
+		request.NavigationShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Navigation, tea.String("Navigation"), tea.String("json"))
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.Net))) {
-		request.NetShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.Net), tea.String("Net"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.Net)) {
+		request.NetShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Net, tea.String("Net"), tea.String("json"))
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.Protocol))) {
-		request.ProtocolShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.Protocol), tea.String("Protocol"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.Protocol)) {
+		request.ProtocolShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Protocol, tea.String("Protocol"), tea.String("json"))
 	}
 
 	query := map[string]interface{}{}
@@ -25373,6 +25775,10 @@ func (client *Client) DescribeContactGroupsWithOptions(request *DescribeContactG
 		query["ContactGroupName"] = request.ContactGroupName
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.GroupIds)) {
+		query["GroupIds"] = request.GroupIds
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.IsDetail)) {
 		query["IsDetail"] = request.IsDetail
 	}
@@ -25425,6 +25831,10 @@ func (client *Client) DescribeContactsWithOptions(request *DescribeContactsReque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ContactIds)) {
+		query["ContactIds"] = request.ContactIds
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ContactName)) {
 		query["ContactName"] = request.ContactName
 	}
@@ -25443,6 +25853,10 @@ func (client *Client) DescribeContactsWithOptions(request *DescribeContactsReque
 
 	if !tea.BoolValue(util.IsUnset(request.Size)) {
 		query["Size"] = request.Size
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Verbose)) {
+		query["Verbose"] = request.Verbose
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -25535,6 +25949,10 @@ func (client *Client) DescribeIMRobotsWithOptions(request *DescribeIMRobotsReque
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Page)) {
 		query["Page"] = request.Page
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RobotIds)) {
+		query["RobotIds"] = request.RobotIds
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.RobotName)) {
@@ -26113,6 +26531,10 @@ func (client *Client) GetManagedPrometheusStatusWithOptions(request *GetManagedP
 		query["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.VpcId)) {
+		query["VpcId"] = request.VpcId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -26368,6 +26790,114 @@ func (client *Client) GetRecordingRule(request *GetRecordingRuleRequest) (_resul
 	runtime := &util.RuntimeOptions{}
 	_result = &GetRecordingRuleResponse{}
 	_body, _err := client.GetRecordingRuleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetRetcodeDataByQueryWithOptions(request *GetRetcodeDataByQueryRequest, runtime *util.RuntimeOptions) (_result *GetRetcodeDataByQueryResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.From)) {
+		query["From"] = request.From
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Pid)) {
+		query["Pid"] = request.Pid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Query)) {
+		query["Query"] = request.Query
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.To)) {
+		query["To"] = request.To
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetRetcodeDataByQuery"),
+		Version:     tea.String("2019-08-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetRetcodeDataByQueryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetRetcodeDataByQuery(request *GetRetcodeDataByQueryRequest) (_result *GetRetcodeDataByQueryResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetRetcodeDataByQueryResponse{}
+	_body, _err := client.GetRetcodeDataByQueryWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetRetcodeLogstoreWithOptions(request *GetRetcodeLogstoreRequest, runtime *util.RuntimeOptions) (_result *GetRetcodeLogstoreResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Pid)) {
+		query["Pid"] = request.Pid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetRetcodeLogstore"),
+		Version:     tea.String("2019-08-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetRetcodeLogstoreResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetRetcodeLogstore(request *GetRetcodeLogstoreRequest) (_result *GetRetcodeLogstoreResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetRetcodeLogstoreResponse{}
+	_body, _err := client.GetRetcodeLogstoreWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -26953,8 +27483,16 @@ func (client *Client) InstallManagedPrometheusWithOptions(request *InstallManage
 		query["ClusterId"] = request.ClusterId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ClusterName)) {
+		query["ClusterName"] = request.ClusterName
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ClusterType)) {
 		query["ClusterType"] = request.ClusterType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GrafanaInstanceId)) {
+		query["GrafanaInstanceId"] = request.GrafanaInstanceId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.KubeConfig)) {
@@ -27701,6 +28239,10 @@ func (client *Client) ListNotificationPoliciesWithOptions(request *ListNotificat
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Ids)) {
+		query["Ids"] = request.Ids
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.IsDetail)) {
 		query["IsDetail"] = request.IsDetail
 	}
