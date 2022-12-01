@@ -2121,6 +2121,7 @@ func (s *BatchGetDeviceBindStatusResponseBody) SetSuccess(v bool) *BatchGetDevic
 
 type BatchGetDeviceBindStatusResponseBodyData struct {
 	BindStatus *int32  `json:"BindStatus,omitempty" xml:"BindStatus,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	IotId      *string `json:"IotId,omitempty" xml:"IotId,omitempty"`
 }
 
@@ -2134,6 +2135,11 @@ func (s BatchGetDeviceBindStatusResponseBodyData) GoString() string {
 
 func (s *BatchGetDeviceBindStatusResponseBodyData) SetBindStatus(v int32) *BatchGetDeviceBindStatusResponseBodyData {
 	s.BindStatus = &v
+	return s
+}
+
+func (s *BatchGetDeviceBindStatusResponseBodyData) SetInstanceId(v string) *BatchGetDeviceBindStatusResponseBodyData {
+	s.InstanceId = &v
 	return s
 }
 
@@ -37794,6 +37800,426 @@ func (s *QueryDeviceTunnelResponse) SetBody(v *QueryDeviceTunnelResponseBody) *Q
 	return s
 }
 
+type QueryDevicesHotStorageDataRequest struct {
+	Asc           *int32  `json:"Asc,omitempty" xml:"Asc,omitempty"`
+	DeviceName    *string `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
+	EndTime       *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	Identifier    *string `json:"Identifier,omitempty" xml:"Identifier,omitempty"`
+	IotId         *string `json:"IotId,omitempty" xml:"IotId,omitempty"`
+	IotInstanceId *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
+	NextPageToken *string `json:"NextPageToken,omitempty" xml:"NextPageToken,omitempty"`
+	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ProductKey    *string `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
+	StartTime     *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	UserTopic     *string `json:"UserTopic,omitempty" xml:"UserTopic,omitempty"`
+}
+
+func (s QueryDevicesHotStorageDataRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryDevicesHotStorageDataRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryDevicesHotStorageDataRequest) SetAsc(v int32) *QueryDevicesHotStorageDataRequest {
+	s.Asc = &v
+	return s
+}
+
+func (s *QueryDevicesHotStorageDataRequest) SetDeviceName(v string) *QueryDevicesHotStorageDataRequest {
+	s.DeviceName = &v
+	return s
+}
+
+func (s *QueryDevicesHotStorageDataRequest) SetEndTime(v int64) *QueryDevicesHotStorageDataRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *QueryDevicesHotStorageDataRequest) SetIdentifier(v string) *QueryDevicesHotStorageDataRequest {
+	s.Identifier = &v
+	return s
+}
+
+func (s *QueryDevicesHotStorageDataRequest) SetIotId(v string) *QueryDevicesHotStorageDataRequest {
+	s.IotId = &v
+	return s
+}
+
+func (s *QueryDevicesHotStorageDataRequest) SetIotInstanceId(v string) *QueryDevicesHotStorageDataRequest {
+	s.IotInstanceId = &v
+	return s
+}
+
+func (s *QueryDevicesHotStorageDataRequest) SetNextPageToken(v string) *QueryDevicesHotStorageDataRequest {
+	s.NextPageToken = &v
+	return s
+}
+
+func (s *QueryDevicesHotStorageDataRequest) SetPageSize(v int32) *QueryDevicesHotStorageDataRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *QueryDevicesHotStorageDataRequest) SetProductKey(v string) *QueryDevicesHotStorageDataRequest {
+	s.ProductKey = &v
+	return s
+}
+
+func (s *QueryDevicesHotStorageDataRequest) SetStartTime(v int64) *QueryDevicesHotStorageDataRequest {
+	s.StartTime = &v
+	return s
+}
+
+func (s *QueryDevicesHotStorageDataRequest) SetUserTopic(v string) *QueryDevicesHotStorageDataRequest {
+	s.UserTopic = &v
+	return s
+}
+
+type QueryDevicesHotStorageDataResponseBody struct {
+	Code         *string                                     `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data         *QueryDevicesHotStorageDataResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	ErrorMessage *string                                     `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool                                       `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s QueryDevicesHotStorageDataResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryDevicesHotStorageDataResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryDevicesHotStorageDataResponseBody) SetCode(v string) *QueryDevicesHotStorageDataResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *QueryDevicesHotStorageDataResponseBody) SetData(v *QueryDevicesHotStorageDataResponseBodyData) *QueryDevicesHotStorageDataResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *QueryDevicesHotStorageDataResponseBody) SetErrorMessage(v string) *QueryDevicesHotStorageDataResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *QueryDevicesHotStorageDataResponseBody) SetRequestId(v string) *QueryDevicesHotStorageDataResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QueryDevicesHotStorageDataResponseBody) SetSuccess(v bool) *QueryDevicesHotStorageDataResponseBody {
+	s.Success = &v
+	return s
+}
+
+type QueryDevicesHotStorageDataResponseBodyData struct {
+	List          *QueryDevicesHotStorageDataResponseBodyDataList `json:"List,omitempty" xml:"List,omitempty" type:"Struct"`
+	NextValid     *bool                                           `json:"NextValid,omitempty" xml:"NextValid,omitempty"`
+	NextPageToken *string                                         `json:"nextPageToken,omitempty" xml:"nextPageToken,omitempty"`
+}
+
+func (s QueryDevicesHotStorageDataResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryDevicesHotStorageDataResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *QueryDevicesHotStorageDataResponseBodyData) SetList(v *QueryDevicesHotStorageDataResponseBodyDataList) *QueryDevicesHotStorageDataResponseBodyData {
+	s.List = v
+	return s
+}
+
+func (s *QueryDevicesHotStorageDataResponseBodyData) SetNextValid(v bool) *QueryDevicesHotStorageDataResponseBodyData {
+	s.NextValid = &v
+	return s
+}
+
+func (s *QueryDevicesHotStorageDataResponseBodyData) SetNextPageToken(v string) *QueryDevicesHotStorageDataResponseBodyData {
+	s.NextPageToken = &v
+	return s
+}
+
+type QueryDevicesHotStorageDataResponseBodyDataList struct {
+	PropertyInfo []*QueryDevicesHotStorageDataResponseBodyDataListPropertyInfo `json:"PropertyInfo,omitempty" xml:"PropertyInfo,omitempty" type:"Repeated"`
+}
+
+func (s QueryDevicesHotStorageDataResponseBodyDataList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryDevicesHotStorageDataResponseBodyDataList) GoString() string {
+	return s.String()
+}
+
+func (s *QueryDevicesHotStorageDataResponseBodyDataList) SetPropertyInfo(v []*QueryDevicesHotStorageDataResponseBodyDataListPropertyInfo) *QueryDevicesHotStorageDataResponseBodyDataList {
+	s.PropertyInfo = v
+	return s
+}
+
+type QueryDevicesHotStorageDataResponseBodyDataListPropertyInfo struct {
+	Time  *string `json:"Time,omitempty" xml:"Time,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s QueryDevicesHotStorageDataResponseBodyDataListPropertyInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryDevicesHotStorageDataResponseBodyDataListPropertyInfo) GoString() string {
+	return s.String()
+}
+
+func (s *QueryDevicesHotStorageDataResponseBodyDataListPropertyInfo) SetTime(v string) *QueryDevicesHotStorageDataResponseBodyDataListPropertyInfo {
+	s.Time = &v
+	return s
+}
+
+func (s *QueryDevicesHotStorageDataResponseBodyDataListPropertyInfo) SetValue(v string) *QueryDevicesHotStorageDataResponseBodyDataListPropertyInfo {
+	s.Value = &v
+	return s
+}
+
+type QueryDevicesHotStorageDataResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *QueryDevicesHotStorageDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s QueryDevicesHotStorageDataResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryDevicesHotStorageDataResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryDevicesHotStorageDataResponse) SetHeaders(v map[string]*string) *QueryDevicesHotStorageDataResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryDevicesHotStorageDataResponse) SetStatusCode(v int32) *QueryDevicesHotStorageDataResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QueryDevicesHotStorageDataResponse) SetBody(v *QueryDevicesHotStorageDataResponseBody) *QueryDevicesHotStorageDataResponse {
+	s.Body = v
+	return s
+}
+
+type QueryDevicesHotStorageDataStatusRequest struct {
+	Asc           *int32  `json:"Asc,omitempty" xml:"Asc,omitempty"`
+	DeviceName    *string `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
+	IotId         *string `json:"IotId,omitempty" xml:"IotId,omitempty"`
+	IotInstanceId *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
+	NextPageToken *string `json:"NextPageToken,omitempty" xml:"NextPageToken,omitempty"`
+	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ProductKey    *string `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
+	UserTopic     *string `json:"UserTopic,omitempty" xml:"UserTopic,omitempty"`
+}
+
+func (s QueryDevicesHotStorageDataStatusRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryDevicesHotStorageDataStatusRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryDevicesHotStorageDataStatusRequest) SetAsc(v int32) *QueryDevicesHotStorageDataStatusRequest {
+	s.Asc = &v
+	return s
+}
+
+func (s *QueryDevicesHotStorageDataStatusRequest) SetDeviceName(v string) *QueryDevicesHotStorageDataStatusRequest {
+	s.DeviceName = &v
+	return s
+}
+
+func (s *QueryDevicesHotStorageDataStatusRequest) SetIotId(v string) *QueryDevicesHotStorageDataStatusRequest {
+	s.IotId = &v
+	return s
+}
+
+func (s *QueryDevicesHotStorageDataStatusRequest) SetIotInstanceId(v string) *QueryDevicesHotStorageDataStatusRequest {
+	s.IotInstanceId = &v
+	return s
+}
+
+func (s *QueryDevicesHotStorageDataStatusRequest) SetNextPageToken(v string) *QueryDevicesHotStorageDataStatusRequest {
+	s.NextPageToken = &v
+	return s
+}
+
+func (s *QueryDevicesHotStorageDataStatusRequest) SetPageSize(v int32) *QueryDevicesHotStorageDataStatusRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *QueryDevicesHotStorageDataStatusRequest) SetProductKey(v string) *QueryDevicesHotStorageDataStatusRequest {
+	s.ProductKey = &v
+	return s
+}
+
+func (s *QueryDevicesHotStorageDataStatusRequest) SetUserTopic(v string) *QueryDevicesHotStorageDataStatusRequest {
+	s.UserTopic = &v
+	return s
+}
+
+type QueryDevicesHotStorageDataStatusResponseBody struct {
+	Code         *string                                           `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data         *QueryDevicesHotStorageDataStatusResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	ErrorMessage *string                                           `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool                                             `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s QueryDevicesHotStorageDataStatusResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryDevicesHotStorageDataStatusResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryDevicesHotStorageDataStatusResponseBody) SetCode(v string) *QueryDevicesHotStorageDataStatusResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *QueryDevicesHotStorageDataStatusResponseBody) SetData(v *QueryDevicesHotStorageDataStatusResponseBodyData) *QueryDevicesHotStorageDataStatusResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *QueryDevicesHotStorageDataStatusResponseBody) SetErrorMessage(v string) *QueryDevicesHotStorageDataStatusResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *QueryDevicesHotStorageDataStatusResponseBody) SetRequestId(v string) *QueryDevicesHotStorageDataStatusResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QueryDevicesHotStorageDataStatusResponseBody) SetSuccess(v bool) *QueryDevicesHotStorageDataStatusResponseBody {
+	s.Success = &v
+	return s
+}
+
+type QueryDevicesHotStorageDataStatusResponseBodyData struct {
+	List          *QueryDevicesHotStorageDataStatusResponseBodyDataList `json:"List,omitempty" xml:"List,omitempty" type:"Struct"`
+	NextPageToken *string                                               `json:"NextPageToken,omitempty" xml:"NextPageToken,omitempty"`
+	NextValid     *bool                                                 `json:"NextValid,omitempty" xml:"NextValid,omitempty"`
+}
+
+func (s QueryDevicesHotStorageDataStatusResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryDevicesHotStorageDataStatusResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *QueryDevicesHotStorageDataStatusResponseBodyData) SetList(v *QueryDevicesHotStorageDataStatusResponseBodyDataList) *QueryDevicesHotStorageDataStatusResponseBodyData {
+	s.List = v
+	return s
+}
+
+func (s *QueryDevicesHotStorageDataStatusResponseBodyData) SetNextPageToken(v string) *QueryDevicesHotStorageDataStatusResponseBodyData {
+	s.NextPageToken = &v
+	return s
+}
+
+func (s *QueryDevicesHotStorageDataStatusResponseBodyData) SetNextValid(v bool) *QueryDevicesHotStorageDataStatusResponseBodyData {
+	s.NextValid = &v
+	return s
+}
+
+type QueryDevicesHotStorageDataStatusResponseBodyDataList struct {
+	PropertyStatusDataInfo []*QueryDevicesHotStorageDataStatusResponseBodyDataListPropertyStatusDataInfo `json:"PropertyStatusDataInfo,omitempty" xml:"PropertyStatusDataInfo,omitempty" type:"Repeated"`
+}
+
+func (s QueryDevicesHotStorageDataStatusResponseBodyDataList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryDevicesHotStorageDataStatusResponseBodyDataList) GoString() string {
+	return s.String()
+}
+
+func (s *QueryDevicesHotStorageDataStatusResponseBodyDataList) SetPropertyStatusDataInfo(v []*QueryDevicesHotStorageDataStatusResponseBodyDataListPropertyStatusDataInfo) *QueryDevicesHotStorageDataStatusResponseBodyDataList {
+	s.PropertyStatusDataInfo = v
+	return s
+}
+
+type QueryDevicesHotStorageDataStatusResponseBodyDataListPropertyStatusDataInfo struct {
+	Identifier *string `json:"Identifier,omitempty" xml:"Identifier,omitempty"`
+	Time       *int64  `json:"Time,omitempty" xml:"Time,omitempty"`
+	Value      *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s QueryDevicesHotStorageDataStatusResponseBodyDataListPropertyStatusDataInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryDevicesHotStorageDataStatusResponseBodyDataListPropertyStatusDataInfo) GoString() string {
+	return s.String()
+}
+
+func (s *QueryDevicesHotStorageDataStatusResponseBodyDataListPropertyStatusDataInfo) SetIdentifier(v string) *QueryDevicesHotStorageDataStatusResponseBodyDataListPropertyStatusDataInfo {
+	s.Identifier = &v
+	return s
+}
+
+func (s *QueryDevicesHotStorageDataStatusResponseBodyDataListPropertyStatusDataInfo) SetTime(v int64) *QueryDevicesHotStorageDataStatusResponseBodyDataListPropertyStatusDataInfo {
+	s.Time = &v
+	return s
+}
+
+func (s *QueryDevicesHotStorageDataStatusResponseBodyDataListPropertyStatusDataInfo) SetValue(v string) *QueryDevicesHotStorageDataStatusResponseBodyDataListPropertyStatusDataInfo {
+	s.Value = &v
+	return s
+}
+
+type QueryDevicesHotStorageDataStatusResponse struct {
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *QueryDevicesHotStorageDataStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s QueryDevicesHotStorageDataStatusResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryDevicesHotStorageDataStatusResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryDevicesHotStorageDataStatusResponse) SetHeaders(v map[string]*string) *QueryDevicesHotStorageDataStatusResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryDevicesHotStorageDataStatusResponse) SetStatusCode(v int32) *QueryDevicesHotStorageDataStatusResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QueryDevicesHotStorageDataStatusResponse) SetBody(v *QueryDevicesHotStorageDataStatusResponseBody) *QueryDevicesHotStorageDataStatusResponse {
+	s.Body = v
+	return s
+}
+
 type QueryDynamicGroupDevicesRequest struct {
 	CurrentPage   *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	DeviceName    *string `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
@@ -56931,6 +57357,117 @@ func (s *UpdateThingScriptResponse) SetBody(v *UpdateThingScriptResponseBody) *U
 	return s
 }
 
+type WriteDevicesHotStorageDataRequest struct {
+	DeviceName    *string `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
+	IotId         *string `json:"IotId,omitempty" xml:"IotId,omitempty"`
+	IotInstanceId *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
+	Items         *string `json:"Items,omitempty" xml:"Items,omitempty"`
+	ProductKey    *string `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
+	UserTopic     *string `json:"UserTopic,omitempty" xml:"UserTopic,omitempty"`
+}
+
+func (s WriteDevicesHotStorageDataRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s WriteDevicesHotStorageDataRequest) GoString() string {
+	return s.String()
+}
+
+func (s *WriteDevicesHotStorageDataRequest) SetDeviceName(v string) *WriteDevicesHotStorageDataRequest {
+	s.DeviceName = &v
+	return s
+}
+
+func (s *WriteDevicesHotStorageDataRequest) SetIotId(v string) *WriteDevicesHotStorageDataRequest {
+	s.IotId = &v
+	return s
+}
+
+func (s *WriteDevicesHotStorageDataRequest) SetIotInstanceId(v string) *WriteDevicesHotStorageDataRequest {
+	s.IotInstanceId = &v
+	return s
+}
+
+func (s *WriteDevicesHotStorageDataRequest) SetItems(v string) *WriteDevicesHotStorageDataRequest {
+	s.Items = &v
+	return s
+}
+
+func (s *WriteDevicesHotStorageDataRequest) SetProductKey(v string) *WriteDevicesHotStorageDataRequest {
+	s.ProductKey = &v
+	return s
+}
+
+func (s *WriteDevicesHotStorageDataRequest) SetUserTopic(v string) *WriteDevicesHotStorageDataRequest {
+	s.UserTopic = &v
+	return s
+}
+
+type WriteDevicesHotStorageDataResponseBody struct {
+	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s WriteDevicesHotStorageDataResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s WriteDevicesHotStorageDataResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *WriteDevicesHotStorageDataResponseBody) SetCode(v string) *WriteDevicesHotStorageDataResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *WriteDevicesHotStorageDataResponseBody) SetErrorMessage(v string) *WriteDevicesHotStorageDataResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *WriteDevicesHotStorageDataResponseBody) SetRequestId(v string) *WriteDevicesHotStorageDataResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *WriteDevicesHotStorageDataResponseBody) SetSuccess(v bool) *WriteDevicesHotStorageDataResponseBody {
+	s.Success = &v
+	return s
+}
+
+type WriteDevicesHotStorageDataResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *WriteDevicesHotStorageDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s WriteDevicesHotStorageDataResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s WriteDevicesHotStorageDataResponse) GoString() string {
+	return s.String()
+}
+
+func (s *WriteDevicesHotStorageDataResponse) SetHeaders(v map[string]*string) *WriteDevicesHotStorageDataResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *WriteDevicesHotStorageDataResponse) SetStatusCode(v int32) *WriteDevicesHotStorageDataResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *WriteDevicesHotStorageDataResponse) SetBody(v *WriteDevicesHotStorageDataResponseBody) *WriteDevicesHotStorageDataResponse {
+	s.Body = v
+	return s
+}
+
 type Client struct {
 	openapi.Client
 }
@@ -71936,6 +72473,162 @@ func (client *Client) QueryDeviceTunnel(request *QueryDeviceTunnelRequest) (_res
 	return _result, _err
 }
 
+func (client *Client) QueryDevicesHotStorageDataWithOptions(request *QueryDevicesHotStorageDataRequest, runtime *util.RuntimeOptions) (_result *QueryDevicesHotStorageDataResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Asc)) {
+		query["Asc"] = request.Asc
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DeviceName)) {
+		query["DeviceName"] = request.DeviceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Identifier)) {
+		query["Identifier"] = request.Identifier
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IotId)) {
+		query["IotId"] = request.IotId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IotInstanceId)) {
+		query["IotInstanceId"] = request.IotInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextPageToken)) {
+		query["NextPageToken"] = request.NextPageToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductKey)) {
+		query["ProductKey"] = request.ProductKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserTopic)) {
+		query["UserTopic"] = request.UserTopic
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryDevicesHotStorageData"),
+		Version:     tea.String("2018-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QueryDevicesHotStorageDataResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) QueryDevicesHotStorageData(request *QueryDevicesHotStorageDataRequest) (_result *QueryDevicesHotStorageDataResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QueryDevicesHotStorageDataResponse{}
+	_body, _err := client.QueryDevicesHotStorageDataWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) QueryDevicesHotStorageDataStatusWithOptions(request *QueryDevicesHotStorageDataStatusRequest, runtime *util.RuntimeOptions) (_result *QueryDevicesHotStorageDataStatusResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Asc)) {
+		query["Asc"] = request.Asc
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DeviceName)) {
+		query["DeviceName"] = request.DeviceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IotId)) {
+		query["IotId"] = request.IotId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IotInstanceId)) {
+		query["IotInstanceId"] = request.IotInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextPageToken)) {
+		query["NextPageToken"] = request.NextPageToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductKey)) {
+		query["ProductKey"] = request.ProductKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserTopic)) {
+		query["UserTopic"] = request.UserTopic
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryDevicesHotStorageDataStatus"),
+		Version:     tea.String("2018-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QueryDevicesHotStorageDataStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) QueryDevicesHotStorageDataStatus(request *QueryDevicesHotStorageDataStatusRequest) (_result *QueryDevicesHotStorageDataStatusResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QueryDevicesHotStorageDataStatusResponse{}
+	_body, _err := client.QueryDevicesHotStorageDataStatusWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) QueryDynamicGroupDevicesWithOptions(request *QueryDynamicGroupDevicesRequest, runtime *util.RuntimeOptions) (_result *QueryDynamicGroupDevicesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -79225,6 +79918,70 @@ func (client *Client) UpdateThingScript(request *UpdateThingScriptRequest) (_res
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateThingScriptResponse{}
 	_body, _err := client.UpdateThingScriptWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) WriteDevicesHotStorageDataWithOptions(request *WriteDevicesHotStorageDataRequest, runtime *util.RuntimeOptions) (_result *WriteDevicesHotStorageDataResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DeviceName)) {
+		query["DeviceName"] = request.DeviceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IotId)) {
+		query["IotId"] = request.IotId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IotInstanceId)) {
+		query["IotInstanceId"] = request.IotInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Items)) {
+		query["Items"] = request.Items
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductKey)) {
+		query["ProductKey"] = request.ProductKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserTopic)) {
+		query["UserTopic"] = request.UserTopic
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("WriteDevicesHotStorageData"),
+		Version:     tea.String("2018-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &WriteDevicesHotStorageDataResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) WriteDevicesHotStorageData(request *WriteDevicesHotStorageDataRequest) (_result *WriteDevicesHotStorageDataResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &WriteDevicesHotStorageDataResponse{}
+	_body, _err := client.WriteDevicesHotStorageDataWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
