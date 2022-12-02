@@ -3003,6 +3003,110 @@ func (s *PutEnvironmentResponse) SetBody(v *Environment) *PutEnvironmentResponse
 	return s
 }
 
+type PutPipelineStatusRequest struct {
+	Body  *Pipeline `json:"body,omitempty" xml:"body,omitempty"`
+	Force *bool     `json:"force,omitempty" xml:"force,omitempty"`
+}
+
+func (s PutPipelineStatusRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PutPipelineStatusRequest) GoString() string {
+	return s.String()
+}
+
+func (s *PutPipelineStatusRequest) SetBody(v *Pipeline) *PutPipelineStatusRequest {
+	s.Body = v
+	return s
+}
+
+func (s *PutPipelineStatusRequest) SetForce(v bool) *PutPipelineStatusRequest {
+	s.Force = &v
+	return s
+}
+
+type PutPipelineStatusResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *Pipeline          `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s PutPipelineStatusResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PutPipelineStatusResponse) GoString() string {
+	return s.String()
+}
+
+func (s *PutPipelineStatusResponse) SetHeaders(v map[string]*string) *PutPipelineStatusResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *PutPipelineStatusResponse) SetStatusCode(v int32) *PutPipelineStatusResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *PutPipelineStatusResponse) SetBody(v *Pipeline) *PutPipelineStatusResponse {
+	s.Body = v
+	return s
+}
+
+type PutPipelineTemplateRequest struct {
+	Body  *PipelineTemplate `json:"body,omitempty" xml:"body,omitempty"`
+	Force *bool             `json:"force,omitempty" xml:"force,omitempty"`
+}
+
+func (s PutPipelineTemplateRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PutPipelineTemplateRequest) GoString() string {
+	return s.String()
+}
+
+func (s *PutPipelineTemplateRequest) SetBody(v *PipelineTemplate) *PutPipelineTemplateRequest {
+	s.Body = v
+	return s
+}
+
+func (s *PutPipelineTemplateRequest) SetForce(v bool) *PutPipelineTemplateRequest {
+	s.Force = &v
+	return s
+}
+
+type PutPipelineTemplateResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *PipelineTemplate  `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s PutPipelineTemplateResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PutPipelineTemplateResponse) GoString() string {
+	return s.String()
+}
+
+func (s *PutPipelineTemplateResponse) SetHeaders(v map[string]*string) *PutPipelineTemplateResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *PutPipelineTemplateResponse) SetStatusCode(v int32) *PutPipelineTemplateResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *PutPipelineTemplateResponse) SetBody(v *PipelineTemplate) *PutPipelineTemplateResponse {
+	s.Body = v
+	return s
+}
+
 type PutServiceRequest struct {
 	Body *Service `json:"body,omitempty" xml:"body,omitempty"`
 }
@@ -3045,6 +3149,110 @@ func (s *PutServiceResponse) SetStatusCode(v int32) *PutServiceResponse {
 }
 
 func (s *PutServiceResponse) SetBody(v *Service) *PutServiceResponse {
+	s.Body = v
+	return s
+}
+
+type PutTaskStatusRequest struct {
+	Body  *Task `json:"body,omitempty" xml:"body,omitempty"`
+	Force *bool `json:"force,omitempty" xml:"force,omitempty"`
+}
+
+func (s PutTaskStatusRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PutTaskStatusRequest) GoString() string {
+	return s.String()
+}
+
+func (s *PutTaskStatusRequest) SetBody(v *Task) *PutTaskStatusRequest {
+	s.Body = v
+	return s
+}
+
+func (s *PutTaskStatusRequest) SetForce(v bool) *PutTaskStatusRequest {
+	s.Force = &v
+	return s
+}
+
+type PutTaskStatusResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *Task              `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s PutTaskStatusResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PutTaskStatusResponse) GoString() string {
+	return s.String()
+}
+
+func (s *PutTaskStatusResponse) SetHeaders(v map[string]*string) *PutTaskStatusResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *PutTaskStatusResponse) SetStatusCode(v int32) *PutTaskStatusResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *PutTaskStatusResponse) SetBody(v *Task) *PutTaskStatusResponse {
+	s.Body = v
+	return s
+}
+
+type PutTaskTemplateRequest struct {
+	Body  *TaskTemplate `json:"body,omitempty" xml:"body,omitempty"`
+	Force *bool         `json:"force,omitempty" xml:"force,omitempty"`
+}
+
+func (s PutTaskTemplateRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PutTaskTemplateRequest) GoString() string {
+	return s.String()
+}
+
+func (s *PutTaskTemplateRequest) SetBody(v *TaskTemplate) *PutTaskTemplateRequest {
+	s.Body = v
+	return s
+}
+
+func (s *PutTaskTemplateRequest) SetForce(v bool) *PutTaskTemplateRequest {
+	s.Force = &v
+	return s
+}
+
+type PutTaskTemplateResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *TaskTemplate      `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s PutTaskTemplateResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PutTaskTemplateResponse) GoString() string {
+	return s.String()
+}
+
+func (s *PutTaskTemplateResponse) SetHeaders(v map[string]*string) *PutTaskTemplateResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *PutTaskTemplateResponse) SetStatusCode(v int32) *PutTaskTemplateResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *PutTaskTemplateResponse) SetBody(v *TaskTemplate) *PutTaskTemplateResponse {
 	s.Body = v
 	return s
 }
@@ -4602,6 +4810,100 @@ func (client *Client) PutEnvironmentWithOptions(name *string, request *PutEnviro
 	return _result, _err
 }
 
+func (client *Client) PutPipelineStatus(name *string, request *PutPipelineStatusRequest) (_result *PutPipelineStatusResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &PutPipelineStatusResponse{}
+	_body, _err := client.PutPipelineStatusWithOptions(name, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) PutPipelineStatusWithOptions(name *string, request *PutPipelineStatusRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *PutPipelineStatusResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Force)) {
+		query["force"] = request.Force
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(request.Body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("PutPipelineStatus"),
+		Version:     tea.String("2021-09-24"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/apis/serverlessdeployment/v1/pipelines/" + tea.StringValue(openapiutil.GetEncodeParam(name)) + "/status"),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &PutPipelineStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) PutPipelineTemplate(name *string, request *PutPipelineTemplateRequest) (_result *PutPipelineTemplateResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &PutPipelineTemplateResponse{}
+	_body, _err := client.PutPipelineTemplateWithOptions(name, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) PutPipelineTemplateWithOptions(name *string, request *PutPipelineTemplateRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *PutPipelineTemplateResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Force)) {
+		query["force"] = request.Force
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(request.Body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("PutPipelineTemplate"),
+		Version:     tea.String("2021-09-24"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/apis/serverlessdeployment/v1/pipelinetemplates/" + tea.StringValue(openapiutil.GetEncodeParam(name))),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &PutPipelineTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
 func (client *Client) PutService(name *string, request *PutServiceRequest) (_result *PutServiceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -4635,6 +4937,100 @@ func (client *Client) PutServiceWithOptions(name *string, request *PutServiceReq
 		BodyType:    tea.String("json"),
 	}
 	_result = &PutServiceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) PutTaskStatus(name *string, request *PutTaskStatusRequest) (_result *PutTaskStatusResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &PutTaskStatusResponse{}
+	_body, _err := client.PutTaskStatusWithOptions(name, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) PutTaskStatusWithOptions(name *string, request *PutTaskStatusRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *PutTaskStatusResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Force)) {
+		query["force"] = request.Force
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(request.Body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("PutTaskStatus"),
+		Version:     tea.String("2021-09-24"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/apis/serverlessdeployment/v1/tasks/" + tea.StringValue(openapiutil.GetEncodeParam(name)) + "/status"),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &PutTaskStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) PutTaskTemplate(name *string, request *PutTaskTemplateRequest) (_result *PutTaskTemplateResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &PutTaskTemplateResponse{}
+	_body, _err := client.PutTaskTemplateWithOptions(name, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) PutTaskTemplateWithOptions(name *string, request *PutTaskTemplateRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *PutTaskTemplateResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Force)) {
+		query["force"] = request.Force
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(request.Body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("PutTaskTemplate"),
+		Version:     tea.String("2021-09-24"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/apis/serverlessdeployment/v1/tasktemplates/" + tea.StringValue(openapiutil.GetEncodeParam(name))),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &PutTaskTemplateResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
