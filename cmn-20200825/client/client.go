@@ -5,36 +5,25 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/client"
+	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
 	openapiutil "github.com/alibabacloud-go/openapi-util/service"
-	util "github.com/alibabacloud-go/tea-utils/service"
+	util "github.com/alibabacloud-go/tea-utils/v2/service"
 	"github.com/alibabacloud-go/tea/tea"
 )
 
 type Agent struct {
-	// 探针Id
-	AgentId *string `json:"AgentId,omitempty" xml:"AgentId,omitempty"`
-	// 探针名称
-	AgentName *string `json:"AgentName,omitempty" xml:"AgentName,omitempty"`
-	// 探针版本
-	AgentVersion *string `json:"AgentVersion,omitempty" xml:"AgentVersion,omitempty"`
-	// cpu使用率
-	CpuUsage *string `json:"CpuUsage,omitempty" xml:"CpuUsage,omitempty"`
-	// 磁盘利用率
-	DiskUsage *string `json:"DiskUsage,omitempty" xml:"DiskUsage,omitempty"`
-	// 更新时间
-	GmtModify *string `json:"GmtModify,omitempty" xml:"GmtModify,omitempty"`
-	// 探针IP
-	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	// 系统版本
-	KernelVersion *string `json:"KernelVersion,omitempty" xml:"KernelVersion,omitempty"`
-	// 内存使用率
-	MemoryUsage *string `json:"MemoryUsage,omitempty" xml:"MemoryUsage,omitempty"`
-	// 安全域
+	AgentId        *string `json:"AgentId,omitempty" xml:"AgentId,omitempty"`
+	AgentName      *string `json:"AgentName,omitempty" xml:"AgentName,omitempty"`
+	AgentVersion   *string `json:"AgentVersion,omitempty" xml:"AgentVersion,omitempty"`
+	CpuUsage       *string `json:"CpuUsage,omitempty" xml:"CpuUsage,omitempty"`
+	DiskUsage      *string `json:"DiskUsage,omitempty" xml:"DiskUsage,omitempty"`
+	GmtModify      *string `json:"GmtModify,omitempty" xml:"GmtModify,omitempty"`
+	Ip             *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	KernelVersion  *string `json:"KernelVersion,omitempty" xml:"KernelVersion,omitempty"`
+	MemoryUsage    *string `json:"MemoryUsage,omitempty" xml:"MemoryUsage,omitempty"`
 	SecurityDomain *string `json:"SecurityDomain,omitempty" xml:"SecurityDomain,omitempty"`
-	// 探针状态
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status         *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s Agent) String() string {
@@ -101,20 +90,13 @@ func (s *Agent) SetStatus(v string) *Agent {
 }
 
 type AgentsTask struct {
-	// 操作类型
-	ActionType *string `json:"ActionType,omitempty" xml:"ActionType,omitempty"`
-	// 探针类型
-	AgentType *string `json:"AgentType,omitempty" xml:"AgentType,omitempty"`
-	// 任务ID
+	ActionType   *string `json:"ActionType,omitempty" xml:"ActionType,omitempty"`
+	AgentType    *string `json:"AgentType,omitempty" xml:"AgentType,omitempty"`
 	AgentsTaskId *string `json:"AgentsTaskId,omitempty" xml:"AgentsTaskId,omitempty"`
-	// 创建时间
-	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// 更新时间
-	GmtModify *string `json:"GmtModify,omitempty" xml:"GmtModify,omitempty"`
-	// 任务参数
-	Params *string `json:"Params,omitempty" xml:"Params,omitempty"`
-	// 任务状态
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	GmtCreate    *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	GmtModify    *string `json:"GmtModify,omitempty" xml:"GmtModify,omitempty"`
+	Params       *string `json:"Params,omitempty" xml:"Params,omitempty"`
+	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s AgentsTask) String() string {
@@ -161,26 +143,16 @@ func (s *AgentsTask) SetStatus(v string) *AgentsTask {
 }
 
 type AggregateData struct {
-	// 描述
-	AggregateDataDescription *string `json:"AggregateDataDescription,omitempty" xml:"AggregateDataDescription,omitempty"`
-	// 聚合数据ID
-	AggregateDataId *string `json:"AggregateDataId,omitempty" xml:"AggregateDataId,omitempty"`
-	// 聚合数据名称
-	AggregateDataName *string `json:"AggregateDataName,omitempty" xml:"AggregateDataName,omitempty"`
-	// 聚合方式列表
-	AggregateModeList []*string `json:"AggregateModeList,omitempty" xml:"AggregateModeList,omitempty" type:"Repeated"`
-	// 数据项
-	DataItem *string `json:"DataItem,omitempty" xml:"DataItem,omitempty"`
-	// 聚合设备ID列表
-	DeviceIdList []*string `json:"DeviceIdList,omitempty" xml:"DeviceIdList,omitempty" type:"Repeated"`
-	// 创建时间
-	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// 修改时间
-	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// 是否聚合全部设备
-	IsAllDevice *int32 `json:"IsAllDevice,omitempty" xml:"IsAllDevice,omitempty"`
-	// 监控项ID
-	MonitorItemId *string `json:"MonitorItemId,omitempty" xml:"MonitorItemId,omitempty"`
+	AggregateDataDescription *string   `json:"AggregateDataDescription,omitempty" xml:"AggregateDataDescription,omitempty"`
+	AggregateDataId          *string   `json:"AggregateDataId,omitempty" xml:"AggregateDataId,omitempty"`
+	AggregateDataName        *string   `json:"AggregateDataName,omitempty" xml:"AggregateDataName,omitempty"`
+	AggregateModeList        []*string `json:"AggregateModeList,omitempty" xml:"AggregateModeList,omitempty" type:"Repeated"`
+	DataItem                 *string   `json:"DataItem,omitempty" xml:"DataItem,omitempty"`
+	DeviceIdList             []*string `json:"DeviceIdList,omitempty" xml:"DeviceIdList,omitempty" type:"Repeated"`
+	GmtCreate                *string   `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	GmtModified              *string   `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	IsAllDevice              *int32    `json:"IsAllDevice,omitempty" xml:"IsAllDevice,omitempty"`
+	MonitorItemId            *string   `json:"MonitorItemId,omitempty" xml:"MonitorItemId,omitempty"`
 }
 
 func (s AggregateData) String() string {
@@ -242,14 +214,10 @@ func (s *AggregateData) SetMonitorItemId(v string) *AggregateData {
 }
 
 type AlarmOverview struct {
-	// 告警总览ID
-	AlarmOverviewId *string `json:"AlarmOverviewId,omitempty" xml:"AlarmOverviewId,omitempty"`
-	// 告警总览名称
-	AlarmOverviewName *string `json:"AlarmOverviewName,omitempty" xml:"AlarmOverviewName,omitempty"`
-	// 过滤条件列表
-	ConditionList []*AlarmOverviewConditionList `json:"ConditionList,omitempty" xml:"ConditionList,omitempty" type:"Repeated"`
-	// 排序序号
-	SerialNumber *int32 `json:"SerialNumber,omitempty" xml:"SerialNumber,omitempty"`
+	AlarmOverviewId   *string                       `json:"AlarmOverviewId,omitempty" xml:"AlarmOverviewId,omitempty"`
+	AlarmOverviewName *string                       `json:"AlarmOverviewName,omitempty" xml:"AlarmOverviewName,omitempty"`
+	ConditionList     []*AlarmOverviewConditionList `json:"ConditionList,omitempty" xml:"ConditionList,omitempty" type:"Repeated"`
+	SerialNumber      *int32                        `json:"SerialNumber,omitempty" xml:"SerialNumber,omitempty"`
 }
 
 func (s AlarmOverview) String() string {
@@ -281,9 +249,7 @@ func (s *AlarmOverview) SetSerialNumber(v int32) *AlarmOverview {
 }
 
 type AlarmOverviewConditionList struct {
-	// 过滤条件字段
-	ConditionName *string `json:"ConditionName,omitempty" xml:"ConditionName,omitempty"`
-	// 过滤条件值
+	ConditionName  *string `json:"ConditionName,omitempty" xml:"ConditionName,omitempty"`
 	ConditionValue *string `json:"ConditionValue,omitempty" xml:"ConditionValue,omitempty"`
 }
 
@@ -306,18 +272,12 @@ func (s *AlarmOverviewConditionList) SetConditionValue(v string) *AlarmOverviewC
 }
 
 type AtomicStep struct {
-	// 步骤说明
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 步骤入参
-	Input []*AtomicStepInput `json:"Input,omitempty" xml:"Input,omitempty" type:"Repeated"`
-	// 步骤出参
-	Output []*AtomicStepOutput `json:"Output,omitempty" xml:"Output,omitempty" type:"Repeated"`
-	// 步骤id
-	StepId *string `json:"StepId,omitempty" xml:"StepId,omitempty"`
-	// 步骤名称
-	StepName *string `json:"StepName,omitempty" xml:"StepName,omitempty"`
-	// 步骤类型
-	StepType *string `json:"StepType,omitempty" xml:"StepType,omitempty"`
+	Description *string             `json:"Description,omitempty" xml:"Description,omitempty"`
+	Input       []*AtomicStepInput  `json:"Input,omitempty" xml:"Input,omitempty" type:"Repeated"`
+	Output      []*AtomicStepOutput `json:"Output,omitempty" xml:"Output,omitempty" type:"Repeated"`
+	StepId      *string             `json:"StepId,omitempty" xml:"StepId,omitempty"`
+	StepName    *string             `json:"StepName,omitempty" xml:"StepName,omitempty"`
+	StepType    *string             `json:"StepType,omitempty" xml:"StepType,omitempty"`
 }
 
 func (s AtomicStep) String() string {
@@ -359,14 +319,10 @@ func (s *AtomicStep) SetStepType(v string) *AtomicStep {
 }
 
 type AtomicStepInput struct {
-	// 参数说明
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 参数名称
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 参数示例
-	Sample *string `json:"Sample,omitempty" xml:"Sample,omitempty"`
-	// 参数类型
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Sample      *string `json:"Sample,omitempty" xml:"Sample,omitempty"`
+	Type        *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s AtomicStepInput) String() string {
@@ -398,14 +354,10 @@ func (s *AtomicStepInput) SetType(v string) *AtomicStepInput {
 }
 
 type AtomicStepOutput struct {
-	// 参数说明
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 参数名称
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 参数示例
-	Sample *string `json:"Sample,omitempty" xml:"Sample,omitempty"`
-	// 参数类型
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Sample      *string `json:"Sample,omitempty" xml:"Sample,omitempty"`
+	Type        *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s AtomicStepOutput) String() string {
@@ -437,36 +389,21 @@ func (s *AtomicStepOutput) SetType(v string) *AtomicStepOutput {
 }
 
 type BusinessType struct {
-	// 业务类型缩写
-	Abbr *string `json:"Abbr,omitempty" xml:"Abbr,omitempty"`
-	// 业务类型地址申请完对应的动作，DHCP表示需要触发DHCP变更
-	ActionFlag *string `json:"ActionFlag,omitempty" xml:"ActionFlag,omitempty"`
-	// 配置规范对象
+	Abbr           *string `json:"Abbr,omitempty" xml:"Abbr,omitempty"`
+	ActionFlag     *string `json:"ActionFlag,omitempty" xml:"ActionFlag,omitempty"`
 	BusinessTypeId *string `json:"BusinessTypeId,omitempty" xml:"BusinessTypeId,omitempty"`
-	// 创建时间
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// 分配方向，0表示正向，1表示反向
-	Direction *int64 `json:"Direction,omitempty" xml:"Direction,omitempty"`
-	// 网关地址位置，正数为正数序号，负数为倒数序号
-	Gateway *int64 `json:"Gateway,omitempty" xml:"Gateway,omitempty"`
-	// 有效时间
-	LeaseTime *string `json:"LeaseTime,omitempty" xml:"LeaseTime,omitempty"`
-	// 掩码
-	Mask *string `json:"Mask,omitempty" xml:"Mask,omitempty"`
-	// 业务类型名称
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 保留地址数目
-	ReserveNumber *int64 `json:"ReserveNumber,omitempty" xml:"ReserveNumber,omitempty"`
-	// 是否复用 reuse/single
-	Sharing *string `json:"Sharing,omitempty" xml:"Sharing,omitempty"`
-	// 业务类型大类
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// 更新时间
-	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	// Vlan
-	Vlan *string `json:"Vlan,omitempty" xml:"Vlan,omitempty"`
-	// 绑定的园区类型
-	ZoneType *string `json:"ZoneType,omitempty" xml:"ZoneType,omitempty"`
+	CreateTime     *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Direction      *int64  `json:"Direction,omitempty" xml:"Direction,omitempty"`
+	Gateway        *int64  `json:"Gateway,omitempty" xml:"Gateway,omitempty"`
+	LeaseTime      *string `json:"LeaseTime,omitempty" xml:"LeaseTime,omitempty"`
+	Mask           *string `json:"Mask,omitempty" xml:"Mask,omitempty"`
+	Name           *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	ReserveNumber  *int64  `json:"ReserveNumber,omitempty" xml:"ReserveNumber,omitempty"`
+	Sharing        *string `json:"Sharing,omitempty" xml:"Sharing,omitempty"`
+	Type           *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	UpdateTime     *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	Vlan           *string `json:"Vlan,omitempty" xml:"Vlan,omitempty"`
+	ZoneType       *string `json:"ZoneType,omitempty" xml:"ZoneType,omitempty"`
 }
 
 func (s BusinessType) String() string {
@@ -553,32 +490,19 @@ func (s *BusinessType) SetZoneType(v string) *BusinessType {
 }
 
 type CliTask struct {
-	// agent IP
-	AgentIp *string `json:"AgentIp,omitempty" xml:"AgentIp,omitempty"`
-	// cli任务id
-	CliTaskId *string `json:"CliTaskId,omitempty" xml:"CliTaskId,omitempty"`
-	// cli命令
-	Command *string `json:"Command,omitempty" xml:"Command,omitempty"`
-	// 设备id
-	DeviceId *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
-	// 创建时间
-	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// 修改时间
-	GmtModify *string `json:"GmtModify,omitempty" xml:"GmtModify,omitempty"`
-	// 设备回显
-	Output *string `json:"Output,omitempty" xml:"Output,omitempty"`
-	// 协议
-	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
-	// 任务错误码
+	AgentIp      *string `json:"AgentIp,omitempty" xml:"AgentIp,omitempty"`
+	CliTaskId    *string `json:"CliTaskId,omitempty" xml:"CliTaskId,omitempty"`
+	Command      *string `json:"Command,omitempty" xml:"Command,omitempty"`
+	DeviceId     *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
+	GmtCreate    *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	GmtModify    *string `json:"GmtModify,omitempty" xml:"GmtModify,omitempty"`
+	Output       *string `json:"Output,omitempty" xml:"Output,omitempty"`
+	Protocol     *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
 	ResponseCode *string `json:"ResponseCode,omitempty" xml:"ResponseCode,omitempty"`
-	// 任务结果
-	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
-	// 会话id
-	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
-	// cli任务状态
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// 超时参数
-	Timeout *int32 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+	Result       *string `json:"Result,omitempty" xml:"Result,omitempty"`
+	SessionId    *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Timeout      *int32  `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
 }
 
 func (s CliTask) String() string {
@@ -655,26 +579,16 @@ func (s *CliTask) SetTimeout(v int32) *CliTask {
 }
 
 type ConfigurationSpecification struct {
-	// 架构类型
-	Architecture *string `json:"Architecture,omitempty" xml:"Architecture,omitempty"`
-	// 配置规范uid
-	ConfigurationSpecificationId *string `json:"ConfigurationSpecificationId,omitempty" xml:"ConfigurationSpecificationId,omitempty"`
-	// 创建时间
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// 型号
-	Model *string `json:"Model,omitempty" xml:"Model,omitempty"`
-	// 相关变量
-	RelatedVariate []*string `json:"RelatedVariate,omitempty" xml:"RelatedVariate,omitempty" type:"Repeated"`
-	// 角色
-	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
-	// 配置规范内容
-	SpecificationContent *string `json:"SpecificationContent,omitempty" xml:"SpecificationContent,omitempty"`
-	// 配置规范名字
-	SpecificationName *string `json:"SpecificationName,omitempty" xml:"SpecificationName,omitempty"`
-	// 更新时间
-	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	// 厂商
-	Vendor *string `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
+	Architecture                 *string   `json:"Architecture,omitempty" xml:"Architecture,omitempty"`
+	ConfigurationSpecificationId *string   `json:"ConfigurationSpecificationId,omitempty" xml:"ConfigurationSpecificationId,omitempty"`
+	CreateTime                   *string   `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Model                        *string   `json:"Model,omitempty" xml:"Model,omitempty"`
+	RelatedVariate               []*string `json:"RelatedVariate,omitempty" xml:"RelatedVariate,omitempty" type:"Repeated"`
+	Role                         *string   `json:"Role,omitempty" xml:"Role,omitempty"`
+	SpecificationContent         *string   `json:"SpecificationContent,omitempty" xml:"SpecificationContent,omitempty"`
+	SpecificationName            *string   `json:"SpecificationName,omitempty" xml:"SpecificationName,omitempty"`
+	UpdateTime                   *string   `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	Vendor                       *string   `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
 }
 
 func (s ConfigurationSpecification) String() string {
@@ -736,18 +650,12 @@ func (s *ConfigurationSpecification) SetVendor(v string) *ConfigurationSpecifica
 }
 
 type ConfigurationVariate struct {
-	// 描述变量
-	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// 资源一级ID
+	Comment                *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
 	ConfigurationVariateId *string `json:"ConfigurationVariateId,omitempty" xml:"ConfigurationVariateId,omitempty"`
-	// 创建时间
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// python转换函数
-	FormatFunction *string `json:"FormatFunction,omitempty" xml:"FormatFunction,omitempty"`
-	// 更新时间
-	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	// 变量名字
-	VariateName *string `json:"VariateName,omitempty" xml:"VariateName,omitempty"`
+	CreateTime             *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	FormatFunction         *string `json:"FormatFunction,omitempty" xml:"FormatFunction,omitempty"`
+	UpdateTime             *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	VariateName            *string `json:"VariateName,omitempty" xml:"VariateName,omitempty"`
 }
 
 func (s ConfigurationVariate) String() string {
@@ -789,30 +697,18 @@ func (s *ConfigurationVariate) SetVariateName(v string) *ConfigurationVariate {
 }
 
 type ConnectionPolicy struct {
-	// 连接策略算法
-	Algorithm *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
-	// 资源一级ID
-	ConnectionPolicyId *string `json:"ConnectionPolicyId,omitempty" xml:"ConnectionPolicyId,omitempty"`
-	// 创建时间
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// 下联设备uid
-	DownlinkDeviceId *string `json:"DownlinkDeviceId,omitempty" xml:"DownlinkDeviceId,omitempty"`
-	// 下联模块uid
-	DownlinkModuleId *string `json:"DownlinkModuleId,omitempty" xml:"DownlinkModuleId,omitempty"`
-	// 连接策略uid
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// 连接数
-	LinkCount *int64 `json:"LinkCount,omitempty" xml:"LinkCount,omitempty"`
-	// 连接策略名字
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 架构迭代uid
+	Algorithm                      *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
+	ConnectionPolicyId             *string `json:"ConnectionPolicyId,omitempty" xml:"ConnectionPolicyId,omitempty"`
+	CreateTime                     *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	DownlinkDeviceId               *string `json:"DownlinkDeviceId,omitempty" xml:"DownlinkDeviceId,omitempty"`
+	DownlinkModuleId               *string `json:"DownlinkModuleId,omitempty" xml:"DownlinkModuleId,omitempty"`
+	Id                             *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	LinkCount                      *int64  `json:"LinkCount,omitempty" xml:"LinkCount,omitempty"`
+	Name                           *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	NetworkArchitectureIterationId *string `json:"NetworkArchitectureIterationId,omitempty" xml:"NetworkArchitectureIterationId,omitempty"`
-	// 更新时间
-	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	// 上联设备uid
-	UplinkDeviceId *string `json:"UplinkDeviceId,omitempty" xml:"UplinkDeviceId,omitempty"`
-	// 上联模块uid
-	UplinkModelId *string `json:"UplinkModelId,omitempty" xml:"UplinkModelId,omitempty"`
+	UpdateTime                     *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	UplinkDeviceId                 *string `json:"UplinkDeviceId,omitempty" xml:"UplinkDeviceId,omitempty"`
+	UplinkModelId                  *string `json:"UplinkModelId,omitempty" xml:"UplinkModelId,omitempty"`
 }
 
 func (s ConnectionPolicy) String() string {
@@ -884,18 +780,12 @@ func (s *ConnectionPolicy) SetUplinkModelId(v string) *ConnectionPolicy {
 }
 
 type DataView struct {
-	// 图表列表
-	DataViewChartList []*DataViewChart `json:"DataViewChartList,omitempty" xml:"DataViewChartList,omitempty" type:"Repeated"`
-	// 描述
-	DataViewDescription *string `json:"DataViewDescription,omitempty" xml:"DataViewDescription,omitempty"`
-	// 聚合数据
-	DataViewId *string `json:"DataViewId,omitempty" xml:"DataViewId,omitempty"`
-	// 数据视图名称
-	DataViewName *string `json:"DataViewName,omitempty" xml:"DataViewName,omitempty"`
-	// 创建时间
-	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// 修改时间
-	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	DataViewChartList   []*DataViewChart `json:"DataViewChartList,omitempty" xml:"DataViewChartList,omitempty" type:"Repeated"`
+	DataViewDescription *string          `json:"DataViewDescription,omitempty" xml:"DataViewDescription,omitempty"`
+	DataViewId          *string          `json:"DataViewId,omitempty" xml:"DataViewId,omitempty"`
+	DataViewName        *string          `json:"DataViewName,omitempty" xml:"DataViewName,omitempty"`
+	GmtCreate           *string          `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	GmtModified         *string          `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
 }
 
 func (s DataView) String() string {
@@ -937,18 +827,12 @@ func (s *DataView) SetGmtModified(v string) *DataView {
 }
 
 type DataViewChart struct {
-	// 图表类型
-	ChartType *string `json:"ChartType,omitempty" xml:"ChartType,omitempty"`
-	// 数据视图ID
-	DataViewId *string `json:"DataViewId,omitempty" xml:"DataViewId,omitempty"`
-	// 数据源类型
+	ChartType      *string `json:"ChartType,omitempty" xml:"ChartType,omitempty"`
+	DataViewId     *string `json:"DataViewId,omitempty" xml:"DataViewId,omitempty"`
 	DataViewSource *string `json:"DataViewSource,omitempty" xml:"DataViewSource,omitempty"`
-	// 创建时间
-	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// 修改时间
-	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// 布局配置
-	Grid *string `json:"Grid,omitempty" xml:"Grid,omitempty"`
+	GmtCreate      *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	GmtModified    *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	Grid           *string `json:"Grid,omitempty" xml:"Grid,omitempty"`
 }
 
 func (s DataViewChart) String() string {
@@ -990,22 +874,14 @@ func (s *DataViewChart) SetGrid(v string) *DataViewChart {
 }
 
 type DedicatedLine struct {
-	// 宽带（Mbps）
-	Bandwidth *int32 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	// 关联设备ID
-	DeviceId *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
-	// 关联设备端口
-	DevicePort *string `json:"DevicePort,omitempty" xml:"DevicePort,omitempty"`
-	// 运营商
-	Isp *string `json:"Isp,omitempty" xml:"Isp,omitempty"`
-	// 专线网关
+	Bandwidth   *int32  `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
+	DeviceId    *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
+	DevicePort  *string `json:"DevicePort,omitempty" xml:"DevicePort,omitempty"`
+	Isp         *string `json:"Isp,omitempty" xml:"Isp,omitempty"`
 	LineGateway *string `json:"LineGateway,omitempty" xml:"LineGateway,omitempty"`
-	// 物理空间专线ID
-	LineId *string `json:"LineId,omitempty" xml:"LineId,omitempty"`
-	// 专线IP
-	LineIp *string `json:"LineIp,omitempty" xml:"LineIp,omitempty"`
-	// 专线角色
-	LineRole *string `json:"LineRole,omitempty" xml:"LineRole,omitempty"`
+	LineId      *string `json:"LineId,omitempty" xml:"LineId,omitempty"`
+	LineIp      *string `json:"LineIp,omitempty" xml:"LineIp,omitempty"`
+	LineRole    *string `json:"LineRole,omitempty" xml:"LineRole,omitempty"`
 }
 
 func (s DedicatedLine) String() string {
@@ -1057,54 +933,30 @@ func (s *DedicatedLine) SetLineRole(v string) *DedicatedLine {
 }
 
 type Device struct {
-	// 账号类型
-	AccountType *string `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
-	// snmp版本号
-	AccountVersion *string `json:"AccountVersion,omitempty" xml:"AccountVersion,omitempty"`
-	// Auth PassPhrase
-	AuthPassPhrase *string `json:"AuthPassPhrase,omitempty" xml:"AuthPassPhrase,omitempty"`
-	// Auth Protocol
-	AuthProtocol *string `json:"AuthProtocol,omitempty" xml:"AuthProtocol,omitempty"`
-	// community
-	Community *string `json:"Community,omitempty" xml:"Community,omitempty"`
-	// 设备形态
-	DeviceForm *string `json:"DeviceForm,omitempty" xml:"DeviceForm,omitempty"`
-	// 设备ID
-	DeviceId *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
-	// 设备IP
-	DeviceIp *string `json:"DeviceIp,omitempty" xml:"DeviceIp,omitempty"`
-	// 设备MAC地址
-	DeviceMac *string `json:"DeviceMac,omitempty" xml:"DeviceMac,omitempty"`
-	// 设备SN
-	DeviceSn *string `json:"DeviceSn,omitempty" xml:"DeviceSn,omitempty"`
-	// 主机名
-	Hostname *string `json:"Hostname,omitempty" xml:"Hostname,omitempty"`
-	// 设备型号
-	Model *string `json:"Model,omitempty" xml:"Model,omitempty"`
-	// Privacy PassPhrase
+	AccountType       *string `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
+	AccountVersion    *string `json:"AccountVersion,omitempty" xml:"AccountVersion,omitempty"`
+	AuthPassPhrase    *string `json:"AuthPassPhrase,omitempty" xml:"AuthPassPhrase,omitempty"`
+	AuthProtocol      *string `json:"AuthProtocol,omitempty" xml:"AuthProtocol,omitempty"`
+	Community         *string `json:"Community,omitempty" xml:"Community,omitempty"`
+	DeviceForm        *string `json:"DeviceForm,omitempty" xml:"DeviceForm,omitempty"`
+	DeviceId          *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
+	DeviceIp          *string `json:"DeviceIp,omitempty" xml:"DeviceIp,omitempty"`
+	DeviceMac         *string `json:"DeviceMac,omitempty" xml:"DeviceMac,omitempty"`
+	DeviceSn          *string `json:"DeviceSn,omitempty" xml:"DeviceSn,omitempty"`
+	Hostname          *string `json:"Hostname,omitempty" xml:"Hostname,omitempty"`
+	Model             *string `json:"Model,omitempty" xml:"Model,omitempty"`
 	PrivacyPassPhrase *string `json:"PrivacyPassPhrase,omitempty" xml:"PrivacyPassPhrase,omitempty"`
-	// Privacy Protocol
-	PrivacyProtocol *string `json:"PrivacyProtocol,omitempty" xml:"PrivacyProtocol,omitempty"`
-	// 设备安全域
-	SecurityDomain *string `json:"SecurityDomain,omitempty" xml:"SecurityDomain,omitempty"`
-	// 安全等级
-	SecurityLevel *string `json:"SecurityLevel,omitempty" xml:"SecurityLevel,omitempty"`
-	// 设备所属物理空间
-	Space *string `json:"Space,omitempty" xml:"Space,omitempty"`
-	// SSH登录账号
-	SshAccount *string `json:"SshAccount,omitempty" xml:"SshAccount,omitempty"`
-	// SSH登录密码
-	SshPassword *string `json:"SshPassword,omitempty" xml:"SshPassword,omitempty"`
-	// 设备状态
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// TELNET登录账号
-	TelnetAccount *string `json:"TelnetAccount,omitempty" xml:"TelnetAccount,omitempty"`
-	// TELNET登录密码
-	TelnetPassword *string `json:"TelnetPassword,omitempty" xml:"TelnetPassword,omitempty"`
-	// 用户名
-	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
-	// 设备厂商
-	Vendor *string `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
+	PrivacyProtocol   *string `json:"PrivacyProtocol,omitempty" xml:"PrivacyProtocol,omitempty"`
+	SecurityDomain    *string `json:"SecurityDomain,omitempty" xml:"SecurityDomain,omitempty"`
+	SecurityLevel     *string `json:"SecurityLevel,omitempty" xml:"SecurityLevel,omitempty"`
+	Space             *string `json:"Space,omitempty" xml:"Space,omitempty"`
+	SshAccount        *string `json:"SshAccount,omitempty" xml:"SshAccount,omitempty"`
+	SshPassword       *string `json:"SshPassword,omitempty" xml:"SshPassword,omitempty"`
+	Status            *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	TelnetAccount     *string `json:"TelnetAccount,omitempty" xml:"TelnetAccount,omitempty"`
+	TelnetPassword    *string `json:"TelnetPassword,omitempty" xml:"TelnetPassword,omitempty"`
+	UserName          *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	Vendor            *string `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
 }
 
 func (s Device) String() string {
@@ -1236,15 +1088,10 @@ func (s *Device) SetVendor(v string) *Device {
 }
 
 type DeviceForm struct {
-	// 是否需要配置账号信息
-	AccountConfig *string `json:"AccountConfig,omitempty" xml:"AccountConfig,omitempty"`
-	// 是否需要展示配置备份
-	ConfigCompare *string `json:"ConfigCompare,omitempty" xml:"ConfigCompare,omitempty"`
-	// 设备形态ID
-	FormId *string `json:"FormId,omitempty" xml:"FormId,omitempty"`
-	// 设备形态名称
-	FormName *string `json:"FormName,omitempty" xml:"FormName,omitempty"`
-	// 设备形态属性列表
+	AccountConfig  *string               `json:"AccountConfig,omitempty" xml:"AccountConfig,omitempty"`
+	ConfigCompare  *string               `json:"ConfigCompare,omitempty" xml:"ConfigCompare,omitempty"`
+	FormId         *string               `json:"FormId,omitempty" xml:"FormId,omitempty"`
+	FormName       *string               `json:"FormName,omitempty" xml:"FormName,omitempty"`
 	PropertiesList []*DeviceFormProperty `json:"PropertiesList,omitempty" xml:"PropertiesList,omitempty" type:"Repeated"`
 }
 
@@ -1282,28 +1129,17 @@ func (s *DeviceForm) SetPropertiesList(v []*DeviceFormProperty) *DeviceForm {
 }
 
 type DeviceFormProperty struct {
-	// 属性描述
-	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// 属性关键词
-	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
-	// 前端界面控件占位符文字
-	Placeholder *bool `json:"Placeholder,omitempty" xml:"Placeholder,omitempty"`
-	// 属性是否必填
-	Required *bool `json:"Required,omitempty" xml:"Required,omitempty"`
-	// 属性是否作为界面查询条件
-	SearchSupported *bool `json:"SearchSupported,omitempty" xml:"SearchSupported,omitempty"`
-	// 属性展示的次序
-	Sequence *int32 `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
-	// 前端界面是否展示为表格列
-	TableVisible *bool `json:"TableVisible,omitempty" xml:"TableVisible,omitempty"`
-	// 属性是否需要唯一检查
-	Uniqueness *bool `json:"Uniqueness,omitempty" xml:"Uniqueness,omitempty"`
-	// 属性值来源具体的方式
-	ValueReference *string `json:"ValueReference,omitempty" xml:"ValueReference,omitempty"`
-	// 属性值来源类型：枚举、接口等
-	ValueSource *string `json:"ValueSource,omitempty" xml:"ValueSource,omitempty"`
-	// 属性类型，JSON或者分隔符
-	ValueType *string `json:"ValueType,omitempty" xml:"ValueType,omitempty"`
+	Content         *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	Keyword         *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	Placeholder     *bool   `json:"Placeholder,omitempty" xml:"Placeholder,omitempty"`
+	Required        *bool   `json:"Required,omitempty" xml:"Required,omitempty"`
+	SearchSupported *bool   `json:"SearchSupported,omitempty" xml:"SearchSupported,omitempty"`
+	Sequence        *int32  `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
+	TableVisible    *bool   `json:"TableVisible,omitempty" xml:"TableVisible,omitempty"`
+	Uniqueness      *bool   `json:"Uniqueness,omitempty" xml:"Uniqueness,omitempty"`
+	ValueReference  *string `json:"ValueReference,omitempty" xml:"ValueReference,omitempty"`
+	ValueSource     *string `json:"ValueSource,omitempty" xml:"ValueSource,omitempty"`
+	ValueType       *string `json:"ValueType,omitempty" xml:"ValueType,omitempty"`
 }
 
 func (s DeviceFormProperty) String() string {
@@ -1370,17 +1206,11 @@ func (s *DeviceFormProperty) SetValueType(v string) *DeviceFormProperty {
 }
 
 type DeviceProperty struct {
-	// 属性值
-	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// 设备形态
+	Content    *string `json:"Content,omitempty" xml:"Content,omitempty"`
 	DeviceForm *string `json:"DeviceForm,omitempty" xml:"DeviceForm,omitempty"`
-	// 属性格式，包括JSON和SPLITTER（分隔符）
-	Format *string `json:"Format,omitempty" xml:"Format,omitempty"`
-	// 属性展示名称
-	NameCn *string `json:"NameCn,omitempty" xml:"NameCn,omitempty"`
-	// 属性英文主键
-	NameEn *string `json:"NameEn,omitempty" xml:"NameEn,omitempty"`
-	// 设备属性ID
+	Format     *string `json:"Format,omitempty" xml:"Format,omitempty"`
+	NameCn     *string `json:"NameCn,omitempty" xml:"NameCn,omitempty"`
+	NameEn     *string `json:"NameEn,omitempty" xml:"NameEn,omitempty"`
 	PropertyId *string `json:"PropertyId,omitempty" xml:"PropertyId,omitempty"`
 }
 
@@ -1423,38 +1253,22 @@ func (s *DeviceProperty) SetPropertyId(v string) *DeviceProperty {
 }
 
 type DeviceResource struct {
-	// 架构资源ID
-	ArchId *string `json:"ArchId,omitempty" xml:"ArchId,omitempty"`
-	// 业务类型
-	BusinessType *string `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
-	// 业务类型id
-	BusinessTypeId *string `json:"BusinessTypeId,omitempty" xml:"BusinessTypeId,omitempty"`
-	// 业务参数
-	BusinessTypeParams *string `json:"BusinessTypeParams,omitempty" xml:"BusinessTypeParams,omitempty"`
-	// 创建时间
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// 更新数据
-	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// 设备资源
-	DeviceResource []*DeviceResourceDeviceResource `json:"DeviceResource,omitempty" xml:"DeviceResource,omitempty" type:"Repeated"`
-	// 设备资源id
-	DeviceResourceId *string `json:"DeviceResourceId,omitempty" xml:"DeviceResourceId,omitempty"`
-	// 资源一级ID
-	DeviceResourceIds []*string `json:"DeviceResourceIds,omitempty" xml:"DeviceResourceIds,omitempty" type:"Repeated"`
-	// 操作类型
-	DownloadType *string `json:"DownloadType,omitempty" xml:"DownloadType,omitempty"`
-	// ip类型
-	IpType *string `json:"IpType,omitempty" xml:"IpType,omitempty"`
-	// list类型
-	ListType *string `json:"ListType,omitempty" xml:"ListType,omitempty"`
-	// Loopback口
-	LoopbackPort *string `json:"LoopbackPort,omitempty" xml:"LoopbackPort,omitempty"`
-	// 位置
-	NetLocation *string `json:"NetLocation,omitempty" xml:"NetLocation,omitempty"`
-	// 建设项目id
-	SetupProjectId *string `json:"SetupProjectId,omitempty" xml:"SetupProjectId,omitempty"`
-	// 操作类型
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	ArchId             *string                         `json:"ArchId,omitempty" xml:"ArchId,omitempty"`
+	BusinessType       *string                         `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
+	BusinessTypeId     *string                         `json:"BusinessTypeId,omitempty" xml:"BusinessTypeId,omitempty"`
+	BusinessTypeParams *string                         `json:"BusinessTypeParams,omitempty" xml:"BusinessTypeParams,omitempty"`
+	CreateTime         *string                         `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Data               *string                         `json:"Data,omitempty" xml:"Data,omitempty"`
+	DeviceResource     []*DeviceResourceDeviceResource `json:"DeviceResource,omitempty" xml:"DeviceResource,omitempty" type:"Repeated"`
+	DeviceResourceId   *string                         `json:"DeviceResourceId,omitempty" xml:"DeviceResourceId,omitempty"`
+	DeviceResourceIds  []*string                       `json:"DeviceResourceIds,omitempty" xml:"DeviceResourceIds,omitempty" type:"Repeated"`
+	DownloadType       *string                         `json:"DownloadType,omitempty" xml:"DownloadType,omitempty"`
+	IpType             *string                         `json:"IpType,omitempty" xml:"IpType,omitempty"`
+	ListType           *string                         `json:"ListType,omitempty" xml:"ListType,omitempty"`
+	LoopbackPort       *string                         `json:"LoopbackPort,omitempty" xml:"LoopbackPort,omitempty"`
+	NetLocation        *string                         `json:"NetLocation,omitempty" xml:"NetLocation,omitempty"`
+	SetupProjectId     *string                         `json:"SetupProjectId,omitempty" xml:"SetupProjectId,omitempty"`
+	Type               *string                         `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s DeviceResource) String() string {
@@ -1546,44 +1360,25 @@ func (s *DeviceResource) SetType(v string) *DeviceResource {
 }
 
 type DeviceResourceDeviceResource struct {
-	// 组号
-	BlockNumber *string `json:"BlockNumber,omitempty" xml:"BlockNumber,omitempty"`
-	// 设备业务地址
-	Business *string `json:"Business,omitempty" xml:"Business,omitempty"`
-	// 设备配置
-	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
-	// 配置生成
-	ConfigGenerate *bool `json:"ConfigGenerate,omitempty" xml:"ConfigGenerate,omitempty"`
-	// 配置下发状态
+	BlockNumber      *string `json:"BlockNumber,omitempty" xml:"BlockNumber,omitempty"`
+	Business         *string `json:"Business,omitempty" xml:"Business,omitempty"`
+	Config           *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	ConfigGenerate   *bool   `json:"ConfigGenerate,omitempty" xml:"ConfigGenerate,omitempty"`
 	ConfigTaskStatus *string `json:"ConfigTaskStatus,omitempty" xml:"ConfigTaskStatus,omitempty"`
-	// 交付登录地址
-	DeliveryIp *string `json:"DeliveryIp,omitempty" xml:"DeliveryIp,omitempty"`
-	// 设备号
-	DeviceNumber *string `json:"DeviceNumber,omitempty" xml:"DeviceNumber,omitempty"`
-	// 设备资源ID
+	DeliveryIp       *string `json:"DeliveryIp,omitempty" xml:"DeliveryIp,omitempty"`
+	DeviceNumber     *string `json:"DeviceNumber,omitempty" xml:"DeviceNumber,omitempty"`
 	DeviceResourceId *string `json:"DeviceResourceId,omitempty" xml:"DeviceResourceId,omitempty"`
-	// 主机名
-	HostName *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
-	// 设备互联地址
-	InterConnection *string `json:"InterConnection,omitempty" xml:"InterConnection,omitempty"`
-	// 物理空间位置
-	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
-	// loopback地址
-	Loopback *string `json:"Loopback,omitempty" xml:"Loopback,omitempty"`
-	// 带内管理地址
-	ManagerIp *string `json:"ManagerIp,omitempty" xml:"ManagerIp,omitempty"`
-	// 模型
-	Model *string `json:"Model,omitempty" xml:"Model,omitempty"`
-	// 角色
-	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
-	// 建设项目id
-	SetupProjectId *string `json:"SetupProjectId,omitempty" xml:"SetupProjectId,omitempty"`
-	// 设备sn号
-	Sn *string `json:"Sn,omitempty" xml:"Sn,omitempty"`
-	// 堆叠状态
-	Stack *bool `json:"Stack,omitempty" xml:"Stack,omitempty"`
-	// 厂商
-	Vendor *string `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
+	HostName         *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
+	InterConnection  *string `json:"InterConnection,omitempty" xml:"InterConnection,omitempty"`
+	Location         *string `json:"Location,omitempty" xml:"Location,omitempty"`
+	Loopback         *string `json:"Loopback,omitempty" xml:"Loopback,omitempty"`
+	ManagerIp        *string `json:"ManagerIp,omitempty" xml:"ManagerIp,omitempty"`
+	Model            *string `json:"Model,omitempty" xml:"Model,omitempty"`
+	Role             *string `json:"Role,omitempty" xml:"Role,omitempty"`
+	SetupProjectId   *string `json:"SetupProjectId,omitempty" xml:"SetupProjectId,omitempty"`
+	Sn               *string `json:"Sn,omitempty" xml:"Sn,omitempty"`
+	Stack            *bool   `json:"Stack,omitempty" xml:"Stack,omitempty"`
+	Vendor           *string `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
 }
 
 func (s DeviceResourceDeviceResource) String() string {
@@ -1690,36 +1485,21 @@ func (s *DeviceResourceDeviceResource) SetVendor(v string) *DeviceResourceDevice
 }
 
 type DeviceTask struct {
-	// 设备id
-	DeviceId *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
-	// 设备ip
-	DeviceIp *string `json:"DeviceIp,omitempty" xml:"DeviceIp,omitempty"`
-	// 设备名
-	DeviceName *string `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
-	// 设备任务id
-	DeviceTaskId *string `json:"DeviceTaskId,omitempty" xml:"DeviceTaskId,omitempty"`
-	// 创建时间
-	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// 修改时间
-	GmtModify *string `json:"GmtModify,omitempty" xml:"GmtModify,omitempty"`
-	// 设备任务回显
-	Output *string `json:"Output,omitempty" xml:"Output,omitempty"`
-	// 设备任务参数
-	Params *string `json:"Params,omitempty" xml:"Params,omitempty"`
-	// 设备任务错误码
-	ResponseCode *string `json:"ResponseCode,omitempty" xml:"ResponseCode,omitempty"`
-	// 设备任务返回
-	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
-	// 脚本id
-	ScriptId *string `json:"ScriptId,omitempty" xml:"ScriptId,omitempty"`
-	// 版本id
+	DeviceId      *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
+	DeviceIp      *string `json:"DeviceIp,omitempty" xml:"DeviceIp,omitempty"`
+	DeviceName    *string `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
+	DeviceTaskId  *string `json:"DeviceTaskId,omitempty" xml:"DeviceTaskId,omitempty"`
+	GmtCreate     *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	GmtModify     *string `json:"GmtModify,omitempty" xml:"GmtModify,omitempty"`
+	Output        *string `json:"Output,omitempty" xml:"Output,omitempty"`
+	Params        *string `json:"Params,omitempty" xml:"Params,omitempty"`
+	ResponseCode  *string `json:"ResponseCode,omitempty" xml:"ResponseCode,omitempty"`
+	Result        *string `json:"Result,omitempty" xml:"Result,omitempty"`
+	ScriptId      *string `json:"ScriptId,omitempty" xml:"ScriptId,omitempty"`
 	ScriptVersion *string `json:"ScriptVersion,omitempty" xml:"ScriptVersion,omitempty"`
-	// 设备任务状态
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// 模板id
-	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	// 模板名称
-	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	Status        *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	TemplateId    *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	TemplateName  *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
 }
 
 func (s DeviceTask) String() string {
@@ -1806,30 +1586,18 @@ func (s *DeviceTask) SetTemplateName(v string) *DeviceTask {
 }
 
 type Event struct {
-	// 事件告警状态
-	AlarmStatus *string `json:"AlarmStatus,omitempty" xml:"AlarmStatus,omitempty"`
-	// 发生次数
-	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// 事件发生时间
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// 设备ID
-	DeviceId *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
-	// 事件名称
-	EventName *string `json:"EventName,omitempty" xml:"EventName,omitempty"`
-	// 事件对象
-	EventObject *string `json:"EventObject,omitempty" xml:"EventObject,omitempty"`
-	// 事件对象ID
-	EventObjectId *string `json:"EventObjectId,omitempty" xml:"EventObjectId,omitempty"`
-	// 事件类型
-	EventType *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
-	// 事件内容
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// 设备
+	AlarmStatus    *string              `json:"AlarmStatus,omitempty" xml:"AlarmStatus,omitempty"`
+	Count          *int64               `json:"Count,omitempty" xml:"Count,omitempty"`
+	CreateTime     *string              `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	DeviceId       *string              `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
+	EventName      *string              `json:"EventName,omitempty" xml:"EventName,omitempty"`
+	EventObject    *string              `json:"EventObject,omitempty" xml:"EventObject,omitempty"`
+	EventObjectId  *string              `json:"EventObjectId,omitempty" xml:"EventObjectId,omitempty"`
+	EventType      *string              `json:"EventType,omitempty" xml:"EventType,omitempty"`
+	Message        *string              `json:"Message,omitempty" xml:"Message,omitempty"`
 	ResourceDevice *EventResourceDevice `json:"ResourceDevice,omitempty" xml:"ResourceDevice,omitempty" type:"Struct"`
-	// 自动化模板ID
-	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	// 事件更新时间
-	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	TemplateId     *string              `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	UpdateTime     *string              `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s Event) String() string {
@@ -1901,9 +1669,7 @@ func (s *Event) SetUpdateTime(v string) *Event {
 }
 
 type EventResourceDevice struct {
-	// 设备名
-	HostName *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
-	// 物理空间
+	HostName      *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
 	PhysicalSpace *string `json:"PhysicalSpace,omitempty" xml:"PhysicalSpace,omitempty"`
 }
 
@@ -1926,17 +1692,11 @@ func (s *EventResourceDevice) SetPhysicalSpace(v string) *EventResourceDevice {
 }
 
 type EventDefinition struct {
-	// 创建时间
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// 事件项ID
-	EventId *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
-	// 事件名称
-	EventName *string `json:"EventName,omitempty" xml:"EventName,omitempty"`
-	// 事件大类
-	EventType *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
-	// 自动化模板ID
+	EventId    *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	EventName  *string `json:"EventName,omitempty" xml:"EventName,omitempty"`
+	EventType  *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	// 修改时间
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
@@ -1979,14 +1739,10 @@ func (s *EventDefinition) SetUpdateTime(v string) *EventDefinition {
 }
 
 type InspectionItem struct {
-	// 巡检定时表达式
 	InspectionCrontab *string `json:"InspectionCrontab,omitempty" xml:"InspectionCrontab,omitempty"`
-	// 巡检项描述
-	ItemDescription *string `json:"ItemDescription,omitempty" xml:"ItemDescription,omitempty"`
-	// 巡检项ID
-	ItemId *string `json:"ItemId,omitempty" xml:"ItemId,omitempty"`
-	// 巡检项名字
-	ItemName *string `json:"ItemName,omitempty" xml:"ItemName,omitempty"`
+	ItemDescription   *string `json:"ItemDescription,omitempty" xml:"ItemDescription,omitempty"`
+	ItemId            *string `json:"ItemId,omitempty" xml:"ItemId,omitempty"`
+	ItemName          *string `json:"ItemName,omitempty" xml:"ItemName,omitempty"`
 }
 
 func (s InspectionItem) String() string {
@@ -2018,28 +1774,17 @@ func (s *InspectionItem) SetItemName(v string) *InspectionItem {
 }
 
 type InspectionScript struct {
-	// 巡检告警规则
 	InspectionAlarmRules []*InspectionScriptInspectionAlarmRules `json:"InspectionAlarmRules,omitempty" xml:"InspectionAlarmRules,omitempty" type:"Repeated"`
-	// 巡检项定时表达式
-	InspectionCrontab *string `json:"InspectionCrontab,omitempty" xml:"InspectionCrontab,omitempty"`
-	// 巡检项描述
-	ItemDescription *string `json:"ItemDescription,omitempty" xml:"ItemDescription,omitempty"`
-	// 巡检项ID
-	ItemId *string `json:"ItemId,omitempty" xml:"ItemId,omitempty"`
-	// 巡检项名字
-	ItemName *string `json:"ItemName,omitempty" xml:"ItemName,omitempty"`
-	// 型号
-	Model *string `json:"Model,omitempty" xml:"Model,omitempty"`
-	// 角色
-	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
-	// 模板执行内容
-	Script *string `json:"Script,omitempty" xml:"Script,omitempty"`
-	// 巡检模板ID
-	ScriptId *string `json:"ScriptId,omitempty" xml:"ScriptId,omitempty"`
-	// 模板状态
-	ScriptStatus *string `json:"ScriptStatus,omitempty" xml:"ScriptStatus,omitempty"`
-	// 厂商
-	Vendor *string `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
+	InspectionCrontab    *string                                 `json:"InspectionCrontab,omitempty" xml:"InspectionCrontab,omitempty"`
+	ItemDescription      *string                                 `json:"ItemDescription,omitempty" xml:"ItemDescription,omitempty"`
+	ItemId               *string                                 `json:"ItemId,omitempty" xml:"ItemId,omitempty"`
+	ItemName             *string                                 `json:"ItemName,omitempty" xml:"ItemName,omitempty"`
+	Model                *string                                 `json:"Model,omitempty" xml:"Model,omitempty"`
+	Role                 *string                                 `json:"Role,omitempty" xml:"Role,omitempty"`
+	Script               *string                                 `json:"Script,omitempty" xml:"Script,omitempty"`
+	ScriptId             *string                                 `json:"ScriptId,omitempty" xml:"ScriptId,omitempty"`
+	ScriptStatus         *string                                 `json:"ScriptStatus,omitempty" xml:"ScriptStatus,omitempty"`
+	Vendor               *string                                 `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
 }
 
 func (s InspectionScript) String() string {
@@ -2106,14 +1851,10 @@ func (s *InspectionScript) SetVendor(v string) *InspectionScript {
 }
 
 type InspectionScriptInspectionAlarmRules struct {
-	// 告警表达式
 	AlarmExpression *string `json:"AlarmExpression,omitempty" xml:"AlarmExpression,omitempty"`
-	// 告警级别
-	AlarmLevel *string `json:"AlarmLevel,omitempty" xml:"AlarmLevel,omitempty"`
-	// 告警符号
-	AlarmOperator *string `json:"AlarmOperator,omitempty" xml:"AlarmOperator,omitempty"`
-	// 告警值
-	AlarmValue *string `json:"AlarmValue,omitempty" xml:"AlarmValue,omitempty"`
+	AlarmLevel      *string `json:"AlarmLevel,omitempty" xml:"AlarmLevel,omitempty"`
+	AlarmOperator   *string `json:"AlarmOperator,omitempty" xml:"AlarmOperator,omitempty"`
+	AlarmValue      *string `json:"AlarmValue,omitempty" xml:"AlarmValue,omitempty"`
 }
 
 func (s InspectionScriptInspectionAlarmRules) String() string {
@@ -2145,38 +1886,22 @@ func (s *InspectionScriptInspectionAlarmRules) SetAlarmValue(v string) *Inspecti
 }
 
 type InspectionTask struct {
-	// 设备ID
-	DeviceId *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
-	// 错误码
-	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// 执行开始时间
-	ExecutionBeginTime *string `json:"ExecutionBeginTime,omitempty" xml:"ExecutionBeginTime,omitempty"`
-	// 执行结束时间
-	ExecutionEndTime *string `json:"ExecutionEndTime,omitempty" xml:"ExecutionEndTime,omitempty"`
-	// 主机名
-	Hostname *string `json:"Hostname,omitempty" xml:"Hostname,omitempty"`
-	// 设备IP
-	IP *string `json:"IP,omitempty" xml:"IP,omitempty"`
-	// 告警规则
+	DeviceId             *string                               `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
+	ErrorCode            *string                               `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ExecutionBeginTime   *string                               `json:"ExecutionBeginTime,omitempty" xml:"ExecutionBeginTime,omitempty"`
+	ExecutionEndTime     *string                               `json:"ExecutionEndTime,omitempty" xml:"ExecutionEndTime,omitempty"`
+	Hostname             *string                               `json:"Hostname,omitempty" xml:"Hostname,omitempty"`
+	IP                   *string                               `json:"IP,omitempty" xml:"IP,omitempty"`
 	InspectionAlarmRules []*InspectionTaskInspectionAlarmRules `json:"InspectionAlarmRules,omitempty" xml:"InspectionAlarmRules,omitempty" type:"Repeated"`
-	// 执行结果
-	InspectionResult *string `json:"InspectionResult,omitempty" xml:"InspectionResult,omitempty"`
-	// 巡检项ID
-	ItemId *string `json:"ItemId,omitempty" xml:"ItemId,omitempty"`
-	// 巡检项名字
-	ItemName *string `json:"ItemName,omitempty" xml:"ItemName,omitempty"`
-	// 型号
-	Model *string `json:"Model,omitempty" xml:"Model,omitempty"`
-	// 角色
-	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
-	// 物理空间
-	Space *string `json:"Space,omitempty" xml:"Space,omitempty"`
-	// 任务状态
-	TaskStatus *string `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
-	// 巡检模板ID
-	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	// 厂商
-	Vendor *string `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
+	InspectionResult     *string                               `json:"InspectionResult,omitempty" xml:"InspectionResult,omitempty"`
+	ItemId               *string                               `json:"ItemId,omitempty" xml:"ItemId,omitempty"`
+	ItemName             *string                               `json:"ItemName,omitempty" xml:"ItemName,omitempty"`
+	Model                *string                               `json:"Model,omitempty" xml:"Model,omitempty"`
+	Role                 *string                               `json:"Role,omitempty" xml:"Role,omitempty"`
+	Space                *string                               `json:"Space,omitempty" xml:"Space,omitempty"`
+	TaskStatus           *string                               `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
+	TemplateId           *string                               `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	Vendor               *string                               `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
 }
 
 func (s InspectionTask) String() string {
@@ -2268,16 +1993,11 @@ func (s *InspectionTask) SetVendor(v string) *InspectionTask {
 }
 
 type InspectionTaskInspectionAlarmRules struct {
-	// 告警实际值
 	ActualValue *string `json:"ActualValue,omitempty" xml:"ActualValue,omitempty"`
-	// 告警表达式
-	Expression *string `json:"Expression,omitempty" xml:"Expression,omitempty"`
-	// 告警级别
-	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
-	// 告警操作符
-	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
-	// 告警值
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	Expression  *string `json:"Expression,omitempty" xml:"Expression,omitempty"`
+	Level       *string `json:"Level,omitempty" xml:"Level,omitempty"`
+	Operator    *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	Value       *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s InspectionTaskInspectionAlarmRules) String() string {
@@ -2314,30 +2034,18 @@ func (s *InspectionTaskInspectionAlarmRules) SetValue(v string) *InspectionTaskI
 }
 
 type Ip struct {
-	// 业务类型UID
-	BusinessTypeId *string `json:"BusinessTypeId,omitempty" xml:"BusinessTypeId,omitempty"`
-	// 业务类型名称
-	BusinessTypeName *string `json:"BusinessTypeName,omitempty" xml:"BusinessTypeName,omitempty"`
-	// 创建时间
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// 设备MAC
-	DeviceMac *string `json:"DeviceMac,omitempty" xml:"DeviceMac,omitempty"`
-	// 设备名称
-	DeviceName *string `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
-	// IP地址
-	IpAddress *string `json:"IpAddress,omitempty" xml:"IpAddress,omitempty"`
-	// 资源一级ID
-	IpId *string `json:"IpId,omitempty" xml:"IpId,omitempty"`
-	// 资源名称
-	IpName *string `json:"IpName,omitempty" xml:"IpName,omitempty"`
-	// 地址段
-	ParentIpBlock *string `json:"ParentIpBlock,omitempty" xml:"ParentIpBlock,omitempty"`
-	// 设备端口名称
-	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
-	// 状态 using available lock
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// 园区层级
-	ZoneLayer []*IpZoneLayer `json:"ZoneLayer,omitempty" xml:"ZoneLayer,omitempty" type:"Repeated"`
+	BusinessTypeId   *string        `json:"BusinessTypeId,omitempty" xml:"BusinessTypeId,omitempty"`
+	BusinessTypeName *string        `json:"BusinessTypeName,omitempty" xml:"BusinessTypeName,omitempty"`
+	CreateTime       *string        `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	DeviceMac        *string        `json:"DeviceMac,omitempty" xml:"DeviceMac,omitempty"`
+	DeviceName       *string        `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
+	IpAddress        *string        `json:"IpAddress,omitempty" xml:"IpAddress,omitempty"`
+	IpId             *string        `json:"IpId,omitempty" xml:"IpId,omitempty"`
+	IpName           *string        `json:"IpName,omitempty" xml:"IpName,omitempty"`
+	ParentIpBlock    *string        `json:"ParentIpBlock,omitempty" xml:"ParentIpBlock,omitempty"`
+	Port             *string        `json:"Port,omitempty" xml:"Port,omitempty"`
+	Status           *string        `json:"Status,omitempty" xml:"Status,omitempty"`
+	ZoneLayer        []*IpZoneLayer `json:"ZoneLayer,omitempty" xml:"ZoneLayer,omitempty" type:"Repeated"`
 }
 
 func (s Ip) String() string {
@@ -2409,9 +2117,7 @@ func (s *Ip) SetZoneLayer(v []*IpZoneLayer) *Ip {
 }
 
 type IpZoneLayer struct {
-	// 园区层级名称
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 园区层级值
+	Name  *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -2434,44 +2140,25 @@ func (s *IpZoneLayer) SetValue(v string) *IpZoneLayer {
 }
 
 type IpBlock struct {
-	// IP用途
-	Application *string `json:"Application,omitempty" xml:"Application,omitempty"`
-	// 备份设备名称
-	BackupDeviceName *string `json:"BackupDeviceName,omitempty" xml:"BackupDeviceName,omitempty"`
-	// IP段地址
-	Block *string `json:"Block,omitempty" xml:"Block,omitempty"`
-	// 业务类型UID
-	BusinessTypeId *string `json:"BusinessTypeId,omitempty" xml:"BusinessTypeId,omitempty"`
-	// 地址类别 IPV4
-	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	// 创建时间
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// 备注
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 设备名称
-	DeviceName *string `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
-	// 资源一级ID
-	IpBlockId *string `json:"IpBlockId,omitempty" xml:"IpBlockId,omitempty"`
-	// IP段掩码
-	Mask *string `json:"Mask,omitempty" xml:"Mask,omitempty"`
-	// 公网地址类型 INC GUEST VIP
-	NetBusiness *string `json:"NetBusiness,omitempty" xml:"NetBusiness,omitempty"`
-	// 公网私网标志 PUBLIC PRIVATE
-	NetType *string `json:"NetType,omitempty" xml:"NetType,omitempty"`
-	// IP归属
-	Ownership *string `json:"Ownership,omitempty" xml:"Ownership,omitempty"`
-	// 父地址段UID
-	ParentId *string `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
-	// 是否保留父段 true 是 false 否
-	ReserveParentBlock *string `json:"ReserveParentBlock,omitempty" xml:"ReserveParentBlock,omitempty"`
-	// 资源组ID
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// 更新类型 update 更新 split 拆分
-	UpdateType *string `json:"UpdateType,omitempty" xml:"UpdateType,omitempty"`
-	// 园区层级
-	ZoneLayer []*IpBlockZoneLayer `json:"ZoneLayer,omitempty" xml:"ZoneLayer,omitempty" type:"Repeated"`
-	// 园区名称
-	ZoneName *string `json:"ZoneName,omitempty" xml:"ZoneName,omitempty"`
+	Application        *string             `json:"Application,omitempty" xml:"Application,omitempty"`
+	BackupDeviceName   *string             `json:"BackupDeviceName,omitempty" xml:"BackupDeviceName,omitempty"`
+	Block              *string             `json:"Block,omitempty" xml:"Block,omitempty"`
+	BusinessTypeId     *string             `json:"BusinessTypeId,omitempty" xml:"BusinessTypeId,omitempty"`
+	Category           *string             `json:"Category,omitempty" xml:"Category,omitempty"`
+	CreateTime         *string             `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Description        *string             `json:"Description,omitempty" xml:"Description,omitempty"`
+	DeviceName         *string             `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
+	IpBlockId          *string             `json:"IpBlockId,omitempty" xml:"IpBlockId,omitempty"`
+	Mask               *string             `json:"Mask,omitempty" xml:"Mask,omitempty"`
+	NetBusiness        *string             `json:"NetBusiness,omitempty" xml:"NetBusiness,omitempty"`
+	NetType            *string             `json:"NetType,omitempty" xml:"NetType,omitempty"`
+	Ownership          *string             `json:"Ownership,omitempty" xml:"Ownership,omitempty"`
+	ParentId           *string             `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
+	ReserveParentBlock *string             `json:"ReserveParentBlock,omitempty" xml:"ReserveParentBlock,omitempty"`
+	ResourceGroupId    *string             `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	UpdateType         *string             `json:"UpdateType,omitempty" xml:"UpdateType,omitempty"`
+	ZoneLayer          []*IpBlockZoneLayer `json:"ZoneLayer,omitempty" xml:"ZoneLayer,omitempty" type:"Repeated"`
+	ZoneName           *string             `json:"ZoneName,omitempty" xml:"ZoneName,omitempty"`
 }
 
 func (s IpBlock) String() string {
@@ -2578,9 +2265,7 @@ func (s *IpBlock) SetZoneName(v string) *IpBlock {
 }
 
 type IpBlockZoneLayer struct {
-	// 园区层级名称
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 园区层级值
+	Name  *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -2603,32 +2288,19 @@ func (s *IpBlockZoneLayer) SetValue(v string) *IpBlockZoneLayer {
 }
 
 type IpBlockRecord struct {
-	// 创建时间
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// 创建人
-	Creator *int64 `json:"Creator,omitempty" xml:"Creator,omitempty"`
-	// 工单备注
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 工单详情
-	Detail []*IpBlockRecordDetail `json:"Detail,omitempty" xml:"Detail,omitempty" type:"Repeated"`
-	// 要释放的IP段
-	IpBlockCode []*string `json:"IpBlockCode,omitempty" xml:"IpBlockCode,omitempty" type:"Repeated"`
-	// 工单uuid
-	IpBlockRecordId *string `json:"IpBlockRecordId,omitempty" xml:"IpBlockRecordId,omitempty"`
-	// 公网私网标志 PUBLIC PRIVATE
-	NetType *string `json:"NetType,omitempty" xml:"NetType,omitempty"`
-	// 工单类型 Apply 申请工单 Recycle 释放工单
-	RecordType *string `json:"RecordType,omitempty" xml:"RecordType,omitempty"`
-	// 工单状态 running complete fail cancel lock approving
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// 工单名称
-	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
-	// 更新时间
-	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	// 工号
-	WorkNo *string `json:"WorkNo,omitempty" xml:"WorkNo,omitempty"`
-	// 园区名称
-	ZoneName *string `json:"ZoneName,omitempty" xml:"ZoneName,omitempty"`
+	CreateTime      *string                `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Creator         *int64                 `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	Description     *string                `json:"Description,omitempty" xml:"Description,omitempty"`
+	Detail          []*IpBlockRecordDetail `json:"Detail,omitempty" xml:"Detail,omitempty" type:"Repeated"`
+	IpBlockCode     []*string              `json:"IpBlockCode,omitempty" xml:"IpBlockCode,omitempty" type:"Repeated"`
+	IpBlockRecordId *string                `json:"IpBlockRecordId,omitempty" xml:"IpBlockRecordId,omitempty"`
+	NetType         *string                `json:"NetType,omitempty" xml:"NetType,omitempty"`
+	RecordType      *string                `json:"RecordType,omitempty" xml:"RecordType,omitempty"`
+	Status          *string                `json:"Status,omitempty" xml:"Status,omitempty"`
+	Title           *string                `json:"Title,omitempty" xml:"Title,omitempty"`
+	UpdateTime      *string                `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	WorkNo          *string                `json:"WorkNo,omitempty" xml:"WorkNo,omitempty"`
+	ZoneName        *string                `json:"ZoneName,omitempty" xml:"ZoneName,omitempty"`
 }
 
 func (s IpBlockRecord) String() string {
@@ -2705,16 +2377,11 @@ func (s *IpBlockRecord) SetZoneName(v string) *IpBlockRecord {
 }
 
 type IpBlockRecordDetail struct {
-	// 业务类型
-	BusinessTypeName *string `json:"BusinessTypeName,omitempty" xml:"BusinessTypeName,omitempty"`
-	// 设备名称
-	DeviceName *string `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
-	// 网关
-	Gateway *string `json:"Gateway,omitempty" xml:"Gateway,omitempty"`
-	// 父地址段列表
-	ParentIpBlocks []*string `json:"ParentIpBlocks,omitempty" xml:"ParentIpBlocks,omitempty" type:"Repeated"`
-	// 园区层级
-	ZoneLayer []*IpBlockRecordDetailZoneLayer `json:"ZoneLayer,omitempty" xml:"ZoneLayer,omitempty" type:"Repeated"`
+	BusinessTypeName *string                         `json:"BusinessTypeName,omitempty" xml:"BusinessTypeName,omitempty"`
+	DeviceName       *string                         `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
+	Gateway          *string                         `json:"Gateway,omitempty" xml:"Gateway,omitempty"`
+	ParentIpBlocks   []*string                       `json:"ParentIpBlocks,omitempty" xml:"ParentIpBlocks,omitempty" type:"Repeated"`
+	ZoneLayer        []*IpBlockRecordDetailZoneLayer `json:"ZoneLayer,omitempty" xml:"ZoneLayer,omitempty" type:"Repeated"`
 }
 
 func (s IpBlockRecordDetail) String() string {
@@ -2751,9 +2418,7 @@ func (s *IpBlockRecordDetail) SetZoneLayer(v []*IpBlockRecordDetailZoneLayer) *I
 }
 
 type IpBlockRecordDetailZoneLayer struct {
-	// 园区层级名称
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 园区层级值
+	Name  *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -2776,30 +2441,18 @@ func (s *IpBlockRecordDetailZoneLayer) SetValue(v string) *IpBlockRecordDetailZo
 }
 
 type IpRecord struct {
-	// 业务类型名称
-	BusinessTypeName *string `json:"BusinessTypeName,omitempty" xml:"BusinessTypeName,omitempty"`
-	// 创建时间
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// 创建人
-	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
-	// 备注
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 工单详情
-	Detail []*IpRecordDetail `json:"Detail,omitempty" xml:"Detail,omitempty" type:"Repeated"`
-	// 地址段
-	IpBlock *string `json:"IpBlock,omitempty" xml:"IpBlock,omitempty"`
-	// IP地址列表
-	IpCode []*string `json:"IpCode,omitempty" xml:"IpCode,omitempty" type:"Repeated"`
-	// 资源一级ID
-	IpRecordId *string `json:"IpRecordId,omitempty" xml:"IpRecordId,omitempty"`
-	// 工单类型 Apply 申请工单 Recycle 释放工单
-	RecodeType *string `json:"RecodeType,omitempty" xml:"RecodeType,omitempty"`
-	// 工单状态 running complete fail
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// 更新时间
-	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	// 园区名
-	ZoneName *string `json:"ZoneName,omitempty" xml:"ZoneName,omitempty"`
+	BusinessTypeName *string           `json:"BusinessTypeName,omitempty" xml:"BusinessTypeName,omitempty"`
+	CreateTime       *string           `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Creator          *string           `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	Description      *string           `json:"Description,omitempty" xml:"Description,omitempty"`
+	Detail           []*IpRecordDetail `json:"Detail,omitempty" xml:"Detail,omitempty" type:"Repeated"`
+	IpBlock          *string           `json:"IpBlock,omitempty" xml:"IpBlock,omitempty"`
+	IpCode           []*string         `json:"IpCode,omitempty" xml:"IpCode,omitempty" type:"Repeated"`
+	IpRecordId       *string           `json:"IpRecordId,omitempty" xml:"IpRecordId,omitempty"`
+	RecodeType       *string           `json:"RecodeType,omitempty" xml:"RecodeType,omitempty"`
+	Status           *string           `json:"Status,omitempty" xml:"Status,omitempty"`
+	UpdateTime       *string           `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	ZoneName         *string           `json:"ZoneName,omitempty" xml:"ZoneName,omitempty"`
 }
 
 func (s IpRecord) String() string {
@@ -2871,26 +2524,16 @@ func (s *IpRecord) SetZoneName(v string) *IpRecord {
 }
 
 type IpRecordDetail struct {
-	// 设备MAC
-	DeviceMac *string `json:"DeviceMac,omitempty" xml:"DeviceMac,omitempty"`
-	// 设备名称
-	DeviceName *string `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
-	// 网关
-	Gateway *string `json:"Gateway,omitempty" xml:"Gateway,omitempty"`
-	// 申请到的Ip
-	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	// 父地址段列表
-	ParentIpBlocks []*string `json:"ParentIpBlocks,omitempty" xml:"ParentIpBlocks,omitempty" type:"Repeated"`
-	// 设备端口
-	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
-	// 对端设备名称
-	RemoteDeviceName *string `json:"RemoteDeviceName,omitempty" xml:"RemoteDeviceName,omitempty"`
-	// 对端IP
-	RemoteIp *string `json:"RemoteIp,omitempty" xml:"RemoteIp,omitempty"`
-	// 对端设备端口
-	RemotePort *string `json:"RemotePort,omitempty" xml:"RemotePort,omitempty"`
-	// 园区层级
-	ZoneLayer []*IpRecordDetailZoneLayer `json:"ZoneLayer,omitempty" xml:"ZoneLayer,omitempty" type:"Repeated"`
+	DeviceMac        *string                    `json:"DeviceMac,omitempty" xml:"DeviceMac,omitempty"`
+	DeviceName       *string                    `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
+	Gateway          *string                    `json:"Gateway,omitempty" xml:"Gateway,omitempty"`
+	Ip               *string                    `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	ParentIpBlocks   []*string                  `json:"ParentIpBlocks,omitempty" xml:"ParentIpBlocks,omitempty" type:"Repeated"`
+	Port             *string                    `json:"Port,omitempty" xml:"Port,omitempty"`
+	RemoteDeviceName *string                    `json:"RemoteDeviceName,omitempty" xml:"RemoteDeviceName,omitempty"`
+	RemoteIp         *string                    `json:"RemoteIp,omitempty" xml:"RemoteIp,omitempty"`
+	RemotePort       *string                    `json:"RemotePort,omitempty" xml:"RemotePort,omitempty"`
+	ZoneLayer        []*IpRecordDetailZoneLayer `json:"ZoneLayer,omitempty" xml:"ZoneLayer,omitempty" type:"Repeated"`
 }
 
 func (s IpRecordDetail) String() string {
@@ -2952,9 +2595,7 @@ func (s *IpRecordDetail) SetZoneLayer(v []*IpRecordDetailZoneLayer) *IpRecordDet
 }
 
 type IpRecordDetailZoneLayer struct {
-	// 园区层级名称
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 园区层级值
+	Name  *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -2977,22 +2618,14 @@ func (s *IpRecordDetailZoneLayer) SetValue(v string) *IpRecordDetailZoneLayer {
 }
 
 type ModelToRole struct {
-	// 创建时间
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// 角色型号对应关系uid
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// 设备型号
-	Model *string `json:"Model,omitempty" xml:"Model,omitempty"`
-	// 资源一级ID
-	ModelToRoleId *string `json:"ModelToRoleId,omitempty" xml:"ModelToRoleId,omitempty"`
-	// 架构迭代uid
+	CreateTime                     *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Id                             *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Model                          *string `json:"Model,omitempty" xml:"Model,omitempty"`
+	ModelToRoleId                  *string `json:"ModelToRoleId,omitempty" xml:"ModelToRoleId,omitempty"`
 	NetworkArchitectureIterationId *string `json:"NetworkArchitectureIterationId,omitempty" xml:"NetworkArchitectureIterationId,omitempty"`
-	// 角色
-	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
-	// 更新时间
-	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	// 设备厂商
-	Vendor *string `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
+	Role                           *string `json:"Role,omitempty" xml:"Role,omitempty"`
+	UpdateTime                     *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	Vendor                         *string `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
 }
 
 func (s ModelToRole) String() string {
@@ -3044,30 +2677,18 @@ func (s *ModelToRole) SetVendor(v string) *ModelToRole {
 }
 
 type Module struct {
-	// 创建时间
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// 设备信息
-	Device *ModuleDevice `json:"Device,omitempty" xml:"Device,omitempty" type:"Struct"`
-	// 模块uuid
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// 最大建设模块数量
-	MaxCount *int64 `json:"MaxCount,omitempty" xml:"MaxCount,omitempty"`
-	// 最小建设模块数量
-	MinCount *int64 `json:"MinCount,omitempty" xml:"MinCount,omitempty"`
-	// 模块详情
-	ModuleDetails []*ModuleModuleDetails `json:"ModuleDetails,omitempty" xml:"ModuleDetails,omitempty" type:"Repeated"`
-	// 资源一级ID
-	ModuleId *string `json:"ModuleId,omitempty" xml:"ModuleId,omitempty"`
-	// 模块类型
-	ModuleType *string `json:"ModuleType,omitempty" xml:"ModuleType,omitempty"`
-	// 模块名字
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 父模块uuid
-	ParentModuleId *string `json:"ParentModuleId,omitempty" xml:"ParentModuleId,omitempty"`
-	// 堆叠
-	Stack *bool `json:"Stack,omitempty" xml:"Stack,omitempty"`
-	// 更新时间
-	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	CreateTime     *string                `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Device         *ModuleDevice          `json:"Device,omitempty" xml:"Device,omitempty" type:"Struct"`
+	Id             *string                `json:"Id,omitempty" xml:"Id,omitempty"`
+	MaxCount       *int64                 `json:"MaxCount,omitempty" xml:"MaxCount,omitempty"`
+	MinCount       *int64                 `json:"MinCount,omitempty" xml:"MinCount,omitempty"`
+	ModuleDetails  []*ModuleModuleDetails `json:"ModuleDetails,omitempty" xml:"ModuleDetails,omitempty" type:"Repeated"`
+	ModuleId       *string                `json:"ModuleId,omitempty" xml:"ModuleId,omitempty"`
+	ModuleType     *string                `json:"ModuleType,omitempty" xml:"ModuleType,omitempty"`
+	Name           *string                `json:"Name,omitempty" xml:"Name,omitempty"`
+	ParentModuleId *string                `json:"ParentModuleId,omitempty" xml:"ParentModuleId,omitempty"`
+	Stack          *bool                  `json:"Stack,omitempty" xml:"Stack,omitempty"`
+	UpdateTime     *string                `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s Module) String() string {
@@ -3139,28 +2760,17 @@ func (s *Module) SetUpdateTime(v string) *Module {
 }
 
 type ModuleDevice struct {
-	// 区块内设备数量
-	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// 创建时间
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// 区块内设备数量
-	DeviceCount *int64 `json:"DeviceCount,omitempty" xml:"DeviceCount,omitempty"`
-	// 设备角色
-	DeviceRole *string `json:"DeviceRole,omitempty" xml:"DeviceRole,omitempty"`
-	// 设备x坐标
-	DeviceX *string `json:"DeviceX,omitempty" xml:"DeviceX,omitempty"`
-	// 设备y坐标
-	DeviceY *string `json:"DeviceY,omitempty" xml:"DeviceY,omitempty"`
-	// 设备uuid
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// 设备角色
-	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
-	// 更新时间
-	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	// 设备x坐标
-	X *string `json:"X,omitempty" xml:"X,omitempty"`
-	// 设备y坐标
-	Y *string `json:"Y,omitempty" xml:"Y,omitempty"`
+	Count       *int64  `json:"Count,omitempty" xml:"Count,omitempty"`
+	CreateTime  *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	DeviceCount *int64  `json:"DeviceCount,omitempty" xml:"DeviceCount,omitempty"`
+	DeviceRole  *string `json:"DeviceRole,omitempty" xml:"DeviceRole,omitempty"`
+	DeviceX     *string `json:"DeviceX,omitempty" xml:"DeviceX,omitempty"`
+	DeviceY     *string `json:"DeviceY,omitempty" xml:"DeviceY,omitempty"`
+	Id          *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Role        *string `json:"Role,omitempty" xml:"Role,omitempty"`
+	UpdateTime  *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	X           *string `json:"X,omitempty" xml:"X,omitempty"`
+	Y           *string `json:"Y,omitempty" xml:"Y,omitempty"`
 }
 
 func (s ModuleDevice) String() string {
@@ -3227,10 +2837,8 @@ func (s *ModuleDevice) SetY(v string) *ModuleDevice {
 }
 
 type ModuleModuleDetails struct {
-	// 设备详情
 	DeviceDetails []*ModuleModuleDetailsDeviceDetails `json:"DeviceDetails,omitempty" xml:"DeviceDetails,omitempty" type:"Repeated"`
-	// 模块序号
-	OrderNumber *int64 `json:"OrderNumber,omitempty" xml:"OrderNumber,omitempty"`
+	OrderNumber   *int64                              `json:"OrderNumber,omitempty" xml:"OrderNumber,omitempty"`
 }
 
 func (s ModuleModuleDetails) String() string {
@@ -3252,7 +2860,6 @@ func (s *ModuleModuleDetails) SetOrderNumber(v int64) *ModuleModuleDetails {
 }
 
 type ModuleModuleDetailsDeviceDetails struct {
-	// 设备序号
 	OrderNumber *int64 `json:"OrderNumber,omitempty" xml:"OrderNumber,omitempty"`
 }
 
@@ -3270,28 +2877,17 @@ func (s *ModuleModuleDetailsDeviceDetails) SetOrderNumber(v int64) *ModuleModule
 }
 
 type MonitorItem struct {
-	// 解析代码
-	AnalysisCode *string `json:"AnalysisCode,omitempty" xml:"AnalysisCode,omitempty"`
-	// 采集类型
-	CollectionType *string `json:"CollectionType,omitempty" xml:"CollectionType,omitempty"`
-	// 采集配置
-	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
-	// 是否启用
-	Enable *int32 `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	// 采集间隔
-	ExecInterval *string `json:"ExecInterval,omitempty" xml:"ExecInterval,omitempty"`
-	// 创建时间
-	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// 更新时间
-	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// 描述
+	AnalysisCode           *string `json:"AnalysisCode,omitempty" xml:"AnalysisCode,omitempty"`
+	CollectionType         *string `json:"CollectionType,omitempty" xml:"CollectionType,omitempty"`
+	Config                 *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	Enable                 *int32  `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	ExecInterval           *string `json:"ExecInterval,omitempty" xml:"ExecInterval,omitempty"`
+	GmtCreate              *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	GmtModified            *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
 	MonitorItemDescription *string `json:"MonitorItemDescription,omitempty" xml:"MonitorItemDescription,omitempty"`
-	// 监控项ID
-	MonitorItemId *string `json:"MonitorItemId,omitempty" xml:"MonitorItemId,omitempty"`
-	// 监控项名称
-	MonitorItemName *string `json:"MonitorItemName,omitempty" xml:"MonitorItemName,omitempty"`
-	// 安全域
-	SecurityDomain *string `json:"SecurityDomain,omitempty" xml:"SecurityDomain,omitempty"`
+	MonitorItemId          *string `json:"MonitorItemId,omitempty" xml:"MonitorItemId,omitempty"`
+	MonitorItemName        *string `json:"MonitorItemName,omitempty" xml:"MonitorItemName,omitempty"`
+	SecurityDomain         *string `json:"SecurityDomain,omitempty" xml:"SecurityDomain,omitempty"`
 }
 
 func (s MonitorItem) String() string {
@@ -3358,38 +2954,22 @@ func (s *MonitorItem) SetSecurityDomain(v string) *MonitorItem {
 }
 
 type NetworkArchitecture struct {
-	// 架构最新版本uuid
-	ArchVersionIterationId *string `json:"ArchVersionIterationId,omitempty" xml:"ArchVersionIterationId,omitempty"`
-	// 可用
-	Availabe *bool `json:"Availabe,omitempty" xml:"Availabe,omitempty"`
-	// 子节点
-	Children []*string `json:"Children,omitempty" xml:"Children,omitempty" type:"Repeated"`
-	// 创建时间
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// 架构描述
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 设备数
-	DeviceNumber *int64 `json:"DeviceNumber,omitempty" xml:"DeviceNumber,omitempty"`
-	// 组数
-	GroupNumber *int64 `json:"GroupNumber,omitempty" xml:"GroupNumber,omitempty"`
-	// 架构资源id
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// 架构名称
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 资源一级ID
-	NetworkArchitectureId *string `json:"NetworkArchitectureId,omitempty" xml:"NetworkArchitectureId,omitempty"`
-	// 架构内容
-	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
-	// 可选
-	Selected *bool `json:"Selected,omitempty" xml:"Selected,omitempty"`
-	// 堆叠
-	Stack *bool `json:"Stack,omitempty" xml:"Stack,omitempty"`
-	// 架构状态
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// 更新时间
-	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	// 架构版本
-	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
+	ArchVersionIterationId *string   `json:"ArchVersionIterationId,omitempty" xml:"ArchVersionIterationId,omitempty"`
+	Availabe               *bool     `json:"Availabe,omitempty" xml:"Availabe,omitempty"`
+	Children               []*string `json:"Children,omitempty" xml:"Children,omitempty" type:"Repeated"`
+	CreateTime             *string   `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Description            *string   `json:"Description,omitempty" xml:"Description,omitempty"`
+	DeviceNumber           *int64    `json:"DeviceNumber,omitempty" xml:"DeviceNumber,omitempty"`
+	GroupNumber            *int64    `json:"GroupNumber,omitempty" xml:"GroupNumber,omitempty"`
+	Id                     *string   `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name                   *string   `json:"Name,omitempty" xml:"Name,omitempty"`
+	NetworkArchitectureId  *string   `json:"NetworkArchitectureId,omitempty" xml:"NetworkArchitectureId,omitempty"`
+	Role                   *string   `json:"Role,omitempty" xml:"Role,omitempty"`
+	Selected               *bool     `json:"Selected,omitempty" xml:"Selected,omitempty"`
+	Stack                  *bool     `json:"Stack,omitempty" xml:"Stack,omitempty"`
+	Status                 *string   `json:"Status,omitempty" xml:"Status,omitempty"`
+	UpdateTime             *string   `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	Version                *string   `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s NetworkArchitecture) String() string {
@@ -3481,20 +3061,13 @@ func (s *NetworkArchitecture) SetVersion(v string) *NetworkArchitecture {
 }
 
 type NotificationGroup struct {
-	// 创建时间
-	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// 修改时间
-	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// 描述
+	GmtCreate                    *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	GmtModified                  *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
 	NotificationGroupDescription *string `json:"NotificationGroupDescription,omitempty" xml:"NotificationGroupDescription,omitempty"`
-	// 通知组ID
-	NotificationGroupId *string `json:"NotificationGroupId,omitempty" xml:"NotificationGroupId,omitempty"`
-	// 通知组名称
-	NotificationGroupName *string `json:"NotificationGroupName,omitempty" xml:"NotificationGroupName,omitempty"`
-	// 通知组类型
-	NotificationGroupType *string `json:"NotificationGroupType,omitempty" xml:"NotificationGroupType,omitempty"`
-	// 钉钉群webhook
-	Webhook *string `json:"Webhook,omitempty" xml:"Webhook,omitempty"`
+	NotificationGroupId          *string `json:"NotificationGroupId,omitempty" xml:"NotificationGroupId,omitempty"`
+	NotificationGroupName        *string `json:"NotificationGroupName,omitempty" xml:"NotificationGroupName,omitempty"`
+	NotificationGroupType        *string `json:"NotificationGroupType,omitempty" xml:"NotificationGroupType,omitempty"`
+	Webhook                      *string `json:"Webhook,omitempty" xml:"Webhook,omitempty"`
 }
 
 func (s NotificationGroup) String() string {
@@ -3541,24 +3114,15 @@ func (s *NotificationGroup) SetWebhook(v string) *NotificationGroup {
 }
 
 type Order struct {
-	// 创建时间
-	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// 修改时间
-	GmtModify *string `json:"GmtModify,omitempty" xml:"GmtModify,omitempty"`
-	// 工单id
-	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	// 工单返回
-	Output *string `json:"Output,omitempty" xml:"Output,omitempty"`
-	// 工单参数
-	Params *string `json:"Params,omitempty" xml:"Params,omitempty"`
-	// 方案id
-	SchemeId *string `json:"SchemeId,omitempty" xml:"SchemeId,omitempty"`
-	// 方案名
+	GmtCreate  *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	GmtModify  *string `json:"GmtModify,omitempty" xml:"GmtModify,omitempty"`
+	OrderId    *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	Output     *string `json:"Output,omitempty" xml:"Output,omitempty"`
+	Params     *string `json:"Params,omitempty" xml:"Params,omitempty"`
+	SchemeId   *string `json:"SchemeId,omitempty" xml:"SchemeId,omitempty"`
 	SchemeName *string `json:"SchemeName,omitempty" xml:"SchemeName,omitempty"`
-	// 任务状态
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// 工单标题
-	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	Status     *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Title      *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 
 func (s Order) String() string {
@@ -3615,38 +3179,22 @@ func (s *Order) SetTitle(v string) *Order {
 }
 
 type OrderStep struct {
-	// 步骤展示方式
-	DisplayMethod *string `json:"DisplayMethod,omitempty" xml:"DisplayMethod,omitempty"`
-	// 创建时间
-	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// 修改时间
-	GmtModify *string `json:"GmtModify,omitempty" xml:"GmtModify,omitempty"`
-	// 步骤任务参数
-	JobKwargs *string `json:"JobKwargs,omitempty" xml:"JobKwargs,omitempty"`
-	// 步骤标题
-	JobMessage *string `json:"JobMessage,omitempty" xml:"JobMessage,omitempty"`
-	// 步骤标题
-	JobReturnStatus *string `json:"JobReturnStatus,omitempty" xml:"JobReturnStatus,omitempty"`
-	// 步骤任务返回
-	JobReturnValues *string `json:"JobReturnValues,omitempty" xml:"JobReturnValues,omitempty"`
-	// 步骤任务系统
-	JobSystem *string `json:"JobSystem,omitempty" xml:"JobSystem,omitempty"`
-	// 工单id
-	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	// 工单步骤id
-	OrderStepId *string `json:"OrderStepId,omitempty" xml:"OrderStepId,omitempty"`
-	// 下一步步骤名
-	RealNextStep *string `json:"RealNextStep,omitempty" xml:"RealNextStep,omitempty"`
-	// 下一步步骤可选列表
-	Restriction []*OrderStepRestriction `json:"Restriction,omitempty" xml:"Restriction,omitempty" type:"Repeated"`
-	// 步骤名
-	StepName *string `json:"StepName,omitempty" xml:"StepName,omitempty"`
-	// 步骤状态
-	StepStatus *string `json:"StepStatus,omitempty" xml:"StepStatus,omitempty"`
-	// 步骤标题
-	StepTitle *string `json:"StepTitle,omitempty" xml:"StepTitle,omitempty"`
-	// 步骤类型
-	StepType *string `json:"StepType,omitempty" xml:"StepType,omitempty"`
+	DisplayMethod   *string                 `json:"DisplayMethod,omitempty" xml:"DisplayMethod,omitempty"`
+	GmtCreate       *string                 `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	GmtModify       *string                 `json:"GmtModify,omitempty" xml:"GmtModify,omitempty"`
+	JobKwargs       *string                 `json:"JobKwargs,omitempty" xml:"JobKwargs,omitempty"`
+	JobMessage      *string                 `json:"JobMessage,omitempty" xml:"JobMessage,omitempty"`
+	JobReturnStatus *string                 `json:"JobReturnStatus,omitempty" xml:"JobReturnStatus,omitempty"`
+	JobReturnValues *string                 `json:"JobReturnValues,omitempty" xml:"JobReturnValues,omitempty"`
+	JobSystem       *string                 `json:"JobSystem,omitempty" xml:"JobSystem,omitempty"`
+	OrderId         *string                 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	OrderStepId     *string                 `json:"OrderStepId,omitempty" xml:"OrderStepId,omitempty"`
+	RealNextStep    *string                 `json:"RealNextStep,omitempty" xml:"RealNextStep,omitempty"`
+	Restriction     []*OrderStepRestriction `json:"Restriction,omitempty" xml:"Restriction,omitempty" type:"Repeated"`
+	StepName        *string                 `json:"StepName,omitempty" xml:"StepName,omitempty"`
+	StepStatus      *string                 `json:"StepStatus,omitempty" xml:"StepStatus,omitempty"`
+	StepTitle       *string                 `json:"StepTitle,omitempty" xml:"StepTitle,omitempty"`
+	StepType        *string                 `json:"StepType,omitempty" xml:"StepType,omitempty"`
 }
 
 func (s OrderStep) String() string {
@@ -3738,9 +3286,7 @@ func (s *OrderStep) SetStepType(v string) *OrderStep {
 }
 
 type OrderStepRestriction struct {
-	// 步骤标题
 	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
-	// 步骤名
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -3763,34 +3309,20 @@ func (s *OrderStepRestriction) SetValue(v string) *OrderStepRestriction {
 }
 
 type OsVersion struct {
-	// 用户名
-	AccessId *string `json:"AccessId,omitempty" xml:"AccessId,omitempty"`
-	// 创建时间
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// 目录
-	Directory *string `json:"Directory,omitempty" xml:"Directory,omitempty"`
-	// 过期时间
-	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	// file
-	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	// 文件路径
-	FilePath *string `json:"FilePath,omitempty" xml:"FilePath,omitempty"`
-	// 主机
-	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
-	// 型号
-	Model *string `json:"Model,omitempty" xml:"Model,omitempty"`
-	// 版本
-	OsVersion *string `json:"OsVersion,omitempty" xml:"OsVersion,omitempty"`
-	// 资源id
+	AccessId    *string `json:"AccessId,omitempty" xml:"AccessId,omitempty"`
+	CreateTime  *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Directory   *string `json:"Directory,omitempty" xml:"Directory,omitempty"`
+	ExpireTime  *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	FileName    *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	FilePath    *string `json:"FilePath,omitempty" xml:"FilePath,omitempty"`
+	Host        *string `json:"Host,omitempty" xml:"Host,omitempty"`
+	Model       *string `json:"Model,omitempty" xml:"Model,omitempty"`
+	OsVersion   *string `json:"OsVersion,omitempty" xml:"OsVersion,omitempty"`
 	OsVersionId *string `json:"OsVersionId,omitempty" xml:"OsVersionId,omitempty"`
-	// 策略
-	Policy *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
-	// 签名
-	Signature *string `json:"Signature,omitempty" xml:"Signature,omitempty"`
-	// 状态
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// 厂商
-	Vendor *string `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
+	Policy      *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
+	Signature   *string `json:"Signature,omitempty" xml:"Signature,omitempty"`
+	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Vendor      *string `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
 }
 
 func (s OsVersion) String() string {
@@ -3872,17 +3404,11 @@ func (s *OsVersion) SetVendor(v string) *OsVersion {
 }
 
 type PhysicalSpace struct {
-	// 具体所在地址
-	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
-	// 所属城市
-	City *string `json:"City,omitempty" xml:"City,omitempty"`
-	// 所属国家
-	Country *string `json:"Country,omitempty" xml:"Country,omitempty"`
-	// 所属省份
-	Province *string `json:"Province,omitempty" xml:"Province,omitempty"`
-	// 物理空间ID
-	SpaceId *string `json:"SpaceId,omitempty" xml:"SpaceId,omitempty"`
-	// 物理空间名称
+	Address   *string `json:"Address,omitempty" xml:"Address,omitempty"`
+	City      *string `json:"City,omitempty" xml:"City,omitempty"`
+	Country   *string `json:"Country,omitempty" xml:"Country,omitempty"`
+	Province  *string `json:"Province,omitempty" xml:"Province,omitempty"`
+	SpaceId   *string `json:"SpaceId,omitempty" xml:"SpaceId,omitempty"`
 	SpaceName *string `json:"SpaceName,omitempty" xml:"SpaceName,omitempty"`
 }
 
@@ -3925,34 +3451,21 @@ func (s *PhysicalSpace) SetSpaceName(v string) *PhysicalSpace {
 }
 
 type PhysicalSpaceDto struct {
-	// 具体地址
-	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
-	// 下一级
-	Children []*PhysicalSpaceDto `json:"Children,omitempty" xml:"Children,omitempty" type:"Repeated"`
-	// 所属城市
-	City *string `json:"City,omitempty" xml:"City,omitempty"`
-	// 所属国家
-	Country *string `json:"Country,omitempty" xml:"Country,omitempty"`
-	// 上级全路径
-	FullParentPath *string `json:"FullParentPath,omitempty" xml:"FullParentPath,omitempty"`
-	// 实例
-	Instance *string `json:"Instance,omitempty" xml:"Instance,omitempty"`
-	// 负责人
-	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	// 上级物理空间
-	ParentUid *string `json:"ParentUid,omitempty" xml:"ParentUid,omitempty"`
-	// 物理空间ID
-	PhysicalSpaceId *string `json:"PhysicalSpaceId,omitempty" xml:"PhysicalSpaceId,omitempty"`
-	// 物理空间名称
-	PhysicalSpaceName *string `json:"PhysicalSpaceName,omitempty" xml:"PhysicalSpaceName,omitempty"`
-	// 所属省份
-	Province *string `json:"Province,omitempty" xml:"Province,omitempty"`
-	// 备注
-	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	// 缩写
-	SpaceAbbreviation *string `json:"SpaceAbbreviation,omitempty" xml:"SpaceAbbreviation,omitempty"`
-	// 模型
-	SpaceType *string `json:"SpaceType,omitempty" xml:"SpaceType,omitempty"`
+	Address            *string             `json:"Address,omitempty" xml:"Address,omitempty"`
+	Children           []*PhysicalSpaceDto `json:"Children,omitempty" xml:"Children,omitempty" type:"Repeated"`
+	City               *string             `json:"City,omitempty" xml:"City,omitempty"`
+	Country            *string             `json:"Country,omitempty" xml:"Country,omitempty"`
+	FullParentPath     *string             `json:"FullParentPath,omitempty" xml:"FullParentPath,omitempty"`
+	Instance           *string             `json:"Instance,omitempty" xml:"Instance,omitempty"`
+	Owner              *string             `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	ParentUid          *string             `json:"ParentUid,omitempty" xml:"ParentUid,omitempty"`
+	PhysicalSpaceId    *string             `json:"PhysicalSpaceId,omitempty" xml:"PhysicalSpaceId,omitempty"`
+	PhysicalSpaceName  *string             `json:"PhysicalSpaceName,omitempty" xml:"PhysicalSpaceName,omitempty"`
+	Province           *string             `json:"Province,omitempty" xml:"Province,omitempty"`
+	Remark             *string             `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	SecurityDomainList []*string           `json:"SecurityDomainList,omitempty" xml:"SecurityDomainList,omitempty" type:"Repeated"`
+	SpaceAbbreviation  *string             `json:"SpaceAbbreviation,omitempty" xml:"SpaceAbbreviation,omitempty"`
+	SpaceType          *string             `json:"SpaceType,omitempty" xml:"SpaceType,omitempty"`
 }
 
 func (s PhysicalSpaceDto) String() string {
@@ -4023,6 +3536,11 @@ func (s *PhysicalSpaceDto) SetRemark(v string) *PhysicalSpaceDto {
 	return s
 }
 
+func (s *PhysicalSpaceDto) SetSecurityDomainList(v []*string) *PhysicalSpaceDto {
+	s.SecurityDomainList = v
+	return s
+}
+
 func (s *PhysicalSpaceDto) SetSpaceAbbreviation(v string) *PhysicalSpaceDto {
 	s.SpaceAbbreviation = &v
 	return s
@@ -4034,16 +3552,11 @@ func (s *PhysicalSpaceDto) SetSpaceType(v string) *PhysicalSpaceDto {
 }
 
 type Port struct {
-	// 设备ID
-	DeviceId *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
-	// 创建时间
-	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// 修改时间
-	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// 端口集ID
+	DeviceId         *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
+	GmtCreate        *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	GmtModified      *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
 	PortCollectionId *string `json:"PortCollectionId,omitempty" xml:"PortCollectionId,omitempty"`
-	// 端口名称
-	PortName *string `json:"PortName,omitempty" xml:"PortName,omitempty"`
+	PortName         *string `json:"PortName,omitempty" xml:"PortName,omitempty"`
 }
 
 func (s Port) String() string {
@@ -4080,18 +3593,12 @@ func (s *Port) SetPortName(v string) *Port {
 }
 
 type PortCollection struct {
-	// 创建时间
-	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// 修改时间
-	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// 描述
+	GmtCreate                 *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	GmtModified               *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
 	PortCollectionDescription *string `json:"PortCollectionDescription,omitempty" xml:"PortCollectionDescription,omitempty"`
-	// 端口集ID
-	PortCollectionId *string `json:"PortCollectionId,omitempty" xml:"PortCollectionId,omitempty"`
-	// 端口集名称
-	PortCollectionName *string `json:"PortCollectionName,omitempty" xml:"PortCollectionName,omitempty"`
-	// 端口列表
-	PortList []*Port `json:"PortList,omitempty" xml:"PortList,omitempty" type:"Repeated"`
+	PortCollectionId          *string `json:"PortCollectionId,omitempty" xml:"PortCollectionId,omitempty"`
+	PortCollectionName        *string `json:"PortCollectionName,omitempty" xml:"PortCollectionName,omitempty"`
+	PortList                  []*Port `json:"PortList,omitempty" xml:"PortList,omitempty" type:"Repeated"`
 }
 
 func (s PortCollection) String() string {
@@ -4133,22 +3640,14 @@ func (s *PortCollection) SetPortList(v []*Port) *PortCollection {
 }
 
 type ResourceInformation struct {
-	// 架构id
-	ArchitectureId *string `json:"ArchitectureId,omitempty" xml:"ArchitectureId,omitempty"`
-	// 创建时间
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// 信息
-	Information []*ResourceInformationInformation `json:"Information,omitempty" xml:"Information,omitempty" type:"Repeated"`
-	// 资源属性
-	ResourceAttribute *string `json:"ResourceAttribute,omitempty" xml:"ResourceAttribute,omitempty"`
-	// 资源一级ID
-	ResourceInformationId *string `json:"ResourceInformationId,omitempty" xml:"ResourceInformationId,omitempty"`
-	// 资源类型
-	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// 建设项目资源id
-	SetupProjectId *string `json:"SetupProjectId,omitempty" xml:"SetupProjectId,omitempty"`
-	// 更新时间
-	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	ArchitectureId        *string                           `json:"ArchitectureId,omitempty" xml:"ArchitectureId,omitempty"`
+	CreateTime            *string                           `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Information           []*ResourceInformationInformation `json:"Information,omitempty" xml:"Information,omitempty" type:"Repeated"`
+	ResourceAttribute     *string                           `json:"ResourceAttribute,omitempty" xml:"ResourceAttribute,omitempty"`
+	ResourceInformationId *string                           `json:"ResourceInformationId,omitempty" xml:"ResourceInformationId,omitempty"`
+	ResourceType          *string                           `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	SetupProjectId        *string                           `json:"SetupProjectId,omitempty" xml:"SetupProjectId,omitempty"`
+	UpdateTime            *string                           `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s ResourceInformation) String() string {
@@ -4200,13 +3699,9 @@ func (s *ResourceInformation) SetUpdateTime(v string) *ResourceInformation {
 }
 
 type ResourceInformationInformation struct {
-	// 键
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// 键动作
-	KeyAction *string `json:"KeyAction,omitempty" xml:"KeyAction,omitempty"`
-	// 键属性
-	KeyAttribute *string `json:"KeyAttribute,omitempty" xml:"KeyAttribute,omitempty"`
-	// 键描述
+	Key            *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	KeyAction      *string `json:"KeyAction,omitempty" xml:"KeyAction,omitempty"`
+	KeyAttribute   *string `json:"KeyAttribute,omitempty" xml:"KeyAttribute,omitempty"`
 	KeyDescription *string `json:"KeyDescription,omitempty" xml:"KeyDescription,omitempty"`
 }
 
@@ -4239,28 +3734,17 @@ func (s *ResourceInformationInformation) SetKeyDescription(v string) *ResourceIn
 }
 
 type ScheduleDuty struct {
-	// 创建时间
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// 结束时间
-	EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	// 资源一级ID
-	ScheduleDutyId *string `json:"ScheduleDutyId,omitempty" xml:"ScheduleDutyId,omitempty"`
-	// scheduleTypeIds
-	ScheduleTypeIds []*string `json:"ScheduleTypeIds,omitempty" xml:"ScheduleTypeIds,omitempty" type:"Repeated"`
-	// 开始时间
-	StartDate *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
-	// typeWorkerList
-	TypeWorkerList []*ScheduleDutyTypeWorkerList `json:"TypeWorkerList,omitempty" xml:"TypeWorkerList,omitempty" type:"Repeated"`
-	// 更新时间
-	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	// 值班表日期
-	WorkDate *string `json:"WorkDate,omitempty" xml:"WorkDate,omitempty"`
-	// 值班表类型
-	WorkType *string `json:"WorkType,omitempty" xml:"WorkType,omitempty"`
-	// 值班人员工号
-	WorkerId *string `json:"WorkerId,omitempty" xml:"WorkerId,omitempty"`
-	// 值班人员姓名
-	WorkerName *string `json:"WorkerName,omitempty" xml:"WorkerName,omitempty"`
+	CreateTime      *string                       `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	EndDate         *string                       `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	ScheduleDutyId  *string                       `json:"ScheduleDutyId,omitempty" xml:"ScheduleDutyId,omitempty"`
+	ScheduleTypeIds []*string                     `json:"ScheduleTypeIds,omitempty" xml:"ScheduleTypeIds,omitempty" type:"Repeated"`
+	StartDate       *string                       `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	TypeWorkerList  []*ScheduleDutyTypeWorkerList `json:"TypeWorkerList,omitempty" xml:"TypeWorkerList,omitempty" type:"Repeated"`
+	UpdateTime      *string                       `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	WorkDate        *string                       `json:"WorkDate,omitempty" xml:"WorkDate,omitempty"`
+	WorkType        *string                       `json:"WorkType,omitempty" xml:"WorkType,omitempty"`
+	WorkerId        *string                       `json:"WorkerId,omitempty" xml:"WorkerId,omitempty"`
+	WorkerName      *string                       `json:"WorkerName,omitempty" xml:"WorkerName,omitempty"`
 }
 
 func (s ScheduleDuty) String() string {
@@ -4327,9 +3811,7 @@ func (s *ScheduleDuty) SetWorkerName(v string) *ScheduleDuty {
 }
 
 type ScheduleDutyTypeWorkerList struct {
-	// scheduleTypeId
-	ScheduleTypeId *string `json:"ScheduleTypeId,omitempty" xml:"ScheduleTypeId,omitempty"`
-	// 值班人员姓名
+	ScheduleTypeId     *string   `json:"ScheduleTypeId,omitempty" xml:"ScheduleTypeId,omitempty"`
 	ScheduleWorkerName []*string `json:"ScheduleWorkerName,omitempty" xml:"ScheduleWorkerName,omitempty" type:"Repeated"`
 }
 
@@ -4352,20 +3834,13 @@ func (s *ScheduleDutyTypeWorkerList) SetScheduleWorkerName(v []*string) *Schedul
 }
 
 type ScheduleType struct {
-	// 创建时间
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// 值班类型key
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// relatedWorkerStr
-	RelatedWorker []*string `json:"RelatedWorker,omitempty" xml:"RelatedWorker,omitempty" type:"Repeated"`
-	// 资源一级ID
-	ScheduleTypeId *string `json:"ScheduleTypeId,omitempty" xml:"ScheduleTypeId,omitempty"`
-	// 值班类型状态
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// 更新时间
-	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	// 值班类型value
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	CreateTime     *string   `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Key            *string   `json:"Key,omitempty" xml:"Key,omitempty"`
+	RelatedWorker  []*string `json:"RelatedWorker,omitempty" xml:"RelatedWorker,omitempty" type:"Repeated"`
+	ScheduleTypeId *string   `json:"ScheduleTypeId,omitempty" xml:"ScheduleTypeId,omitempty"`
+	Status         *string   `json:"Status,omitempty" xml:"Status,omitempty"`
+	UpdateTime     *string   `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	Value          *string   `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s ScheduleType) String() string {
@@ -4412,18 +3887,12 @@ func (s *ScheduleType) SetValue(v string) *ScheduleType {
 }
 
 type ScheduleWorker struct {
-	// 创建时间
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// 资源一级ID
+	CreateTime       *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	ScheduleWorkerId *string `json:"ScheduleWorkerId,omitempty" xml:"ScheduleWorkerId,omitempty"`
-	// 更新时间
-	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	// 联系方式
-	WorkerContact *string `json:"WorkerContact,omitempty" xml:"WorkerContact,omitempty"`
-	// 值班人员工号
-	WorkerId *string `json:"WorkerId,omitempty" xml:"WorkerId,omitempty"`
-	// 值班人员姓名
-	WorkerName *string `json:"WorkerName,omitempty" xml:"WorkerName,omitempty"`
+	UpdateTime       *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	WorkerContact    *string `json:"WorkerContact,omitempty" xml:"WorkerContact,omitempty"`
+	WorkerId         *string `json:"WorkerId,omitempty" xml:"WorkerId,omitempty"`
+	WorkerName       *string `json:"WorkerName,omitempty" xml:"WorkerName,omitempty"`
 }
 
 func (s ScheduleWorker) String() string {
@@ -4465,28 +3934,17 @@ func (s *ScheduleWorker) SetWorkerName(v string) *ScheduleWorker {
 }
 
 type Scheme struct {
-	// 方案类型
-	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	// 方案内容
-	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// 方案说明
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 创建时间
-	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// 修改时间
-	GmtModify *string `json:"GmtModify,omitempty" xml:"GmtModify,omitempty"`
-	// 方案入参
-	Input []*SchemeInput `json:"Input,omitempty" xml:"Input,omitempty" type:"Repeated"`
-	// 方案出参
-	Output []*SchemeOutput `json:"Output,omitempty" xml:"Output,omitempty" type:"Repeated"`
-	// 方案id
-	SchemeId *string `json:"SchemeId,omitempty" xml:"SchemeId,omitempty"`
-	// 方案名称
-	SchemeName *string `json:"SchemeName,omitempty" xml:"SchemeName,omitempty"`
-	// 方案状态
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// 方案展示
-	View *string `json:"View,omitempty" xml:"View,omitempty"`
+	Category    *string         `json:"Category,omitempty" xml:"Category,omitempty"`
+	Content     *string         `json:"Content,omitempty" xml:"Content,omitempty"`
+	Description *string         `json:"Description,omitempty" xml:"Description,omitempty"`
+	GmtCreate   *string         `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	GmtModify   *string         `json:"GmtModify,omitempty" xml:"GmtModify,omitempty"`
+	Input       []*SchemeInput  `json:"Input,omitempty" xml:"Input,omitempty" type:"Repeated"`
+	Output      []*SchemeOutput `json:"Output,omitempty" xml:"Output,omitempty" type:"Repeated"`
+	SchemeId    *string         `json:"SchemeId,omitempty" xml:"SchemeId,omitempty"`
+	SchemeName  *string         `json:"SchemeName,omitempty" xml:"SchemeName,omitempty"`
+	Status      *string         `json:"Status,omitempty" xml:"Status,omitempty"`
+	View        *string         `json:"View,omitempty" xml:"View,omitempty"`
 }
 
 func (s Scheme) String() string {
@@ -4553,14 +4011,10 @@ func (s *Scheme) SetView(v string) *Scheme {
 }
 
 type SchemeInput struct {
-	// 参数说明
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 参数名称
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 参数示例
-	Sample *string `json:"Sample,omitempty" xml:"Sample,omitempty"`
-	// 参数类型
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Sample      *string `json:"Sample,omitempty" xml:"Sample,omitempty"`
+	Type        *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s SchemeInput) String() string {
@@ -4592,14 +4046,10 @@ func (s *SchemeInput) SetType(v string) *SchemeInput {
 }
 
 type SchemeOutput struct {
-	// 参数说明
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 参数名称
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 参数示例
-	Sample *string `json:"Sample,omitempty" xml:"Sample,omitempty"`
-	// 参数类型
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Sample      *string `json:"Sample,omitempty" xml:"Sample,omitempty"`
+	Type        *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s SchemeOutput) String() string {
@@ -4631,24 +4081,15 @@ func (s *SchemeOutput) SetType(v string) *SchemeOutput {
 }
 
 type Script struct {
-	// 脚本代码
-	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// 创建时间
-	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// 修改时间
-	GmtModify *string `json:"GmtModify,omitempty" xml:"GmtModify,omitempty"`
-	// 模板入参
-	Input []*ScriptInput `json:"Input,omitempty" xml:"Input,omitempty" type:"Repeated"`
-	// 模板出参
-	Output []*ScriptOutput `json:"Output,omitempty" xml:"Output,omitempty" type:"Repeated"`
-	// 规则列表
-	Rules []*ScriptRule `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
-	// 脚本id
-	ScriptId *string `json:"ScriptId,omitempty" xml:"ScriptId,omitempty"`
-	// 模板id
-	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	// 版本id
-	VersionId *string `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
+	Content    *string         `json:"Content,omitempty" xml:"Content,omitempty"`
+	GmtCreate  *string         `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	GmtModify  *string         `json:"GmtModify,omitempty" xml:"GmtModify,omitempty"`
+	Input      []*ScriptInput  `json:"Input,omitempty" xml:"Input,omitempty" type:"Repeated"`
+	Output     []*ScriptOutput `json:"Output,omitempty" xml:"Output,omitempty" type:"Repeated"`
+	Rules      []*ScriptRule   `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
+	ScriptId   *string         `json:"ScriptId,omitempty" xml:"ScriptId,omitempty"`
+	TemplateId *string         `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	VersionId  *string         `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
 }
 
 func (s Script) String() string {
@@ -4705,14 +4146,10 @@ func (s *Script) SetVersionId(v string) *Script {
 }
 
 type ScriptInput struct {
-	// 参数说明
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 参数名称
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 参数示例
-	Sample *string `json:"Sample,omitempty" xml:"Sample,omitempty"`
-	// 参数类型
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Sample      *string `json:"Sample,omitempty" xml:"Sample,omitempty"`
+	Type        *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s ScriptInput) String() string {
@@ -4744,14 +4181,10 @@ func (s *ScriptInput) SetType(v string) *ScriptInput {
 }
 
 type ScriptOutput struct {
-	// 参数说明
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 参数名称
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 参数示例
-	Sample *string `json:"Sample,omitempty" xml:"Sample,omitempty"`
-	// 参数类型
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Sample      *string `json:"Sample,omitempty" xml:"Sample,omitempty"`
+	Type        *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s ScriptOutput) String() string {
@@ -4783,22 +4216,14 @@ func (s *ScriptOutput) SetType(v string) *ScriptOutput {
 }
 
 type ScriptHistory struct {
-	// 版本说明
-	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// 脚本代码
-	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// 创建时间
-	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// 修改时间
-	GmtModify *string `json:"GmtModify,omitempty" xml:"GmtModify,omitempty"`
-	// 模板入参
-	Input []*ScriptHistoryInput `json:"Input,omitempty" xml:"Input,omitempty" type:"Repeated"`
-	// 模板出参
-	Output []*ScriptHistoryOutput `json:"Output,omitempty" xml:"Output,omitempty" type:"Repeated"`
-	// 脚本id
-	ScriptId *string `json:"ScriptId,omitempty" xml:"ScriptId,omitempty"`
-	// 版本id
-	VersionId *string `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
+	Comment   *string                `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	Content   *string                `json:"Content,omitempty" xml:"Content,omitempty"`
+	GmtCreate *string                `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	GmtModify *string                `json:"GmtModify,omitempty" xml:"GmtModify,omitempty"`
+	Input     []*ScriptHistoryInput  `json:"Input,omitempty" xml:"Input,omitempty" type:"Repeated"`
+	Output    []*ScriptHistoryOutput `json:"Output,omitempty" xml:"Output,omitempty" type:"Repeated"`
+	ScriptId  *string                `json:"ScriptId,omitempty" xml:"ScriptId,omitempty"`
+	VersionId *string                `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
 }
 
 func (s ScriptHistory) String() string {
@@ -4850,14 +4275,10 @@ func (s *ScriptHistory) SetVersionId(v string) *ScriptHistory {
 }
 
 type ScriptHistoryInput struct {
-	// 参数说明
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 参数名称
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 参数示例
-	Sample *string `json:"Sample,omitempty" xml:"Sample,omitempty"`
-	// 参数类型
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Sample      *string `json:"Sample,omitempty" xml:"Sample,omitempty"`
+	Type        *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s ScriptHistoryInput) String() string {
@@ -4889,14 +4310,10 @@ func (s *ScriptHistoryInput) SetType(v string) *ScriptHistoryInput {
 }
 
 type ScriptHistoryOutput struct {
-	// 参数说明
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 参数名称
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 参数示例
-	Sample *string `json:"Sample,omitempty" xml:"Sample,omitempty"`
-	// 参数类型
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Sample      *string `json:"Sample,omitempty" xml:"Sample,omitempty"`
+	Type        *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s ScriptHistoryOutput) String() string {
@@ -4928,22 +4345,14 @@ func (s *ScriptHistoryOutput) SetType(v string) *ScriptHistoryOutput {
 }
 
 type ScriptRule struct {
-	// 设备架构
-	Arch *string `json:"Arch,omitempty" xml:"Arch,omitempty"`
-	// 设备安全域
-	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	// 设备型号
-	Model *string `json:"Model,omitempty" xml:"Model,omitempty"`
-	// 设备OS版本
-	Os *string `json:"Os,omitempty" xml:"Os,omitempty"`
-	// 设备角色
-	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
-	// 规则id
-	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
-	// 脚本id
+	Arch     *string `json:"Arch,omitempty" xml:"Arch,omitempty"`
+	Domain   *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	Model    *string `json:"Model,omitempty" xml:"Model,omitempty"`
+	Os       *string `json:"Os,omitempty" xml:"Os,omitempty"`
+	Role     *string `json:"Role,omitempty" xml:"Role,omitempty"`
+	RuleId   *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
 	ScriptId *string `json:"ScriptId,omitempty" xml:"ScriptId,omitempty"`
-	// 设备厂商
-	Vendor *string `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
+	Vendor   *string `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
 }
 
 func (s ScriptRule) String() string {
@@ -4995,34 +4404,20 @@ func (s *ScriptRule) SetVendor(v string) *ScriptRule {
 }
 
 type SetupProject struct {
-	// 架构id
-	ArchId *string `json:"ArchId,omitempty" xml:"ArchId,omitempty"`
-	// 架构版本
-	ArchVersion *string `json:"ArchVersion,omitempty" xml:"ArchVersion,omitempty"`
-	// 架构id
-	ArchitectureId *string `json:"ArchitectureId,omitempty" xml:"ArchitectureId,omitempty"`
-	// 创建时间
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// 预计交付时间
-	DeliveryTime *string `json:"DeliveryTime,omitempty" xml:"DeliveryTime,omitempty"`
-	// 描述
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 节点
-	Nodes *string `json:"Nodes,omitempty" xml:"Nodes,omitempty"`
-	// 套餐
-	Packages []*SetupProjectPackages `json:"Packages,omitempty" xml:"Packages,omitempty" type:"Repeated"`
-	// 资源一级ID
-	SetupProjectId *string `json:"SetupProjectId,omitempty" xml:"SetupProjectId,omitempty"`
-	// 资源名称
-	SetupProjectName *string `json:"SetupProjectName,omitempty" xml:"SetupProjectName,omitempty"`
-	// 物理空间uId
-	SpaceId *string `json:"SpaceId,omitempty" xml:"SpaceId,omitempty"`
-	// 物理空间名称
-	SpaceName *string `json:"SpaceName,omitempty" xml:"SpaceName,omitempty"`
-	// 物理空间类型
-	SpaceType *string `json:"SpaceType,omitempty" xml:"SpaceType,omitempty"`
-	// 状态
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	ArchId           *string                 `json:"ArchId,omitempty" xml:"ArchId,omitempty"`
+	ArchVersion      *string                 `json:"ArchVersion,omitempty" xml:"ArchVersion,omitempty"`
+	ArchitectureId   *string                 `json:"ArchitectureId,omitempty" xml:"ArchitectureId,omitempty"`
+	CreateTime       *string                 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	DeliveryTime     *string                 `json:"DeliveryTime,omitempty" xml:"DeliveryTime,omitempty"`
+	Description      *string                 `json:"Description,omitempty" xml:"Description,omitempty"`
+	Nodes            *string                 `json:"Nodes,omitempty" xml:"Nodes,omitempty"`
+	Packages         []*SetupProjectPackages `json:"Packages,omitempty" xml:"Packages,omitempty" type:"Repeated"`
+	SetupProjectId   *string                 `json:"SetupProjectId,omitempty" xml:"SetupProjectId,omitempty"`
+	SetupProjectName *string                 `json:"SetupProjectName,omitempty" xml:"SetupProjectName,omitempty"`
+	SpaceId          *string                 `json:"SpaceId,omitempty" xml:"SpaceId,omitempty"`
+	SpaceName        *string                 `json:"SpaceName,omitempty" xml:"SpaceName,omitempty"`
+	SpaceType        *string                 `json:"SpaceType,omitempty" xml:"SpaceType,omitempty"`
+	Status           *string                 `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s SetupProject) String() string {
@@ -5104,14 +4499,10 @@ func (s *SetupProject) SetStatus(v string) *SetupProject {
 }
 
 type SetupProjectPackages struct {
-	// 设备号
 	DeviceNumber *string `json:"DeviceNumber,omitempty" xml:"DeviceNumber,omitempty"`
-	// 型号
-	Model *string `json:"Model,omitempty" xml:"Model,omitempty"`
-	// 角色
-	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
-	// 厂商
-	Vendor *string `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
+	Model        *string `json:"Model,omitempty" xml:"Model,omitempty"`
+	Role         *string `json:"Role,omitempty" xml:"Role,omitempty"`
+	Vendor       *string `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
 }
 
 func (s SetupProjectPackages) String() string {
@@ -5143,26 +4534,16 @@ func (s *SetupProjectPackages) SetVendor(v string) *SetupProjectPackages {
 }
 
 type SpaceModel struct {
-	// 创建时间
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// 物理空间实例
-	Instance *string `json:"Instance,omitempty" xml:"Instance,omitempty"`
-	// 操作类型
-	OperateType *string `json:"OperateType,omitempty" xml:"OperateType,omitempty"`
-	// 层级
-	Sort *SpaceModelSort `json:"Sort,omitempty" xml:"Sort,omitempty" type:"Struct"`
-	// 物理空间id
-	SpaceId *string `json:"SpaceId,omitempty" xml:"SpaceId,omitempty"`
-	// 物理空间模型
-	SpaceModel *SpaceModelSpaceModel `json:"SpaceModel,omitempty" xml:"SpaceModel,omitempty" type:"Struct"`
-	// 资源一级ID
-	SpaceModelId *string `json:"SpaceModelId,omitempty" xml:"SpaceModelId,omitempty"`
-	// 资源名称
-	SpaceModelName *string `json:"SpaceModelName,omitempty" xml:"SpaceModelName,omitempty"`
-	// 物理空间类型
-	SpaceType *string `json:"SpaceType,omitempty" xml:"SpaceType,omitempty"`
-	// 状态
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	CreateTime     *string               `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Instance       *string               `json:"Instance,omitempty" xml:"Instance,omitempty"`
+	OperateType    *string               `json:"OperateType,omitempty" xml:"OperateType,omitempty"`
+	Sort           *SpaceModelSort       `json:"Sort,omitempty" xml:"Sort,omitempty" type:"Struct"`
+	SpaceId        *string               `json:"SpaceId,omitempty" xml:"SpaceId,omitempty"`
+	SpaceModel     *SpaceModelSpaceModel `json:"SpaceModel,omitempty" xml:"SpaceModel,omitempty" type:"Struct"`
+	SpaceModelId   *string               `json:"SpaceModelId,omitempty" xml:"SpaceModelId,omitempty"`
+	SpaceModelName *string               `json:"SpaceModelName,omitempty" xml:"SpaceModelName,omitempty"`
+	SpaceType      *string               `json:"SpaceType,omitempty" xml:"SpaceType,omitempty"`
+	Status         *string               `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s SpaceModel) String() string {
@@ -5224,9 +4605,7 @@ func (s *SpaceModel) SetStatus(v string) *SpaceModel {
 }
 
 type SpaceModelSort struct {
-	// 层次
-	Level *int64 `json:"Level,omitempty" xml:"Level,omitempty"`
-	// 分层名称
+	Level     *int64  `json:"Level,omitempty" xml:"Level,omitempty"`
 	LevelName *string `json:"LevelName,omitempty" xml:"LevelName,omitempty"`
 }
 
@@ -5249,18 +4628,12 @@ func (s *SpaceModelSort) SetLevelName(v string) *SpaceModelSort {
 }
 
 type SpaceModelSpaceModel struct {
-	// 创建时间
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// 模型实例
-	Sort *SpaceModelSpaceModelSort `json:"Sort,omitempty" xml:"Sort,omitempty" type:"Struct"`
-	// 物理空间模型id
-	SpaceModelId *string `json:"SpaceModelId,omitempty" xml:"SpaceModelId,omitempty"`
-	// 物理空间类型
-	SpaceType *string `json:"SpaceType,omitempty" xml:"SpaceType,omitempty"`
-	// 模型状态
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// 更新时间
-	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	CreateTime   *string                   `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Sort         *SpaceModelSpaceModelSort `json:"Sort,omitempty" xml:"Sort,omitempty" type:"Struct"`
+	SpaceModelId *string                   `json:"SpaceModelId,omitempty" xml:"SpaceModelId,omitempty"`
+	SpaceType    *string                   `json:"SpaceType,omitempty" xml:"SpaceType,omitempty"`
+	Status       *string                   `json:"Status,omitempty" xml:"Status,omitempty"`
+	UpdateTime   *string                   `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s SpaceModelSpaceModel) String() string {
@@ -5302,9 +4675,7 @@ func (s *SpaceModelSpaceModel) SetUpdateTime(v string) *SpaceModelSpaceModel {
 }
 
 type SpaceModelSpaceModelSort struct {
-	// 层级
-	Level *int64 `json:"Level,omitempty" xml:"Level,omitempty"`
-	// 层级名称
+	Level     *int64  `json:"Level,omitempty" xml:"Level,omitempty"`
 	LevleName *string `json:"LevleName,omitempty" xml:"LevleName,omitempty"`
 }
 
@@ -5327,26 +4698,16 @@ func (s *SpaceModelSpaceModelSort) SetLevleName(v string) *SpaceModelSpaceModelS
 }
 
 type SubscriptionItem struct {
-	// 告警状态
-	AlarmStatus *string `json:"AlarmStatus,omitempty" xml:"AlarmStatus,omitempty"`
-	// 发送通知的语言
-	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
-	// 监控项ID
-	MonitorItemId *string `json:"MonitorItemId,omitempty" xml:"MonitorItemId,omitempty"`
-	// 通知组ID
+	AlarmStatus         *string `json:"AlarmStatus,omitempty" xml:"AlarmStatus,omitempty"`
+	Language            *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	MonitorItemId       *string `json:"MonitorItemId,omitempty" xml:"MonitorItemId,omitempty"`
 	NotificationGroupId *string `json:"NotificationGroupId,omitempty" xml:"NotificationGroupId,omitempty"`
-	// 通知方式
-	NotificationMode *string `json:"NotificationMode,omitempty" xml:"NotificationMode,omitempty"`
-	// 是否发送通知
-	RecoveryNotice *int32 `json:"RecoveryNotice,omitempty" xml:"RecoveryNotice,omitempty"`
-	// 订阅项ID
-	SubscriptionItemId *string `json:"SubscriptionItemId,omitempty" xml:"SubscriptionItemId,omitempty"`
-	// 订阅类型
-	SubscriptionType *string `json:"SubscriptionType,omitempty" xml:"SubscriptionType,omitempty"`
-	// 抑制策略
+	NotificationMode    *string `json:"NotificationMode,omitempty" xml:"NotificationMode,omitempty"`
+	RecoveryNotice      *int32  `json:"RecoveryNotice,omitempty" xml:"RecoveryNotice,omitempty"`
+	SubscriptionItemId  *string `json:"SubscriptionItemId,omitempty" xml:"SubscriptionItemId,omitempty"`
+	SubscriptionType    *string `json:"SubscriptionType,omitempty" xml:"SubscriptionType,omitempty"`
 	SuppressionStrategy *string `json:"SuppressionStrategy,omitempty" xml:"SuppressionStrategy,omitempty"`
-	// 连续触发次数
-	TriggerTimes *int32 `json:"TriggerTimes,omitempty" xml:"TriggerTimes,omitempty"`
+	TriggerTimes        *int32  `json:"TriggerTimes,omitempty" xml:"TriggerTimes,omitempty"`
 }
 
 func (s SubscriptionItem) String() string {
@@ -5408,25 +4769,15 @@ func (s *SubscriptionItem) SetTriggerTimes(v int32) *SubscriptionItem {
 }
 
 type Task struct {
-	// 模板类别
-	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	// 创建时间
-	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// 修改时间
-	GmtModify *string `json:"GmtModify,omitempty" xml:"GmtModify,omitempty"`
-	// 任务参数
-	Params *string `json:"Params,omitempty" xml:"Params,omitempty"`
-	// 任务错误码
+	Category     *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	GmtCreate    *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	GmtModify    *string `json:"GmtModify,omitempty" xml:"GmtModify,omitempty"`
+	Params       *string `json:"Params,omitempty" xml:"Params,omitempty"`
 	ResponseCode *string `json:"ResponseCode,omitempty" xml:"ResponseCode,omitempty"`
-	// 任务返回
-	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
-	// 任务状态
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// 任务id
-	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// 模板id
-	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	// 模板名称
+	Result       *string `json:"Result,omitempty" xml:"Result,omitempty"`
+	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	TaskId       *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	TemplateId   *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
 }
 
@@ -5489,20 +4840,13 @@ func (s *Task) SetTemplateName(v string) *Task {
 }
 
 type TaskLog struct {
-	// 函数名
-	FuncName *string `json:"FuncName,omitempty" xml:"FuncName,omitempty"`
-	// 记录时间
+	FuncName  *string `json:"FuncName,omitempty" xml:"FuncName,omitempty"`
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// 日志等级
-	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
-	// 行数
-	LineNo *int32 `json:"LineNo,omitempty" xml:"LineNo,omitempty"`
-	// 日志id
-	LogId *string `json:"LogId,omitempty" xml:"LogId,omitempty"`
-	// 日志信息
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// 任务id
-	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	Level     *string `json:"Level,omitempty" xml:"Level,omitempty"`
+	LineNo    *int32  `json:"LineNo,omitempty" xml:"LineNo,omitempty"`
+	LogId     *string `json:"LogId,omitempty" xml:"LogId,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s TaskLog) String() string {
@@ -5549,22 +4893,14 @@ func (s *TaskLog) SetTaskId(v string) *TaskLog {
 }
 
 type Template struct {
-	// 模板类型
-	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	// 模板说明
-	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// 创建时间
-	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// 修改时间
-	GmtModify *string `json:"GmtModify,omitempty" xml:"GmtModify,omitempty"`
-	// 模板入参
-	Input []*TemplateInput `json:"Input,omitempty" xml:"Input,omitempty" type:"Repeated"`
-	// 模板出参
-	Output []*TemplateOutput `json:"Output,omitempty" xml:"Output,omitempty" type:"Repeated"`
-	// 模板名称
-	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
-	// 模板类型
-	TemplateType *string `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
+	Category     *string           `json:"Category,omitempty" xml:"Category,omitempty"`
+	Comment      *string           `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	GmtCreate    *string           `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	GmtModify    *string           `json:"GmtModify,omitempty" xml:"GmtModify,omitempty"`
+	Input        []*TemplateInput  `json:"Input,omitempty" xml:"Input,omitempty" type:"Repeated"`
+	Output       []*TemplateOutput `json:"Output,omitempty" xml:"Output,omitempty" type:"Repeated"`
+	TemplateName *string           `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	TemplateType *string           `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
 }
 
 func (s Template) String() string {
@@ -5616,14 +4952,10 @@ func (s *Template) SetTemplateType(v string) *Template {
 }
 
 type TemplateInput struct {
-	// 参数说明
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 参数名称
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 参数示例
-	Sample *string `json:"Sample,omitempty" xml:"Sample,omitempty"`
-	// 参数类型
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Sample      *string `json:"Sample,omitempty" xml:"Sample,omitempty"`
+	Type        *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s TemplateInput) String() string {
@@ -5655,14 +4987,10 @@ func (s *TemplateInput) SetType(v string) *TemplateInput {
 }
 
 type TemplateOutput struct {
-	// 参数说明
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 参数名称
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 参数示例
-	Sample *string `json:"Sample,omitempty" xml:"Sample,omitempty"`
-	// 参数类型
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Sample      *string `json:"Sample,omitempty" xml:"Sample,omitempty"`
+	Type        *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s TemplateOutput) String() string {
@@ -5694,20 +5022,13 @@ func (s *TemplateOutput) SetType(v string) *TemplateOutput {
 }
 
 type TimePeriod struct {
-	// Cron表达式
-	CronExpression *string `json:"CronExpression,omitempty" xml:"CronExpression,omitempty"`
-	// 创建时间
-	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// 修改时间
-	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// 来源
-	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	// 描述
+	CronExpression        *string `json:"CronExpression,omitempty" xml:"CronExpression,omitempty"`
+	GmtCreate             *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	GmtModified           *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	Source                *string `json:"Source,omitempty" xml:"Source,omitempty"`
 	TimePeriodDescription *string `json:"TimePeriodDescription,omitempty" xml:"TimePeriodDescription,omitempty"`
-	// 时间段ID
-	TimePeriodId *string `json:"TimePeriodId,omitempty" xml:"TimePeriodId,omitempty"`
-	// 时间段名称
-	TimePeriodName *string `json:"TimePeriodName,omitempty" xml:"TimePeriodName,omitempty"`
+	TimePeriodId          *string `json:"TimePeriodId,omitempty" xml:"TimePeriodId,omitempty"`
+	TimePeriodName        *string `json:"TimePeriodName,omitempty" xml:"TimePeriodName,omitempty"`
 }
 
 func (s TimePeriod) String() string {
@@ -5754,16 +5075,11 @@ func (s *TimePeriod) SetTimePeriodName(v string) *TimePeriod {
 }
 
 type ZoneType struct {
-	// 创建时间
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// 园区类型名称
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 资源一级ID
-	ZoneTypeId *string `json:"ZoneTypeId,omitempty" xml:"ZoneTypeId,omitempty"`
-	// 园区层级
+	CreateTime    *string                  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Name          *string                  `json:"Name,omitempty" xml:"Name,omitempty"`
+	ZoneTypeId    *string                  `json:"ZoneTypeId,omitempty" xml:"ZoneTypeId,omitempty"`
 	ZoneTypeLayer []*ZoneTypeZoneTypeLayer `json:"ZoneTypeLayer,omitempty" xml:"ZoneTypeLayer,omitempty" type:"Repeated"`
-	// 资源名称
-	ZoneTypeName *string `json:"ZoneTypeName,omitempty" xml:"ZoneTypeName,omitempty"`
+	ZoneTypeName  *string                  `json:"ZoneTypeName,omitempty" xml:"ZoneTypeName,omitempty"`
 }
 
 func (s ZoneType) String() string {
@@ -5800,9 +5116,7 @@ func (s *ZoneType) SetZoneTypeName(v string) *ZoneType {
 }
 
 type ZoneTypeZoneTypeLayer struct {
-	// 园区层级掩码
-	Mask *int64 `json:"Mask,omitempty" xml:"Mask,omitempty"`
-	// 园区层级名称
+	Mask *int64  `json:"Mask,omitempty" xml:"Mask,omitempty"`
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
@@ -5825,24 +5139,15 @@ func (s *ZoneTypeZoneTypeLayer) SetName(v string) *ZoneTypeZoneTypeLayer {
 }
 
 type ApplyIPRequest struct {
-	// 业务类型id
-	BusinessTypeId *string `json:"BusinessTypeId,omitempty" xml:"BusinessTypeId,omitempty"`
-	// 业务参数
-	BusinessTypeParams *string `json:"BusinessTypeParams,omitempty" xml:"BusinessTypeParams,omitempty"`
-	// deviceResourceId
-	DeviceResourceId *string `json:"DeviceResourceId,omitempty" xml:"DeviceResourceId,omitempty"`
-	// 设备uuid列表
-	DeviceResourceIds []*string `json:"DeviceResourceIds,omitempty" xml:"DeviceResourceIds,omitempty" type:"Repeated"`
-	// instanceId
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// ip地址类型
-	IpType *string `json:"IpType,omitempty" xml:"IpType,omitempty"`
-	// Loopback端口
-	LoopbackPort *string `json:"LoopbackPort,omitempty" xml:"LoopbackPort,omitempty"`
-	// 位置空间
-	NetLocation *string `json:"NetLocation,omitempty" xml:"NetLocation,omitempty"`
-	// 建设项目id
-	SetupProjectId *string `json:"SetupProjectId,omitempty" xml:"SetupProjectId,omitempty"`
+	BusinessTypeId     *string   `json:"BusinessTypeId,omitempty" xml:"BusinessTypeId,omitempty"`
+	BusinessTypeParams *string   `json:"BusinessTypeParams,omitempty" xml:"BusinessTypeParams,omitempty"`
+	DeviceResourceId   *string   `json:"DeviceResourceId,omitempty" xml:"DeviceResourceId,omitempty"`
+	DeviceResourceIds  []*string `json:"DeviceResourceIds,omitempty" xml:"DeviceResourceIds,omitempty" type:"Repeated"`
+	InstanceId         *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	IpType             *string   `json:"IpType,omitempty" xml:"IpType,omitempty"`
+	LoopbackPort       *string   `json:"LoopbackPort,omitempty" xml:"LoopbackPort,omitempty"`
+	NetLocation        *string   `json:"NetLocation,omitempty" xml:"NetLocation,omitempty"`
+	SetupProjectId     *string   `json:"SetupProjectId,omitempty" xml:"SetupProjectId,omitempty"`
 }
 
 func (s ApplyIPRequest) String() string {
@@ -5899,24 +5204,15 @@ func (s *ApplyIPRequest) SetSetupProjectId(v string) *ApplyIPRequest {
 }
 
 type ApplyIPShrinkRequest struct {
-	// 业务类型id
-	BusinessTypeId *string `json:"BusinessTypeId,omitempty" xml:"BusinessTypeId,omitempty"`
-	// 业务参数
-	BusinessTypeParams *string `json:"BusinessTypeParams,omitempty" xml:"BusinessTypeParams,omitempty"`
-	// deviceResourceId
-	DeviceResourceId *string `json:"DeviceResourceId,omitempty" xml:"DeviceResourceId,omitempty"`
-	// 设备uuid列表
+	BusinessTypeId          *string `json:"BusinessTypeId,omitempty" xml:"BusinessTypeId,omitempty"`
+	BusinessTypeParams      *string `json:"BusinessTypeParams,omitempty" xml:"BusinessTypeParams,omitempty"`
+	DeviceResourceId        *string `json:"DeviceResourceId,omitempty" xml:"DeviceResourceId,omitempty"`
 	DeviceResourceIdsShrink *string `json:"DeviceResourceIds,omitempty" xml:"DeviceResourceIds,omitempty"`
-	// instanceId
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// ip地址类型
-	IpType *string `json:"IpType,omitempty" xml:"IpType,omitempty"`
-	// Loopback端口
-	LoopbackPort *string `json:"LoopbackPort,omitempty" xml:"LoopbackPort,omitempty"`
-	// 位置空间
-	NetLocation *string `json:"NetLocation,omitempty" xml:"NetLocation,omitempty"`
-	// 建设项目id
-	SetupProjectId *string `json:"SetupProjectId,omitempty" xml:"SetupProjectId,omitempty"`
+	InstanceId              *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	IpType                  *string `json:"IpType,omitempty" xml:"IpType,omitempty"`
+	LoopbackPort            *string `json:"LoopbackPort,omitempty" xml:"LoopbackPort,omitempty"`
+	NetLocation             *string `json:"NetLocation,omitempty" xml:"NetLocation,omitempty"`
+	SetupProjectId          *string `json:"SetupProjectId,omitempty" xml:"SetupProjectId,omitempty"`
 }
 
 func (s ApplyIPShrinkRequest) String() string {
@@ -5973,7 +5269,6 @@ func (s *ApplyIPShrinkRequest) SetSetupProjectId(v string) *ApplyIPShrinkRequest
 }
 
 type ApplyIPResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -5991,8 +5286,9 @@ func (s *ApplyIPResponseBody) SetRequestId(v string) *ApplyIPResponseBody {
 }
 
 type ApplyIPResponse struct {
-	Headers map[string]*string   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ApplyIPResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ApplyIPResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ApplyIPResponse) String() string {
@@ -6008,22 +5304,22 @@ func (s *ApplyIPResponse) SetHeaders(v map[string]*string) *ApplyIPResponse {
 	return s
 }
 
+func (s *ApplyIPResponse) SetStatusCode(v int32) *ApplyIPResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ApplyIPResponse) SetBody(v *ApplyIPResponseBody) *ApplyIPResponse {
 	s.Body = v
 	return s
 }
 
 type AutoDutyRequest struct {
-	// 批次号
-	DutyBatch *string `json:"DutyBatch,omitempty" xml:"DutyBatch,omitempty"`
-	// 表明
-	DutyName *string `json:"DutyName,omitempty" xml:"DutyName,omitempty"`
-	// 结束时间
-	EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	// instanceId
+	DutyBatch  *string `json:"DutyBatch,omitempty" xml:"DutyBatch,omitempty"`
+	DutyName   *string `json:"DutyName,omitempty" xml:"DutyName,omitempty"`
+	EndDate    *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 开始时间
-	StartDate *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	StartDate  *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
 }
 
 func (s AutoDutyRequest) String() string {
@@ -6060,7 +5356,6 @@ func (s *AutoDutyRequest) SetStartDate(v string) *AutoDutyRequest {
 }
 
 type AutoDutyResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -6078,8 +5373,9 @@ func (s *AutoDutyResponseBody) SetRequestId(v string) *AutoDutyResponseBody {
 }
 
 type AutoDutyResponse struct {
-	Headers map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *AutoDutyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *AutoDutyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s AutoDutyResponse) String() string {
@@ -6095,20 +5391,21 @@ func (s *AutoDutyResponse) SetHeaders(v map[string]*string) *AutoDutyResponse {
 	return s
 }
 
+func (s *AutoDutyResponse) SetStatusCode(v int32) *AutoDutyResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *AutoDutyResponse) SetBody(v *AutoDutyResponseBody) *AutoDutyResponse {
 	s.Body = v
 	return s
 }
 
 type CloseEventRequest struct {
-	// 事件名称
-	EventName *string `json:"EventName,omitempty" xml:"EventName,omitempty"`
-	// 事件对象ID
+	EventName     *string `json:"EventName,omitempty" xml:"EventName,omitempty"`
 	EventObjectId *string `json:"EventObjectId,omitempty" xml:"EventObjectId,omitempty"`
-	// 事件类型
-	EventType *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
-	// 实例ID
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	EventType     *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
+	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
 func (s CloseEventRequest) String() string {
@@ -6140,7 +5437,6 @@ func (s *CloseEventRequest) SetInstanceId(v string) *CloseEventRequest {
 }
 
 type CloseEventResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -6158,8 +5454,9 @@ func (s *CloseEventResponseBody) SetRequestId(v string) *CloseEventResponseBody 
 }
 
 type CloseEventResponse struct {
-	Headers map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CloseEventResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CloseEventResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CloseEventResponse) String() string {
@@ -6175,30 +5472,26 @@ func (s *CloseEventResponse) SetHeaders(v map[string]*string) *CloseEventRespons
 	return s
 }
 
+func (s *CloseEventResponse) SetStatusCode(v int32) *CloseEventResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *CloseEventResponse) SetBody(v *CloseEventResponseBody) *CloseEventResponse {
 	s.Body = v
 	return s
 }
 
 type CreateConfigurationSpecificationRequest struct {
-	// 架构类型
-	Architecture *string `json:"Architecture,omitempty" xml:"Architecture,omitempty"`
-	// 幂等参数
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// instanceId
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 型号
-	Model *string `json:"Model,omitempty" xml:"Model,omitempty"`
-	// 相关变量
-	RelatedVariate [][]byte `json:"RelatedVariate,omitempty" xml:"RelatedVariate,omitempty" type:"Repeated"`
-	// 角色
-	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
-	// 配置规范内容
-	SpecificationContent *string `json:"SpecificationContent,omitempty" xml:"SpecificationContent,omitempty"`
-	// 配置规范名字
-	SpecificationName *string `json:"SpecificationName,omitempty" xml:"SpecificationName,omitempty"`
-	// 厂商
-	Vendor *string `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
+	Architecture         *string  `json:"Architecture,omitempty" xml:"Architecture,omitempty"`
+	ClientToken          *string  `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	InstanceId           *string  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Model                *string  `json:"Model,omitempty" xml:"Model,omitempty"`
+	RelatedVariate       [][]byte `json:"RelatedVariate,omitempty" xml:"RelatedVariate,omitempty" type:"Repeated"`
+	Role                 *string  `json:"Role,omitempty" xml:"Role,omitempty"`
+	SpecificationContent *string  `json:"SpecificationContent,omitempty" xml:"SpecificationContent,omitempty"`
+	SpecificationName    *string  `json:"SpecificationName,omitempty" xml:"SpecificationName,omitempty"`
+	Vendor               *string  `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
 }
 
 func (s CreateConfigurationSpecificationRequest) String() string {
@@ -6255,24 +5548,15 @@ func (s *CreateConfigurationSpecificationRequest) SetVendor(v string) *CreateCon
 }
 
 type CreateConfigurationSpecificationShrinkRequest struct {
-	// 架构类型
-	Architecture *string `json:"Architecture,omitempty" xml:"Architecture,omitempty"`
-	// 幂等参数
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// instanceId
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 型号
-	Model *string `json:"Model,omitempty" xml:"Model,omitempty"`
-	// 相关变量
+	Architecture         *string `json:"Architecture,omitempty" xml:"Architecture,omitempty"`
+	ClientToken          *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Model                *string `json:"Model,omitempty" xml:"Model,omitempty"`
 	RelatedVariateShrink *string `json:"RelatedVariate,omitempty" xml:"RelatedVariate,omitempty"`
-	// 角色
-	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
-	// 配置规范内容
+	Role                 *string `json:"Role,omitempty" xml:"Role,omitempty"`
 	SpecificationContent *string `json:"SpecificationContent,omitempty" xml:"SpecificationContent,omitempty"`
-	// 配置规范名字
-	SpecificationName *string `json:"SpecificationName,omitempty" xml:"SpecificationName,omitempty"`
-	// 厂商
-	Vendor *string `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
+	SpecificationName    *string `json:"SpecificationName,omitempty" xml:"SpecificationName,omitempty"`
+	Vendor               *string `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
 }
 
 func (s CreateConfigurationSpecificationShrinkRequest) String() string {
@@ -6329,10 +5613,8 @@ func (s *CreateConfigurationSpecificationShrinkRequest) SetVendor(v string) *Cre
 }
 
 type CreateConfigurationSpecificationResponseBody struct {
-	// 资源uuid
 	ConfigurationSpecificationId *string `json:"ConfigurationSpecificationId,omitempty" xml:"ConfigurationSpecificationId,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId                    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateConfigurationSpecificationResponseBody) String() string {
@@ -6354,8 +5636,9 @@ func (s *CreateConfigurationSpecificationResponseBody) SetRequestId(v string) *C
 }
 
 type CreateConfigurationSpecificationResponse struct {
-	Headers map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateConfigurationSpecificationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateConfigurationSpecificationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateConfigurationSpecificationResponse) String() string {
@@ -6371,22 +5654,22 @@ func (s *CreateConfigurationSpecificationResponse) SetHeaders(v map[string]*stri
 	return s
 }
 
+func (s *CreateConfigurationSpecificationResponse) SetStatusCode(v int32) *CreateConfigurationSpecificationResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *CreateConfigurationSpecificationResponse) SetBody(v *CreateConfigurationSpecificationResponseBody) *CreateConfigurationSpecificationResponse {
 	s.Body = v
 	return s
 }
 
 type CreateConfigurationVariateRequest struct {
-	// 幂等参数
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// 描述变量
-	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// python转换函数
+	ClientToken    *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	Comment        *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
 	FormatFunction *string `json:"FormatFunction,omitempty" xml:"FormatFunction,omitempty"`
-	// instanceId
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 资源名称
-	VariateName *string `json:"VariateName,omitempty" xml:"VariateName,omitempty"`
+	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	VariateName    *string `json:"VariateName,omitempty" xml:"VariateName,omitempty"`
 }
 
 func (s CreateConfigurationVariateRequest) String() string {
@@ -6423,10 +5706,8 @@ func (s *CreateConfigurationVariateRequest) SetVariateName(v string) *CreateConf
 }
 
 type CreateConfigurationVariateResponseBody struct {
-	// 资源实例ID，如ECS实例的创建接口CreateInstance应返回InstanceId。
 	ConfigurationVariateId *string `json:"ConfigurationVariateId,omitempty" xml:"ConfigurationVariateId,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId              *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateConfigurationVariateResponseBody) String() string {
@@ -6448,8 +5729,9 @@ func (s *CreateConfigurationVariateResponseBody) SetRequestId(v string) *CreateC
 }
 
 type CreateConfigurationVariateResponse struct {
-	Headers map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateConfigurationVariateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateConfigurationVariateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateConfigurationVariateResponse) String() string {
@@ -6465,38 +5747,36 @@ func (s *CreateConfigurationVariateResponse) SetHeaders(v map[string]*string) *C
 	return s
 }
 
+func (s *CreateConfigurationVariateResponse) SetStatusCode(v int32) *CreateConfigurationVariateResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *CreateConfigurationVariateResponse) SetBody(v *CreateConfigurationVariateResponseBody) *CreateConfigurationVariateResponse {
 	s.Body = v
 	return s
 }
 
 type CreateDedicatedLineRequest struct {
-	// 宽带（Mbps）
-	Bandwidth *int32 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	// 幂等校验 token
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// 联系人
-	Contact *string `json:"Contact,omitempty" xml:"Contact,omitempty"`
-	// 专线网关
+	Bandwidth            *int32  `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
+	ClientToken          *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	Contact              *string `json:"Contact,omitempty" xml:"Contact,omitempty"`
 	DedicatedLineGateway *string `json:"DedicatedLineGateway,omitempty" xml:"DedicatedLineGateway,omitempty"`
-	// 专线IP
-	DedicatedLineIp *string `json:"DedicatedLineIp,omitempty" xml:"DedicatedLineIp,omitempty"`
-	// 专线角色
-	DedicatedLineRole *string `json:"DedicatedLineRole,omitempty" xml:"DedicatedLineRole,omitempty"`
-	// 备注
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 关联设备ID
-	DeviceId *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
-	// 关联设备端口名称
-	DevicePort *string `json:"DevicePort,omitempty" xml:"DevicePort,omitempty"`
-	// 实例ID
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 运营商
-	Isp *string `json:"Isp,omitempty" xml:"Isp,omitempty"`
-	// 联系方式
-	Phone *string `json:"Phone,omitempty" xml:"Phone,omitempty"`
-	// 物理空间ID
-	PhysicalSpaceId *string `json:"PhysicalSpaceId,omitempty" xml:"PhysicalSpaceId,omitempty"`
+	DedicatedLineIp      *string `json:"DedicatedLineIp,omitempty" xml:"DedicatedLineIp,omitempty"`
+	DedicatedLineRole    *string `json:"DedicatedLineRole,omitempty" xml:"DedicatedLineRole,omitempty"`
+	Description          *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	DeviceId             *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
+	DevicePort           *string `json:"DevicePort,omitempty" xml:"DevicePort,omitempty"`
+	ExpirationDate       *string `json:"ExpirationDate,omitempty" xml:"ExpirationDate,omitempty"`
+	ExtAttributes        *string `json:"ExtAttributes,omitempty" xml:"ExtAttributes,omitempty"`
+	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Isp                  *string `json:"Isp,omitempty" xml:"Isp,omitempty"`
+	IspFormId            *string `json:"IspFormId,omitempty" xml:"IspFormId,omitempty"`
+	IspId                *string `json:"IspId,omitempty" xml:"IspId,omitempty"`
+	Keyword              *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	OnlineDate           *string `json:"OnlineDate,omitempty" xml:"OnlineDate,omitempty"`
+	Phone                *string `json:"Phone,omitempty" xml:"Phone,omitempty"`
+	PhysicalSpaceId      *string `json:"PhysicalSpaceId,omitempty" xml:"PhysicalSpaceId,omitempty"`
 }
 
 func (s CreateDedicatedLineRequest) String() string {
@@ -6552,6 +5832,16 @@ func (s *CreateDedicatedLineRequest) SetDevicePort(v string) *CreateDedicatedLin
 	return s
 }
 
+func (s *CreateDedicatedLineRequest) SetExpirationDate(v string) *CreateDedicatedLineRequest {
+	s.ExpirationDate = &v
+	return s
+}
+
+func (s *CreateDedicatedLineRequest) SetExtAttributes(v string) *CreateDedicatedLineRequest {
+	s.ExtAttributes = &v
+	return s
+}
+
 func (s *CreateDedicatedLineRequest) SetInstanceId(v string) *CreateDedicatedLineRequest {
 	s.InstanceId = &v
 	return s
@@ -6559,6 +5849,26 @@ func (s *CreateDedicatedLineRequest) SetInstanceId(v string) *CreateDedicatedLin
 
 func (s *CreateDedicatedLineRequest) SetIsp(v string) *CreateDedicatedLineRequest {
 	s.Isp = &v
+	return s
+}
+
+func (s *CreateDedicatedLineRequest) SetIspFormId(v string) *CreateDedicatedLineRequest {
+	s.IspFormId = &v
+	return s
+}
+
+func (s *CreateDedicatedLineRequest) SetIspId(v string) *CreateDedicatedLineRequest {
+	s.IspId = &v
+	return s
+}
+
+func (s *CreateDedicatedLineRequest) SetKeyword(v string) *CreateDedicatedLineRequest {
+	s.Keyword = &v
+	return s
+}
+
+func (s *CreateDedicatedLineRequest) SetOnlineDate(v string) *CreateDedicatedLineRequest {
+	s.OnlineDate = &v
 	return s
 }
 
@@ -6573,10 +5883,8 @@ func (s *CreateDedicatedLineRequest) SetPhysicalSpaceId(v string) *CreateDedicat
 }
 
 type CreateDedicatedLineResponseBody struct {
-	// 资源实例ID，如ECS实例的创建接口CreateInstance应返回InstanceId。
 	DedicatedLineId *string `json:"DedicatedLineId,omitempty" xml:"DedicatedLineId,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId       *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateDedicatedLineResponseBody) String() string {
@@ -6598,8 +5906,9 @@ func (s *CreateDedicatedLineResponseBody) SetRequestId(v string) *CreateDedicate
 }
 
 type CreateDedicatedLineResponse struct {
-	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateDedicatedLineResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateDedicatedLineResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateDedicatedLineResponse) String() string {
@@ -6615,64 +5924,43 @@ func (s *CreateDedicatedLineResponse) SetHeaders(v map[string]*string) *CreateDe
 	return s
 }
 
+func (s *CreateDedicatedLineResponse) SetStatusCode(v int32) *CreateDedicatedLineResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *CreateDedicatedLineResponse) SetBody(v *CreateDedicatedLineResponseBody) *CreateDedicatedLineResponse {
 	s.Body = v
 	return s
 }
 
 type CreateDeviceRequest struct {
-	// 幂等校验 token
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// 设备形态ID
-	DeviceFormId *string `json:"DeviceFormId,omitempty" xml:"DeviceFormId,omitempty"`
-	// enable密码
-	EnablePassword *string `json:"EnablePassword,omitempty" xml:"EnablePassword,omitempty"`
-	// 设备额外属性
-	ExtAttributes *string `json:"ExtAttributes,omitempty" xml:"ExtAttributes,omitempty"`
-	// 主机名
-	HostName *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
-	// 实例ID
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 设备IP
-	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	// 登录密码
-	LoginPassword *string `json:"LoginPassword,omitempty" xml:"LoginPassword,omitempty"`
-	// 登录类型
-	LoginType *string `json:"LoginType,omitempty" xml:"LoginType,omitempty"`
-	// 登录账号
-	LoginUsername *string `json:"LoginUsername,omitempty" xml:"LoginUsername,omitempty"`
-	// 设备MAC地址
-	Mac *string `json:"Mac,omitempty" xml:"Mac,omitempty"`
-	// 设备型号
-	Model *string `json:"Model,omitempty" xml:"Model,omitempty"`
-	// 物理空间ID
-	PhysicalSpaceId *string `json:"PhysicalSpaceId,omitempty" xml:"PhysicalSpaceId,omitempty"`
-	// 设备安全域
-	SecurityDomain *string `json:"SecurityDomain,omitempty" xml:"SecurityDomain,omitempty"`
-	// 设备状态
-	ServiceStatus *string `json:"ServiceStatus,omitempty" xml:"ServiceStatus,omitempty"`
-	// 设备SN
-	Sn *string `json:"Sn,omitempty" xml:"Sn,omitempty"`
-	// SNMP 账号类型
-	SnmpAccountType *string `json:"SnmpAccountType,omitempty" xml:"SnmpAccountType,omitempty"`
-	// SNMP 版本号
-	SnmpAccountVersion *string `json:"SnmpAccountVersion,omitempty" xml:"SnmpAccountVersion,omitempty"`
-	// SNMP Auth PassPhrase
-	SnmpAuthPassphrase *string `json:"SnmpAuthPassphrase,omitempty" xml:"SnmpAuthPassphrase,omitempty"`
-	// SNMP Auth Protocol
-	SnmpAuthProtocol *string `json:"SnmpAuthProtocol,omitempty" xml:"SnmpAuthProtocol,omitempty"`
-	// SNMP Community
-	SnmpCommunity *string `json:"SnmpCommunity,omitempty" xml:"SnmpCommunity,omitempty"`
-	// SNMP Privacy Passphrase
+	ClientToken           *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DeviceFormId          *string `json:"DeviceFormId,omitempty" xml:"DeviceFormId,omitempty"`
+	EnablePassword        *string `json:"EnablePassword,omitempty" xml:"EnablePassword,omitempty"`
+	ExtAttributes         *string `json:"ExtAttributes,omitempty" xml:"ExtAttributes,omitempty"`
+	HostName              *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
+	InstanceId            *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Ip                    *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	LoginPassword         *string `json:"LoginPassword,omitempty" xml:"LoginPassword,omitempty"`
+	LoginType             *string `json:"LoginType,omitempty" xml:"LoginType,omitempty"`
+	LoginUsername         *string `json:"LoginUsername,omitempty" xml:"LoginUsername,omitempty"`
+	Mac                   *string `json:"Mac,omitempty" xml:"Mac,omitempty"`
+	Model                 *string `json:"Model,omitempty" xml:"Model,omitempty"`
+	PhysicalSpaceId       *string `json:"PhysicalSpaceId,omitempty" xml:"PhysicalSpaceId,omitempty"`
+	SecurityDomain        *string `json:"SecurityDomain,omitempty" xml:"SecurityDomain,omitempty"`
+	ServiceStatus         *string `json:"ServiceStatus,omitempty" xml:"ServiceStatus,omitempty"`
+	Sn                    *string `json:"Sn,omitempty" xml:"Sn,omitempty"`
+	SnmpAccountType       *string `json:"SnmpAccountType,omitempty" xml:"SnmpAccountType,omitempty"`
+	SnmpAccountVersion    *string `json:"SnmpAccountVersion,omitempty" xml:"SnmpAccountVersion,omitempty"`
+	SnmpAuthPassphrase    *string `json:"SnmpAuthPassphrase,omitempty" xml:"SnmpAuthPassphrase,omitempty"`
+	SnmpAuthProtocol      *string `json:"SnmpAuthProtocol,omitempty" xml:"SnmpAuthProtocol,omitempty"`
+	SnmpCommunity         *string `json:"SnmpCommunity,omitempty" xml:"SnmpCommunity,omitempty"`
 	SnmpPrivacyPassphrase *string `json:"SnmpPrivacyPassphrase,omitempty" xml:"SnmpPrivacyPassphrase,omitempty"`
-	// SNMP Privacy Protocol
-	SnmpPrivacyProtocol *string `json:"SnmpPrivacyProtocol,omitempty" xml:"SnmpPrivacyProtocol,omitempty"`
-	// SNMP 安全级别
-	SnmpSecurityLevel *string `json:"SnmpSecurityLevel,omitempty" xml:"SnmpSecurityLevel,omitempty"`
-	// SNMP 用户名
-	SnmpUsername *string `json:"SnmpUsername,omitempty" xml:"SnmpUsername,omitempty"`
-	// 设备厂商
-	Vendor *string `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
+	SnmpPrivacyProtocol   *string `json:"SnmpPrivacyProtocol,omitempty" xml:"SnmpPrivacyProtocol,omitempty"`
+	SnmpSecurityLevel     *string `json:"SnmpSecurityLevel,omitempty" xml:"SnmpSecurityLevel,omitempty"`
+	SnmpUsername          *string `json:"SnmpUsername,omitempty" xml:"SnmpUsername,omitempty"`
+	Vendor                *string `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
 }
 
 func (s CreateDeviceRequest) String() string {
@@ -6814,9 +6102,7 @@ func (s *CreateDeviceRequest) SetVendor(v string) *CreateDeviceRequest {
 }
 
 type CreateDeviceResponseBody struct {
-	// 资源实例ID，如ECS实例的创建接口CreateInstance应返回InstanceId。
-	DeviceId *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
-	// Id of the request
+	DeviceId  *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -6839,8 +6125,9 @@ func (s *CreateDeviceResponseBody) SetRequestId(v string) *CreateDeviceResponseB
 }
 
 type CreateDeviceResponse struct {
-	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateDeviceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateDeviceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateDeviceResponse) String() string {
@@ -6856,32 +6143,27 @@ func (s *CreateDeviceResponse) SetHeaders(v map[string]*string) *CreateDeviceRes
 	return s
 }
 
+func (s *CreateDeviceResponse) SetStatusCode(v int32) *CreateDeviceResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *CreateDeviceResponse) SetBody(v *CreateDeviceResponseBody) *CreateDeviceResponse {
 	s.Body = v
 	return s
 }
 
 type CreateDeviceFormRequest struct {
-	// 是否需要账号配置
-	AccountConfig *bool `json:"AccountConfig,omitempty" xml:"AccountConfig,omitempty"`
-	// 幂等校验 token
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// 是否支持配置生成
-	ConfigCompare *bool `json:"ConfigCompare,omitempty" xml:"ConfigCompare,omitempty"`
-	// 是否展示设备详情
-	DetailDisplay *bool `json:"DetailDisplay,omitempty" xml:"DetailDisplay,omitempty"`
-	// 设备形态名称
-	DeviceFormName *string `json:"DeviceFormName,omitempty" xml:"DeviceFormName,omitempty"`
-	// 实例ID
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 关联设备形态ID
+	AccountConfig       *bool   `json:"AccountConfig,omitempty" xml:"AccountConfig,omitempty"`
+	ClientToken         *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	ConfigCompare       *bool   `json:"ConfigCompare,omitempty" xml:"ConfigCompare,omitempty"`
+	DetailDisplay       *bool   `json:"DetailDisplay,omitempty" xml:"DetailDisplay,omitempty"`
+	DeviceFormName      *string `json:"DeviceFormName,omitempty" xml:"DeviceFormName,omitempty"`
+	InstanceId          *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	RelatedDeviceFormId *string `json:"RelatedDeviceFormId,omitempty" xml:"RelatedDeviceFormId,omitempty"`
-	// 资源用途
-	ResourceUse *string `json:"ResourceUse,omitempty" xml:"ResourceUse,omitempty"`
-	// 设备代码
-	Script *string `json:"Script,omitempty" xml:"Script,omitempty"`
-	// 设备形态的主键
-	UniqueKey *string `json:"UniqueKey,omitempty" xml:"UniqueKey,omitempty"`
+	ResourceUse         *string `json:"ResourceUse,omitempty" xml:"ResourceUse,omitempty"`
+	Script              *string `json:"Script,omitempty" xml:"Script,omitempty"`
+	UniqueKey           *string `json:"UniqueKey,omitempty" xml:"UniqueKey,omitempty"`
 }
 
 func (s CreateDeviceFormRequest) String() string {
@@ -6943,10 +6225,8 @@ func (s *CreateDeviceFormRequest) SetUniqueKey(v string) *CreateDeviceFormReques
 }
 
 type CreateDeviceFormResponseBody struct {
-	// 资源实例ID，如ECS实例的创建接口CreateInstance应返回InstanceId。
 	DeviceFormId *string `json:"DeviceFormId,omitempty" xml:"DeviceFormId,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateDeviceFormResponseBody) String() string {
@@ -6968,8 +6248,9 @@ func (s *CreateDeviceFormResponseBody) SetRequestId(v string) *CreateDeviceFormR
 }
 
 type CreateDeviceFormResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateDeviceFormResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateDeviceFormResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateDeviceFormResponse) String() string {
@@ -6985,26 +6266,24 @@ func (s *CreateDeviceFormResponse) SetHeaders(v map[string]*string) *CreateDevic
 	return s
 }
 
+func (s *CreateDeviceFormResponse) SetStatusCode(v int32) *CreateDeviceFormResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *CreateDeviceFormResponse) SetBody(v *CreateDeviceFormResponseBody) *CreateDeviceFormResponse {
 	s.Body = v
 	return s
 }
 
 type CreateDevicePropertyRequest struct {
-	// 幂等校验 token
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// 设备形态ID
-	DeviceFormId *string `json:"DeviceFormId,omitempty" xml:"DeviceFormId,omitempty"`
-	// 实例ID
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 属性内容
+	ClientToken     *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DeviceFormId    *string `json:"DeviceFormId,omitempty" xml:"DeviceFormId,omitempty"`
+	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	PropertyContent *string `json:"PropertyContent,omitempty" xml:"PropertyContent,omitempty"`
-	// 属性格式
-	PropertyFormat *string `json:"PropertyFormat,omitempty" xml:"PropertyFormat,omitempty"`
-	// 属性主键
-	PropertyKey *string `json:"PropertyKey,omitempty" xml:"PropertyKey,omitempty"`
-	// 属性名称
-	PropertyName *string `json:"PropertyName,omitempty" xml:"PropertyName,omitempty"`
+	PropertyFormat  *string `json:"PropertyFormat,omitempty" xml:"PropertyFormat,omitempty"`
+	PropertyKey     *string `json:"PropertyKey,omitempty" xml:"PropertyKey,omitempty"`
+	PropertyName    *string `json:"PropertyName,omitempty" xml:"PropertyName,omitempty"`
 }
 
 func (s CreateDevicePropertyRequest) String() string {
@@ -7051,10 +6330,8 @@ func (s *CreateDevicePropertyRequest) SetPropertyName(v string) *CreateDevicePro
 }
 
 type CreateDevicePropertyResponseBody struct {
-	// 资源实例ID，如ECS实例的创建接口CreateInstance应返回InstanceId。
 	DevicePropertyId *string `json:"DevicePropertyId,omitempty" xml:"DevicePropertyId,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId        *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateDevicePropertyResponseBody) String() string {
@@ -7076,8 +6353,9 @@ func (s *CreateDevicePropertyResponseBody) SetRequestId(v string) *CreateDeviceP
 }
 
 type CreateDevicePropertyResponse struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateDevicePropertyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateDevicePropertyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateDevicePropertyResponse) String() string {
@@ -7093,19 +6371,21 @@ func (s *CreateDevicePropertyResponse) SetHeaders(v map[string]*string) *CreateD
 	return s
 }
 
+func (s *CreateDevicePropertyResponse) SetStatusCode(v int32) *CreateDevicePropertyResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *CreateDevicePropertyResponse) SetBody(v *CreateDevicePropertyResponseBody) *CreateDevicePropertyResponse {
 	s.Body = v
 	return s
 }
 
 type CreateDevicesRequest struct {
-	// 幂等参数
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// 设备形态ID
+	ClientToken          *string                                     `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	DeviceFormId         *string                                     `json:"DeviceFormId,omitempty" xml:"DeviceFormId,omitempty"`
 	DeviceParamModelList []*CreateDevicesRequestDeviceParamModelList `json:"DeviceParamModelList,omitempty" xml:"DeviceParamModelList,omitempty" type:"Repeated"`
-	// 实例ID
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceId           *string                                     `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
 func (s CreateDevicesRequest) String() string {
@@ -7137,51 +6417,29 @@ func (s *CreateDevicesRequest) SetInstanceId(v string) *CreateDevicesRequest {
 }
 
 type CreateDevicesRequestDeviceParamModelList struct {
-	// enable密码
-	EnablePassword *string `json:"EnablePassword,omitempty" xml:"EnablePassword,omitempty"`
-	ExtAttributes  *string `json:"ExtAttributes,omitempty" xml:"ExtAttributes,omitempty"`
-	// 主机名
-	HostName *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
-	// 设备IP
-	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	// 登录密码
-	LoginPassword *string `json:"LoginPassword,omitempty" xml:"LoginPassword,omitempty"`
-	// 登录类型
-	LoginType *string `json:"LoginType,omitempty" xml:"LoginType,omitempty"`
-	// 登录账号
-	LoginUsername *string `json:"LoginUsername,omitempty" xml:"LoginUsername,omitempty"`
-	// 设备MAC地址
-	Mac *string `json:"Mac,omitempty" xml:"Mac,omitempty"`
-	// 设备型号
-	Model *string `json:"Model,omitempty" xml:"Model,omitempty"`
-	// 物理空间名称
-	PhysicalSpaceName *string `json:"PhysicalSpaceName,omitempty" xml:"PhysicalSpaceName,omitempty"`
-	// 设备安全域
-	SecurityDomain *string `json:"SecurityDomain,omitempty" xml:"SecurityDomain,omitempty"`
-	// 设备状态
-	ServiceStatus *string `json:"ServiceStatus,omitempty" xml:"ServiceStatus,omitempty"`
-	// 设备SN
-	Sn *string `json:"Sn,omitempty" xml:"Sn,omitempty"`
-	// SNMP 账号类型
-	SnmpAccountType *string `json:"SnmpAccountType,omitempty" xml:"SnmpAccountType,omitempty"`
-	// SNMP 版本号
-	SnmpAccountVersion *string `json:"SnmpAccountVersion,omitempty" xml:"SnmpAccountVersion,omitempty"`
-	// SNMP Auth PassPhrase
-	SnmpAuthPassphrase *string `json:"SnmpAuthPassphrase,omitempty" xml:"SnmpAuthPassphrase,omitempty"`
-	// SNMP Auth Protocol
-	SnmpAuthProtocol *string `json:"SnmpAuthProtocol,omitempty" xml:"SnmpAuthProtocol,omitempty"`
-	// SNMP Community
-	SnmpCommunity *string `json:"SnmpCommunity,omitempty" xml:"SnmpCommunity,omitempty"`
-	// SNMP Privacy Passphrase
+	EnablePassword        *string `json:"EnablePassword,omitempty" xml:"EnablePassword,omitempty"`
+	ExtAttributes         *string `json:"ExtAttributes,omitempty" xml:"ExtAttributes,omitempty"`
+	HostName              *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
+	Ip                    *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	LoginPassword         *string `json:"LoginPassword,omitempty" xml:"LoginPassword,omitempty"`
+	LoginType             *string `json:"LoginType,omitempty" xml:"LoginType,omitempty"`
+	LoginUsername         *string `json:"LoginUsername,omitempty" xml:"LoginUsername,omitempty"`
+	Mac                   *string `json:"Mac,omitempty" xml:"Mac,omitempty"`
+	Model                 *string `json:"Model,omitempty" xml:"Model,omitempty"`
+	PhysicalSpaceName     *string `json:"PhysicalSpaceName,omitempty" xml:"PhysicalSpaceName,omitempty"`
+	SecurityDomain        *string `json:"SecurityDomain,omitempty" xml:"SecurityDomain,omitempty"`
+	ServiceStatus         *string `json:"ServiceStatus,omitempty" xml:"ServiceStatus,omitempty"`
+	Sn                    *string `json:"Sn,omitempty" xml:"Sn,omitempty"`
+	SnmpAccountType       *string `json:"SnmpAccountType,omitempty" xml:"SnmpAccountType,omitempty"`
+	SnmpAccountVersion    *string `json:"SnmpAccountVersion,omitempty" xml:"SnmpAccountVersion,omitempty"`
+	SnmpAuthPassphrase    *string `json:"SnmpAuthPassphrase,omitempty" xml:"SnmpAuthPassphrase,omitempty"`
+	SnmpAuthProtocol      *string `json:"SnmpAuthProtocol,omitempty" xml:"SnmpAuthProtocol,omitempty"`
+	SnmpCommunity         *string `json:"SnmpCommunity,omitempty" xml:"SnmpCommunity,omitempty"`
 	SnmpPrivacyPassphrase *string `json:"SnmpPrivacyPassphrase,omitempty" xml:"SnmpPrivacyPassphrase,omitempty"`
-	// SNMP Privacy Protocol
-	SnmpPrivacyProtocol *string `json:"SnmpPrivacyProtocol,omitempty" xml:"SnmpPrivacyProtocol,omitempty"`
-	// SNMP 安全级别
-	SnmpSecurityLevel *string `json:"SnmpSecurityLevel,omitempty" xml:"SnmpSecurityLevel,omitempty"`
-	// SNMP 用户名
-	SnmpUsername *string `json:"SnmpUsername,omitempty" xml:"SnmpUsername,omitempty"`
-	// 设备厂商
-	Vendor *string `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
+	SnmpPrivacyProtocol   *string `json:"SnmpPrivacyProtocol,omitempty" xml:"SnmpPrivacyProtocol,omitempty"`
+	SnmpSecurityLevel     *string `json:"SnmpSecurityLevel,omitempty" xml:"SnmpSecurityLevel,omitempty"`
+	SnmpUsername          *string `json:"SnmpUsername,omitempty" xml:"SnmpUsername,omitempty"`
+	Vendor                *string `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
 }
 
 func (s CreateDevicesRequestDeviceParamModelList) String() string {
@@ -7308,13 +6566,10 @@ func (s *CreateDevicesRequestDeviceParamModelList) SetVendor(v string) *CreateDe
 }
 
 type CreateDevicesShrinkRequest struct {
-	// 幂等参数
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// 设备形态ID
+	ClientToken                *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	DeviceFormId               *string `json:"DeviceFormId,omitempty" xml:"DeviceFormId,omitempty"`
 	DeviceParamModelListShrink *string `json:"DeviceParamModelList,omitempty" xml:"DeviceParamModelList,omitempty"`
-	// 实例ID
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceId                 *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
 func (s CreateDevicesShrinkRequest) String() string {
@@ -7346,9 +6601,7 @@ func (s *CreateDevicesShrinkRequest) SetInstanceId(v string) *CreateDevicesShrin
 }
 
 type CreateDevicesResponseBody struct {
-	// 资源实例ID，如ECS实例的创建接口CreateInstance应返回InstanceId。
-	DeviceId *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
-	// Id of the request
+	DeviceId  *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -7371,8 +6624,9 @@ func (s *CreateDevicesResponseBody) SetRequestId(v string) *CreateDevicesRespons
 }
 
 type CreateDevicesResponse struct {
-	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateDevicesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateDevicesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateDevicesResponse) String() string {
@@ -7388,22 +6642,22 @@ func (s *CreateDevicesResponse) SetHeaders(v map[string]*string) *CreateDevicesR
 	return s
 }
 
+func (s *CreateDevicesResponse) SetStatusCode(v int32) *CreateDevicesResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *CreateDevicesResponse) SetBody(v *CreateDevicesResponseBody) *CreateDevicesResponse {
 	s.Body = v
 	return s
 }
 
 type CreateEventDefinitionRequest struct {
-	// 幂等参数
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// 事件名称
-	EventName *string `json:"EventName,omitempty" xml:"EventName,omitempty"`
-	// 事件大类
-	EventType *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
-	// 实例ID
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 自动化模板ID
-	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	EventName   *string `json:"EventName,omitempty" xml:"EventName,omitempty"`
+	EventType   *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
+	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	TemplateId  *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 }
 
 func (s CreateEventDefinitionRequest) String() string {
@@ -7440,9 +6694,7 @@ func (s *CreateEventDefinitionRequest) SetTemplateId(v string) *CreateEventDefin
 }
 
 type CreateEventDefinitionResponseBody struct {
-	// 事件定义ID
-	EventId *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
-	// Id of the request
+	EventId   *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -7465,8 +6717,9 @@ func (s *CreateEventDefinitionResponseBody) SetRequestId(v string) *CreateEventD
 }
 
 type CreateEventDefinitionResponse struct {
-	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateEventDefinitionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateEventDefinitionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateEventDefinitionResponse) String() string {
@@ -7482,22 +6735,22 @@ func (s *CreateEventDefinitionResponse) SetHeaders(v map[string]*string) *Create
 	return s
 }
 
+func (s *CreateEventDefinitionResponse) SetStatusCode(v int32) *CreateEventDefinitionResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *CreateEventDefinitionResponse) SetBody(v *CreateEventDefinitionResponseBody) *CreateEventDefinitionResponse {
 	s.Body = v
 	return s
 }
 
 type CreateLinkJobRequest struct {
-	// 是否自动确认
-	AutoConfirm *bool `json:"AutoConfirm,omitempty" xml:"AutoConfirm,omitempty"`
-	// 双端链路转换策略
+	AutoConfirm           *bool   `json:"AutoConfirm,omitempty" xml:"AutoConfirm,omitempty"`
 	DoubleConvertStrategy *string `json:"DoubleConvertStrategy,omitempty" xml:"DoubleConvertStrategy,omitempty"`
-	// 实例ID
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 任务ID
-	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// 单端链路发现策略
-	SingleStrategy *string `json:"SingleStrategy,omitempty" xml:"SingleStrategy,omitempty"`
+	InstanceId            *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	JobId                 *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	SingleStrategy        *string `json:"SingleStrategy,omitempty" xml:"SingleStrategy,omitempty"`
 }
 
 func (s CreateLinkJobRequest) String() string {
@@ -7534,9 +6787,7 @@ func (s *CreateLinkJobRequest) SetSingleStrategy(v string) *CreateLinkJobRequest
 }
 
 type CreateLinkJobResponseBody struct {
-	// 若创建接口为异步实现，则需返回明确的JobId。
-	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// Id of the request
+	Content   *string `json:"Content,omitempty" xml:"Content,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -7559,8 +6810,9 @@ func (s *CreateLinkJobResponseBody) SetRequestId(v string) *CreateLinkJobRespons
 }
 
 type CreateLinkJobResponse struct {
-	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateLinkJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateLinkJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateLinkJobResponse) String() string {
@@ -7576,40 +6828,31 @@ func (s *CreateLinkJobResponse) SetHeaders(v map[string]*string) *CreateLinkJobR
 	return s
 }
 
+func (s *CreateLinkJobResponse) SetStatusCode(v int32) *CreateLinkJobResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *CreateLinkJobResponse) SetBody(v *CreateLinkJobResponseBody) *CreateLinkJobResponse {
 	s.Body = v
 	return s
 }
 
 type CreateMonitorItemRequest struct {
-	// 告警规则列表
-	AlarmRuleList []*CreateMonitorItemRequestAlarmRuleList `json:"AlarmRuleList,omitempty" xml:"AlarmRuleList,omitempty" type:"Repeated"`
-	// 解析代码
-	AnalysisCode *string `json:"AnalysisCode,omitempty" xml:"AnalysisCode,omitempty"`
-	// 幂等参数
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// 采集类型
-	CollectionType *string `json:"CollectionType,omitempty" xml:"CollectionType,omitempty"`
-	// 监控项参数配置
-	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
-	// 数据项
-	DataItem *string `json:"DataItem,omitempty" xml:"DataItem,omitempty"`
-	// 设备形态
-	DeviceForm *string `json:"DeviceForm,omitempty" xml:"DeviceForm,omitempty"`
-	// 是否启用
-	Effective *int32 `json:"Effective,omitempty" xml:"Effective,omitempty"`
-	// 执行间隔(s)
-	ExecInterval *int32 `json:"ExecInterval,omitempty" xml:"ExecInterval,omitempty"`
-	// 实例ID
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 监控项描述
-	MonitorItemDescription *string `json:"MonitorItemDescription,omitempty" xml:"MonitorItemDescription,omitempty"`
-	// 监控项名称
-	MonitorItemName *string `json:"MonitorItemName,omitempty" xml:"MonitorItemName,omitempty"`
-	// 安全域
-	SecurityDomain *string `json:"SecurityDomain,omitempty" xml:"SecurityDomain,omitempty"`
-	// 类型
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	AlarmRuleList          []*CreateMonitorItemRequestAlarmRuleList `json:"AlarmRuleList,omitempty" xml:"AlarmRuleList,omitempty" type:"Repeated"`
+	AnalysisCode           *string                                  `json:"AnalysisCode,omitempty" xml:"AnalysisCode,omitempty"`
+	ClientToken            *string                                  `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	CollectionType         *string                                  `json:"CollectionType,omitempty" xml:"CollectionType,omitempty"`
+	Config                 *string                                  `json:"Config,omitempty" xml:"Config,omitempty"`
+	DataItem               *string                                  `json:"DataItem,omitempty" xml:"DataItem,omitempty"`
+	DeviceForm             *string                                  `json:"DeviceForm,omitempty" xml:"DeviceForm,omitempty"`
+	Effective              *int32                                   `json:"Effective,omitempty" xml:"Effective,omitempty"`
+	ExecInterval           *int32                                   `json:"ExecInterval,omitempty" xml:"ExecInterval,omitempty"`
+	InstanceId             *string                                  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	MonitorItemDescription *string                                  `json:"MonitorItemDescription,omitempty" xml:"MonitorItemDescription,omitempty"`
+	MonitorItemName        *string                                  `json:"MonitorItemName,omitempty" xml:"MonitorItemName,omitempty"`
+	SecurityDomain         *string                                  `json:"SecurityDomain,omitempty" xml:"SecurityDomain,omitempty"`
+	Type                   *string                                  `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s CreateMonitorItemRequest) String() string {
@@ -7691,14 +6934,10 @@ func (s *CreateMonitorItemRequest) SetType(v string) *CreateMonitorItemRequest {
 }
 
 type CreateMonitorItemRequestAlarmRuleList struct {
-	// 告警状态
 	AlarmStatus *string `json:"AlarmStatus,omitempty" xml:"AlarmStatus,omitempty"`
-	// 表达式
-	Expression *string `json:"Expression,omitempty" xml:"Expression,omitempty"`
-	// 比较值
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
-	// 指标名
-	Variable *string `json:"Variable,omitempty" xml:"Variable,omitempty"`
+	Expression  *string `json:"Expression,omitempty" xml:"Expression,omitempty"`
+	Value       *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	Variable    *string `json:"Variable,omitempty" xml:"Variable,omitempty"`
 }
 
 func (s CreateMonitorItemRequestAlarmRuleList) String() string {
@@ -7730,34 +6969,20 @@ func (s *CreateMonitorItemRequestAlarmRuleList) SetVariable(v string) *CreateMon
 }
 
 type CreateMonitorItemShrinkRequest struct {
-	// 告警规则列表
-	AlarmRuleListShrink *string `json:"AlarmRuleList,omitempty" xml:"AlarmRuleList,omitempty"`
-	// 解析代码
-	AnalysisCode *string `json:"AnalysisCode,omitempty" xml:"AnalysisCode,omitempty"`
-	// 幂等参数
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// 采集类型
-	CollectionType *string `json:"CollectionType,omitempty" xml:"CollectionType,omitempty"`
-	// 监控项参数配置
-	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
-	// 数据项
-	DataItem *string `json:"DataItem,omitempty" xml:"DataItem,omitempty"`
-	// 设备形态
-	DeviceForm *string `json:"DeviceForm,omitempty" xml:"DeviceForm,omitempty"`
-	// 是否启用
-	Effective *int32 `json:"Effective,omitempty" xml:"Effective,omitempty"`
-	// 执行间隔(s)
-	ExecInterval *int32 `json:"ExecInterval,omitempty" xml:"ExecInterval,omitempty"`
-	// 实例ID
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 监控项描述
+	AlarmRuleListShrink    *string `json:"AlarmRuleList,omitempty" xml:"AlarmRuleList,omitempty"`
+	AnalysisCode           *string `json:"AnalysisCode,omitempty" xml:"AnalysisCode,omitempty"`
+	ClientToken            *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	CollectionType         *string `json:"CollectionType,omitempty" xml:"CollectionType,omitempty"`
+	Config                 *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	DataItem               *string `json:"DataItem,omitempty" xml:"DataItem,omitempty"`
+	DeviceForm             *string `json:"DeviceForm,omitempty" xml:"DeviceForm,omitempty"`
+	Effective              *int32  `json:"Effective,omitempty" xml:"Effective,omitempty"`
+	ExecInterval           *int32  `json:"ExecInterval,omitempty" xml:"ExecInterval,omitempty"`
+	InstanceId             *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	MonitorItemDescription *string `json:"MonitorItemDescription,omitempty" xml:"MonitorItemDescription,omitempty"`
-	// 监控项名称
-	MonitorItemName *string `json:"MonitorItemName,omitempty" xml:"MonitorItemName,omitempty"`
-	// 安全域
-	SecurityDomain *string `json:"SecurityDomain,omitempty" xml:"SecurityDomain,omitempty"`
-	// 类型
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	MonitorItemName        *string `json:"MonitorItemName,omitempty" xml:"MonitorItemName,omitempty"`
+	SecurityDomain         *string `json:"SecurityDomain,omitempty" xml:"SecurityDomain,omitempty"`
+	Type                   *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s CreateMonitorItemShrinkRequest) String() string {
@@ -7839,10 +7064,8 @@ func (s *CreateMonitorItemShrinkRequest) SetType(v string) *CreateMonitorItemShr
 }
 
 type CreateMonitorItemResponseBody struct {
-	// 监控项ID
 	MonitorItemId *string `json:"MonitorItemId,omitempty" xml:"MonitorItemId,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateMonitorItemResponseBody) String() string {
@@ -7864,8 +7087,9 @@ func (s *CreateMonitorItemResponseBody) SetRequestId(v string) *CreateMonitorIte
 }
 
 type CreateMonitorItemResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateMonitorItemResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateMonitorItemResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateMonitorItemResponse) String() string {
@@ -7881,30 +7105,26 @@ func (s *CreateMonitorItemResponse) SetHeaders(v map[string]*string) *CreateMoni
 	return s
 }
 
+func (s *CreateMonitorItemResponse) SetStatusCode(v int32) *CreateMonitorItemResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *CreateMonitorItemResponse) SetBody(v *CreateMonitorItemResponseBody) *CreateMonitorItemResponse {
 	s.Body = v
 	return s
 }
 
 type CreateOsVersionRequest struct {
-	// 幂等参数
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// 创建时间
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// 文件名
-	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	// 文件路径
-	FilePath *string `json:"FilePath,omitempty" xml:"FilePath,omitempty"`
-	// instanceId
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 型号
-	Model *string `json:"Model,omitempty" xml:"Model,omitempty"`
-	// 系统版本
-	OsVersion *string `json:"OsVersion,omitempty" xml:"OsVersion,omitempty"`
-	// 状态
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// 厂商
-	Vendor *string `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
+	CreateTime  *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	FileName    *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	FilePath    *string `json:"FilePath,omitempty" xml:"FilePath,omitempty"`
+	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Model       *string `json:"Model,omitempty" xml:"Model,omitempty"`
+	OsVersion   *string `json:"OsVersion,omitempty" xml:"OsVersion,omitempty"`
+	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Vendor      *string `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
 }
 
 func (s CreateOsVersionRequest) String() string {
@@ -7961,10 +7181,8 @@ func (s *CreateOsVersionRequest) SetVendor(v string) *CreateOsVersionRequest {
 }
 
 type CreateOsVersionResponseBody struct {
-	// 资源实例ID，如ECS实例的创建接口CreateInstance应返回InstanceId。
 	OsVersionId *string `json:"OsVersionId,omitempty" xml:"OsVersionId,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateOsVersionResponseBody) String() string {
@@ -7986,8 +7204,9 @@ func (s *CreateOsVersionResponseBody) SetRequestId(v string) *CreateOsVersionRes
 }
 
 type CreateOsVersionResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateOsVersionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateOsVersionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateOsVersionResponse) String() string {
@@ -8003,35 +7222,30 @@ func (s *CreateOsVersionResponse) SetHeaders(v map[string]*string) *CreateOsVers
 	return s
 }
 
+func (s *CreateOsVersionResponse) SetStatusCode(v int32) *CreateOsVersionResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *CreateOsVersionResponse) SetBody(v *CreateOsVersionResponseBody) *CreateOsVersionResponse {
 	s.Body = v
 	return s
 }
 
 type CreatePhysicalSpaceRequest struct {
-	// 具体地址
-	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
-	// 所属城市
-	City *string `json:"City,omitempty" xml:"City,omitempty"`
-	// 幂等校验 token
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// 所属国家
-	Country *string `json:"Country,omitempty" xml:"Country,omitempty"`
-	// 实例ID
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 负责人
-	Owner     *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	ParentUid *string `json:"ParentUid,omitempty" xml:"ParentUid,omitempty"`
-	// 物理空间名称
-	PhysicalSpaceName *string `json:"PhysicalSpaceName,omitempty" xml:"PhysicalSpaceName,omitempty"`
-	// 所属省份
-	Province *string `json:"Province,omitempty" xml:"Province,omitempty"`
-	// 备注
-	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	// 物理空间缩写
-	SpaceAbbreviation *string `json:"SpaceAbbreviation,omitempty" xml:"SpaceAbbreviation,omitempty"`
-	// 物理空间模型
-	SpaceType *string `json:"SpaceType,omitempty" xml:"SpaceType,omitempty"`
+	Address            *string   `json:"Address,omitempty" xml:"Address,omitempty"`
+	City               *string   `json:"City,omitempty" xml:"City,omitempty"`
+	ClientToken        *string   `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	Country            *string   `json:"Country,omitempty" xml:"Country,omitempty"`
+	InstanceId         *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Owner              *string   `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	ParentUid          *string   `json:"ParentUid,omitempty" xml:"ParentUid,omitempty"`
+	PhysicalSpaceName  *string   `json:"PhysicalSpaceName,omitempty" xml:"PhysicalSpaceName,omitempty"`
+	Province           *string   `json:"Province,omitempty" xml:"Province,omitempty"`
+	Remark             *string   `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	SecurityDomainList []*string `json:"SecurityDomainList,omitempty" xml:"SecurityDomainList,omitempty" type:"Repeated"`
+	SpaceAbbreviation  *string   `json:"SpaceAbbreviation,omitempty" xml:"SpaceAbbreviation,omitempty"`
+	SpaceType          *string   `json:"SpaceType,omitempty" xml:"SpaceType,omitempty"`
 }
 
 func (s CreatePhysicalSpaceRequest) String() string {
@@ -8092,6 +7306,11 @@ func (s *CreatePhysicalSpaceRequest) SetRemark(v string) *CreatePhysicalSpaceReq
 	return s
 }
 
+func (s *CreatePhysicalSpaceRequest) SetSecurityDomainList(v []*string) *CreatePhysicalSpaceRequest {
+	s.SecurityDomainList = v
+	return s
+}
+
 func (s *CreatePhysicalSpaceRequest) SetSpaceAbbreviation(v string) *CreatePhysicalSpaceRequest {
 	s.SpaceAbbreviation = &v
 	return s
@@ -8102,11 +7321,98 @@ func (s *CreatePhysicalSpaceRequest) SetSpaceType(v string) *CreatePhysicalSpace
 	return s
 }
 
+type CreatePhysicalSpaceShrinkRequest struct {
+	Address                  *string `json:"Address,omitempty" xml:"Address,omitempty"`
+	City                     *string `json:"City,omitempty" xml:"City,omitempty"`
+	ClientToken              *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	Country                  *string `json:"Country,omitempty" xml:"Country,omitempty"`
+	InstanceId               *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Owner                    *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	ParentUid                *string `json:"ParentUid,omitempty" xml:"ParentUid,omitempty"`
+	PhysicalSpaceName        *string `json:"PhysicalSpaceName,omitempty" xml:"PhysicalSpaceName,omitempty"`
+	Province                 *string `json:"Province,omitempty" xml:"Province,omitempty"`
+	Remark                   *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	SecurityDomainListShrink *string `json:"SecurityDomainList,omitempty" xml:"SecurityDomainList,omitempty"`
+	SpaceAbbreviation        *string `json:"SpaceAbbreviation,omitempty" xml:"SpaceAbbreviation,omitempty"`
+	SpaceType                *string `json:"SpaceType,omitempty" xml:"SpaceType,omitempty"`
+}
+
+func (s CreatePhysicalSpaceShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreatePhysicalSpaceShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreatePhysicalSpaceShrinkRequest) SetAddress(v string) *CreatePhysicalSpaceShrinkRequest {
+	s.Address = &v
+	return s
+}
+
+func (s *CreatePhysicalSpaceShrinkRequest) SetCity(v string) *CreatePhysicalSpaceShrinkRequest {
+	s.City = &v
+	return s
+}
+
+func (s *CreatePhysicalSpaceShrinkRequest) SetClientToken(v string) *CreatePhysicalSpaceShrinkRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *CreatePhysicalSpaceShrinkRequest) SetCountry(v string) *CreatePhysicalSpaceShrinkRequest {
+	s.Country = &v
+	return s
+}
+
+func (s *CreatePhysicalSpaceShrinkRequest) SetInstanceId(v string) *CreatePhysicalSpaceShrinkRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *CreatePhysicalSpaceShrinkRequest) SetOwner(v string) *CreatePhysicalSpaceShrinkRequest {
+	s.Owner = &v
+	return s
+}
+
+func (s *CreatePhysicalSpaceShrinkRequest) SetParentUid(v string) *CreatePhysicalSpaceShrinkRequest {
+	s.ParentUid = &v
+	return s
+}
+
+func (s *CreatePhysicalSpaceShrinkRequest) SetPhysicalSpaceName(v string) *CreatePhysicalSpaceShrinkRequest {
+	s.PhysicalSpaceName = &v
+	return s
+}
+
+func (s *CreatePhysicalSpaceShrinkRequest) SetProvince(v string) *CreatePhysicalSpaceShrinkRequest {
+	s.Province = &v
+	return s
+}
+
+func (s *CreatePhysicalSpaceShrinkRequest) SetRemark(v string) *CreatePhysicalSpaceShrinkRequest {
+	s.Remark = &v
+	return s
+}
+
+func (s *CreatePhysicalSpaceShrinkRequest) SetSecurityDomainListShrink(v string) *CreatePhysicalSpaceShrinkRequest {
+	s.SecurityDomainListShrink = &v
+	return s
+}
+
+func (s *CreatePhysicalSpaceShrinkRequest) SetSpaceAbbreviation(v string) *CreatePhysicalSpaceShrinkRequest {
+	s.SpaceAbbreviation = &v
+	return s
+}
+
+func (s *CreatePhysicalSpaceShrinkRequest) SetSpaceType(v string) *CreatePhysicalSpaceShrinkRequest {
+	s.SpaceType = &v
+	return s
+}
+
 type CreatePhysicalSpaceResponseBody struct {
-	// 物理空间ID
 	PhysicalSpaceId *string `json:"PhysicalSpaceId,omitempty" xml:"PhysicalSpaceId,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId       *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreatePhysicalSpaceResponseBody) String() string {
@@ -8128,8 +7434,9 @@ func (s *CreatePhysicalSpaceResponseBody) SetRequestId(v string) *CreatePhysical
 }
 
 type CreatePhysicalSpaceResponse struct {
-	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreatePhysicalSpaceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreatePhysicalSpaceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreatePhysicalSpaceResponse) String() string {
@@ -8145,20 +7452,23 @@ func (s *CreatePhysicalSpaceResponse) SetHeaders(v map[string]*string) *CreatePh
 	return s
 }
 
+func (s *CreatePhysicalSpaceResponse) SetStatusCode(v int32) *CreatePhysicalSpaceResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *CreatePhysicalSpaceResponse) SetBody(v *CreatePhysicalSpaceResponseBody) *CreatePhysicalSpaceResponse {
 	s.Body = v
 	return s
 }
 
 type CreateRealtimeTaskRequest struct {
-	// token
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// 设备ID
-	DeviceId *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
-	// 实例ID
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 模板执行脚本
-	Script *string `json:"Script,omitempty" xml:"Script,omitempty"`
+	CheckDuplicatePolicy *string `json:"CheckDuplicatePolicy,omitempty" xml:"CheckDuplicatePolicy,omitempty"`
+	ClientToken          *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DeviceId             *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
+	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	ItemName             *string `json:"ItemName,omitempty" xml:"ItemName,omitempty"`
+	Script               *string `json:"Script,omitempty" xml:"Script,omitempty"`
 }
 
 func (s CreateRealtimeTaskRequest) String() string {
@@ -8167,6 +7477,11 @@ func (s CreateRealtimeTaskRequest) String() string {
 
 func (s CreateRealtimeTaskRequest) GoString() string {
 	return s.String()
+}
+
+func (s *CreateRealtimeTaskRequest) SetCheckDuplicatePolicy(v string) *CreateRealtimeTaskRequest {
+	s.CheckDuplicatePolicy = &v
+	return s
 }
 
 func (s *CreateRealtimeTaskRequest) SetClientToken(v string) *CreateRealtimeTaskRequest {
@@ -8184,16 +7499,19 @@ func (s *CreateRealtimeTaskRequest) SetInstanceId(v string) *CreateRealtimeTaskR
 	return s
 }
 
+func (s *CreateRealtimeTaskRequest) SetItemName(v string) *CreateRealtimeTaskRequest {
+	s.ItemName = &v
+	return s
+}
+
 func (s *CreateRealtimeTaskRequest) SetScript(v string) *CreateRealtimeTaskRequest {
 	s.Script = &v
 	return s
 }
 
 type CreateRealtimeTaskResponseBody struct {
-	// 请求ID
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 实时任务ID
-	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s CreateRealtimeTaskResponseBody) String() string {
@@ -8215,8 +7533,9 @@ func (s *CreateRealtimeTaskResponseBody) SetTaskId(v string) *CreateRealtimeTask
 }
 
 type CreateRealtimeTaskResponse struct {
-	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateRealtimeTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateRealtimeTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateRealtimeTaskResponse) String() string {
@@ -8232,24 +7551,23 @@ func (s *CreateRealtimeTaskResponse) SetHeaders(v map[string]*string) *CreateRea
 	return s
 }
 
+func (s *CreateRealtimeTaskResponse) SetStatusCode(v int32) *CreateRealtimeTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *CreateRealtimeTaskResponse) SetBody(v *CreateRealtimeTaskResponseBody) *CreateRealtimeTaskResponse {
 	s.Body = v
 	return s
 }
 
 type CreateResourceInformationRequest struct {
-	// 架构id
-	ArchitectureId *string `json:"ArchitectureId,omitempty" xml:"ArchitectureId,omitempty"`
-	// 幂等参数
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// 信息
-	Information []*CreateResourceInformationRequestInformation `json:"Information,omitempty" xml:"Information,omitempty" type:"Repeated"`
-	// instanceId
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 资源属性
-	ResourceAttribute *string `json:"ResourceAttribute,omitempty" xml:"ResourceAttribute,omitempty"`
-	// 资源类型
-	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	ArchitectureId    *string                                        `json:"ArchitectureId,omitempty" xml:"ArchitectureId,omitempty"`
+	ClientToken       *string                                        `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	Information       []*CreateResourceInformationRequestInformation `json:"Information,omitempty" xml:"Information,omitempty" type:"Repeated"`
+	InstanceId        *string                                        `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	ResourceAttribute *string                                        `json:"ResourceAttribute,omitempty" xml:"ResourceAttribute,omitempty"`
+	ResourceType      *string                                        `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 }
 
 func (s CreateResourceInformationRequest) String() string {
@@ -8291,13 +7609,9 @@ func (s *CreateResourceInformationRequest) SetResourceType(v string) *CreateReso
 }
 
 type CreateResourceInformationRequestInformation struct {
-	// 键
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// 键动作
-	KeyAction *string `json:"KeyAction,omitempty" xml:"KeyAction,omitempty"`
-	// 键属性
-	KeyAttribute *string `json:"KeyAttribute,omitempty" xml:"KeyAttribute,omitempty"`
-	// 键描述
+	Key            *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	KeyAction      *string `json:"KeyAction,omitempty" xml:"KeyAction,omitempty"`
+	KeyAttribute   *string `json:"KeyAttribute,omitempty" xml:"KeyAttribute,omitempty"`
 	KeyDescription *string `json:"KeyDescription,omitempty" xml:"KeyDescription,omitempty"`
 }
 
@@ -8330,9 +7644,7 @@ func (s *CreateResourceInformationRequestInformation) SetKeyDescription(v string
 }
 
 type CreateResourceInformationResponseBody struct {
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 资源实例ID，如ECS实例的创建接口CreateInstance应返回InstanceId。
+	RequestId             *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ResourceInformationId *string `json:"ResourceInformationId,omitempty" xml:"ResourceInformationId,omitempty"`
 }
 
@@ -8355,8 +7667,9 @@ func (s *CreateResourceInformationResponseBody) SetResourceInformationId(v strin
 }
 
 type CreateResourceInformationResponse struct {
-	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateResourceInformationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateResourceInformationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateResourceInformationResponse) String() string {
@@ -8372,20 +7685,21 @@ func (s *CreateResourceInformationResponse) SetHeaders(v map[string]*string) *Cr
 	return s
 }
 
+func (s *CreateResourceInformationResponse) SetStatusCode(v int32) *CreateResourceInformationResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *CreateResourceInformationResponse) SetBody(v *CreateResourceInformationResponseBody) *CreateResourceInformationResponse {
 	s.Body = v
 	return s
 }
 
 type CreateSetupProjectRequest struct {
-	// 创建时间
 	DeliveryTime *string `json:"DeliveryTime,omitempty" xml:"DeliveryTime,omitempty"`
-	// 描述
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// instanceId
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 物理空间uId
-	SpaceId *string `json:"SpaceId,omitempty" xml:"SpaceId,omitempty"`
+	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	SpaceId      *string `json:"SpaceId,omitempty" xml:"SpaceId,omitempty"`
 }
 
 func (s CreateSetupProjectRequest) String() string {
@@ -8417,9 +7731,7 @@ func (s *CreateSetupProjectRequest) SetSpaceId(v string) *CreateSetupProjectRequ
 }
 
 type CreateSetupProjectResponseBody struct {
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 资源实例ID，如ECS实例的创建接口CreateInstance应返回InstanceId。
+	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	SetupProjectId *string `json:"SetupProjectId,omitempty" xml:"SetupProjectId,omitempty"`
 }
 
@@ -8442,8 +7754,9 @@ func (s *CreateSetupProjectResponseBody) SetSetupProjectId(v string) *CreateSetu
 }
 
 type CreateSetupProjectResponse struct {
-	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateSetupProjectResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateSetupProjectResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateSetupProjectResponse) String() string {
@@ -8459,20 +7772,21 @@ func (s *CreateSetupProjectResponse) SetHeaders(v map[string]*string) *CreateSet
 	return s
 }
 
+func (s *CreateSetupProjectResponse) SetStatusCode(v int32) *CreateSetupProjectResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *CreateSetupProjectResponse) SetBody(v *CreateSetupProjectResponseBody) *CreateSetupProjectResponse {
 	s.Body = v
 	return s
 }
 
 type CreateSpaceModelRequest struct {
-	// 幂等参数
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// instanceId
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 层级
-	Sort []*CreateSpaceModelRequestSort `json:"Sort,omitempty" xml:"Sort,omitempty" type:"Repeated"`
-	// 物理空间类型
-	SpaceType *string `json:"SpaceType,omitempty" xml:"SpaceType,omitempty"`
+	ClientToken *string                        `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	InstanceId  *string                        `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Sort        []*CreateSpaceModelRequestSort `json:"Sort,omitempty" xml:"Sort,omitempty" type:"Repeated"`
+	SpaceType   *string                        `json:"SpaceType,omitempty" xml:"SpaceType,omitempty"`
 }
 
 func (s CreateSpaceModelRequest) String() string {
@@ -8504,9 +7818,7 @@ func (s *CreateSpaceModelRequest) SetSpaceType(v string) *CreateSpaceModelReques
 }
 
 type CreateSpaceModelRequestSort struct {
-	// 层级
-	Level *int64 `json:"Level,omitempty" xml:"Level,omitempty"`
-	// 层级名称
+	Level     *int64  `json:"Level,omitempty" xml:"Level,omitempty"`
 	LevelName *string `json:"LevelName,omitempty" xml:"LevelName,omitempty"`
 }
 
@@ -8529,14 +7841,10 @@ func (s *CreateSpaceModelRequestSort) SetLevelName(v string) *CreateSpaceModelRe
 }
 
 type CreateSpaceModelShrinkRequest struct {
-	// 幂等参数
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// instanceId
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 层级
-	SortShrink *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
-	// 物理空间类型
-	SpaceType *string `json:"SpaceType,omitempty" xml:"SpaceType,omitempty"`
+	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	SortShrink  *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
+	SpaceType   *string `json:"SpaceType,omitempty" xml:"SpaceType,omitempty"`
 }
 
 func (s CreateSpaceModelShrinkRequest) String() string {
@@ -8568,9 +7876,7 @@ func (s *CreateSpaceModelShrinkRequest) SetSpaceType(v string) *CreateSpaceModel
 }
 
 type CreateSpaceModelResponseBody struct {
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 资源实例ID，如ECS实例的创建接口CreateInstance应返回InstanceId。
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	SpaceModelId *string `json:"SpaceModelId,omitempty" xml:"SpaceModelId,omitempty"`
 }
 
@@ -8593,8 +7899,9 @@ func (s *CreateSpaceModelResponseBody) SetSpaceModelId(v string) *CreateSpaceMod
 }
 
 type CreateSpaceModelResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateSpaceModelResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateSpaceModelResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateSpaceModelResponse) String() string {
@@ -8610,20 +7917,21 @@ func (s *CreateSpaceModelResponse) SetHeaders(v map[string]*string) *CreateSpace
 	return s
 }
 
+func (s *CreateSpaceModelResponse) SetStatusCode(v int32) *CreateSpaceModelResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *CreateSpaceModelResponse) SetBody(v *CreateSpaceModelResponseBody) *CreateSpaceModelResponse {
 	s.Body = v
 	return s
 }
 
 type CreateTaskRequest struct {
-	// 幂等参数
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// 实例ID
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 任务参数
-	Params *string `json:"Params,omitempty" xml:"Params,omitempty"`
-	// 模板id
-	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Params      *string `json:"Params,omitempty" xml:"Params,omitempty"`
+	TemplateId  *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 }
 
 func (s CreateTaskRequest) String() string {
@@ -8655,10 +7963,8 @@ func (s *CreateTaskRequest) SetTemplateId(v string) *CreateTaskRequest {
 }
 
 type CreateTaskResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 任务id
-	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s CreateTaskResponseBody) String() string {
@@ -8680,8 +7986,9 @@ func (s *CreateTaskResponseBody) SetTaskId(v string) *CreateTaskResponseBody {
 }
 
 type CreateTaskResponse struct {
-	Headers map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateTaskResponse) String() string {
@@ -8697,22 +8004,22 @@ func (s *CreateTaskResponse) SetHeaders(v map[string]*string) *CreateTaskRespons
 	return s
 }
 
+func (s *CreateTaskResponse) SetStatusCode(v int32) *CreateTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *CreateTaskResponse) SetBody(v *CreateTaskResponseBody) *CreateTaskResponse {
 	s.Body = v
 	return s
 }
 
 type CreateTimePeriodRequest struct {
-	// 幂等参数
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// cron表达式
-	Expression *string `json:"Expression,omitempty" xml:"Expression,omitempty"`
-	// 实例ID
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 描述
+	ClientToken           *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	Expression            *string `json:"Expression,omitempty" xml:"Expression,omitempty"`
+	InstanceId            *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	TimePeriodDescription *string `json:"TimePeriodDescription,omitempty" xml:"TimePeriodDescription,omitempty"`
-	// 时间段名称
-	TimePeriodName *string `json:"TimePeriodName,omitempty" xml:"TimePeriodName,omitempty"`
+	TimePeriodName        *string `json:"TimePeriodName,omitempty" xml:"TimePeriodName,omitempty"`
 }
 
 func (s CreateTimePeriodRequest) String() string {
@@ -8749,9 +8056,7 @@ func (s *CreateTimePeriodRequest) SetTimePeriodName(v string) *CreateTimePeriodR
 }
 
 type CreateTimePeriodResponseBody struct {
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 时间段ID
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	TimePeriodId *string `json:"TimePeriodId,omitempty" xml:"TimePeriodId,omitempty"`
 }
 
@@ -8774,8 +8079,9 @@ func (s *CreateTimePeriodResponseBody) SetTimePeriodId(v string) *CreateTimePeri
 }
 
 type CreateTimePeriodResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateTimePeriodResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateTimePeriodResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateTimePeriodResponse) String() string {
@@ -8791,94 +8097,58 @@ func (s *CreateTimePeriodResponse) SetHeaders(v map[string]*string) *CreateTimeP
 	return s
 }
 
+func (s *CreateTimePeriodResponse) SetStatusCode(v int32) *CreateTimePeriodResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *CreateTimePeriodResponse) SetBody(v *CreateTimePeriodResponseBody) *CreateTimePeriodResponse {
 	s.Body = v
 	return s
 }
 
 type CreateWorkOrderRequest struct {
-	// 告警发生时间
-	AlarmHappenTime *string `json:"AlarmHappenTime,omitempty" xml:"AlarmHappenTime,omitempty"`
-	// 告警恢复时间
-	AlarmRecoverTime *string `json:"AlarmRecoverTime,omitempty" xml:"AlarmRecoverTime,omitempty"`
-	// 关联告警项
-	AlarmRelated *string `json:"AlarmRelated,omitempty" xml:"AlarmRelated,omitempty"`
-	// 区域
-	Area *string `json:"Area,omitempty" xml:"Area,omitempty"`
-	// 电路编码
-	CircuitId *string `json:"CircuitId,omitempty" xml:"CircuitId,omitempty"`
-	// 电路名
-	CircuitName *string `json:"CircuitName,omitempty" xml:"CircuitName,omitempty"`
-	// 电路类型
-	CircuitType *string `json:"CircuitType,omitempty" xml:"CircuitType,omitempty"`
-	// 幂等校验 token
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// 设备IP
-	DeviceIp *string `json:"DeviceIp,omitempty" xml:"DeviceIp,omitempty"`
-	// A-IP
-	DeviceIpA *string `json:"DeviceIpA,omitempty" xml:"DeviceIpA,omitempty"`
-	// B-IP
-	DeviceIpB *string `json:"DeviceIpB,omitempty" xml:"DeviceIpB,omitempty"`
-	// A-设备型号
-	DeviceModelA *string `json:"DeviceModelA,omitempty" xml:"DeviceModelA,omitempty"`
-	// B-设备型号
-	DeviceModelB *string `json:"DeviceModelB,omitempty" xml:"DeviceModelB,omitempty"`
-	// 设备名
-	DeviceName *string `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
-	// A-设备名
-	DeviceNameA *string `json:"DeviceNameA,omitempty" xml:"DeviceNameA,omitempty"`
-	// B-设备名
-	DeviceNameB *string `json:"DeviceNameB,omitempty" xml:"DeviceNameB,omitempty"`
-	// A-端口
-	DevicePortA *string `json:"DevicePortA,omitempty" xml:"DevicePortA,omitempty"`
-	// B-端口
-	DevicePortB *string `json:"DevicePortB,omitempty" xml:"DevicePortB,omitempty"`
-	// A-设备SN
-	DeviceSnA *string `json:"DeviceSnA,omitempty" xml:"DeviceSnA,omitempty"`
-	// B-设备SN
-	DeviceSnB *string `json:"DeviceSnB,omitempty" xml:"DeviceSnB,omitempty"`
-	// 设备类型
-	DeviceType *string `json:"DeviceType,omitempty" xml:"DeviceType,omitempty"`
-	// 设备厂家
-	DeviceVendor *string `json:"DeviceVendor,omitempty" xml:"DeviceVendor,omitempty"`
-	// A-厂家
-	DeviceVendorA *string `json:"DeviceVendorA,omitempty" xml:"DeviceVendorA,omitempty"`
-	// B-厂家
-	DeviceVendorB *string `json:"DeviceVendorB,omitempty" xml:"DeviceVendorB,omitempty"`
-	// 紧急程度
-	EmergencyDegree *string `json:"EmergencyDegree,omitempty" xml:"EmergencyDegree,omitempty"`
-	// 是否影响业务
-	ImpactBusiness *string `json:"ImpactBusiness,omitempty" xml:"ImpactBusiness,omitempty"`
-	// 问题描述
-	IncidentDescription *string `json:"IncidentDescription,omitempty" xml:"IncidentDescription,omitempty"`
-	// 故障小类
-	IncidentSubType *string `json:"IncidentSubType,omitempty" xml:"IncidentSubType,omitempty"`
-	// 故障分类
-	IncidentType *string `json:"IncidentType,omitempty" xml:"IncidentType,omitempty"`
-	// 实例ID
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 责任人
-	LiableMan *string `json:"LiableMan,omitempty" xml:"LiableMan,omitempty"`
-	// 用户/联系人
-	LinkMan *string `json:"LinkMan,omitempty" xml:"LinkMan,omitempty"`
-	// 告警源主体
+	AlarmHappenTime      *string `json:"AlarmHappenTime,omitempty" xml:"AlarmHappenTime,omitempty"`
+	AlarmRecoverTime     *string `json:"AlarmRecoverTime,omitempty" xml:"AlarmRecoverTime,omitempty"`
+	AlarmRelated         *string `json:"AlarmRelated,omitempty" xml:"AlarmRelated,omitempty"`
+	Area                 *string `json:"Area,omitempty" xml:"Area,omitempty"`
+	CircuitId            *string `json:"CircuitId,omitempty" xml:"CircuitId,omitempty"`
+	CircuitName          *string `json:"CircuitName,omitempty" xml:"CircuitName,omitempty"`
+	CircuitType          *string `json:"CircuitType,omitempty" xml:"CircuitType,omitempty"`
+	ClientToken          *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DeviceIp             *string `json:"DeviceIp,omitempty" xml:"DeviceIp,omitempty"`
+	DeviceIpA            *string `json:"DeviceIpA,omitempty" xml:"DeviceIpA,omitempty"`
+	DeviceIpB            *string `json:"DeviceIpB,omitempty" xml:"DeviceIpB,omitempty"`
+	DeviceModelA         *string `json:"DeviceModelA,omitempty" xml:"DeviceModelA,omitempty"`
+	DeviceModelB         *string `json:"DeviceModelB,omitempty" xml:"DeviceModelB,omitempty"`
+	DeviceName           *string `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
+	DeviceNameA          *string `json:"DeviceNameA,omitempty" xml:"DeviceNameA,omitempty"`
+	DeviceNameB          *string `json:"DeviceNameB,omitempty" xml:"DeviceNameB,omitempty"`
+	DevicePortA          *string `json:"DevicePortA,omitempty" xml:"DevicePortA,omitempty"`
+	DevicePortB          *string `json:"DevicePortB,omitempty" xml:"DevicePortB,omitempty"`
+	DeviceSnA            *string `json:"DeviceSnA,omitempty" xml:"DeviceSnA,omitempty"`
+	DeviceSnB            *string `json:"DeviceSnB,omitempty" xml:"DeviceSnB,omitempty"`
+	DeviceType           *string `json:"DeviceType,omitempty" xml:"DeviceType,omitempty"`
+	DeviceVendor         *string `json:"DeviceVendor,omitempty" xml:"DeviceVendor,omitempty"`
+	DeviceVendorA        *string `json:"DeviceVendorA,omitempty" xml:"DeviceVendorA,omitempty"`
+	DeviceVendorB        *string `json:"DeviceVendorB,omitempty" xml:"DeviceVendorB,omitempty"`
+	EmergencyDegree      *string `json:"EmergencyDegree,omitempty" xml:"EmergencyDegree,omitempty"`
+	ImpactBusiness       *string `json:"ImpactBusiness,omitempty" xml:"ImpactBusiness,omitempty"`
+	IncidentDescription  *string `json:"IncidentDescription,omitempty" xml:"IncidentDescription,omitempty"`
+	IncidentSubType      *string `json:"IncidentSubType,omitempty" xml:"IncidentSubType,omitempty"`
+	IncidentType         *string `json:"IncidentType,omitempty" xml:"IncidentType,omitempty"`
+	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	LiableMan            *string `json:"LiableMan,omitempty" xml:"LiableMan,omitempty"`
+	LinkMan              *string `json:"LinkMan,omitempty" xml:"LinkMan,omitempty"`
 	OriginalSubjectAlarm *string `json:"OriginalSubjectAlarm,omitempty" xml:"OriginalSubjectAlarm,omitempty"`
-	// 处理时限
-	ProcessLimited *string `json:"ProcessLimited,omitempty" xml:"ProcessLimited,omitempty"`
-	// 处理人
-	ProcessMan *string `json:"ProcessMan,omitempty" xml:"ProcessMan,omitempty"`
-	// 处理人编号
-	ProcessManId *string `json:"ProcessManId,omitempty" xml:"ProcessManId,omitempty"`
-	// 技能组
-	SkillGroups *string `json:"SkillGroups,omitempty" xml:"SkillGroups,omitempty"`
-	// 工单来源
-	WorkOrderSource *string `json:"WorkOrderSource,omitempty" xml:"WorkOrderSource,omitempty"`
-	// 工单状态
-	WorkOrderStep *string `json:"WorkOrderStep,omitempty" xml:"WorkOrderStep,omitempty"`
-	// 工单标题
-	WorkOrderTitle *string `json:"WorkOrderTitle,omitempty" xml:"WorkOrderTitle,omitempty"`
-	// 工单类型
-	WorkOrderType *string `json:"WorkOrderType,omitempty" xml:"WorkOrderType,omitempty"`
+	ProcessLimited       *string `json:"ProcessLimited,omitempty" xml:"ProcessLimited,omitempty"`
+	ProcessMan           *string `json:"ProcessMan,omitempty" xml:"ProcessMan,omitempty"`
+	ProcessManId         *string `json:"ProcessManId,omitempty" xml:"ProcessManId,omitempty"`
+	SkillGroups          *string `json:"SkillGroups,omitempty" xml:"SkillGroups,omitempty"`
+	WorkOrderSource      *string `json:"WorkOrderSource,omitempty" xml:"WorkOrderSource,omitempty"`
+	WorkOrderStep        *string `json:"WorkOrderStep,omitempty" xml:"WorkOrderStep,omitempty"`
+	WorkOrderTitle       *string `json:"WorkOrderTitle,omitempty" xml:"WorkOrderTitle,omitempty"`
+	WorkOrderType        *string `json:"WorkOrderType,omitempty" xml:"WorkOrderType,omitempty"`
 }
 
 func (s CreateWorkOrderRequest) String() string {
@@ -9095,9 +8365,7 @@ func (s *CreateWorkOrderRequest) SetWorkOrderType(v string) *CreateWorkOrderRequ
 }
 
 type CreateWorkOrderResponseBody struct {
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 工单ID
+	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	WorkOrderId *string `json:"WorkOrderId,omitempty" xml:"WorkOrderId,omitempty"`
 }
 
@@ -9120,8 +8388,9 @@ func (s *CreateWorkOrderResponseBody) SetWorkOrderId(v string) *CreateWorkOrderR
 }
 
 type CreateWorkOrderResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateWorkOrderResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateWorkOrderResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateWorkOrderResponse) String() string {
@@ -9137,16 +8406,19 @@ func (s *CreateWorkOrderResponse) SetHeaders(v map[string]*string) *CreateWorkOr
 	return s
 }
 
+func (s *CreateWorkOrderResponse) SetStatusCode(v int32) *CreateWorkOrderResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *CreateWorkOrderResponse) SetBody(v *CreateWorkOrderResponseBody) *CreateWorkOrderResponse {
 	s.Body = v
 	return s
 }
 
 type DeleteConfigurationSpecificationRequest struct {
-	// 实例 ID。
 	ConfigurationSpecificationId *string `json:"ConfigurationSpecificationId,omitempty" xml:"ConfigurationSpecificationId,omitempty"`
-	// instanceId
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceId                   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
 func (s DeleteConfigurationSpecificationRequest) String() string {
@@ -9168,7 +8440,6 @@ func (s *DeleteConfigurationSpecificationRequest) SetInstanceId(v string) *Delet
 }
 
 type DeleteConfigurationSpecificationResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -9186,8 +8457,9 @@ func (s *DeleteConfigurationSpecificationResponseBody) SetRequestId(v string) *D
 }
 
 type DeleteConfigurationSpecificationResponse struct {
-	Headers map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteConfigurationSpecificationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteConfigurationSpecificationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteConfigurationSpecificationResponse) String() string {
@@ -9203,16 +8475,19 @@ func (s *DeleteConfigurationSpecificationResponse) SetHeaders(v map[string]*stri
 	return s
 }
 
+func (s *DeleteConfigurationSpecificationResponse) SetStatusCode(v int32) *DeleteConfigurationSpecificationResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DeleteConfigurationSpecificationResponse) SetBody(v *DeleteConfigurationSpecificationResponseBody) *DeleteConfigurationSpecificationResponse {
 	s.Body = v
 	return s
 }
 
 type DeleteConfigurationVariateRequest struct {
-	// 实例 ID。
 	ConfigurationVariateId *string `json:"ConfigurationVariateId,omitempty" xml:"ConfigurationVariateId,omitempty"`
-	// instanceId
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceId             *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
 func (s DeleteConfigurationVariateRequest) String() string {
@@ -9234,7 +8509,6 @@ func (s *DeleteConfigurationVariateRequest) SetInstanceId(v string) *DeleteConfi
 }
 
 type DeleteConfigurationVariateResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -9252,8 +8526,9 @@ func (s *DeleteConfigurationVariateResponseBody) SetRequestId(v string) *DeleteC
 }
 
 type DeleteConfigurationVariateResponse struct {
-	Headers map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteConfigurationVariateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteConfigurationVariateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteConfigurationVariateResponse) String() string {
@@ -9269,16 +8544,19 @@ func (s *DeleteConfigurationVariateResponse) SetHeaders(v map[string]*string) *D
 	return s
 }
 
+func (s *DeleteConfigurationVariateResponse) SetStatusCode(v int32) *DeleteConfigurationVariateResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DeleteConfigurationVariateResponse) SetBody(v *DeleteConfigurationVariateResponseBody) *DeleteConfigurationVariateResponse {
 	s.Body = v
 	return s
 }
 
 type DeleteDedicatedLineRequest struct {
-	// 实例 ID。
 	DedicatedLineId *string `json:"DedicatedLineId,omitempty" xml:"DedicatedLineId,omitempty"`
-	// 实例ID
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
 func (s DeleteDedicatedLineRequest) String() string {
@@ -9300,7 +8578,6 @@ func (s *DeleteDedicatedLineRequest) SetInstanceId(v string) *DeleteDedicatedLin
 }
 
 type DeleteDedicatedLineResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -9318,8 +8595,9 @@ func (s *DeleteDedicatedLineResponseBody) SetRequestId(v string) *DeleteDedicate
 }
 
 type DeleteDedicatedLineResponse struct {
-	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteDedicatedLineResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteDedicatedLineResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteDedicatedLineResponse) String() string {
@@ -9335,16 +8613,19 @@ func (s *DeleteDedicatedLineResponse) SetHeaders(v map[string]*string) *DeleteDe
 	return s
 }
 
+func (s *DeleteDedicatedLineResponse) SetStatusCode(v int32) *DeleteDedicatedLineResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DeleteDedicatedLineResponse) SetBody(v *DeleteDedicatedLineResponseBody) *DeleteDedicatedLineResponse {
 	s.Body = v
 	return s
 }
 
 type DeleteDeliveryArchVersionRequest struct {
-	// 资源 ID。
 	DeliveryArchVersionId *string `json:"DeliveryArchVersionId,omitempty" xml:"DeliveryArchVersionId,omitempty"`
-	// 实例ID
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceId            *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
 func (s DeleteDeliveryArchVersionRequest) String() string {
@@ -9366,7 +8647,6 @@ func (s *DeleteDeliveryArchVersionRequest) SetInstanceId(v string) *DeleteDelive
 }
 
 type DeleteDeliveryArchVersionResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -9384,8 +8664,9 @@ func (s *DeleteDeliveryArchVersionResponseBody) SetRequestId(v string) *DeleteDe
 }
 
 type DeleteDeliveryArchVersionResponse struct {
-	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteDeliveryArchVersionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteDeliveryArchVersionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteDeliveryArchVersionResponse) String() string {
@@ -9401,16 +8682,19 @@ func (s *DeleteDeliveryArchVersionResponse) SetHeaders(v map[string]*string) *De
 	return s
 }
 
+func (s *DeleteDeliveryArchVersionResponse) SetStatusCode(v int32) *DeleteDeliveryArchVersionResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DeleteDeliveryArchVersionResponse) SetBody(v *DeleteDeliveryArchVersionResponseBody) *DeleteDeliveryArchVersionResponse {
 	s.Body = v
 	return s
 }
 
 type DeleteDeliveryProjectRequest struct {
-	// 实例 ID。
 	DeliveryProjectId *string `json:"DeliveryProjectId,omitempty" xml:"DeliveryProjectId,omitempty"`
-	// 实例ID
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceId        *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
 func (s DeleteDeliveryProjectRequest) String() string {
@@ -9432,7 +8716,6 @@ func (s *DeleteDeliveryProjectRequest) SetInstanceId(v string) *DeleteDeliveryPr
 }
 
 type DeleteDeliveryProjectResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -9450,8 +8733,9 @@ func (s *DeleteDeliveryProjectResponseBody) SetRequestId(v string) *DeleteDelive
 }
 
 type DeleteDeliveryProjectResponse struct {
-	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteDeliveryProjectResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteDeliveryProjectResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteDeliveryProjectResponse) String() string {
@@ -9467,15 +8751,18 @@ func (s *DeleteDeliveryProjectResponse) SetHeaders(v map[string]*string) *Delete
 	return s
 }
 
+func (s *DeleteDeliveryProjectResponse) SetStatusCode(v int32) *DeleteDeliveryProjectResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DeleteDeliveryProjectResponse) SetBody(v *DeleteDeliveryProjectResponseBody) *DeleteDeliveryProjectResponse {
 	s.Body = v
 	return s
 }
 
 type DeleteDeviceRequest struct {
-	// 实例 ID。
-	DeviceId *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
-	// 实例ID
+	DeviceId   *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -9498,7 +8785,6 @@ func (s *DeleteDeviceRequest) SetInstanceId(v string) *DeleteDeviceRequest {
 }
 
 type DeleteDeviceResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -9516,8 +8802,9 @@ func (s *DeleteDeviceResponseBody) SetRequestId(v string) *DeleteDeviceResponseB
 }
 
 type DeleteDeviceResponse struct {
-	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteDeviceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteDeviceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteDeviceResponse) String() string {
@@ -9533,16 +8820,19 @@ func (s *DeleteDeviceResponse) SetHeaders(v map[string]*string) *DeleteDeviceRes
 	return s
 }
 
+func (s *DeleteDeviceResponse) SetStatusCode(v int32) *DeleteDeviceResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DeleteDeviceResponse) SetBody(v *DeleteDeviceResponseBody) *DeleteDeviceResponse {
 	s.Body = v
 	return s
 }
 
 type DeleteDeviceFormRequest struct {
-	// 实例 ID。
 	DeviceFormId *string `json:"DeviceFormId,omitempty" xml:"DeviceFormId,omitempty"`
-	// 实例ID
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
 func (s DeleteDeviceFormRequest) String() string {
@@ -9564,7 +8854,6 @@ func (s *DeleteDeviceFormRequest) SetInstanceId(v string) *DeleteDeviceFormReque
 }
 
 type DeleteDeviceFormResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -9582,8 +8871,9 @@ func (s *DeleteDeviceFormResponseBody) SetRequestId(v string) *DeleteDeviceFormR
 }
 
 type DeleteDeviceFormResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteDeviceFormResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteDeviceFormResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteDeviceFormResponse) String() string {
@@ -9599,16 +8889,19 @@ func (s *DeleteDeviceFormResponse) SetHeaders(v map[string]*string) *DeleteDevic
 	return s
 }
 
+func (s *DeleteDeviceFormResponse) SetStatusCode(v int32) *DeleteDeviceFormResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DeleteDeviceFormResponse) SetBody(v *DeleteDeviceFormResponseBody) *DeleteDeviceFormResponse {
 	s.Body = v
 	return s
 }
 
 type DeleteDevicePropertyRequest struct {
-	// 实例 ID。
 	DevicePropertyId *string `json:"DevicePropertyId,omitempty" xml:"DevicePropertyId,omitempty"`
-	// 实例ID
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceId       *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
 func (s DeleteDevicePropertyRequest) String() string {
@@ -9630,7 +8923,6 @@ func (s *DeleteDevicePropertyRequest) SetInstanceId(v string) *DeleteDevicePrope
 }
 
 type DeleteDevicePropertyResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -9648,8 +8940,9 @@ func (s *DeleteDevicePropertyResponseBody) SetRequestId(v string) *DeleteDeviceP
 }
 
 type DeleteDevicePropertyResponse struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteDevicePropertyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteDevicePropertyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteDevicePropertyResponse) String() string {
@@ -9665,16 +8958,19 @@ func (s *DeleteDevicePropertyResponse) SetHeaders(v map[string]*string) *DeleteD
 	return s
 }
 
+func (s *DeleteDevicePropertyResponse) SetStatusCode(v int32) *DeleteDevicePropertyResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DeleteDevicePropertyResponse) SetBody(v *DeleteDevicePropertyResponseBody) *DeleteDevicePropertyResponse {
 	s.Body = v
 	return s
 }
 
 type DeleteDeviceResourceRequest struct {
-	// 实例 ID。
 	DeviceResourceId *string `json:"DeviceResourceId,omitempty" xml:"DeviceResourceId,omitempty"`
-	// instanceId
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceId       *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
 func (s DeleteDeviceResourceRequest) String() string {
@@ -9696,7 +8992,6 @@ func (s *DeleteDeviceResourceRequest) SetInstanceId(v string) *DeleteDeviceResou
 }
 
 type DeleteDeviceResourceResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -9714,8 +9009,9 @@ func (s *DeleteDeviceResourceResponseBody) SetRequestId(v string) *DeleteDeviceR
 }
 
 type DeleteDeviceResourceResponse struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteDeviceResourceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteDeviceResourceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteDeviceResourceResponse) String() string {
@@ -9731,16 +9027,19 @@ func (s *DeleteDeviceResourceResponse) SetHeaders(v map[string]*string) *DeleteD
 	return s
 }
 
+func (s *DeleteDeviceResourceResponse) SetStatusCode(v int32) *DeleteDeviceResourceResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DeleteDeviceResourceResponse) SetBody(v *DeleteDeviceResourceResponseBody) *DeleteDeviceResourceResponse {
 	s.Body = v
 	return s
 }
 
 type DeleteDevicesRequest struct {
-	// 实例 ID列表。
-	DeviceIds []*string `json:"DeviceIds,omitempty" xml:"DeviceIds,omitempty" type:"Repeated"`
-	// 实例ID
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	DeviceIds  []*string `json:"DeviceIds,omitempty" xml:"DeviceIds,omitempty" type:"Repeated"`
+	InstanceId *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
 func (s DeleteDevicesRequest) String() string {
@@ -9762,10 +9061,8 @@ func (s *DeleteDevicesRequest) SetInstanceId(v string) *DeleteDevicesRequest {
 }
 
 type DeleteDevicesShrinkRequest struct {
-	// 实例 ID列表。
 	DeviceIdsShrink *string `json:"DeviceIds,omitempty" xml:"DeviceIds,omitempty"`
-	// 实例ID
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
 func (s DeleteDevicesShrinkRequest) String() string {
@@ -9787,7 +9084,6 @@ func (s *DeleteDevicesShrinkRequest) SetInstanceId(v string) *DeleteDevicesShrin
 }
 
 type DeleteDevicesResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -9805,8 +9101,9 @@ func (s *DeleteDevicesResponseBody) SetRequestId(v string) *DeleteDevicesRespons
 }
 
 type DeleteDevicesResponse struct {
-	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteDevicesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteDevicesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteDevicesResponse) String() string {
@@ -9822,15 +9119,18 @@ func (s *DeleteDevicesResponse) SetHeaders(v map[string]*string) *DeleteDevicesR
 	return s
 }
 
+func (s *DeleteDevicesResponse) SetStatusCode(v int32) *DeleteDevicesResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DeleteDevicesResponse) SetBody(v *DeleteDevicesResponseBody) *DeleteDevicesResponse {
 	s.Body = v
 	return s
 }
 
 type DeleteEventDefinitionRequest struct {
-	// 事件ID
-	EventId *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
-	// 实例ID
+	EventId    *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -9853,7 +9153,6 @@ func (s *DeleteEventDefinitionRequest) SetInstanceId(v string) *DeleteEventDefin
 }
 
 type DeleteEventDefinitionResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -9871,8 +9170,9 @@ func (s *DeleteEventDefinitionResponseBody) SetRequestId(v string) *DeleteEventD
 }
 
 type DeleteEventDefinitionResponse struct {
-	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteEventDefinitionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteEventDefinitionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteEventDefinitionResponse) String() string {
@@ -9888,16 +9188,19 @@ func (s *DeleteEventDefinitionResponse) SetHeaders(v map[string]*string) *Delete
 	return s
 }
 
+func (s *DeleteEventDefinitionResponse) SetStatusCode(v int32) *DeleteEventDefinitionResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DeleteEventDefinitionResponse) SetBody(v *DeleteEventDefinitionResponseBody) *DeleteEventDefinitionResponse {
 	s.Body = v
 	return s
 }
 
 type DeleteInspectionTaskRequest struct {
-	// 实例ID
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 周期性任务的ID
-	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	TaskId     *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s DeleteInspectionTaskRequest) String() string {
@@ -9919,7 +9222,6 @@ func (s *DeleteInspectionTaskRequest) SetTaskId(v string) *DeleteInspectionTaskR
 }
 
 type DeleteInspectionTaskResponseBody struct {
-	// 请求ID
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -9937,8 +9239,9 @@ func (s *DeleteInspectionTaskResponseBody) SetRequestId(v string) *DeleteInspect
 }
 
 type DeleteInspectionTaskResponse struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteInspectionTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteInspectionTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteInspectionTaskResponse) String() string {
@@ -9954,15 +9257,18 @@ func (s *DeleteInspectionTaskResponse) SetHeaders(v map[string]*string) *DeleteI
 	return s
 }
 
+func (s *DeleteInspectionTaskResponse) SetStatusCode(v int32) *DeleteInspectionTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DeleteInspectionTaskResponse) SetBody(v *DeleteInspectionTaskResponseBody) *DeleteInspectionTaskResponse {
 	s.Body = v
 	return s
 }
 
 type DeleteOsVersionRequest struct {
-	// instanceId
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 实例 ID。
+	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	OsVersionId *string `json:"OsVersionId,omitempty" xml:"OsVersionId,omitempty"`
 }
 
@@ -9985,7 +9291,6 @@ func (s *DeleteOsVersionRequest) SetOsVersionId(v string) *DeleteOsVersionReques
 }
 
 type DeleteOsVersionResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -10003,8 +9308,9 @@ func (s *DeleteOsVersionResponseBody) SetRequestId(v string) *DeleteOsVersionRes
 }
 
 type DeleteOsVersionResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteOsVersionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteOsVersionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteOsVersionResponse) String() string {
@@ -10020,15 +9326,18 @@ func (s *DeleteOsVersionResponse) SetHeaders(v map[string]*string) *DeleteOsVers
 	return s
 }
 
+func (s *DeleteOsVersionResponse) SetStatusCode(v int32) *DeleteOsVersionResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DeleteOsVersionResponse) SetBody(v *DeleteOsVersionResponseBody) *DeleteOsVersionResponse {
 	s.Body = v
 	return s
 }
 
 type DeletePhysicalSpaceRequest struct {
-	// 实例ID
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 实例 ID。
+	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	PhysicalSpaceId *string `json:"PhysicalSpaceId,omitempty" xml:"PhysicalSpaceId,omitempty"`
 }
 
@@ -10051,7 +9360,6 @@ func (s *DeletePhysicalSpaceRequest) SetPhysicalSpaceId(v string) *DeletePhysica
 }
 
 type DeletePhysicalSpaceResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -10069,8 +9377,9 @@ func (s *DeletePhysicalSpaceResponseBody) SetRequestId(v string) *DeletePhysical
 }
 
 type DeletePhysicalSpaceResponse struct {
-	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeletePhysicalSpaceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeletePhysicalSpaceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeletePhysicalSpaceResponse) String() string {
@@ -10086,15 +9395,18 @@ func (s *DeletePhysicalSpaceResponse) SetHeaders(v map[string]*string) *DeletePh
 	return s
 }
 
+func (s *DeletePhysicalSpaceResponse) SetStatusCode(v int32) *DeletePhysicalSpaceResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DeletePhysicalSpaceResponse) SetBody(v *DeletePhysicalSpaceResponseBody) *DeletePhysicalSpaceResponse {
 	s.Body = v
 	return s
 }
 
 type DeleteResourceInformationRequest struct {
-	// instanceId
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 实例 ID。
+	InstanceId            *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	ResourceInformationId *string `json:"ResourceInformationId,omitempty" xml:"ResourceInformationId,omitempty"`
 }
 
@@ -10117,7 +9429,6 @@ func (s *DeleteResourceInformationRequest) SetResourceInformationId(v string) *D
 }
 
 type DeleteResourceInformationResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -10135,8 +9446,9 @@ func (s *DeleteResourceInformationResponseBody) SetRequestId(v string) *DeleteRe
 }
 
 type DeleteResourceInformationResponse struct {
-	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteResourceInformationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteResourceInformationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteResourceInformationResponse) String() string {
@@ -10152,15 +9464,18 @@ func (s *DeleteResourceInformationResponse) SetHeaders(v map[string]*string) *De
 	return s
 }
 
+func (s *DeleteResourceInformationResponse) SetStatusCode(v int32) *DeleteResourceInformationResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DeleteResourceInformationResponse) SetBody(v *DeleteResourceInformationResponseBody) *DeleteResourceInformationResponse {
 	s.Body = v
 	return s
 }
 
 type DeleteSetupProjectRequest struct {
-	// instanceId
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 实例 ID。
+	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	SetupProjectId *string `json:"SetupProjectId,omitempty" xml:"SetupProjectId,omitempty"`
 }
 
@@ -10183,7 +9498,6 @@ func (s *DeleteSetupProjectRequest) SetSetupProjectId(v string) *DeleteSetupProj
 }
 
 type DeleteSetupProjectResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -10201,8 +9515,9 @@ func (s *DeleteSetupProjectResponseBody) SetRequestId(v string) *DeleteSetupProj
 }
 
 type DeleteSetupProjectResponse struct {
-	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteSetupProjectResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteSetupProjectResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteSetupProjectResponse) String() string {
@@ -10218,15 +9533,18 @@ func (s *DeleteSetupProjectResponse) SetHeaders(v map[string]*string) *DeleteSet
 	return s
 }
 
+func (s *DeleteSetupProjectResponse) SetStatusCode(v int32) *DeleteSetupProjectResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DeleteSetupProjectResponse) SetBody(v *DeleteSetupProjectResponseBody) *DeleteSetupProjectResponse {
 	s.Body = v
 	return s
 }
 
 type DeleteSpaceModelRequest struct {
-	// instanceId
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 实例 ID。
+	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	SpaceModelId *string `json:"SpaceModelId,omitempty" xml:"SpaceModelId,omitempty"`
 }
 
@@ -10249,7 +9567,6 @@ func (s *DeleteSpaceModelRequest) SetSpaceModelId(v string) *DeleteSpaceModelReq
 }
 
 type DeleteSpaceModelResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -10267,8 +9584,9 @@ func (s *DeleteSpaceModelResponseBody) SetRequestId(v string) *DeleteSpaceModelR
 }
 
 type DeleteSpaceModelResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteSpaceModelResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteSpaceModelResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteSpaceModelResponse) String() string {
@@ -10284,14 +9602,18 @@ func (s *DeleteSpaceModelResponse) SetHeaders(v map[string]*string) *DeleteSpace
 	return s
 }
 
+func (s *DeleteSpaceModelResponse) SetStatusCode(v int32) *DeleteSpaceModelResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DeleteSpaceModelResponse) SetBody(v *DeleteSpaceModelResponseBody) *DeleteSpaceModelResponse {
 	s.Body = v
 	return s
 }
 
 type DeleteWorkOrderRequest struct {
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 工单编号
+	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	WorkOrderId *string `json:"WorkOrderId,omitempty" xml:"WorkOrderId,omitempty"`
 }
 
@@ -10314,7 +9636,6 @@ func (s *DeleteWorkOrderRequest) SetWorkOrderId(v string) *DeleteWorkOrderReques
 }
 
 type DeleteWorkOrderResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -10332,8 +9653,9 @@ func (s *DeleteWorkOrderResponseBody) SetRequestId(v string) *DeleteWorkOrderRes
 }
 
 type DeleteWorkOrderResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteWorkOrderResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteWorkOrderResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteWorkOrderResponse) String() string {
@@ -10349,20 +9671,21 @@ func (s *DeleteWorkOrderResponse) SetHeaders(v map[string]*string) *DeleteWorkOr
 	return s
 }
 
+func (s *DeleteWorkOrderResponse) SetStatusCode(v int32) *DeleteWorkOrderResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DeleteWorkOrderResponse) SetBody(v *DeleteWorkOrderResponseBody) *DeleteWorkOrderResponse {
 	s.Body = v
 	return s
 }
 
 type DisableNotificationRequest struct {
-	// 到期时间
-	ExpiryTime *string `json:"ExpiryTime,omitempty" xml:"ExpiryTime,omitempty"`
-	// 实例ID
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 关闭通知的对象
-	List []*DisableNotificationRequestList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
-	// 关闭原因
-	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	ExpiryTime *string                           `json:"ExpiryTime,omitempty" xml:"ExpiryTime,omitempty"`
+	InstanceId *string                           `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	List       []*DisableNotificationRequestList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
+	Reason     *string                           `json:"Reason,omitempty" xml:"Reason,omitempty"`
 }
 
 func (s DisableNotificationRequest) String() string {
@@ -10394,22 +9717,15 @@ func (s *DisableNotificationRequest) SetReason(v string) *DisableNotificationReq
 }
 
 type DisableNotificationRequestList struct {
-	// 聚合数据ID
-	AggregateDataId *string `json:"AggregateDataId,omitempty" xml:"AggregateDataId,omitempty"`
-	// 应用ID
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// 专线ID
-	DedicatedLineId *string `json:"DedicatedLineId,omitempty" xml:"DedicatedLineId,omitempty"`
-	// 设备ID
-	DeviceId      *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
-	EventId       *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
-	EventObjectId *string `json:"EventObjectId,omitempty" xml:"EventObjectId,omitempty"`
-	// 监控项ID
-	MonitorItemId *string `json:"MonitorItemId,omitempty" xml:"MonitorItemId,omitempty"`
-	// 端口集ID
+	AggregateDataId  *string `json:"AggregateDataId,omitempty" xml:"AggregateDataId,omitempty"`
+	AppId            *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	DedicatedLineId  *string `json:"DedicatedLineId,omitempty" xml:"DedicatedLineId,omitempty"`
+	DeviceId         *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
+	EventId          *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	EventObjectId    *string `json:"EventObjectId,omitempty" xml:"EventObjectId,omitempty"`
+	MonitorItemId    *string `json:"MonitorItemId,omitempty" xml:"MonitorItemId,omitempty"`
 	PortCollectionId *string `json:"PortCollectionId,omitempty" xml:"PortCollectionId,omitempty"`
-	// 类型
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Type             *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s DisableNotificationRequestList) String() string {
@@ -10466,14 +9782,10 @@ func (s *DisableNotificationRequestList) SetType(v string) *DisableNotificationR
 }
 
 type DisableNotificationShrinkRequest struct {
-	// 到期时间
 	ExpiryTime *string `json:"ExpiryTime,omitempty" xml:"ExpiryTime,omitempty"`
-	// 实例ID
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 关闭通知的对象
 	ListShrink *string `json:"List,omitempty" xml:"List,omitempty"`
-	// 关闭原因
-	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	Reason     *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
 }
 
 func (s DisableNotificationShrinkRequest) String() string {
@@ -10505,7 +9817,6 @@ func (s *DisableNotificationShrinkRequest) SetReason(v string) *DisableNotificat
 }
 
 type DisableNotificationResponseBody struct {
-	// request id
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -10523,8 +9834,9 @@ func (s *DisableNotificationResponseBody) SetRequestId(v string) *DisableNotific
 }
 
 type DisableNotificationResponse struct {
-	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DisableNotificationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DisableNotificationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DisableNotificationResponse) String() string {
@@ -10540,22 +9852,22 @@ func (s *DisableNotificationResponse) SetHeaders(v map[string]*string) *DisableN
 	return s
 }
 
+func (s *DisableNotificationResponse) SetStatusCode(v int32) *DisableNotificationResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DisableNotificationResponse) SetBody(v *DisableNotificationResponseBody) *DisableNotificationResponse {
 	s.Body = v
 	return s
 }
 
 type DownloadDeviceResourceRequest struct {
-	// deviceResourceId
-	DeviceResourceId *string `json:"DeviceResourceId,omitempty" xml:"DeviceResourceId,omitempty"`
-	// 资源uuid
+	DeviceResourceId  *string   `json:"DeviceResourceId,omitempty" xml:"DeviceResourceId,omitempty"`
 	DeviceResourceIds []*string `json:"DeviceResourceIds,omitempty" xml:"DeviceResourceIds,omitempty" type:"Repeated"`
-	// 操作类型
-	DownloadType *string `json:"DownloadType,omitempty" xml:"DownloadType,omitempty"`
-	// instanceId
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 建设项目id
-	SetupProjectId *string `json:"SetupProjectId,omitempty" xml:"SetupProjectId,omitempty"`
+	DownloadType      *string   `json:"DownloadType,omitempty" xml:"DownloadType,omitempty"`
+	InstanceId        *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	SetupProjectId    *string   `json:"SetupProjectId,omitempty" xml:"SetupProjectId,omitempty"`
 }
 
 func (s DownloadDeviceResourceRequest) String() string {
@@ -10592,16 +9904,11 @@ func (s *DownloadDeviceResourceRequest) SetSetupProjectId(v string) *DownloadDev
 }
 
 type DownloadDeviceResourceShrinkRequest struct {
-	// deviceResourceId
-	DeviceResourceId *string `json:"DeviceResourceId,omitempty" xml:"DeviceResourceId,omitempty"`
-	// 资源uuid
+	DeviceResourceId        *string `json:"DeviceResourceId,omitempty" xml:"DeviceResourceId,omitempty"`
 	DeviceResourceIdsShrink *string `json:"DeviceResourceIds,omitempty" xml:"DeviceResourceIds,omitempty"`
-	// 操作类型
-	DownloadType *string `json:"DownloadType,omitempty" xml:"DownloadType,omitempty"`
-	// instanceId
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 建设项目id
-	SetupProjectId *string `json:"SetupProjectId,omitempty" xml:"SetupProjectId,omitempty"`
+	DownloadType            *string `json:"DownloadType,omitempty" xml:"DownloadType,omitempty"`
+	InstanceId              *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	SetupProjectId          *string `json:"SetupProjectId,omitempty" xml:"SetupProjectId,omitempty"`
 }
 
 func (s DownloadDeviceResourceShrinkRequest) String() string {
@@ -10638,10 +9945,8 @@ func (s *DownloadDeviceResourceShrinkRequest) SetSetupProjectId(v string) *Downl
 }
 
 type DownloadDeviceResourceResponseBody struct {
-	// 下载链接
 	DownloadUrl *string `json:"DownloadUrl,omitempty" xml:"DownloadUrl,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DownloadDeviceResourceResponseBody) String() string {
@@ -10663,8 +9968,9 @@ func (s *DownloadDeviceResourceResponseBody) SetRequestId(v string) *DownloadDev
 }
 
 type DownloadDeviceResourceResponse struct {
-	Headers map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DownloadDeviceResourceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DownloadDeviceResourceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DownloadDeviceResourceResponse) String() string {
@@ -10680,16 +9986,19 @@ func (s *DownloadDeviceResourceResponse) SetHeaders(v map[string]*string) *Downl
 	return s
 }
 
+func (s *DownloadDeviceResourceResponse) SetStatusCode(v int32) *DownloadDeviceResourceResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DownloadDeviceResourceResponse) SetBody(v *DownloadDeviceResourceResponseBody) *DownloadDeviceResourceResponse {
 	s.Body = v
 	return s
 }
 
 type EnableNotificationRequest struct {
-	// 实例ID
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 通知对象
-	List []*EnableNotificationRequestList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
+	InstanceId *string                          `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	List       []*EnableNotificationRequestList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
 }
 
 func (s EnableNotificationRequest) String() string {
@@ -10711,22 +10020,15 @@ func (s *EnableNotificationRequest) SetList(v []*EnableNotificationRequestList) 
 }
 
 type EnableNotificationRequestList struct {
-	// 聚合数据ID
-	AggregateDataId *string `json:"AggregateDataId,omitempty" xml:"AggregateDataId,omitempty"`
-	// 应用ID
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// 专线ID
-	DedicatedLineId *string `json:"DedicatedLineId,omitempty" xml:"DedicatedLineId,omitempty"`
-	// 设备ID
-	DeviceId      *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
-	EventId       *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
-	EventObjectId *string `json:"EventObjectId,omitempty" xml:"EventObjectId,omitempty"`
-	// 监控项ID
-	MonitorItemId *string `json:"MonitorItemId,omitempty" xml:"MonitorItemId,omitempty"`
-	// 端口集ID
+	AggregateDataId  *string `json:"AggregateDataId,omitempty" xml:"AggregateDataId,omitempty"`
+	AppId            *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	DedicatedLineId  *string `json:"DedicatedLineId,omitempty" xml:"DedicatedLineId,omitempty"`
+	DeviceId         *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
+	EventId          *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	EventObjectId    *string `json:"EventObjectId,omitempty" xml:"EventObjectId,omitempty"`
+	MonitorItemId    *string `json:"MonitorItemId,omitempty" xml:"MonitorItemId,omitempty"`
 	PortCollectionId *string `json:"PortCollectionId,omitempty" xml:"PortCollectionId,omitempty"`
-	// 类型
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Type             *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s EnableNotificationRequestList) String() string {
@@ -10783,9 +10085,7 @@ func (s *EnableNotificationRequestList) SetType(v string) *EnableNotificationReq
 }
 
 type EnableNotificationShrinkRequest struct {
-	// 实例ID
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 通知对象
 	ListShrink *string `json:"List,omitempty" xml:"List,omitempty"`
 }
 
@@ -10808,7 +10108,6 @@ func (s *EnableNotificationShrinkRequest) SetListShrink(v string) *EnableNotific
 }
 
 type EnableNotificationResponseBody struct {
-	// request id
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -10826,8 +10125,9 @@ func (s *EnableNotificationResponseBody) SetRequestId(v string) *EnableNotificat
 }
 
 type EnableNotificationResponse struct {
-	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *EnableNotificationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *EnableNotificationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s EnableNotificationResponse) String() string {
@@ -10843,28 +10143,25 @@ func (s *EnableNotificationResponse) SetHeaders(v map[string]*string) *EnableNot
 	return s
 }
 
+func (s *EnableNotificationResponse) SetStatusCode(v int32) *EnableNotificationResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *EnableNotificationResponse) SetBody(v *EnableNotificationResponseBody) *EnableNotificationResponse {
 	s.Body = v
 	return s
 }
 
 type GetAlarmStatusRequest struct {
-	// 聚合数据ID
-	AggregateDataId *string `json:"AggregateDataId,omitempty" xml:"AggregateDataId,omitempty"`
-	// 应用ID
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// 专线ID
-	DedicatedLineId *string `json:"DedicatedLineId,omitempty" xml:"DedicatedLineId,omitempty"`
-	// 设备ID
-	DeviceId *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
-	// 实例ID
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 监控项ID
-	MonitorItemId *string `json:"MonitorItemId,omitempty" xml:"MonitorItemId,omitempty"`
-	// 端口集ID
+	AggregateDataId  *string `json:"AggregateDataId,omitempty" xml:"AggregateDataId,omitempty"`
+	AppId            *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	DedicatedLineId  *string `json:"DedicatedLineId,omitempty" xml:"DedicatedLineId,omitempty"`
+	DeviceId         *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
+	InstanceId       *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	MonitorItemId    *string `json:"MonitorItemId,omitempty" xml:"MonitorItemId,omitempty"`
 	PortCollectionId *string `json:"PortCollectionId,omitempty" xml:"PortCollectionId,omitempty"`
-	// 数据类型
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Type             *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s GetAlarmStatusRequest) String() string {
@@ -10916,10 +10213,8 @@ func (s *GetAlarmStatusRequest) SetType(v string) *GetAlarmStatusRequest {
 }
 
 type GetAlarmStatusResponseBody struct {
-	// 告警状态
 	AlarmStatus *GetAlarmStatusResponseBodyAlarmStatus `json:"AlarmStatus,omitempty" xml:"AlarmStatus,omitempty" type:"Struct"`
-	// request Id
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId   *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetAlarmStatusResponseBody) String() string {
@@ -10941,51 +10236,29 @@ func (s *GetAlarmStatusResponseBody) SetRequestId(v string) *GetAlarmStatusRespo
 }
 
 type GetAlarmStatusResponseBodyAlarmStatus struct {
-	// 异常数据项
-	AbnormalDataItem *string `json:"AbnormalDataItem,omitempty" xml:"AbnormalDataItem,omitempty"`
-	// 采集探针IP
-	AgentIp *string `json:"AgentIp,omitempty" xml:"AgentIp,omitempty"`
-	// 聚合数据详情
-	AggregateData *GetAlarmStatusResponseBodyAlarmStatusAggregateData `json:"AggregateData,omitempty" xml:"AggregateData,omitempty" type:"Struct"`
-	// 聚合数据ID
-	AggregateDataId *string `json:"AggregateDataId,omitempty" xml:"AggregateDataId,omitempty"`
-	// 命中告警规则
-	AlarmRule *string `json:"AlarmRule,omitempty" xml:"AlarmRule,omitempty"`
-	// 告警状态
-	AlarmStatus *string `json:"AlarmStatus,omitempty" xml:"AlarmStatus,omitempty"`
-	// 应用ID
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// 采集时间
-	CollectionTime *string `json:"CollectionTime,omitempty" xml:"CollectionTime,omitempty"`
-	// 专线详情
-	DedicatedLine *GetAlarmStatusResponseBodyAlarmStatusDedicatedLine `json:"DedicatedLine,omitempty" xml:"DedicatedLine,omitempty" type:"Struct"`
-	// 专线ID
-	DedicatedLineId *string `json:"DedicatedLineId,omitempty" xml:"DedicatedLineId,omitempty"`
-	// 设备ID
-	DeviceId *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
-	// 首次异常时间
-	FirstAbnormalTime *string `json:"FirstAbnormalTime,omitempty" xml:"FirstAbnormalTime,omitempty"`
-	// 监控项
-	MonitorItem *GetAlarmStatusResponseBodyAlarmStatusMonitorItem `json:"MonitorItem,omitempty" xml:"MonitorItem,omitempty" type:"Struct"`
-	// 监控项ID
-	MonitorItemId *string `json:"MonitorItemId,omitempty" xml:"MonitorItemId,omitempty"`
-	// 告警开关
+	AbnormalDataItem   *string                                                  `json:"AbnormalDataItem,omitempty" xml:"AbnormalDataItem,omitempty"`
+	AgentIp            *string                                                  `json:"AgentIp,omitempty" xml:"AgentIp,omitempty"`
+	AggregateData      *GetAlarmStatusResponseBodyAlarmStatusAggregateData      `json:"AggregateData,omitempty" xml:"AggregateData,omitempty" type:"Struct"`
+	AggregateDataId    *string                                                  `json:"AggregateDataId,omitempty" xml:"AggregateDataId,omitempty"`
+	AlarmRule          *string                                                  `json:"AlarmRule,omitempty" xml:"AlarmRule,omitempty"`
+	AlarmStatus        *string                                                  `json:"AlarmStatus,omitempty" xml:"AlarmStatus,omitempty"`
+	AppId              *string                                                  `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	CollectionTime     *string                                                  `json:"CollectionTime,omitempty" xml:"CollectionTime,omitempty"`
+	DedicatedLine      *GetAlarmStatusResponseBodyAlarmStatusDedicatedLine      `json:"DedicatedLine,omitempty" xml:"DedicatedLine,omitempty" type:"Struct"`
+	DedicatedLineId    *string                                                  `json:"DedicatedLineId,omitempty" xml:"DedicatedLineId,omitempty"`
+	DeviceId           *string                                                  `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
+	FirstAbnormalTime  *string                                                  `json:"FirstAbnormalTime,omitempty" xml:"FirstAbnormalTime,omitempty"`
+	MonitorItem        *GetAlarmStatusResponseBodyAlarmStatusMonitorItem        `json:"MonitorItem,omitempty" xml:"MonitorItem,omitempty" type:"Struct"`
+	MonitorItemId      *string                                                  `json:"MonitorItemId,omitempty" xml:"MonitorItemId,omitempty"`
 	NotificationSwitch *GetAlarmStatusResponseBodyAlarmStatusNotificationSwitch `json:"NotificationSwitch,omitempty" xml:"NotificationSwitch,omitempty" type:"Struct"`
 	PortCollection     *GetAlarmStatusResponseBodyAlarmStatusPortCollection     `json:"PortCollection,omitempty" xml:"PortCollection,omitempty" type:"Struct"`
-	// 端口集ID
-	PortCollectionId *string `json:"PortCollectionId,omitempty" xml:"PortCollectionId,omitempty"`
-	// 接收时间
-	ReceiveTime *string `json:"ReceiveTime,omitempty" xml:"ReceiveTime,omitempty"`
-	// 应用
-	ResourceApp *GetAlarmStatusResponseBodyAlarmStatusResourceApp `json:"ResourceApp,omitempty" xml:"ResourceApp,omitempty" type:"Struct"`
-	// 设备
-	ResourceDevice *GetAlarmStatusResponseBodyAlarmStatusResourceDevice `json:"ResourceDevice,omitempty" xml:"ResourceDevice,omitempty" type:"Struct"`
-	// 采集状态码
-	ResponseCode *string `json:"ResponseCode,omitempty" xml:"ResponseCode,omitempty"`
-	// 采集结果
-	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
-	// 索引
-	UniqueKey *string `json:"UniqueKey,omitempty" xml:"UniqueKey,omitempty"`
+	PortCollectionId   *string                                                  `json:"PortCollectionId,omitempty" xml:"PortCollectionId,omitempty"`
+	ReceiveTime        *string                                                  `json:"ReceiveTime,omitempty" xml:"ReceiveTime,omitempty"`
+	ResourceApp        *GetAlarmStatusResponseBodyAlarmStatusResourceApp        `json:"ResourceApp,omitempty" xml:"ResourceApp,omitempty" type:"Struct"`
+	ResourceDevice     *GetAlarmStatusResponseBodyAlarmStatusResourceDevice     `json:"ResourceDevice,omitempty" xml:"ResourceDevice,omitempty" type:"Struct"`
+	ResponseCode       *string                                                  `json:"ResponseCode,omitempty" xml:"ResponseCode,omitempty"`
+	Result             *string                                                  `json:"Result,omitempty" xml:"Result,omitempty"`
+	UniqueKey          *string                                                  `json:"UniqueKey,omitempty" xml:"UniqueKey,omitempty"`
 }
 
 func (s GetAlarmStatusResponseBodyAlarmStatus) String() string {
@@ -11112,22 +10385,14 @@ func (s *GetAlarmStatusResponseBodyAlarmStatus) SetUniqueKey(v string) *GetAlarm
 }
 
 type GetAlarmStatusResponseBodyAlarmStatusAggregateData struct {
-	// 描述
 	AggregateDataDescription *string `json:"AggregateDataDescription,omitempty" xml:"AggregateDataDescription,omitempty"`
-	// 聚合数据ID
-	AggregateDataId *string `json:"AggregateDataId,omitempty" xml:"AggregateDataId,omitempty"`
-	// 聚合数据名称
-	AggregateDataName *string `json:"AggregateDataName,omitempty" xml:"AggregateDataName,omitempty"`
-	// 聚合方式
-	AggregateMode *string `json:"AggregateMode,omitempty" xml:"AggregateMode,omitempty"`
-	// 数据项
-	DataItem *string `json:"DataItem,omitempty" xml:"DataItem,omitempty"`
-	// 设备ID
-	DeviceId *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
-	// 是否聚合全部设备
-	IsAllDevice *int32 `json:"IsAllDevice,omitempty" xml:"IsAllDevice,omitempty"`
-	// 监控项ID
-	MonitorItemId *string `json:"MonitorItemId,omitempty" xml:"MonitorItemId,omitempty"`
+	AggregateDataId          *string `json:"AggregateDataId,omitempty" xml:"AggregateDataId,omitempty"`
+	AggregateDataName        *string `json:"AggregateDataName,omitempty" xml:"AggregateDataName,omitempty"`
+	AggregateMode            *string `json:"AggregateMode,omitempty" xml:"AggregateMode,omitempty"`
+	DataItem                 *string `json:"DataItem,omitempty" xml:"DataItem,omitempty"`
+	DeviceId                 *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
+	IsAllDevice              *int32  `json:"IsAllDevice,omitempty" xml:"IsAllDevice,omitempty"`
+	MonitorItemId            *string `json:"MonitorItemId,omitempty" xml:"MonitorItemId,omitempty"`
 }
 
 func (s GetAlarmStatusResponseBodyAlarmStatusAggregateData) String() string {
@@ -11179,20 +10444,13 @@ func (s *GetAlarmStatusResponseBodyAlarmStatusAggregateData) SetMonitorItemId(v 
 }
 
 type GetAlarmStatusResponseBodyAlarmStatusDedicatedLine struct {
-	// 带宽
-	Bandwidth *string `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	// 对端IP
+	Bandwidth            *string `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
 	DedicatedLineGateway *string `json:"DedicatedLineGateway,omitempty" xml:"DedicatedLineGateway,omitempty"`
-	// 专线名称
-	DedicatedLineName *string `json:"DedicatedLineName,omitempty" xml:"DedicatedLineName,omitempty"`
-	// 设备ID
-	DeviceId *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
-	// IP
-	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	// 端口名
-	PortName *string `json:"PortName,omitempty" xml:"PortName,omitempty"`
-	// 物理空间
-	Space *string `json:"Space,omitempty" xml:"Space,omitempty"`
+	DedicatedLineName    *string `json:"DedicatedLineName,omitempty" xml:"DedicatedLineName,omitempty"`
+	DeviceId             *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
+	Ip                   *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	PortName             *string `json:"PortName,omitempty" xml:"PortName,omitempty"`
+	Space                *string `json:"Space,omitempty" xml:"Space,omitempty"`
 }
 
 func (s GetAlarmStatusResponseBodyAlarmStatusDedicatedLine) String() string {
@@ -11239,22 +10497,14 @@ func (s *GetAlarmStatusResponseBodyAlarmStatusDedicatedLine) SetSpace(v string) 
 }
 
 type GetAlarmStatusResponseBodyAlarmStatusMonitorItem struct {
-	// 采集类型
-	CollectionType *string `json:"CollectionType,omitempty" xml:"CollectionType,omitempty"`
-	// 设备形态
-	DeviceForm *string `json:"DeviceForm,omitempty" xml:"DeviceForm,omitempty"`
-	// 是否启用
-	Effective *int64 `json:"Effective,omitempty" xml:"Effective,omitempty"`
-	// 执行间隔
-	ExecInterval *string `json:"ExecInterval,omitempty" xml:"ExecInterval,omitempty"`
-	// 描述
+	CollectionType         *string `json:"CollectionType,omitempty" xml:"CollectionType,omitempty"`
+	DeviceForm             *string `json:"DeviceForm,omitempty" xml:"DeviceForm,omitempty"`
+	Effective              *int64  `json:"Effective,omitempty" xml:"Effective,omitempty"`
+	ExecInterval           *string `json:"ExecInterval,omitempty" xml:"ExecInterval,omitempty"`
 	MonitorItemDescription *string `json:"MonitorItemDescription,omitempty" xml:"MonitorItemDescription,omitempty"`
-	// 监控项ID
-	MonitorItemId *string `json:"MonitorItemId,omitempty" xml:"MonitorItemId,omitempty"`
-	// 监控项名称
-	MonitorItemName *string `json:"MonitorItemName,omitempty" xml:"MonitorItemName,omitempty"`
-	// 安全域
-	SecurityDomain *string `json:"SecurityDomain,omitempty" xml:"SecurityDomain,omitempty"`
+	MonitorItemId          *string `json:"MonitorItemId,omitempty" xml:"MonitorItemId,omitempty"`
+	MonitorItemName        *string `json:"MonitorItemName,omitempty" xml:"MonitorItemName,omitempty"`
+	SecurityDomain         *string `json:"SecurityDomain,omitempty" xml:"SecurityDomain,omitempty"`
 }
 
 func (s GetAlarmStatusResponseBodyAlarmStatusMonitorItem) String() string {
@@ -11306,10 +10556,8 @@ func (s *GetAlarmStatusResponseBodyAlarmStatusMonitorItem) SetSecurityDomain(v s
 }
 
 type GetAlarmStatusResponseBodyAlarmStatusNotificationSwitch struct {
-	// 关闭到期时间
 	ExpiryTime *string `json:"ExpiryTime,omitempty" xml:"ExpiryTime,omitempty"`
-	// 关闭原因
-	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	Reason     *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
 }
 
 func (s GetAlarmStatusResponseBodyAlarmStatusNotificationSwitch) String() string {
@@ -11331,14 +10579,10 @@ func (s *GetAlarmStatusResponseBodyAlarmStatusNotificationSwitch) SetReason(v st
 }
 
 type GetAlarmStatusResponseBodyAlarmStatusPortCollection struct {
-	// 端口集描述
-	PortCollectionDescription *string `json:"PortCollectionDescription,omitempty" xml:"PortCollectionDescription,omitempty"`
-	// 端口集ID
-	PortCollectionId *string `json:"PortCollectionId,omitempty" xml:"PortCollectionId,omitempty"`
-	// 端口集名称
-	PortCollectionName *string `json:"PortCollectionName,omitempty" xml:"PortCollectionName,omitempty"`
-	// 端口列表
-	PortList []*GetAlarmStatusResponseBodyAlarmStatusPortCollectionPortList `json:"PortList,omitempty" xml:"PortList,omitempty" type:"Repeated"`
+	PortCollectionDescription *string                                                        `json:"PortCollectionDescription,omitempty" xml:"PortCollectionDescription,omitempty"`
+	PortCollectionId          *string                                                        `json:"PortCollectionId,omitempty" xml:"PortCollectionId,omitempty"`
+	PortCollectionName        *string                                                        `json:"PortCollectionName,omitempty" xml:"PortCollectionName,omitempty"`
+	PortList                  []*GetAlarmStatusResponseBodyAlarmStatusPortCollectionPortList `json:"PortList,omitempty" xml:"PortList,omitempty" type:"Repeated"`
 }
 
 func (s GetAlarmStatusResponseBodyAlarmStatusPortCollection) String() string {
@@ -11370,11 +10614,8 @@ func (s *GetAlarmStatusResponseBodyAlarmStatusPortCollection) SetPortList(v []*G
 }
 
 type GetAlarmStatusResponseBodyAlarmStatusPortCollectionPortList struct {
-	// 设备ID
-	DeviceId *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
-	// 端口名
-	PortName *string `json:"PortName,omitempty" xml:"PortName,omitempty"`
-	// 设备详情
+	DeviceId       *string                                                                    `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
+	PortName       *string                                                                    `json:"PortName,omitempty" xml:"PortName,omitempty"`
 	ResourceDevice *GetAlarmStatusResponseBodyAlarmStatusPortCollectionPortListResourceDevice `json:"ResourceDevice,omitempty" xml:"ResourceDevice,omitempty" type:"Struct"`
 }
 
@@ -11402,11 +10643,8 @@ func (s *GetAlarmStatusResponseBodyAlarmStatusPortCollectionPortList) SetResourc
 }
 
 type GetAlarmStatusResponseBodyAlarmStatusPortCollectionPortListResourceDevice struct {
-	// 设备名
-	HostName *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
-	// IP
-	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	// 安全域
+	HostName       *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
+	Ip             *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
 	SecurityDomain *string `json:"SecurityDomain,omitempty" xml:"SecurityDomain,omitempty"`
 }
 
@@ -11434,16 +10672,11 @@ func (s *GetAlarmStatusResponseBodyAlarmStatusPortCollectionPortListResourceDevi
 }
 
 type GetAlarmStatusResponseBodyAlarmStatusResourceApp struct {
-	// 应用ID
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// 监控域名
-	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	// 端口
-	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
-	// 所属探针
+	AppId          *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	Domain         *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	Port           *string `json:"Port,omitempty" xml:"Port,omitempty"`
 	SecurityDomain *string `json:"SecurityDomain,omitempty" xml:"SecurityDomain,omitempty"`
-	// 资源类型
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Type           *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s GetAlarmStatusResponseBodyAlarmStatusResourceApp) String() string {
@@ -11480,26 +10713,16 @@ func (s *GetAlarmStatusResponseBodyAlarmStatusResourceApp) SetType(v string) *Ge
 }
 
 type GetAlarmStatusResponseBodyAlarmStatusResourceDevice struct {
-	// 设备形态
-	DeviceForm *string `json:"DeviceForm,omitempty" xml:"DeviceForm,omitempty"`
-	// 设备ID
-	DeviceId *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
-	// 设备名
-	HostName *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
-	// IP
-	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	// 型号
-	Model *string `json:"Model,omitempty" xml:"Model,omitempty"`
-	// 安全域
+	DeviceForm     *string `json:"DeviceForm,omitempty" xml:"DeviceForm,omitempty"`
+	DeviceId       *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
+	HostName       *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
+	Ip             *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	Model          *string `json:"Model,omitempty" xml:"Model,omitempty"`
 	SecurityDomain *string `json:"SecurityDomain,omitempty" xml:"SecurityDomain,omitempty"`
-	// sn
-	Sn *string `json:"Sn,omitempty" xml:"Sn,omitempty"`
-	// 物理空间
-	Space *string `json:"Space,omitempty" xml:"Space,omitempty"`
-	// 状态
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// 厂商
-	Vendor *string `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
+	Sn             *string `json:"Sn,omitempty" xml:"Sn,omitempty"`
+	Space          *string `json:"Space,omitempty" xml:"Space,omitempty"`
+	Status         *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Vendor         *string `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
 }
 
 func (s GetAlarmStatusResponseBodyAlarmStatusResourceDevice) String() string {
@@ -11561,8 +10784,9 @@ func (s *GetAlarmStatusResponseBodyAlarmStatusResourceDevice) SetVendor(v string
 }
 
 type GetAlarmStatusResponse struct {
-	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetAlarmStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetAlarmStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetAlarmStatusResponse) String() string {
@@ -11578,16 +10802,19 @@ func (s *GetAlarmStatusResponse) SetHeaders(v map[string]*string) *GetAlarmStatu
 	return s
 }
 
+func (s *GetAlarmStatusResponse) SetStatusCode(v int32) *GetAlarmStatusResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *GetAlarmStatusResponse) SetBody(v *GetAlarmStatusResponseBody) *GetAlarmStatusResponse {
 	s.Body = v
 	return s
 }
 
 type GetConfigurationSpecificationRequest struct {
-	// 实例 ID。
 	ConfigurationSpecificationId *string `json:"ConfigurationSpecificationId,omitempty" xml:"ConfigurationSpecificationId,omitempty"`
-	// instanceId
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceId                   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
 func (s GetConfigurationSpecificationRequest) String() string {
@@ -11609,10 +10836,8 @@ func (s *GetConfigurationSpecificationRequest) SetInstanceId(v string) *GetConfi
 }
 
 type GetConfigurationSpecificationResponseBody struct {
-	// 配置规范对象
 	ConfigurationSpecification *GetConfigurationSpecificationResponseBodyConfigurationSpecification `json:"ConfigurationSpecification,omitempty" xml:"ConfigurationSpecification,omitempty" type:"Struct"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId                  *string                                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetConfigurationSpecificationResponseBody) String() string {
@@ -11634,26 +10859,16 @@ func (s *GetConfigurationSpecificationResponseBody) SetRequestId(v string) *GetC
 }
 
 type GetConfigurationSpecificationResponseBodyConfigurationSpecification struct {
-	// 架构
-	Architecture *string `json:"Architecture,omitempty" xml:"Architecture,omitempty"`
-	// 配置规范资源ID
-	ConfigurationSpecificationId *string `json:"ConfigurationSpecificationId,omitempty" xml:"ConfigurationSpecificationId,omitempty"`
-	// 创建时间
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// 型号
-	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
-	// 相关变量
-	RelatedVariate []*string `json:"RelatedVariate,omitempty" xml:"RelatedVariate,omitempty" type:"Repeated"`
-	// 角色
-	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
-	// 规范内容
-	SpecificationContent *string `json:"SpecificationContent,omitempty" xml:"SpecificationContent,omitempty"`
-	// 配置规范名字
-	SpecificationName *string `json:"SpecificationName,omitempty" xml:"SpecificationName,omitempty"`
-	// 更新时间
-	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	// 厂商
-	Vendor *string `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
+	Architecture                 *string   `json:"Architecture,omitempty" xml:"Architecture,omitempty"`
+	ConfigurationSpecificationId *string   `json:"ConfigurationSpecificationId,omitempty" xml:"ConfigurationSpecificationId,omitempty"`
+	CreateTime                   *string   `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Mode                         *string   `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	RelatedVariate               []*string `json:"RelatedVariate,omitempty" xml:"RelatedVariate,omitempty" type:"Repeated"`
+	Role                         *string   `json:"Role,omitempty" xml:"Role,omitempty"`
+	SpecificationContent         *string   `json:"SpecificationContent,omitempty" xml:"SpecificationContent,omitempty"`
+	SpecificationName            *string   `json:"SpecificationName,omitempty" xml:"SpecificationName,omitempty"`
+	UpdateTime                   *string   `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	Vendor                       *string   `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
 }
 
 func (s GetConfigurationSpecificationResponseBodyConfigurationSpecification) String() string {
@@ -11715,8 +10930,9 @@ func (s *GetConfigurationSpecificationResponseBodyConfigurationSpecification) Se
 }
 
 type GetConfigurationSpecificationResponse struct {
-	Headers map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetConfigurationSpecificationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetConfigurationSpecificationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetConfigurationSpecificationResponse) String() string {
@@ -11732,16 +10948,19 @@ func (s *GetConfigurationSpecificationResponse) SetHeaders(v map[string]*string)
 	return s
 }
 
+func (s *GetConfigurationSpecificationResponse) SetStatusCode(v int32) *GetConfigurationSpecificationResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *GetConfigurationSpecificationResponse) SetBody(v *GetConfigurationSpecificationResponseBody) *GetConfigurationSpecificationResponse {
 	s.Body = v
 	return s
 }
 
 type GetConfigurationVariateRequest struct {
-	// 实例 ID。
 	ConfigurationVariateId *string `json:"ConfigurationVariateId,omitempty" xml:"ConfigurationVariateId,omitempty"`
-	// instanceId
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceId             *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
 func (s GetConfigurationVariateRequest) String() string {
@@ -11763,10 +10982,8 @@ func (s *GetConfigurationVariateRequest) SetInstanceId(v string) *GetConfigurati
 }
 
 type GetConfigurationVariateResponseBody struct {
-	// 资源对象
 	ConfigurationVariate *GetConfigurationVariateResponseBodyConfigurationVariate `json:"ConfigurationVariate,omitempty" xml:"ConfigurationVariate,omitempty" type:"Struct"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId            *string                                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetConfigurationVariateResponseBody) String() string {
@@ -11788,12 +11005,9 @@ func (s *GetConfigurationVariateResponseBody) SetRequestId(v string) *GetConfigu
 }
 
 type GetConfigurationVariateResponseBodyConfigurationVariate struct {
-	// 变量描述
-	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// 转换函数
+	Comment        *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
 	FormatFunction *string `json:"FormatFunction,omitempty" xml:"FormatFunction,omitempty"`
-	// project
-	VariateName *string `json:"VariateName,omitempty" xml:"VariateName,omitempty"`
+	VariateName    *string `json:"VariateName,omitempty" xml:"VariateName,omitempty"`
 }
 
 func (s GetConfigurationVariateResponseBodyConfigurationVariate) String() string {
@@ -11820,8 +11034,9 @@ func (s *GetConfigurationVariateResponseBodyConfigurationVariate) SetVariateName
 }
 
 type GetConfigurationVariateResponse struct {
-	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetConfigurationVariateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetConfigurationVariateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetConfigurationVariateResponse) String() string {
@@ -11837,16 +11052,19 @@ func (s *GetConfigurationVariateResponse) SetHeaders(v map[string]*string) *GetC
 	return s
 }
 
+func (s *GetConfigurationVariateResponse) SetStatusCode(v int32) *GetConfigurationVariateResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *GetConfigurationVariateResponse) SetBody(v *GetConfigurationVariateResponseBody) *GetConfigurationVariateResponse {
 	s.Body = v
 	return s
 }
 
 type GetDedicatedLineRequest struct {
-	// 实例 ID。
 	DedicatedLineId *string `json:"DedicatedLineId,omitempty" xml:"DedicatedLineId,omitempty"`
-	// 实例ID
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
 func (s GetDedicatedLineRequest) String() string {
@@ -11868,10 +11086,8 @@ func (s *GetDedicatedLineRequest) SetInstanceId(v string) *GetDedicatedLineReque
 }
 
 type GetDedicatedLineResponseBody struct {
-	// 物理空间专线详情
 	DedicatedLine *GetDedicatedLineResponseBodyDedicatedLine `json:"DedicatedLine,omitempty" xml:"DedicatedLine,omitempty" type:"Struct"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId     *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetDedicatedLineResponseBody) String() string {
@@ -11893,28 +11109,17 @@ func (s *GetDedicatedLineResponseBody) SetRequestId(v string) *GetDedicatedLineR
 }
 
 type GetDedicatedLineResponseBodyDedicatedLine struct {
-	// 宽带（Mbps）
-	Bandwidth *int32 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	// 专线网关
+	Bandwidth            *int32  `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
 	DedicatedLineGateway *string `json:"DedicatedLineGateway,omitempty" xml:"DedicatedLineGateway,omitempty"`
-	// 专线ID
-	DedicatedLineId *string `json:"DedicatedLineId,omitempty" xml:"DedicatedLineId,omitempty"`
-	// 专线IP
-	DedicatedLineIp *string `json:"DedicatedLineIp,omitempty" xml:"DedicatedLineIp,omitempty"`
-	// 专线角色
-	DedicatedLineRole *string `json:"DedicatedLineRole,omitempty" xml:"DedicatedLineRole,omitempty"`
-	// 备注
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 关联设备ID
-	DeviceId *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
-	// 关联设备名称
-	DeviceName *string `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
-	// 关联设备端口名称
-	DevicePort *string `json:"DevicePort,omitempty" xml:"DevicePort,omitempty"`
-	// 运营商
-	Isp *string `json:"Isp,omitempty" xml:"Isp,omitempty"`
-	// 物理空间ID
-	PhysicalSpaceId *string `json:"PhysicalSpaceId,omitempty" xml:"PhysicalSpaceId,omitempty"`
+	DedicatedLineId      *string `json:"DedicatedLineId,omitempty" xml:"DedicatedLineId,omitempty"`
+	DedicatedLineIp      *string `json:"DedicatedLineIp,omitempty" xml:"DedicatedLineIp,omitempty"`
+	DedicatedLineRole    *string `json:"DedicatedLineRole,omitempty" xml:"DedicatedLineRole,omitempty"`
+	Description          *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	DeviceId             *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
+	DeviceName           *string `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
+	DevicePort           *string `json:"DevicePort,omitempty" xml:"DevicePort,omitempty"`
+	Isp                  *string `json:"Isp,omitempty" xml:"Isp,omitempty"`
+	PhysicalSpaceId      *string `json:"PhysicalSpaceId,omitempty" xml:"PhysicalSpaceId,omitempty"`
 }
 
 func (s GetDedicatedLineResponseBodyDedicatedLine) String() string {
@@ -11981,8 +11186,9 @@ func (s *GetDedicatedLineResponseBodyDedicatedLine) SetPhysicalSpaceId(v string)
 }
 
 type GetDedicatedLineResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetDedicatedLineResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetDedicatedLineResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetDedicatedLineResponse) String() string {
@@ -11998,15 +11204,18 @@ func (s *GetDedicatedLineResponse) SetHeaders(v map[string]*string) *GetDedicate
 	return s
 }
 
+func (s *GetDedicatedLineResponse) SetStatusCode(v int32) *GetDedicatedLineResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *GetDedicatedLineResponse) SetBody(v *GetDedicatedLineResponseBody) *GetDedicatedLineResponse {
 	s.Body = v
 	return s
 }
 
 type GetDeviceRequest struct {
-	// 实例 ID。
-	DeviceId *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
-	// 实例ID
+	DeviceId   *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -12029,10 +11238,8 @@ func (s *GetDeviceRequest) SetInstanceId(v string) *GetDeviceRequest {
 }
 
 type GetDeviceResponseBody struct {
-	// 设备详情
-	Device *GetDeviceResponseBodyDevice `json:"Device,omitempty" xml:"Device,omitempty" type:"Struct"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Device    *GetDeviceResponseBodyDevice `json:"Device,omitempty" xml:"Device,omitempty" type:"Struct"`
+	RequestId *string                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetDeviceResponseBody) String() string {
@@ -12054,60 +11261,33 @@ func (s *GetDeviceResponseBody) SetRequestId(v string) *GetDeviceResponseBody {
 }
 
 type GetDeviceResponseBodyDevice struct {
-	// 设备形态ID
-	DeviceFormId *string `json:"DeviceFormId,omitempty" xml:"DeviceFormId,omitempty"`
-	// 设备形态名称
-	DeviceFormName *string `json:"DeviceFormName,omitempty" xml:"DeviceFormName,omitempty"`
-	// 设备ID
-	DeviceId *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
-	// enable密码
-	EnablePassword *string `json:"EnablePassword,omitempty" xml:"EnablePassword,omitempty"`
-	// 设备额外属性
-	ExtAttributes *string `json:"ExtAttributes,omitempty" xml:"ExtAttributes,omitempty"`
-	// 主机名
-	HostName *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
-	// 设备IP
-	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	// 登录密码
-	LoginPassword *string `json:"LoginPassword,omitempty" xml:"LoginPassword,omitempty"`
-	// 登录类型
-	LoginType *string `json:"LoginType,omitempty" xml:"LoginType,omitempty"`
-	// 登录账号
-	LoginUsername *string `json:"LoginUsername,omitempty" xml:"LoginUsername,omitempty"`
-	// 设备MAC地址
-	Mac *string `json:"Mac,omitempty" xml:"Mac,omitempty"`
-	// 设备型号
-	Model *string `json:"Model,omitempty" xml:"Model,omitempty"`
-	// 物理空间ID
-	PhysicalSpaceId *string `json:"PhysicalSpaceId,omitempty" xml:"PhysicalSpaceId,omitempty"`
-	// 物理空间名称
-	PhysicalSpaceName *string `json:"PhysicalSpaceName,omitempty" xml:"PhysicalSpaceName,omitempty"`
-	// 设备安全域
-	SecurityDomain *string `json:"SecurityDomain,omitempty" xml:"SecurityDomain,omitempty"`
-	// 设备状态
-	ServiceStatus *string `json:"ServiceStatus,omitempty" xml:"ServiceStatus,omitempty"`
-	// 设备SN
-	Sn *string `json:"Sn,omitempty" xml:"Sn,omitempty"`
-	// SNMP 账号类型
-	SnmpAccountType *string `json:"SnmpAccountType,omitempty" xml:"SnmpAccountType,omitempty"`
-	// SNMP版本号
-	SnmpAccountVersion *string `json:"SnmpAccountVersion,omitempty" xml:"SnmpAccountVersion,omitempty"`
-	// SNMP Auth PassPhrase
-	SnmpAuthPassphrase *string `json:"SnmpAuthPassphrase,omitempty" xml:"SnmpAuthPassphrase,omitempty"`
-	// SNMP Auth Protocol
-	SnmpAuthProtocol *string `json:"SnmpAuthProtocol,omitempty" xml:"SnmpAuthProtocol,omitempty"`
-	// SNMP Community
-	SnmpCommunity *string `json:"SnmpCommunity,omitempty" xml:"SnmpCommunity,omitempty"`
-	// SNMP Privacy Passphrase
+	DeviceFormId          *string `json:"DeviceFormId,omitempty" xml:"DeviceFormId,omitempty"`
+	DeviceFormName        *string `json:"DeviceFormName,omitempty" xml:"DeviceFormName,omitempty"`
+	DeviceId              *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
+	EnablePassword        *string `json:"EnablePassword,omitempty" xml:"EnablePassword,omitempty"`
+	ExtAttributes         *string `json:"ExtAttributes,omitempty" xml:"ExtAttributes,omitempty"`
+	HostName              *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
+	Ip                    *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	LoginPassword         *string `json:"LoginPassword,omitempty" xml:"LoginPassword,omitempty"`
+	LoginType             *string `json:"LoginType,omitempty" xml:"LoginType,omitempty"`
+	LoginUsername         *string `json:"LoginUsername,omitempty" xml:"LoginUsername,omitempty"`
+	Mac                   *string `json:"Mac,omitempty" xml:"Mac,omitempty"`
+	Model                 *string `json:"Model,omitempty" xml:"Model,omitempty"`
+	PhysicalSpaceId       *string `json:"PhysicalSpaceId,omitempty" xml:"PhysicalSpaceId,omitempty"`
+	PhysicalSpaceName     *string `json:"PhysicalSpaceName,omitempty" xml:"PhysicalSpaceName,omitempty"`
+	SecurityDomain        *string `json:"SecurityDomain,omitempty" xml:"SecurityDomain,omitempty"`
+	ServiceStatus         *string `json:"ServiceStatus,omitempty" xml:"ServiceStatus,omitempty"`
+	Sn                    *string `json:"Sn,omitempty" xml:"Sn,omitempty"`
+	SnmpAccountType       *string `json:"SnmpAccountType,omitempty" xml:"SnmpAccountType,omitempty"`
+	SnmpAccountVersion    *string `json:"SnmpAccountVersion,omitempty" xml:"SnmpAccountVersion,omitempty"`
+	SnmpAuthPassphrase    *string `json:"SnmpAuthPassphrase,omitempty" xml:"SnmpAuthPassphrase,omitempty"`
+	SnmpAuthProtocol      *string `json:"SnmpAuthProtocol,omitempty" xml:"SnmpAuthProtocol,omitempty"`
+	SnmpCommunity         *string `json:"SnmpCommunity,omitempty" xml:"SnmpCommunity,omitempty"`
 	SnmpPrivacyPassphrase *string `json:"SnmpPrivacyPassphrase,omitempty" xml:"SnmpPrivacyPassphrase,omitempty"`
-	// SNMP Privacy Protocol
-	SnmpPrivacyProtocol *string `json:"SnmpPrivacyProtocol,omitempty" xml:"SnmpPrivacyProtocol,omitempty"`
-	// SNMP 安全级别
-	SnmpSecurityLevel *string `json:"SnmpSecurityLevel,omitempty" xml:"SnmpSecurityLevel,omitempty"`
-	// SNMP 用户名
-	SnmpUsername *string `json:"SnmpUsername,omitempty" xml:"SnmpUsername,omitempty"`
-	// 设备厂商
-	Vendor *string `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
+	SnmpPrivacyProtocol   *string `json:"SnmpPrivacyProtocol,omitempty" xml:"SnmpPrivacyProtocol,omitempty"`
+	SnmpSecurityLevel     *string `json:"SnmpSecurityLevel,omitempty" xml:"SnmpSecurityLevel,omitempty"`
+	SnmpUsername          *string `json:"SnmpUsername,omitempty" xml:"SnmpUsername,omitempty"`
+	Vendor                *string `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
 }
 
 func (s GetDeviceResponseBodyDevice) String() string {
@@ -12254,8 +11434,9 @@ func (s *GetDeviceResponseBodyDevice) SetVendor(v string) *GetDeviceResponseBody
 }
 
 type GetDeviceResponse struct {
-	Headers map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetDeviceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetDeviceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetDeviceResponse) String() string {
@@ -12271,17 +11452,19 @@ func (s *GetDeviceResponse) SetHeaders(v map[string]*string) *GetDeviceResponse 
 	return s
 }
 
+func (s *GetDeviceResponse) SetStatusCode(v int32) *GetDeviceResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *GetDeviceResponse) SetBody(v *GetDeviceResponseBody) *GetDeviceResponse {
 	s.Body = v
 	return s
 }
 
 type GetDeviceConfigRequest struct {
-	// 查询日期，格式 yyyy-MM-dd
-	Date *string `json:"Date,omitempty" xml:"Date,omitempty"`
-	// 实例 ID。
-	DeviceId *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
-	// 实例ID
+	Date       *string `json:"Date,omitempty" xml:"Date,omitempty"`
+	DeviceId   *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -12309,10 +11492,8 @@ func (s *GetDeviceConfigRequest) SetInstanceId(v string) *GetDeviceConfigRequest
 }
 
 type GetDeviceConfigResponseBody struct {
-	// 设备配置内容
 	DeviceConfig *string `json:"DeviceConfig,omitempty" xml:"DeviceConfig,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetDeviceConfigResponseBody) String() string {
@@ -12334,8 +11515,9 @@ func (s *GetDeviceConfigResponseBody) SetRequestId(v string) *GetDeviceConfigRes
 }
 
 type GetDeviceConfigResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetDeviceConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetDeviceConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetDeviceConfigResponse) String() string {
@@ -12351,15 +11533,18 @@ func (s *GetDeviceConfigResponse) SetHeaders(v map[string]*string) *GetDeviceCon
 	return s
 }
 
+func (s *GetDeviceConfigResponse) SetStatusCode(v int32) *GetDeviceConfigResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *GetDeviceConfigResponse) SetBody(v *GetDeviceConfigResponseBody) *GetDeviceConfigResponse {
 	s.Body = v
 	return s
 }
 
 type GetDeviceConfigDateRequest struct {
-	// 实例 ID。
-	DeviceId *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
-	// 实例ID
+	DeviceId   *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -12382,10 +11567,8 @@ func (s *GetDeviceConfigDateRequest) SetInstanceId(v string) *GetDeviceConfigDat
 }
 
 type GetDeviceConfigDateResponseBody struct {
-	// 设备配置变化日期
 	DeviceConfigDate []*string `json:"DeviceConfigDate,omitempty" xml:"DeviceConfigDate,omitempty" type:"Repeated"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId        *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetDeviceConfigDateResponseBody) String() string {
@@ -12407,8 +11590,9 @@ func (s *GetDeviceConfigDateResponseBody) SetRequestId(v string) *GetDeviceConfi
 }
 
 type GetDeviceConfigDateResponse struct {
-	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetDeviceConfigDateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetDeviceConfigDateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetDeviceConfigDateResponse) String() string {
@@ -12424,20 +11608,21 @@ func (s *GetDeviceConfigDateResponse) SetHeaders(v map[string]*string) *GetDevic
 	return s
 }
 
+func (s *GetDeviceConfigDateResponse) SetStatusCode(v int32) *GetDeviceConfigDateResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *GetDeviceConfigDateResponse) SetBody(v *GetDeviceConfigDateResponseBody) *GetDeviceConfigDateResponse {
 	s.Body = v
 	return s
 }
 
 type GetDeviceConfigDiffRequest struct {
-	// 实例 ID。
-	DeviceId *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
-	// 查询日期2，格式 yyyy-MM-dd
-	EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	// 实例ID
+	DeviceId   *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
+	EndDate    *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 查询日期1，格式 yyyy-MM-dd
-	StartDate *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	StartDate  *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
 }
 
 func (s GetDeviceConfigDiffRequest) String() string {
@@ -12470,8 +11655,7 @@ func (s *GetDeviceConfigDiffRequest) SetStartDate(v string) *GetDeviceConfigDiff
 
 type GetDeviceConfigDiffResponseBody struct {
 	DeviceConfigDiff *GetDeviceConfigDiffResponseBodyDeviceConfigDiff `json:"DeviceConfigDiff,omitempty" xml:"DeviceConfigDiff,omitempty" type:"Struct"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId        *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetDeviceConfigDiffResponseBody) String() string {
@@ -12493,10 +11677,8 @@ func (s *GetDeviceConfigDiffResponseBody) SetRequestId(v string) *GetDeviceConfi
 }
 
 type GetDeviceConfigDiffResponseBodyDeviceConfigDiff struct {
-	// 差异提取
 	ExtractDiff *string `json:"ExtractDiff,omitempty" xml:"ExtractDiff,omitempty"`
-	// 全量比对
-	TotalDiff *string `json:"TotalDiff,omitempty" xml:"TotalDiff,omitempty"`
+	TotalDiff   *string `json:"TotalDiff,omitempty" xml:"TotalDiff,omitempty"`
 }
 
 func (s GetDeviceConfigDiffResponseBodyDeviceConfigDiff) String() string {
@@ -12518,8 +11700,9 @@ func (s *GetDeviceConfigDiffResponseBodyDeviceConfigDiff) SetTotalDiff(v string)
 }
 
 type GetDeviceConfigDiffResponse struct {
-	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetDeviceConfigDiffResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetDeviceConfigDiffResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetDeviceConfigDiffResponse) String() string {
@@ -12535,16 +11718,19 @@ func (s *GetDeviceConfigDiffResponse) SetHeaders(v map[string]*string) *GetDevic
 	return s
 }
 
+func (s *GetDeviceConfigDiffResponse) SetStatusCode(v int32) *GetDeviceConfigDiffResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *GetDeviceConfigDiffResponse) SetBody(v *GetDeviceConfigDiffResponseBody) *GetDeviceConfigDiffResponse {
 	s.Body = v
 	return s
 }
 
 type GetDeviceFormRequest struct {
-	// 实例 ID。
 	DeviceFormId *string `json:"DeviceFormId,omitempty" xml:"DeviceFormId,omitempty"`
-	// 实例ID
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
 func (s GetDeviceFormRequest) String() string {
@@ -12566,10 +11752,8 @@ func (s *GetDeviceFormRequest) SetInstanceId(v string) *GetDeviceFormRequest {
 }
 
 type GetDeviceFormResponseBody struct {
-	// 设备详情
 	DeviceForm *GetDeviceFormResponseBodyDeviceForm `json:"DeviceForm,omitempty" xml:"DeviceForm,omitempty" type:"Struct"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId  *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetDeviceFormResponseBody) String() string {
@@ -12591,26 +11775,16 @@ func (s *GetDeviceFormResponseBody) SetRequestId(v string) *GetDeviceFormRespons
 }
 
 type GetDeviceFormResponseBodyDeviceForm struct {
-	// 是否需要账号配置
-	AccountConfig *bool `json:"AccountConfig,omitempty" xml:"AccountConfig,omitempty"`
-	// 设备形态属性列表
-	AttributeList []*GetDeviceFormResponseBodyDeviceFormAttributeList `json:"AttributeList,omitempty" xml:"AttributeList,omitempty" type:"Repeated"`
-	// 是否支持配置生成
-	ConfigCompare *bool `json:"ConfigCompare,omitempty" xml:"ConfigCompare,omitempty"`
-	// 是否展示设备详情
-	DetailDisplay *bool `json:"DetailDisplay,omitempty" xml:"DetailDisplay,omitempty"`
-	// 设备形态ID
-	DeviceFormId *string `json:"DeviceFormId,omitempty" xml:"DeviceFormId,omitempty"`
-	// 设备形态名称
-	DeviceFormName *string `json:"DeviceFormName,omitempty" xml:"DeviceFormName,omitempty"`
-	// 设备形态是否内置
-	FormBuiltIn *bool `json:"FormBuiltIn,omitempty" xml:"FormBuiltIn,omitempty"`
-	// 资源用途
-	ResourceUse *string `json:"ResourceUse,omitempty" xml:"ResourceUse,omitempty"`
-	// 设备代码
-	Script *string `json:"Script,omitempty" xml:"Script,omitempty"`
-	// 设备形态主键
-	UniqueKey *string `json:"UniqueKey,omitempty" xml:"UniqueKey,omitempty"`
+	AccountConfig  *bool                                               `json:"AccountConfig,omitempty" xml:"AccountConfig,omitempty"`
+	AttributeList  []*GetDeviceFormResponseBodyDeviceFormAttributeList `json:"AttributeList,omitempty" xml:"AttributeList,omitempty" type:"Repeated"`
+	ConfigCompare  *bool                                               `json:"ConfigCompare,omitempty" xml:"ConfigCompare,omitempty"`
+	DetailDisplay  *bool                                               `json:"DetailDisplay,omitempty" xml:"DetailDisplay,omitempty"`
+	DeviceFormId   *string                                             `json:"DeviceFormId,omitempty" xml:"DeviceFormId,omitempty"`
+	DeviceFormName *string                                             `json:"DeviceFormName,omitempty" xml:"DeviceFormName,omitempty"`
+	FormBuiltIn    *bool                                               `json:"FormBuiltIn,omitempty" xml:"FormBuiltIn,omitempty"`
+	ResourceUse    *string                                             `json:"ResourceUse,omitempty" xml:"ResourceUse,omitempty"`
+	Script         *string                                             `json:"Script,omitempty" xml:"Script,omitempty"`
+	UniqueKey      *string                                             `json:"UniqueKey,omitempty" xml:"UniqueKey,omitempty"`
 }
 
 func (s GetDeviceFormResponseBodyDeviceForm) String() string {
@@ -12672,30 +11846,19 @@ func (s *GetDeviceFormResponseBodyDeviceForm) SetUniqueKey(v string) *GetDeviceF
 }
 
 type GetDeviceFormResponseBodyDeviceFormAttributeList struct {
-	// 设备形态属性是否内置
-	AttributeBuiltIn *bool `json:"AttributeBuiltIn,omitempty" xml:"AttributeBuiltIn,omitempty"`
-	// 设备形态属性值格式
-	AttributeFormat *string `json:"AttributeFormat,omitempty" xml:"AttributeFormat,omitempty"`
-	// 前端查询控件是否支持模糊搜索
-	AttributeFuzzyQuery *bool `json:"AttributeFuzzyQuery,omitempty" xml:"AttributeFuzzyQuery,omitempty"`
-	// 设备形态属性主键
-	AttributeKey *string `json:"AttributeKey,omitempty" xml:"AttributeKey,omitempty"`
-	// 设备形态属性名称
-	AttributeName *string `json:"AttributeName,omitempty" xml:"AttributeName,omitempty"`
-	// 前端查询控件占位符
-	AttributePlaceholder *string `json:"AttributePlaceholder,omitempty" xml:"AttributePlaceholder,omitempty"`
-	// 前端是否展示对应的查询控件
-	AttributeQuery *bool `json:"AttributeQuery,omitempty" xml:"AttributeQuery,omitempty"`
-	// 设备形态属性关联对象
-	AttributeReference *string `json:"AttributeReference,omitempty" xml:"AttributeReference,omitempty"`
-	// 设备形态属性是否必填
-	AttributeRequirement *bool `json:"AttributeRequirement,omitempty" xml:"AttributeRequirement,omitempty"`
-	// 设备形态属性是否表格可见
-	AttributeTableDisplay *bool `json:"AttributeTableDisplay,omitempty" xml:"AttributeTableDisplay,omitempty"`
-	// 设备形态属性值类型
-	AttributeType *string `json:"AttributeType,omitempty" xml:"AttributeType,omitempty"`
-	// 设备形态属性是否唯一
-	AttributeUniqueness *bool `json:"AttributeUniqueness,omitempty" xml:"AttributeUniqueness,omitempty"`
+	AttributeBuiltIn      *bool   `json:"AttributeBuiltIn,omitempty" xml:"AttributeBuiltIn,omitempty"`
+	AttributeFormat       *string `json:"AttributeFormat,omitempty" xml:"AttributeFormat,omitempty"`
+	AttributeFuzzyQuery   *bool   `json:"AttributeFuzzyQuery,omitempty" xml:"AttributeFuzzyQuery,omitempty"`
+	AttributeKey          *string `json:"AttributeKey,omitempty" xml:"AttributeKey,omitempty"`
+	AttributeName         *string `json:"AttributeName,omitempty" xml:"AttributeName,omitempty"`
+	AttributePlaceholder  *string `json:"AttributePlaceholder,omitempty" xml:"AttributePlaceholder,omitempty"`
+	AttributeQuery        *bool   `json:"AttributeQuery,omitempty" xml:"AttributeQuery,omitempty"`
+	AttributeReference    *string `json:"AttributeReference,omitempty" xml:"AttributeReference,omitempty"`
+	AttributeRequirement  *bool   `json:"AttributeRequirement,omitempty" xml:"AttributeRequirement,omitempty"`
+	AttributeSequence     *int32  `json:"AttributeSequence,omitempty" xml:"AttributeSequence,omitempty"`
+	AttributeTableDisplay *bool   `json:"AttributeTableDisplay,omitempty" xml:"AttributeTableDisplay,omitempty"`
+	AttributeType         *string `json:"AttributeType,omitempty" xml:"AttributeType,omitempty"`
+	AttributeUniqueness   *bool   `json:"AttributeUniqueness,omitempty" xml:"AttributeUniqueness,omitempty"`
 }
 
 func (s GetDeviceFormResponseBodyDeviceFormAttributeList) String() string {
@@ -12751,6 +11914,11 @@ func (s *GetDeviceFormResponseBodyDeviceFormAttributeList) SetAttributeRequireme
 	return s
 }
 
+func (s *GetDeviceFormResponseBodyDeviceFormAttributeList) SetAttributeSequence(v int32) *GetDeviceFormResponseBodyDeviceFormAttributeList {
+	s.AttributeSequence = &v
+	return s
+}
+
 func (s *GetDeviceFormResponseBodyDeviceFormAttributeList) SetAttributeTableDisplay(v bool) *GetDeviceFormResponseBodyDeviceFormAttributeList {
 	s.AttributeTableDisplay = &v
 	return s
@@ -12767,8 +11935,9 @@ func (s *GetDeviceFormResponseBodyDeviceFormAttributeList) SetAttributeUniquenes
 }
 
 type GetDeviceFormResponse struct {
-	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetDeviceFormResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetDeviceFormResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetDeviceFormResponse) String() string {
@@ -12784,20 +11953,21 @@ func (s *GetDeviceFormResponse) SetHeaders(v map[string]*string) *GetDeviceFormR
 	return s
 }
 
+func (s *GetDeviceFormResponse) SetStatusCode(v int32) *GetDeviceFormResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *GetDeviceFormResponse) SetBody(v *GetDeviceFormResponseBody) *GetDeviceFormResponse {
 	s.Body = v
 	return s
 }
 
 type GetDeviceOpLogRequest struct {
-	// 设备ID
-	DeviceId *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
-	// 实例ID
+	DeviceId   *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 返回结果的最大个数。
-	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 当总结果个数大于MaxResults时，用于翻页的token。
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	MaxResults *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken  *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 }
 
 func (s GetDeviceOpLogRequest) String() string {
@@ -12829,16 +11999,11 @@ func (s *GetDeviceOpLogRequest) SetNextToken(v string) *GetDeviceOpLogRequest {
 }
 
 type GetDeviceOpLogResponseBody struct {
-	// 每页数量。
-	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 当总结果个数大于MaxResults时，用于翻页的token。
-	NextToken *int32 `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// 数组，返回示例目录。
+	MaxResults    *int32                                     `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken     *int32                                     `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	OperationLogs []*GetDeviceOpLogResponseBodyOperationLogs `json:"OperationLogs,omitempty" xml:"OperationLogs,omitempty" type:"Repeated"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 总记录数。
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	RequestId     *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount    *int32                                     `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s GetDeviceOpLogResponseBody) String() string {
@@ -12875,18 +12040,12 @@ func (s *GetDeviceOpLogResponseBody) SetTotalCount(v int32) *GetDeviceOpLogRespo
 }
 
 type GetDeviceOpLogResponseBodyOperationLogs struct {
-	// 设备ID
-	DeviceId *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
-	// 操作时间
+	DeviceId        *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
 	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
-	// 属性
-	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
-	// 新值
-	NewValue *string `json:"NewValue,omitempty" xml:"NewValue,omitempty"`
-	// 旧值
-	OldValue *string `json:"OldValue,omitempty" xml:"OldValue,omitempty"`
-	// 操作描述
-	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	Keyword         *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	NewValue        *string `json:"NewValue,omitempty" xml:"NewValue,omitempty"`
+	OldValue        *string `json:"OldValue,omitempty" xml:"OldValue,omitempty"`
+	Operator        *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
 }
 
 func (s GetDeviceOpLogResponseBodyOperationLogs) String() string {
@@ -12928,8 +12087,9 @@ func (s *GetDeviceOpLogResponseBodyOperationLogs) SetOperator(v string) *GetDevi
 }
 
 type GetDeviceOpLogResponse struct {
-	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetDeviceOpLogResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetDeviceOpLogResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetDeviceOpLogResponse) String() string {
@@ -12945,20 +12105,21 @@ func (s *GetDeviceOpLogResponse) SetHeaders(v map[string]*string) *GetDeviceOpLo
 	return s
 }
 
+func (s *GetDeviceOpLogResponse) SetStatusCode(v int32) *GetDeviceOpLogResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *GetDeviceOpLogResponse) SetBody(v *GetDeviceOpLogResponseBody) *GetDeviceOpLogResponse {
 	s.Body = v
 	return s
 }
 
 type GetDevicePropertyRequest struct {
-	// 设备形态ID
-	DeviceFormId *string `json:"DeviceFormId,omitempty" xml:"DeviceFormId,omitempty"`
-	// 实例 ID。
+	DeviceFormId     *string `json:"DeviceFormId,omitempty" xml:"DeviceFormId,omitempty"`
 	DevicePropertyId *string `json:"DevicePropertyId,omitempty" xml:"DevicePropertyId,omitempty"`
-	// 实例ID
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 属性主键
-	PropertyKey *string `json:"PropertyKey,omitempty" xml:"PropertyKey,omitempty"`
+	InstanceId       *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	PropertyKey      *string `json:"PropertyKey,omitempty" xml:"PropertyKey,omitempty"`
 }
 
 func (s GetDevicePropertyRequest) String() string {
@@ -12990,10 +12151,8 @@ func (s *GetDevicePropertyRequest) SetPropertyKey(v string) *GetDevicePropertyRe
 }
 
 type GetDevicePropertyResponseBody struct {
-	// 设备属性详情
 	DeviceProperty *GetDevicePropertyResponseBodyDeviceProperty `json:"DeviceProperty,omitempty" xml:"DeviceProperty,omitempty" type:"Struct"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId      *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetDevicePropertyResponseBody) String() string {
@@ -13015,22 +12174,14 @@ func (s *GetDevicePropertyResponseBody) SetRequestId(v string) *GetDevicePropert
 }
 
 type GetDevicePropertyResponseBodyDeviceProperty struct {
-	// 是否内置属性
-	BuiltIn *bool `json:"BuiltIn,omitempty" xml:"BuiltIn,omitempty"`
-	// 设备形态ID
-	DeviceFormId *string `json:"DeviceFormId,omitempty" xml:"DeviceFormId,omitempty"`
-	// 设备形态名称
-	DeviceFormName *string `json:"DeviceFormName,omitempty" xml:"DeviceFormName,omitempty"`
-	// 设备属性ID
+	BuiltIn          *bool   `json:"BuiltIn,omitempty" xml:"BuiltIn,omitempty"`
+	DeviceFormId     *string `json:"DeviceFormId,omitempty" xml:"DeviceFormId,omitempty"`
+	DeviceFormName   *string `json:"DeviceFormName,omitempty" xml:"DeviceFormName,omitempty"`
 	DevicePropertyId *string `json:"DevicePropertyId,omitempty" xml:"DevicePropertyId,omitempty"`
-	// 属性内容
-	PropertyContent *string `json:"PropertyContent,omitempty" xml:"PropertyContent,omitempty"`
-	// 属性格式
-	PropertyFormat *string `json:"PropertyFormat,omitempty" xml:"PropertyFormat,omitempty"`
-	// 属性主键
-	PropertyKey *string `json:"PropertyKey,omitempty" xml:"PropertyKey,omitempty"`
-	// 属性名称
-	PropertyName *string `json:"PropertyName,omitempty" xml:"PropertyName,omitempty"`
+	PropertyContent  *string `json:"PropertyContent,omitempty" xml:"PropertyContent,omitempty"`
+	PropertyFormat   *string `json:"PropertyFormat,omitempty" xml:"PropertyFormat,omitempty"`
+	PropertyKey      *string `json:"PropertyKey,omitempty" xml:"PropertyKey,omitempty"`
+	PropertyName     *string `json:"PropertyName,omitempty" xml:"PropertyName,omitempty"`
 }
 
 func (s GetDevicePropertyResponseBodyDeviceProperty) String() string {
@@ -13082,8 +12233,9 @@ func (s *GetDevicePropertyResponseBodyDeviceProperty) SetPropertyName(v string) 
 }
 
 type GetDevicePropertyResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetDevicePropertyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetDevicePropertyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetDevicePropertyResponse) String() string {
@@ -13099,16 +12251,19 @@ func (s *GetDevicePropertyResponse) SetHeaders(v map[string]*string) *GetDeviceP
 	return s
 }
 
+func (s *GetDevicePropertyResponse) SetStatusCode(v int32) *GetDevicePropertyResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *GetDevicePropertyResponse) SetBody(v *GetDevicePropertyResponseBody) *GetDevicePropertyResponse {
 	s.Body = v
 	return s
 }
 
 type GetDeviceResourceRequest struct {
-	// 实例 ID。
 	DeviceResourceId *string `json:"DeviceResourceId,omitempty" xml:"DeviceResourceId,omitempty"`
-	// instanceId
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceId       *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
 func (s GetDeviceResourceRequest) String() string {
@@ -13130,10 +12285,8 @@ func (s *GetDeviceResourceRequest) SetInstanceId(v string) *GetDeviceResourceReq
 }
 
 type GetDeviceResourceResponseBody struct {
-	// 设备资源
 	DeviceResource *GetDeviceResourceResponseBodyDeviceResource `json:"DeviceResource,omitempty" xml:"DeviceResource,omitempty" type:"Struct"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId      *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetDeviceResourceResponseBody) String() string {
@@ -13155,44 +12308,25 @@ func (s *GetDeviceResourceResponseBody) SetRequestId(v string) *GetDeviceResourc
 }
 
 type GetDeviceResourceResponseBodyDeviceResource struct {
-	// 组号
-	BlockNumber *string `json:"BlockNumber,omitempty" xml:"BlockNumber,omitempty"`
-	// 设备业务地址
-	Business *string `json:"Business,omitempty" xml:"Business,omitempty"`
-	// 设备配置
-	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
-	// 配置下发状态
+	BlockNumber      *string `json:"BlockNumber,omitempty" xml:"BlockNumber,omitempty"`
+	Business         *string `json:"Business,omitempty" xml:"Business,omitempty"`
+	Config           *string `json:"Config,omitempty" xml:"Config,omitempty"`
 	ConfigTaskStatus *string `json:"ConfigTaskStatus,omitempty" xml:"ConfigTaskStatus,omitempty"`
-	// 交付登录地址
-	DeliveryIp *string `json:"DeliveryIp,omitempty" xml:"DeliveryIp,omitempty"`
-	// 设备号
-	DeviceNum *string `json:"DeviceNum,omitempty" xml:"DeviceNum,omitempty"`
-	// 资源一级ID
+	DeliveryIp       *string `json:"DeliveryIp,omitempty" xml:"DeliveryIp,omitempty"`
+	DeviceNum        *string `json:"DeviceNum,omitempty" xml:"DeviceNum,omitempty"`
 	DeviceResourceId *string `json:"DeviceResourceId,omitempty" xml:"DeviceResourceId,omitempty"`
-	// 配置生成
-	GenerateConfig *string `json:"GenerateConfig,omitempty" xml:"GenerateConfig,omitempty"`
-	// 主机名
-	HostName *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
-	// 设备互联地址
-	InterConnection *string `json:"InterConnection,omitempty" xml:"InterConnection,omitempty"`
-	// 物理空间位置
-	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
-	// loopback地址
-	Loopback *string `json:"Loopback,omitempty" xml:"Loopback,omitempty"`
-	// 带内管理地址
-	ManagerIp *string `json:"ManagerIp,omitempty" xml:"ManagerIp,omitempty"`
-	// 模型
-	Model *string `json:"Model,omitempty" xml:"Model,omitempty"`
-	// 角色
-	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
-	// 建设项目id
-	SetupProjectId *string `json:"SetupProjectId,omitempty" xml:"SetupProjectId,omitempty"`
-	// 设备sn号
-	Sn *string `json:"Sn,omitempty" xml:"Sn,omitempty"`
-	// 堆叠状态
-	Stack *bool `json:"Stack,omitempty" xml:"Stack,omitempty"`
-	// 厂商
-	Vendor *string `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
+	GenerateConfig   *string `json:"GenerateConfig,omitempty" xml:"GenerateConfig,omitempty"`
+	HostName         *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
+	InterConnection  *string `json:"InterConnection,omitempty" xml:"InterConnection,omitempty"`
+	Location         *string `json:"Location,omitempty" xml:"Location,omitempty"`
+	Loopback         *string `json:"Loopback,omitempty" xml:"Loopback,omitempty"`
+	ManagerIp        *string `json:"ManagerIp,omitempty" xml:"ManagerIp,omitempty"`
+	Model            *string `json:"Model,omitempty" xml:"Model,omitempty"`
+	Role             *string `json:"Role,omitempty" xml:"Role,omitempty"`
+	SetupProjectId   *string `json:"SetupProjectId,omitempty" xml:"SetupProjectId,omitempty"`
+	Sn               *string `json:"Sn,omitempty" xml:"Sn,omitempty"`
+	Stack            *bool   `json:"Stack,omitempty" xml:"Stack,omitempty"`
+	Vendor           *string `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
 }
 
 func (s GetDeviceResourceResponseBodyDeviceResource) String() string {
@@ -13299,8 +12433,9 @@ func (s *GetDeviceResourceResponseBodyDeviceResource) SetVendor(v string) *GetDe
 }
 
 type GetDeviceResourceResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetDeviceResourceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetDeviceResourceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetDeviceResourceResponse) String() string {
@@ -13316,20 +12451,21 @@ func (s *GetDeviceResourceResponse) SetHeaders(v map[string]*string) *GetDeviceR
 	return s
 }
 
+func (s *GetDeviceResourceResponse) SetStatusCode(v int32) *GetDeviceResourceResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *GetDeviceResourceResponse) SetBody(v *GetDeviceResourceResponseBody) *GetDeviceResourceResponse {
 	s.Body = v
 	return s
 }
 
 type GetInspectionTaskRequest struct {
-	// 设备ID
-	DeviceId *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
-	// 实例ID
+	DeviceId   *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 巡检项名称
-	ItemName *string `json:"ItemName,omitempty" xml:"ItemName,omitempty"`
-	// 巡检项ID
-	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	ItemName   *string `json:"ItemName,omitempty" xml:"ItemName,omitempty"`
+	TaskId     *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s GetInspectionTaskRequest) String() string {
@@ -13361,10 +12497,8 @@ func (s *GetInspectionTaskRequest) SetTaskId(v string) *GetInspectionTaskRequest
 }
 
 type GetInspectionTaskResponseBody struct {
-	// 周期巡检任务详情
 	InspectionTask *GetInspectionTaskResponseBodyInspectionTask `json:"InspectionTask,omitempty" xml:"InspectionTask,omitempty" type:"Struct"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId      *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetInspectionTaskResponseBody) String() string {
@@ -13386,40 +12520,23 @@ func (s *GetInspectionTaskResponseBody) SetRequestId(v string) *GetInspectionTas
 }
 
 type GetInspectionTaskResponseBodyInspectionTask struct {
-	// 设备回显
-	DeviceDisplay *string `json:"DeviceDisplay,omitempty" xml:"DeviceDisplay,omitempty"`
-	// 设备ID
-	DeviceId *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
-	// 错误码
-	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// 巡检开始时间
-	ExecutionBeginTime *string `json:"ExecutionBeginTime,omitempty" xml:"ExecutionBeginTime,omitempty"`
-	// 巡检结束时间
-	ExecutionEndTime *string `json:"ExecutionEndTime,omitempty" xml:"ExecutionEndTime,omitempty"`
-	// 主机名
-	HostName *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
-	// IP地址
-	IP *string `json:"IP,omitempty" xml:"IP,omitempty"`
-	// 告警规则
+	DeviceDisplay        *string                                                            `json:"DeviceDisplay,omitempty" xml:"DeviceDisplay,omitempty"`
+	DeviceId             *string                                                            `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
+	ErrorCode            *string                                                            `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ExecutionBeginTime   *string                                                            `json:"ExecutionBeginTime,omitempty" xml:"ExecutionBeginTime,omitempty"`
+	ExecutionEndTime     *string                                                            `json:"ExecutionEndTime,omitempty" xml:"ExecutionEndTime,omitempty"`
+	HostName             *string                                                            `json:"HostName,omitempty" xml:"HostName,omitempty"`
+	IP                   *string                                                            `json:"IP,omitempty" xml:"IP,omitempty"`
 	InspectionAlarmRules []*GetInspectionTaskResponseBodyInspectionTaskInspectionAlarmRules `json:"InspectionAlarmRules,omitempty" xml:"InspectionAlarmRules,omitempty" type:"Repeated"`
-	// 巡检结果
-	InspectionResult *string `json:"InspectionResult,omitempty" xml:"InspectionResult,omitempty"`
-	// 巡检项ID
-	ItemId *string `json:"ItemId,omitempty" xml:"ItemId,omitempty"`
-	// 巡检项名字
-	ItemName *string `json:"ItemName,omitempty" xml:"ItemName,omitempty"`
-	// 型号
-	Model []*string `json:"Model,omitempty" xml:"Model,omitempty" type:"Repeated"`
-	// 模板ID
-	ScriptId *string `json:"ScriptId,omitempty" xml:"ScriptId,omitempty"`
-	// 物理空间
-	Space *string `json:"Space,omitempty" xml:"Space,omitempty"`
-	// 任务ID
-	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// 任务状态
-	TaskStatus *string `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
-	// 厂商
-	Vendor *string `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
+	InspectionResult     *string                                                            `json:"InspectionResult,omitempty" xml:"InspectionResult,omitempty"`
+	ItemId               *string                                                            `json:"ItemId,omitempty" xml:"ItemId,omitempty"`
+	ItemName             *string                                                            `json:"ItemName,omitempty" xml:"ItemName,omitempty"`
+	Model                []*string                                                          `json:"Model,omitempty" xml:"Model,omitempty" type:"Repeated"`
+	ScriptId             *string                                                            `json:"ScriptId,omitempty" xml:"ScriptId,omitempty"`
+	Space                *string                                                            `json:"Space,omitempty" xml:"Space,omitempty"`
+	TaskId               *string                                                            `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	TaskStatus           *string                                                            `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
+	Vendor               *string                                                            `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
 }
 
 func (s GetInspectionTaskResponseBodyInspectionTask) String() string {
@@ -13516,16 +12633,11 @@ func (s *GetInspectionTaskResponseBodyInspectionTask) SetVendor(v string) *GetIn
 }
 
 type GetInspectionTaskResponseBodyInspectionTaskInspectionAlarmRules struct {
-	// 告警实际值
 	ActualValue *string `json:"ActualValue,omitempty" xml:"ActualValue,omitempty"`
-	// 告警符号
-	Expression *string `json:"Expression,omitempty" xml:"Expression,omitempty"`
-	// 告警级别
-	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
-	// 告警操作符
-	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
-	// 告警值
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	Expression  *string `json:"Expression,omitempty" xml:"Expression,omitempty"`
+	Level       *string `json:"Level,omitempty" xml:"Level,omitempty"`
+	Operator    *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	Value       *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetInspectionTaskResponseBodyInspectionTaskInspectionAlarmRules) String() string {
@@ -13562,8 +12674,9 @@ func (s *GetInspectionTaskResponseBodyInspectionTaskInspectionAlarmRules) SetVal
 }
 
 type GetInspectionTaskResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetInspectionTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetInspectionTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetInspectionTaskResponse) String() string {
@@ -13579,15 +12692,18 @@ func (s *GetInspectionTaskResponse) SetHeaders(v map[string]*string) *GetInspect
 	return s
 }
 
+func (s *GetInspectionTaskResponse) SetStatusCode(v int32) *GetInspectionTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *GetInspectionTaskResponse) SetBody(v *GetInspectionTaskResponseBody) *GetInspectionTaskResponse {
 	s.Body = v
 	return s
 }
 
 type GetMonitorItemRequest struct {
-	// 实例ID
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 监控项ID
+	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	MonitorItemId *string `json:"MonitorItemId,omitempty" xml:"MonitorItemId,omitempty"`
 }
 
@@ -13610,10 +12726,8 @@ func (s *GetMonitorItemRequest) SetMonitorItemId(v string) *GetMonitorItemReques
 }
 
 type GetMonitorItemResponseBody struct {
-	// 数据
 	MonitorItem *GetMonitorItemResponseBodyMonitorItem `json:"MonitorItem,omitempty" xml:"MonitorItem,omitempty" type:"Struct"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId   *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetMonitorItemResponseBody) String() string {
@@ -13635,38 +12749,22 @@ func (s *GetMonitorItemResponseBody) SetRequestId(v string) *GetMonitorItemRespo
 }
 
 type GetMonitorItemResponseBodyMonitorItem struct {
-	// 通用告警规则列表
-	AlarmRuleList []*GetMonitorItemResponseBodyMonitorItemAlarmRuleList `json:"AlarmRuleList,omitempty" xml:"AlarmRuleList,omitempty" type:"Repeated"`
-	// 解析代码
-	AnalysisCode *string `json:"AnalysisCode,omitempty" xml:"AnalysisCode,omitempty"`
-	// 采集类型
-	CollectionType *string `json:"CollectionType,omitempty" xml:"CollectionType,omitempty"`
-	// 监控项参数配置
-	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
-	// 创建时间
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// 数据项
-	DataItem *string `json:"DataItem,omitempty" xml:"DataItem,omitempty"`
-	// 设备形态
-	DeviceForm *string `json:"DeviceForm,omitempty" xml:"DeviceForm,omitempty"`
-	// 是否启用
-	Effective *int32 `json:"Effective,omitempty" xml:"Effective,omitempty"`
-	// 执行间隔(s)
-	ExecInterval *int32 `json:"ExecInterval,omitempty" xml:"ExecInterval,omitempty"`
-	// 监控项描述
-	MonitorItemDescription *string `json:"MonitorItemDescription,omitempty" xml:"MonitorItemDescription,omitempty"`
-	// 监控项ID
-	MonitorItemId *string `json:"MonitorItemId,omitempty" xml:"MonitorItemId,omitempty"`
-	// 监控项名称
-	MonitorItemName *string `json:"MonitorItemName,omitempty" xml:"MonitorItemName,omitempty"`
-	// 个性化告警规则列表
+	AlarmRuleList             []*GetMonitorItemResponseBodyMonitorItemAlarmRuleList             `json:"AlarmRuleList,omitempty" xml:"AlarmRuleList,omitempty" type:"Repeated"`
+	AnalysisCode              *string                                                           `json:"AnalysisCode,omitempty" xml:"AnalysisCode,omitempty"`
+	CollectionType            *string                                                           `json:"CollectionType,omitempty" xml:"CollectionType,omitempty"`
+	Config                    *string                                                           `json:"Config,omitempty" xml:"Config,omitempty"`
+	CreateTime                *string                                                           `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	DataItem                  *string                                                           `json:"DataItem,omitempty" xml:"DataItem,omitempty"`
+	DeviceForm                *string                                                           `json:"DeviceForm,omitempty" xml:"DeviceForm,omitempty"`
+	Effective                 *int32                                                            `json:"Effective,omitempty" xml:"Effective,omitempty"`
+	ExecInterval              *int32                                                            `json:"ExecInterval,omitempty" xml:"ExecInterval,omitempty"`
+	MonitorItemDescription    *string                                                           `json:"MonitorItemDescription,omitempty" xml:"MonitorItemDescription,omitempty"`
+	MonitorItemId             *string                                                           `json:"MonitorItemId,omitempty" xml:"MonitorItemId,omitempty"`
+	MonitorItemName           *string                                                           `json:"MonitorItemName,omitempty" xml:"MonitorItemName,omitempty"`
 	PersonalizedAlarmRuleList []*GetMonitorItemResponseBodyMonitorItemPersonalizedAlarmRuleList `json:"PersonalizedAlarmRuleList,omitempty" xml:"PersonalizedAlarmRuleList,omitempty" type:"Repeated"`
-	// 安全域
-	SecurityDomain *string `json:"SecurityDomain,omitempty" xml:"SecurityDomain,omitempty"`
-	// 类型
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// 修改时间
-	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	SecurityDomain            *string                                                           `json:"SecurityDomain,omitempty" xml:"SecurityDomain,omitempty"`
+	Type                      *string                                                           `json:"Type,omitempty" xml:"Type,omitempty"`
+	UpdateTime                *string                                                           `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s GetMonitorItemResponseBodyMonitorItem) String() string {
@@ -13758,14 +12856,10 @@ func (s *GetMonitorItemResponseBodyMonitorItem) SetUpdateTime(v string) *GetMoni
 }
 
 type GetMonitorItemResponseBodyMonitorItemAlarmRuleList struct {
-	// 告警规则
 	AlarmStatus *string `json:"AlarmStatus,omitempty" xml:"AlarmStatus,omitempty"`
-	// 表达式
-	Expression *string `json:"Expression,omitempty" xml:"Expression,omitempty"`
-	// 比较值
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
-	// 指标名
-	Variable *string `json:"Variable,omitempty" xml:"Variable,omitempty"`
+	Expression  *string `json:"Expression,omitempty" xml:"Expression,omitempty"`
+	Value       *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	Variable    *string `json:"Variable,omitempty" xml:"Variable,omitempty"`
 }
 
 func (s GetMonitorItemResponseBodyMonitorItemAlarmRuleList) String() string {
@@ -13797,18 +12891,12 @@ func (s *GetMonitorItemResponseBodyMonitorItemAlarmRuleList) SetVariable(v strin
 }
 
 type GetMonitorItemResponseBodyMonitorItemPersonalizedAlarmRuleList struct {
-	// 告警规则
 	AlarmStatus *string `json:"AlarmStatus,omitempty" xml:"AlarmStatus,omitempty"`
-	// 表达式
-	Expression *string `json:"Expression,omitempty" xml:"Expression,omitempty"`
-	// 个性化对象类型
-	FieldName *string `json:"FieldName,omitempty" xml:"FieldName,omitempty"`
-	// 个性化对象值
-	FieldValue *string `json:"FieldValue,omitempty" xml:"FieldValue,omitempty"`
-	// 类型
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
-	// 指标名
-	Variable *string `json:"Variable,omitempty" xml:"Variable,omitempty"`
+	Expression  *string `json:"Expression,omitempty" xml:"Expression,omitempty"`
+	FieldName   *string `json:"FieldName,omitempty" xml:"FieldName,omitempty"`
+	FieldValue  *string `json:"FieldValue,omitempty" xml:"FieldValue,omitempty"`
+	Value       *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	Variable    *string `json:"Variable,omitempty" xml:"Variable,omitempty"`
 }
 
 func (s GetMonitorItemResponseBodyMonitorItemPersonalizedAlarmRuleList) String() string {
@@ -13850,8 +12938,9 @@ func (s *GetMonitorItemResponseBodyMonitorItemPersonalizedAlarmRuleList) SetVari
 }
 
 type GetMonitorItemResponse struct {
-	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetMonitorItemResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetMonitorItemResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetMonitorItemResponse) String() string {
@@ -13867,14 +12956,18 @@ func (s *GetMonitorItemResponse) SetHeaders(v map[string]*string) *GetMonitorIte
 	return s
 }
 
+func (s *GetMonitorItemResponse) SetStatusCode(v int32) *GetMonitorItemResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *GetMonitorItemResponse) SetBody(v *GetMonitorItemResponseBody) *GetMonitorItemResponse {
 	s.Body = v
 	return s
 }
 
 type GetOsDownloadPathRequest struct {
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 架构资源uuid
+	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	OsVersionId *string `json:"OsVersionId,omitempty" xml:"OsVersionId,omitempty"`
 }
 
@@ -13897,10 +12990,8 @@ func (s *GetOsDownloadPathRequest) SetOsVersionId(v string) *GetOsDownloadPathRe
 }
 
 type GetOsDownloadPathResponseBody struct {
-	// 系统版本
 	OsVersion *GetOsDownloadPathResponseBodyOsVersion `json:"OsVersion,omitempty" xml:"OsVersion,omitempty" type:"Struct"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetOsDownloadPathResponseBody) String() string {
@@ -13922,7 +13013,6 @@ func (s *GetOsDownloadPathResponseBody) SetRequestId(v string) *GetOsDownloadPat
 }
 
 type GetOsDownloadPathResponseBodyOsVersion struct {
-	// 系统版本下载路径
 	DownloadPath *string `json:"DownloadPath,omitempty" xml:"DownloadPath,omitempty"`
 }
 
@@ -13940,8 +13030,9 @@ func (s *GetOsDownloadPathResponseBodyOsVersion) SetDownloadPath(v string) *GetO
 }
 
 type GetOsDownloadPathResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetOsDownloadPathResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetOsDownloadPathResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetOsDownloadPathResponse) String() string {
@@ -13957,14 +13048,18 @@ func (s *GetOsDownloadPathResponse) SetHeaders(v map[string]*string) *GetOsDownl
 	return s
 }
 
+func (s *GetOsDownloadPathResponse) SetStatusCode(v int32) *GetOsDownloadPathResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *GetOsDownloadPathResponse) SetBody(v *GetOsDownloadPathResponseBody) *GetOsDownloadPathResponse {
 	s.Body = v
 	return s
 }
 
 type GetOsVersionRequest struct {
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 实例 ID。
+	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	OsVersionId *string `json:"OsVersionId,omitempty" xml:"OsVersionId,omitempty"`
 }
 
@@ -13987,10 +13082,8 @@ func (s *GetOsVersionRequest) SetOsVersionId(v string) *GetOsVersionRequest {
 }
 
 type GetOsVersionResponseBody struct {
-	// 数组，返回示例目录。
 	OsVersion []*GetOsVersionResponseBodyOsVersion `json:"OsVersion,omitempty" xml:"OsVersion,omitempty" type:"Repeated"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetOsVersionResponseBody) String() string {
@@ -14012,7 +13105,6 @@ func (s *GetOsVersionResponseBody) SetRequestId(v string) *GetOsVersionResponseB
 }
 
 type GetOsVersionResponseBodyOsVersion struct {
-	// 下载路径
 	DownloadPath *string `json:"DownloadPath,omitempty" xml:"DownloadPath,omitempty"`
 }
 
@@ -14030,8 +13122,9 @@ func (s *GetOsVersionResponseBodyOsVersion) SetDownloadPath(v string) *GetOsVers
 }
 
 type GetOsVersionResponse struct {
-	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetOsVersionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetOsVersionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetOsVersionResponse) String() string {
@@ -14044,6 +13137,11 @@ func (s GetOsVersionResponse) GoString() string {
 
 func (s *GetOsVersionResponse) SetHeaders(v map[string]*string) *GetOsVersionResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *GetOsVersionResponse) SetStatusCode(v int32) *GetOsVersionResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -14070,10 +13168,8 @@ func (s *GetOssPolicyRequest) SetInstanceId(v string) *GetOssPolicyRequest {
 }
 
 type GetOssPolicyResponseBody struct {
-	// 资源上传规则
 	OssPolicy *GetOssPolicyResponseBodyOssPolicy `json:"OssPolicy,omitempty" xml:"OssPolicy,omitempty" type:"Struct"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetOssPolicyResponseBody) String() string {
@@ -14095,18 +13191,12 @@ func (s *GetOssPolicyResponseBody) SetRequestId(v string) *GetOssPolicyResponseB
 }
 
 type GetOssPolicyResponseBodyOssPolicy struct {
-	// 通行id
-	AccessId *string `json:"AccessId,omitempty" xml:"AccessId,omitempty"`
-	// 目录
-	Directory *string `json:"Directory,omitempty" xml:"Directory,omitempty"`
-	// 过期时间
+	AccessId   *string `json:"AccessId,omitempty" xml:"AccessId,omitempty"`
+	Directory  *string `json:"Directory,omitempty" xml:"Directory,omitempty"`
 	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	// 主机名
-	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
-	// 通行规则
-	Policy *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
-	// 签名
-	Signature *string `json:"Signature,omitempty" xml:"Signature,omitempty"`
+	Host       *string `json:"Host,omitempty" xml:"Host,omitempty"`
+	Policy     *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
+	Signature  *string `json:"Signature,omitempty" xml:"Signature,omitempty"`
 }
 
 func (s GetOssPolicyResponseBodyOssPolicy) String() string {
@@ -14148,8 +13238,9 @@ func (s *GetOssPolicyResponseBodyOssPolicy) SetSignature(v string) *GetOssPolicy
 }
 
 type GetOssPolicyResponse struct {
-	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetOssPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetOssPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetOssPolicyResponse) String() string {
@@ -14165,15 +13256,18 @@ func (s *GetOssPolicyResponse) SetHeaders(v map[string]*string) *GetOssPolicyRes
 	return s
 }
 
+func (s *GetOssPolicyResponse) SetStatusCode(v int32) *GetOssPolicyResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *GetOssPolicyResponse) SetBody(v *GetOssPolicyResponseBody) *GetOssPolicyResponse {
 	s.Body = v
 	return s
 }
 
 type GetPhysicalSpaceRequest struct {
-	// 实例ID
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 实例 ID。
+	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	PhysicalSpaceId *string `json:"PhysicalSpaceId,omitempty" xml:"PhysicalSpaceId,omitempty"`
 }
 
@@ -14196,10 +13290,8 @@ func (s *GetPhysicalSpaceRequest) SetPhysicalSpaceId(v string) *GetPhysicalSpace
 }
 
 type GetPhysicalSpaceResponseBody struct {
-	// 物理空间详情
 	PhysicalSpace *GetPhysicalSpaceResponseBodyPhysicalSpace `json:"PhysicalSpace,omitempty" xml:"PhysicalSpace,omitempty" type:"Struct"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId     *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetPhysicalSpaceResponseBody) String() string {
@@ -14221,26 +13313,17 @@ func (s *GetPhysicalSpaceResponseBody) SetRequestId(v string) *GetPhysicalSpaceR
 }
 
 type GetPhysicalSpaceResponseBodyPhysicalSpace struct {
-	// 具体地址
-	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
-	// 所属城市
-	City *string `json:"City,omitempty" xml:"City,omitempty"`
-	// 所属国家
-	Country *string `json:"Country,omitempty" xml:"Country,omitempty"`
-	// 负责人
-	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	// 物理空间ID
-	PhysicalSpaceId *string `json:"PhysicalSpaceId,omitempty" xml:"PhysicalSpaceId,omitempty"`
-	// 物理空间名称
-	PhysicalSpaceName *string `json:"PhysicalSpaceName,omitempty" xml:"PhysicalSpaceName,omitempty"`
-	// 所属省份
-	Province *string `json:"Province,omitempty" xml:"Province,omitempty"`
-	// 备注
-	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	// 缩写
-	SpaceAbbreviation *string `json:"SpaceAbbreviation,omitempty" xml:"SpaceAbbreviation,omitempty"`
-	// 模型
-	SpaceType *string `json:"SpaceType,omitempty" xml:"SpaceType,omitempty"`
+	Address            *string   `json:"Address,omitempty" xml:"Address,omitempty"`
+	City               *string   `json:"City,omitempty" xml:"City,omitempty"`
+	Country            *string   `json:"Country,omitempty" xml:"Country,omitempty"`
+	Owner              *string   `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	PhysicalSpaceId    *string   `json:"PhysicalSpaceId,omitempty" xml:"PhysicalSpaceId,omitempty"`
+	PhysicalSpaceName  *string   `json:"PhysicalSpaceName,omitempty" xml:"PhysicalSpaceName,omitempty"`
+	Province           *string   `json:"Province,omitempty" xml:"Province,omitempty"`
+	Remark             *string   `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	SecurityDomainList []*string `json:"SecurityDomainList,omitempty" xml:"SecurityDomainList,omitempty" type:"Repeated"`
+	SpaceAbbreviation  *string   `json:"SpaceAbbreviation,omitempty" xml:"SpaceAbbreviation,omitempty"`
+	SpaceType          *string   `json:"SpaceType,omitempty" xml:"SpaceType,omitempty"`
 }
 
 func (s GetPhysicalSpaceResponseBodyPhysicalSpace) String() string {
@@ -14291,6 +13374,11 @@ func (s *GetPhysicalSpaceResponseBodyPhysicalSpace) SetRemark(v string) *GetPhys
 	return s
 }
 
+func (s *GetPhysicalSpaceResponseBodyPhysicalSpace) SetSecurityDomainList(v []*string) *GetPhysicalSpaceResponseBodyPhysicalSpace {
+	s.SecurityDomainList = v
+	return s
+}
+
 func (s *GetPhysicalSpaceResponseBodyPhysicalSpace) SetSpaceAbbreviation(v string) *GetPhysicalSpaceResponseBodyPhysicalSpace {
 	s.SpaceAbbreviation = &v
 	return s
@@ -14302,8 +13390,9 @@ func (s *GetPhysicalSpaceResponseBodyPhysicalSpace) SetSpaceType(v string) *GetP
 }
 
 type GetPhysicalSpaceResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetPhysicalSpaceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetPhysicalSpaceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetPhysicalSpaceResponse) String() string {
@@ -14319,18 +13408,20 @@ func (s *GetPhysicalSpaceResponse) SetHeaders(v map[string]*string) *GetPhysical
 	return s
 }
 
+func (s *GetPhysicalSpaceResponse) SetStatusCode(v int32) *GetPhysicalSpaceResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *GetPhysicalSpaceResponse) SetBody(v *GetPhysicalSpaceResponseBody) *GetPhysicalSpaceResponse {
 	s.Body = v
 	return s
 }
 
 type GetPhysicalSpaceTopoRequest struct {
-	// 实例ID
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 物理空间id
+	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	PhysicalSpaceId *string `json:"PhysicalSpaceId,omitempty" xml:"PhysicalSpaceId,omitempty"`
-	// 拓扑类型
-	TopoType *string `json:"TopoType,omitempty" xml:"TopoType,omitempty"`
+	TopoType        *string `json:"TopoType,omitempty" xml:"TopoType,omitempty"`
 }
 
 func (s GetPhysicalSpaceTopoRequest) String() string {
@@ -14357,10 +13448,8 @@ func (s *GetPhysicalSpaceTopoRequest) SetTopoType(v string) *GetPhysicalSpaceTop
 }
 
 type GetPhysicalSpaceTopoResponseBody struct {
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 拓扑数据
-	TopoData *GetPhysicalSpaceTopoResponseBodyTopoData `json:"TopoData,omitempty" xml:"TopoData,omitempty" type:"Struct"`
+	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TopoData  *GetPhysicalSpaceTopoResponseBodyTopoData `json:"TopoData,omitempty" xml:"TopoData,omitempty" type:"Struct"`
 }
 
 func (s GetPhysicalSpaceTopoResponseBody) String() string {
@@ -14382,10 +13471,9 @@ func (s *GetPhysicalSpaceTopoResponseBody) SetTopoData(v *GetPhysicalSpaceTopoRe
 }
 
 type GetPhysicalSpaceTopoResponseBodyTopoData struct {
-	Devices []*GetPhysicalSpaceTopoResponseBodyTopoDataDevices `json:"Devices,omitempty" xml:"Devices,omitempty" type:"Repeated"`
-	Links   []*GetPhysicalSpaceTopoResponseBodyTopoDataLinks   `json:"Links,omitempty" xml:"Links,omitempty" type:"Repeated"`
-	// 更新时间
-	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	Devices    []*GetPhysicalSpaceTopoResponseBodyTopoDataDevices `json:"Devices,omitempty" xml:"Devices,omitempty" type:"Repeated"`
+	Links      []*GetPhysicalSpaceTopoResponseBodyTopoDataLinks   `json:"Links,omitempty" xml:"Links,omitempty" type:"Repeated"`
+	UpdateTime *string                                            `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s GetPhysicalSpaceTopoResponseBodyTopoData) String() string {
@@ -14412,14 +13500,10 @@ func (s *GetPhysicalSpaceTopoResponseBodyTopoData) SetUpdateTime(v string) *GetP
 }
 
 type GetPhysicalSpaceTopoResponseBodyTopoDataDevices struct {
-	// 设备id
-	DeviceId *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
-	// 设备角色
+	DeviceId   *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
 	DeviceRole *string `json:"DeviceRole,omitempty" xml:"DeviceRole,omitempty"`
-	// 设备主机名
-	HostName *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
-	// 设备ip
-	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	HostName   *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
+	Ip         *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
 }
 
 func (s GetPhysicalSpaceTopoResponseBodyTopoDataDevices) String() string {
@@ -14451,18 +13535,12 @@ func (s *GetPhysicalSpaceTopoResponseBodyTopoDataDevices) SetIp(v string) *GetPh
 }
 
 type GetPhysicalSpaceTopoResponseBodyTopoDataLinks struct {
-	// 源设备id
-	SourceDeviceId *string `json:"SourceDeviceId,omitempty" xml:"SourceDeviceId,omitempty"`
-	// 源设备名
+	SourceDeviceId   *string `json:"SourceDeviceId,omitempty" xml:"SourceDeviceId,omitempty"`
 	SourceDeviceName *string `json:"SourceDeviceName,omitempty" xml:"SourceDeviceName,omitempty"`
-	// 源设备端口
-	SourcePort *string `json:"SourcePort,omitempty" xml:"SourcePort,omitempty"`
-	// 目标设备id
-	TargetDeviceId *string `json:"TargetDeviceId,omitempty" xml:"TargetDeviceId,omitempty"`
-	// 目标设备名
+	SourcePort       *string `json:"SourcePort,omitempty" xml:"SourcePort,omitempty"`
+	TargetDeviceId   *string `json:"TargetDeviceId,omitempty" xml:"TargetDeviceId,omitempty"`
 	TargetDeviceName *string `json:"TargetDeviceName,omitempty" xml:"TargetDeviceName,omitempty"`
-	// 目标设备端口
-	TargetPort *string `json:"TargetPort,omitempty" xml:"TargetPort,omitempty"`
+	TargetPort       *string `json:"TargetPort,omitempty" xml:"TargetPort,omitempty"`
 }
 
 func (s GetPhysicalSpaceTopoResponseBodyTopoDataLinks) String() string {
@@ -14504,8 +13582,9 @@ func (s *GetPhysicalSpaceTopoResponseBodyTopoDataLinks) SetTargetPort(v string) 
 }
 
 type GetPhysicalSpaceTopoResponse struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetPhysicalSpaceTopoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetPhysicalSpaceTopoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetPhysicalSpaceTopoResponse) String() string {
@@ -14521,16 +13600,19 @@ func (s *GetPhysicalSpaceTopoResponse) SetHeaders(v map[string]*string) *GetPhys
 	return s
 }
 
+func (s *GetPhysicalSpaceTopoResponse) SetStatusCode(v int32) *GetPhysicalSpaceTopoResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *GetPhysicalSpaceTopoResponse) SetBody(v *GetPhysicalSpaceTopoResponseBody) *GetPhysicalSpaceTopoResponse {
 	s.Body = v
 	return s
 }
 
 type GetRealtimeTaskRequest struct {
-	// 实例ID
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 实时任务ID
-	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	TaskId     *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s GetRealtimeTaskRequest) String() string {
@@ -14552,10 +13634,8 @@ func (s *GetRealtimeTaskRequest) SetTaskId(v string) *GetRealtimeTaskRequest {
 }
 
 type GetRealtimeTaskResponseBody struct {
-	// 请求任务结果
 	InspectionTask *GetRealtimeTaskResponseBodyInspectionTask `json:"InspectionTask,omitempty" xml:"InspectionTask,omitempty" type:"Struct"`
-	// 请求ID
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId      *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetRealtimeTaskResponseBody) String() string {
@@ -14577,14 +13657,10 @@ func (s *GetRealtimeTaskResponseBody) SetRequestId(v string) *GetRealtimeTaskRes
 }
 
 type GetRealtimeTaskResponseBodyInspectionTask struct {
-	// 巡检错误码
-	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// 巡检错误信息
+	ErrorCode         *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	InspectionMessage *string `json:"InspectionMessage,omitempty" xml:"InspectionMessage,omitempty"`
-	// 巡检输出
-	InspectionResult *string `json:"InspectionResult,omitempty" xml:"InspectionResult,omitempty"`
-	// 巡检状态
-	TaskStatus *string `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
+	InspectionResult  *string `json:"InspectionResult,omitempty" xml:"InspectionResult,omitempty"`
+	TaskStatus        *string `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
 }
 
 func (s GetRealtimeTaskResponseBodyInspectionTask) String() string {
@@ -14616,8 +13692,9 @@ func (s *GetRealtimeTaskResponseBodyInspectionTask) SetTaskStatus(v string) *Get
 }
 
 type GetRealtimeTaskResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetRealtimeTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetRealtimeTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetRealtimeTaskResponse) String() string {
@@ -14633,14 +13710,18 @@ func (s *GetRealtimeTaskResponse) SetHeaders(v map[string]*string) *GetRealtimeT
 	return s
 }
 
+func (s *GetRealtimeTaskResponse) SetStatusCode(v int32) *GetRealtimeTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *GetRealtimeTaskResponse) SetBody(v *GetRealtimeTaskResponseBody) *GetRealtimeTaskResponse {
 	s.Body = v
 	return s
 }
 
 type GetScheduleWorkerRequest struct {
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 实例 ID。
+	InstanceId       *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	ScheduleWorkerId *string `json:"ScheduleWorkerId,omitempty" xml:"ScheduleWorkerId,omitempty"`
 }
 
@@ -14663,9 +13744,7 @@ func (s *GetScheduleWorkerRequest) SetScheduleWorkerId(v string) *GetScheduleWor
 }
 
 type GetScheduleWorkerResponseBody struct {
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 值班人员对象
+	RequestId      *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ScheduleWorker *GetScheduleWorkerResponseBodyScheduleWorker `json:"ScheduleWorker,omitempty" xml:"ScheduleWorker,omitempty" type:"Struct"`
 }
 
@@ -14688,18 +13767,12 @@ func (s *GetScheduleWorkerResponseBody) SetScheduleWorker(v *GetScheduleWorkerRe
 }
 
 type GetScheduleWorkerResponseBodyScheduleWorker struct {
-	// 创建时间
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// 资源一级ID
+	CreateTime       *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	ScheduleWorkerId *string `json:"ScheduleWorkerId,omitempty" xml:"ScheduleWorkerId,omitempty"`
-	// 更新时间
-	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	// 联系方式
-	WorkerContact *string `json:"WorkerContact,omitempty" xml:"WorkerContact,omitempty"`
-	// 值班人员工号
-	WorkerId *string `json:"WorkerId,omitempty" xml:"WorkerId,omitempty"`
-	// 值班人员姓名
-	WorkerName *string `json:"WorkerName,omitempty" xml:"WorkerName,omitempty"`
+	UpdateTime       *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	WorkerContact    *string `json:"WorkerContact,omitempty" xml:"WorkerContact,omitempty"`
+	WorkerId         *string `json:"WorkerId,omitempty" xml:"WorkerId,omitempty"`
+	WorkerName       *string `json:"WorkerName,omitempty" xml:"WorkerName,omitempty"`
 }
 
 func (s GetScheduleWorkerResponseBodyScheduleWorker) String() string {
@@ -14741,8 +13814,9 @@ func (s *GetScheduleWorkerResponseBodyScheduleWorker) SetWorkerName(v string) *G
 }
 
 type GetScheduleWorkerResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetScheduleWorkerResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetScheduleWorkerResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetScheduleWorkerResponse) String() string {
@@ -14758,15 +13832,18 @@ func (s *GetScheduleWorkerResponse) SetHeaders(v map[string]*string) *GetSchedul
 	return s
 }
 
+func (s *GetScheduleWorkerResponse) SetStatusCode(v int32) *GetScheduleWorkerResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *GetScheduleWorkerResponse) SetBody(v *GetScheduleWorkerResponseBody) *GetScheduleWorkerResponse {
 	s.Body = v
 	return s
 }
 
 type GetSetupProjectRequest struct {
-	// instanceId
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 实例 ID。
+	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	SetupProjectId *string `json:"SetupProjectId,omitempty" xml:"SetupProjectId,omitempty"`
 }
 
@@ -14789,9 +13866,7 @@ func (s *GetSetupProjectRequest) SetSetupProjectId(v string) *GetSetupProjectReq
 }
 
 type GetSetupProjectResponseBody struct {
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 建设项目
+	RequestId    *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	SetupProject *GetSetupProjectResponseBodySetupProject `json:"SetupProject,omitempty" xml:"SetupProject,omitempty" type:"Struct"`
 }
 
@@ -14814,24 +13889,15 @@ func (s *GetSetupProjectResponseBody) SetSetupProject(v *GetSetupProjectResponse
 }
 
 type GetSetupProjectResponseBodySetupProject struct {
-	// 创建时间
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// 预计交付时间
-	DeliveryTime *string `json:"DeliveryTime,omitempty" xml:"DeliveryTime,omitempty"`
-	// 节点
-	Nodes *string `json:"Nodes,omitempty" xml:"Nodes,omitempty"`
-	// 套餐
-	Packages []*GetSetupProjectResponseBodySetupProjectPackages `json:"Packages,omitempty" xml:"Packages,omitempty" type:"Repeated"`
-	// 项目进展
-	Progress *string `json:"Progress,omitempty" xml:"Progress,omitempty"`
-	// 资源一级ID
-	SetupProjectId *string `json:"SetupProjectId,omitempty" xml:"SetupProjectId,omitempty"`
-	// 物理空间uId
-	SpaceId *string `json:"SpaceId,omitempty" xml:"SpaceId,omitempty"`
-	// 物理空间名称
-	SpaceName *string `json:"SpaceName,omitempty" xml:"SpaceName,omitempty"`
-	// 物理空间类型
-	SpaceType *string `json:"SpaceType,omitempty" xml:"SpaceType,omitempty"`
+	CreateTime     *string                                            `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	DeliveryTime   *string                                            `json:"DeliveryTime,omitempty" xml:"DeliveryTime,omitempty"`
+	Nodes          *string                                            `json:"Nodes,omitempty" xml:"Nodes,omitempty"`
+	Packages       []*GetSetupProjectResponseBodySetupProjectPackages `json:"Packages,omitempty" xml:"Packages,omitempty" type:"Repeated"`
+	Progress       *string                                            `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	SetupProjectId *string                                            `json:"SetupProjectId,omitempty" xml:"SetupProjectId,omitempty"`
+	SpaceId        *string                                            `json:"SpaceId,omitempty" xml:"SpaceId,omitempty"`
+	SpaceName      *string                                            `json:"SpaceName,omitempty" xml:"SpaceName,omitempty"`
+	SpaceType      *string                                            `json:"SpaceType,omitempty" xml:"SpaceType,omitempty"`
 }
 
 func (s GetSetupProjectResponseBodySetupProject) String() string {
@@ -14888,14 +13954,10 @@ func (s *GetSetupProjectResponseBodySetupProject) SetSpaceType(v string) *GetSet
 }
 
 type GetSetupProjectResponseBodySetupProjectPackages struct {
-	// 设备号
 	DeviceNumber *string `json:"DeviceNumber,omitempty" xml:"DeviceNumber,omitempty"`
-	// 型号
-	Model *string `json:"Model,omitempty" xml:"Model,omitempty"`
-	// 角色
-	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
-	// 厂商
-	Vendor *string `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
+	Model        *string `json:"Model,omitempty" xml:"Model,omitempty"`
+	Role         *string `json:"Role,omitempty" xml:"Role,omitempty"`
+	Vendor       *string `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
 }
 
 func (s GetSetupProjectResponseBodySetupProjectPackages) String() string {
@@ -14927,8 +13989,9 @@ func (s *GetSetupProjectResponseBodySetupProjectPackages) SetVendor(v string) *G
 }
 
 type GetSetupProjectResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetSetupProjectResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetSetupProjectResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetSetupProjectResponse) String() string {
@@ -14944,15 +14007,18 @@ func (s *GetSetupProjectResponse) SetHeaders(v map[string]*string) *GetSetupProj
 	return s
 }
 
+func (s *GetSetupProjectResponse) SetStatusCode(v int32) *GetSetupProjectResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *GetSetupProjectResponse) SetBody(v *GetSetupProjectResponseBody) *GetSetupProjectResponse {
 	s.Body = v
 	return s
 }
 
 type GetSpaceModelRequest struct {
-	// instanceId
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 实例 ID。
+	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	SpaceModelId *string `json:"SpaceModelId,omitempty" xml:"SpaceModelId,omitempty"`
 }
 
@@ -14975,9 +14041,7 @@ func (s *GetSpaceModelRequest) SetSpaceModelId(v string) *GetSpaceModelRequest {
 }
 
 type GetSpaceModelResponseBody struct {
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 物理空间模型
+	RequestId  *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	SpaceModel *GetSpaceModelResponseBodySpaceModel `json:"SpaceModel,omitempty" xml:"SpaceModel,omitempty" type:"Struct"`
 }
 
@@ -15000,18 +14064,12 @@ func (s *GetSpaceModelResponseBody) SetSpaceModel(v *GetSpaceModelResponseBodySp
 }
 
 type GetSpaceModelResponseBodySpaceModel struct {
-	// 创建时间
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// 模型实例
-	Sort []*GetSpaceModelResponseBodySpaceModelSort `json:"Sort,omitempty" xml:"Sort,omitempty" type:"Repeated"`
-	// 物理空间模型id
-	SpaceModelId *string `json:"SpaceModelId,omitempty" xml:"SpaceModelId,omitempty"`
-	// 物理空间类型
-	SpaceType *string `json:"SpaceType,omitempty" xml:"SpaceType,omitempty"`
-	// 模型状态
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// 更新时间
-	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	CreateTime   *string                                    `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Sort         []*GetSpaceModelResponseBodySpaceModelSort `json:"Sort,omitempty" xml:"Sort,omitempty" type:"Repeated"`
+	SpaceModelId *string                                    `json:"SpaceModelId,omitempty" xml:"SpaceModelId,omitempty"`
+	SpaceType    *string                                    `json:"SpaceType,omitempty" xml:"SpaceType,omitempty"`
+	Status       *string                                    `json:"Status,omitempty" xml:"Status,omitempty"`
+	UpdateTime   *string                                    `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s GetSpaceModelResponseBodySpaceModel) String() string {
@@ -15053,9 +14111,7 @@ func (s *GetSpaceModelResponseBodySpaceModel) SetUpdateTime(v string) *GetSpaceM
 }
 
 type GetSpaceModelResponseBodySpaceModelSort struct {
-	// 层级
-	Level *int64 `json:"Level,omitempty" xml:"Level,omitempty"`
-	// 层级名称
+	Level     *int64  `json:"Level,omitempty" xml:"Level,omitempty"`
 	LevelName *string `json:"LevelName,omitempty" xml:"LevelName,omitempty"`
 }
 
@@ -15078,8 +14134,9 @@ func (s *GetSpaceModelResponseBodySpaceModelSort) SetLevelName(v string) *GetSpa
 }
 
 type GetSpaceModelResponse struct {
-	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetSpaceModelResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetSpaceModelResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetSpaceModelResponse) String() string {
@@ -15095,20 +14152,21 @@ func (s *GetSpaceModelResponse) SetHeaders(v map[string]*string) *GetSpaceModelR
 	return s
 }
 
+func (s *GetSpaceModelResponse) SetStatusCode(v int32) *GetSpaceModelResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *GetSpaceModelResponse) SetBody(v *GetSpaceModelResponseBody) *GetSpaceModelResponse {
 	s.Body = v
 	return s
 }
 
 type GetSpaceModelInstanceRequest struct {
-	// instanceId
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 操作类型
+	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	OperateType *string `json:"OperateType,omitempty" xml:"OperateType,omitempty"`
-	// 资源id
-	SpaceId *string `json:"SpaceId,omitempty" xml:"SpaceId,omitempty"`
-	// 物理空间类型
-	SpaceType *string `json:"SpaceType,omitempty" xml:"SpaceType,omitempty"`
+	SpaceId     *string `json:"SpaceId,omitempty" xml:"SpaceId,omitempty"`
+	SpaceType   *string `json:"SpaceType,omitempty" xml:"SpaceType,omitempty"`
 }
 
 func (s GetSpaceModelInstanceRequest) String() string {
@@ -15140,9 +14198,7 @@ func (s *GetSpaceModelInstanceRequest) SetSpaceType(v string) *GetSpaceModelInst
 }
 
 type GetSpaceModelInstanceResponseBody struct {
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 建设项目
+	RequestId  *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	SpaceModel *GetSpaceModelInstanceResponseBodySpaceModel `json:"SpaceModel,omitempty" xml:"SpaceModel,omitempty" type:"Struct"`
 }
 
@@ -15165,7 +14221,6 @@ func (s *GetSpaceModelInstanceResponseBody) SetSpaceModel(v *GetSpaceModelInstan
 }
 
 type GetSpaceModelInstanceResponseBodySpaceModel struct {
-	// 物理空间实例
 	Instance *string `json:"Instance,omitempty" xml:"Instance,omitempty"`
 }
 
@@ -15183,8 +14238,9 @@ func (s *GetSpaceModelInstanceResponseBodySpaceModel) SetInstance(v string) *Get
 }
 
 type GetSpaceModelInstanceResponse struct {
-	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetSpaceModelInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetSpaceModelInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetSpaceModelInstanceResponse) String() string {
@@ -15200,18 +14256,20 @@ func (s *GetSpaceModelInstanceResponse) SetHeaders(v map[string]*string) *GetSpa
 	return s
 }
 
+func (s *GetSpaceModelInstanceResponse) SetStatusCode(v int32) *GetSpaceModelInstanceResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *GetSpaceModelInstanceResponse) SetBody(v *GetSpaceModelInstanceResponseBody) *GetSpaceModelInstanceResponse {
 	s.Body = v
 	return s
 }
 
 type GetSpaceModelSortRequest struct {
-	// instanceId
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 操作类型
+	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	OperateType *string `json:"OperateType,omitempty" xml:"OperateType,omitempty"`
-	// 物理空间类型
-	SpaceType *string `json:"SpaceType,omitempty" xml:"SpaceType,omitempty"`
+	SpaceType   *string `json:"SpaceType,omitempty" xml:"SpaceType,omitempty"`
 }
 
 func (s GetSpaceModelSortRequest) String() string {
@@ -15238,9 +14296,7 @@ func (s *GetSpaceModelSortRequest) SetSpaceType(v string) *GetSpaceModelSortRequ
 }
 
 type GetSpaceModelSortResponseBody struct {
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 建设项目
+	RequestId  *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	SpaceModel []*GetSpaceModelSortResponseBodySpaceModel `json:"SpaceModel,omitempty" xml:"SpaceModel,omitempty" type:"Repeated"`
 }
 
@@ -15263,9 +14319,7 @@ func (s *GetSpaceModelSortResponseBody) SetSpaceModel(v []*GetSpaceModelSortResp
 }
 
 type GetSpaceModelSortResponseBodySpaceModel struct {
-	// 层级
-	Level *int64 `json:"Level,omitempty" xml:"Level,omitempty"`
-	// 层级名称
+	Level     *int64  `json:"Level,omitempty" xml:"Level,omitempty"`
 	LevelName *string `json:"LevelName,omitempty" xml:"LevelName,omitempty"`
 }
 
@@ -15288,8 +14342,9 @@ func (s *GetSpaceModelSortResponseBodySpaceModel) SetLevelName(v string) *GetSpa
 }
 
 type GetSpaceModelSortResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetSpaceModelSortResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetSpaceModelSortResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetSpaceModelSortResponse) String() string {
@@ -15305,16 +14360,19 @@ func (s *GetSpaceModelSortResponse) SetHeaders(v map[string]*string) *GetSpaceMo
 	return s
 }
 
+func (s *GetSpaceModelSortResponse) SetStatusCode(v int32) *GetSpaceModelSortResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *GetSpaceModelSortResponse) SetBody(v *GetSpaceModelSortResponseBody) *GetSpaceModelSortResponse {
 	s.Body = v
 	return s
 }
 
 type GetTaskRequest struct {
-	// 实例ID
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 任务ID
-	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	TaskId     *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s GetTaskRequest) String() string {
@@ -15336,10 +14394,8 @@ func (s *GetTaskRequest) SetTaskId(v string) *GetTaskRequest {
 }
 
 type GetTaskResponseBody struct {
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 任务信息
-	Task *GetTaskResponseBodyTask `json:"Task,omitempty" xml:"Task,omitempty" type:"Struct"`
+	RequestId *string                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Task      *GetTaskResponseBodyTask `json:"Task,omitempty" xml:"Task,omitempty" type:"Struct"`
 }
 
 func (s GetTaskResponseBody) String() string {
@@ -15361,26 +14417,16 @@ func (s *GetTaskResponseBody) SetTask(v *GetTaskResponseBodyTask) *GetTaskRespon
 }
 
 type GetTaskResponseBodyTask struct {
-	// 模板类别
-	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	// 创建时间
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// 任务参数
-	Params *string `json:"Params,omitempty" xml:"Params,omitempty"`
-	// 任务错误码
+	Category     *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	CreateTime   *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Params       *string `json:"Params,omitempty" xml:"Params,omitempty"`
 	ResponseCode *string `json:"ResponseCode,omitempty" xml:"ResponseCode,omitempty"`
-	// 任务返回
-	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
-	// 任务状态
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// 任务id
-	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// 模板id
-	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	// 模板名称
+	Result       *string `json:"Result,omitempty" xml:"Result,omitempty"`
+	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	TaskId       *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	TemplateId   *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
-	// 修改时间
-	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	UpdateTime   *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s GetTaskResponseBodyTask) String() string {
@@ -15442,8 +14488,9 @@ func (s *GetTaskResponseBodyTask) SetUpdateTime(v string) *GetTaskResponseBodyTa
 }
 
 type GetTaskResponse struct {
-	Headers map[string]*string   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetTaskResponse) String() string {
@@ -15459,14 +14506,18 @@ func (s *GetTaskResponse) SetHeaders(v map[string]*string) *GetTaskResponse {
 	return s
 }
 
+func (s *GetTaskResponse) SetStatusCode(v int32) *GetTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *GetTaskResponse) SetBody(v *GetTaskResponseBody) *GetTaskResponse {
 	s.Body = v
 	return s
 }
 
 type GetWorkOrderRequest struct {
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 工单Id
+	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	WorkOrderId *string `json:"WorkOrderId,omitempty" xml:"WorkOrderId,omitempty"`
 }
 
@@ -15489,9 +14540,8 @@ func (s *GetWorkOrderRequest) SetWorkOrderId(v string) *GetWorkOrderRequest {
 }
 
 type GetWorkOrderResponseBody struct {
-	Content *GetWorkOrderResponseBodyContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Struct"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Content   *GetWorkOrderResponseBodyContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Struct"`
+	RequestId *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetWorkOrderResponseBody) String() string {
@@ -15513,108 +14563,57 @@ func (s *GetWorkOrderResponseBody) SetRequestId(v string) *GetWorkOrderResponseB
 }
 
 type GetWorkOrderResponseBodyContent struct {
-	// 告警发生时间
-	AlarmHappenTime *string `json:"AlarmHappenTime,omitempty" xml:"AlarmHappenTime,omitempty"`
-	// 告警恢复时间
-	AlarmRecoverTime *string `json:"AlarmRecoverTime,omitempty" xml:"AlarmRecoverTime,omitempty"`
-	// 关联告警项
-	AlarmRelated *string `json:"AlarmRelated,omitempty" xml:"AlarmRelated,omitempty"`
-	// 区域
-	Area *string `json:"Area,omitempty" xml:"Area,omitempty"`
-	// 电路编码
-	CircuitId *string `json:"CircuitId,omitempty" xml:"CircuitId,omitempty"`
-	// 电路名
-	CircuitName *string `json:"CircuitName,omitempty" xml:"CircuitName,omitempty"`
-	// 电路类型
-	CircuitType *string `json:"CircuitType,omitempty" xml:"CircuitType,omitempty"`
-	// 设备告警信息
-	DeviceAlarmInfo *string `json:"DeviceAlarmInfo,omitempty" xml:"DeviceAlarmInfo,omitempty"`
-	// 设备IP
-	DeviceIp *string `json:"DeviceIp,omitempty" xml:"DeviceIp,omitempty"`
-	// A-IP
-	DeviceIpA *string `json:"DeviceIpA,omitempty" xml:"DeviceIpA,omitempty"`
-	// B-IP
-	DeviceIpB *string `json:"DeviceIpB,omitempty" xml:"DeviceIpB,omitempty"`
-	// A-设备型号
-	DeviceModelA *string `json:"DeviceModelA,omitempty" xml:"DeviceModelA,omitempty"`
-	// B-设备型号
-	DeviceModelB *string `json:"DeviceModelB,omitempty" xml:"DeviceModelB,omitempty"`
-	// 设备名
-	DeviceName *string `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
-	// A-设备名
-	DeviceNameA *string `json:"DeviceNameA,omitempty" xml:"DeviceNameA,omitempty"`
-	// B-设备名
-	DeviceNameB *string `json:"DeviceNameB,omitempty" xml:"DeviceNameB,omitempty"`
-	// A-端口
-	DevicePortA *string `json:"DevicePortA,omitempty" xml:"DevicePortA,omitempty"`
-	// B-端口
-	DevicePortB *string `json:"DevicePortB,omitempty" xml:"DevicePortB,omitempty"`
-	// A-设备SN
-	DeviceSnA *string `json:"DeviceSnA,omitempty" xml:"DeviceSnA,omitempty"`
-	// B-设备SN
-	DeviceSnB *string `json:"DeviceSnB,omitempty" xml:"DeviceSnB,omitempty"`
-	// 设备类型
-	DeviceType *string `json:"DeviceType,omitempty" xml:"DeviceType,omitempty"`
-	// 设备厂家
-	DeviceVendor *string `json:"DeviceVendor,omitempty" xml:"DeviceVendor,omitempty"`
-	// A-厂家
-	DeviceVendorA *string `json:"DeviceVendorA,omitempty" xml:"DeviceVendorA,omitempty"`
-	// B-厂家
-	DeviceVendorB *string `json:"DeviceVendorB,omitempty" xml:"DeviceVendorB,omitempty"`
-	// 紧急程度
-	EmergencyDegree *string `json:"EmergencyDegree,omitempty" xml:"EmergencyDegree,omitempty"`
-	// 额外字段
-	Extra *string `json:"Extra,omitempty" xml:"Extra,omitempty"`
-	// 故障时常(时)
-	FaultDuration *string `json:"FaultDuration,omitempty" xml:"FaultDuration,omitempty"`
-	// 创建时间
-	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// 修改时间
-	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// 文件名
-	HangFileName *string `json:"HangFileName,omitempty" xml:"HangFileName,omitempty"`
-	// 文件id
-	HangFilePath *string `json:"HangFilePath,omitempty" xml:"HangFilePath,omitempty"`
-	// 挂起/转交原因
-	HangReason *string `json:"HangReason,omitempty" xml:"HangReason,omitempty"`
-	// 是否影响业务
-	ImpactBusiness *string `json:"ImpactBusiness,omitempty" xml:"ImpactBusiness,omitempty"`
-	// 问题描述
-	IncidentDescription *string `json:"IncidentDescription,omitempty" xml:"IncidentDescription,omitempty"`
-	// 故障小类
-	IncidentSubType *string `json:"IncidentSubType,omitempty" xml:"IncidentSubType,omitempty"`
-	// 故障分类
-	IncidentType *string `json:"IncidentType,omitempty" xml:"IncidentType,omitempty"`
-	// 责任人
-	LiableMan *string `json:"LiableMan,omitempty" xml:"LiableMan,omitempty"`
-	// 用户/联系人
-	LinkMan *string `json:"LinkMan,omitempty" xml:"LinkMan,omitempty"`
-	// 告警源主体
-	OriginalSubjectAlarm *string `json:"OriginalSubjectAlarm,omitempty" xml:"OriginalSubjectAlarm,omitempty"`
-	// 处理时限
-	ProcessLimited *string `json:"ProcessLimited,omitempty" xml:"ProcessLimited,omitempty"`
-	// 处理人
-	ProcessMan *string `json:"ProcessMan,omitempty" xml:"ProcessMan,omitempty"`
-	// 处理人编号
-	ProcessManId *string `json:"ProcessManId,omitempty" xml:"ProcessManId,omitempty"`
-	// 处理结果
-	ProcessResult *string `json:"ProcessResult,omitempty" xml:"ProcessResult,omitempty"`
-	// 技能组
-	SkillGroups *string `json:"SkillGroups,omitempty" xml:"SkillGroups,omitempty"`
-	// 是否超时
-	Timeout *string `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
-	// 工单编号
-	WorkOrderId *string `json:"WorkOrderId,omitempty" xml:"WorkOrderId,omitempty"`
-	// 操作流水
+	AlarmHappenTime        *string                                                  `json:"AlarmHappenTime,omitempty" xml:"AlarmHappenTime,omitempty"`
+	AlarmRecoverTime       *string                                                  `json:"AlarmRecoverTime,omitempty" xml:"AlarmRecoverTime,omitempty"`
+	AlarmRelated           *string                                                  `json:"AlarmRelated,omitempty" xml:"AlarmRelated,omitempty"`
+	Area                   *string                                                  `json:"Area,omitempty" xml:"Area,omitempty"`
+	CircuitId              *string                                                  `json:"CircuitId,omitempty" xml:"CircuitId,omitempty"`
+	CircuitName            *string                                                  `json:"CircuitName,omitempty" xml:"CircuitName,omitempty"`
+	CircuitType            *string                                                  `json:"CircuitType,omitempty" xml:"CircuitType,omitempty"`
+	DeviceAlarmInfo        *string                                                  `json:"DeviceAlarmInfo,omitempty" xml:"DeviceAlarmInfo,omitempty"`
+	DeviceIp               *string                                                  `json:"DeviceIp,omitempty" xml:"DeviceIp,omitempty"`
+	DeviceIpA              *string                                                  `json:"DeviceIpA,omitempty" xml:"DeviceIpA,omitempty"`
+	DeviceIpB              *string                                                  `json:"DeviceIpB,omitempty" xml:"DeviceIpB,omitempty"`
+	DeviceModelA           *string                                                  `json:"DeviceModelA,omitempty" xml:"DeviceModelA,omitempty"`
+	DeviceModelB           *string                                                  `json:"DeviceModelB,omitempty" xml:"DeviceModelB,omitempty"`
+	DeviceName             *string                                                  `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
+	DeviceNameA            *string                                                  `json:"DeviceNameA,omitempty" xml:"DeviceNameA,omitempty"`
+	DeviceNameB            *string                                                  `json:"DeviceNameB,omitempty" xml:"DeviceNameB,omitempty"`
+	DevicePortA            *string                                                  `json:"DevicePortA,omitempty" xml:"DevicePortA,omitempty"`
+	DevicePortB            *string                                                  `json:"DevicePortB,omitempty" xml:"DevicePortB,omitempty"`
+	DeviceSnA              *string                                                  `json:"DeviceSnA,omitempty" xml:"DeviceSnA,omitempty"`
+	DeviceSnB              *string                                                  `json:"DeviceSnB,omitempty" xml:"DeviceSnB,omitempty"`
+	DeviceType             *string                                                  `json:"DeviceType,omitempty" xml:"DeviceType,omitempty"`
+	DeviceVendor           *string                                                  `json:"DeviceVendor,omitempty" xml:"DeviceVendor,omitempty"`
+	DeviceVendorA          *string                                                  `json:"DeviceVendorA,omitempty" xml:"DeviceVendorA,omitempty"`
+	DeviceVendorB          *string                                                  `json:"DeviceVendorB,omitempty" xml:"DeviceVendorB,omitempty"`
+	EmergencyDegree        *string                                                  `json:"EmergencyDegree,omitempty" xml:"EmergencyDegree,omitempty"`
+	Extra                  *string                                                  `json:"Extra,omitempty" xml:"Extra,omitempty"`
+	FaultDuration          *string                                                  `json:"FaultDuration,omitempty" xml:"FaultDuration,omitempty"`
+	GmtCreate              *string                                                  `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	GmtModified            *string                                                  `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	HangFileName           *string                                                  `json:"HangFileName,omitempty" xml:"HangFileName,omitempty"`
+	HangFilePath           *string                                                  `json:"HangFilePath,omitempty" xml:"HangFilePath,omitempty"`
+	HangReason             *string                                                  `json:"HangReason,omitempty" xml:"HangReason,omitempty"`
+	ImpactBusiness         *string                                                  `json:"ImpactBusiness,omitempty" xml:"ImpactBusiness,omitempty"`
+	IncidentDescription    *string                                                  `json:"IncidentDescription,omitempty" xml:"IncidentDescription,omitempty"`
+	IncidentSubType        *string                                                  `json:"IncidentSubType,omitempty" xml:"IncidentSubType,omitempty"`
+	IncidentType           *string                                                  `json:"IncidentType,omitempty" xml:"IncidentType,omitempty"`
+	LiableMan              *string                                                  `json:"LiableMan,omitempty" xml:"LiableMan,omitempty"`
+	LinkMan                *string                                                  `json:"LinkMan,omitempty" xml:"LinkMan,omitempty"`
+	OriginalSubjectAlarm   *string                                                  `json:"OriginalSubjectAlarm,omitempty" xml:"OriginalSubjectAlarm,omitempty"`
+	ProcessLimited         *string                                                  `json:"ProcessLimited,omitempty" xml:"ProcessLimited,omitempty"`
+	ProcessMan             *string                                                  `json:"ProcessMan,omitempty" xml:"ProcessMan,omitempty"`
+	ProcessManId           *string                                                  `json:"ProcessManId,omitempty" xml:"ProcessManId,omitempty"`
+	ProcessResult          *string                                                  `json:"ProcessResult,omitempty" xml:"ProcessResult,omitempty"`
+	SkillGroups            *string                                                  `json:"SkillGroups,omitempty" xml:"SkillGroups,omitempty"`
+	Timeout                *string                                                  `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+	WorkOrderId            *string                                                  `json:"WorkOrderId,omitempty" xml:"WorkOrderId,omitempty"`
 	WorkOrderOperationDtos []*GetWorkOrderResponseBodyContentWorkOrderOperationDtos `json:"WorkOrderOperationDtos,omitempty" xml:"WorkOrderOperationDtos,omitempty" type:"Repeated"`
-	// 工单来源
-	WorkOrderSource *string `json:"WorkOrderSource,omitempty" xml:"WorkOrderSource,omitempty"`
-	// 工单状态
-	WorkOrderStep *string `json:"WorkOrderStep,omitempty" xml:"WorkOrderStep,omitempty"`
-	// 工单标题
-	WorkOrderTitle *string `json:"WorkOrderTitle,omitempty" xml:"WorkOrderTitle,omitempty"`
-	// 工单类型
-	WorkOrderType *string `json:"WorkOrderType,omitempty" xml:"WorkOrderType,omitempty"`
+	WorkOrderSource        *string                                                  `json:"WorkOrderSource,omitempty" xml:"WorkOrderSource,omitempty"`
+	WorkOrderStep          *string                                                  `json:"WorkOrderStep,omitempty" xml:"WorkOrderStep,omitempty"`
+	WorkOrderTitle         *string                                                  `json:"WorkOrderTitle,omitempty" xml:"WorkOrderTitle,omitempty"`
+	WorkOrderType          *string                                                  `json:"WorkOrderType,omitempty" xml:"WorkOrderType,omitempty"`
 }
 
 func (s GetWorkOrderResponseBodyContent) String() string {
@@ -15881,17 +14880,11 @@ func (s *GetWorkOrderResponseBodyContent) SetWorkOrderType(v string) *GetWorkOrd
 }
 
 type GetWorkOrderResponseBodyContentWorkOrderOperationDtos struct {
-	// 创建时间
-	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// 操作
-	Operation *string `json:"Operation,omitempty" xml:"Operation,omitempty"`
-	// 操作编号
+	GmtCreate   *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	Operation   *string `json:"Operation,omitempty" xml:"Operation,omitempty"`
 	OperationId *string `json:"OperationId,omitempty" xml:"OperationId,omitempty"`
-	// 操作人
-	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
-	// 备注
-	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	// 工单编号
+	Operator    *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	Remark      *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
 	WorkOrderId *string `json:"WorkOrderId,omitempty" xml:"WorkOrderId,omitempty"`
 }
 
@@ -15934,8 +14927,9 @@ func (s *GetWorkOrderResponseBodyContentWorkOrderOperationDtos) SetWorkOrderId(v
 }
 
 type GetWorkOrderResponse struct {
-	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetWorkOrderResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetWorkOrderResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetWorkOrderResponse) String() string {
@@ -15951,61 +14945,45 @@ func (s *GetWorkOrderResponse) SetHeaders(v map[string]*string) *GetWorkOrderRes
 	return s
 }
 
+func (s *GetWorkOrderResponse) SetStatusCode(v int32) *GetWorkOrderResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *GetWorkOrderResponse) SetBody(v *GetWorkOrderResponseBody) *GetWorkOrderResponse {
 	s.Body = v
 	return s
 }
 
 type ListAlarmStatusRequest struct {
-	AggregateDataName *string `json:"AggregateDataName,omitempty" xml:"AggregateDataName,omitempty"`
-	// 所属城市
-	City *string `json:"City,omitempty" xml:"City,omitempty"`
-	// 所属国家
-	Country *string `json:"Country,omitempty" xml:"Country,omitempty"`
-	// 专线名称
-	DedicatedLineName *string `json:"DedicatedLineName,omitempty" xml:"DedicatedLineName,omitempty"`
-	// 设备形态
-	DeviceForm *string `json:"DeviceForm,omitempty" xml:"DeviceForm,omitempty"`
-	// 设备ID
-	DeviceId *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
-	Domain   *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	HostName *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
-	// 实例ID
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 设备厂商
-	Manufacturer *string `json:"Manufacturer,omitempty" xml:"Manufacturer,omitempty"`
-	// 本次读取的最大数据记录数量
-	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 设备型号
-	Model *string `json:"Model,omitempty" xml:"Model,omitempty"`
-	// 监控项ID
-	MonitorItemId *string `json:"MonitorItemId,omitempty" xml:"MonitorItemId,omitempty"`
-	// 标记当前开始读取的位置，置空表示从头开始
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// 物理空间ID
-	PhysicalSpaceId *string `json:"PhysicalSpaceId,omitempty" xml:"PhysicalSpaceId,omitempty"`
-	// 端口集ID
+	AggregateDataName  *string `json:"AggregateDataName,omitempty" xml:"AggregateDataName,omitempty"`
+	City               *string `json:"City,omitempty" xml:"City,omitempty"`
+	Country            *string `json:"Country,omitempty" xml:"Country,omitempty"`
+	DedicatedLineId    *string `json:"DedicatedLineId,omitempty" xml:"DedicatedLineId,omitempty"`
+	DedicatedLineName  *string `json:"DedicatedLineName,omitempty" xml:"DedicatedLineName,omitempty"`
+	DeviceForm         *string `json:"DeviceForm,omitempty" xml:"DeviceForm,omitempty"`
+	DeviceId           *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
+	Domain             *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	HostName           *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
+	InstanceId         *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Manufacturer       *string `json:"Manufacturer,omitempty" xml:"Manufacturer,omitempty"`
+	MaxResults         *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	Model              *string `json:"Model,omitempty" xml:"Model,omitempty"`
+	MonitorItemId      *string `json:"MonitorItemId,omitempty" xml:"MonitorItemId,omitempty"`
+	NextToken          *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	PhysicalSpaceId    *string `json:"PhysicalSpaceId,omitempty" xml:"PhysicalSpaceId,omitempty"`
 	PortCollectionId   *string `json:"PortCollectionId,omitempty" xml:"PortCollectionId,omitempty"`
 	PortCollectionName *string `json:"PortCollectionName,omitempty" xml:"PortCollectionName,omitempty"`
-	// 所属省份
-	Province *string `json:"Province,omitempty" xml:"Province,omitempty"`
-	// 设备所属地域
-	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// 设备角色
-	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
-	// 探针标识
-	SecurityDomain *string `json:"SecurityDomain,omitempty" xml:"SecurityDomain,omitempty"`
-	// 设备状态
-	ServiceStatus *string `json:"ServiceStatus,omitempty" xml:"ServiceStatus,omitempty"`
-	// 物理空间
-	Space *string `json:"Space,omitempty" xml:"Space,omitempty"`
-	// 物理空间模型
-	SpaceType *string `json:"SpaceType,omitempty" xml:"SpaceType,omitempty"`
-	// 告警状态
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// 数据类型
-	Type      *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	UniqueKey *string `json:"UniqueKey,omitempty" xml:"UniqueKey,omitempty"`
+	Province           *string `json:"Province,omitempty" xml:"Province,omitempty"`
+	Region             *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	Role               *string `json:"Role,omitempty" xml:"Role,omitempty"`
+	SecurityDomain     *string `json:"SecurityDomain,omitempty" xml:"SecurityDomain,omitempty"`
+	ServiceStatus      *string `json:"ServiceStatus,omitempty" xml:"ServiceStatus,omitempty"`
+	Space              *string `json:"Space,omitempty" xml:"Space,omitempty"`
+	SpaceType          *string `json:"SpaceType,omitempty" xml:"SpaceType,omitempty"`
+	Status             *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Type               *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	UniqueKey          *string `json:"UniqueKey,omitempty" xml:"UniqueKey,omitempty"`
 }
 
 func (s ListAlarmStatusRequest) String() string {
@@ -16028,6 +15006,11 @@ func (s *ListAlarmStatusRequest) SetCity(v string) *ListAlarmStatusRequest {
 
 func (s *ListAlarmStatusRequest) SetCountry(v string) *ListAlarmStatusRequest {
 	s.Country = &v
+	return s
+}
+
+func (s *ListAlarmStatusRequest) SetDedicatedLineId(v string) *ListAlarmStatusRequest {
+	s.DedicatedLineId = &v
 	return s
 }
 
@@ -16152,18 +15135,12 @@ func (s *ListAlarmStatusRequest) SetUniqueKey(v string) *ListAlarmStatusRequest 
 }
 
 type ListAlarmStatusResponseBody struct {
-	// 告警状态列表
 	AlarmStatus []*ListAlarmStatusResponseBodyAlarmStatus `json:"AlarmStatus,omitempty" xml:"AlarmStatus,omitempty" type:"Repeated"`
-	// MaxResults本次请求所返回的最大记录条数
-	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 表示当前调用返回读取到的位置，空代表数据已经读取完毕
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 告警状态统计
-	Statistics []*ListAlarmStatusResponseBodyStatistics `json:"Statistics,omitempty" xml:"Statistics,omitempty" type:"Repeated"`
-	// TotalCount本次请求条件下的数据总量，此参数为可选参数，默认可不返回
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	MaxResults  *int32                                    `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken   *string                                   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RequestId   *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Statistics  []*ListAlarmStatusResponseBodyStatistics  `json:"Statistics,omitempty" xml:"Statistics,omitempty" type:"Repeated"`
+	TotalCount  *int32                                    `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListAlarmStatusResponseBody) String() string {
@@ -16205,52 +15182,29 @@ func (s *ListAlarmStatusResponseBody) SetTotalCount(v int32) *ListAlarmStatusRes
 }
 
 type ListAlarmStatusResponseBodyAlarmStatus struct {
-	// 异常数据项
-	AbnormalDataItem *string `json:"AbnormalDataItem,omitempty" xml:"AbnormalDataItem,omitempty"`
-	// 采集探针IP
-	AgentIp *string `json:"AgentIp,omitempty" xml:"AgentIp,omitempty"`
-	// 聚合数据
-	AggregateData *ListAlarmStatusResponseBodyAlarmStatusAggregateData `json:"AggregateData,omitempty" xml:"AggregateData,omitempty" type:"Struct"`
-	// 聚合数据ID
-	AggregateDataId *string `json:"AggregateDataId,omitempty" xml:"AggregateDataId,omitempty"`
-	// 命中告警规则
-	AlarmRule *string `json:"AlarmRule,omitempty" xml:"AlarmRule,omitempty"`
-	// 告警状态
-	AlarmStatus *string `json:"AlarmStatus,omitempty" xml:"AlarmStatus,omitempty"`
-	// 应用ID
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// 检测时间
-	CollectionTime *string `json:"CollectionTime,omitempty" xml:"CollectionTime,omitempty"`
-	// 专线
-	DedicatedLine *ListAlarmStatusResponseBodyAlarmStatusDedicatedLine `json:"DedicatedLine,omitempty" xml:"DedicatedLine,omitempty" type:"Struct"`
-	// 专线ID
-	DedicatedLineId *string `json:"DedicatedLineId,omitempty" xml:"DedicatedLineId,omitempty"`
-	// 设备ID
-	DeviceId *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
-	// 首次异常时间
-	FirstAbnormalTime *string `json:"FirstAbnormalTime,omitempty" xml:"FirstAbnormalTime,omitempty"`
-	// 监控项
-	MonitorItem *ListAlarmStatusResponseBodyAlarmStatusMonitorItem `json:"MonitorItem,omitempty" xml:"MonitorItem,omitempty" type:"Struct"`
-	// 监控项ID
-	MonitorItemId *string `json:"MonitorItemId,omitempty" xml:"MonitorItemId,omitempty"`
-	// 告警开关配置
+	AbnormalDataItem   *string                                                   `json:"AbnormalDataItem,omitempty" xml:"AbnormalDataItem,omitempty"`
+	AgentIp            *string                                                   `json:"AgentIp,omitempty" xml:"AgentIp,omitempty"`
+	AggregateData      *ListAlarmStatusResponseBodyAlarmStatusAggregateData      `json:"AggregateData,omitempty" xml:"AggregateData,omitempty" type:"Struct"`
+	AggregateDataId    *string                                                   `json:"AggregateDataId,omitempty" xml:"AggregateDataId,omitempty"`
+	AlarmRule          *string                                                   `json:"AlarmRule,omitempty" xml:"AlarmRule,omitempty"`
+	AlarmStatus        *string                                                   `json:"AlarmStatus,omitempty" xml:"AlarmStatus,omitempty"`
+	AppId              *string                                                   `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	CollectionTime     *string                                                   `json:"CollectionTime,omitempty" xml:"CollectionTime,omitempty"`
+	DedicatedLine      *ListAlarmStatusResponseBodyAlarmStatusDedicatedLine      `json:"DedicatedLine,omitempty" xml:"DedicatedLine,omitempty" type:"Struct"`
+	DedicatedLineId    *string                                                   `json:"DedicatedLineId,omitempty" xml:"DedicatedLineId,omitempty"`
+	DeviceId           *string                                                   `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
+	FirstAbnormalTime  *string                                                   `json:"FirstAbnormalTime,omitempty" xml:"FirstAbnormalTime,omitempty"`
+	MonitorItem        *ListAlarmStatusResponseBodyAlarmStatusMonitorItem        `json:"MonitorItem,omitempty" xml:"MonitorItem,omitempty" type:"Struct"`
+	MonitorItemId      *string                                                   `json:"MonitorItemId,omitempty" xml:"MonitorItemId,omitempty"`
 	NotificationSwitch *ListAlarmStatusResponseBodyAlarmStatusNotificationSwitch `json:"NotificationSwitch,omitempty" xml:"NotificationSwitch,omitempty" type:"Struct"`
-	// 端口集
-	PortCollection *ListAlarmStatusResponseBodyAlarmStatusPortCollection `json:"PortCollection,omitempty" xml:"PortCollection,omitempty" type:"Struct"`
-	// 端口集ID
-	PortCollectionId *string `json:"PortCollectionId,omitempty" xml:"PortCollectionId,omitempty"`
-	// 接收时间
-	ReceiveTime *string `json:"ReceiveTime,omitempty" xml:"ReceiveTime,omitempty"`
-	// 应用资源
-	ResourceApp *ListAlarmStatusResponseBodyAlarmStatusResourceApp `json:"ResourceApp,omitempty" xml:"ResourceApp,omitempty" type:"Struct"`
-	// 设备
-	ResourceDevice *ListAlarmStatusResponseBodyAlarmStatusResourceDevice `json:"ResourceDevice,omitempty" xml:"ResourceDevice,omitempty" type:"Struct"`
-	// 采集状态码
-	ResponseCode *string `json:"ResponseCode,omitempty" xml:"ResponseCode,omitempty"`
-	// 采集结果
-	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
-	// 索引
-	UniqueKey *string `json:"UniqueKey,omitempty" xml:"UniqueKey,omitempty"`
+	PortCollection     *ListAlarmStatusResponseBodyAlarmStatusPortCollection     `json:"PortCollection,omitempty" xml:"PortCollection,omitempty" type:"Struct"`
+	PortCollectionId   *string                                                   `json:"PortCollectionId,omitempty" xml:"PortCollectionId,omitempty"`
+	ReceiveTime        *string                                                   `json:"ReceiveTime,omitempty" xml:"ReceiveTime,omitempty"`
+	ResourceApp        *ListAlarmStatusResponseBodyAlarmStatusResourceApp        `json:"ResourceApp,omitempty" xml:"ResourceApp,omitempty" type:"Struct"`
+	ResourceDevice     *ListAlarmStatusResponseBodyAlarmStatusResourceDevice     `json:"ResourceDevice,omitempty" xml:"ResourceDevice,omitempty" type:"Struct"`
+	ResponseCode       *string                                                   `json:"ResponseCode,omitempty" xml:"ResponseCode,omitempty"`
+	Result             *string                                                   `json:"Result,omitempty" xml:"Result,omitempty"`
+	UniqueKey          *string                                                   `json:"UniqueKey,omitempty" xml:"UniqueKey,omitempty"`
 }
 
 func (s ListAlarmStatusResponseBodyAlarmStatus) String() string {
@@ -16377,10 +15331,8 @@ func (s *ListAlarmStatusResponseBodyAlarmStatus) SetUniqueKey(v string) *ListAla
 }
 
 type ListAlarmStatusResponseBodyAlarmStatusAggregateData struct {
-	// 聚合数据名称
 	AggregateDataName *string `json:"AggregateDataName,omitempty" xml:"AggregateDataName,omitempty"`
-	// 数据项
-	DataItem *string `json:"DataItem,omitempty" xml:"DataItem,omitempty"`
+	DataItem          *string `json:"DataItem,omitempty" xml:"DataItem,omitempty"`
 }
 
 func (s ListAlarmStatusResponseBodyAlarmStatusAggregateData) String() string {
@@ -16402,7 +15354,6 @@ func (s *ListAlarmStatusResponseBodyAlarmStatusAggregateData) SetDataItem(v stri
 }
 
 type ListAlarmStatusResponseBodyAlarmStatusDedicatedLine struct {
-	// 专线名称
 	DedicatedLineName *string `json:"DedicatedLineName,omitempty" xml:"DedicatedLineName,omitempty"`
 	PhysicalSpace     *string `json:"PhysicalSpace,omitempty" xml:"PhysicalSpace,omitempty"`
 }
@@ -16426,12 +15377,9 @@ func (s *ListAlarmStatusResponseBodyAlarmStatusDedicatedLine) SetPhysicalSpace(v
 }
 
 type ListAlarmStatusResponseBodyAlarmStatusMonitorItem struct {
-	// 采集类型
-	CollectionType *string `json:"CollectionType,omitempty" xml:"CollectionType,omitempty"`
-	// 监控项描述
+	CollectionType         *string `json:"CollectionType,omitempty" xml:"CollectionType,omitempty"`
 	MonitorItemDescription *string `json:"MonitorItemDescription,omitempty" xml:"MonitorItemDescription,omitempty"`
-	// 监控项名称
-	MonitorItemName *string `json:"MonitorItemName,omitempty" xml:"MonitorItemName,omitempty"`
+	MonitorItemName        *string `json:"MonitorItemName,omitempty" xml:"MonitorItemName,omitempty"`
 }
 
 func (s ListAlarmStatusResponseBodyAlarmStatusMonitorItem) String() string {
@@ -16458,10 +15406,8 @@ func (s *ListAlarmStatusResponseBodyAlarmStatusMonitorItem) SetMonitorItemName(v
 }
 
 type ListAlarmStatusResponseBodyAlarmStatusNotificationSwitch struct {
-	// 关闭到期时间
 	ExpiryTime *string `json:"ExpiryTime,omitempty" xml:"ExpiryTime,omitempty"`
-	// 关闭原因
-	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	Reason     *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
 }
 
 func (s ListAlarmStatusResponseBodyAlarmStatusNotificationSwitch) String() string {
@@ -16483,7 +15429,6 @@ func (s *ListAlarmStatusResponseBodyAlarmStatusNotificationSwitch) SetReason(v s
 }
 
 type ListAlarmStatusResponseBodyAlarmStatusPortCollection struct {
-	// 端口集名称
 	PortCollectionName *string `json:"PortCollectionName,omitempty" xml:"PortCollectionName,omitempty"`
 }
 
@@ -16501,16 +15446,11 @@ func (s *ListAlarmStatusResponseBodyAlarmStatusPortCollection) SetPortCollection
 }
 
 type ListAlarmStatusResponseBodyAlarmStatusResourceApp struct {
-	// 应用ID
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// 监控域名
-	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	// 端口
-	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
-	// 所属探针
+	AppId          *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	Domain         *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	Port           *string `json:"Port,omitempty" xml:"Port,omitempty"`
 	SecurityDomain *string `json:"SecurityDomain,omitempty" xml:"SecurityDomain,omitempty"`
-	// 资源类型
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Type           *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s ListAlarmStatusResponseBodyAlarmStatusResourceApp) String() string {
@@ -16547,8 +15487,7 @@ func (s *ListAlarmStatusResponseBodyAlarmStatusResourceApp) SetType(v string) *L
 }
 
 type ListAlarmStatusResponseBodyAlarmStatusResourceDevice struct {
-	DeviceForm *string `json:"DeviceForm,omitempty" xml:"DeviceForm,omitempty"`
-	// 设备名
+	DeviceForm    *string `json:"DeviceForm,omitempty" xml:"DeviceForm,omitempty"`
 	HostName      *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
 	PhysicalSpace *string `json:"PhysicalSpace,omitempty" xml:"PhysicalSpace,omitempty"`
 }
@@ -16577,9 +15516,7 @@ func (s *ListAlarmStatusResponseBodyAlarmStatusResourceDevice) SetPhysicalSpace(
 }
 
 type ListAlarmStatusResponseBodyStatistics struct {
-	// 数量
-	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// 告警状态
+	Count  *int64  `json:"Count,omitempty" xml:"Count,omitempty"`
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -16602,8 +15539,9 @@ func (s *ListAlarmStatusResponseBodyStatistics) SetStatus(v string) *ListAlarmSt
 }
 
 type ListAlarmStatusResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListAlarmStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListAlarmStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListAlarmStatusResponse) String() string {
@@ -16619,32 +15557,27 @@ func (s *ListAlarmStatusResponse) SetHeaders(v map[string]*string) *ListAlarmSta
 	return s
 }
 
+func (s *ListAlarmStatusResponse) SetStatusCode(v int32) *ListAlarmStatusResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ListAlarmStatusResponse) SetBody(v *ListAlarmStatusResponseBody) *ListAlarmStatusResponse {
 	s.Body = v
 	return s
 }
 
 type ListAlarmStatusHistoriesRequest struct {
-	// 聚合数据ID
-	AggregateDataId *string `json:"AggregateDataId,omitempty" xml:"AggregateDataId,omitempty"`
-	// 应用ID
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// 专线ID
-	DedicatedLineId *string `json:"DedicatedLineId,omitempty" xml:"DedicatedLineId,omitempty"`
-	// 设备ID
-	DeviceId *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
-	// 结束时间秒级时间戳
-	End *int64 `json:"End,omitempty" xml:"End,omitempty"`
-	// 实例ID
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 监控项ID
-	MonitorItemId *string `json:"MonitorItemId,omitempty" xml:"MonitorItemId,omitempty"`
-	// 端口集ID
+	AggregateDataId  *string `json:"AggregateDataId,omitempty" xml:"AggregateDataId,omitempty"`
+	AppId            *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	DedicatedLineId  *string `json:"DedicatedLineId,omitempty" xml:"DedicatedLineId,omitempty"`
+	DeviceId         *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
+	End              *int64  `json:"End,omitempty" xml:"End,omitempty"`
+	InstanceId       *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	MonitorItemId    *string `json:"MonitorItemId,omitempty" xml:"MonitorItemId,omitempty"`
 	PortCollectionId *string `json:"PortCollectionId,omitempty" xml:"PortCollectionId,omitempty"`
-	// 开始时间秒级时间戳
-	Start *int64 `json:"Start,omitempty" xml:"Start,omitempty"`
-	// 类型
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Start            *int64  `json:"Start,omitempty" xml:"Start,omitempty"`
+	Type             *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s ListAlarmStatusHistoriesRequest) String() string {
@@ -16706,10 +15639,8 @@ func (s *ListAlarmStatusHistoriesRequest) SetType(v string) *ListAlarmStatusHist
 }
 
 type ListAlarmStatusHistoriesResponseBody struct {
-	// 数据列表
 	AlarmStatusHistories []*ListAlarmStatusHistoriesResponseBodyAlarmStatusHistories `json:"AlarmStatusHistories,omitempty" xml:"AlarmStatusHistories,omitempty" type:"Repeated"`
-	// request id
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId            *string                                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListAlarmStatusHistoriesResponseBody) String() string {
@@ -16731,10 +15662,8 @@ func (s *ListAlarmStatusHistoriesResponseBody) SetRequestId(v string) *ListAlarm
 }
 
 type ListAlarmStatusHistoriesResponseBodyAlarmStatusHistories struct {
-	// 时间戳
-	Timestamp *int64 `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
-	// 数值
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	Timestamp *int64  `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
+	Value     *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s ListAlarmStatusHistoriesResponseBodyAlarmStatusHistories) String() string {
@@ -16756,8 +15685,9 @@ func (s *ListAlarmStatusHistoriesResponseBodyAlarmStatusHistories) SetValue(v st
 }
 
 type ListAlarmStatusHistoriesResponse struct {
-	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListAlarmStatusHistoriesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListAlarmStatusHistoriesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListAlarmStatusHistoriesResponse) String() string {
@@ -16773,26 +15703,24 @@ func (s *ListAlarmStatusHistoriesResponse) SetHeaders(v map[string]*string) *Lis
 	return s
 }
 
+func (s *ListAlarmStatusHistoriesResponse) SetStatusCode(v int32) *ListAlarmStatusHistoriesResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ListAlarmStatusHistoriesResponse) SetBody(v *ListAlarmStatusHistoriesResponseBody) *ListAlarmStatusHistoriesResponse {
 	s.Body = v
 	return s
 }
 
 type ListAlarmStatusStatisticsRequest struct {
-	// 告警状态
-	AlarmStatus *string `json:"AlarmStatus,omitempty" xml:"AlarmStatus,omitempty"`
-	// 实例ID
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 本次读取的最大数据记录数量
-	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 标记当前开始读取的位置，置空表示从头开始
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// 物理空间ID
+	AlarmStatus     *string `json:"AlarmStatus,omitempty" xml:"AlarmStatus,omitempty"`
+	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	MaxResults      *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken       *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	PhysicalSpaceId *string `json:"PhysicalSpaceId,omitempty" xml:"PhysicalSpaceId,omitempty"`
-	// 探针标识
-	SecurityDomain *string `json:"SecurityDomain,omitempty" xml:"SecurityDomain,omitempty"`
-	// 数据类型
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	SecurityDomain  *string `json:"SecurityDomain,omitempty" xml:"SecurityDomain,omitempty"`
+	Type            *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s ListAlarmStatusStatisticsRequest) String() string {
@@ -16839,16 +15767,11 @@ func (s *ListAlarmStatusStatisticsRequest) SetType(v string) *ListAlarmStatusSta
 }
 
 type ListAlarmStatusStatisticsResponseBody struct {
-	// MaxResults本次请求所返回的最大记录条数
-	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 表示当前调用返回读取到的位置，空代表数据已经读取完毕
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 统计数据
+	MaxResults *int32                                             `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken  *string                                            `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RequestId  *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Statistics []*ListAlarmStatusStatisticsResponseBodyStatistics `json:"Statistics,omitempty" xml:"Statistics,omitempty" type:"Repeated"`
-	// TotalCount本次请求条件下的数据总量，此参数为可选参数，默认可不返回
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	TotalCount *int32                                             `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListAlarmStatusStatisticsResponseBody) String() string {
@@ -16885,11 +15808,8 @@ func (s *ListAlarmStatusStatisticsResponseBody) SetTotalCount(v int32) *ListAlar
 }
 
 type ListAlarmStatusStatisticsResponseBodyStatistics struct {
-	// 数量
-	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// 名称
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 资源ID
+	Count      *int64  `json:"Count,omitempty" xml:"Count,omitempty"`
+	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 }
 
@@ -16917,8 +15837,9 @@ func (s *ListAlarmStatusStatisticsResponseBodyStatistics) SetResourceId(v string
 }
 
 type ListAlarmStatusStatisticsResponse struct {
-	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListAlarmStatusStatisticsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListAlarmStatusStatisticsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListAlarmStatusStatisticsResponse) String() string {
@@ -16934,19 +15855,21 @@ func (s *ListAlarmStatusStatisticsResponse) SetHeaders(v map[string]*string) *Li
 	return s
 }
 
+func (s *ListAlarmStatusStatisticsResponse) SetStatusCode(v int32) *ListAlarmStatusStatisticsResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ListAlarmStatusStatisticsResponse) SetBody(v *ListAlarmStatusStatisticsResponseBody) *ListAlarmStatusStatisticsResponse {
 	s.Body = v
 	return s
 }
 
 type ListArchitectureAttributeRequest struct {
-	// 架构id
 	ArchitectureId *string `json:"ArchitectureId,omitempty" xml:"ArchitectureId,omitempty"`
 	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 角色
-	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
-	// 厂商
-	Vendor *string `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
+	Role           *string `json:"Role,omitempty" xml:"Role,omitempty"`
+	Vendor         *string `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
 }
 
 func (s ListArchitectureAttributeRequest) String() string {
@@ -16978,10 +15901,8 @@ func (s *ListArchitectureAttributeRequest) SetVendor(v string) *ListArchitecture
 }
 
 type ListArchitectureAttributeResponseBody struct {
-	// 架构对象
 	Architecture []*ListArchitectureAttributeResponseBodyArchitecture `json:"Architecture,omitempty" xml:"Architecture,omitempty" type:"Repeated"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId    *string                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListArchitectureAttributeResponseBody) String() string {
@@ -17003,11 +15924,8 @@ func (s *ListArchitectureAttributeResponseBody) SetRequestId(v string) *ListArch
 }
 
 type ListArchitectureAttributeResponseBodyArchitecture struct {
-	// 型号
-	Model []*string `json:"Model,omitempty" xml:"Model,omitempty" type:"Repeated"`
-	// 角色
-	Role []*string `json:"Role,omitempty" xml:"Role,omitempty" type:"Repeated"`
-	// 厂商
+	Model  []*string `json:"Model,omitempty" xml:"Model,omitempty" type:"Repeated"`
+	Role   []*string `json:"Role,omitempty" xml:"Role,omitempty" type:"Repeated"`
 	Vendor []*string `json:"Vendor,omitempty" xml:"Vendor,omitempty" type:"Repeated"`
 }
 
@@ -17035,8 +15953,9 @@ func (s *ListArchitectureAttributeResponseBodyArchitecture) SetVendor(v []*strin
 }
 
 type ListArchitectureAttributeResponse struct {
-	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListArchitectureAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListArchitectureAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListArchitectureAttributeResponse) String() string {
@@ -17052,28 +15971,25 @@ func (s *ListArchitectureAttributeResponse) SetHeaders(v map[string]*string) *Li
 	return s
 }
 
+func (s *ListArchitectureAttributeResponse) SetStatusCode(v int32) *ListArchitectureAttributeResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ListArchitectureAttributeResponse) SetBody(v *ListArchitectureAttributeResponseBody) *ListArchitectureAttributeResponse {
 	s.Body = v
 	return s
 }
 
 type ListConfigurationSpecificationsRequest struct {
-	// 架构类型
-	Architecture *string `json:"Architecture,omitempty" xml:"Architecture,omitempty"`
-	// instanceId
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 返回结果的最大个数。
-	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 型号
-	Model *string `json:"Model,omitempty" xml:"Model,omitempty"`
-	// 当总结果个数大于MaxResults时，用于翻页的token。
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// 角色
-	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
-	// 配置规范名字
+	Architecture      *string `json:"Architecture,omitempty" xml:"Architecture,omitempty"`
+	InstanceId        *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	MaxResults        *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	Model             *string `json:"Model,omitempty" xml:"Model,omitempty"`
+	NextToken         *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	Role              *string `json:"Role,omitempty" xml:"Role,omitempty"`
 	SpecificationName *string `json:"SpecificationName,omitempty" xml:"SpecificationName,omitempty"`
-	// 厂商
-	Vendor *string `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
+	Vendor            *string `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
 }
 
 func (s ListConfigurationSpecificationsRequest) String() string {
@@ -17125,16 +16041,11 @@ func (s *ListConfigurationSpecificationsRequest) SetVendor(v string) *ListConfig
 }
 
 type ListConfigurationSpecificationsResponseBody struct {
-	// 数组，返回示例目录。
 	ConfigurationSpecification []*ListConfigurationSpecificationsResponseBodyConfigurationSpecification `json:"ConfigurationSpecification,omitempty" xml:"ConfigurationSpecification,omitempty" type:"Repeated"`
-	// 本次读取的最大数据量
-	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 当总结果个数大于MaxResults时，用于翻页的token。
-	NextToken *int32 `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 总记录数。
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	MaxResults                 *int64                                                                   `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken                  *int32                                                                   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RequestId                  *string                                                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount                 *int32                                                                   `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListConfigurationSpecificationsResponseBody) String() string {
@@ -17171,26 +16082,16 @@ func (s *ListConfigurationSpecificationsResponseBody) SetTotalCount(v int32) *Li
 }
 
 type ListConfigurationSpecificationsResponseBodyConfigurationSpecification struct {
-	// 架构
-	Architecture *string `json:"Architecture,omitempty" xml:"Architecture,omitempty"`
-	// 配置规范id
-	ConfigurationSpecificationId *string `json:"ConfigurationSpecificationId,omitempty" xml:"ConfigurationSpecificationId,omitempty"`
-	// 创建时间
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// 型号
-	Model *string `json:"Model,omitempty" xml:"Model,omitempty"`
-	// 相关变量
-	RelatedVariate []*string `json:"RelatedVariate,omitempty" xml:"RelatedVariate,omitempty" type:"Repeated"`
-	// 角色
-	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
-	// 规范内容
-	SpecificationContent *string `json:"SpecificationContent,omitempty" xml:"SpecificationContent,omitempty"`
-	// 配置规范名字
-	SpecificationName *string `json:"SpecificationName,omitempty" xml:"SpecificationName,omitempty"`
-	// 更新时间
-	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	// 厂商
-	Vendor *string `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
+	Architecture                 *string   `json:"Architecture,omitempty" xml:"Architecture,omitempty"`
+	ConfigurationSpecificationId *string   `json:"ConfigurationSpecificationId,omitempty" xml:"ConfigurationSpecificationId,omitempty"`
+	CreateTime                   *string   `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Model                        *string   `json:"Model,omitempty" xml:"Model,omitempty"`
+	RelatedVariate               []*string `json:"RelatedVariate,omitempty" xml:"RelatedVariate,omitempty" type:"Repeated"`
+	Role                         *string   `json:"Role,omitempty" xml:"Role,omitempty"`
+	SpecificationContent         *string   `json:"SpecificationContent,omitempty" xml:"SpecificationContent,omitempty"`
+	SpecificationName            *string   `json:"SpecificationName,omitempty" xml:"SpecificationName,omitempty"`
+	UpdateTime                   *string   `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	Vendor                       *string   `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
 }
 
 func (s ListConfigurationSpecificationsResponseBodyConfigurationSpecification) String() string {
@@ -17252,8 +16153,9 @@ func (s *ListConfigurationSpecificationsResponseBodyConfigurationSpecification) 
 }
 
 type ListConfigurationSpecificationsResponse struct {
-	Headers map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListConfigurationSpecificationsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListConfigurationSpecificationsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListConfigurationSpecificationsResponse) String() string {
@@ -17269,19 +16171,20 @@ func (s *ListConfigurationSpecificationsResponse) SetHeaders(v map[string]*strin
 	return s
 }
 
+func (s *ListConfigurationSpecificationsResponse) SetStatusCode(v int32) *ListConfigurationSpecificationsResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ListConfigurationSpecificationsResponse) SetBody(v *ListConfigurationSpecificationsResponseBody) *ListConfigurationSpecificationsResponse {
 	s.Body = v
 	return s
 }
 
 type ListConfigurationVariateRequest struct {
-	// instanceId
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 返回结果的最大个数。
-	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 当总结果个数大于MaxResults时，用于翻页的token。
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// 变量名字
+	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	MaxResults  *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken   *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	VariateName *string `json:"VariateName,omitempty" xml:"VariateName,omitempty"`
 }
 
@@ -17314,16 +16217,11 @@ func (s *ListConfigurationVariateRequest) SetVariateName(v string) *ListConfigur
 }
 
 type ListConfigurationVariateResponseBody struct {
-	// 数组，返回示例目录。
 	ConfigurationVariate []*ListConfigurationVariateResponseBodyConfigurationVariate `json:"ConfigurationVariate,omitempty" xml:"ConfigurationVariate,omitempty" type:"Repeated"`
-	// 本次读取的最大数据量
-	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 当总结果个数大于MaxResults时，用于翻页的token。
-	NextToken *int32 `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 总记录数。
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	MaxResults           *int64                                                      `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken            *int32                                                      `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RequestId            *string                                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount           *int32                                                      `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListConfigurationVariateResponseBody) String() string {
@@ -17360,18 +16258,12 @@ func (s *ListConfigurationVariateResponseBody) SetTotalCount(v int32) *ListConfi
 }
 
 type ListConfigurationVariateResponseBodyConfigurationVariate struct {
-	// 配置变量描述
-	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// 配置变量id
+	Comment                *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
 	ConfigurationVariateId *string `json:"ConfigurationVariateId,omitempty" xml:"ConfigurationVariateId,omitempty"`
-	// 创建时间
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// 配置变量转换函数
-	FormatFunction *string `json:"FormatFunction,omitempty" xml:"FormatFunction,omitempty"`
-	// 更新时间
-	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	// 配置变量名称
-	VariateName *string `json:"VariateName,omitempty" xml:"VariateName,omitempty"`
+	CreateTime             *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	FormatFunction         *string `json:"FormatFunction,omitempty" xml:"FormatFunction,omitempty"`
+	UpdateTime             *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	VariateName            *string `json:"VariateName,omitempty" xml:"VariateName,omitempty"`
 }
 
 func (s ListConfigurationVariateResponseBodyConfigurationVariate) String() string {
@@ -17413,8 +16305,9 @@ func (s *ListConfigurationVariateResponseBodyConfigurationVariate) SetVariateNam
 }
 
 type ListConfigurationVariateResponse struct {
-	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListConfigurationVariateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListConfigurationVariateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListConfigurationVariateResponse) String() string {
@@ -17430,29 +16323,26 @@ func (s *ListConfigurationVariateResponse) SetHeaders(v map[string]*string) *Lis
 	return s
 }
 
+func (s *ListConfigurationVariateResponse) SetStatusCode(v int32) *ListConfigurationVariateResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ListConfigurationVariateResponse) SetBody(v *ListConfigurationVariateResponseBody) *ListConfigurationVariateResponse {
 	s.Body = v
 	return s
 }
 
 type ListConnectionPoliciesRequest struct {
-	// 架构迭代uid
-	ArchitectureIterationId *string `json:"ArchitectureIterationId,omitempty" xml:"ArchitectureIterationId,omitempty"`
-	// 连接策略id
-	ConnectionPolicyId *string `json:"ConnectionPolicyId,omitempty" xml:"ConnectionPolicyId,omitempty"`
-	// 下联设备uid
+	ArchitectureIterationId      *string `json:"ArchitectureIterationId,omitempty" xml:"ArchitectureIterationId,omitempty"`
+	ConnectionPolicyId           *string `json:"ConnectionPolicyId,omitempty" xml:"ConnectionPolicyId,omitempty"`
 	DownlinkArchitectureDeviceId *string `json:"DownlinkArchitectureDeviceId,omitempty" xml:"DownlinkArchitectureDeviceId,omitempty"`
-	// 下联模块uid
 	DownlinkArchitectureModuleId *string `json:"DownlinkArchitectureModuleId,omitempty" xml:"DownlinkArchitectureModuleId,omitempty"`
 	InstanceId                   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 返回结果的最大个数。
-	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 当总结果个数大于MaxResults时，用于翻页的token。
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// 上联设备uid
-	UplinkArchitectureDeviceId *string `json:"UplinkArchitectureDeviceId,omitempty" xml:"UplinkArchitectureDeviceId,omitempty"`
-	// 上联模块uid
-	UplinkArchitectureModuleId *string `json:"UplinkArchitectureModuleId,omitempty" xml:"UplinkArchitectureModuleId,omitempty"`
+	MaxResults                   *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken                    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	UplinkArchitectureDeviceId   *string `json:"UplinkArchitectureDeviceId,omitempty" xml:"UplinkArchitectureDeviceId,omitempty"`
+	UplinkArchitectureModuleId   *string `json:"UplinkArchitectureModuleId,omitempty" xml:"UplinkArchitectureModuleId,omitempty"`
 }
 
 func (s ListConnectionPoliciesRequest) String() string {
@@ -17509,16 +16399,11 @@ func (s *ListConnectionPoliciesRequest) SetUplinkArchitectureModuleId(v string) 
 }
 
 type ListConnectionPoliciesResponseBody struct {
-	// 数组，返回示例目录。
 	ConnectionPolicy []*ListConnectionPoliciesResponseBodyConnectionPolicy `json:"ConnectionPolicy,omitempty" xml:"ConnectionPolicy,omitempty" type:"Repeated"`
-	// 本次读取的最大数据量
-	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 当总结果个数大于MaxResults时，用于翻页的token。
-	NextToken *int32 `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 总记录数。
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	MaxResults       *int64                                                `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken        *int32                                                `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RequestId        *string                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount       *int32                                                `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListConnectionPoliciesResponseBody) String() string {
@@ -17555,28 +16440,17 @@ func (s *ListConnectionPoliciesResponseBody) SetTotalCount(v int32) *ListConnect
 }
 
 type ListConnectionPoliciesResponseBodyConnectionPolicy struct {
-	// 连接策略算法
-	Algorithm *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
-	// 架构迭代uid
-	ArchitectureIterationId *string `json:"ArchitectureIterationId,omitempty" xml:"ArchitectureIterationId,omitempty"`
-	// 创建时间
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// 上联设备uid
+	Algorithm                    *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
+	ArchitectureIterationId      *string `json:"ArchitectureIterationId,omitempty" xml:"ArchitectureIterationId,omitempty"`
+	CreateTime                   *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	DownlinkArchitectureDeviceId *string `json:"DownlinkArchitectureDeviceId,omitempty" xml:"DownlinkArchitectureDeviceId,omitempty"`
-	// 下联设备uid
 	DownlinkArchitectureModuleId *string `json:"DownlinkArchitectureModuleId,omitempty" xml:"DownlinkArchitectureModuleId,omitempty"`
-	// 连接策略uid
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// 连接数
-	LinkCount *int32 `json:"LinkCount,omitempty" xml:"LinkCount,omitempty"`
-	// 连接策略名字
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 更新是啊金
-	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	// 上联模块uid
-	UplinkArchitectureDeviceId *string `json:"UplinkArchitectureDeviceId,omitempty" xml:"UplinkArchitectureDeviceId,omitempty"`
-	// 下联模块uid
-	UplinkArchitectureModuleId *string `json:"UplinkArchitectureModuleId,omitempty" xml:"UplinkArchitectureModuleId,omitempty"`
+	Id                           *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	LinkCount                    *int32  `json:"LinkCount,omitempty" xml:"LinkCount,omitempty"`
+	Name                         *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	UpdateTime                   *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	UplinkArchitectureDeviceId   *string `json:"UplinkArchitectureDeviceId,omitempty" xml:"UplinkArchitectureDeviceId,omitempty"`
+	UplinkArchitectureModuleId   *string `json:"UplinkArchitectureModuleId,omitempty" xml:"UplinkArchitectureModuleId,omitempty"`
 }
 
 func (s ListConnectionPoliciesResponseBodyConnectionPolicy) String() string {
@@ -17643,8 +16517,9 @@ func (s *ListConnectionPoliciesResponseBodyConnectionPolicy) SetUplinkArchitectu
 }
 
 type ListConnectionPoliciesResponse struct {
-	Headers map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListConnectionPoliciesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListConnectionPoliciesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListConnectionPoliciesResponse) String() string {
@@ -17660,20 +16535,36 @@ func (s *ListConnectionPoliciesResponse) SetHeaders(v map[string]*string) *ListC
 	return s
 }
 
+func (s *ListConnectionPoliciesResponse) SetStatusCode(v int32) *ListConnectionPoliciesResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ListConnectionPoliciesResponse) SetBody(v *ListConnectionPoliciesResponseBody) *ListConnectionPoliciesResponse {
 	s.Body = v
 	return s
 }
 
 type ListDedicatedLinesRequest struct {
-	// 实例ID
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	MaxResults *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken  *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// 物理空间ID
-	PhysicalSpaceId *string `json:"PhysicalSpaceId,omitempty" xml:"PhysicalSpaceId,omitempty"`
-	// 物理空间名称
-	SpaceName *string `json:"SpaceName,omitempty" xml:"SpaceName,omitempty"`
+	Bandwidth            *int32  `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
+	DedicatedLineGateway *string `json:"DedicatedLineGateway,omitempty" xml:"DedicatedLineGateway,omitempty"`
+	DedicatedLineIp      *string `json:"DedicatedLineIp,omitempty" xml:"DedicatedLineIp,omitempty"`
+	DedicatedLineRole    *string `json:"DedicatedLineRole,omitempty" xml:"DedicatedLineRole,omitempty"`
+	Description          *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	DeviceId             *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
+	DeviceName           *string `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
+	DevicePort           *string `json:"DevicePort,omitempty" xml:"DevicePort,omitempty"`
+	ExpirationDate       *string `json:"ExpirationDate,omitempty" xml:"ExpirationDate,omitempty"`
+	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Isp                  *string `json:"Isp,omitempty" xml:"Isp,omitempty"`
+	IspFormId            *string `json:"IspFormId,omitempty" xml:"IspFormId,omitempty"`
+	IspId                *string `json:"IspId,omitempty" xml:"IspId,omitempty"`
+	Keyword              *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	MaxResults           *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken            *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	OnlineDate           *string `json:"OnlineDate,omitempty" xml:"OnlineDate,omitempty"`
+	PhysicalSpaceId      *string `json:"PhysicalSpaceId,omitempty" xml:"PhysicalSpaceId,omitempty"`
+	SpaceName            *string `json:"SpaceName,omitempty" xml:"SpaceName,omitempty"`
 }
 
 func (s ListDedicatedLinesRequest) String() string {
@@ -17684,8 +16575,73 @@ func (s ListDedicatedLinesRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ListDedicatedLinesRequest) SetBandwidth(v int32) *ListDedicatedLinesRequest {
+	s.Bandwidth = &v
+	return s
+}
+
+func (s *ListDedicatedLinesRequest) SetDedicatedLineGateway(v string) *ListDedicatedLinesRequest {
+	s.DedicatedLineGateway = &v
+	return s
+}
+
+func (s *ListDedicatedLinesRequest) SetDedicatedLineIp(v string) *ListDedicatedLinesRequest {
+	s.DedicatedLineIp = &v
+	return s
+}
+
+func (s *ListDedicatedLinesRequest) SetDedicatedLineRole(v string) *ListDedicatedLinesRequest {
+	s.DedicatedLineRole = &v
+	return s
+}
+
+func (s *ListDedicatedLinesRequest) SetDescription(v string) *ListDedicatedLinesRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *ListDedicatedLinesRequest) SetDeviceId(v string) *ListDedicatedLinesRequest {
+	s.DeviceId = &v
+	return s
+}
+
+func (s *ListDedicatedLinesRequest) SetDeviceName(v string) *ListDedicatedLinesRequest {
+	s.DeviceName = &v
+	return s
+}
+
+func (s *ListDedicatedLinesRequest) SetDevicePort(v string) *ListDedicatedLinesRequest {
+	s.DevicePort = &v
+	return s
+}
+
+func (s *ListDedicatedLinesRequest) SetExpirationDate(v string) *ListDedicatedLinesRequest {
+	s.ExpirationDate = &v
+	return s
+}
+
 func (s *ListDedicatedLinesRequest) SetInstanceId(v string) *ListDedicatedLinesRequest {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *ListDedicatedLinesRequest) SetIsp(v string) *ListDedicatedLinesRequest {
+	s.Isp = &v
+	return s
+}
+
+func (s *ListDedicatedLinesRequest) SetIspFormId(v string) *ListDedicatedLinesRequest {
+	s.IspFormId = &v
+	return s
+}
+
+func (s *ListDedicatedLinesRequest) SetIspId(v string) *ListDedicatedLinesRequest {
+	s.IspId = &v
+	return s
+}
+
+func (s *ListDedicatedLinesRequest) SetKeyword(v string) *ListDedicatedLinesRequest {
+	s.Keyword = &v
 	return s
 }
 
@@ -17696,6 +16652,11 @@ func (s *ListDedicatedLinesRequest) SetMaxResults(v int32) *ListDedicatedLinesRe
 
 func (s *ListDedicatedLinesRequest) SetNextToken(v string) *ListDedicatedLinesRequest {
 	s.NextToken = &v
+	return s
+}
+
+func (s *ListDedicatedLinesRequest) SetOnlineDate(v string) *ListDedicatedLinesRequest {
+	s.OnlineDate = &v
 	return s
 }
 
@@ -17710,13 +16671,11 @@ func (s *ListDedicatedLinesRequest) SetSpaceName(v string) *ListDedicatedLinesRe
 }
 
 type ListDedicatedLinesResponseBody struct {
-	// 数组，返回示例目录。
 	DedicatedLines []*ListDedicatedLinesResponseBodyDedicatedLines `json:"DedicatedLines,omitempty" xml:"DedicatedLines,omitempty" type:"Repeated"`
 	MaxResults     *int32                                          `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	NextToken      *int32                                          `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// Id of the request
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *int32  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	RequestId      *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount     *int32                                          `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListDedicatedLinesResponseBody) String() string {
@@ -17753,33 +16712,27 @@ func (s *ListDedicatedLinesResponseBody) SetTotalCount(v int32) *ListDedicatedLi
 }
 
 type ListDedicatedLinesResponseBodyDedicatedLines struct {
-	// 宽带（Mbps）
-	Bandwidth *int32 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	// 联系人
-	Contact *string `json:"Contact,omitempty" xml:"Contact,omitempty"`
-	// 专线网关
-	DedicatedLineGateway *string `json:"DedicatedLineGateway,omitempty" xml:"DedicatedLineGateway,omitempty"`
-	// 物理空间专线ID
-	DedicatedLineId *string `json:"DedicatedLineId,omitempty" xml:"DedicatedLineId,omitempty"`
-	// 专线IP
-	DedicatedLineIp *string `json:"DedicatedLineIp,omitempty" xml:"DedicatedLineIp,omitempty"`
-	// 专线角色
-	DedicatedLineRole *string `json:"DedicatedLineRole,omitempty" xml:"DedicatedLineRole,omitempty"`
-	// 备注
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 关联设备ID
-	DeviceId *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
-	// 关联设备名称
-	DeviceName *string `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
-	// 关联设备端口
-	DevicePort *string `json:"DevicePort,omitempty" xml:"DevicePort,omitempty"`
-	// 运营商
-	Isp *string `json:"Isp,omitempty" xml:"Isp,omitempty"`
-	// 联系电话
-	Phone *string `json:"Phone,omitempty" xml:"Phone,omitempty"`
-	// 关联物理空间ID
-	PhysicalSpaceId *string `json:"PhysicalSpaceId,omitempty" xml:"PhysicalSpaceId,omitempty"`
-	SpaceName       *string `json:"SpaceName,omitempty" xml:"SpaceName,omitempty"`
+	Bandwidth            *int32                                                 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
+	Contact              []*ListDedicatedLinesResponseBodyDedicatedLinesContact `json:"Contact,omitempty" xml:"Contact,omitempty" type:"Repeated"`
+	DedicatedLineGateway *string                                                `json:"DedicatedLineGateway,omitempty" xml:"DedicatedLineGateway,omitempty"`
+	DedicatedLineId      *string                                                `json:"DedicatedLineId,omitempty" xml:"DedicatedLineId,omitempty"`
+	DedicatedLineIp      *string                                                `json:"DedicatedLineIp,omitempty" xml:"DedicatedLineIp,omitempty"`
+	DedicatedLineRole    *string                                                `json:"DedicatedLineRole,omitempty" xml:"DedicatedLineRole,omitempty"`
+	Description          *string                                                `json:"Description,omitempty" xml:"Description,omitempty"`
+	DeviceId             *string                                                `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
+	DeviceName           *string                                                `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
+	DevicePort           *string                                                `json:"DevicePort,omitempty" xml:"DevicePort,omitempty"`
+	ExpirationDate       *string                                                `json:"ExpirationDate,omitempty" xml:"ExpirationDate,omitempty"`
+	Ext                  *string                                                `json:"Ext,omitempty" xml:"Ext,omitempty"`
+	Isp                  *string                                                `json:"Isp,omitempty" xml:"Isp,omitempty"`
+	IspFormId            *string                                                `json:"IspFormId,omitempty" xml:"IspFormId,omitempty"`
+	IspFormName          *string                                                `json:"IspFormName,omitempty" xml:"IspFormName,omitempty"`
+	IspId                *string                                                `json:"IspId,omitempty" xml:"IspId,omitempty"`
+	Keyword              *string                                                `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	OnlineDate           *string                                                `json:"OnlineDate,omitempty" xml:"OnlineDate,omitempty"`
+	Phone                *string                                                `json:"Phone,omitempty" xml:"Phone,omitempty"`
+	PhysicalSpaceId      *string                                                `json:"PhysicalSpaceId,omitempty" xml:"PhysicalSpaceId,omitempty"`
+	SpaceName            *string                                                `json:"SpaceName,omitempty" xml:"SpaceName,omitempty"`
 }
 
 func (s ListDedicatedLinesResponseBodyDedicatedLines) String() string {
@@ -17795,8 +16748,8 @@ func (s *ListDedicatedLinesResponseBodyDedicatedLines) SetBandwidth(v int32) *Li
 	return s
 }
 
-func (s *ListDedicatedLinesResponseBodyDedicatedLines) SetContact(v string) *ListDedicatedLinesResponseBodyDedicatedLines {
-	s.Contact = &v
+func (s *ListDedicatedLinesResponseBodyDedicatedLines) SetContact(v []*ListDedicatedLinesResponseBodyDedicatedLinesContact) *ListDedicatedLinesResponseBodyDedicatedLines {
+	s.Contact = v
 	return s
 }
 
@@ -17840,8 +16793,43 @@ func (s *ListDedicatedLinesResponseBodyDedicatedLines) SetDevicePort(v string) *
 	return s
 }
 
+func (s *ListDedicatedLinesResponseBodyDedicatedLines) SetExpirationDate(v string) *ListDedicatedLinesResponseBodyDedicatedLines {
+	s.ExpirationDate = &v
+	return s
+}
+
+func (s *ListDedicatedLinesResponseBodyDedicatedLines) SetExt(v string) *ListDedicatedLinesResponseBodyDedicatedLines {
+	s.Ext = &v
+	return s
+}
+
 func (s *ListDedicatedLinesResponseBodyDedicatedLines) SetIsp(v string) *ListDedicatedLinesResponseBodyDedicatedLines {
 	s.Isp = &v
+	return s
+}
+
+func (s *ListDedicatedLinesResponseBodyDedicatedLines) SetIspFormId(v string) *ListDedicatedLinesResponseBodyDedicatedLines {
+	s.IspFormId = &v
+	return s
+}
+
+func (s *ListDedicatedLinesResponseBodyDedicatedLines) SetIspFormName(v string) *ListDedicatedLinesResponseBodyDedicatedLines {
+	s.IspFormName = &v
+	return s
+}
+
+func (s *ListDedicatedLinesResponseBodyDedicatedLines) SetIspId(v string) *ListDedicatedLinesResponseBodyDedicatedLines {
+	s.IspId = &v
+	return s
+}
+
+func (s *ListDedicatedLinesResponseBodyDedicatedLines) SetKeyword(v string) *ListDedicatedLinesResponseBodyDedicatedLines {
+	s.Keyword = &v
+	return s
+}
+
+func (s *ListDedicatedLinesResponseBodyDedicatedLines) SetOnlineDate(v string) *ListDedicatedLinesResponseBodyDedicatedLines {
+	s.OnlineDate = &v
 	return s
 }
 
@@ -17860,9 +16848,45 @@ func (s *ListDedicatedLinesResponseBodyDedicatedLines) SetSpaceName(v string) *L
 	return s
 }
 
+type ListDedicatedLinesResponseBodyDedicatedLinesContact struct {
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Email       *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Phone       *string `json:"Phone,omitempty" xml:"Phone,omitempty"`
+}
+
+func (s ListDedicatedLinesResponseBodyDedicatedLinesContact) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDedicatedLinesResponseBodyDedicatedLinesContact) GoString() string {
+	return s.String()
+}
+
+func (s *ListDedicatedLinesResponseBodyDedicatedLinesContact) SetDescription(v string) *ListDedicatedLinesResponseBodyDedicatedLinesContact {
+	s.Description = &v
+	return s
+}
+
+func (s *ListDedicatedLinesResponseBodyDedicatedLinesContact) SetEmail(v string) *ListDedicatedLinesResponseBodyDedicatedLinesContact {
+	s.Email = &v
+	return s
+}
+
+func (s *ListDedicatedLinesResponseBodyDedicatedLinesContact) SetName(v string) *ListDedicatedLinesResponseBodyDedicatedLinesContact {
+	s.Name = &v
+	return s
+}
+
+func (s *ListDedicatedLinesResponseBodyDedicatedLinesContact) SetPhone(v string) *ListDedicatedLinesResponseBodyDedicatedLinesContact {
+	s.Phone = &v
+	return s
+}
+
 type ListDedicatedLinesResponse struct {
-	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListDedicatedLinesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListDedicatedLinesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListDedicatedLinesResponse) String() string {
@@ -17878,18 +16902,20 @@ func (s *ListDedicatedLinesResponse) SetHeaders(v map[string]*string) *ListDedic
 	return s
 }
 
+func (s *ListDedicatedLinesResponse) SetStatusCode(v int32) *ListDedicatedLinesResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ListDedicatedLinesResponse) SetBody(v *ListDedicatedLinesResponseBody) *ListDedicatedLinesResponse {
 	s.Body = v
 	return s
 }
 
 type ListDeviceFormsRequest struct {
-	// 实例ID
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 返回结果的最大个数。
-	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 当总结果个数大于MaxResults时，用于翻页的token。
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	MaxResults *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken  *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 }
 
 func (s ListDeviceFormsRequest) String() string {
@@ -17916,16 +16942,11 @@ func (s *ListDeviceFormsRequest) SetNextToken(v string) *ListDeviceFormsRequest 
 }
 
 type ListDeviceFormsResponseBody struct {
-	// 数组，返回示例目录。
 	DeviceForms []*ListDeviceFormsResponseBodyDeviceForms `json:"DeviceForms,omitempty" xml:"DeviceForms,omitempty" type:"Repeated"`
-	// 每页数量。
-	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 当总结果个数大于MaxResults时，用于翻页的token。
-	NextToken *int32 `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 总记录数。
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	MaxResults  *int32                                    `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken   *int32                                    `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RequestId   *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount  *int32                                    `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListDeviceFormsResponseBody) String() string {
@@ -17962,28 +16983,17 @@ func (s *ListDeviceFormsResponseBody) SetTotalCount(v int32) *ListDeviceFormsRes
 }
 
 type ListDeviceFormsResponseBodyDeviceForms struct {
-	// 是否需要账号配置
-	AccountConfig *bool `json:"AccountConfig,omitempty" xml:"AccountConfig,omitempty"`
-	// 设备形态属性列表
-	AttributeList []*ListDeviceFormsResponseBodyDeviceFormsAttributeList `json:"AttributeList,omitempty" xml:"AttributeList,omitempty" type:"Repeated"`
-	// 是否支持配置生成
-	ConfigCompare *bool `json:"ConfigCompare,omitempty" xml:"ConfigCompare,omitempty"`
-	// 是否展示详情
-	DetailDisplay *bool `json:"DetailDisplay,omitempty" xml:"DetailDisplay,omitempty"`
-	// 设备形态ID
-	DeviceFormId *string `json:"DeviceFormId,omitempty" xml:"DeviceFormId,omitempty"`
-	// 设备形态名称
-	DeviceFormName *string `json:"DeviceFormName,omitempty" xml:"DeviceFormName,omitempty"`
-	// 设备形态是否内置
-	FormBuiltIn *bool `json:"FormBuiltIn,omitempty" xml:"FormBuiltIn,omitempty"`
-	// 关联设备形态ID
-	RelatedDeviceFormId *string `json:"RelatedDeviceFormId,omitempty" xml:"RelatedDeviceFormId,omitempty"`
-	// 资源用途
-	ResourceUse *string `json:"ResourceUse,omitempty" xml:"ResourceUse,omitempty"`
-	// 设备代码
-	Script *string `json:"Script,omitempty" xml:"Script,omitempty"`
-	// 设备形态主键
-	UniqueKey *string `json:"UniqueKey,omitempty" xml:"UniqueKey,omitempty"`
+	AccountConfig       *bool                                                  `json:"AccountConfig,omitempty" xml:"AccountConfig,omitempty"`
+	AttributeList       []*ListDeviceFormsResponseBodyDeviceFormsAttributeList `json:"AttributeList,omitempty" xml:"AttributeList,omitempty" type:"Repeated"`
+	ConfigCompare       *bool                                                  `json:"ConfigCompare,omitempty" xml:"ConfigCompare,omitempty"`
+	DetailDisplay       *bool                                                  `json:"DetailDisplay,omitempty" xml:"DetailDisplay,omitempty"`
+	DeviceFormId        *string                                                `json:"DeviceFormId,omitempty" xml:"DeviceFormId,omitempty"`
+	DeviceFormName      *string                                                `json:"DeviceFormName,omitempty" xml:"DeviceFormName,omitempty"`
+	FormBuiltIn         *bool                                                  `json:"FormBuiltIn,omitempty" xml:"FormBuiltIn,omitempty"`
+	RelatedDeviceFormId *string                                                `json:"RelatedDeviceFormId,omitempty" xml:"RelatedDeviceFormId,omitempty"`
+	ResourceUse         *string                                                `json:"ResourceUse,omitempty" xml:"ResourceUse,omitempty"`
+	Script              *string                                                `json:"Script,omitempty" xml:"Script,omitempty"`
+	UniqueKey           *string                                                `json:"UniqueKey,omitempty" xml:"UniqueKey,omitempty"`
 }
 
 func (s ListDeviceFormsResponseBodyDeviceForms) String() string {
@@ -18050,31 +17060,20 @@ func (s *ListDeviceFormsResponseBodyDeviceForms) SetUniqueKey(v string) *ListDev
 }
 
 type ListDeviceFormsResponseBodyDeviceFormsAttributeList struct {
-	// 设备形态属性是否内置
-	AttributeBuiltIn *bool   `json:"AttributeBuiltIn,omitempty" xml:"AttributeBuiltIn,omitempty"`
-	AttributeContent *string `json:"AttributeContent,omitempty" xml:"AttributeContent,omitempty"`
-	// 设备形态属性值格式
-	AttributeFormat *string `json:"AttributeFormat,omitempty" xml:"AttributeFormat,omitempty"`
-	// 前端查询控件是否支持模糊搜索
-	AttributeFuzzyQuery *bool `json:"AttributeFuzzyQuery,omitempty" xml:"AttributeFuzzyQuery,omitempty"`
-	// 设备形态属性主键
-	AttributeKey *string `json:"AttributeKey,omitempty" xml:"AttributeKey,omitempty"`
-	// 设备形态属性名称
-	AttributeName *string `json:"AttributeName,omitempty" xml:"AttributeName,omitempty"`
-	// 前端查询控件占位符
-	AttributePlaceholder *string `json:"AttributePlaceholder,omitempty" xml:"AttributePlaceholder,omitempty"`
-	// 前端是否展示对应的查询控件
-	AttributeQuery *bool `json:"AttributeQuery,omitempty" xml:"AttributeQuery,omitempty"`
-	// 设备形态属性关联对象
-	AttributeReference *string `json:"AttributeReference,omitempty" xml:"AttributeReference,omitempty"`
-	// 设备形态属性是否必填
-	AttributeRequirement *bool `json:"AttributeRequirement,omitempty" xml:"AttributeRequirement,omitempty"`
-	// 设备形态属性是否表格可见
-	AttributeTableDisplay *bool `json:"AttributeTableDisplay,omitempty" xml:"AttributeTableDisplay,omitempty"`
-	// 设备形态属性值类型
-	AttributeType *string `json:"AttributeType,omitempty" xml:"AttributeType,omitempty"`
-	// 设备形态属性是否唯一
-	AttributeUniqueness *bool `json:"AttributeUniqueness,omitempty" xml:"AttributeUniqueness,omitempty"`
+	AttributeBuiltIn      *bool   `json:"AttributeBuiltIn,omitempty" xml:"AttributeBuiltIn,omitempty"`
+	AttributeContent      *string `json:"AttributeContent,omitempty" xml:"AttributeContent,omitempty"`
+	AttributeFormat       *string `json:"AttributeFormat,omitempty" xml:"AttributeFormat,omitempty"`
+	AttributeFuzzyQuery   *bool   `json:"AttributeFuzzyQuery,omitempty" xml:"AttributeFuzzyQuery,omitempty"`
+	AttributeKey          *string `json:"AttributeKey,omitempty" xml:"AttributeKey,omitempty"`
+	AttributeName         *string `json:"AttributeName,omitempty" xml:"AttributeName,omitempty"`
+	AttributePlaceholder  *string `json:"AttributePlaceholder,omitempty" xml:"AttributePlaceholder,omitempty"`
+	AttributeQuery        *bool   `json:"AttributeQuery,omitempty" xml:"AttributeQuery,omitempty"`
+	AttributeReference    *string `json:"AttributeReference,omitempty" xml:"AttributeReference,omitempty"`
+	AttributeRequirement  *bool   `json:"AttributeRequirement,omitempty" xml:"AttributeRequirement,omitempty"`
+	AttributeSequence     *int32  `json:"AttributeSequence,omitempty" xml:"AttributeSequence,omitempty"`
+	AttributeTableDisplay *bool   `json:"AttributeTableDisplay,omitempty" xml:"AttributeTableDisplay,omitempty"`
+	AttributeType         *string `json:"AttributeType,omitempty" xml:"AttributeType,omitempty"`
+	AttributeUniqueness   *bool   `json:"AttributeUniqueness,omitempty" xml:"AttributeUniqueness,omitempty"`
 }
 
 func (s ListDeviceFormsResponseBodyDeviceFormsAttributeList) String() string {
@@ -18135,6 +17134,11 @@ func (s *ListDeviceFormsResponseBodyDeviceFormsAttributeList) SetAttributeRequir
 	return s
 }
 
+func (s *ListDeviceFormsResponseBodyDeviceFormsAttributeList) SetAttributeSequence(v int32) *ListDeviceFormsResponseBodyDeviceFormsAttributeList {
+	s.AttributeSequence = &v
+	return s
+}
+
 func (s *ListDeviceFormsResponseBodyDeviceFormsAttributeList) SetAttributeTableDisplay(v bool) *ListDeviceFormsResponseBodyDeviceFormsAttributeList {
 	s.AttributeTableDisplay = &v
 	return s
@@ -18151,8 +17155,9 @@ func (s *ListDeviceFormsResponseBodyDeviceFormsAttributeList) SetAttributeUnique
 }
 
 type ListDeviceFormsResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListDeviceFormsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListDeviceFormsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListDeviceFormsResponse) String() string {
@@ -18168,20 +17173,21 @@ func (s *ListDeviceFormsResponse) SetHeaders(v map[string]*string) *ListDeviceFo
 	return s
 }
 
+func (s *ListDeviceFormsResponse) SetStatusCode(v int32) *ListDeviceFormsResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ListDeviceFormsResponse) SetBody(v *ListDeviceFormsResponseBody) *ListDeviceFormsResponse {
 	s.Body = v
 	return s
 }
 
 type ListDevicePropertiesRequest struct {
-	// 设备形态ID
 	DeviceFormId *string `json:"DeviceFormId,omitempty" xml:"DeviceFormId,omitempty"`
-	// 实例ID
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 返回结果的最大个数。
-	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 当总结果个数大于MaxResults时，用于翻页的token。
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	MaxResults   *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 }
 
 func (s ListDevicePropertiesRequest) String() string {
@@ -18213,16 +17219,11 @@ func (s *ListDevicePropertiesRequest) SetNextToken(v string) *ListDeviceProperti
 }
 
 type ListDevicePropertiesResponseBody struct {
-	// 数组，返回示例目录。
 	DeviceProperties []*ListDevicePropertiesResponseBodyDeviceProperties `json:"DeviceProperties,omitempty" xml:"DeviceProperties,omitempty" type:"Repeated"`
-	// 每页数量。
-	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 当总结果个数大于MaxResults时，用于翻页的token。
-	NextToken *int32 `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 总记录数。
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	MaxResults       *int32                                              `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken        *int32                                              `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RequestId        *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount       *int32                                              `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListDevicePropertiesResponseBody) String() string {
@@ -18259,22 +17260,14 @@ func (s *ListDevicePropertiesResponseBody) SetTotalCount(v int32) *ListDevicePro
 }
 
 type ListDevicePropertiesResponseBodyDeviceProperties struct {
-	// 是否内置属性
-	BuiltIn *bool `json:"BuiltIn,omitempty" xml:"BuiltIn,omitempty"`
-	// 设备形态ID
-	DeviceFormId *string `json:"DeviceFormId,omitempty" xml:"DeviceFormId,omitempty"`
-	// 设备形态名称
-	DeviceFormName *string `json:"DeviceFormName,omitempty" xml:"DeviceFormName,omitempty"`
-	// 设备属性ID
+	BuiltIn          *bool   `json:"BuiltIn,omitempty" xml:"BuiltIn,omitempty"`
+	DeviceFormId     *string `json:"DeviceFormId,omitempty" xml:"DeviceFormId,omitempty"`
+	DeviceFormName   *string `json:"DeviceFormName,omitempty" xml:"DeviceFormName,omitempty"`
 	DevicePropertyId *string `json:"DevicePropertyId,omitempty" xml:"DevicePropertyId,omitempty"`
-	// 属性内容
-	PropertyContent *string `json:"PropertyContent,omitempty" xml:"PropertyContent,omitempty"`
-	// 属性格式
-	PropertyFormat *string `json:"PropertyFormat,omitempty" xml:"PropertyFormat,omitempty"`
-	// 属性主键
-	PropertyKey *string `json:"PropertyKey,omitempty" xml:"PropertyKey,omitempty"`
-	// 属性名称
-	PropertyName *string `json:"PropertyName,omitempty" xml:"PropertyName,omitempty"`
+	PropertyContent  *string `json:"PropertyContent,omitempty" xml:"PropertyContent,omitempty"`
+	PropertyFormat   *string `json:"PropertyFormat,omitempty" xml:"PropertyFormat,omitempty"`
+	PropertyKey      *string `json:"PropertyKey,omitempty" xml:"PropertyKey,omitempty"`
+	PropertyName     *string `json:"PropertyName,omitempty" xml:"PropertyName,omitempty"`
 }
 
 func (s ListDevicePropertiesResponseBodyDeviceProperties) String() string {
@@ -18326,8 +17319,9 @@ func (s *ListDevicePropertiesResponseBodyDeviceProperties) SetPropertyName(v str
 }
 
 type ListDevicePropertiesResponse struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListDevicePropertiesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListDevicePropertiesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListDevicePropertiesResponse) String() string {
@@ -18343,23 +17337,22 @@ func (s *ListDevicePropertiesResponse) SetHeaders(v map[string]*string) *ListDev
 	return s
 }
 
+func (s *ListDevicePropertiesResponse) SetStatusCode(v int32) *ListDevicePropertiesResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ListDevicePropertiesResponse) SetBody(v *ListDevicePropertiesResponseBody) *ListDevicePropertiesResponse {
 	s.Body = v
 	return s
 }
 
 type ListDeviceResourcesRequest struct {
-	// 业务类型
-	BusinessType *string `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
-	// instanceId
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// List类型
-	ListType *string `json:"ListType,omitempty" xml:"ListType,omitempty"`
-	// 返回结果的最大个数。
-	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 当总结果个数大于MaxResults时，用于翻页的token。
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// 建设项目id
+	BusinessType   *string `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
+	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	ListType       *string `json:"ListType,omitempty" xml:"ListType,omitempty"`
+	MaxResults     *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken      *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	SetupProjectId *string `json:"SetupProjectId,omitempty" xml:"SetupProjectId,omitempty"`
 }
 
@@ -18402,16 +17395,11 @@ func (s *ListDeviceResourcesRequest) SetSetupProjectId(v string) *ListDeviceReso
 }
 
 type ListDeviceResourcesResponseBody struct {
-	// 数组，返回示例目录。
 	DeviceResource []*ListDeviceResourcesResponseBodyDeviceResource `json:"DeviceResource,omitempty" xml:"DeviceResource,omitempty" type:"Repeated"`
-	// 本次读取的最大数据量
-	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 当总结果个数大于MaxResults时，用于翻页的token。
-	NextToken *int32 `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 总记录数。
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	MaxResults     *int64                                           `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken      *int32                                           `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RequestId      *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount     *int32                                           `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListDeviceResourcesResponseBody) String() string {
@@ -18448,50 +17436,28 @@ func (s *ListDeviceResourcesResponseBody) SetTotalCount(v int32) *ListDeviceReso
 }
 
 type ListDeviceResourcesResponseBodyDeviceResource struct {
-	// 组号
-	BlockNumber *string `json:"BlockNumber,omitempty" xml:"BlockNumber,omitempty"`
-	// 设备业务地址
-	Business *string `json:"Business,omitempty" xml:"Business,omitempty"`
-	// 设备配置
-	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
-	// 配置任务Id
-	ConfigTaskId *string `json:"ConfigTaskId,omitempty" xml:"ConfigTaskId,omitempty"`
-	// 配置下发状态
+	BlockNumber      *string `json:"BlockNumber,omitempty" xml:"BlockNumber,omitempty"`
+	Business         *string `json:"Business,omitempty" xml:"Business,omitempty"`
+	Config           *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	ConfigTaskId     *string `json:"ConfigTaskId,omitempty" xml:"ConfigTaskId,omitempty"`
 	ConfigTaskStatus *string `json:"ConfigTaskStatus,omitempty" xml:"ConfigTaskStatus,omitempty"`
-	// 交付登录地址
-	DeliveryIp *string `json:"DeliveryIp,omitempty" xml:"DeliveryIp,omitempty"`
-	// 设备号
-	DeviceNumber *string `json:"DeviceNumber,omitempty" xml:"DeviceNumber,omitempty"`
-	// 资源一级ID
+	DeliveryIp       *string `json:"DeliveryIp,omitempty" xml:"DeliveryIp,omitempty"`
+	DeviceNumber     *string `json:"DeviceNumber,omitempty" xml:"DeviceNumber,omitempty"`
 	DeviceResourceId *string `json:"DeviceResourceId,omitempty" xml:"DeviceResourceId,omitempty"`
-	// 配置生成
-	GenerateConfig *string `json:"GenerateConfig,omitempty" xml:"GenerateConfig,omitempty"`
-	// 主机名
-	HostName *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
-	// 设备互联地址
-	InterConnection *string `json:"InterConnection,omitempty" xml:"InterConnection,omitempty"`
-	// 物理空间位置
-	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
-	// loopback地址
-	Loopback *string `json:"Loopback,omitempty" xml:"Loopback,omitempty"`
-	// 带内管理地址
-	ManagerIp *string `json:"ManagerIp,omitempty" xml:"ManagerIp,omitempty"`
-	// 模型
-	Model *string `json:"Model,omitempty" xml:"Model,omitempty"`
-	// 配置入参
-	Params *string `json:"Params,omitempty" xml:"Params,omitempty"`
-	// 角色
-	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
-	// 建设项目id
-	SetupProjectId *string `json:"SetupProjectId,omitempty" xml:"SetupProjectId,omitempty"`
-	// 设备sn号
-	Sn *string `json:"Sn,omitempty" xml:"Sn,omitempty"`
-	// 配置规范
-	Specification *string `json:"Specification,omitempty" xml:"Specification,omitempty"`
-	// 堆叠状态
-	Stack *bool `json:"Stack,omitempty" xml:"Stack,omitempty"`
-	// 厂商
-	Vendor *string `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
+	GenerateConfig   *string `json:"GenerateConfig,omitempty" xml:"GenerateConfig,omitempty"`
+	HostName         *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
+	InterConnection  *string `json:"InterConnection,omitempty" xml:"InterConnection,omitempty"`
+	Location         *string `json:"Location,omitempty" xml:"Location,omitempty"`
+	Loopback         *string `json:"Loopback,omitempty" xml:"Loopback,omitempty"`
+	ManagerIp        *string `json:"ManagerIp,omitempty" xml:"ManagerIp,omitempty"`
+	Model            *string `json:"Model,omitempty" xml:"Model,omitempty"`
+	Params           *string `json:"Params,omitempty" xml:"Params,omitempty"`
+	Role             *string `json:"Role,omitempty" xml:"Role,omitempty"`
+	SetupProjectId   *string `json:"SetupProjectId,omitempty" xml:"SetupProjectId,omitempty"`
+	Sn               *string `json:"Sn,omitempty" xml:"Sn,omitempty"`
+	Specification    *string `json:"Specification,omitempty" xml:"Specification,omitempty"`
+	Stack            *bool   `json:"Stack,omitempty" xml:"Stack,omitempty"`
+	Vendor           *string `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
 }
 
 func (s ListDeviceResourcesResponseBodyDeviceResource) String() string {
@@ -18613,8 +17579,9 @@ func (s *ListDeviceResourcesResponseBodyDeviceResource) SetVendor(v string) *Lis
 }
 
 type ListDeviceResourcesResponse struct {
-	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListDeviceResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListDeviceResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListDeviceResourcesResponse) String() string {
@@ -18630,22 +17597,22 @@ func (s *ListDeviceResourcesResponse) SetHeaders(v map[string]*string) *ListDevi
 	return s
 }
 
+func (s *ListDeviceResourcesResponse) SetStatusCode(v int32) *ListDeviceResourcesResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ListDeviceResourcesResponse) SetBody(v *ListDeviceResourcesResponseBody) *ListDeviceResourcesResponse {
 	s.Body = v
 	return s
 }
 
 type ListDeviceValuesRequest struct {
-	// 查询属性对应JSON中主键
-	AttributeGroup *string `json:"AttributeGroup,omitempty" xml:"AttributeGroup,omitempty"`
-	// 查询属性主键
+	AttributeGroup   *string `json:"AttributeGroup,omitempty" xml:"AttributeGroup,omitempty"`
 	AttributeKeyword *string `json:"AttributeKeyword,omitempty" xml:"AttributeKeyword,omitempty"`
-	// 设备形态ID
-	DeviceFormId *string `json:"DeviceFormId,omitempty" xml:"DeviceFormId,omitempty"`
-	// 设备形态名称
-	DeviceFormName *string `json:"DeviceFormName,omitempty" xml:"DeviceFormName,omitempty"`
-	// 实例ID
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	DeviceFormId     *string `json:"DeviceFormId,omitempty" xml:"DeviceFormId,omitempty"`
+	DeviceFormName   *string `json:"DeviceFormName,omitempty" xml:"DeviceFormName,omitempty"`
+	InstanceId       *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
 func (s ListDeviceValuesRequest) String() string {
@@ -18682,10 +17649,8 @@ func (s *ListDeviceValuesRequest) SetInstanceId(v string) *ListDeviceValuesReque
 }
 
 type ListDeviceValuesResponseBody struct {
-	// 数组，返回示例目录。
 	DeviceValues []*string `json:"DeviceValues,omitempty" xml:"DeviceValues,omitempty" type:"Repeated"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId    *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListDeviceValuesResponseBody) String() string {
@@ -18707,8 +17672,9 @@ func (s *ListDeviceValuesResponseBody) SetRequestId(v string) *ListDeviceValuesR
 }
 
 type ListDeviceValuesResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListDeviceValuesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListDeviceValuesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListDeviceValuesResponse) String() string {
@@ -18724,48 +17690,36 @@ func (s *ListDeviceValuesResponse) SetHeaders(v map[string]*string) *ListDeviceV
 	return s
 }
 
+func (s *ListDeviceValuesResponse) SetStatusCode(v int32) *ListDeviceValuesResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ListDeviceValuesResponse) SetBody(v *ListDeviceValuesResponseBody) *ListDeviceValuesResponse {
 	s.Body = v
 	return s
 }
 
 type ListDevicesRequest struct {
-	// 设备形态ID
-	DeviceFormId *string `json:"DeviceFormId,omitempty" xml:"DeviceFormId,omitempty"`
-	// 设备形态名称
-	DeviceFormName *string `json:"DeviceFormName,omitempty" xml:"DeviceFormName,omitempty"`
-	// 设备Id列表
-	DeviceIds []*string `json:"DeviceIds,omitempty" xml:"DeviceIds,omitempty" type:"Repeated"`
-	// 设备额外属性
-	ExtAttributes *string `json:"ExtAttributes,omitempty" xml:"ExtAttributes,omitempty"`
-	// 设备主机名
-	HostName []*string `json:"HostName,omitempty" xml:"HostName,omitempty" type:"Repeated"`
-	// 实例ID
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 设备IP
-	Ip []*string `json:"Ip,omitempty" xml:"Ip,omitempty" type:"Repeated"`
-	// 模糊查询值
-	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
-	// 设备MAC
-	Mac []*string `json:"Mac,omitempty" xml:"Mac,omitempty" type:"Repeated"`
-	// 返回结果的最大个数。
-	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 设备型号
-	Model []*string `json:"Model,omitempty" xml:"Model,omitempty" type:"Repeated"`
-	// 当总结果个数大于MaxResults时，用于翻页的token。
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// 物理空间ID
-	PhysicalSpaceId *string `json:"PhysicalSpaceId,omitempty" xml:"PhysicalSpaceId,omitempty"`
-	// 物理空间IDS
+	CalculateAmount  *bool     `json:"CalculateAmount,omitempty" xml:"CalculateAmount,omitempty"`
+	DeviceFormId     *string   `json:"DeviceFormId,omitempty" xml:"DeviceFormId,omitempty"`
+	DeviceFormName   *string   `json:"DeviceFormName,omitempty" xml:"DeviceFormName,omitempty"`
+	DeviceIds        []*string `json:"DeviceIds,omitempty" xml:"DeviceIds,omitempty" type:"Repeated"`
+	ExtAttributes    *string   `json:"ExtAttributes,omitempty" xml:"ExtAttributes,omitempty"`
+	HostName         []*string `json:"HostName,omitempty" xml:"HostName,omitempty" type:"Repeated"`
+	InstanceId       *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Ip               []*string `json:"Ip,omitempty" xml:"Ip,omitempty" type:"Repeated"`
+	Keyword          *string   `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	Mac              []*string `json:"Mac,omitempty" xml:"Mac,omitempty" type:"Repeated"`
+	MaxResults       *int32    `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	Model            []*string `json:"Model,omitempty" xml:"Model,omitempty" type:"Repeated"`
+	NextToken        *string   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	PhysicalSpaceId  *string   `json:"PhysicalSpaceId,omitempty" xml:"PhysicalSpaceId,omitempty"`
 	PhysicalSpaceIds []*string `json:"PhysicalSpaceIds,omitempty" xml:"PhysicalSpaceIds,omitempty" type:"Repeated"`
-	// 安全域
-	SecurityDomain []*string `json:"SecurityDomain,omitempty" xml:"SecurityDomain,omitempty" type:"Repeated"`
-	// 设备服务状态
-	ServiceStatus []*string `json:"ServiceStatus,omitempty" xml:"ServiceStatus,omitempty" type:"Repeated"`
-	// 设备SN
-	Sn []*string `json:"Sn,omitempty" xml:"Sn,omitempty" type:"Repeated"`
-	// 设备厂商
-	Vendor []*string `json:"Vendor,omitempty" xml:"Vendor,omitempty" type:"Repeated"`
+	SecurityDomain   []*string `json:"SecurityDomain,omitempty" xml:"SecurityDomain,omitempty" type:"Repeated"`
+	ServiceStatus    []*string `json:"ServiceStatus,omitempty" xml:"ServiceStatus,omitempty" type:"Repeated"`
+	Sn               []*string `json:"Sn,omitempty" xml:"Sn,omitempty" type:"Repeated"`
+	Vendor           []*string `json:"Vendor,omitempty" xml:"Vendor,omitempty" type:"Repeated"`
 }
 
 func (s ListDevicesRequest) String() string {
@@ -18774,6 +17728,11 @@ func (s ListDevicesRequest) String() string {
 
 func (s ListDevicesRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ListDevicesRequest) SetCalculateAmount(v bool) *ListDevicesRequest {
+	s.CalculateAmount = &v
+	return s
 }
 
 func (s *ListDevicesRequest) SetDeviceFormId(v string) *ListDevicesRequest {
@@ -18867,42 +17826,25 @@ func (s *ListDevicesRequest) SetVendor(v []*string) *ListDevicesRequest {
 }
 
 type ListDevicesShrinkRequest struct {
-	// 设备形态ID
-	DeviceFormId *string `json:"DeviceFormId,omitempty" xml:"DeviceFormId,omitempty"`
-	// 设备形态名称
-	DeviceFormName *string `json:"DeviceFormName,omitempty" xml:"DeviceFormName,omitempty"`
-	// 设备Id列表
-	DeviceIdsShrink *string `json:"DeviceIds,omitempty" xml:"DeviceIds,omitempty"`
-	// 设备额外属性
-	ExtAttributes *string `json:"ExtAttributes,omitempty" xml:"ExtAttributes,omitempty"`
-	// 设备主机名
-	HostNameShrink *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
-	// 实例ID
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 设备IP
-	IpShrink *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	// 模糊查询值
-	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
-	// 设备MAC
-	MacShrink *string `json:"Mac,omitempty" xml:"Mac,omitempty"`
-	// 返回结果的最大个数。
-	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 设备型号
-	ModelShrink *string `json:"Model,omitempty" xml:"Model,omitempty"`
-	// 当总结果个数大于MaxResults时，用于翻页的token。
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// 物理空间ID
-	PhysicalSpaceId *string `json:"PhysicalSpaceId,omitempty" xml:"PhysicalSpaceId,omitempty"`
-	// 物理空间IDS
+	CalculateAmount        *bool   `json:"CalculateAmount,omitempty" xml:"CalculateAmount,omitempty"`
+	DeviceFormId           *string `json:"DeviceFormId,omitempty" xml:"DeviceFormId,omitempty"`
+	DeviceFormName         *string `json:"DeviceFormName,omitempty" xml:"DeviceFormName,omitempty"`
+	DeviceIdsShrink        *string `json:"DeviceIds,omitempty" xml:"DeviceIds,omitempty"`
+	ExtAttributes          *string `json:"ExtAttributes,omitempty" xml:"ExtAttributes,omitempty"`
+	HostNameShrink         *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
+	InstanceId             *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	IpShrink               *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	Keyword                *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	MacShrink              *string `json:"Mac,omitempty" xml:"Mac,omitempty"`
+	MaxResults             *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	ModelShrink            *string `json:"Model,omitempty" xml:"Model,omitempty"`
+	NextToken              *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	PhysicalSpaceId        *string `json:"PhysicalSpaceId,omitempty" xml:"PhysicalSpaceId,omitempty"`
 	PhysicalSpaceIdsShrink *string `json:"PhysicalSpaceIds,omitempty" xml:"PhysicalSpaceIds,omitempty"`
-	// 安全域
-	SecurityDomainShrink *string `json:"SecurityDomain,omitempty" xml:"SecurityDomain,omitempty"`
-	// 设备服务状态
-	ServiceStatusShrink *string `json:"ServiceStatus,omitempty" xml:"ServiceStatus,omitempty"`
-	// 设备SN
-	SnShrink *string `json:"Sn,omitempty" xml:"Sn,omitempty"`
-	// 设备厂商
-	VendorShrink *string `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
+	SecurityDomainShrink   *string `json:"SecurityDomain,omitempty" xml:"SecurityDomain,omitempty"`
+	ServiceStatusShrink    *string `json:"ServiceStatus,omitempty" xml:"ServiceStatus,omitempty"`
+	SnShrink               *string `json:"Sn,omitempty" xml:"Sn,omitempty"`
+	VendorShrink           *string `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
 }
 
 func (s ListDevicesShrinkRequest) String() string {
@@ -18911,6 +17853,11 @@ func (s ListDevicesShrinkRequest) String() string {
 
 func (s ListDevicesShrinkRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ListDevicesShrinkRequest) SetCalculateAmount(v bool) *ListDevicesShrinkRequest {
+	s.CalculateAmount = &v
+	return s
 }
 
 func (s *ListDevicesShrinkRequest) SetDeviceFormId(v string) *ListDevicesShrinkRequest {
@@ -19004,18 +17951,19 @@ func (s *ListDevicesShrinkRequest) SetVendorShrink(v string) *ListDevicesShrinkR
 }
 
 type ListDevicesResponseBody struct {
-	// 每页数量。
-	AmountUsed *int32 `json:"AmountUsed,omitempty" xml:"AmountUsed,omitempty"`
-	// 数组，返回示例目录。
-	Devices []*ListDevicesResponseBodyDevices `json:"Devices,omitempty" xml:"Devices,omitempty" type:"Repeated"`
-	// 每页数量。
-	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 当总结果个数大于MaxResults时，用于翻页的token。
-	NextToken *int32 `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 总记录数。
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	AmountDetail                  *string                           `json:"AmountDetail,omitempty" xml:"AmountDetail,omitempty"`
+	AmountUsed                    *int32                            `json:"AmountUsed,omitempty" xml:"AmountUsed,omitempty"`
+	Devices                       []*ListDevicesResponseBodyDevices `json:"Devices,omitempty" xml:"Devices,omitempty" type:"Repeated"`
+	IotCoefficient                *int32                            `json:"IotCoefficient,omitempty" xml:"IotCoefficient,omitempty"`
+	MaxResults                    *int32                            `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NetworkCoefficient            *int32                            `json:"NetworkCoefficient,omitempty" xml:"NetworkCoefficient,omitempty"`
+	NetworkMaintenanceCoefficient *int32                            `json:"NetworkMaintenanceCoefficient,omitempty" xml:"NetworkMaintenanceCoefficient,omitempty"`
+	NextToken                     *int32                            `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	OtherCoefficient              *int32                            `json:"OtherCoefficient,omitempty" xml:"OtherCoefficient,omitempty"`
+	RequestId                     *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ServerCoefficient             *int32                            `json:"ServerCoefficient,omitempty" xml:"ServerCoefficient,omitempty"`
+	ServerMaintenanceCoefficient  *int32                            `json:"ServerMaintenanceCoefficient,omitempty" xml:"ServerMaintenanceCoefficient,omitempty"`
+	TotalCount                    *int32                            `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListDevicesResponseBody) String() string {
@@ -19024,6 +17972,11 @@ func (s ListDevicesResponseBody) String() string {
 
 func (s ListDevicesResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *ListDevicesResponseBody) SetAmountDetail(v string) *ListDevicesResponseBody {
+	s.AmountDetail = &v
+	return s
 }
 
 func (s *ListDevicesResponseBody) SetAmountUsed(v int32) *ListDevicesResponseBody {
@@ -19036,8 +17989,23 @@ func (s *ListDevicesResponseBody) SetDevices(v []*ListDevicesResponseBodyDevices
 	return s
 }
 
+func (s *ListDevicesResponseBody) SetIotCoefficient(v int32) *ListDevicesResponseBody {
+	s.IotCoefficient = &v
+	return s
+}
+
 func (s *ListDevicesResponseBody) SetMaxResults(v int32) *ListDevicesResponseBody {
 	s.MaxResults = &v
+	return s
+}
+
+func (s *ListDevicesResponseBody) SetNetworkCoefficient(v int32) *ListDevicesResponseBody {
+	s.NetworkCoefficient = &v
+	return s
+}
+
+func (s *ListDevicesResponseBody) SetNetworkMaintenanceCoefficient(v int32) *ListDevicesResponseBody {
+	s.NetworkMaintenanceCoefficient = &v
 	return s
 }
 
@@ -19046,8 +18014,23 @@ func (s *ListDevicesResponseBody) SetNextToken(v int32) *ListDevicesResponseBody
 	return s
 }
 
+func (s *ListDevicesResponseBody) SetOtherCoefficient(v int32) *ListDevicesResponseBody {
+	s.OtherCoefficient = &v
+	return s
+}
+
 func (s *ListDevicesResponseBody) SetRequestId(v string) *ListDevicesResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *ListDevicesResponseBody) SetServerCoefficient(v int32) *ListDevicesResponseBody {
+	s.ServerCoefficient = &v
+	return s
+}
+
+func (s *ListDevicesResponseBody) SetServerMaintenanceCoefficient(v int32) *ListDevicesResponseBody {
+	s.ServerMaintenanceCoefficient = &v
 	return s
 }
 
@@ -19057,64 +18040,35 @@ func (s *ListDevicesResponseBody) SetTotalCount(v int32) *ListDevicesResponseBod
 }
 
 type ListDevicesResponseBodyDevices struct {
-	// 设备形态ID
-	DeviceFormId *string `json:"DeviceFormId,omitempty" xml:"DeviceFormId,omitempty"`
-	// 设备形态名称
-	DeviceFormName *string `json:"DeviceFormName,omitempty" xml:"DeviceFormName,omitempty"`
-	// 设备ID
-	DeviceId *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
-	// enable密码
-	EnablePassword *string `json:"EnablePassword,omitempty" xml:"EnablePassword,omitempty"`
-	// 设备额外属性
-	ExtAttributes *string `json:"ExtAttributes,omitempty" xml:"ExtAttributes,omitempty"`
-	// 创建时间
-	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// 修改时间
-	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// 主机名
-	HostName *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
-	// 设备IP
-	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	// 登录密码
-	LoginPassword *string `json:"LoginPassword,omitempty" xml:"LoginPassword,omitempty"`
-	// 登录类型
-	LoginType *string `json:"LoginType,omitempty" xml:"LoginType,omitempty"`
-	// 登录账号
-	LoginUsername *string `json:"LoginUsername,omitempty" xml:"LoginUsername,omitempty"`
-	// 设备MAC地址
-	Mac *string `json:"Mac,omitempty" xml:"Mac,omitempty"`
-	// 设备型号
-	Model *string `json:"Model,omitempty" xml:"Model,omitempty"`
-	// 物理空间ID
-	PhysicalSpaceId *string `json:"PhysicalSpaceId,omitempty" xml:"PhysicalSpaceId,omitempty"`
-	// 物理空间名称
-	PhysicalSpaceName *string `json:"PhysicalSpaceName,omitempty" xml:"PhysicalSpaceName,omitempty"`
-	// 设备安全域
-	SecurityDomain *string `json:"SecurityDomain,omitempty" xml:"SecurityDomain,omitempty"`
-	// 设备状态
-	ServiceStatus *string `json:"ServiceStatus,omitempty" xml:"ServiceStatus,omitempty"`
-	// 设备SN
-	Sn *string `json:"Sn,omitempty" xml:"Sn,omitempty"`
-	// SNMP 账号类型
-	SnmpAccountType *string `json:"SnmpAccountType,omitempty" xml:"SnmpAccountType,omitempty"`
-	// SNMP版本号
-	SnmpAccountVersion *string `json:"SnmpAccountVersion,omitempty" xml:"SnmpAccountVersion,omitempty"`
-	// SNMP Auth Passphrase
-	SnmpAuthPassphrase *string `json:"SnmpAuthPassphrase,omitempty" xml:"SnmpAuthPassphrase,omitempty"`
-	// SNMP Auth Protocol
-	SnmpAuthProtocol *string `json:"SnmpAuthProtocol,omitempty" xml:"SnmpAuthProtocol,omitempty"`
-	// SNMP Community
-	SnmpCommunity *string `json:"SnmpCommunity,omitempty" xml:"SnmpCommunity,omitempty"`
-	// SNMP Privacy Passphrase
+	DeviceFormId          *string `json:"DeviceFormId,omitempty" xml:"DeviceFormId,omitempty"`
+	DeviceFormName        *string `json:"DeviceFormName,omitempty" xml:"DeviceFormName,omitempty"`
+	DeviceId              *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
+	EnablePassword        *string `json:"EnablePassword,omitempty" xml:"EnablePassword,omitempty"`
+	ExtAttributes         *string `json:"ExtAttributes,omitempty" xml:"ExtAttributes,omitempty"`
+	GmtCreate             *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	GmtModified           *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	HostName              *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
+	Ip                    *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	LoginPassword         *string `json:"LoginPassword,omitempty" xml:"LoginPassword,omitempty"`
+	LoginType             *string `json:"LoginType,omitempty" xml:"LoginType,omitempty"`
+	LoginUsername         *string `json:"LoginUsername,omitempty" xml:"LoginUsername,omitempty"`
+	Mac                   *string `json:"Mac,omitempty" xml:"Mac,omitempty"`
+	Model                 *string `json:"Model,omitempty" xml:"Model,omitempty"`
+	PhysicalSpaceId       *string `json:"PhysicalSpaceId,omitempty" xml:"PhysicalSpaceId,omitempty"`
+	PhysicalSpaceName     *string `json:"PhysicalSpaceName,omitempty" xml:"PhysicalSpaceName,omitempty"`
+	SecurityDomain        *string `json:"SecurityDomain,omitempty" xml:"SecurityDomain,omitempty"`
+	ServiceStatus         *string `json:"ServiceStatus,omitempty" xml:"ServiceStatus,omitempty"`
+	Sn                    *string `json:"Sn,omitempty" xml:"Sn,omitempty"`
+	SnmpAccountType       *string `json:"SnmpAccountType,omitempty" xml:"SnmpAccountType,omitempty"`
+	SnmpAccountVersion    *string `json:"SnmpAccountVersion,omitempty" xml:"SnmpAccountVersion,omitempty"`
+	SnmpAuthPassphrase    *string `json:"SnmpAuthPassphrase,omitempty" xml:"SnmpAuthPassphrase,omitempty"`
+	SnmpAuthProtocol      *string `json:"SnmpAuthProtocol,omitempty" xml:"SnmpAuthProtocol,omitempty"`
+	SnmpCommunity         *string `json:"SnmpCommunity,omitempty" xml:"SnmpCommunity,omitempty"`
 	SnmpPrivacyPassphrase *string `json:"SnmpPrivacyPassphrase,omitempty" xml:"SnmpPrivacyPassphrase,omitempty"`
-	// SNMP Privacy Protocol
-	SnmpPrivacyProtocol *string `json:"SnmpPrivacyProtocol,omitempty" xml:"SnmpPrivacyProtocol,omitempty"`
-	// SNMP 安全级别
-	SnmpSecurityLevel *string `json:"SnmpSecurityLevel,omitempty" xml:"SnmpSecurityLevel,omitempty"`
-	// SNMP 用户名
-	SnmpUsername *string `json:"SnmpUsername,omitempty" xml:"SnmpUsername,omitempty"`
-	// 设备厂商
-	Vendor *string `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
+	SnmpPrivacyProtocol   *string `json:"SnmpPrivacyProtocol,omitempty" xml:"SnmpPrivacyProtocol,omitempty"`
+	SnmpSecurityLevel     *string `json:"SnmpSecurityLevel,omitempty" xml:"SnmpSecurityLevel,omitempty"`
+	SnmpUsername          *string `json:"SnmpUsername,omitempty" xml:"SnmpUsername,omitempty"`
+	Vendor                *string `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
 }
 
 func (s ListDevicesResponseBodyDevices) String() string {
@@ -19271,8 +18225,9 @@ func (s *ListDevicesResponseBodyDevices) SetVendor(v string) *ListDevicesRespons
 }
 
 type ListDevicesResponse struct {
-	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListDevicesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListDevicesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListDevicesResponse) String() string {
@@ -19288,24 +18243,23 @@ func (s *ListDevicesResponse) SetHeaders(v map[string]*string) *ListDevicesRespo
 	return s
 }
 
+func (s *ListDevicesResponse) SetStatusCode(v int32) *ListDevicesResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ListDevicesResponse) SetBody(v *ListDevicesResponseBody) *ListDevicesResponse {
 	s.Body = v
 	return s
 }
 
 type ListEventDefinitionsRequest struct {
-	// 事件项ID
-	EventId *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
-	// 事件项名称
-	EventName *string `json:"EventName,omitempty" xml:"EventName,omitempty"`
-	// 事件类型
-	EventType *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
-	// 实例ID
+	EventId    *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	EventName  *string `json:"EventName,omitempty" xml:"EventName,omitempty"`
+	EventType  *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 本次读取的最大数据记录数量
-	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 标记当前开始读取的位置，置空表示从头开始
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	MaxResults *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken  *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 }
 
 func (s ListEventDefinitionsRequest) String() string {
@@ -19347,16 +18301,11 @@ func (s *ListEventDefinitionsRequest) SetNextToken(v string) *ListEventDefinitio
 }
 
 type ListEventDefinitionsResponseBody struct {
-	// 事件项列表
 	EventDefinitions []*EventDefinition `json:"EventDefinitions,omitempty" xml:"EventDefinitions,omitempty" type:"Repeated"`
-	// MaxResults本次请求所返回的最大记录条数
-	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 表示当前调用返回读取到的位置，空代表数据已经读取完毕
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// TotalCount本次请求条件下的数据总量，此参数为可选参数，默认可不返回
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	MaxResults       *int32             `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken        *string            `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RequestId        *string            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount       *int32             `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListEventDefinitionsResponseBody) String() string {
@@ -19393,8 +18342,9 @@ func (s *ListEventDefinitionsResponseBody) SetTotalCount(v int32) *ListEventDefi
 }
 
 type ListEventDefinitionsResponse struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListEventDefinitionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListEventDefinitionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListEventDefinitionsResponse) String() string {
@@ -19410,23 +18360,23 @@ func (s *ListEventDefinitionsResponse) SetHeaders(v map[string]*string) *ListEve
 	return s
 }
 
+func (s *ListEventDefinitionsResponse) SetStatusCode(v int32) *ListEventDefinitionsResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ListEventDefinitionsResponse) SetBody(v *ListEventDefinitionsResponseBody) *ListEventDefinitionsResponse {
 	s.Body = v
 	return s
 }
 
 type ListEventsRequest struct {
-	// 设备ID
-	DeviceId *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
-	// 事件类型
-	EventType *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
-	// 实例ID
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 本次读取的最大数据记录数量
-	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 标记当前开始读取的位置，置空表示从头开始
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// 物理空间ID
+	AlarmStatus     *string `json:"AlarmStatus,omitempty" xml:"AlarmStatus,omitempty"`
+	DeviceId        *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
+	EventType       *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
+	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	MaxResults      *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken       *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	PhysicalSpaceId *string `json:"PhysicalSpaceId,omitempty" xml:"PhysicalSpaceId,omitempty"`
 }
 
@@ -19436,6 +18386,11 @@ func (s ListEventsRequest) String() string {
 
 func (s ListEventsRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ListEventsRequest) SetAlarmStatus(v string) *ListEventsRequest {
+	s.AlarmStatus = &v
+	return s
 }
 
 func (s *ListEventsRequest) SetDeviceId(v string) *ListEventsRequest {
@@ -19469,18 +18424,12 @@ func (s *ListEventsRequest) SetPhysicalSpaceId(v string) *ListEventsRequest {
 }
 
 type ListEventsResponseBody struct {
-	// 事件列表
-	Events []*Event `json:"Events,omitempty" xml:"Events,omitempty" type:"Repeated"`
-	// MaxResults本次请求所返回的最大记录条数
-	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 表示当前调用返回读取到的位置，空代表数据已经读取完毕
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 事件统计
+	Events     []*Event                            `json:"Events,omitempty" xml:"Events,omitempty" type:"Repeated"`
+	MaxResults *int32                              `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken  *string                             `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RequestId  *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Statistics []*ListEventsResponseBodyStatistics `json:"Statistics,omitempty" xml:"Statistics,omitempty" type:"Repeated"`
-	// TotalCount本次请求条件下的数据总量，此参数为可选参数，默认可不返回
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	TotalCount *int32                              `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListEventsResponseBody) String() string {
@@ -19522,9 +18471,7 @@ func (s *ListEventsResponseBody) SetTotalCount(v int32) *ListEventsResponseBody 
 }
 
 type ListEventsResponseBodyStatistics struct {
-	// 总量
-	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// 事件告警状态
+	Count  *int32  `json:"Count,omitempty" xml:"Count,omitempty"`
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -19547,8 +18494,9 @@ func (s *ListEventsResponseBodyStatistics) SetStatus(v string) *ListEventsRespon
 }
 
 type ListEventsResponse struct {
-	Headers map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListEventsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListEventsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListEventsResponse) String() string {
@@ -19564,20 +18512,21 @@ func (s *ListEventsResponse) SetHeaders(v map[string]*string) *ListEventsRespons
 	return s
 }
 
+func (s *ListEventsResponse) SetStatusCode(v int32) *ListEventsResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ListEventsResponse) SetBody(v *ListEventsResponseBody) *ListEventsResponse {
 	s.Body = v
 	return s
 }
 
 type ListInspectionDevicesRequest struct {
-	// 实例id
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 型号
-	Model []*string `json:"Model,omitempty" xml:"Model,omitempty" type:"Repeated"`
-	// 角色
-	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
-	// 厂商
-	Vendor *string `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
+	InstanceId *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Model      []*string `json:"Model,omitempty" xml:"Model,omitempty" type:"Repeated"`
+	Role       *string   `json:"Role,omitempty" xml:"Role,omitempty"`
+	Vendor     *string   `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
 }
 
 func (s ListInspectionDevicesRequest) String() string {
@@ -19609,14 +18558,10 @@ func (s *ListInspectionDevicesRequest) SetVendor(v string) *ListInspectionDevice
 }
 
 type ListInspectionDevicesShrinkRequest struct {
-	// 实例id
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 型号
+	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	ModelShrink *string `json:"Model,omitempty" xml:"Model,omitempty"`
-	// 角色
-	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
-	// 厂商
-	Vendor *string `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
+	Role        *string `json:"Role,omitempty" xml:"Role,omitempty"`
+	Vendor      *string `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
 }
 
 func (s ListInspectionDevicesShrinkRequest) String() string {
@@ -19648,10 +18593,8 @@ func (s *ListInspectionDevicesShrinkRequest) SetVendor(v string) *ListInspection
 }
 
 type ListInspectionDevicesResponseBody struct {
-	// content
 	InspectionScripts []*ListInspectionDevicesResponseBodyInspectionScripts `json:"InspectionScripts,omitempty" xml:"InspectionScripts,omitempty" type:"Repeated"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId         *string                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListInspectionDevicesResponseBody) String() string {
@@ -19673,22 +18616,14 @@ func (s *ListInspectionDevicesResponseBody) SetRequestId(v string) *ListInspecti
 }
 
 type ListInspectionDevicesResponseBodyInspectionScripts struct {
-	// 设备id
-	DeviceId *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
-	// 设备状态
+	DeviceId    *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
 	DeviceState *string `json:"DeviceState,omitempty" xml:"DeviceState,omitempty"`
-	// 主机名
-	HostName *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
-	// 管理ip
-	ManageIp *string `json:"ManageIp,omitempty" xml:"ManageIp,omitempty"`
-	// 型号
-	Model *string `json:"Model,omitempty" xml:"Model,omitempty"`
-	// 角色
-	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
-	// 物理空间
-	Space *string `json:"Space,omitempty" xml:"Space,omitempty"`
-	// 厂商
-	Vendor *string `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
+	HostName    *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
+	ManageIp    *string `json:"ManageIp,omitempty" xml:"ManageIp,omitempty"`
+	Model       *string `json:"Model,omitempty" xml:"Model,omitempty"`
+	Role        *string `json:"Role,omitempty" xml:"Role,omitempty"`
+	Space       *string `json:"Space,omitempty" xml:"Space,omitempty"`
+	Vendor      *string `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
 }
 
 func (s ListInspectionDevicesResponseBodyInspectionScripts) String() string {
@@ -19740,8 +18675,9 @@ func (s *ListInspectionDevicesResponseBodyInspectionScripts) SetVendor(v string)
 }
 
 type ListInspectionDevicesResponse struct {
-	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListInspectionDevicesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListInspectionDevicesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListInspectionDevicesResponse) String() string {
@@ -19757,18 +18693,20 @@ func (s *ListInspectionDevicesResponse) SetHeaders(v map[string]*string) *ListIn
 	return s
 }
 
+func (s *ListInspectionDevicesResponse) SetStatusCode(v int32) *ListInspectionDevicesResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ListInspectionDevicesResponse) SetBody(v *ListInspectionDevicesResponseBody) *ListInspectionDevicesResponse {
 	s.Body = v
 	return s
 }
 
 type ListInspectionTaskReportsRequest struct {
-	// 巡检项id
 	InspectionItemId *string `json:"InspectionItemId,omitempty" xml:"InspectionItemId,omitempty"`
-	// 实例id
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 厂商
-	Vendor *string `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
+	InstanceId       *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Vendor           *string `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
 }
 
 func (s ListInspectionTaskReportsRequest) String() string {
@@ -19795,10 +18733,8 @@ func (s *ListInspectionTaskReportsRequest) SetVendor(v string) *ListInspectionTa
 }
 
 type ListInspectionTaskReportsResponseBody struct {
-	// 内容
 	InspectionTask []*ListInspectionTaskReportsResponseBodyInspectionTask `json:"InspectionTask,omitempty" xml:"InspectionTask,omitempty" type:"Repeated"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId      *string                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListInspectionTaskReportsResponseBody) String() string {
@@ -19820,43 +18756,25 @@ func (s *ListInspectionTaskReportsResponseBody) SetRequestId(v string) *ListInsp
 }
 
 type ListInspectionTaskReportsResponseBodyInspectionTask struct {
-	// 实际设备数
-	ActualDeviceNumber *int64 `json:"ActualDeviceNumber,omitempty" xml:"ActualDeviceNumber,omitempty"`
-	// 告警数量
-	AlarmNumber    *int64                                                               `json:"AlarmNumber,omitempty" xml:"AlarmNumber,omitempty"`
-	AlarmStatistic []*ListInspectionTaskReportsResponseBodyInspectionTaskAlarmStatistic `json:"AlarmStatistic,omitempty" xml:"AlarmStatistic,omitempty" type:"Repeated"`
-	// 高危数量
-	CriticalNumber *int64 `json:"CriticalNumber,omitempty" xml:"CriticalNumber,omitempty"`
-	// 高危占比
-	CriticalRate *string `json:"CriticalRate,omitempty" xml:"CriticalRate,omitempty"`
-	// 设备占比
-	DeviceRate *string `json:"DeviceRate,omitempty" xml:"DeviceRate,omitempty"`
-	// 失败详情
-	FailureStatistic *string `json:"FailureStatistic,omitempty" xml:"FailureStatistic,omitempty"`
-	// 失败任务数
-	FailureTaskNumber *int64 `json:"FailureTaskNumber,omitempty" xml:"FailureTaskNumber,omitempty"`
-	// 失败占比
-	FailureTaskRate *string `json:"FailureTaskRate,omitempty" xml:"FailureTaskRate,omitempty"`
-	// 正常数量
-	NormalNumber *int64 `json:"NormalNumber,omitempty" xml:"NormalNumber,omitempty"`
-	// 正常占比
-	NormalRate *string `json:"NormalRate,omitempty" xml:"NormalRate,omitempty"`
-	// 正在运行任务数
-	RunningTaskNumber *int64 `json:"RunningTaskNumber,omitempty" xml:"RunningTaskNumber,omitempty"`
-	// 运行占比
-	RunningTaskRate *string `json:"RunningTaskRate,omitempty" xml:"RunningTaskRate,omitempty"`
-	// 成功任务数
-	SuccessTaskNumber *int64 `json:"SuccessTaskNumber,omitempty" xml:"SuccessTaskNumber,omitempty"`
-	// 成功占比
-	SuccessTaskRate *string `json:"SuccessTaskRate,omitempty" xml:"SuccessTaskRate,omitempty"`
-	// 任务数
-	TaskNumber *int64 `json:"TaskNumber,omitempty" xml:"TaskNumber,omitempty"`
-	// 总设备数
-	TotalDeviceNumber *int64 `json:"TotalDeviceNumber,omitempty" xml:"TotalDeviceNumber,omitempty"`
-	// 中危数量
-	WarningNumber *int64 `json:"WarningNumber,omitempty" xml:"WarningNumber,omitempty"`
-	// 中危占比
-	WarningRate *string `json:"WarningRate,omitempty" xml:"WarningRate,omitempty"`
+	ActualDeviceNumber *int64                                                               `json:"ActualDeviceNumber,omitempty" xml:"ActualDeviceNumber,omitempty"`
+	AlarmNumber        *int64                                                               `json:"AlarmNumber,omitempty" xml:"AlarmNumber,omitempty"`
+	AlarmStatistic     []*ListInspectionTaskReportsResponseBodyInspectionTaskAlarmStatistic `json:"AlarmStatistic,omitempty" xml:"AlarmStatistic,omitempty" type:"Repeated"`
+	CriticalNumber     *int64                                                               `json:"CriticalNumber,omitempty" xml:"CriticalNumber,omitempty"`
+	CriticalRate       *string                                                              `json:"CriticalRate,omitempty" xml:"CriticalRate,omitempty"`
+	DeviceRate         *string                                                              `json:"DeviceRate,omitempty" xml:"DeviceRate,omitempty"`
+	FailureStatistic   *string                                                              `json:"FailureStatistic,omitempty" xml:"FailureStatistic,omitempty"`
+	FailureTaskNumber  *int64                                                               `json:"FailureTaskNumber,omitempty" xml:"FailureTaskNumber,omitempty"`
+	FailureTaskRate    *string                                                              `json:"FailureTaskRate,omitempty" xml:"FailureTaskRate,omitempty"`
+	NormalNumber       *int64                                                               `json:"NormalNumber,omitempty" xml:"NormalNumber,omitempty"`
+	NormalRate         *string                                                              `json:"NormalRate,omitempty" xml:"NormalRate,omitempty"`
+	RunningTaskNumber  *int64                                                               `json:"RunningTaskNumber,omitempty" xml:"RunningTaskNumber,omitempty"`
+	RunningTaskRate    *string                                                              `json:"RunningTaskRate,omitempty" xml:"RunningTaskRate,omitempty"`
+	SuccessTaskNumber  *int64                                                               `json:"SuccessTaskNumber,omitempty" xml:"SuccessTaskNumber,omitempty"`
+	SuccessTaskRate    *string                                                              `json:"SuccessTaskRate,omitempty" xml:"SuccessTaskRate,omitempty"`
+	TaskNumber         *int64                                                               `json:"TaskNumber,omitempty" xml:"TaskNumber,omitempty"`
+	TotalDeviceNumber  *int64                                                               `json:"TotalDeviceNumber,omitempty" xml:"TotalDeviceNumber,omitempty"`
+	WarningNumber      *int64                                                               `json:"WarningNumber,omitempty" xml:"WarningNumber,omitempty"`
+	WarningRate        *string                                                              `json:"WarningRate,omitempty" xml:"WarningRate,omitempty"`
 }
 
 func (s ListInspectionTaskReportsResponseBodyInspectionTask) String() string {
@@ -19963,16 +18881,11 @@ func (s *ListInspectionTaskReportsResponseBodyInspectionTask) SetWarningRate(v s
 }
 
 type ListInspectionTaskReportsResponseBodyInspectionTaskAlarmStatistic struct {
-	// 高危数量
-	CriticalNumber *int64 `json:"CriticalNumber,omitempty" xml:"CriticalNumber,omitempty"`
-	// 巡检项
+	CriticalNumber *int64  `json:"CriticalNumber,omitempty" xml:"CriticalNumber,omitempty"`
 	InspectionItem *string `json:"InspectionItem,omitempty" xml:"InspectionItem,omitempty"`
-	// 型号
-	Model *string `json:"Model,omitempty" xml:"Model,omitempty"`
-	// 厂商
-	Vendor *string `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
-	// 中危数量
-	WarningNumber *int64 `json:"WarningNumber,omitempty" xml:"WarningNumber,omitempty"`
+	Model          *string `json:"Model,omitempty" xml:"Model,omitempty"`
+	Vendor         *string `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
+	WarningNumber  *int64  `json:"WarningNumber,omitempty" xml:"WarningNumber,omitempty"`
 }
 
 func (s ListInspectionTaskReportsResponseBodyInspectionTaskAlarmStatistic) String() string {
@@ -20009,8 +18922,9 @@ func (s *ListInspectionTaskReportsResponseBodyInspectionTaskAlarmStatistic) SetW
 }
 
 type ListInspectionTaskReportsResponse struct {
-	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListInspectionTaskReportsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListInspectionTaskReportsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListInspectionTaskReportsResponse) String() string {
@@ -20026,38 +18940,30 @@ func (s *ListInspectionTaskReportsResponse) SetHeaders(v map[string]*string) *Li
 	return s
 }
 
+func (s *ListInspectionTaskReportsResponse) SetStatusCode(v int32) *ListInspectionTaskReportsResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ListInspectionTaskReportsResponse) SetBody(v *ListInspectionTaskReportsResponseBody) *ListInspectionTaskReportsResponse {
 	s.Body = v
 	return s
 }
 
 type ListInspectionTasksRequest struct {
-	// 告警结果状态
 	AlarmStatus []*string `json:"AlarmStatus,omitempty" xml:"AlarmStatus,omitempty" type:"Repeated"`
-	// 设备类型
-	DeviceType *string `json:"DeviceType,omitempty" xml:"DeviceType,omitempty"`
-	// 主机名
-	HostName *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
-	// 设备IP
-	IP *string `json:"IP,omitempty" xml:"IP,omitempty"`
-	// 实例ID
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 巡检项ID
-	ItemId *string `json:"ItemId,omitempty" xml:"ItemId,omitempty"`
-	// 返回结果的最大个数。
-	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 型号
-	Model *string `json:"Model,omitempty" xml:"Model,omitempty"`
-	// 当总结果个数大于MaxResults时，用于翻页的token。
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// 角色
-	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
-	// 物理空间
-	Space *string `json:"Space,omitempty" xml:"Space,omitempty"`
-	// 巡检状态
-	TaskStatus *string `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
-	// 厂商
-	Vendor *string `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
+	DeviceType  *string   `json:"DeviceType,omitempty" xml:"DeviceType,omitempty"`
+	HostName    *string   `json:"HostName,omitempty" xml:"HostName,omitempty"`
+	IP          *string   `json:"IP,omitempty" xml:"IP,omitempty"`
+	InstanceId  *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	ItemId      *string   `json:"ItemId,omitempty" xml:"ItemId,omitempty"`
+	MaxResults  *int32    `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	Model       *string   `json:"Model,omitempty" xml:"Model,omitempty"`
+	NextToken   *string   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	Role        *string   `json:"Role,omitempty" xml:"Role,omitempty"`
+	Space       *string   `json:"Space,omitempty" xml:"Space,omitempty"`
+	TaskStatus  *string   `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
+	Vendor      *string   `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
 }
 
 func (s ListInspectionTasksRequest) String() string {
@@ -20134,32 +19040,19 @@ func (s *ListInspectionTasksRequest) SetVendor(v string) *ListInspectionTasksReq
 }
 
 type ListInspectionTasksShrinkRequest struct {
-	// 告警结果状态
 	AlarmStatusShrink *string `json:"AlarmStatus,omitempty" xml:"AlarmStatus,omitempty"`
-	// 设备类型
-	DeviceType *string `json:"DeviceType,omitempty" xml:"DeviceType,omitempty"`
-	// 主机名
-	HostName *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
-	// 设备IP
-	IP *string `json:"IP,omitempty" xml:"IP,omitempty"`
-	// 实例ID
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 巡检项ID
-	ItemId *string `json:"ItemId,omitempty" xml:"ItemId,omitempty"`
-	// 返回结果的最大个数。
-	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 型号
-	Model *string `json:"Model,omitempty" xml:"Model,omitempty"`
-	// 当总结果个数大于MaxResults时，用于翻页的token。
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// 角色
-	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
-	// 物理空间
-	Space *string `json:"Space,omitempty" xml:"Space,omitempty"`
-	// 巡检状态
-	TaskStatus *string `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
-	// 厂商
-	Vendor *string `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
+	DeviceType        *string `json:"DeviceType,omitempty" xml:"DeviceType,omitempty"`
+	HostName          *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
+	IP                *string `json:"IP,omitempty" xml:"IP,omitempty"`
+	InstanceId        *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	ItemId            *string `json:"ItemId,omitempty" xml:"ItemId,omitempty"`
+	MaxResults        *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	Model             *string `json:"Model,omitempty" xml:"Model,omitempty"`
+	NextToken         *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	Role              *string `json:"Role,omitempty" xml:"Role,omitempty"`
+	Space             *string `json:"Space,omitempty" xml:"Space,omitempty"`
+	TaskStatus        *string `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
+	Vendor            *string `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
 }
 
 func (s ListInspectionTasksShrinkRequest) String() string {
@@ -20236,14 +19129,10 @@ func (s *ListInspectionTasksShrinkRequest) SetVendor(v string) *ListInspectionTa
 }
 
 type ListInspectionTasksResponseBody struct {
-	// 数组，返回示例目录。
 	InspectionTasks []*ListInspectionTasksResponseBodyInspectionTasks `json:"InspectionTasks,omitempty" xml:"InspectionTasks,omitempty" type:"Repeated"`
-	// 当总结果个数大于MaxResults时，用于翻页的token。
-	NextToken *int32 `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// 请求ID
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 总记录数。
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	NextToken       *int32                                            `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RequestId       *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount      *int32                                            `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListInspectionTasksResponseBody) String() string {
@@ -20275,46 +19164,27 @@ func (s *ListInspectionTasksResponseBody) SetTotalCount(v int32) *ListInspection
 }
 
 type ListInspectionTasksResponseBodyInspectionTasks struct {
-	// 告警结果状态
-	AlarmStatus *string `json:"AlarmStatus,omitempty" xml:"AlarmStatus,omitempty"`
-	// 设备ID
-	DeviceId *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
-	// 设备类型
-	DeviceType *string `json:"DeviceType,omitempty" xml:"DeviceType,omitempty"`
-	// 错误码
-	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// 巡检开始时间
-	ExecutionBeginTime *string `json:"ExecutionBeginTime,omitempty" xml:"ExecutionBeginTime,omitempty"`
-	// 巡检结束时间
-	ExecutionEndTime *string `json:"ExecutionEndTime,omitempty" xml:"ExecutionEndTime,omitempty"`
-	// 主机名
-	HostName *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
-	// IP地址
-	IP *string `json:"IP,omitempty" xml:"IP,omitempty"`
-	// 告警规则
-	InspectionAlarmRules []*ListInspectionTasksResponseBodyInspectionTasksInspectionAlarmRules `json:"InspectionAlarmRules,omitempty" xml:"InspectionAlarmRules,omitempty" type:"Repeated"`
-	// 巡检信息
-	InspectionMessage *string `json:"InspectionMessage,omitempty" xml:"InspectionMessage,omitempty"`
-	// 巡检结果（可能截断）
-	InspectionResult *string `json:"InspectionResult,omitempty" xml:"InspectionResult,omitempty"`
-	// 巡检项ID
-	ItemId *string `json:"ItemId,omitempty" xml:"ItemId,omitempty"`
-	// 巡检项名字
-	ItemName *string `json:"ItemName,omitempty" xml:"ItemName,omitempty"`
-	// 型号
-	Model []*string `json:"Model,omitempty" xml:"Model,omitempty" type:"Repeated"`
-	// 角色
-	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
-	// 模板ID
-	ScriptId *string `json:"ScriptId,omitempty" xml:"ScriptId,omitempty"`
-	// 物理空间
-	Space *string `json:"Space,omitempty" xml:"Space,omitempty"`
-	// 任务ID
-	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// 任务状态
-	TaskStatus *string `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
-	// 厂商
-	Vendor *string `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
+	AlarmStatus                  *string                                                               `json:"AlarmStatus,omitempty" xml:"AlarmStatus,omitempty"`
+	DeviceId                     *string                                                               `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
+	DeviceType                   *string                                                               `json:"DeviceType,omitempty" xml:"DeviceType,omitempty"`
+	ErrorCode                    *string                                                               `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ExecutionBeginTime           *string                                                               `json:"ExecutionBeginTime,omitempty" xml:"ExecutionBeginTime,omitempty"`
+	ExecutionEndTime             *string                                                               `json:"ExecutionEndTime,omitempty" xml:"ExecutionEndTime,omitempty"`
+	HostName                     *string                                                               `json:"HostName,omitempty" xml:"HostName,omitempty"`
+	IP                           *string                                                               `json:"IP,omitempty" xml:"IP,omitempty"`
+	InspectionAlarmRules         []*ListInspectionTasksResponseBodyInspectionTasksInspectionAlarmRules `json:"InspectionAlarmRules,omitempty" xml:"InspectionAlarmRules,omitempty" type:"Repeated"`
+	InspectionMessage            *string                                                               `json:"InspectionMessage,omitempty" xml:"InspectionMessage,omitempty"`
+	InspectionResult             *string                                                               `json:"InspectionResult,omitempty" xml:"InspectionResult,omitempty"`
+	IsInspectionResultTruncation *bool                                                                 `json:"IsInspectionResultTruncation,omitempty" xml:"IsInspectionResultTruncation,omitempty"`
+	ItemId                       *string                                                               `json:"ItemId,omitempty" xml:"ItemId,omitempty"`
+	ItemName                     *string                                                               `json:"ItemName,omitempty" xml:"ItemName,omitempty"`
+	Model                        []*string                                                             `json:"Model,omitempty" xml:"Model,omitempty" type:"Repeated"`
+	Role                         *string                                                               `json:"Role,omitempty" xml:"Role,omitempty"`
+	ScriptId                     *string                                                               `json:"ScriptId,omitempty" xml:"ScriptId,omitempty"`
+	Space                        *string                                                               `json:"Space,omitempty" xml:"Space,omitempty"`
+	TaskId                       *string                                                               `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	TaskStatus                   *string                                                               `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
+	Vendor                       *string                                                               `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
 }
 
 func (s ListInspectionTasksResponseBodyInspectionTasks) String() string {
@@ -20380,6 +19250,11 @@ func (s *ListInspectionTasksResponseBodyInspectionTasks) SetInspectionResult(v s
 	return s
 }
 
+func (s *ListInspectionTasksResponseBodyInspectionTasks) SetIsInspectionResultTruncation(v bool) *ListInspectionTasksResponseBodyInspectionTasks {
+	s.IsInspectionResultTruncation = &v
+	return s
+}
+
 func (s *ListInspectionTasksResponseBodyInspectionTasks) SetItemId(v string) *ListInspectionTasksResponseBodyInspectionTasks {
 	s.ItemId = &v
 	return s
@@ -20426,16 +19301,11 @@ func (s *ListInspectionTasksResponseBodyInspectionTasks) SetVendor(v string) *Li
 }
 
 type ListInspectionTasksResponseBodyInspectionTasksInspectionAlarmRules struct {
-	// 告警实际值
-	ActualValue *string `json:"ActualValue,omitempty" xml:"ActualValue,omitempty"`
-	// 告警符号
+	ActualValue     *string `json:"ActualValue,omitempty" xml:"ActualValue,omitempty"`
 	AlarmExpression *string `json:"AlarmExpression,omitempty" xml:"AlarmExpression,omitempty"`
-	// 告警级别
-	AlarmLevel *string `json:"AlarmLevel,omitempty" xml:"AlarmLevel,omitempty"`
-	// 告警变量
-	AlarmOperator *string `json:"AlarmOperator,omitempty" xml:"AlarmOperator,omitempty"`
-	// 告警值
-	AlarmValue *string `json:"AlarmValue,omitempty" xml:"AlarmValue,omitempty"`
+	AlarmLevel      *string `json:"AlarmLevel,omitempty" xml:"AlarmLevel,omitempty"`
+	AlarmOperator   *string `json:"AlarmOperator,omitempty" xml:"AlarmOperator,omitempty"`
+	AlarmValue      *string `json:"AlarmValue,omitempty" xml:"AlarmValue,omitempty"`
 }
 
 func (s ListInspectionTasksResponseBodyInspectionTasksInspectionAlarmRules) String() string {
@@ -20472,8 +19342,9 @@ func (s *ListInspectionTasksResponseBodyInspectionTasksInspectionAlarmRules) Set
 }
 
 type ListInspectionTasksResponse struct {
-	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListInspectionTasksResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListInspectionTasksResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListInspectionTasksResponse) String() string {
@@ -20489,16 +19360,19 @@ func (s *ListInspectionTasksResponse) SetHeaders(v map[string]*string) *ListInsp
 	return s
 }
 
+func (s *ListInspectionTasksResponse) SetStatusCode(v int32) *ListInspectionTasksResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ListInspectionTasksResponse) SetBody(v *ListInspectionTasksResponseBody) *ListInspectionTasksResponse {
 	s.Body = v
 	return s
 }
 
 type ListInstancesResponseBody struct {
-	// 实例列表
 	Instances []*ListInstancesResponseBodyInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Repeated"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListInstancesResponseBody) String() string {
@@ -20520,20 +19394,13 @@ func (s *ListInstancesResponseBody) SetRequestId(v string) *ListInstancesRespons
 }
 
 type ListInstancesResponseBodyInstances struct {
-	// 最大纳管设备数量
 	InstanceDeviceMaxCount *string `json:"InstanceDeviceMaxCount,omitempty" xml:"InstanceDeviceMaxCount,omitempty"`
-	// 实例到期时间
-	InstanceEndDate *string `json:"InstanceEndDate,omitempty" xml:"InstanceEndDate,omitempty"`
-	// 实例ID
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 实例名称
-	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// 实例开通时间
-	InstanceOpenDate *string `json:"InstanceOpenDate,omitempty" xml:"InstanceOpenDate,omitempty"`
-	// 实例规格
-	InstanceSpec *string `json:"InstanceSpec,omitempty" xml:"InstanceSpec,omitempty"`
-	// 实例状态
-	InstanceStatus *string `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
+	InstanceEndDate        *string `json:"InstanceEndDate,omitempty" xml:"InstanceEndDate,omitempty"`
+	InstanceId             *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceName           *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	InstanceOpenDate       *string `json:"InstanceOpenDate,omitempty" xml:"InstanceOpenDate,omitempty"`
+	InstanceSpec           *string `json:"InstanceSpec,omitempty" xml:"InstanceSpec,omitempty"`
+	InstanceStatus         *string `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
 }
 
 func (s ListInstancesResponseBodyInstances) String() string {
@@ -20580,8 +19447,9 @@ func (s *ListInstancesResponseBodyInstances) SetInstanceStatus(v string) *ListIn
 }
 
 type ListInstancesResponse struct {
-	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListInstancesResponse) String() string {
@@ -20597,37 +19465,34 @@ func (s *ListInstancesResponse) SetHeaders(v map[string]*string) *ListInstancesR
 	return s
 }
 
+func (s *ListInstancesResponse) SetStatusCode(v int32) *ListInstancesResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ListInstancesResponse) SetBody(v *ListInstancesResponseBody) *ListInstancesResponse {
 	s.Body = v
 	return s
 }
 
 type ListIpBlocksRequest struct {
-	// 地址类别
-	Category   *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// IP地址
-	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	// 地址段
-	IpBlockCode *string `json:"IpBlockCode,omitempty" xml:"IpBlockCode,omitempty"`
-	// 返回结果的最大个数。
-	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 公网地址类型，NetType为PUBLIC有效
-	NetBusiness *string `json:"NetBusiness,omitempty" xml:"NetBusiness,omitempty"`
-	// 网络类型 PRIVATE PUBLIC
-	NetType *string `json:"NetType,omitempty" xml:"NetType,omitempty"`
-	// 当总结果个数大于MaxResults时，用于翻页的token。
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// 地址段状态
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// 业务类型小类
-	SubNetBusiness *string `json:"SubNetBusiness,omitempty" xml:"SubNetBusiness,omitempty"`
-	// 是否获取顶层父类
-	TopParent *bool `json:"TopParent,omitempty" xml:"TopParent,omitempty"`
-	// 是否树状展示地址段
-	TreeType *bool `json:"TreeType,omitempty" xml:"TreeType,omitempty"`
-	// 园区名称，NetType为PUBLIC有效
-	ZoneName *string `json:"ZoneName,omitempty" xml:"ZoneName,omitempty"`
+	BottomNode     *bool     `json:"BottomNode,omitempty" xml:"BottomNode,omitempty"`
+	Category       *string   `json:"Category,omitempty" xml:"Category,omitempty"`
+	InstanceId     *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Ip             *string   `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	IpBlockCode    *string   `json:"IpBlockCode,omitempty" xml:"IpBlockCode,omitempty"`
+	IpList         []*string `json:"IpList,omitempty" xml:"IpList,omitempty" type:"Repeated"`
+	LeafNode       *bool     `json:"LeafNode,omitempty" xml:"LeafNode,omitempty"`
+	MaxResults     *int32    `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NetBusiness    *string   `json:"NetBusiness,omitempty" xml:"NetBusiness,omitempty"`
+	NetType        *string   `json:"NetType,omitempty" xml:"NetType,omitempty"`
+	NextToken      *string   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	ParentUid      *string   `json:"ParentUid,omitempty" xml:"ParentUid,omitempty"`
+	Status         *string   `json:"Status,omitempty" xml:"Status,omitempty"`
+	SubNetBusiness *string   `json:"SubNetBusiness,omitempty" xml:"SubNetBusiness,omitempty"`
+	TopParent      *bool     `json:"TopParent,omitempty" xml:"TopParent,omitempty"`
+	TreeType       *bool     `json:"TreeType,omitempty" xml:"TreeType,omitempty"`
+	ZoneName       *string   `json:"ZoneName,omitempty" xml:"ZoneName,omitempty"`
 }
 
 func (s ListIpBlocksRequest) String() string {
@@ -20636,6 +19501,11 @@ func (s ListIpBlocksRequest) String() string {
 
 func (s ListIpBlocksRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ListIpBlocksRequest) SetBottomNode(v bool) *ListIpBlocksRequest {
+	s.BottomNode = &v
+	return s
 }
 
 func (s *ListIpBlocksRequest) SetCategory(v string) *ListIpBlocksRequest {
@@ -20658,6 +19528,16 @@ func (s *ListIpBlocksRequest) SetIpBlockCode(v string) *ListIpBlocksRequest {
 	return s
 }
 
+func (s *ListIpBlocksRequest) SetIpList(v []*string) *ListIpBlocksRequest {
+	s.IpList = v
+	return s
+}
+
+func (s *ListIpBlocksRequest) SetLeafNode(v bool) *ListIpBlocksRequest {
+	s.LeafNode = &v
+	return s
+}
+
 func (s *ListIpBlocksRequest) SetMaxResults(v int32) *ListIpBlocksRequest {
 	s.MaxResults = &v
 	return s
@@ -20675,6 +19555,11 @@ func (s *ListIpBlocksRequest) SetNetType(v string) *ListIpBlocksRequest {
 
 func (s *ListIpBlocksRequest) SetNextToken(v string) *ListIpBlocksRequest {
 	s.NextToken = &v
+	return s
+}
+
+func (s *ListIpBlocksRequest) SetParentUid(v string) *ListIpBlocksRequest {
+	s.ParentUid = &v
 	return s
 }
 
@@ -20703,17 +19588,125 @@ func (s *ListIpBlocksRequest) SetZoneName(v string) *ListIpBlocksRequest {
 	return s
 }
 
+type ListIpBlocksShrinkRequest struct {
+	BottomNode     *bool   `json:"BottomNode,omitempty" xml:"BottomNode,omitempty"`
+	Category       *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Ip             *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	IpBlockCode    *string `json:"IpBlockCode,omitempty" xml:"IpBlockCode,omitempty"`
+	IpListShrink   *string `json:"IpList,omitempty" xml:"IpList,omitempty"`
+	LeafNode       *bool   `json:"LeafNode,omitempty" xml:"LeafNode,omitempty"`
+	MaxResults     *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NetBusiness    *string `json:"NetBusiness,omitempty" xml:"NetBusiness,omitempty"`
+	NetType        *string `json:"NetType,omitempty" xml:"NetType,omitempty"`
+	NextToken      *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	ParentUid      *string `json:"ParentUid,omitempty" xml:"ParentUid,omitempty"`
+	Status         *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	SubNetBusiness *string `json:"SubNetBusiness,omitempty" xml:"SubNetBusiness,omitempty"`
+	TopParent      *bool   `json:"TopParent,omitempty" xml:"TopParent,omitempty"`
+	TreeType       *bool   `json:"TreeType,omitempty" xml:"TreeType,omitempty"`
+	ZoneName       *string `json:"ZoneName,omitempty" xml:"ZoneName,omitempty"`
+}
+
+func (s ListIpBlocksShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListIpBlocksShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListIpBlocksShrinkRequest) SetBottomNode(v bool) *ListIpBlocksShrinkRequest {
+	s.BottomNode = &v
+	return s
+}
+
+func (s *ListIpBlocksShrinkRequest) SetCategory(v string) *ListIpBlocksShrinkRequest {
+	s.Category = &v
+	return s
+}
+
+func (s *ListIpBlocksShrinkRequest) SetInstanceId(v string) *ListIpBlocksShrinkRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListIpBlocksShrinkRequest) SetIp(v string) *ListIpBlocksShrinkRequest {
+	s.Ip = &v
+	return s
+}
+
+func (s *ListIpBlocksShrinkRequest) SetIpBlockCode(v string) *ListIpBlocksShrinkRequest {
+	s.IpBlockCode = &v
+	return s
+}
+
+func (s *ListIpBlocksShrinkRequest) SetIpListShrink(v string) *ListIpBlocksShrinkRequest {
+	s.IpListShrink = &v
+	return s
+}
+
+func (s *ListIpBlocksShrinkRequest) SetLeafNode(v bool) *ListIpBlocksShrinkRequest {
+	s.LeafNode = &v
+	return s
+}
+
+func (s *ListIpBlocksShrinkRequest) SetMaxResults(v int32) *ListIpBlocksShrinkRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListIpBlocksShrinkRequest) SetNetBusiness(v string) *ListIpBlocksShrinkRequest {
+	s.NetBusiness = &v
+	return s
+}
+
+func (s *ListIpBlocksShrinkRequest) SetNetType(v string) *ListIpBlocksShrinkRequest {
+	s.NetType = &v
+	return s
+}
+
+func (s *ListIpBlocksShrinkRequest) SetNextToken(v string) *ListIpBlocksShrinkRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListIpBlocksShrinkRequest) SetParentUid(v string) *ListIpBlocksShrinkRequest {
+	s.ParentUid = &v
+	return s
+}
+
+func (s *ListIpBlocksShrinkRequest) SetStatus(v string) *ListIpBlocksShrinkRequest {
+	s.Status = &v
+	return s
+}
+
+func (s *ListIpBlocksShrinkRequest) SetSubNetBusiness(v string) *ListIpBlocksShrinkRequest {
+	s.SubNetBusiness = &v
+	return s
+}
+
+func (s *ListIpBlocksShrinkRequest) SetTopParent(v bool) *ListIpBlocksShrinkRequest {
+	s.TopParent = &v
+	return s
+}
+
+func (s *ListIpBlocksShrinkRequest) SetTreeType(v bool) *ListIpBlocksShrinkRequest {
+	s.TreeType = &v
+	return s
+}
+
+func (s *ListIpBlocksShrinkRequest) SetZoneName(v string) *ListIpBlocksShrinkRequest {
+	s.ZoneName = &v
+	return s
+}
+
 type ListIpBlocksResponseBody struct {
-	// 地址段对象
-	IpBlock []*ListIpBlocksResponseBodyIpBlock `json:"IpBlock,omitempty" xml:"IpBlock,omitempty" type:"Repeated"`
-	// 每页数量。
-	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 当总结果个数大于MaxResults时，用于翻页的token。
-	NextToken *int32 `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 总记录数。
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	IpBlock    []*ListIpBlocksResponseBodyIpBlock `json:"IpBlock,omitempty" xml:"IpBlock,omitempty" type:"Repeated"`
+	MaxResults *int32                             `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken  *int32                             `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RequestId  *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *int32                             `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListIpBlocksResponseBody) String() string {
@@ -20750,48 +19743,30 @@ func (s *ListIpBlocksResponseBody) SetTotalCount(v int32) *ListIpBlocksResponseB
 }
 
 type ListIpBlocksResponseBodyIpBlock struct {
-	// IP用途
-	Application *string `json:"Application,omitempty" xml:"Application,omitempty"`
-	// 备份设备名称
-	BackupDeviceName *string `json:"BackupDeviceName,omitempty" xml:"BackupDeviceName,omitempty"`
-	// 业务类型UID
-	BusinessTypeId *string `json:"BusinessTypeId,omitempty" xml:"BusinessTypeId,omitempty"`
-	// 业务类型名称
-	BusinessTypeName *string `json:"BusinessTypeName,omitempty" xml:"BusinessTypeName,omitempty"`
-	// 地址类别 IPV4
-	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	// 备注
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 设备名称
-	DeviceName *string `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
-	// IP段
-	IpBlockCode *string `json:"IpBlockCode,omitempty" xml:"IpBlockCode,omitempty"`
-	// IP地址段UID
-	IpBlockId *string `json:"IpBlockId,omitempty" xml:"IpBlockId,omitempty"`
-	// 地址段子段列表
-	IpBlocks []*string `json:"IpBlocks,omitempty" xml:"IpBlocks,omitempty" type:"Repeated"`
-	// 是否锁定
-	IsLock *int64 `json:"IsLock,omitempty" xml:"IsLock,omitempty"`
-	// 限制园区类型
-	LimitZoneTypes *string `json:"LimitZoneTypes,omitempty" xml:"LimitZoneTypes,omitempty"`
-	// 公网地址类型 INC GUEST VIP
-	NetBusiness *string `json:"NetBusiness,omitempty" xml:"NetBusiness,omitempty"`
-	// 公网私网标志 PUBLIC PRIVATE
-	NetType *string `json:"NetType,omitempty" xml:"NetType,omitempty"`
-	// IP归属
-	Ownership *string `json:"Ownership,omitempty" xml:"Ownership,omitempty"`
-	// 父地址段UID
-	ParentId *string `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
-	// 状态： using available lock
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// 业务小类名称
-	SubBusinessTypeName *string `json:"SubBusinessTypeName,omitempty" xml:"SubBusinessTypeName,omitempty"`
-	// 任务集
-	Tasks []*ListIpBlocksResponseBodyIpBlockTasks `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Repeated"`
-	// 园区层级
-	ZoneLayer []*ListIpBlocksResponseBodyIpBlockZoneLayer `json:"ZoneLayer,omitempty" xml:"ZoneLayer,omitempty" type:"Repeated"`
-	// 园区名称
-	ZoneName *string `json:"ZoneName,omitempty" xml:"ZoneName,omitempty"`
+	Abbr                *string                                     `json:"Abbr,omitempty" xml:"Abbr,omitempty"`
+	Application         *string                                     `json:"Application,omitempty" xml:"Application,omitempty"`
+	BackupDeviceName    *string                                     `json:"BackupDeviceName,omitempty" xml:"BackupDeviceName,omitempty"`
+	BusinessTypeId      *string                                     `json:"BusinessTypeId,omitempty" xml:"BusinessTypeId,omitempty"`
+	BusinessTypeName    *string                                     `json:"BusinessTypeName,omitempty" xml:"BusinessTypeName,omitempty"`
+	Category            *string                                     `json:"Category,omitempty" xml:"Category,omitempty"`
+	Description         *string                                     `json:"Description,omitempty" xml:"Description,omitempty"`
+	DeviceName          *string                                     `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
+	IpBlockCode         *string                                     `json:"IpBlockCode,omitempty" xml:"IpBlockCode,omitempty"`
+	IpBlockId           *string                                     `json:"IpBlockId,omitempty" xml:"IpBlockId,omitempty"`
+	IpBlocks            []*string                                   `json:"IpBlocks,omitempty" xml:"IpBlocks,omitempty" type:"Repeated"`
+	IsLock              *int64                                      `json:"IsLock,omitempty" xml:"IsLock,omitempty"`
+	LimitZoneTypes      *string                                     `json:"LimitZoneTypes,omitempty" xml:"LimitZoneTypes,omitempty"`
+	NetBusiness         *string                                     `json:"NetBusiness,omitempty" xml:"NetBusiness,omitempty"`
+	NetType             *string                                     `json:"NetType,omitempty" xml:"NetType,omitempty"`
+	Ownership           *string                                     `json:"Ownership,omitempty" xml:"Ownership,omitempty"`
+	ParentId            *string                                     `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
+	QueryIpList         []*string                                   `json:"QueryIpList,omitempty" xml:"QueryIpList,omitempty" type:"Repeated"`
+	SplitRate           *float64                                    `json:"SplitRate,omitempty" xml:"SplitRate,omitempty"`
+	Status              *string                                     `json:"Status,omitempty" xml:"Status,omitempty"`
+	SubBusinessTypeName *string                                     `json:"SubBusinessTypeName,omitempty" xml:"SubBusinessTypeName,omitempty"`
+	Tasks               []*ListIpBlocksResponseBodyIpBlockTasks     `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Repeated"`
+	ZoneLayer           []*ListIpBlocksResponseBodyIpBlockZoneLayer `json:"ZoneLayer,omitempty" xml:"ZoneLayer,omitempty" type:"Repeated"`
+	ZoneName            *string                                     `json:"ZoneName,omitempty" xml:"ZoneName,omitempty"`
 }
 
 func (s ListIpBlocksResponseBodyIpBlock) String() string {
@@ -20800,6 +19775,11 @@ func (s ListIpBlocksResponseBodyIpBlock) String() string {
 
 func (s ListIpBlocksResponseBodyIpBlock) GoString() string {
 	return s.String()
+}
+
+func (s *ListIpBlocksResponseBodyIpBlock) SetAbbr(v string) *ListIpBlocksResponseBodyIpBlock {
+	s.Abbr = &v
+	return s
 }
 
 func (s *ListIpBlocksResponseBodyIpBlock) SetApplication(v string) *ListIpBlocksResponseBodyIpBlock {
@@ -20882,6 +19862,16 @@ func (s *ListIpBlocksResponseBodyIpBlock) SetParentId(v string) *ListIpBlocksRes
 	return s
 }
 
+func (s *ListIpBlocksResponseBodyIpBlock) SetQueryIpList(v []*string) *ListIpBlocksResponseBodyIpBlock {
+	s.QueryIpList = v
+	return s
+}
+
+func (s *ListIpBlocksResponseBodyIpBlock) SetSplitRate(v float64) *ListIpBlocksResponseBodyIpBlock {
+	s.SplitRate = &v
+	return s
+}
+
 func (s *ListIpBlocksResponseBodyIpBlock) SetStatus(v string) *ListIpBlocksResponseBodyIpBlock {
 	s.Status = &v
 	return s
@@ -20908,24 +19898,15 @@ func (s *ListIpBlocksResponseBodyIpBlock) SetZoneName(v string) *ListIpBlocksRes
 }
 
 type ListIpBlocksResponseBodyIpBlockTasks struct {
-	// 探针
-	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	// 创建时间
-	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	// 更新时间
-	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
-	// Ip
-	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	// IP列表
-	IpList []*ListIpBlocksResponseBodyIpBlockTasksIpList `json:"IpList,omitempty" xml:"IpList,omitempty" type:"Repeated"`
-	// 错误信息
-	Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
-	// 状态
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// 任务id
-	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// ip总数
-	TotalIpCount *int64 `json:"TotalIpCount,omitempty" xml:"TotalIpCount,omitempty"`
+	Domain          *string                                       `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	GmtCreateTime   *string                                       `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	GmtModifiedTime *string                                       `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	Ip              *string                                       `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	IpList          []*ListIpBlocksResponseBodyIpBlockTasksIpList `json:"IpList,omitempty" xml:"IpList,omitempty" type:"Repeated"`
+	Msg             *string                                       `json:"Msg,omitempty" xml:"Msg,omitempty"`
+	Status          *string                                       `json:"Status,omitempty" xml:"Status,omitempty"`
+	TaskId          *string                                       `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	TotalIpCount    *int64                                        `json:"TotalIpCount,omitempty" xml:"TotalIpCount,omitempty"`
 }
 
 func (s ListIpBlocksResponseBodyIpBlockTasks) String() string {
@@ -20982,16 +19963,11 @@ func (s *ListIpBlocksResponseBodyIpBlockTasks) SetTotalIpCount(v int64) *ListIpB
 }
 
 type ListIpBlocksResponseBodyIpBlockTasksIpList struct {
-	// 设备ID
-	DevId *string `json:"DevId,omitempty" xml:"DevId,omitempty"`
-	// 设备名
+	DevId   *string `json:"DevId,omitempty" xml:"DevId,omitempty"`
 	DevName *string `json:"DevName,omitempty" xml:"DevName,omitempty"`
-	// Ip
-	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	// 来源，SYSTEM表示系统校正
-	Origin *string `json:"Origin,omitempty" xml:"Origin,omitempty"`
-	// Ping
-	Ping *string `json:"Ping,omitempty" xml:"Ping,omitempty"`
+	Ip      *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	Origin  *string `json:"Origin,omitempty" xml:"Origin,omitempty"`
+	Ping    *string `json:"Ping,omitempty" xml:"Ping,omitempty"`
 }
 
 func (s ListIpBlocksResponseBodyIpBlockTasksIpList) String() string {
@@ -21028,9 +20004,7 @@ func (s *ListIpBlocksResponseBodyIpBlockTasksIpList) SetPing(v string) *ListIpBl
 }
 
 type ListIpBlocksResponseBodyIpBlockZoneLayer struct {
-	// 园区层级名称
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 园区层级值
+	Name  *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -21053,8 +20027,9 @@ func (s *ListIpBlocksResponseBodyIpBlockZoneLayer) SetValue(v string) *ListIpBlo
 }
 
 type ListIpBlocksResponse struct {
-	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListIpBlocksResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListIpBlocksResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListIpBlocksResponse) String() string {
@@ -21070,35 +20045,29 @@ func (s *ListIpBlocksResponse) SetHeaders(v map[string]*string) *ListIpBlocksRes
 	return s
 }
 
+func (s *ListIpBlocksResponse) SetStatusCode(v int32) *ListIpBlocksResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ListIpBlocksResponse) SetBody(v *ListIpBlocksResponseBody) *ListIpBlocksResponse {
 	s.Body = v
 	return s
 }
 
 type ListLinksRequest struct {
-	// A端设备名
 	DeviceNameA *string `json:"DeviceNameA,omitempty" xml:"DeviceNameA,omitempty"`
-	// B端设备名
 	DeviceNameB *string `json:"DeviceNameB,omitempty" xml:"DeviceNameB,omitempty"`
-	// A端IP
-	IpA *string `json:"IpA,omitempty" xml:"IpA,omitempty"`
-	// B端IP
-	IpB *string `json:"IpB,omitempty" xml:"IpB,omitempty"`
-	// 链路名称
-	LinkName *string `json:"LinkName,omitempty" xml:"LinkName,omitempty"`
-	LinkNo   *string `json:"LinkNo,omitempty" xml:"LinkNo,omitempty"`
-	// 链路状态
-	LinkStatus *string `json:"LinkStatus,omitempty" xml:"LinkStatus,omitempty"`
-	// 链路类型（单端、双端）
-	LinkType *string `json:"LinkType,omitempty" xml:"LinkType,omitempty"`
-	// 返回结果的最大个数。
-	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 当总结果个数大于MaxResults时，用于翻页的token。
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// A端端口名
-	PortA *string `json:"PortA,omitempty" xml:"PortA,omitempty"`
-	// B端端口名
-	PortB *string `json:"PortB,omitempty" xml:"PortB,omitempty"`
+	IpA         *string `json:"IpA,omitempty" xml:"IpA,omitempty"`
+	IpB         *string `json:"IpB,omitempty" xml:"IpB,omitempty"`
+	LinkName    *string `json:"LinkName,omitempty" xml:"LinkName,omitempty"`
+	LinkNo      *string `json:"LinkNo,omitempty" xml:"LinkNo,omitempty"`
+	LinkStatus  *string `json:"LinkStatus,omitempty" xml:"LinkStatus,omitempty"`
+	LinkType    *string `json:"LinkType,omitempty" xml:"LinkType,omitempty"`
+	MaxResults  *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken   *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	PortA       *string `json:"PortA,omitempty" xml:"PortA,omitempty"`
+	PortB       *string `json:"PortB,omitempty" xml:"PortB,omitempty"`
 }
 
 func (s ListLinksRequest) String() string {
@@ -21170,14 +20139,10 @@ func (s *ListLinksRequest) SetPortB(v string) *ListLinksRequest {
 }
 
 type ListLinksResponseBody struct {
-	// 数组，返回示例目录。
-	Content []*ListLinksResponseBodyContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Repeated"`
-	// 当总结果个数大于MaxResults时，用于翻页的token。
-	NextToken *int32 `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 总记录数。
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	Content    []*ListLinksResponseBodyContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Repeated"`
+	NextToken  *int32                          `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RequestId  *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *int32                          `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListLinksResponseBody) String() string {
@@ -21209,52 +20174,29 @@ func (s *ListLinksResponseBody) SetTotalCount(v int32) *ListLinksResponseBody {
 }
 
 type ListLinksResponseBodyContent struct {
-	// A端设备名
 	DeviceNameA *string `json:"DeviceNameA,omitempty" xml:"DeviceNameA,omitempty"`
-	// B端设备名
 	DeviceNameB *string `json:"DeviceNameB,omitempty" xml:"DeviceNameB,omitempty"`
-	// 创建时间
-	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// 修改时间
+	GmtCreate   *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// A端端口索引
-	IdxA *string `json:"IdxA,omitempty" xml:"IdxA,omitempty"`
-	// B端端口索引
-	IdxB *string `json:"IdxB,omitempty" xml:"IdxB,omitempty"`
-	// A端IP
-	IpA *string `json:"IpA,omitempty" xml:"IpA,omitempty"`
-	// B端IP
-	IpB *string `json:"IpB,omitempty" xml:"IpB,omitempty"`
-	// 链路发现任务
-	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// 链路名称
-	LinkName *string `json:"LinkName,omitempty" xml:"LinkName,omitempty"`
-	// 链路编号
-	LinkNo *string `json:"LinkNo,omitempty" xml:"LinkNo,omitempty"`
-	// 链路状态
-	LinkStatus *string `json:"LinkStatus,omitempty" xml:"LinkStatus,omitempty"`
-	// 链路类型（单端、双端）
-	LinkType *string `json:"LinkType,omitempty" xml:"LinkType,omitempty"`
-	// 报错信息或者日志
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// A端端口名
-	PortA *string `json:"PortA,omitempty" xml:"PortA,omitempty"`
-	// B端端口名
-	PortB *string `json:"PortB,omitempty" xml:"PortB,omitempty"`
-	// A端描述
-	PortDescA *string `json:"PortDescA,omitempty" xml:"PortDescA,omitempty"`
-	// B端描述
-	PortDescB *string `json:"PortDescB,omitempty" xml:"PortDescB,omitempty"`
-	// A端端口状态
+	IdxA        *string `json:"IdxA,omitempty" xml:"IdxA,omitempty"`
+	IdxB        *string `json:"IdxB,omitempty" xml:"IdxB,omitempty"`
+	IpA         *string `json:"IpA,omitempty" xml:"IpA,omitempty"`
+	IpB         *string `json:"IpB,omitempty" xml:"IpB,omitempty"`
+	JobId       *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	LinkName    *string `json:"LinkName,omitempty" xml:"LinkName,omitempty"`
+	LinkNo      *string `json:"LinkNo,omitempty" xml:"LinkNo,omitempty"`
+	LinkStatus  *string `json:"LinkStatus,omitempty" xml:"LinkStatus,omitempty"`
+	LinkType    *string `json:"LinkType,omitempty" xml:"LinkType,omitempty"`
+	Message     *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	PortA       *string `json:"PortA,omitempty" xml:"PortA,omitempty"`
+	PortB       *string `json:"PortB,omitempty" xml:"PortB,omitempty"`
+	PortDescA   *string `json:"PortDescA,omitempty" xml:"PortDescA,omitempty"`
+	PortDescB   *string `json:"PortDescB,omitempty" xml:"PortDescB,omitempty"`
 	PortStatusA *string `json:"PortStatusA,omitempty" xml:"PortStatusA,omitempty"`
-	// B端端口状态
 	PortStatusB *string `json:"PortStatusB,omitempty" xml:"PortStatusB,omitempty"`
-	// A端端口类型
-	PortTypeA *string `json:"PortTypeA,omitempty" xml:"PortTypeA,omitempty"`
-	// B端端口类型
-	PortTypeB *string `json:"PortTypeB,omitempty" xml:"PortTypeB,omitempty"`
-	// 地域ID
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	PortTypeA   *string `json:"PortTypeA,omitempty" xml:"PortTypeA,omitempty"`
+	PortTypeB   *string `json:"PortTypeB,omitempty" xml:"PortTypeB,omitempty"`
+	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s ListLinksResponseBodyContent) String() string {
@@ -21381,8 +20323,9 @@ func (s *ListLinksResponseBodyContent) SetRegionId(v string) *ListLinksResponseB
 }
 
 type ListLinksResponse struct {
-	Headers map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListLinksResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListLinksResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListLinksResponse) String() string {
@@ -21398,26 +20341,27 @@ func (s *ListLinksResponse) SetHeaders(v map[string]*string) *ListLinksResponse 
 	return s
 }
 
+func (s *ListLinksResponse) SetStatusCode(v int32) *ListLinksResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ListLinksResponse) SetBody(v *ListLinksResponseBody) *ListLinksResponse {
 	s.Body = v
 	return s
 }
 
 type ListLogsRequest struct {
-	// 搜索内容
-	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// 查询结束时间戳
-	End *int64 `json:"End,omitempty" xml:"End,omitempty"`
-	// 实例ID
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 日志类型
-	LogType *string `json:"LogType,omitempty" xml:"LogType,omitempty"`
-	// 本次读取的最大数据记录数量
-	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 标记当前开始读取的位置，置空表示从头开始
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// 查询开始时间戳
-	Start *int64 `json:"Start,omitempty" xml:"Start,omitempty"`
+	AlarmStatus *string `json:"AlarmStatus,omitempty" xml:"AlarmStatus,omitempty"`
+	Content     *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	DeviceId    *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
+	End         *int64  `json:"End,omitempty" xml:"End,omitempty"`
+	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	LogType     *string `json:"LogType,omitempty" xml:"LogType,omitempty"`
+	MaxResults  *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken   *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	Sort        *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
+	Start       *int64  `json:"Start,omitempty" xml:"Start,omitempty"`
 }
 
 func (s ListLogsRequest) String() string {
@@ -21428,8 +20372,18 @@ func (s ListLogsRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ListLogsRequest) SetAlarmStatus(v string) *ListLogsRequest {
+	s.AlarmStatus = &v
+	return s
+}
+
 func (s *ListLogsRequest) SetContent(v string) *ListLogsRequest {
 	s.Content = &v
+	return s
+}
+
+func (s *ListLogsRequest) SetDeviceId(v string) *ListLogsRequest {
+	s.DeviceId = &v
 	return s
 }
 
@@ -21458,22 +20412,22 @@ func (s *ListLogsRequest) SetNextToken(v string) *ListLogsRequest {
 	return s
 }
 
+func (s *ListLogsRequest) SetSort(v string) *ListLogsRequest {
+	s.Sort = &v
+	return s
+}
+
 func (s *ListLogsRequest) SetStart(v int64) *ListLogsRequest {
 	s.Start = &v
 	return s
 }
 
 type ListLogsResponseBody struct {
-	// 日志列表
-	Logs []*ListLogsResponseBodyLogs `json:"Logs,omitempty" xml:"Logs,omitempty" type:"Repeated"`
-	// MaxResults本次请求所返回的最大记录条数
-	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 表示当前调用返回读取到的位置，空代表数据已经读取完毕
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// TotalCount本次请求条件下的数据总量，此参数为可选参数，默认可不返回
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	Logs       []*ListLogsResponseBodyLogs `json:"Logs,omitempty" xml:"Logs,omitempty" type:"Repeated"`
+	MaxResults *int32                      `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken  *string                     `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RequestId  *string                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *int32                      `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListLogsResponseBody) String() string {
@@ -21510,11 +20464,14 @@ func (s *ListLogsResponseBody) SetTotalCount(v int32) *ListLogsResponseBody {
 }
 
 type ListLogsResponseBodyLogs struct {
-	// 日志内容
+	AlarmObject    *string                                 `json:"AlarmObject,omitempty" xml:"AlarmObject,omitempty"`
+	AlarmStatus    *string                                 `json:"AlarmStatus,omitempty" xml:"AlarmStatus,omitempty"`
+	AlarmType      *string                                 `json:"AlarmType,omitempty" xml:"AlarmType,omitempty"`
+	DeviceId       *string                                 `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
 	Log            *string                                 `json:"Log,omitempty" xml:"Log,omitempty"`
+	ReceiveTime    *string                                 `json:"ReceiveTime,omitempty" xml:"ReceiveTime,omitempty"`
 	ResourceDevice *ListLogsResponseBodyLogsResourceDevice `json:"ResourceDevice,omitempty" xml:"ResourceDevice,omitempty" type:"Struct"`
-	// 日志时间戳
-	Time *string `json:"Time,omitempty" xml:"Time,omitempty"`
+	Time           *string                                 `json:"Time,omitempty" xml:"Time,omitempty"`
 }
 
 func (s ListLogsResponseBodyLogs) String() string {
@@ -21525,8 +20482,33 @@ func (s ListLogsResponseBodyLogs) GoString() string {
 	return s.String()
 }
 
+func (s *ListLogsResponseBodyLogs) SetAlarmObject(v string) *ListLogsResponseBodyLogs {
+	s.AlarmObject = &v
+	return s
+}
+
+func (s *ListLogsResponseBodyLogs) SetAlarmStatus(v string) *ListLogsResponseBodyLogs {
+	s.AlarmStatus = &v
+	return s
+}
+
+func (s *ListLogsResponseBodyLogs) SetAlarmType(v string) *ListLogsResponseBodyLogs {
+	s.AlarmType = &v
+	return s
+}
+
+func (s *ListLogsResponseBodyLogs) SetDeviceId(v string) *ListLogsResponseBodyLogs {
+	s.DeviceId = &v
+	return s
+}
+
 func (s *ListLogsResponseBodyLogs) SetLog(v string) *ListLogsResponseBodyLogs {
 	s.Log = &v
+	return s
+}
+
+func (s *ListLogsResponseBodyLogs) SetReceiveTime(v string) *ListLogsResponseBodyLogs {
+	s.ReceiveTime = &v
 	return s
 }
 
@@ -21564,8 +20546,9 @@ func (s *ListLogsResponseBodyLogsResourceDevice) SetPhysicalSpace(v string) *Lis
 }
 
 type ListLogsResponse struct {
-	Headers map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListLogsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListLogsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListLogsResponse) String() string {
@@ -21581,36 +20564,30 @@ func (s *ListLogsResponse) SetHeaders(v map[string]*string) *ListLogsResponse {
 	return s
 }
 
+func (s *ListLogsResponse) SetStatusCode(v int32) *ListLogsResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ListLogsResponse) SetBody(v *ListLogsResponseBody) *ListLogsResponse {
 	s.Body = v
 	return s
 }
 
 type ListMonitorDataRequest struct {
-	// 聚合数据ID
-	AggregateDataId *string `json:"AggregateDataId,omitempty" xml:"AggregateDataId,omitempty"`
-	// 应用ID
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// 数据项
-	DataItem *string `json:"DataItem,omitempty" xml:"DataItem,omitempty"`
-	// 数据类型
-	DataType *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
-	// 专线ID
-	DedicatedLineId *string `json:"DedicatedLineId,omitempty" xml:"DedicatedLineId,omitempty"`
-	// 设备ID
-	DeviceId *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
-	// 结束时间
-	End *int64 `json:"End,omitempty" xml:"End,omitempty"`
-	// 实例ID
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// key
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// 监控项ID
-	MonitorItemId *string `json:"MonitorItemId,omitempty" xml:"MonitorItemId,omitempty"`
-	// 端口集ID
+	AggregateDataId  *string `json:"AggregateDataId,omitempty" xml:"AggregateDataId,omitempty"`
+	AggregationType  *string `json:"AggregationType,omitempty" xml:"AggregationType,omitempty"`
+	AppId            *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	DataItem         *string `json:"DataItem,omitempty" xml:"DataItem,omitempty"`
+	DataType         *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
+	DedicatedLineId  *string `json:"DedicatedLineId,omitempty" xml:"DedicatedLineId,omitempty"`
+	DeviceId         *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
+	End              *int64  `json:"End,omitempty" xml:"End,omitempty"`
+	InstanceId       *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Key              *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	MonitorItemId    *string `json:"MonitorItemId,omitempty" xml:"MonitorItemId,omitempty"`
 	PortCollectionId *string `json:"PortCollectionId,omitempty" xml:"PortCollectionId,omitempty"`
-	// 开始时间
-	Start *int64 `json:"Start,omitempty" xml:"Start,omitempty"`
+	Start            *int64  `json:"Start,omitempty" xml:"Start,omitempty"`
 }
 
 func (s ListMonitorDataRequest) String() string {
@@ -21623,6 +20600,11 @@ func (s ListMonitorDataRequest) GoString() string {
 
 func (s *ListMonitorDataRequest) SetAggregateDataId(v string) *ListMonitorDataRequest {
 	s.AggregateDataId = &v
+	return s
+}
+
+func (s *ListMonitorDataRequest) SetAggregationType(v string) *ListMonitorDataRequest {
+	s.AggregationType = &v
 	return s
 }
 
@@ -21682,10 +20664,8 @@ func (s *ListMonitorDataRequest) SetStart(v int64) *ListMonitorDataRequest {
 }
 
 type ListMonitorDataResponseBody struct {
-	// 数据列表
 	MonitorData []*ListMonitorDataResponseBodyMonitorData `json:"MonitorData,omitempty" xml:"MonitorData,omitempty" type:"Repeated"`
-	// Request Id
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId   *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListMonitorDataResponseBody) String() string {
@@ -21707,14 +20687,10 @@ func (s *ListMonitorDataResponseBody) SetRequestId(v string) *ListMonitorDataRes
 }
 
 type ListMonitorDataResponseBodyMonitorData struct {
-	// 数据项
-	DataItem *string `json:"DataItem,omitempty" xml:"DataItem,omitempty"`
-	// key
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// 时间戳
-	Timestamp *int64 `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
-	// 数值
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	DataItem  *string `json:"DataItem,omitempty" xml:"DataItem,omitempty"`
+	Key       *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Timestamp *int64  `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
+	Value     *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s ListMonitorDataResponseBodyMonitorData) String() string {
@@ -21746,8 +20722,9 @@ func (s *ListMonitorDataResponseBodyMonitorData) SetValue(v string) *ListMonitor
 }
 
 type ListMonitorDataResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListMonitorDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListMonitorDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListMonitorDataResponse) String() string {
@@ -21763,48 +20740,36 @@ func (s *ListMonitorDataResponse) SetHeaders(v map[string]*string) *ListMonitorD
 	return s
 }
 
+func (s *ListMonitorDataResponse) SetStatusCode(v int32) *ListMonitorDataResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ListMonitorDataResponse) SetBody(v *ListMonitorDataResponseBody) *ListMonitorDataResponse {
 	s.Body = v
 	return s
 }
 
 type ListNotificationHistoriesRequest struct {
-	// 聚合数据ID
-	AggregateDataId *string `json:"AggregateDataId,omitempty" xml:"AggregateDataId,omitempty"`
-	// 监控状态
-	AlarmStatus *string `json:"AlarmStatus,omitempty" xml:"AlarmStatus,omitempty"`
-	// 应用ID
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// 专线ID
-	DedicatedLineId *string `json:"DedicatedLineId,omitempty" xml:"DedicatedLineId,omitempty"`
-	// 设备ID
-	DeviceId *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
-	// 查询结束时间戳
-	End *int64 `json:"End,omitempty" xml:"End,omitempty"`
-	// 实例ID
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 本次读取的最大数据记录数量
-	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 发送内容
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// 监控项ID
-	MonitorItemId *string `json:"MonitorItemId,omitempty" xml:"MonitorItemId,omitempty"`
-	// 标记当前开始读取的位置，置空表示从头开始
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// 通知组ID
+	AggregateDataId     *string `json:"AggregateDataId,omitempty" xml:"AggregateDataId,omitempty"`
+	AlarmStatus         *string `json:"AlarmStatus,omitempty" xml:"AlarmStatus,omitempty"`
+	AppId               *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	DedicatedLineId     *string `json:"DedicatedLineId,omitempty" xml:"DedicatedLineId,omitempty"`
+	DeviceId            *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
+	End                 *int64  `json:"End,omitempty" xml:"End,omitempty"`
+	EventItemId         *string `json:"EventItemId,omitempty" xml:"EventItemId,omitempty"`
+	InstanceId          *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	MaxResults          *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	Message             *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	MonitorItemId       *string `json:"MonitorItemId,omitempty" xml:"MonitorItemId,omitempty"`
+	NextToken           *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	NotificationGroupId *string `json:"NotificationGroupId,omitempty" xml:"NotificationGroupId,omitempty"`
-	// 发送方式
-	NotificationMode *string `json:"NotificationMode,omitempty" xml:"NotificationMode,omitempty"`
-	// 物理空间ID
-	PhysicalSpaceId *string `json:"PhysicalSpaceId,omitempty" xml:"PhysicalSpaceId,omitempty"`
-	// 端口集ID
-	PortCollectionId *string `json:"PortCollectionId,omitempty" xml:"PortCollectionId,omitempty"`
-	// 查询开始时间戳
-	Start *int64 `json:"Start,omitempty" xml:"Start,omitempty"`
-	// 发送状态
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// 类型
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	NotificationMode    *string `json:"NotificationMode,omitempty" xml:"NotificationMode,omitempty"`
+	PhysicalSpaceId     *string `json:"PhysicalSpaceId,omitempty" xml:"PhysicalSpaceId,omitempty"`
+	PortCollectionId    *string `json:"PortCollectionId,omitempty" xml:"PortCollectionId,omitempty"`
+	Start               *int64  `json:"Start,omitempty" xml:"Start,omitempty"`
+	Status              *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Type                *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s ListNotificationHistoriesRequest) String() string {
@@ -21842,6 +20807,11 @@ func (s *ListNotificationHistoriesRequest) SetDeviceId(v string) *ListNotificati
 
 func (s *ListNotificationHistoriesRequest) SetEnd(v int64) *ListNotificationHistoriesRequest {
 	s.End = &v
+	return s
+}
+
+func (s *ListNotificationHistoriesRequest) SetEventItemId(v string) *ListNotificationHistoriesRequest {
+	s.EventItemId = &v
 	return s
 }
 
@@ -21906,16 +20876,11 @@ func (s *ListNotificationHistoriesRequest) SetType(v string) *ListNotificationHi
 }
 
 type ListNotificationHistoriesResponseBody struct {
-	// MaxResults本次请求所返回的最大记录条数
-	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 表示当前调用返回读取到的位置，空代表数据已经读取完毕
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// 数据列表
+	MaxResults            *int32                                                        `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken             *string                                                       `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	NotificationHistories []*ListNotificationHistoriesResponseBodyNotificationHistories `json:"NotificationHistories,omitempty" xml:"NotificationHistories,omitempty" type:"Repeated"`
-	// request Id
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// TotalCount本次请求条件下的数据总量，此参数为可选参数，默认可不返回
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	RequestId             *string                                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount            *int32                                                        `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListNotificationHistoriesResponseBody) String() string {
@@ -21952,34 +20917,20 @@ func (s *ListNotificationHistoriesResponseBody) SetTotalCount(v int32) *ListNoti
 }
 
 type ListNotificationHistoriesResponseBodyNotificationHistories struct {
-	// 聚合数据ID
-	AggregateDataId *string `json:"AggregateDataId,omitempty" xml:"AggregateDataId,omitempty"`
-	// 监控状态
-	AlarmStatus *string `json:"AlarmStatus,omitempty" xml:"AlarmStatus,omitempty"`
-	// 应用ID
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// 专线ID
-	DedicatedLineId *string `json:"DedicatedLineId,omitempty" xml:"DedicatedLineId,omitempty"`
-	// 设备ID
-	DeviceId *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
-	// 发送内容
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// 监控项ID
-	MonitorItemId *string `json:"MonitorItemId,omitempty" xml:"MonitorItemId,omitempty"`
-	// 通知组ID
-	NotificationGroupId *string `json:"NotificationGroupId,omitempty" xml:"NotificationGroupId,omitempty"`
-	// 通知组名称
+	AggregateDataId       *string `json:"AggregateDataId,omitempty" xml:"AggregateDataId,omitempty"`
+	AlarmStatus           *string `json:"AlarmStatus,omitempty" xml:"AlarmStatus,omitempty"`
+	AppId                 *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	DedicatedLineId       *string `json:"DedicatedLineId,omitempty" xml:"DedicatedLineId,omitempty"`
+	DeviceId              *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
+	Message               *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	MonitorItemId         *string `json:"MonitorItemId,omitempty" xml:"MonitorItemId,omitempty"`
+	NotificationGroupId   *string `json:"NotificationGroupId,omitempty" xml:"NotificationGroupId,omitempty"`
 	NotificationGroupName *string `json:"NotificationGroupName,omitempty" xml:"NotificationGroupName,omitempty"`
-	// 发送方式
-	NotificationMode *string `json:"NotificationMode,omitempty" xml:"NotificationMode,omitempty"`
-	// 输出内容
-	Output *string `json:"Output,omitempty" xml:"Output,omitempty"`
-	// 端口集ID
-	PortCollectionId *string `json:"PortCollectionId,omitempty" xml:"PortCollectionId,omitempty"`
-	// 发送状态
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// 发送时间
-	Time *string `json:"Time,omitempty" xml:"Time,omitempty"`
+	NotificationMode      *string `json:"NotificationMode,omitempty" xml:"NotificationMode,omitempty"`
+	Output                *string `json:"Output,omitempty" xml:"Output,omitempty"`
+	PortCollectionId      *string `json:"PortCollectionId,omitempty" xml:"PortCollectionId,omitempty"`
+	Status                *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Time                  *string `json:"Time,omitempty" xml:"Time,omitempty"`
 }
 
 func (s ListNotificationHistoriesResponseBodyNotificationHistories) String() string {
@@ -22061,8 +21012,9 @@ func (s *ListNotificationHistoriesResponseBodyNotificationHistories) SetTime(v s
 }
 
 type ListNotificationHistoriesResponse struct {
-	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListNotificationHistoriesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListNotificationHistoriesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListNotificationHistoriesResponse) String() string {
@@ -22078,18 +21030,20 @@ func (s *ListNotificationHistoriesResponse) SetHeaders(v map[string]*string) *Li
 	return s
 }
 
+func (s *ListNotificationHistoriesResponse) SetStatusCode(v int32) *ListNotificationHistoriesResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ListNotificationHistoriesResponse) SetBody(v *ListNotificationHistoriesResponseBody) *ListNotificationHistoriesResponse {
 	s.Body = v
 	return s
 }
 
 type ListOsVersionsRequest struct {
-	// instanceId
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 返回结果的最大个数。
-	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 当总结果个数大于MaxResults时，用于翻页的token。
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	MaxResults *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken  *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 }
 
 func (s ListOsVersionsRequest) String() string {
@@ -22116,16 +21070,11 @@ func (s *ListOsVersionsRequest) SetNextToken(v string) *ListOsVersionsRequest {
 }
 
 type ListOsVersionsResponseBody struct {
-	// 本次读取的最大数据量
-	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 当总结果个数大于MaxResults时，用于翻页的token。
-	NextToken *int32 `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// 数组，返回示例目录。
-	OsVersion []*ListOsVersionsResponseBodyOsVersion `json:"OsVersion,omitempty" xml:"OsVersion,omitempty" type:"Repeated"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 总记录数。
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	MaxResults *int64                                 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken  *int32                                 `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	OsVersion  []*ListOsVersionsResponseBodyOsVersion `json:"OsVersion,omitempty" xml:"OsVersion,omitempty" type:"Repeated"`
+	RequestId  *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *int32                                 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListOsVersionsResponseBody) String() string {
@@ -22162,24 +21111,15 @@ func (s *ListOsVersionsResponseBody) SetTotalCount(v int32) *ListOsVersionsRespo
 }
 
 type ListOsVersionsResponseBodyOsVersion struct {
-	// 创建时间
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// 文件名
-	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	// 文件路径
-	FilePath *string `json:"FilePath,omitempty" xml:"FilePath,omitempty"`
-	// 型号
-	Model *string `json:"Model,omitempty" xml:"Model,omitempty"`
-	// 系统版本
-	OsVersion *string `json:"OsVersion,omitempty" xml:"OsVersion,omitempty"`
-	// 资源uuid
+	CreateTime  *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	FileName    *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	FilePath    *string `json:"FilePath,omitempty" xml:"FilePath,omitempty"`
+	Model       *string `json:"Model,omitempty" xml:"Model,omitempty"`
+	OsVersion   *string `json:"OsVersion,omitempty" xml:"OsVersion,omitempty"`
 	OsVersionId *string `json:"OsVersionId,omitempty" xml:"OsVersionId,omitempty"`
-	// 状态
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// 修改时间
-	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	// 厂商
-	Vendor *string `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
+	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	UpdateTime  *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	Vendor      *string `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
 }
 
 func (s ListOsVersionsResponseBodyOsVersion) String() string {
@@ -22236,8 +21176,9 @@ func (s *ListOsVersionsResponseBodyOsVersion) SetVendor(v string) *ListOsVersion
 }
 
 type ListOsVersionsResponse struct {
-	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListOsVersionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListOsVersionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListOsVersionsResponse) String() string {
@@ -22253,22 +21194,22 @@ func (s *ListOsVersionsResponse) SetHeaders(v map[string]*string) *ListOsVersion
 	return s
 }
 
+func (s *ListOsVersionsResponse) SetStatusCode(v int32) *ListOsVersionsResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ListOsVersionsResponse) SetBody(v *ListOsVersionsResponseBody) *ListOsVersionsResponse {
 	s.Body = v
 	return s
 }
 
 type ListPhysicalSpacesRequest struct {
-	// 实例ID
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 返回结果的最大个数。
-	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 当总结果个数大于MaxResults时，用于翻页的token。
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// 物理空间ID
-	PhysicalSpaceIds []*string `json:"PhysicalSpaceIds,omitempty" xml:"PhysicalSpaceIds,omitempty" type:"Repeated"`
-	// 物理空间名称，支持模糊搜索。
-	PhysicalSpaceName *string `json:"PhysicalSpaceName,omitempty" xml:"PhysicalSpaceName,omitempty"`
+	InstanceId        *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	MaxResults        *int32    `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken         *string   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	PhysicalSpaceIds  []*string `json:"PhysicalSpaceIds,omitempty" xml:"PhysicalSpaceIds,omitempty" type:"Repeated"`
+	PhysicalSpaceName *string   `json:"PhysicalSpaceName,omitempty" xml:"PhysicalSpaceName,omitempty"`
 }
 
 func (s ListPhysicalSpacesRequest) String() string {
@@ -22305,16 +21246,11 @@ func (s *ListPhysicalSpacesRequest) SetPhysicalSpaceName(v string) *ListPhysical
 }
 
 type ListPhysicalSpacesShrinkRequest struct {
-	// 实例ID
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 返回结果的最大个数。
-	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 当总结果个数大于MaxResults时，用于翻页的token。
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// 物理空间ID
+	InstanceId             *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	MaxResults             *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken              *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	PhysicalSpaceIdsShrink *string `json:"PhysicalSpaceIds,omitempty" xml:"PhysicalSpaceIds,omitempty"`
-	// 物理空间名称，支持模糊搜索。
-	PhysicalSpaceName *string `json:"PhysicalSpaceName,omitempty" xml:"PhysicalSpaceName,omitempty"`
+	PhysicalSpaceName      *string `json:"PhysicalSpaceName,omitempty" xml:"PhysicalSpaceName,omitempty"`
 }
 
 func (s ListPhysicalSpacesShrinkRequest) String() string {
@@ -22351,16 +21287,11 @@ func (s *ListPhysicalSpacesShrinkRequest) SetPhysicalSpaceName(v string) *ListPh
 }
 
 type ListPhysicalSpacesResponseBody struct {
-	// 每页数量。
-	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 当总结果个数大于MaxResults时，用于翻页的token。
-	NextToken *int32 `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// 数组，返回示例目录。
+	MaxResults     *int32                                          `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken      *int32                                          `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	PhysicalSpaces []*ListPhysicalSpacesResponseBodyPhysicalSpaces `json:"PhysicalSpaces,omitempty" xml:"PhysicalSpaces,omitempty" type:"Repeated"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 总记录数。
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	RequestId      *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount     *int32                                          `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListPhysicalSpacesResponseBody) String() string {
@@ -22397,28 +21328,18 @@ func (s *ListPhysicalSpacesResponseBody) SetTotalCount(v int32) *ListPhysicalSpa
 }
 
 type ListPhysicalSpacesResponseBodyPhysicalSpaces struct {
-	// 具体地址
-	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
-	// 所属城市
-	City *string `json:"City,omitempty" xml:"City,omitempty"`
-	// 所属国家
-	Country *string `json:"Country,omitempty" xml:"Country,omitempty"`
-	// 实例
-	Instance *string `json:"Instance,omitempty" xml:"Instance,omitempty"`
-	// 负责人
-	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	// 物理空间ID
-	PhysicalSpaceId *string `json:"PhysicalSpaceId,omitempty" xml:"PhysicalSpaceId,omitempty"`
-	// 物理空间名称
-	PhysicalSpaceName *string `json:"PhysicalSpaceName,omitempty" xml:"PhysicalSpaceName,omitempty"`
-	// 所属省份
-	Province *string `json:"Province,omitempty" xml:"Province,omitempty"`
-	// 备注
-	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	// 缩写
-	SpaceAbbreviation *string `json:"SpaceAbbreviation,omitempty" xml:"SpaceAbbreviation,omitempty"`
-	// 模型
-	SpaceType *string `json:"SpaceType,omitempty" xml:"SpaceType,omitempty"`
+	Address            *string   `json:"Address,omitempty" xml:"Address,omitempty"`
+	City               *string   `json:"City,omitempty" xml:"City,omitempty"`
+	Country            *string   `json:"Country,omitempty" xml:"Country,omitempty"`
+	Instance           *string   `json:"Instance,omitempty" xml:"Instance,omitempty"`
+	Owner              *string   `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	PhysicalSpaceId    *string   `json:"PhysicalSpaceId,omitempty" xml:"PhysicalSpaceId,omitempty"`
+	PhysicalSpaceName  *string   `json:"PhysicalSpaceName,omitempty" xml:"PhysicalSpaceName,omitempty"`
+	Province           *string   `json:"Province,omitempty" xml:"Province,omitempty"`
+	Remark             *string   `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	SecurityDomainList []*string `json:"SecurityDomainList,omitempty" xml:"SecurityDomainList,omitempty" type:"Repeated"`
+	SpaceAbbreviation  *string   `json:"SpaceAbbreviation,omitempty" xml:"SpaceAbbreviation,omitempty"`
+	SpaceType          *string   `json:"SpaceType,omitempty" xml:"SpaceType,omitempty"`
 }
 
 func (s ListPhysicalSpacesResponseBodyPhysicalSpaces) String() string {
@@ -22474,6 +21395,11 @@ func (s *ListPhysicalSpacesResponseBodyPhysicalSpaces) SetRemark(v string) *List
 	return s
 }
 
+func (s *ListPhysicalSpacesResponseBodyPhysicalSpaces) SetSecurityDomainList(v []*string) *ListPhysicalSpacesResponseBodyPhysicalSpaces {
+	s.SecurityDomainList = v
+	return s
+}
+
 func (s *ListPhysicalSpacesResponseBodyPhysicalSpaces) SetSpaceAbbreviation(v string) *ListPhysicalSpacesResponseBodyPhysicalSpaces {
 	s.SpaceAbbreviation = &v
 	return s
@@ -22485,8 +21411,9 @@ func (s *ListPhysicalSpacesResponseBodyPhysicalSpaces) SetSpaceType(v string) *L
 }
 
 type ListPhysicalSpacesResponse struct {
-	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListPhysicalSpacesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListPhysicalSpacesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListPhysicalSpacesResponse) String() string {
@@ -22502,16 +21429,20 @@ func (s *ListPhysicalSpacesResponse) SetHeaders(v map[string]*string) *ListPhysi
 	return s
 }
 
+func (s *ListPhysicalSpacesResponse) SetStatusCode(v int32) *ListPhysicalSpacesResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ListPhysicalSpacesResponse) SetBody(v *ListPhysicalSpacesResponseBody) *ListPhysicalSpacesResponse {
 	s.Body = v
 	return s
 }
 
 type ListRegionsResponseBody struct {
-	Code    *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data    *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
@@ -22550,8 +21481,9 @@ func (s *ListRegionsResponseBody) SetSuccess(v bool) *ListRegionsResponseBody {
 }
 
 type ListRegionsResponse struct {
-	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListRegionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListRegionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListRegionsResponse) String() string {
@@ -22567,20 +21499,21 @@ func (s *ListRegionsResponse) SetHeaders(v map[string]*string) *ListRegionsRespo
 	return s
 }
 
+func (s *ListRegionsResponse) SetStatusCode(v int32) *ListRegionsResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ListRegionsResponse) SetBody(v *ListRegionsResponseBody) *ListRegionsResponse {
 	s.Body = v
 	return s
 }
 
 type ListResourceInformationsRequest struct {
-	// 架构id
 	ArchitectureId *string `json:"ArchitectureId,omitempty" xml:"ArchitectureId,omitempty"`
-	// instanceId
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 返回结果的最大个数。
-	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 当总结果个数大于MaxResults时，用于翻页的token。
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	MaxResults     *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken      *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 }
 
 func (s ListResourceInformationsRequest) String() string {
@@ -22612,16 +21545,11 @@ func (s *ListResourceInformationsRequest) SetNextToken(v string) *ListResourceIn
 }
 
 type ListResourceInformationsResponseBody struct {
-	// 本次读取的最大数据量
-	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 当总结果个数大于MaxResults时，用于翻页的token。
-	NextToken *int32 `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 数组，返回示例目录。
+	MaxResults          *int64                                                     `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken           *int32                                                     `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RequestId           *string                                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ResourceInformation []*ListResourceInformationsResponseBodyResourceInformation `json:"ResourceInformation,omitempty" xml:"ResourceInformation,omitempty" type:"Repeated"`
-	// 总记录数。
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	TotalCount          *int32                                                     `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListResourceInformationsResponseBody) String() string {
@@ -22658,14 +21586,10 @@ func (s *ListResourceInformationsResponseBody) SetTotalCount(v int32) *ListResou
 }
 
 type ListResourceInformationsResponseBodyResourceInformation struct {
-	// 信息
-	Information []*ListResourceInformationsResponseBodyResourceInformationInformation `json:"Information,omitempty" xml:"Information,omitempty" type:"Repeated"`
-	// 资源属性
-	ResourceAttribute *string `json:"ResourceAttribute,omitempty" xml:"ResourceAttribute,omitempty"`
-	// 资源一级ID
-	ResourceInformationId *string `json:"ResourceInformationId,omitempty" xml:"ResourceInformationId,omitempty"`
-	// 资源类型
-	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	Information           []*ListResourceInformationsResponseBodyResourceInformationInformation `json:"Information,omitempty" xml:"Information,omitempty" type:"Repeated"`
+	ResourceAttribute     *string                                                               `json:"ResourceAttribute,omitempty" xml:"ResourceAttribute,omitempty"`
+	ResourceInformationId *string                                                               `json:"ResourceInformationId,omitempty" xml:"ResourceInformationId,omitempty"`
+	ResourceType          *string                                                               `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 }
 
 func (s ListResourceInformationsResponseBodyResourceInformation) String() string {
@@ -22697,13 +21621,9 @@ func (s *ListResourceInformationsResponseBodyResourceInformation) SetResourceTyp
 }
 
 type ListResourceInformationsResponseBodyResourceInformationInformation struct {
-	// 键
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// 键动作
-	KeyAction *string `json:"KeyAction,omitempty" xml:"KeyAction,omitempty"`
-	// 键属性
-	KeyAttribute *string `json:"KeyAttribute,omitempty" xml:"KeyAttribute,omitempty"`
-	// 键描述
+	Key            *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	KeyAction      *string `json:"KeyAction,omitempty" xml:"KeyAction,omitempty"`
+	KeyAttribute   *string `json:"KeyAttribute,omitempty" xml:"KeyAttribute,omitempty"`
 	KeyDescription *string `json:"KeyDescription,omitempty" xml:"KeyDescription,omitempty"`
 }
 
@@ -22736,8 +21656,9 @@ func (s *ListResourceInformationsResponseBodyResourceInformationInformation) Set
 }
 
 type ListResourceInformationsResponse struct {
-	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListResourceInformationsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListResourceInformationsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListResourceInformationsResponse) String() string {
@@ -22753,14 +21674,18 @@ func (s *ListResourceInformationsResponse) SetHeaders(v map[string]*string) *Lis
 	return s
 }
 
+func (s *ListResourceInformationsResponse) SetStatusCode(v int32) *ListResourceInformationsResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ListResourceInformationsResponse) SetBody(v *ListResourceInformationsResponseBody) *ListResourceInformationsResponse {
 	s.Body = v
 	return s
 }
 
 type ListResourceInstancesRequest struct {
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 建设项目资源id
+	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	SetupProjectId *string `json:"SetupProjectId,omitempty" xml:"SetupProjectId,omitempty"`
 }
 
@@ -22784,8 +21709,7 @@ func (s *ListResourceInstancesRequest) SetSetupProjectId(v string) *ListResource
 
 type ListResourceInstancesResponseBody struct {
 	LogicResource []*ListResourceInstancesResponseBodyLogicResource `json:"LogicResource,omitempty" xml:"LogicResource,omitempty" type:"Repeated"`
-	// 请求id
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId     *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListResourceInstancesResponseBody) String() string {
@@ -22877,8 +21801,9 @@ func (s *ListResourceInstancesResponseBodyLogicResourceKeyList) SetValue(v strin
 }
 
 type ListResourceInstancesResponse struct {
-	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListResourceInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListResourceInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListResourceInstancesResponse) String() string {
@@ -22894,15 +21819,18 @@ func (s *ListResourceInstancesResponse) SetHeaders(v map[string]*string) *ListRe
 	return s
 }
 
+func (s *ListResourceInstancesResponse) SetStatusCode(v int32) *ListResourceInstancesResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ListResourceInstancesResponse) SetBody(v *ListResourceInstancesResponseBody) *ListResourceInstancesResponse {
 	s.Body = v
 	return s
 }
 
 type ListResourceTypesResponseBody struct {
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 资源类型
+	RequestId    *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ResourceType []*ListResourceTypesResponseBodyResourceType `json:"ResourceType,omitempty" xml:"ResourceType,omitempty" type:"Repeated"`
 }
 
@@ -22925,10 +21853,8 @@ func (s *ListResourceTypesResponseBody) SetResourceType(v []*ListResourceTypesRe
 }
 
 type ListResourceTypesResponseBodyResourceType struct {
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// 资源类型
-	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// 资源名称
+	Key              *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	ResourceType     *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	ResourceTypeName *string `json:"ResourceTypeName,omitempty" xml:"ResourceTypeName,omitempty"`
 }
 
@@ -22956,8 +21882,9 @@ func (s *ListResourceTypesResponseBodyResourceType) SetResourceTypeName(v string
 }
 
 type ListResourceTypesResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListResourceTypesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListResourceTypesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListResourceTypesResponse) String() string {
@@ -22973,22 +21900,22 @@ func (s *ListResourceTypesResponse) SetHeaders(v map[string]*string) *ListResour
 	return s
 }
 
+func (s *ListResourceTypesResponse) SetStatusCode(v int32) *ListResourceTypesResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ListResourceTypesResponse) SetBody(v *ListResourceTypesResponseBody) *ListResourceTypesResponse {
 	s.Body = v
 	return s
 }
 
 type ListSetupProjectsRequest struct {
-	// instanceId
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 返回结果的最大个数。
-	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 当总结果个数大于MaxResults时，用于翻页的token。
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// 物理空间id
-	SpaceId *string `json:"SpaceId,omitempty" xml:"SpaceId,omitempty"`
-	// 集群名
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	MaxResults *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken  *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	SpaceId    *string `json:"SpaceId,omitempty" xml:"SpaceId,omitempty"`
+	Status     *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ListSetupProjectsRequest) String() string {
@@ -23025,16 +21952,11 @@ func (s *ListSetupProjectsRequest) SetStatus(v string) *ListSetupProjectsRequest
 }
 
 type ListSetupProjectsResponseBody struct {
-	// 本次读取的最大数据量
-	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 当总结果个数大于MaxResults时，用于翻页的token。
-	NextToken *int32 `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 数组，返回示例目录。
+	MaxResults   *int64                                       `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken    *int32                                       `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RequestId    *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	SetupProject []*ListSetupProjectsResponseBodySetupProject `json:"SetupProject,omitempty" xml:"SetupProject,omitempty" type:"Repeated"`
-	// 总记录数。
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	TotalCount   *int32                                       `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListSetupProjectsResponseBody) String() string {
@@ -23071,30 +21993,18 @@ func (s *ListSetupProjectsResponseBody) SetTotalCount(v int32) *ListSetupProject
 }
 
 type ListSetupProjectsResponseBodySetupProject struct {
-	// 架构版本
-	ArchVersion *string `json:"ArchVersion,omitempty" xml:"ArchVersion,omitempty"`
-	// 架构id
-	ArchitectureId *string `json:"ArchitectureId,omitempty" xml:"ArchitectureId,omitempty"`
-	// 创建时间
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// 预计交付时间
-	DeliveryTime *string `json:"DeliveryTime,omitempty" xml:"DeliveryTime,omitempty"`
-	// 描述
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 节点
-	Nodes *string `json:"Nodes,omitempty" xml:"Nodes,omitempty"`
-	// 套餐
-	Packages []*ListSetupProjectsResponseBodySetupProjectPackages `json:"Packages,omitempty" xml:"Packages,omitempty" type:"Repeated"`
-	// 项目进展
-	Progress *string `json:"Progress,omitempty" xml:"Progress,omitempty"`
-	// 资源一级ID
-	SetupProjectId *string `json:"SetupProjectId,omitempty" xml:"SetupProjectId,omitempty"`
-	// 物理空间uId
-	SpaceId *string `json:"SpaceId,omitempty" xml:"SpaceId,omitempty"`
-	// 物理空间名称
-	SpaceName *string `json:"SpaceName,omitempty" xml:"SpaceName,omitempty"`
-	// 物理空间类型
-	SpaceType *string `json:"SpaceType,omitempty" xml:"SpaceType,omitempty"`
+	ArchVersion    *string                                              `json:"ArchVersion,omitempty" xml:"ArchVersion,omitempty"`
+	ArchitectureId *string                                              `json:"ArchitectureId,omitempty" xml:"ArchitectureId,omitempty"`
+	CreateTime     *string                                              `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	DeliveryTime   *string                                              `json:"DeliveryTime,omitempty" xml:"DeliveryTime,omitempty"`
+	Description    *string                                              `json:"Description,omitempty" xml:"Description,omitempty"`
+	Nodes          *string                                              `json:"Nodes,omitempty" xml:"Nodes,omitempty"`
+	Packages       []*ListSetupProjectsResponseBodySetupProjectPackages `json:"Packages,omitempty" xml:"Packages,omitempty" type:"Repeated"`
+	Progress       *string                                              `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	SetupProjectId *string                                              `json:"SetupProjectId,omitempty" xml:"SetupProjectId,omitempty"`
+	SpaceId        *string                                              `json:"SpaceId,omitempty" xml:"SpaceId,omitempty"`
+	SpaceName      *string                                              `json:"SpaceName,omitempty" xml:"SpaceName,omitempty"`
+	SpaceType      *string                                              `json:"SpaceType,omitempty" xml:"SpaceType,omitempty"`
 }
 
 func (s ListSetupProjectsResponseBodySetupProject) String() string {
@@ -23166,14 +22076,10 @@ func (s *ListSetupProjectsResponseBodySetupProject) SetSpaceType(v string) *List
 }
 
 type ListSetupProjectsResponseBodySetupProjectPackages struct {
-	// 设备号
-	DeviceNumber *int64 `json:"DeviceNumber,omitempty" xml:"DeviceNumber,omitempty"`
-	// 型号
-	Model *string `json:"Model,omitempty" xml:"Model,omitempty"`
-	// 角色
-	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
-	// 厂商
-	Vendor *string `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
+	DeviceNumber *int64  `json:"DeviceNumber,omitempty" xml:"DeviceNumber,omitempty"`
+	Model        *string `json:"Model,omitempty" xml:"Model,omitempty"`
+	Role         *string `json:"Role,omitempty" xml:"Role,omitempty"`
+	Vendor       *string `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
 }
 
 func (s ListSetupProjectsResponseBodySetupProjectPackages) String() string {
@@ -23205,8 +22111,9 @@ func (s *ListSetupProjectsResponseBodySetupProjectPackages) SetVendor(v string) 
 }
 
 type ListSetupProjectsResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListSetupProjectsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListSetupProjectsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListSetupProjectsResponse) String() string {
@@ -23222,22 +22129,22 @@ func (s *ListSetupProjectsResponse) SetHeaders(v map[string]*string) *ListSetupP
 	return s
 }
 
+func (s *ListSetupProjectsResponse) SetStatusCode(v int32) *ListSetupProjectsResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ListSetupProjectsResponse) SetBody(v *ListSetupProjectsResponseBody) *ListSetupProjectsResponse {
 	s.Body = v
 	return s
 }
 
 type ListSpaceModelsRequest struct {
-	// instanceId
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 返回结果的最大个数。
-	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 当总结果个数大于MaxResults时，用于翻页的token。
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// 物理空间类型
-	SpaceType *string `json:"SpaceType,omitempty" xml:"SpaceType,omitempty"`
-	// 物理空间状态
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	MaxResults *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken  *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	SpaceType  *string `json:"SpaceType,omitempty" xml:"SpaceType,omitempty"`
+	Status     *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ListSpaceModelsRequest) String() string {
@@ -23274,16 +22181,11 @@ func (s *ListSpaceModelsRequest) SetStatus(v string) *ListSpaceModelsRequest {
 }
 
 type ListSpaceModelsResponseBody struct {
-	// 本次读取的最大数据量
-	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 当总结果个数大于MaxResults时，用于翻页的token。
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 数组，返回示例目录。
+	MaxResults *int64                                   `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken  *string                                  `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RequestId  *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	SpaceModel []*ListSpaceModelsResponseBodySpaceModel `json:"SpaceModel,omitempty" xml:"SpaceModel,omitempty" type:"Repeated"`
-	// 总记录数。
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	TotalCount *int32                                   `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListSpaceModelsResponseBody) String() string {
@@ -23320,18 +22222,12 @@ func (s *ListSpaceModelsResponseBody) SetTotalCount(v int32) *ListSpaceModelsRes
 }
 
 type ListSpaceModelsResponseBodySpaceModel struct {
-	// 创建时间
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// 层级
-	Sort []*ListSpaceModelsResponseBodySpaceModelSort `json:"Sort,omitempty" xml:"Sort,omitempty" type:"Repeated"`
-	// 资源一级ID
-	SpaceModelId *string `json:"SpaceModelId,omitempty" xml:"SpaceModelId,omitempty"`
-	// 物理空间类型
-	SpaceType *string `json:"SpaceType,omitempty" xml:"SpaceType,omitempty"`
-	// 模型状态
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// 更新时间
-	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	CreateTime   *string                                      `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Sort         []*ListSpaceModelsResponseBodySpaceModelSort `json:"Sort,omitempty" xml:"Sort,omitempty" type:"Repeated"`
+	SpaceModelId *string                                      `json:"SpaceModelId,omitempty" xml:"SpaceModelId,omitempty"`
+	SpaceType    *string                                      `json:"SpaceType,omitempty" xml:"SpaceType,omitempty"`
+	Status       *string                                      `json:"Status,omitempty" xml:"Status,omitempty"`
+	UpdateTime   *string                                      `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s ListSpaceModelsResponseBodySpaceModel) String() string {
@@ -23373,9 +22269,7 @@ func (s *ListSpaceModelsResponseBodySpaceModel) SetUpdateTime(v string) *ListSpa
 }
 
 type ListSpaceModelsResponseBodySpaceModelSort struct {
-	// 层级
-	Level *int64 `json:"Level,omitempty" xml:"Level,omitempty"`
-	// 层级名称
+	Level     *int64  `json:"Level,omitempty" xml:"Level,omitempty"`
 	LevelName *string `json:"LevelName,omitempty" xml:"LevelName,omitempty"`
 }
 
@@ -23398,8 +22292,9 @@ func (s *ListSpaceModelsResponseBodySpaceModelSort) SetLevelName(v string) *List
 }
 
 type ListSpaceModelsResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListSpaceModelsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListSpaceModelsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListSpaceModelsResponse) String() string {
@@ -23415,22 +22310,22 @@ func (s *ListSpaceModelsResponse) SetHeaders(v map[string]*string) *ListSpaceMod
 	return s
 }
 
+func (s *ListSpaceModelsResponse) SetStatusCode(v int32) *ListSpaceModelsResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ListSpaceModelsResponse) SetBody(v *ListSpaceModelsResponseBody) *ListSpaceModelsResponse {
 	s.Body = v
 	return s
 }
 
 type ListTasksHistoriesRequest struct {
-	// 设备ID
-	DeviceId *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
-	// 实例ID
+	DeviceId   *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 巡检项ID
-	ItemId *string `json:"ItemId,omitempty" xml:"ItemId,omitempty"`
-	// 返回结果的最大个数。
-	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 当总结果个数大于MaxResults时，用于翻页的token。
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	ItemId     *string `json:"ItemId,omitempty" xml:"ItemId,omitempty"`
+	MaxResults *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken  *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 }
 
 func (s ListTasksHistoriesRequest) String() string {
@@ -23467,14 +22362,10 @@ func (s *ListTasksHistoriesRequest) SetNextToken(v string) *ListTasksHistoriesRe
 }
 
 type ListTasksHistoriesResponseBody struct {
-	// 数组，返回示例目录。
 	InspectionTasks []*ListTasksHistoriesResponseBodyInspectionTasks `json:"InspectionTasks,omitempty" xml:"InspectionTasks,omitempty" type:"Repeated"`
-	// 当总结果个数大于MaxResults时，用于翻页的token。
-	NextToken *int32 `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// 请求ID
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 总记录数。
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	NextToken       *int32                                           `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RequestId       *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount      *int32                                           `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListTasksHistoriesResponseBody) String() string {
@@ -23506,16 +22397,13 @@ func (s *ListTasksHistoriesResponseBody) SetTotalCount(v int32) *ListTasksHistor
 }
 
 type ListTasksHistoriesResponseBodyInspectionTasks struct {
-	// 巡检开始时间
-	ExecutionBeginTime *string `json:"ExecutionBeginTime,omitempty" xml:"ExecutionBeginTime,omitempty"`
-	// 巡检结束时间
-	ExecutionEndTime *string `json:"ExecutionEndTime,omitempty" xml:"ExecutionEndTime,omitempty"`
-	// 告警规则
+	DeviceDisplay        *string                                                              `json:"DeviceDisplay,omitempty" xml:"DeviceDisplay,omitempty"`
+	ErrorCode            *string                                                              `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ExecutionBeginTime   *string                                                              `json:"ExecutionBeginTime,omitempty" xml:"ExecutionBeginTime,omitempty"`
+	ExecutionEndTime     *string                                                              `json:"ExecutionEndTime,omitempty" xml:"ExecutionEndTime,omitempty"`
 	InspectionAlarmRules []*ListTasksHistoriesResponseBodyInspectionTasksInspectionAlarmRules `json:"InspectionAlarmRules,omitempty" xml:"InspectionAlarmRules,omitempty" type:"Repeated"`
-	// 巡检结果
-	InspectionResult *string `json:"InspectionResult,omitempty" xml:"InspectionResult,omitempty"`
-	// 任务ID
-	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	InspectionResult     *string                                                              `json:"InspectionResult,omitempty" xml:"InspectionResult,omitempty"`
+	TaskId               *string                                                              `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s ListTasksHistoriesResponseBodyInspectionTasks) String() string {
@@ -23524,6 +22412,16 @@ func (s ListTasksHistoriesResponseBodyInspectionTasks) String() string {
 
 func (s ListTasksHistoriesResponseBodyInspectionTasks) GoString() string {
 	return s.String()
+}
+
+func (s *ListTasksHistoriesResponseBodyInspectionTasks) SetDeviceDisplay(v string) *ListTasksHistoriesResponseBodyInspectionTasks {
+	s.DeviceDisplay = &v
+	return s
+}
+
+func (s *ListTasksHistoriesResponseBodyInspectionTasks) SetErrorCode(v string) *ListTasksHistoriesResponseBodyInspectionTasks {
+	s.ErrorCode = &v
+	return s
 }
 
 func (s *ListTasksHistoriesResponseBodyInspectionTasks) SetExecutionBeginTime(v string) *ListTasksHistoriesResponseBodyInspectionTasks {
@@ -23552,16 +22450,11 @@ func (s *ListTasksHistoriesResponseBodyInspectionTasks) SetTaskId(v string) *Lis
 }
 
 type ListTasksHistoriesResponseBodyInspectionTasksInspectionAlarmRules struct {
-	// 告警实际值
-	ActualValue *string `json:"ActualValue,omitempty" xml:"ActualValue,omitempty"`
-	// 告警表达式
+	ActualValue     *string `json:"ActualValue,omitempty" xml:"ActualValue,omitempty"`
 	AlarmExpression *string `json:"AlarmExpression,omitempty" xml:"AlarmExpression,omitempty"`
-	// 告警级别
-	AlarmLevel *string `json:"AlarmLevel,omitempty" xml:"AlarmLevel,omitempty"`
-	// 告警操作符
-	AlarmOperator *string `json:"AlarmOperator,omitempty" xml:"AlarmOperator,omitempty"`
-	// 告警值
-	AlarmValue *string `json:"AlarmValue,omitempty" xml:"AlarmValue,omitempty"`
+	AlarmLevel      *string `json:"AlarmLevel,omitempty" xml:"AlarmLevel,omitempty"`
+	AlarmOperator   *string `json:"AlarmOperator,omitempty" xml:"AlarmOperator,omitempty"`
+	AlarmValue      *string `json:"AlarmValue,omitempty" xml:"AlarmValue,omitempty"`
 }
 
 func (s ListTasksHistoriesResponseBodyInspectionTasksInspectionAlarmRules) String() string {
@@ -23598,8 +22491,9 @@ func (s *ListTasksHistoriesResponseBodyInspectionTasksInspectionAlarmRules) SetA
 }
 
 type ListTasksHistoriesResponse struct {
-	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListTasksHistoriesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListTasksHistoriesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListTasksHistoriesResponse) String() string {
@@ -23615,23 +22509,23 @@ func (s *ListTasksHistoriesResponse) SetHeaders(v map[string]*string) *ListTasks
 	return s
 }
 
+func (s *ListTasksHistoriesResponse) SetStatusCode(v int32) *ListTasksHistoriesResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ListTasksHistoriesResponse) SetBody(v *ListTasksHistoriesResponseBody) *ListTasksHistoriesResponse {
 	s.Body = v
 	return s
 }
 
 type ListTreePhysicalSpacesRequest struct {
-	// 实例ID
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 返回结果的最大个数。
-	MaxResults *string `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 当总结果个数大于MaxResults时，用于翻页的token。
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// 物理空间ID
+	InstanceId        *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	MaxResults        *string   `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken         *string   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	PhysicalSpaceIds  []*string `json:"PhysicalSpaceIds,omitempty" xml:"PhysicalSpaceIds,omitempty" type:"Repeated"`
 	PhysicalSpaceName *string   `json:"PhysicalSpaceName,omitempty" xml:"PhysicalSpaceName,omitempty"`
-	// 如果Tree为true时，分页失效
-	Tree *bool `json:"Tree,omitempty" xml:"Tree,omitempty"`
+	Tree              *bool     `json:"Tree,omitempty" xml:"Tree,omitempty"`
 }
 
 func (s ListTreePhysicalSpacesRequest) String() string {
@@ -23673,17 +22567,12 @@ func (s *ListTreePhysicalSpacesRequest) SetTree(v bool) *ListTreePhysicalSpacesR
 }
 
 type ListTreePhysicalSpacesShrinkRequest struct {
-	// 实例ID
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 返回结果的最大个数。
-	MaxResults *string `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 当总结果个数大于MaxResults时，用于翻页的token。
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// 物理空间ID
+	InstanceId             *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	MaxResults             *string `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken              *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	PhysicalSpaceIdsShrink *string `json:"PhysicalSpaceIds,omitempty" xml:"PhysicalSpaceIds,omitempty"`
 	PhysicalSpaceName      *string `json:"PhysicalSpaceName,omitempty" xml:"PhysicalSpaceName,omitempty"`
-	// 如果Tree为true时，分页失效
-	Tree *bool `json:"Tree,omitempty" xml:"Tree,omitempty"`
+	Tree                   *bool   `json:"Tree,omitempty" xml:"Tree,omitempty"`
 }
 
 func (s ListTreePhysicalSpacesShrinkRequest) String() string {
@@ -23766,8 +22655,9 @@ func (s *ListTreePhysicalSpacesResponseBody) SetTotalCount(v int32) *ListTreePhy
 }
 
 type ListTreePhysicalSpacesResponse struct {
-	Headers map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListTreePhysicalSpacesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListTreePhysicalSpacesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListTreePhysicalSpacesResponse) String() string {
@@ -23783,26 +22673,24 @@ func (s *ListTreePhysicalSpacesResponse) SetHeaders(v map[string]*string) *ListT
 	return s
 }
 
+func (s *ListTreePhysicalSpacesResponse) SetStatusCode(v int32) *ListTreePhysicalSpacesResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ListTreePhysicalSpacesResponse) SetBody(v *ListTreePhysicalSpacesResponseBody) *ListTreePhysicalSpacesResponse {
 	s.Body = v
 	return s
 }
 
 type ListWorkOrdersRequest struct {
-	// A-设备SN
-	DeviceSnA *string `json:"DeviceSnA,omitempty" xml:"DeviceSnA,omitempty"`
-	// 实例ID
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 返回结果的最大个数。
-	MaxResults *string `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 当总结果个数大于MaxResults时，用于翻页的token。
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// 工单来源
+	DeviceSnA       *string `json:"DeviceSnA,omitempty" xml:"DeviceSnA,omitempty"`
+	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	MaxResults      *string `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken       *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	WorkOrderSource *string `json:"WorkOrderSource,omitempty" xml:"WorkOrderSource,omitempty"`
-	// 工单状态
-	WorkOrderStep *string `json:"WorkOrderStep,omitempty" xml:"WorkOrderStep,omitempty"`
-	// 工单标题
-	WorkOrderTitle *string `json:"WorkOrderTitle,omitempty" xml:"WorkOrderTitle,omitempty"`
+	WorkOrderStep   *string `json:"WorkOrderStep,omitempty" xml:"WorkOrderStep,omitempty"`
+	WorkOrderTitle  *string `json:"WorkOrderTitle,omitempty" xml:"WorkOrderTitle,omitempty"`
 }
 
 func (s ListWorkOrdersRequest) String() string {
@@ -23849,15 +22737,11 @@ func (s *ListWorkOrdersRequest) SetWorkOrderTitle(v string) *ListWorkOrdersReque
 }
 
 type ListWorkOrdersResponseBody struct {
-	Content []*ListWorkOrdersResponseBodyContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Repeated"`
-	// 每页数量。
-	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 当总结果个数大于MaxResults时，用于翻页的token。
-	NextToken *int32 `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 总记录数。
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	Content    []*ListWorkOrdersResponseBodyContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Repeated"`
+	MaxResults *int32                               `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken  *int32                               `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RequestId  *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *int32                               `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListWorkOrdersResponseBody) String() string {
@@ -23894,108 +22778,57 @@ func (s *ListWorkOrdersResponseBody) SetTotalCount(v int32) *ListWorkOrdersRespo
 }
 
 type ListWorkOrdersResponseBodyContent struct {
-	// 告警发生时间
-	AlarmHappenTime *string `json:"AlarmHappenTime,omitempty" xml:"AlarmHappenTime,omitempty"`
-	// 告警恢复时间
-	AlarmRecoverTime *string `json:"AlarmRecoverTime,omitempty" xml:"AlarmRecoverTime,omitempty"`
-	// 关联告警项
-	AlarmRelated *string `json:"AlarmRelated,omitempty" xml:"AlarmRelated,omitempty"`
-	// 区域
-	Area *string `json:"Area,omitempty" xml:"Area,omitempty"`
-	// 电路编码
-	CircuitId *string `json:"CircuitId,omitempty" xml:"CircuitId,omitempty"`
-	// 电路名
-	CircuitName *string `json:"CircuitName,omitempty" xml:"CircuitName,omitempty"`
-	// 电路类型
-	CircuitType *string `json:"CircuitType,omitempty" xml:"CircuitType,omitempty"`
-	// 设备告警信息
-	DeviceAlarmInfo *string `json:"DeviceAlarmInfo,omitempty" xml:"DeviceAlarmInfo,omitempty"`
-	// 设备IP
-	DeviceIp *string `json:"DeviceIp,omitempty" xml:"DeviceIp,omitempty"`
-	// A-IP
-	DeviceIpA *string `json:"DeviceIpA,omitempty" xml:"DeviceIpA,omitempty"`
-	// B-IP
-	DeviceIpB *string `json:"DeviceIpB,omitempty" xml:"DeviceIpB,omitempty"`
-	// A-设备型号
-	DeviceModelA *string `json:"DeviceModelA,omitempty" xml:"DeviceModelA,omitempty"`
-	// B-设备型号
-	DeviceModelB *string `json:"DeviceModelB,omitempty" xml:"DeviceModelB,omitempty"`
-	// 设备名
-	DeviceName *string `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
-	// A-设备名
-	DeviceNameA *string `json:"DeviceNameA,omitempty" xml:"DeviceNameA,omitempty"`
-	// B-设备名
-	DeviceNameB *string `json:"DeviceNameB,omitempty" xml:"DeviceNameB,omitempty"`
-	// A-端口
-	DevicePortA *string `json:"DevicePortA,omitempty" xml:"DevicePortA,omitempty"`
-	// B-端口
-	DevicePortB *string `json:"DevicePortB,omitempty" xml:"DevicePortB,omitempty"`
-	// A-设备SN
-	DeviceSnA *string `json:"DeviceSnA,omitempty" xml:"DeviceSnA,omitempty"`
-	// B-设备SN
-	DeviceSnB *string `json:"DeviceSnB,omitempty" xml:"DeviceSnB,omitempty"`
-	// 设备类型
-	DeviceType *string `json:"DeviceType,omitempty" xml:"DeviceType,omitempty"`
-	// 设备厂家
-	DeviceVendor *string `json:"DeviceVendor,omitempty" xml:"DeviceVendor,omitempty"`
-	// A-厂家
-	DeviceVendorA *string `json:"DeviceVendorA,omitempty" xml:"DeviceVendorA,omitempty"`
-	// B-厂家
-	DeviceVendorB *string `json:"DeviceVendorB,omitempty" xml:"DeviceVendorB,omitempty"`
-	// 紧急程度
-	EmergencyDegree *string `json:"EmergencyDegree,omitempty" xml:"EmergencyDegree,omitempty"`
-	// 额外字段
-	Extra *string `json:"Extra,omitempty" xml:"Extra,omitempty"`
-	// 故障时常(时)
-	FaultDuration *string `json:"FaultDuration,omitempty" xml:"FaultDuration,omitempty"`
-	// 创建时间
-	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// 修改时间
-	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// 文件名称
-	HangFileName *string `json:"HangFileName,omitempty" xml:"HangFileName,omitempty"`
-	// 文件路径
-	HangFilePath *string `json:"HangFilePath,omitempty" xml:"HangFilePath,omitempty"`
-	// 挂起/转交原因
-	HangReason *string `json:"HangReason,omitempty" xml:"HangReason,omitempty"`
-	// 是否影响业务
-	ImpactBusiness *string `json:"ImpactBusiness,omitempty" xml:"ImpactBusiness,omitempty"`
-	// 问题描述
-	IncidentDescription *string `json:"IncidentDescription,omitempty" xml:"IncidentDescription,omitempty"`
-	// 故障小类
-	IncidentSubType *string `json:"IncidentSubType,omitempty" xml:"IncidentSubType,omitempty"`
-	// 故障分类
-	IncidentType *string `json:"IncidentType,omitempty" xml:"IncidentType,omitempty"`
-	// 责任人
-	LiableMan *string `json:"LiableMan,omitempty" xml:"LiableMan,omitempty"`
-	// 用户/联系人
-	LinkMan *string `json:"LinkMan,omitempty" xml:"LinkMan,omitempty"`
-	// 告警源主体
-	OriginalSubjectAlarm *string `json:"OriginalSubjectAlarm,omitempty" xml:"OriginalSubjectAlarm,omitempty"`
-	// 处理时限
-	ProcessLimited *string `json:"ProcessLimited,omitempty" xml:"ProcessLimited,omitempty"`
-	// 处理人
-	ProcessMan *string `json:"ProcessMan,omitempty" xml:"ProcessMan,omitempty"`
-	// 处理人编号
-	ProcessManId *string `json:"ProcessManId,omitempty" xml:"ProcessManId,omitempty"`
-	// 处理结果
-	ProcessResult *string `json:"ProcessResult,omitempty" xml:"ProcessResult,omitempty"`
-	// 技能组
-	SkillGroups *string `json:"SkillGroups,omitempty" xml:"SkillGroups,omitempty"`
-	// 是否超时
-	Timeout *string `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
-	// 工单编号
-	WorkOrderId *string `json:"WorkOrderId,omitempty" xml:"WorkOrderId,omitempty"`
-	// 操作流水
+	AlarmHappenTime        *string                                                    `json:"AlarmHappenTime,omitempty" xml:"AlarmHappenTime,omitempty"`
+	AlarmRecoverTime       *string                                                    `json:"AlarmRecoverTime,omitempty" xml:"AlarmRecoverTime,omitempty"`
+	AlarmRelated           *string                                                    `json:"AlarmRelated,omitempty" xml:"AlarmRelated,omitempty"`
+	Area                   *string                                                    `json:"Area,omitempty" xml:"Area,omitempty"`
+	CircuitId              *string                                                    `json:"CircuitId,omitempty" xml:"CircuitId,omitempty"`
+	CircuitName            *string                                                    `json:"CircuitName,omitempty" xml:"CircuitName,omitempty"`
+	CircuitType            *string                                                    `json:"CircuitType,omitempty" xml:"CircuitType,omitempty"`
+	DeviceAlarmInfo        *string                                                    `json:"DeviceAlarmInfo,omitempty" xml:"DeviceAlarmInfo,omitempty"`
+	DeviceIp               *string                                                    `json:"DeviceIp,omitempty" xml:"DeviceIp,omitempty"`
+	DeviceIpA              *string                                                    `json:"DeviceIpA,omitempty" xml:"DeviceIpA,omitempty"`
+	DeviceIpB              *string                                                    `json:"DeviceIpB,omitempty" xml:"DeviceIpB,omitempty"`
+	DeviceModelA           *string                                                    `json:"DeviceModelA,omitempty" xml:"DeviceModelA,omitempty"`
+	DeviceModelB           *string                                                    `json:"DeviceModelB,omitempty" xml:"DeviceModelB,omitempty"`
+	DeviceName             *string                                                    `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
+	DeviceNameA            *string                                                    `json:"DeviceNameA,omitempty" xml:"DeviceNameA,omitempty"`
+	DeviceNameB            *string                                                    `json:"DeviceNameB,omitempty" xml:"DeviceNameB,omitempty"`
+	DevicePortA            *string                                                    `json:"DevicePortA,omitempty" xml:"DevicePortA,omitempty"`
+	DevicePortB            *string                                                    `json:"DevicePortB,omitempty" xml:"DevicePortB,omitempty"`
+	DeviceSnA              *string                                                    `json:"DeviceSnA,omitempty" xml:"DeviceSnA,omitempty"`
+	DeviceSnB              *string                                                    `json:"DeviceSnB,omitempty" xml:"DeviceSnB,omitempty"`
+	DeviceType             *string                                                    `json:"DeviceType,omitempty" xml:"DeviceType,omitempty"`
+	DeviceVendor           *string                                                    `json:"DeviceVendor,omitempty" xml:"DeviceVendor,omitempty"`
+	DeviceVendorA          *string                                                    `json:"DeviceVendorA,omitempty" xml:"DeviceVendorA,omitempty"`
+	DeviceVendorB          *string                                                    `json:"DeviceVendorB,omitempty" xml:"DeviceVendorB,omitempty"`
+	EmergencyDegree        *string                                                    `json:"EmergencyDegree,omitempty" xml:"EmergencyDegree,omitempty"`
+	Extra                  *string                                                    `json:"Extra,omitempty" xml:"Extra,omitempty"`
+	FaultDuration          *string                                                    `json:"FaultDuration,omitempty" xml:"FaultDuration,omitempty"`
+	GmtCreate              *string                                                    `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	GmtModified            *string                                                    `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	HangFileName           *string                                                    `json:"HangFileName,omitempty" xml:"HangFileName,omitempty"`
+	HangFilePath           *string                                                    `json:"HangFilePath,omitempty" xml:"HangFilePath,omitempty"`
+	HangReason             *string                                                    `json:"HangReason,omitempty" xml:"HangReason,omitempty"`
+	ImpactBusiness         *string                                                    `json:"ImpactBusiness,omitempty" xml:"ImpactBusiness,omitempty"`
+	IncidentDescription    *string                                                    `json:"IncidentDescription,omitempty" xml:"IncidentDescription,omitempty"`
+	IncidentSubType        *string                                                    `json:"IncidentSubType,omitempty" xml:"IncidentSubType,omitempty"`
+	IncidentType           *string                                                    `json:"IncidentType,omitempty" xml:"IncidentType,omitempty"`
+	LiableMan              *string                                                    `json:"LiableMan,omitempty" xml:"LiableMan,omitempty"`
+	LinkMan                *string                                                    `json:"LinkMan,omitempty" xml:"LinkMan,omitempty"`
+	OriginalSubjectAlarm   *string                                                    `json:"OriginalSubjectAlarm,omitempty" xml:"OriginalSubjectAlarm,omitempty"`
+	ProcessLimited         *string                                                    `json:"ProcessLimited,omitempty" xml:"ProcessLimited,omitempty"`
+	ProcessMan             *string                                                    `json:"ProcessMan,omitempty" xml:"ProcessMan,omitempty"`
+	ProcessManId           *string                                                    `json:"ProcessManId,omitempty" xml:"ProcessManId,omitempty"`
+	ProcessResult          *string                                                    `json:"ProcessResult,omitempty" xml:"ProcessResult,omitempty"`
+	SkillGroups            *string                                                    `json:"SkillGroups,omitempty" xml:"SkillGroups,omitempty"`
+	Timeout                *string                                                    `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+	WorkOrderId            *string                                                    `json:"WorkOrderId,omitempty" xml:"WorkOrderId,omitempty"`
 	WorkOrderOperationDtos []*ListWorkOrdersResponseBodyContentWorkOrderOperationDtos `json:"WorkOrderOperationDtos,omitempty" xml:"WorkOrderOperationDtos,omitempty" type:"Repeated"`
-	// 工单来源
-	WorkOrderSource *string `json:"WorkOrderSource,omitempty" xml:"WorkOrderSource,omitempty"`
-	// 工单状态
-	WorkOrderStep *string `json:"WorkOrderStep,omitempty" xml:"WorkOrderStep,omitempty"`
-	// 工单编号
-	WorkOrderTitle *string `json:"WorkOrderTitle,omitempty" xml:"WorkOrderTitle,omitempty"`
-	// 工单类型
-	WorkOrderType *string `json:"WorkOrderType,omitempty" xml:"WorkOrderType,omitempty"`
+	WorkOrderSource        *string                                                    `json:"WorkOrderSource,omitempty" xml:"WorkOrderSource,omitempty"`
+	WorkOrderStep          *string                                                    `json:"WorkOrderStep,omitempty" xml:"WorkOrderStep,omitempty"`
+	WorkOrderTitle         *string                                                    `json:"WorkOrderTitle,omitempty" xml:"WorkOrderTitle,omitempty"`
+	WorkOrderType          *string                                                    `json:"WorkOrderType,omitempty" xml:"WorkOrderType,omitempty"`
 }
 
 func (s ListWorkOrdersResponseBodyContent) String() string {
@@ -24262,17 +23095,11 @@ func (s *ListWorkOrdersResponseBodyContent) SetWorkOrderType(v string) *ListWork
 }
 
 type ListWorkOrdersResponseBodyContentWorkOrderOperationDtos struct {
-	// 创建时间
-	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// 操作
-	Operation *string `json:"Operation,omitempty" xml:"Operation,omitempty"`
-	// 操作编号
+	GmtCreate   *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	Operation   *string `json:"Operation,omitempty" xml:"Operation,omitempty"`
 	OperationId *string `json:"OperationId,omitempty" xml:"OperationId,omitempty"`
-	// 操作人
-	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
-	// 备注
-	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	// 工单编号
+	Operator    *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	Remark      *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
 	WorkOrderId *string `json:"WorkOrderId,omitempty" xml:"WorkOrderId,omitempty"`
 }
 
@@ -24315,8 +23142,9 @@ func (s *ListWorkOrdersResponseBodyContentWorkOrderOperationDtos) SetWorkOrderId
 }
 
 type ListWorkOrdersResponse struct {
-	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListWorkOrdersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListWorkOrdersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListWorkOrdersResponse) String() string {
@@ -24332,15 +23160,18 @@ func (s *ListWorkOrdersResponse) SetHeaders(v map[string]*string) *ListWorkOrder
 	return s
 }
 
+func (s *ListWorkOrdersResponse) SetStatusCode(v int32) *ListWorkOrdersResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ListWorkOrdersResponse) SetBody(v *ListWorkOrdersResponseBody) *ListWorkOrdersResponse {
 	s.Body = v
 	return s
 }
 
 type LockSpaceModelRequest struct {
-	// instanceId
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 资源id
+	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	SpaceModelId *string `json:"SpaceModelId,omitempty" xml:"SpaceModelId,omitempty"`
 }
 
@@ -24363,7 +23194,6 @@ func (s *LockSpaceModelRequest) SetSpaceModelId(v string) *LockSpaceModelRequest
 }
 
 type LockSpaceModelResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -24381,8 +23211,9 @@ func (s *LockSpaceModelResponseBody) SetRequestId(v string) *LockSpaceModelRespo
 }
 
 type LockSpaceModelResponse struct {
-	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *LockSpaceModelResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *LockSpaceModelResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s LockSpaceModelResponse) String() string {
@@ -24398,22 +23229,22 @@ func (s *LockSpaceModelResponse) SetHeaders(v map[string]*string) *LockSpaceMode
 	return s
 }
 
+func (s *LockSpaceModelResponse) SetStatusCode(v int32) *LockSpaceModelResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *LockSpaceModelResponse) SetBody(v *LockSpaceModelResponseBody) *LockSpaceModelResponse {
 	s.Body = v
 	return s
 }
 
 type ReleaseIPRequest struct {
-	// deviceResourceId
-	DeviceResourceId *string `json:"DeviceResourceId,omitempty" xml:"DeviceResourceId,omitempty"`
-	// deviceResourceIdStr
+	DeviceResourceId  *string   `json:"DeviceResourceId,omitempty" xml:"DeviceResourceId,omitempty"`
 	DeviceResourceIds []*string `json:"DeviceResourceIds,omitempty" xml:"DeviceResourceIds,omitempty" type:"Repeated"`
-	// instanceId
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// ip地址类型
-	IpType *string `json:"IpType,omitempty" xml:"IpType,omitempty"`
-	// 建设项目id
-	SetupProjectId *string `json:"SetupProjectId,omitempty" xml:"SetupProjectId,omitempty"`
+	InstanceId        *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	IpType            *string   `json:"IpType,omitempty" xml:"IpType,omitempty"`
+	SetupProjectId    *string   `json:"SetupProjectId,omitempty" xml:"SetupProjectId,omitempty"`
 }
 
 func (s ReleaseIPRequest) String() string {
@@ -24450,16 +23281,11 @@ func (s *ReleaseIPRequest) SetSetupProjectId(v string) *ReleaseIPRequest {
 }
 
 type ReleaseIPShrinkRequest struct {
-	// deviceResourceId
-	DeviceResourceId *string `json:"DeviceResourceId,omitempty" xml:"DeviceResourceId,omitempty"`
-	// deviceResourceIdStr
+	DeviceResourceId        *string `json:"DeviceResourceId,omitempty" xml:"DeviceResourceId,omitempty"`
 	DeviceResourceIdsShrink *string `json:"DeviceResourceIds,omitempty" xml:"DeviceResourceIds,omitempty"`
-	// instanceId
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// ip地址类型
-	IpType *string `json:"IpType,omitempty" xml:"IpType,omitempty"`
-	// 建设项目id
-	SetupProjectId *string `json:"SetupProjectId,omitempty" xml:"SetupProjectId,omitempty"`
+	InstanceId              *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	IpType                  *string `json:"IpType,omitempty" xml:"IpType,omitempty"`
+	SetupProjectId          *string `json:"SetupProjectId,omitempty" xml:"SetupProjectId,omitempty"`
 }
 
 func (s ReleaseIPShrinkRequest) String() string {
@@ -24496,7 +23322,6 @@ func (s *ReleaseIPShrinkRequest) SetSetupProjectId(v string) *ReleaseIPShrinkReq
 }
 
 type ReleaseIPResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -24514,8 +23339,9 @@ func (s *ReleaseIPResponseBody) SetRequestId(v string) *ReleaseIPResponseBody {
 }
 
 type ReleaseIPResponse struct {
-	Headers map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ReleaseIPResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ReleaseIPResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ReleaseIPResponse) String() string {
@@ -24531,21 +23357,21 @@ func (s *ReleaseIPResponse) SetHeaders(v map[string]*string) *ReleaseIPResponse 
 	return s
 }
 
+func (s *ReleaseIPResponse) SetStatusCode(v int32) *ReleaseIPResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ReleaseIPResponse) SetBody(v *ReleaseIPResponseBody) *ReleaseIPResponse {
 	s.Body = v
 	return s
 }
 
 type RemarkWorkOrderRequest struct {
-	// 幂等校验 token
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// 实例ID
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 备注人
-	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
-	// 备注信息
-	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	// 备注工单id
+	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Operator    *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	Remark      *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
 	WorkOrderId *string `json:"WorkOrderId,omitempty" xml:"WorkOrderId,omitempty"`
 }
 
@@ -24583,10 +23409,8 @@ func (s *RemarkWorkOrderRequest) SetWorkOrderId(v string) *RemarkWorkOrderReques
 }
 
 type RemarkWorkOrderResponseBody struct {
-	// 操作id
 	OperationId *string `json:"OperationId,omitempty" xml:"OperationId,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s RemarkWorkOrderResponseBody) String() string {
@@ -24608,8 +23432,9 @@ func (s *RemarkWorkOrderResponseBody) SetRequestId(v string) *RemarkWorkOrderRes
 }
 
 type RemarkWorkOrderResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *RemarkWorkOrderResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *RemarkWorkOrderResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s RemarkWorkOrderResponse) String() string {
@@ -24625,15 +23450,18 @@ func (s *RemarkWorkOrderResponse) SetHeaders(v map[string]*string) *RemarkWorkOr
 	return s
 }
 
+func (s *RemarkWorkOrderResponse) SetStatusCode(v int32) *RemarkWorkOrderResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *RemarkWorkOrderResponse) SetBody(v *RemarkWorkOrderResponseBody) *RemarkWorkOrderResponse {
 	s.Body = v
 	return s
 }
 
 type RetryTasksRequest struct {
-	// 实例ID
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 重执行任务的数组
+	InstanceId *string                        `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	RetryTasks []*RetryTasksRequestRetryTasks `json:"RetryTasks,omitempty" xml:"RetryTasks,omitempty" type:"Repeated"`
 }
 
@@ -24656,11 +23484,8 @@ func (s *RetryTasksRequest) SetRetryTasks(v []*RetryTasksRequestRetryTasks) *Ret
 }
 
 type RetryTasksRequestRetryTasks struct {
-	// 设备ID
 	DeviceId *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
-	// 巡检项名称
 	ItemName *string `json:"ItemName,omitempty" xml:"ItemName,omitempty"`
-	// 脚本ID
 	ScriptId *string `json:"ScriptId,omitempty" xml:"ScriptId,omitempty"`
 }
 
@@ -24688,9 +23513,7 @@ func (s *RetryTasksRequestRetryTasks) SetScriptId(v string) *RetryTasksRequestRe
 }
 
 type RetryTasksShrinkRequest struct {
-	// 实例ID
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 重执行任务的数组
+	InstanceId       *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	RetryTasksShrink *string `json:"RetryTasks,omitempty" xml:"RetryTasks,omitempty"`
 }
 
@@ -24713,7 +23536,6 @@ func (s *RetryTasksShrinkRequest) SetRetryTasksShrink(v string) *RetryTasksShrin
 }
 
 type RetryTasksResponseBody struct {
-	// 请求ID
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -24731,8 +23553,9 @@ func (s *RetryTasksResponseBody) SetRequestId(v string) *RetryTasksResponseBody 
 }
 
 type RetryTasksResponse struct {
-	Headers map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *RetryTasksResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *RetryTasksResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s RetryTasksResponse) String() string {
@@ -24748,30 +23571,26 @@ func (s *RetryTasksResponse) SetHeaders(v map[string]*string) *RetryTasksRespons
 	return s
 }
 
+func (s *RetryTasksResponse) SetStatusCode(v int32) *RetryTasksResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *RetryTasksResponse) SetBody(v *RetryTasksResponseBody) *RetryTasksResponse {
 	s.Body = v
 	return s
 }
 
 type UpdateConfigurationSpecificationRequest struct {
-	// 架构类型
-	Architecture *string `json:"Architecture,omitempty" xml:"Architecture,omitempty"`
-	// 配置规范id
-	ConfigurationSpecificationId *string `json:"ConfigurationSpecificationId,omitempty" xml:"ConfigurationSpecificationId,omitempty"`
-	// instanceId
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 型号
-	Model *string `json:"Model,omitempty" xml:"Model,omitempty"`
-	// 相关变量
-	RelatedVariate [][]byte `json:"RelatedVariate,omitempty" xml:"RelatedVariate,omitempty" type:"Repeated"`
-	// 角色
-	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
-	// 配置规范内容
-	SpecificationContent *string `json:"SpecificationContent,omitempty" xml:"SpecificationContent,omitempty"`
-	// 配置规范名字
-	SpecificationName *string `json:"SpecificationName,omitempty" xml:"SpecificationName,omitempty"`
-	// 厂商
-	Vendor *string `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
+	Architecture                 *string  `json:"Architecture,omitempty" xml:"Architecture,omitempty"`
+	ConfigurationSpecificationId *string  `json:"ConfigurationSpecificationId,omitempty" xml:"ConfigurationSpecificationId,omitempty"`
+	InstanceId                   *string  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Model                        *string  `json:"Model,omitempty" xml:"Model,omitempty"`
+	RelatedVariate               [][]byte `json:"RelatedVariate,omitempty" xml:"RelatedVariate,omitempty" type:"Repeated"`
+	Role                         *string  `json:"Role,omitempty" xml:"Role,omitempty"`
+	SpecificationContent         *string  `json:"SpecificationContent,omitempty" xml:"SpecificationContent,omitempty"`
+	SpecificationName            *string  `json:"SpecificationName,omitempty" xml:"SpecificationName,omitempty"`
+	Vendor                       *string  `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
 }
 
 func (s UpdateConfigurationSpecificationRequest) String() string {
@@ -24828,24 +23647,15 @@ func (s *UpdateConfigurationSpecificationRequest) SetVendor(v string) *UpdateCon
 }
 
 type UpdateConfigurationSpecificationShrinkRequest struct {
-	// 架构类型
-	Architecture *string `json:"Architecture,omitempty" xml:"Architecture,omitempty"`
-	// 配置规范id
+	Architecture                 *string `json:"Architecture,omitempty" xml:"Architecture,omitempty"`
 	ConfigurationSpecificationId *string `json:"ConfigurationSpecificationId,omitempty" xml:"ConfigurationSpecificationId,omitempty"`
-	// instanceId
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 型号
-	Model *string `json:"Model,omitempty" xml:"Model,omitempty"`
-	// 相关变量
-	RelatedVariateShrink *string `json:"RelatedVariate,omitempty" xml:"RelatedVariate,omitempty"`
-	// 角色
-	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
-	// 配置规范内容
-	SpecificationContent *string `json:"SpecificationContent,omitempty" xml:"SpecificationContent,omitempty"`
-	// 配置规范名字
-	SpecificationName *string `json:"SpecificationName,omitempty" xml:"SpecificationName,omitempty"`
-	// 厂商
-	Vendor *string `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
+	InstanceId                   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Model                        *string `json:"Model,omitempty" xml:"Model,omitempty"`
+	RelatedVariateShrink         *string `json:"RelatedVariate,omitempty" xml:"RelatedVariate,omitempty"`
+	Role                         *string `json:"Role,omitempty" xml:"Role,omitempty"`
+	SpecificationContent         *string `json:"SpecificationContent,omitempty" xml:"SpecificationContent,omitempty"`
+	SpecificationName            *string `json:"SpecificationName,omitempty" xml:"SpecificationName,omitempty"`
+	Vendor                       *string `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
 }
 
 func (s UpdateConfigurationSpecificationShrinkRequest) String() string {
@@ -24902,7 +23712,6 @@ func (s *UpdateConfigurationSpecificationShrinkRequest) SetVendor(v string) *Upd
 }
 
 type UpdateConfigurationSpecificationResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -24920,8 +23729,9 @@ func (s *UpdateConfigurationSpecificationResponseBody) SetRequestId(v string) *U
 }
 
 type UpdateConfigurationSpecificationResponse struct {
-	Headers map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UpdateConfigurationSpecificationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateConfigurationSpecificationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s UpdateConfigurationSpecificationResponse) String() string {
@@ -24937,22 +23747,22 @@ func (s *UpdateConfigurationSpecificationResponse) SetHeaders(v map[string]*stri
 	return s
 }
 
+func (s *UpdateConfigurationSpecificationResponse) SetStatusCode(v int32) *UpdateConfigurationSpecificationResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *UpdateConfigurationSpecificationResponse) SetBody(v *UpdateConfigurationSpecificationResponseBody) *UpdateConfigurationSpecificationResponse {
 	s.Body = v
 	return s
 }
 
 type UpdateConfigurationVariateRequest struct {
-	// 描述变量
-	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// 资源一级ID
+	Comment                *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
 	ConfigurationVariateId *string `json:"ConfigurationVariateId,omitempty" xml:"ConfigurationVariateId,omitempty"`
-	// python转换函数
-	FormatFunction *string `json:"FormatFunction,omitempty" xml:"FormatFunction,omitempty"`
-	// instanceId
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 变量名字
-	VariateName *string `json:"VariateName,omitempty" xml:"VariateName,omitempty"`
+	FormatFunction         *string `json:"FormatFunction,omitempty" xml:"FormatFunction,omitempty"`
+	InstanceId             *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	VariateName            *string `json:"VariateName,omitempty" xml:"VariateName,omitempty"`
 }
 
 func (s UpdateConfigurationVariateRequest) String() string {
@@ -24989,7 +23799,6 @@ func (s *UpdateConfigurationVariateRequest) SetVariateName(v string) *UpdateConf
 }
 
 type UpdateConfigurationVariateResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -25007,8 +23816,9 @@ func (s *UpdateConfigurationVariateResponseBody) SetRequestId(v string) *UpdateC
 }
 
 type UpdateConfigurationVariateResponse struct {
-	Headers map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UpdateConfigurationVariateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateConfigurationVariateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s UpdateConfigurationVariateResponse) String() string {
@@ -25024,36 +23834,35 @@ func (s *UpdateConfigurationVariateResponse) SetHeaders(v map[string]*string) *U
 	return s
 }
 
+func (s *UpdateConfigurationVariateResponse) SetStatusCode(v int32) *UpdateConfigurationVariateResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *UpdateConfigurationVariateResponse) SetBody(v *UpdateConfigurationVariateResponseBody) *UpdateConfigurationVariateResponse {
 	s.Body = v
 	return s
 }
 
 type UpdateDedicatedLineRequest struct {
-	// 宽带（Mbps）
-	Bandwidth *int32 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	// 联系人
-	Contact *string `json:"Contact,omitempty" xml:"Contact,omitempty"`
-	// 专线网关
+	Bandwidth            *int32  `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
+	Contact              *string `json:"Contact,omitempty" xml:"Contact,omitempty"`
 	DedicatedLineGateway *string `json:"DedicatedLineGateway,omitempty" xml:"DedicatedLineGateway,omitempty"`
-	// 实例 ID。
-	DedicatedLineId *string `json:"DedicatedLineId,omitempty" xml:"DedicatedLineId,omitempty"`
-	// 专线IP
-	DedicatedLineIp *string `json:"DedicatedLineIp,omitempty" xml:"DedicatedLineIp,omitempty"`
-	// 专线角色
-	DedicatedLineRole *string `json:"DedicatedLineRole,omitempty" xml:"DedicatedLineRole,omitempty"`
-	// 备注
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 关联设备ID
-	DeviceId *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
-	// 关联设备端口名称
-	DevicePort *string `json:"DevicePort,omitempty" xml:"DevicePort,omitempty"`
-	// 实例ID
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 运营商
-	Isp *string `json:"Isp,omitempty" xml:"Isp,omitempty"`
-	// 联系电话
-	Phone *string `json:"Phone,omitempty" xml:"Phone,omitempty"`
+	DedicatedLineId      *string `json:"DedicatedLineId,omitempty" xml:"DedicatedLineId,omitempty"`
+	DedicatedLineIp      *string `json:"DedicatedLineIp,omitempty" xml:"DedicatedLineIp,omitempty"`
+	DedicatedLineRole    *string `json:"DedicatedLineRole,omitempty" xml:"DedicatedLineRole,omitempty"`
+	Description          *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	DeviceId             *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
+	DevicePort           *string `json:"DevicePort,omitempty" xml:"DevicePort,omitempty"`
+	ExpirationDate       *string `json:"ExpirationDate,omitempty" xml:"ExpirationDate,omitempty"`
+	ExtAttributes        *string `json:"ExtAttributes,omitempty" xml:"ExtAttributes,omitempty"`
+	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Isp                  *string `json:"Isp,omitempty" xml:"Isp,omitempty"`
+	IspId                *string `json:"IspId,omitempty" xml:"IspId,omitempty"`
+	Keyword              *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	OnlineDate           *string `json:"OnlineDate,omitempty" xml:"OnlineDate,omitempty"`
+	Phone                *string `json:"Phone,omitempty" xml:"Phone,omitempty"`
+	PhysicalSpaceId      *string `json:"PhysicalSpaceId,omitempty" xml:"PhysicalSpaceId,omitempty"`
 }
 
 func (s UpdateDedicatedLineRequest) String() string {
@@ -25109,6 +23918,16 @@ func (s *UpdateDedicatedLineRequest) SetDevicePort(v string) *UpdateDedicatedLin
 	return s
 }
 
+func (s *UpdateDedicatedLineRequest) SetExpirationDate(v string) *UpdateDedicatedLineRequest {
+	s.ExpirationDate = &v
+	return s
+}
+
+func (s *UpdateDedicatedLineRequest) SetExtAttributes(v string) *UpdateDedicatedLineRequest {
+	s.ExtAttributes = &v
+	return s
+}
+
 func (s *UpdateDedicatedLineRequest) SetInstanceId(v string) *UpdateDedicatedLineRequest {
 	s.InstanceId = &v
 	return s
@@ -25119,13 +23938,32 @@ func (s *UpdateDedicatedLineRequest) SetIsp(v string) *UpdateDedicatedLineReques
 	return s
 }
 
+func (s *UpdateDedicatedLineRequest) SetIspId(v string) *UpdateDedicatedLineRequest {
+	s.IspId = &v
+	return s
+}
+
+func (s *UpdateDedicatedLineRequest) SetKeyword(v string) *UpdateDedicatedLineRequest {
+	s.Keyword = &v
+	return s
+}
+
+func (s *UpdateDedicatedLineRequest) SetOnlineDate(v string) *UpdateDedicatedLineRequest {
+	s.OnlineDate = &v
+	return s
+}
+
 func (s *UpdateDedicatedLineRequest) SetPhone(v string) *UpdateDedicatedLineRequest {
 	s.Phone = &v
 	return s
 }
 
+func (s *UpdateDedicatedLineRequest) SetPhysicalSpaceId(v string) *UpdateDedicatedLineRequest {
+	s.PhysicalSpaceId = &v
+	return s
+}
+
 type UpdateDedicatedLineResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -25143,8 +23981,9 @@ func (s *UpdateDedicatedLineResponseBody) SetRequestId(v string) *UpdateDedicate
 }
 
 type UpdateDedicatedLineResponse struct {
-	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UpdateDedicatedLineResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateDedicatedLineResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s UpdateDedicatedLineResponse) String() string {
@@ -25160,62 +23999,42 @@ func (s *UpdateDedicatedLineResponse) SetHeaders(v map[string]*string) *UpdateDe
 	return s
 }
 
+func (s *UpdateDedicatedLineResponse) SetStatusCode(v int32) *UpdateDedicatedLineResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *UpdateDedicatedLineResponse) SetBody(v *UpdateDedicatedLineResponseBody) *UpdateDedicatedLineResponse {
 	s.Body = v
 	return s
 }
 
 type UpdateDeviceRequest struct {
-	// 设备ID
-	DeviceId *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
-	// enable密码
-	EnablePassword *string `json:"EnablePassword,omitempty" xml:"EnablePassword,omitempty"`
-	// 设备额外属性
-	ExtAttributes *string `json:"ExtAttributes,omitempty" xml:"ExtAttributes,omitempty"`
-	// 主机名
-	HostName *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
-	// 实例ID
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 设备IP
-	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	// 登录密码
-	LoginPassword *string `json:"LoginPassword,omitempty" xml:"LoginPassword,omitempty"`
-	// 登录类型
-	LoginType *string `json:"LoginType,omitempty" xml:"LoginType,omitempty"`
-	// 登录账号
-	LoginUsername *string `json:"LoginUsername,omitempty" xml:"LoginUsername,omitempty"`
-	// 设备MAC地址
-	Mac *string `json:"Mac,omitempty" xml:"Mac,omitempty"`
-	// 设备型号
-	Model *string `json:"Model,omitempty" xml:"Model,omitempty"`
-	// 物理空间
-	PhysicalSpaceId *string `json:"PhysicalSpaceId,omitempty" xml:"PhysicalSpaceId,omitempty"`
-	// 设备安全域
-	SecurityDomain *string `json:"SecurityDomain,omitempty" xml:"SecurityDomain,omitempty"`
-	// 设备状态
-	ServiceStatus *string `json:"ServiceStatus,omitempty" xml:"ServiceStatus,omitempty"`
-	// 设备SN
-	Sn *string `json:"Sn,omitempty" xml:"Sn,omitempty"`
-	// SNMP 账号类型
-	SnmpAccountType *string `json:"SnmpAccountType,omitempty" xml:"SnmpAccountType,omitempty"`
-	// SNMP 版本号
-	SnmpAccountVersion *string `json:"SnmpAccountVersion,omitempty" xml:"SnmpAccountVersion,omitempty"`
-	// SNMP Auth Passphrase
-	SnmpAuthPassphrase *string `json:"SnmpAuthPassphrase,omitempty" xml:"SnmpAuthPassphrase,omitempty"`
-	// Auth Protocol
-	SnmpAuthProtocol *string `json:"SnmpAuthProtocol,omitempty" xml:"SnmpAuthProtocol,omitempty"`
-	// SNMP Community
-	SnmpCommunity *string `json:"SnmpCommunity,omitempty" xml:"SnmpCommunity,omitempty"`
-	// Privacy Passphrase
+	DeviceId              *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
+	EnablePassword        *string `json:"EnablePassword,omitempty" xml:"EnablePassword,omitempty"`
+	ExtAttributes         *string `json:"ExtAttributes,omitempty" xml:"ExtAttributes,omitempty"`
+	HostName              *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
+	InstanceId            *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Ip                    *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	LoginPassword         *string `json:"LoginPassword,omitempty" xml:"LoginPassword,omitempty"`
+	LoginType             *string `json:"LoginType,omitempty" xml:"LoginType,omitempty"`
+	LoginUsername         *string `json:"LoginUsername,omitempty" xml:"LoginUsername,omitempty"`
+	Mac                   *string `json:"Mac,omitempty" xml:"Mac,omitempty"`
+	Model                 *string `json:"Model,omitempty" xml:"Model,omitempty"`
+	PhysicalSpaceId       *string `json:"PhysicalSpaceId,omitempty" xml:"PhysicalSpaceId,omitempty"`
+	SecurityDomain        *string `json:"SecurityDomain,omitempty" xml:"SecurityDomain,omitempty"`
+	ServiceStatus         *string `json:"ServiceStatus,omitempty" xml:"ServiceStatus,omitempty"`
+	Sn                    *string `json:"Sn,omitempty" xml:"Sn,omitempty"`
+	SnmpAccountType       *string `json:"SnmpAccountType,omitempty" xml:"SnmpAccountType,omitempty"`
+	SnmpAccountVersion    *string `json:"SnmpAccountVersion,omitempty" xml:"SnmpAccountVersion,omitempty"`
+	SnmpAuthPassphrase    *string `json:"SnmpAuthPassphrase,omitempty" xml:"SnmpAuthPassphrase,omitempty"`
+	SnmpAuthProtocol      *string `json:"SnmpAuthProtocol,omitempty" xml:"SnmpAuthProtocol,omitempty"`
+	SnmpCommunity         *string `json:"SnmpCommunity,omitempty" xml:"SnmpCommunity,omitempty"`
 	SnmpPrivacyPassphrase *string `json:"SnmpPrivacyPassphrase,omitempty" xml:"SnmpPrivacyPassphrase,omitempty"`
-	// Privacy Protocol
-	SnmpPrivacyProtocol *string `json:"SnmpPrivacyProtocol,omitempty" xml:"SnmpPrivacyProtocol,omitempty"`
-	// SNMP 安全级别
-	SnmpSecurityLevel *string `json:"SnmpSecurityLevel,omitempty" xml:"SnmpSecurityLevel,omitempty"`
-	// SNMP 用户名
-	SnmpUsername *string `json:"SnmpUsername,omitempty" xml:"SnmpUsername,omitempty"`
-	// 设备厂商
-	Vendor *string `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
+	SnmpPrivacyProtocol   *string `json:"SnmpPrivacyProtocol,omitempty" xml:"SnmpPrivacyProtocol,omitempty"`
+	SnmpSecurityLevel     *string `json:"SnmpSecurityLevel,omitempty" xml:"SnmpSecurityLevel,omitempty"`
+	SnmpUsername          *string `json:"SnmpUsername,omitempty" xml:"SnmpUsername,omitempty"`
+	Vendor                *string `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
 }
 
 func (s UpdateDeviceRequest) String() string {
@@ -25352,7 +24171,6 @@ func (s *UpdateDeviceRequest) SetVendor(v string) *UpdateDeviceRequest {
 }
 
 type UpdateDeviceResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -25370,8 +24188,9 @@ func (s *UpdateDeviceResponseBody) SetRequestId(v string) *UpdateDeviceResponseB
 }
 
 type UpdateDeviceResponse struct {
-	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UpdateDeviceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateDeviceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s UpdateDeviceResponse) String() string {
@@ -25387,28 +24206,25 @@ func (s *UpdateDeviceResponse) SetHeaders(v map[string]*string) *UpdateDeviceRes
 	return s
 }
 
+func (s *UpdateDeviceResponse) SetStatusCode(v int32) *UpdateDeviceResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *UpdateDeviceResponse) SetBody(v *UpdateDeviceResponseBody) *UpdateDeviceResponse {
 	s.Body = v
 	return s
 }
 
 type UpdateDeviceFormRequest struct {
-	// 是否需要账号配置
-	AccountConfig *bool `json:"AccountConfig,omitempty" xml:"AccountConfig,omitempty"`
-	// 设备形态属性列表
-	AttributeList []*UpdateDeviceFormRequestAttributeList `json:"AttributeList,omitempty" xml:"AttributeList,omitempty" type:"Repeated"`
-	// 是否支持配置生成
-	ConfigCompare *bool `json:"ConfigCompare,omitempty" xml:"ConfigCompare,omitempty"`
-	// 是否展示设备详情
-	DetailDisplay *bool `json:"DetailDisplay,omitempty" xml:"DetailDisplay,omitempty"`
-	// 设备形态ID
-	DeviceFormId *string `json:"DeviceFormId,omitempty" xml:"DeviceFormId,omitempty"`
-	// 实例ID
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 关联设备形态ID
-	RelatedDeviceFormId *string `json:"RelatedDeviceFormId,omitempty" xml:"RelatedDeviceFormId,omitempty"`
-	// 设备代码
-	Script *string `json:"Script,omitempty" xml:"Script,omitempty"`
+	AccountConfig       *bool                                   `json:"AccountConfig,omitempty" xml:"AccountConfig,omitempty"`
+	AttributeList       []*UpdateDeviceFormRequestAttributeList `json:"AttributeList,omitempty" xml:"AttributeList,omitempty" type:"Repeated"`
+	ConfigCompare       *bool                                   `json:"ConfigCompare,omitempty" xml:"ConfigCompare,omitempty"`
+	DetailDisplay       *bool                                   `json:"DetailDisplay,omitempty" xml:"DetailDisplay,omitempty"`
+	DeviceFormId        *string                                 `json:"DeviceFormId,omitempty" xml:"DeviceFormId,omitempty"`
+	InstanceId          *string                                 `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	RelatedDeviceFormId *string                                 `json:"RelatedDeviceFormId,omitempty" xml:"RelatedDeviceFormId,omitempty"`
+	Script              *string                                 `json:"Script,omitempty" xml:"Script,omitempty"`
 }
 
 func (s UpdateDeviceFormRequest) String() string {
@@ -25460,28 +24276,18 @@ func (s *UpdateDeviceFormRequest) SetScript(v string) *UpdateDeviceFormRequest {
 }
 
 type UpdateDeviceFormRequestAttributeList struct {
-	// 设备形态属性值格式
-	AttributeFormat *string `json:"AttributeFormat,omitempty" xml:"AttributeFormat,omitempty"`
-	// 查询支持模糊搜索
-	AttributeFuzzyQuery *bool `json:"AttributeFuzzyQuery,omitempty" xml:"AttributeFuzzyQuery,omitempty"`
-	// 设备形态属性主键
-	AttributeKey *string `json:"AttributeKey,omitempty" xml:"AttributeKey,omitempty"`
-	// 设备形态属性名称
-	AttributeName *string `json:"AttributeName,omitempty" xml:"AttributeName,omitempty"`
-	// 前端查询控件占位符
-	AttributePlaceholder *string `json:"AttributePlaceholder,omitempty" xml:"AttributePlaceholder,omitempty"`
-	// 前端展示搜索控件
-	AttributeQuery *bool `json:"AttributeQuery,omitempty" xml:"AttributeQuery,omitempty"`
-	// 设备形态属性关联对象
-	AttributeReference *string `json:"AttributeReference,omitempty" xml:"AttributeReference,omitempty"`
-	// 设备形态属性是否必填
-	AttributeRequirement *bool `json:"AttributeRequirement,omitempty" xml:"AttributeRequirement,omitempty"`
-	// 设备形态属性是否表格可见
-	AttributeTableDisplay *bool `json:"AttributeTableDisplay,omitempty" xml:"AttributeTableDisplay,omitempty"`
-	// 设备形态属性值类型
-	AttributeType *string `json:"AttributeType,omitempty" xml:"AttributeType,omitempty"`
-	// 设备形态属性是否唯一
-	AttributeUniqueness *bool `json:"AttributeUniqueness,omitempty" xml:"AttributeUniqueness,omitempty"`
+	AttributeFormat       *string `json:"AttributeFormat,omitempty" xml:"AttributeFormat,omitempty"`
+	AttributeFuzzyQuery   *bool   `json:"AttributeFuzzyQuery,omitempty" xml:"AttributeFuzzyQuery,omitempty"`
+	AttributeKey          *string `json:"AttributeKey,omitempty" xml:"AttributeKey,omitempty"`
+	AttributeName         *string `json:"AttributeName,omitempty" xml:"AttributeName,omitempty"`
+	AttributePlaceholder  *string `json:"AttributePlaceholder,omitempty" xml:"AttributePlaceholder,omitempty"`
+	AttributeQuery        *bool   `json:"AttributeQuery,omitempty" xml:"AttributeQuery,omitempty"`
+	AttributeReference    *string `json:"AttributeReference,omitempty" xml:"AttributeReference,omitempty"`
+	AttributeRequirement  *bool   `json:"AttributeRequirement,omitempty" xml:"AttributeRequirement,omitempty"`
+	AttributeSequence     *int32  `json:"AttributeSequence,omitempty" xml:"AttributeSequence,omitempty"`
+	AttributeTableDisplay *bool   `json:"AttributeTableDisplay,omitempty" xml:"AttributeTableDisplay,omitempty"`
+	AttributeType         *string `json:"AttributeType,omitempty" xml:"AttributeType,omitempty"`
+	AttributeUniqueness   *bool   `json:"AttributeUniqueness,omitempty" xml:"AttributeUniqueness,omitempty"`
 }
 
 func (s UpdateDeviceFormRequestAttributeList) String() string {
@@ -25532,6 +24338,11 @@ func (s *UpdateDeviceFormRequestAttributeList) SetAttributeRequirement(v bool) *
 	return s
 }
 
+func (s *UpdateDeviceFormRequestAttributeList) SetAttributeSequence(v int32) *UpdateDeviceFormRequestAttributeList {
+	s.AttributeSequence = &v
+	return s
+}
+
 func (s *UpdateDeviceFormRequestAttributeList) SetAttributeTableDisplay(v bool) *UpdateDeviceFormRequestAttributeList {
 	s.AttributeTableDisplay = &v
 	return s
@@ -25548,22 +24359,14 @@ func (s *UpdateDeviceFormRequestAttributeList) SetAttributeUniqueness(v bool) *U
 }
 
 type UpdateDeviceFormShrinkRequest struct {
-	// 是否需要账号配置
-	AccountConfig *bool `json:"AccountConfig,omitempty" xml:"AccountConfig,omitempty"`
-	// 设备形态属性列表
+	AccountConfig       *bool   `json:"AccountConfig,omitempty" xml:"AccountConfig,omitempty"`
 	AttributeListShrink *string `json:"AttributeList,omitempty" xml:"AttributeList,omitempty"`
-	// 是否支持配置生成
-	ConfigCompare *bool `json:"ConfigCompare,omitempty" xml:"ConfigCompare,omitempty"`
-	// 是否展示设备详情
-	DetailDisplay *bool `json:"DetailDisplay,omitempty" xml:"DetailDisplay,omitempty"`
-	// 设备形态ID
-	DeviceFormId *string `json:"DeviceFormId,omitempty" xml:"DeviceFormId,omitempty"`
-	// 实例ID
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 关联设备形态ID
+	ConfigCompare       *bool   `json:"ConfigCompare,omitempty" xml:"ConfigCompare,omitempty"`
+	DetailDisplay       *bool   `json:"DetailDisplay,omitempty" xml:"DetailDisplay,omitempty"`
+	DeviceFormId        *string `json:"DeviceFormId,omitempty" xml:"DeviceFormId,omitempty"`
+	InstanceId          *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	RelatedDeviceFormId *string `json:"RelatedDeviceFormId,omitempty" xml:"RelatedDeviceFormId,omitempty"`
-	// 设备代码
-	Script *string `json:"Script,omitempty" xml:"Script,omitempty"`
+	Script              *string `json:"Script,omitempty" xml:"Script,omitempty"`
 }
 
 func (s UpdateDeviceFormShrinkRequest) String() string {
@@ -25615,7 +24418,6 @@ func (s *UpdateDeviceFormShrinkRequest) SetScript(v string) *UpdateDeviceFormShr
 }
 
 type UpdateDeviceFormResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -25633,8 +24435,9 @@ func (s *UpdateDeviceFormResponseBody) SetRequestId(v string) *UpdateDeviceFormR
 }
 
 type UpdateDeviceFormResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UpdateDeviceFormResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateDeviceFormResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s UpdateDeviceFormResponse) String() string {
@@ -25650,22 +24453,22 @@ func (s *UpdateDeviceFormResponse) SetHeaders(v map[string]*string) *UpdateDevic
 	return s
 }
 
+func (s *UpdateDeviceFormResponse) SetStatusCode(v int32) *UpdateDeviceFormResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *UpdateDeviceFormResponse) SetBody(v *UpdateDeviceFormResponseBody) *UpdateDeviceFormResponse {
 	s.Body = v
 	return s
 }
 
 type UpdateDevicePropertyRequest struct {
-	// 实例 ID。
 	DevicePropertyId *string `json:"DevicePropertyId,omitempty" xml:"DevicePropertyId,omitempty"`
-	// 实例ID
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 属性内容
-	PropertyContent *string `json:"PropertyContent,omitempty" xml:"PropertyContent,omitempty"`
-	// 属性格式
-	PropertyFormat *string `json:"PropertyFormat,omitempty" xml:"PropertyFormat,omitempty"`
-	// 属性名称
-	PropertyName *string `json:"PropertyName,omitempty" xml:"PropertyName,omitempty"`
+	InstanceId       *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	PropertyContent  *string `json:"PropertyContent,omitempty" xml:"PropertyContent,omitempty"`
+	PropertyFormat   *string `json:"PropertyFormat,omitempty" xml:"PropertyFormat,omitempty"`
+	PropertyName     *string `json:"PropertyName,omitempty" xml:"PropertyName,omitempty"`
 }
 
 func (s UpdateDevicePropertyRequest) String() string {
@@ -25702,7 +24505,6 @@ func (s *UpdateDevicePropertyRequest) SetPropertyName(v string) *UpdateDevicePro
 }
 
 type UpdateDevicePropertyResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -25720,8 +24522,9 @@ func (s *UpdateDevicePropertyResponseBody) SetRequestId(v string) *UpdateDeviceP
 }
 
 type UpdateDevicePropertyResponse struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UpdateDevicePropertyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateDevicePropertyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s UpdateDevicePropertyResponse) String() string {
@@ -25737,24 +24540,23 @@ func (s *UpdateDevicePropertyResponse) SetHeaders(v map[string]*string) *UpdateD
 	return s
 }
 
+func (s *UpdateDevicePropertyResponse) SetStatusCode(v int32) *UpdateDevicePropertyResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *UpdateDevicePropertyResponse) SetBody(v *UpdateDevicePropertyResponseBody) *UpdateDevicePropertyResponse {
 	s.Body = v
 	return s
 }
 
 type UpdateDeviceResourceRequest struct {
-	// 更新数据
-	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// 资源一级ID
-	DeviceResourceId *string `json:"DeviceResourceId,omitempty" xml:"DeviceResourceId,omitempty"`
-	// 资源一级ID
+	Data              *string   `json:"Data,omitempty" xml:"Data,omitempty"`
+	DeviceResourceId  *string   `json:"DeviceResourceId,omitempty" xml:"DeviceResourceId,omitempty"`
 	DeviceResourceIds []*string `json:"DeviceResourceIds,omitempty" xml:"DeviceResourceIds,omitempty" type:"Repeated"`
-	// instanceId
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 建设项目id
-	SetupProjectId *string `json:"SetupProjectId,omitempty" xml:"SetupProjectId,omitempty"`
-	// 操作类型
-	UpdateType *string `json:"UpdateType,omitempty" xml:"UpdateType,omitempty"`
+	InstanceId        *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	SetupProjectId    *string   `json:"SetupProjectId,omitempty" xml:"SetupProjectId,omitempty"`
+	UpdateType        *string   `json:"UpdateType,omitempty" xml:"UpdateType,omitempty"`
 }
 
 func (s UpdateDeviceResourceRequest) String() string {
@@ -25796,18 +24598,12 @@ func (s *UpdateDeviceResourceRequest) SetUpdateType(v string) *UpdateDeviceResou
 }
 
 type UpdateDeviceResourceShrinkRequest struct {
-	// 更新数据
-	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// 资源一级ID
-	DeviceResourceId *string `json:"DeviceResourceId,omitempty" xml:"DeviceResourceId,omitempty"`
-	// 资源一级ID
+	Data                    *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	DeviceResourceId        *string `json:"DeviceResourceId,omitempty" xml:"DeviceResourceId,omitempty"`
 	DeviceResourceIdsShrink *string `json:"DeviceResourceIds,omitempty" xml:"DeviceResourceIds,omitempty"`
-	// instanceId
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 建设项目id
-	SetupProjectId *string `json:"SetupProjectId,omitempty" xml:"SetupProjectId,omitempty"`
-	// 操作类型
-	UpdateType *string `json:"UpdateType,omitempty" xml:"UpdateType,omitempty"`
+	InstanceId              *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	SetupProjectId          *string `json:"SetupProjectId,omitempty" xml:"SetupProjectId,omitempty"`
+	UpdateType              *string `json:"UpdateType,omitempty" xml:"UpdateType,omitempty"`
 }
 
 func (s UpdateDeviceResourceShrinkRequest) String() string {
@@ -25849,7 +24645,6 @@ func (s *UpdateDeviceResourceShrinkRequest) SetUpdateType(v string) *UpdateDevic
 }
 
 type UpdateDeviceResourceResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -25867,8 +24662,9 @@ func (s *UpdateDeviceResourceResponseBody) SetRequestId(v string) *UpdateDeviceR
 }
 
 type UpdateDeviceResourceResponse struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UpdateDeviceResourceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateDeviceResourceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s UpdateDeviceResourceResponse) String() string {
@@ -25884,52 +24680,39 @@ func (s *UpdateDeviceResourceResponse) SetHeaders(v map[string]*string) *UpdateD
 	return s
 }
 
+func (s *UpdateDeviceResourceResponse) SetStatusCode(v int32) *UpdateDeviceResourceResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *UpdateDeviceResourceResponse) SetBody(v *UpdateDeviceResourceResponseBody) *UpdateDeviceResourceResponse {
 	s.Body = v
 	return s
 }
 
 type UpdateDevicesRequest struct {
-	// 设备ID
-	DeviceIds []*string `json:"DeviceIds,omitempty" xml:"DeviceIds,omitempty" type:"Repeated"`
-	// enable密码
-	EnablePassword *string `json:"EnablePassword,omitempty" xml:"EnablePassword,omitempty"`
-	// 实例ID
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 登录密码
-	LoginPassword *string `json:"LoginPassword,omitempty" xml:"LoginPassword,omitempty"`
-	// 登录类型
-	LoginType *string `json:"LoginType,omitempty" xml:"LoginType,omitempty"`
-	// 登录账号
-	LoginUsername *string `json:"LoginUsername,omitempty" xml:"LoginUsername,omitempty"`
-	// 型号
-	Model *string `json:"Model,omitempty" xml:"Model,omitempty"`
-	// 物理空间id
-	PhysicalSpaceId *string `json:"PhysicalSpaceId,omitempty" xml:"PhysicalSpaceId,omitempty"`
-	// 物理空间名称
-	PhysicalSpaceName *string `json:"PhysicalSpaceName,omitempty" xml:"PhysicalSpaceName,omitempty"`
-	// 服务状态
-	ServiceStatus *string `json:"ServiceStatus,omitempty" xml:"ServiceStatus,omitempty"`
-	// SNMP 账号类型
-	SnmpAccountType *string `json:"SnmpAccountType,omitempty" xml:"SnmpAccountType,omitempty"`
-	// SNMP 版本号
-	SnmpAccountVersion *string `json:"SnmpAccountVersion,omitempty" xml:"SnmpAccountVersion,omitempty"`
-	// SNMP Auth Passphrase
-	SnmpAuthPassphrase *string `json:"SnmpAuthPassphrase,omitempty" xml:"SnmpAuthPassphrase,omitempty"`
-	// SNMP Auth Protocol
-	SnmpAuthProtocol *string `json:"SnmpAuthProtocol,omitempty" xml:"SnmpAuthProtocol,omitempty"`
-	// SNMP Community
-	SnmpCommunity *string `json:"SnmpCommunity,omitempty" xml:"SnmpCommunity,omitempty"`
-	// SNMP Privacy Passphrase
-	SnmpPrivacyPassphrase *string `json:"SnmpPrivacyPassphrase,omitempty" xml:"SnmpPrivacyPassphrase,omitempty"`
-	// SNMP Privacy Protocol
-	SnmpPrivacyProtocol *string `json:"SnmpPrivacyProtocol,omitempty" xml:"SnmpPrivacyProtocol,omitempty"`
-	// SNMP 安全级别
-	SnmpSecurityLevel *string `json:"SnmpSecurityLevel,omitempty" xml:"SnmpSecurityLevel,omitempty"`
-	// SNMP 用户名
-	SnmpUsername *string `json:"SnmpUsername,omitempty" xml:"SnmpUsername,omitempty"`
-	// 厂商
-	Vendor *string `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
+	DeviceIds             []*string `json:"DeviceIds,omitempty" xml:"DeviceIds,omitempty" type:"Repeated"`
+	EnablePassword        *string   `json:"EnablePassword,omitempty" xml:"EnablePassword,omitempty"`
+	ExtAttributes         *string   `json:"ExtAttributes,omitempty" xml:"ExtAttributes,omitempty"`
+	InstanceId            *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	LoginPassword         *string   `json:"LoginPassword,omitempty" xml:"LoginPassword,omitempty"`
+	LoginType             *string   `json:"LoginType,omitempty" xml:"LoginType,omitempty"`
+	LoginUsername         *string   `json:"LoginUsername,omitempty" xml:"LoginUsername,omitempty"`
+	Model                 *string   `json:"Model,omitempty" xml:"Model,omitempty"`
+	PhysicalSpaceId       *string   `json:"PhysicalSpaceId,omitempty" xml:"PhysicalSpaceId,omitempty"`
+	PhysicalSpaceName     *string   `json:"PhysicalSpaceName,omitempty" xml:"PhysicalSpaceName,omitempty"`
+	SecurityDomain        *string   `json:"SecurityDomain,omitempty" xml:"SecurityDomain,omitempty"`
+	ServiceStatus         *string   `json:"ServiceStatus,omitempty" xml:"ServiceStatus,omitempty"`
+	SnmpAccountType       *string   `json:"SnmpAccountType,omitempty" xml:"SnmpAccountType,omitempty"`
+	SnmpAccountVersion    *string   `json:"SnmpAccountVersion,omitempty" xml:"SnmpAccountVersion,omitempty"`
+	SnmpAuthPassphrase    *string   `json:"SnmpAuthPassphrase,omitempty" xml:"SnmpAuthPassphrase,omitempty"`
+	SnmpAuthProtocol      *string   `json:"SnmpAuthProtocol,omitempty" xml:"SnmpAuthProtocol,omitempty"`
+	SnmpCommunity         *string   `json:"SnmpCommunity,omitempty" xml:"SnmpCommunity,omitempty"`
+	SnmpPrivacyPassphrase *string   `json:"SnmpPrivacyPassphrase,omitempty" xml:"SnmpPrivacyPassphrase,omitempty"`
+	SnmpPrivacyProtocol   *string   `json:"SnmpPrivacyProtocol,omitempty" xml:"SnmpPrivacyProtocol,omitempty"`
+	SnmpSecurityLevel     *string   `json:"SnmpSecurityLevel,omitempty" xml:"SnmpSecurityLevel,omitempty"`
+	SnmpUsername          *string   `json:"SnmpUsername,omitempty" xml:"SnmpUsername,omitempty"`
+	Vendor                *string   `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
 }
 
 func (s UpdateDevicesRequest) String() string {
@@ -25947,6 +24730,11 @@ func (s *UpdateDevicesRequest) SetDeviceIds(v []*string) *UpdateDevicesRequest {
 
 func (s *UpdateDevicesRequest) SetEnablePassword(v string) *UpdateDevicesRequest {
 	s.EnablePassword = &v
+	return s
+}
+
+func (s *UpdateDevicesRequest) SetExtAttributes(v string) *UpdateDevicesRequest {
+	s.ExtAttributes = &v
 	return s
 }
 
@@ -25982,6 +24770,11 @@ func (s *UpdateDevicesRequest) SetPhysicalSpaceId(v string) *UpdateDevicesReques
 
 func (s *UpdateDevicesRequest) SetPhysicalSpaceName(v string) *UpdateDevicesRequest {
 	s.PhysicalSpaceName = &v
+	return s
+}
+
+func (s *UpdateDevicesRequest) SetSecurityDomain(v string) *UpdateDevicesRequest {
+	s.SecurityDomain = &v
 	return s
 }
 
@@ -26041,46 +24834,28 @@ func (s *UpdateDevicesRequest) SetVendor(v string) *UpdateDevicesRequest {
 }
 
 type UpdateDevicesShrinkRequest struct {
-	// 设备ID
-	DeviceIdsShrink *string `json:"DeviceIds,omitempty" xml:"DeviceIds,omitempty"`
-	// enable密码
-	EnablePassword *string `json:"EnablePassword,omitempty" xml:"EnablePassword,omitempty"`
-	// 实例ID
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 登录密码
-	LoginPassword *string `json:"LoginPassword,omitempty" xml:"LoginPassword,omitempty"`
-	// 登录类型
-	LoginType *string `json:"LoginType,omitempty" xml:"LoginType,omitempty"`
-	// 登录账号
-	LoginUsername *string `json:"LoginUsername,omitempty" xml:"LoginUsername,omitempty"`
-	// 型号
-	Model *string `json:"Model,omitempty" xml:"Model,omitempty"`
-	// 物理空间id
-	PhysicalSpaceId *string `json:"PhysicalSpaceId,omitempty" xml:"PhysicalSpaceId,omitempty"`
-	// 物理空间名称
-	PhysicalSpaceName *string `json:"PhysicalSpaceName,omitempty" xml:"PhysicalSpaceName,omitempty"`
-	// 服务状态
-	ServiceStatus *string `json:"ServiceStatus,omitempty" xml:"ServiceStatus,omitempty"`
-	// SNMP 账号类型
-	SnmpAccountType *string `json:"SnmpAccountType,omitempty" xml:"SnmpAccountType,omitempty"`
-	// SNMP 版本号
-	SnmpAccountVersion *string `json:"SnmpAccountVersion,omitempty" xml:"SnmpAccountVersion,omitempty"`
-	// SNMP Auth Passphrase
-	SnmpAuthPassphrase *string `json:"SnmpAuthPassphrase,omitempty" xml:"SnmpAuthPassphrase,omitempty"`
-	// SNMP Auth Protocol
-	SnmpAuthProtocol *string `json:"SnmpAuthProtocol,omitempty" xml:"SnmpAuthProtocol,omitempty"`
-	// SNMP Community
-	SnmpCommunity *string `json:"SnmpCommunity,omitempty" xml:"SnmpCommunity,omitempty"`
-	// SNMP Privacy Passphrase
+	DeviceIdsShrink       *string `json:"DeviceIds,omitempty" xml:"DeviceIds,omitempty"`
+	EnablePassword        *string `json:"EnablePassword,omitempty" xml:"EnablePassword,omitempty"`
+	ExtAttributes         *string `json:"ExtAttributes,omitempty" xml:"ExtAttributes,omitempty"`
+	InstanceId            *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	LoginPassword         *string `json:"LoginPassword,omitempty" xml:"LoginPassword,omitempty"`
+	LoginType             *string `json:"LoginType,omitempty" xml:"LoginType,omitempty"`
+	LoginUsername         *string `json:"LoginUsername,omitempty" xml:"LoginUsername,omitempty"`
+	Model                 *string `json:"Model,omitempty" xml:"Model,omitempty"`
+	PhysicalSpaceId       *string `json:"PhysicalSpaceId,omitempty" xml:"PhysicalSpaceId,omitempty"`
+	PhysicalSpaceName     *string `json:"PhysicalSpaceName,omitempty" xml:"PhysicalSpaceName,omitempty"`
+	SecurityDomain        *string `json:"SecurityDomain,omitempty" xml:"SecurityDomain,omitempty"`
+	ServiceStatus         *string `json:"ServiceStatus,omitempty" xml:"ServiceStatus,omitempty"`
+	SnmpAccountType       *string `json:"SnmpAccountType,omitempty" xml:"SnmpAccountType,omitempty"`
+	SnmpAccountVersion    *string `json:"SnmpAccountVersion,omitempty" xml:"SnmpAccountVersion,omitempty"`
+	SnmpAuthPassphrase    *string `json:"SnmpAuthPassphrase,omitempty" xml:"SnmpAuthPassphrase,omitempty"`
+	SnmpAuthProtocol      *string `json:"SnmpAuthProtocol,omitempty" xml:"SnmpAuthProtocol,omitempty"`
+	SnmpCommunity         *string `json:"SnmpCommunity,omitempty" xml:"SnmpCommunity,omitempty"`
 	SnmpPrivacyPassphrase *string `json:"SnmpPrivacyPassphrase,omitempty" xml:"SnmpPrivacyPassphrase,omitempty"`
-	// SNMP Privacy Protocol
-	SnmpPrivacyProtocol *string `json:"SnmpPrivacyProtocol,omitempty" xml:"SnmpPrivacyProtocol,omitempty"`
-	// SNMP 安全级别
-	SnmpSecurityLevel *string `json:"SnmpSecurityLevel,omitempty" xml:"SnmpSecurityLevel,omitempty"`
-	// SNMP 用户名
-	SnmpUsername *string `json:"SnmpUsername,omitempty" xml:"SnmpUsername,omitempty"`
-	// 厂商
-	Vendor *string `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
+	SnmpPrivacyProtocol   *string `json:"SnmpPrivacyProtocol,omitempty" xml:"SnmpPrivacyProtocol,omitempty"`
+	SnmpSecurityLevel     *string `json:"SnmpSecurityLevel,omitempty" xml:"SnmpSecurityLevel,omitempty"`
+	SnmpUsername          *string `json:"SnmpUsername,omitempty" xml:"SnmpUsername,omitempty"`
+	Vendor                *string `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
 }
 
 func (s UpdateDevicesShrinkRequest) String() string {
@@ -26098,6 +24873,11 @@ func (s *UpdateDevicesShrinkRequest) SetDeviceIdsShrink(v string) *UpdateDevices
 
 func (s *UpdateDevicesShrinkRequest) SetEnablePassword(v string) *UpdateDevicesShrinkRequest {
 	s.EnablePassword = &v
+	return s
+}
+
+func (s *UpdateDevicesShrinkRequest) SetExtAttributes(v string) *UpdateDevicesShrinkRequest {
+	s.ExtAttributes = &v
 	return s
 }
 
@@ -26133,6 +24913,11 @@ func (s *UpdateDevicesShrinkRequest) SetPhysicalSpaceId(v string) *UpdateDevices
 
 func (s *UpdateDevicesShrinkRequest) SetPhysicalSpaceName(v string) *UpdateDevicesShrinkRequest {
 	s.PhysicalSpaceName = &v
+	return s
+}
+
+func (s *UpdateDevicesShrinkRequest) SetSecurityDomain(v string) *UpdateDevicesShrinkRequest {
+	s.SecurityDomain = &v
 	return s
 }
 
@@ -26192,7 +24977,6 @@ func (s *UpdateDevicesShrinkRequest) SetVendor(v string) *UpdateDevicesShrinkReq
 }
 
 type UpdateDevicesResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -26210,8 +24994,9 @@ func (s *UpdateDevicesResponseBody) SetRequestId(v string) *UpdateDevicesRespons
 }
 
 type UpdateDevicesResponse struct {
-	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UpdateDevicesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateDevicesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s UpdateDevicesResponse) String() string {
@@ -26227,21 +25012,21 @@ func (s *UpdateDevicesResponse) SetHeaders(v map[string]*string) *UpdateDevicesR
 	return s
 }
 
+func (s *UpdateDevicesResponse) SetStatusCode(v int32) *UpdateDevicesResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *UpdateDevicesResponse) SetBody(v *UpdateDevicesResponseBody) *UpdateDevicesResponse {
 	s.Body = v
 	return s
 }
 
 type UpdateEventDefinitionRequest struct {
-	// 事件ID
-	EventId *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
-	// 事件名称
-	EventName *string `json:"EventName,omitempty" xml:"EventName,omitempty"`
-	// 事件类型
-	EventType *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
-	// 实例ID
+	EventId    *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	EventName  *string `json:"EventName,omitempty" xml:"EventName,omitempty"`
+	EventType  *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 自动化模板ID
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 }
 
@@ -26279,7 +25064,6 @@ func (s *UpdateEventDefinitionRequest) SetTemplateId(v string) *UpdateEventDefin
 }
 
 type UpdateEventDefinitionResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -26297,8 +25081,9 @@ func (s *UpdateEventDefinitionResponseBody) SetRequestId(v string) *UpdateEventD
 }
 
 type UpdateEventDefinitionResponse struct {
-	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UpdateEventDefinitionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateEventDefinitionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s UpdateEventDefinitionResponse) String() string {
@@ -26314,23 +25099,23 @@ func (s *UpdateEventDefinitionResponse) SetHeaders(v map[string]*string) *Update
 	return s
 }
 
+func (s *UpdateEventDefinitionResponse) SetStatusCode(v int32) *UpdateEventDefinitionResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *UpdateEventDefinitionResponse) SetBody(v *UpdateEventDefinitionResponseBody) *UpdateEventDefinitionResponse {
 	s.Body = v
 	return s
 }
 
 type UpdateInformationKeyActionRequest struct {
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 键
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// 动作
-	KeyAction *string `json:"KeyAction,omitempty" xml:"KeyAction,omitempty"`
-	// 资源id
+	InstanceId            *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Key                   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	KeyAction             *string `json:"KeyAction,omitempty" xml:"KeyAction,omitempty"`
 	ResourceInformationId *string `json:"ResourceInformationId,omitempty" xml:"ResourceInformationId,omitempty"`
-	// 建设项目id
-	SetupProjectId *string `json:"SetupProjectId,omitempty" xml:"SetupProjectId,omitempty"`
-	// 键值
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	SetupProjectId        *string `json:"SetupProjectId,omitempty" xml:"SetupProjectId,omitempty"`
+	Value                 *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s UpdateInformationKeyActionRequest) String() string {
@@ -26372,10 +25157,8 @@ func (s *UpdateInformationKeyActionRequest) SetValue(v string) *UpdateInformatio
 }
 
 type UpdateInformationKeyActionResponseBody struct {
-	// 返回信息
 	ActionMessage *string `json:"ActionMessage,omitempty" xml:"ActionMessage,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s UpdateInformationKeyActionResponseBody) String() string {
@@ -26397,8 +25180,9 @@ func (s *UpdateInformationKeyActionResponseBody) SetRequestId(v string) *UpdateI
 }
 
 type UpdateInformationKeyActionResponse struct {
-	Headers map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UpdateInformationKeyActionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateInformationKeyActionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s UpdateInformationKeyActionResponse) String() string {
@@ -26414,15 +25198,18 @@ func (s *UpdateInformationKeyActionResponse) SetHeaders(v map[string]*string) *U
 	return s
 }
 
+func (s *UpdateInformationKeyActionResponse) SetStatusCode(v int32) *UpdateInformationKeyActionResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *UpdateInformationKeyActionResponse) SetBody(v *UpdateInformationKeyActionResponseBody) *UpdateInformationKeyActionResponse {
 	s.Body = v
 	return s
 }
 
 type UpdateInstanceRequest struct {
-	// 实例Id
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 实例名称
+	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
 }
 
@@ -26445,7 +25232,6 @@ func (s *UpdateInstanceRequest) SetInstanceName(v string) *UpdateInstanceRequest
 }
 
 type UpdateInstanceResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -26463,8 +25249,9 @@ func (s *UpdateInstanceResponseBody) SetRequestId(v string) *UpdateInstanceRespo
 }
 
 type UpdateInstanceResponse struct {
-	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UpdateInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s UpdateInstanceResponse) String() string {
@@ -26480,28 +25267,25 @@ func (s *UpdateInstanceResponse) SetHeaders(v map[string]*string) *UpdateInstanc
 	return s
 }
 
+func (s *UpdateInstanceResponse) SetStatusCode(v int32) *UpdateInstanceResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *UpdateInstanceResponse) SetBody(v *UpdateInstanceResponseBody) *UpdateInstanceResponse {
 	s.Body = v
 	return s
 }
 
 type UpdateOsVersionRequest struct {
-	// 文件名
-	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	// 文件路径
-	FilePath *string `json:"FilePath,omitempty" xml:"FilePath,omitempty"`
-	// instanceId
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 型号
-	Model *string `json:"Model,omitempty" xml:"Model,omitempty"`
-	// 系统版本
-	OsVersion *string `json:"OsVersion,omitempty" xml:"OsVersion,omitempty"`
-	// osVersionId
+	FileName    *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	FilePath    *string `json:"FilePath,omitempty" xml:"FilePath,omitempty"`
+	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Model       *string `json:"Model,omitempty" xml:"Model,omitempty"`
+	OsVersion   *string `json:"OsVersion,omitempty" xml:"OsVersion,omitempty"`
 	OsVersionId *string `json:"OsVersionId,omitempty" xml:"OsVersionId,omitempty"`
-	// 状态
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// 厂商
-	Vendor *string `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
+	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Vendor      *string `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
 }
 
 func (s UpdateOsVersionRequest) String() string {
@@ -26553,7 +25337,6 @@ func (s *UpdateOsVersionRequest) SetVendor(v string) *UpdateOsVersionRequest {
 }
 
 type UpdateOsVersionResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -26571,8 +25354,9 @@ func (s *UpdateOsVersionResponseBody) SetRequestId(v string) *UpdateOsVersionRes
 }
 
 type UpdateOsVersionResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UpdateOsVersionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateOsVersionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s UpdateOsVersionResponse) String() string {
@@ -26588,35 +25372,32 @@ func (s *UpdateOsVersionResponse) SetHeaders(v map[string]*string) *UpdateOsVers
 	return s
 }
 
+func (s *UpdateOsVersionResponse) SetStatusCode(v int32) *UpdateOsVersionResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *UpdateOsVersionResponse) SetBody(v *UpdateOsVersionResponseBody) *UpdateOsVersionResponse {
 	s.Body = v
 	return s
 }
 
 type UpdatePhysicalSpaceRequest struct {
-	// 具体地址
-	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
-	// 所属城市
-	City *string `json:"City,omitempty" xml:"City,omitempty"`
-	// 所属国家
-	Country *string `json:"Country,omitempty" xml:"Country,omitempty"`
-	// 实例ID
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 负责人
-	Owner     *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	ParentUid *string `json:"ParentUid,omitempty" xml:"ParentUid,omitempty"`
-	// 实例 ID。
-	PhysicalSpaceId *string `json:"PhysicalSpaceId,omitempty" xml:"PhysicalSpaceId,omitempty"`
-	// 物理空间名称
-	PhysicalSpaceName *string `json:"PhysicalSpaceName,omitempty" xml:"PhysicalSpaceName,omitempty"`
-	// 所属省份
-	Province *string `json:"Province,omitempty" xml:"Province,omitempty"`
-	// 备注
-	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	// 缩写
-	SpaceAbbreviation *string `json:"SpaceAbbreviation,omitempty" xml:"SpaceAbbreviation,omitempty"`
-	// 模型
-	SpaceType *string `json:"SpaceType,omitempty" xml:"SpaceType,omitempty"`
+	Address            *string   `json:"Address,omitempty" xml:"Address,omitempty"`
+	City               *string   `json:"City,omitempty" xml:"City,omitempty"`
+	Country            *string   `json:"Country,omitempty" xml:"Country,omitempty"`
+	InstanceId         *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	MoveAction         *string   `json:"MoveAction,omitempty" xml:"MoveAction,omitempty"`
+	Owner              *string   `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	ParentUid          *string   `json:"ParentUid,omitempty" xml:"ParentUid,omitempty"`
+	PhysicalSpaceId    *string   `json:"PhysicalSpaceId,omitempty" xml:"PhysicalSpaceId,omitempty"`
+	PhysicalSpaceName  *string   `json:"PhysicalSpaceName,omitempty" xml:"PhysicalSpaceName,omitempty"`
+	Province           *string   `json:"Province,omitempty" xml:"Province,omitempty"`
+	Remark             *string   `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	SecurityDomainList []*string `json:"SecurityDomainList,omitempty" xml:"SecurityDomainList,omitempty" type:"Repeated"`
+	SpaceAbbreviation  *string   `json:"SpaceAbbreviation,omitempty" xml:"SpaceAbbreviation,omitempty"`
+	SpaceType          *string   `json:"SpaceType,omitempty" xml:"SpaceType,omitempty"`
+	TargetUid          *string   `json:"TargetUid,omitempty" xml:"TargetUid,omitempty"`
 }
 
 func (s UpdatePhysicalSpaceRequest) String() string {
@@ -26644,6 +25425,11 @@ func (s *UpdatePhysicalSpaceRequest) SetCountry(v string) *UpdatePhysicalSpaceRe
 
 func (s *UpdatePhysicalSpaceRequest) SetInstanceId(v string) *UpdatePhysicalSpaceRequest {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *UpdatePhysicalSpaceRequest) SetMoveAction(v string) *UpdatePhysicalSpaceRequest {
+	s.MoveAction = &v
 	return s
 }
 
@@ -26677,6 +25463,11 @@ func (s *UpdatePhysicalSpaceRequest) SetRemark(v string) *UpdatePhysicalSpaceReq
 	return s
 }
 
+func (s *UpdatePhysicalSpaceRequest) SetSecurityDomainList(v []*string) *UpdatePhysicalSpaceRequest {
+	s.SecurityDomainList = v
+	return s
+}
+
 func (s *UpdatePhysicalSpaceRequest) SetSpaceAbbreviation(v string) *UpdatePhysicalSpaceRequest {
 	s.SpaceAbbreviation = &v
 	return s
@@ -26687,8 +25478,113 @@ func (s *UpdatePhysicalSpaceRequest) SetSpaceType(v string) *UpdatePhysicalSpace
 	return s
 }
 
+func (s *UpdatePhysicalSpaceRequest) SetTargetUid(v string) *UpdatePhysicalSpaceRequest {
+	s.TargetUid = &v
+	return s
+}
+
+type UpdatePhysicalSpaceShrinkRequest struct {
+	Address                  *string `json:"Address,omitempty" xml:"Address,omitempty"`
+	City                     *string `json:"City,omitempty" xml:"City,omitempty"`
+	Country                  *string `json:"Country,omitempty" xml:"Country,omitempty"`
+	InstanceId               *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	MoveAction               *string `json:"MoveAction,omitempty" xml:"MoveAction,omitempty"`
+	Owner                    *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	ParentUid                *string `json:"ParentUid,omitempty" xml:"ParentUid,omitempty"`
+	PhysicalSpaceId          *string `json:"PhysicalSpaceId,omitempty" xml:"PhysicalSpaceId,omitempty"`
+	PhysicalSpaceName        *string `json:"PhysicalSpaceName,omitempty" xml:"PhysicalSpaceName,omitempty"`
+	Province                 *string `json:"Province,omitempty" xml:"Province,omitempty"`
+	Remark                   *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	SecurityDomainListShrink *string `json:"SecurityDomainList,omitempty" xml:"SecurityDomainList,omitempty"`
+	SpaceAbbreviation        *string `json:"SpaceAbbreviation,omitempty" xml:"SpaceAbbreviation,omitempty"`
+	SpaceType                *string `json:"SpaceType,omitempty" xml:"SpaceType,omitempty"`
+	TargetUid                *string `json:"TargetUid,omitempty" xml:"TargetUid,omitempty"`
+}
+
+func (s UpdatePhysicalSpaceShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdatePhysicalSpaceShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdatePhysicalSpaceShrinkRequest) SetAddress(v string) *UpdatePhysicalSpaceShrinkRequest {
+	s.Address = &v
+	return s
+}
+
+func (s *UpdatePhysicalSpaceShrinkRequest) SetCity(v string) *UpdatePhysicalSpaceShrinkRequest {
+	s.City = &v
+	return s
+}
+
+func (s *UpdatePhysicalSpaceShrinkRequest) SetCountry(v string) *UpdatePhysicalSpaceShrinkRequest {
+	s.Country = &v
+	return s
+}
+
+func (s *UpdatePhysicalSpaceShrinkRequest) SetInstanceId(v string) *UpdatePhysicalSpaceShrinkRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *UpdatePhysicalSpaceShrinkRequest) SetMoveAction(v string) *UpdatePhysicalSpaceShrinkRequest {
+	s.MoveAction = &v
+	return s
+}
+
+func (s *UpdatePhysicalSpaceShrinkRequest) SetOwner(v string) *UpdatePhysicalSpaceShrinkRequest {
+	s.Owner = &v
+	return s
+}
+
+func (s *UpdatePhysicalSpaceShrinkRequest) SetParentUid(v string) *UpdatePhysicalSpaceShrinkRequest {
+	s.ParentUid = &v
+	return s
+}
+
+func (s *UpdatePhysicalSpaceShrinkRequest) SetPhysicalSpaceId(v string) *UpdatePhysicalSpaceShrinkRequest {
+	s.PhysicalSpaceId = &v
+	return s
+}
+
+func (s *UpdatePhysicalSpaceShrinkRequest) SetPhysicalSpaceName(v string) *UpdatePhysicalSpaceShrinkRequest {
+	s.PhysicalSpaceName = &v
+	return s
+}
+
+func (s *UpdatePhysicalSpaceShrinkRequest) SetProvince(v string) *UpdatePhysicalSpaceShrinkRequest {
+	s.Province = &v
+	return s
+}
+
+func (s *UpdatePhysicalSpaceShrinkRequest) SetRemark(v string) *UpdatePhysicalSpaceShrinkRequest {
+	s.Remark = &v
+	return s
+}
+
+func (s *UpdatePhysicalSpaceShrinkRequest) SetSecurityDomainListShrink(v string) *UpdatePhysicalSpaceShrinkRequest {
+	s.SecurityDomainListShrink = &v
+	return s
+}
+
+func (s *UpdatePhysicalSpaceShrinkRequest) SetSpaceAbbreviation(v string) *UpdatePhysicalSpaceShrinkRequest {
+	s.SpaceAbbreviation = &v
+	return s
+}
+
+func (s *UpdatePhysicalSpaceShrinkRequest) SetSpaceType(v string) *UpdatePhysicalSpaceShrinkRequest {
+	s.SpaceType = &v
+	return s
+}
+
+func (s *UpdatePhysicalSpaceShrinkRequest) SetTargetUid(v string) *UpdatePhysicalSpaceShrinkRequest {
+	s.TargetUid = &v
+	return s
+}
+
 type UpdatePhysicalSpaceResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -26706,8 +25602,9 @@ func (s *UpdatePhysicalSpaceResponseBody) SetRequestId(v string) *UpdatePhysical
 }
 
 type UpdatePhysicalSpaceResponse struct {
-	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UpdatePhysicalSpaceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdatePhysicalSpaceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s UpdatePhysicalSpaceResponse) String() string {
@@ -26723,16 +25620,19 @@ func (s *UpdatePhysicalSpaceResponse) SetHeaders(v map[string]*string) *UpdatePh
 	return s
 }
 
+func (s *UpdatePhysicalSpaceResponse) SetStatusCode(v int32) *UpdatePhysicalSpaceResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *UpdatePhysicalSpaceResponse) SetBody(v *UpdatePhysicalSpaceResponseBody) *UpdatePhysicalSpaceResponse {
 	s.Body = v
 	return s
 }
 
 type UpdateProjectProgressRequest struct {
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 建设进展
-	Progress *string `json:"Progress,omitempty" xml:"Progress,omitempty"`
-	// 资源id
+	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Progress       *string `json:"Progress,omitempty" xml:"Progress,omitempty"`
 	SetupProjectId *string `json:"SetupProjectId,omitempty" xml:"SetupProjectId,omitempty"`
 }
 
@@ -26760,7 +25660,6 @@ func (s *UpdateProjectProgressRequest) SetSetupProjectId(v string) *UpdateProjec
 }
 
 type UpdateProjectProgressResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -26778,8 +25677,9 @@ func (s *UpdateProjectProgressResponseBody) SetRequestId(v string) *UpdateProjec
 }
 
 type UpdateProjectProgressResponse struct {
-	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UpdateProjectProgressResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateProjectProgressResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s UpdateProjectProgressResponse) String() string {
@@ -26795,22 +25695,22 @@ func (s *UpdateProjectProgressResponse) SetHeaders(v map[string]*string) *Update
 	return s
 }
 
+func (s *UpdateProjectProgressResponse) SetStatusCode(v int32) *UpdateProjectProgressResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *UpdateProjectProgressResponse) SetBody(v *UpdateProjectProgressResponseBody) *UpdateProjectProgressResponse {
 	s.Body = v
 	return s
 }
 
 type UpdateResourceInformationRequest struct {
-	// 信息
-	Information []*UpdateResourceInformationRequestInformation `json:"Information,omitempty" xml:"Information,omitempty" type:"Repeated"`
-	// instanceId
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 资源属性
-	ResourceAttribute *string `json:"ResourceAttribute,omitempty" xml:"ResourceAttribute,omitempty"`
-	// 资源信息Id
-	ResourceInformationId *string `json:"ResourceInformationId,omitempty" xml:"ResourceInformationId,omitempty"`
-	// 资源类型
-	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	Information           []*UpdateResourceInformationRequestInformation `json:"Information,omitempty" xml:"Information,omitempty" type:"Repeated"`
+	InstanceId            *string                                        `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	ResourceAttribute     *string                                        `json:"ResourceAttribute,omitempty" xml:"ResourceAttribute,omitempty"`
+	ResourceInformationId *string                                        `json:"ResourceInformationId,omitempty" xml:"ResourceInformationId,omitempty"`
+	ResourceType          *string                                        `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 }
 
 func (s UpdateResourceInformationRequest) String() string {
@@ -26847,15 +25747,10 @@ func (s *UpdateResourceInformationRequest) SetResourceType(v string) *UpdateReso
 }
 
 type UpdateResourceInformationRequestInformation struct {
-	// 键
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// 键动作
-	KeyAction *string `json:"KeyAction,omitempty" xml:"KeyAction,omitempty"`
-	// 键属性
-	KeyAttribute *string `json:"KeyAttribute,omitempty" xml:"KeyAttribute,omitempty"`
-	// 键描述
+	Key            *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	KeyAction      *string `json:"KeyAction,omitempty" xml:"KeyAction,omitempty"`
+	KeyAttribute   *string `json:"KeyAttribute,omitempty" xml:"KeyAttribute,omitempty"`
 	KeyDescription *string `json:"KeyDescription,omitempty" xml:"KeyDescription,omitempty"`
-	// 建设项目id
 	SetupProjectId *string `json:"SetupProjectId,omitempty" xml:"SetupProjectId,omitempty"`
 }
 
@@ -26893,16 +25788,11 @@ func (s *UpdateResourceInformationRequestInformation) SetSetupProjectId(v string
 }
 
 type UpdateResourceInformationShrinkRequest struct {
-	// 信息
-	InformationShrink *string `json:"Information,omitempty" xml:"Information,omitempty"`
-	// instanceId
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 资源属性
-	ResourceAttribute *string `json:"ResourceAttribute,omitempty" xml:"ResourceAttribute,omitempty"`
-	// 资源信息Id
+	InformationShrink     *string `json:"Information,omitempty" xml:"Information,omitempty"`
+	InstanceId            *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	ResourceAttribute     *string `json:"ResourceAttribute,omitempty" xml:"ResourceAttribute,omitempty"`
 	ResourceInformationId *string `json:"ResourceInformationId,omitempty" xml:"ResourceInformationId,omitempty"`
-	// 资源类型
-	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	ResourceType          *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 }
 
 func (s UpdateResourceInformationShrinkRequest) String() string {
@@ -26939,7 +25829,6 @@ func (s *UpdateResourceInformationShrinkRequest) SetResourceType(v string) *Upda
 }
 
 type UpdateResourceInformationResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -26957,8 +25846,9 @@ func (s *UpdateResourceInformationResponseBody) SetRequestId(v string) *UpdateRe
 }
 
 type UpdateResourceInformationResponse struct {
-	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UpdateResourceInformationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateResourceInformationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s UpdateResourceInformationResponse) String() string {
@@ -26974,19 +25864,21 @@ func (s *UpdateResourceInformationResponse) SetHeaders(v map[string]*string) *Up
 	return s
 }
 
+func (s *UpdateResourceInformationResponse) SetStatusCode(v int32) *UpdateResourceInformationResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *UpdateResourceInformationResponse) SetBody(v *UpdateResourceInformationResponseBody) *UpdateResourceInformationResponse {
 	s.Body = v
 	return s
 }
 
 type UpdateResourceInstanceRequest struct {
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 数据
-	ResourceInformation []*UpdateResourceInstanceRequestResourceInformation `json:"ResourceInformation,omitempty" xml:"ResourceInformation,omitempty" type:"Repeated"`
-	// 资源id
-	ResourceInformationId *string `json:"ResourceInformationId,omitempty" xml:"ResourceInformationId,omitempty"`
-	// 建设项目资源uuid
-	SetupProjectId *string `json:"SetupProjectId,omitempty" xml:"SetupProjectId,omitempty"`
+	InstanceId            *string                                             `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	ResourceInformation   []*UpdateResourceInstanceRequestResourceInformation `json:"ResourceInformation,omitempty" xml:"ResourceInformation,omitempty" type:"Repeated"`
+	ResourceInformationId *string                                             `json:"ResourceInformationId,omitempty" xml:"ResourceInformationId,omitempty"`
+	SetupProjectId        *string                                             `json:"SetupProjectId,omitempty" xml:"SetupProjectId,omitempty"`
 }
 
 func (s UpdateResourceInstanceRequest) String() string {
@@ -27018,9 +25910,7 @@ func (s *UpdateResourceInstanceRequest) SetSetupProjectId(v string) *UpdateResou
 }
 
 type UpdateResourceInstanceRequestResourceInformation struct {
-	// 键
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// 值
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -27043,13 +25933,10 @@ func (s *UpdateResourceInstanceRequestResourceInformation) SetValue(v string) *U
 }
 
 type UpdateResourceInstanceShrinkRequest struct {
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 数据
+	InstanceId                *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	ResourceInformationShrink *string `json:"ResourceInformation,omitempty" xml:"ResourceInformation,omitempty"`
-	// 资源id
-	ResourceInformationId *string `json:"ResourceInformationId,omitempty" xml:"ResourceInformationId,omitempty"`
-	// 建设项目资源uuid
-	SetupProjectId *string `json:"SetupProjectId,omitempty" xml:"SetupProjectId,omitempty"`
+	ResourceInformationId     *string `json:"ResourceInformationId,omitempty" xml:"ResourceInformationId,omitempty"`
+	SetupProjectId            *string `json:"SetupProjectId,omitempty" xml:"SetupProjectId,omitempty"`
 }
 
 func (s UpdateResourceInstanceShrinkRequest) String() string {
@@ -27081,7 +25968,6 @@ func (s *UpdateResourceInstanceShrinkRequest) SetSetupProjectId(v string) *Updat
 }
 
 type UpdateResourceInstanceResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -27099,8 +25985,9 @@ func (s *UpdateResourceInstanceResponseBody) SetRequestId(v string) *UpdateResou
 }
 
 type UpdateResourceInstanceResponse struct {
-	Headers map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UpdateResourceInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateResourceInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s UpdateResourceInstanceResponse) String() string {
@@ -27116,28 +26003,25 @@ func (s *UpdateResourceInstanceResponse) SetHeaders(v map[string]*string) *Updat
 	return s
 }
 
+func (s *UpdateResourceInstanceResponse) SetStatusCode(v int32) *UpdateResourceInstanceResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *UpdateResourceInstanceResponse) SetBody(v *UpdateResourceInstanceResponseBody) *UpdateResourceInstanceResponse {
 	s.Body = v
 	return s
 }
 
 type UpdateSetupProjectRequest struct {
-	// 架构id
-	ArchitectureId *string `json:"ArchitectureId,omitempty" xml:"ArchitectureId,omitempty"`
-	// 预计交付时间
-	DeliveryTime *string `json:"DeliveryTime,omitempty" xml:"DeliveryTime,omitempty"`
-	// 描述
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// instanceId
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 节点
-	Nodes *string `json:"Nodes,omitempty" xml:"Nodes,omitempty"`
-	// 套餐
-	Packages []*UpdateSetupProjectRequestPackages `json:"Packages,omitempty" xml:"Packages,omitempty" type:"Repeated"`
-	// 资源一级ID
-	SetupProjectId *string `json:"SetupProjectId,omitempty" xml:"SetupProjectId,omitempty"`
-	// 物理空间uId
-	SpaceId *string `json:"SpaceId,omitempty" xml:"SpaceId,omitempty"`
+	ArchitectureId *string                              `json:"ArchitectureId,omitempty" xml:"ArchitectureId,omitempty"`
+	DeliveryTime   *string                              `json:"DeliveryTime,omitempty" xml:"DeliveryTime,omitempty"`
+	Description    *string                              `json:"Description,omitempty" xml:"Description,omitempty"`
+	InstanceId     *string                              `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Nodes          *string                              `json:"Nodes,omitempty" xml:"Nodes,omitempty"`
+	Packages       []*UpdateSetupProjectRequestPackages `json:"Packages,omitempty" xml:"Packages,omitempty" type:"Repeated"`
+	SetupProjectId *string                              `json:"SetupProjectId,omitempty" xml:"SetupProjectId,omitempty"`
+	SpaceId        *string                              `json:"SpaceId,omitempty" xml:"SpaceId,omitempty"`
 }
 
 func (s UpdateSetupProjectRequest) String() string {
@@ -27189,14 +26073,10 @@ func (s *UpdateSetupProjectRequest) SetSpaceId(v string) *UpdateSetupProjectRequ
 }
 
 type UpdateSetupProjectRequestPackages struct {
-	// 设备号
-	DeviceNumber *int64 `json:"DeviceNumber,omitempty" xml:"DeviceNumber,omitempty"`
-	// 型号
-	Model *string `json:"Model,omitempty" xml:"Model,omitempty"`
-	// 角色
-	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
-	// 厂商
-	Vendor *string `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
+	DeviceNumber *int64  `json:"DeviceNumber,omitempty" xml:"DeviceNumber,omitempty"`
+	Model        *string `json:"Model,omitempty" xml:"Model,omitempty"`
+	Role         *string `json:"Role,omitempty" xml:"Role,omitempty"`
+	Vendor       *string `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
 }
 
 func (s UpdateSetupProjectRequestPackages) String() string {
@@ -27228,22 +26108,14 @@ func (s *UpdateSetupProjectRequestPackages) SetVendor(v string) *UpdateSetupProj
 }
 
 type UpdateSetupProjectShrinkRequest struct {
-	// 架构id
 	ArchitectureId *string `json:"ArchitectureId,omitempty" xml:"ArchitectureId,omitempty"`
-	// 预计交付时间
-	DeliveryTime *string `json:"DeliveryTime,omitempty" xml:"DeliveryTime,omitempty"`
-	// 描述
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// instanceId
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 节点
-	Nodes *string `json:"Nodes,omitempty" xml:"Nodes,omitempty"`
-	// 套餐
+	DeliveryTime   *string `json:"DeliveryTime,omitempty" xml:"DeliveryTime,omitempty"`
+	Description    *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Nodes          *string `json:"Nodes,omitempty" xml:"Nodes,omitempty"`
 	PackagesShrink *string `json:"Packages,omitempty" xml:"Packages,omitempty"`
-	// 资源一级ID
 	SetupProjectId *string `json:"SetupProjectId,omitempty" xml:"SetupProjectId,omitempty"`
-	// 物理空间uId
-	SpaceId *string `json:"SpaceId,omitempty" xml:"SpaceId,omitempty"`
+	SpaceId        *string `json:"SpaceId,omitempty" xml:"SpaceId,omitempty"`
 }
 
 func (s UpdateSetupProjectShrinkRequest) String() string {
@@ -27295,13 +26167,9 @@ func (s *UpdateSetupProjectShrinkRequest) SetSpaceId(v string) *UpdateSetupProje
 }
 
 type UpdateSetupProjectResponseBody struct {
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 资源实例ID，如ECS实例的创建接口CreateInstance应返回InstanceId。
-	SetupProjectId *string `json:"SetupProjectId,omitempty" xml:"SetupProjectId,omitempty"`
-	// 实例的名称
-	SetupProjectName *string `json:"SetupProjectName,omitempty" xml:"SetupProjectName,omitempty"`
-	// 实例的规格。
+	RequestId                 *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SetupProjectId            *string `json:"SetupProjectId,omitempty" xml:"SetupProjectId,omitempty"`
+	SetupProjectName          *string `json:"SetupProjectName,omitempty" xml:"SetupProjectName,omitempty"`
 	SetupProjectSpecification *string `json:"SetupProjectSpecification,omitempty" xml:"SetupProjectSpecification,omitempty"`
 }
 
@@ -27334,8 +26202,9 @@ func (s *UpdateSetupProjectResponseBody) SetSetupProjectSpecification(v string) 
 }
 
 type UpdateSetupProjectResponse struct {
-	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UpdateSetupProjectResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateSetupProjectResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s UpdateSetupProjectResponse) String() string {
@@ -27351,20 +26220,21 @@ func (s *UpdateSetupProjectResponse) SetHeaders(v map[string]*string) *UpdateSet
 	return s
 }
 
+func (s *UpdateSetupProjectResponse) SetStatusCode(v int32) *UpdateSetupProjectResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *UpdateSetupProjectResponse) SetBody(v *UpdateSetupProjectResponseBody) *UpdateSetupProjectResponse {
 	s.Body = v
 	return s
 }
 
 type UpdateSpaceModelRequest struct {
-	// instanceId
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 层级
-	Sort []*UpdateSpaceModelRequestSort `json:"Sort,omitempty" xml:"Sort,omitempty" type:"Repeated"`
-	// 资源uuid
-	SpaceModelId *string `json:"SpaceModelId,omitempty" xml:"SpaceModelId,omitempty"`
-	// 物理空间类型
-	SpaceType *string `json:"SpaceType,omitempty" xml:"SpaceType,omitempty"`
+	InstanceId   *string                        `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Sort         []*UpdateSpaceModelRequestSort `json:"Sort,omitempty" xml:"Sort,omitempty" type:"Repeated"`
+	SpaceModelId *string                        `json:"SpaceModelId,omitempty" xml:"SpaceModelId,omitempty"`
+	SpaceType    *string                        `json:"SpaceType,omitempty" xml:"SpaceType,omitempty"`
 }
 
 func (s UpdateSpaceModelRequest) String() string {
@@ -27396,9 +26266,7 @@ func (s *UpdateSpaceModelRequest) SetSpaceType(v string) *UpdateSpaceModelReques
 }
 
 type UpdateSpaceModelRequestSort struct {
-	// 层级
-	Level *int64 `json:"Level,omitempty" xml:"Level,omitempty"`
-	// 层级名称
+	Level     *int64  `json:"Level,omitempty" xml:"Level,omitempty"`
 	LevelName *string `json:"LevelName,omitempty" xml:"LevelName,omitempty"`
 }
 
@@ -27421,14 +26289,10 @@ func (s *UpdateSpaceModelRequestSort) SetLevelName(v string) *UpdateSpaceModelRe
 }
 
 type UpdateSpaceModelShrinkRequest struct {
-	// instanceId
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 层级
-	SortShrink *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
-	// 资源uuid
+	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	SortShrink   *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
 	SpaceModelId *string `json:"SpaceModelId,omitempty" xml:"SpaceModelId,omitempty"`
-	// 物理空间类型
-	SpaceType *string `json:"SpaceType,omitempty" xml:"SpaceType,omitempty"`
+	SpaceType    *string `json:"SpaceType,omitempty" xml:"SpaceType,omitempty"`
 }
 
 func (s UpdateSpaceModelShrinkRequest) String() string {
@@ -27460,7 +26324,6 @@ func (s *UpdateSpaceModelShrinkRequest) SetSpaceType(v string) *UpdateSpaceModel
 }
 
 type UpdateSpaceModelResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -27478,8 +26341,9 @@ func (s *UpdateSpaceModelResponseBody) SetRequestId(v string) *UpdateSpaceModelR
 }
 
 type UpdateSpaceModelResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UpdateSpaceModelResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateSpaceModelResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s UpdateSpaceModelResponse) String() string {
@@ -27495,16 +26359,19 @@ func (s *UpdateSpaceModelResponse) SetHeaders(v map[string]*string) *UpdateSpace
 	return s
 }
 
+func (s *UpdateSpaceModelResponse) SetStatusCode(v int32) *UpdateSpaceModelResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *UpdateSpaceModelResponse) SetBody(v *UpdateSpaceModelResponseBody) *UpdateSpaceModelResponse {
 	s.Body = v
 	return s
 }
 
 type UpdateSpaceModelInstanceRequest struct {
-	// 物理空间实例
 	Instance *string `json:"Instance,omitempty" xml:"Instance,omitempty"`
-	// 物理空间id
-	SpaceId *string `json:"SpaceId,omitempty" xml:"SpaceId,omitempty"`
+	SpaceId  *string `json:"SpaceId,omitempty" xml:"SpaceId,omitempty"`
 }
 
 func (s UpdateSpaceModelInstanceRequest) String() string {
@@ -27526,7 +26393,6 @@ func (s *UpdateSpaceModelInstanceRequest) SetSpaceId(v string) *UpdateSpaceModel
 }
 
 type UpdateSpaceModelInstanceResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -27544,8 +26410,9 @@ func (s *UpdateSpaceModelInstanceResponseBody) SetRequestId(v string) *UpdateSpa
 }
 
 type UpdateSpaceModelInstanceResponse struct {
-	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UpdateSpaceModelInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateSpaceModelInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s UpdateSpaceModelInstanceResponse) String() string {
@@ -27561,104 +26428,64 @@ func (s *UpdateSpaceModelInstanceResponse) SetHeaders(v map[string]*string) *Upd
 	return s
 }
 
+func (s *UpdateSpaceModelInstanceResponse) SetStatusCode(v int32) *UpdateSpaceModelInstanceResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *UpdateSpaceModelInstanceResponse) SetBody(v *UpdateSpaceModelInstanceResponseBody) *UpdateSpaceModelInstanceResponse {
 	s.Body = v
 	return s
 }
 
 type UpdateWorkOrderRequest struct {
-	// 告警发生时间
-	AlarmHappenTime *string `json:"AlarmHappenTime,omitempty" xml:"AlarmHappenTime,omitempty"`
-	// 告警恢复时间
-	AlarmRecoverTime *string `json:"AlarmRecoverTime,omitempty" xml:"AlarmRecoverTime,omitempty"`
-	// 关联告警项
-	AlarmRelated *string `json:"AlarmRelated,omitempty" xml:"AlarmRelated,omitempty"`
-	// 区域
-	Area *string `json:"Area,omitempty" xml:"Area,omitempty"`
-	// 电路编码
-	CircuitId *string `json:"CircuitId,omitempty" xml:"CircuitId,omitempty"`
-	// 电路名
-	CircuitName *string `json:"CircuitName,omitempty" xml:"CircuitName,omitempty"`
-	// 电路类型
-	CircuitType *string `json:"CircuitType,omitempty" xml:"CircuitType,omitempty"`
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// 设备IP
-	DeviceIp *string `json:"DeviceIp,omitempty" xml:"DeviceIp,omitempty"`
-	// A-IP
-	DeviceIpA *string `json:"DeviceIpA,omitempty" xml:"DeviceIpA,omitempty"`
-	// B-IP
-	DeviceIpB *string `json:"DeviceIpB,omitempty" xml:"DeviceIpB,omitempty"`
-	// A-设备型号
-	DeviceModelA *string `json:"DeviceModelA,omitempty" xml:"DeviceModelA,omitempty"`
-	// B-设备型号
-	DeviceModelB *string `json:"DeviceModelB,omitempty" xml:"DeviceModelB,omitempty"`
-	// 设备名
-	DeviceName *string `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
-	// A-设备名
-	DeviceNameA *string `json:"DeviceNameA,omitempty" xml:"DeviceNameA,omitempty"`
-	// B-设备名
-	DeviceNameB *string `json:"DeviceNameB,omitempty" xml:"DeviceNameB,omitempty"`
-	// A-端口
-	DevicePortA *string `json:"DevicePortA,omitempty" xml:"DevicePortA,omitempty"`
-	// B-端口
-	DevicePortB *string `json:"DevicePortB,omitempty" xml:"DevicePortB,omitempty"`
-	// A-设备SN
-	DeviceSnA *string `json:"DeviceSnA,omitempty" xml:"DeviceSnA,omitempty"`
-	// B-设备SN
-	DeviceSnB *string `json:"DeviceSnB,omitempty" xml:"DeviceSnB,omitempty"`
-	// 设备类型
-	DeviceType *string `json:"DeviceType,omitempty" xml:"DeviceType,omitempty"`
-	// 设备厂家
-	DeviceVendor *string `json:"DeviceVendor,omitempty" xml:"DeviceVendor,omitempty"`
-	// A-厂家
-	DeviceVendorA *string `json:"DeviceVendorA,omitempty" xml:"DeviceVendorA,omitempty"`
-	// B-厂家
-	DeviceVendorB *string `json:"DeviceVendorB,omitempty" xml:"DeviceVendorB,omitempty"`
-	// 紧急程度
-	EmergencyDegree *string `json:"EmergencyDegree,omitempty" xml:"EmergencyDegree,omitempty"`
-	// 额外字段
-	Extra *string `json:"Extra,omitempty" xml:"Extra,omitempty"`
-	// 文件名
-	HangFileName *string `json:"HangFileName,omitempty" xml:"HangFileName,omitempty"`
-	// 文件路径
-	HangFilePath *string `json:"HangFilePath,omitempty" xml:"HangFilePath,omitempty"`
-	// 挂起/转交原因
-	HangReason *string `json:"HangReason,omitempty" xml:"HangReason,omitempty"`
-	// 是否影响业务
-	ImpactBusiness *string `json:"ImpactBusiness,omitempty" xml:"ImpactBusiness,omitempty"`
-	// 问题描述
-	IncidentDescription *string `json:"IncidentDescription,omitempty" xml:"IncidentDescription,omitempty"`
-	// 故障小类
-	IncidentSubType *string `json:"IncidentSubType,omitempty" xml:"IncidentSubType,omitempty"`
-	// 故障分类
-	IncidentType *string `json:"IncidentType,omitempty" xml:"IncidentType,omitempty"`
-	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 责任人
-	LiableMan *string `json:"LiableMan,omitempty" xml:"LiableMan,omitempty"`
-	// 用户/联系人
-	LinkMan *string `json:"LinkMan,omitempty" xml:"LinkMan,omitempty"`
-	// 告警源主体
+	AlarmHappenTime      *string `json:"AlarmHappenTime,omitempty" xml:"AlarmHappenTime,omitempty"`
+	AlarmRecoverTime     *string `json:"AlarmRecoverTime,omitempty" xml:"AlarmRecoverTime,omitempty"`
+	AlarmRelated         *string `json:"AlarmRelated,omitempty" xml:"AlarmRelated,omitempty"`
+	Area                 *string `json:"Area,omitempty" xml:"Area,omitempty"`
+	CircuitId            *string `json:"CircuitId,omitempty" xml:"CircuitId,omitempty"`
+	CircuitName          *string `json:"CircuitName,omitempty" xml:"CircuitName,omitempty"`
+	CircuitType          *string `json:"CircuitType,omitempty" xml:"CircuitType,omitempty"`
+	ClientToken          *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DeviceIp             *string `json:"DeviceIp,omitempty" xml:"DeviceIp,omitempty"`
+	DeviceIpA            *string `json:"DeviceIpA,omitempty" xml:"DeviceIpA,omitempty"`
+	DeviceIpB            *string `json:"DeviceIpB,omitempty" xml:"DeviceIpB,omitempty"`
+	DeviceModelA         *string `json:"DeviceModelA,omitempty" xml:"DeviceModelA,omitempty"`
+	DeviceModelB         *string `json:"DeviceModelB,omitempty" xml:"DeviceModelB,omitempty"`
+	DeviceName           *string `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
+	DeviceNameA          *string `json:"DeviceNameA,omitempty" xml:"DeviceNameA,omitempty"`
+	DeviceNameB          *string `json:"DeviceNameB,omitempty" xml:"DeviceNameB,omitempty"`
+	DevicePortA          *string `json:"DevicePortA,omitempty" xml:"DevicePortA,omitempty"`
+	DevicePortB          *string `json:"DevicePortB,omitempty" xml:"DevicePortB,omitempty"`
+	DeviceSnA            *string `json:"DeviceSnA,omitempty" xml:"DeviceSnA,omitempty"`
+	DeviceSnB            *string `json:"DeviceSnB,omitempty" xml:"DeviceSnB,omitempty"`
+	DeviceType           *string `json:"DeviceType,omitempty" xml:"DeviceType,omitempty"`
+	DeviceVendor         *string `json:"DeviceVendor,omitempty" xml:"DeviceVendor,omitempty"`
+	DeviceVendorA        *string `json:"DeviceVendorA,omitempty" xml:"DeviceVendorA,omitempty"`
+	DeviceVendorB        *string `json:"DeviceVendorB,omitempty" xml:"DeviceVendorB,omitempty"`
+	EmergencyDegree      *string `json:"EmergencyDegree,omitempty" xml:"EmergencyDegree,omitempty"`
+	Extra                *string `json:"Extra,omitempty" xml:"Extra,omitempty"`
+	HangFileName         *string `json:"HangFileName,omitempty" xml:"HangFileName,omitempty"`
+	HangFilePath         *string `json:"HangFilePath,omitempty" xml:"HangFilePath,omitempty"`
+	HangReason           *string `json:"HangReason,omitempty" xml:"HangReason,omitempty"`
+	ImpactBusiness       *string `json:"ImpactBusiness,omitempty" xml:"ImpactBusiness,omitempty"`
+	IncidentDescription  *string `json:"IncidentDescription,omitempty" xml:"IncidentDescription,omitempty"`
+	IncidentSubType      *string `json:"IncidentSubType,omitempty" xml:"IncidentSubType,omitempty"`
+	IncidentType         *string `json:"IncidentType,omitempty" xml:"IncidentType,omitempty"`
+	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	LiableMan            *string `json:"LiableMan,omitempty" xml:"LiableMan,omitempty"`
+	LinkMan              *string `json:"LinkMan,omitempty" xml:"LinkMan,omitempty"`
 	OriginalSubjectAlarm *string `json:"OriginalSubjectAlarm,omitempty" xml:"OriginalSubjectAlarm,omitempty"`
-	// 处理时限
-	ProcessLimited *string `json:"ProcessLimited,omitempty" xml:"ProcessLimited,omitempty"`
-	// 处理人
-	ProcessMan *string `json:"ProcessMan,omitempty" xml:"ProcessMan,omitempty"`
-	// 处理人编号
-	ProcessManId *string `json:"ProcessManId,omitempty" xml:"ProcessManId,omitempty"`
-	// 处理结果
-	ProcessResult *string `json:"ProcessResult,omitempty" xml:"ProcessResult,omitempty"`
-	// 技能组
-	SkillGroups *string `json:"SkillGroups,omitempty" xml:"SkillGroups,omitempty"`
-	// 工单编号
-	WorkOrderId *string `json:"WorkOrderId,omitempty" xml:"WorkOrderId,omitempty"`
-	// 工单来源
-	WorkOrderSource *string `json:"WorkOrderSource,omitempty" xml:"WorkOrderSource,omitempty"`
-	// 工单状态
-	WorkOrderStep *string `json:"WorkOrderStep,omitempty" xml:"WorkOrderStep,omitempty"`
-	// 工单标题
-	WorkOrderTitle *string `json:"WorkOrderTitle,omitempty" xml:"WorkOrderTitle,omitempty"`
-	// 工单类型
-	WorkOrderType *string `json:"WorkOrderType,omitempty" xml:"WorkOrderType,omitempty"`
+	ProcessLimited       *string `json:"ProcessLimited,omitempty" xml:"ProcessLimited,omitempty"`
+	ProcessMan           *string `json:"ProcessMan,omitempty" xml:"ProcessMan,omitempty"`
+	ProcessManId         *string `json:"ProcessManId,omitempty" xml:"ProcessManId,omitempty"`
+	ProcessResult        *string `json:"ProcessResult,omitempty" xml:"ProcessResult,omitempty"`
+	SkillGroups          *string `json:"SkillGroups,omitempty" xml:"SkillGroups,omitempty"`
+	WorkOrderId          *string `json:"WorkOrderId,omitempty" xml:"WorkOrderId,omitempty"`
+	WorkOrderSource      *string `json:"WorkOrderSource,omitempty" xml:"WorkOrderSource,omitempty"`
+	WorkOrderStep        *string `json:"WorkOrderStep,omitempty" xml:"WorkOrderStep,omitempty"`
+	WorkOrderTitle       *string `json:"WorkOrderTitle,omitempty" xml:"WorkOrderTitle,omitempty"`
+	WorkOrderType        *string `json:"WorkOrderType,omitempty" xml:"WorkOrderType,omitempty"`
 }
 
 func (s UpdateWorkOrderRequest) String() string {
@@ -27905,7 +26732,6 @@ func (s *UpdateWorkOrderRequest) SetWorkOrderType(v string) *UpdateWorkOrderRequ
 }
 
 type UpdateWorkOrderResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -27923,8 +26749,9 @@ func (s *UpdateWorkOrderResponseBody) SetRequestId(v string) *UpdateWorkOrderRes
 }
 
 type UpdateWorkOrderResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UpdateWorkOrderResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateWorkOrderResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s UpdateWorkOrderResponse) String() string {
@@ -27937,6 +26764,11 @@ func (s UpdateWorkOrderResponse) GoString() string {
 
 func (s *UpdateWorkOrderResponse) SetHeaders(v map[string]*string) *UpdateWorkOrderResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *UpdateWorkOrderResponse) SetStatusCode(v int32) *UpdateWorkOrderResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -28379,8 +27211,32 @@ func (client *Client) CreateDedicatedLineWithOptions(request *CreateDedicatedLin
 		body["DevicePort"] = request.DevicePort
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ExpirationDate)) {
+		body["ExpirationDate"] = request.ExpirationDate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExtAttributes)) {
+		body["ExtAttributes"] = request.ExtAttributes
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Isp)) {
 		body["Isp"] = request.Isp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IspFormId)) {
+		body["IspFormId"] = request.IspFormId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IspId)) {
+		body["IspId"] = request.IspId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Keyword)) {
+		body["Keyword"] = request.Keyword
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OnlineDate)) {
+		body["OnlineDate"] = request.OnlineDate
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Phone)) {
@@ -29090,11 +27946,17 @@ func (client *Client) CreateOsVersion(request *CreateOsVersionRequest) (_result 
 	return _result, _err
 }
 
-func (client *Client) CreatePhysicalSpaceWithOptions(request *CreatePhysicalSpaceRequest, runtime *util.RuntimeOptions) (_result *CreatePhysicalSpaceResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) CreatePhysicalSpaceWithOptions(tmpReq *CreatePhysicalSpaceRequest, runtime *util.RuntimeOptions) (_result *CreatePhysicalSpaceResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
+	request := &CreatePhysicalSpaceShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.SecurityDomainList)) {
+		request.SecurityDomainListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SecurityDomainList, tea.String("SecurityDomainList"), tea.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
 		query["InstanceId"] = request.InstanceId
@@ -29135,6 +27997,10 @@ func (client *Client) CreatePhysicalSpaceWithOptions(request *CreatePhysicalSpac
 
 	if !tea.BoolValue(util.IsUnset(request.Remark)) {
 		body["Remark"] = request.Remark
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityDomainListShrink)) {
+		body["SecurityDomainList"] = request.SecurityDomainListShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SpaceAbbreviation)) {
@@ -29195,8 +28061,16 @@ func (client *Client) CreateRealtimeTaskWithOptions(request *CreateRealtimeTaskR
 	}
 
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CheckDuplicatePolicy)) {
+		body["CheckDuplicatePolicy"] = request.CheckDuplicatePolicy
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.DeviceId)) {
 		body["DeviceId"] = request.DeviceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ItemName)) {
+		body["ItemName"] = request.ItemName
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Script)) {
@@ -32461,6 +31335,10 @@ func (client *Client) ListDevicesWithOptions(tmpReq *ListDevicesRequest, runtime
 	}
 
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CalculateAmount)) {
+		query["CalculateAmount"] = request.CalculateAmount
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.DeviceFormId)) {
 		query["DeviceFormId"] = request.DeviceFormId
 	}
@@ -32812,11 +31690,17 @@ func (client *Client) ListInstances() (_result *ListInstancesResponse, _err erro
 	return _result, _err
 }
 
-func (client *Client) ListIpBlocksWithOptions(request *ListIpBlocksRequest, runtime *util.RuntimeOptions) (_result *ListIpBlocksResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) ListIpBlocksWithOptions(tmpReq *ListIpBlocksRequest, runtime *util.RuntimeOptions) (_result *ListIpBlocksResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
+	request := &ListIpBlocksShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.IpList)) {
+		request.IpListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.IpList, tea.String("IpList"), tea.String("json"))
+	}
+
 	query := openapiutil.Query(util.ToMap(request))
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
@@ -33891,12 +32775,36 @@ func (client *Client) UpdateDedicatedLineWithOptions(request *UpdateDedicatedLin
 		body["DevicePort"] = request.DevicePort
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ExpirationDate)) {
+		body["ExpirationDate"] = request.ExpirationDate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExtAttributes)) {
+		body["ExtAttributes"] = request.ExtAttributes
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Isp)) {
 		body["Isp"] = request.Isp
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.IspId)) {
+		body["IspId"] = request.IspId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Keyword)) {
+		body["Keyword"] = request.Keyword
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OnlineDate)) {
+		body["OnlineDate"] = request.OnlineDate
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Phone)) {
 		body["Phone"] = request.Phone
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PhysicalSpaceId)) {
+		body["PhysicalSpaceId"] = request.PhysicalSpaceId
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -34315,6 +33223,10 @@ func (client *Client) UpdateDevicesWithOptions(tmpReq *UpdateDevicesRequest, run
 		body["EnablePassword"] = request.EnablePassword
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ExtAttributes)) {
+		body["ExtAttributes"] = request.ExtAttributes
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.LoginPassword)) {
 		body["LoginPassword"] = request.LoginPassword
 	}
@@ -34337,6 +33249,10 @@ func (client *Client) UpdateDevicesWithOptions(tmpReq *UpdateDevicesRequest, run
 
 	if !tea.BoolValue(util.IsUnset(request.PhysicalSpaceName)) {
 		body["PhysicalSpaceName"] = request.PhysicalSpaceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityDomain)) {
+		body["SecurityDomain"] = request.SecurityDomain
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ServiceStatus)) {
@@ -34662,11 +33578,17 @@ func (client *Client) UpdateOsVersion(request *UpdateOsVersionRequest) (_result 
 	return _result, _err
 }
 
-func (client *Client) UpdatePhysicalSpaceWithOptions(request *UpdatePhysicalSpaceRequest, runtime *util.RuntimeOptions) (_result *UpdatePhysicalSpaceResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) UpdatePhysicalSpaceWithOptions(tmpReq *UpdatePhysicalSpaceRequest, runtime *util.RuntimeOptions) (_result *UpdatePhysicalSpaceResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
+	request := &UpdatePhysicalSpaceShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.SecurityDomainList)) {
+		request.SecurityDomainListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SecurityDomainList, tea.String("SecurityDomainList"), tea.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
 		query["InstanceId"] = request.InstanceId
@@ -34683,6 +33605,10 @@ func (client *Client) UpdatePhysicalSpaceWithOptions(request *UpdatePhysicalSpac
 
 	if !tea.BoolValue(util.IsUnset(request.Country)) {
 		body["Country"] = request.Country
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MoveAction)) {
+		body["MoveAction"] = request.MoveAction
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Owner)) {
@@ -34709,12 +33635,20 @@ func (client *Client) UpdatePhysicalSpaceWithOptions(request *UpdatePhysicalSpac
 		body["Remark"] = request.Remark
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.SecurityDomainListShrink)) {
+		body["SecurityDomainList"] = request.SecurityDomainListShrink
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.SpaceAbbreviation)) {
 		body["SpaceAbbreviation"] = request.SpaceAbbreviation
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SpaceType)) {
 		body["SpaceType"] = request.SpaceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetUid)) {
+		body["TargetUid"] = request.TargetUid
 	}
 
 	req := &openapi.OpenApiRequest{
