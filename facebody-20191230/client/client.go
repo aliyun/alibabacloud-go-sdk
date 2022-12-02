@@ -276,7 +276,6 @@ func (s *AddFaceEntityResponse) SetBody(v *AddFaceEntityResponseBody) *AddFaceEn
 
 type AddFaceImageTemplateRequest struct {
 	ImageURL *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
-	UserId   *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s AddFaceImageTemplateRequest) String() string {
@@ -292,14 +291,8 @@ func (s *AddFaceImageTemplateRequest) SetImageURL(v string) *AddFaceImageTemplat
 	return s
 }
 
-func (s *AddFaceImageTemplateRequest) SetUserId(v string) *AddFaceImageTemplateRequest {
-	s.UserId = &v
-	return s
-}
-
 type AddFaceImageTemplateAdvanceRequest struct {
 	ImageURLObject io.Reader `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
-	UserId         *string   `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s AddFaceImageTemplateAdvanceRequest) String() string {
@@ -312,11 +305,6 @@ func (s AddFaceImageTemplateAdvanceRequest) GoString() string {
 
 func (s *AddFaceImageTemplateAdvanceRequest) SetImageURLObject(v io.Reader) *AddFaceImageTemplateAdvanceRequest {
 	s.ImageURLObject = v
-	return s
-}
-
-func (s *AddFaceImageTemplateAdvanceRequest) SetUserId(v string) *AddFaceImageTemplateAdvanceRequest {
-	s.UserId = &v
 	return s
 }
 
@@ -2200,7 +2188,6 @@ func (s *DeleteFaceEntityResponse) SetBody(v *DeleteFaceEntityResponseBody) *Del
 
 type DeleteFaceImageTemplateRequest struct {
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	UserId     *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s DeleteFaceImageTemplateRequest) String() string {
@@ -2213,11 +2200,6 @@ func (s DeleteFaceImageTemplateRequest) GoString() string {
 
 func (s *DeleteFaceImageTemplateRequest) SetTemplateId(v string) *DeleteFaceImageTemplateRequest {
 	s.TemplateId = &v
-	return s
-}
-
-func (s *DeleteFaceImageTemplateRequest) SetUserId(v string) *DeleteFaceImageTemplateRequest {
-	s.UserId = &v
 	return s
 }
 
@@ -6287,7 +6269,6 @@ func (s *ListFaceEntitiesResponse) SetBody(v *ListFaceEntitiesResponseBody) *Lis
 type MergeImageFaceRequest struct {
 	ImageURL   *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	UserId     *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s MergeImageFaceRequest) String() string {
@@ -6308,15 +6289,9 @@ func (s *MergeImageFaceRequest) SetTemplateId(v string) *MergeImageFaceRequest {
 	return s
 }
 
-func (s *MergeImageFaceRequest) SetUserId(v string) *MergeImageFaceRequest {
-	s.UserId = &v
-	return s
-}
-
 type MergeImageFaceAdvanceRequest struct {
 	ImageURLObject io.Reader `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
 	TemplateId     *string   `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	UserId         *string   `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s MergeImageFaceAdvanceRequest) String() string {
@@ -6334,11 +6309,6 @@ func (s *MergeImageFaceAdvanceRequest) SetImageURLObject(v io.Reader) *MergeImag
 
 func (s *MergeImageFaceAdvanceRequest) SetTemplateId(v string) *MergeImageFaceAdvanceRequest {
 	s.TemplateId = &v
-	return s
-}
-
-func (s *MergeImageFaceAdvanceRequest) SetUserId(v string) *MergeImageFaceAdvanceRequest {
-	s.UserId = &v
 	return s
 }
 
@@ -7206,7 +7176,6 @@ func (s *PedestrianDetectAttributeResponse) SetBody(v *PedestrianDetectAttribute
 
 type QueryFaceImageTemplateRequest struct {
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	UserId     *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s QueryFaceImageTemplateRequest) String() string {
@@ -7219,11 +7188,6 @@ func (s QueryFaceImageTemplateRequest) GoString() string {
 
 func (s *QueryFaceImageTemplateRequest) SetTemplateId(v string) *QueryFaceImageTemplateRequest {
 	s.TemplateId = &v
-	return s
-}
-
-func (s *QueryFaceImageTemplateRequest) SetUserId(v string) *QueryFaceImageTemplateRequest {
-	s.UserId = &v
 	return s
 }
 
@@ -9753,10 +9717,6 @@ func (client *Client) AddFaceImageTemplateWithOptions(request *AddFaceImageTempl
 		body["ImageURL"] = request.ImageURL
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.UserId)) {
-		body["UserId"] = request.UserId
-	}
-
 	req := &openapi.OpenApiRequest{
 		Body: openapiutil.ParseToMap(body),
 	}
@@ -9974,8 +9934,8 @@ func (client *Client) BeautifyBodyWithOptions(tmpReq *BeautifyBodyRequest, runti
 	}
 	request := &BeautifyBodyShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.AgeRange))) {
-		request.AgeRangeShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.AgeRange), tea.String("AgeRange"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.AgeRange)) {
+		request.AgeRangeShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.AgeRange, tea.String("AgeRange"), tea.String("json"))
 	}
 
 	if !tea.BoolValue(util.IsUnset(tmpReq.BodyBoxes)) {
@@ -11028,10 +10988,6 @@ func (client *Client) DeleteFaceImageTemplateWithOptions(request *DeleteFaceImag
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.TemplateId)) {
 		body["TemplateId"] = request.TemplateId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.UserId)) {
-		body["UserId"] = request.UserId
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -14454,10 +14410,6 @@ func (client *Client) MergeImageFaceWithOptions(request *MergeImageFaceRequest, 
 
 	if !tea.BoolValue(util.IsUnset(request.TemplateId)) {
 		body["TemplateId"] = request.TemplateId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.UserId)) {
-		body["UserId"] = request.UserId
 	}
 
 	req := &openapi.OpenApiRequest{
