@@ -69,6 +69,7 @@ type DatasetItemVO struct {
 	AsyncTaskList    []*AsyncTaskVO          `json:"AsyncTaskList,omitempty" xml:"AsyncTaskList,omitempty" type:"Repeated"`
 	DatasetStatus    *int32                  `json:"DatasetStatus,omitempty" xml:"DatasetStatus,omitempty"`
 	DatasetType      *int32                  `json:"DatasetType,omitempty" xml:"DatasetType,omitempty"`
+	Digest           *string                 `json:"Digest,omitempty" xml:"Digest,omitempty"`
 	FileSystem       *string                 `json:"FileSystem,omitempty" xml:"FileSystem,omitempty"`
 	Id               *string                 `json:"Id,omitempty" xml:"Id,omitempty"`
 	KeyName          *string                 `json:"KeyName,omitempty" xml:"KeyName,omitempty"`
@@ -102,6 +103,11 @@ func (s *DatasetItemVO) SetDatasetStatus(v int32) *DatasetItemVO {
 
 func (s *DatasetItemVO) SetDatasetType(v int32) *DatasetItemVO {
 	s.DatasetType = &v
+	return s
+}
+
+func (s *DatasetItemVO) SetDigest(v string) *DatasetItemVO {
+	s.Digest = &v
 	return s
 }
 
@@ -9551,6 +9557,7 @@ func (s *GetLogicDatabaseResponseBody) SetSuccess(v bool) *GetLogicDatabaseRespo
 type GetLogicDatabaseResponseBodyLogicDatabase struct {
 	Alias         *string                                                 `json:"Alias,omitempty" xml:"Alias,omitempty"`
 	DatabaseId    *string                                                 `json:"DatabaseId,omitempty" xml:"DatabaseId,omitempty"`
+	DatabaseIds   *GetLogicDatabaseResponseBodyLogicDatabaseDatabaseIds   `json:"DatabaseIds,omitempty" xml:"DatabaseIds,omitempty" type:"Struct"`
 	DbType        *string                                                 `json:"DbType,omitempty" xml:"DbType,omitempty"`
 	EnvType       *string                                                 `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
 	Logic         *bool                                                   `json:"Logic,omitempty" xml:"Logic,omitempty"`
@@ -9575,6 +9582,11 @@ func (s *GetLogicDatabaseResponseBodyLogicDatabase) SetAlias(v string) *GetLogic
 
 func (s *GetLogicDatabaseResponseBodyLogicDatabase) SetDatabaseId(v string) *GetLogicDatabaseResponseBodyLogicDatabase {
 	s.DatabaseId = &v
+	return s
+}
+
+func (s *GetLogicDatabaseResponseBodyLogicDatabase) SetDatabaseIds(v *GetLogicDatabaseResponseBodyLogicDatabaseDatabaseIds) *GetLogicDatabaseResponseBodyLogicDatabase {
+	s.DatabaseIds = v
 	return s
 }
 
@@ -9610,6 +9622,23 @@ func (s *GetLogicDatabaseResponseBodyLogicDatabase) SetSchemaName(v string) *Get
 
 func (s *GetLogicDatabaseResponseBodyLogicDatabase) SetSearchName(v string) *GetLogicDatabaseResponseBodyLogicDatabase {
 	s.SearchName = &v
+	return s
+}
+
+type GetLogicDatabaseResponseBodyLogicDatabaseDatabaseIds struct {
+	DatabaseIds []*int64 `json:"DatabaseIds,omitempty" xml:"DatabaseIds,omitempty" type:"Repeated"`
+}
+
+func (s GetLogicDatabaseResponseBodyLogicDatabaseDatabaseIds) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLogicDatabaseResponseBodyLogicDatabaseDatabaseIds) GoString() string {
+	return s.String()
+}
+
+func (s *GetLogicDatabaseResponseBodyLogicDatabaseDatabaseIds) SetDatabaseIds(v []*int64) *GetLogicDatabaseResponseBodyLogicDatabaseDatabaseIds {
+	s.DatabaseIds = v
 	return s
 }
 
@@ -10076,6 +10105,188 @@ func (s *GetMetaTableDetailInfoResponse) SetStatusCode(v int32) *GetMetaTableDet
 }
 
 func (s *GetMetaTableDetailInfoResponse) SetBody(v *GetMetaTableDetailInfoResponseBody) *GetMetaTableDetailInfoResponse {
+	s.Body = v
+	return s
+}
+
+type GetOnlineDDLProgressRequest struct {
+	JobDetailId *int64 `json:"JobDetailId,omitempty" xml:"JobDetailId,omitempty"`
+	Tid         *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s GetOnlineDDLProgressRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetOnlineDDLProgressRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetOnlineDDLProgressRequest) SetJobDetailId(v int64) *GetOnlineDDLProgressRequest {
+	s.JobDetailId = &v
+	return s
+}
+
+func (s *GetOnlineDDLProgressRequest) SetTid(v int64) *GetOnlineDDLProgressRequest {
+	s.Tid = &v
+	return s
+}
+
+type GetOnlineDDLProgressResponseBody struct {
+	ErrorCode           *string                                              `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage        *string                                              `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	OnlineDDLTaskDetail *GetOnlineDDLProgressResponseBodyOnlineDDLTaskDetail `json:"OnlineDDLTaskDetail,omitempty" xml:"OnlineDDLTaskDetail,omitempty" type:"Struct"`
+	RequestId           *string                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success             *bool                                                `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetOnlineDDLProgressResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetOnlineDDLProgressResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetOnlineDDLProgressResponseBody) SetErrorCode(v string) *GetOnlineDDLProgressResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetOnlineDDLProgressResponseBody) SetErrorMessage(v string) *GetOnlineDDLProgressResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetOnlineDDLProgressResponseBody) SetOnlineDDLTaskDetail(v *GetOnlineDDLProgressResponseBodyOnlineDDLTaskDetail) *GetOnlineDDLProgressResponseBody {
+	s.OnlineDDLTaskDetail = v
+	return s
+}
+
+func (s *GetOnlineDDLProgressResponseBody) SetRequestId(v string) *GetOnlineDDLProgressResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetOnlineDDLProgressResponseBody) SetSuccess(v bool) *GetOnlineDDLProgressResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetOnlineDDLProgressResponseBodyOnlineDDLTaskDetail struct {
+	CleanStrategy          *string `json:"CleanStrategy,omitempty" xml:"CleanStrategy,omitempty"`
+	CopyChunkMode          *string `json:"CopyChunkMode,omitempty" xml:"CopyChunkMode,omitempty"`
+	CopyChunkSize          *int64  `json:"CopyChunkSize,omitempty" xml:"CopyChunkSize,omitempty"`
+	CopyCount              *int64  `json:"CopyCount,omitempty" xml:"CopyCount,omitempty"`
+	CopyTotal              *int64  `json:"CopyTotal,omitempty" xml:"CopyTotal,omitempty"`
+	CutoverFailRetryTimes  *int64  `json:"CutoverFailRetryTimes,omitempty" xml:"CutoverFailRetryTimes,omitempty"`
+	CutoverLockTimeSeconds *int64  `json:"CutoverLockTimeSeconds,omitempty" xml:"CutoverLockTimeSeconds,omitempty"`
+	CutoverWindowEndTime   *string `json:"CutoverWindowEndTime,omitempty" xml:"CutoverWindowEndTime,omitempty"`
+	CutoverWindowStartTime *string `json:"CutoverWindowStartTime,omitempty" xml:"CutoverWindowStartTime,omitempty"`
+	DelaySeconds           *int64  `json:"DelaySeconds,omitempty" xml:"DelaySeconds,omitempty"`
+	JobStatus              *string `json:"JobStatus,omitempty" xml:"JobStatus,omitempty"`
+	ProgressRatio          *string `json:"ProgressRatio,omitempty" xml:"ProgressRatio,omitempty"`
+	StatusDesc             *string `json:"StatusDesc,omitempty" xml:"StatusDesc,omitempty"`
+}
+
+func (s GetOnlineDDLProgressResponseBodyOnlineDDLTaskDetail) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetOnlineDDLProgressResponseBodyOnlineDDLTaskDetail) GoString() string {
+	return s.String()
+}
+
+func (s *GetOnlineDDLProgressResponseBodyOnlineDDLTaskDetail) SetCleanStrategy(v string) *GetOnlineDDLProgressResponseBodyOnlineDDLTaskDetail {
+	s.CleanStrategy = &v
+	return s
+}
+
+func (s *GetOnlineDDLProgressResponseBodyOnlineDDLTaskDetail) SetCopyChunkMode(v string) *GetOnlineDDLProgressResponseBodyOnlineDDLTaskDetail {
+	s.CopyChunkMode = &v
+	return s
+}
+
+func (s *GetOnlineDDLProgressResponseBodyOnlineDDLTaskDetail) SetCopyChunkSize(v int64) *GetOnlineDDLProgressResponseBodyOnlineDDLTaskDetail {
+	s.CopyChunkSize = &v
+	return s
+}
+
+func (s *GetOnlineDDLProgressResponseBodyOnlineDDLTaskDetail) SetCopyCount(v int64) *GetOnlineDDLProgressResponseBodyOnlineDDLTaskDetail {
+	s.CopyCount = &v
+	return s
+}
+
+func (s *GetOnlineDDLProgressResponseBodyOnlineDDLTaskDetail) SetCopyTotal(v int64) *GetOnlineDDLProgressResponseBodyOnlineDDLTaskDetail {
+	s.CopyTotal = &v
+	return s
+}
+
+func (s *GetOnlineDDLProgressResponseBodyOnlineDDLTaskDetail) SetCutoverFailRetryTimes(v int64) *GetOnlineDDLProgressResponseBodyOnlineDDLTaskDetail {
+	s.CutoverFailRetryTimes = &v
+	return s
+}
+
+func (s *GetOnlineDDLProgressResponseBodyOnlineDDLTaskDetail) SetCutoverLockTimeSeconds(v int64) *GetOnlineDDLProgressResponseBodyOnlineDDLTaskDetail {
+	s.CutoverLockTimeSeconds = &v
+	return s
+}
+
+func (s *GetOnlineDDLProgressResponseBodyOnlineDDLTaskDetail) SetCutoverWindowEndTime(v string) *GetOnlineDDLProgressResponseBodyOnlineDDLTaskDetail {
+	s.CutoverWindowEndTime = &v
+	return s
+}
+
+func (s *GetOnlineDDLProgressResponseBodyOnlineDDLTaskDetail) SetCutoverWindowStartTime(v string) *GetOnlineDDLProgressResponseBodyOnlineDDLTaskDetail {
+	s.CutoverWindowStartTime = &v
+	return s
+}
+
+func (s *GetOnlineDDLProgressResponseBodyOnlineDDLTaskDetail) SetDelaySeconds(v int64) *GetOnlineDDLProgressResponseBodyOnlineDDLTaskDetail {
+	s.DelaySeconds = &v
+	return s
+}
+
+func (s *GetOnlineDDLProgressResponseBodyOnlineDDLTaskDetail) SetJobStatus(v string) *GetOnlineDDLProgressResponseBodyOnlineDDLTaskDetail {
+	s.JobStatus = &v
+	return s
+}
+
+func (s *GetOnlineDDLProgressResponseBodyOnlineDDLTaskDetail) SetProgressRatio(v string) *GetOnlineDDLProgressResponseBodyOnlineDDLTaskDetail {
+	s.ProgressRatio = &v
+	return s
+}
+
+func (s *GetOnlineDDLProgressResponseBodyOnlineDDLTaskDetail) SetStatusDesc(v string) *GetOnlineDDLProgressResponseBodyOnlineDDLTaskDetail {
+	s.StatusDesc = &v
+	return s
+}
+
+type GetOnlineDDLProgressResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetOnlineDDLProgressResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetOnlineDDLProgressResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetOnlineDDLProgressResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetOnlineDDLProgressResponse) SetHeaders(v map[string]*string) *GetOnlineDDLProgressResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetOnlineDDLProgressResponse) SetStatusCode(v int32) *GetOnlineDDLProgressResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetOnlineDDLProgressResponse) SetBody(v *GetOnlineDDLProgressResponseBody) *GetOnlineDDLProgressResponse {
 	s.Body = v
 	return s
 }
@@ -18814,6 +19025,7 @@ func (s *ListLogicDatabasesResponseBodyLogicDatabaseList) SetLogicDatabase(v []*
 type ListLogicDatabasesResponseBodyLogicDatabaseListLogicDatabase struct {
 	Alias         *string                                                                    `json:"Alias,omitempty" xml:"Alias,omitempty"`
 	DatabaseId    *string                                                                    `json:"DatabaseId,omitempty" xml:"DatabaseId,omitempty"`
+	DatabaseIds   *ListLogicDatabasesResponseBodyLogicDatabaseListLogicDatabaseDatabaseIds   `json:"DatabaseIds,omitempty" xml:"DatabaseIds,omitempty" type:"Struct"`
 	DbType        *string                                                                    `json:"DbType,omitempty" xml:"DbType,omitempty"`
 	EnvType       *string                                                                    `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
 	Logic         *bool                                                                      `json:"Logic,omitempty" xml:"Logic,omitempty"`
@@ -18838,6 +19050,11 @@ func (s *ListLogicDatabasesResponseBodyLogicDatabaseListLogicDatabase) SetAlias(
 
 func (s *ListLogicDatabasesResponseBodyLogicDatabaseListLogicDatabase) SetDatabaseId(v string) *ListLogicDatabasesResponseBodyLogicDatabaseListLogicDatabase {
 	s.DatabaseId = &v
+	return s
+}
+
+func (s *ListLogicDatabasesResponseBodyLogicDatabaseListLogicDatabase) SetDatabaseIds(v *ListLogicDatabasesResponseBodyLogicDatabaseListLogicDatabaseDatabaseIds) *ListLogicDatabasesResponseBodyLogicDatabaseListLogicDatabase {
+	s.DatabaseIds = v
 	return s
 }
 
@@ -18873,6 +19090,23 @@ func (s *ListLogicDatabasesResponseBodyLogicDatabaseListLogicDatabase) SetSchema
 
 func (s *ListLogicDatabasesResponseBodyLogicDatabaseListLogicDatabase) SetSearchName(v string) *ListLogicDatabasesResponseBodyLogicDatabaseListLogicDatabase {
 	s.SearchName = &v
+	return s
+}
+
+type ListLogicDatabasesResponseBodyLogicDatabaseListLogicDatabaseDatabaseIds struct {
+	DatabaseIds []*int64 `json:"DatabaseIds,omitempty" xml:"DatabaseIds,omitempty" type:"Repeated"`
+}
+
+func (s ListLogicDatabasesResponseBodyLogicDatabaseListLogicDatabaseDatabaseIds) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListLogicDatabasesResponseBodyLogicDatabaseListLogicDatabaseDatabaseIds) GoString() string {
+	return s.String()
+}
+
+func (s *ListLogicDatabasesResponseBodyLogicDatabaseListLogicDatabaseDatabaseIds) SetDatabaseIds(v []*int64) *ListLogicDatabasesResponseBodyLogicDatabaseListLogicDatabaseDatabaseIds {
+	s.DatabaseIds = v
 	return s
 }
 
@@ -30263,8 +30497,8 @@ func (client *Client) CreateDataCorrectOrderWithOptions(tmpReq *CreateDataCorrec
 	}
 	request := &CreateDataCorrectOrderShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.Param))) {
-		request.ParamShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.Param), tea.String("Param"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.Param)) {
+		request.ParamShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Param, tea.String("Param"), tea.String("json"))
 	}
 
 	if !tea.BoolValue(util.IsUnset(tmpReq.RelatedUserList)) {
@@ -30333,8 +30567,8 @@ func (client *Client) CreateDataCronClearOrderWithOptions(tmpReq *CreateDataCron
 	}
 	request := &CreateDataCronClearOrderShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.Param))) {
-		request.ParamShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.Param), tea.String("Param"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.Param)) {
+		request.ParamShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Param, tea.String("Param"), tea.String("json"))
 	}
 
 	if !tea.BoolValue(util.IsUnset(tmpReq.RelatedUserList)) {
@@ -30403,8 +30637,8 @@ func (client *Client) CreateDataImportOrderWithOptions(tmpReq *CreateDataImportO
 	}
 	request := &CreateDataImportOrderShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.Param))) {
-		request.ParamShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.Param), tea.String("Param"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.Param)) {
+		request.ParamShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Param, tea.String("Param"), tea.String("json"))
 	}
 
 	if !tea.BoolValue(util.IsUnset(tmpReq.RelatedUserList)) {
@@ -30473,8 +30707,8 @@ func (client *Client) CreateFreeLockCorrectOrderWithOptions(tmpReq *CreateFreeLo
 	}
 	request := &CreateFreeLockCorrectOrderShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.Param))) {
-		request.ParamShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.Param), tea.String("Param"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.Param)) {
+		request.ParamShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Param, tea.String("Param"), tea.String("json"))
 	}
 
 	if !tea.BoolValue(util.IsUnset(tmpReq.RelatedUserList)) {
@@ -30925,8 +31159,8 @@ func (client *Client) CreateSQLReviewOrderWithOptions(tmpReq *CreateSQLReviewOrd
 	}
 	request := &CreateSQLReviewOrderShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.Param))) {
-		request.ParamShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.Param), tea.String("Param"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.Param)) {
+		request.ParamShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Param, tea.String("Param"), tea.String("json"))
 	}
 
 	if !tea.BoolValue(util.IsUnset(tmpReq.RelatedUserList)) {
@@ -31099,8 +31333,8 @@ func (client *Client) CreateStructSyncOrderWithOptions(tmpReq *CreateStructSyncO
 	}
 	request := &CreateStructSyncOrderShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.Param))) {
-		request.ParamShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.Param), tea.String("Param"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.Param)) {
+		request.ParamShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Param, tea.String("Param"), tea.String("json"))
 	}
 
 	if !tea.BoolValue(util.IsUnset(tmpReq.RelatedUserList)) {
@@ -31353,8 +31587,8 @@ func (client *Client) CreateUploadOSSFileJobWithOptions(tmpReq *CreateUploadOSSF
 	}
 	request := &CreateUploadOSSFileJobShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.UploadTarget))) {
-		request.UploadTargetShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.UploadTarget), tea.String("UploadTarget"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.UploadTarget)) {
+		request.UploadTargetShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.UploadTarget, tea.String("UploadTarget"), tea.String("json"))
 	}
 
 	query := map[string]interface{}{}
@@ -33345,6 +33579,54 @@ func (client *Client) GetMetaTableDetailInfo(request *GetMetaTableDetailInfoRequ
 	runtime := &util.RuntimeOptions{}
 	_result = &GetMetaTableDetailInfoResponse{}
 	_body, _err := client.GetMetaTableDetailInfoWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetOnlineDDLProgressWithOptions(request *GetOnlineDDLProgressRequest, runtime *util.RuntimeOptions) (_result *GetOnlineDDLProgressResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.JobDetailId)) {
+		query["JobDetailId"] = request.JobDetailId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetOnlineDDLProgress"),
+		Version:     tea.String("2018-11-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetOnlineDDLProgressResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetOnlineDDLProgress(request *GetOnlineDDLProgressRequest) (_result *GetOnlineDDLProgressResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetOnlineDDLProgressResponse{}
+	_body, _err := client.GetOnlineDDLProgressWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -36191,8 +36473,8 @@ func (client *Client) ListSQLReviewOriginSQLWithOptions(tmpReq *ListSQLReviewOri
 	}
 	request := &ListSQLReviewOriginSQLShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.OrderActionDetail))) {
-		request.OrderActionDetailShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.OrderActionDetail), tea.String("OrderActionDetail"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.OrderActionDetail)) {
+		request.OrderActionDetailShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.OrderActionDetail, tea.String("OrderActionDetail"), tea.String("json"))
 	}
 
 	query := map[string]interface{}{}

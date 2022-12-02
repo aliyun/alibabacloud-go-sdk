@@ -1,3 +1,6 @@
+2022-12-02 Version: v1.42.0
+- Supported GetStructSyncOrderDetail OrderId param required.
+
 2022-11-23 Version: v1.41.0
 - Supported GetDataCronClearConfig,GetDataCorrectRollbackFile,GetOrderAttachmentFile API.
 
