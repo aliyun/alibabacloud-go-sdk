@@ -291,7 +291,6 @@ func (s *AbstractFilmVideoResponse) SetBody(v *AbstractFilmVideoResponseBody) *A
 }
 
 type AddFaceVideoTemplateRequest struct {
-	UserId   *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 	VideoURL *string `json:"VideoURL,omitempty" xml:"VideoURL,omitempty"`
 }
 
@@ -303,18 +302,12 @@ func (s AddFaceVideoTemplateRequest) GoString() string {
 	return s.String()
 }
 
-func (s *AddFaceVideoTemplateRequest) SetUserId(v string) *AddFaceVideoTemplateRequest {
-	s.UserId = &v
-	return s
-}
-
 func (s *AddFaceVideoTemplateRequest) SetVideoURL(v string) *AddFaceVideoTemplateRequest {
 	s.VideoURL = &v
 	return s
 }
 
 type AddFaceVideoTemplateAdvanceRequest struct {
-	UserId         *string   `json:"UserId,omitempty" xml:"UserId,omitempty"`
 	VideoURLObject io.Reader `json:"VideoURL,omitempty" xml:"VideoURL,omitempty"`
 }
 
@@ -324,11 +317,6 @@ func (s AddFaceVideoTemplateAdvanceRequest) String() string {
 
 func (s AddFaceVideoTemplateAdvanceRequest) GoString() string {
 	return s.String()
-}
-
-func (s *AddFaceVideoTemplateAdvanceRequest) SetUserId(v string) *AddFaceVideoTemplateAdvanceRequest {
-	s.UserId = &v
-	return s
 }
 
 func (s *AddFaceVideoTemplateAdvanceRequest) SetVideoURLObject(v io.Reader) *AddFaceVideoTemplateAdvanceRequest {
@@ -926,7 +914,6 @@ func (s *ConvertHdrVideoResponse) SetBody(v *ConvertHdrVideoResponseBody) *Conve
 
 type DeleteFaceVideoTemplateRequest struct {
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	UserId     *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s DeleteFaceVideoTemplateRequest) String() string {
@@ -939,11 +926,6 @@ func (s DeleteFaceVideoTemplateRequest) GoString() string {
 
 func (s *DeleteFaceVideoTemplateRequest) SetTemplateId(v string) *DeleteFaceVideoTemplateRequest {
 	s.TemplateId = &v
-	return s
-}
-
-func (s *DeleteFaceVideoTemplateRequest) SetUserId(v string) *DeleteFaceVideoTemplateRequest {
-	s.UserId = &v
 	return s
 }
 
@@ -2194,7 +2176,6 @@ func (s *MergeVideoFaceResponse) SetBody(v *MergeVideoFaceResponseBody) *MergeVi
 type MergeVideoModelFaceRequest struct {
 	FaceImageURL *string `json:"FaceImageURL,omitempty" xml:"FaceImageURL,omitempty"`
 	TemplateId   *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	UserId       *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s MergeVideoModelFaceRequest) String() string {
@@ -2215,15 +2196,9 @@ func (s *MergeVideoModelFaceRequest) SetTemplateId(v string) *MergeVideoModelFac
 	return s
 }
 
-func (s *MergeVideoModelFaceRequest) SetUserId(v string) *MergeVideoModelFaceRequest {
-	s.UserId = &v
-	return s
-}
-
 type MergeVideoModelFaceAdvanceRequest struct {
 	FaceImageURLObject io.Reader `json:"FaceImageURL,omitempty" xml:"FaceImageURL,omitempty"`
 	TemplateId         *string   `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	UserId             *string   `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s MergeVideoModelFaceAdvanceRequest) String() string {
@@ -2241,11 +2216,6 @@ func (s *MergeVideoModelFaceAdvanceRequest) SetFaceImageURLObject(v io.Reader) *
 
 func (s *MergeVideoModelFaceAdvanceRequest) SetTemplateId(v string) *MergeVideoModelFaceAdvanceRequest {
 	s.TemplateId = &v
-	return s
-}
-
-func (s *MergeVideoModelFaceAdvanceRequest) SetUserId(v string) *MergeVideoModelFaceAdvanceRequest {
-	s.UserId = &v
 	return s
 }
 
@@ -2326,7 +2296,6 @@ func (s *MergeVideoModelFaceResponse) SetBody(v *MergeVideoModelFaceResponseBody
 
 type QueryFaceVideoTemplateRequest struct {
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	UserId     *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s QueryFaceVideoTemplateRequest) String() string {
@@ -2339,11 +2308,6 @@ func (s QueryFaceVideoTemplateRequest) GoString() string {
 
 func (s *QueryFaceVideoTemplateRequest) SetTemplateId(v string) *QueryFaceVideoTemplateRequest {
 	s.TemplateId = &v
-	return s
-}
-
-func (s *QueryFaceVideoTemplateRequest) SetUserId(v string) *QueryFaceVideoTemplateRequest {
-	s.UserId = &v
 	return s
 }
 
@@ -3080,10 +3044,6 @@ func (client *Client) AddFaceVideoTemplateWithOptions(request *AddFaceVideoTempl
 		return _result, _err
 	}
 	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.UserId)) {
-		body["UserId"] = request.UserId
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.VideoURL)) {
 		body["VideoURL"] = request.VideoURL
 	}
@@ -3746,10 +3706,6 @@ func (client *Client) DeleteFaceVideoTemplateWithOptions(request *DeleteFaceVide
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.TemplateId)) {
 		body["TemplateId"] = request.TemplateId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.UserId)) {
-		body["UserId"] = request.UserId
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -4926,10 +4882,6 @@ func (client *Client) MergeVideoModelFaceWithOptions(request *MergeVideoModelFac
 		body["TemplateId"] = request.TemplateId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.UserId)) {
-		body["UserId"] = request.UserId
-	}
-
 	req := &openapi.OpenApiRequest{
 		Body: openapiutil.ParseToMap(body),
 	}
@@ -5078,10 +5030,6 @@ func (client *Client) QueryFaceVideoTemplateWithOptions(request *QueryFaceVideoT
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.TemplateId)) {
 		query["TemplateId"] = request.TemplateId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.UserId)) {
-		query["UserId"] = request.UserId
 	}
 
 	req := &openapi.OpenApiRequest{
