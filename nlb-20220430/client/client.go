@@ -447,18 +447,20 @@ func (s *CreateListenerResponse) SetBody(v *CreateListenerResponseBody) *CreateL
 }
 
 type CreateLoadBalancerRequest struct {
-	AddressIpVersion          *string                                             `json:"AddressIpVersion,omitempty" xml:"AddressIpVersion,omitempty"`
-	AddressType               *string                                             `json:"AddressType,omitempty" xml:"AddressType,omitempty"`
-	BandwidthPackageId        *string                                             `json:"BandwidthPackageId,omitempty" xml:"BandwidthPackageId,omitempty"`
-	ClientToken               *string                                             `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	DryRun                    *bool                                               `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	LoadBalancerBillingConfig *CreateLoadBalancerRequestLoadBalancerBillingConfig `json:"LoadBalancerBillingConfig,omitempty" xml:"LoadBalancerBillingConfig,omitempty" type:"Struct"`
-	LoadBalancerName          *string                                             `json:"LoadBalancerName,omitempty" xml:"LoadBalancerName,omitempty"`
-	LoadBalancerType          *string                                             `json:"LoadBalancerType,omitempty" xml:"LoadBalancerType,omitempty"`
-	RegionId                  *string                                             `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceGroupId           *string                                             `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	VpcId                     *string                                             `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	ZoneMappings              []*CreateLoadBalancerRequestZoneMappings            `json:"ZoneMappings,omitempty" xml:"ZoneMappings,omitempty" type:"Repeated"`
+	AddressIpVersion             *string                                                `json:"AddressIpVersion,omitempty" xml:"AddressIpVersion,omitempty"`
+	AddressType                  *string                                                `json:"AddressType,omitempty" xml:"AddressType,omitempty"`
+	BandwidthPackageId           *string                                                `json:"BandwidthPackageId,omitempty" xml:"BandwidthPackageId,omitempty"`
+	ClientToken                  *string                                                `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DeletionProtectionConfig     *CreateLoadBalancerRequestDeletionProtectionConfig     `json:"DeletionProtectionConfig,omitempty" xml:"DeletionProtectionConfig,omitempty" type:"Struct"`
+	DryRun                       *bool                                                  `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	LoadBalancerBillingConfig    *CreateLoadBalancerRequestLoadBalancerBillingConfig    `json:"LoadBalancerBillingConfig,omitempty" xml:"LoadBalancerBillingConfig,omitempty" type:"Struct"`
+	LoadBalancerName             *string                                                `json:"LoadBalancerName,omitempty" xml:"LoadBalancerName,omitempty"`
+	LoadBalancerType             *string                                                `json:"LoadBalancerType,omitempty" xml:"LoadBalancerType,omitempty"`
+	ModificationProtectionConfig *CreateLoadBalancerRequestModificationProtectionConfig `json:"ModificationProtectionConfig,omitempty" xml:"ModificationProtectionConfig,omitempty" type:"Struct"`
+	RegionId                     *string                                                `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId              *string                                                `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	VpcId                        *string                                                `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	ZoneMappings                 []*CreateLoadBalancerRequestZoneMappings               `json:"ZoneMappings,omitempty" xml:"ZoneMappings,omitempty" type:"Repeated"`
 }
 
 func (s CreateLoadBalancerRequest) String() string {
@@ -489,6 +491,11 @@ func (s *CreateLoadBalancerRequest) SetClientToken(v string) *CreateLoadBalancer
 	return s
 }
 
+func (s *CreateLoadBalancerRequest) SetDeletionProtectionConfig(v *CreateLoadBalancerRequestDeletionProtectionConfig) *CreateLoadBalancerRequest {
+	s.DeletionProtectionConfig = v
+	return s
+}
+
 func (s *CreateLoadBalancerRequest) SetDryRun(v bool) *CreateLoadBalancerRequest {
 	s.DryRun = &v
 	return s
@@ -506,6 +513,11 @@ func (s *CreateLoadBalancerRequest) SetLoadBalancerName(v string) *CreateLoadBal
 
 func (s *CreateLoadBalancerRequest) SetLoadBalancerType(v string) *CreateLoadBalancerRequest {
 	s.LoadBalancerType = &v
+	return s
+}
+
+func (s *CreateLoadBalancerRequest) SetModificationProtectionConfig(v *CreateLoadBalancerRequestModificationProtectionConfig) *CreateLoadBalancerRequest {
+	s.ModificationProtectionConfig = v
 	return s
 }
 
@@ -529,6 +541,29 @@ func (s *CreateLoadBalancerRequest) SetZoneMappings(v []*CreateLoadBalancerReque
 	return s
 }
 
+type CreateLoadBalancerRequestDeletionProtectionConfig struct {
+	Enabled *bool   `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	Reason  *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
+}
+
+func (s CreateLoadBalancerRequestDeletionProtectionConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateLoadBalancerRequestDeletionProtectionConfig) GoString() string {
+	return s.String()
+}
+
+func (s *CreateLoadBalancerRequestDeletionProtectionConfig) SetEnabled(v bool) *CreateLoadBalancerRequestDeletionProtectionConfig {
+	s.Enabled = &v
+	return s
+}
+
+func (s *CreateLoadBalancerRequestDeletionProtectionConfig) SetReason(v string) *CreateLoadBalancerRequestDeletionProtectionConfig {
+	s.Reason = &v
+	return s
+}
+
 type CreateLoadBalancerRequestLoadBalancerBillingConfig struct {
 	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
 }
@@ -543,6 +578,29 @@ func (s CreateLoadBalancerRequestLoadBalancerBillingConfig) GoString() string {
 
 func (s *CreateLoadBalancerRequestLoadBalancerBillingConfig) SetPayType(v string) *CreateLoadBalancerRequestLoadBalancerBillingConfig {
 	s.PayType = &v
+	return s
+}
+
+type CreateLoadBalancerRequestModificationProtectionConfig struct {
+	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s CreateLoadBalancerRequestModificationProtectionConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateLoadBalancerRequestModificationProtectionConfig) GoString() string {
+	return s.String()
+}
+
+func (s *CreateLoadBalancerRequestModificationProtectionConfig) SetReason(v string) *CreateLoadBalancerRequestModificationProtectionConfig {
+	s.Reason = &v
+	return s
+}
+
+func (s *CreateLoadBalancerRequestModificationProtectionConfig) SetStatus(v string) *CreateLoadBalancerRequestModificationProtectionConfig {
+	s.Status = &v
 	return s
 }
 
@@ -2360,26 +2418,28 @@ func (s *GetLoadBalancerAttributeRequest) SetRegionId(v string) *GetLoadBalancer
 }
 
 type GetLoadBalancerAttributeResponseBody struct {
-	AddressIpVersion           *string                                                        `json:"AddressIpVersion,omitempty" xml:"AddressIpVersion,omitempty"`
-	AddressType                *string                                                        `json:"AddressType,omitempty" xml:"AddressType,omitempty"`
-	BandwidthPackageId         *string                                                        `json:"BandwidthPackageId,omitempty" xml:"BandwidthPackageId,omitempty"`
-	Cps                        *int32                                                         `json:"Cps,omitempty" xml:"Cps,omitempty"`
-	CreateTime                 *string                                                        `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	CrossZoneEnabled           *bool                                                          `json:"CrossZoneEnabled,omitempty" xml:"CrossZoneEnabled,omitempty"`
-	DNSName                    *string                                                        `json:"DNSName,omitempty" xml:"DNSName,omitempty"`
-	Ipv6AddressType            *string                                                        `json:"Ipv6AddressType,omitempty" xml:"Ipv6AddressType,omitempty"`
-	LoadBalancerBillingConfig  *GetLoadBalancerAttributeResponseBodyLoadBalancerBillingConfig `json:"LoadBalancerBillingConfig,omitempty" xml:"LoadBalancerBillingConfig,omitempty" type:"Struct"`
-	LoadBalancerBusinessStatus *string                                                        `json:"LoadBalancerBusinessStatus,omitempty" xml:"LoadBalancerBusinessStatus,omitempty"`
-	LoadBalancerId             *string                                                        `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
-	LoadBalancerName           *string                                                        `json:"LoadBalancerName,omitempty" xml:"LoadBalancerName,omitempty"`
-	LoadBalancerStatus         *string                                                        `json:"LoadBalancerStatus,omitempty" xml:"LoadBalancerStatus,omitempty"`
-	LoadBalancerType           *string                                                        `json:"LoadBalancerType,omitempty" xml:"LoadBalancerType,omitempty"`
-	OperationLocks             []*GetLoadBalancerAttributeResponseBodyOperationLocks          `json:"OperationLocks,omitempty" xml:"OperationLocks,omitempty" type:"Repeated"`
-	RegionId                   *string                                                        `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RequestId                  *string                                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ResourceGroupId            *string                                                        `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	VpcId                      *string                                                        `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	ZoneMappings               []*GetLoadBalancerAttributeResponseBodyZoneMappings            `json:"ZoneMappings,omitempty" xml:"ZoneMappings,omitempty" type:"Repeated"`
+	AddressIpVersion             *string                                                           `json:"AddressIpVersion,omitempty" xml:"AddressIpVersion,omitempty"`
+	AddressType                  *string                                                           `json:"AddressType,omitempty" xml:"AddressType,omitempty"`
+	BandwidthPackageId           *string                                                           `json:"BandwidthPackageId,omitempty" xml:"BandwidthPackageId,omitempty"`
+	Cps                          *int32                                                            `json:"Cps,omitempty" xml:"Cps,omitempty"`
+	CreateTime                   *string                                                           `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CrossZoneEnabled             *bool                                                             `json:"CrossZoneEnabled,omitempty" xml:"CrossZoneEnabled,omitempty"`
+	DNSName                      *string                                                           `json:"DNSName,omitempty" xml:"DNSName,omitempty"`
+	DeletionProtectionConfig     *GetLoadBalancerAttributeResponseBodyDeletionProtectionConfig     `json:"DeletionProtectionConfig,omitempty" xml:"DeletionProtectionConfig,omitempty" type:"Struct"`
+	Ipv6AddressType              *string                                                           `json:"Ipv6AddressType,omitempty" xml:"Ipv6AddressType,omitempty"`
+	LoadBalancerBillingConfig    *GetLoadBalancerAttributeResponseBodyLoadBalancerBillingConfig    `json:"LoadBalancerBillingConfig,omitempty" xml:"LoadBalancerBillingConfig,omitempty" type:"Struct"`
+	LoadBalancerBusinessStatus   *string                                                           `json:"LoadBalancerBusinessStatus,omitempty" xml:"LoadBalancerBusinessStatus,omitempty"`
+	LoadBalancerId               *string                                                           `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	LoadBalancerName             *string                                                           `json:"LoadBalancerName,omitempty" xml:"LoadBalancerName,omitempty"`
+	LoadBalancerStatus           *string                                                           `json:"LoadBalancerStatus,omitempty" xml:"LoadBalancerStatus,omitempty"`
+	LoadBalancerType             *string                                                           `json:"LoadBalancerType,omitempty" xml:"LoadBalancerType,omitempty"`
+	ModificationProtectionConfig *GetLoadBalancerAttributeResponseBodyModificationProtectionConfig `json:"ModificationProtectionConfig,omitempty" xml:"ModificationProtectionConfig,omitempty" type:"Struct"`
+	OperationLocks               []*GetLoadBalancerAttributeResponseBodyOperationLocks             `json:"OperationLocks,omitempty" xml:"OperationLocks,omitempty" type:"Repeated"`
+	RegionId                     *string                                                           `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RequestId                    *string                                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResourceGroupId              *string                                                           `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	VpcId                        *string                                                           `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	ZoneMappings                 []*GetLoadBalancerAttributeResponseBodyZoneMappings               `json:"ZoneMappings,omitempty" xml:"ZoneMappings,omitempty" type:"Repeated"`
 }
 
 func (s GetLoadBalancerAttributeResponseBody) String() string {
@@ -2425,6 +2485,11 @@ func (s *GetLoadBalancerAttributeResponseBody) SetDNSName(v string) *GetLoadBala
 	return s
 }
 
+func (s *GetLoadBalancerAttributeResponseBody) SetDeletionProtectionConfig(v *GetLoadBalancerAttributeResponseBodyDeletionProtectionConfig) *GetLoadBalancerAttributeResponseBody {
+	s.DeletionProtectionConfig = v
+	return s
+}
+
 func (s *GetLoadBalancerAttributeResponseBody) SetIpv6AddressType(v string) *GetLoadBalancerAttributeResponseBody {
 	s.Ipv6AddressType = &v
 	return s
@@ -2460,6 +2525,11 @@ func (s *GetLoadBalancerAttributeResponseBody) SetLoadBalancerType(v string) *Ge
 	return s
 }
 
+func (s *GetLoadBalancerAttributeResponseBody) SetModificationProtectionConfig(v *GetLoadBalancerAttributeResponseBodyModificationProtectionConfig) *GetLoadBalancerAttributeResponseBody {
+	s.ModificationProtectionConfig = v
+	return s
+}
+
 func (s *GetLoadBalancerAttributeResponseBody) SetOperationLocks(v []*GetLoadBalancerAttributeResponseBodyOperationLocks) *GetLoadBalancerAttributeResponseBody {
 	s.OperationLocks = v
 	return s
@@ -2490,6 +2560,35 @@ func (s *GetLoadBalancerAttributeResponseBody) SetZoneMappings(v []*GetLoadBalan
 	return s
 }
 
+type GetLoadBalancerAttributeResponseBodyDeletionProtectionConfig struct {
+	Enabled     *bool   `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	EnabledTime *string `json:"EnabledTime,omitempty" xml:"EnabledTime,omitempty"`
+	Reason      *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
+}
+
+func (s GetLoadBalancerAttributeResponseBodyDeletionProtectionConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLoadBalancerAttributeResponseBodyDeletionProtectionConfig) GoString() string {
+	return s.String()
+}
+
+func (s *GetLoadBalancerAttributeResponseBodyDeletionProtectionConfig) SetEnabled(v bool) *GetLoadBalancerAttributeResponseBodyDeletionProtectionConfig {
+	s.Enabled = &v
+	return s
+}
+
+func (s *GetLoadBalancerAttributeResponseBodyDeletionProtectionConfig) SetEnabledTime(v string) *GetLoadBalancerAttributeResponseBodyDeletionProtectionConfig {
+	s.EnabledTime = &v
+	return s
+}
+
+func (s *GetLoadBalancerAttributeResponseBodyDeletionProtectionConfig) SetReason(v string) *GetLoadBalancerAttributeResponseBodyDeletionProtectionConfig {
+	s.Reason = &v
+	return s
+}
+
 type GetLoadBalancerAttributeResponseBodyLoadBalancerBillingConfig struct {
 	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
 }
@@ -2504,6 +2603,35 @@ func (s GetLoadBalancerAttributeResponseBodyLoadBalancerBillingConfig) GoString(
 
 func (s *GetLoadBalancerAttributeResponseBodyLoadBalancerBillingConfig) SetPayType(v string) *GetLoadBalancerAttributeResponseBodyLoadBalancerBillingConfig {
 	s.PayType = &v
+	return s
+}
+
+type GetLoadBalancerAttributeResponseBodyModificationProtectionConfig struct {
+	EnabledTime *string `json:"EnabledTime,omitempty" xml:"EnabledTime,omitempty"`
+	Reason      *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s GetLoadBalancerAttributeResponseBodyModificationProtectionConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLoadBalancerAttributeResponseBodyModificationProtectionConfig) GoString() string {
+	return s.String()
+}
+
+func (s *GetLoadBalancerAttributeResponseBodyModificationProtectionConfig) SetEnabledTime(v string) *GetLoadBalancerAttributeResponseBodyModificationProtectionConfig {
+	s.EnabledTime = &v
+	return s
+}
+
+func (s *GetLoadBalancerAttributeResponseBodyModificationProtectionConfig) SetReason(v string) *GetLoadBalancerAttributeResponseBodyModificationProtectionConfig {
+	s.Reason = &v
+	return s
+}
+
+func (s *GetLoadBalancerAttributeResponseBodyModificationProtectionConfig) SetStatus(v string) *GetLoadBalancerAttributeResponseBodyModificationProtectionConfig {
+	s.Status = &v
 	return s
 }
 
@@ -3172,26 +3300,28 @@ func (s *ListLoadBalancersResponseBody) SetTotalCount(v int32) *ListLoadBalancer
 }
 
 type ListLoadBalancersResponseBodyLoadBalancers struct {
-	AddressIpVersion           *string                                                              `json:"AddressIpVersion,omitempty" xml:"AddressIpVersion,omitempty"`
-	AddressType                *string                                                              `json:"AddressType,omitempty" xml:"AddressType,omitempty"`
-	BandwidthPackageId         *string                                                              `json:"BandwidthPackageId,omitempty" xml:"BandwidthPackageId,omitempty"`
-	CreateTime                 *string                                                              `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	CrossZoneEnabled           *bool                                                                `json:"CrossZoneEnabled,omitempty" xml:"CrossZoneEnabled,omitempty"`
-	DNSName                    *string                                                              `json:"DNSName,omitempty" xml:"DNSName,omitempty"`
-	Ipv6AddressType            *string                                                              `json:"Ipv6AddressType,omitempty" xml:"Ipv6AddressType,omitempty"`
-	LoadBalancerBillingConfig  *ListLoadBalancersResponseBodyLoadBalancersLoadBalancerBillingConfig `json:"LoadBalancerBillingConfig,omitempty" xml:"LoadBalancerBillingConfig,omitempty" type:"Struct"`
-	LoadBalancerBusinessStatus *string                                                              `json:"LoadBalancerBusinessStatus,omitempty" xml:"LoadBalancerBusinessStatus,omitempty"`
-	LoadBalancerId             *string                                                              `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
-	LoadBalancerName           *string                                                              `json:"LoadBalancerName,omitempty" xml:"LoadBalancerName,omitempty"`
-	LoadBalancerStatus         *string                                                              `json:"LoadBalancerStatus,omitempty" xml:"LoadBalancerStatus,omitempty"`
-	LoadBalancerType           *string                                                              `json:"LoadBalancerType,omitempty" xml:"LoadBalancerType,omitempty"`
-	OperationLocks             []*ListLoadBalancersResponseBodyLoadBalancersOperationLocks          `json:"OperationLocks,omitempty" xml:"OperationLocks,omitempty" type:"Repeated"`
-	RegionId                   *string                                                              `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceGroupId            *string                                                              `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	SecurityGroupIds           []*string                                                            `json:"SecurityGroupIds,omitempty" xml:"SecurityGroupIds,omitempty" type:"Repeated"`
-	Tags                       []*ListLoadBalancersResponseBodyLoadBalancersTags                    `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	VpcId                      *string                                                              `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	ZoneMappings               []*ListLoadBalancersResponseBodyLoadBalancersZoneMappings            `json:"ZoneMappings,omitempty" xml:"ZoneMappings,omitempty" type:"Repeated"`
+	AddressIpVersion             *string                                                                 `json:"AddressIpVersion,omitempty" xml:"AddressIpVersion,omitempty"`
+	AddressType                  *string                                                                 `json:"AddressType,omitempty" xml:"AddressType,omitempty"`
+	BandwidthPackageId           *string                                                                 `json:"BandwidthPackageId,omitempty" xml:"BandwidthPackageId,omitempty"`
+	CreateTime                   *string                                                                 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CrossZoneEnabled             *bool                                                                   `json:"CrossZoneEnabled,omitempty" xml:"CrossZoneEnabled,omitempty"`
+	DNSName                      *string                                                                 `json:"DNSName,omitempty" xml:"DNSName,omitempty"`
+	DeletionProtectionConfig     *ListLoadBalancersResponseBodyLoadBalancersDeletionProtectionConfig     `json:"DeletionProtectionConfig,omitempty" xml:"DeletionProtectionConfig,omitempty" type:"Struct"`
+	Ipv6AddressType              *string                                                                 `json:"Ipv6AddressType,omitempty" xml:"Ipv6AddressType,omitempty"`
+	LoadBalancerBillingConfig    *ListLoadBalancersResponseBodyLoadBalancersLoadBalancerBillingConfig    `json:"LoadBalancerBillingConfig,omitempty" xml:"LoadBalancerBillingConfig,omitempty" type:"Struct"`
+	LoadBalancerBusinessStatus   *string                                                                 `json:"LoadBalancerBusinessStatus,omitempty" xml:"LoadBalancerBusinessStatus,omitempty"`
+	LoadBalancerId               *string                                                                 `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	LoadBalancerName             *string                                                                 `json:"LoadBalancerName,omitempty" xml:"LoadBalancerName,omitempty"`
+	LoadBalancerStatus           *string                                                                 `json:"LoadBalancerStatus,omitempty" xml:"LoadBalancerStatus,omitempty"`
+	LoadBalancerType             *string                                                                 `json:"LoadBalancerType,omitempty" xml:"LoadBalancerType,omitempty"`
+	ModificationProtectionConfig *ListLoadBalancersResponseBodyLoadBalancersModificationProtectionConfig `json:"ModificationProtectionConfig,omitempty" xml:"ModificationProtectionConfig,omitempty" type:"Struct"`
+	OperationLocks               []*ListLoadBalancersResponseBodyLoadBalancersOperationLocks             `json:"OperationLocks,omitempty" xml:"OperationLocks,omitempty" type:"Repeated"`
+	RegionId                     *string                                                                 `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId              *string                                                                 `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	SecurityGroupIds             []*string                                                               `json:"SecurityGroupIds,omitempty" xml:"SecurityGroupIds,omitempty" type:"Repeated"`
+	Tags                         []*ListLoadBalancersResponseBodyLoadBalancersTags                       `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	VpcId                        *string                                                                 `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	ZoneMappings                 []*ListLoadBalancersResponseBodyLoadBalancersZoneMappings               `json:"ZoneMappings,omitempty" xml:"ZoneMappings,omitempty" type:"Repeated"`
 }
 
 func (s ListLoadBalancersResponseBodyLoadBalancers) String() string {
@@ -3232,6 +3362,11 @@ func (s *ListLoadBalancersResponseBodyLoadBalancers) SetDNSName(v string) *ListL
 	return s
 }
 
+func (s *ListLoadBalancersResponseBodyLoadBalancers) SetDeletionProtectionConfig(v *ListLoadBalancersResponseBodyLoadBalancersDeletionProtectionConfig) *ListLoadBalancersResponseBodyLoadBalancers {
+	s.DeletionProtectionConfig = v
+	return s
+}
+
 func (s *ListLoadBalancersResponseBodyLoadBalancers) SetIpv6AddressType(v string) *ListLoadBalancersResponseBodyLoadBalancers {
 	s.Ipv6AddressType = &v
 	return s
@@ -3264,6 +3399,11 @@ func (s *ListLoadBalancersResponseBodyLoadBalancers) SetLoadBalancerStatus(v str
 
 func (s *ListLoadBalancersResponseBodyLoadBalancers) SetLoadBalancerType(v string) *ListLoadBalancersResponseBodyLoadBalancers {
 	s.LoadBalancerType = &v
+	return s
+}
+
+func (s *ListLoadBalancersResponseBodyLoadBalancers) SetModificationProtectionConfig(v *ListLoadBalancersResponseBodyLoadBalancersModificationProtectionConfig) *ListLoadBalancersResponseBodyLoadBalancers {
+	s.ModificationProtectionConfig = v
 	return s
 }
 
@@ -3302,6 +3442,35 @@ func (s *ListLoadBalancersResponseBodyLoadBalancers) SetZoneMappings(v []*ListLo
 	return s
 }
 
+type ListLoadBalancersResponseBodyLoadBalancersDeletionProtectionConfig struct {
+	Enabled     *bool   `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	EnabledTime *string `json:"EnabledTime,omitempty" xml:"EnabledTime,omitempty"`
+	Reason      *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
+}
+
+func (s ListLoadBalancersResponseBodyLoadBalancersDeletionProtectionConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListLoadBalancersResponseBodyLoadBalancersDeletionProtectionConfig) GoString() string {
+	return s.String()
+}
+
+func (s *ListLoadBalancersResponseBodyLoadBalancersDeletionProtectionConfig) SetEnabled(v bool) *ListLoadBalancersResponseBodyLoadBalancersDeletionProtectionConfig {
+	s.Enabled = &v
+	return s
+}
+
+func (s *ListLoadBalancersResponseBodyLoadBalancersDeletionProtectionConfig) SetEnabledTime(v string) *ListLoadBalancersResponseBodyLoadBalancersDeletionProtectionConfig {
+	s.EnabledTime = &v
+	return s
+}
+
+func (s *ListLoadBalancersResponseBodyLoadBalancersDeletionProtectionConfig) SetReason(v string) *ListLoadBalancersResponseBodyLoadBalancersDeletionProtectionConfig {
+	s.Reason = &v
+	return s
+}
+
 type ListLoadBalancersResponseBodyLoadBalancersLoadBalancerBillingConfig struct {
 	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
 }
@@ -3316,6 +3485,35 @@ func (s ListLoadBalancersResponseBodyLoadBalancersLoadBalancerBillingConfig) GoS
 
 func (s *ListLoadBalancersResponseBodyLoadBalancersLoadBalancerBillingConfig) SetPayType(v string) *ListLoadBalancersResponseBodyLoadBalancersLoadBalancerBillingConfig {
 	s.PayType = &v
+	return s
+}
+
+type ListLoadBalancersResponseBodyLoadBalancersModificationProtectionConfig struct {
+	EnabledTime *string `json:"EnabledTime,omitempty" xml:"EnabledTime,omitempty"`
+	Reason      *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s ListLoadBalancersResponseBodyLoadBalancersModificationProtectionConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListLoadBalancersResponseBodyLoadBalancersModificationProtectionConfig) GoString() string {
+	return s.String()
+}
+
+func (s *ListLoadBalancersResponseBodyLoadBalancersModificationProtectionConfig) SetEnabledTime(v string) *ListLoadBalancersResponseBodyLoadBalancersModificationProtectionConfig {
+	s.EnabledTime = &v
+	return s
+}
+
+func (s *ListLoadBalancersResponseBodyLoadBalancersModificationProtectionConfig) SetReason(v string) *ListLoadBalancersResponseBodyLoadBalancersModificationProtectionConfig {
+	s.Reason = &v
+	return s
+}
+
+func (s *ListLoadBalancersResponseBodyLoadBalancersModificationProtectionConfig) SetStatus(v string) *ListLoadBalancersResponseBodyLoadBalancersModificationProtectionConfig {
+	s.Status = &v
 	return s
 }
 
@@ -5654,6 +5852,111 @@ func (s *UpdateLoadBalancerAttributeResponse) SetBody(v *UpdateLoadBalancerAttri
 	return s
 }
 
+type UpdateLoadBalancerProtectionRequest struct {
+	ClientToken                  *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DeletionProtectionEnabled    *bool   `json:"DeletionProtectionEnabled,omitempty" xml:"DeletionProtectionEnabled,omitempty"`
+	DeletionProtectionReason     *string `json:"DeletionProtectionReason,omitempty" xml:"DeletionProtectionReason,omitempty"`
+	DryRun                       *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	LoadBalancerId               *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	ModificationProtectionReason *string `json:"ModificationProtectionReason,omitempty" xml:"ModificationProtectionReason,omitempty"`
+	ModificationProtectionStatus *string `json:"ModificationProtectionStatus,omitempty" xml:"ModificationProtectionStatus,omitempty"`
+	RegionId                     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s UpdateLoadBalancerProtectionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateLoadBalancerProtectionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateLoadBalancerProtectionRequest) SetClientToken(v string) *UpdateLoadBalancerProtectionRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *UpdateLoadBalancerProtectionRequest) SetDeletionProtectionEnabled(v bool) *UpdateLoadBalancerProtectionRequest {
+	s.DeletionProtectionEnabled = &v
+	return s
+}
+
+func (s *UpdateLoadBalancerProtectionRequest) SetDeletionProtectionReason(v string) *UpdateLoadBalancerProtectionRequest {
+	s.DeletionProtectionReason = &v
+	return s
+}
+
+func (s *UpdateLoadBalancerProtectionRequest) SetDryRun(v bool) *UpdateLoadBalancerProtectionRequest {
+	s.DryRun = &v
+	return s
+}
+
+func (s *UpdateLoadBalancerProtectionRequest) SetLoadBalancerId(v string) *UpdateLoadBalancerProtectionRequest {
+	s.LoadBalancerId = &v
+	return s
+}
+
+func (s *UpdateLoadBalancerProtectionRequest) SetModificationProtectionReason(v string) *UpdateLoadBalancerProtectionRequest {
+	s.ModificationProtectionReason = &v
+	return s
+}
+
+func (s *UpdateLoadBalancerProtectionRequest) SetModificationProtectionStatus(v string) *UpdateLoadBalancerProtectionRequest {
+	s.ModificationProtectionStatus = &v
+	return s
+}
+
+func (s *UpdateLoadBalancerProtectionRequest) SetRegionId(v string) *UpdateLoadBalancerProtectionRequest {
+	s.RegionId = &v
+	return s
+}
+
+type UpdateLoadBalancerProtectionResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateLoadBalancerProtectionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateLoadBalancerProtectionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateLoadBalancerProtectionResponseBody) SetRequestId(v string) *UpdateLoadBalancerProtectionResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateLoadBalancerProtectionResponse struct {
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateLoadBalancerProtectionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateLoadBalancerProtectionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateLoadBalancerProtectionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateLoadBalancerProtectionResponse) SetHeaders(v map[string]*string) *UpdateLoadBalancerProtectionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateLoadBalancerProtectionResponse) SetStatusCode(v int32) *UpdateLoadBalancerProtectionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateLoadBalancerProtectionResponse) SetBody(v *UpdateLoadBalancerProtectionResponseBody) *UpdateLoadBalancerProtectionResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateLoadBalancerZonesRequest struct {
 	ClientToken    *string                                       `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	DryRun         *bool                                         `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
@@ -6561,12 +6864,16 @@ func (client *Client) CreateLoadBalancerWithOptions(request *CreateLoadBalancerR
 		body["ClientToken"] = request.ClientToken
 	}
 
+	bodyFlat := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DeletionProtectionConfig)) {
+		bodyFlat["DeletionProtectionConfig"] = request.DeletionProtectionConfig
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
 		body["DryRun"] = request.DryRun
 	}
 
-	bodyFlat := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.LoadBalancerBillingConfig))) {
+	if !tea.BoolValue(util.IsUnset(request.LoadBalancerBillingConfig)) {
 		bodyFlat["LoadBalancerBillingConfig"] = request.LoadBalancerBillingConfig
 	}
 
@@ -6576,6 +6883,10 @@ func (client *Client) CreateLoadBalancerWithOptions(request *CreateLoadBalancerR
 
 	if !tea.BoolValue(util.IsUnset(request.LoadBalancerType)) {
 		body["LoadBalancerType"] = request.LoadBalancerType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ModificationProtectionConfig)) {
+		bodyFlat["ModificationProtectionConfig"] = request.ModificationProtectionConfig
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
@@ -6729,7 +7040,7 @@ func (client *Client) CreateServerGroupWithOptions(request *CreateServerGroupReq
 	}
 
 	bodyFlat := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.HealthCheckConfig))) {
+	if !tea.BoolValue(util.IsUnset(request.HealthCheckConfig)) {
 		bodyFlat["HealthCheckConfig"] = request.HealthCheckConfig
 	}
 
@@ -8660,6 +8971,78 @@ func (client *Client) UpdateLoadBalancerAttribute(request *UpdateLoadBalancerAtt
 	return _result, _err
 }
 
+func (client *Client) UpdateLoadBalancerProtectionWithOptions(request *UpdateLoadBalancerProtectionRequest, runtime *util.RuntimeOptions) (_result *UpdateLoadBalancerProtectionResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		body["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DeletionProtectionEnabled)) {
+		body["DeletionProtectionEnabled"] = request.DeletionProtectionEnabled
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DeletionProtectionReason)) {
+		body["DeletionProtectionReason"] = request.DeletionProtectionReason
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		body["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LoadBalancerId)) {
+		body["LoadBalancerId"] = request.LoadBalancerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ModificationProtectionReason)) {
+		body["ModificationProtectionReason"] = request.ModificationProtectionReason
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ModificationProtectionStatus)) {
+		body["ModificationProtectionStatus"] = request.ModificationProtectionStatus
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		body["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateLoadBalancerProtection"),
+		Version:     tea.String("2022-04-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateLoadBalancerProtectionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateLoadBalancerProtection(request *UpdateLoadBalancerProtectionRequest) (_result *UpdateLoadBalancerProtectionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateLoadBalancerProtectionResponse{}
+	_body, _err := client.UpdateLoadBalancerProtectionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) UpdateLoadBalancerZonesWithOptions(request *UpdateLoadBalancerZonesRequest, runtime *util.RuntimeOptions) (_result *UpdateLoadBalancerZonesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8811,7 +9194,7 @@ func (client *Client) UpdateServerGroupAttributeWithOptions(request *UpdateServe
 	}
 
 	bodyFlat := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.HealthCheckConfig))) {
+	if !tea.BoolValue(util.IsUnset(request.HealthCheckConfig)) {
 		bodyFlat["HealthCheckConfig"] = request.HealthCheckConfig
 	}
 
