@@ -4202,6 +4202,7 @@ type DescribeInstancesResponseBodyInstances struct {
 	InstanceClass      *string                                         `json:"InstanceClass,omitempty" xml:"InstanceClass,omitempty"`
 	InstanceId         *string                                         `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	InstanceName       *string                                         `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	InstanceType       *string                                         `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
 	MaintainTime       *string                                         `json:"MaintainTime,omitempty" xml:"MaintainTime,omitempty"`
 	Mem                *int64                                          `json:"Mem,omitempty" xml:"Mem,omitempty"`
 	PayType            *string                                         `json:"PayType,omitempty" xml:"PayType,omitempty"`
@@ -4290,6 +4291,11 @@ func (s *DescribeInstancesResponseBodyInstances) SetInstanceId(v string) *Descri
 
 func (s *DescribeInstancesResponseBodyInstances) SetInstanceName(v string) *DescribeInstancesResponseBodyInstances {
 	s.InstanceName = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstances) SetInstanceType(v string) *DescribeInstancesResponseBodyInstances {
+	s.InstanceType = &v
 	return s
 }
 
@@ -7576,14 +7582,14 @@ type DescribeSlowSQLHistoryListResponseBodySlowSQLHistoryListList struct {
 	ExecuteTime          *float64 `json:"ExecuteTime,omitempty" xml:"ExecuteTime,omitempty"`
 	Executions           *float64 `json:"Executions,omitempty" xml:"Executions,omitempty"`
 	FailTimes            *float64 `json:"FailTimes,omitempty" xml:"FailTimes,omitempty"`
-	GetplanTime          *float64 `json:"GetplanTime,omitempty" xml:"GetplanTime,omitempty"`
+	GetPlanTime          *float64 `json:"GetPlanTime,omitempty" xml:"GetPlanTime,omitempty"`
 	IOWaitTime           *float64 `json:"IOWaitTime,omitempty" xml:"IOWaitTime,omitempty"`
 	LogicalRead          *float64 `json:"LogicalRead,omitempty" xml:"LogicalRead,omitempty"`
 	MaxCpuTime           *float64 `json:"MaxCpuTime,omitempty" xml:"MaxCpuTime,omitempty"`
 	MaxElapsedTime       *float64 `json:"MaxElapsedTime,omitempty" xml:"MaxElapsedTime,omitempty"`
 	MemstoreReadRowCount *float64 `json:"MemstoreReadRowCount,omitempty" xml:"MemstoreReadRowCount,omitempty"`
 	MissPlans            *float64 `json:"MissPlans,omitempty" xml:"MissPlans,omitempty"`
-	NetwaitTime          *float64 `json:"NetwaitTime,omitempty" xml:"NetwaitTime,omitempty"`
+	NetWaitTime          *float64 `json:"NetWaitTime,omitempty" xml:"NetWaitTime,omitempty"`
 	NodeIp               *string  `json:"NodeIp,omitempty" xml:"NodeIp,omitempty"`
 	QueueTime            *float64 `json:"QueueTime,omitempty" xml:"QueueTime,omitempty"`
 	RPCCount             *float64 `json:"RPCCount,omitempty" xml:"RPCCount,omitempty"`
@@ -7698,8 +7704,8 @@ func (s *DescribeSlowSQLHistoryListResponseBodySlowSQLHistoryListList) SetFailTi
 	return s
 }
 
-func (s *DescribeSlowSQLHistoryListResponseBodySlowSQLHistoryListList) SetGetplanTime(v float64) *DescribeSlowSQLHistoryListResponseBodySlowSQLHistoryListList {
-	s.GetplanTime = &v
+func (s *DescribeSlowSQLHistoryListResponseBodySlowSQLHistoryListList) SetGetPlanTime(v float64) *DescribeSlowSQLHistoryListResponseBodySlowSQLHistoryListList {
+	s.GetPlanTime = &v
 	return s
 }
 
@@ -7733,8 +7739,8 @@ func (s *DescribeSlowSQLHistoryListResponseBodySlowSQLHistoryListList) SetMissPl
 	return s
 }
 
-func (s *DescribeSlowSQLHistoryListResponseBodySlowSQLHistoryListList) SetNetwaitTime(v float64) *DescribeSlowSQLHistoryListResponseBodySlowSQLHistoryListList {
-	s.NetwaitTime = &v
+func (s *DescribeSlowSQLHistoryListResponseBodySlowSQLHistoryListList) SetNetWaitTime(v float64) *DescribeSlowSQLHistoryListResponseBodySlowSQLHistoryListList {
+	s.NetWaitTime = &v
 	return s
 }
 
@@ -8395,6 +8401,7 @@ func (s *DescribeTenantResponseBody) SetTenant(v *DescribeTenantResponseBodyTena
 }
 
 type DescribeTenantResponseBodyTenant struct {
+	AvailableZones               []*string                                            `json:"AvailableZones,omitempty" xml:"AvailableZones,omitempty" type:"Repeated"`
 	Charset                      *string                                              `json:"Charset,omitempty" xml:"Charset,omitempty"`
 	ClogServiceStatus            *string                                              `json:"ClogServiceStatus,omitempty" xml:"ClogServiceStatus,omitempty"`
 	Collation                    *string                                              `json:"Collation,omitempty" xml:"Collation,omitempty"`
@@ -8402,11 +8409,16 @@ type DescribeTenantResponseBodyTenant struct {
 	DeployMode                   *string                                              `json:"DeployMode,omitempty" xml:"DeployMode,omitempty"`
 	DeployType                   *string                                              `json:"DeployType,omitempty" xml:"DeployType,omitempty"`
 	Description                  *string                                              `json:"Description,omitempty" xml:"Description,omitempty"`
+	DiskType                     *string                                              `json:"DiskType,omitempty" xml:"DiskType,omitempty"`
 	EnableClogService            *bool                                                `json:"EnableClogService,omitempty" xml:"EnableClogService,omitempty"`
 	EnableInternetAddressService *bool                                                `json:"EnableInternetAddressService,omitempty" xml:"EnableInternetAddressService,omitempty"`
+	EnableReadWriteSplit         *bool                                                `json:"EnableReadWriteSplit,omitempty" xml:"EnableReadWriteSplit,omitempty"`
+	InstanceType                 *string                                              `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
 	MasterIntranetAddressZone    *string                                              `json:"MasterIntranetAddressZone,omitempty" xml:"MasterIntranetAddressZone,omitempty"`
+	PayType                      *string                                              `json:"PayType,omitempty" xml:"PayType,omitempty"`
 	PrimaryZone                  *string                                              `json:"PrimaryZone,omitempty" xml:"PrimaryZone,omitempty"`
 	PrimaryZoneDeployType        *string                                              `json:"PrimaryZoneDeployType,omitempty" xml:"PrimaryZoneDeployType,omitempty"`
+	Series                       *string                                              `json:"Series,omitempty" xml:"Series,omitempty"`
 	Status                       *string                                              `json:"Status,omitempty" xml:"Status,omitempty"`
 	TenantConnections            []*DescribeTenantResponseBodyTenantTenantConnections `json:"TenantConnections,omitempty" xml:"TenantConnections,omitempty" type:"Repeated"`
 	TenantId                     *string                                              `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
@@ -8423,6 +8435,11 @@ func (s DescribeTenantResponseBodyTenant) String() string {
 
 func (s DescribeTenantResponseBodyTenant) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeTenantResponseBodyTenant) SetAvailableZones(v []*string) *DescribeTenantResponseBodyTenant {
+	s.AvailableZones = v
+	return s
 }
 
 func (s *DescribeTenantResponseBodyTenant) SetCharset(v string) *DescribeTenantResponseBodyTenant {
@@ -8460,6 +8477,11 @@ func (s *DescribeTenantResponseBodyTenant) SetDescription(v string) *DescribeTen
 	return s
 }
 
+func (s *DescribeTenantResponseBodyTenant) SetDiskType(v string) *DescribeTenantResponseBodyTenant {
+	s.DiskType = &v
+	return s
+}
+
 func (s *DescribeTenantResponseBodyTenant) SetEnableClogService(v bool) *DescribeTenantResponseBodyTenant {
 	s.EnableClogService = &v
 	return s
@@ -8470,8 +8492,23 @@ func (s *DescribeTenantResponseBodyTenant) SetEnableInternetAddressService(v boo
 	return s
 }
 
+func (s *DescribeTenantResponseBodyTenant) SetEnableReadWriteSplit(v bool) *DescribeTenantResponseBodyTenant {
+	s.EnableReadWriteSplit = &v
+	return s
+}
+
+func (s *DescribeTenantResponseBodyTenant) SetInstanceType(v string) *DescribeTenantResponseBodyTenant {
+	s.InstanceType = &v
+	return s
+}
+
 func (s *DescribeTenantResponseBodyTenant) SetMasterIntranetAddressZone(v string) *DescribeTenantResponseBodyTenant {
 	s.MasterIntranetAddressZone = &v
+	return s
+}
+
+func (s *DescribeTenantResponseBodyTenant) SetPayType(v string) *DescribeTenantResponseBodyTenant {
+	s.PayType = &v
 	return s
 }
 
@@ -8482,6 +8519,11 @@ func (s *DescribeTenantResponseBodyTenant) SetPrimaryZone(v string) *DescribeTen
 
 func (s *DescribeTenantResponseBodyTenant) SetPrimaryZoneDeployType(v string) *DescribeTenantResponseBodyTenant {
 	s.PrimaryZoneDeployType = &v
+	return s
+}
+
+func (s *DescribeTenantResponseBodyTenant) SetSeries(v string) *DescribeTenantResponseBodyTenant {
+	s.Series = &v
 	return s
 }
 
@@ -8526,6 +8568,7 @@ func (s *DescribeTenantResponseBodyTenant) SetVpcId(v string) *DescribeTenantRes
 }
 
 type DescribeTenantResponseBodyTenantTenantConnections struct {
+	AddressType                 *string   `json:"AddressType,omitempty" xml:"AddressType,omitempty"`
 	ConnectionRole              *string   `json:"ConnectionRole,omitempty" xml:"ConnectionRole,omitempty"`
 	ConnectionZones             []*string `json:"ConnectionZones,omitempty" xml:"ConnectionZones,omitempty" type:"Repeated"`
 	InternetAddress             *string   `json:"InternetAddress,omitempty" xml:"InternetAddress,omitempty"`
@@ -8536,6 +8579,7 @@ type DescribeTenantResponseBodyTenantTenantConnections struct {
 	IntranetAddressSlaveZoneId  *string   `json:"IntranetAddressSlaveZoneId,omitempty" xml:"IntranetAddressSlaveZoneId,omitempty"`
 	IntranetAddressStatus       *string   `json:"IntranetAddressStatus,omitempty" xml:"IntranetAddressStatus,omitempty"`
 	IntranetPort                *int32    `json:"IntranetPort,omitempty" xml:"IntranetPort,omitempty"`
+	TransactionSplit            *bool     `json:"TransactionSplit,omitempty" xml:"TransactionSplit,omitempty"`
 	VSwitchId                   *string   `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 	VpcId                       *string   `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
@@ -8546,6 +8590,11 @@ func (s DescribeTenantResponseBodyTenantTenantConnections) String() string {
 
 func (s DescribeTenantResponseBodyTenantTenantConnections) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeTenantResponseBodyTenantTenantConnections) SetAddressType(v string) *DescribeTenantResponseBodyTenantTenantConnections {
+	s.AddressType = &v
+	return s
 }
 
 func (s *DescribeTenantResponseBodyTenantTenantConnections) SetConnectionRole(v string) *DescribeTenantResponseBodyTenantTenantConnections {
@@ -8595,6 +8644,11 @@ func (s *DescribeTenantResponseBodyTenantTenantConnections) SetIntranetAddressSt
 
 func (s *DescribeTenantResponseBodyTenantTenantConnections) SetIntranetPort(v int32) *DescribeTenantResponseBodyTenantTenantConnections {
 	s.IntranetPort = &v
+	return s
+}
+
+func (s *DescribeTenantResponseBodyTenantTenantConnections) SetTransactionSplit(v bool) *DescribeTenantResponseBodyTenantTenantConnections {
+	s.TransactionSplit = &v
 	return s
 }
 
@@ -13847,24 +13901,24 @@ func (client *Client) CreateOmsOpenAPIProjectWithOptions(tmpReq *CreateOmsOpenAP
 	}
 	request := &CreateOmsOpenAPIProjectShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.DestConfig))) {
-		request.DestConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.DestConfig), tea.String("DestConfig"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.DestConfig)) {
+		request.DestConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DestConfig, tea.String("DestConfig"), tea.String("json"))
 	}
 
 	if !tea.BoolValue(util.IsUnset(tmpReq.LabelIds)) {
 		request.LabelIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.LabelIds, tea.String("LabelIds"), tea.String("json"))
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.SourceConfig))) {
-		request.SourceConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.SourceConfig), tea.String("SourceConfig"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.SourceConfig)) {
+		request.SourceConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SourceConfig, tea.String("SourceConfig"), tea.String("json"))
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.TransferMapping))) {
-		request.TransferMappingShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.TransferMapping), tea.String("TransferMapping"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.TransferMapping)) {
+		request.TransferMappingShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TransferMapping, tea.String("TransferMapping"), tea.String("json"))
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.TransferStepConfig))) {
-		request.TransferStepConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.TransferStepConfig), tea.String("TransferStepConfig"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.TransferStepConfig)) {
+		request.TransferStepConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TransferStepConfig, tea.String("TransferStepConfig"), tea.String("json"))
 	}
 
 	body := map[string]interface{}{}
