@@ -8853,10 +8853,10 @@ func (s *EstimatedPriceQueryResponseBodyModuleTrafficFee) SetSuccess(v bool) *Es
 }
 
 type EstimatedPriceQueryResponseBodyModuleTrafficFeeBtripRoutes struct {
-	ArrDate        *string                                                                  `json:"arr_date,omitempty" xml:"arr_date,omitempty"`
+	ArrDate        *int64                                                                   `json:"arr_date,omitempty" xml:"arr_date,omitempty"`
 	BtripType      *int32                                                                   `json:"btrip_type,omitempty" xml:"btrip_type,omitempty"`
 	Cheapest       *EstimatedPriceQueryResponseBodyModuleTrafficFeeBtripRoutesCheapest      `json:"cheapest,omitempty" xml:"cheapest,omitempty" type:"Struct"`
-	DepDate        *string                                                                  `json:"dep_date,omitempty" xml:"dep_date,omitempty"`
+	DepDate        *int64                                                                   `json:"dep_date,omitempty" xml:"dep_date,omitempty"`
 	DestCity       *string                                                                  `json:"dest_city,omitempty" xml:"dest_city,omitempty"`
 	ErrMsg         *string                                                                  `json:"err_msg,omitempty" xml:"err_msg,omitempty"`
 	ItineraryId    *string                                                                  `json:"itinerary_id,omitempty" xml:"itinerary_id,omitempty"`
@@ -8874,7 +8874,7 @@ func (s EstimatedPriceQueryResponseBodyModuleTrafficFeeBtripRoutes) GoString() s
 	return s.String()
 }
 
-func (s *EstimatedPriceQueryResponseBodyModuleTrafficFeeBtripRoutes) SetArrDate(v string) *EstimatedPriceQueryResponseBodyModuleTrafficFeeBtripRoutes {
+func (s *EstimatedPriceQueryResponseBodyModuleTrafficFeeBtripRoutes) SetArrDate(v int64) *EstimatedPriceQueryResponseBodyModuleTrafficFeeBtripRoutes {
 	s.ArrDate = &v
 	return s
 }
@@ -8889,7 +8889,7 @@ func (s *EstimatedPriceQueryResponseBodyModuleTrafficFeeBtripRoutes) SetCheapest
 	return s
 }
 
-func (s *EstimatedPriceQueryResponseBodyModuleTrafficFeeBtripRoutes) SetDepDate(v string) *EstimatedPriceQueryResponseBodyModuleTrafficFeeBtripRoutes {
+func (s *EstimatedPriceQueryResponseBodyModuleTrafficFeeBtripRoutes) SetDepDate(v int64) *EstimatedPriceQueryResponseBodyModuleTrafficFeeBtripRoutes {
 	s.DepDate = &v
 	return s
 }
@@ -15550,6 +15550,259 @@ func (s *ProjectModifyResponse) SetBody(v *ProjectModifyResponseBody) *ProjectMo
 	return s
 }
 
+type SyncSingleUserHeaders struct {
+	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsBtripSoCorpToken *string            `json:"x-acs-btrip-so-corp-token,omitempty" xml:"x-acs-btrip-so-corp-token,omitempty"`
+}
+
+func (s SyncSingleUserHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SyncSingleUserHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *SyncSingleUserHeaders) SetCommonHeaders(v map[string]*string) *SyncSingleUserHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *SyncSingleUserHeaders) SetXAcsBtripSoCorpToken(v string) *SyncSingleUserHeaders {
+	s.XAcsBtripSoCorpToken = &v
+	return s
+}
+
+type SyncSingleUserRequest struct {
+	Email             *string   `json:"email,omitempty" xml:"email,omitempty"`
+	JobNo             *string   `json:"job_no,omitempty" xml:"job_no,omitempty"`
+	LeaveStatus       *int32    `json:"leave_status,omitempty" xml:"leave_status,omitempty"`
+	ManagerUserId     *string   `json:"manager_user_id,omitempty" xml:"manager_user_id,omitempty"`
+	Phone             *string   `json:"phone,omitempty" xml:"phone,omitempty"`
+	Position          *string   `json:"position,omitempty" xml:"position,omitempty"`
+	PositionLevel     *string   `json:"position_level,omitempty" xml:"position_level,omitempty"`
+	RealNameEn        *string   `json:"real_name_en,omitempty" xml:"real_name_en,omitempty"`
+	ThirdDepartIdList []*string `json:"third_depart_id_list,omitempty" xml:"third_depart_id_list,omitempty" type:"Repeated"`
+	UserId            *string   `json:"user_id,omitempty" xml:"user_id,omitempty"`
+	UserName          *string   `json:"user_name,omitempty" xml:"user_name,omitempty"`
+}
+
+func (s SyncSingleUserRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SyncSingleUserRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SyncSingleUserRequest) SetEmail(v string) *SyncSingleUserRequest {
+	s.Email = &v
+	return s
+}
+
+func (s *SyncSingleUserRequest) SetJobNo(v string) *SyncSingleUserRequest {
+	s.JobNo = &v
+	return s
+}
+
+func (s *SyncSingleUserRequest) SetLeaveStatus(v int32) *SyncSingleUserRequest {
+	s.LeaveStatus = &v
+	return s
+}
+
+func (s *SyncSingleUserRequest) SetManagerUserId(v string) *SyncSingleUserRequest {
+	s.ManagerUserId = &v
+	return s
+}
+
+func (s *SyncSingleUserRequest) SetPhone(v string) *SyncSingleUserRequest {
+	s.Phone = &v
+	return s
+}
+
+func (s *SyncSingleUserRequest) SetPosition(v string) *SyncSingleUserRequest {
+	s.Position = &v
+	return s
+}
+
+func (s *SyncSingleUserRequest) SetPositionLevel(v string) *SyncSingleUserRequest {
+	s.PositionLevel = &v
+	return s
+}
+
+func (s *SyncSingleUserRequest) SetRealNameEn(v string) *SyncSingleUserRequest {
+	s.RealNameEn = &v
+	return s
+}
+
+func (s *SyncSingleUserRequest) SetThirdDepartIdList(v []*string) *SyncSingleUserRequest {
+	s.ThirdDepartIdList = v
+	return s
+}
+
+func (s *SyncSingleUserRequest) SetUserId(v string) *SyncSingleUserRequest {
+	s.UserId = &v
+	return s
+}
+
+func (s *SyncSingleUserRequest) SetUserName(v string) *SyncSingleUserRequest {
+	s.UserName = &v
+	return s
+}
+
+type SyncSingleUserShrinkRequest struct {
+	Email                   *string `json:"email,omitempty" xml:"email,omitempty"`
+	JobNo                   *string `json:"job_no,omitempty" xml:"job_no,omitempty"`
+	LeaveStatus             *int32  `json:"leave_status,omitempty" xml:"leave_status,omitempty"`
+	ManagerUserId           *string `json:"manager_user_id,omitempty" xml:"manager_user_id,omitempty"`
+	Phone                   *string `json:"phone,omitempty" xml:"phone,omitempty"`
+	Position                *string `json:"position,omitempty" xml:"position,omitempty"`
+	PositionLevel           *string `json:"position_level,omitempty" xml:"position_level,omitempty"`
+	RealNameEn              *string `json:"real_name_en,omitempty" xml:"real_name_en,omitempty"`
+	ThirdDepartIdListShrink *string `json:"third_depart_id_list,omitempty" xml:"third_depart_id_list,omitempty"`
+	UserId                  *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
+	UserName                *string `json:"user_name,omitempty" xml:"user_name,omitempty"`
+}
+
+func (s SyncSingleUserShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SyncSingleUserShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SyncSingleUserShrinkRequest) SetEmail(v string) *SyncSingleUserShrinkRequest {
+	s.Email = &v
+	return s
+}
+
+func (s *SyncSingleUserShrinkRequest) SetJobNo(v string) *SyncSingleUserShrinkRequest {
+	s.JobNo = &v
+	return s
+}
+
+func (s *SyncSingleUserShrinkRequest) SetLeaveStatus(v int32) *SyncSingleUserShrinkRequest {
+	s.LeaveStatus = &v
+	return s
+}
+
+func (s *SyncSingleUserShrinkRequest) SetManagerUserId(v string) *SyncSingleUserShrinkRequest {
+	s.ManagerUserId = &v
+	return s
+}
+
+func (s *SyncSingleUserShrinkRequest) SetPhone(v string) *SyncSingleUserShrinkRequest {
+	s.Phone = &v
+	return s
+}
+
+func (s *SyncSingleUserShrinkRequest) SetPosition(v string) *SyncSingleUserShrinkRequest {
+	s.Position = &v
+	return s
+}
+
+func (s *SyncSingleUserShrinkRequest) SetPositionLevel(v string) *SyncSingleUserShrinkRequest {
+	s.PositionLevel = &v
+	return s
+}
+
+func (s *SyncSingleUserShrinkRequest) SetRealNameEn(v string) *SyncSingleUserShrinkRequest {
+	s.RealNameEn = &v
+	return s
+}
+
+func (s *SyncSingleUserShrinkRequest) SetThirdDepartIdListShrink(v string) *SyncSingleUserShrinkRequest {
+	s.ThirdDepartIdListShrink = &v
+	return s
+}
+
+func (s *SyncSingleUserShrinkRequest) SetUserId(v string) *SyncSingleUserShrinkRequest {
+	s.UserId = &v
+	return s
+}
+
+func (s *SyncSingleUserShrinkRequest) SetUserName(v string) *SyncSingleUserShrinkRequest {
+	s.UserName = &v
+	return s
+}
+
+type SyncSingleUserResponseBody struct {
+	Code      *string `json:"code,omitempty" xml:"code,omitempty"`
+	Message   *string `json:"message,omitempty" xml:"message,omitempty"`
+	Module    *string `json:"module,omitempty" xml:"module,omitempty"`
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success   *bool   `json:"success,omitempty" xml:"success,omitempty"`
+	TraceId   *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
+}
+
+func (s SyncSingleUserResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SyncSingleUserResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SyncSingleUserResponseBody) SetCode(v string) *SyncSingleUserResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *SyncSingleUserResponseBody) SetMessage(v string) *SyncSingleUserResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *SyncSingleUserResponseBody) SetModule(v string) *SyncSingleUserResponseBody {
+	s.Module = &v
+	return s
+}
+
+func (s *SyncSingleUserResponseBody) SetRequestId(v string) *SyncSingleUserResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SyncSingleUserResponseBody) SetSuccess(v bool) *SyncSingleUserResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *SyncSingleUserResponseBody) SetTraceId(v string) *SyncSingleUserResponseBody {
+	s.TraceId = &v
+	return s
+}
+
+type SyncSingleUserResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SyncSingleUserResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SyncSingleUserResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SyncSingleUserResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SyncSingleUserResponse) SetHeaders(v map[string]*string) *SyncSingleUserResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SyncSingleUserResponse) SetStatusCode(v int32) *SyncSingleUserResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SyncSingleUserResponse) SetBody(v *SyncSingleUserResponseBody) *SyncSingleUserResponse {
+	s.Body = v
+	return s
+}
+
 type TrainBillSettlementQueryHeaders struct {
 	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	XAcsBtripSoCorpToken *string            `json:"x-acs-btrip-so-corp-token,omitempty" xml:"x-acs-btrip-so-corp-token,omitempty"`
@@ -17245,23 +17498,25 @@ func (s *TrainOrderQueryResponseBodyModuleInvoiceInfo) SetTitle(v string) *Train
 }
 
 type TrainOrderQueryResponseBodyModuleOrderBaseInfo struct {
-	ApplyId              *string `json:"apply_id,omitempty" xml:"apply_id,omitempty"`
-	BtripTitle           *string `json:"btrip_title,omitempty" xml:"btrip_title,omitempty"`
-	ContactName          *string `json:"contact_name,omitempty" xml:"contact_name,omitempty"`
-	CorpId               *string `json:"corp_id,omitempty" xml:"corp_id,omitempty"`
-	CorpName             *string `json:"corp_name,omitempty" xml:"corp_name,omitempty"`
-	DepartId             *string `json:"depart_id,omitempty" xml:"depart_id,omitempty"`
-	DepartName           *string `json:"depart_name,omitempty" xml:"depart_name,omitempty"`
-	GmtCreate            *string `json:"gmt_create,omitempty" xml:"gmt_create,omitempty"`
-	GmtModify            *string `json:"gmt_modify,omitempty" xml:"gmt_modify,omitempty"`
-	ItineraryId          *string `json:"itinerary_id,omitempty" xml:"itinerary_id,omitempty"`
-	OrderId              *int64  `json:"order_id,omitempty" xml:"order_id,omitempty"`
-	OrderStatus          *int32  `json:"order_status,omitempty" xml:"order_status,omitempty"`
-	ThirdpartApplyId     *string `json:"thirdpart_apply_id,omitempty" xml:"thirdpart_apply_id,omitempty"`
-	ThirdpartCorpId      *string `json:"thirdpart_corp_id,omitempty" xml:"thirdpart_corp_id,omitempty"`
-	ThirdpartItineraryId *string `json:"thirdpart_itinerary_id,omitempty" xml:"thirdpart_itinerary_id,omitempty"`
-	TripType             *int32  `json:"trip_type,omitempty" xml:"trip_type,omitempty"`
-	UserId               *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
+	ApplyId                *string `json:"apply_id,omitempty" xml:"apply_id,omitempty"`
+	BtripTitle             *string `json:"btrip_title,omitempty" xml:"btrip_title,omitempty"`
+	ContactName            *string `json:"contact_name,omitempty" xml:"contact_name,omitempty"`
+	CorpId                 *string `json:"corp_id,omitempty" xml:"corp_id,omitempty"`
+	CorpName               *string `json:"corp_name,omitempty" xml:"corp_name,omitempty"`
+	DepartId               *string `json:"depart_id,omitempty" xml:"depart_id,omitempty"`
+	DepartName             *string `json:"depart_name,omitempty" xml:"depart_name,omitempty"`
+	ExceedApplyId          *string `json:"exceed_apply_id,omitempty" xml:"exceed_apply_id,omitempty"`
+	ExceedThirdPartApplyId *string `json:"exceed_third_part_apply_id,omitempty" xml:"exceed_third_part_apply_id,omitempty"`
+	GmtCreate              *string `json:"gmt_create,omitempty" xml:"gmt_create,omitempty"`
+	GmtModify              *string `json:"gmt_modify,omitempty" xml:"gmt_modify,omitempty"`
+	ItineraryId            *string `json:"itinerary_id,omitempty" xml:"itinerary_id,omitempty"`
+	OrderId                *int64  `json:"order_id,omitempty" xml:"order_id,omitempty"`
+	OrderStatus            *int32  `json:"order_status,omitempty" xml:"order_status,omitempty"`
+	ThirdpartApplyId       *string `json:"thirdpart_apply_id,omitempty" xml:"thirdpart_apply_id,omitempty"`
+	ThirdpartCorpId        *string `json:"thirdpart_corp_id,omitempty" xml:"thirdpart_corp_id,omitempty"`
+	ThirdpartItineraryId   *string `json:"thirdpart_itinerary_id,omitempty" xml:"thirdpart_itinerary_id,omitempty"`
+	TripType               *int32  `json:"trip_type,omitempty" xml:"trip_type,omitempty"`
+	UserId                 *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
 }
 
 func (s TrainOrderQueryResponseBodyModuleOrderBaseInfo) String() string {
@@ -17304,6 +17559,16 @@ func (s *TrainOrderQueryResponseBodyModuleOrderBaseInfo) SetDepartId(v string) *
 
 func (s *TrainOrderQueryResponseBodyModuleOrderBaseInfo) SetDepartName(v string) *TrainOrderQueryResponseBodyModuleOrderBaseInfo {
 	s.DepartName = &v
+	return s
+}
+
+func (s *TrainOrderQueryResponseBodyModuleOrderBaseInfo) SetExceedApplyId(v string) *TrainOrderQueryResponseBodyModuleOrderBaseInfo {
+	s.ExceedApplyId = &v
+	return s
+}
+
+func (s *TrainOrderQueryResponseBodyModuleOrderBaseInfo) SetExceedThirdPartApplyId(v string) *TrainOrderQueryResponseBodyModuleOrderBaseInfo {
+	s.ExceedThirdPartApplyId = &v
 	return s
 }
 
@@ -21667,6 +21932,107 @@ func (client *Client) ProjectModifyWithOptions(request *ProjectModifyRequest, he
 		BodyType:    tea.String("json"),
 	}
 	_result = &ProjectModifyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SyncSingleUser(request *SyncSingleUserRequest) (_result *SyncSingleUserResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &SyncSingleUserHeaders{}
+	_result = &SyncSingleUserResponse{}
+	_body, _err := client.SyncSingleUserWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SyncSingleUserWithOptions(tmpReq *SyncSingleUserRequest, headers *SyncSingleUserHeaders, runtime *util.RuntimeOptions) (_result *SyncSingleUserResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &SyncSingleUserShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.ThirdDepartIdList)) {
+		request.ThirdDepartIdListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ThirdDepartIdList, tea.String("third_depart_id_list"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Email)) {
+		body["email"] = request.Email
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JobNo)) {
+		body["job_no"] = request.JobNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LeaveStatus)) {
+		body["leave_status"] = request.LeaveStatus
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ManagerUserId)) {
+		body["manager_user_id"] = request.ManagerUserId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Phone)) {
+		body["phone"] = request.Phone
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Position)) {
+		body["position"] = request.Position
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PositionLevel)) {
+		body["position_level"] = request.PositionLevel
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RealNameEn)) {
+		body["real_name_en"] = request.RealNameEn
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ThirdDepartIdListShrink)) {
+		body["third_depart_id_list"] = request.ThirdDepartIdListShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		body["user_id"] = request.UserId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserName)) {
+		body["user_name"] = request.UserName
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsBtripSoCorpToken)) {
+		realHeaders["x-acs-btrip-so-corp-token"] = util.ToJSONString(headers.XAcsBtripSoCorpToken)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SyncSingleUser"),
+		Version:     tea.String("2022-05-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/user/v1/single-user/action/sync"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SyncSingleUserResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
