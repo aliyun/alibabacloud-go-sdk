@@ -30116,15 +30116,17 @@ func (s *PrintByTemplateResponse) SetBody(v *PrintByTemplateResponseBody) *Print
 }
 
 type PubRequest struct {
-	CorrelationData *string               `json:"CorrelationData,omitempty" xml:"CorrelationData,omitempty"`
-	DeviceName      *string               `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
-	IotInstanceId   *string               `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
-	MessageContent  *string               `json:"MessageContent,omitempty" xml:"MessageContent,omitempty"`
-	ProductKey      *string               `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
-	Qos             *int32                `json:"Qos,omitempty" xml:"Qos,omitempty"`
-	ResponseTopic   *string               `json:"ResponseTopic,omitempty" xml:"ResponseTopic,omitempty"`
-	TopicFullName   *string               `json:"TopicFullName,omitempty" xml:"TopicFullName,omitempty"`
-	UserProp        []*PubRequestUserProp `json:"UserProp,omitempty" xml:"UserProp,omitempty" type:"Repeated"`
+	ContentType            *string               `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
+	CorrelationData        *string               `json:"CorrelationData,omitempty" xml:"CorrelationData,omitempty"`
+	DeviceName             *string               `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
+	IotInstanceId          *string               `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
+	MessageContent         *string               `json:"MessageContent,omitempty" xml:"MessageContent,omitempty"`
+	PayloadFormatIndicator *int32                `json:"PayloadFormatIndicator,omitempty" xml:"PayloadFormatIndicator,omitempty"`
+	ProductKey             *string               `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
+	Qos                    *int32                `json:"Qos,omitempty" xml:"Qos,omitempty"`
+	ResponseTopic          *string               `json:"ResponseTopic,omitempty" xml:"ResponseTopic,omitempty"`
+	TopicFullName          *string               `json:"TopicFullName,omitempty" xml:"TopicFullName,omitempty"`
+	UserProp               []*PubRequestUserProp `json:"UserProp,omitempty" xml:"UserProp,omitempty" type:"Repeated"`
 }
 
 func (s PubRequest) String() string {
@@ -30133,6 +30135,11 @@ func (s PubRequest) String() string {
 
 func (s PubRequest) GoString() string {
 	return s.String()
+}
+
+func (s *PubRequest) SetContentType(v string) *PubRequest {
+	s.ContentType = &v
+	return s
 }
 
 func (s *PubRequest) SetCorrelationData(v string) *PubRequest {
@@ -30152,6 +30159,11 @@ func (s *PubRequest) SetIotInstanceId(v string) *PubRequest {
 
 func (s *PubRequest) SetMessageContent(v string) *PubRequest {
 	s.MessageContent = &v
+	return s
+}
+
+func (s *PubRequest) SetPayloadFormatIndicator(v int32) *PubRequest {
+	s.PayloadFormatIndicator = &v
 	return s
 }
 
@@ -69795,6 +69807,10 @@ func (client *Client) PubWithOptions(request *PubRequest, runtime *util.RuntimeO
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ContentType)) {
+		query["ContentType"] = request.ContentType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.CorrelationData)) {
 		query["CorrelationData"] = request.CorrelationData
 	}
@@ -69805,6 +69821,10 @@ func (client *Client) PubWithOptions(request *PubRequest, runtime *util.RuntimeO
 
 	if !tea.BoolValue(util.IsUnset(request.IotInstanceId)) {
 		query["IotInstanceId"] = request.IotInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PayloadFormatIndicator)) {
+		query["PayloadFormatIndicator"] = request.PayloadFormatIndicator
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ProductKey)) {

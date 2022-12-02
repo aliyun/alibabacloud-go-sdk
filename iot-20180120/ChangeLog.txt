@@ -1,3 +1,6 @@
+2022-12-02 Version: v4.0.3
+- Pub Support PayloadFormatIndicator and ContentType.
+
 2022-12-01 Version: v4.0.2
 - Iot_20180120 Old sdk.
 
