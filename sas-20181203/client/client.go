@@ -1327,11 +1327,12 @@ func (s *CreateHoneypotNodeRequest) SetSecurityGroupProbeIpList(v []*string) *Cr
 }
 
 type CreateHoneypotNodeResponseBody struct {
-	Code           *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code           *string                                     `json:"Code,omitempty" xml:"Code,omitempty"`
+	HoneypotNode   *CreateHoneypotNodeResponseBodyHoneypotNode `json:"HoneypotNode,omitempty" xml:"HoneypotNode,omitempty" type:"Struct"`
+	HttpStatusCode *int32                                      `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string                                     `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId      *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool                                       `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CreateHoneypotNodeResponseBody) String() string {
@@ -1344,6 +1345,11 @@ func (s CreateHoneypotNodeResponseBody) GoString() string {
 
 func (s *CreateHoneypotNodeResponseBody) SetCode(v string) *CreateHoneypotNodeResponseBody {
 	s.Code = &v
+	return s
+}
+
+func (s *CreateHoneypotNodeResponseBody) SetHoneypotNode(v *CreateHoneypotNodeResponseBodyHoneypotNode) *CreateHoneypotNodeResponseBody {
+	s.HoneypotNode = v
 	return s
 }
 
@@ -1364,6 +1370,23 @@ func (s *CreateHoneypotNodeResponseBody) SetRequestId(v string) *CreateHoneypotN
 
 func (s *CreateHoneypotNodeResponseBody) SetSuccess(v bool) *CreateHoneypotNodeResponseBody {
 	s.Success = &v
+	return s
+}
+
+type CreateHoneypotNodeResponseBodyHoneypotNode struct {
+	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+}
+
+func (s CreateHoneypotNodeResponseBodyHoneypotNode) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateHoneypotNodeResponseBodyHoneypotNode) GoString() string {
+	return s.String()
+}
+
+func (s *CreateHoneypotNodeResponseBodyHoneypotNode) SetNodeId(v string) *CreateHoneypotNodeResponseBodyHoneypotNode {
+	s.NodeId = &v
 	return s
 }
 
@@ -1538,11 +1561,12 @@ func (s *CreateHoneypotProbeRequestHoneypotBindListBindPortList) SetTargetPort(v
 }
 
 type CreateHoneypotProbeResponseBody struct {
-	Code           *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code           *string                                       `json:"Code,omitempty" xml:"Code,omitempty"`
+	HoneypotProbe  *CreateHoneypotProbeResponseBodyHoneypotProbe `json:"HoneypotProbe,omitempty" xml:"HoneypotProbe,omitempty" type:"Struct"`
+	HttpStatusCode *int32                                        `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string                                       `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId      *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool                                         `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CreateHoneypotProbeResponseBody) String() string {
@@ -1555,6 +1579,11 @@ func (s CreateHoneypotProbeResponseBody) GoString() string {
 
 func (s *CreateHoneypotProbeResponseBody) SetCode(v string) *CreateHoneypotProbeResponseBody {
 	s.Code = &v
+	return s
+}
+
+func (s *CreateHoneypotProbeResponseBody) SetHoneypotProbe(v *CreateHoneypotProbeResponseBodyHoneypotProbe) *CreateHoneypotProbeResponseBody {
+	s.HoneypotProbe = v
 	return s
 }
 
@@ -1575,6 +1604,23 @@ func (s *CreateHoneypotProbeResponseBody) SetRequestId(v string) *CreateHoneypot
 
 func (s *CreateHoneypotProbeResponseBody) SetSuccess(v bool) *CreateHoneypotProbeResponseBody {
 	s.Success = &v
+	return s
+}
+
+type CreateHoneypotProbeResponseBodyHoneypotProbe struct {
+	ProbeId *string `json:"ProbeId,omitempty" xml:"ProbeId,omitempty"`
+}
+
+func (s CreateHoneypotProbeResponseBodyHoneypotProbe) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateHoneypotProbeResponseBodyHoneypotProbe) GoString() string {
+	return s.String()
+}
+
+func (s *CreateHoneypotProbeResponseBodyHoneypotProbe) SetProbeId(v string) *CreateHoneypotProbeResponseBodyHoneypotProbe {
+	s.ProbeId = &v
 	return s
 }
 
@@ -2076,6 +2122,69 @@ func (s *CreateVulAutoRepairConfigResponse) SetBody(v *CreateVulAutoRepairConfig
 	return s
 }
 
+type DeleteAntiBruteForceRuleRequest struct {
+	Ids []*int64 `json:"Ids,omitempty" xml:"Ids,omitempty" type:"Repeated"`
+}
+
+func (s DeleteAntiBruteForceRuleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAntiBruteForceRuleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAntiBruteForceRuleRequest) SetIds(v []*int64) *DeleteAntiBruteForceRuleRequest {
+	s.Ids = v
+	return s
+}
+
+type DeleteAntiBruteForceRuleResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteAntiBruteForceRuleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAntiBruteForceRuleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAntiBruteForceRuleResponseBody) SetRequestId(v string) *DeleteAntiBruteForceRuleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteAntiBruteForceRuleResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteAntiBruteForceRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteAntiBruteForceRuleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAntiBruteForceRuleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAntiBruteForceRuleResponse) SetHeaders(v map[string]*string) *DeleteAntiBruteForceRuleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteAntiBruteForceRuleResponse) SetStatusCode(v int32) *DeleteAntiBruteForceRuleResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteAntiBruteForceRuleResponse) SetBody(v *DeleteAntiBruteForceRuleResponseBody) *DeleteAntiBruteForceRuleResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteBackupPolicyRequest struct {
 	Id            *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
 	PolicyVersion *string `json:"PolicyVersion,omitempty" xml:"PolicyVersion,omitempty"`
@@ -2573,6 +2682,75 @@ func (s *DeleteVpcHoneyPotResponse) SetStatusCode(v int32) *DeleteVpcHoneyPotRes
 }
 
 func (s *DeleteVpcHoneyPotResponse) SetBody(v *DeleteVpcHoneyPotResponseBody) *DeleteVpcHoneyPotResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteVulWhitelistRequest struct {
+	Id        *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Whitelist *string `json:"Whitelist,omitempty" xml:"Whitelist,omitempty"`
+}
+
+func (s DeleteVulWhitelistRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteVulWhitelistRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteVulWhitelistRequest) SetId(v string) *DeleteVulWhitelistRequest {
+	s.Id = &v
+	return s
+}
+
+func (s *DeleteVulWhitelistRequest) SetWhitelist(v string) *DeleteVulWhitelistRequest {
+	s.Whitelist = &v
+	return s
+}
+
+type DeleteVulWhitelistResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteVulWhitelistResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteVulWhitelistResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteVulWhitelistResponseBody) SetRequestId(v string) *DeleteVulWhitelistResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteVulWhitelistResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteVulWhitelistResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteVulWhitelistResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteVulWhitelistResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteVulWhitelistResponse) SetHeaders(v map[string]*string) *DeleteVulWhitelistResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteVulWhitelistResponse) SetStatusCode(v int32) *DeleteVulWhitelistResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteVulWhitelistResponse) SetBody(v *DeleteVulWhitelistResponseBody) *DeleteVulWhitelistResponse {
 	s.Body = v
 	return s
 }
@@ -3125,6 +3303,9 @@ type DescribeAffectedMaliciousFileImagesResponseBodyAffectedMaliciousFileImagesR
 	HighLight             *string `json:"HighLight,omitempty" xml:"HighLight,omitempty"`
 	Image                 *string `json:"Image,omitempty" xml:"Image,omitempty"`
 	ImageUuid             *string `json:"ImageUuid,omitempty" xml:"ImageUuid,omitempty"`
+	InstanceName          *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	InternetIp            *string `json:"InternetIp,omitempty" xml:"InternetIp,omitempty"`
+	IntranetIp            *string `json:"IntranetIp,omitempty" xml:"IntranetIp,omitempty"`
 	LatestScanTimestamp   *int64  `json:"LatestScanTimestamp,omitempty" xml:"LatestScanTimestamp,omitempty"`
 	LatestVerifyTimestamp *int64  `json:"LatestVerifyTimestamp,omitempty" xml:"LatestVerifyTimestamp,omitempty"`
 	Layer                 *string `json:"Layer,omitempty" xml:"Layer,omitempty"`
@@ -3138,6 +3319,10 @@ type DescribeAffectedMaliciousFileImagesResponseBodyAffectedMaliciousFileImagesR
 	RepoRegionId          *string `json:"RepoRegionId,omitempty" xml:"RepoRegionId,omitempty"`
 	Status                *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
 	Tag                   *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	TargetId              *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
+	TargetName            *string `json:"TargetName,omitempty" xml:"TargetName,omitempty"`
+	TargetType            *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
+	Uuid                  *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
 }
 
 func (s DescribeAffectedMaliciousFileImagesResponseBodyAffectedMaliciousFileImagesResponse) String() string {
@@ -3195,6 +3380,21 @@ func (s *DescribeAffectedMaliciousFileImagesResponseBodyAffectedMaliciousFileIma
 
 func (s *DescribeAffectedMaliciousFileImagesResponseBodyAffectedMaliciousFileImagesResponse) SetImageUuid(v string) *DescribeAffectedMaliciousFileImagesResponseBodyAffectedMaliciousFileImagesResponse {
 	s.ImageUuid = &v
+	return s
+}
+
+func (s *DescribeAffectedMaliciousFileImagesResponseBodyAffectedMaliciousFileImagesResponse) SetInstanceName(v string) *DescribeAffectedMaliciousFileImagesResponseBodyAffectedMaliciousFileImagesResponse {
+	s.InstanceName = &v
+	return s
+}
+
+func (s *DescribeAffectedMaliciousFileImagesResponseBodyAffectedMaliciousFileImagesResponse) SetInternetIp(v string) *DescribeAffectedMaliciousFileImagesResponseBodyAffectedMaliciousFileImagesResponse {
+	s.InternetIp = &v
+	return s
+}
+
+func (s *DescribeAffectedMaliciousFileImagesResponseBodyAffectedMaliciousFileImagesResponse) SetIntranetIp(v string) *DescribeAffectedMaliciousFileImagesResponseBodyAffectedMaliciousFileImagesResponse {
+	s.IntranetIp = &v
 	return s
 }
 
@@ -3260,6 +3460,26 @@ func (s *DescribeAffectedMaliciousFileImagesResponseBodyAffectedMaliciousFileIma
 
 func (s *DescribeAffectedMaliciousFileImagesResponseBodyAffectedMaliciousFileImagesResponse) SetTag(v string) *DescribeAffectedMaliciousFileImagesResponseBodyAffectedMaliciousFileImagesResponse {
 	s.Tag = &v
+	return s
+}
+
+func (s *DescribeAffectedMaliciousFileImagesResponseBodyAffectedMaliciousFileImagesResponse) SetTargetId(v string) *DescribeAffectedMaliciousFileImagesResponseBodyAffectedMaliciousFileImagesResponse {
+	s.TargetId = &v
+	return s
+}
+
+func (s *DescribeAffectedMaliciousFileImagesResponseBodyAffectedMaliciousFileImagesResponse) SetTargetName(v string) *DescribeAffectedMaliciousFileImagesResponseBodyAffectedMaliciousFileImagesResponse {
+	s.TargetName = &v
+	return s
+}
+
+func (s *DescribeAffectedMaliciousFileImagesResponseBodyAffectedMaliciousFileImagesResponse) SetTargetType(v string) *DescribeAffectedMaliciousFileImagesResponseBodyAffectedMaliciousFileImagesResponse {
+	s.TargetType = &v
+	return s
+}
+
+func (s *DescribeAffectedMaliciousFileImagesResponseBodyAffectedMaliciousFileImagesResponse) SetUuid(v string) *DescribeAffectedMaliciousFileImagesResponseBodyAffectedMaliciousFileImagesResponse {
+	s.Uuid = &v
 	return s
 }
 
@@ -5804,6 +6024,134 @@ func (s *DescribeBackupPoliciesResponse) SetStatusCode(v int32) *DescribeBackupP
 }
 
 func (s *DescribeBackupPoliciesResponse) SetBody(v *DescribeBackupPoliciesResponseBody) *DescribeBackupPoliciesResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeBackupPolicyRequest struct {
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+}
+
+func (s DescribeBackupPolicyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeBackupPolicyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeBackupPolicyRequest) SetId(v int64) *DescribeBackupPolicyRequest {
+	s.Id = &v
+	return s
+}
+
+type DescribeBackupPolicyResponseBody struct {
+	BackupPolicyDetail *DescribeBackupPolicyResponseBodyBackupPolicyDetail `json:"BackupPolicyDetail,omitempty" xml:"BackupPolicyDetail,omitempty" type:"Struct"`
+	RequestId          *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeBackupPolicyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeBackupPolicyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeBackupPolicyResponseBody) SetBackupPolicyDetail(v *DescribeBackupPolicyResponseBodyBackupPolicyDetail) *DescribeBackupPolicyResponseBody {
+	s.BackupPolicyDetail = v
+	return s
+}
+
+func (s *DescribeBackupPolicyResponseBody) SetRequestId(v string) *DescribeBackupPolicyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeBackupPolicyResponseBodyBackupPolicyDetail struct {
+	ClientStatus  *string   `json:"ClientStatus,omitempty" xml:"ClientStatus,omitempty"`
+	Id            *int64    `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name          *string   `json:"Name,omitempty" xml:"Name,omitempty"`
+	Policy        *string   `json:"Policy,omitempty" xml:"Policy,omitempty"`
+	PolicyVersion *string   `json:"PolicyVersion,omitempty" xml:"PolicyVersion,omitempty"`
+	RegionId      *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Status        *string   `json:"Status,omitempty" xml:"Status,omitempty"`
+	UuidList      []*string `json:"UuidList,omitempty" xml:"UuidList,omitempty" type:"Repeated"`
+}
+
+func (s DescribeBackupPolicyResponseBodyBackupPolicyDetail) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeBackupPolicyResponseBodyBackupPolicyDetail) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeBackupPolicyResponseBodyBackupPolicyDetail) SetClientStatus(v string) *DescribeBackupPolicyResponseBodyBackupPolicyDetail {
+	s.ClientStatus = &v
+	return s
+}
+
+func (s *DescribeBackupPolicyResponseBodyBackupPolicyDetail) SetId(v int64) *DescribeBackupPolicyResponseBodyBackupPolicyDetail {
+	s.Id = &v
+	return s
+}
+
+func (s *DescribeBackupPolicyResponseBodyBackupPolicyDetail) SetName(v string) *DescribeBackupPolicyResponseBodyBackupPolicyDetail {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeBackupPolicyResponseBodyBackupPolicyDetail) SetPolicy(v string) *DescribeBackupPolicyResponseBodyBackupPolicyDetail {
+	s.Policy = &v
+	return s
+}
+
+func (s *DescribeBackupPolicyResponseBodyBackupPolicyDetail) SetPolicyVersion(v string) *DescribeBackupPolicyResponseBodyBackupPolicyDetail {
+	s.PolicyVersion = &v
+	return s
+}
+
+func (s *DescribeBackupPolicyResponseBodyBackupPolicyDetail) SetRegionId(v string) *DescribeBackupPolicyResponseBodyBackupPolicyDetail {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeBackupPolicyResponseBodyBackupPolicyDetail) SetStatus(v string) *DescribeBackupPolicyResponseBodyBackupPolicyDetail {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeBackupPolicyResponseBodyBackupPolicyDetail) SetUuidList(v []*string) *DescribeBackupPolicyResponseBodyBackupPolicyDetail {
+	s.UuidList = v
+	return s
+}
+
+type DescribeBackupPolicyResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeBackupPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeBackupPolicyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeBackupPolicyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeBackupPolicyResponse) SetHeaders(v map[string]*string) *DescribeBackupPolicyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeBackupPolicyResponse) SetStatusCode(v int32) *DescribeBackupPolicyResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeBackupPolicyResponse) SetBody(v *DescribeBackupPolicyResponseBody) *DescribeBackupPolicyResponse {
 	s.Body = v
 	return s
 }
@@ -10348,6 +10696,7 @@ type DescribeGroupedMaliciousFilesRequest struct {
 	ImageTag           *string   `json:"ImageTag,omitempty" xml:"ImageTag,omitempty"`
 	Lang               *string   `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	Levels             *string   `json:"Levels,omitempty" xml:"Levels,omitempty"`
+	MaliciousMd5       *string   `json:"MaliciousMd5,omitempty" xml:"MaliciousMd5,omitempty"`
 	PageSize           *string   `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	RepoId             *string   `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
 	RepoInstanceId     *string   `json:"RepoInstanceId,omitempty" xml:"RepoInstanceId,omitempty"`
@@ -10402,6 +10751,11 @@ func (s *DescribeGroupedMaliciousFilesRequest) SetLang(v string) *DescribeGroupe
 
 func (s *DescribeGroupedMaliciousFilesRequest) SetLevels(v string) *DescribeGroupedMaliciousFilesRequest {
 	s.Levels = &v
+	return s
+}
+
+func (s *DescribeGroupedMaliciousFilesRequest) SetMaliciousMd5(v string) *DescribeGroupedMaliciousFilesRequest {
+	s.MaliciousMd5 = &v
 	return s
 }
 
@@ -12326,6 +12680,10 @@ type DescribeImageListWithBaselineNameResponseBodyImageInfos struct {
 	ImageSize       *int32  `json:"ImageSize,omitempty" xml:"ImageSize,omitempty"`
 	ImageUpdate     *int64  `json:"ImageUpdate,omitempty" xml:"ImageUpdate,omitempty"`
 	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceName    *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	InternetIp      *string `json:"InternetIp,omitempty" xml:"InternetIp,omitempty"`
+	IntranetIp      *string `json:"IntranetIp,omitempty" xml:"IntranetIp,omitempty"`
+	LastScanTime    *int64  `json:"LastScanTime,omitempty" xml:"LastScanTime,omitempty"`
 	LowRiskImage    *int32  `json:"LowRiskImage,omitempty" xml:"LowRiskImage,omitempty"`
 	MiddleRiskImage *int32  `json:"MiddleRiskImage,omitempty" xml:"MiddleRiskImage,omitempty"`
 	Namespace       *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
@@ -12338,6 +12696,9 @@ type DescribeImageListWithBaselineNameResponseBodyImageInfos struct {
 	RepoType        *string `json:"RepoType,omitempty" xml:"RepoType,omitempty"`
 	RiskStatus      *string `json:"RiskStatus,omitempty" xml:"RiskStatus,omitempty"`
 	Tag             *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	TargetId        *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
+	TargetName      *string `json:"TargetName,omitempty" xml:"TargetName,omitempty"`
+	TargetType      *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
 	TotalItemCount  *int32  `json:"TotalItemCount,omitempty" xml:"TotalItemCount,omitempty"`
 	Uuid            *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
 }
@@ -12405,6 +12766,26 @@ func (s *DescribeImageListWithBaselineNameResponseBodyImageInfos) SetInstanceId(
 	return s
 }
 
+func (s *DescribeImageListWithBaselineNameResponseBodyImageInfos) SetInstanceName(v string) *DescribeImageListWithBaselineNameResponseBodyImageInfos {
+	s.InstanceName = &v
+	return s
+}
+
+func (s *DescribeImageListWithBaselineNameResponseBodyImageInfos) SetInternetIp(v string) *DescribeImageListWithBaselineNameResponseBodyImageInfos {
+	s.InternetIp = &v
+	return s
+}
+
+func (s *DescribeImageListWithBaselineNameResponseBodyImageInfos) SetIntranetIp(v string) *DescribeImageListWithBaselineNameResponseBodyImageInfos {
+	s.IntranetIp = &v
+	return s
+}
+
+func (s *DescribeImageListWithBaselineNameResponseBodyImageInfos) SetLastScanTime(v int64) *DescribeImageListWithBaselineNameResponseBodyImageInfos {
+	s.LastScanTime = &v
+	return s
+}
+
 func (s *DescribeImageListWithBaselineNameResponseBodyImageInfos) SetLowRiskImage(v int32) *DescribeImageListWithBaselineNameResponseBodyImageInfos {
 	s.LowRiskImage = &v
 	return s
@@ -12462,6 +12843,21 @@ func (s *DescribeImageListWithBaselineNameResponseBodyImageInfos) SetRiskStatus(
 
 func (s *DescribeImageListWithBaselineNameResponseBodyImageInfos) SetTag(v string) *DescribeImageListWithBaselineNameResponseBodyImageInfos {
 	s.Tag = &v
+	return s
+}
+
+func (s *DescribeImageListWithBaselineNameResponseBodyImageInfos) SetTargetId(v string) *DescribeImageListWithBaselineNameResponseBodyImageInfos {
+	s.TargetId = &v
+	return s
+}
+
+func (s *DescribeImageListWithBaselineNameResponseBodyImageInfos) SetTargetName(v string) *DescribeImageListWithBaselineNameResponseBodyImageInfos {
+	s.TargetName = &v
+	return s
+}
+
+func (s *DescribeImageListWithBaselineNameResponseBodyImageInfos) SetTargetType(v string) *DescribeImageListWithBaselineNameResponseBodyImageInfos {
+	s.TargetType = &v
 	return s
 }
 
@@ -13467,8 +13863,12 @@ type DescribeImageVulListResponseBodyVulRecords struct {
 	FirstTs           *int64                                                       `json:"FirstTs,omitempty" xml:"FirstTs,omitempty"`
 	Image             *string                                                      `json:"Image,omitempty" xml:"Image,omitempty"`
 	ImageDigest       *string                                                      `json:"ImageDigest,omitempty" xml:"ImageDigest,omitempty"`
+	InstanceName      *string                                                      `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	InternetIp        *string                                                      `json:"InternetIp,omitempty" xml:"InternetIp,omitempty"`
+	IntranetIp        *string                                                      `json:"IntranetIp,omitempty" xml:"IntranetIp,omitempty"`
 	LastTs            *int64                                                       `json:"LastTs,omitempty" xml:"LastTs,omitempty"`
 	Layers            []*string                                                    `json:"Layers,omitempty" xml:"Layers,omitempty" type:"Repeated"`
+	MaliciousSource   *string                                                      `json:"MaliciousSource,omitempty" xml:"MaliciousSource,omitempty"`
 	ModifyTs          *int64                                                       `json:"ModifyTs,omitempty" xml:"ModifyTs,omitempty"`
 	Name              *string                                                      `json:"Name,omitempty" xml:"Name,omitempty"`
 	Namespace         *string                                                      `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
@@ -13478,8 +13878,12 @@ type DescribeImageVulListResponseBodyVulRecords struct {
 	Related           *string                                                      `json:"Related,omitempty" xml:"Related,omitempty"`
 	RepoName          *string                                                      `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
 	RepoNamespace     *string                                                      `json:"RepoNamespace,omitempty" xml:"RepoNamespace,omitempty"`
+	ScanTime          *int64                                                       `json:"ScanTime,omitempty" xml:"ScanTime,omitempty"`
 	Status            *int32                                                       `json:"Status,omitempty" xml:"Status,omitempty"`
 	Tag               *string                                                      `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	TargetId          *string                                                      `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
+	TargetName        *string                                                      `json:"TargetName,omitempty" xml:"TargetName,omitempty"`
+	TargetType        *string                                                      `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
 	Type              *string                                                      `json:"Type,omitempty" xml:"Type,omitempty"`
 	Uuid              *string                                                      `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
 }
@@ -13542,6 +13946,21 @@ func (s *DescribeImageVulListResponseBodyVulRecords) SetImageDigest(v string) *D
 	return s
 }
 
+func (s *DescribeImageVulListResponseBodyVulRecords) SetInstanceName(v string) *DescribeImageVulListResponseBodyVulRecords {
+	s.InstanceName = &v
+	return s
+}
+
+func (s *DescribeImageVulListResponseBodyVulRecords) SetInternetIp(v string) *DescribeImageVulListResponseBodyVulRecords {
+	s.InternetIp = &v
+	return s
+}
+
+func (s *DescribeImageVulListResponseBodyVulRecords) SetIntranetIp(v string) *DescribeImageVulListResponseBodyVulRecords {
+	s.IntranetIp = &v
+	return s
+}
+
 func (s *DescribeImageVulListResponseBodyVulRecords) SetLastTs(v int64) *DescribeImageVulListResponseBodyVulRecords {
 	s.LastTs = &v
 	return s
@@ -13549,6 +13968,11 @@ func (s *DescribeImageVulListResponseBodyVulRecords) SetLastTs(v int64) *Describ
 
 func (s *DescribeImageVulListResponseBodyVulRecords) SetLayers(v []*string) *DescribeImageVulListResponseBodyVulRecords {
 	s.Layers = v
+	return s
+}
+
+func (s *DescribeImageVulListResponseBodyVulRecords) SetMaliciousSource(v string) *DescribeImageVulListResponseBodyVulRecords {
+	s.MaliciousSource = &v
 	return s
 }
 
@@ -13597,6 +14021,11 @@ func (s *DescribeImageVulListResponseBodyVulRecords) SetRepoNamespace(v string) 
 	return s
 }
 
+func (s *DescribeImageVulListResponseBodyVulRecords) SetScanTime(v int64) *DescribeImageVulListResponseBodyVulRecords {
+	s.ScanTime = &v
+	return s
+}
+
 func (s *DescribeImageVulListResponseBodyVulRecords) SetStatus(v int32) *DescribeImageVulListResponseBodyVulRecords {
 	s.Status = &v
 	return s
@@ -13604,6 +14033,21 @@ func (s *DescribeImageVulListResponseBodyVulRecords) SetStatus(v int32) *Describ
 
 func (s *DescribeImageVulListResponseBodyVulRecords) SetTag(v string) *DescribeImageVulListResponseBodyVulRecords {
 	s.Tag = &v
+	return s
+}
+
+func (s *DescribeImageVulListResponseBodyVulRecords) SetTargetId(v string) *DescribeImageVulListResponseBodyVulRecords {
+	s.TargetId = &v
+	return s
+}
+
+func (s *DescribeImageVulListResponseBodyVulRecords) SetTargetName(v string) *DescribeImageVulListResponseBodyVulRecords {
+	s.TargetName = &v
+	return s
+}
+
+func (s *DescribeImageVulListResponseBodyVulRecords) SetTargetType(v string) *DescribeImageVulListResponseBodyVulRecords {
+	s.TargetType = &v
 	return s
 }
 
@@ -14258,19 +14702,24 @@ func (s *DescribeInstanceStatisticsResponseBody) SetRequestId(v string) *Describ
 }
 
 type DescribeInstanceStatisticsResponseBodyData struct {
-	Account    *int32  `json:"Account,omitempty" xml:"Account,omitempty"`
-	AppNum     *int32  `json:"AppNum,omitempty" xml:"AppNum,omitempty"`
-	CmsNum     *int32  `json:"CmsNum,omitempty" xml:"CmsNum,omitempty"`
-	CveNum     *int32  `json:"CveNum,omitempty" xml:"CveNum,omitempty"`
-	EmgNum     *int32  `json:"EmgNum,omitempty" xml:"EmgNum,omitempty"`
-	Health     *int32  `json:"Health,omitempty" xml:"Health,omitempty"`
-	ScaNum     *int32  `json:"ScaNum,omitempty" xml:"ScaNum,omitempty"`
-	Suspicious *int32  `json:"Suspicious,omitempty" xml:"Suspicious,omitempty"`
-	SysNum     *int32  `json:"SysNum,omitempty" xml:"SysNum,omitempty"`
-	Trojan     *int32  `json:"Trojan,omitempty" xml:"Trojan,omitempty"`
-	Uuid       *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
-	Vul        *int32  `json:"Vul,omitempty" xml:"Vul,omitempty"`
-	WeakPWNum  *int32  `json:"WeakPWNum,omitempty" xml:"WeakPWNum,omitempty"`
+	Account            *int32  `json:"Account,omitempty" xml:"Account,omitempty"`
+	AgentlessAll       *int32  `json:"AgentlessAll,omitempty" xml:"AgentlessAll,omitempty"`
+	AgentlessBaseline  *int32  `json:"AgentlessBaseline,omitempty" xml:"AgentlessBaseline,omitempty"`
+	AgentlessMalicious *int32  `json:"AgentlessMalicious,omitempty" xml:"AgentlessMalicious,omitempty"`
+	AgentlessVulCve    *int32  `json:"AgentlessVulCve,omitempty" xml:"AgentlessVulCve,omitempty"`
+	AgentlessVulSca    *int32  `json:"AgentlessVulSca,omitempty" xml:"AgentlessVulSca,omitempty"`
+	AppNum             *int32  `json:"AppNum,omitempty" xml:"AppNum,omitempty"`
+	CmsNum             *int32  `json:"CmsNum,omitempty" xml:"CmsNum,omitempty"`
+	CveNum             *int32  `json:"CveNum,omitempty" xml:"CveNum,omitempty"`
+	EmgNum             *int32  `json:"EmgNum,omitempty" xml:"EmgNum,omitempty"`
+	Health             *int32  `json:"Health,omitempty" xml:"Health,omitempty"`
+	ScaNum             *int32  `json:"ScaNum,omitempty" xml:"ScaNum,omitempty"`
+	Suspicious         *int32  `json:"Suspicious,omitempty" xml:"Suspicious,omitempty"`
+	SysNum             *int32  `json:"SysNum,omitempty" xml:"SysNum,omitempty"`
+	Trojan             *int32  `json:"Trojan,omitempty" xml:"Trojan,omitempty"`
+	Uuid               *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
+	Vul                *int32  `json:"Vul,omitempty" xml:"Vul,omitempty"`
+	WeakPWNum          *int32  `json:"WeakPWNum,omitempty" xml:"WeakPWNum,omitempty"`
 }
 
 func (s DescribeInstanceStatisticsResponseBodyData) String() string {
@@ -14283,6 +14732,31 @@ func (s DescribeInstanceStatisticsResponseBodyData) GoString() string {
 
 func (s *DescribeInstanceStatisticsResponseBodyData) SetAccount(v int32) *DescribeInstanceStatisticsResponseBodyData {
 	s.Account = &v
+	return s
+}
+
+func (s *DescribeInstanceStatisticsResponseBodyData) SetAgentlessAll(v int32) *DescribeInstanceStatisticsResponseBodyData {
+	s.AgentlessAll = &v
+	return s
+}
+
+func (s *DescribeInstanceStatisticsResponseBodyData) SetAgentlessBaseline(v int32) *DescribeInstanceStatisticsResponseBodyData {
+	s.AgentlessBaseline = &v
+	return s
+}
+
+func (s *DescribeInstanceStatisticsResponseBodyData) SetAgentlessMalicious(v int32) *DescribeInstanceStatisticsResponseBodyData {
+	s.AgentlessMalicious = &v
+	return s
+}
+
+func (s *DescribeInstanceStatisticsResponseBodyData) SetAgentlessVulCve(v int32) *DescribeInstanceStatisticsResponseBodyData {
+	s.AgentlessVulCve = &v
+	return s
+}
+
+func (s *DescribeInstanceStatisticsResponseBodyData) SetAgentlessVulSca(v int32) *DescribeInstanceStatisticsResponseBodyData {
+	s.AgentlessVulSca = &v
 	return s
 }
 
@@ -15077,6 +15551,146 @@ func (s *DescribeNoticeConfigResponse) SetStatusCode(v int32) *DescribeNoticeCon
 }
 
 func (s *DescribeNoticeConfigResponse) SetBody(v *DescribeNoticeConfigResponseBody) *DescribeNoticeConfigResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeNsasSuspEventTypeRequest struct {
+	ContainerFieldName  *string `json:"ContainerFieldName,omitempty" xml:"ContainerFieldName,omitempty"`
+	ContainerFieldValue *string `json:"ContainerFieldValue,omitempty" xml:"ContainerFieldValue,omitempty"`
+	From                *string `json:"From,omitempty" xml:"From,omitempty"`
+	Lang                *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	Name                *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Remark              *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	SourceIp            *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	Uuids               *string `json:"Uuids,omitempty" xml:"Uuids,omitempty"`
+}
+
+func (s DescribeNsasSuspEventTypeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeNsasSuspEventTypeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeNsasSuspEventTypeRequest) SetContainerFieldName(v string) *DescribeNsasSuspEventTypeRequest {
+	s.ContainerFieldName = &v
+	return s
+}
+
+func (s *DescribeNsasSuspEventTypeRequest) SetContainerFieldValue(v string) *DescribeNsasSuspEventTypeRequest {
+	s.ContainerFieldValue = &v
+	return s
+}
+
+func (s *DescribeNsasSuspEventTypeRequest) SetFrom(v string) *DescribeNsasSuspEventTypeRequest {
+	s.From = &v
+	return s
+}
+
+func (s *DescribeNsasSuspEventTypeRequest) SetLang(v string) *DescribeNsasSuspEventTypeRequest {
+	s.Lang = &v
+	return s
+}
+
+func (s *DescribeNsasSuspEventTypeRequest) SetName(v string) *DescribeNsasSuspEventTypeRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeNsasSuspEventTypeRequest) SetRemark(v string) *DescribeNsasSuspEventTypeRequest {
+	s.Remark = &v
+	return s
+}
+
+func (s *DescribeNsasSuspEventTypeRequest) SetSourceIp(v string) *DescribeNsasSuspEventTypeRequest {
+	s.SourceIp = &v
+	return s
+}
+
+func (s *DescribeNsasSuspEventTypeRequest) SetUuids(v string) *DescribeNsasSuspEventTypeRequest {
+	s.Uuids = &v
+	return s
+}
+
+type DescribeNsasSuspEventTypeResponseBody struct {
+	EventTypes []*DescribeNsasSuspEventTypeResponseBodyEventTypes `json:"EventTypes,omitempty" xml:"EventTypes,omitempty" type:"Repeated"`
+	RequestId  *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeNsasSuspEventTypeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeNsasSuspEventTypeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeNsasSuspEventTypeResponseBody) SetEventTypes(v []*DescribeNsasSuspEventTypeResponseBodyEventTypes) *DescribeNsasSuspEventTypeResponseBody {
+	s.EventTypes = v
+	return s
+}
+
+func (s *DescribeNsasSuspEventTypeResponseBody) SetRequestId(v string) *DescribeNsasSuspEventTypeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeNsasSuspEventTypeResponseBodyEventTypes struct {
+	Name           *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	SuspEventCount *int32  `json:"SuspEventCount,omitempty" xml:"SuspEventCount,omitempty"`
+	Type           *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s DescribeNsasSuspEventTypeResponseBodyEventTypes) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeNsasSuspEventTypeResponseBodyEventTypes) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeNsasSuspEventTypeResponseBodyEventTypes) SetName(v string) *DescribeNsasSuspEventTypeResponseBodyEventTypes {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeNsasSuspEventTypeResponseBodyEventTypes) SetSuspEventCount(v int32) *DescribeNsasSuspEventTypeResponseBodyEventTypes {
+	s.SuspEventCount = &v
+	return s
+}
+
+func (s *DescribeNsasSuspEventTypeResponseBodyEventTypes) SetType(v string) *DescribeNsasSuspEventTypeResponseBodyEventTypes {
+	s.Type = &v
+	return s
+}
+
+type DescribeNsasSuspEventTypeResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeNsasSuspEventTypeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeNsasSuspEventTypeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeNsasSuspEventTypeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeNsasSuspEventTypeResponse) SetHeaders(v map[string]*string) *DescribeNsasSuspEventTypeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeNsasSuspEventTypeResponse) SetStatusCode(v int32) *DescribeNsasSuspEventTypeResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeNsasSuspEventTypeResponse) SetBody(v *DescribeNsasSuspEventTypeResponseBody) *DescribeNsasSuspEventTypeResponse {
 	s.Body = v
 	return s
 }
@@ -24799,6 +25413,9 @@ type DescribeVulDetailsResponseBodyCves struct {
 	CveId             *string                                        `json:"CveId,omitempty" xml:"CveId,omitempty"`
 	CvssScore         *string                                        `json:"CvssScore,omitempty" xml:"CvssScore,omitempty"`
 	CvssVector        *string                                        `json:"CvssVector,omitempty" xml:"CvssVector,omitempty"`
+	InstanceName      *string                                        `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	InternetIp        *string                                        `json:"InternetIp,omitempty" xml:"InternetIp,omitempty"`
+	IntranetIp        *string                                        `json:"IntranetIp,omitempty" xml:"IntranetIp,omitempty"`
 	Poc               *string                                        `json:"Poc,omitempty" xml:"Poc,omitempty"`
 	PocCreateTime     *int64                                         `json:"PocCreateTime,omitempty" xml:"PocCreateTime,omitempty"`
 	PocDisclosureTime *int64                                         `json:"PocDisclosureTime,omitempty" xml:"PocDisclosureTime,omitempty"`
@@ -24807,6 +25424,8 @@ type DescribeVulDetailsResponseBodyCves struct {
 	ReleaseTime       *int64                                         `json:"ReleaseTime,omitempty" xml:"ReleaseTime,omitempty"`
 	Solution          *string                                        `json:"Solution,omitempty" xml:"Solution,omitempty"`
 	Summary           *string                                        `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	TargetId          *string                                        `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
+	TargetName        *string                                        `json:"TargetName,omitempty" xml:"TargetName,omitempty"`
 	Title             *string                                        `json:"Title,omitempty" xml:"Title,omitempty"`
 	Vendor            *string                                        `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
 	VulLevel          *string                                        `json:"VulLevel,omitempty" xml:"VulLevel,omitempty"`
@@ -24860,6 +25479,21 @@ func (s *DescribeVulDetailsResponseBodyCves) SetCvssVector(v string) *DescribeVu
 	return s
 }
 
+func (s *DescribeVulDetailsResponseBodyCves) SetInstanceName(v string) *DescribeVulDetailsResponseBodyCves {
+	s.InstanceName = &v
+	return s
+}
+
+func (s *DescribeVulDetailsResponseBodyCves) SetInternetIp(v string) *DescribeVulDetailsResponseBodyCves {
+	s.InternetIp = &v
+	return s
+}
+
+func (s *DescribeVulDetailsResponseBodyCves) SetIntranetIp(v string) *DescribeVulDetailsResponseBodyCves {
+	s.IntranetIp = &v
+	return s
+}
+
 func (s *DescribeVulDetailsResponseBodyCves) SetPoc(v string) *DescribeVulDetailsResponseBodyCves {
 	s.Poc = &v
 	return s
@@ -24897,6 +25531,16 @@ func (s *DescribeVulDetailsResponseBodyCves) SetSolution(v string) *DescribeVulD
 
 func (s *DescribeVulDetailsResponseBodyCves) SetSummary(v string) *DescribeVulDetailsResponseBodyCves {
 	s.Summary = &v
+	return s
+}
+
+func (s *DescribeVulDetailsResponseBodyCves) SetTargetId(v string) *DescribeVulDetailsResponseBodyCves {
+	s.TargetId = &v
+	return s
+}
+
+func (s *DescribeVulDetailsResponseBodyCves) SetTargetName(v string) *DescribeVulDetailsResponseBodyCves {
+	s.TargetName = &v
 	return s
 }
 
@@ -25787,6 +26431,7 @@ func (s *DescribeVulWhitelistRequest) SetPageSize(v int32) *DescribeVulWhitelist
 }
 
 type DescribeVulWhitelistResponseBody struct {
+	Count         *int32                                           `json:"Count,omitempty" xml:"Count,omitempty"`
 	CurrentPage   *int32                                           `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	PageSize      *int32                                           `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	RequestId     *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -25800,6 +26445,11 @@ func (s DescribeVulWhitelistResponseBody) String() string {
 
 func (s DescribeVulWhitelistResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeVulWhitelistResponseBody) SetCount(v int32) *DescribeVulWhitelistResponseBody {
+	s.Count = &v
+	return s
 }
 
 func (s *DescribeVulWhitelistResponseBody) SetCurrentPage(v int32) *DescribeVulWhitelistResponseBody {
@@ -25834,6 +26484,7 @@ type DescribeVulWhitelistResponseBodyVulWhitelists struct {
 	Reason     *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
 	TargetInfo *string `json:"TargetInfo,omitempty" xml:"TargetInfo,omitempty"`
 	Type       *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Whitelist  *string `json:"Whitelist,omitempty" xml:"Whitelist,omitempty"`
 }
 
 func (s DescribeVulWhitelistResponseBodyVulWhitelists) String() string {
@@ -25871,6 +26522,11 @@ func (s *DescribeVulWhitelistResponseBodyVulWhitelists) SetTargetInfo(v string) 
 
 func (s *DescribeVulWhitelistResponseBodyVulWhitelists) SetType(v string) *DescribeVulWhitelistResponseBodyVulWhitelists {
 	s.Type = &v
+	return s
+}
+
+func (s *DescribeVulWhitelistResponseBodyVulWhitelists) SetWhitelist(v string) *DescribeVulWhitelistResponseBodyVulWhitelists {
+	s.Whitelist = &v
 	return s
 }
 
@@ -27935,6 +28591,128 @@ func (s *GetVulStatisticsResponse) SetBody(v *GetVulStatisticsResponseBody) *Get
 	return s
 }
 
+type GetVulWhitelistRequest struct {
+	VulWhitelistId *int64 `json:"VulWhitelistId,omitempty" xml:"VulWhitelistId,omitempty"`
+}
+
+func (s GetVulWhitelistRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetVulWhitelistRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetVulWhitelistRequest) SetVulWhitelistId(v int64) *GetVulWhitelistRequest {
+	s.VulWhitelistId = &v
+	return s
+}
+
+type GetVulWhitelistResponseBody struct {
+	RequestId    *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	VulWhitelist *GetVulWhitelistResponseBodyVulWhitelist `json:"VulWhitelist,omitempty" xml:"VulWhitelist,omitempty" type:"Struct"`
+}
+
+func (s GetVulWhitelistResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetVulWhitelistResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetVulWhitelistResponseBody) SetRequestId(v string) *GetVulWhitelistResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetVulWhitelistResponseBody) SetVulWhitelist(v *GetVulWhitelistResponseBodyVulWhitelist) *GetVulWhitelistResponseBody {
+	s.VulWhitelist = v
+	return s
+}
+
+type GetVulWhitelistResponseBodyVulWhitelist struct {
+	AliasName *string `json:"AliasName,omitempty" xml:"AliasName,omitempty"`
+	Id        *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name      *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Reason    *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	Target    *string `json:"Target,omitempty" xml:"Target,omitempty"`
+	Type      *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Whitelist *string `json:"Whitelist,omitempty" xml:"Whitelist,omitempty"`
+}
+
+func (s GetVulWhitelistResponseBodyVulWhitelist) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetVulWhitelistResponseBodyVulWhitelist) GoString() string {
+	return s.String()
+}
+
+func (s *GetVulWhitelistResponseBodyVulWhitelist) SetAliasName(v string) *GetVulWhitelistResponseBodyVulWhitelist {
+	s.AliasName = &v
+	return s
+}
+
+func (s *GetVulWhitelistResponseBodyVulWhitelist) SetId(v int64) *GetVulWhitelistResponseBodyVulWhitelist {
+	s.Id = &v
+	return s
+}
+
+func (s *GetVulWhitelistResponseBodyVulWhitelist) SetName(v string) *GetVulWhitelistResponseBodyVulWhitelist {
+	s.Name = &v
+	return s
+}
+
+func (s *GetVulWhitelistResponseBodyVulWhitelist) SetReason(v string) *GetVulWhitelistResponseBodyVulWhitelist {
+	s.Reason = &v
+	return s
+}
+
+func (s *GetVulWhitelistResponseBodyVulWhitelist) SetTarget(v string) *GetVulWhitelistResponseBodyVulWhitelist {
+	s.Target = &v
+	return s
+}
+
+func (s *GetVulWhitelistResponseBodyVulWhitelist) SetType(v string) *GetVulWhitelistResponseBodyVulWhitelist {
+	s.Type = &v
+	return s
+}
+
+func (s *GetVulWhitelistResponseBodyVulWhitelist) SetWhitelist(v string) *GetVulWhitelistResponseBodyVulWhitelist {
+	s.Whitelist = &v
+	return s
+}
+
+type GetVulWhitelistResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetVulWhitelistResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetVulWhitelistResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetVulWhitelistResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetVulWhitelistResponse) SetHeaders(v map[string]*string) *GetVulWhitelistResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetVulWhitelistResponse) SetStatusCode(v int32) *GetVulWhitelistResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetVulWhitelistResponse) SetBody(v *GetVulWhitelistResponseBody) *GetVulWhitelistResponse {
+	s.Body = v
+	return s
+}
+
 type HandleSecurityEventsRequest struct {
 	MarkBatch        *string   `json:"MarkBatch,omitempty" xml:"MarkBatch,omitempty"`
 	MarkMissParam    *string   `json:"MarkMissParam,omitempty" xml:"MarkMissParam,omitempty"`
@@ -29290,6 +30068,7 @@ type ListHoneypotResponseBodyList struct {
 	ControlNodeName          *string   `json:"ControlNodeName,omitempty" xml:"ControlNodeName,omitempty"`
 	HoneypotId               *string   `json:"HoneypotId,omitempty" xml:"HoneypotId,omitempty"`
 	HoneypotImageDisplayName *string   `json:"HoneypotImageDisplayName,omitempty" xml:"HoneypotImageDisplayName,omitempty"`
+	HoneypotImageId          *string   `json:"HoneypotImageId,omitempty" xml:"HoneypotImageId,omitempty"`
 	HoneypotImageName        *string   `json:"HoneypotImageName,omitempty" xml:"HoneypotImageName,omitempty"`
 	HoneypotName             *string   `json:"HoneypotName,omitempty" xml:"HoneypotName,omitempty"`
 	NodeId                   *string   `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
@@ -29317,6 +30096,11 @@ func (s *ListHoneypotResponseBodyList) SetHoneypotId(v string) *ListHoneypotResp
 
 func (s *ListHoneypotResponseBodyList) SetHoneypotImageDisplayName(v string) *ListHoneypotResponseBodyList {
 	s.HoneypotImageDisplayName = &v
+	return s
+}
+
+func (s *ListHoneypotResponseBodyList) SetHoneypotImageId(v string) *ListHoneypotResponseBodyList {
+	s.HoneypotImageId = &v
 	return s
 }
 
@@ -29763,6 +30547,7 @@ type ListHoneypotNodeResponseBodyHoneypotNodeList struct {
 	ProbeUsedCount              *int32    `json:"ProbeUsedCount,omitempty" xml:"ProbeUsedCount,omitempty"`
 	SecurityGroupProbeIpList    []*string `json:"SecurityGroupProbeIpList,omitempty" xml:"SecurityGroupProbeIpList,omitempty" type:"Repeated"`
 	TotalStatus                 *int32    `json:"TotalStatus,omitempty" xml:"TotalStatus,omitempty"`
+	UpgradeAvailable            *bool     `json:"UpgradeAvailable,omitempty" xml:"UpgradeAvailable,omitempty"`
 }
 
 func (s ListHoneypotNodeResponseBodyHoneypotNodeList) String() string {
@@ -29835,6 +30620,11 @@ func (s *ListHoneypotNodeResponseBodyHoneypotNodeList) SetSecurityGroupProbeIpLi
 
 func (s *ListHoneypotNodeResponseBodyHoneypotNodeList) SetTotalStatus(v int32) *ListHoneypotNodeResponseBodyHoneypotNodeList {
 	s.TotalStatus = &v
+	return s
+}
+
+func (s *ListHoneypotNodeResponseBodyHoneypotNodeList) SetUpgradeAvailable(v bool) *ListHoneypotNodeResponseBodyHoneypotNodeList {
+	s.UpgradeAvailable = &v
 	return s
 }
 
@@ -30607,7 +31397,8 @@ func (s *ModifyCreateVulWhitelistRequest) SetWhitelist(v string) *ModifyCreateVu
 }
 
 type ModifyCreateVulWhitelistResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId        *string                                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	VulWhitelistList []*ModifyCreateVulWhitelistResponseBodyVulWhitelistList `json:"VulWhitelistList,omitempty" xml:"VulWhitelistList,omitempty" type:"Repeated"`
 }
 
 func (s ModifyCreateVulWhitelistResponseBody) String() string {
@@ -30620,6 +31411,28 @@ func (s ModifyCreateVulWhitelistResponseBody) GoString() string {
 
 func (s *ModifyCreateVulWhitelistResponseBody) SetRequestId(v string) *ModifyCreateVulWhitelistResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *ModifyCreateVulWhitelistResponseBody) SetVulWhitelistList(v []*ModifyCreateVulWhitelistResponseBodyVulWhitelistList) *ModifyCreateVulWhitelistResponseBody {
+	s.VulWhitelistList = v
+	return s
+}
+
+type ModifyCreateVulWhitelistResponseBodyVulWhitelistList struct {
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+}
+
+func (s ModifyCreateVulWhitelistResponseBodyVulWhitelistList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyCreateVulWhitelistResponseBodyVulWhitelistList) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyCreateVulWhitelistResponseBodyVulWhitelistList) SetId(v int64) *ModifyCreateVulWhitelistResponseBodyVulWhitelistList {
+	s.Id = &v
 	return s
 }
 
@@ -36189,6 +37002,50 @@ func (client *Client) CreateVulAutoRepairConfig(request *CreateVulAutoRepairConf
 	return _result, _err
 }
 
+func (client *Client) DeleteAntiBruteForceRuleWithOptions(request *DeleteAntiBruteForceRuleRequest, runtime *util.RuntimeOptions) (_result *DeleteAntiBruteForceRuleResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Ids)) {
+		query["Ids"] = request.Ids
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteAntiBruteForceRule"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteAntiBruteForceRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteAntiBruteForceRule(request *DeleteAntiBruteForceRuleRequest) (_result *DeleteAntiBruteForceRuleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteAntiBruteForceRuleResponse{}
+	_body, _err := client.DeleteAntiBruteForceRuleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DeleteBackupPolicyWithOptions(request *DeleteBackupPolicyRequest, runtime *util.RuntimeOptions) (_result *DeleteBackupPolicyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -36530,6 +37387,54 @@ func (client *Client) DeleteVpcHoneyPot(request *DeleteVpcHoneyPotRequest) (_res
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteVpcHoneyPotResponse{}
 	_body, _err := client.DeleteVpcHoneyPotWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteVulWhitelistWithOptions(request *DeleteVulWhitelistRequest, runtime *util.RuntimeOptions) (_result *DeleteVulWhitelistResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		query["Id"] = request.Id
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Whitelist)) {
+		query["Whitelist"] = request.Whitelist
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteVulWhitelist"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteVulWhitelistResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteVulWhitelist(request *DeleteVulWhitelistRequest) (_result *DeleteVulWhitelistResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteVulWhitelistResponse{}
+	_body, _err := client.DeleteVulWhitelistWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -37525,6 +38430,50 @@ func (client *Client) DescribeBackupPolicies(request *DescribeBackupPoliciesRequ
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeBackupPoliciesResponse{}
 	_body, _err := client.DescribeBackupPoliciesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeBackupPolicyWithOptions(request *DescribeBackupPolicyRequest, runtime *util.RuntimeOptions) (_result *DescribeBackupPolicyResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		query["Id"] = request.Id
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeBackupPolicy"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeBackupPolicyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeBackupPolicy(request *DescribeBackupPolicyRequest) (_result *DescribeBackupPolicyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeBackupPolicyResponse{}
+	_body, _err := client.DescribeBackupPolicyWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -39075,6 +40024,10 @@ func (client *Client) DescribeGroupedMaliciousFilesWithOptions(request *Describe
 
 	if !tea.BoolValue(util.IsUnset(request.Levels)) {
 		query["Levels"] = request.Levels
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaliciousMd5)) {
+		query["MaliciousMd5"] = request.MaliciousMd5
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
@@ -40643,6 +41596,78 @@ func (client *Client) DescribeNoticeConfig(request *DescribeNoticeConfigRequest)
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeNoticeConfigResponse{}
 	_body, _err := client.DescribeNoticeConfigWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeNsasSuspEventTypeWithOptions(request *DescribeNsasSuspEventTypeRequest, runtime *util.RuntimeOptions) (_result *DescribeNsasSuspEventTypeResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ContainerFieldName)) {
+		query["ContainerFieldName"] = request.ContainerFieldName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ContainerFieldValue)) {
+		query["ContainerFieldValue"] = request.ContainerFieldValue
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.From)) {
+		query["From"] = request.From
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Remark)) {
+		query["Remark"] = request.Remark
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceIp)) {
+		query["SourceIp"] = request.SourceIp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Uuids)) {
+		query["Uuids"] = request.Uuids
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeNsasSuspEventType"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeNsasSuspEventTypeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeNsasSuspEventType(request *DescribeNsasSuspEventTypeRequest) (_result *DescribeNsasSuspEventTypeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeNsasSuspEventTypeResponse{}
+	_body, _err := client.DescribeNsasSuspEventTypeWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -44880,6 +45905,50 @@ func (client *Client) GetVulStatistics(request *GetVulStatisticsRequest) (_resul
 	runtime := &util.RuntimeOptions{}
 	_result = &GetVulStatisticsResponse{}
 	_body, _err := client.GetVulStatisticsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetVulWhitelistWithOptions(request *GetVulWhitelistRequest, runtime *util.RuntimeOptions) (_result *GetVulWhitelistResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.VulWhitelistId)) {
+		query["VulWhitelistId"] = request.VulWhitelistId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetVulWhitelist"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetVulWhitelistResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetVulWhitelist(request *GetVulWhitelistRequest) (_result *GetVulWhitelistResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetVulWhitelistResponse{}
+	_body, _err := client.GetVulWhitelistWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
