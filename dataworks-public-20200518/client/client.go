@@ -383,6 +383,99 @@ func (s *ApprovePermissionApplyOrderResponse) SetBody(v *ApprovePermissionApplyO
 	return s
 }
 
+type ChangeResourceManagerResourceGroupRequest struct {
+	ResourceId                     *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+	ResourceType                   *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+}
+
+func (s ChangeResourceManagerResourceGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ChangeResourceManagerResourceGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ChangeResourceManagerResourceGroupRequest) SetResourceId(v string) *ChangeResourceManagerResourceGroupRequest {
+	s.ResourceId = &v
+	return s
+}
+
+func (s *ChangeResourceManagerResourceGroupRequest) SetResourceManagerResourceGroupId(v string) *ChangeResourceManagerResourceGroupRequest {
+	s.ResourceManagerResourceGroupId = &v
+	return s
+}
+
+func (s *ChangeResourceManagerResourceGroupRequest) SetResourceType(v string) *ChangeResourceManagerResourceGroupRequest {
+	s.ResourceType = &v
+	return s
+}
+
+type ChangeResourceManagerResourceGroupResponseBody struct {
+	Data           *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
+	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ChangeResourceManagerResourceGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ChangeResourceManagerResourceGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ChangeResourceManagerResourceGroupResponseBody) SetData(v bool) *ChangeResourceManagerResourceGroupResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *ChangeResourceManagerResourceGroupResponseBody) SetHttpStatusCode(v int32) *ChangeResourceManagerResourceGroupResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ChangeResourceManagerResourceGroupResponseBody) SetRequestId(v string) *ChangeResourceManagerResourceGroupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ChangeResourceManagerResourceGroupResponseBody) SetSuccess(v bool) *ChangeResourceManagerResourceGroupResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ChangeResourceManagerResourceGroupResponse struct {
+	Headers    map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ChangeResourceManagerResourceGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ChangeResourceManagerResourceGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ChangeResourceManagerResourceGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ChangeResourceManagerResourceGroupResponse) SetHeaders(v map[string]*string) *ChangeResourceManagerResourceGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ChangeResourceManagerResourceGroupResponse) SetStatusCode(v int32) *ChangeResourceManagerResourceGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ChangeResourceManagerResourceGroupResponse) SetBody(v *ChangeResourceManagerResourceGroupResponseBody) *ChangeResourceManagerResourceGroupResponse {
+	s.Body = v
+	return s
+}
+
 type CheckFileDeploymentRequest struct {
 	CheckDetailUrl    *string `json:"CheckDetailUrl,omitempty" xml:"CheckDetailUrl,omitempty"`
 	CheckerInstanceId *string `json:"CheckerInstanceId,omitempty" xml:"CheckerInstanceId,omitempty"`
@@ -23059,7 +23152,6 @@ type ListBaselinesRequest struct {
 	PageNumber    *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	Priority      *string `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	ProjectEnv    *string `json:"ProjectEnv,omitempty" xml:"ProjectEnv,omitempty"`
 	ProjectId     *int64  `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	SearchText    *string `json:"SearchText,omitempty" xml:"SearchText,omitempty"`
 }
@@ -23099,11 +23191,6 @@ func (s *ListBaselinesRequest) SetPageSize(v int32) *ListBaselinesRequest {
 
 func (s *ListBaselinesRequest) SetPriority(v string) *ListBaselinesRequest {
 	s.Priority = &v
-	return s
-}
-
-func (s *ListBaselinesRequest) SetProjectEnv(v string) *ListBaselinesRequest {
-	s.ProjectEnv = &v
 	return s
 }
 
@@ -34166,6 +34253,7 @@ type ListResourceGroupsRequest struct {
 	ResourceGroupType              *int32                           `json:"ResourceGroupType,omitempty" xml:"ResourceGroupType,omitempty"`
 	ResourceManagerResourceGroupId *string                          `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
 	Tags                           []*ListResourceGroupsRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	TypeNames                      *string                          `json:"TypeNames,omitempty" xml:"TypeNames,omitempty"`
 }
 
 func (s ListResourceGroupsRequest) String() string {
@@ -34201,6 +34289,11 @@ func (s *ListResourceGroupsRequest) SetTags(v []*ListResourceGroupsRequestTags) 
 	return s
 }
 
+func (s *ListResourceGroupsRequest) SetTypeNames(v string) *ListResourceGroupsRequest {
+	s.TypeNames = &v
+	return s
+}
+
 type ListResourceGroupsRequestTags struct {
 	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
@@ -34230,6 +34323,7 @@ type ListResourceGroupsShrinkRequest struct {
 	ResourceGroupType              *int32  `json:"ResourceGroupType,omitempty" xml:"ResourceGroupType,omitempty"`
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
 	TagsShrink                     *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	TypeNames                      *string `json:"TypeNames,omitempty" xml:"TypeNames,omitempty"`
 }
 
 func (s ListResourceGroupsShrinkRequest) String() string {
@@ -34262,6 +34356,11 @@ func (s *ListResourceGroupsShrinkRequest) SetResourceManagerResourceGroupId(v st
 
 func (s *ListResourceGroupsShrinkRequest) SetTagsShrink(v string) *ListResourceGroupsShrinkRequest {
 	s.TagsShrink = &v
+	return s
+}
+
+func (s *ListResourceGroupsShrinkRequest) SetTypeNames(v string) *ListResourceGroupsShrinkRequest {
+	s.TypeNames = &v
 	return s
 }
 
@@ -42696,6 +42795,58 @@ func (client *Client) ApprovePermissionApplyOrder(request *ApprovePermissionAppl
 	return _result, _err
 }
 
+func (client *Client) ChangeResourceManagerResourceGroupWithOptions(request *ChangeResourceManagerResourceGroupRequest, runtime *util.RuntimeOptions) (_result *ChangeResourceManagerResourceGroupResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
+		query["ResourceId"] = request.ResourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceManagerResourceGroupId)) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ChangeResourceManagerResourceGroup"),
+		Version:     tea.String("2020-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ChangeResourceManagerResourceGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ChangeResourceManagerResourceGroup(request *ChangeResourceManagerResourceGroupRequest) (_result *ChangeResourceManagerResourceGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ChangeResourceManagerResourceGroupResponse{}
+	_body, _err := client.ChangeResourceManagerResourceGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) CheckFileDeploymentWithOptions(request *CheckFileDeploymentRequest, runtime *util.RuntimeOptions) (_result *CheckFileDeploymentResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -48659,8 +48810,8 @@ func (client *Client) GetMetaTablePartitionWithOptions(tmpReq *GetMetaTableParti
 	}
 	request := &GetMetaTablePartitionShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.SortCriterion))) {
-		request.SortCriterionShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.SortCriterion), tea.String("SortCriterion"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.SortCriterion)) {
+		request.SortCriterionShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SortCriterion, tea.String("SortCriterion"), tea.String("json"))
 	}
 
 	query := map[string]interface{}{}
@@ -50098,10 +50249,6 @@ func (client *Client) ListBaselinesWithOptions(request *ListBaselinesRequest, ru
 
 	if !tea.BoolValue(util.IsUnset(request.Priority)) {
 		body["Priority"] = request.Priority
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ProjectEnv)) {
-		body["ProjectEnv"] = request.ProjectEnv
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
@@ -52738,6 +52885,10 @@ func (client *Client) ListResourceGroupsWithOptions(tmpReq *ListResourceGroupsRe
 
 	if !tea.BoolValue(util.IsUnset(request.TagsShrink)) {
 		query["Tags"] = request.TagsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TypeNames)) {
+		query["TypeNames"] = request.TypeNames
 	}
 
 	req := &openapi.OpenApiRequest{
