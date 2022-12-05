@@ -730,6 +730,7 @@ func (s *CreateBackupResponse) SetBody(v *CreateBackupResponseBody) *CreateBacku
 }
 
 type CreateDBClusterRequest struct {
+	AllowShutDown                          *string                      `json:"AllowShutDown,omitempty" xml:"AllowShutDown,omitempty"`
 	AutoRenew                              *bool                        `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
 	BackupRetentionPolicyOnClusterDeletion *string                      `json:"BackupRetentionPolicyOnClusterDeletion,omitempty" xml:"BackupRetentionPolicyOnClusterDeletion,omitempty"`
 	ClientToken                            *string                      `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
@@ -754,8 +755,14 @@ type CreateDBClusterRequest struct {
 	ResourceGroupId                        *string                      `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount                   *string                      `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId                        *int64                       `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	ScaleMax                               *string                      `json:"ScaleMax,omitempty" xml:"ScaleMax,omitempty"`
+	ScaleMin                               *string                      `json:"ScaleMin,omitempty" xml:"ScaleMin,omitempty"`
+	ScaleRoNumMax                          *string                      `json:"ScaleRoNumMax,omitempty" xml:"ScaleRoNumMax,omitempty"`
+	ScaleRoNumMin                          *string                      `json:"ScaleRoNumMin,omitempty" xml:"ScaleRoNumMin,omitempty"`
 	SecurityIPList                         *string                      `json:"SecurityIPList,omitempty" xml:"SecurityIPList,omitempty"`
+	ServerlessType                         *string                      `json:"ServerlessType,omitempty" xml:"ServerlessType,omitempty"`
 	SourceResourceId                       *string                      `json:"SourceResourceId,omitempty" xml:"SourceResourceId,omitempty"`
+	StorageType                            *string                      `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
 	TDEStatus                              *bool                        `json:"TDEStatus,omitempty" xml:"TDEStatus,omitempty"`
 	Tag                                    []*CreateDBClusterRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	UsedTime                               *string                      `json:"UsedTime,omitempty" xml:"UsedTime,omitempty"`
@@ -770,6 +777,11 @@ func (s CreateDBClusterRequest) String() string {
 
 func (s CreateDBClusterRequest) GoString() string {
 	return s.String()
+}
+
+func (s *CreateDBClusterRequest) SetAllowShutDown(v string) *CreateDBClusterRequest {
+	s.AllowShutDown = &v
+	return s
 }
 
 func (s *CreateDBClusterRequest) SetAutoRenew(v bool) *CreateDBClusterRequest {
@@ -892,13 +904,43 @@ func (s *CreateDBClusterRequest) SetResourceOwnerId(v int64) *CreateDBClusterReq
 	return s
 }
 
+func (s *CreateDBClusterRequest) SetScaleMax(v string) *CreateDBClusterRequest {
+	s.ScaleMax = &v
+	return s
+}
+
+func (s *CreateDBClusterRequest) SetScaleMin(v string) *CreateDBClusterRequest {
+	s.ScaleMin = &v
+	return s
+}
+
+func (s *CreateDBClusterRequest) SetScaleRoNumMax(v string) *CreateDBClusterRequest {
+	s.ScaleRoNumMax = &v
+	return s
+}
+
+func (s *CreateDBClusterRequest) SetScaleRoNumMin(v string) *CreateDBClusterRequest {
+	s.ScaleRoNumMin = &v
+	return s
+}
+
 func (s *CreateDBClusterRequest) SetSecurityIPList(v string) *CreateDBClusterRequest {
 	s.SecurityIPList = &v
 	return s
 }
 
+func (s *CreateDBClusterRequest) SetServerlessType(v string) *CreateDBClusterRequest {
+	s.ServerlessType = &v
+	return s
+}
+
 func (s *CreateDBClusterRequest) SetSourceResourceId(v string) *CreateDBClusterRequest {
 	s.SourceResourceId = &v
+	return s
+}
+
+func (s *CreateDBClusterRequest) SetStorageType(v string) *CreateDBClusterRequest {
+	s.StorageType = &v
 	return s
 }
 
@@ -1835,6 +1877,158 @@ func (s *CreateGlobalDatabaseNetworkResponse) SetStatusCode(v int32) *CreateGlob
 }
 
 func (s *CreateGlobalDatabaseNetworkResponse) SetBody(v *CreateGlobalDatabaseNetworkResponseBody) *CreateGlobalDatabaseNetworkResponse {
+	s.Body = v
+	return s
+}
+
+type CreateGlobalSecurityIPGroupRequest struct {
+	GIpList              *string `json:"GIpList,omitempty" xml:"GIpList,omitempty"`
+	GlobalIgName         *string `json:"GlobalIgName,omitempty" xml:"GlobalIgName,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+}
+
+func (s CreateGlobalSecurityIPGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateGlobalSecurityIPGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateGlobalSecurityIPGroupRequest) SetGIpList(v string) *CreateGlobalSecurityIPGroupRequest {
+	s.GIpList = &v
+	return s
+}
+
+func (s *CreateGlobalSecurityIPGroupRequest) SetGlobalIgName(v string) *CreateGlobalSecurityIPGroupRequest {
+	s.GlobalIgName = &v
+	return s
+}
+
+func (s *CreateGlobalSecurityIPGroupRequest) SetOwnerAccount(v string) *CreateGlobalSecurityIPGroupRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *CreateGlobalSecurityIPGroupRequest) SetOwnerId(v int64) *CreateGlobalSecurityIPGroupRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *CreateGlobalSecurityIPGroupRequest) SetRegionId(v string) *CreateGlobalSecurityIPGroupRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *CreateGlobalSecurityIPGroupRequest) SetResourceGroupId(v string) *CreateGlobalSecurityIPGroupRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *CreateGlobalSecurityIPGroupRequest) SetResourceOwnerAccount(v string) *CreateGlobalSecurityIPGroupRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *CreateGlobalSecurityIPGroupRequest) SetResourceOwnerId(v int64) *CreateGlobalSecurityIPGroupRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *CreateGlobalSecurityIPGroupRequest) SetSecurityToken(v string) *CreateGlobalSecurityIPGroupRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+type CreateGlobalSecurityIPGroupResponseBody struct {
+	GlobalSecurityIPGroup []*CreateGlobalSecurityIPGroupResponseBodyGlobalSecurityIPGroup `json:"GlobalSecurityIPGroup,omitempty" xml:"GlobalSecurityIPGroup,omitempty" type:"Repeated"`
+	RequestId             *string                                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateGlobalSecurityIPGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateGlobalSecurityIPGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateGlobalSecurityIPGroupResponseBody) SetGlobalSecurityIPGroup(v []*CreateGlobalSecurityIPGroupResponseBodyGlobalSecurityIPGroup) *CreateGlobalSecurityIPGroupResponseBody {
+	s.GlobalSecurityIPGroup = v
+	return s
+}
+
+func (s *CreateGlobalSecurityIPGroupResponseBody) SetRequestId(v string) *CreateGlobalSecurityIPGroupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateGlobalSecurityIPGroupResponseBodyGlobalSecurityIPGroup struct {
+	GIpList               *string `json:"GIpList,omitempty" xml:"GIpList,omitempty"`
+	GlobalIgName          *string `json:"GlobalIgName,omitempty" xml:"GlobalIgName,omitempty"`
+	GlobalSecurityGroupId *string `json:"GlobalSecurityGroupId,omitempty" xml:"GlobalSecurityGroupId,omitempty"`
+	RegionId              *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s CreateGlobalSecurityIPGroupResponseBodyGlobalSecurityIPGroup) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateGlobalSecurityIPGroupResponseBodyGlobalSecurityIPGroup) GoString() string {
+	return s.String()
+}
+
+func (s *CreateGlobalSecurityIPGroupResponseBodyGlobalSecurityIPGroup) SetGIpList(v string) *CreateGlobalSecurityIPGroupResponseBodyGlobalSecurityIPGroup {
+	s.GIpList = &v
+	return s
+}
+
+func (s *CreateGlobalSecurityIPGroupResponseBodyGlobalSecurityIPGroup) SetGlobalIgName(v string) *CreateGlobalSecurityIPGroupResponseBodyGlobalSecurityIPGroup {
+	s.GlobalIgName = &v
+	return s
+}
+
+func (s *CreateGlobalSecurityIPGroupResponseBodyGlobalSecurityIPGroup) SetGlobalSecurityGroupId(v string) *CreateGlobalSecurityIPGroupResponseBodyGlobalSecurityIPGroup {
+	s.GlobalSecurityGroupId = &v
+	return s
+}
+
+func (s *CreateGlobalSecurityIPGroupResponseBodyGlobalSecurityIPGroup) SetRegionId(v string) *CreateGlobalSecurityIPGroupResponseBodyGlobalSecurityIPGroup {
+	s.RegionId = &v
+	return s
+}
+
+type CreateGlobalSecurityIPGroupResponse struct {
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateGlobalSecurityIPGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateGlobalSecurityIPGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateGlobalSecurityIPGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateGlobalSecurityIPGroupResponse) SetHeaders(v map[string]*string) *CreateGlobalSecurityIPGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateGlobalSecurityIPGroupResponse) SetStatusCode(v int32) *CreateGlobalSecurityIPGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateGlobalSecurityIPGroupResponse) SetBody(v *CreateGlobalSecurityIPGroupResponseBody) *CreateGlobalSecurityIPGroupResponse {
 	s.Body = v
 	return s
 }
@@ -2954,6 +3148,164 @@ func (s *DeleteGlobalDatabaseNetworkResponse) SetStatusCode(v int32) *DeleteGlob
 }
 
 func (s *DeleteGlobalDatabaseNetworkResponse) SetBody(v *DeleteGlobalDatabaseNetworkResponseBody) *DeleteGlobalDatabaseNetworkResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteGlobalSecurityIPGroupRequest struct {
+	GlobalIgName          *string `json:"GlobalIgName,omitempty" xml:"GlobalIgName,omitempty"`
+	GlobalSecurityGroupId *string `json:"GlobalSecurityGroupId,omitempty" xml:"GlobalSecurityGroupId,omitempty"`
+	OwnerAccount          *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId               *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId              *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId       *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ResourceOwnerAccount  *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId       *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	SecurityToken         *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+}
+
+func (s DeleteGlobalSecurityIPGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteGlobalSecurityIPGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteGlobalSecurityIPGroupRequest) SetGlobalIgName(v string) *DeleteGlobalSecurityIPGroupRequest {
+	s.GlobalIgName = &v
+	return s
+}
+
+func (s *DeleteGlobalSecurityIPGroupRequest) SetGlobalSecurityGroupId(v string) *DeleteGlobalSecurityIPGroupRequest {
+	s.GlobalSecurityGroupId = &v
+	return s
+}
+
+func (s *DeleteGlobalSecurityIPGroupRequest) SetOwnerAccount(v string) *DeleteGlobalSecurityIPGroupRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *DeleteGlobalSecurityIPGroupRequest) SetOwnerId(v int64) *DeleteGlobalSecurityIPGroupRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DeleteGlobalSecurityIPGroupRequest) SetRegionId(v string) *DeleteGlobalSecurityIPGroupRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DeleteGlobalSecurityIPGroupRequest) SetResourceGroupId(v string) *DeleteGlobalSecurityIPGroupRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *DeleteGlobalSecurityIPGroupRequest) SetResourceOwnerAccount(v string) *DeleteGlobalSecurityIPGroupRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *DeleteGlobalSecurityIPGroupRequest) SetResourceOwnerId(v int64) *DeleteGlobalSecurityIPGroupRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *DeleteGlobalSecurityIPGroupRequest) SetSecurityToken(v string) *DeleteGlobalSecurityIPGroupRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+type DeleteGlobalSecurityIPGroupResponseBody struct {
+	GlobalSecurityIPGroup []*DeleteGlobalSecurityIPGroupResponseBodyGlobalSecurityIPGroup `json:"GlobalSecurityIPGroup,omitempty" xml:"GlobalSecurityIPGroup,omitempty" type:"Repeated"`
+	RequestId             *string                                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteGlobalSecurityIPGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteGlobalSecurityIPGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteGlobalSecurityIPGroupResponseBody) SetGlobalSecurityIPGroup(v []*DeleteGlobalSecurityIPGroupResponseBodyGlobalSecurityIPGroup) *DeleteGlobalSecurityIPGroupResponseBody {
+	s.GlobalSecurityIPGroup = v
+	return s
+}
+
+func (s *DeleteGlobalSecurityIPGroupResponseBody) SetRequestId(v string) *DeleteGlobalSecurityIPGroupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteGlobalSecurityIPGroupResponseBodyGlobalSecurityIPGroup struct {
+	DBInstances           []*string `json:"DBInstances,omitempty" xml:"DBInstances,omitempty" type:"Repeated"`
+	GIpList               *string   `json:"GIpList,omitempty" xml:"GIpList,omitempty"`
+	GlobalIgName          *string   `json:"GlobalIgName,omitempty" xml:"GlobalIgName,omitempty"`
+	GlobalSecurityGroupId *string   `json:"GlobalSecurityGroupId,omitempty" xml:"GlobalSecurityGroupId,omitempty"`
+	RegionId              *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s DeleteGlobalSecurityIPGroupResponseBodyGlobalSecurityIPGroup) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteGlobalSecurityIPGroupResponseBodyGlobalSecurityIPGroup) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteGlobalSecurityIPGroupResponseBodyGlobalSecurityIPGroup) SetDBInstances(v []*string) *DeleteGlobalSecurityIPGroupResponseBodyGlobalSecurityIPGroup {
+	s.DBInstances = v
+	return s
+}
+
+func (s *DeleteGlobalSecurityIPGroupResponseBodyGlobalSecurityIPGroup) SetGIpList(v string) *DeleteGlobalSecurityIPGroupResponseBodyGlobalSecurityIPGroup {
+	s.GIpList = &v
+	return s
+}
+
+func (s *DeleteGlobalSecurityIPGroupResponseBodyGlobalSecurityIPGroup) SetGlobalIgName(v string) *DeleteGlobalSecurityIPGroupResponseBodyGlobalSecurityIPGroup {
+	s.GlobalIgName = &v
+	return s
+}
+
+func (s *DeleteGlobalSecurityIPGroupResponseBodyGlobalSecurityIPGroup) SetGlobalSecurityGroupId(v string) *DeleteGlobalSecurityIPGroupResponseBodyGlobalSecurityIPGroup {
+	s.GlobalSecurityGroupId = &v
+	return s
+}
+
+func (s *DeleteGlobalSecurityIPGroupResponseBodyGlobalSecurityIPGroup) SetRegionId(v string) *DeleteGlobalSecurityIPGroupResponseBodyGlobalSecurityIPGroup {
+	s.RegionId = &v
+	return s
+}
+
+type DeleteGlobalSecurityIPGroupResponse struct {
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteGlobalSecurityIPGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteGlobalSecurityIPGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteGlobalSecurityIPGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteGlobalSecurityIPGroupResponse) SetHeaders(v map[string]*string) *DeleteGlobalSecurityIPGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteGlobalSecurityIPGroupResponse) SetStatusCode(v int32) *DeleteGlobalSecurityIPGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteGlobalSecurityIPGroupResponse) SetBody(v *DeleteGlobalSecurityIPGroupResponseBody) *DeleteGlobalSecurityIPGroupResponse {
 	s.Body = v
 	return s
 }
@@ -5270,6 +5622,7 @@ type DescribeDBClusterAttributeResponseBodyDBNodes struct {
 	MaxConnections   *int32  `json:"MaxConnections,omitempty" xml:"MaxConnections,omitempty"`
 	MaxIOPS          *int32  `json:"MaxIOPS,omitempty" xml:"MaxIOPS,omitempty"`
 	SccMode          *string `json:"SccMode,omitempty" xml:"SccMode,omitempty"`
+	ServerWeight     *string `json:"ServerWeight,omitempty" xml:"ServerWeight,omitempty"`
 	ZoneId           *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
@@ -5343,6 +5696,11 @@ func (s *DescribeDBClusterAttributeResponseBodyDBNodes) SetMaxIOPS(v int32) *Des
 
 func (s *DescribeDBClusterAttributeResponseBodyDBNodes) SetSccMode(v string) *DescribeDBClusterAttributeResponseBodyDBNodes {
 	s.SccMode = &v
+	return s
+}
+
+func (s *DescribeDBClusterAttributeResponseBodyDBNodes) SetServerWeight(v string) *DescribeDBClusterAttributeResponseBodyDBNodes {
+	s.ServerWeight = &v
 	return s
 }
 
@@ -5977,6 +6335,7 @@ type DescribeDBClusterMigrationResponseBody struct {
 	RdsReadWriteMode       *string                                                        `json:"RdsReadWriteMode,omitempty" xml:"RdsReadWriteMode,omitempty"`
 	RequestId              *string                                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	SourceRDSDBInstanceId  *string                                                        `json:"SourceRDSDBInstanceId,omitempty" xml:"SourceRDSDBInstanceId,omitempty"`
+	SrcDbType              *string                                                        `json:"SrcDbType,omitempty" xml:"SrcDbType,omitempty"`
 	Topologies             *string                                                        `json:"Topologies,omitempty" xml:"Topologies,omitempty"`
 }
 
@@ -6045,6 +6404,11 @@ func (s *DescribeDBClusterMigrationResponseBody) SetRequestId(v string) *Describ
 
 func (s *DescribeDBClusterMigrationResponseBody) SetSourceRDSDBInstanceId(v string) *DescribeDBClusterMigrationResponseBody {
 	s.SourceRDSDBInstanceId = &v
+	return s
+}
+
+func (s *DescribeDBClusterMigrationResponseBody) SetSrcDbType(v string) *DescribeDBClusterMigrationResponseBody {
+	s.SrcDbType = &v
 	return s
 }
 
@@ -6893,6 +7257,135 @@ func (s *DescribeDBClusterSSLResponse) SetBody(v *DescribeDBClusterSSLResponseBo
 	return s
 }
 
+type DescribeDBClusterServerlessConfRequest struct {
+	DBClusterId          *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s DescribeDBClusterServerlessConfRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDBClusterServerlessConfRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDBClusterServerlessConfRequest) SetDBClusterId(v string) *DescribeDBClusterServerlessConfRequest {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *DescribeDBClusterServerlessConfRequest) SetOwnerAccount(v string) *DescribeDBClusterServerlessConfRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *DescribeDBClusterServerlessConfRequest) SetOwnerId(v int64) *DescribeDBClusterServerlessConfRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribeDBClusterServerlessConfRequest) SetResourceOwnerAccount(v string) *DescribeDBClusterServerlessConfRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *DescribeDBClusterServerlessConfRequest) SetResourceOwnerId(v int64) *DescribeDBClusterServerlessConfRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type DescribeDBClusterServerlessConfResponseBody struct {
+	AllowShutDown         *string `json:"AllowShutDown,omitempty" xml:"AllowShutDown,omitempty"`
+	DBClusterId           *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	RequestId             *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ScaleMax              *string `json:"ScaleMax,omitempty" xml:"ScaleMax,omitempty"`
+	ScaleMin              *string `json:"ScaleMin,omitempty" xml:"ScaleMin,omitempty"`
+	ScaleRoNumMax         *string `json:"ScaleRoNumMax,omitempty" xml:"ScaleRoNumMax,omitempty"`
+	ScaleRoNumMin         *string `json:"ScaleRoNumMin,omitempty" xml:"ScaleRoNumMin,omitempty"`
+	SecondsUntilAutoPause *string `json:"SecondsUntilAutoPause,omitempty" xml:"SecondsUntilAutoPause,omitempty"`
+}
+
+func (s DescribeDBClusterServerlessConfResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDBClusterServerlessConfResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDBClusterServerlessConfResponseBody) SetAllowShutDown(v string) *DescribeDBClusterServerlessConfResponseBody {
+	s.AllowShutDown = &v
+	return s
+}
+
+func (s *DescribeDBClusterServerlessConfResponseBody) SetDBClusterId(v string) *DescribeDBClusterServerlessConfResponseBody {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *DescribeDBClusterServerlessConfResponseBody) SetRequestId(v string) *DescribeDBClusterServerlessConfResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeDBClusterServerlessConfResponseBody) SetScaleMax(v string) *DescribeDBClusterServerlessConfResponseBody {
+	s.ScaleMax = &v
+	return s
+}
+
+func (s *DescribeDBClusterServerlessConfResponseBody) SetScaleMin(v string) *DescribeDBClusterServerlessConfResponseBody {
+	s.ScaleMin = &v
+	return s
+}
+
+func (s *DescribeDBClusterServerlessConfResponseBody) SetScaleRoNumMax(v string) *DescribeDBClusterServerlessConfResponseBody {
+	s.ScaleRoNumMax = &v
+	return s
+}
+
+func (s *DescribeDBClusterServerlessConfResponseBody) SetScaleRoNumMin(v string) *DescribeDBClusterServerlessConfResponseBody {
+	s.ScaleRoNumMin = &v
+	return s
+}
+
+func (s *DescribeDBClusterServerlessConfResponseBody) SetSecondsUntilAutoPause(v string) *DescribeDBClusterServerlessConfResponseBody {
+	s.SecondsUntilAutoPause = &v
+	return s
+}
+
+type DescribeDBClusterServerlessConfResponse struct {
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeDBClusterServerlessConfResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeDBClusterServerlessConfResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDBClusterServerlessConfResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDBClusterServerlessConfResponse) SetHeaders(v map[string]*string) *DescribeDBClusterServerlessConfResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeDBClusterServerlessConfResponse) SetStatusCode(v int32) *DescribeDBClusterServerlessConfResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeDBClusterServerlessConfResponse) SetBody(v *DescribeDBClusterServerlessConfResponseBody) *DescribeDBClusterServerlessConfResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeDBClusterTDERequest struct {
 	DBClusterId          *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
@@ -7164,11 +7657,13 @@ func (s *DescribeDBClusterVersionResponse) SetBody(v *DescribeDBClusterVersionRe
 }
 
 type DescribeDBClustersRequest struct {
+	ConnectionString         *string                         `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
 	DBClusterDescription     *string                         `json:"DBClusterDescription,omitempty" xml:"DBClusterDescription,omitempty"`
 	DBClusterIds             *string                         `json:"DBClusterIds,omitempty" xml:"DBClusterIds,omitempty"`
 	DBClusterStatus          *string                         `json:"DBClusterStatus,omitempty" xml:"DBClusterStatus,omitempty"`
 	DBNodeIds                *string                         `json:"DBNodeIds,omitempty" xml:"DBNodeIds,omitempty"`
 	DBType                   *string                         `json:"DBType,omitempty" xml:"DBType,omitempty"`
+	DBVersion                *string                         `json:"DBVersion,omitempty" xml:"DBVersion,omitempty"`
 	Expired                  *bool                           `json:"Expired,omitempty" xml:"Expired,omitempty"`
 	OwnerAccount             *string                         `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId                  *int64                          `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -7190,6 +7685,11 @@ func (s DescribeDBClustersRequest) String() string {
 
 func (s DescribeDBClustersRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeDBClustersRequest) SetConnectionString(v string) *DescribeDBClustersRequest {
+	s.ConnectionString = &v
+	return s
 }
 
 func (s *DescribeDBClustersRequest) SetDBClusterDescription(v string) *DescribeDBClustersRequest {
@@ -7214,6 +7714,11 @@ func (s *DescribeDBClustersRequest) SetDBNodeIds(v string) *DescribeDBClustersRe
 
 func (s *DescribeDBClustersRequest) SetDBType(v string) *DescribeDBClustersRequest {
 	s.DBType = &v
+	return s
+}
+
+func (s *DescribeDBClustersRequest) SetDBVersion(v string) *DescribeDBClustersRequest {
+	s.DBVersion = &v
 	return s
 }
 
@@ -9967,6 +10472,310 @@ func (s *DescribeGlobalDatabaseNetworksResponse) SetStatusCode(v int32) *Describ
 }
 
 func (s *DescribeGlobalDatabaseNetworksResponse) SetBody(v *DescribeGlobalDatabaseNetworksResponseBody) *DescribeGlobalDatabaseNetworksResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeGlobalSecurityIPGroupRequest struct {
+	GlobalSecurityGroupId *string `json:"GlobalSecurityGroupId,omitempty" xml:"GlobalSecurityGroupId,omitempty"`
+	OwnerAccount          *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId               *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId              *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId       *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ResourceOwnerAccount  *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId       *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	SecurityToken         *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+}
+
+func (s DescribeGlobalSecurityIPGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeGlobalSecurityIPGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeGlobalSecurityIPGroupRequest) SetGlobalSecurityGroupId(v string) *DescribeGlobalSecurityIPGroupRequest {
+	s.GlobalSecurityGroupId = &v
+	return s
+}
+
+func (s *DescribeGlobalSecurityIPGroupRequest) SetOwnerAccount(v string) *DescribeGlobalSecurityIPGroupRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *DescribeGlobalSecurityIPGroupRequest) SetOwnerId(v int64) *DescribeGlobalSecurityIPGroupRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribeGlobalSecurityIPGroupRequest) SetRegionId(v string) *DescribeGlobalSecurityIPGroupRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeGlobalSecurityIPGroupRequest) SetResourceGroupId(v string) *DescribeGlobalSecurityIPGroupRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *DescribeGlobalSecurityIPGroupRequest) SetResourceOwnerAccount(v string) *DescribeGlobalSecurityIPGroupRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *DescribeGlobalSecurityIPGroupRequest) SetResourceOwnerId(v int64) *DescribeGlobalSecurityIPGroupRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *DescribeGlobalSecurityIPGroupRequest) SetSecurityToken(v string) *DescribeGlobalSecurityIPGroupRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+type DescribeGlobalSecurityIPGroupResponseBody struct {
+	GlobalSecurityIPGroup []*DescribeGlobalSecurityIPGroupResponseBodyGlobalSecurityIPGroup `json:"GlobalSecurityIPGroup,omitempty" xml:"GlobalSecurityIPGroup,omitempty" type:"Repeated"`
+	RequestId             *string                                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeGlobalSecurityIPGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeGlobalSecurityIPGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeGlobalSecurityIPGroupResponseBody) SetGlobalSecurityIPGroup(v []*DescribeGlobalSecurityIPGroupResponseBodyGlobalSecurityIPGroup) *DescribeGlobalSecurityIPGroupResponseBody {
+	s.GlobalSecurityIPGroup = v
+	return s
+}
+
+func (s *DescribeGlobalSecurityIPGroupResponseBody) SetRequestId(v string) *DescribeGlobalSecurityIPGroupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeGlobalSecurityIPGroupResponseBodyGlobalSecurityIPGroup struct {
+	DBInstances           []*string `json:"DBInstances,omitempty" xml:"DBInstances,omitempty" type:"Repeated"`
+	GIpList               *string   `json:"GIpList,omitempty" xml:"GIpList,omitempty"`
+	GlobalIgName          *string   `json:"GlobalIgName,omitempty" xml:"GlobalIgName,omitempty"`
+	GlobalSecurityGroupId *string   `json:"GlobalSecurityGroupId,omitempty" xml:"GlobalSecurityGroupId,omitempty"`
+	RegionId              *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s DescribeGlobalSecurityIPGroupResponseBodyGlobalSecurityIPGroup) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeGlobalSecurityIPGroupResponseBodyGlobalSecurityIPGroup) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeGlobalSecurityIPGroupResponseBodyGlobalSecurityIPGroup) SetDBInstances(v []*string) *DescribeGlobalSecurityIPGroupResponseBodyGlobalSecurityIPGroup {
+	s.DBInstances = v
+	return s
+}
+
+func (s *DescribeGlobalSecurityIPGroupResponseBodyGlobalSecurityIPGroup) SetGIpList(v string) *DescribeGlobalSecurityIPGroupResponseBodyGlobalSecurityIPGroup {
+	s.GIpList = &v
+	return s
+}
+
+func (s *DescribeGlobalSecurityIPGroupResponseBodyGlobalSecurityIPGroup) SetGlobalIgName(v string) *DescribeGlobalSecurityIPGroupResponseBodyGlobalSecurityIPGroup {
+	s.GlobalIgName = &v
+	return s
+}
+
+func (s *DescribeGlobalSecurityIPGroupResponseBodyGlobalSecurityIPGroup) SetGlobalSecurityGroupId(v string) *DescribeGlobalSecurityIPGroupResponseBodyGlobalSecurityIPGroup {
+	s.GlobalSecurityGroupId = &v
+	return s
+}
+
+func (s *DescribeGlobalSecurityIPGroupResponseBodyGlobalSecurityIPGroup) SetRegionId(v string) *DescribeGlobalSecurityIPGroupResponseBodyGlobalSecurityIPGroup {
+	s.RegionId = &v
+	return s
+}
+
+type DescribeGlobalSecurityIPGroupResponse struct {
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeGlobalSecurityIPGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeGlobalSecurityIPGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeGlobalSecurityIPGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeGlobalSecurityIPGroupResponse) SetHeaders(v map[string]*string) *DescribeGlobalSecurityIPGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeGlobalSecurityIPGroupResponse) SetStatusCode(v int32) *DescribeGlobalSecurityIPGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeGlobalSecurityIPGroupResponse) SetBody(v *DescribeGlobalSecurityIPGroupResponseBody) *DescribeGlobalSecurityIPGroupResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeGlobalSecurityIPGroupRelationRequest struct {
+	DBClusterId          *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+}
+
+func (s DescribeGlobalSecurityIPGroupRelationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeGlobalSecurityIPGroupRelationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeGlobalSecurityIPGroupRelationRequest) SetDBClusterId(v string) *DescribeGlobalSecurityIPGroupRelationRequest {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *DescribeGlobalSecurityIPGroupRelationRequest) SetOwnerAccount(v string) *DescribeGlobalSecurityIPGroupRelationRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *DescribeGlobalSecurityIPGroupRelationRequest) SetOwnerId(v int64) *DescribeGlobalSecurityIPGroupRelationRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribeGlobalSecurityIPGroupRelationRequest) SetRegionId(v string) *DescribeGlobalSecurityIPGroupRelationRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeGlobalSecurityIPGroupRelationRequest) SetResourceGroupId(v string) *DescribeGlobalSecurityIPGroupRelationRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *DescribeGlobalSecurityIPGroupRelationRequest) SetResourceOwnerAccount(v string) *DescribeGlobalSecurityIPGroupRelationRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *DescribeGlobalSecurityIPGroupRelationRequest) SetResourceOwnerId(v int64) *DescribeGlobalSecurityIPGroupRelationRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *DescribeGlobalSecurityIPGroupRelationRequest) SetSecurityToken(v string) *DescribeGlobalSecurityIPGroupRelationRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+type DescribeGlobalSecurityIPGroupRelationResponseBody struct {
+	DBClusterId              *string                                                                      `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	GlobalSecurityIPGroupRel []*DescribeGlobalSecurityIPGroupRelationResponseBodyGlobalSecurityIPGroupRel `json:"GlobalSecurityIPGroupRel,omitempty" xml:"GlobalSecurityIPGroupRel,omitempty" type:"Repeated"`
+	RequestId                *string                                                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeGlobalSecurityIPGroupRelationResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeGlobalSecurityIPGroupRelationResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeGlobalSecurityIPGroupRelationResponseBody) SetDBClusterId(v string) *DescribeGlobalSecurityIPGroupRelationResponseBody {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *DescribeGlobalSecurityIPGroupRelationResponseBody) SetGlobalSecurityIPGroupRel(v []*DescribeGlobalSecurityIPGroupRelationResponseBodyGlobalSecurityIPGroupRel) *DescribeGlobalSecurityIPGroupRelationResponseBody {
+	s.GlobalSecurityIPGroupRel = v
+	return s
+}
+
+func (s *DescribeGlobalSecurityIPGroupRelationResponseBody) SetRequestId(v string) *DescribeGlobalSecurityIPGroupRelationResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeGlobalSecurityIPGroupRelationResponseBodyGlobalSecurityIPGroupRel struct {
+	GIpList               *string `json:"GIpList,omitempty" xml:"GIpList,omitempty"`
+	GlobalIgName          *string `json:"GlobalIgName,omitempty" xml:"GlobalIgName,omitempty"`
+	GlobalSecurityGroupId *string `json:"GlobalSecurityGroupId,omitempty" xml:"GlobalSecurityGroupId,omitempty"`
+	RegionId              *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s DescribeGlobalSecurityIPGroupRelationResponseBodyGlobalSecurityIPGroupRel) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeGlobalSecurityIPGroupRelationResponseBodyGlobalSecurityIPGroupRel) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeGlobalSecurityIPGroupRelationResponseBodyGlobalSecurityIPGroupRel) SetGIpList(v string) *DescribeGlobalSecurityIPGroupRelationResponseBodyGlobalSecurityIPGroupRel {
+	s.GIpList = &v
+	return s
+}
+
+func (s *DescribeGlobalSecurityIPGroupRelationResponseBodyGlobalSecurityIPGroupRel) SetGlobalIgName(v string) *DescribeGlobalSecurityIPGroupRelationResponseBodyGlobalSecurityIPGroupRel {
+	s.GlobalIgName = &v
+	return s
+}
+
+func (s *DescribeGlobalSecurityIPGroupRelationResponseBodyGlobalSecurityIPGroupRel) SetGlobalSecurityGroupId(v string) *DescribeGlobalSecurityIPGroupRelationResponseBodyGlobalSecurityIPGroupRel {
+	s.GlobalSecurityGroupId = &v
+	return s
+}
+
+func (s *DescribeGlobalSecurityIPGroupRelationResponseBodyGlobalSecurityIPGroupRel) SetRegionId(v string) *DescribeGlobalSecurityIPGroupRelationResponseBodyGlobalSecurityIPGroupRel {
+	s.RegionId = &v
+	return s
+}
+
+type DescribeGlobalSecurityIPGroupRelationResponse struct {
+	Headers    map[string]*string                                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeGlobalSecurityIPGroupRelationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeGlobalSecurityIPGroupRelationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeGlobalSecurityIPGroupRelationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeGlobalSecurityIPGroupRelationResponse) SetHeaders(v map[string]*string) *DescribeGlobalSecurityIPGroupRelationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeGlobalSecurityIPGroupRelationResponse) SetStatusCode(v int32) *DescribeGlobalSecurityIPGroupRelationResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeGlobalSecurityIPGroupRelationResponse) SetBody(v *DescribeGlobalSecurityIPGroupRelationResponseBody) *DescribeGlobalSecurityIPGroupRelationResponse {
 	s.Body = v
 	return s
 }
@@ -15463,6 +16272,135 @@ func (s *ModifyDBClusterSSLResponse) SetBody(v *ModifyDBClusterSSLResponseBody) 
 	return s
 }
 
+type ModifyDBClusterServerlessConfRequest struct {
+	AllowShutDown         *string `json:"AllowShutDown,omitempty" xml:"AllowShutDown,omitempty"`
+	DBClusterId           *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	OwnerAccount          *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId               *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount  *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId       *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	ScaleMax              *string `json:"ScaleMax,omitempty" xml:"ScaleMax,omitempty"`
+	ScaleMin              *string `json:"ScaleMin,omitempty" xml:"ScaleMin,omitempty"`
+	ScaleRoNumMax         *string `json:"ScaleRoNumMax,omitempty" xml:"ScaleRoNumMax,omitempty"`
+	ScaleRoNumMin         *string `json:"ScaleRoNumMin,omitempty" xml:"ScaleRoNumMin,omitempty"`
+	SecondsUntilAutoPause *string `json:"SecondsUntilAutoPause,omitempty" xml:"SecondsUntilAutoPause,omitempty"`
+}
+
+func (s ModifyDBClusterServerlessConfRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyDBClusterServerlessConfRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyDBClusterServerlessConfRequest) SetAllowShutDown(v string) *ModifyDBClusterServerlessConfRequest {
+	s.AllowShutDown = &v
+	return s
+}
+
+func (s *ModifyDBClusterServerlessConfRequest) SetDBClusterId(v string) *ModifyDBClusterServerlessConfRequest {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *ModifyDBClusterServerlessConfRequest) SetOwnerAccount(v string) *ModifyDBClusterServerlessConfRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *ModifyDBClusterServerlessConfRequest) SetOwnerId(v int64) *ModifyDBClusterServerlessConfRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *ModifyDBClusterServerlessConfRequest) SetResourceOwnerAccount(v string) *ModifyDBClusterServerlessConfRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *ModifyDBClusterServerlessConfRequest) SetResourceOwnerId(v int64) *ModifyDBClusterServerlessConfRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *ModifyDBClusterServerlessConfRequest) SetScaleMax(v string) *ModifyDBClusterServerlessConfRequest {
+	s.ScaleMax = &v
+	return s
+}
+
+func (s *ModifyDBClusterServerlessConfRequest) SetScaleMin(v string) *ModifyDBClusterServerlessConfRequest {
+	s.ScaleMin = &v
+	return s
+}
+
+func (s *ModifyDBClusterServerlessConfRequest) SetScaleRoNumMax(v string) *ModifyDBClusterServerlessConfRequest {
+	s.ScaleRoNumMax = &v
+	return s
+}
+
+func (s *ModifyDBClusterServerlessConfRequest) SetScaleRoNumMin(v string) *ModifyDBClusterServerlessConfRequest {
+	s.ScaleRoNumMin = &v
+	return s
+}
+
+func (s *ModifyDBClusterServerlessConfRequest) SetSecondsUntilAutoPause(v string) *ModifyDBClusterServerlessConfRequest {
+	s.SecondsUntilAutoPause = &v
+	return s
+}
+
+type ModifyDBClusterServerlessConfResponseBody struct {
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifyDBClusterServerlessConfResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyDBClusterServerlessConfResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyDBClusterServerlessConfResponseBody) SetDBClusterId(v string) *ModifyDBClusterServerlessConfResponseBody {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *ModifyDBClusterServerlessConfResponseBody) SetRequestId(v string) *ModifyDBClusterServerlessConfResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifyDBClusterServerlessConfResponse struct {
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ModifyDBClusterServerlessConfResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ModifyDBClusterServerlessConfResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyDBClusterServerlessConfResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyDBClusterServerlessConfResponse) SetHeaders(v map[string]*string) *ModifyDBClusterServerlessConfResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyDBClusterServerlessConfResponse) SetStatusCode(v int32) *ModifyDBClusterServerlessConfResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyDBClusterServerlessConfResponse) SetBody(v *ModifyDBClusterServerlessConfResponseBody) *ModifyDBClusterServerlessConfResponse {
+	s.Body = v
+	return s
+}
+
 type ModifyDBClusterTDERequest struct {
 	DBClusterId          *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	EncryptNewTables     *string `json:"EncryptNewTables,omitempty" xml:"EncryptNewTables,omitempty"`
@@ -16313,6 +17251,480 @@ func (s *ModifyGlobalDatabaseNetworkResponse) SetStatusCode(v int32) *ModifyGlob
 }
 
 func (s *ModifyGlobalDatabaseNetworkResponse) SetBody(v *ModifyGlobalDatabaseNetworkResponseBody) *ModifyGlobalDatabaseNetworkResponse {
+	s.Body = v
+	return s
+}
+
+type ModifyGlobalSecurityIPGroupRequest struct {
+	GIpList               *string `json:"GIpList,omitempty" xml:"GIpList,omitempty"`
+	GlobalIgName          *string `json:"GlobalIgName,omitempty" xml:"GlobalIgName,omitempty"`
+	GlobalSecurityGroupId *string `json:"GlobalSecurityGroupId,omitempty" xml:"GlobalSecurityGroupId,omitempty"`
+	OwnerAccount          *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId               *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId              *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId       *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ResourceOwnerAccount  *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId       *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	SecurityToken         *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+}
+
+func (s ModifyGlobalSecurityIPGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyGlobalSecurityIPGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyGlobalSecurityIPGroupRequest) SetGIpList(v string) *ModifyGlobalSecurityIPGroupRequest {
+	s.GIpList = &v
+	return s
+}
+
+func (s *ModifyGlobalSecurityIPGroupRequest) SetGlobalIgName(v string) *ModifyGlobalSecurityIPGroupRequest {
+	s.GlobalIgName = &v
+	return s
+}
+
+func (s *ModifyGlobalSecurityIPGroupRequest) SetGlobalSecurityGroupId(v string) *ModifyGlobalSecurityIPGroupRequest {
+	s.GlobalSecurityGroupId = &v
+	return s
+}
+
+func (s *ModifyGlobalSecurityIPGroupRequest) SetOwnerAccount(v string) *ModifyGlobalSecurityIPGroupRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *ModifyGlobalSecurityIPGroupRequest) SetOwnerId(v int64) *ModifyGlobalSecurityIPGroupRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *ModifyGlobalSecurityIPGroupRequest) SetRegionId(v string) *ModifyGlobalSecurityIPGroupRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ModifyGlobalSecurityIPGroupRequest) SetResourceGroupId(v string) *ModifyGlobalSecurityIPGroupRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *ModifyGlobalSecurityIPGroupRequest) SetResourceOwnerAccount(v string) *ModifyGlobalSecurityIPGroupRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *ModifyGlobalSecurityIPGroupRequest) SetResourceOwnerId(v int64) *ModifyGlobalSecurityIPGroupRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *ModifyGlobalSecurityIPGroupRequest) SetSecurityToken(v string) *ModifyGlobalSecurityIPGroupRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+type ModifyGlobalSecurityIPGroupResponseBody struct {
+	GlobalSecurityIPGroup []*ModifyGlobalSecurityIPGroupResponseBodyGlobalSecurityIPGroup `json:"GlobalSecurityIPGroup,omitempty" xml:"GlobalSecurityIPGroup,omitempty" type:"Repeated"`
+	RequestId             *string                                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifyGlobalSecurityIPGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyGlobalSecurityIPGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyGlobalSecurityIPGroupResponseBody) SetGlobalSecurityIPGroup(v []*ModifyGlobalSecurityIPGroupResponseBodyGlobalSecurityIPGroup) *ModifyGlobalSecurityIPGroupResponseBody {
+	s.GlobalSecurityIPGroup = v
+	return s
+}
+
+func (s *ModifyGlobalSecurityIPGroupResponseBody) SetRequestId(v string) *ModifyGlobalSecurityIPGroupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifyGlobalSecurityIPGroupResponseBodyGlobalSecurityIPGroup struct {
+	DBInstances           []*string `json:"DBInstances,omitempty" xml:"DBInstances,omitempty" type:"Repeated"`
+	GIpList               *string   `json:"GIpList,omitempty" xml:"GIpList,omitempty"`
+	GlobalIgName          *string   `json:"GlobalIgName,omitempty" xml:"GlobalIgName,omitempty"`
+	GlobalSecurityGroupId *string   `json:"GlobalSecurityGroupId,omitempty" xml:"GlobalSecurityGroupId,omitempty"`
+	RegionId              *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s ModifyGlobalSecurityIPGroupResponseBodyGlobalSecurityIPGroup) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyGlobalSecurityIPGroupResponseBodyGlobalSecurityIPGroup) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyGlobalSecurityIPGroupResponseBodyGlobalSecurityIPGroup) SetDBInstances(v []*string) *ModifyGlobalSecurityIPGroupResponseBodyGlobalSecurityIPGroup {
+	s.DBInstances = v
+	return s
+}
+
+func (s *ModifyGlobalSecurityIPGroupResponseBodyGlobalSecurityIPGroup) SetGIpList(v string) *ModifyGlobalSecurityIPGroupResponseBodyGlobalSecurityIPGroup {
+	s.GIpList = &v
+	return s
+}
+
+func (s *ModifyGlobalSecurityIPGroupResponseBodyGlobalSecurityIPGroup) SetGlobalIgName(v string) *ModifyGlobalSecurityIPGroupResponseBodyGlobalSecurityIPGroup {
+	s.GlobalIgName = &v
+	return s
+}
+
+func (s *ModifyGlobalSecurityIPGroupResponseBodyGlobalSecurityIPGroup) SetGlobalSecurityGroupId(v string) *ModifyGlobalSecurityIPGroupResponseBodyGlobalSecurityIPGroup {
+	s.GlobalSecurityGroupId = &v
+	return s
+}
+
+func (s *ModifyGlobalSecurityIPGroupResponseBodyGlobalSecurityIPGroup) SetRegionId(v string) *ModifyGlobalSecurityIPGroupResponseBodyGlobalSecurityIPGroup {
+	s.RegionId = &v
+	return s
+}
+
+type ModifyGlobalSecurityIPGroupResponse struct {
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ModifyGlobalSecurityIPGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ModifyGlobalSecurityIPGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyGlobalSecurityIPGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyGlobalSecurityIPGroupResponse) SetHeaders(v map[string]*string) *ModifyGlobalSecurityIPGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyGlobalSecurityIPGroupResponse) SetStatusCode(v int32) *ModifyGlobalSecurityIPGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyGlobalSecurityIPGroupResponse) SetBody(v *ModifyGlobalSecurityIPGroupResponseBody) *ModifyGlobalSecurityIPGroupResponse {
+	s.Body = v
+	return s
+}
+
+type ModifyGlobalSecurityIPGroupNameRequest struct {
+	GlobalIgName          *string `json:"GlobalIgName,omitempty" xml:"GlobalIgName,omitempty"`
+	GlobalSecurityGroupId *string `json:"GlobalSecurityGroupId,omitempty" xml:"GlobalSecurityGroupId,omitempty"`
+	OwnerAccount          *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId               *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId              *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId       *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ResourceOwnerAccount  *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId       *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	SecurityToken         *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+}
+
+func (s ModifyGlobalSecurityIPGroupNameRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyGlobalSecurityIPGroupNameRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyGlobalSecurityIPGroupNameRequest) SetGlobalIgName(v string) *ModifyGlobalSecurityIPGroupNameRequest {
+	s.GlobalIgName = &v
+	return s
+}
+
+func (s *ModifyGlobalSecurityIPGroupNameRequest) SetGlobalSecurityGroupId(v string) *ModifyGlobalSecurityIPGroupNameRequest {
+	s.GlobalSecurityGroupId = &v
+	return s
+}
+
+func (s *ModifyGlobalSecurityIPGroupNameRequest) SetOwnerAccount(v string) *ModifyGlobalSecurityIPGroupNameRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *ModifyGlobalSecurityIPGroupNameRequest) SetOwnerId(v int64) *ModifyGlobalSecurityIPGroupNameRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *ModifyGlobalSecurityIPGroupNameRequest) SetRegionId(v string) *ModifyGlobalSecurityIPGroupNameRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ModifyGlobalSecurityIPGroupNameRequest) SetResourceGroupId(v string) *ModifyGlobalSecurityIPGroupNameRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *ModifyGlobalSecurityIPGroupNameRequest) SetResourceOwnerAccount(v string) *ModifyGlobalSecurityIPGroupNameRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *ModifyGlobalSecurityIPGroupNameRequest) SetResourceOwnerId(v int64) *ModifyGlobalSecurityIPGroupNameRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *ModifyGlobalSecurityIPGroupNameRequest) SetSecurityToken(v string) *ModifyGlobalSecurityIPGroupNameRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+type ModifyGlobalSecurityIPGroupNameResponseBody struct {
+	GlobalSecurityIPGroup []*ModifyGlobalSecurityIPGroupNameResponseBodyGlobalSecurityIPGroup `json:"GlobalSecurityIPGroup,omitempty" xml:"GlobalSecurityIPGroup,omitempty" type:"Repeated"`
+	RequestId             *string                                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifyGlobalSecurityIPGroupNameResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyGlobalSecurityIPGroupNameResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyGlobalSecurityIPGroupNameResponseBody) SetGlobalSecurityIPGroup(v []*ModifyGlobalSecurityIPGroupNameResponseBodyGlobalSecurityIPGroup) *ModifyGlobalSecurityIPGroupNameResponseBody {
+	s.GlobalSecurityIPGroup = v
+	return s
+}
+
+func (s *ModifyGlobalSecurityIPGroupNameResponseBody) SetRequestId(v string) *ModifyGlobalSecurityIPGroupNameResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifyGlobalSecurityIPGroupNameResponseBodyGlobalSecurityIPGroup struct {
+	GIpList               *string `json:"GIpList,omitempty" xml:"GIpList,omitempty"`
+	GlobalIgName          *string `json:"GlobalIgName,omitempty" xml:"GlobalIgName,omitempty"`
+	GlobalSecurityGroupId *string `json:"GlobalSecurityGroupId,omitempty" xml:"GlobalSecurityGroupId,omitempty"`
+	RegionId              *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s ModifyGlobalSecurityIPGroupNameResponseBodyGlobalSecurityIPGroup) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyGlobalSecurityIPGroupNameResponseBodyGlobalSecurityIPGroup) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyGlobalSecurityIPGroupNameResponseBodyGlobalSecurityIPGroup) SetGIpList(v string) *ModifyGlobalSecurityIPGroupNameResponseBodyGlobalSecurityIPGroup {
+	s.GIpList = &v
+	return s
+}
+
+func (s *ModifyGlobalSecurityIPGroupNameResponseBodyGlobalSecurityIPGroup) SetGlobalIgName(v string) *ModifyGlobalSecurityIPGroupNameResponseBodyGlobalSecurityIPGroup {
+	s.GlobalIgName = &v
+	return s
+}
+
+func (s *ModifyGlobalSecurityIPGroupNameResponseBodyGlobalSecurityIPGroup) SetGlobalSecurityGroupId(v string) *ModifyGlobalSecurityIPGroupNameResponseBodyGlobalSecurityIPGroup {
+	s.GlobalSecurityGroupId = &v
+	return s
+}
+
+func (s *ModifyGlobalSecurityIPGroupNameResponseBodyGlobalSecurityIPGroup) SetRegionId(v string) *ModifyGlobalSecurityIPGroupNameResponseBodyGlobalSecurityIPGroup {
+	s.RegionId = &v
+	return s
+}
+
+type ModifyGlobalSecurityIPGroupNameResponse struct {
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ModifyGlobalSecurityIPGroupNameResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ModifyGlobalSecurityIPGroupNameResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyGlobalSecurityIPGroupNameResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyGlobalSecurityIPGroupNameResponse) SetHeaders(v map[string]*string) *ModifyGlobalSecurityIPGroupNameResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyGlobalSecurityIPGroupNameResponse) SetStatusCode(v int32) *ModifyGlobalSecurityIPGroupNameResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyGlobalSecurityIPGroupNameResponse) SetBody(v *ModifyGlobalSecurityIPGroupNameResponseBody) *ModifyGlobalSecurityIPGroupNameResponse {
+	s.Body = v
+	return s
+}
+
+type ModifyGlobalSecurityIPGroupRelationRequest struct {
+	DBClusterId           *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	GlobalSecurityGroupId *string `json:"GlobalSecurityGroupId,omitempty" xml:"GlobalSecurityGroupId,omitempty"`
+	OwnerAccount          *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId               *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId              *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId       *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ResourceOwnerAccount  *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId       *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	SecurityToken         *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+}
+
+func (s ModifyGlobalSecurityIPGroupRelationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyGlobalSecurityIPGroupRelationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyGlobalSecurityIPGroupRelationRequest) SetDBClusterId(v string) *ModifyGlobalSecurityIPGroupRelationRequest {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *ModifyGlobalSecurityIPGroupRelationRequest) SetGlobalSecurityGroupId(v string) *ModifyGlobalSecurityIPGroupRelationRequest {
+	s.GlobalSecurityGroupId = &v
+	return s
+}
+
+func (s *ModifyGlobalSecurityIPGroupRelationRequest) SetOwnerAccount(v string) *ModifyGlobalSecurityIPGroupRelationRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *ModifyGlobalSecurityIPGroupRelationRequest) SetOwnerId(v int64) *ModifyGlobalSecurityIPGroupRelationRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *ModifyGlobalSecurityIPGroupRelationRequest) SetRegionId(v string) *ModifyGlobalSecurityIPGroupRelationRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ModifyGlobalSecurityIPGroupRelationRequest) SetResourceGroupId(v string) *ModifyGlobalSecurityIPGroupRelationRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *ModifyGlobalSecurityIPGroupRelationRequest) SetResourceOwnerAccount(v string) *ModifyGlobalSecurityIPGroupRelationRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *ModifyGlobalSecurityIPGroupRelationRequest) SetResourceOwnerId(v int64) *ModifyGlobalSecurityIPGroupRelationRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *ModifyGlobalSecurityIPGroupRelationRequest) SetSecurityToken(v string) *ModifyGlobalSecurityIPGroupRelationRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+type ModifyGlobalSecurityIPGroupRelationResponseBody struct {
+	DBClusterId              *string                                                                    `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	GlobalSecurityIPGroupRel []*ModifyGlobalSecurityIPGroupRelationResponseBodyGlobalSecurityIPGroupRel `json:"GlobalSecurityIPGroupRel,omitempty" xml:"GlobalSecurityIPGroupRel,omitempty" type:"Repeated"`
+	RequestId                *string                                                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifyGlobalSecurityIPGroupRelationResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyGlobalSecurityIPGroupRelationResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyGlobalSecurityIPGroupRelationResponseBody) SetDBClusterId(v string) *ModifyGlobalSecurityIPGroupRelationResponseBody {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *ModifyGlobalSecurityIPGroupRelationResponseBody) SetGlobalSecurityIPGroupRel(v []*ModifyGlobalSecurityIPGroupRelationResponseBodyGlobalSecurityIPGroupRel) *ModifyGlobalSecurityIPGroupRelationResponseBody {
+	s.GlobalSecurityIPGroupRel = v
+	return s
+}
+
+func (s *ModifyGlobalSecurityIPGroupRelationResponseBody) SetRequestId(v string) *ModifyGlobalSecurityIPGroupRelationResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifyGlobalSecurityIPGroupRelationResponseBodyGlobalSecurityIPGroupRel struct {
+	GIpList               *string `json:"GIpList,omitempty" xml:"GIpList,omitempty"`
+	GlobalIgName          *string `json:"GlobalIgName,omitempty" xml:"GlobalIgName,omitempty"`
+	GlobalSecurityGroupId *string `json:"GlobalSecurityGroupId,omitempty" xml:"GlobalSecurityGroupId,omitempty"`
+	RegionId              *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s ModifyGlobalSecurityIPGroupRelationResponseBodyGlobalSecurityIPGroupRel) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyGlobalSecurityIPGroupRelationResponseBodyGlobalSecurityIPGroupRel) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyGlobalSecurityIPGroupRelationResponseBodyGlobalSecurityIPGroupRel) SetGIpList(v string) *ModifyGlobalSecurityIPGroupRelationResponseBodyGlobalSecurityIPGroupRel {
+	s.GIpList = &v
+	return s
+}
+
+func (s *ModifyGlobalSecurityIPGroupRelationResponseBodyGlobalSecurityIPGroupRel) SetGlobalIgName(v string) *ModifyGlobalSecurityIPGroupRelationResponseBodyGlobalSecurityIPGroupRel {
+	s.GlobalIgName = &v
+	return s
+}
+
+func (s *ModifyGlobalSecurityIPGroupRelationResponseBodyGlobalSecurityIPGroupRel) SetGlobalSecurityGroupId(v string) *ModifyGlobalSecurityIPGroupRelationResponseBodyGlobalSecurityIPGroupRel {
+	s.GlobalSecurityGroupId = &v
+	return s
+}
+
+func (s *ModifyGlobalSecurityIPGroupRelationResponseBodyGlobalSecurityIPGroupRel) SetRegionId(v string) *ModifyGlobalSecurityIPGroupRelationResponseBodyGlobalSecurityIPGroupRel {
+	s.RegionId = &v
+	return s
+}
+
+type ModifyGlobalSecurityIPGroupRelationResponse struct {
+	Headers    map[string]*string                               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ModifyGlobalSecurityIPGroupRelationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ModifyGlobalSecurityIPGroupRelationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyGlobalSecurityIPGroupRelationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyGlobalSecurityIPGroupRelationResponse) SetHeaders(v map[string]*string) *ModifyGlobalSecurityIPGroupRelationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyGlobalSecurityIPGroupRelationResponse) SetStatusCode(v int32) *ModifyGlobalSecurityIPGroupRelationResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyGlobalSecurityIPGroupRelationResponse) SetBody(v *ModifyGlobalSecurityIPGroupRelationResponseBody) *ModifyGlobalSecurityIPGroupRelationResponse {
 	s.Body = v
 	return s
 }
@@ -17339,6 +18751,7 @@ func (s *RevokeAccountPrivilegeResponse) SetBody(v *RevokeAccountPrivilegeRespon
 
 type SwitchOverGlobalDatabaseNetworkRequest struct {
 	DBClusterId          *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	Forced               *bool   `json:"Forced,omitempty" xml:"Forced,omitempty"`
 	GDNId                *string `json:"GDNId,omitempty" xml:"GDNId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -17359,6 +18772,11 @@ func (s SwitchOverGlobalDatabaseNetworkRequest) GoString() string {
 
 func (s *SwitchOverGlobalDatabaseNetworkRequest) SetDBClusterId(v string) *SwitchOverGlobalDatabaseNetworkRequest {
 	s.DBClusterId = &v
+	return s
+}
+
+func (s *SwitchOverGlobalDatabaseNetworkRequest) SetForced(v bool) *SwitchOverGlobalDatabaseNetworkRequest {
+	s.Forced = &v
 	return s
 }
 
@@ -18797,6 +20215,10 @@ func (client *Client) CreateDBClusterWithOptions(request *CreateDBClusterRequest
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AllowShutDown)) {
+		query["AllowShutDown"] = request.AllowShutDown
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.AutoRenew)) {
 		query["AutoRenew"] = request.AutoRenew
 	}
@@ -18893,12 +20315,36 @@ func (client *Client) CreateDBClusterWithOptions(request *CreateDBClusterRequest
 		query["ResourceOwnerId"] = request.ResourceOwnerId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ScaleMax)) {
+		query["ScaleMax"] = request.ScaleMax
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ScaleMin)) {
+		query["ScaleMin"] = request.ScaleMin
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ScaleRoNumMax)) {
+		query["ScaleRoNumMax"] = request.ScaleRoNumMax
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ScaleRoNumMin)) {
+		query["ScaleRoNumMin"] = request.ScaleRoNumMin
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.SecurityIPList)) {
 		query["SecurityIPList"] = request.SecurityIPList
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ServerlessType)) {
+		query["ServerlessType"] = request.ServerlessType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.SourceResourceId)) {
 		query["SourceResourceId"] = request.SourceResourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StorageType)) {
+		query["StorageType"] = request.StorageType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.TDEStatus)) {
@@ -19468,6 +20914,82 @@ func (client *Client) CreateGlobalDatabaseNetwork(request *CreateGlobalDatabaseN
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateGlobalDatabaseNetworkResponse{}
 	_body, _err := client.CreateGlobalDatabaseNetworkWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateGlobalSecurityIPGroupWithOptions(request *CreateGlobalSecurityIPGroupRequest, runtime *util.RuntimeOptions) (_result *CreateGlobalSecurityIPGroupResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.GIpList)) {
+		query["GIpList"] = request.GIpList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GlobalIgName)) {
+		query["GlobalIgName"] = request.GlobalIgName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateGlobalSecurityIPGroup"),
+		Version:     tea.String("2017-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateGlobalSecurityIPGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateGlobalSecurityIPGroup(request *CreateGlobalSecurityIPGroupRequest) (_result *CreateGlobalSecurityIPGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateGlobalSecurityIPGroupResponse{}
+	_body, _err := client.CreateGlobalSecurityIPGroupWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20216,6 +21738,82 @@ func (client *Client) DeleteGlobalDatabaseNetwork(request *DeleteGlobalDatabaseN
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteGlobalDatabaseNetworkResponse{}
 	_body, _err := client.DeleteGlobalDatabaseNetworkWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteGlobalSecurityIPGroupWithOptions(request *DeleteGlobalSecurityIPGroupRequest, runtime *util.RuntimeOptions) (_result *DeleteGlobalSecurityIPGroupResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.GlobalIgName)) {
+		query["GlobalIgName"] = request.GlobalIgName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GlobalSecurityGroupId)) {
+		query["GlobalSecurityGroupId"] = request.GlobalSecurityGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteGlobalSecurityIPGroup"),
+		Version:     tea.String("2017-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteGlobalSecurityIPGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteGlobalSecurityIPGroup(request *DeleteGlobalSecurityIPGroupRequest) (_result *DeleteGlobalSecurityIPGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteGlobalSecurityIPGroupResponse{}
+	_body, _err := client.DeleteGlobalSecurityIPGroupWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21583,6 +23181,66 @@ func (client *Client) DescribeDBClusterSSL(request *DescribeDBClusterSSLRequest)
 	return _result, _err
 }
 
+func (client *Client) DescribeDBClusterServerlessConfWithOptions(request *DescribeDBClusterServerlessConfRequest, runtime *util.RuntimeOptions) (_result *DescribeDBClusterServerlessConfResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBClusterId)) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDBClusterServerlessConf"),
+		Version:     tea.String("2017-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeDBClusterServerlessConfResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeDBClusterServerlessConf(request *DescribeDBClusterServerlessConfRequest) (_result *DescribeDBClusterServerlessConfResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeDBClusterServerlessConfResponse{}
+	_body, _err := client.DescribeDBClusterServerlessConfWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DescribeDBClusterTDEWithOptions(request *DescribeDBClusterTDERequest, runtime *util.RuntimeOptions) (_result *DescribeDBClusterTDEResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -21709,6 +23367,10 @@ func (client *Client) DescribeDBClustersWithOptions(request *DescribeDBClustersR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ConnectionString)) {
+		query["ConnectionString"] = request.ConnectionString
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.DBClusterDescription)) {
 		query["DBClusterDescription"] = request.DBClusterDescription
 	}
@@ -21727,6 +23389,10 @@ func (client *Client) DescribeDBClustersWithOptions(request *DescribeDBClustersR
 
 	if !tea.BoolValue(util.IsUnset(request.DBType)) {
 		query["DBType"] = request.DBType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DBVersion)) {
+		query["DBVersion"] = request.DBVersion
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Expired)) {
@@ -22520,6 +24186,150 @@ func (client *Client) DescribeGlobalDatabaseNetworks(request *DescribeGlobalData
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeGlobalDatabaseNetworksResponse{}
 	_body, _err := client.DescribeGlobalDatabaseNetworksWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeGlobalSecurityIPGroupWithOptions(request *DescribeGlobalSecurityIPGroupRequest, runtime *util.RuntimeOptions) (_result *DescribeGlobalSecurityIPGroupResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.GlobalSecurityGroupId)) {
+		query["GlobalSecurityGroupId"] = request.GlobalSecurityGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeGlobalSecurityIPGroup"),
+		Version:     tea.String("2017-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeGlobalSecurityIPGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeGlobalSecurityIPGroup(request *DescribeGlobalSecurityIPGroupRequest) (_result *DescribeGlobalSecurityIPGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeGlobalSecurityIPGroupResponse{}
+	_body, _err := client.DescribeGlobalSecurityIPGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeGlobalSecurityIPGroupRelationWithOptions(request *DescribeGlobalSecurityIPGroupRelationRequest, runtime *util.RuntimeOptions) (_result *DescribeGlobalSecurityIPGroupRelationResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBClusterId)) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeGlobalSecurityIPGroupRelation"),
+		Version:     tea.String("2017-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeGlobalSecurityIPGroupRelationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeGlobalSecurityIPGroupRelation(request *DescribeGlobalSecurityIPGroupRelationRequest) (_result *DescribeGlobalSecurityIPGroupRelationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeGlobalSecurityIPGroupRelationResponse{}
+	_body, _err := client.DescribeGlobalSecurityIPGroupRelationWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -25267,6 +27077,90 @@ func (client *Client) ModifyDBClusterSSL(request *ModifyDBClusterSSLRequest) (_r
 	return _result, _err
 }
 
+func (client *Client) ModifyDBClusterServerlessConfWithOptions(request *ModifyDBClusterServerlessConfRequest, runtime *util.RuntimeOptions) (_result *ModifyDBClusterServerlessConfResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AllowShutDown)) {
+		query["AllowShutDown"] = request.AllowShutDown
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DBClusterId)) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ScaleMax)) {
+		query["ScaleMax"] = request.ScaleMax
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ScaleMin)) {
+		query["ScaleMin"] = request.ScaleMin
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ScaleRoNumMax)) {
+		query["ScaleRoNumMax"] = request.ScaleRoNumMax
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ScaleRoNumMin)) {
+		query["ScaleRoNumMin"] = request.ScaleRoNumMin
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecondsUntilAutoPause)) {
+		query["SecondsUntilAutoPause"] = request.SecondsUntilAutoPause
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyDBClusterServerlessConf"),
+		Version:     tea.String("2017-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyDBClusterServerlessConfResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ModifyDBClusterServerlessConf(request *ModifyDBClusterServerlessConfRequest) (_result *ModifyDBClusterServerlessConfResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyDBClusterServerlessConfResponse{}
+	_body, _err := client.ModifyDBClusterServerlessConfWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ModifyDBClusterTDEWithOptions(request *ModifyDBClusterTDERequest, runtime *util.RuntimeOptions) (_result *ModifyDBClusterTDEResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -25812,6 +27706,238 @@ func (client *Client) ModifyGlobalDatabaseNetwork(request *ModifyGlobalDatabaseN
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyGlobalDatabaseNetworkResponse{}
 	_body, _err := client.ModifyGlobalDatabaseNetworkWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ModifyGlobalSecurityIPGroupWithOptions(request *ModifyGlobalSecurityIPGroupRequest, runtime *util.RuntimeOptions) (_result *ModifyGlobalSecurityIPGroupResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.GIpList)) {
+		query["GIpList"] = request.GIpList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GlobalIgName)) {
+		query["GlobalIgName"] = request.GlobalIgName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GlobalSecurityGroupId)) {
+		query["GlobalSecurityGroupId"] = request.GlobalSecurityGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyGlobalSecurityIPGroup"),
+		Version:     tea.String("2017-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyGlobalSecurityIPGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ModifyGlobalSecurityIPGroup(request *ModifyGlobalSecurityIPGroupRequest) (_result *ModifyGlobalSecurityIPGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyGlobalSecurityIPGroupResponse{}
+	_body, _err := client.ModifyGlobalSecurityIPGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ModifyGlobalSecurityIPGroupNameWithOptions(request *ModifyGlobalSecurityIPGroupNameRequest, runtime *util.RuntimeOptions) (_result *ModifyGlobalSecurityIPGroupNameResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.GlobalIgName)) {
+		query["GlobalIgName"] = request.GlobalIgName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GlobalSecurityGroupId)) {
+		query["GlobalSecurityGroupId"] = request.GlobalSecurityGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyGlobalSecurityIPGroupName"),
+		Version:     tea.String("2017-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyGlobalSecurityIPGroupNameResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ModifyGlobalSecurityIPGroupName(request *ModifyGlobalSecurityIPGroupNameRequest) (_result *ModifyGlobalSecurityIPGroupNameResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyGlobalSecurityIPGroupNameResponse{}
+	_body, _err := client.ModifyGlobalSecurityIPGroupNameWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ModifyGlobalSecurityIPGroupRelationWithOptions(request *ModifyGlobalSecurityIPGroupRelationRequest, runtime *util.RuntimeOptions) (_result *ModifyGlobalSecurityIPGroupRelationResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBClusterId)) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GlobalSecurityGroupId)) {
+		query["GlobalSecurityGroupId"] = request.GlobalSecurityGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyGlobalSecurityIPGroupRelation"),
+		Version:     tea.String("2017-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyGlobalSecurityIPGroupRelationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ModifyGlobalSecurityIPGroupRelation(request *ModifyGlobalSecurityIPGroupRelationRequest) (_result *ModifyGlobalSecurityIPGroupRelationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyGlobalSecurityIPGroupRelationResponse{}
+	_body, _err := client.ModifyGlobalSecurityIPGroupRelationWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -26511,6 +28637,10 @@ func (client *Client) SwitchOverGlobalDatabaseNetworkWithOptions(request *Switch
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.DBClusterId)) {
 		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Forced)) {
+		query["Forced"] = request.Forced
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.GDNId)) {
