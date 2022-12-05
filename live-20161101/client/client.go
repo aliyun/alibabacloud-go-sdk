@@ -2468,6 +2468,93 @@ func (s *AddLiveSnapshotDetectPornConfigResponse) SetBody(v *AddLiveSnapshotDete
 	return s
 }
 
+type AddLiveSnapshotNotifyConfigRequest struct {
+	DomainName    *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	NotifyAuthKey *string `json:"NotifyAuthKey,omitempty" xml:"NotifyAuthKey,omitempty"`
+	NotifyReqAuth *string `json:"NotifyReqAuth,omitempty" xml:"NotifyReqAuth,omitempty"`
+	NotifyUrl     *string `json:"NotifyUrl,omitempty" xml:"NotifyUrl,omitempty"`
+	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+}
+
+func (s AddLiveSnapshotNotifyConfigRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddLiveSnapshotNotifyConfigRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AddLiveSnapshotNotifyConfigRequest) SetDomainName(v string) *AddLiveSnapshotNotifyConfigRequest {
+	s.DomainName = &v
+	return s
+}
+
+func (s *AddLiveSnapshotNotifyConfigRequest) SetNotifyAuthKey(v string) *AddLiveSnapshotNotifyConfigRequest {
+	s.NotifyAuthKey = &v
+	return s
+}
+
+func (s *AddLiveSnapshotNotifyConfigRequest) SetNotifyReqAuth(v string) *AddLiveSnapshotNotifyConfigRequest {
+	s.NotifyReqAuth = &v
+	return s
+}
+
+func (s *AddLiveSnapshotNotifyConfigRequest) SetNotifyUrl(v string) *AddLiveSnapshotNotifyConfigRequest {
+	s.NotifyUrl = &v
+	return s
+}
+
+func (s *AddLiveSnapshotNotifyConfigRequest) SetOwnerId(v int64) *AddLiveSnapshotNotifyConfigRequest {
+	s.OwnerId = &v
+	return s
+}
+
+type AddLiveSnapshotNotifyConfigResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s AddLiveSnapshotNotifyConfigResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddLiveSnapshotNotifyConfigResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AddLiveSnapshotNotifyConfigResponseBody) SetRequestId(v string) *AddLiveSnapshotNotifyConfigResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type AddLiveSnapshotNotifyConfigResponse struct {
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *AddLiveSnapshotNotifyConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s AddLiveSnapshotNotifyConfigResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddLiveSnapshotNotifyConfigResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AddLiveSnapshotNotifyConfigResponse) SetHeaders(v map[string]*string) *AddLiveSnapshotNotifyConfigResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AddLiveSnapshotNotifyConfigResponse) SetStatusCode(v int32) *AddLiveSnapshotNotifyConfigResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *AddLiveSnapshotNotifyConfigResponse) SetBody(v *AddLiveSnapshotNotifyConfigResponseBody) *AddLiveSnapshotNotifyConfigResponse {
+	s.Body = v
+	return s
+}
+
 type AddLiveStreamTranscodeRequest struct {
 	App               *string `json:"App,omitempty" xml:"App,omitempty"`
 	Domain            *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
@@ -4225,98 +4312,6 @@ func (s *CloseLiveShiftResponse) SetBody(v *CloseLiveShiftResponseBody) *CloseLi
 	return s
 }
 
-type CloseMessageGroupRequest struct {
-	AppId   *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-}
-
-func (s CloseMessageGroupRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CloseMessageGroupRequest) GoString() string {
-	return s.String()
-}
-
-func (s *CloseMessageGroupRequest) SetAppId(v string) *CloseMessageGroupRequest {
-	s.AppId = &v
-	return s
-}
-
-func (s *CloseMessageGroupRequest) SetGroupId(v string) *CloseMessageGroupRequest {
-	s.GroupId = &v
-	return s
-}
-
-type CloseMessageGroupResponseBody struct {
-	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *CloseMessageGroupResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-}
-
-func (s CloseMessageGroupResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CloseMessageGroupResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *CloseMessageGroupResponseBody) SetRequestId(v string) *CloseMessageGroupResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *CloseMessageGroupResponseBody) SetResult(v *CloseMessageGroupResponseBodyResult) *CloseMessageGroupResponseBody {
-	s.Result = v
-	return s
-}
-
-type CloseMessageGroupResponseBodyResult struct {
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s CloseMessageGroupResponseBodyResult) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CloseMessageGroupResponseBodyResult) GoString() string {
-	return s.String()
-}
-
-func (s *CloseMessageGroupResponseBodyResult) SetSuccess(v bool) *CloseMessageGroupResponseBodyResult {
-	s.Success = &v
-	return s
-}
-
-type CloseMessageGroupResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CloseMessageGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s CloseMessageGroupResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CloseMessageGroupResponse) GoString() string {
-	return s.String()
-}
-
-func (s *CloseMessageGroupResponse) SetHeaders(v map[string]*string) *CloseMessageGroupResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *CloseMessageGroupResponse) SetStatusCode(v int32) *CloseMessageGroupResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *CloseMessageGroupResponse) SetBody(v *CloseMessageGroupResponseBody) *CloseMessageGroupResponse {
-	s.Body = v
-	return s
-}
-
 type CopyCasterRequest struct {
 	CasterName  *string `json:"CasterName,omitempty" xml:"CasterName,omitempty"`
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
@@ -5164,6 +5159,133 @@ func (s *CreateLiveTranscodeTemplateResponse) SetStatusCode(v int32) *CreateLive
 }
 
 func (s *CreateLiveTranscodeTemplateResponse) SetBody(v *CreateLiveTranscodeTemplateResponseBody) *CreateLiveTranscodeTemplateResponse {
+	s.Body = v
+	return s
+}
+
+type CreateMessageAppRequest struct {
+	AppConfig map[string]*string `json:"AppConfig,omitempty" xml:"AppConfig,omitempty"`
+	AppName   *string            `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	Extension map[string]*string `json:"Extension,omitempty" xml:"Extension,omitempty"`
+}
+
+func (s CreateMessageAppRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateMessageAppRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateMessageAppRequest) SetAppConfig(v map[string]*string) *CreateMessageAppRequest {
+	s.AppConfig = v
+	return s
+}
+
+func (s *CreateMessageAppRequest) SetAppName(v string) *CreateMessageAppRequest {
+	s.AppName = &v
+	return s
+}
+
+func (s *CreateMessageAppRequest) SetExtension(v map[string]*string) *CreateMessageAppRequest {
+	s.Extension = v
+	return s
+}
+
+type CreateMessageAppShrinkRequest struct {
+	AppConfigShrink *string `json:"AppConfig,omitempty" xml:"AppConfig,omitempty"`
+	AppName         *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	ExtensionShrink *string `json:"Extension,omitempty" xml:"Extension,omitempty"`
+}
+
+func (s CreateMessageAppShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateMessageAppShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateMessageAppShrinkRequest) SetAppConfigShrink(v string) *CreateMessageAppShrinkRequest {
+	s.AppConfigShrink = &v
+	return s
+}
+
+func (s *CreateMessageAppShrinkRequest) SetAppName(v string) *CreateMessageAppShrinkRequest {
+	s.AppName = &v
+	return s
+}
+
+func (s *CreateMessageAppShrinkRequest) SetExtensionShrink(v string) *CreateMessageAppShrinkRequest {
+	s.ExtensionShrink = &v
+	return s
+}
+
+type CreateMessageAppResponseBody struct {
+	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *CreateMessageAppResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+}
+
+func (s CreateMessageAppResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateMessageAppResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateMessageAppResponseBody) SetRequestId(v string) *CreateMessageAppResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateMessageAppResponseBody) SetResult(v *CreateMessageAppResponseBodyResult) *CreateMessageAppResponseBody {
+	s.Result = v
+	return s
+}
+
+type CreateMessageAppResponseBodyResult struct {
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+}
+
+func (s CreateMessageAppResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateMessageAppResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *CreateMessageAppResponseBodyResult) SetAppId(v string) *CreateMessageAppResponseBodyResult {
+	s.AppId = &v
+	return s
+}
+
+type CreateMessageAppResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateMessageAppResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateMessageAppResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateMessageAppResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateMessageAppResponse) SetHeaders(v map[string]*string) *CreateMessageAppResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateMessageAppResponse) SetStatusCode(v int32) *CreateMessageAppResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateMessageAppResponse) SetBody(v *CreateMessageAppResponseBody) *CreateMessageAppResponse {
 	s.Body = v
 	return s
 }
@@ -7361,6 +7483,75 @@ func (s *DeleteLiveSnapshotDetectPornConfigResponse) SetStatusCode(v int32) *Del
 }
 
 func (s *DeleteLiveSnapshotDetectPornConfigResponse) SetBody(v *DeleteLiveSnapshotDetectPornConfigResponseBody) *DeleteLiveSnapshotDetectPornConfigResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteLiveSnapshotNotifyConfigRequest struct {
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+}
+
+func (s DeleteLiveSnapshotNotifyConfigRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteLiveSnapshotNotifyConfigRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteLiveSnapshotNotifyConfigRequest) SetDomainName(v string) *DeleteLiveSnapshotNotifyConfigRequest {
+	s.DomainName = &v
+	return s
+}
+
+func (s *DeleteLiveSnapshotNotifyConfigRequest) SetOwnerId(v int64) *DeleteLiveSnapshotNotifyConfigRequest {
+	s.OwnerId = &v
+	return s
+}
+
+type DeleteLiveSnapshotNotifyConfigResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteLiveSnapshotNotifyConfigResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteLiveSnapshotNotifyConfigResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteLiveSnapshotNotifyConfigResponseBody) SetRequestId(v string) *DeleteLiveSnapshotNotifyConfigResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteLiveSnapshotNotifyConfigResponse struct {
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteLiveSnapshotNotifyConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteLiveSnapshotNotifyConfigResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteLiveSnapshotNotifyConfigResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteLiveSnapshotNotifyConfigResponse) SetHeaders(v map[string]*string) *DeleteLiveSnapshotNotifyConfigResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteLiveSnapshotNotifyConfigResponse) SetStatusCode(v int32) *DeleteLiveSnapshotNotifyConfigResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteLiveSnapshotNotifyConfigResponse) SetBody(v *DeleteLiveSnapshotNotifyConfigResponseBody) *DeleteLiveSnapshotNotifyConfigResponse {
 	s.Body = v
 	return s
 }
@@ -11417,14 +11608,15 @@ func (s *DescribeCastersResponse) SetBody(v *DescribeCastersResponseBody) *Descr
 }
 
 type DescribeDomainUsageDataRequest struct {
-	Area       *string `json:"Area,omitempty" xml:"Area,omitempty"`
-	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	EndTime    *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	Field      *string `json:"Field,omitempty" xml:"Field,omitempty"`
-	Interval   *string `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	StartTime  *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Type       *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Area         *string `json:"Area,omitempty" xml:"Area,omitempty"`
+	DataProtocol *string `json:"DataProtocol,omitempty" xml:"DataProtocol,omitempty"`
+	DomainName   *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	EndTime      *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	Field        *string `json:"Field,omitempty" xml:"Field,omitempty"`
+	Interval     *string `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	StartTime    *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Type         *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s DescribeDomainUsageDataRequest) String() string {
@@ -11437,6 +11629,11 @@ func (s DescribeDomainUsageDataRequest) GoString() string {
 
 func (s *DescribeDomainUsageDataRequest) SetArea(v string) *DescribeDomainUsageDataRequest {
 	s.Area = &v
+	return s
+}
+
+func (s *DescribeDomainUsageDataRequest) SetDataProtocol(v string) *DescribeDomainUsageDataRequest {
+	s.DataProtocol = &v
 	return s
 }
 
@@ -11480,9 +11677,9 @@ type DescribeDomainUsageDataResponseBody struct {
 	DataInterval         *string                                                  `json:"DataInterval,omitempty" xml:"DataInterval,omitempty"`
 	DomainName           *string                                                  `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	EndTime              *string                                                  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	Field                *string                                                  `json:"Field,omitempty" xml:"Field,omitempty"`
 	RequestId            *string                                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	StartTime            *string                                                  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Type                 *string                                                  `json:"Type,omitempty" xml:"Type,omitempty"`
 	UsageDataPerInterval *DescribeDomainUsageDataResponseBodyUsageDataPerInterval `json:"UsageDataPerInterval,omitempty" xml:"UsageDataPerInterval,omitempty" type:"Struct"`
 }
 
@@ -11514,11 +11711,6 @@ func (s *DescribeDomainUsageDataResponseBody) SetEndTime(v string) *DescribeDoma
 	return s
 }
 
-func (s *DescribeDomainUsageDataResponseBody) SetField(v string) *DescribeDomainUsageDataResponseBody {
-	s.Field = &v
-	return s
-}
-
 func (s *DescribeDomainUsageDataResponseBody) SetRequestId(v string) *DescribeDomainUsageDataResponseBody {
 	s.RequestId = &v
 	return s
@@ -11526,6 +11718,11 @@ func (s *DescribeDomainUsageDataResponseBody) SetRequestId(v string) *DescribeDo
 
 func (s *DescribeDomainUsageDataResponseBody) SetStartTime(v string) *DescribeDomainUsageDataResponseBody {
 	s.StartTime = &v
+	return s
+}
+
+func (s *DescribeDomainUsageDataResponseBody) SetType(v string) *DescribeDomainUsageDataResponseBody {
+	s.Type = &v
 	return s
 }
 
@@ -19247,6 +19444,186 @@ func (s *DescribeLiveSnapshotDetectPornConfigResponse) SetBody(v *DescribeLiveSn
 	return s
 }
 
+type DescribeLiveSnapshotNotifyConfigRequest struct {
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+}
+
+func (s DescribeLiveSnapshotNotifyConfigRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeLiveSnapshotNotifyConfigRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeLiveSnapshotNotifyConfigRequest) SetDomainName(v string) *DescribeLiveSnapshotNotifyConfigRequest {
+	s.DomainName = &v
+	return s
+}
+
+func (s *DescribeLiveSnapshotNotifyConfigRequest) SetOwnerId(v int64) *DescribeLiveSnapshotNotifyConfigRequest {
+	s.OwnerId = &v
+	return s
+}
+
+type DescribeLiveSnapshotNotifyConfigResponseBody struct {
+	DomainName    *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	NotifyAuthKey *string `json:"NotifyAuthKey,omitempty" xml:"NotifyAuthKey,omitempty"`
+	NotifyReqAuth *string `json:"NotifyReqAuth,omitempty" xml:"NotifyReqAuth,omitempty"`
+	NotifyUrl     *string `json:"NotifyUrl,omitempty" xml:"NotifyUrl,omitempty"`
+	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeLiveSnapshotNotifyConfigResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeLiveSnapshotNotifyConfigResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeLiveSnapshotNotifyConfigResponseBody) SetDomainName(v string) *DescribeLiveSnapshotNotifyConfigResponseBody {
+	s.DomainName = &v
+	return s
+}
+
+func (s *DescribeLiveSnapshotNotifyConfigResponseBody) SetNotifyAuthKey(v string) *DescribeLiveSnapshotNotifyConfigResponseBody {
+	s.NotifyAuthKey = &v
+	return s
+}
+
+func (s *DescribeLiveSnapshotNotifyConfigResponseBody) SetNotifyReqAuth(v string) *DescribeLiveSnapshotNotifyConfigResponseBody {
+	s.NotifyReqAuth = &v
+	return s
+}
+
+func (s *DescribeLiveSnapshotNotifyConfigResponseBody) SetNotifyUrl(v string) *DescribeLiveSnapshotNotifyConfigResponseBody {
+	s.NotifyUrl = &v
+	return s
+}
+
+func (s *DescribeLiveSnapshotNotifyConfigResponseBody) SetRequestId(v string) *DescribeLiveSnapshotNotifyConfigResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeLiveSnapshotNotifyConfigResponse struct {
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeLiveSnapshotNotifyConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeLiveSnapshotNotifyConfigResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeLiveSnapshotNotifyConfigResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeLiveSnapshotNotifyConfigResponse) SetHeaders(v map[string]*string) *DescribeLiveSnapshotNotifyConfigResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeLiveSnapshotNotifyConfigResponse) SetStatusCode(v int32) *DescribeLiveSnapshotNotifyConfigResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeLiveSnapshotNotifyConfigResponse) SetBody(v *DescribeLiveSnapshotNotifyConfigResponseBody) *DescribeLiveSnapshotNotifyConfigResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeLiveStreamAuthCheckingRequest struct {
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	Url        *string `json:"Url,omitempty" xml:"Url,omitempty"`
+}
+
+func (s DescribeLiveStreamAuthCheckingRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeLiveStreamAuthCheckingRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeLiveStreamAuthCheckingRequest) SetDomainName(v string) *DescribeLiveStreamAuthCheckingRequest {
+	s.DomainName = &v
+	return s
+}
+
+func (s *DescribeLiveStreamAuthCheckingRequest) SetOwnerId(v int64) *DescribeLiveStreamAuthCheckingRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribeLiveStreamAuthCheckingRequest) SetUrl(v string) *DescribeLiveStreamAuthCheckingRequest {
+	s.Url = &v
+	return s
+}
+
+type DescribeLiveStreamAuthCheckingResponseBody struct {
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s DescribeLiveStreamAuthCheckingResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeLiveStreamAuthCheckingResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeLiveStreamAuthCheckingResponseBody) SetDescription(v string) *DescribeLiveStreamAuthCheckingResponseBody {
+	s.Description = &v
+	return s
+}
+
+func (s *DescribeLiveStreamAuthCheckingResponseBody) SetRequestId(v string) *DescribeLiveStreamAuthCheckingResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeLiveStreamAuthCheckingResponseBody) SetStatus(v string) *DescribeLiveStreamAuthCheckingResponseBody {
+	s.Status = &v
+	return s
+}
+
+type DescribeLiveStreamAuthCheckingResponse struct {
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeLiveStreamAuthCheckingResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeLiveStreamAuthCheckingResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeLiveStreamAuthCheckingResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeLiveStreamAuthCheckingResponse) SetHeaders(v map[string]*string) *DescribeLiveStreamAuthCheckingResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeLiveStreamAuthCheckingResponse) SetStatusCode(v int32) *DescribeLiveStreamAuthCheckingResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeLiveStreamAuthCheckingResponse) SetBody(v *DescribeLiveStreamAuthCheckingResponseBody) *DescribeLiveStreamAuthCheckingResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeLiveStreamBitRateDataRequest struct {
 	AppName       *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
 	DomainName    *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
@@ -22493,6 +22870,229 @@ func (s *DescribeLiveStreamsControlHistoryResponse) SetStatusCode(v int32) *Desc
 }
 
 func (s *DescribeLiveStreamsControlHistoryResponse) SetBody(v *DescribeLiveStreamsControlHistoryResponseBody) *DescribeLiveStreamsControlHistoryResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeLiveStreamsNotifyRecordsRequest struct {
+	AppName    *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	EndTime    *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	StartTime  *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Status     *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	StreamName *string `json:"StreamName,omitempty" xml:"StreamName,omitempty"`
+}
+
+func (s DescribeLiveStreamsNotifyRecordsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeLiveStreamsNotifyRecordsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeLiveStreamsNotifyRecordsRequest) SetAppName(v string) *DescribeLiveStreamsNotifyRecordsRequest {
+	s.AppName = &v
+	return s
+}
+
+func (s *DescribeLiveStreamsNotifyRecordsRequest) SetDomainName(v string) *DescribeLiveStreamsNotifyRecordsRequest {
+	s.DomainName = &v
+	return s
+}
+
+func (s *DescribeLiveStreamsNotifyRecordsRequest) SetEndTime(v string) *DescribeLiveStreamsNotifyRecordsRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeLiveStreamsNotifyRecordsRequest) SetOwnerId(v int64) *DescribeLiveStreamsNotifyRecordsRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribeLiveStreamsNotifyRecordsRequest) SetPageNumber(v int32) *DescribeLiveStreamsNotifyRecordsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeLiveStreamsNotifyRecordsRequest) SetPageSize(v int32) *DescribeLiveStreamsNotifyRecordsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeLiveStreamsNotifyRecordsRequest) SetStartTime(v string) *DescribeLiveStreamsNotifyRecordsRequest {
+	s.StartTime = &v
+	return s
+}
+
+func (s *DescribeLiveStreamsNotifyRecordsRequest) SetStatus(v string) *DescribeLiveStreamsNotifyRecordsRequest {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeLiveStreamsNotifyRecordsRequest) SetStreamName(v string) *DescribeLiveStreamsNotifyRecordsRequest {
+	s.StreamName = &v
+	return s
+}
+
+type DescribeLiveStreamsNotifyRecordsResponseBody struct {
+	NotifyRecordsInfo *DescribeLiveStreamsNotifyRecordsResponseBodyNotifyRecordsInfo `json:"NotifyRecordsInfo,omitempty" xml:"NotifyRecordsInfo,omitempty" type:"Struct"`
+	PageNum           *int32                                                         `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	PageSize          *int32                                                         `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId         *string                                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalNum          *int32                                                         `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
+	TotalPage         *int32                                                         `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
+}
+
+func (s DescribeLiveStreamsNotifyRecordsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeLiveStreamsNotifyRecordsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeLiveStreamsNotifyRecordsResponseBody) SetNotifyRecordsInfo(v *DescribeLiveStreamsNotifyRecordsResponseBodyNotifyRecordsInfo) *DescribeLiveStreamsNotifyRecordsResponseBody {
+	s.NotifyRecordsInfo = v
+	return s
+}
+
+func (s *DescribeLiveStreamsNotifyRecordsResponseBody) SetPageNum(v int32) *DescribeLiveStreamsNotifyRecordsResponseBody {
+	s.PageNum = &v
+	return s
+}
+
+func (s *DescribeLiveStreamsNotifyRecordsResponseBody) SetPageSize(v int32) *DescribeLiveStreamsNotifyRecordsResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeLiveStreamsNotifyRecordsResponseBody) SetRequestId(v string) *DescribeLiveStreamsNotifyRecordsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeLiveStreamsNotifyRecordsResponseBody) SetTotalNum(v int32) *DescribeLiveStreamsNotifyRecordsResponseBody {
+	s.TotalNum = &v
+	return s
+}
+
+func (s *DescribeLiveStreamsNotifyRecordsResponseBody) SetTotalPage(v int32) *DescribeLiveStreamsNotifyRecordsResponseBody {
+	s.TotalPage = &v
+	return s
+}
+
+type DescribeLiveStreamsNotifyRecordsResponseBodyNotifyRecordsInfo struct {
+	LiveStreamNotifyRecordsInfo []*DescribeLiveStreamsNotifyRecordsResponseBodyNotifyRecordsInfoLiveStreamNotifyRecordsInfo `json:"LiveStreamNotifyRecordsInfo,omitempty" xml:"LiveStreamNotifyRecordsInfo,omitempty" type:"Repeated"`
+}
+
+func (s DescribeLiveStreamsNotifyRecordsResponseBodyNotifyRecordsInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeLiveStreamsNotifyRecordsResponseBodyNotifyRecordsInfo) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeLiveStreamsNotifyRecordsResponseBodyNotifyRecordsInfo) SetLiveStreamNotifyRecordsInfo(v []*DescribeLiveStreamsNotifyRecordsResponseBodyNotifyRecordsInfoLiveStreamNotifyRecordsInfo) *DescribeLiveStreamsNotifyRecordsResponseBodyNotifyRecordsInfo {
+	s.LiveStreamNotifyRecordsInfo = v
+	return s
+}
+
+type DescribeLiveStreamsNotifyRecordsResponseBodyNotifyRecordsInfoLiveStreamNotifyRecordsInfo struct {
+	AppName       *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	DomainName    *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	NotifyContent *string `json:"NotifyContent,omitempty" xml:"NotifyContent,omitempty"`
+	NotifyResult  *string `json:"NotifyResult,omitempty" xml:"NotifyResult,omitempty"`
+	NotifyTime    *string `json:"NotifyTime,omitempty" xml:"NotifyTime,omitempty"`
+	NotifyType    *string `json:"NotifyType,omitempty" xml:"NotifyType,omitempty"`
+	NotifyUrl     *string `json:"NotifyUrl,omitempty" xml:"NotifyUrl,omitempty"`
+	StreamName    *string `json:"StreamName,omitempty" xml:"StreamName,omitempty"`
+}
+
+func (s DescribeLiveStreamsNotifyRecordsResponseBodyNotifyRecordsInfoLiveStreamNotifyRecordsInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeLiveStreamsNotifyRecordsResponseBodyNotifyRecordsInfoLiveStreamNotifyRecordsInfo) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeLiveStreamsNotifyRecordsResponseBodyNotifyRecordsInfoLiveStreamNotifyRecordsInfo) SetAppName(v string) *DescribeLiveStreamsNotifyRecordsResponseBodyNotifyRecordsInfoLiveStreamNotifyRecordsInfo {
+	s.AppName = &v
+	return s
+}
+
+func (s *DescribeLiveStreamsNotifyRecordsResponseBodyNotifyRecordsInfoLiveStreamNotifyRecordsInfo) SetDescription(v string) *DescribeLiveStreamsNotifyRecordsResponseBodyNotifyRecordsInfoLiveStreamNotifyRecordsInfo {
+	s.Description = &v
+	return s
+}
+
+func (s *DescribeLiveStreamsNotifyRecordsResponseBodyNotifyRecordsInfoLiveStreamNotifyRecordsInfo) SetDomainName(v string) *DescribeLiveStreamsNotifyRecordsResponseBodyNotifyRecordsInfoLiveStreamNotifyRecordsInfo {
+	s.DomainName = &v
+	return s
+}
+
+func (s *DescribeLiveStreamsNotifyRecordsResponseBodyNotifyRecordsInfoLiveStreamNotifyRecordsInfo) SetNotifyContent(v string) *DescribeLiveStreamsNotifyRecordsResponseBodyNotifyRecordsInfoLiveStreamNotifyRecordsInfo {
+	s.NotifyContent = &v
+	return s
+}
+
+func (s *DescribeLiveStreamsNotifyRecordsResponseBodyNotifyRecordsInfoLiveStreamNotifyRecordsInfo) SetNotifyResult(v string) *DescribeLiveStreamsNotifyRecordsResponseBodyNotifyRecordsInfoLiveStreamNotifyRecordsInfo {
+	s.NotifyResult = &v
+	return s
+}
+
+func (s *DescribeLiveStreamsNotifyRecordsResponseBodyNotifyRecordsInfoLiveStreamNotifyRecordsInfo) SetNotifyTime(v string) *DescribeLiveStreamsNotifyRecordsResponseBodyNotifyRecordsInfoLiveStreamNotifyRecordsInfo {
+	s.NotifyTime = &v
+	return s
+}
+
+func (s *DescribeLiveStreamsNotifyRecordsResponseBodyNotifyRecordsInfoLiveStreamNotifyRecordsInfo) SetNotifyType(v string) *DescribeLiveStreamsNotifyRecordsResponseBodyNotifyRecordsInfoLiveStreamNotifyRecordsInfo {
+	s.NotifyType = &v
+	return s
+}
+
+func (s *DescribeLiveStreamsNotifyRecordsResponseBodyNotifyRecordsInfoLiveStreamNotifyRecordsInfo) SetNotifyUrl(v string) *DescribeLiveStreamsNotifyRecordsResponseBodyNotifyRecordsInfoLiveStreamNotifyRecordsInfo {
+	s.NotifyUrl = &v
+	return s
+}
+
+func (s *DescribeLiveStreamsNotifyRecordsResponseBodyNotifyRecordsInfoLiveStreamNotifyRecordsInfo) SetStreamName(v string) *DescribeLiveStreamsNotifyRecordsResponseBodyNotifyRecordsInfoLiveStreamNotifyRecordsInfo {
+	s.StreamName = &v
+	return s
+}
+
+type DescribeLiveStreamsNotifyRecordsResponse struct {
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeLiveStreamsNotifyRecordsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeLiveStreamsNotifyRecordsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeLiveStreamsNotifyRecordsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeLiveStreamsNotifyRecordsResponse) SetHeaders(v map[string]*string) *DescribeLiveStreamsNotifyRecordsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeLiveStreamsNotifyRecordsResponse) SetStatusCode(v int32) *DescribeLiveStreamsNotifyRecordsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeLiveStreamsNotifyRecordsResponse) SetBody(v *DescribeLiveStreamsNotifyRecordsResponseBody) *DescribeLiveStreamsNotifyRecordsResponse {
 	s.Body = v
 	return s
 }
@@ -28064,6 +28664,122 @@ func (s *GetEditingJobInfoResponse) SetBody(v *GetEditingJobInfoResponseBody) *G
 	return s
 }
 
+type GetMessageAppRequest struct {
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+}
+
+func (s GetMessageAppRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMessageAppRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetMessageAppRequest) SetAppId(v string) *GetMessageAppRequest {
+	s.AppId = &v
+	return s
+}
+
+type GetMessageAppResponseBody struct {
+	RequestId *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *GetMessageAppResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+}
+
+func (s GetMessageAppResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMessageAppResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetMessageAppResponseBody) SetRequestId(v string) *GetMessageAppResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetMessageAppResponseBody) SetResult(v *GetMessageAppResponseBodyResult) *GetMessageAppResponseBody {
+	s.Result = v
+	return s
+}
+
+type GetMessageAppResponseBodyResult struct {
+	AppConfig  map[string]*string `json:"AppConfig,omitempty" xml:"AppConfig,omitempty"`
+	AppId      *string            `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppName    *string            `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	CreateTime *int64             `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Extension  map[string]*string `json:"Extension,omitempty" xml:"Extension,omitempty"`
+	Status     *int32             `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s GetMessageAppResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMessageAppResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *GetMessageAppResponseBodyResult) SetAppConfig(v map[string]*string) *GetMessageAppResponseBodyResult {
+	s.AppConfig = v
+	return s
+}
+
+func (s *GetMessageAppResponseBodyResult) SetAppId(v string) *GetMessageAppResponseBodyResult {
+	s.AppId = &v
+	return s
+}
+
+func (s *GetMessageAppResponseBodyResult) SetAppName(v string) *GetMessageAppResponseBodyResult {
+	s.AppName = &v
+	return s
+}
+
+func (s *GetMessageAppResponseBodyResult) SetCreateTime(v int64) *GetMessageAppResponseBodyResult {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *GetMessageAppResponseBodyResult) SetExtension(v map[string]*string) *GetMessageAppResponseBodyResult {
+	s.Extension = v
+	return s
+}
+
+func (s *GetMessageAppResponseBodyResult) SetStatus(v int32) *GetMessageAppResponseBodyResult {
+	s.Status = &v
+	return s
+}
+
+type GetMessageAppResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetMessageAppResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetMessageAppResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMessageAppResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetMessageAppResponse) SetHeaders(v map[string]*string) *GetMessageAppResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetMessageAppResponse) SetStatusCode(v int32) *GetMessageAppResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetMessageAppResponse) SetBody(v *GetMessageAppResponseBody) *GetMessageAppResponse {
+	s.Body = v
+	return s
+}
+
 type GetMessageGroupRequest struct {
 	AppId   *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
@@ -28298,98 +29014,6 @@ func (s *GetMessageTokenResponse) SetStatusCode(v int32) *GetMessageTokenRespons
 }
 
 func (s *GetMessageTokenResponse) SetBody(v *GetMessageTokenResponseBody) *GetMessageTokenResponse {
-	s.Body = v
-	return s
-}
-
-type GetMessageUserInfoRequest struct {
-	CloudUid *string `json:"CloudUid,omitempty" xml:"CloudUid,omitempty"`
-}
-
-func (s GetMessageUserInfoRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetMessageUserInfoRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetMessageUserInfoRequest) SetCloudUid(v string) *GetMessageUserInfoRequest {
-	s.CloudUid = &v
-	return s
-}
-
-type GetMessageUserInfoResponseBody struct {
-	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *GetMessageUserInfoResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-}
-
-func (s GetMessageUserInfoResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetMessageUserInfoResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetMessageUserInfoResponseBody) SetRequestId(v string) *GetMessageUserInfoResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *GetMessageUserInfoResponseBody) SetResult(v *GetMessageUserInfoResponseBodyResult) *GetMessageUserInfoResponseBody {
-	s.Result = v
-	return s
-}
-
-type GetMessageUserInfoResponseBodyResult struct {
-	HasOrderedIM *bool `json:"HasOrderedIM,omitempty" xml:"HasOrderedIM,omitempty"`
-	IsNewIMUser  *bool `json:"IsNewIMUser,omitempty" xml:"IsNewIMUser,omitempty"`
-}
-
-func (s GetMessageUserInfoResponseBodyResult) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetMessageUserInfoResponseBodyResult) GoString() string {
-	return s.String()
-}
-
-func (s *GetMessageUserInfoResponseBodyResult) SetHasOrderedIM(v bool) *GetMessageUserInfoResponseBodyResult {
-	s.HasOrderedIM = &v
-	return s
-}
-
-func (s *GetMessageUserInfoResponseBodyResult) SetIsNewIMUser(v bool) *GetMessageUserInfoResponseBodyResult {
-	s.IsNewIMUser = &v
-	return s
-}
-
-type GetMessageUserInfoResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetMessageUserInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetMessageUserInfoResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetMessageUserInfoResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetMessageUserInfoResponse) SetHeaders(v map[string]*string) *GetMessageUserInfoResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetMessageUserInfoResponse) SetStatusCode(v int32) *GetMessageUserInfoResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *GetMessageUserInfoResponse) SetBody(v *GetMessageUserInfoResponseBody) *GetMessageUserInfoResponse {
 	s.Body = v
 	return s
 }
@@ -29616,6 +30240,7 @@ func (s *ListLiveRealtimeLogDeliveryInfosResponse) SetBody(v *ListLiveRealtimeLo
 }
 
 type ListMessageRequest struct {
+	AppId    *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	GroupId  *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	PageNum  *int32  `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
 	PageSize *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
@@ -29629,6 +30254,11 @@ func (s ListMessageRequest) String() string {
 
 func (s ListMessageRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ListMessageRequest) SetAppId(v string) *ListMessageRequest {
+	s.AppId = &v
+	return s
 }
 
 func (s *ListMessageRequest) SetGroupId(v string) *ListMessageRequest {
@@ -29772,7 +30402,165 @@ func (s *ListMessageResponse) SetBody(v *ListMessageResponseBody) *ListMessageRe
 	return s
 }
 
+type ListMessageAppRequest struct {
+	PageNum  *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	SortType *int32 `json:"SortType,omitempty" xml:"SortType,omitempty"`
+}
+
+func (s ListMessageAppRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMessageAppRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListMessageAppRequest) SetPageNum(v int32) *ListMessageAppRequest {
+	s.PageNum = &v
+	return s
+}
+
+func (s *ListMessageAppRequest) SetPageSize(v int32) *ListMessageAppRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListMessageAppRequest) SetSortType(v int32) *ListMessageAppRequest {
+	s.SortType = &v
+	return s
+}
+
+type ListMessageAppResponseBody struct {
+	RequestId *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *ListMessageAppResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+}
+
+func (s ListMessageAppResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMessageAppResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListMessageAppResponseBody) SetRequestId(v string) *ListMessageAppResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListMessageAppResponseBody) SetResult(v *ListMessageAppResponseBodyResult) *ListMessageAppResponseBody {
+	s.Result = v
+	return s
+}
+
+type ListMessageAppResponseBodyResult struct {
+	AppList []*ListMessageAppResponseBodyResultAppList `json:"AppList,omitempty" xml:"AppList,omitempty" type:"Repeated"`
+	HasMore *bool                                      `json:"HasMore,omitempty" xml:"HasMore,omitempty"`
+	Total   *int32                                     `json:"Total,omitempty" xml:"Total,omitempty"`
+}
+
+func (s ListMessageAppResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMessageAppResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *ListMessageAppResponseBodyResult) SetAppList(v []*ListMessageAppResponseBodyResultAppList) *ListMessageAppResponseBodyResult {
+	s.AppList = v
+	return s
+}
+
+func (s *ListMessageAppResponseBodyResult) SetHasMore(v bool) *ListMessageAppResponseBodyResult {
+	s.HasMore = &v
+	return s
+}
+
+func (s *ListMessageAppResponseBodyResult) SetTotal(v int32) *ListMessageAppResponseBodyResult {
+	s.Total = &v
+	return s
+}
+
+type ListMessageAppResponseBodyResultAppList struct {
+	AppConfig  map[string]*string `json:"AppConfig,omitempty" xml:"AppConfig,omitempty"`
+	AppId      *string            `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppName    *string            `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	CreateTime *int64             `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Extension  map[string]*string `json:"Extension,omitempty" xml:"Extension,omitempty"`
+	Status     *int32             `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s ListMessageAppResponseBodyResultAppList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMessageAppResponseBodyResultAppList) GoString() string {
+	return s.String()
+}
+
+func (s *ListMessageAppResponseBodyResultAppList) SetAppConfig(v map[string]*string) *ListMessageAppResponseBodyResultAppList {
+	s.AppConfig = v
+	return s
+}
+
+func (s *ListMessageAppResponseBodyResultAppList) SetAppId(v string) *ListMessageAppResponseBodyResultAppList {
+	s.AppId = &v
+	return s
+}
+
+func (s *ListMessageAppResponseBodyResultAppList) SetAppName(v string) *ListMessageAppResponseBodyResultAppList {
+	s.AppName = &v
+	return s
+}
+
+func (s *ListMessageAppResponseBodyResultAppList) SetCreateTime(v int64) *ListMessageAppResponseBodyResultAppList {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListMessageAppResponseBodyResultAppList) SetExtension(v map[string]*string) *ListMessageAppResponseBodyResultAppList {
+	s.Extension = v
+	return s
+}
+
+func (s *ListMessageAppResponseBodyResultAppList) SetStatus(v int32) *ListMessageAppResponseBodyResultAppList {
+	s.Status = &v
+	return s
+}
+
+type ListMessageAppResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListMessageAppResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListMessageAppResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMessageAppResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListMessageAppResponse) SetHeaders(v map[string]*string) *ListMessageAppResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListMessageAppResponse) SetStatusCode(v int32) *ListMessageAppResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListMessageAppResponse) SetBody(v *ListMessageAppResponseBody) *ListMessageAppResponse {
+	s.Body = v
+	return s
+}
+
 type ListMessageGroupRequest struct {
+	AppId    *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	PageNum  *int32  `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
 	PageSize *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	SortType *int32  `json:"SortType,omitempty" xml:"SortType,omitempty"`
@@ -29785,6 +30573,11 @@ func (s ListMessageGroupRequest) String() string {
 
 func (s ListMessageGroupRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ListMessageGroupRequest) SetAppId(v string) *ListMessageGroupRequest {
+	s.AppId = &v
+	return s
 }
 
 func (s *ListMessageGroupRequest) SetPageNum(v int32) *ListMessageGroupRequest {
@@ -29860,6 +30653,7 @@ func (s *ListMessageGroupResponseBodyResult) SetTotal(v int32) *ListMessageGroup
 }
 
 type ListMessageGroupResponseBodyResultGroupList struct {
+	AppId      *string            `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	CreateTime *int64             `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	CreatorId  *string            `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
 	Extension  map[string]*string `json:"Extension,omitempty" xml:"Extension,omitempty"`
@@ -29873,6 +30667,11 @@ func (s ListMessageGroupResponseBodyResultGroupList) String() string {
 
 func (s ListMessageGroupResponseBodyResultGroupList) GoString() string {
 	return s.String()
+}
+
+func (s *ListMessageGroupResponseBodyResultGroupList) SetAppId(v string) *ListMessageGroupResponseBodyResultGroupList {
+	s.AppId = &v
+	return s
 }
 
 func (s *ListMessageGroupResponseBodyResultGroupList) SetCreateTime(v int64) *ListMessageGroupResponseBodyResultGroupList {
@@ -29935,7 +30734,6 @@ type ListMessageGroupUserRequest struct {
 	PageNum  *int32  `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
 	PageSize *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	SortType *int32  `json:"SortType,omitempty" xml:"SortType,omitempty"`
-	Type     *int32  `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s ListMessageGroupUserRequest) String() string {
@@ -29968,11 +30766,6 @@ func (s *ListMessageGroupUserRequest) SetPageSize(v int32) *ListMessageGroupUser
 
 func (s *ListMessageGroupUserRequest) SetSortType(v int32) *ListMessageGroupUserRequest {
 	s.SortType = &v
-	return s
-}
-
-func (s *ListMessageGroupUserRequest) SetType(v int32) *ListMessageGroupUserRequest {
-	s.Type = &v
 	return s
 }
 
@@ -30076,6 +30869,192 @@ func (s *ListMessageGroupUserResponse) SetStatusCode(v int32) *ListMessageGroupU
 }
 
 func (s *ListMessageGroupUserResponse) SetBody(v *ListMessageGroupUserResponseBody) *ListMessageGroupUserResponse {
+	s.Body = v
+	return s
+}
+
+type ListMessageGroupUserByIdRequest struct {
+	AppId      *string   `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	GroupId    *string   `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	UserIdList []*string `json:"UserIdList,omitempty" xml:"UserIdList,omitempty" type:"Repeated"`
+}
+
+func (s ListMessageGroupUserByIdRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMessageGroupUserByIdRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListMessageGroupUserByIdRequest) SetAppId(v string) *ListMessageGroupUserByIdRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *ListMessageGroupUserByIdRequest) SetGroupId(v string) *ListMessageGroupUserByIdRequest {
+	s.GroupId = &v
+	return s
+}
+
+func (s *ListMessageGroupUserByIdRequest) SetUserIdList(v []*string) *ListMessageGroupUserByIdRequest {
+	s.UserIdList = v
+	return s
+}
+
+type ListMessageGroupUserByIdShrinkRequest struct {
+	AppId            *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	GroupId          *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	UserIdListShrink *string `json:"UserIdList,omitempty" xml:"UserIdList,omitempty"`
+}
+
+func (s ListMessageGroupUserByIdShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMessageGroupUserByIdShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListMessageGroupUserByIdShrinkRequest) SetAppId(v string) *ListMessageGroupUserByIdShrinkRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *ListMessageGroupUserByIdShrinkRequest) SetGroupId(v string) *ListMessageGroupUserByIdShrinkRequest {
+	s.GroupId = &v
+	return s
+}
+
+func (s *ListMessageGroupUserByIdShrinkRequest) SetUserIdListShrink(v string) *ListMessageGroupUserByIdShrinkRequest {
+	s.UserIdListShrink = &v
+	return s
+}
+
+type ListMessageGroupUserByIdResponseBody struct {
+	RequestId *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *ListMessageGroupUserByIdResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+}
+
+func (s ListMessageGroupUserByIdResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMessageGroupUserByIdResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListMessageGroupUserByIdResponseBody) SetRequestId(v string) *ListMessageGroupUserByIdResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListMessageGroupUserByIdResponseBody) SetResult(v *ListMessageGroupUserByIdResponseBodyResult) *ListMessageGroupUserByIdResponseBody {
+	s.Result = v
+	return s
+}
+
+type ListMessageGroupUserByIdResponseBodyResult struct {
+	HasMore  *bool                                                 `json:"HasMore,omitempty" xml:"HasMore,omitempty"`
+	Total    *int32                                                `json:"Total,omitempty" xml:"Total,omitempty"`
+	UserList []*ListMessageGroupUserByIdResponseBodyResultUserList `json:"UserList,omitempty" xml:"UserList,omitempty" type:"Repeated"`
+}
+
+func (s ListMessageGroupUserByIdResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMessageGroupUserByIdResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *ListMessageGroupUserByIdResponseBodyResult) SetHasMore(v bool) *ListMessageGroupUserByIdResponseBodyResult {
+	s.HasMore = &v
+	return s
+}
+
+func (s *ListMessageGroupUserByIdResponseBodyResult) SetTotal(v int32) *ListMessageGroupUserByIdResponseBodyResult {
+	s.Total = &v
+	return s
+}
+
+func (s *ListMessageGroupUserByIdResponseBodyResult) SetUserList(v []*ListMessageGroupUserByIdResponseBodyResultUserList) *ListMessageGroupUserByIdResponseBodyResult {
+	s.UserList = v
+	return s
+}
+
+type ListMessageGroupUserByIdResponseBodyResultUserList struct {
+	IsMute        *bool     `json:"IsMute,omitempty" xml:"IsMute,omitempty"`
+	MuteBy        []*string `json:"MuteBy,omitempty" xml:"MuteBy,omitempty" type:"Repeated"`
+	UserAvatar    *string   `json:"UserAvatar,omitempty" xml:"UserAvatar,omitempty"`
+	UserExtension *string   `json:"UserExtension,omitempty" xml:"UserExtension,omitempty"`
+	UserId        *string   `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	UserNick      *string   `json:"UserNick,omitempty" xml:"UserNick,omitempty"`
+}
+
+func (s ListMessageGroupUserByIdResponseBodyResultUserList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMessageGroupUserByIdResponseBodyResultUserList) GoString() string {
+	return s.String()
+}
+
+func (s *ListMessageGroupUserByIdResponseBodyResultUserList) SetIsMute(v bool) *ListMessageGroupUserByIdResponseBodyResultUserList {
+	s.IsMute = &v
+	return s
+}
+
+func (s *ListMessageGroupUserByIdResponseBodyResultUserList) SetMuteBy(v []*string) *ListMessageGroupUserByIdResponseBodyResultUserList {
+	s.MuteBy = v
+	return s
+}
+
+func (s *ListMessageGroupUserByIdResponseBodyResultUserList) SetUserAvatar(v string) *ListMessageGroupUserByIdResponseBodyResultUserList {
+	s.UserAvatar = &v
+	return s
+}
+
+func (s *ListMessageGroupUserByIdResponseBodyResultUserList) SetUserExtension(v string) *ListMessageGroupUserByIdResponseBodyResultUserList {
+	s.UserExtension = &v
+	return s
+}
+
+func (s *ListMessageGroupUserByIdResponseBodyResultUserList) SetUserId(v string) *ListMessageGroupUserByIdResponseBodyResultUserList {
+	s.UserId = &v
+	return s
+}
+
+func (s *ListMessageGroupUserByIdResponseBodyResultUserList) SetUserNick(v string) *ListMessageGroupUserByIdResponseBodyResultUserList {
+	s.UserNick = &v
+	return s
+}
+
+type ListMessageGroupUserByIdResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListMessageGroupUserByIdResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListMessageGroupUserByIdResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMessageGroupUserByIdResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListMessageGroupUserByIdResponse) SetHeaders(v map[string]*string) *ListMessageGroupUserByIdResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListMessageGroupUserByIdResponse) SetStatusCode(v int32) *ListMessageGroupUserByIdResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListMessageGroupUserByIdResponse) SetBody(v *ListMessageGroupUserByIdResponseBody) *ListMessageGroupUserByIdResponse {
 	s.Body = v
 	return s
 }
@@ -31683,6 +32662,175 @@ func (s *PublishLiveStagingConfigToProductionResponse) SetBody(v *PublishLiveSta
 	return s
 }
 
+type QueryMessageAppRequest struct {
+	AppId    *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppName  *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	PageNum  *int32  `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	PageSize *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	SortType *int32  `json:"SortType,omitempty" xml:"SortType,omitempty"`
+}
+
+func (s QueryMessageAppRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryMessageAppRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryMessageAppRequest) SetAppId(v string) *QueryMessageAppRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *QueryMessageAppRequest) SetAppName(v string) *QueryMessageAppRequest {
+	s.AppName = &v
+	return s
+}
+
+func (s *QueryMessageAppRequest) SetPageNum(v int32) *QueryMessageAppRequest {
+	s.PageNum = &v
+	return s
+}
+
+func (s *QueryMessageAppRequest) SetPageSize(v int32) *QueryMessageAppRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *QueryMessageAppRequest) SetSortType(v int32) *QueryMessageAppRequest {
+	s.SortType = &v
+	return s
+}
+
+type QueryMessageAppResponseBody struct {
+	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    []*QueryMessageAppResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+}
+
+func (s QueryMessageAppResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryMessageAppResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryMessageAppResponseBody) SetRequestId(v string) *QueryMessageAppResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QueryMessageAppResponseBody) SetResult(v []*QueryMessageAppResponseBodyResult) *QueryMessageAppResponseBody {
+	s.Result = v
+	return s
+}
+
+type QueryMessageAppResponseBodyResult struct {
+	AppList    []*QueryMessageAppResponseBodyResultAppList `json:"AppList,omitempty" xml:"AppList,omitempty" type:"Repeated"`
+	HasMore    *bool                                       `json:"HasMore,omitempty" xml:"HasMore,omitempty"`
+	TotalCount *int32                                      `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s QueryMessageAppResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryMessageAppResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *QueryMessageAppResponseBodyResult) SetAppList(v []*QueryMessageAppResponseBodyResultAppList) *QueryMessageAppResponseBodyResult {
+	s.AppList = v
+	return s
+}
+
+func (s *QueryMessageAppResponseBodyResult) SetHasMore(v bool) *QueryMessageAppResponseBodyResult {
+	s.HasMore = &v
+	return s
+}
+
+func (s *QueryMessageAppResponseBodyResult) SetTotalCount(v int32) *QueryMessageAppResponseBodyResult {
+	s.TotalCount = &v
+	return s
+}
+
+type QueryMessageAppResponseBodyResultAppList struct {
+	AppConfig  map[string]*string `json:"AppConfig,omitempty" xml:"AppConfig,omitempty"`
+	AppId      *string            `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppName    *string            `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	CreateTime *int64             `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Extension  map[string]*string `json:"Extension,omitempty" xml:"Extension,omitempty"`
+	Status     *int32             `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s QueryMessageAppResponseBodyResultAppList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryMessageAppResponseBodyResultAppList) GoString() string {
+	return s.String()
+}
+
+func (s *QueryMessageAppResponseBodyResultAppList) SetAppConfig(v map[string]*string) *QueryMessageAppResponseBodyResultAppList {
+	s.AppConfig = v
+	return s
+}
+
+func (s *QueryMessageAppResponseBodyResultAppList) SetAppId(v string) *QueryMessageAppResponseBodyResultAppList {
+	s.AppId = &v
+	return s
+}
+
+func (s *QueryMessageAppResponseBodyResultAppList) SetAppName(v string) *QueryMessageAppResponseBodyResultAppList {
+	s.AppName = &v
+	return s
+}
+
+func (s *QueryMessageAppResponseBodyResultAppList) SetCreateTime(v int64) *QueryMessageAppResponseBodyResultAppList {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *QueryMessageAppResponseBodyResultAppList) SetExtension(v map[string]*string) *QueryMessageAppResponseBodyResultAppList {
+	s.Extension = v
+	return s
+}
+
+func (s *QueryMessageAppResponseBodyResultAppList) SetStatus(v int32) *QueryMessageAppResponseBodyResultAppList {
+	s.Status = &v
+	return s
+}
+
+type QueryMessageAppResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *QueryMessageAppResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s QueryMessageAppResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryMessageAppResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryMessageAppResponse) SetHeaders(v map[string]*string) *QueryMessageAppResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryMessageAppResponse) SetStatusCode(v int32) *QueryMessageAppResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QueryMessageAppResponse) SetBody(v *QueryMessageAppResponseBody) *QueryMessageAppResponse {
+	s.Body = v
+	return s
+}
+
 type QuerySnapshotCallbackAuthRequest struct {
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -32067,6 +33215,75 @@ func (s *RemoveShowFromShowListResponse) SetBody(v *RemoveShowFromShowListRespon
 	return s
 }
 
+type RestartCasterRequest struct {
+	CasterId *string `json:"CasterId,omitempty" xml:"CasterId,omitempty"`
+	OwnerId  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+}
+
+func (s RestartCasterRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RestartCasterRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RestartCasterRequest) SetCasterId(v string) *RestartCasterRequest {
+	s.CasterId = &v
+	return s
+}
+
+func (s *RestartCasterRequest) SetOwnerId(v int64) *RestartCasterRequest {
+	s.OwnerId = &v
+	return s
+}
+
+type RestartCasterResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s RestartCasterResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RestartCasterResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RestartCasterResponseBody) SetRequestId(v string) *RestartCasterResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type RestartCasterResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *RestartCasterResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s RestartCasterResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RestartCasterResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RestartCasterResponse) SetHeaders(v map[string]*string) *RestartCasterResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RestartCasterResponse) SetStatusCode(v int32) *RestartCasterResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RestartCasterResponse) SetBody(v *RestartCasterResponseBody) *RestartCasterResponse {
+	s.Body = v
+	return s
+}
+
 type ResumeLiveStreamRequest struct {
 	AppName        *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
 	DomainName     *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
@@ -32231,6 +33448,389 @@ func (s *RollbackLiveStagingConfigResponse) SetStatusCode(v int32) *RollbackLive
 }
 
 func (s *RollbackLiveStagingConfigResponse) SetBody(v *RollbackLiveStagingConfigResponseBody) *RollbackLiveStagingConfigResponse {
+	s.Body = v
+	return s
+}
+
+type SendLikeRequest struct {
+	AppId          *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	BroadCastType  *int32  `json:"BroadCastType,omitempty" xml:"BroadCastType,omitempty"`
+	Count          *string `json:"Count,omitempty" xml:"Count,omitempty"`
+	GroupId        *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	OperatorUserId *string `json:"OperatorUserId,omitempty" xml:"OperatorUserId,omitempty"`
+}
+
+func (s SendLikeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SendLikeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SendLikeRequest) SetAppId(v string) *SendLikeRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *SendLikeRequest) SetBroadCastType(v int32) *SendLikeRequest {
+	s.BroadCastType = &v
+	return s
+}
+
+func (s *SendLikeRequest) SetCount(v string) *SendLikeRequest {
+	s.Count = &v
+	return s
+}
+
+func (s *SendLikeRequest) SetGroupId(v string) *SendLikeRequest {
+	s.GroupId = &v
+	return s
+}
+
+func (s *SendLikeRequest) SetOperatorUserId(v string) *SendLikeRequest {
+	s.OperatorUserId = &v
+	return s
+}
+
+type SendLikeResponseBody struct {
+	RequestId *string                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *SendLikeResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+}
+
+func (s SendLikeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SendLikeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SendLikeResponseBody) SetRequestId(v string) *SendLikeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SendLikeResponseBody) SetResult(v *SendLikeResponseBodyResult) *SendLikeResponseBody {
+	s.Result = v
+	return s
+}
+
+type SendLikeResponseBodyResult struct {
+	LikeCount *int32 `json:"LikeCount,omitempty" xml:"LikeCount,omitempty"`
+}
+
+func (s SendLikeResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SendLikeResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *SendLikeResponseBodyResult) SetLikeCount(v int32) *SendLikeResponseBodyResult {
+	s.LikeCount = &v
+	return s
+}
+
+type SendLikeResponse struct {
+	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SendLikeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SendLikeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SendLikeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SendLikeResponse) SetHeaders(v map[string]*string) *SendLikeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SendLikeResponse) SetStatusCode(v int32) *SendLikeResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SendLikeResponse) SetBody(v *SendLikeResponseBody) *SendLikeResponse {
+	s.Body = v
+	return s
+}
+
+type SendMessageToGroupRequest struct {
+	AppId          *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	Data           *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	GroupId        *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	OperatorUserId *string `json:"OperatorUserId,omitempty" xml:"OperatorUserId,omitempty"`
+	Type           *int32  `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s SendMessageToGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SendMessageToGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SendMessageToGroupRequest) SetAppId(v string) *SendMessageToGroupRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *SendMessageToGroupRequest) SetData(v string) *SendMessageToGroupRequest {
+	s.Data = &v
+	return s
+}
+
+func (s *SendMessageToGroupRequest) SetGroupId(v string) *SendMessageToGroupRequest {
+	s.GroupId = &v
+	return s
+}
+
+func (s *SendMessageToGroupRequest) SetOperatorUserId(v string) *SendMessageToGroupRequest {
+	s.OperatorUserId = &v
+	return s
+}
+
+func (s *SendMessageToGroupRequest) SetType(v int32) *SendMessageToGroupRequest {
+	s.Type = &v
+	return s
+}
+
+type SendMessageToGroupResponseBody struct {
+	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *SendMessageToGroupResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+}
+
+func (s SendMessageToGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SendMessageToGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SendMessageToGroupResponseBody) SetRequestId(v string) *SendMessageToGroupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SendMessageToGroupResponseBody) SetResult(v *SendMessageToGroupResponseBodyResult) *SendMessageToGroupResponseBody {
+	s.Result = v
+	return s
+}
+
+type SendMessageToGroupResponseBodyResult struct {
+	MessageId *string `json:"MessageId,omitempty" xml:"MessageId,omitempty"`
+}
+
+func (s SendMessageToGroupResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SendMessageToGroupResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *SendMessageToGroupResponseBodyResult) SetMessageId(v string) *SendMessageToGroupResponseBodyResult {
+	s.MessageId = &v
+	return s
+}
+
+type SendMessageToGroupResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SendMessageToGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SendMessageToGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SendMessageToGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SendMessageToGroupResponse) SetHeaders(v map[string]*string) *SendMessageToGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SendMessageToGroupResponse) SetStatusCode(v int32) *SendMessageToGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SendMessageToGroupResponse) SetBody(v *SendMessageToGroupResponseBody) *SendMessageToGroupResponse {
+	s.Body = v
+	return s
+}
+
+type SendMessageToGroupUsersRequest struct {
+	AppId          *string   `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	Data           *string   `json:"Data,omitempty" xml:"Data,omitempty"`
+	GroupId        *string   `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	OperatorUserId *string   `json:"OperatorUserId,omitempty" xml:"OperatorUserId,omitempty"`
+	ReceiverIdList []*string `json:"ReceiverIdList,omitempty" xml:"ReceiverIdList,omitempty" type:"Repeated"`
+	Type           *int32    `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s SendMessageToGroupUsersRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SendMessageToGroupUsersRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SendMessageToGroupUsersRequest) SetAppId(v string) *SendMessageToGroupUsersRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *SendMessageToGroupUsersRequest) SetData(v string) *SendMessageToGroupUsersRequest {
+	s.Data = &v
+	return s
+}
+
+func (s *SendMessageToGroupUsersRequest) SetGroupId(v string) *SendMessageToGroupUsersRequest {
+	s.GroupId = &v
+	return s
+}
+
+func (s *SendMessageToGroupUsersRequest) SetOperatorUserId(v string) *SendMessageToGroupUsersRequest {
+	s.OperatorUserId = &v
+	return s
+}
+
+func (s *SendMessageToGroupUsersRequest) SetReceiverIdList(v []*string) *SendMessageToGroupUsersRequest {
+	s.ReceiverIdList = v
+	return s
+}
+
+func (s *SendMessageToGroupUsersRequest) SetType(v int32) *SendMessageToGroupUsersRequest {
+	s.Type = &v
+	return s
+}
+
+type SendMessageToGroupUsersShrinkRequest struct {
+	AppId                *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	Data                 *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	GroupId              *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	OperatorUserId       *string `json:"OperatorUserId,omitempty" xml:"OperatorUserId,omitempty"`
+	ReceiverIdListShrink *string `json:"ReceiverIdList,omitempty" xml:"ReceiverIdList,omitempty"`
+	Type                 *int32  `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s SendMessageToGroupUsersShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SendMessageToGroupUsersShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SendMessageToGroupUsersShrinkRequest) SetAppId(v string) *SendMessageToGroupUsersShrinkRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *SendMessageToGroupUsersShrinkRequest) SetData(v string) *SendMessageToGroupUsersShrinkRequest {
+	s.Data = &v
+	return s
+}
+
+func (s *SendMessageToGroupUsersShrinkRequest) SetGroupId(v string) *SendMessageToGroupUsersShrinkRequest {
+	s.GroupId = &v
+	return s
+}
+
+func (s *SendMessageToGroupUsersShrinkRequest) SetOperatorUserId(v string) *SendMessageToGroupUsersShrinkRequest {
+	s.OperatorUserId = &v
+	return s
+}
+
+func (s *SendMessageToGroupUsersShrinkRequest) SetReceiverIdListShrink(v string) *SendMessageToGroupUsersShrinkRequest {
+	s.ReceiverIdListShrink = &v
+	return s
+}
+
+func (s *SendMessageToGroupUsersShrinkRequest) SetType(v int32) *SendMessageToGroupUsersShrinkRequest {
+	s.Type = &v
+	return s
+}
+
+type SendMessageToGroupUsersResponseBody struct {
+	RequestId *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *SendMessageToGroupUsersResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+}
+
+func (s SendMessageToGroupUsersResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SendMessageToGroupUsersResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SendMessageToGroupUsersResponseBody) SetRequestId(v string) *SendMessageToGroupUsersResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SendMessageToGroupUsersResponseBody) SetResult(v *SendMessageToGroupUsersResponseBodyResult) *SendMessageToGroupUsersResponseBody {
+	s.Result = v
+	return s
+}
+
+type SendMessageToGroupUsersResponseBodyResult struct {
+	MessageId *string `json:"MessageId,omitempty" xml:"MessageId,omitempty"`
+}
+
+func (s SendMessageToGroupUsersResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SendMessageToGroupUsersResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *SendMessageToGroupUsersResponseBodyResult) SetMessageId(v string) *SendMessageToGroupUsersResponseBodyResult {
+	s.MessageId = &v
+	return s
+}
+
+type SendMessageToGroupUsersResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SendMessageToGroupUsersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SendMessageToGroupUsersResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SendMessageToGroupUsersResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SendMessageToGroupUsersResponse) SetHeaders(v map[string]*string) *SendMessageToGroupUsersResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SendMessageToGroupUsersResponse) SetStatusCode(v int32) *SendMessageToGroupUsersResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SendMessageToGroupUsersResponse) SetBody(v *SendMessageToGroupUsersResponseBody) *SendMessageToGroupUsersResponse {
 	s.Body = v
 	return s
 }
@@ -35793,6 +37393,93 @@ func (s *UpdateLiveSnapshotDetectPornConfigResponse) SetBody(v *UpdateLiveSnapsh
 	return s
 }
 
+type UpdateLiveSnapshotNotifyConfigRequest struct {
+	DomainName    *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	NotifyAuthKey *string `json:"NotifyAuthKey,omitempty" xml:"NotifyAuthKey,omitempty"`
+	NotifyReqAuth *string `json:"NotifyReqAuth,omitempty" xml:"NotifyReqAuth,omitempty"`
+	NotifyUrl     *string `json:"NotifyUrl,omitempty" xml:"NotifyUrl,omitempty"`
+	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+}
+
+func (s UpdateLiveSnapshotNotifyConfigRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateLiveSnapshotNotifyConfigRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateLiveSnapshotNotifyConfigRequest) SetDomainName(v string) *UpdateLiveSnapshotNotifyConfigRequest {
+	s.DomainName = &v
+	return s
+}
+
+func (s *UpdateLiveSnapshotNotifyConfigRequest) SetNotifyAuthKey(v string) *UpdateLiveSnapshotNotifyConfigRequest {
+	s.NotifyAuthKey = &v
+	return s
+}
+
+func (s *UpdateLiveSnapshotNotifyConfigRequest) SetNotifyReqAuth(v string) *UpdateLiveSnapshotNotifyConfigRequest {
+	s.NotifyReqAuth = &v
+	return s
+}
+
+func (s *UpdateLiveSnapshotNotifyConfigRequest) SetNotifyUrl(v string) *UpdateLiveSnapshotNotifyConfigRequest {
+	s.NotifyUrl = &v
+	return s
+}
+
+func (s *UpdateLiveSnapshotNotifyConfigRequest) SetOwnerId(v int64) *UpdateLiveSnapshotNotifyConfigRequest {
+	s.OwnerId = &v
+	return s
+}
+
+type UpdateLiveSnapshotNotifyConfigResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateLiveSnapshotNotifyConfigResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateLiveSnapshotNotifyConfigResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateLiveSnapshotNotifyConfigResponseBody) SetRequestId(v string) *UpdateLiveSnapshotNotifyConfigResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateLiveSnapshotNotifyConfigResponse struct {
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateLiveSnapshotNotifyConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateLiveSnapshotNotifyConfigResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateLiveSnapshotNotifyConfigResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateLiveSnapshotNotifyConfigResponse) SetHeaders(v map[string]*string) *UpdateLiveSnapshotNotifyConfigResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateLiveSnapshotNotifyConfigResponse) SetStatusCode(v int32) *UpdateLiveSnapshotNotifyConfigResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateLiveSnapshotNotifyConfigResponse) SetBody(v *UpdateLiveSnapshotNotifyConfigResponseBody) *UpdateLiveSnapshotNotifyConfigResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateLiveStreamMonitorRequest struct {
 	App            *string `json:"App,omitempty" xml:"App,omitempty"`
 	Domain         *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
@@ -36185,6 +37872,272 @@ func (s *UpdateLiveTopLevelDomainResponse) SetStatusCode(v int32) *UpdateLiveTop
 }
 
 func (s *UpdateLiveTopLevelDomainResponse) SetBody(v *UpdateLiveTopLevelDomainResponseBody) *UpdateLiveTopLevelDomainResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateMessageAppRequest struct {
+	AppConfig map[string]*string `json:"AppConfig,omitempty" xml:"AppConfig,omitempty"`
+	AppId     *string            `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppName   *string            `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	Extension map[string]*string `json:"Extension,omitempty" xml:"Extension,omitempty"`
+}
+
+func (s UpdateMessageAppRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateMessageAppRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateMessageAppRequest) SetAppConfig(v map[string]*string) *UpdateMessageAppRequest {
+	s.AppConfig = v
+	return s
+}
+
+func (s *UpdateMessageAppRequest) SetAppId(v string) *UpdateMessageAppRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *UpdateMessageAppRequest) SetAppName(v string) *UpdateMessageAppRequest {
+	s.AppName = &v
+	return s
+}
+
+func (s *UpdateMessageAppRequest) SetExtension(v map[string]*string) *UpdateMessageAppRequest {
+	s.Extension = v
+	return s
+}
+
+type UpdateMessageAppShrinkRequest struct {
+	AppConfigShrink *string `json:"AppConfig,omitempty" xml:"AppConfig,omitempty"`
+	AppId           *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppName         *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	ExtensionShrink *string `json:"Extension,omitempty" xml:"Extension,omitempty"`
+}
+
+func (s UpdateMessageAppShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateMessageAppShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateMessageAppShrinkRequest) SetAppConfigShrink(v string) *UpdateMessageAppShrinkRequest {
+	s.AppConfigShrink = &v
+	return s
+}
+
+func (s *UpdateMessageAppShrinkRequest) SetAppId(v string) *UpdateMessageAppShrinkRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *UpdateMessageAppShrinkRequest) SetAppName(v string) *UpdateMessageAppShrinkRequest {
+	s.AppName = &v
+	return s
+}
+
+func (s *UpdateMessageAppShrinkRequest) SetExtensionShrink(v string) *UpdateMessageAppShrinkRequest {
+	s.ExtensionShrink = &v
+	return s
+}
+
+type UpdateMessageAppResponseBody struct {
+	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *UpdateMessageAppResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+}
+
+func (s UpdateMessageAppResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateMessageAppResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateMessageAppResponseBody) SetRequestId(v string) *UpdateMessageAppResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateMessageAppResponseBody) SetResult(v *UpdateMessageAppResponseBodyResult) *UpdateMessageAppResponseBody {
+	s.Result = v
+	return s
+}
+
+type UpdateMessageAppResponseBodyResult struct {
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UpdateMessageAppResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateMessageAppResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateMessageAppResponseBodyResult) SetSuccess(v bool) *UpdateMessageAppResponseBodyResult {
+	s.Success = &v
+	return s
+}
+
+type UpdateMessageAppResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateMessageAppResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateMessageAppResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateMessageAppResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateMessageAppResponse) SetHeaders(v map[string]*string) *UpdateMessageAppResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateMessageAppResponse) SetStatusCode(v int32) *UpdateMessageAppResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateMessageAppResponse) SetBody(v *UpdateMessageAppResponseBody) *UpdateMessageAppResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateMessageGroupRequest struct {
+	AppId     *string            `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	Extension map[string]*string `json:"Extension,omitempty" xml:"Extension,omitempty"`
+	GroupId   *string            `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+}
+
+func (s UpdateMessageGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateMessageGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateMessageGroupRequest) SetAppId(v string) *UpdateMessageGroupRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *UpdateMessageGroupRequest) SetExtension(v map[string]*string) *UpdateMessageGroupRequest {
+	s.Extension = v
+	return s
+}
+
+func (s *UpdateMessageGroupRequest) SetGroupId(v string) *UpdateMessageGroupRequest {
+	s.GroupId = &v
+	return s
+}
+
+type UpdateMessageGroupShrinkRequest struct {
+	AppId           *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	ExtensionShrink *string `json:"Extension,omitempty" xml:"Extension,omitempty"`
+	GroupId         *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+}
+
+func (s UpdateMessageGroupShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateMessageGroupShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateMessageGroupShrinkRequest) SetAppId(v string) *UpdateMessageGroupShrinkRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *UpdateMessageGroupShrinkRequest) SetExtensionShrink(v string) *UpdateMessageGroupShrinkRequest {
+	s.ExtensionShrink = &v
+	return s
+}
+
+func (s *UpdateMessageGroupShrinkRequest) SetGroupId(v string) *UpdateMessageGroupShrinkRequest {
+	s.GroupId = &v
+	return s
+}
+
+type UpdateMessageGroupResponseBody struct {
+	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *UpdateMessageGroupResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+}
+
+func (s UpdateMessageGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateMessageGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateMessageGroupResponseBody) SetRequestId(v string) *UpdateMessageGroupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateMessageGroupResponseBody) SetResult(v *UpdateMessageGroupResponseBodyResult) *UpdateMessageGroupResponseBody {
+	s.Result = v
+	return s
+}
+
+type UpdateMessageGroupResponseBodyResult struct {
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UpdateMessageGroupResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateMessageGroupResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateMessageGroupResponseBodyResult) SetSuccess(v bool) *UpdateMessageGroupResponseBodyResult {
+	s.Success = &v
+	return s
+}
+
+type UpdateMessageGroupResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateMessageGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateMessageGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateMessageGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateMessageGroupResponse) SetHeaders(v map[string]*string) *UpdateMessageGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateMessageGroupResponse) SetStatusCode(v int32) *UpdateMessageGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateMessageGroupResponse) SetBody(v *UpdateMessageGroupResponseBody) *UpdateMessageGroupResponse {
 	s.Body = v
 	return s
 }
@@ -37909,6 +39862,66 @@ func (client *Client) AddLiveSnapshotDetectPornConfig(request *AddLiveSnapshotDe
 	return _result, _err
 }
 
+func (client *Client) AddLiveSnapshotNotifyConfigWithOptions(request *AddLiveSnapshotNotifyConfigRequest, runtime *util.RuntimeOptions) (_result *AddLiveSnapshotNotifyConfigResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NotifyAuthKey)) {
+		query["NotifyAuthKey"] = request.NotifyAuthKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NotifyReqAuth)) {
+		query["NotifyReqAuth"] = request.NotifyReqAuth
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NotifyUrl)) {
+		query["NotifyUrl"] = request.NotifyUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AddLiveSnapshotNotifyConfig"),
+		Version:     tea.String("2016-11-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &AddLiveSnapshotNotifyConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) AddLiveSnapshotNotifyConfig(request *AddLiveSnapshotNotifyConfigRequest) (_result *AddLiveSnapshotNotifyConfigResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &AddLiveSnapshotNotifyConfigResponse{}
+	_body, _err := client.AddLiveSnapshotNotifyConfigWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) AddLiveStreamTranscodeWithOptions(request *AddLiveStreamTranscodeRequest, runtime *util.RuntimeOptions) (_result *AddLiveStreamTranscodeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -38893,54 +40906,6 @@ func (client *Client) CloseLiveShift(request *CloseLiveShiftRequest) (_result *C
 	return _result, _err
 }
 
-func (client *Client) CloseMessageGroupWithOptions(request *CloseMessageGroupRequest, runtime *util.RuntimeOptions) (_result *CloseMessageGroupResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.AppId)) {
-		body["AppId"] = request.AppId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
-		body["GroupId"] = request.GroupId
-	}
-
-	req := &openapi.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("CloseMessageGroup"),
-		Version:     tea.String("2016-11-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &CloseMessageGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) CloseMessageGroup(request *CloseMessageGroupRequest) (_result *CloseMessageGroupResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &CloseMessageGroupResponse{}
-	_body, _err := client.CloseMessageGroupWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) CopyCasterWithOptions(request *CopyCasterRequest, runtime *util.RuntimeOptions) (_result *CopyCasterResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -39414,6 +41379,68 @@ func (client *Client) CreateLiveTranscodeTemplate(request *CreateLiveTranscodeTe
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateLiveTranscodeTemplateResponse{}
 	_body, _err := client.CreateLiveTranscodeTemplateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateMessageAppWithOptions(tmpReq *CreateMessageAppRequest, runtime *util.RuntimeOptions) (_result *CreateMessageAppResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CreateMessageAppShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.AppConfig)) {
+		request.AppConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.AppConfig, tea.String("AppConfig"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.Extension)) {
+		request.ExtensionShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Extension, tea.String("Extension"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppConfigShrink)) {
+		body["AppConfig"] = request.AppConfigShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AppName)) {
+		body["AppName"] = request.AppName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExtensionShrink)) {
+		body["Extension"] = request.ExtensionShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateMessageApp"),
+		Version:     tea.String("2016-11-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateMessageAppResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateMessageApp(request *CreateMessageAppRequest) (_result *CreateMessageAppResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateMessageAppResponse{}
+	_body, _err := client.CreateMessageAppWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -40828,6 +42855,54 @@ func (client *Client) DeleteLiveSnapshotDetectPornConfig(request *DeleteLiveSnap
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteLiveSnapshotDetectPornConfigResponse{}
 	_body, _err := client.DeleteLiveSnapshotDetectPornConfigWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteLiveSnapshotNotifyConfigWithOptions(request *DeleteLiveSnapshotNotifyConfigRequest, runtime *util.RuntimeOptions) (_result *DeleteLiveSnapshotNotifyConfigResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteLiveSnapshotNotifyConfig"),
+		Version:     tea.String("2016-11-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteLiveSnapshotNotifyConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteLiveSnapshotNotifyConfig(request *DeleteLiveSnapshotNotifyConfigRequest) (_result *DeleteLiveSnapshotNotifyConfigResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteLiveSnapshotNotifyConfigResponse{}
+	_body, _err := client.DeleteLiveSnapshotNotifyConfigWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -42367,6 +44442,10 @@ func (client *Client) DescribeDomainUsageDataWithOptions(request *DescribeDomain
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Area)) {
 		query["Area"] = request.Area
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DataProtocol)) {
+		query["DataProtocol"] = request.DataProtocol
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
@@ -45171,6 +47250,106 @@ func (client *Client) DescribeLiveSnapshotDetectPornConfig(request *DescribeLive
 	return _result, _err
 }
 
+func (client *Client) DescribeLiveSnapshotNotifyConfigWithOptions(request *DescribeLiveSnapshotNotifyConfigRequest, runtime *util.RuntimeOptions) (_result *DescribeLiveSnapshotNotifyConfigResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeLiveSnapshotNotifyConfig"),
+		Version:     tea.String("2016-11-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeLiveSnapshotNotifyConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeLiveSnapshotNotifyConfig(request *DescribeLiveSnapshotNotifyConfigRequest) (_result *DescribeLiveSnapshotNotifyConfigResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeLiveSnapshotNotifyConfigResponse{}
+	_body, _err := client.DescribeLiveSnapshotNotifyConfigWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeLiveStreamAuthCheckingWithOptions(request *DescribeLiveStreamAuthCheckingRequest, runtime *util.RuntimeOptions) (_result *DescribeLiveStreamAuthCheckingResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Url)) {
+		query["Url"] = request.Url
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeLiveStreamAuthChecking"),
+		Version:     tea.String("2016-11-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeLiveStreamAuthCheckingResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeLiveStreamAuthChecking(request *DescribeLiveStreamAuthCheckingRequest) (_result *DescribeLiveStreamAuthCheckingResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeLiveStreamAuthCheckingResponse{}
+	_body, _err := client.DescribeLiveStreamAuthCheckingWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DescribeLiveStreamBitRateDataWithOptions(request *DescribeLiveStreamBitRateDataRequest, runtime *util.RuntimeOptions) (_result *DescribeLiveStreamBitRateDataResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -46240,6 +48419,82 @@ func (client *Client) DescribeLiveStreamsControlHistory(request *DescribeLiveStr
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeLiveStreamsControlHistoryResponse{}
 	_body, _err := client.DescribeLiveStreamsControlHistoryWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeLiveStreamsNotifyRecordsWithOptions(request *DescribeLiveStreamsNotifyRecordsRequest, runtime *util.RuntimeOptions) (_result *DescribeLiveStreamsNotifyRecordsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppName)) {
+		query["AppName"] = request.AppName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		query["Status"] = request.Status
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StreamName)) {
+		query["StreamName"] = request.StreamName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeLiveStreamsNotifyRecords"),
+		Version:     tea.String("2016-11-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeLiveStreamsNotifyRecordsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeLiveStreamsNotifyRecords(request *DescribeLiveStreamsNotifyRecordsRequest) (_result *DescribeLiveStreamsNotifyRecordsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeLiveStreamsNotifyRecordsResponse{}
+	_body, _err := client.DescribeLiveStreamsNotifyRecordsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -48453,6 +50708,50 @@ func (client *Client) GetEditingJobInfo(request *GetEditingJobInfoRequest) (_res
 	return _result, _err
 }
 
+func (client *Client) GetMessageAppWithOptions(request *GetMessageAppRequest, runtime *util.RuntimeOptions) (_result *GetMessageAppResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		body["AppId"] = request.AppId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetMessageApp"),
+		Version:     tea.String("2016-11-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetMessageAppResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetMessageApp(request *GetMessageAppRequest) (_result *GetMessageAppResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetMessageAppResponse{}
+	_body, _err := client.GetMessageAppWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) GetMessageGroupWithOptions(request *GetMessageGroupRequest, runtime *util.RuntimeOptions) (_result *GetMessageGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -48550,50 +50849,6 @@ func (client *Client) GetMessageToken(request *GetMessageTokenRequest) (_result 
 	runtime := &util.RuntimeOptions{}
 	_result = &GetMessageTokenResponse{}
 	_body, _err := client.GetMessageTokenWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) GetMessageUserInfoWithOptions(request *GetMessageUserInfoRequest, runtime *util.RuntimeOptions) (_result *GetMessageUserInfoResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.CloudUid)) {
-		body["CloudUid"] = request.CloudUid
-	}
-
-	req := &openapi.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("GetMessageUserInfo"),
-		Version:     tea.String("2016-11-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &GetMessageUserInfoResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) GetMessageUserInfo(request *GetMessageUserInfoRequest) (_result *GetMessageUserInfoResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &GetMessageUserInfoResponse{}
-	_body, _err := client.GetMessageUserInfoWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -49095,6 +51350,10 @@ func (client *Client) ListMessageWithOptions(request *ListMessageRequest, runtim
 		return _result, _err
 	}
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		body["AppId"] = request.AppId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
 		body["GroupId"] = request.GroupId
 	}
@@ -49149,12 +51408,68 @@ func (client *Client) ListMessage(request *ListMessageRequest) (_result *ListMes
 	return _result, _err
 }
 
+func (client *Client) ListMessageAppWithOptions(request *ListMessageAppRequest, runtime *util.RuntimeOptions) (_result *ListMessageAppResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.PageNum)) {
+		body["PageNum"] = request.PageNum
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SortType)) {
+		body["SortType"] = request.SortType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListMessageApp"),
+		Version:     tea.String("2016-11-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListMessageAppResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListMessageApp(request *ListMessageAppRequest) (_result *ListMessageAppResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListMessageAppResponse{}
+	_body, _err := client.ListMessageAppWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ListMessageGroupWithOptions(request *ListMessageGroupRequest, runtime *util.RuntimeOptions) (_result *ListMessageGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		body["AppId"] = request.AppId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.PageNum)) {
 		body["PageNum"] = request.PageNum
 	}
@@ -49231,10 +51546,6 @@ func (client *Client) ListMessageGroupUserWithOptions(request *ListMessageGroupU
 		body["SortType"] = request.SortType
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.Type)) {
-		body["Type"] = request.Type
-	}
-
 	req := &openapi.OpenApiRequest{
 		Body: openapiutil.ParseToMap(body),
 	}
@@ -49262,6 +51573,64 @@ func (client *Client) ListMessageGroupUser(request *ListMessageGroupUserRequest)
 	runtime := &util.RuntimeOptions{}
 	_result = &ListMessageGroupUserResponse{}
 	_body, _err := client.ListMessageGroupUserWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListMessageGroupUserByIdWithOptions(tmpReq *ListMessageGroupUserByIdRequest, runtime *util.RuntimeOptions) (_result *ListMessageGroupUserByIdResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ListMessageGroupUserByIdShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.UserIdList)) {
+		request.UserIdListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.UserIdList, tea.String("UserIdList"), tea.String("simple"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		body["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		body["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserIdListShrink)) {
+		body["UserIdList"] = request.UserIdListShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListMessageGroupUserById"),
+		Version:     tea.String("2016-11-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListMessageGroupUserByIdResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListMessageGroupUserById(request *ListMessageGroupUserByIdRequest) (_result *ListMessageGroupUserByIdResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListMessageGroupUserByIdResponse{}
+	_body, _err := client.ListMessageGroupUserByIdWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -50145,6 +52514,66 @@ func (client *Client) PublishLiveStagingConfigToProduction(request *PublishLiveS
 	return _result, _err
 }
 
+func (client *Client) QueryMessageAppWithOptions(request *QueryMessageAppRequest, runtime *util.RuntimeOptions) (_result *QueryMessageAppResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		body["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AppName)) {
+		body["AppName"] = request.AppName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNum)) {
+		body["PageNum"] = request.PageNum
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SortType)) {
+		body["SortType"] = request.SortType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryMessageApp"),
+		Version:     tea.String("2016-11-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QueryMessageAppResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) QueryMessageApp(request *QueryMessageAppRequest) (_result *QueryMessageAppResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QueryMessageAppResponse{}
+	_body, _err := client.QueryMessageAppWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) QuerySnapshotCallbackAuthWithOptions(request *QuerySnapshotCallbackAuthRequest, runtime *util.RuntimeOptions) (_result *QuerySnapshotCallbackAuthResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -50385,6 +52814,54 @@ func (client *Client) RemoveShowFromShowList(request *RemoveShowFromShowListRequ
 	return _result, _err
 }
 
+func (client *Client) RestartCasterWithOptions(request *RestartCasterRequest, runtime *util.RuntimeOptions) (_result *RestartCasterResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CasterId)) {
+		query["CasterId"] = request.CasterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RestartCaster"),
+		Version:     tea.String("2016-11-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RestartCasterResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) RestartCaster(request *RestartCasterRequest) (_result *RestartCasterResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RestartCasterResponse{}
+	_body, _err := client.RestartCasterWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ResumeLiveStreamWithOptions(request *ResumeLiveStreamRequest, runtime *util.RuntimeOptions) (_result *ResumeLiveStreamResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -50494,6 +52971,196 @@ func (client *Client) RollbackLiveStagingConfig(request *RollbackLiveStagingConf
 	runtime := &util.RuntimeOptions{}
 	_result = &RollbackLiveStagingConfigResponse{}
 	_body, _err := client.RollbackLiveStagingConfigWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SendLikeWithOptions(request *SendLikeRequest, runtime *util.RuntimeOptions) (_result *SendLikeResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		body["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BroadCastType)) {
+		body["BroadCastType"] = request.BroadCastType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Count)) {
+		body["Count"] = request.Count
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		body["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OperatorUserId)) {
+		body["OperatorUserId"] = request.OperatorUserId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SendLike"),
+		Version:     tea.String("2016-11-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SendLikeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SendLike(request *SendLikeRequest) (_result *SendLikeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SendLikeResponse{}
+	_body, _err := client.SendLikeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SendMessageToGroupWithOptions(request *SendMessageToGroupRequest, runtime *util.RuntimeOptions) (_result *SendMessageToGroupResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		body["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Data)) {
+		body["Data"] = request.Data
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		body["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OperatorUserId)) {
+		body["OperatorUserId"] = request.OperatorUserId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		body["Type"] = request.Type
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SendMessageToGroup"),
+		Version:     tea.String("2016-11-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SendMessageToGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SendMessageToGroup(request *SendMessageToGroupRequest) (_result *SendMessageToGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SendMessageToGroupResponse{}
+	_body, _err := client.SendMessageToGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SendMessageToGroupUsersWithOptions(tmpReq *SendMessageToGroupUsersRequest, runtime *util.RuntimeOptions) (_result *SendMessageToGroupUsersResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &SendMessageToGroupUsersShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.ReceiverIdList)) {
+		request.ReceiverIdListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ReceiverIdList, tea.String("ReceiverIdList"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		body["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Data)) {
+		body["Data"] = request.Data
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		body["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OperatorUserId)) {
+		body["OperatorUserId"] = request.OperatorUserId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ReceiverIdListShrink)) {
+		body["ReceiverIdList"] = request.ReceiverIdListShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		body["Type"] = request.Type
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SendMessageToGroupUsers"),
+		Version:     tea.String("2016-11-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SendMessageToGroupUsersResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SendMessageToGroupUsers(request *SendMessageToGroupUsersRequest) (_result *SendMessageToGroupUsersResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SendMessageToGroupUsersResponse{}
+	_body, _err := client.SendMessageToGroupUsersWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -52673,6 +55340,66 @@ func (client *Client) UpdateLiveSnapshotDetectPornConfig(request *UpdateLiveSnap
 	return _result, _err
 }
 
+func (client *Client) UpdateLiveSnapshotNotifyConfigWithOptions(request *UpdateLiveSnapshotNotifyConfigRequest, runtime *util.RuntimeOptions) (_result *UpdateLiveSnapshotNotifyConfigResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NotifyAuthKey)) {
+		query["NotifyAuthKey"] = request.NotifyAuthKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NotifyReqAuth)) {
+		query["NotifyReqAuth"] = request.NotifyReqAuth
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NotifyUrl)) {
+		query["NotifyUrl"] = request.NotifyUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateLiveSnapshotNotifyConfig"),
+		Version:     tea.String("2016-11-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateLiveSnapshotNotifyConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateLiveSnapshotNotifyConfig(request *UpdateLiveSnapshotNotifyConfigRequest) (_result *UpdateLiveSnapshotNotifyConfigResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateLiveSnapshotNotifyConfigResponse{}
+	_body, _err := client.UpdateLiveSnapshotNotifyConfigWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) UpdateLiveStreamMonitorWithOptions(request *UpdateLiveStreamMonitorRequest, runtime *util.RuntimeOptions) (_result *UpdateLiveStreamMonitorResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -52938,6 +55665,130 @@ func (client *Client) UpdateLiveTopLevelDomain(request *UpdateLiveTopLevelDomain
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateLiveTopLevelDomainResponse{}
 	_body, _err := client.UpdateLiveTopLevelDomainWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateMessageAppWithOptions(tmpReq *UpdateMessageAppRequest, runtime *util.RuntimeOptions) (_result *UpdateMessageAppResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &UpdateMessageAppShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.AppConfig)) {
+		request.AppConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.AppConfig, tea.String("AppConfig"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.Extension)) {
+		request.ExtensionShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Extension, tea.String("Extension"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppConfigShrink)) {
+		body["AppConfig"] = request.AppConfigShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		body["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AppName)) {
+		body["AppName"] = request.AppName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExtensionShrink)) {
+		body["Extension"] = request.ExtensionShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateMessageApp"),
+		Version:     tea.String("2016-11-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateMessageAppResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateMessageApp(request *UpdateMessageAppRequest) (_result *UpdateMessageAppResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateMessageAppResponse{}
+	_body, _err := client.UpdateMessageAppWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateMessageGroupWithOptions(tmpReq *UpdateMessageGroupRequest, runtime *util.RuntimeOptions) (_result *UpdateMessageGroupResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &UpdateMessageGroupShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Extension)) {
+		request.ExtensionShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Extension, tea.String("Extension"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		body["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExtensionShrink)) {
+		body["Extension"] = request.ExtensionShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		body["GroupId"] = request.GroupId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateMessageGroup"),
+		Version:     tea.String("2016-11-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateMessageGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateMessageGroup(request *UpdateMessageGroupRequest) (_result *UpdateMessageGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateMessageGroupResponse{}
+	_body, _err := client.UpdateMessageGroupWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
