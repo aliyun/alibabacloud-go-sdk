@@ -164,11 +164,12 @@ func (s *CreateClusterCheckResponse) SetBody(v *CreateClusterCheckResponseBody) 
 }
 
 type CreateClusterReportRequest struct {
-	AddonName       *string `json:"AddonName,omitempty" xml:"AddonName,omitempty"`
-	ClusterRegionId *string `json:"ClusterRegionId,omitempty" xml:"ClusterRegionId,omitempty"`
-	ClusterUid      *string `json:"ClusterUid,omitempty" xml:"ClusterUid,omitempty"`
-	OwnerUid        *int64  `json:"OwnerUid,omitempty" xml:"OwnerUid,omitempty"`
-	ReportName      *string `json:"ReportName,omitempty" xml:"ReportName,omitempty"`
+	AddonName          *string   `json:"AddonName,omitempty" xml:"AddonName,omitempty"`
+	ClusterRegionId    *string   `json:"ClusterRegionId,omitempty" xml:"ClusterRegionId,omitempty"`
+	ClusterUid         *string   `json:"ClusterUid,omitempty" xml:"ClusterUid,omitempty"`
+	OwnerUid           *int64    `json:"OwnerUid,omitempty" xml:"OwnerUid,omitempty"`
+	ReportName         *string   `json:"ReportName,omitempty" xml:"ReportName,omitempty"`
+	TemplatePredicates []*string `json:"TemplatePredicates,omitempty" xml:"TemplatePredicates,omitempty" type:"Repeated"`
 }
 
 func (s CreateClusterReportRequest) String() string {
@@ -201,6 +202,58 @@ func (s *CreateClusterReportRequest) SetOwnerUid(v int64) *CreateClusterReportRe
 
 func (s *CreateClusterReportRequest) SetReportName(v string) *CreateClusterReportRequest {
 	s.ReportName = &v
+	return s
+}
+
+func (s *CreateClusterReportRequest) SetTemplatePredicates(v []*string) *CreateClusterReportRequest {
+	s.TemplatePredicates = v
+	return s
+}
+
+type CreateClusterReportShrinkRequest struct {
+	AddonName                *string `json:"AddonName,omitempty" xml:"AddonName,omitempty"`
+	ClusterRegionId          *string `json:"ClusterRegionId,omitempty" xml:"ClusterRegionId,omitempty"`
+	ClusterUid               *string `json:"ClusterUid,omitempty" xml:"ClusterUid,omitempty"`
+	OwnerUid                 *int64  `json:"OwnerUid,omitempty" xml:"OwnerUid,omitempty"`
+	ReportName               *string `json:"ReportName,omitempty" xml:"ReportName,omitempty"`
+	TemplatePredicatesShrink *string `json:"TemplatePredicates,omitempty" xml:"TemplatePredicates,omitempty"`
+}
+
+func (s CreateClusterReportShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateClusterReportShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateClusterReportShrinkRequest) SetAddonName(v string) *CreateClusterReportShrinkRequest {
+	s.AddonName = &v
+	return s
+}
+
+func (s *CreateClusterReportShrinkRequest) SetClusterRegionId(v string) *CreateClusterReportShrinkRequest {
+	s.ClusterRegionId = &v
+	return s
+}
+
+func (s *CreateClusterReportShrinkRequest) SetClusterUid(v string) *CreateClusterReportShrinkRequest {
+	s.ClusterUid = &v
+	return s
+}
+
+func (s *CreateClusterReportShrinkRequest) SetOwnerUid(v int64) *CreateClusterReportShrinkRequest {
+	s.OwnerUid = &v
+	return s
+}
+
+func (s *CreateClusterReportShrinkRequest) SetReportName(v string) *CreateClusterReportShrinkRequest {
+	s.ReportName = &v
+	return s
+}
+
+func (s *CreateClusterReportShrinkRequest) SetTemplatePredicatesShrink(v string) *CreateClusterReportShrinkRequest {
+	s.TemplatePredicatesShrink = &v
 	return s
 }
 
@@ -2650,253 +2703,6 @@ func (s *ListDeprecatedAPIResponse) SetBody(v *ListDeprecatedAPIResponseBody) *L
 	return s
 }
 
-type ListDiagnosisResultRequest struct {
-	ClusterRegionId *string   `json:"ClusterRegionId,omitempty" xml:"ClusterRegionId,omitempty"`
-	ClusterUid      *string   `json:"ClusterUid,omitempty" xml:"ClusterUid,omitempty"`
-	OwnerUid        *int64    `json:"OwnerUid,omitempty" xml:"OwnerUid,omitempty"`
-	PageNo          *int64    `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	PageSize        *int64    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Since           *int64    `json:"Since,omitempty" xml:"Since,omitempty"`
-	Types           []*string `json:"Types,omitempty" xml:"Types,omitempty" type:"Repeated"`
-}
-
-func (s ListDiagnosisResultRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListDiagnosisResultRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListDiagnosisResultRequest) SetClusterRegionId(v string) *ListDiagnosisResultRequest {
-	s.ClusterRegionId = &v
-	return s
-}
-
-func (s *ListDiagnosisResultRequest) SetClusterUid(v string) *ListDiagnosisResultRequest {
-	s.ClusterUid = &v
-	return s
-}
-
-func (s *ListDiagnosisResultRequest) SetOwnerUid(v int64) *ListDiagnosisResultRequest {
-	s.OwnerUid = &v
-	return s
-}
-
-func (s *ListDiagnosisResultRequest) SetPageNo(v int64) *ListDiagnosisResultRequest {
-	s.PageNo = &v
-	return s
-}
-
-func (s *ListDiagnosisResultRequest) SetPageSize(v int64) *ListDiagnosisResultRequest {
-	s.PageSize = &v
-	return s
-}
-
-func (s *ListDiagnosisResultRequest) SetSince(v int64) *ListDiagnosisResultRequest {
-	s.Since = &v
-	return s
-}
-
-func (s *ListDiagnosisResultRequest) SetTypes(v []*string) *ListDiagnosisResultRequest {
-	s.Types = v
-	return s
-}
-
-type ListDiagnosisResultShrinkRequest struct {
-	ClusterRegionId *string `json:"ClusterRegionId,omitempty" xml:"ClusterRegionId,omitempty"`
-	ClusterUid      *string `json:"ClusterUid,omitempty" xml:"ClusterUid,omitempty"`
-	OwnerUid        *int64  `json:"OwnerUid,omitempty" xml:"OwnerUid,omitempty"`
-	PageNo          *int64  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	PageSize        *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Since           *int64  `json:"Since,omitempty" xml:"Since,omitempty"`
-	TypesShrink     *string `json:"Types,omitempty" xml:"Types,omitempty"`
-}
-
-func (s ListDiagnosisResultShrinkRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListDiagnosisResultShrinkRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListDiagnosisResultShrinkRequest) SetClusterRegionId(v string) *ListDiagnosisResultShrinkRequest {
-	s.ClusterRegionId = &v
-	return s
-}
-
-func (s *ListDiagnosisResultShrinkRequest) SetClusterUid(v string) *ListDiagnosisResultShrinkRequest {
-	s.ClusterUid = &v
-	return s
-}
-
-func (s *ListDiagnosisResultShrinkRequest) SetOwnerUid(v int64) *ListDiagnosisResultShrinkRequest {
-	s.OwnerUid = &v
-	return s
-}
-
-func (s *ListDiagnosisResultShrinkRequest) SetPageNo(v int64) *ListDiagnosisResultShrinkRequest {
-	s.PageNo = &v
-	return s
-}
-
-func (s *ListDiagnosisResultShrinkRequest) SetPageSize(v int64) *ListDiagnosisResultShrinkRequest {
-	s.PageSize = &v
-	return s
-}
-
-func (s *ListDiagnosisResultShrinkRequest) SetSince(v int64) *ListDiagnosisResultShrinkRequest {
-	s.Since = &v
-	return s
-}
-
-func (s *ListDiagnosisResultShrinkRequest) SetTypesShrink(v string) *ListDiagnosisResultShrinkRequest {
-	s.TypesShrink = &v
-	return s
-}
-
-type ListDiagnosisResultResponseBody struct {
-	Code             *string                                            `json:"Code,omitempty" xml:"Code,omitempty"`
-	DiagnosisResults []*ListDiagnosisResultResponseBodyDiagnosisResults `json:"DiagnosisResults,omitempty" xml:"DiagnosisResults,omitempty" type:"Repeated"`
-	IsSuccess        *bool                                              `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
-	PageNo           *int64                                             `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	PageSize         *int64                                             `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId        *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount       *int32                                             `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-}
-
-func (s ListDiagnosisResultResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListDiagnosisResultResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ListDiagnosisResultResponseBody) SetCode(v string) *ListDiagnosisResultResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *ListDiagnosisResultResponseBody) SetDiagnosisResults(v []*ListDiagnosisResultResponseBodyDiagnosisResults) *ListDiagnosisResultResponseBody {
-	s.DiagnosisResults = v
-	return s
-}
-
-func (s *ListDiagnosisResultResponseBody) SetIsSuccess(v bool) *ListDiagnosisResultResponseBody {
-	s.IsSuccess = &v
-	return s
-}
-
-func (s *ListDiagnosisResultResponseBody) SetPageNo(v int64) *ListDiagnosisResultResponseBody {
-	s.PageNo = &v
-	return s
-}
-
-func (s *ListDiagnosisResultResponseBody) SetPageSize(v int64) *ListDiagnosisResultResponseBody {
-	s.PageSize = &v
-	return s
-}
-
-func (s *ListDiagnosisResultResponseBody) SetRequestId(v string) *ListDiagnosisResultResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *ListDiagnosisResultResponseBody) SetTotalCount(v int32) *ListDiagnosisResultResponseBody {
-	s.TotalCount = &v
-	return s
-}
-
-type ListDiagnosisResultResponseBodyDiagnosisResults struct {
-	Code        *int64  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Created     *int64  `json:"Created,omitempty" xml:"Created,omitempty"`
-	DiagnosisId *string `json:"DiagnosisId,omitempty" xml:"DiagnosisId,omitempty"`
-	Finished    *int64  `json:"Finished,omitempty" xml:"Finished,omitempty"`
-	Message     *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	Status      *int64  `json:"Status,omitempty" xml:"Status,omitempty"`
-	Target      *string `json:"Target,omitempty" xml:"Target,omitempty"`
-	Type        *string `json:"Type,omitempty" xml:"Type,omitempty"`
-}
-
-func (s ListDiagnosisResultResponseBodyDiagnosisResults) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListDiagnosisResultResponseBodyDiagnosisResults) GoString() string {
-	return s.String()
-}
-
-func (s *ListDiagnosisResultResponseBodyDiagnosisResults) SetCode(v int64) *ListDiagnosisResultResponseBodyDiagnosisResults {
-	s.Code = &v
-	return s
-}
-
-func (s *ListDiagnosisResultResponseBodyDiagnosisResults) SetCreated(v int64) *ListDiagnosisResultResponseBodyDiagnosisResults {
-	s.Created = &v
-	return s
-}
-
-func (s *ListDiagnosisResultResponseBodyDiagnosisResults) SetDiagnosisId(v string) *ListDiagnosisResultResponseBodyDiagnosisResults {
-	s.DiagnosisId = &v
-	return s
-}
-
-func (s *ListDiagnosisResultResponseBodyDiagnosisResults) SetFinished(v int64) *ListDiagnosisResultResponseBodyDiagnosisResults {
-	s.Finished = &v
-	return s
-}
-
-func (s *ListDiagnosisResultResponseBodyDiagnosisResults) SetMessage(v string) *ListDiagnosisResultResponseBodyDiagnosisResults {
-	s.Message = &v
-	return s
-}
-
-func (s *ListDiagnosisResultResponseBodyDiagnosisResults) SetStatus(v int64) *ListDiagnosisResultResponseBodyDiagnosisResults {
-	s.Status = &v
-	return s
-}
-
-func (s *ListDiagnosisResultResponseBodyDiagnosisResults) SetTarget(v string) *ListDiagnosisResultResponseBodyDiagnosisResults {
-	s.Target = &v
-	return s
-}
-
-func (s *ListDiagnosisResultResponseBodyDiagnosisResults) SetType(v string) *ListDiagnosisResultResponseBodyDiagnosisResults {
-	s.Type = &v
-	return s
-}
-
-type ListDiagnosisResultResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListDiagnosisResultResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ListDiagnosisResultResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListDiagnosisResultResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ListDiagnosisResultResponse) SetHeaders(v map[string]*string) *ListDiagnosisResultResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ListDiagnosisResultResponse) SetStatusCode(v int32) *ListDiagnosisResultResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *ListDiagnosisResultResponse) SetBody(v *ListDiagnosisResultResponseBody) *ListDiagnosisResultResponse {
-	s.Body = v
-	return s
-}
-
 type ListReportTaskRequest struct {
 	ClusterRegionId *string `json:"ClusterRegionId,omitempty" xml:"ClusterRegionId,omitempty"`
 	ClusterUid      *string `json:"ClusterUid,omitempty" xml:"ClusterUid,omitempty"`
@@ -3290,11 +3096,17 @@ func (client *Client) CreateClusterCheck(request *CreateClusterCheckRequest) (_r
 	return _result, _err
 }
 
-func (client *Client) CreateClusterReportWithOptions(request *CreateClusterReportRequest, runtime *util.RuntimeOptions) (_result *CreateClusterReportResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) CreateClusterReportWithOptions(tmpReq *CreateClusterReportRequest, runtime *util.RuntimeOptions) (_result *CreateClusterReportResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
+	request := &CreateClusterReportShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.TemplatePredicates)) {
+		request.TemplatePredicatesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TemplatePredicates, tea.String("TemplatePredicates"), tea.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AddonName)) {
 		query["AddonName"] = request.AddonName
@@ -3314,6 +3126,10 @@ func (client *Client) CreateClusterReportWithOptions(request *CreateClusterRepor
 
 	if !tea.BoolValue(util.IsUnset(request.ReportName)) {
 		query["ReportName"] = request.ReportName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplatePredicatesShrink)) {
+		query["TemplatePredicates"] = request.TemplatePredicatesShrink
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -4015,52 +3831,6 @@ func (client *Client) ListDeprecatedAPI(request *ListDeprecatedAPIRequest) (_res
 	runtime := &util.RuntimeOptions{}
 	_result = &ListDeprecatedAPIResponse{}
 	_body, _err := client.ListDeprecatedAPIWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) ListDiagnosisResultWithOptions(tmpReq *ListDiagnosisResultRequest, runtime *util.RuntimeOptions) (_result *ListDiagnosisResultResponse, _err error) {
-	_err = util.ValidateModel(tmpReq)
-	if _err != nil {
-		return _result, _err
-	}
-	request := &ListDiagnosisResultShrinkRequest{}
-	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tmpReq.Types)) {
-		request.TypesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Types, tea.String("Types"), tea.String("json"))
-	}
-
-	query := openapiutil.Query(util.ToMap(request))
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("ListDiagnosisResult"),
-		Version:     tea.String("2018-08-30"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("GET"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &ListDiagnosisResultResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ListDiagnosisResult(request *ListDiagnosisResultRequest) (_result *ListDiagnosisResultResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ListDiagnosisResultResponse{}
-	_body, _err := client.ListDiagnosisResultWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
