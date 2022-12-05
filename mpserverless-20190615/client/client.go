@@ -6985,7 +6985,6 @@ func (s *QuerySpaceUsageRequest) SetStartTime(v string) *QuerySpaceUsageRequest 
 
 type QuerySpaceUsageResponseBody struct {
 	EndTime            *string                                          `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	GmtCreate          *string                                          `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
 	RequestId          *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	SpaceId            *string                                          `json:"SpaceId,omitempty" xml:"SpaceId,omitempty"`
 	SpaceUsageDataList []*QuerySpaceUsageResponseBodySpaceUsageDataList `json:"SpaceUsageDataList,omitempty" xml:"SpaceUsageDataList,omitempty" type:"Repeated"`
@@ -7002,11 +7001,6 @@ func (s QuerySpaceUsageResponseBody) GoString() string {
 
 func (s *QuerySpaceUsageResponseBody) SetEndTime(v string) *QuerySpaceUsageResponseBody {
 	s.EndTime = &v
-	return s
-}
-
-func (s *QuerySpaceUsageResponseBody) SetGmtCreate(v string) *QuerySpaceUsageResponseBody {
-	s.GmtCreate = &v
 	return s
 }
 
