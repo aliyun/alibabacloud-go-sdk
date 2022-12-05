@@ -5,10 +5,10 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/client"
+	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
 	openapiutil "github.com/alibabacloud-go/openapi-util/service"
-	util "github.com/alibabacloud-go/tea-utils/service"
+	util "github.com/alibabacloud-go/tea-utils/v2/service"
 	"github.com/alibabacloud-go/tea/tea"
 )
 
@@ -66,7 +66,6 @@ func (s *AttachPolicyRequest) SetTargetType(v string) *AttachPolicyRequest {
 }
 
 type AttachPolicyResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -178,8 +177,7 @@ func (s *CreatePolicyRequest) SetUserType(v string) *CreatePolicyRequest {
 }
 
 type CreatePolicyResponseBody struct {
-	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
-	// Id of the request
+	PolicyId  *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -324,7 +322,6 @@ func (s *CreateTagsRequestTagKeyValueParamListTagValueParamList) SetValue(v stri
 }
 
 type CreateTagsResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -412,7 +409,6 @@ func (s *DeletePolicyRequest) SetResourceOwnerAccount(v string) *DeletePolicyReq
 }
 
 type DeletePolicyResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -506,7 +502,6 @@ func (s *DeleteTagRequest) SetValue(v string) *DeleteTagRequest {
 }
 
 type DeleteTagResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -751,7 +746,6 @@ func (s *DetachPolicyRequest) SetTargetType(v string) *DetachPolicyRequest {
 }
 
 type DetachPolicyResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -793,6 +787,192 @@ func (s *DetachPolicyResponse) SetStatusCode(v int32) *DetachPolicyResponse {
 }
 
 func (s *DetachPolicyResponse) SetBody(v *DetachPolicyResponseBody) *DetachPolicyResponse {
+	s.Body = v
+	return s
+}
+
+type DisablePolicyTypeRequest struct {
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *string `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	UserType             *string `json:"UserType,omitempty" xml:"UserType,omitempty"`
+}
+
+func (s DisablePolicyTypeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DisablePolicyTypeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DisablePolicyTypeRequest) SetOwnerAccount(v string) *DisablePolicyTypeRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *DisablePolicyTypeRequest) SetOwnerId(v int64) *DisablePolicyTypeRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DisablePolicyTypeRequest) SetRegionId(v string) *DisablePolicyTypeRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DisablePolicyTypeRequest) SetResourceOwnerAccount(v string) *DisablePolicyTypeRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *DisablePolicyTypeRequest) SetResourceOwnerId(v string) *DisablePolicyTypeRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *DisablePolicyTypeRequest) SetUserType(v string) *DisablePolicyTypeRequest {
+	s.UserType = &v
+	return s
+}
+
+type DisablePolicyTypeResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DisablePolicyTypeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DisablePolicyTypeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DisablePolicyTypeResponseBody) SetRequestId(v string) *DisablePolicyTypeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DisablePolicyTypeResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DisablePolicyTypeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DisablePolicyTypeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DisablePolicyTypeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DisablePolicyTypeResponse) SetHeaders(v map[string]*string) *DisablePolicyTypeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DisablePolicyTypeResponse) SetStatusCode(v int32) *DisablePolicyTypeResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DisablePolicyTypeResponse) SetBody(v *DisablePolicyTypeResponseBody) *DisablePolicyTypeResponse {
+	s.Body = v
+	return s
+}
+
+type EnablePolicyTypeRequest struct {
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *string `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	UserType             *string `json:"UserType,omitempty" xml:"UserType,omitempty"`
+}
+
+func (s EnablePolicyTypeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EnablePolicyTypeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *EnablePolicyTypeRequest) SetOwnerAccount(v string) *EnablePolicyTypeRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *EnablePolicyTypeRequest) SetOwnerId(v int64) *EnablePolicyTypeRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *EnablePolicyTypeRequest) SetRegionId(v string) *EnablePolicyTypeRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *EnablePolicyTypeRequest) SetResourceOwnerAccount(v string) *EnablePolicyTypeRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *EnablePolicyTypeRequest) SetResourceOwnerId(v string) *EnablePolicyTypeRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *EnablePolicyTypeRequest) SetUserType(v string) *EnablePolicyTypeRequest {
+	s.UserType = &v
+	return s
+}
+
+type EnablePolicyTypeResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s EnablePolicyTypeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EnablePolicyTypeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *EnablePolicyTypeResponseBody) SetRequestId(v string) *EnablePolicyTypeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type EnablePolicyTypeResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *EnablePolicyTypeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s EnablePolicyTypeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EnablePolicyTypeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *EnablePolicyTypeResponse) SetHeaders(v map[string]*string) *EnablePolicyTypeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *EnablePolicyTypeResponse) SetStatusCode(v int32) *EnablePolicyTypeResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *EnablePolicyTypeResponse) SetBody(v *EnablePolicyTypeResponseBody) *EnablePolicyTypeResponse {
 	s.Body = v
 	return s
 }
@@ -1103,8 +1283,7 @@ func (s *GetEffectivePolicyRequest) SetTargetType(v string) *GetEffectivePolicyR
 
 type GetEffectivePolicyResponseBody struct {
 	EffectivePolicy *string `json:"EffectivePolicy,omitempty" xml:"EffectivePolicy,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId       *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetEffectivePolicyResponseBody) String() string {
@@ -1196,9 +1375,8 @@ func (s *GetPolicyRequest) SetResourceOwnerAccount(v string) *GetPolicyRequest {
 }
 
 type GetPolicyResponseBody struct {
-	Policy *GetPolicyResponseBodyPolicy `json:"Policy,omitempty" xml:"Policy,omitempty" type:"Struct"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Policy    *GetPolicyResponseBodyPolicy `json:"Policy,omitempty" xml:"Policy,omitempty" type:"Struct"`
+	RequestId *string                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetPolicyResponseBody) String() string {
@@ -1661,8 +1839,7 @@ func (s *ListPoliciesRequest) SetUserType(v string) *ListPoliciesRequest {
 type ListPoliciesResponseBody struct {
 	NextToken  *string                               `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	PolicyList []*ListPoliciesResponseBodyPolicyList `json:"PolicyList,omitempty" xml:"PolicyList,omitempty" type:"Repeated"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId  *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListPoliciesResponseBody) String() string {
@@ -2011,9 +2188,7 @@ func (s *ListResourcesByTagRequestTagFilter) SetValue(v string) *ListResourcesBy
 }
 
 type ListResourcesByTagResponseBody struct {
-	// 表示当前调用返回读取到的位置，空或者空字符串代表数据已经读取完毕
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// Id of the request
+	NextToken *string                                    `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	RequestId *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Resources []*ListResourcesByTagResponseBodyResources `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Repeated"`
 }
@@ -3057,7 +3232,6 @@ func (s *ModifyPolicyRequest) SetResourceOwnerAccount(v string) *ModifyPolicyReq
 }
 
 type ModifyPolicyResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3977,6 +4151,134 @@ func (client *Client) DetachPolicy(request *DetachPolicyRequest) (_result *Detac
 	return _result, _err
 }
 
+func (client *Client) DisablePolicyTypeWithOptions(request *DisablePolicyTypeRequest, runtime *util.RuntimeOptions) (_result *DisablePolicyTypeResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserType)) {
+		query["UserType"] = request.UserType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DisablePolicyType"),
+		Version:     tea.String("2018-08-28"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DisablePolicyTypeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DisablePolicyType(request *DisablePolicyTypeRequest) (_result *DisablePolicyTypeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DisablePolicyTypeResponse{}
+	_body, _err := client.DisablePolicyTypeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) EnablePolicyTypeWithOptions(request *EnablePolicyTypeRequest, runtime *util.RuntimeOptions) (_result *EnablePolicyTypeResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserType)) {
+		query["UserType"] = request.UserType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("EnablePolicyType"),
+		Version:     tea.String("2018-08-28"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &EnablePolicyTypeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) EnablePolicyType(request *EnablePolicyTypeRequest) (_result *EnablePolicyTypeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &EnablePolicyTypeResponse{}
+	_body, _err := client.EnablePolicyTypeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) GenerateConfigRuleReportWithOptions(request *GenerateConfigRuleReportRequest, runtime *util.RuntimeOptions) (_result *GenerateConfigRuleReportResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4579,7 +4881,7 @@ func (client *Client) ListResourcesByTagWithOptions(request *ListResourcesByTagR
 		query["ResourceType"] = request.ResourceType
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.TagFilter))) {
+	if !tea.BoolValue(util.IsUnset(request.TagFilter)) {
 		query["TagFilter"] = request.TagFilter
 	}
 
@@ -4747,7 +5049,7 @@ func (client *Client) ListTagKeysWithOptions(request *ListTagKeysRequest, runtim
 		query["ResourceType"] = request.ResourceType
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.TagFilter))) {
+	if !tea.BoolValue(util.IsUnset(request.TagFilter)) {
 		query["TagFilter"] = request.TagFilter
 	}
 
@@ -4915,7 +5217,7 @@ func (client *Client) ListTagValuesWithOptions(request *ListTagValuesRequest, ru
 		query["ResourceType"] = request.ResourceType
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.TagFilter))) {
+	if !tea.BoolValue(util.IsUnset(request.TagFilter)) {
 		query["TagFilter"] = request.TagFilter
 	}
 

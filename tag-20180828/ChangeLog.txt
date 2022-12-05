@@ -1,3 +1,6 @@
+2022-12-05 Version: v2.0.0
+- Update to V2.
+
 2022-06-30 Version: v1.0.2
 - Add Policy APIs.
 
