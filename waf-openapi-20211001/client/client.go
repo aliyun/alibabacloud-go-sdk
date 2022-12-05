@@ -497,15 +497,21 @@ func (s *CreateDomainRequestListen) SetXffHeaders(v []*string) *CreateDomainRequ
 }
 
 type CreateDomainRequestRedirect struct {
-	Backends         []*string                                    `json:"Backends,omitempty" xml:"Backends,omitempty" type:"Repeated"`
-	ConnectTimeout   *int32                                       `json:"ConnectTimeout,omitempty" xml:"ConnectTimeout,omitempty"`
-	FocusHttpBackend *bool                                        `json:"FocusHttpBackend,omitempty" xml:"FocusHttpBackend,omitempty"`
-	Loadbalance      *string                                      `json:"Loadbalance,omitempty" xml:"Loadbalance,omitempty"`
-	ReadTimeout      *int32                                       `json:"ReadTimeout,omitempty" xml:"ReadTimeout,omitempty"`
-	RequestHeaders   []*CreateDomainRequestRedirectRequestHeaders `json:"RequestHeaders,omitempty" xml:"RequestHeaders,omitempty" type:"Repeated"`
-	SniEnabled       *bool                                        `json:"SniEnabled,omitempty" xml:"SniEnabled,omitempty"`
-	SniHost          *string                                      `json:"SniHost,omitempty" xml:"SniHost,omitempty"`
-	WriteTimeout     *int32                                       `json:"WriteTimeout,omitempty" xml:"WriteTimeout,omitempty"`
+	Backends          []*string                                    `json:"Backends,omitempty" xml:"Backends,omitempty" type:"Repeated"`
+	CnameEnabled      *bool                                        `json:"CnameEnabled,omitempty" xml:"CnameEnabled,omitempty"`
+	ConnectTimeout    *int32                                       `json:"ConnectTimeout,omitempty" xml:"ConnectTimeout,omitempty"`
+	FocusHttpBackend  *bool                                        `json:"FocusHttpBackend,omitempty" xml:"FocusHttpBackend,omitempty"`
+	Keepalive         *bool                                        `json:"Keepalive,omitempty" xml:"Keepalive,omitempty"`
+	KeepaliveRequests *int32                                       `json:"KeepaliveRequests,omitempty" xml:"KeepaliveRequests,omitempty"`
+	KeepaliveTimeout  *int32                                       `json:"KeepaliveTimeout,omitempty" xml:"KeepaliveTimeout,omitempty"`
+	Loadbalance       *string                                      `json:"Loadbalance,omitempty" xml:"Loadbalance,omitempty"`
+	ReadTimeout       *int32                                       `json:"ReadTimeout,omitempty" xml:"ReadTimeout,omitempty"`
+	RequestHeaders    []*CreateDomainRequestRedirectRequestHeaders `json:"RequestHeaders,omitempty" xml:"RequestHeaders,omitempty" type:"Repeated"`
+	Retry             *bool                                        `json:"Retry,omitempty" xml:"Retry,omitempty"`
+	RoutingRules      *string                                      `json:"RoutingRules,omitempty" xml:"RoutingRules,omitempty"`
+	SniEnabled        *bool                                        `json:"SniEnabled,omitempty" xml:"SniEnabled,omitempty"`
+	SniHost           *string                                      `json:"SniHost,omitempty" xml:"SniHost,omitempty"`
+	WriteTimeout      *int32                                       `json:"WriteTimeout,omitempty" xml:"WriteTimeout,omitempty"`
 }
 
 func (s CreateDomainRequestRedirect) String() string {
@@ -521,6 +527,11 @@ func (s *CreateDomainRequestRedirect) SetBackends(v []*string) *CreateDomainRequ
 	return s
 }
 
+func (s *CreateDomainRequestRedirect) SetCnameEnabled(v bool) *CreateDomainRequestRedirect {
+	s.CnameEnabled = &v
+	return s
+}
+
 func (s *CreateDomainRequestRedirect) SetConnectTimeout(v int32) *CreateDomainRequestRedirect {
 	s.ConnectTimeout = &v
 	return s
@@ -528,6 +539,21 @@ func (s *CreateDomainRequestRedirect) SetConnectTimeout(v int32) *CreateDomainRe
 
 func (s *CreateDomainRequestRedirect) SetFocusHttpBackend(v bool) *CreateDomainRequestRedirect {
 	s.FocusHttpBackend = &v
+	return s
+}
+
+func (s *CreateDomainRequestRedirect) SetKeepalive(v bool) *CreateDomainRequestRedirect {
+	s.Keepalive = &v
+	return s
+}
+
+func (s *CreateDomainRequestRedirect) SetKeepaliveRequests(v int32) *CreateDomainRequestRedirect {
+	s.KeepaliveRequests = &v
+	return s
+}
+
+func (s *CreateDomainRequestRedirect) SetKeepaliveTimeout(v int32) *CreateDomainRequestRedirect {
+	s.KeepaliveTimeout = &v
 	return s
 }
 
@@ -543,6 +569,16 @@ func (s *CreateDomainRequestRedirect) SetReadTimeout(v int32) *CreateDomainReque
 
 func (s *CreateDomainRequestRedirect) SetRequestHeaders(v []*CreateDomainRequestRedirectRequestHeaders) *CreateDomainRequestRedirect {
 	s.RequestHeaders = v
+	return s
+}
+
+func (s *CreateDomainRequestRedirect) SetRetry(v bool) *CreateDomainRequestRedirect {
+	s.Retry = &v
+	return s
+}
+
+func (s *CreateDomainRequestRedirect) SetRoutingRules(v string) *CreateDomainRequestRedirect {
+	s.RoutingRules = &v
 	return s
 }
 
@@ -1013,6 +1049,7 @@ func (s *DeleteDefenseTemplateResponse) SetBody(v *DeleteDefenseTemplateResponse
 }
 
 type DeleteDomainRequest struct {
+	AccessType *string `json:"AccessType,omitempty" xml:"AccessType,omitempty"`
 	Domain     *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
@@ -1024,6 +1061,11 @@ func (s DeleteDomainRequest) String() string {
 
 func (s DeleteDomainRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DeleteDomainRequest) SetAccessType(v string) *DeleteDomainRequest {
+	s.AccessType = &v
+	return s
 }
 
 func (s *DeleteDomainRequest) SetDomain(v string) *DeleteDomainRequest {
@@ -2052,15 +2094,19 @@ func (s *DescribeDomainDetailResponseBodyListen) SetXffHeaders(v []*string) *Des
 }
 
 type DescribeDomainDetailResponseBodyRedirect struct {
-	Backends         []*DescribeDomainDetailResponseBodyRedirectBackends       `json:"Backends,omitempty" xml:"Backends,omitempty" type:"Repeated"`
-	ConnectTimeout   *int32                                                    `json:"ConnectTimeout,omitempty" xml:"ConnectTimeout,omitempty"`
-	FocusHttpBackend *bool                                                     `json:"FocusHttpBackend,omitempty" xml:"FocusHttpBackend,omitempty"`
-	Loadbalance      *string                                                   `json:"Loadbalance,omitempty" xml:"Loadbalance,omitempty"`
-	ReadTimeout      *int32                                                    `json:"ReadTimeout,omitempty" xml:"ReadTimeout,omitempty"`
-	RequestHeaders   []*DescribeDomainDetailResponseBodyRedirectRequestHeaders `json:"RequestHeaders,omitempty" xml:"RequestHeaders,omitempty" type:"Repeated"`
-	SniEnabled       *bool                                                     `json:"SniEnabled,omitempty" xml:"SniEnabled,omitempty"`
-	SniHost          *string                                                   `json:"SniHost,omitempty" xml:"SniHost,omitempty"`
-	WriteTimeout     *int32                                                    `json:"WriteTimeout,omitempty" xml:"WriteTimeout,omitempty"`
+	Backends          []*DescribeDomainDetailResponseBodyRedirectBackends       `json:"Backends,omitempty" xml:"Backends,omitempty" type:"Repeated"`
+	ConnectTimeout    *int32                                                    `json:"ConnectTimeout,omitempty" xml:"ConnectTimeout,omitempty"`
+	FocusHttpBackend  *bool                                                     `json:"FocusHttpBackend,omitempty" xml:"FocusHttpBackend,omitempty"`
+	Keepalive         *bool                                                     `json:"Keepalive,omitempty" xml:"Keepalive,omitempty"`
+	KeepaliveRequests *int32                                                    `json:"KeepaliveRequests,omitempty" xml:"KeepaliveRequests,omitempty"`
+	KeepaliveTimeout  *int32                                                    `json:"KeepaliveTimeout,omitempty" xml:"KeepaliveTimeout,omitempty"`
+	Loadbalance       *string                                                   `json:"Loadbalance,omitempty" xml:"Loadbalance,omitempty"`
+	ReadTimeout       *int32                                                    `json:"ReadTimeout,omitempty" xml:"ReadTimeout,omitempty"`
+	RequestHeaders    []*DescribeDomainDetailResponseBodyRedirectRequestHeaders `json:"RequestHeaders,omitempty" xml:"RequestHeaders,omitempty" type:"Repeated"`
+	Retry             *bool                                                     `json:"Retry,omitempty" xml:"Retry,omitempty"`
+	SniEnabled        *bool                                                     `json:"SniEnabled,omitempty" xml:"SniEnabled,omitempty"`
+	SniHost           *string                                                   `json:"SniHost,omitempty" xml:"SniHost,omitempty"`
+	WriteTimeout      *int32                                                    `json:"WriteTimeout,omitempty" xml:"WriteTimeout,omitempty"`
 }
 
 func (s DescribeDomainDetailResponseBodyRedirect) String() string {
@@ -2086,6 +2132,21 @@ func (s *DescribeDomainDetailResponseBodyRedirect) SetFocusHttpBackend(v bool) *
 	return s
 }
 
+func (s *DescribeDomainDetailResponseBodyRedirect) SetKeepalive(v bool) *DescribeDomainDetailResponseBodyRedirect {
+	s.Keepalive = &v
+	return s
+}
+
+func (s *DescribeDomainDetailResponseBodyRedirect) SetKeepaliveRequests(v int32) *DescribeDomainDetailResponseBodyRedirect {
+	s.KeepaliveRequests = &v
+	return s
+}
+
+func (s *DescribeDomainDetailResponseBodyRedirect) SetKeepaliveTimeout(v int32) *DescribeDomainDetailResponseBodyRedirect {
+	s.KeepaliveTimeout = &v
+	return s
+}
+
 func (s *DescribeDomainDetailResponseBodyRedirect) SetLoadbalance(v string) *DescribeDomainDetailResponseBodyRedirect {
 	s.Loadbalance = &v
 	return s
@@ -2098,6 +2159,11 @@ func (s *DescribeDomainDetailResponseBodyRedirect) SetReadTimeout(v int32) *Desc
 
 func (s *DescribeDomainDetailResponseBodyRedirect) SetRequestHeaders(v []*DescribeDomainDetailResponseBodyRedirectRequestHeaders) *DescribeDomainDetailResponseBodyRedirect {
 	s.RequestHeaders = v
+	return s
+}
+
+func (s *DescribeDomainDetailResponseBodyRedirect) SetRetry(v bool) *DescribeDomainDetailResponseBodyRedirect {
+	s.Retry = &v
 	return s
 }
 
@@ -5671,15 +5737,19 @@ func (s *ModifyDomainRequestListen) SetXffHeaders(v []*string) *ModifyDomainRequ
 }
 
 type ModifyDomainRequestRedirect struct {
-	Backends         []*string                                    `json:"Backends,omitempty" xml:"Backends,omitempty" type:"Repeated"`
-	ConnectTimeout   *int32                                       `json:"ConnectTimeout,omitempty" xml:"ConnectTimeout,omitempty"`
-	FocusHttpBackend *bool                                        `json:"FocusHttpBackend,omitempty" xml:"FocusHttpBackend,omitempty"`
-	Loadbalance      *string                                      `json:"Loadbalance,omitempty" xml:"Loadbalance,omitempty"`
-	ReadTimeout      *int32                                       `json:"ReadTimeout,omitempty" xml:"ReadTimeout,omitempty"`
-	RequestHeaders   []*ModifyDomainRequestRedirectRequestHeaders `json:"RequestHeaders,omitempty" xml:"RequestHeaders,omitempty" type:"Repeated"`
-	SniEnabled       *bool                                        `json:"SniEnabled,omitempty" xml:"SniEnabled,omitempty"`
-	SniHost          *string                                      `json:"SniHost,omitempty" xml:"SniHost,omitempty"`
-	WriteTimeout     *int32                                       `json:"WriteTimeout,omitempty" xml:"WriteTimeout,omitempty"`
+	Backends          []*string                                    `json:"Backends,omitempty" xml:"Backends,omitempty" type:"Repeated"`
+	ConnectTimeout    *int32                                       `json:"ConnectTimeout,omitempty" xml:"ConnectTimeout,omitempty"`
+	FocusHttpBackend  *bool                                        `json:"FocusHttpBackend,omitempty" xml:"FocusHttpBackend,omitempty"`
+	Keepalive         *bool                                        `json:"Keepalive,omitempty" xml:"Keepalive,omitempty"`
+	KeepaliveRequests *int32                                       `json:"KeepaliveRequests,omitempty" xml:"KeepaliveRequests,omitempty"`
+	KeepaliveTimeout  *int32                                       `json:"KeepaliveTimeout,omitempty" xml:"KeepaliveTimeout,omitempty"`
+	Loadbalance       *string                                      `json:"Loadbalance,omitempty" xml:"Loadbalance,omitempty"`
+	ReadTimeout       *int32                                       `json:"ReadTimeout,omitempty" xml:"ReadTimeout,omitempty"`
+	RequestHeaders    []*ModifyDomainRequestRedirectRequestHeaders `json:"RequestHeaders,omitempty" xml:"RequestHeaders,omitempty" type:"Repeated"`
+	Retry             *bool                                        `json:"Retry,omitempty" xml:"Retry,omitempty"`
+	SniEnabled        *bool                                        `json:"SniEnabled,omitempty" xml:"SniEnabled,omitempty"`
+	SniHost           *string                                      `json:"SniHost,omitempty" xml:"SniHost,omitempty"`
+	WriteTimeout      *int32                                       `json:"WriteTimeout,omitempty" xml:"WriteTimeout,omitempty"`
 }
 
 func (s ModifyDomainRequestRedirect) String() string {
@@ -5705,6 +5775,21 @@ func (s *ModifyDomainRequestRedirect) SetFocusHttpBackend(v bool) *ModifyDomainR
 	return s
 }
 
+func (s *ModifyDomainRequestRedirect) SetKeepalive(v bool) *ModifyDomainRequestRedirect {
+	s.Keepalive = &v
+	return s
+}
+
+func (s *ModifyDomainRequestRedirect) SetKeepaliveRequests(v int32) *ModifyDomainRequestRedirect {
+	s.KeepaliveRequests = &v
+	return s
+}
+
+func (s *ModifyDomainRequestRedirect) SetKeepaliveTimeout(v int32) *ModifyDomainRequestRedirect {
+	s.KeepaliveTimeout = &v
+	return s
+}
+
 func (s *ModifyDomainRequestRedirect) SetLoadbalance(v string) *ModifyDomainRequestRedirect {
 	s.Loadbalance = &v
 	return s
@@ -5717,6 +5802,11 @@ func (s *ModifyDomainRequestRedirect) SetReadTimeout(v int32) *ModifyDomainReque
 
 func (s *ModifyDomainRequestRedirect) SetRequestHeaders(v []*ModifyDomainRequestRedirectRequestHeaders) *ModifyDomainRequestRedirect {
 	s.RequestHeaders = v
+	return s
+}
+
+func (s *ModifyDomainRequestRedirect) SetRetry(v bool) *ModifyDomainRequestRedirect {
+	s.Retry = &v
 	return s
 }
 
@@ -6459,12 +6549,12 @@ func (client *Client) CreateDomainWithOptions(tmpReq *CreateDomainRequest, runti
 	}
 	request := &CreateDomainShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.Listen))) {
-		request.ListenShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.Listen), tea.String("Listen"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.Listen)) {
+		request.ListenShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Listen, tea.String("Listen"), tea.String("json"))
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.Redirect))) {
-		request.RedirectShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.Redirect), tea.String("Redirect"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.Redirect)) {
+		request.RedirectShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Redirect, tea.String("Redirect"), tea.String("json"))
 	}
 
 	query := map[string]interface{}{}
@@ -6744,6 +6834,10 @@ func (client *Client) DeleteDomainWithOptions(request *DeleteDomainRequest, runt
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccessType)) {
+		query["AccessType"] = request.AccessType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Domain)) {
 		query["Domain"] = request.Domain
 	}
@@ -8625,12 +8719,12 @@ func (client *Client) ModifyDomainWithOptions(tmpReq *ModifyDomainRequest, runti
 	}
 	request := &ModifyDomainShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.Listen))) {
-		request.ListenShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.Listen), tea.String("Listen"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.Listen)) {
+		request.ListenShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Listen, tea.String("Listen"), tea.String("json"))
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.Redirect))) {
-		request.RedirectShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.Redirect), tea.String("Redirect"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.Redirect)) {
+		request.RedirectShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Redirect, tea.String("Redirect"), tea.String("json"))
 	}
 
 	query := map[string]interface{}{}
