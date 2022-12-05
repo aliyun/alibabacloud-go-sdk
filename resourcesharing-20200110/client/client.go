@@ -135,6 +135,7 @@ func (s *AcceptResourceShareInvitationResponse) SetBody(v *AcceptResourceShareIn
 }
 
 type AssociateResourceShareRequest struct {
+	PermissionNames []*string                                 `json:"PermissionNames,omitempty" xml:"PermissionNames,omitempty" type:"Repeated"`
 	ResourceShareId *string                                   `json:"ResourceShareId,omitempty" xml:"ResourceShareId,omitempty"`
 	Resources       []*AssociateResourceShareRequestResources `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Repeated"`
 	Targets         []*string                                 `json:"Targets,omitempty" xml:"Targets,omitempty" type:"Repeated"`
@@ -146,6 +147,11 @@ func (s AssociateResourceShareRequest) String() string {
 
 func (s AssociateResourceShareRequest) GoString() string {
 	return s.String()
+}
+
+func (s *AssociateResourceShareRequest) SetPermissionNames(v []*string) *AssociateResourceShareRequest {
+	s.PermissionNames = v
+	return s
 }
 
 func (s *AssociateResourceShareRequest) SetResourceShareId(v string) *AssociateResourceShareRequest {
@@ -303,8 +309,84 @@ func (s *AssociateResourceShareResponse) SetBody(v *AssociateResourceShareRespon
 	return s
 }
 
+type AssociateResourceSharePermissionRequest struct {
+	PermissionName  *string `json:"PermissionName,omitempty" xml:"PermissionName,omitempty"`
+	Replace         *bool   `json:"Replace,omitempty" xml:"Replace,omitempty"`
+	ResourceShareId *string `json:"ResourceShareId,omitempty" xml:"ResourceShareId,omitempty"`
+}
+
+func (s AssociateResourceSharePermissionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AssociateResourceSharePermissionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AssociateResourceSharePermissionRequest) SetPermissionName(v string) *AssociateResourceSharePermissionRequest {
+	s.PermissionName = &v
+	return s
+}
+
+func (s *AssociateResourceSharePermissionRequest) SetReplace(v bool) *AssociateResourceSharePermissionRequest {
+	s.Replace = &v
+	return s
+}
+
+func (s *AssociateResourceSharePermissionRequest) SetResourceShareId(v string) *AssociateResourceSharePermissionRequest {
+	s.ResourceShareId = &v
+	return s
+}
+
+type AssociateResourceSharePermissionResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s AssociateResourceSharePermissionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AssociateResourceSharePermissionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AssociateResourceSharePermissionResponseBody) SetRequestId(v string) *AssociateResourceSharePermissionResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type AssociateResourceSharePermissionResponse struct {
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *AssociateResourceSharePermissionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s AssociateResourceSharePermissionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AssociateResourceSharePermissionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AssociateResourceSharePermissionResponse) SetHeaders(v map[string]*string) *AssociateResourceSharePermissionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AssociateResourceSharePermissionResponse) SetStatusCode(v int32) *AssociateResourceSharePermissionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *AssociateResourceSharePermissionResponse) SetBody(v *AssociateResourceSharePermissionResponseBody) *AssociateResourceSharePermissionResponse {
+	s.Body = v
+	return s
+}
+
 type CreateResourceShareRequest struct {
 	AllowExternalTargets *bool                                  `json:"AllowExternalTargets,omitempty" xml:"AllowExternalTargets,omitempty"`
+	PermissionNames      []*string                              `json:"PermissionNames,omitempty" xml:"PermissionNames,omitempty" type:"Repeated"`
 	ResourceShareName    *string                                `json:"ResourceShareName,omitempty" xml:"ResourceShareName,omitempty"`
 	Resources            []*CreateResourceShareRequestResources `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Repeated"`
 	Targets              []*string                              `json:"Targets,omitempty" xml:"Targets,omitempty" type:"Repeated"`
@@ -320,6 +402,11 @@ func (s CreateResourceShareRequest) GoString() string {
 
 func (s *CreateResourceShareRequest) SetAllowExternalTargets(v bool) *CreateResourceShareRequest {
 	s.AllowExternalTargets = &v
+	return s
+}
+
+func (s *CreateResourceShareRequest) SetPermissionNames(v []*string) *CreateResourceShareRequest {
+	s.PermissionNames = v
 	return s
 }
 
@@ -802,6 +889,75 @@ func (s *DisassociateResourceShareResponse) SetBody(v *DisassociateResourceShare
 	return s
 }
 
+type DisassociateResourceSharePermissionRequest struct {
+	PermissionName  *string `json:"PermissionName,omitempty" xml:"PermissionName,omitempty"`
+	ResourceShareId *string `json:"ResourceShareId,omitempty" xml:"ResourceShareId,omitempty"`
+}
+
+func (s DisassociateResourceSharePermissionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DisassociateResourceSharePermissionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DisassociateResourceSharePermissionRequest) SetPermissionName(v string) *DisassociateResourceSharePermissionRequest {
+	s.PermissionName = &v
+	return s
+}
+
+func (s *DisassociateResourceSharePermissionRequest) SetResourceShareId(v string) *DisassociateResourceSharePermissionRequest {
+	s.ResourceShareId = &v
+	return s
+}
+
+type DisassociateResourceSharePermissionResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DisassociateResourceSharePermissionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DisassociateResourceSharePermissionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DisassociateResourceSharePermissionResponseBody) SetRequestId(v string) *DisassociateResourceSharePermissionResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DisassociateResourceSharePermissionResponse struct {
+	Headers    map[string]*string                               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DisassociateResourceSharePermissionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DisassociateResourceSharePermissionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DisassociateResourceSharePermissionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DisassociateResourceSharePermissionResponse) SetHeaders(v map[string]*string) *DisassociateResourceSharePermissionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DisassociateResourceSharePermissionResponse) SetStatusCode(v int32) *DisassociateResourceSharePermissionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DisassociateResourceSharePermissionResponse) SetBody(v *DisassociateResourceSharePermissionResponseBody) *DisassociateResourceSharePermissionResponse {
+	s.Body = v
+	return s
+}
+
 type EnableSharingWithResourceDirectoryResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
@@ -844,6 +1000,420 @@ func (s *EnableSharingWithResourceDirectoryResponse) SetStatusCode(v int32) *Ena
 }
 
 func (s *EnableSharingWithResourceDirectoryResponse) SetBody(v *EnableSharingWithResourceDirectoryResponseBody) *EnableSharingWithResourceDirectoryResponse {
+	s.Body = v
+	return s
+}
+
+type GetPermissionRequest struct {
+	PermissionName    *string `json:"PermissionName,omitempty" xml:"PermissionName,omitempty"`
+	PermissionVersion *string `json:"PermissionVersion,omitempty" xml:"PermissionVersion,omitempty"`
+}
+
+func (s GetPermissionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPermissionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetPermissionRequest) SetPermissionName(v string) *GetPermissionRequest {
+	s.PermissionName = &v
+	return s
+}
+
+func (s *GetPermissionRequest) SetPermissionVersion(v string) *GetPermissionRequest {
+	s.PermissionVersion = &v
+	return s
+}
+
+type GetPermissionResponseBody struct {
+	Permission *GetPermissionResponseBodyPermission `json:"Permission,omitempty" xml:"Permission,omitempty" type:"Struct"`
+	RequestId  *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetPermissionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPermissionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetPermissionResponseBody) SetPermission(v *GetPermissionResponseBodyPermission) *GetPermissionResponseBody {
+	s.Permission = v
+	return s
+}
+
+func (s *GetPermissionResponseBody) SetRequestId(v string) *GetPermissionResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetPermissionResponseBodyPermission struct {
+	CreateTime        *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	DefaultPermission *bool   `json:"DefaultPermission,omitempty" xml:"DefaultPermission,omitempty"`
+	DefaultVersion    *bool   `json:"DefaultVersion,omitempty" xml:"DefaultVersion,omitempty"`
+	Permission        *string `json:"Permission,omitempty" xml:"Permission,omitempty"`
+	PermissionName    *string `json:"PermissionName,omitempty" xml:"PermissionName,omitempty"`
+	PermissionVersion *string `json:"PermissionVersion,omitempty" xml:"PermissionVersion,omitempty"`
+	ResourceType      *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	UpdateTime        *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+}
+
+func (s GetPermissionResponseBodyPermission) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPermissionResponseBodyPermission) GoString() string {
+	return s.String()
+}
+
+func (s *GetPermissionResponseBodyPermission) SetCreateTime(v string) *GetPermissionResponseBodyPermission {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *GetPermissionResponseBodyPermission) SetDefaultPermission(v bool) *GetPermissionResponseBodyPermission {
+	s.DefaultPermission = &v
+	return s
+}
+
+func (s *GetPermissionResponseBodyPermission) SetDefaultVersion(v bool) *GetPermissionResponseBodyPermission {
+	s.DefaultVersion = &v
+	return s
+}
+
+func (s *GetPermissionResponseBodyPermission) SetPermission(v string) *GetPermissionResponseBodyPermission {
+	s.Permission = &v
+	return s
+}
+
+func (s *GetPermissionResponseBodyPermission) SetPermissionName(v string) *GetPermissionResponseBodyPermission {
+	s.PermissionName = &v
+	return s
+}
+
+func (s *GetPermissionResponseBodyPermission) SetPermissionVersion(v string) *GetPermissionResponseBodyPermission {
+	s.PermissionVersion = &v
+	return s
+}
+
+func (s *GetPermissionResponseBodyPermission) SetResourceType(v string) *GetPermissionResponseBodyPermission {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *GetPermissionResponseBodyPermission) SetUpdateTime(v string) *GetPermissionResponseBodyPermission {
+	s.UpdateTime = &v
+	return s
+}
+
+type GetPermissionResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetPermissionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetPermissionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPermissionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetPermissionResponse) SetHeaders(v map[string]*string) *GetPermissionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetPermissionResponse) SetStatusCode(v int32) *GetPermissionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetPermissionResponse) SetBody(v *GetPermissionResponseBody) *GetPermissionResponse {
+	s.Body = v
+	return s
+}
+
+type ListPermissionVersionsRequest struct {
+	MaxResults     *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken      *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	PermissionName *string `json:"PermissionName,omitempty" xml:"PermissionName,omitempty"`
+}
+
+func (s ListPermissionVersionsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPermissionVersionsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListPermissionVersionsRequest) SetMaxResults(v int32) *ListPermissionVersionsRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListPermissionVersionsRequest) SetNextToken(v string) *ListPermissionVersionsRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListPermissionVersionsRequest) SetPermissionName(v string) *ListPermissionVersionsRequest {
+	s.PermissionName = &v
+	return s
+}
+
+type ListPermissionVersionsResponseBody struct {
+	NextToken   *string                                          `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	Permissions []*ListPermissionVersionsResponseBodyPermissions `json:"Permissions,omitempty" xml:"Permissions,omitempty" type:"Repeated"`
+	RequestId   *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListPermissionVersionsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPermissionVersionsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListPermissionVersionsResponseBody) SetNextToken(v string) *ListPermissionVersionsResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListPermissionVersionsResponseBody) SetPermissions(v []*ListPermissionVersionsResponseBodyPermissions) *ListPermissionVersionsResponseBody {
+	s.Permissions = v
+	return s
+}
+
+func (s *ListPermissionVersionsResponseBody) SetRequestId(v string) *ListPermissionVersionsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListPermissionVersionsResponseBodyPermissions struct {
+	CreateTime        *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	DefaultPermission *bool   `json:"DefaultPermission,omitempty" xml:"DefaultPermission,omitempty"`
+	DefaultVersion    *bool   `json:"DefaultVersion,omitempty" xml:"DefaultVersion,omitempty"`
+	PermissionName    *string `json:"PermissionName,omitempty" xml:"PermissionName,omitempty"`
+	PermissionVersion *string `json:"PermissionVersion,omitempty" xml:"PermissionVersion,omitempty"`
+	ResourceType      *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	UpdateTime        *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+}
+
+func (s ListPermissionVersionsResponseBodyPermissions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPermissionVersionsResponseBodyPermissions) GoString() string {
+	return s.String()
+}
+
+func (s *ListPermissionVersionsResponseBodyPermissions) SetCreateTime(v string) *ListPermissionVersionsResponseBodyPermissions {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListPermissionVersionsResponseBodyPermissions) SetDefaultPermission(v bool) *ListPermissionVersionsResponseBodyPermissions {
+	s.DefaultPermission = &v
+	return s
+}
+
+func (s *ListPermissionVersionsResponseBodyPermissions) SetDefaultVersion(v bool) *ListPermissionVersionsResponseBodyPermissions {
+	s.DefaultVersion = &v
+	return s
+}
+
+func (s *ListPermissionVersionsResponseBodyPermissions) SetPermissionName(v string) *ListPermissionVersionsResponseBodyPermissions {
+	s.PermissionName = &v
+	return s
+}
+
+func (s *ListPermissionVersionsResponseBodyPermissions) SetPermissionVersion(v string) *ListPermissionVersionsResponseBodyPermissions {
+	s.PermissionVersion = &v
+	return s
+}
+
+func (s *ListPermissionVersionsResponseBodyPermissions) SetResourceType(v string) *ListPermissionVersionsResponseBodyPermissions {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *ListPermissionVersionsResponseBodyPermissions) SetUpdateTime(v string) *ListPermissionVersionsResponseBodyPermissions {
+	s.UpdateTime = &v
+	return s
+}
+
+type ListPermissionVersionsResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListPermissionVersionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListPermissionVersionsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPermissionVersionsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListPermissionVersionsResponse) SetHeaders(v map[string]*string) *ListPermissionVersionsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListPermissionVersionsResponse) SetStatusCode(v int32) *ListPermissionVersionsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListPermissionVersionsResponse) SetBody(v *ListPermissionVersionsResponseBody) *ListPermissionVersionsResponse {
+	s.Body = v
+	return s
+}
+
+type ListPermissionsRequest struct {
+	MaxResults   *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+}
+
+func (s ListPermissionsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPermissionsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListPermissionsRequest) SetMaxResults(v int32) *ListPermissionsRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListPermissionsRequest) SetNextToken(v string) *ListPermissionsRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListPermissionsRequest) SetResourceType(v string) *ListPermissionsRequest {
+	s.ResourceType = &v
+	return s
+}
+
+type ListPermissionsResponseBody struct {
+	NextToken   *string                                   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	Permissions []*ListPermissionsResponseBodyPermissions `json:"Permissions,omitempty" xml:"Permissions,omitempty" type:"Repeated"`
+	RequestId   *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListPermissionsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPermissionsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListPermissionsResponseBody) SetNextToken(v string) *ListPermissionsResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListPermissionsResponseBody) SetPermissions(v []*ListPermissionsResponseBodyPermissions) *ListPermissionsResponseBody {
+	s.Permissions = v
+	return s
+}
+
+func (s *ListPermissionsResponseBody) SetRequestId(v string) *ListPermissionsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListPermissionsResponseBodyPermissions struct {
+	CreateTime        *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	DefaultPermission *bool   `json:"DefaultPermission,omitempty" xml:"DefaultPermission,omitempty"`
+	DefaultVersion    *bool   `json:"DefaultVersion,omitempty" xml:"DefaultVersion,omitempty"`
+	PermissionName    *string `json:"PermissionName,omitempty" xml:"PermissionName,omitempty"`
+	PermissionVersion *string `json:"PermissionVersion,omitempty" xml:"PermissionVersion,omitempty"`
+	ResourceType      *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	UpdateTime        *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+}
+
+func (s ListPermissionsResponseBodyPermissions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPermissionsResponseBodyPermissions) GoString() string {
+	return s.String()
+}
+
+func (s *ListPermissionsResponseBodyPermissions) SetCreateTime(v string) *ListPermissionsResponseBodyPermissions {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListPermissionsResponseBodyPermissions) SetDefaultPermission(v bool) *ListPermissionsResponseBodyPermissions {
+	s.DefaultPermission = &v
+	return s
+}
+
+func (s *ListPermissionsResponseBodyPermissions) SetDefaultVersion(v bool) *ListPermissionsResponseBodyPermissions {
+	s.DefaultVersion = &v
+	return s
+}
+
+func (s *ListPermissionsResponseBodyPermissions) SetPermissionName(v string) *ListPermissionsResponseBodyPermissions {
+	s.PermissionName = &v
+	return s
+}
+
+func (s *ListPermissionsResponseBodyPermissions) SetPermissionVersion(v string) *ListPermissionsResponseBodyPermissions {
+	s.PermissionVersion = &v
+	return s
+}
+
+func (s *ListPermissionsResponseBodyPermissions) SetResourceType(v string) *ListPermissionsResponseBodyPermissions {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *ListPermissionsResponseBodyPermissions) SetUpdateTime(v string) *ListPermissionsResponseBodyPermissions {
+	s.UpdateTime = &v
+	return s
+}
+
+type ListPermissionsResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListPermissionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListPermissionsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPermissionsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListPermissionsResponse) SetHeaders(v map[string]*string) *ListPermissionsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListPermissionsResponse) SetStatusCode(v int32) *ListPermissionsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListPermissionsResponse) SetBody(v *ListPermissionsResponseBody) *ListPermissionsResponse {
 	s.Body = v
 	return s
 }
@@ -1176,9 +1746,156 @@ func (s *ListResourceShareInvitationsResponse) SetBody(v *ListResourceShareInvit
 	return s
 }
 
+type ListResourceSharePermissionsRequest struct {
+	MaxResults      *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken       *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	ResourceOwner   *string `json:"ResourceOwner,omitempty" xml:"ResourceOwner,omitempty"`
+	ResourceShareId *string `json:"ResourceShareId,omitempty" xml:"ResourceShareId,omitempty"`
+}
+
+func (s ListResourceSharePermissionsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListResourceSharePermissionsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListResourceSharePermissionsRequest) SetMaxResults(v int32) *ListResourceSharePermissionsRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListResourceSharePermissionsRequest) SetNextToken(v string) *ListResourceSharePermissionsRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListResourceSharePermissionsRequest) SetResourceOwner(v string) *ListResourceSharePermissionsRequest {
+	s.ResourceOwner = &v
+	return s
+}
+
+func (s *ListResourceSharePermissionsRequest) SetResourceShareId(v string) *ListResourceSharePermissionsRequest {
+	s.ResourceShareId = &v
+	return s
+}
+
+type ListResourceSharePermissionsResponseBody struct {
+	NextToken   *string                                                `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	Permissions []*ListResourceSharePermissionsResponseBodyPermissions `json:"Permissions,omitempty" xml:"Permissions,omitempty" type:"Repeated"`
+	RequestId   *string                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListResourceSharePermissionsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListResourceSharePermissionsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListResourceSharePermissionsResponseBody) SetNextToken(v string) *ListResourceSharePermissionsResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListResourceSharePermissionsResponseBody) SetPermissions(v []*ListResourceSharePermissionsResponseBodyPermissions) *ListResourceSharePermissionsResponseBody {
+	s.Permissions = v
+	return s
+}
+
+func (s *ListResourceSharePermissionsResponseBody) SetRequestId(v string) *ListResourceSharePermissionsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListResourceSharePermissionsResponseBodyPermissions struct {
+	CreateTime        *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	DefaultPermission *bool   `json:"DefaultPermission,omitempty" xml:"DefaultPermission,omitempty"`
+	DefaultVersion    *bool   `json:"DefaultVersion,omitempty" xml:"DefaultVersion,omitempty"`
+	PermissionName    *string `json:"PermissionName,omitempty" xml:"PermissionName,omitempty"`
+	PermissionVersion *string `json:"PermissionVersion,omitempty" xml:"PermissionVersion,omitempty"`
+	ResourceType      *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	UpdateTime        *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+}
+
+func (s ListResourceSharePermissionsResponseBodyPermissions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListResourceSharePermissionsResponseBodyPermissions) GoString() string {
+	return s.String()
+}
+
+func (s *ListResourceSharePermissionsResponseBodyPermissions) SetCreateTime(v string) *ListResourceSharePermissionsResponseBodyPermissions {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListResourceSharePermissionsResponseBodyPermissions) SetDefaultPermission(v bool) *ListResourceSharePermissionsResponseBodyPermissions {
+	s.DefaultPermission = &v
+	return s
+}
+
+func (s *ListResourceSharePermissionsResponseBodyPermissions) SetDefaultVersion(v bool) *ListResourceSharePermissionsResponseBodyPermissions {
+	s.DefaultVersion = &v
+	return s
+}
+
+func (s *ListResourceSharePermissionsResponseBodyPermissions) SetPermissionName(v string) *ListResourceSharePermissionsResponseBodyPermissions {
+	s.PermissionName = &v
+	return s
+}
+
+func (s *ListResourceSharePermissionsResponseBodyPermissions) SetPermissionVersion(v string) *ListResourceSharePermissionsResponseBodyPermissions {
+	s.PermissionVersion = &v
+	return s
+}
+
+func (s *ListResourceSharePermissionsResponseBodyPermissions) SetResourceType(v string) *ListResourceSharePermissionsResponseBodyPermissions {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *ListResourceSharePermissionsResponseBodyPermissions) SetUpdateTime(v string) *ListResourceSharePermissionsResponseBodyPermissions {
+	s.UpdateTime = &v
+	return s
+}
+
+type ListResourceSharePermissionsResponse struct {
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListResourceSharePermissionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListResourceSharePermissionsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListResourceSharePermissionsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListResourceSharePermissionsResponse) SetHeaders(v map[string]*string) *ListResourceSharePermissionsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListResourceSharePermissionsResponse) SetStatusCode(v int32) *ListResourceSharePermissionsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListResourceSharePermissionsResponse) SetBody(v *ListResourceSharePermissionsResponseBody) *ListResourceSharePermissionsResponse {
+	s.Body = v
+	return s
+}
+
 type ListResourceSharesRequest struct {
 	MaxResults          *int32    `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	NextToken           *string   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	PermissionName      *string   `json:"PermissionName,omitempty" xml:"PermissionName,omitempty"`
 	ResourceOwner       *string   `json:"ResourceOwner,omitempty" xml:"ResourceOwner,omitempty"`
 	ResourceShareIds    []*string `json:"ResourceShareIds,omitempty" xml:"ResourceShareIds,omitempty" type:"Repeated"`
 	ResourceShareName   *string   `json:"ResourceShareName,omitempty" xml:"ResourceShareName,omitempty"`
@@ -1200,6 +1917,11 @@ func (s *ListResourceSharesRequest) SetMaxResults(v int32) *ListResourceSharesRe
 
 func (s *ListResourceSharesRequest) SetNextToken(v string) *ListResourceSharesRequest {
 	s.NextToken = &v
+	return s
+}
+
+func (s *ListResourceSharesRequest) SetPermissionName(v string) *ListResourceSharesRequest {
+	s.PermissionName = &v
 	return s
 }
 
@@ -2003,6 +2725,10 @@ func (client *Client) AssociateResourceShareWithOptions(request *AssociateResour
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.PermissionNames)) {
+		query["PermissionNames"] = request.PermissionNames
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ResourceShareId)) {
 		query["ResourceShareId"] = request.ResourceShareId
 	}
@@ -2049,6 +2775,58 @@ func (client *Client) AssociateResourceShare(request *AssociateResourceShareRequ
 	return _result, _err
 }
 
+func (client *Client) AssociateResourceSharePermissionWithOptions(request *AssociateResourceSharePermissionRequest, runtime *util.RuntimeOptions) (_result *AssociateResourceSharePermissionResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.PermissionName)) {
+		query["PermissionName"] = request.PermissionName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Replace)) {
+		query["Replace"] = request.Replace
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceShareId)) {
+		query["ResourceShareId"] = request.ResourceShareId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AssociateResourceSharePermission"),
+		Version:     tea.String("2020-01-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &AssociateResourceSharePermissionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) AssociateResourceSharePermission(request *AssociateResourceSharePermissionRequest) (_result *AssociateResourceSharePermissionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &AssociateResourceSharePermissionResponse{}
+	_body, _err := client.AssociateResourceSharePermissionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) CreateResourceShareWithOptions(request *CreateResourceShareRequest, runtime *util.RuntimeOptions) (_result *CreateResourceShareResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2057,6 +2835,10 @@ func (client *Client) CreateResourceShareWithOptions(request *CreateResourceShar
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AllowExternalTargets)) {
 		query["AllowExternalTargets"] = request.AllowExternalTargets
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PermissionNames)) {
+		query["PermissionNames"] = request.PermissionNames
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceShareName)) {
@@ -2249,6 +3031,54 @@ func (client *Client) DisassociateResourceShare(request *DisassociateResourceSha
 	return _result, _err
 }
 
+func (client *Client) DisassociateResourceSharePermissionWithOptions(request *DisassociateResourceSharePermissionRequest, runtime *util.RuntimeOptions) (_result *DisassociateResourceSharePermissionResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.PermissionName)) {
+		query["PermissionName"] = request.PermissionName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceShareId)) {
+		query["ResourceShareId"] = request.ResourceShareId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DisassociateResourceSharePermission"),
+		Version:     tea.String("2020-01-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DisassociateResourceSharePermissionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DisassociateResourceSharePermission(request *DisassociateResourceSharePermissionRequest) (_result *DisassociateResourceSharePermissionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DisassociateResourceSharePermissionResponse{}
+	_body, _err := client.DisassociateResourceSharePermissionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) EnableSharingWithResourceDirectoryWithOptions(runtime *util.RuntimeOptions) (_result *EnableSharingWithResourceDirectoryResponse, _err error) {
 	req := &openapi.OpenApiRequest{}
 	params := &openapi.Params{
@@ -2275,6 +3105,158 @@ func (client *Client) EnableSharingWithResourceDirectory() (_result *EnableShari
 	runtime := &util.RuntimeOptions{}
 	_result = &EnableSharingWithResourceDirectoryResponse{}
 	_body, _err := client.EnableSharingWithResourceDirectoryWithOptions(runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetPermissionWithOptions(request *GetPermissionRequest, runtime *util.RuntimeOptions) (_result *GetPermissionResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.PermissionName)) {
+		query["PermissionName"] = request.PermissionName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PermissionVersion)) {
+		query["PermissionVersion"] = request.PermissionVersion
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetPermission"),
+		Version:     tea.String("2020-01-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetPermissionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetPermission(request *GetPermissionRequest) (_result *GetPermissionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetPermissionResponse{}
+	_body, _err := client.GetPermissionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListPermissionVersionsWithOptions(request *ListPermissionVersionsRequest, runtime *util.RuntimeOptions) (_result *ListPermissionVersionsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PermissionName)) {
+		query["PermissionName"] = request.PermissionName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListPermissionVersions"),
+		Version:     tea.String("2020-01-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListPermissionVersionsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListPermissionVersions(request *ListPermissionVersionsRequest) (_result *ListPermissionVersionsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListPermissionVersionsResponse{}
+	_body, _err := client.ListPermissionVersionsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListPermissionsWithOptions(request *ListPermissionsRequest, runtime *util.RuntimeOptions) (_result *ListPermissionsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListPermissions"),
+		Version:     tea.String("2020-01-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListPermissionsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListPermissions(request *ListPermissionsRequest) (_result *ListPermissionsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListPermissionsResponse{}
+	_body, _err := client.ListPermissionsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2406,6 +3388,62 @@ func (client *Client) ListResourceShareInvitations(request *ListResourceShareInv
 	return _result, _err
 }
 
+func (client *Client) ListResourceSharePermissionsWithOptions(request *ListResourceSharePermissionsRequest, runtime *util.RuntimeOptions) (_result *ListResourceSharePermissionsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwner)) {
+		query["ResourceOwner"] = request.ResourceOwner
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceShareId)) {
+		query["ResourceShareId"] = request.ResourceShareId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListResourceSharePermissions"),
+		Version:     tea.String("2020-01-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListResourceSharePermissionsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListResourceSharePermissions(request *ListResourceSharePermissionsRequest) (_result *ListResourceSharePermissionsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListResourceSharePermissionsResponse{}
+	_body, _err := client.ListResourceSharePermissionsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ListResourceSharesWithOptions(request *ListResourceSharesRequest, runtime *util.RuntimeOptions) (_result *ListResourceSharesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2418,6 +3456,10 @@ func (client *Client) ListResourceSharesWithOptions(request *ListResourceSharesR
 
 	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
 		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PermissionName)) {
+		query["PermissionName"] = request.PermissionName
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwner)) {
