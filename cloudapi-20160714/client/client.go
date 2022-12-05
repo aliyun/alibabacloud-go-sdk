@@ -23434,7 +23434,7 @@ func (s *QueryRequestLogsResponseBodyRequestLogs) SetRequestLog(v []*QueryReques
 type QueryRequestLogsResponseBodyRequestLogsRequestLog struct {
 	ApiId              *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
 	ApiName            *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
-	ClientIp           *int32  `json:"ClientIp,omitempty" xml:"ClientIp,omitempty"`
+	ClientIp           *string `json:"ClientIp,omitempty" xml:"ClientIp,omitempty"`
 	ClientNonce        *string `json:"ClientNonce,omitempty" xml:"ClientNonce,omitempty"`
 	ConsumerAppId      *string `json:"ConsumerAppId,omitempty" xml:"ConsumerAppId,omitempty"`
 	ConsumerAppKey     *string `json:"ConsumerAppKey,omitempty" xml:"ConsumerAppKey,omitempty"`
@@ -23487,7 +23487,7 @@ func (s *QueryRequestLogsResponseBodyRequestLogsRequestLog) SetApiName(v string)
 	return s
 }
 
-func (s *QueryRequestLogsResponseBodyRequestLogsRequestLog) SetClientIp(v int32) *QueryRequestLogsResponseBodyRequestLogsRequestLog {
+func (s *QueryRequestLogsResponseBodyRequestLogsRequestLog) SetClientIp(v string) *QueryRequestLogsResponseBodyRequestLogsRequestLog {
 	s.ClientIp = &v
 	return s
 }

@@ -1,3 +1,6 @@
+2022-12-05 Version: v3.0.5
+- Modify QueryRequestLogs.
+
 2022-11-29 Version: v3.0.4
 - Add DescribePluginApis.
 - Modify CreateApp.
