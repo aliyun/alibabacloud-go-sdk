@@ -22407,11 +22407,12 @@ func (s *QueryClusterSpecificationResponse) SetBody(v *QueryClusterSpecification
 }
 
 type QueryConfigRequest struct {
-	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	ClusterId      *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	ConfigType     *string `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
-	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RequestPars    *string `json:"RequestPars,omitempty" xml:"RequestPars,omitempty"`
+	AcceptLanguage  *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	ClusterId       *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	ConfigType      *string `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
+	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	NeedRunningConf *bool   `json:"NeedRunningConf,omitempty" xml:"NeedRunningConf,omitempty"`
+	RequestPars     *string `json:"RequestPars,omitempty" xml:"RequestPars,omitempty"`
 }
 
 func (s QueryConfigRequest) String() string {
@@ -22439,6 +22440,11 @@ func (s *QueryConfigRequest) SetConfigType(v string) *QueryConfigRequest {
 
 func (s *QueryConfigRequest) SetInstanceId(v string) *QueryConfigRequest {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *QueryConfigRequest) SetNeedRunningConf(v bool) *QueryConfigRequest {
+	s.NeedRunningConf = &v
 	return s
 }
 
@@ -22495,31 +22501,33 @@ func (s *QueryConfigResponseBody) SetSuccess(v bool) *QueryConfigResponseBody {
 }
 
 type QueryConfigResponseBodyData struct {
-	AutopurgePurgeInterval       *string `json:"AutopurgePurgeInterval,omitempty" xml:"AutopurgePurgeInterval,omitempty"`
-	AutopurgeSnapRetainCount     *string `json:"AutopurgeSnapRetainCount,omitempty" xml:"AutopurgeSnapRetainCount,omitempty"`
-	ClusterName                  *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
-	ConfigAuthEnabled            *bool   `json:"ConfigAuthEnabled,omitempty" xml:"ConfigAuthEnabled,omitempty"`
-	ConfigAuthSupported          *bool   `json:"ConfigAuthSupported,omitempty" xml:"ConfigAuthSupported,omitempty"`
-	ConfigSecretEnabled          *bool   `json:"ConfigSecretEnabled,omitempty" xml:"ConfigSecretEnabled,omitempty"`
-	ConfigSecretSupported        *bool   `json:"ConfigSecretSupported,omitempty" xml:"ConfigSecretSupported,omitempty"`
-	InitLimit                    *string `json:"InitLimit,omitempty" xml:"InitLimit,omitempty"`
-	JuteMaxbuffer                *string `json:"JuteMaxbuffer,omitempty" xml:"JuteMaxbuffer,omitempty"`
-	JvmFlagsCustom               *string `json:"JvmFlagsCustom,omitempty" xml:"JvmFlagsCustom,omitempty"`
-	MCPEnabled                   *bool   `json:"MCPEnabled,omitempty" xml:"MCPEnabled,omitempty"`
-	MCPSupported                 *bool   `json:"MCPSupported,omitempty" xml:"MCPSupported,omitempty"`
-	MaxClientCnxns               *string `json:"MaxClientCnxns,omitempty" xml:"MaxClientCnxns,omitempty"`
-	MaxSessionTimeout            *string `json:"MaxSessionTimeout,omitempty" xml:"MaxSessionTimeout,omitempty"`
-	MinSessionTimeout            *string `json:"MinSessionTimeout,omitempty" xml:"MinSessionTimeout,omitempty"`
-	NamingAuthEnabled            *bool   `json:"NamingAuthEnabled,omitempty" xml:"NamingAuthEnabled,omitempty"`
-	NamingAuthSupported          *bool   `json:"NamingAuthSupported,omitempty" xml:"NamingAuthSupported,omitempty"`
-	NamingCreateServiceSupported *bool   `json:"NamingCreateServiceSupported,omitempty" xml:"NamingCreateServiceSupported,omitempty"`
-	OpenSuperAcl                 *bool   `json:"OpenSuperAcl,omitempty" xml:"OpenSuperAcl,omitempty"`
-	PassWord                     *string `json:"PassWord,omitempty" xml:"PassWord,omitempty"`
-	RestartFlag                  *bool   `json:"RestartFlag,omitempty" xml:"RestartFlag,omitempty"`
-	SnapshotCount                *string `json:"SnapshotCount,omitempty" xml:"SnapshotCount,omitempty"`
-	SyncLimit                    *string `json:"SyncLimit,omitempty" xml:"SyncLimit,omitempty"`
-	TickTime                     *string `json:"TickTime,omitempty" xml:"TickTime,omitempty"`
-	UserName                     *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	AutopurgePurgeInterval       *string                                     `json:"AutopurgePurgeInterval,omitempty" xml:"AutopurgePurgeInterval,omitempty"`
+	AutopurgeSnapRetainCount     *string                                     `json:"AutopurgeSnapRetainCount,omitempty" xml:"AutopurgeSnapRetainCount,omitempty"`
+	ClusterName                  *string                                     `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
+	ConfigAuthEnabled            *bool                                       `json:"ConfigAuthEnabled,omitempty" xml:"ConfigAuthEnabled,omitempty"`
+	ConfigAuthSupported          *bool                                       `json:"ConfigAuthSupported,omitempty" xml:"ConfigAuthSupported,omitempty"`
+	ConfigContentLimit           *int64                                      `json:"ConfigContentLimit,omitempty" xml:"ConfigContentLimit,omitempty"`
+	ConfigSecretEnabled          *bool                                       `json:"ConfigSecretEnabled,omitempty" xml:"ConfigSecretEnabled,omitempty"`
+	ConfigSecretSupported        *bool                                       `json:"ConfigSecretSupported,omitempty" xml:"ConfigSecretSupported,omitempty"`
+	InitLimit                    *string                                     `json:"InitLimit,omitempty" xml:"InitLimit,omitempty"`
+	JuteMaxbuffer                *string                                     `json:"JuteMaxbuffer,omitempty" xml:"JuteMaxbuffer,omitempty"`
+	JvmFlagsCustom               *string                                     `json:"JvmFlagsCustom,omitempty" xml:"JvmFlagsCustom,omitempty"`
+	MCPEnabled                   *bool                                       `json:"MCPEnabled,omitempty" xml:"MCPEnabled,omitempty"`
+	MCPSupported                 *bool                                       `json:"MCPSupported,omitempty" xml:"MCPSupported,omitempty"`
+	MaxClientCnxns               *string                                     `json:"MaxClientCnxns,omitempty" xml:"MaxClientCnxns,omitempty"`
+	MaxSessionTimeout            *string                                     `json:"MaxSessionTimeout,omitempty" xml:"MaxSessionTimeout,omitempty"`
+	MinSessionTimeout            *string                                     `json:"MinSessionTimeout,omitempty" xml:"MinSessionTimeout,omitempty"`
+	NacosRunningEnv              *QueryConfigResponseBodyDataNacosRunningEnv `json:"NacosRunningEnv,omitempty" xml:"NacosRunningEnv,omitempty" type:"Struct"`
+	NamingAuthEnabled            *bool                                       `json:"NamingAuthEnabled,omitempty" xml:"NamingAuthEnabled,omitempty"`
+	NamingAuthSupported          *bool                                       `json:"NamingAuthSupported,omitempty" xml:"NamingAuthSupported,omitempty"`
+	NamingCreateServiceSupported *bool                                       `json:"NamingCreateServiceSupported,omitempty" xml:"NamingCreateServiceSupported,omitempty"`
+	OpenSuperAcl                 *bool                                       `json:"OpenSuperAcl,omitempty" xml:"OpenSuperAcl,omitempty"`
+	PassWord                     *string                                     `json:"PassWord,omitempty" xml:"PassWord,omitempty"`
+	RestartFlag                  *bool                                       `json:"RestartFlag,omitempty" xml:"RestartFlag,omitempty"`
+	SnapshotCount                *string                                     `json:"SnapshotCount,omitempty" xml:"SnapshotCount,omitempty"`
+	SyncLimit                    *string                                     `json:"SyncLimit,omitempty" xml:"SyncLimit,omitempty"`
+	TickTime                     *string                                     `json:"TickTime,omitempty" xml:"TickTime,omitempty"`
+	UserName                     *string                                     `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
 
 func (s QueryConfigResponseBodyData) String() string {
@@ -22552,6 +22560,11 @@ func (s *QueryConfigResponseBodyData) SetConfigAuthEnabled(v bool) *QueryConfigR
 
 func (s *QueryConfigResponseBodyData) SetConfigAuthSupported(v bool) *QueryConfigResponseBodyData {
 	s.ConfigAuthSupported = &v
+	return s
+}
+
+func (s *QueryConfigResponseBodyData) SetConfigContentLimit(v int64) *QueryConfigResponseBodyData {
+	s.ConfigContentLimit = &v
 	return s
 }
 
@@ -22605,6 +22618,11 @@ func (s *QueryConfigResponseBodyData) SetMinSessionTimeout(v string) *QueryConfi
 	return s
 }
 
+func (s *QueryConfigResponseBodyData) SetNacosRunningEnv(v *QueryConfigResponseBodyDataNacosRunningEnv) *QueryConfigResponseBodyData {
+	s.NacosRunningEnv = v
+	return s
+}
+
 func (s *QueryConfigResponseBodyData) SetNamingAuthEnabled(v bool) *QueryConfigResponseBodyData {
 	s.NamingAuthEnabled = &v
 	return s
@@ -22652,6 +22670,23 @@ func (s *QueryConfigResponseBodyData) SetTickTime(v string) *QueryConfigResponse
 
 func (s *QueryConfigResponseBodyData) SetUserName(v string) *QueryConfigResponseBodyData {
 	s.UserName = &v
+	return s
+}
+
+type QueryConfigResponseBodyDataNacosRunningEnv struct {
+	EmptyProtect *bool `json:"emptyProtect,omitempty" xml:"emptyProtect,omitempty"`
+}
+
+func (s QueryConfigResponseBodyDataNacosRunningEnv) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryConfigResponseBodyDataNacosRunningEnv) GoString() string {
+	return s.String()
+}
+
+func (s *QueryConfigResponseBodyDataNacosRunningEnv) SetEmptyProtect(v bool) *QueryConfigResponseBodyDataNacosRunningEnv {
+	s.EmptyProtect = &v
 	return s
 }
 

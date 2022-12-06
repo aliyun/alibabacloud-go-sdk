@@ -1,3 +1,7 @@
+2022-12-06 Version: v3.0.319
+- Adjust timeout.
+- Support running env.
+
 2022-11-28 Version: v3.0.318
 - Change timeout of GetApplicationList.
 - Update timeout for DeleteGateway.
