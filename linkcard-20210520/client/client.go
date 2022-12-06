@@ -12,6 +12,322 @@ import (
 	"github.com/alibabacloud-go/tea/tea"
 )
 
+type AddCardToDirectionalGroupRequest struct {
+	AddType    *string   `json:"AddType,omitempty" xml:"AddType,omitempty"`
+	ApiProduct *string   `json:"ApiProduct,omitempty" xml:"ApiProduct,omitempty"`
+	GroupId    *string   `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	IccidList  []*string `json:"IccidList,omitempty" xml:"IccidList,omitempty" type:"Repeated"`
+	MsgNotify  *bool     `json:"MsgNotify,omitempty" xml:"MsgNotify,omitempty"`
+	SerialNo   *string   `json:"SerialNo,omitempty" xml:"SerialNo,omitempty"`
+}
+
+func (s AddCardToDirectionalGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddCardToDirectionalGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AddCardToDirectionalGroupRequest) SetAddType(v string) *AddCardToDirectionalGroupRequest {
+	s.AddType = &v
+	return s
+}
+
+func (s *AddCardToDirectionalGroupRequest) SetApiProduct(v string) *AddCardToDirectionalGroupRequest {
+	s.ApiProduct = &v
+	return s
+}
+
+func (s *AddCardToDirectionalGroupRequest) SetGroupId(v string) *AddCardToDirectionalGroupRequest {
+	s.GroupId = &v
+	return s
+}
+
+func (s *AddCardToDirectionalGroupRequest) SetIccidList(v []*string) *AddCardToDirectionalGroupRequest {
+	s.IccidList = v
+	return s
+}
+
+func (s *AddCardToDirectionalGroupRequest) SetMsgNotify(v bool) *AddCardToDirectionalGroupRequest {
+	s.MsgNotify = &v
+	return s
+}
+
+func (s *AddCardToDirectionalGroupRequest) SetSerialNo(v string) *AddCardToDirectionalGroupRequest {
+	s.SerialNo = &v
+	return s
+}
+
+type AddCardToDirectionalGroupShrinkRequest struct {
+	AddType         *string `json:"AddType,omitempty" xml:"AddType,omitempty"`
+	ApiProduct      *string `json:"ApiProduct,omitempty" xml:"ApiProduct,omitempty"`
+	GroupId         *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	IccidListShrink *string `json:"IccidList,omitempty" xml:"IccidList,omitempty"`
+	MsgNotify       *bool   `json:"MsgNotify,omitempty" xml:"MsgNotify,omitempty"`
+	SerialNo        *string `json:"SerialNo,omitempty" xml:"SerialNo,omitempty"`
+}
+
+func (s AddCardToDirectionalGroupShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddCardToDirectionalGroupShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AddCardToDirectionalGroupShrinkRequest) SetAddType(v string) *AddCardToDirectionalGroupShrinkRequest {
+	s.AddType = &v
+	return s
+}
+
+func (s *AddCardToDirectionalGroupShrinkRequest) SetApiProduct(v string) *AddCardToDirectionalGroupShrinkRequest {
+	s.ApiProduct = &v
+	return s
+}
+
+func (s *AddCardToDirectionalGroupShrinkRequest) SetGroupId(v string) *AddCardToDirectionalGroupShrinkRequest {
+	s.GroupId = &v
+	return s
+}
+
+func (s *AddCardToDirectionalGroupShrinkRequest) SetIccidListShrink(v string) *AddCardToDirectionalGroupShrinkRequest {
+	s.IccidListShrink = &v
+	return s
+}
+
+func (s *AddCardToDirectionalGroupShrinkRequest) SetMsgNotify(v bool) *AddCardToDirectionalGroupShrinkRequest {
+	s.MsgNotify = &v
+	return s
+}
+
+func (s *AddCardToDirectionalGroupShrinkRequest) SetSerialNo(v string) *AddCardToDirectionalGroupShrinkRequest {
+	s.SerialNo = &v
+	return s
+}
+
+type AddCardToDirectionalGroupResponseBody struct {
+	Code             *string                                    `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data             *AddCardToDirectionalGroupResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	ErrorMessage     *string                                    `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	LocalizedMessage *string                                    `json:"LocalizedMessage,omitempty" xml:"LocalizedMessage,omitempty"`
+	RequestId        *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success          *bool                                      `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s AddCardToDirectionalGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddCardToDirectionalGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AddCardToDirectionalGroupResponseBody) SetCode(v string) *AddCardToDirectionalGroupResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *AddCardToDirectionalGroupResponseBody) SetData(v *AddCardToDirectionalGroupResponseBodyData) *AddCardToDirectionalGroupResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *AddCardToDirectionalGroupResponseBody) SetErrorMessage(v string) *AddCardToDirectionalGroupResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *AddCardToDirectionalGroupResponseBody) SetLocalizedMessage(v string) *AddCardToDirectionalGroupResponseBody {
+	s.LocalizedMessage = &v
+	return s
+}
+
+func (s *AddCardToDirectionalGroupResponseBody) SetRequestId(v string) *AddCardToDirectionalGroupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *AddCardToDirectionalGroupResponseBody) SetSuccess(v bool) *AddCardToDirectionalGroupResponseBody {
+	s.Success = &v
+	return s
+}
+
+type AddCardToDirectionalGroupResponseBodyData struct {
+	Result   *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
+	SerialNo *string `json:"SerialNo,omitempty" xml:"SerialNo,omitempty"`
+}
+
+func (s AddCardToDirectionalGroupResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddCardToDirectionalGroupResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *AddCardToDirectionalGroupResponseBodyData) SetResult(v bool) *AddCardToDirectionalGroupResponseBodyData {
+	s.Result = &v
+	return s
+}
+
+func (s *AddCardToDirectionalGroupResponseBodyData) SetSerialNo(v string) *AddCardToDirectionalGroupResponseBodyData {
+	s.SerialNo = &v
+	return s
+}
+
+type AddCardToDirectionalGroupResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *AddCardToDirectionalGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s AddCardToDirectionalGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddCardToDirectionalGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AddCardToDirectionalGroupResponse) SetHeaders(v map[string]*string) *AddCardToDirectionalGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AddCardToDirectionalGroupResponse) SetStatusCode(v int32) *AddCardToDirectionalGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *AddCardToDirectionalGroupResponse) SetBody(v *AddCardToDirectionalGroupResponseBody) *AddCardToDirectionalGroupResponse {
+	s.Body = v
+	return s
+}
+
+type AddDirectionalAddressRequest struct {
+	Address     *string `json:"Address,omitempty" xml:"Address,omitempty"`
+	AddressType *string `json:"AddressType,omitempty" xml:"AddressType,omitempty"`
+	GroupId     *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	MsgNotify   *bool   `json:"MsgNotify,omitempty" xml:"MsgNotify,omitempty"`
+	SerialNo    *string `json:"SerialNo,omitempty" xml:"SerialNo,omitempty"`
+	Source      *string `json:"Source,omitempty" xml:"Source,omitempty"`
+}
+
+func (s AddDirectionalAddressRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddDirectionalAddressRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AddDirectionalAddressRequest) SetAddress(v string) *AddDirectionalAddressRequest {
+	s.Address = &v
+	return s
+}
+
+func (s *AddDirectionalAddressRequest) SetAddressType(v string) *AddDirectionalAddressRequest {
+	s.AddressType = &v
+	return s
+}
+
+func (s *AddDirectionalAddressRequest) SetGroupId(v string) *AddDirectionalAddressRequest {
+	s.GroupId = &v
+	return s
+}
+
+func (s *AddDirectionalAddressRequest) SetMsgNotify(v bool) *AddDirectionalAddressRequest {
+	s.MsgNotify = &v
+	return s
+}
+
+func (s *AddDirectionalAddressRequest) SetSerialNo(v string) *AddDirectionalAddressRequest {
+	s.SerialNo = &v
+	return s
+}
+
+func (s *AddDirectionalAddressRequest) SetSource(v string) *AddDirectionalAddressRequest {
+	s.Source = &v
+	return s
+}
+
+type AddDirectionalAddressResponseBody struct {
+	Code             *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data             *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
+	ErrorMessage     *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	LocalizedMessage *string `json:"LocalizedMessage,omitempty" xml:"LocalizedMessage,omitempty"`
+	RequestId        *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success          *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s AddDirectionalAddressResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddDirectionalAddressResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AddDirectionalAddressResponseBody) SetCode(v string) *AddDirectionalAddressResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *AddDirectionalAddressResponseBody) SetData(v bool) *AddDirectionalAddressResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *AddDirectionalAddressResponseBody) SetErrorMessage(v string) *AddDirectionalAddressResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *AddDirectionalAddressResponseBody) SetLocalizedMessage(v string) *AddDirectionalAddressResponseBody {
+	s.LocalizedMessage = &v
+	return s
+}
+
+func (s *AddDirectionalAddressResponseBody) SetRequestId(v string) *AddDirectionalAddressResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *AddDirectionalAddressResponseBody) SetSuccess(v bool) *AddDirectionalAddressResponseBody {
+	s.Success = &v
+	return s
+}
+
+type AddDirectionalAddressResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *AddDirectionalAddressResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s AddDirectionalAddressResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddDirectionalAddressResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AddDirectionalAddressResponse) SetHeaders(v map[string]*string) *AddDirectionalAddressResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AddDirectionalAddressResponse) SetStatusCode(v int32) *AddDirectionalAddressResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *AddDirectionalAddressResponse) SetBody(v *AddDirectionalAddressResponseBody) *AddDirectionalAddressResponse {
+	s.Body = v
+	return s
+}
+
 type AddDirectionalCardRequest struct {
 	FileUri      *string   `json:"FileUri,omitempty" xml:"FileUri,omitempty"`
 	GroupId      *string   `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
@@ -394,6 +710,210 @@ func (s *BatchAddDirectionalAddressResponse) SetStatusCode(v int32) *BatchAddDir
 }
 
 func (s *BatchAddDirectionalAddressResponse) SetBody(v *BatchAddDirectionalAddressResponseBody) *BatchAddDirectionalAddressResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteDirectionalAddressRequest struct {
+	Address   *string `json:"Address,omitempty" xml:"Address,omitempty"`
+	GroupId   *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	MsgNotify *bool   `json:"MsgNotify,omitempty" xml:"MsgNotify,omitempty"`
+	SerialNo  *string `json:"SerialNo,omitempty" xml:"SerialNo,omitempty"`
+}
+
+func (s DeleteDirectionalAddressRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDirectionalAddressRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDirectionalAddressRequest) SetAddress(v string) *DeleteDirectionalAddressRequest {
+	s.Address = &v
+	return s
+}
+
+func (s *DeleteDirectionalAddressRequest) SetGroupId(v string) *DeleteDirectionalAddressRequest {
+	s.GroupId = &v
+	return s
+}
+
+func (s *DeleteDirectionalAddressRequest) SetMsgNotify(v bool) *DeleteDirectionalAddressRequest {
+	s.MsgNotify = &v
+	return s
+}
+
+func (s *DeleteDirectionalAddressRequest) SetSerialNo(v string) *DeleteDirectionalAddressRequest {
+	s.SerialNo = &v
+	return s
+}
+
+type DeleteDirectionalAddressResponseBody struct {
+	Code             *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data             *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
+	ErrorMessage     *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	LocalizedMessage *string `json:"LocalizedMessage,omitempty" xml:"LocalizedMessage,omitempty"`
+	RequestId        *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success          *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DeleteDirectionalAddressResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDirectionalAddressResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDirectionalAddressResponseBody) SetCode(v string) *DeleteDirectionalAddressResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DeleteDirectionalAddressResponseBody) SetData(v bool) *DeleteDirectionalAddressResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *DeleteDirectionalAddressResponseBody) SetErrorMessage(v string) *DeleteDirectionalAddressResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *DeleteDirectionalAddressResponseBody) SetLocalizedMessage(v string) *DeleteDirectionalAddressResponseBody {
+	s.LocalizedMessage = &v
+	return s
+}
+
+func (s *DeleteDirectionalAddressResponseBody) SetRequestId(v string) *DeleteDirectionalAddressResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteDirectionalAddressResponseBody) SetSuccess(v bool) *DeleteDirectionalAddressResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeleteDirectionalAddressResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteDirectionalAddressResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteDirectionalAddressResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDirectionalAddressResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDirectionalAddressResponse) SetHeaders(v map[string]*string) *DeleteDirectionalAddressResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteDirectionalAddressResponse) SetStatusCode(v int32) *DeleteDirectionalAddressResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteDirectionalAddressResponse) SetBody(v *DeleteDirectionalAddressResponseBody) *DeleteDirectionalAddressResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteDirectionalGroupRequest struct {
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+}
+
+func (s DeleteDirectionalGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDirectionalGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDirectionalGroupRequest) SetGroupId(v string) *DeleteDirectionalGroupRequest {
+	s.GroupId = &v
+	return s
+}
+
+type DeleteDirectionalGroupResponseBody struct {
+	Code             *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data             *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
+	ErrorMessage     *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	LocalizedMessage *string `json:"LocalizedMessage,omitempty" xml:"LocalizedMessage,omitempty"`
+	RequestId        *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success          *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DeleteDirectionalGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDirectionalGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDirectionalGroupResponseBody) SetCode(v string) *DeleteDirectionalGroupResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DeleteDirectionalGroupResponseBody) SetData(v bool) *DeleteDirectionalGroupResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *DeleteDirectionalGroupResponseBody) SetErrorMessage(v string) *DeleteDirectionalGroupResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *DeleteDirectionalGroupResponseBody) SetLocalizedMessage(v string) *DeleteDirectionalGroupResponseBody {
+	s.LocalizedMessage = &v
+	return s
+}
+
+func (s *DeleteDirectionalGroupResponseBody) SetRequestId(v string) *DeleteDirectionalGroupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteDirectionalGroupResponseBody) SetSuccess(v bool) *DeleteDirectionalGroupResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeleteDirectionalGroupResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteDirectionalGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteDirectionalGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDirectionalGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDirectionalGroupResponse) SetHeaders(v map[string]*string) *DeleteDirectionalGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteDirectionalGroupResponse) SetStatusCode(v int32) *DeleteDirectionalGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteDirectionalGroupResponse) SetBody(v *DeleteDirectionalGroupResponseBody) *DeleteDirectionalGroupResponse {
 	s.Body = v
 	return s
 }
@@ -3622,6 +4142,142 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+func (client *Client) AddCardToDirectionalGroupWithOptions(tmpReq *AddCardToDirectionalGroupRequest, runtime *util.RuntimeOptions) (_result *AddCardToDirectionalGroupResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &AddCardToDirectionalGroupShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.IccidList)) {
+		request.IccidListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.IccidList, tea.String("IccidList"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AddType)) {
+		query["AddType"] = request.AddType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IccidListShrink)) {
+		query["IccidList"] = request.IccidListShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MsgNotify)) {
+		query["MsgNotify"] = request.MsgNotify
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SerialNo)) {
+		query["SerialNo"] = request.SerialNo
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ApiProduct)) {
+		body["ApiProduct"] = request.ApiProduct
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AddCardToDirectionalGroup"),
+		Version:     tea.String("2021-05-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &AddCardToDirectionalGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) AddCardToDirectionalGroup(request *AddCardToDirectionalGroupRequest) (_result *AddCardToDirectionalGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &AddCardToDirectionalGroupResponse{}
+	_body, _err := client.AddCardToDirectionalGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) AddDirectionalAddressWithOptions(request *AddDirectionalAddressRequest, runtime *util.RuntimeOptions) (_result *AddDirectionalAddressResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Address)) {
+		query["Address"] = request.Address
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AddressType)) {
+		query["AddressType"] = request.AddressType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MsgNotify)) {
+		query["MsgNotify"] = request.MsgNotify
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SerialNo)) {
+		query["SerialNo"] = request.SerialNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Source)) {
+		query["Source"] = request.Source
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AddDirectionalAddress"),
+		Version:     tea.String("2021-05-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &AddDirectionalAddressResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) AddDirectionalAddress(request *AddDirectionalAddressRequest) (_result *AddDirectionalAddressResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &AddDirectionalAddressResponse{}
+	_body, _err := client.AddDirectionalAddressWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) AddDirectionalCardWithOptions(tmpReq *AddDirectionalCardRequest, runtime *util.RuntimeOptions) (_result *AddDirectionalCardResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -3793,6 +4449,106 @@ func (client *Client) BatchAddDirectionalAddress(request *BatchAddDirectionalAdd
 	runtime := &util.RuntimeOptions{}
 	_result = &BatchAddDirectionalAddressResponse{}
 	_body, _err := client.BatchAddDirectionalAddressWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteDirectionalAddressWithOptions(request *DeleteDirectionalAddressRequest, runtime *util.RuntimeOptions) (_result *DeleteDirectionalAddressResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Address)) {
+		query["Address"] = request.Address
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MsgNotify)) {
+		query["MsgNotify"] = request.MsgNotify
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SerialNo)) {
+		query["SerialNo"] = request.SerialNo
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteDirectionalAddress"),
+		Version:     tea.String("2021-05-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteDirectionalAddressResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteDirectionalAddress(request *DeleteDirectionalAddressRequest) (_result *DeleteDirectionalAddressResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteDirectionalAddressResponse{}
+	_body, _err := client.DeleteDirectionalAddressWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteDirectionalGroupWithOptions(request *DeleteDirectionalGroupRequest, runtime *util.RuntimeOptions) (_result *DeleteDirectionalGroupResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		query["GroupId"] = request.GroupId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteDirectionalGroup"),
+		Version:     tea.String("2021-05-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteDirectionalGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteDirectionalGroup(request *DeleteDirectionalGroupRequest) (_result *DeleteDirectionalGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteDirectionalGroupResponse{}
+	_body, _err := client.DeleteDirectionalGroupWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
