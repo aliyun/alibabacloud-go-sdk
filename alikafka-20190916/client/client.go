@@ -5250,43 +5250,6 @@ func (client *Client) Init(config *openapi.Config) (_err error) {
 		return _err
 	}
 	client.EndpointRule = tea.String("regional")
-	client.EndpointMap = map[string]*string{
-		"ap-northeast-2-pop":          tea.String("alikafka.aliyuncs.com"),
-		"ap-southeast-2":              tea.String("alikafka.aliyuncs.com"),
-		"cn-beijing-finance-1":        tea.String("alikafka.aliyuncs.com"),
-		"cn-beijing-finance-pop":      tea.String("alikafka.aliyuncs.com"),
-		"cn-beijing-gov-1":            tea.String("alikafka.aliyuncs.com"),
-		"cn-beijing-nu16-b01":         tea.String("alikafka.aliyuncs.com"),
-		"cn-edge-1":                   tea.String("alikafka.aliyuncs.com"),
-		"cn-fujian":                   tea.String("alikafka.aliyuncs.com"),
-		"cn-haidian-cm12-c01":         tea.String("alikafka.aliyuncs.com"),
-		"cn-hangzhou-bj-b01":          tea.String("alikafka.aliyuncs.com"),
-		"cn-hangzhou-internal-prod-1": tea.String("alikafka.aliyuncs.com"),
-		"cn-hangzhou-internal-test-1": tea.String("alikafka.aliyuncs.com"),
-		"cn-hangzhou-internal-test-2": tea.String("alikafka.aliyuncs.com"),
-		"cn-hangzhou-internal-test-3": tea.String("alikafka.aliyuncs.com"),
-		"cn-hangzhou-test-306":        tea.String("alikafka.aliyuncs.com"),
-		"cn-hongkong-finance-pop":     tea.String("alikafka.aliyuncs.com"),
-		"cn-huhehaote-nebula-1":       tea.String("alikafka.aliyuncs.com"),
-		"cn-qingdao-nebula":           tea.String("alikafka.aliyuncs.com"),
-		"cn-shanghai-et15-b01":        tea.String("alikafka.aliyuncs.com"),
-		"cn-shanghai-et2-b01":         tea.String("alikafka.aliyuncs.com"),
-		"cn-shanghai-inner":           tea.String("alikafka.aliyuncs.com"),
-		"cn-shanghai-internal-test-1": tea.String("alikafka.aliyuncs.com"),
-		"cn-shenzhen-inner":           tea.String("alikafka.aliyuncs.com"),
-		"cn-shenzhen-st4-d01":         tea.String("alikafka.aliyuncs.com"),
-		"cn-shenzhen-su18-b01":        tea.String("alikafka.aliyuncs.com"),
-		"cn-wuhan":                    tea.String("alikafka.aliyuncs.com"),
-		"cn-wulanchabu":               tea.String("alikafka.aliyuncs.com"),
-		"cn-yushanfang":               tea.String("alikafka.aliyuncs.com"),
-		"cn-zhangbei":                 tea.String("alikafka.aliyuncs.com"),
-		"cn-zhangbei-na61-b01":        tea.String("alikafka.aliyuncs.com"),
-		"cn-zhangjiakou-na62-a01":     tea.String("alikafka.aliyuncs.com"),
-		"cn-zhengzhou-nebula-1":       tea.String("alikafka.aliyuncs.com"),
-		"eu-west-1-oxs":               tea.String("alikafka.aliyuncs.com"),
-		"me-east-1":                   tea.String("alikafka.aliyuncs.com"),
-		"rus-west-1-pop":              tea.String("alikafka.aliyuncs.com"),
-	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
 		return _err
