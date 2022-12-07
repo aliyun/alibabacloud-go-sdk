@@ -8853,17 +8853,15 @@ func (s *EstimatedPriceQueryResponseBodyModuleTrafficFee) SetSuccess(v bool) *Es
 }
 
 type EstimatedPriceQueryResponseBodyModuleTrafficFeeBtripRoutes struct {
-	ArrDate        *int64                                                                   `json:"arr_date,omitempty" xml:"arr_date,omitempty"`
-	BtripType      *int32                                                                   `json:"btrip_type,omitempty" xml:"btrip_type,omitempty"`
-	Cheapest       *EstimatedPriceQueryResponseBodyModuleTrafficFeeBtripRoutesCheapest      `json:"cheapest,omitempty" xml:"cheapest,omitempty" type:"Struct"`
-	DepDate        *int64                                                                   `json:"dep_date,omitempty" xml:"dep_date,omitempty"`
-	DestCity       *string                                                                  `json:"dest_city,omitempty" xml:"dest_city,omitempty"`
-	ErrMsg         *string                                                                  `json:"err_msg,omitempty" xml:"err_msg,omitempty"`
-	ItineraryId    *string                                                                  `json:"itinerary_id,omitempty" xml:"itinerary_id,omitempty"`
-	ItineraryIndex *int32                                                                   `json:"itinerary_index,omitempty" xml:"itinerary_index,omitempty"`
-	MostExpensive  *EstimatedPriceQueryResponseBodyModuleTrafficFeeBtripRoutesMostExpensive `json:"most_expensive,omitempty" xml:"most_expensive,omitempty" type:"Struct"`
-	OrgCity        *string                                                                  `json:"org_city,omitempty" xml:"org_city,omitempty"`
-	Success        *bool                                                                    `json:"success,omitempty" xml:"success,omitempty"`
+	ArrCity       *string                                                                  `json:"arr_city,omitempty" xml:"arr_city,omitempty"`
+	ArrDate       *int64                                                                   `json:"arr_date,omitempty" xml:"arr_date,omitempty"`
+	Cheapest      *EstimatedPriceQueryResponseBodyModuleTrafficFeeBtripRoutesCheapest      `json:"cheapest,omitempty" xml:"cheapest,omitempty" type:"Struct"`
+	DepCity       *string                                                                  `json:"dep_city,omitempty" xml:"dep_city,omitempty"`
+	DepDate       *int64                                                                   `json:"dep_date,omitempty" xml:"dep_date,omitempty"`
+	ErrMsg        *string                                                                  `json:"err_msg,omitempty" xml:"err_msg,omitempty"`
+	ItineraryId   *string                                                                  `json:"itinerary_id,omitempty" xml:"itinerary_id,omitempty"`
+	MostExpensive *EstimatedPriceQueryResponseBodyModuleTrafficFeeBtripRoutesMostExpensive `json:"most_expensive,omitempty" xml:"most_expensive,omitempty" type:"Struct"`
+	Success       *bool                                                                    `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s EstimatedPriceQueryResponseBodyModuleTrafficFeeBtripRoutes) String() string {
@@ -8874,13 +8872,13 @@ func (s EstimatedPriceQueryResponseBodyModuleTrafficFeeBtripRoutes) GoString() s
 	return s.String()
 }
 
-func (s *EstimatedPriceQueryResponseBodyModuleTrafficFeeBtripRoutes) SetArrDate(v int64) *EstimatedPriceQueryResponseBodyModuleTrafficFeeBtripRoutes {
-	s.ArrDate = &v
+func (s *EstimatedPriceQueryResponseBodyModuleTrafficFeeBtripRoutes) SetArrCity(v string) *EstimatedPriceQueryResponseBodyModuleTrafficFeeBtripRoutes {
+	s.ArrCity = &v
 	return s
 }
 
-func (s *EstimatedPriceQueryResponseBodyModuleTrafficFeeBtripRoutes) SetBtripType(v int32) *EstimatedPriceQueryResponseBodyModuleTrafficFeeBtripRoutes {
-	s.BtripType = &v
+func (s *EstimatedPriceQueryResponseBodyModuleTrafficFeeBtripRoutes) SetArrDate(v int64) *EstimatedPriceQueryResponseBodyModuleTrafficFeeBtripRoutes {
+	s.ArrDate = &v
 	return s
 }
 
@@ -8889,13 +8887,13 @@ func (s *EstimatedPriceQueryResponseBodyModuleTrafficFeeBtripRoutes) SetCheapest
 	return s
 }
 
-func (s *EstimatedPriceQueryResponseBodyModuleTrafficFeeBtripRoutes) SetDepDate(v int64) *EstimatedPriceQueryResponseBodyModuleTrafficFeeBtripRoutes {
-	s.DepDate = &v
+func (s *EstimatedPriceQueryResponseBodyModuleTrafficFeeBtripRoutes) SetDepCity(v string) *EstimatedPriceQueryResponseBodyModuleTrafficFeeBtripRoutes {
+	s.DepCity = &v
 	return s
 }
 
-func (s *EstimatedPriceQueryResponseBodyModuleTrafficFeeBtripRoutes) SetDestCity(v string) *EstimatedPriceQueryResponseBodyModuleTrafficFeeBtripRoutes {
-	s.DestCity = &v
+func (s *EstimatedPriceQueryResponseBodyModuleTrafficFeeBtripRoutes) SetDepDate(v int64) *EstimatedPriceQueryResponseBodyModuleTrafficFeeBtripRoutes {
+	s.DepDate = &v
 	return s
 }
 
@@ -8909,18 +8907,8 @@ func (s *EstimatedPriceQueryResponseBodyModuleTrafficFeeBtripRoutes) SetItinerar
 	return s
 }
 
-func (s *EstimatedPriceQueryResponseBodyModuleTrafficFeeBtripRoutes) SetItineraryIndex(v int32) *EstimatedPriceQueryResponseBodyModuleTrafficFeeBtripRoutes {
-	s.ItineraryIndex = &v
-	return s
-}
-
 func (s *EstimatedPriceQueryResponseBodyModuleTrafficFeeBtripRoutes) SetMostExpensive(v *EstimatedPriceQueryResponseBodyModuleTrafficFeeBtripRoutesMostExpensive) *EstimatedPriceQueryResponseBodyModuleTrafficFeeBtripRoutes {
 	s.MostExpensive = v
-	return s
-}
-
-func (s *EstimatedPriceQueryResponseBodyModuleTrafficFeeBtripRoutes) SetOrgCity(v string) *EstimatedPriceQueryResponseBodyModuleTrafficFeeBtripRoutes {
-	s.OrgCity = &v
 	return s
 }
 
