@@ -2695,6 +2695,7 @@ func (s *CreateHybridClusterResponse) SetBody(v *CreateHybridClusterResponseBody
 }
 
 type CreateJobFileRequest struct {
+	Async             *bool   `json:"Async,omitempty" xml:"Async,omitempty"`
 	ClusterId         *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	Content           *string `json:"Content,omitempty" xml:"Content,omitempty"`
 	RunasUser         *string `json:"RunasUser,omitempty" xml:"RunasUser,omitempty"`
@@ -2708,6 +2709,11 @@ func (s CreateJobFileRequest) String() string {
 
 func (s CreateJobFileRequest) GoString() string {
 	return s.String()
+}
+
+func (s *CreateJobFileRequest) SetAsync(v bool) *CreateJobFileRequest {
+	s.Async = &v
+	return s
 }
 
 func (s *CreateJobFileRequest) SetClusterId(v string) *CreateJobFileRequest {
@@ -3390,6 +3396,7 @@ func (s *DeleteJobTemplatesResponse) SetBody(v *DeleteJobTemplatesResponseBody) 
 }
 
 type DeleteJobsRequest struct {
+	Async     *bool   `json:"Async,omitempty" xml:"Async,omitempty"`
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	Jobs      *string `json:"Jobs,omitempty" xml:"Jobs,omitempty"`
 }
@@ -3400,6 +3407,11 @@ func (s DeleteJobsRequest) String() string {
 
 func (s DeleteJobsRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DeleteJobsRequest) SetAsync(v bool) *DeleteJobsRequest {
+	s.Async = &v
+	return s
 }
 
 func (s *DeleteJobsRequest) SetClusterId(v string) *DeleteJobsRequest {
@@ -16933,6 +16945,7 @@ func (s *RecoverClusterResponse) SetBody(v *RecoverClusterResponseBody) *Recover
 }
 
 type RerunJobsRequest struct {
+	Async     *bool   `json:"Async,omitempty" xml:"Async,omitempty"`
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	Jobs      *string `json:"Jobs,omitempty" xml:"Jobs,omitempty"`
 }
@@ -16943,6 +16956,11 @@ func (s RerunJobsRequest) String() string {
 
 func (s RerunJobsRequest) GoString() string {
 	return s.String()
+}
+
+func (s *RerunJobsRequest) SetAsync(v bool) *RerunJobsRequest {
+	s.Async = &v
+	return s
 }
 
 func (s *RerunJobsRequest) SetClusterId(v string) *RerunJobsRequest {
@@ -18667,6 +18685,7 @@ func (s *StopGWSInstanceResponse) SetBody(v *StopGWSInstanceResponseBody) *StopG
 }
 
 type StopJobsRequest struct {
+	Async     *bool   `json:"Async,omitempty" xml:"Async,omitempty"`
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	Jobs      *string `json:"Jobs,omitempty" xml:"Jobs,omitempty"`
 }
@@ -18677,6 +18696,11 @@ func (s StopJobsRequest) String() string {
 
 func (s StopJobsRequest) GoString() string {
 	return s.String()
+}
+
+func (s *StopJobsRequest) SetAsync(v bool) *StopJobsRequest {
+	s.Async = &v
+	return s
 }
 
 func (s *StopJobsRequest) SetClusterId(v string) *StopJobsRequest {
@@ -18916,10 +18940,12 @@ func (s *StopVisualServiceResponse) SetBody(v *StopVisualServiceResponseBody) *S
 
 type SubmitJobRequest struct {
 	ArrayRequest       *string `json:"ArrayRequest,omitempty" xml:"ArrayRequest,omitempty"`
+	Async              *bool   `json:"Async,omitempty" xml:"Async,omitempty"`
 	ClockTime          *string `json:"ClockTime,omitempty" xml:"ClockTime,omitempty"`
 	ClusterId          *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	CommandLine        *string `json:"CommandLine,omitempty" xml:"CommandLine,omitempty"`
 	ContainerId        *string `json:"ContainerId,omitempty" xml:"ContainerId,omitempty"`
+	Cpu                *int32  `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
 	Gpu                *int32  `json:"Gpu,omitempty" xml:"Gpu,omitempty"`
 	InputFileUrl       *string `json:"InputFileUrl,omitempty" xml:"InputFileUrl,omitempty"`
 	JobQueue           *string `json:"JobQueue,omitempty" xml:"JobQueue,omitempty"`
@@ -18953,6 +18979,11 @@ func (s *SubmitJobRequest) SetArrayRequest(v string) *SubmitJobRequest {
 	return s
 }
 
+func (s *SubmitJobRequest) SetAsync(v bool) *SubmitJobRequest {
+	s.Async = &v
+	return s
+}
+
 func (s *SubmitJobRequest) SetClockTime(v string) *SubmitJobRequest {
 	s.ClockTime = &v
 	return s
@@ -18970,6 +19001,11 @@ func (s *SubmitJobRequest) SetCommandLine(v string) *SubmitJobRequest {
 
 func (s *SubmitJobRequest) SetContainerId(v string) *SubmitJobRequest {
 	s.ContainerId = &v
+	return s
+}
+
+func (s *SubmitJobRequest) SetCpu(v int32) *SubmitJobRequest {
+	s.Cpu = &v
 	return s
 }
 
