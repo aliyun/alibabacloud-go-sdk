@@ -1966,6 +1966,135 @@ func (s *CreateBasicAcceleratorResponse) SetBody(v *CreateBasicAcceleratorRespon
 	return s
 }
 
+type CreateBasicEndpointRequest struct {
+	AcceleratorId          *string `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
+	ClientToken            *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	EndpointAddress        *string `json:"EndpointAddress,omitempty" xml:"EndpointAddress,omitempty"`
+	EndpointGroupId        *string `json:"EndpointGroupId,omitempty" xml:"EndpointGroupId,omitempty"`
+	EndpointSubAddress     *string `json:"EndpointSubAddress,omitempty" xml:"EndpointSubAddress,omitempty"`
+	EndpointSubAddressType *string `json:"EndpointSubAddressType,omitempty" xml:"EndpointSubAddressType,omitempty"`
+	EndpointType           *string `json:"EndpointType,omitempty" xml:"EndpointType,omitempty"`
+	EndpointZoneId         *string `json:"EndpointZoneId,omitempty" xml:"EndpointZoneId,omitempty"`
+	Name                   *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	RegionId               *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s CreateBasicEndpointRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateBasicEndpointRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateBasicEndpointRequest) SetAcceleratorId(v string) *CreateBasicEndpointRequest {
+	s.AcceleratorId = &v
+	return s
+}
+
+func (s *CreateBasicEndpointRequest) SetClientToken(v string) *CreateBasicEndpointRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *CreateBasicEndpointRequest) SetEndpointAddress(v string) *CreateBasicEndpointRequest {
+	s.EndpointAddress = &v
+	return s
+}
+
+func (s *CreateBasicEndpointRequest) SetEndpointGroupId(v string) *CreateBasicEndpointRequest {
+	s.EndpointGroupId = &v
+	return s
+}
+
+func (s *CreateBasicEndpointRequest) SetEndpointSubAddress(v string) *CreateBasicEndpointRequest {
+	s.EndpointSubAddress = &v
+	return s
+}
+
+func (s *CreateBasicEndpointRequest) SetEndpointSubAddressType(v string) *CreateBasicEndpointRequest {
+	s.EndpointSubAddressType = &v
+	return s
+}
+
+func (s *CreateBasicEndpointRequest) SetEndpointType(v string) *CreateBasicEndpointRequest {
+	s.EndpointType = &v
+	return s
+}
+
+func (s *CreateBasicEndpointRequest) SetEndpointZoneId(v string) *CreateBasicEndpointRequest {
+	s.EndpointZoneId = &v
+	return s
+}
+
+func (s *CreateBasicEndpointRequest) SetName(v string) *CreateBasicEndpointRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateBasicEndpointRequest) SetRegionId(v string) *CreateBasicEndpointRequest {
+	s.RegionId = &v
+	return s
+}
+
+type CreateBasicEndpointResponseBody struct {
+	EndpointGroupId *string `json:"EndpointGroupId,omitempty" xml:"EndpointGroupId,omitempty"`
+	EndpointId      *string `json:"EndpointId,omitempty" xml:"EndpointId,omitempty"`
+	RequestId       *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateBasicEndpointResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateBasicEndpointResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateBasicEndpointResponseBody) SetEndpointGroupId(v string) *CreateBasicEndpointResponseBody {
+	s.EndpointGroupId = &v
+	return s
+}
+
+func (s *CreateBasicEndpointResponseBody) SetEndpointId(v string) *CreateBasicEndpointResponseBody {
+	s.EndpointId = &v
+	return s
+}
+
+func (s *CreateBasicEndpointResponseBody) SetRequestId(v string) *CreateBasicEndpointResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateBasicEndpointResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateBasicEndpointResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateBasicEndpointResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateBasicEndpointResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateBasicEndpointResponse) SetHeaders(v map[string]*string) *CreateBasicEndpointResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateBasicEndpointResponse) SetStatusCode(v int32) *CreateBasicEndpointResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateBasicEndpointResponse) SetBody(v *CreateBasicEndpointResponseBody) *CreateBasicEndpointResponse {
+	s.Body = v
+	return s
+}
+
 type CreateBasicEndpointGroupRequest struct {
 	AcceleratorId       *string `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
 	ClientToken         *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
@@ -2079,6 +2208,187 @@ func (s *CreateBasicEndpointGroupResponse) SetStatusCode(v int32) *CreateBasicEn
 }
 
 func (s *CreateBasicEndpointGroupResponse) SetBody(v *CreateBasicEndpointGroupResponseBody) *CreateBasicEndpointGroupResponse {
+	s.Body = v
+	return s
+}
+
+type CreateBasicEndpointsRequest struct {
+	AcceleratorId   *string                                 `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
+	ClientToken     *string                                 `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	EndpointGroupId *string                                 `json:"EndpointGroupId,omitempty" xml:"EndpointGroupId,omitempty"`
+	Endpoints       []*CreateBasicEndpointsRequestEndpoints `json:"Endpoints,omitempty" xml:"Endpoints,omitempty" type:"Repeated"`
+	RegionId        *string                                 `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s CreateBasicEndpointsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateBasicEndpointsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateBasicEndpointsRequest) SetAcceleratorId(v string) *CreateBasicEndpointsRequest {
+	s.AcceleratorId = &v
+	return s
+}
+
+func (s *CreateBasicEndpointsRequest) SetClientToken(v string) *CreateBasicEndpointsRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *CreateBasicEndpointsRequest) SetEndpointGroupId(v string) *CreateBasicEndpointsRequest {
+	s.EndpointGroupId = &v
+	return s
+}
+
+func (s *CreateBasicEndpointsRequest) SetEndpoints(v []*CreateBasicEndpointsRequestEndpoints) *CreateBasicEndpointsRequest {
+	s.Endpoints = v
+	return s
+}
+
+func (s *CreateBasicEndpointsRequest) SetRegionId(v string) *CreateBasicEndpointsRequest {
+	s.RegionId = &v
+	return s
+}
+
+type CreateBasicEndpointsRequestEndpoints struct {
+	EndpointAddress        *string `json:"EndpointAddress,omitempty" xml:"EndpointAddress,omitempty"`
+	EndpointSubAddress     *string `json:"EndpointSubAddress,omitempty" xml:"EndpointSubAddress,omitempty"`
+	EndpointSubAddressType *string `json:"EndpointSubAddressType,omitempty" xml:"EndpointSubAddressType,omitempty"`
+	EndpointType           *string `json:"EndpointType,omitempty" xml:"EndpointType,omitempty"`
+	EndpointZoneId         *string `json:"EndpointZoneId,omitempty" xml:"EndpointZoneId,omitempty"`
+	Name                   *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s CreateBasicEndpointsRequestEndpoints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateBasicEndpointsRequestEndpoints) GoString() string {
+	return s.String()
+}
+
+func (s *CreateBasicEndpointsRequestEndpoints) SetEndpointAddress(v string) *CreateBasicEndpointsRequestEndpoints {
+	s.EndpointAddress = &v
+	return s
+}
+
+func (s *CreateBasicEndpointsRequestEndpoints) SetEndpointSubAddress(v string) *CreateBasicEndpointsRequestEndpoints {
+	s.EndpointSubAddress = &v
+	return s
+}
+
+func (s *CreateBasicEndpointsRequestEndpoints) SetEndpointSubAddressType(v string) *CreateBasicEndpointsRequestEndpoints {
+	s.EndpointSubAddressType = &v
+	return s
+}
+
+func (s *CreateBasicEndpointsRequestEndpoints) SetEndpointType(v string) *CreateBasicEndpointsRequestEndpoints {
+	s.EndpointType = &v
+	return s
+}
+
+func (s *CreateBasicEndpointsRequestEndpoints) SetEndpointZoneId(v string) *CreateBasicEndpointsRequestEndpoints {
+	s.EndpointZoneId = &v
+	return s
+}
+
+func (s *CreateBasicEndpointsRequestEndpoints) SetName(v string) *CreateBasicEndpointsRequestEndpoints {
+	s.Name = &v
+	return s
+}
+
+type CreateBasicEndpointsResponseBody struct {
+	EndpointGroupId *string                                      `json:"EndpointGroupId,omitempty" xml:"EndpointGroupId,omitempty"`
+	Endpoints       []*CreateBasicEndpointsResponseBodyEndpoints `json:"Endpoints,omitempty" xml:"Endpoints,omitempty" type:"Repeated"`
+	RequestId       *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateBasicEndpointsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateBasicEndpointsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateBasicEndpointsResponseBody) SetEndpointGroupId(v string) *CreateBasicEndpointsResponseBody {
+	s.EndpointGroupId = &v
+	return s
+}
+
+func (s *CreateBasicEndpointsResponseBody) SetEndpoints(v []*CreateBasicEndpointsResponseBodyEndpoints) *CreateBasicEndpointsResponseBody {
+	s.Endpoints = v
+	return s
+}
+
+func (s *CreateBasicEndpointsResponseBody) SetRequestId(v string) *CreateBasicEndpointsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateBasicEndpointsResponseBodyEndpoints struct {
+	EndpointAddress    *string `json:"EndpointAddress,omitempty" xml:"EndpointAddress,omitempty"`
+	EndpointId         *string `json:"EndpointId,omitempty" xml:"EndpointId,omitempty"`
+	EndpointSubAddress *string `json:"EndpointSubAddress,omitempty" xml:"EndpointSubAddress,omitempty"`
+	EndpointType       *string `json:"EndpointType,omitempty" xml:"EndpointType,omitempty"`
+}
+
+func (s CreateBasicEndpointsResponseBodyEndpoints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateBasicEndpointsResponseBodyEndpoints) GoString() string {
+	return s.String()
+}
+
+func (s *CreateBasicEndpointsResponseBodyEndpoints) SetEndpointAddress(v string) *CreateBasicEndpointsResponseBodyEndpoints {
+	s.EndpointAddress = &v
+	return s
+}
+
+func (s *CreateBasicEndpointsResponseBodyEndpoints) SetEndpointId(v string) *CreateBasicEndpointsResponseBodyEndpoints {
+	s.EndpointId = &v
+	return s
+}
+
+func (s *CreateBasicEndpointsResponseBodyEndpoints) SetEndpointSubAddress(v string) *CreateBasicEndpointsResponseBodyEndpoints {
+	s.EndpointSubAddress = &v
+	return s
+}
+
+func (s *CreateBasicEndpointsResponseBodyEndpoints) SetEndpointType(v string) *CreateBasicEndpointsResponseBodyEndpoints {
+	s.EndpointType = &v
+	return s
+}
+
+type CreateBasicEndpointsResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateBasicEndpointsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateBasicEndpointsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateBasicEndpointsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateBasicEndpointsResponse) SetHeaders(v map[string]*string) *CreateBasicEndpointsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateBasicEndpointsResponse) SetStatusCode(v int32) *CreateBasicEndpointsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateBasicEndpointsResponse) SetBody(v *CreateBasicEndpointsResponseBody) *CreateBasicEndpointsResponse {
 	s.Body = v
 	return s
 }
@@ -9232,6 +9542,234 @@ func (s *GetBasicAccelerateIpResponse) SetBody(v *GetBasicAccelerateIpResponseBo
 	return s
 }
 
+type GetBasicAccelerateIpEndpointRelationRequest struct {
+	AccelerateIpId *string `json:"AccelerateIpId,omitempty" xml:"AccelerateIpId,omitempty"`
+	AcceleratorId  *string `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
+	ClientToken    *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	EndpointId     *string `json:"EndpointId,omitempty" xml:"EndpointId,omitempty"`
+	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s GetBasicAccelerateIpEndpointRelationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetBasicAccelerateIpEndpointRelationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetBasicAccelerateIpEndpointRelationRequest) SetAccelerateIpId(v string) *GetBasicAccelerateIpEndpointRelationRequest {
+	s.AccelerateIpId = &v
+	return s
+}
+
+func (s *GetBasicAccelerateIpEndpointRelationRequest) SetAcceleratorId(v string) *GetBasicAccelerateIpEndpointRelationRequest {
+	s.AcceleratorId = &v
+	return s
+}
+
+func (s *GetBasicAccelerateIpEndpointRelationRequest) SetClientToken(v string) *GetBasicAccelerateIpEndpointRelationRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *GetBasicAccelerateIpEndpointRelationRequest) SetEndpointId(v string) *GetBasicAccelerateIpEndpointRelationRequest {
+	s.EndpointId = &v
+	return s
+}
+
+func (s *GetBasicAccelerateIpEndpointRelationRequest) SetRegionId(v string) *GetBasicAccelerateIpEndpointRelationRequest {
+	s.RegionId = &v
+	return s
+}
+
+type GetBasicAccelerateIpEndpointRelationResponseBody struct {
+	AccelerateIpId         *string `json:"AccelerateIpId,omitempty" xml:"AccelerateIpId,omitempty"`
+	EndpointAddress        *string `json:"EndpointAddress,omitempty" xml:"EndpointAddress,omitempty"`
+	EndpointId             *string `json:"EndpointId,omitempty" xml:"EndpointId,omitempty"`
+	EndpointName           *string `json:"EndpointName,omitempty" xml:"EndpointName,omitempty"`
+	EndpointSubAddress     *string `json:"EndpointSubAddress,omitempty" xml:"EndpointSubAddress,omitempty"`
+	EndpointSubAddressType *string `json:"EndpointSubAddressType,omitempty" xml:"EndpointSubAddressType,omitempty"`
+	EndpointType           *string `json:"EndpointType,omitempty" xml:"EndpointType,omitempty"`
+	EndpointZoneId         *string `json:"EndpointZoneId,omitempty" xml:"EndpointZoneId,omitempty"`
+	IpAddress              *string `json:"IpAddress,omitempty" xml:"IpAddress,omitempty"`
+	RequestId              *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	State                  *string `json:"State,omitempty" xml:"State,omitempty"`
+}
+
+func (s GetBasicAccelerateIpEndpointRelationResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetBasicAccelerateIpEndpointRelationResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetBasicAccelerateIpEndpointRelationResponseBody) SetAccelerateIpId(v string) *GetBasicAccelerateIpEndpointRelationResponseBody {
+	s.AccelerateIpId = &v
+	return s
+}
+
+func (s *GetBasicAccelerateIpEndpointRelationResponseBody) SetEndpointAddress(v string) *GetBasicAccelerateIpEndpointRelationResponseBody {
+	s.EndpointAddress = &v
+	return s
+}
+
+func (s *GetBasicAccelerateIpEndpointRelationResponseBody) SetEndpointId(v string) *GetBasicAccelerateIpEndpointRelationResponseBody {
+	s.EndpointId = &v
+	return s
+}
+
+func (s *GetBasicAccelerateIpEndpointRelationResponseBody) SetEndpointName(v string) *GetBasicAccelerateIpEndpointRelationResponseBody {
+	s.EndpointName = &v
+	return s
+}
+
+func (s *GetBasicAccelerateIpEndpointRelationResponseBody) SetEndpointSubAddress(v string) *GetBasicAccelerateIpEndpointRelationResponseBody {
+	s.EndpointSubAddress = &v
+	return s
+}
+
+func (s *GetBasicAccelerateIpEndpointRelationResponseBody) SetEndpointSubAddressType(v string) *GetBasicAccelerateIpEndpointRelationResponseBody {
+	s.EndpointSubAddressType = &v
+	return s
+}
+
+func (s *GetBasicAccelerateIpEndpointRelationResponseBody) SetEndpointType(v string) *GetBasicAccelerateIpEndpointRelationResponseBody {
+	s.EndpointType = &v
+	return s
+}
+
+func (s *GetBasicAccelerateIpEndpointRelationResponseBody) SetEndpointZoneId(v string) *GetBasicAccelerateIpEndpointRelationResponseBody {
+	s.EndpointZoneId = &v
+	return s
+}
+
+func (s *GetBasicAccelerateIpEndpointRelationResponseBody) SetIpAddress(v string) *GetBasicAccelerateIpEndpointRelationResponseBody {
+	s.IpAddress = &v
+	return s
+}
+
+func (s *GetBasicAccelerateIpEndpointRelationResponseBody) SetRequestId(v string) *GetBasicAccelerateIpEndpointRelationResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetBasicAccelerateIpEndpointRelationResponseBody) SetState(v string) *GetBasicAccelerateIpEndpointRelationResponseBody {
+	s.State = &v
+	return s
+}
+
+type GetBasicAccelerateIpEndpointRelationResponse struct {
+	Headers    map[string]*string                                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetBasicAccelerateIpEndpointRelationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetBasicAccelerateIpEndpointRelationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetBasicAccelerateIpEndpointRelationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetBasicAccelerateIpEndpointRelationResponse) SetHeaders(v map[string]*string) *GetBasicAccelerateIpEndpointRelationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetBasicAccelerateIpEndpointRelationResponse) SetStatusCode(v int32) *GetBasicAccelerateIpEndpointRelationResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetBasicAccelerateIpEndpointRelationResponse) SetBody(v *GetBasicAccelerateIpEndpointRelationResponseBody) *GetBasicAccelerateIpEndpointRelationResponse {
+	s.Body = v
+	return s
+}
+
+type GetBasicAccelerateIpIdleCountRequest struct {
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	IpSetId     *string `json:"IpSetId,omitempty" xml:"IpSetId,omitempty"`
+	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s GetBasicAccelerateIpIdleCountRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetBasicAccelerateIpIdleCountRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetBasicAccelerateIpIdleCountRequest) SetClientToken(v string) *GetBasicAccelerateIpIdleCountRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *GetBasicAccelerateIpIdleCountRequest) SetIpSetId(v string) *GetBasicAccelerateIpIdleCountRequest {
+	s.IpSetId = &v
+	return s
+}
+
+func (s *GetBasicAccelerateIpIdleCountRequest) SetRegionId(v string) *GetBasicAccelerateIpIdleCountRequest {
+	s.RegionId = &v
+	return s
+}
+
+type GetBasicAccelerateIpIdleCountResponseBody struct {
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *int64  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s GetBasicAccelerateIpIdleCountResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetBasicAccelerateIpIdleCountResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetBasicAccelerateIpIdleCountResponseBody) SetRequestId(v string) *GetBasicAccelerateIpIdleCountResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetBasicAccelerateIpIdleCountResponseBody) SetTotalCount(v int64) *GetBasicAccelerateIpIdleCountResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type GetBasicAccelerateIpIdleCountResponse struct {
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetBasicAccelerateIpIdleCountResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetBasicAccelerateIpIdleCountResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetBasicAccelerateIpIdleCountResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetBasicAccelerateIpIdleCountResponse) SetHeaders(v map[string]*string) *GetBasicAccelerateIpIdleCountResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetBasicAccelerateIpIdleCountResponse) SetStatusCode(v int32) *GetBasicAccelerateIpIdleCountResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetBasicAccelerateIpIdleCountResponse) SetBody(v *GetBasicAccelerateIpIdleCountResponseBody) *GetBasicAccelerateIpIdleCountResponse {
+	s.Body = v
+	return s
+}
+
 type GetBasicAcceleratorRequest struct {
 	AcceleratorId *string `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
 	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
@@ -9474,6 +10012,141 @@ func (s *GetBasicAcceleratorResponse) SetStatusCode(v int32) *GetBasicAccelerato
 }
 
 func (s *GetBasicAcceleratorResponse) SetBody(v *GetBasicAcceleratorResponseBody) *GetBasicAcceleratorResponse {
+	s.Body = v
+	return s
+}
+
+type GetBasicEndpointRequest struct {
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	EndpointId  *string `json:"EndpointId,omitempty" xml:"EndpointId,omitempty"`
+	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s GetBasicEndpointRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetBasicEndpointRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetBasicEndpointRequest) SetClientToken(v string) *GetBasicEndpointRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *GetBasicEndpointRequest) SetEndpointId(v string) *GetBasicEndpointRequest {
+	s.EndpointId = &v
+	return s
+}
+
+func (s *GetBasicEndpointRequest) SetRegionId(v string) *GetBasicEndpointRequest {
+	s.RegionId = &v
+	return s
+}
+
+type GetBasicEndpointResponseBody struct {
+	AcceleratorId          *string `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
+	EndPointId             *string `json:"EndPointId,omitempty" xml:"EndPointId,omitempty"`
+	EndpointAddress        *string `json:"EndpointAddress,omitempty" xml:"EndpointAddress,omitempty"`
+	EndpointGroupId        *string `json:"EndpointGroupId,omitempty" xml:"EndpointGroupId,omitempty"`
+	EndpointSubAddress     *string `json:"EndpointSubAddress,omitempty" xml:"EndpointSubAddress,omitempty"`
+	EndpointSubAddressType *string `json:"EndpointSubAddressType,omitempty" xml:"EndpointSubAddressType,omitempty"`
+	EndpointType           *string `json:"EndpointType,omitempty" xml:"EndpointType,omitempty"`
+	EndpointZoneId         *string `json:"EndpointZoneId,omitempty" xml:"EndpointZoneId,omitempty"`
+	Name                   *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	RequestId              *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	State                  *string `json:"State,omitempty" xml:"State,omitempty"`
+}
+
+func (s GetBasicEndpointResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetBasicEndpointResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetBasicEndpointResponseBody) SetAcceleratorId(v string) *GetBasicEndpointResponseBody {
+	s.AcceleratorId = &v
+	return s
+}
+
+func (s *GetBasicEndpointResponseBody) SetEndPointId(v string) *GetBasicEndpointResponseBody {
+	s.EndPointId = &v
+	return s
+}
+
+func (s *GetBasicEndpointResponseBody) SetEndpointAddress(v string) *GetBasicEndpointResponseBody {
+	s.EndpointAddress = &v
+	return s
+}
+
+func (s *GetBasicEndpointResponseBody) SetEndpointGroupId(v string) *GetBasicEndpointResponseBody {
+	s.EndpointGroupId = &v
+	return s
+}
+
+func (s *GetBasicEndpointResponseBody) SetEndpointSubAddress(v string) *GetBasicEndpointResponseBody {
+	s.EndpointSubAddress = &v
+	return s
+}
+
+func (s *GetBasicEndpointResponseBody) SetEndpointSubAddressType(v string) *GetBasicEndpointResponseBody {
+	s.EndpointSubAddressType = &v
+	return s
+}
+
+func (s *GetBasicEndpointResponseBody) SetEndpointType(v string) *GetBasicEndpointResponseBody {
+	s.EndpointType = &v
+	return s
+}
+
+func (s *GetBasicEndpointResponseBody) SetEndpointZoneId(v string) *GetBasicEndpointResponseBody {
+	s.EndpointZoneId = &v
+	return s
+}
+
+func (s *GetBasicEndpointResponseBody) SetName(v string) *GetBasicEndpointResponseBody {
+	s.Name = &v
+	return s
+}
+
+func (s *GetBasicEndpointResponseBody) SetRequestId(v string) *GetBasicEndpointResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetBasicEndpointResponseBody) SetState(v string) *GetBasicEndpointResponseBody {
+	s.State = &v
+	return s
+}
+
+type GetBasicEndpointResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetBasicEndpointResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetBasicEndpointResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetBasicEndpointResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetBasicEndpointResponse) SetHeaders(v map[string]*string) *GetBasicEndpointResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetBasicEndpointResponse) SetStatusCode(v int32) *GetBasicEndpointResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetBasicEndpointResponse) SetBody(v *GetBasicEndpointResponseBody) *GetBasicEndpointResponse {
 	s.Body = v
 	return s
 }
@@ -11834,6 +12507,435 @@ func (s *ListBandwidthackagesResponse) SetBody(v *ListBandwidthackagesResponseBo
 	return s
 }
 
+type ListBasicAccelerateIpEndpointRelationsRequest struct {
+	AccelerateIpId *string `json:"AccelerateIpId,omitempty" xml:"AccelerateIpId,omitempty"`
+	AcceleratorId  *string `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
+	ClientToken    *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	EndpointId     *string `json:"EndpointId,omitempty" xml:"EndpointId,omitempty"`
+	MaxResults     *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken      *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s ListBasicAccelerateIpEndpointRelationsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListBasicAccelerateIpEndpointRelationsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListBasicAccelerateIpEndpointRelationsRequest) SetAccelerateIpId(v string) *ListBasicAccelerateIpEndpointRelationsRequest {
+	s.AccelerateIpId = &v
+	return s
+}
+
+func (s *ListBasicAccelerateIpEndpointRelationsRequest) SetAcceleratorId(v string) *ListBasicAccelerateIpEndpointRelationsRequest {
+	s.AcceleratorId = &v
+	return s
+}
+
+func (s *ListBasicAccelerateIpEndpointRelationsRequest) SetClientToken(v string) *ListBasicAccelerateIpEndpointRelationsRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *ListBasicAccelerateIpEndpointRelationsRequest) SetEndpointId(v string) *ListBasicAccelerateIpEndpointRelationsRequest {
+	s.EndpointId = &v
+	return s
+}
+
+func (s *ListBasicAccelerateIpEndpointRelationsRequest) SetMaxResults(v int32) *ListBasicAccelerateIpEndpointRelationsRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListBasicAccelerateIpEndpointRelationsRequest) SetNextToken(v string) *ListBasicAccelerateIpEndpointRelationsRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListBasicAccelerateIpEndpointRelationsRequest) SetRegionId(v string) *ListBasicAccelerateIpEndpointRelationsRequest {
+	s.RegionId = &v
+	return s
+}
+
+type ListBasicAccelerateIpEndpointRelationsResponseBody struct {
+	AccelerateIpEndpointRelations []*ListBasicAccelerateIpEndpointRelationsResponseBodyAccelerateIpEndpointRelations `json:"AccelerateIpEndpointRelations,omitempty" xml:"AccelerateIpEndpointRelations,omitempty" type:"Repeated"`
+	MaxResults                    *string                                                                            `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken                     *string                                                                            `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RequestId                     *string                                                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount                    *string                                                                            `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListBasicAccelerateIpEndpointRelationsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListBasicAccelerateIpEndpointRelationsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListBasicAccelerateIpEndpointRelationsResponseBody) SetAccelerateIpEndpointRelations(v []*ListBasicAccelerateIpEndpointRelationsResponseBodyAccelerateIpEndpointRelations) *ListBasicAccelerateIpEndpointRelationsResponseBody {
+	s.AccelerateIpEndpointRelations = v
+	return s
+}
+
+func (s *ListBasicAccelerateIpEndpointRelationsResponseBody) SetMaxResults(v string) *ListBasicAccelerateIpEndpointRelationsResponseBody {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListBasicAccelerateIpEndpointRelationsResponseBody) SetNextToken(v string) *ListBasicAccelerateIpEndpointRelationsResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListBasicAccelerateIpEndpointRelationsResponseBody) SetRequestId(v string) *ListBasicAccelerateIpEndpointRelationsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListBasicAccelerateIpEndpointRelationsResponseBody) SetTotalCount(v string) *ListBasicAccelerateIpEndpointRelationsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListBasicAccelerateIpEndpointRelationsResponseBodyAccelerateIpEndpointRelations struct {
+	AccelerateIpId         *string `json:"AccelerateIpId,omitempty" xml:"AccelerateIpId,omitempty"`
+	EndpointAddress        *string `json:"EndpointAddress,omitempty" xml:"EndpointAddress,omitempty"`
+	EndpointId             *string `json:"EndpointId,omitempty" xml:"EndpointId,omitempty"`
+	EndpointName           *string `json:"EndpointName,omitempty" xml:"EndpointName,omitempty"`
+	EndpointSubAddress     *string `json:"EndpointSubAddress,omitempty" xml:"EndpointSubAddress,omitempty"`
+	EndpointSubAddressType *string `json:"EndpointSubAddressType,omitempty" xml:"EndpointSubAddressType,omitempty"`
+	EndpointType           *string `json:"EndpointType,omitempty" xml:"EndpointType,omitempty"`
+	EndpointZoneId         *string `json:"EndpointZoneId,omitempty" xml:"EndpointZoneId,omitempty"`
+	IpAddress              *string `json:"IpAddress,omitempty" xml:"IpAddress,omitempty"`
+	State                  *string `json:"State,omitempty" xml:"State,omitempty"`
+}
+
+func (s ListBasicAccelerateIpEndpointRelationsResponseBodyAccelerateIpEndpointRelations) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListBasicAccelerateIpEndpointRelationsResponseBodyAccelerateIpEndpointRelations) GoString() string {
+	return s.String()
+}
+
+func (s *ListBasicAccelerateIpEndpointRelationsResponseBodyAccelerateIpEndpointRelations) SetAccelerateIpId(v string) *ListBasicAccelerateIpEndpointRelationsResponseBodyAccelerateIpEndpointRelations {
+	s.AccelerateIpId = &v
+	return s
+}
+
+func (s *ListBasicAccelerateIpEndpointRelationsResponseBodyAccelerateIpEndpointRelations) SetEndpointAddress(v string) *ListBasicAccelerateIpEndpointRelationsResponseBodyAccelerateIpEndpointRelations {
+	s.EndpointAddress = &v
+	return s
+}
+
+func (s *ListBasicAccelerateIpEndpointRelationsResponseBodyAccelerateIpEndpointRelations) SetEndpointId(v string) *ListBasicAccelerateIpEndpointRelationsResponseBodyAccelerateIpEndpointRelations {
+	s.EndpointId = &v
+	return s
+}
+
+func (s *ListBasicAccelerateIpEndpointRelationsResponseBodyAccelerateIpEndpointRelations) SetEndpointName(v string) *ListBasicAccelerateIpEndpointRelationsResponseBodyAccelerateIpEndpointRelations {
+	s.EndpointName = &v
+	return s
+}
+
+func (s *ListBasicAccelerateIpEndpointRelationsResponseBodyAccelerateIpEndpointRelations) SetEndpointSubAddress(v string) *ListBasicAccelerateIpEndpointRelationsResponseBodyAccelerateIpEndpointRelations {
+	s.EndpointSubAddress = &v
+	return s
+}
+
+func (s *ListBasicAccelerateIpEndpointRelationsResponseBodyAccelerateIpEndpointRelations) SetEndpointSubAddressType(v string) *ListBasicAccelerateIpEndpointRelationsResponseBodyAccelerateIpEndpointRelations {
+	s.EndpointSubAddressType = &v
+	return s
+}
+
+func (s *ListBasicAccelerateIpEndpointRelationsResponseBodyAccelerateIpEndpointRelations) SetEndpointType(v string) *ListBasicAccelerateIpEndpointRelationsResponseBodyAccelerateIpEndpointRelations {
+	s.EndpointType = &v
+	return s
+}
+
+func (s *ListBasicAccelerateIpEndpointRelationsResponseBodyAccelerateIpEndpointRelations) SetEndpointZoneId(v string) *ListBasicAccelerateIpEndpointRelationsResponseBodyAccelerateIpEndpointRelations {
+	s.EndpointZoneId = &v
+	return s
+}
+
+func (s *ListBasicAccelerateIpEndpointRelationsResponseBodyAccelerateIpEndpointRelations) SetIpAddress(v string) *ListBasicAccelerateIpEndpointRelationsResponseBodyAccelerateIpEndpointRelations {
+	s.IpAddress = &v
+	return s
+}
+
+func (s *ListBasicAccelerateIpEndpointRelationsResponseBodyAccelerateIpEndpointRelations) SetState(v string) *ListBasicAccelerateIpEndpointRelationsResponseBodyAccelerateIpEndpointRelations {
+	s.State = &v
+	return s
+}
+
+type ListBasicAccelerateIpEndpointRelationsResponse struct {
+	Headers    map[string]*string                                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListBasicAccelerateIpEndpointRelationsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListBasicAccelerateIpEndpointRelationsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListBasicAccelerateIpEndpointRelationsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListBasicAccelerateIpEndpointRelationsResponse) SetHeaders(v map[string]*string) *ListBasicAccelerateIpEndpointRelationsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListBasicAccelerateIpEndpointRelationsResponse) SetStatusCode(v int32) *ListBasicAccelerateIpEndpointRelationsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListBasicAccelerateIpEndpointRelationsResponse) SetBody(v *ListBasicAccelerateIpEndpointRelationsResponseBody) *ListBasicAccelerateIpEndpointRelationsResponse {
+	s.Body = v
+	return s
+}
+
+type ListBasicAccelerateIpsRequest struct {
+	AccelerateIpAddress *string `json:"AccelerateIpAddress,omitempty" xml:"AccelerateIpAddress,omitempty"`
+	AccelerateIpId      *string `json:"AccelerateIpId,omitempty" xml:"AccelerateIpId,omitempty"`
+	ClientToken         *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	IpSetId             *string `json:"IpSetId,omitempty" xml:"IpSetId,omitempty"`
+	MaxResults          *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken           *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RegionId            *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s ListBasicAccelerateIpsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListBasicAccelerateIpsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListBasicAccelerateIpsRequest) SetAccelerateIpAddress(v string) *ListBasicAccelerateIpsRequest {
+	s.AccelerateIpAddress = &v
+	return s
+}
+
+func (s *ListBasicAccelerateIpsRequest) SetAccelerateIpId(v string) *ListBasicAccelerateIpsRequest {
+	s.AccelerateIpId = &v
+	return s
+}
+
+func (s *ListBasicAccelerateIpsRequest) SetClientToken(v string) *ListBasicAccelerateIpsRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *ListBasicAccelerateIpsRequest) SetIpSetId(v string) *ListBasicAccelerateIpsRequest {
+	s.IpSetId = &v
+	return s
+}
+
+func (s *ListBasicAccelerateIpsRequest) SetMaxResults(v int32) *ListBasicAccelerateIpsRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListBasicAccelerateIpsRequest) SetNextToken(v string) *ListBasicAccelerateIpsRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListBasicAccelerateIpsRequest) SetRegionId(v string) *ListBasicAccelerateIpsRequest {
+	s.RegionId = &v
+	return s
+}
+
+type ListBasicAccelerateIpsResponseBody struct {
+	AccelerateIps []*ListBasicAccelerateIpsResponseBodyAccelerateIps `json:"AccelerateIps,omitempty" xml:"AccelerateIps,omitempty" type:"Repeated"`
+	MaxResults    *int32                                             `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken     *string                                            `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RequestId     *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount    *int32                                             `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListBasicAccelerateIpsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListBasicAccelerateIpsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListBasicAccelerateIpsResponseBody) SetAccelerateIps(v []*ListBasicAccelerateIpsResponseBodyAccelerateIps) *ListBasicAccelerateIpsResponseBody {
+	s.AccelerateIps = v
+	return s
+}
+
+func (s *ListBasicAccelerateIpsResponseBody) SetMaxResults(v int32) *ListBasicAccelerateIpsResponseBody {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListBasicAccelerateIpsResponseBody) SetNextToken(v string) *ListBasicAccelerateIpsResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListBasicAccelerateIpsResponseBody) SetRequestId(v string) *ListBasicAccelerateIpsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListBasicAccelerateIpsResponseBody) SetTotalCount(v int32) *ListBasicAccelerateIpsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListBasicAccelerateIpsResponseBodyAccelerateIps struct {
+	AccelerateIpAddress *string                                                  `json:"AccelerateIpAddress,omitempty" xml:"AccelerateIpAddress,omitempty"`
+	AccelerateIpId      *string                                                  `json:"AccelerateIpId,omitempty" xml:"AccelerateIpId,omitempty"`
+	AcceleratorId       *string                                                  `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
+	Endpoint            *ListBasicAccelerateIpsResponseBodyAccelerateIpsEndpoint `json:"Endpoint,omitempty" xml:"Endpoint,omitempty" type:"Struct"`
+	IpSetId             *string                                                  `json:"IpSetId,omitempty" xml:"IpSetId,omitempty"`
+	State               *string                                                  `json:"State,omitempty" xml:"State,omitempty"`
+}
+
+func (s ListBasicAccelerateIpsResponseBodyAccelerateIps) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListBasicAccelerateIpsResponseBodyAccelerateIps) GoString() string {
+	return s.String()
+}
+
+func (s *ListBasicAccelerateIpsResponseBodyAccelerateIps) SetAccelerateIpAddress(v string) *ListBasicAccelerateIpsResponseBodyAccelerateIps {
+	s.AccelerateIpAddress = &v
+	return s
+}
+
+func (s *ListBasicAccelerateIpsResponseBodyAccelerateIps) SetAccelerateIpId(v string) *ListBasicAccelerateIpsResponseBodyAccelerateIps {
+	s.AccelerateIpId = &v
+	return s
+}
+
+func (s *ListBasicAccelerateIpsResponseBodyAccelerateIps) SetAcceleratorId(v string) *ListBasicAccelerateIpsResponseBodyAccelerateIps {
+	s.AcceleratorId = &v
+	return s
+}
+
+func (s *ListBasicAccelerateIpsResponseBodyAccelerateIps) SetEndpoint(v *ListBasicAccelerateIpsResponseBodyAccelerateIpsEndpoint) *ListBasicAccelerateIpsResponseBodyAccelerateIps {
+	s.Endpoint = v
+	return s
+}
+
+func (s *ListBasicAccelerateIpsResponseBodyAccelerateIps) SetIpSetId(v string) *ListBasicAccelerateIpsResponseBodyAccelerateIps {
+	s.IpSetId = &v
+	return s
+}
+
+func (s *ListBasicAccelerateIpsResponseBodyAccelerateIps) SetState(v string) *ListBasicAccelerateIpsResponseBodyAccelerateIps {
+	s.State = &v
+	return s
+}
+
+type ListBasicAccelerateIpsResponseBodyAccelerateIpsEndpoint struct {
+	EndPointId             *string `json:"EndPointId,omitempty" xml:"EndPointId,omitempty"`
+	EndpointAddress        *string `json:"EndpointAddress,omitempty" xml:"EndpointAddress,omitempty"`
+	EndpointGroupId        *string `json:"EndpointGroupId,omitempty" xml:"EndpointGroupId,omitempty"`
+	EndpointSubAddress     *string `json:"EndpointSubAddress,omitempty" xml:"EndpointSubAddress,omitempty"`
+	EndpointSubAddressType *string `json:"EndpointSubAddressType,omitempty" xml:"EndpointSubAddressType,omitempty"`
+	EndpointType           *string `json:"EndpointType,omitempty" xml:"EndpointType,omitempty"`
+	EndpointZoneId         *string `json:"EndpointZoneId,omitempty" xml:"EndpointZoneId,omitempty"`
+	Name                   *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	State                  *string `json:"State,omitempty" xml:"State,omitempty"`
+}
+
+func (s ListBasicAccelerateIpsResponseBodyAccelerateIpsEndpoint) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListBasicAccelerateIpsResponseBodyAccelerateIpsEndpoint) GoString() string {
+	return s.String()
+}
+
+func (s *ListBasicAccelerateIpsResponseBodyAccelerateIpsEndpoint) SetEndPointId(v string) *ListBasicAccelerateIpsResponseBodyAccelerateIpsEndpoint {
+	s.EndPointId = &v
+	return s
+}
+
+func (s *ListBasicAccelerateIpsResponseBodyAccelerateIpsEndpoint) SetEndpointAddress(v string) *ListBasicAccelerateIpsResponseBodyAccelerateIpsEndpoint {
+	s.EndpointAddress = &v
+	return s
+}
+
+func (s *ListBasicAccelerateIpsResponseBodyAccelerateIpsEndpoint) SetEndpointGroupId(v string) *ListBasicAccelerateIpsResponseBodyAccelerateIpsEndpoint {
+	s.EndpointGroupId = &v
+	return s
+}
+
+func (s *ListBasicAccelerateIpsResponseBodyAccelerateIpsEndpoint) SetEndpointSubAddress(v string) *ListBasicAccelerateIpsResponseBodyAccelerateIpsEndpoint {
+	s.EndpointSubAddress = &v
+	return s
+}
+
+func (s *ListBasicAccelerateIpsResponseBodyAccelerateIpsEndpoint) SetEndpointSubAddressType(v string) *ListBasicAccelerateIpsResponseBodyAccelerateIpsEndpoint {
+	s.EndpointSubAddressType = &v
+	return s
+}
+
+func (s *ListBasicAccelerateIpsResponseBodyAccelerateIpsEndpoint) SetEndpointType(v string) *ListBasicAccelerateIpsResponseBodyAccelerateIpsEndpoint {
+	s.EndpointType = &v
+	return s
+}
+
+func (s *ListBasicAccelerateIpsResponseBodyAccelerateIpsEndpoint) SetEndpointZoneId(v string) *ListBasicAccelerateIpsResponseBodyAccelerateIpsEndpoint {
+	s.EndpointZoneId = &v
+	return s
+}
+
+func (s *ListBasicAccelerateIpsResponseBodyAccelerateIpsEndpoint) SetName(v string) *ListBasicAccelerateIpsResponseBodyAccelerateIpsEndpoint {
+	s.Name = &v
+	return s
+}
+
+func (s *ListBasicAccelerateIpsResponseBodyAccelerateIpsEndpoint) SetState(v string) *ListBasicAccelerateIpsResponseBodyAccelerateIpsEndpoint {
+	s.State = &v
+	return s
+}
+
+type ListBasicAccelerateIpsResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListBasicAccelerateIpsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListBasicAccelerateIpsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListBasicAccelerateIpsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListBasicAccelerateIpsResponse) SetHeaders(v map[string]*string) *ListBasicAccelerateIpsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListBasicAccelerateIpsResponse) SetStatusCode(v int32) *ListBasicAccelerateIpsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListBasicAccelerateIpsResponse) SetBody(v *ListBasicAccelerateIpsResponseBody) *ListBasicAccelerateIpsResponse {
+	s.Body = v
+	return s
+}
+
 type ListBasicAcceleratorsRequest struct {
 	AcceleratorId   *string                            `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
 	PageNumber      *int32                             `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
@@ -12158,6 +13260,206 @@ func (s *ListBasicAcceleratorsResponse) SetStatusCode(v int32) *ListBasicAcceler
 }
 
 func (s *ListBasicAcceleratorsResponse) SetBody(v *ListBasicAcceleratorsResponseBody) *ListBasicAcceleratorsResponse {
+	s.Body = v
+	return s
+}
+
+type ListBasicEndpointsRequest struct {
+	ClientToken     *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	EndpointGroupId *string `json:"EndpointGroupId,omitempty" xml:"EndpointGroupId,omitempty"`
+	EndpointId      *string `json:"EndpointId,omitempty" xml:"EndpointId,omitempty"`
+	EndpointType    *string `json:"EndpointType,omitempty" xml:"EndpointType,omitempty"`
+	MaxResults      *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	Name            *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	NextToken       *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s ListBasicEndpointsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListBasicEndpointsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListBasicEndpointsRequest) SetClientToken(v string) *ListBasicEndpointsRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *ListBasicEndpointsRequest) SetEndpointGroupId(v string) *ListBasicEndpointsRequest {
+	s.EndpointGroupId = &v
+	return s
+}
+
+func (s *ListBasicEndpointsRequest) SetEndpointId(v string) *ListBasicEndpointsRequest {
+	s.EndpointId = &v
+	return s
+}
+
+func (s *ListBasicEndpointsRequest) SetEndpointType(v string) *ListBasicEndpointsRequest {
+	s.EndpointType = &v
+	return s
+}
+
+func (s *ListBasicEndpointsRequest) SetMaxResults(v int32) *ListBasicEndpointsRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListBasicEndpointsRequest) SetName(v string) *ListBasicEndpointsRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *ListBasicEndpointsRequest) SetNextToken(v string) *ListBasicEndpointsRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListBasicEndpointsRequest) SetRegionId(v string) *ListBasicEndpointsRequest {
+	s.RegionId = &v
+	return s
+}
+
+type ListBasicEndpointsResponseBody struct {
+	Endpoints  []*ListBasicEndpointsResponseBodyEndpoints `json:"Endpoints,omitempty" xml:"Endpoints,omitempty" type:"Repeated"`
+	MaxResults *string                                    `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken  *string                                    `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RequestId  *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *string                                    `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListBasicEndpointsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListBasicEndpointsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListBasicEndpointsResponseBody) SetEndpoints(v []*ListBasicEndpointsResponseBodyEndpoints) *ListBasicEndpointsResponseBody {
+	s.Endpoints = v
+	return s
+}
+
+func (s *ListBasicEndpointsResponseBody) SetMaxResults(v string) *ListBasicEndpointsResponseBody {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListBasicEndpointsResponseBody) SetNextToken(v string) *ListBasicEndpointsResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListBasicEndpointsResponseBody) SetRequestId(v string) *ListBasicEndpointsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListBasicEndpointsResponseBody) SetTotalCount(v string) *ListBasicEndpointsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListBasicEndpointsResponseBodyEndpoints struct {
+	AcceleratorId          *string `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
+	EndpointAddress        *string `json:"EndpointAddress,omitempty" xml:"EndpointAddress,omitempty"`
+	EndpointGroupId        *string `json:"EndpointGroupId,omitempty" xml:"EndpointGroupId,omitempty"`
+	EndpointId             *string `json:"EndpointId,omitempty" xml:"EndpointId,omitempty"`
+	EndpointSubAddress     *string `json:"EndpointSubAddress,omitempty" xml:"EndpointSubAddress,omitempty"`
+	EndpointSubAddressType *string `json:"EndpointSubAddressType,omitempty" xml:"EndpointSubAddressType,omitempty"`
+	EndpointType           *string `json:"EndpointType,omitempty" xml:"EndpointType,omitempty"`
+	EndpointZoneId         *string `json:"EndpointZoneId,omitempty" xml:"EndpointZoneId,omitempty"`
+	Name                   *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	State                  *string `json:"State,omitempty" xml:"State,omitempty"`
+}
+
+func (s ListBasicEndpointsResponseBodyEndpoints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListBasicEndpointsResponseBodyEndpoints) GoString() string {
+	return s.String()
+}
+
+func (s *ListBasicEndpointsResponseBodyEndpoints) SetAcceleratorId(v string) *ListBasicEndpointsResponseBodyEndpoints {
+	s.AcceleratorId = &v
+	return s
+}
+
+func (s *ListBasicEndpointsResponseBodyEndpoints) SetEndpointAddress(v string) *ListBasicEndpointsResponseBodyEndpoints {
+	s.EndpointAddress = &v
+	return s
+}
+
+func (s *ListBasicEndpointsResponseBodyEndpoints) SetEndpointGroupId(v string) *ListBasicEndpointsResponseBodyEndpoints {
+	s.EndpointGroupId = &v
+	return s
+}
+
+func (s *ListBasicEndpointsResponseBodyEndpoints) SetEndpointId(v string) *ListBasicEndpointsResponseBodyEndpoints {
+	s.EndpointId = &v
+	return s
+}
+
+func (s *ListBasicEndpointsResponseBodyEndpoints) SetEndpointSubAddress(v string) *ListBasicEndpointsResponseBodyEndpoints {
+	s.EndpointSubAddress = &v
+	return s
+}
+
+func (s *ListBasicEndpointsResponseBodyEndpoints) SetEndpointSubAddressType(v string) *ListBasicEndpointsResponseBodyEndpoints {
+	s.EndpointSubAddressType = &v
+	return s
+}
+
+func (s *ListBasicEndpointsResponseBodyEndpoints) SetEndpointType(v string) *ListBasicEndpointsResponseBodyEndpoints {
+	s.EndpointType = &v
+	return s
+}
+
+func (s *ListBasicEndpointsResponseBodyEndpoints) SetEndpointZoneId(v string) *ListBasicEndpointsResponseBodyEndpoints {
+	s.EndpointZoneId = &v
+	return s
+}
+
+func (s *ListBasicEndpointsResponseBodyEndpoints) SetName(v string) *ListBasicEndpointsResponseBodyEndpoints {
+	s.Name = &v
+	return s
+}
+
+func (s *ListBasicEndpointsResponseBodyEndpoints) SetState(v string) *ListBasicEndpointsResponseBodyEndpoints {
+	s.State = &v
+	return s
+}
+
+type ListBasicEndpointsResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListBasicEndpointsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListBasicEndpointsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListBasicEndpointsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListBasicEndpointsResponse) SetHeaders(v map[string]*string) *ListBasicEndpointsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListBasicEndpointsResponse) SetStatusCode(v int32) *ListBasicEndpointsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListBasicEndpointsResponse) SetBody(v *ListBasicEndpointsResponseBody) *ListBasicEndpointsResponse {
 	s.Body = v
 	return s
 }
@@ -16105,6 +17407,111 @@ func (s *UpdateBasicAcceleratorResponse) SetBody(v *UpdateBasicAcceleratorRespon
 	return s
 }
 
+type UpdateBasicEndpointRequest struct {
+	ClientToken     *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	EndpointGroupId *string `json:"EndpointGroupId,omitempty" xml:"EndpointGroupId,omitempty"`
+	EndpointId      *string `json:"EndpointId,omitempty" xml:"EndpointId,omitempty"`
+	Name            *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s UpdateBasicEndpointRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateBasicEndpointRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateBasicEndpointRequest) SetClientToken(v string) *UpdateBasicEndpointRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *UpdateBasicEndpointRequest) SetEndpointGroupId(v string) *UpdateBasicEndpointRequest {
+	s.EndpointGroupId = &v
+	return s
+}
+
+func (s *UpdateBasicEndpointRequest) SetEndpointId(v string) *UpdateBasicEndpointRequest {
+	s.EndpointId = &v
+	return s
+}
+
+func (s *UpdateBasicEndpointRequest) SetName(v string) *UpdateBasicEndpointRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *UpdateBasicEndpointRequest) SetRegionId(v string) *UpdateBasicEndpointRequest {
+	s.RegionId = &v
+	return s
+}
+
+type UpdateBasicEndpointResponseBody struct {
+	EndpointGroupId *string `json:"EndpointGroupId,omitempty" xml:"EndpointGroupId,omitempty"`
+	EndpointId      *string `json:"EndpointId,omitempty" xml:"EndpointId,omitempty"`
+	Name            *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	RequestId       *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateBasicEndpointResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateBasicEndpointResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateBasicEndpointResponseBody) SetEndpointGroupId(v string) *UpdateBasicEndpointResponseBody {
+	s.EndpointGroupId = &v
+	return s
+}
+
+func (s *UpdateBasicEndpointResponseBody) SetEndpointId(v string) *UpdateBasicEndpointResponseBody {
+	s.EndpointId = &v
+	return s
+}
+
+func (s *UpdateBasicEndpointResponseBody) SetName(v string) *UpdateBasicEndpointResponseBody {
+	s.Name = &v
+	return s
+}
+
+func (s *UpdateBasicEndpointResponseBody) SetRequestId(v string) *UpdateBasicEndpointResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateBasicEndpointResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateBasicEndpointResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateBasicEndpointResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateBasicEndpointResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateBasicEndpointResponse) SetHeaders(v map[string]*string) *UpdateBasicEndpointResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateBasicEndpointResponse) SetStatusCode(v int32) *UpdateBasicEndpointResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateBasicEndpointResponse) SetBody(v *UpdateBasicEndpointResponseBody) *UpdateBasicEndpointResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateBasicEndpointGroupRequest struct {
 	ClientToken        *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	Description        *string `json:"Description,omitempty" xml:"Description,omitempty"`
@@ -19251,6 +20658,86 @@ func (client *Client) CreateBasicAccelerator(request *CreateBasicAcceleratorRequ
 	return _result, _err
 }
 
+func (client *Client) CreateBasicEndpointWithOptions(request *CreateBasicEndpointRequest, runtime *util.RuntimeOptions) (_result *CreateBasicEndpointResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceleratorId)) {
+		query["AcceleratorId"] = request.AcceleratorId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndpointAddress)) {
+		query["EndpointAddress"] = request.EndpointAddress
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndpointGroupId)) {
+		query["EndpointGroupId"] = request.EndpointGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndpointSubAddress)) {
+		query["EndpointSubAddress"] = request.EndpointSubAddress
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndpointSubAddressType)) {
+		query["EndpointSubAddressType"] = request.EndpointSubAddressType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndpointType)) {
+		query["EndpointType"] = request.EndpointType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndpointZoneId)) {
+		query["EndpointZoneId"] = request.EndpointZoneId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateBasicEndpoint"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateBasicEndpointResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateBasicEndpoint(request *CreateBasicEndpointRequest) (_result *CreateBasicEndpointResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateBasicEndpointResponse{}
+	_body, _err := client.CreateBasicEndpointWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) CreateBasicEndpointGroupWithOptions(request *CreateBasicEndpointGroupRequest, runtime *util.RuntimeOptions) (_result *CreateBasicEndpointGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19320,6 +20807,66 @@ func (client *Client) CreateBasicEndpointGroup(request *CreateBasicEndpointGroup
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateBasicEndpointGroupResponse{}
 	_body, _err := client.CreateBasicEndpointGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateBasicEndpointsWithOptions(request *CreateBasicEndpointsRequest, runtime *util.RuntimeOptions) (_result *CreateBasicEndpointsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceleratorId)) {
+		query["AcceleratorId"] = request.AcceleratorId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndpointGroupId)) {
+		query["EndpointGroupId"] = request.EndpointGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Endpoints)) {
+		query["Endpoints"] = request.Endpoints
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateBasicEndpoints"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateBasicEndpointsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateBasicEndpoints(request *CreateBasicEndpointsRequest) (_result *CreateBasicEndpointsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateBasicEndpointsResponse{}
+	_body, _err := client.CreateBasicEndpointsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -22327,6 +23874,118 @@ func (client *Client) GetBasicAccelerateIp(request *GetBasicAccelerateIpRequest)
 	return _result, _err
 }
 
+func (client *Client) GetBasicAccelerateIpEndpointRelationWithOptions(request *GetBasicAccelerateIpEndpointRelationRequest, runtime *util.RuntimeOptions) (_result *GetBasicAccelerateIpEndpointRelationResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccelerateIpId)) {
+		query["AccelerateIpId"] = request.AccelerateIpId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AcceleratorId)) {
+		query["AcceleratorId"] = request.AcceleratorId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndpointId)) {
+		query["EndpointId"] = request.EndpointId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetBasicAccelerateIpEndpointRelation"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetBasicAccelerateIpEndpointRelationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetBasicAccelerateIpEndpointRelation(request *GetBasicAccelerateIpEndpointRelationRequest) (_result *GetBasicAccelerateIpEndpointRelationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetBasicAccelerateIpEndpointRelationResponse{}
+	_body, _err := client.GetBasicAccelerateIpEndpointRelationWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetBasicAccelerateIpIdleCountWithOptions(request *GetBasicAccelerateIpIdleCountRequest, runtime *util.RuntimeOptions) (_result *GetBasicAccelerateIpIdleCountResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IpSetId)) {
+		query["IpSetId"] = request.IpSetId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetBasicAccelerateIpIdleCount"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetBasicAccelerateIpIdleCountResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetBasicAccelerateIpIdleCount(request *GetBasicAccelerateIpIdleCountRequest) (_result *GetBasicAccelerateIpIdleCountResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetBasicAccelerateIpIdleCountResponse{}
+	_body, _err := client.GetBasicAccelerateIpIdleCountWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) GetBasicAcceleratorWithOptions(request *GetBasicAcceleratorRequest, runtime *util.RuntimeOptions) (_result *GetBasicAcceleratorResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -22368,6 +24027,58 @@ func (client *Client) GetBasicAccelerator(request *GetBasicAcceleratorRequest) (
 	runtime := &util.RuntimeOptions{}
 	_result = &GetBasicAcceleratorResponse{}
 	_body, _err := client.GetBasicAcceleratorWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetBasicEndpointWithOptions(request *GetBasicEndpointRequest, runtime *util.RuntimeOptions) (_result *GetBasicEndpointResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndpointId)) {
+		query["EndpointId"] = request.EndpointId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetBasicEndpoint"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetBasicEndpointResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetBasicEndpoint(request *GetBasicEndpointRequest) (_result *GetBasicEndpointResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetBasicEndpointResponse{}
+	_body, _err := client.GetBasicEndpointWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -23123,6 +24834,142 @@ func (client *Client) ListBandwidthackages(request *ListBandwidthackagesRequest)
 	return _result, _err
 }
 
+func (client *Client) ListBasicAccelerateIpEndpointRelationsWithOptions(request *ListBasicAccelerateIpEndpointRelationsRequest, runtime *util.RuntimeOptions) (_result *ListBasicAccelerateIpEndpointRelationsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccelerateIpId)) {
+		query["AccelerateIpId"] = request.AccelerateIpId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AcceleratorId)) {
+		query["AcceleratorId"] = request.AcceleratorId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndpointId)) {
+		query["EndpointId"] = request.EndpointId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListBasicAccelerateIpEndpointRelations"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListBasicAccelerateIpEndpointRelationsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListBasicAccelerateIpEndpointRelations(request *ListBasicAccelerateIpEndpointRelationsRequest) (_result *ListBasicAccelerateIpEndpointRelationsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListBasicAccelerateIpEndpointRelationsResponse{}
+	_body, _err := client.ListBasicAccelerateIpEndpointRelationsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListBasicAccelerateIpsWithOptions(request *ListBasicAccelerateIpsRequest, runtime *util.RuntimeOptions) (_result *ListBasicAccelerateIpsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccelerateIpAddress)) {
+		query["AccelerateIpAddress"] = request.AccelerateIpAddress
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AccelerateIpId)) {
+		query["AccelerateIpId"] = request.AccelerateIpId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IpSetId)) {
+		query["IpSetId"] = request.IpSetId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListBasicAccelerateIps"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListBasicAccelerateIpsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListBasicAccelerateIps(request *ListBasicAccelerateIpsRequest) (_result *ListBasicAccelerateIpsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListBasicAccelerateIpsResponse{}
+	_body, _err := client.ListBasicAccelerateIpsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ListBasicAcceleratorsWithOptions(request *ListBasicAcceleratorsRequest, runtime *util.RuntimeOptions) (_result *ListBasicAcceleratorsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23184,6 +25031,78 @@ func (client *Client) ListBasicAccelerators(request *ListBasicAcceleratorsReques
 	runtime := &util.RuntimeOptions{}
 	_result = &ListBasicAcceleratorsResponse{}
 	_body, _err := client.ListBasicAcceleratorsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListBasicEndpointsWithOptions(request *ListBasicEndpointsRequest, runtime *util.RuntimeOptions) (_result *ListBasicEndpointsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndpointGroupId)) {
+		query["EndpointGroupId"] = request.EndpointGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndpointId)) {
+		query["EndpointId"] = request.EndpointId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndpointType)) {
+		query["EndpointType"] = request.EndpointType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListBasicEndpoints"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListBasicEndpointsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListBasicEndpoints(request *ListBasicEndpointsRequest) (_result *ListBasicEndpointsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListBasicEndpointsResponse{}
+	_body, _err := client.ListBasicEndpointsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -24772,6 +26691,66 @@ func (client *Client) UpdateBasicAccelerator(request *UpdateBasicAcceleratorRequ
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateBasicAcceleratorResponse{}
 	_body, _err := client.UpdateBasicAcceleratorWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateBasicEndpointWithOptions(request *UpdateBasicEndpointRequest, runtime *util.RuntimeOptions) (_result *UpdateBasicEndpointResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndpointGroupId)) {
+		query["EndpointGroupId"] = request.EndpointGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndpointId)) {
+		query["EndpointId"] = request.EndpointId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateBasicEndpoint"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateBasicEndpointResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateBasicEndpoint(request *UpdateBasicEndpointRequest) (_result *UpdateBasicEndpointResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateBasicEndpointResponse{}
+	_body, _err := client.UpdateBasicEndpointWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
