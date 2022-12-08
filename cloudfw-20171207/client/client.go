@@ -2625,6 +2625,7 @@ func (s *DescribeInvadeEventListResponse) SetBody(v *DescribeInvadeEventListResp
 
 type DescribeOutgoingDestinationIPRequest struct {
 	ApplicationName *string `json:"ApplicationName,omitempty" xml:"ApplicationName,omitempty"`
+	CategoryId      *string `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
 	CurrentPage     *string `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	DstIP           *string `json:"DstIP,omitempty" xml:"DstIP,omitempty"`
 	EndTime         *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
@@ -2636,6 +2637,7 @@ type DescribeOutgoingDestinationIPRequest struct {
 	PublicIP        *string `json:"PublicIP,omitempty" xml:"PublicIP,omitempty"`
 	Sort            *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
 	StartTime       *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	TagIdNew        *string `json:"TagIdNew,omitempty" xml:"TagIdNew,omitempty"`
 }
 
 func (s DescribeOutgoingDestinationIPRequest) String() string {
@@ -2648,6 +2650,11 @@ func (s DescribeOutgoingDestinationIPRequest) GoString() string {
 
 func (s *DescribeOutgoingDestinationIPRequest) SetApplicationName(v string) *DescribeOutgoingDestinationIPRequest {
 	s.ApplicationName = &v
+	return s
+}
+
+func (s *DescribeOutgoingDestinationIPRequest) SetCategoryId(v string) *DescribeOutgoingDestinationIPRequest {
+	s.CategoryId = &v
 	return s
 }
 
@@ -2703,6 +2710,11 @@ func (s *DescribeOutgoingDestinationIPRequest) SetSort(v string) *DescribeOutgoi
 
 func (s *DescribeOutgoingDestinationIPRequest) SetStartTime(v string) *DescribeOutgoingDestinationIPRequest {
 	s.StartTime = &v
+	return s
+}
+
+func (s *DescribeOutgoingDestinationIPRequest) SetTagIdNew(v string) *DescribeOutgoingDestinationIPRequest {
+	s.TagIdNew = &v
 	return s
 }
 
@@ -2995,6 +3007,7 @@ func (s *DescribeOutgoingDestinationIPResponse) SetBody(v *DescribeOutgoingDesti
 }
 
 type DescribeOutgoingDomainRequest struct {
+	CategoryId  *string `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
 	CurrentPage *string `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	Domain      *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	EndTime     *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
@@ -3004,6 +3017,7 @@ type DescribeOutgoingDomainRequest struct {
 	PublicIP    *string `json:"PublicIP,omitempty" xml:"PublicIP,omitempty"`
 	Sort        *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
 	StartTime   *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	TagIdNew    *string `json:"TagIdNew,omitempty" xml:"TagIdNew,omitempty"`
 }
 
 func (s DescribeOutgoingDomainRequest) String() string {
@@ -3012,6 +3026,11 @@ func (s DescribeOutgoingDomainRequest) String() string {
 
 func (s DescribeOutgoingDomainRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeOutgoingDomainRequest) SetCategoryId(v string) *DescribeOutgoingDomainRequest {
+	s.CategoryId = &v
+	return s
 }
 
 func (s *DescribeOutgoingDomainRequest) SetCurrentPage(v string) *DescribeOutgoingDomainRequest {
@@ -3056,6 +3075,11 @@ func (s *DescribeOutgoingDomainRequest) SetSort(v string) *DescribeOutgoingDomai
 
 func (s *DescribeOutgoingDomainRequest) SetStartTime(v string) *DescribeOutgoingDomainRequest {
 	s.StartTime = &v
+	return s
+}
+
+func (s *DescribeOutgoingDomainRequest) SetTagIdNew(v string) *DescribeOutgoingDomainRequest {
+	s.TagIdNew = &v
 	return s
 }
 
@@ -6121,6 +6145,373 @@ func (s *DescribeVpcFirewallPolicyPriorUsedResponse) SetBody(v *DescribeVpcFirew
 	return s
 }
 
+type DescribeVulnerabilityProtectedListRequest struct {
+	AttackType   *string `json:"AttackType,omitempty" xml:"AttackType,omitempty"`
+	BuyVersion   *int64  `json:"BuyVersion,omitempty" xml:"BuyVersion,omitempty"`
+	CurrentPage  *string `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	EndTime      *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	Order        *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	PageSize     *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	SortKey      *string `json:"SortKey,omitempty" xml:"SortKey,omitempty"`
+	SourceIp     *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	StartTime    *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	UserType     *string `json:"UserType,omitempty" xml:"UserType,omitempty"`
+	VulnCveName  *string `json:"VulnCveName,omitempty" xml:"VulnCveName,omitempty"`
+	VulnLevel    *string `json:"VulnLevel,omitempty" xml:"VulnLevel,omitempty"`
+	VulnResource *string `json:"VulnResource,omitempty" xml:"VulnResource,omitempty"`
+	VulnStatus   *string `json:"VulnStatus,omitempty" xml:"VulnStatus,omitempty"`
+	VulnType     *string `json:"VulnType,omitempty" xml:"VulnType,omitempty"`
+}
+
+func (s DescribeVulnerabilityProtectedListRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVulnerabilityProtectedListRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVulnerabilityProtectedListRequest) SetAttackType(v string) *DescribeVulnerabilityProtectedListRequest {
+	s.AttackType = &v
+	return s
+}
+
+func (s *DescribeVulnerabilityProtectedListRequest) SetBuyVersion(v int64) *DescribeVulnerabilityProtectedListRequest {
+	s.BuyVersion = &v
+	return s
+}
+
+func (s *DescribeVulnerabilityProtectedListRequest) SetCurrentPage(v string) *DescribeVulnerabilityProtectedListRequest {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *DescribeVulnerabilityProtectedListRequest) SetEndTime(v string) *DescribeVulnerabilityProtectedListRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeVulnerabilityProtectedListRequest) SetLang(v string) *DescribeVulnerabilityProtectedListRequest {
+	s.Lang = &v
+	return s
+}
+
+func (s *DescribeVulnerabilityProtectedListRequest) SetOrder(v string) *DescribeVulnerabilityProtectedListRequest {
+	s.Order = &v
+	return s
+}
+
+func (s *DescribeVulnerabilityProtectedListRequest) SetPageSize(v string) *DescribeVulnerabilityProtectedListRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeVulnerabilityProtectedListRequest) SetSortKey(v string) *DescribeVulnerabilityProtectedListRequest {
+	s.SortKey = &v
+	return s
+}
+
+func (s *DescribeVulnerabilityProtectedListRequest) SetSourceIp(v string) *DescribeVulnerabilityProtectedListRequest {
+	s.SourceIp = &v
+	return s
+}
+
+func (s *DescribeVulnerabilityProtectedListRequest) SetStartTime(v string) *DescribeVulnerabilityProtectedListRequest {
+	s.StartTime = &v
+	return s
+}
+
+func (s *DescribeVulnerabilityProtectedListRequest) SetUserType(v string) *DescribeVulnerabilityProtectedListRequest {
+	s.UserType = &v
+	return s
+}
+
+func (s *DescribeVulnerabilityProtectedListRequest) SetVulnCveName(v string) *DescribeVulnerabilityProtectedListRequest {
+	s.VulnCveName = &v
+	return s
+}
+
+func (s *DescribeVulnerabilityProtectedListRequest) SetVulnLevel(v string) *DescribeVulnerabilityProtectedListRequest {
+	s.VulnLevel = &v
+	return s
+}
+
+func (s *DescribeVulnerabilityProtectedListRequest) SetVulnResource(v string) *DescribeVulnerabilityProtectedListRequest {
+	s.VulnResource = &v
+	return s
+}
+
+func (s *DescribeVulnerabilityProtectedListRequest) SetVulnStatus(v string) *DescribeVulnerabilityProtectedListRequest {
+	s.VulnStatus = &v
+	return s
+}
+
+func (s *DescribeVulnerabilityProtectedListRequest) SetVulnType(v string) *DescribeVulnerabilityProtectedListRequest {
+	s.VulnType = &v
+	return s
+}
+
+type DescribeVulnerabilityProtectedListResponseBody struct {
+	RequestId         *string                                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount        *int32                                                    `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	VulnList          []*DescribeVulnerabilityProtectedListResponseBodyVulnList `json:"VulnList,omitempty" xml:"VulnList,omitempty" type:"Repeated"`
+	ZeroResourceCount *int32                                                    `json:"ZeroResourceCount,omitempty" xml:"ZeroResourceCount,omitempty"`
+}
+
+func (s DescribeVulnerabilityProtectedListResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVulnerabilityProtectedListResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVulnerabilityProtectedListResponseBody) SetRequestId(v string) *DescribeVulnerabilityProtectedListResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeVulnerabilityProtectedListResponseBody) SetTotalCount(v int32) *DescribeVulnerabilityProtectedListResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *DescribeVulnerabilityProtectedListResponseBody) SetVulnList(v []*DescribeVulnerabilityProtectedListResponseBodyVulnList) *DescribeVulnerabilityProtectedListResponseBody {
+	s.VulnList = v
+	return s
+}
+
+func (s *DescribeVulnerabilityProtectedListResponseBody) SetZeroResourceCount(v int32) *DescribeVulnerabilityProtectedListResponseBody {
+	s.ZeroResourceCount = &v
+	return s
+}
+
+type DescribeVulnerabilityProtectedListResponseBodyVulnList struct {
+	AttackCnt                  *int32                                                                `json:"AttackCnt,omitempty" xml:"AttackCnt,omitempty"`
+	AttackType                 *int32                                                                `json:"AttackType,omitempty" xml:"AttackType,omitempty"`
+	BasicRuleIds               *string                                                               `json:"BasicRuleIds,omitempty" xml:"BasicRuleIds,omitempty"`
+	CveId                      *string                                                               `json:"CveId,omitempty" xml:"CveId,omitempty"`
+	FirstTime                  *int64                                                                `json:"FirstTime,omitempty" xml:"FirstTime,omitempty"`
+	HighlightTag               *int32                                                                `json:"HighlightTag,omitempty" xml:"HighlightTag,omitempty"`
+	LastTime                   *int64                                                                `json:"LastTime,omitempty" xml:"LastTime,omitempty"`
+	NeedOpenBasicRule          *bool                                                                 `json:"NeedOpenBasicRule,omitempty" xml:"NeedOpenBasicRule,omitempty"`
+	NeedOpenBasicRuleUuids     *string                                                               `json:"NeedOpenBasicRuleUuids,omitempty" xml:"NeedOpenBasicRuleUuids,omitempty"`
+	NeedOpenRunMode            *bool                                                                 `json:"NeedOpenRunMode,omitempty" xml:"NeedOpenRunMode,omitempty"`
+	NeedOpenVirtualPatche      *bool                                                                 `json:"NeedOpenVirtualPatche,omitempty" xml:"NeedOpenVirtualPatche,omitempty"`
+	NeedOpenVirtualPatcheUuids *string                                                               `json:"NeedOpenVirtualPatcheUuids,omitempty" xml:"NeedOpenVirtualPatcheUuids,omitempty"`
+	NeedRuleClass              *int32                                                                `json:"NeedRuleClass,omitempty" xml:"NeedRuleClass,omitempty"`
+	ResourceCnt                *int32                                                                `json:"ResourceCnt,omitempty" xml:"ResourceCnt,omitempty"`
+	ResourceList               []*DescribeVulnerabilityProtectedListResponseBodyVulnListResourceList `json:"ResourceList,omitempty" xml:"ResourceList,omitempty" type:"Repeated"`
+	VirtualPatcheIds           *string                                                               `json:"VirtualPatcheIds,omitempty" xml:"VirtualPatcheIds,omitempty"`
+	VulnKey                    *string                                                               `json:"VulnKey,omitempty" xml:"VulnKey,omitempty"`
+	VulnLevel                  *string                                                               `json:"VulnLevel,omitempty" xml:"VulnLevel,omitempty"`
+	VulnName                   *string                                                               `json:"VulnName,omitempty" xml:"VulnName,omitempty"`
+	VulnStatus                 *string                                                               `json:"VulnStatus,omitempty" xml:"VulnStatus,omitempty"`
+	VulnType                   *string                                                               `json:"VulnType,omitempty" xml:"VulnType,omitempty"`
+}
+
+func (s DescribeVulnerabilityProtectedListResponseBodyVulnList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVulnerabilityProtectedListResponseBodyVulnList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVulnerabilityProtectedListResponseBodyVulnList) SetAttackCnt(v int32) *DescribeVulnerabilityProtectedListResponseBodyVulnList {
+	s.AttackCnt = &v
+	return s
+}
+
+func (s *DescribeVulnerabilityProtectedListResponseBodyVulnList) SetAttackType(v int32) *DescribeVulnerabilityProtectedListResponseBodyVulnList {
+	s.AttackType = &v
+	return s
+}
+
+func (s *DescribeVulnerabilityProtectedListResponseBodyVulnList) SetBasicRuleIds(v string) *DescribeVulnerabilityProtectedListResponseBodyVulnList {
+	s.BasicRuleIds = &v
+	return s
+}
+
+func (s *DescribeVulnerabilityProtectedListResponseBodyVulnList) SetCveId(v string) *DescribeVulnerabilityProtectedListResponseBodyVulnList {
+	s.CveId = &v
+	return s
+}
+
+func (s *DescribeVulnerabilityProtectedListResponseBodyVulnList) SetFirstTime(v int64) *DescribeVulnerabilityProtectedListResponseBodyVulnList {
+	s.FirstTime = &v
+	return s
+}
+
+func (s *DescribeVulnerabilityProtectedListResponseBodyVulnList) SetHighlightTag(v int32) *DescribeVulnerabilityProtectedListResponseBodyVulnList {
+	s.HighlightTag = &v
+	return s
+}
+
+func (s *DescribeVulnerabilityProtectedListResponseBodyVulnList) SetLastTime(v int64) *DescribeVulnerabilityProtectedListResponseBodyVulnList {
+	s.LastTime = &v
+	return s
+}
+
+func (s *DescribeVulnerabilityProtectedListResponseBodyVulnList) SetNeedOpenBasicRule(v bool) *DescribeVulnerabilityProtectedListResponseBodyVulnList {
+	s.NeedOpenBasicRule = &v
+	return s
+}
+
+func (s *DescribeVulnerabilityProtectedListResponseBodyVulnList) SetNeedOpenBasicRuleUuids(v string) *DescribeVulnerabilityProtectedListResponseBodyVulnList {
+	s.NeedOpenBasicRuleUuids = &v
+	return s
+}
+
+func (s *DescribeVulnerabilityProtectedListResponseBodyVulnList) SetNeedOpenRunMode(v bool) *DescribeVulnerabilityProtectedListResponseBodyVulnList {
+	s.NeedOpenRunMode = &v
+	return s
+}
+
+func (s *DescribeVulnerabilityProtectedListResponseBodyVulnList) SetNeedOpenVirtualPatche(v bool) *DescribeVulnerabilityProtectedListResponseBodyVulnList {
+	s.NeedOpenVirtualPatche = &v
+	return s
+}
+
+func (s *DescribeVulnerabilityProtectedListResponseBodyVulnList) SetNeedOpenVirtualPatcheUuids(v string) *DescribeVulnerabilityProtectedListResponseBodyVulnList {
+	s.NeedOpenVirtualPatcheUuids = &v
+	return s
+}
+
+func (s *DescribeVulnerabilityProtectedListResponseBodyVulnList) SetNeedRuleClass(v int32) *DescribeVulnerabilityProtectedListResponseBodyVulnList {
+	s.NeedRuleClass = &v
+	return s
+}
+
+func (s *DescribeVulnerabilityProtectedListResponseBodyVulnList) SetResourceCnt(v int32) *DescribeVulnerabilityProtectedListResponseBodyVulnList {
+	s.ResourceCnt = &v
+	return s
+}
+
+func (s *DescribeVulnerabilityProtectedListResponseBodyVulnList) SetResourceList(v []*DescribeVulnerabilityProtectedListResponseBodyVulnListResourceList) *DescribeVulnerabilityProtectedListResponseBodyVulnList {
+	s.ResourceList = v
+	return s
+}
+
+func (s *DescribeVulnerabilityProtectedListResponseBodyVulnList) SetVirtualPatcheIds(v string) *DescribeVulnerabilityProtectedListResponseBodyVulnList {
+	s.VirtualPatcheIds = &v
+	return s
+}
+
+func (s *DescribeVulnerabilityProtectedListResponseBodyVulnList) SetVulnKey(v string) *DescribeVulnerabilityProtectedListResponseBodyVulnList {
+	s.VulnKey = &v
+	return s
+}
+
+func (s *DescribeVulnerabilityProtectedListResponseBodyVulnList) SetVulnLevel(v string) *DescribeVulnerabilityProtectedListResponseBodyVulnList {
+	s.VulnLevel = &v
+	return s
+}
+
+func (s *DescribeVulnerabilityProtectedListResponseBodyVulnList) SetVulnName(v string) *DescribeVulnerabilityProtectedListResponseBodyVulnList {
+	s.VulnName = &v
+	return s
+}
+
+func (s *DescribeVulnerabilityProtectedListResponseBodyVulnList) SetVulnStatus(v string) *DescribeVulnerabilityProtectedListResponseBodyVulnList {
+	s.VulnStatus = &v
+	return s
+}
+
+func (s *DescribeVulnerabilityProtectedListResponseBodyVulnList) SetVulnType(v string) *DescribeVulnerabilityProtectedListResponseBodyVulnList {
+	s.VulnType = &v
+	return s
+}
+
+type DescribeVulnerabilityProtectedListResponseBodyVulnListResourceList struct {
+	Eip          *string `json:"Eip,omitempty" xml:"Eip,omitempty"`
+	InternetIp   *string `json:"InternetIp,omitempty" xml:"InternetIp,omitempty"`
+	IntranetIp   *string `json:"IntranetIp,omitempty" xml:"IntranetIp,omitempty"`
+	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceId   *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	VulnStatus   *string `json:"VulnStatus,omitempty" xml:"VulnStatus,omitempty"`
+}
+
+func (s DescribeVulnerabilityProtectedListResponseBodyVulnListResourceList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVulnerabilityProtectedListResponseBodyVulnListResourceList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVulnerabilityProtectedListResponseBodyVulnListResourceList) SetEip(v string) *DescribeVulnerabilityProtectedListResponseBodyVulnListResourceList {
+	s.Eip = &v
+	return s
+}
+
+func (s *DescribeVulnerabilityProtectedListResponseBodyVulnListResourceList) SetInternetIp(v string) *DescribeVulnerabilityProtectedListResponseBodyVulnListResourceList {
+	s.InternetIp = &v
+	return s
+}
+
+func (s *DescribeVulnerabilityProtectedListResponseBodyVulnListResourceList) SetIntranetIp(v string) *DescribeVulnerabilityProtectedListResponseBodyVulnListResourceList {
+	s.IntranetIp = &v
+	return s
+}
+
+func (s *DescribeVulnerabilityProtectedListResponseBodyVulnListResourceList) SetRegionId(v string) *DescribeVulnerabilityProtectedListResponseBodyVulnListResourceList {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeVulnerabilityProtectedListResponseBodyVulnListResourceList) SetResourceId(v string) *DescribeVulnerabilityProtectedListResponseBodyVulnListResourceList {
+	s.ResourceId = &v
+	return s
+}
+
+func (s *DescribeVulnerabilityProtectedListResponseBodyVulnListResourceList) SetResourceName(v string) *DescribeVulnerabilityProtectedListResponseBodyVulnListResourceList {
+	s.ResourceName = &v
+	return s
+}
+
+func (s *DescribeVulnerabilityProtectedListResponseBodyVulnListResourceList) SetResourceType(v string) *DescribeVulnerabilityProtectedListResponseBodyVulnListResourceList {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *DescribeVulnerabilityProtectedListResponseBodyVulnListResourceList) SetVulnStatus(v string) *DescribeVulnerabilityProtectedListResponseBodyVulnListResourceList {
+	s.VulnStatus = &v
+	return s
+}
+
+type DescribeVulnerabilityProtectedListResponse struct {
+	Headers    map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeVulnerabilityProtectedListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeVulnerabilityProtectedListResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVulnerabilityProtectedListResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVulnerabilityProtectedListResponse) SetHeaders(v map[string]*string) *DescribeVulnerabilityProtectedListResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeVulnerabilityProtectedListResponse) SetStatusCode(v int32) *DescribeVulnerabilityProtectedListResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeVulnerabilityProtectedListResponse) SetBody(v *DescribeVulnerabilityProtectedListResponseBody) *DescribeVulnerabilityProtectedListResponse {
+	s.Body = v
+	return s
+}
+
 type ModifyAddressBookRequest struct {
 	AddressList   *string                            `json:"AddressList,omitempty" xml:"AddressList,omitempty"`
 	AutoAddTagEcs *string                            `json:"AutoAddTagEcs,omitempty" xml:"AutoAddTagEcs,omitempty"`
@@ -9015,6 +9406,10 @@ func (client *Client) DescribeOutgoingDestinationIPWithOptions(request *Describe
 		query["ApplicationName"] = request.ApplicationName
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.CategoryId)) {
+		query["CategoryId"] = request.CategoryId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.CurrentPage)) {
 		query["CurrentPage"] = request.CurrentPage
 	}
@@ -9059,6 +9454,10 @@ func (client *Client) DescribeOutgoingDestinationIPWithOptions(request *Describe
 		query["StartTime"] = request.StartTime
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.TagIdNew)) {
+		query["TagIdNew"] = request.TagIdNew
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -9099,6 +9498,10 @@ func (client *Client) DescribeOutgoingDomainWithOptions(request *DescribeOutgoin
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CategoryId)) {
+		query["CategoryId"] = request.CategoryId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.CurrentPage)) {
 		query["CurrentPage"] = request.CurrentPage
 	}
@@ -9133,6 +9536,10 @@ func (client *Client) DescribeOutgoingDomainWithOptions(request *DescribeOutgoin
 
 	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
 		query["StartTime"] = request.StartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagIdNew)) {
+		query["TagIdNew"] = request.TagIdNew
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -9982,6 +10389,114 @@ func (client *Client) DescribeVpcFirewallPolicyPriorUsed(request *DescribeVpcFir
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeVpcFirewallPolicyPriorUsedResponse{}
 	_body, _err := client.DescribeVpcFirewallPolicyPriorUsedWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeVulnerabilityProtectedListWithOptions(request *DescribeVulnerabilityProtectedListRequest, runtime *util.RuntimeOptions) (_result *DescribeVulnerabilityProtectedListResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AttackType)) {
+		query["AttackType"] = request.AttackType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BuyVersion)) {
+		query["BuyVersion"] = request.BuyVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CurrentPage)) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Order)) {
+		query["Order"] = request.Order
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SortKey)) {
+		query["SortKey"] = request.SortKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceIp)) {
+		query["SourceIp"] = request.SourceIp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserType)) {
+		query["UserType"] = request.UserType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VulnCveName)) {
+		query["VulnCveName"] = request.VulnCveName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VulnLevel)) {
+		query["VulnLevel"] = request.VulnLevel
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VulnResource)) {
+		query["VulnResource"] = request.VulnResource
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VulnStatus)) {
+		query["VulnStatus"] = request.VulnStatus
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VulnType)) {
+		query["VulnType"] = request.VulnType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeVulnerabilityProtectedList"),
+		Version:     tea.String("2017-12-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeVulnerabilityProtectedListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeVulnerabilityProtectedList(request *DescribeVulnerabilityProtectedListRequest) (_result *DescribeVulnerabilityProtectedListResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeVulnerabilityProtectedListResponse{}
+	_body, _err := client.DescribeVulnerabilityProtectedListWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
