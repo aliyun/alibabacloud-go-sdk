@@ -6167,6 +6167,7 @@ func (s *DeleteTransitRouterRouteTableResponse) SetBody(v *DeleteTransitRouterRo
 type DeleteTransitRouterVbrAttachmentRequest struct {
 	ClientToken               *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	DryRun                    *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	Force                     *bool   `json:"Force,omitempty" xml:"Force,omitempty"`
 	OwnerAccount              *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId                   *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount      *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
@@ -6189,6 +6190,11 @@ func (s *DeleteTransitRouterVbrAttachmentRequest) SetClientToken(v string) *Dele
 
 func (s *DeleteTransitRouterVbrAttachmentRequest) SetDryRun(v bool) *DeleteTransitRouterVbrAttachmentRequest {
 	s.DryRun = &v
+	return s
+}
+
+func (s *DeleteTransitRouterVbrAttachmentRequest) SetForce(v bool) *DeleteTransitRouterVbrAttachmentRequest {
+	s.Force = &v
 	return s
 }
 
@@ -6266,6 +6272,7 @@ func (s *DeleteTransitRouterVbrAttachmentResponse) SetBody(v *DeleteTransitRoute
 type DeleteTransitRouterVpcAttachmentRequest struct {
 	ClientToken               *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	DryRun                    *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	Force                     *bool   `json:"Force,omitempty" xml:"Force,omitempty"`
 	OwnerAccount              *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId                   *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount      *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
@@ -6288,6 +6295,11 @@ func (s *DeleteTransitRouterVpcAttachmentRequest) SetClientToken(v string) *Dele
 
 func (s *DeleteTransitRouterVpcAttachmentRequest) SetDryRun(v bool) *DeleteTransitRouterVpcAttachmentRequest {
 	s.DryRun = &v
+	return s
+}
+
+func (s *DeleteTransitRouterVpcAttachmentRequest) SetForce(v bool) *DeleteTransitRouterVpcAttachmentRequest {
+	s.Force = &v
 	return s
 }
 
@@ -6365,6 +6377,7 @@ func (s *DeleteTransitRouterVpcAttachmentResponse) SetBody(v *DeleteTransitRoute
 type DeleteTransitRouterVpnAttachmentRequest struct {
 	ClientToken               *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	DryRun                    *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	Force                     *bool   `json:"Force,omitempty" xml:"Force,omitempty"`
 	OwnerAccount              *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId                   *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount      *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
@@ -6387,6 +6400,11 @@ func (s *DeleteTransitRouterVpnAttachmentRequest) SetClientToken(v string) *Dele
 
 func (s *DeleteTransitRouterVpnAttachmentRequest) SetDryRun(v bool) *DeleteTransitRouterVpnAttachmentRequest {
 	s.DryRun = &v
+	return s
+}
+
+func (s *DeleteTransitRouterVpnAttachmentRequest) SetForce(v bool) *DeleteTransitRouterVpnAttachmentRequest {
+	s.Force = &v
 	return s
 }
 
@@ -10075,22 +10093,23 @@ func (s *DescribeChildInstanceRegionsResponse) SetBody(v *DescribeChildInstanceR
 }
 
 type DescribeFlowlogsRequest struct {
-	CenId                *string                       `json:"CenId,omitempty" xml:"CenId,omitempty"`
-	ClientToken          *string                       `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	Description          *string                       `json:"Description,omitempty" xml:"Description,omitempty"`
-	FlowLogId            *string                       `json:"FlowLogId,omitempty" xml:"FlowLogId,omitempty"`
-	FlowLogName          *string                       `json:"FlowLogName,omitempty" xml:"FlowLogName,omitempty"`
-	LogStoreName         *string                       `json:"LogStoreName,omitempty" xml:"LogStoreName,omitempty"`
-	OwnerAccount         *string                       `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64                        `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	PageNumber           *int32                        `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize             *int32                        `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	ProjectName          *string                       `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	RegionId             *string                       `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceOwnerAccount *string                       `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64                        `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	Status               *string                       `json:"Status,omitempty" xml:"Status,omitempty"`
-	Tag                  []*DescribeFlowlogsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	CenId                     *string                       `json:"CenId,omitempty" xml:"CenId,omitempty"`
+	ClientToken               *string                       `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	Description               *string                       `json:"Description,omitempty" xml:"Description,omitempty"`
+	FlowLogId                 *string                       `json:"FlowLogId,omitempty" xml:"FlowLogId,omitempty"`
+	FlowLogName               *string                       `json:"FlowLogName,omitempty" xml:"FlowLogName,omitempty"`
+	LogStoreName              *string                       `json:"LogStoreName,omitempty" xml:"LogStoreName,omitempty"`
+	OwnerAccount              *string                       `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId                   *int64                        `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	PageNumber                *int32                        `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize                  *int32                        `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ProjectName               *string                       `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	RegionId                  *string                       `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount      *string                       `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId           *int64                        `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	Status                    *string                       `json:"Status,omitempty" xml:"Status,omitempty"`
+	Tag                       []*DescribeFlowlogsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	TransitRouterAttachmentId *string                       `json:"TransitRouterAttachmentId,omitempty" xml:"TransitRouterAttachmentId,omitempty"`
 }
 
 func (s DescribeFlowlogsRequest) String() string {
@@ -10178,6 +10197,11 @@ func (s *DescribeFlowlogsRequest) SetStatus(v string) *DescribeFlowlogsRequest {
 
 func (s *DescribeFlowlogsRequest) SetTag(v []*DescribeFlowlogsRequestTag) *DescribeFlowlogsRequest {
 	s.Tag = v
+	return s
+}
+
+func (s *DescribeFlowlogsRequest) SetTransitRouterAttachmentId(v string) *DescribeFlowlogsRequest {
+	s.TransitRouterAttachmentId = &v
 	return s
 }
 
@@ -12678,6 +12702,8 @@ type ListCenInterRegionTrafficQosPoliciesResponseBodyTrafficQosPolicies struct {
 	TrafficQosPolicyName        *string                                                                               `json:"TrafficQosPolicyName,omitempty" xml:"TrafficQosPolicyName,omitempty"`
 	TrafficQosPolicyStatus      *string                                                                               `json:"TrafficQosPolicyStatus,omitempty" xml:"TrafficQosPolicyStatus,omitempty"`
 	TrafficQosQueues            []*ListCenInterRegionTrafficQosPoliciesResponseBodyTrafficQosPoliciesTrafficQosQueues `json:"TrafficQosQueues,omitempty" xml:"TrafficQosQueues,omitempty" type:"Repeated"`
+	TransitRouterAttachmentId   *string                                                                               `json:"TransitRouterAttachmentId,omitempty" xml:"TransitRouterAttachmentId,omitempty"`
+	TransitRouterId             *string                                                                               `json:"TransitRouterId,omitempty" xml:"TransitRouterId,omitempty"`
 }
 
 func (s ListCenInterRegionTrafficQosPoliciesResponseBodyTrafficQosPolicies) String() string {
@@ -12710,6 +12736,16 @@ func (s *ListCenInterRegionTrafficQosPoliciesResponseBodyTrafficQosPolicies) Set
 
 func (s *ListCenInterRegionTrafficQosPoliciesResponseBodyTrafficQosPolicies) SetTrafficQosQueues(v []*ListCenInterRegionTrafficQosPoliciesResponseBodyTrafficQosPoliciesTrafficQosQueues) *ListCenInterRegionTrafficQosPoliciesResponseBodyTrafficQosPolicies {
 	s.TrafficQosQueues = v
+	return s
+}
+
+func (s *ListCenInterRegionTrafficQosPoliciesResponseBodyTrafficQosPolicies) SetTransitRouterAttachmentId(v string) *ListCenInterRegionTrafficQosPoliciesResponseBodyTrafficQosPolicies {
+	s.TransitRouterAttachmentId = &v
+	return s
+}
+
+func (s *ListCenInterRegionTrafficQosPoliciesResponseBodyTrafficQosPolicies) SetTransitRouterId(v string) *ListCenInterRegionTrafficQosPoliciesResponseBodyTrafficQosPolicies {
+	s.TransitRouterId = &v
 	return s
 }
 
@@ -13429,6 +13465,7 @@ type ListTrafficMarkingPoliciesResponseBodyTrafficMarkingPolicies struct {
 	TrafficMarkingPolicyName        *string                                                                          `json:"TrafficMarkingPolicyName,omitempty" xml:"TrafficMarkingPolicyName,omitempty"`
 	TrafficMarkingPolicyStatus      *string                                                                          `json:"TrafficMarkingPolicyStatus,omitempty" xml:"TrafficMarkingPolicyStatus,omitempty"`
 	TrafficMatchRules               []*ListTrafficMarkingPoliciesResponseBodyTrafficMarkingPoliciesTrafficMatchRules `json:"TrafficMatchRules,omitempty" xml:"TrafficMatchRules,omitempty" type:"Repeated"`
+	TransitRouterId                 *string                                                                          `json:"TransitRouterId,omitempty" xml:"TransitRouterId,omitempty"`
 }
 
 func (s ListTrafficMarkingPoliciesResponseBodyTrafficMarkingPolicies) String() string {
@@ -13471,6 +13508,11 @@ func (s *ListTrafficMarkingPoliciesResponseBodyTrafficMarkingPolicies) SetTraffi
 
 func (s *ListTrafficMarkingPoliciesResponseBodyTrafficMarkingPolicies) SetTrafficMatchRules(v []*ListTrafficMarkingPoliciesResponseBodyTrafficMarkingPoliciesTrafficMatchRules) *ListTrafficMarkingPoliciesResponseBodyTrafficMarkingPolicies {
 	s.TrafficMatchRules = v
+	return s
+}
+
+func (s *ListTrafficMarkingPoliciesResponseBodyTrafficMarkingPolicies) SetTransitRouterId(v string) *ListTrafficMarkingPoliciesResponseBodyTrafficMarkingPolicies {
+	s.TransitRouterId = &v
 	return s
 }
 
@@ -14564,6 +14606,7 @@ func (s *ListTransitRouterMulticastDomainsResponseBody) SetTransitRouterMulticas
 type ListTransitRouterMulticastDomainsResponseBodyTransitRouterMulticastDomains struct {
 	Status                                  *string                                                                           `json:"Status,omitempty" xml:"Status,omitempty"`
 	Tags                                    []*ListTransitRouterMulticastDomainsResponseBodyTransitRouterMulticastDomainsTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	TransitRouterId                         *string                                                                           `json:"TransitRouterId,omitempty" xml:"TransitRouterId,omitempty"`
 	TransitRouterMulticastDomainDescription *string                                                                           `json:"TransitRouterMulticastDomainDescription,omitempty" xml:"TransitRouterMulticastDomainDescription,omitempty"`
 	TransitRouterMulticastDomainId          *string                                                                           `json:"TransitRouterMulticastDomainId,omitempty" xml:"TransitRouterMulticastDomainId,omitempty"`
 	TransitRouterMulticastDomainName        *string                                                                           `json:"TransitRouterMulticastDomainName,omitempty" xml:"TransitRouterMulticastDomainName,omitempty"`
@@ -14584,6 +14627,11 @@ func (s *ListTransitRouterMulticastDomainsResponseBodyTransitRouterMulticastDoma
 
 func (s *ListTransitRouterMulticastDomainsResponseBodyTransitRouterMulticastDomains) SetTags(v []*ListTransitRouterMulticastDomainsResponseBodyTransitRouterMulticastDomainsTags) *ListTransitRouterMulticastDomainsResponseBodyTransitRouterMulticastDomains {
 	s.Tags = v
+	return s
+}
+
+func (s *ListTransitRouterMulticastDomainsResponseBodyTransitRouterMulticastDomains) SetTransitRouterId(v string) *ListTransitRouterMulticastDomainsResponseBodyTransitRouterMulticastDomains {
+	s.TransitRouterId = &v
 	return s
 }
 
@@ -14657,7 +14705,10 @@ func (s *ListTransitRouterMulticastDomainsResponse) SetBody(v *ListTransitRouter
 type ListTransitRouterMulticastGroupsRequest struct {
 	ClientToken                       *string   `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	GroupIpAddress                    *string   `json:"GroupIpAddress,omitempty" xml:"GroupIpAddress,omitempty"`
+	IsGroupMember                     *bool     `json:"IsGroupMember,omitempty" xml:"IsGroupMember,omitempty"`
+	IsGroupSource                     *bool     `json:"IsGroupSource,omitempty" xml:"IsGroupSource,omitempty"`
 	MaxResults                        *int64    `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NetworkInterfaceIds               []*string `json:"NetworkInterfaceIds,omitempty" xml:"NetworkInterfaceIds,omitempty" type:"Repeated"`
 	NextToken                         *string   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	OwnerAccount                      *string   `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId                           *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -14689,8 +14740,23 @@ func (s *ListTransitRouterMulticastGroupsRequest) SetGroupIpAddress(v string) *L
 	return s
 }
 
+func (s *ListTransitRouterMulticastGroupsRequest) SetIsGroupMember(v bool) *ListTransitRouterMulticastGroupsRequest {
+	s.IsGroupMember = &v
+	return s
+}
+
+func (s *ListTransitRouterMulticastGroupsRequest) SetIsGroupSource(v bool) *ListTransitRouterMulticastGroupsRequest {
+	s.IsGroupSource = &v
+	return s
+}
+
 func (s *ListTransitRouterMulticastGroupsRequest) SetMaxResults(v int64) *ListTransitRouterMulticastGroupsRequest {
 	s.MaxResults = &v
+	return s
+}
+
+func (s *ListTransitRouterMulticastGroupsRequest) SetNetworkInterfaceIds(v []*string) *ListTransitRouterMulticastGroupsRequest {
+	s.NetworkInterfaceIds = v
 	return s
 }
 
@@ -14803,6 +14869,7 @@ type ListTransitRouterMulticastGroupsResponseBodyTransitRouterMulticastGroups st
 	SourceType                         *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
 	Status                             *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	TransitRouterAttachmentId          *string `json:"TransitRouterAttachmentId,omitempty" xml:"TransitRouterAttachmentId,omitempty"`
+	TransitRouterMulticastDomainId     *string `json:"TransitRouterMulticastDomainId,omitempty" xml:"TransitRouterMulticastDomainId,omitempty"`
 	VSwitchId                          *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 }
 
@@ -14871,6 +14938,11 @@ func (s *ListTransitRouterMulticastGroupsResponseBodyTransitRouterMulticastGroup
 
 func (s *ListTransitRouterMulticastGroupsResponseBodyTransitRouterMulticastGroups) SetTransitRouterAttachmentId(v string) *ListTransitRouterMulticastGroupsResponseBodyTransitRouterMulticastGroups {
 	s.TransitRouterAttachmentId = &v
+	return s
+}
+
+func (s *ListTransitRouterMulticastGroupsResponseBodyTransitRouterMulticastGroups) SetTransitRouterMulticastDomainId(v string) *ListTransitRouterMulticastGroupsResponseBodyTransitRouterMulticastGroups {
+	s.TransitRouterMulticastDomainId = &v
 	return s
 }
 
@@ -16536,6 +16608,7 @@ type ListTransitRouterVpcAttachmentsRequest struct {
 	Tag                       []*ListTransitRouterVpcAttachmentsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	TransitRouterAttachmentId *string                                      `json:"TransitRouterAttachmentId,omitempty" xml:"TransitRouterAttachmentId,omitempty"`
 	TransitRouterId           *string                                      `json:"TransitRouterId,omitempty" xml:"TransitRouterId,omitempty"`
+	VpcId                     *string                                      `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s ListTransitRouterVpcAttachmentsRequest) String() string {
@@ -16598,6 +16671,11 @@ func (s *ListTransitRouterVpcAttachmentsRequest) SetTransitRouterAttachmentId(v 
 
 func (s *ListTransitRouterVpcAttachmentsRequest) SetTransitRouterId(v string) *ListTransitRouterVpcAttachmentsRequest {
 	s.TransitRouterId = &v
+	return s
+}
+
+func (s *ListTransitRouterVpcAttachmentsRequest) SetVpcId(v string) *ListTransitRouterVpcAttachmentsRequest {
+	s.VpcId = &v
 	return s
 }
 
@@ -25375,6 +25453,10 @@ func (client *Client) DeleteTransitRouterVbrAttachmentWithOptions(request *Delet
 		query["DryRun"] = request.DryRun
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Force)) {
+		query["Force"] = request.Force
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
 		query["OwnerAccount"] = request.OwnerAccount
 	}
@@ -25443,6 +25525,10 @@ func (client *Client) DeleteTransitRouterVpcAttachmentWithOptions(request *Delet
 		query["DryRun"] = request.DryRun
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Force)) {
+		query["Force"] = request.Force
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
 		query["OwnerAccount"] = request.OwnerAccount
 	}
@@ -25509,6 +25595,10 @@ func (client *Client) DeleteTransitRouterVpnAttachmentWithOptions(request *Delet
 
 	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
 		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Force)) {
+		query["Force"] = request.Force
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
@@ -26749,6 +26839,10 @@ func (client *Client) DescribeFlowlogsWithOptions(request *DescribeFlowlogsReque
 
 	if !tea.BoolValue(util.IsUnset(request.Tag)) {
 		query["Tag"] = request.Tag
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TransitRouterAttachmentId)) {
+		query["TransitRouterAttachmentId"] = request.TransitRouterAttachmentId
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -28771,8 +28865,20 @@ func (client *Client) ListTransitRouterMulticastGroupsWithOptions(request *ListT
 		query["GroupIpAddress"] = request.GroupIpAddress
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.IsGroupMember)) {
+		query["IsGroupMember"] = request.IsGroupMember
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IsGroupSource)) {
+		query["IsGroupSource"] = request.IsGroupSource
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
 		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NetworkInterfaceIds)) {
+		query["NetworkInterfaceIds"] = request.NetworkInterfaceIds
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
@@ -29477,6 +29583,10 @@ func (client *Client) ListTransitRouterVpcAttachmentsWithOptions(request *ListTr
 
 	if !tea.BoolValue(util.IsUnset(request.TransitRouterId)) {
 		query["TransitRouterId"] = request.TransitRouterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VpcId)) {
+		query["VpcId"] = request.VpcId
 	}
 
 	req := &openapi.OpenApiRequest{
