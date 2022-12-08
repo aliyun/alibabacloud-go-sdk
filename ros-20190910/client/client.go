@@ -3121,10 +3121,11 @@ func (s *GenerateTemplateByScratchResponse) SetBody(v *GenerateTemplateByScratch
 }
 
 type GenerateTemplatePolicyRequest struct {
-	TemplateBody    *string `json:"TemplateBody,omitempty" xml:"TemplateBody,omitempty"`
-	TemplateId      *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	TemplateURL     *string `json:"TemplateURL,omitempty" xml:"TemplateURL,omitempty"`
-	TemplateVersion *string `json:"TemplateVersion,omitempty" xml:"TemplateVersion,omitempty"`
+	OperationTypes  []*string `json:"OperationTypes,omitempty" xml:"OperationTypes,omitempty" type:"Repeated"`
+	TemplateBody    *string   `json:"TemplateBody,omitempty" xml:"TemplateBody,omitempty"`
+	TemplateId      *string   `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	TemplateURL     *string   `json:"TemplateURL,omitempty" xml:"TemplateURL,omitempty"`
+	TemplateVersion *string   `json:"TemplateVersion,omitempty" xml:"TemplateVersion,omitempty"`
 }
 
 func (s GenerateTemplatePolicyRequest) String() string {
@@ -3133,6 +3134,11 @@ func (s GenerateTemplatePolicyRequest) String() string {
 
 func (s GenerateTemplatePolicyRequest) GoString() string {
 	return s.String()
+}
+
+func (s *GenerateTemplatePolicyRequest) SetOperationTypes(v []*string) *GenerateTemplatePolicyRequest {
+	s.OperationTypes = v
+	return s
 }
 
 func (s *GenerateTemplatePolicyRequest) SetTemplateBody(v string) *GenerateTemplatePolicyRequest {
@@ -14555,6 +14561,10 @@ func (client *Client) GenerateTemplatePolicyWithOptions(request *GenerateTemplat
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OperationTypes)) {
+		query["OperationTypes"] = request.OperationTypes
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.TemplateBody)) {
 		query["TemplateBody"] = request.TemplateBody
 	}
