@@ -1665,6 +1665,35 @@ func (s *TriggerConfig) SetOn(v string) *TriggerConfig {
 	return s
 }
 
+type CancelTaskResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *Task              `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CancelTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CancelTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CancelTaskResponse) SetHeaders(v map[string]*string) *CancelTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CancelTaskResponse) SetStatusCode(v int32) *CancelTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CancelTaskResponse) SetBody(v *Task) *CancelTaskResponse {
+	s.Body = v
+	return s
+}
+
 type CreateApplicationRequest struct {
 	AutoDeploy  *bool              `json:"autoDeploy,omitempty" xml:"autoDeploy,omitempty"`
 	Description *string            `json:"description,omitempty" xml:"description,omitempty"`
@@ -3486,6 +3515,42 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 		return _result, _err
 	}
 	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CancelTask(name *string) (_result *CancelTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CancelTaskResponse{}
+	_body, _err := client.CancelTaskWithOptions(name, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CancelTaskWithOptions(name *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CancelTaskResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CancelTask"),
+		Version:     tea.String("2021-09-24"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/apis/serverlessdeployment/v1/tasks/" + tea.StringValue(openapiutil.GetEncodeParam(name)) + "/cancel"),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CancelTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
 	return _result, _err
 }
 
