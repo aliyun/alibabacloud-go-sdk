@@ -349,12 +349,13 @@ func (s *CreateBuildRecordByRuleResponse) SetBody(v *CreateBuildRecordByRuleResp
 }
 
 type CreateChainRequest struct {
-	ChainConfig       *string `json:"ChainConfig,omitempty" xml:"ChainConfig,omitempty"`
-	Description       *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	InstanceId        *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Name              *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	RepoName          *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
-	RepoNamespaceName *string `json:"RepoNamespaceName,omitempty" xml:"RepoNamespaceName,omitempty"`
+	ChainConfig       *string   `json:"ChainConfig,omitempty" xml:"ChainConfig,omitempty"`
+	Description       *string   `json:"Description,omitempty" xml:"Description,omitempty"`
+	InstanceId        *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Name              *string   `json:"Name,omitempty" xml:"Name,omitempty"`
+	RepoName          *string   `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
+	RepoNamespaceName *string   `json:"RepoNamespaceName,omitempty" xml:"RepoNamespaceName,omitempty"`
+	ScopeExclude      []*string `json:"ScopeExclude,omitempty" xml:"ScopeExclude,omitempty" type:"Repeated"`
 }
 
 func (s CreateChainRequest) String() string {
@@ -392,6 +393,11 @@ func (s *CreateChainRequest) SetRepoName(v string) *CreateChainRequest {
 
 func (s *CreateChainRequest) SetRepoNamespaceName(v string) *CreateChainRequest {
 	s.RepoNamespaceName = &v
+	return s
+}
+
+func (s *CreateChainRequest) SetScopeExclude(v []*string) *CreateChainRequest {
+	s.ScopeExclude = v
 	return s
 }
 
@@ -3440,6 +3446,7 @@ type GetChainResponseBody struct {
 	ModifiedTime *int64                           `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
 	Name         *string                          `json:"Name,omitempty" xml:"Name,omitempty"`
 	RequestId    *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ScopeExclude []*string                        `json:"ScopeExclude,omitempty" xml:"ScopeExclude,omitempty" type:"Repeated"`
 	ScopeId      *string                          `json:"ScopeId,omitempty" xml:"ScopeId,omitempty"`
 	ScopeType    *string                          `json:"ScopeType,omitempty" xml:"ScopeType,omitempty"`
 }
@@ -3499,6 +3506,11 @@ func (s *GetChainResponseBody) SetName(v string) *GetChainResponseBody {
 
 func (s *GetChainResponseBody) SetRequestId(v string) *GetChainResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *GetChainResponseBody) SetScopeExclude(v []*string) *GetChainResponseBody {
+	s.ScopeExclude = v
 	return s
 }
 
@@ -3618,11 +3630,13 @@ func (s *GetChainResponseBodyChainConfigNodesNodeConfig) SetTimeout(v int64) *Ge
 }
 
 type GetChainResponseBodyChainConfigNodesNodeConfigDenyPolicy struct {
-	Action     *string `json:"Action,omitempty" xml:"Action,omitempty"`
-	IssueCount *string `json:"IssueCount,omitempty" xml:"IssueCount,omitempty"`
-	IssueLevel *string `json:"IssueLevel,omitempty" xml:"IssueLevel,omitempty"`
-	IssueList  *string `json:"IssueList,omitempty" xml:"IssueList,omitempty"`
-	Logic      *string `json:"Logic,omitempty" xml:"Logic,omitempty"`
+	Action        *string `json:"Action,omitempty" xml:"Action,omitempty"`
+	BaselineList  *string `json:"BaselineList,omitempty" xml:"BaselineList,omitempty"`
+	IssueCount    *string `json:"IssueCount,omitempty" xml:"IssueCount,omitempty"`
+	IssueLevel    *string `json:"IssueLevel,omitempty" xml:"IssueLevel,omitempty"`
+	IssueList     *string `json:"IssueList,omitempty" xml:"IssueList,omitempty"`
+	Logic         *string `json:"Logic,omitempty" xml:"Logic,omitempty"`
+	MaliciousList *string `json:"MaliciousList,omitempty" xml:"MaliciousList,omitempty"`
 }
 
 func (s GetChainResponseBodyChainConfigNodesNodeConfigDenyPolicy) String() string {
@@ -3635,6 +3649,11 @@ func (s GetChainResponseBodyChainConfigNodesNodeConfigDenyPolicy) GoString() str
 
 func (s *GetChainResponseBodyChainConfigNodesNodeConfigDenyPolicy) SetAction(v string) *GetChainResponseBodyChainConfigNodesNodeConfigDenyPolicy {
 	s.Action = &v
+	return s
+}
+
+func (s *GetChainResponseBodyChainConfigNodesNodeConfigDenyPolicy) SetBaselineList(v string) *GetChainResponseBodyChainConfigNodesNodeConfigDenyPolicy {
+	s.BaselineList = &v
 	return s
 }
 
@@ -3655,6 +3674,11 @@ func (s *GetChainResponseBodyChainConfigNodesNodeConfigDenyPolicy) SetIssueList(
 
 func (s *GetChainResponseBodyChainConfigNodesNodeConfigDenyPolicy) SetLogic(v string) *GetChainResponseBodyChainConfigNodesNodeConfigDenyPolicy {
 	s.Logic = &v
+	return s
+}
+
+func (s *GetChainResponseBodyChainConfigNodesNodeConfigDenyPolicy) SetMaliciousList(v string) *GetChainResponseBodyChainConfigNodesNodeConfigDenyPolicy {
+	s.MaliciousList = &v
 	return s
 }
 
@@ -6588,14 +6612,15 @@ func (s *ListChainResponseBody) SetTotalCount(v int32) *ListChainResponseBody {
 }
 
 type ListChainResponseBodyChains struct {
-	ChainId      *string `json:"ChainId,omitempty" xml:"ChainId,omitempty"`
-	CreateTime   *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	ModifiedTime *int64  `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
-	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	ScopeId      *string `json:"ScopeId,omitempty" xml:"ScopeId,omitempty"`
-	ScopeType    *string `json:"ScopeType,omitempty" xml:"ScopeType,omitempty"`
+	ChainId      *string   `json:"ChainId,omitempty" xml:"ChainId,omitempty"`
+	CreateTime   *int64    `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Description  *string   `json:"Description,omitempty" xml:"Description,omitempty"`
+	InstanceId   *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	ModifiedTime *int64    `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	Name         *string   `json:"Name,omitempty" xml:"Name,omitempty"`
+	ScopeExclude []*string `json:"ScopeExclude,omitempty" xml:"ScopeExclude,omitempty" type:"Repeated"`
+	ScopeId      *string   `json:"ScopeId,omitempty" xml:"ScopeId,omitempty"`
+	ScopeType    *string   `json:"ScopeType,omitempty" xml:"ScopeType,omitempty"`
 }
 
 func (s ListChainResponseBodyChains) String() string {
@@ -6633,6 +6658,11 @@ func (s *ListChainResponseBodyChains) SetModifiedTime(v int64) *ListChainRespons
 
 func (s *ListChainResponseBodyChains) SetName(v string) *ListChainResponseBodyChains {
 	s.Name = &v
+	return s
+}
+
+func (s *ListChainResponseBodyChains) SetScopeExclude(v []*string) *ListChainResponseBodyChains {
+	s.ScopeExclude = v
 	return s
 }
 
@@ -10334,11 +10364,12 @@ func (s *ResetLoginPasswordResponse) SetBody(v *ResetLoginPasswordResponseBody) 
 }
 
 type UpdateChainRequest struct {
-	ChainConfig *string `json:"ChainConfig,omitempty" xml:"ChainConfig,omitempty"`
-	ChainId     *string `json:"ChainId,omitempty" xml:"ChainId,omitempty"`
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	ChainConfig  *string   `json:"ChainConfig,omitempty" xml:"ChainConfig,omitempty"`
+	ChainId      *string   `json:"ChainId,omitempty" xml:"ChainId,omitempty"`
+	Description  *string   `json:"Description,omitempty" xml:"Description,omitempty"`
+	InstanceId   *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Name         *string   `json:"Name,omitempty" xml:"Name,omitempty"`
+	ScopeExclude []*string `json:"ScopeExclude,omitempty" xml:"ScopeExclude,omitempty" type:"Repeated"`
 }
 
 func (s UpdateChainRequest) String() string {
@@ -10371,6 +10402,11 @@ func (s *UpdateChainRequest) SetInstanceId(v string) *UpdateChainRequest {
 
 func (s *UpdateChainRequest) SetName(v string) *UpdateChainRequest {
 	s.Name = &v
+	return s
+}
+
+func (s *UpdateChainRequest) SetScopeExclude(v []*string) *UpdateChainRequest {
+	s.ScopeExclude = v
 	return s
 }
 
@@ -11775,6 +11811,10 @@ func (client *Client) CreateChainWithOptions(request *CreateChainRequest, runtim
 
 	if !tea.BoolValue(util.IsUnset(request.RepoNamespaceName)) {
 		query["RepoNamespaceName"] = request.RepoNamespaceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ScopeExclude)) {
+		query["ScopeExclude"] = request.ScopeExclude
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -15700,6 +15740,10 @@ func (client *Client) UpdateChainWithOptions(request *UpdateChainRequest, runtim
 
 	if !tea.BoolValue(util.IsUnset(request.Name)) {
 		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ScopeExclude)) {
+		query["ScopeExclude"] = request.ScopeExclude
 	}
 
 	req := &openapi.OpenApiRequest{
