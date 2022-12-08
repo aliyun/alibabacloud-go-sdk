@@ -595,129 +595,6 @@ func (s *CreateVpcFirewallCenConfigureResponse) SetBody(v *CreateVpcFirewallCenC
 	return s
 }
 
-type CreateVpcFirewallConfigureRequest struct {
-	FirewallSwitch        *string `json:"FirewallSwitch,omitempty" xml:"FirewallSwitch,omitempty"`
-	Lang                  *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	LocalVpcCidrTableList *string `json:"LocalVpcCidrTableList,omitempty" xml:"LocalVpcCidrTableList,omitempty"`
-	LocalVpcId            *string `json:"LocalVpcId,omitempty" xml:"LocalVpcId,omitempty"`
-	LocalVpcRegion        *string `json:"LocalVpcRegion,omitempty" xml:"LocalVpcRegion,omitempty"`
-	MemberUid             *string `json:"MemberUid,omitempty" xml:"MemberUid,omitempty"`
-	PeerVpcCidrTableList  *string `json:"PeerVpcCidrTableList,omitempty" xml:"PeerVpcCidrTableList,omitempty"`
-	PeerVpcId             *string `json:"PeerVpcId,omitempty" xml:"PeerVpcId,omitempty"`
-	PeerVpcRegion         *string `json:"PeerVpcRegion,omitempty" xml:"PeerVpcRegion,omitempty"`
-	VpcFirewallName       *string `json:"VpcFirewallName,omitempty" xml:"VpcFirewallName,omitempty"`
-}
-
-func (s CreateVpcFirewallConfigureRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateVpcFirewallConfigureRequest) GoString() string {
-	return s.String()
-}
-
-func (s *CreateVpcFirewallConfigureRequest) SetFirewallSwitch(v string) *CreateVpcFirewallConfigureRequest {
-	s.FirewallSwitch = &v
-	return s
-}
-
-func (s *CreateVpcFirewallConfigureRequest) SetLang(v string) *CreateVpcFirewallConfigureRequest {
-	s.Lang = &v
-	return s
-}
-
-func (s *CreateVpcFirewallConfigureRequest) SetLocalVpcCidrTableList(v string) *CreateVpcFirewallConfigureRequest {
-	s.LocalVpcCidrTableList = &v
-	return s
-}
-
-func (s *CreateVpcFirewallConfigureRequest) SetLocalVpcId(v string) *CreateVpcFirewallConfigureRequest {
-	s.LocalVpcId = &v
-	return s
-}
-
-func (s *CreateVpcFirewallConfigureRequest) SetLocalVpcRegion(v string) *CreateVpcFirewallConfigureRequest {
-	s.LocalVpcRegion = &v
-	return s
-}
-
-func (s *CreateVpcFirewallConfigureRequest) SetMemberUid(v string) *CreateVpcFirewallConfigureRequest {
-	s.MemberUid = &v
-	return s
-}
-
-func (s *CreateVpcFirewallConfigureRequest) SetPeerVpcCidrTableList(v string) *CreateVpcFirewallConfigureRequest {
-	s.PeerVpcCidrTableList = &v
-	return s
-}
-
-func (s *CreateVpcFirewallConfigureRequest) SetPeerVpcId(v string) *CreateVpcFirewallConfigureRequest {
-	s.PeerVpcId = &v
-	return s
-}
-
-func (s *CreateVpcFirewallConfigureRequest) SetPeerVpcRegion(v string) *CreateVpcFirewallConfigureRequest {
-	s.PeerVpcRegion = &v
-	return s
-}
-
-func (s *CreateVpcFirewallConfigureRequest) SetVpcFirewallName(v string) *CreateVpcFirewallConfigureRequest {
-	s.VpcFirewallName = &v
-	return s
-}
-
-type CreateVpcFirewallConfigureResponseBody struct {
-	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	VpcFirewallId *string `json:"VpcFirewallId,omitempty" xml:"VpcFirewallId,omitempty"`
-}
-
-func (s CreateVpcFirewallConfigureResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateVpcFirewallConfigureResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *CreateVpcFirewallConfigureResponseBody) SetRequestId(v string) *CreateVpcFirewallConfigureResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *CreateVpcFirewallConfigureResponseBody) SetVpcFirewallId(v string) *CreateVpcFirewallConfigureResponseBody {
-	s.VpcFirewallId = &v
-	return s
-}
-
-type CreateVpcFirewallConfigureResponse struct {
-	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateVpcFirewallConfigureResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s CreateVpcFirewallConfigureResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateVpcFirewallConfigureResponse) GoString() string {
-	return s.String()
-}
-
-func (s *CreateVpcFirewallConfigureResponse) SetHeaders(v map[string]*string) *CreateVpcFirewallConfigureResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *CreateVpcFirewallConfigureResponse) SetStatusCode(v int32) *CreateVpcFirewallConfigureResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *CreateVpcFirewallConfigureResponse) SetBody(v *CreateVpcFirewallConfigureResponseBody) *CreateVpcFirewallConfigureResponse {
-	s.Body = v
-	return s
-}
-
 type CreateVpcFirewallControlPolicyRequest struct {
 	AclAction       *string `json:"AclAction,omitempty" xml:"AclAction,omitempty"`
 	ApplicationName *string `json:"ApplicationName,omitempty" xml:"ApplicationName,omitempty"`
@@ -3788,6 +3665,7 @@ type DescribeRiskEventGroupResponseBodyDataList struct {
 	RuleResult            *int32                                                             `json:"RuleResult,omitempty" xml:"RuleResult,omitempty"`
 	RuleSource            *int32                                                             `json:"RuleSource,omitempty" xml:"RuleSource,omitempty"`
 	SrcIP                 *string                                                            `json:"SrcIP,omitempty" xml:"SrcIP,omitempty"`
+	SrcIPTag              *string                                                            `json:"SrcIPTag,omitempty" xml:"SrcIPTag,omitempty"`
 	SrcPrivateIPList      []*string                                                          `json:"SrcPrivateIPList,omitempty" xml:"SrcPrivateIPList,omitempty" type:"Repeated"`
 	Tag                   *string                                                            `json:"Tag,omitempty" xml:"Tag,omitempty"`
 	VpcDstInfo            *DescribeRiskEventGroupResponseBodyDataListVpcDstInfo              `json:"VpcDstInfo,omitempty" xml:"VpcDstInfo,omitempty" type:"Struct"`
@@ -3885,6 +3763,11 @@ func (s *DescribeRiskEventGroupResponseBodyDataList) SetRuleSource(v int32) *Des
 
 func (s *DescribeRiskEventGroupResponseBodyDataList) SetSrcIP(v string) *DescribeRiskEventGroupResponseBodyDataList {
 	s.SrcIP = &v
+	return s
+}
+
+func (s *DescribeRiskEventGroupResponseBodyDataList) SetSrcIPTag(v string) *DescribeRiskEventGroupResponseBodyDataList {
+	s.SrcIPTag = &v
 	return s
 }
 
@@ -5150,6 +5033,7 @@ type DescribeVpcFirewallControlPolicyResponseBodyPolicys struct {
 	DestPortType          *string   `json:"DestPortType,omitempty" xml:"DestPortType,omitempty"`
 	Destination           *string   `json:"Destination,omitempty" xml:"Destination,omitempty"`
 	DestinationGroupCidrs []*string `json:"DestinationGroupCidrs,omitempty" xml:"DestinationGroupCidrs,omitempty" type:"Repeated"`
+	DestinationGroupType  *string   `json:"DestinationGroupType,omitempty" xml:"DestinationGroupType,omitempty"`
 	DestinationType       *string   `json:"DestinationType,omitempty" xml:"DestinationType,omitempty"`
 	HitTimes              *int32    `json:"HitTimes,omitempty" xml:"HitTimes,omitempty"`
 	MemberUid             *string   `json:"MemberUid,omitempty" xml:"MemberUid,omitempty"`
@@ -5158,6 +5042,7 @@ type DescribeVpcFirewallControlPolicyResponseBodyPolicys struct {
 	Release               *string   `json:"Release,omitempty" xml:"Release,omitempty"`
 	Source                *string   `json:"Source,omitempty" xml:"Source,omitempty"`
 	SourceGroupCidrs      []*string `json:"SourceGroupCidrs,omitempty" xml:"SourceGroupCidrs,omitempty" type:"Repeated"`
+	SourceGroupType       *string   `json:"SourceGroupType,omitempty" xml:"SourceGroupType,omitempty"`
 	SourceType            *string   `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
 }
 
@@ -5224,6 +5109,11 @@ func (s *DescribeVpcFirewallControlPolicyResponseBodyPolicys) SetDestinationGrou
 	return s
 }
 
+func (s *DescribeVpcFirewallControlPolicyResponseBodyPolicys) SetDestinationGroupType(v string) *DescribeVpcFirewallControlPolicyResponseBodyPolicys {
+	s.DestinationGroupType = &v
+	return s
+}
+
 func (s *DescribeVpcFirewallControlPolicyResponseBodyPolicys) SetDestinationType(v string) *DescribeVpcFirewallControlPolicyResponseBodyPolicys {
 	s.DestinationType = &v
 	return s
@@ -5261,6 +5151,11 @@ func (s *DescribeVpcFirewallControlPolicyResponseBodyPolicys) SetSource(v string
 
 func (s *DescribeVpcFirewallControlPolicyResponseBodyPolicys) SetSourceGroupCidrs(v []*string) *DescribeVpcFirewallControlPolicyResponseBodyPolicys {
 	s.SourceGroupCidrs = v
+	return s
+}
+
+func (s *DescribeVpcFirewallControlPolicyResponseBodyPolicys) SetSourceGroupType(v string) *DescribeVpcFirewallControlPolicyResponseBodyPolicys {
+	s.SourceGroupType = &v
 	return s
 }
 
@@ -5425,6 +5320,7 @@ type DescribeVpcFirewallDetailResponseBody struct {
 	ConnectType          *string                                        `json:"ConnectType,omitempty" xml:"ConnectType,omitempty"`
 	FirewallSwitchStatus *string                                        `json:"FirewallSwitchStatus,omitempty" xml:"FirewallSwitchStatus,omitempty"`
 	LocalVpc             *DescribeVpcFirewallDetailResponseBodyLocalVpc `json:"LocalVpc,omitempty" xml:"LocalVpc,omitempty" type:"Struct"`
+	MemberUid            *string                                        `json:"MemberUid,omitempty" xml:"MemberUid,omitempty"`
 	PeerVpc              *DescribeVpcFirewallDetailResponseBodyPeerVpc  `json:"PeerVpc,omitempty" xml:"PeerVpc,omitempty" type:"Struct"`
 	RequestId            *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	VpcFirewallId        *string                                        `json:"VpcFirewallId,omitempty" xml:"VpcFirewallId,omitempty"`
@@ -5456,6 +5352,11 @@ func (s *DescribeVpcFirewallDetailResponseBody) SetFirewallSwitchStatus(v string
 
 func (s *DescribeVpcFirewallDetailResponseBody) SetLocalVpc(v *DescribeVpcFirewallDetailResponseBodyLocalVpc) *DescribeVpcFirewallDetailResponseBody {
 	s.LocalVpc = v
+	return s
+}
+
+func (s *DescribeVpcFirewallDetailResponseBody) SetMemberUid(v string) *DescribeVpcFirewallDetailResponseBody {
+	s.MemberUid = &v
 	return s
 }
 
@@ -5707,11 +5608,13 @@ func (s *DescribeVpcFirewallDetailResponse) SetBody(v *DescribeVpcFirewallDetail
 }
 
 type DescribeVpcFirewallListRequest struct {
+	ConnectSubType       *string `json:"ConnectSubType,omitempty" xml:"ConnectSubType,omitempty"`
 	CurrentPage          *string `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	FirewallSwitchStatus *string `json:"FirewallSwitchStatus,omitempty" xml:"FirewallSwitchStatus,omitempty"`
 	Lang                 *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	MemberUid            *string `json:"MemberUid,omitempty" xml:"MemberUid,omitempty"`
 	PageSize             *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PeerUid              *string `json:"PeerUid,omitempty" xml:"PeerUid,omitempty"`
 	RegionNo             *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
 	VpcFirewallId        *string `json:"VpcFirewallId,omitempty" xml:"VpcFirewallId,omitempty"`
 	VpcFirewallName      *string `json:"VpcFirewallName,omitempty" xml:"VpcFirewallName,omitempty"`
@@ -5724,6 +5627,11 @@ func (s DescribeVpcFirewallListRequest) String() string {
 
 func (s DescribeVpcFirewallListRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeVpcFirewallListRequest) SetConnectSubType(v string) *DescribeVpcFirewallListRequest {
+	s.ConnectSubType = &v
+	return s
 }
 
 func (s *DescribeVpcFirewallListRequest) SetCurrentPage(v string) *DescribeVpcFirewallListRequest {
@@ -5748,6 +5656,11 @@ func (s *DescribeVpcFirewallListRequest) SetMemberUid(v string) *DescribeVpcFire
 
 func (s *DescribeVpcFirewallListRequest) SetPageSize(v string) *DescribeVpcFirewallListRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeVpcFirewallListRequest) SetPeerUid(v string) *DescribeVpcFirewallListRequest {
+	s.PeerUid = &v
 	return s
 }
 
@@ -5802,6 +5715,7 @@ func (s *DescribeVpcFirewallListResponseBody) SetVpcFirewalls(v []*DescribeVpcFi
 
 type DescribeVpcFirewallListResponseBodyVpcFirewalls struct {
 	Bandwidth            *int32                                                    `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
+	ConnectSubType       *string                                                   `json:"ConnectSubType,omitempty" xml:"ConnectSubType,omitempty"`
 	ConnectType          *string                                                   `json:"ConnectType,omitempty" xml:"ConnectType,omitempty"`
 	FirewallSwitchStatus *string                                                   `json:"FirewallSwitchStatus,omitempty" xml:"FirewallSwitchStatus,omitempty"`
 	IpsConfig            *DescribeVpcFirewallListResponseBodyVpcFirewallsIpsConfig `json:"IpsConfig,omitempty" xml:"IpsConfig,omitempty" type:"Struct"`
@@ -5809,6 +5723,7 @@ type DescribeVpcFirewallListResponseBodyVpcFirewalls struct {
 	MemberUid            *string                                                   `json:"MemberUid,omitempty" xml:"MemberUid,omitempty"`
 	PeerVpc              *DescribeVpcFirewallListResponseBodyVpcFirewallsPeerVpc   `json:"PeerVpc,omitempty" xml:"PeerVpc,omitempty" type:"Struct"`
 	RegionStatus         *string                                                   `json:"RegionStatus,omitempty" xml:"RegionStatus,omitempty"`
+	ResultCode           *string                                                   `json:"ResultCode,omitempty" xml:"ResultCode,omitempty"`
 	VpcFirewallId        *string                                                   `json:"VpcFirewallId,omitempty" xml:"VpcFirewallId,omitempty"`
 	VpcFirewallName      *string                                                   `json:"VpcFirewallName,omitempty" xml:"VpcFirewallName,omitempty"`
 }
@@ -5823,6 +5738,11 @@ func (s DescribeVpcFirewallListResponseBodyVpcFirewalls) GoString() string {
 
 func (s *DescribeVpcFirewallListResponseBodyVpcFirewalls) SetBandwidth(v int32) *DescribeVpcFirewallListResponseBodyVpcFirewalls {
 	s.Bandwidth = &v
+	return s
+}
+
+func (s *DescribeVpcFirewallListResponseBodyVpcFirewalls) SetConnectSubType(v string) *DescribeVpcFirewallListResponseBodyVpcFirewalls {
+	s.ConnectSubType = &v
 	return s
 }
 
@@ -5858,6 +5778,11 @@ func (s *DescribeVpcFirewallListResponseBodyVpcFirewalls) SetPeerVpc(v *Describe
 
 func (s *DescribeVpcFirewallListResponseBodyVpcFirewalls) SetRegionStatus(v string) *DescribeVpcFirewallListResponseBodyVpcFirewalls {
 	s.RegionStatus = &v
+	return s
+}
+
+func (s *DescribeVpcFirewallListResponseBodyVpcFirewalls) SetResultCode(v string) *DescribeVpcFirewallListResponseBodyVpcFirewalls {
+	s.ResultCode = &v
 	return s
 }
 
@@ -8200,86 +8125,6 @@ func (client *Client) CreateVpcFirewallCenConfigure(request *CreateVpcFirewallCe
 	return _result, _err
 }
 
-func (client *Client) CreateVpcFirewallConfigureWithOptions(request *CreateVpcFirewallConfigureRequest, runtime *util.RuntimeOptions) (_result *CreateVpcFirewallConfigureResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.FirewallSwitch)) {
-		query["FirewallSwitch"] = request.FirewallSwitch
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Lang)) {
-		query["Lang"] = request.Lang
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.LocalVpcCidrTableList)) {
-		query["LocalVpcCidrTableList"] = request.LocalVpcCidrTableList
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.LocalVpcId)) {
-		query["LocalVpcId"] = request.LocalVpcId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.LocalVpcRegion)) {
-		query["LocalVpcRegion"] = request.LocalVpcRegion
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.MemberUid)) {
-		query["MemberUid"] = request.MemberUid
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PeerVpcCidrTableList)) {
-		query["PeerVpcCidrTableList"] = request.PeerVpcCidrTableList
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PeerVpcId)) {
-		query["PeerVpcId"] = request.PeerVpcId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PeerVpcRegion)) {
-		query["PeerVpcRegion"] = request.PeerVpcRegion
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.VpcFirewallName)) {
-		query["VpcFirewallName"] = request.VpcFirewallName
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("CreateVpcFirewallConfigure"),
-		Version:     tea.String("2017-12-07"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &CreateVpcFirewallConfigureResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) CreateVpcFirewallConfigure(request *CreateVpcFirewallConfigureRequest) (_result *CreateVpcFirewallConfigureResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &CreateVpcFirewallConfigureResponse{}
-	_body, _err := client.CreateVpcFirewallConfigureWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) CreateVpcFirewallControlPolicyWithOptions(request *CreateVpcFirewallControlPolicyRequest, runtime *util.RuntimeOptions) (_result *CreateVpcFirewallControlPolicyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -10014,6 +9859,10 @@ func (client *Client) DescribeVpcFirewallListWithOptions(request *DescribeVpcFir
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ConnectSubType)) {
+		query["ConnectSubType"] = request.ConnectSubType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.CurrentPage)) {
 		query["CurrentPage"] = request.CurrentPage
 	}
@@ -10036,6 +9885,10 @@ func (client *Client) DescribeVpcFirewallListWithOptions(request *DescribeVpcFir
 
 	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
 		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PeerUid)) {
+		query["PeerUid"] = request.PeerUid
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.RegionNo)) {
