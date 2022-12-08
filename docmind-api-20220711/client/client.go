@@ -5,7 +5,7 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/client"
+	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
 	openapiutil "github.com/alibabacloud-go/openapi-util/service"
 	openplatform "github.com/alibabacloud-go/openplatform-20191219/v2/client"
@@ -35,12 +35,12 @@ func (s *GetDocStructureResultRequest) SetId(v string) *GetDocStructureResultReq
 }
 
 type GetDocStructureResultResponseBody struct {
-	Code      *string     `json:"Code,omitempty" xml:"Code,omitempty"`
-	Completed *bool       `json:"Completed,omitempty" xml:"Completed,omitempty"`
-	Data      interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string     `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Status    *string     `json:"Status,omitempty" xml:"Status,omitempty"`
+	Code      *string                `json:"Code,omitempty" xml:"Code,omitempty"`
+	Completed *bool                  `json:"Completed,omitempty" xml:"Completed,omitempty"`
+	Data      map[string]interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
+	Message   *string                `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Status    *string                `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s GetDocStructureResultResponseBody) String() string {
@@ -61,7 +61,7 @@ func (s *GetDocStructureResultResponseBody) SetCompleted(v bool) *GetDocStructur
 	return s
 }
 
-func (s *GetDocStructureResultResponseBody) SetData(v interface{}) *GetDocStructureResultResponseBody {
+func (s *GetDocStructureResultResponseBody) SetData(v map[string]interface{}) *GetDocStructureResultResponseBody {
 	s.Data = v
 	return s
 }
@@ -349,12 +349,12 @@ func (s *GetDocumentExtractResultRequest) SetId(v string) *GetDocumentExtractRes
 }
 
 type GetDocumentExtractResultResponseBody struct {
-	Code      *string     `json:"Code,omitempty" xml:"Code,omitempty"`
-	Completed *bool       `json:"Completed,omitempty" xml:"Completed,omitempty"`
-	Data      interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string     `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Status    *string     `json:"Status,omitempty" xml:"Status,omitempty"`
+	Code      *string                `json:"Code,omitempty" xml:"Code,omitempty"`
+	Completed *bool                  `json:"Completed,omitempty" xml:"Completed,omitempty"`
+	Data      map[string]interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
+	Message   *string                `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Status    *string                `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s GetDocumentExtractResultResponseBody) String() string {
@@ -375,7 +375,7 @@ func (s *GetDocumentExtractResultResponseBody) SetCompleted(v bool) *GetDocument
 	return s
 }
 
-func (s *GetDocumentExtractResultResponseBody) SetData(v interface{}) *GetDocumentExtractResultResponseBody {
+func (s *GetDocumentExtractResultResponseBody) SetData(v map[string]interface{}) *GetDocumentExtractResultResponseBody {
 	s.Data = v
 	return s
 }
@@ -442,12 +442,12 @@ func (s *GetTableUnderstandingResultRequest) SetId(v string) *GetTableUnderstand
 }
 
 type GetTableUnderstandingResultResponseBody struct {
-	Code      *string     `json:"Code,omitempty" xml:"Code,omitempty"`
-	Completed *bool       `json:"Completed,omitempty" xml:"Completed,omitempty"`
-	Data      interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string     `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Status    *string     `json:"Status,omitempty" xml:"Status,omitempty"`
+	Code      *string                `json:"Code,omitempty" xml:"Code,omitempty"`
+	Completed *bool                  `json:"Completed,omitempty" xml:"Completed,omitempty"`
+	Data      map[string]interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
+	Message   *string                `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Status    *string                `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s GetTableUnderstandingResultResponseBody) String() string {
@@ -468,7 +468,7 @@ func (s *GetTableUnderstandingResultResponseBody) SetCompleted(v bool) *GetTable
 	return s
 }
 
-func (s *GetTableUnderstandingResultResponseBody) SetData(v interface{}) *GetTableUnderstandingResultResponseBody {
+func (s *GetTableUnderstandingResultResponseBody) SetData(v map[string]interface{}) *GetTableUnderstandingResultResponseBody {
 	s.Data = v
 	return s
 }
@@ -1863,7 +1863,65 @@ func (client *Client) Init(config *openapi.Config) (_err error) {
 	if _err != nil {
 		return _err
 	}
-	client.EndpointRule = tea.String("")
+	client.EndpointRule = tea.String("regional")
+	client.EndpointMap = map[string]*string{
+		"ap-northeast-1":              tea.String("docmind-api.aliyuncs.com"),
+		"ap-northeast-2-pop":          tea.String("docmind-api.aliyuncs.com"),
+		"ap-south-1":                  tea.String("docmind-api.aliyuncs.com"),
+		"ap-southeast-1":              tea.String("docmind-api.aliyuncs.com"),
+		"ap-southeast-2":              tea.String("docmind-api.aliyuncs.com"),
+		"ap-southeast-3":              tea.String("docmind-api.aliyuncs.com"),
+		"ap-southeast-5":              tea.String("docmind-api.aliyuncs.com"),
+		"cn-beijing":                  tea.String("docmind-api.aliyuncs.com"),
+		"cn-beijing-finance-1":        tea.String("docmind-api.aliyuncs.com"),
+		"cn-beijing-finance-pop":      tea.String("docmind-api.aliyuncs.com"),
+		"cn-beijing-gov-1":            tea.String("docmind-api.aliyuncs.com"),
+		"cn-beijing-nu16-b01":         tea.String("docmind-api.aliyuncs.com"),
+		"cn-chengdu":                  tea.String("docmind-api.aliyuncs.com"),
+		"cn-edge-1":                   tea.String("docmind-api.aliyuncs.com"),
+		"cn-fujian":                   tea.String("docmind-api.aliyuncs.com"),
+		"cn-haidian-cm12-c01":         tea.String("docmind-api.aliyuncs.com"),
+		"cn-hangzhou-bj-b01":          tea.String("docmind-api.aliyuncs.com"),
+		"cn-hangzhou-finance":         tea.String("docmind-api.aliyuncs.com"),
+		"cn-hangzhou-internal-prod-1": tea.String("docmind-api.aliyuncs.com"),
+		"cn-hangzhou-internal-test-1": tea.String("docmind-api.aliyuncs.com"),
+		"cn-hangzhou-internal-test-2": tea.String("docmind-api.aliyuncs.com"),
+		"cn-hangzhou-internal-test-3": tea.String("docmind-api.aliyuncs.com"),
+		"cn-hangzhou-test-306":        tea.String("docmind-api.aliyuncs.com"),
+		"cn-hongkong":                 tea.String("docmind-api.aliyuncs.com"),
+		"cn-hongkong-finance-pop":     tea.String("docmind-api.aliyuncs.com"),
+		"cn-huhehaote":                tea.String("docmind-api.aliyuncs.com"),
+		"cn-huhehaote-nebula-1":       tea.String("docmind-api.aliyuncs.com"),
+		"cn-north-2-gov-1":            tea.String("docmind-api.aliyuncs.com"),
+		"cn-qingdao":                  tea.String("docmind-api.aliyuncs.com"),
+		"cn-qingdao-nebula":           tea.String("docmind-api.aliyuncs.com"),
+		"cn-shanghai":                 tea.String("docmind-api.aliyuncs.com"),
+		"cn-shanghai-et15-b01":        tea.String("docmind-api.aliyuncs.com"),
+		"cn-shanghai-et2-b01":         tea.String("docmind-api.aliyuncs.com"),
+		"cn-shanghai-finance-1":       tea.String("docmind-api.aliyuncs.com"),
+		"cn-shanghai-inner":           tea.String("docmind-api.aliyuncs.com"),
+		"cn-shanghai-internal-test-1": tea.String("docmind-api.aliyuncs.com"),
+		"cn-shenzhen":                 tea.String("docmind-api.aliyuncs.com"),
+		"cn-shenzhen-finance-1":       tea.String("docmind-api.aliyuncs.com"),
+		"cn-shenzhen-inner":           tea.String("docmind-api.aliyuncs.com"),
+		"cn-shenzhen-st4-d01":         tea.String("docmind-api.aliyuncs.com"),
+		"cn-shenzhen-su18-b01":        tea.String("docmind-api.aliyuncs.com"),
+		"cn-wuhan":                    tea.String("docmind-api.aliyuncs.com"),
+		"cn-wulanchabu":               tea.String("docmind-api.aliyuncs.com"),
+		"cn-yushanfang":               tea.String("docmind-api.aliyuncs.com"),
+		"cn-zhangbei":                 tea.String("docmind-api.aliyuncs.com"),
+		"cn-zhangbei-na61-b01":        tea.String("docmind-api.aliyuncs.com"),
+		"cn-zhangjiakou":              tea.String("docmind-api.aliyuncs.com"),
+		"cn-zhangjiakou-na62-a01":     tea.String("docmind-api.aliyuncs.com"),
+		"cn-zhengzhou-nebula-1":       tea.String("docmind-api.aliyuncs.com"),
+		"eu-central-1":                tea.String("docmind-api.aliyuncs.com"),
+		"eu-west-1":                   tea.String("docmind-api.aliyuncs.com"),
+		"eu-west-1-oxs":               tea.String("docmind-api.aliyuncs.com"),
+		"me-east-1":                   tea.String("docmind-api.aliyuncs.com"),
+		"rus-west-1-pop":              tea.String("docmind-api.aliyuncs.com"),
+		"us-east-1":                   tea.String("docmind-api.aliyuncs.com"),
+		"us-west-1":                   tea.String("docmind-api.aliyuncs.com"),
+	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
 		return _err
