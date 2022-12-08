@@ -1220,16 +1220,20 @@ func (s *GetStyleTopResponseBody) SetSuccessResponse(v string) *GetStyleTopRespo
 }
 
 type GetStyleTopResponseBodyData struct {
-	BuyerTags    *string   `json:"BuyerTags,omitempty" xml:"BuyerTags,omitempty"`
-	CateName     *string   `json:"CateName,omitempty" xml:"CateName,omitempty"`
-	Color        *string   `json:"Color,omitempty" xml:"Color,omitempty"`
-	Images       []*string `json:"Images,omitempty" xml:"Images,omitempty" type:"Repeated"`
-	Material     *string   `json:"Material,omitempty" xml:"Material,omitempty"`
-	ProductLink  *string   `json:"ProductLink,omitempty" xml:"ProductLink,omitempty"`
-	SalesVolume  *float64  `json:"SalesVolume,omitempty" xml:"SalesVolume,omitempty"`
-	SearchVolume *float64  `json:"SearchVolume,omitempty" xml:"SearchVolume,omitempty"`
-	Style        *string   `json:"Style,omitempty" xml:"Style,omitempty"`
-	Title        *string   `json:"Title,omitempty" xml:"Title,omitempty"`
+	AttributeContent *string   `json:"AttributeContent,omitempty" xml:"AttributeContent,omitempty"`
+	BrandName        *string   `json:"BrandName,omitempty" xml:"BrandName,omitempty"`
+	BuyerTags        *string   `json:"BuyerTags,omitempty" xml:"BuyerTags,omitempty"`
+	CateName         *string   `json:"CateName,omitempty" xml:"CateName,omitempty"`
+	Color            *string   `json:"Color,omitempty" xml:"Color,omitempty"`
+	Images           []*string `json:"Images,omitempty" xml:"Images,omitempty" type:"Repeated"`
+	Material         *string   `json:"Material,omitempty" xml:"Material,omitempty"`
+	Price            *float64  `json:"Price,omitempty" xml:"Price,omitempty"`
+	ProductLink      *string   `json:"ProductLink,omitempty" xml:"ProductLink,omitempty"`
+	SalesVolume      *float64  `json:"SalesVolume,omitempty" xml:"SalesVolume,omitempty"`
+	SearchVolume     *float64  `json:"SearchVolume,omitempty" xml:"SearchVolume,omitempty"`
+	ShopName         *string   `json:"ShopName,omitempty" xml:"ShopName,omitempty"`
+	Style            *string   `json:"Style,omitempty" xml:"Style,omitempty"`
+	Title            *string   `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 
 func (s GetStyleTopResponseBodyData) String() string {
@@ -1238,6 +1242,16 @@ func (s GetStyleTopResponseBodyData) String() string {
 
 func (s GetStyleTopResponseBodyData) GoString() string {
 	return s.String()
+}
+
+func (s *GetStyleTopResponseBodyData) SetAttributeContent(v string) *GetStyleTopResponseBodyData {
+	s.AttributeContent = &v
+	return s
+}
+
+func (s *GetStyleTopResponseBodyData) SetBrandName(v string) *GetStyleTopResponseBodyData {
+	s.BrandName = &v
+	return s
 }
 
 func (s *GetStyleTopResponseBodyData) SetBuyerTags(v string) *GetStyleTopResponseBodyData {
@@ -1265,6 +1279,11 @@ func (s *GetStyleTopResponseBodyData) SetMaterial(v string) *GetStyleTopResponse
 	return s
 }
 
+func (s *GetStyleTopResponseBodyData) SetPrice(v float64) *GetStyleTopResponseBodyData {
+	s.Price = &v
+	return s
+}
+
 func (s *GetStyleTopResponseBodyData) SetProductLink(v string) *GetStyleTopResponseBodyData {
 	s.ProductLink = &v
 	return s
@@ -1277,6 +1296,11 @@ func (s *GetStyleTopResponseBodyData) SetSalesVolume(v float64) *GetStyleTopResp
 
 func (s *GetStyleTopResponseBodyData) SetSearchVolume(v float64) *GetStyleTopResponseBodyData {
 	s.SearchVolume = &v
+	return s
+}
+
+func (s *GetStyleTopResponseBodyData) SetShopName(v string) *GetStyleTopResponseBodyData {
+	s.ShopName = &v
 	return s
 }
 
