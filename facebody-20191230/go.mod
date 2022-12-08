@@ -1,4 +1,4 @@
-module github.com/alibabacloud-go/facebody-20191230/v3
+module github.com/alibabacloud-go/facebody-20191230/v4
 
 go 1.15
 

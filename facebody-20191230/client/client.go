@@ -1615,8 +1615,8 @@ func (s *BodyPostureResponse) SetBody(v *BodyPostureResponseBody) *BodyPostureRe
 }
 
 type CompareFaceRequest struct {
-	ImageDataA            []byte   `json:"ImageDataA,omitempty" xml:"ImageDataA,omitempty"`
-	ImageDataB            []byte   `json:"ImageDataB,omitempty" xml:"ImageDataB,omitempty"`
+	ImageDataA            *string  `json:"ImageDataA,omitempty" xml:"ImageDataA,omitempty"`
+	ImageDataB            *string  `json:"ImageDataB,omitempty" xml:"ImageDataB,omitempty"`
 	ImageURLA             *string  `json:"ImageURLA,omitempty" xml:"ImageURLA,omitempty"`
 	ImageURLB             *string  `json:"ImageURLB,omitempty" xml:"ImageURLB,omitempty"`
 	QualityScoreThreshold *float32 `json:"QualityScoreThreshold,omitempty" xml:"QualityScoreThreshold,omitempty"`
@@ -1630,13 +1630,13 @@ func (s CompareFaceRequest) GoString() string {
 	return s.String()
 }
 
-func (s *CompareFaceRequest) SetImageDataA(v []byte) *CompareFaceRequest {
-	s.ImageDataA = v
+func (s *CompareFaceRequest) SetImageDataA(v string) *CompareFaceRequest {
+	s.ImageDataA = &v
 	return s
 }
 
-func (s *CompareFaceRequest) SetImageDataB(v []byte) *CompareFaceRequest {
-	s.ImageDataB = v
+func (s *CompareFaceRequest) SetImageDataB(v string) *CompareFaceRequest {
+	s.ImageDataB = &v
 	return s
 }
 
@@ -1656,8 +1656,8 @@ func (s *CompareFaceRequest) SetQualityScoreThreshold(v float32) *CompareFaceReq
 }
 
 type CompareFaceAdvanceRequest struct {
-	ImageDataA            []byte    `json:"ImageDataA,omitempty" xml:"ImageDataA,omitempty"`
-	ImageDataB            []byte    `json:"ImageDataB,omitempty" xml:"ImageDataB,omitempty"`
+	ImageDataA            *string   `json:"ImageDataA,omitempty" xml:"ImageDataA,omitempty"`
+	ImageDataB            *string   `json:"ImageDataB,omitempty" xml:"ImageDataB,omitempty"`
 	ImageURLAObject       io.Reader `json:"ImageURLA,omitempty" xml:"ImageURLA,omitempty"`
 	ImageURLBObject       io.Reader `json:"ImageURLB,omitempty" xml:"ImageURLB,omitempty"`
 	QualityScoreThreshold *float32  `json:"QualityScoreThreshold,omitempty" xml:"QualityScoreThreshold,omitempty"`
@@ -1671,13 +1671,13 @@ func (s CompareFaceAdvanceRequest) GoString() string {
 	return s.String()
 }
 
-func (s *CompareFaceAdvanceRequest) SetImageDataA(v []byte) *CompareFaceAdvanceRequest {
-	s.ImageDataA = v
+func (s *CompareFaceAdvanceRequest) SetImageDataA(v string) *CompareFaceAdvanceRequest {
+	s.ImageDataA = &v
 	return s
 }
 
-func (s *CompareFaceAdvanceRequest) SetImageDataB(v []byte) *CompareFaceAdvanceRequest {
-	s.ImageDataB = v
+func (s *CompareFaceAdvanceRequest) SetImageDataB(v string) *CompareFaceAdvanceRequest {
+	s.ImageDataB = &v
 	return s
 }
 
@@ -3071,7 +3071,7 @@ func (s *DetectLivingFaceRequest) SetTasks(v []*DetectLivingFaceRequestTasks) *D
 }
 
 type DetectLivingFaceRequestTasks struct {
-	ImageData []byte  `json:"ImageData,omitempty" xml:"ImageData,omitempty"`
+	ImageData *string `json:"ImageData,omitempty" xml:"ImageData,omitempty"`
 	ImageURL  *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
 }
 
@@ -3083,8 +3083,8 @@ func (s DetectLivingFaceRequestTasks) GoString() string {
 	return s.String()
 }
 
-func (s *DetectLivingFaceRequestTasks) SetImageData(v []byte) *DetectLivingFaceRequestTasks {
-	s.ImageData = v
+func (s *DetectLivingFaceRequestTasks) SetImageData(v string) *DetectLivingFaceRequestTasks {
+	s.ImageData = &v
 	return s
 }
 
@@ -3111,7 +3111,7 @@ func (s *DetectLivingFaceAdvanceRequest) SetTasks(v []*DetectLivingFaceAdvanceRe
 }
 
 type DetectLivingFaceAdvanceRequestTasks struct {
-	ImageData      []byte    `json:"ImageData,omitempty" xml:"ImageData,omitempty"`
+	ImageData      *string   `json:"ImageData,omitempty" xml:"ImageData,omitempty"`
 	ImageURLObject io.Reader `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
 }
 
@@ -3123,8 +3123,8 @@ func (s DetectLivingFaceAdvanceRequestTasks) GoString() string {
 	return s.String()
 }
 
-func (s *DetectLivingFaceAdvanceRequestTasks) SetImageData(v []byte) *DetectLivingFaceAdvanceRequestTasks {
-	s.ImageData = v
+func (s *DetectLivingFaceAdvanceRequestTasks) SetImageData(v string) *DetectLivingFaceAdvanceRequestTasks {
+	s.ImageData = &v
 	return s
 }
 
@@ -4152,7 +4152,7 @@ func (s *EnhanceFaceResponse) SetBody(v *EnhanceFaceResponseBody) *EnhanceFaceRe
 }
 
 type ExtractFingerPrintRequest struct {
-	ImageData []byte  `json:"ImageData,omitempty" xml:"ImageData,omitempty"`
+	ImageData *string `json:"ImageData,omitempty" xml:"ImageData,omitempty"`
 	ImageURL  *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
 }
 
@@ -4164,8 +4164,8 @@ func (s ExtractFingerPrintRequest) GoString() string {
 	return s.String()
 }
 
-func (s *ExtractFingerPrintRequest) SetImageData(v []byte) *ExtractFingerPrintRequest {
-	s.ImageData = v
+func (s *ExtractFingerPrintRequest) SetImageData(v string) *ExtractFingerPrintRequest {
+	s.ImageData = &v
 	return s
 }
 
@@ -4175,7 +4175,7 @@ func (s *ExtractFingerPrintRequest) SetImageURL(v string) *ExtractFingerPrintReq
 }
 
 type ExtractFingerPrintAdvanceRequest struct {
-	ImageData      []byte    `json:"ImageData,omitempty" xml:"ImageData,omitempty"`
+	ImageData      *string   `json:"ImageData,omitempty" xml:"ImageData,omitempty"`
 	ImageURLObject io.Reader `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
 }
 
@@ -4187,8 +4187,8 @@ func (s ExtractFingerPrintAdvanceRequest) GoString() string {
 	return s.String()
 }
 
-func (s *ExtractFingerPrintAdvanceRequest) SetImageData(v []byte) *ExtractFingerPrintAdvanceRequest {
-	s.ImageData = v
+func (s *ExtractFingerPrintAdvanceRequest) SetImageData(v string) *ExtractFingerPrintAdvanceRequest {
+	s.ImageData = &v
 	return s
 }
 
@@ -7304,7 +7304,7 @@ func (s *QueryFaceImageTemplateResponse) SetBody(v *QueryFaceImageTemplateRespon
 type RecognizeActionRequest struct {
 	Type      *int32                           `json:"Type,omitempty" xml:"Type,omitempty"`
 	URLList   []*RecognizeActionRequestURLList `json:"URLList,omitempty" xml:"URLList,omitempty" type:"Repeated"`
-	VideoData []byte                           `json:"VideoData,omitempty" xml:"VideoData,omitempty"`
+	VideoData *string                          `json:"VideoData,omitempty" xml:"VideoData,omitempty"`
 	VideoUrl  *string                          `json:"VideoUrl,omitempty" xml:"VideoUrl,omitempty"`
 }
 
@@ -7326,8 +7326,8 @@ func (s *RecognizeActionRequest) SetURLList(v []*RecognizeActionRequestURLList) 
 	return s
 }
 
-func (s *RecognizeActionRequest) SetVideoData(v []byte) *RecognizeActionRequest {
-	s.VideoData = v
+func (s *RecognizeActionRequest) SetVideoData(v string) *RecognizeActionRequest {
+	s.VideoData = &v
 	return s
 }
 
@@ -7338,7 +7338,7 @@ func (s *RecognizeActionRequest) SetVideoUrl(v string) *RecognizeActionRequest {
 
 type RecognizeActionRequestURLList struct {
 	URL       *string `json:"URL,omitempty" xml:"URL,omitempty"`
-	ImageData []byte  `json:"imageData,omitempty" xml:"imageData,omitempty"`
+	ImageData *string `json:"imageData,omitempty" xml:"imageData,omitempty"`
 }
 
 func (s RecognizeActionRequestURLList) String() string {
@@ -7354,15 +7354,15 @@ func (s *RecognizeActionRequestURLList) SetURL(v string) *RecognizeActionRequest
 	return s
 }
 
-func (s *RecognizeActionRequestURLList) SetImageData(v []byte) *RecognizeActionRequestURLList {
-	s.ImageData = v
+func (s *RecognizeActionRequestURLList) SetImageData(v string) *RecognizeActionRequestURLList {
+	s.ImageData = &v
 	return s
 }
 
 type RecognizeActionAdvanceRequest struct {
 	Type      *int32                                  `json:"Type,omitempty" xml:"Type,omitempty"`
 	URLList   []*RecognizeActionAdvanceRequestURLList `json:"URLList,omitempty" xml:"URLList,omitempty" type:"Repeated"`
-	VideoData []byte                                  `json:"VideoData,omitempty" xml:"VideoData,omitempty"`
+	VideoData *string                                 `json:"VideoData,omitempty" xml:"VideoData,omitempty"`
 	VideoUrl  *string                                 `json:"VideoUrl,omitempty" xml:"VideoUrl,omitempty"`
 }
 
@@ -7384,8 +7384,8 @@ func (s *RecognizeActionAdvanceRequest) SetURLList(v []*RecognizeActionAdvanceRe
 	return s
 }
 
-func (s *RecognizeActionAdvanceRequest) SetVideoData(v []byte) *RecognizeActionAdvanceRequest {
-	s.VideoData = v
+func (s *RecognizeActionAdvanceRequest) SetVideoData(v string) *RecognizeActionAdvanceRequest {
+	s.VideoData = &v
 	return s
 }
 
@@ -7396,7 +7396,7 @@ func (s *RecognizeActionAdvanceRequest) SetVideoUrl(v string) *RecognizeActionAd
 
 type RecognizeActionAdvanceRequestURLList struct {
 	URLObject io.Reader `json:"URL,omitempty" xml:"URL,omitempty"`
-	ImageData []byte    `json:"imageData,omitempty" xml:"imageData,omitempty"`
+	ImageData *string   `json:"imageData,omitempty" xml:"imageData,omitempty"`
 }
 
 func (s RecognizeActionAdvanceRequestURLList) String() string {
@@ -7412,8 +7412,8 @@ func (s *RecognizeActionAdvanceRequestURLList) SetURLObject(v io.Reader) *Recogn
 	return s
 }
 
-func (s *RecognizeActionAdvanceRequestURLList) SetImageData(v []byte) *RecognizeActionAdvanceRequestURLList {
-	s.ImageData = v
+func (s *RecognizeActionAdvanceRequestURLList) SetImageData(v string) *RecognizeActionAdvanceRequestURLList {
+	s.ImageData = &v
 	return s
 }
 
@@ -8246,7 +8246,7 @@ func (s *RecognizePublicFaceRequest) SetTask(v []*RecognizePublicFaceRequestTask
 }
 
 type RecognizePublicFaceRequestTask struct {
-	ImageData []byte  `json:"ImageData,omitempty" xml:"ImageData,omitempty"`
+	ImageData *string `json:"ImageData,omitempty" xml:"ImageData,omitempty"`
 	ImageURL  *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
 }
 
@@ -8258,8 +8258,8 @@ func (s RecognizePublicFaceRequestTask) GoString() string {
 	return s.String()
 }
 
-func (s *RecognizePublicFaceRequestTask) SetImageData(v []byte) *RecognizePublicFaceRequestTask {
-	s.ImageData = v
+func (s *RecognizePublicFaceRequestTask) SetImageData(v string) *RecognizePublicFaceRequestTask {
+	s.ImageData = &v
 	return s
 }
 
@@ -8286,7 +8286,7 @@ func (s *RecognizePublicFaceAdvanceRequest) SetTask(v []*RecognizePublicFaceAdva
 }
 
 type RecognizePublicFaceAdvanceRequestTask struct {
-	ImageData      []byte    `json:"ImageData,omitempty" xml:"ImageData,omitempty"`
+	ImageData      *string   `json:"ImageData,omitempty" xml:"ImageData,omitempty"`
 	ImageURLObject io.Reader `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
 }
 
@@ -8298,8 +8298,8 @@ func (s RecognizePublicFaceAdvanceRequestTask) GoString() string {
 	return s.String()
 }
 
-func (s *RecognizePublicFaceAdvanceRequestTask) SetImageData(v []byte) *RecognizePublicFaceAdvanceRequestTask {
-	s.ImageData = v
+func (s *RecognizePublicFaceAdvanceRequestTask) SetImageData(v string) *RecognizePublicFaceAdvanceRequestTask {
+	s.ImageData = &v
 	return s
 }
 
