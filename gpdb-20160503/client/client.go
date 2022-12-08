@@ -1712,6 +1712,7 @@ func (s *DescribeAvailableResourcesResponseBodyResourcesSupportedEngines) SetSup
 }
 
 type DescribeAvailableResourcesResponseBodyResourcesSupportedEnginesSupportedInstanceClasses struct {
+	Category      *string                                                                                             `json:"Category,omitempty" xml:"Category,omitempty"`
 	Description   *string                                                                                             `json:"Description,omitempty" xml:"Description,omitempty"`
 	DisplayClass  *string                                                                                             `json:"DisplayClass,omitempty" xml:"DisplayClass,omitempty"`
 	InstanceClass *string                                                                                             `json:"InstanceClass,omitempty" xml:"InstanceClass,omitempty"`
@@ -1726,6 +1727,11 @@ func (s DescribeAvailableResourcesResponseBodyResourcesSupportedEnginesSupported
 
 func (s DescribeAvailableResourcesResponseBodyResourcesSupportedEnginesSupportedInstanceClasses) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeAvailableResourcesResponseBodyResourcesSupportedEnginesSupportedInstanceClasses) SetCategory(v string) *DescribeAvailableResourcesResponseBodyResourcesSupportedEnginesSupportedInstanceClasses {
+	s.Category = &v
+	return s
 }
 
 func (s *DescribeAvailableResourcesResponseBodyResourcesSupportedEnginesSupportedInstanceClasses) SetDescription(v string) *DescribeAvailableResourcesResponseBodyResourcesSupportedEnginesSupportedInstanceClasses {
