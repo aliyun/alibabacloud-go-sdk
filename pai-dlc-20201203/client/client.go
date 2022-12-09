@@ -5,10 +5,10 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/client"
+	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
 	openapiutil "github.com/alibabacloud-go/openapi-util/service"
-	util "github.com/alibabacloud-go/tea-utils/service"
+	util "github.com/alibabacloud-go/tea-utils/v2/service"
 	"github.com/alibabacloud-go/tea/tea"
 )
 
@@ -1030,6 +1030,7 @@ type JobSettings struct {
 	BusinessUserId                  *string            `json:"BusinessUserId,omitempty" xml:"BusinessUserId,omitempty"`
 	Caller                          *string            `json:"Caller,omitempty" xml:"Caller,omitempty"`
 	EnableErrorMonitoringInAIMaster *bool              `json:"EnableErrorMonitoringInAIMaster,omitempty" xml:"EnableErrorMonitoringInAIMaster,omitempty"`
+	EnableOssAppend                 *bool              `json:"EnableOssAppend,omitempty" xml:"EnableOssAppend,omitempty"`
 	EnableRDMA                      *bool              `json:"EnableRDMA,omitempty" xml:"EnableRDMA,omitempty"`
 	EnableTideResource              *bool              `json:"EnableTideResource,omitempty" xml:"EnableTideResource,omitempty"`
 	ErrorMonitoringArgs             *string            `json:"ErrorMonitoringArgs,omitempty" xml:"ErrorMonitoringArgs,omitempty"`
@@ -1057,6 +1058,11 @@ func (s *JobSettings) SetCaller(v string) *JobSettings {
 
 func (s *JobSettings) SetEnableErrorMonitoringInAIMaster(v bool) *JobSettings {
 	s.EnableErrorMonitoringInAIMaster = &v
+	return s
+}
+
+func (s *JobSettings) SetEnableOssAppend(v bool) *JobSettings {
+	s.EnableOssAppend = &v
 	return s
 }
 
@@ -1231,18 +1237,16 @@ func (s *PodMetric) SetPodId(v string) *PodMetric {
 }
 
 type Quota struct {
-	ClusterId          *string      `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	ClusterName        *string      `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
-	EnableTideResource *bool        `json:"EnableTideResource,omitempty" xml:"EnableTideResource,omitempty"`
-	IsExclusiveQuota   *bool        `json:"IsExclusiveQuota,omitempty" xml:"IsExclusiveQuota,omitempty"`
-	QuotaId            *string      `json:"QuotaId,omitempty" xml:"QuotaId,omitempty"`
-	QuotaName          *string      `json:"QuotaName,omitempty" xml:"QuotaName,omitempty"`
-	QuotaType          *string      `json:"QuotaType,omitempty" xml:"QuotaType,omitempty"`
-	ResourceLevel      *string      `json:"ResourceLevel,omitempty" xml:"ResourceLevel,omitempty"`
-	TotalQuota         *QuotaDetail `json:"TotalQuota,omitempty" xml:"TotalQuota,omitempty"`
-	TotalTideQuota     *QuotaDetail `json:"TotalTideQuota,omitempty" xml:"TotalTideQuota,omitempty"`
-	UsedQuota          *QuotaDetail `json:"UsedQuota,omitempty" xml:"UsedQuota,omitempty"`
-	UsedTideQuota      *QuotaDetail `json:"UsedTideQuota,omitempty" xml:"UsedTideQuota,omitempty"`
+	ClusterId      *string      `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	ClusterName    *string      `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
+	QuotaConfig    *QuotaConfig `json:"QuotaConfig,omitempty" xml:"QuotaConfig,omitempty"`
+	QuotaId        *string      `json:"QuotaId,omitempty" xml:"QuotaId,omitempty"`
+	QuotaName      *string      `json:"QuotaName,omitempty" xml:"QuotaName,omitempty"`
+	QuotaType      *string      `json:"QuotaType,omitempty" xml:"QuotaType,omitempty"`
+	TotalQuota     *QuotaDetail `json:"TotalQuota,omitempty" xml:"TotalQuota,omitempty"`
+	TotalTideQuota *QuotaDetail `json:"TotalTideQuota,omitempty" xml:"TotalTideQuota,omitempty"`
+	UsedQuota      *QuotaDetail `json:"UsedQuota,omitempty" xml:"UsedQuota,omitempty"`
+	UsedTideQuota  *QuotaDetail `json:"UsedTideQuota,omitempty" xml:"UsedTideQuota,omitempty"`
 }
 
 func (s Quota) String() string {
@@ -1263,13 +1267,8 @@ func (s *Quota) SetClusterName(v string) *Quota {
 	return s
 }
 
-func (s *Quota) SetEnableTideResource(v bool) *Quota {
-	s.EnableTideResource = &v
-	return s
-}
-
-func (s *Quota) SetIsExclusiveQuota(v bool) *Quota {
-	s.IsExclusiveQuota = &v
+func (s *Quota) SetQuotaConfig(v *QuotaConfig) *Quota {
+	s.QuotaConfig = v
 	return s
 }
 
@@ -1285,11 +1284,6 @@ func (s *Quota) SetQuotaName(v string) *Quota {
 
 func (s *Quota) SetQuotaType(v string) *Quota {
 	s.QuotaType = &v
-	return s
-}
-
-func (s *Quota) SetResourceLevel(v string) *Quota {
-	s.ResourceLevel = &v
 	return s
 }
 
@@ -1310,6 +1304,47 @@ func (s *Quota) SetUsedQuota(v *QuotaDetail) *Quota {
 
 func (s *Quota) SetUsedTideQuota(v *QuotaDetail) *Quota {
 	s.UsedTideQuota = v
+	return s
+}
+
+type QuotaConfig struct {
+	AllowedMaxPriority *int32  `json:"AllowedMaxPriority,omitempty" xml:"AllowedMaxPriority,omitempty"`
+	EnableDLC          *bool   `json:"EnableDLC,omitempty" xml:"EnableDLC,omitempty"`
+	EnableDSW          *bool   `json:"EnableDSW,omitempty" xml:"EnableDSW,omitempty"`
+	EnableTideResource *bool   `json:"EnableTideResource,omitempty" xml:"EnableTideResource,omitempty"`
+	ResourceLevel      *string `json:"ResourceLevel,omitempty" xml:"ResourceLevel,omitempty"`
+}
+
+func (s QuotaConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QuotaConfig) GoString() string {
+	return s.String()
+}
+
+func (s *QuotaConfig) SetAllowedMaxPriority(v int32) *QuotaConfig {
+	s.AllowedMaxPriority = &v
+	return s
+}
+
+func (s *QuotaConfig) SetEnableDLC(v bool) *QuotaConfig {
+	s.EnableDLC = &v
+	return s
+}
+
+func (s *QuotaConfig) SetEnableDSW(v bool) *QuotaConfig {
+	s.EnableDSW = &v
+	return s
+}
+
+func (s *QuotaConfig) SetEnableTideResource(v bool) *QuotaConfig {
+	s.EnableTideResource = &v
+	return s
+}
+
+func (s *QuotaConfig) SetResourceLevel(v string) *QuotaConfig {
+	s.ResourceLevel = &v
 	return s
 }
 
@@ -3237,6 +3272,7 @@ type ListJobsRequest struct {
 	DisplayName       *string            `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
 	EndTime           *string            `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	FromAllWorkspaces *bool              `json:"FromAllWorkspaces,omitempty" xml:"FromAllWorkspaces,omitempty"`
+	JobId             *string            `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	JobType           *string            `json:"JobType,omitempty" xml:"JobType,omitempty"`
 	Order             *string            `json:"Order,omitempty" xml:"Order,omitempty"`
 	PageNumber        *int32             `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
@@ -3281,6 +3317,11 @@ func (s *ListJobsRequest) SetEndTime(v string) *ListJobsRequest {
 
 func (s *ListJobsRequest) SetFromAllWorkspaces(v bool) *ListJobsRequest {
 	s.FromAllWorkspaces = &v
+	return s
+}
+
+func (s *ListJobsRequest) SetJobId(v string) *ListJobsRequest {
+	s.JobId = &v
 	return s
 }
 
@@ -3350,6 +3391,7 @@ type ListJobsShrinkRequest struct {
 	DisplayName       *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
 	EndTime           *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	FromAllWorkspaces *bool   `json:"FromAllWorkspaces,omitempty" xml:"FromAllWorkspaces,omitempty"`
+	JobId             *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	JobType           *string `json:"JobType,omitempty" xml:"JobType,omitempty"`
 	Order             *string `json:"Order,omitempty" xml:"Order,omitempty"`
 	PageNumber        *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
@@ -3394,6 +3436,11 @@ func (s *ListJobsShrinkRequest) SetEndTime(v string) *ListJobsShrinkRequest {
 
 func (s *ListJobsShrinkRequest) SetFromAllWorkspaces(v bool) *ListJobsShrinkRequest {
 	s.FromAllWorkspaces = &v
+	return s
+}
+
+func (s *ListJobsShrinkRequest) SetJobId(v string) *ListJobsShrinkRequest {
+	s.JobId = &v
 	return s
 }
 
@@ -4119,7 +4166,7 @@ func (client *Client) CreateJobWithOptions(request *CreateJobRequest, headers ma
 		return _result, _err
 	}
 	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.CodeSource))) {
+	if !tea.BoolValue(util.IsUnset(request.CodeSource)) {
 		body["CodeSource"] = request.CodeSource
 	}
 
@@ -4135,7 +4182,7 @@ func (client *Client) CreateJobWithOptions(request *CreateJobRequest, headers ma
 		body["DisplayName"] = request.DisplayName
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.ElasticSpec))) {
+	if !tea.BoolValue(util.IsUnset(request.ElasticSpec)) {
 		body["ElasticSpec"] = request.ElasticSpec
 	}
 
@@ -4167,7 +4214,7 @@ func (client *Client) CreateJobWithOptions(request *CreateJobRequest, headers ma
 		body["ResourceId"] = request.ResourceId
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.Settings))) {
+	if !tea.BoolValue(util.IsUnset(request.Settings)) {
 		body["Settings"] = request.Settings
 	}
 
@@ -4183,7 +4230,7 @@ func (client *Client) CreateJobWithOptions(request *CreateJobRequest, headers ma
 		body["UserCommand"] = request.UserCommand
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.UserVpc))) {
+	if !tea.BoolValue(util.IsUnset(request.UserVpc)) {
 		body["UserVpc"] = request.UserVpc
 	}
 
@@ -4322,7 +4369,6 @@ func (client *Client) DeleteJob(JobId *string) (_result *DeleteJobResponse, _err
 }
 
 func (client *Client) DeleteJobWithOptions(JobId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteJobResponse, _err error) {
-	JobId = openapiutil.GetEncodeParam(JobId)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -4330,7 +4376,7 @@ func (client *Client) DeleteJobWithOptions(JobId *string, headers map[string]*st
 		Action:      tea.String("DeleteJob"),
 		Version:     tea.String("2020-12-03"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v1/jobs/" + tea.StringValue(JobId)),
+		Pathname:    tea.String("/api/v1/jobs/" + tea.StringValue(openapiutil.GetEncodeParam(JobId))),
 		Method:      tea.String("DELETE"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -4363,7 +4409,6 @@ func (client *Client) DeleteTensorboardWithOptions(TensorboardId *string, reques
 	if _err != nil {
 		return _result, _err
 	}
-	TensorboardId = openapiutil.GetEncodeParam(TensorboardId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
 		query["WorkspaceId"] = request.WorkspaceId
@@ -4377,7 +4422,7 @@ func (client *Client) DeleteTensorboardWithOptions(TensorboardId *string, reques
 		Action:      tea.String("DeleteTensorboard"),
 		Version:     tea.String("2020-12-03"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v1/tensorboards/" + tea.StringValue(TensorboardId)),
+		Pathname:    tea.String("/api/v1/tensorboards/" + tea.StringValue(openapiutil.GetEncodeParam(TensorboardId))),
 		Method:      tea.String("DELETE"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -4406,7 +4451,6 @@ func (client *Client) GetJob(JobId *string) (_result *GetJobResponse, _err error
 }
 
 func (client *Client) GetJobWithOptions(JobId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetJobResponse, _err error) {
-	JobId = openapiutil.GetEncodeParam(JobId)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -4414,7 +4458,7 @@ func (client *Client) GetJobWithOptions(JobId *string, headers map[string]*strin
 		Action:      tea.String("GetJob"),
 		Version:     tea.String("2020-12-03"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v1/jobs/" + tea.StringValue(JobId)),
+		Pathname:    tea.String("/api/v1/jobs/" + tea.StringValue(openapiutil.GetEncodeParam(JobId))),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -4447,7 +4491,6 @@ func (client *Client) GetJobEventsWithOptions(JobId *string, request *GetJobEven
 	if _err != nil {
 		return _result, _err
 	}
-	JobId = openapiutil.GetEncodeParam(JobId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
 		query["EndTime"] = request.EndTime
@@ -4469,7 +4512,7 @@ func (client *Client) GetJobEventsWithOptions(JobId *string, request *GetJobEven
 		Action:      tea.String("GetJobEvents"),
 		Version:     tea.String("2020-12-03"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v1/jobs/" + tea.StringValue(JobId) + "/events"),
+		Pathname:    tea.String("/api/v1/jobs/" + tea.StringValue(openapiutil.GetEncodeParam(JobId)) + "/events"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -4502,7 +4545,6 @@ func (client *Client) GetJobMetricsWithOptions(JobId *string, request *GetJobMet
 	if _err != nil {
 		return _result, _err
 	}
-	JobId = openapiutil.GetEncodeParam(JobId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
 		query["EndTime"] = request.EndTime
@@ -4532,7 +4574,7 @@ func (client *Client) GetJobMetricsWithOptions(JobId *string, request *GetJobMet
 		Action:      tea.String("GetJobMetrics"),
 		Version:     tea.String("2020-12-03"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v1/jobs/" + tea.StringValue(JobId) + "/metrics"),
+		Pathname:    tea.String("/api/v1/jobs/" + tea.StringValue(openapiutil.GetEncodeParam(JobId)) + "/metrics"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -4565,8 +4607,6 @@ func (client *Client) GetPodEventsWithOptions(JobId *string, PodId *string, requ
 	if _err != nil {
 		return _result, _err
 	}
-	JobId = openapiutil.GetEncodeParam(JobId)
-	PodId = openapiutil.GetEncodeParam(PodId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
 		query["EndTime"] = request.EndTime
@@ -4592,7 +4632,7 @@ func (client *Client) GetPodEventsWithOptions(JobId *string, PodId *string, requ
 		Action:      tea.String("GetPodEvents"),
 		Version:     tea.String("2020-12-03"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v1/jobs/" + tea.StringValue(JobId) + "/pods/" + tea.StringValue(PodId) + "/events"),
+		Pathname:    tea.String("/api/v1/jobs/" + tea.StringValue(openapiutil.GetEncodeParam(JobId)) + "/pods/" + tea.StringValue(openapiutil.GetEncodeParam(PodId)) + "/events"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -4625,8 +4665,6 @@ func (client *Client) GetPodLogsWithOptions(JobId *string, PodId *string, reques
 	if _err != nil {
 		return _result, _err
 	}
-	JobId = openapiutil.GetEncodeParam(JobId)
-	PodId = openapiutil.GetEncodeParam(PodId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.DownloadToFile)) {
 		query["DownloadToFile"] = request.DownloadToFile
@@ -4656,7 +4694,7 @@ func (client *Client) GetPodLogsWithOptions(JobId *string, PodId *string, reques
 		Action:      tea.String("GetPodLogs"),
 		Version:     tea.String("2020-12-03"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v1/jobs/" + tea.StringValue(JobId) + "/pods/" + tea.StringValue(PodId) + "/logs"),
+		Pathname:    tea.String("/api/v1/jobs/" + tea.StringValue(openapiutil.GetEncodeParam(JobId)) + "/pods/" + tea.StringValue(openapiutil.GetEncodeParam(PodId)) + "/logs"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -4689,7 +4727,6 @@ func (client *Client) GetTensorboardWithOptions(TensorboardId *string, request *
 	if _err != nil {
 		return _result, _err
 	}
-	TensorboardId = openapiutil.GetEncodeParam(TensorboardId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.JodId)) {
 		query["JodId"] = request.JodId
@@ -4707,7 +4744,7 @@ func (client *Client) GetTensorboardWithOptions(TensorboardId *string, request *
 		Action:      tea.String("GetTensorboard"),
 		Version:     tea.String("2020-12-03"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v1/tensorboards/" + tea.StringValue(TensorboardId)),
+		Pathname:    tea.String("/api/v1/tensorboards/" + tea.StringValue(openapiutil.GetEncodeParam(TensorboardId))),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -4827,6 +4864,10 @@ func (client *Client) ListJobsWithOptions(tmpReq *ListJobsRequest, headers map[s
 
 	if !tea.BoolValue(util.IsUnset(request.FromAllWorkspaces)) {
 		query["FromAllWorkspaces"] = request.FromAllWorkspaces
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JobId)) {
+		query["JobId"] = request.JobId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.JobType)) {
@@ -5016,7 +5057,6 @@ func (client *Client) StartTensorboardWithOptions(TensorboardId *string, request
 	if _err != nil {
 		return _result, _err
 	}
-	TensorboardId = openapiutil.GetEncodeParam(TensorboardId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
 		query["WorkspaceId"] = request.WorkspaceId
@@ -5030,7 +5070,7 @@ func (client *Client) StartTensorboardWithOptions(TensorboardId *string, request
 		Action:      tea.String("StartTensorboard"),
 		Version:     tea.String("2020-12-03"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v1/tensorboards/" + tea.StringValue(TensorboardId) + "/start"),
+		Pathname:    tea.String("/api/v1/tensorboards/" + tea.StringValue(openapiutil.GetEncodeParam(TensorboardId)) + "/start"),
 		Method:      tea.String("PUT"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -5059,7 +5099,6 @@ func (client *Client) StopJob(JobId *string) (_result *StopJobResponse, _err err
 }
 
 func (client *Client) StopJobWithOptions(JobId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *StopJobResponse, _err error) {
-	JobId = openapiutil.GetEncodeParam(JobId)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -5067,7 +5106,7 @@ func (client *Client) StopJobWithOptions(JobId *string, headers map[string]*stri
 		Action:      tea.String("StopJob"),
 		Version:     tea.String("2020-12-03"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v1/jobs/" + tea.StringValue(JobId) + "/stop"),
+		Pathname:    tea.String("/api/v1/jobs/" + tea.StringValue(openapiutil.GetEncodeParam(JobId)) + "/stop"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -5100,7 +5139,6 @@ func (client *Client) StopTensorboardWithOptions(TensorboardId *string, request 
 	if _err != nil {
 		return _result, _err
 	}
-	TensorboardId = openapiutil.GetEncodeParam(TensorboardId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
 		query["WorkspaceId"] = request.WorkspaceId
@@ -5114,7 +5152,7 @@ func (client *Client) StopTensorboardWithOptions(TensorboardId *string, request 
 		Action:      tea.String("StopTensorboard"),
 		Version:     tea.String("2020-12-03"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v1/tensorboards/" + tea.StringValue(TensorboardId) + "/stop"),
+		Pathname:    tea.String("/api/v1/tensorboards/" + tea.StringValue(openapiutil.GetEncodeParam(TensorboardId)) + "/stop"),
 		Method:      tea.String("PUT"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -5147,7 +5185,6 @@ func (client *Client) UpdateJobWithOptions(JobId *string, request *UpdateJobRequ
 	if _err != nil {
 		return _result, _err
 	}
-	JobId = openapiutil.GetEncodeParam(JobId)
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Priority)) {
 		body["Priority"] = request.Priority
@@ -5161,7 +5198,7 @@ func (client *Client) UpdateJobWithOptions(JobId *string, request *UpdateJobRequ
 		Action:      tea.String("UpdateJob"),
 		Version:     tea.String("2020-12-03"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v1/jobs/" + tea.StringValue(JobId)),
+		Pathname:    tea.String("/api/v1/jobs/" + tea.StringValue(openapiutil.GetEncodeParam(JobId))),
 		Method:      tea.String("PUT"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -5194,7 +5231,6 @@ func (client *Client) UpdateTensorboardWithOptions(TensorboardId *string, reques
 	if _err != nil {
 		return _result, _err
 	}
-	TensorboardId = openapiutil.GetEncodeParam(TensorboardId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.MaxRunningTimeMinutes)) {
 		query["MaxRunningTimeMinutes"] = request.MaxRunningTimeMinutes
@@ -5212,7 +5248,7 @@ func (client *Client) UpdateTensorboardWithOptions(TensorboardId *string, reques
 		Action:      tea.String("UpdateTensorboard"),
 		Version:     tea.String("2020-12-03"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v1/tensorboards/" + tea.StringValue(TensorboardId)),
+		Pathname:    tea.String("/api/v1/tensorboards/" + tea.StringValue(openapiutil.GetEncodeParam(TensorboardId))),
 		Method:      tea.String("PUT"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),

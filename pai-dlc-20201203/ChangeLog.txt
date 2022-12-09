@@ -1,3 +1,6 @@
+2022-12-09 Version: v1.2.2
+- ListJobs supports params JobId.
+
 2022-07-26 Version: v1.2.1
 - Support to automatically fill in endpoint according to region.
 
