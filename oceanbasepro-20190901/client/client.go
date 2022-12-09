@@ -3565,6 +3565,110 @@ func (s *DescribeInstanceCreatableZoneResponse) SetBody(v *DescribeInstanceCreat
 	return s
 }
 
+type DescribeInstanceTagsRequest struct {
+	InstanceIds *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
+	Tags        *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+}
+
+func (s DescribeInstanceTagsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstanceTagsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstanceTagsRequest) SetInstanceIds(v string) *DescribeInstanceTagsRequest {
+	s.InstanceIds = &v
+	return s
+}
+
+func (s *DescribeInstanceTagsRequest) SetTags(v string) *DescribeInstanceTagsRequest {
+	s.Tags = &v
+	return s
+}
+
+type DescribeInstanceTagsResponseBody struct {
+	RequestId    *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TagResources []*DescribeInstanceTagsResponseBodyTagResources `json:"TagResources,omitempty" xml:"TagResources,omitempty" type:"Repeated"`
+}
+
+func (s DescribeInstanceTagsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstanceTagsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstanceTagsResponseBody) SetRequestId(v string) *DescribeInstanceTagsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeInstanceTagsResponseBody) SetTagResources(v []*DescribeInstanceTagsResponseBodyTagResources) *DescribeInstanceTagsResponseBody {
+	s.TagResources = v
+	return s
+}
+
+type DescribeInstanceTagsResponseBodyTagResources struct {
+	ResourceId   *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	Tag          *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+}
+
+func (s DescribeInstanceTagsResponseBodyTagResources) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstanceTagsResponseBodyTagResources) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstanceTagsResponseBodyTagResources) SetResourceId(v string) *DescribeInstanceTagsResponseBodyTagResources {
+	s.ResourceId = &v
+	return s
+}
+
+func (s *DescribeInstanceTagsResponseBodyTagResources) SetResourceType(v string) *DescribeInstanceTagsResponseBodyTagResources {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *DescribeInstanceTagsResponseBodyTagResources) SetTag(v string) *DescribeInstanceTagsResponseBodyTagResources {
+	s.Tag = &v
+	return s
+}
+
+type DescribeInstanceTagsResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeInstanceTagsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeInstanceTagsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstanceTagsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstanceTagsResponse) SetHeaders(v map[string]*string) *DescribeInstanceTagsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeInstanceTagsResponse) SetStatusCode(v int32) *DescribeInstanceTagsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeInstanceTagsResponse) SetBody(v *DescribeInstanceTagsResponseBody) *DescribeInstanceTagsResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeInstanceTenantModesRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
@@ -8953,6 +9057,116 @@ func (s *DescribeTenantMetricsResponse) SetBody(v *DescribeTenantMetricsResponse
 	return s
 }
 
+type DescribeTenantTagsRequest struct {
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Tags       *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	TenantIds  *string `json:"TenantIds,omitempty" xml:"TenantIds,omitempty"`
+}
+
+func (s DescribeTenantTagsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeTenantTagsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeTenantTagsRequest) SetInstanceId(v string) *DescribeTenantTagsRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeTenantTagsRequest) SetTags(v string) *DescribeTenantTagsRequest {
+	s.Tags = &v
+	return s
+}
+
+func (s *DescribeTenantTagsRequest) SetTenantIds(v string) *DescribeTenantTagsRequest {
+	s.TenantIds = &v
+	return s
+}
+
+type DescribeTenantTagsResponseBody struct {
+	RequestId    *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TagResources []*DescribeTenantTagsResponseBodyTagResources `json:"TagResources,omitempty" xml:"TagResources,omitempty" type:"Repeated"`
+}
+
+func (s DescribeTenantTagsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeTenantTagsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeTenantTagsResponseBody) SetRequestId(v string) *DescribeTenantTagsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeTenantTagsResponseBody) SetTagResources(v []*DescribeTenantTagsResponseBodyTagResources) *DescribeTenantTagsResponseBody {
+	s.TagResources = v
+	return s
+}
+
+type DescribeTenantTagsResponseBodyTagResources struct {
+	ResourceId   *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	Tag          *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+}
+
+func (s DescribeTenantTagsResponseBodyTagResources) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeTenantTagsResponseBodyTagResources) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeTenantTagsResponseBodyTagResources) SetResourceId(v string) *DescribeTenantTagsResponseBodyTagResources {
+	s.ResourceId = &v
+	return s
+}
+
+func (s *DescribeTenantTagsResponseBodyTagResources) SetResourceType(v string) *DescribeTenantTagsResponseBodyTagResources {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *DescribeTenantTagsResponseBodyTagResources) SetTag(v string) *DescribeTenantTagsResponseBodyTagResources {
+	s.Tag = &v
+	return s
+}
+
+type DescribeTenantTagsResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeTenantTagsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeTenantTagsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeTenantTagsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeTenantTagsResponse) SetHeaders(v map[string]*string) *DescribeTenantTagsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeTenantTagsResponse) SetStatusCode(v int32) *DescribeTenantTagsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeTenantTagsResponse) SetBody(v *DescribeTenantTagsResponseBody) *DescribeTenantTagsResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeTenantUserRolesResponseBody struct {
 	RequestId *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Role      []*string `json:"Role,omitempty" xml:"Role,omitempty" type:"Repeated"`
@@ -10528,6 +10742,81 @@ func (s *ModifyInstanceNameResponse) SetBody(v *ModifyInstanceNameResponseBody) 
 	return s
 }
 
+type ModifyInstanceTagsRequest struct {
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Tags       *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+}
+
+func (s ModifyInstanceTagsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyInstanceTagsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyInstanceTagsRequest) SetInstanceId(v string) *ModifyInstanceTagsRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ModifyInstanceTagsRequest) SetTags(v string) *ModifyInstanceTagsRequest {
+	s.Tags = &v
+	return s
+}
+
+type ModifyInstanceTagsResponseBody struct {
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifyInstanceTagsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyInstanceTagsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyInstanceTagsResponseBody) SetMessage(v string) *ModifyInstanceTagsResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ModifyInstanceTagsResponseBody) SetRequestId(v string) *ModifyInstanceTagsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifyInstanceTagsResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ModifyInstanceTagsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ModifyInstanceTagsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyInstanceTagsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyInstanceTagsResponse) SetHeaders(v map[string]*string) *ModifyInstanceTagsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyInstanceTagsResponse) SetStatusCode(v int32) *ModifyInstanceTagsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyInstanceTagsResponse) SetBody(v *ModifyInstanceTagsResponseBody) *ModifyInstanceTagsResponse {
+	s.Body = v
+	return s
+}
+
 type ModifyParametersRequest struct {
 	Dimension      *string `json:"Dimension,omitempty" xml:"Dimension,omitempty"`
 	DimensionValue *string `json:"DimensionValue,omitempty" xml:"DimensionValue,omitempty"`
@@ -10930,6 +11219,87 @@ func (s *ModifyTenantResourceResponse) SetStatusCode(v int32) *ModifyTenantResou
 }
 
 func (s *ModifyTenantResourceResponse) SetBody(v *ModifyTenantResourceResponseBody) *ModifyTenantResourceResponse {
+	s.Body = v
+	return s
+}
+
+type ModifyTenantTagsRequest struct {
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Tags       *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	TenantId   *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+}
+
+func (s ModifyTenantTagsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyTenantTagsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyTenantTagsRequest) SetInstanceId(v string) *ModifyTenantTagsRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ModifyTenantTagsRequest) SetTags(v string) *ModifyTenantTagsRequest {
+	s.Tags = &v
+	return s
+}
+
+func (s *ModifyTenantTagsRequest) SetTenantId(v string) *ModifyTenantTagsRequest {
+	s.TenantId = &v
+	return s
+}
+
+type ModifyTenantTagsResponseBody struct {
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifyTenantTagsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyTenantTagsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyTenantTagsResponseBody) SetMessage(v string) *ModifyTenantTagsResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ModifyTenantTagsResponseBody) SetRequestId(v string) *ModifyTenantTagsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifyTenantTagsResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ModifyTenantTagsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ModifyTenantTagsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyTenantTagsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyTenantTagsResponse) SetHeaders(v map[string]*string) *ModifyTenantTagsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyTenantTagsResponse) SetStatusCode(v int32) *ModifyTenantTagsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyTenantTagsResponse) SetBody(v *ModifyTenantTagsResponseBody) *ModifyTenantTagsResponse {
 	s.Body = v
 	return s
 }
@@ -14982,6 +15352,54 @@ func (client *Client) DescribeInstanceCreatableZone(request *DescribeInstanceCre
 	return _result, _err
 }
 
+func (client *Client) DescribeInstanceTagsWithOptions(request *DescribeInstanceTagsRequest, runtime *util.RuntimeOptions) (_result *DescribeInstanceTagsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceIds)) {
+		body["InstanceIds"] = request.InstanceIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tags)) {
+		body["Tags"] = request.Tags
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeInstanceTags"),
+		Version:     tea.String("2019-09-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeInstanceTagsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeInstanceTags(request *DescribeInstanceTagsRequest) (_result *DescribeInstanceTagsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeInstanceTagsResponse{}
+	_body, _err := client.DescribeInstanceTagsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DescribeInstanceTenantModesWithOptions(request *DescribeInstanceTenantModesRequest, runtime *util.RuntimeOptions) (_result *DescribeInstanceTenantModesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16056,6 +16474,58 @@ func (client *Client) DescribeTenantMetrics(request *DescribeTenantMetricsReques
 	return _result, _err
 }
 
+func (client *Client) DescribeTenantTagsWithOptions(request *DescribeTenantTagsRequest, runtime *util.RuntimeOptions) (_result *DescribeTenantTagsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tags)) {
+		body["Tags"] = request.Tags
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TenantIds)) {
+		body["TenantIds"] = request.TenantIds
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeTenantTags"),
+		Version:     tea.String("2019-09-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeTenantTagsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeTenantTags(request *DescribeTenantTagsRequest) (_result *DescribeTenantTagsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeTenantTagsResponse{}
+	_body, _err := client.DescribeTenantTagsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DescribeTenantUserRolesWithOptions(runtime *util.RuntimeOptions) (_result *DescribeTenantUserRolesResponse, _err error) {
 	req := &openapi.OpenApiRequest{}
 	params := &openapi.Params{
@@ -16608,6 +17078,54 @@ func (client *Client) ModifyInstanceName(request *ModifyInstanceNameRequest) (_r
 	return _result, _err
 }
 
+func (client *Client) ModifyInstanceTagsWithOptions(request *ModifyInstanceTagsRequest, runtime *util.RuntimeOptions) (_result *ModifyInstanceTagsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tags)) {
+		body["Tags"] = request.Tags
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyInstanceTags"),
+		Version:     tea.String("2019-09-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyInstanceTagsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ModifyInstanceTags(request *ModifyInstanceTagsRequest) (_result *ModifyInstanceTagsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyInstanceTagsResponse{}
+	_body, _err := client.ModifyInstanceTagsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ModifyParametersWithOptions(request *ModifyParametersRequest, runtime *util.RuntimeOptions) (_result *ModifyParametersResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16833,6 +17351,58 @@ func (client *Client) ModifyTenantResource(request *ModifyTenantResourceRequest)
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyTenantResourceResponse{}
 	_body, _err := client.ModifyTenantResourceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ModifyTenantTagsWithOptions(request *ModifyTenantTagsRequest, runtime *util.RuntimeOptions) (_result *ModifyTenantTagsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tags)) {
+		body["Tags"] = request.Tags
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TenantId)) {
+		body["TenantId"] = request.TenantId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyTenantTags"),
+		Version:     tea.String("2019-09-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyTenantTagsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ModifyTenantTags(request *ModifyTenantTagsRequest) (_result *ModifyTenantTagsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyTenantTagsResponse{}
+	_body, _err := client.ModifyTenantTagsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
