@@ -15,6 +15,7 @@ import (
 type ApplyCreateDistributionOrderRequest struct {
 	BuyerId                *string                                             `json:"BuyerId,omitempty" xml:"BuyerId,omitempty"`
 	DeliveryAddress        *string                                             `json:"DeliveryAddress,omitempty" xml:"DeliveryAddress,omitempty"`
+	DistributionOutTradeId *string                                             `json:"DistributionOutTradeId,omitempty" xml:"DistributionOutTradeId,omitempty"`
 	DistributionSupplierId *string                                             `json:"DistributionSupplierId,omitempty" xml:"DistributionSupplierId,omitempty"`
 	DistributorId          *string                                             `json:"DistributorId,omitempty" xml:"DistributorId,omitempty"`
 	ExtInfo                *string                                             `json:"ExtInfo,omitempty" xml:"ExtInfo,omitempty"`
@@ -37,6 +38,11 @@ func (s *ApplyCreateDistributionOrderRequest) SetBuyerId(v string) *ApplyCreateD
 
 func (s *ApplyCreateDistributionOrderRequest) SetDeliveryAddress(v string) *ApplyCreateDistributionOrderRequest {
 	s.DeliveryAddress = &v
+	return s
+}
+
+func (s *ApplyCreateDistributionOrderRequest) SetDistributionOutTradeId(v string) *ApplyCreateDistributionOrderRequest {
+	s.DistributionOutTradeId = &v
 	return s
 }
 
@@ -103,6 +109,7 @@ func (s *ApplyCreateDistributionOrderRequestItemInfoLists) SetSkuId(v string) *A
 type ApplyCreateDistributionOrderShrinkRequest struct {
 	BuyerId                *string `json:"BuyerId,omitempty" xml:"BuyerId,omitempty"`
 	DeliveryAddress        *string `json:"DeliveryAddress,omitempty" xml:"DeliveryAddress,omitempty"`
+	DistributionOutTradeId *string `json:"DistributionOutTradeId,omitempty" xml:"DistributionOutTradeId,omitempty"`
 	DistributionSupplierId *string `json:"DistributionSupplierId,omitempty" xml:"DistributionSupplierId,omitempty"`
 	DistributorId          *string `json:"DistributorId,omitempty" xml:"DistributorId,omitempty"`
 	ExtInfo                *string `json:"ExtInfo,omitempty" xml:"ExtInfo,omitempty"`
@@ -125,6 +132,11 @@ func (s *ApplyCreateDistributionOrderShrinkRequest) SetBuyerId(v string) *ApplyC
 
 func (s *ApplyCreateDistributionOrderShrinkRequest) SetDeliveryAddress(v string) *ApplyCreateDistributionOrderShrinkRequest {
 	s.DeliveryAddress = &v
+	return s
+}
+
+func (s *ApplyCreateDistributionOrderShrinkRequest) SetDistributionOutTradeId(v string) *ApplyCreateDistributionOrderShrinkRequest {
+	s.DistributionOutTradeId = &v
 	return s
 }
 
@@ -4616,14 +4628,15 @@ func (s *QueryItemGuideRetailPriceResponseBody) SetSuccess(v bool) *QueryItemGui
 }
 
 type QueryItemGuideRetailPriceResponseBodyModel struct {
-	DistributionMallId    *string                                                `json:"DistributionMallId,omitempty" xml:"DistributionMallId,omitempty"`
-	GuideRetailPriceScope *string                                                `json:"GuideRetailPriceScope,omitempty" xml:"GuideRetailPriceScope,omitempty"`
-	ItemId                *int64                                                 `json:"ItemId,omitempty" xml:"ItemId,omitempty"`
-	ItemTitle             *string                                                `json:"ItemTitle,omitempty" xml:"ItemTitle,omitempty"`
-	LmItemId              *string                                                `json:"LmItemId,omitempty" xml:"LmItemId,omitempty"`
-	ReservedPrice         *int64                                                 `json:"ReservedPrice,omitempty" xml:"ReservedPrice,omitempty"`
-	ReservedPriceScope    *string                                                `json:"ReservedPriceScope,omitempty" xml:"ReservedPriceScope,omitempty"`
-	SkuModels             []*QueryItemGuideRetailPriceResponseBodyModelSkuModels `json:"SkuModels,omitempty" xml:"SkuModels,omitempty" type:"Repeated"`
+	DistributionMallId       *string                                                `json:"DistributionMallId,omitempty" xml:"DistributionMallId,omitempty"`
+	GuideRetailPriceScope    *string                                                `json:"GuideRetailPriceScope,omitempty" xml:"GuideRetailPriceScope,omitempty"`
+	ItemId                   *int64                                                 `json:"ItemId,omitempty" xml:"ItemId,omitempty"`
+	ItemTitle                *string                                                `json:"ItemTitle,omitempty" xml:"ItemTitle,omitempty"`
+	LmItemId                 *string                                                `json:"LmItemId,omitempty" xml:"LmItemId,omitempty"`
+	LowGuideRetailPriceScope *string                                                `json:"LowGuideRetailPriceScope,omitempty" xml:"LowGuideRetailPriceScope,omitempty"`
+	ReservedPrice            *int64                                                 `json:"ReservedPrice,omitempty" xml:"ReservedPrice,omitempty"`
+	ReservedPriceScope       *string                                                `json:"ReservedPriceScope,omitempty" xml:"ReservedPriceScope,omitempty"`
+	SkuModels                []*QueryItemGuideRetailPriceResponseBodyModelSkuModels `json:"SkuModels,omitempty" xml:"SkuModels,omitempty" type:"Repeated"`
 }
 
 func (s QueryItemGuideRetailPriceResponseBodyModel) String() string {
@@ -4659,6 +4672,11 @@ func (s *QueryItemGuideRetailPriceResponseBodyModel) SetLmItemId(v string) *Quer
 	return s
 }
 
+func (s *QueryItemGuideRetailPriceResponseBodyModel) SetLowGuideRetailPriceScope(v string) *QueryItemGuideRetailPriceResponseBodyModel {
+	s.LowGuideRetailPriceScope = &v
+	return s
+}
+
 func (s *QueryItemGuideRetailPriceResponseBodyModel) SetReservedPrice(v int64) *QueryItemGuideRetailPriceResponseBodyModel {
 	s.ReservedPrice = &v
 	return s
@@ -4675,15 +4693,16 @@ func (s *QueryItemGuideRetailPriceResponseBodyModel) SetSkuModels(v []*QueryItem
 }
 
 type QueryItemGuideRetailPriceResponseBodyModelSkuModels struct {
-	DistributionMallId *string `json:"DistributionMallId,omitempty" xml:"DistributionMallId,omitempty"`
-	GuideRetailPrice   *int64  `json:"GuideRetailPrice,omitempty" xml:"GuideRetailPrice,omitempty"`
-	ItemId             *int64  `json:"ItemId,omitempty" xml:"ItemId,omitempty"`
-	LmItemId           *string `json:"LmItemId,omitempty" xml:"LmItemId,omitempty"`
-	PriceCent          *int64  `json:"PriceCent,omitempty" xml:"PriceCent,omitempty"`
-	ReservedPrice      *int64  `json:"ReservedPrice,omitempty" xml:"ReservedPrice,omitempty"`
-	SkuId              *int64  `json:"SkuId,omitempty" xml:"SkuId,omitempty"`
-	SkuTitle           *string `json:"SkuTitle,omitempty" xml:"SkuTitle,omitempty"`
-	Status             *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+	DistributionMallId  *string `json:"DistributionMallId,omitempty" xml:"DistributionMallId,omitempty"`
+	GuideRetailPrice    *int64  `json:"GuideRetailPrice,omitempty" xml:"GuideRetailPrice,omitempty"`
+	ItemId              *int64  `json:"ItemId,omitempty" xml:"ItemId,omitempty"`
+	LmItemId            *string `json:"LmItemId,omitempty" xml:"LmItemId,omitempty"`
+	LowGuideRetailPrice *int64  `json:"LowGuideRetailPrice,omitempty" xml:"LowGuideRetailPrice,omitempty"`
+	PriceCent           *int64  `json:"PriceCent,omitempty" xml:"PriceCent,omitempty"`
+	ReservedPrice       *int64  `json:"ReservedPrice,omitempty" xml:"ReservedPrice,omitempty"`
+	SkuId               *int64  `json:"SkuId,omitempty" xml:"SkuId,omitempty"`
+	SkuTitle            *string `json:"SkuTitle,omitempty" xml:"SkuTitle,omitempty"`
+	Status              *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s QueryItemGuideRetailPriceResponseBodyModelSkuModels) String() string {
@@ -4711,6 +4730,11 @@ func (s *QueryItemGuideRetailPriceResponseBodyModelSkuModels) SetItemId(v int64)
 
 func (s *QueryItemGuideRetailPriceResponseBodyModelSkuModels) SetLmItemId(v string) *QueryItemGuideRetailPriceResponseBodyModelSkuModels {
 	s.LmItemId = &v
+	return s
+}
+
+func (s *QueryItemGuideRetailPriceResponseBodyModelSkuModels) SetLowGuideRetailPrice(v int64) *QueryItemGuideRetailPriceResponseBodyModelSkuModels {
+	s.LowGuideRetailPrice = &v
 	return s
 }
 
@@ -7913,6 +7937,10 @@ func (client *Client) ApplyCreateDistributionOrderWithOptions(tmpReq *ApplyCreat
 
 	if !tea.BoolValue(util.IsUnset(request.DeliveryAddress)) {
 		body["DeliveryAddress"] = request.DeliveryAddress
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DistributionOutTradeId)) {
+		body["DistributionOutTradeId"] = request.DistributionOutTradeId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.DistributionSupplierId)) {
