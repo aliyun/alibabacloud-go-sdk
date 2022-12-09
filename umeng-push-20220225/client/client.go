@@ -323,6 +323,738 @@ func (s *Policy) SetStartTime(v string) *Policy {
 	return s
 }
 
+type CancelByMsgIdRequest struct {
+	MsgId *string `json:"MsgId,omitempty" xml:"MsgId,omitempty"`
+}
+
+func (s CancelByMsgIdRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CancelByMsgIdRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CancelByMsgIdRequest) SetMsgId(v string) *CancelByMsgIdRequest {
+	s.MsgId = &v
+	return s
+}
+
+type CancelByMsgIdResponseBody struct {
+	Code           *string                        `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data           *CancelByMsgIdResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	HttpStatusCode *int32                         `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string                        `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId      *string                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool                          `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s CancelByMsgIdResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CancelByMsgIdResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CancelByMsgIdResponseBody) SetCode(v string) *CancelByMsgIdResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CancelByMsgIdResponseBody) SetData(v *CancelByMsgIdResponseBodyData) *CancelByMsgIdResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *CancelByMsgIdResponseBody) SetHttpStatusCode(v int32) *CancelByMsgIdResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *CancelByMsgIdResponseBody) SetMessage(v string) *CancelByMsgIdResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CancelByMsgIdResponseBody) SetRequestId(v string) *CancelByMsgIdResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CancelByMsgIdResponseBody) SetSuccess(v bool) *CancelByMsgIdResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CancelByMsgIdResponseBodyData struct {
+	MsgId *string `json:"MsgId,omitempty" xml:"MsgId,omitempty"`
+}
+
+func (s CancelByMsgIdResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CancelByMsgIdResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *CancelByMsgIdResponseBodyData) SetMsgId(v string) *CancelByMsgIdResponseBodyData {
+	s.MsgId = &v
+	return s
+}
+
+type CancelByMsgIdResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CancelByMsgIdResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CancelByMsgIdResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CancelByMsgIdResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CancelByMsgIdResponse) SetHeaders(v map[string]*string) *CancelByMsgIdResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CancelByMsgIdResponse) SetStatusCode(v int32) *CancelByMsgIdResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CancelByMsgIdResponse) SetBody(v *CancelByMsgIdResponseBody) *CancelByMsgIdResponse {
+	s.Body = v
+	return s
+}
+
+type QueryMsgStatRequest struct {
+	MsgId *string `json:"MsgId,omitempty" xml:"MsgId,omitempty"`
+}
+
+func (s QueryMsgStatRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryMsgStatRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryMsgStatRequest) SetMsgId(v string) *QueryMsgStatRequest {
+	s.MsgId = &v
+	return s
+}
+
+type QueryMsgStatResponseBody struct {
+	Code           *string                       `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data           *QueryMsgStatResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	HttpStatusCode *int32                        `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string                       `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId      *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool                         `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s QueryMsgStatResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryMsgStatResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryMsgStatResponseBody) SetCode(v string) *QueryMsgStatResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *QueryMsgStatResponseBody) SetData(v *QueryMsgStatResponseBodyData) *QueryMsgStatResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *QueryMsgStatResponseBody) SetHttpStatusCode(v int32) *QueryMsgStatResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *QueryMsgStatResponseBody) SetMessage(v string) *QueryMsgStatResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *QueryMsgStatResponseBody) SetRequestId(v string) *QueryMsgStatResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QueryMsgStatResponseBody) SetSuccess(v bool) *QueryMsgStatResponseBody {
+	s.Success = &v
+	return s
+}
+
+type QueryMsgStatResponseBodyData struct {
+	Accept    *int64  `json:"Accept,omitempty" xml:"Accept,omitempty"`
+	Arrive    *int64  `json:"Arrive,omitempty" xml:"Arrive,omitempty"`
+	ClosePush *int64  `json:"ClosePush,omitempty" xml:"ClosePush,omitempty"`
+	Dismiss   *int64  `json:"Dismiss,omitempty" xml:"Dismiss,omitempty"`
+	MsgId     *string `json:"MsgId,omitempty" xml:"MsgId,omitempty"`
+	Open      *int64  `json:"Open,omitempty" xml:"Open,omitempty"`
+	Sent      *int64  `json:"Sent,omitempty" xml:"Sent,omitempty"`
+	Status    *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s QueryMsgStatResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryMsgStatResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *QueryMsgStatResponseBodyData) SetAccept(v int64) *QueryMsgStatResponseBodyData {
+	s.Accept = &v
+	return s
+}
+
+func (s *QueryMsgStatResponseBodyData) SetArrive(v int64) *QueryMsgStatResponseBodyData {
+	s.Arrive = &v
+	return s
+}
+
+func (s *QueryMsgStatResponseBodyData) SetClosePush(v int64) *QueryMsgStatResponseBodyData {
+	s.ClosePush = &v
+	return s
+}
+
+func (s *QueryMsgStatResponseBodyData) SetDismiss(v int64) *QueryMsgStatResponseBodyData {
+	s.Dismiss = &v
+	return s
+}
+
+func (s *QueryMsgStatResponseBodyData) SetMsgId(v string) *QueryMsgStatResponseBodyData {
+	s.MsgId = &v
+	return s
+}
+
+func (s *QueryMsgStatResponseBodyData) SetOpen(v int64) *QueryMsgStatResponseBodyData {
+	s.Open = &v
+	return s
+}
+
+func (s *QueryMsgStatResponseBodyData) SetSent(v int64) *QueryMsgStatResponseBodyData {
+	s.Sent = &v
+	return s
+}
+
+func (s *QueryMsgStatResponseBodyData) SetStatus(v int32) *QueryMsgStatResponseBodyData {
+	s.Status = &v
+	return s
+}
+
+type QueryMsgStatResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *QueryMsgStatResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s QueryMsgStatResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryMsgStatResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryMsgStatResponse) SetHeaders(v map[string]*string) *QueryMsgStatResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryMsgStatResponse) SetStatusCode(v int32) *QueryMsgStatResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QueryMsgStatResponse) SetBody(v *QueryMsgStatResponseBody) *QueryMsgStatResponse {
+	s.Body = v
+	return s
+}
+
+type SendByAliasRequest struct {
+	Alias             *string            `json:"Alias,omitempty" xml:"Alias,omitempty"`
+	AliasType         *string            `json:"AliasType,omitempty" xml:"AliasType,omitempty"`
+	AndroidPayload    *AndroidPayload    `json:"AndroidPayload,omitempty" xml:"AndroidPayload,omitempty"`
+	ChannelProperties *ChannelProperties `json:"ChannelProperties,omitempty" xml:"ChannelProperties,omitempty"`
+	Description       *string            `json:"Description,omitempty" xml:"Description,omitempty"`
+	IosPayload        *IosPayload        `json:"IosPayload,omitempty" xml:"IosPayload,omitempty"`
+	Policy            *Policy            `json:"Policy,omitempty" xml:"Policy,omitempty"`
+	ProductionMode    *bool              `json:"ProductionMode,omitempty" xml:"ProductionMode,omitempty"`
+	ReceiptType       *int32             `json:"ReceiptType,omitempty" xml:"ReceiptType,omitempty"`
+	ReceiptUrl        *string            `json:"ReceiptUrl,omitempty" xml:"ReceiptUrl,omitempty"`
+}
+
+func (s SendByAliasRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SendByAliasRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SendByAliasRequest) SetAlias(v string) *SendByAliasRequest {
+	s.Alias = &v
+	return s
+}
+
+func (s *SendByAliasRequest) SetAliasType(v string) *SendByAliasRequest {
+	s.AliasType = &v
+	return s
+}
+
+func (s *SendByAliasRequest) SetAndroidPayload(v *AndroidPayload) *SendByAliasRequest {
+	s.AndroidPayload = v
+	return s
+}
+
+func (s *SendByAliasRequest) SetChannelProperties(v *ChannelProperties) *SendByAliasRequest {
+	s.ChannelProperties = v
+	return s
+}
+
+func (s *SendByAliasRequest) SetDescription(v string) *SendByAliasRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *SendByAliasRequest) SetIosPayload(v *IosPayload) *SendByAliasRequest {
+	s.IosPayload = v
+	return s
+}
+
+func (s *SendByAliasRequest) SetPolicy(v *Policy) *SendByAliasRequest {
+	s.Policy = v
+	return s
+}
+
+func (s *SendByAliasRequest) SetProductionMode(v bool) *SendByAliasRequest {
+	s.ProductionMode = &v
+	return s
+}
+
+func (s *SendByAliasRequest) SetReceiptType(v int32) *SendByAliasRequest {
+	s.ReceiptType = &v
+	return s
+}
+
+func (s *SendByAliasRequest) SetReceiptUrl(v string) *SendByAliasRequest {
+	s.ReceiptUrl = &v
+	return s
+}
+
+type SendByAliasShrinkRequest struct {
+	Alias                   *string `json:"Alias,omitempty" xml:"Alias,omitempty"`
+	AliasType               *string `json:"AliasType,omitempty" xml:"AliasType,omitempty"`
+	AndroidPayloadShrink    *string `json:"AndroidPayload,omitempty" xml:"AndroidPayload,omitempty"`
+	ChannelPropertiesShrink *string `json:"ChannelProperties,omitempty" xml:"ChannelProperties,omitempty"`
+	Description             *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	IosPayloadShrink        *string `json:"IosPayload,omitempty" xml:"IosPayload,omitempty"`
+	PolicyShrink            *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
+	ProductionMode          *bool   `json:"ProductionMode,omitempty" xml:"ProductionMode,omitempty"`
+	ReceiptType             *int32  `json:"ReceiptType,omitempty" xml:"ReceiptType,omitempty"`
+	ReceiptUrl              *string `json:"ReceiptUrl,omitempty" xml:"ReceiptUrl,omitempty"`
+}
+
+func (s SendByAliasShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SendByAliasShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SendByAliasShrinkRequest) SetAlias(v string) *SendByAliasShrinkRequest {
+	s.Alias = &v
+	return s
+}
+
+func (s *SendByAliasShrinkRequest) SetAliasType(v string) *SendByAliasShrinkRequest {
+	s.AliasType = &v
+	return s
+}
+
+func (s *SendByAliasShrinkRequest) SetAndroidPayloadShrink(v string) *SendByAliasShrinkRequest {
+	s.AndroidPayloadShrink = &v
+	return s
+}
+
+func (s *SendByAliasShrinkRequest) SetChannelPropertiesShrink(v string) *SendByAliasShrinkRequest {
+	s.ChannelPropertiesShrink = &v
+	return s
+}
+
+func (s *SendByAliasShrinkRequest) SetDescription(v string) *SendByAliasShrinkRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *SendByAliasShrinkRequest) SetIosPayloadShrink(v string) *SendByAliasShrinkRequest {
+	s.IosPayloadShrink = &v
+	return s
+}
+
+func (s *SendByAliasShrinkRequest) SetPolicyShrink(v string) *SendByAliasShrinkRequest {
+	s.PolicyShrink = &v
+	return s
+}
+
+func (s *SendByAliasShrinkRequest) SetProductionMode(v bool) *SendByAliasShrinkRequest {
+	s.ProductionMode = &v
+	return s
+}
+
+func (s *SendByAliasShrinkRequest) SetReceiptType(v int32) *SendByAliasShrinkRequest {
+	s.ReceiptType = &v
+	return s
+}
+
+func (s *SendByAliasShrinkRequest) SetReceiptUrl(v string) *SendByAliasShrinkRequest {
+	s.ReceiptUrl = &v
+	return s
+}
+
+type SendByAliasResponseBody struct {
+	Code           *string                      `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data           *SendByAliasResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	HttpStatusCode *int32                       `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string                      `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId      *string                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool                        `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s SendByAliasResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SendByAliasResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SendByAliasResponseBody) SetCode(v string) *SendByAliasResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *SendByAliasResponseBody) SetData(v *SendByAliasResponseBodyData) *SendByAliasResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *SendByAliasResponseBody) SetHttpStatusCode(v int32) *SendByAliasResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *SendByAliasResponseBody) SetMessage(v string) *SendByAliasResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *SendByAliasResponseBody) SetRequestId(v string) *SendByAliasResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SendByAliasResponseBody) SetSuccess(v bool) *SendByAliasResponseBody {
+	s.Success = &v
+	return s
+}
+
+type SendByAliasResponseBodyData struct {
+	MsgId *string `json:"MsgId,omitempty" xml:"MsgId,omitempty"`
+}
+
+func (s SendByAliasResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SendByAliasResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *SendByAliasResponseBodyData) SetMsgId(v string) *SendByAliasResponseBodyData {
+	s.MsgId = &v
+	return s
+}
+
+type SendByAliasResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SendByAliasResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SendByAliasResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SendByAliasResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SendByAliasResponse) SetHeaders(v map[string]*string) *SendByAliasResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SendByAliasResponse) SetStatusCode(v int32) *SendByAliasResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SendByAliasResponse) SetBody(v *SendByAliasResponseBody) *SendByAliasResponse {
+	s.Body = v
+	return s
+}
+
+type SendByAliasFileIdRequest struct {
+	AliasType         *string            `json:"AliasType,omitempty" xml:"AliasType,omitempty"`
+	AndroidPayload    *AndroidPayload    `json:"AndroidPayload,omitempty" xml:"AndroidPayload,omitempty"`
+	ChannelProperties *ChannelProperties `json:"ChannelProperties,omitempty" xml:"ChannelProperties,omitempty"`
+	Description       *string            `json:"Description,omitempty" xml:"Description,omitempty"`
+	FileId            *string            `json:"FileId,omitempty" xml:"FileId,omitempty"`
+	IosPayload        *IosPayload        `json:"IosPayload,omitempty" xml:"IosPayload,omitempty"`
+	Policy            *Policy            `json:"Policy,omitempty" xml:"Policy,omitempty"`
+	ProductionMode    *bool              `json:"ProductionMode,omitempty" xml:"ProductionMode,omitempty"`
+	ReceiptType       *int32             `json:"ReceiptType,omitempty" xml:"ReceiptType,omitempty"`
+	ReceiptUrl        *string            `json:"ReceiptUrl,omitempty" xml:"ReceiptUrl,omitempty"`
+}
+
+func (s SendByAliasFileIdRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SendByAliasFileIdRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SendByAliasFileIdRequest) SetAliasType(v string) *SendByAliasFileIdRequest {
+	s.AliasType = &v
+	return s
+}
+
+func (s *SendByAliasFileIdRequest) SetAndroidPayload(v *AndroidPayload) *SendByAliasFileIdRequest {
+	s.AndroidPayload = v
+	return s
+}
+
+func (s *SendByAliasFileIdRequest) SetChannelProperties(v *ChannelProperties) *SendByAliasFileIdRequest {
+	s.ChannelProperties = v
+	return s
+}
+
+func (s *SendByAliasFileIdRequest) SetDescription(v string) *SendByAliasFileIdRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *SendByAliasFileIdRequest) SetFileId(v string) *SendByAliasFileIdRequest {
+	s.FileId = &v
+	return s
+}
+
+func (s *SendByAliasFileIdRequest) SetIosPayload(v *IosPayload) *SendByAliasFileIdRequest {
+	s.IosPayload = v
+	return s
+}
+
+func (s *SendByAliasFileIdRequest) SetPolicy(v *Policy) *SendByAliasFileIdRequest {
+	s.Policy = v
+	return s
+}
+
+func (s *SendByAliasFileIdRequest) SetProductionMode(v bool) *SendByAliasFileIdRequest {
+	s.ProductionMode = &v
+	return s
+}
+
+func (s *SendByAliasFileIdRequest) SetReceiptType(v int32) *SendByAliasFileIdRequest {
+	s.ReceiptType = &v
+	return s
+}
+
+func (s *SendByAliasFileIdRequest) SetReceiptUrl(v string) *SendByAliasFileIdRequest {
+	s.ReceiptUrl = &v
+	return s
+}
+
+type SendByAliasFileIdShrinkRequest struct {
+	AliasType               *string `json:"AliasType,omitempty" xml:"AliasType,omitempty"`
+	AndroidPayloadShrink    *string `json:"AndroidPayload,omitempty" xml:"AndroidPayload,omitempty"`
+	ChannelPropertiesShrink *string `json:"ChannelProperties,omitempty" xml:"ChannelProperties,omitempty"`
+	Description             *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	FileId                  *string `json:"FileId,omitempty" xml:"FileId,omitempty"`
+	IosPayloadShrink        *string `json:"IosPayload,omitempty" xml:"IosPayload,omitempty"`
+	PolicyShrink            *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
+	ProductionMode          *bool   `json:"ProductionMode,omitempty" xml:"ProductionMode,omitempty"`
+	ReceiptType             *int32  `json:"ReceiptType,omitempty" xml:"ReceiptType,omitempty"`
+	ReceiptUrl              *string `json:"ReceiptUrl,omitempty" xml:"ReceiptUrl,omitempty"`
+}
+
+func (s SendByAliasFileIdShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SendByAliasFileIdShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SendByAliasFileIdShrinkRequest) SetAliasType(v string) *SendByAliasFileIdShrinkRequest {
+	s.AliasType = &v
+	return s
+}
+
+func (s *SendByAliasFileIdShrinkRequest) SetAndroidPayloadShrink(v string) *SendByAliasFileIdShrinkRequest {
+	s.AndroidPayloadShrink = &v
+	return s
+}
+
+func (s *SendByAliasFileIdShrinkRequest) SetChannelPropertiesShrink(v string) *SendByAliasFileIdShrinkRequest {
+	s.ChannelPropertiesShrink = &v
+	return s
+}
+
+func (s *SendByAliasFileIdShrinkRequest) SetDescription(v string) *SendByAliasFileIdShrinkRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *SendByAliasFileIdShrinkRequest) SetFileId(v string) *SendByAliasFileIdShrinkRequest {
+	s.FileId = &v
+	return s
+}
+
+func (s *SendByAliasFileIdShrinkRequest) SetIosPayloadShrink(v string) *SendByAliasFileIdShrinkRequest {
+	s.IosPayloadShrink = &v
+	return s
+}
+
+func (s *SendByAliasFileIdShrinkRequest) SetPolicyShrink(v string) *SendByAliasFileIdShrinkRequest {
+	s.PolicyShrink = &v
+	return s
+}
+
+func (s *SendByAliasFileIdShrinkRequest) SetProductionMode(v bool) *SendByAliasFileIdShrinkRequest {
+	s.ProductionMode = &v
+	return s
+}
+
+func (s *SendByAliasFileIdShrinkRequest) SetReceiptType(v int32) *SendByAliasFileIdShrinkRequest {
+	s.ReceiptType = &v
+	return s
+}
+
+func (s *SendByAliasFileIdShrinkRequest) SetReceiptUrl(v string) *SendByAliasFileIdShrinkRequest {
+	s.ReceiptUrl = &v
+	return s
+}
+
+type SendByAliasFileIdResponseBody struct {
+	Code           *string                            `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data           *SendByAliasFileIdResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	HttpStatusCode *int32                             `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string                            `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId      *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool                              `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s SendByAliasFileIdResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SendByAliasFileIdResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SendByAliasFileIdResponseBody) SetCode(v string) *SendByAliasFileIdResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *SendByAliasFileIdResponseBody) SetData(v *SendByAliasFileIdResponseBodyData) *SendByAliasFileIdResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *SendByAliasFileIdResponseBody) SetHttpStatusCode(v int32) *SendByAliasFileIdResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *SendByAliasFileIdResponseBody) SetMessage(v string) *SendByAliasFileIdResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *SendByAliasFileIdResponseBody) SetRequestId(v string) *SendByAliasFileIdResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SendByAliasFileIdResponseBody) SetSuccess(v bool) *SendByAliasFileIdResponseBody {
+	s.Success = &v
+	return s
+}
+
+type SendByAliasFileIdResponseBodyData struct {
+	MsgId *string `json:"MsgId,omitempty" xml:"MsgId,omitempty"`
+}
+
+func (s SendByAliasFileIdResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SendByAliasFileIdResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *SendByAliasFileIdResponseBodyData) SetMsgId(v string) *SendByAliasFileIdResponseBodyData {
+	s.MsgId = &v
+	return s
+}
+
+type SendByAliasFileIdResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SendByAliasFileIdResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SendByAliasFileIdResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SendByAliasFileIdResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SendByAliasFileIdResponse) SetHeaders(v map[string]*string) *SendByAliasFileIdResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SendByAliasFileIdResponse) SetStatusCode(v int32) *SendByAliasFileIdResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SendByAliasFileIdResponse) SetBody(v *SendByAliasFileIdResponseBody) *SendByAliasFileIdResponse {
+	s.Body = v
+	return s
+}
+
 type SendByAppRequest struct {
 	AndroidPayload    *AndroidPayload    `json:"AndroidPayload,omitempty" xml:"AndroidPayload,omitempty"`
 	ChannelProperties *ChannelProperties `json:"ChannelProperties,omitempty" xml:"ChannelProperties,omitempty"`
@@ -757,6 +1489,562 @@ func (s *SendByDeviceResponse) SetBody(v *SendByDeviceResponseBody) *SendByDevic
 	return s
 }
 
+type SendByDeviceFileIdRequest struct {
+	AndroidPayload    *AndroidPayload    `json:"AndroidPayload,omitempty" xml:"AndroidPayload,omitempty"`
+	ChannelProperties *ChannelProperties `json:"ChannelProperties,omitempty" xml:"ChannelProperties,omitempty"`
+	Description       *string            `json:"Description,omitempty" xml:"Description,omitempty"`
+	FileId            *string            `json:"FileId,omitempty" xml:"FileId,omitempty"`
+	IosPayload        *IosPayload        `json:"IosPayload,omitempty" xml:"IosPayload,omitempty"`
+	Policy            *Policy            `json:"Policy,omitempty" xml:"Policy,omitempty"`
+	ProductionMode    *bool              `json:"ProductionMode,omitempty" xml:"ProductionMode,omitempty"`
+	ReceiptType       *int32             `json:"ReceiptType,omitempty" xml:"ReceiptType,omitempty"`
+	ReceiptUrl        *string            `json:"ReceiptUrl,omitempty" xml:"ReceiptUrl,omitempty"`
+}
+
+func (s SendByDeviceFileIdRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SendByDeviceFileIdRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SendByDeviceFileIdRequest) SetAndroidPayload(v *AndroidPayload) *SendByDeviceFileIdRequest {
+	s.AndroidPayload = v
+	return s
+}
+
+func (s *SendByDeviceFileIdRequest) SetChannelProperties(v *ChannelProperties) *SendByDeviceFileIdRequest {
+	s.ChannelProperties = v
+	return s
+}
+
+func (s *SendByDeviceFileIdRequest) SetDescription(v string) *SendByDeviceFileIdRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *SendByDeviceFileIdRequest) SetFileId(v string) *SendByDeviceFileIdRequest {
+	s.FileId = &v
+	return s
+}
+
+func (s *SendByDeviceFileIdRequest) SetIosPayload(v *IosPayload) *SendByDeviceFileIdRequest {
+	s.IosPayload = v
+	return s
+}
+
+func (s *SendByDeviceFileIdRequest) SetPolicy(v *Policy) *SendByDeviceFileIdRequest {
+	s.Policy = v
+	return s
+}
+
+func (s *SendByDeviceFileIdRequest) SetProductionMode(v bool) *SendByDeviceFileIdRequest {
+	s.ProductionMode = &v
+	return s
+}
+
+func (s *SendByDeviceFileIdRequest) SetReceiptType(v int32) *SendByDeviceFileIdRequest {
+	s.ReceiptType = &v
+	return s
+}
+
+func (s *SendByDeviceFileIdRequest) SetReceiptUrl(v string) *SendByDeviceFileIdRequest {
+	s.ReceiptUrl = &v
+	return s
+}
+
+type SendByDeviceFileIdShrinkRequest struct {
+	AndroidPayloadShrink    *string `json:"AndroidPayload,omitempty" xml:"AndroidPayload,omitempty"`
+	ChannelPropertiesShrink *string `json:"ChannelProperties,omitempty" xml:"ChannelProperties,omitempty"`
+	Description             *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	FileId                  *string `json:"FileId,omitempty" xml:"FileId,omitempty"`
+	IosPayloadShrink        *string `json:"IosPayload,omitempty" xml:"IosPayload,omitempty"`
+	PolicyShrink            *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
+	ProductionMode          *bool   `json:"ProductionMode,omitempty" xml:"ProductionMode,omitempty"`
+	ReceiptType             *int32  `json:"ReceiptType,omitempty" xml:"ReceiptType,omitempty"`
+	ReceiptUrl              *string `json:"ReceiptUrl,omitempty" xml:"ReceiptUrl,omitempty"`
+}
+
+func (s SendByDeviceFileIdShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SendByDeviceFileIdShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SendByDeviceFileIdShrinkRequest) SetAndroidPayloadShrink(v string) *SendByDeviceFileIdShrinkRequest {
+	s.AndroidPayloadShrink = &v
+	return s
+}
+
+func (s *SendByDeviceFileIdShrinkRequest) SetChannelPropertiesShrink(v string) *SendByDeviceFileIdShrinkRequest {
+	s.ChannelPropertiesShrink = &v
+	return s
+}
+
+func (s *SendByDeviceFileIdShrinkRequest) SetDescription(v string) *SendByDeviceFileIdShrinkRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *SendByDeviceFileIdShrinkRequest) SetFileId(v string) *SendByDeviceFileIdShrinkRequest {
+	s.FileId = &v
+	return s
+}
+
+func (s *SendByDeviceFileIdShrinkRequest) SetIosPayloadShrink(v string) *SendByDeviceFileIdShrinkRequest {
+	s.IosPayloadShrink = &v
+	return s
+}
+
+func (s *SendByDeviceFileIdShrinkRequest) SetPolicyShrink(v string) *SendByDeviceFileIdShrinkRequest {
+	s.PolicyShrink = &v
+	return s
+}
+
+func (s *SendByDeviceFileIdShrinkRequest) SetProductionMode(v bool) *SendByDeviceFileIdShrinkRequest {
+	s.ProductionMode = &v
+	return s
+}
+
+func (s *SendByDeviceFileIdShrinkRequest) SetReceiptType(v int32) *SendByDeviceFileIdShrinkRequest {
+	s.ReceiptType = &v
+	return s
+}
+
+func (s *SendByDeviceFileIdShrinkRequest) SetReceiptUrl(v string) *SendByDeviceFileIdShrinkRequest {
+	s.ReceiptUrl = &v
+	return s
+}
+
+type SendByDeviceFileIdResponseBody struct {
+	Code           *string                             `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data           *SendByDeviceFileIdResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	HttpStatusCode *int32                              `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string                             `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId      *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool                               `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s SendByDeviceFileIdResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SendByDeviceFileIdResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SendByDeviceFileIdResponseBody) SetCode(v string) *SendByDeviceFileIdResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *SendByDeviceFileIdResponseBody) SetData(v *SendByDeviceFileIdResponseBodyData) *SendByDeviceFileIdResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *SendByDeviceFileIdResponseBody) SetHttpStatusCode(v int32) *SendByDeviceFileIdResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *SendByDeviceFileIdResponseBody) SetMessage(v string) *SendByDeviceFileIdResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *SendByDeviceFileIdResponseBody) SetRequestId(v string) *SendByDeviceFileIdResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SendByDeviceFileIdResponseBody) SetSuccess(v bool) *SendByDeviceFileIdResponseBody {
+	s.Success = &v
+	return s
+}
+
+type SendByDeviceFileIdResponseBodyData struct {
+	MsgId *string `json:"MsgId,omitempty" xml:"MsgId,omitempty"`
+}
+
+func (s SendByDeviceFileIdResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SendByDeviceFileIdResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *SendByDeviceFileIdResponseBodyData) SetMsgId(v string) *SendByDeviceFileIdResponseBodyData {
+	s.MsgId = &v
+	return s
+}
+
+type SendByDeviceFileIdResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SendByDeviceFileIdResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SendByDeviceFileIdResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SendByDeviceFileIdResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SendByDeviceFileIdResponse) SetHeaders(v map[string]*string) *SendByDeviceFileIdResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SendByDeviceFileIdResponse) SetStatusCode(v int32) *SendByDeviceFileIdResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SendByDeviceFileIdResponse) SetBody(v *SendByDeviceFileIdResponseBody) *SendByDeviceFileIdResponse {
+	s.Body = v
+	return s
+}
+
+type SendByFilterRequest struct {
+	AndroidPayload    *AndroidPayload    `json:"AndroidPayload,omitempty" xml:"AndroidPayload,omitempty"`
+	ChannelProperties *ChannelProperties `json:"ChannelProperties,omitempty" xml:"ChannelProperties,omitempty"`
+	Description       *string            `json:"Description,omitempty" xml:"Description,omitempty"`
+	Filter            *string            `json:"Filter,omitempty" xml:"Filter,omitempty"`
+	IosPayload        *IosPayload        `json:"IosPayload,omitempty" xml:"IosPayload,omitempty"`
+	Policy            *Policy            `json:"Policy,omitempty" xml:"Policy,omitempty"`
+	ProductionMode    *bool              `json:"ProductionMode,omitempty" xml:"ProductionMode,omitempty"`
+	ReceiptType       *int32             `json:"ReceiptType,omitempty" xml:"ReceiptType,omitempty"`
+	ReceiptUrl        *string            `json:"ReceiptUrl,omitempty" xml:"ReceiptUrl,omitempty"`
+}
+
+func (s SendByFilterRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SendByFilterRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SendByFilterRequest) SetAndroidPayload(v *AndroidPayload) *SendByFilterRequest {
+	s.AndroidPayload = v
+	return s
+}
+
+func (s *SendByFilterRequest) SetChannelProperties(v *ChannelProperties) *SendByFilterRequest {
+	s.ChannelProperties = v
+	return s
+}
+
+func (s *SendByFilterRequest) SetDescription(v string) *SendByFilterRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *SendByFilterRequest) SetFilter(v string) *SendByFilterRequest {
+	s.Filter = &v
+	return s
+}
+
+func (s *SendByFilterRequest) SetIosPayload(v *IosPayload) *SendByFilterRequest {
+	s.IosPayload = v
+	return s
+}
+
+func (s *SendByFilterRequest) SetPolicy(v *Policy) *SendByFilterRequest {
+	s.Policy = v
+	return s
+}
+
+func (s *SendByFilterRequest) SetProductionMode(v bool) *SendByFilterRequest {
+	s.ProductionMode = &v
+	return s
+}
+
+func (s *SendByFilterRequest) SetReceiptType(v int32) *SendByFilterRequest {
+	s.ReceiptType = &v
+	return s
+}
+
+func (s *SendByFilterRequest) SetReceiptUrl(v string) *SendByFilterRequest {
+	s.ReceiptUrl = &v
+	return s
+}
+
+type SendByFilterShrinkRequest struct {
+	AndroidPayloadShrink    *string `json:"AndroidPayload,omitempty" xml:"AndroidPayload,omitempty"`
+	ChannelPropertiesShrink *string `json:"ChannelProperties,omitempty" xml:"ChannelProperties,omitempty"`
+	Description             *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Filter                  *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
+	IosPayloadShrink        *string `json:"IosPayload,omitempty" xml:"IosPayload,omitempty"`
+	PolicyShrink            *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
+	ProductionMode          *bool   `json:"ProductionMode,omitempty" xml:"ProductionMode,omitempty"`
+	ReceiptType             *int32  `json:"ReceiptType,omitempty" xml:"ReceiptType,omitempty"`
+	ReceiptUrl              *string `json:"ReceiptUrl,omitempty" xml:"ReceiptUrl,omitempty"`
+}
+
+func (s SendByFilterShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SendByFilterShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SendByFilterShrinkRequest) SetAndroidPayloadShrink(v string) *SendByFilterShrinkRequest {
+	s.AndroidPayloadShrink = &v
+	return s
+}
+
+func (s *SendByFilterShrinkRequest) SetChannelPropertiesShrink(v string) *SendByFilterShrinkRequest {
+	s.ChannelPropertiesShrink = &v
+	return s
+}
+
+func (s *SendByFilterShrinkRequest) SetDescription(v string) *SendByFilterShrinkRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *SendByFilterShrinkRequest) SetFilter(v string) *SendByFilterShrinkRequest {
+	s.Filter = &v
+	return s
+}
+
+func (s *SendByFilterShrinkRequest) SetIosPayloadShrink(v string) *SendByFilterShrinkRequest {
+	s.IosPayloadShrink = &v
+	return s
+}
+
+func (s *SendByFilterShrinkRequest) SetPolicyShrink(v string) *SendByFilterShrinkRequest {
+	s.PolicyShrink = &v
+	return s
+}
+
+func (s *SendByFilterShrinkRequest) SetProductionMode(v bool) *SendByFilterShrinkRequest {
+	s.ProductionMode = &v
+	return s
+}
+
+func (s *SendByFilterShrinkRequest) SetReceiptType(v int32) *SendByFilterShrinkRequest {
+	s.ReceiptType = &v
+	return s
+}
+
+func (s *SendByFilterShrinkRequest) SetReceiptUrl(v string) *SendByFilterShrinkRequest {
+	s.ReceiptUrl = &v
+	return s
+}
+
+type SendByFilterResponseBody struct {
+	Code           *string                       `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data           *SendByFilterResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	HttpStatusCode *int32                        `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string                       `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId      *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool                         `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s SendByFilterResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SendByFilterResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SendByFilterResponseBody) SetCode(v string) *SendByFilterResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *SendByFilterResponseBody) SetData(v *SendByFilterResponseBodyData) *SendByFilterResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *SendByFilterResponseBody) SetHttpStatusCode(v int32) *SendByFilterResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *SendByFilterResponseBody) SetMessage(v string) *SendByFilterResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *SendByFilterResponseBody) SetRequestId(v string) *SendByFilterResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SendByFilterResponseBody) SetSuccess(v bool) *SendByFilterResponseBody {
+	s.Success = &v
+	return s
+}
+
+type SendByFilterResponseBodyData struct {
+	MsgId *string `json:"MsgId,omitempty" xml:"MsgId,omitempty"`
+}
+
+func (s SendByFilterResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SendByFilterResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *SendByFilterResponseBodyData) SetMsgId(v string) *SendByFilterResponseBodyData {
+	s.MsgId = &v
+	return s
+}
+
+type SendByFilterResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SendByFilterResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SendByFilterResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SendByFilterResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SendByFilterResponse) SetHeaders(v map[string]*string) *SendByFilterResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SendByFilterResponse) SetStatusCode(v int32) *SendByFilterResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SendByFilterResponse) SetBody(v *SendByFilterResponseBody) *SendByFilterResponse {
+	s.Body = v
+	return s
+}
+
+type UploadDeviceRequest struct {
+	DeviceTokens *string `json:"DeviceTokens,omitempty" xml:"DeviceTokens,omitempty"`
+}
+
+func (s UploadDeviceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UploadDeviceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UploadDeviceRequest) SetDeviceTokens(v string) *UploadDeviceRequest {
+	s.DeviceTokens = &v
+	return s
+}
+
+type UploadDeviceResponseBody struct {
+	Code           *string                       `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data           *UploadDeviceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	HttpStatusCode *int32                        `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string                       `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId      *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool                         `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UploadDeviceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UploadDeviceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UploadDeviceResponseBody) SetCode(v string) *UploadDeviceResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UploadDeviceResponseBody) SetData(v *UploadDeviceResponseBodyData) *UploadDeviceResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *UploadDeviceResponseBody) SetHttpStatusCode(v int32) *UploadDeviceResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *UploadDeviceResponseBody) SetMessage(v string) *UploadDeviceResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UploadDeviceResponseBody) SetRequestId(v string) *UploadDeviceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UploadDeviceResponseBody) SetSuccess(v bool) *UploadDeviceResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UploadDeviceResponseBodyData struct {
+	FileId *string `json:"FileId,omitempty" xml:"FileId,omitempty"`
+}
+
+func (s UploadDeviceResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UploadDeviceResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *UploadDeviceResponseBodyData) SetFileId(v string) *UploadDeviceResponseBodyData {
+	s.FileId = &v
+	return s
+}
+
+type UploadDeviceResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UploadDeviceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UploadDeviceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UploadDeviceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UploadDeviceResponse) SetHeaders(v map[string]*string) *UploadDeviceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UploadDeviceResponse) SetStatusCode(v int32) *UploadDeviceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UploadDeviceResponse) SetBody(v *UploadDeviceResponseBody) *UploadDeviceResponse {
+	s.Body = v
+	return s
+}
+
 type Client struct {
 	openapi.Client
 }
@@ -801,6 +2089,298 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 		return _result, _err
 	}
 	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CancelByMsgId(request *CancelByMsgIdRequest) (_result *CancelByMsgIdResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CancelByMsgIdResponse{}
+	_body, _err := client.CancelByMsgIdWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CancelByMsgIdWithOptions(request *CancelByMsgIdRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CancelByMsgIdResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.MsgId)) {
+		body["MsgId"] = request.MsgId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CancelByMsgId"),
+		Version:     tea.String("2022-02-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/CancelByMsgId"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CancelByMsgIdResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) QueryMsgStat(request *QueryMsgStatRequest) (_result *QueryMsgStatResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &QueryMsgStatResponse{}
+	_body, _err := client.QueryMsgStatWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) QueryMsgStatWithOptions(request *QueryMsgStatRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryMsgStatResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.MsgId)) {
+		body["MsgId"] = request.MsgId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryMsgStat"),
+		Version:     tea.String("2022-02-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/QueryMsgStat"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QueryMsgStatResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SendByAlias(request *SendByAliasRequest) (_result *SendByAliasResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &SendByAliasResponse{}
+	_body, _err := client.SendByAliasWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SendByAliasWithOptions(tmpReq *SendByAliasRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *SendByAliasResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &SendByAliasShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.AndroidPayload)) {
+		request.AndroidPayloadShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.AndroidPayload, tea.String("AndroidPayload"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.ChannelProperties)) {
+		request.ChannelPropertiesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ChannelProperties, tea.String("ChannelProperties"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.IosPayload)) {
+		request.IosPayloadShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.IosPayload, tea.String("IosPayload"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.Policy)) {
+		request.PolicyShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Policy, tea.String("Policy"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Alias)) {
+		body["Alias"] = request.Alias
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AliasType)) {
+		body["AliasType"] = request.AliasType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AndroidPayloadShrink)) {
+		body["AndroidPayload"] = request.AndroidPayloadShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ChannelPropertiesShrink)) {
+		body["ChannelProperties"] = request.ChannelPropertiesShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		body["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IosPayloadShrink)) {
+		body["IosPayload"] = request.IosPayloadShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PolicyShrink)) {
+		body["Policy"] = request.PolicyShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductionMode)) {
+		body["ProductionMode"] = request.ProductionMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ReceiptType)) {
+		body["ReceiptType"] = request.ReceiptType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ReceiptUrl)) {
+		body["ReceiptUrl"] = request.ReceiptUrl
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SendByAlias"),
+		Version:     tea.String("2022-02-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/SendByAlias"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SendByAliasResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SendByAliasFileId(request *SendByAliasFileIdRequest) (_result *SendByAliasFileIdResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &SendByAliasFileIdResponse{}
+	_body, _err := client.SendByAliasFileIdWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SendByAliasFileIdWithOptions(tmpReq *SendByAliasFileIdRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *SendByAliasFileIdResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &SendByAliasFileIdShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.AndroidPayload)) {
+		request.AndroidPayloadShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.AndroidPayload, tea.String("AndroidPayload"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.ChannelProperties)) {
+		request.ChannelPropertiesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ChannelProperties, tea.String("ChannelProperties"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.IosPayload)) {
+		request.IosPayloadShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.IosPayload, tea.String("IosPayload"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.Policy)) {
+		request.PolicyShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Policy, tea.String("Policy"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AliasType)) {
+		body["AliasType"] = request.AliasType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AndroidPayloadShrink)) {
+		body["AndroidPayload"] = request.AndroidPayloadShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ChannelPropertiesShrink)) {
+		body["ChannelProperties"] = request.ChannelPropertiesShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		body["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FileId)) {
+		body["FileId"] = request.FileId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IosPayloadShrink)) {
+		body["IosPayload"] = request.IosPayloadShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PolicyShrink)) {
+		body["Policy"] = request.PolicyShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductionMode)) {
+		body["ProductionMode"] = request.ProductionMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ReceiptType)) {
+		body["ReceiptType"] = request.ReceiptType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ReceiptUrl)) {
+		body["ReceiptUrl"] = request.ReceiptUrl
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SendByAliasFileId"),
+		Version:     tea.String("2022-02-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/SendByAliasFileId"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SendByAliasFileIdResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
 	return _result, _err
 }
 
@@ -984,6 +2564,244 @@ func (client *Client) SendByDeviceWithOptions(tmpReq *SendByDeviceRequest, heade
 		BodyType:    tea.String("json"),
 	}
 	_result = &SendByDeviceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SendByDeviceFileId(request *SendByDeviceFileIdRequest) (_result *SendByDeviceFileIdResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &SendByDeviceFileIdResponse{}
+	_body, _err := client.SendByDeviceFileIdWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SendByDeviceFileIdWithOptions(tmpReq *SendByDeviceFileIdRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *SendByDeviceFileIdResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &SendByDeviceFileIdShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.AndroidPayload)) {
+		request.AndroidPayloadShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.AndroidPayload, tea.String("AndroidPayload"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.ChannelProperties)) {
+		request.ChannelPropertiesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ChannelProperties, tea.String("ChannelProperties"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.IosPayload)) {
+		request.IosPayloadShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.IosPayload, tea.String("IosPayload"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.Policy)) {
+		request.PolicyShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Policy, tea.String("Policy"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AndroidPayloadShrink)) {
+		body["AndroidPayload"] = request.AndroidPayloadShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ChannelPropertiesShrink)) {
+		body["ChannelProperties"] = request.ChannelPropertiesShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		body["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FileId)) {
+		body["FileId"] = request.FileId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IosPayloadShrink)) {
+		body["IosPayload"] = request.IosPayloadShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PolicyShrink)) {
+		body["Policy"] = request.PolicyShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductionMode)) {
+		body["ProductionMode"] = request.ProductionMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ReceiptType)) {
+		body["ReceiptType"] = request.ReceiptType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ReceiptUrl)) {
+		body["ReceiptUrl"] = request.ReceiptUrl
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SendByDeviceFileId"),
+		Version:     tea.String("2022-02-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/SendByDeviceFileId"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SendByDeviceFileIdResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SendByFilter(request *SendByFilterRequest) (_result *SendByFilterResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &SendByFilterResponse{}
+	_body, _err := client.SendByFilterWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SendByFilterWithOptions(tmpReq *SendByFilterRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *SendByFilterResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &SendByFilterShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.AndroidPayload)) {
+		request.AndroidPayloadShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.AndroidPayload, tea.String("AndroidPayload"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.ChannelProperties)) {
+		request.ChannelPropertiesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ChannelProperties, tea.String("ChannelProperties"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.IosPayload)) {
+		request.IosPayloadShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.IosPayload, tea.String("IosPayload"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.Policy)) {
+		request.PolicyShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Policy, tea.String("Policy"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AndroidPayloadShrink)) {
+		body["AndroidPayload"] = request.AndroidPayloadShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ChannelPropertiesShrink)) {
+		body["ChannelProperties"] = request.ChannelPropertiesShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		body["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Filter)) {
+		body["Filter"] = request.Filter
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IosPayloadShrink)) {
+		body["IosPayload"] = request.IosPayloadShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PolicyShrink)) {
+		body["Policy"] = request.PolicyShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductionMode)) {
+		body["ProductionMode"] = request.ProductionMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ReceiptType)) {
+		body["ReceiptType"] = request.ReceiptType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ReceiptUrl)) {
+		body["ReceiptUrl"] = request.ReceiptUrl
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SendByFilter"),
+		Version:     tea.String("2022-02-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/SendByFilter"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SendByFilterResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UploadDevice(request *UploadDeviceRequest) (_result *UploadDeviceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UploadDeviceResponse{}
+	_body, _err := client.UploadDeviceWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UploadDeviceWithOptions(request *UploadDeviceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UploadDeviceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DeviceTokens)) {
+		body["DeviceTokens"] = request.DeviceTokens
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UploadDevice"),
+		Version:     tea.String("2022-02-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/UploadDevice"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UploadDeviceResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
