@@ -749,7 +749,7 @@ func (s *ErasePersonRequest) SetUserMask(v string) *ErasePersonRequest {
 
 type ErasePersonAdvanceRequest struct {
 	ImageURLObject io.Reader `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
-	UserMask       *string   `json:"UserMask,omitempty" xml:"UserMask,omitempty"`
+	UserMaskObject io.Reader `json:"UserMask,omitempty" xml:"UserMask,omitempty"`
 }
 
 func (s ErasePersonAdvanceRequest) String() string {
@@ -765,8 +765,8 @@ func (s *ErasePersonAdvanceRequest) SetImageURLObject(v io.Reader) *ErasePersonA
 	return s
 }
 
-func (s *ErasePersonAdvanceRequest) SetUserMask(v string) *ErasePersonAdvanceRequest {
-	s.UserMask = &v
+func (s *ErasePersonAdvanceRequest) SetUserMaskObject(v io.Reader) *ErasePersonAdvanceRequest {
+	s.UserMaskObject = v
 	return s
 }
 
@@ -3693,6 +3693,43 @@ func (client *Client) ErasePersonAdvance(request *ErasePersonAdvanceRequest, run
 			return _result, _err
 		}
 		erasePersonReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserMaskObject)) {
+		authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+
+		ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
+		ossClient, _err = oss.NewClient(ossConfig)
+		if _err != nil {
+			return _result, _err
+		}
+
+		fileObj = &fileform.FileField{
+			Filename:    authResponse.Body.ObjectKey,
+			Content:     request.UserMaskObject,
+			ContentType: tea.String(""),
+		}
+		ossHeader = &oss.PostObjectRequestHeader{
+			AccessKeyId:         authResponse.Body.AccessKeyId,
+			Policy:              authResponse.Body.EncodedPolicy,
+			Signature:           authResponse.Body.Signature,
+			Key:                 authResponse.Body.ObjectKey,
+			File:                fileObj,
+			SuccessActionStatus: tea.String("201"),
+		}
+		uploadRequest = &oss.PostObjectRequest{
+			BucketName: authResponse.Body.Bucket,
+			Header:     ossHeader,
+		}
+		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+		if _err != nil {
+			return _result, _err
+		}
+		erasePersonReq.UserMask = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
 	}
 
 	erasePersonResp, _err := client.ErasePersonWithOptions(erasePersonReq, runtime)
