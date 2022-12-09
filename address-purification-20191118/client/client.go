@@ -5,10 +5,10 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/client"
+	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
 	openapiutil "github.com/alibabacloud-go/openapi-util/service"
-	util "github.com/alibabacloud-go/tea-utils/service"
+	util "github.com/alibabacloud-go/tea-utils/v2/service"
 	"github.com/alibabacloud-go/tea/tea"
 )
 
@@ -83,8 +83,9 @@ func (s *CorrectAddressResponseBody) SetRequestId(v string) *CorrectAddressRespo
 }
 
 type CorrectAddressResponse struct {
-	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CorrectAddressResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CorrectAddressResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CorrectAddressResponse) String() string {
@@ -97,6 +98,11 @@ func (s CorrectAddressResponse) GoString() string {
 
 func (s *CorrectAddressResponse) SetHeaders(v map[string]*string) *CorrectAddressResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *CorrectAddressResponse) SetStatusCode(v int32) *CorrectAddressResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -176,8 +182,9 @@ func (s *ExtractAddressResponseBody) SetRequestId(v string) *ExtractAddressRespo
 }
 
 type ExtractAddressResponse struct {
-	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ExtractAddressResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ExtractAddressResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ExtractAddressResponse) String() string {
@@ -190,6 +197,11 @@ func (s ExtractAddressResponse) GoString() string {
 
 func (s *ExtractAddressResponse) SetHeaders(v map[string]*string) *ExtractAddressResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ExtractAddressResponse) SetStatusCode(v int32) *ExtractAddressResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -269,8 +281,9 @@ func (s *ExtractNameResponseBody) SetRequestId(v string) *ExtractNameResponseBod
 }
 
 type ExtractNameResponse struct {
-	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ExtractNameResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ExtractNameResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ExtractNameResponse) String() string {
@@ -283,6 +296,11 @@ func (s ExtractNameResponse) GoString() string {
 
 func (s *ExtractNameResponse) SetHeaders(v map[string]*string) *ExtractNameResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ExtractNameResponse) SetStatusCode(v int32) *ExtractNameResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -362,8 +380,9 @@ func (s *ExtractPhoneResponseBody) SetRequestId(v string) *ExtractPhoneResponseB
 }
 
 type ExtractPhoneResponse struct {
-	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ExtractPhoneResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ExtractPhoneResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ExtractPhoneResponse) String() string {
@@ -376,6 +395,11 @@ func (s ExtractPhoneResponse) GoString() string {
 
 func (s *ExtractPhoneResponse) SetHeaders(v map[string]*string) *ExtractPhoneResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ExtractPhoneResponse) SetStatusCode(v int32) *ExtractPhoneResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -455,8 +479,9 @@ func (s *GetAddressDivisionCodeResponseBody) SetRequestId(v string) *GetAddressD
 }
 
 type GetAddressDivisionCodeResponse struct {
-	Headers map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetAddressDivisionCodeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetAddressDivisionCodeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetAddressDivisionCodeResponse) String() string {
@@ -469,6 +494,11 @@ func (s GetAddressDivisionCodeResponse) GoString() string {
 
 func (s *GetAddressDivisionCodeResponse) SetHeaders(v map[string]*string) *GetAddressDivisionCodeResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *GetAddressDivisionCodeResponse) SetStatusCode(v int32) *GetAddressDivisionCodeResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -548,8 +578,9 @@ func (s *GetAddressSimilarityResponseBody) SetRequestId(v string) *GetAddressSim
 }
 
 type GetAddressSimilarityResponse struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetAddressSimilarityResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetAddressSimilarityResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetAddressSimilarityResponse) String() string {
@@ -562,6 +593,11 @@ func (s GetAddressSimilarityResponse) GoString() string {
 
 func (s *GetAddressSimilarityResponse) SetHeaders(v map[string]*string) *GetAddressSimilarityResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *GetAddressSimilarityResponse) SetStatusCode(v int32) *GetAddressSimilarityResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -641,8 +677,9 @@ func (s *GetZipcodeResponseBody) SetRequestId(v string) *GetZipcodeResponseBody 
 }
 
 type GetZipcodeResponse struct {
-	Headers map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetZipcodeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetZipcodeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetZipcodeResponse) String() string {
@@ -655,6 +692,11 @@ func (s GetZipcodeResponse) GoString() string {
 
 func (s *GetZipcodeResponse) SetHeaders(v map[string]*string) *GetZipcodeResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *GetZipcodeResponse) SetStatusCode(v int32) *GetZipcodeResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -734,8 +776,9 @@ func (s *StructureAddressResponseBody) SetRequestId(v string) *StructureAddressR
 }
 
 type StructureAddressResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *StructureAddressResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *StructureAddressResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s StructureAddressResponse) String() string {
@@ -748,6 +791,11 @@ func (s StructureAddressResponse) GoString() string {
 
 func (s *StructureAddressResponse) SetHeaders(v map[string]*string) *StructureAddressResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *StructureAddressResponse) SetStatusCode(v int32) *StructureAddressResponse {
+	s.StatusCode = &v
 	return s
 }
 
