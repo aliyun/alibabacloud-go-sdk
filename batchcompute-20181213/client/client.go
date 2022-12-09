@@ -5,32 +5,23 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/client"
+	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
 	openapiutil "github.com/alibabacloud-go/openapi-util/service"
-	util "github.com/alibabacloud-go/tea-utils/service"
+	util "github.com/alibabacloud-go/tea-utils/v2/service"
 	"github.com/alibabacloud-go/tea/tea"
 )
 
 type Attempt struct {
-	// EndTime
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// ExitCode
-	ExitCode *int32 `json:"ExitCode,omitempty" xml:"ExitCode,omitempty"`
-	// Output
-	Output []byte `json:"Output,omitempty" xml:"Output,omitempty"`
-	// Pid
-	Pid *int32 `json:"Pid,omitempty" xml:"Pid,omitempty"`
-	// Reason
-	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
-	// StartTime
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// State
-	State *string `json:"State,omitempty" xml:"State,omitempty"`
-	// UserStages
+	EndTime    *string      `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	ExitCode   *int32       `json:"ExitCode,omitempty" xml:"ExitCode,omitempty"`
+	Output     []byte       `json:"Output,omitempty" xml:"Output,omitempty"`
+	Pid        *int32       `json:"Pid,omitempty" xml:"Pid,omitempty"`
+	Reason     *string      `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	StartTime  *string      `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	State      *string      `json:"State,omitempty" xml:"State,omitempty"`
 	UserStages []*UserStage `json:"UserStages,omitempty" xml:"UserStages,omitempty" type:"Repeated"`
-	// Worker
-	Worker *string `json:"Worker,omitempty" xml:"Worker,omitempty"`
+	Worker     *string      `json:"Worker,omitempty" xml:"Worker,omitempty"`
 }
 
 func (s Attempt) String() string {
@@ -87,9 +78,7 @@ func (s *Attempt) SetWorker(v string) *Attempt {
 }
 
 type AutoScaling struct {
-	// Scaling
 	Scaling *Scaling `json:"Scaling,omitempty" xml:"Scaling,omitempty"`
-	// Trigger
 	Trigger *Trigger `json:"Trigger,omitempty" xml:"Trigger,omitempty"`
 }
 
@@ -112,24 +101,15 @@ func (s *AutoScaling) SetTrigger(v *Trigger) *AutoScaling {
 }
 
 type Bootstrap struct {
-	// Background
-	Background *bool `json:"Background,omitempty" xml:"Background,omitempty"`
-	// Command
-	Command []*string `json:"Command,omitempty" xml:"Command,omitempty" type:"Repeated"`
-	// Envs
-	Envs map[string]*string `json:"Envs,omitempty" xml:"Envs,omitempty"`
-	// Loggings
-	Loggings *Logging `json:"Loggings,omitempty" xml:"Loggings,omitempty"`
-	// MountPoints
-	MountPoints []*MountPoint `json:"MountPoints,omitempty" xml:"MountPoints,omitempty" type:"Repeated"`
-	// PackageUri
-	PackageUri *string `json:"PackageUri,omitempty" xml:"PackageUri,omitempty"`
-	// RunningTimeout
-	RunningTimeout *int32 `json:"RunningTimeout,omitempty" xml:"RunningTimeout,omitempty"`
-	// Runtimes
-	Runtimes *BootstrapRuntime `json:"Runtimes,omitempty" xml:"Runtimes,omitempty"`
-	// Volumes
-	Volumes []*Volume `json:"Volumes,omitempty" xml:"Volumes,omitempty" type:"Repeated"`
+	Background     *bool              `json:"Background,omitempty" xml:"Background,omitempty"`
+	Command        []*string          `json:"Command,omitempty" xml:"Command,omitempty" type:"Repeated"`
+	Envs           map[string]*string `json:"Envs,omitempty" xml:"Envs,omitempty"`
+	Loggings       []*Logging         `json:"Loggings,omitempty" xml:"Loggings,omitempty" type:"Repeated"`
+	MountPoints    []*MountPoint      `json:"MountPoints,omitempty" xml:"MountPoints,omitempty" type:"Repeated"`
+	PackageUri     *string            `json:"PackageUri,omitempty" xml:"PackageUri,omitempty"`
+	RunningTimeout *int32             `json:"RunningTimeout,omitempty" xml:"RunningTimeout,omitempty"`
+	Runtimes       *BootstrapRuntime  `json:"Runtimes,omitempty" xml:"Runtimes,omitempty"`
+	Volumes        []*Volume          `json:"Volumes,omitempty" xml:"Volumes,omitempty" type:"Repeated"`
 }
 
 func (s Bootstrap) String() string {
@@ -155,7 +135,7 @@ func (s *Bootstrap) SetEnvs(v map[string]*string) *Bootstrap {
 	return s
 }
 
-func (s *Bootstrap) SetLoggings(v *Logging) *Bootstrap {
+func (s *Bootstrap) SetLoggings(v []*Logging) *Bootstrap {
 	s.Loggings = v
 	return s
 }
@@ -186,8 +166,8 @@ func (s *Bootstrap) SetVolumes(v []*Volume) *Bootstrap {
 }
 
 type BootstrapRuntime struct {
-	// Docker
-	Docker *Docker `json:"Docker,omitempty" xml:"Docker,omitempty"`
+	Docker         *Docker `json:"Docker,omitempty" xml:"Docker,omitempty"`
+	ShareDirectory *string `json:"ShareDirectory,omitempty" xml:"ShareDirectory,omitempty"`
 }
 
 func (s BootstrapRuntime) String() string {
@@ -203,41 +183,31 @@ func (s *BootstrapRuntime) SetDocker(v *Docker) *BootstrapRuntime {
 	return s
 }
 
+func (s *BootstrapRuntime) SetShareDirectory(v string) *BootstrapRuntime {
+	s.ShareDirectory = &v
+	return s
+}
+
 type ClusterDefinition struct {
-	// AutoScaling
-	AutoScaling []*AutoScaling `json:"AutoScaling,omitempty" xml:"AutoScaling,omitempty" type:"Repeated"`
-	// Bootstrap
-	Bootstrap *Bootstrap `json:"Bootstrap,omitempty" xml:"Bootstrap,omitempty"`
-	// CredentialConfigs
-	CredentialConfigs *CredentialConfig `json:"CredentialConfigs,omitempty" xml:"CredentialConfigs,omitempty"`
-	// Docker
-	Docker *Docker `json:"Docker,omitempty" xml:"Docker,omitempty"`
-	// ECS
-	ECS *ECS `json:"ECS,omitempty" xml:"ECS,omitempty"`
-	// LivenessProbe
-	LivenessProbe *Probe `json:"LivenessProbe,omitempty" xml:"LivenessProbe,omitempty"`
-	// ManagedJobQueue
-	ManagedJobQueue *bool `json:"ManagedJobQueue,omitempty" xml:"ManagedJobQueue,omitempty"`
-	// MountPoints
-	MountPoints []*MountPoint `json:"MountPoints,omitempty" xml:"MountPoints,omitempty" type:"Repeated"`
-	// ProviderType
-	ProviderType *string `json:"ProviderType,omitempty" xml:"ProviderType,omitempty"`
-	// Resources
-	Resources map[string]*string `json:"Resources,omitempty" xml:"Resources,omitempty"`
-	// SLB
-	SLB *SLB `json:"SLB,omitempty" xml:"SLB,omitempty"`
-	// Scaling
-	Scaling *Scaling `json:"Scaling,omitempty" xml:"Scaling,omitempty"`
-	// StartupProbe
-	StartupProbe *Probe `json:"StartupProbe,omitempty" xml:"StartupProbe,omitempty"`
-	// UpgradePolicy
-	UpgradePolicy *UpgradePolicy `json:"UpgradePolicy,omitempty" xml:"UpgradePolicy,omitempty"`
-	// VPC
-	VPC *VPC `json:"VPC,omitempty" xml:"VPC,omitempty"`
-	// Volumes
-	Volumes []*Volume `json:"Volumes,omitempty" xml:"Volumes,omitempty" type:"Repeated"`
-	// WorkerType
-	WorkerType *string `json:"WorkerType,omitempty" xml:"WorkerType,omitempty"`
+	AutoScaling       []*AutoScaling     `json:"AutoScaling,omitempty" xml:"AutoScaling,omitempty" type:"Repeated"`
+	Bootstrap         *Bootstrap         `json:"Bootstrap,omitempty" xml:"Bootstrap,omitempty"`
+	CredentialConfigs *CredentialConfig  `json:"CredentialConfigs,omitempty" xml:"CredentialConfigs,omitempty"`
+	Docker            *Docker            `json:"Docker,omitempty" xml:"Docker,omitempty"`
+	ECS               *ECS               `json:"ECS,omitempty" xml:"ECS,omitempty"`
+	LivenessProbe     *Probe             `json:"LivenessProbe,omitempty" xml:"LivenessProbe,omitempty"`
+	ManagedJobQueue   *bool              `json:"ManagedJobQueue,omitempty" xml:"ManagedJobQueue,omitempty"`
+	MountPoints       []*MountPoint      `json:"MountPoints,omitempty" xml:"MountPoints,omitempty" type:"Repeated"`
+	ProviderType      *string            `json:"ProviderType,omitempty" xml:"ProviderType,omitempty"`
+	Resources         map[string]*string `json:"Resources,omitempty" xml:"Resources,omitempty"`
+	SLB               *SLB               `json:"SLB,omitempty" xml:"SLB,omitempty"`
+	ScaleDownDelay    *int32             `json:"ScaleDownDelay,omitempty" xml:"ScaleDownDelay,omitempty"`
+	ScaleUpDelay      *int32             `json:"ScaleUpDelay,omitempty" xml:"ScaleUpDelay,omitempty"`
+	Scaling           *Scaling           `json:"Scaling,omitempty" xml:"Scaling,omitempty"`
+	StartupProbe      *Probe             `json:"StartupProbe,omitempty" xml:"StartupProbe,omitempty"`
+	UpgradePolicy     *UpgradePolicy     `json:"UpgradePolicy,omitempty" xml:"UpgradePolicy,omitempty"`
+	VPC               *VPC               `json:"VPC,omitempty" xml:"VPC,omitempty"`
+	Volumes           []*Volume          `json:"Volumes,omitempty" xml:"Volumes,omitempty" type:"Repeated"`
+	WorkerType        *string            `json:"WorkerType,omitempty" xml:"WorkerType,omitempty"`
 }
 
 func (s ClusterDefinition) String() string {
@@ -303,6 +273,16 @@ func (s *ClusterDefinition) SetSLB(v *SLB) *ClusterDefinition {
 	return s
 }
 
+func (s *ClusterDefinition) SetScaleDownDelay(v int32) *ClusterDefinition {
+	s.ScaleDownDelay = &v
+	return s
+}
+
+func (s *ClusterDefinition) SetScaleUpDelay(v int32) *ClusterDefinition {
+	s.ScaleUpDelay = &v
+	return s
+}
+
 func (s *ClusterDefinition) SetScaling(v *Scaling) *ClusterDefinition {
 	s.Scaling = v
 	return s
@@ -334,16 +314,11 @@ func (s *ClusterDefinition) SetWorkerType(v string) *ClusterDefinition {
 }
 
 type Conditions struct {
-	// Condition
-	Condition *string `json:"Condition,omitempty" xml:"Condition,omitempty"`
-	// Errors
-	Errors []*Errors `json:"Errors,omitempty" xml:"Errors,omitempty" type:"Repeated"`
-	// LastProbeTime
-	LastProbeTime *string `json:"LastProbeTime,omitempty" xml:"LastProbeTime,omitempty"`
-	// LastTransitionTime
-	LastTransitionTime *string `json:"LastTransitionTime,omitempty" xml:"LastTransitionTime,omitempty"`
-	// Status
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Condition          *string   `json:"Condition,omitempty" xml:"Condition,omitempty"`
+	Errors             []*Errors `json:"Errors,omitempty" xml:"Errors,omitempty" type:"Repeated"`
+	LastProbeTime      *string   `json:"LastProbeTime,omitempty" xml:"LastProbeTime,omitempty"`
+	LastTransitionTime *string   `json:"LastTransitionTime,omitempty" xml:"LastTransitionTime,omitempty"`
+	Status             *string   `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s Conditions) String() string {
@@ -380,12 +355,9 @@ func (s *Conditions) SetStatus(v string) *Conditions {
 }
 
 type CredentialConfig struct {
-	// Chain
-	Chain []*ServiceRoleNode `json:"Chain,omitempty" xml:"Chain,omitempty" type:"Repeated"`
-	// Policy
-	Policy *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
-	// ServiceRole
-	ServiceRole *string `json:"ServiceRole,omitempty" xml:"ServiceRole,omitempty"`
+	Chain       []*ServiceRoleNode `json:"Chain,omitempty" xml:"Chain,omitempty" type:"Repeated"`
+	Policy      *string            `json:"Policy,omitempty" xml:"Policy,omitempty"`
+	ServiceRole *string            `json:"ServiceRole,omitempty" xml:"ServiceRole,omitempty"`
 }
 
 func (s CredentialConfig) String() string {
@@ -435,10 +407,9 @@ func (s *Destination) SetPDS(v *PDSDescription) *Destination {
 }
 
 type Docker struct {
-	// ExposedPorts
-	ExposedPorts []*ExposedPort `json:"ExposedPorts,omitempty" xml:"ExposedPorts,omitempty" type:"Repeated"`
-	// Image
-	Image *string `json:"Image,omitempty" xml:"Image,omitempty"`
+	CredentialType *string        `json:"CredentialType,omitempty" xml:"CredentialType,omitempty"`
+	ExposedPorts   []*ExposedPort `json:"ExposedPorts,omitempty" xml:"ExposedPorts,omitempty" type:"Repeated"`
+	Image          *string        `json:"Image,omitempty" xml:"Image,omitempty"`
 }
 
 func (s Docker) String() string {
@@ -447,6 +418,11 @@ func (s Docker) String() string {
 
 func (s Docker) GoString() string {
 	return s.String()
+}
+
+func (s *Docker) SetCredentialType(v string) *Docker {
+	s.CredentialType = &v
+	return s
 }
 
 func (s *Docker) SetExposedPorts(v []*ExposedPort) *Docker {
@@ -460,24 +436,15 @@ func (s *Docker) SetImage(v string) *Docker {
 }
 
 type ECS struct {
-	// HostnamePrefix
-	HostnamePrefix *string `json:"HostnamePrefix,omitempty" xml:"HostnamePrefix,omitempty"`
-	// InstanceType
-	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	// PasswordInherit
-	PasswordInherit *bool `json:"PasswordInherit,omitempty" xml:"PasswordInherit,omitempty"`
-	// ResourceType
-	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// SpotPriceLimit
-	SpotPriceLimit *string `json:"SpotPriceLimit,omitempty" xml:"SpotPriceLimit,omitempty"`
-	// SpotStrategy
-	SpotStrategy *string `json:"SpotStrategy,omitempty" xml:"SpotStrategy,omitempty"`
-	// SystemDiskSize
-	SystemDiskSize *int32 `json:"SystemDiskSize,omitempty" xml:"SystemDiskSize,omitempty"`
-	// SystemDiskType
-	SystemDiskType *string `json:"SystemDiskType,omitempty" xml:"SystemDiskType,omitempty"`
-	// VMImage
-	VMImage *string `json:"VMImage,omitempty" xml:"VMImage,omitempty"`
+	HostnamePrefix  *string `json:"HostnamePrefix,omitempty" xml:"HostnamePrefix,omitempty"`
+	InstanceType    *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	PasswordInherit *bool   `json:"PasswordInherit,omitempty" xml:"PasswordInherit,omitempty"`
+	ResourceType    *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	SpotPriceLimit  *string `json:"SpotPriceLimit,omitempty" xml:"SpotPriceLimit,omitempty"`
+	SpotStrategy    *string `json:"SpotStrategy,omitempty" xml:"SpotStrategy,omitempty"`
+	SystemDiskSize  *int32  `json:"SystemDiskSize,omitempty" xml:"SystemDiskSize,omitempty"`
+	SystemDiskType  *string `json:"SystemDiskType,omitempty" xml:"SystemDiskType,omitempty"`
+	VMImage         *string `json:"VMImage,omitempty" xml:"VMImage,omitempty"`
 }
 
 func (s ECS) String() string {
@@ -534,14 +501,10 @@ func (s *ECS) SetVMImage(v string) *ECS {
 }
 
 type Errors struct {
-	// Action
-	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
-	// Code
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Message
+	Action  *string `json:"Action,omitempty" xml:"Action,omitempty"`
+	Code    *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Repeat
-	Repeat *int32 `json:"Repeat,omitempty" xml:"Repeat,omitempty"`
+	Repeat  *int32  `json:"Repeat,omitempty" xml:"Repeat,omitempty"`
 }
 
 func (s Errors) String() string {
@@ -573,7 +536,6 @@ func (s *Errors) SetRepeat(v int32) *Errors {
 }
 
 type Exec struct {
-	// Exec
 	Exec *ExecAction `json:"Exec,omitempty" xml:"Exec,omitempty"`
 }
 
@@ -591,7 +553,6 @@ func (s *Exec) SetExec(v *ExecAction) *Exec {
 }
 
 type ExecAction struct {
-	// Command
 	Command []*string `json:"Command,omitempty" xml:"Command,omitempty" type:"Repeated"`
 }
 
@@ -609,12 +570,9 @@ func (s *ExecAction) SetCommand(v []*string) *ExecAction {
 }
 
 type ExposedPort struct {
-	// ContainerPort
-	ContainerPort *int32 `json:"ContainerPort,omitempty" xml:"ContainerPort,omitempty"`
-	// HostPorts
-	HostPorts []*int32 `json:"HostPorts,omitempty" xml:"HostPorts,omitempty" type:"Repeated"`
-	// Proto
-	Proto *string `json:"Proto,omitempty" xml:"Proto,omitempty"`
+	ContainerPort *int32   `json:"ContainerPort,omitempty" xml:"ContainerPort,omitempty"`
+	HostPorts     []*int32 `json:"HostPorts,omitempty" xml:"HostPorts,omitempty" type:"Repeated"`
+	Proto         *string  `json:"Proto,omitempty" xml:"Proto,omitempty"`
 }
 
 func (s ExposedPort) String() string {
@@ -641,14 +599,10 @@ func (s *ExposedPort) SetProto(v string) *ExposedPort {
 }
 
 type FailStrategy struct {
-	// MaxRetries
-	MaxRetries *int32 `json:"MaxRetries,omitempty" xml:"MaxRetries,omitempty"`
-	// RunningTimeout
-	RunningTimeout *int32 `json:"RunningTimeout,omitempty" xml:"RunningTimeout,omitempty"`
-	// SuccessCode
-	SuccessCode []*int32 `json:"SuccessCode,omitempty" xml:"SuccessCode,omitempty" type:"Repeated"`
-	// WaitingTimeout
-	WaitingTimeout *int32 `json:"WaitingTimeout,omitempty" xml:"WaitingTimeout,omitempty"`
+	MaxRetries     *int32   `json:"MaxRetries,omitempty" xml:"MaxRetries,omitempty"`
+	RunningTimeout *int32   `json:"RunningTimeout,omitempty" xml:"RunningTimeout,omitempty"`
+	SuccessCode    []*int32 `json:"SuccessCode,omitempty" xml:"SuccessCode,omitempty" type:"Repeated"`
+	WaitingTimeout *int32   `json:"WaitingTimeout,omitempty" xml:"WaitingTimeout,omitempty"`
 }
 
 func (s FailStrategy) String() string {
@@ -680,7 +634,6 @@ func (s *FailStrategy) SetWaitingTimeout(v int32) *FailStrategy {
 }
 
 type HTTPGet struct {
-	// HTTPGet
 	HTTPGet *HTTPGetAction `json:"HTTPGet,omitempty" xml:"HTTPGet,omitempty"`
 }
 
@@ -698,16 +651,11 @@ func (s *HTTPGet) SetHTTPGet(v *HTTPGetAction) *HTTPGet {
 }
 
 type HTTPGetAction struct {
-	// HTTPHeaders
-	HTTPHeaders []*HTTPHeader `json:"HTTPHeaders,omitempty" xml:"HTTPHeaders,omitempty" type:"Repeated"`
-	// Host
-	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
-	// Path
-	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
-	// Port
-	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
-	// Scheme
-	Scheme *string `json:"Scheme,omitempty" xml:"Scheme,omitempty"`
+	Host        *string       `json:"Host,omitempty" xml:"Host,omitempty"`
+	HttpHeaders []*HTTPHeader `json:"HttpHeaders,omitempty" xml:"HttpHeaders,omitempty" type:"Repeated"`
+	Path        *string       `json:"Path,omitempty" xml:"Path,omitempty"`
+	Port        *int32        `json:"Port,omitempty" xml:"Port,omitempty"`
+	Scheme      *string       `json:"Scheme,omitempty" xml:"Scheme,omitempty"`
 }
 
 func (s HTTPGetAction) String() string {
@@ -718,13 +666,13 @@ func (s HTTPGetAction) GoString() string {
 	return s.String()
 }
 
-func (s *HTTPGetAction) SetHTTPHeaders(v []*HTTPHeader) *HTTPGetAction {
-	s.HTTPHeaders = v
+func (s *HTTPGetAction) SetHost(v string) *HTTPGetAction {
+	s.Host = &v
 	return s
 }
 
-func (s *HTTPGetAction) SetHost(v string) *HTTPGetAction {
-	s.Host = &v
+func (s *HTTPGetAction) SetHttpHeaders(v []*HTTPHeader) *HTTPGetAction {
+	s.HttpHeaders = v
 	return s
 }
 
@@ -744,9 +692,7 @@ func (s *HTTPGetAction) SetScheme(v string) *HTTPGetAction {
 }
 
 type HTTPHeader struct {
-	// Name
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Value
+	Name  *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -769,10 +715,8 @@ func (s *HTTPHeader) SetValue(v string) *HTTPHeader {
 }
 
 type Handler struct {
-	// Exec
-	Exec *ExecAction `json:"Exec,omitempty" xml:"Exec,omitempty"`
-	// HTTPGet
-	HTTPGet *HTTPGetAction `json:"HTTPGet,omitempty" xml:"HTTPGet,omitempty"`
+	Exec    *ExecAction    `json:"Exec,omitempty" xml:"Exec,omitempty"`
+	HttpGet *HTTPGetAction `json:"HttpGet,omitempty" xml:"HttpGet,omitempty"`
 }
 
 func (s Handler) String() string {
@@ -788,15 +732,13 @@ func (s *Handler) SetExec(v *ExecAction) *Handler {
 	return s
 }
 
-func (s *Handler) SetHTTPGet(v *HTTPGetAction) *Handler {
-	s.HTTPGet = v
+func (s *Handler) SetHttpGet(v *HTTPGetAction) *Handler {
+	s.HttpGet = v
 	return s
 }
 
 type Input struct {
-	// FileMode
 	FileMode *string `json:"FileMode,omitempty" xml:"FileMode,omitempty"`
-	// FilePath
 	FilePath *string `json:"FilePath,omitempty" xml:"FilePath,omitempty"`
 	Source   *Source `json:"Source,omitempty" xml:"Source,omitempty"`
 }
@@ -825,38 +767,22 @@ func (s *Input) SetSource(v *Source) *Input {
 }
 
 type JobDefinition struct {
-	// Command
-	Command []*string `json:"Command,omitempty" xml:"Command,omitempty" type:"Repeated"`
-	// CredentialConfig
-	CredentialConfig *CredentialConfig `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
-	// Envs
-	Envs map[string]*string `json:"Envs,omitempty" xml:"Envs,omitempty"`
-	// FailStrategy
-	FailStrategy *FailStrategy `json:"FailStrategy,omitempty" xml:"FailStrategy,omitempty"`
-	// Inputs
-	Inputs []*Input `json:"Inputs,omitempty" xml:"Inputs,omitempty" type:"Repeated"`
-	// Labels
-	Labels map[string]*string `json:"Labels,omitempty" xml:"Labels,omitempty"`
-	// Loggings
-	Loggings *Logging `json:"Loggings,omitempty" xml:"Loggings,omitempty"`
-	// MountPoints
-	MountPoints []*MountPoint `json:"MountPoints,omitempty" xml:"MountPoints,omitempty" type:"Repeated"`
-	// Notification
-	Notification *Notification `json:"Notification,omitempty" xml:"Notification,omitempty"`
-	// Outputs
-	Outputs []*Output `json:"Outputs,omitempty" xml:"Outputs,omitempty" type:"Repeated"`
-	// PackageUri
-	PackageUri *string `json:"PackageUri,omitempty" xml:"PackageUri,omitempty"`
-	// ReleaseStrategy
-	ReleaseStrategy *ReleaseStrategy `json:"ReleaseStrategy,omitempty" xml:"ReleaseStrategy,omitempty"`
-	// Resources
-	Resources map[string]*string `json:"Resources,omitempty" xml:"Resources,omitempty"`
-	// Runtimes
-	Runtimes *Runtimes `json:"Runtimes,omitempty" xml:"Runtimes,omitempty"`
-	// UserData
-	UserData map[string]*string `json:"UserData,omitempty" xml:"UserData,omitempty"`
-	// Volumes
-	Volumes []*Volume `json:"Volumes,omitempty" xml:"Volumes,omitempty" type:"Repeated"`
+	Command          []*string          `json:"Command,omitempty" xml:"Command,omitempty" type:"Repeated"`
+	CredentialConfig *CredentialConfig  `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
+	Envs             map[string]*string `json:"Envs,omitempty" xml:"Envs,omitempty"`
+	FailStrategy     *FailStrategy      `json:"FailStrategy,omitempty" xml:"FailStrategy,omitempty"`
+	Inputs           []*Input           `json:"Inputs,omitempty" xml:"Inputs,omitempty" type:"Repeated"`
+	Labels           map[string]*string `json:"Labels,omitempty" xml:"Labels,omitempty"`
+	Loggings         []*Logging         `json:"Loggings,omitempty" xml:"Loggings,omitempty" type:"Repeated"`
+	MountPoints      []*MountPoint      `json:"MountPoints,omitempty" xml:"MountPoints,omitempty" type:"Repeated"`
+	Notification     *Notification      `json:"Notification,omitempty" xml:"Notification,omitempty"`
+	Outputs          []*Output          `json:"Outputs,omitempty" xml:"Outputs,omitempty" type:"Repeated"`
+	PackageUri       *string            `json:"PackageUri,omitempty" xml:"PackageUri,omitempty"`
+	ReleaseStrategy  *ReleaseStrategy   `json:"ReleaseStrategy,omitempty" xml:"ReleaseStrategy,omitempty"`
+	Resources        map[string]*string `json:"Resources,omitempty" xml:"Resources,omitempty"`
+	Runtimes         *Runtimes          `json:"Runtimes,omitempty" xml:"Runtimes,omitempty"`
+	UserData         map[string]*string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	Volumes          []*Volume          `json:"Volumes,omitempty" xml:"Volumes,omitempty" type:"Repeated"`
 }
 
 func (s JobDefinition) String() string {
@@ -897,7 +823,7 @@ func (s *JobDefinition) SetLabels(v map[string]*string) *JobDefinition {
 	return s
 }
 
-func (s *JobDefinition) SetLoggings(v *Logging) *JobDefinition {
+func (s *JobDefinition) SetLoggings(v []*Logging) *JobDefinition {
 	s.Loggings = v
 	return s
 }
@@ -948,14 +874,11 @@ func (s *JobDefinition) SetVolumes(v []*Volume) *JobDefinition {
 }
 
 type JobQueueDefinition struct {
-	// Labels
-	Labels map[string]*string `json:"Labels,omitempty" xml:"Labels,omitempty"`
-	// Priority
-	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// ProviderConfigs
-	ProviderConfigs []*ProviderConfig `json:"ProviderConfigs,omitempty" xml:"ProviderConfigs,omitempty" type:"Repeated"`
-	// SchedulerConfig
+	Labels          map[string]*string                 `json:"Labels,omitempty" xml:"Labels,omitempty"`
+	Priority        *int32                             `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	ProviderConfigs []*ProviderConfig                  `json:"ProviderConfigs,omitempty" xml:"ProviderConfigs,omitempty" type:"Repeated"`
 	SchedulerConfig *JobQueueDefinitionSchedulerConfig `json:"SchedulerConfig,omitempty" xml:"SchedulerConfig,omitempty" type:"Struct"`
+	Type            *string                            `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s JobQueueDefinition) String() string {
@@ -986,8 +909,12 @@ func (s *JobQueueDefinition) SetSchedulerConfig(v *JobQueueDefinitionSchedulerCo
 	return s
 }
 
+func (s *JobQueueDefinition) SetType(v string) *JobQueueDefinition {
+	s.Type = &v
+	return s
+}
+
 type JobQueueDefinitionSchedulerConfig struct {
-	// State
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
 }
 
@@ -1005,23 +932,15 @@ func (s *JobQueueDefinitionSchedulerConfig) SetState(v string) *JobQueueDefiniti
 }
 
 type JobQueueStatus struct {
-	// AllocatableResources
 	AllocatableResources map[string]*string `json:"AllocatableResources,omitempty" xml:"AllocatableResources,omitempty"`
-	// AllocatedResources
-	AllocatedResources map[string]*string `json:"AllocatedResources,omitempty" xml:"AllocatedResources,omitempty"`
-	// CreateTime
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// LastUpdateTime
-	LastUpdateTime *string `json:"LastUpdateTime,omitempty" xml:"LastUpdateTime,omitempty"`
-	// Managed
-	Managed *bool `json:"Managed,omitempty" xml:"Managed,omitempty"`
-	// ProviderStatuses
-	ProviderStatuses []*ProviderStatus `json:"ProviderStatuses,omitempty" xml:"ProviderStatuses,omitempty" type:"Repeated"`
-	// Reason
-	Reason          *string          `json:"Reason,omitempty" xml:"Reason,omitempty"`
-	SchedulerStatus *SchedulerStatus `json:"SchedulerStatus,omitempty" xml:"SchedulerStatus,omitempty"`
-	// State
-	State *string `json:"State,omitempty" xml:"State,omitempty"`
+	AllocatedResources   map[string]*string `json:"AllocatedResources,omitempty" xml:"AllocatedResources,omitempty"`
+	CreateTime           *string            `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	LastUpdateTime       *string            `json:"LastUpdateTime,omitempty" xml:"LastUpdateTime,omitempty"`
+	Managed              *bool              `json:"Managed,omitempty" xml:"Managed,omitempty"`
+	ProviderStatuses     []*ProviderStatus  `json:"ProviderStatuses,omitempty" xml:"ProviderStatuses,omitempty" type:"Repeated"`
+	Reason               *string            `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	SchedulerStatus      *SchedulerStatus   `json:"SchedulerStatus,omitempty" xml:"SchedulerStatus,omitempty"`
+	State                *string            `json:"State,omitempty" xml:"State,omitempty"`
 }
 
 func (s JobQueueStatus) String() string {
@@ -1078,14 +997,10 @@ func (s *JobQueueStatus) SetState(v string) *JobQueueStatus {
 }
 
 type Logging struct {
-	// Name
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// OSS
-	OSS *OSSLogging `json:"OSS,omitempty" xml:"OSS,omitempty"`
-	// Path
-	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
-	// SLS
-	SLS *SLSLogging `json:"SLS,omitempty" xml:"SLS,omitempty"`
+	Name *string     `json:"Name,omitempty" xml:"Name,omitempty"`
+	OSS  *OSSLogging `json:"OSS,omitempty" xml:"OSS,omitempty"`
+	Path *string     `json:"Path,omitempty" xml:"Path,omitempty"`
+	SLS  *SLSLogging `json:"SLS,omitempty" xml:"SLS,omitempty"`
 }
 
 func (s Logging) String() string {
@@ -1117,12 +1032,9 @@ func (s *Logging) SetSLS(v *SLSLogging) *Logging {
 }
 
 type MNSNotification struct {
-	// Endpoint
-	Endpoint *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
-	// Filters
-	Filters []*string `json:"Filters,omitempty" xml:"Filters,omitempty" type:"Repeated"`
-	// Topic
-	Topic *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
+	Endpoint *string   `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
+	Filters  []*string `json:"Filters,omitempty" xml:"Filters,omitempty" type:"Repeated"`
+	Topic    *string   `json:"Topic,omitempty" xml:"Topic,omitempty"`
 }
 
 func (s MNSNotification) String() string {
@@ -1149,14 +1061,10 @@ func (s *MNSNotification) SetTopic(v string) *MNSNotification {
 }
 
 type MountPoint struct {
-	// MountPath
 	MountPath *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
-	// Name
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// ReadOnly
-	ReadOnly *bool `json:"ReadOnly,omitempty" xml:"ReadOnly,omitempty"`
-	// SubPath
-	SubPath *string `json:"SubPath,omitempty" xml:"SubPath,omitempty"`
+	Name      *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	ReadOnly  *bool   `json:"ReadOnly,omitempty" xml:"ReadOnly,omitempty"`
+	SubPath   *string `json:"SubPath,omitempty" xml:"SubPath,omitempty"`
 }
 
 func (s MountPoint) String() string {
@@ -1188,14 +1096,10 @@ func (s *MountPoint) SetSubPath(v string) *MountPoint {
 }
 
 type NFSVolumeSource struct {
-	// Path
-	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
-	// ReadOnly
-	ReadOnly *bool `json:"ReadOnly,omitempty" xml:"ReadOnly,omitempty"`
-	// Server
-	Server *string `json:"Server,omitempty" xml:"Server,omitempty"`
-	// Version
-	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
+	Path     *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	ReadOnly *bool   `json:"ReadOnly,omitempty" xml:"ReadOnly,omitempty"`
+	Server   *string `json:"Server,omitempty" xml:"Server,omitempty"`
+	Version  *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s NFSVolumeSource) String() string {
@@ -1227,7 +1131,6 @@ func (s *NFSVolumeSource) SetVersion(v string) *NFSVolumeSource {
 }
 
 type Notification struct {
-	// MNS
 	MNS *MNSNotification `json:"MNS,omitempty" xml:"MNS,omitempty"`
 }
 
@@ -1245,12 +1148,10 @@ func (s *Notification) SetMNS(v *MNSNotification) *Notification {
 }
 
 type OSSDescription struct {
-	// Bucket
-	Bucket *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
-	// Object
-	Object *string `json:"Object,omitempty" xml:"Object,omitempty"`
-	// Prefix
-	Prefix *string `json:"Prefix,omitempty" xml:"Prefix,omitempty"`
+	Bucket         *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
+	CredentialType *string `json:"CredentialType,omitempty" xml:"CredentialType,omitempty"`
+	Object         *string `json:"Object,omitempty" xml:"Object,omitempty"`
+	Prefix         *string `json:"Prefix,omitempty" xml:"Prefix,omitempty"`
 }
 
 func (s OSSDescription) String() string {
@@ -1266,6 +1167,11 @@ func (s *OSSDescription) SetBucket(v string) *OSSDescription {
 	return s
 }
 
+func (s *OSSDescription) SetCredentialType(v string) *OSSDescription {
+	s.CredentialType = &v
+	return s
+}
+
 func (s *OSSDescription) SetObject(v string) *OSSDescription {
 	s.Object = &v
 	return s
@@ -1277,9 +1183,7 @@ func (s *OSSDescription) SetPrefix(v string) *OSSDescription {
 }
 
 type OSSLogging struct {
-	// Bucket
 	Bucket *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
-	// Prefix
 	Prefix *string `json:"Prefix,omitempty" xml:"Prefix,omitempty"`
 }
 
@@ -1302,14 +1206,11 @@ func (s *OSSLogging) SetPrefix(v string) *OSSLogging {
 }
 
 type OSSVolumeSource struct {
-	// Bucket
-	Bucket *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
-	// Object
-	Object *string `json:"Object,omitempty" xml:"Object,omitempty"`
-	// Prefix
-	Prefix *string `json:"Prefix,omitempty" xml:"Prefix,omitempty"`
-	// ReadOnly
-	ReadOnly *bool `json:"ReadOnly,omitempty" xml:"ReadOnly,omitempty"`
+	Bucket         *string   `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
+	CredentialType *string   `json:"CredentialType,omitempty" xml:"CredentialType,omitempty"`
+	Objects        []*string `json:"Objects,omitempty" xml:"Objects,omitempty" type:"Repeated"`
+	Prefix         *string   `json:"Prefix,omitempty" xml:"Prefix,omitempty"`
+	ReadOnly       *bool     `json:"ReadOnly,omitempty" xml:"ReadOnly,omitempty"`
 }
 
 func (s OSSVolumeSource) String() string {
@@ -1325,8 +1226,13 @@ func (s *OSSVolumeSource) SetBucket(v string) *OSSVolumeSource {
 	return s
 }
 
-func (s *OSSVolumeSource) SetObject(v string) *OSSVolumeSource {
-	s.Object = &v
+func (s *OSSVolumeSource) SetCredentialType(v string) *OSSVolumeSource {
+	s.CredentialType = &v
+	return s
+}
+
+func (s *OSSVolumeSource) SetObjects(v []*string) *OSSVolumeSource {
+	s.Objects = v
 	return s
 }
 
@@ -1341,14 +1247,10 @@ func (s *OSSVolumeSource) SetReadOnly(v bool) *OSSVolumeSource {
 }
 
 type Output struct {
-	// Destination
-	Destination *Destination `json:"Destination,omitempty" xml:"Destination,omitempty"`
-	// FilePattern
-	FilePattern *string `json:"FilePattern,omitempty" xml:"FilePattern,omitempty"`
-	// UploadConditions
-	UploadConditions []*string `json:"UploadConditions,omitempty" xml:"UploadConditions,omitempty" type:"Repeated"`
-	// UploadMode
-	UploadMode *string `json:"UploadMode,omitempty" xml:"UploadMode,omitempty"`
+	Destination      *Destination `json:"Destination,omitempty" xml:"Destination,omitempty"`
+	FilePattern      *string      `json:"FilePattern,omitempty" xml:"FilePattern,omitempty"`
+	UploadConditions []*string    `json:"UploadConditions,omitempty" xml:"UploadConditions,omitempty" type:"Repeated"`
+	UploadMode       *string      `json:"UploadMode,omitempty" xml:"UploadMode,omitempty"`
 }
 
 func (s Output) String() string {
@@ -1380,13 +1282,9 @@ func (s *Output) SetUploadMode(v string) *Output {
 }
 
 type PDSDescription struct {
-	// Domain
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	// Drive
-	Drive *string `json:"Drive,omitempty" xml:"Drive,omitempty"`
-	// Object
+	Drive  *string `json:"Drive,omitempty" xml:"Drive,omitempty"`
 	Object *string `json:"Object,omitempty" xml:"Object,omitempty"`
-	// Prefix
 	Prefix *string `json:"Prefix,omitempty" xml:"Prefix,omitempty"`
 }
 
@@ -1419,16 +1317,11 @@ func (s *PDSDescription) SetPrefix(v string) *PDSDescription {
 }
 
 type PDSVolumeSource struct {
-	// Domain
-	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	// Drive
-	Drive *string `json:"Drive,omitempty" xml:"Drive,omitempty"`
-	// Object
-	Object *string `json:"Object,omitempty" xml:"Object,omitempty"`
-	// Prefix
-	Prefix *string `json:"Prefix,omitempty" xml:"Prefix,omitempty"`
-	// ReadOnly
-	ReadOnly *bool `json:"ReadOnly,omitempty" xml:"ReadOnly,omitempty"`
+	Domain   *string   `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	Drive    *string   `json:"Drive,omitempty" xml:"Drive,omitempty"`
+	Objects  []*string `json:"Objects,omitempty" xml:"Objects,omitempty" type:"Repeated"`
+	Prefix   *string   `json:"Prefix,omitempty" xml:"Prefix,omitempty"`
+	ReadOnly *bool     `json:"ReadOnly,omitempty" xml:"ReadOnly,omitempty"`
 }
 
 func (s PDSVolumeSource) String() string {
@@ -1449,8 +1342,8 @@ func (s *PDSVolumeSource) SetDrive(v string) *PDSVolumeSource {
 	return s
 }
 
-func (s *PDSVolumeSource) SetObject(v string) *PDSVolumeSource {
-	s.Object = &v
+func (s *PDSVolumeSource) SetObjects(v []*string) *PDSVolumeSource {
+	s.Objects = v
 	return s
 }
 
@@ -1465,18 +1358,12 @@ func (s *PDSVolumeSource) SetReadOnly(v bool) *PDSVolumeSource {
 }
 
 type Probe struct {
-	// FailureThreshold
-	FailureThreshold *int32 `json:"FailureThreshold,omitempty" xml:"FailureThreshold,omitempty"`
-	// Handler
-	Handler *Handler `json:"Handler,omitempty" xml:"Handler,omitempty"`
-	// InitialDelaySeconds
-	InitialDelaySeconds *int32 `json:"InitialDelaySeconds,omitempty" xml:"InitialDelaySeconds,omitempty"`
-	// PeriodSeconds
-	PeriodSeconds *int32 `json:"PeriodSeconds,omitempty" xml:"PeriodSeconds,omitempty"`
-	// SuccessThreshold
-	SuccessThreshold *int32 `json:"SuccessThreshold,omitempty" xml:"SuccessThreshold,omitempty"`
-	// TimeoutSeconds
-	TimeoutSeconds *int32 `json:"TimeoutSeconds,omitempty" xml:"TimeoutSeconds,omitempty"`
+	FailureThreshold    *int32   `json:"FailureThreshold,omitempty" xml:"FailureThreshold,omitempty"`
+	Handler             *Handler `json:"Handler,omitempty" xml:"Handler,omitempty"`
+	InitialDelaySeconds *int32   `json:"InitialDelaySeconds,omitempty" xml:"InitialDelaySeconds,omitempty"`
+	PeriodSeconds       *int32   `json:"PeriodSeconds,omitempty" xml:"PeriodSeconds,omitempty"`
+	SuccessThreshold    *int32   `json:"SuccessThreshold,omitempty" xml:"SuccessThreshold,omitempty"`
+	TimeoutSeconds      *int32   `json:"TimeoutSeconds,omitempty" xml:"TimeoutSeconds,omitempty"`
 }
 
 func (s Probe) String() string {
@@ -1518,12 +1405,9 @@ func (s *Probe) SetTimeoutSeconds(v int32) *Probe {
 }
 
 type ProjectDefinition struct {
-	// JobLifecycle
-	JobLifecycle *int32 `json:"JobLifecycle,omitempty" xml:"JobLifecycle,omitempty"`
-	// Labels
-	Labels map[string]*string `json:"Labels,omitempty" xml:"Labels,omitempty"`
-	// Role
-	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
+	JobLifecycle *int32             `json:"JobLifecycle,omitempty" xml:"JobLifecycle,omitempty"`
+	Labels       map[string]*string `json:"Labels,omitempty" xml:"Labels,omitempty"`
+	Role         *string            `json:"Role,omitempty" xml:"Role,omitempty"`
 }
 
 func (s ProjectDefinition) String() string {
@@ -1550,16 +1434,11 @@ func (s *ProjectDefinition) SetRole(v string) *ProjectDefinition {
 }
 
 type ProviderConfig struct {
-	// MaxWorkerCount
-	MaxWorkerCount *int32 `json:"MaxWorkerCount,omitempty" xml:"MaxWorkerCount,omitempty"`
-	// MinWorkerCount
-	MinWorkerCount *int32 `json:"MinWorkerCount,omitempty" xml:"MinWorkerCount,omitempty"`
-	// ProviderId
-	ProviderId *string `json:"ProviderId,omitempty" xml:"ProviderId,omitempty"`
-	// ProviderType
-	ProviderType *string `json:"ProviderType,omitempty" xml:"ProviderType,omitempty"`
-	// WorkerType
-	WorkerType *string `json:"WorkerType,omitempty" xml:"WorkerType,omitempty"`
+	MaxWorkerCount *int32  `json:"MaxWorkerCount,omitempty" xml:"MaxWorkerCount,omitempty"`
+	MinWorkerCount *int32  `json:"MinWorkerCount,omitempty" xml:"MinWorkerCount,omitempty"`
+	ProviderId     *string `json:"ProviderId,omitempty" xml:"ProviderId,omitempty"`
+	ProviderType   *string `json:"ProviderType,omitempty" xml:"ProviderType,omitempty"`
+	WorkerType     *string `json:"WorkerType,omitempty" xml:"WorkerType,omitempty"`
 }
 
 func (s ProviderConfig) String() string {
@@ -1596,12 +1475,9 @@ func (s *ProviderConfig) SetWorkerType(v string) *ProviderConfig {
 }
 
 type ProviderStatus struct {
-	// AllocatableResources
 	AllocatableResources map[string]*string `json:"AllocatableResources,omitempty" xml:"AllocatableResources,omitempty"`
-	// AllocatedResources
-	AllocatedResources map[string]*string `json:"AllocatedResources,omitempty" xml:"AllocatedResources,omitempty"`
-	// ProviderId
-	ProviderId *string `json:"ProviderId,omitempty" xml:"ProviderId,omitempty"`
+	AllocatedResources   map[string]*string `json:"AllocatedResources,omitempty" xml:"AllocatedResources,omitempty"`
+	ProviderId           *string            `json:"ProviderId,omitempty" xml:"ProviderId,omitempty"`
 }
 
 func (s ProviderStatus) String() string {
@@ -1628,10 +1504,8 @@ func (s *ProviderStatus) SetProviderId(v string) *ProviderStatus {
 }
 
 type ReleaseCondition struct {
-	// State
-	State *string `json:"State,omitempty" xml:"State,omitempty"`
-	// TTLSeconds
-	TTLSeconds *int64 `json:"TTLSeconds,omitempty" xml:"TTLSeconds,omitempty"`
+	State      *string `json:"State,omitempty" xml:"State,omitempty"`
+	TTLSeconds *int64  `json:"TTLSeconds,omitempty" xml:"TTLSeconds,omitempty"`
 }
 
 func (s ReleaseCondition) String() string {
@@ -1653,7 +1527,6 @@ func (s *ReleaseCondition) SetTTLSeconds(v int64) *ReleaseCondition {
 }
 
 type ReleaseStrategy struct {
-	// ReleaseConditions
 	ReleaseConditions []*ReleaseCondition `json:"ReleaseConditions,omitempty" xml:"ReleaseConditions,omitempty" type:"Repeated"`
 }
 
@@ -1671,14 +1544,11 @@ func (s *ReleaseStrategy) SetReleaseConditions(v []*ReleaseCondition) *ReleaseSt
 }
 
 type Runtimes struct {
-	// Docker
-	Docker *Docker `json:"Docker,omitempty" xml:"Docker,omitempty"`
-	// ECS
-	ECS *ECS `json:"ECS,omitempty" xml:"ECS,omitempty"`
-	// JobQueue
-	JobQueue *string `json:"JobQueue,omitempty" xml:"JobQueue,omitempty"`
-	// VPC
-	VPC *VPC `json:"VPC,omitempty" xml:"VPC,omitempty"`
+	DataDisks []*RuntimesDataDisks `json:"DataDisks,omitempty" xml:"DataDisks,omitempty" type:"Repeated"`
+	Docker    *Docker              `json:"Docker,omitempty" xml:"Docker,omitempty"`
+	ECS       *ECS                 `json:"ECS,omitempty" xml:"ECS,omitempty"`
+	JobQueue  *string              `json:"JobQueue,omitempty" xml:"JobQueue,omitempty"`
+	VPC       *VPC                 `json:"VPC,omitempty" xml:"VPC,omitempty"`
 }
 
 func (s Runtimes) String() string {
@@ -1687,6 +1557,11 @@ func (s Runtimes) String() string {
 
 func (s Runtimes) GoString() string {
 	return s.String()
+}
+
+func (s *Runtimes) SetDataDisks(v []*RuntimesDataDisks) *Runtimes {
+	s.DataDisks = v
+	return s
 }
 
 func (s *Runtimes) SetDocker(v *Docker) *Runtimes {
@@ -1709,8 +1584,36 @@ func (s *Runtimes) SetVPC(v *VPC) *Runtimes {
 	return s
 }
 
+type RuntimesDataDisks struct {
+	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	Size *int32  `json:"Size,omitempty" xml:"Size,omitempty"`
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s RuntimesDataDisks) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RuntimesDataDisks) GoString() string {
+	return s.String()
+}
+
+func (s *RuntimesDataDisks) SetPath(v string) *RuntimesDataDisks {
+	s.Path = &v
+	return s
+}
+
+func (s *RuntimesDataDisks) SetSize(v int32) *RuntimesDataDisks {
+	s.Size = &v
+	return s
+}
+
+func (s *RuntimesDataDisks) SetType(v string) *RuntimesDataDisks {
+	s.Type = &v
+	return s
+}
+
 type SLB struct {
-	// SLBId
 	SLBId *string `json:"SLBId,omitempty" xml:"SLBId,omitempty"`
 }
 
@@ -1728,12 +1631,9 @@ func (s *SLB) SetSLBId(v string) *SLB {
 }
 
 type SLSLogging struct {
-	// LogtailConfigName
 	LogtailConfigName *string `json:"LogtailConfigName,omitempty" xml:"LogtailConfigName,omitempty"`
-	// Project
-	Project *string `json:"Project,omitempty" xml:"Project,omitempty"`
-	// Store
-	Store *string `json:"Store,omitempty" xml:"Store,omitempty"`
+	Project           *string `json:"Project,omitempty" xml:"Project,omitempty"`
+	Store             *string `json:"Store,omitempty" xml:"Store,omitempty"`
 }
 
 func (s SLSLogging) String() string {
@@ -1760,20 +1660,10 @@ func (s *SLSLogging) SetStore(v string) *SLSLogging {
 }
 
 type Scaling struct {
-	// AdjustmentType
-	AdjustmentType *string `json:"AdjustmentType,omitempty" xml:"AdjustmentType,omitempty"`
-	// AdjustmentValue
+	AdjustmentType  *string  `json:"AdjustmentType,omitempty" xml:"AdjustmentType,omitempty"`
 	AdjustmentValue *float32 `json:"AdjustmentValue,omitempty" xml:"AdjustmentValue,omitempty"`
-	// MaxWorkerCount
-	MaxWorkerCount *int32 `json:"MaxWorkerCount,omitempty" xml:"MaxWorkerCount,omitempty"`
-	// MetricType
-	MetricType *string `json:"MetricType,omitempty" xml:"MetricType,omitempty"`
-	// MetricValue
-	MetricValue *float32 `json:"MetricValue,omitempty" xml:"MetricValue,omitempty"`
-	// MinWorkerCount
-	MinWorkerCount *int32 `json:"MinWorkerCount,omitempty" xml:"MinWorkerCount,omitempty"`
-	// ToleranceValue
-	ToleranceValue *float32 `json:"ToleranceValue,omitempty" xml:"ToleranceValue,omitempty"`
+	MaxWorkerCount  *int32   `json:"MaxWorkerCount,omitempty" xml:"MaxWorkerCount,omitempty"`
+	MinWorkerCount  *int32   `json:"MinWorkerCount,omitempty" xml:"MinWorkerCount,omitempty"`
 }
 
 func (s Scaling) String() string {
@@ -1799,37 +1689,17 @@ func (s *Scaling) SetMaxWorkerCount(v int32) *Scaling {
 	return s
 }
 
-func (s *Scaling) SetMetricType(v string) *Scaling {
-	s.MetricType = &v
-	return s
-}
-
-func (s *Scaling) SetMetricValue(v float32) *Scaling {
-	s.MetricValue = &v
-	return s
-}
-
 func (s *Scaling) SetMinWorkerCount(v int32) *Scaling {
 	s.MinWorkerCount = &v
 	return s
 }
 
-func (s *Scaling) SetToleranceValue(v float32) *Scaling {
-	s.ToleranceValue = &v
-	return s
-}
-
 type SchedulerStatus struct {
-	// CanceledJobCount
-	CanceledJobCount *int64 `json:"CanceledJobCount,omitempty" xml:"CanceledJobCount,omitempty"`
-	// FailedJobCount
-	FailedJobCount *int64 `json:"FailedJobCount,omitempty" xml:"FailedJobCount,omitempty"`
-	// RunningJobCount
-	RunningJobCount *int64 `json:"RunningJobCount,omitempty" xml:"RunningJobCount,omitempty"`
-	// SucceededJobCount
+	CanceledJobCount  *int64 `json:"CanceledJobCount,omitempty" xml:"CanceledJobCount,omitempty"`
+	FailedJobCount    *int64 `json:"FailedJobCount,omitempty" xml:"FailedJobCount,omitempty"`
+	RunningJobCount   *int64 `json:"RunningJobCount,omitempty" xml:"RunningJobCount,omitempty"`
 	SucceededJobCount *int64 `json:"SucceededJobCount,omitempty" xml:"SucceededJobCount,omitempty"`
-	// WaitingJobCount
-	WaitingJobCount *int64 `json:"WaitingJobCount,omitempty" xml:"WaitingJobCount,omitempty"`
+	WaitingJobCount   *int64 `json:"WaitingJobCount,omitempty" xml:"WaitingJobCount,omitempty"`
 }
 
 func (s SchedulerStatus) String() string {
@@ -1866,12 +1736,9 @@ func (s *SchedulerStatus) SetWaitingJobCount(v int64) *SchedulerStatus {
 }
 
 type ServiceRoleNode struct {
-	// AssumeRoleFor
 	AssumeRoleFor *string `json:"AssumeRoleFor,omitempty" xml:"AssumeRoleFor,omitempty"`
-	// Role
-	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
-	// RoleType
-	RoleType *string `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
+	Role          *string `json:"Role,omitempty" xml:"Role,omitempty"`
+	RoleType      *string `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
 }
 
 func (s ServiceRoleNode) String() string {
@@ -1921,14 +1788,16 @@ func (s *Source) SetPDS(v *PDSDescription) *Source {
 }
 
 type Trigger struct {
-	// Enabled
-	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
-	// FirstLaunchTime
-	FirstLaunchTime *string `json:"FirstLaunchTime,omitempty" xml:"FirstLaunchTime,omitempty"`
-	// RepeatType
-	RepeatType *string `json:"RepeatType,omitempty" xml:"RepeatType,omitempty"`
-	// RepeatValue
-	RepeatValue *string `json:"RepeatValue,omitempty" xml:"RepeatValue,omitempty"`
+	DesiredMetricValue *float64 `json:"DesiredMetricValue,omitempty" xml:"DesiredMetricValue,omitempty"`
+	DesiredRecoverTime *int32   `json:"DesiredRecoverTime,omitempty" xml:"DesiredRecoverTime,omitempty"`
+	Enabled            *bool    `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	FirstLaunchTime    *string  `json:"FirstLaunchTime,omitempty" xml:"FirstLaunchTime,omitempty"`
+	MetricType         *string  `json:"MetricType,omitempty" xml:"MetricType,omitempty"`
+	Period             *int32   `json:"Period,omitempty" xml:"Period,omitempty"`
+	RepeatType         *string  `json:"RepeatType,omitempty" xml:"RepeatType,omitempty"`
+	RepeatValue        *string  `json:"RepeatValue,omitempty" xml:"RepeatValue,omitempty"`
+	StatisticalMethod  *string  `json:"StatisticalMethod,omitempty" xml:"StatisticalMethod,omitempty"`
+	ToleranceValue     *float64 `json:"ToleranceValue,omitempty" xml:"ToleranceValue,omitempty"`
 }
 
 func (s Trigger) String() string {
@@ -1939,6 +1808,16 @@ func (s Trigger) GoString() string {
 	return s.String()
 }
 
+func (s *Trigger) SetDesiredMetricValue(v float64) *Trigger {
+	s.DesiredMetricValue = &v
+	return s
+}
+
+func (s *Trigger) SetDesiredRecoverTime(v int32) *Trigger {
+	s.DesiredRecoverTime = &v
+	return s
+}
+
 func (s *Trigger) SetEnabled(v bool) *Trigger {
 	s.Enabled = &v
 	return s
@@ -1946,6 +1825,16 @@ func (s *Trigger) SetEnabled(v bool) *Trigger {
 
 func (s *Trigger) SetFirstLaunchTime(v string) *Trigger {
 	s.FirstLaunchTime = &v
+	return s
+}
+
+func (s *Trigger) SetMetricType(v string) *Trigger {
+	s.MetricType = &v
+	return s
+}
+
+func (s *Trigger) SetPeriod(v int32) *Trigger {
+	s.Period = &v
 	return s
 }
 
@@ -1959,8 +1848,17 @@ func (s *Trigger) SetRepeatValue(v string) *Trigger {
 	return s
 }
 
+func (s *Trigger) SetStatisticalMethod(v string) *Trigger {
+	s.StatisticalMethod = &v
+	return s
+}
+
+func (s *Trigger) SetToleranceValue(v float64) *Trigger {
+	s.ToleranceValue = &v
+	return s
+}
+
 type UpgradePolicy struct {
-	// UpgradeRatio
 	UpgradeRatio *float32 `json:"UpgradeRatio,omitempty" xml:"UpgradeRatio,omitempty"`
 }
 
@@ -1978,14 +1876,10 @@ func (s *UpgradePolicy) SetUpgradeRatio(v float32) *UpgradePolicy {
 }
 
 type UserStage struct {
-	// Description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// EndTime
-	EndTime *int32 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// StartTime
-	StartTime *int32 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// State
-	State *string `json:"State,omitempty" xml:"State,omitempty"`
+	EndTime     *int32  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	StartTime   *int32  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	State       *string `json:"State,omitempty" xml:"State,omitempty"`
 }
 
 func (s UserStage) String() string {
@@ -2017,12 +1911,9 @@ func (s *UserStage) SetState(v string) *UserStage {
 }
 
 type VPC struct {
-	// SecurityGroups
 	SecurityGroups []*string `json:"SecurityGroups,omitempty" xml:"SecurityGroups,omitempty" type:"Repeated"`
-	// VPCId
-	VPCId *string `json:"VPCId,omitempty" xml:"VPCId,omitempty"`
-	// VSwitches
-	VSwitches []*string `json:"VSwitches,omitempty" xml:"VSwitches,omitempty" type:"Repeated"`
+	VPCId          *string   `json:"VPCId,omitempty" xml:"VPCId,omitempty"`
+	VSwitches      []*string `json:"VSwitches,omitempty" xml:"VSwitches,omitempty" type:"Repeated"`
 }
 
 func (s VPC) String() string {
@@ -2049,14 +1940,10 @@ func (s *VPC) SetVSwitches(v []*string) *VPC {
 }
 
 type Volume struct {
-	// NFS
-	NFS *NFSVolumeSource `json:"NFS,omitempty" xml:"NFS,omitempty"`
-	// Name
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// OSS
-	OSS *OSSVolumeSource `json:"OSS,omitempty" xml:"OSS,omitempty"`
-	// PDS
-	PDS *PDSVolumeSource `json:"PDS,omitempty" xml:"PDS,omitempty"`
+	NFS  *NFSVolumeSource `json:"NFS,omitempty" xml:"NFS,omitempty"`
+	Name *string          `json:"Name,omitempty" xml:"Name,omitempty"`
+	OSS  *OSSVolumeSource `json:"OSS,omitempty" xml:"OSS,omitempty"`
+	PDS  *PDSVolumeSource `json:"PDS,omitempty" xml:"PDS,omitempty"`
 }
 
 func (s Volume) String() string {
@@ -2088,28 +1975,17 @@ func (s *Volume) SetPDS(v *PDSVolumeSource) *Volume {
 }
 
 type WorkerStatus struct {
-	// Conditions
-	Conditions []*Conditions `json:"Conditions,omitempty" xml:"Conditions,omitempty" type:"Repeated"`
-	// Container
-	Container *WorkerStatusContainer `json:"Container,omitempty" xml:"Container,omitempty" type:"Struct"`
-	// CreateTime
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// ECS
-	ECS *WorkerStatusECS `json:"ECS,omitempty" xml:"ECS,omitempty" type:"Struct"`
-	// JobQueue
-	JobQueue *string `json:"JobQueue,omitempty" xml:"JobQueue,omitempty"`
-	// NetworkInterfaceId
-	NetworkInterfaceId *string `json:"NetworkInterfaceId,omitempty" xml:"NetworkInterfaceId,omitempty"`
-	// PoolWorkerId
-	PoolWorkerId *string `json:"PoolWorkerId,omitempty" xml:"PoolWorkerId,omitempty"`
-	// SecurityGroupId
-	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	// State
-	State *string `json:"State,omitempty" xml:"State,omitempty"`
-	// VSwitchId
-	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// WorkerType
-	WorkerType *int32 `json:"WorkerType,omitempty" xml:"WorkerType,omitempty"`
+	Conditions         []*Conditions          `json:"Conditions,omitempty" xml:"Conditions,omitempty" type:"Repeated"`
+	Container          *WorkerStatusContainer `json:"Container,omitempty" xml:"Container,omitempty" type:"Struct"`
+	CreateTime         *string                `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	ECS                *WorkerStatusECS       `json:"ECS,omitempty" xml:"ECS,omitempty" type:"Struct"`
+	JobQueue           *string                `json:"JobQueue,omitempty" xml:"JobQueue,omitempty"`
+	NetworkInterfaceId *string                `json:"NetworkInterfaceId,omitempty" xml:"NetworkInterfaceId,omitempty"`
+	PoolWorkerId       *string                `json:"PoolWorkerId,omitempty" xml:"PoolWorkerId,omitempty"`
+	SecurityGroupId    *string                `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	State              *string                `json:"State,omitempty" xml:"State,omitempty"`
+	VSwitchId          *string                `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	WorkerType         *int32                 `json:"WorkerType,omitempty" xml:"WorkerType,omitempty"`
 }
 
 func (s WorkerStatus) String() string {
@@ -2176,9 +2052,7 @@ func (s *WorkerStatus) SetWorkerType(v int32) *WorkerStatus {
 }
 
 type WorkerStatusContainer struct {
-	// Cpu
-	Cpu *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
-	// Memory
+	Cpu    *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
 	Memory *int32 `json:"Memory,omitempty" xml:"Memory,omitempty"`
 }
 
@@ -2201,34 +2075,20 @@ func (s *WorkerStatusContainer) SetMemory(v int32) *WorkerStatusContainer {
 }
 
 type WorkerStatusECS struct {
-	// Cpu
-	Cpu *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
-	// Endpoint
-	Endpoint *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
-	// Hostname
-	Hostname *string `json:"Hostname,omitempty" xml:"Hostname,omitempty"`
-	// InstanceId
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// InstanceType
-	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	// Memory
-	Memory *int32 `json:"Memory,omitempty" xml:"Memory,omitempty"`
-	// Password
-	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
-	// ResourceType
-	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// SpotPriceLimit
+	Cpu            *int32  `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	Endpoint       *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
+	Hostname       *string `json:"Hostname,omitempty" xml:"Hostname,omitempty"`
+	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceType   *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	Memory         *int32  `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	Password       *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	ResourceType   *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	SpotPriceLimit *string `json:"SpotPriceLimit,omitempty" xml:"SpotPriceLimit,omitempty"`
-	// SpotStrategy
-	SpotStrategy *string `json:"SpotStrategy,omitempty" xml:"SpotStrategy,omitempty"`
-	// SystemDiskSize
-	SystemDiskSize *int32 `json:"SystemDiskSize,omitempty" xml:"SystemDiskSize,omitempty"`
-	// SystemDiskType
+	SpotStrategy   *string `json:"SpotStrategy,omitempty" xml:"SpotStrategy,omitempty"`
+	SystemDiskSize *int32  `json:"SystemDiskSize,omitempty" xml:"SystemDiskSize,omitempty"`
 	SystemDiskType *string `json:"SystemDiskType,omitempty" xml:"SystemDiskType,omitempty"`
-	// VMImage
-	VMImage *string `json:"VMImage,omitempty" xml:"VMImage,omitempty"`
-	// ZoneId
-	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	VMImage        *string `json:"VMImage,omitempty" xml:"VMImage,omitempty"`
+	ZoneId         *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s WorkerStatusECS) String() string {
@@ -2368,8 +2228,9 @@ func (s *CancelJobResponseBody) SetRequestId(v string) *CancelJobResponseBody {
 }
 
 type CancelJobResponse struct {
-	Headers map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CancelJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CancelJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CancelJobResponse) String() string {
@@ -2385,21 +2246,22 @@ func (s *CancelJobResponse) SetHeaders(v map[string]*string) *CancelJobResponse 
 	return s
 }
 
+func (s *CancelJobResponse) SetStatusCode(v int32) *CancelJobResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *CancelJobResponse) SetBody(v *CancelJobResponseBody) *CancelJobResponse {
 	s.Body = v
 	return s
 }
 
 type CreateClusterRequest struct {
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Definition
-	Definition *ClusterDefinition `json:"Definition,omitempty" xml:"Definition,omitempty"`
-	// Description
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Name
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Project
-	Project *string `json:"Project,omitempty" xml:"Project,omitempty"`
+	ClientToken *string            `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	Definition  *ClusterDefinition `json:"Definition,omitempty" xml:"Definition,omitempty"`
+	Description *string            `json:"Description,omitempty" xml:"Description,omitempty"`
+	Name        *string            `json:"Name,omitempty" xml:"Name,omitempty"`
+	Project     *string            `json:"Project,omitempty" xml:"Project,omitempty"`
 }
 
 func (s CreateClusterRequest) String() string {
@@ -2436,15 +2298,11 @@ func (s *CreateClusterRequest) SetProject(v string) *CreateClusterRequest {
 }
 
 type CreateClusterShrinkRequest struct {
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Definition
+	ClientToken      *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	DefinitionShrink *string `json:"Definition,omitempty" xml:"Definition,omitempty"`
-	// Description
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Name
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Project
-	Project *string `json:"Project,omitempty" xml:"Project,omitempty"`
+	Description      *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Name             *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Project          *string `json:"Project,omitempty" xml:"Project,omitempty"`
 }
 
 func (s CreateClusterShrinkRequest) String() string {
@@ -2510,8 +2368,9 @@ func (s *CreateClusterResponseBody) SetRequestId(v string) *CreateClusterRespons
 }
 
 type CreateClusterResponse struct {
-	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateClusterResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateClusterResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateClusterResponse) String() string {
@@ -2524,6 +2383,11 @@ func (s CreateClusterResponse) GoString() string {
 
 func (s *CreateClusterResponse) SetHeaders(v map[string]*string) *CreateClusterResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *CreateClusterResponse) SetStatusCode(v int32) *CreateClusterResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -2644,8 +2508,9 @@ func (s *CreateJobResponseBody) SetRequestId(v string) *CreateJobResponseBody {
 }
 
 type CreateJobResponse struct {
-	Headers map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateJobResponse) String() string {
@@ -2658,6 +2523,11 @@ func (s CreateJobResponse) GoString() string {
 
 func (s *CreateJobResponse) SetHeaders(v map[string]*string) *CreateJobResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *CreateJobResponse) SetStatusCode(v int32) *CreateJobResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -2778,8 +2648,9 @@ func (s *CreateJobQueueResponseBody) SetRequestId(v string) *CreateJobQueueRespo
 }
 
 type CreateJobQueueResponse struct {
-	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateJobQueueResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateJobQueueResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateJobQueueResponse) String() string {
@@ -2792,6 +2663,11 @@ func (s CreateJobQueueResponse) GoString() string {
 
 func (s *CreateJobQueueResponse) SetHeaders(v map[string]*string) *CreateJobQueueResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *CreateJobQueueResponse) SetStatusCode(v int32) *CreateJobQueueResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -2900,8 +2776,9 @@ func (s *CreateProjectResponseBody) SetRequestId(v string) *CreateProjectRespons
 }
 
 type CreateProjectResponse struct {
-	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateProjectResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateProjectResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateProjectResponse) String() string {
@@ -2917,16 +2794,19 @@ func (s *CreateProjectResponse) SetHeaders(v map[string]*string) *CreateProjectR
 	return s
 }
 
+func (s *CreateProjectResponse) SetStatusCode(v int32) *CreateProjectResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *CreateProjectResponse) SetBody(v *CreateProjectResponseBody) *CreateProjectResponse {
 	s.Body = v
 	return s
 }
 
 type DeleteClusterRequest struct {
-	// ClusterId
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// Project
-	Project *string `json:"Project,omitempty" xml:"Project,omitempty"`
+	Project   *string `json:"Project,omitempty" xml:"Project,omitempty"`
 }
 
 func (s DeleteClusterRequest) String() string {
@@ -2971,8 +2851,9 @@ func (s *DeleteClusterResponseBody) SetRequestId(v string) *DeleteClusterRespons
 }
 
 type DeleteClusterResponse struct {
-	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteClusterResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteClusterResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteClusterResponse) String() string {
@@ -2985,6 +2866,11 @@ func (s DeleteClusterResponse) GoString() string {
 
 func (s *DeleteClusterResponse) SetHeaders(v map[string]*string) *DeleteClusterResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DeleteClusterResponse) SetStatusCode(v int32) *DeleteClusterResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -3040,8 +2926,9 @@ func (s *DeleteJobResponseBody) SetRequestId(v string) *DeleteJobResponseBody {
 }
 
 type DeleteJobResponse struct {
-	Headers map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteJobResponse) String() string {
@@ -3054,6 +2941,11 @@ func (s DeleteJobResponse) GoString() string {
 
 func (s *DeleteJobResponse) SetHeaders(v map[string]*string) *DeleteJobResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DeleteJobResponse) SetStatusCode(v int32) *DeleteJobResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -3109,8 +3001,9 @@ func (s *DeleteJobQueueResponseBody) SetRequestId(v string) *DeleteJobQueueRespo
 }
 
 type DeleteJobQueueResponse struct {
-	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteJobQueueResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteJobQueueResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteJobQueueResponse) String() string {
@@ -3123,6 +3016,11 @@ func (s DeleteJobQueueResponse) GoString() string {
 
 func (s *DeleteJobQueueResponse) SetHeaders(v map[string]*string) *DeleteJobQueueResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DeleteJobQueueResponse) SetStatusCode(v int32) *DeleteJobQueueResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -3172,8 +3070,9 @@ func (s *DeleteProjectResponseBody) SetRequestId(v string) *DeleteProjectRespons
 }
 
 type DeleteProjectResponse struct {
-	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteProjectResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteProjectResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteProjectResponse) String() string {
@@ -3186,6 +3085,11 @@ func (s DeleteProjectResponse) GoString() string {
 
 func (s *DeleteProjectResponse) SetHeaders(v map[string]*string) *DeleteProjectResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DeleteProjectResponse) SetStatusCode(v int32) *DeleteProjectResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -3336,8 +3240,9 @@ func (s *GetClusterResponseBodyStatus) SetState(v string) *GetClusterResponseBod
 }
 
 type GetClusterResponse struct {
-	Headers map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetClusterResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetClusterResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetClusterResponse) String() string {
@@ -3350,6 +3255,11 @@ func (s GetClusterResponse) GoString() string {
 
 func (s *GetClusterResponse) SetHeaders(v map[string]*string) *GetClusterResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *GetClusterResponse) SetStatusCode(v int32) *GetClusterResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -3512,8 +3422,9 @@ func (s *GetJobResponseBodyStatus) SetWorker(v string) *GetJobResponseBodyStatus
 }
 
 type GetJobResponse struct {
-	Headers map[string]*string  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetJobResponse) String() string {
@@ -3526,6 +3437,11 @@ func (s GetJobResponse) GoString() string {
 
 func (s *GetJobResponse) SetHeaders(v map[string]*string) *GetJobResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *GetJobResponse) SetStatusCode(v int32) *GetJobResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -3617,8 +3533,9 @@ func (s *GetJobQueueResponseBody) SetStatus(v *JobQueueStatus) *GetJobQueueRespo
 }
 
 type GetJobQueueResponse struct {
-	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetJobQueueResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetJobQueueResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetJobQueueResponse) String() string {
@@ -3631,6 +3548,11 @@ func (s GetJobQueueResponse) GoString() string {
 
 func (s *GetJobQueueResponse) SetHeaders(v map[string]*string) *GetJobQueueResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *GetJobQueueResponse) SetStatusCode(v int32) *GetJobQueueResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -3727,8 +3649,9 @@ func (s *GetProjectResponseBodyStatus) SetLastModifiedTime(v string) *GetProject
 }
 
 type GetProjectResponse struct {
-	Headers map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetProjectResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetProjectResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetProjectResponse) String() string {
@@ -3741,6 +3664,11 @@ func (s GetProjectResponse) GoString() string {
 
 func (s *GetProjectResponse) SetHeaders(v map[string]*string) *GetProjectResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *GetProjectResponse) SetStatusCode(v int32) *GetProjectResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -3779,10 +3707,11 @@ func (s *GetWorkerRequest) SetWorkerId(v string) *GetWorkerRequest {
 }
 
 type GetWorkerResponseBody struct {
-	HostId    *string                      `json:"HostId,omitempty" xml:"HostId,omitempty"`
-	RequestId *string                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Status    *GetWorkerResponseBodyStatus `json:"Status,omitempty" xml:"Status,omitempty" type:"Struct"`
-	WorkerId  *string                      `json:"WorkerId,omitempty" xml:"WorkerId,omitempty"`
+	Definition *GetWorkerResponseBodyDefinition `json:"Definition,omitempty" xml:"Definition,omitempty" type:"Struct"`
+	HostId     *string                          `json:"HostId,omitempty" xml:"HostId,omitempty"`
+	RequestId  *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Status     *GetWorkerResponseBodyStatus     `json:"Status,omitempty" xml:"Status,omitempty" type:"Struct"`
+	WorkerId   *string                          `json:"WorkerId,omitempty" xml:"WorkerId,omitempty"`
 }
 
 func (s GetWorkerResponseBody) String() string {
@@ -3791,6 +3720,11 @@ func (s GetWorkerResponseBody) String() string {
 
 func (s GetWorkerResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *GetWorkerResponseBody) SetDefinition(v *GetWorkerResponseBodyDefinition) *GetWorkerResponseBody {
+	s.Definition = v
+	return s
 }
 
 func (s *GetWorkerResponseBody) SetHostId(v string) *GetWorkerResponseBody {
@@ -3813,8 +3747,54 @@ func (s *GetWorkerResponseBody) SetWorkerId(v string) *GetWorkerResponseBody {
 	return s
 }
 
+type GetWorkerResponseBodyDefinition struct {
+	Bootstrap     *Bootstrap    `json:"Bootstrap,omitempty" xml:"Bootstrap,omitempty"`
+	Docker        *Docker       `json:"Docker,omitempty" xml:"Docker,omitempty"`
+	LivenessProbe *Probe        `json:"LivenessProbe,omitempty" xml:"LivenessProbe,omitempty"`
+	MountPoints   []*MountPoint `json:"MountPoints,omitempty" xml:"MountPoints,omitempty" type:"Repeated"`
+	StartupProbe  *Probe        `json:"StartupProbe,omitempty" xml:"StartupProbe,omitempty"`
+	Volumes       []*Volume     `json:"Volumes,omitempty" xml:"Volumes,omitempty" type:"Repeated"`
+}
+
+func (s GetWorkerResponseBodyDefinition) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetWorkerResponseBodyDefinition) GoString() string {
+	return s.String()
+}
+
+func (s *GetWorkerResponseBodyDefinition) SetBootstrap(v *Bootstrap) *GetWorkerResponseBodyDefinition {
+	s.Bootstrap = v
+	return s
+}
+
+func (s *GetWorkerResponseBodyDefinition) SetDocker(v *Docker) *GetWorkerResponseBodyDefinition {
+	s.Docker = v
+	return s
+}
+
+func (s *GetWorkerResponseBodyDefinition) SetLivenessProbe(v *Probe) *GetWorkerResponseBodyDefinition {
+	s.LivenessProbe = v
+	return s
+}
+
+func (s *GetWorkerResponseBodyDefinition) SetMountPoints(v []*MountPoint) *GetWorkerResponseBodyDefinition {
+	s.MountPoints = v
+	return s
+}
+
+func (s *GetWorkerResponseBodyDefinition) SetStartupProbe(v *Probe) *GetWorkerResponseBodyDefinition {
+	s.StartupProbe = v
+	return s
+}
+
+func (s *GetWorkerResponseBodyDefinition) SetVolumes(v []*Volume) *GetWorkerResponseBodyDefinition {
+	s.Volumes = v
+	return s
+}
+
 type GetWorkerResponseBodyStatus struct {
-	ActiveTime         *string                               `json:"ActiveTime,omitempty" xml:"ActiveTime,omitempty"`
 	AllocateTime       *string                               `json:"AllocateTime,omitempty" xml:"AllocateTime,omitempty"`
 	Conditions         []*Conditions                         `json:"Conditions,omitempty" xml:"Conditions,omitempty" type:"Repeated"`
 	Container          *GetWorkerResponseBodyStatusContainer `json:"Container,omitempty" xml:"Container,omitempty" type:"Struct"`
@@ -3835,11 +3815,6 @@ func (s GetWorkerResponseBodyStatus) String() string {
 
 func (s GetWorkerResponseBodyStatus) GoString() string {
 	return s.String()
-}
-
-func (s *GetWorkerResponseBodyStatus) SetActiveTime(v string) *GetWorkerResponseBodyStatus {
-	s.ActiveTime = &v
-	return s
 }
 
 func (s *GetWorkerResponseBodyStatus) SetAllocateTime(v string) *GetWorkerResponseBodyStatus {
@@ -3927,12 +3902,8 @@ func (s *GetWorkerResponseBodyStatusContainer) SetMemory(v int32) *GetWorkerResp
 
 type GetWorkerResponseBodyStatusECS struct {
 	Cpu            *int32  `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
-	Endpoint       *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
-	Hostname       *string `json:"Hostname,omitempty" xml:"Hostname,omitempty"`
-	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	InstanceType   *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
 	Memory         *int32  `json:"Memory,omitempty" xml:"Memory,omitempty"`
-	Password       *string `json:"Password,omitempty" xml:"Password,omitempty"`
 	ResourceType   *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	SpotPriceLimit *string `json:"SpotPriceLimit,omitempty" xml:"SpotPriceLimit,omitempty"`
 	SpotStrategy   *string `json:"SpotStrategy,omitempty" xml:"SpotStrategy,omitempty"`
@@ -3955,21 +3926,6 @@ func (s *GetWorkerResponseBodyStatusECS) SetCpu(v int32) *GetWorkerResponseBodyS
 	return s
 }
 
-func (s *GetWorkerResponseBodyStatusECS) SetEndpoint(v string) *GetWorkerResponseBodyStatusECS {
-	s.Endpoint = &v
-	return s
-}
-
-func (s *GetWorkerResponseBodyStatusECS) SetHostname(v string) *GetWorkerResponseBodyStatusECS {
-	s.Hostname = &v
-	return s
-}
-
-func (s *GetWorkerResponseBodyStatusECS) SetInstanceId(v string) *GetWorkerResponseBodyStatusECS {
-	s.InstanceId = &v
-	return s
-}
-
 func (s *GetWorkerResponseBodyStatusECS) SetInstanceType(v string) *GetWorkerResponseBodyStatusECS {
 	s.InstanceType = &v
 	return s
@@ -3977,11 +3933,6 @@ func (s *GetWorkerResponseBodyStatusECS) SetInstanceType(v string) *GetWorkerRes
 
 func (s *GetWorkerResponseBodyStatusECS) SetMemory(v int32) *GetWorkerResponseBodyStatusECS {
 	s.Memory = &v
-	return s
-}
-
-func (s *GetWorkerResponseBodyStatusECS) SetPassword(v string) *GetWorkerResponseBodyStatusECS {
-	s.Password = &v
 	return s
 }
 
@@ -4021,8 +3972,9 @@ func (s *GetWorkerResponseBodyStatusECS) SetZoneId(v string) *GetWorkerResponseB
 }
 
 type GetWorkerResponse struct {
-	Headers map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetWorkerResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetWorkerResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetWorkerResponse) String() string {
@@ -4035,6 +3987,11 @@ func (s GetWorkerResponse) GoString() string {
 
 func (s *GetWorkerResponse) SetHeaders(v map[string]*string) *GetWorkerResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *GetWorkerResponse) SetStatusCode(v int32) *GetWorkerResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -4096,8 +4053,9 @@ func (s *KillWorkerResponseBody) SetRequestId(v string) *KillWorkerResponseBody 
 }
 
 type KillWorkerResponse struct {
-	Headers map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *KillWorkerResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *KillWorkerResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s KillWorkerResponse) String() string {
@@ -4110,6 +4068,11 @@ func (s KillWorkerResponse) GoString() string {
 
 func (s *KillWorkerResponse) SetHeaders(v map[string]*string) *KillWorkerResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *KillWorkerResponse) SetStatusCode(v int32) *KillWorkerResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -4301,8 +4264,9 @@ func (s *ListClustersResponseBodyClustersStatus) SetState(v string) *ListCluster
 }
 
 type ListClustersResponse struct {
-	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListClustersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListClustersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListClustersResponse) String() string {
@@ -4315,6 +4279,11 @@ func (s ListClustersResponse) GoString() string {
 
 func (s *ListClustersResponse) SetHeaders(v map[string]*string) *ListClustersResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ListClustersResponse) SetStatusCode(v int32) *ListClustersResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -4377,9 +4346,11 @@ func (s *ListJobQueuesRequest) SetState(v string) *ListJobQueuesRequest {
 }
 
 type ListJobQueuesResponseBody struct {
-	HostId    *string                               `json:"HostId,omitempty" xml:"HostId,omitempty"`
-	JobQueues []*ListJobQueuesResponseBodyJobQueues `json:"JobQueues,omitempty" xml:"JobQueues,omitempty" type:"Repeated"`
-	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	HostId     *string                               `json:"HostId,omitempty" xml:"HostId,omitempty"`
+	JobQueues  []*ListJobQueuesResponseBodyJobQueues `json:"JobQueues,omitempty" xml:"JobQueues,omitempty" type:"Repeated"`
+	NextToken  *string                               `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RequestId  *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *int32                                `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListJobQueuesResponseBody) String() string {
@@ -4400,8 +4371,18 @@ func (s *ListJobQueuesResponseBody) SetJobQueues(v []*ListJobQueuesResponseBodyJ
 	return s
 }
 
+func (s *ListJobQueuesResponseBody) SetNextToken(v string) *ListJobQueuesResponseBody {
+	s.NextToken = &v
+	return s
+}
+
 func (s *ListJobQueuesResponseBody) SetRequestId(v string) *ListJobQueuesResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *ListJobQueuesResponseBody) SetTotalCount(v int32) *ListJobQueuesResponseBody {
+	s.TotalCount = &v
 	return s
 }
 
@@ -4409,11 +4390,9 @@ type ListJobQueuesResponseBodyJobQueues struct {
 	Definition  *JobQueueDefinition `json:"Definition,omitempty" xml:"Definition,omitempty"`
 	Description *string             `json:"Description,omitempty" xml:"Description,omitempty"`
 	Name        *string             `json:"Name,omitempty" xml:"Name,omitempty"`
-	NextToken   *string             `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	OwnerId     *string             `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	Project     *string             `json:"Project,omitempty" xml:"Project,omitempty"`
 	Status      *JobQueueStatus     `json:"Status,omitempty" xml:"Status,omitempty"`
-	TotalCount  *int32              `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListJobQueuesResponseBodyJobQueues) String() string {
@@ -4439,11 +4418,6 @@ func (s *ListJobQueuesResponseBodyJobQueues) SetName(v string) *ListJobQueuesRes
 	return s
 }
 
-func (s *ListJobQueuesResponseBodyJobQueues) SetNextToken(v string) *ListJobQueuesResponseBodyJobQueues {
-	s.NextToken = &v
-	return s
-}
-
 func (s *ListJobQueuesResponseBodyJobQueues) SetOwnerId(v string) *ListJobQueuesResponseBodyJobQueues {
 	s.OwnerId = &v
 	return s
@@ -4459,14 +4433,10 @@ func (s *ListJobQueuesResponseBodyJobQueues) SetStatus(v *JobQueueStatus) *ListJ
 	return s
 }
 
-func (s *ListJobQueuesResponseBodyJobQueues) SetTotalCount(v int32) *ListJobQueuesResponseBodyJobQueues {
-	s.TotalCount = &v
-	return s
-}
-
 type ListJobQueuesResponse struct {
-	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListJobQueuesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListJobQueuesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListJobQueuesResponse) String() string {
@@ -4479,6 +4449,11 @@ func (s ListJobQueuesResponse) GoString() string {
 
 func (s *ListJobQueuesResponse) SetHeaders(v map[string]*string) *ListJobQueuesResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ListJobQueuesResponse) SetStatusCode(v int32) *ListJobQueuesResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -4712,8 +4687,9 @@ func (s *ListJobsResponseBodyJobsStatus) SetWorker(v string) *ListJobsResponseBo
 }
 
 type ListJobsResponse struct {
-	Headers map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListJobsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListJobsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListJobsResponse) String() string {
@@ -4726,6 +4702,11 @@ func (s ListJobsResponse) GoString() string {
 
 func (s *ListJobsResponse) SetHeaders(v map[string]*string) *ListJobsResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ListJobsResponse) SetStatusCode(v int32) *ListJobsResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -4860,6 +4841,7 @@ func (s *ListProjectsResponseBodyProjects) SetStatus(v *ListProjectsResponseBody
 type ListProjectsResponseBodyProjectsStatus struct {
 	CreateTime       *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	LastModifiedTime *string `json:"LastModifiedTime,omitempty" xml:"LastModifiedTime,omitempty"`
+	Status           *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ListProjectsResponseBodyProjectsStatus) String() string {
@@ -4880,9 +4862,15 @@ func (s *ListProjectsResponseBodyProjectsStatus) SetLastModifiedTime(v string) *
 	return s
 }
 
+func (s *ListProjectsResponseBodyProjectsStatus) SetStatus(v string) *ListProjectsResponseBodyProjectsStatus {
+	s.Status = &v
+	return s
+}
+
 type ListProjectsResponse struct {
-	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListProjectsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListProjectsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListProjectsResponse) String() string {
@@ -4895,6 +4883,11 @@ func (s ListProjectsResponse) GoString() string {
 
 func (s *ListProjectsResponse) SetHeaders(v map[string]*string) *ListProjectsResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ListProjectsResponse) SetStatusCode(v int32) *ListProjectsResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -4973,8 +4966,9 @@ func (s *ListRegionsResponseBodyRegions) SetRegionId(v string) *ListRegionsRespo
 }
 
 type ListRegionsResponse struct {
-	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListRegionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListRegionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListRegionsResponse) String() string {
@@ -4987,6 +4981,11 @@ func (s ListRegionsResponse) GoString() string {
 
 func (s *ListRegionsResponse) SetHeaders(v map[string]*string) *ListRegionsResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ListRegionsResponse) SetStatusCode(v int32) *ListRegionsResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -5072,8 +5071,9 @@ func (s *ListWorkersResponseBody) SetWorkers(v []*ListWorkersResponseBodyWorkers
 }
 
 type ListWorkersResponseBodyWorkers struct {
-	Status   *ListWorkersResponseBodyWorkersStatus `json:"Status,omitempty" xml:"Status,omitempty" type:"Struct"`
-	WorkerId *string                               `json:"WorkerId,omitempty" xml:"WorkerId,omitempty"`
+	Definition *ListWorkersResponseBodyWorkersDefinition `json:"Definition,omitempty" xml:"Definition,omitempty" type:"Struct"`
+	Status     *ListWorkersResponseBodyWorkersStatus     `json:"Status,omitempty" xml:"Status,omitempty" type:"Struct"`
+	WorkerId   *string                                   `json:"WorkerId,omitempty" xml:"WorkerId,omitempty"`
 }
 
 func (s ListWorkersResponseBodyWorkers) String() string {
@@ -5082,6 +5082,11 @@ func (s ListWorkersResponseBodyWorkers) String() string {
 
 func (s ListWorkersResponseBodyWorkers) GoString() string {
 	return s.String()
+}
+
+func (s *ListWorkersResponseBodyWorkers) SetDefinition(v *ListWorkersResponseBodyWorkersDefinition) *ListWorkersResponseBodyWorkers {
+	s.Definition = v
+	return s
 }
 
 func (s *ListWorkersResponseBodyWorkers) SetStatus(v *ListWorkersResponseBodyWorkersStatus) *ListWorkersResponseBodyWorkers {
@@ -5094,8 +5099,54 @@ func (s *ListWorkersResponseBodyWorkers) SetWorkerId(v string) *ListWorkersRespo
 	return s
 }
 
+type ListWorkersResponseBodyWorkersDefinition struct {
+	Bootstrap     *Bootstrap    `json:"Bootstrap,omitempty" xml:"Bootstrap,omitempty"`
+	Docker        *Docker       `json:"Docker,omitempty" xml:"Docker,omitempty"`
+	LivenessProbe *Probe        `json:"LivenessProbe,omitempty" xml:"LivenessProbe,omitempty"`
+	MountPoints   []*MountPoint `json:"MountPoints,omitempty" xml:"MountPoints,omitempty" type:"Repeated"`
+	StartupProbe  *Probe        `json:"StartupProbe,omitempty" xml:"StartupProbe,omitempty"`
+	Volumes       []*Volume     `json:"Volumes,omitempty" xml:"Volumes,omitempty" type:"Repeated"`
+}
+
+func (s ListWorkersResponseBodyWorkersDefinition) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListWorkersResponseBodyWorkersDefinition) GoString() string {
+	return s.String()
+}
+
+func (s *ListWorkersResponseBodyWorkersDefinition) SetBootstrap(v *Bootstrap) *ListWorkersResponseBodyWorkersDefinition {
+	s.Bootstrap = v
+	return s
+}
+
+func (s *ListWorkersResponseBodyWorkersDefinition) SetDocker(v *Docker) *ListWorkersResponseBodyWorkersDefinition {
+	s.Docker = v
+	return s
+}
+
+func (s *ListWorkersResponseBodyWorkersDefinition) SetLivenessProbe(v *Probe) *ListWorkersResponseBodyWorkersDefinition {
+	s.LivenessProbe = v
+	return s
+}
+
+func (s *ListWorkersResponseBodyWorkersDefinition) SetMountPoints(v []*MountPoint) *ListWorkersResponseBodyWorkersDefinition {
+	s.MountPoints = v
+	return s
+}
+
+func (s *ListWorkersResponseBodyWorkersDefinition) SetStartupProbe(v *Probe) *ListWorkersResponseBodyWorkersDefinition {
+	s.StartupProbe = v
+	return s
+}
+
+func (s *ListWorkersResponseBodyWorkersDefinition) SetVolumes(v []*Volume) *ListWorkersResponseBodyWorkersDefinition {
+	s.Volumes = v
+	return s
+}
+
 type ListWorkersResponseBodyWorkersStatus struct {
-	ActiveTime         *string                                        `json:"ActiveTime,omitempty" xml:"ActiveTime,omitempty"`
 	AllocateTime       *string                                        `json:"AllocateTime,omitempty" xml:"AllocateTime,omitempty"`
 	Conditions         []*Conditions                                  `json:"Conditions,omitempty" xml:"Conditions,omitempty" type:"Repeated"`
 	Container          *ListWorkersResponseBodyWorkersStatusContainer `json:"Container,omitempty" xml:"Container,omitempty" type:"Struct"`
@@ -5116,11 +5167,6 @@ func (s ListWorkersResponseBodyWorkersStatus) String() string {
 
 func (s ListWorkersResponseBodyWorkersStatus) GoString() string {
 	return s.String()
-}
-
-func (s *ListWorkersResponseBodyWorkersStatus) SetActiveTime(v string) *ListWorkersResponseBodyWorkersStatus {
-	s.ActiveTime = &v
-	return s
 }
 
 func (s *ListWorkersResponseBodyWorkersStatus) SetAllocateTime(v string) *ListWorkersResponseBodyWorkersStatus {
@@ -5208,12 +5254,8 @@ func (s *ListWorkersResponseBodyWorkersStatusContainer) SetMemory(v int32) *List
 
 type ListWorkersResponseBodyWorkersStatusECS struct {
 	Cpu            *int32  `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
-	Endpoint       *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
-	Hostname       *string `json:"Hostname,omitempty" xml:"Hostname,omitempty"`
-	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	InstanceType   *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
 	Memory         *int32  `json:"Memory,omitempty" xml:"Memory,omitempty"`
-	Password       *string `json:"Password,omitempty" xml:"Password,omitempty"`
 	ResourceType   *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	SpotPriceLimit *string `json:"SpotPriceLimit,omitempty" xml:"SpotPriceLimit,omitempty"`
 	SpotStrategy   *string `json:"SpotStrategy,omitempty" xml:"SpotStrategy,omitempty"`
@@ -5236,21 +5278,6 @@ func (s *ListWorkersResponseBodyWorkersStatusECS) SetCpu(v int32) *ListWorkersRe
 	return s
 }
 
-func (s *ListWorkersResponseBodyWorkersStatusECS) SetEndpoint(v string) *ListWorkersResponseBodyWorkersStatusECS {
-	s.Endpoint = &v
-	return s
-}
-
-func (s *ListWorkersResponseBodyWorkersStatusECS) SetHostname(v string) *ListWorkersResponseBodyWorkersStatusECS {
-	s.Hostname = &v
-	return s
-}
-
-func (s *ListWorkersResponseBodyWorkersStatusECS) SetInstanceId(v string) *ListWorkersResponseBodyWorkersStatusECS {
-	s.InstanceId = &v
-	return s
-}
-
 func (s *ListWorkersResponseBodyWorkersStatusECS) SetInstanceType(v string) *ListWorkersResponseBodyWorkersStatusECS {
 	s.InstanceType = &v
 	return s
@@ -5258,11 +5285,6 @@ func (s *ListWorkersResponseBodyWorkersStatusECS) SetInstanceType(v string) *Lis
 
 func (s *ListWorkersResponseBodyWorkersStatusECS) SetMemory(v int32) *ListWorkersResponseBodyWorkersStatusECS {
 	s.Memory = &v
-	return s
-}
-
-func (s *ListWorkersResponseBodyWorkersStatusECS) SetPassword(v string) *ListWorkersResponseBodyWorkersStatusECS {
-	s.Password = &v
 	return s
 }
 
@@ -5302,8 +5324,9 @@ func (s *ListWorkersResponseBodyWorkersStatusECS) SetZoneId(v string) *ListWorke
 }
 
 type ListWorkersResponse struct {
-	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListWorkersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListWorkersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListWorkersResponse) String() string {
@@ -5316,6 +5339,11 @@ func (s ListWorkersResponse) GoString() string {
 
 func (s *ListWorkersResponse) SetHeaders(v map[string]*string) *ListWorkersResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ListWorkersResponse) SetStatusCode(v int32) *ListWorkersResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -5348,8 +5376,9 @@ func (s *OpenBatchComputeServiceResponseBody) SetRequestId(v string) *OpenBatchC
 }
 
 type OpenBatchComputeServiceResponse struct {
-	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *OpenBatchComputeServiceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *OpenBatchComputeServiceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s OpenBatchComputeServiceResponse) String() string {
@@ -5362,6 +5391,11 @@ func (s OpenBatchComputeServiceResponse) GoString() string {
 
 func (s *OpenBatchComputeServiceResponse) SetHeaders(v map[string]*string) *OpenBatchComputeServiceResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *OpenBatchComputeServiceResponse) SetStatusCode(v int32) *OpenBatchComputeServiceResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -5429,8 +5463,9 @@ func (s *PollCmdResponseBody) SetRequestId(v string) *PollCmdResponseBody {
 }
 
 type PollCmdResponse struct {
-	Headers map[string]*string   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *PollCmdResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *PollCmdResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s PollCmdResponse) String() string {
@@ -5443,6 +5478,11 @@ func (s PollCmdResponse) GoString() string {
 
 func (s *PollCmdResponse) SetHeaders(v map[string]*string) *PollCmdResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *PollCmdResponse) SetStatusCode(v int32) *PollCmdResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -5504,8 +5544,9 @@ func (s *RecreateWorkerResponseBody) SetRequestId(v string) *RecreateWorkerRespo
 }
 
 type RecreateWorkerResponse struct {
-	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *RecreateWorkerResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *RecreateWorkerResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s RecreateWorkerResponse) String() string {
@@ -5518,6 +5559,11 @@ func (s RecreateWorkerResponse) GoString() string {
 
 func (s *RecreateWorkerResponse) SetHeaders(v map[string]*string) *RecreateWorkerResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *RecreateWorkerResponse) SetStatusCode(v int32) *RecreateWorkerResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -5680,8 +5726,9 @@ func (s *RunJobResponseBody) SetWorker(v string) *RunJobResponseBody {
 }
 
 type RunJobResponse struct {
-	Headers map[string]*string  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *RunJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *RunJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s RunJobResponse) String() string {
@@ -5697,15 +5744,22 @@ func (s *RunJobResponse) SetHeaders(v map[string]*string) *RunJobResponse {
 	return s
 }
 
+func (s *RunJobResponse) SetStatusCode(v int32) *RunJobResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *RunJobResponse) SetBody(v *RunJobResponseBody) *RunJobResponse {
 	s.Body = v
 	return s
 }
 
 type UpdateClusterRequest struct {
-	ClusterId  *string            `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	Definition *ClusterDefinition `json:"Definition,omitempty" xml:"Definition,omitempty"`
-	Project    *string            `json:"Project,omitempty" xml:"Project,omitempty"`
+	ClusterId   *string            `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	Definition  *ClusterDefinition `json:"Definition,omitempty" xml:"Definition,omitempty"`
+	Description *string            `json:"Description,omitempty" xml:"Description,omitempty"`
+	Name        *string            `json:"Name,omitempty" xml:"Name,omitempty"`
+	Project     *string            `json:"Project,omitempty" xml:"Project,omitempty"`
 }
 
 func (s UpdateClusterRequest) String() string {
@@ -5726,6 +5780,16 @@ func (s *UpdateClusterRequest) SetDefinition(v *ClusterDefinition) *UpdateCluste
 	return s
 }
 
+func (s *UpdateClusterRequest) SetDescription(v string) *UpdateClusterRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *UpdateClusterRequest) SetName(v string) *UpdateClusterRequest {
+	s.Name = &v
+	return s
+}
+
 func (s *UpdateClusterRequest) SetProject(v string) *UpdateClusterRequest {
 	s.Project = &v
 	return s
@@ -5734,6 +5798,8 @@ func (s *UpdateClusterRequest) SetProject(v string) *UpdateClusterRequest {
 type UpdateClusterShrinkRequest struct {
 	ClusterId        *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	DefinitionShrink *string `json:"Definition,omitempty" xml:"Definition,omitempty"`
+	Description      *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Name             *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	Project          *string `json:"Project,omitempty" xml:"Project,omitempty"`
 }
 
@@ -5752,6 +5818,16 @@ func (s *UpdateClusterShrinkRequest) SetClusterId(v string) *UpdateClusterShrink
 
 func (s *UpdateClusterShrinkRequest) SetDefinitionShrink(v string) *UpdateClusterShrinkRequest {
 	s.DefinitionShrink = &v
+	return s
+}
+
+func (s *UpdateClusterShrinkRequest) SetDescription(v string) *UpdateClusterShrinkRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *UpdateClusterShrinkRequest) SetName(v string) *UpdateClusterShrinkRequest {
+	s.Name = &v
 	return s
 }
 
@@ -5784,8 +5860,9 @@ func (s *UpdateClusterResponseBody) SetRequestId(v string) *UpdateClusterRespons
 }
 
 type UpdateClusterResponse struct {
-	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UpdateClusterResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateClusterResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s UpdateClusterResponse) String() string {
@@ -5798,6 +5875,11 @@ func (s UpdateClusterResponse) GoString() string {
 
 func (s *UpdateClusterResponse) SetHeaders(v map[string]*string) *UpdateClusterResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *UpdateClusterResponse) SetStatusCode(v int32) *UpdateClusterResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -5888,8 +5970,9 @@ func (s *UpdateJobQueueResponseBody) SetRequestId(v string) *UpdateJobQueueRespo
 }
 
 type UpdateJobQueueResponse struct {
-	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UpdateJobQueueResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateJobQueueResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s UpdateJobQueueResponse) String() string {
@@ -5902,6 +5985,11 @@ func (s UpdateJobQueueResponse) GoString() string {
 
 func (s *UpdateJobQueueResponse) SetHeaders(v map[string]*string) *UpdateJobQueueResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *UpdateJobQueueResponse) SetStatusCode(v int32) *UpdateJobQueueResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -5992,8 +6080,9 @@ func (s *UpdateProjectResponseBody) SetRequestId(v string) *UpdateProjectRespons
 }
 
 type UpdateProjectResponse struct {
-	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UpdateProjectResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateProjectResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s UpdateProjectResponse) String() string {
@@ -6006,6 +6095,11 @@ func (s UpdateProjectResponse) GoString() string {
 
 func (s *UpdateProjectResponse) SetHeaders(v map[string]*string) *UpdateProjectResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *UpdateProjectResponse) SetStatusCode(v int32) *UpdateProjectResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -6067,8 +6161,9 @@ func (s *UpdateWorkerStatusResponseBody) SetRequestId(v string) *UpdateWorkerSta
 }
 
 type UpdateWorkerStatusResponse struct {
-	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UpdateWorkerStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateWorkerStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s UpdateWorkerStatusResponse) String() string {
@@ -6081,6 +6176,11 @@ func (s UpdateWorkerStatusResponse) GoString() string {
 
 func (s *UpdateWorkerStatusResponse) SetHeaders(v map[string]*string) *UpdateWorkerStatusResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *UpdateWorkerStatusResponse) SetStatusCode(v int32) *UpdateWorkerStatusResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -6141,11 +6241,39 @@ func (client *Client) CancelJobWithOptions(request *CancelJobRequest, runtime *u
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ExitCode)) {
+		query["ExitCode"] = request.ExitCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JobId)) {
+		query["JobId"] = request.JobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Project)) {
+		query["Project"] = request.Project
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Reason)) {
+		query["Reason"] = request.Reason
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CancelJob"),
+		Version:     tea.String("2018-12-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CancelJobResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CancelJob"), tea.String("2018-12-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6171,15 +6299,49 @@ func (client *Client) CreateClusterWithOptions(tmpReq *CreateClusterRequest, run
 	}
 	request := &CreateClusterShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.Definition))) {
-		request.DefinitionShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.Definition), tea.String("Definition"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.Definition)) {
+		request.DefinitionShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Definition, tea.String("Definition"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Project)) {
+		query["Project"] = request.Project
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DefinitionShrink)) {
+		body["Definition"] = request.DefinitionShrink
 	}
 
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateCluster"),
+		Version:     tea.String("2018-12-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CreateClusterResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateCluster"), tea.String("2018-12-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6205,15 +6367,49 @@ func (client *Client) CreateJobWithOptions(tmpReq *CreateJobRequest, runtime *ut
 	}
 	request := &CreateJobShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.Definition))) {
-		request.DefinitionShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.Definition), tea.String("Definition"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.Definition)) {
+		request.DefinitionShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Definition, tea.String("Definition"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Project)) {
+		query["Project"] = request.Project
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DefinitionShrink)) {
+		body["Definition"] = request.DefinitionShrink
 	}
 
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateJob"),
+		Version:     tea.String("2018-12-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CreateJobResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateJob"), tea.String("2018-12-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6239,15 +6435,49 @@ func (client *Client) CreateJobQueueWithOptions(tmpReq *CreateJobQueueRequest, r
 	}
 	request := &CreateJobQueueShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.Definition))) {
-		request.DefinitionShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.Definition), tea.String("Definition"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.Definition)) {
+		request.DefinitionShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Definition, tea.String("Definition"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Project)) {
+		query["Project"] = request.Project
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DefinitionShrink)) {
+		body["Definition"] = request.DefinitionShrink
 	}
 
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateJobQueue"),
+		Version:     tea.String("2018-12-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CreateJobQueueResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateJobQueue"), tea.String("2018-12-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6273,15 +6503,45 @@ func (client *Client) CreateProjectWithOptions(tmpReq *CreateProjectRequest, run
 	}
 	request := &CreateProjectShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.Definition))) {
-		request.DefinitionShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.Definition), tea.String("Definition"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.Definition)) {
+		request.DefinitionShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Definition, tea.String("Definition"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Project)) {
+		query["Project"] = request.Project
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DefinitionShrink)) {
+		body["Definition"] = request.DefinitionShrink
 	}
 
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateProject"),
+		Version:     tea.String("2018-12-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CreateProjectResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateProject"), tea.String("2018-12-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6305,11 +6565,31 @@ func (client *Client) DeleteClusterWithOptions(request *DeleteClusterRequest, ru
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Project)) {
+		query["Project"] = request.Project
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteCluster"),
+		Version:     tea.String("2018-12-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteClusterResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteCluster"), tea.String("2018-12-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6333,11 +6613,31 @@ func (client *Client) DeleteJobWithOptions(request *DeleteJobRequest, runtime *u
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.JobId)) {
+		query["JobId"] = request.JobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Project)) {
+		query["Project"] = request.Project
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteJob"),
+		Version:     tea.String("2018-12-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteJobResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteJob"), tea.String("2018-12-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6361,11 +6661,31 @@ func (client *Client) DeleteJobQueueWithOptions(request *DeleteJobQueueRequest, 
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Project)) {
+		query["Project"] = request.Project
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteJobQueue"),
+		Version:     tea.String("2018-12-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteJobQueueResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteJobQueue"), tea.String("2018-12-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6389,11 +6709,27 @@ func (client *Client) DeleteProjectWithOptions(request *DeleteProjectRequest, ru
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Project)) {
+		query["Project"] = request.Project
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteProject"),
+		Version:     tea.String("2018-12-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteProjectResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteProject"), tea.String("2018-12-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6417,11 +6753,31 @@ func (client *Client) GetClusterWithOptions(request *GetClusterRequest, runtime 
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Project)) {
+		query["Project"] = request.Project
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetCluster"),
+		Version:     tea.String("2018-12-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetClusterResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetCluster"), tea.String("2018-12-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6445,11 +6801,31 @@ func (client *Client) GetJobWithOptions(request *GetJobRequest, runtime *util.Ru
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.JobId)) {
+		query["JobId"] = request.JobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Project)) {
+		query["Project"] = request.Project
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetJob"),
+		Version:     tea.String("2018-12-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetJobResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetJob"), tea.String("2018-12-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6473,11 +6849,31 @@ func (client *Client) GetJobQueueWithOptions(request *GetJobQueueRequest, runtim
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Project)) {
+		query["Project"] = request.Project
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetJobQueue"),
+		Version:     tea.String("2018-12-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetJobQueueResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetJobQueue"), tea.String("2018-12-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6501,11 +6897,27 @@ func (client *Client) GetProjectWithOptions(request *GetProjectRequest, runtime 
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Project)) {
+		query["Project"] = request.Project
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetProject"),
+		Version:     tea.String("2018-12-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetProjectResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetProject"), tea.String("2018-12-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6529,11 +6941,35 @@ func (client *Client) GetWorkerWithOptions(request *GetWorkerRequest, runtime *u
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Project)) {
+		query["Project"] = request.Project
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkerId)) {
+		query["WorkerId"] = request.WorkerId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetWorker"),
+		Version:     tea.String("2018-12-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetWorkerResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetWorker"), tea.String("2018-12-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6557,11 +6993,35 @@ func (client *Client) KillWorkerWithOptions(request *KillWorkerRequest, runtime 
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Project)) {
+		query["Project"] = request.Project
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkerId)) {
+		query["WorkerId"] = request.WorkerId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("KillWorker"),
+		Version:     tea.String("2018-12-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &KillWorkerResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("KillWorker"), tea.String("2018-12-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6585,11 +7045,39 @@ func (client *Client) ListClustersWithOptions(request *ListClustersRequest, runt
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Filter)) {
+		query["Filter"] = request.Filter
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Project)) {
+		query["Project"] = request.Project
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListClusters"),
+		Version:     tea.String("2018-12-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListClustersResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListClusters"), tea.String("2018-12-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6613,11 +7101,51 @@ func (client *Client) ListJobQueuesWithOptions(request *ListJobQueuesRequest, ru
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.LabelSelector)) {
+		query["LabelSelector"] = request.LabelSelector
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrderBy)) {
+		query["OrderBy"] = request.OrderBy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrderReverse)) {
+		query["OrderReverse"] = request.OrderReverse
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Project)) {
+		query["Project"] = request.Project
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.State)) {
+		query["State"] = request.State
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListJobQueues"),
+		Version:     tea.String("2018-12-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListJobQueuesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListJobQueues"), tea.String("2018-12-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6641,11 +7169,59 @@ func (client *Client) ListJobsWithOptions(request *ListJobsRequest, runtime *uti
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LabelSelector)) {
+		query["LabelSelector"] = request.LabelSelector
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrderBy)) {
+		query["OrderBy"] = request.OrderBy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrderReverse)) {
+		query["OrderReverse"] = request.OrderReverse
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Project)) {
+		query["Project"] = request.Project
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.State)) {
+		query["State"] = request.State
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListJobs"),
+		Version:     tea.String("2018-12-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListJobsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListJobs"), tea.String("2018-12-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6669,11 +7245,43 @@ func (client *Client) ListProjectsWithOptions(request *ListProjectsRequest, runt
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.LabelSelector)) {
+		query["LabelSelector"] = request.LabelSelector
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrderBy)) {
+		query["OrderBy"] = request.OrderBy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrderReverse)) {
+		query["OrderReverse"] = request.OrderReverse
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListProjects"),
+		Version:     tea.String("2018-12-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListProjectsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListProjects"), tea.String("2018-12-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6699,10 +7307,21 @@ func (client *Client) ListRegionsWithOptions(request *ListRegionsRequest, runtim
 	}
 	query := openapiutil.Query(util.ToMap(request))
 	req := &openapi.OpenApiRequest{
-		Query: query,
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListRegions"),
+		Version:     tea.String("2018-12-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListRegionsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListRegions"), tea.String("2018-12-13"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6726,11 +7345,39 @@ func (client *Client) ListWorkersWithOptions(request *ListWorkersRequest, runtim
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Project)) {
+		query["Project"] = request.Project
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListWorkers"),
+		Version:     tea.String("2018-12-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListWorkersResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListWorkers"), tea.String("2018-12-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6751,8 +7398,19 @@ func (client *Client) ListWorkers(request *ListWorkersRequest) (_result *ListWor
 
 func (client *Client) OpenBatchComputeServiceWithOptions(runtime *util.RuntimeOptions) (_result *OpenBatchComputeServiceResponse, _err error) {
 	req := &openapi.OpenApiRequest{}
+	params := &openapi.Params{
+		Action:      tea.String("OpenBatchComputeService"),
+		Version:     tea.String("2018-12-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &OpenBatchComputeServiceResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("OpenBatchComputeService"), tea.String("2018-12-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6776,11 +7434,35 @@ func (client *Client) PollCmdWithOptions(request *PollCmdRequest, runtime *util.
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Queue)) {
+		query["Queue"] = request.Queue
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WaitSeconds)) {
+		query["WaitSeconds"] = request.WaitSeconds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkerId)) {
+		query["WorkerId"] = request.WorkerId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("PollCmd"),
+		Version:     tea.String("2018-12-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &PollCmdResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("PollCmd"), tea.String("2018-12-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6804,11 +7486,35 @@ func (client *Client) RecreateWorkerWithOptions(request *RecreateWorkerRequest, 
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Project)) {
+		query["Project"] = request.Project
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkerId)) {
+		query["WorkerId"] = request.WorkerId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RecreateWorker"),
+		Version:     tea.String("2018-12-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &RecreateWorkerResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("RecreateWorker"), tea.String("2018-12-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6834,15 +7540,49 @@ func (client *Client) RunJobWithOptions(tmpReq *RunJobRequest, runtime *util.Run
 	}
 	request := &RunJobShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.Definition))) {
-		request.DefinitionShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.Definition), tea.String("Definition"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.Definition)) {
+		request.DefinitionShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Definition, tea.String("Definition"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Project)) {
+		query["Project"] = request.Project
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DefinitionShrink)) {
+		body["Definition"] = request.DefinitionShrink
 	}
 
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RunJob"),
+		Version:     tea.String("2018-12-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &RunJobResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("RunJob"), tea.String("2018-12-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6868,15 +7608,49 @@ func (client *Client) UpdateClusterWithOptions(tmpReq *UpdateClusterRequest, run
 	}
 	request := &UpdateClusterShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.Definition))) {
-		request.DefinitionShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.Definition), tea.String("Definition"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.Definition)) {
+		request.DefinitionShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Definition, tea.String("Definition"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Project)) {
+		query["Project"] = request.Project
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DefinitionShrink)) {
+		body["Definition"] = request.DefinitionShrink
 	}
 
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateCluster"),
+		Version:     tea.String("2018-12-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateClusterResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UpdateCluster"), tea.String("2018-12-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6902,15 +7676,39 @@ func (client *Client) UpdateJobQueueWithOptions(tmpReq *UpdateJobQueueRequest, r
 	}
 	request := &UpdateJobQueueShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.Definition))) {
-		request.DefinitionShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.Definition), tea.String("Definition"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.Definition)) {
+		request.DefinitionShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Definition, tea.String("Definition"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DefinitionShrink)) {
+		query["Definition"] = request.DefinitionShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Project)) {
+		query["Project"] = request.Project
 	}
 
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateJobQueue"),
+		Version:     tea.String("2018-12-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateJobQueueResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UpdateJobQueue"), tea.String("2018-12-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6936,15 +7734,41 @@ func (client *Client) UpdateProjectWithOptions(tmpReq *UpdateProjectRequest, run
 	}
 	request := &UpdateProjectShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.Definition))) {
-		request.DefinitionShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.Definition), tea.String("Definition"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.Definition)) {
+		request.DefinitionShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Definition, tea.String("Definition"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Project)) {
+		query["Project"] = request.Project
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DefinitionShrink)) {
+		body["Definition"] = request.DefinitionShrink
 	}
 
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateProject"),
+		Version:     tea.String("2018-12-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateProjectResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UpdateProject"), tea.String("2018-12-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6968,11 +7792,37 @@ func (client *Client) UpdateWorkerStatusWithOptions(request *UpdateWorkerStatusR
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkerId)) {
+		query["WorkerId"] = request.WorkerId
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		body["Status"] = request.Status
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateWorkerStatus"),
+		Version:     tea.String("2018-12-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateWorkerStatusResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UpdateWorkerStatus"), tea.String("2018-12-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}

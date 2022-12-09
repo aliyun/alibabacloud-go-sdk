@@ -1,3 +1,6 @@
+2022-12-09 Version: v2.0.0
+- Rebuild core verison form v1 to v2.
+
 2021-11-15 Version: v1.14.15
 - Update SDK.
 - Some interfaces have added parameters.
