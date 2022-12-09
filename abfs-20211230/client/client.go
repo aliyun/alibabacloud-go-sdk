@@ -5,10 +5,10 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/client"
+	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
 	openapiutil "github.com/alibabacloud-go/openapi-util/service"
-	util "github.com/alibabacloud-go/tea-utils/service"
+	util "github.com/alibabacloud-go/tea-utils/v2/service"
 	"github.com/alibabacloud-go/tea/tea"
 )
 
@@ -36,14 +36,10 @@ func (s *CreateBackFlowRequest) SetTimestamp(v string) *CreateBackFlowRequest {
 }
 
 type CreateBackFlowResponseBody struct {
-	// 错误码
-	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// 错误消息
-	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// Id of the request
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// result
-	Result map[string]interface{} `json:"result,omitempty" xml:"result,omitempty"`
+	Code      *string                `json:"code,omitempty" xml:"code,omitempty"`
+	Message   *string                `json:"message,omitempty" xml:"message,omitempty"`
+	RequestId *string                `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Result    map[string]interface{} `json:"result,omitempty" xml:"result,omitempty"`
 }
 
 func (s CreateBackFlowResponseBody) String() string {
@@ -75,8 +71,9 @@ func (s *CreateBackFlowResponseBody) SetResult(v map[string]interface{}) *Create
 }
 
 type CreateBackFlowResponse struct {
-	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateBackFlowResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateBackFlowResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateBackFlowResponse) String() string {
@@ -92,28 +89,25 @@ func (s *CreateBackFlowResponse) SetHeaders(v map[string]*string) *CreateBackFlo
 	return s
 }
 
+func (s *CreateBackFlowResponse) SetStatusCode(v int32) *CreateBackFlowResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *CreateBackFlowResponse) SetBody(v *CreateBackFlowResponseBody) *CreateBackFlowResponse {
 	s.Body = v
 	return s
 }
 
 type CreateInstanceTableRequest struct {
-	// 描述
-	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// 字段描述
-	FieldMap *CreateInstanceTableRequestFieldMap `json:"fieldMap,omitempty" xml:"fieldMap,omitempty" type:"Struct"`
-	// 全量数据源描述
+	Description          *string                                         `json:"description,omitempty" xml:"description,omitempty"`
+	FieldMap             *CreateInstanceTableRequestFieldMap             `json:"fieldMap,omitempty" xml:"fieldMap,omitempty" type:"Struct"`
 	FullDataSourceConfig *CreateInstanceTableRequestFullDataSourceConfig `json:"fullDataSourceConfig,omitempty" xml:"fullDataSourceConfig,omitempty" type:"Struct"`
-	// 增量数据源描述
-	IncDataSourceConfig *CreateInstanceTableRequestIncDataSourceConfig `json:"incDataSourceConfig,omitempty" xml:"incDataSourceConfig,omitempty" type:"Struct"`
-	// 索引类型
-	IndexType *string `json:"indexType,omitempty" xml:"indexType,omitempty"`
-	// 表名
-	TableName *string `json:"tableName,omitempty" xml:"tableName,omitempty"`
-	// 回流触发模式
-	TriggerMode *string `json:"triggerMode,omitempty" xml:"triggerMode,omitempty"`
-	// Topic过期时间
-	Ttl *int64 `json:"ttl,omitempty" xml:"ttl,omitempty"`
+	IncDataSourceConfig  *CreateInstanceTableRequestIncDataSourceConfig  `json:"incDataSourceConfig,omitempty" xml:"incDataSourceConfig,omitempty" type:"Struct"`
+	IndexType            *string                                         `json:"indexType,omitempty" xml:"indexType,omitempty"`
+	TableName            *string                                         `json:"tableName,omitempty" xml:"tableName,omitempty"`
+	TriggerMode          *string                                         `json:"triggerMode,omitempty" xml:"triggerMode,omitempty"`
+	Ttl                  *int64                                          `json:"ttl,omitempty" xml:"ttl,omitempty"`
 }
 
 func (s CreateInstanceTableRequest) String() string {
@@ -165,18 +159,13 @@ func (s *CreateInstanceTableRequest) SetTtl(v int64) *CreateInstanceTableRequest
 }
 
 type CreateInstanceTableRequestFieldMap struct {
-	Fields []*CreateInstanceTableRequestFieldMapFields `json:"fields,omitempty" xml:"fields,omitempty" type:"Repeated"`
-	// 索引信息
-	Indexs          []*CreateInstanceTableRequestFieldMapIndexs `json:"indexs,omitempty" xml:"indexs,omitempty" type:"Repeated"`
-	IsAttributePack *bool                                       `json:"isAttributePack,omitempty" xml:"isAttributePack,omitempty"`
-	// 最大外建数
-	MaxSkeyNum *int64 `json:"maxSkeyNum,omitempty" xml:"maxSkeyNum,omitempty"`
-	// 离线构建线程数
-	OfflineBuildProtectionThreshold *int64 `json:"offlineBuildProtectionThreshold,omitempty" xml:"offlineBuildProtectionThreshold,omitempty"`
-	// 主键
-	Pkey *string `json:"pkey,omitempty" xml:"pkey,omitempty"`
-	// 记录类型
-	RecordType *string `json:"recordType,omitempty" xml:"recordType,omitempty"`
+	Fields                          []*CreateInstanceTableRequestFieldMapFields `json:"fields,omitempty" xml:"fields,omitempty" type:"Repeated"`
+	Indexs                          []*CreateInstanceTableRequestFieldMapIndexs `json:"indexs,omitempty" xml:"indexs,omitempty" type:"Repeated"`
+	IsAttributePack                 *bool                                       `json:"isAttributePack,omitempty" xml:"isAttributePack,omitempty"`
+	MaxSkeyNum                      *int64                                      `json:"maxSkeyNum,omitempty" xml:"maxSkeyNum,omitempty"`
+	OfflineBuildProtectionThreshold *int64                                      `json:"offlineBuildProtectionThreshold,omitempty" xml:"offlineBuildProtectionThreshold,omitempty"`
+	Pkey                            *string                                     `json:"pkey,omitempty" xml:"pkey,omitempty"`
+	RecordType                      *string                                     `json:"recordType,omitempty" xml:"recordType,omitempty"`
 }
 
 func (s CreateInstanceTableRequestFieldMap) String() string {
@@ -223,29 +212,19 @@ func (s *CreateInstanceTableRequestFieldMap) SetRecordType(v string) *CreateInst
 }
 
 type CreateInstanceTableRequestFieldMapFields struct {
-	// 默认值
 	DefaultValue *string `json:"defaultValue,omitempty" xml:"defaultValue,omitempty"`
-	// 描述
 	Description  *string `json:"description,omitempty" xml:"description,omitempty"`
 	IsMultiValue *bool   `json:"isMultiValue,omitempty" xml:"isMultiValue,omitempty"`
 	IsVirtual    *bool   `json:"isVirtual,omitempty" xml:"isVirtual,omitempty"`
 	OnlineStatus *bool   `json:"onlineStatus,omitempty" xml:"onlineStatus,omitempty"`
-	// 是否为主键
-	Pkey *bool `json:"pkey,omitempty" xml:"pkey,omitempty"`
-	// 插件名
-	PluginName *string `json:"pluginName,omitempty" xml:"pluginName,omitempty"`
-	// 插件信息
-	PluginParam *string `json:"pluginParam,omitempty" xml:"pluginParam,omitempty"`
-	// 分隔符
-	Seperator *string `json:"seperator,omitempty" xml:"seperator,omitempty"`
-	// 源字段名
-	SourceName *string `json:"sourceName,omitempty" xml:"sourceName,omitempty"`
-	// 源字段类型
-	SourceType *string `json:"sourceType,omitempty" xml:"sourceType,omitempty"`
-	// 目标字段名
-	TargetName *string `json:"targetName,omitempty" xml:"targetName,omitempty"`
-	// 目标字段类型
-	TargetType *string `json:"targetType,omitempty" xml:"targetType,omitempty"`
+	Pkey         *bool   `json:"pkey,omitempty" xml:"pkey,omitempty"`
+	PluginName   *string `json:"pluginName,omitempty" xml:"pluginName,omitempty"`
+	PluginParam  *string `json:"pluginParam,omitempty" xml:"pluginParam,omitempty"`
+	Seperator    *string `json:"seperator,omitempty" xml:"seperator,omitempty"`
+	SourceName   *string `json:"sourceName,omitempty" xml:"sourceName,omitempty"`
+	SourceType   *string `json:"sourceType,omitempty" xml:"sourceType,omitempty"`
+	TargetName   *string `json:"targetName,omitempty" xml:"targetName,omitempty"`
+	TargetType   *string `json:"targetType,omitempty" xml:"targetType,omitempty"`
 }
 
 func (s CreateInstanceTableRequestFieldMapFields) String() string {
@@ -322,9 +301,7 @@ func (s *CreateInstanceTableRequestFieldMapFields) SetTargetType(v string) *Crea
 }
 
 type CreateInstanceTableRequestFieldMapIndexs struct {
-	// 字段名
-	Field *string `json:"field,omitempty" xml:"field,omitempty"`
-	// 索引字段名
+	Field     *string `json:"field,omitempty" xml:"field,omitempty"`
 	IndexName *string `json:"indexName,omitempty" xml:"indexName,omitempty"`
 }
 
@@ -347,10 +324,8 @@ func (s *CreateInstanceTableRequestFieldMapIndexs) SetIndexName(v string) *Creat
 }
 
 type CreateInstanceTableRequestFullDataSourceConfig struct {
-	// MaxCompute描述
 	OdpsDataDesc *CreateInstanceTableRequestFullDataSourceConfigOdpsDataDesc `json:"odpsDataDesc,omitempty" xml:"odpsDataDesc,omitempty" type:"Struct"`
-	// 数据源类型
-	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	Type         *string                                                     `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s CreateInstanceTableRequestFullDataSourceConfig) String() string {
@@ -372,10 +347,8 @@ func (s *CreateInstanceTableRequestFullDataSourceConfig) SetType(v string) *Crea
 }
 
 type CreateInstanceTableRequestFullDataSourceConfigOdpsDataDesc struct {
-	// 项目名
 	Project *string `json:"project,omitempty" xml:"project,omitempty"`
-	// 表名
-	Table *string `json:"table,omitempty" xml:"table,omitempty"`
+	Table   *string `json:"table,omitempty" xml:"table,omitempty"`
 }
 
 func (s CreateInstanceTableRequestFullDataSourceConfigOdpsDataDesc) String() string {
@@ -398,8 +371,7 @@ func (s *CreateInstanceTableRequestFullDataSourceConfigOdpsDataDesc) SetTable(v 
 
 type CreateInstanceTableRequestIncDataSourceConfig struct {
 	SwiftDataDesc *CreateInstanceTableRequestIncDataSourceConfigSwiftDataDesc `json:"swiftDataDesc,omitempty" xml:"swiftDataDesc,omitempty" type:"Struct"`
-	// 数据源类型
-	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	Type          *string                                                     `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s CreateInstanceTableRequestIncDataSourceConfig) String() string {
@@ -421,7 +393,6 @@ func (s *CreateInstanceTableRequestIncDataSourceConfig) SetType(v string) *Creat
 }
 
 type CreateInstanceTableRequestIncDataSourceConfigSwiftDataDesc struct {
-	// topic
 	Topic *string `json:"topic,omitempty" xml:"topic,omitempty"`
 }
 
@@ -439,14 +410,10 @@ func (s *CreateInstanceTableRequestIncDataSourceConfigSwiftDataDesc) SetTopic(v 
 }
 
 type CreateInstanceTableResponseBody struct {
-	// 错误码
-	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// 消息
-	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// Id of the request
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// result
-	Result map[string]interface{} `json:"result,omitempty" xml:"result,omitempty"`
+	Code      *string                `json:"code,omitempty" xml:"code,omitempty"`
+	Message   *string                `json:"message,omitempty" xml:"message,omitempty"`
+	RequestId *string                `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Result    map[string]interface{} `json:"result,omitempty" xml:"result,omitempty"`
 }
 
 func (s CreateInstanceTableResponseBody) String() string {
@@ -478,8 +445,9 @@ func (s *CreateInstanceTableResponseBody) SetResult(v map[string]interface{}) *C
 }
 
 type CreateInstanceTableResponse struct {
-	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateInstanceTableResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateInstanceTableResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateInstanceTableResponse) String() string {
@@ -495,20 +463,21 @@ func (s *CreateInstanceTableResponse) SetHeaders(v map[string]*string) *CreateIn
 	return s
 }
 
+func (s *CreateInstanceTableResponse) SetStatusCode(v int32) *CreateInstanceTableResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *CreateInstanceTableResponse) SetBody(v *CreateInstanceTableResponseBody) *CreateInstanceTableResponse {
 	s.Body = v
 	return s
 }
 
 type DeleteInstanceTableResponseBody struct {
-	// 错误码
-	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// 错误信息
-	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// Id of the request
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// reuslt
-	Result map[string]interface{} `json:"result,omitempty" xml:"result,omitempty"`
+	Code      *string                `json:"code,omitempty" xml:"code,omitempty"`
+	Message   *string                `json:"message,omitempty" xml:"message,omitempty"`
+	RequestId *string                `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Result    map[string]interface{} `json:"result,omitempty" xml:"result,omitempty"`
 }
 
 func (s DeleteInstanceTableResponseBody) String() string {
@@ -540,8 +509,9 @@ func (s *DeleteInstanceTableResponseBody) SetResult(v map[string]interface{}) *D
 }
 
 type DeleteInstanceTableResponse struct {
-	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteInstanceTableResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteInstanceTableResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteInstanceTableResponse) String() string {
@@ -557,20 +527,21 @@ func (s *DeleteInstanceTableResponse) SetHeaders(v map[string]*string) *DeleteIn
 	return s
 }
 
+func (s *DeleteInstanceTableResponse) SetStatusCode(v int32) *DeleteInstanceTableResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DeleteInstanceTableResponse) SetBody(v *DeleteInstanceTableResponseBody) *DeleteInstanceTableResponse {
 	s.Body = v
 	return s
 }
 
 type GetBackFlowResponseBody struct {
-	// code
-	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// error message
-	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// Id of the request
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// result
-	Result map[string]interface{} `json:"result,omitempty" xml:"result,omitempty"`
+	Code      *string                `json:"code,omitempty" xml:"code,omitempty"`
+	Message   *string                `json:"message,omitempty" xml:"message,omitempty"`
+	RequestId *string                `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Result    map[string]interface{} `json:"result,omitempty" xml:"result,omitempty"`
 }
 
 func (s GetBackFlowResponseBody) String() string {
@@ -602,8 +573,9 @@ func (s *GetBackFlowResponseBody) SetResult(v map[string]interface{}) *GetBackFl
 }
 
 type GetBackFlowResponse struct {
-	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetBackFlowResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetBackFlowResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetBackFlowResponse) String() string {
@@ -619,20 +591,21 @@ func (s *GetBackFlowResponse) SetHeaders(v map[string]*string) *GetBackFlowRespo
 	return s
 }
 
+func (s *GetBackFlowResponse) SetStatusCode(v int32) *GetBackFlowResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *GetBackFlowResponse) SetBody(v *GetBackFlowResponseBody) *GetBackFlowResponse {
 	s.Body = v
 	return s
 }
 
 type GetIndexesResponseBody struct {
-	// code
-	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// error message
-	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// Id of the request
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// result
-	Result map[string]interface{} `json:"result,omitempty" xml:"result,omitempty"`
+	Code      *string                `json:"code,omitempty" xml:"code,omitempty"`
+	Message   *string                `json:"message,omitempty" xml:"message,omitempty"`
+	RequestId *string                `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Result    map[string]interface{} `json:"result,omitempty" xml:"result,omitempty"`
 }
 
 func (s GetIndexesResponseBody) String() string {
@@ -664,8 +637,9 @@ func (s *GetIndexesResponseBody) SetResult(v map[string]interface{}) *GetIndexes
 }
 
 type GetIndexesResponse struct {
-	Headers map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetIndexesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetIndexesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetIndexesResponse) String() string {
@@ -681,20 +655,21 @@ func (s *GetIndexesResponse) SetHeaders(v map[string]*string) *GetIndexesRespons
 	return s
 }
 
+func (s *GetIndexesResponse) SetStatusCode(v int32) *GetIndexesResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *GetIndexesResponse) SetBody(v *GetIndexesResponseBody) *GetIndexesResponse {
 	s.Body = v
 	return s
 }
 
 type GetInstanceResponseBody struct {
-	// 状态码
-	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// 消息
-	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// 请求ID
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// 结果
-	Result map[string]interface{} `json:"result,omitempty" xml:"result,omitempty"`
+	Code      *string                `json:"code,omitempty" xml:"code,omitempty"`
+	Message   *string                `json:"message,omitempty" xml:"message,omitempty"`
+	RequestId *string                `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Result    map[string]interface{} `json:"result,omitempty" xml:"result,omitempty"`
 }
 
 func (s GetInstanceResponseBody) String() string {
@@ -726,8 +701,9 @@ func (s *GetInstanceResponseBody) SetResult(v map[string]interface{}) *GetInstan
 }
 
 type GetInstanceResponse struct {
-	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetInstanceResponse) String() string {
@@ -740,6 +716,11 @@ func (s GetInstanceResponse) GoString() string {
 
 func (s *GetInstanceResponse) SetHeaders(v map[string]*string) *GetInstanceResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *GetInstanceResponse) SetStatusCode(v int32) *GetInstanceResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -784,8 +765,9 @@ func (s *GetInstanceTableResponseBody) SetResult(v map[string]interface{}) *GetI
 }
 
 type GetInstanceTableResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetInstanceTableResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetInstanceTableResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetInstanceTableResponse) String() string {
@@ -801,13 +783,17 @@ func (s *GetInstanceTableResponse) SetHeaders(v map[string]*string) *GetInstance
 	return s
 }
 
+func (s *GetInstanceTableResponse) SetStatusCode(v int32) *GetInstanceTableResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *GetInstanceTableResponse) SetBody(v *GetInstanceTableResponseBody) *GetInstanceTableResponse {
 	s.Body = v
 	return s
 }
 
 type ListBackFlowsRequest struct {
-	// 查询回流次数(默认值为1,最大值为10)
 	Limit *int64 `json:"limit,omitempty" xml:"limit,omitempty"`
 }
 
@@ -825,14 +811,10 @@ func (s *ListBackFlowsRequest) SetLimit(v int64) *ListBackFlowsRequest {
 }
 
 type ListBackFlowsResponseBody struct {
-	// code
-	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// error message
-	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// Id of the request
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// result
-	Result []map[string]interface{} `json:"result,omitempty" xml:"result,omitempty" type:"Repeated"`
+	Code      *string                  `json:"code,omitempty" xml:"code,omitempty"`
+	Message   *string                  `json:"message,omitempty" xml:"message,omitempty"`
+	RequestId *string                  `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Result    []map[string]interface{} `json:"result,omitempty" xml:"result,omitempty" type:"Repeated"`
 }
 
 func (s ListBackFlowsResponseBody) String() string {
@@ -864,8 +846,9 @@ func (s *ListBackFlowsResponseBody) SetResult(v []map[string]interface{}) *ListB
 }
 
 type ListBackFlowsResponse struct {
-	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListBackFlowsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListBackFlowsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListBackFlowsResponse) String() string {
@@ -881,16 +864,19 @@ func (s *ListBackFlowsResponse) SetHeaders(v map[string]*string) *ListBackFlowsR
 	return s
 }
 
+func (s *ListBackFlowsResponse) SetStatusCode(v int32) *ListBackFlowsResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ListBackFlowsResponse) SetBody(v *ListBackFlowsResponseBody) *ListBackFlowsResponse {
 	s.Body = v
 	return s
 }
 
 type ListInstanceTableRequest struct {
-	// 起始页
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// 页码大小
-	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	PageSize   *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
 }
 
 func (s ListInstanceTableRequest) String() string {
@@ -912,9 +898,8 @@ func (s *ListInstanceTableRequest) SetPageSize(v int64) *ListInstanceTableReques
 }
 
 type ListInstanceTableResponseBody struct {
-	Code    *string `json:"code,omitempty" xml:"code,omitempty"`
-	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// Id of the request
+	Code      *string                `json:"code,omitempty" xml:"code,omitempty"`
+	Message   *string                `json:"message,omitempty" xml:"message,omitempty"`
 	RequestId *string                `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	Result    map[string]interface{} `json:"result,omitempty" xml:"result,omitempty"`
 }
@@ -948,8 +933,9 @@ func (s *ListInstanceTableResponseBody) SetResult(v map[string]interface{}) *Lis
 }
 
 type ListInstanceTableResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListInstanceTableResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListInstanceTableResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListInstanceTableResponse) String() string {
@@ -965,16 +951,19 @@ func (s *ListInstanceTableResponse) SetHeaders(v map[string]*string) *ListInstan
 	return s
 }
 
+func (s *ListInstanceTableResponse) SetStatusCode(v int32) *ListInstanceTableResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ListInstanceTableResponse) SetBody(v *ListInstanceTableResponseBody) *ListInstanceTableResponse {
 	s.Body = v
 	return s
 }
 
 type ListInstancesRequest struct {
-	// 起始页
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// 页码大小
-	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	PageSize   *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
 }
 
 func (s ListInstancesRequest) String() string {
@@ -996,14 +985,10 @@ func (s *ListInstancesRequest) SetPageSize(v int64) *ListInstancesRequest {
 }
 
 type ListInstancesResponseBody struct {
-	// 错误码
-	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// 消息
-	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// 请求ID
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// 结果数据
-	Result map[string]interface{} `json:"result,omitempty" xml:"result,omitempty"`
+	Code      *string                `json:"code,omitempty" xml:"code,omitempty"`
+	Message   *string                `json:"message,omitempty" xml:"message,omitempty"`
+	RequestId *string                `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Result    map[string]interface{} `json:"result,omitempty" xml:"result,omitempty"`
 }
 
 func (s ListInstancesResponseBody) String() string {
@@ -1035,8 +1020,9 @@ func (s *ListInstancesResponseBody) SetResult(v map[string]interface{}) *ListIns
 }
 
 type ListInstancesResponse struct {
-	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListInstancesResponse) String() string {
@@ -1052,26 +1038,24 @@ func (s *ListInstancesResponse) SetHeaders(v map[string]*string) *ListInstancesR
 	return s
 }
 
+func (s *ListInstancesResponse) SetStatusCode(v int32) *ListInstancesResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ListInstancesResponse) SetBody(v *ListInstancesResponseBody) *ListInstancesResponse {
 	s.Body = v
 	return s
 }
 
 type UpdateInstanceTableRequest struct {
-	// 描述
-	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// 字段描述
-	FieldMap *UpdateInstanceTableRequestFieldMap `json:"fieldMap,omitempty" xml:"fieldMap,omitempty" type:"Struct"`
-	// 全量数据源描述
+	Description          *string                                         `json:"description,omitempty" xml:"description,omitempty"`
+	FieldMap             *UpdateInstanceTableRequestFieldMap             `json:"fieldMap,omitempty" xml:"fieldMap,omitempty" type:"Struct"`
 	FullDataSourceConfig *UpdateInstanceTableRequestFullDataSourceConfig `json:"fullDataSourceConfig,omitempty" xml:"fullDataSourceConfig,omitempty" type:"Struct"`
-	// 增量数据源描述
-	IncDataSourceConfig *UpdateInstanceTableRequestIncDataSourceConfig `json:"incDataSourceConfig,omitempty" xml:"incDataSourceConfig,omitempty" type:"Struct"`
-	// 索引类型
-	IndexType *string `json:"indexType,omitempty" xml:"indexType,omitempty"`
-	// 回流触发模式
-	TriggerMode *string `json:"triggerMode,omitempty" xml:"triggerMode,omitempty"`
-	// Topic过期时间
-	Ttl *int64 `json:"ttl,omitempty" xml:"ttl,omitempty"`
+	IncDataSourceConfig  *UpdateInstanceTableRequestIncDataSourceConfig  `json:"incDataSourceConfig,omitempty" xml:"incDataSourceConfig,omitempty" type:"Struct"`
+	IndexType            *string                                         `json:"indexType,omitempty" xml:"indexType,omitempty"`
+	TriggerMode          *string                                         `json:"triggerMode,omitempty" xml:"triggerMode,omitempty"`
+	Ttl                  *int64                                          `json:"ttl,omitempty" xml:"ttl,omitempty"`
 }
 
 func (s UpdateInstanceTableRequest) String() string {
@@ -1118,18 +1102,13 @@ func (s *UpdateInstanceTableRequest) SetTtl(v int64) *UpdateInstanceTableRequest
 }
 
 type UpdateInstanceTableRequestFieldMap struct {
-	Fields []*UpdateInstanceTableRequestFieldMapFields `json:"fields,omitempty" xml:"fields,omitempty" type:"Repeated"`
-	// 索引信息
-	Indexs          []*UpdateInstanceTableRequestFieldMapIndexs `json:"indexs,omitempty" xml:"indexs,omitempty" type:"Repeated"`
-	IsAttributePack *bool                                       `json:"isAttributePack,omitempty" xml:"isAttributePack,omitempty"`
-	// 最大外建数
-	MaxSkeyNum *int64 `json:"maxSkeyNum,omitempty" xml:"maxSkeyNum,omitempty"`
-	// 离线构建线程数
-	OfflineBuildProtectionThreshold *int64 `json:"offlineBuildProtectionThreshold,omitempty" xml:"offlineBuildProtectionThreshold,omitempty"`
-	// 主键
-	Pkey *string `json:"pkey,omitempty" xml:"pkey,omitempty"`
-	// 记录类型
-	RecordType *string `json:"recordType,omitempty" xml:"recordType,omitempty"`
+	Fields                          []*UpdateInstanceTableRequestFieldMapFields `json:"fields,omitempty" xml:"fields,omitempty" type:"Repeated"`
+	Indexs                          []*UpdateInstanceTableRequestFieldMapIndexs `json:"indexs,omitempty" xml:"indexs,omitempty" type:"Repeated"`
+	IsAttributePack                 *bool                                       `json:"isAttributePack,omitempty" xml:"isAttributePack,omitempty"`
+	MaxSkeyNum                      *int64                                      `json:"maxSkeyNum,omitempty" xml:"maxSkeyNum,omitempty"`
+	OfflineBuildProtectionThreshold *int64                                      `json:"offlineBuildProtectionThreshold,omitempty" xml:"offlineBuildProtectionThreshold,omitempty"`
+	Pkey                            *string                                     `json:"pkey,omitempty" xml:"pkey,omitempty"`
+	RecordType                      *string                                     `json:"recordType,omitempty" xml:"recordType,omitempty"`
 }
 
 func (s UpdateInstanceTableRequestFieldMap) String() string {
@@ -1176,29 +1155,19 @@ func (s *UpdateInstanceTableRequestFieldMap) SetRecordType(v string) *UpdateInst
 }
 
 type UpdateInstanceTableRequestFieldMapFields struct {
-	// 默认值
 	DefaultValue *string `json:"defaultValue,omitempty" xml:"defaultValue,omitempty"`
-	// 描述
 	Description  *string `json:"description,omitempty" xml:"description,omitempty"`
 	IsMultiValue *bool   `json:"isMultiValue,omitempty" xml:"isMultiValue,omitempty"`
 	IsVirtual    *bool   `json:"isVirtual,omitempty" xml:"isVirtual,omitempty"`
 	OnlineStatus *bool   `json:"onlineStatus,omitempty" xml:"onlineStatus,omitempty"`
-	// 是否为主键
-	Pkey *bool `json:"pkey,omitempty" xml:"pkey,omitempty"`
-	// 插件名
-	PluginName *string `json:"pluginName,omitempty" xml:"pluginName,omitempty"`
-	// 插件信息
-	PluginParam *string `json:"pluginParam,omitempty" xml:"pluginParam,omitempty"`
-	// 分隔符
-	Seperator *string `json:"seperator,omitempty" xml:"seperator,omitempty"`
-	// 源字段名
-	SourceName *string `json:"sourceName,omitempty" xml:"sourceName,omitempty"`
-	// 源字段类型
-	SourceType *string `json:"sourceType,omitempty" xml:"sourceType,omitempty"`
-	// 目标字段名
-	TargetName *string `json:"targetName,omitempty" xml:"targetName,omitempty"`
-	// 目标字段类型
-	TargetType *string `json:"targetType,omitempty" xml:"targetType,omitempty"`
+	Pkey         *bool   `json:"pkey,omitempty" xml:"pkey,omitempty"`
+	PluginName   *string `json:"pluginName,omitempty" xml:"pluginName,omitempty"`
+	PluginParam  *string `json:"pluginParam,omitempty" xml:"pluginParam,omitempty"`
+	Seperator    *string `json:"seperator,omitempty" xml:"seperator,omitempty"`
+	SourceName   *string `json:"sourceName,omitempty" xml:"sourceName,omitempty"`
+	SourceType   *string `json:"sourceType,omitempty" xml:"sourceType,omitempty"`
+	TargetName   *string `json:"targetName,omitempty" xml:"targetName,omitempty"`
+	TargetType   *string `json:"targetType,omitempty" xml:"targetType,omitempty"`
 }
 
 func (s UpdateInstanceTableRequestFieldMapFields) String() string {
@@ -1275,9 +1244,7 @@ func (s *UpdateInstanceTableRequestFieldMapFields) SetTargetType(v string) *Upda
 }
 
 type UpdateInstanceTableRequestFieldMapIndexs struct {
-	// 字段名
-	Field *string `json:"field,omitempty" xml:"field,omitempty"`
-	// 索引字段名
+	Field     *string `json:"field,omitempty" xml:"field,omitempty"`
 	IndexName *string `json:"indexName,omitempty" xml:"indexName,omitempty"`
 }
 
@@ -1300,10 +1267,8 @@ func (s *UpdateInstanceTableRequestFieldMapIndexs) SetIndexName(v string) *Updat
 }
 
 type UpdateInstanceTableRequestFullDataSourceConfig struct {
-	// MaxCompute描述
 	OdpsDataDesc *UpdateInstanceTableRequestFullDataSourceConfigOdpsDataDesc `json:"odpsDataDesc,omitempty" xml:"odpsDataDesc,omitempty" type:"Struct"`
-	// 数据源类型
-	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	Type         *string                                                     `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s UpdateInstanceTableRequestFullDataSourceConfig) String() string {
@@ -1325,10 +1290,8 @@ func (s *UpdateInstanceTableRequestFullDataSourceConfig) SetType(v string) *Upda
 }
 
 type UpdateInstanceTableRequestFullDataSourceConfigOdpsDataDesc struct {
-	// 项目名
 	Project *string `json:"project,omitempty" xml:"project,omitempty"`
-	// 表名
-	Table *string `json:"table,omitempty" xml:"table,omitempty"`
+	Table   *string `json:"table,omitempty" xml:"table,omitempty"`
 }
 
 func (s UpdateInstanceTableRequestFullDataSourceConfigOdpsDataDesc) String() string {
@@ -1351,8 +1314,7 @@ func (s *UpdateInstanceTableRequestFullDataSourceConfigOdpsDataDesc) SetTable(v 
 
 type UpdateInstanceTableRequestIncDataSourceConfig struct {
 	SwiftDataDesc *UpdateInstanceTableRequestIncDataSourceConfigSwiftDataDesc `json:"swiftDataDesc,omitempty" xml:"swiftDataDesc,omitempty" type:"Struct"`
-	// 数据源类型
-	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	Type          *string                                                     `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s UpdateInstanceTableRequestIncDataSourceConfig) String() string {
@@ -1374,7 +1336,6 @@ func (s *UpdateInstanceTableRequestIncDataSourceConfig) SetType(v string) *Updat
 }
 
 type UpdateInstanceTableRequestIncDataSourceConfigSwiftDataDesc struct {
-	// topic
 	Topic *string `json:"topic,omitempty" xml:"topic,omitempty"`
 }
 
@@ -1392,14 +1353,10 @@ func (s *UpdateInstanceTableRequestIncDataSourceConfigSwiftDataDesc) SetTopic(v 
 }
 
 type UpdateInstanceTableResponseBody struct {
-	// code
-	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// message
-	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// Id of the request
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// result
-	Result map[string]interface{} `json:"result,omitempty" xml:"result,omitempty"`
+	Code      *string                `json:"code,omitempty" xml:"code,omitempty"`
+	Message   *string                `json:"message,omitempty" xml:"message,omitempty"`
+	RequestId *string                `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Result    map[string]interface{} `json:"result,omitempty" xml:"result,omitempty"`
 }
 
 func (s UpdateInstanceTableResponseBody) String() string {
@@ -1431,8 +1388,9 @@ func (s *UpdateInstanceTableResponseBody) SetResult(v map[string]interface{}) *U
 }
 
 type UpdateInstanceTableResponse struct {
-	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UpdateInstanceTableResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateInstanceTableResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s UpdateInstanceTableResponse) String() string {
@@ -1445,6 +1403,11 @@ func (s UpdateInstanceTableResponse) GoString() string {
 
 func (s *UpdateInstanceTableResponse) SetHeaders(v map[string]*string) *UpdateInstanceTableResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *UpdateInstanceTableResponse) SetStatusCode(v int32) *UpdateInstanceTableResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1517,8 +1480,6 @@ func (client *Client) CreateBackFlowWithOptions(tableName *string, instanceId *s
 	if _err != nil {
 		return _result, _err
 	}
-	tableName = openapiutil.GetEncodeParam(tableName)
-	instanceId = openapiutil.GetEncodeParam(instanceId)
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.OdpsPartition)) {
 		body["odpsPartition"] = request.OdpsPartition
@@ -1536,7 +1497,7 @@ func (client *Client) CreateBackFlowWithOptions(tableName *string, instanceId *s
 		Action:      tea.String("CreateBackFlow"),
 		Version:     tea.String("2021-12-30"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v1/instances/" + tea.StringValue(instanceId) + "/tables/" + tea.StringValue(tableName) + "/backflows"),
+		Pathname:    tea.String("/api/v1/instances/" + tea.StringValue(openapiutil.GetEncodeParam(instanceId)) + "/tables/" + tea.StringValue(openapiutil.GetEncodeParam(tableName)) + "/backflows"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -1569,21 +1530,20 @@ func (client *Client) CreateInstanceTableWithOptions(instanceId *string, request
 	if _err != nil {
 		return _result, _err
 	}
-	instanceId = openapiutil.GetEncodeParam(instanceId)
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Description)) {
 		body["description"] = request.Description
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.FieldMap))) {
+	if !tea.BoolValue(util.IsUnset(request.FieldMap)) {
 		body["fieldMap"] = request.FieldMap
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.FullDataSourceConfig))) {
+	if !tea.BoolValue(util.IsUnset(request.FullDataSourceConfig)) {
 		body["fullDataSourceConfig"] = request.FullDataSourceConfig
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.IncDataSourceConfig))) {
+	if !tea.BoolValue(util.IsUnset(request.IncDataSourceConfig)) {
 		body["incDataSourceConfig"] = request.IncDataSourceConfig
 	}
 
@@ -1611,7 +1571,7 @@ func (client *Client) CreateInstanceTableWithOptions(instanceId *string, request
 		Action:      tea.String("CreateInstanceTable"),
 		Version:     tea.String("2021-12-30"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v1/instances/" + tea.StringValue(instanceId) + "/tables"),
+		Pathname:    tea.String("/api/v1/instances/" + tea.StringValue(openapiutil.GetEncodeParam(instanceId)) + "/tables"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -1640,8 +1600,6 @@ func (client *Client) DeleteInstanceTable(tableName *string, instanceId *string)
 }
 
 func (client *Client) DeleteInstanceTableWithOptions(tableName *string, instanceId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteInstanceTableResponse, _err error) {
-	tableName = openapiutil.GetEncodeParam(tableName)
-	instanceId = openapiutil.GetEncodeParam(instanceId)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -1649,7 +1607,7 @@ func (client *Client) DeleteInstanceTableWithOptions(tableName *string, instance
 		Action:      tea.String("DeleteInstanceTable"),
 		Version:     tea.String("2021-12-30"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v1/instances/" + tea.StringValue(instanceId) + "/tables/" + tea.StringValue(tableName)),
+		Pathname:    tea.String("/api/v1/instances/" + tea.StringValue(openapiutil.GetEncodeParam(instanceId)) + "/tables/" + tea.StringValue(openapiutil.GetEncodeParam(tableName))),
 		Method:      tea.String("DELETE"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -1678,9 +1636,6 @@ func (client *Client) GetBackFlow(tableName *string, instanceId *string, id *str
 }
 
 func (client *Client) GetBackFlowWithOptions(tableName *string, instanceId *string, id *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetBackFlowResponse, _err error) {
-	tableName = openapiutil.GetEncodeParam(tableName)
-	instanceId = openapiutil.GetEncodeParam(instanceId)
-	id = openapiutil.GetEncodeParam(id)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -1688,7 +1643,7 @@ func (client *Client) GetBackFlowWithOptions(tableName *string, instanceId *stri
 		Action:      tea.String("GetBackFlow"),
 		Version:     tea.String("2021-12-30"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v1/instances/" + tea.StringValue(instanceId) + "/tables/" + tea.StringValue(tableName) + "/backflows/" + tea.StringValue(id)),
+		Pathname:    tea.String("/api/v1/instances/" + tea.StringValue(openapiutil.GetEncodeParam(instanceId)) + "/tables/" + tea.StringValue(openapiutil.GetEncodeParam(tableName)) + "/backflows/" + tea.StringValue(openapiutil.GetEncodeParam(id))),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -1717,7 +1672,6 @@ func (client *Client) GetIndexes(instanceId *string) (_result *GetIndexesRespons
 }
 
 func (client *Client) GetIndexesWithOptions(instanceId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetIndexesResponse, _err error) {
-	instanceId = openapiutil.GetEncodeParam(instanceId)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -1725,7 +1679,7 @@ func (client *Client) GetIndexesWithOptions(instanceId *string, headers map[stri
 		Action:      tea.String("GetIndexes"),
 		Version:     tea.String("2021-12-30"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v1/instances/" + tea.StringValue(instanceId) + "/indexes"),
+		Pathname:    tea.String("/api/v1/instances/" + tea.StringValue(openapiutil.GetEncodeParam(instanceId)) + "/indexes"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -1754,7 +1708,6 @@ func (client *Client) GetInstance(instanceId *string) (_result *GetInstanceRespo
 }
 
 func (client *Client) GetInstanceWithOptions(instanceId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetInstanceResponse, _err error) {
-	instanceId = openapiutil.GetEncodeParam(instanceId)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -1762,7 +1715,7 @@ func (client *Client) GetInstanceWithOptions(instanceId *string, headers map[str
 		Action:      tea.String("GetInstance"),
 		Version:     tea.String("2021-12-30"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v1/instances/" + tea.StringValue(instanceId)),
+		Pathname:    tea.String("/api/v1/instances/" + tea.StringValue(openapiutil.GetEncodeParam(instanceId))),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -1791,8 +1744,6 @@ func (client *Client) GetInstanceTable(instanceId *string, tableName *string) (_
 }
 
 func (client *Client) GetInstanceTableWithOptions(instanceId *string, tableName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetInstanceTableResponse, _err error) {
-	instanceId = openapiutil.GetEncodeParam(instanceId)
-	tableName = openapiutil.GetEncodeParam(tableName)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -1800,7 +1751,7 @@ func (client *Client) GetInstanceTableWithOptions(instanceId *string, tableName 
 		Action:      tea.String("GetInstanceTable"),
 		Version:     tea.String("2021-12-30"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v1/instances/" + tea.StringValue(instanceId) + "/tables/" + tea.StringValue(tableName)),
+		Pathname:    tea.String("/api/v1/instances/" + tea.StringValue(openapiutil.GetEncodeParam(instanceId)) + "/tables/" + tea.StringValue(openapiutil.GetEncodeParam(tableName))),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -1833,8 +1784,6 @@ func (client *Client) ListBackFlowsWithOptions(tableName *string, instanceId *st
 	if _err != nil {
 		return _result, _err
 	}
-	tableName = openapiutil.GetEncodeParam(tableName)
-	instanceId = openapiutil.GetEncodeParam(instanceId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Limit)) {
 		query["limit"] = request.Limit
@@ -1848,7 +1797,7 @@ func (client *Client) ListBackFlowsWithOptions(tableName *string, instanceId *st
 		Action:      tea.String("ListBackFlows"),
 		Version:     tea.String("2021-12-30"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v1/instances/" + tea.StringValue(instanceId) + "/tables/" + tea.StringValue(tableName) + "/backflows"),
+		Pathname:    tea.String("/api/v1/instances/" + tea.StringValue(openapiutil.GetEncodeParam(instanceId)) + "/tables/" + tea.StringValue(openapiutil.GetEncodeParam(tableName)) + "/backflows"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -1881,7 +1830,6 @@ func (client *Client) ListInstanceTableWithOptions(instanceId *string, request *
 	if _err != nil {
 		return _result, _err
 	}
-	instanceId = openapiutil.GetEncodeParam(instanceId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
 		query["PageNumber"] = request.PageNumber
@@ -1899,7 +1847,7 @@ func (client *Client) ListInstanceTableWithOptions(instanceId *string, request *
 		Action:      tea.String("ListInstanceTable"),
 		Version:     tea.String("2021-12-30"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v1/instances/" + tea.StringValue(instanceId) + "/tables"),
+		Pathname:    tea.String("/api/v1/instances/" + tea.StringValue(openapiutil.GetEncodeParam(instanceId)) + "/tables"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -1982,22 +1930,20 @@ func (client *Client) UpdateInstanceTableWithOptions(instanceId *string, tableNa
 	if _err != nil {
 		return _result, _err
 	}
-	instanceId = openapiutil.GetEncodeParam(instanceId)
-	tableName = openapiutil.GetEncodeParam(tableName)
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Description)) {
 		body["description"] = request.Description
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.FieldMap))) {
+	if !tea.BoolValue(util.IsUnset(request.FieldMap)) {
 		body["fieldMap"] = request.FieldMap
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.FullDataSourceConfig))) {
+	if !tea.BoolValue(util.IsUnset(request.FullDataSourceConfig)) {
 		body["fullDataSourceConfig"] = request.FullDataSourceConfig
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.IncDataSourceConfig))) {
+	if !tea.BoolValue(util.IsUnset(request.IncDataSourceConfig)) {
 		body["incDataSourceConfig"] = request.IncDataSourceConfig
 	}
 
@@ -2021,7 +1967,7 @@ func (client *Client) UpdateInstanceTableWithOptions(instanceId *string, tableNa
 		Action:      tea.String("UpdateInstanceTable"),
 		Version:     tea.String("2021-12-30"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v1/instances/" + tea.StringValue(instanceId) + "/tables/" + tea.StringValue(tableName)),
+		Pathname:    tea.String("/api/v1/instances/" + tea.StringValue(openapiutil.GetEncodeParam(instanceId)) + "/tables/" + tea.StringValue(openapiutil.GetEncodeParam(tableName))),
 		Method:      tea.String("PUT"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
