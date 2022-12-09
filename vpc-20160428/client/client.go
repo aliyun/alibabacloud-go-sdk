@@ -7687,6 +7687,7 @@ type CreatePhysicalConnectionRequest struct {
 	PortType                      *string `json:"PortType,omitempty" xml:"PortType,omitempty"`
 	RedundantPhysicalConnectionId *string `json:"RedundantPhysicalConnectionId,omitempty" xml:"RedundantPhysicalConnectionId,omitempty"`
 	RegionId                      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId               *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount          *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId               *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	Type                          *string `json:"Type,omitempty" xml:"Type,omitempty"`
@@ -7758,6 +7759,11 @@ func (s *CreatePhysicalConnectionRequest) SetRedundantPhysicalConnectionId(v str
 
 func (s *CreatePhysicalConnectionRequest) SetRegionId(v string) *CreatePhysicalConnectionRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *CreatePhysicalConnectionRequest) SetResourceGroupId(v string) *CreatePhysicalConnectionRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -8746,6 +8752,7 @@ type CreateRouterInterfaceRequest struct {
 	AutoPay                  *bool   `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
 	ClientToken              *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	Description              *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	FastLinkMode             *bool   `json:"FastLinkMode,omitempty" xml:"FastLinkMode,omitempty"`
 	HealthCheckSourceIp      *string `json:"HealthCheckSourceIp,omitempty" xml:"HealthCheckSourceIp,omitempty"`
 	HealthCheckTargetIp      *string `json:"HealthCheckTargetIp,omitempty" xml:"HealthCheckTargetIp,omitempty"`
 	InstanceChargeType       *string `json:"InstanceChargeType,omitempty" xml:"InstanceChargeType,omitempty"`
@@ -8794,6 +8801,11 @@ func (s *CreateRouterInterfaceRequest) SetClientToken(v string) *CreateRouterInt
 
 func (s *CreateRouterInterfaceRequest) SetDescription(v string) *CreateRouterInterfaceRequest {
 	s.Description = &v
+	return s
+}
+
+func (s *CreateRouterInterfaceRequest) SetFastLinkMode(v bool) *CreateRouterInterfaceRequest {
+	s.FastLinkMode = &v
 	return s
 }
 
@@ -10677,16 +10689,18 @@ func (s *CreateVirtualBorderRouterResponse) SetBody(v *CreateVirtualBorderRouter
 }
 
 type CreateVirtualPhysicalConnectionRequest struct {
-	Description          *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	DryRun               *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	Name                 *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	OrderMode            *string `json:"OrderMode,omitempty" xml:"OrderMode,omitempty"`
-	PhysicalConnectionId *string `json:"PhysicalConnectionId,omitempty" xml:"PhysicalConnectionId,omitempty"`
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Spec                 *string `json:"Spec,omitempty" xml:"Spec,omitempty"`
-	Token                *string `json:"Token,omitempty" xml:"Token,omitempty"`
-	VlanId               *int64  `json:"VlanId,omitempty" xml:"VlanId,omitempty"`
-	VpconnAliUid         *int64  `json:"VpconnAliUid,omitempty" xml:"VpconnAliUid,omitempty"`
+	Description              *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	DryRun                   *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	Name                     *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	OrderMode                *string `json:"OrderMode,omitempty" xml:"OrderMode,omitempty"`
+	PhysicalConnectionId     *string `json:"PhysicalConnectionId,omitempty" xml:"PhysicalConnectionId,omitempty"`
+	RegionId                 *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId          *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	Spec                     *string `json:"Spec,omitempty" xml:"Spec,omitempty"`
+	Token                    *string `json:"Token,omitempty" xml:"Token,omitempty"`
+	VlanId                   *int64  `json:"VlanId,omitempty" xml:"VlanId,omitempty"`
+	VpconnAliUid             *int64  `json:"VpconnAliUid,omitempty" xml:"VpconnAliUid,omitempty"`
+	VpconnUidResourceGroupId *string `json:"VpconnUidResourceGroupId,omitempty" xml:"VpconnUidResourceGroupId,omitempty"`
 }
 
 func (s CreateVirtualPhysicalConnectionRequest) String() string {
@@ -10727,6 +10741,11 @@ func (s *CreateVirtualPhysicalConnectionRequest) SetRegionId(v string) *CreateVi
 	return s
 }
 
+func (s *CreateVirtualPhysicalConnectionRequest) SetResourceGroupId(v string) *CreateVirtualPhysicalConnectionRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
 func (s *CreateVirtualPhysicalConnectionRequest) SetSpec(v string) *CreateVirtualPhysicalConnectionRequest {
 	s.Spec = &v
 	return s
@@ -10744,6 +10763,11 @@ func (s *CreateVirtualPhysicalConnectionRequest) SetVlanId(v int64) *CreateVirtu
 
 func (s *CreateVirtualPhysicalConnectionRequest) SetVpconnAliUid(v int64) *CreateVirtualPhysicalConnectionRequest {
 	s.VpconnAliUid = &v
+	return s
+}
+
+func (s *CreateVirtualPhysicalConnectionRequest) SetVpconnUidResourceGroupId(v string) *CreateVirtualPhysicalConnectionRequest {
+	s.VpconnUidResourceGroupId = &v
 	return s
 }
 
@@ -19800,7 +19824,6 @@ func (s *DescribeEipAddressesResponseBodyEipAddresses) SetEipAddress(v []*Descri
 type DescribeEipAddressesResponseBodyEipAddressesEipAddress struct {
 	AllocationId                  *string                                                                        `json:"AllocationId,omitempty" xml:"AllocationId,omitempty"`
 	AllocationTime                *string                                                                        `json:"AllocationTime,omitempty" xml:"AllocationTime,omitempty"`
-	AvailableRegions              *DescribeEipAddressesResponseBodyEipAddressesEipAddressAvailableRegions        `json:"AvailableRegions,omitempty" xml:"AvailableRegions,omitempty" type:"Struct"`
 	Bandwidth                     *string                                                                        `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
 	BandwidthPackageBandwidth     *string                                                                        `json:"BandwidthPackageBandwidth,omitempty" xml:"BandwidthPackageBandwidth,omitempty"`
 	BandwidthPackageId            *string                                                                        `json:"BandwidthPackageId,omitempty" xml:"BandwidthPackageId,omitempty"`
@@ -19854,11 +19877,6 @@ func (s *DescribeEipAddressesResponseBodyEipAddressesEipAddress) SetAllocationId
 
 func (s *DescribeEipAddressesResponseBodyEipAddressesEipAddress) SetAllocationTime(v string) *DescribeEipAddressesResponseBodyEipAddressesEipAddress {
 	s.AllocationTime = &v
-	return s
-}
-
-func (s *DescribeEipAddressesResponseBodyEipAddressesEipAddress) SetAvailableRegions(v *DescribeEipAddressesResponseBodyEipAddressesEipAddressAvailableRegions) *DescribeEipAddressesResponseBodyEipAddressesEipAddress {
-	s.AvailableRegions = v
 	return s
 }
 
@@ -20039,23 +20057,6 @@ func (s *DescribeEipAddressesResponseBodyEipAddressesEipAddress) SetVpcId(v stri
 
 func (s *DescribeEipAddressesResponseBodyEipAddressesEipAddress) SetZone(v string) *DescribeEipAddressesResponseBodyEipAddressesEipAddress {
 	s.Zone = &v
-	return s
-}
-
-type DescribeEipAddressesResponseBodyEipAddressesEipAddressAvailableRegions struct {
-	AvailableRegion []*string `json:"AvailableRegion,omitempty" xml:"AvailableRegion,omitempty" type:"Repeated"`
-}
-
-func (s DescribeEipAddressesResponseBodyEipAddressesEipAddressAvailableRegions) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeEipAddressesResponseBodyEipAddressesEipAddressAvailableRegions) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeEipAddressesResponseBodyEipAddressesEipAddressAvailableRegions) SetAvailableRegion(v []*string) *DescribeEipAddressesResponseBodyEipAddressesEipAddressAvailableRegions {
-	s.AvailableRegion = v
 	return s
 }
 
@@ -20443,7 +20444,7 @@ func (s *DescribeEipMonitorDataResponseBodyEipMonitorDatas) SetEipMonitorData(v 
 
 type DescribeEipMonitorDataResponseBodyEipMonitorDatasEipMonitorData struct {
 	EipBandwidth *int32  `json:"EipBandwidth,omitempty" xml:"EipBandwidth,omitempty"`
-	EipFlow      *int32  `json:"EipFlow,omitempty" xml:"EipFlow,omitempty"`
+	EipFlow      *int64  `json:"EipFlow,omitempty" xml:"EipFlow,omitempty"`
 	EipPackets   *int32  `json:"EipPackets,omitempty" xml:"EipPackets,omitempty"`
 	EipRX        *int64  `json:"EipRX,omitempty" xml:"EipRX,omitempty"`
 	EipTX        *int64  `json:"EipTX,omitempty" xml:"EipTX,omitempty"`
@@ -20463,7 +20464,7 @@ func (s *DescribeEipMonitorDataResponseBodyEipMonitorDatasEipMonitorData) SetEip
 	return s
 }
 
-func (s *DescribeEipMonitorDataResponseBodyEipMonitorDatasEipMonitorData) SetEipFlow(v int32) *DescribeEipMonitorDataResponseBodyEipMonitorDatasEipMonitorData {
+func (s *DescribeEipMonitorDataResponseBodyEipMonitorDatasEipMonitorData) SetEipFlow(v int64) *DescribeEipMonitorDataResponseBodyEipMonitorDatasEipMonitorData {
 	s.EipFlow = &v
 	return s
 }
@@ -25900,6 +25901,7 @@ type DescribePhysicalConnectionsRequest struct {
 	PageNumber             *int32                                      `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize               *int32                                      `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	RegionId               *string                                     `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId        *string                                     `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount   *string                                     `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId        *int64                                      `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	Tags                   []*DescribePhysicalConnectionsRequestTags   `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
@@ -25950,6 +25952,11 @@ func (s *DescribePhysicalConnectionsRequest) SetPageSize(v int32) *DescribePhysi
 
 func (s *DescribePhysicalConnectionsRequest) SetRegionId(v string) *DescribePhysicalConnectionsRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *DescribePhysicalConnectionsRequest) SetResourceGroupId(v string) *DescribePhysicalConnectionsRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -26101,6 +26108,7 @@ type DescribePhysicalConnectionsResponseBodyPhysicalConnectionSetPhysicalConnect
 	ReservationActiveTime          *string `json:"ReservationActiveTime,omitempty" xml:"ReservationActiveTime,omitempty"`
 	ReservationInternetChargeType  *string `json:"ReservationInternetChargeType,omitempty" xml:"ReservationInternetChargeType,omitempty"`
 	ReservationOrderType           *string `json:"ReservationOrderType,omitempty" xml:"ReservationOrderType,omitempty"`
+	ResourceGroupId                *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	Spec                           *string `json:"Spec,omitempty" xml:"Spec,omitempty"`
 	Status                         *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	Type                           *string `json:"Type,omitempty" xml:"Type,omitempty"`
@@ -26254,6 +26262,11 @@ func (s *DescribePhysicalConnectionsResponseBodyPhysicalConnectionSetPhysicalCon
 
 func (s *DescribePhysicalConnectionsResponseBodyPhysicalConnectionSetPhysicalConnectionType) SetReservationOrderType(v string) *DescribePhysicalConnectionsResponseBodyPhysicalConnectionSetPhysicalConnectionType {
 	s.ReservationOrderType = &v
+	return s
+}
+
+func (s *DescribePhysicalConnectionsResponseBodyPhysicalConnectionSetPhysicalConnectionType) SetResourceGroupId(v string) *DescribePhysicalConnectionsResponseBodyPhysicalConnectionSetPhysicalConnectionType {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -33848,6 +33861,7 @@ type DescribeVpnGatewayResponseBody struct {
 	InternetIp        *string                                        `json:"InternetIp,omitempty" xml:"InternetIp,omitempty"`
 	IpsecVpn          *string                                        `json:"IpsecVpn,omitempty" xml:"IpsecVpn,omitempty"`
 	Name              *string                                        `json:"Name,omitempty" xml:"Name,omitempty"`
+	NetworkType       *string                                        `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
 	RequestId         *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ReservationData   *DescribeVpnGatewayResponseBodyReservationData `json:"ReservationData,omitempty" xml:"ReservationData,omitempty" type:"Struct"`
 	Spec              *string                                        `json:"Spec,omitempty" xml:"Spec,omitempty"`
@@ -33917,6 +33931,11 @@ func (s *DescribeVpnGatewayResponseBody) SetIpsecVpn(v string) *DescribeVpnGatew
 
 func (s *DescribeVpnGatewayResponseBody) SetName(v string) *DescribeVpnGatewayResponseBody {
 	s.Name = &v
+	return s
+}
+
+func (s *DescribeVpnGatewayResponseBody) SetNetworkType(v string) *DescribeVpnGatewayResponseBody {
+	s.NetworkType = &v
 	return s
 }
 
@@ -41996,6 +42015,7 @@ type ListVirtualPhysicalConnectionsRequest struct {
 	NextToken                               *string                                      `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	PhysicalConnectionId                    *string                                      `json:"PhysicalConnectionId,omitempty" xml:"PhysicalConnectionId,omitempty"`
 	RegionId                                *string                                      `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId                         *string                                      `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	Tags                                    []*ListVirtualPhysicalConnectionsRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	VirtualPhysicalConnectionAliUids        []*string                                    `json:"VirtualPhysicalConnectionAliUids,omitempty" xml:"VirtualPhysicalConnectionAliUids,omitempty" type:"Repeated"`
 	VirtualPhysicalConnectionBusinessStatus *string                                      `json:"VirtualPhysicalConnectionBusinessStatus,omitempty" xml:"VirtualPhysicalConnectionBusinessStatus,omitempty"`
@@ -42034,6 +42054,11 @@ func (s *ListVirtualPhysicalConnectionsRequest) SetPhysicalConnectionId(v string
 
 func (s *ListVirtualPhysicalConnectionsRequest) SetRegionId(v string) *ListVirtualPhysicalConnectionsRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *ListVirtualPhysicalConnectionsRequest) SetResourceGroupId(v string) *ListVirtualPhysicalConnectionsRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -42156,6 +42181,7 @@ type ListVirtualPhysicalConnectionsResponseBodyVirtualPhysicalConnections struct
 	PortType                        *string `json:"PortType,omitempty" xml:"PortType,omitempty"`
 	ProductType                     *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
 	RedundantPhysicalConnectionId   *string `json:"RedundantPhysicalConnectionId,omitempty" xml:"RedundantPhysicalConnectionId,omitempty"`
+	ResourceGroupId                 *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	Spec                            *string `json:"Spec,omitempty" xml:"Spec,omitempty"`
 	Status                          *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	Type                            *string `json:"Type,omitempty" xml:"Type,omitempty"`
@@ -42288,6 +42314,11 @@ func (s *ListVirtualPhysicalConnectionsResponseBodyVirtualPhysicalConnections) S
 
 func (s *ListVirtualPhysicalConnectionsResponseBodyVirtualPhysicalConnections) SetRedundantPhysicalConnectionId(v string) *ListVirtualPhysicalConnectionsResponseBodyVirtualPhysicalConnections {
 	s.RedundantPhysicalConnectionId = &v
+	return s
+}
+
+func (s *ListVirtualPhysicalConnectionsResponseBodyVirtualPhysicalConnections) SetResourceGroupId(v string) *ListVirtualPhysicalConnectionsResponseBodyVirtualPhysicalConnections {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -48224,6 +48255,7 @@ type ModifyVpnAttachmentAttributeRequest struct {
 	AutoConfigRoute      *bool   `json:"AutoConfigRoute,omitempty" xml:"AutoConfigRoute,omitempty"`
 	BgpConfig            *string `json:"BgpConfig,omitempty" xml:"BgpConfig,omitempty"`
 	ClientToken          *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	CustomerGatewayId    *string `json:"CustomerGatewayId,omitempty" xml:"CustomerGatewayId,omitempty"`
 	EffectImmediately    *bool   `json:"EffectImmediately,omitempty" xml:"EffectImmediately,omitempty"`
 	EnableDpd            *bool   `json:"EnableDpd,omitempty" xml:"EnableDpd,omitempty"`
 	EnableNatTraversal   *bool   `json:"EnableNatTraversal,omitempty" xml:"EnableNatTraversal,omitempty"`
@@ -48262,6 +48294,11 @@ func (s *ModifyVpnAttachmentAttributeRequest) SetBgpConfig(v string) *ModifyVpnA
 
 func (s *ModifyVpnAttachmentAttributeRequest) SetClientToken(v string) *ModifyVpnAttachmentAttributeRequest {
 	s.ClientToken = &v
+	return s
+}
+
+func (s *ModifyVpnAttachmentAttributeRequest) SetCustomerGatewayId(v string) *ModifyVpnAttachmentAttributeRequest {
+	s.CustomerGatewayId = &v
 	return s
 }
 
@@ -51535,6 +51572,146 @@ func (s *RevokeInstanceFromCenResponse) SetStatusCode(v int32) *RevokeInstanceFr
 }
 
 func (s *RevokeInstanceFromCenResponse) SetBody(v *RevokeInstanceFromCenResponseBody) *RevokeInstanceFromCenResponse {
+	s.Body = v
+	return s
+}
+
+type RevokeInstanceFromVbrRequest struct {
+	GrantType      *string   `json:"GrantType,omitempty" xml:"GrantType,omitempty"`
+	InstanceId     *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	RegionId       *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	VbrInstanceIds []*string `json:"VbrInstanceIds,omitempty" xml:"VbrInstanceIds,omitempty" type:"Repeated"`
+	VbrOwnerUid    *string   `json:"VbrOwnerUid,omitempty" xml:"VbrOwnerUid,omitempty"`
+	VbrRegionNo    *string   `json:"VbrRegionNo,omitempty" xml:"VbrRegionNo,omitempty"`
+}
+
+func (s RevokeInstanceFromVbrRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RevokeInstanceFromVbrRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RevokeInstanceFromVbrRequest) SetGrantType(v string) *RevokeInstanceFromVbrRequest {
+	s.GrantType = &v
+	return s
+}
+
+func (s *RevokeInstanceFromVbrRequest) SetInstanceId(v string) *RevokeInstanceFromVbrRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *RevokeInstanceFromVbrRequest) SetRegionId(v string) *RevokeInstanceFromVbrRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *RevokeInstanceFromVbrRequest) SetVbrInstanceIds(v []*string) *RevokeInstanceFromVbrRequest {
+	s.VbrInstanceIds = v
+	return s
+}
+
+func (s *RevokeInstanceFromVbrRequest) SetVbrOwnerUid(v string) *RevokeInstanceFromVbrRequest {
+	s.VbrOwnerUid = &v
+	return s
+}
+
+func (s *RevokeInstanceFromVbrRequest) SetVbrRegionNo(v string) *RevokeInstanceFromVbrRequest {
+	s.VbrRegionNo = &v
+	return s
+}
+
+type RevokeInstanceFromVbrShrinkRequest struct {
+	GrantType            *string `json:"GrantType,omitempty" xml:"GrantType,omitempty"`
+	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	VbrInstanceIdsShrink *string `json:"VbrInstanceIds,omitempty" xml:"VbrInstanceIds,omitempty"`
+	VbrOwnerUid          *string `json:"VbrOwnerUid,omitempty" xml:"VbrOwnerUid,omitempty"`
+	VbrRegionNo          *string `json:"VbrRegionNo,omitempty" xml:"VbrRegionNo,omitempty"`
+}
+
+func (s RevokeInstanceFromVbrShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RevokeInstanceFromVbrShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RevokeInstanceFromVbrShrinkRequest) SetGrantType(v string) *RevokeInstanceFromVbrShrinkRequest {
+	s.GrantType = &v
+	return s
+}
+
+func (s *RevokeInstanceFromVbrShrinkRequest) SetInstanceId(v string) *RevokeInstanceFromVbrShrinkRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *RevokeInstanceFromVbrShrinkRequest) SetRegionId(v string) *RevokeInstanceFromVbrShrinkRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *RevokeInstanceFromVbrShrinkRequest) SetVbrInstanceIdsShrink(v string) *RevokeInstanceFromVbrShrinkRequest {
+	s.VbrInstanceIdsShrink = &v
+	return s
+}
+
+func (s *RevokeInstanceFromVbrShrinkRequest) SetVbrOwnerUid(v string) *RevokeInstanceFromVbrShrinkRequest {
+	s.VbrOwnerUid = &v
+	return s
+}
+
+func (s *RevokeInstanceFromVbrShrinkRequest) SetVbrRegionNo(v string) *RevokeInstanceFromVbrShrinkRequest {
+	s.VbrRegionNo = &v
+	return s
+}
+
+type RevokeInstanceFromVbrResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s RevokeInstanceFromVbrResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RevokeInstanceFromVbrResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RevokeInstanceFromVbrResponseBody) SetRequestId(v string) *RevokeInstanceFromVbrResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type RevokeInstanceFromVbrResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *RevokeInstanceFromVbrResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s RevokeInstanceFromVbrResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RevokeInstanceFromVbrResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RevokeInstanceFromVbrResponse) SetHeaders(v map[string]*string) *RevokeInstanceFromVbrResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RevokeInstanceFromVbrResponse) SetStatusCode(v int32) *RevokeInstanceFromVbrResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RevokeInstanceFromVbrResponse) SetBody(v *RevokeInstanceFromVbrResponseBody) *RevokeInstanceFromVbrResponse {
 	s.Body = v
 	return s
 }
@@ -59697,6 +59874,10 @@ func (client *Client) CreatePhysicalConnectionWithOptions(request *CreatePhysica
 		query["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
 		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
 	}
@@ -60267,6 +60448,10 @@ func (client *Client) CreateRouterInterfaceWithOptions(request *CreateRouterInte
 
 	if !tea.BoolValue(util.IsUnset(request.Description)) {
 		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FastLinkMode)) {
+		query["FastLinkMode"] = request.FastLinkMode
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.HealthCheckSourceIp)) {
@@ -61341,6 +61526,10 @@ func (client *Client) CreateVirtualPhysicalConnectionWithOptions(request *Create
 		query["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Spec)) {
 		query["Spec"] = request.Spec
 	}
@@ -61355,6 +61544,10 @@ func (client *Client) CreateVirtualPhysicalConnectionWithOptions(request *Create
 
 	if !tea.BoolValue(util.IsUnset(request.VpconnAliUid)) {
 		query["VpconnAliUid"] = request.VpconnAliUid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VpconnUidResourceGroupId)) {
+		query["VpconnUidResourceGroupId"] = request.VpconnUidResourceGroupId
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -68429,6 +68622,10 @@ func (client *Client) DescribePhysicalConnectionsWithOptions(request *DescribePh
 		query["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
 		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
 	}
@@ -73795,6 +73992,10 @@ func (client *Client) ListVirtualPhysicalConnectionsWithOptions(request *ListVir
 		query["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Tags)) {
 		query["Tags"] = request.Tags
 	}
@@ -77631,6 +77832,10 @@ func (client *Client) ModifyVpnAttachmentAttributeWithOptions(request *ModifyVpn
 		query["ClientToken"] = request.ClientToken
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.CustomerGatewayId)) {
+		query["CustomerGatewayId"] = request.CustomerGatewayId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.EffectImmediately)) {
 		query["EffectImmediately"] = request.EffectImmediately
 	}
@@ -79398,6 +79603,76 @@ func (client *Client) RevokeInstanceFromCen(request *RevokeInstanceFromCenReques
 	runtime := &util.RuntimeOptions{}
 	_result = &RevokeInstanceFromCenResponse{}
 	_body, _err := client.RevokeInstanceFromCenWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) RevokeInstanceFromVbrWithOptions(tmpReq *RevokeInstanceFromVbrRequest, runtime *util.RuntimeOptions) (_result *RevokeInstanceFromVbrResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &RevokeInstanceFromVbrShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.VbrInstanceIds)) {
+		request.VbrInstanceIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.VbrInstanceIds, tea.String("VbrInstanceIds"), tea.String("simple"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.GrantType)) {
+		query["GrantType"] = request.GrantType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VbrInstanceIdsShrink)) {
+		query["VbrInstanceIds"] = request.VbrInstanceIdsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VbrOwnerUid)) {
+		query["VbrOwnerUid"] = request.VbrOwnerUid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VbrRegionNo)) {
+		query["VbrRegionNo"] = request.VbrRegionNo
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RevokeInstanceFromVbr"),
+		Version:     tea.String("2016-04-28"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RevokeInstanceFromVbrResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) RevokeInstanceFromVbr(request *RevokeInstanceFromVbrRequest) (_result *RevokeInstanceFromVbrResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RevokeInstanceFromVbrResponse{}
+	_body, _err := client.RevokeInstanceFromVbrWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
