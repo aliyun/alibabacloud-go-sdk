@@ -1735,10 +1735,9 @@ func (s *DeleteCdnDeliverTaskResponse) SetBody(v *DeleteCdnDeliverTaskResponseBo
 }
 
 type DeleteCdnDomainRequest struct {
-	DomainName    *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	OwnerAccount  *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	DomainName   *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 }
 
 func (s DeleteCdnDomainRequest) String() string {
@@ -1761,11 +1760,6 @@ func (s *DeleteCdnDomainRequest) SetOwnerAccount(v string) *DeleteCdnDomainReque
 
 func (s *DeleteCdnDomainRequest) SetOwnerId(v int64) *DeleteCdnDomainRequest {
 	s.OwnerId = &v
-	return s
-}
-
-func (s *DeleteCdnDomainRequest) SetSecurityToken(v string) *DeleteCdnDomainRequest {
-	s.SecurityToken = &v
 	return s
 }
 
@@ -2411,135 +2405,6 @@ func (s *DeleteUserUsageDataExportTaskResponse) SetStatusCode(v int32) *DeleteUs
 }
 
 func (s *DeleteUserUsageDataExportTaskResponse) SetBody(v *DeleteUserUsageDataExportTaskResponseBody) *DeleteUserUsageDataExportTaskResponse {
-	s.Body = v
-	return s
-}
-
-type DescribeActiveVersionOfConfigGroupRequest struct {
-	ConfigGroupId *string `json:"ConfigGroupId,omitempty" xml:"ConfigGroupId,omitempty"`
-	Env           *string `json:"Env,omitempty" xml:"Env,omitempty"`
-	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-}
-
-func (s DescribeActiveVersionOfConfigGroupRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeActiveVersionOfConfigGroupRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeActiveVersionOfConfigGroupRequest) SetConfigGroupId(v string) *DescribeActiveVersionOfConfigGroupRequest {
-	s.ConfigGroupId = &v
-	return s
-}
-
-func (s *DescribeActiveVersionOfConfigGroupRequest) SetEnv(v string) *DescribeActiveVersionOfConfigGroupRequest {
-	s.Env = &v
-	return s
-}
-
-func (s *DescribeActiveVersionOfConfigGroupRequest) SetOwnerId(v int64) *DescribeActiveVersionOfConfigGroupRequest {
-	s.OwnerId = &v
-	return s
-}
-
-type DescribeActiveVersionOfConfigGroupResponseBody struct {
-	BaseVersionId *string `json:"BaseVersionId,omitempty" xml:"BaseVersionId,omitempty"`
-	ConfigGroupId *string `json:"ConfigGroupId,omitempty" xml:"ConfigGroupId,omitempty"`
-	CreateTime    *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Operator      *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
-	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SeqId         *int64  `json:"SeqId,omitempty" xml:"SeqId,omitempty"`
-	Status        *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	UpdateTime    *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	VersionId     *string `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
-}
-
-func (s DescribeActiveVersionOfConfigGroupResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeActiveVersionOfConfigGroupResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeActiveVersionOfConfigGroupResponseBody) SetBaseVersionId(v string) *DescribeActiveVersionOfConfigGroupResponseBody {
-	s.BaseVersionId = &v
-	return s
-}
-
-func (s *DescribeActiveVersionOfConfigGroupResponseBody) SetConfigGroupId(v string) *DescribeActiveVersionOfConfigGroupResponseBody {
-	s.ConfigGroupId = &v
-	return s
-}
-
-func (s *DescribeActiveVersionOfConfigGroupResponseBody) SetCreateTime(v string) *DescribeActiveVersionOfConfigGroupResponseBody {
-	s.CreateTime = &v
-	return s
-}
-
-func (s *DescribeActiveVersionOfConfigGroupResponseBody) SetDescription(v string) *DescribeActiveVersionOfConfigGroupResponseBody {
-	s.Description = &v
-	return s
-}
-
-func (s *DescribeActiveVersionOfConfigGroupResponseBody) SetOperator(v string) *DescribeActiveVersionOfConfigGroupResponseBody {
-	s.Operator = &v
-	return s
-}
-
-func (s *DescribeActiveVersionOfConfigGroupResponseBody) SetRequestId(v string) *DescribeActiveVersionOfConfigGroupResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeActiveVersionOfConfigGroupResponseBody) SetSeqId(v int64) *DescribeActiveVersionOfConfigGroupResponseBody {
-	s.SeqId = &v
-	return s
-}
-
-func (s *DescribeActiveVersionOfConfigGroupResponseBody) SetStatus(v string) *DescribeActiveVersionOfConfigGroupResponseBody {
-	s.Status = &v
-	return s
-}
-
-func (s *DescribeActiveVersionOfConfigGroupResponseBody) SetUpdateTime(v string) *DescribeActiveVersionOfConfigGroupResponseBody {
-	s.UpdateTime = &v
-	return s
-}
-
-func (s *DescribeActiveVersionOfConfigGroupResponseBody) SetVersionId(v string) *DescribeActiveVersionOfConfigGroupResponseBody {
-	s.VersionId = &v
-	return s
-}
-
-type DescribeActiveVersionOfConfigGroupResponse struct {
-	Headers    map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeActiveVersionOfConfigGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribeActiveVersionOfConfigGroupResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeActiveVersionOfConfigGroupResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeActiveVersionOfConfigGroupResponse) SetHeaders(v map[string]*string) *DescribeActiveVersionOfConfigGroupResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeActiveVersionOfConfigGroupResponse) SetStatusCode(v int32) *DescribeActiveVersionOfConfigGroupResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *DescribeActiveVersionOfConfigGroupResponse) SetBody(v *DescribeActiveVersionOfConfigGroupResponseBody) *DescribeActiveVersionOfConfigGroupResponse {
 	s.Body = v
 	return s
 }
@@ -6620,308 +6485,6 @@ func (s *DescribeCertificateInfoByIDResponse) SetBody(v *DescribeCertificateInfo
 	return s
 }
 
-type DescribeConfigGroupDetailRequest struct {
-	ConfigGroupId   *string `json:"ConfigGroupId,omitempty" xml:"ConfigGroupId,omitempty"`
-	ConfigGroupName *string `json:"ConfigGroupName,omitempty" xml:"ConfigGroupName,omitempty"`
-	OwnerId         *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-}
-
-func (s DescribeConfigGroupDetailRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeConfigGroupDetailRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeConfigGroupDetailRequest) SetConfigGroupId(v string) *DescribeConfigGroupDetailRequest {
-	s.ConfigGroupId = &v
-	return s
-}
-
-func (s *DescribeConfigGroupDetailRequest) SetConfigGroupName(v string) *DescribeConfigGroupDetailRequest {
-	s.ConfigGroupName = &v
-	return s
-}
-
-func (s *DescribeConfigGroupDetailRequest) SetOwnerId(v int64) *DescribeConfigGroupDetailRequest {
-	s.OwnerId = &v
-	return s
-}
-
-type DescribeConfigGroupDetailResponseBody struct {
-	BizName         *string `json:"BizName,omitempty" xml:"BizName,omitempty"`
-	ConfigGroupId   *string `json:"ConfigGroupId,omitempty" xml:"ConfigGroupId,omitempty"`
-	ConfigGroupName *string `json:"ConfigGroupName,omitempty" xml:"ConfigGroupName,omitempty"`
-	CreateTime      *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Description     *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	RequestId       *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	UpdateTime      *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-}
-
-func (s DescribeConfigGroupDetailResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeConfigGroupDetailResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeConfigGroupDetailResponseBody) SetBizName(v string) *DescribeConfigGroupDetailResponseBody {
-	s.BizName = &v
-	return s
-}
-
-func (s *DescribeConfigGroupDetailResponseBody) SetConfigGroupId(v string) *DescribeConfigGroupDetailResponseBody {
-	s.ConfigGroupId = &v
-	return s
-}
-
-func (s *DescribeConfigGroupDetailResponseBody) SetConfigGroupName(v string) *DescribeConfigGroupDetailResponseBody {
-	s.ConfigGroupName = &v
-	return s
-}
-
-func (s *DescribeConfigGroupDetailResponseBody) SetCreateTime(v string) *DescribeConfigGroupDetailResponseBody {
-	s.CreateTime = &v
-	return s
-}
-
-func (s *DescribeConfigGroupDetailResponseBody) SetDescription(v string) *DescribeConfigGroupDetailResponseBody {
-	s.Description = &v
-	return s
-}
-
-func (s *DescribeConfigGroupDetailResponseBody) SetRequestId(v string) *DescribeConfigGroupDetailResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeConfigGroupDetailResponseBody) SetUpdateTime(v string) *DescribeConfigGroupDetailResponseBody {
-	s.UpdateTime = &v
-	return s
-}
-
-type DescribeConfigGroupDetailResponse struct {
-	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeConfigGroupDetailResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribeConfigGroupDetailResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeConfigGroupDetailResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeConfigGroupDetailResponse) SetHeaders(v map[string]*string) *DescribeConfigGroupDetailResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeConfigGroupDetailResponse) SetStatusCode(v int32) *DescribeConfigGroupDetailResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *DescribeConfigGroupDetailResponse) SetBody(v *DescribeConfigGroupDetailResponseBody) *DescribeConfigGroupDetailResponse {
-	s.Body = v
-	return s
-}
-
-type DescribeConfigOfVersionRequest struct {
-	FunctionId    *int32  `json:"FunctionId,omitempty" xml:"FunctionId,omitempty"`
-	FunctionName  *string `json:"FunctionName,omitempty" xml:"FunctionName,omitempty"`
-	GroupId       *int64  `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	VersionId     *string `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
-}
-
-func (s DescribeConfigOfVersionRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeConfigOfVersionRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeConfigOfVersionRequest) SetFunctionId(v int32) *DescribeConfigOfVersionRequest {
-	s.FunctionId = &v
-	return s
-}
-
-func (s *DescribeConfigOfVersionRequest) SetFunctionName(v string) *DescribeConfigOfVersionRequest {
-	s.FunctionName = &v
-	return s
-}
-
-func (s *DescribeConfigOfVersionRequest) SetGroupId(v int64) *DescribeConfigOfVersionRequest {
-	s.GroupId = &v
-	return s
-}
-
-func (s *DescribeConfigOfVersionRequest) SetOwnerId(v int64) *DescribeConfigOfVersionRequest {
-	s.OwnerId = &v
-	return s
-}
-
-func (s *DescribeConfigOfVersionRequest) SetSecurityToken(v string) *DescribeConfigOfVersionRequest {
-	s.SecurityToken = &v
-	return s
-}
-
-func (s *DescribeConfigOfVersionRequest) SetVersionId(v string) *DescribeConfigOfVersionRequest {
-	s.VersionId = &v
-	return s
-}
-
-type DescribeConfigOfVersionResponseBody struct {
-	RequestId      *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	VersionConfigs *DescribeConfigOfVersionResponseBodyVersionConfigs `json:"VersionConfigs,omitempty" xml:"VersionConfigs,omitempty" type:"Struct"`
-}
-
-func (s DescribeConfigOfVersionResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeConfigOfVersionResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeConfigOfVersionResponseBody) SetRequestId(v string) *DescribeConfigOfVersionResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeConfigOfVersionResponseBody) SetVersionConfigs(v *DescribeConfigOfVersionResponseBodyVersionConfigs) *DescribeConfigOfVersionResponseBody {
-	s.VersionConfigs = v
-	return s
-}
-
-type DescribeConfigOfVersionResponseBodyVersionConfigs struct {
-	VersionConfig []*DescribeConfigOfVersionResponseBodyVersionConfigsVersionConfig `json:"VersionConfig,omitempty" xml:"VersionConfig,omitempty" type:"Repeated"`
-}
-
-func (s DescribeConfigOfVersionResponseBodyVersionConfigs) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeConfigOfVersionResponseBodyVersionConfigs) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeConfigOfVersionResponseBodyVersionConfigs) SetVersionConfig(v []*DescribeConfigOfVersionResponseBodyVersionConfigsVersionConfig) *DescribeConfigOfVersionResponseBodyVersionConfigs {
-	s.VersionConfig = v
-	return s
-}
-
-type DescribeConfigOfVersionResponseBodyVersionConfigsVersionConfig struct {
-	ConfigId     *string                                                                     `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
-	FunctionArgs *DescribeConfigOfVersionResponseBodyVersionConfigsVersionConfigFunctionArgs `json:"FunctionArgs,omitempty" xml:"FunctionArgs,omitempty" type:"Struct"`
-	FunctionName *string                                                                     `json:"FunctionName,omitempty" xml:"FunctionName,omitempty"`
-	Status       *string                                                                     `json:"Status,omitempty" xml:"Status,omitempty"`
-}
-
-func (s DescribeConfigOfVersionResponseBodyVersionConfigsVersionConfig) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeConfigOfVersionResponseBodyVersionConfigsVersionConfig) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeConfigOfVersionResponseBodyVersionConfigsVersionConfig) SetConfigId(v string) *DescribeConfigOfVersionResponseBodyVersionConfigsVersionConfig {
-	s.ConfigId = &v
-	return s
-}
-
-func (s *DescribeConfigOfVersionResponseBodyVersionConfigsVersionConfig) SetFunctionArgs(v *DescribeConfigOfVersionResponseBodyVersionConfigsVersionConfigFunctionArgs) *DescribeConfigOfVersionResponseBodyVersionConfigsVersionConfig {
-	s.FunctionArgs = v
-	return s
-}
-
-func (s *DescribeConfigOfVersionResponseBodyVersionConfigsVersionConfig) SetFunctionName(v string) *DescribeConfigOfVersionResponseBodyVersionConfigsVersionConfig {
-	s.FunctionName = &v
-	return s
-}
-
-func (s *DescribeConfigOfVersionResponseBodyVersionConfigsVersionConfig) SetStatus(v string) *DescribeConfigOfVersionResponseBodyVersionConfigsVersionConfig {
-	s.Status = &v
-	return s
-}
-
-type DescribeConfigOfVersionResponseBodyVersionConfigsVersionConfigFunctionArgs struct {
-	FunctionArg []*DescribeConfigOfVersionResponseBodyVersionConfigsVersionConfigFunctionArgsFunctionArg `json:"FunctionArg,omitempty" xml:"FunctionArg,omitempty" type:"Repeated"`
-}
-
-func (s DescribeConfigOfVersionResponseBodyVersionConfigsVersionConfigFunctionArgs) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeConfigOfVersionResponseBodyVersionConfigsVersionConfigFunctionArgs) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeConfigOfVersionResponseBodyVersionConfigsVersionConfigFunctionArgs) SetFunctionArg(v []*DescribeConfigOfVersionResponseBodyVersionConfigsVersionConfigFunctionArgsFunctionArg) *DescribeConfigOfVersionResponseBodyVersionConfigsVersionConfigFunctionArgs {
-	s.FunctionArg = v
-	return s
-}
-
-type DescribeConfigOfVersionResponseBodyVersionConfigsVersionConfigFunctionArgsFunctionArg struct {
-	ArgName  *string `json:"ArgName,omitempty" xml:"ArgName,omitempty"`
-	ArgValue *string `json:"ArgValue,omitempty" xml:"ArgValue,omitempty"`
-}
-
-func (s DescribeConfigOfVersionResponseBodyVersionConfigsVersionConfigFunctionArgsFunctionArg) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeConfigOfVersionResponseBodyVersionConfigsVersionConfigFunctionArgsFunctionArg) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeConfigOfVersionResponseBodyVersionConfigsVersionConfigFunctionArgsFunctionArg) SetArgName(v string) *DescribeConfigOfVersionResponseBodyVersionConfigsVersionConfigFunctionArgsFunctionArg {
-	s.ArgName = &v
-	return s
-}
-
-func (s *DescribeConfigOfVersionResponseBodyVersionConfigsVersionConfigFunctionArgsFunctionArg) SetArgValue(v string) *DescribeConfigOfVersionResponseBodyVersionConfigsVersionConfigFunctionArgsFunctionArg {
-	s.ArgValue = &v
-	return s
-}
-
-type DescribeConfigOfVersionResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeConfigOfVersionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribeConfigOfVersionResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeConfigOfVersionResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeConfigOfVersionResponse) SetHeaders(v map[string]*string) *DescribeConfigOfVersionResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeConfigOfVersionResponse) SetStatusCode(v int32) *DescribeConfigOfVersionResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *DescribeConfigOfVersionResponse) SetBody(v *DescribeConfigOfVersionResponseBody) *DescribeConfigOfVersionResponse {
-	s.Body = v
-	return s
-}
-
 type DescribeCustomLogConfigRequest struct {
 	ConfigId *string `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
 	OwnerId  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -9665,122 +9228,6 @@ func (s *DescribeDomainMultiUsageDataResponse) SetStatusCode(v int32) *DescribeD
 }
 
 func (s *DescribeDomainMultiUsageDataResponse) SetBody(v *DescribeDomainMultiUsageDataResponseBody) *DescribeDomainMultiUsageDataResponse {
-	s.Body = v
-	return s
-}
-
-type DescribeDomainNamesOfVersionRequest struct {
-	OwnerId   *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	PageIndex *int32  `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`
-	PageSize  *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	VersionId *string `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
-}
-
-func (s DescribeDomainNamesOfVersionRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeDomainNamesOfVersionRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeDomainNamesOfVersionRequest) SetOwnerId(v int64) *DescribeDomainNamesOfVersionRequest {
-	s.OwnerId = &v
-	return s
-}
-
-func (s *DescribeDomainNamesOfVersionRequest) SetPageIndex(v int32) *DescribeDomainNamesOfVersionRequest {
-	s.PageIndex = &v
-	return s
-}
-
-func (s *DescribeDomainNamesOfVersionRequest) SetPageSize(v string) *DescribeDomainNamesOfVersionRequest {
-	s.PageSize = &v
-	return s
-}
-
-func (s *DescribeDomainNamesOfVersionRequest) SetVersionId(v string) *DescribeDomainNamesOfVersionRequest {
-	s.VersionId = &v
-	return s
-}
-
-type DescribeDomainNamesOfVersionResponseBody struct {
-	Contents   []*DescribeDomainNamesOfVersionResponseBodyContents `json:"Contents,omitempty" xml:"Contents,omitempty" type:"Repeated"`
-	RequestId  *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *int32                                              `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-}
-
-func (s DescribeDomainNamesOfVersionResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeDomainNamesOfVersionResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeDomainNamesOfVersionResponseBody) SetContents(v []*DescribeDomainNamesOfVersionResponseBodyContents) *DescribeDomainNamesOfVersionResponseBody {
-	s.Contents = v
-	return s
-}
-
-func (s *DescribeDomainNamesOfVersionResponseBody) SetRequestId(v string) *DescribeDomainNamesOfVersionResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeDomainNamesOfVersionResponseBody) SetTotalCount(v int32) *DescribeDomainNamesOfVersionResponseBody {
-	s.TotalCount = &v
-	return s
-}
-
-type DescribeDomainNamesOfVersionResponseBodyContents struct {
-	DomainId   *string `json:"DomainId,omitempty" xml:"DomainId,omitempty"`
-	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-}
-
-func (s DescribeDomainNamesOfVersionResponseBodyContents) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeDomainNamesOfVersionResponseBodyContents) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeDomainNamesOfVersionResponseBodyContents) SetDomainId(v string) *DescribeDomainNamesOfVersionResponseBodyContents {
-	s.DomainId = &v
-	return s
-}
-
-func (s *DescribeDomainNamesOfVersionResponseBodyContents) SetDomainName(v string) *DescribeDomainNamesOfVersionResponseBodyContents {
-	s.DomainName = &v
-	return s
-}
-
-type DescribeDomainNamesOfVersionResponse struct {
-	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeDomainNamesOfVersionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribeDomainNamesOfVersionResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeDomainNamesOfVersionResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeDomainNamesOfVersionResponse) SetHeaders(v map[string]*string) *DescribeDomainNamesOfVersionResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeDomainNamesOfVersionResponse) SetStatusCode(v int32) *DescribeDomainNamesOfVersionResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *DescribeDomainNamesOfVersionResponse) SetBody(v *DescribeDomainNamesOfVersionResponseBody) *DescribeDomainNamesOfVersionResponse {
 	s.Body = v
 	return s
 }
@@ -15870,9 +15317,7 @@ func (s *DescribeIllegalUrlExportTaskResponse) SetBody(v *DescribeIllegalUrlExpo
 }
 
 type DescribeIpInfoRequest struct {
-	IP            *string `json:"IP,omitempty" xml:"IP,omitempty"`
-	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	IP *string `json:"IP,omitempty" xml:"IP,omitempty"`
 }
 
 func (s DescribeIpInfoRequest) String() string {
@@ -15885,16 +15330,6 @@ func (s DescribeIpInfoRequest) GoString() string {
 
 func (s *DescribeIpInfoRequest) SetIP(v string) *DescribeIpInfoRequest {
 	s.IP = &v
-	return s
-}
-
-func (s *DescribeIpInfoRequest) SetOwnerId(v int64) *DescribeIpInfoRequest {
-	s.OwnerId = &v
-	return s
-}
-
-func (s *DescribeIpInfoRequest) SetSecurityToken(v string) *DescribeIpInfoRequest {
-	s.SecurityToken = &v
 	return s
 }
 
@@ -16416,75 +15851,6 @@ func (s *DescribeRealtimeDeliveryAccResponse) SetStatusCode(v int32) *DescribeRe
 }
 
 func (s *DescribeRealtimeDeliveryAccResponse) SetBody(v *DescribeRealtimeDeliveryAccResponseBody) *DescribeRealtimeDeliveryAccResponse {
-	s.Body = v
-	return s
-}
-
-type DescribeRealtimeLogAuthorizedRequest struct {
-	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-}
-
-func (s DescribeRealtimeLogAuthorizedRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeRealtimeLogAuthorizedRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeRealtimeLogAuthorizedRequest) SetOwnerId(v int64) *DescribeRealtimeLogAuthorizedRequest {
-	s.OwnerId = &v
-	return s
-}
-
-type DescribeRealtimeLogAuthorizedResponseBody struct {
-	AuthorizedStatus *string `json:"AuthorizedStatus,omitempty" xml:"AuthorizedStatus,omitempty"`
-	RequestId        *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s DescribeRealtimeLogAuthorizedResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeRealtimeLogAuthorizedResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeRealtimeLogAuthorizedResponseBody) SetAuthorizedStatus(v string) *DescribeRealtimeLogAuthorizedResponseBody {
-	s.AuthorizedStatus = &v
-	return s
-}
-
-func (s *DescribeRealtimeLogAuthorizedResponseBody) SetRequestId(v string) *DescribeRealtimeLogAuthorizedResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type DescribeRealtimeLogAuthorizedResponse struct {
-	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeRealtimeLogAuthorizedResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribeRealtimeLogAuthorizedResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeRealtimeLogAuthorizedResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeRealtimeLogAuthorizedResponse) SetHeaders(v map[string]*string) *DescribeRealtimeLogAuthorizedResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeRealtimeLogAuthorizedResponse) SetStatusCode(v int32) *DescribeRealtimeLogAuthorizedResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *DescribeRealtimeLogAuthorizedResponse) SetBody(v *DescribeRealtimeLogAuthorizedResponseBody) *DescribeRealtimeLogAuthorizedResponse {
 	s.Body = v
 	return s
 }
@@ -19623,6 +18989,81 @@ func (s *ModifyRealtimeLogDeliveryResponse) SetBody(v *ModifyRealtimeLogDelivery
 	return s
 }
 
+type OpenCdnServiceRequest struct {
+	InternetChargeType *string `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
+	OwnerId            *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	SecurityToken      *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+}
+
+func (s OpenCdnServiceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s OpenCdnServiceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *OpenCdnServiceRequest) SetInternetChargeType(v string) *OpenCdnServiceRequest {
+	s.InternetChargeType = &v
+	return s
+}
+
+func (s *OpenCdnServiceRequest) SetOwnerId(v int64) *OpenCdnServiceRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *OpenCdnServiceRequest) SetSecurityToken(v string) *OpenCdnServiceRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+type OpenCdnServiceResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s OpenCdnServiceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s OpenCdnServiceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *OpenCdnServiceResponseBody) SetRequestId(v string) *OpenCdnServiceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type OpenCdnServiceResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *OpenCdnServiceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s OpenCdnServiceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s OpenCdnServiceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *OpenCdnServiceResponse) SetHeaders(v map[string]*string) *OpenCdnServiceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *OpenCdnServiceResponse) SetStatusCode(v int32) *OpenCdnServiceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *OpenCdnServiceResponse) SetBody(v *OpenCdnServiceResponseBody) *OpenCdnServiceResponse {
+	s.Body = v
+	return s
+}
+
 type PublishStagingConfigToProductionRequest struct {
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -20209,111 +19650,6 @@ func (s *SetCdnDomainStagingConfigResponse) SetStatusCode(v int32) *SetCdnDomain
 }
 
 func (s *SetCdnDomainStagingConfigResponse) SetBody(v *SetCdnDomainStagingConfigResponseBody) *SetCdnDomainStagingConfigResponse {
-	s.Body = v
-	return s
-}
-
-type SetConfigOfVersionRequest struct {
-	ConfigId      *string `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
-	FunctionArgs  *string `json:"FunctionArgs,omitempty" xml:"FunctionArgs,omitempty"`
-	FunctionId    *int64  `json:"FunctionId,omitempty" xml:"FunctionId,omitempty"`
-	FunctionName  *string `json:"FunctionName,omitempty" xml:"FunctionName,omitempty"`
-	OwnerAccount  *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	VersionId     *string `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
-}
-
-func (s SetConfigOfVersionRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SetConfigOfVersionRequest) GoString() string {
-	return s.String()
-}
-
-func (s *SetConfigOfVersionRequest) SetConfigId(v string) *SetConfigOfVersionRequest {
-	s.ConfigId = &v
-	return s
-}
-
-func (s *SetConfigOfVersionRequest) SetFunctionArgs(v string) *SetConfigOfVersionRequest {
-	s.FunctionArgs = &v
-	return s
-}
-
-func (s *SetConfigOfVersionRequest) SetFunctionId(v int64) *SetConfigOfVersionRequest {
-	s.FunctionId = &v
-	return s
-}
-
-func (s *SetConfigOfVersionRequest) SetFunctionName(v string) *SetConfigOfVersionRequest {
-	s.FunctionName = &v
-	return s
-}
-
-func (s *SetConfigOfVersionRequest) SetOwnerAccount(v string) *SetConfigOfVersionRequest {
-	s.OwnerAccount = &v
-	return s
-}
-
-func (s *SetConfigOfVersionRequest) SetOwnerId(v int64) *SetConfigOfVersionRequest {
-	s.OwnerId = &v
-	return s
-}
-
-func (s *SetConfigOfVersionRequest) SetSecurityToken(v string) *SetConfigOfVersionRequest {
-	s.SecurityToken = &v
-	return s
-}
-
-func (s *SetConfigOfVersionRequest) SetVersionId(v string) *SetConfigOfVersionRequest {
-	s.VersionId = &v
-	return s
-}
-
-type SetConfigOfVersionResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s SetConfigOfVersionResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SetConfigOfVersionResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *SetConfigOfVersionResponseBody) SetRequestId(v string) *SetConfigOfVersionResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type SetConfigOfVersionResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SetConfigOfVersionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s SetConfigOfVersionResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SetConfigOfVersionResponse) GoString() string {
-	return s.String()
-}
-
-func (s *SetConfigOfVersionResponse) SetHeaders(v map[string]*string) *SetConfigOfVersionResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *SetConfigOfVersionResponse) SetStatusCode(v int32) *SetConfigOfVersionResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *SetConfigOfVersionResponse) SetBody(v *SetConfigOfVersionResponseBody) *SetConfigOfVersionResponse {
 	s.Body = v
 	return s
 }
@@ -22474,10 +21810,6 @@ func (client *Client) DeleteCdnDomainWithOptions(request *DeleteCdnDomainRequest
 		query["OwnerId"] = request.OwnerId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
-		query["SecurityToken"] = request.SecurityToken
-	}
-
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -22885,58 +22217,6 @@ func (client *Client) DeleteUserUsageDataExportTask(request *DeleteUserUsageData
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteUserUsageDataExportTaskResponse{}
 	_body, _err := client.DeleteUserUsageDataExportTaskWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DescribeActiveVersionOfConfigGroupWithOptions(request *DescribeActiveVersionOfConfigGroupRequest, runtime *util.RuntimeOptions) (_result *DescribeActiveVersionOfConfigGroupResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ConfigGroupId)) {
-		query["ConfigGroupId"] = request.ConfigGroupId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Env)) {
-		query["Env"] = request.Env
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribeActiveVersionOfConfigGroup"),
-		Version:     tea.String("2018-05-10"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DescribeActiveVersionOfConfigGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeActiveVersionOfConfigGroup(request *DescribeActiveVersionOfConfigGroupRequest) (_result *DescribeActiveVersionOfConfigGroupResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeActiveVersionOfConfigGroupResponse{}
-	_body, _err := client.DescribeActiveVersionOfConfigGroupWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -24408,122 +23688,6 @@ func (client *Client) DescribeCertificateInfoByID(request *DescribeCertificateIn
 	return _result, _err
 }
 
-func (client *Client) DescribeConfigGroupDetailWithOptions(request *DescribeConfigGroupDetailRequest, runtime *util.RuntimeOptions) (_result *DescribeConfigGroupDetailResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ConfigGroupId)) {
-		query["ConfigGroupId"] = request.ConfigGroupId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ConfigGroupName)) {
-		query["ConfigGroupName"] = request.ConfigGroupName
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribeConfigGroupDetail"),
-		Version:     tea.String("2018-05-10"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DescribeConfigGroupDetailResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeConfigGroupDetail(request *DescribeConfigGroupDetailRequest) (_result *DescribeConfigGroupDetailResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeConfigGroupDetailResponse{}
-	_body, _err := client.DescribeConfigGroupDetailWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DescribeConfigOfVersionWithOptions(request *DescribeConfigOfVersionRequest, runtime *util.RuntimeOptions) (_result *DescribeConfigOfVersionResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.FunctionId)) {
-		query["FunctionId"] = request.FunctionId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.FunctionName)) {
-		query["FunctionName"] = request.FunctionName
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
-		query["GroupId"] = request.GroupId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
-		query["SecurityToken"] = request.SecurityToken
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.VersionId)) {
-		query["VersionId"] = request.VersionId
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribeConfigOfVersion"),
-		Version:     tea.String("2018-05-10"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DescribeConfigOfVersionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeConfigOfVersion(request *DescribeConfigOfVersionRequest) (_result *DescribeConfigOfVersionResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeConfigOfVersionResponse{}
-	_body, _err := client.DescribeConfigOfVersionWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) DescribeCustomLogConfigWithOptions(request *DescribeCustomLogConfigRequest, runtime *util.RuntimeOptions) (_result *DescribeCustomLogConfigResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -25465,62 +24629,6 @@ func (client *Client) DescribeDomainMultiUsageData(request *DescribeDomainMultiU
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDomainMultiUsageDataResponse{}
 	_body, _err := client.DescribeDomainMultiUsageDataWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DescribeDomainNamesOfVersionWithOptions(request *DescribeDomainNamesOfVersionRequest, runtime *util.RuntimeOptions) (_result *DescribeDomainNamesOfVersionResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PageIndex)) {
-		query["PageIndex"] = request.PageIndex
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
-		query["PageSize"] = request.PageSize
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.VersionId)) {
-		query["VersionId"] = request.VersionId
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribeDomainNamesOfVersion"),
-		Version:     tea.String("2018-05-10"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DescribeDomainNamesOfVersionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeDomainNamesOfVersion(request *DescribeDomainNamesOfVersionRequest) (_result *DescribeDomainNamesOfVersionResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeDomainNamesOfVersionResponse{}
-	_body, _err := client.DescribeDomainNamesOfVersionWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -27430,14 +26538,6 @@ func (client *Client) DescribeIpInfoWithOptions(request *DescribeIpInfoRequest, 
 		query["IP"] = request.IP
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
-		query["SecurityToken"] = request.SecurityToken
-	}
-
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -27685,46 +26785,6 @@ func (client *Client) DescribeRealtimeDeliveryAcc(request *DescribeRealtimeDeliv
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeRealtimeDeliveryAccResponse{}
 	_body, _err := client.DescribeRealtimeDeliveryAccWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DescribeRealtimeLogAuthorizedWithOptions(request *DescribeRealtimeLogAuthorizedRequest, runtime *util.RuntimeOptions) (_result *DescribeRealtimeLogAuthorizedResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := openapiutil.Query(util.ToMap(request))
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribeRealtimeLogAuthorized"),
-		Version:     tea.String("2018-05-10"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("GET"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DescribeRealtimeLogAuthorizedResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeRealtimeLogAuthorized(request *DescribeRealtimeLogAuthorizedRequest) (_result *DescribeRealtimeLogAuthorizedResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeRealtimeLogAuthorizedResponse{}
-	_body, _err := client.DescribeRealtimeLogAuthorizedWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -28940,6 +28000,58 @@ func (client *Client) ModifyRealtimeLogDelivery(request *ModifyRealtimeLogDelive
 	return _result, _err
 }
 
+func (client *Client) OpenCdnServiceWithOptions(request *OpenCdnServiceRequest, runtime *util.RuntimeOptions) (_result *OpenCdnServiceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InternetChargeType)) {
+		query["InternetChargeType"] = request.InternetChargeType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("OpenCdnService"),
+		Version:     tea.String("2018-05-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &OpenCdnServiceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) OpenCdnService(request *OpenCdnServiceRequest) (_result *OpenCdnServiceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &OpenCdnServiceResponse{}
+	_body, _err := client.OpenCdnServiceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) PublishStagingConfigToProductionWithOptions(request *PublishStagingConfigToProductionRequest, runtime *util.RuntimeOptions) (_result *PublishStagingConfigToProductionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -29309,78 +28421,6 @@ func (client *Client) SetCdnDomainStagingConfig(request *SetCdnDomainStagingConf
 	runtime := &util.RuntimeOptions{}
 	_result = &SetCdnDomainStagingConfigResponse{}
 	_body, _err := client.SetCdnDomainStagingConfigWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) SetConfigOfVersionWithOptions(request *SetConfigOfVersionRequest, runtime *util.RuntimeOptions) (_result *SetConfigOfVersionResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ConfigId)) {
-		query["ConfigId"] = request.ConfigId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.FunctionArgs)) {
-		query["FunctionArgs"] = request.FunctionArgs
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.FunctionId)) {
-		query["FunctionId"] = request.FunctionId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.FunctionName)) {
-		query["FunctionName"] = request.FunctionName
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
-		query["OwnerAccount"] = request.OwnerAccount
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
-		query["SecurityToken"] = request.SecurityToken
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.VersionId)) {
-		query["VersionId"] = request.VersionId
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("SetConfigOfVersion"),
-		Version:     tea.String("2018-05-10"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &SetConfigOfVersionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) SetConfigOfVersion(request *SetConfigOfVersionRequest) (_result *SetConfigOfVersionResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &SetConfigOfVersionResponse{}
-	_body, _err := client.SetConfigOfVersionWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
