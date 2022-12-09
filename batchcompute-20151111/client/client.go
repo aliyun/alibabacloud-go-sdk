@@ -5,10 +5,10 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/client"
+	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
 	openapiutil "github.com/alibabacloud-go/openapi-util/service"
-	util "github.com/alibabacloud-go/tea-utils/service"
+	util "github.com/alibabacloud-go/tea-utils/v2/service"
 	"github.com/alibabacloud-go/tea/tea"
 )
 
@@ -30,7 +30,8 @@ func (s *CancelImageRequest) SetRegionId(v string) *CancelImageRequest {
 }
 
 type CancelImageResponse struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
 }
 
 func (s CancelImageResponse) String() string {
@@ -43,6 +44,11 @@ func (s CancelImageResponse) GoString() string {
 
 func (s *CancelImageResponse) SetHeaders(v map[string]*string) *CancelImageResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *CancelImageResponse) SetStatusCode(v int32) *CancelImageResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -64,7 +70,8 @@ func (s *ChangeJobPriorityRequest) SetRegionId(v string) *ChangeJobPriorityReque
 }
 
 type ChangeJobPriorityResponse struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
 }
 
 func (s ChangeJobPriorityResponse) String() string {
@@ -80,8 +87,37 @@ func (s *ChangeJobPriorityResponse) SetHeaders(v map[string]*string) *ChangeJobP
 	return s
 }
 
+func (s *ChangeJobPriorityResponse) SetStatusCode(v int32) *ChangeJobPriorityResponse {
+	s.StatusCode = &v
+	return s
+}
+
+type CreateAppRequest struct {
+	IdempotentToken *string `json:"IdempotentToken,omitempty" xml:"IdempotentToken,omitempty"`
+	Body            *string `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateAppRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAppRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAppRequest) SetIdempotentToken(v string) *CreateAppRequest {
+	s.IdempotentToken = &v
+	return s
+}
+
+func (s *CreateAppRequest) SetBody(v string) *CreateAppRequest {
+	s.Body = &v
+	return s
+}
+
 type CreateAppResponse struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
 }
 
 func (s CreateAppResponse) String() string {
@@ -94,6 +130,11 @@ func (s CreateAppResponse) GoString() string {
 
 func (s *CreateAppResponse) SetHeaders(v map[string]*string) *CreateAppResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *CreateAppResponse) SetStatusCode(v int32) *CreateAppResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -115,7 +156,8 @@ func (s *CreateClusterRequest) SetRegionId(v string) *CreateClusterRequest {
 }
 
 type CreateClusterResponse struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
 }
 
 func (s CreateClusterResponse) String() string {
@@ -128,6 +170,11 @@ func (s CreateClusterResponse) GoString() string {
 
 func (s *CreateClusterResponse) SetHeaders(v map[string]*string) *CreateClusterResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *CreateClusterResponse) SetStatusCode(v int32) *CreateClusterResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -149,7 +196,8 @@ func (s *CreateImageRequest) SetRegionId(v string) *CreateImageRequest {
 }
 
 type CreateImageResponse struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
 }
 
 func (s CreateImageResponse) String() string {
@@ -162,6 +210,11 @@ func (s CreateImageResponse) GoString() string {
 
 func (s *CreateImageResponse) SetHeaders(v map[string]*string) *CreateImageResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *CreateImageResponse) SetStatusCode(v int32) *CreateImageResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -183,7 +236,8 @@ func (s *CreateJobRequest) SetRegionId(v string) *CreateJobRequest {
 }
 
 type CreateJobResponse struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
 }
 
 func (s CreateJobResponse) String() string {
@@ -199,8 +253,31 @@ func (s *CreateJobResponse) SetHeaders(v map[string]*string) *CreateJobResponse 
 	return s
 }
 
+func (s *CreateJobResponse) SetStatusCode(v int32) *CreateJobResponse {
+	s.StatusCode = &v
+	return s
+}
+
+type DeleteAppRequest struct {
+	Qualifier *string `json:"Qualifier,omitempty" xml:"Qualifier,omitempty"`
+}
+
+func (s DeleteAppRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAppRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAppRequest) SetQualifier(v string) *DeleteAppRequest {
+	s.Qualifier = &v
+	return s
+}
+
 type DeleteAppResponse struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
 }
 
 func (s DeleteAppResponse) String() string {
@@ -213,6 +290,11 @@ func (s DeleteAppResponse) GoString() string {
 
 func (s *DeleteAppResponse) SetHeaders(v map[string]*string) *DeleteAppResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DeleteAppResponse) SetStatusCode(v int32) *DeleteAppResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -234,7 +316,8 @@ func (s *DeleteClusterRequest) SetRegionId(v string) *DeleteClusterRequest {
 }
 
 type DeleteClusterResponse struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
 }
 
 func (s DeleteClusterResponse) String() string {
@@ -247,6 +330,11 @@ func (s DeleteClusterResponse) GoString() string {
 
 func (s *DeleteClusterResponse) SetHeaders(v map[string]*string) *DeleteClusterResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DeleteClusterResponse) SetStatusCode(v int32) *DeleteClusterResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -268,7 +356,8 @@ func (s *DeleteClusterInstanceRequest) SetRegionId(v string) *DeleteClusterInsta
 }
 
 type DeleteClusterInstanceResponse struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
 }
 
 func (s DeleteClusterInstanceResponse) String() string {
@@ -281,6 +370,11 @@ func (s DeleteClusterInstanceResponse) GoString() string {
 
 func (s *DeleteClusterInstanceResponse) SetHeaders(v map[string]*string) *DeleteClusterInstanceResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DeleteClusterInstanceResponse) SetStatusCode(v int32) *DeleteClusterInstanceResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -302,7 +396,8 @@ func (s *DeleteImageRequest) SetRegionId(v string) *DeleteImageRequest {
 }
 
 type DeleteImageResponse struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
 }
 
 func (s DeleteImageResponse) String() string {
@@ -315,6 +410,11 @@ func (s DeleteImageResponse) GoString() string {
 
 func (s *DeleteImageResponse) SetHeaders(v map[string]*string) *DeleteImageResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DeleteImageResponse) SetStatusCode(v int32) *DeleteImageResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -336,7 +436,8 @@ func (s *DeleteJobRequest) SetRegionId(v string) *DeleteJobRequest {
 }
 
 type DeleteJobResponse struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
 }
 
 func (s DeleteJobResponse) String() string {
@@ -349,6 +450,11 @@ func (s DeleteJobResponse) GoString() string {
 
 func (s *DeleteJobResponse) SetHeaders(v map[string]*string) *DeleteJobResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DeleteJobResponse) SetStatusCode(v int32) *DeleteJobResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -370,7 +476,8 @@ func (s *DeleteProjectRequest) SetRegionId(v string) *DeleteProjectRequest {
 }
 
 type DeleteProjectResponse struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
 }
 
 func (s DeleteProjectResponse) String() string {
@@ -386,8 +493,49 @@ func (s *DeleteProjectResponse) SetHeaders(v map[string]*string) *DeleteProjectR
 	return s
 }
 
+func (s *DeleteProjectResponse) SetStatusCode(v int32) *DeleteProjectResponse {
+	s.StatusCode = &v
+	return s
+}
+
+type GetAppRequest struct {
+	Detail    *string `json:"Detail,omitempty" xml:"Detail,omitempty"`
+	Qualifier *string `json:"Qualifier,omitempty" xml:"Qualifier,omitempty"`
+	Revisions *string `json:"Revisions,omitempty" xml:"Revisions,omitempty"`
+	Scope     *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
+}
+
+func (s GetAppRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAppRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetAppRequest) SetDetail(v string) *GetAppRequest {
+	s.Detail = &v
+	return s
+}
+
+func (s *GetAppRequest) SetQualifier(v string) *GetAppRequest {
+	s.Qualifier = &v
+	return s
+}
+
+func (s *GetAppRequest) SetRevisions(v string) *GetAppRequest {
+	s.Revisions = &v
+	return s
+}
+
+func (s *GetAppRequest) SetScope(v string) *GetAppRequest {
+	s.Scope = &v
+	return s
+}
+
 type GetAppResponse struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
 }
 
 func (s GetAppResponse) String() string {
@@ -400,6 +548,11 @@ func (s GetAppResponse) GoString() string {
 
 func (s *GetAppResponse) SetHeaders(v map[string]*string) *GetAppResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *GetAppResponse) SetStatusCode(v int32) *GetAppResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -421,7 +574,8 @@ func (s *GetClusterRequest) SetRegionId(v string) *GetClusterRequest {
 }
 
 type GetClusterResponse struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
 }
 
 func (s GetClusterResponse) String() string {
@@ -434,6 +588,11 @@ func (s GetClusterResponse) GoString() string {
 
 func (s *GetClusterResponse) SetHeaders(v map[string]*string) *GetClusterResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *GetClusterResponse) SetStatusCode(v int32) *GetClusterResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -455,7 +614,8 @@ func (s *GetClusterInstanceRequest) SetRegionId(v string) *GetClusterInstanceReq
 }
 
 type GetClusterInstanceResponse struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
 }
 
 func (s GetClusterInstanceResponse) String() string {
@@ -468,6 +628,11 @@ func (s GetClusterInstanceResponse) GoString() string {
 
 func (s *GetClusterInstanceResponse) SetHeaders(v map[string]*string) *GetClusterInstanceResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *GetClusterInstanceResponse) SetStatusCode(v int32) *GetClusterInstanceResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -489,7 +654,8 @@ func (s *GetImageRequest) SetRegionId(v string) *GetImageRequest {
 }
 
 type GetImageResponse struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
 }
 
 func (s GetImageResponse) String() string {
@@ -502,6 +668,11 @@ func (s GetImageResponse) GoString() string {
 
 func (s *GetImageResponse) SetHeaders(v map[string]*string) *GetImageResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *GetImageResponse) SetStatusCode(v int32) *GetImageResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -523,7 +694,8 @@ func (s *GetInstanceRequest) SetRegionId(v string) *GetInstanceRequest {
 }
 
 type GetInstanceResponse struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
 }
 
 func (s GetInstanceResponse) String() string {
@@ -536,6 +708,11 @@ func (s GetInstanceResponse) GoString() string {
 
 func (s *GetInstanceResponse) SetHeaders(v map[string]*string) *GetInstanceResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *GetInstanceResponse) SetStatusCode(v int32) *GetInstanceResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -557,7 +734,8 @@ func (s *GetJobRequest) SetRegionId(v string) *GetJobRequest {
 }
 
 type GetJobResponse struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
 }
 
 func (s GetJobResponse) String() string {
@@ -570,6 +748,11 @@ func (s GetJobResponse) GoString() string {
 
 func (s *GetJobResponse) SetHeaders(v map[string]*string) *GetJobResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *GetJobResponse) SetStatusCode(v int32) *GetJobResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -591,7 +774,8 @@ func (s *GetJobDescriptionRequest) SetRegionId(v string) *GetJobDescriptionReque
 }
 
 type GetJobDescriptionResponse struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
 }
 
 func (s GetJobDescriptionResponse) String() string {
@@ -604,6 +788,11 @@ func (s GetJobDescriptionResponse) GoString() string {
 
 func (s *GetJobDescriptionResponse) SetHeaders(v map[string]*string) *GetJobDescriptionResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *GetJobDescriptionResponse) SetStatusCode(v int32) *GetJobDescriptionResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -625,7 +814,8 @@ func (s *GetQuotaRequest) SetRegionId(v string) *GetQuotaRequest {
 }
 
 type GetQuotaResponse struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
 }
 
 func (s GetQuotaResponse) String() string {
@@ -638,6 +828,11 @@ func (s GetQuotaResponse) GoString() string {
 
 func (s *GetQuotaResponse) SetHeaders(v map[string]*string) *GetQuotaResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *GetQuotaResponse) SetStatusCode(v int32) *GetQuotaResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -659,7 +854,8 @@ func (s *GetTaskRequest) SetRegionId(v string) *GetTaskRequest {
 }
 
 type GetTaskResponse struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
 }
 
 func (s GetTaskResponse) String() string {
@@ -675,8 +871,43 @@ func (s *GetTaskResponse) SetHeaders(v map[string]*string) *GetTaskResponse {
 	return s
 }
 
+func (s *GetTaskResponse) SetStatusCode(v int32) *GetTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+type ListAppsRequest struct {
+	Marker       *string `json:"Marker,omitempty" xml:"Marker,omitempty"`
+	MaxItemCount *int32  `json:"MaxItemCount,omitempty" xml:"MaxItemCount,omitempty"`
+	Scope        *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
+}
+
+func (s ListAppsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAppsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListAppsRequest) SetMarker(v string) *ListAppsRequest {
+	s.Marker = &v
+	return s
+}
+
+func (s *ListAppsRequest) SetMaxItemCount(v int32) *ListAppsRequest {
+	s.MaxItemCount = &v
+	return s
+}
+
+func (s *ListAppsRequest) SetScope(v string) *ListAppsRequest {
+	s.Scope = &v
+	return s
+}
+
 type ListAppsResponse struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
 }
 
 func (s ListAppsResponse) String() string {
@@ -692,8 +923,14 @@ func (s *ListAppsResponse) SetHeaders(v map[string]*string) *ListAppsResponse {
 	return s
 }
 
+func (s *ListAppsResponse) SetStatusCode(v int32) *ListAppsResponse {
+	s.StatusCode = &v
+	return s
+}
+
 type ListAvailableInstanceTypeResponse struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
 }
 
 func (s ListAvailableInstanceTypeResponse) String() string {
@@ -706,6 +943,11 @@ func (s ListAvailableInstanceTypeResponse) GoString() string {
 
 func (s *ListAvailableInstanceTypeResponse) SetHeaders(v map[string]*string) *ListAvailableInstanceTypeResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ListAvailableInstanceTypeResponse) SetStatusCode(v int32) *ListAvailableInstanceTypeResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -727,7 +969,8 @@ func (s *ListClusterInstancesRequest) SetRegionId(v string) *ListClusterInstance
 }
 
 type ListClusterInstancesResponse struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
 }
 
 func (s ListClusterInstancesResponse) String() string {
@@ -740,6 +983,11 @@ func (s ListClusterInstancesResponse) GoString() string {
 
 func (s *ListClusterInstancesResponse) SetHeaders(v map[string]*string) *ListClusterInstancesResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ListClusterInstancesResponse) SetStatusCode(v int32) *ListClusterInstancesResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -761,7 +1009,8 @@ func (s *ListClustersRequest) SetRegionId(v string) *ListClustersRequest {
 }
 
 type ListClustersResponse struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
 }
 
 func (s ListClustersResponse) String() string {
@@ -774,6 +1023,11 @@ func (s ListClustersResponse) GoString() string {
 
 func (s *ListClustersResponse) SetHeaders(v map[string]*string) *ListClustersResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ListClustersResponse) SetStatusCode(v int32) *ListClustersResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -795,7 +1049,8 @@ func (s *ListImagesRequest) SetRegionId(v string) *ListImagesRequest {
 }
 
 type ListImagesResponse struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
 }
 
 func (s ListImagesResponse) String() string {
@@ -808,6 +1063,11 @@ func (s ListImagesResponse) GoString() string {
 
 func (s *ListImagesResponse) SetHeaders(v map[string]*string) *ListImagesResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ListImagesResponse) SetStatusCode(v int32) *ListImagesResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -829,7 +1089,8 @@ func (s *ListInstancesRequest) SetRegionId(v string) *ListInstancesRequest {
 }
 
 type ListInstancesResponse struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
 }
 
 func (s ListInstancesResponse) String() string {
@@ -842,6 +1103,11 @@ func (s ListInstancesResponse) GoString() string {
 
 func (s *ListInstancesResponse) SetHeaders(v map[string]*string) *ListInstancesResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ListInstancesResponse) SetStatusCode(v int32) *ListInstancesResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -863,7 +1129,8 @@ func (s *ListJobsRequest) SetRegionId(v string) *ListJobsRequest {
 }
 
 type ListJobsResponse struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
 }
 
 func (s ListJobsResponse) String() string {
@@ -879,8 +1146,14 @@ func (s *ListJobsResponse) SetHeaders(v map[string]*string) *ListJobsResponse {
 	return s
 }
 
+func (s *ListJobsResponse) SetStatusCode(v int32) *ListJobsResponse {
+	s.StatusCode = &v
+	return s
+}
+
 type ListRegionsResponse struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
 }
 
 func (s ListRegionsResponse) String() string {
@@ -893,6 +1166,11 @@ func (s ListRegionsResponse) GoString() string {
 
 func (s *ListRegionsResponse) SetHeaders(v map[string]*string) *ListRegionsResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ListRegionsResponse) SetStatusCode(v int32) *ListRegionsResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -914,7 +1192,8 @@ func (s *ListTasksRequest) SetRegionId(v string) *ListTasksRequest {
 }
 
 type ListTasksResponse struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
 }
 
 func (s ListTasksResponse) String() string {
@@ -930,8 +1209,31 @@ func (s *ListTasksResponse) SetHeaders(v map[string]*string) *ListTasksResponse 
 	return s
 }
 
+func (s *ListTasksResponse) SetStatusCode(v int32) *ListTasksResponse {
+	s.StatusCode = &v
+	return s
+}
+
+type ModifyAppRequest struct {
+	Body *string `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ModifyAppRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyAppRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyAppRequest) SetBody(v string) *ModifyAppRequest {
+	s.Body = &v
+	return s
+}
+
 type ModifyAppResponse struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
 }
 
 func (s ModifyAppResponse) String() string {
@@ -944,6 +1246,11 @@ func (s ModifyAppResponse) GoString() string {
 
 func (s *ModifyAppResponse) SetHeaders(v map[string]*string) *ModifyAppResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ModifyAppResponse) SetStatusCode(v int32) *ModifyAppResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -965,7 +1272,8 @@ func (s *ModifyClusterRequest) SetRegionId(v string) *ModifyClusterRequest {
 }
 
 type ModifyClusterResponse struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
 }
 
 func (s ModifyClusterResponse) String() string {
@@ -978,6 +1286,11 @@ func (s ModifyClusterResponse) GoString() string {
 
 func (s *ModifyClusterResponse) SetHeaders(v map[string]*string) *ModifyClusterResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ModifyClusterResponse) SetStatusCode(v int32) *ModifyClusterResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -999,7 +1312,8 @@ func (s *PollForTaskRequest) SetRegionId(v string) *PollForTaskRequest {
 }
 
 type PollForTaskResponse struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
 }
 
 func (s PollForTaskResponse) String() string {
@@ -1012,6 +1326,11 @@ func (s PollForTaskResponse) GoString() string {
 
 func (s *PollForTaskResponse) SetHeaders(v map[string]*string) *PollForTaskResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *PollForTaskResponse) SetStatusCode(v int32) *PollForTaskResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1033,7 +1352,8 @@ func (s *RecreateClusterInstanceRequest) SetRegionId(v string) *RecreateClusterI
 }
 
 type RecreateClusterInstanceResponse struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
 }
 
 func (s RecreateClusterInstanceResponse) String() string {
@@ -1046,6 +1366,11 @@ func (s RecreateClusterInstanceResponse) GoString() string {
 
 func (s *RecreateClusterInstanceResponse) SetHeaders(v map[string]*string) *RecreateClusterInstanceResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *RecreateClusterInstanceResponse) SetStatusCode(v int32) *RecreateClusterInstanceResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1067,7 +1392,8 @@ func (s *RenewClusterInstanceRequest) SetRegionId(v string) *RenewClusterInstanc
 }
 
 type RenewClusterInstanceResponse struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
 }
 
 func (s RenewClusterInstanceResponse) String() string {
@@ -1080,6 +1406,11 @@ func (s RenewClusterInstanceResponse) GoString() string {
 
 func (s *RenewClusterInstanceResponse) SetHeaders(v map[string]*string) *RenewClusterInstanceResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *RenewClusterInstanceResponse) SetStatusCode(v int32) *RenewClusterInstanceResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1101,7 +1432,8 @@ func (s *ReportTaskStatusRequest) SetRegionId(v string) *ReportTaskStatusRequest
 }
 
 type ReportTaskStatusResponse struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
 }
 
 func (s ReportTaskStatusResponse) String() string {
@@ -1114,6 +1446,11 @@ func (s ReportTaskStatusResponse) GoString() string {
 
 func (s *ReportTaskStatusResponse) SetHeaders(v map[string]*string) *ReportTaskStatusResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ReportTaskStatusResponse) SetStatusCode(v int32) *ReportTaskStatusResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1135,7 +1472,8 @@ func (s *ReportWorkerStatusRequest) SetRegionId(v string) *ReportWorkerStatusReq
 }
 
 type ReportWorkerStatusResponse struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
 }
 
 func (s ReportWorkerStatusResponse) String() string {
@@ -1148,6 +1486,11 @@ func (s ReportWorkerStatusResponse) GoString() string {
 
 func (s *ReportWorkerStatusResponse) SetHeaders(v map[string]*string) *ReportWorkerStatusResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ReportWorkerStatusResponse) SetStatusCode(v int32) *ReportWorkerStatusResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1169,7 +1512,8 @@ func (s *StartJobRequest) SetRegionId(v string) *StartJobRequest {
 }
 
 type StartJobResponse struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
 }
 
 func (s StartJobResponse) String() string {
@@ -1182,6 +1526,11 @@ func (s StartJobResponse) GoString() string {
 
 func (s *StartJobResponse) SetHeaders(v map[string]*string) *StartJobResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *StartJobResponse) SetStatusCode(v int32) *StartJobResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1203,7 +1552,8 @@ func (s *StopJobRequest) SetRegionId(v string) *StopJobRequest {
 }
 
 type StopJobResponse struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
 }
 
 func (s StopJobResponse) String() string {
@@ -1216,6 +1566,11 @@ func (s StopJobResponse) GoString() string {
 
 func (s *StopJobResponse) SetHeaders(v map[string]*string) *StopJobResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *StopJobResponse) SetStatusCode(v int32) *StopJobResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1292,8 +1647,19 @@ func (client *Client) CancelImageWithOptions(ResourceName *string, request *Canc
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("CancelImage"),
+		Version:     tea.String("2015-11-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/images/" + tea.StringValue(openapiutil.GetEncodeParam(ResourceName))),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
 	_result = &CancelImageResponse{}
-	_body, _err := client.DoROARequest(tea.String("CancelImage"), tea.String("2015-11-11"), tea.String("HTTPS"), tea.String("PUT"), tea.String("AK"), tea.String("/images/"+tea.StringValue(ResourceName)), tea.String("none"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1327,8 +1693,19 @@ func (client *Client) ChangeJobPriorityWithOptions(ResourceName *string, request
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ChangeJobPriority"),
+		Version:     tea.String("2015-11-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/jobs/" + tea.StringValue(openapiutil.GetEncodeParam(ResourceName))),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
 	_result = &ChangeJobPriorityResponse{}
-	_body, _err := client.DoROARequest(tea.String("ChangeJobPriority"), tea.String("2015-11-11"), tea.String("HTTPS"), tea.String("PUT"), tea.String("AK"), tea.String("/jobs/"+tea.StringValue(ResourceName)), tea.String("none"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1336,11 +1713,11 @@ func (client *Client) ChangeJobPriorityWithOptions(ResourceName *string, request
 	return _result, _err
 }
 
-func (client *Client) CreateApp() (_result *CreateAppResponse, _err error) {
+func (client *Client) CreateApp(request *CreateAppRequest) (_result *CreateAppResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &CreateAppResponse{}
-	_body, _err := client.CreateAppWithOptions(headers, runtime)
+	_body, _err := client.CreateAppWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1348,12 +1725,34 @@ func (client *Client) CreateApp() (_result *CreateAppResponse, _err error) {
 	return _result, _err
 }
 
-func (client *Client) CreateAppWithOptions(headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateAppResponse, _err error) {
+func (client *Client) CreateAppWithOptions(request *CreateAppRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateAppResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.IdempotentToken)) {
+		query["IdempotentToken"] = request.IdempotentToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    request.Body,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateApp"),
+		Version:     tea.String("2015-11-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/apps"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
 	}
 	_result = &CreateAppResponse{}
-	_body, _err := client.DoROARequest(tea.String("CreateApp"), tea.String("2015-11-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/apps"), tea.String("none"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1387,8 +1786,19 @@ func (client *Client) CreateClusterWithOptions(request *CreateClusterRequest, he
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateCluster"),
+		Version:     tea.String("2015-11-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/clusters"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
 	_result = &CreateClusterResponse{}
-	_body, _err := client.DoROARequest(tea.String("CreateCluster"), tea.String("2015-11-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/clusters"), tea.String("none"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1422,8 +1832,19 @@ func (client *Client) CreateImageWithOptions(request *CreateImageRequest, header
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateImage"),
+		Version:     tea.String("2015-11-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/images"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
 	_result = &CreateImageResponse{}
-	_body, _err := client.DoROARequest(tea.String("CreateImage"), tea.String("2015-11-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/images"), tea.String("none"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1457,8 +1878,19 @@ func (client *Client) CreateJobWithOptions(request *CreateJobRequest, headers ma
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateJob"),
+		Version:     tea.String("2015-11-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/jobs"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
 	_result = &CreateJobResponse{}
-	_body, _err := client.DoROARequest(tea.String("CreateJob"), tea.String("2015-11-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/jobs"), tea.String("none"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1466,11 +1898,11 @@ func (client *Client) CreateJobWithOptions(request *CreateJobRequest, headers ma
 	return _result, _err
 }
 
-func (client *Client) DeleteApp(ResourceName *string) (_result *DeleteAppResponse, _err error) {
+func (client *Client) DeleteApp(ResourceName *string, request *DeleteAppRequest) (_result *DeleteAppResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &DeleteAppResponse{}
-	_body, _err := client.DeleteAppWithOptions(ResourceName, headers, runtime)
+	_body, _err := client.DeleteAppWithOptions(ResourceName, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1478,12 +1910,33 @@ func (client *Client) DeleteApp(ResourceName *string) (_result *DeleteAppRespons
 	return _result, _err
 }
 
-func (client *Client) DeleteAppWithOptions(ResourceName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteAppResponse, _err error) {
+func (client *Client) DeleteAppWithOptions(ResourceName *string, request *DeleteAppRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteAppResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Qualifier)) {
+		query["Qualifier"] = request.Qualifier
+	}
+
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteApp"),
+		Version:     tea.String("2015-11-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/apps/" + tea.StringValue(openapiutil.GetEncodeParam(ResourceName))),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
 	}
 	_result = &DeleteAppResponse{}
-	_body, _err := client.DoROARequest(tea.String("DeleteApp"), tea.String("2015-11-11"), tea.String("HTTPS"), tea.String("DELETE"), tea.String("AK"), tea.String("/apps/"+tea.StringValue(ResourceName)), tea.String("none"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1517,8 +1970,19 @@ func (client *Client) DeleteClusterWithOptions(ResourceName *string, request *De
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteCluster"),
+		Version:     tea.String("2015-11-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/clusters/" + tea.StringValue(openapiutil.GetEncodeParam(ResourceName))),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
 	_result = &DeleteClusterResponse{}
-	_body, _err := client.DoROARequest(tea.String("DeleteCluster"), tea.String("2015-11-11"), tea.String("HTTPS"), tea.String("DELETE"), tea.String("AK"), tea.String("/clusters/"+tea.StringValue(ResourceName)), tea.String("none"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1552,8 +2016,19 @@ func (client *Client) DeleteClusterInstanceWithOptions(ClusterId *string, GroupN
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteClusterInstance"),
+		Version:     tea.String("2015-11-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/clusters/" + tea.StringValue(openapiutil.GetEncodeParam(ClusterId)) + "/groups/" + tea.StringValue(openapiutil.GetEncodeParam(GroupName)) + "/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId))),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
 	_result = &DeleteClusterInstanceResponse{}
-	_body, _err := client.DoROARequest(tea.String("DeleteClusterInstance"), tea.String("2015-11-11"), tea.String("HTTPS"), tea.String("DELETE"), tea.String("AK"), tea.String("/clusters/"+tea.StringValue(ClusterId)+"/groups/{GroupName}/instances/{InstanceId}"), tea.String("none"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1587,8 +2062,19 @@ func (client *Client) DeleteImageWithOptions(ResourceName *string, request *Dele
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteImage"),
+		Version:     tea.String("2015-11-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/images/" + tea.StringValue(openapiutil.GetEncodeParam(ResourceName))),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
 	_result = &DeleteImageResponse{}
-	_body, _err := client.DoROARequest(tea.String("DeleteImage"), tea.String("2015-11-11"), tea.String("HTTPS"), tea.String("DELETE"), tea.String("AK"), tea.String("/images/"+tea.StringValue(ResourceName)), tea.String("none"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1622,8 +2108,19 @@ func (client *Client) DeleteJobWithOptions(ResourceName *string, request *Delete
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteJob"),
+		Version:     tea.String("2015-11-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/jobs/" + tea.StringValue(openapiutil.GetEncodeParam(ResourceName))),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
 	_result = &DeleteJobResponse{}
-	_body, _err := client.DoROARequest(tea.String("DeleteJob"), tea.String("2015-11-11"), tea.String("HTTPS"), tea.String("DELETE"), tea.String("AK"), tea.String("/jobs/"+tea.StringValue(ResourceName)), tea.String("none"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1657,8 +2154,19 @@ func (client *Client) DeleteProjectWithOptions(ProjectName *string, request *Del
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteProject"),
+		Version:     tea.String("2015-11-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/projects/" + tea.StringValue(openapiutil.GetEncodeParam(ProjectName))),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
 	_result = &DeleteProjectResponse{}
-	_body, _err := client.DoROARequest(tea.String("DeleteProject"), tea.String("2015-11-11"), tea.String("HTTPS"), tea.String("DELETE"), tea.String("AK"), tea.String("/projects/"+tea.StringValue(ProjectName)), tea.String("none"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1666,11 +2174,11 @@ func (client *Client) DeleteProjectWithOptions(ProjectName *string, request *Del
 	return _result, _err
 }
 
-func (client *Client) GetApp(ResourceName *string) (_result *GetAppResponse, _err error) {
+func (client *Client) GetApp(ResourceName *string, request *GetAppRequest) (_result *GetAppResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &GetAppResponse{}
-	_body, _err := client.GetAppWithOptions(ResourceName, headers, runtime)
+	_body, _err := client.GetAppWithOptions(ResourceName, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1678,12 +2186,45 @@ func (client *Client) GetApp(ResourceName *string) (_result *GetAppResponse, _er
 	return _result, _err
 }
 
-func (client *Client) GetAppWithOptions(ResourceName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetAppResponse, _err error) {
+func (client *Client) GetAppWithOptions(ResourceName *string, request *GetAppRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetAppResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Detail)) {
+		query["Detail"] = request.Detail
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Qualifier)) {
+		query["Qualifier"] = request.Qualifier
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Revisions)) {
+		query["Revisions"] = request.Revisions
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Scope)) {
+		query["Scope"] = request.Scope
+	}
+
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetApp"),
+		Version:     tea.String("2015-11-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/apps/" + tea.StringValue(openapiutil.GetEncodeParam(ResourceName))),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
 	}
 	_result = &GetAppResponse{}
-	_body, _err := client.DoROARequest(tea.String("GetApp"), tea.String("2015-11-11"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/apps/"+tea.StringValue(ResourceName)), tea.String("none"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1717,8 +2258,19 @@ func (client *Client) GetClusterWithOptions(ResourceName *string, request *GetCl
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("GetCluster"),
+		Version:     tea.String("2015-11-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/clusters/" + tea.StringValue(openapiutil.GetEncodeParam(ResourceName))),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
 	_result = &GetClusterResponse{}
-	_body, _err := client.DoROARequest(tea.String("GetCluster"), tea.String("2015-11-11"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/clusters/"+tea.StringValue(ResourceName)), tea.String("none"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1752,8 +2304,19 @@ func (client *Client) GetClusterInstanceWithOptions(ClusterId *string, GroupName
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("GetClusterInstance"),
+		Version:     tea.String("2015-11-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/clusters/" + tea.StringValue(openapiutil.GetEncodeParam(ClusterId)) + "/groups/" + tea.StringValue(openapiutil.GetEncodeParam(GroupName)) + "/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId))),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
 	_result = &GetClusterInstanceResponse{}
-	_body, _err := client.DoROARequest(tea.String("GetClusterInstance"), tea.String("2015-11-11"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/clusters/"+tea.StringValue(ClusterId)+"/groups/{GroupName}/instances/{InstanceId}"), tea.String("none"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1787,8 +2350,19 @@ func (client *Client) GetImageWithOptions(ResourceName *string, request *GetImag
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("GetImage"),
+		Version:     tea.String("2015-11-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/images/" + tea.StringValue(openapiutil.GetEncodeParam(ResourceName))),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
 	_result = &GetImageResponse{}
-	_body, _err := client.DoROARequest(tea.String("GetImage"), tea.String("2015-11-11"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/images/"+tea.StringValue(ResourceName)), tea.String("none"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1822,8 +2396,19 @@ func (client *Client) GetInstanceWithOptions(ResourceName *string, TaskName *str
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("GetInstance"),
+		Version:     tea.String("2015-11-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/jobs/" + tea.StringValue(openapiutil.GetEncodeParam(ResourceName)) + "/tasks/" + tea.StringValue(openapiutil.GetEncodeParam(TaskName)) + "/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId))),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
 	_result = &GetInstanceResponse{}
-	_body, _err := client.DoROARequest(tea.String("GetInstance"), tea.String("2015-11-11"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/jobs/"+tea.StringValue(ResourceName)+"/tasks/{TaskName}/instances/{InstanceId}"), tea.String("none"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1857,8 +2442,19 @@ func (client *Client) GetJobWithOptions(ResourceName *string, request *GetJobReq
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("GetJob"),
+		Version:     tea.String("2015-11-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/jobs/" + tea.StringValue(openapiutil.GetEncodeParam(ResourceName))),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
 	_result = &GetJobResponse{}
-	_body, _err := client.DoROARequest(tea.String("GetJob"), tea.String("2015-11-11"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/jobs/"+tea.StringValue(ResourceName)), tea.String("none"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1892,8 +2488,19 @@ func (client *Client) GetJobDescriptionWithOptions(ResourceName *string, request
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("GetJobDescription"),
+		Version:     tea.String("2015-11-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/jobs/" + tea.StringValue(openapiutil.GetEncodeParam(ResourceName)) + "%3Fdescription"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
 	_result = &GetJobDescriptionResponse{}
-	_body, _err := client.DoROARequest(tea.String("GetJobDescription"), tea.String("2015-11-11"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/jobs/"+tea.StringValue(ResourceName)+"?description"), tea.String("none"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1927,8 +2534,19 @@ func (client *Client) GetQuotaWithOptions(request *GetQuotaRequest, headers map[
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("GetQuota"),
+		Version:     tea.String("2015-11-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/quotas"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
 	_result = &GetQuotaResponse{}
-	_body, _err := client.DoROARequest(tea.String("GetQuota"), tea.String("2015-11-11"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/quotas"), tea.String("none"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1962,8 +2580,19 @@ func (client *Client) GetTaskWithOptions(ResourceName *string, TaskName *string,
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("GetTask"),
+		Version:     tea.String("2015-11-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/jobs/" + tea.StringValue(openapiutil.GetEncodeParam(ResourceName)) + "/tasks/" + tea.StringValue(openapiutil.GetEncodeParam(TaskName))),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
 	_result = &GetTaskResponse{}
-	_body, _err := client.DoROARequest(tea.String("GetTask"), tea.String("2015-11-11"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/jobs/"+tea.StringValue(ResourceName)+"/tasks/{TaskName}"), tea.String("none"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1971,11 +2600,11 @@ func (client *Client) GetTaskWithOptions(ResourceName *string, TaskName *string,
 	return _result, _err
 }
 
-func (client *Client) ListApps() (_result *ListAppsResponse, _err error) {
+func (client *Client) ListApps(request *ListAppsRequest) (_result *ListAppsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &ListAppsResponse{}
-	_body, _err := client.ListAppsWithOptions(headers, runtime)
+	_body, _err := client.ListAppsWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1983,12 +2612,41 @@ func (client *Client) ListApps() (_result *ListAppsResponse, _err error) {
 	return _result, _err
 }
 
-func (client *Client) ListAppsWithOptions(headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListAppsResponse, _err error) {
+func (client *Client) ListAppsWithOptions(request *ListAppsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListAppsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Marker)) {
+		query["Marker"] = request.Marker
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxItemCount)) {
+		query["MaxItemCount"] = request.MaxItemCount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Scope)) {
+		query["Scope"] = request.Scope
+	}
+
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListApps"),
+		Version:     tea.String("2015-11-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/apps"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
 	}
 	_result = &ListAppsResponse{}
-	_body, _err := client.DoROARequest(tea.String("ListApps"), tea.String("2015-11-11"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/apps"), tea.String("none"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2012,8 +2670,19 @@ func (client *Client) ListAvailableInstanceTypeWithOptions(headers map[string]*s
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ListAvailableInstanceType"),
+		Version:     tea.String("2015-11-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/available"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
 	_result = &ListAvailableInstanceTypeResponse{}
-	_body, _err := client.DoROARequest(tea.String("ListAvailableInstanceType"), tea.String("2015-11-11"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/available"), tea.String("none"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2047,8 +2716,19 @@ func (client *Client) ListClusterInstancesWithOptions(ClusterId *string, GroupNa
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ListClusterInstances"),
+		Version:     tea.String("2015-11-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/clusters/" + tea.StringValue(openapiutil.GetEncodeParam(ClusterId)) + "/groups/" + tea.StringValue(openapiutil.GetEncodeParam(GroupName)) + "/instances"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
 	_result = &ListClusterInstancesResponse{}
-	_body, _err := client.DoROARequest(tea.String("ListClusterInstances"), tea.String("2015-11-11"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/clusters/"+tea.StringValue(ClusterId)+"/groups/{GroupName}/instances"), tea.String("none"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2082,8 +2762,19 @@ func (client *Client) ListClustersWithOptions(request *ListClustersRequest, head
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ListClusters"),
+		Version:     tea.String("2015-11-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/clusters"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
 	_result = &ListClustersResponse{}
-	_body, _err := client.DoROARequest(tea.String("ListClusters"), tea.String("2015-11-11"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/clusters"), tea.String("none"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2117,8 +2808,19 @@ func (client *Client) ListImagesWithOptions(request *ListImagesRequest, headers 
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ListImages"),
+		Version:     tea.String("2015-11-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/images"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
 	_result = &ListImagesResponse{}
-	_body, _err := client.DoROARequest(tea.String("ListImages"), tea.String("2015-11-11"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/images"), tea.String("none"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2152,8 +2854,19 @@ func (client *Client) ListInstancesWithOptions(ResourceName *string, TaskName *s
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ListInstances"),
+		Version:     tea.String("2015-11-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/jobs/" + tea.StringValue(openapiutil.GetEncodeParam(ResourceName)) + "/tasks/" + tea.StringValue(openapiutil.GetEncodeParam(TaskName)) + "/instances"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
 	_result = &ListInstancesResponse{}
-	_body, _err := client.DoROARequest(tea.String("ListInstances"), tea.String("2015-11-11"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/jobs/"+tea.StringValue(ResourceName)+"/tasks/{TaskName}/instances"), tea.String("none"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2187,8 +2900,19 @@ func (client *Client) ListJobsWithOptions(request *ListJobsRequest, headers map[
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ListJobs"),
+		Version:     tea.String("2015-11-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/jobs"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
 	_result = &ListJobsResponse{}
-	_body, _err := client.DoROARequest(tea.String("ListJobs"), tea.String("2015-11-11"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/jobs"), tea.String("none"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2212,8 +2936,19 @@ func (client *Client) ListRegionsWithOptions(headers map[string]*string, runtime
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ListRegions"),
+		Version:     tea.String("2015-11-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/regions"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
 	_result = &ListRegionsResponse{}
-	_body, _err := client.DoROARequest(tea.String("ListRegions"), tea.String("2015-11-11"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/regions"), tea.String("none"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2247,8 +2982,19 @@ func (client *Client) ListTasksWithOptions(ResourceName *string, request *ListTa
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ListTasks"),
+		Version:     tea.String("2015-11-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/jobs/" + tea.StringValue(openapiutil.GetEncodeParam(ResourceName)) + "/tasks"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
 	_result = &ListTasksResponse{}
-	_body, _err := client.DoROARequest(tea.String("ListTasks"), tea.String("2015-11-11"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/jobs/"+tea.StringValue(ResourceName)+"/tasks"), tea.String("none"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2256,11 +3002,11 @@ func (client *Client) ListTasksWithOptions(ResourceName *string, request *ListTa
 	return _result, _err
 }
 
-func (client *Client) ModifyApp(ResourceName *string) (_result *ModifyAppResponse, _err error) {
+func (client *Client) ModifyApp(ResourceName *string, request *ModifyAppRequest) (_result *ModifyAppResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &ModifyAppResponse{}
-	_body, _err := client.ModifyAppWithOptions(ResourceName, headers, runtime)
+	_body, _err := client.ModifyAppWithOptions(ResourceName, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2268,12 +3014,28 @@ func (client *Client) ModifyApp(ResourceName *string) (_result *ModifyAppRespons
 	return _result, _err
 }
 
-func (client *Client) ModifyAppWithOptions(ResourceName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ModifyAppResponse, _err error) {
+func (client *Client) ModifyAppWithOptions(ResourceName *string, request *ModifyAppRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ModifyAppResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
+		Body:    request.Body,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyApp"),
+		Version:     tea.String("2015-11-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/apps/" + tea.StringValue(openapiutil.GetEncodeParam(ResourceName))),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
 	}
 	_result = &ModifyAppResponse{}
-	_body, _err := client.DoROARequest(tea.String("ModifyApp"), tea.String("2015-11-11"), tea.String("HTTPS"), tea.String("PUT"), tea.String("AK"), tea.String("/apps/"+tea.StringValue(ResourceName)), tea.String("none"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2307,8 +3069,19 @@ func (client *Client) ModifyClusterWithOptions(ResourceName *string, request *Mo
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyCluster"),
+		Version:     tea.String("2015-11-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/clusters/" + tea.StringValue(openapiutil.GetEncodeParam(ResourceName))),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
 	_result = &ModifyClusterResponse{}
-	_body, _err := client.DoROARequest(tea.String("ModifyCluster"), tea.String("2015-11-11"), tea.String("HTTPS"), tea.String("PUT"), tea.String("AK"), tea.String("/clusters/"+tea.StringValue(ResourceName)), tea.String("none"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2342,8 +3115,19 @@ func (client *Client) PollForTaskWithOptions(ClusterId *string, WorkerId *string
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("PollForTask"),
+		Version:     tea.String("2015-11-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/clusters/" + tea.StringValue(openapiutil.GetEncodeParam(ClusterId)) + "/workers/" + tea.StringValue(openapiutil.GetEncodeParam(WorkerId)) + "/fetchTask"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
 	_result = &PollForTaskResponse{}
-	_body, _err := client.DoROARequest(tea.String("PollForTask"), tea.String("2015-11-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/clusters/"+tea.StringValue(ClusterId)+"/workers/{WorkerId}/fetchTask"), tea.String("none"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2377,8 +3161,19 @@ func (client *Client) RecreateClusterInstanceWithOptions(ClusterId *string, Grou
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("RecreateClusterInstance"),
+		Version:     tea.String("2015-11-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/clusters/" + tea.StringValue(openapiutil.GetEncodeParam(ClusterId)) + "/groups/" + tea.StringValue(openapiutil.GetEncodeParam(GroupName)) + "/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/recreate"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
 	_result = &RecreateClusterInstanceResponse{}
-	_body, _err := client.DoROARequest(tea.String("RecreateClusterInstance"), tea.String("2015-11-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/clusters/"+tea.StringValue(ClusterId)+"/groups/{GroupName}/instances/{InstanceId}/recreate"), tea.String("none"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2412,8 +3207,19 @@ func (client *Client) RenewClusterInstanceWithOptions(ClusterId *string, GroupNa
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("RenewClusterInstance"),
+		Version:     tea.String("2015-11-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/clusters/" + tea.StringValue(openapiutil.GetEncodeParam(ClusterId)) + "/groups/" + tea.StringValue(openapiutil.GetEncodeParam(GroupName)) + "/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/renew"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
 	_result = &RenewClusterInstanceResponse{}
-	_body, _err := client.DoROARequest(tea.String("RenewClusterInstance"), tea.String("2015-11-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/clusters/"+tea.StringValue(ClusterId)+"/groups/{GroupName}/instances/{InstanceId}/renew"), tea.String("none"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2447,8 +3253,19 @@ func (client *Client) ReportTaskStatusWithOptions(ClusterId *string, WorkerId *s
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ReportTaskStatus"),
+		Version:     tea.String("2015-11-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/clusters/" + tea.StringValue(openapiutil.GetEncodeParam(ClusterId)) + "/workers/" + tea.StringValue(openapiutil.GetEncodeParam(WorkerId)) + "/updateTaskStatus"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
 	_result = &ReportTaskStatusResponse{}
-	_body, _err := client.DoROARequest(tea.String("ReportTaskStatus"), tea.String("2015-11-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/clusters/"+tea.StringValue(ClusterId)+"/workers/{WorkerId}/updateTaskStatus"), tea.String("none"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2482,8 +3299,19 @@ func (client *Client) ReportWorkerStatusWithOptions(ClusterId *string, WorkerId 
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ReportWorkerStatus"),
+		Version:     tea.String("2015-11-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/clusters/" + tea.StringValue(openapiutil.GetEncodeParam(ClusterId)) + "/workers/" + tea.StringValue(openapiutil.GetEncodeParam(WorkerId)) + "/updateStatus"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
 	_result = &ReportWorkerStatusResponse{}
-	_body, _err := client.DoROARequest(tea.String("ReportWorkerStatus"), tea.String("2015-11-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/clusters/"+tea.StringValue(ClusterId)+"/workers/{WorkerId}/updateStatus"), tea.String("none"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2517,8 +3345,19 @@ func (client *Client) StartJobWithOptions(ResourceName *string, request *StartJo
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("StartJob"),
+		Version:     tea.String("2015-11-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/jobs/" + tea.StringValue(openapiutil.GetEncodeParam(ResourceName)) + "/start"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
 	_result = &StartJobResponse{}
-	_body, _err := client.DoROARequest(tea.String("StartJob"), tea.String("2015-11-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/jobs/"+tea.StringValue(ResourceName)+"/start"), tea.String("none"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2552,8 +3391,19 @@ func (client *Client) StopJobWithOptions(ResourceName *string, request *StopJobR
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("StopJob"),
+		Version:     tea.String("2015-11-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/jobs/" + tea.StringValue(openapiutil.GetEncodeParam(ResourceName)) + "/stop"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
 	_result = &StopJobResponse{}
-	_body, _err := client.DoROARequest(tea.String("StopJob"), tea.String("2015-11-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/jobs/"+tea.StringValue(ResourceName)+"/stop"), tea.String("none"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
