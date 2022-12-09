@@ -5,10 +5,10 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/client"
+	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
 	openapiutil "github.com/alibabacloud-go/openapi-util/service"
-	util "github.com/alibabacloud-go/tea-utils/service"
+	util "github.com/alibabacloud-go/tea-utils/v2/service"
 	"github.com/alibabacloud-go/tea/tea"
 )
 
@@ -106,14 +106,11 @@ func (s *CreateFileJobResponse) SetBody(v *CreateFileJobResponseBody) *CreateFil
 }
 
 type CreateMigrationGroupRequest struct {
-	// 详细描述
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// 扩充字段（json结构）
-	Extra *string `json:"extra,omitempty" xml:"extra,omitempty"`
-	Id    *int32  `json:"id,omitempty" xml:"id,omitempty"`
-	// 名称
-	Name     *string `json:"name,omitempty" xml:"name,omitempty"`
-	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	Extra       *string `json:"extra,omitempty" xml:"extra,omitempty"`
+	Id          *int32  `json:"id,omitempty" xml:"id,omitempty"`
+	Name        *string `json:"name,omitempty" xml:"name,omitempty"`
+	RegionId    *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
 }
 
 func (s CreateMigrationGroupRequest) String() string {
@@ -237,32 +234,19 @@ func (s *CreateMigrationJobRequest) SetType(v string) *CreateMigrationJobRequest
 }
 
 type CreateMigrationJobRequestMigrationJobList struct {
-	// 目的
-	Destination *string `json:"destination,omitempty" xml:"destination,omitempty"`
-	// 目的IP
-	DestinationIp *string `json:"destinationIp,omitempty" xml:"destinationIp,omitempty"`
-	// region
+	Destination       *string `json:"destination,omitempty" xml:"destination,omitempty"`
+	DestinationIp     *string `json:"destinationIp,omitempty" xml:"destinationIp,omitempty"`
 	DestinationRegion *string `json:"destinationRegion,omitempty" xml:"destinationRegion,omitempty"`
-	// 任务创建时间
-	JobGmtCreate *string `json:"jobGmtCreate,omitempty" xml:"jobGmtCreate,omitempty"`
-	// 任务最后修改时间
-	JobGmtModified *string `json:"jobGmtModified,omitempty" xml:"jobGmtModified,omitempty"`
-	// 任务名称
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// 来源系统的速度
-	OriginalPercent *string `json:"originalPercent,omitempty" xml:"originalPercent,omitempty"`
-	// 来源系统的进度
-	OriginalProgress *string `json:"originalProgress,omitempty" xml:"originalProgress,omitempty"`
-	// 来源系统状态
-	OriginalStatus *string `json:"originalStatus,omitempty" xml:"originalStatus,omitempty"`
-	// 来源系统的jobID；
-	OutSideId *string `json:"outSideId,omitempty" xml:"outSideId,omitempty"`
-	// 扩展字段
-	Properties *string `json:"properties,omitempty" xml:"properties,omitempty"`
-	// 源
-	Source *string `json:"source,omitempty" xml:"source,omitempty"`
-	// 源IP
-	SourceIp *string `json:"sourceIp,omitempty" xml:"sourceIp,omitempty"`
+	JobGmtCreate      *string `json:"jobGmtCreate,omitempty" xml:"jobGmtCreate,omitempty"`
+	JobGmtModified    *string `json:"jobGmtModified,omitempty" xml:"jobGmtModified,omitempty"`
+	Name              *string `json:"name,omitempty" xml:"name,omitempty"`
+	OriginalPercent   *string `json:"originalPercent,omitempty" xml:"originalPercent,omitempty"`
+	OriginalProgress  *string `json:"originalProgress,omitempty" xml:"originalProgress,omitempty"`
+	OriginalStatus    *string `json:"originalStatus,omitempty" xml:"originalStatus,omitempty"`
+	OutSideId         *string `json:"outSideId,omitempty" xml:"outSideId,omitempty"`
+	Properties        *string `json:"properties,omitempty" xml:"properties,omitempty"`
+	Source            *string `json:"source,omitempty" xml:"source,omitempty"`
+	SourceIp          *string `json:"sourceIp,omitempty" xml:"sourceIp,omitempty"`
 }
 
 func (s CreateMigrationJobRequestMigrationJobList) String() string {
@@ -402,17 +386,203 @@ func (s *CreateMigrationJobResponse) SetBody(v *CreateMigrationJobResponseBody) 
 	return s
 }
 
+type CreatePayOrderCallbackRequest struct {
+	Data *string `json:"data,omitempty" xml:"data,omitempty"`
+}
+
+func (s CreatePayOrderCallbackRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreatePayOrderCallbackRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreatePayOrderCallbackRequest) SetData(v string) *CreatePayOrderCallbackRequest {
+	s.Data = &v
+	return s
+}
+
+type CreatePayOrderCallbackResponseBody struct {
+	Code      *string     `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string     `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResultObj interface{} `json:"ResultObj,omitempty" xml:"ResultObj,omitempty"`
+	Success   *bool       `json:"Success,omitempty" xml:"Success,omitempty"`
+	Synchro   *bool       `json:"Synchro,omitempty" xml:"Synchro,omitempty"`
+}
+
+func (s CreatePayOrderCallbackResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreatePayOrderCallbackResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreatePayOrderCallbackResponseBody) SetCode(v string) *CreatePayOrderCallbackResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CreatePayOrderCallbackResponseBody) SetMessage(v string) *CreatePayOrderCallbackResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CreatePayOrderCallbackResponseBody) SetRequestId(v string) *CreatePayOrderCallbackResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreatePayOrderCallbackResponseBody) SetResultObj(v interface{}) *CreatePayOrderCallbackResponseBody {
+	s.ResultObj = v
+	return s
+}
+
+func (s *CreatePayOrderCallbackResponseBody) SetSuccess(v bool) *CreatePayOrderCallbackResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *CreatePayOrderCallbackResponseBody) SetSynchro(v bool) *CreatePayOrderCallbackResponseBody {
+	s.Synchro = &v
+	return s
+}
+
+type CreatePayOrderCallbackResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreatePayOrderCallbackResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreatePayOrderCallbackResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreatePayOrderCallbackResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreatePayOrderCallbackResponse) SetHeaders(v map[string]*string) *CreatePayOrderCallbackResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreatePayOrderCallbackResponse) SetStatusCode(v int32) *CreatePayOrderCallbackResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreatePayOrderCallbackResponse) SetBody(v *CreatePayOrderCallbackResponseBody) *CreatePayOrderCallbackResponse {
+	s.Body = v
+	return s
+}
+
+type CreateRefundRequest struct {
+	Data *string `json:"data,omitempty" xml:"data,omitempty"`
+}
+
+func (s CreateRefundRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRefundRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRefundRequest) SetData(v string) *CreateRefundRequest {
+	s.Data = &v
+	return s
+}
+
+type CreateRefundResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	Synchro   *bool   `json:"Synchro,omitempty" xml:"Synchro,omitempty"`
+}
+
+func (s CreateRefundResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRefundResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRefundResponseBody) SetCode(v string) *CreateRefundResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CreateRefundResponseBody) SetData(v string) *CreateRefundResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *CreateRefundResponseBody) SetMessage(v string) *CreateRefundResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CreateRefundResponseBody) SetRequestId(v string) *CreateRefundResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateRefundResponseBody) SetSuccess(v bool) *CreateRefundResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *CreateRefundResponseBody) SetSynchro(v bool) *CreateRefundResponseBody {
+	s.Synchro = &v
+	return s
+}
+
+type CreateRefundResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateRefundResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateRefundResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRefundResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRefundResponse) SetHeaders(v map[string]*string) *CreateRefundResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateRefundResponse) SetStatusCode(v int32) *CreateRefundResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateRefundResponse) SetBody(v *CreateRefundResponseBody) *CreateRefundResponse {
+	s.Body = v
+	return s
+}
+
 type CreateSurveyJobRequest struct {
-	Region           []*string `json:"Region,omitempty" xml:"Region,omitempty" type:"Repeated"`
-	ResourceTypeList []*string `json:"ResourceTypeList,omitempty" xml:"ResourceTypeList,omitempty" type:"Repeated"`
 	Ak               *string   `json:"ak,omitempty" xml:"ak,omitempty"`
-	// 调研渠道
-	Channel   *string `json:"channel,omitempty" xml:"channel,omitempty"`
-	CloudType *string `json:"cloudType,omitempty" xml:"cloudType,omitempty"`
-	Name      *string `json:"name,omitempty" xml:"name,omitempty"`
-	Sk        *string `json:"sk,omitempty" xml:"sk,omitempty"`
-	TenantId  *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
-	RegionId  *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	Channel          *string   `json:"channel,omitempty" xml:"channel,omitempty"`
+	CloudType        *string   `json:"cloudType,omitempty" xml:"cloudType,omitempty"`
+	Name             *string   `json:"name,omitempty" xml:"name,omitempty"`
+	Region           []*string `json:"region,omitempty" xml:"region,omitempty" type:"Repeated"`
+	ResourceTypeList []*string `json:"resourceTypeList,omitempty" xml:"resourceTypeList,omitempty" type:"Repeated"`
+	Sk               *string   `json:"sk,omitempty" xml:"sk,omitempty"`
+	TenantId         *string   `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
+	Zone             []*string `json:"zone,omitempty" xml:"zone,omitempty" type:"Repeated"`
+	RegionId         *string   `json:"regionId,omitempty" xml:"regionId,omitempty"`
 }
 
 func (s CreateSurveyJobRequest) String() string {
@@ -421,16 +591,6 @@ func (s CreateSurveyJobRequest) String() string {
 
 func (s CreateSurveyJobRequest) GoString() string {
 	return s.String()
-}
-
-func (s *CreateSurveyJobRequest) SetRegion(v []*string) *CreateSurveyJobRequest {
-	s.Region = v
-	return s
-}
-
-func (s *CreateSurveyJobRequest) SetResourceTypeList(v []*string) *CreateSurveyJobRequest {
-	s.ResourceTypeList = v
-	return s
 }
 
 func (s *CreateSurveyJobRequest) SetAk(v string) *CreateSurveyJobRequest {
@@ -453,6 +613,16 @@ func (s *CreateSurveyJobRequest) SetName(v string) *CreateSurveyJobRequest {
 	return s
 }
 
+func (s *CreateSurveyJobRequest) SetRegion(v []*string) *CreateSurveyJobRequest {
+	s.Region = v
+	return s
+}
+
+func (s *CreateSurveyJobRequest) SetResourceTypeList(v []*string) *CreateSurveyJobRequest {
+	s.ResourceTypeList = v
+	return s
+}
+
 func (s *CreateSurveyJobRequest) SetSk(v string) *CreateSurveyJobRequest {
 	s.Sk = &v
 	return s
@@ -460,6 +630,11 @@ func (s *CreateSurveyJobRequest) SetSk(v string) *CreateSurveyJobRequest {
 
 func (s *CreateSurveyJobRequest) SetTenantId(v string) *CreateSurveyJobRequest {
 	s.TenantId = &v
+	return s
+}
+
+func (s *CreateSurveyJobRequest) SetZone(v []*string) *CreateSurveyJobRequest {
+	s.Zone = v
 	return s
 }
 
@@ -533,7 +708,6 @@ func (s *CreateSurveyJobResponse) SetBody(v *CreateSurveyJobResponseBody) *Creat
 }
 
 type CreateSurveyJobOfflineRequest struct {
-	// 调研渠道
 	Channel    *string `json:"channel,omitempty" xml:"channel,omitempty"`
 	CloudType  *string `json:"cloudType,omitempty" xml:"cloudType,omitempty"`
 	FileName   *string `json:"fileName,omitempty" xml:"fileName,omitempty"`
@@ -640,87 +814,6 @@ func (s *CreateSurveyJobOfflineResponse) SetStatusCode(v int32) *CreateSurveyJob
 }
 
 func (s *CreateSurveyJobOfflineResponse) SetBody(v *CreateSurveyJobOfflineResponseBody) *CreateSurveyJobOfflineResponse {
-	s.Body = v
-	return s
-}
-
-type DeleteMigrationGroupRequest struct {
-	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
-}
-
-func (s DeleteMigrationGroupRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteMigrationGroupRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteMigrationGroupRequest) SetId(v int64) *DeleteMigrationGroupRequest {
-	s.Id = &v
-	return s
-}
-
-type DeleteMigrationGroupResponseBody struct {
-	Code    *string     `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data    interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
-	Success *bool       `json:"Success,omitempty" xml:"Success,omitempty"`
-	Error   *string     `json:"error,omitempty" xml:"error,omitempty"`
-}
-
-func (s DeleteMigrationGroupResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteMigrationGroupResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteMigrationGroupResponseBody) SetCode(v string) *DeleteMigrationGroupResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *DeleteMigrationGroupResponseBody) SetData(v interface{}) *DeleteMigrationGroupResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *DeleteMigrationGroupResponseBody) SetSuccess(v bool) *DeleteMigrationGroupResponseBody {
-	s.Success = &v
-	return s
-}
-
-func (s *DeleteMigrationGroupResponseBody) SetError(v string) *DeleteMigrationGroupResponseBody {
-	s.Error = &v
-	return s
-}
-
-type DeleteMigrationGroupResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteMigrationGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DeleteMigrationGroupResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteMigrationGroupResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteMigrationGroupResponse) SetHeaders(v map[string]*string) *DeleteMigrationGroupResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DeleteMigrationGroupResponse) SetStatusCode(v int32) *DeleteMigrationGroupResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *DeleteMigrationGroupResponse) SetBody(v *DeleteMigrationGroupResponseBody) *DeleteMigrationGroupResponse {
 	s.Body = v
 	return s
 }
@@ -1120,12 +1213,10 @@ func (s *DescribeMigrationJobConfigResponse) SetBody(v *DescribeMigrationJobConf
 }
 
 type DescribeMigrationJobCountRequest struct {
-	// 任务名称
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// 源
-	Source *string `json:"source,omitempty" xml:"source,omitempty"`
-	// 来源系统,MigrationJobTypeEnum[DTS,SMC,OSS,value,desc]
-	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	Name     *string   `json:"name,omitempty" xml:"name,omitempty"`
+	Source   *string   `json:"source,omitempty" xml:"source,omitempty"`
+	Type     *string   `json:"type,omitempty" xml:"type,omitempty"`
+	TypeList []*string `json:"typeList,omitempty" xml:"typeList,omitempty" type:"Repeated"`
 }
 
 func (s DescribeMigrationJobCountRequest) String() string {
@@ -1148,6 +1239,11 @@ func (s *DescribeMigrationJobCountRequest) SetSource(v string) *DescribeMigratio
 
 func (s *DescribeMigrationJobCountRequest) SetType(v string) *DescribeMigrationJobCountRequest {
 	s.Type = &v
+	return s
+}
+
+func (s *DescribeMigrationJobCountRequest) SetTypeList(v []*string) *DescribeMigrationJobCountRequest {
+	s.TypeList = v
 	return s
 }
 
@@ -1576,7 +1672,10 @@ func (s *DescribeSurveyJobResponse) SetBody(v *DescribeSurveyJobResponseBody) *D
 }
 
 type DescribeSurveyJobCountRequest struct {
-	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	ChannelList   []*string `json:"channelList,omitempty" xml:"channelList,omitempty" type:"Repeated"`
+	CloudTypeList []*string `json:"cloudTypeList,omitempty" xml:"cloudTypeList,omitempty" type:"Repeated"`
+	Name          *string   `json:"name,omitempty" xml:"name,omitempty"`
+	RegionId      *string   `json:"regionId,omitempty" xml:"regionId,omitempty"`
 }
 
 func (s DescribeSurveyJobCountRequest) String() string {
@@ -1585,6 +1684,21 @@ func (s DescribeSurveyJobCountRequest) String() string {
 
 func (s DescribeSurveyJobCountRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeSurveyJobCountRequest) SetChannelList(v []*string) *DescribeSurveyJobCountRequest {
+	s.ChannelList = v
+	return s
+}
+
+func (s *DescribeSurveyJobCountRequest) SetCloudTypeList(v []*string) *DescribeSurveyJobCountRequest {
+	s.CloudTypeList = v
+	return s
+}
+
+func (s *DescribeSurveyJobCountRequest) SetName(v string) *DescribeSurveyJobCountRequest {
+	s.Name = &v
+	return s
 }
 
 func (s *DescribeSurveyJobCountRequest) SetRegionId(v string) *DescribeSurveyJobCountRequest {
@@ -1802,16 +1916,14 @@ func (s *DescribeSurveyTemplateResponse) SetBody(v *DescribeSurveyTemplateRespon
 }
 
 type ListMigrationJobsRequest struct {
-	// 任务名称
-	Name     *string `json:"name,omitempty" xml:"name,omitempty"`
-	PageNum  *int32  `json:"pageNum,omitempty" xml:"pageNum,omitempty"`
-	PageSize *int32  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	SortCol  *string `json:"sortCol,omitempty" xml:"sortCol,omitempty"`
-	SortType *string `json:"sortType,omitempty" xml:"sortType,omitempty"`
-	// 源
-	Source *string `json:"source,omitempty" xml:"source,omitempty"`
-	// 来源系统,MigrationJobTypeEnum[DTS,SMC,OSS,value,desc]
-	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	Name     *string   `json:"name,omitempty" xml:"name,omitempty"`
+	PageNum  *int32    `json:"pageNum,omitempty" xml:"pageNum,omitempty"`
+	PageSize *int32    `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	SortCol  *string   `json:"sortCol,omitempty" xml:"sortCol,omitempty"`
+	SortType *string   `json:"sortType,omitempty" xml:"sortType,omitempty"`
+	Source   *string   `json:"source,omitempty" xml:"source,omitempty"`
+	Type     *string   `json:"type,omitempty" xml:"type,omitempty"`
+	TypeList []*string `json:"typeList,omitempty" xml:"typeList,omitempty" type:"Repeated"`
 }
 
 func (s ListMigrationJobsRequest) String() string {
@@ -1854,6 +1966,11 @@ func (s *ListMigrationJobsRequest) SetSource(v string) *ListMigrationJobsRequest
 
 func (s *ListMigrationJobsRequest) SetType(v string) *ListMigrationJobsRequest {
 	s.Type = &v
+	return s
+}
+
+func (s *ListMigrationJobsRequest) SetTypeList(v []*string) *ListMigrationJobsRequest {
+	s.TypeList = v
 	return s
 }
 
@@ -1917,117 +2034,6 @@ func (s *ListMigrationJobsResponse) SetStatusCode(v int32) *ListMigrationJobsRes
 }
 
 func (s *ListMigrationJobsResponse) SetBody(v *ListMigrationJobsResponseBody) *ListMigrationJobsResponse {
-	s.Body = v
-	return s
-}
-
-type ListRegionsRequest struct {
-	Ak        *string `json:"ak,omitempty" xml:"ak,omitempty"`
-	CloudType *string `json:"cloudType,omitempty" xml:"cloudType,omitempty"`
-	Region    *string `json:"region,omitempty" xml:"region,omitempty"`
-	RegionId  *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	Sk        *string `json:"sk,omitempty" xml:"sk,omitempty"`
-	TenantId  *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
-}
-
-func (s ListRegionsRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListRegionsRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListRegionsRequest) SetAk(v string) *ListRegionsRequest {
-	s.Ak = &v
-	return s
-}
-
-func (s *ListRegionsRequest) SetCloudType(v string) *ListRegionsRequest {
-	s.CloudType = &v
-	return s
-}
-
-func (s *ListRegionsRequest) SetRegion(v string) *ListRegionsRequest {
-	s.Region = &v
-	return s
-}
-
-func (s *ListRegionsRequest) SetRegionId(v string) *ListRegionsRequest {
-	s.RegionId = &v
-	return s
-}
-
-func (s *ListRegionsRequest) SetSk(v string) *ListRegionsRequest {
-	s.Sk = &v
-	return s
-}
-
-func (s *ListRegionsRequest) SetTenantId(v string) *ListRegionsRequest {
-	s.TenantId = &v
-	return s
-}
-
-type ListRegionsResponseBody struct {
-	Code    *string     `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data    interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
-	Success *bool       `json:"Success,omitempty" xml:"Success,omitempty"`
-	Error   *string     `json:"error,omitempty" xml:"error,omitempty"`
-}
-
-func (s ListRegionsResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListRegionsResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ListRegionsResponseBody) SetCode(v string) *ListRegionsResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *ListRegionsResponseBody) SetData(v interface{}) *ListRegionsResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *ListRegionsResponseBody) SetSuccess(v bool) *ListRegionsResponseBody {
-	s.Success = &v
-	return s
-}
-
-func (s *ListRegionsResponseBody) SetError(v string) *ListRegionsResponseBody {
-	s.Error = &v
-	return s
-}
-
-type ListRegionsResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListRegionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ListRegionsResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListRegionsResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ListRegionsResponse) SetHeaders(v map[string]*string) *ListRegionsResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ListRegionsResponse) SetStatusCode(v int32) *ListRegionsResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *ListRegionsResponse) SetBody(v *ListRegionsResponseBody) *ListRegionsResponse {
 	s.Body = v
 	return s
 }
@@ -2138,13 +2144,10 @@ func (s *ListSurveyJobDownLoadJobsResponse) SetBody(v *ListSurveyJobDownLoadJobs
 }
 
 type ListSurveyJobsRequest struct {
-	// 调研渠道
-	Channel    *string `json:"channel,omitempty" xml:"channel,omitempty"`
-	CloudType  *string `json:"cloudType,omitempty" xml:"cloudType,omitempty"`
-	FileName   *string `json:"fileName,omitempty" xml:"fileName,omitempty"`
-	Name       *string `json:"name,omitempty" xml:"name,omitempty"`
-	ObjectName *string `json:"objectName,omitempty" xml:"objectName,omitempty"`
-	RegionId   *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	ChannelList   []*string `json:"channelList,omitempty" xml:"channelList,omitempty" type:"Repeated"`
+	CloudTypeList []*string `json:"cloudTypeList,omitempty" xml:"cloudTypeList,omitempty" type:"Repeated"`
+	Name          *string   `json:"name,omitempty" xml:"name,omitempty"`
+	RegionId      *string   `json:"regionId,omitempty" xml:"regionId,omitempty"`
 }
 
 func (s ListSurveyJobsRequest) String() string {
@@ -2155,28 +2158,18 @@ func (s ListSurveyJobsRequest) GoString() string {
 	return s.String()
 }
 
-func (s *ListSurveyJobsRequest) SetChannel(v string) *ListSurveyJobsRequest {
-	s.Channel = &v
+func (s *ListSurveyJobsRequest) SetChannelList(v []*string) *ListSurveyJobsRequest {
+	s.ChannelList = v
 	return s
 }
 
-func (s *ListSurveyJobsRequest) SetCloudType(v string) *ListSurveyJobsRequest {
-	s.CloudType = &v
-	return s
-}
-
-func (s *ListSurveyJobsRequest) SetFileName(v string) *ListSurveyJobsRequest {
-	s.FileName = &v
+func (s *ListSurveyJobsRequest) SetCloudTypeList(v []*string) *ListSurveyJobsRequest {
+	s.CloudTypeList = v
 	return s
 }
 
 func (s *ListSurveyJobsRequest) SetName(v string) *ListSurveyJobsRequest {
 	s.Name = &v
-	return s
-}
-
-func (s *ListSurveyJobsRequest) SetObjectName(v string) *ListSurveyJobsRequest {
-	s.ObjectName = &v
 	return s
 }
 
@@ -2557,12 +2550,9 @@ func (s *ListSurveyResourceTypesResponse) SetBody(v *ListSurveyResourceTypesResp
 }
 
 type ListSurveyResourcesDetailRequest struct {
-	// ip
-	Ip *string `json:"ip,omitempty" xml:"ip,omitempty"`
-	// 调研任务Id
-	JobId     *int64 `json:"jobId,omitempty" xml:"jobId,omitempty"`
-	ProjectId *int64 `json:"projectId,omitempty" xml:"projectId,omitempty"`
-	// 类型
+	Ip           *string `json:"ip,omitempty" xml:"ip,omitempty"`
+	JobId        *int64  `json:"jobId,omitempty" xml:"jobId,omitempty"`
+	ProjectId    *int64  `json:"projectId,omitempty" xml:"projectId,omitempty"`
 	ResourceType *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
 	SubProjectId *int64  `json:"subProjectId,omitempty" xml:"subProjectId,omitempty"`
 	RegionId     *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
@@ -2839,9 +2829,10 @@ func (s *StopSyncMigrationJobResponse) SetBody(v *StopSyncMigrationJobResponseBo
 }
 
 type SyncMigrationJobRequest struct {
-	JobType  *string `json:"jobType,omitempty" xml:"jobType,omitempty"`
-	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	Regions  *string `json:"regions,omitempty" xml:"regions,omitempty"`
+	JobType       *string `json:"jobType,omitempty" xml:"jobType,omitempty"`
+	OperationType *string `json:"operationType,omitempty" xml:"operationType,omitempty"`
+	RegionId      *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	Regions       *string `json:"regions,omitempty" xml:"regions,omitempty"`
 }
 
 func (s SyncMigrationJobRequest) String() string {
@@ -2854,6 +2845,11 @@ func (s SyncMigrationJobRequest) GoString() string {
 
 func (s *SyncMigrationJobRequest) SetJobType(v string) *SyncMigrationJobRequest {
 	s.JobType = &v
+	return s
+}
+
+func (s *SyncMigrationJobRequest) SetOperationType(v string) *SyncMigrationJobRequest {
+	s.OperationType = &v
 	return s
 }
 
@@ -2927,6 +2923,122 @@ func (s *SyncMigrationJobResponse) SetStatusCode(v int32) *SyncMigrationJobRespo
 }
 
 func (s *SyncMigrationJobResponse) SetBody(v *SyncMigrationJobResponseBody) *SyncMigrationJobResponse {
+	s.Body = v
+	return s
+}
+
+type UpdatePushAppHeaders struct {
+	CommonHeaders  map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	TenantProxyUid *string            `json:"tenant-proxy-uid,omitempty" xml:"tenant-proxy-uid,omitempty"`
+}
+
+func (s UpdatePushAppHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdatePushAppHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *UpdatePushAppHeaders) SetCommonHeaders(v map[string]*string) *UpdatePushAppHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *UpdatePushAppHeaders) SetTenantProxyUid(v string) *UpdatePushAppHeaders {
+	s.TenantProxyUid = &v
+	return s
+}
+
+type UpdatePushAppRequest struct {
+	AppId        *int64  `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	DownloadLink *string `json:"DownloadLink,omitempty" xml:"DownloadLink,omitempty"`
+}
+
+func (s UpdatePushAppRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdatePushAppRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdatePushAppRequest) SetAppId(v int64) *UpdatePushAppRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *UpdatePushAppRequest) SetDownloadLink(v string) *UpdatePushAppRequest {
+	s.DownloadLink = &v
+	return s
+}
+
+type UpdatePushAppResponseBody struct {
+	IsDebugEnable *bool       `json:"IsDebugEnable,omitempty" xml:"IsDebugEnable,omitempty"`
+	RequestId     *string     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResultObj     interface{} `json:"ResultObj,omitempty" xml:"ResultObj,omitempty"`
+	Success       *bool       `json:"Success,omitempty" xml:"Success,omitempty"`
+	TipMsg        *string     `json:"TipMsg,omitempty" xml:"TipMsg,omitempty"`
+}
+
+func (s UpdatePushAppResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdatePushAppResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdatePushAppResponseBody) SetIsDebugEnable(v bool) *UpdatePushAppResponseBody {
+	s.IsDebugEnable = &v
+	return s
+}
+
+func (s *UpdatePushAppResponseBody) SetRequestId(v string) *UpdatePushAppResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdatePushAppResponseBody) SetResultObj(v interface{}) *UpdatePushAppResponseBody {
+	s.ResultObj = v
+	return s
+}
+
+func (s *UpdatePushAppResponseBody) SetSuccess(v bool) *UpdatePushAppResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *UpdatePushAppResponseBody) SetTipMsg(v string) *UpdatePushAppResponseBody {
+	s.TipMsg = &v
+	return s
+}
+
+type UpdatePushAppResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdatePushAppResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdatePushAppResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdatePushAppResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdatePushAppResponse) SetHeaders(v map[string]*string) *UpdatePushAppResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdatePushAppResponse) SetStatusCode(v int32) *UpdatePushAppResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdatePushAppResponse) SetBody(v *UpdatePushAppResponseBody) *UpdatePushAppResponse {
 	s.Body = v
 	return s
 }
@@ -3148,6 +3260,98 @@ func (client *Client) CreateMigrationJobWithOptions(request *CreateMigrationJobR
 	return _result, _err
 }
 
+func (client *Client) CreatePayOrderCallback(request *CreatePayOrderCallbackRequest) (_result *CreatePayOrderCallbackResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreatePayOrderCallbackResponse{}
+	_body, _err := client.CreatePayOrderCallbackWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreatePayOrderCallbackWithOptions(request *CreatePayOrderCallbackRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreatePayOrderCallbackResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Data)) {
+		query["data"] = request.Data
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreatePayOrderCallback"),
+		Version:     tea.String("2022-03-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/sys/user/pop/api/v1/payOrderCallback"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreatePayOrderCallbackResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateRefund(request *CreateRefundRequest) (_result *CreateRefundResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateRefundResponse{}
+	_body, _err := client.CreateRefundWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateRefundWithOptions(request *CreateRefundRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateRefundResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Data)) {
+		query["data"] = request.Data
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateRefund"),
+		Version:     tea.String("2022-03-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/sys/user/pop/api/v1/refund"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateRefundResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
 func (client *Client) CreateSurveyJob(request *CreateSurveyJobRequest) (_result *CreateSurveyJobResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -3171,14 +3375,6 @@ func (client *Client) CreateSurveyJobWithOptions(request *CreateSurveyJobRequest
 	}
 
 	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.Region)) {
-		body["Region"] = request.Region
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ResourceTypeList)) {
-		body["ResourceTypeList"] = request.ResourceTypeList
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.Ak)) {
 		body["ak"] = request.Ak
 	}
@@ -3195,12 +3391,24 @@ func (client *Client) CreateSurveyJobWithOptions(request *CreateSurveyJobRequest
 		body["name"] = request.Name
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Region)) {
+		body["region"] = request.Region
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceTypeList)) {
+		body["resourceTypeList"] = request.ResourceTypeList
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Sk)) {
 		body["sk"] = request.Sk
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.TenantId)) {
 		body["tenantId"] = request.TenantId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Zone)) {
+		body["zone"] = request.Zone
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -3288,52 +3496,6 @@ func (client *Client) CreateSurveyJobOfflineWithOptions(request *CreateSurveyJob
 		BodyType:    tea.String("json"),
 	}
 	_result = &CreateSurveyJobOfflineResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DeleteMigrationGroup(request *DeleteMigrationGroupRequest) (_result *DeleteMigrationGroupResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &DeleteMigrationGroupResponse{}
-	_body, _err := client.DeleteMigrationGroupWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DeleteMigrationGroupWithOptions(request *DeleteMigrationGroupRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteMigrationGroupResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.Id)) {
-		query["id"] = request.Id
-	}
-
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-		Query:   openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DeleteMigrationGroup"),
-		Version:     tea.String("2022-03-31"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/okss-services/migration-group/remove-migration-group"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DeleteMigrationGroupResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -3596,6 +3758,10 @@ func (client *Client) DescribeMigrationJobCountWithOptions(request *DescribeMigr
 		body["type"] = request.Type
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.TypeList)) {
+		body["typeList"] = request.TypeList
+	}
+
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
@@ -3850,9 +4016,23 @@ func (client *Client) DescribeSurveyJobCountWithOptions(request *DescribeSurveyJ
 		query["regionId"] = request.RegionId
 	}
 
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ChannelList)) {
+		body["channelList"] = request.ChannelList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CloudTypeList)) {
+		body["cloudTypeList"] = request.CloudTypeList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["name"] = request.Name
+	}
+
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeSurveyJobCount"),
@@ -4002,6 +4182,10 @@ func (client *Client) ListMigrationJobsWithOptions(request *ListMigrationJobsReq
 		body["type"] = request.Type
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.TypeList)) {
+		body["typeList"] = request.TypeList
+	}
+
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
@@ -4018,72 +4202,6 @@ func (client *Client) ListMigrationJobsWithOptions(request *ListMigrationJobsReq
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListMigrationJobsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ListRegions(request *ListRegionsRequest) (_result *ListRegionsResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ListRegionsResponse{}
-	_body, _err := client.ListRegionsWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) ListRegionsWithOptions(request *ListRegionsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListRegionsResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.Ak)) {
-		query["ak"] = request.Ak
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.CloudType)) {
-		query["cloudType"] = request.CloudType
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Region)) {
-		query["region"] = request.Region
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
-		query["regionId"] = request.RegionId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Sk)) {
-		query["sk"] = request.Sk
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.TenantId)) {
-		query["tenantId"] = request.TenantId
-	}
-
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-		Query:   openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("ListRegions"),
-		Version:     tea.String("2022-03-31"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/okss-services/winback/query-region"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &ListRegionsResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -4179,24 +4297,16 @@ func (client *Client) ListSurveyJobsWithOptions(request *ListSurveyJobsRequest, 
 	}
 
 	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.Channel)) {
-		body["channel"] = request.Channel
+	if !tea.BoolValue(util.IsUnset(request.ChannelList)) {
+		body["channelList"] = request.ChannelList
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.CloudType)) {
-		body["cloudType"] = request.CloudType
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.FileName)) {
-		body["fileName"] = request.FileName
+	if !tea.BoolValue(util.IsUnset(request.CloudTypeList)) {
+		body["cloudTypeList"] = request.CloudTypeList
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Name)) {
 		body["name"] = request.Name
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ObjectName)) {
-		body["objectName"] = request.ObjectName
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -4243,8 +4353,8 @@ func (client *Client) ListSurveyResourceByMigrationGroupsWithOptions(tmpReq *Lis
 	}
 	request := &ListSurveyResourceByMigrationGroupsShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.Body))) {
-		request.BodyShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.Body), tea.String("body"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.Body)) {
+		request.BodyShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Body, tea.String("body"), tea.String("json"))
 	}
 
 	query := map[string]interface{}{}
@@ -4576,6 +4686,10 @@ func (client *Client) SyncMigrationJobWithOptions(request *SyncMigrationJobReque
 		query["jobType"] = request.JobType
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.OperationType)) {
+		query["operationType"] = request.OperationType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["regionId"] = request.RegionId
 	}
@@ -4600,6 +4714,65 @@ func (client *Client) SyncMigrationJobWithOptions(request *SyncMigrationJobReque
 		BodyType:    tea.String("json"),
 	}
 	_result = &SyncMigrationJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdatePushApp(request *UpdatePushAppRequest) (_result *UpdatePushAppResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &UpdatePushAppHeaders{}
+	_result = &UpdatePushAppResponse{}
+	_body, _err := client.UpdatePushAppWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdatePushAppWithOptions(request *UpdatePushAppRequest, headers *UpdatePushAppHeaders, runtime *util.RuntimeOptions) (_result *UpdatePushAppResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		body["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DownloadLink)) {
+		body["DownloadLink"] = request.DownloadLink
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.TenantProxyUid)) {
+		realHeaders["tenant-proxy-uid"] = util.ToJSONString(headers.TenantProxyUid)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdatePushApp"),
+		Version:     tea.String("2022-03-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/abm/app/manager/api/v1/push"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdatePushAppResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
