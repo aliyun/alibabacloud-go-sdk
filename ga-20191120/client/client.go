@@ -9585,6 +9585,7 @@ func (s *GetBasicAccelerateIpEndpointRelationRequest) SetRegionId(v string) *Get
 
 type GetBasicAccelerateIpEndpointRelationResponseBody struct {
 	AccelerateIpId         *string `json:"AccelerateIpId,omitempty" xml:"AccelerateIpId,omitempty"`
+	AcceleratorId          *string `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
 	EndpointAddress        *string `json:"EndpointAddress,omitempty" xml:"EndpointAddress,omitempty"`
 	EndpointId             *string `json:"EndpointId,omitempty" xml:"EndpointId,omitempty"`
 	EndpointName           *string `json:"EndpointName,omitempty" xml:"EndpointName,omitempty"`
@@ -9607,6 +9608,11 @@ func (s GetBasicAccelerateIpEndpointRelationResponseBody) GoString() string {
 
 func (s *GetBasicAccelerateIpEndpointRelationResponseBody) SetAccelerateIpId(v string) *GetBasicAccelerateIpEndpointRelationResponseBody {
 	s.AccelerateIpId = &v
+	return s
+}
+
+func (s *GetBasicAccelerateIpEndpointRelationResponseBody) SetAcceleratorId(v string) *GetBasicAccelerateIpEndpointRelationResponseBody {
+	s.AcceleratorId = &v
 	return s
 }
 
@@ -12603,6 +12609,7 @@ func (s *ListBasicAccelerateIpEndpointRelationsResponseBody) SetTotalCount(v str
 
 type ListBasicAccelerateIpEndpointRelationsResponseBodyAccelerateIpEndpointRelations struct {
 	AccelerateIpId         *string `json:"AccelerateIpId,omitempty" xml:"AccelerateIpId,omitempty"`
+	AcceleratorId          *string `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
 	EndpointAddress        *string `json:"EndpointAddress,omitempty" xml:"EndpointAddress,omitempty"`
 	EndpointId             *string `json:"EndpointId,omitempty" xml:"EndpointId,omitempty"`
 	EndpointName           *string `json:"EndpointName,omitempty" xml:"EndpointName,omitempty"`
@@ -12624,6 +12631,11 @@ func (s ListBasicAccelerateIpEndpointRelationsResponseBodyAccelerateIpEndpointRe
 
 func (s *ListBasicAccelerateIpEndpointRelationsResponseBodyAccelerateIpEndpointRelations) SetAccelerateIpId(v string) *ListBasicAccelerateIpEndpointRelationsResponseBodyAccelerateIpEndpointRelations {
 	s.AccelerateIpId = &v
+	return s
+}
+
+func (s *ListBasicAccelerateIpEndpointRelationsResponseBodyAccelerateIpEndpointRelations) SetAcceleratorId(v string) *ListBasicAccelerateIpEndpointRelationsResponseBodyAccelerateIpEndpointRelations {
+	s.AcceleratorId = &v
 	return s
 }
 
@@ -12796,12 +12808,11 @@ func (s *ListBasicAccelerateIpsResponseBody) SetTotalCount(v int32) *ListBasicAc
 }
 
 type ListBasicAccelerateIpsResponseBodyAccelerateIps struct {
-	AccelerateIpAddress *string                                                  `json:"AccelerateIpAddress,omitempty" xml:"AccelerateIpAddress,omitempty"`
-	AccelerateIpId      *string                                                  `json:"AccelerateIpId,omitempty" xml:"AccelerateIpId,omitempty"`
-	AcceleratorId       *string                                                  `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
-	Endpoint            *ListBasicAccelerateIpsResponseBodyAccelerateIpsEndpoint `json:"Endpoint,omitempty" xml:"Endpoint,omitempty" type:"Struct"`
-	IpSetId             *string                                                  `json:"IpSetId,omitempty" xml:"IpSetId,omitempty"`
-	State               *string                                                  `json:"State,omitempty" xml:"State,omitempty"`
+	AccelerateIpAddress *string `json:"AccelerateIpAddress,omitempty" xml:"AccelerateIpAddress,omitempty"`
+	AccelerateIpId      *string `json:"AccelerateIpId,omitempty" xml:"AccelerateIpId,omitempty"`
+	AcceleratorId       *string `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
+	IpSetId             *string `json:"IpSetId,omitempty" xml:"IpSetId,omitempty"`
+	State               *string `json:"State,omitempty" xml:"State,omitempty"`
 }
 
 func (s ListBasicAccelerateIpsResponseBodyAccelerateIps) String() string {
@@ -12827,82 +12838,12 @@ func (s *ListBasicAccelerateIpsResponseBodyAccelerateIps) SetAcceleratorId(v str
 	return s
 }
 
-func (s *ListBasicAccelerateIpsResponseBodyAccelerateIps) SetEndpoint(v *ListBasicAccelerateIpsResponseBodyAccelerateIpsEndpoint) *ListBasicAccelerateIpsResponseBodyAccelerateIps {
-	s.Endpoint = v
-	return s
-}
-
 func (s *ListBasicAccelerateIpsResponseBodyAccelerateIps) SetIpSetId(v string) *ListBasicAccelerateIpsResponseBodyAccelerateIps {
 	s.IpSetId = &v
 	return s
 }
 
 func (s *ListBasicAccelerateIpsResponseBodyAccelerateIps) SetState(v string) *ListBasicAccelerateIpsResponseBodyAccelerateIps {
-	s.State = &v
-	return s
-}
-
-type ListBasicAccelerateIpsResponseBodyAccelerateIpsEndpoint struct {
-	EndPointId             *string `json:"EndPointId,omitempty" xml:"EndPointId,omitempty"`
-	EndpointAddress        *string `json:"EndpointAddress,omitempty" xml:"EndpointAddress,omitempty"`
-	EndpointGroupId        *string `json:"EndpointGroupId,omitempty" xml:"EndpointGroupId,omitempty"`
-	EndpointSubAddress     *string `json:"EndpointSubAddress,omitempty" xml:"EndpointSubAddress,omitempty"`
-	EndpointSubAddressType *string `json:"EndpointSubAddressType,omitempty" xml:"EndpointSubAddressType,omitempty"`
-	EndpointType           *string `json:"EndpointType,omitempty" xml:"EndpointType,omitempty"`
-	EndpointZoneId         *string `json:"EndpointZoneId,omitempty" xml:"EndpointZoneId,omitempty"`
-	Name                   *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	State                  *string `json:"State,omitempty" xml:"State,omitempty"`
-}
-
-func (s ListBasicAccelerateIpsResponseBodyAccelerateIpsEndpoint) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListBasicAccelerateIpsResponseBodyAccelerateIpsEndpoint) GoString() string {
-	return s.String()
-}
-
-func (s *ListBasicAccelerateIpsResponseBodyAccelerateIpsEndpoint) SetEndPointId(v string) *ListBasicAccelerateIpsResponseBodyAccelerateIpsEndpoint {
-	s.EndPointId = &v
-	return s
-}
-
-func (s *ListBasicAccelerateIpsResponseBodyAccelerateIpsEndpoint) SetEndpointAddress(v string) *ListBasicAccelerateIpsResponseBodyAccelerateIpsEndpoint {
-	s.EndpointAddress = &v
-	return s
-}
-
-func (s *ListBasicAccelerateIpsResponseBodyAccelerateIpsEndpoint) SetEndpointGroupId(v string) *ListBasicAccelerateIpsResponseBodyAccelerateIpsEndpoint {
-	s.EndpointGroupId = &v
-	return s
-}
-
-func (s *ListBasicAccelerateIpsResponseBodyAccelerateIpsEndpoint) SetEndpointSubAddress(v string) *ListBasicAccelerateIpsResponseBodyAccelerateIpsEndpoint {
-	s.EndpointSubAddress = &v
-	return s
-}
-
-func (s *ListBasicAccelerateIpsResponseBodyAccelerateIpsEndpoint) SetEndpointSubAddressType(v string) *ListBasicAccelerateIpsResponseBodyAccelerateIpsEndpoint {
-	s.EndpointSubAddressType = &v
-	return s
-}
-
-func (s *ListBasicAccelerateIpsResponseBodyAccelerateIpsEndpoint) SetEndpointType(v string) *ListBasicAccelerateIpsResponseBodyAccelerateIpsEndpoint {
-	s.EndpointType = &v
-	return s
-}
-
-func (s *ListBasicAccelerateIpsResponseBodyAccelerateIpsEndpoint) SetEndpointZoneId(v string) *ListBasicAccelerateIpsResponseBodyAccelerateIpsEndpoint {
-	s.EndpointZoneId = &v
-	return s
-}
-
-func (s *ListBasicAccelerateIpsResponseBodyAccelerateIpsEndpoint) SetName(v string) *ListBasicAccelerateIpsResponseBodyAccelerateIpsEndpoint {
-	s.Name = &v
-	return s
-}
-
-func (s *ListBasicAccelerateIpsResponseBodyAccelerateIpsEndpoint) SetState(v string) *ListBasicAccelerateIpsResponseBodyAccelerateIpsEndpoint {
 	s.State = &v
 	return s
 }
@@ -16301,6 +16242,192 @@ func (s *ListSystemSecurityPoliciesResponse) SetBody(v *ListSystemSecurityPolici
 	return s
 }
 
+type ListTagResourcesRequest struct {
+	ClientToken  *string                       `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	NextToken    *string                       `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RegionId     *string                       `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceId   []*string                     `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	ResourceType *string                       `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	Tag          []*ListTagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+}
+
+func (s ListTagResourcesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTagResourcesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListTagResourcesRequest) SetClientToken(v string) *ListTagResourcesRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *ListTagResourcesRequest) SetNextToken(v string) *ListTagResourcesRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListTagResourcesRequest) SetRegionId(v string) *ListTagResourcesRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ListTagResourcesRequest) SetResourceId(v []*string) *ListTagResourcesRequest {
+	s.ResourceId = v
+	return s
+}
+
+func (s *ListTagResourcesRequest) SetResourceType(v string) *ListTagResourcesRequest {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *ListTagResourcesRequest) SetTag(v []*ListTagResourcesRequestTag) *ListTagResourcesRequest {
+	s.Tag = v
+	return s
+}
+
+type ListTagResourcesRequestTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListTagResourcesRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTagResourcesRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *ListTagResourcesRequestTag) SetKey(v string) *ListTagResourcesRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *ListTagResourcesRequestTag) SetValue(v string) *ListTagResourcesRequestTag {
+	s.Value = &v
+	return s
+}
+
+type ListTagResourcesResponseBody struct {
+	NextToken    *string                                   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RequestId    *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TagResources *ListTagResourcesResponseBodyTagResources `json:"TagResources,omitempty" xml:"TagResources,omitempty" type:"Struct"`
+	TotalCount   *int32                                    `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListTagResourcesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTagResourcesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListTagResourcesResponseBody) SetNextToken(v string) *ListTagResourcesResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListTagResourcesResponseBody) SetRequestId(v string) *ListTagResourcesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListTagResourcesResponseBody) SetTagResources(v *ListTagResourcesResponseBodyTagResources) *ListTagResourcesResponseBody {
+	s.TagResources = v
+	return s
+}
+
+func (s *ListTagResourcesResponseBody) SetTotalCount(v int32) *ListTagResourcesResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListTagResourcesResponseBodyTagResources struct {
+	TagResource []*ListTagResourcesResponseBodyTagResourcesTagResource `json:"TagResource,omitempty" xml:"TagResource,omitempty" type:"Repeated"`
+}
+
+func (s ListTagResourcesResponseBodyTagResources) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTagResourcesResponseBodyTagResources) GoString() string {
+	return s.String()
+}
+
+func (s *ListTagResourcesResponseBodyTagResources) SetTagResource(v []*ListTagResourcesResponseBodyTagResourcesTagResource) *ListTagResourcesResponseBodyTagResources {
+	s.TagResource = v
+	return s
+}
+
+type ListTagResourcesResponseBodyTagResourcesTagResource struct {
+	ResourceId   *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	TagKey       *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	TagValue     *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+}
+
+func (s ListTagResourcesResponseBodyTagResourcesTagResource) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTagResourcesResponseBodyTagResourcesTagResource) GoString() string {
+	return s.String()
+}
+
+func (s *ListTagResourcesResponseBodyTagResourcesTagResource) SetResourceId(v string) *ListTagResourcesResponseBodyTagResourcesTagResource {
+	s.ResourceId = &v
+	return s
+}
+
+func (s *ListTagResourcesResponseBodyTagResourcesTagResource) SetResourceType(v string) *ListTagResourcesResponseBodyTagResourcesTagResource {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *ListTagResourcesResponseBodyTagResourcesTagResource) SetTagKey(v string) *ListTagResourcesResponseBodyTagResourcesTagResource {
+	s.TagKey = &v
+	return s
+}
+
+func (s *ListTagResourcesResponseBodyTagResourcesTagResource) SetTagValue(v string) *ListTagResourcesResponseBodyTagResourcesTagResource {
+	s.TagValue = &v
+	return s
+}
+
+type ListTagResourcesResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListTagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListTagResourcesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTagResourcesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListTagResourcesResponse) SetHeaders(v map[string]*string) *ListTagResourcesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListTagResourcesResponse) SetStatusCode(v int32) *ListTagResourcesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListTagResourcesResponse) SetBody(v *ListTagResourcesResponseBody) *ListTagResourcesResponse {
+	s.Body = v
+	return s
+}
+
 type RemoveEntriesFromAclRequest struct {
 	AclEntries  []*RemoveEntriesFromAclRequestAclEntries `json:"AclEntries,omitempty" xml:"AclEntries,omitempty" type:"Repeated"`
 	AclId       *string                                  `json:"AclId,omitempty" xml:"AclId,omitempty"`
@@ -16488,6 +16615,209 @@ func (s *ReplaceBandwidthPackageResponse) SetStatusCode(v int32) *ReplaceBandwid
 }
 
 func (s *ReplaceBandwidthPackageResponse) SetBody(v *ReplaceBandwidthPackageResponseBody) *ReplaceBandwidthPackageResponse {
+	s.Body = v
+	return s
+}
+
+type TagResourcesRequest struct {
+	ClientToken  *string                   `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	RegionId     *string                   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceId   []*string                 `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	ResourceType *string                   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	Tag          []*TagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+}
+
+func (s TagResourcesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TagResourcesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *TagResourcesRequest) SetClientToken(v string) *TagResourcesRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *TagResourcesRequest) SetRegionId(v string) *TagResourcesRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *TagResourcesRequest) SetResourceId(v []*string) *TagResourcesRequest {
+	s.ResourceId = v
+	return s
+}
+
+func (s *TagResourcesRequest) SetResourceType(v string) *TagResourcesRequest {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *TagResourcesRequest) SetTag(v []*TagResourcesRequestTag) *TagResourcesRequest {
+	s.Tag = v
+	return s
+}
+
+type TagResourcesRequestTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s TagResourcesRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TagResourcesRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *TagResourcesRequestTag) SetKey(v string) *TagResourcesRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *TagResourcesRequestTag) SetValue(v string) *TagResourcesRequestTag {
+	s.Value = &v
+	return s
+}
+
+type TagResourcesResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s TagResourcesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TagResourcesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *TagResourcesResponseBody) SetRequestId(v string) *TagResourcesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type TagResourcesResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *TagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s TagResourcesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TagResourcesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *TagResourcesResponse) SetHeaders(v map[string]*string) *TagResourcesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *TagResourcesResponse) SetStatusCode(v int32) *TagResourcesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *TagResourcesResponse) SetBody(v *TagResourcesResponseBody) *TagResourcesResponse {
+	s.Body = v
+	return s
+}
+
+type UntagResourcesRequest struct {
+	All          *bool     `json:"All,omitempty" xml:"All,omitempty"`
+	ClientToken  *string   `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	RegionId     *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceId   []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	ResourceType *string   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	TagKey       []*string `json:"TagKey,omitempty" xml:"TagKey,omitempty" type:"Repeated"`
+}
+
+func (s UntagResourcesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UntagResourcesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UntagResourcesRequest) SetAll(v bool) *UntagResourcesRequest {
+	s.All = &v
+	return s
+}
+
+func (s *UntagResourcesRequest) SetClientToken(v string) *UntagResourcesRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *UntagResourcesRequest) SetRegionId(v string) *UntagResourcesRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *UntagResourcesRequest) SetResourceId(v []*string) *UntagResourcesRequest {
+	s.ResourceId = v
+	return s
+}
+
+func (s *UntagResourcesRequest) SetResourceType(v string) *UntagResourcesRequest {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *UntagResourcesRequest) SetTagKey(v []*string) *UntagResourcesRequest {
+	s.TagKey = v
+	return s
+}
+
+type UntagResourcesResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UntagResourcesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UntagResourcesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UntagResourcesResponseBody) SetRequestId(v string) *UntagResourcesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UntagResourcesResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UntagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UntagResourcesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UntagResourcesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UntagResourcesResponse) SetHeaders(v map[string]*string) *UntagResourcesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UntagResourcesResponse) SetStatusCode(v int32) *UntagResourcesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UntagResourcesResponse) SetBody(v *UntagResourcesResponseBody) *UntagResourcesResponse {
 	s.Body = v
 	return s
 }
@@ -25982,6 +26312,70 @@ func (client *Client) ListSystemSecurityPolicies(request *ListSystemSecurityPoli
 	return _result, _err
 }
 
+func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesRequest, runtime *util.RuntimeOptions) (_result *ListTagResourcesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
+		query["ResourceId"] = request.ResourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListTagResources"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListTagResourcesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_result *ListTagResourcesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListTagResourcesResponse{}
+	_body, _err := client.ListTagResourcesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) RemoveEntriesFromAclWithOptions(request *RemoveEntriesFromAclRequest, runtime *util.RuntimeOptions) (_result *RemoveEntriesFromAclResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26091,6 +26485,130 @@ func (client *Client) ReplaceBandwidthPackage(request *ReplaceBandwidthPackageRe
 	runtime := &util.RuntimeOptions{}
 	_result = &ReplaceBandwidthPackageResponse{}
 	_body, _err := client.ReplaceBandwidthPackageWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runtime *util.RuntimeOptions) (_result *TagResourcesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
+		query["ResourceId"] = request.ResourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("TagResources"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &TagResourcesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagResourcesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &TagResourcesResponse{}
+	_body, _err := client.TagResourcesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, runtime *util.RuntimeOptions) (_result *UntagResourcesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.All)) {
+		query["All"] = request.All
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
+		query["ResourceId"] = request.ResourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagKey)) {
+		query["TagKey"] = request.TagKey
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UntagResources"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UntagResourcesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *UntagResourcesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UntagResourcesResponse{}
+	_body, _err := client.UntagResourcesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
