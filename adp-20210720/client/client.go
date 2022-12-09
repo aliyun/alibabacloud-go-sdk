@@ -5,10 +5,10 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/client"
+	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
 	openapiutil "github.com/alibabacloud-go/openapi-util/service"
-	util "github.com/alibabacloud-go/tea-utils/service"
+	util "github.com/alibabacloud-go/tea-utils/v2/service"
 	"github.com/alibabacloud-go/tea/tea"
 )
 
@@ -411,6 +411,7 @@ type FoundationVersion struct {
 	PackageTools         []*FoundationVersionPackageTools   `json:"packageTools,omitempty" xml:"packageTools,omitempty" type:"Repeated"`
 	Platforms            []*Platform                        `json:"platforms,omitempty" xml:"platforms,omitempty" type:"Repeated"`
 	Status               *string                            `json:"status,omitempty" xml:"status,omitempty"`
+	Tools                *FoundationVersionTools            `json:"tools,omitempty" xml:"tools,omitempty" type:"Struct"`
 	Type                 *string                            `json:"type,omitempty" xml:"type,omitempty"`
 	Uid                  *string                            `json:"uid,omitempty" xml:"uid,omitempty"`
 	Version              *string                            `json:"version,omitempty" xml:"version,omitempty"`
@@ -481,6 +482,11 @@ func (s *FoundationVersion) SetPlatforms(v []*Platform) *FoundationVersion {
 
 func (s *FoundationVersion) SetStatus(v string) *FoundationVersion {
 	s.Status = &v
+	return s
+}
+
+func (s *FoundationVersion) SetTools(v *FoundationVersionTools) *FoundationVersion {
+	s.Tools = v
 	return s
 }
 
@@ -769,6 +775,46 @@ func (s *FoundationVersionPackageTools) SetName(v string) *FoundationVersionPack
 
 func (s *FoundationVersionPackageTools) SetVersion(v string) *FoundationVersionPackageTools {
 	s.Version = &v
+	return s
+}
+
+type FoundationVersionTools struct {
+	SiteSurvey *FoundationVersionToolsSiteSurvey `json:"siteSurvey,omitempty" xml:"siteSurvey,omitempty" type:"Struct"`
+}
+
+func (s FoundationVersionTools) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FoundationVersionTools) GoString() string {
+	return s.String()
+}
+
+func (s *FoundationVersionTools) SetSiteSurvey(v *FoundationVersionToolsSiteSurvey) *FoundationVersionTools {
+	s.SiteSurvey = v
+	return s
+}
+
+type FoundationVersionToolsSiteSurvey struct {
+	ClusterCheckerURL *string `json:"clusterCheckerURL,omitempty" xml:"clusterCheckerURL,omitempty"`
+	ClusterInfoBrief  *string `json:"clusterInfoBrief,omitempty" xml:"clusterInfoBrief,omitempty"`
+}
+
+func (s FoundationVersionToolsSiteSurvey) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FoundationVersionToolsSiteSurvey) GoString() string {
+	return s.String()
+}
+
+func (s *FoundationVersionToolsSiteSurvey) SetClusterCheckerURL(v string) *FoundationVersionToolsSiteSurvey {
+	s.ClusterCheckerURL = &v
+	return s
+}
+
+func (s *FoundationVersionToolsSiteSurvey) SetClusterInfoBrief(v string) *FoundationVersionToolsSiteSurvey {
+	s.ClusterInfoBrief = &v
 	return s
 }
 
@@ -1347,6 +1393,58 @@ func (s *InstanceInfoTaints) SetKey(v string) *InstanceInfoTaints {
 
 func (s *InstanceInfoTaints) SetValue(v string) *InstanceInfoTaints {
 	s.Value = &v
+	return s
+}
+
+type LabelSelector struct {
+	MatchExpressions []*LabelSelectorMatchExpressions `json:"matchExpressions,omitempty" xml:"matchExpressions,omitempty" type:"Repeated"`
+	MatchLabels      map[string]*string               `json:"matchLabels,omitempty" xml:"matchLabels,omitempty"`
+}
+
+func (s LabelSelector) String() string {
+	return tea.Prettify(s)
+}
+
+func (s LabelSelector) GoString() string {
+	return s.String()
+}
+
+func (s *LabelSelector) SetMatchExpressions(v []*LabelSelectorMatchExpressions) *LabelSelector {
+	s.MatchExpressions = v
+	return s
+}
+
+func (s *LabelSelector) SetMatchLabels(v map[string]*string) *LabelSelector {
+	s.MatchLabels = v
+	return s
+}
+
+type LabelSelectorMatchExpressions struct {
+	Key      *string   `json:"key,omitempty" xml:"key,omitempty"`
+	Operator *string   `json:"operator,omitempty" xml:"operator,omitempty"`
+	Values   []*string `json:"values,omitempty" xml:"values,omitempty" type:"Repeated"`
+}
+
+func (s LabelSelectorMatchExpressions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s LabelSelectorMatchExpressions) GoString() string {
+	return s.String()
+}
+
+func (s *LabelSelectorMatchExpressions) SetKey(v string) *LabelSelectorMatchExpressions {
+	s.Key = &v
+	return s
+}
+
+func (s *LabelSelectorMatchExpressions) SetOperator(v string) *LabelSelectorMatchExpressions {
+	s.Operator = &v
+	return s
+}
+
+func (s *LabelSelectorMatchExpressions) SetValues(v []*string) *LabelSelectorMatchExpressions {
+	s.Values = v
 	return s
 }
 
@@ -2586,6 +2684,430 @@ func (s *BatchAddProductVersionConfigResponse) SetBody(v *BatchAddProductVersion
 	return s
 }
 
+type CreateDeliverableRequest struct {
+	Foundation *CreateDeliverableRequestFoundation `json:"foundation,omitempty" xml:"foundation,omitempty" type:"Struct"`
+	Products   []*CreateDeliverableRequestProducts `json:"products,omitempty" xml:"products,omitempty" type:"Repeated"`
+}
+
+func (s CreateDeliverableRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDeliverableRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDeliverableRequest) SetFoundation(v *CreateDeliverableRequestFoundation) *CreateDeliverableRequest {
+	s.Foundation = v
+	return s
+}
+
+func (s *CreateDeliverableRequest) SetProducts(v []*CreateDeliverableRequestProducts) *CreateDeliverableRequest {
+	s.Products = v
+	return s
+}
+
+type CreateDeliverableRequestFoundation struct {
+	ClusterConfig          *string `json:"clusterConfig,omitempty" xml:"clusterConfig,omitempty"`
+	FoundationReferenceUID *string `json:"foundationReferenceUID,omitempty" xml:"foundationReferenceUID,omitempty"`
+	FoundationVersion      *string `json:"foundationVersion,omitempty" xml:"foundationVersion,omitempty"`
+	FoundationVersionUID   *string `json:"foundationVersionUID,omitempty" xml:"foundationVersionUID,omitempty"`
+	Reusable               *bool   `json:"reusable,omitempty" xml:"reusable,omitempty"`
+}
+
+func (s CreateDeliverableRequestFoundation) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDeliverableRequestFoundation) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDeliverableRequestFoundation) SetClusterConfig(v string) *CreateDeliverableRequestFoundation {
+	s.ClusterConfig = &v
+	return s
+}
+
+func (s *CreateDeliverableRequestFoundation) SetFoundationReferenceUID(v string) *CreateDeliverableRequestFoundation {
+	s.FoundationReferenceUID = &v
+	return s
+}
+
+func (s *CreateDeliverableRequestFoundation) SetFoundationVersion(v string) *CreateDeliverableRequestFoundation {
+	s.FoundationVersion = &v
+	return s
+}
+
+func (s *CreateDeliverableRequestFoundation) SetFoundationVersionUID(v string) *CreateDeliverableRequestFoundation {
+	s.FoundationVersionUID = &v
+	return s
+}
+
+func (s *CreateDeliverableRequestFoundation) SetReusable(v bool) *CreateDeliverableRequestFoundation {
+	s.Reusable = &v
+	return s
+}
+
+type CreateDeliverableRequestProducts struct {
+	Namespace              *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
+	ProductName            *string `json:"productName,omitempty" xml:"productName,omitempty"`
+	ProductType            *string `json:"productType,omitempty" xml:"productType,omitempty"`
+	ProductUID             *string `json:"productUID,omitempty" xml:"productUID,omitempty"`
+	ProductVersion         *string `json:"productVersion,omitempty" xml:"productVersion,omitempty"`
+	ProductVersionSpecName *string `json:"productVersionSpecName,omitempty" xml:"productVersionSpecName,omitempty"`
+	ProductVersionSpecUID  *string `json:"productVersionSpecUID,omitempty" xml:"productVersionSpecUID,omitempty"`
+	ProductVersionUID      *string `json:"productVersionUID,omitempty" xml:"productVersionUID,omitempty"`
+}
+
+func (s CreateDeliverableRequestProducts) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDeliverableRequestProducts) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDeliverableRequestProducts) SetNamespace(v string) *CreateDeliverableRequestProducts {
+	s.Namespace = &v
+	return s
+}
+
+func (s *CreateDeliverableRequestProducts) SetProductName(v string) *CreateDeliverableRequestProducts {
+	s.ProductName = &v
+	return s
+}
+
+func (s *CreateDeliverableRequestProducts) SetProductType(v string) *CreateDeliverableRequestProducts {
+	s.ProductType = &v
+	return s
+}
+
+func (s *CreateDeliverableRequestProducts) SetProductUID(v string) *CreateDeliverableRequestProducts {
+	s.ProductUID = &v
+	return s
+}
+
+func (s *CreateDeliverableRequestProducts) SetProductVersion(v string) *CreateDeliverableRequestProducts {
+	s.ProductVersion = &v
+	return s
+}
+
+func (s *CreateDeliverableRequestProducts) SetProductVersionSpecName(v string) *CreateDeliverableRequestProducts {
+	s.ProductVersionSpecName = &v
+	return s
+}
+
+func (s *CreateDeliverableRequestProducts) SetProductVersionSpecUID(v string) *CreateDeliverableRequestProducts {
+	s.ProductVersionSpecUID = &v
+	return s
+}
+
+func (s *CreateDeliverableRequestProducts) SetProductVersionUID(v string) *CreateDeliverableRequestProducts {
+	s.ProductVersionUID = &v
+	return s
+}
+
+type CreateDeliverableResponseBody struct {
+	Code *string                            `json:"code,omitempty" xml:"code,omitempty"`
+	Data *CreateDeliverableResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	Msg  *string                            `json:"msg,omitempty" xml:"msg,omitempty"`
+}
+
+func (s CreateDeliverableResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDeliverableResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDeliverableResponseBody) SetCode(v string) *CreateDeliverableResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CreateDeliverableResponseBody) SetData(v *CreateDeliverableResponseBodyData) *CreateDeliverableResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *CreateDeliverableResponseBody) SetMsg(v string) *CreateDeliverableResponseBody {
+	s.Msg = &v
+	return s
+}
+
+type CreateDeliverableResponseBodyData struct {
+	Uid *string `json:"uid,omitempty" xml:"uid,omitempty"`
+}
+
+func (s CreateDeliverableResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDeliverableResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDeliverableResponseBodyData) SetUid(v string) *CreateDeliverableResponseBodyData {
+	s.Uid = &v
+	return s
+}
+
+type CreateDeliverableResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateDeliverableResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateDeliverableResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDeliverableResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDeliverableResponse) SetHeaders(v map[string]*string) *CreateDeliverableResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateDeliverableResponse) SetStatusCode(v int32) *CreateDeliverableResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateDeliverableResponse) SetBody(v *CreateDeliverableResponseBody) *CreateDeliverableResponse {
+	s.Body = v
+	return s
+}
+
+type CreateDeliveryInstanceRequest struct {
+	ClusterUID           *string `json:"clusterUID,omitempty" xml:"clusterUID,omitempty"`
+	DeliverableConfigUID *string `json:"deliverableConfigUID,omitempty" xml:"deliverableConfigUID,omitempty"`
+	DeliverableUID       *string `json:"deliverableUID,omitempty" xml:"deliverableUID,omitempty"`
+	EnvUID               *string `json:"envUID,omitempty" xml:"envUID,omitempty"`
+}
+
+func (s CreateDeliveryInstanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDeliveryInstanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDeliveryInstanceRequest) SetClusterUID(v string) *CreateDeliveryInstanceRequest {
+	s.ClusterUID = &v
+	return s
+}
+
+func (s *CreateDeliveryInstanceRequest) SetDeliverableConfigUID(v string) *CreateDeliveryInstanceRequest {
+	s.DeliverableConfigUID = &v
+	return s
+}
+
+func (s *CreateDeliveryInstanceRequest) SetDeliverableUID(v string) *CreateDeliveryInstanceRequest {
+	s.DeliverableUID = &v
+	return s
+}
+
+func (s *CreateDeliveryInstanceRequest) SetEnvUID(v string) *CreateDeliveryInstanceRequest {
+	s.EnvUID = &v
+	return s
+}
+
+type CreateDeliveryInstanceResponseBody struct {
+	Code *string                                 `json:"code,omitempty" xml:"code,omitempty"`
+	Data *CreateDeliveryInstanceResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	Msg  *string                                 `json:"msg,omitempty" xml:"msg,omitempty"`
+}
+
+func (s CreateDeliveryInstanceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDeliveryInstanceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDeliveryInstanceResponseBody) SetCode(v string) *CreateDeliveryInstanceResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CreateDeliveryInstanceResponseBody) SetData(v *CreateDeliveryInstanceResponseBodyData) *CreateDeliveryInstanceResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *CreateDeliveryInstanceResponseBody) SetMsg(v string) *CreateDeliveryInstanceResponseBody {
+	s.Msg = &v
+	return s
+}
+
+type CreateDeliveryInstanceResponseBodyData struct {
+	Uid *string `json:"uid,omitempty" xml:"uid,omitempty"`
+}
+
+func (s CreateDeliveryInstanceResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDeliveryInstanceResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDeliveryInstanceResponseBodyData) SetUid(v string) *CreateDeliveryInstanceResponseBodyData {
+	s.Uid = &v
+	return s
+}
+
+type CreateDeliveryInstanceResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateDeliveryInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateDeliveryInstanceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDeliveryInstanceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDeliveryInstanceResponse) SetHeaders(v map[string]*string) *CreateDeliveryInstanceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateDeliveryInstanceResponse) SetStatusCode(v int32) *CreateDeliveryInstanceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateDeliveryInstanceResponse) SetBody(v *CreateDeliveryInstanceResponseBody) *CreateDeliveryInstanceResponse {
+	s.Body = v
+	return s
+}
+
+type CreateDeliveryPackageRequest struct {
+	DeliverableUID       *string `json:"deliverableUID,omitempty" xml:"deliverableUID,omitempty"`
+	OriginDeliverableUID *string `json:"originDeliverableUID,omitempty" xml:"originDeliverableUID,omitempty"`
+	PackageContentType   *string `json:"packageContentType,omitempty" xml:"packageContentType,omitempty"`
+	PackageType          *string `json:"packageType,omitempty" xml:"packageType,omitempty"`
+	Platform             *string `json:"platform,omitempty" xml:"platform,omitempty"`
+}
+
+func (s CreateDeliveryPackageRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDeliveryPackageRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDeliveryPackageRequest) SetDeliverableUID(v string) *CreateDeliveryPackageRequest {
+	s.DeliverableUID = &v
+	return s
+}
+
+func (s *CreateDeliveryPackageRequest) SetOriginDeliverableUID(v string) *CreateDeliveryPackageRequest {
+	s.OriginDeliverableUID = &v
+	return s
+}
+
+func (s *CreateDeliveryPackageRequest) SetPackageContentType(v string) *CreateDeliveryPackageRequest {
+	s.PackageContentType = &v
+	return s
+}
+
+func (s *CreateDeliveryPackageRequest) SetPackageType(v string) *CreateDeliveryPackageRequest {
+	s.PackageType = &v
+	return s
+}
+
+func (s *CreateDeliveryPackageRequest) SetPlatform(v string) *CreateDeliveryPackageRequest {
+	s.Platform = &v
+	return s
+}
+
+type CreateDeliveryPackageResponseBody struct {
+	Code *string                                `json:"code,omitempty" xml:"code,omitempty"`
+	Data *CreateDeliveryPackageResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	Msg  *string                                `json:"msg,omitempty" xml:"msg,omitempty"`
+}
+
+func (s CreateDeliveryPackageResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDeliveryPackageResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDeliveryPackageResponseBody) SetCode(v string) *CreateDeliveryPackageResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CreateDeliveryPackageResponseBody) SetData(v *CreateDeliveryPackageResponseBodyData) *CreateDeliveryPackageResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *CreateDeliveryPackageResponseBody) SetMsg(v string) *CreateDeliveryPackageResponseBody {
+	s.Msg = &v
+	return s
+}
+
+type CreateDeliveryPackageResponseBodyData struct {
+	Uid *string `json:"uid,omitempty" xml:"uid,omitempty"`
+}
+
+func (s CreateDeliveryPackageResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDeliveryPackageResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDeliveryPackageResponseBodyData) SetUid(v string) *CreateDeliveryPackageResponseBodyData {
+	s.Uid = &v
+	return s
+}
+
+type CreateDeliveryPackageResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateDeliveryPackageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateDeliveryPackageResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDeliveryPackageResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDeliveryPackageResponse) SetHeaders(v map[string]*string) *CreateDeliveryPackageResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateDeliveryPackageResponse) SetStatusCode(v int32) *CreateDeliveryPackageResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateDeliveryPackageResponse) SetBody(v *CreateDeliveryPackageResponseBody) *CreateDeliveryPackageResponse {
+	s.Body = v
+	return s
+}
+
 type CreateEnvironmentHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	ClientToken   *string            `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
@@ -2610,6 +3132,7 @@ func (s *CreateEnvironmentHeaders) SetClientToken(v string) *CreateEnvironmentHe
 }
 
 type CreateEnvironmentRequest struct {
+	Annotations       *string                           `json:"annotations,omitempty" xml:"annotations,omitempty"`
 	Description       *string                           `json:"description,omitempty" xml:"description,omitempty"`
 	Location          *string                           `json:"location,omitempty" xml:"location,omitempty"`
 	Name              *string                           `json:"name,omitempty" xml:"name,omitempty"`
@@ -2627,6 +3150,11 @@ func (s CreateEnvironmentRequest) String() string {
 
 func (s CreateEnvironmentRequest) GoString() string {
 	return s.String()
+}
+
+func (s *CreateEnvironmentRequest) SetAnnotations(v string) *CreateEnvironmentRequest {
+	s.Annotations = &v
+	return s
 }
 
 func (s *CreateEnvironmentRequest) SetDescription(v string) *CreateEnvironmentRequest {
@@ -2994,8 +3522,10 @@ func (s *CreateEnvironmentLicenseResponse) SetBody(v *CreateEnvironmentLicenseRe
 }
 
 type CreateFoundationReferenceRequest struct {
-	ClusterConfig        *string `json:"clusterConfig,omitempty" xml:"clusterConfig,omitempty"`
-	FoundationVersionUID *string `json:"foundationVersionUID,omitempty" xml:"foundationVersionUID,omitempty"`
+	ClusterConfig                *string                                             `json:"clusterConfig,omitempty" xml:"clusterConfig,omitempty"`
+	ComponentConfigs             []*CreateFoundationReferenceRequestComponentConfigs `json:"componentConfigs,omitempty" xml:"componentConfigs,omitempty" type:"Repeated"`
+	FoundationVersionUID         *string                                             `json:"foundationVersionUID,omitempty" xml:"foundationVersionUID,omitempty"`
+	OriginFoundationReferenceUID *string                                             `json:"originFoundationReferenceUID,omitempty" xml:"originFoundationReferenceUID,omitempty"`
 }
 
 func (s CreateFoundationReferenceRequest) String() string {
@@ -3011,8 +3541,41 @@ func (s *CreateFoundationReferenceRequest) SetClusterConfig(v string) *CreateFou
 	return s
 }
 
+func (s *CreateFoundationReferenceRequest) SetComponentConfigs(v []*CreateFoundationReferenceRequestComponentConfigs) *CreateFoundationReferenceRequest {
+	s.ComponentConfigs = v
+	return s
+}
+
 func (s *CreateFoundationReferenceRequest) SetFoundationVersionUID(v string) *CreateFoundationReferenceRequest {
 	s.FoundationVersionUID = &v
+	return s
+}
+
+func (s *CreateFoundationReferenceRequest) SetOriginFoundationReferenceUID(v string) *CreateFoundationReferenceRequest {
+	s.OriginFoundationReferenceUID = &v
+	return s
+}
+
+type CreateFoundationReferenceRequestComponentConfigs struct {
+	ComponentVersionUID *string `json:"componentVersionUID,omitempty" xml:"componentVersionUID,omitempty"`
+	OrchestrationValues *string `json:"orchestrationValues,omitempty" xml:"orchestrationValues,omitempty"`
+}
+
+func (s CreateFoundationReferenceRequestComponentConfigs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateFoundationReferenceRequestComponentConfigs) GoString() string {
+	return s.String()
+}
+
+func (s *CreateFoundationReferenceRequestComponentConfigs) SetComponentVersionUID(v string) *CreateFoundationReferenceRequestComponentConfigs {
+	s.ComponentVersionUID = &v
+	return s
+}
+
+func (s *CreateFoundationReferenceRequestComponentConfigs) SetOrchestrationValues(v string) *CreateFoundationReferenceRequestComponentConfigs {
+	s.OrchestrationValues = &v
 	return s
 }
 
@@ -4530,6 +5093,304 @@ func (s *GetComponentVersionResponse) SetBody(v *GetComponentVersionResponseBody
 	return s
 }
 
+type GetDeliverableResponseBody struct {
+	Code *string                         `json:"code,omitempty" xml:"code,omitempty"`
+	Data *GetDeliverableResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	Msg  *string                         `json:"msg,omitempty" xml:"msg,omitempty"`
+}
+
+func (s GetDeliverableResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDeliverableResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetDeliverableResponseBody) SetCode(v string) *GetDeliverableResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetDeliverableResponseBody) SetData(v *GetDeliverableResponseBodyData) *GetDeliverableResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetDeliverableResponseBody) SetMsg(v string) *GetDeliverableResponseBody {
+	s.Msg = &v
+	return s
+}
+
+type GetDeliverableResponseBodyData struct {
+	Foundation *GetDeliverableResponseBodyDataFoundation `json:"foundation,omitempty" xml:"foundation,omitempty" type:"Struct"`
+	Products   []*GetDeliverableResponseBodyDataProducts `json:"products,omitempty" xml:"products,omitempty" type:"Repeated"`
+	Uid        *string                                   `json:"uid,omitempty" xml:"uid,omitempty"`
+}
+
+func (s GetDeliverableResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDeliverableResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetDeliverableResponseBodyData) SetFoundation(v *GetDeliverableResponseBodyDataFoundation) *GetDeliverableResponseBodyData {
+	s.Foundation = v
+	return s
+}
+
+func (s *GetDeliverableResponseBodyData) SetProducts(v []*GetDeliverableResponseBodyDataProducts) *GetDeliverableResponseBodyData {
+	s.Products = v
+	return s
+}
+
+func (s *GetDeliverableResponseBodyData) SetUid(v string) *GetDeliverableResponseBodyData {
+	s.Uid = &v
+	return s
+}
+
+type GetDeliverableResponseBodyDataFoundation struct {
+	ClusterConfig          *string `json:"clusterConfig,omitempty" xml:"clusterConfig,omitempty"`
+	FoundationReferenceUID *string `json:"foundationReferenceUID,omitempty" xml:"foundationReferenceUID,omitempty"`
+	FoundationVersion      *string `json:"foundationVersion,omitempty" xml:"foundationVersion,omitempty"`
+	FoundationVersionUID   *string `json:"foundationVersionUID,omitempty" xml:"foundationVersionUID,omitempty"`
+}
+
+func (s GetDeliverableResponseBodyDataFoundation) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDeliverableResponseBodyDataFoundation) GoString() string {
+	return s.String()
+}
+
+func (s *GetDeliverableResponseBodyDataFoundation) SetClusterConfig(v string) *GetDeliverableResponseBodyDataFoundation {
+	s.ClusterConfig = &v
+	return s
+}
+
+func (s *GetDeliverableResponseBodyDataFoundation) SetFoundationReferenceUID(v string) *GetDeliverableResponseBodyDataFoundation {
+	s.FoundationReferenceUID = &v
+	return s
+}
+
+func (s *GetDeliverableResponseBodyDataFoundation) SetFoundationVersion(v string) *GetDeliverableResponseBodyDataFoundation {
+	s.FoundationVersion = &v
+	return s
+}
+
+func (s *GetDeliverableResponseBodyDataFoundation) SetFoundationVersionUID(v string) *GetDeliverableResponseBodyDataFoundation {
+	s.FoundationVersionUID = &v
+	return s
+}
+
+type GetDeliverableResponseBodyDataProducts struct {
+	ProductName            *string `json:"productName,omitempty" xml:"productName,omitempty"`
+	ProductType            *string `json:"productType,omitempty" xml:"productType,omitempty"`
+	ProductUID             *string `json:"productUID,omitempty" xml:"productUID,omitempty"`
+	ProductVersion         *string `json:"productVersion,omitempty" xml:"productVersion,omitempty"`
+	ProductVersionSpecName *string `json:"productVersionSpecName,omitempty" xml:"productVersionSpecName,omitempty"`
+	ProductVersionSpecUID  *string `json:"productVersionSpecUID,omitempty" xml:"productVersionSpecUID,omitempty"`
+	ProductVersionUID      *string `json:"productVersionUID,omitempty" xml:"productVersionUID,omitempty"`
+}
+
+func (s GetDeliverableResponseBodyDataProducts) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDeliverableResponseBodyDataProducts) GoString() string {
+	return s.String()
+}
+
+func (s *GetDeliverableResponseBodyDataProducts) SetProductName(v string) *GetDeliverableResponseBodyDataProducts {
+	s.ProductName = &v
+	return s
+}
+
+func (s *GetDeliverableResponseBodyDataProducts) SetProductType(v string) *GetDeliverableResponseBodyDataProducts {
+	s.ProductType = &v
+	return s
+}
+
+func (s *GetDeliverableResponseBodyDataProducts) SetProductUID(v string) *GetDeliverableResponseBodyDataProducts {
+	s.ProductUID = &v
+	return s
+}
+
+func (s *GetDeliverableResponseBodyDataProducts) SetProductVersion(v string) *GetDeliverableResponseBodyDataProducts {
+	s.ProductVersion = &v
+	return s
+}
+
+func (s *GetDeliverableResponseBodyDataProducts) SetProductVersionSpecName(v string) *GetDeliverableResponseBodyDataProducts {
+	s.ProductVersionSpecName = &v
+	return s
+}
+
+func (s *GetDeliverableResponseBodyDataProducts) SetProductVersionSpecUID(v string) *GetDeliverableResponseBodyDataProducts {
+	s.ProductVersionSpecUID = &v
+	return s
+}
+
+func (s *GetDeliverableResponseBodyDataProducts) SetProductVersionUID(v string) *GetDeliverableResponseBodyDataProducts {
+	s.ProductVersionUID = &v
+	return s
+}
+
+type GetDeliverableResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetDeliverableResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetDeliverableResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDeliverableResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetDeliverableResponse) SetHeaders(v map[string]*string) *GetDeliverableResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetDeliverableResponse) SetStatusCode(v int32) *GetDeliverableResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetDeliverableResponse) SetBody(v *GetDeliverableResponseBody) *GetDeliverableResponse {
+	s.Body = v
+	return s
+}
+
+type GetDeliveryPackageResponseBody struct {
+	Code *string                             `json:"code,omitempty" xml:"code,omitempty"`
+	Data *GetDeliveryPackageResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	Msg  *string                             `json:"msg,omitempty" xml:"msg,omitempty"`
+}
+
+func (s GetDeliveryPackageResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDeliveryPackageResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetDeliveryPackageResponseBody) SetCode(v string) *GetDeliveryPackageResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetDeliveryPackageResponseBody) SetData(v *GetDeliveryPackageResponseBodyData) *GetDeliveryPackageResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetDeliveryPackageResponseBody) SetMsg(v string) *GetDeliveryPackageResponseBody {
+	s.Msg = &v
+	return s
+}
+
+type GetDeliveryPackageResponseBodyData struct {
+	DeliverableUID       *string `json:"deliverableUID,omitempty" xml:"deliverableUID,omitempty"`
+	OriginDeliverableUID *string `json:"originDeliverableUID,omitempty" xml:"originDeliverableUID,omitempty"`
+	PackageContentType   *string `json:"packageContentType,omitempty" xml:"packageContentType,omitempty"`
+	PackageSize          *string `json:"packageSize,omitempty" xml:"packageSize,omitempty"`
+	PackageStatus        *string `json:"packageStatus,omitempty" xml:"packageStatus,omitempty"`
+	PackageType          *string `json:"packageType,omitempty" xml:"packageType,omitempty"`
+	PackageUID           *string `json:"packageUID,omitempty" xml:"packageUID,omitempty"`
+	PackageURL           *string `json:"packageURL,omitempty" xml:"packageURL,omitempty"`
+	Platform             *string `json:"platform,omitempty" xml:"platform,omitempty"`
+}
+
+func (s GetDeliveryPackageResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDeliveryPackageResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetDeliveryPackageResponseBodyData) SetDeliverableUID(v string) *GetDeliveryPackageResponseBodyData {
+	s.DeliverableUID = &v
+	return s
+}
+
+func (s *GetDeliveryPackageResponseBodyData) SetOriginDeliverableUID(v string) *GetDeliveryPackageResponseBodyData {
+	s.OriginDeliverableUID = &v
+	return s
+}
+
+func (s *GetDeliveryPackageResponseBodyData) SetPackageContentType(v string) *GetDeliveryPackageResponseBodyData {
+	s.PackageContentType = &v
+	return s
+}
+
+func (s *GetDeliveryPackageResponseBodyData) SetPackageSize(v string) *GetDeliveryPackageResponseBodyData {
+	s.PackageSize = &v
+	return s
+}
+
+func (s *GetDeliveryPackageResponseBodyData) SetPackageStatus(v string) *GetDeliveryPackageResponseBodyData {
+	s.PackageStatus = &v
+	return s
+}
+
+func (s *GetDeliveryPackageResponseBodyData) SetPackageType(v string) *GetDeliveryPackageResponseBodyData {
+	s.PackageType = &v
+	return s
+}
+
+func (s *GetDeliveryPackageResponseBodyData) SetPackageUID(v string) *GetDeliveryPackageResponseBodyData {
+	s.PackageUID = &v
+	return s
+}
+
+func (s *GetDeliveryPackageResponseBodyData) SetPackageURL(v string) *GetDeliveryPackageResponseBodyData {
+	s.PackageURL = &v
+	return s
+}
+
+func (s *GetDeliveryPackageResponseBodyData) SetPlatform(v string) *GetDeliveryPackageResponseBodyData {
+	s.Platform = &v
+	return s
+}
+
+type GetDeliveryPackageResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetDeliveryPackageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetDeliveryPackageResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDeliveryPackageResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetDeliveryPackageResponse) SetHeaders(v map[string]*string) *GetDeliveryPackageResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetDeliveryPackageResponse) SetStatusCode(v int32) *GetDeliveryPackageResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetDeliveryPackageResponse) SetBody(v *GetDeliveryPackageResponseBody) *GetDeliveryPackageResponse {
+	s.Body = v
+	return s
+}
+
 type GetEnvironmentRequest struct {
 	Options *GetEnvironmentRequestOptions `json:"options,omitempty" xml:"options,omitempty" type:"Struct"`
 }
@@ -4911,6 +5772,128 @@ func (s *GetEnvironmentResponse) SetStatusCode(v int32) *GetEnvironmentResponse 
 }
 
 func (s *GetEnvironmentResponse) SetBody(v *GetEnvironmentResponseBody) *GetEnvironmentResponse {
+	s.Body = v
+	return s
+}
+
+type GetEnvironmentDeliveryInstanceRequest struct {
+	ClusterUID *string `json:"clusterUID,omitempty" xml:"clusterUID,omitempty"`
+	EnvUID     *string `json:"envUID,omitempty" xml:"envUID,omitempty"`
+}
+
+func (s GetEnvironmentDeliveryInstanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEnvironmentDeliveryInstanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetEnvironmentDeliveryInstanceRequest) SetClusterUID(v string) *GetEnvironmentDeliveryInstanceRequest {
+	s.ClusterUID = &v
+	return s
+}
+
+func (s *GetEnvironmentDeliveryInstanceRequest) SetEnvUID(v string) *GetEnvironmentDeliveryInstanceRequest {
+	s.EnvUID = &v
+	return s
+}
+
+type GetEnvironmentDeliveryInstanceResponseBody struct {
+	Code *string                                         `json:"code,omitempty" xml:"code,omitempty"`
+	Data *GetEnvironmentDeliveryInstanceResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	Msg  *string                                         `json:"msg,omitempty" xml:"msg,omitempty"`
+}
+
+func (s GetEnvironmentDeliveryInstanceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEnvironmentDeliveryInstanceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetEnvironmentDeliveryInstanceResponseBody) SetCode(v string) *GetEnvironmentDeliveryInstanceResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetEnvironmentDeliveryInstanceResponseBody) SetData(v *GetEnvironmentDeliveryInstanceResponseBodyData) *GetEnvironmentDeliveryInstanceResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetEnvironmentDeliveryInstanceResponseBody) SetMsg(v string) *GetEnvironmentDeliveryInstanceResponseBody {
+	s.Msg = &v
+	return s
+}
+
+type GetEnvironmentDeliveryInstanceResponseBodyData struct {
+	ClusterUID           *string `json:"clusterUID,omitempty" xml:"clusterUID,omitempty"`
+	DeliverableConfigUID *string `json:"deliverableConfigUID,omitempty" xml:"deliverableConfigUID,omitempty"`
+	DeliverableUID       *string `json:"deliverableUID,omitempty" xml:"deliverableUID,omitempty"`
+	EnvUID               *string `json:"envUID,omitempty" xml:"envUID,omitempty"`
+	Uid                  *string `json:"uid,omitempty" xml:"uid,omitempty"`
+}
+
+func (s GetEnvironmentDeliveryInstanceResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEnvironmentDeliveryInstanceResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetEnvironmentDeliveryInstanceResponseBodyData) SetClusterUID(v string) *GetEnvironmentDeliveryInstanceResponseBodyData {
+	s.ClusterUID = &v
+	return s
+}
+
+func (s *GetEnvironmentDeliveryInstanceResponseBodyData) SetDeliverableConfigUID(v string) *GetEnvironmentDeliveryInstanceResponseBodyData {
+	s.DeliverableConfigUID = &v
+	return s
+}
+
+func (s *GetEnvironmentDeliveryInstanceResponseBodyData) SetDeliverableUID(v string) *GetEnvironmentDeliveryInstanceResponseBodyData {
+	s.DeliverableUID = &v
+	return s
+}
+
+func (s *GetEnvironmentDeliveryInstanceResponseBodyData) SetEnvUID(v string) *GetEnvironmentDeliveryInstanceResponseBodyData {
+	s.EnvUID = &v
+	return s
+}
+
+func (s *GetEnvironmentDeliveryInstanceResponseBodyData) SetUid(v string) *GetEnvironmentDeliveryInstanceResponseBodyData {
+	s.Uid = &v
+	return s
+}
+
+type GetEnvironmentDeliveryInstanceResponse struct {
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetEnvironmentDeliveryInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetEnvironmentDeliveryInstanceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEnvironmentDeliveryInstanceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetEnvironmentDeliveryInstanceResponse) SetHeaders(v map[string]*string) *GetEnvironmentDeliveryInstanceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetEnvironmentDeliveryInstanceResponse) SetStatusCode(v int32) *GetEnvironmentDeliveryInstanceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetEnvironmentDeliveryInstanceResponse) SetBody(v *GetEnvironmentDeliveryInstanceResponseBody) *GetEnvironmentDeliveryInstanceResponse {
 	s.Body = v
 	return s
 }
@@ -7754,6 +8737,310 @@ func (s *ListComponentsResponse) SetStatusCode(v int32) *ListComponentsResponse 
 }
 
 func (s *ListComponentsResponse) SetBody(v *ListComponentsResponseBody) *ListComponentsResponse {
+	s.Body = v
+	return s
+}
+
+type ListDeliveryInstanceChangeRecordsResponseBody struct {
+	Code *string                                              `json:"code,omitempty" xml:"code,omitempty"`
+	Data []*ListDeliveryInstanceChangeRecordsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	Msg  *string                                              `json:"msg,omitempty" xml:"msg,omitempty"`
+}
+
+func (s ListDeliveryInstanceChangeRecordsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDeliveryInstanceChangeRecordsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListDeliveryInstanceChangeRecordsResponseBody) SetCode(v string) *ListDeliveryInstanceChangeRecordsResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListDeliveryInstanceChangeRecordsResponseBody) SetData(v []*ListDeliveryInstanceChangeRecordsResponseBodyData) *ListDeliveryInstanceChangeRecordsResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListDeliveryInstanceChangeRecordsResponseBody) SetMsg(v string) *ListDeliveryInstanceChangeRecordsResponseBody {
+	s.Msg = &v
+	return s
+}
+
+type ListDeliveryInstanceChangeRecordsResponseBodyData struct {
+	DeliverableUID       *string                                                         `json:"deliverableUID,omitempty" xml:"deliverableUID,omitempty"`
+	EnvChangeRecords     map[string]interface{}                                          `json:"envChangeRecords,omitempty" xml:"envChangeRecords,omitempty"`
+	EnvNodeInfo          []*ListDeliveryInstanceChangeRecordsResponseBodyDataEnvNodeInfo `json:"envNodeInfo,omitempty" xml:"envNodeInfo,omitempty" type:"Repeated"`
+	EnvPackageConfig     *string                                                         `json:"envPackageConfig,omitempty" xml:"envPackageConfig,omitempty"`
+	OriginDeliverableUID *string                                                         `json:"originDeliverableUID,omitempty" xml:"originDeliverableUID,omitempty"`
+	Uid                  *string                                                         `json:"uid,omitempty" xml:"uid,omitempty"`
+}
+
+func (s ListDeliveryInstanceChangeRecordsResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDeliveryInstanceChangeRecordsResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListDeliveryInstanceChangeRecordsResponseBodyData) SetDeliverableUID(v string) *ListDeliveryInstanceChangeRecordsResponseBodyData {
+	s.DeliverableUID = &v
+	return s
+}
+
+func (s *ListDeliveryInstanceChangeRecordsResponseBodyData) SetEnvChangeRecords(v map[string]interface{}) *ListDeliveryInstanceChangeRecordsResponseBodyData {
+	s.EnvChangeRecords = v
+	return s
+}
+
+func (s *ListDeliveryInstanceChangeRecordsResponseBodyData) SetEnvNodeInfo(v []*ListDeliveryInstanceChangeRecordsResponseBodyDataEnvNodeInfo) *ListDeliveryInstanceChangeRecordsResponseBodyData {
+	s.EnvNodeInfo = v
+	return s
+}
+
+func (s *ListDeliveryInstanceChangeRecordsResponseBodyData) SetEnvPackageConfig(v string) *ListDeliveryInstanceChangeRecordsResponseBodyData {
+	s.EnvPackageConfig = &v
+	return s
+}
+
+func (s *ListDeliveryInstanceChangeRecordsResponseBodyData) SetOriginDeliverableUID(v string) *ListDeliveryInstanceChangeRecordsResponseBodyData {
+	s.OriginDeliverableUID = &v
+	return s
+}
+
+func (s *ListDeliveryInstanceChangeRecordsResponseBodyData) SetUid(v string) *ListDeliveryInstanceChangeRecordsResponseBodyData {
+	s.Uid = &v
+	return s
+}
+
+type ListDeliveryInstanceChangeRecordsResponseBodyDataEnvNodeInfo struct {
+	Capacity   *string                `json:"capacity,omitempty" xml:"capacity,omitempty"`
+	Cpu        *string                `json:"cpu,omitempty" xml:"cpu,omitempty"`
+	Identifier *string                `json:"identifier,omitempty" xml:"identifier,omitempty"`
+	Label      map[string]interface{} `json:"label,omitempty" xml:"label,omitempty"`
+	Memory     *string                `json:"memory,omitempty" xml:"memory,omitempty"`
+	Name       *string                `json:"name,omitempty" xml:"name,omitempty"`
+	PrivateIP  *string                `json:"privateIP,omitempty" xml:"privateIP,omitempty"`
+	Taints     map[string]interface{} `json:"taints,omitempty" xml:"taints,omitempty"`
+}
+
+func (s ListDeliveryInstanceChangeRecordsResponseBodyDataEnvNodeInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDeliveryInstanceChangeRecordsResponseBodyDataEnvNodeInfo) GoString() string {
+	return s.String()
+}
+
+func (s *ListDeliveryInstanceChangeRecordsResponseBodyDataEnvNodeInfo) SetCapacity(v string) *ListDeliveryInstanceChangeRecordsResponseBodyDataEnvNodeInfo {
+	s.Capacity = &v
+	return s
+}
+
+func (s *ListDeliveryInstanceChangeRecordsResponseBodyDataEnvNodeInfo) SetCpu(v string) *ListDeliveryInstanceChangeRecordsResponseBodyDataEnvNodeInfo {
+	s.Cpu = &v
+	return s
+}
+
+func (s *ListDeliveryInstanceChangeRecordsResponseBodyDataEnvNodeInfo) SetIdentifier(v string) *ListDeliveryInstanceChangeRecordsResponseBodyDataEnvNodeInfo {
+	s.Identifier = &v
+	return s
+}
+
+func (s *ListDeliveryInstanceChangeRecordsResponseBodyDataEnvNodeInfo) SetLabel(v map[string]interface{}) *ListDeliveryInstanceChangeRecordsResponseBodyDataEnvNodeInfo {
+	s.Label = v
+	return s
+}
+
+func (s *ListDeliveryInstanceChangeRecordsResponseBodyDataEnvNodeInfo) SetMemory(v string) *ListDeliveryInstanceChangeRecordsResponseBodyDataEnvNodeInfo {
+	s.Memory = &v
+	return s
+}
+
+func (s *ListDeliveryInstanceChangeRecordsResponseBodyDataEnvNodeInfo) SetName(v string) *ListDeliveryInstanceChangeRecordsResponseBodyDataEnvNodeInfo {
+	s.Name = &v
+	return s
+}
+
+func (s *ListDeliveryInstanceChangeRecordsResponseBodyDataEnvNodeInfo) SetPrivateIP(v string) *ListDeliveryInstanceChangeRecordsResponseBodyDataEnvNodeInfo {
+	s.PrivateIP = &v
+	return s
+}
+
+func (s *ListDeliveryInstanceChangeRecordsResponseBodyDataEnvNodeInfo) SetTaints(v map[string]interface{}) *ListDeliveryInstanceChangeRecordsResponseBodyDataEnvNodeInfo {
+	s.Taints = v
+	return s
+}
+
+type ListDeliveryInstanceChangeRecordsResponse struct {
+	Headers    map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListDeliveryInstanceChangeRecordsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListDeliveryInstanceChangeRecordsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDeliveryInstanceChangeRecordsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListDeliveryInstanceChangeRecordsResponse) SetHeaders(v map[string]*string) *ListDeliveryInstanceChangeRecordsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListDeliveryInstanceChangeRecordsResponse) SetStatusCode(v int32) *ListDeliveryInstanceChangeRecordsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListDeliveryInstanceChangeRecordsResponse) SetBody(v *ListDeliveryInstanceChangeRecordsResponseBody) *ListDeliveryInstanceChangeRecordsResponse {
+	s.Body = v
+	return s
+}
+
+type ListDeliveryPackageRequest struct {
+	DeliverableUID *string `json:"deliverableUID,omitempty" xml:"deliverableUID,omitempty"`
+}
+
+func (s ListDeliveryPackageRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDeliveryPackageRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListDeliveryPackageRequest) SetDeliverableUID(v string) *ListDeliveryPackageRequest {
+	s.DeliverableUID = &v
+	return s
+}
+
+type ListDeliveryPackageResponseBody struct {
+	Code *string                                `json:"code,omitempty" xml:"code,omitempty"`
+	Data []*ListDeliveryPackageResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	Msg  *string                                `json:"msg,omitempty" xml:"msg,omitempty"`
+}
+
+func (s ListDeliveryPackageResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDeliveryPackageResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListDeliveryPackageResponseBody) SetCode(v string) *ListDeliveryPackageResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListDeliveryPackageResponseBody) SetData(v []*ListDeliveryPackageResponseBodyData) *ListDeliveryPackageResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListDeliveryPackageResponseBody) SetMsg(v string) *ListDeliveryPackageResponseBody {
+	s.Msg = &v
+	return s
+}
+
+type ListDeliveryPackageResponseBodyData struct {
+	DeliverableUID       *string `json:"deliverableUID,omitempty" xml:"deliverableUID,omitempty"`
+	OriginDeliverableUID *string `json:"originDeliverableUID,omitempty" xml:"originDeliverableUID,omitempty"`
+	PackageContentType   *string `json:"packageContentType,omitempty" xml:"packageContentType,omitempty"`
+	PackageSize          *string `json:"packageSize,omitempty" xml:"packageSize,omitempty"`
+	PackageStatus        *string `json:"packageStatus,omitempty" xml:"packageStatus,omitempty"`
+	PackageType          *string `json:"packageType,omitempty" xml:"packageType,omitempty"`
+	PackageUID           *string `json:"packageUID,omitempty" xml:"packageUID,omitempty"`
+	PackageURL           *string `json:"packageURL,omitempty" xml:"packageURL,omitempty"`
+	Platform             *string `json:"platform,omitempty" xml:"platform,omitempty"`
+}
+
+func (s ListDeliveryPackageResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDeliveryPackageResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListDeliveryPackageResponseBodyData) SetDeliverableUID(v string) *ListDeliveryPackageResponseBodyData {
+	s.DeliverableUID = &v
+	return s
+}
+
+func (s *ListDeliveryPackageResponseBodyData) SetOriginDeliverableUID(v string) *ListDeliveryPackageResponseBodyData {
+	s.OriginDeliverableUID = &v
+	return s
+}
+
+func (s *ListDeliveryPackageResponseBodyData) SetPackageContentType(v string) *ListDeliveryPackageResponseBodyData {
+	s.PackageContentType = &v
+	return s
+}
+
+func (s *ListDeliveryPackageResponseBodyData) SetPackageSize(v string) *ListDeliveryPackageResponseBodyData {
+	s.PackageSize = &v
+	return s
+}
+
+func (s *ListDeliveryPackageResponseBodyData) SetPackageStatus(v string) *ListDeliveryPackageResponseBodyData {
+	s.PackageStatus = &v
+	return s
+}
+
+func (s *ListDeliveryPackageResponseBodyData) SetPackageType(v string) *ListDeliveryPackageResponseBodyData {
+	s.PackageType = &v
+	return s
+}
+
+func (s *ListDeliveryPackageResponseBodyData) SetPackageUID(v string) *ListDeliveryPackageResponseBodyData {
+	s.PackageUID = &v
+	return s
+}
+
+func (s *ListDeliveryPackageResponseBodyData) SetPackageURL(v string) *ListDeliveryPackageResponseBodyData {
+	s.PackageURL = &v
+	return s
+}
+
+func (s *ListDeliveryPackageResponseBodyData) SetPlatform(v string) *ListDeliveryPackageResponseBodyData {
+	s.Platform = &v
+	return s
+}
+
+type ListDeliveryPackageResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListDeliveryPackageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListDeliveryPackageResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDeliveryPackageResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListDeliveryPackageResponse) SetHeaders(v map[string]*string) *ListDeliveryPackageResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListDeliveryPackageResponse) SetStatusCode(v int32) *ListDeliveryPackageResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListDeliveryPackageResponse) SetBody(v *ListDeliveryPackageResponseBody) *ListDeliveryPackageResponse {
 	s.Body = v
 	return s
 }
@@ -11307,6 +12594,256 @@ func (s *SetEnvironmentFoundationReferenceResponse) SetBody(v *SetEnvironmentFou
 	return s
 }
 
+type UpdateDeliverableRequest struct {
+	Foundation *UpdateDeliverableRequestFoundation `json:"foundation,omitempty" xml:"foundation,omitempty" type:"Struct"`
+	Products   []*UpdateDeliverableRequestProducts `json:"products,omitempty" xml:"products,omitempty" type:"Repeated"`
+}
+
+func (s UpdateDeliverableRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDeliverableRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDeliverableRequest) SetFoundation(v *UpdateDeliverableRequestFoundation) *UpdateDeliverableRequest {
+	s.Foundation = v
+	return s
+}
+
+func (s *UpdateDeliverableRequest) SetProducts(v []*UpdateDeliverableRequestProducts) *UpdateDeliverableRequest {
+	s.Products = v
+	return s
+}
+
+type UpdateDeliverableRequestFoundation struct {
+	ClusterConfig          *string `json:"clusterConfig,omitempty" xml:"clusterConfig,omitempty"`
+	FoundationReferenceUID *string `json:"foundationReferenceUID,omitempty" xml:"foundationReferenceUID,omitempty"`
+	FoundationVersion      *string `json:"foundationVersion,omitempty" xml:"foundationVersion,omitempty"`
+	FoundationVersionUID   *string `json:"foundationVersionUID,omitempty" xml:"foundationVersionUID,omitempty"`
+	Reusable               *bool   `json:"reusable,omitempty" xml:"reusable,omitempty"`
+}
+
+func (s UpdateDeliverableRequestFoundation) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDeliverableRequestFoundation) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDeliverableRequestFoundation) SetClusterConfig(v string) *UpdateDeliverableRequestFoundation {
+	s.ClusterConfig = &v
+	return s
+}
+
+func (s *UpdateDeliverableRequestFoundation) SetFoundationReferenceUID(v string) *UpdateDeliverableRequestFoundation {
+	s.FoundationReferenceUID = &v
+	return s
+}
+
+func (s *UpdateDeliverableRequestFoundation) SetFoundationVersion(v string) *UpdateDeliverableRequestFoundation {
+	s.FoundationVersion = &v
+	return s
+}
+
+func (s *UpdateDeliverableRequestFoundation) SetFoundationVersionUID(v string) *UpdateDeliverableRequestFoundation {
+	s.FoundationVersionUID = &v
+	return s
+}
+
+func (s *UpdateDeliverableRequestFoundation) SetReusable(v bool) *UpdateDeliverableRequestFoundation {
+	s.Reusable = &v
+	return s
+}
+
+type UpdateDeliverableRequestProducts struct {
+	Namespace              *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
+	ProductName            *string `json:"productName,omitempty" xml:"productName,omitempty"`
+	ProductType            *string `json:"productType,omitempty" xml:"productType,omitempty"`
+	ProductUID             *string `json:"productUID,omitempty" xml:"productUID,omitempty"`
+	ProductVersion         *string `json:"productVersion,omitempty" xml:"productVersion,omitempty"`
+	ProductVersionSpecName *string `json:"productVersionSpecName,omitempty" xml:"productVersionSpecName,omitempty"`
+	ProductVersionSpecUID  *string `json:"productVersionSpecUID,omitempty" xml:"productVersionSpecUID,omitempty"`
+	ProductVersionUID      *string `json:"productVersionUID,omitempty" xml:"productVersionUID,omitempty"`
+}
+
+func (s UpdateDeliverableRequestProducts) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDeliverableRequestProducts) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDeliverableRequestProducts) SetNamespace(v string) *UpdateDeliverableRequestProducts {
+	s.Namespace = &v
+	return s
+}
+
+func (s *UpdateDeliverableRequestProducts) SetProductName(v string) *UpdateDeliverableRequestProducts {
+	s.ProductName = &v
+	return s
+}
+
+func (s *UpdateDeliverableRequestProducts) SetProductType(v string) *UpdateDeliverableRequestProducts {
+	s.ProductType = &v
+	return s
+}
+
+func (s *UpdateDeliverableRequestProducts) SetProductUID(v string) *UpdateDeliverableRequestProducts {
+	s.ProductUID = &v
+	return s
+}
+
+func (s *UpdateDeliverableRequestProducts) SetProductVersion(v string) *UpdateDeliverableRequestProducts {
+	s.ProductVersion = &v
+	return s
+}
+
+func (s *UpdateDeliverableRequestProducts) SetProductVersionSpecName(v string) *UpdateDeliverableRequestProducts {
+	s.ProductVersionSpecName = &v
+	return s
+}
+
+func (s *UpdateDeliverableRequestProducts) SetProductVersionSpecUID(v string) *UpdateDeliverableRequestProducts {
+	s.ProductVersionSpecUID = &v
+	return s
+}
+
+func (s *UpdateDeliverableRequestProducts) SetProductVersionUID(v string) *UpdateDeliverableRequestProducts {
+	s.ProductVersionUID = &v
+	return s
+}
+
+type UpdateDeliverableResponseBody struct {
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	Msg  *string `json:"msg,omitempty" xml:"msg,omitempty"`
+}
+
+func (s UpdateDeliverableResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDeliverableResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDeliverableResponseBody) SetCode(v string) *UpdateDeliverableResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UpdateDeliverableResponseBody) SetMsg(v string) *UpdateDeliverableResponseBody {
+	s.Msg = &v
+	return s
+}
+
+type UpdateDeliverableResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateDeliverableResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateDeliverableResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDeliverableResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDeliverableResponse) SetHeaders(v map[string]*string) *UpdateDeliverableResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateDeliverableResponse) SetStatusCode(v int32) *UpdateDeliverableResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateDeliverableResponse) SetBody(v *UpdateDeliverableResponseBody) *UpdateDeliverableResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateDeliveryInstanceRequest struct {
+	DeliverableConfigUID *string `json:"deliverableConfigUID,omitempty" xml:"deliverableConfigUID,omitempty"`
+	DeliverableUID       *string `json:"deliverableUID,omitempty" xml:"deliverableUID,omitempty"`
+}
+
+func (s UpdateDeliveryInstanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDeliveryInstanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDeliveryInstanceRequest) SetDeliverableConfigUID(v string) *UpdateDeliveryInstanceRequest {
+	s.DeliverableConfigUID = &v
+	return s
+}
+
+func (s *UpdateDeliveryInstanceRequest) SetDeliverableUID(v string) *UpdateDeliveryInstanceRequest {
+	s.DeliverableUID = &v
+	return s
+}
+
+type UpdateDeliveryInstanceResponseBody struct {
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	Msg  *string `json:"msg,omitempty" xml:"msg,omitempty"`
+}
+
+func (s UpdateDeliveryInstanceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDeliveryInstanceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDeliveryInstanceResponseBody) SetCode(v string) *UpdateDeliveryInstanceResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UpdateDeliveryInstanceResponseBody) SetMsg(v string) *UpdateDeliveryInstanceResponseBody {
+	s.Msg = &v
+	return s
+}
+
+type UpdateDeliveryInstanceResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateDeliveryInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateDeliveryInstanceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDeliveryInstanceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDeliveryInstanceResponse) SetHeaders(v map[string]*string) *UpdateDeliveryInstanceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateDeliveryInstanceResponse) SetStatusCode(v int32) *UpdateDeliveryInstanceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateDeliveryInstanceResponse) SetBody(v *UpdateDeliveryInstanceResponseBody) *UpdateDeliveryInstanceResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateEnvironmentRequest struct {
 	AdvancedConfigs *UpdateEnvironmentRequestAdvancedConfigs `json:"advancedConfigs,omitempty" xml:"advancedConfigs,omitempty" type:"Struct"`
 	Description     *string                                  `json:"description,omitempty" xml:"description,omitempty"`
@@ -12097,6 +13634,7 @@ func (s *UpdateProductFoundationVersionResponse) SetBody(v *UpdateProductFoundat
 type UpdateProductVersionRequest struct {
 	ContinuousIntegration *bool   `json:"continuousIntegration,omitempty" xml:"continuousIntegration,omitempty"`
 	Description           *string `json:"description,omitempty" xml:"description,omitempty"`
+	Entry                 *string `json:"entry,omitempty" xml:"entry,omitempty"`
 	Version               *string `json:"version,omitempty" xml:"version,omitempty"`
 }
 
@@ -12115,6 +13653,11 @@ func (s *UpdateProductVersionRequest) SetContinuousIntegration(v bool) *UpdatePr
 
 func (s *UpdateProductVersionRequest) SetDescription(v string) *UpdateProductVersionRequest {
 	s.Description = &v
+	return s
+}
+
+func (s *UpdateProductVersionRequest) SetEntry(v string) *UpdateProductVersionRequest {
+	s.Entry = &v
 	return s
 }
 
@@ -12877,6 +14420,176 @@ func (client *Client) BatchAddProductVersionConfigWithOptions(uid *string, reque
 	return _result, _err
 }
 
+func (client *Client) CreateDeliverable(request *CreateDeliverableRequest) (_result *CreateDeliverableResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateDeliverableResponse{}
+	_body, _err := client.CreateDeliverableWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateDeliverableWithOptions(request *CreateDeliverableRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateDeliverableResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Foundation)) {
+		body["foundation"] = request.Foundation
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Products)) {
+		body["products"] = request.Products
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateDeliverable"),
+		Version:     tea.String("2021-07-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/delivery/deliverables"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateDeliverableResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateDeliveryInstance(request *CreateDeliveryInstanceRequest) (_result *CreateDeliveryInstanceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateDeliveryInstanceResponse{}
+	_body, _err := client.CreateDeliveryInstanceWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateDeliveryInstanceWithOptions(request *CreateDeliveryInstanceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateDeliveryInstanceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterUID)) {
+		body["clusterUID"] = request.ClusterUID
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DeliverableConfigUID)) {
+		body["deliverableConfigUID"] = request.DeliverableConfigUID
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DeliverableUID)) {
+		body["deliverableUID"] = request.DeliverableUID
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnvUID)) {
+		body["envUID"] = request.EnvUID
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateDeliveryInstance"),
+		Version:     tea.String("2021-07-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/delivery/delivery-instances"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateDeliveryInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateDeliveryPackage(request *CreateDeliveryPackageRequest) (_result *CreateDeliveryPackageResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateDeliveryPackageResponse{}
+	_body, _err := client.CreateDeliveryPackageWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateDeliveryPackageWithOptions(request *CreateDeliveryPackageRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateDeliveryPackageResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DeliverableUID)) {
+		body["deliverableUID"] = request.DeliverableUID
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OriginDeliverableUID)) {
+		body["originDeliverableUID"] = request.OriginDeliverableUID
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PackageContentType)) {
+		body["packageContentType"] = request.PackageContentType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PackageType)) {
+		body["packageType"] = request.PackageType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Platform)) {
+		body["platform"] = request.Platform
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateDeliveryPackage"),
+		Version:     tea.String("2021-07-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/delivery/delivery-packages"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateDeliveryPackageResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
 func (client *Client) CreateEnvironment(request *CreateEnvironmentRequest) (_result *CreateEnvironmentResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &CreateEnvironmentHeaders{}
@@ -12895,6 +14608,10 @@ func (client *Client) CreateEnvironmentWithOptions(request *CreateEnvironmentReq
 		return _result, _err
 	}
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Annotations)) {
+		body["annotations"] = request.Annotations
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Description)) {
 		body["description"] = request.Description
 	}
@@ -12907,7 +14624,7 @@ func (client *Client) CreateEnvironmentWithOptions(request *CreateEnvironmentReq
 		body["name"] = request.Name
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.Platform))) {
+	if !tea.BoolValue(util.IsUnset(request.Platform)) {
 		body["platform"] = request.Platform
 	}
 
@@ -12994,7 +14711,7 @@ func (client *Client) CreateEnvironmentLicenseWithOptions(uid *string, request *
 		body["description"] = request.Description
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.LicenseQuota))) {
+	if !tea.BoolValue(util.IsUnset(request.LicenseQuota)) {
 		body["licenseQuota"] = request.LicenseQuota
 	}
 
@@ -13068,8 +14785,16 @@ func (client *Client) CreateFoundationReferenceWithOptions(request *CreateFounda
 		body["clusterConfig"] = request.ClusterConfig
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ComponentConfigs)) {
+		body["componentConfigs"] = request.ComponentConfigs
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.FoundationVersionUID)) {
 		body["foundationVersionUID"] = request.FoundationVersionUID
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OriginFoundationReferenceUID)) {
+		body["originFoundationReferenceUID"] = request.OriginFoundationReferenceUID
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -13844,6 +15569,78 @@ func (client *Client) GetComponentVersionWithOptions(uid *string, versionUID *st
 	return _result, _err
 }
 
+func (client *Client) GetDeliverable(uid *string) (_result *GetDeliverableResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetDeliverableResponse{}
+	_body, _err := client.GetDeliverableWithOptions(uid, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetDeliverableWithOptions(uid *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetDeliverableResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetDeliverable"),
+		Version:     tea.String("2021-07-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/delivery/deliverables/" + tea.StringValue(openapiutil.GetEncodeParam(uid))),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetDeliverableResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetDeliveryPackage(uid *string) (_result *GetDeliveryPackageResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetDeliveryPackageResponse{}
+	_body, _err := client.GetDeliveryPackageWithOptions(uid, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetDeliveryPackageWithOptions(uid *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetDeliveryPackageResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetDeliveryPackage"),
+		Version:     tea.String("2021-07-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/delivery/delivery-packages/" + tea.StringValue(openapiutil.GetEncodeParam(uid))),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetDeliveryPackageResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
 func (client *Client) GetEnvironment(uid *string, request *GetEnvironmentRequest) (_result *GetEnvironmentResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -13863,8 +15660,8 @@ func (client *Client) GetEnvironmentWithOptions(uid *string, tmpReq *GetEnvironm
 	}
 	request := &GetEnvironmentShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.Options))) {
-		request.OptionsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.Options), tea.String("options"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.Options)) {
+		request.OptionsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Options, tea.String("options"), tea.String("json"))
 	}
 
 	query := map[string]interface{}{}
@@ -13896,6 +15693,56 @@ func (client *Client) GetEnvironmentWithOptions(uid *string, tmpReq *GetEnvironm
 	return _result, _err
 }
 
+func (client *Client) GetEnvironmentDeliveryInstance(request *GetEnvironmentDeliveryInstanceRequest) (_result *GetEnvironmentDeliveryInstanceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetEnvironmentDeliveryInstanceResponse{}
+	_body, _err := client.GetEnvironmentDeliveryInstanceWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetEnvironmentDeliveryInstanceWithOptions(request *GetEnvironmentDeliveryInstanceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetEnvironmentDeliveryInstanceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterUID)) {
+		query["clusterUID"] = request.ClusterUID
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnvUID)) {
+		query["envUID"] = request.EnvUID
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetEnvironmentDeliveryInstance"),
+		Version:     tea.String("2021-07-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/delivery/delivery-instances"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetEnvironmentDeliveryInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
 func (client *Client) GetEnvironmentLicense(uid *string, licenseUID *string, request *GetEnvironmentLicenseRequest) (_result *GetEnvironmentLicenseResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -13915,8 +15762,8 @@ func (client *Client) GetEnvironmentLicenseWithOptions(uid *string, licenseUID *
 	}
 	request := &GetEnvironmentLicenseShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.Options))) {
-		request.OptionsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.Options), tea.String("options"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.Options)) {
+		request.OptionsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Options, tea.String("options"), tea.String("json"))
 	}
 
 	query := map[string]interface{}{}
@@ -14678,6 +16525,88 @@ func (client *Client) ListComponentsWithOptions(request *ListComponentsRequest, 
 	return _result, _err
 }
 
+func (client *Client) ListDeliveryInstanceChangeRecords(uid *string) (_result *ListDeliveryInstanceChangeRecordsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListDeliveryInstanceChangeRecordsResponse{}
+	_body, _err := client.ListDeliveryInstanceChangeRecordsWithOptions(uid, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListDeliveryInstanceChangeRecordsWithOptions(uid *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListDeliveryInstanceChangeRecordsResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListDeliveryInstanceChangeRecords"),
+		Version:     tea.String("2021-07-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/delivery/delivery-instances/" + tea.StringValue(openapiutil.GetEncodeParam(uid)) + "/delivery-records"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListDeliveryInstanceChangeRecordsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListDeliveryPackage(request *ListDeliveryPackageRequest) (_result *ListDeliveryPackageResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListDeliveryPackageResponse{}
+	_body, _err := client.ListDeliveryPackageWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListDeliveryPackageWithOptions(request *ListDeliveryPackageRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListDeliveryPackageResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DeliverableUID)) {
+		query["deliverableUID"] = request.DeliverableUID
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListDeliveryPackage"),
+		Version:     tea.String("2021-07-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/delivery/delivery-packages"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListDeliveryPackageResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
 func (client *Client) ListEnvironmentLicenses(uid *string, request *ListEnvironmentLicensesRequest) (_result *ListEnvironmentLicensesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -15187,8 +17116,8 @@ func (client *Client) ListProductEnvironmentsWithOptions(uid *string, tmpReq *Li
 	}
 	request := &ListProductEnvironmentsShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.Options))) {
-		request.OptionsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.Options), tea.String("options"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.Options)) {
+		request.OptionsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Options, tea.String("options"), tea.String("json"))
 	}
 
 	if !tea.BoolValue(util.IsUnset(tmpReq.Platforms)) {
@@ -15361,8 +17290,8 @@ func (client *Client) ListProductInstancesWithOptions(tmpReq *ListProductInstanc
 	}
 	request := &ListProductInstancesShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.Options))) {
-		request.OptionsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.Options), tea.String("options"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.Options)) {
+		request.OptionsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Options, tea.String("options"), tea.String("json"))
 	}
 
 	query := map[string]interface{}{}
@@ -15704,7 +17633,7 @@ func (client *Client) PutEnvironmentTunnelWithOptions(uid *string, request *PutE
 		return _result, _err
 	}
 	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.TunnelConfig))) {
+	if !tea.BoolValue(util.IsUnset(request.TunnelConfig)) {
 		body["tunnelConfig"] = request.TunnelConfig
 	}
 
@@ -15866,6 +17795,106 @@ func (client *Client) SetEnvironmentFoundationReferenceWithOptions(uid *string, 
 	return _result, _err
 }
 
+func (client *Client) UpdateDeliverable(uid *string, request *UpdateDeliverableRequest) (_result *UpdateDeliverableResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateDeliverableResponse{}
+	_body, _err := client.UpdateDeliverableWithOptions(uid, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateDeliverableWithOptions(uid *string, request *UpdateDeliverableRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateDeliverableResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Foundation)) {
+		body["foundation"] = request.Foundation
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Products)) {
+		body["products"] = request.Products
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateDeliverable"),
+		Version:     tea.String("2021-07-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/delivery/deliverables/" + tea.StringValue(openapiutil.GetEncodeParam(uid))),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateDeliverableResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateDeliveryInstance(uid *string, request *UpdateDeliveryInstanceRequest) (_result *UpdateDeliveryInstanceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateDeliveryInstanceResponse{}
+	_body, _err := client.UpdateDeliveryInstanceWithOptions(uid, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateDeliveryInstanceWithOptions(uid *string, request *UpdateDeliveryInstanceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateDeliveryInstanceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DeliverableConfigUID)) {
+		body["deliverableConfigUID"] = request.DeliverableConfigUID
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DeliverableUID)) {
+		body["deliverableUID"] = request.DeliverableUID
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateDeliveryInstance"),
+		Version:     tea.String("2021-07-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/delivery/delivery-instances/" + tea.StringValue(openapiutil.GetEncodeParam(uid))),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateDeliveryInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
 func (client *Client) UpdateEnvironment(uid *string, request *UpdateEnvironmentRequest) (_result *UpdateEnvironmentResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -15884,7 +17913,7 @@ func (client *Client) UpdateEnvironmentWithOptions(uid *string, request *UpdateE
 		return _result, _err
 	}
 	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.AdvancedConfigs))) {
+	if !tea.BoolValue(util.IsUnset(request.AdvancedConfigs)) {
 		body["advancedConfigs"] = request.AdvancedConfigs
 	}
 
@@ -16236,7 +18265,7 @@ func (client *Client) UpdateProductComponentVersionWithOptions(uid *string, rela
 		body["newComponentVersionUID"] = request.NewComponentVersionUID
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.Policy))) {
+	if !tea.BoolValue(util.IsUnset(request.Policy)) {
 		body["policy"] = request.Policy
 	}
 
@@ -16338,6 +18367,10 @@ func (client *Client) UpdateProductVersionWithOptions(uid *string, request *Upda
 
 	if !tea.BoolValue(util.IsUnset(request.Description)) {
 		body["description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Entry)) {
+		body["entry"] = request.Entry
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Version)) {
@@ -16452,7 +18485,7 @@ func (client *Client) ValidateEnvironmentTunnelWithOptions(uid *string, request 
 		return _result, _err
 	}
 	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.TunnelConfig))) {
+	if !tea.BoolValue(util.IsUnset(request.TunnelConfig)) {
 		body["tunnelConfig"] = request.TunnelConfig
 	}
 
