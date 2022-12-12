@@ -2360,9 +2360,11 @@ type DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute struct {
 	StorageUnit           *string                                                              `json:"StorageUnit,omitempty" xml:"StorageUnit,omitempty"`
 	SupportRestore        *bool                                                                `json:"SupportRestore,omitempty" xml:"SupportRestore,omitempty"`
 	Tags                  *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
-	VSwitchId             *string                                                              `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	VpcId                 *string                                                              `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	ZoneId                *string                                                              `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// vSwitch ID。
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// VPC ID。
+	VpcId  *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) String() string {
@@ -3901,9 +3903,10 @@ type DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfosDBInstanceNetInfo st
 	IPAddress        *string `json:"IPAddress,omitempty" xml:"IPAddress,omitempty"`
 	IPType           *string `json:"IPType,omitempty" xml:"IPType,omitempty"`
 	Port             *string `json:"Port,omitempty" xml:"Port,omitempty"`
-	VPCId            *string `json:"VPCId,omitempty" xml:"VPCId,omitempty"`
-	VSwitchId        *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	VpcInstanceId    *string `json:"VpcInstanceId,omitempty" xml:"VpcInstanceId,omitempty"`
+	// VPC ID。
+	VPCId         *string `json:"VPCId,omitempty" xml:"VPCId,omitempty"`
+	VSwitchId     *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	VpcInstanceId *string `json:"VpcInstanceId,omitempty" xml:"VpcInstanceId,omitempty"`
 }
 
 func (s DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfosDBInstanceNetInfo) String() string {
@@ -4075,9 +4078,11 @@ type DescribeDBInstanceOnECSAttributeResponseBodyItemsDBInstanceAttribute struct
 	StorageType           *string                                                                   `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
 	SupportRestore        *bool                                                                     `json:"SupportRestore,omitempty" xml:"SupportRestore,omitempty"`
 	Tags                  *DescribeDBInstanceOnECSAttributeResponseBodyItemsDBInstanceAttributeTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
-	VSwitchId             *string                                                                   `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	VpcId                 *string                                                                   `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	ZoneId                *string                                                                   `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// vSwitch ID。
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// VPC ID。
+	VpcId  *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s DescribeDBInstanceOnECSAttributeResponseBodyItemsDBInstanceAttribute) String() string {
@@ -5198,9 +5203,11 @@ type DescribeDBInstancesResponseBodyItemsDBInstance struct {
 	StorageSize           *string                                             `json:"StorageSize,omitempty" xml:"StorageSize,omitempty"`
 	StorageType           *string                                             `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
 	Tags                  *DescribeDBInstancesResponseBodyItemsDBInstanceTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
-	VSwitchId             *string                                             `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	VpcId                 *string                                             `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	ZoneId                *string                                             `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// vSwitch ID。
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// VPC ID。
+	VpcId  *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s DescribeDBInstancesResponseBodyItemsDBInstance) String() string {
@@ -7653,6 +7660,7 @@ type DescribeRdsVSwitchsResponseBodyVSwitchesVSwitch struct {
 	IzNo        *string `json:"IzNo,omitempty" xml:"IzNo,omitempty"`
 	RegionNo    *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
 	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// vSwitch ID。
 	VSwitchId   *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 	VSwitchName *string `json:"VSwitchName,omitempty" xml:"VSwitchName,omitempty"`
 }
@@ -7858,8 +7866,9 @@ type DescribeRdsVpcsResponseBodyVpcsVpc struct {
 	RegionNo    *string                                       `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
 	Status      *string                                       `json:"Status,omitempty" xml:"Status,omitempty"`
 	VSwitchs    []*DescribeRdsVpcsResponseBodyVpcsVpcVSwitchs `json:"VSwitchs,omitempty" xml:"VSwitchs,omitempty" type:"Repeated"`
-	VpcId       *string                                       `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	VpcName     *string                                       `json:"VpcName,omitempty" xml:"VpcName,omitempty"`
+	// VPC ID。
+	VpcId   *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	VpcName *string `json:"VpcName,omitempty" xml:"VpcName,omitempty"`
 }
 
 func (s DescribeRdsVpcsResponseBodyVpcsVpc) String() string {
@@ -7932,6 +7941,7 @@ type DescribeRdsVpcsResponseBodyVpcsVpcVSwitchs struct {
 	IsDefault   *bool   `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
 	IzNo        *string `json:"IzNo,omitempty" xml:"IzNo,omitempty"`
 	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// vSwitch ID。
 	VSwitchId   *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 	VSwitchName *string `json:"VSwitchName,omitempty" xml:"VSwitchName,omitempty"`
 }
@@ -9469,8 +9479,9 @@ type DescribeSQLLogsOnSliceResponseBodySliceLogItems struct {
 	OperationExecuteTime    *string  `json:"OperationExecuteTime,omitempty" xml:"OperationExecuteTime,omitempty"`
 	PeakMemory              *float32 `json:"PeakMemory,omitempty" xml:"PeakMemory,omitempty"`
 	ReturnRowCounts         *int64   `json:"ReturnRowCounts,omitempty" xml:"ReturnRowCounts,omitempty"`
-	SegmentId               *string  `json:"SegmentId,omitempty" xml:"SegmentId,omitempty"`
-	SegmentName             *string  `json:"SegmentName,omitempty" xml:"SegmentName,omitempty"`
+	// Segment ID。
+	SegmentId   *string `json:"SegmentId,omitempty" xml:"SegmentId,omitempty"`
+	SegmentName *string `json:"SegmentName,omitempty" xml:"SegmentName,omitempty"`
 }
 
 func (s DescribeSQLLogsOnSliceResponseBodySliceLogItems) String() string {
@@ -9909,8 +9920,9 @@ type DescribeSlowLogRecordsRequest struct {
 	EndTime      *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	PageNumber   *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize     *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	SQLId        *int64  `json:"SQLId,omitempty" xml:"SQLId,omitempty"`
-	StartTime    *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// SQL ID。
+	SQLId     *int64  `json:"SQLId,omitempty" xml:"SQLId,omitempty"`
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s DescribeSlowLogRecordsRequest) String() string {
@@ -10538,6 +10550,87 @@ func (s *DescribeSpecificationResponse) SetStatusCode(v int32) *DescribeSpecific
 }
 
 func (s *DescribeSpecificationResponse) SetBody(v *DescribeSpecificationResponseBody) *DescribeSpecificationResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeSupportFeaturesRequest struct {
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+}
+
+func (s DescribeSupportFeaturesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSupportFeaturesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSupportFeaturesRequest) SetDBInstanceId(v string) *DescribeSupportFeaturesRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *DescribeSupportFeaturesRequest) SetOwnerId(v int64) *DescribeSupportFeaturesRequest {
+	s.OwnerId = &v
+	return s
+}
+
+type DescribeSupportFeaturesResponseBody struct {
+	DBInstanceId       *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	RequestId          *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SupportFeatureList *string `json:"SupportFeatureList,omitempty" xml:"SupportFeatureList,omitempty"`
+}
+
+func (s DescribeSupportFeaturesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSupportFeaturesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSupportFeaturesResponseBody) SetDBInstanceId(v string) *DescribeSupportFeaturesResponseBody {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *DescribeSupportFeaturesResponseBody) SetRequestId(v string) *DescribeSupportFeaturesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeSupportFeaturesResponseBody) SetSupportFeatureList(v string) *DescribeSupportFeaturesResponseBody {
+	s.SupportFeatureList = &v
+	return s
+}
+
+type DescribeSupportFeaturesResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeSupportFeaturesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeSupportFeaturesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSupportFeaturesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSupportFeaturesResponse) SetHeaders(v map[string]*string) *DescribeSupportFeaturesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeSupportFeaturesResponse) SetStatusCode(v int32) *DescribeSupportFeaturesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeSupportFeaturesResponse) SetBody(v *DescribeSupportFeaturesResponseBody) *DescribeSupportFeaturesResponse {
 	s.Body = v
 	return s
 }
@@ -11913,8 +12006,9 @@ type ModifyDBInstanceNetworkTypeRequest struct {
 	DBInstanceId        *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	InstanceNetworkType *string `json:"InstanceNetworkType,omitempty" xml:"InstanceNetworkType,omitempty"`
 	PrivateIpAddress    *string `json:"PrivateIpAddress,omitempty" xml:"PrivateIpAddress,omitempty"`
-	VPCId               *string `json:"VPCId,omitempty" xml:"VPCId,omitempty"`
-	VSwitchId           *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// VPC ID。
+	VPCId     *string `json:"VPCId,omitempty" xml:"VPCId,omitempty"`
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 }
 
 func (s ModifyDBInstanceNetworkTypeRequest) String() string {
@@ -13940,6 +14034,14 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+/**
+ * @deprecated
+ *
+ * @param request AddBuDBInstanceRelationRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return AddBuDBInstanceRelationResponse
+ */
+// Deprecated
 func (client *Client) AddBuDBInstanceRelationWithOptions(request *AddBuDBInstanceRelationRequest, runtime *util.RuntimeOptions) (_result *AddBuDBInstanceRelationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13981,6 +14083,13 @@ func (client *Client) AddBuDBInstanceRelationWithOptions(request *AddBuDBInstanc
 	return _result, _err
 }
 
+/**
+ * @deprecated
+ *
+ * @param request AddBuDBInstanceRelationRequest
+ * @return AddBuDBInstanceRelationResponse
+ */
+// Deprecated
 func (client *Client) AddBuDBInstanceRelation(request *AddBuDBInstanceRelationRequest) (_result *AddBuDBInstanceRelationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &AddBuDBInstanceRelationResponse{}
@@ -14764,6 +14873,14 @@ func (client *Client) DeleteDBInstancePlan(request *DeleteDBInstancePlanRequest)
 	return _result, _err
 }
 
+/**
+ * @deprecated
+ *
+ * @param request DeleteDatabaseRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DeleteDatabaseResponse
+ */
+// Deprecated
 func (client *Client) DeleteDatabaseWithOptions(request *DeleteDatabaseRequest, runtime *util.RuntimeOptions) (_result *DeleteDatabaseResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14805,6 +14922,13 @@ func (client *Client) DeleteDatabaseWithOptions(request *DeleteDatabaseRequest, 
 	return _result, _err
 }
 
+/**
+ * @deprecated
+ *
+ * @param request DeleteDatabaseRequest
+ * @return DeleteDatabaseResponse
+ */
+// Deprecated
 func (client *Client) DeleteDatabase(request *DeleteDatabaseRequest) (_result *DeleteDatabaseResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteDatabaseResponse{}
@@ -17699,6 +17823,54 @@ func (client *Client) DescribeSpecification(request *DescribeSpecificationReques
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeSpecificationResponse{}
 	_body, _err := client.DescribeSpecificationWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeSupportFeaturesWithOptions(request *DescribeSupportFeaturesRequest, runtime *util.RuntimeOptions) (_result *DescribeSupportFeaturesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeSupportFeatures"),
+		Version:     tea.String("2016-05-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeSupportFeaturesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeSupportFeatures(request *DescribeSupportFeaturesRequest) (_result *DescribeSupportFeaturesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeSupportFeaturesResponse{}
+	_body, _err := client.DescribeSupportFeaturesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
