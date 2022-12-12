@@ -93,13 +93,106 @@ func (s *AddDiskReplicaPairResponse) SetBody(v *AddDiskReplicaPairResponseBody) 
 	return s
 }
 
+type ApplyLensServiceResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ApplyLensServiceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ApplyLensServiceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ApplyLensServiceResponseBody) SetRequestId(v string) *ApplyLensServiceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ApplyLensServiceResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ApplyLensServiceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ApplyLensServiceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ApplyLensServiceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ApplyLensServiceResponse) SetHeaders(v map[string]*string) *ApplyLensServiceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ApplyLensServiceResponse) SetStatusCode(v int32) *ApplyLensServiceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ApplyLensServiceResponse) SetBody(v *ApplyLensServiceResponseBody) *ApplyLensServiceResponse {
+	s.Body = v
+	return s
+}
+
+type CancelLensServiceResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CancelLensServiceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CancelLensServiceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CancelLensServiceResponseBody) SetRequestId(v string) *CancelLensServiceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CancelLensServiceResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CancelLensServiceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CancelLensServiceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CancelLensServiceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CancelLensServiceResponse) SetHeaders(v map[string]*string) *CancelLensServiceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CancelLensServiceResponse) SetStatusCode(v int32) *CancelLensServiceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CancelLensServiceResponse) SetBody(v *CancelLensServiceResponseBody) *CancelLensServiceResponse {
+	s.Body = v
+	return s
+}
+
 type CreateDedicatedBlockStorageClusterRequest struct {
-	Azone    *string `json:"Azone,omitempty" xml:"Azone,omitempty"`
-	Capacity *int64  `json:"Capacity,omitempty" xml:"Capacity,omitempty"`
-	DbscId   *string `json:"DbscId,omitempty" xml:"DbscId,omitempty"`
-	DbscName *string `json:"DbscName,omitempty" xml:"DbscName,omitempty"`
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Type     *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Azone           *string `json:"Azone,omitempty" xml:"Azone,omitempty"`
+	Capacity        *int64  `json:"Capacity,omitempty" xml:"Capacity,omitempty"`
+	DbscId          *string `json:"DbscId,omitempty" xml:"DbscId,omitempty"`
+	DbscName        *string `json:"DbscName,omitempty" xml:"DbscName,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	Type            *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s CreateDedicatedBlockStorageClusterRequest) String() string {
@@ -132,6 +225,11 @@ func (s *CreateDedicatedBlockStorageClusterRequest) SetDbscName(v string) *Creat
 
 func (s *CreateDedicatedBlockStorageClusterRequest) SetRegionId(v string) *CreateDedicatedBlockStorageClusterRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *CreateDedicatedBlockStorageClusterRequest) SetResourceGroupId(v string) *CreateDedicatedBlockStorageClusterRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -949,14 +1047,18 @@ func (s *DescribeDedicatedBlockStorageClusterDisksResponse) SetBody(v *DescribeD
 }
 
 type DescribeDedicatedBlockStorageClustersRequest struct {
-	AzoneId                        *string   `json:"AzoneId,omitempty" xml:"AzoneId,omitempty"`
-	Category                       *string   `json:"Category,omitempty" xml:"Category,omitempty"`
-	ClientToken                    *string   `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	DedicatedBlockStorageClusterId []*string `json:"DedicatedBlockStorageClusterId,omitempty" xml:"DedicatedBlockStorageClusterId,omitempty" type:"Repeated"`
-	MaxResults                     *int32    `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken                      *string   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	RegionId                       *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Status                         []*string `json:"Status,omitempty" xml:"Status,omitempty" type:"Repeated"`
+	AzoneId                        *string                                            `json:"AzoneId,omitempty" xml:"AzoneId,omitempty"`
+	Category                       *string                                            `json:"Category,omitempty" xml:"Category,omitempty"`
+	ClientToken                    *string                                            `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DedicatedBlockStorageClusterId []*string                                          `json:"DedicatedBlockStorageClusterId,omitempty" xml:"DedicatedBlockStorageClusterId,omitempty" type:"Repeated"`
+	MaxResults                     *int32                                             `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken                      *string                                            `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	PageNumber                     *int32                                             `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize                       *int32                                             `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RegionId                       *string                                            `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId                *string                                            `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	Status                         []*string                                          `json:"Status,omitempty" xml:"Status,omitempty" type:"Repeated"`
+	Tag                            []*DescribeDedicatedBlockStorageClustersRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s DescribeDedicatedBlockStorageClustersRequest) String() string {
@@ -997,8 +1099,23 @@ func (s *DescribeDedicatedBlockStorageClustersRequest) SetNextToken(v string) *D
 	return s
 }
 
+func (s *DescribeDedicatedBlockStorageClustersRequest) SetPageNumber(v int32) *DescribeDedicatedBlockStorageClustersRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeDedicatedBlockStorageClustersRequest) SetPageSize(v int32) *DescribeDedicatedBlockStorageClustersRequest {
+	s.PageSize = &v
+	return s
+}
+
 func (s *DescribeDedicatedBlockStorageClustersRequest) SetRegionId(v string) *DescribeDedicatedBlockStorageClustersRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeDedicatedBlockStorageClustersRequest) SetResourceGroupId(v string) *DescribeDedicatedBlockStorageClustersRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -1007,10 +1124,41 @@ func (s *DescribeDedicatedBlockStorageClustersRequest) SetStatus(v []*string) *D
 	return s
 }
 
+func (s *DescribeDedicatedBlockStorageClustersRequest) SetTag(v []*DescribeDedicatedBlockStorageClustersRequestTag) *DescribeDedicatedBlockStorageClustersRequest {
+	s.Tag = v
+	return s
+}
+
+type DescribeDedicatedBlockStorageClustersRequestTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DescribeDedicatedBlockStorageClustersRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDedicatedBlockStorageClustersRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDedicatedBlockStorageClustersRequestTag) SetKey(v string) *DescribeDedicatedBlockStorageClustersRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *DescribeDedicatedBlockStorageClustersRequestTag) SetValue(v string) *DescribeDedicatedBlockStorageClustersRequestTag {
+	s.Value = &v
+	return s
+}
+
 type DescribeDedicatedBlockStorageClustersResponseBody struct {
 	DedicatedBlockStorageClusters []*DescribeDedicatedBlockStorageClustersResponseBodyDedicatedBlockStorageClusters `json:"DedicatedBlockStorageClusters,omitempty" xml:"DedicatedBlockStorageClusters,omitempty" type:"Repeated"`
 	NextToken                     *string                                                                           `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	PageNumber                    *int32                                                                            `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize                      *int32                                                                            `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	RequestId                     *string                                                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount                    *int64                                                                            `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeDedicatedBlockStorageClustersResponseBody) String() string {
@@ -1031,8 +1179,23 @@ func (s *DescribeDedicatedBlockStorageClustersResponseBody) SetNextToken(v strin
 	return s
 }
 
+func (s *DescribeDedicatedBlockStorageClustersResponseBody) SetPageNumber(v int32) *DescribeDedicatedBlockStorageClustersResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeDedicatedBlockStorageClustersResponseBody) SetPageSize(v int32) *DescribeDedicatedBlockStorageClustersResponseBody {
+	s.PageSize = &v
+	return s
+}
+
 func (s *DescribeDedicatedBlockStorageClustersResponseBody) SetRequestId(v string) *DescribeDedicatedBlockStorageClustersResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeDedicatedBlockStorageClustersResponseBody) SetTotalCount(v int64) *DescribeDedicatedBlockStorageClustersResponseBody {
+	s.TotalCount = &v
 	return s
 }
 
@@ -1046,8 +1209,10 @@ type DescribeDedicatedBlockStorageClustersResponseBodyDedicatedBlockStorageClust
 	ExpiredTime                          *string                                                                                                             `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
 	PerformanceLevel                     *string                                                                                                             `json:"PerformanceLevel,omitempty" xml:"PerformanceLevel,omitempty"`
 	RegionId                             *string                                                                                                             `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId                      *string                                                                                                             `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	Status                               *string                                                                                                             `json:"Status,omitempty" xml:"Status,omitempty"`
 	SupportedCategory                    *string                                                                                                             `json:"SupportedCategory,omitempty" xml:"SupportedCategory,omitempty"`
+	Tags                                 []*DescribeDedicatedBlockStorageClustersResponseBodyDedicatedBlockStorageClustersTags                               `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	Type                                 *string                                                                                                             `json:"Type,omitempty" xml:"Type,omitempty"`
 	ZoneId                               *string                                                                                                             `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
@@ -1105,6 +1270,11 @@ func (s *DescribeDedicatedBlockStorageClustersResponseBodyDedicatedBlockStorageC
 	return s
 }
 
+func (s *DescribeDedicatedBlockStorageClustersResponseBodyDedicatedBlockStorageClusters) SetResourceGroupId(v string) *DescribeDedicatedBlockStorageClustersResponseBodyDedicatedBlockStorageClusters {
+	s.ResourceGroupId = &v
+	return s
+}
+
 func (s *DescribeDedicatedBlockStorageClustersResponseBodyDedicatedBlockStorageClusters) SetStatus(v string) *DescribeDedicatedBlockStorageClustersResponseBodyDedicatedBlockStorageClusters {
 	s.Status = &v
 	return s
@@ -1112,6 +1282,11 @@ func (s *DescribeDedicatedBlockStorageClustersResponseBodyDedicatedBlockStorageC
 
 func (s *DescribeDedicatedBlockStorageClustersResponseBodyDedicatedBlockStorageClusters) SetSupportedCategory(v string) *DescribeDedicatedBlockStorageClustersResponseBodyDedicatedBlockStorageClusters {
 	s.SupportedCategory = &v
+	return s
+}
+
+func (s *DescribeDedicatedBlockStorageClustersResponseBodyDedicatedBlockStorageClusters) SetTags(v []*DescribeDedicatedBlockStorageClustersResponseBodyDedicatedBlockStorageClustersTags) *DescribeDedicatedBlockStorageClustersResponseBodyDedicatedBlockStorageClusters {
+	s.Tags = v
 	return s
 }
 
@@ -1160,6 +1335,29 @@ func (s *DescribeDedicatedBlockStorageClustersResponseBodyDedicatedBlockStorageC
 	return s
 }
 
+type DescribeDedicatedBlockStorageClustersResponseBodyDedicatedBlockStorageClustersTags struct {
+	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+}
+
+func (s DescribeDedicatedBlockStorageClustersResponseBodyDedicatedBlockStorageClustersTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDedicatedBlockStorageClustersResponseBodyDedicatedBlockStorageClustersTags) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDedicatedBlockStorageClustersResponseBodyDedicatedBlockStorageClustersTags) SetTagKey(v string) *DescribeDedicatedBlockStorageClustersResponseBodyDedicatedBlockStorageClustersTags {
+	s.TagKey = &v
+	return s
+}
+
+func (s *DescribeDedicatedBlockStorageClustersResponseBodyDedicatedBlockStorageClustersTags) SetTagValue(v string) *DescribeDedicatedBlockStorageClustersResponseBodyDedicatedBlockStorageClustersTags {
+	s.TagValue = &v
+	return s
+}
+
 type DescribeDedicatedBlockStorageClustersResponse struct {
 	Headers    map[string]*string                                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
 	StatusCode *int32                                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
@@ -1185,6 +1383,498 @@ func (s *DescribeDedicatedBlockStorageClustersResponse) SetStatusCode(v int32) *
 }
 
 func (s *DescribeDedicatedBlockStorageClustersResponse) SetBody(v *DescribeDedicatedBlockStorageClustersResponseBody) *DescribeDedicatedBlockStorageClustersResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeDiskEventsRequest struct {
+	DiskCategory *string `json:"DiskCategory,omitempty" xml:"DiskCategory,omitempty"`
+	DiskId       *string `json:"DiskId,omitempty" xml:"DiskId,omitempty"`
+	EndTime      *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	MaxResults   *int64  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	StartTime    *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Type         *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s DescribeDiskEventsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDiskEventsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDiskEventsRequest) SetDiskCategory(v string) *DescribeDiskEventsRequest {
+	s.DiskCategory = &v
+	return s
+}
+
+func (s *DescribeDiskEventsRequest) SetDiskId(v string) *DescribeDiskEventsRequest {
+	s.DiskId = &v
+	return s
+}
+
+func (s *DescribeDiskEventsRequest) SetEndTime(v string) *DescribeDiskEventsRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeDiskEventsRequest) SetMaxResults(v int64) *DescribeDiskEventsRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *DescribeDiskEventsRequest) SetNextToken(v string) *DescribeDiskEventsRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *DescribeDiskEventsRequest) SetRegionId(v string) *DescribeDiskEventsRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeDiskEventsRequest) SetStartTime(v string) *DescribeDiskEventsRequest {
+	s.StartTime = &v
+	return s
+}
+
+func (s *DescribeDiskEventsRequest) SetType(v string) *DescribeDiskEventsRequest {
+	s.Type = &v
+	return s
+}
+
+type DescribeDiskEventsResponseBody struct {
+	DiskEvents []*DescribeDiskEventsResponseBodyDiskEvents `json:"DiskEvents,omitempty" xml:"DiskEvents,omitempty" type:"Repeated"`
+	NextToken  *string                                     `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RequestId  *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *int64                                      `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeDiskEventsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDiskEventsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDiskEventsResponseBody) SetDiskEvents(v []*DescribeDiskEventsResponseBodyDiskEvents) *DescribeDiskEventsResponseBody {
+	s.DiskEvents = v
+	return s
+}
+
+func (s *DescribeDiskEventsResponseBody) SetNextToken(v string) *DescribeDiskEventsResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *DescribeDiskEventsResponseBody) SetRequestId(v string) *DescribeDiskEventsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeDiskEventsResponseBody) SetTotalCount(v int64) *DescribeDiskEventsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeDiskEventsResponseBodyDiskEvents struct {
+	Description     *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	DiskId          *string `json:"DiskId,omitempty" xml:"DiskId,omitempty"`
+	RecommendAction *string `json:"RecommendAction,omitempty" xml:"RecommendAction,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Status          *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Timestamp       *string `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
+	Type            *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s DescribeDiskEventsResponseBodyDiskEvents) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDiskEventsResponseBodyDiskEvents) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDiskEventsResponseBodyDiskEvents) SetDescription(v string) *DescribeDiskEventsResponseBodyDiskEvents {
+	s.Description = &v
+	return s
+}
+
+func (s *DescribeDiskEventsResponseBodyDiskEvents) SetDiskId(v string) *DescribeDiskEventsResponseBodyDiskEvents {
+	s.DiskId = &v
+	return s
+}
+
+func (s *DescribeDiskEventsResponseBodyDiskEvents) SetRecommendAction(v string) *DescribeDiskEventsResponseBodyDiskEvents {
+	s.RecommendAction = &v
+	return s
+}
+
+func (s *DescribeDiskEventsResponseBodyDiskEvents) SetRegionId(v string) *DescribeDiskEventsResponseBodyDiskEvents {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeDiskEventsResponseBodyDiskEvents) SetStatus(v string) *DescribeDiskEventsResponseBodyDiskEvents {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeDiskEventsResponseBodyDiskEvents) SetTimestamp(v string) *DescribeDiskEventsResponseBodyDiskEvents {
+	s.Timestamp = &v
+	return s
+}
+
+func (s *DescribeDiskEventsResponseBodyDiskEvents) SetType(v string) *DescribeDiskEventsResponseBodyDiskEvents {
+	s.Type = &v
+	return s
+}
+
+type DescribeDiskEventsResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeDiskEventsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeDiskEventsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDiskEventsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDiskEventsResponse) SetHeaders(v map[string]*string) *DescribeDiskEventsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeDiskEventsResponse) SetStatusCode(v int32) *DescribeDiskEventsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeDiskEventsResponse) SetBody(v *DescribeDiskEventsResponseBody) *DescribeDiskEventsResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeDiskMonitorDataRequest struct {
+	DiskId    *string `json:"DiskId,omitempty" xml:"DiskId,omitempty"`
+	EndTime   *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	Period    *int64  `json:"Period,omitempty" xml:"Period,omitempty"`
+	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Type      *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s DescribeDiskMonitorDataRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDiskMonitorDataRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDiskMonitorDataRequest) SetDiskId(v string) *DescribeDiskMonitorDataRequest {
+	s.DiskId = &v
+	return s
+}
+
+func (s *DescribeDiskMonitorDataRequest) SetEndTime(v string) *DescribeDiskMonitorDataRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeDiskMonitorDataRequest) SetPeriod(v int64) *DescribeDiskMonitorDataRequest {
+	s.Period = &v
+	return s
+}
+
+func (s *DescribeDiskMonitorDataRequest) SetRegionId(v string) *DescribeDiskMonitorDataRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeDiskMonitorDataRequest) SetStartTime(v string) *DescribeDiskMonitorDataRequest {
+	s.StartTime = &v
+	return s
+}
+
+func (s *DescribeDiskMonitorDataRequest) SetType(v string) *DescribeDiskMonitorDataRequest {
+	s.Type = &v
+	return s
+}
+
+type DescribeDiskMonitorDataResponseBody struct {
+	MonitorData []*DescribeDiskMonitorDataResponseBodyMonitorData `json:"MonitorData,omitempty" xml:"MonitorData,omitempty" type:"Repeated"`
+	RequestId   *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount  *int64                                            `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeDiskMonitorDataResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDiskMonitorDataResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDiskMonitorDataResponseBody) SetMonitorData(v []*DescribeDiskMonitorDataResponseBodyMonitorData) *DescribeDiskMonitorDataResponseBody {
+	s.MonitorData = v
+	return s
+}
+
+func (s *DescribeDiskMonitorDataResponseBody) SetRequestId(v string) *DescribeDiskMonitorDataResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeDiskMonitorDataResponseBody) SetTotalCount(v int64) *DescribeDiskMonitorDataResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeDiskMonitorDataResponseBodyMonitorData struct {
+	BPSPercent   *int64  `json:"BPSPercent,omitempty" xml:"BPSPercent,omitempty"`
+	BurstIOCount *int64  `json:"BurstIOCount,omitempty" xml:"BurstIOCount,omitempty"`
+	DiskId       *string `json:"DiskId,omitempty" xml:"DiskId,omitempty"`
+	IOPSPercent  *int64  `json:"IOPSPercent,omitempty" xml:"IOPSPercent,omitempty"`
+	ReadBPS      *int64  `json:"ReadBPS,omitempty" xml:"ReadBPS,omitempty"`
+	ReadIOPS     *int64  `json:"ReadIOPS,omitempty" xml:"ReadIOPS,omitempty"`
+	Timestamp    *string `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
+	WriteBPS     *int64  `json:"WriteBPS,omitempty" xml:"WriteBPS,omitempty"`
+	WriteIOPS    *int64  `json:"WriteIOPS,omitempty" xml:"WriteIOPS,omitempty"`
+}
+
+func (s DescribeDiskMonitorDataResponseBodyMonitorData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDiskMonitorDataResponseBodyMonitorData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDiskMonitorDataResponseBodyMonitorData) SetBPSPercent(v int64) *DescribeDiskMonitorDataResponseBodyMonitorData {
+	s.BPSPercent = &v
+	return s
+}
+
+func (s *DescribeDiskMonitorDataResponseBodyMonitorData) SetBurstIOCount(v int64) *DescribeDiskMonitorDataResponseBodyMonitorData {
+	s.BurstIOCount = &v
+	return s
+}
+
+func (s *DescribeDiskMonitorDataResponseBodyMonitorData) SetDiskId(v string) *DescribeDiskMonitorDataResponseBodyMonitorData {
+	s.DiskId = &v
+	return s
+}
+
+func (s *DescribeDiskMonitorDataResponseBodyMonitorData) SetIOPSPercent(v int64) *DescribeDiskMonitorDataResponseBodyMonitorData {
+	s.IOPSPercent = &v
+	return s
+}
+
+func (s *DescribeDiskMonitorDataResponseBodyMonitorData) SetReadBPS(v int64) *DescribeDiskMonitorDataResponseBodyMonitorData {
+	s.ReadBPS = &v
+	return s
+}
+
+func (s *DescribeDiskMonitorDataResponseBodyMonitorData) SetReadIOPS(v int64) *DescribeDiskMonitorDataResponseBodyMonitorData {
+	s.ReadIOPS = &v
+	return s
+}
+
+func (s *DescribeDiskMonitorDataResponseBodyMonitorData) SetTimestamp(v string) *DescribeDiskMonitorDataResponseBodyMonitorData {
+	s.Timestamp = &v
+	return s
+}
+
+func (s *DescribeDiskMonitorDataResponseBodyMonitorData) SetWriteBPS(v int64) *DescribeDiskMonitorDataResponseBodyMonitorData {
+	s.WriteBPS = &v
+	return s
+}
+
+func (s *DescribeDiskMonitorDataResponseBodyMonitorData) SetWriteIOPS(v int64) *DescribeDiskMonitorDataResponseBodyMonitorData {
+	s.WriteIOPS = &v
+	return s
+}
+
+type DescribeDiskMonitorDataResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeDiskMonitorDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeDiskMonitorDataResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDiskMonitorDataResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDiskMonitorDataResponse) SetHeaders(v map[string]*string) *DescribeDiskMonitorDataResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeDiskMonitorDataResponse) SetStatusCode(v int32) *DescribeDiskMonitorDataResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeDiskMonitorDataResponse) SetBody(v *DescribeDiskMonitorDataResponseBody) *DescribeDiskMonitorDataResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeDiskMonitorDataListRequest struct {
+	DiskIds    *string `json:"DiskIds,omitempty" xml:"DiskIds,omitempty"`
+	EndTime    *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	MaxResults *string `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken  *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	StartTime  *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Type       *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s DescribeDiskMonitorDataListRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDiskMonitorDataListRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDiskMonitorDataListRequest) SetDiskIds(v string) *DescribeDiskMonitorDataListRequest {
+	s.DiskIds = &v
+	return s
+}
+
+func (s *DescribeDiskMonitorDataListRequest) SetEndTime(v string) *DescribeDiskMonitorDataListRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeDiskMonitorDataListRequest) SetMaxResults(v string) *DescribeDiskMonitorDataListRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *DescribeDiskMonitorDataListRequest) SetNextToken(v string) *DescribeDiskMonitorDataListRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *DescribeDiskMonitorDataListRequest) SetRegionId(v string) *DescribeDiskMonitorDataListRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeDiskMonitorDataListRequest) SetStartTime(v string) *DescribeDiskMonitorDataListRequest {
+	s.StartTime = &v
+	return s
+}
+
+func (s *DescribeDiskMonitorDataListRequest) SetType(v string) *DescribeDiskMonitorDataListRequest {
+	s.Type = &v
+	return s
+}
+
+type DescribeDiskMonitorDataListResponseBody struct {
+	MonitorData []*DescribeDiskMonitorDataListResponseBodyMonitorData `json:"MonitorData,omitempty" xml:"MonitorData,omitempty" type:"Repeated"`
+	NextToken   *string                                               `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RequestId   *string                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount  *int64                                                `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeDiskMonitorDataListResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDiskMonitorDataListResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDiskMonitorDataListResponseBody) SetMonitorData(v []*DescribeDiskMonitorDataListResponseBodyMonitorData) *DescribeDiskMonitorDataListResponseBody {
+	s.MonitorData = v
+	return s
+}
+
+func (s *DescribeDiskMonitorDataListResponseBody) SetNextToken(v string) *DescribeDiskMonitorDataListResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *DescribeDiskMonitorDataListResponseBody) SetRequestId(v string) *DescribeDiskMonitorDataListResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeDiskMonitorDataListResponseBody) SetTotalCount(v int64) *DescribeDiskMonitorDataListResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeDiskMonitorDataListResponseBodyMonitorData struct {
+	BurstIOCount *int64  `json:"BurstIOCount,omitempty" xml:"BurstIOCount,omitempty"`
+	DiskId       *string `json:"DiskId,omitempty" xml:"DiskId,omitempty"`
+	Timestamp    *string `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
+}
+
+func (s DescribeDiskMonitorDataListResponseBodyMonitorData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDiskMonitorDataListResponseBodyMonitorData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDiskMonitorDataListResponseBodyMonitorData) SetBurstIOCount(v int64) *DescribeDiskMonitorDataListResponseBodyMonitorData {
+	s.BurstIOCount = &v
+	return s
+}
+
+func (s *DescribeDiskMonitorDataListResponseBodyMonitorData) SetDiskId(v string) *DescribeDiskMonitorDataListResponseBodyMonitorData {
+	s.DiskId = &v
+	return s
+}
+
+func (s *DescribeDiskMonitorDataListResponseBodyMonitorData) SetTimestamp(v string) *DescribeDiskMonitorDataListResponseBodyMonitorData {
+	s.Timestamp = &v
+	return s
+}
+
+type DescribeDiskMonitorDataListResponse struct {
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeDiskMonitorDataListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeDiskMonitorDataListResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDiskMonitorDataListResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDiskMonitorDataListResponse) SetHeaders(v map[string]*string) *DescribeDiskMonitorDataListResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeDiskMonitorDataListResponse) SetStatusCode(v int32) *DescribeDiskMonitorDataListResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeDiskMonitorDataListResponse) SetBody(v *DescribeDiskMonitorDataListResponseBody) *DescribeDiskMonitorDataListResponse {
 	s.Body = v
 	return s
 }
@@ -1808,6 +2498,58 @@ func (s *DescribeDiskReplicaPairsResponse) SetBody(v *DescribeDiskReplicaPairsRe
 	return s
 }
 
+type DescribeLensServiceStatusResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s DescribeLensServiceStatusResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeLensServiceStatusResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeLensServiceStatusResponseBody) SetRequestId(v string) *DescribeLensServiceStatusResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeLensServiceStatusResponseBody) SetStatus(v string) *DescribeLensServiceStatusResponseBody {
+	s.Status = &v
+	return s
+}
+
+type DescribeLensServiceStatusResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeLensServiceStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeLensServiceStatusResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeLensServiceStatusResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeLensServiceStatusResponse) SetHeaders(v map[string]*string) *DescribeLensServiceStatusResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeLensServiceStatusResponse) SetStatusCode(v int32) *DescribeLensServiceStatusResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeLensServiceStatusResponse) SetBody(v *DescribeLensServiceStatusResponseBody) *DescribeLensServiceStatusResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeRegionsRequest struct {
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
@@ -1896,8 +2638,9 @@ func (s *DescribeRegionsResponseBodyRegions) SetZones(v []*DescribeRegionsRespon
 }
 
 type DescribeRegionsResponseBodyRegionsZones struct {
-	LocalName *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
-	ZoneId    *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	LocalName     *string   `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
+	ResourceTypes []*string `json:"ResourceTypes,omitempty" xml:"ResourceTypes,omitempty" type:"Repeated"`
+	ZoneId        *string   `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s DescribeRegionsResponseBodyRegionsZones) String() string {
@@ -1910,6 +2653,11 @@ func (s DescribeRegionsResponseBodyRegionsZones) GoString() string {
 
 func (s *DescribeRegionsResponseBodyRegionsZones) SetLocalName(v string) *DescribeRegionsResponseBodyRegionsZones {
 	s.LocalName = &v
+	return s
+}
+
+func (s *DescribeRegionsResponseBodyRegionsZones) SetResourceTypes(v []*string) *DescribeRegionsResponseBodyRegionsZones {
+	s.ResourceTypes = v
 	return s
 }
 
@@ -2776,6 +3524,98 @@ func (s *ReprotectDiskReplicaPairResponse) SetBody(v *ReprotectDiskReplicaPairRe
 	return s
 }
 
+type StartDiskMonitorRequest struct {
+	DiskIds  []*string `json:"DiskIds,omitempty" xml:"DiskIds,omitempty" type:"Repeated"`
+	RegionId *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s StartDiskMonitorRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartDiskMonitorRequest) GoString() string {
+	return s.String()
+}
+
+func (s *StartDiskMonitorRequest) SetDiskIds(v []*string) *StartDiskMonitorRequest {
+	s.DiskIds = v
+	return s
+}
+
+func (s *StartDiskMonitorRequest) SetRegionId(v string) *StartDiskMonitorRequest {
+	s.RegionId = &v
+	return s
+}
+
+type StartDiskMonitorShrinkRequest struct {
+	DiskIdsShrink *string `json:"DiskIds,omitempty" xml:"DiskIds,omitempty"`
+	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s StartDiskMonitorShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartDiskMonitorShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *StartDiskMonitorShrinkRequest) SetDiskIdsShrink(v string) *StartDiskMonitorShrinkRequest {
+	s.DiskIdsShrink = &v
+	return s
+}
+
+func (s *StartDiskMonitorShrinkRequest) SetRegionId(v string) *StartDiskMonitorShrinkRequest {
+	s.RegionId = &v
+	return s
+}
+
+type StartDiskMonitorResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s StartDiskMonitorResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartDiskMonitorResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *StartDiskMonitorResponseBody) SetRequestId(v string) *StartDiskMonitorResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type StartDiskMonitorResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *StartDiskMonitorResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s StartDiskMonitorResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartDiskMonitorResponse) GoString() string {
+	return s.String()
+}
+
+func (s *StartDiskMonitorResponse) SetHeaders(v map[string]*string) *StartDiskMonitorResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *StartDiskMonitorResponse) SetStatusCode(v int32) *StartDiskMonitorResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *StartDiskMonitorResponse) SetBody(v *StartDiskMonitorResponseBody) *StartDiskMonitorResponse {
+	s.Body = v
+	return s
+}
+
 type StartDiskReplicaGroupRequest struct {
 	ClientToken    *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	OneShot        *bool   `json:"OneShot,omitempty" xml:"OneShot,omitempty"`
@@ -2934,6 +3774,98 @@ func (s *StartDiskReplicaPairResponse) SetStatusCode(v int32) *StartDiskReplicaP
 }
 
 func (s *StartDiskReplicaPairResponse) SetBody(v *StartDiskReplicaPairResponseBody) *StartDiskReplicaPairResponse {
+	s.Body = v
+	return s
+}
+
+type StopDiskMonitorRequest struct {
+	DiskIds  []*string `json:"DiskIds,omitempty" xml:"DiskIds,omitempty" type:"Repeated"`
+	RegionId *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s StopDiskMonitorRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopDiskMonitorRequest) GoString() string {
+	return s.String()
+}
+
+func (s *StopDiskMonitorRequest) SetDiskIds(v []*string) *StopDiskMonitorRequest {
+	s.DiskIds = v
+	return s
+}
+
+func (s *StopDiskMonitorRequest) SetRegionId(v string) *StopDiskMonitorRequest {
+	s.RegionId = &v
+	return s
+}
+
+type StopDiskMonitorShrinkRequest struct {
+	DiskIdsShrink *string `json:"DiskIds,omitempty" xml:"DiskIds,omitempty"`
+	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s StopDiskMonitorShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopDiskMonitorShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *StopDiskMonitorShrinkRequest) SetDiskIdsShrink(v string) *StopDiskMonitorShrinkRequest {
+	s.DiskIdsShrink = &v
+	return s
+}
+
+func (s *StopDiskMonitorShrinkRequest) SetRegionId(v string) *StopDiskMonitorShrinkRequest {
+	s.RegionId = &v
+	return s
+}
+
+type StopDiskMonitorResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s StopDiskMonitorResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopDiskMonitorResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *StopDiskMonitorResponseBody) SetRequestId(v string) *StopDiskMonitorResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type StopDiskMonitorResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *StopDiskMonitorResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s StopDiskMonitorResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopDiskMonitorResponse) GoString() string {
+	return s.String()
+}
+
+func (s *StopDiskMonitorResponse) SetHeaders(v map[string]*string) *StopDiskMonitorResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *StopDiskMonitorResponse) SetStatusCode(v int32) *StopDiskMonitorResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *StopDiskMonitorResponse) SetBody(v *StopDiskMonitorResponseBody) *StopDiskMonitorResponse {
 	s.Body = v
 	return s
 }
@@ -3394,6 +4326,72 @@ func (client *Client) AddDiskReplicaPair(request *AddDiskReplicaPairRequest) (_r
 	return _result, _err
 }
 
+func (client *Client) ApplyLensServiceWithOptions(runtime *util.RuntimeOptions) (_result *ApplyLensServiceResponse, _err error) {
+	req := &openapi.OpenApiRequest{}
+	params := &openapi.Params{
+		Action:      tea.String("ApplyLensService"),
+		Version:     tea.String("2021-07-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ApplyLensServiceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ApplyLensService() (_result *ApplyLensServiceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ApplyLensServiceResponse{}
+	_body, _err := client.ApplyLensServiceWithOptions(runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CancelLensServiceWithOptions(runtime *util.RuntimeOptions) (_result *CancelLensServiceResponse, _err error) {
+	req := &openapi.OpenApiRequest{}
+	params := &openapi.Params{
+		Action:      tea.String("CancelLensService"),
+		Version:     tea.String("2021-07-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CancelLensServiceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CancelLensService() (_result *CancelLensServiceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CancelLensServiceResponse{}
+	_body, _err := client.CancelLensServiceWithOptions(runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) CreateDedicatedBlockStorageClusterWithOptions(request *CreateDedicatedBlockStorageClusterRequest, runtime *util.RuntimeOptions) (_result *CreateDedicatedBlockStorageClusterResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3418,6 +4416,10 @@ func (client *Client) CreateDedicatedBlockStorageClusterWithOptions(request *Cre
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Type)) {
@@ -3795,6 +4797,23 @@ func (client *Client) DescribeDedicatedBlockStorageClustersWithOptions(request *
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
+	}
+
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AzoneId)) {
 		body["AzoneId"] = request.AzoneId
@@ -3829,7 +4848,8 @@ func (client *Client) DescribeDedicatedBlockStorageClustersWithOptions(request *
 	}
 
 	req := &openapi.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeDedicatedBlockStorageClusters"),
@@ -3855,6 +4875,210 @@ func (client *Client) DescribeDedicatedBlockStorageClusters(request *DescribeDed
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDedicatedBlockStorageClustersResponse{}
 	_body, _err := client.DescribeDedicatedBlockStorageClustersWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeDiskEventsWithOptions(request *DescribeDiskEventsRequest, runtime *util.RuntimeOptions) (_result *DescribeDiskEventsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DiskCategory)) {
+		query["DiskCategory"] = request.DiskCategory
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DiskId)) {
+		query["DiskId"] = request.DiskId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDiskEvents"),
+		Version:     tea.String("2021-07-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeDiskEventsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeDiskEvents(request *DescribeDiskEventsRequest) (_result *DescribeDiskEventsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeDiskEventsResponse{}
+	_body, _err := client.DescribeDiskEventsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeDiskMonitorDataWithOptions(request *DescribeDiskMonitorDataRequest, runtime *util.RuntimeOptions) (_result *DescribeDiskMonitorDataResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DiskId)) {
+		query["DiskId"] = request.DiskId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Period)) {
+		query["Period"] = request.Period
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDiskMonitorData"),
+		Version:     tea.String("2021-07-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeDiskMonitorDataResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeDiskMonitorData(request *DescribeDiskMonitorDataRequest) (_result *DescribeDiskMonitorDataResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeDiskMonitorDataResponse{}
+	_body, _err := client.DescribeDiskMonitorDataWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeDiskMonitorDataListWithOptions(request *DescribeDiskMonitorDataListRequest, runtime *util.RuntimeOptions) (_result *DescribeDiskMonitorDataListResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DiskIds)) {
+		query["DiskIds"] = request.DiskIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDiskMonitorDataList"),
+		Version:     tea.String("2021-07-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeDiskMonitorDataListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeDiskMonitorDataList(request *DescribeDiskMonitorDataListRequest) (_result *DescribeDiskMonitorDataListResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeDiskMonitorDataListResponse{}
+	_body, _err := client.DescribeDiskMonitorDataListWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4043,6 +5267,39 @@ func (client *Client) DescribeDiskReplicaPairs(request *DescribeDiskReplicaPairs
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDiskReplicaPairsResponse{}
 	_body, _err := client.DescribeDiskReplicaPairsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeLensServiceStatusWithOptions(runtime *util.RuntimeOptions) (_result *DescribeLensServiceStatusResponse, _err error) {
+	req := &openapi.OpenApiRequest{}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeLensServiceStatus"),
+		Version:     tea.String("2021-07-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeLensServiceStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeLensServiceStatus() (_result *DescribeLensServiceStatusResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeLensServiceStatusResponse{}
+	_body, _err := client.DescribeLensServiceStatusWithOptions(runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4626,6 +5883,60 @@ func (client *Client) ReprotectDiskReplicaPair(request *ReprotectDiskReplicaPair
 	return _result, _err
 }
 
+func (client *Client) StartDiskMonitorWithOptions(tmpReq *StartDiskMonitorRequest, runtime *util.RuntimeOptions) (_result *StartDiskMonitorResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &StartDiskMonitorShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.DiskIds)) {
+		request.DiskIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DiskIds, tea.String("DiskIds"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DiskIdsShrink)) {
+		query["DiskIds"] = request.DiskIdsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("StartDiskMonitor"),
+		Version:     tea.String("2021-07-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &StartDiskMonitorResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) StartDiskMonitor(request *StartDiskMonitorRequest) (_result *StartDiskMonitorResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &StartDiskMonitorResponse{}
+	_body, _err := client.StartDiskMonitorWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) StartDiskReplicaGroupWithOptions(request *StartDiskReplicaGroupRequest, runtime *util.RuntimeOptions) (_result *StartDiskReplicaGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4731,6 +6042,60 @@ func (client *Client) StartDiskReplicaPair(request *StartDiskReplicaPairRequest)
 	runtime := &util.RuntimeOptions{}
 	_result = &StartDiskReplicaPairResponse{}
 	_body, _err := client.StartDiskReplicaPairWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) StopDiskMonitorWithOptions(tmpReq *StopDiskMonitorRequest, runtime *util.RuntimeOptions) (_result *StopDiskMonitorResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &StopDiskMonitorShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.DiskIds)) {
+		request.DiskIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DiskIds, tea.String("DiskIds"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DiskIdsShrink)) {
+		query["DiskIds"] = request.DiskIdsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("StopDiskMonitor"),
+		Version:     tea.String("2021-07-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &StopDiskMonitorResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) StopDiskMonitor(request *StopDiskMonitorRequest) (_result *StopDiskMonitorResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &StopDiskMonitorResponse{}
+	_body, _err := client.StopDiskMonitorWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
