@@ -527,9 +527,10 @@ func (s *CreateInstanceShutdownTimerResponse) SetBody(v *CreateInstanceShutdownT
 }
 
 type CreateInstanceSnapshotRequest struct {
-	ImageUrl            *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
-	SnapshotDescription *string `json:"SnapshotDescription,omitempty" xml:"SnapshotDescription,omitempty"`
-	SnapshotName        *string `json:"SnapshotName,omitempty" xml:"SnapshotName,omitempty"`
+	ImageUrl            *string                                `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
+	Labels              []*CreateInstanceSnapshotRequestLabels `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	SnapshotDescription *string                                `json:"SnapshotDescription,omitempty" xml:"SnapshotDescription,omitempty"`
+	SnapshotName        *string                                `json:"SnapshotName,omitempty" xml:"SnapshotName,omitempty"`
 }
 
 func (s CreateInstanceSnapshotRequest) String() string {
@@ -545,6 +546,11 @@ func (s *CreateInstanceSnapshotRequest) SetImageUrl(v string) *CreateInstanceSna
 	return s
 }
 
+func (s *CreateInstanceSnapshotRequest) SetLabels(v []*CreateInstanceSnapshotRequestLabels) *CreateInstanceSnapshotRequest {
+	s.Labels = v
+	return s
+}
+
 func (s *CreateInstanceSnapshotRequest) SetSnapshotDescription(v string) *CreateInstanceSnapshotRequest {
 	s.SnapshotDescription = &v
 	return s
@@ -552,6 +558,29 @@ func (s *CreateInstanceSnapshotRequest) SetSnapshotDescription(v string) *Create
 
 func (s *CreateInstanceSnapshotRequest) SetSnapshotName(v string) *CreateInstanceSnapshotRequest {
 	s.SnapshotName = &v
+	return s
+}
+
+type CreateInstanceSnapshotRequestLabels struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateInstanceSnapshotRequestLabels) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateInstanceSnapshotRequestLabels) GoString() string {
+	return s.String()
+}
+
+func (s *CreateInstanceSnapshotRequestLabels) SetKey(v string) *CreateInstanceSnapshotRequestLabels {
+	s.Key = &v
+	return s
+}
+
+func (s *CreateInstanceSnapshotRequestLabels) SetValue(v string) *CreateInstanceSnapshotRequestLabels {
+	s.Value = &v
 	return s
 }
 
@@ -2743,16 +2772,17 @@ func (s *ListInstanceSnapshotResponseBody) SetTotalCount(v int64) *ListInstanceS
 }
 
 type ListInstanceSnapshotResponseBodySnapshots struct {
-	GmtCreateTime   *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
-	ImageId         *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	ImageUrl        *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
-	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	ReasonCode      *string `json:"ReasonCode,omitempty" xml:"ReasonCode,omitempty"`
-	ReasonMessage   *string `json:"ReasonMessage,omitempty" xml:"ReasonMessage,omitempty"`
-	SnapshotId      *string `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
-	SnapshotName    *string `json:"SnapshotName,omitempty" xml:"SnapshotName,omitempty"`
-	Status          *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	GmtCreateTime   *string                                            `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	GmtModifiedTime *string                                            `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	ImageId         *string                                            `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	ImageUrl        *string                                            `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
+	InstanceId      *string                                            `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Labels          []*ListInstanceSnapshotResponseBodySnapshotsLabels `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	ReasonCode      *string                                            `json:"ReasonCode,omitempty" xml:"ReasonCode,omitempty"`
+	ReasonMessage   *string                                            `json:"ReasonMessage,omitempty" xml:"ReasonMessage,omitempty"`
+	SnapshotId      *string                                            `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
+	SnapshotName    *string                                            `json:"SnapshotName,omitempty" xml:"SnapshotName,omitempty"`
+	Status          *string                                            `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ListInstanceSnapshotResponseBodySnapshots) String() string {
@@ -2788,6 +2818,11 @@ func (s *ListInstanceSnapshotResponseBodySnapshots) SetInstanceId(v string) *Lis
 	return s
 }
 
+func (s *ListInstanceSnapshotResponseBodySnapshots) SetLabels(v []*ListInstanceSnapshotResponseBodySnapshotsLabels) *ListInstanceSnapshotResponseBodySnapshots {
+	s.Labels = v
+	return s
+}
+
 func (s *ListInstanceSnapshotResponseBodySnapshots) SetReasonCode(v string) *ListInstanceSnapshotResponseBodySnapshots {
 	s.ReasonCode = &v
 	return s
@@ -2810,6 +2845,29 @@ func (s *ListInstanceSnapshotResponseBodySnapshots) SetSnapshotName(v string) *L
 
 func (s *ListInstanceSnapshotResponseBodySnapshots) SetStatus(v string) *ListInstanceSnapshotResponseBodySnapshots {
 	s.Status = &v
+	return s
+}
+
+type ListInstanceSnapshotResponseBodySnapshotsLabels struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListInstanceSnapshotResponseBodySnapshotsLabels) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInstanceSnapshotResponseBodySnapshotsLabels) GoString() string {
+	return s.String()
+}
+
+func (s *ListInstanceSnapshotResponseBodySnapshotsLabels) SetKey(v string) *ListInstanceSnapshotResponseBodySnapshotsLabels {
+	s.Key = &v
+	return s
+}
+
+func (s *ListInstanceSnapshotResponseBodySnapshotsLabels) SetValue(v string) *ListInstanceSnapshotResponseBodySnapshotsLabels {
+	s.Value = &v
 	return s
 }
 
@@ -4010,18 +4068,6 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
-func (client *Client) CreateIdleInstanceCuller(InstanceId *string, request *CreateIdleInstanceCullerRequest) (_result *CreateIdleInstanceCullerResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &CreateIdleInstanceCullerResponse{}
-	_body, _err := client.CreateIdleInstanceCullerWithOptions(InstanceId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) CreateIdleInstanceCullerWithOptions(InstanceId *string, request *CreateIdleInstanceCullerRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateIdleInstanceCullerResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4064,11 +4110,11 @@ func (client *Client) CreateIdleInstanceCullerWithOptions(InstanceId *string, re
 	return _result, _err
 }
 
-func (client *Client) CreateInstance(request *CreateInstanceRequest) (_result *CreateInstanceResponse, _err error) {
+func (client *Client) CreateIdleInstanceCuller(InstanceId *string, request *CreateIdleInstanceCullerRequest) (_result *CreateIdleInstanceCullerResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &CreateInstanceResponse{}
-	_body, _err := client.CreateInstanceWithOptions(request, headers, runtime)
+	_result = &CreateIdleInstanceCullerResponse{}
+	_body, _err := client.CreateIdleInstanceCullerWithOptions(InstanceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4118,7 +4164,7 @@ func (client *Client) CreateInstanceWithOptions(request *CreateInstanceRequest, 
 		body["Priority"] = request.Priority
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.RequestedResource))) {
+	if !tea.BoolValue(util.IsUnset(request.RequestedResource)) {
 		body["RequestedResource"] = request.RequestedResource
 	}
 
@@ -4126,7 +4172,7 @@ func (client *Client) CreateInstanceWithOptions(request *CreateInstanceRequest, 
 		body["ResourceId"] = request.ResourceId
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.UserVpc))) {
+	if !tea.BoolValue(util.IsUnset(request.UserVpc)) {
 		body["UserVpc"] = request.UserVpc
 	}
 
@@ -4158,11 +4204,11 @@ func (client *Client) CreateInstanceWithOptions(request *CreateInstanceRequest, 
 	return _result, _err
 }
 
-func (client *Client) CreateInstanceShutdownTimer(InstanceId *string, request *CreateInstanceShutdownTimerRequest) (_result *CreateInstanceShutdownTimerResponse, _err error) {
+func (client *Client) CreateInstance(request *CreateInstanceRequest) (_result *CreateInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &CreateInstanceShutdownTimerResponse{}
-	_body, _err := client.CreateInstanceShutdownTimerWithOptions(InstanceId, request, headers, runtime)
+	_result = &CreateInstanceResponse{}
+	_body, _err := client.CreateInstanceWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4208,11 +4254,11 @@ func (client *Client) CreateInstanceShutdownTimerWithOptions(InstanceId *string,
 	return _result, _err
 }
 
-func (client *Client) CreateInstanceSnapshot(InstanceId *string, request *CreateInstanceSnapshotRequest) (_result *CreateInstanceSnapshotResponse, _err error) {
+func (client *Client) CreateInstanceShutdownTimer(InstanceId *string, request *CreateInstanceShutdownTimerRequest) (_result *CreateInstanceShutdownTimerResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &CreateInstanceSnapshotResponse{}
-	_body, _err := client.CreateInstanceSnapshotWithOptions(InstanceId, request, headers, runtime)
+	_result = &CreateInstanceShutdownTimerResponse{}
+	_body, _err := client.CreateInstanceShutdownTimerWithOptions(InstanceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4228,6 +4274,10 @@ func (client *Client) CreateInstanceSnapshotWithOptions(InstanceId *string, requ
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ImageUrl)) {
 		body["ImageUrl"] = request.ImageUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Labels)) {
+		body["Labels"] = request.Labels
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SnapshotDescription)) {
@@ -4262,11 +4312,11 @@ func (client *Client) CreateInstanceSnapshotWithOptions(InstanceId *string, requ
 	return _result, _err
 }
 
-func (client *Client) DeleteIdleInstanceCuller(InstanceId *string) (_result *DeleteIdleInstanceCullerResponse, _err error) {
+func (client *Client) CreateInstanceSnapshot(InstanceId *string, request *CreateInstanceSnapshotRequest) (_result *CreateInstanceSnapshotResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DeleteIdleInstanceCullerResponse{}
-	_body, _err := client.DeleteIdleInstanceCullerWithOptions(InstanceId, headers, runtime)
+	_result = &CreateInstanceSnapshotResponse{}
+	_body, _err := client.CreateInstanceSnapshotWithOptions(InstanceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4298,11 +4348,11 @@ func (client *Client) DeleteIdleInstanceCullerWithOptions(InstanceId *string, he
 	return _result, _err
 }
 
-func (client *Client) DeleteInstance(InstanceId *string) (_result *DeleteInstanceResponse, _err error) {
+func (client *Client) DeleteIdleInstanceCuller(InstanceId *string) (_result *DeleteIdleInstanceCullerResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DeleteInstanceResponse{}
-	_body, _err := client.DeleteInstanceWithOptions(InstanceId, headers, runtime)
+	_result = &DeleteIdleInstanceCullerResponse{}
+	_body, _err := client.DeleteIdleInstanceCullerWithOptions(InstanceId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4334,11 +4384,11 @@ func (client *Client) DeleteInstanceWithOptions(InstanceId *string, headers map[
 	return _result, _err
 }
 
-func (client *Client) DeleteInstanceShutdownTimer(InstanceId *string) (_result *DeleteInstanceShutdownTimerResponse, _err error) {
+func (client *Client) DeleteInstance(InstanceId *string) (_result *DeleteInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DeleteInstanceShutdownTimerResponse{}
-	_body, _err := client.DeleteInstanceShutdownTimerWithOptions(InstanceId, headers, runtime)
+	_result = &DeleteInstanceResponse{}
+	_body, _err := client.DeleteInstanceWithOptions(InstanceId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4370,11 +4420,11 @@ func (client *Client) DeleteInstanceShutdownTimerWithOptions(InstanceId *string,
 	return _result, _err
 }
 
-func (client *Client) DeleteInstanceSnapshot(InstanceId *string, SnapshotId *string) (_result *DeleteInstanceSnapshotResponse, _err error) {
+func (client *Client) DeleteInstanceShutdownTimer(InstanceId *string) (_result *DeleteInstanceShutdownTimerResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DeleteInstanceSnapshotResponse{}
-	_body, _err := client.DeleteInstanceSnapshotWithOptions(InstanceId, SnapshotId, headers, runtime)
+	_result = &DeleteInstanceShutdownTimerResponse{}
+	_body, _err := client.DeleteInstanceShutdownTimerWithOptions(InstanceId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4406,11 +4456,11 @@ func (client *Client) DeleteInstanceSnapshotWithOptions(InstanceId *string, Snap
 	return _result, _err
 }
 
-func (client *Client) GetIdleInstanceCuller(InstanceId *string) (_result *GetIdleInstanceCullerResponse, _err error) {
+func (client *Client) DeleteInstanceSnapshot(InstanceId *string, SnapshotId *string) (_result *DeleteInstanceSnapshotResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetIdleInstanceCullerResponse{}
-	_body, _err := client.GetIdleInstanceCullerWithOptions(InstanceId, headers, runtime)
+	_result = &DeleteInstanceSnapshotResponse{}
+	_body, _err := client.DeleteInstanceSnapshotWithOptions(InstanceId, SnapshotId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4442,11 +4492,11 @@ func (client *Client) GetIdleInstanceCullerWithOptions(InstanceId *string, heade
 	return _result, _err
 }
 
-func (client *Client) GetInstance(InstanceId *string) (_result *GetInstanceResponse, _err error) {
+func (client *Client) GetIdleInstanceCuller(InstanceId *string) (_result *GetIdleInstanceCullerResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetInstanceResponse{}
-	_body, _err := client.GetInstanceWithOptions(InstanceId, headers, runtime)
+	_result = &GetIdleInstanceCullerResponse{}
+	_body, _err := client.GetIdleInstanceCullerWithOptions(InstanceId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4478,11 +4528,11 @@ func (client *Client) GetInstanceWithOptions(InstanceId *string, headers map[str
 	return _result, _err
 }
 
-func (client *Client) GetInstanceMetrics(InstanceId *string, request *GetInstanceMetricsRequest) (_result *GetInstanceMetricsResponse, _err error) {
+func (client *Client) GetInstance(InstanceId *string) (_result *GetInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetInstanceMetricsResponse{}
-	_body, _err := client.GetInstanceMetricsWithOptions(InstanceId, request, headers, runtime)
+	_result = &GetInstanceResponse{}
+	_body, _err := client.GetInstanceWithOptions(InstanceId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4536,11 +4586,11 @@ func (client *Client) GetInstanceMetricsWithOptions(InstanceId *string, request 
 	return _result, _err
 }
 
-func (client *Client) GetInstanceShutdownTimer(InstanceId *string) (_result *GetInstanceShutdownTimerResponse, _err error) {
+func (client *Client) GetInstanceMetrics(InstanceId *string, request *GetInstanceMetricsRequest) (_result *GetInstanceMetricsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetInstanceShutdownTimerResponse{}
-	_body, _err := client.GetInstanceShutdownTimerWithOptions(InstanceId, headers, runtime)
+	_result = &GetInstanceMetricsResponse{}
+	_body, _err := client.GetInstanceMetricsWithOptions(InstanceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4572,11 +4622,11 @@ func (client *Client) GetInstanceShutdownTimerWithOptions(InstanceId *string, he
 	return _result, _err
 }
 
-func (client *Client) GetInstanceSnapshot(InstanceId *string, SnapshotId *string) (_result *GetInstanceSnapshotResponse, _err error) {
+func (client *Client) GetInstanceShutdownTimer(InstanceId *string) (_result *GetInstanceShutdownTimerResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetInstanceSnapshotResponse{}
-	_body, _err := client.GetInstanceSnapshotWithOptions(InstanceId, SnapshotId, headers, runtime)
+	_result = &GetInstanceShutdownTimerResponse{}
+	_body, _err := client.GetInstanceShutdownTimerWithOptions(InstanceId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4608,11 +4658,11 @@ func (client *Client) GetInstanceSnapshotWithOptions(InstanceId *string, Snapsho
 	return _result, _err
 }
 
-func (client *Client) GetLifecycle(InstanceId *string, request *GetLifecycleRequest) (_result *GetLifecycleResponse, _err error) {
+func (client *Client) GetInstanceSnapshot(InstanceId *string, SnapshotId *string) (_result *GetInstanceSnapshotResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetLifecycleResponse{}
-	_body, _err := client.GetLifecycleWithOptions(InstanceId, request, headers, runtime)
+	_result = &GetInstanceSnapshotResponse{}
+	_body, _err := client.GetInstanceSnapshotWithOptions(InstanceId, SnapshotId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4670,11 +4720,11 @@ func (client *Client) GetLifecycleWithOptions(InstanceId *string, request *GetLi
 	return _result, _err
 }
 
-func (client *Client) GetToken(request *GetTokenRequest) (_result *GetTokenResponse, _err error) {
+func (client *Client) GetLifecycle(InstanceId *string, request *GetLifecycleRequest) (_result *GetLifecycleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetTokenResponse{}
-	_body, _err := client.GetTokenWithOptions(request, headers, runtime)
+	_result = &GetLifecycleResponse{}
+	_body, _err := client.GetLifecycleWithOptions(InstanceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4720,11 +4770,11 @@ func (client *Client) GetTokenWithOptions(request *GetTokenRequest, headers map[
 	return _result, _err
 }
 
-func (client *Client) GetUserConfig() (_result *GetUserConfigResponse, _err error) {
+func (client *Client) GetToken(request *GetTokenRequest) (_result *GetTokenResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetUserConfigResponse{}
-	_body, _err := client.GetUserConfigWithOptions(headers, runtime)
+	_result = &GetTokenResponse{}
+	_body, _err := client.GetTokenWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4756,11 +4806,11 @@ func (client *Client) GetUserConfigWithOptions(headers map[string]*string, runti
 	return _result, _err
 }
 
-func (client *Client) ListDemoCategories() (_result *ListDemoCategoriesResponse, _err error) {
+func (client *Client) GetUserConfig() (_result *GetUserConfigResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListDemoCategoriesResponse{}
-	_body, _err := client.ListDemoCategoriesWithOptions(headers, runtime)
+	_result = &GetUserConfigResponse{}
+	_body, _err := client.GetUserConfigWithOptions(headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4792,11 +4842,11 @@ func (client *Client) ListDemoCategoriesWithOptions(headers map[string]*string, 
 	return _result, _err
 }
 
-func (client *Client) ListDemos(request *ListDemosRequest) (_result *ListDemosResponse, _err error) {
+func (client *Client) ListDemoCategories() (_result *ListDemoCategoriesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListDemosResponse{}
-	_body, _err := client.ListDemosWithOptions(request, headers, runtime)
+	_result = &ListDemoCategoriesResponse{}
+	_body, _err := client.ListDemoCategoriesWithOptions(headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4850,11 +4900,11 @@ func (client *Client) ListDemosWithOptions(request *ListDemosRequest, headers ma
 	return _result, _err
 }
 
-func (client *Client) ListEcsSpecs(request *ListEcsSpecsRequest) (_result *ListEcsSpecsResponse, _err error) {
+func (client *Client) ListDemos(request *ListDemosRequest) (_result *ListDemosResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListEcsSpecsResponse{}
-	_body, _err := client.ListEcsSpecsWithOptions(request, headers, runtime)
+	_result = &ListDemosResponse{}
+	_body, _err := client.ListDemosWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4912,11 +4962,11 @@ func (client *Client) ListEcsSpecsWithOptions(request *ListEcsSpecsRequest, head
 	return _result, _err
 }
 
-func (client *Client) ListInstanceSnapshot(InstanceId *string, request *ListInstanceSnapshotRequest) (_result *ListInstanceSnapshotResponse, _err error) {
+func (client *Client) ListEcsSpecs(request *ListEcsSpecsRequest) (_result *ListEcsSpecsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListInstanceSnapshotResponse{}
-	_body, _err := client.ListInstanceSnapshotWithOptions(InstanceId, request, headers, runtime)
+	_result = &ListEcsSpecsResponse{}
+	_body, _err := client.ListEcsSpecsWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4970,11 +5020,11 @@ func (client *Client) ListInstanceSnapshotWithOptions(InstanceId *string, reques
 	return _result, _err
 }
 
-func (client *Client) ListInstanceStatistics(request *ListInstanceStatisticsRequest) (_result *ListInstanceStatisticsResponse, _err error) {
+func (client *Client) ListInstanceSnapshot(InstanceId *string, request *ListInstanceSnapshotRequest) (_result *ListInstanceSnapshotResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListInstanceStatisticsResponse{}
-	_body, _err := client.ListInstanceStatisticsWithOptions(request, headers, runtime)
+	_result = &ListInstanceSnapshotResponse{}
+	_body, _err := client.ListInstanceSnapshotWithOptions(InstanceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5016,11 +5066,11 @@ func (client *Client) ListInstanceStatisticsWithOptions(request *ListInstanceSta
 	return _result, _err
 }
 
-func (client *Client) ListInstances(request *ListInstancesRequest) (_result *ListInstancesResponse, _err error) {
+func (client *Client) ListInstanceStatistics(request *ListInstanceStatisticsRequest) (_result *ListInstanceStatisticsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListInstancesResponse{}
-	_body, _err := client.ListInstancesWithOptions(request, headers, runtime)
+	_result = &ListInstanceStatisticsResponse{}
+	_body, _err := client.ListInstanceStatisticsWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5102,11 +5152,11 @@ func (client *Client) ListInstancesWithOptions(request *ListInstancesRequest, he
 	return _result, _err
 }
 
-func (client *Client) StartInstance(InstanceId *string) (_result *StartInstanceResponse, _err error) {
+func (client *Client) ListInstances(request *ListInstancesRequest) (_result *ListInstancesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &StartInstanceResponse{}
-	_body, _err := client.StartInstanceWithOptions(InstanceId, headers, runtime)
+	_result = &ListInstancesResponse{}
+	_body, _err := client.ListInstancesWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5138,11 +5188,11 @@ func (client *Client) StartInstanceWithOptions(InstanceId *string, headers map[s
 	return _result, _err
 }
 
-func (client *Client) StopInstance(InstanceId *string, request *StopInstanceRequest) (_result *StopInstanceResponse, _err error) {
+func (client *Client) StartInstance(InstanceId *string) (_result *StartInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &StopInstanceResponse{}
-	_body, _err := client.StopInstanceWithOptions(InstanceId, request, headers, runtime)
+	_result = &StartInstanceResponse{}
+	_body, _err := client.StartInstanceWithOptions(InstanceId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5184,11 +5234,11 @@ func (client *Client) StopInstanceWithOptions(InstanceId *string, request *StopI
 	return _result, _err
 }
 
-func (client *Client) UpdateInstance(InstanceId *string, request *UpdateInstanceRequest) (_result *UpdateInstanceResponse, _err error) {
+func (client *Client) StopInstance(InstanceId *string, request *StopInstanceRequest) (_result *StopInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &UpdateInstanceResponse{}
-	_body, _err := client.UpdateInstanceWithOptions(InstanceId, request, headers, runtime)
+	_result = &StopInstanceResponse{}
+	_body, _err := client.StopInstanceWithOptions(InstanceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5234,11 +5284,11 @@ func (client *Client) UpdateInstanceWithOptions(InstanceId *string, request *Upd
 		body["InstanceName"] = request.InstanceName
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.RequestedResource))) {
+	if !tea.BoolValue(util.IsUnset(request.RequestedResource)) {
 		body["RequestedResource"] = request.RequestedResource
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.UserVpc))) {
+	if !tea.BoolValue(util.IsUnset(request.UserVpc)) {
 		body["UserVpc"] = request.UserVpc
 	}
 
@@ -5263,5 +5313,17 @@ func (client *Client) UpdateInstanceWithOptions(InstanceId *string, request *Upd
 		return _result, _err
 	}
 	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateInstance(InstanceId *string, request *UpdateInstanceRequest) (_result *UpdateInstanceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateInstanceResponse{}
+	_body, _err := client.UpdateInstanceWithOptions(InstanceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
 	return _result, _err
 }

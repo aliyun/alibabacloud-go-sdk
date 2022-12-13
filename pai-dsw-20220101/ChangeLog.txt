@@ -1,3 +1,6 @@
+2022-12-13 Version: v1.1.211
+- Support Instance Snapshot with Labels.
+
 2022-11-17 Version: v1.1.210
 - Support Lifecycle.
 
