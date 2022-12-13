@@ -2864,8 +2864,11 @@ func (s *DescirbeWorkflowResponse) SetBody(v *DescirbeWorkflowResponseBody) *Des
 }
 
 type DescribeAddonsRequest struct {
-	ClusterType *string `json:"cluster_type,omitempty" xml:"cluster_type,omitempty"`
-	Region      *string `json:"region,omitempty" xml:"region,omitempty"`
+	ClusterProfile *string `json:"cluster_profile,omitempty" xml:"cluster_profile,omitempty"`
+	ClusterSpec    *string `json:"cluster_spec,omitempty" xml:"cluster_spec,omitempty"`
+	ClusterType    *string `json:"cluster_type,omitempty" xml:"cluster_type,omitempty"`
+	ClusterVersion *string `json:"cluster_version,omitempty" xml:"cluster_version,omitempty"`
+	Region         *string `json:"region,omitempty" xml:"region,omitempty"`
 }
 
 func (s DescribeAddonsRequest) String() string {
@@ -2876,8 +2879,23 @@ func (s DescribeAddonsRequest) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeAddonsRequest) SetClusterProfile(v string) *DescribeAddonsRequest {
+	s.ClusterProfile = &v
+	return s
+}
+
+func (s *DescribeAddonsRequest) SetClusterSpec(v string) *DescribeAddonsRequest {
+	s.ClusterSpec = &v
+	return s
+}
+
 func (s *DescribeAddonsRequest) SetClusterType(v string) *DescribeAddonsRequest {
 	s.ClusterType = &v
+	return s
+}
+
+func (s *DescribeAddonsRequest) SetClusterVersion(v string) *DescribeAddonsRequest {
+	s.ClusterVersion = &v
 	return s
 }
 
@@ -6491,11 +6509,14 @@ func (s *DescribeEdgeMachineModelsResponse) SetBody(v *DescribeEdgeMachineModels
 }
 
 type DescribeEdgeMachineTunnelConfigDetailResponseBody struct {
-	DeviceName     *string `json:"device_name,omitempty" xml:"device_name,omitempty"`
-	Model          *string `json:"model,omitempty" xml:"model,omitempty"`
-	ProductKey     *string `json:"product_key,omitempty" xml:"product_key,omitempty"`
-	RequestId      *string `json:"request_id,omitempty" xml:"request_id,omitempty"`
-	Sn             *string `json:"sn,omitempty" xml:"sn,omitempty"`
+	DeviceName *string `json:"device_name,omitempty" xml:"device_name,omitempty"`
+	Model      *string `json:"model,omitempty" xml:"model,omitempty"`
+	// Product Key
+	ProductKey *string `json:"product_key,omitempty" xml:"product_key,omitempty"`
+	// Request ID
+	RequestId *string `json:"request_id,omitempty" xml:"request_id,omitempty"`
+	Sn        *string `json:"sn,omitempty" xml:"sn,omitempty"`
+	// Token
 	Token          *string `json:"token,omitempty" xml:"token,omitempty"`
 	TunnelEndpoint *string `json:"tunnel_endpoint,omitempty" xml:"tunnel_endpoint,omitempty"`
 }
@@ -9172,7 +9193,8 @@ type GetKubernetesTriggerResponseBody struct {
 	ProjectId *string `json:"project_id,omitempty" xml:"project_id,omitempty"`
 	Type      *string `json:"type,omitempty" xml:"type,omitempty"`
 	Action    *string `json:"action,omitempty" xml:"action,omitempty"`
-	Token     *string `json:"token,omitempty" xml:"token,omitempty"`
+	// Token
+	Token *string `json:"token,omitempty" xml:"token,omitempty"`
 }
 
 func (s GetKubernetesTriggerResponseBody) String() string {
@@ -11832,6 +11854,29 @@ func (s *ScaleOutClusterResponse) SetBody(v *ScaleOutClusterResponseBody) *Scale
 	return s
 }
 
+type StartAlertResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+}
+
+func (s StartAlertResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartAlertResponse) GoString() string {
+	return s.String()
+}
+
+func (s *StartAlertResponse) SetHeaders(v map[string]*string) *StartAlertResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *StartAlertResponse) SetStatusCode(v int32) *StartAlertResponse {
+	s.StatusCode = &v
+	return s
+}
+
 type StartWorkflowRequest struct {
 	MappingBamOutFilename      *string `json:"mapping_bam_out_filename,omitempty" xml:"mapping_bam_out_filename,omitempty"`
 	MappingBamOutPath          *string `json:"mapping_bam_out_path,omitempty" xml:"mapping_bam_out_path,omitempty"`
@@ -12000,6 +12045,29 @@ func (s *StartWorkflowResponse) SetStatusCode(v int32) *StartWorkflowResponse {
 
 func (s *StartWorkflowResponse) SetBody(v *StartWorkflowResponseBody) *StartWorkflowResponse {
 	s.Body = v
+	return s
+}
+
+type StopAlertResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+}
+
+func (s StopAlertResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopAlertResponse) GoString() string {
+	return s.String()
+}
+
+func (s *StopAlertResponse) SetHeaders(v map[string]*string) *StopAlertResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *StopAlertResponse) SetStatusCode(v int32) *StopAlertResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -12643,18 +12711,6 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
-func (client *Client) AttachInstances(ClusterId *string, request *AttachInstancesRequest) (_result *AttachInstancesResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &AttachInstancesResponse{}
-	_body, _err := client.AttachInstancesWithOptions(ClusterId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) AttachInstancesWithOptions(ClusterId *string, request *AttachInstancesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *AttachInstancesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12737,11 +12793,11 @@ func (client *Client) AttachInstancesWithOptions(ClusterId *string, request *Att
 	return _result, _err
 }
 
-func (client *Client) CancelClusterUpgrade(ClusterId *string) (_result *CancelClusterUpgradeResponse, _err error) {
+func (client *Client) AttachInstances(ClusterId *string, request *AttachInstancesRequest) (_result *AttachInstancesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &CancelClusterUpgradeResponse{}
-	_body, _err := client.CancelClusterUpgradeWithOptions(ClusterId, headers, runtime)
+	_result = &AttachInstancesResponse{}
+	_body, _err := client.AttachInstancesWithOptions(ClusterId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12773,11 +12829,11 @@ func (client *Client) CancelClusterUpgradeWithOptions(ClusterId *string, headers
 	return _result, _err
 }
 
-func (client *Client) CancelComponentUpgrade(clusterId *string, componentId *string) (_result *CancelComponentUpgradeResponse, _err error) {
+func (client *Client) CancelClusterUpgrade(ClusterId *string) (_result *CancelClusterUpgradeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &CancelComponentUpgradeResponse{}
-	_body, _err := client.CancelComponentUpgradeWithOptions(clusterId, componentId, headers, runtime)
+	_result = &CancelClusterUpgradeResponse{}
+	_body, _err := client.CancelClusterUpgradeWithOptions(ClusterId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12809,11 +12865,11 @@ func (client *Client) CancelComponentUpgradeWithOptions(clusterId *string, compo
 	return _result, _err
 }
 
-func (client *Client) CancelTask(taskId *string) (_result *CancelTaskResponse, _err error) {
+func (client *Client) CancelComponentUpgrade(clusterId *string, componentId *string) (_result *CancelComponentUpgradeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &CancelTaskResponse{}
-	_body, _err := client.CancelTaskWithOptions(taskId, headers, runtime)
+	_result = &CancelComponentUpgradeResponse{}
+	_body, _err := client.CancelComponentUpgradeWithOptions(clusterId, componentId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12845,11 +12901,11 @@ func (client *Client) CancelTaskWithOptions(taskId *string, headers map[string]*
 	return _result, _err
 }
 
-func (client *Client) CancelWorkflow(workflowName *string, request *CancelWorkflowRequest) (_result *CancelWorkflowResponse, _err error) {
+func (client *Client) CancelTask(taskId *string) (_result *CancelTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &CancelWorkflowResponse{}
-	_body, _err := client.CancelWorkflowWithOptions(workflowName, request, headers, runtime)
+	_result = &CancelTaskResponse{}
+	_body, _err := client.CancelTaskWithOptions(taskId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12891,11 +12947,11 @@ func (client *Client) CancelWorkflowWithOptions(workflowName *string, request *C
 	return _result, _err
 }
 
-func (client *Client) CreateAutoscalingConfig(ClusterId *string, request *CreateAutoscalingConfigRequest) (_result *CreateAutoscalingConfigResponse, _err error) {
+func (client *Client) CancelWorkflow(workflowName *string, request *CancelWorkflowRequest) (_result *CancelWorkflowResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &CreateAutoscalingConfigResponse{}
-	_body, _err := client.CreateAutoscalingConfigWithOptions(ClusterId, request, headers, runtime)
+	_result = &CancelWorkflowResponse{}
+	_body, _err := client.CancelWorkflowWithOptions(workflowName, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12961,11 +13017,11 @@ func (client *Client) CreateAutoscalingConfigWithOptions(ClusterId *string, requ
 	return _result, _err
 }
 
-func (client *Client) CreateCluster(request *CreateClusterRequest) (_result *CreateClusterResponse, _err error) {
+func (client *Client) CreateAutoscalingConfig(ClusterId *string, request *CreateAutoscalingConfigRequest) (_result *CreateAutoscalingConfigResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &CreateClusterResponse{}
-	_body, _err := client.CreateClusterWithOptions(request, headers, runtime)
+	_result = &CreateAutoscalingConfigResponse{}
+	_body, _err := client.CreateAutoscalingConfigWithOptions(ClusterId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13355,11 +13411,11 @@ func (client *Client) CreateClusterWithOptions(request *CreateClusterRequest, he
 	return _result, _err
 }
 
-func (client *Client) CreateClusterNodePool(ClusterId *string, request *CreateClusterNodePoolRequest) (_result *CreateClusterNodePoolResponse, _err error) {
+func (client *Client) CreateCluster(request *CreateClusterRequest) (_result *CreateClusterResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &CreateClusterNodePoolResponse{}
-	_body, _err := client.CreateClusterNodePoolWithOptions(ClusterId, request, headers, runtime)
+	_result = &CreateClusterResponse{}
+	_body, _err := client.CreateClusterWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13437,11 +13493,11 @@ func (client *Client) CreateClusterNodePoolWithOptions(ClusterId *string, reques
 	return _result, _err
 }
 
-func (client *Client) CreateEdgeMachine(request *CreateEdgeMachineRequest) (_result *CreateEdgeMachineResponse, _err error) {
+func (client *Client) CreateClusterNodePool(ClusterId *string, request *CreateClusterNodePoolRequest) (_result *CreateClusterNodePoolResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &CreateEdgeMachineResponse{}
-	_body, _err := client.CreateEdgeMachineWithOptions(request, headers, runtime)
+	_result = &CreateClusterNodePoolResponse{}
+	_body, _err := client.CreateClusterNodePoolWithOptions(ClusterId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13491,11 +13547,11 @@ func (client *Client) CreateEdgeMachineWithOptions(request *CreateEdgeMachineReq
 	return _result, _err
 }
 
-func (client *Client) CreateKubernetesTrigger(request *CreateKubernetesTriggerRequest) (_result *CreateKubernetesTriggerResponse, _err error) {
+func (client *Client) CreateEdgeMachine(request *CreateEdgeMachineRequest) (_result *CreateEdgeMachineResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &CreateKubernetesTriggerResponse{}
-	_body, _err := client.CreateKubernetesTriggerWithOptions(request, headers, runtime)
+	_result = &CreateEdgeMachineResponse{}
+	_body, _err := client.CreateEdgeMachineWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13549,11 +13605,11 @@ func (client *Client) CreateKubernetesTriggerWithOptions(request *CreateKubernet
 	return _result, _err
 }
 
-func (client *Client) CreateTemplate(request *CreateTemplateRequest) (_result *CreateTemplateResponse, _err error) {
+func (client *Client) CreateKubernetesTrigger(request *CreateKubernetesTriggerRequest) (_result *CreateKubernetesTriggerResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &CreateTemplateResponse{}
-	_body, _err := client.CreateTemplateWithOptions(request, headers, runtime)
+	_result = &CreateKubernetesTriggerResponse{}
+	_body, _err := client.CreateKubernetesTriggerWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13611,11 +13667,11 @@ func (client *Client) CreateTemplateWithOptions(request *CreateTemplateRequest, 
 	return _result, _err
 }
 
-func (client *Client) CreateTrigger(clusterId *string, request *CreateTriggerRequest) (_result *CreateTriggerResponse, _err error) {
+func (client *Client) CreateTemplate(request *CreateTemplateRequest) (_result *CreateTemplateResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &CreateTriggerResponse{}
-	_body, _err := client.CreateTriggerWithOptions(clusterId, request, headers, runtime)
+	_result = &CreateTemplateResponse{}
+	_body, _err := client.CreateTemplateWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13669,11 +13725,11 @@ func (client *Client) CreateTriggerWithOptions(clusterId *string, request *Creat
 	return _result, _err
 }
 
-func (client *Client) DeleteAlertContact() (_result *DeleteAlertContactResponse, _err error) {
+func (client *Client) CreateTrigger(clusterId *string, request *CreateTriggerRequest) (_result *CreateTriggerResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DeleteAlertContactResponse{}
-	_body, _err := client.DeleteAlertContactWithOptions(headers, runtime)
+	_result = &CreateTriggerResponse{}
+	_body, _err := client.CreateTriggerWithOptions(clusterId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13705,11 +13761,11 @@ func (client *Client) DeleteAlertContactWithOptions(headers map[string]*string, 
 	return _result, _err
 }
 
-func (client *Client) DeleteAlertContactGroup() (_result *DeleteAlertContactGroupResponse, _err error) {
+func (client *Client) DeleteAlertContact() (_result *DeleteAlertContactResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DeleteAlertContactGroupResponse{}
-	_body, _err := client.DeleteAlertContactGroupWithOptions(headers, runtime)
+	_result = &DeleteAlertContactResponse{}
+	_body, _err := client.DeleteAlertContactWithOptions(headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13741,11 +13797,11 @@ func (client *Client) DeleteAlertContactGroupWithOptions(headers map[string]*str
 	return _result, _err
 }
 
-func (client *Client) DeleteCluster(ClusterId *string, request *DeleteClusterRequest) (_result *DeleteClusterResponse, _err error) {
+func (client *Client) DeleteAlertContactGroup() (_result *DeleteAlertContactGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DeleteClusterResponse{}
-	_body, _err := client.DeleteClusterWithOptions(ClusterId, request, headers, runtime)
+	_result = &DeleteAlertContactGroupResponse{}
+	_body, _err := client.DeleteAlertContactGroupWithOptions(headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13801,11 +13857,11 @@ func (client *Client) DeleteClusterWithOptions(ClusterId *string, tmpReq *Delete
 	return _result, _err
 }
 
-func (client *Client) DeleteClusterNodepool(ClusterId *string, NodepoolId *string, request *DeleteClusterNodepoolRequest) (_result *DeleteClusterNodepoolResponse, _err error) {
+func (client *Client) DeleteCluster(ClusterId *string, request *DeleteClusterRequest) (_result *DeleteClusterResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DeleteClusterNodepoolResponse{}
-	_body, _err := client.DeleteClusterNodepoolWithOptions(ClusterId, NodepoolId, request, headers, runtime)
+	_result = &DeleteClusterResponse{}
+	_body, _err := client.DeleteClusterWithOptions(ClusterId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13847,11 +13903,11 @@ func (client *Client) DeleteClusterNodepoolWithOptions(ClusterId *string, Nodepo
 	return _result, _err
 }
 
-func (client *Client) DeleteClusterNodes(ClusterId *string, request *DeleteClusterNodesRequest) (_result *DeleteClusterNodesResponse, _err error) {
+func (client *Client) DeleteClusterNodepool(ClusterId *string, NodepoolId *string, request *DeleteClusterNodepoolRequest) (_result *DeleteClusterNodepoolResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DeleteClusterNodesResponse{}
-	_body, _err := client.DeleteClusterNodesWithOptions(ClusterId, request, headers, runtime)
+	_result = &DeleteClusterNodepoolResponse{}
+	_body, _err := client.DeleteClusterNodepoolWithOptions(ClusterId, NodepoolId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13901,11 +13957,11 @@ func (client *Client) DeleteClusterNodesWithOptions(ClusterId *string, request *
 	return _result, _err
 }
 
-func (client *Client) DeleteEdgeMachine(edgeMachineid *string, request *DeleteEdgeMachineRequest) (_result *DeleteEdgeMachineResponse, _err error) {
+func (client *Client) DeleteClusterNodes(ClusterId *string, request *DeleteClusterNodesRequest) (_result *DeleteClusterNodesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DeleteEdgeMachineResponse{}
-	_body, _err := client.DeleteEdgeMachineWithOptions(edgeMachineid, request, headers, runtime)
+	_result = &DeleteClusterNodesResponse{}
+	_body, _err := client.DeleteClusterNodesWithOptions(ClusterId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13947,11 +14003,11 @@ func (client *Client) DeleteEdgeMachineWithOptions(edgeMachineid *string, reques
 	return _result, _err
 }
 
-func (client *Client) DeleteKubernetesTrigger(Id *string) (_result *DeleteKubernetesTriggerResponse, _err error) {
+func (client *Client) DeleteEdgeMachine(edgeMachineid *string, request *DeleteEdgeMachineRequest) (_result *DeleteEdgeMachineResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DeleteKubernetesTriggerResponse{}
-	_body, _err := client.DeleteKubernetesTriggerWithOptions(Id, headers, runtime)
+	_result = &DeleteEdgeMachineResponse{}
+	_body, _err := client.DeleteEdgeMachineWithOptions(edgeMachineid, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13983,11 +14039,11 @@ func (client *Client) DeleteKubernetesTriggerWithOptions(Id *string, headers map
 	return _result, _err
 }
 
-func (client *Client) DeletePolicyInstance(clusterId *string, policyName *string, request *DeletePolicyInstanceRequest) (_result *DeletePolicyInstanceResponse, _err error) {
+func (client *Client) DeleteKubernetesTrigger(Id *string) (_result *DeleteKubernetesTriggerResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DeletePolicyInstanceResponse{}
-	_body, _err := client.DeletePolicyInstanceWithOptions(clusterId, policyName, request, headers, runtime)
+	_result = &DeleteKubernetesTriggerResponse{}
+	_body, _err := client.DeleteKubernetesTriggerWithOptions(Id, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -14029,11 +14085,11 @@ func (client *Client) DeletePolicyInstanceWithOptions(clusterId *string, policyN
 	return _result, _err
 }
 
-func (client *Client) DeleteTemplate(TemplateId *string) (_result *DeleteTemplateResponse, _err error) {
+func (client *Client) DeletePolicyInstance(clusterId *string, policyName *string, request *DeletePolicyInstanceRequest) (_result *DeletePolicyInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DeleteTemplateResponse{}
-	_body, _err := client.DeleteTemplateWithOptions(TemplateId, headers, runtime)
+	_result = &DeletePolicyInstanceResponse{}
+	_body, _err := client.DeletePolicyInstanceWithOptions(clusterId, policyName, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -14065,11 +14121,11 @@ func (client *Client) DeleteTemplateWithOptions(TemplateId *string, headers map[
 	return _result, _err
 }
 
-func (client *Client) DeleteTrigger(clusterId *string, Id *string) (_result *DeleteTriggerResponse, _err error) {
+func (client *Client) DeleteTemplate(TemplateId *string) (_result *DeleteTemplateResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DeleteTriggerResponse{}
-	_body, _err := client.DeleteTriggerWithOptions(clusterId, Id, headers, runtime)
+	_result = &DeleteTemplateResponse{}
+	_body, _err := client.DeleteTemplateWithOptions(TemplateId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -14101,11 +14157,11 @@ func (client *Client) DeleteTriggerWithOptions(clusterId *string, Id *string, he
 	return _result, _err
 }
 
-func (client *Client) DeployPolicyInstance(clusterId *string, policyName *string, request *DeployPolicyInstanceRequest) (_result *DeployPolicyInstanceResponse, _err error) {
+func (client *Client) DeleteTrigger(clusterId *string, Id *string) (_result *DeleteTriggerResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DeployPolicyInstanceResponse{}
-	_body, _err := client.DeployPolicyInstanceWithOptions(clusterId, policyName, request, headers, runtime)
+	_result = &DeleteTriggerResponse{}
+	_body, _err := client.DeleteTriggerWithOptions(clusterId, Id, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -14155,11 +14211,11 @@ func (client *Client) DeployPolicyInstanceWithOptions(clusterId *string, policyN
 	return _result, _err
 }
 
-func (client *Client) DescirbeWorkflow(workflowName *string) (_result *DescirbeWorkflowResponse, _err error) {
+func (client *Client) DeployPolicyInstance(clusterId *string, policyName *string, request *DeployPolicyInstanceRequest) (_result *DeployPolicyInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DescirbeWorkflowResponse{}
-	_body, _err := client.DescirbeWorkflowWithOptions(workflowName, headers, runtime)
+	_result = &DeployPolicyInstanceResponse{}
+	_body, _err := client.DeployPolicyInstanceWithOptions(clusterId, policyName, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -14191,11 +14247,11 @@ func (client *Client) DescirbeWorkflowWithOptions(workflowName *string, headers 
 	return _result, _err
 }
 
-func (client *Client) DescribeAddons(request *DescribeAddonsRequest) (_result *DescribeAddonsResponse, _err error) {
+func (client *Client) DescirbeWorkflow(workflowName *string) (_result *DescirbeWorkflowResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DescribeAddonsResponse{}
-	_body, _err := client.DescribeAddonsWithOptions(request, headers, runtime)
+	_result = &DescirbeWorkflowResponse{}
+	_body, _err := client.DescirbeWorkflowWithOptions(workflowName, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -14209,8 +14265,20 @@ func (client *Client) DescribeAddonsWithOptions(request *DescribeAddonsRequest, 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterProfile)) {
+		query["cluster_profile"] = request.ClusterProfile
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClusterSpec)) {
+		query["cluster_spec"] = request.ClusterSpec
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ClusterType)) {
 		query["cluster_type"] = request.ClusterType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClusterVersion)) {
+		query["cluster_version"] = request.ClusterVersion
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Region)) {
@@ -14241,11 +14309,11 @@ func (client *Client) DescribeAddonsWithOptions(request *DescribeAddonsRequest, 
 	return _result, _err
 }
 
-func (client *Client) DescribeClusterAddonMetadata(clusterId *string, componentId *string, version *string) (_result *DescribeClusterAddonMetadataResponse, _err error) {
+func (client *Client) DescribeAddons(request *DescribeAddonsRequest) (_result *DescribeAddonsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DescribeClusterAddonMetadataResponse{}
-	_body, _err := client.DescribeClusterAddonMetadataWithOptions(clusterId, componentId, version, headers, runtime)
+	_result = &DescribeAddonsResponse{}
+	_body, _err := client.DescribeAddonsWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -14277,11 +14345,11 @@ func (client *Client) DescribeClusterAddonMetadataWithOptions(clusterId *string,
 	return _result, _err
 }
 
-func (client *Client) DescribeClusterAddonUpgradeStatus(ClusterId *string, ComponentId *string) (_result *DescribeClusterAddonUpgradeStatusResponse, _err error) {
+func (client *Client) DescribeClusterAddonMetadata(clusterId *string, componentId *string, version *string) (_result *DescribeClusterAddonMetadataResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DescribeClusterAddonUpgradeStatusResponse{}
-	_body, _err := client.DescribeClusterAddonUpgradeStatusWithOptions(ClusterId, ComponentId, headers, runtime)
+	_result = &DescribeClusterAddonMetadataResponse{}
+	_body, _err := client.DescribeClusterAddonMetadataWithOptions(clusterId, componentId, version, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -14289,6 +14357,14 @@ func (client *Client) DescribeClusterAddonUpgradeStatus(ClusterId *string, Compo
 	return _result, _err
 }
 
+/**
+ * @deprecated
+ *
+ * @param headers map
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DescribeClusterAddonUpgradeStatusResponse
+ */
+// Deprecated
 func (client *Client) DescribeClusterAddonUpgradeStatusWithOptions(ClusterId *string, ComponentId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DescribeClusterAddonUpgradeStatusResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -14313,11 +14389,17 @@ func (client *Client) DescribeClusterAddonUpgradeStatusWithOptions(ClusterId *st
 	return _result, _err
 }
 
-func (client *Client) DescribeClusterAddonsUpgradeStatus(ClusterId *string, request *DescribeClusterAddonsUpgradeStatusRequest) (_result *DescribeClusterAddonsUpgradeStatusResponse, _err error) {
+/**
+ * @deprecated
+ *
+ * @return DescribeClusterAddonUpgradeStatusResponse
+ */
+// Deprecated
+func (client *Client) DescribeClusterAddonUpgradeStatus(ClusterId *string, ComponentId *string) (_result *DescribeClusterAddonUpgradeStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DescribeClusterAddonsUpgradeStatusResponse{}
-	_body, _err := client.DescribeClusterAddonsUpgradeStatusWithOptions(ClusterId, request, headers, runtime)
+	_result = &DescribeClusterAddonUpgradeStatusResponse{}
+	_body, _err := client.DescribeClusterAddonUpgradeStatusWithOptions(ClusterId, ComponentId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -14365,11 +14447,11 @@ func (client *Client) DescribeClusterAddonsUpgradeStatusWithOptions(ClusterId *s
 	return _result, _err
 }
 
-func (client *Client) DescribeClusterAddonsVersion(ClusterId *string) (_result *DescribeClusterAddonsVersionResponse, _err error) {
+func (client *Client) DescribeClusterAddonsUpgradeStatus(ClusterId *string, request *DescribeClusterAddonsUpgradeStatusRequest) (_result *DescribeClusterAddonsUpgradeStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DescribeClusterAddonsVersionResponse{}
-	_body, _err := client.DescribeClusterAddonsVersionWithOptions(ClusterId, headers, runtime)
+	_result = &DescribeClusterAddonsUpgradeStatusResponse{}
+	_body, _err := client.DescribeClusterAddonsUpgradeStatusWithOptions(ClusterId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -14401,11 +14483,11 @@ func (client *Client) DescribeClusterAddonsVersionWithOptions(ClusterId *string,
 	return _result, _err
 }
 
-func (client *Client) DescribeClusterAttachScripts(ClusterId *string, request *DescribeClusterAttachScriptsRequest) (_result *DescribeClusterAttachScriptsResponse, _err error) {
+func (client *Client) DescribeClusterAddonsVersion(ClusterId *string) (_result *DescribeClusterAddonsVersionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DescribeClusterAttachScriptsResponse{}
-	_body, _err := client.DescribeClusterAttachScriptsWithOptions(ClusterId, request, headers, runtime)
+	_result = &DescribeClusterAddonsVersionResponse{}
+	_body, _err := client.DescribeClusterAddonsVersionWithOptions(ClusterId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -14467,11 +14549,11 @@ func (client *Client) DescribeClusterAttachScriptsWithOptions(ClusterId *string,
 	return _result, _err
 }
 
-func (client *Client) DescribeClusterDetail(ClusterId *string) (_result *DescribeClusterDetailResponse, _err error) {
+func (client *Client) DescribeClusterAttachScripts(ClusterId *string, request *DescribeClusterAttachScriptsRequest) (_result *DescribeClusterAttachScriptsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DescribeClusterDetailResponse{}
-	_body, _err := client.DescribeClusterDetailWithOptions(ClusterId, headers, runtime)
+	_result = &DescribeClusterAttachScriptsResponse{}
+	_body, _err := client.DescribeClusterAttachScriptsWithOptions(ClusterId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -14503,11 +14585,11 @@ func (client *Client) DescribeClusterDetailWithOptions(ClusterId *string, header
 	return _result, _err
 }
 
-func (client *Client) DescribeClusterEvents(ClusterId *string, request *DescribeClusterEventsRequest) (_result *DescribeClusterEventsResponse, _err error) {
+func (client *Client) DescribeClusterDetail(ClusterId *string) (_result *DescribeClusterDetailResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DescribeClusterEventsResponse{}
-	_body, _err := client.DescribeClusterEventsWithOptions(ClusterId, request, headers, runtime)
+	_result = &DescribeClusterDetailResponse{}
+	_body, _err := client.DescribeClusterDetailWithOptions(ClusterId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -14557,11 +14639,11 @@ func (client *Client) DescribeClusterEventsWithOptions(ClusterId *string, reques
 	return _result, _err
 }
 
-func (client *Client) DescribeClusterLogs(ClusterId *string) (_result *DescribeClusterLogsResponse, _err error) {
+func (client *Client) DescribeClusterEvents(ClusterId *string, request *DescribeClusterEventsRequest) (_result *DescribeClusterEventsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DescribeClusterLogsResponse{}
-	_body, _err := client.DescribeClusterLogsWithOptions(ClusterId, headers, runtime)
+	_result = &DescribeClusterEventsResponse{}
+	_body, _err := client.DescribeClusterEventsWithOptions(ClusterId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -14593,11 +14675,11 @@ func (client *Client) DescribeClusterLogsWithOptions(ClusterId *string, headers 
 	return _result, _err
 }
 
-func (client *Client) DescribeClusterNodePoolDetail(ClusterId *string, NodepoolId *string) (_result *DescribeClusterNodePoolDetailResponse, _err error) {
+func (client *Client) DescribeClusterLogs(ClusterId *string) (_result *DescribeClusterLogsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DescribeClusterNodePoolDetailResponse{}
-	_body, _err := client.DescribeClusterNodePoolDetailWithOptions(ClusterId, NodepoolId, headers, runtime)
+	_result = &DescribeClusterLogsResponse{}
+	_body, _err := client.DescribeClusterLogsWithOptions(ClusterId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -14629,11 +14711,11 @@ func (client *Client) DescribeClusterNodePoolDetailWithOptions(ClusterId *string
 	return _result, _err
 }
 
-func (client *Client) DescribeClusterNodePools(ClusterId *string) (_result *DescribeClusterNodePoolsResponse, _err error) {
+func (client *Client) DescribeClusterNodePoolDetail(ClusterId *string, NodepoolId *string) (_result *DescribeClusterNodePoolDetailResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DescribeClusterNodePoolsResponse{}
-	_body, _err := client.DescribeClusterNodePoolsWithOptions(ClusterId, headers, runtime)
+	_result = &DescribeClusterNodePoolDetailResponse{}
+	_body, _err := client.DescribeClusterNodePoolDetailWithOptions(ClusterId, NodepoolId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -14665,11 +14747,11 @@ func (client *Client) DescribeClusterNodePoolsWithOptions(ClusterId *string, hea
 	return _result, _err
 }
 
-func (client *Client) DescribeClusterNodes(ClusterId *string, request *DescribeClusterNodesRequest) (_result *DescribeClusterNodesResponse, _err error) {
+func (client *Client) DescribeClusterNodePools(ClusterId *string) (_result *DescribeClusterNodePoolsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DescribeClusterNodesResponse{}
-	_body, _err := client.DescribeClusterNodesWithOptions(ClusterId, request, headers, runtime)
+	_result = &DescribeClusterNodePoolsResponse{}
+	_body, _err := client.DescribeClusterNodePoolsWithOptions(ClusterId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -14727,11 +14809,11 @@ func (client *Client) DescribeClusterNodesWithOptions(ClusterId *string, request
 	return _result, _err
 }
 
-func (client *Client) DescribeClusterResources(ClusterId *string) (_result *DescribeClusterResourcesResponse, _err error) {
+func (client *Client) DescribeClusterNodes(ClusterId *string, request *DescribeClusterNodesRequest) (_result *DescribeClusterNodesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DescribeClusterResourcesResponse{}
-	_body, _err := client.DescribeClusterResourcesWithOptions(ClusterId, headers, runtime)
+	_result = &DescribeClusterNodesResponse{}
+	_body, _err := client.DescribeClusterNodesWithOptions(ClusterId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -14763,11 +14845,11 @@ func (client *Client) DescribeClusterResourcesWithOptions(ClusterId *string, hea
 	return _result, _err
 }
 
-func (client *Client) DescribeClusterTasks(clusterId *string) (_result *DescribeClusterTasksResponse, _err error) {
+func (client *Client) DescribeClusterResources(ClusterId *string) (_result *DescribeClusterResourcesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DescribeClusterTasksResponse{}
-	_body, _err := client.DescribeClusterTasksWithOptions(clusterId, headers, runtime)
+	_result = &DescribeClusterResourcesResponse{}
+	_body, _err := client.DescribeClusterResourcesWithOptions(ClusterId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -14799,11 +14881,11 @@ func (client *Client) DescribeClusterTasksWithOptions(clusterId *string, headers
 	return _result, _err
 }
 
-func (client *Client) DescribeClusterUserKubeconfig(ClusterId *string, request *DescribeClusterUserKubeconfigRequest) (_result *DescribeClusterUserKubeconfigResponse, _err error) {
+func (client *Client) DescribeClusterTasks(clusterId *string) (_result *DescribeClusterTasksResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DescribeClusterUserKubeconfigResponse{}
-	_body, _err := client.DescribeClusterUserKubeconfigWithOptions(ClusterId, request, headers, runtime)
+	_result = &DescribeClusterTasksResponse{}
+	_body, _err := client.DescribeClusterTasksWithOptions(clusterId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -14849,11 +14931,11 @@ func (client *Client) DescribeClusterUserKubeconfigWithOptions(ClusterId *string
 	return _result, _err
 }
 
-func (client *Client) DescribeClusterV2UserKubeconfig(ClusterId *string, request *DescribeClusterV2UserKubeconfigRequest) (_result *DescribeClusterV2UserKubeconfigResponse, _err error) {
+func (client *Client) DescribeClusterUserKubeconfig(ClusterId *string, request *DescribeClusterUserKubeconfigRequest) (_result *DescribeClusterUserKubeconfigResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DescribeClusterV2UserKubeconfigResponse{}
-	_body, _err := client.DescribeClusterV2UserKubeconfigWithOptions(ClusterId, request, headers, runtime)
+	_result = &DescribeClusterUserKubeconfigResponse{}
+	_body, _err := client.DescribeClusterUserKubeconfigWithOptions(ClusterId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -14861,6 +14943,15 @@ func (client *Client) DescribeClusterV2UserKubeconfig(ClusterId *string, request
 	return _result, _err
 }
 
+/**
+ * @deprecated
+ *
+ * @param request DescribeClusterV2UserKubeconfigRequest
+ * @param headers map
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DescribeClusterV2UserKubeconfigResponse
+ */
+// Deprecated
 func (client *Client) DescribeClusterV2UserKubeconfigWithOptions(ClusterId *string, request *DescribeClusterV2UserKubeconfigRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DescribeClusterV2UserKubeconfigResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14895,11 +14986,18 @@ func (client *Client) DescribeClusterV2UserKubeconfigWithOptions(ClusterId *stri
 	return _result, _err
 }
 
-func (client *Client) DescribeClusters(request *DescribeClustersRequest) (_result *DescribeClustersResponse, _err error) {
+/**
+ * @deprecated
+ *
+ * @param request DescribeClusterV2UserKubeconfigRequest
+ * @return DescribeClusterV2UserKubeconfigResponse
+ */
+// Deprecated
+func (client *Client) DescribeClusterV2UserKubeconfig(ClusterId *string, request *DescribeClusterV2UserKubeconfigRequest) (_result *DescribeClusterV2UserKubeconfigResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DescribeClustersResponse{}
-	_body, _err := client.DescribeClustersWithOptions(request, headers, runtime)
+	_result = &DescribeClusterV2UserKubeconfigResponse{}
+	_body, _err := client.DescribeClusterV2UserKubeconfigWithOptions(ClusterId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -14907,6 +15005,15 @@ func (client *Client) DescribeClusters(request *DescribeClustersRequest) (_resul
 	return _result, _err
 }
 
+/**
+ * @deprecated
+ *
+ * @param request DescribeClustersRequest
+ * @param headers map
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DescribeClustersResponse
+ */
+// Deprecated
 func (client *Client) DescribeClustersWithOptions(request *DescribeClustersRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DescribeClustersResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14945,11 +15052,18 @@ func (client *Client) DescribeClustersWithOptions(request *DescribeClustersReque
 	return _result, _err
 }
 
-func (client *Client) DescribeClustersV1(request *DescribeClustersV1Request) (_result *DescribeClustersV1Response, _err error) {
+/**
+ * @deprecated
+ *
+ * @param request DescribeClustersRequest
+ * @return DescribeClustersResponse
+ */
+// Deprecated
+func (client *Client) DescribeClusters(request *DescribeClustersRequest) (_result *DescribeClustersResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DescribeClustersV1Response{}
-	_body, _err := client.DescribeClustersV1WithOptions(request, headers, runtime)
+	_result = &DescribeClustersResponse{}
+	_body, _err := client.DescribeClustersWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -15015,11 +15129,11 @@ func (client *Client) DescribeClustersV1WithOptions(request *DescribeClustersV1R
 	return _result, _err
 }
 
-func (client *Client) DescribeEdgeMachineActiveProcess(edgeMachineid *string) (_result *DescribeEdgeMachineActiveProcessResponse, _err error) {
+func (client *Client) DescribeClustersV1(request *DescribeClustersV1Request) (_result *DescribeClustersV1Response, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DescribeEdgeMachineActiveProcessResponse{}
-	_body, _err := client.DescribeEdgeMachineActiveProcessWithOptions(edgeMachineid, headers, runtime)
+	_result = &DescribeClustersV1Response{}
+	_body, _err := client.DescribeClustersV1WithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -15051,11 +15165,11 @@ func (client *Client) DescribeEdgeMachineActiveProcessWithOptions(edgeMachineid 
 	return _result, _err
 }
 
-func (client *Client) DescribeEdgeMachineModels() (_result *DescribeEdgeMachineModelsResponse, _err error) {
+func (client *Client) DescribeEdgeMachineActiveProcess(edgeMachineid *string) (_result *DescribeEdgeMachineActiveProcessResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DescribeEdgeMachineModelsResponse{}
-	_body, _err := client.DescribeEdgeMachineModelsWithOptions(headers, runtime)
+	_result = &DescribeEdgeMachineActiveProcessResponse{}
+	_body, _err := client.DescribeEdgeMachineActiveProcessWithOptions(edgeMachineid, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -15087,11 +15201,11 @@ func (client *Client) DescribeEdgeMachineModelsWithOptions(headers map[string]*s
 	return _result, _err
 }
 
-func (client *Client) DescribeEdgeMachineTunnelConfigDetail(edgeMachineid *string) (_result *DescribeEdgeMachineTunnelConfigDetailResponse, _err error) {
+func (client *Client) DescribeEdgeMachineModels() (_result *DescribeEdgeMachineModelsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DescribeEdgeMachineTunnelConfigDetailResponse{}
-	_body, _err := client.DescribeEdgeMachineTunnelConfigDetailWithOptions(edgeMachineid, headers, runtime)
+	_result = &DescribeEdgeMachineModelsResponse{}
+	_body, _err := client.DescribeEdgeMachineModelsWithOptions(headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -15123,11 +15237,11 @@ func (client *Client) DescribeEdgeMachineTunnelConfigDetailWithOptions(edgeMachi
 	return _result, _err
 }
 
-func (client *Client) DescribeEdgeMachines(request *DescribeEdgeMachinesRequest) (_result *DescribeEdgeMachinesResponse, _err error) {
+func (client *Client) DescribeEdgeMachineTunnelConfigDetail(edgeMachineid *string) (_result *DescribeEdgeMachineTunnelConfigDetailResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DescribeEdgeMachinesResponse{}
-	_body, _err := client.DescribeEdgeMachinesWithOptions(request, headers, runtime)
+	_result = &DescribeEdgeMachineTunnelConfigDetailResponse{}
+	_body, _err := client.DescribeEdgeMachineTunnelConfigDetailWithOptions(edgeMachineid, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -15189,11 +15303,11 @@ func (client *Client) DescribeEdgeMachinesWithOptions(request *DescribeEdgeMachi
 	return _result, _err
 }
 
-func (client *Client) DescribeEvents(request *DescribeEventsRequest) (_result *DescribeEventsResponse, _err error) {
+func (client *Client) DescribeEdgeMachines(request *DescribeEdgeMachinesRequest) (_result *DescribeEdgeMachinesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DescribeEventsResponse{}
-	_body, _err := client.DescribeEventsWithOptions(request, headers, runtime)
+	_result = &DescribeEdgeMachinesResponse{}
+	_body, _err := client.DescribeEdgeMachinesWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -15247,11 +15361,11 @@ func (client *Client) DescribeEventsWithOptions(request *DescribeEventsRequest, 
 	return _result, _err
 }
 
-func (client *Client) DescribeExternalAgent(ClusterId *string, request *DescribeExternalAgentRequest) (_result *DescribeExternalAgentResponse, _err error) {
+func (client *Client) DescribeEvents(request *DescribeEventsRequest) (_result *DescribeEventsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DescribeExternalAgentResponse{}
-	_body, _err := client.DescribeExternalAgentWithOptions(ClusterId, request, headers, runtime)
+	_result = &DescribeEventsResponse{}
+	_body, _err := client.DescribeEventsWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -15293,11 +15407,11 @@ func (client *Client) DescribeExternalAgentWithOptions(ClusterId *string, reques
 	return _result, _err
 }
 
-func (client *Client) DescribeKubernetesVersionMetadata(request *DescribeKubernetesVersionMetadataRequest) (_result *DescribeKubernetesVersionMetadataResponse, _err error) {
+func (client *Client) DescribeExternalAgent(ClusterId *string, request *DescribeExternalAgentRequest) (_result *DescribeExternalAgentResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DescribeKubernetesVersionMetadataResponse{}
-	_body, _err := client.DescribeKubernetesVersionMetadataWithOptions(request, headers, runtime)
+	_result = &DescribeExternalAgentResponse{}
+	_body, _err := client.DescribeExternalAgentWithOptions(ClusterId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -15355,11 +15469,11 @@ func (client *Client) DescribeKubernetesVersionMetadataWithOptions(request *Desc
 	return _result, _err
 }
 
-func (client *Client) DescribeNodePoolVuls(clusterId *string, nodepoolId *string) (_result *DescribeNodePoolVulsResponse, _err error) {
+func (client *Client) DescribeKubernetesVersionMetadata(request *DescribeKubernetesVersionMetadataRequest) (_result *DescribeKubernetesVersionMetadataResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DescribeNodePoolVulsResponse{}
-	_body, _err := client.DescribeNodePoolVulsWithOptions(clusterId, nodepoolId, headers, runtime)
+	_result = &DescribeKubernetesVersionMetadataResponse{}
+	_body, _err := client.DescribeKubernetesVersionMetadataWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -15391,11 +15505,11 @@ func (client *Client) DescribeNodePoolVulsWithOptions(clusterId *string, nodepoo
 	return _result, _err
 }
 
-func (client *Client) DescribePolicies() (_result *DescribePoliciesResponse, _err error) {
+func (client *Client) DescribeNodePoolVuls(clusterId *string, nodepoolId *string) (_result *DescribeNodePoolVulsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DescribePoliciesResponse{}
-	_body, _err := client.DescribePoliciesWithOptions(headers, runtime)
+	_result = &DescribeNodePoolVulsResponse{}
+	_body, _err := client.DescribeNodePoolVulsWithOptions(clusterId, nodepoolId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -15427,11 +15541,11 @@ func (client *Client) DescribePoliciesWithOptions(headers map[string]*string, ru
 	return _result, _err
 }
 
-func (client *Client) DescribePolicyDetails(policyName *string) (_result *DescribePolicyDetailsResponse, _err error) {
+func (client *Client) DescribePolicies() (_result *DescribePoliciesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DescribePolicyDetailsResponse{}
-	_body, _err := client.DescribePolicyDetailsWithOptions(policyName, headers, runtime)
+	_result = &DescribePoliciesResponse{}
+	_body, _err := client.DescribePoliciesWithOptions(headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -15463,11 +15577,11 @@ func (client *Client) DescribePolicyDetailsWithOptions(policyName *string, heade
 	return _result, _err
 }
 
-func (client *Client) DescribePolicyGovernanceInCluster(clusterId *string) (_result *DescribePolicyGovernanceInClusterResponse, _err error) {
+func (client *Client) DescribePolicyDetails(policyName *string) (_result *DescribePolicyDetailsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DescribePolicyGovernanceInClusterResponse{}
-	_body, _err := client.DescribePolicyGovernanceInClusterWithOptions(clusterId, headers, runtime)
+	_result = &DescribePolicyDetailsResponse{}
+	_body, _err := client.DescribePolicyDetailsWithOptions(policyName, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -15499,11 +15613,11 @@ func (client *Client) DescribePolicyGovernanceInClusterWithOptions(clusterId *st
 	return _result, _err
 }
 
-func (client *Client) DescribePolicyInstances(clusterId *string, request *DescribePolicyInstancesRequest) (_result *DescribePolicyInstancesResponse, _err error) {
+func (client *Client) DescribePolicyGovernanceInCluster(clusterId *string) (_result *DescribePolicyGovernanceInClusterResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DescribePolicyInstancesResponse{}
-	_body, _err := client.DescribePolicyInstancesWithOptions(clusterId, request, headers, runtime)
+	_result = &DescribePolicyGovernanceInClusterResponse{}
+	_body, _err := client.DescribePolicyGovernanceInClusterWithOptions(clusterId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -15549,11 +15663,11 @@ func (client *Client) DescribePolicyInstancesWithOptions(clusterId *string, requ
 	return _result, _err
 }
 
-func (client *Client) DescribePolicyInstancesStatus(clusterId *string) (_result *DescribePolicyInstancesStatusResponse, _err error) {
+func (client *Client) DescribePolicyInstances(clusterId *string, request *DescribePolicyInstancesRequest) (_result *DescribePolicyInstancesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DescribePolicyInstancesStatusResponse{}
-	_body, _err := client.DescribePolicyInstancesStatusWithOptions(clusterId, headers, runtime)
+	_result = &DescribePolicyInstancesResponse{}
+	_body, _err := client.DescribePolicyInstancesWithOptions(clusterId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -15585,11 +15699,11 @@ func (client *Client) DescribePolicyInstancesStatusWithOptions(clusterId *string
 	return _result, _err
 }
 
-func (client *Client) DescribeTaskInfo(taskId *string) (_result *DescribeTaskInfoResponse, _err error) {
+func (client *Client) DescribePolicyInstancesStatus(clusterId *string) (_result *DescribePolicyInstancesStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DescribeTaskInfoResponse{}
-	_body, _err := client.DescribeTaskInfoWithOptions(taskId, headers, runtime)
+	_result = &DescribePolicyInstancesStatusResponse{}
+	_body, _err := client.DescribePolicyInstancesStatusWithOptions(clusterId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -15621,11 +15735,11 @@ func (client *Client) DescribeTaskInfoWithOptions(taskId *string, headers map[st
 	return _result, _err
 }
 
-func (client *Client) DescribeTemplateAttribute(TemplateId *string, request *DescribeTemplateAttributeRequest) (_result *DescribeTemplateAttributeResponse, _err error) {
+func (client *Client) DescribeTaskInfo(taskId *string) (_result *DescribeTaskInfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DescribeTemplateAttributeResponse{}
-	_body, _err := client.DescribeTemplateAttributeWithOptions(TemplateId, request, headers, runtime)
+	_result = &DescribeTaskInfoResponse{}
+	_body, _err := client.DescribeTaskInfoWithOptions(taskId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -15667,11 +15781,11 @@ func (client *Client) DescribeTemplateAttributeWithOptions(TemplateId *string, r
 	return _result, _err
 }
 
-func (client *Client) DescribeTemplates(request *DescribeTemplatesRequest) (_result *DescribeTemplatesResponse, _err error) {
+func (client *Client) DescribeTemplateAttribute(TemplateId *string, request *DescribeTemplateAttributeRequest) (_result *DescribeTemplateAttributeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DescribeTemplatesResponse{}
-	_body, _err := client.DescribeTemplatesWithOptions(request, headers, runtime)
+	_result = &DescribeTemplateAttributeResponse{}
+	_body, _err := client.DescribeTemplateAttributeWithOptions(TemplateId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -15721,11 +15835,11 @@ func (client *Client) DescribeTemplatesWithOptions(request *DescribeTemplatesReq
 	return _result, _err
 }
 
-func (client *Client) DescribeTrigger(clusterId *string, request *DescribeTriggerRequest) (_result *DescribeTriggerResponse, _err error) {
+func (client *Client) DescribeTemplates(request *DescribeTemplatesRequest) (_result *DescribeTemplatesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DescribeTriggerResponse{}
-	_body, _err := client.DescribeTriggerWithOptions(clusterId, request, headers, runtime)
+	_result = &DescribeTemplatesResponse{}
+	_body, _err := client.DescribeTemplatesWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -15779,11 +15893,11 @@ func (client *Client) DescribeTriggerWithOptions(clusterId *string, request *Des
 	return _result, _err
 }
 
-func (client *Client) DescribeUserPermission(uid *string) (_result *DescribeUserPermissionResponse, _err error) {
+func (client *Client) DescribeTrigger(clusterId *string, request *DescribeTriggerRequest) (_result *DescribeTriggerResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DescribeUserPermissionResponse{}
-	_body, _err := client.DescribeUserPermissionWithOptions(uid, headers, runtime)
+	_result = &DescribeTriggerResponse{}
+	_body, _err := client.DescribeTriggerWithOptions(clusterId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -15815,11 +15929,11 @@ func (client *Client) DescribeUserPermissionWithOptions(uid *string, headers map
 	return _result, _err
 }
 
-func (client *Client) DescribeUserQuota() (_result *DescribeUserQuotaResponse, _err error) {
+func (client *Client) DescribeUserPermission(uid *string) (_result *DescribeUserPermissionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DescribeUserQuotaResponse{}
-	_body, _err := client.DescribeUserQuotaWithOptions(headers, runtime)
+	_result = &DescribeUserPermissionResponse{}
+	_body, _err := client.DescribeUserPermissionWithOptions(uid, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -15851,11 +15965,11 @@ func (client *Client) DescribeUserQuotaWithOptions(headers map[string]*string, r
 	return _result, _err
 }
 
-func (client *Client) DescribeWorkflows() (_result *DescribeWorkflowsResponse, _err error) {
+func (client *Client) DescribeUserQuota() (_result *DescribeUserQuotaResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DescribeWorkflowsResponse{}
-	_body, _err := client.DescribeWorkflowsWithOptions(headers, runtime)
+	_result = &DescribeUserQuotaResponse{}
+	_body, _err := client.DescribeUserQuotaWithOptions(headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -15887,11 +16001,11 @@ func (client *Client) DescribeWorkflowsWithOptions(headers map[string]*string, r
 	return _result, _err
 }
 
-func (client *Client) EdgeClusterAddEdgeMachine(clusterid *string, edgeMachineid *string, request *EdgeClusterAddEdgeMachineRequest) (_result *EdgeClusterAddEdgeMachineResponse, _err error) {
+func (client *Client) DescribeWorkflows() (_result *DescribeWorkflowsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &EdgeClusterAddEdgeMachineResponse{}
-	_body, _err := client.EdgeClusterAddEdgeMachineWithOptions(clusterid, edgeMachineid, request, headers, runtime)
+	_result = &DescribeWorkflowsResponse{}
+	_body, _err := client.DescribeWorkflowsWithOptions(headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -15941,11 +16055,11 @@ func (client *Client) EdgeClusterAddEdgeMachineWithOptions(clusterid *string, ed
 	return _result, _err
 }
 
-func (client *Client) FixNodePoolVuls(clusterId *string, nodepoolId *string, request *FixNodePoolVulsRequest) (_result *FixNodePoolVulsResponse, _err error) {
+func (client *Client) EdgeClusterAddEdgeMachine(clusterid *string, edgeMachineid *string, request *EdgeClusterAddEdgeMachineRequest) (_result *EdgeClusterAddEdgeMachineResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &FixNodePoolVulsResponse{}
-	_body, _err := client.FixNodePoolVulsWithOptions(clusterId, nodepoolId, request, headers, runtime)
+	_result = &EdgeClusterAddEdgeMachineResponse{}
+	_body, _err := client.EdgeClusterAddEdgeMachineWithOptions(clusterid, edgeMachineid, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -15995,11 +16109,11 @@ func (client *Client) FixNodePoolVulsWithOptions(clusterId *string, nodepoolId *
 	return _result, _err
 }
 
-func (client *Client) GetKubernetesTrigger(ClusterId *string, request *GetKubernetesTriggerRequest) (_result *GetKubernetesTriggerResponse, _err error) {
+func (client *Client) FixNodePoolVuls(clusterId *string, nodepoolId *string, request *FixNodePoolVulsRequest) (_result *FixNodePoolVulsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetKubernetesTriggerResponse{}
-	_body, _err := client.GetKubernetesTriggerWithOptions(ClusterId, request, headers, runtime)
+	_result = &FixNodePoolVulsResponse{}
+	_body, _err := client.FixNodePoolVulsWithOptions(clusterId, nodepoolId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -16053,11 +16167,11 @@ func (client *Client) GetKubernetesTriggerWithOptions(ClusterId *string, request
 	return _result, _err
 }
 
-func (client *Client) GetUpgradeStatus(ClusterId *string) (_result *GetUpgradeStatusResponse, _err error) {
+func (client *Client) GetKubernetesTrigger(ClusterId *string, request *GetKubernetesTriggerRequest) (_result *GetKubernetesTriggerResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetUpgradeStatusResponse{}
-	_body, _err := client.GetUpgradeStatusWithOptions(ClusterId, headers, runtime)
+	_result = &GetKubernetesTriggerResponse{}
+	_body, _err := client.GetKubernetesTriggerWithOptions(ClusterId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -16089,11 +16203,11 @@ func (client *Client) GetUpgradeStatusWithOptions(ClusterId *string, headers map
 	return _result, _err
 }
 
-func (client *Client) GrantPermissions(uid *string, request *GrantPermissionsRequest) (_result *GrantPermissionsResponse, _err error) {
+func (client *Client) GetUpgradeStatus(ClusterId *string) (_result *GetUpgradeStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GrantPermissionsResponse{}
-	_body, _err := client.GrantPermissionsWithOptions(uid, request, headers, runtime)
+	_result = &GetUpgradeStatusResponse{}
+	_body, _err := client.GetUpgradeStatusWithOptions(ClusterId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -16130,11 +16244,11 @@ func (client *Client) GrantPermissionsWithOptions(uid *string, request *GrantPer
 	return _result, _err
 }
 
-func (client *Client) InstallClusterAddons(ClusterId *string, request *InstallClusterAddonsRequest) (_result *InstallClusterAddonsResponse, _err error) {
+func (client *Client) GrantPermissions(uid *string, request *GrantPermissionsRequest) (_result *GrantPermissionsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &InstallClusterAddonsResponse{}
-	_body, _err := client.InstallClusterAddonsWithOptions(ClusterId, request, headers, runtime)
+	_result = &GrantPermissionsResponse{}
+	_body, _err := client.GrantPermissionsWithOptions(uid, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -16171,11 +16285,11 @@ func (client *Client) InstallClusterAddonsWithOptions(ClusterId *string, request
 	return _result, _err
 }
 
-func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_result *ListTagResourcesResponse, _err error) {
+func (client *Client) InstallClusterAddons(ClusterId *string, request *InstallClusterAddonsRequest) (_result *InstallClusterAddonsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListTagResourcesResponse{}
-	_body, _err := client.ListTagResourcesWithOptions(request, headers, runtime)
+	_result = &InstallClusterAddonsResponse{}
+	_body, _err := client.InstallClusterAddonsWithOptions(ClusterId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -16243,11 +16357,11 @@ func (client *Client) ListTagResourcesWithOptions(tmpReq *ListTagResourcesReques
 	return _result, _err
 }
 
-func (client *Client) MigrateCluster(clusterId *string, request *MigrateClusterRequest) (_result *MigrateClusterResponse, _err error) {
+func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_result *ListTagResourcesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &MigrateClusterResponse{}
-	_body, _err := client.MigrateClusterWithOptions(clusterId, request, headers, runtime)
+	_result = &ListTagResourcesResponse{}
+	_body, _err := client.ListTagResourcesWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -16293,11 +16407,11 @@ func (client *Client) MigrateClusterWithOptions(clusterId *string, request *Migr
 	return _result, _err
 }
 
-func (client *Client) ModifyCluster(ClusterId *string, request *ModifyClusterRequest) (_result *ModifyClusterResponse, _err error) {
+func (client *Client) MigrateCluster(clusterId *string, request *MigrateClusterRequest) (_result *MigrateClusterResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ModifyClusterResponse{}
-	_body, _err := client.ModifyClusterWithOptions(ClusterId, request, headers, runtime)
+	_result = &MigrateClusterResponse{}
+	_body, _err := client.MigrateClusterWithOptions(clusterId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -16371,11 +16485,11 @@ func (client *Client) ModifyClusterWithOptions(ClusterId *string, request *Modif
 	return _result, _err
 }
 
-func (client *Client) ModifyClusterAddon(clusterId *string, componentId *string, request *ModifyClusterAddonRequest) (_result *ModifyClusterAddonResponse, _err error) {
+func (client *Client) ModifyCluster(ClusterId *string, request *ModifyClusterRequest) (_result *ModifyClusterResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ModifyClusterAddonResponse{}
-	_body, _err := client.ModifyClusterAddonWithOptions(clusterId, componentId, request, headers, runtime)
+	_result = &ModifyClusterResponse{}
+	_body, _err := client.ModifyClusterWithOptions(ClusterId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -16417,11 +16531,11 @@ func (client *Client) ModifyClusterAddonWithOptions(clusterId *string, component
 	return _result, _err
 }
 
-func (client *Client) ModifyClusterConfiguration(ClusterId *string, request *ModifyClusterConfigurationRequest) (_result *ModifyClusterConfigurationResponse, _err error) {
+func (client *Client) ModifyClusterAddon(clusterId *string, componentId *string, request *ModifyClusterAddonRequest) (_result *ModifyClusterAddonResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ModifyClusterConfigurationResponse{}
-	_body, _err := client.ModifyClusterConfigurationWithOptions(ClusterId, request, headers, runtime)
+	_result = &ModifyClusterAddonResponse{}
+	_body, _err := client.ModifyClusterAddonWithOptions(clusterId, componentId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -16463,11 +16577,11 @@ func (client *Client) ModifyClusterConfigurationWithOptions(ClusterId *string, r
 	return _result, _err
 }
 
-func (client *Client) ModifyClusterNodePool(ClusterId *string, NodepoolId *string, request *ModifyClusterNodePoolRequest) (_result *ModifyClusterNodePoolResponse, _err error) {
+func (client *Client) ModifyClusterConfiguration(ClusterId *string, request *ModifyClusterConfigurationRequest) (_result *ModifyClusterConfigurationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ModifyClusterNodePoolResponse{}
-	_body, _err := client.ModifyClusterNodePoolWithOptions(ClusterId, NodepoolId, request, headers, runtime)
+	_result = &ModifyClusterConfigurationResponse{}
+	_body, _err := client.ModifyClusterConfigurationWithOptions(ClusterId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -16533,11 +16647,11 @@ func (client *Client) ModifyClusterNodePoolWithOptions(ClusterId *string, Nodepo
 	return _result, _err
 }
 
-func (client *Client) ModifyClusterTags(ClusterId *string, request *ModifyClusterTagsRequest) (_result *ModifyClusterTagsResponse, _err error) {
+func (client *Client) ModifyClusterNodePool(ClusterId *string, NodepoolId *string, request *ModifyClusterNodePoolRequest) (_result *ModifyClusterNodePoolResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ModifyClusterTagsResponse{}
-	_body, _err := client.ModifyClusterTagsWithOptions(ClusterId, request, headers, runtime)
+	_result = &ModifyClusterNodePoolResponse{}
+	_body, _err := client.ModifyClusterNodePoolWithOptions(ClusterId, NodepoolId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -16574,11 +16688,11 @@ func (client *Client) ModifyClusterTagsWithOptions(ClusterId *string, request *M
 	return _result, _err
 }
 
-func (client *Client) ModifyNodePoolNodeConfig(ClusterId *string, NodepoolId *string, request *ModifyNodePoolNodeConfigRequest) (_result *ModifyNodePoolNodeConfigResponse, _err error) {
+func (client *Client) ModifyClusterTags(ClusterId *string, request *ModifyClusterTagsRequest) (_result *ModifyClusterTagsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ModifyNodePoolNodeConfigResponse{}
-	_body, _err := client.ModifyNodePoolNodeConfigWithOptions(ClusterId, NodepoolId, request, headers, runtime)
+	_result = &ModifyClusterTagsResponse{}
+	_body, _err := client.ModifyClusterTagsWithOptions(ClusterId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -16624,11 +16738,11 @@ func (client *Client) ModifyNodePoolNodeConfigWithOptions(ClusterId *string, Nod
 	return _result, _err
 }
 
-func (client *Client) ModifyPolicyInstance(clusterId *string, policyName *string, request *ModifyPolicyInstanceRequest) (_result *ModifyPolicyInstanceResponse, _err error) {
+func (client *Client) ModifyNodePoolNodeConfig(ClusterId *string, NodepoolId *string, request *ModifyNodePoolNodeConfigRequest) (_result *ModifyNodePoolNodeConfigResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ModifyPolicyInstanceResponse{}
-	_body, _err := client.ModifyPolicyInstanceWithOptions(clusterId, policyName, request, headers, runtime)
+	_result = &ModifyNodePoolNodeConfigResponse{}
+	_body, _err := client.ModifyNodePoolNodeConfigWithOptions(ClusterId, NodepoolId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -16682,11 +16796,11 @@ func (client *Client) ModifyPolicyInstanceWithOptions(clusterId *string, policyN
 	return _result, _err
 }
 
-func (client *Client) OpenAckService(request *OpenAckServiceRequest) (_result *OpenAckServiceResponse, _err error) {
+func (client *Client) ModifyPolicyInstance(clusterId *string, policyName *string, request *ModifyPolicyInstanceRequest) (_result *ModifyPolicyInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &OpenAckServiceResponse{}
-	_body, _err := client.OpenAckServiceWithOptions(request, headers, runtime)
+	_result = &ModifyPolicyInstanceResponse{}
+	_body, _err := client.ModifyPolicyInstanceWithOptions(clusterId, policyName, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -16728,11 +16842,11 @@ func (client *Client) OpenAckServiceWithOptions(request *OpenAckServiceRequest, 
 	return _result, _err
 }
 
-func (client *Client) PauseClusterUpgrade(ClusterId *string) (_result *PauseClusterUpgradeResponse, _err error) {
+func (client *Client) OpenAckService(request *OpenAckServiceRequest) (_result *OpenAckServiceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &PauseClusterUpgradeResponse{}
-	_body, _err := client.PauseClusterUpgradeWithOptions(ClusterId, headers, runtime)
+	_result = &OpenAckServiceResponse{}
+	_body, _err := client.OpenAckServiceWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -16764,11 +16878,11 @@ func (client *Client) PauseClusterUpgradeWithOptions(ClusterId *string, headers 
 	return _result, _err
 }
 
-func (client *Client) PauseComponentUpgrade(clusterid *string, componentid *string) (_result *PauseComponentUpgradeResponse, _err error) {
+func (client *Client) PauseClusterUpgrade(ClusterId *string) (_result *PauseClusterUpgradeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &PauseComponentUpgradeResponse{}
-	_body, _err := client.PauseComponentUpgradeWithOptions(clusterid, componentid, headers, runtime)
+	_result = &PauseClusterUpgradeResponse{}
+	_body, _err := client.PauseClusterUpgradeWithOptions(ClusterId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -16800,11 +16914,11 @@ func (client *Client) PauseComponentUpgradeWithOptions(clusterid *string, compon
 	return _result, _err
 }
 
-func (client *Client) PauseTask(taskId *string) (_result *PauseTaskResponse, _err error) {
+func (client *Client) PauseComponentUpgrade(clusterid *string, componentid *string) (_result *PauseComponentUpgradeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &PauseTaskResponse{}
-	_body, _err := client.PauseTaskWithOptions(taskId, headers, runtime)
+	_result = &PauseComponentUpgradeResponse{}
+	_body, _err := client.PauseComponentUpgradeWithOptions(clusterid, componentid, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -16836,11 +16950,11 @@ func (client *Client) PauseTaskWithOptions(taskId *string, headers map[string]*s
 	return _result, _err
 }
 
-func (client *Client) RemoveClusterNodes(ClusterId *string, request *RemoveClusterNodesRequest) (_result *RemoveClusterNodesResponse, _err error) {
+func (client *Client) PauseTask(taskId *string) (_result *PauseTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &RemoveClusterNodesResponse{}
-	_body, _err := client.RemoveClusterNodesWithOptions(ClusterId, request, headers, runtime)
+	_result = &PauseTaskResponse{}
+	_body, _err := client.PauseTaskWithOptions(taskId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -16848,6 +16962,15 @@ func (client *Client) RemoveClusterNodes(ClusterId *string, request *RemoveClust
 	return _result, _err
 }
 
+/**
+ * @deprecated
+ *
+ * @param request RemoveClusterNodesRequest
+ * @param headers map
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return RemoveClusterNodesResponse
+ */
+// Deprecated
 func (client *Client) RemoveClusterNodesWithOptions(ClusterId *string, request *RemoveClusterNodesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *RemoveClusterNodesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16890,11 +17013,18 @@ func (client *Client) RemoveClusterNodesWithOptions(ClusterId *string, request *
 	return _result, _err
 }
 
-func (client *Client) RemoveNodePoolNodes(ClusterId *string, NodepoolId *string, request *RemoveNodePoolNodesRequest) (_result *RemoveNodePoolNodesResponse, _err error) {
+/**
+ * @deprecated
+ *
+ * @param request RemoveClusterNodesRequest
+ * @return RemoveClusterNodesResponse
+ */
+// Deprecated
+func (client *Client) RemoveClusterNodes(ClusterId *string, request *RemoveClusterNodesRequest) (_result *RemoveClusterNodesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &RemoveNodePoolNodesResponse{}
-	_body, _err := client.RemoveNodePoolNodesWithOptions(ClusterId, NodepoolId, request, headers, runtime)
+	_result = &RemoveClusterNodesResponse{}
+	_body, _err := client.RemoveClusterNodesWithOptions(ClusterId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -16950,11 +17080,11 @@ func (client *Client) RemoveNodePoolNodesWithOptions(ClusterId *string, Nodepool
 	return _result, _err
 }
 
-func (client *Client) RemoveWorkflow(workflowName *string) (_result *RemoveWorkflowResponse, _err error) {
+func (client *Client) RemoveNodePoolNodes(ClusterId *string, NodepoolId *string, request *RemoveNodePoolNodesRequest) (_result *RemoveNodePoolNodesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &RemoveWorkflowResponse{}
-	_body, _err := client.RemoveWorkflowWithOptions(workflowName, headers, runtime)
+	_result = &RemoveNodePoolNodesResponse{}
+	_body, _err := client.RemoveNodePoolNodesWithOptions(ClusterId, NodepoolId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -16986,11 +17116,11 @@ func (client *Client) RemoveWorkflowWithOptions(workflowName *string, headers ma
 	return _result, _err
 }
 
-func (client *Client) RepairClusterNodePool(clusterId *string, nodepoolId *string, request *RepairClusterNodePoolRequest) (_result *RepairClusterNodePoolResponse, _err error) {
+func (client *Client) RemoveWorkflow(workflowName *string) (_result *RemoveWorkflowResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &RepairClusterNodePoolResponse{}
-	_body, _err := client.RepairClusterNodePoolWithOptions(clusterId, nodepoolId, request, headers, runtime)
+	_result = &RemoveWorkflowResponse{}
+	_body, _err := client.RemoveWorkflowWithOptions(workflowName, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -17032,11 +17162,11 @@ func (client *Client) RepairClusterNodePoolWithOptions(clusterId *string, nodepo
 	return _result, _err
 }
 
-func (client *Client) ResumeComponentUpgrade(clusterid *string, componentid *string) (_result *ResumeComponentUpgradeResponse, _err error) {
+func (client *Client) RepairClusterNodePool(clusterId *string, nodepoolId *string, request *RepairClusterNodePoolRequest) (_result *RepairClusterNodePoolResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ResumeComponentUpgradeResponse{}
-	_body, _err := client.ResumeComponentUpgradeWithOptions(clusterid, componentid, headers, runtime)
+	_result = &RepairClusterNodePoolResponse{}
+	_body, _err := client.RepairClusterNodePoolWithOptions(clusterId, nodepoolId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -17068,11 +17198,11 @@ func (client *Client) ResumeComponentUpgradeWithOptions(clusterid *string, compo
 	return _result, _err
 }
 
-func (client *Client) ResumeTask(taskId *string) (_result *ResumeTaskResponse, _err error) {
+func (client *Client) ResumeComponentUpgrade(clusterid *string, componentid *string) (_result *ResumeComponentUpgradeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ResumeTaskResponse{}
-	_body, _err := client.ResumeTaskWithOptions(taskId, headers, runtime)
+	_result = &ResumeComponentUpgradeResponse{}
+	_body, _err := client.ResumeComponentUpgradeWithOptions(clusterid, componentid, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -17104,11 +17234,11 @@ func (client *Client) ResumeTaskWithOptions(taskId *string, headers map[string]*
 	return _result, _err
 }
 
-func (client *Client) ResumeUpgradeCluster(ClusterId *string) (_result *ResumeUpgradeClusterResponse, _err error) {
+func (client *Client) ResumeTask(taskId *string) (_result *ResumeTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ResumeUpgradeClusterResponse{}
-	_body, _err := client.ResumeUpgradeClusterWithOptions(ClusterId, headers, runtime)
+	_result = &ResumeTaskResponse{}
+	_body, _err := client.ResumeTaskWithOptions(taskId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -17140,11 +17270,11 @@ func (client *Client) ResumeUpgradeClusterWithOptions(ClusterId *string, headers
 	return _result, _err
 }
 
-func (client *Client) ScaleCluster(ClusterId *string, request *ScaleClusterRequest) (_result *ScaleClusterResponse, _err error) {
+func (client *Client) ResumeUpgradeCluster(ClusterId *string) (_result *ResumeUpgradeClusterResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ScaleClusterResponse{}
-	_body, _err := client.ScaleClusterWithOptions(ClusterId, request, headers, runtime)
+	_result = &ResumeUpgradeClusterResponse{}
+	_body, _err := client.ResumeUpgradeClusterWithOptions(ClusterId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -17152,6 +17282,15 @@ func (client *Client) ScaleCluster(ClusterId *string, request *ScaleClusterReque
 	return _result, _err
 }
 
+/**
+ * @deprecated
+ *
+ * @param request ScaleClusterRequest
+ * @param headers map
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ScaleClusterResponse
+ */
+// Deprecated
 func (client *Client) ScaleClusterWithOptions(ClusterId *string, request *ScaleClusterRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ScaleClusterResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17258,11 +17397,18 @@ func (client *Client) ScaleClusterWithOptions(ClusterId *string, request *ScaleC
 	return _result, _err
 }
 
-func (client *Client) ScaleClusterNodePool(ClusterId *string, NodepoolId *string, request *ScaleClusterNodePoolRequest) (_result *ScaleClusterNodePoolResponse, _err error) {
+/**
+ * @deprecated
+ *
+ * @param request ScaleClusterRequest
+ * @return ScaleClusterResponse
+ */
+// Deprecated
+func (client *Client) ScaleCluster(ClusterId *string, request *ScaleClusterRequest) (_result *ScaleClusterResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ScaleClusterNodePoolResponse{}
-	_body, _err := client.ScaleClusterNodePoolWithOptions(ClusterId, NodepoolId, request, headers, runtime)
+	_result = &ScaleClusterResponse{}
+	_body, _err := client.ScaleClusterWithOptions(ClusterId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -17304,11 +17450,11 @@ func (client *Client) ScaleClusterNodePoolWithOptions(ClusterId *string, Nodepoo
 	return _result, _err
 }
 
-func (client *Client) ScaleOutCluster(ClusterId *string, request *ScaleOutClusterRequest) (_result *ScaleOutClusterResponse, _err error) {
+func (client *Client) ScaleClusterNodePool(ClusterId *string, NodepoolId *string, request *ScaleClusterNodePoolRequest) (_result *ScaleClusterNodePoolResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ScaleOutClusterResponse{}
-	_body, _err := client.ScaleOutClusterWithOptions(ClusterId, request, headers, runtime)
+	_result = &ScaleClusterNodePoolResponse{}
+	_body, _err := client.ScaleClusterNodePoolWithOptions(ClusterId, NodepoolId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -17430,11 +17576,47 @@ func (client *Client) ScaleOutClusterWithOptions(ClusterId *string, request *Sca
 	return _result, _err
 }
 
-func (client *Client) StartWorkflow(request *StartWorkflowRequest) (_result *StartWorkflowResponse, _err error) {
+func (client *Client) ScaleOutCluster(ClusterId *string, request *ScaleOutClusterRequest) (_result *ScaleOutClusterResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &StartWorkflowResponse{}
-	_body, _err := client.StartWorkflowWithOptions(request, headers, runtime)
+	_result = &ScaleOutClusterResponse{}
+	_body, _err := client.ScaleOutClusterWithOptions(ClusterId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) StartAlertWithOptions(ClusterId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *StartAlertResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("StartAlert"),
+		Version:     tea.String("2015-12-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/alert/" + tea.StringValue(openapiutil.GetEncodeParam(ClusterId)) + "/alert_rule/start"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
+	_result = &StartAlertResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) StartAlert(ClusterId *string) (_result *StartAlertResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &StartAlertResponse{}
+	_body, _err := client.StartAlertWithOptions(ClusterId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -17548,11 +17730,47 @@ func (client *Client) StartWorkflowWithOptions(request *StartWorkflowRequest, he
 	return _result, _err
 }
 
-func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagResourcesResponse, _err error) {
+func (client *Client) StartWorkflow(request *StartWorkflowRequest) (_result *StartWorkflowResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &TagResourcesResponse{}
-	_body, _err := client.TagResourcesWithOptions(request, headers, runtime)
+	_result = &StartWorkflowResponse{}
+	_body, _err := client.StartWorkflowWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) StopAlertWithOptions(ClusterId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *StopAlertResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("StopAlert"),
+		Version:     tea.String("2015-12-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/alert/" + tea.StringValue(openapiutil.GetEncodeParam(ClusterId)) + "/alert_rule/stop"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
+	_result = &StopAlertResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) StopAlert(ClusterId *string) (_result *StopAlertResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &StopAlertResponse{}
+	_body, _err := client.StopAlertWithOptions(ClusterId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -17606,11 +17824,11 @@ func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, head
 	return _result, _err
 }
 
-func (client *Client) UnInstallClusterAddons(ClusterId *string, request *UnInstallClusterAddonsRequest) (_result *UnInstallClusterAddonsResponse, _err error) {
+func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagResourcesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &UnInstallClusterAddonsResponse{}
-	_body, _err := client.UnInstallClusterAddonsWithOptions(ClusterId, request, headers, runtime)
+	_result = &TagResourcesResponse{}
+	_body, _err := client.TagResourcesWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -17647,11 +17865,11 @@ func (client *Client) UnInstallClusterAddonsWithOptions(ClusterId *string, reque
 	return _result, _err
 }
 
-func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *UntagResourcesResponse, _err error) {
+func (client *Client) UnInstallClusterAddons(ClusterId *string, request *UnInstallClusterAddonsRequest) (_result *UnInstallClusterAddonsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &UntagResourcesResponse{}
-	_body, _err := client.UntagResourcesWithOptions(request, headers, runtime)
+	_result = &UnInstallClusterAddonsResponse{}
+	_body, _err := client.UnInstallClusterAddonsWithOptions(ClusterId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -17709,11 +17927,11 @@ func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, 
 	return _result, _err
 }
 
-func (client *Client) UpdateContactGroupForAlert(ClusterId *string) (_result *UpdateContactGroupForAlertResponse, _err error) {
+func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *UntagResourcesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &UpdateContactGroupForAlertResponse{}
-	_body, _err := client.UpdateContactGroupForAlertWithOptions(ClusterId, headers, runtime)
+	_result = &UntagResourcesResponse{}
+	_body, _err := client.UntagResourcesWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -17745,11 +17963,11 @@ func (client *Client) UpdateContactGroupForAlertWithOptions(ClusterId *string, h
 	return _result, _err
 }
 
-func (client *Client) UpdateK8sClusterUserConfigExpire(ClusterId *string, request *UpdateK8sClusterUserConfigExpireRequest) (_result *UpdateK8sClusterUserConfigExpireResponse, _err error) {
+func (client *Client) UpdateContactGroupForAlert(ClusterId *string) (_result *UpdateContactGroupForAlertResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &UpdateK8sClusterUserConfigExpireResponse{}
-	_body, _err := client.UpdateK8sClusterUserConfigExpireWithOptions(ClusterId, request, headers, runtime)
+	_result = &UpdateContactGroupForAlertResponse{}
+	_body, _err := client.UpdateContactGroupForAlertWithOptions(ClusterId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -17795,11 +18013,11 @@ func (client *Client) UpdateK8sClusterUserConfigExpireWithOptions(ClusterId *str
 	return _result, _err
 }
 
-func (client *Client) UpdateTemplate(TemplateId *string, request *UpdateTemplateRequest) (_result *UpdateTemplateResponse, _err error) {
+func (client *Client) UpdateK8sClusterUserConfigExpire(ClusterId *string, request *UpdateK8sClusterUserConfigExpireRequest) (_result *UpdateK8sClusterUserConfigExpireResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &UpdateTemplateResponse{}
-	_body, _err := client.UpdateTemplateWithOptions(TemplateId, request, headers, runtime)
+	_result = &UpdateK8sClusterUserConfigExpireResponse{}
+	_body, _err := client.UpdateK8sClusterUserConfigExpireWithOptions(ClusterId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -17857,11 +18075,11 @@ func (client *Client) UpdateTemplateWithOptions(TemplateId *string, request *Upd
 	return _result, _err
 }
 
-func (client *Client) UpgradeCluster(ClusterId *string, request *UpgradeClusterRequest) (_result *UpgradeClusterResponse, _err error) {
+func (client *Client) UpdateTemplate(TemplateId *string, request *UpdateTemplateRequest) (_result *UpdateTemplateResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &UpgradeClusterResponse{}
-	_body, _err := client.UpgradeClusterWithOptions(ClusterId, request, headers, runtime)
+	_result = &UpdateTemplateResponse{}
+	_body, _err := client.UpdateTemplateWithOptions(TemplateId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -17911,11 +18129,11 @@ func (client *Client) UpgradeClusterWithOptions(ClusterId *string, request *Upgr
 	return _result, _err
 }
 
-func (client *Client) UpgradeClusterAddons(ClusterId *string, request *UpgradeClusterAddonsRequest) (_result *UpgradeClusterAddonsResponse, _err error) {
+func (client *Client) UpgradeCluster(ClusterId *string, request *UpgradeClusterRequest) (_result *UpgradeClusterResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &UpgradeClusterAddonsResponse{}
-	_body, _err := client.UpgradeClusterAddonsWithOptions(ClusterId, request, headers, runtime)
+	_result = &UpgradeClusterResponse{}
+	_body, _err := client.UpgradeClusterWithOptions(ClusterId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -17952,11 +18170,11 @@ func (client *Client) UpgradeClusterAddonsWithOptions(ClusterId *string, request
 	return _result, _err
 }
 
-func (client *Client) UpgradeClusterNodepool(ClusterId *string, NodepoolId *string, request *UpgradeClusterNodepoolRequest) (_result *UpgradeClusterNodepoolResponse, _err error) {
+func (client *Client) UpgradeClusterAddons(ClusterId *string, request *UpgradeClusterAddonsRequest) (_result *UpgradeClusterAddonsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &UpgradeClusterNodepoolResponse{}
-	_body, _err := client.UpgradeClusterNodepoolWithOptions(ClusterId, NodepoolId, request, headers, runtime)
+	_result = &UpgradeClusterAddonsResponse{}
+	_body, _err := client.UpgradeClusterAddonsWithOptions(ClusterId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -18003,5 +18221,17 @@ func (client *Client) UpgradeClusterNodepoolWithOptions(ClusterId *string, Nodep
 		return _result, _err
 	}
 	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpgradeClusterNodepool(ClusterId *string, NodepoolId *string, request *UpgradeClusterNodepoolRequest) (_result *UpgradeClusterNodepoolResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpgradeClusterNodepoolResponse{}
+	_body, _err := client.UpgradeClusterNodepoolWithOptions(ClusterId, NodepoolId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
 	return _result, _err
 }
