@@ -9746,8 +9746,10 @@ type FuzzyQueryRequest struct {
 	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
 	MaxResults  *int64  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	NextToken   *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	Order       *string `json:"Order,omitempty" xml:"Order,omitempty"`
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
 	Query       *string `json:"Query,omitempty" xml:"Query,omitempty"`
+	Sort        *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
 }
 
 func (s FuzzyQueryRequest) String() string {
@@ -9773,6 +9775,11 @@ func (s *FuzzyQueryRequest) SetNextToken(v string) *FuzzyQueryRequest {
 	return s
 }
 
+func (s *FuzzyQueryRequest) SetOrder(v string) *FuzzyQueryRequest {
+	s.Order = &v
+	return s
+}
+
 func (s *FuzzyQueryRequest) SetProjectName(v string) *FuzzyQueryRequest {
 	s.ProjectName = &v
 	return s
@@ -9780,6 +9787,11 @@ func (s *FuzzyQueryRequest) SetProjectName(v string) *FuzzyQueryRequest {
 
 func (s *FuzzyQueryRequest) SetQuery(v string) *FuzzyQueryRequest {
 	s.Query = &v
+	return s
+}
+
+func (s *FuzzyQueryRequest) SetSort(v string) *FuzzyQueryRequest {
+	s.Sort = &v
 	return s
 }
 
@@ -14116,10 +14128,9 @@ func (s *SemanticQueryRequest) SetQuery(v string) *SemanticQueryRequest {
 }
 
 type SemanticQueryResponseBody struct {
-	Aggregations []*SemanticQueryResponseBodyAggregations `json:"Aggregations,omitempty" xml:"Aggregations,omitempty" type:"Repeated"`
-	Files        []*File                                  `json:"Files,omitempty" xml:"Files,omitempty" type:"Repeated"`
-	NextToken    *string                                  `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	RequestId    *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Files     []*File `json:"Files,omitempty" xml:"Files,omitempty" type:"Repeated"`
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s SemanticQueryResponseBody) String() string {
@@ -14128,11 +14139,6 @@ func (s SemanticQueryResponseBody) String() string {
 
 func (s SemanticQueryResponseBody) GoString() string {
 	return s.String()
-}
-
-func (s *SemanticQueryResponseBody) SetAggregations(v []*SemanticQueryResponseBodyAggregations) *SemanticQueryResponseBody {
-	s.Aggregations = v
-	return s
 }
 
 func (s *SemanticQueryResponseBody) SetFiles(v []*File) *SemanticQueryResponseBody {
@@ -14147,64 +14153,6 @@ func (s *SemanticQueryResponseBody) SetNextToken(v string) *SemanticQueryRespons
 
 func (s *SemanticQueryResponseBody) SetRequestId(v string) *SemanticQueryResponseBody {
 	s.RequestId = &v
-	return s
-}
-
-type SemanticQueryResponseBodyAggregations struct {
-	Field     *string                                        `json:"Field,omitempty" xml:"Field,omitempty"`
-	Groups    []*SemanticQueryResponseBodyAggregationsGroups `json:"Groups,omitempty" xml:"Groups,omitempty" type:"Repeated"`
-	Operation *string                                        `json:"Operation,omitempty" xml:"Operation,omitempty"`
-	Value     *float32                                       `json:"Value,omitempty" xml:"Value,omitempty"`
-}
-
-func (s SemanticQueryResponseBodyAggregations) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SemanticQueryResponseBodyAggregations) GoString() string {
-	return s.String()
-}
-
-func (s *SemanticQueryResponseBodyAggregations) SetField(v string) *SemanticQueryResponseBodyAggregations {
-	s.Field = &v
-	return s
-}
-
-func (s *SemanticQueryResponseBodyAggregations) SetGroups(v []*SemanticQueryResponseBodyAggregationsGroups) *SemanticQueryResponseBodyAggregations {
-	s.Groups = v
-	return s
-}
-
-func (s *SemanticQueryResponseBodyAggregations) SetOperation(v string) *SemanticQueryResponseBodyAggregations {
-	s.Operation = &v
-	return s
-}
-
-func (s *SemanticQueryResponseBodyAggregations) SetValue(v float32) *SemanticQueryResponseBodyAggregations {
-	s.Value = &v
-	return s
-}
-
-type SemanticQueryResponseBodyAggregationsGroups struct {
-	Count *int64  `json:"Count,omitempty" xml:"Count,omitempty"`
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
-}
-
-func (s SemanticQueryResponseBodyAggregationsGroups) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SemanticQueryResponseBodyAggregationsGroups) GoString() string {
-	return s.String()
-}
-
-func (s *SemanticQueryResponseBodyAggregationsGroups) SetCount(v int64) *SemanticQueryResponseBodyAggregationsGroups {
-	s.Count = &v
-	return s
-}
-
-func (s *SemanticQueryResponseBodyAggregationsGroups) SetValue(v string) *SemanticQueryResponseBodyAggregationsGroups {
-	s.Value = &v
 	return s
 }
 
@@ -16240,6 +16188,14 @@ func (client *Client) CreateDataset(request *CreateDatasetRequest) (_result *Cre
 	return _result, _err
 }
 
+/**
+ * @deprecated
+ *
+ * @param tmpReq CreateDetectVideoLabelsTaskRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return CreateDetectVideoLabelsTaskResponse
+ */
+// Deprecated
 func (client *Client) CreateDetectVideoLabelsTaskWithOptions(tmpReq *CreateDetectVideoLabelsTaskRequest, runtime *util.RuntimeOptions) (_result *CreateDetectVideoLabelsTaskResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -16303,6 +16259,13 @@ func (client *Client) CreateDetectVideoLabelsTaskWithOptions(tmpReq *CreateDetec
 	return _result, _err
 }
 
+/**
+ * @deprecated
+ *
+ * @param request CreateDetectVideoLabelsTaskRequest
+ * @return CreateDetectVideoLabelsTaskResponse
+ */
+// Deprecated
 func (client *Client) CreateDetectVideoLabelsTask(request *CreateDetectVideoLabelsTaskRequest) (_result *CreateDetectVideoLabelsTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateDetectVideoLabelsTaskResponse{}
@@ -18414,12 +18377,20 @@ func (client *Client) FuzzyQueryWithOptions(request *FuzzyQueryRequest, runtime 
 		query["NextToken"] = request.NextToken
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Order)) {
+		query["Order"] = request.Order
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ProjectName)) {
 		query["ProjectName"] = request.ProjectName
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Query)) {
 		query["Query"] = request.Query
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Sort)) {
+		query["Sort"] = request.Sort
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -18560,6 +18531,14 @@ func (client *Client) GetDataset(request *GetDatasetRequest) (_result *GetDatase
 	return _result, _err
 }
 
+/**
+ * @deprecated
+ *
+ * @param request GetDetectVideoLabelsResultRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return GetDetectVideoLabelsResultResponse
+ */
+// Deprecated
 func (client *Client) GetDetectVideoLabelsResultWithOptions(request *GetDetectVideoLabelsResultRequest, runtime *util.RuntimeOptions) (_result *GetDetectVideoLabelsResultResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18601,6 +18580,13 @@ func (client *Client) GetDetectVideoLabelsResultWithOptions(request *GetDetectVi
 	return _result, _err
 }
 
+/**
+ * @deprecated
+ *
+ * @param request GetDetectVideoLabelsResultRequest
+ * @return GetDetectVideoLabelsResultResponse
+ */
+// Deprecated
 func (client *Client) GetDetectVideoLabelsResult(request *GetDetectVideoLabelsResultRequest) (_result *GetDetectVideoLabelsResultResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetDetectVideoLabelsResultResponse{}

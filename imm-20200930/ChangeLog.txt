@@ -1,3 +1,11 @@
+2022-12-13 Version: v2.0.8
+- Support Face Searching Api.
+- Support Face Comparasion Api.
+- Update CompareImageFaces.
+- Update backend name.
+- Add SimilarImageCluster Apis.
+- Remove invalid parameters.
+
 2022-11-15 Version: v2.0.7
 - Add story location.
 - Support location date clustering.
