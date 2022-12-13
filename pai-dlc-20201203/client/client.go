@@ -1769,6 +1769,7 @@ type CreateJobRequest struct {
 	Priority                 *int32                         `json:"Priority,omitempty" xml:"Priority,omitempty"`
 	ResourceId               *string                        `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	Settings                 *JobSettings                   `json:"Settings,omitempty" xml:"Settings,omitempty"`
+	SuccessPolicy            *string                        `json:"SuccessPolicy,omitempty" xml:"SuccessPolicy,omitempty"`
 	ThirdpartyLibDir         *string                        `json:"ThirdpartyLibDir,omitempty" xml:"ThirdpartyLibDir,omitempty"`
 	ThirdpartyLibs           []*string                      `json:"ThirdpartyLibs,omitempty" xml:"ThirdpartyLibs,omitempty" type:"Repeated"`
 	UserCommand              *string                        `json:"UserCommand,omitempty" xml:"UserCommand,omitempty"`
@@ -1846,6 +1847,11 @@ func (s *CreateJobRequest) SetResourceId(v string) *CreateJobRequest {
 
 func (s *CreateJobRequest) SetSettings(v *JobSettings) *CreateJobRequest {
 	s.Settings = v
+	return s
+}
+
+func (s *CreateJobRequest) SetSuccessPolicy(v string) *CreateJobRequest {
+	s.SuccessPolicy = &v
 	return s
 }
 
@@ -2109,9 +2115,11 @@ func (s *CreateTensorboardRequest) SetWorkspaceId(v string) *CreateTensorboardRe
 }
 
 type CreateTensorboardResponseBody struct {
-	DataSourceId  *string `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
-	JobId         *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// DataSourceId
+	DataSourceId *string `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
+	JobId        *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Tensorboard id
 	TensorboardId *string `json:"TensorboardId,omitempty" xml:"TensorboardId,omitempty"`
 }
 
@@ -2242,7 +2250,8 @@ func (s *DeleteTensorboardRequest) SetWorkspaceId(v string) *DeleteTensorboardRe
 }
 
 type DeleteTensorboardResponseBody struct {
-	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Tensorboad Id
 	TensorboardId *string `json:"TensorboardId,omitempty" xml:"TensorboardId,omitempty"`
 }
 
@@ -2567,9 +2576,10 @@ type GetJobResponseBodyPods struct {
 	HistoryPods   []*GetJobResponseBodyPodsHistoryPods `json:"HistoryPods,omitempty" xml:"HistoryPods,omitempty" type:"Repeated"`
 	Ip            *string                              `json:"Ip,omitempty" xml:"Ip,omitempty"`
 	PodId         *string                              `json:"PodId,omitempty" xml:"PodId,omitempty"`
-	PodUid        *string                              `json:"PodUid,omitempty" xml:"PodUid,omitempty"`
-	Status        *string                              `json:"Status,omitempty" xml:"Status,omitempty"`
-	Type          *string                              `json:"Type,omitempty" xml:"Type,omitempty"`
+	// Pod UId
+	PodUid *string `json:"PodUid,omitempty" xml:"PodUid,omitempty"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Type   *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s GetJobResponseBodyPods) String() string {
@@ -2629,11 +2639,14 @@ type GetJobResponseBodyPodsHistoryPods struct {
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
 	GmtFinishTime *string `json:"GmtFinishTime,omitempty" xml:"GmtFinishTime,omitempty"`
 	GmtStartTime  *string `json:"GmtStartTime,omitempty" xml:"GmtStartTime,omitempty"`
-	Ip            *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	PodId         *string `json:"PodId,omitempty" xml:"PodId,omitempty"`
-	PodUid        *string `json:"PodUid,omitempty" xml:"PodUid,omitempty"`
-	Status        *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	Type          *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// Pod Ip
+	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	// Pod Id
+	PodId *string `json:"PodId,omitempty" xml:"PodId,omitempty"`
+	// Pod UId
+	PodUid *string `json:"PodUid,omitempty" xml:"PodUid,omitempty"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Type   *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s GetJobResponseBodyPodsHistoryPods) String() string {
@@ -3116,6 +3129,7 @@ func (s *GetPodLogsResponse) SetBody(v *GetPodLogsResponseBody) *GetPodLogsRespo
 }
 
 type GetTensorboardRequest struct {
+	// JodId
 	JodId       *string `json:"JodId,omitempty" xml:"JodId,omitempty"`
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
@@ -3563,17 +3577,19 @@ func (s *ListJobsResponse) SetBody(v *ListJobsResponseBody) *ListJobsResponse {
 }
 
 type ListTensorboardsRequest struct {
-	DisplayName   *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	EndTime       *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	JobId         *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	Order         *string `json:"Order,omitempty" xml:"Order,omitempty"`
-	PageNumber    *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	SortBy        *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
-	SourceId      *string `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
-	SourceType    *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	StartTime     *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Status        *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	EndTime     *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// JobId
+	JobId      *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	Order      *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	SortBy     *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	SourceId   *string `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
+	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	StartTime  *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Status     *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// TensorboardId
 	TensorboardId *string `json:"TensorboardId,omitempty" xml:"TensorboardId,omitempty"`
 	Verbose       *bool   `json:"Verbose,omitempty" xml:"Verbose,omitempty"`
 	WorkspaceId   *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
@@ -3733,7 +3749,8 @@ func (s *StartTensorboardRequest) SetWorkspaceId(v string) *StartTensorboardRequ
 }
 
 type StartTensorboardResponseBody struct {
-	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Tensorboad Id
 	TensorboardId *string `json:"TensorboardId,omitempty" xml:"TensorboardId,omitempty"`
 }
 
@@ -3854,7 +3871,8 @@ func (s *StopTensorboardRequest) SetWorkspaceId(v string) *StopTensorboardReques
 }
 
 type StopTensorboardResponseBody struct {
-	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Tensorboad Id
 	TensorboardId *string `json:"TensorboardId,omitempty" xml:"TensorboardId,omitempty"`
 }
 
@@ -3998,7 +4016,8 @@ func (s *UpdateTensorboardRequest) SetWorkspaceId(v string) *UpdateTensorboardRe
 }
 
 type UpdateTensorboardResponseBody struct {
-	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Tensorboad Id
 	TensorboardId *string `json:"TensorboardId,omitempty" xml:"TensorboardId,omitempty"`
 }
 
@@ -4148,18 +4167,6 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
-func (client *Client) CreateJob(request *CreateJobRequest) (_result *CreateJobResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &CreateJobResponse{}
-	_body, _err := client.CreateJobWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) CreateJobWithOptions(request *CreateJobRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateJobResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4218,6 +4225,10 @@ func (client *Client) CreateJobWithOptions(request *CreateJobRequest, headers ma
 		body["Settings"] = request.Settings
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.SuccessPolicy)) {
+		body["SuccessPolicy"] = request.SuccessPolicy
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ThirdpartyLibDir)) {
 		body["ThirdpartyLibDir"] = request.ThirdpartyLibDir
 	}
@@ -4262,11 +4273,11 @@ func (client *Client) CreateJobWithOptions(request *CreateJobRequest, headers ma
 	return _result, _err
 }
 
-func (client *Client) CreateTensorboard(request *CreateTensorboardRequest) (_result *CreateTensorboardResponse, _err error) {
+func (client *Client) CreateJob(request *CreateJobRequest) (_result *CreateJobResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &CreateTensorboardResponse{}
-	_body, _err := client.CreateTensorboardWithOptions(request, headers, runtime)
+	_result = &CreateJobResponse{}
+	_body, _err := client.CreateJobWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4356,11 +4367,11 @@ func (client *Client) CreateTensorboardWithOptions(request *CreateTensorboardReq
 	return _result, _err
 }
 
-func (client *Client) DeleteJob(JobId *string) (_result *DeleteJobResponse, _err error) {
+func (client *Client) CreateTensorboard(request *CreateTensorboardRequest) (_result *CreateTensorboardResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DeleteJobResponse{}
-	_body, _err := client.DeleteJobWithOptions(JobId, headers, runtime)
+	_result = &CreateTensorboardResponse{}
+	_body, _err := client.CreateTensorboardWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4392,11 +4403,11 @@ func (client *Client) DeleteJobWithOptions(JobId *string, headers map[string]*st
 	return _result, _err
 }
 
-func (client *Client) DeleteTensorboard(TensorboardId *string, request *DeleteTensorboardRequest) (_result *DeleteTensorboardResponse, _err error) {
+func (client *Client) DeleteJob(JobId *string) (_result *DeleteJobResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DeleteTensorboardResponse{}
-	_body, _err := client.DeleteTensorboardWithOptions(TensorboardId, request, headers, runtime)
+	_result = &DeleteJobResponse{}
+	_body, _err := client.DeleteJobWithOptions(JobId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4438,11 +4449,11 @@ func (client *Client) DeleteTensorboardWithOptions(TensorboardId *string, reques
 	return _result, _err
 }
 
-func (client *Client) GetJob(JobId *string) (_result *GetJobResponse, _err error) {
+func (client *Client) DeleteTensorboard(TensorboardId *string, request *DeleteTensorboardRequest) (_result *DeleteTensorboardResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetJobResponse{}
-	_body, _err := client.GetJobWithOptions(JobId, headers, runtime)
+	_result = &DeleteTensorboardResponse{}
+	_body, _err := client.DeleteTensorboardWithOptions(TensorboardId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4474,11 +4485,11 @@ func (client *Client) GetJobWithOptions(JobId *string, headers map[string]*strin
 	return _result, _err
 }
 
-func (client *Client) GetJobEvents(JobId *string, request *GetJobEventsRequest) (_result *GetJobEventsResponse, _err error) {
+func (client *Client) GetJob(JobId *string) (_result *GetJobResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetJobEventsResponse{}
-	_body, _err := client.GetJobEventsWithOptions(JobId, request, headers, runtime)
+	_result = &GetJobResponse{}
+	_body, _err := client.GetJobWithOptions(JobId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4528,11 +4539,11 @@ func (client *Client) GetJobEventsWithOptions(JobId *string, request *GetJobEven
 	return _result, _err
 }
 
-func (client *Client) GetJobMetrics(JobId *string, request *GetJobMetricsRequest) (_result *GetJobMetricsResponse, _err error) {
+func (client *Client) GetJobEvents(JobId *string, request *GetJobEventsRequest) (_result *GetJobEventsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetJobMetricsResponse{}
-	_body, _err := client.GetJobMetricsWithOptions(JobId, request, headers, runtime)
+	_result = &GetJobEventsResponse{}
+	_body, _err := client.GetJobEventsWithOptions(JobId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4590,11 +4601,11 @@ func (client *Client) GetJobMetricsWithOptions(JobId *string, request *GetJobMet
 	return _result, _err
 }
 
-func (client *Client) GetPodEvents(JobId *string, PodId *string, request *GetPodEventsRequest) (_result *GetPodEventsResponse, _err error) {
+func (client *Client) GetJobMetrics(JobId *string, request *GetJobMetricsRequest) (_result *GetJobMetricsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetPodEventsResponse{}
-	_body, _err := client.GetPodEventsWithOptions(JobId, PodId, request, headers, runtime)
+	_result = &GetJobMetricsResponse{}
+	_body, _err := client.GetJobMetricsWithOptions(JobId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4648,11 +4659,11 @@ func (client *Client) GetPodEventsWithOptions(JobId *string, PodId *string, requ
 	return _result, _err
 }
 
-func (client *Client) GetPodLogs(JobId *string, PodId *string, request *GetPodLogsRequest) (_result *GetPodLogsResponse, _err error) {
+func (client *Client) GetPodEvents(JobId *string, PodId *string, request *GetPodEventsRequest) (_result *GetPodEventsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetPodLogsResponse{}
-	_body, _err := client.GetPodLogsWithOptions(JobId, PodId, request, headers, runtime)
+	_result = &GetPodEventsResponse{}
+	_body, _err := client.GetPodEventsWithOptions(JobId, PodId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4710,11 +4721,11 @@ func (client *Client) GetPodLogsWithOptions(JobId *string, PodId *string, reques
 	return _result, _err
 }
 
-func (client *Client) GetTensorboard(TensorboardId *string, request *GetTensorboardRequest) (_result *GetTensorboardResponse, _err error) {
+func (client *Client) GetPodLogs(JobId *string, PodId *string, request *GetPodLogsRequest) (_result *GetPodLogsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetTensorboardResponse{}
-	_body, _err := client.GetTensorboardWithOptions(TensorboardId, request, headers, runtime)
+	_result = &GetPodLogsResponse{}
+	_body, _err := client.GetPodLogsWithOptions(JobId, PodId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4760,11 +4771,11 @@ func (client *Client) GetTensorboardWithOptions(TensorboardId *string, request *
 	return _result, _err
 }
 
-func (client *Client) ListEcsSpecs(request *ListEcsSpecsRequest) (_result *ListEcsSpecsResponse, _err error) {
+func (client *Client) GetTensorboard(TensorboardId *string, request *GetTensorboardRequest) (_result *GetTensorboardResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListEcsSpecsResponse{}
-	_body, _err := client.ListEcsSpecsWithOptions(request, headers, runtime)
+	_result = &GetTensorboardResponse{}
+	_body, _err := client.GetTensorboardWithOptions(TensorboardId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4822,11 +4833,11 @@ func (client *Client) ListEcsSpecsWithOptions(request *ListEcsSpecsRequest, head
 	return _result, _err
 }
 
-func (client *Client) ListJobs(request *ListJobsRequest) (_result *ListJobsResponse, _err error) {
+func (client *Client) ListEcsSpecs(request *ListEcsSpecsRequest) (_result *ListEcsSpecsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListJobsResponse{}
-	_body, _err := client.ListJobsWithOptions(request, headers, runtime)
+	_result = &ListEcsSpecsResponse{}
+	_body, _err := client.ListEcsSpecsWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4942,11 +4953,11 @@ func (client *Client) ListJobsWithOptions(tmpReq *ListJobsRequest, headers map[s
 	return _result, _err
 }
 
-func (client *Client) ListTensorboards(request *ListTensorboardsRequest) (_result *ListTensorboardsResponse, _err error) {
+func (client *Client) ListJobs(request *ListJobsRequest) (_result *ListJobsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListTensorboardsResponse{}
-	_body, _err := client.ListTensorboardsWithOptions(request, headers, runtime)
+	_result = &ListJobsResponse{}
+	_body, _err := client.ListJobsWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5040,11 +5051,11 @@ func (client *Client) ListTensorboardsWithOptions(request *ListTensorboardsReque
 	return _result, _err
 }
 
-func (client *Client) StartTensorboard(TensorboardId *string, request *StartTensorboardRequest) (_result *StartTensorboardResponse, _err error) {
+func (client *Client) ListTensorboards(request *ListTensorboardsRequest) (_result *ListTensorboardsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &StartTensorboardResponse{}
-	_body, _err := client.StartTensorboardWithOptions(TensorboardId, request, headers, runtime)
+	_result = &ListTensorboardsResponse{}
+	_body, _err := client.ListTensorboardsWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5086,11 +5097,11 @@ func (client *Client) StartTensorboardWithOptions(TensorboardId *string, request
 	return _result, _err
 }
 
-func (client *Client) StopJob(JobId *string) (_result *StopJobResponse, _err error) {
+func (client *Client) StartTensorboard(TensorboardId *string, request *StartTensorboardRequest) (_result *StartTensorboardResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &StopJobResponse{}
-	_body, _err := client.StopJobWithOptions(JobId, headers, runtime)
+	_result = &StartTensorboardResponse{}
+	_body, _err := client.StartTensorboardWithOptions(TensorboardId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5122,11 +5133,11 @@ func (client *Client) StopJobWithOptions(JobId *string, headers map[string]*stri
 	return _result, _err
 }
 
-func (client *Client) StopTensorboard(TensorboardId *string, request *StopTensorboardRequest) (_result *StopTensorboardResponse, _err error) {
+func (client *Client) StopJob(JobId *string) (_result *StopJobResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &StopTensorboardResponse{}
-	_body, _err := client.StopTensorboardWithOptions(TensorboardId, request, headers, runtime)
+	_result = &StopJobResponse{}
+	_body, _err := client.StopJobWithOptions(JobId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5168,11 +5179,11 @@ func (client *Client) StopTensorboardWithOptions(TensorboardId *string, request 
 	return _result, _err
 }
 
-func (client *Client) UpdateJob(JobId *string, request *UpdateJobRequest) (_result *UpdateJobResponse, _err error) {
+func (client *Client) StopTensorboard(TensorboardId *string, request *StopTensorboardRequest) (_result *StopTensorboardResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &UpdateJobResponse{}
-	_body, _err := client.UpdateJobWithOptions(JobId, request, headers, runtime)
+	_result = &StopTensorboardResponse{}
+	_body, _err := client.StopTensorboardWithOptions(TensorboardId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5214,11 +5225,11 @@ func (client *Client) UpdateJobWithOptions(JobId *string, request *UpdateJobRequ
 	return _result, _err
 }
 
-func (client *Client) UpdateTensorboard(TensorboardId *string, request *UpdateTensorboardRequest) (_result *UpdateTensorboardResponse, _err error) {
+func (client *Client) UpdateJob(JobId *string, request *UpdateJobRequest) (_result *UpdateJobResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &UpdateTensorboardResponse{}
-	_body, _err := client.UpdateTensorboardWithOptions(TensorboardId, request, headers, runtime)
+	_result = &UpdateJobResponse{}
+	_body, _err := client.UpdateJobWithOptions(JobId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5261,5 +5272,17 @@ func (client *Client) UpdateTensorboardWithOptions(TensorboardId *string, reques
 		return _result, _err
 	}
 	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateTensorboard(TensorboardId *string, request *UpdateTensorboardRequest) (_result *UpdateTensorboardResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateTensorboardResponse{}
+	_body, _err := client.UpdateTensorboardWithOptions(TensorboardId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
 	return _result, _err
 }

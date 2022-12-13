@@ -1,3 +1,6 @@
+2022-12-13 Version: v1.2.3
+- CreateJob supports params SuccessPolicy.
+
 2022-12-09 Version: v1.2.2
 - ListJobs supports params JobId.
 
