@@ -1548,7 +1548,7 @@ func (s *ImitatePhotoStyleRequest) SetStyleUrl(v string) *ImitatePhotoStyleReque
 
 type ImitatePhotoStyleAdvanceRequest struct {
 	ImageURLObject io.Reader `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
-	StyleUrl       *string   `json:"StyleUrl,omitempty" xml:"StyleUrl,omitempty"`
+	StyleUrlObject io.Reader `json:"StyleUrl,omitempty" xml:"StyleUrl,omitempty"`
 }
 
 func (s ImitatePhotoStyleAdvanceRequest) String() string {
@@ -1564,8 +1564,8 @@ func (s *ImitatePhotoStyleAdvanceRequest) SetImageURLObject(v io.Reader) *Imitat
 	return s
 }
 
-func (s *ImitatePhotoStyleAdvanceRequest) SetStyleUrl(v string) *ImitatePhotoStyleAdvanceRequest {
-	s.StyleUrl = &v
+func (s *ImitatePhotoStyleAdvanceRequest) SetStyleUrlObject(v io.Reader) *ImitatePhotoStyleAdvanceRequest {
+	s.StyleUrlObject = v
 	return s
 }
 
@@ -1946,7 +1946,8 @@ func (s *MakeSuperResolutionImageResponse) SetBody(v *MakeSuperResolutionImageRe
 }
 
 type RecolorHDImageRequest struct {
-	ColorCount    *int32                                `json:"ColorCount,omitempty" xml:"ColorCount,omitempty"`
+	ColorCount *int32 `json:"ColorCount,omitempty" xml:"ColorCount,omitempty"`
+	// 1
 	ColorTemplate []*RecolorHDImageRequestColorTemplate `json:"ColorTemplate,omitempty" xml:"ColorTemplate,omitempty" type:"Repeated"`
 	Degree        *string                               `json:"Degree,omitempty" xml:"Degree,omitempty"`
 	Mode          *string                               `json:"Mode,omitempty" xml:"Mode,omitempty"`
@@ -2010,7 +2011,8 @@ func (s *RecolorHDImageRequestColorTemplate) SetColor(v string) *RecolorHDImageR
 }
 
 type RecolorHDImageAdvanceRequest struct {
-	ColorCount    *int32                                       `json:"ColorCount,omitempty" xml:"ColorCount,omitempty"`
+	ColorCount *int32 `json:"ColorCount,omitempty" xml:"ColorCount,omitempty"`
+	// 1
 	ColorTemplate []*RecolorHDImageAdvanceRequestColorTemplate `json:"ColorTemplate,omitempty" xml:"ColorTemplate,omitempty" type:"Repeated"`
 	Degree        *string                                      `json:"Degree,omitempty" xml:"Degree,omitempty"`
 	Mode          *string                                      `json:"Mode,omitempty" xml:"Mode,omitempty"`
@@ -2103,6 +2105,7 @@ func (s *RecolorHDImageResponseBody) SetRequestId(v string) *RecolorHDImageRespo
 }
 
 type RecolorHDImageResponseBodyData struct {
+	// 1
 	ImageList []*string `json:"ImageList,omitempty" xml:"ImageList,omitempty" type:"Repeated"`
 }
 
@@ -2149,7 +2152,8 @@ func (s *RecolorHDImageResponse) SetBody(v *RecolorHDImageResponseBody) *Recolor
 }
 
 type RecolorImageRequest struct {
-	ColorCount    *int32                              `json:"ColorCount,omitempty" xml:"ColorCount,omitempty"`
+	ColorCount *int32 `json:"ColorCount,omitempty" xml:"ColorCount,omitempty"`
+	// 1
 	ColorTemplate []*RecolorImageRequestColorTemplate `json:"ColorTemplate,omitempty" xml:"ColorTemplate,omitempty" type:"Repeated"`
 	Mode          *string                             `json:"Mode,omitempty" xml:"Mode,omitempty"`
 	RefUrl        *string                             `json:"RefUrl,omitempty" xml:"RefUrl,omitempty"`
@@ -2207,7 +2211,8 @@ func (s *RecolorImageRequestColorTemplate) SetColor(v string) *RecolorImageReque
 }
 
 type RecolorImageAdvanceRequest struct {
-	ColorCount    *int32                                     `json:"ColorCount,omitempty" xml:"ColorCount,omitempty"`
+	ColorCount *int32 `json:"ColorCount,omitempty" xml:"ColorCount,omitempty"`
+	// 1
 	ColorTemplate []*RecolorImageAdvanceRequestColorTemplate `json:"ColorTemplate,omitempty" xml:"ColorTemplate,omitempty" type:"Repeated"`
 	Mode          *string                                    `json:"Mode,omitempty" xml:"Mode,omitempty"`
 	RefUrlObject  io.Reader                                  `json:"RefUrl,omitempty" xml:"RefUrl,omitempty"`
@@ -2288,6 +2293,7 @@ func (s *RecolorImageResponseBody) SetRequestId(v string) *RecolorImageResponseB
 }
 
 type RecolorImageResponseBodyData struct {
+	// 1
 	ImageList []*string `json:"ImageList,omitempty" xml:"ImageList,omitempty" type:"Repeated"`
 }
 
@@ -4724,6 +4730,43 @@ func (client *Client) ImitatePhotoStyleAdvance(request *ImitatePhotoStyleAdvance
 			return _result, _err
 		}
 		imitatePhotoStyleReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StyleUrlObject)) {
+		authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+
+		ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
+		ossClient, _err = oss.NewClient(ossConfig)
+		if _err != nil {
+			return _result, _err
+		}
+
+		fileObj = &fileform.FileField{
+			Filename:    authResponse.Body.ObjectKey,
+			Content:     request.StyleUrlObject,
+			ContentType: tea.String(""),
+		}
+		ossHeader = &oss.PostObjectRequestHeader{
+			AccessKeyId:         authResponse.Body.AccessKeyId,
+			Policy:              authResponse.Body.EncodedPolicy,
+			Signature:           authResponse.Body.Signature,
+			Key:                 authResponse.Body.ObjectKey,
+			File:                fileObj,
+			SuccessActionStatus: tea.String("201"),
+		}
+		uploadRequest = &oss.PostObjectRequest{
+			BucketName: authResponse.Body.Bucket,
+			Header:     ossHeader,
+		}
+		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+		if _err != nil {
+			return _result, _err
+		}
+		imitatePhotoStyleReq.StyleUrl = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
 	}
 
 	imitatePhotoStyleResp, _err := client.ImitatePhotoStyleWithOptions(imitatePhotoStyleReq, runtime)
