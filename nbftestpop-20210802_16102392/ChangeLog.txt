@@ -1,9 +1,0 @@
-2021-08-19 Version: v6.0.0
-- A.
-
-2021-08-19 Version: v2.2.2
-- OnlineReleaseLog.
-
-2021-08-19 Version: v2.0.0
-- OnlineRelease.
-
