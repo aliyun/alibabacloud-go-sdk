@@ -276,6 +276,29 @@ func (s *EstimateStereoImageDepthRequest) SetRightImageURL(v string) *EstimateSt
 	return s
 }
 
+type EstimateStereoImageDepthAdvanceRequest struct {
+	LeftImageURLObject  io.Reader `json:"LeftImageURL,omitempty" xml:"LeftImageURL,omitempty"`
+	RightImageURLObject io.Reader `json:"RightImageURL,omitempty" xml:"RightImageURL,omitempty"`
+}
+
+func (s EstimateStereoImageDepthAdvanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EstimateStereoImageDepthAdvanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *EstimateStereoImageDepthAdvanceRequest) SetLeftImageURLObject(v io.Reader) *EstimateStereoImageDepthAdvanceRequest {
+	s.LeftImageURLObject = v
+	return s
+}
+
+func (s *EstimateStereoImageDepthAdvanceRequest) SetRightImageURLObject(v io.Reader) *EstimateStereoImageDepthAdvanceRequest {
+	s.RightImageURLObject = v
+	return s
+}
+
 type EstimateStereoImageDepthResponseBody struct {
 	Data      *EstimateStereoImageDepthResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -1087,6 +1110,149 @@ func (client *Client) EstimateStereoImageDepth(request *EstimateStereoImageDepth
 		return _result, _err
 	}
 	_result = _body
+	return _result, _err
+}
+
+func (client *Client) EstimateStereoImageDepthAdvance(request *EstimateStereoImageDepthAdvanceRequest, runtime *util.RuntimeOptions) (_result *EstimateStereoImageDepthResponse, _err error) {
+	// Step 0: init client
+	accessKeyId, _err := client.Credential.GetAccessKeyId()
+	if _err != nil {
+		return _result, _err
+	}
+
+	accessKeySecret, _err := client.Credential.GetAccessKeySecret()
+	if _err != nil {
+		return _result, _err
+	}
+
+	securityToken, _err := client.Credential.GetSecurityToken()
+	if _err != nil {
+		return _result, _err
+	}
+
+	credentialType := client.Credential.GetType()
+	openPlatformEndpoint := client.OpenPlatformEndpoint
+	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
+	}
+
+	if tea.BoolValue(util.IsUnset(credentialType)) {
+		credentialType = tea.String("access_key")
+	}
+
+	authConfig := &openapi.Config{
+		AccessKeyId:     accessKeyId,
+		AccessKeySecret: accessKeySecret,
+		SecurityToken:   securityToken,
+		Type:            credentialType,
+		Endpoint:        openPlatformEndpoint,
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	authClient, _err := openplatform.NewClient(authConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
+	authRequest := &openplatform.AuthorizeFileUploadRequest{
+		Product:  tea.String("threedvision"),
+		RegionId: client.RegionId,
+	}
+	authResponse := &openplatform.AuthorizeFileUploadResponse{}
+	ossConfig := &oss.Config{
+		AccessKeySecret: accessKeySecret,
+		Type:            tea.String("access_key"),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	var ossClient *oss.Client
+	fileObj := &fileform.FileField{}
+	ossHeader := &oss.PostObjectRequestHeader{}
+	uploadRequest := &oss.PostObjectRequest{}
+	ossRuntime := &ossutil.RuntimeOptions{}
+	openapiutil.Convert(runtime, ossRuntime)
+	estimateStereoImageDepthReq := &EstimateStereoImageDepthRequest{}
+	openapiutil.Convert(request, estimateStereoImageDepthReq)
+	if !tea.BoolValue(util.IsUnset(request.LeftImageURLObject)) {
+		authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+
+		ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
+		ossClient, _err = oss.NewClient(ossConfig)
+		if _err != nil {
+			return _result, _err
+		}
+
+		fileObj = &fileform.FileField{
+			Filename:    authResponse.Body.ObjectKey,
+			Content:     request.LeftImageURLObject,
+			ContentType: tea.String(""),
+		}
+		ossHeader = &oss.PostObjectRequestHeader{
+			AccessKeyId:         authResponse.Body.AccessKeyId,
+			Policy:              authResponse.Body.EncodedPolicy,
+			Signature:           authResponse.Body.Signature,
+			Key:                 authResponse.Body.ObjectKey,
+			File:                fileObj,
+			SuccessActionStatus: tea.String("201"),
+		}
+		uploadRequest = &oss.PostObjectRequest{
+			BucketName: authResponse.Body.Bucket,
+			Header:     ossHeader,
+		}
+		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+		if _err != nil {
+			return _result, _err
+		}
+		estimateStereoImageDepthReq.LeftImageURL = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RightImageURLObject)) {
+		authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+
+		ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
+		ossClient, _err = oss.NewClient(ossConfig)
+		if _err != nil {
+			return _result, _err
+		}
+
+		fileObj = &fileform.FileField{
+			Filename:    authResponse.Body.ObjectKey,
+			Content:     request.RightImageURLObject,
+			ContentType: tea.String(""),
+		}
+		ossHeader = &oss.PostObjectRequestHeader{
+			AccessKeyId:         authResponse.Body.AccessKeyId,
+			Policy:              authResponse.Body.EncodedPolicy,
+			Signature:           authResponse.Body.Signature,
+			Key:                 authResponse.Body.ObjectKey,
+			File:                fileObj,
+			SuccessActionStatus: tea.String("201"),
+		}
+		uploadRequest = &oss.PostObjectRequest{
+			BucketName: authResponse.Body.Bucket,
+			Header:     ossHeader,
+		}
+		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+		if _err != nil {
+			return _result, _err
+		}
+		estimateStereoImageDepthReq.RightImageURL = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
+	}
+
+	estimateStereoImageDepthResp, _err := client.EstimateStereoImageDepthWithOptions(estimateStereoImageDepthReq, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+
+	_result = estimateStereoImageDepthResp
 	return _result, _err
 }
 
