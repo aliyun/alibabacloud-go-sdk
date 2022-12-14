@@ -1505,17 +1505,18 @@ func (s *EraseVideoSubtitlesResponse) SetBody(v *EraseVideoSubtitlesResponseBody
 }
 
 type GenerateVideoRequest struct {
-	Duration         *float32                        `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	DurationAdaption *bool                           `json:"DurationAdaption,omitempty" xml:"DurationAdaption,omitempty"`
-	FileList         []*GenerateVideoRequestFileList `json:"FileList,omitempty" xml:"FileList,omitempty" type:"Repeated"`
-	Height           *int32                          `json:"Height,omitempty" xml:"Height,omitempty"`
-	Mute             *bool                           `json:"Mute,omitempty" xml:"Mute,omitempty"`
-	PuzzleEffect     *bool                           `json:"PuzzleEffect,omitempty" xml:"PuzzleEffect,omitempty"`
-	Scene            *string                         `json:"Scene,omitempty" xml:"Scene,omitempty"`
-	SmartEffect      *bool                           `json:"SmartEffect,omitempty" xml:"SmartEffect,omitempty"`
-	Style            *string                         `json:"Style,omitempty" xml:"Style,omitempty"`
-	TransitionStyle  *string                         `json:"TransitionStyle,omitempty" xml:"TransitionStyle,omitempty"`
-	Width            *int32                          `json:"Width,omitempty" xml:"Width,omitempty"`
+	Duration         *float32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	DurationAdaption *bool    `json:"DurationAdaption,omitempty" xml:"DurationAdaption,omitempty"`
+	// 1
+	FileList        []*GenerateVideoRequestFileList `json:"FileList,omitempty" xml:"FileList,omitempty" type:"Repeated"`
+	Height          *int32                          `json:"Height,omitempty" xml:"Height,omitempty"`
+	Mute            *bool                           `json:"Mute,omitempty" xml:"Mute,omitempty"`
+	PuzzleEffect    *bool                           `json:"PuzzleEffect,omitempty" xml:"PuzzleEffect,omitempty"`
+	Scene           *string                         `json:"Scene,omitempty" xml:"Scene,omitempty"`
+	SmartEffect     *bool                           `json:"SmartEffect,omitempty" xml:"SmartEffect,omitempty"`
+	Style           *string                         `json:"Style,omitempty" xml:"Style,omitempty"`
+	TransitionStyle *string                         `json:"TransitionStyle,omitempty" xml:"TransitionStyle,omitempty"`
+	Width           *int32                          `json:"Width,omitempty" xml:"Width,omitempty"`
 }
 
 func (s GenerateVideoRequest) String() string {
@@ -1611,17 +1612,18 @@ func (s *GenerateVideoRequestFileList) SetType(v string) *GenerateVideoRequestFi
 }
 
 type GenerateVideoAdvanceRequest struct {
-	Duration         *float32                               `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	DurationAdaption *bool                                  `json:"DurationAdaption,omitempty" xml:"DurationAdaption,omitempty"`
-	FileList         []*GenerateVideoAdvanceRequestFileList `json:"FileList,omitempty" xml:"FileList,omitempty" type:"Repeated"`
-	Height           *int32                                 `json:"Height,omitempty" xml:"Height,omitempty"`
-	Mute             *bool                                  `json:"Mute,omitempty" xml:"Mute,omitempty"`
-	PuzzleEffect     *bool                                  `json:"PuzzleEffect,omitempty" xml:"PuzzleEffect,omitempty"`
-	Scene            *string                                `json:"Scene,omitempty" xml:"Scene,omitempty"`
-	SmartEffect      *bool                                  `json:"SmartEffect,omitempty" xml:"SmartEffect,omitempty"`
-	Style            *string                                `json:"Style,omitempty" xml:"Style,omitempty"`
-	TransitionStyle  *string                                `json:"TransitionStyle,omitempty" xml:"TransitionStyle,omitempty"`
-	Width            *int32                                 `json:"Width,omitempty" xml:"Width,omitempty"`
+	Duration         *float32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	DurationAdaption *bool    `json:"DurationAdaption,omitempty" xml:"DurationAdaption,omitempty"`
+	// 1
+	FileList        []*GenerateVideoAdvanceRequestFileList `json:"FileList,omitempty" xml:"FileList,omitempty" type:"Repeated"`
+	Height          *int32                                 `json:"Height,omitempty" xml:"Height,omitempty"`
+	Mute            *bool                                  `json:"Mute,omitempty" xml:"Mute,omitempty"`
+	PuzzleEffect    *bool                                  `json:"PuzzleEffect,omitempty" xml:"PuzzleEffect,omitempty"`
+	Scene           *string                                `json:"Scene,omitempty" xml:"Scene,omitempty"`
+	SmartEffect     *bool                                  `json:"SmartEffect,omitempty" xml:"SmartEffect,omitempty"`
+	Style           *string                                `json:"Style,omitempty" xml:"Style,omitempty"`
+	TransitionStyle *string                                `json:"TransitionStyle,omitempty" xml:"TransitionStyle,omitempty"`
+	Width           *int32                                 `json:"Width,omitempty" xml:"Width,omitempty"`
 }
 
 func (s GenerateVideoAdvanceRequest) String() string {
@@ -4381,7 +4383,7 @@ func (client *Client) GenerateVideoAdvance(request *GenerateVideoAdvanceRequest,
 	generateVideoReq := &GenerateVideoRequest{}
 	openapiutil.Convert(request, generateVideoReq)
 	if !tea.BoolValue(util.IsUnset(request.FileList)) {
-		i := tea.Int(0)
+		i0 := tea.Int(0)
 		for _, item0 := range request.FileList {
 			if !tea.BoolValue(util.IsUnset(item0.FileUrlObject)) {
 				authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
@@ -4417,9 +4419,9 @@ func (client *Client) GenerateVideoAdvance(request *GenerateVideoAdvanceRequest,
 				if _err != nil {
 					return _result, _err
 				}
-				tmp := generateVideoReq.FileList[tea.IntValue(i)]
+				tmp := generateVideoReq.FileList[tea.IntValue(i0)]
 				tmp.FileUrl = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
-				i = number.Ltoi(number.Add(number.Itol(i), number.Itol(tea.Int(1))))
+				i0 = number.Ltoi(number.Add(number.Itol(i0), number.Itol(tea.Int(1))))
 			}
 
 		}
