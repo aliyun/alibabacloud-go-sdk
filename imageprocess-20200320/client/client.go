@@ -5,6 +5,7 @@
 package client
 
 import (
+	number "github.com/alibabacloud-go/darabonba-number/client"
 	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
 	openapiutil "github.com/alibabacloud-go/openapi-util/service"
@@ -18,11 +19,12 @@ import (
 )
 
 type AnalyzeChestVesselRequest struct {
-	DataFormat     *string                             `json:"DataFormat,omitempty" xml:"DataFormat,omitempty"`
-	DataSourceType *string                             `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
-	OrgId          *string                             `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
-	OrgName        *string                             `json:"OrgName,omitempty" xml:"OrgName,omitempty"`
-	URLList        []*AnalyzeChestVesselRequestURLList `json:"URLList,omitempty" xml:"URLList,omitempty" type:"Repeated"`
+	DataFormat     *string `json:"DataFormat,omitempty" xml:"DataFormat,omitempty"`
+	DataSourceType *string `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
+	OrgId          *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
+	OrgName        *string `json:"OrgName,omitempty" xml:"OrgName,omitempty"`
+	// 1
+	URLList []*AnalyzeChestVesselRequestURLList `json:"URLList,omitempty" xml:"URLList,omitempty" type:"Repeated"`
 }
 
 func (s AnalyzeChestVesselRequest) String() string {
@@ -72,6 +74,65 @@ func (s AnalyzeChestVesselRequestURLList) GoString() string {
 
 func (s *AnalyzeChestVesselRequestURLList) SetURL(v string) *AnalyzeChestVesselRequestURLList {
 	s.URL = &v
+	return s
+}
+
+type AnalyzeChestVesselAdvanceRequest struct {
+	DataFormat     *string `json:"DataFormat,omitempty" xml:"DataFormat,omitempty"`
+	DataSourceType *string `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
+	OrgId          *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
+	OrgName        *string `json:"OrgName,omitempty" xml:"OrgName,omitempty"`
+	// 1
+	URLList []*AnalyzeChestVesselAdvanceRequestURLList `json:"URLList,omitempty" xml:"URLList,omitempty" type:"Repeated"`
+}
+
+func (s AnalyzeChestVesselAdvanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AnalyzeChestVesselAdvanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AnalyzeChestVesselAdvanceRequest) SetDataFormat(v string) *AnalyzeChestVesselAdvanceRequest {
+	s.DataFormat = &v
+	return s
+}
+
+func (s *AnalyzeChestVesselAdvanceRequest) SetDataSourceType(v string) *AnalyzeChestVesselAdvanceRequest {
+	s.DataSourceType = &v
+	return s
+}
+
+func (s *AnalyzeChestVesselAdvanceRequest) SetOrgId(v string) *AnalyzeChestVesselAdvanceRequest {
+	s.OrgId = &v
+	return s
+}
+
+func (s *AnalyzeChestVesselAdvanceRequest) SetOrgName(v string) *AnalyzeChestVesselAdvanceRequest {
+	s.OrgName = &v
+	return s
+}
+
+func (s *AnalyzeChestVesselAdvanceRequest) SetURLList(v []*AnalyzeChestVesselAdvanceRequestURLList) *AnalyzeChestVesselAdvanceRequest {
+	s.URLList = v
+	return s
+}
+
+type AnalyzeChestVesselAdvanceRequestURLList struct {
+	URLObject io.Reader `json:"URL,omitempty" xml:"URL,omitempty"`
+}
+
+func (s AnalyzeChestVesselAdvanceRequestURLList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AnalyzeChestVesselAdvanceRequestURLList) GoString() string {
+	return s.String()
+}
+
+func (s *AnalyzeChestVesselAdvanceRequestURLList) SetURLObject(v io.Reader) *AnalyzeChestVesselAdvanceRequestURLList {
+	s.URLObject = v
 	return s
 }
 
@@ -134,6 +195,7 @@ func (s *AnalyzeChestVesselResponseBodyData) SetResultURL(v string) *AnalyzeChes
 }
 
 type AnalyzeChestVesselResponseBodyDataAortaInfo struct {
+	// 1
 	Area         []*float32   `json:"Area,omitempty" xml:"Area,omitempty" type:"Repeated"`
 	Coordinates  [][]*float32 `json:"Coordinates,omitempty" xml:"Coordinates,omitempty" type:"Repeated"`
 	LabelValue   *int64       `json:"LabelValue,omitempty" xml:"LabelValue,omitempty"`
@@ -181,6 +243,7 @@ func (s *AnalyzeChestVesselResponseBodyDataAortaInfo) SetMaxDiameter(v float32) 
 }
 
 type AnalyzeChestVesselResponseBodyDataPulmonaryInfo struct {
+	// 1
 	Area             []*float32   `json:"Area,omitempty" xml:"Area,omitempty" type:"Repeated"`
 	Coordinates      [][]*float32 `json:"Coordinates,omitempty" xml:"Coordinates,omitempty" type:"Repeated"`
 	LabelValue       *int64       `json:"LabelValue,omitempty" xml:"LabelValue,omitempty"`
@@ -317,6 +380,64 @@ func (s CalcCACSRequestURLList) GoString() string {
 
 func (s *CalcCACSRequestURLList) SetURL(v string) *CalcCACSRequestURLList {
 	s.URL = &v
+	return s
+}
+
+type CalcCACSAdvanceRequest struct {
+	DataFormat     *string                          `json:"DataFormat,omitempty" xml:"DataFormat,omitempty"`
+	DataSourceType *string                          `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
+	OrgId          *string                          `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
+	OrgName        *string                          `json:"OrgName,omitempty" xml:"OrgName,omitempty"`
+	URLList        []*CalcCACSAdvanceRequestURLList `json:"URLList,omitempty" xml:"URLList,omitempty" type:"Repeated"`
+}
+
+func (s CalcCACSAdvanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CalcCACSAdvanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CalcCACSAdvanceRequest) SetDataFormat(v string) *CalcCACSAdvanceRequest {
+	s.DataFormat = &v
+	return s
+}
+
+func (s *CalcCACSAdvanceRequest) SetDataSourceType(v string) *CalcCACSAdvanceRequest {
+	s.DataSourceType = &v
+	return s
+}
+
+func (s *CalcCACSAdvanceRequest) SetOrgId(v string) *CalcCACSAdvanceRequest {
+	s.OrgId = &v
+	return s
+}
+
+func (s *CalcCACSAdvanceRequest) SetOrgName(v string) *CalcCACSAdvanceRequest {
+	s.OrgName = &v
+	return s
+}
+
+func (s *CalcCACSAdvanceRequest) SetURLList(v []*CalcCACSAdvanceRequestURLList) *CalcCACSAdvanceRequest {
+	s.URLList = v
+	return s
+}
+
+type CalcCACSAdvanceRequestURLList struct {
+	URLObject io.Reader `json:"URL,omitempty" xml:"URL,omitempty"`
+}
+
+func (s CalcCACSAdvanceRequestURLList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CalcCACSAdvanceRequestURLList) GoString() string {
+	return s.String()
+}
+
+func (s *CalcCACSAdvanceRequestURLList) SetURLObject(v io.Reader) *CalcCACSAdvanceRequestURLList {
+	s.URLObject = v
 	return s
 }
 
@@ -715,6 +836,58 @@ func (s *DetectCovid19CadRequestURLList) SetURL(v string) *DetectCovid19CadReque
 	return s
 }
 
+type DetectCovid19CadAdvanceRequest struct {
+	DataFormat *string                                  `json:"DataFormat,omitempty" xml:"DataFormat,omitempty"`
+	OrgId      *string                                  `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
+	OrgName    *string                                  `json:"OrgName,omitempty" xml:"OrgName,omitempty"`
+	URLList    []*DetectCovid19CadAdvanceRequestURLList `json:"URLList,omitempty" xml:"URLList,omitempty" type:"Repeated"`
+}
+
+func (s DetectCovid19CadAdvanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetectCovid19CadAdvanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DetectCovid19CadAdvanceRequest) SetDataFormat(v string) *DetectCovid19CadAdvanceRequest {
+	s.DataFormat = &v
+	return s
+}
+
+func (s *DetectCovid19CadAdvanceRequest) SetOrgId(v string) *DetectCovid19CadAdvanceRequest {
+	s.OrgId = &v
+	return s
+}
+
+func (s *DetectCovid19CadAdvanceRequest) SetOrgName(v string) *DetectCovid19CadAdvanceRequest {
+	s.OrgName = &v
+	return s
+}
+
+func (s *DetectCovid19CadAdvanceRequest) SetURLList(v []*DetectCovid19CadAdvanceRequestURLList) *DetectCovid19CadAdvanceRequest {
+	s.URLList = v
+	return s
+}
+
+type DetectCovid19CadAdvanceRequestURLList struct {
+	URLObject io.Reader `json:"URL,omitempty" xml:"URL,omitempty"`
+}
+
+func (s DetectCovid19CadAdvanceRequestURLList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetectCovid19CadAdvanceRequestURLList) GoString() string {
+	return s.String()
+}
+
+func (s *DetectCovid19CadAdvanceRequestURLList) SetURLObject(v io.Reader) *DetectCovid19CadAdvanceRequestURLList {
+	s.URLObject = v
+	return s
+}
+
 type DetectCovid19CadResponseBody struct {
 	Data      *DetectCovid19CadResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	Message   *string                           `json:"Message,omitempty" xml:"Message,omitempty"`
@@ -955,6 +1128,7 @@ func (s *DetectHipKeypointXRayResponseBodyData) SetOrgName(v string) *DetectHipK
 }
 
 type DetectHipKeypointXRayResponseBodyDataKeyPoints struct {
+	// 1
 	Coordinates []*int32                                           `json:"Coordinates,omitempty" xml:"Coordinates,omitempty" type:"Repeated"`
 	Tag         *DetectHipKeypointXRayResponseBodyDataKeyPointsTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Struct"`
 	Value       *float32                                           `json:"Value,omitempty" xml:"Value,omitempty"`
@@ -1176,6 +1350,7 @@ func (s *DetectKneeKeypointXRayResponseBodyData) SetOrgName(v string) *DetectKne
 }
 
 type DetectKneeKeypointXRayResponseBodyDataKeyPoints struct {
+	// 1
 	Coordinates []*int32                                            `json:"Coordinates,omitempty" xml:"Coordinates,omitempty" type:"Repeated"`
 	Tag         *DetectKneeKeypointXRayResponseBodyDataKeyPointsTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Struct"`
 	Value       *float32                                            `json:"Value,omitempty" xml:"Value,omitempty"`
@@ -1413,11 +1588,12 @@ func (s *DetectKneeXRayResponse) SetBody(v *DetectKneeXRayResponseBody) *DetectK
 }
 
 type DetectLungNoduleRequest struct {
-	DataFormat *string                           `json:"DataFormat,omitempty" xml:"DataFormat,omitempty"`
-	OrgId      *string                           `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
-	OrgName    *string                           `json:"OrgName,omitempty" xml:"OrgName,omitempty"`
-	Threshold  *float32                          `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
-	URLList    []*DetectLungNoduleRequestURLList `json:"URLList,omitempty" xml:"URLList,omitempty" type:"Repeated"`
+	DataFormat *string  `json:"DataFormat,omitempty" xml:"DataFormat,omitempty"`
+	OrgId      *string  `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
+	OrgName    *string  `json:"OrgName,omitempty" xml:"OrgName,omitempty"`
+	Threshold  *float32 `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
+	// 1
+	URLList []*DetectLungNoduleRequestURLList `json:"URLList,omitempty" xml:"URLList,omitempty" type:"Repeated"`
 }
 
 func (s DetectLungNoduleRequest) String() string {
@@ -1470,6 +1646,65 @@ func (s *DetectLungNoduleRequestURLList) SetURL(v string) *DetectLungNoduleReque
 	return s
 }
 
+type DetectLungNoduleAdvanceRequest struct {
+	DataFormat *string  `json:"DataFormat,omitempty" xml:"DataFormat,omitempty"`
+	OrgId      *string  `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
+	OrgName    *string  `json:"OrgName,omitempty" xml:"OrgName,omitempty"`
+	Threshold  *float32 `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
+	// 1
+	URLList []*DetectLungNoduleAdvanceRequestURLList `json:"URLList,omitempty" xml:"URLList,omitempty" type:"Repeated"`
+}
+
+func (s DetectLungNoduleAdvanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetectLungNoduleAdvanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DetectLungNoduleAdvanceRequest) SetDataFormat(v string) *DetectLungNoduleAdvanceRequest {
+	s.DataFormat = &v
+	return s
+}
+
+func (s *DetectLungNoduleAdvanceRequest) SetOrgId(v string) *DetectLungNoduleAdvanceRequest {
+	s.OrgId = &v
+	return s
+}
+
+func (s *DetectLungNoduleAdvanceRequest) SetOrgName(v string) *DetectLungNoduleAdvanceRequest {
+	s.OrgName = &v
+	return s
+}
+
+func (s *DetectLungNoduleAdvanceRequest) SetThreshold(v float32) *DetectLungNoduleAdvanceRequest {
+	s.Threshold = &v
+	return s
+}
+
+func (s *DetectLungNoduleAdvanceRequest) SetURLList(v []*DetectLungNoduleAdvanceRequestURLList) *DetectLungNoduleAdvanceRequest {
+	s.URLList = v
+	return s
+}
+
+type DetectLungNoduleAdvanceRequestURLList struct {
+	URLObject io.Reader `json:"URL,omitempty" xml:"URL,omitempty"`
+}
+
+func (s DetectLungNoduleAdvanceRequestURLList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetectLungNoduleAdvanceRequestURLList) GoString() string {
+	return s.String()
+}
+
+func (s *DetectLungNoduleAdvanceRequestURLList) SetURLObject(v io.Reader) *DetectLungNoduleAdvanceRequestURLList {
+	s.URLObject = v
+	return s
+}
+
 type DetectLungNoduleResponseBody struct {
 	Data      *DetectLungNoduleResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	Message   *string                           `json:"Message,omitempty" xml:"Message,omitempty"`
@@ -1517,11 +1752,13 @@ func (s *DetectLungNoduleResponseBodyData) SetSeries(v []*DetectLungNoduleRespon
 }
 
 type DetectLungNoduleResponseBodyDataSeries struct {
-	Elements          []*DetectLungNoduleResponseBodyDataSeriesElements `json:"Elements,omitempty" xml:"Elements,omitempty" type:"Repeated"`
-	Origin            []*float32                                        `json:"Origin,omitempty" xml:"Origin,omitempty" type:"Repeated"`
-	Report            *string                                           `json:"Report,omitempty" xml:"Report,omitempty"`
-	SeriesInstanceUid *string                                           `json:"SeriesInstanceUid,omitempty" xml:"SeriesInstanceUid,omitempty"`
-	Spacing           []*float32                                        `json:"Spacing,omitempty" xml:"Spacing,omitempty" type:"Repeated"`
+	Elements []*DetectLungNoduleResponseBodyDataSeriesElements `json:"Elements,omitempty" xml:"Elements,omitempty" type:"Repeated"`
+	// 1
+	Origin            []*float32 `json:"Origin,omitempty" xml:"Origin,omitempty" type:"Repeated"`
+	Report            *string    `json:"Report,omitempty" xml:"Report,omitempty"`
+	SeriesInstanceUid *string    `json:"SeriesInstanceUid,omitempty" xml:"SeriesInstanceUid,omitempty"`
+	// 1
+	Spacing []*float32 `json:"Spacing,omitempty" xml:"Spacing,omitempty" type:"Repeated"`
 }
 
 func (s DetectLungNoduleResponseBodyDataSeries) String() string {
@@ -1721,6 +1958,46 @@ func (s *DetectLymphRequestURLList) SetURL(v string) *DetectLymphRequestURLList 
 	return s
 }
 
+type DetectLymphAdvanceRequest struct {
+	DataSourceType *string                             `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
+	URLList        []*DetectLymphAdvanceRequestURLList `json:"URLList,omitempty" xml:"URLList,omitempty" type:"Repeated"`
+}
+
+func (s DetectLymphAdvanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetectLymphAdvanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DetectLymphAdvanceRequest) SetDataSourceType(v string) *DetectLymphAdvanceRequest {
+	s.DataSourceType = &v
+	return s
+}
+
+func (s *DetectLymphAdvanceRequest) SetURLList(v []*DetectLymphAdvanceRequestURLList) *DetectLymphAdvanceRequest {
+	s.URLList = v
+	return s
+}
+
+type DetectLymphAdvanceRequestURLList struct {
+	URLObject io.Reader `json:"URL,omitempty" xml:"URL,omitempty"`
+}
+
+func (s DetectLymphAdvanceRequestURLList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetectLymphAdvanceRequestURLList) GoString() string {
+	return s.String()
+}
+
+func (s *DetectLymphAdvanceRequestURLList) SetURLObject(v io.Reader) *DetectLymphAdvanceRequestURLList {
+	s.URLObject = v
+	return s
+}
+
 type DetectLymphResponseBody struct {
 	Data      *DetectLymphResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	RequestId *string                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -1868,6 +2145,46 @@ func (s DetectPancRequestURLList) GoString() string {
 
 func (s *DetectPancRequestURLList) SetURL(v string) *DetectPancRequestURLList {
 	s.URL = &v
+	return s
+}
+
+type DetectPancAdvanceRequest struct {
+	DataSourceType *string                            `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
+	URLList        []*DetectPancAdvanceRequestURLList `json:"URLList,omitempty" xml:"URLList,omitempty" type:"Repeated"`
+}
+
+func (s DetectPancAdvanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetectPancAdvanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DetectPancAdvanceRequest) SetDataSourceType(v string) *DetectPancAdvanceRequest {
+	s.DataSourceType = &v
+	return s
+}
+
+func (s *DetectPancAdvanceRequest) SetURLList(v []*DetectPancAdvanceRequestURLList) *DetectPancAdvanceRequest {
+	s.URLList = v
+	return s
+}
+
+type DetectPancAdvanceRequestURLList struct {
+	URLObject io.Reader `json:"URL,omitempty" xml:"URL,omitempty"`
+}
+
+func (s DetectPancAdvanceRequestURLList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetectPancAdvanceRequestURLList) GoString() string {
+	return s.String()
+}
+
+func (s *DetectPancAdvanceRequestURLList) SetURLObject(v io.Reader) *DetectPancAdvanceRequestURLList {
+	s.URLObject = v
 	return s
 }
 
@@ -2039,6 +2356,64 @@ func (s *DetectRibFractureRequestURLList) SetURL(v string) *DetectRibFractureReq
 	return s
 }
 
+type DetectRibFractureAdvanceRequest struct {
+	DataFormat *string                                   `json:"DataFormat,omitempty" xml:"DataFormat,omitempty"`
+	OrgId      *string                                   `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
+	OrgName    *string                                   `json:"OrgName,omitempty" xml:"OrgName,omitempty"`
+	SourceType *string                                   `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	URLList    []*DetectRibFractureAdvanceRequestURLList `json:"URLList,omitempty" xml:"URLList,omitempty" type:"Repeated"`
+}
+
+func (s DetectRibFractureAdvanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetectRibFractureAdvanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DetectRibFractureAdvanceRequest) SetDataFormat(v string) *DetectRibFractureAdvanceRequest {
+	s.DataFormat = &v
+	return s
+}
+
+func (s *DetectRibFractureAdvanceRequest) SetOrgId(v string) *DetectRibFractureAdvanceRequest {
+	s.OrgId = &v
+	return s
+}
+
+func (s *DetectRibFractureAdvanceRequest) SetOrgName(v string) *DetectRibFractureAdvanceRequest {
+	s.OrgName = &v
+	return s
+}
+
+func (s *DetectRibFractureAdvanceRequest) SetSourceType(v string) *DetectRibFractureAdvanceRequest {
+	s.SourceType = &v
+	return s
+}
+
+func (s *DetectRibFractureAdvanceRequest) SetURLList(v []*DetectRibFractureAdvanceRequestURLList) *DetectRibFractureAdvanceRequest {
+	s.URLList = v
+	return s
+}
+
+type DetectRibFractureAdvanceRequestURLList struct {
+	URLObject io.Reader `json:"URL,omitempty" xml:"URL,omitempty"`
+}
+
+func (s DetectRibFractureAdvanceRequestURLList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetectRibFractureAdvanceRequestURLList) GoString() string {
+	return s.String()
+}
+
+func (s *DetectRibFractureAdvanceRequestURLList) SetURLObject(v io.Reader) *DetectRibFractureAdvanceRequestURLList {
+	s.URLObject = v
+	return s
+}
+
 type DetectRibFractureResponseBody struct {
 	Data      *DetectRibFractureResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	Message   *string                            `json:"Message,omitempty" xml:"Message,omitempty"`
@@ -2106,6 +2481,7 @@ func (s *DetectRibFractureResponseBodyData) SetSpacing(v []*float32) *DetectRibF
 type DetectRibFractureResponseBodyDataDetections struct {
 	CoordinateImage    []*int32 `json:"CoordinateImage,omitempty" xml:"CoordinateImage,omitempty" type:"Repeated"`
 	Coordinates        []*int32 `json:"Coordinates,omitempty" xml:"Coordinates,omitempty" type:"Repeated"`
+	FracSOPInstanceUID *string  `json:"FracSOPInstanceUID,omitempty" xml:"FracSOPInstanceUID,omitempty"`
 	FractureCategory   *string  `json:"FractureCategory,omitempty" xml:"FractureCategory,omitempty"`
 	FractureConfidence *float32 `json:"FractureConfidence,omitempty" xml:"FractureConfidence,omitempty"`
 	FractureId         *int32   `json:"FractureId,omitempty" xml:"FractureId,omitempty"`
@@ -2128,6 +2504,11 @@ func (s *DetectRibFractureResponseBodyDataDetections) SetCoordinateImage(v []*in
 
 func (s *DetectRibFractureResponseBodyDataDetections) SetCoordinates(v []*int32) *DetectRibFractureResponseBodyDataDetections {
 	s.Coordinates = v
+	return s
+}
+
+func (s *DetectRibFractureResponseBodyDataDetections) SetFracSOPInstanceUID(v string) *DetectRibFractureResponseBodyDataDetections {
+	s.FracSOPInstanceUID = &v
 	return s
 }
 
@@ -2385,6 +2766,58 @@ func (s DetectSpineMRIRequestURLList) GoString() string {
 
 func (s *DetectSpineMRIRequestURLList) SetURL(v string) *DetectSpineMRIRequestURLList {
 	s.URL = &v
+	return s
+}
+
+type DetectSpineMRIAdvanceRequest struct {
+	DataFormat *string                                `json:"DataFormat,omitempty" xml:"DataFormat,omitempty"`
+	OrgId      *string                                `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
+	OrgName    *string                                `json:"OrgName,omitempty" xml:"OrgName,omitempty"`
+	URLList    []*DetectSpineMRIAdvanceRequestURLList `json:"URLList,omitempty" xml:"URLList,omitempty" type:"Repeated"`
+}
+
+func (s DetectSpineMRIAdvanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetectSpineMRIAdvanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DetectSpineMRIAdvanceRequest) SetDataFormat(v string) *DetectSpineMRIAdvanceRequest {
+	s.DataFormat = &v
+	return s
+}
+
+func (s *DetectSpineMRIAdvanceRequest) SetOrgId(v string) *DetectSpineMRIAdvanceRequest {
+	s.OrgId = &v
+	return s
+}
+
+func (s *DetectSpineMRIAdvanceRequest) SetOrgName(v string) *DetectSpineMRIAdvanceRequest {
+	s.OrgName = &v
+	return s
+}
+
+func (s *DetectSpineMRIAdvanceRequest) SetURLList(v []*DetectSpineMRIAdvanceRequestURLList) *DetectSpineMRIAdvanceRequest {
+	s.URLList = v
+	return s
+}
+
+type DetectSpineMRIAdvanceRequestURLList struct {
+	URLObject io.Reader `json:"URL,omitempty" xml:"URL,omitempty"`
+}
+
+func (s DetectSpineMRIAdvanceRequestURLList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetectSpineMRIAdvanceRequestURLList) GoString() string {
+	return s.String()
+}
+
+func (s *DetectSpineMRIAdvanceRequestURLList) SetURLObject(v io.Reader) *DetectSpineMRIAdvanceRequestURLList {
+	s.URLObject = v
 	return s
 }
 
@@ -2701,6 +3134,7 @@ func (s *GetAsyncJobResultResponse) SetBody(v *GetAsyncJobResultResponseBody) *G
 }
 
 type RunCTRegistrationRequest struct {
+	// DICOM。
 	DataFormat     *string                                  `json:"DataFormat,omitempty" xml:"DataFormat,omitempty"`
 	DataSourceType *string                                  `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
 	FloatingList   []*RunCTRegistrationRequestFloatingList  `json:"FloatingList,omitempty" xml:"FloatingList,omitempty" type:"Repeated"`
@@ -2778,6 +3212,88 @@ func (s RunCTRegistrationRequestReferenceList) GoString() string {
 
 func (s *RunCTRegistrationRequestReferenceList) SetReferenceURL(v string) *RunCTRegistrationRequestReferenceList {
 	s.ReferenceURL = &v
+	return s
+}
+
+type RunCTRegistrationAdvanceRequest struct {
+	// DICOM。
+	DataFormat     *string                                         `json:"DataFormat,omitempty" xml:"DataFormat,omitempty"`
+	DataSourceType *string                                         `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
+	FloatingList   []*RunCTRegistrationAdvanceRequestFloatingList  `json:"FloatingList,omitempty" xml:"FloatingList,omitempty" type:"Repeated"`
+	OrgId          *string                                         `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
+	OrgName        *string                                         `json:"OrgName,omitempty" xml:"OrgName,omitempty"`
+	ReferenceList  []*RunCTRegistrationAdvanceRequestReferenceList `json:"ReferenceList,omitempty" xml:"ReferenceList,omitempty" type:"Repeated"`
+}
+
+func (s RunCTRegistrationAdvanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunCTRegistrationAdvanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RunCTRegistrationAdvanceRequest) SetDataFormat(v string) *RunCTRegistrationAdvanceRequest {
+	s.DataFormat = &v
+	return s
+}
+
+func (s *RunCTRegistrationAdvanceRequest) SetDataSourceType(v string) *RunCTRegistrationAdvanceRequest {
+	s.DataSourceType = &v
+	return s
+}
+
+func (s *RunCTRegistrationAdvanceRequest) SetFloatingList(v []*RunCTRegistrationAdvanceRequestFloatingList) *RunCTRegistrationAdvanceRequest {
+	s.FloatingList = v
+	return s
+}
+
+func (s *RunCTRegistrationAdvanceRequest) SetOrgId(v string) *RunCTRegistrationAdvanceRequest {
+	s.OrgId = &v
+	return s
+}
+
+func (s *RunCTRegistrationAdvanceRequest) SetOrgName(v string) *RunCTRegistrationAdvanceRequest {
+	s.OrgName = &v
+	return s
+}
+
+func (s *RunCTRegistrationAdvanceRequest) SetReferenceList(v []*RunCTRegistrationAdvanceRequestReferenceList) *RunCTRegistrationAdvanceRequest {
+	s.ReferenceList = v
+	return s
+}
+
+type RunCTRegistrationAdvanceRequestFloatingList struct {
+	FloatingURLObject io.Reader `json:"FloatingURL,omitempty" xml:"FloatingURL,omitempty"`
+}
+
+func (s RunCTRegistrationAdvanceRequestFloatingList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunCTRegistrationAdvanceRequestFloatingList) GoString() string {
+	return s.String()
+}
+
+func (s *RunCTRegistrationAdvanceRequestFloatingList) SetFloatingURLObject(v io.Reader) *RunCTRegistrationAdvanceRequestFloatingList {
+	s.FloatingURLObject = v
+	return s
+}
+
+type RunCTRegistrationAdvanceRequestReferenceList struct {
+	ReferenceURLObject io.Reader `json:"ReferenceURL,omitempty" xml:"ReferenceURL,omitempty"`
+}
+
+func (s RunCTRegistrationAdvanceRequestReferenceList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunCTRegistrationAdvanceRequestReferenceList) GoString() string {
+	return s.String()
+}
+
+func (s *RunCTRegistrationAdvanceRequestReferenceList) SetReferenceURLObject(v io.Reader) *RunCTRegistrationAdvanceRequestReferenceList {
+	s.ReferenceURLObject = v
 	return s
 }
 
@@ -2922,7 +3438,7 @@ func (s *RunMedQARequest) SetSessionId(v string) *RunMedQARequest {
 }
 
 type RunMedQARequestAnswerImageDataList struct {
-	AnswerImageData []byte `json:"AnswerImageData,omitempty" xml:"AnswerImageData,omitempty"`
+	AnswerImageData *string `json:"AnswerImageData,omitempty" xml:"AnswerImageData,omitempty"`
 }
 
 func (s RunMedQARequestAnswerImageDataList) String() string {
@@ -2933,8 +3449,8 @@ func (s RunMedQARequestAnswerImageDataList) GoString() string {
 	return s.String()
 }
 
-func (s *RunMedQARequestAnswerImageDataList) SetAnswerImageData(v []byte) *RunMedQARequestAnswerImageDataList {
-	s.AnswerImageData = v
+func (s *RunMedQARequestAnswerImageDataList) SetAnswerImageData(v string) *RunMedQARequestAnswerImageDataList {
+	s.AnswerImageData = &v
 	return s
 }
 
@@ -2968,6 +3484,116 @@ func (s RunMedQARequestAnswerTextList) GoString() string {
 }
 
 func (s *RunMedQARequestAnswerTextList) SetAnswerText(v string) *RunMedQARequestAnswerTextList {
+	s.AnswerText = &v
+	return s
+}
+
+type RunMedQAAdvanceRequest struct {
+	AnswerImageDataList []*RunMedQAAdvanceRequestAnswerImageDataList `json:"AnswerImageDataList,omitempty" xml:"AnswerImageDataList,omitempty" type:"Repeated"`
+	AnswerImageURLList  []*RunMedQAAdvanceRequestAnswerImageURLList  `json:"AnswerImageURLList,omitempty" xml:"AnswerImageURLList,omitempty" type:"Repeated"`
+	AnswerTextList      []*RunMedQAAdvanceRequestAnswerTextList      `json:"AnswerTextList,omitempty" xml:"AnswerTextList,omitempty" type:"Repeated"`
+	Department          *string                                      `json:"Department,omitempty" xml:"Department,omitempty"`
+	OrgId               *string                                      `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
+	OrgName             *string                                      `json:"OrgName,omitempty" xml:"OrgName,omitempty"`
+	QuestionType        *string                                      `json:"QuestionType,omitempty" xml:"QuestionType,omitempty"`
+	SessionId           *string                                      `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+}
+
+func (s RunMedQAAdvanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunMedQAAdvanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RunMedQAAdvanceRequest) SetAnswerImageDataList(v []*RunMedQAAdvanceRequestAnswerImageDataList) *RunMedQAAdvanceRequest {
+	s.AnswerImageDataList = v
+	return s
+}
+
+func (s *RunMedQAAdvanceRequest) SetAnswerImageURLList(v []*RunMedQAAdvanceRequestAnswerImageURLList) *RunMedQAAdvanceRequest {
+	s.AnswerImageURLList = v
+	return s
+}
+
+func (s *RunMedQAAdvanceRequest) SetAnswerTextList(v []*RunMedQAAdvanceRequestAnswerTextList) *RunMedQAAdvanceRequest {
+	s.AnswerTextList = v
+	return s
+}
+
+func (s *RunMedQAAdvanceRequest) SetDepartment(v string) *RunMedQAAdvanceRequest {
+	s.Department = &v
+	return s
+}
+
+func (s *RunMedQAAdvanceRequest) SetOrgId(v string) *RunMedQAAdvanceRequest {
+	s.OrgId = &v
+	return s
+}
+
+func (s *RunMedQAAdvanceRequest) SetOrgName(v string) *RunMedQAAdvanceRequest {
+	s.OrgName = &v
+	return s
+}
+
+func (s *RunMedQAAdvanceRequest) SetQuestionType(v string) *RunMedQAAdvanceRequest {
+	s.QuestionType = &v
+	return s
+}
+
+func (s *RunMedQAAdvanceRequest) SetSessionId(v string) *RunMedQAAdvanceRequest {
+	s.SessionId = &v
+	return s
+}
+
+type RunMedQAAdvanceRequestAnswerImageDataList struct {
+	AnswerImageData *string `json:"AnswerImageData,omitempty" xml:"AnswerImageData,omitempty"`
+}
+
+func (s RunMedQAAdvanceRequestAnswerImageDataList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunMedQAAdvanceRequestAnswerImageDataList) GoString() string {
+	return s.String()
+}
+
+func (s *RunMedQAAdvanceRequestAnswerImageDataList) SetAnswerImageData(v string) *RunMedQAAdvanceRequestAnswerImageDataList {
+	s.AnswerImageData = &v
+	return s
+}
+
+type RunMedQAAdvanceRequestAnswerImageURLList struct {
+	AnswerImageURLObject io.Reader `json:"AnswerImageURL,omitempty" xml:"AnswerImageURL,omitempty"`
+}
+
+func (s RunMedQAAdvanceRequestAnswerImageURLList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunMedQAAdvanceRequestAnswerImageURLList) GoString() string {
+	return s.String()
+}
+
+func (s *RunMedQAAdvanceRequestAnswerImageURLList) SetAnswerImageURLObject(v io.Reader) *RunMedQAAdvanceRequestAnswerImageURLList {
+	s.AnswerImageURLObject = v
+	return s
+}
+
+type RunMedQAAdvanceRequestAnswerTextList struct {
+	AnswerText *string `json:"AnswerText,omitempty" xml:"AnswerText,omitempty"`
+}
+
+func (s RunMedQAAdvanceRequestAnswerTextList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunMedQAAdvanceRequestAnswerTextList) GoString() string {
+	return s.String()
+}
+
+func (s *RunMedQAAdvanceRequestAnswerTextList) SetAnswerText(v string) *RunMedQAAdvanceRequestAnswerTextList {
 	s.AnswerText = &v
 	return s
 }
@@ -3135,6 +3761,70 @@ func (s *ScreenChestCTRequestURLList) SetURL(v string) *ScreenChestCTRequestURLL
 	return s
 }
 
+type ScreenChestCTAdvanceRequest struct {
+	DataFormat *string                               `json:"DataFormat,omitempty" xml:"DataFormat,omitempty"`
+	Mask       *int64                                `json:"Mask,omitempty" xml:"Mask,omitempty"`
+	OrgId      *string                               `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
+	OrgName    *string                               `json:"OrgName,omitempty" xml:"OrgName,omitempty"`
+	URLList    []*ScreenChestCTAdvanceRequestURLList `json:"URLList,omitempty" xml:"URLList,omitempty" type:"Repeated"`
+	Verbose    *int64                                `json:"Verbose,omitempty" xml:"Verbose,omitempty"`
+}
+
+func (s ScreenChestCTAdvanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ScreenChestCTAdvanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ScreenChestCTAdvanceRequest) SetDataFormat(v string) *ScreenChestCTAdvanceRequest {
+	s.DataFormat = &v
+	return s
+}
+
+func (s *ScreenChestCTAdvanceRequest) SetMask(v int64) *ScreenChestCTAdvanceRequest {
+	s.Mask = &v
+	return s
+}
+
+func (s *ScreenChestCTAdvanceRequest) SetOrgId(v string) *ScreenChestCTAdvanceRequest {
+	s.OrgId = &v
+	return s
+}
+
+func (s *ScreenChestCTAdvanceRequest) SetOrgName(v string) *ScreenChestCTAdvanceRequest {
+	s.OrgName = &v
+	return s
+}
+
+func (s *ScreenChestCTAdvanceRequest) SetURLList(v []*ScreenChestCTAdvanceRequestURLList) *ScreenChestCTAdvanceRequest {
+	s.URLList = v
+	return s
+}
+
+func (s *ScreenChestCTAdvanceRequest) SetVerbose(v int64) *ScreenChestCTAdvanceRequest {
+	s.Verbose = &v
+	return s
+}
+
+type ScreenChestCTAdvanceRequestURLList struct {
+	URLObject io.Reader `json:"URL,omitempty" xml:"URL,omitempty"`
+}
+
+func (s ScreenChestCTAdvanceRequestURLList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ScreenChestCTAdvanceRequestURLList) GoString() string {
+	return s.String()
+}
+
+func (s *ScreenChestCTAdvanceRequestURLList) SetURLObject(v io.Reader) *ScreenChestCTAdvanceRequestURLList {
+	s.URLObject = v
+	return s
+}
+
 type ScreenChestCTResponseBody struct {
 	Data      *ScreenChestCTResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	Message   *string                        `json:"Message,omitempty" xml:"Message,omitempty"`
@@ -3174,6 +3864,7 @@ type ScreenChestCTResponseBodyData struct {
 	ErrorMessage       *string                                          `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	LungNodule         *ScreenChestCTResponseBodyDataLungNodule         `json:"LungNodule,omitempty" xml:"LungNodule,omitempty" type:"Struct"`
 	NestedUrlList      map[string]interface{}                           `json:"NestedUrlList,omitempty" xml:"NestedUrlList,omitempty"`
+	ScreenEc           *ScreenChestCTResponseBodyDataScreenEc           `json:"ScreenEc,omitempty" xml:"ScreenEc,omitempty" type:"Struct"`
 	URLList            map[string]interface{}                           `json:"URLList,omitempty" xml:"URLList,omitempty"`
 }
 
@@ -3230,6 +3921,11 @@ func (s *ScreenChestCTResponseBodyData) SetNestedUrlList(v map[string]interface{
 	return s
 }
 
+func (s *ScreenChestCTResponseBodyData) SetScreenEc(v *ScreenChestCTResponseBodyDataScreenEc) *ScreenChestCTResponseBodyData {
+	s.ScreenEc = v
+	return s
+}
+
 func (s *ScreenChestCTResponseBodyData) SetURLList(v map[string]interface{}) *ScreenChestCTResponseBodyData {
 	s.URLList = v
 	return s
@@ -3265,6 +3961,7 @@ func (s *ScreenChestCTResponseBodyDataAnalyzeChestVessel) SetResultURL(v string)
 }
 
 type ScreenChestCTResponseBodyDataAnalyzeChestVesselAortaInfo struct {
+	// 1
 	Area         []*float32   `json:"Area,omitempty" xml:"Area,omitempty" type:"Repeated"`
 	Coordinates  [][]*float32 `json:"Coordinates,omitempty" xml:"Coordinates,omitempty" type:"Repeated"`
 	LabelValue   *int64       `json:"LabelValue,omitempty" xml:"LabelValue,omitempty"`
@@ -3312,6 +4009,7 @@ func (s *ScreenChestCTResponseBodyDataAnalyzeChestVesselAortaInfo) SetMaxDiamete
 }
 
 type ScreenChestCTResponseBodyDataAnalyzeChestVesselPulmonaryInfo struct {
+	// 1
 	Area             []*float32   `json:"Area,omitempty" xml:"Area,omitempty" type:"Repeated"`
 	Coordinates      [][]*float32 `json:"Coordinates,omitempty" xml:"Coordinates,omitempty" type:"Repeated"`
 	LabelValue       *int64       `json:"LabelValue,omitempty" xml:"LabelValue,omitempty"`
@@ -3671,6 +4369,7 @@ func (s *ScreenChestCTResponseBodyDataDetectRibFracture) SetSpacing(v []*float32
 type ScreenChestCTResponseBodyDataDetectRibFractureDetections struct {
 	CoordinateImage    []*int64 `json:"CoordinateImage,omitempty" xml:"CoordinateImage,omitempty" type:"Repeated"`
 	Coordinates        []*int64 `json:"Coordinates,omitempty" xml:"Coordinates,omitempty" type:"Repeated"`
+	FracSOPInstanceUID *string  `json:"FracSOPInstanceUID,omitempty" xml:"FracSOPInstanceUID,omitempty"`
 	FractureCategory   *int64   `json:"FractureCategory,omitempty" xml:"FractureCategory,omitempty"`
 	FractureConfidence *float32 `json:"FractureConfidence,omitempty" xml:"FractureConfidence,omitempty"`
 	FractureId         *int64   `json:"FractureId,omitempty" xml:"FractureId,omitempty"`
@@ -3693,6 +4392,11 @@ func (s *ScreenChestCTResponseBodyDataDetectRibFractureDetections) SetCoordinate
 
 func (s *ScreenChestCTResponseBodyDataDetectRibFractureDetections) SetCoordinates(v []*int64) *ScreenChestCTResponseBodyDataDetectRibFractureDetections {
 	s.Coordinates = v
+	return s
+}
+
+func (s *ScreenChestCTResponseBodyDataDetectRibFractureDetections) SetFracSOPInstanceUID(v string) *ScreenChestCTResponseBodyDataDetectRibFractureDetections {
+	s.FracSOPInstanceUID = &v
 	return s
 }
 
@@ -3871,6 +4575,70 @@ func (s *ScreenChestCTResponseBodyDataLungNoduleSeriesElements) SetY(v float32) 
 
 func (s *ScreenChestCTResponseBodyDataLungNoduleSeriesElements) SetZ(v float32) *ScreenChestCTResponseBodyDataLungNoduleSeriesElements {
 	s.Z = &v
+	return s
+}
+
+type ScreenChestCTResponseBodyDataScreenEc struct {
+	Lesion           *ScreenChestCTResponseBodyDataScreenEcLesion `json:"Lesion,omitempty" xml:"Lesion,omitempty" type:"Struct"`
+	SeriesInsanceUid *string                                      `json:"SeriesInsanceUid,omitempty" xml:"SeriesInsanceUid,omitempty"`
+}
+
+func (s ScreenChestCTResponseBodyDataScreenEc) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ScreenChestCTResponseBodyDataScreenEc) GoString() string {
+	return s.String()
+}
+
+func (s *ScreenChestCTResponseBodyDataScreenEc) SetLesion(v *ScreenChestCTResponseBodyDataScreenEcLesion) *ScreenChestCTResponseBodyDataScreenEc {
+	s.Lesion = v
+	return s
+}
+
+func (s *ScreenChestCTResponseBodyDataScreenEc) SetSeriesInsanceUid(v string) *ScreenChestCTResponseBodyDataScreenEc {
+	s.SeriesInsanceUid = &v
+	return s
+}
+
+type ScreenChestCTResponseBodyDataScreenEcLesion struct {
+	BenignVolume  *string   `json:"BenignVolume,omitempty" xml:"BenignVolume,omitempty"`
+	EcVolume      *string   `json:"EcVolume,omitempty" xml:"EcVolume,omitempty"`
+	EsoVolume     *string   `json:"EsoVolume,omitempty" xml:"EsoVolume,omitempty"`
+	Mask          *string   `json:"Mask,omitempty" xml:"Mask,omitempty"`
+	Possibilities []*string `json:"Possibilities,omitempty" xml:"Possibilities,omitempty" type:"Repeated"`
+}
+
+func (s ScreenChestCTResponseBodyDataScreenEcLesion) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ScreenChestCTResponseBodyDataScreenEcLesion) GoString() string {
+	return s.String()
+}
+
+func (s *ScreenChestCTResponseBodyDataScreenEcLesion) SetBenignVolume(v string) *ScreenChestCTResponseBodyDataScreenEcLesion {
+	s.BenignVolume = &v
+	return s
+}
+
+func (s *ScreenChestCTResponseBodyDataScreenEcLesion) SetEcVolume(v string) *ScreenChestCTResponseBodyDataScreenEcLesion {
+	s.EcVolume = &v
+	return s
+}
+
+func (s *ScreenChestCTResponseBodyDataScreenEcLesion) SetEsoVolume(v string) *ScreenChestCTResponseBodyDataScreenEcLesion {
+	s.EsoVolume = &v
+	return s
+}
+
+func (s *ScreenChestCTResponseBodyDataScreenEcLesion) SetMask(v string) *ScreenChestCTResponseBodyDataScreenEcLesion {
+	s.Mask = &v
+	return s
+}
+
+func (s *ScreenChestCTResponseBodyDataScreenEcLesion) SetPossibilities(v []*string) *ScreenChestCTResponseBodyDataScreenEcLesion {
+	s.Possibilities = v
 	return s
 }
 
@@ -4126,6 +4894,76 @@ func (s SegmentOARRequestURLList) GoString() string {
 
 func (s *SegmentOARRequestURLList) SetURL(v string) *SegmentOARRequestURLList {
 	s.URL = &v
+	return s
+}
+
+type SegmentOARAdvanceRequest struct {
+	BodyPart   *string                            `json:"BodyPart,omitempty" xml:"BodyPart,omitempty"`
+	Contrast   *bool                              `json:"Contrast,omitempty" xml:"Contrast,omitempty"`
+	DataFormat *string                            `json:"DataFormat,omitempty" xml:"DataFormat,omitempty"`
+	MaskList   []*int64                           `json:"MaskList,omitempty" xml:"MaskList,omitempty" type:"Repeated"`
+	OrgId      *string                            `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
+	OrgName    *string                            `json:"OrgName,omitempty" xml:"OrgName,omitempty"`
+	URLList    []*SegmentOARAdvanceRequestURLList `json:"URLList,omitempty" xml:"URLList,omitempty" type:"Repeated"`
+}
+
+func (s SegmentOARAdvanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SegmentOARAdvanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SegmentOARAdvanceRequest) SetBodyPart(v string) *SegmentOARAdvanceRequest {
+	s.BodyPart = &v
+	return s
+}
+
+func (s *SegmentOARAdvanceRequest) SetContrast(v bool) *SegmentOARAdvanceRequest {
+	s.Contrast = &v
+	return s
+}
+
+func (s *SegmentOARAdvanceRequest) SetDataFormat(v string) *SegmentOARAdvanceRequest {
+	s.DataFormat = &v
+	return s
+}
+
+func (s *SegmentOARAdvanceRequest) SetMaskList(v []*int64) *SegmentOARAdvanceRequest {
+	s.MaskList = v
+	return s
+}
+
+func (s *SegmentOARAdvanceRequest) SetOrgId(v string) *SegmentOARAdvanceRequest {
+	s.OrgId = &v
+	return s
+}
+
+func (s *SegmentOARAdvanceRequest) SetOrgName(v string) *SegmentOARAdvanceRequest {
+	s.OrgName = &v
+	return s
+}
+
+func (s *SegmentOARAdvanceRequest) SetURLList(v []*SegmentOARAdvanceRequestURLList) *SegmentOARAdvanceRequest {
+	s.URLList = v
+	return s
+}
+
+type SegmentOARAdvanceRequestURLList struct {
+	URLObject io.Reader `json:"URL,omitempty" xml:"URL,omitempty"`
+}
+
+func (s SegmentOARAdvanceRequestURLList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SegmentOARAdvanceRequestURLList) GoString() string {
+	return s.String()
+}
+
+func (s *SegmentOARAdvanceRequestURLList) SetURLObject(v io.Reader) *SegmentOARAdvanceRequestURLList {
+	s.URLObject = v
 	return s
 }
 
@@ -4415,6 +5253,120 @@ func (client *Client) AnalyzeChestVessel(request *AnalyzeChestVesselRequest) (_r
 	return _result, _err
 }
 
+func (client *Client) AnalyzeChestVesselAdvance(request *AnalyzeChestVesselAdvanceRequest, runtime *util.RuntimeOptions) (_result *AnalyzeChestVesselResponse, _err error) {
+	// Step 0: init client
+	accessKeyId, _err := client.Credential.GetAccessKeyId()
+	if _err != nil {
+		return _result, _err
+	}
+
+	accessKeySecret, _err := client.Credential.GetAccessKeySecret()
+	if _err != nil {
+		return _result, _err
+	}
+
+	securityToken, _err := client.Credential.GetSecurityToken()
+	if _err != nil {
+		return _result, _err
+	}
+
+	credentialType := client.Credential.GetType()
+	openPlatformEndpoint := client.OpenPlatformEndpoint
+	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
+	}
+
+	if tea.BoolValue(util.IsUnset(credentialType)) {
+		credentialType = tea.String("access_key")
+	}
+
+	authConfig := &openapi.Config{
+		AccessKeyId:     accessKeyId,
+		AccessKeySecret: accessKeySecret,
+		SecurityToken:   securityToken,
+		Type:            credentialType,
+		Endpoint:        openPlatformEndpoint,
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	authClient, _err := openplatform.NewClient(authConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
+	authRequest := &openplatform.AuthorizeFileUploadRequest{
+		Product:  tea.String("imageprocess"),
+		RegionId: client.RegionId,
+	}
+	authResponse := &openplatform.AuthorizeFileUploadResponse{}
+	ossConfig := &oss.Config{
+		AccessKeySecret: accessKeySecret,
+		Type:            tea.String("access_key"),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	var ossClient *oss.Client
+	fileObj := &fileform.FileField{}
+	ossHeader := &oss.PostObjectRequestHeader{}
+	uploadRequest := &oss.PostObjectRequest{}
+	ossRuntime := &ossutil.RuntimeOptions{}
+	openapiutil.Convert(runtime, ossRuntime)
+	analyzeChestVesselReq := &AnalyzeChestVesselRequest{}
+	openapiutil.Convert(request, analyzeChestVesselReq)
+	if !tea.BoolValue(util.IsUnset(request.URLList)) {
+		i0 := tea.Int(0)
+		for _, item0 := range request.URLList {
+			if !tea.BoolValue(util.IsUnset(item0.URLObject)) {
+				authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+				if _err != nil {
+					return _result, _err
+				}
+
+				ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
+				ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
+				ossClient, _err = oss.NewClient(ossConfig)
+				if _err != nil {
+					return _result, _err
+				}
+
+				fileObj = &fileform.FileField{
+					Filename:    authResponse.Body.ObjectKey,
+					Content:     item0.URLObject,
+					ContentType: tea.String(""),
+				}
+				ossHeader = &oss.PostObjectRequestHeader{
+					AccessKeyId:         authResponse.Body.AccessKeyId,
+					Policy:              authResponse.Body.EncodedPolicy,
+					Signature:           authResponse.Body.Signature,
+					Key:                 authResponse.Body.ObjectKey,
+					File:                fileObj,
+					SuccessActionStatus: tea.String("201"),
+				}
+				uploadRequest = &oss.PostObjectRequest{
+					BucketName: authResponse.Body.Bucket,
+					Header:     ossHeader,
+				}
+				_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+				if _err != nil {
+					return _result, _err
+				}
+				tmp := analyzeChestVesselReq.URLList[tea.IntValue(i0)]
+				tmp.URL = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
+				i0 = number.Ltoi(number.Add(number.Itol(i0), number.Itol(tea.Int(1))))
+			}
+
+		}
+	}
+
+	analyzeChestVesselResp, _err := client.AnalyzeChestVesselWithOptions(analyzeChestVesselReq, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+
+	_result = analyzeChestVesselResp
+	return _result, _err
+}
+
 func (client *Client) CalcCACSWithOptions(request *CalcCACSRequest, runtime *util.RuntimeOptions) (_result *CalcCACSResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4472,6 +5424,120 @@ func (client *Client) CalcCACS(request *CalcCACSRequest) (_result *CalcCACSRespo
 		return _result, _err
 	}
 	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CalcCACSAdvance(request *CalcCACSAdvanceRequest, runtime *util.RuntimeOptions) (_result *CalcCACSResponse, _err error) {
+	// Step 0: init client
+	accessKeyId, _err := client.Credential.GetAccessKeyId()
+	if _err != nil {
+		return _result, _err
+	}
+
+	accessKeySecret, _err := client.Credential.GetAccessKeySecret()
+	if _err != nil {
+		return _result, _err
+	}
+
+	securityToken, _err := client.Credential.GetSecurityToken()
+	if _err != nil {
+		return _result, _err
+	}
+
+	credentialType := client.Credential.GetType()
+	openPlatformEndpoint := client.OpenPlatformEndpoint
+	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
+	}
+
+	if tea.BoolValue(util.IsUnset(credentialType)) {
+		credentialType = tea.String("access_key")
+	}
+
+	authConfig := &openapi.Config{
+		AccessKeyId:     accessKeyId,
+		AccessKeySecret: accessKeySecret,
+		SecurityToken:   securityToken,
+		Type:            credentialType,
+		Endpoint:        openPlatformEndpoint,
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	authClient, _err := openplatform.NewClient(authConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
+	authRequest := &openplatform.AuthorizeFileUploadRequest{
+		Product:  tea.String("imageprocess"),
+		RegionId: client.RegionId,
+	}
+	authResponse := &openplatform.AuthorizeFileUploadResponse{}
+	ossConfig := &oss.Config{
+		AccessKeySecret: accessKeySecret,
+		Type:            tea.String("access_key"),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	var ossClient *oss.Client
+	fileObj := &fileform.FileField{}
+	ossHeader := &oss.PostObjectRequestHeader{}
+	uploadRequest := &oss.PostObjectRequest{}
+	ossRuntime := &ossutil.RuntimeOptions{}
+	openapiutil.Convert(runtime, ossRuntime)
+	calcCACSReq := &CalcCACSRequest{}
+	openapiutil.Convert(request, calcCACSReq)
+	if !tea.BoolValue(util.IsUnset(request.URLList)) {
+		i0 := tea.Int(0)
+		for _, item0 := range request.URLList {
+			if !tea.BoolValue(util.IsUnset(item0.URLObject)) {
+				authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+				if _err != nil {
+					return _result, _err
+				}
+
+				ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
+				ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
+				ossClient, _err = oss.NewClient(ossConfig)
+				if _err != nil {
+					return _result, _err
+				}
+
+				fileObj = &fileform.FileField{
+					Filename:    authResponse.Body.ObjectKey,
+					Content:     item0.URLObject,
+					ContentType: tea.String(""),
+				}
+				ossHeader = &oss.PostObjectRequestHeader{
+					AccessKeyId:         authResponse.Body.AccessKeyId,
+					Policy:              authResponse.Body.EncodedPolicy,
+					Signature:           authResponse.Body.Signature,
+					Key:                 authResponse.Body.ObjectKey,
+					File:                fileObj,
+					SuccessActionStatus: tea.String("201"),
+				}
+				uploadRequest = &oss.PostObjectRequest{
+					BucketName: authResponse.Body.Bucket,
+					Header:     ossHeader,
+				}
+				_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+				if _err != nil {
+					return _result, _err
+				}
+				tmp := calcCACSReq.URLList[tea.IntValue(i0)]
+				tmp.URL = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
+				i0 = number.Ltoi(number.Add(number.Itol(i0), number.Itol(tea.Int(1))))
+			}
+
+		}
+	}
+
+	calcCACSResp, _err := client.CalcCACSWithOptions(calcCACSReq, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+
+	_result = calcCACSResp
 	return _result, _err
 }
 
@@ -4694,6 +5760,120 @@ func (client *Client) DetectCovid19Cad(request *DetectCovid19CadRequest) (_resul
 		return _result, _err
 	}
 	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DetectCovid19CadAdvance(request *DetectCovid19CadAdvanceRequest, runtime *util.RuntimeOptions) (_result *DetectCovid19CadResponse, _err error) {
+	// Step 0: init client
+	accessKeyId, _err := client.Credential.GetAccessKeyId()
+	if _err != nil {
+		return _result, _err
+	}
+
+	accessKeySecret, _err := client.Credential.GetAccessKeySecret()
+	if _err != nil {
+		return _result, _err
+	}
+
+	securityToken, _err := client.Credential.GetSecurityToken()
+	if _err != nil {
+		return _result, _err
+	}
+
+	credentialType := client.Credential.GetType()
+	openPlatformEndpoint := client.OpenPlatformEndpoint
+	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
+	}
+
+	if tea.BoolValue(util.IsUnset(credentialType)) {
+		credentialType = tea.String("access_key")
+	}
+
+	authConfig := &openapi.Config{
+		AccessKeyId:     accessKeyId,
+		AccessKeySecret: accessKeySecret,
+		SecurityToken:   securityToken,
+		Type:            credentialType,
+		Endpoint:        openPlatformEndpoint,
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	authClient, _err := openplatform.NewClient(authConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
+	authRequest := &openplatform.AuthorizeFileUploadRequest{
+		Product:  tea.String("imageprocess"),
+		RegionId: client.RegionId,
+	}
+	authResponse := &openplatform.AuthorizeFileUploadResponse{}
+	ossConfig := &oss.Config{
+		AccessKeySecret: accessKeySecret,
+		Type:            tea.String("access_key"),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	var ossClient *oss.Client
+	fileObj := &fileform.FileField{}
+	ossHeader := &oss.PostObjectRequestHeader{}
+	uploadRequest := &oss.PostObjectRequest{}
+	ossRuntime := &ossutil.RuntimeOptions{}
+	openapiutil.Convert(runtime, ossRuntime)
+	detectCovid19CadReq := &DetectCovid19CadRequest{}
+	openapiutil.Convert(request, detectCovid19CadReq)
+	if !tea.BoolValue(util.IsUnset(request.URLList)) {
+		i0 := tea.Int(0)
+		for _, item0 := range request.URLList {
+			if !tea.BoolValue(util.IsUnset(item0.URLObject)) {
+				authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+				if _err != nil {
+					return _result, _err
+				}
+
+				ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
+				ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
+				ossClient, _err = oss.NewClient(ossConfig)
+				if _err != nil {
+					return _result, _err
+				}
+
+				fileObj = &fileform.FileField{
+					Filename:    authResponse.Body.ObjectKey,
+					Content:     item0.URLObject,
+					ContentType: tea.String(""),
+				}
+				ossHeader = &oss.PostObjectRequestHeader{
+					AccessKeyId:         authResponse.Body.AccessKeyId,
+					Policy:              authResponse.Body.EncodedPolicy,
+					Signature:           authResponse.Body.Signature,
+					Key:                 authResponse.Body.ObjectKey,
+					File:                fileObj,
+					SuccessActionStatus: tea.String("201"),
+				}
+				uploadRequest = &oss.PostObjectRequest{
+					BucketName: authResponse.Body.Bucket,
+					Header:     ossHeader,
+				}
+				_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+				if _err != nil {
+					return _result, _err
+				}
+				tmp := detectCovid19CadReq.URLList[tea.IntValue(i0)]
+				tmp.URL = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
+				i0 = number.Ltoi(number.Add(number.Itol(i0), number.Itol(tea.Int(1))))
+			}
+
+		}
+	}
+
+	detectCovid19CadResp, _err := client.DetectCovid19CadWithOptions(detectCovid19CadReq, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+
+	_result = detectCovid19CadResp
 	return _result, _err
 }
 
@@ -5251,6 +6431,120 @@ func (client *Client) DetectLungNodule(request *DetectLungNoduleRequest) (_resul
 	return _result, _err
 }
 
+func (client *Client) DetectLungNoduleAdvance(request *DetectLungNoduleAdvanceRequest, runtime *util.RuntimeOptions) (_result *DetectLungNoduleResponse, _err error) {
+	// Step 0: init client
+	accessKeyId, _err := client.Credential.GetAccessKeyId()
+	if _err != nil {
+		return _result, _err
+	}
+
+	accessKeySecret, _err := client.Credential.GetAccessKeySecret()
+	if _err != nil {
+		return _result, _err
+	}
+
+	securityToken, _err := client.Credential.GetSecurityToken()
+	if _err != nil {
+		return _result, _err
+	}
+
+	credentialType := client.Credential.GetType()
+	openPlatformEndpoint := client.OpenPlatformEndpoint
+	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
+	}
+
+	if tea.BoolValue(util.IsUnset(credentialType)) {
+		credentialType = tea.String("access_key")
+	}
+
+	authConfig := &openapi.Config{
+		AccessKeyId:     accessKeyId,
+		AccessKeySecret: accessKeySecret,
+		SecurityToken:   securityToken,
+		Type:            credentialType,
+		Endpoint:        openPlatformEndpoint,
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	authClient, _err := openplatform.NewClient(authConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
+	authRequest := &openplatform.AuthorizeFileUploadRequest{
+		Product:  tea.String("imageprocess"),
+		RegionId: client.RegionId,
+	}
+	authResponse := &openplatform.AuthorizeFileUploadResponse{}
+	ossConfig := &oss.Config{
+		AccessKeySecret: accessKeySecret,
+		Type:            tea.String("access_key"),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	var ossClient *oss.Client
+	fileObj := &fileform.FileField{}
+	ossHeader := &oss.PostObjectRequestHeader{}
+	uploadRequest := &oss.PostObjectRequest{}
+	ossRuntime := &ossutil.RuntimeOptions{}
+	openapiutil.Convert(runtime, ossRuntime)
+	detectLungNoduleReq := &DetectLungNoduleRequest{}
+	openapiutil.Convert(request, detectLungNoduleReq)
+	if !tea.BoolValue(util.IsUnset(request.URLList)) {
+		i0 := tea.Int(0)
+		for _, item0 := range request.URLList {
+			if !tea.BoolValue(util.IsUnset(item0.URLObject)) {
+				authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+				if _err != nil {
+					return _result, _err
+				}
+
+				ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
+				ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
+				ossClient, _err = oss.NewClient(ossConfig)
+				if _err != nil {
+					return _result, _err
+				}
+
+				fileObj = &fileform.FileField{
+					Filename:    authResponse.Body.ObjectKey,
+					Content:     item0.URLObject,
+					ContentType: tea.String(""),
+				}
+				ossHeader = &oss.PostObjectRequestHeader{
+					AccessKeyId:         authResponse.Body.AccessKeyId,
+					Policy:              authResponse.Body.EncodedPolicy,
+					Signature:           authResponse.Body.Signature,
+					Key:                 authResponse.Body.ObjectKey,
+					File:                fileObj,
+					SuccessActionStatus: tea.String("201"),
+				}
+				uploadRequest = &oss.PostObjectRequest{
+					BucketName: authResponse.Body.Bucket,
+					Header:     ossHeader,
+				}
+				_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+				if _err != nil {
+					return _result, _err
+				}
+				tmp := detectLungNoduleReq.URLList[tea.IntValue(i0)]
+				tmp.URL = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
+				i0 = number.Ltoi(number.Add(number.Itol(i0), number.Itol(tea.Int(1))))
+			}
+
+		}
+	}
+
+	detectLungNoduleResp, _err := client.DetectLungNoduleWithOptions(detectLungNoduleReq, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+
+	_result = detectLungNoduleResp
+	return _result, _err
+}
+
 func (client *Client) DetectLymphWithOptions(request *DetectLymphRequest, runtime *util.RuntimeOptions) (_result *DetectLymphResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5299,6 +6593,120 @@ func (client *Client) DetectLymph(request *DetectLymphRequest) (_result *DetectL
 	return _result, _err
 }
 
+func (client *Client) DetectLymphAdvance(request *DetectLymphAdvanceRequest, runtime *util.RuntimeOptions) (_result *DetectLymphResponse, _err error) {
+	// Step 0: init client
+	accessKeyId, _err := client.Credential.GetAccessKeyId()
+	if _err != nil {
+		return _result, _err
+	}
+
+	accessKeySecret, _err := client.Credential.GetAccessKeySecret()
+	if _err != nil {
+		return _result, _err
+	}
+
+	securityToken, _err := client.Credential.GetSecurityToken()
+	if _err != nil {
+		return _result, _err
+	}
+
+	credentialType := client.Credential.GetType()
+	openPlatformEndpoint := client.OpenPlatformEndpoint
+	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
+	}
+
+	if tea.BoolValue(util.IsUnset(credentialType)) {
+		credentialType = tea.String("access_key")
+	}
+
+	authConfig := &openapi.Config{
+		AccessKeyId:     accessKeyId,
+		AccessKeySecret: accessKeySecret,
+		SecurityToken:   securityToken,
+		Type:            credentialType,
+		Endpoint:        openPlatformEndpoint,
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	authClient, _err := openplatform.NewClient(authConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
+	authRequest := &openplatform.AuthorizeFileUploadRequest{
+		Product:  tea.String("imageprocess"),
+		RegionId: client.RegionId,
+	}
+	authResponse := &openplatform.AuthorizeFileUploadResponse{}
+	ossConfig := &oss.Config{
+		AccessKeySecret: accessKeySecret,
+		Type:            tea.String("access_key"),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	var ossClient *oss.Client
+	fileObj := &fileform.FileField{}
+	ossHeader := &oss.PostObjectRequestHeader{}
+	uploadRequest := &oss.PostObjectRequest{}
+	ossRuntime := &ossutil.RuntimeOptions{}
+	openapiutil.Convert(runtime, ossRuntime)
+	detectLymphReq := &DetectLymphRequest{}
+	openapiutil.Convert(request, detectLymphReq)
+	if !tea.BoolValue(util.IsUnset(request.URLList)) {
+		i0 := tea.Int(0)
+		for _, item0 := range request.URLList {
+			if !tea.BoolValue(util.IsUnset(item0.URLObject)) {
+				authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+				if _err != nil {
+					return _result, _err
+				}
+
+				ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
+				ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
+				ossClient, _err = oss.NewClient(ossConfig)
+				if _err != nil {
+					return _result, _err
+				}
+
+				fileObj = &fileform.FileField{
+					Filename:    authResponse.Body.ObjectKey,
+					Content:     item0.URLObject,
+					ContentType: tea.String(""),
+				}
+				ossHeader = &oss.PostObjectRequestHeader{
+					AccessKeyId:         authResponse.Body.AccessKeyId,
+					Policy:              authResponse.Body.EncodedPolicy,
+					Signature:           authResponse.Body.Signature,
+					Key:                 authResponse.Body.ObjectKey,
+					File:                fileObj,
+					SuccessActionStatus: tea.String("201"),
+				}
+				uploadRequest = &oss.PostObjectRequest{
+					BucketName: authResponse.Body.Bucket,
+					Header:     ossHeader,
+				}
+				_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+				if _err != nil {
+					return _result, _err
+				}
+				tmp := detectLymphReq.URLList[tea.IntValue(i0)]
+				tmp.URL = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
+				i0 = number.Ltoi(number.Add(number.Itol(i0), number.Itol(tea.Int(1))))
+			}
+
+		}
+	}
+
+	detectLymphResp, _err := client.DetectLymphWithOptions(detectLymphReq, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+
+	_result = detectLymphResp
+	return _result, _err
+}
+
 func (client *Client) DetectPancWithOptions(request *DetectPancRequest, runtime *util.RuntimeOptions) (_result *DetectPancResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5344,6 +6752,120 @@ func (client *Client) DetectPanc(request *DetectPancRequest) (_result *DetectPan
 		return _result, _err
 	}
 	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DetectPancAdvance(request *DetectPancAdvanceRequest, runtime *util.RuntimeOptions) (_result *DetectPancResponse, _err error) {
+	// Step 0: init client
+	accessKeyId, _err := client.Credential.GetAccessKeyId()
+	if _err != nil {
+		return _result, _err
+	}
+
+	accessKeySecret, _err := client.Credential.GetAccessKeySecret()
+	if _err != nil {
+		return _result, _err
+	}
+
+	securityToken, _err := client.Credential.GetSecurityToken()
+	if _err != nil {
+		return _result, _err
+	}
+
+	credentialType := client.Credential.GetType()
+	openPlatformEndpoint := client.OpenPlatformEndpoint
+	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
+	}
+
+	if tea.BoolValue(util.IsUnset(credentialType)) {
+		credentialType = tea.String("access_key")
+	}
+
+	authConfig := &openapi.Config{
+		AccessKeyId:     accessKeyId,
+		AccessKeySecret: accessKeySecret,
+		SecurityToken:   securityToken,
+		Type:            credentialType,
+		Endpoint:        openPlatformEndpoint,
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	authClient, _err := openplatform.NewClient(authConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
+	authRequest := &openplatform.AuthorizeFileUploadRequest{
+		Product:  tea.String("imageprocess"),
+		RegionId: client.RegionId,
+	}
+	authResponse := &openplatform.AuthorizeFileUploadResponse{}
+	ossConfig := &oss.Config{
+		AccessKeySecret: accessKeySecret,
+		Type:            tea.String("access_key"),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	var ossClient *oss.Client
+	fileObj := &fileform.FileField{}
+	ossHeader := &oss.PostObjectRequestHeader{}
+	uploadRequest := &oss.PostObjectRequest{}
+	ossRuntime := &ossutil.RuntimeOptions{}
+	openapiutil.Convert(runtime, ossRuntime)
+	detectPancReq := &DetectPancRequest{}
+	openapiutil.Convert(request, detectPancReq)
+	if !tea.BoolValue(util.IsUnset(request.URLList)) {
+		i0 := tea.Int(0)
+		for _, item0 := range request.URLList {
+			if !tea.BoolValue(util.IsUnset(item0.URLObject)) {
+				authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+				if _err != nil {
+					return _result, _err
+				}
+
+				ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
+				ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
+				ossClient, _err = oss.NewClient(ossConfig)
+				if _err != nil {
+					return _result, _err
+				}
+
+				fileObj = &fileform.FileField{
+					Filename:    authResponse.Body.ObjectKey,
+					Content:     item0.URLObject,
+					ContentType: tea.String(""),
+				}
+				ossHeader = &oss.PostObjectRequestHeader{
+					AccessKeyId:         authResponse.Body.AccessKeyId,
+					Policy:              authResponse.Body.EncodedPolicy,
+					Signature:           authResponse.Body.Signature,
+					Key:                 authResponse.Body.ObjectKey,
+					File:                fileObj,
+					SuccessActionStatus: tea.String("201"),
+				}
+				uploadRequest = &oss.PostObjectRequest{
+					BucketName: authResponse.Body.Bucket,
+					Header:     ossHeader,
+				}
+				_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+				if _err != nil {
+					return _result, _err
+				}
+				tmp := detectPancReq.URLList[tea.IntValue(i0)]
+				tmp.URL = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
+				i0 = number.Ltoi(number.Add(number.Itol(i0), number.Itol(tea.Int(1))))
+			}
+
+		}
+	}
+
+	detectPancResp, _err := client.DetectPancWithOptions(detectPancReq, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+
+	_result = detectPancResp
 	return _result, _err
 }
 
@@ -5404,6 +6926,120 @@ func (client *Client) DetectRibFracture(request *DetectRibFractureRequest) (_res
 		return _result, _err
 	}
 	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DetectRibFractureAdvance(request *DetectRibFractureAdvanceRequest, runtime *util.RuntimeOptions) (_result *DetectRibFractureResponse, _err error) {
+	// Step 0: init client
+	accessKeyId, _err := client.Credential.GetAccessKeyId()
+	if _err != nil {
+		return _result, _err
+	}
+
+	accessKeySecret, _err := client.Credential.GetAccessKeySecret()
+	if _err != nil {
+		return _result, _err
+	}
+
+	securityToken, _err := client.Credential.GetSecurityToken()
+	if _err != nil {
+		return _result, _err
+	}
+
+	credentialType := client.Credential.GetType()
+	openPlatformEndpoint := client.OpenPlatformEndpoint
+	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
+	}
+
+	if tea.BoolValue(util.IsUnset(credentialType)) {
+		credentialType = tea.String("access_key")
+	}
+
+	authConfig := &openapi.Config{
+		AccessKeyId:     accessKeyId,
+		AccessKeySecret: accessKeySecret,
+		SecurityToken:   securityToken,
+		Type:            credentialType,
+		Endpoint:        openPlatformEndpoint,
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	authClient, _err := openplatform.NewClient(authConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
+	authRequest := &openplatform.AuthorizeFileUploadRequest{
+		Product:  tea.String("imageprocess"),
+		RegionId: client.RegionId,
+	}
+	authResponse := &openplatform.AuthorizeFileUploadResponse{}
+	ossConfig := &oss.Config{
+		AccessKeySecret: accessKeySecret,
+		Type:            tea.String("access_key"),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	var ossClient *oss.Client
+	fileObj := &fileform.FileField{}
+	ossHeader := &oss.PostObjectRequestHeader{}
+	uploadRequest := &oss.PostObjectRequest{}
+	ossRuntime := &ossutil.RuntimeOptions{}
+	openapiutil.Convert(runtime, ossRuntime)
+	detectRibFractureReq := &DetectRibFractureRequest{}
+	openapiutil.Convert(request, detectRibFractureReq)
+	if !tea.BoolValue(util.IsUnset(request.URLList)) {
+		i0 := tea.Int(0)
+		for _, item0 := range request.URLList {
+			if !tea.BoolValue(util.IsUnset(item0.URLObject)) {
+				authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+				if _err != nil {
+					return _result, _err
+				}
+
+				ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
+				ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
+				ossClient, _err = oss.NewClient(ossConfig)
+				if _err != nil {
+					return _result, _err
+				}
+
+				fileObj = &fileform.FileField{
+					Filename:    authResponse.Body.ObjectKey,
+					Content:     item0.URLObject,
+					ContentType: tea.String(""),
+				}
+				ossHeader = &oss.PostObjectRequestHeader{
+					AccessKeyId:         authResponse.Body.AccessKeyId,
+					Policy:              authResponse.Body.EncodedPolicy,
+					Signature:           authResponse.Body.Signature,
+					Key:                 authResponse.Body.ObjectKey,
+					File:                fileObj,
+					SuccessActionStatus: tea.String("201"),
+				}
+				uploadRequest = &oss.PostObjectRequest{
+					BucketName: authResponse.Body.Bucket,
+					Header:     ossHeader,
+				}
+				_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+				if _err != nil {
+					return _result, _err
+				}
+				tmp := detectRibFractureReq.URLList[tea.IntValue(i0)]
+				tmp.URL = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
+				i0 = number.Ltoi(number.Add(number.Itol(i0), number.Itol(tea.Int(1))))
+			}
+
+		}
+	}
+
+	detectRibFractureResp, _err := client.DetectRibFractureWithOptions(detectRibFractureReq, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+
+	_result = detectRibFractureResp
 	return _result, _err
 }
 
@@ -5621,6 +7257,120 @@ func (client *Client) DetectSpineMRI(request *DetectSpineMRIRequest) (_result *D
 	return _result, _err
 }
 
+func (client *Client) DetectSpineMRIAdvance(request *DetectSpineMRIAdvanceRequest, runtime *util.RuntimeOptions) (_result *DetectSpineMRIResponse, _err error) {
+	// Step 0: init client
+	accessKeyId, _err := client.Credential.GetAccessKeyId()
+	if _err != nil {
+		return _result, _err
+	}
+
+	accessKeySecret, _err := client.Credential.GetAccessKeySecret()
+	if _err != nil {
+		return _result, _err
+	}
+
+	securityToken, _err := client.Credential.GetSecurityToken()
+	if _err != nil {
+		return _result, _err
+	}
+
+	credentialType := client.Credential.GetType()
+	openPlatformEndpoint := client.OpenPlatformEndpoint
+	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
+	}
+
+	if tea.BoolValue(util.IsUnset(credentialType)) {
+		credentialType = tea.String("access_key")
+	}
+
+	authConfig := &openapi.Config{
+		AccessKeyId:     accessKeyId,
+		AccessKeySecret: accessKeySecret,
+		SecurityToken:   securityToken,
+		Type:            credentialType,
+		Endpoint:        openPlatformEndpoint,
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	authClient, _err := openplatform.NewClient(authConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
+	authRequest := &openplatform.AuthorizeFileUploadRequest{
+		Product:  tea.String("imageprocess"),
+		RegionId: client.RegionId,
+	}
+	authResponse := &openplatform.AuthorizeFileUploadResponse{}
+	ossConfig := &oss.Config{
+		AccessKeySecret: accessKeySecret,
+		Type:            tea.String("access_key"),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	var ossClient *oss.Client
+	fileObj := &fileform.FileField{}
+	ossHeader := &oss.PostObjectRequestHeader{}
+	uploadRequest := &oss.PostObjectRequest{}
+	ossRuntime := &ossutil.RuntimeOptions{}
+	openapiutil.Convert(runtime, ossRuntime)
+	detectSpineMRIReq := &DetectSpineMRIRequest{}
+	openapiutil.Convert(request, detectSpineMRIReq)
+	if !tea.BoolValue(util.IsUnset(request.URLList)) {
+		i0 := tea.Int(0)
+		for _, item0 := range request.URLList {
+			if !tea.BoolValue(util.IsUnset(item0.URLObject)) {
+				authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+				if _err != nil {
+					return _result, _err
+				}
+
+				ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
+				ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
+				ossClient, _err = oss.NewClient(ossConfig)
+				if _err != nil {
+					return _result, _err
+				}
+
+				fileObj = &fileform.FileField{
+					Filename:    authResponse.Body.ObjectKey,
+					Content:     item0.URLObject,
+					ContentType: tea.String(""),
+				}
+				ossHeader = &oss.PostObjectRequestHeader{
+					AccessKeyId:         authResponse.Body.AccessKeyId,
+					Policy:              authResponse.Body.EncodedPolicy,
+					Signature:           authResponse.Body.Signature,
+					Key:                 authResponse.Body.ObjectKey,
+					File:                fileObj,
+					SuccessActionStatus: tea.String("201"),
+				}
+				uploadRequest = &oss.PostObjectRequest{
+					BucketName: authResponse.Body.Bucket,
+					Header:     ossHeader,
+				}
+				_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+				if _err != nil {
+					return _result, _err
+				}
+				tmp := detectSpineMRIReq.URLList[tea.IntValue(i0)]
+				tmp.URL = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
+				i0 = number.Ltoi(number.Add(number.Itol(i0), number.Itol(tea.Int(1))))
+			}
+
+		}
+	}
+
+	detectSpineMRIResp, _err := client.DetectSpineMRIWithOptions(detectSpineMRIReq, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+
+	_result = detectSpineMRIResp
+	return _result, _err
+}
+
 func (client *Client) FeedbackSessionWithOptions(request *FeedbackSessionRequest, runtime *util.RuntimeOptions) (_result *FeedbackSessionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5777,6 +7527,165 @@ func (client *Client) RunCTRegistration(request *RunCTRegistrationRequest) (_res
 	return _result, _err
 }
 
+func (client *Client) RunCTRegistrationAdvance(request *RunCTRegistrationAdvanceRequest, runtime *util.RuntimeOptions) (_result *RunCTRegistrationResponse, _err error) {
+	// Step 0: init client
+	accessKeyId, _err := client.Credential.GetAccessKeyId()
+	if _err != nil {
+		return _result, _err
+	}
+
+	accessKeySecret, _err := client.Credential.GetAccessKeySecret()
+	if _err != nil {
+		return _result, _err
+	}
+
+	securityToken, _err := client.Credential.GetSecurityToken()
+	if _err != nil {
+		return _result, _err
+	}
+
+	credentialType := client.Credential.GetType()
+	openPlatformEndpoint := client.OpenPlatformEndpoint
+	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
+	}
+
+	if tea.BoolValue(util.IsUnset(credentialType)) {
+		credentialType = tea.String("access_key")
+	}
+
+	authConfig := &openapi.Config{
+		AccessKeyId:     accessKeyId,
+		AccessKeySecret: accessKeySecret,
+		SecurityToken:   securityToken,
+		Type:            credentialType,
+		Endpoint:        openPlatformEndpoint,
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	authClient, _err := openplatform.NewClient(authConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
+	authRequest := &openplatform.AuthorizeFileUploadRequest{
+		Product:  tea.String("imageprocess"),
+		RegionId: client.RegionId,
+	}
+	authResponse := &openplatform.AuthorizeFileUploadResponse{}
+	ossConfig := &oss.Config{
+		AccessKeySecret: accessKeySecret,
+		Type:            tea.String("access_key"),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	var ossClient *oss.Client
+	fileObj := &fileform.FileField{}
+	ossHeader := &oss.PostObjectRequestHeader{}
+	uploadRequest := &oss.PostObjectRequest{}
+	ossRuntime := &ossutil.RuntimeOptions{}
+	openapiutil.Convert(runtime, ossRuntime)
+	runCTRegistrationReq := &RunCTRegistrationRequest{}
+	openapiutil.Convert(request, runCTRegistrationReq)
+	if !tea.BoolValue(util.IsUnset(request.FloatingList)) {
+		i0 := tea.Int(0)
+		for _, item0 := range request.FloatingList {
+			if !tea.BoolValue(util.IsUnset(item0.FloatingURLObject)) {
+				authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+				if _err != nil {
+					return _result, _err
+				}
+
+				ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
+				ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
+				ossClient, _err = oss.NewClient(ossConfig)
+				if _err != nil {
+					return _result, _err
+				}
+
+				fileObj = &fileform.FileField{
+					Filename:    authResponse.Body.ObjectKey,
+					Content:     item0.FloatingURLObject,
+					ContentType: tea.String(""),
+				}
+				ossHeader = &oss.PostObjectRequestHeader{
+					AccessKeyId:         authResponse.Body.AccessKeyId,
+					Policy:              authResponse.Body.EncodedPolicy,
+					Signature:           authResponse.Body.Signature,
+					Key:                 authResponse.Body.ObjectKey,
+					File:                fileObj,
+					SuccessActionStatus: tea.String("201"),
+				}
+				uploadRequest = &oss.PostObjectRequest{
+					BucketName: authResponse.Body.Bucket,
+					Header:     ossHeader,
+				}
+				_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+				if _err != nil {
+					return _result, _err
+				}
+				tmp := runCTRegistrationReq.FloatingList[tea.IntValue(i0)]
+				tmp.FloatingURL = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
+				i0 = number.Ltoi(number.Add(number.Itol(i0), number.Itol(tea.Int(1))))
+			}
+
+		}
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ReferenceList)) {
+		i1 := tea.Int(0)
+		for _, item0 := range request.ReferenceList {
+			if !tea.BoolValue(util.IsUnset(item0.ReferenceURLObject)) {
+				authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+				if _err != nil {
+					return _result, _err
+				}
+
+				ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
+				ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
+				ossClient, _err = oss.NewClient(ossConfig)
+				if _err != nil {
+					return _result, _err
+				}
+
+				fileObj = &fileform.FileField{
+					Filename:    authResponse.Body.ObjectKey,
+					Content:     item0.ReferenceURLObject,
+					ContentType: tea.String(""),
+				}
+				ossHeader = &oss.PostObjectRequestHeader{
+					AccessKeyId:         authResponse.Body.AccessKeyId,
+					Policy:              authResponse.Body.EncodedPolicy,
+					Signature:           authResponse.Body.Signature,
+					Key:                 authResponse.Body.ObjectKey,
+					File:                fileObj,
+					SuccessActionStatus: tea.String("201"),
+				}
+				uploadRequest = &oss.PostObjectRequest{
+					BucketName: authResponse.Body.Bucket,
+					Header:     ossHeader,
+				}
+				_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+				if _err != nil {
+					return _result, _err
+				}
+				tmp := runCTRegistrationReq.ReferenceList[tea.IntValue(i1)]
+				tmp.ReferenceURL = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
+				i1 = number.Ltoi(number.Add(number.Itol(i1), number.Itol(tea.Int(1))))
+			}
+
+		}
+	}
+
+	runCTRegistrationResp, _err := client.RunCTRegistrationWithOptions(runCTRegistrationReq, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+
+	_result = runCTRegistrationResp
+	return _result, _err
+}
+
 func (client *Client) RunMedQAWithOptions(request *RunMedQARequest, runtime *util.RuntimeOptions) (_result *RunMedQAResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5849,6 +7758,120 @@ func (client *Client) RunMedQA(request *RunMedQARequest) (_result *RunMedQARespo
 	return _result, _err
 }
 
+func (client *Client) RunMedQAAdvance(request *RunMedQAAdvanceRequest, runtime *util.RuntimeOptions) (_result *RunMedQAResponse, _err error) {
+	// Step 0: init client
+	accessKeyId, _err := client.Credential.GetAccessKeyId()
+	if _err != nil {
+		return _result, _err
+	}
+
+	accessKeySecret, _err := client.Credential.GetAccessKeySecret()
+	if _err != nil {
+		return _result, _err
+	}
+
+	securityToken, _err := client.Credential.GetSecurityToken()
+	if _err != nil {
+		return _result, _err
+	}
+
+	credentialType := client.Credential.GetType()
+	openPlatformEndpoint := client.OpenPlatformEndpoint
+	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
+	}
+
+	if tea.BoolValue(util.IsUnset(credentialType)) {
+		credentialType = tea.String("access_key")
+	}
+
+	authConfig := &openapi.Config{
+		AccessKeyId:     accessKeyId,
+		AccessKeySecret: accessKeySecret,
+		SecurityToken:   securityToken,
+		Type:            credentialType,
+		Endpoint:        openPlatformEndpoint,
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	authClient, _err := openplatform.NewClient(authConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
+	authRequest := &openplatform.AuthorizeFileUploadRequest{
+		Product:  tea.String("imageprocess"),
+		RegionId: client.RegionId,
+	}
+	authResponse := &openplatform.AuthorizeFileUploadResponse{}
+	ossConfig := &oss.Config{
+		AccessKeySecret: accessKeySecret,
+		Type:            tea.String("access_key"),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	var ossClient *oss.Client
+	fileObj := &fileform.FileField{}
+	ossHeader := &oss.PostObjectRequestHeader{}
+	uploadRequest := &oss.PostObjectRequest{}
+	ossRuntime := &ossutil.RuntimeOptions{}
+	openapiutil.Convert(runtime, ossRuntime)
+	runMedQAReq := &RunMedQARequest{}
+	openapiutil.Convert(request, runMedQAReq)
+	if !tea.BoolValue(util.IsUnset(request.AnswerImageURLList)) {
+		i0 := tea.Int(0)
+		for _, item0 := range request.AnswerImageURLList {
+			if !tea.BoolValue(util.IsUnset(item0.AnswerImageURLObject)) {
+				authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+				if _err != nil {
+					return _result, _err
+				}
+
+				ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
+				ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
+				ossClient, _err = oss.NewClient(ossConfig)
+				if _err != nil {
+					return _result, _err
+				}
+
+				fileObj = &fileform.FileField{
+					Filename:    authResponse.Body.ObjectKey,
+					Content:     item0.AnswerImageURLObject,
+					ContentType: tea.String(""),
+				}
+				ossHeader = &oss.PostObjectRequestHeader{
+					AccessKeyId:         authResponse.Body.AccessKeyId,
+					Policy:              authResponse.Body.EncodedPolicy,
+					Signature:           authResponse.Body.Signature,
+					Key:                 authResponse.Body.ObjectKey,
+					File:                fileObj,
+					SuccessActionStatus: tea.String("201"),
+				}
+				uploadRequest = &oss.PostObjectRequest{
+					BucketName: authResponse.Body.Bucket,
+					Header:     ossHeader,
+				}
+				_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+				if _err != nil {
+					return _result, _err
+				}
+				tmp := runMedQAReq.AnswerImageURLList[tea.IntValue(i0)]
+				tmp.AnswerImageURL = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
+				i0 = number.Ltoi(number.Add(number.Itol(i0), number.Itol(tea.Int(1))))
+			}
+
+		}
+	}
+
+	runMedQAResp, _err := client.RunMedQAWithOptions(runMedQAReq, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+
+	_result = runMedQAResp
+	return _result, _err
+}
+
 func (client *Client) ScreenChestCTWithOptions(request *ScreenChestCTRequest, runtime *util.RuntimeOptions) (_result *ScreenChestCTResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5910,6 +7933,120 @@ func (client *Client) ScreenChestCT(request *ScreenChestCTRequest) (_result *Scr
 		return _result, _err
 	}
 	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ScreenChestCTAdvance(request *ScreenChestCTAdvanceRequest, runtime *util.RuntimeOptions) (_result *ScreenChestCTResponse, _err error) {
+	// Step 0: init client
+	accessKeyId, _err := client.Credential.GetAccessKeyId()
+	if _err != nil {
+		return _result, _err
+	}
+
+	accessKeySecret, _err := client.Credential.GetAccessKeySecret()
+	if _err != nil {
+		return _result, _err
+	}
+
+	securityToken, _err := client.Credential.GetSecurityToken()
+	if _err != nil {
+		return _result, _err
+	}
+
+	credentialType := client.Credential.GetType()
+	openPlatformEndpoint := client.OpenPlatformEndpoint
+	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
+	}
+
+	if tea.BoolValue(util.IsUnset(credentialType)) {
+		credentialType = tea.String("access_key")
+	}
+
+	authConfig := &openapi.Config{
+		AccessKeyId:     accessKeyId,
+		AccessKeySecret: accessKeySecret,
+		SecurityToken:   securityToken,
+		Type:            credentialType,
+		Endpoint:        openPlatformEndpoint,
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	authClient, _err := openplatform.NewClient(authConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
+	authRequest := &openplatform.AuthorizeFileUploadRequest{
+		Product:  tea.String("imageprocess"),
+		RegionId: client.RegionId,
+	}
+	authResponse := &openplatform.AuthorizeFileUploadResponse{}
+	ossConfig := &oss.Config{
+		AccessKeySecret: accessKeySecret,
+		Type:            tea.String("access_key"),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	var ossClient *oss.Client
+	fileObj := &fileform.FileField{}
+	ossHeader := &oss.PostObjectRequestHeader{}
+	uploadRequest := &oss.PostObjectRequest{}
+	ossRuntime := &ossutil.RuntimeOptions{}
+	openapiutil.Convert(runtime, ossRuntime)
+	screenChestCTReq := &ScreenChestCTRequest{}
+	openapiutil.Convert(request, screenChestCTReq)
+	if !tea.BoolValue(util.IsUnset(request.URLList)) {
+		i0 := tea.Int(0)
+		for _, item0 := range request.URLList {
+			if !tea.BoolValue(util.IsUnset(item0.URLObject)) {
+				authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+				if _err != nil {
+					return _result, _err
+				}
+
+				ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
+				ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
+				ossClient, _err = oss.NewClient(ossConfig)
+				if _err != nil {
+					return _result, _err
+				}
+
+				fileObj = &fileform.FileField{
+					Filename:    authResponse.Body.ObjectKey,
+					Content:     item0.URLObject,
+					ContentType: tea.String(""),
+				}
+				ossHeader = &oss.PostObjectRequestHeader{
+					AccessKeyId:         authResponse.Body.AccessKeyId,
+					Policy:              authResponse.Body.EncodedPolicy,
+					Signature:           authResponse.Body.Signature,
+					Key:                 authResponse.Body.ObjectKey,
+					File:                fileObj,
+					SuccessActionStatus: tea.String("201"),
+				}
+				uploadRequest = &oss.PostObjectRequest{
+					BucketName: authResponse.Body.Bucket,
+					Header:     ossHeader,
+				}
+				_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+				if _err != nil {
+					return _result, _err
+				}
+				tmp := screenChestCTReq.URLList[tea.IntValue(i0)]
+				tmp.URL = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
+				i0 = number.Ltoi(number.Add(number.Itol(i0), number.Itol(tea.Int(1))))
+			}
+
+		}
+	}
+
+	screenChestCTResp, _err := client.ScreenChestCTWithOptions(screenChestCTReq, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+
+	_result = screenChestCTResp
 	return _result, _err
 }
 
@@ -6026,6 +8163,120 @@ func (client *Client) SegmentOAR(request *SegmentOARRequest) (_result *SegmentOA
 		return _result, _err
 	}
 	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SegmentOARAdvance(request *SegmentOARAdvanceRequest, runtime *util.RuntimeOptions) (_result *SegmentOARResponse, _err error) {
+	// Step 0: init client
+	accessKeyId, _err := client.Credential.GetAccessKeyId()
+	if _err != nil {
+		return _result, _err
+	}
+
+	accessKeySecret, _err := client.Credential.GetAccessKeySecret()
+	if _err != nil {
+		return _result, _err
+	}
+
+	securityToken, _err := client.Credential.GetSecurityToken()
+	if _err != nil {
+		return _result, _err
+	}
+
+	credentialType := client.Credential.GetType()
+	openPlatformEndpoint := client.OpenPlatformEndpoint
+	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
+	}
+
+	if tea.BoolValue(util.IsUnset(credentialType)) {
+		credentialType = tea.String("access_key")
+	}
+
+	authConfig := &openapi.Config{
+		AccessKeyId:     accessKeyId,
+		AccessKeySecret: accessKeySecret,
+		SecurityToken:   securityToken,
+		Type:            credentialType,
+		Endpoint:        openPlatformEndpoint,
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	authClient, _err := openplatform.NewClient(authConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
+	authRequest := &openplatform.AuthorizeFileUploadRequest{
+		Product:  tea.String("imageprocess"),
+		RegionId: client.RegionId,
+	}
+	authResponse := &openplatform.AuthorizeFileUploadResponse{}
+	ossConfig := &oss.Config{
+		AccessKeySecret: accessKeySecret,
+		Type:            tea.String("access_key"),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	var ossClient *oss.Client
+	fileObj := &fileform.FileField{}
+	ossHeader := &oss.PostObjectRequestHeader{}
+	uploadRequest := &oss.PostObjectRequest{}
+	ossRuntime := &ossutil.RuntimeOptions{}
+	openapiutil.Convert(runtime, ossRuntime)
+	segmentOARReq := &SegmentOARRequest{}
+	openapiutil.Convert(request, segmentOARReq)
+	if !tea.BoolValue(util.IsUnset(request.URLList)) {
+		i0 := tea.Int(0)
+		for _, item0 := range request.URLList {
+			if !tea.BoolValue(util.IsUnset(item0.URLObject)) {
+				authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+				if _err != nil {
+					return _result, _err
+				}
+
+				ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
+				ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
+				ossClient, _err = oss.NewClient(ossConfig)
+				if _err != nil {
+					return _result, _err
+				}
+
+				fileObj = &fileform.FileField{
+					Filename:    authResponse.Body.ObjectKey,
+					Content:     item0.URLObject,
+					ContentType: tea.String(""),
+				}
+				ossHeader = &oss.PostObjectRequestHeader{
+					AccessKeyId:         authResponse.Body.AccessKeyId,
+					Policy:              authResponse.Body.EncodedPolicy,
+					Signature:           authResponse.Body.Signature,
+					Key:                 authResponse.Body.ObjectKey,
+					File:                fileObj,
+					SuccessActionStatus: tea.String("201"),
+				}
+				uploadRequest = &oss.PostObjectRequest{
+					BucketName: authResponse.Body.Bucket,
+					Header:     ossHeader,
+				}
+				_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+				if _err != nil {
+					return _result, _err
+				}
+				tmp := segmentOARReq.URLList[tea.IntValue(i0)]
+				tmp.URL = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
+				i0 = number.Ltoi(number.Add(number.Itol(i0), number.Itol(tea.Int(1))))
+			}
+
+		}
+	}
+
+	segmentOARResp, _err := client.SegmentOARWithOptions(segmentOARReq, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+
+	_result = segmentOARResp
 	return _result, _err
 }
 
