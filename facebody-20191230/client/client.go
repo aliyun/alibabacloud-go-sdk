@@ -1213,6 +1213,7 @@ func (s *BeautifyBodyShrinkRequest) SetPoseListShrink(v string) *BeautifyBodyShr
 }
 
 type BeautifyBodyResponseBody struct {
+	// Id of the request
 	Data      *BeautifyBodyResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	RequestId *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
@@ -1720,13 +1721,16 @@ func (s *CompareFaceResponseBody) SetRequestId(v string) *CompareFaceResponseBod
 }
 
 type CompareFaceResponseBodyData struct {
-	Confidence    *float32   `json:"Confidence,omitempty" xml:"Confidence,omitempty"`
-	MessageTips   *string    `json:"MessageTips,omitempty" xml:"MessageTips,omitempty"`
-	QualityScoreA *float32   `json:"QualityScoreA,omitempty" xml:"QualityScoreA,omitempty"`
-	QualityScoreB *float32   `json:"QualityScoreB,omitempty" xml:"QualityScoreB,omitempty"`
-	RectAList     []*int32   `json:"RectAList,omitempty" xml:"RectAList,omitempty" type:"Repeated"`
-	RectBList     []*int32   `json:"RectBList,omitempty" xml:"RectBList,omitempty" type:"Repeated"`
-	Thresholds    []*float32 `json:"Thresholds,omitempty" xml:"Thresholds,omitempty" type:"Repeated"`
+	Confidence    *float32 `json:"Confidence,omitempty" xml:"Confidence,omitempty"`
+	MessageTips   *string  `json:"MessageTips,omitempty" xml:"MessageTips,omitempty"`
+	QualityScoreA *float32 `json:"QualityScoreA,omitempty" xml:"QualityScoreA,omitempty"`
+	QualityScoreB *float32 `json:"QualityScoreB,omitempty" xml:"QualityScoreB,omitempty"`
+	// 1
+	RectAList []*int32 `json:"RectAList,omitempty" xml:"RectAList,omitempty" type:"Repeated"`
+	// 1
+	RectBList []*int32 `json:"RectBList,omitempty" xml:"RectBList,omitempty" type:"Repeated"`
+	// 1
+	Thresholds []*float32 `json:"Thresholds,omitempty" xml:"Thresholds,omitempty" type:"Repeated"`
 }
 
 func (s CompareFaceResponseBodyData) String() string {
@@ -2439,6 +2443,7 @@ func (s *DetectCelebrityResponseBodyData) SetWidth(v int32) *DetectCelebrityResp
 }
 
 type DetectCelebrityResponseBodyDataFaceRecognizeResults struct {
+	// 1
 	FaceBoxes []*float32 `json:"FaceBoxes,omitempty" xml:"FaceBoxes,omitempty" type:"Repeated"`
 	Name      *string    `json:"Name,omitempty" xml:"Name,omitempty"`
 }
@@ -2728,14 +2733,19 @@ func (s *DetectFaceResponseBody) SetRequestId(v string) *DetectFaceResponseBody 
 }
 
 type DetectFaceResponseBodyData struct {
-	FaceCount           *int32                               `json:"FaceCount,omitempty" xml:"FaceCount,omitempty"`
-	FaceProbabilityList []*float32                           `json:"FaceProbabilityList,omitempty" xml:"FaceProbabilityList,omitempty" type:"Repeated"`
-	FaceRectangles      []*int32                             `json:"FaceRectangles,omitempty" xml:"FaceRectangles,omitempty" type:"Repeated"`
-	LandmarkCount       *int32                               `json:"LandmarkCount,omitempty" xml:"LandmarkCount,omitempty"`
-	Landmarks           []*float32                           `json:"Landmarks,omitempty" xml:"Landmarks,omitempty" type:"Repeated"`
-	PoseList            []*float32                           `json:"PoseList,omitempty" xml:"PoseList,omitempty" type:"Repeated"`
-	Pupils              []*float32                           `json:"Pupils,omitempty" xml:"Pupils,omitempty" type:"Repeated"`
-	Qualities           *DetectFaceResponseBodyDataQualities `json:"Qualities,omitempty" xml:"Qualities,omitempty" type:"Struct"`
+	FaceCount *int32 `json:"FaceCount,omitempty" xml:"FaceCount,omitempty"`
+	// 1
+	FaceProbabilityList []*float32 `json:"FaceProbabilityList,omitempty" xml:"FaceProbabilityList,omitempty" type:"Repeated"`
+	// 1
+	FaceRectangles []*int32 `json:"FaceRectangles,omitempty" xml:"FaceRectangles,omitempty" type:"Repeated"`
+	LandmarkCount  *int32   `json:"LandmarkCount,omitempty" xml:"LandmarkCount,omitempty"`
+	// 1
+	Landmarks []*float32 `json:"Landmarks,omitempty" xml:"Landmarks,omitempty" type:"Repeated"`
+	// 1
+	PoseList []*float32 `json:"PoseList,omitempty" xml:"PoseList,omitempty" type:"Repeated"`
+	// 1
+	Pupils    []*float32                           `json:"Pupils,omitempty" xml:"Pupils,omitempty" type:"Repeated"`
+	Qualities *DetectFaceResponseBodyDataQualities `json:"Qualities,omitempty" xml:"Qualities,omitempty" type:"Struct"`
 }
 
 func (s DetectFaceResponseBodyData) String() string {
@@ -2787,13 +2797,21 @@ func (s *DetectFaceResponseBodyData) SetQualities(v *DetectFaceResponseBodyDataQ
 }
 
 type DetectFaceResponseBodyDataQualities struct {
-	BlurList  []*float32 `json:"BlurList,omitempty" xml:"BlurList,omitempty" type:"Repeated"`
-	FnfList   []*float32 `json:"FnfList,omitempty" xml:"FnfList,omitempty" type:"Repeated"`
+	// 1
+	BlurList []*float32 `json:"BlurList,omitempty" xml:"BlurList,omitempty" type:"Repeated"`
+	// 1
+	FnfList []*float32 `json:"FnfList,omitempty" xml:"FnfList,omitempty" type:"Repeated"`
+	// 1
 	GlassList []*float32 `json:"GlassList,omitempty" xml:"GlassList,omitempty" type:"Repeated"`
-	IlluList  []*float32 `json:"IlluList,omitempty" xml:"IlluList,omitempty" type:"Repeated"`
-	MaskList  []*float32 `json:"MaskList,omitempty" xml:"MaskList,omitempty" type:"Repeated"`
+	// 1
+	IlluList []*float32 `json:"IlluList,omitempty" xml:"IlluList,omitempty" type:"Repeated"`
+	// 1
+	MaskList []*float32 `json:"MaskList,omitempty" xml:"MaskList,omitempty" type:"Repeated"`
+	// 1
 	NoiseList []*float32 `json:"NoiseList,omitempty" xml:"NoiseList,omitempty" type:"Repeated"`
-	PoseList  []*float32 `json:"PoseList,omitempty" xml:"PoseList,omitempty" type:"Repeated"`
+	// 1
+	PoseList []*float32 `json:"PoseList,omitempty" xml:"PoseList,omitempty" type:"Repeated"`
+	// 1
 	ScoreList []*float32 `json:"ScoreList,omitempty" xml:"ScoreList,omitempty" type:"Repeated"`
 }
 
@@ -2945,8 +2963,9 @@ func (s *DetectIPCPedestrianAdvanceRequest) SetWidth(v int32) *DetectIPCPedestri
 }
 
 type DetectIPCPedestrianResponseBody struct {
-	Data      *DetectIPCPedestrianResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data *DetectIPCPedestrianResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// requestId
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DetectIPCPedestrianResponseBody) String() string {
@@ -3429,6 +3448,7 @@ func (s *DetectPedestrianResponseBodyData) SetWidth(v int32) *DetectPedestrianRe
 }
 
 type DetectPedestrianResponseBodyDataElements struct {
+	// 1
 	Boxes []*int32 `json:"Boxes,omitempty" xml:"Boxes,omitempty" type:"Repeated"`
 	Score *float32 `json:"Score,omitempty" xml:"Score,omitempty"`
 	Type  *string  `json:"Type,omitempty" xml:"Type,omitempty"`
@@ -7360,10 +7380,10 @@ func (s *RecognizeActionRequestURLList) SetImageData(v string) *RecognizeActionR
 }
 
 type RecognizeActionAdvanceRequest struct {
-	Type      *int32                                  `json:"Type,omitempty" xml:"Type,omitempty"`
-	URLList   []*RecognizeActionAdvanceRequestURLList `json:"URLList,omitempty" xml:"URLList,omitempty" type:"Repeated"`
-	VideoData *string                                 `json:"VideoData,omitempty" xml:"VideoData,omitempty"`
-	VideoUrl  *string                                 `json:"VideoUrl,omitempty" xml:"VideoUrl,omitempty"`
+	Type           *int32                                  `json:"Type,omitempty" xml:"Type,omitempty"`
+	URLList        []*RecognizeActionAdvanceRequestURLList `json:"URLList,omitempty" xml:"URLList,omitempty" type:"Repeated"`
+	VideoData      *string                                 `json:"VideoData,omitempty" xml:"VideoData,omitempty"`
+	VideoUrlObject io.Reader                               `json:"VideoUrl,omitempty" xml:"VideoUrl,omitempty"`
 }
 
 func (s RecognizeActionAdvanceRequest) String() string {
@@ -7389,8 +7409,8 @@ func (s *RecognizeActionAdvanceRequest) SetVideoData(v string) *RecognizeActionA
 	return s
 }
 
-func (s *RecognizeActionAdvanceRequest) SetVideoUrl(v string) *RecognizeActionAdvanceRequest {
-	s.VideoUrl = &v
+func (s *RecognizeActionAdvanceRequest) SetVideoUrlObject(v io.Reader) *RecognizeActionAdvanceRequest {
+	s.VideoUrlObject = v
 	return s
 }
 
@@ -7871,23 +7891,36 @@ func (s *RecognizeFaceResponseBody) SetRequestId(v string) *RecognizeFaceRespons
 }
 
 type RecognizeFaceResponseBodyData struct {
-	AgeList             []*int32                                `json:"AgeList,omitempty" xml:"AgeList,omitempty" type:"Repeated"`
-	BeautyList          []*float32                              `json:"BeautyList,omitempty" xml:"BeautyList,omitempty" type:"Repeated"`
-	DenseFeatureLength  *int32                                  `json:"DenseFeatureLength,omitempty" xml:"DenseFeatureLength,omitempty"`
-	DenseFeatures       []*string                               `json:"DenseFeatures,omitempty" xml:"DenseFeatures,omitempty" type:"Repeated"`
-	Expressions         []*int32                                `json:"Expressions,omitempty" xml:"Expressions,omitempty" type:"Repeated"`
-	FaceCount           *int32                                  `json:"FaceCount,omitempty" xml:"FaceCount,omitempty"`
-	FaceProbabilityList []*float32                              `json:"FaceProbabilityList,omitempty" xml:"FaceProbabilityList,omitempty" type:"Repeated"`
-	FaceRectangles      []*int32                                `json:"FaceRectangles,omitempty" xml:"FaceRectangles,omitempty" type:"Repeated"`
-	GenderList          []*int32                                `json:"GenderList,omitempty" xml:"GenderList,omitempty" type:"Repeated"`
-	Glasses             []*int32                                `json:"Glasses,omitempty" xml:"Glasses,omitempty" type:"Repeated"`
-	HatList             []*int32                                `json:"HatList,omitempty" xml:"HatList,omitempty" type:"Repeated"`
-	LandmarkCount       *int32                                  `json:"LandmarkCount,omitempty" xml:"LandmarkCount,omitempty"`
-	Landmarks           []*float32                              `json:"Landmarks,omitempty" xml:"Landmarks,omitempty" type:"Repeated"`
-	Masks               []*int64                                `json:"Masks,omitempty" xml:"Masks,omitempty" type:"Repeated"`
-	PoseList            []*float32                              `json:"PoseList,omitempty" xml:"PoseList,omitempty" type:"Repeated"`
-	Pupils              []*float32                              `json:"Pupils,omitempty" xml:"Pupils,omitempty" type:"Repeated"`
-	Qualities           *RecognizeFaceResponseBodyDataQualities `json:"Qualities,omitempty" xml:"Qualities,omitempty" type:"Struct"`
+	// 1
+	AgeList []*int32 `json:"AgeList,omitempty" xml:"AgeList,omitempty" type:"Repeated"`
+	// 1
+	BeautyList         []*float32 `json:"BeautyList,omitempty" xml:"BeautyList,omitempty" type:"Repeated"`
+	DenseFeatureLength *int32     `json:"DenseFeatureLength,omitempty" xml:"DenseFeatureLength,omitempty"`
+	// 1
+	DenseFeatures []*string `json:"DenseFeatures,omitempty" xml:"DenseFeatures,omitempty" type:"Repeated"`
+	// 1
+	Expressions []*int32 `json:"Expressions,omitempty" xml:"Expressions,omitempty" type:"Repeated"`
+	FaceCount   *int32   `json:"FaceCount,omitempty" xml:"FaceCount,omitempty"`
+	// 1
+	FaceProbabilityList []*float32 `json:"FaceProbabilityList,omitempty" xml:"FaceProbabilityList,omitempty" type:"Repeated"`
+	// 1
+	FaceRectangles []*int32 `json:"FaceRectangles,omitempty" xml:"FaceRectangles,omitempty" type:"Repeated"`
+	// 1
+	GenderList []*int32 `json:"GenderList,omitempty" xml:"GenderList,omitempty" type:"Repeated"`
+	// 1
+	Glasses []*int32 `json:"Glasses,omitempty" xml:"Glasses,omitempty" type:"Repeated"`
+	// 1
+	HatList       []*int32 `json:"HatList,omitempty" xml:"HatList,omitempty" type:"Repeated"`
+	LandmarkCount *int32   `json:"LandmarkCount,omitempty" xml:"LandmarkCount,omitempty"`
+	// 1
+	Landmarks []*float32 `json:"Landmarks,omitempty" xml:"Landmarks,omitempty" type:"Repeated"`
+	// 1
+	Masks []*int64 `json:"Masks,omitempty" xml:"Masks,omitempty" type:"Repeated"`
+	// 1
+	PoseList []*float32 `json:"PoseList,omitempty" xml:"PoseList,omitempty" type:"Repeated"`
+	// 1
+	Pupils    []*float32                              `json:"Pupils,omitempty" xml:"Pupils,omitempty" type:"Repeated"`
+	Qualities *RecognizeFaceResponseBodyDataQualities `json:"Qualities,omitempty" xml:"Qualities,omitempty" type:"Struct"`
 }
 
 func (s RecognizeFaceResponseBodyData) String() string {
@@ -7984,13 +8017,21 @@ func (s *RecognizeFaceResponseBodyData) SetQualities(v *RecognizeFaceResponseBod
 }
 
 type RecognizeFaceResponseBodyDataQualities struct {
-	BlurList  []*float32 `json:"BlurList,omitempty" xml:"BlurList,omitempty" type:"Repeated"`
-	FnfList   []*float32 `json:"FnfList,omitempty" xml:"FnfList,omitempty" type:"Repeated"`
+	// 1
+	BlurList []*float32 `json:"BlurList,omitempty" xml:"BlurList,omitempty" type:"Repeated"`
+	// 1
+	FnfList []*float32 `json:"FnfList,omitempty" xml:"FnfList,omitempty" type:"Repeated"`
+	// 1
 	GlassList []*float32 `json:"GlassList,omitempty" xml:"GlassList,omitempty" type:"Repeated"`
-	IlluList  []*float32 `json:"IlluList,omitempty" xml:"IlluList,omitempty" type:"Repeated"`
-	MaskList  []*float32 `json:"MaskList,omitempty" xml:"MaskList,omitempty" type:"Repeated"`
+	// 1
+	IlluList []*float32 `json:"IlluList,omitempty" xml:"IlluList,omitempty" type:"Repeated"`
+	// 1
+	MaskList []*float32 `json:"MaskList,omitempty" xml:"MaskList,omitempty" type:"Repeated"`
+	// 1
 	NoiseList []*float32 `json:"NoiseList,omitempty" xml:"NoiseList,omitempty" type:"Repeated"`
-	PoseList  []*float32 `json:"PoseList,omitempty" xml:"PoseList,omitempty" type:"Repeated"`
+	// 1
+	PoseList []*float32 `json:"PoseList,omitempty" xml:"PoseList,omitempty" type:"Repeated"`
+	// 1
 	ScoreList []*float32 `json:"ScoreList,omitempty" xml:"ScoreList,omitempty" type:"Repeated"`
 }
 
@@ -8229,6 +8270,7 @@ func (s *RecognizeHandGestureResponse) SetBody(v *RecognizeHandGestureResponseBo
 }
 
 type RecognizePublicFaceRequest struct {
+	// 1
 	Task []*RecognizePublicFaceRequestTask `json:"Task,omitempty" xml:"Task,omitempty" type:"Repeated"`
 }
 
@@ -8269,6 +8311,7 @@ func (s *RecognizePublicFaceRequestTask) SetImageURL(v string) *RecognizePublicF
 }
 
 type RecognizePublicFaceAdvanceRequest struct {
+	// 1
 	Task []*RecognizePublicFaceAdvanceRequestTask `json:"Task,omitempty" xml:"Task,omitempty" type:"Repeated"`
 }
 
@@ -11907,7 +11950,7 @@ func (client *Client) DetectLivingFaceAdvance(request *DetectLivingFaceAdvanceRe
 	detectLivingFaceReq := &DetectLivingFaceRequest{}
 	openapiutil.Convert(request, detectLivingFaceReq)
 	if !tea.BoolValue(util.IsUnset(request.Tasks)) {
-		i := tea.Int(0)
+		i0 := tea.Int(0)
 		for _, item0 := range request.Tasks {
 			if !tea.BoolValue(util.IsUnset(item0.ImageURLObject)) {
 				authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
@@ -11943,9 +11986,9 @@ func (client *Client) DetectLivingFaceAdvance(request *DetectLivingFaceAdvanceRe
 				if _err != nil {
 					return _result, _err
 				}
-				tmp := detectLivingFaceReq.Tasks[tea.IntValue(i)]
+				tmp := detectLivingFaceReq.Tasks[tea.IntValue(i0)]
 				tmp.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
-				i = number.Ltoi(number.Add(number.Itol(i), number.Itol(tea.Int(1))))
+				i0 = number.Ltoi(number.Add(number.Itol(i0), number.Itol(tea.Int(1))))
 			}
 
 		}
@@ -15013,7 +15056,7 @@ func (client *Client) RecognizeActionAdvance(request *RecognizeActionAdvanceRequ
 	recognizeActionReq := &RecognizeActionRequest{}
 	openapiutil.Convert(request, recognizeActionReq)
 	if !tea.BoolValue(util.IsUnset(request.URLList)) {
-		i := tea.Int(0)
+		i0 := tea.Int(0)
 		for _, item0 := range request.URLList {
 			if !tea.BoolValue(util.IsUnset(item0.URLObject)) {
 				authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
@@ -15049,12 +15092,49 @@ func (client *Client) RecognizeActionAdvance(request *RecognizeActionAdvanceRequ
 				if _err != nil {
 					return _result, _err
 				}
-				tmp := recognizeActionReq.URLList[tea.IntValue(i)]
+				tmp := recognizeActionReq.URLList[tea.IntValue(i0)]
 				tmp.URL = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
-				i = number.Ltoi(number.Add(number.Itol(i), number.Itol(tea.Int(1))))
+				i0 = number.Ltoi(number.Add(number.Itol(i0), number.Itol(tea.Int(1))))
 			}
 
 		}
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VideoUrlObject)) {
+		authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+
+		ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
+		ossClient, _err = oss.NewClient(ossConfig)
+		if _err != nil {
+			return _result, _err
+		}
+
+		fileObj = &fileform.FileField{
+			Filename:    authResponse.Body.ObjectKey,
+			Content:     request.VideoUrlObject,
+			ContentType: tea.String(""),
+		}
+		ossHeader = &oss.PostObjectRequestHeader{
+			AccessKeyId:         authResponse.Body.AccessKeyId,
+			Policy:              authResponse.Body.EncodedPolicy,
+			Signature:           authResponse.Body.Signature,
+			Key:                 authResponse.Body.ObjectKey,
+			File:                fileObj,
+			SuccessActionStatus: tea.String("201"),
+		}
+		uploadRequest = &oss.PostObjectRequest{
+			BucketName: authResponse.Body.Bucket,
+			Header:     ossHeader,
+		}
+		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+		if _err != nil {
+			return _result, _err
+		}
+		recognizeActionReq.VideoUrl = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
 	}
 
 	recognizeActionResp, _err := client.RecognizeActionWithOptions(recognizeActionReq, runtime)
@@ -15665,7 +15745,7 @@ func (client *Client) RecognizePublicFaceAdvance(request *RecognizePublicFaceAdv
 	recognizePublicFaceReq := &RecognizePublicFaceRequest{}
 	openapiutil.Convert(request, recognizePublicFaceReq)
 	if !tea.BoolValue(util.IsUnset(request.Task)) {
-		i := tea.Int(0)
+		i0 := tea.Int(0)
 		for _, item0 := range request.Task {
 			if !tea.BoolValue(util.IsUnset(item0.ImageURLObject)) {
 				authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
@@ -15701,9 +15781,9 @@ func (client *Client) RecognizePublicFaceAdvance(request *RecognizePublicFaceAdv
 				if _err != nil {
 					return _result, _err
 				}
-				tmp := recognizePublicFaceReq.Task[tea.IntValue(i)]
+				tmp := recognizePublicFaceReq.Task[tea.IntValue(i0)]
 				tmp.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
-				i = number.Ltoi(number.Add(number.Itol(i), number.Itol(tea.Int(1))))
+				i0 = number.Ltoi(number.Add(number.Itol(i0), number.Itol(tea.Int(1))))
 			}
 
 		}
