@@ -102,8 +102,9 @@ func (s *EntVerifyRequest) SetUserAuthorization(v string) *EntVerifyRequest {
 }
 
 type EntVerifyResponseBody struct {
-	Code      *string                      `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string                      `json:"Message,omitempty" xml:"Message,omitempty"`
+	Code    *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
 	RequestId *string                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Result    *EntVerifyResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
@@ -154,6 +155,7 @@ func (s *EntVerifyResponseBodyResult) SetRiskVerifyResult(v *EntVerifyResponseBo
 }
 
 type EntVerifyResponseBodyResultRiskVerifyResult struct {
+	Found        *string                                                    `json:"Found,omitempty" xml:"Found,omitempty"`
 	ModelResults []*EntVerifyResponseBodyResultRiskVerifyResultModelResults `json:"ModelResults,omitempty" xml:"ModelResults,omitempty" type:"Repeated"`
 }
 
@@ -163,6 +165,11 @@ func (s EntVerifyResponseBodyResultRiskVerifyResult) String() string {
 
 func (s EntVerifyResponseBodyResultRiskVerifyResult) GoString() string {
 	return s.String()
+}
+
+func (s *EntVerifyResponseBodyResultRiskVerifyResult) SetFound(v string) *EntVerifyResponseBodyResultRiskVerifyResult {
+	s.Found = &v
+	return s
 }
 
 func (s *EntVerifyResponseBodyResultRiskVerifyResult) SetModelResults(v []*EntVerifyResponseBodyResultRiskVerifyResultModelResults) *EntVerifyResponseBodyResultRiskVerifyResult {
