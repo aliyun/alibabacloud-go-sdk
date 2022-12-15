@@ -2092,18 +2092,6 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
-func (client *Client) CancelByMsgId(request *CancelByMsgIdRequest) (_result *CancelByMsgIdResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &CancelByMsgIdResponse{}
-	_body, _err := client.CancelByMsgIdWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) CancelByMsgIdWithOptions(request *CancelByMsgIdRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CancelByMsgIdResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2138,11 +2126,11 @@ func (client *Client) CancelByMsgIdWithOptions(request *CancelByMsgIdRequest, he
 	return _result, _err
 }
 
-func (client *Client) QueryMsgStat(request *QueryMsgStatRequest) (_result *QueryMsgStatResponse, _err error) {
+func (client *Client) CancelByMsgId(request *CancelByMsgIdRequest) (_result *CancelByMsgIdResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &QueryMsgStatResponse{}
-	_body, _err := client.QueryMsgStatWithOptions(request, headers, runtime)
+	_result = &CancelByMsgIdResponse{}
+	_body, _err := client.CancelByMsgIdWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2184,11 +2172,11 @@ func (client *Client) QueryMsgStatWithOptions(request *QueryMsgStatRequest, head
 	return _result, _err
 }
 
-func (client *Client) SendByAlias(request *SendByAliasRequest) (_result *SendByAliasResponse, _err error) {
+func (client *Client) QueryMsgStat(request *QueryMsgStatRequest) (_result *QueryMsgStatResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &SendByAliasResponse{}
-	_body, _err := client.SendByAliasWithOptions(request, headers, runtime)
+	_result = &QueryMsgStatResponse{}
+	_body, _err := client.QueryMsgStatWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2284,11 +2272,11 @@ func (client *Client) SendByAliasWithOptions(tmpReq *SendByAliasRequest, headers
 	return _result, _err
 }
 
-func (client *Client) SendByAliasFileId(request *SendByAliasFileIdRequest) (_result *SendByAliasFileIdResponse, _err error) {
+func (client *Client) SendByAlias(request *SendByAliasRequest) (_result *SendByAliasResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &SendByAliasFileIdResponse{}
-	_body, _err := client.SendByAliasFileIdWithOptions(request, headers, runtime)
+	_result = &SendByAliasResponse{}
+	_body, _err := client.SendByAliasWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2384,11 +2372,11 @@ func (client *Client) SendByAliasFileIdWithOptions(tmpReq *SendByAliasFileIdRequ
 	return _result, _err
 }
 
-func (client *Client) SendByApp(request *SendByAppRequest) (_result *SendByAppResponse, _err error) {
+func (client *Client) SendByAliasFileId(request *SendByAliasFileIdRequest) (_result *SendByAliasFileIdResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &SendByAppResponse{}
-	_body, _err := client.SendByAppWithOptions(request, headers, runtime)
+	_result = &SendByAliasFileIdResponse{}
+	_body, _err := client.SendByAliasFileIdWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2476,11 +2464,11 @@ func (client *Client) SendByAppWithOptions(tmpReq *SendByAppRequest, headers map
 	return _result, _err
 }
 
-func (client *Client) SendByDevice(request *SendByDeviceRequest) (_result *SendByDeviceResponse, _err error) {
+func (client *Client) SendByApp(request *SendByAppRequest) (_result *SendByAppResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &SendByDeviceResponse{}
-	_body, _err := client.SendByDeviceWithOptions(request, headers, runtime)
+	_result = &SendByAppResponse{}
+	_body, _err := client.SendByAppWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2572,11 +2560,11 @@ func (client *Client) SendByDeviceWithOptions(tmpReq *SendByDeviceRequest, heade
 	return _result, _err
 }
 
-func (client *Client) SendByDeviceFileId(request *SendByDeviceFileIdRequest) (_result *SendByDeviceFileIdResponse, _err error) {
+func (client *Client) SendByDevice(request *SendByDeviceRequest) (_result *SendByDeviceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &SendByDeviceFileIdResponse{}
-	_body, _err := client.SendByDeviceFileIdWithOptions(request, headers, runtime)
+	_result = &SendByDeviceResponse{}
+	_body, _err := client.SendByDeviceWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2668,11 +2656,11 @@ func (client *Client) SendByDeviceFileIdWithOptions(tmpReq *SendByDeviceFileIdRe
 	return _result, _err
 }
 
-func (client *Client) SendByFilter(request *SendByFilterRequest) (_result *SendByFilterResponse, _err error) {
+func (client *Client) SendByDeviceFileId(request *SendByDeviceFileIdRequest) (_result *SendByDeviceFileIdResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &SendByFilterResponse{}
-	_body, _err := client.SendByFilterWithOptions(request, headers, runtime)
+	_result = &SendByDeviceFileIdResponse{}
+	_body, _err := client.SendByDeviceFileIdWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2764,11 +2752,11 @@ func (client *Client) SendByFilterWithOptions(tmpReq *SendByFilterRequest, heade
 	return _result, _err
 }
 
-func (client *Client) UploadDevice(request *UploadDeviceRequest) (_result *UploadDeviceResponse, _err error) {
+func (client *Client) SendByFilter(request *SendByFilterRequest) (_result *SendByFilterResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &UploadDeviceResponse{}
-	_body, _err := client.UploadDeviceWithOptions(request, headers, runtime)
+	_result = &SendByFilterResponse{}
+	_body, _err := client.SendByFilterWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2807,5 +2795,17 @@ func (client *Client) UploadDeviceWithOptions(request *UploadDeviceRequest, head
 		return _result, _err
 	}
 	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UploadDevice(request *UploadDeviceRequest) (_result *UploadDeviceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UploadDeviceResponse{}
+	_body, _err := client.UploadDeviceWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
 	return _result, _err
 }
