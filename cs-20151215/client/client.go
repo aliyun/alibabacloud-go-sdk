@@ -8003,6 +8003,81 @@ func (s *DescribePolicyInstancesStatusResponse) SetBody(v *DescribePolicyInstanc
 	return s
 }
 
+type DescribeSubaccountK8sClusterUserConfigRequest struct {
+	PrivateIpAddress         *bool  `json:"PrivateIpAddress,omitempty" xml:"PrivateIpAddress,omitempty"`
+	TemporaryDurationMinutes *int64 `json:"TemporaryDurationMinutes,omitempty" xml:"TemporaryDurationMinutes,omitempty"`
+}
+
+func (s DescribeSubaccountK8sClusterUserConfigRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSubaccountK8sClusterUserConfigRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSubaccountK8sClusterUserConfigRequest) SetPrivateIpAddress(v bool) *DescribeSubaccountK8sClusterUserConfigRequest {
+	s.PrivateIpAddress = &v
+	return s
+}
+
+func (s *DescribeSubaccountK8sClusterUserConfigRequest) SetTemporaryDurationMinutes(v int64) *DescribeSubaccountK8sClusterUserConfigRequest {
+	s.TemporaryDurationMinutes = &v
+	return s
+}
+
+type DescribeSubaccountK8sClusterUserConfigResponseBody struct {
+	Config     *string `json:"config,omitempty" xml:"config,omitempty"`
+	Expiration *string `json:"expiration,omitempty" xml:"expiration,omitempty"`
+}
+
+func (s DescribeSubaccountK8sClusterUserConfigResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSubaccountK8sClusterUserConfigResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSubaccountK8sClusterUserConfigResponseBody) SetConfig(v string) *DescribeSubaccountK8sClusterUserConfigResponseBody {
+	s.Config = &v
+	return s
+}
+
+func (s *DescribeSubaccountK8sClusterUserConfigResponseBody) SetExpiration(v string) *DescribeSubaccountK8sClusterUserConfigResponseBody {
+	s.Expiration = &v
+	return s
+}
+
+type DescribeSubaccountK8sClusterUserConfigResponse struct {
+	Headers    map[string]*string                                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeSubaccountK8sClusterUserConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeSubaccountK8sClusterUserConfigResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSubaccountK8sClusterUserConfigResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSubaccountK8sClusterUserConfigResponse) SetHeaders(v map[string]*string) *DescribeSubaccountK8sClusterUserConfigResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeSubaccountK8sClusterUserConfigResponse) SetStatusCode(v int32) *DescribeSubaccountK8sClusterUserConfigResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeSubaccountK8sClusterUserConfigResponse) SetBody(v *DescribeSubaccountK8sClusterUserConfigResponseBody) *DescribeSubaccountK8sClusterUserConfigResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeTaskInfoResponseBody struct {
 	ClusterId    *string                                   `json:"cluster_id,omitempty" xml:"cluster_id,omitempty"`
 	Created      *string                                   `json:"created,omitempty" xml:"created,omitempty"`
@@ -15704,6 +15779,56 @@ func (client *Client) DescribePolicyInstancesStatus(clusterId *string) (_result 
 	headers := make(map[string]*string)
 	_result = &DescribePolicyInstancesStatusResponse{}
 	_body, _err := client.DescribePolicyInstancesStatusWithOptions(clusterId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeSubaccountK8sClusterUserConfigWithOptions(ClusterId *string, Uid *string, request *DescribeSubaccountK8sClusterUserConfigRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DescribeSubaccountK8sClusterUserConfigResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.PrivateIpAddress)) {
+		query["PrivateIpAddress"] = request.PrivateIpAddress
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemporaryDurationMinutes)) {
+		query["TemporaryDurationMinutes"] = request.TemporaryDurationMinutes
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeSubaccountK8sClusterUserConfig"),
+		Version:     tea.String("2015-12-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/k8s/" + tea.StringValue(openapiutil.GetEncodeParam(ClusterId)) + "/users/" + tea.StringValue(openapiutil.GetEncodeParam(Uid)) + "/user_config"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeSubaccountK8sClusterUserConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeSubaccountK8sClusterUserConfig(ClusterId *string, Uid *string, request *DescribeSubaccountK8sClusterUserConfigRequest) (_result *DescribeSubaccountK8sClusterUserConfigResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DescribeSubaccountK8sClusterUserConfigResponse{}
+	_body, _err := client.DescribeSubaccountK8sClusterUserConfigWithOptions(ClusterId, Uid, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
