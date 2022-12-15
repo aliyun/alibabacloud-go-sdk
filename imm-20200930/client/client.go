@@ -597,6 +597,7 @@ type Dataset struct {
 	Description             *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	FileCount               *int64  `json:"FileCount,omitempty" xml:"FileCount,omitempty"`
 	ProjectName             *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	TemplateId              *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 	TotalFileSize           *int64  `json:"TotalFileSize,omitempty" xml:"TotalFileSize,omitempty"`
 	UpdateTime              *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
@@ -661,6 +662,11 @@ func (s *Dataset) SetFileCount(v int64) *Dataset {
 
 func (s *Dataset) SetProjectName(v string) *Dataset {
 	s.ProjectName = &v
+	return s
+}
+
+func (s *Dataset) SetTemplateId(v string) *Dataset {
+	s.TemplateId = &v
 	return s
 }
 
@@ -1991,6 +1997,7 @@ type Project struct {
 	ProjectName             *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
 	ProjectQueriesPerSecond *int64  `json:"ProjectQueriesPerSecond,omitempty" xml:"ProjectQueriesPerSecond,omitempty"`
 	ServiceRole             *string `json:"ServiceRole,omitempty" xml:"ServiceRole,omitempty"`
+	TemplateId              *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 	TotalFileSize           *int64  `json:"TotalFileSize,omitempty" xml:"TotalFileSize,omitempty"`
 	UpdateTime              *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
@@ -2070,6 +2077,11 @@ func (s *Project) SetProjectQueriesPerSecond(v int64) *Project {
 
 func (s *Project) SetServiceRole(v string) *Project {
 	s.ServiceRole = &v
+	return s
+}
+
+func (s *Project) SetTemplateId(v string) *Project {
+	s.TemplateId = &v
 	return s
 }
 
