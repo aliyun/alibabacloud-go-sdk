@@ -186,6 +186,244 @@ func (s *AttachDbfsResponse) SetBody(v *AttachDbfsResponseBody) *AttachDbfsRespo
 	return s
 }
 
+type CancelAutoSnapshotPolicyRequest struct {
+	DbfsIds  []*string `json:"DbfsIds,omitempty" xml:"DbfsIds,omitempty" type:"Repeated"`
+	PolicyId *string   `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	RegionId *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s CancelAutoSnapshotPolicyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CancelAutoSnapshotPolicyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CancelAutoSnapshotPolicyRequest) SetDbfsIds(v []*string) *CancelAutoSnapshotPolicyRequest {
+	s.DbfsIds = v
+	return s
+}
+
+func (s *CancelAutoSnapshotPolicyRequest) SetPolicyId(v string) *CancelAutoSnapshotPolicyRequest {
+	s.PolicyId = &v
+	return s
+}
+
+func (s *CancelAutoSnapshotPolicyRequest) SetRegionId(v string) *CancelAutoSnapshotPolicyRequest {
+	s.RegionId = &v
+	return s
+}
+
+type CancelAutoSnapshotPolicyShrinkRequest struct {
+	DbfsIdsShrink *string `json:"DbfsIds,omitempty" xml:"DbfsIds,omitempty"`
+	PolicyId      *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s CancelAutoSnapshotPolicyShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CancelAutoSnapshotPolicyShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CancelAutoSnapshotPolicyShrinkRequest) SetDbfsIdsShrink(v string) *CancelAutoSnapshotPolicyShrinkRequest {
+	s.DbfsIdsShrink = &v
+	return s
+}
+
+func (s *CancelAutoSnapshotPolicyShrinkRequest) SetPolicyId(v string) *CancelAutoSnapshotPolicyShrinkRequest {
+	s.PolicyId = &v
+	return s
+}
+
+func (s *CancelAutoSnapshotPolicyShrinkRequest) SetRegionId(v string) *CancelAutoSnapshotPolicyShrinkRequest {
+	s.RegionId = &v
+	return s
+}
+
+type CancelAutoSnapshotPolicyResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CancelAutoSnapshotPolicyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CancelAutoSnapshotPolicyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CancelAutoSnapshotPolicyResponseBody) SetRequestId(v string) *CancelAutoSnapshotPolicyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CancelAutoSnapshotPolicyResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CancelAutoSnapshotPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CancelAutoSnapshotPolicyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CancelAutoSnapshotPolicyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CancelAutoSnapshotPolicyResponse) SetHeaders(v map[string]*string) *CancelAutoSnapshotPolicyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CancelAutoSnapshotPolicyResponse) SetStatusCode(v int32) *CancelAutoSnapshotPolicyResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CancelAutoSnapshotPolicyResponse) SetBody(v *CancelAutoSnapshotPolicyResponseBody) *CancelAutoSnapshotPolicyResponse {
+	s.Body = v
+	return s
+}
+
+type CreateAutoSnapshotPolicyRequest struct {
+	PolicyName     *string   `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
+	RegionId       *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RepeatWeekdays []*string `json:"RepeatWeekdays,omitempty" xml:"RepeatWeekdays,omitempty" type:"Repeated"`
+	RetentionDays  *int32    `json:"RetentionDays,omitempty" xml:"RetentionDays,omitempty"`
+	TimePoints     []*string `json:"TimePoints,omitempty" xml:"TimePoints,omitempty" type:"Repeated"`
+}
+
+func (s CreateAutoSnapshotPolicyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAutoSnapshotPolicyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAutoSnapshotPolicyRequest) SetPolicyName(v string) *CreateAutoSnapshotPolicyRequest {
+	s.PolicyName = &v
+	return s
+}
+
+func (s *CreateAutoSnapshotPolicyRequest) SetRegionId(v string) *CreateAutoSnapshotPolicyRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *CreateAutoSnapshotPolicyRequest) SetRepeatWeekdays(v []*string) *CreateAutoSnapshotPolicyRequest {
+	s.RepeatWeekdays = v
+	return s
+}
+
+func (s *CreateAutoSnapshotPolicyRequest) SetRetentionDays(v int32) *CreateAutoSnapshotPolicyRequest {
+	s.RetentionDays = &v
+	return s
+}
+
+func (s *CreateAutoSnapshotPolicyRequest) SetTimePoints(v []*string) *CreateAutoSnapshotPolicyRequest {
+	s.TimePoints = v
+	return s
+}
+
+type CreateAutoSnapshotPolicyShrinkRequest struct {
+	PolicyName           *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RepeatWeekdaysShrink *string `json:"RepeatWeekdays,omitempty" xml:"RepeatWeekdays,omitempty"`
+	RetentionDays        *int32  `json:"RetentionDays,omitempty" xml:"RetentionDays,omitempty"`
+	TimePointsShrink     *string `json:"TimePoints,omitempty" xml:"TimePoints,omitempty"`
+}
+
+func (s CreateAutoSnapshotPolicyShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAutoSnapshotPolicyShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAutoSnapshotPolicyShrinkRequest) SetPolicyName(v string) *CreateAutoSnapshotPolicyShrinkRequest {
+	s.PolicyName = &v
+	return s
+}
+
+func (s *CreateAutoSnapshotPolicyShrinkRequest) SetRegionId(v string) *CreateAutoSnapshotPolicyShrinkRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *CreateAutoSnapshotPolicyShrinkRequest) SetRepeatWeekdaysShrink(v string) *CreateAutoSnapshotPolicyShrinkRequest {
+	s.RepeatWeekdaysShrink = &v
+	return s
+}
+
+func (s *CreateAutoSnapshotPolicyShrinkRequest) SetRetentionDays(v int32) *CreateAutoSnapshotPolicyShrinkRequest {
+	s.RetentionDays = &v
+	return s
+}
+
+func (s *CreateAutoSnapshotPolicyShrinkRequest) SetTimePointsShrink(v string) *CreateAutoSnapshotPolicyShrinkRequest {
+	s.TimePointsShrink = &v
+	return s
+}
+
+type CreateAutoSnapshotPolicyResponseBody struct {
+	PolicyId  *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateAutoSnapshotPolicyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAutoSnapshotPolicyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAutoSnapshotPolicyResponseBody) SetPolicyId(v string) *CreateAutoSnapshotPolicyResponseBody {
+	s.PolicyId = &v
+	return s
+}
+
+func (s *CreateAutoSnapshotPolicyResponseBody) SetRequestId(v string) *CreateAutoSnapshotPolicyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateAutoSnapshotPolicyResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateAutoSnapshotPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateAutoSnapshotPolicyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAutoSnapshotPolicyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAutoSnapshotPolicyResponse) SetHeaders(v map[string]*string) *CreateAutoSnapshotPolicyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateAutoSnapshotPolicyResponse) SetStatusCode(v int32) *CreateAutoSnapshotPolicyResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateAutoSnapshotPolicyResponse) SetBody(v *CreateAutoSnapshotPolicyResponseBody) *CreateAutoSnapshotPolicyResponse {
+	s.Body = v
+	return s
+}
+
 type CreateDbfsRequest struct {
 	AdvancedFeatures     *string `json:"AdvancedFeatures,omitempty" xml:"AdvancedFeatures,omitempty"`
 	Category             *string `json:"Category,omitempty" xml:"Category,omitempty"`
@@ -2908,6 +3146,134 @@ func (client *Client) AttachDbfs(request *AttachDbfsRequest) (_result *AttachDbf
 	runtime := &util.RuntimeOptions{}
 	_result = &AttachDbfsResponse{}
 	_body, _err := client.AttachDbfsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CancelAutoSnapshotPolicyWithOptions(tmpReq *CancelAutoSnapshotPolicyRequest, runtime *util.RuntimeOptions) (_result *CancelAutoSnapshotPolicyResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CancelAutoSnapshotPolicyShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.DbfsIds)) {
+		request.DbfsIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DbfsIds, tea.String("DbfsIds"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DbfsIdsShrink)) {
+		query["DbfsIds"] = request.DbfsIdsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PolicyId)) {
+		query["PolicyId"] = request.PolicyId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CancelAutoSnapshotPolicy"),
+		Version:     tea.String("2020-04-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CancelAutoSnapshotPolicyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CancelAutoSnapshotPolicy(request *CancelAutoSnapshotPolicyRequest) (_result *CancelAutoSnapshotPolicyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CancelAutoSnapshotPolicyResponse{}
+	_body, _err := client.CancelAutoSnapshotPolicyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateAutoSnapshotPolicyWithOptions(tmpReq *CreateAutoSnapshotPolicyRequest, runtime *util.RuntimeOptions) (_result *CreateAutoSnapshotPolicyResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CreateAutoSnapshotPolicyShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.RepeatWeekdays)) {
+		request.RepeatWeekdaysShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RepeatWeekdays, tea.String("RepeatWeekdays"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.TimePoints)) {
+		request.TimePointsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TimePoints, tea.String("TimePoints"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.PolicyName)) {
+		query["PolicyName"] = request.PolicyName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RepeatWeekdaysShrink)) {
+		query["RepeatWeekdays"] = request.RepeatWeekdaysShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RetentionDays)) {
+		query["RetentionDays"] = request.RetentionDays
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TimePointsShrink)) {
+		query["TimePoints"] = request.TimePointsShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateAutoSnapshotPolicy"),
+		Version:     tea.String("2020-04-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateAutoSnapshotPolicyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateAutoSnapshotPolicy(request *CreateAutoSnapshotPolicyRequest) (_result *CreateAutoSnapshotPolicyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateAutoSnapshotPolicyResponse{}
+	_body, _err := client.CreateAutoSnapshotPolicyWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
