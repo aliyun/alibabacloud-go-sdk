@@ -155,7 +155,7 @@ func (s *EntVerifyResponseBodyResult) SetRiskVerifyResult(v *EntVerifyResponseBo
 }
 
 type EntVerifyResponseBodyResultRiskVerifyResult struct {
-	Found        *string                                                    `json:"Found,omitempty" xml:"Found,omitempty"`
+	Found        *bool                                                      `json:"Found,omitempty" xml:"Found,omitempty"`
 	ModelResults []*EntVerifyResponseBodyResultRiskVerifyResultModelResults `json:"ModelResults,omitempty" xml:"ModelResults,omitempty" type:"Repeated"`
 }
 
@@ -167,7 +167,7 @@ func (s EntVerifyResponseBodyResultRiskVerifyResult) GoString() string {
 	return s.String()
 }
 
-func (s *EntVerifyResponseBodyResultRiskVerifyResult) SetFound(v string) *EntVerifyResponseBodyResultRiskVerifyResult {
+func (s *EntVerifyResponseBodyResultRiskVerifyResult) SetFound(v bool) *EntVerifyResponseBodyResultRiskVerifyResult {
 	s.Found = &v
 	return s
 }
