@@ -41,7 +41,8 @@ type AccessTokenResponseBody struct {
 	Message   *string                        `json:"message,omitempty" xml:"message,omitempty"`
 	Module    *AccessTokenResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
 	RequestId *string                        `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	TraceId   *string                        `json:"traceId,omitempty" xml:"traceId,omitempty"`
+	// traceId
+	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
 
 func (s AccessTokenResponseBody) String() string {
@@ -367,8 +368,9 @@ func (s *AirportSearchRequest) SetType(v int32) *AirportSearchRequest {
 }
 
 type AirportSearchResponseBody struct {
-	Code      *string                          `json:"code,omitempty" xml:"code,omitempty"`
-	Message   *string                          `json:"message,omitempty" xml:"message,omitempty"`
+	Code    *string `json:"code,omitempty" xml:"code,omitempty"`
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// module。
 	Module    *AirportSearchResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
 	RequestId *string                          `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	Success   *bool                            `json:"success,omitempty" xml:"success,omitempty"`
@@ -529,7 +531,8 @@ type AllBaseCityInfoQueryResponseBody struct {
 	Module    *AllBaseCityInfoQueryResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
 	RequestId *string                                 `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	Success   *bool                                   `json:"success,omitempty" xml:"success,omitempty"`
-	TraceId   *string                                 `json:"traceId,omitempty" xml:"traceId,omitempty"`
+	// traceId
+	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
 
 func (s AllBaseCityInfoQueryResponseBody) String() string {
@@ -907,13 +910,14 @@ func (s *ApplyAddRequestExternalTravelerList) SetUserName(v string) *ApplyAddReq
 }
 
 type ApplyAddRequestExternalTravelerStandard struct {
-	BusinessDiscount *int32                                               `json:"business_discount,omitempty" xml:"business_discount,omitempty"`
-	EconomyDiscount  *int32                                               `json:"economy_discount,omitempty" xml:"economy_discount,omitempty"`
-	FirstDiscount    *int32                                               `json:"first_discount,omitempty" xml:"first_discount,omitempty"`
-	FlightCabins     *string                                              `json:"flight_cabins,omitempty" xml:"flight_cabins,omitempty"`
-	HotelCitys       []*ApplyAddRequestExternalTravelerStandardHotelCitys `json:"hotel_citys,omitempty" xml:"hotel_citys,omitempty" type:"Repeated"`
-	ReserveType      *int32                                               `json:"reserve_type,omitempty" xml:"reserve_type,omitempty"`
-	TrainSeats       *string                                              `json:"train_seats,omitempty" xml:"train_seats,omitempty"`
+	BusinessDiscount       *int32                                               `json:"business_discount,omitempty" xml:"business_discount,omitempty"`
+	EconomyDiscount        *int32                                               `json:"economy_discount,omitempty" xml:"economy_discount,omitempty"`
+	FirstDiscount          *int32                                               `json:"first_discount,omitempty" xml:"first_discount,omitempty"`
+	FlightCabins           *string                                              `json:"flight_cabins,omitempty" xml:"flight_cabins,omitempty"`
+	HotelCitys             []*ApplyAddRequestExternalTravelerStandardHotelCitys `json:"hotel_citys,omitempty" xml:"hotel_citys,omitempty" type:"Repeated"`
+	PremiumEconomyDiscount *int32                                               `json:"premium_economy_discount,omitempty" xml:"premium_economy_discount,omitempty"`
+	ReserveType            *int32                                               `json:"reserve_type,omitempty" xml:"reserve_type,omitempty"`
+	TrainSeats             *string                                              `json:"train_seats,omitempty" xml:"train_seats,omitempty"`
 }
 
 func (s ApplyAddRequestExternalTravelerStandard) String() string {
@@ -946,6 +950,11 @@ func (s *ApplyAddRequestExternalTravelerStandard) SetFlightCabins(v string) *App
 
 func (s *ApplyAddRequestExternalTravelerStandard) SetHotelCitys(v []*ApplyAddRequestExternalTravelerStandardHotelCitys) *ApplyAddRequestExternalTravelerStandard {
 	s.HotelCitys = v
+	return s
+}
+
+func (s *ApplyAddRequestExternalTravelerStandard) SetPremiumEconomyDiscount(v int32) *ApplyAddRequestExternalTravelerStandard {
+	s.PremiumEconomyDiscount = &v
 	return s
 }
 
@@ -1231,14 +1240,15 @@ func (s *ApplyAddRequestTravelerList) SetUserName(v string) *ApplyAddRequestTrav
 }
 
 type ApplyAddRequestTravelerStandard struct {
-	BusinessDiscount *int32                                       `json:"business_discount,omitempty" xml:"business_discount,omitempty"`
-	EconomyDiscount  *int32                                       `json:"economy_discount,omitempty" xml:"economy_discount,omitempty"`
-	FirstDiscount    *int32                                       `json:"first_discount,omitempty" xml:"first_discount,omitempty"`
-	FlightCabins     *string                                      `json:"flight_cabins,omitempty" xml:"flight_cabins,omitempty"`
-	HotelCitys       []*ApplyAddRequestTravelerStandardHotelCitys `json:"hotel_citys,omitempty" xml:"hotel_citys,omitempty" type:"Repeated"`
-	ReserveType      *int32                                       `json:"reserve_type,omitempty" xml:"reserve_type,omitempty"`
-	TrainSeats       *string                                      `json:"train_seats,omitempty" xml:"train_seats,omitempty"`
-	UserId           *string                                      `json:"user_id,omitempty" xml:"user_id,omitempty"`
+	BusinessDiscount       *int32                                       `json:"business_discount,omitempty" xml:"business_discount,omitempty"`
+	EconomyDiscount        *int32                                       `json:"economy_discount,omitempty" xml:"economy_discount,omitempty"`
+	FirstDiscount          *int32                                       `json:"first_discount,omitempty" xml:"first_discount,omitempty"`
+	FlightCabins           *string                                      `json:"flight_cabins,omitempty" xml:"flight_cabins,omitempty"`
+	HotelCitys             []*ApplyAddRequestTravelerStandardHotelCitys `json:"hotel_citys,omitempty" xml:"hotel_citys,omitempty" type:"Repeated"`
+	PremiumEconomyDiscount *int32                                       `json:"premium_economy_discount,omitempty" xml:"premium_economy_discount,omitempty"`
+	ReserveType            *int32                                       `json:"reserve_type,omitempty" xml:"reserve_type,omitempty"`
+	TrainSeats             *string                                      `json:"train_seats,omitempty" xml:"train_seats,omitempty"`
+	UserId                 *string                                      `json:"user_id,omitempty" xml:"user_id,omitempty"`
 }
 
 func (s ApplyAddRequestTravelerStandard) String() string {
@@ -1271,6 +1281,11 @@ func (s *ApplyAddRequestTravelerStandard) SetFlightCabins(v string) *ApplyAddReq
 
 func (s *ApplyAddRequestTravelerStandard) SetHotelCitys(v []*ApplyAddRequestTravelerStandardHotelCitys) *ApplyAddRequestTravelerStandard {
 	s.HotelCitys = v
+	return s
+}
+
+func (s *ApplyAddRequestTravelerStandard) SetPremiumEconomyDiscount(v int32) *ApplyAddRequestTravelerStandard {
+	s.PremiumEconomyDiscount = &v
 	return s
 }
 
@@ -1516,8 +1531,9 @@ func (s *ApplyAddShrinkRequest) SetVehicleBudget(v int64) *ApplyAddShrinkRequest
 }
 
 type ApplyAddResponseBody struct {
-	Code      *string                     `json:"code,omitempty" xml:"code,omitempty"`
-	Message   *string                     `json:"message,omitempty" xml:"message,omitempty"`
+	Code    *string `json:"code,omitempty" xml:"code,omitempty"`
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// module。
 	Module    *ApplyAddResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
 	RequestId *string                     `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	Success   *bool                       `json:"success,omitempty" xml:"success,omitempty"`
@@ -1691,8 +1707,9 @@ func (s *ApplyApproveRequest) SetUserName(v string) *ApplyApproveRequest {
 }
 
 type ApplyApproveResponseBody struct {
-	Code      *string `json:"code,omitempty" xml:"code,omitempty"`
-	Message   *string `json:"message,omitempty" xml:"message,omitempty"`
+	Code    *string `json:"code,omitempty" xml:"code,omitempty"`
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// module。
 	Module    *string `json:"module,omitempty" xml:"module,omitempty"`
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	Success   *bool   `json:"success,omitempty" xml:"success,omitempty"`
@@ -2576,13 +2593,14 @@ func (s *ApplyModifyRequestExternalTravelerList) SetUserName(v string) *ApplyMod
 }
 
 type ApplyModifyRequestExternalTravelerStandard struct {
-	BusinessDiscount *int32                                                  `json:"business_discount,omitempty" xml:"business_discount,omitempty"`
-	EconomyDiscount  *int32                                                  `json:"economy_discount,omitempty" xml:"economy_discount,omitempty"`
-	FirstDiscount    *int32                                                  `json:"first_discount,omitempty" xml:"first_discount,omitempty"`
-	FlightCabins     *string                                                 `json:"flight_cabins,omitempty" xml:"flight_cabins,omitempty"`
-	HotelCitys       []*ApplyModifyRequestExternalTravelerStandardHotelCitys `json:"hotel_citys,omitempty" xml:"hotel_citys,omitempty" type:"Repeated"`
-	ReserveType      *int32                                                  `json:"reserve_type,omitempty" xml:"reserve_type,omitempty"`
-	TrainSeats       *string                                                 `json:"train_seats,omitempty" xml:"train_seats,omitempty"`
+	BusinessDiscount       *int32                                                  `json:"business_discount,omitempty" xml:"business_discount,omitempty"`
+	EconomyDiscount        *int32                                                  `json:"economy_discount,omitempty" xml:"economy_discount,omitempty"`
+	FirstDiscount          *int32                                                  `json:"first_discount,omitempty" xml:"first_discount,omitempty"`
+	FlightCabins           *string                                                 `json:"flight_cabins,omitempty" xml:"flight_cabins,omitempty"`
+	HotelCitys             []*ApplyModifyRequestExternalTravelerStandardHotelCitys `json:"hotel_citys,omitempty" xml:"hotel_citys,omitempty" type:"Repeated"`
+	PremiumEconomyDiscount *int32                                                  `json:"premium_economy_discount,omitempty" xml:"premium_economy_discount,omitempty"`
+	ReserveType            *int32                                                  `json:"reserve_type,omitempty" xml:"reserve_type,omitempty"`
+	TrainSeats             *string                                                 `json:"train_seats,omitempty" xml:"train_seats,omitempty"`
 }
 
 func (s ApplyModifyRequestExternalTravelerStandard) String() string {
@@ -2615,6 +2633,11 @@ func (s *ApplyModifyRequestExternalTravelerStandard) SetFlightCabins(v string) *
 
 func (s *ApplyModifyRequestExternalTravelerStandard) SetHotelCitys(v []*ApplyModifyRequestExternalTravelerStandardHotelCitys) *ApplyModifyRequestExternalTravelerStandard {
 	s.HotelCitys = v
+	return s
+}
+
+func (s *ApplyModifyRequestExternalTravelerStandard) SetPremiumEconomyDiscount(v int32) *ApplyModifyRequestExternalTravelerStandard {
+	s.PremiumEconomyDiscount = &v
 	return s
 }
 
@@ -2900,14 +2923,15 @@ func (s *ApplyModifyRequestTravelerList) SetUserName(v string) *ApplyModifyReque
 }
 
 type ApplyModifyRequestTravelerStandard struct {
-	BusinessDiscount *int32                                          `json:"business_discount,omitempty" xml:"business_discount,omitempty"`
-	EconomyDiscount  *int32                                          `json:"economy_discount,omitempty" xml:"economy_discount,omitempty"`
-	FirstDiscount    *int32                                          `json:"first_discount,omitempty" xml:"first_discount,omitempty"`
-	FlightCabins     *string                                         `json:"flight_cabins,omitempty" xml:"flight_cabins,omitempty"`
-	HotelCitys       []*ApplyModifyRequestTravelerStandardHotelCitys `json:"hotel_citys,omitempty" xml:"hotel_citys,omitempty" type:"Repeated"`
-	ReserveType      *int32                                          `json:"reserve_type,omitempty" xml:"reserve_type,omitempty"`
-	TrainSeats       *string                                         `json:"train_seats,omitempty" xml:"train_seats,omitempty"`
-	UserId           *string                                         `json:"user_id,omitempty" xml:"user_id,omitempty"`
+	BusinessDiscount       *int32                                          `json:"business_discount,omitempty" xml:"business_discount,omitempty"`
+	EconomyDiscount        *int32                                          `json:"economy_discount,omitempty" xml:"economy_discount,omitempty"`
+	FirstDiscount          *int32                                          `json:"first_discount,omitempty" xml:"first_discount,omitempty"`
+	FlightCabins           *string                                         `json:"flight_cabins,omitempty" xml:"flight_cabins,omitempty"`
+	HotelCitys             []*ApplyModifyRequestTravelerStandardHotelCitys `json:"hotel_citys,omitempty" xml:"hotel_citys,omitempty" type:"Repeated"`
+	PremiumEconomyDiscount *int32                                          `json:"premium_economy_discount,omitempty" xml:"premium_economy_discount,omitempty"`
+	ReserveType            *int32                                          `json:"reserve_type,omitempty" xml:"reserve_type,omitempty"`
+	TrainSeats             *string                                         `json:"train_seats,omitempty" xml:"train_seats,omitempty"`
+	UserId                 *string                                         `json:"user_id,omitempty" xml:"user_id,omitempty"`
 }
 
 func (s ApplyModifyRequestTravelerStandard) String() string {
@@ -2940,6 +2964,11 @@ func (s *ApplyModifyRequestTravelerStandard) SetFlightCabins(v string) *ApplyMod
 
 func (s *ApplyModifyRequestTravelerStandard) SetHotelCitys(v []*ApplyModifyRequestTravelerStandardHotelCitys) *ApplyModifyRequestTravelerStandard {
 	s.HotelCitys = v
+	return s
+}
+
+func (s *ApplyModifyRequestTravelerStandard) SetPremiumEconomyDiscount(v int32) *ApplyModifyRequestTravelerStandard {
+	s.PremiumEconomyDiscount = &v
 	return s
 }
 
@@ -3173,8 +3202,9 @@ func (s *ApplyModifyShrinkRequest) SetVehicleBudget(v int64) *ApplyModifyShrinkR
 }
 
 type ApplyModifyResponseBody struct {
-	Code      *string                        `json:"code,omitempty" xml:"code,omitempty"`
-	Message   *string                        `json:"message,omitempty" xml:"message,omitempty"`
+	Code    *string `json:"code,omitempty" xml:"code,omitempty"`
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// module。
 	Module    *ApplyModifyResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
 	RequestId *string                        `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	Success   *bool                          `json:"success,omitempty" xml:"success,omitempty"`
@@ -3651,14 +3681,15 @@ func (s *ApplyQueryResponseBodyModuleApproverList) SetUserName(v string) *ApplyQ
 }
 
 type ApplyQueryResponseBodyModuleExternalTravelerList struct {
-	BusinessDiscount *int32                                                        `json:"business_discount,omitempty" xml:"business_discount,omitempty"`
-	EconomyDiscount  *int32                                                        `json:"economy_discount,omitempty" xml:"economy_discount,omitempty"`
-	FirstDiscount    *int32                                                        `json:"first_discount,omitempty" xml:"first_discount,omitempty"`
-	FlightCabins     *string                                                       `json:"flight_cabins,omitempty" xml:"flight_cabins,omitempty"`
-	HotelCitys       []*ApplyQueryResponseBodyModuleExternalTravelerListHotelCitys `json:"hotel_citys,omitempty" xml:"hotel_citys,omitempty" type:"Repeated"`
-	ReserveType      *int32                                                        `json:"reserve_type,omitempty" xml:"reserve_type,omitempty"`
-	TrainSeats       *string                                                       `json:"train_seats,omitempty" xml:"train_seats,omitempty"`
-	UserName         *string                                                       `json:"user_name,omitempty" xml:"user_name,omitempty"`
+	BusinessDiscount       *int32                                                        `json:"business_discount,omitempty" xml:"business_discount,omitempty"`
+	EconomyDiscount        *int32                                                        `json:"economy_discount,omitempty" xml:"economy_discount,omitempty"`
+	FirstDiscount          *int32                                                        `json:"first_discount,omitempty" xml:"first_discount,omitempty"`
+	FlightCabins           *string                                                       `json:"flight_cabins,omitempty" xml:"flight_cabins,omitempty"`
+	HotelCitys             []*ApplyQueryResponseBodyModuleExternalTravelerListHotelCitys `json:"hotel_citys,omitempty" xml:"hotel_citys,omitempty" type:"Repeated"`
+	PremiumEconomyDiscount *int32                                                        `json:"premium_economy_discount,omitempty" xml:"premium_economy_discount,omitempty"`
+	ReserveType            *int32                                                        `json:"reserve_type,omitempty" xml:"reserve_type,omitempty"`
+	TrainSeats             *string                                                       `json:"train_seats,omitempty" xml:"train_seats,omitempty"`
+	UserName               *string                                                       `json:"user_name,omitempty" xml:"user_name,omitempty"`
 }
 
 func (s ApplyQueryResponseBodyModuleExternalTravelerList) String() string {
@@ -3691,6 +3722,11 @@ func (s *ApplyQueryResponseBodyModuleExternalTravelerList) SetFlightCabins(v str
 
 func (s *ApplyQueryResponseBodyModuleExternalTravelerList) SetHotelCitys(v []*ApplyQueryResponseBodyModuleExternalTravelerListHotelCitys) *ApplyQueryResponseBodyModuleExternalTravelerList {
 	s.HotelCitys = v
+	return s
+}
+
+func (s *ApplyQueryResponseBodyModuleExternalTravelerList) SetPremiumEconomyDiscount(v int32) *ApplyQueryResponseBodyModuleExternalTravelerList {
+	s.PremiumEconomyDiscount = &v
 	return s
 }
 
@@ -3922,15 +3958,16 @@ func (s *ApplyQueryResponseBodyModuleItinerarySetList) SetTrafficType(v int32) *
 }
 
 type ApplyQueryResponseBodyModuleTravelerList struct {
-	BusinessDiscount *int32                                                `json:"business_discount,omitempty" xml:"business_discount,omitempty"`
-	EconomyDiscount  *int32                                                `json:"economy_discount,omitempty" xml:"economy_discount,omitempty"`
-	FirstDiscount    *int32                                                `json:"first_discount,omitempty" xml:"first_discount,omitempty"`
-	FlightCabins     *string                                               `json:"flight_cabins,omitempty" xml:"flight_cabins,omitempty"`
-	HotelCitys       []*ApplyQueryResponseBodyModuleTravelerListHotelCitys `json:"hotel_citys,omitempty" xml:"hotel_citys,omitempty" type:"Repeated"`
-	ReserveType      *int32                                                `json:"reserve_type,omitempty" xml:"reserve_type,omitempty"`
-	TrainSeats       *string                                               `json:"train_seats,omitempty" xml:"train_seats,omitempty"`
-	UserId           *string                                               `json:"user_id,omitempty" xml:"user_id,omitempty"`
-	UserName         *string                                               `json:"user_name,omitempty" xml:"user_name,omitempty"`
+	BusinessDiscount       *int32                                                `json:"business_discount,omitempty" xml:"business_discount,omitempty"`
+	EconomyDiscount        *int32                                                `json:"economy_discount,omitempty" xml:"economy_discount,omitempty"`
+	FirstDiscount          *int32                                                `json:"first_discount,omitempty" xml:"first_discount,omitempty"`
+	FlightCabins           *string                                               `json:"flight_cabins,omitempty" xml:"flight_cabins,omitempty"`
+	HotelCitys             []*ApplyQueryResponseBodyModuleTravelerListHotelCitys `json:"hotel_citys,omitempty" xml:"hotel_citys,omitempty" type:"Repeated"`
+	PremiumEconomyDiscount *int32                                                `json:"premium_economy_discount,omitempty" xml:"premium_economy_discount,omitempty"`
+	ReserveType            *int32                                                `json:"reserve_type,omitempty" xml:"reserve_type,omitempty"`
+	TrainSeats             *string                                               `json:"train_seats,omitempty" xml:"train_seats,omitempty"`
+	UserId                 *string                                               `json:"user_id,omitempty" xml:"user_id,omitempty"`
+	UserName               *string                                               `json:"user_name,omitempty" xml:"user_name,omitempty"`
 }
 
 func (s ApplyQueryResponseBodyModuleTravelerList) String() string {
@@ -3963,6 +4000,11 @@ func (s *ApplyQueryResponseBodyModuleTravelerList) SetFlightCabins(v string) *Ap
 
 func (s *ApplyQueryResponseBodyModuleTravelerList) SetHotelCitys(v []*ApplyQueryResponseBodyModuleTravelerListHotelCitys) *ApplyQueryResponseBodyModuleTravelerList {
 	s.HotelCitys = v
+	return s
+}
+
+func (s *ApplyQueryResponseBodyModuleTravelerList) SetPremiumEconomyDiscount(v int32) *ApplyQueryResponseBodyModuleTravelerList {
+	s.PremiumEconomyDiscount = &v
 	return s
 }
 
@@ -4309,8 +4351,9 @@ func (s *CarApplyModifyRequest) SetUserId(v string) *CarApplyModifyRequest {
 }
 
 type CarApplyModifyResponseBody struct {
-	Code      *string `json:"code,omitempty" xml:"code,omitempty"`
-	Message   *string `json:"message,omitempty" xml:"message,omitempty"`
+	Code    *string `json:"code,omitempty" xml:"code,omitempty"`
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// module。
 	Module    *bool   `json:"module,omitempty" xml:"module,omitempty"`
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	Success   *bool   `json:"success,omitempty" xml:"success,omitempty"`
@@ -5414,7 +5457,8 @@ type CarOrderListQueryResponseBody struct {
 	PageInfo  *CarOrderListQueryResponseBodyPageInfo `json:"page_info,omitempty" xml:"page_info,omitempty" type:"Struct"`
 	RequestId *string                                `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	Success   *bool                                  `json:"success,omitempty" xml:"success,omitempty"`
-	TraceId   *string                                `json:"traceId,omitempty" xml:"traceId,omitempty"`
+	// traceId
+	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
 
 func (s CarOrderListQueryResponseBody) String() string {
@@ -5964,12 +6008,14 @@ func (s *CarOrderQueryRequest) SetSubOrderId(v int64) *CarOrderQueryRequest {
 }
 
 type CarOrderQueryResponseBody struct {
-	Code      *string                          `json:"code,omitempty" xml:"code,omitempty"`
-	Message   *string                          `json:"message,omitempty" xml:"message,omitempty"`
-	Module    *CarOrderQueryResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
-	RequestId *string                          `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Success   *bool                            `json:"success,omitempty" xml:"success,omitempty"`
-	TraceId   *string                          `json:"traceId,omitempty" xml:"traceId,omitempty"`
+	Code    *string                          `json:"code,omitempty" xml:"code,omitempty"`
+	Message *string                          `json:"message,omitempty" xml:"message,omitempty"`
+	Module  *CarOrderQueryResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
+	// requestId
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success   *bool   `json:"success,omitempty" xml:"success,omitempty"`
+	// traceId
+	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
 
 func (s CarOrderQueryResponseBody) String() string {
@@ -6536,8 +6582,9 @@ func (s *CitySearchRequest) SetKeyword(v string) *CitySearchRequest {
 }
 
 type CitySearchResponseBody struct {
-	Code      *string                       `json:"code,omitempty" xml:"code,omitempty"`
-	Message   *string                       `json:"message,omitempty" xml:"message,omitempty"`
+	Code    *string `json:"code,omitempty" xml:"code,omitempty"`
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// module
 	Module    *CitySearchResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
 	RequestId *string                       `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	Success   *bool                         `json:"success,omitempty" xml:"success,omitempty"`
@@ -6933,8 +6980,9 @@ func (s *CommonApplySyncRequest) SetUserId(v string) *CommonApplySyncRequest {
 }
 
 type CommonApplySyncResponseBody struct {
-	Code      *string `json:"code,omitempty" xml:"code,omitempty"`
-	Message   *string `json:"message,omitempty" xml:"message,omitempty"`
+	Code    *string `json:"code,omitempty" xml:"code,omitempty"`
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// module。
 	Module    *bool   `json:"module,omitempty" xml:"module,omitempty"`
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	Success   *bool   `json:"success,omitempty" xml:"success,omitempty"`
@@ -7066,7 +7114,8 @@ type CorpTokenResponseBody struct {
 	Message   *string                      `json:"message,omitempty" xml:"message,omitempty"`
 	Module    *CorpTokenResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
 	RequestId *string                      `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	TraceId   *string                      `json:"traceId,omitempty" xml:"traceId,omitempty"`
+	// traceId
+	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
 
 func (s CorpTokenResponseBody) String() string {
@@ -7233,7 +7282,8 @@ type CostCenterDeleteResponseBody struct {
 	Message   *string `json:"message,omitempty" xml:"message,omitempty"`
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	Success   *bool   `json:"success,omitempty" xml:"success,omitempty"`
-	TraceId   *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
+	// traceId
+	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
 
 func (s CostCenterDeleteResponseBody) String() string {
@@ -7497,7 +7547,8 @@ type CostCenterQueryResponseBody struct {
 	MorePage  *bool                                `json:"more_page,omitempty" xml:"more_page,omitempty"`
 	RequestId *string                              `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	Success   *bool                                `json:"success,omitempty" xml:"success,omitempty"`
-	TraceId   *string                              `json:"traceId,omitempty" xml:"traceId,omitempty"`
+	// traceId
+	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
 
 func (s CostCenterQueryResponseBody) String() string {
@@ -7544,15 +7595,16 @@ func (s *CostCenterQueryResponseBody) SetTraceId(v string) *CostCenterQueryRespo
 }
 
 type CostCenterQueryResponseBodyModule struct {
-	AlipayNo    *string                                       `json:"alipay_no,omitempty" xml:"alipay_no,omitempty"`
-	CorpId      *string                                       `json:"corp_id,omitempty" xml:"corp_id,omitempty"`
-	EntityDOS   []*CostCenterQueryResponseBodyModuleEntityDOS `json:"entity_d_o_s,omitempty" xml:"entity_d_o_s,omitempty" type:"Repeated"`
-	Id          *int64                                        `json:"id,omitempty" xml:"id,omitempty"`
-	Number      *string                                       `json:"number,omitempty" xml:"number,omitempty"`
-	RuleCode    *int64                                        `json:"rule_code,omitempty" xml:"rule_code,omitempty"`
-	Scope       *int64                                        `json:"scope,omitempty" xml:"scope,omitempty"`
-	ThirdpartId *string                                       `json:"thirdpart_id,omitempty" xml:"thirdpart_id,omitempty"`
-	Title       *string                                       `json:"title,omitempty" xml:"title,omitempty"`
+	AlipayNo  *string                                       `json:"alipay_no,omitempty" xml:"alipay_no,omitempty"`
+	CorpId    *string                                       `json:"corp_id,omitempty" xml:"corp_id,omitempty"`
+	EntityDOS []*CostCenterQueryResponseBodyModuleEntityDOS `json:"entity_d_o_s,omitempty" xml:"entity_d_o_s,omitempty" type:"Repeated"`
+	Id        *int64                                        `json:"id,omitempty" xml:"id,omitempty"`
+	Number    *string                                       `json:"number,omitempty" xml:"number,omitempty"`
+	// rule code
+	RuleCode    *int64  `json:"rule_code,omitempty" xml:"rule_code,omitempty"`
+	Scope       *int64  `json:"scope,omitempty" xml:"scope,omitempty"`
+	ThirdpartId *string `json:"thirdpart_id,omitempty" xml:"thirdpart_id,omitempty"`
+	Title       *string `json:"title,omitempty" xml:"title,omitempty"`
 }
 
 func (s CostCenterQueryResponseBodyModule) String() string {
@@ -7748,7 +7800,8 @@ type CostCenterSaveResponseBody struct {
 	Module    *CostCenterSaveResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
 	RequestId *string                           `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	Success   *bool                             `json:"success,omitempty" xml:"success,omitempty"`
-	TraceId   *string                           `json:"traceId,omitempty" xml:"traceId,omitempty"`
+	// traceId
+	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
 
 func (s CostCenterSaveResponseBody) String() string {
@@ -7951,7 +8004,8 @@ type DepartmentSaveResponseBody struct {
 	Module    *string `json:"module,omitempty" xml:"module,omitempty"`
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	Success   *bool   `json:"success,omitempty" xml:"success,omitempty"`
-	TraceId   *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
+	// traceId
+	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
 
 func (s DepartmentSaveResponseBody) String() string {
@@ -8119,7 +8173,8 @@ type EntityAddResponseBody struct {
 	Module    *EntityAddResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
 	RequestId *string                      `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	Success   *bool                        `json:"success,omitempty" xml:"success,omitempty"`
-	TraceId   *string                      `json:"traceId,omitempty" xml:"traceId,omitempty"`
+	// traceId
+	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
 
 func (s EntityAddResponseBody) String() string {
@@ -8323,7 +8378,8 @@ type EntityDeleteResponseBody struct {
 	MorePage  *bool                           `json:"more_page,omitempty" xml:"more_page,omitempty"`
 	RequestId *string                         `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	Success   *bool                           `json:"success,omitempty" xml:"success,omitempty"`
-	TraceId   *string                         `json:"traceId,omitempty" xml:"traceId,omitempty"`
+	// traceId
+	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
 
 func (s EntityDeleteResponseBody) String() string {
@@ -8520,7 +8576,8 @@ type EntitySetResponseBody struct {
 	MorePage  *bool                        `json:"more_page,omitempty" xml:"more_page,omitempty"`
 	RequestId *string                      `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	Success   *bool                        `json:"success,omitempty" xml:"success,omitempty"`
-	TraceId   *string                      `json:"traceId,omitempty" xml:"traceId,omitempty"`
+	// traceId
+	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
 
 func (s EntitySetResponseBody) String() string {
@@ -8706,7 +8763,8 @@ type EstimatedPriceQueryResponseBody struct {
 	Module    *EstimatedPriceQueryResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
 	RequestId *string                                `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	Success   *bool                                  `json:"success,omitempty" xml:"success,omitempty"`
-	TraceId   *string                                `json:"traceId,omitempty" xml:"traceId,omitempty"`
+	// traceId
+	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
 
 func (s EstimatedPriceQueryResponseBody) String() string {
@@ -8853,8 +8911,9 @@ func (s *EstimatedPriceQueryResponseBodyModuleTrafficFee) SetSuccess(v bool) *Es
 }
 
 type EstimatedPriceQueryResponseBodyModuleTrafficFeeBtripRoutes struct {
-	ArrCity       *string                                                                  `json:"arr_city,omitempty" xml:"arr_city,omitempty"`
-	ArrDate       *int64                                                                   `json:"arr_date,omitempty" xml:"arr_date,omitempty"`
+	ArrCity *string `json:"arr_city,omitempty" xml:"arr_city,omitempty"`
+	ArrDate *int64  `json:"arr_date,omitempty" xml:"arr_date,omitempty"`
+	// cheapest
 	Cheapest      *EstimatedPriceQueryResponseBodyModuleTrafficFeeBtripRoutesCheapest      `json:"cheapest,omitempty" xml:"cheapest,omitempty" type:"Struct"`
 	DepCity       *string                                                                  `json:"dep_city,omitempty" xml:"dep_city,omitempty"`
 	DepDate       *int64                                                                   `json:"dep_date,omitempty" xml:"dep_date,omitempty"`
@@ -9099,8 +9158,9 @@ func (s *ExceedApplySyncRequest) SetUserId(v string) *ExceedApplySyncRequest {
 }
 
 type ExceedApplySyncResponseBody struct {
-	Code      *string `json:"code,omitempty" xml:"code,omitempty"`
-	Message   *string `json:"message,omitempty" xml:"message,omitempty"`
+	Code    *string `json:"code,omitempty" xml:"code,omitempty"`
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// module。
 	Module    *bool   `json:"module,omitempty" xml:"module,omitempty"`
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	Success   *bool   `json:"success,omitempty" xml:"success,omitempty"`
@@ -12930,12 +12990,15 @@ func (s *HotelOrderQueryRequest) SetOrderId(v int64) *HotelOrderQueryRequest {
 }
 
 type HotelOrderQueryResponseBody struct {
-	Code      *string                            `json:"code,omitempty" xml:"code,omitempty"`
-	Message   *string                            `json:"message,omitempty" xml:"message,omitempty"`
-	Module    *HotelOrderQueryResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
-	RequestId *string                            `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Success   *bool                              `json:"success,omitempty" xml:"success,omitempty"`
-	TraceId   *string                            `json:"traceId,omitempty" xml:"traceId,omitempty"`
+	Code    *string `json:"code,omitempty" xml:"code,omitempty"`
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// module。
+	Module *HotelOrderQueryResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
+	// requestId
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success   *bool   `json:"success,omitempty" xml:"success,omitempty"`
+	// traceId
+	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
 
 func (s HotelOrderQueryResponseBody) String() string {
@@ -14082,7 +14145,8 @@ type InvoiceAddResponseBody struct {
 	Message   *string `json:"message,omitempty" xml:"message,omitempty"`
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	Success   *bool   `json:"success,omitempty" xml:"success,omitempty"`
-	TraceId   *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
+	// traceId
+	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
 
 func (s InvoiceAddResponseBody) String() string {
@@ -14192,7 +14256,8 @@ type InvoiceDeleteResponseBody struct {
 	Message   *string `json:"message,omitempty" xml:"message,omitempty"`
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	Success   *bool   `json:"success,omitempty" xml:"success,omitempty"`
-	TraceId   *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
+	// traceId
+	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
 
 func (s InvoiceDeleteResponseBody) String() string {
@@ -14344,7 +14409,8 @@ type InvoiceModifyResponseBody struct {
 	Message   *string `json:"message,omitempty" xml:"message,omitempty"`
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	Success   *bool   `json:"success,omitempty" xml:"success,omitempty"`
-	TraceId   *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
+	// traceId
+	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
 
 func (s InvoiceModifyResponseBody) String() string {
@@ -14670,7 +14736,8 @@ type InvoiceSearchResponseBody struct {
 	Module    []*InvoiceSearchResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Repeated"`
 	RequestId *string                            `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	Success   *bool                              `json:"success,omitempty" xml:"success,omitempty"`
-	TraceId   *string                            `json:"traceId,omitempty" xml:"traceId,omitempty"`
+	// traceId
+	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
 
 func (s InvoiceSearchResponseBody) String() string {
@@ -14712,6 +14779,7 @@ func (s *InvoiceSearchResponseBody) SetTraceId(v string) *InvoiceSearchResponseB
 }
 
 type InvoiceSearchResponseBodyModule struct {
+	// ID
 	Id                 *int64  `json:"id,omitempty" xml:"id,omitempty"`
 	ThirdPartInvoiceId *string `json:"third_part_invoice_id,omitempty" xml:"third_part_invoice_id,omitempty"`
 	Title              *string `json:"title,omitempty" xml:"title,omitempty"`
@@ -14921,7 +14989,8 @@ type IsvUserSaveResponseBody struct {
 	Module    *string `json:"module,omitempty" xml:"module,omitempty"`
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	Success   *bool   `json:"success,omitempty" xml:"success,omitempty"`
-	TraceId   *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
+	// traceId
+	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
 
 func (s IsvUserSaveResponseBody) String() string {
@@ -18011,8 +18080,9 @@ func (s *TrainStationSearchRequest) SetKeyword(v string) *TrainStationSearchRequ
 }
 
 type TrainStationSearchResponseBody struct {
-	Code      *string                               `json:"code,omitempty" xml:"code,omitempty"`
-	Message   *string                               `json:"message,omitempty" xml:"message,omitempty"`
+	Code    *string `json:"code,omitempty" xml:"code,omitempty"`
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// module
 	Module    *TrainStationSearchResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
 	RequestId *string                               `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	Success   *bool                                 `json:"success,omitempty" xml:"success,omitempty"`
@@ -18190,7 +18260,8 @@ type UserQueryResponseBody struct {
 	Module    *UserQueryResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
 	RequestId *string                      `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	Success   *bool                        `json:"success,omitempty" xml:"success,omitempty"`
-	TraceId   *string                      `json:"traceId,omitempty" xml:"traceId,omitempty"`
+	// traceId
+	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
 
 func (s UserQueryResponseBody) String() string {
@@ -18371,18 +18442,6 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
-func (client *Client) AccessToken(request *AccessTokenRequest) (_result *AccessTokenResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &AccessTokenResponse{}
-	_body, _err := client.AccessTokenWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) AccessTokenWithOptions(request *AccessTokenRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *AccessTokenResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18421,11 +18480,11 @@ func (client *Client) AccessTokenWithOptions(request *AccessTokenRequest, header
 	return _result, _err
 }
 
-func (client *Client) AddressGet(request *AddressGetRequest) (_result *AddressGetResponse, _err error) {
+func (client *Client) AccessToken(request *AccessTokenRequest) (_result *AccessTokenResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &AddressGetHeaders{}
-	_result = &AddressGetResponse{}
-	_body, _err := client.AddressGetWithOptions(request, headers, runtime)
+	headers := make(map[string]*string)
+	_result = &AccessTokenResponse{}
+	_body, _err := client.AccessTokenWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -18492,11 +18551,11 @@ func (client *Client) AddressGetWithOptions(request *AddressGetRequest, headers 
 	return _result, _err
 }
 
-func (client *Client) AirportSearch(request *AirportSearchRequest) (_result *AirportSearchResponse, _err error) {
+func (client *Client) AddressGet(request *AddressGetRequest) (_result *AddressGetResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &AirportSearchHeaders{}
-	_result = &AirportSearchResponse{}
-	_body, _err := client.AirportSearchWithOptions(request, headers, runtime)
+	headers := &AddressGetHeaders{}
+	_result = &AddressGetResponse{}
+	_body, _err := client.AddressGetWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -18551,11 +18610,11 @@ func (client *Client) AirportSearchWithOptions(request *AirportSearchRequest, he
 	return _result, _err
 }
 
-func (client *Client) AllBaseCityInfoQuery() (_result *AllBaseCityInfoQueryResponse, _err error) {
+func (client *Client) AirportSearch(request *AirportSearchRequest) (_result *AirportSearchResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &AllBaseCityInfoQueryHeaders{}
-	_result = &AllBaseCityInfoQueryResponse{}
-	_body, _err := client.AllBaseCityInfoQueryWithOptions(headers, runtime)
+	headers := &AirportSearchHeaders{}
+	_result = &AirportSearchResponse{}
+	_body, _err := client.AirportSearchWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -18596,11 +18655,11 @@ func (client *Client) AllBaseCityInfoQueryWithOptions(headers *AllBaseCityInfoQu
 	return _result, _err
 }
 
-func (client *Client) ApplyAdd(request *ApplyAddRequest) (_result *ApplyAddResponse, _err error) {
+func (client *Client) AllBaseCityInfoQuery() (_result *AllBaseCityInfoQueryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &ApplyAddHeaders{}
-	_result = &ApplyAddResponse{}
-	_body, _err := client.ApplyAddWithOptions(request, headers, runtime)
+	headers := &AllBaseCityInfoQueryHeaders{}
+	_result = &AllBaseCityInfoQueryResponse{}
+	_body, _err := client.AllBaseCityInfoQueryWithOptions(headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -18803,11 +18862,11 @@ func (client *Client) ApplyAddWithOptions(tmpReq *ApplyAddRequest, headers *Appl
 	return _result, _err
 }
 
-func (client *Client) ApplyApprove(request *ApplyApproveRequest) (_result *ApplyApproveResponse, _err error) {
+func (client *Client) ApplyAdd(request *ApplyAddRequest) (_result *ApplyAddResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &ApplyApproveHeaders{}
-	_result = &ApplyApproveResponse{}
-	_body, _err := client.ApplyApproveWithOptions(request, headers, runtime)
+	headers := &ApplyAddHeaders{}
+	_result = &ApplyAddResponse{}
+	_body, _err := client.ApplyAddWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -18878,11 +18937,11 @@ func (client *Client) ApplyApproveWithOptions(request *ApplyApproveRequest, head
 	return _result, _err
 }
 
-func (client *Client) ApplyListQuery(request *ApplyListQueryRequest) (_result *ApplyListQueryResponse, _err error) {
+func (client *Client) ApplyApprove(request *ApplyApproveRequest) (_result *ApplyApproveResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &ApplyListQueryHeaders{}
-	_result = &ApplyListQueryResponse{}
-	_body, _err := client.ApplyListQueryWithOptions(request, headers, runtime)
+	headers := &ApplyApproveHeaders{}
+	_result = &ApplyApproveResponse{}
+	_body, _err := client.ApplyApproveWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -18973,11 +19032,11 @@ func (client *Client) ApplyListQueryWithOptions(request *ApplyListQueryRequest, 
 	return _result, _err
 }
 
-func (client *Client) ApplyModify(request *ApplyModifyRequest) (_result *ApplyModifyResponse, _err error) {
+func (client *Client) ApplyListQuery(request *ApplyListQueryRequest) (_result *ApplyListQueryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &ApplyModifyHeaders{}
-	_result = &ApplyModifyResponse{}
-	_body, _err := client.ApplyModifyWithOptions(request, headers, runtime)
+	headers := &ApplyListQueryHeaders{}
+	_result = &ApplyListQueryResponse{}
+	_body, _err := client.ApplyListQueryWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19170,11 +19229,11 @@ func (client *Client) ApplyModifyWithOptions(tmpReq *ApplyModifyRequest, headers
 	return _result, _err
 }
 
-func (client *Client) ApplyQuery(request *ApplyQueryRequest) (_result *ApplyQueryResponse, _err error) {
+func (client *Client) ApplyModify(request *ApplyModifyRequest) (_result *ApplyModifyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &ApplyQueryHeaders{}
-	_result = &ApplyQueryResponse{}
-	_body, _err := client.ApplyQueryWithOptions(request, headers, runtime)
+	headers := &ApplyModifyHeaders{}
+	_result = &ApplyModifyResponse{}
+	_body, _err := client.ApplyModifyWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19237,11 +19296,11 @@ func (client *Client) ApplyQueryWithOptions(request *ApplyQueryRequest, headers 
 	return _result, _err
 }
 
-func (client *Client) CarApplyAdd(request *CarApplyAddRequest) (_result *CarApplyAddResponse, _err error) {
+func (client *Client) ApplyQuery(request *ApplyQueryRequest) (_result *ApplyQueryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &CarApplyAddHeaders{}
-	_result = &CarApplyAddResponse{}
-	_body, _err := client.CarApplyAddWithOptions(request, headers, runtime)
+	headers := &ApplyQueryHeaders{}
+	_result = &ApplyQueryResponse{}
+	_body, _err := client.ApplyQueryWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19348,11 +19407,11 @@ func (client *Client) CarApplyAddWithOptions(request *CarApplyAddRequest, header
 	return _result, _err
 }
 
-func (client *Client) CarApplyModify(request *CarApplyModifyRequest) (_result *CarApplyModifyResponse, _err error) {
+func (client *Client) CarApplyAdd(request *CarApplyAddRequest) (_result *CarApplyAddResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &CarApplyModifyHeaders{}
-	_result = &CarApplyModifyResponse{}
-	_body, _err := client.CarApplyModifyWithOptions(request, headers, runtime)
+	headers := &CarApplyAddHeaders{}
+	_result = &CarApplyAddResponse{}
+	_body, _err := client.CarApplyAddWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19419,11 +19478,11 @@ func (client *Client) CarApplyModifyWithOptions(request *CarApplyModifyRequest, 
 	return _result, _err
 }
 
-func (client *Client) CarApplyQuery(request *CarApplyQueryRequest) (_result *CarApplyQueryResponse, _err error) {
+func (client *Client) CarApplyModify(request *CarApplyModifyRequest) (_result *CarApplyModifyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &CarApplyQueryHeaders{}
-	_result = &CarApplyQueryResponse{}
-	_body, _err := client.CarApplyQueryWithOptions(request, headers, runtime)
+	headers := &CarApplyModifyHeaders{}
+	_result = &CarApplyModifyResponse{}
+	_body, _err := client.CarApplyModifyWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19494,11 +19553,11 @@ func (client *Client) CarApplyQueryWithOptions(request *CarApplyQueryRequest, he
 	return _result, _err
 }
 
-func (client *Client) CarBillSettlementQuery(request *CarBillSettlementQueryRequest) (_result *CarBillSettlementQueryResponse, _err error) {
+func (client *Client) CarApplyQuery(request *CarApplyQueryRequest) (_result *CarApplyQueryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &CarBillSettlementQueryHeaders{}
-	_result = &CarBillSettlementQueryResponse{}
-	_body, _err := client.CarBillSettlementQueryWithOptions(request, headers, runtime)
+	headers := &CarApplyQueryHeaders{}
+	_result = &CarApplyQueryResponse{}
+	_body, _err := client.CarApplyQueryWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19561,11 +19620,11 @@ func (client *Client) CarBillSettlementQueryWithOptions(request *CarBillSettleme
 	return _result, _err
 }
 
-func (client *Client) CarOrderListQuery(request *CarOrderListQueryRequest) (_result *CarOrderListQueryResponse, _err error) {
+func (client *Client) CarBillSettlementQuery(request *CarBillSettlementQueryRequest) (_result *CarBillSettlementQueryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &CarOrderListQueryHeaders{}
-	_result = &CarOrderListQueryResponse{}
-	_body, _err := client.CarOrderListQueryWithOptions(request, headers, runtime)
+	headers := &CarBillSettlementQueryHeaders{}
+	_result = &CarBillSettlementQueryResponse{}
+	_body, _err := client.CarBillSettlementQueryWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19656,11 +19715,11 @@ func (client *Client) CarOrderListQueryWithOptions(request *CarOrderListQueryReq
 	return _result, _err
 }
 
-func (client *Client) CarOrderQuery(request *CarOrderQueryRequest) (_result *CarOrderQueryResponse, _err error) {
+func (client *Client) CarOrderListQuery(request *CarOrderListQueryRequest) (_result *CarOrderListQueryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &CarOrderQueryHeaders{}
-	_result = &CarOrderQueryResponse{}
-	_body, _err := client.CarOrderQueryWithOptions(request, headers, runtime)
+	headers := &CarOrderListQueryHeaders{}
+	_result = &CarOrderListQueryResponse{}
+	_body, _err := client.CarOrderListQueryWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19715,11 +19774,11 @@ func (client *Client) CarOrderQueryWithOptions(request *CarOrderQueryRequest, he
 	return _result, _err
 }
 
-func (client *Client) CitySearch(request *CitySearchRequest) (_result *CitySearchResponse, _err error) {
+func (client *Client) CarOrderQuery(request *CarOrderQueryRequest) (_result *CarOrderQueryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &CitySearchHeaders{}
-	_result = &CitySearchResponse{}
-	_body, _err := client.CitySearchWithOptions(request, headers, runtime)
+	headers := &CarOrderQueryHeaders{}
+	_result = &CarOrderQueryResponse{}
+	_body, _err := client.CarOrderQueryWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19770,11 +19829,11 @@ func (client *Client) CitySearchWithOptions(request *CitySearchRequest, headers 
 	return _result, _err
 }
 
-func (client *Client) CommonApplyQuery(request *CommonApplyQueryRequest) (_result *CommonApplyQueryResponse, _err error) {
+func (client *Client) CitySearch(request *CitySearchRequest) (_result *CitySearchResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &CommonApplyQueryHeaders{}
-	_result = &CommonApplyQueryResponse{}
-	_body, _err := client.CommonApplyQueryWithOptions(request, headers, runtime)
+	headers := &CitySearchHeaders{}
+	_result = &CitySearchResponse{}
+	_body, _err := client.CitySearchWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19833,11 +19892,11 @@ func (client *Client) CommonApplyQueryWithOptions(request *CommonApplyQueryReque
 	return _result, _err
 }
 
-func (client *Client) CommonApplySync(request *CommonApplySyncRequest) (_result *CommonApplySyncResponse, _err error) {
+func (client *Client) CommonApplyQuery(request *CommonApplyQueryRequest) (_result *CommonApplyQueryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &CommonApplySyncHeaders{}
-	_result = &CommonApplySyncResponse{}
-	_body, _err := client.CommonApplySyncWithOptions(request, headers, runtime)
+	headers := &CommonApplyQueryHeaders{}
+	_result = &CommonApplyQueryResponse{}
+	_body, _err := client.CommonApplyQueryWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19908,11 +19967,11 @@ func (client *Client) CommonApplySyncWithOptions(request *CommonApplySyncRequest
 	return _result, _err
 }
 
-func (client *Client) CorpToken(request *CorpTokenRequest) (_result *CorpTokenResponse, _err error) {
+func (client *Client) CommonApplySync(request *CommonApplySyncRequest) (_result *CommonApplySyncResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &CorpTokenHeaders{}
-	_result = &CorpTokenResponse{}
-	_body, _err := client.CorpTokenWithOptions(request, headers, runtime)
+	headers := &CommonApplySyncHeaders{}
+	_result = &CommonApplySyncResponse{}
+	_body, _err := client.CommonApplySyncWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19971,11 +20030,11 @@ func (client *Client) CorpTokenWithOptions(request *CorpTokenRequest, headers *C
 	return _result, _err
 }
 
-func (client *Client) CostCenterDelete(request *CostCenterDeleteRequest) (_result *CostCenterDeleteResponse, _err error) {
+func (client *Client) CorpToken(request *CorpTokenRequest) (_result *CorpTokenResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &CostCenterDeleteHeaders{}
-	_result = &CostCenterDeleteResponse{}
-	_body, _err := client.CostCenterDeleteWithOptions(request, headers, runtime)
+	headers := &CorpTokenHeaders{}
+	_result = &CorpTokenResponse{}
+	_body, _err := client.CorpTokenWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20026,11 +20085,11 @@ func (client *Client) CostCenterDeleteWithOptions(request *CostCenterDeleteReque
 	return _result, _err
 }
 
-func (client *Client) CostCenterModify(request *CostCenterModifyRequest) (_result *CostCenterModifyResponse, _err error) {
+func (client *Client) CostCenterDelete(request *CostCenterDeleteRequest) (_result *CostCenterDeleteResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &CostCenterModifyHeaders{}
-	_result = &CostCenterModifyResponse{}
-	_body, _err := client.CostCenterModifyWithOptions(request, headers, runtime)
+	headers := &CostCenterDeleteHeaders{}
+	_result = &CostCenterDeleteResponse{}
+	_body, _err := client.CostCenterDeleteWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20097,11 +20156,11 @@ func (client *Client) CostCenterModifyWithOptions(request *CostCenterModifyReque
 	return _result, _err
 }
 
-func (client *Client) CostCenterQuery(request *CostCenterQueryRequest) (_result *CostCenterQueryResponse, _err error) {
+func (client *Client) CostCenterModify(request *CostCenterModifyRequest) (_result *CostCenterModifyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &CostCenterQueryHeaders{}
-	_result = &CostCenterQueryResponse{}
-	_body, _err := client.CostCenterQueryWithOptions(request, headers, runtime)
+	headers := &CostCenterModifyHeaders{}
+	_result = &CostCenterModifyResponse{}
+	_body, _err := client.CostCenterModifyWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20164,11 +20223,11 @@ func (client *Client) CostCenterQueryWithOptions(request *CostCenterQueryRequest
 	return _result, _err
 }
 
-func (client *Client) CostCenterSave(request *CostCenterSaveRequest) (_result *CostCenterSaveResponse, _err error) {
+func (client *Client) CostCenterQuery(request *CostCenterQueryRequest) (_result *CostCenterQueryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &CostCenterSaveHeaders{}
-	_result = &CostCenterSaveResponse{}
-	_body, _err := client.CostCenterSaveWithOptions(request, headers, runtime)
+	headers := &CostCenterQueryHeaders{}
+	_result = &CostCenterQueryResponse{}
+	_body, _err := client.CostCenterQueryWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20235,11 +20294,11 @@ func (client *Client) CostCenterSaveWithOptions(request *CostCenterSaveRequest, 
 	return _result, _err
 }
 
-func (client *Client) DepartmentSave(request *DepartmentSaveRequest) (_result *DepartmentSaveResponse, _err error) {
+func (client *Client) CostCenterSave(request *CostCenterSaveRequest) (_result *CostCenterSaveResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &DepartmentSaveHeaders{}
-	_result = &DepartmentSaveResponse{}
-	_body, _err := client.DepartmentSaveWithOptions(request, headers, runtime)
+	headers := &CostCenterSaveHeaders{}
+	_result = &CostCenterSaveResponse{}
+	_body, _err := client.CostCenterSaveWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20296,11 +20355,11 @@ func (client *Client) DepartmentSaveWithOptions(tmpReq *DepartmentSaveRequest, h
 	return _result, _err
 }
 
-func (client *Client) EntityAdd(request *EntityAddRequest) (_result *EntityAddResponse, _err error) {
+func (client *Client) DepartmentSave(request *DepartmentSaveRequest) (_result *DepartmentSaveResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &EntityAddHeaders{}
-	_result = &EntityAddResponse{}
-	_body, _err := client.EntityAddWithOptions(request, headers, runtime)
+	headers := &DepartmentSaveHeaders{}
+	_result = &DepartmentSaveResponse{}
+	_body, _err := client.DepartmentSaveWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20361,11 +20420,11 @@ func (client *Client) EntityAddWithOptions(tmpReq *EntityAddRequest, headers *En
 	return _result, _err
 }
 
-func (client *Client) EntityDelete(request *EntityDeleteRequest) (_result *EntityDeleteResponse, _err error) {
+func (client *Client) EntityAdd(request *EntityAddRequest) (_result *EntityAddResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &EntityDeleteHeaders{}
-	_result = &EntityDeleteResponse{}
-	_body, _err := client.EntityDeleteWithOptions(request, headers, runtime)
+	headers := &EntityAddHeaders{}
+	_result = &EntityAddResponse{}
+	_body, _err := client.EntityAddWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20432,11 +20491,11 @@ func (client *Client) EntityDeleteWithOptions(tmpReq *EntityDeleteRequest, heade
 	return _result, _err
 }
 
-func (client *Client) EntitySet(request *EntitySetRequest) (_result *EntitySetResponse, _err error) {
+func (client *Client) EntityDelete(request *EntityDeleteRequest) (_result *EntityDeleteResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &EntitySetHeaders{}
-	_result = &EntitySetResponse{}
-	_body, _err := client.EntitySetWithOptions(request, headers, runtime)
+	headers := &EntityDeleteHeaders{}
+	_result = &EntityDeleteResponse{}
+	_body, _err := client.EntityDeleteWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20497,11 +20556,11 @@ func (client *Client) EntitySetWithOptions(tmpReq *EntitySetRequest, headers *En
 	return _result, _err
 }
 
-func (client *Client) EstimatedPriceQuery(request *EstimatedPriceQueryRequest) (_result *EstimatedPriceQueryResponse, _err error) {
+func (client *Client) EntitySet(request *EntitySetRequest) (_result *EntitySetResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &EstimatedPriceQueryHeaders{}
-	_result = &EstimatedPriceQueryResponse{}
-	_body, _err := client.EstimatedPriceQueryWithOptions(request, headers, runtime)
+	headers := &EntitySetHeaders{}
+	_result = &EntitySetResponse{}
+	_body, _err := client.EntitySetWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20576,11 +20635,11 @@ func (client *Client) EstimatedPriceQueryWithOptions(request *EstimatedPriceQuer
 	return _result, _err
 }
 
-func (client *Client) ExceedApplySync(request *ExceedApplySyncRequest) (_result *ExceedApplySyncResponse, _err error) {
+func (client *Client) EstimatedPriceQuery(request *EstimatedPriceQueryRequest) (_result *EstimatedPriceQueryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &ExceedApplySyncHeaders{}
-	_result = &ExceedApplySyncResponse{}
-	_body, _err := client.ExceedApplySyncWithOptions(request, headers, runtime)
+	headers := &EstimatedPriceQueryHeaders{}
+	_result = &EstimatedPriceQueryResponse{}
+	_body, _err := client.EstimatedPriceQueryWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20651,11 +20710,11 @@ func (client *Client) ExceedApplySyncWithOptions(request *ExceedApplySyncRequest
 	return _result, _err
 }
 
-func (client *Client) FlightBillSettlementQuery(request *FlightBillSettlementQueryRequest) (_result *FlightBillSettlementQueryResponse, _err error) {
+func (client *Client) ExceedApplySync(request *ExceedApplySyncRequest) (_result *ExceedApplySyncResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &FlightBillSettlementQueryHeaders{}
-	_result = &FlightBillSettlementQueryResponse{}
-	_body, _err := client.FlightBillSettlementQueryWithOptions(request, headers, runtime)
+	headers := &ExceedApplySyncHeaders{}
+	_result = &ExceedApplySyncResponse{}
+	_body, _err := client.ExceedApplySyncWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20718,11 +20777,11 @@ func (client *Client) FlightBillSettlementQueryWithOptions(request *FlightBillSe
 	return _result, _err
 }
 
-func (client *Client) FlightExceedApplyQuery(request *FlightExceedApplyQueryRequest) (_result *FlightExceedApplyQueryResponse, _err error) {
+func (client *Client) FlightBillSettlementQuery(request *FlightBillSettlementQueryRequest) (_result *FlightBillSettlementQueryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &FlightExceedApplyQueryHeaders{}
-	_result = &FlightExceedApplyQueryResponse{}
-	_body, _err := client.FlightExceedApplyQueryWithOptions(request, headers, runtime)
+	headers := &FlightBillSettlementQueryHeaders{}
+	_result = &FlightBillSettlementQueryResponse{}
+	_body, _err := client.FlightBillSettlementQueryWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20773,11 +20832,11 @@ func (client *Client) FlightExceedApplyQueryWithOptions(request *FlightExceedApp
 	return _result, _err
 }
 
-func (client *Client) FlightOrderListQuery(request *FlightOrderListQueryRequest) (_result *FlightOrderListQueryResponse, _err error) {
+func (client *Client) FlightExceedApplyQuery(request *FlightExceedApplyQueryRequest) (_result *FlightExceedApplyQueryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &FlightOrderListQueryHeaders{}
-	_result = &FlightOrderListQueryResponse{}
-	_body, _err := client.FlightOrderListQueryWithOptions(request, headers, runtime)
+	headers := &FlightExceedApplyQueryHeaders{}
+	_result = &FlightExceedApplyQueryResponse{}
+	_body, _err := client.FlightExceedApplyQueryWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20868,11 +20927,11 @@ func (client *Client) FlightOrderListQueryWithOptions(request *FlightOrderListQu
 	return _result, _err
 }
 
-func (client *Client) FlightOrderQuery(request *FlightOrderQueryRequest) (_result *FlightOrderQueryResponse, _err error) {
+func (client *Client) FlightOrderListQuery(request *FlightOrderListQueryRequest) (_result *FlightOrderListQueryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &FlightOrderQueryHeaders{}
-	_result = &FlightOrderQueryResponse{}
-	_body, _err := client.FlightOrderQueryWithOptions(request, headers, runtime)
+	headers := &FlightOrderListQueryHeaders{}
+	_result = &FlightOrderListQueryResponse{}
+	_body, _err := client.FlightOrderListQueryWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20927,11 +20986,11 @@ func (client *Client) FlightOrderQueryWithOptions(request *FlightOrderQueryReque
 	return _result, _err
 }
 
-func (client *Client) HotelBillSettlementQuery(request *HotelBillSettlementQueryRequest) (_result *HotelBillSettlementQueryResponse, _err error) {
+func (client *Client) FlightOrderQuery(request *FlightOrderQueryRequest) (_result *FlightOrderQueryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &HotelBillSettlementQueryHeaders{}
-	_result = &HotelBillSettlementQueryResponse{}
-	_body, _err := client.HotelBillSettlementQueryWithOptions(request, headers, runtime)
+	headers := &FlightOrderQueryHeaders{}
+	_result = &FlightOrderQueryResponse{}
+	_body, _err := client.FlightOrderQueryWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20994,11 +21053,11 @@ func (client *Client) HotelBillSettlementQueryWithOptions(request *HotelBillSett
 	return _result, _err
 }
 
-func (client *Client) HotelExceedApplyQuery(request *HotelExceedApplyQueryRequest) (_result *HotelExceedApplyQueryResponse, _err error) {
+func (client *Client) HotelBillSettlementQuery(request *HotelBillSettlementQueryRequest) (_result *HotelBillSettlementQueryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &HotelExceedApplyQueryHeaders{}
-	_result = &HotelExceedApplyQueryResponse{}
-	_body, _err := client.HotelExceedApplyQueryWithOptions(request, headers, runtime)
+	headers := &HotelBillSettlementQueryHeaders{}
+	_result = &HotelBillSettlementQueryResponse{}
+	_body, _err := client.HotelBillSettlementQueryWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21049,11 +21108,11 @@ func (client *Client) HotelExceedApplyQueryWithOptions(request *HotelExceedApply
 	return _result, _err
 }
 
-func (client *Client) HotelOrderListQuery(request *HotelOrderListQueryRequest) (_result *HotelOrderListQueryResponse, _err error) {
+func (client *Client) HotelExceedApplyQuery(request *HotelExceedApplyQueryRequest) (_result *HotelExceedApplyQueryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &HotelOrderListQueryHeaders{}
-	_result = &HotelOrderListQueryResponse{}
-	_body, _err := client.HotelOrderListQueryWithOptions(request, headers, runtime)
+	headers := &HotelExceedApplyQueryHeaders{}
+	_result = &HotelExceedApplyQueryResponse{}
+	_body, _err := client.HotelExceedApplyQueryWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21144,11 +21203,11 @@ func (client *Client) HotelOrderListQueryWithOptions(request *HotelOrderListQuer
 	return _result, _err
 }
 
-func (client *Client) HotelOrderQuery(request *HotelOrderQueryRequest) (_result *HotelOrderQueryResponse, _err error) {
+func (client *Client) HotelOrderListQuery(request *HotelOrderListQueryRequest) (_result *HotelOrderListQueryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &HotelOrderQueryHeaders{}
-	_result = &HotelOrderQueryResponse{}
-	_body, _err := client.HotelOrderQueryWithOptions(request, headers, runtime)
+	headers := &HotelOrderListQueryHeaders{}
+	_result = &HotelOrderListQueryResponse{}
+	_body, _err := client.HotelOrderListQueryWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21199,11 +21258,11 @@ func (client *Client) HotelOrderQueryWithOptions(request *HotelOrderQueryRequest
 	return _result, _err
 }
 
-func (client *Client) IeFlightBillSettlementQuery(request *IeFlightBillSettlementQueryRequest) (_result *IeFlightBillSettlementQueryResponse, _err error) {
+func (client *Client) HotelOrderQuery(request *HotelOrderQueryRequest) (_result *HotelOrderQueryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &IeFlightBillSettlementQueryHeaders{}
-	_result = &IeFlightBillSettlementQueryResponse{}
-	_body, _err := client.IeFlightBillSettlementQueryWithOptions(request, headers, runtime)
+	headers := &HotelOrderQueryHeaders{}
+	_result = &HotelOrderQueryResponse{}
+	_body, _err := client.HotelOrderQueryWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21266,11 +21325,11 @@ func (client *Client) IeFlightBillSettlementQueryWithOptions(request *IeFlightBi
 	return _result, _err
 }
 
-func (client *Client) InvoiceAdd(request *InvoiceAddRequest) (_result *InvoiceAddResponse, _err error) {
+func (client *Client) IeFlightBillSettlementQuery(request *IeFlightBillSettlementQueryRequest) (_result *IeFlightBillSettlementQueryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &InvoiceAddHeaders{}
-	_result = &InvoiceAddResponse{}
-	_body, _err := client.InvoiceAddWithOptions(request, headers, runtime)
+	headers := &IeFlightBillSettlementQueryHeaders{}
+	_result = &IeFlightBillSettlementQueryResponse{}
+	_body, _err := client.IeFlightBillSettlementQueryWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21349,11 +21408,11 @@ func (client *Client) InvoiceAddWithOptions(request *InvoiceAddRequest, headers 
 	return _result, _err
 }
 
-func (client *Client) InvoiceDelete(request *InvoiceDeleteRequest) (_result *InvoiceDeleteResponse, _err error) {
+func (client *Client) InvoiceAdd(request *InvoiceAddRequest) (_result *InvoiceAddResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &InvoiceDeleteHeaders{}
-	_result = &InvoiceDeleteResponse{}
-	_body, _err := client.InvoiceDeleteWithOptions(request, headers, runtime)
+	headers := &InvoiceAddHeaders{}
+	_result = &InvoiceAddResponse{}
+	_body, _err := client.InvoiceAddWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21404,11 +21463,11 @@ func (client *Client) InvoiceDeleteWithOptions(request *InvoiceDeleteRequest, he
 	return _result, _err
 }
 
-func (client *Client) InvoiceModify(request *InvoiceModifyRequest) (_result *InvoiceModifyResponse, _err error) {
+func (client *Client) InvoiceDelete(request *InvoiceDeleteRequest) (_result *InvoiceDeleteResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &InvoiceModifyHeaders{}
-	_result = &InvoiceModifyResponse{}
-	_body, _err := client.InvoiceModifyWithOptions(request, headers, runtime)
+	headers := &InvoiceDeleteHeaders{}
+	_result = &InvoiceDeleteResponse{}
+	_body, _err := client.InvoiceDeleteWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21487,11 +21546,11 @@ func (client *Client) InvoiceModifyWithOptions(request *InvoiceModifyRequest, he
 	return _result, _err
 }
 
-func (client *Client) InvoiceRuleSave(request *InvoiceRuleSaveRequest) (_result *InvoiceRuleSaveResponse, _err error) {
+func (client *Client) InvoiceModify(request *InvoiceModifyRequest) (_result *InvoiceModifyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &InvoiceRuleSaveHeaders{}
-	_result = &InvoiceRuleSaveResponse{}
-	_body, _err := client.InvoiceRuleSaveWithOptions(request, headers, runtime)
+	headers := &InvoiceModifyHeaders{}
+	_result = &InvoiceModifyResponse{}
+	_body, _err := client.InvoiceModifyWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21556,11 +21615,11 @@ func (client *Client) InvoiceRuleSaveWithOptions(tmpReq *InvoiceRuleSaveRequest,
 	return _result, _err
 }
 
-func (client *Client) InvoiceSearch(request *InvoiceSearchRequest) (_result *InvoiceSearchResponse, _err error) {
+func (client *Client) InvoiceRuleSave(request *InvoiceRuleSaveRequest) (_result *InvoiceRuleSaveResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &InvoiceSearchHeaders{}
-	_result = &InvoiceSearchResponse{}
-	_body, _err := client.InvoiceSearchWithOptions(request, headers, runtime)
+	headers := &InvoiceRuleSaveHeaders{}
+	_result = &InvoiceRuleSaveResponse{}
+	_body, _err := client.InvoiceRuleSaveWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21615,11 +21674,11 @@ func (client *Client) InvoiceSearchWithOptions(request *InvoiceSearchRequest, he
 	return _result, _err
 }
 
-func (client *Client) IsvUserSave(request *IsvUserSaveRequest) (_result *IsvUserSaveResponse, _err error) {
+func (client *Client) InvoiceSearch(request *InvoiceSearchRequest) (_result *InvoiceSearchResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &IsvUserSaveHeaders{}
-	_result = &IsvUserSaveResponse{}
-	_body, _err := client.IsvUserSaveWithOptions(request, headers, runtime)
+	headers := &InvoiceSearchHeaders{}
+	_result = &InvoiceSearchResponse{}
+	_body, _err := client.InvoiceSearchWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21676,11 +21735,11 @@ func (client *Client) IsvUserSaveWithOptions(tmpReq *IsvUserSaveRequest, headers
 	return _result, _err
 }
 
-func (client *Client) MonthBillGet(request *MonthBillGetRequest) (_result *MonthBillGetResponse, _err error) {
+func (client *Client) IsvUserSave(request *IsvUserSaveRequest) (_result *IsvUserSaveResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &MonthBillGetHeaders{}
-	_result = &MonthBillGetResponse{}
-	_body, _err := client.MonthBillGetWithOptions(request, headers, runtime)
+	headers := &IsvUserSaveHeaders{}
+	_result = &IsvUserSaveResponse{}
+	_body, _err := client.IsvUserSaveWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21731,11 +21790,11 @@ func (client *Client) MonthBillGetWithOptions(request *MonthBillGetRequest, head
 	return _result, _err
 }
 
-func (client *Client) ProjectAdd(request *ProjectAddRequest) (_result *ProjectAddResponse, _err error) {
+func (client *Client) MonthBillGet(request *MonthBillGetRequest) (_result *MonthBillGetResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &ProjectAddHeaders{}
-	_result = &ProjectAddResponse{}
-	_body, _err := client.ProjectAddWithOptions(request, headers, runtime)
+	headers := &MonthBillGetHeaders{}
+	_result = &MonthBillGetResponse{}
+	_body, _err := client.MonthBillGetWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21802,11 +21861,11 @@ func (client *Client) ProjectAddWithOptions(request *ProjectAddRequest, headers 
 	return _result, _err
 }
 
-func (client *Client) ProjectDelete(request *ProjectDeleteRequest) (_result *ProjectDeleteResponse, _err error) {
+func (client *Client) ProjectAdd(request *ProjectAddRequest) (_result *ProjectAddResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &ProjectDeleteHeaders{}
-	_result = &ProjectDeleteResponse{}
-	_body, _err := client.ProjectDeleteWithOptions(request, headers, runtime)
+	headers := &ProjectAddHeaders{}
+	_result = &ProjectAddResponse{}
+	_body, _err := client.ProjectAddWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21857,11 +21916,11 @@ func (client *Client) ProjectDeleteWithOptions(request *ProjectDeleteRequest, he
 	return _result, _err
 }
 
-func (client *Client) ProjectModify(request *ProjectModifyRequest) (_result *ProjectModifyResponse, _err error) {
+func (client *Client) ProjectDelete(request *ProjectDeleteRequest) (_result *ProjectDeleteResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &ProjectModifyHeaders{}
-	_result = &ProjectModifyResponse{}
-	_body, _err := client.ProjectModifyWithOptions(request, headers, runtime)
+	headers := &ProjectDeleteHeaders{}
+	_result = &ProjectDeleteResponse{}
+	_body, _err := client.ProjectDeleteWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21928,11 +21987,11 @@ func (client *Client) ProjectModifyWithOptions(request *ProjectModifyRequest, he
 	return _result, _err
 }
 
-func (client *Client) SyncSingleUser(request *SyncSingleUserRequest) (_result *SyncSingleUserResponse, _err error) {
+func (client *Client) ProjectModify(request *ProjectModifyRequest) (_result *ProjectModifyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &SyncSingleUserHeaders{}
-	_result = &SyncSingleUserResponse{}
-	_body, _err := client.SyncSingleUserWithOptions(request, headers, runtime)
+	headers := &ProjectModifyHeaders{}
+	_result = &ProjectModifyResponse{}
+	_body, _err := client.ProjectModifyWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -22029,11 +22088,11 @@ func (client *Client) SyncSingleUserWithOptions(tmpReq *SyncSingleUserRequest, h
 	return _result, _err
 }
 
-func (client *Client) TrainBillSettlementQuery(request *TrainBillSettlementQueryRequest) (_result *TrainBillSettlementQueryResponse, _err error) {
+func (client *Client) SyncSingleUser(request *SyncSingleUserRequest) (_result *SyncSingleUserResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &TrainBillSettlementQueryHeaders{}
-	_result = &TrainBillSettlementQueryResponse{}
-	_body, _err := client.TrainBillSettlementQueryWithOptions(request, headers, runtime)
+	headers := &SyncSingleUserHeaders{}
+	_result = &SyncSingleUserResponse{}
+	_body, _err := client.SyncSingleUserWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -22096,11 +22155,11 @@ func (client *Client) TrainBillSettlementQueryWithOptions(request *TrainBillSett
 	return _result, _err
 }
 
-func (client *Client) TrainExceedApplyQuery(request *TrainExceedApplyQueryRequest) (_result *TrainExceedApplyQueryResponse, _err error) {
+func (client *Client) TrainBillSettlementQuery(request *TrainBillSettlementQueryRequest) (_result *TrainBillSettlementQueryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &TrainExceedApplyQueryHeaders{}
-	_result = &TrainExceedApplyQueryResponse{}
-	_body, _err := client.TrainExceedApplyQueryWithOptions(request, headers, runtime)
+	headers := &TrainBillSettlementQueryHeaders{}
+	_result = &TrainBillSettlementQueryResponse{}
+	_body, _err := client.TrainBillSettlementQueryWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -22151,11 +22210,11 @@ func (client *Client) TrainExceedApplyQueryWithOptions(request *TrainExceedApply
 	return _result, _err
 }
 
-func (client *Client) TrainOrderListQuery(request *TrainOrderListQueryRequest) (_result *TrainOrderListQueryResponse, _err error) {
+func (client *Client) TrainExceedApplyQuery(request *TrainExceedApplyQueryRequest) (_result *TrainExceedApplyQueryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &TrainOrderListQueryHeaders{}
-	_result = &TrainOrderListQueryResponse{}
-	_body, _err := client.TrainOrderListQueryWithOptions(request, headers, runtime)
+	headers := &TrainExceedApplyQueryHeaders{}
+	_result = &TrainExceedApplyQueryResponse{}
+	_body, _err := client.TrainExceedApplyQueryWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -22246,11 +22305,11 @@ func (client *Client) TrainOrderListQueryWithOptions(request *TrainOrderListQuer
 	return _result, _err
 }
 
-func (client *Client) TrainOrderQuery(request *TrainOrderQueryRequest) (_result *TrainOrderQueryResponse, _err error) {
+func (client *Client) TrainOrderListQuery(request *TrainOrderListQueryRequest) (_result *TrainOrderListQueryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &TrainOrderQueryHeaders{}
-	_result = &TrainOrderQueryResponse{}
-	_body, _err := client.TrainOrderQueryWithOptions(request, headers, runtime)
+	headers := &TrainOrderListQueryHeaders{}
+	_result = &TrainOrderListQueryResponse{}
+	_body, _err := client.TrainOrderListQueryWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -22305,11 +22364,11 @@ func (client *Client) TrainOrderQueryWithOptions(request *TrainOrderQueryRequest
 	return _result, _err
 }
 
-func (client *Client) TrainStationSearch(request *TrainStationSearchRequest) (_result *TrainStationSearchResponse, _err error) {
+func (client *Client) TrainOrderQuery(request *TrainOrderQueryRequest) (_result *TrainOrderQueryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &TrainStationSearchHeaders{}
-	_result = &TrainStationSearchResponse{}
-	_body, _err := client.TrainStationSearchWithOptions(request, headers, runtime)
+	headers := &TrainOrderQueryHeaders{}
+	_result = &TrainOrderQueryResponse{}
+	_body, _err := client.TrainOrderQueryWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -22360,11 +22419,11 @@ func (client *Client) TrainStationSearchWithOptions(request *TrainStationSearchR
 	return _result, _err
 }
 
-func (client *Client) UserQuery(request *UserQueryRequest) (_result *UserQueryResponse, _err error) {
+func (client *Client) TrainStationSearch(request *TrainStationSearchRequest) (_result *TrainStationSearchResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &UserQueryHeaders{}
-	_result = &UserQueryResponse{}
-	_body, _err := client.UserQueryWithOptions(request, headers, runtime)
+	headers := &TrainStationSearchHeaders{}
+	_result = &TrainStationSearchResponse{}
+	_body, _err := client.TrainStationSearchWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -22424,5 +22483,17 @@ func (client *Client) UserQueryWithOptions(request *UserQueryRequest, headers *U
 		return _result, _err
 	}
 	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UserQuery(request *UserQueryRequest) (_result *UserQueryResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &UserQueryHeaders{}
+	_result = &UserQueryResponse{}
+	_body, _err := client.UserQueryWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
 	return _result, _err
 }
