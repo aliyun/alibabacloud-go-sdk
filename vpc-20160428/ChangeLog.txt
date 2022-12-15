@@ -1,3 +1,10 @@
+2022-12-15 Version: v2.0.13
+- Change DeleteFullNatEntry timeout.
+- Add error code.
+- Add error code for DeleteFullNatEntry.
+- Fix error message.
+- Fixed wrong char.
+
 2022-12-09 Version: v2.0.12
 - Add error code.
 - Fix createVBR error message.

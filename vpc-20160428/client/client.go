@@ -3505,6 +3505,87 @@ func (s *CancelPhysicalConnectionResponse) SetBody(v *CancelPhysicalConnectionRe
 	return s
 }
 
+type ChangeResourceGroupRequest struct {
+	NewResourceGroupId *string `json:"NewResourceGroupId,omitempty" xml:"NewResourceGroupId,omitempty"`
+	RegionId           *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceId         *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	ResourceType       *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+}
+
+func (s ChangeResourceGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ChangeResourceGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ChangeResourceGroupRequest) SetNewResourceGroupId(v string) *ChangeResourceGroupRequest {
+	s.NewResourceGroupId = &v
+	return s
+}
+
+func (s *ChangeResourceGroupRequest) SetRegionId(v string) *ChangeResourceGroupRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ChangeResourceGroupRequest) SetResourceId(v string) *ChangeResourceGroupRequest {
+	s.ResourceId = &v
+	return s
+}
+
+func (s *ChangeResourceGroupRequest) SetResourceType(v string) *ChangeResourceGroupRequest {
+	s.ResourceType = &v
+	return s
+}
+
+type ChangeResourceGroupResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ChangeResourceGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ChangeResourceGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ChangeResourceGroupResponseBody) SetRequestId(v string) *ChangeResourceGroupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ChangeResourceGroupResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ChangeResourceGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ChangeResourceGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ChangeResourceGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ChangeResourceGroupResponse) SetHeaders(v map[string]*string) *ChangeResourceGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ChangeResourceGroupResponse) SetStatusCode(v int32) *ChangeResourceGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ChangeResourceGroupResponse) SetBody(v *ChangeResourceGroupResponseBody) *ChangeResourceGroupResponse {
+	s.Body = v
+	return s
+}
+
 type CheckCanAllocateVpcPrivateIpAddressRequest struct {
 	IpVersion            *string `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
@@ -29508,6 +29589,175 @@ func (s *DescribeSslVpnServersResponse) SetBody(v *DescribeSslVpnServersResponse
 	return s
 }
 
+type DescribeTagKeysForExpressConnectRequest struct {
+	Keyword              *string   `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	MaxResult            *int32    `json:"MaxResult,omitempty" xml:"MaxResult,omitempty"`
+	NextToken            *string   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	OwnerAccount         *string   `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId             *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceId           []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	ResourceType         *string   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+}
+
+func (s DescribeTagKeysForExpressConnectRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeTagKeysForExpressConnectRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeTagKeysForExpressConnectRequest) SetKeyword(v string) *DescribeTagKeysForExpressConnectRequest {
+	s.Keyword = &v
+	return s
+}
+
+func (s *DescribeTagKeysForExpressConnectRequest) SetMaxResult(v int32) *DescribeTagKeysForExpressConnectRequest {
+	s.MaxResult = &v
+	return s
+}
+
+func (s *DescribeTagKeysForExpressConnectRequest) SetNextToken(v string) *DescribeTagKeysForExpressConnectRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *DescribeTagKeysForExpressConnectRequest) SetOwnerAccount(v string) *DescribeTagKeysForExpressConnectRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *DescribeTagKeysForExpressConnectRequest) SetOwnerId(v int64) *DescribeTagKeysForExpressConnectRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribeTagKeysForExpressConnectRequest) SetRegionId(v string) *DescribeTagKeysForExpressConnectRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeTagKeysForExpressConnectRequest) SetResourceId(v []*string) *DescribeTagKeysForExpressConnectRequest {
+	s.ResourceId = v
+	return s
+}
+
+func (s *DescribeTagKeysForExpressConnectRequest) SetResourceOwnerAccount(v string) *DescribeTagKeysForExpressConnectRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *DescribeTagKeysForExpressConnectRequest) SetResourceOwnerId(v int64) *DescribeTagKeysForExpressConnectRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *DescribeTagKeysForExpressConnectRequest) SetResourceType(v string) *DescribeTagKeysForExpressConnectRequest {
+	s.ResourceType = &v
+	return s
+}
+
+type DescribeTagKeysForExpressConnectResponseBody struct {
+	NextToken *string                                              `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RequestId *string                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TagKeys   *DescribeTagKeysForExpressConnectResponseBodyTagKeys `json:"TagKeys,omitempty" xml:"TagKeys,omitempty" type:"Struct"`
+}
+
+func (s DescribeTagKeysForExpressConnectResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeTagKeysForExpressConnectResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeTagKeysForExpressConnectResponseBody) SetNextToken(v string) *DescribeTagKeysForExpressConnectResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *DescribeTagKeysForExpressConnectResponseBody) SetRequestId(v string) *DescribeTagKeysForExpressConnectResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeTagKeysForExpressConnectResponseBody) SetTagKeys(v *DescribeTagKeysForExpressConnectResponseBodyTagKeys) *DescribeTagKeysForExpressConnectResponseBody {
+	s.TagKeys = v
+	return s
+}
+
+type DescribeTagKeysForExpressConnectResponseBodyTagKeys struct {
+	TagKey []*DescribeTagKeysForExpressConnectResponseBodyTagKeysTagKey `json:"TagKey,omitempty" xml:"TagKey,omitempty" type:"Repeated"`
+}
+
+func (s DescribeTagKeysForExpressConnectResponseBodyTagKeys) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeTagKeysForExpressConnectResponseBodyTagKeys) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeTagKeysForExpressConnectResponseBodyTagKeys) SetTagKey(v []*DescribeTagKeysForExpressConnectResponseBodyTagKeysTagKey) *DescribeTagKeysForExpressConnectResponseBodyTagKeys {
+	s.TagKey = v
+	return s
+}
+
+type DescribeTagKeysForExpressConnectResponseBodyTagKeysTagKey struct {
+	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	Type   *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s DescribeTagKeysForExpressConnectResponseBodyTagKeysTagKey) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeTagKeysForExpressConnectResponseBodyTagKeysTagKey) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeTagKeysForExpressConnectResponseBodyTagKeysTagKey) SetTagKey(v string) *DescribeTagKeysForExpressConnectResponseBodyTagKeysTagKey {
+	s.TagKey = &v
+	return s
+}
+
+func (s *DescribeTagKeysForExpressConnectResponseBodyTagKeysTagKey) SetType(v string) *DescribeTagKeysForExpressConnectResponseBodyTagKeysTagKey {
+	s.Type = &v
+	return s
+}
+
+type DescribeTagKeysForExpressConnectResponse struct {
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeTagKeysForExpressConnectResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeTagKeysForExpressConnectResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeTagKeysForExpressConnectResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeTagKeysForExpressConnectResponse) SetHeaders(v map[string]*string) *DescribeTagKeysForExpressConnectResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeTagKeysForExpressConnectResponse) SetStatusCode(v int32) *DescribeTagKeysForExpressConnectResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeTagKeysForExpressConnectResponse) SetBody(v *DescribeTagKeysForExpressConnectResponseBody) *DescribeTagKeysForExpressConnectResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeVRoutersRequest struct {
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -31220,6 +31470,7 @@ func (s *DescribeVirtualBorderRoutersResponse) SetBody(v *DescribeVirtualBorderR
 }
 
 type DescribeVirtualBorderRoutersForPhysicalConnectionRequest struct {
+	// 25425
 	Filter               []*DescribeVirtualBorderRoutersForPhysicalConnectionRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Repeated"`
 	OwnerId              *int64                                                            `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	PageNumber           *int32                                                            `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
@@ -38599,6 +38850,128 @@ func (s *GrantInstanceToVbrResponse) SetBody(v *GrantInstanceToVbrResponseBody) 
 	return s
 }
 
+type ListBusinessAccessPointsRequest struct {
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s ListBusinessAccessPointsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListBusinessAccessPointsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListBusinessAccessPointsRequest) SetRegionId(v string) *ListBusinessAccessPointsRequest {
+	s.RegionId = &v
+	return s
+}
+
+type ListBusinessAccessPointsResponseBody struct {
+	BusinessAccessPoints []*ListBusinessAccessPointsResponseBodyBusinessAccessPoints `json:"BusinessAccessPoints,omitempty" xml:"BusinessAccessPoints,omitempty" type:"Repeated"`
+	RequestId            *string                                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListBusinessAccessPointsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListBusinessAccessPointsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListBusinessAccessPointsResponseBody) SetBusinessAccessPoints(v []*ListBusinessAccessPointsResponseBodyBusinessAccessPoints) *ListBusinessAccessPointsResponseBody {
+	s.BusinessAccessPoints = v
+	return s
+}
+
+func (s *ListBusinessAccessPointsResponseBody) SetRequestId(v string) *ListBusinessAccessPointsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListBusinessAccessPointsResponseBodyBusinessAccessPoints struct {
+	AccessPointId       *string  `json:"AccessPointId,omitempty" xml:"AccessPointId,omitempty"`
+	AccessPointName     *string  `json:"AccessPointName,omitempty" xml:"AccessPointName,omitempty"`
+	CloudBoxInstanceIds *string  `json:"CloudBoxInstanceIds,omitempty" xml:"CloudBoxInstanceIds,omitempty"`
+	Latitude            *float64 `json:"Latitude,omitempty" xml:"Latitude,omitempty"`
+	Longitude           *float64 `json:"Longitude,omitempty" xml:"Longitude,omitempty"`
+	SupportLineOperator *string  `json:"SupportLineOperator,omitempty" xml:"SupportLineOperator,omitempty"`
+	SupportPortTypes    *string  `json:"SupportPortTypes,omitempty" xml:"SupportPortTypes,omitempty"`
+}
+
+func (s ListBusinessAccessPointsResponseBodyBusinessAccessPoints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListBusinessAccessPointsResponseBodyBusinessAccessPoints) GoString() string {
+	return s.String()
+}
+
+func (s *ListBusinessAccessPointsResponseBodyBusinessAccessPoints) SetAccessPointId(v string) *ListBusinessAccessPointsResponseBodyBusinessAccessPoints {
+	s.AccessPointId = &v
+	return s
+}
+
+func (s *ListBusinessAccessPointsResponseBodyBusinessAccessPoints) SetAccessPointName(v string) *ListBusinessAccessPointsResponseBodyBusinessAccessPoints {
+	s.AccessPointName = &v
+	return s
+}
+
+func (s *ListBusinessAccessPointsResponseBodyBusinessAccessPoints) SetCloudBoxInstanceIds(v string) *ListBusinessAccessPointsResponseBodyBusinessAccessPoints {
+	s.CloudBoxInstanceIds = &v
+	return s
+}
+
+func (s *ListBusinessAccessPointsResponseBodyBusinessAccessPoints) SetLatitude(v float64) *ListBusinessAccessPointsResponseBodyBusinessAccessPoints {
+	s.Latitude = &v
+	return s
+}
+
+func (s *ListBusinessAccessPointsResponseBodyBusinessAccessPoints) SetLongitude(v float64) *ListBusinessAccessPointsResponseBodyBusinessAccessPoints {
+	s.Longitude = &v
+	return s
+}
+
+func (s *ListBusinessAccessPointsResponseBodyBusinessAccessPoints) SetSupportLineOperator(v string) *ListBusinessAccessPointsResponseBodyBusinessAccessPoints {
+	s.SupportLineOperator = &v
+	return s
+}
+
+func (s *ListBusinessAccessPointsResponseBodyBusinessAccessPoints) SetSupportPortTypes(v string) *ListBusinessAccessPointsResponseBodyBusinessAccessPoints {
+	s.SupportPortTypes = &v
+	return s
+}
+
+type ListBusinessAccessPointsResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListBusinessAccessPointsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListBusinessAccessPointsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListBusinessAccessPointsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListBusinessAccessPointsResponse) SetHeaders(v map[string]*string) *ListBusinessAccessPointsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListBusinessAccessPointsResponse) SetStatusCode(v int32) *ListBusinessAccessPointsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListBusinessAccessPointsResponse) SetBody(v *ListBusinessAccessPointsResponseBody) *ListBusinessAccessPointsResponse {
+	s.Body = v
+	return s
+}
+
 type ListDhcpOptionsSetsRequest struct {
 	DhcpOptionsSetId     []*string `json:"DhcpOptionsSetId,omitempty" xml:"DhcpOptionsSetId,omitempty" type:"Repeated"`
 	DhcpOptionsSetName   *string   `json:"DhcpOptionsSetName,omitempty" xml:"DhcpOptionsSetName,omitempty"`
@@ -39417,6 +39790,64 @@ func (s *ListGatewayRouteTableEntriesResponse) SetStatusCode(v int32) *ListGatew
 }
 
 func (s *ListGatewayRouteTableEntriesResponse) SetBody(v *ListGatewayRouteTableEntriesResponseBody) *ListGatewayRouteTableEntriesResponse {
+	s.Body = v
+	return s
+}
+
+type ListGeographicSubRegionsResponseBody struct {
+	Count                *int64    `json:"Count,omitempty" xml:"Count,omitempty"`
+	GeographicSubRegions []*string `json:"GeographicSubRegions,omitempty" xml:"GeographicSubRegions,omitempty" type:"Repeated"`
+	RequestId            *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListGeographicSubRegionsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListGeographicSubRegionsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListGeographicSubRegionsResponseBody) SetCount(v int64) *ListGeographicSubRegionsResponseBody {
+	s.Count = &v
+	return s
+}
+
+func (s *ListGeographicSubRegionsResponseBody) SetGeographicSubRegions(v []*string) *ListGeographicSubRegionsResponseBody {
+	s.GeographicSubRegions = v
+	return s
+}
+
+func (s *ListGeographicSubRegionsResponseBody) SetRequestId(v string) *ListGeographicSubRegionsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListGeographicSubRegionsResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListGeographicSubRegionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListGeographicSubRegionsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListGeographicSubRegionsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListGeographicSubRegionsResponse) SetHeaders(v map[string]*string) *ListGeographicSubRegionsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListGeographicSubRegionsResponse) SetStatusCode(v int32) *ListGeographicSubRegionsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListGeographicSubRegionsResponse) SetBody(v *ListGeographicSubRegionsResponseBody) *ListGeographicSubRegionsResponse {
 	s.Body = v
 	return s
 }
@@ -57328,6 +57759,62 @@ func (client *Client) CancelPhysicalConnection(request *CancelPhysicalConnection
 	return _result, _err
 }
 
+func (client *Client) ChangeResourceGroupWithOptions(request *ChangeResourceGroupRequest, runtime *util.RuntimeOptions) (_result *ChangeResourceGroupResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.NewResourceGroupId)) {
+		query["NewResourceGroupId"] = request.NewResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
+		query["ResourceId"] = request.ResourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ChangeResourceGroup"),
+		Version:     tea.String("2016-04-28"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ChangeResourceGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ChangeResourceGroup(request *ChangeResourceGroupRequest) (_result *ChangeResourceGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ChangeResourceGroupResponse{}
+	_body, _err := client.ChangeResourceGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) CheckCanAllocateVpcPrivateIpAddressWithOptions(request *CheckCanAllocateVpcPrivateIpAddressRequest, runtime *util.RuntimeOptions) (_result *CheckCanAllocateVpcPrivateIpAddressResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -69624,6 +70111,86 @@ func (client *Client) DescribeSslVpnServers(request *DescribeSslVpnServersReques
 	return _result, _err
 }
 
+func (client *Client) DescribeTagKeysForExpressConnectWithOptions(request *DescribeTagKeysForExpressConnectRequest, runtime *util.RuntimeOptions) (_result *DescribeTagKeysForExpressConnectResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Keyword)) {
+		query["Keyword"] = request.Keyword
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResult)) {
+		query["MaxResult"] = request.MaxResult
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
+		query["ResourceId"] = request.ResourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeTagKeysForExpressConnect"),
+		Version:     tea.String("2016-04-28"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeTagKeysForExpressConnectResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeTagKeysForExpressConnect(request *DescribeTagKeysForExpressConnectRequest) (_result *DescribeTagKeysForExpressConnectResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeTagKeysForExpressConnectResponse{}
+	_body, _err := client.DescribeTagKeysForExpressConnectWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DescribeVRoutersWithOptions(request *DescribeVRoutersRequest, runtime *util.RuntimeOptions) (_result *DescribeVRoutersResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -72714,6 +73281,54 @@ func (client *Client) GrantInstanceToVbr(request *GrantInstanceToVbrRequest) (_r
 	return _result, _err
 }
 
+func (client *Client) ListBusinessAccessPointsWithOptions(request *ListBusinessAccessPointsRequest, runtime *util.RuntimeOptions) (_result *ListBusinessAccessPointsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListBusinessAccessPoints"),
+		Version:     tea.String("2016-04-28"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListBusinessAccessPointsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListBusinessAccessPoints(request *ListBusinessAccessPointsRequest) (_result *ListBusinessAccessPointsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListBusinessAccessPointsResponse{}
+	_body, _err := client.ListBusinessAccessPointsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ListDhcpOptionsSetsWithOptions(request *ListDhcpOptionsSetsRequest, runtime *util.RuntimeOptions) (_result *ListDhcpOptionsSetsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -73031,6 +73646,39 @@ func (client *Client) ListGatewayRouteTableEntries(request *ListGatewayRouteTabl
 	runtime := &util.RuntimeOptions{}
 	_result = &ListGatewayRouteTableEntriesResponse{}
 	_body, _err := client.ListGatewayRouteTableEntriesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListGeographicSubRegionsWithOptions(runtime *util.RuntimeOptions) (_result *ListGeographicSubRegionsResponse, _err error) {
+	req := &openapi.OpenApiRequest{}
+	params := &openapi.Params{
+		Action:      tea.String("ListGeographicSubRegions"),
+		Version:     tea.String("2016-04-28"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListGeographicSubRegionsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListGeographicSubRegions() (_result *ListGeographicSubRegionsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListGeographicSubRegionsResponse{}
+	_body, _err := client.ListGeographicSubRegionsWithOptions(runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -73386,6 +74034,13 @@ func (client *Client) ListNatIps(request *ListNatIpsRequest) (_result *ListNatIp
 	return _result, _err
 }
 
+/**
+ * **
+ *
+ * @param request ListPrefixListsRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ListPrefixListsResponse
+ */
 func (client *Client) ListPrefixListsWithOptions(request *ListPrefixListsRequest, runtime *util.RuntimeOptions) (_result *ListPrefixListsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -73451,6 +74106,12 @@ func (client *Client) ListPrefixListsWithOptions(request *ListPrefixListsRequest
 	return _result, _err
 }
 
+/**
+ * **
+ *
+ * @param request ListPrefixListsRequest
+ * @return ListPrefixListsResponse
+ */
 func (client *Client) ListPrefixLists(request *ListPrefixListsRequest) (_result *ListPrefixListsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListPrefixListsResponse{}
