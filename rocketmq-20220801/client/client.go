@@ -152,6 +152,305 @@ func (s *CreateConsumerGroupResponse) SetBody(v *CreateConsumerGroupResponseBody
 	return s
 }
 
+type CreateInstanceRequest struct {
+	AutoRenew       *bool                             `json:"autoRenew,omitempty" xml:"autoRenew,omitempty"`
+	AutoRenewPeriod *int32                            `json:"autoRenewPeriod,omitempty" xml:"autoRenewPeriod,omitempty"`
+	InstanceName    *string                           `json:"instanceName,omitempty" xml:"instanceName,omitempty"`
+	NetworkInfo     *CreateInstanceRequestNetworkInfo `json:"networkInfo,omitempty" xml:"networkInfo,omitempty" type:"Struct"`
+	PaymentType     *string                           `json:"paymentType,omitempty" xml:"paymentType,omitempty"`
+	Period          *int32                            `json:"period,omitempty" xml:"period,omitempty"`
+	PeriodUnit      *string                           `json:"periodUnit,omitempty" xml:"periodUnit,omitempty"`
+	ProductInfo     *CreateInstanceRequestProductInfo `json:"productInfo,omitempty" xml:"productInfo,omitempty" type:"Struct"`
+	Remark          *string                           `json:"remark,omitempty" xml:"remark,omitempty"`
+	ResourceGroupId *string                           `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
+	SeriesCode      *string                           `json:"seriesCode,omitempty" xml:"seriesCode,omitempty"`
+	ServiceCode     *string                           `json:"serviceCode,omitempty" xml:"serviceCode,omitempty"`
+	SubSeriesCode   *string                           `json:"subSeriesCode,omitempty" xml:"subSeriesCode,omitempty"`
+	ClientToken     *string                           `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+}
+
+func (s CreateInstanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateInstanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateInstanceRequest) SetAutoRenew(v bool) *CreateInstanceRequest {
+	s.AutoRenew = &v
+	return s
+}
+
+func (s *CreateInstanceRequest) SetAutoRenewPeriod(v int32) *CreateInstanceRequest {
+	s.AutoRenewPeriod = &v
+	return s
+}
+
+func (s *CreateInstanceRequest) SetInstanceName(v string) *CreateInstanceRequest {
+	s.InstanceName = &v
+	return s
+}
+
+func (s *CreateInstanceRequest) SetNetworkInfo(v *CreateInstanceRequestNetworkInfo) *CreateInstanceRequest {
+	s.NetworkInfo = v
+	return s
+}
+
+func (s *CreateInstanceRequest) SetPaymentType(v string) *CreateInstanceRequest {
+	s.PaymentType = &v
+	return s
+}
+
+func (s *CreateInstanceRequest) SetPeriod(v int32) *CreateInstanceRequest {
+	s.Period = &v
+	return s
+}
+
+func (s *CreateInstanceRequest) SetPeriodUnit(v string) *CreateInstanceRequest {
+	s.PeriodUnit = &v
+	return s
+}
+
+func (s *CreateInstanceRequest) SetProductInfo(v *CreateInstanceRequestProductInfo) *CreateInstanceRequest {
+	s.ProductInfo = v
+	return s
+}
+
+func (s *CreateInstanceRequest) SetRemark(v string) *CreateInstanceRequest {
+	s.Remark = &v
+	return s
+}
+
+func (s *CreateInstanceRequest) SetResourceGroupId(v string) *CreateInstanceRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *CreateInstanceRequest) SetSeriesCode(v string) *CreateInstanceRequest {
+	s.SeriesCode = &v
+	return s
+}
+
+func (s *CreateInstanceRequest) SetServiceCode(v string) *CreateInstanceRequest {
+	s.ServiceCode = &v
+	return s
+}
+
+func (s *CreateInstanceRequest) SetSubSeriesCode(v string) *CreateInstanceRequest {
+	s.SubSeriesCode = &v
+	return s
+}
+
+func (s *CreateInstanceRequest) SetClientToken(v string) *CreateInstanceRequest {
+	s.ClientToken = &v
+	return s
+}
+
+type CreateInstanceRequestNetworkInfo struct {
+	InternetInfo *CreateInstanceRequestNetworkInfoInternetInfo `json:"internetInfo,omitempty" xml:"internetInfo,omitempty" type:"Struct"`
+	VpcInfo      *CreateInstanceRequestNetworkInfoVpcInfo      `json:"vpcInfo,omitempty" xml:"vpcInfo,omitempty" type:"Struct"`
+}
+
+func (s CreateInstanceRequestNetworkInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateInstanceRequestNetworkInfo) GoString() string {
+	return s.String()
+}
+
+func (s *CreateInstanceRequestNetworkInfo) SetInternetInfo(v *CreateInstanceRequestNetworkInfoInternetInfo) *CreateInstanceRequestNetworkInfo {
+	s.InternetInfo = v
+	return s
+}
+
+func (s *CreateInstanceRequestNetworkInfo) SetVpcInfo(v *CreateInstanceRequestNetworkInfoVpcInfo) *CreateInstanceRequestNetworkInfo {
+	s.VpcInfo = v
+	return s
+}
+
+type CreateInstanceRequestNetworkInfoInternetInfo struct {
+	FlowOutBandwidth *int32    `json:"flowOutBandwidth,omitempty" xml:"flowOutBandwidth,omitempty"`
+	FlowOutType      *string   `json:"flowOutType,omitempty" xml:"flowOutType,omitempty"`
+	InternetSpec     *string   `json:"internetSpec,omitempty" xml:"internetSpec,omitempty"`
+	IpWhitelist      []*string `json:"ipWhitelist,omitempty" xml:"ipWhitelist,omitempty" type:"Repeated"`
+}
+
+func (s CreateInstanceRequestNetworkInfoInternetInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateInstanceRequestNetworkInfoInternetInfo) GoString() string {
+	return s.String()
+}
+
+func (s *CreateInstanceRequestNetworkInfoInternetInfo) SetFlowOutBandwidth(v int32) *CreateInstanceRequestNetworkInfoInternetInfo {
+	s.FlowOutBandwidth = &v
+	return s
+}
+
+func (s *CreateInstanceRequestNetworkInfoInternetInfo) SetFlowOutType(v string) *CreateInstanceRequestNetworkInfoInternetInfo {
+	s.FlowOutType = &v
+	return s
+}
+
+func (s *CreateInstanceRequestNetworkInfoInternetInfo) SetInternetSpec(v string) *CreateInstanceRequestNetworkInfoInternetInfo {
+	s.InternetSpec = &v
+	return s
+}
+
+func (s *CreateInstanceRequestNetworkInfoInternetInfo) SetIpWhitelist(v []*string) *CreateInstanceRequestNetworkInfoInternetInfo {
+	s.IpWhitelist = v
+	return s
+}
+
+type CreateInstanceRequestNetworkInfoVpcInfo struct {
+	VSwitchId *string `json:"vSwitchId,omitempty" xml:"vSwitchId,omitempty"`
+	VpcId     *string `json:"vpcId,omitempty" xml:"vpcId,omitempty"`
+}
+
+func (s CreateInstanceRequestNetworkInfoVpcInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateInstanceRequestNetworkInfoVpcInfo) GoString() string {
+	return s.String()
+}
+
+func (s *CreateInstanceRequestNetworkInfoVpcInfo) SetVSwitchId(v string) *CreateInstanceRequestNetworkInfoVpcInfo {
+	s.VSwitchId = &v
+	return s
+}
+
+func (s *CreateInstanceRequestNetworkInfoVpcInfo) SetVpcId(v string) *CreateInstanceRequestNetworkInfoVpcInfo {
+	s.VpcId = &v
+	return s
+}
+
+type CreateInstanceRequestProductInfo struct {
+	AutoScaling          *bool    `json:"autoScaling,omitempty" xml:"autoScaling,omitempty"`
+	MessageRetentionTime *int32   `json:"messageRetentionTime,omitempty" xml:"messageRetentionTime,omitempty"`
+	MsgProcessSpec       *string  `json:"msgProcessSpec,omitempty" xml:"msgProcessSpec,omitempty"`
+	SendReceiveRatio     *float32 `json:"sendReceiveRatio,omitempty" xml:"sendReceiveRatio,omitempty"`
+}
+
+func (s CreateInstanceRequestProductInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateInstanceRequestProductInfo) GoString() string {
+	return s.String()
+}
+
+func (s *CreateInstanceRequestProductInfo) SetAutoScaling(v bool) *CreateInstanceRequestProductInfo {
+	s.AutoScaling = &v
+	return s
+}
+
+func (s *CreateInstanceRequestProductInfo) SetMessageRetentionTime(v int32) *CreateInstanceRequestProductInfo {
+	s.MessageRetentionTime = &v
+	return s
+}
+
+func (s *CreateInstanceRequestProductInfo) SetMsgProcessSpec(v string) *CreateInstanceRequestProductInfo {
+	s.MsgProcessSpec = &v
+	return s
+}
+
+func (s *CreateInstanceRequestProductInfo) SetSendReceiveRatio(v float32) *CreateInstanceRequestProductInfo {
+	s.SendReceiveRatio = &v
+	return s
+}
+
+type CreateInstanceResponseBody struct {
+	Code           *string `json:"code,omitempty" xml:"code,omitempty"`
+	Data           *string `json:"data,omitempty" xml:"data,omitempty"`
+	DynamicCode    *string `json:"dynamicCode,omitempty" xml:"dynamicCode,omitempty"`
+	DynamicMessage *string `json:"dynamicMessage,omitempty" xml:"dynamicMessage,omitempty"`
+	HttpStatusCode *int32  `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	Message        *string `json:"message,omitempty" xml:"message,omitempty"`
+	RequestId      *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success        *bool   `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s CreateInstanceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateInstanceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateInstanceResponseBody) SetCode(v string) *CreateInstanceResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CreateInstanceResponseBody) SetData(v string) *CreateInstanceResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *CreateInstanceResponseBody) SetDynamicCode(v string) *CreateInstanceResponseBody {
+	s.DynamicCode = &v
+	return s
+}
+
+func (s *CreateInstanceResponseBody) SetDynamicMessage(v string) *CreateInstanceResponseBody {
+	s.DynamicMessage = &v
+	return s
+}
+
+func (s *CreateInstanceResponseBody) SetHttpStatusCode(v int32) *CreateInstanceResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *CreateInstanceResponseBody) SetMessage(v string) *CreateInstanceResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CreateInstanceResponseBody) SetRequestId(v string) *CreateInstanceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateInstanceResponseBody) SetSuccess(v bool) *CreateInstanceResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreateInstanceResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateInstanceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateInstanceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateInstanceResponse) SetHeaders(v map[string]*string) *CreateInstanceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateInstanceResponse) SetStatusCode(v int32) *CreateInstanceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateInstanceResponse) SetBody(v *CreateInstanceResponseBody) *CreateInstanceResponse {
+	s.Body = v
+	return s
+}
+
 type CreateTopicRequest struct {
 	MessageType *string `json:"messageType,omitempty" xml:"messageType,omitempty"`
 	Remark      *string `json:"remark,omitempty" xml:"remark,omitempty"`
@@ -763,29 +1062,31 @@ func (s *GetInstanceResponseBody) SetSuccess(v bool) *GetInstanceResponseBody {
 }
 
 type GetInstanceResponseBodyData struct {
-	AccountInfo    *GetInstanceResponseBodyDataAccountInfo      `json:"accountInfo,omitempty" xml:"accountInfo,omitempty" type:"Struct"`
-	Bid            *string                                      `json:"bid,omitempty" xml:"bid,omitempty"`
-	CommodityCode  *string                                      `json:"commodityCode,omitempty" xml:"commodityCode,omitempty"`
-	CreateTime     *string                                      `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	ExpireTime     *string                                      `json:"expireTime,omitempty" xml:"expireTime,omitempty"`
-	ExtConfig      *GetInstanceResponseBodyDataExtConfig        `json:"extConfig,omitempty" xml:"extConfig,omitempty" type:"Struct"`
-	GroupCount     *int64                                       `json:"groupCount,omitempty" xml:"groupCount,omitempty"`
-	InstanceId     *string                                      `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	InstanceName   *string                                      `json:"instanceName,omitempty" xml:"instanceName,omitempty"`
-	InstanceQuotas []*GetInstanceResponseBodyDataInstanceQuotas `json:"instanceQuotas,omitempty" xml:"instanceQuotas,omitempty" type:"Repeated"`
-	NetworkInfo    *GetInstanceResponseBodyDataNetworkInfo      `json:"networkInfo,omitempty" xml:"networkInfo,omitempty" type:"Struct"`
-	PaymentType    *string                                      `json:"paymentType,omitempty" xml:"paymentType,omitempty"`
-	RegionId       *string                                      `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	ReleaseTime    *string                                      `json:"releaseTime,omitempty" xml:"releaseTime,omitempty"`
-	Remark         *string                                      `json:"remark,omitempty" xml:"remark,omitempty"`
-	SeriesCode     *string                                      `json:"seriesCode,omitempty" xml:"seriesCode,omitempty"`
-	ServiceCode    *string                                      `json:"serviceCode,omitempty" xml:"serviceCode,omitempty"`
-	StartTime      *string                                      `json:"startTime,omitempty" xml:"startTime,omitempty"`
-	Status         *string                                      `json:"status,omitempty" xml:"status,omitempty"`
-	SubSeriesCode  *string                                      `json:"subSeriesCode,omitempty" xml:"subSeriesCode,omitempty"`
-	TopicCount     *int64                                       `json:"topicCount,omitempty" xml:"topicCount,omitempty"`
-	UpdateTime     *string                                      `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
-	UserId         *string                                      `json:"userId,omitempty" xml:"userId,omitempty"`
+	AccountInfo *GetInstanceResponseBodyDataAccountInfo `json:"accountInfo,omitempty" xml:"accountInfo,omitempty" type:"Struct"`
+	AclInfo     *GetInstanceResponseBodyDataAclInfo     `json:"aclInfo,omitempty" xml:"aclInfo,omitempty" type:"Struct"`
+	// BID
+	Bid             *string                                      `json:"bid,omitempty" xml:"bid,omitempty"`
+	CommodityCode   *string                                      `json:"commodityCode,omitempty" xml:"commodityCode,omitempty"`
+	CreateTime      *string                                      `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	ExpireTime      *string                                      `json:"expireTime,omitempty" xml:"expireTime,omitempty"`
+	ExtConfig       *GetInstanceResponseBodyDataExtConfig        `json:"extConfig,omitempty" xml:"extConfig,omitempty" type:"Struct"`
+	InstanceId      *string                                      `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	InstanceName    *string                                      `json:"instanceName,omitempty" xml:"instanceName,omitempty"`
+	InstanceQuotas  []*GetInstanceResponseBodyDataInstanceQuotas `json:"instanceQuotas,omitempty" xml:"instanceQuotas,omitempty" type:"Repeated"`
+	NetworkInfo     *GetInstanceResponseBodyDataNetworkInfo      `json:"networkInfo,omitempty" xml:"networkInfo,omitempty" type:"Struct"`
+	PaymentType     *string                                      `json:"paymentType,omitempty" xml:"paymentType,omitempty"`
+	ProductInfo     *GetInstanceResponseBodyDataProductInfo      `json:"productInfo,omitempty" xml:"productInfo,omitempty" type:"Struct"`
+	RegionId        *string                                      `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	ReleaseTime     *string                                      `json:"releaseTime,omitempty" xml:"releaseTime,omitempty"`
+	Remark          *string                                      `json:"remark,omitempty" xml:"remark,omitempty"`
+	ResourceGroupId *string                                      `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
+	SeriesCode      *string                                      `json:"seriesCode,omitempty" xml:"seriesCode,omitempty"`
+	ServiceCode     *string                                      `json:"serviceCode,omitempty" xml:"serviceCode,omitempty"`
+	StartTime       *string                                      `json:"startTime,omitempty" xml:"startTime,omitempty"`
+	Status          *string                                      `json:"status,omitempty" xml:"status,omitempty"`
+	SubSeriesCode   *string                                      `json:"subSeriesCode,omitempty" xml:"subSeriesCode,omitempty"`
+	UpdateTime      *string                                      `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
+	UserId          *string                                      `json:"userId,omitempty" xml:"userId,omitempty"`
 }
 
 func (s GetInstanceResponseBodyData) String() string {
@@ -798,6 +1099,11 @@ func (s GetInstanceResponseBodyData) GoString() string {
 
 func (s *GetInstanceResponseBodyData) SetAccountInfo(v *GetInstanceResponseBodyDataAccountInfo) *GetInstanceResponseBodyData {
 	s.AccountInfo = v
+	return s
+}
+
+func (s *GetInstanceResponseBodyData) SetAclInfo(v *GetInstanceResponseBodyDataAclInfo) *GetInstanceResponseBodyData {
+	s.AclInfo = v
 	return s
 }
 
@@ -826,11 +1132,6 @@ func (s *GetInstanceResponseBodyData) SetExtConfig(v *GetInstanceResponseBodyDat
 	return s
 }
 
-func (s *GetInstanceResponseBodyData) SetGroupCount(v int64) *GetInstanceResponseBodyData {
-	s.GroupCount = &v
-	return s
-}
-
 func (s *GetInstanceResponseBodyData) SetInstanceId(v string) *GetInstanceResponseBodyData {
 	s.InstanceId = &v
 	return s
@@ -856,6 +1157,11 @@ func (s *GetInstanceResponseBodyData) SetPaymentType(v string) *GetInstanceRespo
 	return s
 }
 
+func (s *GetInstanceResponseBodyData) SetProductInfo(v *GetInstanceResponseBodyDataProductInfo) *GetInstanceResponseBodyData {
+	s.ProductInfo = v
+	return s
+}
+
 func (s *GetInstanceResponseBodyData) SetRegionId(v string) *GetInstanceResponseBodyData {
 	s.RegionId = &v
 	return s
@@ -868,6 +1174,11 @@ func (s *GetInstanceResponseBodyData) SetReleaseTime(v string) *GetInstanceRespo
 
 func (s *GetInstanceResponseBodyData) SetRemark(v string) *GetInstanceResponseBodyData {
 	s.Remark = &v
+	return s
+}
+
+func (s *GetInstanceResponseBodyData) SetResourceGroupId(v string) *GetInstanceResponseBodyData {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -896,11 +1207,6 @@ func (s *GetInstanceResponseBodyData) SetSubSeriesCode(v string) *GetInstanceRes
 	return s
 }
 
-func (s *GetInstanceResponseBodyData) SetTopicCount(v int64) *GetInstanceResponseBodyData {
-	s.TopicCount = &v
-	return s
-}
-
 func (s *GetInstanceResponseBodyData) SetUpdateTime(v string) *GetInstanceResponseBodyData {
 	s.UpdateTime = &v
 	return s
@@ -925,6 +1231,23 @@ func (s GetInstanceResponseBodyDataAccountInfo) GoString() string {
 
 func (s *GetInstanceResponseBodyDataAccountInfo) SetUsername(v string) *GetInstanceResponseBodyDataAccountInfo {
 	s.Username = &v
+	return s
+}
+
+type GetInstanceResponseBodyDataAclInfo struct {
+	AclType *string `json:"aclType,omitempty" xml:"aclType,omitempty"`
+}
+
+func (s GetInstanceResponseBodyDataAclInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetInstanceResponseBodyDataAclInfo) GoString() string {
+	return s.String()
+}
+
+func (s *GetInstanceResponseBodyDataAclInfo) SetAclType(v string) *GetInstanceResponseBodyDataAclInfo {
+	s.AclType = &v
 	return s
 }
 
@@ -1029,8 +1352,9 @@ func (s *GetInstanceResponseBodyDataInstanceQuotas) SetUsedCount(v float64) *Get
 }
 
 type GetInstanceResponseBodyDataNetworkInfo struct {
-	Endpoints []*GetInstanceResponseBodyDataNetworkInfoEndpoints `json:"endpoints,omitempty" xml:"endpoints,omitempty" type:"Repeated"`
-	VpcInfo   *GetInstanceResponseBodyDataNetworkInfoVpcInfo     `json:"vpcInfo,omitempty" xml:"vpcInfo,omitempty" type:"Struct"`
+	Endpoints    []*GetInstanceResponseBodyDataNetworkInfoEndpoints  `json:"endpoints,omitempty" xml:"endpoints,omitempty" type:"Repeated"`
+	InternetInfo *GetInstanceResponseBodyDataNetworkInfoInternetInfo `json:"internetInfo,omitempty" xml:"internetInfo,omitempty" type:"Struct"`
+	VpcInfo      *GetInstanceResponseBodyDataNetworkInfoVpcInfo      `json:"vpcInfo,omitempty" xml:"vpcInfo,omitempty" type:"Struct"`
 }
 
 func (s GetInstanceResponseBodyDataNetworkInfo) String() string {
@@ -1043,6 +1367,11 @@ func (s GetInstanceResponseBodyDataNetworkInfo) GoString() string {
 
 func (s *GetInstanceResponseBodyDataNetworkInfo) SetEndpoints(v []*GetInstanceResponseBodyDataNetworkInfoEndpoints) *GetInstanceResponseBodyDataNetworkInfo {
 	s.Endpoints = v
+	return s
+}
+
+func (s *GetInstanceResponseBodyDataNetworkInfo) SetInternetInfo(v *GetInstanceResponseBodyDataNetworkInfoInternetInfo) *GetInstanceResponseBodyDataNetworkInfo {
+	s.InternetInfo = v
 	return s
 }
 
@@ -1080,6 +1409,41 @@ func (s *GetInstanceResponseBodyDataNetworkInfoEndpoints) SetIpWhitelist(v strin
 	return s
 }
 
+type GetInstanceResponseBodyDataNetworkInfoInternetInfo struct {
+	FlowOutBandwidth *int32    `json:"flowOutBandwidth,omitempty" xml:"flowOutBandwidth,omitempty"`
+	FlowOutType      *string   `json:"flowOutType,omitempty" xml:"flowOutType,omitempty"`
+	InternetSpec     *string   `json:"internetSpec,omitempty" xml:"internetSpec,omitempty"`
+	IpWhitelist      []*string `json:"ipWhitelist,omitempty" xml:"ipWhitelist,omitempty" type:"Repeated"`
+}
+
+func (s GetInstanceResponseBodyDataNetworkInfoInternetInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetInstanceResponseBodyDataNetworkInfoInternetInfo) GoString() string {
+	return s.String()
+}
+
+func (s *GetInstanceResponseBodyDataNetworkInfoInternetInfo) SetFlowOutBandwidth(v int32) *GetInstanceResponseBodyDataNetworkInfoInternetInfo {
+	s.FlowOutBandwidth = &v
+	return s
+}
+
+func (s *GetInstanceResponseBodyDataNetworkInfoInternetInfo) SetFlowOutType(v string) *GetInstanceResponseBodyDataNetworkInfoInternetInfo {
+	s.FlowOutType = &v
+	return s
+}
+
+func (s *GetInstanceResponseBodyDataNetworkInfoInternetInfo) SetInternetSpec(v string) *GetInstanceResponseBodyDataNetworkInfoInternetInfo {
+	s.InternetSpec = &v
+	return s
+}
+
+func (s *GetInstanceResponseBodyDataNetworkInfoInternetInfo) SetIpWhitelist(v []*string) *GetInstanceResponseBodyDataNetworkInfoInternetInfo {
+	s.IpWhitelist = v
+	return s
+}
+
 type GetInstanceResponseBodyDataNetworkInfoVpcInfo struct {
 	VSwitchId *string `json:"vSwitchId,omitempty" xml:"vSwitchId,omitempty"`
 	VpcId     *string `json:"vpcId,omitempty" xml:"vpcId,omitempty"`
@@ -1100,6 +1464,47 @@ func (s *GetInstanceResponseBodyDataNetworkInfoVpcInfo) SetVSwitchId(v string) *
 
 func (s *GetInstanceResponseBodyDataNetworkInfoVpcInfo) SetVpcId(v string) *GetInstanceResponseBodyDataNetworkInfoVpcInfo {
 	s.VpcId = &v
+	return s
+}
+
+type GetInstanceResponseBodyDataProductInfo struct {
+	AutoScaling          *bool    `json:"autoScaling,omitempty" xml:"autoScaling,omitempty"`
+	MessageRetentionTime *int32   `json:"messageRetentionTime,omitempty" xml:"messageRetentionTime,omitempty"`
+	MsgProcessSpec       *string  `json:"msgProcessSpec,omitempty" xml:"msgProcessSpec,omitempty"`
+	SendReceiveRatio     *float32 `json:"sendReceiveRatio,omitempty" xml:"sendReceiveRatio,omitempty"`
+	SupportAutoScaling   *bool    `json:"supportAutoScaling,omitempty" xml:"supportAutoScaling,omitempty"`
+}
+
+func (s GetInstanceResponseBodyDataProductInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetInstanceResponseBodyDataProductInfo) GoString() string {
+	return s.String()
+}
+
+func (s *GetInstanceResponseBodyDataProductInfo) SetAutoScaling(v bool) *GetInstanceResponseBodyDataProductInfo {
+	s.AutoScaling = &v
+	return s
+}
+
+func (s *GetInstanceResponseBodyDataProductInfo) SetMessageRetentionTime(v int32) *GetInstanceResponseBodyDataProductInfo {
+	s.MessageRetentionTime = &v
+	return s
+}
+
+func (s *GetInstanceResponseBodyDataProductInfo) SetMsgProcessSpec(v string) *GetInstanceResponseBodyDataProductInfo {
+	s.MsgProcessSpec = &v
+	return s
+}
+
+func (s *GetInstanceResponseBodyDataProductInfo) SetSendReceiveRatio(v float32) *GetInstanceResponseBodyDataProductInfo {
+	s.SendReceiveRatio = &v
+	return s
+}
+
+func (s *GetInstanceResponseBodyDataProductInfo) SetSupportAutoScaling(v bool) *GetInstanceResponseBodyDataProductInfo {
+	s.SupportAutoScaling = &v
 	return s
 }
 
@@ -2107,9 +2512,9 @@ func (s *UpdateConsumerGroupResponse) SetBody(v *UpdateConsumerGroupResponseBody
 }
 
 type UpdateInstanceRequest struct {
-	ExtConfig    *UpdateInstanceRequestExtConfig   `json:"extConfig,omitempty" xml:"extConfig,omitempty" type:"Struct"`
 	InstanceName *string                           `json:"instanceName,omitempty" xml:"instanceName,omitempty"`
 	NetworkInfo  *UpdateInstanceRequestNetworkInfo `json:"networkInfo,omitempty" xml:"networkInfo,omitempty" type:"Struct"`
+	ProductInfo  *UpdateInstanceRequestProductInfo `json:"productInfo,omitempty" xml:"productInfo,omitempty" type:"Struct"`
 	Remark       *string                           `json:"remark,omitempty" xml:"remark,omitempty"`
 }
 
@@ -2119,11 +2524,6 @@ func (s UpdateInstanceRequest) String() string {
 
 func (s UpdateInstanceRequest) GoString() string {
 	return s.String()
-}
-
-func (s *UpdateInstanceRequest) SetExtConfig(v *UpdateInstanceRequestExtConfig) *UpdateInstanceRequest {
-	s.ExtConfig = v
-	return s
 }
 
 func (s *UpdateInstanceRequest) SetInstanceName(v string) *UpdateInstanceRequest {
@@ -2136,42 +2536,18 @@ func (s *UpdateInstanceRequest) SetNetworkInfo(v *UpdateInstanceRequestNetworkIn
 	return s
 }
 
+func (s *UpdateInstanceRequest) SetProductInfo(v *UpdateInstanceRequestProductInfo) *UpdateInstanceRequest {
+	s.ProductInfo = v
+	return s
+}
+
 func (s *UpdateInstanceRequest) SetRemark(v string) *UpdateInstanceRequest {
 	s.Remark = &v
 	return s
 }
 
-type UpdateInstanceRequestExtConfig struct {
-	AutoScaling          *bool    `json:"autoScaling,omitempty" xml:"autoScaling,omitempty"`
-	MessageRetentionTime *int32   `json:"messageRetentionTime,omitempty" xml:"messageRetentionTime,omitempty"`
-	SendReceiveRatio     *float32 `json:"sendReceiveRatio,omitempty" xml:"sendReceiveRatio,omitempty"`
-}
-
-func (s UpdateInstanceRequestExtConfig) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateInstanceRequestExtConfig) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateInstanceRequestExtConfig) SetAutoScaling(v bool) *UpdateInstanceRequestExtConfig {
-	s.AutoScaling = &v
-	return s
-}
-
-func (s *UpdateInstanceRequestExtConfig) SetMessageRetentionTime(v int32) *UpdateInstanceRequestExtConfig {
-	s.MessageRetentionTime = &v
-	return s
-}
-
-func (s *UpdateInstanceRequestExtConfig) SetSendReceiveRatio(v float32) *UpdateInstanceRequestExtConfig {
-	s.SendReceiveRatio = &v
-	return s
-}
-
 type UpdateInstanceRequestNetworkInfo struct {
-	Endpoints []*UpdateInstanceRequestNetworkInfoEndpoints `json:"endpoints,omitempty" xml:"endpoints,omitempty" type:"Repeated"`
+	InternetInfo *UpdateInstanceRequestNetworkInfoInternetInfo `json:"internetInfo,omitempty" xml:"internetInfo,omitempty" type:"Struct"`
 }
 
 func (s UpdateInstanceRequestNetworkInfo) String() string {
@@ -2182,31 +2558,54 @@ func (s UpdateInstanceRequestNetworkInfo) GoString() string {
 	return s.String()
 }
 
-func (s *UpdateInstanceRequestNetworkInfo) SetEndpoints(v []*UpdateInstanceRequestNetworkInfoEndpoints) *UpdateInstanceRequestNetworkInfo {
-	s.Endpoints = v
+func (s *UpdateInstanceRequestNetworkInfo) SetInternetInfo(v *UpdateInstanceRequestNetworkInfoInternetInfo) *UpdateInstanceRequestNetworkInfo {
+	s.InternetInfo = v
 	return s
 }
 
-type UpdateInstanceRequestNetworkInfoEndpoints struct {
-	EndpointType *string `json:"endpointType,omitempty" xml:"endpointType,omitempty"`
-	IpWhitelist  *string `json:"ipWhitelist,omitempty" xml:"ipWhitelist,omitempty"`
+type UpdateInstanceRequestNetworkInfoInternetInfo struct {
+	IpWhitelist []*string `json:"ipWhitelist,omitempty" xml:"ipWhitelist,omitempty" type:"Repeated"`
 }
 
-func (s UpdateInstanceRequestNetworkInfoEndpoints) String() string {
+func (s UpdateInstanceRequestNetworkInfoInternetInfo) String() string {
 	return tea.Prettify(s)
 }
 
-func (s UpdateInstanceRequestNetworkInfoEndpoints) GoString() string {
+func (s UpdateInstanceRequestNetworkInfoInternetInfo) GoString() string {
 	return s.String()
 }
 
-func (s *UpdateInstanceRequestNetworkInfoEndpoints) SetEndpointType(v string) *UpdateInstanceRequestNetworkInfoEndpoints {
-	s.EndpointType = &v
+func (s *UpdateInstanceRequestNetworkInfoInternetInfo) SetIpWhitelist(v []*string) *UpdateInstanceRequestNetworkInfoInternetInfo {
+	s.IpWhitelist = v
 	return s
 }
 
-func (s *UpdateInstanceRequestNetworkInfoEndpoints) SetIpWhitelist(v string) *UpdateInstanceRequestNetworkInfoEndpoints {
-	s.IpWhitelist = &v
+type UpdateInstanceRequestProductInfo struct {
+	AutoScaling          *bool    `json:"autoScaling,omitempty" xml:"autoScaling,omitempty"`
+	MessageRetentionTime *int32   `json:"messageRetentionTime,omitempty" xml:"messageRetentionTime,omitempty"`
+	SendReceiveRatio     *float32 `json:"sendReceiveRatio,omitempty" xml:"sendReceiveRatio,omitempty"`
+}
+
+func (s UpdateInstanceRequestProductInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateInstanceRequestProductInfo) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateInstanceRequestProductInfo) SetAutoScaling(v bool) *UpdateInstanceRequestProductInfo {
+	s.AutoScaling = &v
+	return s
+}
+
+func (s *UpdateInstanceRequestProductInfo) SetMessageRetentionTime(v int32) *UpdateInstanceRequestProductInfo {
+	s.MessageRetentionTime = &v
+	return s
+}
+
+func (s *UpdateInstanceRequestProductInfo) SetSendReceiveRatio(v float32) *UpdateInstanceRequestProductInfo {
+	s.SendReceiveRatio = &v
 	return s
 }
 
@@ -2450,25 +2849,13 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
-func (client *Client) CreateConsumerGroup(instanceId *string, consumerGroupId *string, request *CreateConsumerGroupRequest) (_result *CreateConsumerGroupResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &CreateConsumerGroupResponse{}
-	_body, _err := client.CreateConsumerGroupWithOptions(instanceId, consumerGroupId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) CreateConsumerGroupWithOptions(instanceId *string, consumerGroupId *string, request *CreateConsumerGroupRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateConsumerGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.ConsumeRetryPolicy))) {
+	if !tea.BoolValue(util.IsUnset(request.ConsumeRetryPolicy)) {
 		body["consumeRetryPolicy"] = request.ConsumeRetryPolicy
 	}
 
@@ -2504,11 +2891,111 @@ func (client *Client) CreateConsumerGroupWithOptions(instanceId *string, consume
 	return _result, _err
 }
 
-func (client *Client) CreateTopic(instanceId *string, topicName *string, request *CreateTopicRequest) (_result *CreateTopicResponse, _err error) {
+func (client *Client) CreateConsumerGroup(instanceId *string, consumerGroupId *string, request *CreateConsumerGroupRequest) (_result *CreateConsumerGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &CreateTopicResponse{}
-	_body, _err := client.CreateTopicWithOptions(instanceId, topicName, request, headers, runtime)
+	_result = &CreateConsumerGroupResponse{}
+	_body, _err := client.CreateConsumerGroupWithOptions(instanceId, consumerGroupId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateInstanceWithOptions(request *CreateInstanceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateInstanceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["clientToken"] = request.ClientToken
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AutoRenew)) {
+		body["autoRenew"] = request.AutoRenew
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AutoRenewPeriod)) {
+		body["autoRenewPeriod"] = request.AutoRenewPeriod
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceName)) {
+		body["instanceName"] = request.InstanceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NetworkInfo)) {
+		body["networkInfo"] = request.NetworkInfo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PaymentType)) {
+		body["paymentType"] = request.PaymentType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Period)) {
+		body["period"] = request.Period
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PeriodUnit)) {
+		body["periodUnit"] = request.PeriodUnit
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductInfo)) {
+		body["productInfo"] = request.ProductInfo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Remark)) {
+		body["remark"] = request.Remark
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		body["resourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SeriesCode)) {
+		body["seriesCode"] = request.SeriesCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceCode)) {
+		body["serviceCode"] = request.ServiceCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SubSeriesCode)) {
+		body["subSeriesCode"] = request.SubSeriesCode
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateInstance"),
+		Version:     tea.String("2022-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/instances"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateInstance(request *CreateInstanceRequest) (_result *CreateInstanceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateInstanceResponse{}
+	_body, _err := client.CreateInstanceWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2554,11 +3041,11 @@ func (client *Client) CreateTopicWithOptions(instanceId *string, topicName *stri
 	return _result, _err
 }
 
-func (client *Client) DeleteConsumerGroup(instanceId *string, consumerGroupId *string) (_result *DeleteConsumerGroupResponse, _err error) {
+func (client *Client) CreateTopic(instanceId *string, topicName *string, request *CreateTopicRequest) (_result *CreateTopicResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DeleteConsumerGroupResponse{}
-	_body, _err := client.DeleteConsumerGroupWithOptions(instanceId, consumerGroupId, headers, runtime)
+	_result = &CreateTopicResponse{}
+	_body, _err := client.CreateTopicWithOptions(instanceId, topicName, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2590,11 +3077,11 @@ func (client *Client) DeleteConsumerGroupWithOptions(instanceId *string, consume
 	return _result, _err
 }
 
-func (client *Client) DeleteInstance(instanceId *string) (_result *DeleteInstanceResponse, _err error) {
+func (client *Client) DeleteConsumerGroup(instanceId *string, consumerGroupId *string) (_result *DeleteConsumerGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DeleteInstanceResponse{}
-	_body, _err := client.DeleteInstanceWithOptions(instanceId, headers, runtime)
+	_result = &DeleteConsumerGroupResponse{}
+	_body, _err := client.DeleteConsumerGroupWithOptions(instanceId, consumerGroupId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2626,11 +3113,11 @@ func (client *Client) DeleteInstanceWithOptions(instanceId *string, headers map[
 	return _result, _err
 }
 
-func (client *Client) DeleteTopic(instanceId *string, topicName *string) (_result *DeleteTopicResponse, _err error) {
+func (client *Client) DeleteInstance(instanceId *string) (_result *DeleteInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DeleteTopicResponse{}
-	_body, _err := client.DeleteTopicWithOptions(instanceId, topicName, headers, runtime)
+	_result = &DeleteInstanceResponse{}
+	_body, _err := client.DeleteInstanceWithOptions(instanceId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2662,11 +3149,11 @@ func (client *Client) DeleteTopicWithOptions(instanceId *string, topicName *stri
 	return _result, _err
 }
 
-func (client *Client) GetConsumerGroup(instanceId *string, consumerGroupId *string) (_result *GetConsumerGroupResponse, _err error) {
+func (client *Client) DeleteTopic(instanceId *string, topicName *string) (_result *DeleteTopicResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetConsumerGroupResponse{}
-	_body, _err := client.GetConsumerGroupWithOptions(instanceId, consumerGroupId, headers, runtime)
+	_result = &DeleteTopicResponse{}
+	_body, _err := client.DeleteTopicWithOptions(instanceId, topicName, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2698,11 +3185,11 @@ func (client *Client) GetConsumerGroupWithOptions(instanceId *string, consumerGr
 	return _result, _err
 }
 
-func (client *Client) GetInstance(instanceId *string) (_result *GetInstanceResponse, _err error) {
+func (client *Client) GetConsumerGroup(instanceId *string, consumerGroupId *string) (_result *GetConsumerGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetInstanceResponse{}
-	_body, _err := client.GetInstanceWithOptions(instanceId, headers, runtime)
+	_result = &GetConsumerGroupResponse{}
+	_body, _err := client.GetConsumerGroupWithOptions(instanceId, consumerGroupId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2734,11 +3221,11 @@ func (client *Client) GetInstanceWithOptions(instanceId *string, headers map[str
 	return _result, _err
 }
 
-func (client *Client) GetTopic(instanceId *string, topicName *string) (_result *GetTopicResponse, _err error) {
+func (client *Client) GetInstance(instanceId *string) (_result *GetInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetTopicResponse{}
-	_body, _err := client.GetTopicWithOptions(instanceId, topicName, headers, runtime)
+	_result = &GetInstanceResponse{}
+	_body, _err := client.GetInstanceWithOptions(instanceId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2770,11 +3257,11 @@ func (client *Client) GetTopicWithOptions(instanceId *string, topicName *string,
 	return _result, _err
 }
 
-func (client *Client) ListConsumerGroups(instanceId *string, request *ListConsumerGroupsRequest) (_result *ListConsumerGroupsResponse, _err error) {
+func (client *Client) GetTopic(instanceId *string, topicName *string) (_result *GetTopicResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListConsumerGroupsResponse{}
-	_body, _err := client.ListConsumerGroupsWithOptions(instanceId, request, headers, runtime)
+	_result = &GetTopicResponse{}
+	_body, _err := client.GetTopicWithOptions(instanceId, topicName, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2824,11 +3311,11 @@ func (client *Client) ListConsumerGroupsWithOptions(instanceId *string, request 
 	return _result, _err
 }
 
-func (client *Client) ListInstances(request *ListInstancesRequest) (_result *ListInstancesResponse, _err error) {
+func (client *Client) ListConsumerGroups(instanceId *string, request *ListConsumerGroupsRequest) (_result *ListConsumerGroupsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListInstancesResponse{}
-	_body, _err := client.ListInstancesWithOptions(request, headers, runtime)
+	_result = &ListConsumerGroupsResponse{}
+	_body, _err := client.ListConsumerGroupsWithOptions(instanceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2878,11 +3365,11 @@ func (client *Client) ListInstancesWithOptions(request *ListInstancesRequest, he
 	return _result, _err
 }
 
-func (client *Client) ListTopics(instanceId *string, request *ListTopicsRequest) (_result *ListTopicsResponse, _err error) {
+func (client *Client) ListInstances(request *ListInstancesRequest) (_result *ListInstancesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListTopicsResponse{}
-	_body, _err := client.ListTopicsWithOptions(instanceId, request, headers, runtime)
+	_result = &ListInstancesResponse{}
+	_body, _err := client.ListInstancesWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2932,11 +3419,11 @@ func (client *Client) ListTopicsWithOptions(instanceId *string, request *ListTop
 	return _result, _err
 }
 
-func (client *Client) UpdateConsumerGroup(instanceId *string, consumerGroupId *string, request *UpdateConsumerGroupRequest) (_result *UpdateConsumerGroupResponse, _err error) {
+func (client *Client) ListTopics(instanceId *string, request *ListTopicsRequest) (_result *ListTopicsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &UpdateConsumerGroupResponse{}
-	_body, _err := client.UpdateConsumerGroupWithOptions(instanceId, consumerGroupId, request, headers, runtime)
+	_result = &ListTopicsResponse{}
+	_body, _err := client.ListTopicsWithOptions(instanceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2950,7 +3437,7 @@ func (client *Client) UpdateConsumerGroupWithOptions(instanceId *string, consume
 		return _result, _err
 	}
 	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.ConsumeRetryPolicy))) {
+	if !tea.BoolValue(util.IsUnset(request.ConsumeRetryPolicy)) {
 		body["consumeRetryPolicy"] = request.ConsumeRetryPolicy
 	}
 
@@ -2986,11 +3473,11 @@ func (client *Client) UpdateConsumerGroupWithOptions(instanceId *string, consume
 	return _result, _err
 }
 
-func (client *Client) UpdateInstance(instanceId *string, request *UpdateInstanceRequest) (_result *UpdateInstanceResponse, _err error) {
+func (client *Client) UpdateConsumerGroup(instanceId *string, consumerGroupId *string, request *UpdateConsumerGroupRequest) (_result *UpdateConsumerGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &UpdateInstanceResponse{}
-	_body, _err := client.UpdateInstanceWithOptions(instanceId, request, headers, runtime)
+	_result = &UpdateConsumerGroupResponse{}
+	_body, _err := client.UpdateConsumerGroupWithOptions(instanceId, consumerGroupId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3004,16 +3491,16 @@ func (client *Client) UpdateInstanceWithOptions(instanceId *string, request *Upd
 		return _result, _err
 	}
 	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.ExtConfig))) {
-		body["extConfig"] = request.ExtConfig
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.InstanceName)) {
 		body["instanceName"] = request.InstanceName
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.NetworkInfo))) {
+	if !tea.BoolValue(util.IsUnset(request.NetworkInfo)) {
 		body["networkInfo"] = request.NetworkInfo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductInfo)) {
+		body["productInfo"] = request.ProductInfo
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Remark)) {
@@ -3044,11 +3531,11 @@ func (client *Client) UpdateInstanceWithOptions(instanceId *string, request *Upd
 	return _result, _err
 }
 
-func (client *Client) UpdateTopic(instanceId *string, topicName *string, request *UpdateTopicRequest) (_result *UpdateTopicResponse, _err error) {
+func (client *Client) UpdateInstance(instanceId *string, request *UpdateInstanceRequest) (_result *UpdateInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &UpdateTopicResponse{}
-	_body, _err := client.UpdateTopicWithOptions(instanceId, topicName, request, headers, runtime)
+	_result = &UpdateInstanceResponse{}
+	_body, _err := client.UpdateInstanceWithOptions(instanceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3087,5 +3574,17 @@ func (client *Client) UpdateTopicWithOptions(instanceId *string, topicName *stri
 		return _result, _err
 	}
 	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateTopic(instanceId *string, topicName *string, request *UpdateTopicRequest) (_result *UpdateTopicResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateTopicResponse{}
+	_body, _err := client.UpdateTopicWithOptions(instanceId, topicName, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
 	return _result, _err
 }
