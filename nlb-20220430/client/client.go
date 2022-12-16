@@ -2438,6 +2438,7 @@ type GetLoadBalancerAttributeResponseBody struct {
 	RegionId                     *string                                                           `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	RequestId                    *string                                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ResourceGroupId              *string                                                           `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	SecurityGroupIds             []*string                                                         `json:"SecurityGroupIds,omitempty" xml:"SecurityGroupIds,omitempty" type:"Repeated"`
 	VpcId                        *string                                                           `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 	ZoneMappings                 []*GetLoadBalancerAttributeResponseBodyZoneMappings               `json:"ZoneMappings,omitempty" xml:"ZoneMappings,omitempty" type:"Repeated"`
 }
@@ -2547,6 +2548,11 @@ func (s *GetLoadBalancerAttributeResponseBody) SetRequestId(v string) *GetLoadBa
 
 func (s *GetLoadBalancerAttributeResponseBody) SetResourceGroupId(v string) *GetLoadBalancerAttributeResponseBody {
 	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *GetLoadBalancerAttributeResponseBody) SetSecurityGroupIds(v []*string) *GetLoadBalancerAttributeResponseBody {
+	s.SecurityGroupIds = v
 	return s
 }
 
@@ -4843,6 +4849,192 @@ func (s *ListTagResourcesResponse) SetStatusCode(v int32) *ListTagResourcesRespo
 }
 
 func (s *ListTagResourcesResponse) SetBody(v *ListTagResourcesResponseBody) *ListTagResourcesResponse {
+	s.Body = v
+	return s
+}
+
+type LoadBalancerJoinSecurityGroupRequest struct {
+	ClientToken      *string   `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DryRun           *bool     `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	LoadBalancerId   *string   `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	RegionId         *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	SecurityGroupIds []*string `json:"SecurityGroupIds,omitempty" xml:"SecurityGroupIds,omitempty" type:"Repeated"`
+}
+
+func (s LoadBalancerJoinSecurityGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s LoadBalancerJoinSecurityGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *LoadBalancerJoinSecurityGroupRequest) SetClientToken(v string) *LoadBalancerJoinSecurityGroupRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *LoadBalancerJoinSecurityGroupRequest) SetDryRun(v bool) *LoadBalancerJoinSecurityGroupRequest {
+	s.DryRun = &v
+	return s
+}
+
+func (s *LoadBalancerJoinSecurityGroupRequest) SetLoadBalancerId(v string) *LoadBalancerJoinSecurityGroupRequest {
+	s.LoadBalancerId = &v
+	return s
+}
+
+func (s *LoadBalancerJoinSecurityGroupRequest) SetRegionId(v string) *LoadBalancerJoinSecurityGroupRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *LoadBalancerJoinSecurityGroupRequest) SetSecurityGroupIds(v []*string) *LoadBalancerJoinSecurityGroupRequest {
+	s.SecurityGroupIds = v
+	return s
+}
+
+type LoadBalancerJoinSecurityGroupResponseBody struct {
+	JobId     *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s LoadBalancerJoinSecurityGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s LoadBalancerJoinSecurityGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *LoadBalancerJoinSecurityGroupResponseBody) SetJobId(v string) *LoadBalancerJoinSecurityGroupResponseBody {
+	s.JobId = &v
+	return s
+}
+
+func (s *LoadBalancerJoinSecurityGroupResponseBody) SetRequestId(v string) *LoadBalancerJoinSecurityGroupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type LoadBalancerJoinSecurityGroupResponse struct {
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *LoadBalancerJoinSecurityGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s LoadBalancerJoinSecurityGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s LoadBalancerJoinSecurityGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *LoadBalancerJoinSecurityGroupResponse) SetHeaders(v map[string]*string) *LoadBalancerJoinSecurityGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *LoadBalancerJoinSecurityGroupResponse) SetStatusCode(v int32) *LoadBalancerJoinSecurityGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *LoadBalancerJoinSecurityGroupResponse) SetBody(v *LoadBalancerJoinSecurityGroupResponseBody) *LoadBalancerJoinSecurityGroupResponse {
+	s.Body = v
+	return s
+}
+
+type LoadBalancerLeaveSecurityGroupRequest struct {
+	ClientToken      *string   `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DryRun           *bool     `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	LoadBalancerId   *string   `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	RegionId         *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	SecurityGroupIds []*string `json:"SecurityGroupIds,omitempty" xml:"SecurityGroupIds,omitempty" type:"Repeated"`
+}
+
+func (s LoadBalancerLeaveSecurityGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s LoadBalancerLeaveSecurityGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *LoadBalancerLeaveSecurityGroupRequest) SetClientToken(v string) *LoadBalancerLeaveSecurityGroupRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *LoadBalancerLeaveSecurityGroupRequest) SetDryRun(v bool) *LoadBalancerLeaveSecurityGroupRequest {
+	s.DryRun = &v
+	return s
+}
+
+func (s *LoadBalancerLeaveSecurityGroupRequest) SetLoadBalancerId(v string) *LoadBalancerLeaveSecurityGroupRequest {
+	s.LoadBalancerId = &v
+	return s
+}
+
+func (s *LoadBalancerLeaveSecurityGroupRequest) SetRegionId(v string) *LoadBalancerLeaveSecurityGroupRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *LoadBalancerLeaveSecurityGroupRequest) SetSecurityGroupIds(v []*string) *LoadBalancerLeaveSecurityGroupRequest {
+	s.SecurityGroupIds = v
+	return s
+}
+
+type LoadBalancerLeaveSecurityGroupResponseBody struct {
+	JobId     *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s LoadBalancerLeaveSecurityGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s LoadBalancerLeaveSecurityGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *LoadBalancerLeaveSecurityGroupResponseBody) SetJobId(v string) *LoadBalancerLeaveSecurityGroupResponseBody {
+	s.JobId = &v
+	return s
+}
+
+func (s *LoadBalancerLeaveSecurityGroupResponseBody) SetRequestId(v string) *LoadBalancerLeaveSecurityGroupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type LoadBalancerLeaveSecurityGroupResponse struct {
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *LoadBalancerLeaveSecurityGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s LoadBalancerLeaveSecurityGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s LoadBalancerLeaveSecurityGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *LoadBalancerLeaveSecurityGroupResponse) SetHeaders(v map[string]*string) *LoadBalancerLeaveSecurityGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *LoadBalancerLeaveSecurityGroupResponse) SetStatusCode(v int32) *LoadBalancerLeaveSecurityGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *LoadBalancerLeaveSecurityGroupResponse) SetBody(v *LoadBalancerLeaveSecurityGroupResponseBody) *LoadBalancerLeaveSecurityGroupResponse {
 	s.Body = v
 	return s
 }
@@ -8414,6 +8606,126 @@ func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_resul
 	runtime := &util.RuntimeOptions{}
 	_result = &ListTagResourcesResponse{}
 	_body, _err := client.ListTagResourcesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) LoadBalancerJoinSecurityGroupWithOptions(request *LoadBalancerJoinSecurityGroupRequest, runtime *util.RuntimeOptions) (_result *LoadBalancerJoinSecurityGroupResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		body["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		body["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LoadBalancerId)) {
+		body["LoadBalancerId"] = request.LoadBalancerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		body["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityGroupIds)) {
+		body["SecurityGroupIds"] = request.SecurityGroupIds
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("LoadBalancerJoinSecurityGroup"),
+		Version:     tea.String("2022-04-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &LoadBalancerJoinSecurityGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) LoadBalancerJoinSecurityGroup(request *LoadBalancerJoinSecurityGroupRequest) (_result *LoadBalancerJoinSecurityGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &LoadBalancerJoinSecurityGroupResponse{}
+	_body, _err := client.LoadBalancerJoinSecurityGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) LoadBalancerLeaveSecurityGroupWithOptions(request *LoadBalancerLeaveSecurityGroupRequest, runtime *util.RuntimeOptions) (_result *LoadBalancerLeaveSecurityGroupResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		body["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		body["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LoadBalancerId)) {
+		body["LoadBalancerId"] = request.LoadBalancerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		body["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityGroupIds)) {
+		body["SecurityGroupIds"] = request.SecurityGroupIds
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("LoadBalancerLeaveSecurityGroup"),
+		Version:     tea.String("2022-04-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &LoadBalancerLeaveSecurityGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) LoadBalancerLeaveSecurityGroup(request *LoadBalancerLeaveSecurityGroupRequest) (_result *LoadBalancerLeaveSecurityGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &LoadBalancerLeaveSecurityGroupResponse{}
+	_body, _err := client.LoadBalancerLeaveSecurityGroupWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
