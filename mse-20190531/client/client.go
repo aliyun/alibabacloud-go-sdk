@@ -24690,7 +24690,9 @@ type ModifyLosslessRuleRequest struct {
 	// *   `false`: disables the rule.
 	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
 	// The slope of the prefetching curve.
-	FuncType *int64 `json:"FuncType,omitempty" xml:"FuncType,omitempty"`
+	FuncType       *int64 `json:"FuncType,omitempty" xml:"FuncType,omitempty"`
+	LossLessDetail *bool  `json:"LossLessDetail,omitempty" xml:"LossLessDetail,omitempty"`
+	Notice         *bool  `json:"Notice,omitempty" xml:"Notice,omitempty"`
 	// The region ID.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// Specifies whether to associate readiness probe with service prefetching.
@@ -24743,6 +24745,16 @@ func (s *ModifyLosslessRuleRequest) SetEnable(v bool) *ModifyLosslessRuleRequest
 
 func (s *ModifyLosslessRuleRequest) SetFuncType(v int64) *ModifyLosslessRuleRequest {
 	s.FuncType = &v
+	return s
+}
+
+func (s *ModifyLosslessRuleRequest) SetLossLessDetail(v bool) *ModifyLosslessRuleRequest {
+	s.LossLessDetail = &v
+	return s
+}
+
+func (s *ModifyLosslessRuleRequest) SetNotice(v bool) *ModifyLosslessRuleRequest {
+	s.Notice = &v
 	return s
 }
 
@@ -41378,6 +41390,14 @@ func (client *Client) ModifyLosslessRuleWithOptions(request *ModifyLosslessRuleR
 
 	if !tea.BoolValue(util.IsUnset(request.FuncType)) {
 		query["FuncType"] = request.FuncType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LossLessDetail)) {
+		query["LossLessDetail"] = request.LossLessDetail
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Notice)) {
+		query["Notice"] = request.Notice
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {

@@ -1,3 +1,6 @@
+2022-12-16 Version: v3.0.3111
+- Supported active notification and process details for losslessRule.
+
 2022-12-16 Version: v3.0.3110
 - Supported For Plugin Market v2.
 - Support For Plugin Log.
