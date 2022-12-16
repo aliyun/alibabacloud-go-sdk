@@ -18339,6 +18339,7 @@ func (s *UserQueryResponseBodyModule) SetTotal(v int64) *UserQueryResponseBodyMo
 
 type UserQueryResponseBodyModuleItems struct {
 	EmployeeNick        *string `json:"employee_nick,omitempty" xml:"employee_nick,omitempty"`
+	LeaveStatus         *int32  `json:"leave_status,omitempty" xml:"leave_status,omitempty"`
 	ThirdPartEmployeeId *string `json:"third_part_employee_id,omitempty" xml:"third_part_employee_id,omitempty"`
 	ThirdPartJobNo      *string `json:"third_part_job_no,omitempty" xml:"third_part_job_no,omitempty"`
 }
@@ -18353,6 +18354,11 @@ func (s UserQueryResponseBodyModuleItems) GoString() string {
 
 func (s *UserQueryResponseBodyModuleItems) SetEmployeeNick(v string) *UserQueryResponseBodyModuleItems {
 	s.EmployeeNick = &v
+	return s
+}
+
+func (s *UserQueryResponseBodyModuleItems) SetLeaveStatus(v int32) *UserQueryResponseBodyModuleItems {
+	s.LeaveStatus = &v
 	return s
 }
 
