@@ -2043,7 +2043,6 @@ func (s *InterpolateVideoFrameResponse) SetBody(v *InterpolateVideoFrameResponse
 }
 
 type MergeVideoFaceRequest struct {
-	PostURL      *string `json:"PostURL,omitempty" xml:"PostURL,omitempty"`
 	ReferenceURL *string `json:"ReferenceURL,omitempty" xml:"ReferenceURL,omitempty"`
 	VideoURL     *string `json:"VideoURL,omitempty" xml:"VideoURL,omitempty"`
 }
@@ -2054,11 +2053,6 @@ func (s MergeVideoFaceRequest) String() string {
 
 func (s MergeVideoFaceRequest) GoString() string {
 	return s.String()
-}
-
-func (s *MergeVideoFaceRequest) SetPostURL(v string) *MergeVideoFaceRequest {
-	s.PostURL = &v
-	return s
 }
 
 func (s *MergeVideoFaceRequest) SetReferenceURL(v string) *MergeVideoFaceRequest {
@@ -2072,7 +2066,6 @@ func (s *MergeVideoFaceRequest) SetVideoURL(v string) *MergeVideoFaceRequest {
 }
 
 type MergeVideoFaceAdvanceRequest struct {
-	PostURLObject      io.Reader `json:"PostURL,omitempty" xml:"PostURL,omitempty"`
 	ReferenceURLObject io.Reader `json:"ReferenceURL,omitempty" xml:"ReferenceURL,omitempty"`
 	VideoURLObject     io.Reader `json:"VideoURL,omitempty" xml:"VideoURL,omitempty"`
 }
@@ -2083,11 +2076,6 @@ func (s MergeVideoFaceAdvanceRequest) String() string {
 
 func (s MergeVideoFaceAdvanceRequest) GoString() string {
 	return s.String()
-}
-
-func (s *MergeVideoFaceAdvanceRequest) SetPostURLObject(v io.Reader) *MergeVideoFaceAdvanceRequest {
-	s.PostURLObject = v
-	return s
 }
 
 func (s *MergeVideoFaceAdvanceRequest) SetReferenceURLObject(v io.Reader) *MergeVideoFaceAdvanceRequest {
@@ -4644,10 +4632,6 @@ func (client *Client) MergeVideoFaceWithOptions(request *MergeVideoFaceRequest, 
 		return _result, _err
 	}
 	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.PostURL)) {
-		body["PostURL"] = request.PostURL
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.ReferenceURL)) {
 		body["ReferenceURL"] = request.ReferenceURL
 	}
@@ -4750,43 +4734,6 @@ func (client *Client) MergeVideoFaceAdvance(request *MergeVideoFaceAdvanceReques
 	openapiutil.Convert(runtime, ossRuntime)
 	mergeVideoFaceReq := &MergeVideoFaceRequest{}
 	openapiutil.Convert(request, mergeVideoFaceReq)
-	if !tea.BoolValue(util.IsUnset(request.PostURLObject)) {
-		authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-
-		ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
-		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
-		ossClient, _err = oss.NewClient(ossConfig)
-		if _err != nil {
-			return _result, _err
-		}
-
-		fileObj = &fileform.FileField{
-			Filename:    authResponse.Body.ObjectKey,
-			Content:     request.PostURLObject,
-			ContentType: tea.String(""),
-		}
-		ossHeader = &oss.PostObjectRequestHeader{
-			AccessKeyId:         authResponse.Body.AccessKeyId,
-			Policy:              authResponse.Body.EncodedPolicy,
-			Signature:           authResponse.Body.Signature,
-			Key:                 authResponse.Body.ObjectKey,
-			File:                fileObj,
-			SuccessActionStatus: tea.String("201"),
-		}
-		uploadRequest = &oss.PostObjectRequest{
-			BucketName: authResponse.Body.Bucket,
-			Header:     ossHeader,
-		}
-		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
-		if _err != nil {
-			return _result, _err
-		}
-		mergeVideoFaceReq.PostURL = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.ReferenceURLObject)) {
 		authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
 		if _err != nil {
