@@ -1,3 +1,6 @@
+2022-12-16 Version: v2.0.3
+- Additional API parameters.
+
 2022-10-19 Version: v2.0.2
 - Complete Request Body.
 

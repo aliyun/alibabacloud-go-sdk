@@ -2344,8 +2344,8 @@ func (s *CreateDataStreamResponse) SetBody(v *CreateDataStreamResponseBody) *Cre
 }
 
 type CreateDataTasksRequest struct {
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	Body        *string `json:"body,omitempty" xml:"body,omitempty"`
+	ClientToken *string                       `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	Body        []*CreateDataTasksRequestBody `json:"body,omitempty" xml:"body,omitempty" type:"Repeated"`
 }
 
 func (s CreateDataTasksRequest) String() string {
@@ -2361,8 +2361,178 @@ func (s *CreateDataTasksRequest) SetClientToken(v string) *CreateDataTasksReques
 	return s
 }
 
-func (s *CreateDataTasksRequest) SetBody(v string) *CreateDataTasksRequest {
-	s.Body = &v
+func (s *CreateDataTasksRequest) SetBody(v []*CreateDataTasksRequestBody) *CreateDataTasksRequest {
+	s.Body = v
+	return s
+}
+
+type CreateDataTasksRequestBody struct {
+	MigrateConfig *CreateDataTasksRequestBodyMigrateConfig `json:"migrateConfig,omitempty" xml:"migrateConfig,omitempty" type:"Struct"`
+	SinkCluster   *CreateDataTasksRequestBodySinkCluster   `json:"sinkCluster,omitempty" xml:"sinkCluster,omitempty" type:"Struct"`
+	SourceCluster *CreateDataTasksRequestBodySourceCluster `json:"sourceCluster,omitempty" xml:"sourceCluster,omitempty" type:"Struct"`
+}
+
+func (s CreateDataTasksRequestBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDataTasksRequestBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDataTasksRequestBody) SetMigrateConfig(v *CreateDataTasksRequestBodyMigrateConfig) *CreateDataTasksRequestBody {
+	s.MigrateConfig = v
+	return s
+}
+
+func (s *CreateDataTasksRequestBody) SetSinkCluster(v *CreateDataTasksRequestBodySinkCluster) *CreateDataTasksRequestBody {
+	s.SinkCluster = v
+	return s
+}
+
+func (s *CreateDataTasksRequestBody) SetSourceCluster(v *CreateDataTasksRequestBodySourceCluster) *CreateDataTasksRequestBody {
+	s.SourceCluster = v
+	return s
+}
+
+type CreateDataTasksRequestBodyMigrateConfig struct {
+	SourceFilterParams *string `json:"sourceFilterParams,omitempty" xml:"sourceFilterParams,omitempty"`
+}
+
+func (s CreateDataTasksRequestBodyMigrateConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDataTasksRequestBodyMigrateConfig) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDataTasksRequestBodyMigrateConfig) SetSourceFilterParams(v string) *CreateDataTasksRequestBodyMigrateConfig {
+	s.SourceFilterParams = &v
+	return s
+}
+
+type CreateDataTasksRequestBodySinkCluster struct {
+	DataSourceType *string `json:"dataSourceType,omitempty" xml:"dataSourceType,omitempty"`
+	Index          *string `json:"index,omitempty" xml:"index,omitempty"`
+	Mapping        *string `json:"mapping,omitempty" xml:"mapping,omitempty"`
+	Password       *string `json:"password,omitempty" xml:"password,omitempty"`
+	Routing        *string `json:"routing,omitempty" xml:"routing,omitempty"`
+	Settings       *string `json:"settings,omitempty" xml:"settings,omitempty"`
+	Type           *string `json:"type,omitempty" xml:"type,omitempty"`
+	Username       *string `json:"username,omitempty" xml:"username,omitempty"`
+}
+
+func (s CreateDataTasksRequestBodySinkCluster) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDataTasksRequestBodySinkCluster) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDataTasksRequestBodySinkCluster) SetDataSourceType(v string) *CreateDataTasksRequestBodySinkCluster {
+	s.DataSourceType = &v
+	return s
+}
+
+func (s *CreateDataTasksRequestBodySinkCluster) SetIndex(v string) *CreateDataTasksRequestBodySinkCluster {
+	s.Index = &v
+	return s
+}
+
+func (s *CreateDataTasksRequestBodySinkCluster) SetMapping(v string) *CreateDataTasksRequestBodySinkCluster {
+	s.Mapping = &v
+	return s
+}
+
+func (s *CreateDataTasksRequestBodySinkCluster) SetPassword(v string) *CreateDataTasksRequestBodySinkCluster {
+	s.Password = &v
+	return s
+}
+
+func (s *CreateDataTasksRequestBodySinkCluster) SetRouting(v string) *CreateDataTasksRequestBodySinkCluster {
+	s.Routing = &v
+	return s
+}
+
+func (s *CreateDataTasksRequestBodySinkCluster) SetSettings(v string) *CreateDataTasksRequestBodySinkCluster {
+	s.Settings = &v
+	return s
+}
+
+func (s *CreateDataTasksRequestBodySinkCluster) SetType(v string) *CreateDataTasksRequestBodySinkCluster {
+	s.Type = &v
+	return s
+}
+
+func (s *CreateDataTasksRequestBodySinkCluster) SetUsername(v string) *CreateDataTasksRequestBodySinkCluster {
+	s.Username = &v
+	return s
+}
+
+type CreateDataTasksRequestBodySourceCluster struct {
+	DataSourceType  *string `json:"dataSourceType,omitempty" xml:"dataSourceType,omitempty"`
+	Endpoint        *string `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
+	Index           *string `json:"index,omitempty" xml:"index,omitempty"`
+	Password        *string `json:"password,omitempty" xml:"password,omitempty"`
+	Type            *string `json:"type,omitempty" xml:"type,omitempty"`
+	Username        *string `json:"username,omitempty" xml:"username,omitempty"`
+	VpcId           *string `json:"vpcId,omitempty" xml:"vpcId,omitempty"`
+	VpcInstanceId   *string `json:"vpcInstanceId,omitempty" xml:"vpcInstanceId,omitempty"`
+	VpcInstancePort *int32  `json:"vpcInstancePort,omitempty" xml:"vpcInstancePort,omitempty"`
+}
+
+func (s CreateDataTasksRequestBodySourceCluster) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDataTasksRequestBodySourceCluster) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDataTasksRequestBodySourceCluster) SetDataSourceType(v string) *CreateDataTasksRequestBodySourceCluster {
+	s.DataSourceType = &v
+	return s
+}
+
+func (s *CreateDataTasksRequestBodySourceCluster) SetEndpoint(v string) *CreateDataTasksRequestBodySourceCluster {
+	s.Endpoint = &v
+	return s
+}
+
+func (s *CreateDataTasksRequestBodySourceCluster) SetIndex(v string) *CreateDataTasksRequestBodySourceCluster {
+	s.Index = &v
+	return s
+}
+
+func (s *CreateDataTasksRequestBodySourceCluster) SetPassword(v string) *CreateDataTasksRequestBodySourceCluster {
+	s.Password = &v
+	return s
+}
+
+func (s *CreateDataTasksRequestBodySourceCluster) SetType(v string) *CreateDataTasksRequestBodySourceCluster {
+	s.Type = &v
+	return s
+}
+
+func (s *CreateDataTasksRequestBodySourceCluster) SetUsername(v string) *CreateDataTasksRequestBodySourceCluster {
+	s.Username = &v
+	return s
+}
+
+func (s *CreateDataTasksRequestBodySourceCluster) SetVpcId(v string) *CreateDataTasksRequestBodySourceCluster {
+	s.VpcId = &v
+	return s
+}
+
+func (s *CreateDataTasksRequestBodySourceCluster) SetVpcInstanceId(v string) *CreateDataTasksRequestBodySourceCluster {
+	s.VpcInstanceId = &v
+	return s
+}
+
+func (s *CreateDataTasksRequestBodySourceCluster) SetVpcInstancePort(v int32) *CreateDataTasksRequestBodySourceCluster {
+	s.VpcInstancePort = &v
 	return s
 }
 
@@ -14458,19 +14628,20 @@ func (s *ListInstanceResponse) SetBody(v *ListInstanceResponseBody) *ListInstanc
 }
 
 type ListInstanceHistoryEventsRequest struct {
-	EventCreateEndTime    *string   `json:"eventCreateEndTime,omitempty" xml:"eventCreateEndTime,omitempty"`
-	EventCreateStartTime  *string   `json:"eventCreateStartTime,omitempty" xml:"eventCreateStartTime,omitempty"`
-	EventCycleStatus      []*string `json:"eventCycleStatus,omitempty" xml:"eventCycleStatus,omitempty" type:"Repeated"`
-	EventExecuteEndTime   *string   `json:"eventExecuteEndTime,omitempty" xml:"eventExecuteEndTime,omitempty"`
-	EventExecuteStartTime *string   `json:"eventExecuteStartTime,omitempty" xml:"eventExecuteStartTime,omitempty"`
-	EventFinashEndTime    *string   `json:"eventFinashEndTime,omitempty" xml:"eventFinashEndTime,omitempty"`
-	EventFinashStartTime  *string   `json:"eventFinashStartTime,omitempty" xml:"eventFinashStartTime,omitempty"`
-	EventLevel            []*string `json:"eventLevel,omitempty" xml:"eventLevel,omitempty" type:"Repeated"`
-	EventType             []*string `json:"eventType,omitempty" xml:"eventType,omitempty" type:"Repeated"`
-	InstanceId            *string   `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	NodeIP                *string   `json:"nodeIP,omitempty" xml:"nodeIP,omitempty"`
-	Page                  *int32    `json:"page,omitempty" xml:"page,omitempty"`
-	Size                  *int32    `json:"size,omitempty" xml:"size,omitempty"`
+	Body                  []*ListInstanceHistoryEventsRequestBody `json:"body,omitempty" xml:"body,omitempty" type:"Repeated"`
+	EventCreateEndTime    *string                                 `json:"eventCreateEndTime,omitempty" xml:"eventCreateEndTime,omitempty"`
+	EventCreateStartTime  *string                                 `json:"eventCreateStartTime,omitempty" xml:"eventCreateStartTime,omitempty"`
+	EventCycleStatus      []*string                               `json:"eventCycleStatus,omitempty" xml:"eventCycleStatus,omitempty" type:"Repeated"`
+	EventExecuteEndTime   *string                                 `json:"eventExecuteEndTime,omitempty" xml:"eventExecuteEndTime,omitempty"`
+	EventExecuteStartTime *string                                 `json:"eventExecuteStartTime,omitempty" xml:"eventExecuteStartTime,omitempty"`
+	EventFinashEndTime    *string                                 `json:"eventFinashEndTime,omitempty" xml:"eventFinashEndTime,omitempty"`
+	EventFinashStartTime  *string                                 `json:"eventFinashStartTime,omitempty" xml:"eventFinashStartTime,omitempty"`
+	EventLevel            []*string                               `json:"eventLevel,omitempty" xml:"eventLevel,omitempty" type:"Repeated"`
+	EventType             []*string                               `json:"eventType,omitempty" xml:"eventType,omitempty" type:"Repeated"`
+	InstanceId            *string                                 `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	NodeIP                *string                                 `json:"nodeIP,omitempty" xml:"nodeIP,omitempty"`
+	Page                  *int32                                  `json:"page,omitempty" xml:"page,omitempty"`
+	Size                  *int32                                  `json:"size,omitempty" xml:"size,omitempty"`
 }
 
 func (s ListInstanceHistoryEventsRequest) String() string {
@@ -14479,6 +14650,11 @@ func (s ListInstanceHistoryEventsRequest) String() string {
 
 func (s ListInstanceHistoryEventsRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ListInstanceHistoryEventsRequest) SetBody(v []*ListInstanceHistoryEventsRequestBody) *ListInstanceHistoryEventsRequest {
+	s.Body = v
+	return s
 }
 
 func (s *ListInstanceHistoryEventsRequest) SetEventCreateEndTime(v string) *ListInstanceHistoryEventsRequest {
@@ -14546,20 +14722,44 @@ func (s *ListInstanceHistoryEventsRequest) SetSize(v int32) *ListInstanceHistory
 	return s
 }
 
+type ListInstanceHistoryEventsRequestBody struct {
+	Desc      *bool   `json:"desc,omitempty" xml:"desc,omitempty"`
+	SortField *string `json:"sortField,omitempty" xml:"sortField,omitempty"`
+}
+
+func (s ListInstanceHistoryEventsRequestBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInstanceHistoryEventsRequestBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListInstanceHistoryEventsRequestBody) SetDesc(v bool) *ListInstanceHistoryEventsRequestBody {
+	s.Desc = &v
+	return s
+}
+
+func (s *ListInstanceHistoryEventsRequestBody) SetSortField(v string) *ListInstanceHistoryEventsRequestBody {
+	s.SortField = &v
+	return s
+}
+
 type ListInstanceHistoryEventsShrinkRequest struct {
-	EventCreateEndTime     *string `json:"eventCreateEndTime,omitempty" xml:"eventCreateEndTime,omitempty"`
-	EventCreateStartTime   *string `json:"eventCreateStartTime,omitempty" xml:"eventCreateStartTime,omitempty"`
-	EventCycleStatusShrink *string `json:"eventCycleStatus,omitempty" xml:"eventCycleStatus,omitempty"`
-	EventExecuteEndTime    *string `json:"eventExecuteEndTime,omitempty" xml:"eventExecuteEndTime,omitempty"`
-	EventExecuteStartTime  *string `json:"eventExecuteStartTime,omitempty" xml:"eventExecuteStartTime,omitempty"`
-	EventFinashEndTime     *string `json:"eventFinashEndTime,omitempty" xml:"eventFinashEndTime,omitempty"`
-	EventFinashStartTime   *string `json:"eventFinashStartTime,omitempty" xml:"eventFinashStartTime,omitempty"`
-	EventLevelShrink       *string `json:"eventLevel,omitempty" xml:"eventLevel,omitempty"`
-	EventTypeShrink        *string `json:"eventType,omitempty" xml:"eventType,omitempty"`
-	InstanceId             *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	NodeIP                 *string `json:"nodeIP,omitempty" xml:"nodeIP,omitempty"`
-	Page                   *int32  `json:"page,omitempty" xml:"page,omitempty"`
-	Size                   *int32  `json:"size,omitempty" xml:"size,omitempty"`
+	Body                   []*ListInstanceHistoryEventsShrinkRequestBody `json:"body,omitempty" xml:"body,omitempty" type:"Repeated"`
+	EventCreateEndTime     *string                                       `json:"eventCreateEndTime,omitempty" xml:"eventCreateEndTime,omitempty"`
+	EventCreateStartTime   *string                                       `json:"eventCreateStartTime,omitempty" xml:"eventCreateStartTime,omitempty"`
+	EventCycleStatusShrink *string                                       `json:"eventCycleStatus,omitempty" xml:"eventCycleStatus,omitempty"`
+	EventExecuteEndTime    *string                                       `json:"eventExecuteEndTime,omitempty" xml:"eventExecuteEndTime,omitempty"`
+	EventExecuteStartTime  *string                                       `json:"eventExecuteStartTime,omitempty" xml:"eventExecuteStartTime,omitempty"`
+	EventFinashEndTime     *string                                       `json:"eventFinashEndTime,omitempty" xml:"eventFinashEndTime,omitempty"`
+	EventFinashStartTime   *string                                       `json:"eventFinashStartTime,omitempty" xml:"eventFinashStartTime,omitempty"`
+	EventLevelShrink       *string                                       `json:"eventLevel,omitempty" xml:"eventLevel,omitempty"`
+	EventTypeShrink        *string                                       `json:"eventType,omitempty" xml:"eventType,omitempty"`
+	InstanceId             *string                                       `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	NodeIP                 *string                                       `json:"nodeIP,omitempty" xml:"nodeIP,omitempty"`
+	Page                   *int32                                        `json:"page,omitempty" xml:"page,omitempty"`
+	Size                   *int32                                        `json:"size,omitempty" xml:"size,omitempty"`
 }
 
 func (s ListInstanceHistoryEventsShrinkRequest) String() string {
@@ -14568,6 +14768,11 @@ func (s ListInstanceHistoryEventsShrinkRequest) String() string {
 
 func (s ListInstanceHistoryEventsShrinkRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ListInstanceHistoryEventsShrinkRequest) SetBody(v []*ListInstanceHistoryEventsShrinkRequestBody) *ListInstanceHistoryEventsShrinkRequest {
+	s.Body = v
+	return s
 }
 
 func (s *ListInstanceHistoryEventsShrinkRequest) SetEventCreateEndTime(v string) *ListInstanceHistoryEventsShrinkRequest {
@@ -14632,6 +14837,29 @@ func (s *ListInstanceHistoryEventsShrinkRequest) SetPage(v int32) *ListInstanceH
 
 func (s *ListInstanceHistoryEventsShrinkRequest) SetSize(v int32) *ListInstanceHistoryEventsShrinkRequest {
 	s.Size = &v
+	return s
+}
+
+type ListInstanceHistoryEventsShrinkRequestBody struct {
+	Desc      *bool   `json:"desc,omitempty" xml:"desc,omitempty"`
+	SortField *string `json:"sortField,omitempty" xml:"sortField,omitempty"`
+}
+
+func (s ListInstanceHistoryEventsShrinkRequestBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInstanceHistoryEventsShrinkRequestBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListInstanceHistoryEventsShrinkRequestBody) SetDesc(v bool) *ListInstanceHistoryEventsShrinkRequestBody {
+	s.Desc = &v
+	return s
+}
+
+func (s *ListInstanceHistoryEventsShrinkRequestBody) SetSortField(v string) *ListInstanceHistoryEventsShrinkRequestBody {
+	s.SortField = &v
 	return s
 }
 
@@ -15134,7 +15362,6 @@ func (s *ListKibanaPluginsResponse) SetBody(v *ListKibanaPluginsResponseBody) *L
 type ListLogstashRequest struct {
 	Description     *string `json:"description,omitempty" xml:"description,omitempty"`
 	InstanceId      *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	OwnerId         *string `json:"ownerId,omitempty" xml:"ownerId,omitempty"`
 	Page            *int32  `json:"page,omitempty" xml:"page,omitempty"`
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
 	Size            *int32  `json:"size,omitempty" xml:"size,omitempty"`
@@ -15157,11 +15384,6 @@ func (s *ListLogstashRequest) SetDescription(v string) *ListLogstashRequest {
 
 func (s *ListLogstashRequest) SetInstanceId(v string) *ListLogstashRequest {
 	s.InstanceId = &v
-	return s
-}
-
-func (s *ListLogstashRequest) SetOwnerId(v string) *ListLogstashRequest {
-	s.OwnerId = &v
 	return s
 }
 
@@ -16727,12 +16949,14 @@ func (s *ListSnapshotReposByInstanceIdResponse) SetBody(v *ListSnapshotReposByIn
 }
 
 type ListTagResourcesRequest struct {
-	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// Deprecated
 	Page         *int32  `json:"Page,omitempty" xml:"Page,omitempty"`
 	ResourceIds  *string `json:"ResourceIds,omitempty" xml:"ResourceIds,omitempty"`
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	Size         *int32  `json:"Size,omitempty" xml:"Size,omitempty"`
-	Tags         *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// Deprecated
+	Size *int32  `json:"Size,omitempty" xml:"Size,omitempty"`
+	Tags *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 }
 
 func (s ListTagResourcesRequest) String() string {
@@ -25507,18 +25731,6 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
-func (client *Client) ActivateZones(InstanceId *string, request *ActivateZonesRequest) (_result *ActivateZonesResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ActivateZonesResponse{}
-	_body, _err := client.ActivateZonesWithOptions(InstanceId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) ActivateZonesWithOptions(InstanceId *string, request *ActivateZonesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ActivateZonesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -25554,11 +25766,11 @@ func (client *Client) ActivateZonesWithOptions(InstanceId *string, request *Acti
 	return _result, _err
 }
 
-func (client *Client) AddConnectableCluster(InstanceId *string, request *AddConnectableClusterRequest) (_result *AddConnectableClusterResponse, _err error) {
+func (client *Client) ActivateZones(InstanceId *string, request *ActivateZonesRequest) (_result *ActivateZonesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &AddConnectableClusterResponse{}
-	_body, _err := client.AddConnectableClusterWithOptions(InstanceId, request, headers, runtime)
+	_result = &ActivateZonesResponse{}
+	_body, _err := client.ActivateZonesWithOptions(InstanceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -25601,11 +25813,11 @@ func (client *Client) AddConnectableClusterWithOptions(InstanceId *string, reque
 	return _result, _err
 }
 
-func (client *Client) AddSnapshotRepo(InstanceId *string, request *AddSnapshotRepoRequest) (_result *AddSnapshotRepoResponse, _err error) {
+func (client *Client) AddConnectableCluster(InstanceId *string, request *AddConnectableClusterRequest) (_result *AddConnectableClusterResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &AddSnapshotRepoResponse{}
-	_body, _err := client.AddSnapshotRepoWithOptions(InstanceId, request, headers, runtime)
+	_result = &AddConnectableClusterResponse{}
+	_body, _err := client.AddConnectableClusterWithOptions(InstanceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -25642,11 +25854,11 @@ func (client *Client) AddSnapshotRepoWithOptions(InstanceId *string, request *Ad
 	return _result, _err
 }
 
-func (client *Client) CancelDeletion(InstanceId *string, request *CancelDeletionRequest) (_result *CancelDeletionResponse, _err error) {
+func (client *Client) AddSnapshotRepo(InstanceId *string, request *AddSnapshotRepoRequest) (_result *AddSnapshotRepoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &CancelDeletionResponse{}
-	_body, _err := client.CancelDeletionWithOptions(InstanceId, request, headers, runtime)
+	_result = &AddSnapshotRepoResponse{}
+	_body, _err := client.AddSnapshotRepoWithOptions(InstanceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -25688,11 +25900,11 @@ func (client *Client) CancelDeletionWithOptions(InstanceId *string, request *Can
 	return _result, _err
 }
 
-func (client *Client) CancelLogstashDeletion(InstanceId *string, request *CancelLogstashDeletionRequest) (_result *CancelLogstashDeletionResponse, _err error) {
+func (client *Client) CancelDeletion(InstanceId *string, request *CancelDeletionRequest) (_result *CancelDeletionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &CancelLogstashDeletionResponse{}
-	_body, _err := client.CancelLogstashDeletionWithOptions(InstanceId, request, headers, runtime)
+	_result = &CancelDeletionResponse{}
+	_body, _err := client.CancelDeletionWithOptions(InstanceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -25734,11 +25946,11 @@ func (client *Client) CancelLogstashDeletionWithOptions(InstanceId *string, requ
 	return _result, _err
 }
 
-func (client *Client) CancelTask(InstanceId *string, request *CancelTaskRequest) (_result *CancelTaskResponse, _err error) {
+func (client *Client) CancelLogstashDeletion(InstanceId *string, request *CancelLogstashDeletionRequest) (_result *CancelLogstashDeletionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &CancelTaskResponse{}
-	_body, _err := client.CancelTaskWithOptions(InstanceId, request, headers, runtime)
+	_result = &CancelLogstashDeletionResponse{}
+	_body, _err := client.CancelLogstashDeletionWithOptions(InstanceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -25784,11 +25996,11 @@ func (client *Client) CancelTaskWithOptions(InstanceId *string, request *CancelT
 	return _result, _err
 }
 
-func (client *Client) CapacityPlan(request *CapacityPlanRequest) (_result *CapacityPlanResponse, _err error) {
+func (client *Client) CancelTask(InstanceId *string, request *CancelTaskRequest) (_result *CancelTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &CapacityPlanResponse{}
-	_body, _err := client.CapacityPlanWithOptions(request, headers, runtime)
+	_result = &CancelTaskResponse{}
+	_body, _err := client.CancelTaskWithOptions(InstanceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -25842,11 +26054,11 @@ func (client *Client) CapacityPlanWithOptions(request *CapacityPlanRequest, head
 	return _result, _err
 }
 
-func (client *Client) CloseDiagnosis(InstanceId *string, request *CloseDiagnosisRequest) (_result *CloseDiagnosisResponse, _err error) {
+func (client *Client) CapacityPlan(request *CapacityPlanRequest) (_result *CapacityPlanResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &CloseDiagnosisResponse{}
-	_body, _err := client.CloseDiagnosisWithOptions(InstanceId, request, headers, runtime)
+	_result = &CapacityPlanResponse{}
+	_body, _err := client.CapacityPlanWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -25892,11 +26104,11 @@ func (client *Client) CloseDiagnosisWithOptions(InstanceId *string, request *Clo
 	return _result, _err
 }
 
-func (client *Client) CloseHttps(InstanceId *string, request *CloseHttpsRequest) (_result *CloseHttpsResponse, _err error) {
+func (client *Client) CloseDiagnosis(InstanceId *string, request *CloseDiagnosisRequest) (_result *CloseDiagnosisResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &CloseHttpsResponse{}
-	_body, _err := client.CloseHttpsWithOptions(InstanceId, request, headers, runtime)
+	_result = &CloseDiagnosisResponse{}
+	_body, _err := client.CloseDiagnosisWithOptions(InstanceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -25938,11 +26150,11 @@ func (client *Client) CloseHttpsWithOptions(InstanceId *string, request *CloseHt
 	return _result, _err
 }
 
-func (client *Client) CloseManagedIndex(InstanceId *string, Index *string, request *CloseManagedIndexRequest) (_result *CloseManagedIndexResponse, _err error) {
+func (client *Client) CloseHttps(InstanceId *string, request *CloseHttpsRequest) (_result *CloseHttpsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &CloseManagedIndexResponse{}
-	_body, _err := client.CloseManagedIndexWithOptions(InstanceId, Index, request, headers, runtime)
+	_result = &CloseHttpsResponse{}
+	_body, _err := client.CloseHttpsWithOptions(InstanceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -25984,11 +26196,11 @@ func (client *Client) CloseManagedIndexWithOptions(InstanceId *string, Index *st
 	return _result, _err
 }
 
-func (client *Client) CreateCollector(request *CreateCollectorRequest) (_result *CreateCollectorResponse, _err error) {
+func (client *Client) CloseManagedIndex(InstanceId *string, Index *string, request *CloseManagedIndexRequest) (_result *CloseManagedIndexResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &CreateCollectorResponse{}
-	_body, _err := client.CreateCollectorWithOptions(request, headers, runtime)
+	_result = &CloseManagedIndexResponse{}
+	_body, _err := client.CloseManagedIndexWithOptions(InstanceId, Index, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -26031,11 +26243,11 @@ func (client *Client) CreateCollectorWithOptions(request *CreateCollectorRequest
 	return _result, _err
 }
 
-func (client *Client) CreateComponentIndex(InstanceId *string, name *string, request *CreateComponentIndexRequest) (_result *CreateComponentIndexResponse, _err error) {
+func (client *Client) CreateCollector(request *CreateCollectorRequest) (_result *CreateCollectorResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &CreateComponentIndexResponse{}
-	_body, _err := client.CreateComponentIndexWithOptions(InstanceId, name, request, headers, runtime)
+	_result = &CreateCollectorResponse{}
+	_body, _err := client.CreateCollectorWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -26053,7 +26265,7 @@ func (client *Client) CreateComponentIndexWithOptions(InstanceId *string, name *
 		body["_meta"] = request.Meta
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.Template))) {
+	if !tea.BoolValue(util.IsUnset(request.Template)) {
 		body["template"] = request.Template
 	}
 
@@ -26081,11 +26293,11 @@ func (client *Client) CreateComponentIndexWithOptions(InstanceId *string, name *
 	return _result, _err
 }
 
-func (client *Client) CreateDataStream(InstanceId *string, request *CreateDataStreamRequest) (_result *CreateDataStreamResponse, _err error) {
+func (client *Client) CreateComponentIndex(InstanceId *string, name *string, request *CreateComponentIndexRequest) (_result *CreateComponentIndexResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &CreateDataStreamResponse{}
-	_body, _err := client.CreateDataStreamWithOptions(InstanceId, request, headers, runtime)
+	_result = &CreateComponentIndexResponse{}
+	_body, _err := client.CreateComponentIndexWithOptions(InstanceId, name, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -26128,11 +26340,11 @@ func (client *Client) CreateDataStreamWithOptions(InstanceId *string, request *C
 	return _result, _err
 }
 
-func (client *Client) CreateDataTasks(InstanceId *string, request *CreateDataTasksRequest) (_result *CreateDataTasksResponse, _err error) {
+func (client *Client) CreateDataStream(InstanceId *string, request *CreateDataStreamRequest) (_result *CreateDataStreamResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &CreateDataTasksResponse{}
-	_body, _err := client.CreateDataTasksWithOptions(InstanceId, request, headers, runtime)
+	_result = &CreateDataStreamResponse{}
+	_body, _err := client.CreateDataStreamWithOptions(InstanceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -26153,7 +26365,7 @@ func (client *Client) CreateDataTasksWithOptions(InstanceId *string, request *Cr
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),
-		Body:    request.Body,
+		Body:    util.ToArray(request.Body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateDataTasks"),
@@ -26175,11 +26387,11 @@ func (client *Client) CreateDataTasksWithOptions(InstanceId *string, request *Cr
 	return _result, _err
 }
 
-func (client *Client) CreateILMPolicy(InstanceId *string, request *CreateILMPolicyRequest) (_result *CreateILMPolicyResponse, _err error) {
+func (client *Client) CreateDataTasks(InstanceId *string, request *CreateDataTasksRequest) (_result *CreateDataTasksResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &CreateILMPolicyResponse{}
-	_body, _err := client.CreateILMPolicyWithOptions(InstanceId, request, headers, runtime)
+	_result = &CreateDataTasksResponse{}
+	_body, _err := client.CreateDataTasksWithOptions(InstanceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -26222,11 +26434,11 @@ func (client *Client) CreateILMPolicyWithOptions(InstanceId *string, request *Cr
 	return _result, _err
 }
 
-func (client *Client) CreateIndexTemplate(InstanceId *string, request *CreateIndexTemplateRequest) (_result *CreateIndexTemplateResponse, _err error) {
+func (client *Client) CreateILMPolicy(InstanceId *string, request *CreateILMPolicyRequest) (_result *CreateILMPolicyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &CreateIndexTemplateResponse{}
-	_body, _err := client.CreateIndexTemplateWithOptions(InstanceId, request, headers, runtime)
+	_result = &CreateILMPolicyResponse{}
+	_body, _err := client.CreateILMPolicyWithOptions(InstanceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -26269,11 +26481,11 @@ func (client *Client) CreateIndexTemplateWithOptions(InstanceId *string, request
 	return _result, _err
 }
 
-func (client *Client) CreateLogstash(request *CreateLogstashRequest) (_result *CreateLogstashResponse, _err error) {
+func (client *Client) CreateIndexTemplate(InstanceId *string, request *CreateIndexTemplateRequest) (_result *CreateIndexTemplateResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &CreateLogstashResponse{}
-	_body, _err := client.CreateLogstashWithOptions(request, headers, runtime)
+	_result = &CreateIndexTemplateResponse{}
+	_body, _err := client.CreateIndexTemplateWithOptions(InstanceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -26296,7 +26508,7 @@ func (client *Client) CreateLogstashWithOptions(request *CreateLogstashRequest, 
 		body["description"] = request.Description
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.NetworkConfig))) {
+	if !tea.BoolValue(util.IsUnset(request.NetworkConfig)) {
 		body["networkConfig"] = request.NetworkConfig
 	}
 
@@ -26304,11 +26516,11 @@ func (client *Client) CreateLogstashWithOptions(request *CreateLogstashRequest, 
 		body["nodeAmount"] = request.NodeAmount
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.NodeSpec))) {
+	if !tea.BoolValue(util.IsUnset(request.NodeSpec)) {
 		body["nodeSpec"] = request.NodeSpec
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.PaymentInfo))) {
+	if !tea.BoolValue(util.IsUnset(request.PaymentInfo)) {
 		body["paymentInfo"] = request.PaymentInfo
 	}
 
@@ -26345,11 +26557,11 @@ func (client *Client) CreateLogstashWithOptions(request *CreateLogstashRequest, 
 	return _result, _err
 }
 
-func (client *Client) CreatePipelines(InstanceId *string, request *CreatePipelinesRequest) (_result *CreatePipelinesResponse, _err error) {
+func (client *Client) CreateLogstash(request *CreateLogstashRequest) (_result *CreateLogstashResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &CreatePipelinesResponse{}
-	_body, _err := client.CreatePipelinesWithOptions(InstanceId, request, headers, runtime)
+	_result = &CreateLogstashResponse{}
+	_body, _err := client.CreateLogstashWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -26396,11 +26608,11 @@ func (client *Client) CreatePipelinesWithOptions(InstanceId *string, request *Cr
 	return _result, _err
 }
 
-func (client *Client) CreateSnapshot(InstanceId *string, request *CreateSnapshotRequest) (_result *CreateSnapshotResponse, _err error) {
+func (client *Client) CreatePipelines(InstanceId *string, request *CreatePipelinesRequest) (_result *CreatePipelinesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &CreateSnapshotResponse{}
-	_body, _err := client.CreateSnapshotWithOptions(InstanceId, request, headers, runtime)
+	_result = &CreatePipelinesResponse{}
+	_body, _err := client.CreatePipelinesWithOptions(InstanceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -26443,11 +26655,11 @@ func (client *Client) CreateSnapshotWithOptions(InstanceId *string, request *Cre
 	return _result, _err
 }
 
-func (client *Client) CreateVpcEndpoint(InstanceId *string, request *CreateVpcEndpointRequest) (_result *CreateVpcEndpointResponse, _err error) {
+func (client *Client) CreateSnapshot(InstanceId *string, request *CreateSnapshotRequest) (_result *CreateSnapshotResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &CreateVpcEndpointResponse{}
-	_body, _err := client.CreateVpcEndpointWithOptions(InstanceId, request, headers, runtime)
+	_result = &CreateSnapshotResponse{}
+	_body, _err := client.CreateSnapshotWithOptions(InstanceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -26503,11 +26715,11 @@ func (client *Client) CreateVpcEndpointWithOptions(InstanceId *string, request *
 	return _result, _err
 }
 
-func (client *Client) DeactivateZones(InstanceId *string, request *DeactivateZonesRequest) (_result *DeactivateZonesResponse, _err error) {
+func (client *Client) CreateVpcEndpoint(InstanceId *string, request *CreateVpcEndpointRequest) (_result *CreateVpcEndpointResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DeactivateZonesResponse{}
-	_body, _err := client.DeactivateZonesWithOptions(InstanceId, request, headers, runtime)
+	_result = &CreateVpcEndpointResponse{}
+	_body, _err := client.CreateVpcEndpointWithOptions(InstanceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -26550,11 +26762,11 @@ func (client *Client) DeactivateZonesWithOptions(InstanceId *string, request *De
 	return _result, _err
 }
 
-func (client *Client) DeleteCollector(ResId *string, request *DeleteCollectorRequest) (_result *DeleteCollectorResponse, _err error) {
+func (client *Client) DeactivateZones(InstanceId *string, request *DeactivateZonesRequest) (_result *DeactivateZonesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DeleteCollectorResponse{}
-	_body, _err := client.DeleteCollectorWithOptions(ResId, request, headers, runtime)
+	_result = &DeactivateZonesResponse{}
+	_body, _err := client.DeactivateZonesWithOptions(InstanceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -26596,11 +26808,11 @@ func (client *Client) DeleteCollectorWithOptions(ResId *string, request *DeleteC
 	return _result, _err
 }
 
-func (client *Client) DeleteComponentIndex(InstanceId *string, name *string) (_result *DeleteComponentIndexResponse, _err error) {
+func (client *Client) DeleteCollector(ResId *string, request *DeleteCollectorRequest) (_result *DeleteCollectorResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DeleteComponentIndexResponse{}
-	_body, _err := client.DeleteComponentIndexWithOptions(InstanceId, name, headers, runtime)
+	_result = &DeleteCollectorResponse{}
+	_body, _err := client.DeleteCollectorWithOptions(ResId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -26632,11 +26844,11 @@ func (client *Client) DeleteComponentIndexWithOptions(InstanceId *string, name *
 	return _result, _err
 }
 
-func (client *Client) DeleteConnectedCluster(InstanceId *string, request *DeleteConnectedClusterRequest) (_result *DeleteConnectedClusterResponse, _err error) {
+func (client *Client) DeleteComponentIndex(InstanceId *string, name *string) (_result *DeleteComponentIndexResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DeleteConnectedClusterResponse{}
-	_body, _err := client.DeleteConnectedClusterWithOptions(InstanceId, request, headers, runtime)
+	_result = &DeleteComponentIndexResponse{}
+	_body, _err := client.DeleteComponentIndexWithOptions(InstanceId, name, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -26682,11 +26894,11 @@ func (client *Client) DeleteConnectedClusterWithOptions(InstanceId *string, requ
 	return _result, _err
 }
 
-func (client *Client) DeleteDataStream(InstanceId *string, DataStream *string, request *DeleteDataStreamRequest) (_result *DeleteDataStreamResponse, _err error) {
+func (client *Client) DeleteConnectedCluster(InstanceId *string, request *DeleteConnectedClusterRequest) (_result *DeleteConnectedClusterResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DeleteDataStreamResponse{}
-	_body, _err := client.DeleteDataStreamWithOptions(InstanceId, DataStream, request, headers, runtime)
+	_result = &DeleteConnectedClusterResponse{}
+	_body, _err := client.DeleteConnectedClusterWithOptions(InstanceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -26728,11 +26940,11 @@ func (client *Client) DeleteDataStreamWithOptions(InstanceId *string, DataStream
 	return _result, _err
 }
 
-func (client *Client) DeleteDataTask(InstanceId *string, request *DeleteDataTaskRequest) (_result *DeleteDataTaskResponse, _err error) {
+func (client *Client) DeleteDataStream(InstanceId *string, DataStream *string, request *DeleteDataStreamRequest) (_result *DeleteDataStreamResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DeleteDataTaskResponse{}
-	_body, _err := client.DeleteDataTaskWithOptions(InstanceId, request, headers, runtime)
+	_result = &DeleteDataStreamResponse{}
+	_body, _err := client.DeleteDataStreamWithOptions(InstanceId, DataStream, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -26778,11 +26990,11 @@ func (client *Client) DeleteDataTaskWithOptions(InstanceId *string, request *Del
 	return _result, _err
 }
 
-func (client *Client) DeleteDeprecatedTemplate(InstanceId *string, name *string) (_result *DeleteDeprecatedTemplateResponse, _err error) {
+func (client *Client) DeleteDataTask(InstanceId *string, request *DeleteDataTaskRequest) (_result *DeleteDataTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DeleteDeprecatedTemplateResponse{}
-	_body, _err := client.DeleteDeprecatedTemplateWithOptions(InstanceId, name, headers, runtime)
+	_result = &DeleteDataTaskResponse{}
+	_body, _err := client.DeleteDataTaskWithOptions(InstanceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -26814,11 +27026,11 @@ func (client *Client) DeleteDeprecatedTemplateWithOptions(InstanceId *string, na
 	return _result, _err
 }
 
-func (client *Client) DeleteILMPolicy(InstanceId *string, PolicyName *string) (_result *DeleteILMPolicyResponse, _err error) {
+func (client *Client) DeleteDeprecatedTemplate(InstanceId *string, name *string) (_result *DeleteDeprecatedTemplateResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DeleteILMPolicyResponse{}
-	_body, _err := client.DeleteILMPolicyWithOptions(InstanceId, PolicyName, headers, runtime)
+	_result = &DeleteDeprecatedTemplateResponse{}
+	_body, _err := client.DeleteDeprecatedTemplateWithOptions(InstanceId, name, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -26850,11 +27062,11 @@ func (client *Client) DeleteILMPolicyWithOptions(InstanceId *string, PolicyName 
 	return _result, _err
 }
 
-func (client *Client) DeleteIndexTemplate(InstanceId *string, IndexTemplate *string) (_result *DeleteIndexTemplateResponse, _err error) {
+func (client *Client) DeleteILMPolicy(InstanceId *string, PolicyName *string) (_result *DeleteILMPolicyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DeleteIndexTemplateResponse{}
-	_body, _err := client.DeleteIndexTemplateWithOptions(InstanceId, IndexTemplate, headers, runtime)
+	_result = &DeleteILMPolicyResponse{}
+	_body, _err := client.DeleteILMPolicyWithOptions(InstanceId, PolicyName, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -26886,11 +27098,11 @@ func (client *Client) DeleteIndexTemplateWithOptions(InstanceId *string, IndexTe
 	return _result, _err
 }
 
-func (client *Client) DeleteInstance(InstanceId *string, request *DeleteInstanceRequest) (_result *DeleteInstanceResponse, _err error) {
+func (client *Client) DeleteIndexTemplate(InstanceId *string, IndexTemplate *string) (_result *DeleteIndexTemplateResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DeleteInstanceResponse{}
-	_body, _err := client.DeleteInstanceWithOptions(InstanceId, request, headers, runtime)
+	_result = &DeleteIndexTemplateResponse{}
+	_body, _err := client.DeleteIndexTemplateWithOptions(InstanceId, IndexTemplate, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -26936,11 +27148,11 @@ func (client *Client) DeleteInstanceWithOptions(InstanceId *string, request *Del
 	return _result, _err
 }
 
-func (client *Client) DeleteLogstash(InstanceId *string, request *DeleteLogstashRequest) (_result *DeleteLogstashResponse, _err error) {
+func (client *Client) DeleteInstance(InstanceId *string, request *DeleteInstanceRequest) (_result *DeleteInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DeleteLogstashResponse{}
-	_body, _err := client.DeleteLogstashWithOptions(InstanceId, request, headers, runtime)
+	_result = &DeleteInstanceResponse{}
+	_body, _err := client.DeleteInstanceWithOptions(InstanceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -26986,11 +27198,11 @@ func (client *Client) DeleteLogstashWithOptions(InstanceId *string, request *Del
 	return _result, _err
 }
 
-func (client *Client) DeletePipelines(InstanceId *string, request *DeletePipelinesRequest) (_result *DeletePipelinesResponse, _err error) {
+func (client *Client) DeleteLogstash(InstanceId *string, request *DeleteLogstashRequest) (_result *DeleteLogstashResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DeletePipelinesResponse{}
-	_body, _err := client.DeletePipelinesWithOptions(InstanceId, request, headers, runtime)
+	_result = &DeleteLogstashResponse{}
+	_body, _err := client.DeleteLogstashWithOptions(InstanceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -27036,11 +27248,11 @@ func (client *Client) DeletePipelinesWithOptions(InstanceId *string, request *De
 	return _result, _err
 }
 
-func (client *Client) DeleteSnapshotRepo(InstanceId *string, request *DeleteSnapshotRepoRequest) (_result *DeleteSnapshotRepoResponse, _err error) {
+func (client *Client) DeletePipelines(InstanceId *string, request *DeletePipelinesRequest) (_result *DeletePipelinesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DeleteSnapshotRepoResponse{}
-	_body, _err := client.DeleteSnapshotRepoWithOptions(InstanceId, request, headers, runtime)
+	_result = &DeletePipelinesResponse{}
+	_body, _err := client.DeletePipelinesWithOptions(InstanceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -27086,11 +27298,11 @@ func (client *Client) DeleteSnapshotRepoWithOptions(InstanceId *string, request 
 	return _result, _err
 }
 
-func (client *Client) DeleteVpcEndpoint(InstanceId *string, EndpointId *string, request *DeleteVpcEndpointRequest) (_result *DeleteVpcEndpointResponse, _err error) {
+func (client *Client) DeleteSnapshotRepo(InstanceId *string, request *DeleteSnapshotRepoRequest) (_result *DeleteSnapshotRepoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DeleteVpcEndpointResponse{}
-	_body, _err := client.DeleteVpcEndpointWithOptions(InstanceId, EndpointId, request, headers, runtime)
+	_result = &DeleteSnapshotRepoResponse{}
+	_body, _err := client.DeleteSnapshotRepoWithOptions(InstanceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -27132,11 +27344,11 @@ func (client *Client) DeleteVpcEndpointWithOptions(InstanceId *string, EndpointI
 	return _result, _err
 }
 
-func (client *Client) DescribeAckOperator(ClusterId *string) (_result *DescribeAckOperatorResponse, _err error) {
+func (client *Client) DeleteVpcEndpoint(InstanceId *string, EndpointId *string, request *DeleteVpcEndpointRequest) (_result *DeleteVpcEndpointResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DescribeAckOperatorResponse{}
-	_body, _err := client.DescribeAckOperatorWithOptions(ClusterId, headers, runtime)
+	_result = &DeleteVpcEndpointResponse{}
+	_body, _err := client.DeleteVpcEndpointWithOptions(InstanceId, EndpointId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -27168,11 +27380,11 @@ func (client *Client) DescribeAckOperatorWithOptions(ClusterId *string, headers 
 	return _result, _err
 }
 
-func (client *Client) DescribeApm(instanceId *string) (_result *DescribeApmResponse, _err error) {
+func (client *Client) DescribeAckOperator(ClusterId *string) (_result *DescribeAckOperatorResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DescribeApmResponse{}
-	_body, _err := client.DescribeApmWithOptions(instanceId, headers, runtime)
+	_result = &DescribeAckOperatorResponse{}
+	_body, _err := client.DescribeAckOperatorWithOptions(ClusterId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -27204,11 +27416,11 @@ func (client *Client) DescribeApmWithOptions(instanceId *string, headers map[str
 	return _result, _err
 }
 
-func (client *Client) DescribeCollector(ResId *string) (_result *DescribeCollectorResponse, _err error) {
+func (client *Client) DescribeApm(instanceId *string) (_result *DescribeApmResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DescribeCollectorResponse{}
-	_body, _err := client.DescribeCollectorWithOptions(ResId, headers, runtime)
+	_result = &DescribeApmResponse{}
+	_body, _err := client.DescribeApmWithOptions(instanceId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -27240,11 +27452,11 @@ func (client *Client) DescribeCollectorWithOptions(ResId *string, headers map[st
 	return _result, _err
 }
 
-func (client *Client) DescribeComponentIndex(InstanceId *string, name *string) (_result *DescribeComponentIndexResponse, _err error) {
+func (client *Client) DescribeCollector(ResId *string) (_result *DescribeCollectorResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DescribeComponentIndexResponse{}
-	_body, _err := client.DescribeComponentIndexWithOptions(InstanceId, name, headers, runtime)
+	_result = &DescribeCollectorResponse{}
+	_body, _err := client.DescribeCollectorWithOptions(ResId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -27276,11 +27488,11 @@ func (client *Client) DescribeComponentIndexWithOptions(InstanceId *string, name
 	return _result, _err
 }
 
-func (client *Client) DescribeConnectableClusters(InstanceId *string, request *DescribeConnectableClustersRequest) (_result *DescribeConnectableClustersResponse, _err error) {
+func (client *Client) DescribeComponentIndex(InstanceId *string, name *string) (_result *DescribeComponentIndexResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DescribeConnectableClustersResponse{}
-	_body, _err := client.DescribeConnectableClustersWithOptions(InstanceId, request, headers, runtime)
+	_result = &DescribeComponentIndexResponse{}
+	_body, _err := client.DescribeComponentIndexWithOptions(InstanceId, name, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -27322,11 +27534,11 @@ func (client *Client) DescribeConnectableClustersWithOptions(InstanceId *string,
 	return _result, _err
 }
 
-func (client *Client) DescribeDeprecatedTemplate(InstanceId *string, name *string) (_result *DescribeDeprecatedTemplateResponse, _err error) {
+func (client *Client) DescribeConnectableClusters(InstanceId *string, request *DescribeConnectableClustersRequest) (_result *DescribeConnectableClustersResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DescribeDeprecatedTemplateResponse{}
-	_body, _err := client.DescribeDeprecatedTemplateWithOptions(InstanceId, name, headers, runtime)
+	_result = &DescribeConnectableClustersResponse{}
+	_body, _err := client.DescribeConnectableClustersWithOptions(InstanceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -27358,11 +27570,11 @@ func (client *Client) DescribeDeprecatedTemplateWithOptions(InstanceId *string, 
 	return _result, _err
 }
 
-func (client *Client) DescribeDiagnoseReport(InstanceId *string, ReportId *string, request *DescribeDiagnoseReportRequest) (_result *DescribeDiagnoseReportResponse, _err error) {
+func (client *Client) DescribeDeprecatedTemplate(InstanceId *string, name *string) (_result *DescribeDeprecatedTemplateResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DescribeDiagnoseReportResponse{}
-	_body, _err := client.DescribeDiagnoseReportWithOptions(InstanceId, ReportId, request, headers, runtime)
+	_result = &DescribeDeprecatedTemplateResponse{}
+	_body, _err := client.DescribeDeprecatedTemplateWithOptions(InstanceId, name, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -27404,11 +27616,11 @@ func (client *Client) DescribeDiagnoseReportWithOptions(InstanceId *string, Repo
 	return _result, _err
 }
 
-func (client *Client) DescribeDiagnosisSettings(InstanceId *string, request *DescribeDiagnosisSettingsRequest) (_result *DescribeDiagnosisSettingsResponse, _err error) {
+func (client *Client) DescribeDiagnoseReport(InstanceId *string, ReportId *string, request *DescribeDiagnoseReportRequest) (_result *DescribeDiagnoseReportResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DescribeDiagnosisSettingsResponse{}
-	_body, _err := client.DescribeDiagnosisSettingsWithOptions(InstanceId, request, headers, runtime)
+	_result = &DescribeDiagnoseReportResponse{}
+	_body, _err := client.DescribeDiagnoseReportWithOptions(InstanceId, ReportId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -27450,11 +27662,11 @@ func (client *Client) DescribeDiagnosisSettingsWithOptions(InstanceId *string, r
 	return _result, _err
 }
 
-func (client *Client) DescribeDynamicSettings(InstanceId *string) (_result *DescribeDynamicSettingsResponse, _err error) {
+func (client *Client) DescribeDiagnosisSettings(InstanceId *string, request *DescribeDiagnosisSettingsRequest) (_result *DescribeDiagnosisSettingsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DescribeDynamicSettingsResponse{}
-	_body, _err := client.DescribeDynamicSettingsWithOptions(InstanceId, headers, runtime)
+	_result = &DescribeDiagnosisSettingsResponse{}
+	_body, _err := client.DescribeDiagnosisSettingsWithOptions(InstanceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -27486,11 +27698,11 @@ func (client *Client) DescribeDynamicSettingsWithOptions(InstanceId *string, hea
 	return _result, _err
 }
 
-func (client *Client) DescribeElasticsearchHealth(InstanceId *string) (_result *DescribeElasticsearchHealthResponse, _err error) {
+func (client *Client) DescribeDynamicSettings(InstanceId *string) (_result *DescribeDynamicSettingsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DescribeElasticsearchHealthResponse{}
-	_body, _err := client.DescribeElasticsearchHealthWithOptions(InstanceId, headers, runtime)
+	_result = &DescribeDynamicSettingsResponse{}
+	_body, _err := client.DescribeDynamicSettingsWithOptions(InstanceId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -27522,11 +27734,11 @@ func (client *Client) DescribeElasticsearchHealthWithOptions(InstanceId *string,
 	return _result, _err
 }
 
-func (client *Client) DescribeILMPolicy(InstanceId *string, PolicyName *string) (_result *DescribeILMPolicyResponse, _err error) {
+func (client *Client) DescribeElasticsearchHealth(InstanceId *string) (_result *DescribeElasticsearchHealthResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DescribeILMPolicyResponse{}
-	_body, _err := client.DescribeILMPolicyWithOptions(InstanceId, PolicyName, headers, runtime)
+	_result = &DescribeElasticsearchHealthResponse{}
+	_body, _err := client.DescribeElasticsearchHealthWithOptions(InstanceId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -27558,11 +27770,11 @@ func (client *Client) DescribeILMPolicyWithOptions(InstanceId *string, PolicyNam
 	return _result, _err
 }
 
-func (client *Client) DescribeIndexTemplate(InstanceId *string, IndexTemplate *string) (_result *DescribeIndexTemplateResponse, _err error) {
+func (client *Client) DescribeILMPolicy(InstanceId *string, PolicyName *string) (_result *DescribeILMPolicyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DescribeIndexTemplateResponse{}
-	_body, _err := client.DescribeIndexTemplateWithOptions(InstanceId, IndexTemplate, headers, runtime)
+	_result = &DescribeILMPolicyResponse{}
+	_body, _err := client.DescribeILMPolicyWithOptions(InstanceId, PolicyName, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -27594,11 +27806,11 @@ func (client *Client) DescribeIndexTemplateWithOptions(InstanceId *string, Index
 	return _result, _err
 }
 
-func (client *Client) DescribeInstance(InstanceId *string) (_result *DescribeInstanceResponse, _err error) {
+func (client *Client) DescribeIndexTemplate(InstanceId *string, IndexTemplate *string) (_result *DescribeIndexTemplateResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DescribeInstanceResponse{}
-	_body, _err := client.DescribeInstanceWithOptions(InstanceId, headers, runtime)
+	_result = &DescribeIndexTemplateResponse{}
+	_body, _err := client.DescribeIndexTemplateWithOptions(InstanceId, IndexTemplate, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -27630,11 +27842,11 @@ func (client *Client) DescribeInstanceWithOptions(InstanceId *string, headers ma
 	return _result, _err
 }
 
-func (client *Client) DescribeKibanaSettings(InstanceId *string) (_result *DescribeKibanaSettingsResponse, _err error) {
+func (client *Client) DescribeInstance(InstanceId *string) (_result *DescribeInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DescribeKibanaSettingsResponse{}
-	_body, _err := client.DescribeKibanaSettingsWithOptions(InstanceId, headers, runtime)
+	_result = &DescribeInstanceResponse{}
+	_body, _err := client.DescribeInstanceWithOptions(InstanceId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -27666,11 +27878,11 @@ func (client *Client) DescribeKibanaSettingsWithOptions(InstanceId *string, head
 	return _result, _err
 }
 
-func (client *Client) DescribeLogstash(InstanceId *string) (_result *DescribeLogstashResponse, _err error) {
+func (client *Client) DescribeKibanaSettings(InstanceId *string) (_result *DescribeKibanaSettingsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DescribeLogstashResponse{}
-	_body, _err := client.DescribeLogstashWithOptions(InstanceId, headers, runtime)
+	_result = &DescribeKibanaSettingsResponse{}
+	_body, _err := client.DescribeKibanaSettingsWithOptions(InstanceId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -27702,11 +27914,11 @@ func (client *Client) DescribeLogstashWithOptions(InstanceId *string, headers ma
 	return _result, _err
 }
 
-func (client *Client) DescribePipeline(InstanceId *string, PipelineId *string) (_result *DescribePipelineResponse, _err error) {
+func (client *Client) DescribeLogstash(InstanceId *string) (_result *DescribeLogstashResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DescribePipelineResponse{}
-	_body, _err := client.DescribePipelineWithOptions(InstanceId, PipelineId, headers, runtime)
+	_result = &DescribeLogstashResponse{}
+	_body, _err := client.DescribeLogstashWithOptions(InstanceId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -27738,11 +27950,11 @@ func (client *Client) DescribePipelineWithOptions(InstanceId *string, PipelineId
 	return _result, _err
 }
 
-func (client *Client) DescribePipelineManagementConfig(InstanceId *string, request *DescribePipelineManagementConfigRequest) (_result *DescribePipelineManagementConfigResponse, _err error) {
+func (client *Client) DescribePipeline(InstanceId *string, PipelineId *string) (_result *DescribePipelineResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DescribePipelineManagementConfigResponse{}
-	_body, _err := client.DescribePipelineManagementConfigWithOptions(InstanceId, request, headers, runtime)
+	_result = &DescribePipelineResponse{}
+	_body, _err := client.DescribePipelineWithOptions(InstanceId, PipelineId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -27784,11 +27996,11 @@ func (client *Client) DescribePipelineManagementConfigWithOptions(InstanceId *st
 	return _result, _err
 }
 
-func (client *Client) DescribeRegions() (_result *DescribeRegionsResponse, _err error) {
+func (client *Client) DescribePipelineManagementConfig(InstanceId *string, request *DescribePipelineManagementConfigRequest) (_result *DescribePipelineManagementConfigResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DescribeRegionsResponse{}
-	_body, _err := client.DescribeRegionsWithOptions(headers, runtime)
+	_result = &DescribePipelineManagementConfigResponse{}
+	_body, _err := client.DescribePipelineManagementConfigWithOptions(InstanceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -27820,11 +28032,11 @@ func (client *Client) DescribeRegionsWithOptions(headers map[string]*string, run
 	return _result, _err
 }
 
-func (client *Client) DescribeSnapshotSetting(InstanceId *string) (_result *DescribeSnapshotSettingResponse, _err error) {
+func (client *Client) DescribeRegions() (_result *DescribeRegionsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DescribeSnapshotSettingResponse{}
-	_body, _err := client.DescribeSnapshotSettingWithOptions(InstanceId, headers, runtime)
+	_result = &DescribeRegionsResponse{}
+	_body, _err := client.DescribeRegionsWithOptions(headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -27856,11 +28068,11 @@ func (client *Client) DescribeSnapshotSettingWithOptions(InstanceId *string, hea
 	return _result, _err
 }
 
-func (client *Client) DescribeTemplates(InstanceId *string) (_result *DescribeTemplatesResponse, _err error) {
+func (client *Client) DescribeSnapshotSetting(InstanceId *string) (_result *DescribeSnapshotSettingResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DescribeTemplatesResponse{}
-	_body, _err := client.DescribeTemplatesWithOptions(InstanceId, headers, runtime)
+	_result = &DescribeSnapshotSettingResponse{}
+	_body, _err := client.DescribeSnapshotSettingWithOptions(InstanceId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -27892,11 +28104,11 @@ func (client *Client) DescribeTemplatesWithOptions(InstanceId *string, headers m
 	return _result, _err
 }
 
-func (client *Client) DescribeXpackMonitorConfig(InstanceId *string) (_result *DescribeXpackMonitorConfigResponse, _err error) {
+func (client *Client) DescribeTemplates(InstanceId *string) (_result *DescribeTemplatesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DescribeXpackMonitorConfigResponse{}
-	_body, _err := client.DescribeXpackMonitorConfigWithOptions(InstanceId, headers, runtime)
+	_result = &DescribeTemplatesResponse{}
+	_body, _err := client.DescribeTemplatesWithOptions(InstanceId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -27928,11 +28140,11 @@ func (client *Client) DescribeXpackMonitorConfigWithOptions(InstanceId *string, 
 	return _result, _err
 }
 
-func (client *Client) DiagnoseInstance(InstanceId *string, request *DiagnoseInstanceRequest) (_result *DiagnoseInstanceResponse, _err error) {
+func (client *Client) DescribeXpackMonitorConfig(InstanceId *string) (_result *DescribeXpackMonitorConfigResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DiagnoseInstanceResponse{}
-	_body, _err := client.DiagnoseInstanceWithOptions(InstanceId, request, headers, runtime)
+	_result = &DescribeXpackMonitorConfigResponse{}
+	_body, _err := client.DescribeXpackMonitorConfigWithOptions(InstanceId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -27992,11 +28204,11 @@ func (client *Client) DiagnoseInstanceWithOptions(InstanceId *string, request *D
 	return _result, _err
 }
 
-func (client *Client) EstimatedLogstashRestartTime(InstanceId *string, request *EstimatedLogstashRestartTimeRequest) (_result *EstimatedLogstashRestartTimeResponse, _err error) {
+func (client *Client) DiagnoseInstance(InstanceId *string, request *DiagnoseInstanceRequest) (_result *DiagnoseInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &EstimatedLogstashRestartTimeResponse{}
-	_body, _err := client.EstimatedLogstashRestartTimeWithOptions(InstanceId, request, headers, runtime)
+	_result = &DiagnoseInstanceResponse{}
+	_body, _err := client.DiagnoseInstanceWithOptions(InstanceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -28039,11 +28251,11 @@ func (client *Client) EstimatedLogstashRestartTimeWithOptions(InstanceId *string
 	return _result, _err
 }
 
-func (client *Client) EstimatedRestartTime(InstanceId *string, request *EstimatedRestartTimeRequest) (_result *EstimatedRestartTimeResponse, _err error) {
+func (client *Client) EstimatedLogstashRestartTime(InstanceId *string, request *EstimatedLogstashRestartTimeRequest) (_result *EstimatedLogstashRestartTimeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &EstimatedRestartTimeResponse{}
-	_body, _err := client.EstimatedRestartTimeWithOptions(InstanceId, request, headers, runtime)
+	_result = &EstimatedLogstashRestartTimeResponse{}
+	_body, _err := client.EstimatedLogstashRestartTimeWithOptions(InstanceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -28086,11 +28298,11 @@ func (client *Client) EstimatedRestartTimeWithOptions(InstanceId *string, reques
 	return _result, _err
 }
 
-func (client *Client) GetClusterDataInformation(request *GetClusterDataInformationRequest) (_result *GetClusterDataInformationResponse, _err error) {
+func (client *Client) EstimatedRestartTime(InstanceId *string, request *EstimatedRestartTimeRequest) (_result *EstimatedRestartTimeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetClusterDataInformationResponse{}
-	_body, _err := client.GetClusterDataInformationWithOptions(request, headers, runtime)
+	_result = &EstimatedRestartTimeResponse{}
+	_body, _err := client.EstimatedRestartTimeWithOptions(InstanceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -28127,11 +28339,11 @@ func (client *Client) GetClusterDataInformationWithOptions(request *GetClusterDa
 	return _result, _err
 }
 
-func (client *Client) GetElastictask(InstanceId *string) (_result *GetElastictaskResponse, _err error) {
+func (client *Client) GetClusterDataInformation(request *GetClusterDataInformationRequest) (_result *GetClusterDataInformationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetElastictaskResponse{}
-	_body, _err := client.GetElastictaskWithOptions(InstanceId, headers, runtime)
+	_result = &GetClusterDataInformationResponse{}
+	_body, _err := client.GetClusterDataInformationWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -28163,11 +28375,11 @@ func (client *Client) GetElastictaskWithOptions(InstanceId *string, headers map[
 	return _result, _err
 }
 
-func (client *Client) GetEmonGrafanaAlerts(ProjectId *string, request *GetEmonGrafanaAlertsRequest) (_result *GetEmonGrafanaAlertsResponse, _err error) {
+func (client *Client) GetElastictask(InstanceId *string) (_result *GetElastictaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetEmonGrafanaAlertsResponse{}
-	_body, _err := client.GetEmonGrafanaAlertsWithOptions(ProjectId, request, headers, runtime)
+	_result = &GetElastictaskResponse{}
+	_body, _err := client.GetElastictaskWithOptions(InstanceId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -28204,11 +28416,11 @@ func (client *Client) GetEmonGrafanaAlertsWithOptions(ProjectId *string, request
 	return _result, _err
 }
 
-func (client *Client) GetEmonGrafanaDashboards(ProjectId *string, request *GetEmonGrafanaDashboardsRequest) (_result *GetEmonGrafanaDashboardsResponse, _err error) {
+func (client *Client) GetEmonGrafanaAlerts(ProjectId *string, request *GetEmonGrafanaAlertsRequest) (_result *GetEmonGrafanaAlertsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetEmonGrafanaDashboardsResponse{}
-	_body, _err := client.GetEmonGrafanaDashboardsWithOptions(ProjectId, request, headers, runtime)
+	_result = &GetEmonGrafanaAlertsResponse{}
+	_body, _err := client.GetEmonGrafanaAlertsWithOptions(ProjectId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -28245,11 +28457,11 @@ func (client *Client) GetEmonGrafanaDashboardsWithOptions(ProjectId *string, req
 	return _result, _err
 }
 
-func (client *Client) GetEmonMonitorData(ProjectId *string, request *GetEmonMonitorDataRequest) (_result *GetEmonMonitorDataResponse, _err error) {
+func (client *Client) GetEmonGrafanaDashboards(ProjectId *string, request *GetEmonGrafanaDashboardsRequest) (_result *GetEmonGrafanaDashboardsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetEmonMonitorDataResponse{}
-	_body, _err := client.GetEmonMonitorDataWithOptions(ProjectId, request, headers, runtime)
+	_result = &GetEmonGrafanaDashboardsResponse{}
+	_body, _err := client.GetEmonGrafanaDashboardsWithOptions(ProjectId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -28286,11 +28498,11 @@ func (client *Client) GetEmonMonitorDataWithOptions(ProjectId *string, request *
 	return _result, _err
 }
 
-func (client *Client) GetOpenStoreUsage(InstanceId *string) (_result *GetOpenStoreUsageResponse, _err error) {
+func (client *Client) GetEmonMonitorData(ProjectId *string, request *GetEmonMonitorDataRequest) (_result *GetEmonMonitorDataResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetOpenStoreUsageResponse{}
-	_body, _err := client.GetOpenStoreUsageWithOptions(InstanceId, headers, runtime)
+	_result = &GetEmonMonitorDataResponse{}
+	_body, _err := client.GetEmonMonitorDataWithOptions(ProjectId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -28322,11 +28534,11 @@ func (client *Client) GetOpenStoreUsageWithOptions(InstanceId *string, headers m
 	return _result, _err
 }
 
-func (client *Client) GetRegionConfiguration(request *GetRegionConfigurationRequest) (_result *GetRegionConfigurationResponse, _err error) {
+func (client *Client) GetOpenStoreUsage(InstanceId *string) (_result *GetOpenStoreUsageResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetRegionConfigurationResponse{}
-	_body, _err := client.GetRegionConfigurationWithOptions(request, headers, runtime)
+	_result = &GetOpenStoreUsageResponse{}
+	_body, _err := client.GetOpenStoreUsageWithOptions(InstanceId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -28368,11 +28580,11 @@ func (client *Client) GetRegionConfigurationWithOptions(request *GetRegionConfig
 	return _result, _err
 }
 
-func (client *Client) GetSuggestShrinkableNodes(InstanceId *string, request *GetSuggestShrinkableNodesRequest) (_result *GetSuggestShrinkableNodesResponse, _err error) {
+func (client *Client) GetRegionConfiguration(request *GetRegionConfigurationRequest) (_result *GetRegionConfigurationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetSuggestShrinkableNodesResponse{}
-	_body, _err := client.GetSuggestShrinkableNodesWithOptions(InstanceId, request, headers, runtime)
+	_result = &GetRegionConfigurationResponse{}
+	_body, _err := client.GetRegionConfigurationWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -28422,11 +28634,11 @@ func (client *Client) GetSuggestShrinkableNodesWithOptions(InstanceId *string, r
 	return _result, _err
 }
 
-func (client *Client) GetTransferableNodes(InstanceId *string, request *GetTransferableNodesRequest) (_result *GetTransferableNodesResponse, _err error) {
+func (client *Client) GetSuggestShrinkableNodes(InstanceId *string, request *GetSuggestShrinkableNodesRequest) (_result *GetSuggestShrinkableNodesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetTransferableNodesResponse{}
-	_body, _err := client.GetTransferableNodesWithOptions(InstanceId, request, headers, runtime)
+	_result = &GetSuggestShrinkableNodesResponse{}
+	_body, _err := client.GetSuggestShrinkableNodesWithOptions(InstanceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -28472,11 +28684,11 @@ func (client *Client) GetTransferableNodesWithOptions(InstanceId *string, reques
 	return _result, _err
 }
 
-func (client *Client) InitializeOperationRole(request *InitializeOperationRoleRequest) (_result *InitializeOperationRoleResponse, _err error) {
+func (client *Client) GetTransferableNodes(InstanceId *string, request *GetTransferableNodesRequest) (_result *GetTransferableNodesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &InitializeOperationRoleResponse{}
-	_body, _err := client.InitializeOperationRoleWithOptions(request, headers, runtime)
+	_result = &GetTransferableNodesResponse{}
+	_body, _err := client.GetTransferableNodesWithOptions(InstanceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -28519,11 +28731,11 @@ func (client *Client) InitializeOperationRoleWithOptions(request *InitializeOper
 	return _result, _err
 }
 
-func (client *Client) InstallAckOperator(ClusterId *string, request *InstallAckOperatorRequest) (_result *InstallAckOperatorResponse, _err error) {
+func (client *Client) InitializeOperationRole(request *InitializeOperationRoleRequest) (_result *InitializeOperationRoleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &InstallAckOperatorResponse{}
-	_body, _err := client.InstallAckOperatorWithOptions(ClusterId, request, headers, runtime)
+	_result = &InitializeOperationRoleResponse{}
+	_body, _err := client.InitializeOperationRoleWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -28566,11 +28778,11 @@ func (client *Client) InstallAckOperatorWithOptions(ClusterId *string, request *
 	return _result, _err
 }
 
-func (client *Client) InstallKibanaSystemPlugin(InstanceId *string, request *InstallKibanaSystemPluginRequest) (_result *InstallKibanaSystemPluginResponse, _err error) {
+func (client *Client) InstallAckOperator(ClusterId *string, request *InstallAckOperatorRequest) (_result *InstallAckOperatorResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &InstallKibanaSystemPluginResponse{}
-	_body, _err := client.InstallKibanaSystemPluginWithOptions(InstanceId, request, headers, runtime)
+	_result = &InstallAckOperatorResponse{}
+	_body, _err := client.InstallAckOperatorWithOptions(ClusterId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -28613,11 +28825,11 @@ func (client *Client) InstallKibanaSystemPluginWithOptions(InstanceId *string, r
 	return _result, _err
 }
 
-func (client *Client) InstallLogstashSystemPlugin(InstanceId *string, request *InstallLogstashSystemPluginRequest) (_result *InstallLogstashSystemPluginResponse, _err error) {
+func (client *Client) InstallKibanaSystemPlugin(InstanceId *string, request *InstallKibanaSystemPluginRequest) (_result *InstallKibanaSystemPluginResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &InstallLogstashSystemPluginResponse{}
-	_body, _err := client.InstallLogstashSystemPluginWithOptions(InstanceId, request, headers, runtime)
+	_result = &InstallKibanaSystemPluginResponse{}
+	_body, _err := client.InstallKibanaSystemPluginWithOptions(InstanceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -28660,11 +28872,11 @@ func (client *Client) InstallLogstashSystemPluginWithOptions(InstanceId *string,
 	return _result, _err
 }
 
-func (client *Client) InstallSystemPlugin(InstanceId *string, request *InstallSystemPluginRequest) (_result *InstallSystemPluginResponse, _err error) {
+func (client *Client) InstallLogstashSystemPlugin(InstanceId *string, request *InstallLogstashSystemPluginRequest) (_result *InstallLogstashSystemPluginResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &InstallSystemPluginResponse{}
-	_body, _err := client.InstallSystemPluginWithOptions(InstanceId, request, headers, runtime)
+	_result = &InstallLogstashSystemPluginResponse{}
+	_body, _err := client.InstallLogstashSystemPluginWithOptions(InstanceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -28707,11 +28919,11 @@ func (client *Client) InstallSystemPluginWithOptions(InstanceId *string, request
 	return _result, _err
 }
 
-func (client *Client) InstallUserPlugins(InstanceId *string, request *InstallUserPluginsRequest) (_result *InstallUserPluginsResponse, _err error) {
+func (client *Client) InstallSystemPlugin(InstanceId *string, request *InstallSystemPluginRequest) (_result *InstallSystemPluginResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &InstallUserPluginsResponse{}
-	_body, _err := client.InstallUserPluginsWithOptions(InstanceId, request, headers, runtime)
+	_result = &InstallSystemPluginResponse{}
+	_body, _err := client.InstallSystemPluginWithOptions(InstanceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -28748,11 +28960,11 @@ func (client *Client) InstallUserPluginsWithOptions(InstanceId *string, request 
 	return _result, _err
 }
 
-func (client *Client) InterruptElasticsearchTask(InstanceId *string, request *InterruptElasticsearchTaskRequest) (_result *InterruptElasticsearchTaskResponse, _err error) {
+func (client *Client) InstallUserPlugins(InstanceId *string, request *InstallUserPluginsRequest) (_result *InstallUserPluginsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &InterruptElasticsearchTaskResponse{}
-	_body, _err := client.InterruptElasticsearchTaskWithOptions(InstanceId, request, headers, runtime)
+	_result = &InstallUserPluginsResponse{}
+	_body, _err := client.InstallUserPluginsWithOptions(InstanceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -28794,11 +29006,11 @@ func (client *Client) InterruptElasticsearchTaskWithOptions(InstanceId *string, 
 	return _result, _err
 }
 
-func (client *Client) InterruptLogstashTask(InstanceId *string, request *InterruptLogstashTaskRequest) (_result *InterruptLogstashTaskResponse, _err error) {
+func (client *Client) InterruptElasticsearchTask(InstanceId *string, request *InterruptElasticsearchTaskRequest) (_result *InterruptElasticsearchTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &InterruptLogstashTaskResponse{}
-	_body, _err := client.InterruptLogstashTaskWithOptions(InstanceId, request, headers, runtime)
+	_result = &InterruptElasticsearchTaskResponse{}
+	_body, _err := client.InterruptElasticsearchTaskWithOptions(InstanceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -28840,11 +29052,11 @@ func (client *Client) InterruptLogstashTaskWithOptions(InstanceId *string, reque
 	return _result, _err
 }
 
-func (client *Client) ListAckClusters(request *ListAckClustersRequest) (_result *ListAckClustersResponse, _err error) {
+func (client *Client) InterruptLogstashTask(InstanceId *string, request *InterruptLogstashTaskRequest) (_result *InterruptLogstashTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListAckClustersResponse{}
-	_body, _err := client.ListAckClustersWithOptions(request, headers, runtime)
+	_result = &InterruptLogstashTaskResponse{}
+	_body, _err := client.InterruptLogstashTaskWithOptions(InstanceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -28894,11 +29106,11 @@ func (client *Client) ListAckClustersWithOptions(request *ListAckClustersRequest
 	return _result, _err
 }
 
-func (client *Client) ListAckNamespaces(ClusterId *string, request *ListAckNamespacesRequest) (_result *ListAckNamespacesResponse, _err error) {
+func (client *Client) ListAckClusters(request *ListAckClustersRequest) (_result *ListAckClustersResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListAckNamespacesResponse{}
-	_body, _err := client.ListAckNamespacesWithOptions(ClusterId, request, headers, runtime)
+	_result = &ListAckClustersResponse{}
+	_body, _err := client.ListAckClustersWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -28944,11 +29156,11 @@ func (client *Client) ListAckNamespacesWithOptions(ClusterId *string, request *L
 	return _result, _err
 }
 
-func (client *Client) ListActionRecords(InstanceId *string, request *ListActionRecordsRequest) (_result *ListActionRecordsResponse, _err error) {
+func (client *Client) ListAckNamespaces(ClusterId *string, request *ListAckNamespacesRequest) (_result *ListAckNamespacesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListActionRecordsResponse{}
-	_body, _err := client.ListActionRecordsWithOptions(InstanceId, request, headers, runtime)
+	_result = &ListAckNamespacesResponse{}
+	_body, _err := client.ListAckNamespacesWithOptions(ClusterId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -29018,11 +29230,11 @@ func (client *Client) ListActionRecordsWithOptions(InstanceId *string, request *
 	return _result, _err
 }
 
-func (client *Client) ListAllNode(InstanceId *string, request *ListAllNodeRequest) (_result *ListAllNodeResponse, _err error) {
+func (client *Client) ListActionRecords(InstanceId *string, request *ListActionRecordsRequest) (_result *ListActionRecordsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListAllNodeResponse{}
-	_body, _err := client.ListAllNodeWithOptions(InstanceId, request, headers, runtime)
+	_result = &ListActionRecordsResponse{}
+	_body, _err := client.ListActionRecordsWithOptions(InstanceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -29064,11 +29276,11 @@ func (client *Client) ListAllNodeWithOptions(InstanceId *string, request *ListAl
 	return _result, _err
 }
 
-func (client *Client) ListAlternativeSnapshotRepos(InstanceId *string, request *ListAlternativeSnapshotReposRequest) (_result *ListAlternativeSnapshotReposResponse, _err error) {
+func (client *Client) ListAllNode(InstanceId *string, request *ListAllNodeRequest) (_result *ListAllNodeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListAlternativeSnapshotReposResponse{}
-	_body, _err := client.ListAlternativeSnapshotReposWithOptions(InstanceId, request, headers, runtime)
+	_result = &ListAllNodeResponse{}
+	_body, _err := client.ListAllNodeWithOptions(InstanceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -29110,11 +29322,11 @@ func (client *Client) ListAlternativeSnapshotReposWithOptions(InstanceId *string
 	return _result, _err
 }
 
-func (client *Client) ListApm(request *ListApmRequest) (_result *ListApmResponse, _err error) {
+func (client *Client) ListAlternativeSnapshotRepos(InstanceId *string, request *ListAlternativeSnapshotReposRequest) (_result *ListAlternativeSnapshotReposResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListApmResponse{}
-	_body, _err := client.ListApmWithOptions(request, headers, runtime)
+	_result = &ListAlternativeSnapshotReposResponse{}
+	_body, _err := client.ListAlternativeSnapshotReposWithOptions(InstanceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -29172,11 +29384,11 @@ func (client *Client) ListApmWithOptions(request *ListApmRequest, headers map[st
 	return _result, _err
 }
 
-func (client *Client) ListAvailableEsInstanceIds(InstanceId *string) (_result *ListAvailableEsInstanceIdsResponse, _err error) {
+func (client *Client) ListApm(request *ListApmRequest) (_result *ListApmResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListAvailableEsInstanceIdsResponse{}
-	_body, _err := client.ListAvailableEsInstanceIdsWithOptions(InstanceId, headers, runtime)
+	_result = &ListApmResponse{}
+	_body, _err := client.ListApmWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -29208,11 +29420,11 @@ func (client *Client) ListAvailableEsInstanceIdsWithOptions(InstanceId *string, 
 	return _result, _err
 }
 
-func (client *Client) ListCollectors(request *ListCollectorsRequest) (_result *ListCollectorsResponse, _err error) {
+func (client *Client) ListAvailableEsInstanceIds(InstanceId *string) (_result *ListAvailableEsInstanceIdsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListCollectorsResponse{}
-	_body, _err := client.ListCollectorsWithOptions(request, headers, runtime)
+	_result = &ListAvailableEsInstanceIdsResponse{}
+	_body, _err := client.ListAvailableEsInstanceIdsWithOptions(InstanceId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -29274,11 +29486,11 @@ func (client *Client) ListCollectorsWithOptions(request *ListCollectorsRequest, 
 	return _result, _err
 }
 
-func (client *Client) ListComponentIndices(InstanceId *string, request *ListComponentIndicesRequest) (_result *ListComponentIndicesResponse, _err error) {
+func (client *Client) ListCollectors(request *ListCollectorsRequest) (_result *ListCollectorsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListComponentIndicesResponse{}
-	_body, _err := client.ListComponentIndicesWithOptions(InstanceId, request, headers, runtime)
+	_result = &ListCollectorsResponse{}
+	_body, _err := client.ListCollectorsWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -29328,11 +29540,11 @@ func (client *Client) ListComponentIndicesWithOptions(InstanceId *string, reques
 	return _result, _err
 }
 
-func (client *Client) ListConnectedClusters(InstanceId *string) (_result *ListConnectedClustersResponse, _err error) {
+func (client *Client) ListComponentIndices(InstanceId *string, request *ListComponentIndicesRequest) (_result *ListComponentIndicesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListConnectedClustersResponse{}
-	_body, _err := client.ListConnectedClustersWithOptions(InstanceId, headers, runtime)
+	_result = &ListComponentIndicesResponse{}
+	_body, _err := client.ListComponentIndicesWithOptions(InstanceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -29364,11 +29576,11 @@ func (client *Client) ListConnectedClustersWithOptions(InstanceId *string, heade
 	return _result, _err
 }
 
-func (client *Client) ListDataStreams(InstanceId *string, request *ListDataStreamsRequest) (_result *ListDataStreamsResponse, _err error) {
+func (client *Client) ListConnectedClusters(InstanceId *string) (_result *ListConnectedClustersResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListDataStreamsResponse{}
-	_body, _err := client.ListDataStreamsWithOptions(InstanceId, request, headers, runtime)
+	_result = &ListConnectedClustersResponse{}
+	_body, _err := client.ListConnectedClustersWithOptions(InstanceId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -29414,11 +29626,11 @@ func (client *Client) ListDataStreamsWithOptions(InstanceId *string, request *Li
 	return _result, _err
 }
 
-func (client *Client) ListDataTasks(InstanceId *string) (_result *ListDataTasksResponse, _err error) {
+func (client *Client) ListDataStreams(InstanceId *string, request *ListDataStreamsRequest) (_result *ListDataStreamsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListDataTasksResponse{}
-	_body, _err := client.ListDataTasksWithOptions(InstanceId, headers, runtime)
+	_result = &ListDataStreamsResponse{}
+	_body, _err := client.ListDataStreamsWithOptions(InstanceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -29450,11 +29662,11 @@ func (client *Client) ListDataTasksWithOptions(InstanceId *string, headers map[s
 	return _result, _err
 }
 
-func (client *Client) ListDefaultCollectorConfigurations(request *ListDefaultCollectorConfigurationsRequest) (_result *ListDefaultCollectorConfigurationsResponse, _err error) {
+func (client *Client) ListDataTasks(InstanceId *string) (_result *ListDataTasksResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListDefaultCollectorConfigurationsResponse{}
-	_body, _err := client.ListDefaultCollectorConfigurationsWithOptions(request, headers, runtime)
+	_result = &ListDataTasksResponse{}
+	_body, _err := client.ListDataTasksWithOptions(InstanceId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -29504,11 +29716,11 @@ func (client *Client) ListDefaultCollectorConfigurationsWithOptions(request *Lis
 	return _result, _err
 }
 
-func (client *Client) ListDeprecatedTemplates(InstanceId *string, request *ListDeprecatedTemplatesRequest) (_result *ListDeprecatedTemplatesResponse, _err error) {
+func (client *Client) ListDefaultCollectorConfigurations(request *ListDefaultCollectorConfigurationsRequest) (_result *ListDefaultCollectorConfigurationsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListDeprecatedTemplatesResponse{}
-	_body, _err := client.ListDeprecatedTemplatesWithOptions(InstanceId, request, headers, runtime)
+	_result = &ListDefaultCollectorConfigurationsResponse{}
+	_body, _err := client.ListDefaultCollectorConfigurationsWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -29558,11 +29770,11 @@ func (client *Client) ListDeprecatedTemplatesWithOptions(InstanceId *string, req
 	return _result, _err
 }
 
-func (client *Client) ListDiagnoseIndices(InstanceId *string, request *ListDiagnoseIndicesRequest) (_result *ListDiagnoseIndicesResponse, _err error) {
+func (client *Client) ListDeprecatedTemplates(InstanceId *string, request *ListDeprecatedTemplatesRequest) (_result *ListDeprecatedTemplatesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListDiagnoseIndicesResponse{}
-	_body, _err := client.ListDiagnoseIndicesWithOptions(InstanceId, request, headers, runtime)
+	_result = &ListDeprecatedTemplatesResponse{}
+	_body, _err := client.ListDeprecatedTemplatesWithOptions(InstanceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -29604,11 +29816,11 @@ func (client *Client) ListDiagnoseIndicesWithOptions(InstanceId *string, request
 	return _result, _err
 }
 
-func (client *Client) ListDiagnoseReport(InstanceId *string, request *ListDiagnoseReportRequest) (_result *ListDiagnoseReportResponse, _err error) {
+func (client *Client) ListDiagnoseIndices(InstanceId *string, request *ListDiagnoseIndicesRequest) (_result *ListDiagnoseIndicesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListDiagnoseReportResponse{}
-	_body, _err := client.ListDiagnoseReportWithOptions(InstanceId, request, headers, runtime)
+	_result = &ListDiagnoseIndicesResponse{}
+	_body, _err := client.ListDiagnoseIndicesWithOptions(InstanceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -29674,11 +29886,11 @@ func (client *Client) ListDiagnoseReportWithOptions(InstanceId *string, request 
 	return _result, _err
 }
 
-func (client *Client) ListDiagnoseReportIds(InstanceId *string, request *ListDiagnoseReportIdsRequest) (_result *ListDiagnoseReportIdsResponse, _err error) {
+func (client *Client) ListDiagnoseReport(InstanceId *string, request *ListDiagnoseReportRequest) (_result *ListDiagnoseReportResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListDiagnoseReportIdsResponse{}
-	_body, _err := client.ListDiagnoseReportIdsWithOptions(InstanceId, request, headers, runtime)
+	_result = &ListDiagnoseReportResponse{}
+	_body, _err := client.ListDiagnoseReportWithOptions(InstanceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -29740,11 +29952,11 @@ func (client *Client) ListDiagnoseReportIdsWithOptions(InstanceId *string, reque
 	return _result, _err
 }
 
-func (client *Client) ListDictInformation(InstanceId *string, request *ListDictInformationRequest) (_result *ListDictInformationResponse, _err error) {
+func (client *Client) ListDiagnoseReportIds(InstanceId *string, request *ListDiagnoseReportIdsRequest) (_result *ListDiagnoseReportIdsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListDictInformationResponse{}
-	_body, _err := client.ListDictInformationWithOptions(InstanceId, request, headers, runtime)
+	_result = &ListDiagnoseReportIdsResponse{}
+	_body, _err := client.ListDiagnoseReportIdsWithOptions(InstanceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -29794,11 +30006,11 @@ func (client *Client) ListDictInformationWithOptions(InstanceId *string, request
 	return _result, _err
 }
 
-func (client *Client) ListDicts(InstanceId *string, request *ListDictsRequest) (_result *ListDictsResponse, _err error) {
+func (client *Client) ListDictInformation(InstanceId *string, request *ListDictInformationRequest) (_result *ListDictInformationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListDictsResponse{}
-	_body, _err := client.ListDictsWithOptions(InstanceId, request, headers, runtime)
+	_result = &ListDictInformationResponse{}
+	_body, _err := client.ListDictInformationWithOptions(InstanceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -29844,11 +30056,11 @@ func (client *Client) ListDictsWithOptions(InstanceId *string, request *ListDict
 	return _result, _err
 }
 
-func (client *Client) ListEcsInstances(request *ListEcsInstancesRequest) (_result *ListEcsInstancesResponse, _err error) {
+func (client *Client) ListDicts(InstanceId *string, request *ListDictsRequest) (_result *ListDictsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListEcsInstancesResponse{}
-	_body, _err := client.ListEcsInstancesWithOptions(request, headers, runtime)
+	_result = &ListDictsResponse{}
+	_body, _err := client.ListDictsWithOptions(InstanceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -29910,11 +30122,11 @@ func (client *Client) ListEcsInstancesWithOptions(request *ListEcsInstancesReque
 	return _result, _err
 }
 
-func (client *Client) ListExtendfiles(InstanceId *string) (_result *ListExtendfilesResponse, _err error) {
+func (client *Client) ListEcsInstances(request *ListEcsInstancesRequest) (_result *ListEcsInstancesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListExtendfilesResponse{}
-	_body, _err := client.ListExtendfilesWithOptions(InstanceId, headers, runtime)
+	_result = &ListEcsInstancesResponse{}
+	_body, _err := client.ListEcsInstancesWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -29946,11 +30158,11 @@ func (client *Client) ListExtendfilesWithOptions(InstanceId *string, headers map
 	return _result, _err
 }
 
-func (client *Client) ListILMPolicies(InstanceId *string, request *ListILMPoliciesRequest) (_result *ListILMPoliciesResponse, _err error) {
+func (client *Client) ListExtendfiles(InstanceId *string) (_result *ListExtendfilesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListILMPoliciesResponse{}
-	_body, _err := client.ListILMPoliciesWithOptions(InstanceId, request, headers, runtime)
+	_result = &ListExtendfilesResponse{}
+	_body, _err := client.ListExtendfilesWithOptions(InstanceId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -29992,11 +30204,11 @@ func (client *Client) ListILMPoliciesWithOptions(InstanceId *string, request *Li
 	return _result, _err
 }
 
-func (client *Client) ListIndexTemplates(InstanceId *string, request *ListIndexTemplatesRequest) (_result *ListIndexTemplatesResponse, _err error) {
+func (client *Client) ListILMPolicies(InstanceId *string, request *ListILMPoliciesRequest) (_result *ListILMPoliciesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListIndexTemplatesResponse{}
-	_body, _err := client.ListIndexTemplatesWithOptions(InstanceId, request, headers, runtime)
+	_result = &ListILMPoliciesResponse{}
+	_body, _err := client.ListILMPoliciesWithOptions(InstanceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -30046,11 +30258,11 @@ func (client *Client) ListIndexTemplatesWithOptions(InstanceId *string, request 
 	return _result, _err
 }
 
-func (client *Client) ListInstance(request *ListInstanceRequest) (_result *ListInstanceResponse, _err error) {
+func (client *Client) ListIndexTemplates(InstanceId *string, request *ListIndexTemplatesRequest) (_result *ListIndexTemplatesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListInstanceResponse{}
-	_body, _err := client.ListInstanceWithOptions(request, headers, runtime)
+	_result = &ListIndexTemplatesResponse{}
+	_body, _err := client.ListIndexTemplatesWithOptions(InstanceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -30132,11 +30344,11 @@ func (client *Client) ListInstanceWithOptions(request *ListInstanceRequest, head
 	return _result, _err
 }
 
-func (client *Client) ListInstanceHistoryEvents(request *ListInstanceHistoryEventsRequest) (_result *ListInstanceHistoryEventsResponse, _err error) {
+func (client *Client) ListInstance(request *ListInstanceRequest) (_result *ListInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListInstanceHistoryEventsResponse{}
-	_body, _err := client.ListInstanceHistoryEventsWithOptions(request, headers, runtime)
+	_result = &ListInstanceResponse{}
+	_body, _err := client.ListInstanceWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -30219,6 +30431,7 @@ func (client *Client) ListInstanceHistoryEventsWithOptions(tmpReq *ListInstanceH
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),
+		Body:    util.ToArray(request.Body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListInstanceHistoryEvents"),
@@ -30240,11 +30453,11 @@ func (client *Client) ListInstanceHistoryEventsWithOptions(tmpReq *ListInstanceH
 	return _result, _err
 }
 
-func (client *Client) ListInstanceIndices(InstanceId *string, request *ListInstanceIndicesRequest) (_result *ListInstanceIndicesResponse, _err error) {
+func (client *Client) ListInstanceHistoryEvents(request *ListInstanceHistoryEventsRequest) (_result *ListInstanceHistoryEventsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListInstanceIndicesResponse{}
-	_body, _err := client.ListInstanceIndicesWithOptions(InstanceId, request, headers, runtime)
+	_result = &ListInstanceHistoryEventsResponse{}
+	_body, _err := client.ListInstanceHistoryEventsWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -30306,11 +30519,11 @@ func (client *Client) ListInstanceIndicesWithOptions(InstanceId *string, request
 	return _result, _err
 }
 
-func (client *Client) ListKibanaPlugins(InstanceId *string, request *ListKibanaPluginsRequest) (_result *ListKibanaPluginsResponse, _err error) {
+func (client *Client) ListInstanceIndices(InstanceId *string, request *ListInstanceIndicesRequest) (_result *ListInstanceIndicesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListKibanaPluginsResponse{}
-	_body, _err := client.ListKibanaPluginsWithOptions(InstanceId, request, headers, runtime)
+	_result = &ListInstanceIndicesResponse{}
+	_body, _err := client.ListInstanceIndicesWithOptions(InstanceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -30356,11 +30569,11 @@ func (client *Client) ListKibanaPluginsWithOptions(InstanceId *string, request *
 	return _result, _err
 }
 
-func (client *Client) ListLogstash(request *ListLogstashRequest) (_result *ListLogstashResponse, _err error) {
+func (client *Client) ListKibanaPlugins(InstanceId *string, request *ListKibanaPluginsRequest) (_result *ListKibanaPluginsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListLogstashResponse{}
-	_body, _err := client.ListLogstashWithOptions(request, headers, runtime)
+	_result = &ListKibanaPluginsResponse{}
+	_body, _err := client.ListKibanaPluginsWithOptions(InstanceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -30380,10 +30593,6 @@ func (client *Client) ListLogstashWithOptions(request *ListLogstashRequest, head
 
 	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
 		query["instanceId"] = request.InstanceId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["ownerId"] = request.OwnerId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Page)) {
@@ -30430,11 +30639,11 @@ func (client *Client) ListLogstashWithOptions(request *ListLogstashRequest, head
 	return _result, _err
 }
 
-func (client *Client) ListLogstashLog(InstanceId *string, request *ListLogstashLogRequest) (_result *ListLogstashLogResponse, _err error) {
+func (client *Client) ListLogstash(request *ListLogstashRequest) (_result *ListLogstashResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListLogstashLogResponse{}
-	_body, _err := client.ListLogstashLogWithOptions(InstanceId, request, headers, runtime)
+	_result = &ListLogstashResponse{}
+	_body, _err := client.ListLogstashWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -30496,11 +30705,11 @@ func (client *Client) ListLogstashLogWithOptions(InstanceId *string, request *Li
 	return _result, _err
 }
 
-func (client *Client) ListLogstashPlugins(InstanceId *string, request *ListLogstashPluginsRequest) (_result *ListLogstashPluginsResponse, _err error) {
+func (client *Client) ListLogstashLog(InstanceId *string, request *ListLogstashLogRequest) (_result *ListLogstashLogResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListLogstashPluginsResponse{}
-	_body, _err := client.ListLogstashPluginsWithOptions(InstanceId, request, headers, runtime)
+	_result = &ListLogstashLogResponse{}
+	_body, _err := client.ListLogstashLogWithOptions(InstanceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -30554,11 +30763,11 @@ func (client *Client) ListLogstashPluginsWithOptions(InstanceId *string, request
 	return _result, _err
 }
 
-func (client *Client) ListNodes(ResId *string, request *ListNodesRequest) (_result *ListNodesResponse, _err error) {
+func (client *Client) ListLogstashPlugins(InstanceId *string, request *ListLogstashPluginsRequest) (_result *ListLogstashPluginsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListNodesResponse{}
-	_body, _err := client.ListNodesWithOptions(ResId, request, headers, runtime)
+	_result = &ListLogstashPluginsResponse{}
+	_body, _err := client.ListLogstashPluginsWithOptions(InstanceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -30616,11 +30825,11 @@ func (client *Client) ListNodesWithOptions(ResId *string, request *ListNodesRequ
 	return _result, _err
 }
 
-func (client *Client) ListPipeline(InstanceId *string, request *ListPipelineRequest) (_result *ListPipelineResponse, _err error) {
+func (client *Client) ListNodes(ResId *string, request *ListNodesRequest) (_result *ListNodesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListPipelineResponse{}
-	_body, _err := client.ListPipelineWithOptions(InstanceId, request, headers, runtime)
+	_result = &ListNodesResponse{}
+	_body, _err := client.ListNodesWithOptions(ResId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -30670,11 +30879,11 @@ func (client *Client) ListPipelineWithOptions(InstanceId *string, request *ListP
 	return _result, _err
 }
 
-func (client *Client) ListPipelineIds(InstanceId *string, request *ListPipelineIdsRequest) (_result *ListPipelineIdsResponse, _err error) {
+func (client *Client) ListPipeline(InstanceId *string, request *ListPipelineRequest) (_result *ListPipelineResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListPipelineIdsResponse{}
-	_body, _err := client.ListPipelineIdsWithOptions(InstanceId, request, headers, runtime)
+	_result = &ListPipelineResponse{}
+	_body, _err := client.ListPipelineWithOptions(InstanceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -30711,11 +30920,11 @@ func (client *Client) ListPipelineIdsWithOptions(InstanceId *string, request *Li
 	return _result, _err
 }
 
-func (client *Client) ListPlugins(InstanceId *string, request *ListPluginsRequest) (_result *ListPluginsResponse, _err error) {
+func (client *Client) ListPipelineIds(InstanceId *string, request *ListPipelineIdsRequest) (_result *ListPipelineIdsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListPluginsResponse{}
-	_body, _err := client.ListPluginsWithOptions(InstanceId, request, headers, runtime)
+	_result = &ListPipelineIdsResponse{}
+	_body, _err := client.ListPipelineIdsWithOptions(InstanceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -30769,11 +30978,11 @@ func (client *Client) ListPluginsWithOptions(InstanceId *string, request *ListPl
 	return _result, _err
 }
 
-func (client *Client) ListSearchLog(InstanceId *string, request *ListSearchLogRequest) (_result *ListSearchLogResponse, _err error) {
+func (client *Client) ListPlugins(InstanceId *string, request *ListPluginsRequest) (_result *ListPluginsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListSearchLogResponse{}
-	_body, _err := client.ListSearchLogWithOptions(InstanceId, request, headers, runtime)
+	_result = &ListPluginsResponse{}
+	_body, _err := client.ListPluginsWithOptions(InstanceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -30835,11 +31044,11 @@ func (client *Client) ListSearchLogWithOptions(InstanceId *string, request *List
 	return _result, _err
 }
 
-func (client *Client) ListShardRecoveries(InstanceId *string, request *ListShardRecoveriesRequest) (_result *ListShardRecoveriesResponse, _err error) {
+func (client *Client) ListSearchLog(InstanceId *string, request *ListSearchLogRequest) (_result *ListSearchLogResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListShardRecoveriesResponse{}
-	_body, _err := client.ListShardRecoveriesWithOptions(InstanceId, request, headers, runtime)
+	_result = &ListSearchLogResponse{}
+	_body, _err := client.ListSearchLogWithOptions(InstanceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -30881,11 +31090,11 @@ func (client *Client) ListShardRecoveriesWithOptions(InstanceId *string, request
 	return _result, _err
 }
 
-func (client *Client) ListSnapshotReposByInstanceId(InstanceId *string) (_result *ListSnapshotReposByInstanceIdResponse, _err error) {
+func (client *Client) ListShardRecoveries(InstanceId *string, request *ListShardRecoveriesRequest) (_result *ListShardRecoveriesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListSnapshotReposByInstanceIdResponse{}
-	_body, _err := client.ListSnapshotReposByInstanceIdWithOptions(InstanceId, headers, runtime)
+	_result = &ListShardRecoveriesResponse{}
+	_body, _err := client.ListShardRecoveriesWithOptions(InstanceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -30917,11 +31126,11 @@ func (client *Client) ListSnapshotReposByInstanceIdWithOptions(InstanceId *strin
 	return _result, _err
 }
 
-func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_result *ListTagResourcesResponse, _err error) {
+func (client *Client) ListSnapshotReposByInstanceId(InstanceId *string) (_result *ListSnapshotReposByInstanceIdResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListTagResourcesResponse{}
-	_body, _err := client.ListTagResourcesWithOptions(request, headers, runtime)
+	_result = &ListSnapshotReposByInstanceIdResponse{}
+	_body, _err := client.ListSnapshotReposByInstanceIdWithOptions(InstanceId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -30983,11 +31192,11 @@ func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesReque
 	return _result, _err
 }
 
-func (client *Client) ListTags(request *ListTagsRequest) (_result *ListTagsResponse, _err error) {
+func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_result *ListTagResourcesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListTagsResponse{}
-	_body, _err := client.ListTagsWithOptions(request, headers, runtime)
+	_result = &ListTagResourcesResponse{}
+	_body, _err := client.ListTagResourcesWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -31033,11 +31242,11 @@ func (client *Client) ListTagsWithOptions(request *ListTagsRequest, headers map[
 	return _result, _err
 }
 
-func (client *Client) ListVpcEndpoints(InstanceId *string, request *ListVpcEndpointsRequest) (_result *ListVpcEndpointsResponse, _err error) {
+func (client *Client) ListTags(request *ListTagsRequest) (_result *ListTagsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListVpcEndpointsResponse{}
-	_body, _err := client.ListVpcEndpointsWithOptions(InstanceId, request, headers, runtime)
+	_result = &ListTagsResponse{}
+	_body, _err := client.ListTagsWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -31083,11 +31292,11 @@ func (client *Client) ListVpcEndpointsWithOptions(InstanceId *string, request *L
 	return _result, _err
 }
 
-func (client *Client) MigrateToOtherZone(InstanceId *string, request *MigrateToOtherZoneRequest) (_result *MigrateToOtherZoneResponse, _err error) {
+func (client *Client) ListVpcEndpoints(InstanceId *string, request *ListVpcEndpointsRequest) (_result *ListVpcEndpointsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &MigrateToOtherZoneResponse{}
-	_body, _err := client.MigrateToOtherZoneWithOptions(InstanceId, request, headers, runtime)
+	_result = &ListVpcEndpointsResponse{}
+	_body, _err := client.ListVpcEndpointsWithOptions(InstanceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -31130,11 +31339,11 @@ func (client *Client) MigrateToOtherZoneWithOptions(InstanceId *string, request 
 	return _result, _err
 }
 
-func (client *Client) ModifyDeployMachine(ResId *string, request *ModifyDeployMachineRequest) (_result *ModifyDeployMachineResponse, _err error) {
+func (client *Client) MigrateToOtherZone(InstanceId *string, request *MigrateToOtherZoneRequest) (_result *MigrateToOtherZoneResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ModifyDeployMachineResponse{}
-	_body, _err := client.ModifyDeployMachineWithOptions(ResId, request, headers, runtime)
+	_result = &MigrateToOtherZoneResponse{}
+	_body, _err := client.MigrateToOtherZoneWithOptions(InstanceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -31177,11 +31386,11 @@ func (client *Client) ModifyDeployMachineWithOptions(ResId *string, request *Mod
 	return _result, _err
 }
 
-func (client *Client) ModifyElastictask(InstanceId *string, request *ModifyElastictaskRequest) (_result *ModifyElastictaskResponse, _err error) {
+func (client *Client) ModifyDeployMachine(ResId *string, request *ModifyDeployMachineRequest) (_result *ModifyDeployMachineResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ModifyElastictaskResponse{}
-	_body, _err := client.ModifyElastictaskWithOptions(InstanceId, request, headers, runtime)
+	_result = &ModifyDeployMachineResponse{}
+	_body, _err := client.ModifyDeployMachineWithOptions(ResId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -31218,11 +31427,11 @@ func (client *Client) ModifyElastictaskWithOptions(InstanceId *string, request *
 	return _result, _err
 }
 
-func (client *Client) ModifyInstanceMaintainTime(InstanceId *string, request *ModifyInstanceMaintainTimeRequest) (_result *ModifyInstanceMaintainTimeResponse, _err error) {
+func (client *Client) ModifyElastictask(InstanceId *string, request *ModifyElastictaskRequest) (_result *ModifyElastictaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ModifyInstanceMaintainTimeResponse{}
-	_body, _err := client.ModifyInstanceMaintainTimeWithOptions(InstanceId, request, headers, runtime)
+	_result = &ModifyElastictaskResponse{}
+	_body, _err := client.ModifyElastictaskWithOptions(InstanceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -31265,11 +31474,11 @@ func (client *Client) ModifyInstanceMaintainTimeWithOptions(InstanceId *string, 
 	return _result, _err
 }
 
-func (client *Client) ModifyWhiteIps(InstanceId *string, request *ModifyWhiteIpsRequest) (_result *ModifyWhiteIpsResponse, _err error) {
+func (client *Client) ModifyInstanceMaintainTime(InstanceId *string, request *ModifyInstanceMaintainTimeRequest) (_result *ModifyInstanceMaintainTimeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ModifyWhiteIpsResponse{}
-	_body, _err := client.ModifyWhiteIpsWithOptions(InstanceId, request, headers, runtime)
+	_result = &ModifyInstanceMaintainTimeResponse{}
+	_body, _err := client.ModifyInstanceMaintainTimeWithOptions(InstanceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -31300,7 +31509,7 @@ func (client *Client) ModifyWhiteIpsWithOptions(InstanceId *string, request *Mod
 		body["nodeType"] = request.NodeType
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.WhiteIpGroup))) {
+	if !tea.BoolValue(util.IsUnset(request.WhiteIpGroup)) {
 		body["whiteIpGroup"] = request.WhiteIpGroup
 	}
 
@@ -31333,11 +31542,11 @@ func (client *Client) ModifyWhiteIpsWithOptions(InstanceId *string, request *Mod
 	return _result, _err
 }
 
-func (client *Client) MoveResourceGroup(InstanceId *string, request *MoveResourceGroupRequest) (_result *MoveResourceGroupResponse, _err error) {
+func (client *Client) ModifyWhiteIps(InstanceId *string, request *ModifyWhiteIpsRequest) (_result *ModifyWhiteIpsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &MoveResourceGroupResponse{}
-	_body, _err := client.MoveResourceGroupWithOptions(InstanceId, request, headers, runtime)
+	_result = &ModifyWhiteIpsResponse{}
+	_body, _err := client.ModifyWhiteIpsWithOptions(InstanceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -31380,11 +31589,11 @@ func (client *Client) MoveResourceGroupWithOptions(InstanceId *string, request *
 	return _result, _err
 }
 
-func (client *Client) OpenDiagnosis(InstanceId *string, request *OpenDiagnosisRequest) (_result *OpenDiagnosisResponse, _err error) {
+func (client *Client) MoveResourceGroup(InstanceId *string, request *MoveResourceGroupRequest) (_result *MoveResourceGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &OpenDiagnosisResponse{}
-	_body, _err := client.OpenDiagnosisWithOptions(InstanceId, request, headers, runtime)
+	_result = &MoveResourceGroupResponse{}
+	_body, _err := client.MoveResourceGroupWithOptions(InstanceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -31430,11 +31639,11 @@ func (client *Client) OpenDiagnosisWithOptions(InstanceId *string, request *Open
 	return _result, _err
 }
 
-func (client *Client) OpenHttps(InstanceId *string, request *OpenHttpsRequest) (_result *OpenHttpsResponse, _err error) {
+func (client *Client) OpenDiagnosis(InstanceId *string, request *OpenDiagnosisRequest) (_result *OpenDiagnosisResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &OpenHttpsResponse{}
-	_body, _err := client.OpenHttpsWithOptions(InstanceId, request, headers, runtime)
+	_result = &OpenDiagnosisResponse{}
+	_body, _err := client.OpenDiagnosisWithOptions(InstanceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -31476,11 +31685,11 @@ func (client *Client) OpenHttpsWithOptions(InstanceId *string, request *OpenHttp
 	return _result, _err
 }
 
-func (client *Client) PostEmonTryAlarmRule(ProjectId *string, AlarmGroupId *string, request *PostEmonTryAlarmRuleRequest) (_result *PostEmonTryAlarmRuleResponse, _err error) {
+func (client *Client) OpenHttps(InstanceId *string, request *OpenHttpsRequest) (_result *OpenHttpsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &PostEmonTryAlarmRuleResponse{}
-	_body, _err := client.PostEmonTryAlarmRuleWithOptions(ProjectId, AlarmGroupId, request, headers, runtime)
+	_result = &OpenHttpsResponse{}
+	_body, _err := client.OpenHttpsWithOptions(InstanceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -31517,11 +31726,11 @@ func (client *Client) PostEmonTryAlarmRuleWithOptions(ProjectId *string, AlarmGr
 	return _result, _err
 }
 
-func (client *Client) RecommendTemplates(InstanceId *string, request *RecommendTemplatesRequest) (_result *RecommendTemplatesResponse, _err error) {
+func (client *Client) PostEmonTryAlarmRule(ProjectId *string, AlarmGroupId *string, request *PostEmonTryAlarmRuleRequest) (_result *PostEmonTryAlarmRuleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &RecommendTemplatesResponse{}
-	_body, _err := client.RecommendTemplatesWithOptions(InstanceId, request, headers, runtime)
+	_result = &PostEmonTryAlarmRuleResponse{}
+	_body, _err := client.PostEmonTryAlarmRuleWithOptions(ProjectId, AlarmGroupId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -31563,11 +31772,11 @@ func (client *Client) RecommendTemplatesWithOptions(InstanceId *string, request 
 	return _result, _err
 }
 
-func (client *Client) ReinstallCollector(ResId *string, request *ReinstallCollectorRequest) (_result *ReinstallCollectorResponse, _err error) {
+func (client *Client) RecommendTemplates(InstanceId *string, request *RecommendTemplatesRequest) (_result *RecommendTemplatesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ReinstallCollectorResponse{}
-	_body, _err := client.ReinstallCollectorWithOptions(ResId, request, headers, runtime)
+	_result = &RecommendTemplatesResponse{}
+	_body, _err := client.RecommendTemplatesWithOptions(InstanceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -31610,11 +31819,11 @@ func (client *Client) ReinstallCollectorWithOptions(ResId *string, request *Rein
 	return _result, _err
 }
 
-func (client *Client) RemoveApm(instanceId *string) (_result *RemoveApmResponse, _err error) {
+func (client *Client) ReinstallCollector(ResId *string, request *ReinstallCollectorRequest) (_result *ReinstallCollectorResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &RemoveApmResponse{}
-	_body, _err := client.RemoveApmWithOptions(instanceId, headers, runtime)
+	_result = &ReinstallCollectorResponse{}
+	_body, _err := client.ReinstallCollectorWithOptions(ResId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -31646,11 +31855,11 @@ func (client *Client) RemoveApmWithOptions(instanceId *string, headers map[strin
 	return _result, _err
 }
 
-func (client *Client) RenewInstance(InstanceId *string, request *RenewInstanceRequest) (_result *RenewInstanceResponse, _err error) {
+func (client *Client) RemoveApm(instanceId *string) (_result *RemoveApmResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &RenewInstanceResponse{}
-	_body, _err := client.RenewInstanceWithOptions(InstanceId, request, headers, runtime)
+	_result = &RemoveApmResponse{}
+	_body, _err := client.RemoveApmWithOptions(instanceId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -31693,11 +31902,11 @@ func (client *Client) RenewInstanceWithOptions(InstanceId *string, request *Rene
 	return _result, _err
 }
 
-func (client *Client) RenewLogstash(InstanceId *string, request *RenewLogstashRequest) (_result *RenewLogstashResponse, _err error) {
+func (client *Client) RenewInstance(InstanceId *string, request *RenewInstanceRequest) (_result *RenewInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &RenewLogstashResponse{}
-	_body, _err := client.RenewLogstashWithOptions(InstanceId, request, headers, runtime)
+	_result = &RenewInstanceResponse{}
+	_body, _err := client.RenewInstanceWithOptions(InstanceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -31740,11 +31949,11 @@ func (client *Client) RenewLogstashWithOptions(InstanceId *string, request *Rene
 	return _result, _err
 }
 
-func (client *Client) RestartCollector(ResId *string, request *RestartCollectorRequest) (_result *RestartCollectorResponse, _err error) {
+func (client *Client) RenewLogstash(InstanceId *string, request *RenewLogstashRequest) (_result *RenewLogstashResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &RestartCollectorResponse{}
-	_body, _err := client.RestartCollectorWithOptions(ResId, request, headers, runtime)
+	_result = &RenewLogstashResponse{}
+	_body, _err := client.RenewLogstashWithOptions(InstanceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -31786,11 +31995,11 @@ func (client *Client) RestartCollectorWithOptions(ResId *string, request *Restar
 	return _result, _err
 }
 
-func (client *Client) RestartInstance(InstanceId *string, request *RestartInstanceRequest) (_result *RestartInstanceResponse, _err error) {
+func (client *Client) RestartCollector(ResId *string, request *RestartCollectorRequest) (_result *RestartCollectorResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &RestartInstanceResponse{}
-	_body, _err := client.RestartInstanceWithOptions(InstanceId, request, headers, runtime)
+	_result = &RestartCollectorResponse{}
+	_body, _err := client.RestartCollectorWithOptions(ResId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -31837,11 +32046,11 @@ func (client *Client) RestartInstanceWithOptions(InstanceId *string, request *Re
 	return _result, _err
 }
 
-func (client *Client) RestartLogstash(InstanceId *string, request *RestartLogstashRequest) (_result *RestartLogstashResponse, _err error) {
+func (client *Client) RestartInstance(InstanceId *string, request *RestartInstanceRequest) (_result *RestartInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &RestartLogstashResponse{}
-	_body, _err := client.RestartLogstashWithOptions(InstanceId, request, headers, runtime)
+	_result = &RestartInstanceResponse{}
+	_body, _err := client.RestartInstanceWithOptions(InstanceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -31909,11 +32118,11 @@ func (client *Client) RestartLogstashWithOptions(InstanceId *string, request *Re
 	return _result, _err
 }
 
-func (client *Client) ResumeElasticsearchTask(InstanceId *string, request *ResumeElasticsearchTaskRequest) (_result *ResumeElasticsearchTaskResponse, _err error) {
+func (client *Client) RestartLogstash(InstanceId *string, request *RestartLogstashRequest) (_result *RestartLogstashResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ResumeElasticsearchTaskResponse{}
-	_body, _err := client.ResumeElasticsearchTaskWithOptions(InstanceId, request, headers, runtime)
+	_result = &RestartLogstashResponse{}
+	_body, _err := client.RestartLogstashWithOptions(InstanceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -31955,11 +32164,11 @@ func (client *Client) ResumeElasticsearchTaskWithOptions(InstanceId *string, req
 	return _result, _err
 }
 
-func (client *Client) ResumeLogstashTask(InstanceId *string, request *ResumeLogstashTaskRequest) (_result *ResumeLogstashTaskResponse, _err error) {
+func (client *Client) ResumeElasticsearchTask(InstanceId *string, request *ResumeElasticsearchTaskRequest) (_result *ResumeElasticsearchTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ResumeLogstashTaskResponse{}
-	_body, _err := client.ResumeLogstashTaskWithOptions(InstanceId, request, headers, runtime)
+	_result = &ResumeElasticsearchTaskResponse{}
+	_body, _err := client.ResumeElasticsearchTaskWithOptions(InstanceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -32001,11 +32210,11 @@ func (client *Client) ResumeLogstashTaskWithOptions(InstanceId *string, request 
 	return _result, _err
 }
 
-func (client *Client) RolloverDataStream(InstanceId *string, DataStream *string, request *RolloverDataStreamRequest) (_result *RolloverDataStreamResponse, _err error) {
+func (client *Client) ResumeLogstashTask(InstanceId *string, request *ResumeLogstashTaskRequest) (_result *ResumeLogstashTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &RolloverDataStreamResponse{}
-	_body, _err := client.RolloverDataStreamWithOptions(InstanceId, DataStream, request, headers, runtime)
+	_result = &ResumeLogstashTaskResponse{}
+	_body, _err := client.ResumeLogstashTaskWithOptions(InstanceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -32047,11 +32256,11 @@ func (client *Client) RolloverDataStreamWithOptions(InstanceId *string, DataStre
 	return _result, _err
 }
 
-func (client *Client) RunPipelines(InstanceId *string, request *RunPipelinesRequest) (_result *RunPipelinesResponse, _err error) {
+func (client *Client) RolloverDataStream(InstanceId *string, DataStream *string, request *RolloverDataStreamRequest) (_result *RolloverDataStreamResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &RunPipelinesResponse{}
-	_body, _err := client.RunPipelinesWithOptions(InstanceId, request, headers, runtime)
+	_result = &RolloverDataStreamResponse{}
+	_body, _err := client.RolloverDataStreamWithOptions(InstanceId, DataStream, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -32094,11 +32303,11 @@ func (client *Client) RunPipelinesWithOptions(InstanceId *string, request *RunPi
 	return _result, _err
 }
 
-func (client *Client) ShrinkNode(InstanceId *string, request *ShrinkNodeRequest) (_result *ShrinkNodeResponse, _err error) {
+func (client *Client) RunPipelines(InstanceId *string, request *RunPipelinesRequest) (_result *RunPipelinesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ShrinkNodeResponse{}
-	_body, _err := client.ShrinkNodeWithOptions(InstanceId, request, headers, runtime)
+	_result = &RunPipelinesResponse{}
+	_body, _err := client.RunPipelinesWithOptions(InstanceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -32153,11 +32362,11 @@ func (client *Client) ShrinkNodeWithOptions(InstanceId *string, request *ShrinkN
 	return _result, _err
 }
 
-func (client *Client) StartApm(instanceId *string) (_result *StartApmResponse, _err error) {
+func (client *Client) ShrinkNode(InstanceId *string, request *ShrinkNodeRequest) (_result *ShrinkNodeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &StartApmResponse{}
-	_body, _err := client.StartApmWithOptions(instanceId, headers, runtime)
+	_result = &ShrinkNodeResponse{}
+	_body, _err := client.ShrinkNodeWithOptions(InstanceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -32189,11 +32398,11 @@ func (client *Client) StartApmWithOptions(instanceId *string, headers map[string
 	return _result, _err
 }
 
-func (client *Client) StartCollector(ResId *string, request *StartCollectorRequest) (_result *StartCollectorResponse, _err error) {
+func (client *Client) StartApm(instanceId *string) (_result *StartApmResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &StartCollectorResponse{}
-	_body, _err := client.StartCollectorWithOptions(ResId, request, headers, runtime)
+	_result = &StartApmResponse{}
+	_body, _err := client.StartApmWithOptions(instanceId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -32235,11 +32444,11 @@ func (client *Client) StartCollectorWithOptions(ResId *string, request *StartCol
 	return _result, _err
 }
 
-func (client *Client) StopApm(instanceId *string) (_result *StopApmResponse, _err error) {
+func (client *Client) StartCollector(ResId *string, request *StartCollectorRequest) (_result *StartCollectorResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &StopApmResponse{}
-	_body, _err := client.StopApmWithOptions(instanceId, headers, runtime)
+	_result = &StartCollectorResponse{}
+	_body, _err := client.StartCollectorWithOptions(ResId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -32271,11 +32480,11 @@ func (client *Client) StopApmWithOptions(instanceId *string, headers map[string]
 	return _result, _err
 }
 
-func (client *Client) StopCollector(ResId *string, request *StopCollectorRequest) (_result *StopCollectorResponse, _err error) {
+func (client *Client) StopApm(instanceId *string) (_result *StopApmResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &StopCollectorResponse{}
-	_body, _err := client.StopCollectorWithOptions(ResId, request, headers, runtime)
+	_result = &StopApmResponse{}
+	_body, _err := client.StopApmWithOptions(instanceId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -32317,11 +32526,11 @@ func (client *Client) StopCollectorWithOptions(ResId *string, request *StopColle
 	return _result, _err
 }
 
-func (client *Client) StopPipelines(InstanceId *string, request *StopPipelinesRequest) (_result *StopPipelinesResponse, _err error) {
+func (client *Client) StopCollector(ResId *string, request *StopCollectorRequest) (_result *StopCollectorResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &StopPipelinesResponse{}
-	_body, _err := client.StopPipelinesWithOptions(InstanceId, request, headers, runtime)
+	_result = &StopCollectorResponse{}
+	_body, _err := client.StopCollectorWithOptions(ResId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -32364,11 +32573,11 @@ func (client *Client) StopPipelinesWithOptions(InstanceId *string, request *Stop
 	return _result, _err
 }
 
-func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagResourcesResponse, _err error) {
+func (client *Client) StopPipelines(InstanceId *string, request *StopPipelinesRequest) (_result *StopPipelinesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &TagResourcesResponse{}
-	_body, _err := client.TagResourcesWithOptions(request, headers, runtime)
+	_result = &StopPipelinesResponse{}
+	_body, _err := client.StopPipelinesWithOptions(InstanceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -32418,11 +32627,11 @@ func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, head
 	return _result, _err
 }
 
-func (client *Client) TransferNode(InstanceId *string, request *TransferNodeRequest) (_result *TransferNodeResponse, _err error) {
+func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagResourcesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &TransferNodeResponse{}
-	_body, _err := client.TransferNodeWithOptions(InstanceId, request, headers, runtime)
+	_result = &TagResourcesResponse{}
+	_body, _err := client.TagResourcesWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -32469,11 +32678,11 @@ func (client *Client) TransferNodeWithOptions(InstanceId *string, request *Trans
 	return _result, _err
 }
 
-func (client *Client) TriggerNetwork(InstanceId *string, request *TriggerNetworkRequest) (_result *TriggerNetworkResponse, _err error) {
+func (client *Client) TransferNode(InstanceId *string, request *TransferNodeRequest) (_result *TransferNodeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &TriggerNetworkResponse{}
-	_body, _err := client.TriggerNetworkWithOptions(InstanceId, request, headers, runtime)
+	_result = &TransferNodeResponse{}
+	_body, _err := client.TransferNodeWithOptions(InstanceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -32529,11 +32738,11 @@ func (client *Client) TriggerNetworkWithOptions(InstanceId *string, request *Tri
 	return _result, _err
 }
 
-func (client *Client) UninstallKibanaPlugin(InstanceId *string, request *UninstallKibanaPluginRequest) (_result *UninstallKibanaPluginResponse, _err error) {
+func (client *Client) TriggerNetwork(InstanceId *string, request *TriggerNetworkRequest) (_result *TriggerNetworkResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &UninstallKibanaPluginResponse{}
-	_body, _err := client.UninstallKibanaPluginWithOptions(InstanceId, request, headers, runtime)
+	_result = &TriggerNetworkResponse{}
+	_body, _err := client.TriggerNetworkWithOptions(InstanceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -32576,11 +32785,11 @@ func (client *Client) UninstallKibanaPluginWithOptions(InstanceId *string, reque
 	return _result, _err
 }
 
-func (client *Client) UninstallLogstashPlugin(InstanceId *string, request *UninstallLogstashPluginRequest) (_result *UninstallLogstashPluginResponse, _err error) {
+func (client *Client) UninstallKibanaPlugin(InstanceId *string, request *UninstallKibanaPluginRequest) (_result *UninstallKibanaPluginResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &UninstallLogstashPluginResponse{}
-	_body, _err := client.UninstallLogstashPluginWithOptions(InstanceId, request, headers, runtime)
+	_result = &UninstallKibanaPluginResponse{}
+	_body, _err := client.UninstallKibanaPluginWithOptions(InstanceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -32623,11 +32832,11 @@ func (client *Client) UninstallLogstashPluginWithOptions(InstanceId *string, req
 	return _result, _err
 }
 
-func (client *Client) UninstallPlugin(InstanceId *string, request *UninstallPluginRequest) (_result *UninstallPluginResponse, _err error) {
+func (client *Client) UninstallLogstashPlugin(InstanceId *string, request *UninstallLogstashPluginRequest) (_result *UninstallLogstashPluginResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &UninstallPluginResponse{}
-	_body, _err := client.UninstallPluginWithOptions(InstanceId, request, headers, runtime)
+	_result = &UninstallLogstashPluginResponse{}
+	_body, _err := client.UninstallLogstashPluginWithOptions(InstanceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -32670,11 +32879,11 @@ func (client *Client) UninstallPluginWithOptions(InstanceId *string, request *Un
 	return _result, _err
 }
 
-func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *UntagResourcesResponse, _err error) {
+func (client *Client) UninstallPlugin(InstanceId *string, request *UninstallPluginRequest) (_result *UninstallPluginResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &UntagResourcesResponse{}
-	_body, _err := client.UntagResourcesWithOptions(request, headers, runtime)
+	_result = &UninstallPluginResponse{}
+	_body, _err := client.UninstallPluginWithOptions(InstanceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -32729,11 +32938,11 @@ func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, 
 	return _result, _err
 }
 
-func (client *Client) UpdateAdminPassword(InstanceId *string, request *UpdateAdminPasswordRequest) (_result *UpdateAdminPasswordResponse, _err error) {
+func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *UntagResourcesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &UpdateAdminPasswordResponse{}
-	_body, _err := client.UpdateAdminPasswordWithOptions(InstanceId, request, headers, runtime)
+	_result = &UntagResourcesResponse{}
+	_body, _err := client.UntagResourcesWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -32781,11 +32990,11 @@ func (client *Client) UpdateAdminPasswordWithOptions(InstanceId *string, request
 	return _result, _err
 }
 
-func (client *Client) UpdateAdvancedSetting(InstanceId *string, request *UpdateAdvancedSettingRequest) (_result *UpdateAdvancedSettingResponse, _err error) {
+func (client *Client) UpdateAdminPassword(InstanceId *string, request *UpdateAdminPasswordRequest) (_result *UpdateAdminPasswordResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &UpdateAdvancedSettingResponse{}
-	_body, _err := client.UpdateAdvancedSettingWithOptions(InstanceId, request, headers, runtime)
+	_result = &UpdateAdminPasswordResponse{}
+	_body, _err := client.UpdateAdminPasswordWithOptions(InstanceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -32828,11 +33037,11 @@ func (client *Client) UpdateAdvancedSettingWithOptions(InstanceId *string, reque
 	return _result, _err
 }
 
-func (client *Client) UpdateAliwsDict(InstanceId *string, request *UpdateAliwsDictRequest) (_result *UpdateAliwsDictResponse, _err error) {
+func (client *Client) UpdateAdvancedSetting(InstanceId *string, request *UpdateAdvancedSettingRequest) (_result *UpdateAdvancedSettingResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &UpdateAliwsDictResponse{}
-	_body, _err := client.UpdateAliwsDictWithOptions(InstanceId, request, headers, runtime)
+	_result = &UpdateAdvancedSettingResponse{}
+	_body, _err := client.UpdateAdvancedSettingWithOptions(InstanceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -32875,11 +33084,11 @@ func (client *Client) UpdateAliwsDictWithOptions(InstanceId *string, request *Up
 	return _result, _err
 }
 
-func (client *Client) UpdateApm(instanceId *string, request *UpdateApmRequest) (_result *UpdateApmResponse, _err error) {
+func (client *Client) UpdateAliwsDict(InstanceId *string, request *UpdateAliwsDictRequest) (_result *UpdateAliwsDictResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &UpdateApmResponse{}
-	_body, _err := client.UpdateApmWithOptions(instanceId, request, headers, runtime)
+	_result = &UpdateAliwsDictResponse{}
+	_body, _err := client.UpdateAliwsDictWithOptions(InstanceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -32937,11 +33146,11 @@ func (client *Client) UpdateApmWithOptions(instanceId *string, request *UpdateAp
 	return _result, _err
 }
 
-func (client *Client) UpdateBlackIps(InstanceId *string, request *UpdateBlackIpsRequest) (_result *UpdateBlackIpsResponse, _err error) {
+func (client *Client) UpdateApm(instanceId *string, request *UpdateApmRequest) (_result *UpdateApmResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &UpdateBlackIpsResponse{}
-	_body, _err := client.UpdateBlackIpsWithOptions(InstanceId, request, headers, runtime)
+	_result = &UpdateApmResponse{}
+	_body, _err := client.UpdateApmWithOptions(instanceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -32949,6 +33158,15 @@ func (client *Client) UpdateBlackIps(InstanceId *string, request *UpdateBlackIps
 	return _result, _err
 }
 
+/**
+ * @deprecated
+ *
+ * @param request UpdateBlackIpsRequest
+ * @param headers map
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return UpdateBlackIpsResponse
+ */
+// Deprecated
 func (client *Client) UpdateBlackIpsWithOptions(InstanceId *string, request *UpdateBlackIpsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateBlackIpsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -32983,11 +33201,18 @@ func (client *Client) UpdateBlackIpsWithOptions(InstanceId *string, request *Upd
 	return _result, _err
 }
 
-func (client *Client) UpdateCollector(ResId *string, request *UpdateCollectorRequest) (_result *UpdateCollectorResponse, _err error) {
+/**
+ * @deprecated
+ *
+ * @param request UpdateBlackIpsRequest
+ * @return UpdateBlackIpsResponse
+ */
+// Deprecated
+func (client *Client) UpdateBlackIps(InstanceId *string, request *UpdateBlackIpsRequest) (_result *UpdateBlackIpsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &UpdateCollectorResponse{}
-	_body, _err := client.UpdateCollectorWithOptions(ResId, request, headers, runtime)
+	_result = &UpdateBlackIpsResponse{}
+	_body, _err := client.UpdateBlackIpsWithOptions(InstanceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -33030,11 +33255,11 @@ func (client *Client) UpdateCollectorWithOptions(ResId *string, request *UpdateC
 	return _result, _err
 }
 
-func (client *Client) UpdateCollectorName(ResId *string, request *UpdateCollectorNameRequest) (_result *UpdateCollectorNameResponse, _err error) {
+func (client *Client) UpdateCollector(ResId *string, request *UpdateCollectorRequest) (_result *UpdateCollectorResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &UpdateCollectorNameResponse{}
-	_body, _err := client.UpdateCollectorNameWithOptions(ResId, request, headers, runtime)
+	_result = &UpdateCollectorResponse{}
+	_body, _err := client.UpdateCollectorWithOptions(ResId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -33077,11 +33302,11 @@ func (client *Client) UpdateCollectorNameWithOptions(ResId *string, request *Upd
 	return _result, _err
 }
 
-func (client *Client) UpdateComponentIndex(InstanceId *string, name *string, request *UpdateComponentIndexRequest) (_result *UpdateComponentIndexResponse, _err error) {
+func (client *Client) UpdateCollectorName(ResId *string, request *UpdateCollectorNameRequest) (_result *UpdateCollectorNameResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &UpdateComponentIndexResponse{}
-	_body, _err := client.UpdateComponentIndexWithOptions(InstanceId, name, request, headers, runtime)
+	_result = &UpdateCollectorNameResponse{}
+	_body, _err := client.UpdateCollectorNameWithOptions(ResId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -33099,7 +33324,7 @@ func (client *Client) UpdateComponentIndexWithOptions(InstanceId *string, name *
 		body["_meta"] = request.Meta
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.Template))) {
+	if !tea.BoolValue(util.IsUnset(request.Template)) {
 		body["template"] = request.Template
 	}
 
@@ -33127,11 +33352,11 @@ func (client *Client) UpdateComponentIndexWithOptions(InstanceId *string, name *
 	return _result, _err
 }
 
-func (client *Client) UpdateDescription(InstanceId *string, request *UpdateDescriptionRequest) (_result *UpdateDescriptionResponse, _err error) {
+func (client *Client) UpdateComponentIndex(InstanceId *string, name *string, request *UpdateComponentIndexRequest) (_result *UpdateComponentIndexResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &UpdateDescriptionResponse{}
-	_body, _err := client.UpdateDescriptionWithOptions(InstanceId, request, headers, runtime)
+	_result = &UpdateComponentIndexResponse{}
+	_body, _err := client.UpdateComponentIndexWithOptions(InstanceId, name, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -33179,11 +33404,11 @@ func (client *Client) UpdateDescriptionWithOptions(InstanceId *string, request *
 	return _result, _err
 }
 
-func (client *Client) UpdateDiagnosisSettings(InstanceId *string, request *UpdateDiagnosisSettingsRequest) (_result *UpdateDiagnosisSettingsResponse, _err error) {
+func (client *Client) UpdateDescription(InstanceId *string, request *UpdateDescriptionRequest) (_result *UpdateDescriptionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &UpdateDiagnosisSettingsResponse{}
-	_body, _err := client.UpdateDiagnosisSettingsWithOptions(InstanceId, request, headers, runtime)
+	_result = &UpdateDescriptionResponse{}
+	_body, _err := client.UpdateDescriptionWithOptions(InstanceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -33230,11 +33455,11 @@ func (client *Client) UpdateDiagnosisSettingsWithOptions(InstanceId *string, req
 	return _result, _err
 }
 
-func (client *Client) UpdateDict(InstanceId *string, request *UpdateDictRequest) (_result *UpdateDictResponse, _err error) {
+func (client *Client) UpdateDiagnosisSettings(InstanceId *string, request *UpdateDiagnosisSettingsRequest) (_result *UpdateDiagnosisSettingsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &UpdateDictResponse{}
-	_body, _err := client.UpdateDictWithOptions(InstanceId, request, headers, runtime)
+	_result = &UpdateDiagnosisSettingsResponse{}
+	_body, _err := client.UpdateDiagnosisSettingsWithOptions(InstanceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -33277,11 +33502,11 @@ func (client *Client) UpdateDictWithOptions(InstanceId *string, request *UpdateD
 	return _result, _err
 }
 
-func (client *Client) UpdateDynamicSettings(InstanceId *string, request *UpdateDynamicSettingsRequest) (_result *UpdateDynamicSettingsResponse, _err error) {
+func (client *Client) UpdateDict(InstanceId *string, request *UpdateDictRequest) (_result *UpdateDictResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &UpdateDynamicSettingsResponse{}
-	_body, _err := client.UpdateDynamicSettingsWithOptions(InstanceId, request, headers, runtime)
+	_result = &UpdateDictResponse{}
+	_body, _err := client.UpdateDictWithOptions(InstanceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -33332,11 +33557,11 @@ func (client *Client) UpdateDynamicSettingsWithOptions(InstanceId *string, reque
 	return _result, _err
 }
 
-func (client *Client) UpdateExtendConfig(InstanceId *string, request *UpdateExtendConfigRequest) (_result *UpdateExtendConfigResponse, _err error) {
+func (client *Client) UpdateDynamicSettings(InstanceId *string, request *UpdateDynamicSettingsRequest) (_result *UpdateDynamicSettingsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &UpdateExtendConfigResponse{}
-	_body, _err := client.UpdateExtendConfigWithOptions(InstanceId, request, headers, runtime)
+	_result = &UpdateDynamicSettingsResponse{}
+	_body, _err := client.UpdateDynamicSettingsWithOptions(InstanceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -33379,11 +33604,11 @@ func (client *Client) UpdateExtendConfigWithOptions(InstanceId *string, request 
 	return _result, _err
 }
 
-func (client *Client) UpdateExtendfiles(InstanceId *string, request *UpdateExtendfilesRequest) (_result *UpdateExtendfilesResponse, _err error) {
+func (client *Client) UpdateExtendConfig(InstanceId *string, request *UpdateExtendConfigRequest) (_result *UpdateExtendConfigResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &UpdateExtendfilesResponse{}
-	_body, _err := client.UpdateExtendfilesWithOptions(InstanceId, request, headers, runtime)
+	_result = &UpdateExtendConfigResponse{}
+	_body, _err := client.UpdateExtendConfigWithOptions(InstanceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -33426,11 +33651,11 @@ func (client *Client) UpdateExtendfilesWithOptions(InstanceId *string, request *
 	return _result, _err
 }
 
-func (client *Client) UpdateHotIkDicts(InstanceId *string, request *UpdateHotIkDictsRequest) (_result *UpdateHotIkDictsResponse, _err error) {
+func (client *Client) UpdateExtendfiles(InstanceId *string, request *UpdateExtendfilesRequest) (_result *UpdateExtendfilesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &UpdateHotIkDictsResponse{}
-	_body, _err := client.UpdateHotIkDictsWithOptions(InstanceId, request, headers, runtime)
+	_result = &UpdateExtendfilesResponse{}
+	_body, _err := client.UpdateExtendfilesWithOptions(InstanceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -33473,11 +33698,11 @@ func (client *Client) UpdateHotIkDictsWithOptions(InstanceId *string, request *U
 	return _result, _err
 }
 
-func (client *Client) UpdateILMPolicy(InstanceId *string, PolicyName *string, request *UpdateILMPolicyRequest) (_result *UpdateILMPolicyResponse, _err error) {
+func (client *Client) UpdateHotIkDicts(InstanceId *string, request *UpdateHotIkDictsRequest) (_result *UpdateHotIkDictsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &UpdateILMPolicyResponse{}
-	_body, _err := client.UpdateILMPolicyWithOptions(InstanceId, PolicyName, request, headers, runtime)
+	_result = &UpdateHotIkDictsResponse{}
+	_body, _err := client.UpdateHotIkDictsWithOptions(InstanceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -33520,11 +33745,11 @@ func (client *Client) UpdateILMPolicyWithOptions(InstanceId *string, PolicyName 
 	return _result, _err
 }
 
-func (client *Client) UpdateIndexTemplate(InstanceId *string, IndexTemplate *string, request *UpdateIndexTemplateRequest) (_result *UpdateIndexTemplateResponse, _err error) {
+func (client *Client) UpdateILMPolicy(InstanceId *string, PolicyName *string, request *UpdateILMPolicyRequest) (_result *UpdateILMPolicyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &UpdateIndexTemplateResponse{}
-	_body, _err := client.UpdateIndexTemplateWithOptions(InstanceId, IndexTemplate, request, headers, runtime)
+	_result = &UpdateILMPolicyResponse{}
+	_body, _err := client.UpdateILMPolicyWithOptions(InstanceId, PolicyName, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -33567,11 +33792,11 @@ func (client *Client) UpdateIndexTemplateWithOptions(InstanceId *string, IndexTe
 	return _result, _err
 }
 
-func (client *Client) UpdateInstance(InstanceId *string, request *UpdateInstanceRequest) (_result *UpdateInstanceResponse, _err error) {
+func (client *Client) UpdateIndexTemplate(InstanceId *string, IndexTemplate *string, request *UpdateIndexTemplateRequest) (_result *UpdateIndexTemplateResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &UpdateInstanceResponse{}
-	_body, _err := client.UpdateInstanceWithOptions(InstanceId, request, headers, runtime)
+	_result = &UpdateIndexTemplateResponse{}
+	_body, _err := client.UpdateIndexTemplateWithOptions(InstanceId, IndexTemplate, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -33598,11 +33823,11 @@ func (client *Client) UpdateInstanceWithOptions(InstanceId *string, request *Upd
 	}
 
 	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.ClientNodeConfiguration))) {
+	if !tea.BoolValue(util.IsUnset(request.ClientNodeConfiguration)) {
 		body["clientNodeConfiguration"] = request.ClientNodeConfiguration
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.ElasticDataNodeConfiguration))) {
+	if !tea.BoolValue(util.IsUnset(request.ElasticDataNodeConfiguration)) {
 		body["elasticDataNodeConfiguration"] = request.ElasticDataNodeConfiguration
 	}
 
@@ -33610,11 +33835,11 @@ func (client *Client) UpdateInstanceWithOptions(InstanceId *string, request *Upd
 		body["instanceCategory"] = request.InstanceCategory
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.KibanaConfiguration))) {
+	if !tea.BoolValue(util.IsUnset(request.KibanaConfiguration)) {
 		body["kibanaConfiguration"] = request.KibanaConfiguration
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.MasterConfiguration))) {
+	if !tea.BoolValue(util.IsUnset(request.MasterConfiguration)) {
 		body["masterConfiguration"] = request.MasterConfiguration
 	}
 
@@ -33622,11 +33847,11 @@ func (client *Client) UpdateInstanceWithOptions(InstanceId *string, request *Upd
 		body["nodeAmount"] = request.NodeAmount
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.NodeSpec))) {
+	if !tea.BoolValue(util.IsUnset(request.NodeSpec)) {
 		body["nodeSpec"] = request.NodeSpec
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.WarmNodeConfiguration))) {
+	if !tea.BoolValue(util.IsUnset(request.WarmNodeConfiguration)) {
 		body["warmNodeConfiguration"] = request.WarmNodeConfiguration
 	}
 
@@ -33655,11 +33880,11 @@ func (client *Client) UpdateInstanceWithOptions(InstanceId *string, request *Upd
 	return _result, _err
 }
 
-func (client *Client) UpdateInstanceChargeType(InstanceId *string, request *UpdateInstanceChargeTypeRequest) (_result *UpdateInstanceChargeTypeResponse, _err error) {
+func (client *Client) UpdateInstance(InstanceId *string, request *UpdateInstanceRequest) (_result *UpdateInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &UpdateInstanceChargeTypeResponse{}
-	_body, _err := client.UpdateInstanceChargeTypeWithOptions(InstanceId, request, headers, runtime)
+	_result = &UpdateInstanceResponse{}
+	_body, _err := client.UpdateInstanceWithOptions(InstanceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -33702,11 +33927,11 @@ func (client *Client) UpdateInstanceChargeTypeWithOptions(InstanceId *string, re
 	return _result, _err
 }
 
-func (client *Client) UpdateInstanceSettings(InstanceId *string, request *UpdateInstanceSettingsRequest) (_result *UpdateInstanceSettingsResponse, _err error) {
+func (client *Client) UpdateInstanceChargeType(InstanceId *string, request *UpdateInstanceChargeTypeRequest) (_result *UpdateInstanceChargeTypeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &UpdateInstanceSettingsResponse{}
-	_body, _err := client.UpdateInstanceSettingsWithOptions(InstanceId, request, headers, runtime)
+	_result = &UpdateInstanceChargeTypeResponse{}
+	_body, _err := client.UpdateInstanceChargeTypeWithOptions(InstanceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -33749,11 +33974,11 @@ func (client *Client) UpdateInstanceSettingsWithOptions(InstanceId *string, requ
 	return _result, _err
 }
 
-func (client *Client) UpdateKibanaSettings(InstanceId *string, request *UpdateKibanaSettingsRequest) (_result *UpdateKibanaSettingsResponse, _err error) {
+func (client *Client) UpdateInstanceSettings(InstanceId *string, request *UpdateInstanceSettingsRequest) (_result *UpdateInstanceSettingsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &UpdateKibanaSettingsResponse{}
-	_body, _err := client.UpdateKibanaSettingsWithOptions(InstanceId, request, headers, runtime)
+	_result = &UpdateInstanceSettingsResponse{}
+	_body, _err := client.UpdateInstanceSettingsWithOptions(InstanceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -33796,11 +34021,11 @@ func (client *Client) UpdateKibanaSettingsWithOptions(InstanceId *string, reques
 	return _result, _err
 }
 
-func (client *Client) UpdateKibanaWhiteIps(InstanceId *string, request *UpdateKibanaWhiteIpsRequest) (_result *UpdateKibanaWhiteIpsResponse, _err error) {
+func (client *Client) UpdateKibanaSettings(InstanceId *string, request *UpdateKibanaSettingsRequest) (_result *UpdateKibanaSettingsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &UpdateKibanaWhiteIpsResponse{}
-	_body, _err := client.UpdateKibanaWhiteIpsWithOptions(InstanceId, request, headers, runtime)
+	_result = &UpdateKibanaSettingsResponse{}
+	_body, _err := client.UpdateKibanaSettingsWithOptions(InstanceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -33827,7 +34052,7 @@ func (client *Client) UpdateKibanaWhiteIpsWithOptions(InstanceId *string, reques
 		body["kibanaIPWhitelist"] = request.KibanaIPWhitelist
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.WhiteIpGroup))) {
+	if !tea.BoolValue(util.IsUnset(request.WhiteIpGroup)) {
 		body["whiteIpGroup"] = request.WhiteIpGroup
 	}
 
@@ -33856,11 +34081,11 @@ func (client *Client) UpdateKibanaWhiteIpsWithOptions(InstanceId *string, reques
 	return _result, _err
 }
 
-func (client *Client) UpdateLogstash(InstanceId *string, request *UpdateLogstashRequest) (_result *UpdateLogstashResponse, _err error) {
+func (client *Client) UpdateKibanaWhiteIps(InstanceId *string, request *UpdateKibanaWhiteIpsRequest) (_result *UpdateKibanaWhiteIpsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &UpdateLogstashResponse{}
-	_body, _err := client.UpdateLogstashWithOptions(InstanceId, request, headers, runtime)
+	_result = &UpdateKibanaWhiteIpsResponse{}
+	_body, _err := client.UpdateKibanaWhiteIpsWithOptions(InstanceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -33883,7 +34108,7 @@ func (client *Client) UpdateLogstashWithOptions(InstanceId *string, request *Upd
 		body["nodeAmount"] = request.NodeAmount
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.NodeSpec))) {
+	if !tea.BoolValue(util.IsUnset(request.NodeSpec)) {
 		body["nodeSpec"] = request.NodeSpec
 	}
 
@@ -33912,11 +34137,11 @@ func (client *Client) UpdateLogstashWithOptions(InstanceId *string, request *Upd
 	return _result, _err
 }
 
-func (client *Client) UpdateLogstashChargeType(InstanceId *string, request *UpdateLogstashChargeTypeRequest) (_result *UpdateLogstashChargeTypeResponse, _err error) {
+func (client *Client) UpdateLogstash(InstanceId *string, request *UpdateLogstashRequest) (_result *UpdateLogstashResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &UpdateLogstashChargeTypeResponse{}
-	_body, _err := client.UpdateLogstashChargeTypeWithOptions(InstanceId, request, headers, runtime)
+	_result = &UpdateLogstashResponse{}
+	_body, _err := client.UpdateLogstashWithOptions(InstanceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -33959,11 +34184,11 @@ func (client *Client) UpdateLogstashChargeTypeWithOptions(InstanceId *string, re
 	return _result, _err
 }
 
-func (client *Client) UpdateLogstashDescription(InstanceId *string, request *UpdateLogstashDescriptionRequest) (_result *UpdateLogstashDescriptionResponse, _err error) {
+func (client *Client) UpdateLogstashChargeType(InstanceId *string, request *UpdateLogstashChargeTypeRequest) (_result *UpdateLogstashChargeTypeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &UpdateLogstashDescriptionResponse{}
-	_body, _err := client.UpdateLogstashDescriptionWithOptions(InstanceId, request, headers, runtime)
+	_result = &UpdateLogstashChargeTypeResponse{}
+	_body, _err := client.UpdateLogstashChargeTypeWithOptions(InstanceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -34006,11 +34231,11 @@ func (client *Client) UpdateLogstashDescriptionWithOptions(InstanceId *string, r
 	return _result, _err
 }
 
-func (client *Client) UpdateLogstashSettings(InstanceId *string, request *UpdateLogstashSettingsRequest) (_result *UpdateLogstashSettingsResponse, _err error) {
+func (client *Client) UpdateLogstashDescription(InstanceId *string, request *UpdateLogstashDescriptionRequest) (_result *UpdateLogstashDescriptionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &UpdateLogstashSettingsResponse{}
-	_body, _err := client.UpdateLogstashSettingsWithOptions(InstanceId, request, headers, runtime)
+	_result = &UpdateLogstashDescriptionResponse{}
+	_body, _err := client.UpdateLogstashDescriptionWithOptions(InstanceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -34053,11 +34278,11 @@ func (client *Client) UpdateLogstashSettingsWithOptions(InstanceId *string, requ
 	return _result, _err
 }
 
-func (client *Client) UpdatePipelineManagementConfig(InstanceId *string, request *UpdatePipelineManagementConfigRequest) (_result *UpdatePipelineManagementConfigResponse, _err error) {
+func (client *Client) UpdateLogstashSettings(InstanceId *string, request *UpdateLogstashSettingsRequest) (_result *UpdateLogstashSettingsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &UpdatePipelineManagementConfigResponse{}
-	_body, _err := client.UpdatePipelineManagementConfigWithOptions(InstanceId, request, headers, runtime)
+	_result = &UpdateLogstashSettingsResponse{}
+	_body, _err := client.UpdateLogstashSettingsWithOptions(InstanceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -34121,11 +34346,11 @@ func (client *Client) UpdatePipelineManagementConfigWithOptions(InstanceId *stri
 	return _result, _err
 }
 
-func (client *Client) UpdatePipelines(InstanceId *string, request *UpdatePipelinesRequest) (_result *UpdatePipelinesResponse, _err error) {
+func (client *Client) UpdatePipelineManagementConfig(InstanceId *string, request *UpdatePipelineManagementConfigRequest) (_result *UpdatePipelineManagementConfigResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &UpdatePipelinesResponse{}
-	_body, _err := client.UpdatePipelinesWithOptions(InstanceId, request, headers, runtime)
+	_result = &UpdatePipelineManagementConfigResponse{}
+	_body, _err := client.UpdatePipelineManagementConfigWithOptions(InstanceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -34172,11 +34397,11 @@ func (client *Client) UpdatePipelinesWithOptions(InstanceId *string, request *Up
 	return _result, _err
 }
 
-func (client *Client) UpdatePrivateNetworkWhiteIps(InstanceId *string, request *UpdatePrivateNetworkWhiteIpsRequest) (_result *UpdatePrivateNetworkWhiteIpsResponse, _err error) {
+func (client *Client) UpdatePipelines(InstanceId *string, request *UpdatePipelinesRequest) (_result *UpdatePipelinesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &UpdatePrivateNetworkWhiteIpsResponse{}
-	_body, _err := client.UpdatePrivateNetworkWhiteIpsWithOptions(InstanceId, request, headers, runtime)
+	_result = &UpdatePipelinesResponse{}
+	_body, _err := client.UpdatePipelinesWithOptions(InstanceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -34223,11 +34448,11 @@ func (client *Client) UpdatePrivateNetworkWhiteIpsWithOptions(InstanceId *string
 	return _result, _err
 }
 
-func (client *Client) UpdatePublicNetwork(InstanceId *string, request *UpdatePublicNetworkRequest) (_result *UpdatePublicNetworkResponse, _err error) {
+func (client *Client) UpdatePrivateNetworkWhiteIps(InstanceId *string, request *UpdatePrivateNetworkWhiteIpsRequest) (_result *UpdatePrivateNetworkWhiteIpsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &UpdatePublicNetworkResponse{}
-	_body, _err := client.UpdatePublicNetworkWithOptions(InstanceId, request, headers, runtime)
+	_result = &UpdatePrivateNetworkWhiteIpsResponse{}
+	_body, _err := client.UpdatePrivateNetworkWhiteIpsWithOptions(InstanceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -34270,11 +34495,11 @@ func (client *Client) UpdatePublicNetworkWithOptions(InstanceId *string, request
 	return _result, _err
 }
 
-func (client *Client) UpdatePublicWhiteIps(InstanceId *string, request *UpdatePublicWhiteIpsRequest) (_result *UpdatePublicWhiteIpsResponse, _err error) {
+func (client *Client) UpdatePublicNetwork(InstanceId *string, request *UpdatePublicNetworkRequest) (_result *UpdatePublicNetworkResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &UpdatePublicWhiteIpsResponse{}
-	_body, _err := client.UpdatePublicWhiteIpsWithOptions(InstanceId, request, headers, runtime)
+	_result = &UpdatePublicNetworkResponse{}
+	_body, _err := client.UpdatePublicNetworkWithOptions(InstanceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -34321,11 +34546,11 @@ func (client *Client) UpdatePublicWhiteIpsWithOptions(InstanceId *string, reques
 	return _result, _err
 }
 
-func (client *Client) UpdateReadWritePolicy(InstanceId *string, request *UpdateReadWritePolicyRequest) (_result *UpdateReadWritePolicyResponse, _err error) {
+func (client *Client) UpdatePublicWhiteIps(InstanceId *string, request *UpdatePublicWhiteIpsRequest) (_result *UpdatePublicWhiteIpsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &UpdateReadWritePolicyResponse{}
-	_body, _err := client.UpdateReadWritePolicyWithOptions(InstanceId, request, headers, runtime)
+	_result = &UpdatePublicWhiteIpsResponse{}
+	_body, _err := client.UpdatePublicWhiteIpsWithOptions(InstanceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -34368,11 +34593,11 @@ func (client *Client) UpdateReadWritePolicyWithOptions(InstanceId *string, reque
 	return _result, _err
 }
 
-func (client *Client) UpdateSnapshotSetting(InstanceId *string, request *UpdateSnapshotSettingRequest) (_result *UpdateSnapshotSettingResponse, _err error) {
+func (client *Client) UpdateReadWritePolicy(InstanceId *string, request *UpdateReadWritePolicyRequest) (_result *UpdateReadWritePolicyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &UpdateSnapshotSettingResponse{}
-	_body, _err := client.UpdateSnapshotSettingWithOptions(InstanceId, request, headers, runtime)
+	_result = &UpdateReadWritePolicyResponse{}
+	_body, _err := client.UpdateReadWritePolicyWithOptions(InstanceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -34409,11 +34634,11 @@ func (client *Client) UpdateSnapshotSettingWithOptions(InstanceId *string, reque
 	return _result, _err
 }
 
-func (client *Client) UpdateSynonymsDicts(InstanceId *string, request *UpdateSynonymsDictsRequest) (_result *UpdateSynonymsDictsResponse, _err error) {
+func (client *Client) UpdateSnapshotSetting(InstanceId *string, request *UpdateSnapshotSettingRequest) (_result *UpdateSnapshotSettingResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &UpdateSynonymsDictsResponse{}
-	_body, _err := client.UpdateSynonymsDictsWithOptions(InstanceId, request, headers, runtime)
+	_result = &UpdateSnapshotSettingResponse{}
+	_body, _err := client.UpdateSnapshotSettingWithOptions(InstanceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -34456,11 +34681,11 @@ func (client *Client) UpdateSynonymsDictsWithOptions(InstanceId *string, request
 	return _result, _err
 }
 
-func (client *Client) UpdateTemplate(InstanceId *string, TemplateName *string, request *UpdateTemplateRequest) (_result *UpdateTemplateResponse, _err error) {
+func (client *Client) UpdateSynonymsDicts(InstanceId *string, request *UpdateSynonymsDictsRequest) (_result *UpdateSynonymsDictsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &UpdateTemplateResponse{}
-	_body, _err := client.UpdateTemplateWithOptions(InstanceId, TemplateName, request, headers, runtime)
+	_result = &UpdateSynonymsDictsResponse{}
+	_body, _err := client.UpdateSynonymsDictsWithOptions(InstanceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -34503,11 +34728,11 @@ func (client *Client) UpdateTemplateWithOptions(InstanceId *string, TemplateName
 	return _result, _err
 }
 
-func (client *Client) UpdateWhiteIps(InstanceId *string, request *UpdateWhiteIpsRequest) (_result *UpdateWhiteIpsResponse, _err error) {
+func (client *Client) UpdateTemplate(InstanceId *string, TemplateName *string, request *UpdateTemplateRequest) (_result *UpdateTemplateResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &UpdateWhiteIpsResponse{}
-	_body, _err := client.UpdateWhiteIpsWithOptions(InstanceId, request, headers, runtime)
+	_result = &UpdateTemplateResponse{}
+	_body, _err := client.UpdateTemplateWithOptions(InstanceId, TemplateName, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -34534,7 +34759,7 @@ func (client *Client) UpdateWhiteIpsWithOptions(InstanceId *string, request *Upd
 		body["esIPWhitelist"] = request.EsIPWhitelist
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.WhiteIpGroup))) {
+	if !tea.BoolValue(util.IsUnset(request.WhiteIpGroup)) {
 		body["whiteIpGroup"] = request.WhiteIpGroup
 	}
 
@@ -34563,11 +34788,11 @@ func (client *Client) UpdateWhiteIpsWithOptions(InstanceId *string, request *Upd
 	return _result, _err
 }
 
-func (client *Client) UpdateXpackMonitorConfig(InstanceId *string, request *UpdateXpackMonitorConfigRequest) (_result *UpdateXpackMonitorConfigResponse, _err error) {
+func (client *Client) UpdateWhiteIps(InstanceId *string, request *UpdateWhiteIpsRequest) (_result *UpdateWhiteIpsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &UpdateXpackMonitorConfigResponse{}
-	_body, _err := client.UpdateXpackMonitorConfigWithOptions(InstanceId, request, headers, runtime)
+	_result = &UpdateWhiteIpsResponse{}
+	_body, _err := client.UpdateWhiteIpsWithOptions(InstanceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -34627,11 +34852,11 @@ func (client *Client) UpdateXpackMonitorConfigWithOptions(InstanceId *string, re
 	return _result, _err
 }
 
-func (client *Client) UpgradeEngineVersion(InstanceId *string, request *UpgradeEngineVersionRequest) (_result *UpgradeEngineVersionResponse, _err error) {
+func (client *Client) UpdateXpackMonitorConfig(InstanceId *string, request *UpdateXpackMonitorConfigRequest) (_result *UpdateXpackMonitorConfigResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &UpgradeEngineVersionResponse{}
-	_body, _err := client.UpgradeEngineVersionWithOptions(InstanceId, request, headers, runtime)
+	_result = &UpdateXpackMonitorConfigResponse{}
+	_body, _err := client.UpdateXpackMonitorConfigWithOptions(InstanceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -34687,11 +34912,11 @@ func (client *Client) UpgradeEngineVersionWithOptions(InstanceId *string, reques
 	return _result, _err
 }
 
-func (client *Client) ValidateConnection(InstanceId *string, request *ValidateConnectionRequest) (_result *ValidateConnectionResponse, _err error) {
+func (client *Client) UpgradeEngineVersion(InstanceId *string, request *UpgradeEngineVersionRequest) (_result *UpgradeEngineVersionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ValidateConnectionResponse{}
-	_body, _err := client.ValidateConnectionWithOptions(InstanceId, request, headers, runtime)
+	_result = &UpgradeEngineVersionResponse{}
+	_body, _err := client.UpgradeEngineVersionWithOptions(InstanceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -34734,11 +34959,11 @@ func (client *Client) ValidateConnectionWithOptions(InstanceId *string, request 
 	return _result, _err
 }
 
-func (client *Client) ValidateShrinkNodes(InstanceId *string, request *ValidateShrinkNodesRequest) (_result *ValidateShrinkNodesResponse, _err error) {
+func (client *Client) ValidateConnection(InstanceId *string, request *ValidateConnectionRequest) (_result *ValidateConnectionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ValidateShrinkNodesResponse{}
-	_body, _err := client.ValidateShrinkNodesWithOptions(InstanceId, request, headers, runtime)
+	_result = &ValidateConnectionResponse{}
+	_body, _err := client.ValidateConnectionWithOptions(InstanceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -34789,11 +35014,11 @@ func (client *Client) ValidateShrinkNodesWithOptions(InstanceId *string, request
 	return _result, _err
 }
 
-func (client *Client) ValidateSlrPermission(request *ValidateSlrPermissionRequest) (_result *ValidateSlrPermissionResponse, _err error) {
+func (client *Client) ValidateShrinkNodes(InstanceId *string, request *ValidateShrinkNodesRequest) (_result *ValidateShrinkNodesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ValidateSlrPermissionResponse{}
-	_body, _err := client.ValidateSlrPermissionWithOptions(request, headers, runtime)
+	_result = &ValidateShrinkNodesResponse{}
+	_body, _err := client.ValidateShrinkNodesWithOptions(InstanceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -34839,11 +35064,11 @@ func (client *Client) ValidateSlrPermissionWithOptions(request *ValidateSlrPermi
 	return _result, _err
 }
 
-func (client *Client) ValidateTransferableNodes(InstanceId *string, request *ValidateTransferableNodesRequest) (_result *ValidateTransferableNodesResponse, _err error) {
+func (client *Client) ValidateSlrPermission(request *ValidateSlrPermissionRequest) (_result *ValidateSlrPermissionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ValidateTransferableNodesResponse{}
-	_body, _err := client.ValidateTransferableNodesWithOptions(InstanceId, request, headers, runtime)
+	_result = &ValidateSlrPermissionResponse{}
+	_body, _err := client.ValidateSlrPermissionWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -34886,11 +35111,11 @@ func (client *Client) ValidateTransferableNodesWithOptions(InstanceId *string, r
 	return _result, _err
 }
 
-func (client *Client) CreateInstance(request *CreateInstanceRequest) (_result *CreateInstanceResponse, _err error) {
+func (client *Client) ValidateTransferableNodes(InstanceId *string, request *ValidateTransferableNodesRequest) (_result *ValidateTransferableNodesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &CreateInstanceResponse{}
-	_body, _err := client.CreateInstanceWithOptions(request, headers, runtime)
+	_result = &ValidateTransferableNodesResponse{}
+	_body, _err := client.ValidateTransferableNodesWithOptions(InstanceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -34909,11 +35134,11 @@ func (client *Client) CreateInstanceWithOptions(request *CreateInstanceRequest, 
 	}
 
 	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.ClientNodeConfiguration))) {
+	if !tea.BoolValue(util.IsUnset(request.ClientNodeConfiguration)) {
 		body["clientNodeConfiguration"] = request.ClientNodeConfiguration
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.ElasticDataNodeConfiguration))) {
+	if !tea.BoolValue(util.IsUnset(request.ElasticDataNodeConfiguration)) {
 		body["elasticDataNodeConfiguration"] = request.ElasticDataNodeConfiguration
 	}
 
@@ -34929,15 +35154,15 @@ func (client *Client) CreateInstanceWithOptions(request *CreateInstanceRequest, 
 		body["instanceCategory"] = request.InstanceCategory
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.KibanaConfiguration))) {
+	if !tea.BoolValue(util.IsUnset(request.KibanaConfiguration)) {
 		body["kibanaConfiguration"] = request.KibanaConfiguration
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.MasterConfiguration))) {
+	if !tea.BoolValue(util.IsUnset(request.MasterConfiguration)) {
 		body["masterConfiguration"] = request.MasterConfiguration
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.NetworkConfig))) {
+	if !tea.BoolValue(util.IsUnset(request.NetworkConfig)) {
 		body["networkConfig"] = request.NetworkConfig
 	}
 
@@ -34945,11 +35170,11 @@ func (client *Client) CreateInstanceWithOptions(request *CreateInstanceRequest, 
 		body["nodeAmount"] = request.NodeAmount
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.NodeSpec))) {
+	if !tea.BoolValue(util.IsUnset(request.NodeSpec)) {
 		body["nodeSpec"] = request.NodeSpec
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.PaymentInfo))) {
+	if !tea.BoolValue(util.IsUnset(request.PaymentInfo)) {
 		body["paymentInfo"] = request.PaymentInfo
 	}
 
@@ -34957,7 +35182,7 @@ func (client *Client) CreateInstanceWithOptions(request *CreateInstanceRequest, 
 		body["paymentType"] = request.PaymentType
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.WarmNodeConfiguration))) {
+	if !tea.BoolValue(util.IsUnset(request.WarmNodeConfiguration)) {
 		body["warmNodeConfiguration"] = request.WarmNodeConfiguration
 	}
 
@@ -34987,5 +35212,17 @@ func (client *Client) CreateInstanceWithOptions(request *CreateInstanceRequest, 
 		return _result, _err
 	}
 	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateInstance(request *CreateInstanceRequest) (_result *CreateInstanceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateInstanceResponse{}
+	_body, _err := client.CreateInstanceWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
 	return _result, _err
 }
