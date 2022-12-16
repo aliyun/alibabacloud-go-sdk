@@ -23,11 +23,13 @@ type AddImageRequest struct {
 	CustomContent *string `json:"CustomContent,omitempty" xml:"CustomContent,omitempty"`
 	InstanceName  *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
 	IntAttr       *int32  `json:"IntAttr,omitempty" xml:"IntAttr,omitempty"`
+	IntAttr2      *int32  `json:"IntAttr2,omitempty" xml:"IntAttr2,omitempty"`
 	PicContent    *string `json:"PicContent,omitempty" xml:"PicContent,omitempty"`
 	PicName       *string `json:"PicName,omitempty" xml:"PicName,omitempty"`
 	ProductId     *string `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
 	Region        *string `json:"Region,omitempty" xml:"Region,omitempty"`
 	StrAttr       *string `json:"StrAttr,omitempty" xml:"StrAttr,omitempty"`
+	StrAttr2      *string `json:"StrAttr2,omitempty" xml:"StrAttr2,omitempty"`
 }
 
 func (s AddImageRequest) String() string {
@@ -63,6 +65,11 @@ func (s *AddImageRequest) SetIntAttr(v int32) *AddImageRequest {
 	return s
 }
 
+func (s *AddImageRequest) SetIntAttr2(v int32) *AddImageRequest {
+	s.IntAttr2 = &v
+	return s
+}
+
 func (s *AddImageRequest) SetPicContent(v string) *AddImageRequest {
 	s.PicContent = &v
 	return s
@@ -88,17 +95,24 @@ func (s *AddImageRequest) SetStrAttr(v string) *AddImageRequest {
 	return s
 }
 
+func (s *AddImageRequest) SetStrAttr2(v string) *AddImageRequest {
+	s.StrAttr2 = &v
+	return s
+}
+
 type AddImageAdvanceRequest struct {
 	CategoryId       *int32    `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
 	Crop             *bool     `json:"Crop,omitempty" xml:"Crop,omitempty"`
 	CustomContent    *string   `json:"CustomContent,omitempty" xml:"CustomContent,omitempty"`
 	InstanceName     *string   `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
 	IntAttr          *int32    `json:"IntAttr,omitempty" xml:"IntAttr,omitempty"`
+	IntAttr2         *int32    `json:"IntAttr2,omitempty" xml:"IntAttr2,omitempty"`
 	PicContentObject io.Reader `json:"PicContent,omitempty" xml:"PicContent,omitempty"`
 	PicName          *string   `json:"PicName,omitempty" xml:"PicName,omitempty"`
 	ProductId        *string   `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
 	Region           *string   `json:"Region,omitempty" xml:"Region,omitempty"`
 	StrAttr          *string   `json:"StrAttr,omitempty" xml:"StrAttr,omitempty"`
+	StrAttr2         *string   `json:"StrAttr2,omitempty" xml:"StrAttr2,omitempty"`
 }
 
 func (s AddImageAdvanceRequest) String() string {
@@ -134,6 +148,11 @@ func (s *AddImageAdvanceRequest) SetIntAttr(v int32) *AddImageAdvanceRequest {
 	return s
 }
 
+func (s *AddImageAdvanceRequest) SetIntAttr2(v int32) *AddImageAdvanceRequest {
+	s.IntAttr2 = &v
+	return s
+}
+
 func (s *AddImageAdvanceRequest) SetPicContentObject(v io.Reader) *AddImageAdvanceRequest {
 	s.PicContentObject = v
 	return s
@@ -156,6 +175,11 @@ func (s *AddImageAdvanceRequest) SetRegion(v string) *AddImageAdvanceRequest {
 
 func (s *AddImageAdvanceRequest) SetStrAttr(v string) *AddImageAdvanceRequest {
 	s.StrAttr = &v
+	return s
+}
+
+func (s *AddImageAdvanceRequest) SetStrAttr2(v string) *AddImageAdvanceRequest {
+	s.StrAttr2 = &v
 	return s
 }
 
@@ -1223,11 +1247,13 @@ type SearchImageByNameResponseBodyAuctions struct {
 	CategoryId     *int32   `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
 	CustomContent  *string  `json:"CustomContent,omitempty" xml:"CustomContent,omitempty"`
 	IntAttr        *int32   `json:"IntAttr,omitempty" xml:"IntAttr,omitempty"`
+	IntAttr2       *int32   `json:"IntAttr2,omitempty" xml:"IntAttr2,omitempty"`
 	PicName        *string  `json:"PicName,omitempty" xml:"PicName,omitempty"`
 	ProductId      *string  `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
 	Score          *float32 `json:"Score,omitempty" xml:"Score,omitempty"`
 	SortExprValues *string  `json:"SortExprValues,omitempty" xml:"SortExprValues,omitempty"`
 	StrAttr        *string  `json:"StrAttr,omitempty" xml:"StrAttr,omitempty"`
+	StrAttr2       *string  `json:"StrAttr2,omitempty" xml:"StrAttr2,omitempty"`
 }
 
 func (s SearchImageByNameResponseBodyAuctions) String() string {
@@ -1253,6 +1279,11 @@ func (s *SearchImageByNameResponseBodyAuctions) SetIntAttr(v int32) *SearchImage
 	return s
 }
 
+func (s *SearchImageByNameResponseBodyAuctions) SetIntAttr2(v int32) *SearchImageByNameResponseBodyAuctions {
+	s.IntAttr2 = &v
+	return s
+}
+
 func (s *SearchImageByNameResponseBodyAuctions) SetPicName(v string) *SearchImageByNameResponseBodyAuctions {
 	s.PicName = &v
 	return s
@@ -1275,6 +1306,11 @@ func (s *SearchImageByNameResponseBodyAuctions) SetSortExprValues(v string) *Sea
 
 func (s *SearchImageByNameResponseBodyAuctions) SetStrAttr(v string) *SearchImageByNameResponseBodyAuctions {
 	s.StrAttr = &v
+	return s
+}
+
+func (s *SearchImageByNameResponseBodyAuctions) SetStrAttr2(v string) *SearchImageByNameResponseBodyAuctions {
+	s.StrAttr2 = &v
 	return s
 }
 
@@ -1586,11 +1622,13 @@ type SearchImageByPicResponseBodyAuctions struct {
 	CategoryId     *int32   `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
 	CustomContent  *string  `json:"CustomContent,omitempty" xml:"CustomContent,omitempty"`
 	IntAttr        *int32   `json:"IntAttr,omitempty" xml:"IntAttr,omitempty"`
+	IntAttr2       *int32   `json:"IntAttr2,omitempty" xml:"IntAttr2,omitempty"`
 	PicName        *string  `json:"PicName,omitempty" xml:"PicName,omitempty"`
 	ProductId      *string  `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
 	Score          *float32 `json:"Score,omitempty" xml:"Score,omitempty"`
 	SortExprValues *string  `json:"SortExprValues,omitempty" xml:"SortExprValues,omitempty"`
 	StrAttr        *string  `json:"StrAttr,omitempty" xml:"StrAttr,omitempty"`
+	StrAttr2       *string  `json:"StrAttr2,omitempty" xml:"StrAttr2,omitempty"`
 }
 
 func (s SearchImageByPicResponseBodyAuctions) String() string {
@@ -1616,6 +1654,11 @@ func (s *SearchImageByPicResponseBodyAuctions) SetIntAttr(v int32) *SearchImageB
 	return s
 }
 
+func (s *SearchImageByPicResponseBodyAuctions) SetIntAttr2(v int32) *SearchImageByPicResponseBodyAuctions {
+	s.IntAttr2 = &v
+	return s
+}
+
 func (s *SearchImageByPicResponseBodyAuctions) SetPicName(v string) *SearchImageByPicResponseBodyAuctions {
 	s.PicName = &v
 	return s
@@ -1638,6 +1681,11 @@ func (s *SearchImageByPicResponseBodyAuctions) SetSortExprValues(v string) *Sear
 
 func (s *SearchImageByPicResponseBodyAuctions) SetStrAttr(v string) *SearchImageByPicResponseBodyAuctions {
 	s.StrAttr = &v
+	return s
+}
+
+func (s *SearchImageByPicResponseBodyAuctions) SetStrAttr2(v string) *SearchImageByPicResponseBodyAuctions {
+	s.StrAttr2 = &v
 	return s
 }
 
@@ -1778,9 +1826,11 @@ type UpdateImageRequest struct {
 	CustomContent *string `json:"CustomContent,omitempty" xml:"CustomContent,omitempty"`
 	InstanceName  *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
 	IntAttr       *int32  `json:"IntAttr,omitempty" xml:"IntAttr,omitempty"`
+	IntAttr2      *int32  `json:"IntAttr2,omitempty" xml:"IntAttr2,omitempty"`
 	PicName       *string `json:"PicName,omitempty" xml:"PicName,omitempty"`
 	ProductId     *string `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
 	StrAttr       *string `json:"StrAttr,omitempty" xml:"StrAttr,omitempty"`
+	StrAttr2      *string `json:"StrAttr2,omitempty" xml:"StrAttr2,omitempty"`
 }
 
 func (s UpdateImageRequest) String() string {
@@ -1806,6 +1856,11 @@ func (s *UpdateImageRequest) SetIntAttr(v int32) *UpdateImageRequest {
 	return s
 }
 
+func (s *UpdateImageRequest) SetIntAttr2(v int32) *UpdateImageRequest {
+	s.IntAttr2 = &v
+	return s
+}
+
 func (s *UpdateImageRequest) SetPicName(v string) *UpdateImageRequest {
 	s.PicName = &v
 	return s
@@ -1818,6 +1873,11 @@ func (s *UpdateImageRequest) SetProductId(v string) *UpdateImageRequest {
 
 func (s *UpdateImageRequest) SetStrAttr(v string) *UpdateImageRequest {
 	s.StrAttr = &v
+	return s
+}
+
+func (s *UpdateImageRequest) SetStrAttr2(v string) *UpdateImageRequest {
+	s.StrAttr2 = &v
 	return s
 }
 
@@ -1958,6 +2018,10 @@ func (client *Client) AddImageWithOptions(request *AddImageRequest, runtime *uti
 		body["IntAttr"] = request.IntAttr
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.IntAttr2)) {
+		body["IntAttr2"] = request.IntAttr2
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.PicContent)) {
 		body["PicContent"] = request.PicContent
 	}
@@ -1976,6 +2040,10 @@ func (client *Client) AddImageWithOptions(request *AddImageRequest, runtime *uti
 
 	if !tea.BoolValue(util.IsUnset(request.StrAttr)) {
 		body["StrAttr"] = request.StrAttr
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StrAttr2)) {
+		body["StrAttr2"] = request.StrAttr2
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -2698,6 +2766,10 @@ func (client *Client) UpdateImageWithOptions(request *UpdateImageRequest, runtim
 		body["IntAttr"] = request.IntAttr
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.IntAttr2)) {
+		body["IntAttr2"] = request.IntAttr2
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.PicName)) {
 		body["PicName"] = request.PicName
 	}
@@ -2708,6 +2780,10 @@ func (client *Client) UpdateImageWithOptions(request *UpdateImageRequest, runtim
 
 	if !tea.BoolValue(util.IsUnset(request.StrAttr)) {
 		body["StrAttr"] = request.StrAttr
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StrAttr2)) {
+		body["StrAttr2"] = request.StrAttr2
 	}
 
 	req := &openapi.OpenApiRequest{
