@@ -17,6 +17,100 @@ import (
 	"io"
 )
 
+type Collection struct {
+	CollectionType *string `json:"CollectionType,omitempty" xml:"CollectionType,omitempty"`
+	Comment        *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	CreateTime     *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Level          *int32  `json:"Level,omitempty" xml:"Level,omitempty"`
+	Name           *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	OwnerId        *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	OwnerName      *string `json:"OwnerName,omitempty" xml:"OwnerName,omitempty"`
+	QualifiedName  *string `json:"QualifiedName,omitempty" xml:"QualifiedName,omitempty"`
+	UpdateTime     *int64  `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+}
+
+func (s Collection) String() string {
+	return tea.Prettify(s)
+}
+
+func (s Collection) GoString() string {
+	return s.String()
+}
+
+func (s *Collection) SetCollectionType(v string) *Collection {
+	s.CollectionType = &v
+	return s
+}
+
+func (s *Collection) SetComment(v string) *Collection {
+	s.Comment = &v
+	return s
+}
+
+func (s *Collection) SetCreateTime(v int64) *Collection {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *Collection) SetLevel(v int32) *Collection {
+	s.Level = &v
+	return s
+}
+
+func (s *Collection) SetName(v string) *Collection {
+	s.Name = &v
+	return s
+}
+
+func (s *Collection) SetOwnerId(v string) *Collection {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *Collection) SetOwnerName(v string) *Collection {
+	s.OwnerName = &v
+	return s
+}
+
+func (s *Collection) SetQualifiedName(v string) *Collection {
+	s.QualifiedName = &v
+	return s
+}
+
+func (s *Collection) SetUpdateTime(v int64) *Collection {
+	s.UpdateTime = &v
+	return s
+}
+
+type Entity struct {
+	EntityContent map[string]interface{} `json:"EntityContent,omitempty" xml:"EntityContent,omitempty"`
+	QualifiedName *string                `json:"QualifiedName,omitempty" xml:"QualifiedName,omitempty"`
+	TenantId      *int64                 `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+}
+
+func (s Entity) String() string {
+	return tea.Prettify(s)
+}
+
+func (s Entity) GoString() string {
+	return s.String()
+}
+
+func (s *Entity) SetEntityContent(v map[string]interface{}) *Entity {
+	s.EntityContent = v
+	return s
+}
+
+func (s *Entity) SetQualifiedName(v string) *Entity {
+	s.QualifiedName = &v
+	return s
+}
+
+func (s *Entity) SetTenantId(v int64) *Entity {
+	s.TenantId = &v
+	return s
+}
+
 type AbolishDataServiceApiRequest struct {
 	ApiId     *int64 `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
@@ -9510,8 +9604,10 @@ type GetDagResponseBodyData struct {
 	Bizdate    *int64  `json:"Bizdate,omitempty" xml:"Bizdate,omitempty"`
 	CreateTime *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	CreateUser *string `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
-	DagId      *int64  `json:"DagId,omitempty" xml:"DagId,omitempty"`
-	FinishTime *int64  `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
+	// DagId。
+	DagId      *int64 `json:"DagId,omitempty" xml:"DagId,omitempty"`
+	FinishTime *int64 `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
+	// Gmtdate。
 	Gmtdate    *int64  `json:"Gmtdate,omitempty" xml:"Gmtdate,omitempty"`
 	ModifyTime *int64  `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
 	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
@@ -17355,6 +17451,7 @@ type GetMetaTableOutputRequest struct {
 	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	StartDate  *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
 	TableGuid  *string `json:"TableGuid,omitempty" xml:"TableGuid,omitempty"`
+	TaskId     *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s GetMetaTableOutputRequest) String() string {
@@ -17387,6 +17484,11 @@ func (s *GetMetaTableOutputRequest) SetStartDate(v string) *GetMetaTableOutputRe
 
 func (s *GetMetaTableOutputRequest) SetTableGuid(v string) *GetMetaTableOutputRequest {
 	s.TableGuid = &v
+	return s
+}
+
+func (s *GetMetaTableOutputRequest) SetTaskId(v string) *GetMetaTableOutputRequest {
+	s.TaskId = &v
 	return s
 }
 
@@ -19536,7 +19638,8 @@ func (s *GetOptionValueForProjectRequest) SetProjectId(v string) *GetOptionValue
 
 type GetOptionValueForProjectResponseBody struct {
 	OptionValue *string `json:"OptionValue,omitempty" xml:"OptionValue,omitempty"`
-	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetOptionValueForProjectResponseBody) String() string {
@@ -24327,8 +24430,10 @@ type ListDagsResponseBodyDataDags struct {
 	Bizdate    *int64  `json:"Bizdate,omitempty" xml:"Bizdate,omitempty"`
 	CreateTime *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	CreateUser *string `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
-	DagId      *int64  `json:"DagId,omitempty" xml:"DagId,omitempty"`
-	FinishTime *int64  `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
+	// DagId。
+	DagId      *int64 `json:"DagId,omitempty" xml:"DagId,omitempty"`
+	FinishTime *int64 `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
+	// Gmtdate。
 	Gmtdate    *int64  `json:"Gmtdate,omitempty" xml:"Gmtdate,omitempty"`
 	ModifyTime *int64  `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
 	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
@@ -27958,7 +28063,8 @@ func (s *ListExtensionsRequest) SetPageSize(v int32) *ListExtensionsRequest {
 
 type ListExtensionsResponseBody struct {
 	PagingInfo *ListExtensionsResponseBodyPagingInfo `json:"PagingInfo,omitempty" xml:"PagingInfo,omitempty" type:"Struct"`
-	RequestId  *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListExtensionsResponseBody) String() string {
@@ -34253,7 +34359,6 @@ type ListResourceGroupsRequest struct {
 	ResourceGroupType              *int32                           `json:"ResourceGroupType,omitempty" xml:"ResourceGroupType,omitempty"`
 	ResourceManagerResourceGroupId *string                          `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
 	Tags                           []*ListResourceGroupsRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	TypeNames                      *string                          `json:"TypeNames,omitempty" xml:"TypeNames,omitempty"`
 }
 
 func (s ListResourceGroupsRequest) String() string {
@@ -34289,11 +34394,6 @@ func (s *ListResourceGroupsRequest) SetTags(v []*ListResourceGroupsRequestTags) 
 	return s
 }
 
-func (s *ListResourceGroupsRequest) SetTypeNames(v string) *ListResourceGroupsRequest {
-	s.TypeNames = &v
-	return s
-}
-
 type ListResourceGroupsRequestTags struct {
 	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
@@ -34323,7 +34423,6 @@ type ListResourceGroupsShrinkRequest struct {
 	ResourceGroupType              *int32  `json:"ResourceGroupType,omitempty" xml:"ResourceGroupType,omitempty"`
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
 	TagsShrink                     *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	TypeNames                      *string `json:"TypeNames,omitempty" xml:"TypeNames,omitempty"`
 }
 
 func (s ListResourceGroupsShrinkRequest) String() string {
@@ -34356,11 +34455,6 @@ func (s *ListResourceGroupsShrinkRequest) SetResourceManagerResourceGroupId(v st
 
 func (s *ListResourceGroupsShrinkRequest) SetTagsShrink(v string) *ListResourceGroupsShrinkRequest {
 	s.TagsShrink = &v
-	return s
-}
-
-func (s *ListResourceGroupsShrinkRequest) SetTypeNames(v string) *ListResourceGroupsShrinkRequest {
-	s.TypeNames = &v
 	return s
 }
 
@@ -38369,6 +38463,7 @@ func (s *TerminateDISyncInstanceResponse) SetBody(v *TerminateDISyncInstanceResp
 }
 
 type TestDataServiceApiRequest struct {
+	// API Id
 	ApiId       *int64                                 `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
 	BodyContent *string                                `json:"BodyContent,omitempty" xml:"BodyContent,omitempty"`
 	BodyParams  []*TestDataServiceApiRequestBodyParams `json:"BodyParams,omitempty" xml:"BodyParams,omitempty" type:"Repeated"`
@@ -40459,7 +40554,8 @@ type UpdateIDEEventResultRequest struct {
 	CheckResult    *string `json:"CheckResult,omitempty" xml:"CheckResult,omitempty"`
 	CheckResultTip *string `json:"CheckResultTip,omitempty" xml:"CheckResultTip,omitempty"`
 	ExtensionCode  *string `json:"ExtensionCode,omitempty" xml:"ExtensionCode,omitempty"`
-	MessageId      *string `json:"MessageId,omitempty" xml:"MessageId,omitempty"`
+	// 扩展点消息UUID
+	MessageId *string `json:"MessageId,omitempty" xml:"MessageId,omitempty"`
 }
 
 func (s UpdateIDEEventResultRequest) String() string {
@@ -42463,6 +42559,7 @@ func (s *UpdateWorkbenchEventResultRequest) SetMessageId(v string) *UpdateWorkbe
 }
 
 type UpdateWorkbenchEventResultResponseBody struct {
+	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
@@ -43159,6 +43256,14 @@ func (client *Client) CreateBusiness(request *CreateBusinessRequest) (_result *C
 	return _result, _err
 }
 
+/**
+ * @deprecated
+ *
+ * @param request CreateConnectionRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return CreateConnectionResponse
+ */
+// Deprecated
 func (client *Client) CreateConnectionWithOptions(request *CreateConnectionRequest, runtime *util.RuntimeOptions) (_result *CreateConnectionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -43216,6 +43321,13 @@ func (client *Client) CreateConnectionWithOptions(request *CreateConnectionReque
 	return _result, _err
 }
 
+/**
+ * @deprecated
+ *
+ * @param request CreateConnectionRequest
+ * @return CreateConnectionResponse
+ */
+// Deprecated
 func (client *Client) CreateConnection(request *CreateConnectionRequest) (_result *CreateConnectionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateConnectionResponse{}
@@ -43291,6 +43403,14 @@ func (client *Client) CreateDISyncTask(request *CreateDISyncTaskRequest) (_resul
 	return _result, _err
 }
 
+/**
+ * @deprecated
+ *
+ * @param request CreateDagComplementRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return CreateDagComplementResponse
+ */
+// Deprecated
 func (client *Client) CreateDagComplementWithOptions(request *CreateDagComplementRequest, runtime *util.RuntimeOptions) (_result *CreateDagComplementResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -43364,6 +43484,13 @@ func (client *Client) CreateDagComplementWithOptions(request *CreateDagComplemen
 	return _result, _err
 }
 
+/**
+ * @deprecated
+ *
+ * @param request CreateDagComplementRequest
+ * @return CreateDagComplementResponse
+ */
+// Deprecated
 func (client *Client) CreateDagComplement(request *CreateDagComplementRequest) (_result *CreateDagComplementResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateDagComplementResponse{}
@@ -43375,6 +43502,14 @@ func (client *Client) CreateDagComplement(request *CreateDagComplementRequest) (
 	return _result, _err
 }
 
+/**
+ * @deprecated
+ *
+ * @param request CreateDagTestRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return CreateDagTestResponse
+ */
+// Deprecated
 func (client *Client) CreateDagTestWithOptions(request *CreateDagTestRequest, runtime *util.RuntimeOptions) (_result *CreateDagTestResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -43424,6 +43559,13 @@ func (client *Client) CreateDagTestWithOptions(request *CreateDagTestRequest, ru
 	return _result, _err
 }
 
+/**
+ * @deprecated
+ *
+ * @param request CreateDagTestRequest
+ * @return CreateDagTestResponse
+ */
+// Deprecated
 func (client *Client) CreateDagTest(request *CreateDagTestRequest) (_result *CreateDagTestResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateDagTestResponse{}
@@ -44241,6 +44383,14 @@ func (client *Client) CreateImportMigrationAdvance(request *CreateImportMigratio
 	return _result, _err
 }
 
+/**
+ * @deprecated
+ *
+ * @param request CreateManualDagRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return CreateManualDagResponse
+ */
+// Deprecated
 func (client *Client) CreateManualDagWithOptions(request *CreateManualDagRequest, runtime *util.RuntimeOptions) (_result *CreateManualDagResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -44302,6 +44452,13 @@ func (client *Client) CreateManualDagWithOptions(request *CreateManualDagRequest
 	return _result, _err
 }
 
+/**
+ * @deprecated
+ *
+ * @param request CreateManualDagRequest
+ * @return CreateManualDagResponse
+ */
+// Deprecated
 func (client *Client) CreateManualDag(request *CreateManualDagRequest) (_result *CreateManualDagResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateManualDagResponse{}
@@ -45319,6 +45476,14 @@ func (client *Client) DeleteBusiness(request *DeleteBusinessRequest) (_result *D
 	return _result, _err
 }
 
+/**
+ * @deprecated
+ *
+ * @param request DeleteConnectionRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DeleteConnectionResponse
+ */
+// Deprecated
 func (client *Client) DeleteConnectionWithOptions(request *DeleteConnectionRequest, runtime *util.RuntimeOptions) (_result *DeleteConnectionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -45352,6 +45517,13 @@ func (client *Client) DeleteConnectionWithOptions(request *DeleteConnectionReque
 	return _result, _err
 }
 
+/**
+ * @deprecated
+ *
+ * @param request DeleteConnectionRequest
+ * @return DeleteConnectionResponse
+ */
+// Deprecated
 func (client *Client) DeleteConnection(request *DeleteConnectionRequest) (_result *DeleteConnectionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteConnectionResponse{}
@@ -47803,6 +47975,14 @@ func (client *Client) GetInstance(request *GetInstanceRequest) (_result *GetInst
 	return _result, _err
 }
 
+/**
+ * @deprecated
+ *
+ * @param request GetInstanceConsumeTimeRankRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return GetInstanceConsumeTimeRankResponse
+ */
+// Deprecated
 func (client *Client) GetInstanceConsumeTimeRankWithOptions(request *GetInstanceConsumeTimeRankRequest, runtime *util.RuntimeOptions) (_result *GetInstanceConsumeTimeRankResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -47840,6 +48020,13 @@ func (client *Client) GetInstanceConsumeTimeRankWithOptions(request *GetInstance
 	return _result, _err
 }
 
+/**
+ * @deprecated
+ *
+ * @param request GetInstanceConsumeTimeRankRequest
+ * @return GetInstanceConsumeTimeRankResponse
+ */
+// Deprecated
 func (client *Client) GetInstanceConsumeTimeRank(request *GetInstanceConsumeTimeRankRequest) (_result *GetInstanceConsumeTimeRankResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetInstanceConsumeTimeRankResponse{}
@@ -47851,6 +48038,14 @@ func (client *Client) GetInstanceConsumeTimeRank(request *GetInstanceConsumeTime
 	return _result, _err
 }
 
+/**
+ * @deprecated
+ *
+ * @param request GetInstanceCountTrendRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return GetInstanceCountTrendResponse
+ */
+// Deprecated
 func (client *Client) GetInstanceCountTrendWithOptions(request *GetInstanceCountTrendRequest, runtime *util.RuntimeOptions) (_result *GetInstanceCountTrendResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -47892,6 +48087,13 @@ func (client *Client) GetInstanceCountTrendWithOptions(request *GetInstanceCount
 	return _result, _err
 }
 
+/**
+ * @deprecated
+ *
+ * @param request GetInstanceCountTrendRequest
+ * @return GetInstanceCountTrendResponse
+ */
+// Deprecated
 func (client *Client) GetInstanceCountTrend(request *GetInstanceCountTrendRequest) (_result *GetInstanceCountTrendResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetInstanceCountTrendResponse{}
@@ -47903,6 +48105,14 @@ func (client *Client) GetInstanceCountTrend(request *GetInstanceCountTrendReques
 	return _result, _err
 }
 
+/**
+ * @deprecated
+ *
+ * @param request GetInstanceErrorRankRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return GetInstanceErrorRankResponse
+ */
+// Deprecated
 func (client *Client) GetInstanceErrorRankWithOptions(request *GetInstanceErrorRankRequest, runtime *util.RuntimeOptions) (_result *GetInstanceErrorRankResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -47936,6 +48146,13 @@ func (client *Client) GetInstanceErrorRankWithOptions(request *GetInstanceErrorR
 	return _result, _err
 }
 
+/**
+ * @deprecated
+ *
+ * @param request GetInstanceErrorRankRequest
+ * @return GetInstanceErrorRankResponse
+ */
+// Deprecated
 func (client *Client) GetInstanceErrorRank(request *GetInstanceErrorRankRequest) (_result *GetInstanceErrorRankResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetInstanceErrorRankResponse{}
@@ -47999,6 +48216,14 @@ func (client *Client) GetInstanceLog(request *GetInstanceLogRequest) (_result *G
 	return _result, _err
 }
 
+/**
+ * @deprecated
+ *
+ * @param request GetInstanceStatusCountRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return GetInstanceStatusCountResponse
+ */
+// Deprecated
 func (client *Client) GetInstanceStatusCountWithOptions(request *GetInstanceStatusCountRequest, runtime *util.RuntimeOptions) (_result *GetInstanceStatusCountResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -48040,6 +48265,13 @@ func (client *Client) GetInstanceStatusCountWithOptions(request *GetInstanceStat
 	return _result, _err
 }
 
+/**
+ * @deprecated
+ *
+ * @param request GetInstanceStatusCountRequest
+ * @return GetInstanceStatusCountResponse
+ */
+// Deprecated
 func (client *Client) GetInstanceStatusCount(request *GetInstanceStatusCountRequest) (_result *GetInstanceStatusCountResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetInstanceStatusCountResponse{}
@@ -48111,6 +48343,14 @@ func (client *Client) GetInstanceStatusStatistic(request *GetInstanceStatusStati
 	return _result, _err
 }
 
+/**
+ * @deprecated
+ *
+ * @param request GetManualDagInstancesRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return GetManualDagInstancesResponse
+ */
+// Deprecated
 func (client *Client) GetManualDagInstancesWithOptions(request *GetManualDagInstancesRequest, runtime *util.RuntimeOptions) (_result *GetManualDagInstancesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -48152,6 +48392,13 @@ func (client *Client) GetManualDagInstancesWithOptions(request *GetManualDagInst
 	return _result, _err
 }
 
+/**
+ * @deprecated
+ *
+ * @param request GetManualDagInstancesRequest
+ * @return GetManualDagInstancesResponse
+ */
+// Deprecated
 func (client *Client) GetManualDagInstances(request *GetManualDagInstancesRequest) (_result *GetManualDagInstancesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetManualDagInstancesResponse{}
@@ -48395,6 +48642,13 @@ func (client *Client) GetMetaDBTableList(request *GetMetaDBTableListRequest) (_r
 	return _result, _err
 }
 
+/**
+ * ****
+ *
+ * @param request GetMetaTableBasicInfoRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return GetMetaTableBasicInfoResponse
+ */
 func (client *Client) GetMetaTableBasicInfoWithOptions(request *GetMetaTableBasicInfoRequest, runtime *util.RuntimeOptions) (_result *GetMetaTableBasicInfoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -48424,6 +48678,12 @@ func (client *Client) GetMetaTableBasicInfoWithOptions(request *GetMetaTableBasi
 	return _result, _err
 }
 
+/**
+ * ****
+ *
+ * @param request GetMetaTableBasicInfoRequest
+ * @return GetMetaTableBasicInfoResponse
+ */
 func (client *Client) GetMetaTableBasicInfo(request *GetMetaTableBasicInfoRequest) (_result *GetMetaTableBasicInfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetMetaTableBasicInfoResponse{}
@@ -48767,6 +49027,10 @@ func (client *Client) GetMetaTableOutputWithOptions(request *GetMetaTableOutputR
 
 	if !tea.BoolValue(util.IsUnset(request.TableGuid)) {
 		query["TableGuid"] = request.TableGuid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
+		query["TaskId"] = request.TaskId
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -49161,6 +49425,14 @@ func (client *Client) GetNodeCode(request *GetNodeCodeRequest) (_result *GetNode
 	return _result, _err
 }
 
+/**
+ * @deprecated
+ *
+ * @param request GetNodeOnBaselineRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return GetNodeOnBaselineResponse
+ */
+// Deprecated
 func (client *Client) GetNodeOnBaselineWithOptions(request *GetNodeOnBaselineRequest, runtime *util.RuntimeOptions) (_result *GetNodeOnBaselineResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -49194,6 +49466,13 @@ func (client *Client) GetNodeOnBaselineWithOptions(request *GetNodeOnBaselineReq
 	return _result, _err
 }
 
+/**
+ * @deprecated
+ *
+ * @param request GetNodeOnBaselineRequest
+ * @return GetNodeOnBaselineResponse
+ */
+// Deprecated
 func (client *Client) GetNodeOnBaseline(request *GetNodeOnBaselineRequest) (_result *GetNodeOnBaselineResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetNodeOnBaselineResponse{}
@@ -49253,6 +49532,14 @@ func (client *Client) GetNodeParents(request *GetNodeParentsRequest) (_result *G
 	return _result, _err
 }
 
+/**
+ * @deprecated
+ *
+ * @param request GetNodeTypeListInfoRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return GetNodeTypeListInfoResponse
+ */
+// Deprecated
 func (client *Client) GetNodeTypeListInfoWithOptions(request *GetNodeTypeListInfoRequest, runtime *util.RuntimeOptions) (_result *GetNodeTypeListInfoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -49306,6 +49593,13 @@ func (client *Client) GetNodeTypeListInfoWithOptions(request *GetNodeTypeListInf
 	return _result, _err
 }
 
+/**
+ * @deprecated
+ *
+ * @param request GetNodeTypeListInfoRequest
+ * @return GetNodeTypeListInfoResponse
+ */
+// Deprecated
 func (client *Client) GetNodeTypeListInfo(request *GetNodeTypeListInfoRequest) (_result *GetNodeTypeListInfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetNodeTypeListInfoResponse{}
@@ -49533,6 +49827,14 @@ func (client *Client) GetProject(request *GetProjectRequest) (_result *GetProjec
 	return _result, _err
 }
 
+/**
+ * @deprecated
+ *
+ * @param request GetProjectDetailRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return GetProjectDetailResponse
+ */
+// Deprecated
 func (client *Client) GetProjectDetailWithOptions(request *GetProjectDetailRequest, runtime *util.RuntimeOptions) (_result *GetProjectDetailResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -49566,6 +49868,13 @@ func (client *Client) GetProjectDetailWithOptions(request *GetProjectDetailReque
 	return _result, _err
 }
 
+/**
+ * @deprecated
+ *
+ * @param request GetProjectDetailRequest
+ * @return GetProjectDetailResponse
+ */
+// Deprecated
 func (client *Client) GetProjectDetail(request *GetProjectDetailRequest) (_result *GetProjectDetailResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetProjectDetailResponse{}
@@ -49813,6 +50122,14 @@ func (client *Client) GetSensitiveData(request *GetSensitiveDataRequest) (_resul
 	return _result, _err
 }
 
+/**
+ * @deprecated
+ *
+ * @param request GetSuccessInstanceTrendRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return GetSuccessInstanceTrendResponse
+ */
+// Deprecated
 func (client *Client) GetSuccessInstanceTrendWithOptions(request *GetSuccessInstanceTrendRequest, runtime *util.RuntimeOptions) (_result *GetSuccessInstanceTrendResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -49846,6 +50163,13 @@ func (client *Client) GetSuccessInstanceTrendWithOptions(request *GetSuccessInst
 	return _result, _err
 }
 
+/**
+ * @deprecated
+ *
+ * @param request GetSuccessInstanceTrendRequest
+ * @return GetSuccessInstanceTrendResponse
+ */
+// Deprecated
 func (client *Client) GetSuccessInstanceTrend(request *GetSuccessInstanceTrendRequest) (_result *GetSuccessInstanceTrendResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetSuccessInstanceTrendResponse{}
@@ -49857,6 +50181,13 @@ func (client *Client) GetSuccessInstanceTrend(request *GetSuccessInstanceTrendRe
 	return _result, _err
 }
 
+/**
+ * ****
+ *
+ * @param request GetTopicRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return GetTopicResponse
+ */
 func (client *Client) GetTopicWithOptions(request *GetTopicRequest, runtime *util.RuntimeOptions) (_result *GetTopicResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -49890,6 +50221,12 @@ func (client *Client) GetTopicWithOptions(request *GetTopicRequest, runtime *uti
 	return _result, _err
 }
 
+/**
+ * ****
+ *
+ * @param request GetTopicRequest
+ * @return GetTopicResponse
+ */
 func (client *Client) GetTopic(request *GetTopicRequest) (_result *GetTopicResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetTopicResponse{}
@@ -50417,6 +50754,14 @@ func (client *Client) ListCalcEngines(request *ListCalcEnginesRequest) (_result 
 	return _result, _err
 }
 
+/**
+ * @deprecated
+ *
+ * @param request ListConnectionsRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ListConnectionsResponse
+ */
+// Deprecated
 func (client *Client) ListConnectionsWithOptions(request *ListConnectionsRequest, runtime *util.RuntimeOptions) (_result *ListConnectionsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -50446,6 +50791,13 @@ func (client *Client) ListConnectionsWithOptions(request *ListConnectionsRequest
 	return _result, _err
 }
 
+/**
+ * @deprecated
+ *
+ * @param request ListConnectionsRequest
+ * @return ListConnectionsResponse
+ */
+// Deprecated
 func (client *Client) ListConnections(request *ListConnectionsRequest) (_result *ListConnectionsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListConnectionsResponse{}
@@ -51937,6 +52289,14 @@ func (client *Client) ListMigrations(request *ListMigrationsRequest) (_result *L
 	return _result, _err
 }
 
+/**
+ * @deprecated
+ *
+ * @param request ListNodeIORequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ListNodeIOResponse
+ */
+// Deprecated
 func (client *Client) ListNodeIOWithOptions(request *ListNodeIORequest, runtime *util.RuntimeOptions) (_result *ListNodeIOResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -51978,6 +52338,13 @@ func (client *Client) ListNodeIOWithOptions(request *ListNodeIORequest, runtime 
 	return _result, _err
 }
 
+/**
+ * @deprecated
+ *
+ * @param request ListNodeIORequest
+ * @return ListNodeIOResponse
+ */
+// Deprecated
 func (client *Client) ListNodeIO(request *ListNodeIORequest) (_result *ListNodeIOResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListNodeIOResponse{}
@@ -52289,6 +52656,14 @@ func (client *Client) ListPermissionApplyOrders(request *ListPermissionApplyOrde
 	return _result, _err
 }
 
+/**
+ * @deprecated
+ *
+ * @param request ListProgramTypeCountRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ListProgramTypeCountResponse
+ */
+// Deprecated
 func (client *Client) ListProgramTypeCountWithOptions(request *ListProgramTypeCountRequest, runtime *util.RuntimeOptions) (_result *ListProgramTypeCountResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -52326,6 +52701,13 @@ func (client *Client) ListProgramTypeCountWithOptions(request *ListProgramTypeCo
 	return _result, _err
 }
 
+/**
+ * @deprecated
+ *
+ * @param request ListProgramTypeCountRequest
+ * @return ListProgramTypeCountResponse
+ */
+// Deprecated
 func (client *Client) ListProgramTypeCount(request *ListProgramTypeCountRequest) (_result *ListProgramTypeCountResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListProgramTypeCountResponse{}
@@ -52539,6 +52921,13 @@ func (client *Client) ListProjects(request *ListProjectsRequest) (_result *ListP
 	return _result, _err
 }
 
+/**
+ * ****
+ *
+ * @param request ListQualityResultsByEntityRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ListQualityResultsByEntityResponse
+ */
 func (client *Client) ListQualityResultsByEntityWithOptions(request *ListQualityResultsByEntityRequest, runtime *util.RuntimeOptions) (_result *ListQualityResultsByEntityResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -52592,6 +52981,12 @@ func (client *Client) ListQualityResultsByEntityWithOptions(request *ListQuality
 	return _result, _err
 }
 
+/**
+ * ****
+ *
+ * @param request ListQualityResultsByEntityRequest
+ * @return ListQualityResultsByEntityResponse
+ */
 func (client *Client) ListQualityResultsByEntity(request *ListQualityResultsByEntityRequest) (_result *ListQualityResultsByEntityResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListQualityResultsByEntityResponse{}
@@ -52885,10 +53280,6 @@ func (client *Client) ListResourceGroupsWithOptions(tmpReq *ListResourceGroupsRe
 
 	if !tea.BoolValue(util.IsUnset(request.TagsShrink)) {
 		query["Tags"] = request.TagsShrink
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.TypeNames)) {
-		query["TypeNames"] = request.TypeNames
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -54109,6 +54500,14 @@ func (client *Client) SearchMetaTables(request *SearchMetaTablesRequest) (_resul
 	return _result, _err
 }
 
+/**
+ * @deprecated
+ *
+ * @param request SearchNodesByOutputRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return SearchNodesByOutputResponse
+ */
+// Deprecated
 func (client *Client) SearchNodesByOutputWithOptions(request *SearchNodesByOutputRequest, runtime *util.RuntimeOptions) (_result *SearchNodesByOutputResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -54146,6 +54545,13 @@ func (client *Client) SearchNodesByOutputWithOptions(request *SearchNodesByOutpu
 	return _result, _err
 }
 
+/**
+ * @deprecated
+ *
+ * @param request SearchNodesByOutputRequest
+ * @return SearchNodesByOutputResponse
+ */
+// Deprecated
 func (client *Client) SearchNodesByOutput(request *SearchNodesByOutputRequest) (_result *SearchNodesByOutputResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SearchNodesByOutputResponse{}
@@ -54157,6 +54563,14 @@ func (client *Client) SearchNodesByOutput(request *SearchNodesByOutputRequest) (
 	return _result, _err
 }
 
+/**
+ * @deprecated
+ *
+ * @param request SetDataSourceShareRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return SetDataSourceShareResponse
+ */
+// Deprecated
 func (client *Client) SetDataSourceShareWithOptions(request *SetDataSourceShareRequest, runtime *util.RuntimeOptions) (_result *SetDataSourceShareResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -54206,6 +54620,13 @@ func (client *Client) SetDataSourceShareWithOptions(request *SetDataSourceShareR
 	return _result, _err
 }
 
+/**
+ * @deprecated
+ *
+ * @param request SetDataSourceShareRequest
+ * @return SetDataSourceShareResponse
+ */
+// Deprecated
 func (client *Client) SetDataSourceShare(request *SetDataSourceShareRequest) (_result *SetDataSourceShareResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SetDataSourceShareResponse{}
@@ -55005,6 +55426,14 @@ func (client *Client) UpdateBusiness(request *UpdateBusinessRequest) (_result *U
 	return _result, _err
 }
 
+/**
+ * @deprecated
+ *
+ * @param request UpdateConnectionRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return UpdateConnectionResponse
+ */
+// Deprecated
 func (client *Client) UpdateConnectionWithOptions(request *UpdateConnectionRequest, runtime *util.RuntimeOptions) (_result *UpdateConnectionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -55054,6 +55483,13 @@ func (client *Client) UpdateConnectionWithOptions(request *UpdateConnectionReque
 	return _result, _err
 }
 
+/**
+ * @deprecated
+ *
+ * @param request UpdateConnectionRequest
+ * @return UpdateConnectionResponse
+ */
+// Deprecated
 func (client *Client) UpdateConnection(request *UpdateConnectionRequest) (_result *UpdateConnectionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateConnectionResponse{}
