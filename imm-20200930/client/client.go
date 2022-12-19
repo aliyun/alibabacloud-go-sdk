@@ -3761,6 +3761,139 @@ func (s *BatchUpdateFileMetaResponse) SetBody(v *BatchUpdateFileMetaResponseBody
 	return s
 }
 
+type CompareImageFacesRequest struct {
+	CredentialConfig *CredentialConfig               `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
+	ProjectName      *string                         `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	Source           *CompareImageFacesRequestSource `json:"Source,omitempty" xml:"Source,omitempty" type:"Struct"`
+}
+
+func (s CompareImageFacesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CompareImageFacesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CompareImageFacesRequest) SetCredentialConfig(v *CredentialConfig) *CompareImageFacesRequest {
+	s.CredentialConfig = v
+	return s
+}
+
+func (s *CompareImageFacesRequest) SetProjectName(v string) *CompareImageFacesRequest {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *CompareImageFacesRequest) SetSource(v *CompareImageFacesRequestSource) *CompareImageFacesRequest {
+	s.Source = v
+	return s
+}
+
+type CompareImageFacesRequestSource struct {
+	URI1 *string `json:"URI1,omitempty" xml:"URI1,omitempty"`
+	URI2 *string `json:"URI2,omitempty" xml:"URI2,omitempty"`
+}
+
+func (s CompareImageFacesRequestSource) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CompareImageFacesRequestSource) GoString() string {
+	return s.String()
+}
+
+func (s *CompareImageFacesRequestSource) SetURI1(v string) *CompareImageFacesRequestSource {
+	s.URI1 = &v
+	return s
+}
+
+func (s *CompareImageFacesRequestSource) SetURI2(v string) *CompareImageFacesRequestSource {
+	s.URI2 = &v
+	return s
+}
+
+type CompareImageFacesShrinkRequest struct {
+	CredentialConfigShrink *string `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
+	ProjectName            *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	SourceShrink           *string `json:"Source,omitempty" xml:"Source,omitempty"`
+}
+
+func (s CompareImageFacesShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CompareImageFacesShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CompareImageFacesShrinkRequest) SetCredentialConfigShrink(v string) *CompareImageFacesShrinkRequest {
+	s.CredentialConfigShrink = &v
+	return s
+}
+
+func (s *CompareImageFacesShrinkRequest) SetProjectName(v string) *CompareImageFacesShrinkRequest {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *CompareImageFacesShrinkRequest) SetSourceShrink(v string) *CompareImageFacesShrinkRequest {
+	s.SourceShrink = &v
+	return s
+}
+
+type CompareImageFacesResponseBody struct {
+	RequestId  *string  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Similarity *float32 `json:"Similarity,omitempty" xml:"Similarity,omitempty"`
+}
+
+func (s CompareImageFacesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CompareImageFacesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CompareImageFacesResponseBody) SetRequestId(v string) *CompareImageFacesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CompareImageFacesResponseBody) SetSimilarity(v float32) *CompareImageFacesResponseBody {
+	s.Similarity = &v
+	return s
+}
+
+type CompareImageFacesResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CompareImageFacesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CompareImageFacesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CompareImageFacesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CompareImageFacesResponse) SetHeaders(v map[string]*string) *CompareImageFacesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CompareImageFacesResponse) SetStatusCode(v int32) *CompareImageFacesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CompareImageFacesResponse) SetBody(v *CompareImageFacesResponseBody) *CompareImageFacesResponse {
+	s.Body = v
+	return s
+}
+
 type CreateArchiveFileInspectionTaskRequest struct {
 	CredentialConfig *CredentialConfig `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
 	NotifyTopicName  *string           `json:"NotifyTopicName,omitempty" xml:"NotifyTopicName,omitempty"`
@@ -4699,6 +4832,187 @@ func (s *CreateDetectVideoLabelsTaskResponse) SetStatusCode(v int32) *CreateDete
 }
 
 func (s *CreateDetectVideoLabelsTaskResponse) SetBody(v *CreateDetectVideoLabelsTaskResponseBody) *CreateDetectVideoLabelsTaskResponse {
+	s.Body = v
+	return s
+}
+
+type CreateFacesSearchingTaskRequest struct {
+	DatasetName     *string                                   `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	MaxResult       *string                                   `json:"MaxResult,omitempty" xml:"MaxResult,omitempty"`
+	NotifyTopicName *string                                   `json:"NotifyTopicName,omitempty" xml:"NotifyTopicName,omitempty"`
+	ProjectName     *string                                   `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	Sources         []*CreateFacesSearchingTaskRequestSources `json:"Sources,omitempty" xml:"Sources,omitempty" type:"Repeated"`
+	TopK            *int64                                    `json:"TopK,omitempty" xml:"TopK,omitempty"`
+	UserData        *string                                   `json:"UserData,omitempty" xml:"UserData,omitempty"`
+}
+
+func (s CreateFacesSearchingTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateFacesSearchingTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateFacesSearchingTaskRequest) SetDatasetName(v string) *CreateFacesSearchingTaskRequest {
+	s.DatasetName = &v
+	return s
+}
+
+func (s *CreateFacesSearchingTaskRequest) SetMaxResult(v string) *CreateFacesSearchingTaskRequest {
+	s.MaxResult = &v
+	return s
+}
+
+func (s *CreateFacesSearchingTaskRequest) SetNotifyTopicName(v string) *CreateFacesSearchingTaskRequest {
+	s.NotifyTopicName = &v
+	return s
+}
+
+func (s *CreateFacesSearchingTaskRequest) SetProjectName(v string) *CreateFacesSearchingTaskRequest {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *CreateFacesSearchingTaskRequest) SetSources(v []*CreateFacesSearchingTaskRequestSources) *CreateFacesSearchingTaskRequest {
+	s.Sources = v
+	return s
+}
+
+func (s *CreateFacesSearchingTaskRequest) SetTopK(v int64) *CreateFacesSearchingTaskRequest {
+	s.TopK = &v
+	return s
+}
+
+func (s *CreateFacesSearchingTaskRequest) SetUserData(v string) *CreateFacesSearchingTaskRequest {
+	s.UserData = &v
+	return s
+}
+
+type CreateFacesSearchingTaskRequestSources struct {
+	URI *string `json:"URI,omitempty" xml:"URI,omitempty"`
+}
+
+func (s CreateFacesSearchingTaskRequestSources) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateFacesSearchingTaskRequestSources) GoString() string {
+	return s.String()
+}
+
+func (s *CreateFacesSearchingTaskRequestSources) SetURI(v string) *CreateFacesSearchingTaskRequestSources {
+	s.URI = &v
+	return s
+}
+
+type CreateFacesSearchingTaskShrinkRequest struct {
+	DatasetName     *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	MaxResult       *string `json:"MaxResult,omitempty" xml:"MaxResult,omitempty"`
+	NotifyTopicName *string `json:"NotifyTopicName,omitempty" xml:"NotifyTopicName,omitempty"`
+	ProjectName     *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	SourcesShrink   *string `json:"Sources,omitempty" xml:"Sources,omitempty"`
+	TopK            *int64  `json:"TopK,omitempty" xml:"TopK,omitempty"`
+	UserData        *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+}
+
+func (s CreateFacesSearchingTaskShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateFacesSearchingTaskShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateFacesSearchingTaskShrinkRequest) SetDatasetName(v string) *CreateFacesSearchingTaskShrinkRequest {
+	s.DatasetName = &v
+	return s
+}
+
+func (s *CreateFacesSearchingTaskShrinkRequest) SetMaxResult(v string) *CreateFacesSearchingTaskShrinkRequest {
+	s.MaxResult = &v
+	return s
+}
+
+func (s *CreateFacesSearchingTaskShrinkRequest) SetNotifyTopicName(v string) *CreateFacesSearchingTaskShrinkRequest {
+	s.NotifyTopicName = &v
+	return s
+}
+
+func (s *CreateFacesSearchingTaskShrinkRequest) SetProjectName(v string) *CreateFacesSearchingTaskShrinkRequest {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *CreateFacesSearchingTaskShrinkRequest) SetSourcesShrink(v string) *CreateFacesSearchingTaskShrinkRequest {
+	s.SourcesShrink = &v
+	return s
+}
+
+func (s *CreateFacesSearchingTaskShrinkRequest) SetTopK(v int64) *CreateFacesSearchingTaskShrinkRequest {
+	s.TopK = &v
+	return s
+}
+
+func (s *CreateFacesSearchingTaskShrinkRequest) SetUserData(v string) *CreateFacesSearchingTaskShrinkRequest {
+	s.UserData = &v
+	return s
+}
+
+type CreateFacesSearchingTaskResponseBody struct {
+	EventId   *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+}
+
+func (s CreateFacesSearchingTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateFacesSearchingTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateFacesSearchingTaskResponseBody) SetEventId(v string) *CreateFacesSearchingTaskResponseBody {
+	s.EventId = &v
+	return s
+}
+
+func (s *CreateFacesSearchingTaskResponseBody) SetRequestId(v string) *CreateFacesSearchingTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateFacesSearchingTaskResponseBody) SetTaskId(v string) *CreateFacesSearchingTaskResponseBody {
+	s.TaskId = &v
+	return s
+}
+
+type CreateFacesSearchingTaskResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateFacesSearchingTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateFacesSearchingTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateFacesSearchingTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateFacesSearchingTaskResponse) SetHeaders(v map[string]*string) *CreateFacesSearchingTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateFacesSearchingTaskResponse) SetStatusCode(v int32) *CreateFacesSearchingTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateFacesSearchingTaskResponse) SetBody(v *CreateFacesSearchingTaskResponseBody) *CreateFacesSearchingTaskResponse {
 	s.Body = v
 	return s
 }
@@ -7841,6 +8155,146 @@ func (s *CreateProjectResponse) SetBody(v *CreateProjectResponseBody) *CreatePro
 	return s
 }
 
+type CreateSimilarImageClusteringTaskRequest struct {
+	DatasetName     *string                `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	NotifyTopicName *string                `json:"NotifyTopicName,omitempty" xml:"NotifyTopicName,omitempty"`
+	ProjectName     *string                `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	Tags            map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	UserData        *string                `json:"UserData,omitempty" xml:"UserData,omitempty"`
+}
+
+func (s CreateSimilarImageClusteringTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSimilarImageClusteringTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSimilarImageClusteringTaskRequest) SetDatasetName(v string) *CreateSimilarImageClusteringTaskRequest {
+	s.DatasetName = &v
+	return s
+}
+
+func (s *CreateSimilarImageClusteringTaskRequest) SetNotifyTopicName(v string) *CreateSimilarImageClusteringTaskRequest {
+	s.NotifyTopicName = &v
+	return s
+}
+
+func (s *CreateSimilarImageClusteringTaskRequest) SetProjectName(v string) *CreateSimilarImageClusteringTaskRequest {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *CreateSimilarImageClusteringTaskRequest) SetTags(v map[string]interface{}) *CreateSimilarImageClusteringTaskRequest {
+	s.Tags = v
+	return s
+}
+
+func (s *CreateSimilarImageClusteringTaskRequest) SetUserData(v string) *CreateSimilarImageClusteringTaskRequest {
+	s.UserData = &v
+	return s
+}
+
+type CreateSimilarImageClusteringTaskShrinkRequest struct {
+	DatasetName     *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	NotifyTopicName *string `json:"NotifyTopicName,omitempty" xml:"NotifyTopicName,omitempty"`
+	ProjectName     *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	TagsShrink      *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	UserData        *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+}
+
+func (s CreateSimilarImageClusteringTaskShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSimilarImageClusteringTaskShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSimilarImageClusteringTaskShrinkRequest) SetDatasetName(v string) *CreateSimilarImageClusteringTaskShrinkRequest {
+	s.DatasetName = &v
+	return s
+}
+
+func (s *CreateSimilarImageClusteringTaskShrinkRequest) SetNotifyTopicName(v string) *CreateSimilarImageClusteringTaskShrinkRequest {
+	s.NotifyTopicName = &v
+	return s
+}
+
+func (s *CreateSimilarImageClusteringTaskShrinkRequest) SetProjectName(v string) *CreateSimilarImageClusteringTaskShrinkRequest {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *CreateSimilarImageClusteringTaskShrinkRequest) SetTagsShrink(v string) *CreateSimilarImageClusteringTaskShrinkRequest {
+	s.TagsShrink = &v
+	return s
+}
+
+func (s *CreateSimilarImageClusteringTaskShrinkRequest) SetUserData(v string) *CreateSimilarImageClusteringTaskShrinkRequest {
+	s.UserData = &v
+	return s
+}
+
+type CreateSimilarImageClusteringTaskResponseBody struct {
+	EventId   *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+}
+
+func (s CreateSimilarImageClusteringTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSimilarImageClusteringTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSimilarImageClusteringTaskResponseBody) SetEventId(v string) *CreateSimilarImageClusteringTaskResponseBody {
+	s.EventId = &v
+	return s
+}
+
+func (s *CreateSimilarImageClusteringTaskResponseBody) SetRequestId(v string) *CreateSimilarImageClusteringTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateSimilarImageClusteringTaskResponseBody) SetTaskId(v string) *CreateSimilarImageClusteringTaskResponseBody {
+	s.TaskId = &v
+	return s
+}
+
+type CreateSimilarImageClusteringTaskResponse struct {
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateSimilarImageClusteringTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateSimilarImageClusteringTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSimilarImageClusteringTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSimilarImageClusteringTaskResponse) SetHeaders(v map[string]*string) *CreateSimilarImageClusteringTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateSimilarImageClusteringTaskResponse) SetStatusCode(v int32) *CreateSimilarImageClusteringTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateSimilarImageClusteringTaskResponse) SetBody(v *CreateSimilarImageClusteringTaskResponseBody) *CreateSimilarImageClusteringTaskResponse {
+	s.Body = v
+	return s
+}
+
 type CreateStoryRequest struct {
 	Address         *AddressForStory       `json:"Address,omitempty" xml:"Address,omitempty"`
 	CustomId        *string                `json:"CustomId,omitempty" xml:"CustomId,omitempty"`
@@ -10970,6 +11424,284 @@ func (s *GenerateVideoPlaylistResponse) SetBody(v *GenerateVideoPlaylistResponse
 	return s
 }
 
+type GenerateWebofficeTokenRequest struct {
+	CachePreview     *bool                `json:"CachePreview,omitempty" xml:"CachePreview,omitempty"`
+	CredentialConfig *CredentialConfig    `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
+	ExternalUploaded *bool                `json:"ExternalUploaded,omitempty" xml:"ExternalUploaded,omitempty"`
+	Filename         *string              `json:"Filename,omitempty" xml:"Filename,omitempty"`
+	Hidecmb          *bool                `json:"Hidecmb,omitempty" xml:"Hidecmb,omitempty"`
+	NotifyTopicName  *string              `json:"NotifyTopicName,omitempty" xml:"NotifyTopicName,omitempty"`
+	Password         *string              `json:"Password,omitempty" xml:"Password,omitempty"`
+	Permission       *WebofficePermission `json:"Permission,omitempty" xml:"Permission,omitempty"`
+	PreviewPages     *int64               `json:"PreviewPages,omitempty" xml:"PreviewPages,omitempty"`
+	ProjectName      *string              `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	Referer          *string              `json:"Referer,omitempty" xml:"Referer,omitempty"`
+	SourceURI        *string              `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
+	User             *WebofficeUser       `json:"User,omitempty" xml:"User,omitempty"`
+	UserData         *string              `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	Watermark        *WebofficeWatermark  `json:"Watermark,omitempty" xml:"Watermark,omitempty"`
+}
+
+func (s GenerateWebofficeTokenRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GenerateWebofficeTokenRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GenerateWebofficeTokenRequest) SetCachePreview(v bool) *GenerateWebofficeTokenRequest {
+	s.CachePreview = &v
+	return s
+}
+
+func (s *GenerateWebofficeTokenRequest) SetCredentialConfig(v *CredentialConfig) *GenerateWebofficeTokenRequest {
+	s.CredentialConfig = v
+	return s
+}
+
+func (s *GenerateWebofficeTokenRequest) SetExternalUploaded(v bool) *GenerateWebofficeTokenRequest {
+	s.ExternalUploaded = &v
+	return s
+}
+
+func (s *GenerateWebofficeTokenRequest) SetFilename(v string) *GenerateWebofficeTokenRequest {
+	s.Filename = &v
+	return s
+}
+
+func (s *GenerateWebofficeTokenRequest) SetHidecmb(v bool) *GenerateWebofficeTokenRequest {
+	s.Hidecmb = &v
+	return s
+}
+
+func (s *GenerateWebofficeTokenRequest) SetNotifyTopicName(v string) *GenerateWebofficeTokenRequest {
+	s.NotifyTopicName = &v
+	return s
+}
+
+func (s *GenerateWebofficeTokenRequest) SetPassword(v string) *GenerateWebofficeTokenRequest {
+	s.Password = &v
+	return s
+}
+
+func (s *GenerateWebofficeTokenRequest) SetPermission(v *WebofficePermission) *GenerateWebofficeTokenRequest {
+	s.Permission = v
+	return s
+}
+
+func (s *GenerateWebofficeTokenRequest) SetPreviewPages(v int64) *GenerateWebofficeTokenRequest {
+	s.PreviewPages = &v
+	return s
+}
+
+func (s *GenerateWebofficeTokenRequest) SetProjectName(v string) *GenerateWebofficeTokenRequest {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *GenerateWebofficeTokenRequest) SetReferer(v string) *GenerateWebofficeTokenRequest {
+	s.Referer = &v
+	return s
+}
+
+func (s *GenerateWebofficeTokenRequest) SetSourceURI(v string) *GenerateWebofficeTokenRequest {
+	s.SourceURI = &v
+	return s
+}
+
+func (s *GenerateWebofficeTokenRequest) SetUser(v *WebofficeUser) *GenerateWebofficeTokenRequest {
+	s.User = v
+	return s
+}
+
+func (s *GenerateWebofficeTokenRequest) SetUserData(v string) *GenerateWebofficeTokenRequest {
+	s.UserData = &v
+	return s
+}
+
+func (s *GenerateWebofficeTokenRequest) SetWatermark(v *WebofficeWatermark) *GenerateWebofficeTokenRequest {
+	s.Watermark = v
+	return s
+}
+
+type GenerateWebofficeTokenShrinkRequest struct {
+	CachePreview           *bool   `json:"CachePreview,omitempty" xml:"CachePreview,omitempty"`
+	CredentialConfigShrink *string `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
+	ExternalUploaded       *bool   `json:"ExternalUploaded,omitempty" xml:"ExternalUploaded,omitempty"`
+	Filename               *string `json:"Filename,omitempty" xml:"Filename,omitempty"`
+	Hidecmb                *bool   `json:"Hidecmb,omitempty" xml:"Hidecmb,omitempty"`
+	NotifyTopicName        *string `json:"NotifyTopicName,omitempty" xml:"NotifyTopicName,omitempty"`
+	Password               *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	PermissionShrink       *string `json:"Permission,omitempty" xml:"Permission,omitempty"`
+	PreviewPages           *int64  `json:"PreviewPages,omitempty" xml:"PreviewPages,omitempty"`
+	ProjectName            *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	Referer                *string `json:"Referer,omitempty" xml:"Referer,omitempty"`
+	SourceURI              *string `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
+	UserShrink             *string `json:"User,omitempty" xml:"User,omitempty"`
+	UserData               *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	WatermarkShrink        *string `json:"Watermark,omitempty" xml:"Watermark,omitempty"`
+}
+
+func (s GenerateWebofficeTokenShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GenerateWebofficeTokenShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GenerateWebofficeTokenShrinkRequest) SetCachePreview(v bool) *GenerateWebofficeTokenShrinkRequest {
+	s.CachePreview = &v
+	return s
+}
+
+func (s *GenerateWebofficeTokenShrinkRequest) SetCredentialConfigShrink(v string) *GenerateWebofficeTokenShrinkRequest {
+	s.CredentialConfigShrink = &v
+	return s
+}
+
+func (s *GenerateWebofficeTokenShrinkRequest) SetExternalUploaded(v bool) *GenerateWebofficeTokenShrinkRequest {
+	s.ExternalUploaded = &v
+	return s
+}
+
+func (s *GenerateWebofficeTokenShrinkRequest) SetFilename(v string) *GenerateWebofficeTokenShrinkRequest {
+	s.Filename = &v
+	return s
+}
+
+func (s *GenerateWebofficeTokenShrinkRequest) SetHidecmb(v bool) *GenerateWebofficeTokenShrinkRequest {
+	s.Hidecmb = &v
+	return s
+}
+
+func (s *GenerateWebofficeTokenShrinkRequest) SetNotifyTopicName(v string) *GenerateWebofficeTokenShrinkRequest {
+	s.NotifyTopicName = &v
+	return s
+}
+
+func (s *GenerateWebofficeTokenShrinkRequest) SetPassword(v string) *GenerateWebofficeTokenShrinkRequest {
+	s.Password = &v
+	return s
+}
+
+func (s *GenerateWebofficeTokenShrinkRequest) SetPermissionShrink(v string) *GenerateWebofficeTokenShrinkRequest {
+	s.PermissionShrink = &v
+	return s
+}
+
+func (s *GenerateWebofficeTokenShrinkRequest) SetPreviewPages(v int64) *GenerateWebofficeTokenShrinkRequest {
+	s.PreviewPages = &v
+	return s
+}
+
+func (s *GenerateWebofficeTokenShrinkRequest) SetProjectName(v string) *GenerateWebofficeTokenShrinkRequest {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *GenerateWebofficeTokenShrinkRequest) SetReferer(v string) *GenerateWebofficeTokenShrinkRequest {
+	s.Referer = &v
+	return s
+}
+
+func (s *GenerateWebofficeTokenShrinkRequest) SetSourceURI(v string) *GenerateWebofficeTokenShrinkRequest {
+	s.SourceURI = &v
+	return s
+}
+
+func (s *GenerateWebofficeTokenShrinkRequest) SetUserShrink(v string) *GenerateWebofficeTokenShrinkRequest {
+	s.UserShrink = &v
+	return s
+}
+
+func (s *GenerateWebofficeTokenShrinkRequest) SetUserData(v string) *GenerateWebofficeTokenShrinkRequest {
+	s.UserData = &v
+	return s
+}
+
+func (s *GenerateWebofficeTokenShrinkRequest) SetWatermarkShrink(v string) *GenerateWebofficeTokenShrinkRequest {
+	s.WatermarkShrink = &v
+	return s
+}
+
+type GenerateWebofficeTokenResponseBody struct {
+	AccessToken             *string `json:"AccessToken,omitempty" xml:"AccessToken,omitempty"`
+	AccessTokenExpiredTime  *string `json:"AccessTokenExpiredTime,omitempty" xml:"AccessTokenExpiredTime,omitempty"`
+	RefreshToken            *string `json:"RefreshToken,omitempty" xml:"RefreshToken,omitempty"`
+	RefreshTokenExpiredTime *string `json:"RefreshTokenExpiredTime,omitempty" xml:"RefreshTokenExpiredTime,omitempty"`
+	RequestId               *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	WebofficeURL            *string `json:"WebofficeURL,omitempty" xml:"WebofficeURL,omitempty"`
+}
+
+func (s GenerateWebofficeTokenResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GenerateWebofficeTokenResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GenerateWebofficeTokenResponseBody) SetAccessToken(v string) *GenerateWebofficeTokenResponseBody {
+	s.AccessToken = &v
+	return s
+}
+
+func (s *GenerateWebofficeTokenResponseBody) SetAccessTokenExpiredTime(v string) *GenerateWebofficeTokenResponseBody {
+	s.AccessTokenExpiredTime = &v
+	return s
+}
+
+func (s *GenerateWebofficeTokenResponseBody) SetRefreshToken(v string) *GenerateWebofficeTokenResponseBody {
+	s.RefreshToken = &v
+	return s
+}
+
+func (s *GenerateWebofficeTokenResponseBody) SetRefreshTokenExpiredTime(v string) *GenerateWebofficeTokenResponseBody {
+	s.RefreshTokenExpiredTime = &v
+	return s
+}
+
+func (s *GenerateWebofficeTokenResponseBody) SetRequestId(v string) *GenerateWebofficeTokenResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GenerateWebofficeTokenResponseBody) SetWebofficeURL(v string) *GenerateWebofficeTokenResponseBody {
+	s.WebofficeURL = &v
+	return s
+}
+
+type GenerateWebofficeTokenResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GenerateWebofficeTokenResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GenerateWebofficeTokenResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GenerateWebofficeTokenResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GenerateWebofficeTokenResponse) SetHeaders(v map[string]*string) *GenerateWebofficeTokenResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GenerateWebofficeTokenResponse) SetStatusCode(v int32) *GenerateWebofficeTokenResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GenerateWebofficeTokenResponse) SetBody(v *GenerateWebofficeTokenResponseBody) *GenerateWebofficeTokenResponse {
+	s.Body = v
+	return s
+}
+
 type GetBindingRequest struct {
 	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
@@ -13305,6 +14037,111 @@ func (s *QueryLocationDateClustersResponse) SetBody(v *QueryLocationDateClusters
 	return s
 }
 
+type QuerySimilarImageClustersRequest struct {
+	CustomLabels *string `json:"CustomLabels,omitempty" xml:"CustomLabels,omitempty"`
+	DatasetName  *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	MaxResults   *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	ProjectName  *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	Sort         *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
+}
+
+func (s QuerySimilarImageClustersRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QuerySimilarImageClustersRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QuerySimilarImageClustersRequest) SetCustomLabels(v string) *QuerySimilarImageClustersRequest {
+	s.CustomLabels = &v
+	return s
+}
+
+func (s *QuerySimilarImageClustersRequest) SetDatasetName(v string) *QuerySimilarImageClustersRequest {
+	s.DatasetName = &v
+	return s
+}
+
+func (s *QuerySimilarImageClustersRequest) SetMaxResults(v int32) *QuerySimilarImageClustersRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *QuerySimilarImageClustersRequest) SetNextToken(v string) *QuerySimilarImageClustersRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *QuerySimilarImageClustersRequest) SetProjectName(v string) *QuerySimilarImageClustersRequest {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *QuerySimilarImageClustersRequest) SetSort(v string) *QuerySimilarImageClustersRequest {
+	s.Sort = &v
+	return s
+}
+
+type QuerySimilarImageClustersResponseBody struct {
+	LocationDateClusters []*LocationDateCluster `json:"LocationDateClusters,omitempty" xml:"LocationDateClusters,omitempty" type:"Repeated"`
+	NextToken            *string                `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RequestId            *string                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s QuerySimilarImageClustersResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QuerySimilarImageClustersResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QuerySimilarImageClustersResponseBody) SetLocationDateClusters(v []*LocationDateCluster) *QuerySimilarImageClustersResponseBody {
+	s.LocationDateClusters = v
+	return s
+}
+
+func (s *QuerySimilarImageClustersResponseBody) SetNextToken(v string) *QuerySimilarImageClustersResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *QuerySimilarImageClustersResponseBody) SetRequestId(v string) *QuerySimilarImageClustersResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type QuerySimilarImageClustersResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *QuerySimilarImageClustersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s QuerySimilarImageClustersResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QuerySimilarImageClustersResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QuerySimilarImageClustersResponse) SetHeaders(v map[string]*string) *QuerySimilarImageClustersResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QuerySimilarImageClustersResponse) SetStatusCode(v int32) *QuerySimilarImageClustersResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QuerySimilarImageClustersResponse) SetBody(v *QuerySimilarImageClustersResponseBody) *QuerySimilarImageClustersResponse {
+	s.Body = v
+	return s
+}
+
 type QueryStoriesRequest struct {
 	CreateTimeRange     *TimeRange `json:"CreateTimeRange,omitempty" xml:"CreateTimeRange,omitempty"`
 	CustomLabels        *string    `json:"CustomLabels,omitempty" xml:"CustomLabels,omitempty"`
@@ -13921,6 +14758,157 @@ func (s *ResumeBindingResponse) SetStatusCode(v int32) *ResumeBindingResponse {
 }
 
 func (s *ResumeBindingResponse) SetBody(v *ResumeBindingResponseBody) *ResumeBindingResponse {
+	s.Body = v
+	return s
+}
+
+type SearchImageFigureClusterRequest struct {
+	CredentialConfig *CredentialConfig `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
+	DatasetName      *string           `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	ProjectName      *string           `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	SourceURI        *string           `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
+}
+
+func (s SearchImageFigureClusterRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchImageFigureClusterRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SearchImageFigureClusterRequest) SetCredentialConfig(v *CredentialConfig) *SearchImageFigureClusterRequest {
+	s.CredentialConfig = v
+	return s
+}
+
+func (s *SearchImageFigureClusterRequest) SetDatasetName(v string) *SearchImageFigureClusterRequest {
+	s.DatasetName = &v
+	return s
+}
+
+func (s *SearchImageFigureClusterRequest) SetProjectName(v string) *SearchImageFigureClusterRequest {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *SearchImageFigureClusterRequest) SetSourceURI(v string) *SearchImageFigureClusterRequest {
+	s.SourceURI = &v
+	return s
+}
+
+type SearchImageFigureClusterShrinkRequest struct {
+	CredentialConfigShrink *string `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
+	DatasetName            *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	ProjectName            *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	SourceURI              *string `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
+}
+
+func (s SearchImageFigureClusterShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchImageFigureClusterShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SearchImageFigureClusterShrinkRequest) SetCredentialConfigShrink(v string) *SearchImageFigureClusterShrinkRequest {
+	s.CredentialConfigShrink = &v
+	return s
+}
+
+func (s *SearchImageFigureClusterShrinkRequest) SetDatasetName(v string) *SearchImageFigureClusterShrinkRequest {
+	s.DatasetName = &v
+	return s
+}
+
+func (s *SearchImageFigureClusterShrinkRequest) SetProjectName(v string) *SearchImageFigureClusterShrinkRequest {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *SearchImageFigureClusterShrinkRequest) SetSourceURI(v string) *SearchImageFigureClusterShrinkRequest {
+	s.SourceURI = &v
+	return s
+}
+
+type SearchImageFigureClusterResponseBody struct {
+	Clusters  []*SearchImageFigureClusterResponseBodyClusters `json:"Clusters,omitempty" xml:"Clusters,omitempty" type:"Repeated"`
+	RequestId *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s SearchImageFigureClusterResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchImageFigureClusterResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SearchImageFigureClusterResponseBody) SetClusters(v []*SearchImageFigureClusterResponseBodyClusters) *SearchImageFigureClusterResponseBody {
+	s.Clusters = v
+	return s
+}
+
+func (s *SearchImageFigureClusterResponseBody) SetRequestId(v string) *SearchImageFigureClusterResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type SearchImageFigureClusterResponseBodyClusters struct {
+	Boundary   *Boundary `json:"Boundary,omitempty" xml:"Boundary,omitempty"`
+	ClusterId  *string   `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	Similarity *float32  `json:"Similarity,omitempty" xml:"Similarity,omitempty"`
+}
+
+func (s SearchImageFigureClusterResponseBodyClusters) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchImageFigureClusterResponseBodyClusters) GoString() string {
+	return s.String()
+}
+
+func (s *SearchImageFigureClusterResponseBodyClusters) SetBoundary(v *Boundary) *SearchImageFigureClusterResponseBodyClusters {
+	s.Boundary = v
+	return s
+}
+
+func (s *SearchImageFigureClusterResponseBodyClusters) SetClusterId(v string) *SearchImageFigureClusterResponseBodyClusters {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *SearchImageFigureClusterResponseBodyClusters) SetSimilarity(v float32) *SearchImageFigureClusterResponseBodyClusters {
+	s.Similarity = &v
+	return s
+}
+
+type SearchImageFigureClusterResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SearchImageFigureClusterResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SearchImageFigureClusterResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchImageFigureClusterResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SearchImageFigureClusterResponse) SetHeaders(v map[string]*string) *SearchImageFigureClusterResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SearchImageFigureClusterResponse) SetStatusCode(v int32) *SearchImageFigureClusterResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SearchImageFigureClusterResponse) SetBody(v *SearchImageFigureClusterResponseBody) *SearchImageFigureClusterResponse {
 	s.Body = v
 	return s
 }
@@ -15629,6 +16617,68 @@ func (client *Client) BatchUpdateFileMeta(request *BatchUpdateFileMetaRequest) (
 	return _result, _err
 }
 
+func (client *Client) CompareImageFacesWithOptions(tmpReq *CompareImageFacesRequest, runtime *util.RuntimeOptions) (_result *CompareImageFacesResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CompareImageFacesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.CredentialConfig)) {
+		request.CredentialConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CredentialConfig, tea.String("CredentialConfig"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.Source)) {
+		request.SourceShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Source, tea.String("Source"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CredentialConfigShrink)) {
+		query["CredentialConfig"] = request.CredentialConfigShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectName)) {
+		query["ProjectName"] = request.ProjectName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceShrink)) {
+		query["Source"] = request.SourceShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CompareImageFaces"),
+		Version:     tea.String("2020-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CompareImageFacesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CompareImageFaces(request *CompareImageFacesRequest) (_result *CompareImageFacesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CompareImageFacesResponse{}
+	_body, _err := client.CompareImageFacesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) CreateArchiveFileInspectionTaskWithOptions(tmpReq *CreateArchiveFileInspectionTaskRequest, runtime *util.RuntimeOptions) (_result *CreateArchiveFileInspectionTaskResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -16109,6 +17159,80 @@ func (client *Client) CreateDetectVideoLabelsTask(request *CreateDetectVideoLabe
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateDetectVideoLabelsTaskResponse{}
 	_body, _err := client.CreateDetectVideoLabelsTaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateFacesSearchingTaskWithOptions(tmpReq *CreateFacesSearchingTaskRequest, runtime *util.RuntimeOptions) (_result *CreateFacesSearchingTaskResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CreateFacesSearchingTaskShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Sources)) {
+		request.SourcesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Sources, tea.String("Sources"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DatasetName)) {
+		query["DatasetName"] = request.DatasetName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResult)) {
+		query["MaxResult"] = request.MaxResult
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NotifyTopicName)) {
+		query["NotifyTopicName"] = request.NotifyTopicName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectName)) {
+		query["ProjectName"] = request.ProjectName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourcesShrink)) {
+		query["Sources"] = request.SourcesShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TopK)) {
+		query["TopK"] = request.TopK
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserData)) {
+		query["UserData"] = request.UserData
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateFacesSearchingTask"),
+		Version:     tea.String("2020-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateFacesSearchingTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateFacesSearchingTask(request *CreateFacesSearchingTaskRequest) (_result *CreateFacesSearchingTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateFacesSearchingTaskResponse{}
+	_body, _err := client.CreateFacesSearchingTaskWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -17145,6 +18269,72 @@ func (client *Client) CreateProject(request *CreateProjectRequest) (_result *Cre
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateProjectResponse{}
 	_body, _err := client.CreateProjectWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateSimilarImageClusteringTaskWithOptions(tmpReq *CreateSimilarImageClusteringTaskRequest, runtime *util.RuntimeOptions) (_result *CreateSimilarImageClusteringTaskResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CreateSimilarImageClusteringTaskShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Tags)) {
+		request.TagsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Tags, tea.String("Tags"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DatasetName)) {
+		query["DatasetName"] = request.DatasetName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NotifyTopicName)) {
+		query["NotifyTopicName"] = request.NotifyTopicName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectName)) {
+		query["ProjectName"] = request.ProjectName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagsShrink)) {
+		query["Tags"] = request.TagsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserData)) {
+		query["UserData"] = request.UserData
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateSimilarImageClusteringTask"),
+		Version:     tea.String("2020-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateSimilarImageClusteringTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateSimilarImageClusteringTask(request *CreateSimilarImageClusteringTaskRequest) (_result *CreateSimilarImageClusteringTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateSimilarImageClusteringTaskResponse{}
+	_body, _err := client.CreateSimilarImageClusteringTaskWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -18478,6 +19668,124 @@ func (client *Client) GenerateVideoPlaylist(request *GenerateVideoPlaylistReques
 	return _result, _err
 }
 
+func (client *Client) GenerateWebofficeTokenWithOptions(tmpReq *GenerateWebofficeTokenRequest, runtime *util.RuntimeOptions) (_result *GenerateWebofficeTokenResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &GenerateWebofficeTokenShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.CredentialConfig)) {
+		request.CredentialConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CredentialConfig, tea.String("CredentialConfig"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.Permission)) {
+		request.PermissionShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Permission, tea.String("Permission"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.User)) {
+		request.UserShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.User, tea.String("User"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.Watermark)) {
+		request.WatermarkShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Watermark, tea.String("Watermark"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CachePreview)) {
+		query["CachePreview"] = request.CachePreview
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CredentialConfigShrink)) {
+		query["CredentialConfig"] = request.CredentialConfigShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExternalUploaded)) {
+		query["ExternalUploaded"] = request.ExternalUploaded
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Filename)) {
+		query["Filename"] = request.Filename
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Hidecmb)) {
+		query["Hidecmb"] = request.Hidecmb
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NotifyTopicName)) {
+		query["NotifyTopicName"] = request.NotifyTopicName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Password)) {
+		query["Password"] = request.Password
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PermissionShrink)) {
+		query["Permission"] = request.PermissionShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PreviewPages)) {
+		query["PreviewPages"] = request.PreviewPages
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectName)) {
+		query["ProjectName"] = request.ProjectName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Referer)) {
+		query["Referer"] = request.Referer
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceURI)) {
+		query["SourceURI"] = request.SourceURI
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserShrink)) {
+		query["User"] = request.UserShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserData)) {
+		query["UserData"] = request.UserData
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WatermarkShrink)) {
+		query["Watermark"] = request.WatermarkShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GenerateWebofficeToken"),
+		Version:     tea.String("2020-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GenerateWebofficeTokenResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GenerateWebofficeToken(request *GenerateWebofficeTokenRequest) (_result *GenerateWebofficeTokenResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GenerateWebofficeTokenResponse{}
+	_body, _err := client.GenerateWebofficeTokenWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) GetBindingWithOptions(request *GetBindingRequest, runtime *util.RuntimeOptions) (_result *GetBindingResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19711,6 +21019,70 @@ func (client *Client) QueryLocationDateClusters(request *QueryLocationDateCluste
 	return _result, _err
 }
 
+func (client *Client) QuerySimilarImageClustersWithOptions(request *QuerySimilarImageClustersRequest, runtime *util.RuntimeOptions) (_result *QuerySimilarImageClustersResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CustomLabels)) {
+		query["CustomLabels"] = request.CustomLabels
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DatasetName)) {
+		query["DatasetName"] = request.DatasetName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectName)) {
+		query["ProjectName"] = request.ProjectName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Sort)) {
+		query["Sort"] = request.Sort
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QuerySimilarImageClusters"),
+		Version:     tea.String("2020-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QuerySimilarImageClustersResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) QuerySimilarImageClusters(request *QuerySimilarImageClustersRequest) (_result *QuerySimilarImageClustersResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QuerySimilarImageClustersResponse{}
+	_body, _err := client.QuerySimilarImageClustersWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) QueryStoriesWithOptions(tmpReq *QueryStoriesRequest, runtime *util.RuntimeOptions) (_result *QueryStoriesResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -20002,6 +21374,68 @@ func (client *Client) ResumeBinding(request *ResumeBindingRequest) (_result *Res
 	runtime := &util.RuntimeOptions{}
 	_result = &ResumeBindingResponse{}
 	_body, _err := client.ResumeBindingWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SearchImageFigureClusterWithOptions(tmpReq *SearchImageFigureClusterRequest, runtime *util.RuntimeOptions) (_result *SearchImageFigureClusterResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &SearchImageFigureClusterShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.CredentialConfig)) {
+		request.CredentialConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CredentialConfig, tea.String("CredentialConfig"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CredentialConfigShrink)) {
+		query["CredentialConfig"] = request.CredentialConfigShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DatasetName)) {
+		query["DatasetName"] = request.DatasetName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectName)) {
+		query["ProjectName"] = request.ProjectName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceURI)) {
+		query["SourceURI"] = request.SourceURI
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SearchImageFigureCluster"),
+		Version:     tea.String("2020-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SearchImageFigureClusterResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SearchImageFigureCluster(request *SearchImageFigureClusterRequest) (_result *SearchImageFigureClusterResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SearchImageFigureClusterResponse{}
+	_body, _err := client.SearchImageFigureClusterWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
