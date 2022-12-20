@@ -19,8 +19,10 @@ import (
 )
 
 type ScanImageRequest struct {
-	Scene []*string               `json:"Scene,omitempty" xml:"Scene,omitempty" type:"Repeated"`
-	Task  []*ScanImageRequestTask `json:"Task,omitempty" xml:"Task,omitempty" type:"Repeated"`
+	// 1
+	Scene []*string `json:"Scene,omitempty" xml:"Scene,omitempty" type:"Repeated"`
+	// 1
+	Task []*ScanImageRequestTask `json:"Task,omitempty" xml:"Task,omitempty" type:"Repeated"`
 }
 
 func (s ScanImageRequest) String() string {
@@ -83,8 +85,10 @@ func (s *ScanImageRequestTask) SetMaxFrames(v int32) *ScanImageRequestTask {
 }
 
 type ScanImageAdvanceRequest struct {
-	Scene []*string                      `json:"Scene,omitempty" xml:"Scene,omitempty" type:"Repeated"`
-	Task  []*ScanImageAdvanceRequestTask `json:"Task,omitempty" xml:"Task,omitempty" type:"Repeated"`
+	// 1
+	Scene []*string `json:"Scene,omitempty" xml:"Scene,omitempty" type:"Repeated"`
+	// 1
+	Task []*ScanImageAdvanceRequestTask `json:"Task,omitempty" xml:"Task,omitempty" type:"Repeated"`
 }
 
 func (s ScanImageAdvanceRequest) String() string {
@@ -222,10 +226,11 @@ func (s *ScanImageResponseBodyDataResults) SetTaskId(v string) *ScanImageRespons
 }
 
 type ScanImageResponseBodyDataResultsSubResults struct {
-	Frames              []*ScanImageResponseBodyDataResultsSubResultsFrames              `json:"Frames,omitempty" xml:"Frames,omitempty" type:"Repeated"`
-	HintWordsInfoList   []*ScanImageResponseBodyDataResultsSubResultsHintWordsInfoList   `json:"HintWordsInfoList,omitempty" xml:"HintWordsInfoList,omitempty" type:"Repeated"`
-	Label               *string                                                          `json:"Label,omitempty" xml:"Label,omitempty"`
-	LogoDataList        []*ScanImageResponseBodyDataResultsSubResultsLogoDataList        `json:"LogoDataList,omitempty" xml:"LogoDataList,omitempty" type:"Repeated"`
+	Frames            []*ScanImageResponseBodyDataResultsSubResultsFrames            `json:"Frames,omitempty" xml:"Frames,omitempty" type:"Repeated"`
+	HintWordsInfoList []*ScanImageResponseBodyDataResultsSubResultsHintWordsInfoList `json:"HintWordsInfoList,omitempty" xml:"HintWordsInfoList,omitempty" type:"Repeated"`
+	Label             *string                                                        `json:"Label,omitempty" xml:"Label,omitempty"`
+	LogoDataList      []*ScanImageResponseBodyDataResultsSubResultsLogoDataList      `json:"LogoDataList,omitempty" xml:"LogoDataList,omitempty" type:"Repeated"`
+	// 1
 	OCRDataList         []*string                                                        `json:"OCRDataList,omitempty" xml:"OCRDataList,omitempty" type:"Repeated"`
 	ProgramCodeDataList []*ScanImageResponseBodyDataResultsSubResultsProgramCodeDataList `json:"ProgramCodeDataList,omitempty" xml:"ProgramCodeDataList,omitempty" type:"Repeated"`
 	Rate                *float32                                                         `json:"Rate,omitempty" xml:"Rate,omitempty"`
@@ -514,8 +519,10 @@ func (s *ScanImageResponse) SetBody(v *ScanImageResponseBody) *ScanImageResponse
 }
 
 type ScanTextRequest struct {
+	// 1
 	Labels []*ScanTextRequestLabels `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
-	Tasks  []*ScanTextRequestTasks  `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Repeated"`
+	// 1
+	Tasks []*ScanTextRequestTasks `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Repeated"`
 }
 
 func (s ScanTextRequest) String() string {
@@ -893,7 +900,7 @@ func (client *Client) ScanImageAdvance(request *ScanImageAdvanceRequest, runtime
 	scanImageReq := &ScanImageRequest{}
 	openapiutil.Convert(request, scanImageReq)
 	if !tea.BoolValue(util.IsUnset(request.Task)) {
-		i := tea.Int(0)
+		i0 := tea.Int(0)
 		for _, item0 := range request.Task {
 			if !tea.BoolValue(util.IsUnset(item0.ImageURLObject)) {
 				authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
@@ -929,9 +936,9 @@ func (client *Client) ScanImageAdvance(request *ScanImageAdvanceRequest, runtime
 				if _err != nil {
 					return _result, _err
 				}
-				tmp := scanImageReq.Task[tea.IntValue(i)]
+				tmp := scanImageReq.Task[tea.IntValue(i0)]
 				tmp.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
-				i = number.Ltoi(number.Add(number.Itol(i), number.Itol(tea.Int(1))))
+				i0 = number.Ltoi(number.Add(number.Itol(i0), number.Itol(tea.Int(1))))
 			}
 
 		}
