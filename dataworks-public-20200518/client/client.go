@@ -216,6 +216,105 @@ func (s *AbolishDataServiceApiResponse) SetBody(v *AbolishDataServiceApiResponse
 	return s
 }
 
+type AddMetaCollectionEntityRequest struct {
+	CollectionQualifiedName *string `json:"CollectionQualifiedName,omitempty" xml:"CollectionQualifiedName,omitempty"`
+	EntityQualifiedName     *string `json:"EntityQualifiedName,omitempty" xml:"EntityQualifiedName,omitempty"`
+}
+
+func (s AddMetaCollectionEntityRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddMetaCollectionEntityRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AddMetaCollectionEntityRequest) SetCollectionQualifiedName(v string) *AddMetaCollectionEntityRequest {
+	s.CollectionQualifiedName = &v
+	return s
+}
+
+func (s *AddMetaCollectionEntityRequest) SetEntityQualifiedName(v string) *AddMetaCollectionEntityRequest {
+	s.EntityQualifiedName = &v
+	return s
+}
+
+type AddMetaCollectionEntityResponseBody struct {
+	ErrorCode      *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage   *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Status         *bool   `json:"Status,omitempty" xml:"Status,omitempty"`
+	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s AddMetaCollectionEntityResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddMetaCollectionEntityResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AddMetaCollectionEntityResponseBody) SetErrorCode(v string) *AddMetaCollectionEntityResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *AddMetaCollectionEntityResponseBody) SetErrorMessage(v string) *AddMetaCollectionEntityResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *AddMetaCollectionEntityResponseBody) SetHttpStatusCode(v int32) *AddMetaCollectionEntityResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *AddMetaCollectionEntityResponseBody) SetRequestId(v string) *AddMetaCollectionEntityResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *AddMetaCollectionEntityResponseBody) SetStatus(v bool) *AddMetaCollectionEntityResponseBody {
+	s.Status = &v
+	return s
+}
+
+func (s *AddMetaCollectionEntityResponseBody) SetSuccess(v bool) *AddMetaCollectionEntityResponseBody {
+	s.Success = &v
+	return s
+}
+
+type AddMetaCollectionEntityResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *AddMetaCollectionEntityResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s AddMetaCollectionEntityResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddMetaCollectionEntityResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AddMetaCollectionEntityResponse) SetHeaders(v map[string]*string) *AddMetaCollectionEntityResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AddMetaCollectionEntityResponse) SetStatusCode(v int32) *AddMetaCollectionEntityResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *AddMetaCollectionEntityResponse) SetBody(v *AddMetaCollectionEntityResponseBody) *AddMetaCollectionEntityResponse {
+	s.Body = v
+	return s
+}
+
 type AddProjectMemberToRoleRequest struct {
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	ProjectId   *int64  `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
@@ -3164,6 +3263,118 @@ func (s *CreateMetaCategoryResponse) SetBody(v *CreateMetaCategoryResponseBody) 
 	return s
 }
 
+type CreateMetaCollectionRequest struct {
+	CollectionType      *string `json:"CollectionType,omitempty" xml:"CollectionType,omitempty"`
+	Comment             *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	Name                *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	ParentQualifiedName *string `json:"ParentQualifiedName,omitempty" xml:"ParentQualifiedName,omitempty"`
+}
+
+func (s CreateMetaCollectionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateMetaCollectionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateMetaCollectionRequest) SetCollectionType(v string) *CreateMetaCollectionRequest {
+	s.CollectionType = &v
+	return s
+}
+
+func (s *CreateMetaCollectionRequest) SetComment(v string) *CreateMetaCollectionRequest {
+	s.Comment = &v
+	return s
+}
+
+func (s *CreateMetaCollectionRequest) SetName(v string) *CreateMetaCollectionRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateMetaCollectionRequest) SetParentQualifiedName(v string) *CreateMetaCollectionRequest {
+	s.ParentQualifiedName = &v
+	return s
+}
+
+type CreateMetaCollectionResponseBody struct {
+	ErrorCode      *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage   *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	HttpStatusCode *string `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	QualifiedName  *string `json:"QualifiedName,omitempty" xml:"QualifiedName,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *string `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s CreateMetaCollectionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateMetaCollectionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateMetaCollectionResponseBody) SetErrorCode(v string) *CreateMetaCollectionResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *CreateMetaCollectionResponseBody) SetErrorMessage(v string) *CreateMetaCollectionResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *CreateMetaCollectionResponseBody) SetHttpStatusCode(v string) *CreateMetaCollectionResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *CreateMetaCollectionResponseBody) SetQualifiedName(v string) *CreateMetaCollectionResponseBody {
+	s.QualifiedName = &v
+	return s
+}
+
+func (s *CreateMetaCollectionResponseBody) SetRequestId(v string) *CreateMetaCollectionResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateMetaCollectionResponseBody) SetSuccess(v string) *CreateMetaCollectionResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreateMetaCollectionResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateMetaCollectionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateMetaCollectionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateMetaCollectionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateMetaCollectionResponse) SetHeaders(v map[string]*string) *CreateMetaCollectionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateMetaCollectionResponse) SetStatusCode(v int32) *CreateMetaCollectionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateMetaCollectionResponse) SetBody(v *CreateMetaCollectionResponseBody) *CreateMetaCollectionResponse {
+	s.Body = v
+	return s
+}
+
 type CreatePermissionApplyOrderRequest struct {
 	ApplyObject           []*CreatePermissionApplyOrderRequestApplyObject `json:"ApplyObject,omitempty" xml:"ApplyObject,omitempty" type:"Repeated"`
 	ApplyReason           *string                                         `json:"ApplyReason,omitempty" xml:"ApplyReason,omitempty"`
@@ -5884,6 +6095,199 @@ func (s *DeleteMetaCategoryResponse) SetStatusCode(v int32) *DeleteMetaCategoryR
 }
 
 func (s *DeleteMetaCategoryResponse) SetBody(v *DeleteMetaCategoryResponseBody) *DeleteMetaCategoryResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteMetaCollectionRequest struct {
+	QualifiedName *string `json:"QualifiedName,omitempty" xml:"QualifiedName,omitempty"`
+}
+
+func (s DeleteMetaCollectionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteMetaCollectionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteMetaCollectionRequest) SetQualifiedName(v string) *DeleteMetaCollectionRequest {
+	s.QualifiedName = &v
+	return s
+}
+
+type DeleteMetaCollectionResponseBody struct {
+	ErrorCode      *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage   *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Status         *bool   `json:"Status,omitempty" xml:"Status,omitempty"`
+	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DeleteMetaCollectionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteMetaCollectionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteMetaCollectionResponseBody) SetErrorCode(v string) *DeleteMetaCollectionResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *DeleteMetaCollectionResponseBody) SetErrorMessage(v string) *DeleteMetaCollectionResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *DeleteMetaCollectionResponseBody) SetHttpStatusCode(v int32) *DeleteMetaCollectionResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *DeleteMetaCollectionResponseBody) SetRequestId(v string) *DeleteMetaCollectionResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteMetaCollectionResponseBody) SetStatus(v bool) *DeleteMetaCollectionResponseBody {
+	s.Status = &v
+	return s
+}
+
+func (s *DeleteMetaCollectionResponseBody) SetSuccess(v bool) *DeleteMetaCollectionResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeleteMetaCollectionResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteMetaCollectionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteMetaCollectionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteMetaCollectionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteMetaCollectionResponse) SetHeaders(v map[string]*string) *DeleteMetaCollectionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteMetaCollectionResponse) SetStatusCode(v int32) *DeleteMetaCollectionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteMetaCollectionResponse) SetBody(v *DeleteMetaCollectionResponseBody) *DeleteMetaCollectionResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteMetaCollectionEntityRequest struct {
+	CollectionQualifiedName *string `json:"CollectionQualifiedName,omitempty" xml:"CollectionQualifiedName,omitempty"`
+	EntityQualifiedName     *string `json:"EntityQualifiedName,omitempty" xml:"EntityQualifiedName,omitempty"`
+}
+
+func (s DeleteMetaCollectionEntityRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteMetaCollectionEntityRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteMetaCollectionEntityRequest) SetCollectionQualifiedName(v string) *DeleteMetaCollectionEntityRequest {
+	s.CollectionQualifiedName = &v
+	return s
+}
+
+func (s *DeleteMetaCollectionEntityRequest) SetEntityQualifiedName(v string) *DeleteMetaCollectionEntityRequest {
+	s.EntityQualifiedName = &v
+	return s
+}
+
+type DeleteMetaCollectionEntityResponseBody struct {
+	ErrorCode      *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage   *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Status    *bool   `json:"Status,omitempty" xml:"Status,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DeleteMetaCollectionEntityResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteMetaCollectionEntityResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteMetaCollectionEntityResponseBody) SetErrorCode(v string) *DeleteMetaCollectionEntityResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *DeleteMetaCollectionEntityResponseBody) SetErrorMessage(v string) *DeleteMetaCollectionEntityResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *DeleteMetaCollectionEntityResponseBody) SetHttpStatusCode(v int32) *DeleteMetaCollectionEntityResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *DeleteMetaCollectionEntityResponseBody) SetRequestId(v string) *DeleteMetaCollectionEntityResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteMetaCollectionEntityResponseBody) SetStatus(v bool) *DeleteMetaCollectionEntityResponseBody {
+	s.Status = &v
+	return s
+}
+
+func (s *DeleteMetaCollectionEntityResponseBody) SetSuccess(v bool) *DeleteMetaCollectionEntityResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeleteMetaCollectionEntityResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteMetaCollectionEntityResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteMetaCollectionEntityResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteMetaCollectionEntityResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteMetaCollectionEntityResponse) SetHeaders(v map[string]*string) *DeleteMetaCollectionEntityResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteMetaCollectionEntityResponse) SetStatusCode(v int32) *DeleteMetaCollectionEntityResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteMetaCollectionEntityResponse) SetBody(v *DeleteMetaCollectionEntityResponseBody) *DeleteMetaCollectionEntityResponse {
 	s.Body = v
 	return s
 }
@@ -15313,6 +15717,100 @@ func (s *GetMetaCategoryResponse) SetBody(v *GetMetaCategoryResponseBody) *GetMe
 	return s
 }
 
+type GetMetaCollectionDetailRequest struct {
+	QualifiedName *string `json:"QualifiedName,omitempty" xml:"QualifiedName,omitempty"`
+}
+
+func (s GetMetaCollectionDetailRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMetaCollectionDetailRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetMetaCollectionDetailRequest) SetQualifiedName(v string) *GetMetaCollectionDetailRequest {
+	s.QualifiedName = &v
+	return s
+}
+
+type GetMetaCollectionDetailResponseBody struct {
+	Collection     *Collection `json:"Collection,omitempty" xml:"Collection,omitempty"`
+	ErrorCode      *string     `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage   *string     `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	HttpStatusCode *int32      `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetMetaCollectionDetailResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMetaCollectionDetailResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetMetaCollectionDetailResponseBody) SetCollection(v *Collection) *GetMetaCollectionDetailResponseBody {
+	s.Collection = v
+	return s
+}
+
+func (s *GetMetaCollectionDetailResponseBody) SetErrorCode(v string) *GetMetaCollectionDetailResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetMetaCollectionDetailResponseBody) SetErrorMessage(v string) *GetMetaCollectionDetailResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetMetaCollectionDetailResponseBody) SetHttpStatusCode(v int32) *GetMetaCollectionDetailResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *GetMetaCollectionDetailResponseBody) SetRequestId(v string) *GetMetaCollectionDetailResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetMetaCollectionDetailResponseBody) SetSuccess(v bool) *GetMetaCollectionDetailResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetMetaCollectionDetailResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetMetaCollectionDetailResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetMetaCollectionDetailResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMetaCollectionDetailResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetMetaCollectionDetailResponse) SetHeaders(v map[string]*string) *GetMetaCollectionDetailResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetMetaCollectionDetailResponse) SetStatusCode(v int32) *GetMetaCollectionDetailResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetMetaCollectionDetailResponse) SetBody(v *GetMetaCollectionDetailResponseBody) *GetMetaCollectionDetailResponse {
+	s.Body = v
+	return s
+}
+
 type GetMetaColumnLineageRequest struct {
 	ClusterId      *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	ColumnGuid     *string `json:"ColumnGuid,omitempty" xml:"ColumnGuid,omitempty"`
@@ -17981,6 +18479,152 @@ func (s *GetMetaTablePartitionResponse) SetStatusCode(v int32) *GetMetaTablePart
 }
 
 func (s *GetMetaTablePartitionResponse) SetBody(v *GetMetaTablePartitionResponseBody) *GetMetaTablePartitionResponse {
+	s.Body = v
+	return s
+}
+
+type GetMetaTableProducingTasksRequest struct {
+	ClusterId      *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	DataSourceType *string `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
+	DbName         *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	SchemaName     *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
+	TableGuid      *string `json:"TableGuid,omitempty" xml:"TableGuid,omitempty"`
+	TableName      *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+}
+
+func (s GetMetaTableProducingTasksRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMetaTableProducingTasksRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetMetaTableProducingTasksRequest) SetClusterId(v string) *GetMetaTableProducingTasksRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *GetMetaTableProducingTasksRequest) SetDataSourceType(v string) *GetMetaTableProducingTasksRequest {
+	s.DataSourceType = &v
+	return s
+}
+
+func (s *GetMetaTableProducingTasksRequest) SetDbName(v string) *GetMetaTableProducingTasksRequest {
+	s.DbName = &v
+	return s
+}
+
+func (s *GetMetaTableProducingTasksRequest) SetSchemaName(v string) *GetMetaTableProducingTasksRequest {
+	s.SchemaName = &v
+	return s
+}
+
+func (s *GetMetaTableProducingTasksRequest) SetTableGuid(v string) *GetMetaTableProducingTasksRequest {
+	s.TableGuid = &v
+	return s
+}
+
+func (s *GetMetaTableProducingTasksRequest) SetTableName(v string) *GetMetaTableProducingTasksRequest {
+	s.TableName = &v
+	return s
+}
+
+type GetMetaTableProducingTasksResponseBody struct {
+	Data           []*GetMetaTableProducingTasksResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	ErrorCode      *string                                       `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage   *string                                       `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	HttpStatusCode *int32                                        `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	RequestId      *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool                                         `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetMetaTableProducingTasksResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMetaTableProducingTasksResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetMetaTableProducingTasksResponseBody) SetData(v []*GetMetaTableProducingTasksResponseBodyData) *GetMetaTableProducingTasksResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetMetaTableProducingTasksResponseBody) SetErrorCode(v string) *GetMetaTableProducingTasksResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetMetaTableProducingTasksResponseBody) SetErrorMessage(v string) *GetMetaTableProducingTasksResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetMetaTableProducingTasksResponseBody) SetHttpStatusCode(v int32) *GetMetaTableProducingTasksResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *GetMetaTableProducingTasksResponseBody) SetRequestId(v string) *GetMetaTableProducingTasksResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetMetaTableProducingTasksResponseBody) SetSuccess(v bool) *GetMetaTableProducingTasksResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetMetaTableProducingTasksResponseBodyData struct {
+	TaskId   *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+}
+
+func (s GetMetaTableProducingTasksResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMetaTableProducingTasksResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetMetaTableProducingTasksResponseBodyData) SetTaskId(v string) *GetMetaTableProducingTasksResponseBodyData {
+	s.TaskId = &v
+	return s
+}
+
+func (s *GetMetaTableProducingTasksResponseBodyData) SetTaskName(v string) *GetMetaTableProducingTasksResponseBodyData {
+	s.TaskName = &v
+	return s
+}
+
+type GetMetaTableProducingTasksResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetMetaTableProducingTasksResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetMetaTableProducingTasksResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMetaTableProducingTasksResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetMetaTableProducingTasksResponse) SetHeaders(v map[string]*string) *GetMetaTableProducingTasksResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetMetaTableProducingTasksResponse) SetStatusCode(v int32) *GetMetaTableProducingTasksResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetMetaTableProducingTasksResponse) SetBody(v *GetMetaTableProducingTasksResponseBody) *GetMetaTableProducingTasksResponse {
 	s.Body = v
 	return s
 }
@@ -30253,6 +30897,310 @@ func (s *ListManualDagInstancesResponse) SetBody(v *ListManualDagInstancesRespon
 	return s
 }
 
+type ListMetaCollectionEntitiesRequest struct {
+	CollectionQualifiedName *string `json:"CollectionQualifiedName,omitempty" xml:"CollectionQualifiedName,omitempty"`
+	EntityType              *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
+	Keyword                 *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	NextToken               *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	PageSize                *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+}
+
+func (s ListMetaCollectionEntitiesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMetaCollectionEntitiesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListMetaCollectionEntitiesRequest) SetCollectionQualifiedName(v string) *ListMetaCollectionEntitiesRequest {
+	s.CollectionQualifiedName = &v
+	return s
+}
+
+func (s *ListMetaCollectionEntitiesRequest) SetEntityType(v string) *ListMetaCollectionEntitiesRequest {
+	s.EntityType = &v
+	return s
+}
+
+func (s *ListMetaCollectionEntitiesRequest) SetKeyword(v string) *ListMetaCollectionEntitiesRequest {
+	s.Keyword = &v
+	return s
+}
+
+func (s *ListMetaCollectionEntitiesRequest) SetNextToken(v string) *ListMetaCollectionEntitiesRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListMetaCollectionEntitiesRequest) SetPageSize(v int32) *ListMetaCollectionEntitiesRequest {
+	s.PageSize = &v
+	return s
+}
+
+type ListMetaCollectionEntitiesResponseBody struct {
+	Data           *ListMetaCollectionEntitiesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	ErrorCode      *string                                     `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage   *string                                     `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	HttpStatusCode *int32                                      `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	RequestId      *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool                                       `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ListMetaCollectionEntitiesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMetaCollectionEntitiesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListMetaCollectionEntitiesResponseBody) SetData(v *ListMetaCollectionEntitiesResponseBodyData) *ListMetaCollectionEntitiesResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListMetaCollectionEntitiesResponseBody) SetErrorCode(v string) *ListMetaCollectionEntitiesResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ListMetaCollectionEntitiesResponseBody) SetErrorMessage(v string) *ListMetaCollectionEntitiesResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *ListMetaCollectionEntitiesResponseBody) SetHttpStatusCode(v int32) *ListMetaCollectionEntitiesResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ListMetaCollectionEntitiesResponseBody) SetRequestId(v string) *ListMetaCollectionEntitiesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListMetaCollectionEntitiesResponseBody) SetSuccess(v bool) *ListMetaCollectionEntitiesResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListMetaCollectionEntitiesResponseBodyData struct {
+	EntityList []*Entity `json:"EntityList,omitempty" xml:"EntityList,omitempty" type:"Repeated"`
+	NextToken  *string   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+}
+
+func (s ListMetaCollectionEntitiesResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMetaCollectionEntitiesResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListMetaCollectionEntitiesResponseBodyData) SetEntityList(v []*Entity) *ListMetaCollectionEntitiesResponseBodyData {
+	s.EntityList = v
+	return s
+}
+
+func (s *ListMetaCollectionEntitiesResponseBodyData) SetNextToken(v string) *ListMetaCollectionEntitiesResponseBodyData {
+	s.NextToken = &v
+	return s
+}
+
+type ListMetaCollectionEntitiesResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListMetaCollectionEntitiesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListMetaCollectionEntitiesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMetaCollectionEntitiesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListMetaCollectionEntitiesResponse) SetHeaders(v map[string]*string) *ListMetaCollectionEntitiesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListMetaCollectionEntitiesResponse) SetStatusCode(v int32) *ListMetaCollectionEntitiesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListMetaCollectionEntitiesResponse) SetBody(v *ListMetaCollectionEntitiesResponseBody) *ListMetaCollectionEntitiesResponse {
+	s.Body = v
+	return s
+}
+
+type ListMetaCollectionsRequest struct {
+	Administrator       *string `json:"Administrator,omitempty" xml:"Administrator,omitempty"`
+	CollectionType      *string `json:"CollectionType,omitempty" xml:"CollectionType,omitempty"`
+	Creator             *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	Follower            *string `json:"Follower,omitempty" xml:"Follower,omitempty"`
+	Keyword             *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	NextToken           *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	OrderBy             *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
+	PageSize            *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ParentQualifiedName *string `json:"ParentQualifiedName,omitempty" xml:"ParentQualifiedName,omitempty"`
+}
+
+func (s ListMetaCollectionsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMetaCollectionsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListMetaCollectionsRequest) SetAdministrator(v string) *ListMetaCollectionsRequest {
+	s.Administrator = &v
+	return s
+}
+
+func (s *ListMetaCollectionsRequest) SetCollectionType(v string) *ListMetaCollectionsRequest {
+	s.CollectionType = &v
+	return s
+}
+
+func (s *ListMetaCollectionsRequest) SetCreator(v string) *ListMetaCollectionsRequest {
+	s.Creator = &v
+	return s
+}
+
+func (s *ListMetaCollectionsRequest) SetFollower(v string) *ListMetaCollectionsRequest {
+	s.Follower = &v
+	return s
+}
+
+func (s *ListMetaCollectionsRequest) SetKeyword(v string) *ListMetaCollectionsRequest {
+	s.Keyword = &v
+	return s
+}
+
+func (s *ListMetaCollectionsRequest) SetNextToken(v string) *ListMetaCollectionsRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListMetaCollectionsRequest) SetOrderBy(v string) *ListMetaCollectionsRequest {
+	s.OrderBy = &v
+	return s
+}
+
+func (s *ListMetaCollectionsRequest) SetPageSize(v int32) *ListMetaCollectionsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListMetaCollectionsRequest) SetParentQualifiedName(v string) *ListMetaCollectionsRequest {
+	s.ParentQualifiedName = &v
+	return s
+}
+
+type ListMetaCollectionsResponseBody struct {
+	Data           *ListMetaCollectionsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	ErrorCode      *string                              `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage   *string                              `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	HttpStatusCode *int32                               `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	RequestId      *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool                                `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ListMetaCollectionsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMetaCollectionsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListMetaCollectionsResponseBody) SetData(v *ListMetaCollectionsResponseBodyData) *ListMetaCollectionsResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListMetaCollectionsResponseBody) SetErrorCode(v string) *ListMetaCollectionsResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ListMetaCollectionsResponseBody) SetErrorMessage(v string) *ListMetaCollectionsResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *ListMetaCollectionsResponseBody) SetHttpStatusCode(v int32) *ListMetaCollectionsResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ListMetaCollectionsResponseBody) SetRequestId(v string) *ListMetaCollectionsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListMetaCollectionsResponseBody) SetSuccess(v bool) *ListMetaCollectionsResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListMetaCollectionsResponseBodyData struct {
+	CollectionList []*Collection `json:"CollectionList,omitempty" xml:"CollectionList,omitempty" type:"Repeated"`
+	NextToken      *string       `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+}
+
+func (s ListMetaCollectionsResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMetaCollectionsResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListMetaCollectionsResponseBodyData) SetCollectionList(v []*Collection) *ListMetaCollectionsResponseBodyData {
+	s.CollectionList = v
+	return s
+}
+
+func (s *ListMetaCollectionsResponseBodyData) SetNextToken(v string) *ListMetaCollectionsResponseBodyData {
+	s.NextToken = &v
+	return s
+}
+
+type ListMetaCollectionsResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListMetaCollectionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListMetaCollectionsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMetaCollectionsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListMetaCollectionsResponse) SetHeaders(v map[string]*string) *ListMetaCollectionsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListMetaCollectionsResponse) SetStatusCode(v int32) *ListMetaCollectionsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListMetaCollectionsResponse) SetBody(v *ListMetaCollectionsResponseBody) *ListMetaCollectionsResponse {
+	s.Body = v
+	return s
+}
+
 type ListMetaDBRequest struct {
 	ClusterId      *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	DataSourceType *string `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
@@ -40737,6 +41685,111 @@ func (s *UpdateMetaCategoryResponse) SetBody(v *UpdateMetaCategoryResponseBody) 
 	return s
 }
 
+type UpdateMetaCollectionRequest struct {
+	Comment       *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	Name          *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	QualifiedName *string `json:"QualifiedName,omitempty" xml:"QualifiedName,omitempty"`
+}
+
+func (s UpdateMetaCollectionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateMetaCollectionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateMetaCollectionRequest) SetComment(v string) *UpdateMetaCollectionRequest {
+	s.Comment = &v
+	return s
+}
+
+func (s *UpdateMetaCollectionRequest) SetName(v string) *UpdateMetaCollectionRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *UpdateMetaCollectionRequest) SetQualifiedName(v string) *UpdateMetaCollectionRequest {
+	s.QualifiedName = &v
+	return s
+}
+
+type UpdateMetaCollectionResponseBody struct {
+	ErrorCode      *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage   *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Status         *bool   `json:"Status,omitempty" xml:"Status,omitempty"`
+	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UpdateMetaCollectionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateMetaCollectionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateMetaCollectionResponseBody) SetErrorCode(v string) *UpdateMetaCollectionResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *UpdateMetaCollectionResponseBody) SetErrorMessage(v string) *UpdateMetaCollectionResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *UpdateMetaCollectionResponseBody) SetHttpStatusCode(v int32) *UpdateMetaCollectionResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *UpdateMetaCollectionResponseBody) SetRequestId(v string) *UpdateMetaCollectionResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateMetaCollectionResponseBody) SetStatus(v bool) *UpdateMetaCollectionResponseBody {
+	s.Status = &v
+	return s
+}
+
+func (s *UpdateMetaCollectionResponseBody) SetSuccess(v bool) *UpdateMetaCollectionResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateMetaCollectionResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateMetaCollectionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateMetaCollectionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateMetaCollectionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateMetaCollectionResponse) SetHeaders(v map[string]*string) *UpdateMetaCollectionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateMetaCollectionResponse) SetStatusCode(v int32) *UpdateMetaCollectionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateMetaCollectionResponse) SetBody(v *UpdateMetaCollectionResponseBody) *UpdateMetaCollectionResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateMetaTableRequest struct {
 	AddedLabels   *string `json:"AddedLabels,omitempty" xml:"AddedLabels,omitempty"`
 	Caption       *string `json:"Caption,omitempty" xml:"Caption,omitempty"`
@@ -42736,6 +43789,54 @@ func (client *Client) AbolishDataServiceApi(request *AbolishDataServiceApiReques
 	return _result, _err
 }
 
+func (client *Client) AddMetaCollectionEntityWithOptions(request *AddMetaCollectionEntityRequest, runtime *util.RuntimeOptions) (_result *AddMetaCollectionEntityResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CollectionQualifiedName)) {
+		query["CollectionQualifiedName"] = request.CollectionQualifiedName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EntityQualifiedName)) {
+		query["EntityQualifiedName"] = request.EntityQualifiedName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AddMetaCollectionEntity"),
+		Version:     tea.String("2020-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &AddMetaCollectionEntityResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) AddMetaCollectionEntity(request *AddMetaCollectionEntityRequest) (_result *AddMetaCollectionEntityResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &AddMetaCollectionEntityResponse{}
+	_body, _err := client.AddMetaCollectionEntityWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) AddProjectMemberToRoleWithOptions(request *AddProjectMemberToRoleRequest, runtime *util.RuntimeOptions) (_result *AddProjectMemberToRoleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -44522,6 +45623,62 @@ func (client *Client) CreateMetaCategory(request *CreateMetaCategoryRequest) (_r
 	return _result, _err
 }
 
+func (client *Client) CreateMetaCollectionWithOptions(request *CreateMetaCollectionRequest, runtime *util.RuntimeOptions) (_result *CreateMetaCollectionResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CollectionType)) {
+		query["CollectionType"] = request.CollectionType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Comment)) {
+		query["Comment"] = request.Comment
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ParentQualifiedName)) {
+		query["ParentQualifiedName"] = request.ParentQualifiedName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateMetaCollection"),
+		Version:     tea.String("2020-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateMetaCollectionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateMetaCollection(request *CreateMetaCollectionRequest) (_result *CreateMetaCollectionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateMetaCollectionResponse{}
+	_body, _err := client.CreateMetaCollectionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) CreatePermissionApplyOrderWithOptions(request *CreatePermissionApplyOrderRequest, runtime *util.RuntimeOptions) (_result *CreatePermissionApplyOrderResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -45924,6 +47081,98 @@ func (client *Client) DeleteMetaCategory(request *DeleteMetaCategoryRequest) (_r
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteMetaCategoryResponse{}
 	_body, _err := client.DeleteMetaCategoryWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteMetaCollectionWithOptions(request *DeleteMetaCollectionRequest, runtime *util.RuntimeOptions) (_result *DeleteMetaCollectionResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.QualifiedName)) {
+		query["QualifiedName"] = request.QualifiedName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteMetaCollection"),
+		Version:     tea.String("2020-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteMetaCollectionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteMetaCollection(request *DeleteMetaCollectionRequest) (_result *DeleteMetaCollectionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteMetaCollectionResponse{}
+	_body, _err := client.DeleteMetaCollectionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteMetaCollectionEntityWithOptions(request *DeleteMetaCollectionEntityRequest, runtime *util.RuntimeOptions) (_result *DeleteMetaCollectionEntityResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CollectionQualifiedName)) {
+		query["CollectionQualifiedName"] = request.CollectionQualifiedName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EntityQualifiedName)) {
+		query["EntityQualifiedName"] = request.EntityQualifiedName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteMetaCollectionEntity"),
+		Version:     tea.String("2020-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteMetaCollectionEntityResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteMetaCollectionEntity(request *DeleteMetaCollectionEntityRequest) (_result *DeleteMetaCollectionEntityResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteMetaCollectionEntityResponse{}
+	_body, _err := client.DeleteMetaCollectionEntityWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -48462,6 +49711,50 @@ func (client *Client) GetMetaCategory(request *GetMetaCategoryRequest) (_result 
 	return _result, _err
 }
 
+func (client *Client) GetMetaCollectionDetailWithOptions(request *GetMetaCollectionDetailRequest, runtime *util.RuntimeOptions) (_result *GetMetaCollectionDetailResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.QualifiedName)) {
+		query["QualifiedName"] = request.QualifiedName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetMetaCollectionDetail"),
+		Version:     tea.String("2020-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetMetaCollectionDetailResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetMetaCollectionDetail(request *GetMetaCollectionDetailRequest) (_result *GetMetaCollectionDetailResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetMetaCollectionDetailResponse{}
+	_body, _err := client.GetMetaCollectionDetailWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) GetMetaColumnLineageWithOptions(request *GetMetaColumnLineageRequest, runtime *util.RuntimeOptions) (_result *GetMetaColumnLineageResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -49138,6 +50431,70 @@ func (client *Client) GetMetaTablePartition(request *GetMetaTablePartitionReques
 	runtime := &util.RuntimeOptions{}
 	_result = &GetMetaTablePartitionResponse{}
 	_body, _err := client.GetMetaTablePartitionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetMetaTableProducingTasksWithOptions(request *GetMetaTableProducingTasksRequest, runtime *util.RuntimeOptions) (_result *GetMetaTableProducingTasksResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DataSourceType)) {
+		query["DataSourceType"] = request.DataSourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DbName)) {
+		query["DbName"] = request.DbName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SchemaName)) {
+		query["SchemaName"] = request.SchemaName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TableGuid)) {
+		query["TableGuid"] = request.TableGuid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TableName)) {
+		query["TableName"] = request.TableName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetMetaTableProducingTasks"),
+		Version:     tea.String("2020-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetMetaTableProducingTasksResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetMetaTableProducingTasks(request *GetMetaTableProducingTasksRequest) (_result *GetMetaTableProducingTasksResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetMetaTableProducingTasksResponse{}
+	_body, _err := client.GetMetaTableProducingTasksWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -52182,6 +53539,142 @@ func (client *Client) ListManualDagInstances(request *ListManualDagInstancesRequ
 	runtime := &util.RuntimeOptions{}
 	_result = &ListManualDagInstancesResponse{}
 	_body, _err := client.ListManualDagInstancesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListMetaCollectionEntitiesWithOptions(request *ListMetaCollectionEntitiesRequest, runtime *util.RuntimeOptions) (_result *ListMetaCollectionEntitiesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CollectionQualifiedName)) {
+		query["CollectionQualifiedName"] = request.CollectionQualifiedName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EntityType)) {
+		query["EntityType"] = request.EntityType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Keyword)) {
+		query["Keyword"] = request.Keyword
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListMetaCollectionEntities"),
+		Version:     tea.String("2020-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListMetaCollectionEntitiesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListMetaCollectionEntities(request *ListMetaCollectionEntitiesRequest) (_result *ListMetaCollectionEntitiesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListMetaCollectionEntitiesResponse{}
+	_body, _err := client.ListMetaCollectionEntitiesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListMetaCollectionsWithOptions(request *ListMetaCollectionsRequest, runtime *util.RuntimeOptions) (_result *ListMetaCollectionsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Administrator)) {
+		query["Administrator"] = request.Administrator
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CollectionType)) {
+		query["CollectionType"] = request.CollectionType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Creator)) {
+		query["Creator"] = request.Creator
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Follower)) {
+		query["Follower"] = request.Follower
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Keyword)) {
+		query["Keyword"] = request.Keyword
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrderBy)) {
+		query["OrderBy"] = request.OrderBy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ParentQualifiedName)) {
+		query["ParentQualifiedName"] = request.ParentQualifiedName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListMetaCollections"),
+		Version:     tea.String("2020-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListMetaCollectionsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListMetaCollections(request *ListMetaCollectionsRequest) (_result *ListMetaCollectionsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListMetaCollectionsResponse{}
+	_body, _err := client.ListMetaCollectionsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -56082,6 +57575,58 @@ func (client *Client) UpdateMetaCategory(request *UpdateMetaCategoryRequest) (_r
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateMetaCategoryResponse{}
 	_body, _err := client.UpdateMetaCategoryWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateMetaCollectionWithOptions(request *UpdateMetaCollectionRequest, runtime *util.RuntimeOptions) (_result *UpdateMetaCollectionResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Comment)) {
+		query["Comment"] = request.Comment
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.QualifiedName)) {
+		query["QualifiedName"] = request.QualifiedName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateMetaCollection"),
+		Version:     tea.String("2020-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateMetaCollectionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateMetaCollection(request *UpdateMetaCollectionRequest) (_result *UpdateMetaCollectionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateMetaCollectionResponse{}
+	_body, _err := client.UpdateMetaCollectionWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
