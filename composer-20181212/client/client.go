@@ -13,7 +13,9 @@ import (
 )
 
 type CloneFlowRequest struct {
-	FlowId    *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
+	// The ID of the workflow that you want to clone.
+	FlowId *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
+	// The version of the workflow that you want to clone. If you do not specify this parameter, the latest version of the workflow is cloned.
 	VersionId *string `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
 }
 
@@ -36,7 +38,9 @@ func (s *CloneFlowRequest) SetVersionId(v string) *CloneFlowRequest {
 }
 
 type CloneFlowResponseBody struct {
-	FlowId    *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
+	// The ID of the cloned workflow.
+	FlowId *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -88,11 +92,22 @@ func (s *CloneFlowResponse) SetBody(v *CloneFlowResponseBody) *CloneFlowResponse
 }
 
 type CreateFlowRequest struct {
-	Definition      *string `json:"Definition,omitempty" xml:"Definition,omitempty"`
+	// The definition of the workflow, which must be a JSON string.
+	Definition *string `json:"Definition,omitempty" xml:"Definition,omitempty"`
+	// The description of the workflow.
 	FlowDescription *string `json:"FlowDescription,omitempty" xml:"FlowDescription,omitempty"`
-	FlowName        *string `json:"FlowName,omitempty" xml:"FlowName,omitempty"`
-	FlowSource      *string `json:"FlowSource,omitempty" xml:"FlowSource,omitempty"`
-	TemplateId      *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// The name of the workflow.
+	FlowName *string `json:"FlowName,omitempty" xml:"FlowName,omitempty"`
+	// The source of the workflow. Valid values:
+	//
+	// *   Default: Create the workflow in the console.
+	// *   CloudConfig: Create the workflow by using Cloud Config.
+	// *   Solution: Create the workflow by using Logic Composer.
+	FlowSource *string `json:"FlowSource,omitempty" xml:"FlowSource,omitempty"`
+	// The ID of the resource group.
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The ID of the template.
+	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 }
 
 func (s CreateFlowRequest) String() string {
@@ -123,13 +138,20 @@ func (s *CreateFlowRequest) SetFlowSource(v string) *CreateFlowRequest {
 	return s
 }
 
+func (s *CreateFlowRequest) SetResourceGroupId(v string) *CreateFlowRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
 func (s *CreateFlowRequest) SetTemplateId(v string) *CreateFlowRequest {
 	s.TemplateId = &v
 	return s
 }
 
 type CreateFlowResponseBody struct {
-	FlowId    *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
+	// The ID of the created workflow.
+	FlowId *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -181,6 +203,7 @@ func (s *CreateFlowResponse) SetBody(v *CreateFlowResponseBody) *CreateFlowRespo
 }
 
 type DeleteFlowRequest struct {
+	// The ID of the workflow that you want to delete.
 	FlowId *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
 }
 
@@ -198,8 +221,10 @@ func (s *DeleteFlowRequest) SetFlowId(v string) *DeleteFlowRequest {
 }
 
 type DeleteFlowResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the operation was successful. Valid values: **true**: The operation was successful. **false**: The operation failed.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DeleteFlowResponseBody) String() string {
@@ -250,6 +275,7 @@ func (s *DeleteFlowResponse) SetBody(v *DeleteFlowResponseBody) *DeleteFlowRespo
 }
 
 type DisableFlowRequest struct {
+	// The ID of the workflow that you want to disable.
 	FlowId *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
 }
 
@@ -267,9 +293,18 @@ func (s *DisableFlowRequest) SetFlowId(v string) *DisableFlowRequest {
 }
 
 type DisableFlowResponseBody struct {
+	// The status of the workflow.
+	//
+	// *   **Enabled**: The workflow is enabled.
+	// *   **Disabled**: The workflow is disabled.
 	FlowStatus *string `json:"FlowStatus,omitempty" xml:"FlowStatus,omitempty"`
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success    *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the operation was successful.
+	//
+	// *   **true**: The operation was successful.
+	// *   **false**: The operation failed.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DisableFlowResponseBody) String() string {
@@ -325,6 +360,7 @@ func (s *DisableFlowResponse) SetBody(v *DisableFlowResponseBody) *DisableFlowRe
 }
 
 type EnableFlowRequest struct {
+	// The ID of the workflow that you want to enable.
 	FlowId *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
 }
 
@@ -342,9 +378,18 @@ func (s *EnableFlowRequest) SetFlowId(v string) *EnableFlowRequest {
 }
 
 type EnableFlowResponseBody struct {
+	// The status of the workflow. Valid values:
+	//
+	// *   **Enabled**: The workflow is enabled.
+	// *   **Disabled**: The workflow is disabled.
 	FlowStatus *string `json:"FlowStatus,omitempty" xml:"FlowStatus,omitempty"`
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success    *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the operation was successful. Valid values:
+	//
+	// *   **true**: The operation was successful.
+	// *   **false**: The operation failed.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s EnableFlowResponseBody) String() string {
@@ -400,6 +445,7 @@ func (s *EnableFlowResponse) SetBody(v *EnableFlowResponseBody) *EnableFlowRespo
 }
 
 type GetFlowRequest struct {
+	// The ID of the workflow.
 	FlowId *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
 }
 
@@ -417,19 +463,37 @@ func (s *GetFlowRequest) SetFlowId(v string) *GetFlowRequest {
 }
 
 type GetFlowResponseBody struct {
-	CreateTime       *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	CurrentVersionId *int32  `json:"CurrentVersionId,omitempty" xml:"CurrentVersionId,omitempty"`
-	Definition       *string `json:"Definition,omitempty" xml:"Definition,omitempty"`
-	FlowDescription  *string `json:"FlowDescription,omitempty" xml:"FlowDescription,omitempty"`
-	FlowEditMode     *string `json:"FlowEditMode,omitempty" xml:"FlowEditMode,omitempty"`
-	FlowId           *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
-	FlowName         *string `json:"FlowName,omitempty" xml:"FlowName,omitempty"`
-	FlowSource       *string `json:"FlowSource,omitempty" xml:"FlowSource,omitempty"`
-	FlowStatus       *string `json:"FlowStatus,omitempty" xml:"FlowStatus,omitempty"`
-	RegionId         *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RequestId        *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TemplateId       *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	UpdateTime       *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The time when the workflow was created.
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The version ID of the workflow.
+	CurrentVersionId *string `json:"CurrentVersionId,omitempty" xml:"CurrentVersionId,omitempty"`
+	// The definition of the workflow.
+	Definition *string `json:"Definition,omitempty" xml:"Definition,omitempty"`
+	// The description of the workflow.
+	FlowDescription *string `json:"FlowDescription,omitempty" xml:"FlowDescription,omitempty"`
+	// The edit mode of the workflow.
+	FlowEditMode *string `json:"FlowEditMode,omitempty" xml:"FlowEditMode,omitempty"`
+	// The ID of the workflow.
+	FlowId *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
+	// The name of the workflow.
+	FlowName *string `json:"FlowName,omitempty" xml:"FlowName,omitempty"`
+	// The source of the workflow.
+	FlowSource *string `json:"FlowSource,omitempty" xml:"FlowSource,omitempty"`
+	// The status of the workflow. Valid values:
+	//
+	// *   **Enabled**: The workflow is enabled.
+	// *   **Disabled**: The workflow is disabled.
+	FlowStatus *string `json:"FlowStatus,omitempty" xml:"FlowStatus,omitempty"`
+	// The ID of the region where the workflow resides.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The resource group ID.
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The template ID.
+	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// The time when the workflow was last updated.
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s GetFlowResponseBody) String() string {
@@ -445,7 +509,7 @@ func (s *GetFlowResponseBody) SetCreateTime(v string) *GetFlowResponseBody {
 	return s
 }
 
-func (s *GetFlowResponseBody) SetCurrentVersionId(v int32) *GetFlowResponseBody {
+func (s *GetFlowResponseBody) SetCurrentVersionId(v string) *GetFlowResponseBody {
 	s.CurrentVersionId = &v
 	return s
 }
@@ -495,6 +559,11 @@ func (s *GetFlowResponseBody) SetRequestId(v string) *GetFlowResponseBody {
 	return s
 }
 
+func (s *GetFlowResponseBody) SetResourceGroupId(v string) *GetFlowResponseBody {
+	s.ResourceGroupId = &v
+	return s
+}
+
 func (s *GetFlowResponseBody) SetTemplateId(v string) *GetFlowResponseBody {
 	s.TemplateId = &v
 	return s
@@ -535,6 +604,7 @@ func (s *GetFlowResponse) SetBody(v *GetFlowResponseBody) *GetFlowResponse {
 }
 
 type GetTemplateRequest struct {
+	// The ID of the template.
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 }
 
@@ -552,22 +622,38 @@ func (s *GetTemplateRequest) SetTemplateId(v string) *GetTemplateRequest {
 }
 
 type GetTemplateResponseBody struct {
-	CreateTime          *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Definition          *string `json:"Definition,omitempty" xml:"Definition,omitempty"`
-	RegionId            *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RequestId           *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TemplateConnector   *string `json:"TemplateConnector,omitempty" xml:"TemplateConnector,omitempty"`
-	TemplateCreator     *string `json:"TemplateCreator,omitempty" xml:"TemplateCreator,omitempty"`
+	// The time when the template was created.
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The definition of the template.
+	Definition *string `json:"Definition,omitempty" xml:"Definition,omitempty"`
+	// The region where the template resides.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// A list of connectors that are used in the template. The connectors are separated by commas.
+	TemplateConnector *string `json:"TemplateConnector,omitempty" xml:"TemplateConnector,omitempty"`
+	// The publisher of the template.
+	TemplateCreator *string `json:"TemplateCreator,omitempty" xml:"TemplateCreator,omitempty"`
+	// A description of the template.
 	TemplateDescription *string `json:"TemplateDescription,omitempty" xml:"TemplateDescription,omitempty"`
-	TemplateId          *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	TemplateLocale      *string `json:"TemplateLocale,omitempty" xml:"TemplateLocale,omitempty"`
-	TemplateName        *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
-	TemplateOverview    *string `json:"TemplateOverview,omitempty" xml:"TemplateOverview,omitempty"`
-	TemplateSummary     *string `json:"TemplateSummary,omitempty" xml:"TemplateSummary,omitempty"`
-	TemplateSummaryEn   *string `json:"TemplateSummaryEn,omitempty" xml:"TemplateSummaryEn,omitempty"`
-	TemplateTag         *string `json:"TemplateTag,omitempty" xml:"TemplateTag,omitempty"`
-	TemplateVersion     *int32  `json:"TemplateVersion,omitempty" xml:"TemplateVersion,omitempty"`
-	UpdateTime          *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The ID of the template.
+	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// The language that is used in the template. Chinese and English are supported.
+	TemplateLocale *string `json:"TemplateLocale,omitempty" xml:"TemplateLocale,omitempty"`
+	// The name of the template.
+	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	// An overview of the template, which is a JSON string.
+	TemplateOverview *string `json:"TemplateOverview,omitempty" xml:"TemplateOverview,omitempty"`
+	// A brief introduction to the template.
+	TemplateSummary *string `json:"TemplateSummary,omitempty" xml:"TemplateSummary,omitempty"`
+	// A brief introduction to the template.
+	TemplateSummaryEn *string `json:"TemplateSummaryEn,omitempty" xml:"TemplateSummaryEn,omitempty"`
+	// The tag of the template.
+	TemplateTag *string `json:"TemplateTag,omitempty" xml:"TemplateTag,omitempty"`
+	// The version of the template, which is a number that increments from 0.
+	TemplateVersion *int32 `json:"TemplateVersion,omitempty" xml:"TemplateVersion,omitempty"`
+	// The time when the template was last updated.
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s GetTemplateResponseBody) String() string {
@@ -688,7 +774,9 @@ func (s *GetTemplateResponse) SetBody(v *GetTemplateResponseBody) *GetTemplateRe
 }
 
 type GetVersionRequest struct {
-	FlowId    *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
+	// The ID of the workflow.
+	FlowId *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
+	// The ID of the version.
 	VersionId *string `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
 }
 
@@ -711,16 +799,26 @@ func (s *GetVersionRequest) SetVersionId(v string) *GetVersionRequest {
 }
 
 type GetVersionResponseBody struct {
-	CreateTime         *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Definition         *string `json:"Definition,omitempty" xml:"Definition,omitempty"`
-	FlowId             *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
-	RegionId           *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RequestId          *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	UpdateTime         *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The time when the version was created.
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The definition of the workflow to which the version belongs.
+	Definition *string `json:"Definition,omitempty" xml:"Definition,omitempty"`
+	// The ID of the workflow to which the version belongs.
+	FlowId *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
+	// The region where the workflow resides.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The time when the version was last updated.
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The description of the version.
 	VersionDescription *string `json:"VersionDescription,omitempty" xml:"VersionDescription,omitempty"`
-	VersionId          *string `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
-	VersionName        *string `json:"VersionName,omitempty" xml:"VersionName,omitempty"`
-	VersionStatus      *string `json:"VersionStatus,omitempty" xml:"VersionStatus,omitempty"`
+	// The ID of the version.
+	VersionId *string `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
+	// The name of the version.
+	VersionName *string `json:"VersionName,omitempty" xml:"VersionName,omitempty"`
+	// The status of the version. **Enabled** indicates that the version is enabled.
+	VersionStatus *string `json:"VersionStatus,omitempty" xml:"VersionStatus,omitempty"`
 }
 
 func (s GetVersionResponseBody) String() string {
@@ -811,12 +909,18 @@ func (s *GetVersionResponse) SetBody(v *GetVersionResponseBody) *GetVersionRespo
 }
 
 type GroupInvokeFlowRequest struct {
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can only contain ASCII characters and cannot exceed 64 characters in length.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	Data        *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	FlowId      *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
-	GroupKey    *string `json:"GroupKey,omitempty" xml:"GroupKey,omitempty"`
-	Tags        *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	TotalCount  *int32  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The information required by the group execution. Set this parameter to a JSON array of strings in the following format:`{"Items": []}`. Each string provides the information required by one time of execution. The string must use the format of the Data parameter in the InvokeFlow operation.
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The ID of the workflow that you want to execute.
+	FlowId *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
+	// The name of the group. The name must be unique among the groups.
+	GroupKey *string `json:"GroupKey,omitempty" xml:"GroupKey,omitempty"`
+	// The tag that is attached to each time of execution. The value is a JSON array. The number of tags in the array is the same as the value of the TotalCount parameter.
+	Tags *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// The number of times of execution. The value must be the same as the number of strings in the value of the Data parameter.
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s GroupInvokeFlowRequest) String() string {
@@ -858,11 +962,30 @@ func (s *GroupInvokeFlowRequest) SetTotalCount(v int32) *GroupInvokeFlowRequest 
 }
 
 type GroupInvokeFlowResponseBody struct {
-	CurrentCount      *int32  `json:"CurrentCount,omitempty" xml:"CurrentCount,omitempty"`
+	// The number of times of execution that are pending.
+	CurrentCount *int32 `json:"CurrentCount,omitempty" xml:"CurrentCount,omitempty"`
+	// The unique identifier of the execution.
 	GroupInvocationId *string `json:"GroupInvocationId,omitempty" xml:"GroupInvocationId,omitempty"`
-	RequestId         *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Status            *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	Success           *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The status of the group. Valid values:
+	//
+	// *   New: The group is created and waiting to be executed.
+	// *   Started: The group is being executed.
+	// *   Canceled: The group was canceled.
+	// *   Failed: The execution failed.
+	// *   Completed: All the times of execution in the group are complete.
+	// *   Unknown: The group status is uncertain. In this case, a system error may occur.
+	// *   TimedOut: The execution timed out.
+	// *   Paused: The execution was suspended.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Indicates whether the operation was successful.
+	//
+	// *   **true**: The workflow execution is triggered.
+	// *   **false**: The workflow execution failed to be triggered.
+	//
+	// > : You can call the **GetInvocationLog** operation to check whether the workflow execution is successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GroupInvokeFlowResponseBody) String() string {
@@ -928,10 +1051,14 @@ func (s *GroupInvokeFlowResponse) SetBody(v *GroupInvokeFlowResponseBody) *Group
 }
 
 type InvokeFlowRequest struct {
+	// The token that is used to guarantee idempotence to avoid repeated operations.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	Data        *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	FlowId      *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
-	Parameters  *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
+	// The data for invoking the workflow.
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The parameters required by the template, which must be in JSON format.
+	FlowId *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
+	// The input parameters required by the trigger of the workflow execution, which must be in JSON format.
+	Parameters *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
 }
 
 func (s InvokeFlowRequest) String() string {
@@ -963,9 +1090,17 @@ func (s *InvokeFlowRequest) SetParameters(v string) *InvokeFlowRequest {
 }
 
 type InvokeFlowResponseBody struct {
+	// The unique identifier of the execution.
 	InvocationId *string `json:"InvocationId,omitempty" xml:"InvocationId,omitempty"`
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The ID for this request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the workflow execution was triggered.
+	//
+	// *   **true**: The workflow execution was triggered
+	// *   **false**: The workflow execution failed to be triggered.
+	//
+	// > : You can call the **GetInvocationLog** operation to check whether the workflow execution is successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s InvokeFlowResponseBody) String() string {
@@ -1021,10 +1156,16 @@ func (s *InvokeFlowResponse) SetBody(v *InvokeFlowResponseBody) *InvokeFlowRespo
 }
 
 type ListFlowsRequest struct {
-	Filter     *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
-	FlowName   *string `json:"FlowName,omitempty" xml:"FlowName,omitempty"`
-	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The filter condition, which is in the JSON format of {"key":"value"}. Example: {"key1":"value1"}
+	Filter *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
+	// The name of the workflow.
+	FlowName *string `json:"FlowName,omitempty" xml:"FlowName,omitempty"`
+	// The page number of the current page. Minimum value: 1. Default value: 1.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// Specifies the number of workflows to return on each page. A page can contain a maximum of 100 workflows. Default value: 10.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the resource group.
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
 func (s ListFlowsRequest) String() string {
@@ -1055,10 +1196,18 @@ func (s *ListFlowsRequest) SetPageSize(v int32) *ListFlowsRequest {
 	return s
 }
 
+func (s *ListFlowsRequest) SetResourceGroupId(v string) *ListFlowsRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
 type ListFlowsResponseBody struct {
-	Flows      []*ListFlowsResponseBodyFlows `json:"Flows,omitempty" xml:"Flows,omitempty" type:"Repeated"`
-	RequestId  *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *int32                        `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// A list of workflows.
+	Flows []*ListFlowsResponseBodyFlows `json:"Flows,omitempty" xml:"Flows,omitempty" type:"Repeated"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of workflows in the current region.
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListFlowsResponseBody) String() string {
@@ -1085,17 +1234,33 @@ func (s *ListFlowsResponseBody) SetTotalCount(v int32) *ListFlowsResponseBody {
 }
 
 type ListFlowsResponseBodyFlows struct {
-	CreateTime      *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The time when the workflow was created.
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The description of the workflow.
 	FlowDescription *string `json:"FlowDescription,omitempty" xml:"FlowDescription,omitempty"`
-	FlowEditMode    *string `json:"FlowEditMode,omitempty" xml:"FlowEditMode,omitempty"`
-	FlowId          *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
-	FlowName        *string `json:"FlowName,omitempty" xml:"FlowName,omitempty"`
-	FlowSource      *string `json:"FlowSource,omitempty" xml:"FlowSource,omitempty"`
-	FlowStatus      *string `json:"FlowStatus,omitempty" xml:"FlowStatus,omitempty"`
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	TemplateId      *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	UpdateTime      *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	VersionId       *int32  `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
+	// The edit mode of the workflow.
+	FlowEditMode *string `json:"FlowEditMode,omitempty" xml:"FlowEditMode,omitempty"`
+	// The ID of the workflow.
+	FlowId *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
+	// The name of the workflow.
+	FlowName *string `json:"FlowName,omitempty" xml:"FlowName,omitempty"`
+	// The source of the workflow.
+	FlowSource *string `json:"FlowSource,omitempty" xml:"FlowSource,omitempty"`
+	// The status of the workflow. Valid values:
+	//
+	// *   **Enabled**: The workflow is enabled.
+	// *   **Disabled**: The workflow is disabled.
+	FlowStatus *string `json:"FlowStatus,omitempty" xml:"FlowStatus,omitempty"`
+	// The region to which the workflow belongs.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the resource group.
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The template ID. You can call the ListTemplates operation to obtain the template ID.
+	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// The time when the workflow was last updated.
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The latest version of the workflow.
+	VersionId *string `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
 }
 
 func (s ListFlowsResponseBodyFlows) String() string {
@@ -1146,6 +1311,11 @@ func (s *ListFlowsResponseBodyFlows) SetRegionId(v string) *ListFlowsResponseBod
 	return s
 }
 
+func (s *ListFlowsResponseBodyFlows) SetResourceGroupId(v string) *ListFlowsResponseBodyFlows {
+	s.ResourceGroupId = &v
+	return s
+}
+
 func (s *ListFlowsResponseBodyFlows) SetTemplateId(v string) *ListFlowsResponseBodyFlows {
 	s.TemplateId = &v
 	return s
@@ -1156,7 +1326,7 @@ func (s *ListFlowsResponseBodyFlows) SetUpdateTime(v string) *ListFlowsResponseB
 	return s
 }
 
-func (s *ListFlowsResponseBodyFlows) SetVersionId(v int32) *ListFlowsResponseBodyFlows {
+func (s *ListFlowsResponseBodyFlows) SetVersionId(v string) *ListFlowsResponseBodyFlows {
 	s.VersionId = &v
 	return s
 }
@@ -1191,11 +1361,18 @@ func (s *ListFlowsResponse) SetBody(v *ListFlowsResponseBody) *ListFlowsResponse
 }
 
 type ListTagResourcesRequest struct {
-	MaxResults   *int32                        `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken    *string                       `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	ResourceId   []*string                     `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
-	ResourceType *string                       `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	Tag          []*ListTagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	// The maximum number of results to return on each page.
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token that is used to start the next query.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// A list of resource IDs.
+	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	// The type of the resources. Set the value to ALIYUN::LC::FLOW.
+	//
+	// *   ALIYUN::LC::FLOW indicates Logic Composer workflows.
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// A list of tags that are attached to the resources. A list can contain a maximum of 20 tags.
+	Tag []*ListTagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s ListTagResourcesRequest) String() string {
@@ -1232,7 +1409,9 @@ func (s *ListTagResourcesRequest) SetTag(v []*ListTagResourcesRequestTag) *ListT
 }
 
 type ListTagResourcesRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The key of the tag.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of the tag.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -1255,10 +1434,14 @@ func (s *ListTagResourcesRequestTag) SetValue(v string) *ListTagResourcesRequest
 }
 
 type ListTagResourcesResponseBody struct {
-	NextToken    *string                                     `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	RequestId    *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The token that is used to start the next query.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The mappings between resources and tags.
 	TagResources []*ListTagResourcesResponseBodyTagResources `json:"TagResources,omitempty" xml:"TagResources,omitempty" type:"Repeated"`
-	TotalCount   *int32                                      `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The total number of resources.
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListTagResourcesResponseBody) String() string {
@@ -1290,10 +1473,16 @@ func (s *ListTagResourcesResponseBody) SetTotalCount(v int32) *ListTagResourcesR
 }
 
 type ListTagResourcesResponseBodyTagResources struct {
-	ResourceId   *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The ID of the resource.
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The type of the resource.
+	//
+	// *   Valid value: ALIYUN::LC::FLOW
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	TagKey       *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	TagValue     *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+	// The key of the tag.
+	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The value of the tag.
+	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 
 func (s ListTagResourcesResponseBodyTagResources) String() string {
@@ -1354,11 +1543,16 @@ func (s *ListTagResourcesResponse) SetBody(v *ListTagResourcesResponseBody) *Lis
 }
 
 type ListTemplatesRequest struct {
-	Lang       *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Tag        *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	// The language that is used in the templates.
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The keyword that is used to search for templates. This parameter is invalid if you specify a tag.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The page number of current page.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of templates on each page. A page can contain a maximum of 100 templates. Default value: 10.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The tag that is used to search for templates.
+	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
 }
 
 func (s ListTemplatesRequest) String() string {
@@ -1395,9 +1589,12 @@ func (s *ListTemplatesRequest) SetTag(v string) *ListTemplatesRequest {
 }
 
 type ListTemplatesResponseBody struct {
-	RequestId  *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Templates  []*ListTemplatesResponseBodyTemplates `json:"Templates,omitempty" xml:"Templates,omitempty" type:"Repeated"`
-	TotalCount *int32                                `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The unique identifier of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// A list of templates.
+	Templates []*ListTemplatesResponseBodyTemplates `json:"Templates,omitempty" xml:"Templates,omitempty" type:"Repeated"`
+	// The total number of templates.
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListTemplatesResponseBody) String() string {
@@ -1424,19 +1621,32 @@ func (s *ListTemplatesResponseBody) SetTotalCount(v int32) *ListTemplatesRespons
 }
 
 type ListTemplatesResponseBodyTemplates struct {
-	CreateTime          *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	TemplateConnector   *string `json:"TemplateConnector,omitempty" xml:"TemplateConnector,omitempty"`
-	TemplateCreator     *string `json:"TemplateCreator,omitempty" xml:"TemplateCreator,omitempty"`
+	// The time when the template was created.
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// A list of connectors that are used in the template. The connectors are separated by commas.
+	TemplateConnector *string `json:"TemplateConnector,omitempty" xml:"TemplateConnector,omitempty"`
+	// The publisher of the template.
+	TemplateCreator *string `json:"TemplateCreator,omitempty" xml:"TemplateCreator,omitempty"`
+	// A brief introduction to the template.
 	TemplateDescription *string `json:"TemplateDescription,omitempty" xml:"TemplateDescription,omitempty"`
-	TemplateId          *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	TemplateLocale      *string `json:"TemplateLocale,omitempty" xml:"TemplateLocale,omitempty"`
-	TemplateName        *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
-	TemplateOverview    *string `json:"TemplateOverview,omitempty" xml:"TemplateOverview,omitempty"`
-	TemplateSummary     *string `json:"TemplateSummary,omitempty" xml:"TemplateSummary,omitempty"`
-	TemplateSummaryEn   *string `json:"TemplateSummaryEn,omitempty" xml:"TemplateSummaryEn,omitempty"`
-	TemplateTag         *string `json:"TemplateTag,omitempty" xml:"TemplateTag,omitempty"`
-	TemplateVersion     *int32  `json:"TemplateVersion,omitempty" xml:"TemplateVersion,omitempty"`
-	UpdateTime          *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The ID of the template.
+	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// The language that is used in the template. Chinese and English are supported.
+	TemplateLocale *string `json:"TemplateLocale,omitempty" xml:"TemplateLocale,omitempty"`
+	// The name of the template.
+	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	// An overview of the template, which is a JSON string.
+	TemplateOverview *string `json:"TemplateOverview,omitempty" xml:"TemplateOverview,omitempty"`
+	// A description of the template.
+	TemplateSummary *string `json:"TemplateSummary,omitempty" xml:"TemplateSummary,omitempty"`
+	// A brief introduction to the template.
+	TemplateSummaryEn *string `json:"TemplateSummaryEn,omitempty" xml:"TemplateSummaryEn,omitempty"`
+	// The tag of the template.
+	TemplateTag *string `json:"TemplateTag,omitempty" xml:"TemplateTag,omitempty"`
+	// The version of the template, which is a number that increments from 0.
+	TemplateVersion *int32 `json:"TemplateVersion,omitempty" xml:"TemplateVersion,omitempty"`
+	// The time when the template was last updated.
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s ListTemplatesResponseBodyTemplates) String() string {
@@ -1542,9 +1752,12 @@ func (s *ListTemplatesResponse) SetBody(v *ListTemplatesResponseBody) *ListTempl
 }
 
 type ListVersionsRequest struct {
-	FlowId     *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
-	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the workflow whose versions you want to query.
+	FlowId *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
+	// The page number of the page to return. The value must be an integer that is greater than 0. Default value: 1.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of versions to return on each page. One page contains a maximum of 100 versions. Default value: 10.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
 func (s ListVersionsRequest) String() string {
@@ -1571,9 +1784,12 @@ func (s *ListVersionsRequest) SetPageSize(v int32) *ListVersionsRequest {
 }
 
 type ListVersionsResponseBody struct {
-	RequestId  *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *int32                              `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	Versions   []*ListVersionsResponseBodyVersions `json:"Versions,omitempty" xml:"Versions,omitempty" type:"Repeated"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of versions of the workflow.
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// A list of the versions.
+	Versions []*ListVersionsResponseBodyVersions `json:"Versions,omitempty" xml:"Versions,omitempty" type:"Repeated"`
 }
 
 func (s ListVersionsResponseBody) String() string {
@@ -1600,12 +1816,20 @@ func (s *ListVersionsResponseBody) SetVersions(v []*ListVersionsResponseBodyVers
 }
 
 type ListVersionsResponseBodyVersions struct {
-	CreateTime    *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	FlowId        *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
-	UpdateTime    *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	VersionId     *string `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
-	VersionName   *int32  `json:"VersionName,omitempty" xml:"VersionName,omitempty"`
-	VersionStatus *int32  `json:"VersionStatus,omitempty" xml:"VersionStatus,omitempty"`
+	// The time when the version was created.
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The ID of the workflow to which the version belongs.
+	FlowId *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
+	// The time when the version was last updated.
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The ID of the version.
+	VersionId *string `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
+	// The name of the version.
+	VersionName *string `json:"VersionName,omitempty" xml:"VersionName,omitempty"`
+	// The number of the version. Increment from 1.
+	VersionNumber *int32 `json:"VersionNumber,omitempty" xml:"VersionNumber,omitempty"`
+	// The status of the version. **Enabled** indicates that the version is enabled.
+	VersionStatus *string `json:"VersionStatus,omitempty" xml:"VersionStatus,omitempty"`
 }
 
 func (s ListVersionsResponseBodyVersions) String() string {
@@ -1636,12 +1860,17 @@ func (s *ListVersionsResponseBodyVersions) SetVersionId(v string) *ListVersionsR
 	return s
 }
 
-func (s *ListVersionsResponseBodyVersions) SetVersionName(v int32) *ListVersionsResponseBodyVersions {
+func (s *ListVersionsResponseBodyVersions) SetVersionName(v string) *ListVersionsResponseBodyVersions {
 	s.VersionName = &v
 	return s
 }
 
-func (s *ListVersionsResponseBodyVersions) SetVersionStatus(v int32) *ListVersionsResponseBodyVersions {
+func (s *ListVersionsResponseBodyVersions) SetVersionNumber(v int32) *ListVersionsResponseBodyVersions {
+	s.VersionNumber = &v
+	return s
+}
+
+func (s *ListVersionsResponseBodyVersions) SetVersionStatus(v string) *ListVersionsResponseBodyVersions {
 	s.VersionStatus = &v
 	return s
 }
@@ -1676,9 +1905,14 @@ func (s *ListVersionsResponse) SetBody(v *ListVersionsResponseBody) *ListVersion
 }
 
 type TagResourcesRequest struct {
-	ResourceId   []*string                 `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
-	ResourceType *string                   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	Tag          []*TagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	// Specifies a maximum of 50 resource IDs.
+	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	// The type of the resources. Set the value to ALIYUN::LC::FLOW.
+	//
+	// *   ALIYUN::LC::FLOW indicates Logic Composer workflows.
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// Specifies a list of tags that you want to attach to the resources.
+	Tag []*TagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s TagResourcesRequest) String() string {
@@ -1705,7 +1939,9 @@ func (s *TagResourcesRequest) SetTag(v []*TagResourcesRequestTag) *TagResourcesR
 }
 
 type TagResourcesRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The key of the tag.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of the tag.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -1728,8 +1964,10 @@ func (s *TagResourcesRequestTag) SetValue(v string) *TagResourcesRequestTag {
 }
 
 type TagResourcesResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request was successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s TagResourcesResponseBody) String() string {
@@ -1780,10 +2018,16 @@ func (s *TagResourcesResponse) SetBody(v *TagResourcesResponseBody) *TagResource
 }
 
 type UntagResourcesRequest struct {
-	All          *bool     `json:"All,omitempty" xml:"All,omitempty"`
-	ResourceId   []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
-	ResourceType *string   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	TagKey       []*string `json:"TagKey,omitempty" xml:"TagKey,omitempty" type:"Repeated"`
+	// 系统规定参数。取值：UntagResources。
+	All *bool `json:"All,omitempty" xml:"All,omitempty"`
+	// The type of the resources. Set the value to ALIYUN::LC::FLOW.
+	//
+	// *   ALIYUN::LC::FLOW indicates Logic Composer workflows.
+	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	// system
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// Specifies a maximum of 50 resource IDs.
+	TagKey []*string `json:"TagKey,omitempty" xml:"TagKey,omitempty" type:"Repeated"`
 }
 
 func (s UntagResourcesRequest) String() string {
@@ -1815,8 +2059,10 @@ func (s *UntagResourcesRequest) SetTagKey(v []*string) *UntagResourcesRequest {
 }
 
 type UntagResourcesResponseBody struct {
+	// Indicates whether the call was successful.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The ID of the request.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s UntagResourcesResponseBody) String() string {
@@ -1867,10 +2113,14 @@ func (s *UntagResourcesResponse) SetBody(v *UntagResourcesResponseBody) *UntagRe
 }
 
 type UpdateFlowRequest struct {
-	Definition      *string `json:"Definition,omitempty" xml:"Definition,omitempty"`
+	// The new definition that you want to specify for the workflow.
+	Definition *string `json:"Definition,omitempty" xml:"Definition,omitempty"`
+	// The new description that you want to specify for the workflow.
 	FlowDescription *string `json:"FlowDescription,omitempty" xml:"FlowDescription,omitempty"`
-	FlowId          *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
-	FlowName        *string `json:"FlowName,omitempty" xml:"FlowName,omitempty"`
+	// The ID of the workflow whose information you want to update.
+	FlowId *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
+	// The new name that you want to specify for the workflow.
+	FlowName *string `json:"FlowName,omitempty" xml:"FlowName,omitempty"`
 }
 
 func (s UpdateFlowRequest) String() string {
@@ -1902,9 +2152,15 @@ func (s *UpdateFlowRequest) SetFlowName(v string) *UpdateFlowRequest {
 }
 
 type UpdateFlowResponseBody struct {
-	CurrentVersionId *int32  `json:"CurrentVersionId,omitempty" xml:"CurrentVersionId,omitempty"`
-	RequestId        *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success          *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The version ID of the workflow after the update.
+	CurrentVersionId *int32 `json:"CurrentVersionId,omitempty" xml:"CurrentVersionId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the operation was successful. Valid values:
+	//
+	// *   **true**: The operation was successful.
+	// *   **false**: The operation failed.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s UpdateFlowResponseBody) String() string {
@@ -2006,6 +2262,14 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+/**
+ * @deprecated
+ *
+ * @param request CloneFlowRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return CloneFlowResponse
+ */
+// Deprecated
 func (client *Client) CloneFlowWithOptions(request *CloneFlowRequest, runtime *util.RuntimeOptions) (_result *CloneFlowResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2043,6 +2307,13 @@ func (client *Client) CloneFlowWithOptions(request *CloneFlowRequest, runtime *u
 	return _result, _err
 }
 
+/**
+ * @deprecated
+ *
+ * @param request CloneFlowRequest
+ * @return CloneFlowResponse
+ */
+// Deprecated
 func (client *Client) CloneFlow(request *CloneFlowRequest) (_result *CloneFlowResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CloneFlowResponse{}
@@ -2054,6 +2325,13 @@ func (client *Client) CloneFlow(request *CloneFlowRequest) (_result *CloneFlowRe
 	return _result, _err
 }
 
+/**
+ * After you create a workflow, the system automatically creates a version for the workflow. You can call the GetVersion operation to obtain the version information.
+ *
+ * @param request CreateFlowRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return CreateFlowResponse
+ */
 func (client *Client) CreateFlowWithOptions(request *CreateFlowRequest, runtime *util.RuntimeOptions) (_result *CreateFlowResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2074,6 +2352,10 @@ func (client *Client) CreateFlowWithOptions(request *CreateFlowRequest, runtime 
 
 	if !tea.BoolValue(util.IsUnset(request.FlowSource)) {
 		body["FlowSource"] = request.FlowSource
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		body["ResourceGroupId"] = request.ResourceGroupId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.TemplateId)) {
@@ -2103,6 +2385,12 @@ func (client *Client) CreateFlowWithOptions(request *CreateFlowRequest, runtime 
 	return _result, _err
 }
 
+/**
+ * After you create a workflow, the system automatically creates a version for the workflow. You can call the GetVersion operation to obtain the version information.
+ *
+ * @param request CreateFlowRequest
+ * @return CreateFlowResponse
+ */
 func (client *Client) CreateFlow(request *CreateFlowRequest) (_result *CreateFlowResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateFlowResponse{}
@@ -2114,6 +2402,13 @@ func (client *Client) CreateFlow(request *CreateFlowRequest) (_result *CreateFlo
 	return _result, _err
 }
 
+/**
+ * If you delete a workflow, all the versions and execution records of the workflow are automatically deleted.
+ *
+ * @param request DeleteFlowRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DeleteFlowResponse
+ */
 func (client *Client) DeleteFlowWithOptions(request *DeleteFlowRequest, runtime *util.RuntimeOptions) (_result *DeleteFlowResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2147,6 +2442,12 @@ func (client *Client) DeleteFlowWithOptions(request *DeleteFlowRequest, runtime 
 	return _result, _err
 }
 
+/**
+ * If you delete a workflow, all the versions and execution records of the workflow are automatically deleted.
+ *
+ * @param request DeleteFlowRequest
+ * @return DeleteFlowResponse
+ */
 func (client *Client) DeleteFlow(request *DeleteFlowRequest) (_result *DeleteFlowResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteFlowResponse{}
@@ -2382,6 +2683,15 @@ func (client *Client) GetVersion(request *GetVersionRequest) (_result *GetVersio
 	return _result, _err
 }
 
+/**
+ * *   You can call this operation to trigger a workflow to be executed more than 100 times per second. If the desired execution frequency does not exceed 100 times per second, we recommend that you call the InvokeFlow operation.
+ * *   However, you may need to call the GroupInvokeFlow operation multiple times. For example, assume that you want a workflow to be executed 1,000 times per second and the 1,000 times of execution are divided into ten groups. You need to call the operation ten times for the ten groups and specify a group key for each group.
+ * *   Each call corresponds to a group execution. Logic Composer automatically determines when a group execution starts. You must set the Data parameter to a JSON array of strings to specify the information required by the execution. Each string provides the information required by one time of execution. The string must use the format of the Data parameter in the InvokeFlow operation.
+ *
+ * @param request GroupInvokeFlowRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return GroupInvokeFlowResponse
+ */
 func (client *Client) GroupInvokeFlowWithOptions(request *GroupInvokeFlowRequest, runtime *util.RuntimeOptions) (_result *GroupInvokeFlowResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2437,6 +2747,14 @@ func (client *Client) GroupInvokeFlowWithOptions(request *GroupInvokeFlowRequest
 	return _result, _err
 }
 
+/**
+ * *   You can call this operation to trigger a workflow to be executed more than 100 times per second. If the desired execution frequency does not exceed 100 times per second, we recommend that you call the InvokeFlow operation.
+ * *   However, you may need to call the GroupInvokeFlow operation multiple times. For example, assume that you want a workflow to be executed 1,000 times per second and the 1,000 times of execution are divided into ten groups. You need to call the operation ten times for the ten groups and specify a group key for each group.
+ * *   Each call corresponds to a group execution. Logic Composer automatically determines when a group execution starts. You must set the Data parameter to a JSON array of strings to specify the information required by the execution. Each string provides the information required by one time of execution. The string must use the format of the Data parameter in the InvokeFlow operation.
+ *
+ * @param request GroupInvokeFlowRequest
+ * @return GroupInvokeFlowResponse
+ */
 func (client *Client) GroupInvokeFlow(request *GroupInvokeFlowRequest) (_result *GroupInvokeFlowResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GroupInvokeFlowResponse{}
@@ -2524,6 +2842,10 @@ func (client *Client) ListFlowsWithOptions(request *ListFlowsRequest, runtime *u
 
 	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
 		body["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		body["ResourceGroupId"] = request.ResourceGroupId
 	}
 
 	req := &openapi.OpenApiRequest{
