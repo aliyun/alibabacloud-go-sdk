@@ -447,6 +447,76 @@ func (s *BatchAddFacesRequestFaces) SetImageURL(v string) *BatchAddFacesRequestF
 	return s
 }
 
+type BatchAddFacesAdvanceRequest struct {
+	DbName                                *string                             `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	EntityId                              *string                             `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
+	Faces                                 []*BatchAddFacesAdvanceRequestFaces `json:"Faces,omitempty" xml:"Faces,omitempty" type:"Repeated"`
+	QualityScoreThreshold                 *float32                            `json:"QualityScoreThreshold,omitempty" xml:"QualityScoreThreshold,omitempty"`
+	SimilarityScoreThresholdBetweenEntity *float32                            `json:"SimilarityScoreThresholdBetweenEntity,omitempty" xml:"SimilarityScoreThresholdBetweenEntity,omitempty"`
+	SimilarityScoreThresholdInEntity      *float32                            `json:"SimilarityScoreThresholdInEntity,omitempty" xml:"SimilarityScoreThresholdInEntity,omitempty"`
+}
+
+func (s BatchAddFacesAdvanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchAddFacesAdvanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *BatchAddFacesAdvanceRequest) SetDbName(v string) *BatchAddFacesAdvanceRequest {
+	s.DbName = &v
+	return s
+}
+
+func (s *BatchAddFacesAdvanceRequest) SetEntityId(v string) *BatchAddFacesAdvanceRequest {
+	s.EntityId = &v
+	return s
+}
+
+func (s *BatchAddFacesAdvanceRequest) SetFaces(v []*BatchAddFacesAdvanceRequestFaces) *BatchAddFacesAdvanceRequest {
+	s.Faces = v
+	return s
+}
+
+func (s *BatchAddFacesAdvanceRequest) SetQualityScoreThreshold(v float32) *BatchAddFacesAdvanceRequest {
+	s.QualityScoreThreshold = &v
+	return s
+}
+
+func (s *BatchAddFacesAdvanceRequest) SetSimilarityScoreThresholdBetweenEntity(v float32) *BatchAddFacesAdvanceRequest {
+	s.SimilarityScoreThresholdBetweenEntity = &v
+	return s
+}
+
+func (s *BatchAddFacesAdvanceRequest) SetSimilarityScoreThresholdInEntity(v float32) *BatchAddFacesAdvanceRequest {
+	s.SimilarityScoreThresholdInEntity = &v
+	return s
+}
+
+type BatchAddFacesAdvanceRequestFaces struct {
+	ExtraData      *string   `json:"ExtraData,omitempty" xml:"ExtraData,omitempty"`
+	ImageURLObject io.Reader `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
+}
+
+func (s BatchAddFacesAdvanceRequestFaces) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchAddFacesAdvanceRequestFaces) GoString() string {
+	return s.String()
+}
+
+func (s *BatchAddFacesAdvanceRequestFaces) SetExtraData(v string) *BatchAddFacesAdvanceRequestFaces {
+	s.ExtraData = &v
+	return s
+}
+
+func (s *BatchAddFacesAdvanceRequestFaces) SetImageURLObject(v io.Reader) *BatchAddFacesAdvanceRequestFaces {
+	s.ImageURLObject = v
+	return s
+}
+
 type BatchAddFacesShrinkRequest struct {
 	DbName                                *string  `json:"DbName,omitempty" xml:"DbName,omitempty"`
 	EntityId                              *string  `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
@@ -9967,6 +10037,120 @@ func (client *Client) BatchAddFaces(request *BatchAddFacesRequest) (_result *Bat
 		return _result, _err
 	}
 	_result = _body
+	return _result, _err
+}
+
+func (client *Client) BatchAddFacesAdvance(request *BatchAddFacesAdvanceRequest, runtime *util.RuntimeOptions) (_result *BatchAddFacesResponse, _err error) {
+	// Step 0: init client
+	accessKeyId, _err := client.Credential.GetAccessKeyId()
+	if _err != nil {
+		return _result, _err
+	}
+
+	accessKeySecret, _err := client.Credential.GetAccessKeySecret()
+	if _err != nil {
+		return _result, _err
+	}
+
+	securityToken, _err := client.Credential.GetSecurityToken()
+	if _err != nil {
+		return _result, _err
+	}
+
+	credentialType := client.Credential.GetType()
+	openPlatformEndpoint := client.OpenPlatformEndpoint
+	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
+	}
+
+	if tea.BoolValue(util.IsUnset(credentialType)) {
+		credentialType = tea.String("access_key")
+	}
+
+	authConfig := &openapi.Config{
+		AccessKeyId:     accessKeyId,
+		AccessKeySecret: accessKeySecret,
+		SecurityToken:   securityToken,
+		Type:            credentialType,
+		Endpoint:        openPlatformEndpoint,
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	authClient, _err := openplatform.NewClient(authConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
+	authRequest := &openplatform.AuthorizeFileUploadRequest{
+		Product:  tea.String("facebody"),
+		RegionId: client.RegionId,
+	}
+	authResponse := &openplatform.AuthorizeFileUploadResponse{}
+	ossConfig := &oss.Config{
+		AccessKeySecret: accessKeySecret,
+		Type:            tea.String("access_key"),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	var ossClient *oss.Client
+	fileObj := &fileform.FileField{}
+	ossHeader := &oss.PostObjectRequestHeader{}
+	uploadRequest := &oss.PostObjectRequest{}
+	ossRuntime := &ossutil.RuntimeOptions{}
+	openapiutil.Convert(runtime, ossRuntime)
+	batchAddFacesReq := &BatchAddFacesRequest{}
+	openapiutil.Convert(request, batchAddFacesReq)
+	if !tea.BoolValue(util.IsUnset(request.Faces)) {
+		i0 := tea.Int(0)
+		for _, item0 := range request.Faces {
+			if !tea.BoolValue(util.IsUnset(item0.ImageURLObject)) {
+				authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+				if _err != nil {
+					return _result, _err
+				}
+
+				ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
+				ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
+				ossClient, _err = oss.NewClient(ossConfig)
+				if _err != nil {
+					return _result, _err
+				}
+
+				fileObj = &fileform.FileField{
+					Filename:    authResponse.Body.ObjectKey,
+					Content:     item0.ImageURLObject,
+					ContentType: tea.String(""),
+				}
+				ossHeader = &oss.PostObjectRequestHeader{
+					AccessKeyId:         authResponse.Body.AccessKeyId,
+					Policy:              authResponse.Body.EncodedPolicy,
+					Signature:           authResponse.Body.Signature,
+					Key:                 authResponse.Body.ObjectKey,
+					File:                fileObj,
+					SuccessActionStatus: tea.String("201"),
+				}
+				uploadRequest = &oss.PostObjectRequest{
+					BucketName: authResponse.Body.Bucket,
+					Header:     ossHeader,
+				}
+				_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+				if _err != nil {
+					return _result, _err
+				}
+				tmp := batchAddFacesReq.Faces[tea.IntValue(i0)]
+				tmp.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
+				i0 = number.Ltoi(number.Add(number.Itol(i0), number.Itol(tea.Int(1))))
+			}
+
+		}
+	}
+
+	batchAddFacesResp, _err := client.BatchAddFacesWithOptions(batchAddFacesReq, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+
+	_result = batchAddFacesResp
 	return _result, _err
 }
 
