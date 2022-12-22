@@ -26561,6 +26561,7 @@ type DescribeRegionsRequest struct {
 	AcceptLanguage       *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ProductType          *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 }
@@ -26585,6 +26586,11 @@ func (s *DescribeRegionsRequest) SetOwnerAccount(v string) *DescribeRegionsReque
 
 func (s *DescribeRegionsRequest) SetOwnerId(v int64) *DescribeRegionsRequest {
 	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribeRegionsRequest) SetProductType(v string) *DescribeRegionsRequest {
+	s.ProductType = &v
 	return s
 }
 
@@ -33347,6 +33353,176 @@ func (s *DescribeVpnConnectionResponse) SetBody(v *DescribeVpnConnectionResponse
 	return s
 }
 
+type DescribeVpnConnectionLogsRequest struct {
+	From                 *int32  `json:"From,omitempty" xml:"From,omitempty"`
+	MinutePeriod         *int32  `json:"MinutePeriod,omitempty" xml:"MinutePeriod,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	PageNumber           *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	To                   *int32  `json:"To,omitempty" xml:"To,omitempty"`
+	VpnConnectionId      *string `json:"VpnConnectionId,omitempty" xml:"VpnConnectionId,omitempty"`
+}
+
+func (s DescribeVpnConnectionLogsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVpnConnectionLogsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVpnConnectionLogsRequest) SetFrom(v int32) *DescribeVpnConnectionLogsRequest {
+	s.From = &v
+	return s
+}
+
+func (s *DescribeVpnConnectionLogsRequest) SetMinutePeriod(v int32) *DescribeVpnConnectionLogsRequest {
+	s.MinutePeriod = &v
+	return s
+}
+
+func (s *DescribeVpnConnectionLogsRequest) SetOwnerAccount(v string) *DescribeVpnConnectionLogsRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *DescribeVpnConnectionLogsRequest) SetOwnerId(v int64) *DescribeVpnConnectionLogsRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribeVpnConnectionLogsRequest) SetPageNumber(v int32) *DescribeVpnConnectionLogsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeVpnConnectionLogsRequest) SetPageSize(v int32) *DescribeVpnConnectionLogsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeVpnConnectionLogsRequest) SetRegionId(v string) *DescribeVpnConnectionLogsRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeVpnConnectionLogsRequest) SetResourceOwnerAccount(v string) *DescribeVpnConnectionLogsRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *DescribeVpnConnectionLogsRequest) SetResourceOwnerId(v int64) *DescribeVpnConnectionLogsRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *DescribeVpnConnectionLogsRequest) SetTo(v int32) *DescribeVpnConnectionLogsRequest {
+	s.To = &v
+	return s
+}
+
+func (s *DescribeVpnConnectionLogsRequest) SetVpnConnectionId(v string) *DescribeVpnConnectionLogsRequest {
+	s.VpnConnectionId = &v
+	return s
+}
+
+type DescribeVpnConnectionLogsResponseBody struct {
+	Count       *int32                                     `json:"Count,omitempty" xml:"Count,omitempty"`
+	Data        *DescribeVpnConnectionLogsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	IsCompleted *bool                                      `json:"IsCompleted,omitempty" xml:"IsCompleted,omitempty"`
+	PageNumber  *int32                                     `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize    *int32                                     `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId   *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeVpnConnectionLogsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVpnConnectionLogsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVpnConnectionLogsResponseBody) SetCount(v int32) *DescribeVpnConnectionLogsResponseBody {
+	s.Count = &v
+	return s
+}
+
+func (s *DescribeVpnConnectionLogsResponseBody) SetData(v *DescribeVpnConnectionLogsResponseBodyData) *DescribeVpnConnectionLogsResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DescribeVpnConnectionLogsResponseBody) SetIsCompleted(v bool) *DescribeVpnConnectionLogsResponseBody {
+	s.IsCompleted = &v
+	return s
+}
+
+func (s *DescribeVpnConnectionLogsResponseBody) SetPageNumber(v int32) *DescribeVpnConnectionLogsResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeVpnConnectionLogsResponseBody) SetPageSize(v int32) *DescribeVpnConnectionLogsResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeVpnConnectionLogsResponseBody) SetRequestId(v string) *DescribeVpnConnectionLogsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeVpnConnectionLogsResponseBodyData struct {
+	Logs []*string `json:"Logs,omitempty" xml:"Logs,omitempty" type:"Repeated"`
+}
+
+func (s DescribeVpnConnectionLogsResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVpnConnectionLogsResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVpnConnectionLogsResponseBodyData) SetLogs(v []*string) *DescribeVpnConnectionLogsResponseBodyData {
+	s.Logs = v
+	return s
+}
+
+type DescribeVpnConnectionLogsResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeVpnConnectionLogsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeVpnConnectionLogsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVpnConnectionLogsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVpnConnectionLogsResponse) SetHeaders(v map[string]*string) *DescribeVpnConnectionLogsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeVpnConnectionLogsResponse) SetStatusCode(v int32) *DescribeVpnConnectionLogsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeVpnConnectionLogsResponse) SetBody(v *DescribeVpnConnectionLogsResponseBody) *DescribeVpnConnectionLogsResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeVpnConnectionsRequest struct {
 	CustomerGatewayId    *string `json:"CustomerGatewayId,omitempty" xml:"CustomerGatewayId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
@@ -35669,6 +35845,105 @@ func (s *DetachDhcpOptionsSetFromVpcResponse) SetStatusCode(v int32) *DetachDhcp
 }
 
 func (s *DetachDhcpOptionsSetFromVpcResponse) SetBody(v *DetachDhcpOptionsSetFromVpcResponseBody) *DetachDhcpOptionsSetFromVpcResponse {
+	s.Body = v
+	return s
+}
+
+type DiagnoseVpnGatewayRequest struct {
+	ClientToken     *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	IPsecExtendInfo *string `json:"IPsecExtendInfo,omitempty" xml:"IPsecExtendInfo,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceId      *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	ResourceType    *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	VpnGatewayId    *string `json:"VpnGatewayId,omitempty" xml:"VpnGatewayId,omitempty"`
+}
+
+func (s DiagnoseVpnGatewayRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DiagnoseVpnGatewayRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DiagnoseVpnGatewayRequest) SetClientToken(v string) *DiagnoseVpnGatewayRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *DiagnoseVpnGatewayRequest) SetIPsecExtendInfo(v string) *DiagnoseVpnGatewayRequest {
+	s.IPsecExtendInfo = &v
+	return s
+}
+
+func (s *DiagnoseVpnGatewayRequest) SetRegionId(v string) *DiagnoseVpnGatewayRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DiagnoseVpnGatewayRequest) SetResourceId(v string) *DiagnoseVpnGatewayRequest {
+	s.ResourceId = &v
+	return s
+}
+
+func (s *DiagnoseVpnGatewayRequest) SetResourceType(v string) *DiagnoseVpnGatewayRequest {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *DiagnoseVpnGatewayRequest) SetVpnGatewayId(v string) *DiagnoseVpnGatewayRequest {
+	s.VpnGatewayId = &v
+	return s
+}
+
+type DiagnoseVpnGatewayResponseBody struct {
+	DiagnoseId *string `json:"DiagnoseId,omitempty" xml:"DiagnoseId,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DiagnoseVpnGatewayResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DiagnoseVpnGatewayResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DiagnoseVpnGatewayResponseBody) SetDiagnoseId(v string) *DiagnoseVpnGatewayResponseBody {
+	s.DiagnoseId = &v
+	return s
+}
+
+func (s *DiagnoseVpnGatewayResponseBody) SetRequestId(v string) *DiagnoseVpnGatewayResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DiagnoseVpnGatewayResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DiagnoseVpnGatewayResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DiagnoseVpnGatewayResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DiagnoseVpnGatewayResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DiagnoseVpnGatewayResponse) SetHeaders(v map[string]*string) *DiagnoseVpnGatewayResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DiagnoseVpnGatewayResponse) SetStatusCode(v int32) *DiagnoseVpnGatewayResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DiagnoseVpnGatewayResponse) SetBody(v *DiagnoseVpnGatewayResponseBody) *DiagnoseVpnGatewayResponse {
 	s.Body = v
 	return s
 }
@@ -38593,6 +38868,170 @@ func (s *GetVpcRouteEntrySummaryResponse) SetBody(v *GetVpcRouteEntrySummaryResp
 	return s
 }
 
+type GetVpnGatewayDiagnoseResultRequest struct {
+	ClientToken  *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DiagnoseId   *string `json:"DiagnoseId,omitempty" xml:"DiagnoseId,omitempty"`
+	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	VpnGatewayId *string `json:"VpnGatewayId,omitempty" xml:"VpnGatewayId,omitempty"`
+}
+
+func (s GetVpnGatewayDiagnoseResultRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetVpnGatewayDiagnoseResultRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetVpnGatewayDiagnoseResultRequest) SetClientToken(v string) *GetVpnGatewayDiagnoseResultRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *GetVpnGatewayDiagnoseResultRequest) SetDiagnoseId(v string) *GetVpnGatewayDiagnoseResultRequest {
+	s.DiagnoseId = &v
+	return s
+}
+
+func (s *GetVpnGatewayDiagnoseResultRequest) SetRegionId(v string) *GetVpnGatewayDiagnoseResultRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *GetVpnGatewayDiagnoseResultRequest) SetVpnGatewayId(v string) *GetVpnGatewayDiagnoseResultRequest {
+	s.VpnGatewayId = &v
+	return s
+}
+
+type GetVpnGatewayDiagnoseResultResponseBody struct {
+	BeginTime          *string                                                  `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
+	DiagnoseId         *string                                                  `json:"DiagnoseId,omitempty" xml:"DiagnoseId,omitempty"`
+	DiagnoseResult     []*GetVpnGatewayDiagnoseResultResponseBodyDiagnoseResult `json:"DiagnoseResult,omitempty" xml:"DiagnoseResult,omitempty" type:"Repeated"`
+	FinishTime         *string                                                  `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
+	FinishedCount      *int32                                                   `json:"FinishedCount,omitempty" xml:"FinishedCount,omitempty"`
+	RequestId          *string                                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResourceInstanceId *string                                                  `json:"ResourceInstanceId,omitempty" xml:"ResourceInstanceId,omitempty"`
+	ResourceType       *string                                                  `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	TotalCount         *int32                                                   `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	VpnGatewayId       *string                                                  `json:"VpnGatewayId,omitempty" xml:"VpnGatewayId,omitempty"`
+}
+
+func (s GetVpnGatewayDiagnoseResultResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetVpnGatewayDiagnoseResultResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetVpnGatewayDiagnoseResultResponseBody) SetBeginTime(v string) *GetVpnGatewayDiagnoseResultResponseBody {
+	s.BeginTime = &v
+	return s
+}
+
+func (s *GetVpnGatewayDiagnoseResultResponseBody) SetDiagnoseId(v string) *GetVpnGatewayDiagnoseResultResponseBody {
+	s.DiagnoseId = &v
+	return s
+}
+
+func (s *GetVpnGatewayDiagnoseResultResponseBody) SetDiagnoseResult(v []*GetVpnGatewayDiagnoseResultResponseBodyDiagnoseResult) *GetVpnGatewayDiagnoseResultResponseBody {
+	s.DiagnoseResult = v
+	return s
+}
+
+func (s *GetVpnGatewayDiagnoseResultResponseBody) SetFinishTime(v string) *GetVpnGatewayDiagnoseResultResponseBody {
+	s.FinishTime = &v
+	return s
+}
+
+func (s *GetVpnGatewayDiagnoseResultResponseBody) SetFinishedCount(v int32) *GetVpnGatewayDiagnoseResultResponseBody {
+	s.FinishedCount = &v
+	return s
+}
+
+func (s *GetVpnGatewayDiagnoseResultResponseBody) SetRequestId(v string) *GetVpnGatewayDiagnoseResultResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetVpnGatewayDiagnoseResultResponseBody) SetResourceInstanceId(v string) *GetVpnGatewayDiagnoseResultResponseBody {
+	s.ResourceInstanceId = &v
+	return s
+}
+
+func (s *GetVpnGatewayDiagnoseResultResponseBody) SetResourceType(v string) *GetVpnGatewayDiagnoseResultResponseBody {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *GetVpnGatewayDiagnoseResultResponseBody) SetTotalCount(v int32) *GetVpnGatewayDiagnoseResultResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *GetVpnGatewayDiagnoseResultResponseBody) SetVpnGatewayId(v string) *GetVpnGatewayDiagnoseResultResponseBody {
+	s.VpnGatewayId = &v
+	return s
+}
+
+type GetVpnGatewayDiagnoseResultResponseBodyDiagnoseResult struct {
+	DiagnoseName              *string `json:"DiagnoseName,omitempty" xml:"DiagnoseName,omitempty"`
+	DiagnoseResultDescription *string `json:"DiagnoseResultDescription,omitempty" xml:"DiagnoseResultDescription,omitempty"`
+	DiagnoseResultLevel       *string `json:"DiagnoseResultLevel,omitempty" xml:"DiagnoseResultLevel,omitempty"`
+}
+
+func (s GetVpnGatewayDiagnoseResultResponseBodyDiagnoseResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetVpnGatewayDiagnoseResultResponseBodyDiagnoseResult) GoString() string {
+	return s.String()
+}
+
+func (s *GetVpnGatewayDiagnoseResultResponseBodyDiagnoseResult) SetDiagnoseName(v string) *GetVpnGatewayDiagnoseResultResponseBodyDiagnoseResult {
+	s.DiagnoseName = &v
+	return s
+}
+
+func (s *GetVpnGatewayDiagnoseResultResponseBodyDiagnoseResult) SetDiagnoseResultDescription(v string) *GetVpnGatewayDiagnoseResultResponseBodyDiagnoseResult {
+	s.DiagnoseResultDescription = &v
+	return s
+}
+
+func (s *GetVpnGatewayDiagnoseResultResponseBodyDiagnoseResult) SetDiagnoseResultLevel(v string) *GetVpnGatewayDiagnoseResultResponseBodyDiagnoseResult {
+	s.DiagnoseResultLevel = &v
+	return s
+}
+
+type GetVpnGatewayDiagnoseResultResponse struct {
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetVpnGatewayDiagnoseResultResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetVpnGatewayDiagnoseResultResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetVpnGatewayDiagnoseResultResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetVpnGatewayDiagnoseResultResponse) SetHeaders(v map[string]*string) *GetVpnGatewayDiagnoseResultResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetVpnGatewayDiagnoseResultResponse) SetStatusCode(v int32) *GetVpnGatewayDiagnoseResultResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetVpnGatewayDiagnoseResultResponse) SetBody(v *GetVpnGatewayDiagnoseResultResponseBody) *GetVpnGatewayDiagnoseResultResponse {
+	s.Body = v
+	return s
+}
+
 type GrantInstanceToCenRequest struct {
 	CenId                *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
 	CenOwnerId           *int64  `json:"CenOwnerId,omitempty" xml:"CenOwnerId,omitempty"`
@@ -39848,6 +40287,135 @@ func (s *ListGeographicSubRegionsResponse) SetStatusCode(v int32) *ListGeographi
 }
 
 func (s *ListGeographicSubRegionsResponse) SetBody(v *ListGeographicSubRegionsResponseBody) *ListGeographicSubRegionsResponse {
+	s.Body = v
+	return s
+}
+
+type ListIpsecServerLogsRequest struct {
+	From          *int32  `json:"From,omitempty" xml:"From,omitempty"`
+	IpsecServerId *string `json:"IpsecServerId,omitempty" xml:"IpsecServerId,omitempty"`
+	MinutePeriod  *int32  `json:"MinutePeriod,omitempty" xml:"MinutePeriod,omitempty"`
+	PageNumber    *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	To            *int32  `json:"To,omitempty" xml:"To,omitempty"`
+}
+
+func (s ListIpsecServerLogsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListIpsecServerLogsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListIpsecServerLogsRequest) SetFrom(v int32) *ListIpsecServerLogsRequest {
+	s.From = &v
+	return s
+}
+
+func (s *ListIpsecServerLogsRequest) SetIpsecServerId(v string) *ListIpsecServerLogsRequest {
+	s.IpsecServerId = &v
+	return s
+}
+
+func (s *ListIpsecServerLogsRequest) SetMinutePeriod(v int32) *ListIpsecServerLogsRequest {
+	s.MinutePeriod = &v
+	return s
+}
+
+func (s *ListIpsecServerLogsRequest) SetPageNumber(v int32) *ListIpsecServerLogsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListIpsecServerLogsRequest) SetPageSize(v int32) *ListIpsecServerLogsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListIpsecServerLogsRequest) SetRegionId(v string) *ListIpsecServerLogsRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ListIpsecServerLogsRequest) SetTo(v int32) *ListIpsecServerLogsRequest {
+	s.To = &v
+	return s
+}
+
+type ListIpsecServerLogsResponseBody struct {
+	Count       *int32    `json:"Count,omitempty" xml:"Count,omitempty"`
+	Data        []*string `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	IsCompleted *bool     `json:"IsCompleted,omitempty" xml:"IsCompleted,omitempty"`
+	PageNumber  *int32    `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize    *int32    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId   *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListIpsecServerLogsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListIpsecServerLogsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListIpsecServerLogsResponseBody) SetCount(v int32) *ListIpsecServerLogsResponseBody {
+	s.Count = &v
+	return s
+}
+
+func (s *ListIpsecServerLogsResponseBody) SetData(v []*string) *ListIpsecServerLogsResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListIpsecServerLogsResponseBody) SetIsCompleted(v bool) *ListIpsecServerLogsResponseBody {
+	s.IsCompleted = &v
+	return s
+}
+
+func (s *ListIpsecServerLogsResponseBody) SetPageNumber(v int32) *ListIpsecServerLogsResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListIpsecServerLogsResponseBody) SetPageSize(v int32) *ListIpsecServerLogsResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListIpsecServerLogsResponseBody) SetRequestId(v string) *ListIpsecServerLogsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListIpsecServerLogsResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListIpsecServerLogsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListIpsecServerLogsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListIpsecServerLogsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListIpsecServerLogsResponse) SetHeaders(v map[string]*string) *ListIpsecServerLogsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListIpsecServerLogsResponse) SetStatusCode(v int32) *ListIpsecServerLogsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListIpsecServerLogsResponse) SetBody(v *ListIpsecServerLogsResponseBody) *ListIpsecServerLogsResponse {
 	s.Body = v
 	return s
 }
@@ -69249,6 +69817,10 @@ func (client *Client) DescribeRegionsWithOptions(request *DescribeRegionsRequest
 		query["OwnerId"] = request.OwnerId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ProductType)) {
+		query["ProductType"] = request.ProductType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
 		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
 	}
@@ -71039,6 +71611,90 @@ func (client *Client) DescribeVpnConnection(request *DescribeVpnConnectionReques
 	return _result, _err
 }
 
+func (client *Client) DescribeVpnConnectionLogsWithOptions(request *DescribeVpnConnectionLogsRequest, runtime *util.RuntimeOptions) (_result *DescribeVpnConnectionLogsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.From)) {
+		query["From"] = request.From
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MinutePeriod)) {
+		query["MinutePeriod"] = request.MinutePeriod
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.To)) {
+		query["To"] = request.To
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VpnConnectionId)) {
+		query["VpnConnectionId"] = request.VpnConnectionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeVpnConnectionLogs"),
+		Version:     tea.String("2016-04-28"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeVpnConnectionLogsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeVpnConnectionLogs(request *DescribeVpnConnectionLogsRequest) (_result *DescribeVpnConnectionLogsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeVpnConnectionLogsResponse{}
+	_body, _err := client.DescribeVpnConnectionLogsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DescribeVpnConnectionsWithOptions(request *DescribeVpnConnectionsRequest, runtime *util.RuntimeOptions) (_result *DescribeVpnConnectionsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -71724,6 +72380,83 @@ func (client *Client) DetachDhcpOptionsSetFromVpc(request *DetachDhcpOptionsSetF
 	runtime := &util.RuntimeOptions{}
 	_result = &DetachDhcpOptionsSetFromVpcResponse{}
 	_body, _err := client.DetachDhcpOptionsSetFromVpcWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+/**
+ * VPN网关发起诊断
+ *
+ * @param request DiagnoseVpnGatewayRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DiagnoseVpnGatewayResponse
+ */
+func (client *Client) DiagnoseVpnGatewayWithOptions(request *DiagnoseVpnGatewayRequest, runtime *util.RuntimeOptions) (_result *DiagnoseVpnGatewayResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IPsecExtendInfo)) {
+		query["IPsecExtendInfo"] = request.IPsecExtendInfo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
+		query["ResourceId"] = request.ResourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VpnGatewayId)) {
+		query["VpnGatewayId"] = request.VpnGatewayId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DiagnoseVpnGateway"),
+		Version:     tea.String("2016-04-28"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DiagnoseVpnGatewayResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+/**
+ * VPN网关发起诊断
+ *
+ * @param request DiagnoseVpnGatewayRequest
+ * @return DiagnoseVpnGatewayResponse
+ */
+func (client *Client) DiagnoseVpnGateway(request *DiagnoseVpnGatewayRequest) (_result *DiagnoseVpnGatewayResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DiagnoseVpnGatewayResponse{}
+	_body, _err := client.DiagnoseVpnGatewayWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -73131,6 +73864,75 @@ func (client *Client) GetVpcRouteEntrySummary(request *GetVpcRouteEntrySummaryRe
 	return _result, _err
 }
 
+/**
+ * 查询VPN网关一键诊断结果
+ *
+ * @param request GetVpnGatewayDiagnoseResultRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return GetVpnGatewayDiagnoseResultResponse
+ */
+func (client *Client) GetVpnGatewayDiagnoseResultWithOptions(request *GetVpnGatewayDiagnoseResultRequest, runtime *util.RuntimeOptions) (_result *GetVpnGatewayDiagnoseResultResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DiagnoseId)) {
+		query["DiagnoseId"] = request.DiagnoseId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VpnGatewayId)) {
+		query["VpnGatewayId"] = request.VpnGatewayId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetVpnGatewayDiagnoseResult"),
+		Version:     tea.String("2016-04-28"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetVpnGatewayDiagnoseResultResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+/**
+ * 查询VPN网关一键诊断结果
+ *
+ * @param request GetVpnGatewayDiagnoseResultRequest
+ * @return GetVpnGatewayDiagnoseResultResponse
+ */
+func (client *Client) GetVpnGatewayDiagnoseResult(request *GetVpnGatewayDiagnoseResultRequest) (_result *GetVpnGatewayDiagnoseResultResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetVpnGatewayDiagnoseResultResponse{}
+	_body, _err := client.GetVpnGatewayDiagnoseResultWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) GrantInstanceToCenWithOptions(request *GrantInstanceToCenRequest, runtime *util.RuntimeOptions) (_result *GrantInstanceToCenResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -73679,6 +74481,74 @@ func (client *Client) ListGeographicSubRegions() (_result *ListGeographicSubRegi
 	runtime := &util.RuntimeOptions{}
 	_result = &ListGeographicSubRegionsResponse{}
 	_body, _err := client.ListGeographicSubRegionsWithOptions(runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListIpsecServerLogsWithOptions(request *ListIpsecServerLogsRequest, runtime *util.RuntimeOptions) (_result *ListIpsecServerLogsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.From)) {
+		query["From"] = request.From
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IpsecServerId)) {
+		query["IpsecServerId"] = request.IpsecServerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MinutePeriod)) {
+		query["MinutePeriod"] = request.MinutePeriod
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.To)) {
+		query["To"] = request.To
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListIpsecServerLogs"),
+		Version:     tea.String("2016-04-28"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListIpsecServerLogsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListIpsecServerLogs(request *ListIpsecServerLogsRequest) (_result *ListIpsecServerLogsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListIpsecServerLogsResponse{}
+	_body, _err := client.ListIpsecServerLogsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
