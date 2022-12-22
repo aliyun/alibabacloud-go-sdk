@@ -1,3 +1,7 @@
+2022-12-22 Version: v3.0.7
+- Hide SourceIP.
+- Hide MessageType.
+
 2022-12-08 Version: v3.0.6
 - DescribeOutgoingDestinationIP support catagoryId and tagIdNew field.
 - DescribeOutgoingDomain support catagoryId and tagIdNew field.
