@@ -11929,9 +11929,33 @@ func (s *ScaleOutClusterResponse) SetBody(v *ScaleOutClusterResponseBody) *Scale
 	return s
 }
 
+type StartAlertResponseBody struct {
+	Msg    *string `json:"msg,omitempty" xml:"msg,omitempty"`
+	Status *bool   `json:"status,omitempty" xml:"status,omitempty"`
+}
+
+func (s StartAlertResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartAlertResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *StartAlertResponseBody) SetMsg(v string) *StartAlertResponseBody {
+	s.Msg = &v
+	return s
+}
+
+func (s *StartAlertResponseBody) SetStatus(v bool) *StartAlertResponseBody {
+	s.Status = &v
+	return s
+}
+
 type StartAlertResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *StartAlertResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s StartAlertResponse) String() string {
@@ -11949,6 +11973,11 @@ func (s *StartAlertResponse) SetHeaders(v map[string]*string) *StartAlertRespons
 
 func (s *StartAlertResponse) SetStatusCode(v int32) *StartAlertResponse {
 	s.StatusCode = &v
+	return s
+}
+
+func (s *StartAlertResponse) SetBody(v *StartAlertResponseBody) *StartAlertResponse {
+	s.Body = v
 	return s
 }
 
@@ -12123,9 +12152,33 @@ func (s *StartWorkflowResponse) SetBody(v *StartWorkflowResponseBody) *StartWork
 	return s
 }
 
+type StopAlertResponseBody struct {
+	Msg    *string `json:"msg,omitempty" xml:"msg,omitempty"`
+	Status *bool   `json:"status,omitempty" xml:"status,omitempty"`
+}
+
+func (s StopAlertResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopAlertResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *StopAlertResponseBody) SetMsg(v string) *StopAlertResponseBody {
+	s.Msg = &v
+	return s
+}
+
+func (s *StopAlertResponseBody) SetStatus(v bool) *StopAlertResponseBody {
+	s.Status = &v
+	return s
+}
+
 type StopAlertResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *StopAlertResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s StopAlertResponse) String() string {
@@ -12143,6 +12196,57 @@ func (s *StopAlertResponse) SetHeaders(v map[string]*string) *StopAlertResponse 
 
 func (s *StopAlertResponse) SetStatusCode(v int32) *StopAlertResponse {
 	s.StatusCode = &v
+	return s
+}
+
+func (s *StopAlertResponse) SetBody(v *StopAlertResponseBody) *StopAlertResponse {
+	s.Body = v
+	return s
+}
+
+type SyncClusterNodePoolResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s SyncClusterNodePoolResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SyncClusterNodePoolResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SyncClusterNodePoolResponseBody) SetRequestId(v string) *SyncClusterNodePoolResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type SyncClusterNodePoolResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SyncClusterNodePoolResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SyncClusterNodePoolResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SyncClusterNodePoolResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SyncClusterNodePoolResponse) SetHeaders(v map[string]*string) *SyncClusterNodePoolResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SyncClusterNodePoolResponse) SetStatusCode(v int32) *SyncClusterNodePoolResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SyncClusterNodePoolResponse) SetBody(v *SyncClusterNodePoolResponseBody) *SyncClusterNodePoolResponse {
+	s.Body = v
 	return s
 }
 
@@ -12662,6 +12766,7 @@ func (s *UpgradeClusterNodepoolRequest) SetRuntimeVersion(v string) *UpgradeClus
 
 type UpgradeClusterNodepoolResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TaskId    *string `json:"task_id,omitempty" xml:"task_id,omitempty"`
 }
 
 func (s UpgradeClusterNodepoolResponseBody) String() string {
@@ -12674,6 +12779,11 @@ func (s UpgradeClusterNodepoolResponseBody) GoString() string {
 
 func (s *UpgradeClusterNodepoolResponseBody) SetRequestId(v string) *UpgradeClusterNodepoolResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *UpgradeClusterNodepoolResponseBody) SetTaskId(v string) *UpgradeClusterNodepoolResponseBody {
+	s.TaskId = &v
 	return s
 }
 
@@ -17726,7 +17836,7 @@ func (client *Client) StartAlertWithOptions(ClusterId *string, headers map[strin
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
 		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("none"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &StartAlertResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
@@ -17880,7 +17990,7 @@ func (client *Client) StopAlertWithOptions(ClusterId *string, headers map[string
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
 		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("none"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &StopAlertResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
@@ -17896,6 +18006,42 @@ func (client *Client) StopAlert(ClusterId *string) (_result *StopAlertResponse, 
 	headers := make(map[string]*string)
 	_result = &StopAlertResponse{}
 	_body, _err := client.StopAlertWithOptions(ClusterId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SyncClusterNodePoolWithOptions(ClusterId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *SyncClusterNodePoolResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SyncClusterNodePool"),
+		Version:     tea.String("2015-12-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/clusters/" + tea.StringValue(openapiutil.GetEncodeParam(ClusterId)) + "/sync_nodepools"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SyncClusterNodePoolResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SyncClusterNodePool(ClusterId *string) (_result *SyncClusterNodePoolResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &SyncClusterNodePoolResponse{}
+	_body, _err := client.SyncClusterNodePoolWithOptions(ClusterId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
