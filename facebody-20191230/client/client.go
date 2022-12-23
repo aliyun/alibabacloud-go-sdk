@@ -1791,10 +1791,14 @@ func (s *CompareFaceResponseBody) SetRequestId(v string) *CompareFaceResponseBod
 }
 
 type CompareFaceResponseBodyData struct {
-	Confidence    *float32 `json:"Confidence,omitempty" xml:"Confidence,omitempty"`
-	MessageTips   *string  `json:"MessageTips,omitempty" xml:"MessageTips,omitempty"`
-	QualityScoreA *float32 `json:"QualityScoreA,omitempty" xml:"QualityScoreA,omitempty"`
-	QualityScoreB *float32 `json:"QualityScoreB,omitempty" xml:"QualityScoreB,omitempty"`
+	Confidence     *float32 `json:"Confidence,omitempty" xml:"Confidence,omitempty"`
+	IsMaskA        *int64   `json:"IsMaskA,omitempty" xml:"IsMaskA,omitempty"`
+	IsMaskB        *int64   `json:"IsMaskB,omitempty" xml:"IsMaskB,omitempty"`
+	LandmarksAList []*int64 `json:"LandmarksAList,omitempty" xml:"LandmarksAList,omitempty" type:"Repeated"`
+	LandmarksBList []*int64 `json:"LandmarksBList,omitempty" xml:"LandmarksBList,omitempty" type:"Repeated"`
+	MessageTips    *string  `json:"MessageTips,omitempty" xml:"MessageTips,omitempty"`
+	QualityScoreA  *float32 `json:"QualityScoreA,omitempty" xml:"QualityScoreA,omitempty"`
+	QualityScoreB  *float32 `json:"QualityScoreB,omitempty" xml:"QualityScoreB,omitempty"`
 	// 1
 	RectAList []*int32 `json:"RectAList,omitempty" xml:"RectAList,omitempty" type:"Repeated"`
 	// 1
@@ -1813,6 +1817,26 @@ func (s CompareFaceResponseBodyData) GoString() string {
 
 func (s *CompareFaceResponseBodyData) SetConfidence(v float32) *CompareFaceResponseBodyData {
 	s.Confidence = &v
+	return s
+}
+
+func (s *CompareFaceResponseBodyData) SetIsMaskA(v int64) *CompareFaceResponseBodyData {
+	s.IsMaskA = &v
+	return s
+}
+
+func (s *CompareFaceResponseBodyData) SetIsMaskB(v int64) *CompareFaceResponseBodyData {
+	s.IsMaskB = &v
+	return s
+}
+
+func (s *CompareFaceResponseBodyData) SetLandmarksAList(v []*int64) *CompareFaceResponseBodyData {
+	s.LandmarksAList = v
+	return s
+}
+
+func (s *CompareFaceResponseBodyData) SetLandmarksBList(v []*int64) *CompareFaceResponseBodyData {
+	s.LandmarksBList = v
 	return s
 }
 
