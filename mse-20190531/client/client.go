@@ -2244,6 +2244,242 @@ func (s *AddGatewaySlbResponse) SetBody(v *AddGatewaySlbResponseBody) *AddGatewa
 	return s
 }
 
+type AddMigrationTaskRequest struct {
+	AcceptLanguage          *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	ClusterType             *string `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
+	Id                      *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	OriginInstanceAddress   *string `json:"OriginInstanceAddress,omitempty" xml:"OriginInstanceAddress,omitempty"`
+	OriginInstanceName      *string `json:"OriginInstanceName,omitempty" xml:"OriginInstanceName,omitempty"`
+	OriginInstanceNamespace *string `json:"OriginInstanceNamespace,omitempty" xml:"OriginInstanceNamespace,omitempty"`
+	ProjectDesc             *string `json:"ProjectDesc,omitempty" xml:"ProjectDesc,omitempty"`
+	RequestPars             *string `json:"RequestPars,omitempty" xml:"RequestPars,omitempty"`
+	TargetClusterName       *string `json:"TargetClusterName,omitempty" xml:"TargetClusterName,omitempty"`
+	TargetClusterUrl        *string `json:"TargetClusterUrl,omitempty" xml:"TargetClusterUrl,omitempty"`
+	TargetInstanceId        *string `json:"TargetInstanceId,omitempty" xml:"TargetInstanceId,omitempty"`
+}
+
+func (s AddMigrationTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddMigrationTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AddMigrationTaskRequest) SetAcceptLanguage(v string) *AddMigrationTaskRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *AddMigrationTaskRequest) SetClusterType(v string) *AddMigrationTaskRequest {
+	s.ClusterType = &v
+	return s
+}
+
+func (s *AddMigrationTaskRequest) SetId(v string) *AddMigrationTaskRequest {
+	s.Id = &v
+	return s
+}
+
+func (s *AddMigrationTaskRequest) SetOriginInstanceAddress(v string) *AddMigrationTaskRequest {
+	s.OriginInstanceAddress = &v
+	return s
+}
+
+func (s *AddMigrationTaskRequest) SetOriginInstanceName(v string) *AddMigrationTaskRequest {
+	s.OriginInstanceName = &v
+	return s
+}
+
+func (s *AddMigrationTaskRequest) SetOriginInstanceNamespace(v string) *AddMigrationTaskRequest {
+	s.OriginInstanceNamespace = &v
+	return s
+}
+
+func (s *AddMigrationTaskRequest) SetProjectDesc(v string) *AddMigrationTaskRequest {
+	s.ProjectDesc = &v
+	return s
+}
+
+func (s *AddMigrationTaskRequest) SetRequestPars(v string) *AddMigrationTaskRequest {
+	s.RequestPars = &v
+	return s
+}
+
+func (s *AddMigrationTaskRequest) SetTargetClusterName(v string) *AddMigrationTaskRequest {
+	s.TargetClusterName = &v
+	return s
+}
+
+func (s *AddMigrationTaskRequest) SetTargetClusterUrl(v string) *AddMigrationTaskRequest {
+	s.TargetClusterUrl = &v
+	return s
+}
+
+func (s *AddMigrationTaskRequest) SetTargetInstanceId(v string) *AddMigrationTaskRequest {
+	s.TargetInstanceId = &v
+	return s
+}
+
+type AddMigrationTaskResponseBody struct {
+	Data      *AddMigrationTaskResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	ErrorCode *string                           `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	HttpCode  *string                           `json:"HttpCode,omitempty" xml:"HttpCode,omitempty"`
+	Message   *string                           `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                             `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s AddMigrationTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddMigrationTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AddMigrationTaskResponseBody) SetData(v *AddMigrationTaskResponseBodyData) *AddMigrationTaskResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *AddMigrationTaskResponseBody) SetErrorCode(v string) *AddMigrationTaskResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *AddMigrationTaskResponseBody) SetHttpCode(v string) *AddMigrationTaskResponseBody {
+	s.HttpCode = &v
+	return s
+}
+
+func (s *AddMigrationTaskResponseBody) SetMessage(v string) *AddMigrationTaskResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *AddMigrationTaskResponseBody) SetRequestId(v string) *AddMigrationTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *AddMigrationTaskResponseBody) SetSuccess(v bool) *AddMigrationTaskResponseBody {
+	s.Success = &v
+	return s
+}
+
+type AddMigrationTaskResponseBodyData struct {
+	ClusterType             *string `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
+	GmtCreate               *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	GmtModified             *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	Id                      *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	OriginInstanceAddress   *string `json:"OriginInstanceAddress,omitempty" xml:"OriginInstanceAddress,omitempty"`
+	OriginInstanceName      *string `json:"OriginInstanceName,omitempty" xml:"OriginInstanceName,omitempty"`
+	OriginInstanceNamespace *string `json:"OriginInstanceNamespace,omitempty" xml:"OriginInstanceNamespace,omitempty"`
+	ProjectDesc             *string `json:"ProjectDesc,omitempty" xml:"ProjectDesc,omitempty"`
+	TargetClusterName       *string `json:"TargetClusterName,omitempty" xml:"TargetClusterName,omitempty"`
+	TargetClusterUrl        *string `json:"TargetClusterUrl,omitempty" xml:"TargetClusterUrl,omitempty"`
+	TargetInstanceId        *string `json:"TargetInstanceId,omitempty" xml:"TargetInstanceId,omitempty"`
+	UserId                  *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+}
+
+func (s AddMigrationTaskResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddMigrationTaskResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *AddMigrationTaskResponseBodyData) SetClusterType(v string) *AddMigrationTaskResponseBodyData {
+	s.ClusterType = &v
+	return s
+}
+
+func (s *AddMigrationTaskResponseBodyData) SetGmtCreate(v string) *AddMigrationTaskResponseBodyData {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *AddMigrationTaskResponseBodyData) SetGmtModified(v string) *AddMigrationTaskResponseBodyData {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *AddMigrationTaskResponseBodyData) SetId(v string) *AddMigrationTaskResponseBodyData {
+	s.Id = &v
+	return s
+}
+
+func (s *AddMigrationTaskResponseBodyData) SetOriginInstanceAddress(v string) *AddMigrationTaskResponseBodyData {
+	s.OriginInstanceAddress = &v
+	return s
+}
+
+func (s *AddMigrationTaskResponseBodyData) SetOriginInstanceName(v string) *AddMigrationTaskResponseBodyData {
+	s.OriginInstanceName = &v
+	return s
+}
+
+func (s *AddMigrationTaskResponseBodyData) SetOriginInstanceNamespace(v string) *AddMigrationTaskResponseBodyData {
+	s.OriginInstanceNamespace = &v
+	return s
+}
+
+func (s *AddMigrationTaskResponseBodyData) SetProjectDesc(v string) *AddMigrationTaskResponseBodyData {
+	s.ProjectDesc = &v
+	return s
+}
+
+func (s *AddMigrationTaskResponseBodyData) SetTargetClusterName(v string) *AddMigrationTaskResponseBodyData {
+	s.TargetClusterName = &v
+	return s
+}
+
+func (s *AddMigrationTaskResponseBodyData) SetTargetClusterUrl(v string) *AddMigrationTaskResponseBodyData {
+	s.TargetClusterUrl = &v
+	return s
+}
+
+func (s *AddMigrationTaskResponseBodyData) SetTargetInstanceId(v string) *AddMigrationTaskResponseBodyData {
+	s.TargetInstanceId = &v
+	return s
+}
+
+func (s *AddMigrationTaskResponseBodyData) SetUserId(v string) *AddMigrationTaskResponseBodyData {
+	s.UserId = &v
+	return s
+}
+
+type AddMigrationTaskResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *AddMigrationTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s AddMigrationTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddMigrationTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AddMigrationTaskResponse) SetHeaders(v map[string]*string) *AddMigrationTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AddMigrationTaskResponse) SetStatusCode(v int32) *AddMigrationTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *AddMigrationTaskResponse) SetBody(v *AddMigrationTaskResponseBody) *AddMigrationTaskResponse {
+	s.Body = v
+	return s
+}
+
 type AddMockRuleRequest struct {
 	// The language of the response. Valid values:
 	//
@@ -26256,6 +26492,409 @@ func (s *QueryClusterDiskSpecificationResponse) SetBody(v *QueryClusterDiskSpeci
 	return s
 }
 
+type QueryClusterInfoRequest struct {
+	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	AclSwitch      *bool   `json:"AclSwitch,omitempty" xml:"AclSwitch,omitempty"`
+	ClusterId      *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	OrderId        *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RequestPars    *string `json:"RequestPars,omitempty" xml:"RequestPars,omitempty"`
+}
+
+func (s QueryClusterInfoRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryClusterInfoRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryClusterInfoRequest) SetAcceptLanguage(v string) *QueryClusterInfoRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *QueryClusterInfoRequest) SetAclSwitch(v bool) *QueryClusterInfoRequest {
+	s.AclSwitch = &v
+	return s
+}
+
+func (s *QueryClusterInfoRequest) SetClusterId(v string) *QueryClusterInfoRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *QueryClusterInfoRequest) SetInstanceId(v string) *QueryClusterInfoRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *QueryClusterInfoRequest) SetOrderId(v string) *QueryClusterInfoRequest {
+	s.OrderId = &v
+	return s
+}
+
+func (s *QueryClusterInfoRequest) SetRegionId(v string) *QueryClusterInfoRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *QueryClusterInfoRequest) SetRequestPars(v string) *QueryClusterInfoRequest {
+	s.RequestPars = &v
+	return s
+}
+
+type QueryClusterInfoResponseBody struct {
+	Data      *QueryClusterInfoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	ErrorCode *string                           `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	Message   *string                           `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                             `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s QueryClusterInfoResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryClusterInfoResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryClusterInfoResponseBody) SetData(v *QueryClusterInfoResponseBodyData) *QueryClusterInfoResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *QueryClusterInfoResponseBody) SetErrorCode(v string) *QueryClusterInfoResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *QueryClusterInfoResponseBody) SetMessage(v string) *QueryClusterInfoResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *QueryClusterInfoResponseBody) SetRequestId(v string) *QueryClusterInfoResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QueryClusterInfoResponseBody) SetSuccess(v bool) *QueryClusterInfoResponseBody {
+	s.Success = &v
+	return s
+}
+
+type QueryClusterInfoResponseBodyData struct {
+	AclEntryList         *string                                           `json:"AclEntryList,omitempty" xml:"AclEntryList,omitempty"`
+	AclId                *string                                           `json:"AclId,omitempty" xml:"AclId,omitempty"`
+	AppVersion           *string                                           `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
+	ChargeType           *string                                           `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	ClusterAliasName     *string                                           `json:"ClusterAliasName,omitempty" xml:"ClusterAliasName,omitempty"`
+	ClusterName          *string                                           `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
+	ClusterSpecification *string                                           `json:"ClusterSpecification,omitempty" xml:"ClusterSpecification,omitempty"`
+	ClusterType          *string                                           `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
+	ClusterVersion       *string                                           `json:"ClusterVersion,omitempty" xml:"ClusterVersion,omitempty"`
+	ConnectionType       *string                                           `json:"ConnectionType,omitempty" xml:"ConnectionType,omitempty"`
+	Cpu                  *int32                                            `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	CreateTime           *string                                           `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	DiskCapacity         *int64                                            `json:"DiskCapacity,omitempty" xml:"DiskCapacity,omitempty"`
+	DiskType             *string                                           `json:"DiskType,omitempty" xml:"DiskType,omitempty"`
+	HealthStatus         *string                                           `json:"HealthStatus,omitempty" xml:"HealthStatus,omitempty"`
+	InitCostTime         *int64                                            `json:"InitCostTime,omitempty" xml:"InitCostTime,omitempty"`
+	InitStatus           *string                                           `json:"InitStatus,omitempty" xml:"InitStatus,omitempty"`
+	InstanceCount        *int32                                            `json:"InstanceCount,omitempty" xml:"InstanceCount,omitempty"`
+	InstanceId           *string                                           `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceModels       []*QueryClusterInfoResponseBodyDataInstanceModels `json:"InstanceModels,omitempty" xml:"InstanceModels,omitempty" type:"Repeated"`
+	InternetAddress      *string                                           `json:"InternetAddress,omitempty" xml:"InternetAddress,omitempty"`
+	InternetDomain       *string                                           `json:"InternetDomain,omitempty" xml:"InternetDomain,omitempty"`
+	InternetPort         *string                                           `json:"InternetPort,omitempty" xml:"InternetPort,omitempty"`
+	IntranetAddress      *string                                           `json:"IntranetAddress,omitempty" xml:"IntranetAddress,omitempty"`
+	IntranetDomain       *string                                           `json:"IntranetDomain,omitempty" xml:"IntranetDomain,omitempty"`
+	IntranetPort         *string                                           `json:"IntranetPort,omitempty" xml:"IntranetPort,omitempty"`
+	MemoryCapacity       *int64                                            `json:"MemoryCapacity,omitempty" xml:"MemoryCapacity,omitempty"`
+	MseVersion           *string                                           `json:"MseVersion,omitempty" xml:"MseVersion,omitempty"`
+	NetType              *string                                           `json:"NetType,omitempty" xml:"NetType,omitempty"`
+	PayInfo              *string                                           `json:"PayInfo,omitempty" xml:"PayInfo,omitempty"`
+	PubNetworkFlow       *string                                           `json:"PubNetworkFlow,omitempty" xml:"PubNetworkFlow,omitempty"`
+	RegionId             *string                                           `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Tags                 map[string]interface{}                            `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	VSwitchId            *string                                           `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	VpcId                *string                                           `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+}
+
+func (s QueryClusterInfoResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryClusterInfoResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *QueryClusterInfoResponseBodyData) SetAclEntryList(v string) *QueryClusterInfoResponseBodyData {
+	s.AclEntryList = &v
+	return s
+}
+
+func (s *QueryClusterInfoResponseBodyData) SetAclId(v string) *QueryClusterInfoResponseBodyData {
+	s.AclId = &v
+	return s
+}
+
+func (s *QueryClusterInfoResponseBodyData) SetAppVersion(v string) *QueryClusterInfoResponseBodyData {
+	s.AppVersion = &v
+	return s
+}
+
+func (s *QueryClusterInfoResponseBodyData) SetChargeType(v string) *QueryClusterInfoResponseBodyData {
+	s.ChargeType = &v
+	return s
+}
+
+func (s *QueryClusterInfoResponseBodyData) SetClusterAliasName(v string) *QueryClusterInfoResponseBodyData {
+	s.ClusterAliasName = &v
+	return s
+}
+
+func (s *QueryClusterInfoResponseBodyData) SetClusterName(v string) *QueryClusterInfoResponseBodyData {
+	s.ClusterName = &v
+	return s
+}
+
+func (s *QueryClusterInfoResponseBodyData) SetClusterSpecification(v string) *QueryClusterInfoResponseBodyData {
+	s.ClusterSpecification = &v
+	return s
+}
+
+func (s *QueryClusterInfoResponseBodyData) SetClusterType(v string) *QueryClusterInfoResponseBodyData {
+	s.ClusterType = &v
+	return s
+}
+
+func (s *QueryClusterInfoResponseBodyData) SetClusterVersion(v string) *QueryClusterInfoResponseBodyData {
+	s.ClusterVersion = &v
+	return s
+}
+
+func (s *QueryClusterInfoResponseBodyData) SetConnectionType(v string) *QueryClusterInfoResponseBodyData {
+	s.ConnectionType = &v
+	return s
+}
+
+func (s *QueryClusterInfoResponseBodyData) SetCpu(v int32) *QueryClusterInfoResponseBodyData {
+	s.Cpu = &v
+	return s
+}
+
+func (s *QueryClusterInfoResponseBodyData) SetCreateTime(v string) *QueryClusterInfoResponseBodyData {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *QueryClusterInfoResponseBodyData) SetDiskCapacity(v int64) *QueryClusterInfoResponseBodyData {
+	s.DiskCapacity = &v
+	return s
+}
+
+func (s *QueryClusterInfoResponseBodyData) SetDiskType(v string) *QueryClusterInfoResponseBodyData {
+	s.DiskType = &v
+	return s
+}
+
+func (s *QueryClusterInfoResponseBodyData) SetHealthStatus(v string) *QueryClusterInfoResponseBodyData {
+	s.HealthStatus = &v
+	return s
+}
+
+func (s *QueryClusterInfoResponseBodyData) SetInitCostTime(v int64) *QueryClusterInfoResponseBodyData {
+	s.InitCostTime = &v
+	return s
+}
+
+func (s *QueryClusterInfoResponseBodyData) SetInitStatus(v string) *QueryClusterInfoResponseBodyData {
+	s.InitStatus = &v
+	return s
+}
+
+func (s *QueryClusterInfoResponseBodyData) SetInstanceCount(v int32) *QueryClusterInfoResponseBodyData {
+	s.InstanceCount = &v
+	return s
+}
+
+func (s *QueryClusterInfoResponseBodyData) SetInstanceId(v string) *QueryClusterInfoResponseBodyData {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *QueryClusterInfoResponseBodyData) SetInstanceModels(v []*QueryClusterInfoResponseBodyDataInstanceModels) *QueryClusterInfoResponseBodyData {
+	s.InstanceModels = v
+	return s
+}
+
+func (s *QueryClusterInfoResponseBodyData) SetInternetAddress(v string) *QueryClusterInfoResponseBodyData {
+	s.InternetAddress = &v
+	return s
+}
+
+func (s *QueryClusterInfoResponseBodyData) SetInternetDomain(v string) *QueryClusterInfoResponseBodyData {
+	s.InternetDomain = &v
+	return s
+}
+
+func (s *QueryClusterInfoResponseBodyData) SetInternetPort(v string) *QueryClusterInfoResponseBodyData {
+	s.InternetPort = &v
+	return s
+}
+
+func (s *QueryClusterInfoResponseBodyData) SetIntranetAddress(v string) *QueryClusterInfoResponseBodyData {
+	s.IntranetAddress = &v
+	return s
+}
+
+func (s *QueryClusterInfoResponseBodyData) SetIntranetDomain(v string) *QueryClusterInfoResponseBodyData {
+	s.IntranetDomain = &v
+	return s
+}
+
+func (s *QueryClusterInfoResponseBodyData) SetIntranetPort(v string) *QueryClusterInfoResponseBodyData {
+	s.IntranetPort = &v
+	return s
+}
+
+func (s *QueryClusterInfoResponseBodyData) SetMemoryCapacity(v int64) *QueryClusterInfoResponseBodyData {
+	s.MemoryCapacity = &v
+	return s
+}
+
+func (s *QueryClusterInfoResponseBodyData) SetMseVersion(v string) *QueryClusterInfoResponseBodyData {
+	s.MseVersion = &v
+	return s
+}
+
+func (s *QueryClusterInfoResponseBodyData) SetNetType(v string) *QueryClusterInfoResponseBodyData {
+	s.NetType = &v
+	return s
+}
+
+func (s *QueryClusterInfoResponseBodyData) SetPayInfo(v string) *QueryClusterInfoResponseBodyData {
+	s.PayInfo = &v
+	return s
+}
+
+func (s *QueryClusterInfoResponseBodyData) SetPubNetworkFlow(v string) *QueryClusterInfoResponseBodyData {
+	s.PubNetworkFlow = &v
+	return s
+}
+
+func (s *QueryClusterInfoResponseBodyData) SetRegionId(v string) *QueryClusterInfoResponseBodyData {
+	s.RegionId = &v
+	return s
+}
+
+func (s *QueryClusterInfoResponseBodyData) SetTags(v map[string]interface{}) *QueryClusterInfoResponseBodyData {
+	s.Tags = v
+	return s
+}
+
+func (s *QueryClusterInfoResponseBodyData) SetVSwitchId(v string) *QueryClusterInfoResponseBodyData {
+	s.VSwitchId = &v
+	return s
+}
+
+func (s *QueryClusterInfoResponseBodyData) SetVpcId(v string) *QueryClusterInfoResponseBodyData {
+	s.VpcId = &v
+	return s
+}
+
+type QueryClusterInfoResponseBodyDataInstanceModels struct {
+	CreationTimestamp *string `json:"CreationTimestamp,omitempty" xml:"CreationTimestamp,omitempty"`
+	HealthStatus      *string `json:"HealthStatus,omitempty" xml:"HealthStatus,omitempty"`
+	InternetIp        *string `json:"InternetIp,omitempty" xml:"InternetIp,omitempty"`
+	Ip                *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	PodName           *string `json:"PodName,omitempty" xml:"PodName,omitempty"`
+	Role              *string `json:"Role,omitempty" xml:"Role,omitempty"`
+	SingleTunnelVip   *string `json:"SingleTunnelVip,omitempty" xml:"SingleTunnelVip,omitempty"`
+	Zone              *string `json:"Zone,omitempty" xml:"Zone,omitempty"`
+}
+
+func (s QueryClusterInfoResponseBodyDataInstanceModels) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryClusterInfoResponseBodyDataInstanceModels) GoString() string {
+	return s.String()
+}
+
+func (s *QueryClusterInfoResponseBodyDataInstanceModels) SetCreationTimestamp(v string) *QueryClusterInfoResponseBodyDataInstanceModels {
+	s.CreationTimestamp = &v
+	return s
+}
+
+func (s *QueryClusterInfoResponseBodyDataInstanceModels) SetHealthStatus(v string) *QueryClusterInfoResponseBodyDataInstanceModels {
+	s.HealthStatus = &v
+	return s
+}
+
+func (s *QueryClusterInfoResponseBodyDataInstanceModels) SetInternetIp(v string) *QueryClusterInfoResponseBodyDataInstanceModels {
+	s.InternetIp = &v
+	return s
+}
+
+func (s *QueryClusterInfoResponseBodyDataInstanceModels) SetIp(v string) *QueryClusterInfoResponseBodyDataInstanceModels {
+	s.Ip = &v
+	return s
+}
+
+func (s *QueryClusterInfoResponseBodyDataInstanceModels) SetPodName(v string) *QueryClusterInfoResponseBodyDataInstanceModels {
+	s.PodName = &v
+	return s
+}
+
+func (s *QueryClusterInfoResponseBodyDataInstanceModels) SetRole(v string) *QueryClusterInfoResponseBodyDataInstanceModels {
+	s.Role = &v
+	return s
+}
+
+func (s *QueryClusterInfoResponseBodyDataInstanceModels) SetSingleTunnelVip(v string) *QueryClusterInfoResponseBodyDataInstanceModels {
+	s.SingleTunnelVip = &v
+	return s
+}
+
+func (s *QueryClusterInfoResponseBodyDataInstanceModels) SetZone(v string) *QueryClusterInfoResponseBodyDataInstanceModels {
+	s.Zone = &v
+	return s
+}
+
+type QueryClusterInfoResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *QueryClusterInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s QueryClusterInfoResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryClusterInfoResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryClusterInfoResponse) SetHeaders(v map[string]*string) *QueryClusterInfoResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryClusterInfoResponse) SetStatusCode(v int32) *QueryClusterInfoResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QueryClusterInfoResponse) SetBody(v *QueryClusterInfoResponseBody) *QueryClusterInfoResponse {
+	s.Body = v
+	return s
+}
+
 type QueryClusterSpecificationRequest struct {
 	// The language of the response. Valid values:
 	//
@@ -27234,6 +27873,194 @@ func (s *QueryGovernanceKubernetesClusterResponse) SetStatusCode(v int32) *Query
 }
 
 func (s *QueryGovernanceKubernetesClusterResponse) SetBody(v *QueryGovernanceKubernetesClusterResponseBody) *QueryGovernanceKubernetesClusterResponse {
+	s.Body = v
+	return s
+}
+
+type QueryInstancesInfoRequest struct {
+	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	ClusterId      *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	OrderId        *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RequestPars    *string `json:"RequestPars,omitempty" xml:"RequestPars,omitempty"`
+}
+
+func (s QueryInstancesInfoRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryInstancesInfoRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryInstancesInfoRequest) SetAcceptLanguage(v string) *QueryInstancesInfoRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *QueryInstancesInfoRequest) SetClusterId(v string) *QueryInstancesInfoRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *QueryInstancesInfoRequest) SetInstanceId(v string) *QueryInstancesInfoRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *QueryInstancesInfoRequest) SetOrderId(v string) *QueryInstancesInfoRequest {
+	s.OrderId = &v
+	return s
+}
+
+func (s *QueryInstancesInfoRequest) SetRegionId(v string) *QueryInstancesInfoRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *QueryInstancesInfoRequest) SetRequestPars(v string) *QueryInstancesInfoRequest {
+	s.RequestPars = &v
+	return s
+}
+
+type QueryInstancesInfoResponseBody struct {
+	Data      []*QueryInstancesInfoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	ErrorCode *string                               `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	HttpCode  *string                               `json:"HttpCode,omitempty" xml:"HttpCode,omitempty"`
+	Message   *string                               `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                                 `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s QueryInstancesInfoResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryInstancesInfoResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryInstancesInfoResponseBody) SetData(v []*QueryInstancesInfoResponseBodyData) *QueryInstancesInfoResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *QueryInstancesInfoResponseBody) SetErrorCode(v string) *QueryInstancesInfoResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *QueryInstancesInfoResponseBody) SetHttpCode(v string) *QueryInstancesInfoResponseBody {
+	s.HttpCode = &v
+	return s
+}
+
+func (s *QueryInstancesInfoResponseBody) SetMessage(v string) *QueryInstancesInfoResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *QueryInstancesInfoResponseBody) SetRequestId(v string) *QueryInstancesInfoResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QueryInstancesInfoResponseBody) SetSuccess(v bool) *QueryInstancesInfoResponseBody {
+	s.Success = &v
+	return s
+}
+
+type QueryInstancesInfoResponseBodyData struct {
+	ClientPort        *string `json:"ClientPort,omitempty" xml:"ClientPort,omitempty"`
+	CreationTimestamp *string `json:"CreationTimestamp,omitempty" xml:"CreationTimestamp,omitempty"`
+	HealthStatus      *string `json:"HealthStatus,omitempty" xml:"HealthStatus,omitempty"`
+	InternetIp        *string `json:"InternetIp,omitempty" xml:"InternetIp,omitempty"`
+	Ip                *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	PodName           *string `json:"PodName,omitempty" xml:"PodName,omitempty"`
+	Role              *string `json:"Role,omitempty" xml:"Role,omitempty"`
+	SingleTunnelVip   *string `json:"SingleTunnelVip,omitempty" xml:"SingleTunnelVip,omitempty"`
+	Zone              *string `json:"Zone,omitempty" xml:"Zone,omitempty"`
+}
+
+func (s QueryInstancesInfoResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryInstancesInfoResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *QueryInstancesInfoResponseBodyData) SetClientPort(v string) *QueryInstancesInfoResponseBodyData {
+	s.ClientPort = &v
+	return s
+}
+
+func (s *QueryInstancesInfoResponseBodyData) SetCreationTimestamp(v string) *QueryInstancesInfoResponseBodyData {
+	s.CreationTimestamp = &v
+	return s
+}
+
+func (s *QueryInstancesInfoResponseBodyData) SetHealthStatus(v string) *QueryInstancesInfoResponseBodyData {
+	s.HealthStatus = &v
+	return s
+}
+
+func (s *QueryInstancesInfoResponseBodyData) SetInternetIp(v string) *QueryInstancesInfoResponseBodyData {
+	s.InternetIp = &v
+	return s
+}
+
+func (s *QueryInstancesInfoResponseBodyData) SetIp(v string) *QueryInstancesInfoResponseBodyData {
+	s.Ip = &v
+	return s
+}
+
+func (s *QueryInstancesInfoResponseBodyData) SetPodName(v string) *QueryInstancesInfoResponseBodyData {
+	s.PodName = &v
+	return s
+}
+
+func (s *QueryInstancesInfoResponseBodyData) SetRole(v string) *QueryInstancesInfoResponseBodyData {
+	s.Role = &v
+	return s
+}
+
+func (s *QueryInstancesInfoResponseBodyData) SetSingleTunnelVip(v string) *QueryInstancesInfoResponseBodyData {
+	s.SingleTunnelVip = &v
+	return s
+}
+
+func (s *QueryInstancesInfoResponseBodyData) SetZone(v string) *QueryInstancesInfoResponseBodyData {
+	s.Zone = &v
+	return s
+}
+
+type QueryInstancesInfoResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *QueryInstancesInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s QueryInstancesInfoResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryInstancesInfoResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryInstancesInfoResponse) SetHeaders(v map[string]*string) *QueryInstancesInfoResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryInstancesInfoResponse) SetStatusCode(v int32) *QueryInstancesInfoResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QueryInstancesInfoResponse) SetBody(v *QueryInstancesInfoResponseBody) *QueryInstancesInfoResponse {
 	s.Body = v
 	return s
 }
@@ -35461,6 +36288,90 @@ func (client *Client) AddGatewaySlb(request *AddGatewaySlbRequest) (_result *Add
 	return _result, _err
 }
 
+func (client *Client) AddMigrationTaskWithOptions(request *AddMigrationTaskRequest, runtime *util.RuntimeOptions) (_result *AddMigrationTaskResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClusterType)) {
+		query["ClusterType"] = request.ClusterType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		query["Id"] = request.Id
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OriginInstanceAddress)) {
+		query["OriginInstanceAddress"] = request.OriginInstanceAddress
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OriginInstanceName)) {
+		query["OriginInstanceName"] = request.OriginInstanceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OriginInstanceNamespace)) {
+		query["OriginInstanceNamespace"] = request.OriginInstanceNamespace
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectDesc)) {
+		query["ProjectDesc"] = request.ProjectDesc
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RequestPars)) {
+		query["RequestPars"] = request.RequestPars
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetClusterName)) {
+		query["TargetClusterName"] = request.TargetClusterName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetClusterUrl)) {
+		query["TargetClusterUrl"] = request.TargetClusterUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetInstanceId)) {
+		query["TargetInstanceId"] = request.TargetInstanceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AddMigrationTask"),
+		Version:     tea.String("2019-05-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &AddMigrationTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) AddMigrationTask(request *AddMigrationTaskRequest) (_result *AddMigrationTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &AddMigrationTaskResponse{}
+	_body, _err := client.AddMigrationTaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) AddMockRuleWithOptions(request *AddMockRuleRequest, runtime *util.RuntimeOptions) (_result *AddMockRuleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -41798,6 +42709,74 @@ func (client *Client) QueryClusterDiskSpecification(request *QueryClusterDiskSpe
 	return _result, _err
 }
 
+func (client *Client) QueryClusterInfoWithOptions(request *QueryClusterInfoRequest, runtime *util.RuntimeOptions) (_result *QueryClusterInfoResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AclSwitch)) {
+		query["AclSwitch"] = request.AclSwitch
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrderId)) {
+		query["OrderId"] = request.OrderId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RequestPars)) {
+		query["RequestPars"] = request.RequestPars
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryClusterInfo"),
+		Version:     tea.String("2019-05-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QueryClusterInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) QueryClusterInfo(request *QueryClusterInfoRequest) (_result *QueryClusterInfoResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QueryClusterInfoResponse{}
+	_body, _err := client.QueryClusterInfoWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) QueryClusterSpecificationWithOptions(request *QueryClusterSpecificationRequest, runtime *util.RuntimeOptions) (_result *QueryClusterSpecificationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -42011,6 +42990,70 @@ func (client *Client) QueryGovernanceKubernetesCluster(request *QueryGovernanceK
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryGovernanceKubernetesClusterResponse{}
 	_body, _err := client.QueryGovernanceKubernetesClusterWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) QueryInstancesInfoWithOptions(request *QueryInstancesInfoRequest, runtime *util.RuntimeOptions) (_result *QueryInstancesInfoResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrderId)) {
+		query["OrderId"] = request.OrderId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RequestPars)) {
+		query["RequestPars"] = request.RequestPars
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryInstancesInfo"),
+		Version:     tea.String("2019-05-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QueryInstancesInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) QueryInstancesInfo(request *QueryInstancesInfoRequest) (_result *QueryInstancesInfoResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QueryInstancesInfoResponse{}
+	_body, _err := client.QueryInstancesInfoWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
