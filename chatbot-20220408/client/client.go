@@ -1733,7 +1733,8 @@ func (s *CreateInstanceRequest) SetRobotType(v string) *CreateInstanceRequest {
 
 type CreateInstanceResponseBody struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateInstanceResponseBody) String() string {
@@ -2162,6 +2163,7 @@ func (s *CreateLgfShrinkRequest) SetLgfDefinitionShrink(v string) *CreateLgfShri
 }
 
 type CreateLgfResponseBody struct {
+	// LGF ID
 	LgfId     *int64  `json:"LgfId,omitempty" xml:"LgfId,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
@@ -3359,7 +3361,8 @@ type DeleteLgfRequest struct {
 	AgentKey   *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	IntentId   *int64  `json:"IntentId,omitempty" xml:"IntentId,omitempty"`
-	LgfId      *int64  `json:"LgfId,omitempty" xml:"LgfId,omitempty"`
+	// lgf Id
+	LgfId *int64 `json:"LgfId,omitempty" xml:"LgfId,omitempty"`
 }
 
 func (s DeleteLgfRequest) String() string {
@@ -3391,6 +3394,7 @@ func (s *DeleteLgfRequest) SetLgfId(v int64) *DeleteLgfRequest {
 }
 
 type DeleteLgfResponseBody struct {
+	// LGF ID
 	LgfId     *int64  `json:"LgfId,omitempty" xml:"LgfId,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
@@ -4879,9 +4883,10 @@ func (s *GenerateUserAccessTokenRequest) SetTelephone(v string) *GenerateUserAcc
 }
 
 type GenerateUserAccessTokenResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	Code    *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data    *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
@@ -5281,6 +5286,105 @@ func (s *GetPublishTaskStateResponse) SetBody(v *GetPublishTaskStateResponseBody
 	return s
 }
 
+type InitIMConnectRequest struct {
+	AgentKey        *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	From            *string `json:"From,omitempty" xml:"From,omitempty"`
+	UserAccessToken *string `json:"UserAccessToken,omitempty" xml:"UserAccessToken,omitempty"`
+}
+
+func (s InitIMConnectRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InitIMConnectRequest) GoString() string {
+	return s.String()
+}
+
+func (s *InitIMConnectRequest) SetAgentKey(v string) *InitIMConnectRequest {
+	s.AgentKey = &v
+	return s
+}
+
+func (s *InitIMConnectRequest) SetFrom(v string) *InitIMConnectRequest {
+	s.From = &v
+	return s
+}
+
+func (s *InitIMConnectRequest) SetUserAccessToken(v string) *InitIMConnectRequest {
+	s.UserAccessToken = &v
+	return s
+}
+
+type InitIMConnectResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s InitIMConnectResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InitIMConnectResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *InitIMConnectResponseBody) SetCode(v string) *InitIMConnectResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *InitIMConnectResponseBody) SetData(v string) *InitIMConnectResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *InitIMConnectResponseBody) SetMessage(v string) *InitIMConnectResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *InitIMConnectResponseBody) SetRequestId(v string) *InitIMConnectResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *InitIMConnectResponseBody) SetSuccess(v bool) *InitIMConnectResponseBody {
+	s.Success = &v
+	return s
+}
+
+type InitIMConnectResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *InitIMConnectResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s InitIMConnectResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InitIMConnectResponse) GoString() string {
+	return s.String()
+}
+
+func (s *InitIMConnectResponse) SetHeaders(v map[string]*string) *InitIMConnectResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *InitIMConnectResponse) SetStatusCode(v int32) *InitIMConnectResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *InitIMConnectResponse) SetBody(v *InitIMConnectResponseBody) *InitIMConnectResponse {
+	s.Body = v
+	return s
+}
+
 type LinkInstanceCategoryRequest struct {
 	AgentKey    *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	CategoryIds *string `json:"CategoryIds,omitempty" xml:"CategoryIds,omitempty"`
@@ -5383,8 +5487,9 @@ type ListAgentResponseBody struct {
 	Data       []*ListAgentResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	PageNumber *int32                       `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize   *int32                       `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId  *string                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *int32                       `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// Id of the request
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *int32  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListAgentResponseBody) String() string {
@@ -6546,6 +6651,7 @@ func (s *ListLgfResponseBody) SetTotalCount(v int32) *ListLgfResponseBody {
 type ListLgfResponseBodyLgfs struct {
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	IntentId   *int64  `json:"IntentId,omitempty" xml:"IntentId,omitempty"`
+	// LGF ID
 	LgfId      *int64  `json:"LgfId,omitempty" xml:"LgfId,omitempty"`
 	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
 	RuleText   *string `json:"RuleText,omitempty" xml:"RuleText,omitempty"`
@@ -8635,7 +8741,8 @@ type UpdateLgfRequest struct {
 	AgentKey      *string                        `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	InstanceId    *string                        `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	LgfDefinition *UpdateLgfRequestLgfDefinition `json:"LgfDefinition,omitempty" xml:"LgfDefinition,omitempty" type:"Struct"`
-	LgfId         *int64                         `json:"LgfId,omitempty" xml:"LgfId,omitempty"`
+	// LGF ID
+	LgfId *int64 `json:"LgfId,omitempty" xml:"LgfId,omitempty"`
 }
 
 func (s UpdateLgfRequest) String() string {
@@ -8693,7 +8800,8 @@ type UpdateLgfShrinkRequest struct {
 	AgentKey            *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	InstanceId          *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	LgfDefinitionShrink *string `json:"LgfDefinition,omitempty" xml:"LgfDefinition,omitempty"`
-	LgfId               *int64  `json:"LgfId,omitempty" xml:"LgfId,omitempty"`
+	// LGF ID
+	LgfId *int64 `json:"LgfId,omitempty" xml:"LgfId,omitempty"`
 }
 
 func (s UpdateLgfShrinkRequest) String() string {
@@ -10013,8 +10121,8 @@ func (client *Client) CreateIntentWithOptions(tmpReq *CreateIntentRequest, runti
 	}
 	request := &CreateIntentShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.IntentDefinition))) {
-		request.IntentDefinitionShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.IntentDefinition), tea.String("IntentDefinition"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.IntentDefinition)) {
+		request.IntentDefinitionShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.IntentDefinition, tea.String("IntentDefinition"), tea.String("json"))
 	}
 
 	query := map[string]interface{}{}
@@ -10071,8 +10179,8 @@ func (client *Client) CreateLgfWithOptions(tmpReq *CreateLgfRequest, runtime *ut
 	}
 	request := &CreateLgfShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.LgfDefinition))) {
-		request.LgfDefinitionShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.LgfDefinition), tea.String("LgfDefinition"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.LgfDefinition)) {
+		request.LgfDefinitionShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.LgfDefinition, tea.String("LgfDefinition"), tea.String("json"))
 	}
 
 	query := map[string]interface{}{}
@@ -10353,8 +10461,8 @@ func (client *Client) CreateUserSayWithOptions(tmpReq *CreateUserSayRequest, run
 	}
 	request := &CreateUserSayShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.UserSayDefinition))) {
-		request.UserSayDefinitionShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.UserSayDefinition), tea.String("UserSayDefinition"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.UserSayDefinition)) {
+		request.UserSayDefinitionShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.UserSayDefinition, tea.String("UserSayDefinition"), tea.String("json"))
 	}
 
 	query := map[string]interface{}{}
@@ -11597,6 +11705,58 @@ func (client *Client) GetPublishTaskState(request *GetPublishTaskStateRequest) (
 	runtime := &util.RuntimeOptions{}
 	_result = &GetPublishTaskStateResponse{}
 	_body, _err := client.GetPublishTaskStateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) InitIMConnectWithOptions(request *InitIMConnectRequest, runtime *util.RuntimeOptions) (_result *InitIMConnectResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AgentKey)) {
+		query["AgentKey"] = request.AgentKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.From)) {
+		query["From"] = request.From
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserAccessToken)) {
+		query["UserAccessToken"] = request.UserAccessToken
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("InitIMConnect"),
+		Version:     tea.String("2022-04-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &InitIMConnectResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) InitIMConnect(request *InitIMConnectRequest) (_result *InitIMConnectResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &InitIMConnectResponse{}
+	_body, _err := client.InitIMConnectWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12869,8 +13029,8 @@ func (client *Client) UpdateIntentWithOptions(tmpReq *UpdateIntentRequest, runti
 	}
 	request := &UpdateIntentShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.IntentDefinition))) {
-		request.IntentDefinitionShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.IntentDefinition), tea.String("IntentDefinition"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.IntentDefinition)) {
+		request.IntentDefinitionShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.IntentDefinition, tea.String("IntentDefinition"), tea.String("json"))
 	}
 
 	query := map[string]interface{}{}
@@ -12931,8 +13091,8 @@ func (client *Client) UpdateLgfWithOptions(tmpReq *UpdateLgfRequest, runtime *ut
 	}
 	request := &UpdateLgfShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.LgfDefinition))) {
-		request.LgfDefinitionShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.LgfDefinition), tea.String("LgfDefinition"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.LgfDefinition)) {
+		request.LgfDefinitionShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.LgfDefinition, tea.String("LgfDefinition"), tea.String("json"))
 	}
 
 	query := map[string]interface{}{}
@@ -13161,8 +13321,8 @@ func (client *Client) UpdateUserSayWithOptions(tmpReq *UpdateUserSayRequest, run
 	}
 	request := &UpdateUserSayShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.UserSayDefinition))) {
-		request.UserSayDefinitionShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.UserSayDefinition), tea.String("UserSayDefinition"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.UserSayDefinition)) {
+		request.UserSayDefinitionShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.UserSayDefinition, tea.String("UserSayDefinition"), tea.String("json"))
 	}
 
 	query := map[string]interface{}{}
