@@ -7056,6 +7056,157 @@ func (s *CommonApplySyncResponse) SetBody(v *CommonApplySyncResponseBody) *Commo
 	return s
 }
 
+type CorpAuthLinkInfoQueryResponseBody struct {
+	Code      *string                                  `json:"code,omitempty" xml:"code,omitempty"`
+	Message   *string                                  `json:"message,omitempty" xml:"message,omitempty"`
+	Module    *CorpAuthLinkInfoQueryResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
+	RequestId *string                                  `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	TraceId   *string                                  `json:"traceId,omitempty" xml:"traceId,omitempty"`
+}
+
+func (s CorpAuthLinkInfoQueryResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CorpAuthLinkInfoQueryResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CorpAuthLinkInfoQueryResponseBody) SetCode(v string) *CorpAuthLinkInfoQueryResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CorpAuthLinkInfoQueryResponseBody) SetMessage(v string) *CorpAuthLinkInfoQueryResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CorpAuthLinkInfoQueryResponseBody) SetModule(v *CorpAuthLinkInfoQueryResponseBodyModule) *CorpAuthLinkInfoQueryResponseBody {
+	s.Module = v
+	return s
+}
+
+func (s *CorpAuthLinkInfoQueryResponseBody) SetRequestId(v string) *CorpAuthLinkInfoQueryResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CorpAuthLinkInfoQueryResponseBody) SetTraceId(v string) *CorpAuthLinkInfoQueryResponseBody {
+	s.TraceId = &v
+	return s
+}
+
+type CorpAuthLinkInfoQueryResponseBodyModule struct {
+	LinkCorps []*CorpAuthLinkInfoQueryResponseBodyModuleLinkCorps `json:"link_corps,omitempty" xml:"link_corps,omitempty" type:"Repeated"`
+	OrgCorp   *CorpAuthLinkInfoQueryResponseBodyModuleOrgCorp     `json:"org_corp,omitempty" xml:"org_corp,omitempty" type:"Struct"`
+}
+
+func (s CorpAuthLinkInfoQueryResponseBodyModule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CorpAuthLinkInfoQueryResponseBodyModule) GoString() string {
+	return s.String()
+}
+
+func (s *CorpAuthLinkInfoQueryResponseBodyModule) SetLinkCorps(v []*CorpAuthLinkInfoQueryResponseBodyModuleLinkCorps) *CorpAuthLinkInfoQueryResponseBodyModule {
+	s.LinkCorps = v
+	return s
+}
+
+func (s *CorpAuthLinkInfoQueryResponseBodyModule) SetOrgCorp(v *CorpAuthLinkInfoQueryResponseBodyModuleOrgCorp) *CorpAuthLinkInfoQueryResponseBodyModule {
+	s.OrgCorp = v
+	return s
+}
+
+type CorpAuthLinkInfoQueryResponseBodyModuleLinkCorps struct {
+	CorpName   *string `json:"corp_name,omitempty" xml:"corp_name,omitempty"`
+	OpenCorpId *string `json:"open_corp_id,omitempty" xml:"open_corp_id,omitempty"`
+	TrueCorpId *string `json:"true_corp_id,omitempty" xml:"true_corp_id,omitempty"`
+}
+
+func (s CorpAuthLinkInfoQueryResponseBodyModuleLinkCorps) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CorpAuthLinkInfoQueryResponseBodyModuleLinkCorps) GoString() string {
+	return s.String()
+}
+
+func (s *CorpAuthLinkInfoQueryResponseBodyModuleLinkCorps) SetCorpName(v string) *CorpAuthLinkInfoQueryResponseBodyModuleLinkCorps {
+	s.CorpName = &v
+	return s
+}
+
+func (s *CorpAuthLinkInfoQueryResponseBodyModuleLinkCorps) SetOpenCorpId(v string) *CorpAuthLinkInfoQueryResponseBodyModuleLinkCorps {
+	s.OpenCorpId = &v
+	return s
+}
+
+func (s *CorpAuthLinkInfoQueryResponseBodyModuleLinkCorps) SetTrueCorpId(v string) *CorpAuthLinkInfoQueryResponseBodyModuleLinkCorps {
+	s.TrueCorpId = &v
+	return s
+}
+
+type CorpAuthLinkInfoQueryResponseBodyModuleOrgCorp struct {
+	CorpName   *string `json:"corp_name,omitempty" xml:"corp_name,omitempty"`
+	OpenCorpId *string `json:"open_corp_id,omitempty" xml:"open_corp_id,omitempty"`
+	TrueCorpId *string `json:"true_corp_id,omitempty" xml:"true_corp_id,omitempty"`
+}
+
+func (s CorpAuthLinkInfoQueryResponseBodyModuleOrgCorp) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CorpAuthLinkInfoQueryResponseBodyModuleOrgCorp) GoString() string {
+	return s.String()
+}
+
+func (s *CorpAuthLinkInfoQueryResponseBodyModuleOrgCorp) SetCorpName(v string) *CorpAuthLinkInfoQueryResponseBodyModuleOrgCorp {
+	s.CorpName = &v
+	return s
+}
+
+func (s *CorpAuthLinkInfoQueryResponseBodyModuleOrgCorp) SetOpenCorpId(v string) *CorpAuthLinkInfoQueryResponseBodyModuleOrgCorp {
+	s.OpenCorpId = &v
+	return s
+}
+
+func (s *CorpAuthLinkInfoQueryResponseBodyModuleOrgCorp) SetTrueCorpId(v string) *CorpAuthLinkInfoQueryResponseBodyModuleOrgCorp {
+	s.TrueCorpId = &v
+	return s
+}
+
+type CorpAuthLinkInfoQueryResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CorpAuthLinkInfoQueryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CorpAuthLinkInfoQueryResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CorpAuthLinkInfoQueryResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CorpAuthLinkInfoQueryResponse) SetHeaders(v map[string]*string) *CorpAuthLinkInfoQueryResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CorpAuthLinkInfoQueryResponse) SetStatusCode(v int32) *CorpAuthLinkInfoQueryResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CorpAuthLinkInfoQueryResponse) SetBody(v *CorpAuthLinkInfoQueryResponseBody) *CorpAuthLinkInfoQueryResponse {
+	s.Body = v
+	return s
+}
+
 type CorpTokenHeaders struct {
 	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	XAcsBtripAccessToken *string            `json:"x-acs-btrip-access-token,omitempty" xml:"x-acs-btrip-access-token,omitempty"`
@@ -19978,6 +20129,42 @@ func (client *Client) CommonApplySync(request *CommonApplySyncRequest) (_result 
 	headers := &CommonApplySyncHeaders{}
 	_result = &CommonApplySyncResponse{}
 	_body, _err := client.CommonApplySyncWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CorpAuthLinkInfoQueryWithOptions(headers map[string]*string, runtime *util.RuntimeOptions) (_result *CorpAuthLinkInfoQueryResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CorpAuthLinkInfoQuery"),
+		Version:     tea.String("2022-05-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/corp-authority-link/v1/info"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CorpAuthLinkInfoQueryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CorpAuthLinkInfoQuery() (_result *CorpAuthLinkInfoQueryResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CorpAuthLinkInfoQueryResponse{}
+	_body, _err := client.CorpAuthLinkInfoQueryWithOptions(headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
