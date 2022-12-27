@@ -12,6 +12,263 @@ import (
 	"github.com/alibabacloud-go/tea/tea"
 )
 
+type AddGroupMemberRequest struct {
+	AccessToken    *string `json:"accessToken,omitempty" xml:"accessToken,omitempty"`
+	AccessLevel    *int32  `json:"accessLevel,omitempty" xml:"accessLevel,omitempty"`
+	AliyunPks      *string `json:"aliyunPks,omitempty" xml:"aliyunPks,omitempty"`
+	OrganizationId *string `json:"organizationId,omitempty" xml:"organizationId,omitempty"`
+}
+
+func (s AddGroupMemberRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddGroupMemberRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AddGroupMemberRequest) SetAccessToken(v string) *AddGroupMemberRequest {
+	s.AccessToken = &v
+	return s
+}
+
+func (s *AddGroupMemberRequest) SetAccessLevel(v int32) *AddGroupMemberRequest {
+	s.AccessLevel = &v
+	return s
+}
+
+func (s *AddGroupMemberRequest) SetAliyunPks(v string) *AddGroupMemberRequest {
+	s.AliyunPks = &v
+	return s
+}
+
+func (s *AddGroupMemberRequest) SetOrganizationId(v string) *AddGroupMemberRequest {
+	s.OrganizationId = &v
+	return s
+}
+
+type AddGroupMemberResponseBody struct {
+	ErrorCode    *string                             `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMessage *string                             `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	RequestId    *string                             `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Result       []*AddGroupMemberResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Repeated"`
+	Success      *bool                               `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s AddGroupMemberResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddGroupMemberResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AddGroupMemberResponseBody) SetErrorCode(v string) *AddGroupMemberResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *AddGroupMemberResponseBody) SetErrorMessage(v string) *AddGroupMemberResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *AddGroupMemberResponseBody) SetRequestId(v string) *AddGroupMemberResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *AddGroupMemberResponseBody) SetResult(v []*AddGroupMemberResponseBodyResult) *AddGroupMemberResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *AddGroupMemberResponseBody) SetSuccess(v bool) *AddGroupMemberResponseBody {
+	s.Success = &v
+	return s
+}
+
+type AddGroupMemberResponseBodyResult struct {
+	AccessLevel *int32  `json:"accessLevel,omitempty" xml:"accessLevel,omitempty"`
+	AvatarUrl   *string `json:"avatarUrl,omitempty" xml:"avatarUrl,omitempty"`
+	Email       *string `json:"email,omitempty" xml:"email,omitempty"`
+	ExternUid   *string `json:"externUid,omitempty" xml:"externUid,omitempty"`
+	Id          *int64  `json:"id,omitempty" xml:"id,omitempty"`
+	Name        *string `json:"name,omitempty" xml:"name,omitempty"`
+	SourceId    *int64  `json:"sourceId,omitempty" xml:"sourceId,omitempty"`
+	State       *string `json:"state,omitempty" xml:"state,omitempty"`
+	Username    *string `json:"username,omitempty" xml:"username,omitempty"`
+}
+
+func (s AddGroupMemberResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddGroupMemberResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *AddGroupMemberResponseBodyResult) SetAccessLevel(v int32) *AddGroupMemberResponseBodyResult {
+	s.AccessLevel = &v
+	return s
+}
+
+func (s *AddGroupMemberResponseBodyResult) SetAvatarUrl(v string) *AddGroupMemberResponseBodyResult {
+	s.AvatarUrl = &v
+	return s
+}
+
+func (s *AddGroupMemberResponseBodyResult) SetEmail(v string) *AddGroupMemberResponseBodyResult {
+	s.Email = &v
+	return s
+}
+
+func (s *AddGroupMemberResponseBodyResult) SetExternUid(v string) *AddGroupMemberResponseBodyResult {
+	s.ExternUid = &v
+	return s
+}
+
+func (s *AddGroupMemberResponseBodyResult) SetId(v int64) *AddGroupMemberResponseBodyResult {
+	s.Id = &v
+	return s
+}
+
+func (s *AddGroupMemberResponseBodyResult) SetName(v string) *AddGroupMemberResponseBodyResult {
+	s.Name = &v
+	return s
+}
+
+func (s *AddGroupMemberResponseBodyResult) SetSourceId(v int64) *AddGroupMemberResponseBodyResult {
+	s.SourceId = &v
+	return s
+}
+
+func (s *AddGroupMemberResponseBodyResult) SetState(v string) *AddGroupMemberResponseBodyResult {
+	s.State = &v
+	return s
+}
+
+func (s *AddGroupMemberResponseBodyResult) SetUsername(v string) *AddGroupMemberResponseBodyResult {
+	s.Username = &v
+	return s
+}
+
+type AddGroupMemberResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *AddGroupMemberResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s AddGroupMemberResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddGroupMemberResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AddGroupMemberResponse) SetHeaders(v map[string]*string) *AddGroupMemberResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AddGroupMemberResponse) SetStatusCode(v int32) *AddGroupMemberResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *AddGroupMemberResponse) SetBody(v *AddGroupMemberResponseBody) *AddGroupMemberResponse {
+	s.Body = v
+	return s
+}
+
+type AddPipelineRelationsRequest struct {
+	RelObjectIds  *string `json:"relObjectIds,omitempty" xml:"relObjectIds,omitempty"`
+	RelObjectType *string `json:"relObjectType,omitempty" xml:"relObjectType,omitempty"`
+}
+
+func (s AddPipelineRelationsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddPipelineRelationsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AddPipelineRelationsRequest) SetRelObjectIds(v string) *AddPipelineRelationsRequest {
+	s.RelObjectIds = &v
+	return s
+}
+
+func (s *AddPipelineRelationsRequest) SetRelObjectType(v string) *AddPipelineRelationsRequest {
+	s.RelObjectType = &v
+	return s
+}
+
+type AddPipelineRelationsResponseBody struct {
+	ErrorCode    *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	RequestId    *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success      *bool   `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s AddPipelineRelationsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddPipelineRelationsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AddPipelineRelationsResponseBody) SetErrorCode(v string) *AddPipelineRelationsResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *AddPipelineRelationsResponseBody) SetErrorMessage(v string) *AddPipelineRelationsResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *AddPipelineRelationsResponseBody) SetRequestId(v string) *AddPipelineRelationsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *AddPipelineRelationsResponseBody) SetSuccess(v bool) *AddPipelineRelationsResponseBody {
+	s.Success = &v
+	return s
+}
+
+type AddPipelineRelationsResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *AddPipelineRelationsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s AddPipelineRelationsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddPipelineRelationsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AddPipelineRelationsResponse) SetHeaders(v map[string]*string) *AddPipelineRelationsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AddPipelineRelationsResponse) SetStatusCode(v int32) *AddPipelineRelationsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *AddPipelineRelationsResponse) SetBody(v *AddPipelineRelationsResponseBody) *AddPipelineRelationsResponse {
+	s.Body = v
+	return s
+}
+
 type AddRepositoryMemberRequest struct {
 	AccessToken    *string `json:"accessToken,omitempty" xml:"accessToken,omitempty"`
 	AccessLevel    *int32  `json:"accessLevel,omitempty" xml:"accessLevel,omitempty"`
@@ -605,6 +862,152 @@ func (s *CreateBranchResponse) SetBody(v *CreateBranchResponseBody) *CreateBranc
 	return s
 }
 
+type CreateDeployKeyRequest struct {
+	AccessToken    *string `json:"accessToken,omitempty" xml:"accessToken,omitempty"`
+	Key            *string `json:"key,omitempty" xml:"key,omitempty"`
+	Title          *string `json:"title,omitempty" xml:"title,omitempty"`
+	OrganizationId *string `json:"organizationId,omitempty" xml:"organizationId,omitempty"`
+}
+
+func (s CreateDeployKeyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDeployKeyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDeployKeyRequest) SetAccessToken(v string) *CreateDeployKeyRequest {
+	s.AccessToken = &v
+	return s
+}
+
+func (s *CreateDeployKeyRequest) SetKey(v string) *CreateDeployKeyRequest {
+	s.Key = &v
+	return s
+}
+
+func (s *CreateDeployKeyRequest) SetTitle(v string) *CreateDeployKeyRequest {
+	s.Title = &v
+	return s
+}
+
+func (s *CreateDeployKeyRequest) SetOrganizationId(v string) *CreateDeployKeyRequest {
+	s.OrganizationId = &v
+	return s
+}
+
+type CreateDeployKeyResponseBody struct {
+	ErrorCode    *string                            `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMessage *string                            `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	RequestId    *string                            `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Result       *CreateDeployKeyResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
+	Success      *bool                              `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s CreateDeployKeyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDeployKeyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDeployKeyResponseBody) SetErrorCode(v string) *CreateDeployKeyResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *CreateDeployKeyResponseBody) SetErrorMessage(v string) *CreateDeployKeyResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *CreateDeployKeyResponseBody) SetRequestId(v string) *CreateDeployKeyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateDeployKeyResponseBody) SetResult(v *CreateDeployKeyResponseBodyResult) *CreateDeployKeyResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *CreateDeployKeyResponseBody) SetSuccess(v bool) *CreateDeployKeyResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreateDeployKeyResponseBodyResult struct {
+	CreatedAt   *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
+	Fingerprint *string `json:"fingerprint,omitempty" xml:"fingerprint,omitempty"`
+	Id          *int64  `json:"id,omitempty" xml:"id,omitempty"`
+	Key         *string `json:"key,omitempty" xml:"key,omitempty"`
+	Title       *string `json:"title,omitempty" xml:"title,omitempty"`
+}
+
+func (s CreateDeployKeyResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDeployKeyResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDeployKeyResponseBodyResult) SetCreatedAt(v string) *CreateDeployKeyResponseBodyResult {
+	s.CreatedAt = &v
+	return s
+}
+
+func (s *CreateDeployKeyResponseBodyResult) SetFingerprint(v string) *CreateDeployKeyResponseBodyResult {
+	s.Fingerprint = &v
+	return s
+}
+
+func (s *CreateDeployKeyResponseBodyResult) SetId(v int64) *CreateDeployKeyResponseBodyResult {
+	s.Id = &v
+	return s
+}
+
+func (s *CreateDeployKeyResponseBodyResult) SetKey(v string) *CreateDeployKeyResponseBodyResult {
+	s.Key = &v
+	return s
+}
+
+func (s *CreateDeployKeyResponseBodyResult) SetTitle(v string) *CreateDeployKeyResponseBodyResult {
+	s.Title = &v
+	return s
+}
+
+type CreateDeployKeyResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateDeployKeyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateDeployKeyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDeployKeyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDeployKeyResponse) SetHeaders(v map[string]*string) *CreateDeployKeyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateDeployKeyResponse) SetStatusCode(v int32) *CreateDeployKeyResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateDeployKeyResponse) SetBody(v *CreateDeployKeyResponseBody) *CreateDeployKeyResponse {
+	s.Body = v
+	return s
+}
+
 type CreateFileRequest struct {
 	AccessToken    *string `json:"accessToken,omitempty" xml:"accessToken,omitempty"`
 	BranchName     *string `json:"branchName,omitempty" xml:"branchName,omitempty"`
@@ -1079,7 +1482,9 @@ func (s *CreateHostGroupResponse) SetBody(v *CreateHostGroupResponseBody) *Creat
 }
 
 type CreateOAuthTokenRequest struct {
-	ClientId     *string `json:"clientId,omitempty" xml:"clientId,omitempty"`
+	// clientId
+	ClientId *string `json:"clientId,omitempty" xml:"clientId,omitempty"`
+	// client_secret
 	ClientSecret *string `json:"clientSecret,omitempty" xml:"clientSecret,omitempty"`
 	Code         *string `json:"code,omitempty" xml:"code,omitempty"`
 	GrantType    *string `json:"grantType,omitempty" xml:"grantType,omitempty"`
@@ -1168,9 +1573,10 @@ func (s *CreateOAuthTokenResponseBody) SetSuccess(v string) *CreateOAuthTokenRes
 
 type CreateOAuthTokenResponseBodyResult struct {
 	AccessToken *string `json:"accessToken,omitempty" xml:"accessToken,omitempty"`
-	Id          *string `json:"id,omitempty" xml:"id,omitempty"`
-	Scope       *string `json:"scope,omitempty" xml:"scope,omitempty"`
-	TokenType   *string `json:"tokenType,omitempty" xml:"tokenType,omitempty"`
+	// id
+	Id        *string `json:"id,omitempty" xml:"id,omitempty"`
+	Scope     *string `json:"scope,omitempty" xml:"scope,omitempty"`
+	TokenType *string `json:"tokenType,omitempty" xml:"tokenType,omitempty"`
 }
 
 func (s CreateOAuthTokenResponseBodyResult) String() string {
@@ -2385,15 +2791,16 @@ func (s *CreateRepositoryResponseBody) SetSuccess(v bool) *CreateRepositoryRespo
 }
 
 type CreateRepositoryResponseBodyResult struct {
-	ImportFromSvn     *bool                                        `json:"Import_from_svn,omitempty" xml:"Import_from_svn,omitempty"`
-	Archived          *bool                                        `json:"archived,omitempty" xml:"archived,omitempty"`
-	AvatarUrl         *string                                      `json:"avatar_url,omitempty" xml:"avatar_url,omitempty"`
-	CreatedAt         *string                                      `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
-	CreatorId         *int64                                       `json:"creatorId,omitempty" xml:"creatorId,omitempty"`
-	DefaultBranch     *string                                      `json:"defaultBranch,omitempty" xml:"defaultBranch,omitempty"`
-	DemoProject       *bool                                        `json:"demoProject,omitempty" xml:"demoProject,omitempty"`
-	Description       *string                                      `json:"description,omitempty" xml:"description,omitempty"`
-	HttpUrlToRepo     *string                                      `json:"httpUrlToRepo,omitempty" xml:"httpUrlToRepo,omitempty"`
+	ImportFromSvn *bool   `json:"Import_from_svn,omitempty" xml:"Import_from_svn,omitempty"`
+	Archived      *bool   `json:"archived,omitempty" xml:"archived,omitempty"`
+	AvatarUrl     *string `json:"avatar_url,omitempty" xml:"avatar_url,omitempty"`
+	CreatedAt     *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
+	CreatorId     *int64  `json:"creatorId,omitempty" xml:"creatorId,omitempty"`
+	DefaultBranch *string `json:"defaultBranch,omitempty" xml:"defaultBranch,omitempty"`
+	DemoProject   *bool   `json:"demoProject,omitempty" xml:"demoProject,omitempty"`
+	Description   *string `json:"description,omitempty" xml:"description,omitempty"`
+	HttpUrlToRepo *string `json:"httpUrlToRepo,omitempty" xml:"httpUrlToRepo,omitempty"`
+	// id
 	Id                *int64                                       `json:"id,omitempty" xml:"id,omitempty"`
 	LastActivityAt    *string                                      `json:"lastActivityAt,omitempty" xml:"lastActivityAt,omitempty"`
 	Name              *string                                      `json:"name,omitempty" xml:"name,omitempty"`
@@ -2403,7 +2810,8 @@ type CreateRepositoryResponseBodyResult struct {
 	PathWithNamespace *string                                      `json:"pathWithNamespace,omitempty" xml:"pathWithNamespace,omitempty"`
 	SshUrlToRepo      *string                                      `json:"sshUrlToRepo,omitempty" xml:"sshUrlToRepo,omitempty"`
 	VisibilityLevel   *string                                      `json:"visibilityLevel,omitempty" xml:"visibilityLevel,omitempty"`
-	WebUrl            *string                                      `json:"webUrl,omitempty" xml:"webUrl,omitempty"`
+	// web url
+	WebUrl *string `json:"webUrl,omitempty" xml:"webUrl,omitempty"`
 }
 
 func (s CreateRepositoryResponseBodyResult) String() string {
@@ -2510,9 +2918,10 @@ func (s *CreateRepositoryResponseBodyResult) SetWebUrl(v string) *CreateReposito
 }
 
 type CreateRepositoryResponseBodyResultNamespace struct {
-	Avatar          *string `json:"avatar,omitempty" xml:"avatar,omitempty"`
-	CreatedAt       *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
-	Description     *string `json:"description,omitempty" xml:"description,omitempty"`
+	Avatar      *string `json:"avatar,omitempty" xml:"avatar,omitempty"`
+	CreatedAt   *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// id
 	Id              *int64  `json:"id,omitempty" xml:"id,omitempty"`
 	Name            *string `json:"name,omitempty" xml:"name,omitempty"`
 	OwnerId         *int64  `json:"ownerId,omitempty" xml:"ownerId,omitempty"`
@@ -2605,6 +3014,218 @@ func (s *CreateRepositoryResponse) SetStatusCode(v int32) *CreateRepositoryRespo
 }
 
 func (s *CreateRepositoryResponse) SetBody(v *CreateRepositoryResponseBody) *CreateRepositoryResponse {
+	s.Body = v
+	return s
+}
+
+type CreateRepositoryGroupRequest struct {
+	AccessToken     *string `json:"accessToken,omitempty" xml:"accessToken,omitempty"`
+	AvatarUrl       *string `json:"avatarUrl,omitempty" xml:"avatarUrl,omitempty"`
+	Description     *string `json:"description,omitempty" xml:"description,omitempty"`
+	Name            *string `json:"name,omitempty" xml:"name,omitempty"`
+	ParentId        *int64  `json:"parentId,omitempty" xml:"parentId,omitempty"`
+	Path            *string `json:"path,omitempty" xml:"path,omitempty"`
+	VisibilityLevel *int32  `json:"visibilityLevel,omitempty" xml:"visibilityLevel,omitempty"`
+	OrganizationId  *string `json:"organizationId,omitempty" xml:"organizationId,omitempty"`
+}
+
+func (s CreateRepositoryGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRepositoryGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRepositoryGroupRequest) SetAccessToken(v string) *CreateRepositoryGroupRequest {
+	s.AccessToken = &v
+	return s
+}
+
+func (s *CreateRepositoryGroupRequest) SetAvatarUrl(v string) *CreateRepositoryGroupRequest {
+	s.AvatarUrl = &v
+	return s
+}
+
+func (s *CreateRepositoryGroupRequest) SetDescription(v string) *CreateRepositoryGroupRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateRepositoryGroupRequest) SetName(v string) *CreateRepositoryGroupRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateRepositoryGroupRequest) SetParentId(v int64) *CreateRepositoryGroupRequest {
+	s.ParentId = &v
+	return s
+}
+
+func (s *CreateRepositoryGroupRequest) SetPath(v string) *CreateRepositoryGroupRequest {
+	s.Path = &v
+	return s
+}
+
+func (s *CreateRepositoryGroupRequest) SetVisibilityLevel(v int32) *CreateRepositoryGroupRequest {
+	s.VisibilityLevel = &v
+	return s
+}
+
+func (s *CreateRepositoryGroupRequest) SetOrganizationId(v string) *CreateRepositoryGroupRequest {
+	s.OrganizationId = &v
+	return s
+}
+
+type CreateRepositoryGroupResponseBody struct {
+	ErrorCode    *string                                  `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMessage *string                                  `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	RequestId    *string                                  `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Result       *CreateRepositoryGroupResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
+	Success      *bool                                    `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s CreateRepositoryGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRepositoryGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRepositoryGroupResponseBody) SetErrorCode(v string) *CreateRepositoryGroupResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *CreateRepositoryGroupResponseBody) SetErrorMessage(v string) *CreateRepositoryGroupResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *CreateRepositoryGroupResponseBody) SetRequestId(v string) *CreateRepositoryGroupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateRepositoryGroupResponseBody) SetResult(v *CreateRepositoryGroupResponseBodyResult) *CreateRepositoryGroupResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *CreateRepositoryGroupResponseBody) SetSuccess(v bool) *CreateRepositoryGroupResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreateRepositoryGroupResponseBodyResult struct {
+	AvatarUrl         *string `json:"avatarUrl,omitempty" xml:"avatarUrl,omitempty"`
+	Description       *string `json:"description,omitempty" xml:"description,omitempty"`
+	Id                *int64  `json:"id,omitempty" xml:"id,omitempty"`
+	Name              *string `json:"name,omitempty" xml:"name,omitempty"`
+	NameWithNamespace *string `json:"nameWithNamespace,omitempty" xml:"nameWithNamespace,omitempty"`
+	OwnerId           *int64  `json:"ownerId,omitempty" xml:"ownerId,omitempty"`
+	ParentId          *int64  `json:"parentId,omitempty" xml:"parentId,omitempty"`
+	Path              *string `json:"path,omitempty" xml:"path,omitempty"`
+	PathWithNamespace *string `json:"pathWithNamespace,omitempty" xml:"pathWithNamespace,omitempty"`
+	Type              *string `json:"type,omitempty" xml:"type,omitempty"`
+	VisibilityLevel   *int32  `json:"visibilityLevel,omitempty" xml:"visibilityLevel,omitempty"`
+	WebUrl            *string `json:"webUrl,omitempty" xml:"webUrl,omitempty"`
+}
+
+func (s CreateRepositoryGroupResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRepositoryGroupResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRepositoryGroupResponseBodyResult) SetAvatarUrl(v string) *CreateRepositoryGroupResponseBodyResult {
+	s.AvatarUrl = &v
+	return s
+}
+
+func (s *CreateRepositoryGroupResponseBodyResult) SetDescription(v string) *CreateRepositoryGroupResponseBodyResult {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateRepositoryGroupResponseBodyResult) SetId(v int64) *CreateRepositoryGroupResponseBodyResult {
+	s.Id = &v
+	return s
+}
+
+func (s *CreateRepositoryGroupResponseBodyResult) SetName(v string) *CreateRepositoryGroupResponseBodyResult {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateRepositoryGroupResponseBodyResult) SetNameWithNamespace(v string) *CreateRepositoryGroupResponseBodyResult {
+	s.NameWithNamespace = &v
+	return s
+}
+
+func (s *CreateRepositoryGroupResponseBodyResult) SetOwnerId(v int64) *CreateRepositoryGroupResponseBodyResult {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *CreateRepositoryGroupResponseBodyResult) SetParentId(v int64) *CreateRepositoryGroupResponseBodyResult {
+	s.ParentId = &v
+	return s
+}
+
+func (s *CreateRepositoryGroupResponseBodyResult) SetPath(v string) *CreateRepositoryGroupResponseBodyResult {
+	s.Path = &v
+	return s
+}
+
+func (s *CreateRepositoryGroupResponseBodyResult) SetPathWithNamespace(v string) *CreateRepositoryGroupResponseBodyResult {
+	s.PathWithNamespace = &v
+	return s
+}
+
+func (s *CreateRepositoryGroupResponseBodyResult) SetType(v string) *CreateRepositoryGroupResponseBodyResult {
+	s.Type = &v
+	return s
+}
+
+func (s *CreateRepositoryGroupResponseBodyResult) SetVisibilityLevel(v int32) *CreateRepositoryGroupResponseBodyResult {
+	s.VisibilityLevel = &v
+	return s
+}
+
+func (s *CreateRepositoryGroupResponseBodyResult) SetWebUrl(v string) *CreateRepositoryGroupResponseBodyResult {
+	s.WebUrl = &v
+	return s
+}
+
+type CreateRepositoryGroupResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateRepositoryGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateRepositoryGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRepositoryGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRepositoryGroupResponse) SetHeaders(v map[string]*string) *CreateRepositoryGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateRepositoryGroupResponse) SetStatusCode(v int32) *CreateRepositoryGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateRepositoryGroupResponse) SetBody(v *CreateRepositoryGroupResponseBody) *CreateRepositoryGroupResponse {
 	s.Body = v
 	return s
 }
@@ -2979,6 +3600,235 @@ func (s *CreateSshKeyResponse) SetStatusCode(v int32) *CreateSshKeyResponse {
 }
 
 func (s *CreateSshKeyResponse) SetBody(v *CreateSshKeyResponseBody) *CreateSshKeyResponse {
+	s.Body = v
+	return s
+}
+
+type CreateTagRequest struct {
+	AccessToken    *string `json:"accessToken,omitempty" xml:"accessToken,omitempty"`
+	Message        *string `json:"message,omitempty" xml:"message,omitempty"`
+	Ref            *string `json:"ref,omitempty" xml:"ref,omitempty"`
+	TagName        *string `json:"tagName,omitempty" xml:"tagName,omitempty"`
+	OrganizationId *string `json:"organizationId,omitempty" xml:"organizationId,omitempty"`
+}
+
+func (s CreateTagRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTagRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTagRequest) SetAccessToken(v string) *CreateTagRequest {
+	s.AccessToken = &v
+	return s
+}
+
+func (s *CreateTagRequest) SetMessage(v string) *CreateTagRequest {
+	s.Message = &v
+	return s
+}
+
+func (s *CreateTagRequest) SetRef(v string) *CreateTagRequest {
+	s.Ref = &v
+	return s
+}
+
+func (s *CreateTagRequest) SetTagName(v string) *CreateTagRequest {
+	s.TagName = &v
+	return s
+}
+
+func (s *CreateTagRequest) SetOrganizationId(v string) *CreateTagRequest {
+	s.OrganizationId = &v
+	return s
+}
+
+type CreateTagResponseBody struct {
+	ErrorCode    *string                      `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMessage *string                      `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	RequestId    *string                      `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Result       *CreateTagResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
+	Success      *bool                        `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s CreateTagResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTagResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTagResponseBody) SetErrorCode(v string) *CreateTagResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *CreateTagResponseBody) SetErrorMessage(v string) *CreateTagResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *CreateTagResponseBody) SetRequestId(v string) *CreateTagResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateTagResponseBody) SetResult(v *CreateTagResponseBodyResult) *CreateTagResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *CreateTagResponseBody) SetSuccess(v bool) *CreateTagResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreateTagResponseBodyResult struct {
+	Commit  *CreateTagResponseBodyResultCommit `json:"commit,omitempty" xml:"commit,omitempty" type:"Struct"`
+	Id      *string                            `json:"id,omitempty" xml:"id,omitempty"`
+	Message *string                            `json:"message,omitempty" xml:"message,omitempty"`
+	Name    *string                            `json:"name,omitempty" xml:"name,omitempty"`
+}
+
+func (s CreateTagResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTagResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTagResponseBodyResult) SetCommit(v *CreateTagResponseBodyResultCommit) *CreateTagResponseBodyResult {
+	s.Commit = v
+	return s
+}
+
+func (s *CreateTagResponseBodyResult) SetId(v string) *CreateTagResponseBodyResult {
+	s.Id = &v
+	return s
+}
+
+func (s *CreateTagResponseBodyResult) SetMessage(v string) *CreateTagResponseBodyResult {
+	s.Message = &v
+	return s
+}
+
+func (s *CreateTagResponseBodyResult) SetName(v string) *CreateTagResponseBodyResult {
+	s.Name = &v
+	return s
+}
+
+type CreateTagResponseBodyResultCommit struct {
+	AuthorEmail    *string   `json:"authorEmail,omitempty" xml:"authorEmail,omitempty"`
+	AuthorName     *string   `json:"authorName,omitempty" xml:"authorName,omitempty"`
+	AuthoredDate   *string   `json:"authoredDate,omitempty" xml:"authoredDate,omitempty"`
+	CommittedDate  *string   `json:"committedDate,omitempty" xml:"committedDate,omitempty"`
+	CommitterEmail *string   `json:"committerEmail,omitempty" xml:"committerEmail,omitempty"`
+	CommitterName  *string   `json:"committerName,omitempty" xml:"committerName,omitempty"`
+	CreatedAt      *string   `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
+	Id             *string   `json:"id,omitempty" xml:"id,omitempty"`
+	Message        *string   `json:"message,omitempty" xml:"message,omitempty"`
+	ParentIds      []*string `json:"parentIds,omitempty" xml:"parentIds,omitempty" type:"Repeated"`
+	ShortId        *string   `json:"shortId,omitempty" xml:"shortId,omitempty"`
+	Title          *string   `json:"title,omitempty" xml:"title,omitempty"`
+}
+
+func (s CreateTagResponseBodyResultCommit) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTagResponseBodyResultCommit) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTagResponseBodyResultCommit) SetAuthorEmail(v string) *CreateTagResponseBodyResultCommit {
+	s.AuthorEmail = &v
+	return s
+}
+
+func (s *CreateTagResponseBodyResultCommit) SetAuthorName(v string) *CreateTagResponseBodyResultCommit {
+	s.AuthorName = &v
+	return s
+}
+
+func (s *CreateTagResponseBodyResultCommit) SetAuthoredDate(v string) *CreateTagResponseBodyResultCommit {
+	s.AuthoredDate = &v
+	return s
+}
+
+func (s *CreateTagResponseBodyResultCommit) SetCommittedDate(v string) *CreateTagResponseBodyResultCommit {
+	s.CommittedDate = &v
+	return s
+}
+
+func (s *CreateTagResponseBodyResultCommit) SetCommitterEmail(v string) *CreateTagResponseBodyResultCommit {
+	s.CommitterEmail = &v
+	return s
+}
+
+func (s *CreateTagResponseBodyResultCommit) SetCommitterName(v string) *CreateTagResponseBodyResultCommit {
+	s.CommitterName = &v
+	return s
+}
+
+func (s *CreateTagResponseBodyResultCommit) SetCreatedAt(v string) *CreateTagResponseBodyResultCommit {
+	s.CreatedAt = &v
+	return s
+}
+
+func (s *CreateTagResponseBodyResultCommit) SetId(v string) *CreateTagResponseBodyResultCommit {
+	s.Id = &v
+	return s
+}
+
+func (s *CreateTagResponseBodyResultCommit) SetMessage(v string) *CreateTagResponseBodyResultCommit {
+	s.Message = &v
+	return s
+}
+
+func (s *CreateTagResponseBodyResultCommit) SetParentIds(v []*string) *CreateTagResponseBodyResultCommit {
+	s.ParentIds = v
+	return s
+}
+
+func (s *CreateTagResponseBodyResultCommit) SetShortId(v string) *CreateTagResponseBodyResultCommit {
+	s.ShortId = &v
+	return s
+}
+
+func (s *CreateTagResponseBodyResultCommit) SetTitle(v string) *CreateTagResponseBodyResultCommit {
+	s.Title = &v
+	return s
+}
+
+type CreateTagResponse struct {
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateTagResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateTagResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTagResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTagResponse) SetHeaders(v map[string]*string) *CreateTagResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateTagResponse) SetStatusCode(v int32) *CreateTagResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateTagResponse) SetBody(v *CreateTagResponseBody) *CreateTagResponse {
 	s.Body = v
 	return s
 }
@@ -3458,8 +4308,9 @@ type CreateWorkitemCommentResponseBody struct {
 	Comment   *CreateWorkitemCommentResponseBodyComment `json:"Comment,omitempty" xml:"Comment,omitempty" type:"Struct"`
 	ErrorCode *string                                   `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
 	ErrorMsg  *string                                   `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
-	RequestId *string                                   `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Success   *string                                   `json:"success,omitempty" xml:"success,omitempty"`
+	// Id of the request
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success   *string `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s CreateWorkitemCommentResponseBody) String() string {
@@ -3699,8 +4550,9 @@ type CreateWorkitemEstimateResponseBody struct {
 	WorkitemTimeEstimate *CreateWorkitemEstimateResponseBodyWorkitemTimeEstimate `json:"WorkitemTimeEstimate,omitempty" xml:"WorkitemTimeEstimate,omitempty" type:"Struct"`
 	ErrorCode            *string                                                 `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
 	ErrorMsg             *string                                                 `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
-	RequestId            *string                                                 `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Success              *bool                                                   `json:"success,omitempty" xml:"success,omitempty"`
+	// Id of the request
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success   *bool   `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s CreateWorkitemEstimateResponseBody) String() string {
@@ -3988,8 +4840,9 @@ type CreateWorkitemRecordResponseBody struct {
 	WorkitemTime *CreateWorkitemRecordResponseBodyWorkitemTime `json:"WorkitemTime,omitempty" xml:"WorkitemTime,omitempty" type:"Struct"`
 	ErrorCode    *string                                       `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
 	ErrorMsg     *string                                       `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
-	RequestId    *string                                       `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Success      *bool                                         `json:"success,omitempty" xml:"success,omitempty"`
+	// Id of the request
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success   *bool   `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s CreateWorkitemRecordResponseBody) String() string {
@@ -4786,6 +5639,176 @@ func (s *DeleteFlowTagGroupResponse) SetBody(v *DeleteFlowTagGroupResponseBody) 
 	return s
 }
 
+type DeleteGroupMemberRequest struct {
+	AccessToken    *string `json:"accessToken,omitempty" xml:"accessToken,omitempty"`
+	AliyunPk       *string `json:"aliyunPk,omitempty" xml:"aliyunPk,omitempty"`
+	MemberType     *string `json:"memberType,omitempty" xml:"memberType,omitempty"`
+	OrganizationId *string `json:"organizationId,omitempty" xml:"organizationId,omitempty"`
+}
+
+func (s DeleteGroupMemberRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteGroupMemberRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteGroupMemberRequest) SetAccessToken(v string) *DeleteGroupMemberRequest {
+	s.AccessToken = &v
+	return s
+}
+
+func (s *DeleteGroupMemberRequest) SetAliyunPk(v string) *DeleteGroupMemberRequest {
+	s.AliyunPk = &v
+	return s
+}
+
+func (s *DeleteGroupMemberRequest) SetMemberType(v string) *DeleteGroupMemberRequest {
+	s.MemberType = &v
+	return s
+}
+
+func (s *DeleteGroupMemberRequest) SetOrganizationId(v string) *DeleteGroupMemberRequest {
+	s.OrganizationId = &v
+	return s
+}
+
+type DeleteGroupMemberResponseBody struct {
+	ErrorCode    *string                              `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMessage *string                              `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	RequestId    *string                              `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Result       *DeleteGroupMemberResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
+	Success      *bool                                `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s DeleteGroupMemberResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteGroupMemberResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteGroupMemberResponseBody) SetErrorCode(v string) *DeleteGroupMemberResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *DeleteGroupMemberResponseBody) SetErrorMessage(v string) *DeleteGroupMemberResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *DeleteGroupMemberResponseBody) SetRequestId(v string) *DeleteGroupMemberResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteGroupMemberResponseBody) SetResult(v *DeleteGroupMemberResponseBodyResult) *DeleteGroupMemberResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *DeleteGroupMemberResponseBody) SetSuccess(v bool) *DeleteGroupMemberResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeleteGroupMemberResponseBodyResult struct {
+	AccessLevel *int32  `json:"accessLevel,omitempty" xml:"accessLevel,omitempty"`
+	AvatarUrl   *string `json:"avatarUrl,omitempty" xml:"avatarUrl,omitempty"`
+	ExternUid   *string `json:"externUid,omitempty" xml:"externUid,omitempty"`
+	Id          *int64  `json:"id,omitempty" xml:"id,omitempty"`
+	MemberType  *string `json:"memberType,omitempty" xml:"memberType,omitempty"`
+	Name        *string `json:"name,omitempty" xml:"name,omitempty"`
+	SourceId    *int64  `json:"sourceId,omitempty" xml:"sourceId,omitempty"`
+	State       *string `json:"state,omitempty" xml:"state,omitempty"`
+	Username    *string `json:"username,omitempty" xml:"username,omitempty"`
+}
+
+func (s DeleteGroupMemberResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteGroupMemberResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteGroupMemberResponseBodyResult) SetAccessLevel(v int32) *DeleteGroupMemberResponseBodyResult {
+	s.AccessLevel = &v
+	return s
+}
+
+func (s *DeleteGroupMemberResponseBodyResult) SetAvatarUrl(v string) *DeleteGroupMemberResponseBodyResult {
+	s.AvatarUrl = &v
+	return s
+}
+
+func (s *DeleteGroupMemberResponseBodyResult) SetExternUid(v string) *DeleteGroupMemberResponseBodyResult {
+	s.ExternUid = &v
+	return s
+}
+
+func (s *DeleteGroupMemberResponseBodyResult) SetId(v int64) *DeleteGroupMemberResponseBodyResult {
+	s.Id = &v
+	return s
+}
+
+func (s *DeleteGroupMemberResponseBodyResult) SetMemberType(v string) *DeleteGroupMemberResponseBodyResult {
+	s.MemberType = &v
+	return s
+}
+
+func (s *DeleteGroupMemberResponseBodyResult) SetName(v string) *DeleteGroupMemberResponseBodyResult {
+	s.Name = &v
+	return s
+}
+
+func (s *DeleteGroupMemberResponseBodyResult) SetSourceId(v int64) *DeleteGroupMemberResponseBodyResult {
+	s.SourceId = &v
+	return s
+}
+
+func (s *DeleteGroupMemberResponseBodyResult) SetState(v string) *DeleteGroupMemberResponseBodyResult {
+	s.State = &v
+	return s
+}
+
+func (s *DeleteGroupMemberResponseBodyResult) SetUsername(v string) *DeleteGroupMemberResponseBodyResult {
+	s.Username = &v
+	return s
+}
+
+type DeleteGroupMemberResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteGroupMemberResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteGroupMemberResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteGroupMemberResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteGroupMemberResponse) SetHeaders(v map[string]*string) *DeleteGroupMemberResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteGroupMemberResponse) SetStatusCode(v int32) *DeleteGroupMemberResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteGroupMemberResponse) SetBody(v *DeleteGroupMemberResponseBody) *DeleteGroupMemberResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteHostGroupResponseBody struct {
 	ErrorCode    *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
@@ -4974,6 +5997,93 @@ func (s *DeletePipelineGroupResponse) SetStatusCode(v int32) *DeletePipelineGrou
 }
 
 func (s *DeletePipelineGroupResponse) SetBody(v *DeletePipelineGroupResponseBody) *DeletePipelineGroupResponse {
+	s.Body = v
+	return s
+}
+
+type DeletePipelineRelationsRequest struct {
+	RelObjectId   *string `json:"relObjectId,omitempty" xml:"relObjectId,omitempty"`
+	RelObjectType *string `json:"relObjectType,omitempty" xml:"relObjectType,omitempty"`
+}
+
+func (s DeletePipelineRelationsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeletePipelineRelationsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeletePipelineRelationsRequest) SetRelObjectId(v string) *DeletePipelineRelationsRequest {
+	s.RelObjectId = &v
+	return s
+}
+
+func (s *DeletePipelineRelationsRequest) SetRelObjectType(v string) *DeletePipelineRelationsRequest {
+	s.RelObjectType = &v
+	return s
+}
+
+type DeletePipelineRelationsResponseBody struct {
+	ErrorCode    *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	RequestId    *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success      *bool   `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s DeletePipelineRelationsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeletePipelineRelationsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeletePipelineRelationsResponseBody) SetErrorCode(v string) *DeletePipelineRelationsResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *DeletePipelineRelationsResponseBody) SetErrorMessage(v string) *DeletePipelineRelationsResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *DeletePipelineRelationsResponseBody) SetRequestId(v string) *DeletePipelineRelationsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeletePipelineRelationsResponseBody) SetSuccess(v bool) *DeletePipelineRelationsResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeletePipelineRelationsResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeletePipelineRelationsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeletePipelineRelationsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeletePipelineRelationsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeletePipelineRelationsResponse) SetHeaders(v map[string]*string) *DeletePipelineRelationsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeletePipelineRelationsResponse) SetStatusCode(v int32) *DeletePipelineRelationsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeletePipelineRelationsResponse) SetBody(v *DeletePipelineRelationsResponseBody) *DeletePipelineRelationsResponse {
 	s.Body = v
 	return s
 }
@@ -5291,6 +6401,280 @@ func (s *DeleteRepositoryResponse) SetBody(v *DeleteRepositoryResponseBody) *Del
 	return s
 }
 
+type DeleteRepositoryGroupRequest struct {
+	AccessToken    *string `json:"accessToken,omitempty" xml:"accessToken,omitempty"`
+	Reason         *string `json:"reason,omitempty" xml:"reason,omitempty"`
+	OrganizationId *string `json:"organizationId,omitempty" xml:"organizationId,omitempty"`
+}
+
+func (s DeleteRepositoryGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteRepositoryGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteRepositoryGroupRequest) SetAccessToken(v string) *DeleteRepositoryGroupRequest {
+	s.AccessToken = &v
+	return s
+}
+
+func (s *DeleteRepositoryGroupRequest) SetReason(v string) *DeleteRepositoryGroupRequest {
+	s.Reason = &v
+	return s
+}
+
+func (s *DeleteRepositoryGroupRequest) SetOrganizationId(v string) *DeleteRepositoryGroupRequest {
+	s.OrganizationId = &v
+	return s
+}
+
+type DeleteRepositoryGroupResponseBody struct {
+	ErrorCode    *string                                  `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMessage *string                                  `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	RequestId    *string                                  `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Result       *DeleteRepositoryGroupResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
+	Success      *bool                                    `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s DeleteRepositoryGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteRepositoryGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteRepositoryGroupResponseBody) SetErrorCode(v string) *DeleteRepositoryGroupResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *DeleteRepositoryGroupResponseBody) SetErrorMessage(v string) *DeleteRepositoryGroupResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *DeleteRepositoryGroupResponseBody) SetRequestId(v string) *DeleteRepositoryGroupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteRepositoryGroupResponseBody) SetResult(v *DeleteRepositoryGroupResponseBodyResult) *DeleteRepositoryGroupResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *DeleteRepositoryGroupResponseBody) SetSuccess(v bool) *DeleteRepositoryGroupResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeleteRepositoryGroupResponseBodyResult struct {
+	Result *bool `json:"result,omitempty" xml:"result,omitempty"`
+}
+
+func (s DeleteRepositoryGroupResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteRepositoryGroupResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteRepositoryGroupResponseBodyResult) SetResult(v bool) *DeleteRepositoryGroupResponseBodyResult {
+	s.Result = &v
+	return s
+}
+
+type DeleteRepositoryGroupResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteRepositoryGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteRepositoryGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteRepositoryGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteRepositoryGroupResponse) SetHeaders(v map[string]*string) *DeleteRepositoryGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteRepositoryGroupResponse) SetStatusCode(v int32) *DeleteRepositoryGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteRepositoryGroupResponse) SetBody(v *DeleteRepositoryGroupResponseBody) *DeleteRepositoryGroupResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteRepositoryMemberRequest struct {
+	AccessToken    *string `json:"accessToken,omitempty" xml:"accessToken,omitempty"`
+	MemberType     *string `json:"memberType,omitempty" xml:"memberType,omitempty"`
+	OrganizationId *string `json:"organizationId,omitempty" xml:"organizationId,omitempty"`
+}
+
+func (s DeleteRepositoryMemberRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteRepositoryMemberRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteRepositoryMemberRequest) SetAccessToken(v string) *DeleteRepositoryMemberRequest {
+	s.AccessToken = &v
+	return s
+}
+
+func (s *DeleteRepositoryMemberRequest) SetMemberType(v string) *DeleteRepositoryMemberRequest {
+	s.MemberType = &v
+	return s
+}
+
+func (s *DeleteRepositoryMemberRequest) SetOrganizationId(v string) *DeleteRepositoryMemberRequest {
+	s.OrganizationId = &v
+	return s
+}
+
+type DeleteRepositoryMemberResponseBody struct {
+	ErrorCode    *string                                   `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMessage *string                                   `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	RequestId    *string                                   `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Result       *DeleteRepositoryMemberResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
+	Success      *bool                                     `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s DeleteRepositoryMemberResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteRepositoryMemberResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteRepositoryMemberResponseBody) SetErrorCode(v string) *DeleteRepositoryMemberResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *DeleteRepositoryMemberResponseBody) SetErrorMessage(v string) *DeleteRepositoryMemberResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *DeleteRepositoryMemberResponseBody) SetRequestId(v string) *DeleteRepositoryMemberResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteRepositoryMemberResponseBody) SetResult(v *DeleteRepositoryMemberResponseBodyResult) *DeleteRepositoryMemberResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *DeleteRepositoryMemberResponseBody) SetSuccess(v bool) *DeleteRepositoryMemberResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeleteRepositoryMemberResponseBodyResult struct {
+	AccessLevel *int32  `json:"accessLevel,omitempty" xml:"accessLevel,omitempty"`
+	CreateAt    *string `json:"createAt,omitempty" xml:"createAt,omitempty"`
+	ExternUid   *string `json:"externUid,omitempty" xml:"externUid,omitempty"`
+	Id          *int64  `json:"id,omitempty" xml:"id,omitempty"`
+	SourceId    *int64  `json:"sourceId,omitempty" xml:"sourceId,omitempty"`
+	SourceType  *string `json:"sourceType,omitempty" xml:"sourceType,omitempty"`
+	UpdateAt    *string `json:"updateAt,omitempty" xml:"updateAt,omitempty"`
+	UserId      *int64  `json:"userId,omitempty" xml:"userId,omitempty"`
+}
+
+func (s DeleteRepositoryMemberResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteRepositoryMemberResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteRepositoryMemberResponseBodyResult) SetAccessLevel(v int32) *DeleteRepositoryMemberResponseBodyResult {
+	s.AccessLevel = &v
+	return s
+}
+
+func (s *DeleteRepositoryMemberResponseBodyResult) SetCreateAt(v string) *DeleteRepositoryMemberResponseBodyResult {
+	s.CreateAt = &v
+	return s
+}
+
+func (s *DeleteRepositoryMemberResponseBodyResult) SetExternUid(v string) *DeleteRepositoryMemberResponseBodyResult {
+	s.ExternUid = &v
+	return s
+}
+
+func (s *DeleteRepositoryMemberResponseBodyResult) SetId(v int64) *DeleteRepositoryMemberResponseBodyResult {
+	s.Id = &v
+	return s
+}
+
+func (s *DeleteRepositoryMemberResponseBodyResult) SetSourceId(v int64) *DeleteRepositoryMemberResponseBodyResult {
+	s.SourceId = &v
+	return s
+}
+
+func (s *DeleteRepositoryMemberResponseBodyResult) SetSourceType(v string) *DeleteRepositoryMemberResponseBodyResult {
+	s.SourceType = &v
+	return s
+}
+
+func (s *DeleteRepositoryMemberResponseBodyResult) SetUpdateAt(v string) *DeleteRepositoryMemberResponseBodyResult {
+	s.UpdateAt = &v
+	return s
+}
+
+func (s *DeleteRepositoryMemberResponseBodyResult) SetUserId(v int64) *DeleteRepositoryMemberResponseBodyResult {
+	s.UserId = &v
+	return s
+}
+
+type DeleteRepositoryMemberResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteRepositoryMemberResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteRepositoryMemberResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteRepositoryMemberResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteRepositoryMemberResponse) SetHeaders(v map[string]*string) *DeleteRepositoryMemberResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteRepositoryMemberResponse) SetStatusCode(v int32) *DeleteRepositoryMemberResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteRepositoryMemberResponse) SetBody(v *DeleteRepositoryMemberResponseBody) *DeleteRepositoryMemberResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteRepositoryWebhookRequest struct {
 	AccessToken    *string `json:"accessToken,omitempty" xml:"accessToken,omitempty"`
 	OrganizationId *string `json:"organizationId,omitempty" xml:"organizationId,omitempty"`
@@ -5549,6 +6933,122 @@ func (s *DeleteResourceMemberResponse) SetBody(v *DeleteResourceMemberResponseBo
 	return s
 }
 
+type DeleteTagRequest struct {
+	AccessToken    *string `json:"accessToken,omitempty" xml:"accessToken,omitempty"`
+	OrganizationId *string `json:"organizationId,omitempty" xml:"organizationId,omitempty"`
+	TagName        *string `json:"tagName,omitempty" xml:"tagName,omitempty"`
+}
+
+func (s DeleteTagRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteTagRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteTagRequest) SetAccessToken(v string) *DeleteTagRequest {
+	s.AccessToken = &v
+	return s
+}
+
+func (s *DeleteTagRequest) SetOrganizationId(v string) *DeleteTagRequest {
+	s.OrganizationId = &v
+	return s
+}
+
+func (s *DeleteTagRequest) SetTagName(v string) *DeleteTagRequest {
+	s.TagName = &v
+	return s
+}
+
+type DeleteTagResponseBody struct {
+	ErrorCode    *string                      `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMessage *string                      `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	RequestId    *string                      `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Result       *DeleteTagResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
+	Success      *bool                        `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s DeleteTagResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteTagResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteTagResponseBody) SetErrorCode(v string) *DeleteTagResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *DeleteTagResponseBody) SetErrorMessage(v string) *DeleteTagResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *DeleteTagResponseBody) SetRequestId(v string) *DeleteTagResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteTagResponseBody) SetResult(v *DeleteTagResponseBodyResult) *DeleteTagResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *DeleteTagResponseBody) SetSuccess(v bool) *DeleteTagResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeleteTagResponseBodyResult struct {
+	TagName *string `json:"tagName,omitempty" xml:"tagName,omitempty"`
+}
+
+func (s DeleteTagResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteTagResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteTagResponseBodyResult) SetTagName(v string) *DeleteTagResponseBodyResult {
+	s.TagName = &v
+	return s
+}
+
+type DeleteTagResponse struct {
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteTagResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteTagResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteTagResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteTagResponse) SetHeaders(v map[string]*string) *DeleteTagResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteTagResponse) SetStatusCode(v int32) *DeleteTagResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteTagResponse) SetBody(v *DeleteTagResponseBody) *DeleteTagResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteVariableGroupResponseBody struct {
 	ErrorCode    *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
@@ -5634,8 +7134,9 @@ type DeleteWorkitemAllCommentResponseBody struct {
 	DeleteFlag *bool   `json:"deleteFlag,omitempty" xml:"deleteFlag,omitempty"`
 	ErrorCode  *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
 	ErrorMsg   *string `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
-	RequestId  *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Success    *string `json:"success,omitempty" xml:"success,omitempty"`
+	// Id of the request
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success   *string `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s DeleteWorkitemAllCommentResponseBody) String() string {
@@ -5727,8 +7228,9 @@ type DeleteWorkitemCommentResponseBody struct {
 	DeleteFlag *bool   `json:"deleteFlag,omitempty" xml:"deleteFlag,omitempty"`
 	ErrorCode  *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
 	ErrorMsg   *string `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
-	RequestId  *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Success    *string `json:"success,omitempty" xml:"success,omitempty"`
+	// Id of the request
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success   *string `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s DeleteWorkitemCommentResponseBody) String() string {
@@ -5789,6 +7291,116 @@ func (s *DeleteWorkitemCommentResponse) SetStatusCode(v int32) *DeleteWorkitemCo
 }
 
 func (s *DeleteWorkitemCommentResponse) SetBody(v *DeleteWorkitemCommentResponseBody) *DeleteWorkitemCommentResponse {
+	s.Body = v
+	return s
+}
+
+type EnableDeployKeyRequest struct {
+	AccessToken    *string `json:"accessToken,omitempty" xml:"accessToken,omitempty"`
+	OrganizationId *string `json:"organizationId,omitempty" xml:"organizationId,omitempty"`
+}
+
+func (s EnableDeployKeyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EnableDeployKeyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *EnableDeployKeyRequest) SetAccessToken(v string) *EnableDeployKeyRequest {
+	s.AccessToken = &v
+	return s
+}
+
+func (s *EnableDeployKeyRequest) SetOrganizationId(v string) *EnableDeployKeyRequest {
+	s.OrganizationId = &v
+	return s
+}
+
+type EnableDeployKeyResponseBody struct {
+	ErrorCode    *string                            `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMessage *string                            `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	RequestId    *string                            `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Result       *EnableDeployKeyResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
+	Success      *bool                              `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s EnableDeployKeyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EnableDeployKeyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *EnableDeployKeyResponseBody) SetErrorCode(v string) *EnableDeployKeyResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *EnableDeployKeyResponseBody) SetErrorMessage(v string) *EnableDeployKeyResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *EnableDeployKeyResponseBody) SetRequestId(v string) *EnableDeployKeyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *EnableDeployKeyResponseBody) SetResult(v *EnableDeployKeyResponseBodyResult) *EnableDeployKeyResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *EnableDeployKeyResponseBody) SetSuccess(v bool) *EnableDeployKeyResponseBody {
+	s.Success = &v
+	return s
+}
+
+type EnableDeployKeyResponseBodyResult struct {
+	Result *bool `json:"result,omitempty" xml:"result,omitempty"`
+}
+
+func (s EnableDeployKeyResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EnableDeployKeyResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *EnableDeployKeyResponseBodyResult) SetResult(v bool) *EnableDeployKeyResponseBodyResult {
+	s.Result = &v
+	return s
+}
+
+type EnableDeployKeyResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *EnableDeployKeyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s EnableDeployKeyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EnableDeployKeyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *EnableDeployKeyResponse) SetHeaders(v map[string]*string) *EnableDeployKeyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *EnableDeployKeyResponse) SetStatusCode(v int32) *EnableDeployKeyResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *EnableDeployKeyResponse) SetBody(v *EnableDeployKeyResponseBody) *EnableDeployKeyResponse {
 	s.Body = v
 	return s
 }
@@ -6748,19 +8360,20 @@ func (s *GetFileLastCommitResponseBody) SetSuccess(v bool) *GetFileLastCommitRes
 }
 
 type GetFileLastCommitResponseBodyResult struct {
-	AuthorDate     *string                                       `json:"authorDate,omitempty" xml:"authorDate,omitempty"`
-	AuthorEmail    *string                                       `json:"authorEmail,omitempty" xml:"authorEmail,omitempty"`
-	AuthorName     *string                                       `json:"authorName,omitempty" xml:"authorName,omitempty"`
-	CommittedDate  *string                                       `json:"committedDate,omitempty" xml:"committedDate,omitempty"`
-	CommitterEmail *string                                       `json:"committerEmail,omitempty" xml:"committerEmail,omitempty"`
-	CommitterName  *string                                       `json:"committerName,omitempty" xml:"committerName,omitempty"`
-	CreatedAt      *string                                       `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
-	Id             *string                                       `json:"id,omitempty" xml:"id,omitempty"`
-	Message        *string                                       `json:"message,omitempty" xml:"message,omitempty"`
-	ParentIds      []*string                                     `json:"parentIds,omitempty" xml:"parentIds,omitempty" type:"Repeated"`
-	ShortId        *string                                       `json:"shortId,omitempty" xml:"shortId,omitempty"`
-	Signature      *GetFileLastCommitResponseBodyResultSignature `json:"signature,omitempty" xml:"signature,omitempty" type:"Struct"`
-	Title          *string                                       `json:"title,omitempty" xml:"title,omitempty"`
+	AuthorDate     *string `json:"authorDate,omitempty" xml:"authorDate,omitempty"`
+	AuthorEmail    *string `json:"authorEmail,omitempty" xml:"authorEmail,omitempty"`
+	AuthorName     *string `json:"authorName,omitempty" xml:"authorName,omitempty"`
+	CommittedDate  *string `json:"committedDate,omitempty" xml:"committedDate,omitempty"`
+	CommitterEmail *string `json:"committerEmail,omitempty" xml:"committerEmail,omitempty"`
+	CommitterName  *string `json:"committerName,omitempty" xml:"committerName,omitempty"`
+	CreatedAt      *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
+	// Commit ID
+	Id        *string                                       `json:"id,omitempty" xml:"id,omitempty"`
+	Message   *string                                       `json:"message,omitempty" xml:"message,omitempty"`
+	ParentIds []*string                                     `json:"parentIds,omitempty" xml:"parentIds,omitempty" type:"Repeated"`
+	ShortId   *string                                       `json:"shortId,omitempty" xml:"shortId,omitempty"`
+	Signature *GetFileLastCommitResponseBodyResultSignature `json:"signature,omitempty" xml:"signature,omitempty" type:"Struct"`
+	Title     *string                                       `json:"title,omitempty" xml:"title,omitempty"`
 }
 
 func (s GetFileLastCommitResponseBodyResult) String() string {
@@ -7036,6 +8649,188 @@ func (s *GetFlowTagGroupResponse) SetStatusCode(v int32) *GetFlowTagGroupRespons
 }
 
 func (s *GetFlowTagGroupResponse) SetBody(v *GetFlowTagGroupResponseBody) *GetFlowTagGroupResponse {
+	s.Body = v
+	return s
+}
+
+type GetGroupDetailRequest struct {
+	AccessToken    *string `json:"accessToken,omitempty" xml:"accessToken,omitempty"`
+	GroupId        *int64  `json:"groupId,omitempty" xml:"groupId,omitempty"`
+	OrganizationId *string `json:"organizationId,omitempty" xml:"organizationId,omitempty"`
+}
+
+func (s GetGroupDetailRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetGroupDetailRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetGroupDetailRequest) SetAccessToken(v string) *GetGroupDetailRequest {
+	s.AccessToken = &v
+	return s
+}
+
+func (s *GetGroupDetailRequest) SetGroupId(v int64) *GetGroupDetailRequest {
+	s.GroupId = &v
+	return s
+}
+
+func (s *GetGroupDetailRequest) SetOrganizationId(v string) *GetGroupDetailRequest {
+	s.OrganizationId = &v
+	return s
+}
+
+type GetGroupDetailResponseBody struct {
+	ErrorCode    *string                           `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMessage *string                           `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	RequestId    *string                           `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Result       *GetGroupDetailResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
+	Success      *bool                             `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s GetGroupDetailResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetGroupDetailResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetGroupDetailResponseBody) SetErrorCode(v string) *GetGroupDetailResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetGroupDetailResponseBody) SetErrorMessage(v string) *GetGroupDetailResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetGroupDetailResponseBody) SetRequestId(v string) *GetGroupDetailResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetGroupDetailResponseBody) SetResult(v *GetGroupDetailResponseBodyResult) *GetGroupDetailResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *GetGroupDetailResponseBody) SetSuccess(v bool) *GetGroupDetailResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetGroupDetailResponseBodyResult struct {
+	AvatarUrl         *string `json:"avatarUrl,omitempty" xml:"avatarUrl,omitempty"`
+	Description       *string `json:"description,omitempty" xml:"description,omitempty"`
+	Id                *int64  `json:"id,omitempty" xml:"id,omitempty"`
+	Name              *string `json:"name,omitempty" xml:"name,omitempty"`
+	NameWithNamespace *string `json:"nameWithNamespace,omitempty" xml:"nameWithNamespace,omitempty"`
+	OwnerId           *int64  `json:"ownerId,omitempty" xml:"ownerId,omitempty"`
+	ParentId          *int64  `json:"parentId,omitempty" xml:"parentId,omitempty"`
+	Path              *string `json:"path,omitempty" xml:"path,omitempty"`
+	PathWithNamespace *string `json:"pathWithNamespace,omitempty" xml:"pathWithNamespace,omitempty"`
+	Type              *string `json:"type,omitempty" xml:"type,omitempty"`
+	VisibilityLevel   *int32  `json:"visibilityLevel,omitempty" xml:"visibilityLevel,omitempty"`
+	WebUrl            *string `json:"webUrl,omitempty" xml:"webUrl,omitempty"`
+}
+
+func (s GetGroupDetailResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetGroupDetailResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *GetGroupDetailResponseBodyResult) SetAvatarUrl(v string) *GetGroupDetailResponseBodyResult {
+	s.AvatarUrl = &v
+	return s
+}
+
+func (s *GetGroupDetailResponseBodyResult) SetDescription(v string) *GetGroupDetailResponseBodyResult {
+	s.Description = &v
+	return s
+}
+
+func (s *GetGroupDetailResponseBodyResult) SetId(v int64) *GetGroupDetailResponseBodyResult {
+	s.Id = &v
+	return s
+}
+
+func (s *GetGroupDetailResponseBodyResult) SetName(v string) *GetGroupDetailResponseBodyResult {
+	s.Name = &v
+	return s
+}
+
+func (s *GetGroupDetailResponseBodyResult) SetNameWithNamespace(v string) *GetGroupDetailResponseBodyResult {
+	s.NameWithNamespace = &v
+	return s
+}
+
+func (s *GetGroupDetailResponseBodyResult) SetOwnerId(v int64) *GetGroupDetailResponseBodyResult {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *GetGroupDetailResponseBodyResult) SetParentId(v int64) *GetGroupDetailResponseBodyResult {
+	s.ParentId = &v
+	return s
+}
+
+func (s *GetGroupDetailResponseBodyResult) SetPath(v string) *GetGroupDetailResponseBodyResult {
+	s.Path = &v
+	return s
+}
+
+func (s *GetGroupDetailResponseBodyResult) SetPathWithNamespace(v string) *GetGroupDetailResponseBodyResult {
+	s.PathWithNamespace = &v
+	return s
+}
+
+func (s *GetGroupDetailResponseBodyResult) SetType(v string) *GetGroupDetailResponseBodyResult {
+	s.Type = &v
+	return s
+}
+
+func (s *GetGroupDetailResponseBodyResult) SetVisibilityLevel(v int32) *GetGroupDetailResponseBodyResult {
+	s.VisibilityLevel = &v
+	return s
+}
+
+func (s *GetGroupDetailResponseBodyResult) SetWebUrl(v string) *GetGroupDetailResponseBodyResult {
+	s.WebUrl = &v
+	return s
+}
+
+type GetGroupDetailResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetGroupDetailResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetGroupDetailResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetGroupDetailResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetGroupDetailResponse) SetHeaders(v map[string]*string) *GetGroupDetailResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetGroupDetailResponse) SetStatusCode(v int32) *GetGroupDetailResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetGroupDetailResponse) SetBody(v *GetGroupDetailResponseBody) *GetGroupDetailResponse {
 	s.Body = v
 	return s
 }
@@ -7629,10 +9424,13 @@ func (s *GetPipelineResponseBodyPipelinePipelineConfigSources) SetType(v string)
 }
 
 type GetPipelineResponseBodyPipelinePipelineConfigSourcesData struct {
-	Branch              *string   `json:"branch,omitempty" xml:"branch,omitempty"`
-	CloneDepth          *int64    `json:"cloneDepth,omitempty" xml:"cloneDepth,omitempty"`
-	CredentialId        *int64    `json:"credentialId,omitempty" xml:"credentialId,omitempty"`
-	CredentialLabel     *string   `json:"credentialLabel,omitempty" xml:"credentialLabel,omitempty"`
+	Branch     *string `json:"branch,omitempty" xml:"branch,omitempty"`
+	CloneDepth *int64  `json:"cloneDepth,omitempty" xml:"cloneDepth,omitempty"`
+	// Credential Id
+	CredentialId *int64 `json:"credentialId,omitempty" xml:"credentialId,omitempty"`
+	// Credential Label
+	CredentialLabel *string `json:"credentialLabel,omitempty" xml:"credentialLabel,omitempty"`
+	// Credential Type
 	CredentialType      *string   `json:"credentialType,omitempty" xml:"credentialType,omitempty"`
 	Events              []*string `json:"events,omitempty" xml:"events,omitempty" type:"Repeated"`
 	IsBranchMode        *bool     `json:"isBranchMode,omitempty" xml:"isBranchMode,omitempty"`
@@ -9053,9 +10851,10 @@ func (s *GetRepositoryResponseBodyRepository) SetWebUrl(v string) *GetRepository
 }
 
 type GetRepositoryResponseBodyRepositoryNamespace struct {
-	Avatar          *string `json:"avatar,omitempty" xml:"avatar,omitempty"`
-	CreatedAt       *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
-	Description     *string `json:"description,omitempty" xml:"description,omitempty"`
+	Avatar      *string `json:"avatar,omitempty" xml:"avatar,omitempty"`
+	CreatedAt   *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// id
 	Id              *int64  `json:"id,omitempty" xml:"id,omitempty"`
 	Name            *string `json:"name,omitempty" xml:"name,omitempty"`
 	OwnerId         *int64  `json:"ownerId,omitempty" xml:"ownerId,omitempty"`
@@ -9505,6 +11304,252 @@ func (s *GetRepositoryCommitResponse) SetBody(v *GetRepositoryCommitResponseBody
 	return s
 }
 
+type GetRepositoryTagRequest struct {
+	AccessToken    *string `json:"accessToken,omitempty" xml:"accessToken,omitempty"`
+	OrganizationId *string `json:"organizationId,omitempty" xml:"organizationId,omitempty"`
+	TagName        *string `json:"tagName,omitempty" xml:"tagName,omitempty"`
+}
+
+func (s GetRepositoryTagRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetRepositoryTagRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetRepositoryTagRequest) SetAccessToken(v string) *GetRepositoryTagRequest {
+	s.AccessToken = &v
+	return s
+}
+
+func (s *GetRepositoryTagRequest) SetOrganizationId(v string) *GetRepositoryTagRequest {
+	s.OrganizationId = &v
+	return s
+}
+
+func (s *GetRepositoryTagRequest) SetTagName(v string) *GetRepositoryTagRequest {
+	s.TagName = &v
+	return s
+}
+
+type GetRepositoryTagResponseBody struct {
+	ErrorCode    *string                             `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMessage *string                             `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	RequestId    *string                             `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Result       *GetRepositoryTagResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
+	Success      *bool                               `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s GetRepositoryTagResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetRepositoryTagResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetRepositoryTagResponseBody) SetErrorCode(v string) *GetRepositoryTagResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetRepositoryTagResponseBody) SetErrorMessage(v string) *GetRepositoryTagResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetRepositoryTagResponseBody) SetRequestId(v string) *GetRepositoryTagResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetRepositoryTagResponseBody) SetResult(v *GetRepositoryTagResponseBodyResult) *GetRepositoryTagResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *GetRepositoryTagResponseBody) SetSuccess(v bool) *GetRepositoryTagResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetRepositoryTagResponseBodyResult struct {
+	Commit  *GetRepositoryTagResponseBodyResultCommit `json:"commit,omitempty" xml:"commit,omitempty" type:"Struct"`
+	Id      *string                                   `json:"id,omitempty" xml:"id,omitempty"`
+	Message *string                                   `json:"message,omitempty" xml:"message,omitempty"`
+	Name    *string                                   `json:"name,omitempty" xml:"name,omitempty"`
+}
+
+func (s GetRepositoryTagResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetRepositoryTagResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *GetRepositoryTagResponseBodyResult) SetCommit(v *GetRepositoryTagResponseBodyResultCommit) *GetRepositoryTagResponseBodyResult {
+	s.Commit = v
+	return s
+}
+
+func (s *GetRepositoryTagResponseBodyResult) SetId(v string) *GetRepositoryTagResponseBodyResult {
+	s.Id = &v
+	return s
+}
+
+func (s *GetRepositoryTagResponseBodyResult) SetMessage(v string) *GetRepositoryTagResponseBodyResult {
+	s.Message = &v
+	return s
+}
+
+func (s *GetRepositoryTagResponseBodyResult) SetName(v string) *GetRepositoryTagResponseBodyResult {
+	s.Name = &v
+	return s
+}
+
+type GetRepositoryTagResponseBodyResultCommit struct {
+	AuthorEmail    *string                                            `json:"authorEmail,omitempty" xml:"authorEmail,omitempty"`
+	AuthorName     *string                                            `json:"authorName,omitempty" xml:"authorName,omitempty"`
+	AuthoredDate   *string                                            `json:"authoredDate,omitempty" xml:"authoredDate,omitempty"`
+	CommittedDate  *string                                            `json:"committedDate,omitempty" xml:"committedDate,omitempty"`
+	CommitterEmail *string                                            `json:"committerEmail,omitempty" xml:"committerEmail,omitempty"`
+	CommitterName  *string                                            `json:"committerName,omitempty" xml:"committerName,omitempty"`
+	CreatedAt      *string                                            `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
+	Id             *string                                            `json:"id,omitempty" xml:"id,omitempty"`
+	Message        *string                                            `json:"message,omitempty" xml:"message,omitempty"`
+	ParentIds      []*string                                          `json:"parentIds,omitempty" xml:"parentIds,omitempty" type:"Repeated"`
+	ShortId        *string                                            `json:"shortId,omitempty" xml:"shortId,omitempty"`
+	Signature      *GetRepositoryTagResponseBodyResultCommitSignature `json:"signature,omitempty" xml:"signature,omitempty" type:"Struct"`
+	Title          *string                                            `json:"title,omitempty" xml:"title,omitempty"`
+}
+
+func (s GetRepositoryTagResponseBodyResultCommit) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetRepositoryTagResponseBodyResultCommit) GoString() string {
+	return s.String()
+}
+
+func (s *GetRepositoryTagResponseBodyResultCommit) SetAuthorEmail(v string) *GetRepositoryTagResponseBodyResultCommit {
+	s.AuthorEmail = &v
+	return s
+}
+
+func (s *GetRepositoryTagResponseBodyResultCommit) SetAuthorName(v string) *GetRepositoryTagResponseBodyResultCommit {
+	s.AuthorName = &v
+	return s
+}
+
+func (s *GetRepositoryTagResponseBodyResultCommit) SetAuthoredDate(v string) *GetRepositoryTagResponseBodyResultCommit {
+	s.AuthoredDate = &v
+	return s
+}
+
+func (s *GetRepositoryTagResponseBodyResultCommit) SetCommittedDate(v string) *GetRepositoryTagResponseBodyResultCommit {
+	s.CommittedDate = &v
+	return s
+}
+
+func (s *GetRepositoryTagResponseBodyResultCommit) SetCommitterEmail(v string) *GetRepositoryTagResponseBodyResultCommit {
+	s.CommitterEmail = &v
+	return s
+}
+
+func (s *GetRepositoryTagResponseBodyResultCommit) SetCommitterName(v string) *GetRepositoryTagResponseBodyResultCommit {
+	s.CommitterName = &v
+	return s
+}
+
+func (s *GetRepositoryTagResponseBodyResultCommit) SetCreatedAt(v string) *GetRepositoryTagResponseBodyResultCommit {
+	s.CreatedAt = &v
+	return s
+}
+
+func (s *GetRepositoryTagResponseBodyResultCommit) SetId(v string) *GetRepositoryTagResponseBodyResultCommit {
+	s.Id = &v
+	return s
+}
+
+func (s *GetRepositoryTagResponseBodyResultCommit) SetMessage(v string) *GetRepositoryTagResponseBodyResultCommit {
+	s.Message = &v
+	return s
+}
+
+func (s *GetRepositoryTagResponseBodyResultCommit) SetParentIds(v []*string) *GetRepositoryTagResponseBodyResultCommit {
+	s.ParentIds = v
+	return s
+}
+
+func (s *GetRepositoryTagResponseBodyResultCommit) SetShortId(v string) *GetRepositoryTagResponseBodyResultCommit {
+	s.ShortId = &v
+	return s
+}
+
+func (s *GetRepositoryTagResponseBodyResultCommit) SetSignature(v *GetRepositoryTagResponseBodyResultCommitSignature) *GetRepositoryTagResponseBodyResultCommit {
+	s.Signature = v
+	return s
+}
+
+func (s *GetRepositoryTagResponseBodyResultCommit) SetTitle(v string) *GetRepositoryTagResponseBodyResultCommit {
+	s.Title = &v
+	return s
+}
+
+type GetRepositoryTagResponseBodyResultCommitSignature struct {
+	GpgKeyId           *string `json:"gpgKeyId,omitempty" xml:"gpgKeyId,omitempty"`
+	VerificationStatus *string `json:"verificationStatus,omitempty" xml:"verificationStatus,omitempty"`
+}
+
+func (s GetRepositoryTagResponseBodyResultCommitSignature) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetRepositoryTagResponseBodyResultCommitSignature) GoString() string {
+	return s.String()
+}
+
+func (s *GetRepositoryTagResponseBodyResultCommitSignature) SetGpgKeyId(v string) *GetRepositoryTagResponseBodyResultCommitSignature {
+	s.GpgKeyId = &v
+	return s
+}
+
+func (s *GetRepositoryTagResponseBodyResultCommitSignature) SetVerificationStatus(v string) *GetRepositoryTagResponseBodyResultCommitSignature {
+	s.VerificationStatus = &v
+	return s
+}
+
+type GetRepositoryTagResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetRepositoryTagResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetRepositoryTagResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetRepositoryTagResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetRepositoryTagResponse) SetHeaders(v map[string]*string) *GetRepositoryTagResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetRepositoryTagResponse) SetStatusCode(v int32) *GetRepositoryTagResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetRepositoryTagResponse) SetBody(v *GetRepositoryTagResponseBody) *GetRepositoryTagResponse {
+	s.Body = v
+	return s
+}
+
 type GetSprintInfoResponseBody struct {
 	ErrorCode    *string                          `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
 	ErrorMessage *string                          `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
@@ -9654,6 +11699,140 @@ func (s *GetSprintInfoResponse) SetStatusCode(v int32) *GetSprintInfoResponse {
 }
 
 func (s *GetSprintInfoResponse) SetBody(v *GetSprintInfoResponseBody) *GetSprintInfoResponse {
+	s.Body = v
+	return s
+}
+
+type GetUserInfoRequest struct {
+	OrganizationId *string `json:"organizationId,omitempty" xml:"organizationId,omitempty"`
+}
+
+func (s GetUserInfoRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUserInfoRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetUserInfoRequest) SetOrganizationId(v string) *GetUserInfoRequest {
+	s.OrganizationId = &v
+	return s
+}
+
+type GetUserInfoResponseBody struct {
+	ErrorCode    *string                        `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMessage *string                        `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	RequestId    *string                        `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Result       *GetUserInfoResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
+	Success      *bool                          `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s GetUserInfoResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUserInfoResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetUserInfoResponseBody) SetErrorCode(v string) *GetUserInfoResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetUserInfoResponseBody) SetErrorMessage(v string) *GetUserInfoResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetUserInfoResponseBody) SetRequestId(v string) *GetUserInfoResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetUserInfoResponseBody) SetResult(v *GetUserInfoResponseBodyResult) *GetUserInfoResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *GetUserInfoResponseBody) SetSuccess(v bool) *GetUserInfoResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetUserInfoResponseBodyResult struct {
+	AvatarUrl *string `json:"avatarUrl,omitempty" xml:"avatarUrl,omitempty"`
+	Email     *string `json:"email,omitempty" xml:"email,omitempty"`
+	ExternUid *string `json:"externUid,omitempty" xml:"externUid,omitempty"`
+	Id        *int64  `json:"id,omitempty" xml:"id,omitempty"`
+	Name      *string `json:"name,omitempty" xml:"name,omitempty"`
+	Username  *string `json:"username,omitempty" xml:"username,omitempty"`
+}
+
+func (s GetUserInfoResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUserInfoResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *GetUserInfoResponseBodyResult) SetAvatarUrl(v string) *GetUserInfoResponseBodyResult {
+	s.AvatarUrl = &v
+	return s
+}
+
+func (s *GetUserInfoResponseBodyResult) SetEmail(v string) *GetUserInfoResponseBodyResult {
+	s.Email = &v
+	return s
+}
+
+func (s *GetUserInfoResponseBodyResult) SetExternUid(v string) *GetUserInfoResponseBodyResult {
+	s.ExternUid = &v
+	return s
+}
+
+func (s *GetUserInfoResponseBodyResult) SetId(v int64) *GetUserInfoResponseBodyResult {
+	s.Id = &v
+	return s
+}
+
+func (s *GetUserInfoResponseBodyResult) SetName(v string) *GetUserInfoResponseBodyResult {
+	s.Name = &v
+	return s
+}
+
+func (s *GetUserInfoResponseBodyResult) SetUsername(v string) *GetUserInfoResponseBodyResult {
+	s.Username = &v
+	return s
+}
+
+type GetUserInfoResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetUserInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetUserInfoResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUserInfoResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetUserInfoResponse) SetHeaders(v map[string]*string) *GetUserInfoResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetUserInfoResponse) SetStatusCode(v int32) *GetUserInfoResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetUserInfoResponse) SetBody(v *GetUserInfoResponseBody) *GetUserInfoResponse {
 	s.Body = v
 	return s
 }
@@ -11019,8 +13198,9 @@ type GetWorkitemCommentListResponseBody struct {
 	CommentList []*GetWorkitemCommentListResponseBodyCommentList `json:"commentList,omitempty" xml:"commentList,omitempty" type:"Repeated"`
 	ErrorCode   *string                                          `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
 	ErrorMsg    *string                                          `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
-	RequestId   *string                                          `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Success     *string                                          `json:"success,omitempty" xml:"success,omitempty"`
+	// Id of the request
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success   *string `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s GetWorkitemCommentListResponseBody) String() string {
@@ -11177,8 +13357,9 @@ type GetWorkitemRelationsResponseBody struct {
 	ErrorCode    *string                                         `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
 	ErrorMsg     *string                                         `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
 	RelationList []*GetWorkitemRelationsResponseBodyRelationList `json:"relationList,omitempty" xml:"relationList,omitempty" type:"Repeated"`
-	RequestId    *string                                         `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Success      *bool                                           `json:"success,omitempty" xml:"success,omitempty"`
+	// Id of the request
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success   *bool   `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s GetWorkitemRelationsResponseBody) String() string {
@@ -11303,8 +13484,9 @@ func (s *GetWorkitemRelationsResponse) SetBody(v *GetWorkitemRelationsResponseBo
 }
 
 type GetWorkitemTimeTypeListResponseBody struct {
-	ErrorCode *string                                        `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
-	ErrorMsg  *string                                        `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
+	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMsg  *string `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
+	// Id of the request
 	RequestId *string                                        `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	Success   *string                                        `json:"success,omitempty" xml:"success,omitempty"`
 	TimeType  []*GetWorkitemTimeTypeListResponseBodyTimeType `json:"timeType,omitempty" xml:"timeType,omitempty" type:"Repeated"`
@@ -11740,6 +13922,448 @@ func (s *ListFlowTagGroupsResponse) SetBody(v *ListFlowTagGroupsResponseBody) *L
 	return s
 }
 
+type ListGroupMemberRequest struct {
+	AccessToken    *string `json:"accessToken,omitempty" xml:"accessToken,omitempty"`
+	OrganizationId *string `json:"organizationId,omitempty" xml:"organizationId,omitempty"`
+}
+
+func (s ListGroupMemberRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListGroupMemberRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListGroupMemberRequest) SetAccessToken(v string) *ListGroupMemberRequest {
+	s.AccessToken = &v
+	return s
+}
+
+func (s *ListGroupMemberRequest) SetOrganizationId(v string) *ListGroupMemberRequest {
+	s.OrganizationId = &v
+	return s
+}
+
+type ListGroupMemberResponseBody struct {
+	ErrorCode    *string                              `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMessage *string                              `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	RequestId    *string                              `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Result       []*ListGroupMemberResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Repeated"`
+	Success      *bool                                `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s ListGroupMemberResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListGroupMemberResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListGroupMemberResponseBody) SetErrorCode(v string) *ListGroupMemberResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ListGroupMemberResponseBody) SetErrorMessage(v string) *ListGroupMemberResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *ListGroupMemberResponseBody) SetRequestId(v string) *ListGroupMemberResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListGroupMemberResponseBody) SetResult(v []*ListGroupMemberResponseBodyResult) *ListGroupMemberResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *ListGroupMemberResponseBody) SetSuccess(v bool) *ListGroupMemberResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListGroupMemberResponseBodyResult struct {
+	AccessLevel *int32  `json:"accessLevel,omitempty" xml:"accessLevel,omitempty"`
+	AvatarUrl   *string `json:"avatarUrl,omitempty" xml:"avatarUrl,omitempty"`
+	Email       *string `json:"email,omitempty" xml:"email,omitempty"`
+	ExternUid   *string `json:"externUid,omitempty" xml:"externUid,omitempty"`
+	Id          *int64  `json:"id,omitempty" xml:"id,omitempty"`
+	MemberType  *string `json:"memberType,omitempty" xml:"memberType,omitempty"`
+	Name        *string `json:"name,omitempty" xml:"name,omitempty"`
+	SourceId    *int64  `json:"sourceId,omitempty" xml:"sourceId,omitempty"`
+	State       *string `json:"state,omitempty" xml:"state,omitempty"`
+	Username    *string `json:"username,omitempty" xml:"username,omitempty"`
+}
+
+func (s ListGroupMemberResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListGroupMemberResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *ListGroupMemberResponseBodyResult) SetAccessLevel(v int32) *ListGroupMemberResponseBodyResult {
+	s.AccessLevel = &v
+	return s
+}
+
+func (s *ListGroupMemberResponseBodyResult) SetAvatarUrl(v string) *ListGroupMemberResponseBodyResult {
+	s.AvatarUrl = &v
+	return s
+}
+
+func (s *ListGroupMemberResponseBodyResult) SetEmail(v string) *ListGroupMemberResponseBodyResult {
+	s.Email = &v
+	return s
+}
+
+func (s *ListGroupMemberResponseBodyResult) SetExternUid(v string) *ListGroupMemberResponseBodyResult {
+	s.ExternUid = &v
+	return s
+}
+
+func (s *ListGroupMemberResponseBodyResult) SetId(v int64) *ListGroupMemberResponseBodyResult {
+	s.Id = &v
+	return s
+}
+
+func (s *ListGroupMemberResponseBodyResult) SetMemberType(v string) *ListGroupMemberResponseBodyResult {
+	s.MemberType = &v
+	return s
+}
+
+func (s *ListGroupMemberResponseBodyResult) SetName(v string) *ListGroupMemberResponseBodyResult {
+	s.Name = &v
+	return s
+}
+
+func (s *ListGroupMemberResponseBodyResult) SetSourceId(v int64) *ListGroupMemberResponseBodyResult {
+	s.SourceId = &v
+	return s
+}
+
+func (s *ListGroupMemberResponseBodyResult) SetState(v string) *ListGroupMemberResponseBodyResult {
+	s.State = &v
+	return s
+}
+
+func (s *ListGroupMemberResponseBodyResult) SetUsername(v string) *ListGroupMemberResponseBodyResult {
+	s.Username = &v
+	return s
+}
+
+type ListGroupMemberResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListGroupMemberResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListGroupMemberResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListGroupMemberResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListGroupMemberResponse) SetHeaders(v map[string]*string) *ListGroupMemberResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListGroupMemberResponse) SetStatusCode(v int32) *ListGroupMemberResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListGroupMemberResponse) SetBody(v *ListGroupMemberResponseBody) *ListGroupMemberResponse {
+	s.Body = v
+	return s
+}
+
+type ListGroupRepositoriesRequest struct {
+	AccessToken    *string `json:"accessToken,omitempty" xml:"accessToken,omitempty"`
+	OrganizationId *string `json:"organizationId,omitempty" xml:"organizationId,omitempty"`
+	Page           *int64  `json:"page,omitempty" xml:"page,omitempty"`
+	PageSize       *int64  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	Search         *string `json:"search,omitempty" xml:"search,omitempty"`
+}
+
+func (s ListGroupRepositoriesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListGroupRepositoriesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListGroupRepositoriesRequest) SetAccessToken(v string) *ListGroupRepositoriesRequest {
+	s.AccessToken = &v
+	return s
+}
+
+func (s *ListGroupRepositoriesRequest) SetOrganizationId(v string) *ListGroupRepositoriesRequest {
+	s.OrganizationId = &v
+	return s
+}
+
+func (s *ListGroupRepositoriesRequest) SetPage(v int64) *ListGroupRepositoriesRequest {
+	s.Page = &v
+	return s
+}
+
+func (s *ListGroupRepositoriesRequest) SetPageSize(v int64) *ListGroupRepositoriesRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListGroupRepositoriesRequest) SetSearch(v string) *ListGroupRepositoriesRequest {
+	s.Search = &v
+	return s
+}
+
+type ListGroupRepositoriesResponseBody struct {
+	ErrorCode    *string                                    `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMessage *string                                    `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	RequestId    *string                                    `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Result       []*ListGroupRepositoriesResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Repeated"`
+	Success      *bool                                      `json:"success,omitempty" xml:"success,omitempty"`
+	Total        *int64                                     `json:"total,omitempty" xml:"total,omitempty"`
+}
+
+func (s ListGroupRepositoriesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListGroupRepositoriesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListGroupRepositoriesResponseBody) SetErrorCode(v string) *ListGroupRepositoriesResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ListGroupRepositoriesResponseBody) SetErrorMessage(v string) *ListGroupRepositoriesResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *ListGroupRepositoriesResponseBody) SetRequestId(v string) *ListGroupRepositoriesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListGroupRepositoriesResponseBody) SetResult(v []*ListGroupRepositoriesResponseBodyResult) *ListGroupRepositoriesResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *ListGroupRepositoriesResponseBody) SetSuccess(v bool) *ListGroupRepositoriesResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *ListGroupRepositoriesResponseBody) SetTotal(v int64) *ListGroupRepositoriesResponseBody {
+	s.Total = &v
+	return s
+}
+
+type ListGroupRepositoriesResponseBodyResult struct {
+	Archived             *bool   `json:"archived,omitempty" xml:"archived,omitempty"`
+	CommitCount          *int64  `json:"commitCount,omitempty" xml:"commitCount,omitempty"`
+	CreatedAt            *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
+	CreatorId            *int64  `json:"creatorId,omitempty" xml:"creatorId,omitempty"`
+	Description          *string `json:"description,omitempty" xml:"description,omitempty"`
+	HttpUrl              *string `json:"httpUrl,omitempty" xml:"httpUrl,omitempty"`
+	Id                   *int64  `json:"id,omitempty" xml:"id,omitempty"`
+	ImportUrl            *string `json:"importUrl,omitempty" xml:"importUrl,omitempty"`
+	IsStared             *bool   `json:"isStared,omitempty" xml:"isStared,omitempty"`
+	IssuesEnabled        *bool   `json:"issuesEnabled,omitempty" xml:"issuesEnabled,omitempty"`
+	LastActivityAt       *string `json:"lastActivityAt,omitempty" xml:"lastActivityAt,omitempty"`
+	MergeRequestsEnabled *bool   `json:"mergeRequestsEnabled,omitempty" xml:"mergeRequestsEnabled,omitempty"`
+	Name                 *string `json:"name,omitempty" xml:"name,omitempty"`
+	NameWithNamespace    *string `json:"nameWithNamespace,omitempty" xml:"nameWithNamespace,omitempty"`
+	NamespaceId          *bool   `json:"namespaceId,omitempty" xml:"namespaceId,omitempty"`
+	Path                 *string `json:"path,omitempty" xml:"path,omitempty"`
+	PathWithNamespace    *string `json:"pathWithNamespace,omitempty" xml:"pathWithNamespace,omitempty"`
+	PrivateFlag          *bool   `json:"privateFlag,omitempty" xml:"privateFlag,omitempty"`
+	SnippetsEnabled      *bool   `json:"snippetsEnabled,omitempty" xml:"snippetsEnabled,omitempty"`
+	SshUrl               *string `json:"sshUrl,omitempty" xml:"sshUrl,omitempty"`
+	StarCount            *int32  `json:"starCount,omitempty" xml:"starCount,omitempty"`
+	UpdatedAt            *string `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
+	VisibilityLevel      *int32  `json:"visibilityLevel,omitempty" xml:"visibilityLevel,omitempty"`
+	WebUrl               *string `json:"webUrl,omitempty" xml:"webUrl,omitempty"`
+	WikiEnabled          *bool   `json:"wikiEnabled,omitempty" xml:"wikiEnabled,omitempty"`
+}
+
+func (s ListGroupRepositoriesResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListGroupRepositoriesResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *ListGroupRepositoriesResponseBodyResult) SetArchived(v bool) *ListGroupRepositoriesResponseBodyResult {
+	s.Archived = &v
+	return s
+}
+
+func (s *ListGroupRepositoriesResponseBodyResult) SetCommitCount(v int64) *ListGroupRepositoriesResponseBodyResult {
+	s.CommitCount = &v
+	return s
+}
+
+func (s *ListGroupRepositoriesResponseBodyResult) SetCreatedAt(v string) *ListGroupRepositoriesResponseBodyResult {
+	s.CreatedAt = &v
+	return s
+}
+
+func (s *ListGroupRepositoriesResponseBodyResult) SetCreatorId(v int64) *ListGroupRepositoriesResponseBodyResult {
+	s.CreatorId = &v
+	return s
+}
+
+func (s *ListGroupRepositoriesResponseBodyResult) SetDescription(v string) *ListGroupRepositoriesResponseBodyResult {
+	s.Description = &v
+	return s
+}
+
+func (s *ListGroupRepositoriesResponseBodyResult) SetHttpUrl(v string) *ListGroupRepositoriesResponseBodyResult {
+	s.HttpUrl = &v
+	return s
+}
+
+func (s *ListGroupRepositoriesResponseBodyResult) SetId(v int64) *ListGroupRepositoriesResponseBodyResult {
+	s.Id = &v
+	return s
+}
+
+func (s *ListGroupRepositoriesResponseBodyResult) SetImportUrl(v string) *ListGroupRepositoriesResponseBodyResult {
+	s.ImportUrl = &v
+	return s
+}
+
+func (s *ListGroupRepositoriesResponseBodyResult) SetIsStared(v bool) *ListGroupRepositoriesResponseBodyResult {
+	s.IsStared = &v
+	return s
+}
+
+func (s *ListGroupRepositoriesResponseBodyResult) SetIssuesEnabled(v bool) *ListGroupRepositoriesResponseBodyResult {
+	s.IssuesEnabled = &v
+	return s
+}
+
+func (s *ListGroupRepositoriesResponseBodyResult) SetLastActivityAt(v string) *ListGroupRepositoriesResponseBodyResult {
+	s.LastActivityAt = &v
+	return s
+}
+
+func (s *ListGroupRepositoriesResponseBodyResult) SetMergeRequestsEnabled(v bool) *ListGroupRepositoriesResponseBodyResult {
+	s.MergeRequestsEnabled = &v
+	return s
+}
+
+func (s *ListGroupRepositoriesResponseBodyResult) SetName(v string) *ListGroupRepositoriesResponseBodyResult {
+	s.Name = &v
+	return s
+}
+
+func (s *ListGroupRepositoriesResponseBodyResult) SetNameWithNamespace(v string) *ListGroupRepositoriesResponseBodyResult {
+	s.NameWithNamespace = &v
+	return s
+}
+
+func (s *ListGroupRepositoriesResponseBodyResult) SetNamespaceId(v bool) *ListGroupRepositoriesResponseBodyResult {
+	s.NamespaceId = &v
+	return s
+}
+
+func (s *ListGroupRepositoriesResponseBodyResult) SetPath(v string) *ListGroupRepositoriesResponseBodyResult {
+	s.Path = &v
+	return s
+}
+
+func (s *ListGroupRepositoriesResponseBodyResult) SetPathWithNamespace(v string) *ListGroupRepositoriesResponseBodyResult {
+	s.PathWithNamespace = &v
+	return s
+}
+
+func (s *ListGroupRepositoriesResponseBodyResult) SetPrivateFlag(v bool) *ListGroupRepositoriesResponseBodyResult {
+	s.PrivateFlag = &v
+	return s
+}
+
+func (s *ListGroupRepositoriesResponseBodyResult) SetSnippetsEnabled(v bool) *ListGroupRepositoriesResponseBodyResult {
+	s.SnippetsEnabled = &v
+	return s
+}
+
+func (s *ListGroupRepositoriesResponseBodyResult) SetSshUrl(v string) *ListGroupRepositoriesResponseBodyResult {
+	s.SshUrl = &v
+	return s
+}
+
+func (s *ListGroupRepositoriesResponseBodyResult) SetStarCount(v int32) *ListGroupRepositoriesResponseBodyResult {
+	s.StarCount = &v
+	return s
+}
+
+func (s *ListGroupRepositoriesResponseBodyResult) SetUpdatedAt(v string) *ListGroupRepositoriesResponseBodyResult {
+	s.UpdatedAt = &v
+	return s
+}
+
+func (s *ListGroupRepositoriesResponseBodyResult) SetVisibilityLevel(v int32) *ListGroupRepositoriesResponseBodyResult {
+	s.VisibilityLevel = &v
+	return s
+}
+
+func (s *ListGroupRepositoriesResponseBodyResult) SetWebUrl(v string) *ListGroupRepositoriesResponseBodyResult {
+	s.WebUrl = &v
+	return s
+}
+
+func (s *ListGroupRepositoriesResponseBodyResult) SetWikiEnabled(v bool) *ListGroupRepositoriesResponseBodyResult {
+	s.WikiEnabled = &v
+	return s
+}
+
+type ListGroupRepositoriesResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListGroupRepositoriesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListGroupRepositoriesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListGroupRepositoriesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListGroupRepositoriesResponse) SetHeaders(v map[string]*string) *ListGroupRepositoriesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListGroupRepositoriesResponse) SetStatusCode(v int32) *ListGroupRepositoriesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListGroupRepositoriesResponse) SetBody(v *ListGroupRepositoriesResponseBody) *ListGroupRepositoriesResponse {
+	s.Body = v
+	return s
+}
+
 type ListHostGroupsRequest struct {
 	CreateEndTime     *int64  `json:"createEndTime,omitempty" xml:"createEndTime,omitempty"`
 	CreateStartTime   *int64  `json:"createStartTime,omitempty" xml:"createStartTime,omitempty"`
@@ -11859,14 +14483,15 @@ func (s *ListHostGroupsResponseBody) SetTotalCount(v int64) *ListHostGroupsRespo
 }
 
 type ListHostGroupsResponseBodyHostGroups struct {
-	AliyunRegion        *string `json:"aliyunRegion,omitempty" xml:"aliyunRegion,omitempty"`
-	CreateTime          *int64  `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	CreatorAccountId    *string `json:"creatorAccountId,omitempty" xml:"creatorAccountId,omitempty"`
-	Description         *string `json:"description,omitempty" xml:"description,omitempty"`
-	EcsLabelKey         *string `json:"ecsLabelKey,omitempty" xml:"ecsLabelKey,omitempty"`
-	EcsLabelValue       *string `json:"ecsLabelValue,omitempty" xml:"ecsLabelValue,omitempty"`
-	EcsType             *string `json:"ecsType,omitempty" xml:"ecsType,omitempty"`
-	HostNum             *int64  `json:"hostNum,omitempty" xml:"hostNum,omitempty"`
+	AliyunRegion     *string `json:"aliyunRegion,omitempty" xml:"aliyunRegion,omitempty"`
+	CreateTime       *int64  `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	CreatorAccountId *string `json:"creatorAccountId,omitempty" xml:"creatorAccountId,omitempty"`
+	Description      *string `json:"description,omitempty" xml:"description,omitempty"`
+	EcsLabelKey      *string `json:"ecsLabelKey,omitempty" xml:"ecsLabelKey,omitempty"`
+	EcsLabelValue    *string `json:"ecsLabelValue,omitempty" xml:"ecsLabelValue,omitempty"`
+	EcsType          *string `json:"ecsType,omitempty" xml:"ecsType,omitempty"`
+	HostNum          *int64  `json:"hostNum,omitempty" xml:"hostNum,omitempty"`
+	// 323232
 	Id                  *int64  `json:"id,omitempty" xml:"id,omitempty"`
 	ModifierAccountId   *string `json:"modifierAccountId,omitempty" xml:"modifierAccountId,omitempty"`
 	Name                *string `json:"name,omitempty" xml:"name,omitempty"`
@@ -12231,6 +14856,146 @@ func (s *ListOrganizationMembersResponse) SetStatusCode(v int32) *ListOrganizati
 }
 
 func (s *ListOrganizationMembersResponse) SetBody(v *ListOrganizationMembersResponseBody) *ListOrganizationMembersResponse {
+	s.Body = v
+	return s
+}
+
+type ListOrganizationsRequest struct {
+	AccessLevel    *int32 `json:"accessLevel,omitempty" xml:"accessLevel,omitempty"`
+	MinAccessLevel *int32 `json:"minAccessLevel,omitempty" xml:"minAccessLevel,omitempty"`
+}
+
+func (s ListOrganizationsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListOrganizationsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListOrganizationsRequest) SetAccessLevel(v int32) *ListOrganizationsRequest {
+	s.AccessLevel = &v
+	return s
+}
+
+func (s *ListOrganizationsRequest) SetMinAccessLevel(v int32) *ListOrganizationsRequest {
+	s.MinAccessLevel = &v
+	return s
+}
+
+type ListOrganizationsResponseBody struct {
+	ErrorCode    *string                                `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMessage *string                                `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	RequestId    *string                                `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Result       []*ListOrganizationsResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Repeated"`
+	Success      *bool                                  `json:"success,omitempty" xml:"success,omitempty"`
+	Total        *int64                                 `json:"total,omitempty" xml:"total,omitempty"`
+}
+
+func (s ListOrganizationsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListOrganizationsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListOrganizationsResponseBody) SetErrorCode(v string) *ListOrganizationsResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ListOrganizationsResponseBody) SetErrorMessage(v string) *ListOrganizationsResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *ListOrganizationsResponseBody) SetRequestId(v string) *ListOrganizationsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListOrganizationsResponseBody) SetResult(v []*ListOrganizationsResponseBodyResult) *ListOrganizationsResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *ListOrganizationsResponseBody) SetSuccess(v bool) *ListOrganizationsResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *ListOrganizationsResponseBody) SetTotal(v int64) *ListOrganizationsResponseBody {
+	s.Total = &v
+	return s
+}
+
+type ListOrganizationsResponseBodyResult struct {
+	AccessLevel      *int32  `json:"accessLevel,omitempty" xml:"accessLevel,omitempty"`
+	Id               *int64  `json:"id,omitempty" xml:"id,omitempty"`
+	OrganizationId   *string `json:"organizationId,omitempty" xml:"organizationId,omitempty"`
+	OrganizationName *string `json:"organizationName,omitempty" xml:"organizationName,omitempty"`
+	OrganizationRole *string `json:"organizationRole,omitempty" xml:"organizationRole,omitempty"`
+}
+
+func (s ListOrganizationsResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListOrganizationsResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *ListOrganizationsResponseBodyResult) SetAccessLevel(v int32) *ListOrganizationsResponseBodyResult {
+	s.AccessLevel = &v
+	return s
+}
+
+func (s *ListOrganizationsResponseBodyResult) SetId(v int64) *ListOrganizationsResponseBodyResult {
+	s.Id = &v
+	return s
+}
+
+func (s *ListOrganizationsResponseBodyResult) SetOrganizationId(v string) *ListOrganizationsResponseBodyResult {
+	s.OrganizationId = &v
+	return s
+}
+
+func (s *ListOrganizationsResponseBodyResult) SetOrganizationName(v string) *ListOrganizationsResponseBodyResult {
+	s.OrganizationName = &v
+	return s
+}
+
+func (s *ListOrganizationsResponseBodyResult) SetOrganizationRole(v string) *ListOrganizationsResponseBodyResult {
+	s.OrganizationRole = &v
+	return s
+}
+
+type ListOrganizationsResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListOrganizationsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListOrganizationsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListOrganizationsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListOrganizationsResponse) SetHeaders(v map[string]*string) *ListOrganizationsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListOrganizationsResponse) SetStatusCode(v int32) *ListOrganizationsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListOrganizationsResponse) SetBody(v *ListOrganizationsResponseBody) *ListOrganizationsResponse {
 	s.Body = v
 	return s
 }
@@ -12839,6 +15604,110 @@ func (s *ListPipelineJobsResponse) SetStatusCode(v int32) *ListPipelineJobsRespo
 }
 
 func (s *ListPipelineJobsResponse) SetBody(v *ListPipelineJobsResponseBody) *ListPipelineJobsResponse {
+	s.Body = v
+	return s
+}
+
+type ListPipelineRelationsRequest struct {
+	RelObjectType *string `json:"relObjectType,omitempty" xml:"relObjectType,omitempty"`
+}
+
+func (s ListPipelineRelationsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPipelineRelationsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListPipelineRelationsRequest) SetRelObjectType(v string) *ListPipelineRelationsRequest {
+	s.RelObjectType = &v
+	return s
+}
+
+type ListPipelineRelationsResponseBody struct {
+	ErrorCode         *string                                               `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMessage      *string                                               `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	PipelineRelations []*ListPipelineRelationsResponseBodyPipelineRelations `json:"pipelineRelations,omitempty" xml:"pipelineRelations,omitempty" type:"Repeated"`
+	RequestId         *string                                               `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success           *bool                                                 `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s ListPipelineRelationsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPipelineRelationsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListPipelineRelationsResponseBody) SetErrorCode(v string) *ListPipelineRelationsResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ListPipelineRelationsResponseBody) SetErrorMessage(v string) *ListPipelineRelationsResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *ListPipelineRelationsResponseBody) SetPipelineRelations(v []*ListPipelineRelationsResponseBodyPipelineRelations) *ListPipelineRelationsResponseBody {
+	s.PipelineRelations = v
+	return s
+}
+
+func (s *ListPipelineRelationsResponseBody) SetRequestId(v string) *ListPipelineRelationsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListPipelineRelationsResponseBody) SetSuccess(v bool) *ListPipelineRelationsResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListPipelineRelationsResponseBodyPipelineRelations struct {
+	RefObjectId *int64 `json:"refObjectId,omitempty" xml:"refObjectId,omitempty"`
+}
+
+func (s ListPipelineRelationsResponseBodyPipelineRelations) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPipelineRelationsResponseBodyPipelineRelations) GoString() string {
+	return s.String()
+}
+
+func (s *ListPipelineRelationsResponseBodyPipelineRelations) SetRefObjectId(v int64) *ListPipelineRelationsResponseBodyPipelineRelations {
+	s.RefObjectId = &v
+	return s
+}
+
+type ListPipelineRelationsResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListPipelineRelationsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListPipelineRelationsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPipelineRelationsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListPipelineRelationsResponse) SetHeaders(v map[string]*string) *ListPipelineRelationsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListPipelineRelationsResponse) SetStatusCode(v int32) *ListPipelineRelationsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListPipelineRelationsResponse) SetBody(v *ListPipelineRelationsResponseBody) *ListPipelineRelationsResponse {
 	s.Body = v
 	return s
 }
@@ -13830,7 +16699,8 @@ func (s *ListProjectWorkitemTypesResponse) SetBody(v *ListProjectWorkitemTypesRe
 }
 
 type ListProjectsRequest struct {
-	Category        *string `json:"category,omitempty" xml:"category,omitempty"`
+	Category *string `json:"category,omitempty" xml:"category,omitempty"`
+	// {"conditionGroups":[[]]}
 	Conditions      *string `json:"conditions,omitempty" xml:"conditions,omitempty"`
 	ExtraConditions *string `json:"extraConditions,omitempty" xml:"extraConditions,omitempty"`
 	MaxResults      *int64  `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
@@ -15093,6 +17963,7 @@ func (s *ListRepositoryBranchesResponse) SetBody(v *ListRepositoryBranchesRespon
 }
 
 type ListRepositoryCommitDiffRequest struct {
+	// accessToken
 	AccessToken    *string `json:"accessToken,omitempty" xml:"accessToken,omitempty"`
 	ContextLine    *int32  `json:"contextLine,omitempty" xml:"contextLine,omitempty"`
 	OrganizationId *string `json:"organizationId,omitempty" xml:"organizationId,omitempty"`
@@ -15122,11 +17993,12 @@ func (s *ListRepositoryCommitDiffRequest) SetOrganizationId(v string) *ListRepos
 }
 
 type ListRepositoryCommitDiffResponseBody struct {
-	ErrorCode    *string                                       `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
-	ErrorMessage *string                                       `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
-	RequestId    *string                                       `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Result       []*ListRepositoryCommitDiffResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Repeated"`
-	Success      *bool                                         `json:"success,omitempty" xml:"success,omitempty"`
+	ErrorCode    *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// Id of the request
+	RequestId *string                                       `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Result    []*ListRepositoryCommitDiffResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Repeated"`
+	Success   *bool                                         `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s ListRepositoryCommitDiffResponseBody) String() string {
@@ -15693,7 +18565,262 @@ func (s *ListRepositoryCommitsResponse) SetBody(v *ListRepositoryCommitsResponse
 	return s
 }
 
+type ListRepositoryGroupsRequest struct {
+	AccessToken     *string `json:"accessToken,omitempty" xml:"accessToken,omitempty"`
+	IncludePersonal *bool   `json:"includePersonal,omitempty" xml:"includePersonal,omitempty"`
+	OrderBy         *string `json:"orderBy,omitempty" xml:"orderBy,omitempty"`
+	OrganizationId  *string `json:"organizationId,omitempty" xml:"organizationId,omitempty"`
+	Page            *int64  `json:"page,omitempty" xml:"page,omitempty"`
+	PageSize        *int64  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	ParentId        *int64  `json:"parentId,omitempty" xml:"parentId,omitempty"`
+	Search          *string `json:"search,omitempty" xml:"search,omitempty"`
+	Sort            *string `json:"sort,omitempty" xml:"sort,omitempty"`
+}
+
+func (s ListRepositoryGroupsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRepositoryGroupsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListRepositoryGroupsRequest) SetAccessToken(v string) *ListRepositoryGroupsRequest {
+	s.AccessToken = &v
+	return s
+}
+
+func (s *ListRepositoryGroupsRequest) SetIncludePersonal(v bool) *ListRepositoryGroupsRequest {
+	s.IncludePersonal = &v
+	return s
+}
+
+func (s *ListRepositoryGroupsRequest) SetOrderBy(v string) *ListRepositoryGroupsRequest {
+	s.OrderBy = &v
+	return s
+}
+
+func (s *ListRepositoryGroupsRequest) SetOrganizationId(v string) *ListRepositoryGroupsRequest {
+	s.OrganizationId = &v
+	return s
+}
+
+func (s *ListRepositoryGroupsRequest) SetPage(v int64) *ListRepositoryGroupsRequest {
+	s.Page = &v
+	return s
+}
+
+func (s *ListRepositoryGroupsRequest) SetPageSize(v int64) *ListRepositoryGroupsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListRepositoryGroupsRequest) SetParentId(v int64) *ListRepositoryGroupsRequest {
+	s.ParentId = &v
+	return s
+}
+
+func (s *ListRepositoryGroupsRequest) SetSearch(v string) *ListRepositoryGroupsRequest {
+	s.Search = &v
+	return s
+}
+
+func (s *ListRepositoryGroupsRequest) SetSort(v string) *ListRepositoryGroupsRequest {
+	s.Sort = &v
+	return s
+}
+
+type ListRepositoryGroupsResponseBody struct {
+	ErrorCode    *string                                   `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMessage *string                                   `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	RequestId    *string                                   `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Result       []*ListRepositoryGroupsResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Repeated"`
+	Success      *bool                                     `json:"success,omitempty" xml:"success,omitempty"`
+	Total        *int64                                    `json:"total,omitempty" xml:"total,omitempty"`
+}
+
+func (s ListRepositoryGroupsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRepositoryGroupsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListRepositoryGroupsResponseBody) SetErrorCode(v string) *ListRepositoryGroupsResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ListRepositoryGroupsResponseBody) SetErrorMessage(v string) *ListRepositoryGroupsResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *ListRepositoryGroupsResponseBody) SetRequestId(v string) *ListRepositoryGroupsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListRepositoryGroupsResponseBody) SetResult(v []*ListRepositoryGroupsResponseBodyResult) *ListRepositoryGroupsResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *ListRepositoryGroupsResponseBody) SetSuccess(v bool) *ListRepositoryGroupsResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *ListRepositoryGroupsResponseBody) SetTotal(v int64) *ListRepositoryGroupsResponseBody {
+	s.Total = &v
+	return s
+}
+
+type ListRepositoryGroupsResponseBodyResult struct {
+	AccessLevel       *int32  `json:"accessLevel,omitempty" xml:"accessLevel,omitempty"`
+	AvatarUrl         *string `json:"avatarUrl,omitempty" xml:"avatarUrl,omitempty"`
+	CreatedAt         *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
+	Description       *string `json:"description,omitempty" xml:"description,omitempty"`
+	GroupCount        *int64  `json:"groupCount,omitempty" xml:"groupCount,omitempty"`
+	Id                *int64  `json:"id,omitempty" xml:"id,omitempty"`
+	Name              *string `json:"name,omitempty" xml:"name,omitempty"`
+	NameWithNamespace *string `json:"nameWithNamespace,omitempty" xml:"nameWithNamespace,omitempty"`
+	OwnerId           *int64  `json:"ownerId,omitempty" xml:"ownerId,omitempty"`
+	ParentId          *int64  `json:"parentId,omitempty" xml:"parentId,omitempty"`
+	Path              *string `json:"path,omitempty" xml:"path,omitempty"`
+	PathWithNamespace *string `json:"pathWithNamespace,omitempty" xml:"pathWithNamespace,omitempty"`
+	ProjectCount      *int64  `json:"projectCount,omitempty" xml:"projectCount,omitempty"`
+	Type              *string `json:"type,omitempty" xml:"type,omitempty"`
+	UpdatedAt         *string `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
+	VisibilityLevel   *int32  `json:"visibilityLevel,omitempty" xml:"visibilityLevel,omitempty"`
+	WebUrl            *string `json:"webUrl,omitempty" xml:"webUrl,omitempty"`
+}
+
+func (s ListRepositoryGroupsResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRepositoryGroupsResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *ListRepositoryGroupsResponseBodyResult) SetAccessLevel(v int32) *ListRepositoryGroupsResponseBodyResult {
+	s.AccessLevel = &v
+	return s
+}
+
+func (s *ListRepositoryGroupsResponseBodyResult) SetAvatarUrl(v string) *ListRepositoryGroupsResponseBodyResult {
+	s.AvatarUrl = &v
+	return s
+}
+
+func (s *ListRepositoryGroupsResponseBodyResult) SetCreatedAt(v string) *ListRepositoryGroupsResponseBodyResult {
+	s.CreatedAt = &v
+	return s
+}
+
+func (s *ListRepositoryGroupsResponseBodyResult) SetDescription(v string) *ListRepositoryGroupsResponseBodyResult {
+	s.Description = &v
+	return s
+}
+
+func (s *ListRepositoryGroupsResponseBodyResult) SetGroupCount(v int64) *ListRepositoryGroupsResponseBodyResult {
+	s.GroupCount = &v
+	return s
+}
+
+func (s *ListRepositoryGroupsResponseBodyResult) SetId(v int64) *ListRepositoryGroupsResponseBodyResult {
+	s.Id = &v
+	return s
+}
+
+func (s *ListRepositoryGroupsResponseBodyResult) SetName(v string) *ListRepositoryGroupsResponseBodyResult {
+	s.Name = &v
+	return s
+}
+
+func (s *ListRepositoryGroupsResponseBodyResult) SetNameWithNamespace(v string) *ListRepositoryGroupsResponseBodyResult {
+	s.NameWithNamespace = &v
+	return s
+}
+
+func (s *ListRepositoryGroupsResponseBodyResult) SetOwnerId(v int64) *ListRepositoryGroupsResponseBodyResult {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *ListRepositoryGroupsResponseBodyResult) SetParentId(v int64) *ListRepositoryGroupsResponseBodyResult {
+	s.ParentId = &v
+	return s
+}
+
+func (s *ListRepositoryGroupsResponseBodyResult) SetPath(v string) *ListRepositoryGroupsResponseBodyResult {
+	s.Path = &v
+	return s
+}
+
+func (s *ListRepositoryGroupsResponseBodyResult) SetPathWithNamespace(v string) *ListRepositoryGroupsResponseBodyResult {
+	s.PathWithNamespace = &v
+	return s
+}
+
+func (s *ListRepositoryGroupsResponseBodyResult) SetProjectCount(v int64) *ListRepositoryGroupsResponseBodyResult {
+	s.ProjectCount = &v
+	return s
+}
+
+func (s *ListRepositoryGroupsResponseBodyResult) SetType(v string) *ListRepositoryGroupsResponseBodyResult {
+	s.Type = &v
+	return s
+}
+
+func (s *ListRepositoryGroupsResponseBodyResult) SetUpdatedAt(v string) *ListRepositoryGroupsResponseBodyResult {
+	s.UpdatedAt = &v
+	return s
+}
+
+func (s *ListRepositoryGroupsResponseBodyResult) SetVisibilityLevel(v int32) *ListRepositoryGroupsResponseBodyResult {
+	s.VisibilityLevel = &v
+	return s
+}
+
+func (s *ListRepositoryGroupsResponseBodyResult) SetWebUrl(v string) *ListRepositoryGroupsResponseBodyResult {
+	s.WebUrl = &v
+	return s
+}
+
+type ListRepositoryGroupsResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListRepositoryGroupsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListRepositoryGroupsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRepositoryGroupsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListRepositoryGroupsResponse) SetHeaders(v map[string]*string) *ListRepositoryGroupsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListRepositoryGroupsResponse) SetStatusCode(v int32) *ListRepositoryGroupsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListRepositoryGroupsResponse) SetBody(v *ListRepositoryGroupsResponseBody) *ListRepositoryGroupsResponse {
+	s.Body = v
+	return s
+}
+
 type ListRepositoryMemberWithInheritedRequest struct {
+	// accessToken
 	AccessToken    *string `json:"accessToken,omitempty" xml:"accessToken,omitempty"`
 	OrganizationId *string `json:"organizationId,omitempty" xml:"organizationId,omitempty"`
 }
@@ -15823,6 +18950,7 @@ func (s *ListRepositoryMemberWithInheritedResponseBodyResult) SetUsername(v stri
 }
 
 type ListRepositoryMemberWithInheritedResponseBodyResultInherited struct {
+	// id
 	Id                *int64  `json:"id,omitempty" xml:"id,omitempty"`
 	Name              *string `json:"name,omitempty" xml:"name,omitempty"`
 	NameWithNamespace *string `json:"nameWithNamespace,omitempty" xml:"nameWithNamespace,omitempty"`
@@ -15900,6 +19028,276 @@ func (s *ListRepositoryMemberWithInheritedResponse) SetStatusCode(v int32) *List
 }
 
 func (s *ListRepositoryMemberWithInheritedResponse) SetBody(v *ListRepositoryMemberWithInheritedResponseBody) *ListRepositoryMemberWithInheritedResponse {
+	s.Body = v
+	return s
+}
+
+type ListRepositoryTagsRequest struct {
+	AccessToken    *string `json:"accessToken,omitempty" xml:"accessToken,omitempty"`
+	OrganizationId *string `json:"organizationId,omitempty" xml:"organizationId,omitempty"`
+	Page           *int64  `json:"page,omitempty" xml:"page,omitempty"`
+	PageSize       *int64  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	Search         *string `json:"search,omitempty" xml:"search,omitempty"`
+	Sort           *string `json:"sort,omitempty" xml:"sort,omitempty"`
+}
+
+func (s ListRepositoryTagsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRepositoryTagsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListRepositoryTagsRequest) SetAccessToken(v string) *ListRepositoryTagsRequest {
+	s.AccessToken = &v
+	return s
+}
+
+func (s *ListRepositoryTagsRequest) SetOrganizationId(v string) *ListRepositoryTagsRequest {
+	s.OrganizationId = &v
+	return s
+}
+
+func (s *ListRepositoryTagsRequest) SetPage(v int64) *ListRepositoryTagsRequest {
+	s.Page = &v
+	return s
+}
+
+func (s *ListRepositoryTagsRequest) SetPageSize(v int64) *ListRepositoryTagsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListRepositoryTagsRequest) SetSearch(v string) *ListRepositoryTagsRequest {
+	s.Search = &v
+	return s
+}
+
+func (s *ListRepositoryTagsRequest) SetSort(v string) *ListRepositoryTagsRequest {
+	s.Sort = &v
+	return s
+}
+
+type ListRepositoryTagsResponseBody struct {
+	ErrorCode    *string                                 `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMessage *string                                 `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	RequestId    *string                                 `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Result       []*ListRepositoryTagsResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Repeated"`
+	Success      *bool                                   `json:"success,omitempty" xml:"success,omitempty"`
+	Total        *int64                                  `json:"total,omitempty" xml:"total,omitempty"`
+}
+
+func (s ListRepositoryTagsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRepositoryTagsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListRepositoryTagsResponseBody) SetErrorCode(v string) *ListRepositoryTagsResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ListRepositoryTagsResponseBody) SetErrorMessage(v string) *ListRepositoryTagsResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *ListRepositoryTagsResponseBody) SetRequestId(v string) *ListRepositoryTagsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListRepositoryTagsResponseBody) SetResult(v []*ListRepositoryTagsResponseBodyResult) *ListRepositoryTagsResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *ListRepositoryTagsResponseBody) SetSuccess(v bool) *ListRepositoryTagsResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *ListRepositoryTagsResponseBody) SetTotal(v int64) *ListRepositoryTagsResponseBody {
+	s.Total = &v
+	return s
+}
+
+type ListRepositoryTagsResponseBodyResult struct {
+	Commit  *ListRepositoryTagsResponseBodyResultCommit `json:"commit,omitempty" xml:"commit,omitempty" type:"Struct"`
+	Id      *string                                     `json:"id,omitempty" xml:"id,omitempty"`
+	Message *string                                     `json:"message,omitempty" xml:"message,omitempty"`
+	Name    *string                                     `json:"name,omitempty" xml:"name,omitempty"`
+}
+
+func (s ListRepositoryTagsResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRepositoryTagsResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *ListRepositoryTagsResponseBodyResult) SetCommit(v *ListRepositoryTagsResponseBodyResultCommit) *ListRepositoryTagsResponseBodyResult {
+	s.Commit = v
+	return s
+}
+
+func (s *ListRepositoryTagsResponseBodyResult) SetId(v string) *ListRepositoryTagsResponseBodyResult {
+	s.Id = &v
+	return s
+}
+
+func (s *ListRepositoryTagsResponseBodyResult) SetMessage(v string) *ListRepositoryTagsResponseBodyResult {
+	s.Message = &v
+	return s
+}
+
+func (s *ListRepositoryTagsResponseBodyResult) SetName(v string) *ListRepositoryTagsResponseBodyResult {
+	s.Name = &v
+	return s
+}
+
+type ListRepositoryTagsResponseBodyResultCommit struct {
+	AuthorEmail    *string                                              `json:"authorEmail,omitempty" xml:"authorEmail,omitempty"`
+	AuthorName     *string                                              `json:"authorName,omitempty" xml:"authorName,omitempty"`
+	AuthoredDate   *string                                              `json:"authoredDate,omitempty" xml:"authoredDate,omitempty"`
+	CommittedDate  *string                                              `json:"committedDate,omitempty" xml:"committedDate,omitempty"`
+	CommitterEmail *string                                              `json:"committerEmail,omitempty" xml:"committerEmail,omitempty"`
+	CommitterName  *string                                              `json:"committerName,omitempty" xml:"committerName,omitempty"`
+	CreatedAt      *string                                              `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
+	Id             *string                                              `json:"id,omitempty" xml:"id,omitempty"`
+	Message        *string                                              `json:"message,omitempty" xml:"message,omitempty"`
+	ParentIds      []*string                                            `json:"parentIds,omitempty" xml:"parentIds,omitempty" type:"Repeated"`
+	ShortId        *string                                              `json:"shortId,omitempty" xml:"shortId,omitempty"`
+	Signature      *ListRepositoryTagsResponseBodyResultCommitSignature `json:"signature,omitempty" xml:"signature,omitempty" type:"Struct"`
+	Title          *string                                              `json:"title,omitempty" xml:"title,omitempty"`
+}
+
+func (s ListRepositoryTagsResponseBodyResultCommit) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRepositoryTagsResponseBodyResultCommit) GoString() string {
+	return s.String()
+}
+
+func (s *ListRepositoryTagsResponseBodyResultCommit) SetAuthorEmail(v string) *ListRepositoryTagsResponseBodyResultCommit {
+	s.AuthorEmail = &v
+	return s
+}
+
+func (s *ListRepositoryTagsResponseBodyResultCommit) SetAuthorName(v string) *ListRepositoryTagsResponseBodyResultCommit {
+	s.AuthorName = &v
+	return s
+}
+
+func (s *ListRepositoryTagsResponseBodyResultCommit) SetAuthoredDate(v string) *ListRepositoryTagsResponseBodyResultCommit {
+	s.AuthoredDate = &v
+	return s
+}
+
+func (s *ListRepositoryTagsResponseBodyResultCommit) SetCommittedDate(v string) *ListRepositoryTagsResponseBodyResultCommit {
+	s.CommittedDate = &v
+	return s
+}
+
+func (s *ListRepositoryTagsResponseBodyResultCommit) SetCommitterEmail(v string) *ListRepositoryTagsResponseBodyResultCommit {
+	s.CommitterEmail = &v
+	return s
+}
+
+func (s *ListRepositoryTagsResponseBodyResultCommit) SetCommitterName(v string) *ListRepositoryTagsResponseBodyResultCommit {
+	s.CommitterName = &v
+	return s
+}
+
+func (s *ListRepositoryTagsResponseBodyResultCommit) SetCreatedAt(v string) *ListRepositoryTagsResponseBodyResultCommit {
+	s.CreatedAt = &v
+	return s
+}
+
+func (s *ListRepositoryTagsResponseBodyResultCommit) SetId(v string) *ListRepositoryTagsResponseBodyResultCommit {
+	s.Id = &v
+	return s
+}
+
+func (s *ListRepositoryTagsResponseBodyResultCommit) SetMessage(v string) *ListRepositoryTagsResponseBodyResultCommit {
+	s.Message = &v
+	return s
+}
+
+func (s *ListRepositoryTagsResponseBodyResultCommit) SetParentIds(v []*string) *ListRepositoryTagsResponseBodyResultCommit {
+	s.ParentIds = v
+	return s
+}
+
+func (s *ListRepositoryTagsResponseBodyResultCommit) SetShortId(v string) *ListRepositoryTagsResponseBodyResultCommit {
+	s.ShortId = &v
+	return s
+}
+
+func (s *ListRepositoryTagsResponseBodyResultCommit) SetSignature(v *ListRepositoryTagsResponseBodyResultCommitSignature) *ListRepositoryTagsResponseBodyResultCommit {
+	s.Signature = v
+	return s
+}
+
+func (s *ListRepositoryTagsResponseBodyResultCommit) SetTitle(v string) *ListRepositoryTagsResponseBodyResultCommit {
+	s.Title = &v
+	return s
+}
+
+type ListRepositoryTagsResponseBodyResultCommitSignature struct {
+	GpgKeyId           *string `json:"gpgKeyId,omitempty" xml:"gpgKeyId,omitempty"`
+	VerificationStatus *string `json:"verificationStatus,omitempty" xml:"verificationStatus,omitempty"`
+}
+
+func (s ListRepositoryTagsResponseBodyResultCommitSignature) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRepositoryTagsResponseBodyResultCommitSignature) GoString() string {
+	return s.String()
+}
+
+func (s *ListRepositoryTagsResponseBodyResultCommitSignature) SetGpgKeyId(v string) *ListRepositoryTagsResponseBodyResultCommitSignature {
+	s.GpgKeyId = &v
+	return s
+}
+
+func (s *ListRepositoryTagsResponseBodyResultCommitSignature) SetVerificationStatus(v string) *ListRepositoryTagsResponseBodyResultCommitSignature {
+	s.VerificationStatus = &v
+	return s
+}
+
+type ListRepositoryTagsResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListRepositoryTagsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListRepositoryTagsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRepositoryTagsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListRepositoryTagsResponse) SetHeaders(v map[string]*string) *ListRepositoryTagsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListRepositoryTagsResponse) SetStatusCode(v int32) *ListRepositoryTagsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListRepositoryTagsResponse) SetBody(v *ListRepositoryTagsResponseBody) *ListRepositoryTagsResponse {
 	s.Body = v
 	return s
 }
@@ -19572,6 +22970,188 @@ func (s *UpdateFlowTagGroupResponse) SetBody(v *UpdateFlowTagGroupResponseBody) 
 	return s
 }
 
+type UpdateGroupMemberRequest struct {
+	AccessToken    *string `json:"accessToken,omitempty" xml:"accessToken,omitempty"`
+	AliyunPk       *string `json:"aliyunPk,omitempty" xml:"aliyunPk,omitempty"`
+	AccessLevel    *int32  `json:"accessLevel,omitempty" xml:"accessLevel,omitempty"`
+	MemberType     *string `json:"memberType,omitempty" xml:"memberType,omitempty"`
+	OrganizationId *string `json:"organizationId,omitempty" xml:"organizationId,omitempty"`
+}
+
+func (s UpdateGroupMemberRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateGroupMemberRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateGroupMemberRequest) SetAccessToken(v string) *UpdateGroupMemberRequest {
+	s.AccessToken = &v
+	return s
+}
+
+func (s *UpdateGroupMemberRequest) SetAliyunPk(v string) *UpdateGroupMemberRequest {
+	s.AliyunPk = &v
+	return s
+}
+
+func (s *UpdateGroupMemberRequest) SetAccessLevel(v int32) *UpdateGroupMemberRequest {
+	s.AccessLevel = &v
+	return s
+}
+
+func (s *UpdateGroupMemberRequest) SetMemberType(v string) *UpdateGroupMemberRequest {
+	s.MemberType = &v
+	return s
+}
+
+func (s *UpdateGroupMemberRequest) SetOrganizationId(v string) *UpdateGroupMemberRequest {
+	s.OrganizationId = &v
+	return s
+}
+
+type UpdateGroupMemberResponseBody struct {
+	ErrorCode    *string                              `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMessage *string                              `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	RequestId    *string                              `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Result       *UpdateGroupMemberResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
+	Success      *bool                                `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s UpdateGroupMemberResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateGroupMemberResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateGroupMemberResponseBody) SetErrorCode(v string) *UpdateGroupMemberResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *UpdateGroupMemberResponseBody) SetErrorMessage(v string) *UpdateGroupMemberResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *UpdateGroupMemberResponseBody) SetRequestId(v string) *UpdateGroupMemberResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateGroupMemberResponseBody) SetResult(v *UpdateGroupMemberResponseBodyResult) *UpdateGroupMemberResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *UpdateGroupMemberResponseBody) SetSuccess(v bool) *UpdateGroupMemberResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateGroupMemberResponseBodyResult struct {
+	AccessLevel *int32  `json:"accessLevel,omitempty" xml:"accessLevel,omitempty"`
+	AvatarUrl   *string `json:"avatarUrl,omitempty" xml:"avatarUrl,omitempty"`
+	Email       *string `json:"email,omitempty" xml:"email,omitempty"`
+	ExternUid   *string `json:"externUid,omitempty" xml:"externUid,omitempty"`
+	Id          *int64  `json:"id,omitempty" xml:"id,omitempty"`
+	MemberType  *string `json:"memberType,omitempty" xml:"memberType,omitempty"`
+	Name        *string `json:"name,omitempty" xml:"name,omitempty"`
+	SourceId    *int64  `json:"sourceId,omitempty" xml:"sourceId,omitempty"`
+	State       *string `json:"state,omitempty" xml:"state,omitempty"`
+	Username    *string `json:"username,omitempty" xml:"username,omitempty"`
+}
+
+func (s UpdateGroupMemberResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateGroupMemberResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateGroupMemberResponseBodyResult) SetAccessLevel(v int32) *UpdateGroupMemberResponseBodyResult {
+	s.AccessLevel = &v
+	return s
+}
+
+func (s *UpdateGroupMemberResponseBodyResult) SetAvatarUrl(v string) *UpdateGroupMemberResponseBodyResult {
+	s.AvatarUrl = &v
+	return s
+}
+
+func (s *UpdateGroupMemberResponseBodyResult) SetEmail(v string) *UpdateGroupMemberResponseBodyResult {
+	s.Email = &v
+	return s
+}
+
+func (s *UpdateGroupMemberResponseBodyResult) SetExternUid(v string) *UpdateGroupMemberResponseBodyResult {
+	s.ExternUid = &v
+	return s
+}
+
+func (s *UpdateGroupMemberResponseBodyResult) SetId(v int64) *UpdateGroupMemberResponseBodyResult {
+	s.Id = &v
+	return s
+}
+
+func (s *UpdateGroupMemberResponseBodyResult) SetMemberType(v string) *UpdateGroupMemberResponseBodyResult {
+	s.MemberType = &v
+	return s
+}
+
+func (s *UpdateGroupMemberResponseBodyResult) SetName(v string) *UpdateGroupMemberResponseBodyResult {
+	s.Name = &v
+	return s
+}
+
+func (s *UpdateGroupMemberResponseBodyResult) SetSourceId(v int64) *UpdateGroupMemberResponseBodyResult {
+	s.SourceId = &v
+	return s
+}
+
+func (s *UpdateGroupMemberResponseBodyResult) SetState(v string) *UpdateGroupMemberResponseBodyResult {
+	s.State = &v
+	return s
+}
+
+func (s *UpdateGroupMemberResponseBodyResult) SetUsername(v string) *UpdateGroupMemberResponseBodyResult {
+	s.Username = &v
+	return s
+}
+
+type UpdateGroupMemberResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateGroupMemberResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateGroupMemberResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateGroupMemberResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateGroupMemberResponse) SetHeaders(v map[string]*string) *UpdateGroupMemberResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateGroupMemberResponse) SetStatusCode(v int32) *UpdateGroupMemberResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateGroupMemberResponse) SetBody(v *UpdateGroupMemberResponseBody) *UpdateGroupMemberResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateHostGroupRequest struct {
 	AliyunRegion        *string `json:"aliyunRegion,omitempty" xml:"aliyunRegion,omitempty"`
 	EcsLabelKey         *string `json:"ecsLabelKey,omitempty" xml:"ecsLabelKey,omitempty"`
@@ -21292,7 +24872,8 @@ type UpdateRepositoryMemberResponseBodyResult struct {
 	State       *string `json:"state,omitempty" xml:"state,omitempty"`
 	TbUserId    *string `json:"tbUserId,omitempty" xml:"tbUserId,omitempty"`
 	Username    *string `json:"username,omitempty" xml:"username,omitempty"`
-	WebUrl      *string `json:"webUrl,omitempty" xml:"webUrl,omitempty"`
+	// web url
+	WebUrl *string `json:"webUrl,omitempty" xml:"webUrl,omitempty"`
 }
 
 func (s UpdateRepositoryMemberResponseBodyResult) String() string {
@@ -21862,8 +25443,9 @@ type UpdateWorkitemCommentResponseBody struct {
 	Comment   *UpdateWorkitemCommentResponseBodyComment `json:"comment,omitempty" xml:"comment,omitempty" type:"Struct"`
 	ErrorCode *string                                   `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
 	ErrorMsg  *string                                   `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
-	RequestId *string                                   `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Success   *string                                   `json:"success,omitempty" xml:"success,omitempty"`
+	// Id of the request
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success   *string `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s UpdateWorkitemCommentResponseBody) String() string {
@@ -22099,11 +25681,109 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
-func (client *Client) AddRepositoryMember(repositoryId *string, request *AddRepositoryMemberRequest) (_result *AddRepositoryMemberResponse, _err error) {
+func (client *Client) AddGroupMemberWithOptions(groupId *string, request *AddGroupMemberRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *AddGroupMemberResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccessToken)) {
+		query["accessToken"] = request.AccessToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrganizationId)) {
+		query["organizationId"] = request.OrganizationId
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccessLevel)) {
+		body["accessLevel"] = request.AccessLevel
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AliyunPks)) {
+		body["aliyunPks"] = request.AliyunPks
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AddGroupMember"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/repository/groups/" + tea.StringValue(openapiutil.GetEncodeParam(groupId)) + "/members/create"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &AddGroupMemberResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) AddGroupMember(groupId *string, request *AddGroupMemberRequest) (_result *AddGroupMemberResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &AddRepositoryMemberResponse{}
-	_body, _err := client.AddRepositoryMemberWithOptions(repositoryId, request, headers, runtime)
+	_result = &AddGroupMemberResponse{}
+	_body, _err := client.AddGroupMemberWithOptions(groupId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) AddPipelineRelationsWithOptions(organizationId *string, pipelineId *string, request *AddPipelineRelationsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *AddPipelineRelationsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RelObjectIds)) {
+		query["relObjectIds"] = request.RelObjectIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RelObjectType)) {
+		query["relObjectType"] = request.RelObjectType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AddPipelineRelations"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/organization/" + tea.StringValue(openapiutil.GetEncodeParam(organizationId)) + "/" + tea.StringValue(openapiutil.GetEncodeParam(pipelineId)) + "/pipelineRelations"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &AddPipelineRelationsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) AddPipelineRelations(organizationId *string, pipelineId *string, request *AddPipelineRelationsRequest) (_result *AddPipelineRelationsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &AddPipelineRelationsResponse{}
+	_body, _err := client.AddPipelineRelationsWithOptions(organizationId, pipelineId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -22159,11 +25839,11 @@ func (client *Client) AddRepositoryMemberWithOptions(repositoryId *string, reque
 	return _result, _err
 }
 
-func (client *Client) AddWebhook(repositoryId *string, request *AddWebhookRequest) (_result *AddWebhookResponse, _err error) {
+func (client *Client) AddRepositoryMember(repositoryId *string, request *AddRepositoryMemberRequest) (_result *AddRepositoryMemberResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &AddWebhookResponse{}
-	_body, _err := client.AddWebhookWithOptions(repositoryId, request, headers, runtime)
+	_result = &AddRepositoryMemberResponse{}
+	_body, _err := client.AddRepositoryMemberWithOptions(repositoryId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -22243,11 +25923,11 @@ func (client *Client) AddWebhookWithOptions(repositoryId *string, request *AddWe
 	return _result, _err
 }
 
-func (client *Client) CreateBranch(repositoryId *string, request *CreateBranchRequest) (_result *CreateBranchResponse, _err error) {
+func (client *Client) AddWebhook(repositoryId *string, request *AddWebhookRequest) (_result *AddWebhookResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &CreateBranchResponse{}
-	_body, _err := client.CreateBranchWithOptions(repositoryId, request, headers, runtime)
+	_result = &AddWebhookResponse{}
+	_body, _err := client.AddWebhookWithOptions(repositoryId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -22303,11 +25983,71 @@ func (client *Client) CreateBranchWithOptions(repositoryId *string, request *Cre
 	return _result, _err
 }
 
-func (client *Client) CreateFile(repositoryId *string, request *CreateFileRequest) (_result *CreateFileResponse, _err error) {
+func (client *Client) CreateBranch(repositoryId *string, request *CreateBranchRequest) (_result *CreateBranchResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &CreateFileResponse{}
-	_body, _err := client.CreateFileWithOptions(repositoryId, request, headers, runtime)
+	_result = &CreateBranchResponse{}
+	_body, _err := client.CreateBranchWithOptions(repositoryId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateDeployKeyWithOptions(repositoryId *string, request *CreateDeployKeyRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateDeployKeyResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccessToken)) {
+		query["accessToken"] = request.AccessToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrganizationId)) {
+		query["organizationId"] = request.OrganizationId
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Key)) {
+		body["key"] = request.Key
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Title)) {
+		body["title"] = request.Title
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateDeployKey"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/repository/" + tea.StringValue(openapiutil.GetEncodeParam(repositoryId)) + "/keys/create"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateDeployKeyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateDeployKey(repositoryId *string, request *CreateDeployKeyRequest) (_result *CreateDeployKeyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateDeployKeyResponse{}
+	_body, _err := client.CreateDeployKeyWithOptions(repositoryId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -22375,11 +26115,11 @@ func (client *Client) CreateFileWithOptions(repositoryId *string, request *Creat
 	return _result, _err
 }
 
-func (client *Client) CreateFlowTag(organizationId *string, request *CreateFlowTagRequest) (_result *CreateFlowTagResponse, _err error) {
+func (client *Client) CreateFile(repositoryId *string, request *CreateFileRequest) (_result *CreateFileResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &CreateFlowTagResponse{}
-	_body, _err := client.CreateFlowTagWithOptions(organizationId, request, headers, runtime)
+	_result = &CreateFileResponse{}
+	_body, _err := client.CreateFileWithOptions(repositoryId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -22429,11 +26169,11 @@ func (client *Client) CreateFlowTagWithOptions(organizationId *string, request *
 	return _result, _err
 }
 
-func (client *Client) CreateFlowTagGroup(organizationId *string, request *CreateFlowTagGroupRequest) (_result *CreateFlowTagGroupResponse, _err error) {
+func (client *Client) CreateFlowTag(organizationId *string, request *CreateFlowTagRequest) (_result *CreateFlowTagResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &CreateFlowTagGroupResponse{}
-	_body, _err := client.CreateFlowTagGroupWithOptions(organizationId, request, headers, runtime)
+	_result = &CreateFlowTagResponse{}
+	_body, _err := client.CreateFlowTagWithOptions(organizationId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -22475,11 +26215,11 @@ func (client *Client) CreateFlowTagGroupWithOptions(organizationId *string, requ
 	return _result, _err
 }
 
-func (client *Client) CreateHostGroup(organizationId *string, request *CreateHostGroupRequest) (_result *CreateHostGroupResponse, _err error) {
+func (client *Client) CreateFlowTagGroup(organizationId *string, request *CreateFlowTagGroupRequest) (_result *CreateFlowTagGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &CreateHostGroupResponse{}
-	_body, _err := client.CreateHostGroupWithOptions(organizationId, request, headers, runtime)
+	_result = &CreateFlowTagGroupResponse{}
+	_body, _err := client.CreateFlowTagGroupWithOptions(organizationId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -22557,11 +26297,11 @@ func (client *Client) CreateHostGroupWithOptions(organizationId *string, request
 	return _result, _err
 }
 
-func (client *Client) CreateOAuthToken(request *CreateOAuthTokenRequest) (_result *CreateOAuthTokenResponse, _err error) {
+func (client *Client) CreateHostGroup(organizationId *string, request *CreateHostGroupRequest) (_result *CreateHostGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &CreateOAuthTokenResponse{}
-	_body, _err := client.CreateOAuthTokenWithOptions(request, headers, runtime)
+	_result = &CreateHostGroupResponse{}
+	_body, _err := client.CreateHostGroupWithOptions(organizationId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -22623,11 +26363,11 @@ func (client *Client) CreateOAuthTokenWithOptions(request *CreateOAuthTokenReque
 	return _result, _err
 }
 
-func (client *Client) CreatePipelineGroup(organizationId *string, request *CreatePipelineGroupRequest) (_result *CreatePipelineGroupResponse, _err error) {
+func (client *Client) CreateOAuthToken(request *CreateOAuthTokenRequest) (_result *CreateOAuthTokenResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &CreatePipelineGroupResponse{}
-	_body, _err := client.CreatePipelineGroupWithOptions(organizationId, request, headers, runtime)
+	_result = &CreateOAuthTokenResponse{}
+	_body, _err := client.CreateOAuthTokenWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -22669,11 +26409,11 @@ func (client *Client) CreatePipelineGroupWithOptions(organizationId *string, req
 	return _result, _err
 }
 
-func (client *Client) CreateProject(organizationId *string, request *CreateProjectRequest) (_result *CreateProjectResponse, _err error) {
+func (client *Client) CreatePipelineGroup(organizationId *string, request *CreatePipelineGroupRequest) (_result *CreatePipelineGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &CreateProjectResponse{}
-	_body, _err := client.CreateProjectWithOptions(organizationId, request, headers, runtime)
+	_result = &CreatePipelineGroupResponse{}
+	_body, _err := client.CreatePipelineGroupWithOptions(organizationId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -22727,11 +26467,11 @@ func (client *Client) CreateProjectWithOptions(organizationId *string, request *
 	return _result, _err
 }
 
-func (client *Client) CreateProtectdBranch(repositoryId *string, request *CreateProtectdBranchRequest) (_result *CreateProtectdBranchResponse, _err error) {
+func (client *Client) CreateProject(organizationId *string, request *CreateProjectRequest) (_result *CreateProjectResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &CreateProtectdBranchResponse{}
-	_body, _err := client.CreateProtectdBranchWithOptions(repositoryId, request, headers, runtime)
+	_result = &CreateProjectResponse{}
+	_body, _err := client.CreateProjectWithOptions(organizationId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -22811,11 +26551,11 @@ func (client *Client) CreateProtectdBranchWithOptions(repositoryId *string, requ
 	return _result, _err
 }
 
-func (client *Client) CreateRepository(request *CreateRepositoryRequest) (_result *CreateRepositoryResponse, _err error) {
+func (client *Client) CreateProtectdBranch(repositoryId *string, request *CreateProtectdBranchRequest) (_result *CreateProtectdBranchResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &CreateRepositoryResponse{}
-	_body, _err := client.CreateRepositoryWithOptions(request, headers, runtime)
+	_result = &CreateProtectdBranchResponse{}
+	_body, _err := client.CreateProtectdBranchWithOptions(repositoryId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -22939,11 +26679,87 @@ func (client *Client) CreateRepositoryWithOptions(request *CreateRepositoryReque
 	return _result, _err
 }
 
-func (client *Client) CreateResourceMember(organizationId *string, resourceType *string, resourceId *string, request *CreateResourceMemberRequest) (_result *CreateResourceMemberResponse, _err error) {
+func (client *Client) CreateRepository(request *CreateRepositoryRequest) (_result *CreateRepositoryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &CreateResourceMemberResponse{}
-	_body, _err := client.CreateResourceMemberWithOptions(organizationId, resourceType, resourceId, request, headers, runtime)
+	_result = &CreateRepositoryResponse{}
+	_body, _err := client.CreateRepositoryWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateRepositoryGroupWithOptions(request *CreateRepositoryGroupRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateRepositoryGroupResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccessToken)) {
+		query["accessToken"] = request.AccessToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrganizationId)) {
+		query["organizationId"] = request.OrganizationId
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AvatarUrl)) {
+		body["avatarUrl"] = request.AvatarUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		body["description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ParentId)) {
+		body["parentId"] = request.ParentId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Path)) {
+		body["path"] = request.Path
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VisibilityLevel)) {
+		body["visibilityLevel"] = request.VisibilityLevel
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateRepositoryGroup"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/repository/groups/create"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateRepositoryGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateRepositoryGroup(request *CreateRepositoryGroupRequest) (_result *CreateRepositoryGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateRepositoryGroupResponse{}
+	_body, _err := client.CreateRepositoryGroupWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -22989,11 +26805,11 @@ func (client *Client) CreateResourceMemberWithOptions(organizationId *string, re
 	return _result, _err
 }
 
-func (client *Client) CreateSprint(organizationId *string, request *CreateSprintRequest) (_result *CreateSprintResponse, _err error) {
+func (client *Client) CreateResourceMember(organizationId *string, resourceType *string, resourceId *string, request *CreateResourceMemberRequest) (_result *CreateResourceMemberResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &CreateSprintResponse{}
-	_body, _err := client.CreateSprintWithOptions(organizationId, request, headers, runtime)
+	_result = &CreateResourceMemberResponse{}
+	_body, _err := client.CreateResourceMemberWithOptions(organizationId, resourceType, resourceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -23051,11 +26867,11 @@ func (client *Client) CreateSprintWithOptions(organizationId *string, request *C
 	return _result, _err
 }
 
-func (client *Client) CreateSshKey(organizationId *string) (_result *CreateSshKeyResponse, _err error) {
+func (client *Client) CreateSprint(organizationId *string, request *CreateSprintRequest) (_result *CreateSprintResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &CreateSshKeyResponse{}
-	_body, _err := client.CreateSshKeyWithOptions(organizationId, headers, runtime)
+	_result = &CreateSprintResponse{}
+	_body, _err := client.CreateSprintWithOptions(organizationId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -23087,11 +26903,75 @@ func (client *Client) CreateSshKeyWithOptions(organizationId *string, headers ma
 	return _result, _err
 }
 
-func (client *Client) CreateVariableGroup(organizationId *string, request *CreateVariableGroupRequest) (_result *CreateVariableGroupResponse, _err error) {
+func (client *Client) CreateSshKey(organizationId *string) (_result *CreateSshKeyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &CreateVariableGroupResponse{}
-	_body, _err := client.CreateVariableGroupWithOptions(organizationId, request, headers, runtime)
+	_result = &CreateSshKeyResponse{}
+	_body, _err := client.CreateSshKeyWithOptions(organizationId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateTagWithOptions(repositoryId *string, request *CreateTagRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateTagResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccessToken)) {
+		query["accessToken"] = request.AccessToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrganizationId)) {
+		query["organizationId"] = request.OrganizationId
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Message)) {
+		body["message"] = request.Message
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Ref)) {
+		body["ref"] = request.Ref
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagName)) {
+		body["tagName"] = request.TagName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateTag"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/repository/" + tea.StringValue(openapiutil.GetEncodeParam(repositoryId)) + "/tags/create"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateTagResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateTag(repositoryId *string, request *CreateTagRequest) (_result *CreateTagResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateTagResponse{}
+	_body, _err := client.CreateTagWithOptions(repositoryId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -23141,11 +27021,11 @@ func (client *Client) CreateVariableGroupWithOptions(organizationId *string, req
 	return _result, _err
 }
 
-func (client *Client) CreateWorkitem(organizationId *string, request *CreateWorkitemRequest) (_result *CreateWorkitemResponse, _err error) {
+func (client *Client) CreateVariableGroup(organizationId *string, request *CreateVariableGroupRequest) (_result *CreateVariableGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &CreateWorkitemResponse{}
-	_body, _err := client.CreateWorkitemWithOptions(organizationId, request, headers, runtime)
+	_result = &CreateVariableGroupResponse{}
+	_body, _err := client.CreateVariableGroupWithOptions(organizationId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -23243,11 +27123,11 @@ func (client *Client) CreateWorkitemWithOptions(organizationId *string, request 
 	return _result, _err
 }
 
-func (client *Client) CreateWorkitemComment(organizationId *string, request *CreateWorkitemCommentRequest) (_result *CreateWorkitemCommentResponse, _err error) {
+func (client *Client) CreateWorkitem(organizationId *string, request *CreateWorkitemRequest) (_result *CreateWorkitemResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &CreateWorkitemCommentResponse{}
-	_body, _err := client.CreateWorkitemCommentWithOptions(organizationId, request, headers, runtime)
+	_result = &CreateWorkitemResponse{}
+	_body, _err := client.CreateWorkitemWithOptions(organizationId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -23301,11 +27181,11 @@ func (client *Client) CreateWorkitemCommentWithOptions(organizationId *string, r
 	return _result, _err
 }
 
-func (client *Client) CreateWorkitemEstimate(organizationId *string, request *CreateWorkitemEstimateRequest) (_result *CreateWorkitemEstimateResponse, _err error) {
+func (client *Client) CreateWorkitemComment(organizationId *string, request *CreateWorkitemCommentRequest) (_result *CreateWorkitemCommentResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &CreateWorkitemEstimateResponse{}
-	_body, _err := client.CreateWorkitemEstimateWithOptions(organizationId, request, headers, runtime)
+	_result = &CreateWorkitemCommentResponse{}
+	_body, _err := client.CreateWorkitemCommentWithOptions(organizationId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -23363,11 +27243,11 @@ func (client *Client) CreateWorkitemEstimateWithOptions(organizationId *string, 
 	return _result, _err
 }
 
-func (client *Client) CreateWorkitemRecord(organizationId *string, request *CreateWorkitemRecordRequest) (_result *CreateWorkitemRecordResponse, _err error) {
+func (client *Client) CreateWorkitemEstimate(organizationId *string, request *CreateWorkitemEstimateRequest) (_result *CreateWorkitemEstimateResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &CreateWorkitemRecordResponse{}
-	_body, _err := client.CreateWorkitemRecordWithOptions(organizationId, request, headers, runtime)
+	_result = &CreateWorkitemEstimateResponse{}
+	_body, _err := client.CreateWorkitemEstimateWithOptions(organizationId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -23433,11 +27313,11 @@ func (client *Client) CreateWorkitemRecordWithOptions(organizationId *string, re
 	return _result, _err
 }
 
-func (client *Client) CreateWorkspace(request *CreateWorkspaceRequest) (_result *CreateWorkspaceResponse, _err error) {
+func (client *Client) CreateWorkitemRecord(organizationId *string, request *CreateWorkitemRecordRequest) (_result *CreateWorkitemRecordResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &CreateWorkspaceResponse{}
-	_body, _err := client.CreateWorkspaceWithOptions(request, headers, runtime)
+	_result = &CreateWorkitemRecordResponse{}
+	_body, _err := client.CreateWorkitemRecordWithOptions(organizationId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -23507,11 +27387,11 @@ func (client *Client) CreateWorkspaceWithOptions(request *CreateWorkspaceRequest
 	return _result, _err
 }
 
-func (client *Client) DeleteBranch(repositoryId *string, request *DeleteBranchRequest) (_result *DeleteBranchResponse, _err error) {
+func (client *Client) CreateWorkspace(request *CreateWorkspaceRequest) (_result *CreateWorkspaceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DeleteBranchResponse{}
-	_body, _err := client.DeleteBranchWithOptions(repositoryId, request, headers, runtime)
+	_result = &CreateWorkspaceResponse{}
+	_body, _err := client.CreateWorkspaceWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -23561,11 +27441,11 @@ func (client *Client) DeleteBranchWithOptions(repositoryId *string, request *Del
 	return _result, _err
 }
 
-func (client *Client) DeleteFile(repositoryId *string, request *DeleteFileRequest) (_result *DeleteFileResponse, _err error) {
+func (client *Client) DeleteBranch(repositoryId *string, request *DeleteBranchRequest) (_result *DeleteBranchResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DeleteFileResponse{}
-	_body, _err := client.DeleteFileWithOptions(repositoryId, request, headers, runtime)
+	_result = &DeleteBranchResponse{}
+	_body, _err := client.DeleteBranchWithOptions(repositoryId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -23623,11 +27503,11 @@ func (client *Client) DeleteFileWithOptions(repositoryId *string, request *Delet
 	return _result, _err
 }
 
-func (client *Client) DeleteFlowTag(organizationId *string, id *string) (_result *DeleteFlowTagResponse, _err error) {
+func (client *Client) DeleteFile(repositoryId *string, request *DeleteFileRequest) (_result *DeleteFileResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DeleteFlowTagResponse{}
-	_body, _err := client.DeleteFlowTagWithOptions(organizationId, id, headers, runtime)
+	_result = &DeleteFileResponse{}
+	_body, _err := client.DeleteFileWithOptions(repositoryId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -23659,11 +27539,11 @@ func (client *Client) DeleteFlowTagWithOptions(organizationId *string, id *strin
 	return _result, _err
 }
 
-func (client *Client) DeleteFlowTagGroup(organizationId *string, id *string) (_result *DeleteFlowTagGroupResponse, _err error) {
+func (client *Client) DeleteFlowTag(organizationId *string, id *string) (_result *DeleteFlowTagResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DeleteFlowTagGroupResponse{}
-	_body, _err := client.DeleteFlowTagGroupWithOptions(organizationId, id, headers, runtime)
+	_result = &DeleteFlowTagResponse{}
+	_body, _err := client.DeleteFlowTagWithOptions(organizationId, id, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -23695,11 +27575,71 @@ func (client *Client) DeleteFlowTagGroupWithOptions(organizationId *string, id *
 	return _result, _err
 }
 
-func (client *Client) DeleteHostGroup(organizationId *string, id *string) (_result *DeleteHostGroupResponse, _err error) {
+func (client *Client) DeleteFlowTagGroup(organizationId *string, id *string) (_result *DeleteFlowTagGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DeleteHostGroupResponse{}
-	_body, _err := client.DeleteHostGroupWithOptions(organizationId, id, headers, runtime)
+	_result = &DeleteFlowTagGroupResponse{}
+	_body, _err := client.DeleteFlowTagGroupWithOptions(organizationId, id, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteGroupMemberWithOptions(groupId *string, request *DeleteGroupMemberRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteGroupMemberResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccessToken)) {
+		query["accessToken"] = request.AccessToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AliyunPk)) {
+		query["aliyunPk"] = request.AliyunPk
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrganizationId)) {
+		query["organizationId"] = request.OrganizationId
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.MemberType)) {
+		body["memberType"] = request.MemberType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteGroupMember"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/repository/groups/" + tea.StringValue(openapiutil.GetEncodeParam(groupId)) + "/members/remove/aliyun_pk"),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteGroupMemberResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteGroupMember(groupId *string, request *DeleteGroupMemberRequest) (_result *DeleteGroupMemberResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteGroupMemberResponse{}
+	_body, _err := client.DeleteGroupMemberWithOptions(groupId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -23731,11 +27671,11 @@ func (client *Client) DeleteHostGroupWithOptions(organizationId *string, id *str
 	return _result, _err
 }
 
-func (client *Client) DeletePipeline(organizationId *string, pipelineId *string) (_result *DeletePipelineResponse, _err error) {
+func (client *Client) DeleteHostGroup(organizationId *string, id *string) (_result *DeleteHostGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DeletePipelineResponse{}
-	_body, _err := client.DeletePipelineWithOptions(organizationId, pipelineId, headers, runtime)
+	_result = &DeleteHostGroupResponse{}
+	_body, _err := client.DeleteHostGroupWithOptions(organizationId, id, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -23767,11 +27707,11 @@ func (client *Client) DeletePipelineWithOptions(organizationId *string, pipeline
 	return _result, _err
 }
 
-func (client *Client) DeletePipelineGroup(organizationId *string, groupId *string) (_result *DeletePipelineGroupResponse, _err error) {
+func (client *Client) DeletePipeline(organizationId *string, pipelineId *string) (_result *DeletePipelineResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DeletePipelineGroupResponse{}
-	_body, _err := client.DeletePipelineGroupWithOptions(organizationId, groupId, headers, runtime)
+	_result = &DeletePipelineResponse{}
+	_body, _err := client.DeletePipelineWithOptions(organizationId, pipelineId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -23803,11 +27743,61 @@ func (client *Client) DeletePipelineGroupWithOptions(organizationId *string, gro
 	return _result, _err
 }
 
-func (client *Client) DeleteProject(organizationId *string, request *DeleteProjectRequest) (_result *DeleteProjectResponse, _err error) {
+func (client *Client) DeletePipelineGroup(organizationId *string, groupId *string) (_result *DeletePipelineGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DeleteProjectResponse{}
-	_body, _err := client.DeleteProjectWithOptions(organizationId, request, headers, runtime)
+	_result = &DeletePipelineGroupResponse{}
+	_body, _err := client.DeletePipelineGroupWithOptions(organizationId, groupId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeletePipelineRelationsWithOptions(organizationId *string, pipelineId *string, request *DeletePipelineRelationsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeletePipelineRelationsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RelObjectId)) {
+		query["relObjectId"] = request.RelObjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RelObjectType)) {
+		query["relObjectType"] = request.RelObjectType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeletePipelineRelations"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/organization/" + tea.StringValue(openapiutil.GetEncodeParam(organizationId)) + "/" + tea.StringValue(openapiutil.GetEncodeParam(pipelineId)) + "/pipelineRelations"),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeletePipelineRelationsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeletePipelineRelations(organizationId *string, pipelineId *string, request *DeletePipelineRelationsRequest) (_result *DeletePipelineRelationsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeletePipelineRelationsResponse{}
+	_body, _err := client.DeletePipelineRelationsWithOptions(organizationId, pipelineId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -23849,11 +27839,11 @@ func (client *Client) DeleteProjectWithOptions(organizationId *string, request *
 	return _result, _err
 }
 
-func (client *Client) DeleteProtectedBranch(repositoryId *string, protectedBranchId *string, request *DeleteProtectedBranchRequest) (_result *DeleteProtectedBranchResponse, _err error) {
+func (client *Client) DeleteProject(organizationId *string, request *DeleteProjectRequest) (_result *DeleteProjectResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DeleteProtectedBranchResponse{}
-	_body, _err := client.DeleteProtectedBranchWithOptions(repositoryId, protectedBranchId, request, headers, runtime)
+	_result = &DeleteProjectResponse{}
+	_body, _err := client.DeleteProjectWithOptions(organizationId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -23899,11 +27889,11 @@ func (client *Client) DeleteProtectedBranchWithOptions(repositoryId *string, pro
 	return _result, _err
 }
 
-func (client *Client) DeleteRepository(repositoryId *string, request *DeleteRepositoryRequest) (_result *DeleteRepositoryResponse, _err error) {
+func (client *Client) DeleteProtectedBranch(repositoryId *string, protectedBranchId *string, request *DeleteProtectedBranchRequest) (_result *DeleteProtectedBranchResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DeleteRepositoryResponse{}
-	_body, _err := client.DeleteRepositoryWithOptions(repositoryId, request, headers, runtime)
+	_result = &DeleteProtectedBranchResponse{}
+	_body, _err := client.DeleteProtectedBranchWithOptions(repositoryId, protectedBranchId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -23955,11 +27945,123 @@ func (client *Client) DeleteRepositoryWithOptions(repositoryId *string, request 
 	return _result, _err
 }
 
-func (client *Client) DeleteRepositoryWebhook(repositoryId *string, hookId *string, request *DeleteRepositoryWebhookRequest) (_result *DeleteRepositoryWebhookResponse, _err error) {
+func (client *Client) DeleteRepository(repositoryId *string, request *DeleteRepositoryRequest) (_result *DeleteRepositoryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DeleteRepositoryWebhookResponse{}
-	_body, _err := client.DeleteRepositoryWebhookWithOptions(repositoryId, hookId, request, headers, runtime)
+	_result = &DeleteRepositoryResponse{}
+	_body, _err := client.DeleteRepositoryWithOptions(repositoryId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteRepositoryGroupWithOptions(groupId *string, request *DeleteRepositoryGroupRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteRepositoryGroupResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccessToken)) {
+		query["accessToken"] = request.AccessToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrganizationId)) {
+		query["organizationId"] = request.OrganizationId
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Reason)) {
+		body["reason"] = request.Reason
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteRepositoryGroup"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/repository/groups/" + tea.StringValue(openapiutil.GetEncodeParam(groupId)) + "/remove"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteRepositoryGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteRepositoryGroup(groupId *string, request *DeleteRepositoryGroupRequest) (_result *DeleteRepositoryGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteRepositoryGroupResponse{}
+	_body, _err := client.DeleteRepositoryGroupWithOptions(groupId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteRepositoryMemberWithOptions(repositoryId *string, aliyunPk *string, request *DeleteRepositoryMemberRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteRepositoryMemberResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccessToken)) {
+		query["accessToken"] = request.AccessToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrganizationId)) {
+		query["organizationId"] = request.OrganizationId
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.MemberType)) {
+		body["memberType"] = request.MemberType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteRepositoryMember"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/repository/" + tea.StringValue(openapiutil.GetEncodeParam(repositoryId)) + "/members/delete/" + tea.StringValue(openapiutil.GetEncodeParam(aliyunPk))),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteRepositoryMemberResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteRepositoryMember(repositoryId *string, aliyunPk *string, request *DeleteRepositoryMemberRequest) (_result *DeleteRepositoryMemberResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteRepositoryMemberResponse{}
+	_body, _err := client.DeleteRepositoryMemberWithOptions(repositoryId, aliyunPk, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -24005,11 +28107,11 @@ func (client *Client) DeleteRepositoryWebhookWithOptions(repositoryId *string, h
 	return _result, _err
 }
 
-func (client *Client) DeleteResourceMember(organizationId *string, resourceType *string, resourceId *string, accountId *string) (_result *DeleteResourceMemberResponse, _err error) {
+func (client *Client) DeleteRepositoryWebhook(repositoryId *string, hookId *string, request *DeleteRepositoryWebhookRequest) (_result *DeleteRepositoryWebhookResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DeleteResourceMemberResponse{}
-	_body, _err := client.DeleteResourceMemberWithOptions(organizationId, resourceType, resourceId, accountId, headers, runtime)
+	_result = &DeleteRepositoryWebhookResponse{}
+	_body, _err := client.DeleteRepositoryWebhookWithOptions(repositoryId, hookId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -24041,11 +28143,65 @@ func (client *Client) DeleteResourceMemberWithOptions(organizationId *string, re
 	return _result, _err
 }
 
-func (client *Client) DeleteVariableGroup(organizationId *string, id *string) (_result *DeleteVariableGroupResponse, _err error) {
+func (client *Client) DeleteResourceMember(organizationId *string, resourceType *string, resourceId *string, accountId *string) (_result *DeleteResourceMemberResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DeleteVariableGroupResponse{}
-	_body, _err := client.DeleteVariableGroupWithOptions(organizationId, id, headers, runtime)
+	_result = &DeleteResourceMemberResponse{}
+	_body, _err := client.DeleteResourceMemberWithOptions(organizationId, resourceType, resourceId, accountId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteTagWithOptions(repositoryId *string, request *DeleteTagRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteTagResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccessToken)) {
+		query["accessToken"] = request.AccessToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrganizationId)) {
+		query["organizationId"] = request.OrganizationId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagName)) {
+		query["tagName"] = request.TagName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteTag"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/repository/" + tea.StringValue(openapiutil.GetEncodeParam(repositoryId)) + "/tags/delete"),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteTagResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteTag(repositoryId *string, request *DeleteTagRequest) (_result *DeleteTagResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteTagResponse{}
+	_body, _err := client.DeleteTagWithOptions(repositoryId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -24077,11 +28233,11 @@ func (client *Client) DeleteVariableGroupWithOptions(organizationId *string, id 
 	return _result, _err
 }
 
-func (client *Client) DeleteWorkitemAllComment(organizationId *string, request *DeleteWorkitemAllCommentRequest) (_result *DeleteWorkitemAllCommentResponse, _err error) {
+func (client *Client) DeleteVariableGroup(organizationId *string, id *string) (_result *DeleteVariableGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DeleteWorkitemAllCommentResponse{}
-	_body, _err := client.DeleteWorkitemAllCommentWithOptions(organizationId, request, headers, runtime)
+	_result = &DeleteVariableGroupResponse{}
+	_body, _err := client.DeleteVariableGroupWithOptions(organizationId, id, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -24123,11 +28279,11 @@ func (client *Client) DeleteWorkitemAllCommentWithOptions(organizationId *string
 	return _result, _err
 }
 
-func (client *Client) DeleteWorkitemComment(organizationId *string, request *DeleteWorkitemCommentRequest) (_result *DeleteWorkitemCommentResponse, _err error) {
+func (client *Client) DeleteWorkitemAllComment(organizationId *string, request *DeleteWorkitemAllCommentRequest) (_result *DeleteWorkitemAllCommentResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DeleteWorkitemCommentResponse{}
-	_body, _err := client.DeleteWorkitemCommentWithOptions(organizationId, request, headers, runtime)
+	_result = &DeleteWorkitemAllCommentResponse{}
+	_body, _err := client.DeleteWorkitemAllCommentWithOptions(organizationId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -24173,11 +28329,61 @@ func (client *Client) DeleteWorkitemCommentWithOptions(organizationId *string, r
 	return _result, _err
 }
 
-func (client *Client) FrozenWorkspace(workspaceId *string) (_result *FrozenWorkspaceResponse, _err error) {
+func (client *Client) DeleteWorkitemComment(organizationId *string, request *DeleteWorkitemCommentRequest) (_result *DeleteWorkitemCommentResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &FrozenWorkspaceResponse{}
-	_body, _err := client.FrozenWorkspaceWithOptions(workspaceId, headers, runtime)
+	_result = &DeleteWorkitemCommentResponse{}
+	_body, _err := client.DeleteWorkitemCommentWithOptions(organizationId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) EnableDeployKeyWithOptions(repositoryId *string, keyId *string, request *EnableDeployKeyRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *EnableDeployKeyResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccessToken)) {
+		query["accessToken"] = request.AccessToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrganizationId)) {
+		query["organizationId"] = request.OrganizationId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("EnableDeployKey"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/repository/" + tea.StringValue(openapiutil.GetEncodeParam(repositoryId)) + "/keys/" + tea.StringValue(openapiutil.GetEncodeParam(keyId)) + "/enable"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &EnableDeployKeyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) EnableDeployKey(repositoryId *string, keyId *string, request *EnableDeployKeyRequest) (_result *EnableDeployKeyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &EnableDeployKeyResponse{}
+	_body, _err := client.EnableDeployKeyWithOptions(repositoryId, keyId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -24209,11 +28415,11 @@ func (client *Client) FrozenWorkspaceWithOptions(workspaceId *string, headers ma
 	return _result, _err
 }
 
-func (client *Client) GetBranchInfo(repositoryId *string, request *GetBranchInfoRequest) (_result *GetBranchInfoResponse, _err error) {
+func (client *Client) FrozenWorkspace(workspaceId *string) (_result *FrozenWorkspaceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetBranchInfoResponse{}
-	_body, _err := client.GetBranchInfoWithOptions(repositoryId, request, headers, runtime)
+	_result = &FrozenWorkspaceResponse{}
+	_body, _err := client.FrozenWorkspaceWithOptions(workspaceId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -24263,11 +28469,11 @@ func (client *Client) GetBranchInfoWithOptions(repositoryId *string, request *Ge
 	return _result, _err
 }
 
-func (client *Client) GetCodeupOrganization(identity *string, request *GetCodeupOrganizationRequest) (_result *GetCodeupOrganizationResponse, _err error) {
+func (client *Client) GetBranchInfo(repositoryId *string, request *GetBranchInfoRequest) (_result *GetBranchInfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetCodeupOrganizationResponse{}
-	_body, _err := client.GetCodeupOrganizationWithOptions(identity, request, headers, runtime)
+	_result = &GetBranchInfoResponse{}
+	_body, _err := client.GetBranchInfoWithOptions(repositoryId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -24309,11 +28515,11 @@ func (client *Client) GetCodeupOrganizationWithOptions(identity *string, request
 	return _result, _err
 }
 
-func (client *Client) GetCustomFieldOption(organizationId *string, fieldId *string, request *GetCustomFieldOptionRequest) (_result *GetCustomFieldOptionResponse, _err error) {
+func (client *Client) GetCodeupOrganization(identity *string, request *GetCodeupOrganizationRequest) (_result *GetCodeupOrganizationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetCustomFieldOptionResponse{}
-	_body, _err := client.GetCustomFieldOptionWithOptions(organizationId, fieldId, request, headers, runtime)
+	_result = &GetCodeupOrganizationResponse{}
+	_body, _err := client.GetCodeupOrganizationWithOptions(identity, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -24363,11 +28569,11 @@ func (client *Client) GetCustomFieldOptionWithOptions(organizationId *string, fi
 	return _result, _err
 }
 
-func (client *Client) GetFileBlobs(repositoryId *string, request *GetFileBlobsRequest) (_result *GetFileBlobsResponse, _err error) {
+func (client *Client) GetCustomFieldOption(organizationId *string, fieldId *string, request *GetCustomFieldOptionRequest) (_result *GetCustomFieldOptionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetFileBlobsResponse{}
-	_body, _err := client.GetFileBlobsWithOptions(repositoryId, request, headers, runtime)
+	_result = &GetCustomFieldOptionResponse{}
+	_body, _err := client.GetCustomFieldOptionWithOptions(organizationId, fieldId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -24429,11 +28635,11 @@ func (client *Client) GetFileBlobsWithOptions(repositoryId *string, request *Get
 	return _result, _err
 }
 
-func (client *Client) GetFileLastCommit(repositoryId *string, request *GetFileLastCommitRequest) (_result *GetFileLastCommitResponse, _err error) {
+func (client *Client) GetFileBlobs(repositoryId *string, request *GetFileBlobsRequest) (_result *GetFileBlobsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetFileLastCommitResponse{}
-	_body, _err := client.GetFileLastCommitWithOptions(repositoryId, request, headers, runtime)
+	_result = &GetFileBlobsResponse{}
+	_body, _err := client.GetFileBlobsWithOptions(repositoryId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -24491,11 +28697,11 @@ func (client *Client) GetFileLastCommitWithOptions(repositoryId *string, request
 	return _result, _err
 }
 
-func (client *Client) GetFlowTagGroup(organizationId *string, id *string) (_result *GetFlowTagGroupResponse, _err error) {
+func (client *Client) GetFileLastCommit(repositoryId *string, request *GetFileLastCommitRequest) (_result *GetFileLastCommitResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetFlowTagGroupResponse{}
-	_body, _err := client.GetFlowTagGroupWithOptions(organizationId, id, headers, runtime)
+	_result = &GetFileLastCommitResponse{}
+	_body, _err := client.GetFileLastCommitWithOptions(repositoryId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -24527,11 +28733,65 @@ func (client *Client) GetFlowTagGroupWithOptions(organizationId *string, id *str
 	return _result, _err
 }
 
-func (client *Client) GetHostGroup(organizationId *string, id *string) (_result *GetHostGroupResponse, _err error) {
+func (client *Client) GetFlowTagGroup(organizationId *string, id *string) (_result *GetFlowTagGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetHostGroupResponse{}
-	_body, _err := client.GetHostGroupWithOptions(organizationId, id, headers, runtime)
+	_result = &GetFlowTagGroupResponse{}
+	_body, _err := client.GetFlowTagGroupWithOptions(organizationId, id, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetGroupDetailWithOptions(request *GetGroupDetailRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetGroupDetailResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccessToken)) {
+		query["accessToken"] = request.AccessToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		query["groupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrganizationId)) {
+		query["organizationId"] = request.OrganizationId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetGroupDetail"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/repository/groups/get_detail"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetGroupDetailResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetGroupDetail(request *GetGroupDetailRequest) (_result *GetGroupDetailResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetGroupDetailResponse{}
+	_body, _err := client.GetGroupDetailWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -24563,11 +28823,11 @@ func (client *Client) GetHostGroupWithOptions(organizationId *string, id *string
 	return _result, _err
 }
 
-func (client *Client) GetOrganizationMember(organizationId *string, accountId *string) (_result *GetOrganizationMemberResponse, _err error) {
+func (client *Client) GetHostGroup(organizationId *string, id *string) (_result *GetHostGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetOrganizationMemberResponse{}
-	_body, _err := client.GetOrganizationMemberWithOptions(organizationId, accountId, headers, runtime)
+	_result = &GetHostGroupResponse{}
+	_body, _err := client.GetHostGroupWithOptions(organizationId, id, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -24599,11 +28859,11 @@ func (client *Client) GetOrganizationMemberWithOptions(organizationId *string, a
 	return _result, _err
 }
 
-func (client *Client) GetPipeline(organizationId *string, pipelineId *string) (_result *GetPipelineResponse, _err error) {
+func (client *Client) GetOrganizationMember(organizationId *string, accountId *string) (_result *GetOrganizationMemberResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetPipelineResponse{}
-	_body, _err := client.GetPipelineWithOptions(organizationId, pipelineId, headers, runtime)
+	_result = &GetOrganizationMemberResponse{}
+	_body, _err := client.GetOrganizationMemberWithOptions(organizationId, accountId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -24635,11 +28895,11 @@ func (client *Client) GetPipelineWithOptions(organizationId *string, pipelineId 
 	return _result, _err
 }
 
-func (client *Client) GetPipelineArtifactUrl(organizationId *string, request *GetPipelineArtifactUrlRequest) (_result *GetPipelineArtifactUrlResponse, _err error) {
+func (client *Client) GetPipeline(organizationId *string, pipelineId *string) (_result *GetPipelineResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetPipelineArtifactUrlResponse{}
-	_body, _err := client.GetPipelineArtifactUrlWithOptions(organizationId, request, headers, runtime)
+	_result = &GetPipelineResponse{}
+	_body, _err := client.GetPipelineWithOptions(organizationId, pipelineId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -24685,11 +28945,11 @@ func (client *Client) GetPipelineArtifactUrlWithOptions(organizationId *string, 
 	return _result, _err
 }
 
-func (client *Client) GetPipelineEmasArtifactUrl(organizationId *string, emasJobInstanceId *string, md5 *string, pipelineId *string, pipelineRunId *string, request *GetPipelineEmasArtifactUrlRequest) (_result *GetPipelineEmasArtifactUrlResponse, _err error) {
+func (client *Client) GetPipelineArtifactUrl(organizationId *string, request *GetPipelineArtifactUrlRequest) (_result *GetPipelineArtifactUrlResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetPipelineEmasArtifactUrlResponse{}
-	_body, _err := client.GetPipelineEmasArtifactUrlWithOptions(organizationId, emasJobInstanceId, md5, pipelineId, pipelineRunId, request, headers, runtime)
+	_result = &GetPipelineArtifactUrlResponse{}
+	_body, _err := client.GetPipelineArtifactUrlWithOptions(organizationId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -24731,11 +28991,11 @@ func (client *Client) GetPipelineEmasArtifactUrlWithOptions(organizationId *stri
 	return _result, _err
 }
 
-func (client *Client) GetPipelineGroup(organizationId *string, groupId *string) (_result *GetPipelineGroupResponse, _err error) {
+func (client *Client) GetPipelineEmasArtifactUrl(organizationId *string, emasJobInstanceId *string, md5 *string, pipelineId *string, pipelineRunId *string, request *GetPipelineEmasArtifactUrlRequest) (_result *GetPipelineEmasArtifactUrlResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetPipelineGroupResponse{}
-	_body, _err := client.GetPipelineGroupWithOptions(organizationId, groupId, headers, runtime)
+	_result = &GetPipelineEmasArtifactUrlResponse{}
+	_body, _err := client.GetPipelineEmasArtifactUrlWithOptions(organizationId, emasJobInstanceId, md5, pipelineId, pipelineRunId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -24767,11 +29027,11 @@ func (client *Client) GetPipelineGroupWithOptions(organizationId *string, groupI
 	return _result, _err
 }
 
-func (client *Client) GetPipelineRun(organizationId *string, pipelineId *string, pipelineRunId *string) (_result *GetPipelineRunResponse, _err error) {
+func (client *Client) GetPipelineGroup(organizationId *string, groupId *string) (_result *GetPipelineGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetPipelineRunResponse{}
-	_body, _err := client.GetPipelineRunWithOptions(organizationId, pipelineId, pipelineRunId, headers, runtime)
+	_result = &GetPipelineGroupResponse{}
+	_body, _err := client.GetPipelineGroupWithOptions(organizationId, groupId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -24803,11 +29063,11 @@ func (client *Client) GetPipelineRunWithOptions(organizationId *string, pipeline
 	return _result, _err
 }
 
-func (client *Client) GetPipelineScanReportUrl(organizationId *string, request *GetPipelineScanReportUrlRequest) (_result *GetPipelineScanReportUrlResponse, _err error) {
+func (client *Client) GetPipelineRun(organizationId *string, pipelineId *string, pipelineRunId *string) (_result *GetPipelineRunResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetPipelineScanReportUrlResponse{}
-	_body, _err := client.GetPipelineScanReportUrlWithOptions(organizationId, request, headers, runtime)
+	_result = &GetPipelineRunResponse{}
+	_body, _err := client.GetPipelineRunWithOptions(organizationId, pipelineId, pipelineRunId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -24849,11 +29109,11 @@ func (client *Client) GetPipelineScanReportUrlWithOptions(organizationId *string
 	return _result, _err
 }
 
-func (client *Client) GetProjectInfo(organizationId *string, projectId *string) (_result *GetProjectInfoResponse, _err error) {
+func (client *Client) GetPipelineScanReportUrl(organizationId *string, request *GetPipelineScanReportUrlRequest) (_result *GetPipelineScanReportUrlResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetProjectInfoResponse{}
-	_body, _err := client.GetProjectInfoWithOptions(organizationId, projectId, headers, runtime)
+	_result = &GetPipelineScanReportUrlResponse{}
+	_body, _err := client.GetPipelineScanReportUrlWithOptions(organizationId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -24885,11 +29145,11 @@ func (client *Client) GetProjectInfoWithOptions(organizationId *string, projectI
 	return _result, _err
 }
 
-func (client *Client) GetProjectMember(repositoryId *string, aliyunPk *string, request *GetProjectMemberRequest) (_result *GetProjectMemberResponse, _err error) {
+func (client *Client) GetProjectInfo(organizationId *string, projectId *string) (_result *GetProjectInfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetProjectMemberResponse{}
-	_body, _err := client.GetProjectMemberWithOptions(repositoryId, aliyunPk, request, headers, runtime)
+	_result = &GetProjectInfoResponse{}
+	_body, _err := client.GetProjectInfoWithOptions(organizationId, projectId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -24935,11 +29195,11 @@ func (client *Client) GetProjectMemberWithOptions(repositoryId *string, aliyunPk
 	return _result, _err
 }
 
-func (client *Client) GetRepository(request *GetRepositoryRequest) (_result *GetRepositoryResponse, _err error) {
+func (client *Client) GetProjectMember(repositoryId *string, aliyunPk *string, request *GetProjectMemberRequest) (_result *GetProjectMemberResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetRepositoryResponse{}
-	_body, _err := client.GetRepositoryWithOptions(request, headers, runtime)
+	_result = &GetProjectMemberResponse{}
+	_body, _err := client.GetProjectMemberWithOptions(repositoryId, aliyunPk, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -24989,11 +29249,11 @@ func (client *Client) GetRepositoryWithOptions(request *GetRepositoryRequest, he
 	return _result, _err
 }
 
-func (client *Client) GetRepositoryCommit(repositoryId *string, sha *string, request *GetRepositoryCommitRequest) (_result *GetRepositoryCommitResponse, _err error) {
+func (client *Client) GetRepository(request *GetRepositoryRequest) (_result *GetRepositoryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetRepositoryCommitResponse{}
-	_body, _err := client.GetRepositoryCommitWithOptions(repositoryId, sha, request, headers, runtime)
+	_result = &GetRepositoryResponse{}
+	_body, _err := client.GetRepositoryWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -25043,11 +29303,65 @@ func (client *Client) GetRepositoryCommitWithOptions(repositoryId *string, sha *
 	return _result, _err
 }
 
-func (client *Client) GetSprintInfo(organizationId *string, sprintId *string) (_result *GetSprintInfoResponse, _err error) {
+func (client *Client) GetRepositoryCommit(repositoryId *string, sha *string, request *GetRepositoryCommitRequest) (_result *GetRepositoryCommitResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetSprintInfoResponse{}
-	_body, _err := client.GetSprintInfoWithOptions(organizationId, sprintId, headers, runtime)
+	_result = &GetRepositoryCommitResponse{}
+	_body, _err := client.GetRepositoryCommitWithOptions(repositoryId, sha, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetRepositoryTagWithOptions(repositoryId *string, request *GetRepositoryTagRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetRepositoryTagResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccessToken)) {
+		query["accessToken"] = request.AccessToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrganizationId)) {
+		query["organizationId"] = request.OrganizationId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagName)) {
+		query["tagName"] = request.TagName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetRepositoryTag"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/repository/" + tea.StringValue(openapiutil.GetEncodeParam(repositoryId)) + "/tag/info"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetRepositoryTagResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetRepositoryTag(repositoryId *string, request *GetRepositoryTagRequest) (_result *GetRepositoryTagResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetRepositoryTagResponse{}
+	_body, _err := client.GetRepositoryTagWithOptions(repositoryId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -25079,11 +29393,57 @@ func (client *Client) GetSprintInfoWithOptions(organizationId *string, sprintId 
 	return _result, _err
 }
 
-func (client *Client) GetVMDeployOrder(organizationId *string, pipelineId *string, deployOrderId *string) (_result *GetVMDeployOrderResponse, _err error) {
+func (client *Client) GetSprintInfo(organizationId *string, sprintId *string) (_result *GetSprintInfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetVMDeployOrderResponse{}
-	_body, _err := client.GetVMDeployOrderWithOptions(organizationId, pipelineId, deployOrderId, headers, runtime)
+	_result = &GetSprintInfoResponse{}
+	_body, _err := client.GetSprintInfoWithOptions(organizationId, sprintId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetUserInfoWithOptions(request *GetUserInfoRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetUserInfoResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OrganizationId)) {
+		query["organizationId"] = request.OrganizationId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetUserInfo"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/users/current"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetUserInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetUserInfo(request *GetUserInfoRequest) (_result *GetUserInfoResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetUserInfoResponse{}
+	_body, _err := client.GetUserInfoWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -25115,11 +29475,11 @@ func (client *Client) GetVMDeployOrderWithOptions(organizationId *string, pipeli
 	return _result, _err
 }
 
-func (client *Client) GetVariableGroup(organizationId *string, id *string) (_result *GetVariableGroupResponse, _err error) {
+func (client *Client) GetVMDeployOrder(organizationId *string, pipelineId *string, deployOrderId *string) (_result *GetVMDeployOrderResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetVariableGroupResponse{}
-	_body, _err := client.GetVariableGroupWithOptions(organizationId, id, headers, runtime)
+	_result = &GetVMDeployOrderResponse{}
+	_body, _err := client.GetVMDeployOrderWithOptions(organizationId, pipelineId, deployOrderId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -25151,11 +29511,11 @@ func (client *Client) GetVariableGroupWithOptions(organizationId *string, id *st
 	return _result, _err
 }
 
-func (client *Client) GetWorkItemActivity(organizationId *string, workitemId *string) (_result *GetWorkItemActivityResponse, _err error) {
+func (client *Client) GetVariableGroup(organizationId *string, id *string) (_result *GetVariableGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetWorkItemActivityResponse{}
-	_body, _err := client.GetWorkItemActivityWithOptions(organizationId, workitemId, headers, runtime)
+	_result = &GetVariableGroupResponse{}
+	_body, _err := client.GetVariableGroupWithOptions(organizationId, id, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -25187,11 +29547,11 @@ func (client *Client) GetWorkItemActivityWithOptions(organizationId *string, wor
 	return _result, _err
 }
 
-func (client *Client) GetWorkItemInfo(organizationId *string, workitemId *string) (_result *GetWorkItemInfoResponse, _err error) {
+func (client *Client) GetWorkItemActivity(organizationId *string, workitemId *string) (_result *GetWorkItemActivityResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetWorkItemInfoResponse{}
-	_body, _err := client.GetWorkItemInfoWithOptions(organizationId, workitemId, headers, runtime)
+	_result = &GetWorkItemActivityResponse{}
+	_body, _err := client.GetWorkItemActivityWithOptions(organizationId, workitemId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -25223,11 +29583,11 @@ func (client *Client) GetWorkItemInfoWithOptions(organizationId *string, workite
 	return _result, _err
 }
 
-func (client *Client) GetWorkItemWorkFlowInfo(organizationId *string, workitemId *string, request *GetWorkItemWorkFlowInfoRequest) (_result *GetWorkItemWorkFlowInfoResponse, _err error) {
+func (client *Client) GetWorkItemInfo(organizationId *string, workitemId *string) (_result *GetWorkItemInfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetWorkItemWorkFlowInfoResponse{}
-	_body, _err := client.GetWorkItemWorkFlowInfoWithOptions(organizationId, workitemId, request, headers, runtime)
+	_result = &GetWorkItemInfoResponse{}
+	_body, _err := client.GetWorkItemInfoWithOptions(organizationId, workitemId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -25269,11 +29629,11 @@ func (client *Client) GetWorkItemWorkFlowInfoWithOptions(organizationId *string,
 	return _result, _err
 }
 
-func (client *Client) GetWorkitemCommentList(organizationId *string, workitemId *string) (_result *GetWorkitemCommentListResponse, _err error) {
+func (client *Client) GetWorkItemWorkFlowInfo(organizationId *string, workitemId *string, request *GetWorkItemWorkFlowInfoRequest) (_result *GetWorkItemWorkFlowInfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetWorkitemCommentListResponse{}
-	_body, _err := client.GetWorkitemCommentListWithOptions(organizationId, workitemId, headers, runtime)
+	_result = &GetWorkItemWorkFlowInfoResponse{}
+	_body, _err := client.GetWorkItemWorkFlowInfoWithOptions(organizationId, workitemId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -25305,11 +29665,11 @@ func (client *Client) GetWorkitemCommentListWithOptions(organizationId *string, 
 	return _result, _err
 }
 
-func (client *Client) GetWorkitemRelations(organizationId *string, workitemId *string, request *GetWorkitemRelationsRequest) (_result *GetWorkitemRelationsResponse, _err error) {
+func (client *Client) GetWorkitemCommentList(organizationId *string, workitemId *string) (_result *GetWorkitemCommentListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetWorkitemRelationsResponse{}
-	_body, _err := client.GetWorkitemRelationsWithOptions(organizationId, workitemId, request, headers, runtime)
+	_result = &GetWorkitemCommentListResponse{}
+	_body, _err := client.GetWorkitemCommentListWithOptions(organizationId, workitemId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -25351,11 +29711,11 @@ func (client *Client) GetWorkitemRelationsWithOptions(organizationId *string, wo
 	return _result, _err
 }
 
-func (client *Client) GetWorkitemTimeTypeList(organizationId *string) (_result *GetWorkitemTimeTypeListResponse, _err error) {
+func (client *Client) GetWorkitemRelations(organizationId *string, workitemId *string, request *GetWorkitemRelationsRequest) (_result *GetWorkitemRelationsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetWorkitemTimeTypeListResponse{}
-	_body, _err := client.GetWorkitemTimeTypeListWithOptions(organizationId, headers, runtime)
+	_result = &GetWorkitemRelationsResponse{}
+	_body, _err := client.GetWorkitemRelationsWithOptions(organizationId, workitemId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -25387,11 +29747,11 @@ func (client *Client) GetWorkitemTimeTypeListWithOptions(organizationId *string,
 	return _result, _err
 }
 
-func (client *Client) GetWorkspace(workspaceId *string) (_result *GetWorkspaceResponse, _err error) {
+func (client *Client) GetWorkitemTimeTypeList(organizationId *string) (_result *GetWorkitemTimeTypeListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetWorkspaceResponse{}
-	_body, _err := client.GetWorkspaceWithOptions(workspaceId, headers, runtime)
+	_result = &GetWorkitemTimeTypeListResponse{}
+	_body, _err := client.GetWorkitemTimeTypeListWithOptions(organizationId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -25423,11 +29783,11 @@ func (client *Client) GetWorkspaceWithOptions(workspaceId *string, headers map[s
 	return _result, _err
 }
 
-func (client *Client) JoinPipelineGroup(organizationId *string, request *JoinPipelineGroupRequest) (_result *JoinPipelineGroupResponse, _err error) {
+func (client *Client) GetWorkspace(workspaceId *string) (_result *GetWorkspaceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &JoinPipelineGroupResponse{}
-	_body, _err := client.JoinPipelineGroupWithOptions(organizationId, request, headers, runtime)
+	_result = &GetWorkspaceResponse{}
+	_body, _err := client.GetWorkspaceWithOptions(workspaceId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -25473,11 +29833,11 @@ func (client *Client) JoinPipelineGroupWithOptions(organizationId *string, reque
 	return _result, _err
 }
 
-func (client *Client) ListFlowTagGroups(organizationId *string) (_result *ListFlowTagGroupsResponse, _err error) {
+func (client *Client) JoinPipelineGroup(organizationId *string, request *JoinPipelineGroupRequest) (_result *JoinPipelineGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListFlowTagGroupsResponse{}
-	_body, _err := client.ListFlowTagGroupsWithOptions(organizationId, headers, runtime)
+	_result = &JoinPipelineGroupResponse{}
+	_body, _err := client.JoinPipelineGroupWithOptions(organizationId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -25509,11 +29869,123 @@ func (client *Client) ListFlowTagGroupsWithOptions(organizationId *string, heade
 	return _result, _err
 }
 
-func (client *Client) ListHostGroups(organizationId *string, request *ListHostGroupsRequest) (_result *ListHostGroupsResponse, _err error) {
+func (client *Client) ListFlowTagGroups(organizationId *string) (_result *ListFlowTagGroupsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListHostGroupsResponse{}
-	_body, _err := client.ListHostGroupsWithOptions(organizationId, request, headers, runtime)
+	_result = &ListFlowTagGroupsResponse{}
+	_body, _err := client.ListFlowTagGroupsWithOptions(organizationId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListGroupMemberWithOptions(groupId *string, request *ListGroupMemberRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListGroupMemberResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccessToken)) {
+		query["accessToken"] = request.AccessToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrganizationId)) {
+		query["organizationId"] = request.OrganizationId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListGroupMember"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/repository/groups/" + tea.StringValue(openapiutil.GetEncodeParam(groupId)) + "/list"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListGroupMemberResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListGroupMember(groupId *string, request *ListGroupMemberRequest) (_result *ListGroupMemberResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListGroupMemberResponse{}
+	_body, _err := client.ListGroupMemberWithOptions(groupId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListGroupRepositoriesWithOptions(groupId *string, request *ListGroupRepositoriesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListGroupRepositoriesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccessToken)) {
+		query["accessToken"] = request.AccessToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrganizationId)) {
+		query["organizationId"] = request.OrganizationId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Page)) {
+		query["page"] = request.Page
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["pageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Search)) {
+		query["search"] = request.Search
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListGroupRepositories"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/repository/groups/" + tea.StringValue(openapiutil.GetEncodeParam(groupId)) + "/projects"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListGroupRepositoriesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListGroupRepositories(groupId *string, request *ListGroupRepositoriesRequest) (_result *ListGroupRepositoriesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListGroupRepositoriesResponse{}
+	_body, _err := client.ListGroupRepositoriesWithOptions(groupId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -25587,11 +30059,11 @@ func (client *Client) ListHostGroupsWithOptions(organizationId *string, request 
 	return _result, _err
 }
 
-func (client *Client) ListOrganizationMembers(organizationId *string, request *ListOrganizationMembersRequest) (_result *ListOrganizationMembersResponse, _err error) {
+func (client *Client) ListHostGroups(organizationId *string, request *ListHostGroupsRequest) (_result *ListHostGroupsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListOrganizationMembersResponse{}
-	_body, _err := client.ListOrganizationMembersWithOptions(organizationId, request, headers, runtime)
+	_result = &ListHostGroupsResponse{}
+	_body, _err := client.ListHostGroupsWithOptions(organizationId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -25661,11 +30133,61 @@ func (client *Client) ListOrganizationMembersWithOptions(organizationId *string,
 	return _result, _err
 }
 
-func (client *Client) ListPipelineGroupPipelines(organizationId *string, groupId *string, request *ListPipelineGroupPipelinesRequest) (_result *ListPipelineGroupPipelinesResponse, _err error) {
+func (client *Client) ListOrganizationMembers(organizationId *string, request *ListOrganizationMembersRequest) (_result *ListOrganizationMembersResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListPipelineGroupPipelinesResponse{}
-	_body, _err := client.ListPipelineGroupPipelinesWithOptions(organizationId, groupId, request, headers, runtime)
+	_result = &ListOrganizationMembersResponse{}
+	_body, _err := client.ListOrganizationMembersWithOptions(organizationId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListOrganizationsWithOptions(request *ListOrganizationsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListOrganizationsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccessLevel)) {
+		query["accessLevel"] = request.AccessLevel
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MinAccessLevel)) {
+		query["minAccessLevel"] = request.MinAccessLevel
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListOrganizations"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/organizations/list"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListOrganizationsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListOrganizations(request *ListOrganizationsRequest) (_result *ListOrganizationsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListOrganizationsResponse{}
+	_body, _err := client.ListOrganizationsWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -25735,11 +30257,11 @@ func (client *Client) ListPipelineGroupPipelinesWithOptions(organizationId *stri
 	return _result, _err
 }
 
-func (client *Client) ListPipelineGroups(organizationId *string, request *ListPipelineGroupsRequest) (_result *ListPipelineGroupsResponse, _err error) {
+func (client *Client) ListPipelineGroupPipelines(organizationId *string, groupId *string, request *ListPipelineGroupPipelinesRequest) (_result *ListPipelineGroupPipelinesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListPipelineGroupsResponse{}
-	_body, _err := client.ListPipelineGroupsWithOptions(organizationId, request, headers, runtime)
+	_result = &ListPipelineGroupPipelinesResponse{}
+	_body, _err := client.ListPipelineGroupPipelinesWithOptions(organizationId, groupId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -25785,11 +30307,11 @@ func (client *Client) ListPipelineGroupsWithOptions(organizationId *string, requ
 	return _result, _err
 }
 
-func (client *Client) ListPipelineJobHistorys(organizationId *string, pipelineId *string, request *ListPipelineJobHistorysRequest) (_result *ListPipelineJobHistorysResponse, _err error) {
+func (client *Client) ListPipelineGroups(organizationId *string, request *ListPipelineGroupsRequest) (_result *ListPipelineGroupsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListPipelineJobHistorysResponse{}
-	_body, _err := client.ListPipelineJobHistorysWithOptions(organizationId, pipelineId, request, headers, runtime)
+	_result = &ListPipelineGroupsResponse{}
+	_body, _err := client.ListPipelineGroupsWithOptions(organizationId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -25843,11 +30365,11 @@ func (client *Client) ListPipelineJobHistorysWithOptions(organizationId *string,
 	return _result, _err
 }
 
-func (client *Client) ListPipelineJobs(organizationId *string, pipelineId *string, request *ListPipelineJobsRequest) (_result *ListPipelineJobsResponse, _err error) {
+func (client *Client) ListPipelineJobHistorys(organizationId *string, pipelineId *string, request *ListPipelineJobHistorysRequest) (_result *ListPipelineJobHistorysResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListPipelineJobsResponse{}
-	_body, _err := client.ListPipelineJobsWithOptions(organizationId, pipelineId, request, headers, runtime)
+	_result = &ListPipelineJobHistorysResponse{}
+	_body, _err := client.ListPipelineJobHistorysWithOptions(organizationId, pipelineId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -25889,11 +30411,57 @@ func (client *Client) ListPipelineJobsWithOptions(organizationId *string, pipeli
 	return _result, _err
 }
 
-func (client *Client) ListPipelineRuns(organizationId *string, pipelineId *string, request *ListPipelineRunsRequest) (_result *ListPipelineRunsResponse, _err error) {
+func (client *Client) ListPipelineJobs(organizationId *string, pipelineId *string, request *ListPipelineJobsRequest) (_result *ListPipelineJobsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListPipelineRunsResponse{}
-	_body, _err := client.ListPipelineRunsWithOptions(organizationId, pipelineId, request, headers, runtime)
+	_result = &ListPipelineJobsResponse{}
+	_body, _err := client.ListPipelineJobsWithOptions(organizationId, pipelineId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListPipelineRelationsWithOptions(organizationId *string, pipelineId *string, request *ListPipelineRelationsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListPipelineRelationsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RelObjectType)) {
+		query["relObjectType"] = request.RelObjectType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListPipelineRelations"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/organization/" + tea.StringValue(openapiutil.GetEncodeParam(organizationId)) + "/" + tea.StringValue(openapiutil.GetEncodeParam(pipelineId)) + "/pipelineRelations"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListPipelineRelationsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListPipelineRelations(organizationId *string, pipelineId *string, request *ListPipelineRelationsRequest) (_result *ListPipelineRelationsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListPipelineRelationsResponse{}
+	_body, _err := client.ListPipelineRelationsWithOptions(organizationId, pipelineId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -25955,11 +30523,11 @@ func (client *Client) ListPipelineRunsWithOptions(organizationId *string, pipeli
 	return _result, _err
 }
 
-func (client *Client) ListPipelines(organizationId *string, request *ListPipelinesRequest) (_result *ListPipelinesResponse, _err error) {
+func (client *Client) ListPipelineRuns(organizationId *string, pipelineId *string, request *ListPipelineRunsRequest) (_result *ListPipelineRunsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListPipelinesResponse{}
-	_body, _err := client.ListPipelinesWithOptions(organizationId, request, headers, runtime)
+	_result = &ListPipelineRunsResponse{}
+	_body, _err := client.ListPipelineRunsWithOptions(organizationId, pipelineId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -26037,11 +30605,11 @@ func (client *Client) ListPipelinesWithOptions(organizationId *string, request *
 	return _result, _err
 }
 
-func (client *Client) ListProjectMembers(organizationId *string, projectId *string, request *ListProjectMembersRequest) (_result *ListProjectMembersResponse, _err error) {
+func (client *Client) ListPipelines(organizationId *string, request *ListPipelinesRequest) (_result *ListPipelinesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListProjectMembersResponse{}
-	_body, _err := client.ListProjectMembersWithOptions(organizationId, projectId, request, headers, runtime)
+	_result = &ListPipelinesResponse{}
+	_body, _err := client.ListPipelinesWithOptions(organizationId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -26083,11 +30651,11 @@ func (client *Client) ListProjectMembersWithOptions(organizationId *string, proj
 	return _result, _err
 }
 
-func (client *Client) ListProjectTemplates(organizationId *string, request *ListProjectTemplatesRequest) (_result *ListProjectTemplatesResponse, _err error) {
+func (client *Client) ListProjectMembers(organizationId *string, projectId *string, request *ListProjectMembersRequest) (_result *ListProjectMembersResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListProjectTemplatesResponse{}
-	_body, _err := client.ListProjectTemplatesWithOptions(organizationId, request, headers, runtime)
+	_result = &ListProjectMembersResponse{}
+	_body, _err := client.ListProjectMembersWithOptions(organizationId, projectId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -26129,11 +30697,11 @@ func (client *Client) ListProjectTemplatesWithOptions(organizationId *string, re
 	return _result, _err
 }
 
-func (client *Client) ListProjectWorkitemTypes(organizationId *string, projectId *string, request *ListProjectWorkitemTypesRequest) (_result *ListProjectWorkitemTypesResponse, _err error) {
+func (client *Client) ListProjectTemplates(organizationId *string, request *ListProjectTemplatesRequest) (_result *ListProjectTemplatesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListProjectWorkitemTypesResponse{}
-	_body, _err := client.ListProjectWorkitemTypesWithOptions(organizationId, projectId, request, headers, runtime)
+	_result = &ListProjectTemplatesResponse{}
+	_body, _err := client.ListProjectTemplatesWithOptions(organizationId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -26179,11 +30747,11 @@ func (client *Client) ListProjectWorkitemTypesWithOptions(organizationId *string
 	return _result, _err
 }
 
-func (client *Client) ListProjects(organizationId *string, request *ListProjectsRequest) (_result *ListProjectsResponse, _err error) {
+func (client *Client) ListProjectWorkitemTypes(organizationId *string, projectId *string, request *ListProjectWorkitemTypesRequest) (_result *ListProjectWorkitemTypesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListProjectsResponse{}
-	_body, _err := client.ListProjectsWithOptions(organizationId, request, headers, runtime)
+	_result = &ListProjectWorkitemTypesResponse{}
+	_body, _err := client.ListProjectWorkitemTypesWithOptions(organizationId, projectId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -26245,11 +30813,11 @@ func (client *Client) ListProjectsWithOptions(organizationId *string, request *L
 	return _result, _err
 }
 
-func (client *Client) ListProtectedBranches(repositoryId *string, request *ListProtectedBranchesRequest) (_result *ListProtectedBranchesResponse, _err error) {
+func (client *Client) ListProjects(organizationId *string, request *ListProjectsRequest) (_result *ListProjectsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListProtectedBranchesResponse{}
-	_body, _err := client.ListProtectedBranchesWithOptions(repositoryId, request, headers, runtime)
+	_result = &ListProjectsResponse{}
+	_body, _err := client.ListProjectsWithOptions(organizationId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -26295,11 +30863,11 @@ func (client *Client) ListProtectedBranchesWithOptions(repositoryId *string, req
 	return _result, _err
 }
 
-func (client *Client) ListRepositories(request *ListRepositoriesRequest) (_result *ListRepositoriesResponse, _err error) {
+func (client *Client) ListProtectedBranches(repositoryId *string, request *ListProtectedBranchesRequest) (_result *ListProtectedBranchesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListRepositoriesResponse{}
-	_body, _err := client.ListRepositoriesWithOptions(request, headers, runtime)
+	_result = &ListProtectedBranchesResponse{}
+	_body, _err := client.ListProtectedBranchesWithOptions(repositoryId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -26369,11 +30937,11 @@ func (client *Client) ListRepositoriesWithOptions(request *ListRepositoriesReque
 	return _result, _err
 }
 
-func (client *Client) ListRepositoryBranches(repositoryId *string, request *ListRepositoryBranchesRequest) (_result *ListRepositoryBranchesResponse, _err error) {
+func (client *Client) ListRepositories(request *ListRepositoriesRequest) (_result *ListRepositoriesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListRepositoryBranchesResponse{}
-	_body, _err := client.ListRepositoryBranchesWithOptions(repositoryId, request, headers, runtime)
+	_result = &ListRepositoriesResponse{}
+	_body, _err := client.ListRepositoriesWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -26435,11 +31003,11 @@ func (client *Client) ListRepositoryBranchesWithOptions(repositoryId *string, re
 	return _result, _err
 }
 
-func (client *Client) ListRepositoryCommitDiff(repositoryId *string, sha *string, request *ListRepositoryCommitDiffRequest) (_result *ListRepositoryCommitDiffResponse, _err error) {
+func (client *Client) ListRepositoryBranches(repositoryId *string, request *ListRepositoryBranchesRequest) (_result *ListRepositoryBranchesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListRepositoryCommitDiffResponse{}
-	_body, _err := client.ListRepositoryCommitDiffWithOptions(repositoryId, sha, request, headers, runtime)
+	_result = &ListRepositoryBranchesResponse{}
+	_body, _err := client.ListRepositoryBranchesWithOptions(repositoryId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -26489,11 +31057,11 @@ func (client *Client) ListRepositoryCommitDiffWithOptions(repositoryId *string, 
 	return _result, _err
 }
 
-func (client *Client) ListRepositoryCommits(repositoryId *string, request *ListRepositoryCommitsRequest) (_result *ListRepositoryCommitsResponse, _err error) {
+func (client *Client) ListRepositoryCommitDiff(repositoryId *string, sha *string, request *ListRepositoryCommitDiffRequest) (_result *ListRepositoryCommitDiffResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListRepositoryCommitsResponse{}
-	_body, _err := client.ListRepositoryCommitsWithOptions(repositoryId, request, headers, runtime)
+	_result = &ListRepositoryCommitDiffResponse{}
+	_body, _err := client.ListRepositoryCommitDiffWithOptions(repositoryId, sha, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -26575,11 +31143,89 @@ func (client *Client) ListRepositoryCommitsWithOptions(repositoryId *string, req
 	return _result, _err
 }
 
-func (client *Client) ListRepositoryMemberWithInherited(repositoryId *string, request *ListRepositoryMemberWithInheritedRequest) (_result *ListRepositoryMemberWithInheritedResponse, _err error) {
+func (client *Client) ListRepositoryCommits(repositoryId *string, request *ListRepositoryCommitsRequest) (_result *ListRepositoryCommitsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListRepositoryMemberWithInheritedResponse{}
-	_body, _err := client.ListRepositoryMemberWithInheritedWithOptions(repositoryId, request, headers, runtime)
+	_result = &ListRepositoryCommitsResponse{}
+	_body, _err := client.ListRepositoryCommitsWithOptions(repositoryId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListRepositoryGroupsWithOptions(request *ListRepositoryGroupsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListRepositoryGroupsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccessToken)) {
+		query["accessToken"] = request.AccessToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IncludePersonal)) {
+		query["includePersonal"] = request.IncludePersonal
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrderBy)) {
+		query["orderBy"] = request.OrderBy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrganizationId)) {
+		query["organizationId"] = request.OrganizationId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Page)) {
+		query["page"] = request.Page
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["pageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ParentId)) {
+		query["parentId"] = request.ParentId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Search)) {
+		query["search"] = request.Search
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Sort)) {
+		query["sort"] = request.Sort
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListRepositoryGroups"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/repository/groups/get/all"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListRepositoryGroupsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListRepositoryGroups(request *ListRepositoryGroupsRequest) (_result *ListRepositoryGroupsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListRepositoryGroupsResponse{}
+	_body, _err := client.ListRepositoryGroupsWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -26625,11 +31271,77 @@ func (client *Client) ListRepositoryMemberWithInheritedWithOptions(repositoryId 
 	return _result, _err
 }
 
-func (client *Client) ListRepositoryTree(repositoryId *string, request *ListRepositoryTreeRequest) (_result *ListRepositoryTreeResponse, _err error) {
+func (client *Client) ListRepositoryMemberWithInherited(repositoryId *string, request *ListRepositoryMemberWithInheritedRequest) (_result *ListRepositoryMemberWithInheritedResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListRepositoryTreeResponse{}
-	_body, _err := client.ListRepositoryTreeWithOptions(repositoryId, request, headers, runtime)
+	_result = &ListRepositoryMemberWithInheritedResponse{}
+	_body, _err := client.ListRepositoryMemberWithInheritedWithOptions(repositoryId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListRepositoryTagsWithOptions(repositoryId *string, request *ListRepositoryTagsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListRepositoryTagsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccessToken)) {
+		query["accessToken"] = request.AccessToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrganizationId)) {
+		query["organizationId"] = request.OrganizationId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Page)) {
+		query["page"] = request.Page
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["pageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Search)) {
+		query["search"] = request.Search
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Sort)) {
+		query["sort"] = request.Sort
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListRepositoryTags"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/repository/" + tea.StringValue(openapiutil.GetEncodeParam(repositoryId)) + "/tag/list"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListRepositoryTagsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListRepositoryTags(repositoryId *string, request *ListRepositoryTagsRequest) (_result *ListRepositoryTagsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListRepositoryTagsResponse{}
+	_body, _err := client.ListRepositoryTagsWithOptions(repositoryId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -26687,11 +31399,11 @@ func (client *Client) ListRepositoryTreeWithOptions(repositoryId *string, reques
 	return _result, _err
 }
 
-func (client *Client) ListRepositoryWebhook(repositoryId *string, request *ListRepositoryWebhookRequest) (_result *ListRepositoryWebhookResponse, _err error) {
+func (client *Client) ListRepositoryTree(repositoryId *string, request *ListRepositoryTreeRequest) (_result *ListRepositoryTreeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListRepositoryWebhookResponse{}
-	_body, _err := client.ListRepositoryWebhookWithOptions(repositoryId, request, headers, runtime)
+	_result = &ListRepositoryTreeResponse{}
+	_body, _err := client.ListRepositoryTreeWithOptions(repositoryId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -26745,11 +31457,11 @@ func (client *Client) ListRepositoryWebhookWithOptions(repositoryId *string, req
 	return _result, _err
 }
 
-func (client *Client) ListResourceMembers(organizationId *string, resourceType *string, resourceId *string) (_result *ListResourceMembersResponse, _err error) {
+func (client *Client) ListRepositoryWebhook(repositoryId *string, request *ListRepositoryWebhookRequest) (_result *ListRepositoryWebhookResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListResourceMembersResponse{}
-	_body, _err := client.ListResourceMembersWithOptions(organizationId, resourceType, resourceId, headers, runtime)
+	_result = &ListRepositoryWebhookResponse{}
+	_body, _err := client.ListRepositoryWebhookWithOptions(repositoryId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -26781,11 +31493,11 @@ func (client *Client) ListResourceMembersWithOptions(organizationId *string, res
 	return _result, _err
 }
 
-func (client *Client) ListServiceConnections(organizationId *string, request *ListServiceConnectionsRequest) (_result *ListServiceConnectionsResponse, _err error) {
+func (client *Client) ListResourceMembers(organizationId *string, resourceType *string, resourceId *string) (_result *ListResourceMembersResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListServiceConnectionsResponse{}
-	_body, _err := client.ListServiceConnectionsWithOptions(organizationId, request, headers, runtime)
+	_result = &ListResourceMembersResponse{}
+	_body, _err := client.ListResourceMembersWithOptions(organizationId, resourceType, resourceId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -26827,11 +31539,11 @@ func (client *Client) ListServiceConnectionsWithOptions(organizationId *string, 
 	return _result, _err
 }
 
-func (client *Client) ListSprints(organizationId *string, request *ListSprintsRequest) (_result *ListSprintsResponse, _err error) {
+func (client *Client) ListServiceConnections(organizationId *string, request *ListServiceConnectionsRequest) (_result *ListServiceConnectionsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListSprintsResponse{}
-	_body, _err := client.ListSprintsWithOptions(organizationId, request, headers, runtime)
+	_result = &ListServiceConnectionsResponse{}
+	_body, _err := client.ListServiceConnectionsWithOptions(organizationId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -26885,11 +31597,11 @@ func (client *Client) ListSprintsWithOptions(organizationId *string, request *Li
 	return _result, _err
 }
 
-func (client *Client) ListVariableGroups(organizationId *string, request *ListVariableGroupsRequest) (_result *ListVariableGroupsResponse, _err error) {
+func (client *Client) ListSprints(organizationId *string, request *ListSprintsRequest) (_result *ListSprintsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListVariableGroupsResponse{}
-	_body, _err := client.ListVariableGroupsWithOptions(organizationId, request, headers, runtime)
+	_result = &ListSprintsResponse{}
+	_body, _err := client.ListSprintsWithOptions(organizationId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -26943,11 +31655,11 @@ func (client *Client) ListVariableGroupsWithOptions(organizationId *string, requ
 	return _result, _err
 }
 
-func (client *Client) ListWorkItemAllFields(organizationId *string, request *ListWorkItemAllFieldsRequest) (_result *ListWorkItemAllFieldsResponse, _err error) {
+func (client *Client) ListVariableGroups(organizationId *string, request *ListVariableGroupsRequest) (_result *ListVariableGroupsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListWorkItemAllFieldsResponse{}
-	_body, _err := client.ListWorkItemAllFieldsWithOptions(organizationId, request, headers, runtime)
+	_result = &ListVariableGroupsResponse{}
+	_body, _err := client.ListVariableGroupsWithOptions(organizationId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -26997,11 +31709,11 @@ func (client *Client) ListWorkItemAllFieldsWithOptions(organizationId *string, r
 	return _result, _err
 }
 
-func (client *Client) ListWorkItemWorkFlowStatus(organizationId *string, request *ListWorkItemWorkFlowStatusRequest) (_result *ListWorkItemWorkFlowStatusResponse, _err error) {
+func (client *Client) ListWorkItemAllFields(organizationId *string, request *ListWorkItemAllFieldsRequest) (_result *ListWorkItemAllFieldsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListWorkItemWorkFlowStatusResponse{}
-	_body, _err := client.ListWorkItemWorkFlowStatusWithOptions(organizationId, request, headers, runtime)
+	_result = &ListWorkItemAllFieldsResponse{}
+	_body, _err := client.ListWorkItemAllFieldsWithOptions(organizationId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -27055,11 +31767,11 @@ func (client *Client) ListWorkItemWorkFlowStatusWithOptions(organizationId *stri
 	return _result, _err
 }
 
-func (client *Client) ListWorkitemTime(organizationId *string, workitemId *string) (_result *ListWorkitemTimeResponse, _err error) {
+func (client *Client) ListWorkItemWorkFlowStatus(organizationId *string, request *ListWorkItemWorkFlowStatusRequest) (_result *ListWorkItemWorkFlowStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListWorkitemTimeResponse{}
-	_body, _err := client.ListWorkitemTimeWithOptions(organizationId, workitemId, headers, runtime)
+	_result = &ListWorkItemWorkFlowStatusResponse{}
+	_body, _err := client.ListWorkItemWorkFlowStatusWithOptions(organizationId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -27091,11 +31803,11 @@ func (client *Client) ListWorkitemTimeWithOptions(organizationId *string, workit
 	return _result, _err
 }
 
-func (client *Client) ListWorkitems(organizationId *string, request *ListWorkitemsRequest) (_result *ListWorkitemsResponse, _err error) {
+func (client *Client) ListWorkitemTime(organizationId *string, workitemId *string) (_result *ListWorkitemTimeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListWorkitemsResponse{}
-	_body, _err := client.ListWorkitemsWithOptions(organizationId, request, headers, runtime)
+	_result = &ListWorkitemTimeResponse{}
+	_body, _err := client.ListWorkitemTimeWithOptions(organizationId, workitemId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -27173,11 +31885,11 @@ func (client *Client) ListWorkitemsWithOptions(organizationId *string, request *
 	return _result, _err
 }
 
-func (client *Client) ListWorkspaces(request *ListWorkspacesRequest) (_result *ListWorkspacesResponse, _err error) {
+func (client *Client) ListWorkitems(organizationId *string, request *ListWorkitemsRequest) (_result *ListWorkitemsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListWorkspacesResponse{}
-	_body, _err := client.ListWorkspacesWithOptions(request, headers, runtime)
+	_result = &ListWorkitemsResponse{}
+	_body, _err := client.ListWorkitemsWithOptions(organizationId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -27241,11 +31953,11 @@ func (client *Client) ListWorkspacesWithOptions(tmpReq *ListWorkspacesRequest, h
 	return _result, _err
 }
 
-func (client *Client) LogPipelineJobRun(organizationId *string, pipelineId *string, jobId *string, pipelineRunId *string) (_result *LogPipelineJobRunResponse, _err error) {
+func (client *Client) ListWorkspaces(request *ListWorkspacesRequest) (_result *ListWorkspacesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &LogPipelineJobRunResponse{}
-	_body, _err := client.LogPipelineJobRunWithOptions(organizationId, pipelineId, jobId, pipelineRunId, headers, runtime)
+	_result = &ListWorkspacesResponse{}
+	_body, _err := client.ListWorkspacesWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -27277,11 +31989,11 @@ func (client *Client) LogPipelineJobRunWithOptions(organizationId *string, pipel
 	return _result, _err
 }
 
-func (client *Client) LogVMDeployMachine(organizationId *string, pipelineId *string, deployOrderId *string, machineSn *string) (_result *LogVMDeployMachineResponse, _err error) {
+func (client *Client) LogPipelineJobRun(organizationId *string, pipelineId *string, jobId *string, pipelineRunId *string) (_result *LogPipelineJobRunResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &LogVMDeployMachineResponse{}
-	_body, _err := client.LogVMDeployMachineWithOptions(organizationId, pipelineId, deployOrderId, machineSn, headers, runtime)
+	_result = &LogPipelineJobRunResponse{}
+	_body, _err := client.LogPipelineJobRunWithOptions(organizationId, pipelineId, jobId, pipelineRunId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -27313,11 +32025,11 @@ func (client *Client) LogVMDeployMachineWithOptions(organizationId *string, pipe
 	return _result, _err
 }
 
-func (client *Client) PassPipelineValidate(organizationId *string, pipelineId *string, pipelineRunId *string, jobId *string) (_result *PassPipelineValidateResponse, _err error) {
+func (client *Client) LogVMDeployMachine(organizationId *string, pipelineId *string, deployOrderId *string, machineSn *string) (_result *LogVMDeployMachineResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &PassPipelineValidateResponse{}
-	_body, _err := client.PassPipelineValidateWithOptions(organizationId, pipelineId, pipelineRunId, jobId, headers, runtime)
+	_result = &LogVMDeployMachineResponse{}
+	_body, _err := client.LogVMDeployMachineWithOptions(organizationId, pipelineId, deployOrderId, machineSn, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -27349,11 +32061,11 @@ func (client *Client) PassPipelineValidateWithOptions(organizationId *string, pi
 	return _result, _err
 }
 
-func (client *Client) RefusePipelineValidate(organizationId *string, pipelineId *string, pipelineRunId *string, jobId *string) (_result *RefusePipelineValidateResponse, _err error) {
+func (client *Client) PassPipelineValidate(organizationId *string, pipelineId *string, pipelineRunId *string, jobId *string) (_result *PassPipelineValidateResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &RefusePipelineValidateResponse{}
-	_body, _err := client.RefusePipelineValidateWithOptions(organizationId, pipelineId, pipelineRunId, jobId, headers, runtime)
+	_result = &PassPipelineValidateResponse{}
+	_body, _err := client.PassPipelineValidateWithOptions(organizationId, pipelineId, pipelineRunId, jobId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -27385,11 +32097,11 @@ func (client *Client) RefusePipelineValidateWithOptions(organizationId *string, 
 	return _result, _err
 }
 
-func (client *Client) ReleaseWorkspace(workspaceId *string) (_result *ReleaseWorkspaceResponse, _err error) {
+func (client *Client) RefusePipelineValidate(organizationId *string, pipelineId *string, pipelineRunId *string, jobId *string) (_result *RefusePipelineValidateResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ReleaseWorkspaceResponse{}
-	_body, _err := client.ReleaseWorkspaceWithOptions(workspaceId, headers, runtime)
+	_result = &RefusePipelineValidateResponse{}
+	_body, _err := client.RefusePipelineValidateWithOptions(organizationId, pipelineId, pipelineRunId, jobId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -27421,11 +32133,11 @@ func (client *Client) ReleaseWorkspaceWithOptions(workspaceId *string, headers m
 	return _result, _err
 }
 
-func (client *Client) ResetSshKey(organizationId *string) (_result *ResetSshKeyResponse, _err error) {
+func (client *Client) ReleaseWorkspace(workspaceId *string) (_result *ReleaseWorkspaceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ResetSshKeyResponse{}
-	_body, _err := client.ResetSshKeyWithOptions(organizationId, headers, runtime)
+	_result = &ReleaseWorkspaceResponse{}
+	_body, _err := client.ReleaseWorkspaceWithOptions(workspaceId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -27457,11 +32169,11 @@ func (client *Client) ResetSshKeyWithOptions(organizationId *string, headers map
 	return _result, _err
 }
 
-func (client *Client) ResumeVMDeployOrder(organizationId *string, pipelineId *string, deployOrderId *string) (_result *ResumeVMDeployOrderResponse, _err error) {
+func (client *Client) ResetSshKey(organizationId *string) (_result *ResetSshKeyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ResumeVMDeployOrderResponse{}
-	_body, _err := client.ResumeVMDeployOrderWithOptions(organizationId, pipelineId, deployOrderId, headers, runtime)
+	_result = &ResetSshKeyResponse{}
+	_body, _err := client.ResetSshKeyWithOptions(organizationId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -27493,11 +32205,11 @@ func (client *Client) ResumeVMDeployOrderWithOptions(organizationId *string, pip
 	return _result, _err
 }
 
-func (client *Client) RetryPipelineJobRun(organizationId *string, pipelineId *string, pipelineRunId *string, jobId *string) (_result *RetryPipelineJobRunResponse, _err error) {
+func (client *Client) ResumeVMDeployOrder(organizationId *string, pipelineId *string, deployOrderId *string) (_result *ResumeVMDeployOrderResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &RetryPipelineJobRunResponse{}
-	_body, _err := client.RetryPipelineJobRunWithOptions(organizationId, pipelineId, pipelineRunId, jobId, headers, runtime)
+	_result = &ResumeVMDeployOrderResponse{}
+	_body, _err := client.ResumeVMDeployOrderWithOptions(organizationId, pipelineId, deployOrderId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -27529,11 +32241,11 @@ func (client *Client) RetryPipelineJobRunWithOptions(organizationId *string, pip
 	return _result, _err
 }
 
-func (client *Client) RetryVMDeployMachine(organizationId *string, pipelineId *string, deployOrderId *string, machineSn *string) (_result *RetryVMDeployMachineResponse, _err error) {
+func (client *Client) RetryPipelineJobRun(organizationId *string, pipelineId *string, pipelineRunId *string, jobId *string) (_result *RetryPipelineJobRunResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &RetryVMDeployMachineResponse{}
-	_body, _err := client.RetryVMDeployMachineWithOptions(organizationId, pipelineId, deployOrderId, machineSn, headers, runtime)
+	_result = &RetryPipelineJobRunResponse{}
+	_body, _err := client.RetryPipelineJobRunWithOptions(organizationId, pipelineId, pipelineRunId, jobId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -27565,11 +32277,11 @@ func (client *Client) RetryVMDeployMachineWithOptions(organizationId *string, pi
 	return _result, _err
 }
 
-func (client *Client) SkipPipelineJobRun(organizationId *string, pipelineId *string, pipelineRunId *string, jobId *string) (_result *SkipPipelineJobRunResponse, _err error) {
+func (client *Client) RetryVMDeployMachine(organizationId *string, pipelineId *string, deployOrderId *string, machineSn *string) (_result *RetryVMDeployMachineResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &SkipPipelineJobRunResponse{}
-	_body, _err := client.SkipPipelineJobRunWithOptions(organizationId, pipelineId, pipelineRunId, jobId, headers, runtime)
+	_result = &RetryVMDeployMachineResponse{}
+	_body, _err := client.RetryVMDeployMachineWithOptions(organizationId, pipelineId, deployOrderId, machineSn, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -27601,11 +32313,11 @@ func (client *Client) SkipPipelineJobRunWithOptions(organizationId *string, pipe
 	return _result, _err
 }
 
-func (client *Client) SkipVMDeployMachine(organizationId *string, pipelineId *string, deployOrderId *string, machineSn *string) (_result *SkipVMDeployMachineResponse, _err error) {
+func (client *Client) SkipPipelineJobRun(organizationId *string, pipelineId *string, pipelineRunId *string, jobId *string) (_result *SkipPipelineJobRunResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &SkipVMDeployMachineResponse{}
-	_body, _err := client.SkipVMDeployMachineWithOptions(organizationId, pipelineId, deployOrderId, machineSn, headers, runtime)
+	_result = &SkipPipelineJobRunResponse{}
+	_body, _err := client.SkipPipelineJobRunWithOptions(organizationId, pipelineId, pipelineRunId, jobId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -27637,11 +32349,11 @@ func (client *Client) SkipVMDeployMachineWithOptions(organizationId *string, pip
 	return _result, _err
 }
 
-func (client *Client) StartPipelineRun(organizationId *string, pipelineId *string, request *StartPipelineRunRequest) (_result *StartPipelineRunResponse, _err error) {
+func (client *Client) SkipVMDeployMachine(organizationId *string, pipelineId *string, deployOrderId *string, machineSn *string) (_result *SkipVMDeployMachineResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &StartPipelineRunResponse{}
-	_body, _err := client.StartPipelineRunWithOptions(organizationId, pipelineId, request, headers, runtime)
+	_result = &SkipVMDeployMachineResponse{}
+	_body, _err := client.SkipVMDeployMachineWithOptions(organizationId, pipelineId, deployOrderId, machineSn, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -27683,11 +32395,11 @@ func (client *Client) StartPipelineRunWithOptions(organizationId *string, pipeli
 	return _result, _err
 }
 
-func (client *Client) StopPipelineJobRun(organizationId *string, pipelineId *string, pipelineRunId *string, jobId *string) (_result *StopPipelineJobRunResponse, _err error) {
+func (client *Client) StartPipelineRun(organizationId *string, pipelineId *string, request *StartPipelineRunRequest) (_result *StartPipelineRunResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &StopPipelineJobRunResponse{}
-	_body, _err := client.StopPipelineJobRunWithOptions(organizationId, pipelineId, pipelineRunId, jobId, headers, runtime)
+	_result = &StartPipelineRunResponse{}
+	_body, _err := client.StartPipelineRunWithOptions(organizationId, pipelineId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -27719,11 +32431,11 @@ func (client *Client) StopPipelineJobRunWithOptions(organizationId *string, pipe
 	return _result, _err
 }
 
-func (client *Client) StopPipelineRun(organizationId *string, pipelineId *string, pipelineRunId *string) (_result *StopPipelineRunResponse, _err error) {
+func (client *Client) StopPipelineJobRun(organizationId *string, pipelineId *string, pipelineRunId *string, jobId *string) (_result *StopPipelineJobRunResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &StopPipelineRunResponse{}
-	_body, _err := client.StopPipelineRunWithOptions(organizationId, pipelineId, pipelineRunId, headers, runtime)
+	_result = &StopPipelineJobRunResponse{}
+	_body, _err := client.StopPipelineJobRunWithOptions(organizationId, pipelineId, pipelineRunId, jobId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -27755,11 +32467,11 @@ func (client *Client) StopPipelineRunWithOptions(organizationId *string, pipelin
 	return _result, _err
 }
 
-func (client *Client) StopVMDeployOrder(organizationId *string, pipelineId *string, deployOrderId *string) (_result *StopVMDeployOrderResponse, _err error) {
+func (client *Client) StopPipelineRun(organizationId *string, pipelineId *string, pipelineRunId *string) (_result *StopPipelineRunResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &StopVMDeployOrderResponse{}
-	_body, _err := client.StopVMDeployOrderWithOptions(organizationId, pipelineId, deployOrderId, headers, runtime)
+	_result = &StopPipelineRunResponse{}
+	_body, _err := client.StopPipelineRunWithOptions(organizationId, pipelineId, pipelineRunId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -27791,11 +32503,11 @@ func (client *Client) StopVMDeployOrderWithOptions(organizationId *string, pipel
 	return _result, _err
 }
 
-func (client *Client) TriggerRepositoryMirrorSync(repositoryId *string, request *TriggerRepositoryMirrorSyncRequest) (_result *TriggerRepositoryMirrorSyncResponse, _err error) {
+func (client *Client) StopVMDeployOrder(organizationId *string, pipelineId *string, deployOrderId *string) (_result *StopVMDeployOrderResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &TriggerRepositoryMirrorSyncResponse{}
-	_body, _err := client.TriggerRepositoryMirrorSyncWithOptions(repositoryId, request, headers, runtime)
+	_result = &StopVMDeployOrderResponse{}
+	_body, _err := client.StopVMDeployOrderWithOptions(organizationId, pipelineId, deployOrderId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -27849,11 +32561,11 @@ func (client *Client) TriggerRepositoryMirrorSyncWithOptions(repositoryId *strin
 	return _result, _err
 }
 
-func (client *Client) UpdateFile(repositoryId *string, request *UpdateFileRequest) (_result *UpdateFileResponse, _err error) {
+func (client *Client) TriggerRepositoryMirrorSync(repositoryId *string, request *TriggerRepositoryMirrorSyncRequest) (_result *TriggerRepositoryMirrorSyncResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &UpdateFileResponse{}
-	_body, _err := client.UpdateFileWithOptions(repositoryId, request, headers, runtime)
+	_result = &TriggerRepositoryMirrorSyncResponse{}
+	_body, _err := client.TriggerRepositoryMirrorSyncWithOptions(repositoryId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -27925,11 +32637,11 @@ func (client *Client) UpdateFileWithOptions(repositoryId *string, request *Updat
 	return _result, _err
 }
 
-func (client *Client) UpdateFlowTag(organizationId *string, id *string, request *UpdateFlowTagRequest) (_result *UpdateFlowTagResponse, _err error) {
+func (client *Client) UpdateFile(repositoryId *string, request *UpdateFileRequest) (_result *UpdateFileResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &UpdateFlowTagResponse{}
-	_body, _err := client.UpdateFlowTagWithOptions(organizationId, id, request, headers, runtime)
+	_result = &UpdateFileResponse{}
+	_body, _err := client.UpdateFileWithOptions(repositoryId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -27979,11 +32691,11 @@ func (client *Client) UpdateFlowTagWithOptions(organizationId *string, id *strin
 	return _result, _err
 }
 
-func (client *Client) UpdateFlowTagGroup(organizationId *string, id *string, request *UpdateFlowTagGroupRequest) (_result *UpdateFlowTagGroupResponse, _err error) {
+func (client *Client) UpdateFlowTag(organizationId *string, id *string, request *UpdateFlowTagRequest) (_result *UpdateFlowTagResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &UpdateFlowTagGroupResponse{}
-	_body, _err := client.UpdateFlowTagGroupWithOptions(organizationId, id, request, headers, runtime)
+	_result = &UpdateFlowTagResponse{}
+	_body, _err := client.UpdateFlowTagWithOptions(organizationId, id, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -28025,11 +32737,75 @@ func (client *Client) UpdateFlowTagGroupWithOptions(organizationId *string, id *
 	return _result, _err
 }
 
-func (client *Client) UpdateHostGroup(organizationId *string, id *string, request *UpdateHostGroupRequest) (_result *UpdateHostGroupResponse, _err error) {
+func (client *Client) UpdateFlowTagGroup(organizationId *string, id *string, request *UpdateFlowTagGroupRequest) (_result *UpdateFlowTagGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &UpdateHostGroupResponse{}
-	_body, _err := client.UpdateHostGroupWithOptions(organizationId, id, request, headers, runtime)
+	_result = &UpdateFlowTagGroupResponse{}
+	_body, _err := client.UpdateFlowTagGroupWithOptions(organizationId, id, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateGroupMemberWithOptions(groupId *string, request *UpdateGroupMemberRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateGroupMemberResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccessToken)) {
+		query["accessToken"] = request.AccessToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AliyunPk)) {
+		query["aliyunPk"] = request.AliyunPk
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrganizationId)) {
+		query["organizationId"] = request.OrganizationId
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccessLevel)) {
+		body["accessLevel"] = request.AccessLevel
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MemberType)) {
+		body["memberType"] = request.MemberType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateGroupMember"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/repository/groups/" + tea.StringValue(openapiutil.GetEncodeParam(groupId)) + "/members/update/aliyun_pk"),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateGroupMemberResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateGroupMember(groupId *string, request *UpdateGroupMemberRequest) (_result *UpdateGroupMemberResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateGroupMemberResponse{}
+	_body, _err := client.UpdateGroupMemberWithOptions(groupId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -28107,11 +32883,11 @@ func (client *Client) UpdateHostGroupWithOptions(organizationId *string, id *str
 	return _result, _err
 }
 
-func (client *Client) UpdatePipelineBaseInfo(organizationId *string, pipelineId *string, request *UpdatePipelineBaseInfoRequest) (_result *UpdatePipelineBaseInfoResponse, _err error) {
+func (client *Client) UpdateHostGroup(organizationId *string, id *string, request *UpdateHostGroupRequest) (_result *UpdateHostGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &UpdatePipelineBaseInfoResponse{}
-	_body, _err := client.UpdatePipelineBaseInfoWithOptions(organizationId, pipelineId, request, headers, runtime)
+	_result = &UpdateHostGroupResponse{}
+	_body, _err := client.UpdateHostGroupWithOptions(organizationId, id, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -28161,11 +32937,11 @@ func (client *Client) UpdatePipelineBaseInfoWithOptions(organizationId *string, 
 	return _result, _err
 }
 
-func (client *Client) UpdatePipelineGroup(organizationId *string, groupId *string, request *UpdatePipelineGroupRequest) (_result *UpdatePipelineGroupResponse, _err error) {
+func (client *Client) UpdatePipelineBaseInfo(organizationId *string, pipelineId *string, request *UpdatePipelineBaseInfoRequest) (_result *UpdatePipelineBaseInfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &UpdatePipelineGroupResponse{}
-	_body, _err := client.UpdatePipelineGroupWithOptions(organizationId, groupId, request, headers, runtime)
+	_result = &UpdatePipelineBaseInfoResponse{}
+	_body, _err := client.UpdatePipelineBaseInfoWithOptions(organizationId, pipelineId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -28207,11 +32983,11 @@ func (client *Client) UpdatePipelineGroupWithOptions(organizationId *string, gro
 	return _result, _err
 }
 
-func (client *Client) UpdateProjectMember(organizationId *string, projectId *string, request *UpdateProjectMemberRequest) (_result *UpdateProjectMemberResponse, _err error) {
+func (client *Client) UpdatePipelineGroup(organizationId *string, groupId *string, request *UpdatePipelineGroupRequest) (_result *UpdatePipelineGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &UpdateProjectMemberResponse{}
-	_body, _err := client.UpdateProjectMemberWithOptions(organizationId, projectId, request, headers, runtime)
+	_result = &UpdatePipelineGroupResponse{}
+	_body, _err := client.UpdatePipelineGroupWithOptions(organizationId, groupId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -28269,11 +33045,11 @@ func (client *Client) UpdateProjectMemberWithOptions(organizationId *string, pro
 	return _result, _err
 }
 
-func (client *Client) UpdateProtectedBranches(repositoryId *string, id *string, request *UpdateProtectedBranchesRequest) (_result *UpdateProtectedBranchesResponse, _err error) {
+func (client *Client) UpdateProjectMember(organizationId *string, projectId *string, request *UpdateProjectMemberRequest) (_result *UpdateProjectMemberResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &UpdateProtectedBranchesResponse{}
-	_body, _err := client.UpdateProtectedBranchesWithOptions(repositoryId, id, request, headers, runtime)
+	_result = &UpdateProjectMemberResponse{}
+	_body, _err := client.UpdateProjectMemberWithOptions(organizationId, projectId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -28353,11 +33129,11 @@ func (client *Client) UpdateProtectedBranchesWithOptions(repositoryId *string, i
 	return _result, _err
 }
 
-func (client *Client) UpdateRepository(repositoryId *string, request *UpdateRepositoryRequest) (_result *UpdateRepositoryResponse, _err error) {
+func (client *Client) UpdateProtectedBranches(repositoryId *string, id *string, request *UpdateProtectedBranchesRequest) (_result *UpdateProtectedBranchesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &UpdateRepositoryResponse{}
-	_body, _err := client.UpdateRepositoryWithOptions(repositoryId, request, headers, runtime)
+	_result = &UpdateProtectedBranchesResponse{}
+	_body, _err := client.UpdateProtectedBranchesWithOptions(repositoryId, id, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -28473,11 +33249,11 @@ func (client *Client) UpdateRepositoryWithOptions(repositoryId *string, request 
 	return _result, _err
 }
 
-func (client *Client) UpdateRepositoryMember(repositoryId *string, aliyunPk *string, request *UpdateRepositoryMemberRequest) (_result *UpdateRepositoryMemberResponse, _err error) {
+func (client *Client) UpdateRepository(repositoryId *string, request *UpdateRepositoryRequest) (_result *UpdateRepositoryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &UpdateRepositoryMemberResponse{}
-	_body, _err := client.UpdateRepositoryMemberWithOptions(repositoryId, aliyunPk, request, headers, runtime)
+	_result = &UpdateRepositoryResponse{}
+	_body, _err := client.UpdateRepositoryWithOptions(repositoryId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -28545,11 +33321,11 @@ func (client *Client) UpdateRepositoryMemberWithOptions(repositoryId *string, al
 	return _result, _err
 }
 
-func (client *Client) UpdateResourceMember(organizationId *string, resourceType *string, resourceId *string, accountId *string, request *UpdateResourceMemberRequest) (_result *UpdateResourceMemberResponse, _err error) {
+func (client *Client) UpdateRepositoryMember(repositoryId *string, aliyunPk *string, request *UpdateRepositoryMemberRequest) (_result *UpdateRepositoryMemberResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &UpdateResourceMemberResponse{}
-	_body, _err := client.UpdateResourceMemberWithOptions(organizationId, resourceType, resourceId, accountId, request, headers, runtime)
+	_result = &UpdateRepositoryMemberResponse{}
+	_body, _err := client.UpdateRepositoryMemberWithOptions(repositoryId, aliyunPk, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -28591,11 +33367,11 @@ func (client *Client) UpdateResourceMemberWithOptions(organizationId *string, re
 	return _result, _err
 }
 
-func (client *Client) UpdateVariableGroup(organizationId *string, id *string, request *UpdateVariableGroupRequest) (_result *UpdateVariableGroupResponse, _err error) {
+func (client *Client) UpdateResourceMember(organizationId *string, resourceType *string, resourceId *string, accountId *string, request *UpdateResourceMemberRequest) (_result *UpdateResourceMemberResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &UpdateVariableGroupResponse{}
-	_body, _err := client.UpdateVariableGroupWithOptions(organizationId, id, request, headers, runtime)
+	_result = &UpdateResourceMemberResponse{}
+	_body, _err := client.UpdateResourceMemberWithOptions(organizationId, resourceType, resourceId, accountId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -28645,11 +33421,11 @@ func (client *Client) UpdateVariableGroupWithOptions(organizationId *string, id 
 	return _result, _err
 }
 
-func (client *Client) UpdateWorkItem(organizationId *string, request *UpdateWorkItemRequest) (_result *UpdateWorkItemResponse, _err error) {
+func (client *Client) UpdateVariableGroup(organizationId *string, id *string, request *UpdateVariableGroupRequest) (_result *UpdateVariableGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &UpdateWorkItemResponse{}
-	_body, _err := client.UpdateWorkItemWithOptions(organizationId, request, headers, runtime)
+	_result = &UpdateVariableGroupResponse{}
+	_body, _err := client.UpdateVariableGroupWithOptions(organizationId, id, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -28703,11 +33479,11 @@ func (client *Client) UpdateWorkItemWithOptions(organizationId *string, request 
 	return _result, _err
 }
 
-func (client *Client) UpdateWorkitemComment(organizationId *string, request *UpdateWorkitemCommentRequest) (_result *UpdateWorkitemCommentResponse, _err error) {
+func (client *Client) UpdateWorkItem(organizationId *string, request *UpdateWorkItemRequest) (_result *UpdateWorkItemResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &UpdateWorkitemCommentResponse{}
-	_body, _err := client.UpdateWorkitemCommentWithOptions(organizationId, request, headers, runtime)
+	_result = &UpdateWorkItemResponse{}
+	_body, _err := client.UpdateWorkItemWithOptions(organizationId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -28758,5 +33534,17 @@ func (client *Client) UpdateWorkitemCommentWithOptions(organizationId *string, r
 		return _result, _err
 	}
 	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateWorkitemComment(organizationId *string, request *UpdateWorkitemCommentRequest) (_result *UpdateWorkitemCommentResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateWorkitemCommentResponse{}
+	_body, _err := client.UpdateWorkitemCommentWithOptions(organizationId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
 	return _result, _err
 }
