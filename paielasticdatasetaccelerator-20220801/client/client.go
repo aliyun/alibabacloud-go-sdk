@@ -48,7 +48,7 @@ func (s *EndpointStatus) SetPhase(v string) *EndpointStatus {
 }
 
 type EndpointStatusDetail struct {
-	IpPortMapping map[string]interface{} `json:"IpPortMapping,omitempty" xml:"IpPortMapping,omitempty"`
+	IpPortMapping map[string]*IpPort `json:"IpPortMapping,omitempty" xml:"IpPortMapping,omitempty"`
 }
 
 func (s EndpointStatusDetail) String() string {
@@ -59,7 +59,7 @@ func (s EndpointStatusDetail) GoString() string {
 	return s.String()
 }
 
-func (s *EndpointStatusDetail) SetIpPortMapping(v map[string]interface{}) *EndpointStatusDetail {
+func (s *EndpointStatusDetail) SetIpPortMapping(v map[string]*IpPort) *EndpointStatusDetail {
 	s.IpPortMapping = v
 	return s
 }
@@ -125,6 +125,29 @@ func (s *InstanceStatus) SetSlotNum(v int32) *InstanceStatus {
 
 func (s *InstanceStatus) SetUsedCapacity(v string) *InstanceStatus {
 	s.UsedCapacity = &v
+	return s
+}
+
+type IpPort struct {
+	Ip   *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
+}
+
+func (s IpPort) String() string {
+	return tea.Prettify(s)
+}
+
+func (s IpPort) GoString() string {
+	return s.String()
+}
+
+func (s *IpPort) SetIp(v string) *IpPort {
+	s.Ip = &v
+	return s
+}
+
+func (s *IpPort) SetPort(v string) *IpPort {
+	s.Port = &v
 	return s
 }
 
@@ -3322,18 +3345,6 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
-func (client *Client) BindEndpoint(EndpointId *string, SlotId *string) (_result *BindEndpointResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &BindEndpointResponse{}
-	_body, _err := client.BindEndpointWithOptions(EndpointId, SlotId, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) BindEndpointWithOptions(EndpointId *string, SlotId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *BindEndpointResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -3358,11 +3369,11 @@ func (client *Client) BindEndpointWithOptions(EndpointId *string, SlotId *string
 	return _result, _err
 }
 
-func (client *Client) CreateEndpoint(request *CreateEndpointRequest) (_result *CreateEndpointResponse, _err error) {
+func (client *Client) BindEndpoint(EndpointId *string, SlotId *string) (_result *BindEndpointResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &CreateEndpointResponse{}
-	_body, _err := client.CreateEndpointWithOptions(request, headers, runtime)
+	_result = &BindEndpointResponse{}
+	_body, _err := client.BindEndpointWithOptions(EndpointId, SlotId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3416,11 +3427,11 @@ func (client *Client) CreateEndpointWithOptions(request *CreateEndpointRequest, 
 	return _result, _err
 }
 
-func (client *Client) CreateInstance(request *CreateInstanceRequest) (_result *CreateInstanceResponse, _err error) {
+func (client *Client) CreateEndpoint(request *CreateEndpointRequest) (_result *CreateEndpointResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &CreateInstanceResponse{}
-	_body, _err := client.CreateInstanceWithOptions(request, headers, runtime)
+	_result = &CreateEndpointResponse{}
+	_body, _err := client.CreateEndpointWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3486,11 +3497,11 @@ func (client *Client) CreateInstanceWithOptions(request *CreateInstanceRequest, 
 	return _result, _err
 }
 
-func (client *Client) CreateSlot(request *CreateSlotRequest) (_result *CreateSlotResponse, _err error) {
+func (client *Client) CreateInstance(request *CreateInstanceRequest) (_result *CreateInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &CreateSlotResponse{}
-	_body, _err := client.CreateSlotWithOptions(request, headers, runtime)
+	_result = &CreateInstanceResponse{}
+	_body, _err := client.CreateInstanceWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3568,11 +3579,11 @@ func (client *Client) CreateSlotWithOptions(request *CreateSlotRequest, headers 
 	return _result, _err
 }
 
-func (client *Client) CreateTag(request *CreateTagRequest) (_result *CreateTagResponse, _err error) {
+func (client *Client) CreateSlot(request *CreateSlotRequest) (_result *CreateSlotResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &CreateTagResponse{}
-	_body, _err := client.CreateTagWithOptions(request, headers, runtime)
+	_result = &CreateSlotResponse{}
+	_body, _err := client.CreateSlotWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3626,11 +3637,11 @@ func (client *Client) CreateTagWithOptions(request *CreateTagRequest, headers ma
 	return _result, _err
 }
 
-func (client *Client) DeleteInstance(InstanceId *string) (_result *DeleteInstanceResponse, _err error) {
+func (client *Client) CreateTag(request *CreateTagRequest) (_result *CreateTagResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DeleteInstanceResponse{}
-	_body, _err := client.DeleteInstanceWithOptions(InstanceId, headers, runtime)
+	_result = &CreateTagResponse{}
+	_body, _err := client.CreateTagWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3662,11 +3673,11 @@ func (client *Client) DeleteInstanceWithOptions(InstanceId *string, headers map[
 	return _result, _err
 }
 
-func (client *Client) DeleteSlot(SlotId *string) (_result *DeleteSlotResponse, _err error) {
+func (client *Client) DeleteInstance(InstanceId *string) (_result *DeleteInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DeleteSlotResponse{}
-	_body, _err := client.DeleteSlotWithOptions(SlotId, headers, runtime)
+	_result = &DeleteInstanceResponse{}
+	_body, _err := client.DeleteInstanceWithOptions(InstanceId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3698,11 +3709,11 @@ func (client *Client) DeleteSlotWithOptions(SlotId *string, headers map[string]*
 	return _result, _err
 }
 
-func (client *Client) DeleteTag(request *DeleteTagRequest) (_result *DeleteTagResponse, _err error) {
+func (client *Client) DeleteSlot(SlotId *string) (_result *DeleteSlotResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DeleteTagResponse{}
-	_body, _err := client.DeleteTagWithOptions(request, headers, runtime)
+	_result = &DeleteSlotResponse{}
+	_body, _err := client.DeleteSlotWithOptions(SlotId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3752,11 +3763,11 @@ func (client *Client) DeleteTagWithOptions(request *DeleteTagRequest, headers ma
 	return _result, _err
 }
 
-func (client *Client) DescribeComponent(ComponentId *string, request *DescribeComponentRequest) (_result *DescribeComponentResponse, _err error) {
+func (client *Client) DeleteTag(request *DeleteTagRequest) (_result *DeleteTagResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DescribeComponentResponse{}
-	_body, _err := client.DescribeComponentWithOptions(ComponentId, request, headers, runtime)
+	_result = &DeleteTagResponse{}
+	_body, _err := client.DeleteTagWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3808,11 +3819,11 @@ func (client *Client) DescribeComponentWithOptions(ComponentId *string, tmpReq *
 	return _result, _err
 }
 
-func (client *Client) DescribeEndpoint(EndpointId *string) (_result *DescribeEndpointResponse, _err error) {
+func (client *Client) DescribeComponent(ComponentId *string, request *DescribeComponentRequest) (_result *DescribeComponentResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DescribeEndpointResponse{}
-	_body, _err := client.DescribeEndpointWithOptions(EndpointId, headers, runtime)
+	_result = &DescribeComponentResponse{}
+	_body, _err := client.DescribeComponentWithOptions(ComponentId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3844,11 +3855,11 @@ func (client *Client) DescribeEndpointWithOptions(EndpointId *string, headers ma
 	return _result, _err
 }
 
-func (client *Client) DescribeInstance(InstanceId *string) (_result *DescribeInstanceResponse, _err error) {
+func (client *Client) DescribeEndpoint(EndpointId *string) (_result *DescribeEndpointResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DescribeInstanceResponse{}
-	_body, _err := client.DescribeInstanceWithOptions(InstanceId, headers, runtime)
+	_result = &DescribeEndpointResponse{}
+	_body, _err := client.DescribeEndpointWithOptions(EndpointId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3880,11 +3891,11 @@ func (client *Client) DescribeInstanceWithOptions(InstanceId *string, headers ma
 	return _result, _err
 }
 
-func (client *Client) DescribeSlot(SlotId *string) (_result *DescribeSlotResponse, _err error) {
+func (client *Client) DescribeInstance(InstanceId *string) (_result *DescribeInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DescribeSlotResponse{}
-	_body, _err := client.DescribeSlotWithOptions(SlotId, headers, runtime)
+	_result = &DescribeInstanceResponse{}
+	_body, _err := client.DescribeInstanceWithOptions(InstanceId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3916,11 +3927,11 @@ func (client *Client) DescribeSlotWithOptions(SlotId *string, headers map[string
 	return _result, _err
 }
 
-func (client *Client) ListComponents(request *ListComponentsRequest) (_result *ListComponentsResponse, _err error) {
+func (client *Client) DescribeSlot(SlotId *string) (_result *DescribeSlotResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListComponentsResponse{}
-	_body, _err := client.ListComponentsWithOptions(request, headers, runtime)
+	_result = &DescribeSlotResponse{}
+	_body, _err := client.DescribeSlotWithOptions(SlotId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3986,11 +3997,11 @@ func (client *Client) ListComponentsWithOptions(request *ListComponentsRequest, 
 	return _result, _err
 }
 
-func (client *Client) ListEndpoints(request *ListEndpointsRequest) (_result *ListEndpointsResponse, _err error) {
+func (client *Client) ListComponents(request *ListComponentsRequest) (_result *ListComponentsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListEndpointsResponse{}
-	_body, _err := client.ListEndpointsWithOptions(request, headers, runtime)
+	_result = &ListComponentsResponse{}
+	_body, _err := client.ListComponentsWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4060,11 +4071,11 @@ func (client *Client) ListEndpointsWithOptions(request *ListEndpointsRequest, he
 	return _result, _err
 }
 
-func (client *Client) ListInstances(request *ListInstancesRequest) (_result *ListInstancesResponse, _err error) {
+func (client *Client) ListEndpoints(request *ListEndpointsRequest) (_result *ListEndpointsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListInstancesResponse{}
-	_body, _err := client.ListInstancesWithOptions(request, headers, runtime)
+	_result = &ListEndpointsResponse{}
+	_body, _err := client.ListEndpointsWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4138,11 +4149,11 @@ func (client *Client) ListInstancesWithOptions(request *ListInstancesRequest, he
 	return _result, _err
 }
 
-func (client *Client) ListSlots(request *ListSlotsRequest) (_result *ListSlotsResponse, _err error) {
+func (client *Client) ListInstances(request *ListInstancesRequest) (_result *ListInstancesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListSlotsResponse{}
-	_body, _err := client.ListSlotsWithOptions(request, headers, runtime)
+	_result = &ListInstancesResponse{}
+	_body, _err := client.ListInstancesWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4216,11 +4227,11 @@ func (client *Client) ListSlotsWithOptions(request *ListSlotsRequest, headers ma
 	return _result, _err
 }
 
-func (client *Client) ListTags(request *ListTagsRequest) (_result *ListTagsResponse, _err error) {
+func (client *Client) ListSlots(request *ListSlotsRequest) (_result *ListSlotsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListTagsResponse{}
-	_body, _err := client.ListTagsWithOptions(request, headers, runtime)
+	_result = &ListSlotsResponse{}
+	_body, _err := client.ListSlotsWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4290,11 +4301,11 @@ func (client *Client) ListTagsWithOptions(request *ListTagsRequest, headers map[
 	return _result, _err
 }
 
-func (client *Client) QueryInstanceMetrics(InstanceId *string, request *QueryInstanceMetricsRequest) (_result *QueryInstanceMetricsResponse, _err error) {
+func (client *Client) ListTags(request *ListTagsRequest) (_result *ListTagsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &QueryInstanceMetricsResponse{}
-	_body, _err := client.QueryInstanceMetricsWithOptions(InstanceId, request, headers, runtime)
+	_result = &ListTagsResponse{}
+	_body, _err := client.ListTagsWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4358,11 +4369,11 @@ func (client *Client) QueryInstanceMetricsWithOptions(InstanceId *string, tmpReq
 	return _result, _err
 }
 
-func (client *Client) QuerySlotMetrics(SlotId *string, request *QuerySlotMetricsRequest) (_result *QuerySlotMetricsResponse, _err error) {
+func (client *Client) QueryInstanceMetrics(InstanceId *string, request *QueryInstanceMetricsRequest) (_result *QueryInstanceMetricsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &QuerySlotMetricsResponse{}
-	_body, _err := client.QuerySlotMetricsWithOptions(SlotId, request, headers, runtime)
+	_result = &QueryInstanceMetricsResponse{}
+	_body, _err := client.QueryInstanceMetricsWithOptions(InstanceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4426,11 +4437,11 @@ func (client *Client) QuerySlotMetricsWithOptions(SlotId *string, tmpReq *QueryS
 	return _result, _err
 }
 
-func (client *Client) QueryStatistic(request *QueryStatisticRequest) (_result *QueryStatisticResponse, _err error) {
+func (client *Client) QuerySlotMetrics(SlotId *string, request *QuerySlotMetricsRequest) (_result *QuerySlotMetricsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &QueryStatisticResponse{}
-	_body, _err := client.QueryStatisticWithOptions(request, headers, runtime)
+	_result = &QuerySlotMetricsResponse{}
+	_body, _err := client.QuerySlotMetricsWithOptions(SlotId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4480,11 +4491,11 @@ func (client *Client) QueryStatisticWithOptions(request *QueryStatisticRequest, 
 	return _result, _err
 }
 
-func (client *Client) StopSlot(SlotId *string) (_result *StopSlotResponse, _err error) {
+func (client *Client) QueryStatistic(request *QueryStatisticRequest) (_result *QueryStatisticResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &StopSlotResponse{}
-	_body, _err := client.StopSlotWithOptions(SlotId, headers, runtime)
+	_result = &QueryStatisticResponse{}
+	_body, _err := client.QueryStatisticWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4516,11 +4527,11 @@ func (client *Client) StopSlotWithOptions(SlotId *string, headers map[string]*st
 	return _result, _err
 }
 
-func (client *Client) UnbindEndpoint(EndpointId *string, SlotId *string) (_result *UnbindEndpointResponse, _err error) {
+func (client *Client) StopSlot(SlotId *string) (_result *StopSlotResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &UnbindEndpointResponse{}
-	_body, _err := client.UnbindEndpointWithOptions(EndpointId, SlotId, headers, runtime)
+	_result = &StopSlotResponse{}
+	_body, _err := client.StopSlotWithOptions(SlotId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4552,11 +4563,11 @@ func (client *Client) UnbindEndpointWithOptions(EndpointId *string, SlotId *stri
 	return _result, _err
 }
 
-func (client *Client) UpdateInstance(InstanceId *string, request *UpdateInstanceRequest) (_result *UpdateInstanceResponse, _err error) {
+func (client *Client) UnbindEndpoint(EndpointId *string, SlotId *string) (_result *UnbindEndpointResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &UpdateInstanceResponse{}
-	_body, _err := client.UpdateInstanceWithOptions(InstanceId, request, headers, runtime)
+	_result = &UnbindEndpointResponse{}
+	_body, _err := client.UnbindEndpointWithOptions(EndpointId, SlotId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4606,11 +4617,11 @@ func (client *Client) UpdateInstanceWithOptions(InstanceId *string, request *Upd
 	return _result, _err
 }
 
-func (client *Client) UpdateSlot(SlotId *string, request *UpdateSlotRequest) (_result *UpdateSlotResponse, _err error) {
+func (client *Client) UpdateInstance(InstanceId *string, request *UpdateInstanceRequest) (_result *UpdateInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &UpdateSlotResponse{}
-	_body, _err := client.UpdateSlotWithOptions(SlotId, request, headers, runtime)
+	_result = &UpdateInstanceResponse{}
+	_body, _err := client.UpdateInstanceWithOptions(InstanceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4673,5 +4684,17 @@ func (client *Client) UpdateSlotWithOptions(SlotId *string, request *UpdateSlotR
 		return _result, _err
 	}
 	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateSlot(SlotId *string, request *UpdateSlotRequest) (_result *UpdateSlotResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateSlotResponse{}
+	_body, _err := client.UpdateSlotWithOptions(SlotId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
 	return _result, _err
 }
