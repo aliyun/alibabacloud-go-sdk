@@ -428,6 +428,168 @@ func (s *AttachConfigRuleToCompliancePackResponse) SetBody(v *AttachConfigRuleTo
 	return s
 }
 
+type CopyCompliancePacksRequest struct {
+	DesAggregatorIds     *string `json:"DesAggregatorIds,omitempty" xml:"DesAggregatorIds,omitempty"`
+	SrcAggregatorId      *string `json:"SrcAggregatorId,omitempty" xml:"SrcAggregatorId,omitempty"`
+	SrcCompliancePackIds *string `json:"SrcCompliancePackIds,omitempty" xml:"SrcCompliancePackIds,omitempty"`
+}
+
+func (s CopyCompliancePacksRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CopyCompliancePacksRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CopyCompliancePacksRequest) SetDesAggregatorIds(v string) *CopyCompliancePacksRequest {
+	s.DesAggregatorIds = &v
+	return s
+}
+
+func (s *CopyCompliancePacksRequest) SetSrcAggregatorId(v string) *CopyCompliancePacksRequest {
+	s.SrcAggregatorId = &v
+	return s
+}
+
+func (s *CopyCompliancePacksRequest) SetSrcCompliancePackIds(v string) *CopyCompliancePacksRequest {
+	s.SrcCompliancePackIds = &v
+	return s
+}
+
+type CopyCompliancePacksResponseBody struct {
+	CopyRulesResult *bool   `json:"CopyRulesResult,omitempty" xml:"CopyRulesResult,omitempty"`
+	RequestId       *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CopyCompliancePacksResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CopyCompliancePacksResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CopyCompliancePacksResponseBody) SetCopyRulesResult(v bool) *CopyCompliancePacksResponseBody {
+	s.CopyRulesResult = &v
+	return s
+}
+
+func (s *CopyCompliancePacksResponseBody) SetRequestId(v string) *CopyCompliancePacksResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CopyCompliancePacksResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CopyCompliancePacksResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CopyCompliancePacksResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CopyCompliancePacksResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CopyCompliancePacksResponse) SetHeaders(v map[string]*string) *CopyCompliancePacksResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CopyCompliancePacksResponse) SetStatusCode(v int32) *CopyCompliancePacksResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CopyCompliancePacksResponse) SetBody(v *CopyCompliancePacksResponseBody) *CopyCompliancePacksResponse {
+	s.Body = v
+	return s
+}
+
+type CopyConfigRulesRequest struct {
+	DesAggregatorIds *string `json:"DesAggregatorIds,omitempty" xml:"DesAggregatorIds,omitempty"`
+	SrcAggregatorId  *string `json:"SrcAggregatorId,omitempty" xml:"SrcAggregatorId,omitempty"`
+	SrcConfigRuleIds *string `json:"SrcConfigRuleIds,omitempty" xml:"SrcConfigRuleIds,omitempty"`
+}
+
+func (s CopyConfigRulesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CopyConfigRulesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CopyConfigRulesRequest) SetDesAggregatorIds(v string) *CopyConfigRulesRequest {
+	s.DesAggregatorIds = &v
+	return s
+}
+
+func (s *CopyConfigRulesRequest) SetSrcAggregatorId(v string) *CopyConfigRulesRequest {
+	s.SrcAggregatorId = &v
+	return s
+}
+
+func (s *CopyConfigRulesRequest) SetSrcConfigRuleIds(v string) *CopyConfigRulesRequest {
+	s.SrcConfigRuleIds = &v
+	return s
+}
+
+type CopyConfigRulesResponseBody struct {
+	CopyRulesResult *bool   `json:"CopyRulesResult,omitempty" xml:"CopyRulesResult,omitempty"`
+	RequestId       *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CopyConfigRulesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CopyConfigRulesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CopyConfigRulesResponseBody) SetCopyRulesResult(v bool) *CopyConfigRulesResponseBody {
+	s.CopyRulesResult = &v
+	return s
+}
+
+func (s *CopyConfigRulesResponseBody) SetRequestId(v string) *CopyConfigRulesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CopyConfigRulesResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CopyConfigRulesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CopyConfigRulesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CopyConfigRulesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CopyConfigRulesResponse) SetHeaders(v map[string]*string) *CopyConfigRulesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CopyConfigRulesResponse) SetStatusCode(v int32) *CopyConfigRulesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CopyConfigRulesResponse) SetBody(v *CopyConfigRulesResponseBody) *CopyConfigRulesResponse {
+	s.Body = v
+	return s
+}
+
 type CreateAggregateCompliancePackRequest struct {
 	AggregatorId             *string                                            `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
 	ClientToken              *string                                            `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
@@ -436,7 +598,12 @@ type CreateAggregateCompliancePackRequest struct {
 	ConfigRules              []*CreateAggregateCompliancePackRequestConfigRules `json:"ConfigRules,omitempty" xml:"ConfigRules,omitempty" type:"Repeated"`
 	DefaultEnable            *bool                                              `json:"DefaultEnable,omitempty" xml:"DefaultEnable,omitempty"`
 	Description              *string                                            `json:"Description,omitempty" xml:"Description,omitempty"`
+	ExcludeResourceIdsScope  *string                                            `json:"ExcludeResourceIdsScope,omitempty" xml:"ExcludeResourceIdsScope,omitempty"`
+	RegionIdsScope           *string                                            `json:"RegionIdsScope,omitempty" xml:"RegionIdsScope,omitempty"`
+	ResourceGroupIdsScope    *string                                            `json:"ResourceGroupIdsScope,omitempty" xml:"ResourceGroupIdsScope,omitempty"`
 	RiskLevel                *int32                                             `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	TagKeyScope              *string                                            `json:"TagKeyScope,omitempty" xml:"TagKeyScope,omitempty"`
+	TagValueScope            *string                                            `json:"TagValueScope,omitempty" xml:"TagValueScope,omitempty"`
 }
 
 func (s CreateAggregateCompliancePackRequest) String() string {
@@ -482,8 +649,33 @@ func (s *CreateAggregateCompliancePackRequest) SetDescription(v string) *CreateA
 	return s
 }
 
+func (s *CreateAggregateCompliancePackRequest) SetExcludeResourceIdsScope(v string) *CreateAggregateCompliancePackRequest {
+	s.ExcludeResourceIdsScope = &v
+	return s
+}
+
+func (s *CreateAggregateCompliancePackRequest) SetRegionIdsScope(v string) *CreateAggregateCompliancePackRequest {
+	s.RegionIdsScope = &v
+	return s
+}
+
+func (s *CreateAggregateCompliancePackRequest) SetResourceGroupIdsScope(v string) *CreateAggregateCompliancePackRequest {
+	s.ResourceGroupIdsScope = &v
+	return s
+}
+
 func (s *CreateAggregateCompliancePackRequest) SetRiskLevel(v int32) *CreateAggregateCompliancePackRequest {
 	s.RiskLevel = &v
+	return s
+}
+
+func (s *CreateAggregateCompliancePackRequest) SetTagKeyScope(v string) *CreateAggregateCompliancePackRequest {
+	s.TagKeyScope = &v
+	return s
+}
+
+func (s *CreateAggregateCompliancePackRequest) SetTagValueScope(v string) *CreateAggregateCompliancePackRequest {
+	s.TagValueScope = &v
 	return s
 }
 
@@ -565,7 +757,12 @@ type CreateAggregateCompliancePackShrinkRequest struct {
 	ConfigRulesShrink        *string `json:"ConfigRules,omitempty" xml:"ConfigRules,omitempty"`
 	DefaultEnable            *bool   `json:"DefaultEnable,omitempty" xml:"DefaultEnable,omitempty"`
 	Description              *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	ExcludeResourceIdsScope  *string `json:"ExcludeResourceIdsScope,omitempty" xml:"ExcludeResourceIdsScope,omitempty"`
+	RegionIdsScope           *string `json:"RegionIdsScope,omitempty" xml:"RegionIdsScope,omitempty"`
+	ResourceGroupIdsScope    *string `json:"ResourceGroupIdsScope,omitempty" xml:"ResourceGroupIdsScope,omitempty"`
 	RiskLevel                *int32  `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	TagKeyScope              *string `json:"TagKeyScope,omitempty" xml:"TagKeyScope,omitempty"`
+	TagValueScope            *string `json:"TagValueScope,omitempty" xml:"TagValueScope,omitempty"`
 }
 
 func (s CreateAggregateCompliancePackShrinkRequest) String() string {
@@ -611,8 +808,33 @@ func (s *CreateAggregateCompliancePackShrinkRequest) SetDescription(v string) *C
 	return s
 }
 
+func (s *CreateAggregateCompliancePackShrinkRequest) SetExcludeResourceIdsScope(v string) *CreateAggregateCompliancePackShrinkRequest {
+	s.ExcludeResourceIdsScope = &v
+	return s
+}
+
+func (s *CreateAggregateCompliancePackShrinkRequest) SetRegionIdsScope(v string) *CreateAggregateCompliancePackShrinkRequest {
+	s.RegionIdsScope = &v
+	return s
+}
+
+func (s *CreateAggregateCompliancePackShrinkRequest) SetResourceGroupIdsScope(v string) *CreateAggregateCompliancePackShrinkRequest {
+	s.ResourceGroupIdsScope = &v
+	return s
+}
+
 func (s *CreateAggregateCompliancePackShrinkRequest) SetRiskLevel(v int32) *CreateAggregateCompliancePackShrinkRequest {
 	s.RiskLevel = &v
+	return s
+}
+
+func (s *CreateAggregateCompliancePackShrinkRequest) SetTagKeyScope(v string) *CreateAggregateCompliancePackShrinkRequest {
+	s.TagKeyScope = &v
+	return s
+}
+
+func (s *CreateAggregateCompliancePackShrinkRequest) SetTagValueScope(v string) *CreateAggregateCompliancePackShrinkRequest {
+	s.TagValueScope = &v
 	return s
 }
 
@@ -1398,7 +1620,12 @@ type CreateCompliancePackRequest struct {
 	ConfigRules              []*CreateCompliancePackRequestConfigRules `json:"ConfigRules,omitempty" xml:"ConfigRules,omitempty" type:"Repeated"`
 	DefaultEnable            *bool                                     `json:"DefaultEnable,omitempty" xml:"DefaultEnable,omitempty"`
 	Description              *string                                   `json:"Description,omitempty" xml:"Description,omitempty"`
+	ExcludeResourceIdsScope  *string                                   `json:"ExcludeResourceIdsScope,omitempty" xml:"ExcludeResourceIdsScope,omitempty"`
+	RegionIdsScope           *string                                   `json:"RegionIdsScope,omitempty" xml:"RegionIdsScope,omitempty"`
+	ResourceGroupIdsScope    *string                                   `json:"ResourceGroupIdsScope,omitempty" xml:"ResourceGroupIdsScope,omitempty"`
 	RiskLevel                *int32                                    `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	TagKeyScope              *string                                   `json:"TagKeyScope,omitempty" xml:"TagKeyScope,omitempty"`
+	TagValueScope            *string                                   `json:"TagValueScope,omitempty" xml:"TagValueScope,omitempty"`
 }
 
 func (s CreateCompliancePackRequest) String() string {
@@ -1439,8 +1666,33 @@ func (s *CreateCompliancePackRequest) SetDescription(v string) *CreateCompliance
 	return s
 }
 
+func (s *CreateCompliancePackRequest) SetExcludeResourceIdsScope(v string) *CreateCompliancePackRequest {
+	s.ExcludeResourceIdsScope = &v
+	return s
+}
+
+func (s *CreateCompliancePackRequest) SetRegionIdsScope(v string) *CreateCompliancePackRequest {
+	s.RegionIdsScope = &v
+	return s
+}
+
+func (s *CreateCompliancePackRequest) SetResourceGroupIdsScope(v string) *CreateCompliancePackRequest {
+	s.ResourceGroupIdsScope = &v
+	return s
+}
+
 func (s *CreateCompliancePackRequest) SetRiskLevel(v int32) *CreateCompliancePackRequest {
 	s.RiskLevel = &v
+	return s
+}
+
+func (s *CreateCompliancePackRequest) SetTagKeyScope(v string) *CreateCompliancePackRequest {
+	s.TagKeyScope = &v
+	return s
+}
+
+func (s *CreateCompliancePackRequest) SetTagValueScope(v string) *CreateCompliancePackRequest {
+	s.TagValueScope = &v
 	return s
 }
 
@@ -1521,7 +1773,12 @@ type CreateCompliancePackShrinkRequest struct {
 	ConfigRulesShrink        *string `json:"ConfigRules,omitempty" xml:"ConfigRules,omitempty"`
 	DefaultEnable            *bool   `json:"DefaultEnable,omitempty" xml:"DefaultEnable,omitempty"`
 	Description              *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	ExcludeResourceIdsScope  *string `json:"ExcludeResourceIdsScope,omitempty" xml:"ExcludeResourceIdsScope,omitempty"`
+	RegionIdsScope           *string `json:"RegionIdsScope,omitempty" xml:"RegionIdsScope,omitempty"`
+	ResourceGroupIdsScope    *string `json:"ResourceGroupIdsScope,omitempty" xml:"ResourceGroupIdsScope,omitempty"`
 	RiskLevel                *int32  `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	TagKeyScope              *string `json:"TagKeyScope,omitempty" xml:"TagKeyScope,omitempty"`
+	TagValueScope            *string `json:"TagValueScope,omitempty" xml:"TagValueScope,omitempty"`
 }
 
 func (s CreateCompliancePackShrinkRequest) String() string {
@@ -1562,8 +1819,33 @@ func (s *CreateCompliancePackShrinkRequest) SetDescription(v string) *CreateComp
 	return s
 }
 
+func (s *CreateCompliancePackShrinkRequest) SetExcludeResourceIdsScope(v string) *CreateCompliancePackShrinkRequest {
+	s.ExcludeResourceIdsScope = &v
+	return s
+}
+
+func (s *CreateCompliancePackShrinkRequest) SetRegionIdsScope(v string) *CreateCompliancePackShrinkRequest {
+	s.RegionIdsScope = &v
+	return s
+}
+
+func (s *CreateCompliancePackShrinkRequest) SetResourceGroupIdsScope(v string) *CreateCompliancePackShrinkRequest {
+	s.ResourceGroupIdsScope = &v
+	return s
+}
+
 func (s *CreateCompliancePackShrinkRequest) SetRiskLevel(v int32) *CreateCompliancePackShrinkRequest {
 	s.RiskLevel = &v
+	return s
+}
+
+func (s *CreateCompliancePackShrinkRequest) SetTagKeyScope(v string) *CreateCompliancePackShrinkRequest {
+	s.TagKeyScope = &v
+	return s
+}
+
+func (s *CreateCompliancePackShrinkRequest) SetTagValueScope(v string) *CreateCompliancePackShrinkRequest {
+	s.TagValueScope = &v
 	return s
 }
 
@@ -2010,6 +2292,135 @@ func (s *CreateConfigRuleResponse) SetStatusCode(v int32) *CreateConfigRuleRespo
 }
 
 func (s *CreateConfigRuleResponse) SetBody(v *CreateConfigRuleResponseBody) *CreateConfigRuleResponse {
+	s.Body = v
+	return s
+}
+
+type CreateDeliveryChannelRequest struct {
+	ClientToken                         *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	ConfigurationItemChangeNotification *bool   `json:"ConfigurationItemChangeNotification,omitempty" xml:"ConfigurationItemChangeNotification,omitempty"`
+	ConfigurationSnapshot               *bool   `json:"ConfigurationSnapshot,omitempty" xml:"ConfigurationSnapshot,omitempty"`
+	DeliveryChannelAssumeRoleArn        *string `json:"DeliveryChannelAssumeRoleArn,omitempty" xml:"DeliveryChannelAssumeRoleArn,omitempty"`
+	DeliveryChannelCondition            *string `json:"DeliveryChannelCondition,omitempty" xml:"DeliveryChannelCondition,omitempty"`
+	DeliveryChannelName                 *string `json:"DeliveryChannelName,omitempty" xml:"DeliveryChannelName,omitempty"`
+	DeliveryChannelTargetArn            *string `json:"DeliveryChannelTargetArn,omitempty" xml:"DeliveryChannelTargetArn,omitempty"`
+	DeliveryChannelType                 *string `json:"DeliveryChannelType,omitempty" xml:"DeliveryChannelType,omitempty"`
+	Description                         *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	NonCompliantNotification            *bool   `json:"NonCompliantNotification,omitempty" xml:"NonCompliantNotification,omitempty"`
+	OversizedDataOSSTargetArn           *string `json:"OversizedDataOSSTargetArn,omitempty" xml:"OversizedDataOSSTargetArn,omitempty"`
+}
+
+func (s CreateDeliveryChannelRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDeliveryChannelRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDeliveryChannelRequest) SetClientToken(v string) *CreateDeliveryChannelRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *CreateDeliveryChannelRequest) SetConfigurationItemChangeNotification(v bool) *CreateDeliveryChannelRequest {
+	s.ConfigurationItemChangeNotification = &v
+	return s
+}
+
+func (s *CreateDeliveryChannelRequest) SetConfigurationSnapshot(v bool) *CreateDeliveryChannelRequest {
+	s.ConfigurationSnapshot = &v
+	return s
+}
+
+func (s *CreateDeliveryChannelRequest) SetDeliveryChannelAssumeRoleArn(v string) *CreateDeliveryChannelRequest {
+	s.DeliveryChannelAssumeRoleArn = &v
+	return s
+}
+
+func (s *CreateDeliveryChannelRequest) SetDeliveryChannelCondition(v string) *CreateDeliveryChannelRequest {
+	s.DeliveryChannelCondition = &v
+	return s
+}
+
+func (s *CreateDeliveryChannelRequest) SetDeliveryChannelName(v string) *CreateDeliveryChannelRequest {
+	s.DeliveryChannelName = &v
+	return s
+}
+
+func (s *CreateDeliveryChannelRequest) SetDeliveryChannelTargetArn(v string) *CreateDeliveryChannelRequest {
+	s.DeliveryChannelTargetArn = &v
+	return s
+}
+
+func (s *CreateDeliveryChannelRequest) SetDeliveryChannelType(v string) *CreateDeliveryChannelRequest {
+	s.DeliveryChannelType = &v
+	return s
+}
+
+func (s *CreateDeliveryChannelRequest) SetDescription(v string) *CreateDeliveryChannelRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateDeliveryChannelRequest) SetNonCompliantNotification(v bool) *CreateDeliveryChannelRequest {
+	s.NonCompliantNotification = &v
+	return s
+}
+
+func (s *CreateDeliveryChannelRequest) SetOversizedDataOSSTargetArn(v string) *CreateDeliveryChannelRequest {
+	s.OversizedDataOSSTargetArn = &v
+	return s
+}
+
+type CreateDeliveryChannelResponseBody struct {
+	DeliveryChannelId *string `json:"DeliveryChannelId,omitempty" xml:"DeliveryChannelId,omitempty"`
+	RequestId         *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateDeliveryChannelResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDeliveryChannelResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDeliveryChannelResponseBody) SetDeliveryChannelId(v string) *CreateDeliveryChannelResponseBody {
+	s.DeliveryChannelId = &v
+	return s
+}
+
+func (s *CreateDeliveryChannelResponseBody) SetRequestId(v string) *CreateDeliveryChannelResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateDeliveryChannelResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateDeliveryChannelResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateDeliveryChannelResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDeliveryChannelResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDeliveryChannelResponse) SetHeaders(v map[string]*string) *CreateDeliveryChannelResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateDeliveryChannelResponse) SetStatusCode(v int32) *CreateDeliveryChannelResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateDeliveryChannelResponse) SetBody(v *CreateDeliveryChannelResponseBody) *CreateDeliveryChannelResponse {
 	s.Body = v
 	return s
 }
@@ -2488,6 +2899,81 @@ func (s *DeleteAggregateCompliancePacksResponse) SetBody(v *DeleteAggregateCompl
 	return s
 }
 
+type DeleteAggregateConfigDeliveryChannelRequest struct {
+	AggregatorId      *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
+	DeliveryChannelId *string `json:"DeliveryChannelId,omitempty" xml:"DeliveryChannelId,omitempty"`
+}
+
+func (s DeleteAggregateConfigDeliveryChannelRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAggregateConfigDeliveryChannelRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAggregateConfigDeliveryChannelRequest) SetAggregatorId(v string) *DeleteAggregateConfigDeliveryChannelRequest {
+	s.AggregatorId = &v
+	return s
+}
+
+func (s *DeleteAggregateConfigDeliveryChannelRequest) SetDeliveryChannelId(v string) *DeleteAggregateConfigDeliveryChannelRequest {
+	s.DeliveryChannelId = &v
+	return s
+}
+
+type DeleteAggregateConfigDeliveryChannelResponseBody struct {
+	DeliveryChannelId *string `json:"DeliveryChannelId,omitempty" xml:"DeliveryChannelId,omitempty"`
+	RequestId         *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteAggregateConfigDeliveryChannelResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAggregateConfigDeliveryChannelResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAggregateConfigDeliveryChannelResponseBody) SetDeliveryChannelId(v string) *DeleteAggregateConfigDeliveryChannelResponseBody {
+	s.DeliveryChannelId = &v
+	return s
+}
+
+func (s *DeleteAggregateConfigDeliveryChannelResponseBody) SetRequestId(v string) *DeleteAggregateConfigDeliveryChannelResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteAggregateConfigDeliveryChannelResponse struct {
+	Headers    map[string]*string                                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteAggregateConfigDeliveryChannelResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteAggregateConfigDeliveryChannelResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAggregateConfigDeliveryChannelResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAggregateConfigDeliveryChannelResponse) SetHeaders(v map[string]*string) *DeleteAggregateConfigDeliveryChannelResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteAggregateConfigDeliveryChannelResponse) SetStatusCode(v int32) *DeleteAggregateConfigDeliveryChannelResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteAggregateConfigDeliveryChannelResponse) SetBody(v *DeleteAggregateConfigDeliveryChannelResponseBody) *DeleteAggregateConfigDeliveryChannelResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteAggregateConfigRulesRequest struct {
 	AggregatorId  *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
 	ConfigRuleIds *string `json:"ConfigRuleIds,omitempty" xml:"ConfigRuleIds,omitempty"`
@@ -2961,6 +3447,75 @@ func (s *DeleteCompliancePacksResponse) SetBody(v *DeleteCompliancePacksResponse
 	return s
 }
 
+type DeleteConfigDeliveryChannelRequest struct {
+	DeliveryChannelId *string `json:"DeliveryChannelId,omitempty" xml:"DeliveryChannelId,omitempty"`
+}
+
+func (s DeleteConfigDeliveryChannelRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteConfigDeliveryChannelRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteConfigDeliveryChannelRequest) SetDeliveryChannelId(v string) *DeleteConfigDeliveryChannelRequest {
+	s.DeliveryChannelId = &v
+	return s
+}
+
+type DeleteConfigDeliveryChannelResponseBody struct {
+	DeliveryChannelId *string `json:"DeliveryChannelId,omitempty" xml:"DeliveryChannelId,omitempty"`
+	RequestId         *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteConfigDeliveryChannelResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteConfigDeliveryChannelResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteConfigDeliveryChannelResponseBody) SetDeliveryChannelId(v string) *DeleteConfigDeliveryChannelResponseBody {
+	s.DeliveryChannelId = &v
+	return s
+}
+
+func (s *DeleteConfigDeliveryChannelResponseBody) SetRequestId(v string) *DeleteConfigDeliveryChannelResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteConfigDeliveryChannelResponse struct {
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteConfigDeliveryChannelResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteConfigDeliveryChannelResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteConfigDeliveryChannelResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteConfigDeliveryChannelResponse) SetHeaders(v map[string]*string) *DeleteConfigDeliveryChannelResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteConfigDeliveryChannelResponse) SetStatusCode(v int32) *DeleteConfigDeliveryChannelResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteConfigDeliveryChannelResponse) SetBody(v *DeleteConfigDeliveryChannelResponseBody) *DeleteConfigDeliveryChannelResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteRemediationsRequest struct {
 	RemediationIds *string `json:"RemediationIds,omitempty" xml:"RemediationIds,omitempty"`
 }
@@ -3303,6 +3858,226 @@ func (s *DetachConfigRuleToCompliancePackResponse) SetStatusCode(v int32) *Detac
 }
 
 func (s *DetachConfigRuleToCompliancePackResponse) SetBody(v *DetachConfigRuleToCompliancePackResponseBody) *DetachConfigRuleToCompliancePackResponse {
+	s.Body = v
+	return s
+}
+
+type EvaluatePreConfigRulesRequest struct {
+	EnableManagedRules    *bool                                                 `json:"EnableManagedRules,omitempty" xml:"EnableManagedRules,omitempty"`
+	ResourceEvaluateItems []*EvaluatePreConfigRulesRequestResourceEvaluateItems `json:"ResourceEvaluateItems,omitempty" xml:"ResourceEvaluateItems,omitempty" type:"Repeated"`
+}
+
+func (s EvaluatePreConfigRulesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EvaluatePreConfigRulesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *EvaluatePreConfigRulesRequest) SetEnableManagedRules(v bool) *EvaluatePreConfigRulesRequest {
+	s.EnableManagedRules = &v
+	return s
+}
+
+func (s *EvaluatePreConfigRulesRequest) SetResourceEvaluateItems(v []*EvaluatePreConfigRulesRequestResourceEvaluateItems) *EvaluatePreConfigRulesRequest {
+	s.ResourceEvaluateItems = v
+	return s
+}
+
+type EvaluatePreConfigRulesRequestResourceEvaluateItems struct {
+	ResourceLogicalId  *string                                                    `json:"ResourceLogicalId,omitempty" xml:"ResourceLogicalId,omitempty"`
+	ResourceProperties *string                                                    `json:"ResourceProperties,omitempty" xml:"ResourceProperties,omitempty"`
+	ResourceType       *string                                                    `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	Rules              []*EvaluatePreConfigRulesRequestResourceEvaluateItemsRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
+}
+
+func (s EvaluatePreConfigRulesRequestResourceEvaluateItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EvaluatePreConfigRulesRequestResourceEvaluateItems) GoString() string {
+	return s.String()
+}
+
+func (s *EvaluatePreConfigRulesRequestResourceEvaluateItems) SetResourceLogicalId(v string) *EvaluatePreConfigRulesRequestResourceEvaluateItems {
+	s.ResourceLogicalId = &v
+	return s
+}
+
+func (s *EvaluatePreConfigRulesRequestResourceEvaluateItems) SetResourceProperties(v string) *EvaluatePreConfigRulesRequestResourceEvaluateItems {
+	s.ResourceProperties = &v
+	return s
+}
+
+func (s *EvaluatePreConfigRulesRequestResourceEvaluateItems) SetResourceType(v string) *EvaluatePreConfigRulesRequestResourceEvaluateItems {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *EvaluatePreConfigRulesRequestResourceEvaluateItems) SetRules(v []*EvaluatePreConfigRulesRequestResourceEvaluateItemsRules) *EvaluatePreConfigRulesRequestResourceEvaluateItems {
+	s.Rules = v
+	return s
+}
+
+type EvaluatePreConfigRulesRequestResourceEvaluateItemsRules struct {
+	Identifier      *string `json:"Identifier,omitempty" xml:"Identifier,omitempty"`
+	InputParameters *string `json:"InputParameters,omitempty" xml:"InputParameters,omitempty"`
+}
+
+func (s EvaluatePreConfigRulesRequestResourceEvaluateItemsRules) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EvaluatePreConfigRulesRequestResourceEvaluateItemsRules) GoString() string {
+	return s.String()
+}
+
+func (s *EvaluatePreConfigRulesRequestResourceEvaluateItemsRules) SetIdentifier(v string) *EvaluatePreConfigRulesRequestResourceEvaluateItemsRules {
+	s.Identifier = &v
+	return s
+}
+
+func (s *EvaluatePreConfigRulesRequestResourceEvaluateItemsRules) SetInputParameters(v string) *EvaluatePreConfigRulesRequestResourceEvaluateItemsRules {
+	s.InputParameters = &v
+	return s
+}
+
+type EvaluatePreConfigRulesShrinkRequest struct {
+	EnableManagedRules          *bool   `json:"EnableManagedRules,omitempty" xml:"EnableManagedRules,omitempty"`
+	ResourceEvaluateItemsShrink *string `json:"ResourceEvaluateItems,omitempty" xml:"ResourceEvaluateItems,omitempty"`
+}
+
+func (s EvaluatePreConfigRulesShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EvaluatePreConfigRulesShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *EvaluatePreConfigRulesShrinkRequest) SetEnableManagedRules(v bool) *EvaluatePreConfigRulesShrinkRequest {
+	s.EnableManagedRules = &v
+	return s
+}
+
+func (s *EvaluatePreConfigRulesShrinkRequest) SetResourceEvaluateItemsShrink(v string) *EvaluatePreConfigRulesShrinkRequest {
+	s.ResourceEvaluateItemsShrink = &v
+	return s
+}
+
+type EvaluatePreConfigRulesResponseBody struct {
+	RequestId           *string                                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResourceEvaluations []*EvaluatePreConfigRulesResponseBodyResourceEvaluations `json:"ResourceEvaluations,omitempty" xml:"ResourceEvaluations,omitempty" type:"Repeated"`
+}
+
+func (s EvaluatePreConfigRulesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EvaluatePreConfigRulesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *EvaluatePreConfigRulesResponseBody) SetRequestId(v string) *EvaluatePreConfigRulesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *EvaluatePreConfigRulesResponseBody) SetResourceEvaluations(v []*EvaluatePreConfigRulesResponseBodyResourceEvaluations) *EvaluatePreConfigRulesResponseBody {
+	s.ResourceEvaluations = v
+	return s
+}
+
+type EvaluatePreConfigRulesResponseBodyResourceEvaluations struct {
+	ResourceLogicalId *string                                                       `json:"ResourceLogicalId,omitempty" xml:"ResourceLogicalId,omitempty"`
+	ResourceType      *string                                                       `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	Rules             []*EvaluatePreConfigRulesResponseBodyResourceEvaluationsRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
+}
+
+func (s EvaluatePreConfigRulesResponseBodyResourceEvaluations) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EvaluatePreConfigRulesResponseBodyResourceEvaluations) GoString() string {
+	return s.String()
+}
+
+func (s *EvaluatePreConfigRulesResponseBodyResourceEvaluations) SetResourceLogicalId(v string) *EvaluatePreConfigRulesResponseBodyResourceEvaluations {
+	s.ResourceLogicalId = &v
+	return s
+}
+
+func (s *EvaluatePreConfigRulesResponseBodyResourceEvaluations) SetResourceType(v string) *EvaluatePreConfigRulesResponseBodyResourceEvaluations {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *EvaluatePreConfigRulesResponseBodyResourceEvaluations) SetRules(v []*EvaluatePreConfigRulesResponseBodyResourceEvaluationsRules) *EvaluatePreConfigRulesResponseBodyResourceEvaluations {
+	s.Rules = v
+	return s
+}
+
+type EvaluatePreConfigRulesResponseBodyResourceEvaluationsRules struct {
+	Annotation     *string `json:"Annotation,omitempty" xml:"Annotation,omitempty"`
+	ComplianceType *string `json:"ComplianceType,omitempty" xml:"ComplianceType,omitempty"`
+	HelpUrl        *string `json:"HelpUrl,omitempty" xml:"HelpUrl,omitempty"`
+	Identifier     *string `json:"Identifier,omitempty" xml:"Identifier,omitempty"`
+}
+
+func (s EvaluatePreConfigRulesResponseBodyResourceEvaluationsRules) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EvaluatePreConfigRulesResponseBodyResourceEvaluationsRules) GoString() string {
+	return s.String()
+}
+
+func (s *EvaluatePreConfigRulesResponseBodyResourceEvaluationsRules) SetAnnotation(v string) *EvaluatePreConfigRulesResponseBodyResourceEvaluationsRules {
+	s.Annotation = &v
+	return s
+}
+
+func (s *EvaluatePreConfigRulesResponseBodyResourceEvaluationsRules) SetComplianceType(v string) *EvaluatePreConfigRulesResponseBodyResourceEvaluationsRules {
+	s.ComplianceType = &v
+	return s
+}
+
+func (s *EvaluatePreConfigRulesResponseBodyResourceEvaluationsRules) SetHelpUrl(v string) *EvaluatePreConfigRulesResponseBodyResourceEvaluationsRules {
+	s.HelpUrl = &v
+	return s
+}
+
+func (s *EvaluatePreConfigRulesResponseBodyResourceEvaluationsRules) SetIdentifier(v string) *EvaluatePreConfigRulesResponseBodyResourceEvaluationsRules {
+	s.Identifier = &v
+	return s
+}
+
+type EvaluatePreConfigRulesResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *EvaluatePreConfigRulesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s EvaluatePreConfigRulesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EvaluatePreConfigRulesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *EvaluatePreConfigRulesResponse) SetHeaders(v map[string]*string) *EvaluatePreConfigRulesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *EvaluatePreConfigRulesResponse) SetStatusCode(v int32) *EvaluatePreConfigRulesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *EvaluatePreConfigRulesResponse) SetBody(v *EvaluatePreConfigRulesResponseBody) *EvaluatePreConfigRulesResponse {
 	s.Body = v
 	return s
 }
@@ -3820,6 +4595,7 @@ type GetAggregateCompliancePackResponseBodyCompliancePack struct {
 	CreateTimestamp          *int64                                                             `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
 	Description              *string                                                            `json:"Description,omitempty" xml:"Description,omitempty"`
 	RiskLevel                *int32                                                             `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	Scope                    *GetAggregateCompliancePackResponseBodyCompliancePackScope         `json:"Scope,omitempty" xml:"Scope,omitempty" type:"Struct"`
 	Status                   *string                                                            `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -3873,6 +4649,11 @@ func (s *GetAggregateCompliancePackResponseBodyCompliancePack) SetDescription(v 
 
 func (s *GetAggregateCompliancePackResponseBodyCompliancePack) SetRiskLevel(v int32) *GetAggregateCompliancePackResponseBodyCompliancePack {
 	s.RiskLevel = &v
+	return s
+}
+
+func (s *GetAggregateCompliancePackResponseBodyCompliancePack) SetScope(v *GetAggregateCompliancePackResponseBodyCompliancePackScope) *GetAggregateCompliancePackResponseBodyCompliancePack {
+	s.Scope = v
 	return s
 }
 
@@ -3954,6 +4735,47 @@ func (s *GetAggregateCompliancePackResponseBodyCompliancePackConfigRulesConfigRu
 
 func (s *GetAggregateCompliancePackResponseBodyCompliancePackConfigRulesConfigRuleParameters) SetRequired(v bool) *GetAggregateCompliancePackResponseBodyCompliancePackConfigRulesConfigRuleParameters {
 	s.Required = &v
+	return s
+}
+
+type GetAggregateCompliancePackResponseBodyCompliancePackScope struct {
+	ExcludeResourceIdsScope *string `json:"ExcludeResourceIdsScope,omitempty" xml:"ExcludeResourceIdsScope,omitempty"`
+	RegionIdsScope          *string `json:"RegionIdsScope,omitempty" xml:"RegionIdsScope,omitempty"`
+	ResourceGroupIdsScope   *string `json:"ResourceGroupIdsScope,omitempty" xml:"ResourceGroupIdsScope,omitempty"`
+	TagKeyScope             *string `json:"TagKeyScope,omitempty" xml:"TagKeyScope,omitempty"`
+	TagValueScope           *string `json:"TagValueScope,omitempty" xml:"TagValueScope,omitempty"`
+}
+
+func (s GetAggregateCompliancePackResponseBodyCompliancePackScope) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAggregateCompliancePackResponseBodyCompliancePackScope) GoString() string {
+	return s.String()
+}
+
+func (s *GetAggregateCompliancePackResponseBodyCompliancePackScope) SetExcludeResourceIdsScope(v string) *GetAggregateCompliancePackResponseBodyCompliancePackScope {
+	s.ExcludeResourceIdsScope = &v
+	return s
+}
+
+func (s *GetAggregateCompliancePackResponseBodyCompliancePackScope) SetRegionIdsScope(v string) *GetAggregateCompliancePackResponseBodyCompliancePackScope {
+	s.RegionIdsScope = &v
+	return s
+}
+
+func (s *GetAggregateCompliancePackResponseBodyCompliancePackScope) SetResourceGroupIdsScope(v string) *GetAggregateCompliancePackResponseBodyCompliancePackScope {
+	s.ResourceGroupIdsScope = &v
+	return s
+}
+
+func (s *GetAggregateCompliancePackResponseBodyCompliancePackScope) SetTagKeyScope(v string) *GetAggregateCompliancePackResponseBodyCompliancePackScope {
+	s.TagKeyScope = &v
+	return s
+}
+
+func (s *GetAggregateCompliancePackResponseBodyCompliancePackScope) SetTagValueScope(v string) *GetAggregateCompliancePackResponseBodyCompliancePackScope {
+	s.TagValueScope = &v
 	return s
 }
 
@@ -6745,6 +7567,7 @@ type GetCompliancePackResponseBodyCompliancePack struct {
 	CreateTimestamp          *int64                                                    `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
 	Description              *string                                                   `json:"Description,omitempty" xml:"Description,omitempty"`
 	RiskLevel                *int32                                                    `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	Scope                    *GetCompliancePackResponseBodyCompliancePackScope         `json:"Scope,omitempty" xml:"Scope,omitempty" type:"Struct"`
 	Status                   *string                                                   `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -6793,6 +7616,11 @@ func (s *GetCompliancePackResponseBodyCompliancePack) SetDescription(v string) *
 
 func (s *GetCompliancePackResponseBodyCompliancePack) SetRiskLevel(v int32) *GetCompliancePackResponseBodyCompliancePack {
 	s.RiskLevel = &v
+	return s
+}
+
+func (s *GetCompliancePackResponseBodyCompliancePack) SetScope(v *GetCompliancePackResponseBodyCompliancePackScope) *GetCompliancePackResponseBodyCompliancePack {
+	s.Scope = v
 	return s
 }
 
@@ -6874,6 +7702,47 @@ func (s *GetCompliancePackResponseBodyCompliancePackConfigRulesConfigRuleParamet
 
 func (s *GetCompliancePackResponseBodyCompliancePackConfigRulesConfigRuleParameters) SetRequired(v bool) *GetCompliancePackResponseBodyCompliancePackConfigRulesConfigRuleParameters {
 	s.Required = &v
+	return s
+}
+
+type GetCompliancePackResponseBodyCompliancePackScope struct {
+	ExcludeResourceIdsScope *string `json:"ExcludeResourceIdsScope,omitempty" xml:"ExcludeResourceIdsScope,omitempty"`
+	RegionIdsScope          *string `json:"RegionIdsScope,omitempty" xml:"RegionIdsScope,omitempty"`
+	ResourceGroupIdsScope   *string `json:"ResourceGroupIdsScope,omitempty" xml:"ResourceGroupIdsScope,omitempty"`
+	TagKeyScope             *string `json:"TagKeyScope,omitempty" xml:"TagKeyScope,omitempty"`
+	TagValueScope           *string `json:"TagValueScope,omitempty" xml:"TagValueScope,omitempty"`
+}
+
+func (s GetCompliancePackResponseBodyCompliancePackScope) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCompliancePackResponseBodyCompliancePackScope) GoString() string {
+	return s.String()
+}
+
+func (s *GetCompliancePackResponseBodyCompliancePackScope) SetExcludeResourceIdsScope(v string) *GetCompliancePackResponseBodyCompliancePackScope {
+	s.ExcludeResourceIdsScope = &v
+	return s
+}
+
+func (s *GetCompliancePackResponseBodyCompliancePackScope) SetRegionIdsScope(v string) *GetCompliancePackResponseBodyCompliancePackScope {
+	s.RegionIdsScope = &v
+	return s
+}
+
+func (s *GetCompliancePackResponseBodyCompliancePackScope) SetResourceGroupIdsScope(v string) *GetCompliancePackResponseBodyCompliancePackScope {
+	s.ResourceGroupIdsScope = &v
+	return s
+}
+
+func (s *GetCompliancePackResponseBodyCompliancePackScope) SetTagKeyScope(v string) *GetCompliancePackResponseBodyCompliancePackScope {
+	s.TagKeyScope = &v
+	return s
+}
+
+func (s *GetCompliancePackResponseBodyCompliancePackScope) SetTagValueScope(v string) *GetCompliancePackResponseBodyCompliancePackScope {
+	s.TagValueScope = &v
 	return s
 }
 
@@ -8335,6 +9204,75 @@ func (s *GetDiscoveredResourceCountsGroupByResourceTypeResponse) SetStatusCode(v
 }
 
 func (s *GetDiscoveredResourceCountsGroupByResourceTypeResponse) SetBody(v *GetDiscoveredResourceCountsGroupByResourceTypeResponseBody) *GetDiscoveredResourceCountsGroupByResourceTypeResponse {
+	s.Body = v
+	return s
+}
+
+type GetIntegratedServiceStatusRequest struct {
+	ServiceCode *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
+}
+
+func (s GetIntegratedServiceStatusRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetIntegratedServiceStatusRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetIntegratedServiceStatusRequest) SetServiceCode(v string) *GetIntegratedServiceStatusRequest {
+	s.ServiceCode = &v
+	return s
+}
+
+type GetIntegratedServiceStatusResponseBody struct {
+	Data      *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetIntegratedServiceStatusResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetIntegratedServiceStatusResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetIntegratedServiceStatusResponseBody) SetData(v bool) *GetIntegratedServiceStatusResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *GetIntegratedServiceStatusResponseBody) SetRequestId(v string) *GetIntegratedServiceStatusResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetIntegratedServiceStatusResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetIntegratedServiceStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetIntegratedServiceStatusResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetIntegratedServiceStatusResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetIntegratedServiceStatusResponse) SetHeaders(v map[string]*string) *GetIntegratedServiceStatusResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetIntegratedServiceStatusResponse) SetStatusCode(v int32) *GetIntegratedServiceStatusResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetIntegratedServiceStatusResponse) SetBody(v *GetIntegratedServiceStatusResponseBody) *GetIntegratedServiceStatusResponse {
 	s.Body = v
 	return s
 }
@@ -10126,7 +11064,10 @@ type ListAggregateConfigRuleEvaluationResultsRequest struct {
 	ConfigRuleId     *string `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
 	MaxResults       *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	NextToken        *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	Regions          *string `json:"Regions,omitempty" xml:"Regions,omitempty"`
+	ResourceGroupIds *string `json:"ResourceGroupIds,omitempty" xml:"ResourceGroupIds,omitempty"`
 	ResourceOwnerId  *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	ResourceTypes    *string `json:"ResourceTypes,omitempty" xml:"ResourceTypes,omitempty"`
 }
 
 func (s ListAggregateConfigRuleEvaluationResultsRequest) String() string {
@@ -10167,8 +11108,23 @@ func (s *ListAggregateConfigRuleEvaluationResultsRequest) SetNextToken(v string)
 	return s
 }
 
+func (s *ListAggregateConfigRuleEvaluationResultsRequest) SetRegions(v string) *ListAggregateConfigRuleEvaluationResultsRequest {
+	s.Regions = &v
+	return s
+}
+
+func (s *ListAggregateConfigRuleEvaluationResultsRequest) SetResourceGroupIds(v string) *ListAggregateConfigRuleEvaluationResultsRequest {
+	s.ResourceGroupIds = &v
+	return s
+}
+
 func (s *ListAggregateConfigRuleEvaluationResultsRequest) SetResourceOwnerId(v int64) *ListAggregateConfigRuleEvaluationResultsRequest {
 	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *ListAggregateConfigRuleEvaluationResultsRequest) SetResourceTypes(v string) *ListAggregateConfigRuleEvaluationResultsRequest {
+	s.ResourceTypes = &v
 	return s
 }
 
@@ -10859,6 +11815,7 @@ func (s *ListAggregateDiscoveredResourcesResponseBodyDiscoveredResourceProfiles)
 
 type ListAggregateDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDiscoveredResourceProfileList struct {
 	AccountId            *int64  `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	AvailabilityZone     *string `json:"AvailabilityZone,omitempty" xml:"AvailabilityZone,omitempty"`
 	Region               *string `json:"Region,omitempty" xml:"Region,omitempty"`
 	ResourceCreationTime *int64  `json:"ResourceCreationTime,omitempty" xml:"ResourceCreationTime,omitempty"`
 	ResourceDeleted      *int32  `json:"ResourceDeleted,omitempty" xml:"ResourceDeleted,omitempty"`
@@ -10881,6 +11838,11 @@ func (s ListAggregateDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDi
 
 func (s *ListAggregateDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDiscoveredResourceProfileList) SetAccountId(v int64) *ListAggregateDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDiscoveredResourceProfileList {
 	s.AccountId = &v
+	return s
+}
+
+func (s *ListAggregateDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDiscoveredResourceProfileList) SetAvailabilityZone(v string) *ListAggregateDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDiscoveredResourceProfileList {
+	s.AvailabilityZone = &v
 	return s
 }
 
@@ -12155,6 +13117,9 @@ type ListConfigRuleEvaluationResultsRequest struct {
 	ConfigRuleId     *string `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
 	MaxResults       *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	NextToken        *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	Regions          *string `json:"Regions,omitempty" xml:"Regions,omitempty"`
+	ResourceGroupIds *string `json:"ResourceGroupIds,omitempty" xml:"ResourceGroupIds,omitempty"`
+	ResourceTypes    *string `json:"ResourceTypes,omitempty" xml:"ResourceTypes,omitempty"`
 }
 
 func (s ListConfigRuleEvaluationResultsRequest) String() string {
@@ -12187,6 +13152,21 @@ func (s *ListConfigRuleEvaluationResultsRequest) SetMaxResults(v int32) *ListCon
 
 func (s *ListConfigRuleEvaluationResultsRequest) SetNextToken(v string) *ListConfigRuleEvaluationResultsRequest {
 	s.NextToken = &v
+	return s
+}
+
+func (s *ListConfigRuleEvaluationResultsRequest) SetRegions(v string) *ListConfigRuleEvaluationResultsRequest {
+	s.Regions = &v
+	return s
+}
+
+func (s *ListConfigRuleEvaluationResultsRequest) SetResourceGroupIds(v string) *ListConfigRuleEvaluationResultsRequest {
+	s.ResourceGroupIds = &v
+	return s
+}
+
+func (s *ListConfigRuleEvaluationResultsRequest) SetResourceTypes(v string) *ListConfigRuleEvaluationResultsRequest {
+	s.ResourceTypes = &v
 	return s
 }
 
@@ -12531,6 +13511,7 @@ func (s *ListDiscoveredResourcesResponseBodyDiscoveredResourceProfiles) SetTotal
 
 type ListDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDiscoveredResourceProfileList struct {
 	AccountId            *int64  `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	AvailabilityZone     *string `json:"AvailabilityZone,omitempty" xml:"AvailabilityZone,omitempty"`
 	Region               *string `json:"Region,omitempty" xml:"Region,omitempty"`
 	ResourceCreationTime *int64  `json:"ResourceCreationTime,omitempty" xml:"ResourceCreationTime,omitempty"`
 	ResourceDeleted      *int32  `json:"ResourceDeleted,omitempty" xml:"ResourceDeleted,omitempty"`
@@ -12552,6 +13533,11 @@ func (s ListDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDiscoveredR
 
 func (s *ListDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDiscoveredResourceProfileList) SetAccountId(v int64) *ListDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDiscoveredResourceProfileList {
 	s.AccountId = &v
+	return s
+}
+
+func (s *ListDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDiscoveredResourceProfileList) SetAvailabilityZone(v string) *ListDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDiscoveredResourceProfileList {
+	s.AvailabilityZone = &v
 	return s
 }
 
@@ -12794,6 +13780,181 @@ func (s *ListManagedRulesResponse) SetStatusCode(v int32) *ListManagedRulesRespo
 }
 
 func (s *ListManagedRulesResponse) SetBody(v *ListManagedRulesResponseBody) *ListManagedRulesResponse {
+	s.Body = v
+	return s
+}
+
+type ListPreManagedRulesRequest struct {
+	PageNumber    *int64    `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize      *int64    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ResourceTypes []*string `json:"ResourceTypes,omitempty" xml:"ResourceTypes,omitempty" type:"Repeated"`
+}
+
+func (s ListPreManagedRulesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPreManagedRulesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListPreManagedRulesRequest) SetPageNumber(v int64) *ListPreManagedRulesRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListPreManagedRulesRequest) SetPageSize(v int64) *ListPreManagedRulesRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListPreManagedRulesRequest) SetResourceTypes(v []*string) *ListPreManagedRulesRequest {
+	s.ResourceTypes = v
+	return s
+}
+
+type ListPreManagedRulesShrinkRequest struct {
+	PageNumber          *int64  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize            *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ResourceTypesShrink *string `json:"ResourceTypes,omitempty" xml:"ResourceTypes,omitempty"`
+}
+
+func (s ListPreManagedRulesShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPreManagedRulesShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListPreManagedRulesShrinkRequest) SetPageNumber(v int64) *ListPreManagedRulesShrinkRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListPreManagedRulesShrinkRequest) SetPageSize(v int64) *ListPreManagedRulesShrinkRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListPreManagedRulesShrinkRequest) SetResourceTypesShrink(v string) *ListPreManagedRulesShrinkRequest {
+	s.ResourceTypesShrink = &v
+	return s
+}
+
+type ListPreManagedRulesResponseBody struct {
+	ManagedRules []*ListPreManagedRulesResponseBodyManagedRules `json:"ManagedRules,omitempty" xml:"ManagedRules,omitempty" type:"Repeated"`
+	PageNumber   *int64                                         `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize     *int64                                         `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId    *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListPreManagedRulesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPreManagedRulesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListPreManagedRulesResponseBody) SetManagedRules(v []*ListPreManagedRulesResponseBodyManagedRules) *ListPreManagedRulesResponseBody {
+	s.ManagedRules = v
+	return s
+}
+
+func (s *ListPreManagedRulesResponseBody) SetPageNumber(v int64) *ListPreManagedRulesResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListPreManagedRulesResponseBody) SetPageSize(v int64) *ListPreManagedRulesResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListPreManagedRulesResponseBody) SetRequestId(v string) *ListPreManagedRulesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListPreManagedRulesResponseBodyManagedRules struct {
+	CompulsoryInputParameterDetails map[string]interface{} `json:"CompulsoryInputParameterDetails,omitempty" xml:"CompulsoryInputParameterDetails,omitempty"`
+	ConfigRuleName                  *string                `json:"ConfigRuleName,omitempty" xml:"ConfigRuleName,omitempty"`
+	Description                     *string                `json:"Description,omitempty" xml:"Description,omitempty"`
+	HelpUrls                        *string                `json:"HelpUrls,omitempty" xml:"HelpUrls,omitempty"`
+	Identifier                      *string                `json:"Identifier,omitempty" xml:"Identifier,omitempty"`
+	OptionalInputParameterDetails   map[string]interface{} `json:"OptionalInputParameterDetails,omitempty" xml:"OptionalInputParameterDetails,omitempty"`
+	ResourceType                    *string                `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+}
+
+func (s ListPreManagedRulesResponseBodyManagedRules) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPreManagedRulesResponseBodyManagedRules) GoString() string {
+	return s.String()
+}
+
+func (s *ListPreManagedRulesResponseBodyManagedRules) SetCompulsoryInputParameterDetails(v map[string]interface{}) *ListPreManagedRulesResponseBodyManagedRules {
+	s.CompulsoryInputParameterDetails = v
+	return s
+}
+
+func (s *ListPreManagedRulesResponseBodyManagedRules) SetConfigRuleName(v string) *ListPreManagedRulesResponseBodyManagedRules {
+	s.ConfigRuleName = &v
+	return s
+}
+
+func (s *ListPreManagedRulesResponseBodyManagedRules) SetDescription(v string) *ListPreManagedRulesResponseBodyManagedRules {
+	s.Description = &v
+	return s
+}
+
+func (s *ListPreManagedRulesResponseBodyManagedRules) SetHelpUrls(v string) *ListPreManagedRulesResponseBodyManagedRules {
+	s.HelpUrls = &v
+	return s
+}
+
+func (s *ListPreManagedRulesResponseBodyManagedRules) SetIdentifier(v string) *ListPreManagedRulesResponseBodyManagedRules {
+	s.Identifier = &v
+	return s
+}
+
+func (s *ListPreManagedRulesResponseBodyManagedRules) SetOptionalInputParameterDetails(v map[string]interface{}) *ListPreManagedRulesResponseBodyManagedRules {
+	s.OptionalInputParameterDetails = v
+	return s
+}
+
+func (s *ListPreManagedRulesResponseBodyManagedRules) SetResourceType(v string) *ListPreManagedRulesResponseBodyManagedRules {
+	s.ResourceType = &v
+	return s
+}
+
+type ListPreManagedRulesResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListPreManagedRulesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListPreManagedRulesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPreManagedRulesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListPreManagedRulesResponse) SetHeaders(v map[string]*string) *ListPreManagedRulesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListPreManagedRulesResponse) SetStatusCode(v int32) *ListPreManagedRulesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListPreManagedRulesResponse) SetBody(v *ListPreManagedRulesResponseBody) *ListPreManagedRulesResponse {
 	s.Body = v
 	return s
 }
@@ -14035,6 +15196,58 @@ func (s *StartRemediationResponse) SetBody(v *StartRemediationResponseBody) *Sta
 	return s
 }
 
+type StopConfigurationRecorderResponseBody struct {
+	RequestId                       *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	StopConfigurationRecorderResult *bool   `json:"StopConfigurationRecorderResult,omitempty" xml:"StopConfigurationRecorderResult,omitempty"`
+}
+
+func (s StopConfigurationRecorderResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopConfigurationRecorderResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *StopConfigurationRecorderResponseBody) SetRequestId(v string) *StopConfigurationRecorderResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *StopConfigurationRecorderResponseBody) SetStopConfigurationRecorderResult(v bool) *StopConfigurationRecorderResponseBody {
+	s.StopConfigurationRecorderResult = &v
+	return s
+}
+
+type StopConfigurationRecorderResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *StopConfigurationRecorderResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s StopConfigurationRecorderResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopConfigurationRecorderResponse) GoString() string {
+	return s.String()
+}
+
+func (s *StopConfigurationRecorderResponse) SetHeaders(v map[string]*string) *StopConfigurationRecorderResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *StopConfigurationRecorderResponse) SetStatusCode(v int32) *StopConfigurationRecorderResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *StopConfigurationRecorderResponse) SetBody(v *StopConfigurationRecorderResponseBody) *StopConfigurationRecorderResponse {
+	s.Body = v
+	return s
+}
+
 type TagResourcesRequest struct {
 	RegionId     *string                   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceId   []*string                 `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
@@ -14262,13 +15475,18 @@ func (s *UntagResourcesResponse) SetBody(v *UntagResourcesResponseBody) *UntagRe
 }
 
 type UpdateAggregateCompliancePackRequest struct {
-	AggregatorId       *string                                            `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
-	ClientToken        *string                                            `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	CompliancePackId   *string                                            `json:"CompliancePackId,omitempty" xml:"CompliancePackId,omitempty"`
-	CompliancePackName *string                                            `json:"CompliancePackName,omitempty" xml:"CompliancePackName,omitempty"`
-	ConfigRules        []*UpdateAggregateCompliancePackRequestConfigRules `json:"ConfigRules,omitempty" xml:"ConfigRules,omitempty" type:"Repeated"`
-	Description        *string                                            `json:"Description,omitempty" xml:"Description,omitempty"`
-	RiskLevel          *int32                                             `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	AggregatorId            *string                                            `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
+	ClientToken             *string                                            `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	CompliancePackId        *string                                            `json:"CompliancePackId,omitempty" xml:"CompliancePackId,omitempty"`
+	CompliancePackName      *string                                            `json:"CompliancePackName,omitempty" xml:"CompliancePackName,omitempty"`
+	ConfigRules             []*UpdateAggregateCompliancePackRequestConfigRules `json:"ConfigRules,omitempty" xml:"ConfigRules,omitempty" type:"Repeated"`
+	Description             *string                                            `json:"Description,omitempty" xml:"Description,omitempty"`
+	ExcludeResourceIdsScope *string                                            `json:"ExcludeResourceIdsScope,omitempty" xml:"ExcludeResourceIdsScope,omitempty"`
+	RegionIdsScope          *string                                            `json:"RegionIdsScope,omitempty" xml:"RegionIdsScope,omitempty"`
+	ResourceGroupIdsScope   *string                                            `json:"ResourceGroupIdsScope,omitempty" xml:"ResourceGroupIdsScope,omitempty"`
+	RiskLevel               *int32                                             `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	TagKeyScope             *string                                            `json:"TagKeyScope,omitempty" xml:"TagKeyScope,omitempty"`
+	TagValueScope           *string                                            `json:"TagValueScope,omitempty" xml:"TagValueScope,omitempty"`
 }
 
 func (s UpdateAggregateCompliancePackRequest) String() string {
@@ -14309,8 +15527,33 @@ func (s *UpdateAggregateCompliancePackRequest) SetDescription(v string) *UpdateA
 	return s
 }
 
+func (s *UpdateAggregateCompliancePackRequest) SetExcludeResourceIdsScope(v string) *UpdateAggregateCompliancePackRequest {
+	s.ExcludeResourceIdsScope = &v
+	return s
+}
+
+func (s *UpdateAggregateCompliancePackRequest) SetRegionIdsScope(v string) *UpdateAggregateCompliancePackRequest {
+	s.RegionIdsScope = &v
+	return s
+}
+
+func (s *UpdateAggregateCompliancePackRequest) SetResourceGroupIdsScope(v string) *UpdateAggregateCompliancePackRequest {
+	s.ResourceGroupIdsScope = &v
+	return s
+}
+
 func (s *UpdateAggregateCompliancePackRequest) SetRiskLevel(v int32) *UpdateAggregateCompliancePackRequest {
 	s.RiskLevel = &v
+	return s
+}
+
+func (s *UpdateAggregateCompliancePackRequest) SetTagKeyScope(v string) *UpdateAggregateCompliancePackRequest {
+	s.TagKeyScope = &v
+	return s
+}
+
+func (s *UpdateAggregateCompliancePackRequest) SetTagValueScope(v string) *UpdateAggregateCompliancePackRequest {
+	s.TagValueScope = &v
 	return s
 }
 
@@ -14385,13 +15628,18 @@ func (s *UpdateAggregateCompliancePackRequestConfigRulesConfigRuleParameters) Se
 }
 
 type UpdateAggregateCompliancePackShrinkRequest struct {
-	AggregatorId       *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
-	ClientToken        *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	CompliancePackId   *string `json:"CompliancePackId,omitempty" xml:"CompliancePackId,omitempty"`
-	CompliancePackName *string `json:"CompliancePackName,omitempty" xml:"CompliancePackName,omitempty"`
-	ConfigRulesShrink  *string `json:"ConfigRules,omitempty" xml:"ConfigRules,omitempty"`
-	Description        *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	RiskLevel          *int32  `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	AggregatorId            *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
+	ClientToken             *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	CompliancePackId        *string `json:"CompliancePackId,omitempty" xml:"CompliancePackId,omitempty"`
+	CompliancePackName      *string `json:"CompliancePackName,omitempty" xml:"CompliancePackName,omitempty"`
+	ConfigRulesShrink       *string `json:"ConfigRules,omitempty" xml:"ConfigRules,omitempty"`
+	Description             *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	ExcludeResourceIdsScope *string `json:"ExcludeResourceIdsScope,omitempty" xml:"ExcludeResourceIdsScope,omitempty"`
+	RegionIdsScope          *string `json:"RegionIdsScope,omitempty" xml:"RegionIdsScope,omitempty"`
+	ResourceGroupIdsScope   *string `json:"ResourceGroupIdsScope,omitempty" xml:"ResourceGroupIdsScope,omitempty"`
+	RiskLevel               *int32  `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	TagKeyScope             *string `json:"TagKeyScope,omitempty" xml:"TagKeyScope,omitempty"`
+	TagValueScope           *string `json:"TagValueScope,omitempty" xml:"TagValueScope,omitempty"`
 }
 
 func (s UpdateAggregateCompliancePackShrinkRequest) String() string {
@@ -14432,8 +15680,33 @@ func (s *UpdateAggregateCompliancePackShrinkRequest) SetDescription(v string) *U
 	return s
 }
 
+func (s *UpdateAggregateCompliancePackShrinkRequest) SetExcludeResourceIdsScope(v string) *UpdateAggregateCompliancePackShrinkRequest {
+	s.ExcludeResourceIdsScope = &v
+	return s
+}
+
+func (s *UpdateAggregateCompliancePackShrinkRequest) SetRegionIdsScope(v string) *UpdateAggregateCompliancePackShrinkRequest {
+	s.RegionIdsScope = &v
+	return s
+}
+
+func (s *UpdateAggregateCompliancePackShrinkRequest) SetResourceGroupIdsScope(v string) *UpdateAggregateCompliancePackShrinkRequest {
+	s.ResourceGroupIdsScope = &v
+	return s
+}
+
 func (s *UpdateAggregateCompliancePackShrinkRequest) SetRiskLevel(v int32) *UpdateAggregateCompliancePackShrinkRequest {
 	s.RiskLevel = &v
+	return s
+}
+
+func (s *UpdateAggregateCompliancePackShrinkRequest) SetTagKeyScope(v string) *UpdateAggregateCompliancePackShrinkRequest {
+	s.TagKeyScope = &v
+	return s
+}
+
+func (s *UpdateAggregateCompliancePackShrinkRequest) SetTagValueScope(v string) *UpdateAggregateCompliancePackShrinkRequest {
+	s.TagValueScope = &v
 	return s
 }
 
@@ -15201,12 +16474,17 @@ func (s *UpdateAggregatorResponse) SetBody(v *UpdateAggregatorResponseBody) *Upd
 }
 
 type UpdateCompliancePackRequest struct {
-	ClientToken        *string                                   `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	CompliancePackId   *string                                   `json:"CompliancePackId,omitempty" xml:"CompliancePackId,omitempty"`
-	CompliancePackName *string                                   `json:"CompliancePackName,omitempty" xml:"CompliancePackName,omitempty"`
-	ConfigRules        []*UpdateCompliancePackRequestConfigRules `json:"ConfigRules,omitempty" xml:"ConfigRules,omitempty" type:"Repeated"`
-	Description        *string                                   `json:"Description,omitempty" xml:"Description,omitempty"`
-	RiskLevel          *int32                                    `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	ClientToken             *string                                   `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	CompliancePackId        *string                                   `json:"CompliancePackId,omitempty" xml:"CompliancePackId,omitempty"`
+	CompliancePackName      *string                                   `json:"CompliancePackName,omitempty" xml:"CompliancePackName,omitempty"`
+	ConfigRules             []*UpdateCompliancePackRequestConfigRules `json:"ConfigRules,omitempty" xml:"ConfigRules,omitempty" type:"Repeated"`
+	Description             *string                                   `json:"Description,omitempty" xml:"Description,omitempty"`
+	ExcludeResourceIdsScope *string                                   `json:"ExcludeResourceIdsScope,omitempty" xml:"ExcludeResourceIdsScope,omitempty"`
+	RegionIdsScope          *string                                   `json:"RegionIdsScope,omitempty" xml:"RegionIdsScope,omitempty"`
+	ResourceGroupIdsScope   *string                                   `json:"ResourceGroupIdsScope,omitempty" xml:"ResourceGroupIdsScope,omitempty"`
+	RiskLevel               *int32                                    `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	TagKeyScope             *string                                   `json:"TagKeyScope,omitempty" xml:"TagKeyScope,omitempty"`
+	TagValueScope           *string                                   `json:"TagValueScope,omitempty" xml:"TagValueScope,omitempty"`
 }
 
 func (s UpdateCompliancePackRequest) String() string {
@@ -15242,8 +16520,33 @@ func (s *UpdateCompliancePackRequest) SetDescription(v string) *UpdateCompliance
 	return s
 }
 
+func (s *UpdateCompliancePackRequest) SetExcludeResourceIdsScope(v string) *UpdateCompliancePackRequest {
+	s.ExcludeResourceIdsScope = &v
+	return s
+}
+
+func (s *UpdateCompliancePackRequest) SetRegionIdsScope(v string) *UpdateCompliancePackRequest {
+	s.RegionIdsScope = &v
+	return s
+}
+
+func (s *UpdateCompliancePackRequest) SetResourceGroupIdsScope(v string) *UpdateCompliancePackRequest {
+	s.ResourceGroupIdsScope = &v
+	return s
+}
+
 func (s *UpdateCompliancePackRequest) SetRiskLevel(v int32) *UpdateCompliancePackRequest {
 	s.RiskLevel = &v
+	return s
+}
+
+func (s *UpdateCompliancePackRequest) SetTagKeyScope(v string) *UpdateCompliancePackRequest {
+	s.TagKeyScope = &v
+	return s
+}
+
+func (s *UpdateCompliancePackRequest) SetTagValueScope(v string) *UpdateCompliancePackRequest {
+	s.TagValueScope = &v
 	return s
 }
 
@@ -15318,12 +16621,17 @@ func (s *UpdateCompliancePackRequestConfigRulesConfigRuleParameters) SetParamete
 }
 
 type UpdateCompliancePackShrinkRequest struct {
-	ClientToken        *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	CompliancePackId   *string `json:"CompliancePackId,omitempty" xml:"CompliancePackId,omitempty"`
-	CompliancePackName *string `json:"CompliancePackName,omitempty" xml:"CompliancePackName,omitempty"`
-	ConfigRulesShrink  *string `json:"ConfigRules,omitempty" xml:"ConfigRules,omitempty"`
-	Description        *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	RiskLevel          *int32  `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	ClientToken             *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	CompliancePackId        *string `json:"CompliancePackId,omitempty" xml:"CompliancePackId,omitempty"`
+	CompliancePackName      *string `json:"CompliancePackName,omitempty" xml:"CompliancePackName,omitempty"`
+	ConfigRulesShrink       *string `json:"ConfigRules,omitempty" xml:"ConfigRules,omitempty"`
+	Description             *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	ExcludeResourceIdsScope *string `json:"ExcludeResourceIdsScope,omitempty" xml:"ExcludeResourceIdsScope,omitempty"`
+	RegionIdsScope          *string `json:"RegionIdsScope,omitempty" xml:"RegionIdsScope,omitempty"`
+	ResourceGroupIdsScope   *string `json:"ResourceGroupIdsScope,omitempty" xml:"ResourceGroupIdsScope,omitempty"`
+	RiskLevel               *int32  `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	TagKeyScope             *string `json:"TagKeyScope,omitempty" xml:"TagKeyScope,omitempty"`
+	TagValueScope           *string `json:"TagValueScope,omitempty" xml:"TagValueScope,omitempty"`
 }
 
 func (s UpdateCompliancePackShrinkRequest) String() string {
@@ -15359,8 +16667,33 @@ func (s *UpdateCompliancePackShrinkRequest) SetDescription(v string) *UpdateComp
 	return s
 }
 
+func (s *UpdateCompliancePackShrinkRequest) SetExcludeResourceIdsScope(v string) *UpdateCompliancePackShrinkRequest {
+	s.ExcludeResourceIdsScope = &v
+	return s
+}
+
+func (s *UpdateCompliancePackShrinkRequest) SetRegionIdsScope(v string) *UpdateCompliancePackShrinkRequest {
+	s.RegionIdsScope = &v
+	return s
+}
+
+func (s *UpdateCompliancePackShrinkRequest) SetResourceGroupIdsScope(v string) *UpdateCompliancePackShrinkRequest {
+	s.ResourceGroupIdsScope = &v
+	return s
+}
+
 func (s *UpdateCompliancePackShrinkRequest) SetRiskLevel(v int32) *UpdateCompliancePackShrinkRequest {
 	s.RiskLevel = &v
+	return s
+}
+
+func (s *UpdateCompliancePackShrinkRequest) SetTagKeyScope(v string) *UpdateCompliancePackShrinkRequest {
+	s.TagKeyScope = &v
+	return s
+}
+
+func (s *UpdateCompliancePackShrinkRequest) SetTagValueScope(v string) *UpdateCompliancePackShrinkRequest {
+	s.TagValueScope = &v
 	return s
 }
 
@@ -15805,6 +17138,315 @@ func (s *UpdateConfigRuleResponse) SetBody(v *UpdateConfigRuleResponseBody) *Upd
 	return s
 }
 
+type UpdateDeliveryChannelRequest struct {
+	ClientToken                         *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	ConfigurationItemChangeNotification *bool   `json:"ConfigurationItemChangeNotification,omitempty" xml:"ConfigurationItemChangeNotification,omitempty"`
+	ConfigurationSnapshot               *bool   `json:"ConfigurationSnapshot,omitempty" xml:"ConfigurationSnapshot,omitempty"`
+	DeliveryChannelAssumeRoleArn        *string `json:"DeliveryChannelAssumeRoleArn,omitempty" xml:"DeliveryChannelAssumeRoleArn,omitempty"`
+	DeliveryChannelCondition            *string `json:"DeliveryChannelCondition,omitempty" xml:"DeliveryChannelCondition,omitempty"`
+	DeliveryChannelId                   *string `json:"DeliveryChannelId,omitempty" xml:"DeliveryChannelId,omitempty"`
+	DeliveryChannelName                 *string `json:"DeliveryChannelName,omitempty" xml:"DeliveryChannelName,omitempty"`
+	DeliveryChannelTargetArn            *string `json:"DeliveryChannelTargetArn,omitempty" xml:"DeliveryChannelTargetArn,omitempty"`
+	Description                         *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	NonCompliantNotification            *bool   `json:"NonCompliantNotification,omitempty" xml:"NonCompliantNotification,omitempty"`
+	OversizedDataOSSTargetArn           *string `json:"OversizedDataOSSTargetArn,omitempty" xml:"OversizedDataOSSTargetArn,omitempty"`
+	Status                              *int64  `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s UpdateDeliveryChannelRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDeliveryChannelRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDeliveryChannelRequest) SetClientToken(v string) *UpdateDeliveryChannelRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *UpdateDeliveryChannelRequest) SetConfigurationItemChangeNotification(v bool) *UpdateDeliveryChannelRequest {
+	s.ConfigurationItemChangeNotification = &v
+	return s
+}
+
+func (s *UpdateDeliveryChannelRequest) SetConfigurationSnapshot(v bool) *UpdateDeliveryChannelRequest {
+	s.ConfigurationSnapshot = &v
+	return s
+}
+
+func (s *UpdateDeliveryChannelRequest) SetDeliveryChannelAssumeRoleArn(v string) *UpdateDeliveryChannelRequest {
+	s.DeliveryChannelAssumeRoleArn = &v
+	return s
+}
+
+func (s *UpdateDeliveryChannelRequest) SetDeliveryChannelCondition(v string) *UpdateDeliveryChannelRequest {
+	s.DeliveryChannelCondition = &v
+	return s
+}
+
+func (s *UpdateDeliveryChannelRequest) SetDeliveryChannelId(v string) *UpdateDeliveryChannelRequest {
+	s.DeliveryChannelId = &v
+	return s
+}
+
+func (s *UpdateDeliveryChannelRequest) SetDeliveryChannelName(v string) *UpdateDeliveryChannelRequest {
+	s.DeliveryChannelName = &v
+	return s
+}
+
+func (s *UpdateDeliveryChannelRequest) SetDeliveryChannelTargetArn(v string) *UpdateDeliveryChannelRequest {
+	s.DeliveryChannelTargetArn = &v
+	return s
+}
+
+func (s *UpdateDeliveryChannelRequest) SetDescription(v string) *UpdateDeliveryChannelRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *UpdateDeliveryChannelRequest) SetNonCompliantNotification(v bool) *UpdateDeliveryChannelRequest {
+	s.NonCompliantNotification = &v
+	return s
+}
+
+func (s *UpdateDeliveryChannelRequest) SetOversizedDataOSSTargetArn(v string) *UpdateDeliveryChannelRequest {
+	s.OversizedDataOSSTargetArn = &v
+	return s
+}
+
+func (s *UpdateDeliveryChannelRequest) SetStatus(v int64) *UpdateDeliveryChannelRequest {
+	s.Status = &v
+	return s
+}
+
+type UpdateDeliveryChannelResponseBody struct {
+	DeliveryChannelId *string `json:"DeliveryChannelId,omitempty" xml:"DeliveryChannelId,omitempty"`
+	RequestId         *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateDeliveryChannelResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDeliveryChannelResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDeliveryChannelResponseBody) SetDeliveryChannelId(v string) *UpdateDeliveryChannelResponseBody {
+	s.DeliveryChannelId = &v
+	return s
+}
+
+func (s *UpdateDeliveryChannelResponseBody) SetRequestId(v string) *UpdateDeliveryChannelResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateDeliveryChannelResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateDeliveryChannelResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateDeliveryChannelResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDeliveryChannelResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDeliveryChannelResponse) SetHeaders(v map[string]*string) *UpdateDeliveryChannelResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateDeliveryChannelResponse) SetStatusCode(v int32) *UpdateDeliveryChannelResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateDeliveryChannelResponse) SetBody(v *UpdateDeliveryChannelResponseBody) *UpdateDeliveryChannelResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateIntegratedServiceStatusRequest struct {
+	ServiceCode *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
+	Status      *bool   `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s UpdateIntegratedServiceStatusRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateIntegratedServiceStatusRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateIntegratedServiceStatusRequest) SetServiceCode(v string) *UpdateIntegratedServiceStatusRequest {
+	s.ServiceCode = &v
+	return s
+}
+
+func (s *UpdateIntegratedServiceStatusRequest) SetStatus(v bool) *UpdateIntegratedServiceStatusRequest {
+	s.Status = &v
+	return s
+}
+
+type UpdateIntegratedServiceStatusResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateIntegratedServiceStatusResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateIntegratedServiceStatusResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateIntegratedServiceStatusResponseBody) SetRequestId(v string) *UpdateIntegratedServiceStatusResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateIntegratedServiceStatusResponse struct {
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateIntegratedServiceStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateIntegratedServiceStatusResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateIntegratedServiceStatusResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateIntegratedServiceStatusResponse) SetHeaders(v map[string]*string) *UpdateIntegratedServiceStatusResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateIntegratedServiceStatusResponse) SetStatusCode(v int32) *UpdateIntegratedServiceStatusResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateIntegratedServiceStatusResponse) SetBody(v *UpdateIntegratedServiceStatusResponseBody) *UpdateIntegratedServiceStatusResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateRemediationRequest struct {
+	ClientToken           *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	InvokeType            *string `json:"InvokeType,omitempty" xml:"InvokeType,omitempty"`
+	Params                *string `json:"Params,omitempty" xml:"Params,omitempty"`
+	RemediationId         *string `json:"RemediationId,omitempty" xml:"RemediationId,omitempty"`
+	RemediationTemplateId *string `json:"RemediationTemplateId,omitempty" xml:"RemediationTemplateId,omitempty"`
+	RemediationType       *string `json:"RemediationType,omitempty" xml:"RemediationType,omitempty"`
+	SourceType            *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+}
+
+func (s UpdateRemediationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateRemediationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateRemediationRequest) SetClientToken(v string) *UpdateRemediationRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *UpdateRemediationRequest) SetInvokeType(v string) *UpdateRemediationRequest {
+	s.InvokeType = &v
+	return s
+}
+
+func (s *UpdateRemediationRequest) SetParams(v string) *UpdateRemediationRequest {
+	s.Params = &v
+	return s
+}
+
+func (s *UpdateRemediationRequest) SetRemediationId(v string) *UpdateRemediationRequest {
+	s.RemediationId = &v
+	return s
+}
+
+func (s *UpdateRemediationRequest) SetRemediationTemplateId(v string) *UpdateRemediationRequest {
+	s.RemediationTemplateId = &v
+	return s
+}
+
+func (s *UpdateRemediationRequest) SetRemediationType(v string) *UpdateRemediationRequest {
+	s.RemediationType = &v
+	return s
+}
+
+func (s *UpdateRemediationRequest) SetSourceType(v string) *UpdateRemediationRequest {
+	s.SourceType = &v
+	return s
+}
+
+type UpdateRemediationResponseBody struct {
+	RemediationId *string `json:"RemediationId,omitempty" xml:"RemediationId,omitempty"`
+	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateRemediationResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateRemediationResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateRemediationResponseBody) SetRemediationId(v string) *UpdateRemediationResponseBody {
+	s.RemediationId = &v
+	return s
+}
+
+func (s *UpdateRemediationResponseBody) SetRequestId(v string) *UpdateRemediationResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateRemediationResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateRemediationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateRemediationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateRemediationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateRemediationResponse) SetHeaders(v map[string]*string) *UpdateRemediationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateRemediationResponse) SetStatusCode(v int32) *UpdateRemediationResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateRemediationResponse) SetBody(v *UpdateRemediationResponseBody) *UpdateRemediationResponse {
+	s.Body = v
+	return s
+}
+
 type Client struct {
 	openapi.Client
 }
@@ -16004,6 +17646,110 @@ func (client *Client) AttachConfigRuleToCompliancePack(request *AttachConfigRule
 	return _result, _err
 }
 
+func (client *Client) CopyCompliancePacksWithOptions(request *CopyCompliancePacksRequest, runtime *util.RuntimeOptions) (_result *CopyCompliancePacksResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DesAggregatorIds)) {
+		query["DesAggregatorIds"] = request.DesAggregatorIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SrcAggregatorId)) {
+		query["SrcAggregatorId"] = request.SrcAggregatorId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SrcCompliancePackIds)) {
+		query["SrcCompliancePackIds"] = request.SrcCompliancePackIds
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CopyCompliancePacks"),
+		Version:     tea.String("2020-09-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CopyCompliancePacksResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CopyCompliancePacks(request *CopyCompliancePacksRequest) (_result *CopyCompliancePacksResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CopyCompliancePacksResponse{}
+	_body, _err := client.CopyCompliancePacksWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CopyConfigRulesWithOptions(request *CopyConfigRulesRequest, runtime *util.RuntimeOptions) (_result *CopyConfigRulesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DesAggregatorIds)) {
+		query["DesAggregatorIds"] = request.DesAggregatorIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SrcAggregatorId)) {
+		query["SrcAggregatorId"] = request.SrcAggregatorId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SrcConfigRuleIds)) {
+		query["SrcConfigRuleIds"] = request.SrcConfigRuleIds
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CopyConfigRules"),
+		Version:     tea.String("2020-09-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CopyConfigRulesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CopyConfigRules(request *CopyConfigRulesRequest) (_result *CopyConfigRulesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CopyConfigRulesResponse{}
+	_body, _err := client.CopyConfigRulesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) CreateAggregateCompliancePackWithOptions(tmpReq *CreateAggregateCompliancePackRequest, runtime *util.RuntimeOptions) (_result *CreateAggregateCompliancePackResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -16044,8 +17790,28 @@ func (client *Client) CreateAggregateCompliancePackWithOptions(tmpReq *CreateAgg
 		body["Description"] = request.Description
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ExcludeResourceIdsScope)) {
+		body["ExcludeResourceIdsScope"] = request.ExcludeResourceIdsScope
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionIdsScope)) {
+		body["RegionIdsScope"] = request.RegionIdsScope
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupIdsScope)) {
+		body["ResourceGroupIdsScope"] = request.ResourceGroupIdsScope
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.RiskLevel)) {
 		body["RiskLevel"] = request.RiskLevel
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagKeyScope)) {
+		body["TagKeyScope"] = request.TagKeyScope
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagValueScope)) {
+		body["TagValueScope"] = request.TagValueScope
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -16474,8 +18240,28 @@ func (client *Client) CreateCompliancePackWithOptions(tmpReq *CreateCompliancePa
 		body["Description"] = request.Description
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ExcludeResourceIdsScope)) {
+		body["ExcludeResourceIdsScope"] = request.ExcludeResourceIdsScope
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionIdsScope)) {
+		body["RegionIdsScope"] = request.RegionIdsScope
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupIdsScope)) {
+		body["ResourceGroupIdsScope"] = request.ResourceGroupIdsScope
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.RiskLevel)) {
 		body["RiskLevel"] = request.RiskLevel
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagKeyScope)) {
+		body["TagKeyScope"] = request.TagKeyScope
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagValueScope)) {
+		body["TagValueScope"] = request.TagValueScope
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -16710,6 +18496,90 @@ func (client *Client) CreateConfigRule(request *CreateConfigRuleRequest) (_resul
 	return _result, _err
 }
 
+func (client *Client) CreateDeliveryChannelWithOptions(request *CreateDeliveryChannelRequest, runtime *util.RuntimeOptions) (_result *CreateDeliveryChannelResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		body["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConfigurationItemChangeNotification)) {
+		body["ConfigurationItemChangeNotification"] = request.ConfigurationItemChangeNotification
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConfigurationSnapshot)) {
+		body["ConfigurationSnapshot"] = request.ConfigurationSnapshot
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DeliveryChannelAssumeRoleArn)) {
+		body["DeliveryChannelAssumeRoleArn"] = request.DeliveryChannelAssumeRoleArn
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DeliveryChannelCondition)) {
+		body["DeliveryChannelCondition"] = request.DeliveryChannelCondition
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DeliveryChannelName)) {
+		body["DeliveryChannelName"] = request.DeliveryChannelName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DeliveryChannelTargetArn)) {
+		body["DeliveryChannelTargetArn"] = request.DeliveryChannelTargetArn
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DeliveryChannelType)) {
+		body["DeliveryChannelType"] = request.DeliveryChannelType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		body["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NonCompliantNotification)) {
+		body["NonCompliantNotification"] = request.NonCompliantNotification
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OversizedDataOSSTargetArn)) {
+		body["OversizedDataOSSTargetArn"] = request.OversizedDataOSSTargetArn
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateDeliveryChannel"),
+		Version:     tea.String("2020-09-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateDeliveryChannelResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateDeliveryChannel(request *CreateDeliveryChannelRequest) (_result *CreateDeliveryChannelResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateDeliveryChannelResponse{}
+	_body, _err := client.CreateDeliveryChannelWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) CreateRemediationWithOptions(request *CreateRemediationRequest, runtime *util.RuntimeOptions) (_result *CreateRemediationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16926,6 +18796,54 @@ func (client *Client) DeleteAggregateCompliancePacks(request *DeleteAggregateCom
 	return _result, _err
 }
 
+func (client *Client) DeleteAggregateConfigDeliveryChannelWithOptions(request *DeleteAggregateConfigDeliveryChannelRequest, runtime *util.RuntimeOptions) (_result *DeleteAggregateConfigDeliveryChannelResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AggregatorId)) {
+		query["AggregatorId"] = request.AggregatorId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DeliveryChannelId)) {
+		query["DeliveryChannelId"] = request.DeliveryChannelId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteAggregateConfigDeliveryChannel"),
+		Version:     tea.String("2020-09-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteAggregateConfigDeliveryChannelResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteAggregateConfigDeliveryChannel(request *DeleteAggregateConfigDeliveryChannelRequest) (_result *DeleteAggregateConfigDeliveryChannelResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteAggregateConfigDeliveryChannelResponse{}
+	_body, _err := client.DeleteAggregateConfigDeliveryChannelWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DeleteAggregateConfigRulesWithOptions(request *DeleteAggregateConfigRulesRequest, runtime *util.RuntimeOptions) (_result *DeleteAggregateConfigRulesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17122,6 +19040,50 @@ func (client *Client) DeleteCompliancePacks(request *DeleteCompliancePacksReques
 	return _result, _err
 }
 
+func (client *Client) DeleteConfigDeliveryChannelWithOptions(request *DeleteConfigDeliveryChannelRequest, runtime *util.RuntimeOptions) (_result *DeleteConfigDeliveryChannelResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DeliveryChannelId)) {
+		query["DeliveryChannelId"] = request.DeliveryChannelId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteConfigDeliveryChannel"),
+		Version:     tea.String("2020-09-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteConfigDeliveryChannelResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteConfigDeliveryChannel(request *DeleteConfigDeliveryChannelRequest) (_result *DeleteConfigDeliveryChannelResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteConfigDeliveryChannelResponse{}
+	_body, _err := client.DeleteConfigDeliveryChannelWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DeleteRemediationsWithOptions(request *DeleteRemediationsRequest, runtime *util.RuntimeOptions) (_result *DeleteRemediationsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17259,6 +19221,60 @@ func (client *Client) DetachConfigRuleToCompliancePack(request *DetachConfigRule
 	runtime := &util.RuntimeOptions{}
 	_result = &DetachConfigRuleToCompliancePackResponse{}
 	_body, _err := client.DetachConfigRuleToCompliancePackWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) EvaluatePreConfigRulesWithOptions(tmpReq *EvaluatePreConfigRulesRequest, runtime *util.RuntimeOptions) (_result *EvaluatePreConfigRulesResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &EvaluatePreConfigRulesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.ResourceEvaluateItems)) {
+		request.ResourceEvaluateItemsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ResourceEvaluateItems, tea.String("ResourceEvaluateItems"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EnableManagedRules)) {
+		body["EnableManagedRules"] = request.EnableManagedRules
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceEvaluateItemsShrink)) {
+		body["ResourceEvaluateItems"] = request.ResourceEvaluateItemsShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("EvaluatePreConfigRules"),
+		Version:     tea.String("2020-09-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &EvaluatePreConfigRulesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) EvaluatePreConfigRules(request *EvaluatePreConfigRulesRequest) (_result *EvaluatePreConfigRulesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &EvaluatePreConfigRulesResponse{}
+	_body, _err := client.EvaluatePreConfigRulesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -18687,6 +20703,50 @@ func (client *Client) GetDiscoveredResourceCountsGroupByResourceType(request *Ge
 	return _result, _err
 }
 
+func (client *Client) GetIntegratedServiceStatusWithOptions(request *GetIntegratedServiceStatusRequest, runtime *util.RuntimeOptions) (_result *GetIntegratedServiceStatusResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ServiceCode)) {
+		body["ServiceCode"] = request.ServiceCode
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetIntegratedServiceStatus"),
+		Version:     tea.String("2020-09-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetIntegratedServiceStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetIntegratedServiceStatus(request *GetIntegratedServiceStatusRequest) (_result *GetIntegratedServiceStatusResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetIntegratedServiceStatusResponse{}
+	_body, _err := client.GetIntegratedServiceStatusWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) GetManagedRuleWithOptions(request *GetManagedRuleRequest, runtime *util.RuntimeOptions) (_result *GetManagedRuleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19216,7 +21276,47 @@ func (client *Client) ListAggregateConfigRuleEvaluationResultsWithOptions(reques
 	if _err != nil {
 		return _result, _err
 	}
-	query := openapiutil.Query(util.ToMap(request))
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AggregatorId)) {
+		query["AggregatorId"] = request.AggregatorId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CompliancePackId)) {
+		query["CompliancePackId"] = request.CompliancePackId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ComplianceType)) {
+		query["ComplianceType"] = request.ComplianceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConfigRuleId)) {
+		query["ConfigRuleId"] = request.ConfigRuleId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Regions)) {
+		query["Regions"] = request.Regions
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupIds)) {
+		query["ResourceGroupIds"] = request.ResourceGroupIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceTypes)) {
+		query["ResourceTypes"] = request.ResourceTypes
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -19225,7 +21325,7 @@ func (client *Client) ListAggregateConfigRuleEvaluationResultsWithOptions(reques
 		Version:     tea.String("2020-09-07"),
 		Protocol:    tea.String("HTTPS"),
 		Pathname:    tea.String("/"),
-		Method:      tea.String("GET"),
+		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
 		ReqBodyType: tea.String("formData"),
@@ -19867,6 +21967,64 @@ func (client *Client) ListManagedRules(request *ListManagedRulesRequest) (_resul
 	return _result, _err
 }
 
+func (client *Client) ListPreManagedRulesWithOptions(tmpReq *ListPreManagedRulesRequest, runtime *util.RuntimeOptions) (_result *ListPreManagedRulesResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ListPreManagedRulesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.ResourceTypes)) {
+		request.ResourceTypesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ResourceTypes, tea.String("ResourceTypes"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		body["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceTypesShrink)) {
+		body["ResourceTypes"] = request.ResourceTypesShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListPreManagedRules"),
+		Version:     tea.String("2020-09-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListPreManagedRulesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListPreManagedRules(request *ListPreManagedRulesRequest) (_result *ListPreManagedRulesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListPreManagedRulesResponse{}
+	_body, _err := client.ListPreManagedRulesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ListRemediationTemplatesWithOptions(request *ListRemediationTemplatesRequest, runtime *util.RuntimeOptions) (_result *ListRemediationTemplatesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -20349,6 +22507,39 @@ func (client *Client) StartRemediation(request *StartRemediationRequest) (_resul
 	return _result, _err
 }
 
+func (client *Client) StopConfigurationRecorderWithOptions(runtime *util.RuntimeOptions) (_result *StopConfigurationRecorderResponse, _err error) {
+	req := &openapi.OpenApiRequest{}
+	params := &openapi.Params{
+		Action:      tea.String("StopConfigurationRecorder"),
+		Version:     tea.String("2020-09-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &StopConfigurationRecorderResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) StopConfigurationRecorder() (_result *StopConfigurationRecorderResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &StopConfigurationRecorderResponse{}
+	_body, _err := client.StopConfigurationRecorderWithOptions(runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) TagResourcesWithOptions(tmpReq *TagResourcesRequest, runtime *util.RuntimeOptions) (_result *TagResourcesResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -20507,8 +22698,28 @@ func (client *Client) UpdateAggregateCompliancePackWithOptions(tmpReq *UpdateAgg
 		body["Description"] = request.Description
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ExcludeResourceIdsScope)) {
+		body["ExcludeResourceIdsScope"] = request.ExcludeResourceIdsScope
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionIdsScope)) {
+		body["RegionIdsScope"] = request.RegionIdsScope
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupIdsScope)) {
+		body["ResourceGroupIdsScope"] = request.ResourceGroupIdsScope
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.RiskLevel)) {
 		body["RiskLevel"] = request.RiskLevel
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagKeyScope)) {
+		body["TagKeyScope"] = request.TagKeyScope
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagValueScope)) {
+		body["TagValueScope"] = request.TagValueScope
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -20929,8 +23140,28 @@ func (client *Client) UpdateCompliancePackWithOptions(tmpReq *UpdateCompliancePa
 		body["Description"] = request.Description
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ExcludeResourceIdsScope)) {
+		body["ExcludeResourceIdsScope"] = request.ExcludeResourceIdsScope
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionIdsScope)) {
+		body["RegionIdsScope"] = request.RegionIdsScope
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupIdsScope)) {
+		body["ResourceGroupIdsScope"] = request.ResourceGroupIdsScope
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.RiskLevel)) {
 		body["RiskLevel"] = request.RiskLevel
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagKeyScope)) {
+		body["TagKeyScope"] = request.TagKeyScope
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagValueScope)) {
+		body["TagValueScope"] = request.TagValueScope
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -21158,6 +23389,210 @@ func (client *Client) UpdateConfigRule(request *UpdateConfigRuleRequest) (_resul
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateConfigRuleResponse{}
 	_body, _err := client.UpdateConfigRuleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateDeliveryChannelWithOptions(request *UpdateDeliveryChannelRequest, runtime *util.RuntimeOptions) (_result *UpdateDeliveryChannelResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		body["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConfigurationItemChangeNotification)) {
+		body["ConfigurationItemChangeNotification"] = request.ConfigurationItemChangeNotification
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConfigurationSnapshot)) {
+		body["ConfigurationSnapshot"] = request.ConfigurationSnapshot
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DeliveryChannelAssumeRoleArn)) {
+		body["DeliveryChannelAssumeRoleArn"] = request.DeliveryChannelAssumeRoleArn
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DeliveryChannelCondition)) {
+		body["DeliveryChannelCondition"] = request.DeliveryChannelCondition
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DeliveryChannelId)) {
+		body["DeliveryChannelId"] = request.DeliveryChannelId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DeliveryChannelName)) {
+		body["DeliveryChannelName"] = request.DeliveryChannelName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DeliveryChannelTargetArn)) {
+		body["DeliveryChannelTargetArn"] = request.DeliveryChannelTargetArn
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		body["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NonCompliantNotification)) {
+		body["NonCompliantNotification"] = request.NonCompliantNotification
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OversizedDataOSSTargetArn)) {
+		body["OversizedDataOSSTargetArn"] = request.OversizedDataOSSTargetArn
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		body["Status"] = request.Status
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateDeliveryChannel"),
+		Version:     tea.String("2020-09-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateDeliveryChannelResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateDeliveryChannel(request *UpdateDeliveryChannelRequest) (_result *UpdateDeliveryChannelResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateDeliveryChannelResponse{}
+	_body, _err := client.UpdateDeliveryChannelWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateIntegratedServiceStatusWithOptions(request *UpdateIntegratedServiceStatusRequest, runtime *util.RuntimeOptions) (_result *UpdateIntegratedServiceStatusResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ServiceCode)) {
+		body["ServiceCode"] = request.ServiceCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		body["Status"] = request.Status
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateIntegratedServiceStatus"),
+		Version:     tea.String("2020-09-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateIntegratedServiceStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateIntegratedServiceStatus(request *UpdateIntegratedServiceStatusRequest) (_result *UpdateIntegratedServiceStatusResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateIntegratedServiceStatusResponse{}
+	_body, _err := client.UpdateIntegratedServiceStatusWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateRemediationWithOptions(request *UpdateRemediationRequest, runtime *util.RuntimeOptions) (_result *UpdateRemediationResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		body["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InvokeType)) {
+		body["InvokeType"] = request.InvokeType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Params)) {
+		body["Params"] = request.Params
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RemediationId)) {
+		body["RemediationId"] = request.RemediationId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RemediationTemplateId)) {
+		body["RemediationTemplateId"] = request.RemediationTemplateId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RemediationType)) {
+		body["RemediationType"] = request.RemediationType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceType)) {
+		body["SourceType"] = request.SourceType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateRemediation"),
+		Version:     tea.String("2020-09-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateRemediationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateRemediation(request *UpdateRemediationRequest) (_result *UpdateRemediationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateRemediationResponse{}
+	_body, _err := client.UpdateRemediationWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
