@@ -294,6 +294,35 @@ func (s *InstanceActiveOpsTask) SetInstanceActiveOpsTaskStatus(v string) *Instan
 	return s
 }
 
+type InstanceOperateResponse struct {
+	Code       *int64  `json:"Code,omitempty" xml:"Code,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Message    *string `json:"Message,omitempty" xml:"Message,omitempty"`
+}
+
+func (s InstanceOperateResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InstanceOperateResponse) GoString() string {
+	return s.String()
+}
+
+func (s *InstanceOperateResponse) SetCode(v int64) *InstanceOperateResponse {
+	s.Code = &v
+	return s
+}
+
+func (s *InstanceOperateResponse) SetInstanceId(v string) *InstanceOperateResponse {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *InstanceOperateResponse) SetMessage(v string) *InstanceOperateResponse {
+	s.Message = &v
+	return s
+}
+
 type SecurityGroupRule struct {
 	Description     *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	DestCidrIp      *string `json:"DestCidrIp,omitempty" xml:"DestCidrIp,omitempty"`
@@ -940,7 +969,8 @@ func (s *AssignPrivateIpAddressesRequest) SetVSwitchId(v string) *AssignPrivateI
 
 type AssignPrivateIpAddressesResponseBody struct {
 	AssignedPrivateIpAddressesSet *AssignPrivateIpAddressesResponseBodyAssignedPrivateIpAddressesSet `json:"AssignedPrivateIpAddressesSet,omitempty" xml:"AssignedPrivateIpAddressesSet,omitempty" type:"Struct"`
-	RequestId                     *string                                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s AssignPrivateIpAddressesResponseBody) String() string {
@@ -1246,7 +1276,8 @@ type AuthorizeSecurityGroupRequest struct {
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
 	SourceCidrIp    *string `json:"SourceCidrIp,omitempty" xml:"SourceCidrIp,omitempty"`
 	SourcePortRange *string `json:"SourcePortRange,omitempty" xml:"SourcePortRange,omitempty"`
-	Version         *string `json:"Version,omitempty" xml:"Version,omitempty"`
+	// 2017-11-10
+	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s AuthorizeSecurityGroupRequest) String() string {
@@ -1351,7 +1382,8 @@ type AuthorizeSecurityGroupEgressRequest struct {
 	Priority        *int32  `json:"Priority,omitempty" xml:"Priority,omitempty"`
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
 	SourcePortRange *string `json:"SourcePortRange,omitempty" xml:"SourcePortRange,omitempty"`
-	Version         *string `json:"Version,omitempty" xml:"Version,omitempty"`
+	// 2017-11-10
+	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s AuthorizeSecurityGroupEgressRequest) String() string {
@@ -1701,6 +1733,7 @@ func (s *CreateClassicNetworkRequest) SetNetworkName(v string) *CreateClassicNet
 
 type CreateClassicNetworkResponseBody struct {
 	NetworkId *string `json:"NetworkId,omitempty" xml:"NetworkId,omitempty"`
+	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1991,6 +2024,7 @@ func (s *CreateEnsRouteEntryRequest) SetRouteTableId(v string) *CreateEnsRouteEn
 }
 
 type CreateEnsRouteEntryResponseBody struct {
+	// Id of the request
 	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	RouteEntryId *string `json:"RouteEntryId,omitempty" xml:"RouteEntryId,omitempty"`
 }
@@ -2239,9 +2273,10 @@ type CreateFileSystemRequestOrderDetails struct {
 	FileSystemName    *string `json:"FileSystemName,omitempty" xml:"FileSystemName,omitempty"`
 	MountTargetDomain *string `json:"MountTargetDomain,omitempty" xml:"MountTargetDomain,omitempty"`
 	NetworkId         *string `json:"NetworkId,omitempty" xml:"NetworkId,omitempty"`
-	OrderType         *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
-	ProtocolType      *string `json:"ProtocolType,omitempty" xml:"ProtocolType,omitempty"`
-	StorgeType        *string `json:"StorgeType,omitempty" xml:"StorgeType,omitempty"`
+	// BUY。
+	OrderType    *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
+	ProtocolType *string `json:"ProtocolType,omitempty" xml:"ProtocolType,omitempty"`
+	StorgeType   *string `json:"StorgeType,omitempty" xml:"StorgeType,omitempty"`
 }
 
 func (s CreateFileSystemRequestOrderDetails) String() string {
@@ -2434,7 +2469,8 @@ func (s *CreateForwardEntryRequest) SetNatGatewayId(v string) *CreateForwardEntr
 
 type CreateForwardEntryResponseBody struct {
 	ForwardEntryId *string `json:"ForwardEntryId,omitempty" xml:"ForwardEntryId,omitempty"`
-	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateForwardEntryResponseBody) String() string {
@@ -4685,6 +4721,7 @@ func (s *DeleteEnsRouteEntryRequest) SetRouteEntryId(v string) *DeleteEnsRouteEn
 }
 
 type DeleteEnsRouteEntryResponseBody struct {
+	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -6904,6 +6941,7 @@ func (s *DescribeBandwitdhByInternetChargeTypeResponse) SetBody(v *DescribeBandw
 }
 
 type DescribeCloudDiskAvailableResourceInfoResponseBody struct {
+	// Id of the request
 	RequestId        *string                                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	SupportResources *DescribeCloudDiskAvailableResourceInfoResponseBodySupportResources `json:"SupportResources,omitempty" xml:"SupportResources,omitempty" type:"Struct"`
 }
@@ -7026,6 +7064,7 @@ func (s *DescribeCloudDiskAvailableResourceInfoResponse) SetBody(v *DescribeClou
 }
 
 type DescribeCloudDiskTypesRequest struct {
+	// A short description of struct
 	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
 }
 
@@ -7941,7 +7980,8 @@ type DescribeDeviceServiceRequest struct {
 	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	OrderId     *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
 	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ServiceId   *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	// Service ID
+	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
 }
 
 func (s DescribeDeviceServiceRequest) String() string {
@@ -7983,8 +8023,9 @@ func (s *DescribeDeviceServiceRequest) SetServiceId(v string) *DescribeDeviceSer
 }
 
 type DescribeDeviceServiceResponseBody struct {
-	AppMetaData         *DescribeDeviceServiceResponseBodyAppMetaData           `json:"AppMetaData,omitempty" xml:"AppMetaData,omitempty" type:"Struct"`
-	AppStatus           *DescribeDeviceServiceResponseBodyAppStatus             `json:"AppStatus,omitempty" xml:"AppStatus,omitempty" type:"Struct"`
+	AppMetaData *DescribeDeviceServiceResponseBodyAppMetaData `json:"AppMetaData,omitempty" xml:"AppMetaData,omitempty" type:"Struct"`
+	AppStatus   *DescribeDeviceServiceResponseBodyAppStatus   `json:"AppStatus,omitempty" xml:"AppStatus,omitempty" type:"Struct"`
+	// Id of the request
 	RequestId           *string                                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ResourceDetailInfos []*DescribeDeviceServiceResponseBodyResourceDetailInfos `json:"ResourceDetailInfos,omitempty" xml:"ResourceDetailInfos,omitempty" type:"Repeated"`
 	ResourceInfos       []*DescribeDeviceServiceResponseBodyResourceInfos       `json:"ResourceInfos,omitempty" xml:"ResourceInfos,omitempty" type:"Repeated"`
@@ -9978,7 +10019,8 @@ func (s *DescribeEnsResourceUsageRequest) SetExpiredStartTime(v string) *Describ
 
 type DescribeEnsResourceUsageResponseBody struct {
 	EnsResourceUsage []*DescribeEnsResourceUsageResponseBodyEnsResourceUsage `json:"EnsResourceUsage,omitempty" xml:"EnsResourceUsage,omitempty" type:"Repeated"`
-	RequestId        *string                                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeEnsResourceUsageResponseBody) String() string {
@@ -10171,8 +10213,9 @@ func (s *DescribeEnsRouteEntryListRequest) SetRouteTableId(v string) *DescribeEn
 }
 
 type DescribeEnsRouteEntryListResponseBody struct {
-	PageNumber  *int32                                              `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize    *int32                                              `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Id of the request
 	RequestId   *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	RouteEntrys []*DescribeEnsRouteEntryListResponseBodyRouteEntrys `json:"RouteEntrys,omitempty" xml:"RouteEntrys,omitempty" type:"Repeated"`
 	TotalCount  *int32                                              `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
@@ -13180,31 +13223,33 @@ func (s *DescribeInstancesResponseBodyInstances) SetInstance(v []*DescribeInstan
 }
 
 type DescribeInstancesResponseBodyInstancesInstance struct {
-	Cpu                     *string                                                           `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
-	CreationTime            *string                                                           `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	DataDisk                *DescribeInstancesResponseBodyInstancesInstanceDataDisk           `json:"DataDisk,omitempty" xml:"DataDisk,omitempty" type:"Struct"`
-	Disk                    *int32                                                            `json:"Disk,omitempty" xml:"Disk,omitempty"`
-	EnsRegionId             *string                                                           `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
-	ExpiredTime             *string                                                           `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
-	HostName                *string                                                           `json:"HostName,omitempty" xml:"HostName,omitempty"`
-	ImageId                 *string                                                           `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	InnerIpAddress          *DescribeInstancesResponseBodyInstancesInstanceInnerIpAddress     `json:"InnerIpAddress,omitempty" xml:"InnerIpAddress,omitempty" type:"Struct"`
-	InstanceId              *string                                                           `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	InstanceName            *string                                                           `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	InstanceResourceType    *string                                                           `json:"InstanceResourceType,omitempty" xml:"InstanceResourceType,omitempty"`
-	InstanceTypeFamily      *string                                                           `json:"InstanceTypeFamily,omitempty" xml:"InstanceTypeFamily,omitempty"`
-	InternetMaxBandwidthIn  *int32                                                            `json:"InternetMaxBandwidthIn,omitempty" xml:"InternetMaxBandwidthIn,omitempty"`
-	InternetMaxBandwidthOut *int32                                                            `json:"InternetMaxBandwidthOut,omitempty" xml:"InternetMaxBandwidthOut,omitempty"`
-	Memory                  *int32                                                            `json:"Memory,omitempty" xml:"Memory,omitempty"`
-	NetworkAttributes       *DescribeInstancesResponseBodyInstancesInstanceNetworkAttributes  `json:"NetworkAttributes,omitempty" xml:"NetworkAttributes,omitempty" type:"Struct"`
-	OSName                  *string                                                           `json:"OSName,omitempty" xml:"OSName,omitempty"`
-	PrivateIpAddresses      *DescribeInstancesResponseBodyInstancesInstancePrivateIpAddresses `json:"PrivateIpAddresses,omitempty" xml:"PrivateIpAddresses,omitempty" type:"Struct"`
-	PublicIpAddress         *DescribeInstancesResponseBodyInstancesInstancePublicIpAddress    `json:"PublicIpAddress,omitempty" xml:"PublicIpAddress,omitempty" type:"Struct"`
-	PublicIpAddresses       *DescribeInstancesResponseBodyInstancesInstancePublicIpAddresses  `json:"PublicIpAddresses,omitempty" xml:"PublicIpAddresses,omitempty" type:"Struct"`
-	SecurityGroupIds        *DescribeInstancesResponseBodyInstancesInstanceSecurityGroupIds   `json:"SecurityGroupIds,omitempty" xml:"SecurityGroupIds,omitempty" type:"Struct"`
-	SpecName                *string                                                           `json:"SpecName,omitempty" xml:"SpecName,omitempty"`
-	Status                  *string                                                           `json:"Status,omitempty" xml:"Status,omitempty"`
-	SystemDisk              *DescribeInstancesResponseBodyInstancesInstanceSystemDisk         `json:"SystemDisk,omitempty" xml:"SystemDisk,omitempty" type:"Struct"`
+	Cpu                     *string                                                       `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	CreationTime            *string                                                       `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	DataDisk                *DescribeInstancesResponseBodyInstancesInstanceDataDisk       `json:"DataDisk,omitempty" xml:"DataDisk,omitempty" type:"Struct"`
+	Disk                    *int32                                                        `json:"Disk,omitempty" xml:"Disk,omitempty"`
+	EnsRegionId             *string                                                       `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	ExpiredTime             *string                                                       `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
+	HostName                *string                                                       `json:"HostName,omitempty" xml:"HostName,omitempty"`
+	ImageId                 *string                                                       `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	InnerIpAddress          *DescribeInstancesResponseBodyInstancesInstanceInnerIpAddress `json:"InnerIpAddress,omitempty" xml:"InnerIpAddress,omitempty" type:"Struct"`
+	InstanceId              *string                                                       `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceName            *string                                                       `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	InstanceResourceType    *string                                                       `json:"InstanceResourceType,omitempty" xml:"InstanceResourceType,omitempty"`
+	InstanceTypeFamily      *string                                                       `json:"InstanceTypeFamily,omitempty" xml:"InstanceTypeFamily,omitempty"`
+	InternetMaxBandwidthIn  *int32                                                        `json:"InternetMaxBandwidthIn,omitempty" xml:"InternetMaxBandwidthIn,omitempty"`
+	InternetMaxBandwidthOut *int32                                                        `json:"InternetMaxBandwidthOut,omitempty" xml:"InternetMaxBandwidthOut,omitempty"`
+	Memory                  *int32                                                        `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	// Schema of Response
+	NetworkAttributes  *DescribeInstancesResponseBodyInstancesInstanceNetworkAttributes  `json:"NetworkAttributes,omitempty" xml:"NetworkAttributes,omitempty" type:"Struct"`
+	OSName             *string                                                           `json:"OSName,omitempty" xml:"OSName,omitempty"`
+	PrivateIpAddresses *DescribeInstancesResponseBodyInstancesInstancePrivateIpAddresses `json:"PrivateIpAddresses,omitempty" xml:"PrivateIpAddresses,omitempty" type:"Struct"`
+	PublicIpAddress    *DescribeInstancesResponseBodyInstancesInstancePublicIpAddress    `json:"PublicIpAddress,omitempty" xml:"PublicIpAddress,omitempty" type:"Struct"`
+	PublicIpAddresses  *DescribeInstancesResponseBodyInstancesInstancePublicIpAddresses  `json:"PublicIpAddresses,omitempty" xml:"PublicIpAddresses,omitempty" type:"Struct"`
+	SecurityGroupIds   *DescribeInstancesResponseBodyInstancesInstanceSecurityGroupIds   `json:"SecurityGroupIds,omitempty" xml:"SecurityGroupIds,omitempty" type:"Struct"`
+	SpecName           *string                                                           `json:"SpecName,omitempty" xml:"SpecName,omitempty"`
+	Status             *string                                                           `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Schema of Response
+	SystemDisk *DescribeInstancesResponseBodyInstancesInstanceSystemDisk `json:"SystemDisk,omitempty" xml:"SystemDisk,omitempty" type:"Struct"`
 }
 
 func (s DescribeInstancesResponseBodyInstancesInstance) String() string {
@@ -13366,7 +13411,8 @@ type DescribeInstancesResponseBodyInstancesInstanceDataDiskDataDisk struct {
 	DiskType   *string `json:"disk_type,omitempty" xml:"disk_type,omitempty"`
 	Name       *string `json:"name,omitempty" xml:"name,omitempty"`
 	Storage    *int32  `json:"storage,omitempty" xml:"storage,omitempty"`
-	Uuid       *string `json:"uuid,omitempty" xml:"uuid,omitempty"`
+	// UUID。
+	Uuid *string `json:"uuid,omitempty" xml:"uuid,omitempty"`
 }
 
 func (s DescribeInstancesResponseBodyInstancesInstanceDataDiskDataDisk) String() string {
@@ -13620,7 +13666,8 @@ type DescribeInstancesResponseBodyInstancesInstanceSystemDisk struct {
 	DiskType   *string `json:"disk_type,omitempty" xml:"disk_type,omitempty"`
 	Name       *string `json:"name,omitempty" xml:"name,omitempty"`
 	Storage    *int32  `json:"storage,omitempty" xml:"storage,omitempty"`
-	Uuid       *string `json:"uuid,omitempty" xml:"uuid,omitempty"`
+	// UUID。
+	Uuid *string `json:"uuid,omitempty" xml:"uuid,omitempty"`
 }
 
 func (s DescribeInstancesResponseBodyInstancesInstanceSystemDisk) String() string {
@@ -14496,8 +14543,9 @@ type DescribeLoadBalancerSpecResponseBody struct {
 	LoadBalancerSpecs []*DescribeLoadBalancerSpecResponseBodyLoadBalancerSpecs `json:"LoadBalancerSpecs,omitempty" xml:"LoadBalancerSpecs,omitempty" type:"Repeated"`
 	PageNumber        *int32                                                   `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize          *int32                                                   `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId         *string                                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount        *int32                                                   `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// Id of the request
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *int32  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeLoadBalancerSpecResponseBody) String() string {
@@ -15588,6 +15636,744 @@ func (s *DescribeMountTargetsResponse) SetStatusCode(v int32) *DescribeMountTarg
 }
 
 func (s *DescribeMountTargetsResponse) SetBody(v *DescribeMountTargetsResponseBody) *DescribeMountTargetsResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeNCInformationRequest struct {
+	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	ResourceId  *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+}
+
+func (s DescribeNCInformationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeNCInformationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeNCInformationRequest) SetEnsRegionId(v string) *DescribeNCInformationRequest {
+	s.EnsRegionId = &v
+	return s
+}
+
+func (s *DescribeNCInformationRequest) SetResourceId(v string) *DescribeNCInformationRequest {
+	s.ResourceId = &v
+	return s
+}
+
+type DescribeNCInformationResponseBody struct {
+	CurrentPage *int32                                   `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	Data        []*DescribeNCInformationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	Desc        *string                                  `json:"Desc,omitempty" xml:"Desc,omitempty"`
+	Msg         *string                                  `json:"Msg,omitempty" xml:"Msg,omitempty"`
+	Pager       *DescribeNCInformationResponseBodyPager  `json:"Pager,omitempty" xml:"Pager,omitempty" type:"Struct"`
+	RequestId   *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount  *int32                                   `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeNCInformationResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeNCInformationResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeNCInformationResponseBody) SetCurrentPage(v int32) *DescribeNCInformationResponseBody {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *DescribeNCInformationResponseBody) SetData(v []*DescribeNCInformationResponseBodyData) *DescribeNCInformationResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DescribeNCInformationResponseBody) SetDesc(v string) *DescribeNCInformationResponseBody {
+	s.Desc = &v
+	return s
+}
+
+func (s *DescribeNCInformationResponseBody) SetMsg(v string) *DescribeNCInformationResponseBody {
+	s.Msg = &v
+	return s
+}
+
+func (s *DescribeNCInformationResponseBody) SetPager(v *DescribeNCInformationResponseBodyPager) *DescribeNCInformationResponseBody {
+	s.Pager = v
+	return s
+}
+
+func (s *DescribeNCInformationResponseBody) SetRequestId(v string) *DescribeNCInformationResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeNCInformationResponseBody) SetTotalCount(v int32) *DescribeNCInformationResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeNCInformationResponseBodyData struct {
+	Cpu     *DescribeNCInformationResponseBodyDataCpu    `json:"Cpu,omitempty" xml:"Cpu,omitempty" type:"Struct"`
+	Gpu     *DescribeNCInformationResponseBodyDataGpu    `json:"Gpu,omitempty" xml:"Gpu,omitempty" type:"Struct"`
+	Hdd     *DescribeNCInformationResponseBodyDataHdd    `json:"Hdd,omitempty" xml:"Hdd,omitempty" type:"Struct"`
+	Info    *DescribeNCInformationResponseBodyDataInfo   `json:"Info,omitempty" xml:"Info,omitempty" type:"Struct"`
+	Memory  *DescribeNCInformationResponseBodyDataMemory `json:"Memory,omitempty" xml:"Memory,omitempty" type:"Struct"`
+	Nvme    *DescribeNCInformationResponseBodyDataNvme   `json:"Nvme,omitempty" xml:"Nvme,omitempty" type:"Struct"`
+	Online  *bool                                        `json:"Online,omitempty" xml:"Online,omitempty"`
+	Region  *string                                      `json:"Region,omitempty" xml:"Region,omitempty"`
+	Ssd     *DescribeNCInformationResponseBodyDataSsd    `json:"Ssd,omitempty" xml:"Ssd,omitempty" type:"Struct"`
+	Virtual *string                                      `json:"Virtual,omitempty" xml:"Virtual,omitempty"`
+}
+
+func (s DescribeNCInformationResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeNCInformationResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeNCInformationResponseBodyData) SetCpu(v *DescribeNCInformationResponseBodyDataCpu) *DescribeNCInformationResponseBodyData {
+	s.Cpu = v
+	return s
+}
+
+func (s *DescribeNCInformationResponseBodyData) SetGpu(v *DescribeNCInformationResponseBodyDataGpu) *DescribeNCInformationResponseBodyData {
+	s.Gpu = v
+	return s
+}
+
+func (s *DescribeNCInformationResponseBodyData) SetHdd(v *DescribeNCInformationResponseBodyDataHdd) *DescribeNCInformationResponseBodyData {
+	s.Hdd = v
+	return s
+}
+
+func (s *DescribeNCInformationResponseBodyData) SetInfo(v *DescribeNCInformationResponseBodyDataInfo) *DescribeNCInformationResponseBodyData {
+	s.Info = v
+	return s
+}
+
+func (s *DescribeNCInformationResponseBodyData) SetMemory(v *DescribeNCInformationResponseBodyDataMemory) *DescribeNCInformationResponseBodyData {
+	s.Memory = v
+	return s
+}
+
+func (s *DescribeNCInformationResponseBodyData) SetNvme(v *DescribeNCInformationResponseBodyDataNvme) *DescribeNCInformationResponseBodyData {
+	s.Nvme = v
+	return s
+}
+
+func (s *DescribeNCInformationResponseBodyData) SetOnline(v bool) *DescribeNCInformationResponseBodyData {
+	s.Online = &v
+	return s
+}
+
+func (s *DescribeNCInformationResponseBodyData) SetRegion(v string) *DescribeNCInformationResponseBodyData {
+	s.Region = &v
+	return s
+}
+
+func (s *DescribeNCInformationResponseBodyData) SetSsd(v *DescribeNCInformationResponseBodyDataSsd) *DescribeNCInformationResponseBodyData {
+	s.Ssd = v
+	return s
+}
+
+func (s *DescribeNCInformationResponseBodyData) SetVirtual(v string) *DescribeNCInformationResponseBodyData {
+	s.Virtual = &v
+	return s
+}
+
+type DescribeNCInformationResponseBodyDataCpu struct {
+	Display             *bool   `json:"Display,omitempty" xml:"Display,omitempty"`
+	OversellRatio       *int64  `json:"OversellRatio,omitempty" xml:"OversellRatio,omitempty"`
+	Remain              *int64  `json:"Remain,omitempty" xml:"Remain,omitempty"`
+	ReserveDisable      *bool   `json:"ReserveDisable,omitempty" xml:"ReserveDisable,omitempty"`
+	ReserveDisableTotal *int64  `json:"ReserveDisableTotal,omitempty" xml:"ReserveDisableTotal,omitempty"`
+	Reserved            *int64  `json:"Reserved,omitempty" xml:"Reserved,omitempty"`
+	StatusDisable       *bool   `json:"StatusDisable,omitempty" xml:"StatusDisable,omitempty"`
+	StatusDisableTotal  *int64  `json:"StatusDisableTotal,omitempty" xml:"StatusDisableTotal,omitempty"`
+	Total               *int64  `json:"Total,omitempty" xml:"Total,omitempty"`
+	Type                *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Used                *int64  `json:"Used,omitempty" xml:"Used,omitempty"`
+	UsedRatio           *int64  `json:"UsedRatio,omitempty" xml:"UsedRatio,omitempty"`
+}
+
+func (s DescribeNCInformationResponseBodyDataCpu) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeNCInformationResponseBodyDataCpu) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeNCInformationResponseBodyDataCpu) SetDisplay(v bool) *DescribeNCInformationResponseBodyDataCpu {
+	s.Display = &v
+	return s
+}
+
+func (s *DescribeNCInformationResponseBodyDataCpu) SetOversellRatio(v int64) *DescribeNCInformationResponseBodyDataCpu {
+	s.OversellRatio = &v
+	return s
+}
+
+func (s *DescribeNCInformationResponseBodyDataCpu) SetRemain(v int64) *DescribeNCInformationResponseBodyDataCpu {
+	s.Remain = &v
+	return s
+}
+
+func (s *DescribeNCInformationResponseBodyDataCpu) SetReserveDisable(v bool) *DescribeNCInformationResponseBodyDataCpu {
+	s.ReserveDisable = &v
+	return s
+}
+
+func (s *DescribeNCInformationResponseBodyDataCpu) SetReserveDisableTotal(v int64) *DescribeNCInformationResponseBodyDataCpu {
+	s.ReserveDisableTotal = &v
+	return s
+}
+
+func (s *DescribeNCInformationResponseBodyDataCpu) SetReserved(v int64) *DescribeNCInformationResponseBodyDataCpu {
+	s.Reserved = &v
+	return s
+}
+
+func (s *DescribeNCInformationResponseBodyDataCpu) SetStatusDisable(v bool) *DescribeNCInformationResponseBodyDataCpu {
+	s.StatusDisable = &v
+	return s
+}
+
+func (s *DescribeNCInformationResponseBodyDataCpu) SetStatusDisableTotal(v int64) *DescribeNCInformationResponseBodyDataCpu {
+	s.StatusDisableTotal = &v
+	return s
+}
+
+func (s *DescribeNCInformationResponseBodyDataCpu) SetTotal(v int64) *DescribeNCInformationResponseBodyDataCpu {
+	s.Total = &v
+	return s
+}
+
+func (s *DescribeNCInformationResponseBodyDataCpu) SetType(v string) *DescribeNCInformationResponseBodyDataCpu {
+	s.Type = &v
+	return s
+}
+
+func (s *DescribeNCInformationResponseBodyDataCpu) SetUsed(v int64) *DescribeNCInformationResponseBodyDataCpu {
+	s.Used = &v
+	return s
+}
+
+func (s *DescribeNCInformationResponseBodyDataCpu) SetUsedRatio(v int64) *DescribeNCInformationResponseBodyDataCpu {
+	s.UsedRatio = &v
+	return s
+}
+
+type DescribeNCInformationResponseBodyDataGpu struct {
+	Display             *bool   `json:"Display,omitempty" xml:"Display,omitempty"`
+	OversellRatio       *int64  `json:"OversellRatio,omitempty" xml:"OversellRatio,omitempty"`
+	Remain              *int64  `json:"Remain,omitempty" xml:"Remain,omitempty"`
+	ReserveDisable      *bool   `json:"ReserveDisable,omitempty" xml:"ReserveDisable,omitempty"`
+	ReserveDisableTotal *int64  `json:"ReserveDisableTotal,omitempty" xml:"ReserveDisableTotal,omitempty"`
+	Reserved            *int64  `json:"Reserved,omitempty" xml:"Reserved,omitempty"`
+	StatusDisable       *bool   `json:"StatusDisable,omitempty" xml:"StatusDisable,omitempty"`
+	StatusDisableTotal  *int64  `json:"StatusDisableTotal,omitempty" xml:"StatusDisableTotal,omitempty"`
+	Total               *int64  `json:"Total,omitempty" xml:"Total,omitempty"`
+	Type                *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Used                *int64  `json:"Used,omitempty" xml:"Used,omitempty"`
+	UsedRatio           *int64  `json:"UsedRatio,omitempty" xml:"UsedRatio,omitempty"`
+}
+
+func (s DescribeNCInformationResponseBodyDataGpu) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeNCInformationResponseBodyDataGpu) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeNCInformationResponseBodyDataGpu) SetDisplay(v bool) *DescribeNCInformationResponseBodyDataGpu {
+	s.Display = &v
+	return s
+}
+
+func (s *DescribeNCInformationResponseBodyDataGpu) SetOversellRatio(v int64) *DescribeNCInformationResponseBodyDataGpu {
+	s.OversellRatio = &v
+	return s
+}
+
+func (s *DescribeNCInformationResponseBodyDataGpu) SetRemain(v int64) *DescribeNCInformationResponseBodyDataGpu {
+	s.Remain = &v
+	return s
+}
+
+func (s *DescribeNCInformationResponseBodyDataGpu) SetReserveDisable(v bool) *DescribeNCInformationResponseBodyDataGpu {
+	s.ReserveDisable = &v
+	return s
+}
+
+func (s *DescribeNCInformationResponseBodyDataGpu) SetReserveDisableTotal(v int64) *DescribeNCInformationResponseBodyDataGpu {
+	s.ReserveDisableTotal = &v
+	return s
+}
+
+func (s *DescribeNCInformationResponseBodyDataGpu) SetReserved(v int64) *DescribeNCInformationResponseBodyDataGpu {
+	s.Reserved = &v
+	return s
+}
+
+func (s *DescribeNCInformationResponseBodyDataGpu) SetStatusDisable(v bool) *DescribeNCInformationResponseBodyDataGpu {
+	s.StatusDisable = &v
+	return s
+}
+
+func (s *DescribeNCInformationResponseBodyDataGpu) SetStatusDisableTotal(v int64) *DescribeNCInformationResponseBodyDataGpu {
+	s.StatusDisableTotal = &v
+	return s
+}
+
+func (s *DescribeNCInformationResponseBodyDataGpu) SetTotal(v int64) *DescribeNCInformationResponseBodyDataGpu {
+	s.Total = &v
+	return s
+}
+
+func (s *DescribeNCInformationResponseBodyDataGpu) SetType(v string) *DescribeNCInformationResponseBodyDataGpu {
+	s.Type = &v
+	return s
+}
+
+func (s *DescribeNCInformationResponseBodyDataGpu) SetUsed(v int64) *DescribeNCInformationResponseBodyDataGpu {
+	s.Used = &v
+	return s
+}
+
+func (s *DescribeNCInformationResponseBodyDataGpu) SetUsedRatio(v int64) *DescribeNCInformationResponseBodyDataGpu {
+	s.UsedRatio = &v
+	return s
+}
+
+type DescribeNCInformationResponseBodyDataHdd struct {
+	Display             *bool   `json:"Display,omitempty" xml:"Display,omitempty"`
+	OversellRatio       *int64  `json:"OversellRatio,omitempty" xml:"OversellRatio,omitempty"`
+	Remain              *int64  `json:"Remain,omitempty" xml:"Remain,omitempty"`
+	ReserveDisable      *bool   `json:"ReserveDisable,omitempty" xml:"ReserveDisable,omitempty"`
+	ReserveDisableTotal *int64  `json:"ReserveDisableTotal,omitempty" xml:"ReserveDisableTotal,omitempty"`
+	Reserved            *int64  `json:"Reserved,omitempty" xml:"Reserved,omitempty"`
+	StatusDisable       *bool   `json:"StatusDisable,omitempty" xml:"StatusDisable,omitempty"`
+	StatusDisableTotal  *int64  `json:"StatusDisableTotal,omitempty" xml:"StatusDisableTotal,omitempty"`
+	Total               *int64  `json:"Total,omitempty" xml:"Total,omitempty"`
+	Type                *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Used                *int64  `json:"Used,omitempty" xml:"Used,omitempty"`
+	UsedRatio           *int64  `json:"UsedRatio,omitempty" xml:"UsedRatio,omitempty"`
+}
+
+func (s DescribeNCInformationResponseBodyDataHdd) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeNCInformationResponseBodyDataHdd) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeNCInformationResponseBodyDataHdd) SetDisplay(v bool) *DescribeNCInformationResponseBodyDataHdd {
+	s.Display = &v
+	return s
+}
+
+func (s *DescribeNCInformationResponseBodyDataHdd) SetOversellRatio(v int64) *DescribeNCInformationResponseBodyDataHdd {
+	s.OversellRatio = &v
+	return s
+}
+
+func (s *DescribeNCInformationResponseBodyDataHdd) SetRemain(v int64) *DescribeNCInformationResponseBodyDataHdd {
+	s.Remain = &v
+	return s
+}
+
+func (s *DescribeNCInformationResponseBodyDataHdd) SetReserveDisable(v bool) *DescribeNCInformationResponseBodyDataHdd {
+	s.ReserveDisable = &v
+	return s
+}
+
+func (s *DescribeNCInformationResponseBodyDataHdd) SetReserveDisableTotal(v int64) *DescribeNCInformationResponseBodyDataHdd {
+	s.ReserveDisableTotal = &v
+	return s
+}
+
+func (s *DescribeNCInformationResponseBodyDataHdd) SetReserved(v int64) *DescribeNCInformationResponseBodyDataHdd {
+	s.Reserved = &v
+	return s
+}
+
+func (s *DescribeNCInformationResponseBodyDataHdd) SetStatusDisable(v bool) *DescribeNCInformationResponseBodyDataHdd {
+	s.StatusDisable = &v
+	return s
+}
+
+func (s *DescribeNCInformationResponseBodyDataHdd) SetStatusDisableTotal(v int64) *DescribeNCInformationResponseBodyDataHdd {
+	s.StatusDisableTotal = &v
+	return s
+}
+
+func (s *DescribeNCInformationResponseBodyDataHdd) SetTotal(v int64) *DescribeNCInformationResponseBodyDataHdd {
+	s.Total = &v
+	return s
+}
+
+func (s *DescribeNCInformationResponseBodyDataHdd) SetType(v string) *DescribeNCInformationResponseBodyDataHdd {
+	s.Type = &v
+	return s
+}
+
+func (s *DescribeNCInformationResponseBodyDataHdd) SetUsed(v int64) *DescribeNCInformationResponseBodyDataHdd {
+	s.Used = &v
+	return s
+}
+
+func (s *DescribeNCInformationResponseBodyDataHdd) SetUsedRatio(v int64) *DescribeNCInformationResponseBodyDataHdd {
+	s.UsedRatio = &v
+	return s
+}
+
+type DescribeNCInformationResponseBodyDataInfo struct {
+	Ip   *string   `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	Name *string   `json:"Name,omitempty" xml:"Name,omitempty"`
+	Tag  []*string `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	Uuid *string   `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
+}
+
+func (s DescribeNCInformationResponseBodyDataInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeNCInformationResponseBodyDataInfo) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeNCInformationResponseBodyDataInfo) SetIp(v string) *DescribeNCInformationResponseBodyDataInfo {
+	s.Ip = &v
+	return s
+}
+
+func (s *DescribeNCInformationResponseBodyDataInfo) SetName(v string) *DescribeNCInformationResponseBodyDataInfo {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeNCInformationResponseBodyDataInfo) SetTag(v []*string) *DescribeNCInformationResponseBodyDataInfo {
+	s.Tag = v
+	return s
+}
+
+func (s *DescribeNCInformationResponseBodyDataInfo) SetUuid(v string) *DescribeNCInformationResponseBodyDataInfo {
+	s.Uuid = &v
+	return s
+}
+
+type DescribeNCInformationResponseBodyDataMemory struct {
+	Display             *bool   `json:"Display,omitempty" xml:"Display,omitempty"`
+	OversellRatio       *int64  `json:"OversellRatio,omitempty" xml:"OversellRatio,omitempty"`
+	Remain              *int64  `json:"Remain,omitempty" xml:"Remain,omitempty"`
+	ReserveDisable      *bool   `json:"ReserveDisable,omitempty" xml:"ReserveDisable,omitempty"`
+	ReserveDisableTotal *int64  `json:"ReserveDisableTotal,omitempty" xml:"ReserveDisableTotal,omitempty"`
+	Reserved            *int64  `json:"Reserved,omitempty" xml:"Reserved,omitempty"`
+	StatusDisable       *bool   `json:"StatusDisable,omitempty" xml:"StatusDisable,omitempty"`
+	StatusDisableTotal  *int64  `json:"StatusDisableTotal,omitempty" xml:"StatusDisableTotal,omitempty"`
+	Total               *int64  `json:"Total,omitempty" xml:"Total,omitempty"`
+	Type                *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Used                *int64  `json:"Used,omitempty" xml:"Used,omitempty"`
+	UsedRatio           *int64  `json:"UsedRatio,omitempty" xml:"UsedRatio,omitempty"`
+}
+
+func (s DescribeNCInformationResponseBodyDataMemory) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeNCInformationResponseBodyDataMemory) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeNCInformationResponseBodyDataMemory) SetDisplay(v bool) *DescribeNCInformationResponseBodyDataMemory {
+	s.Display = &v
+	return s
+}
+
+func (s *DescribeNCInformationResponseBodyDataMemory) SetOversellRatio(v int64) *DescribeNCInformationResponseBodyDataMemory {
+	s.OversellRatio = &v
+	return s
+}
+
+func (s *DescribeNCInformationResponseBodyDataMemory) SetRemain(v int64) *DescribeNCInformationResponseBodyDataMemory {
+	s.Remain = &v
+	return s
+}
+
+func (s *DescribeNCInformationResponseBodyDataMemory) SetReserveDisable(v bool) *DescribeNCInformationResponseBodyDataMemory {
+	s.ReserveDisable = &v
+	return s
+}
+
+func (s *DescribeNCInformationResponseBodyDataMemory) SetReserveDisableTotal(v int64) *DescribeNCInformationResponseBodyDataMemory {
+	s.ReserveDisableTotal = &v
+	return s
+}
+
+func (s *DescribeNCInformationResponseBodyDataMemory) SetReserved(v int64) *DescribeNCInformationResponseBodyDataMemory {
+	s.Reserved = &v
+	return s
+}
+
+func (s *DescribeNCInformationResponseBodyDataMemory) SetStatusDisable(v bool) *DescribeNCInformationResponseBodyDataMemory {
+	s.StatusDisable = &v
+	return s
+}
+
+func (s *DescribeNCInformationResponseBodyDataMemory) SetStatusDisableTotal(v int64) *DescribeNCInformationResponseBodyDataMemory {
+	s.StatusDisableTotal = &v
+	return s
+}
+
+func (s *DescribeNCInformationResponseBodyDataMemory) SetTotal(v int64) *DescribeNCInformationResponseBodyDataMemory {
+	s.Total = &v
+	return s
+}
+
+func (s *DescribeNCInformationResponseBodyDataMemory) SetType(v string) *DescribeNCInformationResponseBodyDataMemory {
+	s.Type = &v
+	return s
+}
+
+func (s *DescribeNCInformationResponseBodyDataMemory) SetUsed(v int64) *DescribeNCInformationResponseBodyDataMemory {
+	s.Used = &v
+	return s
+}
+
+func (s *DescribeNCInformationResponseBodyDataMemory) SetUsedRatio(v int64) *DescribeNCInformationResponseBodyDataMemory {
+	s.UsedRatio = &v
+	return s
+}
+
+type DescribeNCInformationResponseBodyDataNvme struct {
+	Display             *bool   `json:"Display,omitempty" xml:"Display,omitempty"`
+	OversellRatio       *int64  `json:"OversellRatio,omitempty" xml:"OversellRatio,omitempty"`
+	Remain              *int64  `json:"Remain,omitempty" xml:"Remain,omitempty"`
+	ReserveDisable      *bool   `json:"ReserveDisable,omitempty" xml:"ReserveDisable,omitempty"`
+	ReserveDisableTotal *int64  `json:"ReserveDisableTotal,omitempty" xml:"ReserveDisableTotal,omitempty"`
+	Reserved            *int64  `json:"Reserved,omitempty" xml:"Reserved,omitempty"`
+	StatusDisable       *bool   `json:"StatusDisable,omitempty" xml:"StatusDisable,omitempty"`
+	StatusDisableTotal  *int64  `json:"StatusDisableTotal,omitempty" xml:"StatusDisableTotal,omitempty"`
+	Total               *int64  `json:"Total,omitempty" xml:"Total,omitempty"`
+	Type                *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Used                *int64  `json:"Used,omitempty" xml:"Used,omitempty"`
+	UsedRatio           *int64  `json:"UsedRatio,omitempty" xml:"UsedRatio,omitempty"`
+}
+
+func (s DescribeNCInformationResponseBodyDataNvme) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeNCInformationResponseBodyDataNvme) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeNCInformationResponseBodyDataNvme) SetDisplay(v bool) *DescribeNCInformationResponseBodyDataNvme {
+	s.Display = &v
+	return s
+}
+
+func (s *DescribeNCInformationResponseBodyDataNvme) SetOversellRatio(v int64) *DescribeNCInformationResponseBodyDataNvme {
+	s.OversellRatio = &v
+	return s
+}
+
+func (s *DescribeNCInformationResponseBodyDataNvme) SetRemain(v int64) *DescribeNCInformationResponseBodyDataNvme {
+	s.Remain = &v
+	return s
+}
+
+func (s *DescribeNCInformationResponseBodyDataNvme) SetReserveDisable(v bool) *DescribeNCInformationResponseBodyDataNvme {
+	s.ReserveDisable = &v
+	return s
+}
+
+func (s *DescribeNCInformationResponseBodyDataNvme) SetReserveDisableTotal(v int64) *DescribeNCInformationResponseBodyDataNvme {
+	s.ReserveDisableTotal = &v
+	return s
+}
+
+func (s *DescribeNCInformationResponseBodyDataNvme) SetReserved(v int64) *DescribeNCInformationResponseBodyDataNvme {
+	s.Reserved = &v
+	return s
+}
+
+func (s *DescribeNCInformationResponseBodyDataNvme) SetStatusDisable(v bool) *DescribeNCInformationResponseBodyDataNvme {
+	s.StatusDisable = &v
+	return s
+}
+
+func (s *DescribeNCInformationResponseBodyDataNvme) SetStatusDisableTotal(v int64) *DescribeNCInformationResponseBodyDataNvme {
+	s.StatusDisableTotal = &v
+	return s
+}
+
+func (s *DescribeNCInformationResponseBodyDataNvme) SetTotal(v int64) *DescribeNCInformationResponseBodyDataNvme {
+	s.Total = &v
+	return s
+}
+
+func (s *DescribeNCInformationResponseBodyDataNvme) SetType(v string) *DescribeNCInformationResponseBodyDataNvme {
+	s.Type = &v
+	return s
+}
+
+func (s *DescribeNCInformationResponseBodyDataNvme) SetUsed(v int64) *DescribeNCInformationResponseBodyDataNvme {
+	s.Used = &v
+	return s
+}
+
+func (s *DescribeNCInformationResponseBodyDataNvme) SetUsedRatio(v int64) *DescribeNCInformationResponseBodyDataNvme {
+	s.UsedRatio = &v
+	return s
+}
+
+type DescribeNCInformationResponseBodyDataSsd struct {
+	Display             *bool   `json:"Display,omitempty" xml:"Display,omitempty"`
+	OversellRatio       *int64  `json:"OversellRatio,omitempty" xml:"OversellRatio,omitempty"`
+	Remain              *int64  `json:"Remain,omitempty" xml:"Remain,omitempty"`
+	ReserveDisable      *bool   `json:"ReserveDisable,omitempty" xml:"ReserveDisable,omitempty"`
+	ReserveDisableTotal *int64  `json:"ReserveDisableTotal,omitempty" xml:"ReserveDisableTotal,omitempty"`
+	Reserved            *int64  `json:"Reserved,omitempty" xml:"Reserved,omitempty"`
+	StatusDisable       *bool   `json:"StatusDisable,omitempty" xml:"StatusDisable,omitempty"`
+	StatusDisableTotal  *int64  `json:"StatusDisableTotal,omitempty" xml:"StatusDisableTotal,omitempty"`
+	Total               *int64  `json:"Total,omitempty" xml:"Total,omitempty"`
+	Type                *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Used                *int64  `json:"Used,omitempty" xml:"Used,omitempty"`
+	UsedRatio           *int64  `json:"UsedRatio,omitempty" xml:"UsedRatio,omitempty"`
+}
+
+func (s DescribeNCInformationResponseBodyDataSsd) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeNCInformationResponseBodyDataSsd) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeNCInformationResponseBodyDataSsd) SetDisplay(v bool) *DescribeNCInformationResponseBodyDataSsd {
+	s.Display = &v
+	return s
+}
+
+func (s *DescribeNCInformationResponseBodyDataSsd) SetOversellRatio(v int64) *DescribeNCInformationResponseBodyDataSsd {
+	s.OversellRatio = &v
+	return s
+}
+
+func (s *DescribeNCInformationResponseBodyDataSsd) SetRemain(v int64) *DescribeNCInformationResponseBodyDataSsd {
+	s.Remain = &v
+	return s
+}
+
+func (s *DescribeNCInformationResponseBodyDataSsd) SetReserveDisable(v bool) *DescribeNCInformationResponseBodyDataSsd {
+	s.ReserveDisable = &v
+	return s
+}
+
+func (s *DescribeNCInformationResponseBodyDataSsd) SetReserveDisableTotal(v int64) *DescribeNCInformationResponseBodyDataSsd {
+	s.ReserveDisableTotal = &v
+	return s
+}
+
+func (s *DescribeNCInformationResponseBodyDataSsd) SetReserved(v int64) *DescribeNCInformationResponseBodyDataSsd {
+	s.Reserved = &v
+	return s
+}
+
+func (s *DescribeNCInformationResponseBodyDataSsd) SetStatusDisable(v bool) *DescribeNCInformationResponseBodyDataSsd {
+	s.StatusDisable = &v
+	return s
+}
+
+func (s *DescribeNCInformationResponseBodyDataSsd) SetStatusDisableTotal(v int64) *DescribeNCInformationResponseBodyDataSsd {
+	s.StatusDisableTotal = &v
+	return s
+}
+
+func (s *DescribeNCInformationResponseBodyDataSsd) SetTotal(v int64) *DescribeNCInformationResponseBodyDataSsd {
+	s.Total = &v
+	return s
+}
+
+func (s *DescribeNCInformationResponseBodyDataSsd) SetType(v string) *DescribeNCInformationResponseBodyDataSsd {
+	s.Type = &v
+	return s
+}
+
+func (s *DescribeNCInformationResponseBodyDataSsd) SetUsed(v int64) *DescribeNCInformationResponseBodyDataSsd {
+	s.Used = &v
+	return s
+}
+
+func (s *DescribeNCInformationResponseBodyDataSsd) SetUsedRatio(v int64) *DescribeNCInformationResponseBodyDataSsd {
+	s.UsedRatio = &v
+	return s
+}
+
+type DescribeNCInformationResponseBodyPager struct {
+	Page  *int64 `json:"Page,omitempty" xml:"Page,omitempty"`
+	Size  *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
+	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
+}
+
+func (s DescribeNCInformationResponseBodyPager) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeNCInformationResponseBodyPager) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeNCInformationResponseBodyPager) SetPage(v int64) *DescribeNCInformationResponseBodyPager {
+	s.Page = &v
+	return s
+}
+
+func (s *DescribeNCInformationResponseBodyPager) SetSize(v int64) *DescribeNCInformationResponseBodyPager {
+	s.Size = &v
+	return s
+}
+
+func (s *DescribeNCInformationResponseBodyPager) SetTotal(v int64) *DescribeNCInformationResponseBodyPager {
+	s.Total = &v
+	return s
+}
+
+type DescribeNCInformationResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeNCInformationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeNCInformationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeNCInformationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeNCInformationResponse) SetHeaders(v map[string]*string) *DescribeNCInformationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeNCInformationResponse) SetStatusCode(v int32) *DescribeNCInformationResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeNCInformationResponse) SetBody(v *DescribeNCInformationResponseBody) *DescribeNCInformationResponse {
 	s.Body = v
 	return s
 }
@@ -17222,8 +18008,9 @@ func (s *DescribeRegionIspsRequest) SetEnsRegionId(v string) *DescribeRegionIsps
 }
 
 type DescribeRegionIspsResponseBody struct {
-	Isps      []*DescribeRegionIspsResponseBodyIsps `json:"Isps,omitempty" xml:"Isps,omitempty" type:"Repeated"`
-	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Isps []*DescribeRegionIspsResponseBodyIsps `json:"Isps,omitempty" xml:"Isps,omitempty" type:"Repeated"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeRegionIspsResponseBody) String() string {
@@ -17292,6 +18079,1505 @@ func (s *DescribeRegionIspsResponse) SetStatusCode(v int32) *DescribeRegionIspsR
 }
 
 func (s *DescribeRegionIspsResponse) SetBody(v *DescribeRegionIspsResponseBody) *DescribeRegionIspsResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeRegionResourceRequest struct {
+	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	IspType     *string `json:"IspType,omitempty" xml:"IspType,omitempty"`
+}
+
+func (s DescribeRegionResourceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRegionResourceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRegionResourceRequest) SetEnsRegionId(v string) *DescribeRegionResourceRequest {
+	s.EnsRegionId = &v
+	return s
+}
+
+func (s *DescribeRegionResourceRequest) SetIspType(v string) *DescribeRegionResourceRequest {
+	s.IspType = &v
+	return s
+}
+
+type DescribeRegionResourceResponseBody struct {
+	Data      []*DescribeRegionResourceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	Desc      *string                                   `json:"Desc,omitempty" xml:"Desc,omitempty"`
+	Msg       *string                                   `json:"Msg,omitempty" xml:"Msg,omitempty"`
+	Pager     *DescribeRegionResourceResponseBodyPager  `json:"Pager,omitempty" xml:"Pager,omitempty" type:"Struct"`
+	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeRegionResourceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRegionResourceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRegionResourceResponseBody) SetData(v []*DescribeRegionResourceResponseBodyData) *DescribeRegionResourceResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBody) SetDesc(v string) *DescribeRegionResourceResponseBody {
+	s.Desc = &v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBody) SetMsg(v string) *DescribeRegionResourceResponseBody {
+	s.Msg = &v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBody) SetPager(v *DescribeRegionResourceResponseBodyPager) *DescribeRegionResourceResponseBody {
+	s.Pager = v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBody) SetRequestId(v string) *DescribeRegionResourceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeRegionResourceResponseBodyData struct {
+	AreaCode       *string                                             `json:"AreaCode,omitempty" xml:"AreaCode,omitempty"`
+	AreaName       *string                                             `json:"AreaName,omitempty" xml:"AreaName,omitempty"`
+	ArmCard        *DescribeRegionResourceResponseBodyDataArmCard      `json:"ArmCard,omitempty" xml:"ArmCard,omitempty" type:"Struct"`
+	Attributes     []*string                                           `json:"Attributes,omitempty" xml:"Attributes,omitempty" type:"Repeated"`
+	Bandwidth      *DescribeRegionResourceResponseBodyDataBandwidth    `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty" type:"Struct"`
+	BlockStorage   *DescribeRegionResourceResponseBodyDataBlockStorage `json:"BlockStorage,omitempty" xml:"BlockStorage,omitempty" type:"Struct"`
+	CountryCode    *string                                             `json:"CountryCode,omitempty" xml:"CountryCode,omitempty"`
+	CountryName    *string                                             `json:"CountryName,omitempty" xml:"CountryName,omitempty"`
+	Cpu            *DescribeRegionResourceResponseBodyDataCpu          `json:"Cpu,omitempty" xml:"Cpu,omitempty" type:"Struct"`
+	Gpu            *DescribeRegionResourceResponseBodyDataGpu          `json:"Gpu,omitempty" xml:"Gpu,omitempty" type:"Struct"`
+	Hdd            *DescribeRegionResourceResponseBodyDataHdd          `json:"Hdd,omitempty" xml:"Hdd,omitempty" type:"Struct"`
+	HouseId        *string                                             `json:"HouseId,omitempty" xml:"HouseId,omitempty"`
+	Ipv4s          []*DescribeRegionResourceResponseBodyDataIpv4s      `json:"Ipv4s,omitempty" xml:"Ipv4s,omitempty" type:"Repeated"`
+	Ipv6s          []*DescribeRegionResourceResponseBodyDataIpv6s      `json:"Ipv6s,omitempty" xml:"Ipv6s,omitempty" type:"Repeated"`
+	IspTypes       []*string                                           `json:"IspTypes,omitempty" xml:"IspTypes,omitempty" type:"Repeated"`
+	Memory         *DescribeRegionResourceResponseBodyDataMemory       `json:"Memory,omitempty" xml:"Memory,omitempty" type:"Struct"`
+	Name           *string                                             `json:"Name,omitempty" xml:"Name,omitempty"`
+	Nvme           *DescribeRegionResourceResponseBodyDataNvme         `json:"Nvme,omitempty" xml:"Nvme,omitempty" type:"Struct"`
+	OssStorage     *DescribeRegionResourceResponseBodyDataOssStorage   `json:"OssStorage,omitempty" xml:"OssStorage,omitempty" type:"Struct"`
+	Pangu          *DescribeRegionResourceResponseBodyDataPangu        `json:"Pangu,omitempty" xml:"Pangu,omitempty" type:"Struct"`
+	PcfarmNum      *DescribeRegionResourceResponseBodyDataPcfarmNum    `json:"PcfarmNum,omitempty" xml:"PcfarmNum,omitempty" type:"Struct"`
+	Poc            *bool                                               `json:"Poc,omitempty" xml:"Poc,omitempty"`
+	ProvinceCode   *string                                             `json:"ProvinceCode,omitempty" xml:"ProvinceCode,omitempty"`
+	ProvinceName   *string                                             `json:"ProvinceName,omitempty" xml:"ProvinceName,omitempty"`
+	ReserveDisable *bool                                               `json:"ReserveDisable,omitempty" xml:"ReserveDisable,omitempty"`
+	Ssd            *DescribeRegionResourceResponseBodyDataSsd          `json:"Ssd,omitempty" xml:"Ssd,omitempty" type:"Struct"`
+	StatusDisable  *bool                                               `json:"StatusDisable,omitempty" xml:"StatusDisable,omitempty"`
+	Type           *string                                             `json:"Type,omitempty" xml:"Type,omitempty"`
+	Uuid           *string                                             `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
+	Virtual        *string                                             `json:"Virtual,omitempty" xml:"Virtual,omitempty"`
+}
+
+func (s DescribeRegionResourceResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRegionResourceResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRegionResourceResponseBodyData) SetAreaCode(v string) *DescribeRegionResourceResponseBodyData {
+	s.AreaCode = &v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyData) SetAreaName(v string) *DescribeRegionResourceResponseBodyData {
+	s.AreaName = &v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyData) SetArmCard(v *DescribeRegionResourceResponseBodyDataArmCard) *DescribeRegionResourceResponseBodyData {
+	s.ArmCard = v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyData) SetAttributes(v []*string) *DescribeRegionResourceResponseBodyData {
+	s.Attributes = v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyData) SetBandwidth(v *DescribeRegionResourceResponseBodyDataBandwidth) *DescribeRegionResourceResponseBodyData {
+	s.Bandwidth = v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyData) SetBlockStorage(v *DescribeRegionResourceResponseBodyDataBlockStorage) *DescribeRegionResourceResponseBodyData {
+	s.BlockStorage = v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyData) SetCountryCode(v string) *DescribeRegionResourceResponseBodyData {
+	s.CountryCode = &v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyData) SetCountryName(v string) *DescribeRegionResourceResponseBodyData {
+	s.CountryName = &v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyData) SetCpu(v *DescribeRegionResourceResponseBodyDataCpu) *DescribeRegionResourceResponseBodyData {
+	s.Cpu = v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyData) SetGpu(v *DescribeRegionResourceResponseBodyDataGpu) *DescribeRegionResourceResponseBodyData {
+	s.Gpu = v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyData) SetHdd(v *DescribeRegionResourceResponseBodyDataHdd) *DescribeRegionResourceResponseBodyData {
+	s.Hdd = v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyData) SetHouseId(v string) *DescribeRegionResourceResponseBodyData {
+	s.HouseId = &v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyData) SetIpv4s(v []*DescribeRegionResourceResponseBodyDataIpv4s) *DescribeRegionResourceResponseBodyData {
+	s.Ipv4s = v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyData) SetIpv6s(v []*DescribeRegionResourceResponseBodyDataIpv6s) *DescribeRegionResourceResponseBodyData {
+	s.Ipv6s = v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyData) SetIspTypes(v []*string) *DescribeRegionResourceResponseBodyData {
+	s.IspTypes = v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyData) SetMemory(v *DescribeRegionResourceResponseBodyDataMemory) *DescribeRegionResourceResponseBodyData {
+	s.Memory = v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyData) SetName(v string) *DescribeRegionResourceResponseBodyData {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyData) SetNvme(v *DescribeRegionResourceResponseBodyDataNvme) *DescribeRegionResourceResponseBodyData {
+	s.Nvme = v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyData) SetOssStorage(v *DescribeRegionResourceResponseBodyDataOssStorage) *DescribeRegionResourceResponseBodyData {
+	s.OssStorage = v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyData) SetPangu(v *DescribeRegionResourceResponseBodyDataPangu) *DescribeRegionResourceResponseBodyData {
+	s.Pangu = v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyData) SetPcfarmNum(v *DescribeRegionResourceResponseBodyDataPcfarmNum) *DescribeRegionResourceResponseBodyData {
+	s.PcfarmNum = v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyData) SetPoc(v bool) *DescribeRegionResourceResponseBodyData {
+	s.Poc = &v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyData) SetProvinceCode(v string) *DescribeRegionResourceResponseBodyData {
+	s.ProvinceCode = &v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyData) SetProvinceName(v string) *DescribeRegionResourceResponseBodyData {
+	s.ProvinceName = &v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyData) SetReserveDisable(v bool) *DescribeRegionResourceResponseBodyData {
+	s.ReserveDisable = &v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyData) SetSsd(v *DescribeRegionResourceResponseBodyDataSsd) *DescribeRegionResourceResponseBodyData {
+	s.Ssd = v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyData) SetStatusDisable(v bool) *DescribeRegionResourceResponseBodyData {
+	s.StatusDisable = &v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyData) SetType(v string) *DescribeRegionResourceResponseBodyData {
+	s.Type = &v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyData) SetUuid(v string) *DescribeRegionResourceResponseBodyData {
+	s.Uuid = &v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyData) SetVirtual(v string) *DescribeRegionResourceResponseBodyData {
+	s.Virtual = &v
+	return s
+}
+
+type DescribeRegionResourceResponseBodyDataArmCard struct {
+	Display             *bool   `json:"Display,omitempty" xml:"Display,omitempty"`
+	OversellRatio       *int64  `json:"OversellRatio,omitempty" xml:"OversellRatio,omitempty"`
+	Remain              *int64  `json:"Remain,omitempty" xml:"Remain,omitempty"`
+	ReserveDisable      *bool   `json:"ReserveDisable,omitempty" xml:"ReserveDisable,omitempty"`
+	ReserveDisableTotal *int64  `json:"ReserveDisableTotal,omitempty" xml:"ReserveDisableTotal,omitempty"`
+	Reserved            *int64  `json:"Reserved,omitempty" xml:"Reserved,omitempty"`
+	StatusDisable       *bool   `json:"StatusDisable,omitempty" xml:"StatusDisable,omitempty"`
+	StatusDisableTotal  *int64  `json:"StatusDisableTotal,omitempty" xml:"StatusDisableTotal,omitempty"`
+	Total               *int64  `json:"Total,omitempty" xml:"Total,omitempty"`
+	Type                *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Used                *int64  `json:"Used,omitempty" xml:"Used,omitempty"`
+	UsedRatio           *int64  `json:"UsedRatio,omitempty" xml:"UsedRatio,omitempty"`
+}
+
+func (s DescribeRegionResourceResponseBodyDataArmCard) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRegionResourceResponseBodyDataArmCard) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRegionResourceResponseBodyDataArmCard) SetDisplay(v bool) *DescribeRegionResourceResponseBodyDataArmCard {
+	s.Display = &v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyDataArmCard) SetOversellRatio(v int64) *DescribeRegionResourceResponseBodyDataArmCard {
+	s.OversellRatio = &v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyDataArmCard) SetRemain(v int64) *DescribeRegionResourceResponseBodyDataArmCard {
+	s.Remain = &v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyDataArmCard) SetReserveDisable(v bool) *DescribeRegionResourceResponseBodyDataArmCard {
+	s.ReserveDisable = &v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyDataArmCard) SetReserveDisableTotal(v int64) *DescribeRegionResourceResponseBodyDataArmCard {
+	s.ReserveDisableTotal = &v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyDataArmCard) SetReserved(v int64) *DescribeRegionResourceResponseBodyDataArmCard {
+	s.Reserved = &v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyDataArmCard) SetStatusDisable(v bool) *DescribeRegionResourceResponseBodyDataArmCard {
+	s.StatusDisable = &v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyDataArmCard) SetStatusDisableTotal(v int64) *DescribeRegionResourceResponseBodyDataArmCard {
+	s.StatusDisableTotal = &v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyDataArmCard) SetTotal(v int64) *DescribeRegionResourceResponseBodyDataArmCard {
+	s.Total = &v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyDataArmCard) SetType(v string) *DescribeRegionResourceResponseBodyDataArmCard {
+	s.Type = &v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyDataArmCard) SetUsed(v int64) *DescribeRegionResourceResponseBodyDataArmCard {
+	s.Used = &v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyDataArmCard) SetUsedRatio(v int64) *DescribeRegionResourceResponseBodyDataArmCard {
+	s.UsedRatio = &v
+	return s
+}
+
+type DescribeRegionResourceResponseBodyDataBandwidth struct {
+	Display             *bool   `json:"Display,omitempty" xml:"Display,omitempty"`
+	OversellRatio       *int64  `json:"OversellRatio,omitempty" xml:"OversellRatio,omitempty"`
+	Remain              *int64  `json:"Remain,omitempty" xml:"Remain,omitempty"`
+	ReserveDisable      *bool   `json:"ReserveDisable,omitempty" xml:"ReserveDisable,omitempty"`
+	ReserveDisableTotal *int64  `json:"ReserveDisableTotal,omitempty" xml:"ReserveDisableTotal,omitempty"`
+	Reserved            *int64  `json:"Reserved,omitempty" xml:"Reserved,omitempty"`
+	StatusDisable       *bool   `json:"StatusDisable,omitempty" xml:"StatusDisable,omitempty"`
+	StatusDisableTotal  *int64  `json:"StatusDisableTotal,omitempty" xml:"StatusDisableTotal,omitempty"`
+	Total               *int64  `json:"Total,omitempty" xml:"Total,omitempty"`
+	Type                *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Used                *int64  `json:"Used,omitempty" xml:"Used,omitempty"`
+	UsedRatio           *int64  `json:"UsedRatio,omitempty" xml:"UsedRatio,omitempty"`
+}
+
+func (s DescribeRegionResourceResponseBodyDataBandwidth) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRegionResourceResponseBodyDataBandwidth) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRegionResourceResponseBodyDataBandwidth) SetDisplay(v bool) *DescribeRegionResourceResponseBodyDataBandwidth {
+	s.Display = &v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyDataBandwidth) SetOversellRatio(v int64) *DescribeRegionResourceResponseBodyDataBandwidth {
+	s.OversellRatio = &v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyDataBandwidth) SetRemain(v int64) *DescribeRegionResourceResponseBodyDataBandwidth {
+	s.Remain = &v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyDataBandwidth) SetReserveDisable(v bool) *DescribeRegionResourceResponseBodyDataBandwidth {
+	s.ReserveDisable = &v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyDataBandwidth) SetReserveDisableTotal(v int64) *DescribeRegionResourceResponseBodyDataBandwidth {
+	s.ReserveDisableTotal = &v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyDataBandwidth) SetReserved(v int64) *DescribeRegionResourceResponseBodyDataBandwidth {
+	s.Reserved = &v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyDataBandwidth) SetStatusDisable(v bool) *DescribeRegionResourceResponseBodyDataBandwidth {
+	s.StatusDisable = &v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyDataBandwidth) SetStatusDisableTotal(v int64) *DescribeRegionResourceResponseBodyDataBandwidth {
+	s.StatusDisableTotal = &v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyDataBandwidth) SetTotal(v int64) *DescribeRegionResourceResponseBodyDataBandwidth {
+	s.Total = &v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyDataBandwidth) SetType(v string) *DescribeRegionResourceResponseBodyDataBandwidth {
+	s.Type = &v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyDataBandwidth) SetUsed(v int64) *DescribeRegionResourceResponseBodyDataBandwidth {
+	s.Used = &v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyDataBandwidth) SetUsedRatio(v int64) *DescribeRegionResourceResponseBodyDataBandwidth {
+	s.UsedRatio = &v
+	return s
+}
+
+type DescribeRegionResourceResponseBodyDataBlockStorage struct {
+	Display             *bool   `json:"Display,omitempty" xml:"Display,omitempty"`
+	OversellRatio       *int64  `json:"OversellRatio,omitempty" xml:"OversellRatio,omitempty"`
+	Remain              *int64  `json:"Remain,omitempty" xml:"Remain,omitempty"`
+	ReserveDisable      *bool   `json:"ReserveDisable,omitempty" xml:"ReserveDisable,omitempty"`
+	ReserveDisableTotal *int64  `json:"ReserveDisableTotal,omitempty" xml:"ReserveDisableTotal,omitempty"`
+	Reserved            *int64  `json:"Reserved,omitempty" xml:"Reserved,omitempty"`
+	StatusDisable       *bool   `json:"StatusDisable,omitempty" xml:"StatusDisable,omitempty"`
+	StatusDisableTotal  *int64  `json:"StatusDisableTotal,omitempty" xml:"StatusDisableTotal,omitempty"`
+	Total               *int64  `json:"Total,omitempty" xml:"Total,omitempty"`
+	Type                *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Used                *int64  `json:"Used,omitempty" xml:"Used,omitempty"`
+	UsedRatio           *int64  `json:"UsedRatio,omitempty" xml:"UsedRatio,omitempty"`
+}
+
+func (s DescribeRegionResourceResponseBodyDataBlockStorage) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRegionResourceResponseBodyDataBlockStorage) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRegionResourceResponseBodyDataBlockStorage) SetDisplay(v bool) *DescribeRegionResourceResponseBodyDataBlockStorage {
+	s.Display = &v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyDataBlockStorage) SetOversellRatio(v int64) *DescribeRegionResourceResponseBodyDataBlockStorage {
+	s.OversellRatio = &v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyDataBlockStorage) SetRemain(v int64) *DescribeRegionResourceResponseBodyDataBlockStorage {
+	s.Remain = &v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyDataBlockStorage) SetReserveDisable(v bool) *DescribeRegionResourceResponseBodyDataBlockStorage {
+	s.ReserveDisable = &v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyDataBlockStorage) SetReserveDisableTotal(v int64) *DescribeRegionResourceResponseBodyDataBlockStorage {
+	s.ReserveDisableTotal = &v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyDataBlockStorage) SetReserved(v int64) *DescribeRegionResourceResponseBodyDataBlockStorage {
+	s.Reserved = &v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyDataBlockStorage) SetStatusDisable(v bool) *DescribeRegionResourceResponseBodyDataBlockStorage {
+	s.StatusDisable = &v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyDataBlockStorage) SetStatusDisableTotal(v int64) *DescribeRegionResourceResponseBodyDataBlockStorage {
+	s.StatusDisableTotal = &v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyDataBlockStorage) SetTotal(v int64) *DescribeRegionResourceResponseBodyDataBlockStorage {
+	s.Total = &v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyDataBlockStorage) SetType(v string) *DescribeRegionResourceResponseBodyDataBlockStorage {
+	s.Type = &v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyDataBlockStorage) SetUsed(v int64) *DescribeRegionResourceResponseBodyDataBlockStorage {
+	s.Used = &v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyDataBlockStorage) SetUsedRatio(v int64) *DescribeRegionResourceResponseBodyDataBlockStorage {
+	s.UsedRatio = &v
+	return s
+}
+
+type DescribeRegionResourceResponseBodyDataCpu struct {
+	Display             *bool   `json:"Display,omitempty" xml:"Display,omitempty"`
+	OversellRatio       *int64  `json:"OversellRatio,omitempty" xml:"OversellRatio,omitempty"`
+	Remain              *int64  `json:"Remain,omitempty" xml:"Remain,omitempty"`
+	ReserveDisable      *bool   `json:"ReserveDisable,omitempty" xml:"ReserveDisable,omitempty"`
+	ReserveDisableTotal *int64  `json:"ReserveDisableTotal,omitempty" xml:"ReserveDisableTotal,omitempty"`
+	Reserved            *int64  `json:"Reserved,omitempty" xml:"Reserved,omitempty"`
+	StatusDisable       *bool   `json:"StatusDisable,omitempty" xml:"StatusDisable,omitempty"`
+	StatusDisableTotal  *int64  `json:"StatusDisableTotal,omitempty" xml:"StatusDisableTotal,omitempty"`
+	Total               *int64  `json:"Total,omitempty" xml:"Total,omitempty"`
+	Type                *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Used                *int64  `json:"Used,omitempty" xml:"Used,omitempty"`
+	UsedRatio           *int64  `json:"UsedRatio,omitempty" xml:"UsedRatio,omitempty"`
+}
+
+func (s DescribeRegionResourceResponseBodyDataCpu) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRegionResourceResponseBodyDataCpu) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRegionResourceResponseBodyDataCpu) SetDisplay(v bool) *DescribeRegionResourceResponseBodyDataCpu {
+	s.Display = &v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyDataCpu) SetOversellRatio(v int64) *DescribeRegionResourceResponseBodyDataCpu {
+	s.OversellRatio = &v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyDataCpu) SetRemain(v int64) *DescribeRegionResourceResponseBodyDataCpu {
+	s.Remain = &v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyDataCpu) SetReserveDisable(v bool) *DescribeRegionResourceResponseBodyDataCpu {
+	s.ReserveDisable = &v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyDataCpu) SetReserveDisableTotal(v int64) *DescribeRegionResourceResponseBodyDataCpu {
+	s.ReserveDisableTotal = &v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyDataCpu) SetReserved(v int64) *DescribeRegionResourceResponseBodyDataCpu {
+	s.Reserved = &v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyDataCpu) SetStatusDisable(v bool) *DescribeRegionResourceResponseBodyDataCpu {
+	s.StatusDisable = &v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyDataCpu) SetStatusDisableTotal(v int64) *DescribeRegionResourceResponseBodyDataCpu {
+	s.StatusDisableTotal = &v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyDataCpu) SetTotal(v int64) *DescribeRegionResourceResponseBodyDataCpu {
+	s.Total = &v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyDataCpu) SetType(v string) *DescribeRegionResourceResponseBodyDataCpu {
+	s.Type = &v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyDataCpu) SetUsed(v int64) *DescribeRegionResourceResponseBodyDataCpu {
+	s.Used = &v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyDataCpu) SetUsedRatio(v int64) *DescribeRegionResourceResponseBodyDataCpu {
+	s.UsedRatio = &v
+	return s
+}
+
+type DescribeRegionResourceResponseBodyDataGpu struct {
+	Display             *bool   `json:"Display,omitempty" xml:"Display,omitempty"`
+	OversellRatio       *int64  `json:"OversellRatio,omitempty" xml:"OversellRatio,omitempty"`
+	Remain              *int64  `json:"Remain,omitempty" xml:"Remain,omitempty"`
+	ReserveDisable      *bool   `json:"ReserveDisable,omitempty" xml:"ReserveDisable,omitempty"`
+	ReserveDisableTotal *int64  `json:"ReserveDisableTotal,omitempty" xml:"ReserveDisableTotal,omitempty"`
+	Reserved            *int64  `json:"Reserved,omitempty" xml:"Reserved,omitempty"`
+	StatusDisable       *bool   `json:"StatusDisable,omitempty" xml:"StatusDisable,omitempty"`
+	StatusDisableTotal  *int64  `json:"StatusDisableTotal,omitempty" xml:"StatusDisableTotal,omitempty"`
+	Total               *int64  `json:"Total,omitempty" xml:"Total,omitempty"`
+	Type                *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Used                *int64  `json:"Used,omitempty" xml:"Used,omitempty"`
+	UsedRatio           *int64  `json:"UsedRatio,omitempty" xml:"UsedRatio,omitempty"`
+}
+
+func (s DescribeRegionResourceResponseBodyDataGpu) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRegionResourceResponseBodyDataGpu) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRegionResourceResponseBodyDataGpu) SetDisplay(v bool) *DescribeRegionResourceResponseBodyDataGpu {
+	s.Display = &v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyDataGpu) SetOversellRatio(v int64) *DescribeRegionResourceResponseBodyDataGpu {
+	s.OversellRatio = &v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyDataGpu) SetRemain(v int64) *DescribeRegionResourceResponseBodyDataGpu {
+	s.Remain = &v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyDataGpu) SetReserveDisable(v bool) *DescribeRegionResourceResponseBodyDataGpu {
+	s.ReserveDisable = &v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyDataGpu) SetReserveDisableTotal(v int64) *DescribeRegionResourceResponseBodyDataGpu {
+	s.ReserveDisableTotal = &v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyDataGpu) SetReserved(v int64) *DescribeRegionResourceResponseBodyDataGpu {
+	s.Reserved = &v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyDataGpu) SetStatusDisable(v bool) *DescribeRegionResourceResponseBodyDataGpu {
+	s.StatusDisable = &v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyDataGpu) SetStatusDisableTotal(v int64) *DescribeRegionResourceResponseBodyDataGpu {
+	s.StatusDisableTotal = &v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyDataGpu) SetTotal(v int64) *DescribeRegionResourceResponseBodyDataGpu {
+	s.Total = &v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyDataGpu) SetType(v string) *DescribeRegionResourceResponseBodyDataGpu {
+	s.Type = &v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyDataGpu) SetUsed(v int64) *DescribeRegionResourceResponseBodyDataGpu {
+	s.Used = &v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyDataGpu) SetUsedRatio(v int64) *DescribeRegionResourceResponseBodyDataGpu {
+	s.UsedRatio = &v
+	return s
+}
+
+type DescribeRegionResourceResponseBodyDataHdd struct {
+	Display             *bool   `json:"Display,omitempty" xml:"Display,omitempty"`
+	OversellRatio       *int64  `json:"OversellRatio,omitempty" xml:"OversellRatio,omitempty"`
+	Remain              *int64  `json:"Remain,omitempty" xml:"Remain,omitempty"`
+	ReserveDisable      *bool   `json:"ReserveDisable,omitempty" xml:"ReserveDisable,omitempty"`
+	ReserveDisableTotal *int64  `json:"ReserveDisableTotal,omitempty" xml:"ReserveDisableTotal,omitempty"`
+	Reserved            *int64  `json:"Reserved,omitempty" xml:"Reserved,omitempty"`
+	StatusDisable       *bool   `json:"StatusDisable,omitempty" xml:"StatusDisable,omitempty"`
+	StatusDisableTotal  *int64  `json:"StatusDisableTotal,omitempty" xml:"StatusDisableTotal,omitempty"`
+	Total               *int64  `json:"Total,omitempty" xml:"Total,omitempty"`
+	Type                *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Used                *int64  `json:"Used,omitempty" xml:"Used,omitempty"`
+	UsedRatio           *int64  `json:"UsedRatio,omitempty" xml:"UsedRatio,omitempty"`
+}
+
+func (s DescribeRegionResourceResponseBodyDataHdd) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRegionResourceResponseBodyDataHdd) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRegionResourceResponseBodyDataHdd) SetDisplay(v bool) *DescribeRegionResourceResponseBodyDataHdd {
+	s.Display = &v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyDataHdd) SetOversellRatio(v int64) *DescribeRegionResourceResponseBodyDataHdd {
+	s.OversellRatio = &v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyDataHdd) SetRemain(v int64) *DescribeRegionResourceResponseBodyDataHdd {
+	s.Remain = &v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyDataHdd) SetReserveDisable(v bool) *DescribeRegionResourceResponseBodyDataHdd {
+	s.ReserveDisable = &v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyDataHdd) SetReserveDisableTotal(v int64) *DescribeRegionResourceResponseBodyDataHdd {
+	s.ReserveDisableTotal = &v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyDataHdd) SetReserved(v int64) *DescribeRegionResourceResponseBodyDataHdd {
+	s.Reserved = &v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyDataHdd) SetStatusDisable(v bool) *DescribeRegionResourceResponseBodyDataHdd {
+	s.StatusDisable = &v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyDataHdd) SetStatusDisableTotal(v int64) *DescribeRegionResourceResponseBodyDataHdd {
+	s.StatusDisableTotal = &v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyDataHdd) SetTotal(v int64) *DescribeRegionResourceResponseBodyDataHdd {
+	s.Total = &v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyDataHdd) SetType(v string) *DescribeRegionResourceResponseBodyDataHdd {
+	s.Type = &v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyDataHdd) SetUsed(v int64) *DescribeRegionResourceResponseBodyDataHdd {
+	s.Used = &v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyDataHdd) SetUsedRatio(v int64) *DescribeRegionResourceResponseBodyDataHdd {
+	s.UsedRatio = &v
+	return s
+}
+
+type DescribeRegionResourceResponseBodyDataIpv4s struct {
+	Display             *string `json:"Display,omitempty" xml:"Display,omitempty"`
+	Isp                 *string `json:"Isp,omitempty" xml:"Isp,omitempty"`
+	OversellRatio       *int64  `json:"OversellRatio,omitempty" xml:"OversellRatio,omitempty"`
+	Remain              *int64  `json:"Remain,omitempty" xml:"Remain,omitempty"`
+	ReserveDisable      *bool   `json:"ReserveDisable,omitempty" xml:"ReserveDisable,omitempty"`
+	ReserveDisableTotal *int64  `json:"ReserveDisableTotal,omitempty" xml:"ReserveDisableTotal,omitempty"`
+	Reserved            *int64  `json:"Reserved,omitempty" xml:"Reserved,omitempty"`
+	StatusDisable       *bool   `json:"StatusDisable,omitempty" xml:"StatusDisable,omitempty"`
+	StatusDisableTotal  *int64  `json:"StatusDisableTotal,omitempty" xml:"StatusDisableTotal,omitempty"`
+	Total               *int64  `json:"Total,omitempty" xml:"Total,omitempty"`
+	Type                *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Used                *int64  `json:"Used,omitempty" xml:"Used,omitempty"`
+	UsedRatio           *int64  `json:"UsedRatio,omitempty" xml:"UsedRatio,omitempty"`
+	Vlan                *string `json:"Vlan,omitempty" xml:"Vlan,omitempty"`
+}
+
+func (s DescribeRegionResourceResponseBodyDataIpv4s) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRegionResourceResponseBodyDataIpv4s) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRegionResourceResponseBodyDataIpv4s) SetDisplay(v string) *DescribeRegionResourceResponseBodyDataIpv4s {
+	s.Display = &v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyDataIpv4s) SetIsp(v string) *DescribeRegionResourceResponseBodyDataIpv4s {
+	s.Isp = &v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyDataIpv4s) SetOversellRatio(v int64) *DescribeRegionResourceResponseBodyDataIpv4s {
+	s.OversellRatio = &v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyDataIpv4s) SetRemain(v int64) *DescribeRegionResourceResponseBodyDataIpv4s {
+	s.Remain = &v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyDataIpv4s) SetReserveDisable(v bool) *DescribeRegionResourceResponseBodyDataIpv4s {
+	s.ReserveDisable = &v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyDataIpv4s) SetReserveDisableTotal(v int64) *DescribeRegionResourceResponseBodyDataIpv4s {
+	s.ReserveDisableTotal = &v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyDataIpv4s) SetReserved(v int64) *DescribeRegionResourceResponseBodyDataIpv4s {
+	s.Reserved = &v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyDataIpv4s) SetStatusDisable(v bool) *DescribeRegionResourceResponseBodyDataIpv4s {
+	s.StatusDisable = &v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyDataIpv4s) SetStatusDisableTotal(v int64) *DescribeRegionResourceResponseBodyDataIpv4s {
+	s.StatusDisableTotal = &v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyDataIpv4s) SetTotal(v int64) *DescribeRegionResourceResponseBodyDataIpv4s {
+	s.Total = &v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyDataIpv4s) SetType(v string) *DescribeRegionResourceResponseBodyDataIpv4s {
+	s.Type = &v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyDataIpv4s) SetUsed(v int64) *DescribeRegionResourceResponseBodyDataIpv4s {
+	s.Used = &v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyDataIpv4s) SetUsedRatio(v int64) *DescribeRegionResourceResponseBodyDataIpv4s {
+	s.UsedRatio = &v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyDataIpv4s) SetVlan(v string) *DescribeRegionResourceResponseBodyDataIpv4s {
+	s.Vlan = &v
+	return s
+}
+
+type DescribeRegionResourceResponseBodyDataIpv6s struct {
+	Display             *string `json:"Display,omitempty" xml:"Display,omitempty"`
+	Isp                 *string `json:"Isp,omitempty" xml:"Isp,omitempty"`
+	OversellRatio       *int64  `json:"OversellRatio,omitempty" xml:"OversellRatio,omitempty"`
+	Remain              *int64  `json:"Remain,omitempty" xml:"Remain,omitempty"`
+	ReserveDisable      *bool   `json:"ReserveDisable,omitempty" xml:"ReserveDisable,omitempty"`
+	ReserveDisableTotal *int64  `json:"ReserveDisableTotal,omitempty" xml:"ReserveDisableTotal,omitempty"`
+	Reserved            *int64  `json:"Reserved,omitempty" xml:"Reserved,omitempty"`
+	StatusDisable       *bool   `json:"StatusDisable,omitempty" xml:"StatusDisable,omitempty"`
+	StatusDisableTotal  *int64  `json:"StatusDisableTotal,omitempty" xml:"StatusDisableTotal,omitempty"`
+	Total               *int64  `json:"Total,omitempty" xml:"Total,omitempty"`
+	Type                *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Used                *int64  `json:"Used,omitempty" xml:"Used,omitempty"`
+	UsedRatio           *int64  `json:"UsedRatio,omitempty" xml:"UsedRatio,omitempty"`
+	Vlan                *string `json:"Vlan,omitempty" xml:"Vlan,omitempty"`
+}
+
+func (s DescribeRegionResourceResponseBodyDataIpv6s) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRegionResourceResponseBodyDataIpv6s) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRegionResourceResponseBodyDataIpv6s) SetDisplay(v string) *DescribeRegionResourceResponseBodyDataIpv6s {
+	s.Display = &v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyDataIpv6s) SetIsp(v string) *DescribeRegionResourceResponseBodyDataIpv6s {
+	s.Isp = &v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyDataIpv6s) SetOversellRatio(v int64) *DescribeRegionResourceResponseBodyDataIpv6s {
+	s.OversellRatio = &v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyDataIpv6s) SetRemain(v int64) *DescribeRegionResourceResponseBodyDataIpv6s {
+	s.Remain = &v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyDataIpv6s) SetReserveDisable(v bool) *DescribeRegionResourceResponseBodyDataIpv6s {
+	s.ReserveDisable = &v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyDataIpv6s) SetReserveDisableTotal(v int64) *DescribeRegionResourceResponseBodyDataIpv6s {
+	s.ReserveDisableTotal = &v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyDataIpv6s) SetReserved(v int64) *DescribeRegionResourceResponseBodyDataIpv6s {
+	s.Reserved = &v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyDataIpv6s) SetStatusDisable(v bool) *DescribeRegionResourceResponseBodyDataIpv6s {
+	s.StatusDisable = &v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyDataIpv6s) SetStatusDisableTotal(v int64) *DescribeRegionResourceResponseBodyDataIpv6s {
+	s.StatusDisableTotal = &v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyDataIpv6s) SetTotal(v int64) *DescribeRegionResourceResponseBodyDataIpv6s {
+	s.Total = &v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyDataIpv6s) SetType(v string) *DescribeRegionResourceResponseBodyDataIpv6s {
+	s.Type = &v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyDataIpv6s) SetUsed(v int64) *DescribeRegionResourceResponseBodyDataIpv6s {
+	s.Used = &v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyDataIpv6s) SetUsedRatio(v int64) *DescribeRegionResourceResponseBodyDataIpv6s {
+	s.UsedRatio = &v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyDataIpv6s) SetVlan(v string) *DescribeRegionResourceResponseBodyDataIpv6s {
+	s.Vlan = &v
+	return s
+}
+
+type DescribeRegionResourceResponseBodyDataMemory struct {
+	Display             *bool   `json:"Display,omitempty" xml:"Display,omitempty"`
+	OversellRatio       *int64  `json:"OversellRatio,omitempty" xml:"OversellRatio,omitempty"`
+	Remain              *int64  `json:"Remain,omitempty" xml:"Remain,omitempty"`
+	ReserveDisable      *bool   `json:"ReserveDisable,omitempty" xml:"ReserveDisable,omitempty"`
+	ReserveDisableTotal *int64  `json:"ReserveDisableTotal,omitempty" xml:"ReserveDisableTotal,omitempty"`
+	Reserved            *int64  `json:"Reserved,omitempty" xml:"Reserved,omitempty"`
+	StatusDisable       *bool   `json:"StatusDisable,omitempty" xml:"StatusDisable,omitempty"`
+	StatusDisableTotal  *int64  `json:"StatusDisableTotal,omitempty" xml:"StatusDisableTotal,omitempty"`
+	Total               *int64  `json:"Total,omitempty" xml:"Total,omitempty"`
+	Type                *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Used                *int64  `json:"Used,omitempty" xml:"Used,omitempty"`
+	UsedRatio           *int64  `json:"UsedRatio,omitempty" xml:"UsedRatio,omitempty"`
+}
+
+func (s DescribeRegionResourceResponseBodyDataMemory) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRegionResourceResponseBodyDataMemory) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRegionResourceResponseBodyDataMemory) SetDisplay(v bool) *DescribeRegionResourceResponseBodyDataMemory {
+	s.Display = &v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyDataMemory) SetOversellRatio(v int64) *DescribeRegionResourceResponseBodyDataMemory {
+	s.OversellRatio = &v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyDataMemory) SetRemain(v int64) *DescribeRegionResourceResponseBodyDataMemory {
+	s.Remain = &v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyDataMemory) SetReserveDisable(v bool) *DescribeRegionResourceResponseBodyDataMemory {
+	s.ReserveDisable = &v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyDataMemory) SetReserveDisableTotal(v int64) *DescribeRegionResourceResponseBodyDataMemory {
+	s.ReserveDisableTotal = &v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyDataMemory) SetReserved(v int64) *DescribeRegionResourceResponseBodyDataMemory {
+	s.Reserved = &v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyDataMemory) SetStatusDisable(v bool) *DescribeRegionResourceResponseBodyDataMemory {
+	s.StatusDisable = &v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyDataMemory) SetStatusDisableTotal(v int64) *DescribeRegionResourceResponseBodyDataMemory {
+	s.StatusDisableTotal = &v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyDataMemory) SetTotal(v int64) *DescribeRegionResourceResponseBodyDataMemory {
+	s.Total = &v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyDataMemory) SetType(v string) *DescribeRegionResourceResponseBodyDataMemory {
+	s.Type = &v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyDataMemory) SetUsed(v int64) *DescribeRegionResourceResponseBodyDataMemory {
+	s.Used = &v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyDataMemory) SetUsedRatio(v int64) *DescribeRegionResourceResponseBodyDataMemory {
+	s.UsedRatio = &v
+	return s
+}
+
+type DescribeRegionResourceResponseBodyDataNvme struct {
+	Display             *bool   `json:"Display,omitempty" xml:"Display,omitempty"`
+	OversellRatio       *int64  `json:"OversellRatio,omitempty" xml:"OversellRatio,omitempty"`
+	Remain              *int64  `json:"Remain,omitempty" xml:"Remain,omitempty"`
+	ReserveDisable      *bool   `json:"ReserveDisable,omitempty" xml:"ReserveDisable,omitempty"`
+	ReserveDisableTotal *int64  `json:"ReserveDisableTotal,omitempty" xml:"ReserveDisableTotal,omitempty"`
+	Reserved            *int64  `json:"Reserved,omitempty" xml:"Reserved,omitempty"`
+	StatusDisable       *bool   `json:"StatusDisable,omitempty" xml:"StatusDisable,omitempty"`
+	StatusDisableTotal  *int64  `json:"StatusDisableTotal,omitempty" xml:"StatusDisableTotal,omitempty"`
+	Total               *int64  `json:"Total,omitempty" xml:"Total,omitempty"`
+	Type                *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Used                *int64  `json:"Used,omitempty" xml:"Used,omitempty"`
+	UsedRatio           *int64  `json:"UsedRatio,omitempty" xml:"UsedRatio,omitempty"`
+}
+
+func (s DescribeRegionResourceResponseBodyDataNvme) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRegionResourceResponseBodyDataNvme) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRegionResourceResponseBodyDataNvme) SetDisplay(v bool) *DescribeRegionResourceResponseBodyDataNvme {
+	s.Display = &v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyDataNvme) SetOversellRatio(v int64) *DescribeRegionResourceResponseBodyDataNvme {
+	s.OversellRatio = &v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyDataNvme) SetRemain(v int64) *DescribeRegionResourceResponseBodyDataNvme {
+	s.Remain = &v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyDataNvme) SetReserveDisable(v bool) *DescribeRegionResourceResponseBodyDataNvme {
+	s.ReserveDisable = &v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyDataNvme) SetReserveDisableTotal(v int64) *DescribeRegionResourceResponseBodyDataNvme {
+	s.ReserveDisableTotal = &v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyDataNvme) SetReserved(v int64) *DescribeRegionResourceResponseBodyDataNvme {
+	s.Reserved = &v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyDataNvme) SetStatusDisable(v bool) *DescribeRegionResourceResponseBodyDataNvme {
+	s.StatusDisable = &v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyDataNvme) SetStatusDisableTotal(v int64) *DescribeRegionResourceResponseBodyDataNvme {
+	s.StatusDisableTotal = &v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyDataNvme) SetTotal(v int64) *DescribeRegionResourceResponseBodyDataNvme {
+	s.Total = &v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyDataNvme) SetType(v string) *DescribeRegionResourceResponseBodyDataNvme {
+	s.Type = &v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyDataNvme) SetUsed(v int64) *DescribeRegionResourceResponseBodyDataNvme {
+	s.Used = &v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyDataNvme) SetUsedRatio(v int64) *DescribeRegionResourceResponseBodyDataNvme {
+	s.UsedRatio = &v
+	return s
+}
+
+type DescribeRegionResourceResponseBodyDataOssStorage struct {
+	Display             *bool   `json:"Display,omitempty" xml:"Display,omitempty"`
+	OversellRatio       *int64  `json:"OversellRatio,omitempty" xml:"OversellRatio,omitempty"`
+	Remain              *int64  `json:"Remain,omitempty" xml:"Remain,omitempty"`
+	ReserveDisable      *bool   `json:"ReserveDisable,omitempty" xml:"ReserveDisable,omitempty"`
+	ReserveDisableTotal *int64  `json:"ReserveDisableTotal,omitempty" xml:"ReserveDisableTotal,omitempty"`
+	Reserved            *int64  `json:"Reserved,omitempty" xml:"Reserved,omitempty"`
+	StatusDisable       *bool   `json:"StatusDisable,omitempty" xml:"StatusDisable,omitempty"`
+	StatusDisableTotal  *int64  `json:"StatusDisableTotal,omitempty" xml:"StatusDisableTotal,omitempty"`
+	Total               *int64  `json:"Total,omitempty" xml:"Total,omitempty"`
+	Type                *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Used                *int64  `json:"Used,omitempty" xml:"Used,omitempty"`
+	UsedRatio           *int64  `json:"UsedRatio,omitempty" xml:"UsedRatio,omitempty"`
+}
+
+func (s DescribeRegionResourceResponseBodyDataOssStorage) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRegionResourceResponseBodyDataOssStorage) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRegionResourceResponseBodyDataOssStorage) SetDisplay(v bool) *DescribeRegionResourceResponseBodyDataOssStorage {
+	s.Display = &v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyDataOssStorage) SetOversellRatio(v int64) *DescribeRegionResourceResponseBodyDataOssStorage {
+	s.OversellRatio = &v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyDataOssStorage) SetRemain(v int64) *DescribeRegionResourceResponseBodyDataOssStorage {
+	s.Remain = &v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyDataOssStorage) SetReserveDisable(v bool) *DescribeRegionResourceResponseBodyDataOssStorage {
+	s.ReserveDisable = &v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyDataOssStorage) SetReserveDisableTotal(v int64) *DescribeRegionResourceResponseBodyDataOssStorage {
+	s.ReserveDisableTotal = &v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyDataOssStorage) SetReserved(v int64) *DescribeRegionResourceResponseBodyDataOssStorage {
+	s.Reserved = &v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyDataOssStorage) SetStatusDisable(v bool) *DescribeRegionResourceResponseBodyDataOssStorage {
+	s.StatusDisable = &v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyDataOssStorage) SetStatusDisableTotal(v int64) *DescribeRegionResourceResponseBodyDataOssStorage {
+	s.StatusDisableTotal = &v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyDataOssStorage) SetTotal(v int64) *DescribeRegionResourceResponseBodyDataOssStorage {
+	s.Total = &v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyDataOssStorage) SetType(v string) *DescribeRegionResourceResponseBodyDataOssStorage {
+	s.Type = &v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyDataOssStorage) SetUsed(v int64) *DescribeRegionResourceResponseBodyDataOssStorage {
+	s.Used = &v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyDataOssStorage) SetUsedRatio(v int64) *DescribeRegionResourceResponseBodyDataOssStorage {
+	s.UsedRatio = &v
+	return s
+}
+
+type DescribeRegionResourceResponseBodyDataPangu struct {
+	Display             *bool   `json:"Display,omitempty" xml:"Display,omitempty"`
+	OversellRatio       *int64  `json:"OversellRatio,omitempty" xml:"OversellRatio,omitempty"`
+	Remain              *int64  `json:"Remain,omitempty" xml:"Remain,omitempty"`
+	ReserveDisable      *bool   `json:"ReserveDisable,omitempty" xml:"ReserveDisable,omitempty"`
+	ReserveDisableTotal *int64  `json:"ReserveDisableTotal,omitempty" xml:"ReserveDisableTotal,omitempty"`
+	Reserved            *int64  `json:"Reserved,omitempty" xml:"Reserved,omitempty"`
+	StatusDisable       *bool   `json:"StatusDisable,omitempty" xml:"StatusDisable,omitempty"`
+	StatusDisableTotal  *int64  `json:"StatusDisableTotal,omitempty" xml:"StatusDisableTotal,omitempty"`
+	Total               *int64  `json:"Total,omitempty" xml:"Total,omitempty"`
+	Type                *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Used                *int64  `json:"Used,omitempty" xml:"Used,omitempty"`
+	UsedRatio           *int64  `json:"UsedRatio,omitempty" xml:"UsedRatio,omitempty"`
+}
+
+func (s DescribeRegionResourceResponseBodyDataPangu) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRegionResourceResponseBodyDataPangu) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRegionResourceResponseBodyDataPangu) SetDisplay(v bool) *DescribeRegionResourceResponseBodyDataPangu {
+	s.Display = &v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyDataPangu) SetOversellRatio(v int64) *DescribeRegionResourceResponseBodyDataPangu {
+	s.OversellRatio = &v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyDataPangu) SetRemain(v int64) *DescribeRegionResourceResponseBodyDataPangu {
+	s.Remain = &v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyDataPangu) SetReserveDisable(v bool) *DescribeRegionResourceResponseBodyDataPangu {
+	s.ReserveDisable = &v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyDataPangu) SetReserveDisableTotal(v int64) *DescribeRegionResourceResponseBodyDataPangu {
+	s.ReserveDisableTotal = &v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyDataPangu) SetReserved(v int64) *DescribeRegionResourceResponseBodyDataPangu {
+	s.Reserved = &v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyDataPangu) SetStatusDisable(v bool) *DescribeRegionResourceResponseBodyDataPangu {
+	s.StatusDisable = &v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyDataPangu) SetStatusDisableTotal(v int64) *DescribeRegionResourceResponseBodyDataPangu {
+	s.StatusDisableTotal = &v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyDataPangu) SetTotal(v int64) *DescribeRegionResourceResponseBodyDataPangu {
+	s.Total = &v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyDataPangu) SetType(v string) *DescribeRegionResourceResponseBodyDataPangu {
+	s.Type = &v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyDataPangu) SetUsed(v int64) *DescribeRegionResourceResponseBodyDataPangu {
+	s.Used = &v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyDataPangu) SetUsedRatio(v int64) *DescribeRegionResourceResponseBodyDataPangu {
+	s.UsedRatio = &v
+	return s
+}
+
+type DescribeRegionResourceResponseBodyDataPcfarmNum struct {
+	Display             *bool   `json:"Display,omitempty" xml:"Display,omitempty"`
+	OversellRatio       *int64  `json:"OversellRatio,omitempty" xml:"OversellRatio,omitempty"`
+	Remain              *int64  `json:"Remain,omitempty" xml:"Remain,omitempty"`
+	ReserveDisable      *bool   `json:"ReserveDisable,omitempty" xml:"ReserveDisable,omitempty"`
+	ReserveDisableTotal *int64  `json:"ReserveDisableTotal,omitempty" xml:"ReserveDisableTotal,omitempty"`
+	Reserved            *int64  `json:"Reserved,omitempty" xml:"Reserved,omitempty"`
+	StatusDisable       *bool   `json:"StatusDisable,omitempty" xml:"StatusDisable,omitempty"`
+	StatusDisableTotal  *int64  `json:"StatusDisableTotal,omitempty" xml:"StatusDisableTotal,omitempty"`
+	Total               *int64  `json:"Total,omitempty" xml:"Total,omitempty"`
+	Type                *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Used                *int64  `json:"Used,omitempty" xml:"Used,omitempty"`
+	UsedRatio           *int64  `json:"UsedRatio,omitempty" xml:"UsedRatio,omitempty"`
+}
+
+func (s DescribeRegionResourceResponseBodyDataPcfarmNum) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRegionResourceResponseBodyDataPcfarmNum) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRegionResourceResponseBodyDataPcfarmNum) SetDisplay(v bool) *DescribeRegionResourceResponseBodyDataPcfarmNum {
+	s.Display = &v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyDataPcfarmNum) SetOversellRatio(v int64) *DescribeRegionResourceResponseBodyDataPcfarmNum {
+	s.OversellRatio = &v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyDataPcfarmNum) SetRemain(v int64) *DescribeRegionResourceResponseBodyDataPcfarmNum {
+	s.Remain = &v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyDataPcfarmNum) SetReserveDisable(v bool) *DescribeRegionResourceResponseBodyDataPcfarmNum {
+	s.ReserveDisable = &v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyDataPcfarmNum) SetReserveDisableTotal(v int64) *DescribeRegionResourceResponseBodyDataPcfarmNum {
+	s.ReserveDisableTotal = &v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyDataPcfarmNum) SetReserved(v int64) *DescribeRegionResourceResponseBodyDataPcfarmNum {
+	s.Reserved = &v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyDataPcfarmNum) SetStatusDisable(v bool) *DescribeRegionResourceResponseBodyDataPcfarmNum {
+	s.StatusDisable = &v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyDataPcfarmNum) SetStatusDisableTotal(v int64) *DescribeRegionResourceResponseBodyDataPcfarmNum {
+	s.StatusDisableTotal = &v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyDataPcfarmNum) SetTotal(v int64) *DescribeRegionResourceResponseBodyDataPcfarmNum {
+	s.Total = &v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyDataPcfarmNum) SetType(v string) *DescribeRegionResourceResponseBodyDataPcfarmNum {
+	s.Type = &v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyDataPcfarmNum) SetUsed(v int64) *DescribeRegionResourceResponseBodyDataPcfarmNum {
+	s.Used = &v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyDataPcfarmNum) SetUsedRatio(v int64) *DescribeRegionResourceResponseBodyDataPcfarmNum {
+	s.UsedRatio = &v
+	return s
+}
+
+type DescribeRegionResourceResponseBodyDataSsd struct {
+	Display             *bool   `json:"Display,omitempty" xml:"Display,omitempty"`
+	OversellRatio       *int64  `json:"OversellRatio,omitempty" xml:"OversellRatio,omitempty"`
+	Remain              *int64  `json:"Remain,omitempty" xml:"Remain,omitempty"`
+	ReserveDisable      *bool   `json:"ReserveDisable,omitempty" xml:"ReserveDisable,omitempty"`
+	ReserveDisableTotal *int64  `json:"ReserveDisableTotal,omitempty" xml:"ReserveDisableTotal,omitempty"`
+	Reserved            *int64  `json:"Reserved,omitempty" xml:"Reserved,omitempty"`
+	StatusDisable       *bool   `json:"StatusDisable,omitempty" xml:"StatusDisable,omitempty"`
+	StatusDisableTotal  *int64  `json:"StatusDisableTotal,omitempty" xml:"StatusDisableTotal,omitempty"`
+	Total               *int64  `json:"Total,omitempty" xml:"Total,omitempty"`
+	Type                *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Used                *int64  `json:"Used,omitempty" xml:"Used,omitempty"`
+	UsedRatio           *int64  `json:"UsedRatio,omitempty" xml:"UsedRatio,omitempty"`
+}
+
+func (s DescribeRegionResourceResponseBodyDataSsd) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRegionResourceResponseBodyDataSsd) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRegionResourceResponseBodyDataSsd) SetDisplay(v bool) *DescribeRegionResourceResponseBodyDataSsd {
+	s.Display = &v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyDataSsd) SetOversellRatio(v int64) *DescribeRegionResourceResponseBodyDataSsd {
+	s.OversellRatio = &v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyDataSsd) SetRemain(v int64) *DescribeRegionResourceResponseBodyDataSsd {
+	s.Remain = &v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyDataSsd) SetReserveDisable(v bool) *DescribeRegionResourceResponseBodyDataSsd {
+	s.ReserveDisable = &v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyDataSsd) SetReserveDisableTotal(v int64) *DescribeRegionResourceResponseBodyDataSsd {
+	s.ReserveDisableTotal = &v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyDataSsd) SetReserved(v int64) *DescribeRegionResourceResponseBodyDataSsd {
+	s.Reserved = &v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyDataSsd) SetStatusDisable(v bool) *DescribeRegionResourceResponseBodyDataSsd {
+	s.StatusDisable = &v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyDataSsd) SetStatusDisableTotal(v int64) *DescribeRegionResourceResponseBodyDataSsd {
+	s.StatusDisableTotal = &v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyDataSsd) SetTotal(v int64) *DescribeRegionResourceResponseBodyDataSsd {
+	s.Total = &v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyDataSsd) SetType(v string) *DescribeRegionResourceResponseBodyDataSsd {
+	s.Type = &v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyDataSsd) SetUsed(v int64) *DescribeRegionResourceResponseBodyDataSsd {
+	s.Used = &v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyDataSsd) SetUsedRatio(v int64) *DescribeRegionResourceResponseBodyDataSsd {
+	s.UsedRatio = &v
+	return s
+}
+
+type DescribeRegionResourceResponseBodyPager struct {
+	Page  *int64 `json:"Page,omitempty" xml:"Page,omitempty"`
+	Size  *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
+	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
+}
+
+func (s DescribeRegionResourceResponseBodyPager) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRegionResourceResponseBodyPager) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRegionResourceResponseBodyPager) SetPage(v int64) *DescribeRegionResourceResponseBodyPager {
+	s.Page = &v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyPager) SetSize(v int64) *DescribeRegionResourceResponseBodyPager {
+	s.Size = &v
+	return s
+}
+
+func (s *DescribeRegionResourceResponseBodyPager) SetTotal(v int64) *DescribeRegionResourceResponseBodyPager {
+	s.Total = &v
+	return s
+}
+
+type DescribeRegionResourceResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeRegionResourceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeRegionResourceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRegionResourceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRegionResourceResponse) SetHeaders(v map[string]*string) *DescribeRegionResourceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeRegionResourceResponse) SetStatusCode(v int32) *DescribeRegionResourceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeRegionResourceResponse) SetBody(v *DescribeRegionResourceResponseBody) *DescribeRegionResourceResponse {
 	s.Body = v
 	return s
 }
@@ -17505,6 +19791,257 @@ func (s *DescribeReservedResourceResponse) SetStatusCode(v int32) *DescribeReser
 }
 
 func (s *DescribeReservedResourceResponse) SetBody(v *DescribeReservedResourceResponseBody) *DescribeReservedResourceResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeResourceTimelineRequest struct {
+	BeginTime *string `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
+	EndTime   *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	Uuid      *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
+}
+
+func (s DescribeResourceTimelineRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeResourceTimelineRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeResourceTimelineRequest) SetBeginTime(v string) *DescribeResourceTimelineRequest {
+	s.BeginTime = &v
+	return s
+}
+
+func (s *DescribeResourceTimelineRequest) SetEndTime(v string) *DescribeResourceTimelineRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeResourceTimelineRequest) SetUuid(v string) *DescribeResourceTimelineRequest {
+	s.Uuid = &v
+	return s
+}
+
+type DescribeResourceTimelineResponseBody struct {
+	AvailableEvents []*DescribeResourceTimelineResponseBodyAvailableEvents `json:"AvailableEvents,omitempty" xml:"AvailableEvents,omitempty" type:"Repeated"`
+	BizEvents       []*DescribeResourceTimelineResponseBodyBizEvents       `json:"BizEvents,omitempty" xml:"BizEvents,omitempty" type:"Repeated"`
+	Desc            *string                                                `json:"Desc,omitempty" xml:"Desc,omitempty"`
+	InventoryEvents []*DescribeResourceTimelineResponseBodyInventoryEvents `json:"InventoryEvents,omitempty" xml:"InventoryEvents,omitempty" type:"Repeated"`
+	Msg             *string                                                `json:"Msg,omitempty" xml:"Msg,omitempty"`
+	RequestId       *string                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ReserveEvents   []*DescribeResourceTimelineResponseBodyReserveEvents   `json:"ReserveEvents,omitempty" xml:"ReserveEvents,omitempty" type:"Repeated"`
+}
+
+func (s DescribeResourceTimelineResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeResourceTimelineResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeResourceTimelineResponseBody) SetAvailableEvents(v []*DescribeResourceTimelineResponseBodyAvailableEvents) *DescribeResourceTimelineResponseBody {
+	s.AvailableEvents = v
+	return s
+}
+
+func (s *DescribeResourceTimelineResponseBody) SetBizEvents(v []*DescribeResourceTimelineResponseBodyBizEvents) *DescribeResourceTimelineResponseBody {
+	s.BizEvents = v
+	return s
+}
+
+func (s *DescribeResourceTimelineResponseBody) SetDesc(v string) *DescribeResourceTimelineResponseBody {
+	s.Desc = &v
+	return s
+}
+
+func (s *DescribeResourceTimelineResponseBody) SetInventoryEvents(v []*DescribeResourceTimelineResponseBodyInventoryEvents) *DescribeResourceTimelineResponseBody {
+	s.InventoryEvents = v
+	return s
+}
+
+func (s *DescribeResourceTimelineResponseBody) SetMsg(v string) *DescribeResourceTimelineResponseBody {
+	s.Msg = &v
+	return s
+}
+
+func (s *DescribeResourceTimelineResponseBody) SetRequestId(v string) *DescribeResourceTimelineResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeResourceTimelineResponseBody) SetReserveEvents(v []*DescribeResourceTimelineResponseBodyReserveEvents) *DescribeResourceTimelineResponseBody {
+	s.ReserveEvents = v
+	return s
+}
+
+type DescribeResourceTimelineResponseBodyAvailableEvents struct {
+	Name           *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	OccurrenceTime *string `json:"OccurrenceTime,omitempty" xml:"OccurrenceTime,omitempty"`
+	Reason         *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	Type           *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s DescribeResourceTimelineResponseBodyAvailableEvents) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeResourceTimelineResponseBodyAvailableEvents) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeResourceTimelineResponseBodyAvailableEvents) SetName(v string) *DescribeResourceTimelineResponseBodyAvailableEvents {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeResourceTimelineResponseBodyAvailableEvents) SetOccurrenceTime(v string) *DescribeResourceTimelineResponseBodyAvailableEvents {
+	s.OccurrenceTime = &v
+	return s
+}
+
+func (s *DescribeResourceTimelineResponseBodyAvailableEvents) SetReason(v string) *DescribeResourceTimelineResponseBodyAvailableEvents {
+	s.Reason = &v
+	return s
+}
+
+func (s *DescribeResourceTimelineResponseBodyAvailableEvents) SetType(v string) *DescribeResourceTimelineResponseBodyAvailableEvents {
+	s.Type = &v
+	return s
+}
+
+type DescribeResourceTimelineResponseBodyBizEvents struct {
+	Name           *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	OccurrenceTime *string `json:"OccurrenceTime,omitempty" xml:"OccurrenceTime,omitempty"`
+	Reason         *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	Type           *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s DescribeResourceTimelineResponseBodyBizEvents) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeResourceTimelineResponseBodyBizEvents) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeResourceTimelineResponseBodyBizEvents) SetName(v string) *DescribeResourceTimelineResponseBodyBizEvents {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeResourceTimelineResponseBodyBizEvents) SetOccurrenceTime(v string) *DescribeResourceTimelineResponseBodyBizEvents {
+	s.OccurrenceTime = &v
+	return s
+}
+
+func (s *DescribeResourceTimelineResponseBodyBizEvents) SetReason(v string) *DescribeResourceTimelineResponseBodyBizEvents {
+	s.Reason = &v
+	return s
+}
+
+func (s *DescribeResourceTimelineResponseBodyBizEvents) SetType(v string) *DescribeResourceTimelineResponseBodyBizEvents {
+	s.Type = &v
+	return s
+}
+
+type DescribeResourceTimelineResponseBodyInventoryEvents struct {
+	Name           *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	OccurrenceTime *string `json:"OccurrenceTime,omitempty" xml:"OccurrenceTime,omitempty"`
+	Reason         *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	Type           *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s DescribeResourceTimelineResponseBodyInventoryEvents) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeResourceTimelineResponseBodyInventoryEvents) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeResourceTimelineResponseBodyInventoryEvents) SetName(v string) *DescribeResourceTimelineResponseBodyInventoryEvents {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeResourceTimelineResponseBodyInventoryEvents) SetOccurrenceTime(v string) *DescribeResourceTimelineResponseBodyInventoryEvents {
+	s.OccurrenceTime = &v
+	return s
+}
+
+func (s *DescribeResourceTimelineResponseBodyInventoryEvents) SetReason(v string) *DescribeResourceTimelineResponseBodyInventoryEvents {
+	s.Reason = &v
+	return s
+}
+
+func (s *DescribeResourceTimelineResponseBodyInventoryEvents) SetType(v string) *DescribeResourceTimelineResponseBodyInventoryEvents {
+	s.Type = &v
+	return s
+}
+
+type DescribeResourceTimelineResponseBodyReserveEvents struct {
+	Name           *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	OccurrenceTime *string `json:"OccurrenceTime,omitempty" xml:"OccurrenceTime,omitempty"`
+	Reason         *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	Type           *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s DescribeResourceTimelineResponseBodyReserveEvents) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeResourceTimelineResponseBodyReserveEvents) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeResourceTimelineResponseBodyReserveEvents) SetName(v string) *DescribeResourceTimelineResponseBodyReserveEvents {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeResourceTimelineResponseBodyReserveEvents) SetOccurrenceTime(v string) *DescribeResourceTimelineResponseBodyReserveEvents {
+	s.OccurrenceTime = &v
+	return s
+}
+
+func (s *DescribeResourceTimelineResponseBodyReserveEvents) SetReason(v string) *DescribeResourceTimelineResponseBodyReserveEvents {
+	s.Reason = &v
+	return s
+}
+
+func (s *DescribeResourceTimelineResponseBodyReserveEvents) SetType(v string) *DescribeResourceTimelineResponseBodyReserveEvents {
+	s.Type = &v
+	return s
+}
+
+type DescribeResourceTimelineResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeResourceTimelineResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeResourceTimelineResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeResourceTimelineResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeResourceTimelineResponse) SetHeaders(v map[string]*string) *DescribeResourceTimelineResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeResourceTimelineResponse) SetStatusCode(v int32) *DescribeResourceTimelineResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeResourceTimelineResponse) SetBody(v *DescribeResourceTimelineResponseBody) *DescribeResourceTimelineResponse {
 	s.Body = v
 	return s
 }
@@ -20399,8 +22936,9 @@ func (s *ModifyForwardEntryResponse) SetBody(v *ModifyForwardEntryResponseBody) 
 type ModifyImageAttributeRequest struct {
 	ImageId   *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
 	ImageName *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
-	Version   *string `json:"Version,omitempty" xml:"Version,omitempty"`
-	Product   *string `json:"product,omitempty" xml:"product,omitempty"`
+	// 2017-11-10
+	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
+	Product *string `json:"product,omitempty" xml:"product,omitempty"`
 }
 
 func (s ModifyImageAttributeRequest) String() string {
@@ -20559,10 +23097,11 @@ func (s *ModifyImageSharePermissionResponse) SetBody(v *ModifyImageSharePermissi
 }
 
 type ModifyInstanceAttributeRequest struct {
+	HostName     *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
 	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
 	Password     *string `json:"Password,omitempty" xml:"Password,omitempty"`
-	Version      *string `json:"Version,omitempty" xml:"Version,omitempty"`
+	UserData     *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
 func (s ModifyInstanceAttributeRequest) String() string {
@@ -20571,6 +23110,11 @@ func (s ModifyInstanceAttributeRequest) String() string {
 
 func (s ModifyInstanceAttributeRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ModifyInstanceAttributeRequest) SetHostName(v string) *ModifyInstanceAttributeRequest {
+	s.HostName = &v
+	return s
 }
 
 func (s *ModifyInstanceAttributeRequest) SetInstanceId(v string) *ModifyInstanceAttributeRequest {
@@ -20588,8 +23132,8 @@ func (s *ModifyInstanceAttributeRequest) SetPassword(v string) *ModifyInstanceAt
 	return s
 }
 
-func (s *ModifyInstanceAttributeRequest) SetVersion(v string) *ModifyInstanceAttributeRequest {
-	s.Version = &v
+func (s *ModifyInstanceAttributeRequest) SetUserData(v string) *ModifyInstanceAttributeRequest {
+	s.UserData = &v
 	return s
 }
 
@@ -21408,6 +23952,7 @@ func (s *PushApplicationDataResponse) SetBody(v *PushApplicationDataResponseBody
 type ReInitDiskRequest struct {
 	DiskId  *string `json:"DiskId,omitempty" xml:"DiskId,omitempty"`
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// 2017-11-10
 	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
@@ -21693,6 +24238,92 @@ func (s *RebootInstanceResponse) SetBody(v *RebootInstanceResponseBody) *RebootI
 	return s
 }
 
+type RebootInstancesRequest struct {
+	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
+}
+
+func (s RebootInstancesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RebootInstancesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RebootInstancesRequest) SetInstanceIds(v []*string) *RebootInstancesRequest {
+	s.InstanceIds = v
+	return s
+}
+
+type RebootInstancesShrinkRequest struct {
+	InstanceIdsShrink *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
+}
+
+func (s RebootInstancesShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RebootInstancesShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RebootInstancesShrinkRequest) SetInstanceIdsShrink(v string) *RebootInstancesShrinkRequest {
+	s.InstanceIdsShrink = &v
+	return s
+}
+
+type RebootInstancesResponseBody struct {
+	InstanceResponses []*InstanceOperateResponse `json:"InstanceResponses,omitempty" xml:"InstanceResponses,omitempty" type:"Repeated"`
+	RequestId         *string                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s RebootInstancesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RebootInstancesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RebootInstancesResponseBody) SetInstanceResponses(v []*InstanceOperateResponse) *RebootInstancesResponseBody {
+	s.InstanceResponses = v
+	return s
+}
+
+func (s *RebootInstancesResponseBody) SetRequestId(v string) *RebootInstancesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type RebootInstancesResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *RebootInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s RebootInstancesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RebootInstancesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RebootInstancesResponse) SetHeaders(v map[string]*string) *RebootInstancesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RebootInstancesResponse) SetStatusCode(v int32) *RebootInstancesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RebootInstancesResponse) SetBody(v *RebootInstancesResponseBody) *RebootInstancesResponse {
+	s.Body = v
+	return s
+}
+
 type ReinitInstanceRequest struct {
 	ImageId    *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
@@ -21764,6 +24395,116 @@ func (s *ReinitInstanceResponse) SetStatusCode(v int32) *ReinitInstanceResponse 
 }
 
 func (s *ReinitInstanceResponse) SetBody(v *ReinitInstanceResponseBody) *ReinitInstanceResponse {
+	s.Body = v
+	return s
+}
+
+type ReinitInstancesRequest struct {
+	ImageId     *string   `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
+	Password    *string   `json:"Password,omitempty" xml:"Password,omitempty"`
+}
+
+func (s ReinitInstancesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ReinitInstancesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ReinitInstancesRequest) SetImageId(v string) *ReinitInstancesRequest {
+	s.ImageId = &v
+	return s
+}
+
+func (s *ReinitInstancesRequest) SetInstanceIds(v []*string) *ReinitInstancesRequest {
+	s.InstanceIds = v
+	return s
+}
+
+func (s *ReinitInstancesRequest) SetPassword(v string) *ReinitInstancesRequest {
+	s.Password = &v
+	return s
+}
+
+type ReinitInstancesShrinkRequest struct {
+	ImageId           *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	InstanceIdsShrink *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
+	Password          *string `json:"Password,omitempty" xml:"Password,omitempty"`
+}
+
+func (s ReinitInstancesShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ReinitInstancesShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ReinitInstancesShrinkRequest) SetImageId(v string) *ReinitInstancesShrinkRequest {
+	s.ImageId = &v
+	return s
+}
+
+func (s *ReinitInstancesShrinkRequest) SetInstanceIdsShrink(v string) *ReinitInstancesShrinkRequest {
+	s.InstanceIdsShrink = &v
+	return s
+}
+
+func (s *ReinitInstancesShrinkRequest) SetPassword(v string) *ReinitInstancesShrinkRequest {
+	s.Password = &v
+	return s
+}
+
+type ReinitInstancesResponseBody struct {
+	InstanceResponses []*InstanceOperateResponse `json:"InstanceResponses,omitempty" xml:"InstanceResponses,omitempty" type:"Repeated"`
+	RequestId         *string                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ReinitInstancesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ReinitInstancesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ReinitInstancesResponseBody) SetInstanceResponses(v []*InstanceOperateResponse) *ReinitInstancesResponseBody {
+	s.InstanceResponses = v
+	return s
+}
+
+func (s *ReinitInstancesResponseBody) SetRequestId(v string) *ReinitInstancesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ReinitInstancesResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ReinitInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ReinitInstancesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ReinitInstancesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ReinitInstancesResponse) SetHeaders(v map[string]*string) *ReinitInstancesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ReinitInstancesResponse) SetStatusCode(v int32) *ReinitInstancesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ReinitInstancesResponse) SetBody(v *ReinitInstancesResponseBody) *ReinitInstancesResponse {
 	s.Body = v
 	return s
 }
@@ -22664,8 +25405,9 @@ func (s *RescaleDeviceServiceRequest) SetTimeout(v int64) *RescaleDeviceServiceR
 }
 
 type RescaleDeviceServiceResponseBody struct {
-	DeviceIds           []*string                                              `json:"DeviceIds,omitempty" xml:"DeviceIds,omitempty" type:"Repeated"`
-	OrderId             *string                                                `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	DeviceIds []*string `json:"DeviceIds,omitempty" xml:"DeviceIds,omitempty" type:"Repeated"`
+	OrderId   *string   `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// Id of the request
 	RequestId           *string                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ResourceDetailInfos []*RescaleDeviceServiceResponseBodyResourceDetailInfos `json:"ResourceDetailInfos,omitempty" xml:"ResourceDetailInfos,omitempty" type:"Repeated"`
 }
@@ -23082,7 +25824,8 @@ type RevokeSecurityGroupRequest struct {
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
 	SourceCidrIp    *string `json:"SourceCidrIp,omitempty" xml:"SourceCidrIp,omitempty"`
 	SourcePortRange *string `json:"SourcePortRange,omitempty" xml:"SourcePortRange,omitempty"`
-	Version         *string `json:"Version,omitempty" xml:"Version,omitempty"`
+	// 2017-11-10
+	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s RevokeSecurityGroupRequest) String() string {
@@ -25000,6 +27743,92 @@ func (s *StartInstanceResponse) SetBody(v *StartInstanceResponseBody) *StartInst
 	return s
 }
 
+type StartInstancesRequest struct {
+	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
+}
+
+func (s StartInstancesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartInstancesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *StartInstancesRequest) SetInstanceIds(v []*string) *StartInstancesRequest {
+	s.InstanceIds = v
+	return s
+}
+
+type StartInstancesShrinkRequest struct {
+	InstanceIdsShrink *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
+}
+
+func (s StartInstancesShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartInstancesShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *StartInstancesShrinkRequest) SetInstanceIdsShrink(v string) *StartInstancesShrinkRequest {
+	s.InstanceIdsShrink = &v
+	return s
+}
+
+type StartInstancesResponseBody struct {
+	InstanceResponses []*InstanceOperateResponse `json:"InstanceResponses,omitempty" xml:"InstanceResponses,omitempty" type:"Repeated"`
+	RequestId         *string                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s StartInstancesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartInstancesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *StartInstancesResponseBody) SetInstanceResponses(v []*InstanceOperateResponse) *StartInstancesResponseBody {
+	s.InstanceResponses = v
+	return s
+}
+
+func (s *StartInstancesResponseBody) SetRequestId(v string) *StartInstancesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type StartInstancesResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *StartInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s StartInstancesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartInstancesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *StartInstancesResponse) SetHeaders(v map[string]*string) *StartInstancesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *StartInstancesResponse) SetStatusCode(v int32) *StartInstancesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *StartInstancesResponse) SetBody(v *StartInstancesResponseBody) *StartInstancesResponse {
+	s.Body = v
+	return s
+}
+
 type StartLoadBalancerListenerRequest struct {
 	ListenerPort     *int32  `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
 	ListenerProtocol *string `json:"ListenerProtocol,omitempty" xml:"ListenerProtocol,omitempty"`
@@ -25219,6 +28048,92 @@ func (s *StopInstanceResponse) SetBody(v *StopInstanceResponseBody) *StopInstanc
 	return s
 }
 
+type StopInstancesRequest struct {
+	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
+}
+
+func (s StopInstancesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopInstancesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *StopInstancesRequest) SetInstanceIds(v []*string) *StopInstancesRequest {
+	s.InstanceIds = v
+	return s
+}
+
+type StopInstancesShrinkRequest struct {
+	InstanceIdsShrink *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
+}
+
+func (s StopInstancesShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopInstancesShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *StopInstancesShrinkRequest) SetInstanceIdsShrink(v string) *StopInstancesShrinkRequest {
+	s.InstanceIdsShrink = &v
+	return s
+}
+
+type StopInstancesResponseBody struct {
+	InstanceResponses []*InstanceOperateResponse `json:"InstanceResponses,omitempty" xml:"InstanceResponses,omitempty" type:"Repeated"`
+	RequestId         *string                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s StopInstancesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopInstancesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *StopInstancesResponseBody) SetInstanceResponses(v []*InstanceOperateResponse) *StopInstancesResponseBody {
+	s.InstanceResponses = v
+	return s
+}
+
+func (s *StopInstancesResponseBody) SetRequestId(v string) *StopInstancesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type StopInstancesResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *StopInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s StopInstancesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopInstancesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *StopInstancesResponse) SetHeaders(v map[string]*string) *StopInstancesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *StopInstancesResponse) SetStatusCode(v int32) *StopInstancesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *StopInstancesResponse) SetBody(v *StopInstancesResponseBody) *StopInstancesResponse {
+	s.Body = v
+	return s
+}
+
 type StopLoadBalancerListenerRequest struct {
 	ListenerPort     *int32  `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
 	ListenerProtocol *string `json:"ListenerProtocol,omitempty" xml:"ListenerProtocol,omitempty"`
@@ -25381,6 +28296,7 @@ func (s *UnassignPrivateIpAddressesRequest) SetPrivateIpAddress(v []*string) *Un
 }
 
 type UnassignPrivateIpAddressesResponseBody struct {
+	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -30103,6 +33019,13 @@ func (client *Client) DescribeEnsRegionIdIpv6Info(request *DescribeEnsRegionIdIp
 	return _result, _err
 }
 
+/**
+ * ****
+ *
+ * @param request DescribeEnsRegionIdResourceRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DescribeEnsRegionIdResourceResponse
+ */
 func (client *Client) DescribeEnsRegionIdResourceWithOptions(request *DescribeEnsRegionIdResourceRequest, runtime *util.RuntimeOptions) (_result *DescribeEnsRegionIdResourceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -30156,6 +33079,12 @@ func (client *Client) DescribeEnsRegionIdResourceWithOptions(request *DescribeEn
 	return _result, _err
 }
 
+/**
+ * ****
+ *
+ * @param request DescribeEnsRegionIdResourceRequest
+ * @return DescribeEnsRegionIdResourceResponse
+ */
 func (client *Client) DescribeEnsRegionIdResource(request *DescribeEnsRegionIdResourceRequest) (_result *DescribeEnsRegionIdResourceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeEnsRegionIdResourceResponse{}
@@ -31847,6 +34776,46 @@ func (client *Client) DescribeMountTargets(request *DescribeMountTargetsRequest)
 	return _result, _err
 }
 
+func (client *Client) DescribeNCInformationWithOptions(request *DescribeNCInformationRequest, runtime *util.RuntimeOptions) (_result *DescribeNCInformationResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeNCInformation"),
+		Version:     tea.String("2017-11-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeNCInformationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeNCInformation(request *DescribeNCInformationRequest) (_result *DescribeNCInformationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeNCInformationResponse{}
+	_body, _err := client.DescribeNCInformationWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DescribeNatGatewaysWithOptions(request *DescribeNatGatewaysRequest, runtime *util.RuntimeOptions) (_result *DescribeNatGatewaysResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -32273,6 +35242,46 @@ func (client *Client) DescribeRegionIsps(request *DescribeRegionIspsRequest) (_r
 	return _result, _err
 }
 
+func (client *Client) DescribeRegionResourceWithOptions(request *DescribeRegionResourceRequest, runtime *util.RuntimeOptions) (_result *DescribeRegionResourceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeRegionResource"),
+		Version:     tea.String("2017-11-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeRegionResourceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeRegionResource(request *DescribeRegionResourceRequest) (_result *DescribeRegionResourceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeRegionResourceResponse{}
+	_body, _err := client.DescribeRegionResourceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DescribeReservedResourceWithOptions(request *DescribeReservedResourceRequest, runtime *util.RuntimeOptions) (_result *DescribeReservedResourceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -32310,6 +35319,46 @@ func (client *Client) DescribeReservedResource(request *DescribeReservedResource
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeReservedResourceResponse{}
 	_body, _err := client.DescribeReservedResourceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeResourceTimelineWithOptions(request *DescribeResourceTimelineRequest, runtime *util.RuntimeOptions) (_result *DescribeResourceTimelineResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeResourceTimeline"),
+		Version:     tea.String("2017-11-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeResourceTimelineResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeResourceTimeline(request *DescribeResourceTimelineRequest) (_result *DescribeResourceTimelineResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeResourceTimelineResponse{}
+	_body, _err := client.DescribeResourceTimelineWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -33691,6 +36740,10 @@ func (client *Client) ModifyInstanceAttributeWithOptions(request *ModifyInstance
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.HostName)) {
+		query["HostName"] = request.HostName
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
 		query["InstanceId"] = request.InstanceId
 	}
@@ -33703,8 +36756,8 @@ func (client *Client) ModifyInstanceAttributeWithOptions(request *ModifyInstance
 		query["Password"] = request.Password
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.Version)) {
-		query["Version"] = request.Version
+	if !tea.BoolValue(util.IsUnset(request.UserData)) {
+		query["UserData"] = request.UserData
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -34385,6 +37438,56 @@ func (client *Client) RebootInstance(request *RebootInstanceRequest) (_result *R
 	return _result, _err
 }
 
+func (client *Client) RebootInstancesWithOptions(tmpReq *RebootInstancesRequest, runtime *util.RuntimeOptions) (_result *RebootInstancesResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &RebootInstancesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.InstanceIds)) {
+		request.InstanceIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.InstanceIds, tea.String("InstanceIds"), tea.String("simple"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceIdsShrink)) {
+		query["InstanceIds"] = request.InstanceIdsShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RebootInstances"),
+		Version:     tea.String("2017-11-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RebootInstancesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) RebootInstances(request *RebootInstancesRequest) (_result *RebootInstancesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RebootInstancesResponse{}
+	_body, _err := client.RebootInstancesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ReinitInstanceWithOptions(request *ReinitInstanceRequest, runtime *util.RuntimeOptions) (_result *ReinitInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -34430,6 +37533,64 @@ func (client *Client) ReinitInstance(request *ReinitInstanceRequest) (_result *R
 	runtime := &util.RuntimeOptions{}
 	_result = &ReinitInstanceResponse{}
 	_body, _err := client.ReinitInstanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ReinitInstancesWithOptions(tmpReq *ReinitInstancesRequest, runtime *util.RuntimeOptions) (_result *ReinitInstancesResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ReinitInstancesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.InstanceIds)) {
+		request.InstanceIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.InstanceIds, tea.String("InstanceIds"), tea.String("simple"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ImageId)) {
+		query["ImageId"] = request.ImageId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceIdsShrink)) {
+		query["InstanceIds"] = request.InstanceIdsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Password)) {
+		query["Password"] = request.Password
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ReinitInstances"),
+		Version:     tea.String("2017-11-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ReinitInstancesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ReinitInstances(request *ReinitInstancesRequest) (_result *ReinitInstancesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ReinitInstancesResponse{}
+	_body, _err := client.ReinitInstancesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -36025,6 +39186,14 @@ func (client *Client) SetLoadBalancerTCPListenerAttribute(request *SetLoadBalanc
 	return _result, _err
 }
 
+/**
+ * @deprecated
+ *
+ * @param request SetLoadBalancerUDPListenerAttributeRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return SetLoadBalancerUDPListenerAttributeResponse
+ */
+// Deprecated
 func (client *Client) SetLoadBalancerUDPListenerAttributeWithOptions(request *SetLoadBalancerUDPListenerAttributeRequest, runtime *util.RuntimeOptions) (_result *SetLoadBalancerUDPListenerAttributeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -36102,6 +39271,13 @@ func (client *Client) SetLoadBalancerUDPListenerAttributeWithOptions(request *Se
 	return _result, _err
 }
 
+/**
+ * @deprecated
+ *
+ * @param request SetLoadBalancerUDPListenerAttributeRequest
+ * @return SetLoadBalancerUDPListenerAttributeResponse
+ */
+// Deprecated
 func (client *Client) SetLoadBalancerUDPListenerAttribute(request *SetLoadBalancerUDPListenerAttributeRequest) (_result *SetLoadBalancerUDPListenerAttributeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SetLoadBalancerUDPListenerAttributeResponse{}
@@ -36194,6 +39370,56 @@ func (client *Client) StartInstance(request *StartInstanceRequest) (_result *Sta
 	runtime := &util.RuntimeOptions{}
 	_result = &StartInstanceResponse{}
 	_body, _err := client.StartInstanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) StartInstancesWithOptions(tmpReq *StartInstancesRequest, runtime *util.RuntimeOptions) (_result *StartInstancesResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &StartInstancesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.InstanceIds)) {
+		request.InstanceIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.InstanceIds, tea.String("InstanceIds"), tea.String("simple"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceIdsShrink)) {
+		query["InstanceIds"] = request.InstanceIdsShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("StartInstances"),
+		Version:     tea.String("2017-11-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &StartInstancesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) StartInstances(request *StartInstancesRequest) (_result *StartInstancesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &StartInstancesResponse{}
+	_body, _err := client.StartInstancesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -36342,6 +39568,56 @@ func (client *Client) StopInstance(request *StopInstanceRequest) (_result *StopI
 	runtime := &util.RuntimeOptions{}
 	_result = &StopInstanceResponse{}
 	_body, _err := client.StopInstanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) StopInstancesWithOptions(tmpReq *StopInstancesRequest, runtime *util.RuntimeOptions) (_result *StopInstancesResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &StopInstancesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.InstanceIds)) {
+		request.InstanceIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.InstanceIds, tea.String("InstanceIds"), tea.String("simple"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceIdsShrink)) {
+		query["InstanceIds"] = request.InstanceIdsShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("StopInstances"),
+		Version:     tea.String("2017-11-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &StopInstancesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) StopInstances(request *StopInstancesRequest) (_result *StopInstancesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &StopInstancesResponse{}
+	_body, _err := client.StopInstancesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
