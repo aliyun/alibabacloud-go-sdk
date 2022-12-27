@@ -5419,6 +5419,13 @@ func (client *Client) PutConfigurationRecorder(request *PutConfigurationRecorder
 	return _result, _err
 }
 
+/**
+ * ****
+ *
+ * @param request PutDeliveryChannelRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return PutDeliveryChannelResponse
+ */
 func (client *Client) PutDeliveryChannelWithOptions(request *PutDeliveryChannelRequest, runtime *util.RuntimeOptions) (_result *PutDeliveryChannelResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5484,6 +5491,12 @@ func (client *Client) PutDeliveryChannelWithOptions(request *PutDeliveryChannelR
 	return _result, _err
 }
 
+/**
+ * ****
+ *
+ * @param request PutDeliveryChannelRequest
+ * @return PutDeliveryChannelResponse
+ */
 func (client *Client) PutDeliveryChannel(request *PutDeliveryChannelRequest) (_result *PutDeliveryChannelResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &PutDeliveryChannelResponse{}
@@ -5495,6 +5508,13 @@ func (client *Client) PutDeliveryChannel(request *PutDeliveryChannelRequest) (_r
 	return _result, _err
 }
 
+/**
+ * ****
+ *
+ * @param request PutEvaluationsRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return PutEvaluationsResponse
+ */
 func (client *Client) PutEvaluationsWithOptions(request *PutEvaluationsRequest, runtime *util.RuntimeOptions) (_result *PutEvaluationsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5532,6 +5552,12 @@ func (client *Client) PutEvaluationsWithOptions(request *PutEvaluationsRequest, 
 	return _result, _err
 }
 
+/**
+ * ****
+ *
+ * @param request PutEvaluationsRequest
+ * @return PutEvaluationsResponse
+ */
 func (client *Client) PutEvaluations(request *PutEvaluationsRequest) (_result *PutEvaluationsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &PutEvaluationsResponse{}

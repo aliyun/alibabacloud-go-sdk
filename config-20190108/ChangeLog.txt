@@ -1,3 +1,6 @@
+2022-12-27 Version: v2.1.0
+- Open Integrated Api.
+
 2022-09-23 Version: v3.0.0
 - Generated golang 2019-01-08 for Config.
 
