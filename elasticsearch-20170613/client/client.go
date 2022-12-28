@@ -47,6 +47,194 @@ func (s *ClientNodeConfiguration) SetSpec(v string) *ClientNodeConfiguration {
 	return s
 }
 
+type CollectorDeployMachine struct {
+	ConfigType       *string                           `json:"configType,omitempty" xml:"configType,omitempty"`
+	GroupId          *string                           `json:"groupId,omitempty" xml:"groupId,omitempty"`
+	InstanceId       *string                           `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	Machines         []*CollectorDeployMachineMachines `json:"machines,omitempty" xml:"machines,omitempty" type:"Repeated"`
+	SuccessPodsCount *string                           `json:"successPodsCount,omitempty" xml:"successPodsCount,omitempty"`
+	TotalPodsCount   *string                           `json:"totalPodsCount,omitempty" xml:"totalPodsCount,omitempty"`
+	Type             *string                           `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s CollectorDeployMachine) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CollectorDeployMachine) GoString() string {
+	return s.String()
+}
+
+func (s *CollectorDeployMachine) SetConfigType(v string) *CollectorDeployMachine {
+	s.ConfigType = &v
+	return s
+}
+
+func (s *CollectorDeployMachine) SetGroupId(v string) *CollectorDeployMachine {
+	s.GroupId = &v
+	return s
+}
+
+func (s *CollectorDeployMachine) SetInstanceId(v string) *CollectorDeployMachine {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *CollectorDeployMachine) SetMachines(v []*CollectorDeployMachineMachines) *CollectorDeployMachine {
+	s.Machines = v
+	return s
+}
+
+func (s *CollectorDeployMachine) SetSuccessPodsCount(v string) *CollectorDeployMachine {
+	s.SuccessPodsCount = &v
+	return s
+}
+
+func (s *CollectorDeployMachine) SetTotalPodsCount(v string) *CollectorDeployMachine {
+	s.TotalPodsCount = &v
+	return s
+}
+
+func (s *CollectorDeployMachine) SetType(v string) *CollectorDeployMachine {
+	s.Type = &v
+	return s
+}
+
+type CollectorDeployMachineMachines struct {
+	AgentStatus *string `json:"agentStatus,omitempty" xml:"agentStatus,omitempty"`
+	InstanceId  *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+}
+
+func (s CollectorDeployMachineMachines) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CollectorDeployMachineMachines) GoString() string {
+	return s.String()
+}
+
+func (s *CollectorDeployMachineMachines) SetAgentStatus(v string) *CollectorDeployMachineMachines {
+	s.AgentStatus = &v
+	return s
+}
+
+func (s *CollectorDeployMachineMachines) SetInstanceId(v string) *CollectorDeployMachineMachines {
+	s.InstanceId = &v
+	return s
+}
+
+type CollectorKibanaInstance struct {
+	ConfigType *string `json:"configType,omitempty" xml:"configType,omitempty"`
+	Host       *string `json:"host,omitempty" xml:"host,omitempty"`
+	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	KibanaHost *string `json:"kibanaHost,omitempty" xml:"kibanaHost,omitempty"`
+	Password   *string `json:"password,omitempty" xml:"password,omitempty"`
+	Protocol   *string `json:"protocol,omitempty" xml:"protocol,omitempty"`
+	UserName   *string `json:"userName,omitempty" xml:"userName,omitempty"`
+}
+
+func (s CollectorKibanaInstance) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CollectorKibanaInstance) GoString() string {
+	return s.String()
+}
+
+func (s *CollectorKibanaInstance) SetConfigType(v string) *CollectorKibanaInstance {
+	s.ConfigType = &v
+	return s
+}
+
+func (s *CollectorKibanaInstance) SetHost(v string) *CollectorKibanaInstance {
+	s.Host = &v
+	return s
+}
+
+func (s *CollectorKibanaInstance) SetInstanceId(v string) *CollectorKibanaInstance {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *CollectorKibanaInstance) SetKibanaHost(v string) *CollectorKibanaInstance {
+	s.KibanaHost = &v
+	return s
+}
+
+func (s *CollectorKibanaInstance) SetPassword(v string) *CollectorKibanaInstance {
+	s.Password = &v
+	return s
+}
+
+func (s *CollectorKibanaInstance) SetProtocol(v string) *CollectorKibanaInstance {
+	s.Protocol = &v
+	return s
+}
+
+func (s *CollectorKibanaInstance) SetUserName(v string) *CollectorKibanaInstance {
+	s.UserName = &v
+	return s
+}
+
+type CollectorTargetInstance struct {
+	ConfigType       *string   `json:"configType,omitempty" xml:"configType,omitempty"`
+	EnableMonitoring *bool     `json:"enableMonitoring,omitempty" xml:"enableMonitoring,omitempty"`
+	Hosts            []*string `json:"hosts,omitempty" xml:"hosts,omitempty" type:"Repeated"`
+	InstanceId       *string   `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	InstanceType     *string   `json:"instanceType,omitempty" xml:"instanceType,omitempty"`
+	Password         *string   `json:"password,omitempty" xml:"password,omitempty"`
+	Protocol         *string   `json:"protocol,omitempty" xml:"protocol,omitempty"`
+	UserName         *string   `json:"userName,omitempty" xml:"userName,omitempty"`
+}
+
+func (s CollectorTargetInstance) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CollectorTargetInstance) GoString() string {
+	return s.String()
+}
+
+func (s *CollectorTargetInstance) SetConfigType(v string) *CollectorTargetInstance {
+	s.ConfigType = &v
+	return s
+}
+
+func (s *CollectorTargetInstance) SetEnableMonitoring(v bool) *CollectorTargetInstance {
+	s.EnableMonitoring = &v
+	return s
+}
+
+func (s *CollectorTargetInstance) SetHosts(v []*string) *CollectorTargetInstance {
+	s.Hosts = v
+	return s
+}
+
+func (s *CollectorTargetInstance) SetInstanceId(v string) *CollectorTargetInstance {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *CollectorTargetInstance) SetInstanceType(v string) *CollectorTargetInstance {
+	s.InstanceType = &v
+	return s
+}
+
+func (s *CollectorTargetInstance) SetPassword(v string) *CollectorTargetInstance {
+	s.Password = &v
+	return s
+}
+
+func (s *CollectorTargetInstance) SetProtocol(v string) *CollectorTargetInstance {
+	s.Protocol = &v
+	return s
+}
+
+func (s *CollectorTargetInstance) SetUserName(v string) *CollectorTargetInstance {
+	s.UserName = &v
+	return s
+}
+
 type DictInfo struct {
 	FileSize   *int64  `json:"fileSize,omitempty" xml:"fileSize,omitempty"`
 	Name       *string `json:"name,omitempty" xml:"name,omitempty"`
@@ -2056,8 +2244,15 @@ func (s *CloseManagedIndexResponse) SetBody(v *CloseManagedIndexResponseBody) *C
 }
 
 type CreateCollectorRequest struct {
-	Body        *string `json:"body,omitempty" xml:"body,omitempty"`
-	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	CollectorPaths []*string                        `json:"collectorPaths,omitempty" xml:"collectorPaths,omitempty" type:"Repeated"`
+	Configs        []*CreateCollectorRequestConfigs `json:"configs,omitempty" xml:"configs,omitempty" type:"Repeated"`
+	DryRun         *bool                            `json:"dryRun,omitempty" xml:"dryRun,omitempty"`
+	ExtendConfigs  []map[string]interface{}         `json:"extendConfigs,omitempty" xml:"extendConfigs,omitempty" type:"Repeated"`
+	Name           *string                          `json:"name,omitempty" xml:"name,omitempty"`
+	ResType        *string                          `json:"resType,omitempty" xml:"resType,omitempty"`
+	ResVersion     *string                          `json:"resVersion,omitempty" xml:"resVersion,omitempty"`
+	VpcId          *string                          `json:"vpcId,omitempty" xml:"vpcId,omitempty"`
+	ClientToken    *string                          `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
 }
 
 func (s CreateCollectorRequest) String() string {
@@ -2068,13 +2263,71 @@ func (s CreateCollectorRequest) GoString() string {
 	return s.String()
 }
 
-func (s *CreateCollectorRequest) SetBody(v string) *CreateCollectorRequest {
-	s.Body = &v
+func (s *CreateCollectorRequest) SetCollectorPaths(v []*string) *CreateCollectorRequest {
+	s.CollectorPaths = v
+	return s
+}
+
+func (s *CreateCollectorRequest) SetConfigs(v []*CreateCollectorRequestConfigs) *CreateCollectorRequest {
+	s.Configs = v
+	return s
+}
+
+func (s *CreateCollectorRequest) SetDryRun(v bool) *CreateCollectorRequest {
+	s.DryRun = &v
+	return s
+}
+
+func (s *CreateCollectorRequest) SetExtendConfigs(v []map[string]interface{}) *CreateCollectorRequest {
+	s.ExtendConfigs = v
+	return s
+}
+
+func (s *CreateCollectorRequest) SetName(v string) *CreateCollectorRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateCollectorRequest) SetResType(v string) *CreateCollectorRequest {
+	s.ResType = &v
+	return s
+}
+
+func (s *CreateCollectorRequest) SetResVersion(v string) *CreateCollectorRequest {
+	s.ResVersion = &v
+	return s
+}
+
+func (s *CreateCollectorRequest) SetVpcId(v string) *CreateCollectorRequest {
+	s.VpcId = &v
 	return s
 }
 
 func (s *CreateCollectorRequest) SetClientToken(v string) *CreateCollectorRequest {
 	s.ClientToken = &v
+	return s
+}
+
+type CreateCollectorRequestConfigs struct {
+	Content  *string `json:"content,omitempty" xml:"content,omitempty"`
+	FileName *string `json:"fileName,omitempty" xml:"fileName,omitempty"`
+}
+
+func (s CreateCollectorRequestConfigs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCollectorRequestConfigs) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCollectorRequestConfigs) SetContent(v string) *CreateCollectorRequestConfigs {
+	s.Content = &v
+	return s
+}
+
+func (s *CreateCollectorRequestConfigs) SetFileName(v string) *CreateCollectorRequestConfigs {
+	s.FileName = &v
 	return s
 }
 
@@ -2829,8 +3082,13 @@ func (s *CreateILMPolicyResponse) SetBody(v *CreateILMPolicyResponseBody) *Creat
 }
 
 type CreateIndexTemplateRequest struct {
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	Body        *string `json:"body,omitempty" xml:"body,omitempty"`
+	ClientToken   *string                             `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DataStream    *bool                               `json:"dataStream,omitempty" xml:"dataStream,omitempty"`
+	IlmPolicy     *string                             `json:"ilmPolicy,omitempty" xml:"ilmPolicy,omitempty"`
+	IndexPatterns []*string                           `json:"indexPatterns,omitempty" xml:"indexPatterns,omitempty" type:"Repeated"`
+	IndexTemplate *string                             `json:"indexTemplate,omitempty" xml:"indexTemplate,omitempty"`
+	Priority      *int32                              `json:"priority,omitempty" xml:"priority,omitempty"`
+	Template      *CreateIndexTemplateRequestTemplate `json:"template,omitempty" xml:"template,omitempty" type:"Struct"`
 }
 
 func (s CreateIndexTemplateRequest) String() string {
@@ -2846,8 +3104,62 @@ func (s *CreateIndexTemplateRequest) SetClientToken(v string) *CreateIndexTempla
 	return s
 }
 
-func (s *CreateIndexTemplateRequest) SetBody(v string) *CreateIndexTemplateRequest {
-	s.Body = &v
+func (s *CreateIndexTemplateRequest) SetDataStream(v bool) *CreateIndexTemplateRequest {
+	s.DataStream = &v
+	return s
+}
+
+func (s *CreateIndexTemplateRequest) SetIlmPolicy(v string) *CreateIndexTemplateRequest {
+	s.IlmPolicy = &v
+	return s
+}
+
+func (s *CreateIndexTemplateRequest) SetIndexPatterns(v []*string) *CreateIndexTemplateRequest {
+	s.IndexPatterns = v
+	return s
+}
+
+func (s *CreateIndexTemplateRequest) SetIndexTemplate(v string) *CreateIndexTemplateRequest {
+	s.IndexTemplate = &v
+	return s
+}
+
+func (s *CreateIndexTemplateRequest) SetPriority(v int32) *CreateIndexTemplateRequest {
+	s.Priority = &v
+	return s
+}
+
+func (s *CreateIndexTemplateRequest) SetTemplate(v *CreateIndexTemplateRequestTemplate) *CreateIndexTemplateRequest {
+	s.Template = v
+	return s
+}
+
+type CreateIndexTemplateRequestTemplate struct {
+	Aliases  *string `json:"aliases,omitempty" xml:"aliases,omitempty"`
+	Mappings *string `json:"mappings,omitempty" xml:"mappings,omitempty"`
+	Settings *string `json:"settings,omitempty" xml:"settings,omitempty"`
+}
+
+func (s CreateIndexTemplateRequestTemplate) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateIndexTemplateRequestTemplate) GoString() string {
+	return s.String()
+}
+
+func (s *CreateIndexTemplateRequestTemplate) SetAliases(v string) *CreateIndexTemplateRequestTemplate {
+	s.Aliases = &v
+	return s
+}
+
+func (s *CreateIndexTemplateRequestTemplate) SetMappings(v string) *CreateIndexTemplateRequestTemplate {
+	s.Mappings = &v
+	return s
+}
+
+func (s *CreateIndexTemplateRequestTemplate) SetSettings(v string) *CreateIndexTemplateRequestTemplate {
+	s.Settings = &v
 	return s
 }
 
@@ -26218,10 +26530,43 @@ func (client *Client) CreateCollectorWithOptions(request *CreateCollectorRequest
 		query["clientToken"] = request.ClientToken
 	}
 
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CollectorPaths)) {
+		body["collectorPaths"] = request.CollectorPaths
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Configs)) {
+		body["configs"] = request.Configs
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		body["dryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExtendConfigs)) {
+		body["extendConfigs"] = request.ExtendConfigs
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResType)) {
+		body["resType"] = request.ResType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResVersion)) {
+		body["resVersion"] = request.ResVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VpcId)) {
+		body["vpcId"] = request.VpcId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),
-		Body:    request.Body,
+		Body:    openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateCollector"),
@@ -26456,10 +26801,35 @@ func (client *Client) CreateIndexTemplateWithOptions(InstanceId *string, request
 		query["ClientToken"] = request.ClientToken
 	}
 
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DataStream)) {
+		body["dataStream"] = request.DataStream
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IlmPolicy)) {
+		body["ilmPolicy"] = request.IlmPolicy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IndexPatterns)) {
+		body["indexPatterns"] = request.IndexPatterns
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IndexTemplate)) {
+		body["indexTemplate"] = request.IndexTemplate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Priority)) {
+		body["priority"] = request.Priority
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Template)) {
+		body["template"] = request.Template
+	}
+
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),
-		Body:    request.Body,
+		Body:    openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateIndexTemplate"),
