@@ -12,6 +12,216 @@ import (
 	"github.com/alibabacloud-go/tea/tea"
 )
 
+type CommitContainerRequest struct {
+	AcrRegistryInfo      *CommitContainerRequestAcrRegistryInfo `json:"AcrRegistryInfo,omitempty" xml:"AcrRegistryInfo,omitempty" type:"Struct"`
+	Arn                  *CommitContainerRequestArn             `json:"Arn,omitempty" xml:"Arn,omitempty" type:"Struct"`
+	ContainerGroupId     *string                                `json:"ContainerGroupId,omitempty" xml:"ContainerGroupId,omitempty"`
+	ContainerName        *string                                `json:"ContainerName,omitempty" xml:"ContainerName,omitempty"`
+	Image                *CommitContainerRequestImage           `json:"Image,omitempty" xml:"Image,omitempty" type:"Struct"`
+	OwnerAccount         *string                                `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64                                 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId             *string                                `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string                                `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64                                 `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s CommitContainerRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CommitContainerRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CommitContainerRequest) SetAcrRegistryInfo(v *CommitContainerRequestAcrRegistryInfo) *CommitContainerRequest {
+	s.AcrRegistryInfo = v
+	return s
+}
+
+func (s *CommitContainerRequest) SetArn(v *CommitContainerRequestArn) *CommitContainerRequest {
+	s.Arn = v
+	return s
+}
+
+func (s *CommitContainerRequest) SetContainerGroupId(v string) *CommitContainerRequest {
+	s.ContainerGroupId = &v
+	return s
+}
+
+func (s *CommitContainerRequest) SetContainerName(v string) *CommitContainerRequest {
+	s.ContainerName = &v
+	return s
+}
+
+func (s *CommitContainerRequest) SetImage(v *CommitContainerRequestImage) *CommitContainerRequest {
+	s.Image = v
+	return s
+}
+
+func (s *CommitContainerRequest) SetOwnerAccount(v string) *CommitContainerRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *CommitContainerRequest) SetOwnerId(v int64) *CommitContainerRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *CommitContainerRequest) SetRegionId(v string) *CommitContainerRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *CommitContainerRequest) SetResourceOwnerAccount(v string) *CommitContainerRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *CommitContainerRequest) SetResourceOwnerId(v int64) *CommitContainerRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type CommitContainerRequestAcrRegistryInfo struct {
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s CommitContainerRequestAcrRegistryInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CommitContainerRequestAcrRegistryInfo) GoString() string {
+	return s.String()
+}
+
+func (s *CommitContainerRequestAcrRegistryInfo) SetInstanceId(v string) *CommitContainerRequestAcrRegistryInfo {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *CommitContainerRequestAcrRegistryInfo) SetRegionId(v string) *CommitContainerRequestAcrRegistryInfo {
+	s.RegionId = &v
+	return s
+}
+
+type CommitContainerRequestArn struct {
+	AssumeRoleFor *string `json:"AssumeRoleFor,omitempty" xml:"AssumeRoleFor,omitempty"`
+	RoleArn       *string `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
+	RoleType      *string `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
+}
+
+func (s CommitContainerRequestArn) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CommitContainerRequestArn) GoString() string {
+	return s.String()
+}
+
+func (s *CommitContainerRequestArn) SetAssumeRoleFor(v string) *CommitContainerRequestArn {
+	s.AssumeRoleFor = &v
+	return s
+}
+
+func (s *CommitContainerRequestArn) SetRoleArn(v string) *CommitContainerRequestArn {
+	s.RoleArn = &v
+	return s
+}
+
+func (s *CommitContainerRequestArn) SetRoleType(v string) *CommitContainerRequestArn {
+	s.RoleType = &v
+	return s
+}
+
+type CommitContainerRequestImage struct {
+	Author     *string `json:"Author,omitempty" xml:"Author,omitempty"`
+	Message    *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	Repository *string `json:"Repository,omitempty" xml:"Repository,omitempty"`
+	Tag        *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+}
+
+func (s CommitContainerRequestImage) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CommitContainerRequestImage) GoString() string {
+	return s.String()
+}
+
+func (s *CommitContainerRequestImage) SetAuthor(v string) *CommitContainerRequestImage {
+	s.Author = &v
+	return s
+}
+
+func (s *CommitContainerRequestImage) SetMessage(v string) *CommitContainerRequestImage {
+	s.Message = &v
+	return s
+}
+
+func (s *CommitContainerRequestImage) SetRepository(v string) *CommitContainerRequestImage {
+	s.Repository = &v
+	return s
+}
+
+func (s *CommitContainerRequestImage) SetTag(v string) *CommitContainerRequestImage {
+	s.Tag = &v
+	return s
+}
+
+type CommitContainerResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+}
+
+func (s CommitContainerResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CommitContainerResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CommitContainerResponseBody) SetRequestId(v string) *CommitContainerResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CommitContainerResponseBody) SetTaskId(v string) *CommitContainerResponseBody {
+	s.TaskId = &v
+	return s
+}
+
+type CommitContainerResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CommitContainerResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CommitContainerResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CommitContainerResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CommitContainerResponse) SetHeaders(v map[string]*string) *CommitContainerResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CommitContainerResponse) SetStatusCode(v int32) *CommitContainerResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CommitContainerResponse) SetBody(v *CommitContainerResponseBody) *CommitContainerResponse {
+	s.Body = v
+	return s
+}
+
 type CreateContainerGroupRequest struct {
 	DnsConfig                     *CreateContainerGroupRequestDnsConfig                 `json:"DnsConfig,omitempty" xml:"DnsConfig,omitempty" type:"Struct"`
 	HostSecurityContext           *CreateContainerGroupRequestHostSecurityContext       `json:"HostSecurityContext,omitempty" xml:"HostSecurityContext,omitempty" type:"Struct"`
@@ -24,6 +234,7 @@ type CreateContainerGroupRequest struct {
 	ClientToken                   *string                                               `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	Container                     []*CreateContainerGroupRequestContainer               `json:"Container,omitempty" xml:"Container,omitempty" type:"Repeated"`
 	ContainerGroupName            *string                                               `json:"ContainerGroupName,omitempty" xml:"ContainerGroupName,omitempty"`
+	ContainerResourceView         *bool                                                 `json:"ContainerResourceView,omitempty" xml:"ContainerResourceView,omitempty"`
 	CorePattern                   *string                                               `json:"CorePattern,omitempty" xml:"CorePattern,omitempty"`
 	Cpu                           *float32                                              `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
 	CpuOptionsCore                *int32                                                `json:"CpuOptionsCore,omitempty" xml:"CpuOptionsCore,omitempty"`
@@ -64,7 +275,6 @@ type CreateContainerGroupRequest struct {
 	SecondaryENIPolicy            *string                                               `json:"SecondaryENIPolicy,omitempty" xml:"SecondaryENIPolicy,omitempty"`
 	SecurityGroupId               *string                                               `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
 	ShareProcessNamespace         *bool                                                 `json:"ShareProcessNamespace,omitempty" xml:"ShareProcessNamespace,omitempty"`
-	SlsEnable                     *bool                                                 `json:"SlsEnable,omitempty" xml:"SlsEnable,omitempty"`
 	SpotDuration                  *int64                                                `json:"SpotDuration,omitempty" xml:"SpotDuration,omitempty"`
 	SpotPriceLimit                *float32                                              `json:"SpotPriceLimit,omitempty" xml:"SpotPriceLimit,omitempty"`
 	SpotStrategy                  *string                                               `json:"SpotStrategy,omitempty" xml:"SpotStrategy,omitempty"`
@@ -138,6 +348,11 @@ func (s *CreateContainerGroupRequest) SetContainer(v []*CreateContainerGroupRequ
 
 func (s *CreateContainerGroupRequest) SetContainerGroupName(v string) *CreateContainerGroupRequest {
 	s.ContainerGroupName = &v
+	return s
+}
+
+func (s *CreateContainerGroupRequest) SetContainerResourceView(v bool) *CreateContainerGroupRequest {
+	s.ContainerResourceView = &v
 	return s
 }
 
@@ -338,11 +553,6 @@ func (s *CreateContainerGroupRequest) SetSecurityGroupId(v string) *CreateContai
 
 func (s *CreateContainerGroupRequest) SetShareProcessNamespace(v bool) *CreateContainerGroupRequest {
 	s.ShareProcessNamespace = &v
-	return s
-}
-
-func (s *CreateContainerGroupRequest) SetSlsEnable(v bool) *CreateContainerGroupRequest {
-	s.SlsEnable = &v
 	return s
 }
 
@@ -3142,6 +3352,241 @@ func (s *DescribeAvailableResourceResponse) SetBody(v *DescribeAvailableResource
 	return s
 }
 
+type DescribeCommitContainerTaskRequest struct {
+	ContainerGroupId     *string   `json:"ContainerGroupId,omitempty" xml:"ContainerGroupId,omitempty"`
+	MaxResults           *int32    `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken            *string   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	OwnerAccount         *string   `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId             *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	TaskId               []*string `json:"TaskId,omitempty" xml:"TaskId,omitempty" type:"Repeated"`
+	TaskStatus           *string   `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
+}
+
+func (s DescribeCommitContainerTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCommitContainerTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCommitContainerTaskRequest) SetContainerGroupId(v string) *DescribeCommitContainerTaskRequest {
+	s.ContainerGroupId = &v
+	return s
+}
+
+func (s *DescribeCommitContainerTaskRequest) SetMaxResults(v int32) *DescribeCommitContainerTaskRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *DescribeCommitContainerTaskRequest) SetNextToken(v string) *DescribeCommitContainerTaskRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *DescribeCommitContainerTaskRequest) SetOwnerAccount(v string) *DescribeCommitContainerTaskRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *DescribeCommitContainerTaskRequest) SetOwnerId(v int64) *DescribeCommitContainerTaskRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribeCommitContainerTaskRequest) SetRegionId(v string) *DescribeCommitContainerTaskRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeCommitContainerTaskRequest) SetResourceOwnerAccount(v string) *DescribeCommitContainerTaskRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *DescribeCommitContainerTaskRequest) SetResourceOwnerId(v int64) *DescribeCommitContainerTaskRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *DescribeCommitContainerTaskRequest) SetTaskId(v []*string) *DescribeCommitContainerTaskRequest {
+	s.TaskId = v
+	return s
+}
+
+func (s *DescribeCommitContainerTaskRequest) SetTaskStatus(v string) *DescribeCommitContainerTaskRequest {
+	s.TaskStatus = &v
+	return s
+}
+
+type DescribeCommitContainerTaskResponseBody struct {
+	CommitTasks []*DescribeCommitContainerTaskResponseBodyCommitTasks `json:"CommitTasks,omitempty" xml:"CommitTasks,omitempty" type:"Repeated"`
+	MaxResults  *string                                               `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken   *string                                               `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RequestId   *string                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount  *int32                                                `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeCommitContainerTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCommitContainerTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCommitContainerTaskResponseBody) SetCommitTasks(v []*DescribeCommitContainerTaskResponseBodyCommitTasks) *DescribeCommitContainerTaskResponseBody {
+	s.CommitTasks = v
+	return s
+}
+
+func (s *DescribeCommitContainerTaskResponseBody) SetMaxResults(v string) *DescribeCommitContainerTaskResponseBody {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *DescribeCommitContainerTaskResponseBody) SetNextToken(v string) *DescribeCommitContainerTaskResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *DescribeCommitContainerTaskResponseBody) SetRequestId(v string) *DescribeCommitContainerTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeCommitContainerTaskResponseBody) SetTotalCount(v int32) *DescribeCommitContainerTaskResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeCommitContainerTaskResponseBodyCommitTasks struct {
+	CommitPhaseInfos []*DescribeCommitContainerTaskResponseBodyCommitTasksCommitPhaseInfos `json:"CommitPhaseInfos,omitempty" xml:"CommitPhaseInfos,omitempty" type:"Repeated"`
+	ContainerName    *string                                                               `json:"ContainerName,omitempty" xml:"ContainerName,omitempty"`
+	CreationTime     *string                                                               `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	FinishedTime     *string                                                               `json:"FinishedTime,omitempty" xml:"FinishedTime,omitempty"`
+	StatusMessage    *string                                                               `json:"StatusMessage,omitempty" xml:"StatusMessage,omitempty"`
+	TaskId           *string                                                               `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	TaskProgress     *string                                                               `json:"TaskProgress,omitempty" xml:"TaskProgress,omitempty"`
+	TaskStatus       *string                                                               `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
+}
+
+func (s DescribeCommitContainerTaskResponseBodyCommitTasks) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCommitContainerTaskResponseBodyCommitTasks) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCommitContainerTaskResponseBodyCommitTasks) SetCommitPhaseInfos(v []*DescribeCommitContainerTaskResponseBodyCommitTasksCommitPhaseInfos) *DescribeCommitContainerTaskResponseBodyCommitTasks {
+	s.CommitPhaseInfos = v
+	return s
+}
+
+func (s *DescribeCommitContainerTaskResponseBodyCommitTasks) SetContainerName(v string) *DescribeCommitContainerTaskResponseBodyCommitTasks {
+	s.ContainerName = &v
+	return s
+}
+
+func (s *DescribeCommitContainerTaskResponseBodyCommitTasks) SetCreationTime(v string) *DescribeCommitContainerTaskResponseBodyCommitTasks {
+	s.CreationTime = &v
+	return s
+}
+
+func (s *DescribeCommitContainerTaskResponseBodyCommitTasks) SetFinishedTime(v string) *DescribeCommitContainerTaskResponseBodyCommitTasks {
+	s.FinishedTime = &v
+	return s
+}
+
+func (s *DescribeCommitContainerTaskResponseBodyCommitTasks) SetStatusMessage(v string) *DescribeCommitContainerTaskResponseBodyCommitTasks {
+	s.StatusMessage = &v
+	return s
+}
+
+func (s *DescribeCommitContainerTaskResponseBodyCommitTasks) SetTaskId(v string) *DescribeCommitContainerTaskResponseBodyCommitTasks {
+	s.TaskId = &v
+	return s
+}
+
+func (s *DescribeCommitContainerTaskResponseBodyCommitTasks) SetTaskProgress(v string) *DescribeCommitContainerTaskResponseBodyCommitTasks {
+	s.TaskProgress = &v
+	return s
+}
+
+func (s *DescribeCommitContainerTaskResponseBodyCommitTasks) SetTaskStatus(v string) *DescribeCommitContainerTaskResponseBodyCommitTasks {
+	s.TaskStatus = &v
+	return s
+}
+
+type DescribeCommitContainerTaskResponseBodyCommitTasksCommitPhaseInfos struct {
+	Message    *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	Phase      *string `json:"Phase,omitempty" xml:"Phase,omitempty"`
+	RecordTime *string `json:"RecordTime,omitempty" xml:"RecordTime,omitempty"`
+	Status     *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s DescribeCommitContainerTaskResponseBodyCommitTasksCommitPhaseInfos) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCommitContainerTaskResponseBodyCommitTasksCommitPhaseInfos) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCommitContainerTaskResponseBodyCommitTasksCommitPhaseInfos) SetMessage(v string) *DescribeCommitContainerTaskResponseBodyCommitTasksCommitPhaseInfos {
+	s.Message = &v
+	return s
+}
+
+func (s *DescribeCommitContainerTaskResponseBodyCommitTasksCommitPhaseInfos) SetPhase(v string) *DescribeCommitContainerTaskResponseBodyCommitTasksCommitPhaseInfos {
+	s.Phase = &v
+	return s
+}
+
+func (s *DescribeCommitContainerTaskResponseBodyCommitTasksCommitPhaseInfos) SetRecordTime(v string) *DescribeCommitContainerTaskResponseBodyCommitTasksCommitPhaseInfos {
+	s.RecordTime = &v
+	return s
+}
+
+func (s *DescribeCommitContainerTaskResponseBodyCommitTasksCommitPhaseInfos) SetStatus(v string) *DescribeCommitContainerTaskResponseBodyCommitTasksCommitPhaseInfos {
+	s.Status = &v
+	return s
+}
+
+type DescribeCommitContainerTaskResponse struct {
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeCommitContainerTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeCommitContainerTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCommitContainerTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCommitContainerTaskResponse) SetHeaders(v map[string]*string) *DescribeCommitContainerTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeCommitContainerTaskResponse) SetStatusCode(v int32) *DescribeCommitContainerTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeCommitContainerTaskResponse) SetBody(v *DescribeCommitContainerTaskResponseBody) *DescribeCommitContainerTaskResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeContainerGroupEventsRequest struct {
 	ContainerGroupIds *string                                   `json:"ContainerGroupIds,omitempty" xml:"ContainerGroupIds,omitempty"`
 	EventSource       *string                                   `json:"EventSource,omitempty" xml:"EventSource,omitempty"`
@@ -4574,8 +5019,9 @@ type DescribeContainerGroupStatusResponseBodyDataPodStatus struct {
 	Phase             *string                                                                   `json:"Phase,omitempty" xml:"Phase,omitempty"`
 	PodIp             *string                                                                   `json:"PodIp,omitempty" xml:"PodIp,omitempty"`
 	PodIps            []*DescribeContainerGroupStatusResponseBodyDataPodStatusPodIps            `json:"PodIps,omitempty" xml:"PodIps,omitempty" type:"Repeated"`
-	QosClass          *string                                                                   `json:"QosClass,omitempty" xml:"QosClass,omitempty"`
-	StartTime         *string                                                                   `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// Pod Qos。
+	QosClass  *string `json:"QosClass,omitempty" xml:"QosClass,omitempty"`
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s DescribeContainerGroupStatusResponseBodyDataPodStatus) String() string {
@@ -5680,14 +6126,16 @@ func (s *DescribeContainerGroupsResponseBodyContainerGroupsContainersEnvironment
 }
 
 type DescribeContainerGroupsResponseBodyContainerGroupsContainersLivenessProbe struct {
-	Execs               []*string                                                                           `json:"Execs,omitempty" xml:"Execs,omitempty" type:"Repeated"`
-	FailureThreshold    *int32                                                                              `json:"FailureThreshold,omitempty" xml:"FailureThreshold,omitempty"`
-	HttpGet             *DescribeContainerGroupsResponseBodyContainerGroupsContainersLivenessProbeHttpGet   `json:"HttpGet,omitempty" xml:"HttpGet,omitempty" type:"Struct"`
-	InitialDelaySeconds *int32                                                                              `json:"InitialDelaySeconds,omitempty" xml:"InitialDelaySeconds,omitempty"`
-	PeriodSeconds       *int32                                                                              `json:"PeriodSeconds,omitempty" xml:"PeriodSeconds,omitempty"`
-	SuccessThreshold    *int32                                                                              `json:"SuccessThreshold,omitempty" xml:"SuccessThreshold,omitempty"`
-	TcpSocket           *DescribeContainerGroupsResponseBodyContainerGroupsContainersLivenessProbeTcpSocket `json:"TcpSocket,omitempty" xml:"TcpSocket,omitempty" type:"Struct"`
-	TimeoutSeconds      *int32                                                                              `json:"TimeoutSeconds,omitempty" xml:"TimeoutSeconds,omitempty"`
+	Execs            []*string `json:"Execs,omitempty" xml:"Execs,omitempty" type:"Repeated"`
+	FailureThreshold *int32    `json:"FailureThreshold,omitempty" xml:"FailureThreshold,omitempty"`
+	// HttpGet。
+	HttpGet             *DescribeContainerGroupsResponseBodyContainerGroupsContainersLivenessProbeHttpGet `json:"HttpGet,omitempty" xml:"HttpGet,omitempty" type:"Struct"`
+	InitialDelaySeconds *int32                                                                            `json:"InitialDelaySeconds,omitempty" xml:"InitialDelaySeconds,omitempty"`
+	PeriodSeconds       *int32                                                                            `json:"PeriodSeconds,omitempty" xml:"PeriodSeconds,omitempty"`
+	SuccessThreshold    *int32                                                                            `json:"SuccessThreshold,omitempty" xml:"SuccessThreshold,omitempty"`
+	// TcpSocket。
+	TcpSocket      *DescribeContainerGroupsResponseBodyContainerGroupsContainersLivenessProbeTcpSocket `json:"TcpSocket,omitempty" xml:"TcpSocket,omitempty" type:"Struct"`
+	TimeoutSeconds *int32                                                                              `json:"TimeoutSeconds,omitempty" xml:"TimeoutSeconds,omitempty"`
 }
 
 func (s DescribeContainerGroupsResponseBodyContainerGroupsContainersLivenessProbe) String() string {
@@ -5873,14 +6321,16 @@ func (s *DescribeContainerGroupsResponseBodyContainerGroupsContainersPreviousSta
 }
 
 type DescribeContainerGroupsResponseBodyContainerGroupsContainersReadinessProbe struct {
-	Execs               []*string                                                                            `json:"Execs,omitempty" xml:"Execs,omitempty" type:"Repeated"`
-	FailureThreshold    *int32                                                                               `json:"FailureThreshold,omitempty" xml:"FailureThreshold,omitempty"`
-	HttpGet             *DescribeContainerGroupsResponseBodyContainerGroupsContainersReadinessProbeHttpGet   `json:"HttpGet,omitempty" xml:"HttpGet,omitempty" type:"Struct"`
-	InitialDelaySeconds *int32                                                                               `json:"InitialDelaySeconds,omitempty" xml:"InitialDelaySeconds,omitempty"`
-	PeriodSeconds       *int32                                                                               `json:"PeriodSeconds,omitempty" xml:"PeriodSeconds,omitempty"`
-	SuccessThreshold    *int32                                                                               `json:"SuccessThreshold,omitempty" xml:"SuccessThreshold,omitempty"`
-	TcpSocket           *DescribeContainerGroupsResponseBodyContainerGroupsContainersReadinessProbeTcpSocket `json:"TcpSocket,omitempty" xml:"TcpSocket,omitempty" type:"Struct"`
-	TimeoutSeconds      *int32                                                                               `json:"TimeoutSeconds,omitempty" xml:"TimeoutSeconds,omitempty"`
+	Execs            []*string `json:"Execs,omitempty" xml:"Execs,omitempty" type:"Repeated"`
+	FailureThreshold *int32    `json:"FailureThreshold,omitempty" xml:"FailureThreshold,omitempty"`
+	// HttpGet。
+	HttpGet             *DescribeContainerGroupsResponseBodyContainerGroupsContainersReadinessProbeHttpGet `json:"HttpGet,omitempty" xml:"HttpGet,omitempty" type:"Struct"`
+	InitialDelaySeconds *int32                                                                             `json:"InitialDelaySeconds,omitempty" xml:"InitialDelaySeconds,omitempty"`
+	PeriodSeconds       *int32                                                                             `json:"PeriodSeconds,omitempty" xml:"PeriodSeconds,omitempty"`
+	SuccessThreshold    *int32                                                                             `json:"SuccessThreshold,omitempty" xml:"SuccessThreshold,omitempty"`
+	// TcpSocket。
+	TcpSocket      *DescribeContainerGroupsResponseBodyContainerGroupsContainersReadinessProbeTcpSocket `json:"TcpSocket,omitempty" xml:"TcpSocket,omitempty" type:"Struct"`
+	TimeoutSeconds *int32                                                                               `json:"TimeoutSeconds,omitempty" xml:"TimeoutSeconds,omitempty"`
 }
 
 func (s DescribeContainerGroupsResponseBodyContainerGroupsContainersReadinessProbe) String() string {
@@ -5932,8 +6382,9 @@ func (s *DescribeContainerGroupsResponseBodyContainerGroupsContainersReadinessPr
 }
 
 type DescribeContainerGroupsResponseBodyContainerGroupsContainersReadinessProbeHttpGet struct {
-	Path   *string `json:"Path,omitempty" xml:"Path,omitempty"`
-	Port   *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
+	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	Port *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
+	// HTTP／HTTPS。
 	Scheme *string `json:"Scheme,omitempty" xml:"Scheme,omitempty"`
 }
 
@@ -5961,6 +6412,7 @@ func (s *DescribeContainerGroupsResponseBodyContainerGroupsContainersReadinessPr
 }
 
 type DescribeContainerGroupsResponseBodyContainerGroupsContainersReadinessProbeTcpSocket struct {
+	// Host。
 	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
 	Port *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
 }
@@ -6933,7 +7385,9 @@ type DescribeImageCachesRequest struct {
 	Image                *string                          `json:"Image,omitempty" xml:"Image,omitempty"`
 	ImageCacheId         *string                          `json:"ImageCacheId,omitempty" xml:"ImageCacheId,omitempty"`
 	ImageCacheName       *string                          `json:"ImageCacheName,omitempty" xml:"ImageCacheName,omitempty"`
+	Limit                *int32                           `json:"Limit,omitempty" xml:"Limit,omitempty"`
 	MatchImage           []*string                        `json:"MatchImage,omitempty" xml:"MatchImage,omitempty" type:"Repeated"`
+	NextToken            *string                          `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	OwnerAccount         *string                          `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64                           `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	RegionId             *string                          `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
@@ -6967,8 +7421,18 @@ func (s *DescribeImageCachesRequest) SetImageCacheName(v string) *DescribeImageC
 	return s
 }
 
+func (s *DescribeImageCachesRequest) SetLimit(v int32) *DescribeImageCachesRequest {
+	s.Limit = &v
+	return s
+}
+
 func (s *DescribeImageCachesRequest) SetMatchImage(v []*string) *DescribeImageCachesRequest {
 	s.MatchImage = v
+	return s
+}
+
+func (s *DescribeImageCachesRequest) SetNextToken(v string) *DescribeImageCachesRequest {
+	s.NextToken = &v
 	return s
 }
 
@@ -7037,7 +7501,9 @@ func (s *DescribeImageCachesRequestTag) SetValue(v string) *DescribeImageCachesR
 
 type DescribeImageCachesResponseBody struct {
 	ImageCaches []*DescribeImageCachesResponseBodyImageCaches `json:"ImageCaches,omitempty" xml:"ImageCaches,omitempty" type:"Repeated"`
+	NextToken   *string                                       `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	RequestId   *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount  *int32                                        `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeImageCachesResponseBody) String() string {
@@ -7053,8 +7519,18 @@ func (s *DescribeImageCachesResponseBody) SetImageCaches(v []*DescribeImageCache
 	return s
 }
 
+func (s *DescribeImageCachesResponseBody) SetNextToken(v string) *DescribeImageCachesResponseBody {
+	s.NextToken = &v
+	return s
+}
+
 func (s *DescribeImageCachesResponseBody) SetRequestId(v string) *DescribeImageCachesResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeImageCachesResponseBody) SetTotalCount(v int32) *DescribeImageCachesResponseBody {
+	s.TotalCount = &v
 	return s
 }
 
@@ -8259,8 +8735,9 @@ type DescribeVirtualNodesResponseBodyVirtualNodes struct {
 	VSwitchId       *string                                               `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 	VirtualNodeId   *string                                               `json:"VirtualNodeId,omitempty" xml:"VirtualNodeId,omitempty"`
 	VirtualNodeName *string                                               `json:"VirtualNodeName,omitempty" xml:"VirtualNodeName,omitempty"`
-	VpcId           *string                                               `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	ZoneId          *string                                               `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// VPC ID。
+	VpcId  *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s DescribeVirtualNodesResponseBodyVirtualNodes) String() string {
@@ -9725,7 +10202,8 @@ func (s *UpdateContainerGroupRequestContainerLifecyclePreStopHandlerHttpGetHttpH
 }
 
 type UpdateContainerGroupRequestContainerPort struct {
-	Port     *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
+	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
+	// TCP/UDP。
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
 }
 
@@ -10017,7 +10495,8 @@ func (s *UpdateContainerGroupRequestInitContainerEnvironmentVarFieldRef) SetFiel
 }
 
 type UpdateContainerGroupRequestInitContainerPort struct {
-	Port     *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
+	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
+	// TCP/UDP。
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
 }
 
@@ -10827,6 +11306,90 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+func (client *Client) CommitContainerWithOptions(request *CommitContainerRequest, runtime *util.RuntimeOptions) (_result *CommitContainerResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcrRegistryInfo)) {
+		query["AcrRegistryInfo"] = request.AcrRegistryInfo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Arn)) {
+		query["Arn"] = request.Arn
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ContainerGroupId)) {
+		query["ContainerGroupId"] = request.ContainerGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ContainerName)) {
+		query["ContainerName"] = request.ContainerName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Image)) {
+		query["Image"] = request.Image
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CommitContainer"),
+		Version:     tea.String("2018-08-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CommitContainerResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CommitContainer(request *CommitContainerRequest) (_result *CommitContainerResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CommitContainerResponse{}
+	_body, _err := client.CommitContainerWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) CreateContainerGroupWithOptions(request *CreateContainerGroupRequest, runtime *util.RuntimeOptions) (_result *CreateContainerGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -10863,6 +11426,10 @@ func (client *Client) CreateContainerGroupWithOptions(request *CreateContainerGr
 
 	if !tea.BoolValue(util.IsUnset(request.ContainerGroupName)) {
 		query["ContainerGroupName"] = request.ContainerGroupName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ContainerResourceView)) {
+		query["ContainerResourceView"] = request.ContainerResourceView
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.CorePattern)) {
@@ -11029,10 +11596,6 @@ func (client *Client) CreateContainerGroupWithOptions(request *CreateContainerGr
 		query["ShareProcessNamespace"] = request.ShareProcessNamespace
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.SlsEnable)) {
-		query["SlsEnable"] = request.SlsEnable
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.SpotDuration)) {
 		query["SpotDuration"] = request.SpotDuration
 	}
@@ -11077,15 +11640,15 @@ func (client *Client) CreateContainerGroupWithOptions(request *CreateContainerGr
 		query["ZoneId"] = request.ZoneId
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.DnsConfig))) {
+	if !tea.BoolValue(util.IsUnset(request.DnsConfig)) {
 		query["DnsConfig"] = request.DnsConfig
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.HostSecurityContext))) {
+	if !tea.BoolValue(util.IsUnset(request.HostSecurityContext)) {
 		query["HostSecurityContext"] = request.HostSecurityContext
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.SecurityContext))) {
+	if !tea.BoolValue(util.IsUnset(request.SecurityContext)) {
 		query["SecurityContext"] = request.SecurityContext
 	}
 
@@ -11685,7 +12248,7 @@ func (client *Client) DescribeAvailableResourceWithOptions(request *DescribeAvai
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.DestinationResource))) {
+	if !tea.BoolValue(util.IsUnset(request.DestinationResource)) {
 		query["DestinationResource"] = request.DestinationResource
 	}
 
@@ -11713,7 +12276,7 @@ func (client *Client) DescribeAvailableResourceWithOptions(request *DescribeAvai
 		query["ResourceOwnerId"] = request.ResourceOwnerId
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.SpotResource))) {
+	if !tea.BoolValue(util.IsUnset(request.SpotResource)) {
 		query["SpotResource"] = request.SpotResource
 	}
 
@@ -11748,6 +12311,90 @@ func (client *Client) DescribeAvailableResource(request *DescribeAvailableResour
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeAvailableResourceResponse{}
 	_body, _err := client.DescribeAvailableResourceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeCommitContainerTaskWithOptions(request *DescribeCommitContainerTaskRequest, runtime *util.RuntimeOptions) (_result *DescribeCommitContainerTaskResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ContainerGroupId)) {
+		query["ContainerGroupId"] = request.ContainerGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
+		query["TaskId"] = request.TaskId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskStatus)) {
+		query["TaskStatus"] = request.TaskStatus
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeCommitContainerTask"),
+		Version:     tea.String("2018-08-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeCommitContainerTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeCommitContainerTask(request *DescribeCommitContainerTaskRequest) (_result *DescribeCommitContainerTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeCommitContainerTaskResponse{}
+	_body, _err := client.DescribeCommitContainerTaskWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12293,8 +12940,16 @@ func (client *Client) DescribeImageCachesWithOptions(request *DescribeImageCache
 		query["ImageCacheName"] = request.ImageCacheName
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Limit)) {
+		query["Limit"] = request.Limit
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.MatchImage)) {
 		query["MatchImage"] = request.MatchImage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
@@ -13069,7 +13724,7 @@ func (client *Client) UpdateContainerGroupWithOptions(request *UpdateContainerGr
 		query["Volume"] = request.Volume
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.DnsConfig))) {
+	if !tea.BoolValue(util.IsUnset(request.DnsConfig)) {
 		query["DnsConfig"] = request.DnsConfig
 	}
 

@@ -1,3 +1,6 @@
+2022-12-28 Version: v3.0.1
+- Add CommitContainer apis.
+
 2022-09-23 Version: v3.0.0
 - Generated golang 2018-08-08 for Eci.
 
