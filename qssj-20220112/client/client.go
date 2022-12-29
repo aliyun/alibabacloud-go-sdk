@@ -13,7 +13,9 @@ import (
 )
 
 type GetAgeDistributionRequest struct {
-	CateIds *string `json:"CateIds,omitempty" xml:"CateIds,omitempty"`
+	CateIds    *string `json:"CateIds,omitempty" xml:"CateIds,omitempty"`
+	EndingDate *string `json:"EndingDate,omitempty" xml:"EndingDate,omitempty"`
+	StartDate  *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
 }
 
 func (s GetAgeDistributionRequest) String() string {
@@ -26,6 +28,16 @@ func (s GetAgeDistributionRequest) GoString() string {
 
 func (s *GetAgeDistributionRequest) SetCateIds(v string) *GetAgeDistributionRequest {
 	s.CateIds = &v
+	return s
+}
+
+func (s *GetAgeDistributionRequest) SetEndingDate(v string) *GetAgeDistributionRequest {
+	s.EndingDate = &v
+	return s
+}
+
+func (s *GetAgeDistributionRequest) SetStartDate(v string) *GetAgeDistributionRequest {
+	s.StartDate = &v
 	return s
 }
 
@@ -239,8 +251,204 @@ func (s *GetAllTrendCategoryResponse) SetBody(v *GetAllTrendCategoryResponseBody
 	return s
 }
 
+type GetCrowdDataRequest struct {
+	CateIds    *string `json:"CateIds,omitempty" xml:"CateIds,omitempty"`
+	EndingDate *string `json:"EndingDate,omitempty" xml:"EndingDate,omitempty"`
+	PageIndex  *int64  `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`
+	StartDate  *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+}
+
+func (s GetCrowdDataRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCrowdDataRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetCrowdDataRequest) SetCateIds(v string) *GetCrowdDataRequest {
+	s.CateIds = &v
+	return s
+}
+
+func (s *GetCrowdDataRequest) SetEndingDate(v string) *GetCrowdDataRequest {
+	s.EndingDate = &v
+	return s
+}
+
+func (s *GetCrowdDataRequest) SetPageIndex(v int64) *GetCrowdDataRequest {
+	s.PageIndex = &v
+	return s
+}
+
+func (s *GetCrowdDataRequest) SetStartDate(v string) *GetCrowdDataRequest {
+	s.StartDate = &v
+	return s
+}
+
+type GetCrowdDataResponseBody struct {
+	Code            *string                         `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data            []*GetCrowdDataResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	Message         *string                         `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId       *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SuccessResponse *string                         `json:"SuccessResponse,omitempty" xml:"SuccessResponse,omitempty"`
+}
+
+func (s GetCrowdDataResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCrowdDataResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetCrowdDataResponseBody) SetCode(v string) *GetCrowdDataResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetCrowdDataResponseBody) SetData(v []*GetCrowdDataResponseBodyData) *GetCrowdDataResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetCrowdDataResponseBody) SetMessage(v string) *GetCrowdDataResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetCrowdDataResponseBody) SetRequestId(v string) *GetCrowdDataResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetCrowdDataResponseBody) SetSuccessResponse(v string) *GetCrowdDataResponseBody {
+	s.SuccessResponse = &v
+	return s
+}
+
+type GetCrowdDataResponseBodyData struct {
+	Age               *int32   `json:"Age,omitempty" xml:"Age,omitempty"`
+	BuyerId           *int64   `json:"BuyerId,omitempty" xml:"BuyerId,omitempty"`
+	CateId            *int64   `json:"CateId,omitempty" xml:"CateId,omitempty"`
+	CateName          *string  `json:"CateName,omitempty" xml:"CateName,omitempty"`
+	Classification    *string  `json:"Classification,omitempty" xml:"Classification,omitempty"`
+	ClassificationNew *string  `json:"ClassificationNew,omitempty" xml:"ClassificationNew,omitempty"`
+	Gender            *string  `json:"Gender,omitempty" xml:"Gender,omitempty"`
+	OnlineDate        *string  `json:"OnlineDate,omitempty" xml:"OnlineDate,omitempty"`
+	OrderAmount       *float64 `json:"OrderAmount,omitempty" xml:"OrderAmount,omitempty"`
+	OrderQuantity     *int64   `json:"OrderQuantity,omitempty" xml:"OrderQuantity,omitempty"`
+	Province          *string  `json:"Province,omitempty" xml:"Province,omitempty"`
+	SearchVolume      *int64   `json:"SearchVolume,omitempty" xml:"SearchVolume,omitempty"`
+	TrendLevel        *string  `json:"TrendLevel,omitempty" xml:"TrendLevel,omitempty"`
+}
+
+func (s GetCrowdDataResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCrowdDataResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetCrowdDataResponseBodyData) SetAge(v int32) *GetCrowdDataResponseBodyData {
+	s.Age = &v
+	return s
+}
+
+func (s *GetCrowdDataResponseBodyData) SetBuyerId(v int64) *GetCrowdDataResponseBodyData {
+	s.BuyerId = &v
+	return s
+}
+
+func (s *GetCrowdDataResponseBodyData) SetCateId(v int64) *GetCrowdDataResponseBodyData {
+	s.CateId = &v
+	return s
+}
+
+func (s *GetCrowdDataResponseBodyData) SetCateName(v string) *GetCrowdDataResponseBodyData {
+	s.CateName = &v
+	return s
+}
+
+func (s *GetCrowdDataResponseBodyData) SetClassification(v string) *GetCrowdDataResponseBodyData {
+	s.Classification = &v
+	return s
+}
+
+func (s *GetCrowdDataResponseBodyData) SetClassificationNew(v string) *GetCrowdDataResponseBodyData {
+	s.ClassificationNew = &v
+	return s
+}
+
+func (s *GetCrowdDataResponseBodyData) SetGender(v string) *GetCrowdDataResponseBodyData {
+	s.Gender = &v
+	return s
+}
+
+func (s *GetCrowdDataResponseBodyData) SetOnlineDate(v string) *GetCrowdDataResponseBodyData {
+	s.OnlineDate = &v
+	return s
+}
+
+func (s *GetCrowdDataResponseBodyData) SetOrderAmount(v float64) *GetCrowdDataResponseBodyData {
+	s.OrderAmount = &v
+	return s
+}
+
+func (s *GetCrowdDataResponseBodyData) SetOrderQuantity(v int64) *GetCrowdDataResponseBodyData {
+	s.OrderQuantity = &v
+	return s
+}
+
+func (s *GetCrowdDataResponseBodyData) SetProvince(v string) *GetCrowdDataResponseBodyData {
+	s.Province = &v
+	return s
+}
+
+func (s *GetCrowdDataResponseBodyData) SetSearchVolume(v int64) *GetCrowdDataResponseBodyData {
+	s.SearchVolume = &v
+	return s
+}
+
+func (s *GetCrowdDataResponseBodyData) SetTrendLevel(v string) *GetCrowdDataResponseBodyData {
+	s.TrendLevel = &v
+	return s
+}
+
+type GetCrowdDataResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetCrowdDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetCrowdDataResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCrowdDataResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetCrowdDataResponse) SetHeaders(v map[string]*string) *GetCrowdDataResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetCrowdDataResponse) SetStatusCode(v int32) *GetCrowdDataResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetCrowdDataResponse) SetBody(v *GetCrowdDataResponseBody) *GetCrowdDataResponse {
+	s.Body = v
+	return s
+}
+
 type GetCrowdLabelRequest struct {
-	CateIds *string `json:"CateIds,omitempty" xml:"CateIds,omitempty"`
+	CateIds    *string `json:"CateIds,omitempty" xml:"CateIds,omitempty"`
+	EndingDate *string `json:"EndingDate,omitempty" xml:"EndingDate,omitempty"`
+	StartDate  *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
 }
 
 func (s GetCrowdLabelRequest) String() string {
@@ -253,6 +461,16 @@ func (s GetCrowdLabelRequest) GoString() string {
 
 func (s *GetCrowdLabelRequest) SetCateIds(v string) *GetCrowdLabelRequest {
 	s.CateIds = &v
+	return s
+}
+
+func (s *GetCrowdLabelRequest) SetEndingDate(v string) *GetCrowdLabelRequest {
+	s.EndingDate = &v
+	return s
+}
+
+func (s *GetCrowdLabelRequest) SetStartDate(v string) *GetCrowdLabelRequest {
+	s.StartDate = &v
 	return s
 }
 
@@ -368,7 +586,9 @@ func (s *GetCrowdLabelResponse) SetBody(v *GetCrowdLabelResponseBody) *GetCrowdL
 }
 
 type GetCrowdReginRequest struct {
-	CateIds *string `json:"CateIds,omitempty" xml:"CateIds,omitempty"`
+	CateIds    *string `json:"CateIds,omitempty" xml:"CateIds,omitempty"`
+	EndingDate *string `json:"EndingDate,omitempty" xml:"EndingDate,omitempty"`
+	StartDate  *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
 }
 
 func (s GetCrowdReginRequest) String() string {
@@ -381,6 +601,16 @@ func (s GetCrowdReginRequest) GoString() string {
 
 func (s *GetCrowdReginRequest) SetCateIds(v string) *GetCrowdReginRequest {
 	s.CateIds = &v
+	return s
+}
+
+func (s *GetCrowdReginRequest) SetEndingDate(v string) *GetCrowdReginRequest {
+	s.EndingDate = &v
+	return s
+}
+
+func (s *GetCrowdReginRequest) SetStartDate(v string) *GetCrowdReginRequest {
+	s.StartDate = &v
 	return s
 }
 
@@ -658,7 +888,12 @@ func (s *GetOpportunityMarketResponse) SetBody(v *GetOpportunityMarketResponseBo
 }
 
 type GetPriceRangeRequest struct {
-	CateIds *string `json:"CateIds,omitempty" xml:"CateIds,omitempty"`
+	BrandNames *string `json:"BrandNames,omitempty" xml:"BrandNames,omitempty"`
+	CateIds    *string `json:"CateIds,omitempty" xml:"CateIds,omitempty"`
+	EndingDate *string `json:"EndingDate,omitempty" xml:"EndingDate,omitempty"`
+	Section    *int64  `json:"Section,omitempty" xml:"Section,omitempty"`
+	ShopIds    *string `json:"ShopIds,omitempty" xml:"ShopIds,omitempty"`
+	StartDate  *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
 }
 
 func (s GetPriceRangeRequest) String() string {
@@ -669,8 +904,33 @@ func (s GetPriceRangeRequest) GoString() string {
 	return s.String()
 }
 
+func (s *GetPriceRangeRequest) SetBrandNames(v string) *GetPriceRangeRequest {
+	s.BrandNames = &v
+	return s
+}
+
 func (s *GetPriceRangeRequest) SetCateIds(v string) *GetPriceRangeRequest {
 	s.CateIds = &v
+	return s
+}
+
+func (s *GetPriceRangeRequest) SetEndingDate(v string) *GetPriceRangeRequest {
+	s.EndingDate = &v
+	return s
+}
+
+func (s *GetPriceRangeRequest) SetSection(v int64) *GetPriceRangeRequest {
+	s.Section = &v
+	return s
+}
+
+func (s *GetPriceRangeRequest) SetShopIds(v string) *GetPriceRangeRequest {
+	s.ShopIds = &v
+	return s
+}
+
+func (s *GetPriceRangeRequest) SetStartDate(v string) *GetPriceRangeRequest {
+	s.StartDate = &v
 	return s
 }
 
@@ -780,7 +1040,9 @@ func (s *GetPriceRangeResponse) SetBody(v *GetPriceRangeResponseBody) *GetPriceR
 }
 
 type GetSexRatioRequest struct {
-	CateIds *string `json:"CateIds,omitempty" xml:"CateIds,omitempty"`
+	CateIds    *string `json:"CateIds,omitempty" xml:"CateIds,omitempty"`
+	EndingDate *string `json:"EndingDate,omitempty" xml:"EndingDate,omitempty"`
+	StartDate  *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
 }
 
 func (s GetSexRatioRequest) String() string {
@@ -793,6 +1055,16 @@ func (s GetSexRatioRequest) GoString() string {
 
 func (s *GetSexRatioRequest) SetCateIds(v string) *GetSexRatioRequest {
 	s.CateIds = &v
+	return s
+}
+
+func (s *GetSexRatioRequest) SetEndingDate(v string) *GetSexRatioRequest {
+	s.EndingDate = &v
+	return s
+}
+
+func (s *GetSexRatioRequest) SetStartDate(v string) *GetSexRatioRequest {
+	s.StartDate = &v
 	return s
 }
 
@@ -936,7 +1208,16 @@ func (s *GetSexRatioResponse) SetBody(v *GetSexRatioResponseBody) *GetSexRatioRe
 }
 
 type GetStoreSalesVolumeTopRequest struct {
-	CateIds *string `json:"CateIds,omitempty" xml:"CateIds,omitempty"`
+	BrandNames        *string `json:"BrandNames,omitempty" xml:"BrandNames,omitempty"`
+	CateIds           *string `json:"CateIds,omitempty" xml:"CateIds,omitempty"`
+	EndingDate        *string `json:"EndingDate,omitempty" xml:"EndingDate,omitempty"`
+	EndingPrice       *string `json:"EndingPrice,omitempty" xml:"EndingPrice,omitempty"`
+	EndingSalesVolume *string `json:"EndingSalesVolume,omitempty" xml:"EndingSalesVolume,omitempty"`
+	PageIndex         *int64  `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`
+	ShopIds           *string `json:"ShopIds,omitempty" xml:"ShopIds,omitempty"`
+	StartDate         *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	StartPrice        *string `json:"StartPrice,omitempty" xml:"StartPrice,omitempty"`
+	StartSalesVolume  *string `json:"StartSalesVolume,omitempty" xml:"StartSalesVolume,omitempty"`
 }
 
 func (s GetStoreSalesVolumeTopRequest) String() string {
@@ -947,8 +1228,53 @@ func (s GetStoreSalesVolumeTopRequest) GoString() string {
 	return s.String()
 }
 
+func (s *GetStoreSalesVolumeTopRequest) SetBrandNames(v string) *GetStoreSalesVolumeTopRequest {
+	s.BrandNames = &v
+	return s
+}
+
 func (s *GetStoreSalesVolumeTopRequest) SetCateIds(v string) *GetStoreSalesVolumeTopRequest {
 	s.CateIds = &v
+	return s
+}
+
+func (s *GetStoreSalesVolumeTopRequest) SetEndingDate(v string) *GetStoreSalesVolumeTopRequest {
+	s.EndingDate = &v
+	return s
+}
+
+func (s *GetStoreSalesVolumeTopRequest) SetEndingPrice(v string) *GetStoreSalesVolumeTopRequest {
+	s.EndingPrice = &v
+	return s
+}
+
+func (s *GetStoreSalesVolumeTopRequest) SetEndingSalesVolume(v string) *GetStoreSalesVolumeTopRequest {
+	s.EndingSalesVolume = &v
+	return s
+}
+
+func (s *GetStoreSalesVolumeTopRequest) SetPageIndex(v int64) *GetStoreSalesVolumeTopRequest {
+	s.PageIndex = &v
+	return s
+}
+
+func (s *GetStoreSalesVolumeTopRequest) SetShopIds(v string) *GetStoreSalesVolumeTopRequest {
+	s.ShopIds = &v
+	return s
+}
+
+func (s *GetStoreSalesVolumeTopRequest) SetStartDate(v string) *GetStoreSalesVolumeTopRequest {
+	s.StartDate = &v
+	return s
+}
+
+func (s *GetStoreSalesVolumeTopRequest) SetStartPrice(v string) *GetStoreSalesVolumeTopRequest {
+	s.StartPrice = &v
+	return s
+}
+
+func (s *GetStoreSalesVolumeTopRequest) SetStartSalesVolume(v string) *GetStoreSalesVolumeTopRequest {
+	s.StartSalesVolume = &v
 	return s
 }
 
@@ -994,7 +1320,12 @@ func (s *GetStoreSalesVolumeTopResponseBody) SetSuccessResponse(v bool) *GetStor
 }
 
 type GetStoreSalesVolumeTopResponseBodyData struct {
-	ShopName *string `json:"ShopName,omitempty" xml:"ShopName,omitempty"`
+	CommodityQuantity *int64   `json:"CommodityQuantity,omitempty" xml:"CommodityQuantity,omitempty"`
+	SalesVolume       *int64   `json:"SalesVolume,omitempty" xml:"SalesVolume,omitempty"`
+	SearchVolume      *int64   `json:"SearchVolume,omitempty" xml:"SearchVolume,omitempty"`
+	ShopId            *int64   `json:"ShopId,omitempty" xml:"ShopId,omitempty"`
+	ShopName          *string  `json:"ShopName,omitempty" xml:"ShopName,omitempty"`
+	TotalSales        *float64 `json:"TotalSales,omitempty" xml:"TotalSales,omitempty"`
 }
 
 func (s GetStoreSalesVolumeTopResponseBodyData) String() string {
@@ -1005,8 +1336,33 @@ func (s GetStoreSalesVolumeTopResponseBodyData) GoString() string {
 	return s.String()
 }
 
+func (s *GetStoreSalesVolumeTopResponseBodyData) SetCommodityQuantity(v int64) *GetStoreSalesVolumeTopResponseBodyData {
+	s.CommodityQuantity = &v
+	return s
+}
+
+func (s *GetStoreSalesVolumeTopResponseBodyData) SetSalesVolume(v int64) *GetStoreSalesVolumeTopResponseBodyData {
+	s.SalesVolume = &v
+	return s
+}
+
+func (s *GetStoreSalesVolumeTopResponseBodyData) SetSearchVolume(v int64) *GetStoreSalesVolumeTopResponseBodyData {
+	s.SearchVolume = &v
+	return s
+}
+
+func (s *GetStoreSalesVolumeTopResponseBodyData) SetShopId(v int64) *GetStoreSalesVolumeTopResponseBodyData {
+	s.ShopId = &v
+	return s
+}
+
 func (s *GetStoreSalesVolumeTopResponseBodyData) SetShopName(v string) *GetStoreSalesVolumeTopResponseBodyData {
 	s.ShopName = &v
+	return s
+}
+
+func (s *GetStoreSalesVolumeTopResponseBodyData) SetTotalSales(v float64) *GetStoreSalesVolumeTopResponseBodyData {
+	s.TotalSales = &v
 	return s
 }
 
@@ -1040,7 +1396,16 @@ func (s *GetStoreSalesVolumeTopResponse) SetBody(v *GetStoreSalesVolumeTopRespon
 }
 
 type GetStoreSearchTopRequest struct {
-	CateIds *string `json:"CateIds,omitempty" xml:"CateIds,omitempty"`
+	BrandNames        *string `json:"BrandNames,omitempty" xml:"BrandNames,omitempty"`
+	CateIds           *string `json:"CateIds,omitempty" xml:"CateIds,omitempty"`
+	EndingDate        *string `json:"EndingDate,omitempty" xml:"EndingDate,omitempty"`
+	EndingPrice       *string `json:"EndingPrice,omitempty" xml:"EndingPrice,omitempty"`
+	EndingSalesVolume *string `json:"EndingSalesVolume,omitempty" xml:"EndingSalesVolume,omitempty"`
+	PageIndex         *int64  `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`
+	ShopIds           *string `json:"ShopIds,omitempty" xml:"ShopIds,omitempty"`
+	StartDate         *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	StartPrice        *string `json:"StartPrice,omitempty" xml:"StartPrice,omitempty"`
+	StartSalesVolume  *string `json:"StartSalesVolume,omitempty" xml:"StartSalesVolume,omitempty"`
 }
 
 func (s GetStoreSearchTopRequest) String() string {
@@ -1051,8 +1416,53 @@ func (s GetStoreSearchTopRequest) GoString() string {
 	return s.String()
 }
 
+func (s *GetStoreSearchTopRequest) SetBrandNames(v string) *GetStoreSearchTopRequest {
+	s.BrandNames = &v
+	return s
+}
+
 func (s *GetStoreSearchTopRequest) SetCateIds(v string) *GetStoreSearchTopRequest {
 	s.CateIds = &v
+	return s
+}
+
+func (s *GetStoreSearchTopRequest) SetEndingDate(v string) *GetStoreSearchTopRequest {
+	s.EndingDate = &v
+	return s
+}
+
+func (s *GetStoreSearchTopRequest) SetEndingPrice(v string) *GetStoreSearchTopRequest {
+	s.EndingPrice = &v
+	return s
+}
+
+func (s *GetStoreSearchTopRequest) SetEndingSalesVolume(v string) *GetStoreSearchTopRequest {
+	s.EndingSalesVolume = &v
+	return s
+}
+
+func (s *GetStoreSearchTopRequest) SetPageIndex(v int64) *GetStoreSearchTopRequest {
+	s.PageIndex = &v
+	return s
+}
+
+func (s *GetStoreSearchTopRequest) SetShopIds(v string) *GetStoreSearchTopRequest {
+	s.ShopIds = &v
+	return s
+}
+
+func (s *GetStoreSearchTopRequest) SetStartDate(v string) *GetStoreSearchTopRequest {
+	s.StartDate = &v
+	return s
+}
+
+func (s *GetStoreSearchTopRequest) SetStartPrice(v string) *GetStoreSearchTopRequest {
+	s.StartPrice = &v
+	return s
+}
+
+func (s *GetStoreSearchTopRequest) SetStartSalesVolume(v string) *GetStoreSearchTopRequest {
+	s.StartSalesVolume = &v
 	return s
 }
 
@@ -1098,7 +1508,12 @@ func (s *GetStoreSearchTopResponseBody) SetSuccessResponse(v bool) *GetStoreSear
 }
 
 type GetStoreSearchTopResponseBodyData struct {
-	ShopName *string `json:"ShopName,omitempty" xml:"ShopName,omitempty"`
+	CommodityQuantity *int64   `json:"CommodityQuantity,omitempty" xml:"CommodityQuantity,omitempty"`
+	SalesVolume       *int64   `json:"SalesVolume,omitempty" xml:"SalesVolume,omitempty"`
+	SearchVolume      *int64   `json:"SearchVolume,omitempty" xml:"SearchVolume,omitempty"`
+	ShopId            *int64   `json:"ShopId,omitempty" xml:"ShopId,omitempty"`
+	ShopName          *string  `json:"ShopName,omitempty" xml:"ShopName,omitempty"`
+	TotalSales        *float64 `json:"TotalSales,omitempty" xml:"TotalSales,omitempty"`
 }
 
 func (s GetStoreSearchTopResponseBodyData) String() string {
@@ -1109,8 +1524,33 @@ func (s GetStoreSearchTopResponseBodyData) GoString() string {
 	return s.String()
 }
 
+func (s *GetStoreSearchTopResponseBodyData) SetCommodityQuantity(v int64) *GetStoreSearchTopResponseBodyData {
+	s.CommodityQuantity = &v
+	return s
+}
+
+func (s *GetStoreSearchTopResponseBodyData) SetSalesVolume(v int64) *GetStoreSearchTopResponseBodyData {
+	s.SalesVolume = &v
+	return s
+}
+
+func (s *GetStoreSearchTopResponseBodyData) SetSearchVolume(v int64) *GetStoreSearchTopResponseBodyData {
+	s.SearchVolume = &v
+	return s
+}
+
+func (s *GetStoreSearchTopResponseBodyData) SetShopId(v int64) *GetStoreSearchTopResponseBodyData {
+	s.ShopId = &v
+	return s
+}
+
 func (s *GetStoreSearchTopResponseBodyData) SetShopName(v string) *GetStoreSearchTopResponseBodyData {
 	s.ShopName = &v
+	return s
+}
+
+func (s *GetStoreSearchTopResponseBodyData) SetTotalSales(v float64) *GetStoreSearchTopResponseBodyData {
+	s.TotalSales = &v
 	return s
 }
 
@@ -1143,10 +1583,240 @@ func (s *GetStoreSearchTopResponse) SetBody(v *GetStoreSearchTopResponseBody) *G
 	return s
 }
 
+type GetStyleOnlineRequest struct {
+	BrandNames *string `json:"BrandNames,omitempty" xml:"BrandNames,omitempty"`
+	CateIds    *string `json:"CateIds,omitempty" xml:"CateIds,omitempty"`
+	EndingDate *string `json:"EndingDate,omitempty" xml:"EndingDate,omitempty"`
+	PageIndex  *int64  `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`
+	ShopIds    *string `json:"ShopIds,omitempty" xml:"ShopIds,omitempty"`
+	StartDate  *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+}
+
+func (s GetStyleOnlineRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetStyleOnlineRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetStyleOnlineRequest) SetBrandNames(v string) *GetStyleOnlineRequest {
+	s.BrandNames = &v
+	return s
+}
+
+func (s *GetStyleOnlineRequest) SetCateIds(v string) *GetStyleOnlineRequest {
+	s.CateIds = &v
+	return s
+}
+
+func (s *GetStyleOnlineRequest) SetEndingDate(v string) *GetStyleOnlineRequest {
+	s.EndingDate = &v
+	return s
+}
+
+func (s *GetStyleOnlineRequest) SetPageIndex(v int64) *GetStyleOnlineRequest {
+	s.PageIndex = &v
+	return s
+}
+
+func (s *GetStyleOnlineRequest) SetShopIds(v string) *GetStyleOnlineRequest {
+	s.ShopIds = &v
+	return s
+}
+
+func (s *GetStyleOnlineRequest) SetStartDate(v string) *GetStyleOnlineRequest {
+	s.StartDate = &v
+	return s
+}
+
+type GetStyleOnlineResponseBody struct {
+	Code            *string                           `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data            []*GetStyleOnlineResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	Message         *string                           `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId       *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SuccessResponse *string                           `json:"SuccessResponse,omitempty" xml:"SuccessResponse,omitempty"`
+}
+
+func (s GetStyleOnlineResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetStyleOnlineResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetStyleOnlineResponseBody) SetCode(v string) *GetStyleOnlineResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetStyleOnlineResponseBody) SetData(v []*GetStyleOnlineResponseBodyData) *GetStyleOnlineResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetStyleOnlineResponseBody) SetMessage(v string) *GetStyleOnlineResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetStyleOnlineResponseBody) SetRequestId(v string) *GetStyleOnlineResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetStyleOnlineResponseBody) SetSuccessResponse(v string) *GetStyleOnlineResponseBody {
+	s.SuccessResponse = &v
+	return s
+}
+
+type GetStyleOnlineResponseBodyData struct {
+	AttributeContent *string   `json:"AttributeContent,omitempty" xml:"AttributeContent,omitempty"`
+	BrandName        *string   `json:"BrandName,omitempty" xml:"BrandName,omitempty"`
+	BuyerTags        *string   `json:"BuyerTags,omitempty" xml:"BuyerTags,omitempty"`
+	CateName         *string   `json:"CateName,omitempty" xml:"CateName,omitempty"`
+	Color            *string   `json:"Color,omitempty" xml:"Color,omitempty"`
+	ExposureValue    *int64    `json:"ExposureValue,omitempty" xml:"ExposureValue,omitempty"`
+	Images           []*string `json:"Images,omitempty" xml:"Images,omitempty" type:"Repeated"`
+	Material         *string   `json:"Material,omitempty" xml:"Material,omitempty"`
+	Price            *float64  `json:"Price,omitempty" xml:"Price,omitempty"`
+	ProductLink      *string   `json:"ProductLink,omitempty" xml:"ProductLink,omitempty"`
+	SalesVolume      *float64  `json:"SalesVolume,omitempty" xml:"SalesVolume,omitempty"`
+	SearchVolume     *float64  `json:"SearchVolume,omitempty" xml:"SearchVolume,omitempty"`
+	ShopId           *int64    `json:"ShopId,omitempty" xml:"ShopId,omitempty"`
+	ShopName         *string   `json:"ShopName,omitempty" xml:"ShopName,omitempty"`
+	Style            *string   `json:"Style,omitempty" xml:"Style,omitempty"`
+	Title            *string   `json:"Title,omitempty" xml:"Title,omitempty"`
+}
+
+func (s GetStyleOnlineResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetStyleOnlineResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetStyleOnlineResponseBodyData) SetAttributeContent(v string) *GetStyleOnlineResponseBodyData {
+	s.AttributeContent = &v
+	return s
+}
+
+func (s *GetStyleOnlineResponseBodyData) SetBrandName(v string) *GetStyleOnlineResponseBodyData {
+	s.BrandName = &v
+	return s
+}
+
+func (s *GetStyleOnlineResponseBodyData) SetBuyerTags(v string) *GetStyleOnlineResponseBodyData {
+	s.BuyerTags = &v
+	return s
+}
+
+func (s *GetStyleOnlineResponseBodyData) SetCateName(v string) *GetStyleOnlineResponseBodyData {
+	s.CateName = &v
+	return s
+}
+
+func (s *GetStyleOnlineResponseBodyData) SetColor(v string) *GetStyleOnlineResponseBodyData {
+	s.Color = &v
+	return s
+}
+
+func (s *GetStyleOnlineResponseBodyData) SetExposureValue(v int64) *GetStyleOnlineResponseBodyData {
+	s.ExposureValue = &v
+	return s
+}
+
+func (s *GetStyleOnlineResponseBodyData) SetImages(v []*string) *GetStyleOnlineResponseBodyData {
+	s.Images = v
+	return s
+}
+
+func (s *GetStyleOnlineResponseBodyData) SetMaterial(v string) *GetStyleOnlineResponseBodyData {
+	s.Material = &v
+	return s
+}
+
+func (s *GetStyleOnlineResponseBodyData) SetPrice(v float64) *GetStyleOnlineResponseBodyData {
+	s.Price = &v
+	return s
+}
+
+func (s *GetStyleOnlineResponseBodyData) SetProductLink(v string) *GetStyleOnlineResponseBodyData {
+	s.ProductLink = &v
+	return s
+}
+
+func (s *GetStyleOnlineResponseBodyData) SetSalesVolume(v float64) *GetStyleOnlineResponseBodyData {
+	s.SalesVolume = &v
+	return s
+}
+
+func (s *GetStyleOnlineResponseBodyData) SetSearchVolume(v float64) *GetStyleOnlineResponseBodyData {
+	s.SearchVolume = &v
+	return s
+}
+
+func (s *GetStyleOnlineResponseBodyData) SetShopId(v int64) *GetStyleOnlineResponseBodyData {
+	s.ShopId = &v
+	return s
+}
+
+func (s *GetStyleOnlineResponseBodyData) SetShopName(v string) *GetStyleOnlineResponseBodyData {
+	s.ShopName = &v
+	return s
+}
+
+func (s *GetStyleOnlineResponseBodyData) SetStyle(v string) *GetStyleOnlineResponseBodyData {
+	s.Style = &v
+	return s
+}
+
+func (s *GetStyleOnlineResponseBodyData) SetTitle(v string) *GetStyleOnlineResponseBodyData {
+	s.Title = &v
+	return s
+}
+
+type GetStyleOnlineResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetStyleOnlineResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetStyleOnlineResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetStyleOnlineResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetStyleOnlineResponse) SetHeaders(v map[string]*string) *GetStyleOnlineResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetStyleOnlineResponse) SetStatusCode(v int32) *GetStyleOnlineResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetStyleOnlineResponse) SetBody(v *GetStyleOnlineResponseBody) *GetStyleOnlineResponse {
+	s.Body = v
+	return s
+}
+
 type GetStyleTopRequest struct {
+	BrandNames  *string `json:"BrandNames,omitempty" xml:"BrandNames,omitempty"`
 	CateIds     *string `json:"CateIds,omitempty" xml:"CateIds,omitempty"`
+	EndingDate  *string `json:"EndingDate,omitempty" xml:"EndingDate,omitempty"`
+	EndingPrice *string `json:"EndingPrice,omitempty" xml:"EndingPrice,omitempty"`
 	PageIndex   *int64  `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`
+	ShopIds     *string `json:"ShopIds,omitempty" xml:"ShopIds,omitempty"`
 	SortOrder   *int64  `json:"SortOrder,omitempty" xml:"SortOrder,omitempty"`
+	StartDate   *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	StartPrice  *string `json:"StartPrice,omitempty" xml:"StartPrice,omitempty"`
 	TimeDisplay *int64  `json:"TimeDisplay,omitempty" xml:"TimeDisplay,omitempty"`
 }
 
@@ -1158,8 +1828,23 @@ func (s GetStyleTopRequest) GoString() string {
 	return s.String()
 }
 
+func (s *GetStyleTopRequest) SetBrandNames(v string) *GetStyleTopRequest {
+	s.BrandNames = &v
+	return s
+}
+
 func (s *GetStyleTopRequest) SetCateIds(v string) *GetStyleTopRequest {
 	s.CateIds = &v
+	return s
+}
+
+func (s *GetStyleTopRequest) SetEndingDate(v string) *GetStyleTopRequest {
+	s.EndingDate = &v
+	return s
+}
+
+func (s *GetStyleTopRequest) SetEndingPrice(v string) *GetStyleTopRequest {
+	s.EndingPrice = &v
 	return s
 }
 
@@ -1168,8 +1853,23 @@ func (s *GetStyleTopRequest) SetPageIndex(v int64) *GetStyleTopRequest {
 	return s
 }
 
+func (s *GetStyleTopRequest) SetShopIds(v string) *GetStyleTopRequest {
+	s.ShopIds = &v
+	return s
+}
+
 func (s *GetStyleTopRequest) SetSortOrder(v int64) *GetStyleTopRequest {
 	s.SortOrder = &v
+	return s
+}
+
+func (s *GetStyleTopRequest) SetStartDate(v string) *GetStyleTopRequest {
+	s.StartDate = &v
+	return s
+}
+
+func (s *GetStyleTopRequest) SetStartPrice(v string) *GetStyleTopRequest {
+	s.StartPrice = &v
 	return s
 }
 
@@ -1225,12 +1925,14 @@ type GetStyleTopResponseBodyData struct {
 	BuyerTags        *string   `json:"BuyerTags,omitempty" xml:"BuyerTags,omitempty"`
 	CateName         *string   `json:"CateName,omitempty" xml:"CateName,omitempty"`
 	Color            *string   `json:"Color,omitempty" xml:"Color,omitempty"`
+	ExposureValue    *int64    `json:"ExposureValue,omitempty" xml:"ExposureValue,omitempty"`
 	Images           []*string `json:"Images,omitempty" xml:"Images,omitempty" type:"Repeated"`
 	Material         *string   `json:"Material,omitempty" xml:"Material,omitempty"`
 	Price            *float64  `json:"Price,omitempty" xml:"Price,omitempty"`
 	ProductLink      *string   `json:"ProductLink,omitempty" xml:"ProductLink,omitempty"`
 	SalesVolume      *float64  `json:"SalesVolume,omitempty" xml:"SalesVolume,omitempty"`
 	SearchVolume     *float64  `json:"SearchVolume,omitempty" xml:"SearchVolume,omitempty"`
+	ShopId           *int64    `json:"ShopId,omitempty" xml:"ShopId,omitempty"`
 	ShopName         *string   `json:"ShopName,omitempty" xml:"ShopName,omitempty"`
 	Style            *string   `json:"Style,omitempty" xml:"Style,omitempty"`
 	Title            *string   `json:"Title,omitempty" xml:"Title,omitempty"`
@@ -1269,6 +1971,11 @@ func (s *GetStyleTopResponseBodyData) SetColor(v string) *GetStyleTopResponseBod
 	return s
 }
 
+func (s *GetStyleTopResponseBodyData) SetExposureValue(v int64) *GetStyleTopResponseBodyData {
+	s.ExposureValue = &v
+	return s
+}
+
 func (s *GetStyleTopResponseBodyData) SetImages(v []*string) *GetStyleTopResponseBodyData {
 	s.Images = v
 	return s
@@ -1296,6 +2003,11 @@ func (s *GetStyleTopResponseBodyData) SetSalesVolume(v float64) *GetStyleTopResp
 
 func (s *GetStyleTopResponseBodyData) SetSearchVolume(v float64) *GetStyleTopResponseBodyData {
 	s.SearchVolume = &v
+	return s
+}
+
+func (s *GetStyleTopResponseBodyData) SetShopId(v int64) *GetStyleTopResponseBodyData {
+	s.ShopId = &v
 	return s
 }
 
@@ -1909,7 +2621,11 @@ func (s *GetTrendSearchRecordResponse) SetBody(v *GetTrendSearchRecordResponseBo
 }
 
 type GetTrendStatisticRequest struct {
-	CateIds *string `json:"CateIds,omitempty" xml:"CateIds,omitempty"`
+	BrandNames *string `json:"BrandNames,omitempty" xml:"BrandNames,omitempty"`
+	CateIds    *string `json:"CateIds,omitempty" xml:"CateIds,omitempty"`
+	EndingDate *string `json:"EndingDate,omitempty" xml:"EndingDate,omitempty"`
+	ShopIds    *string `json:"ShopIds,omitempty" xml:"ShopIds,omitempty"`
+	StartDate  *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
 }
 
 func (s GetTrendStatisticRequest) String() string {
@@ -1920,8 +2636,28 @@ func (s GetTrendStatisticRequest) GoString() string {
 	return s.String()
 }
 
+func (s *GetTrendStatisticRequest) SetBrandNames(v string) *GetTrendStatisticRequest {
+	s.BrandNames = &v
+	return s
+}
+
 func (s *GetTrendStatisticRequest) SetCateIds(v string) *GetTrendStatisticRequest {
 	s.CateIds = &v
+	return s
+}
+
+func (s *GetTrendStatisticRequest) SetEndingDate(v string) *GetTrendStatisticRequest {
+	s.EndingDate = &v
+	return s
+}
+
+func (s *GetTrendStatisticRequest) SetShopIds(v string) *GetTrendStatisticRequest {
+	s.ShopIds = &v
+	return s
+}
+
+func (s *GetTrendStatisticRequest) SetStartDate(v string) *GetTrendStatisticRequest {
+	s.StartDate = &v
 	return s
 }
 
@@ -1967,7 +2703,10 @@ func (s *GetTrendStatisticResponseBody) SetSuccessResponse(v bool) *GetTrendStat
 }
 
 type GetTrendStatisticResponseBodyData struct {
+	BrandCount     *int64   `json:"BrandCount,omitempty" xml:"BrandCount,omitempty"`
 	CommodityCount *int64   `json:"CommodityCount,omitempty" xml:"CommodityCount,omitempty"`
+	ExposureValue  *int64   `json:"ExposureValue,omitempty" xml:"ExposureValue,omitempty"`
+	Hits           *int64   `json:"Hits,omitempty" xml:"Hits,omitempty"`
 	Sales          *float64 `json:"Sales,omitempty" xml:"Sales,omitempty"`
 	ShopCount      *int64   `json:"ShopCount,omitempty" xml:"ShopCount,omitempty"`
 }
@@ -1980,8 +2719,23 @@ func (s GetTrendStatisticResponseBodyData) GoString() string {
 	return s.String()
 }
 
+func (s *GetTrendStatisticResponseBodyData) SetBrandCount(v int64) *GetTrendStatisticResponseBodyData {
+	s.BrandCount = &v
+	return s
+}
+
 func (s *GetTrendStatisticResponseBodyData) SetCommodityCount(v int64) *GetTrendStatisticResponseBodyData {
 	s.CommodityCount = &v
+	return s
+}
+
+func (s *GetTrendStatisticResponseBodyData) SetExposureValue(v int64) *GetTrendStatisticResponseBodyData {
+	s.ExposureValue = &v
+	return s
+}
+
+func (s *GetTrendStatisticResponseBodyData) SetHits(v int64) *GetTrendStatisticResponseBodyData {
+	s.Hits = &v
 	return s
 }
 
@@ -2020,6 +2774,182 @@ func (s *GetTrendStatisticResponse) SetStatusCode(v int32) *GetTrendStatisticRes
 }
 
 func (s *GetTrendStatisticResponse) SetBody(v *GetTrendStatisticResponseBody) *GetTrendStatisticResponse {
+	s.Body = v
+	return s
+}
+
+type GetTrendWordAndIndexRequest struct {
+	CateIds    *string `json:"CateIds,omitempty" xml:"CateIds,omitempty"`
+	EndingDate *string `json:"EndingDate,omitempty" xml:"EndingDate,omitempty"`
+	PageIndex  *int64  `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`
+	StartDate  *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+}
+
+func (s GetTrendWordAndIndexRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTrendWordAndIndexRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetTrendWordAndIndexRequest) SetCateIds(v string) *GetTrendWordAndIndexRequest {
+	s.CateIds = &v
+	return s
+}
+
+func (s *GetTrendWordAndIndexRequest) SetEndingDate(v string) *GetTrendWordAndIndexRequest {
+	s.EndingDate = &v
+	return s
+}
+
+func (s *GetTrendWordAndIndexRequest) SetPageIndex(v int64) *GetTrendWordAndIndexRequest {
+	s.PageIndex = &v
+	return s
+}
+
+func (s *GetTrendWordAndIndexRequest) SetStartDate(v string) *GetTrendWordAndIndexRequest {
+	s.StartDate = &v
+	return s
+}
+
+type GetTrendWordAndIndexResponseBody struct {
+	Code            *string                                 `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data            []*GetTrendWordAndIndexResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	Massage         *string                                 `json:"Massage,omitempty" xml:"Massage,omitempty"`
+	RequestId       *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SuccessResponse *string                                 `json:"SuccessResponse,omitempty" xml:"SuccessResponse,omitempty"`
+}
+
+func (s GetTrendWordAndIndexResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTrendWordAndIndexResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetTrendWordAndIndexResponseBody) SetCode(v string) *GetTrendWordAndIndexResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetTrendWordAndIndexResponseBody) SetData(v []*GetTrendWordAndIndexResponseBodyData) *GetTrendWordAndIndexResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetTrendWordAndIndexResponseBody) SetMassage(v string) *GetTrendWordAndIndexResponseBody {
+	s.Massage = &v
+	return s
+}
+
+func (s *GetTrendWordAndIndexResponseBody) SetRequestId(v string) *GetTrendWordAndIndexResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetTrendWordAndIndexResponseBody) SetSuccessResponse(v string) *GetTrendWordAndIndexResponseBody {
+	s.SuccessResponse = &v
+	return s
+}
+
+type GetTrendWordAndIndexResponseBodyData struct {
+	BrandIndex         *float32 `json:"BrandIndex,omitempty" xml:"BrandIndex,omitempty"`
+	CateId             *int64   `json:"CateId,omitempty" xml:"CateId,omitempty"`
+	CateName           *string  `json:"CateName,omitempty" xml:"CateName,omitempty"`
+	EcommerceIndex     *float32 `json:"EcommerceIndex,omitempty" xml:"EcommerceIndex,omitempty"`
+	InstitutionalIndex *float32 `json:"InstitutionalIndex,omitempty" xml:"InstitutionalIndex,omitempty"`
+	MediaIndex         *float32 `json:"MediaIndex,omitempty" xml:"MediaIndex,omitempty"`
+	SocialIndex        *float32 `json:"SocialIndex,omitempty" xml:"SocialIndex,omitempty"`
+	TrendIndex         *float32 `json:"TrendIndex,omitempty" xml:"TrendIndex,omitempty"`
+	TrendWord          *string  `json:"TrendWord,omitempty" xml:"TrendWord,omitempty"`
+	YearMonth          *string  `json:"YearMonth,omitempty" xml:"YearMonth,omitempty"`
+}
+
+func (s GetTrendWordAndIndexResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTrendWordAndIndexResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetTrendWordAndIndexResponseBodyData) SetBrandIndex(v float32) *GetTrendWordAndIndexResponseBodyData {
+	s.BrandIndex = &v
+	return s
+}
+
+func (s *GetTrendWordAndIndexResponseBodyData) SetCateId(v int64) *GetTrendWordAndIndexResponseBodyData {
+	s.CateId = &v
+	return s
+}
+
+func (s *GetTrendWordAndIndexResponseBodyData) SetCateName(v string) *GetTrendWordAndIndexResponseBodyData {
+	s.CateName = &v
+	return s
+}
+
+func (s *GetTrendWordAndIndexResponseBodyData) SetEcommerceIndex(v float32) *GetTrendWordAndIndexResponseBodyData {
+	s.EcommerceIndex = &v
+	return s
+}
+
+func (s *GetTrendWordAndIndexResponseBodyData) SetInstitutionalIndex(v float32) *GetTrendWordAndIndexResponseBodyData {
+	s.InstitutionalIndex = &v
+	return s
+}
+
+func (s *GetTrendWordAndIndexResponseBodyData) SetMediaIndex(v float32) *GetTrendWordAndIndexResponseBodyData {
+	s.MediaIndex = &v
+	return s
+}
+
+func (s *GetTrendWordAndIndexResponseBodyData) SetSocialIndex(v float32) *GetTrendWordAndIndexResponseBodyData {
+	s.SocialIndex = &v
+	return s
+}
+
+func (s *GetTrendWordAndIndexResponseBodyData) SetTrendIndex(v float32) *GetTrendWordAndIndexResponseBodyData {
+	s.TrendIndex = &v
+	return s
+}
+
+func (s *GetTrendWordAndIndexResponseBodyData) SetTrendWord(v string) *GetTrendWordAndIndexResponseBodyData {
+	s.TrendWord = &v
+	return s
+}
+
+func (s *GetTrendWordAndIndexResponseBodyData) SetYearMonth(v string) *GetTrendWordAndIndexResponseBodyData {
+	s.YearMonth = &v
+	return s
+}
+
+type GetTrendWordAndIndexResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetTrendWordAndIndexResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetTrendWordAndIndexResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTrendWordAndIndexResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetTrendWordAndIndexResponse) SetHeaders(v map[string]*string) *GetTrendWordAndIndexResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetTrendWordAndIndexResponse) SetStatusCode(v int32) *GetTrendWordAndIndexResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetTrendWordAndIndexResponse) SetBody(v *GetTrendWordAndIndexResponseBody) *GetTrendWordAndIndexResponse {
 	s.Body = v
 	return s
 }
@@ -2079,6 +3009,14 @@ func (client *Client) GetAgeDistributionWithOptions(request *GetAgeDistributionR
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.CateIds)) {
 		query["CateIds"] = request.CateIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndingDate)) {
+		query["EndingDate"] = request.EndingDate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartDate)) {
+		query["StartDate"] = request.StartDate
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -2148,6 +3086,62 @@ func (client *Client) GetAllTrendCategory() (_result *GetAllTrendCategoryRespons
 	return _result, _err
 }
 
+func (client *Client) GetCrowdDataWithOptions(request *GetCrowdDataRequest, runtime *util.RuntimeOptions) (_result *GetCrowdDataResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CateIds)) {
+		body["CateIds"] = request.CateIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndingDate)) {
+		body["EndingDate"] = request.EndingDate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageIndex)) {
+		body["PageIndex"] = request.PageIndex
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartDate)) {
+		body["StartDate"] = request.StartDate
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetCrowdData"),
+		Version:     tea.String("2022-01-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetCrowdDataResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetCrowdData(request *GetCrowdDataRequest) (_result *GetCrowdDataResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetCrowdDataResponse{}
+	_body, _err := client.GetCrowdDataWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) GetCrowdLabelWithOptions(request *GetCrowdLabelRequest, runtime *util.RuntimeOptions) (_result *GetCrowdLabelResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2156,6 +3150,14 @@ func (client *Client) GetCrowdLabelWithOptions(request *GetCrowdLabelRequest, ru
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.CateIds)) {
 		body["CateIds"] = request.CateIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndingDate)) {
+		body["EndingDate"] = request.EndingDate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartDate)) {
+		body["StartDate"] = request.StartDate
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -2200,6 +3202,14 @@ func (client *Client) GetCrowdReginWithOptions(request *GetCrowdReginRequest, ru
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.CateIds)) {
 		query["CateIds"] = request.CateIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndingDate)) {
+		query["EndingDate"] = request.EndingDate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartDate)) {
+		query["StartDate"] = request.StartDate
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -2290,8 +3300,28 @@ func (client *Client) GetPriceRangeWithOptions(request *GetPriceRangeRequest, ru
 		return _result, _err
 	}
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BrandNames)) {
+		body["BrandNames"] = request.BrandNames
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.CateIds)) {
 		body["CateIds"] = request.CateIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndingDate)) {
+		body["EndingDate"] = request.EndingDate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Section)) {
+		body["Section"] = request.Section
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ShopIds)) {
+		body["ShopIds"] = request.ShopIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartDate)) {
+		body["StartDate"] = request.StartDate
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -2338,6 +3368,14 @@ func (client *Client) GetSexRatioWithOptions(request *GetSexRatioRequest, runtim
 		query["CateIds"] = request.CateIds
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.EndingDate)) {
+		query["EndingDate"] = request.EndingDate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartDate)) {
+		query["StartDate"] = request.StartDate
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -2378,8 +3416,44 @@ func (client *Client) GetStoreSalesVolumeTopWithOptions(request *GetStoreSalesVo
 		return _result, _err
 	}
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BrandNames)) {
+		body["BrandNames"] = request.BrandNames
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.CateIds)) {
 		body["CateIds"] = request.CateIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndingDate)) {
+		body["EndingDate"] = request.EndingDate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndingPrice)) {
+		body["EndingPrice"] = request.EndingPrice
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndingSalesVolume)) {
+		body["EndingSalesVolume"] = request.EndingSalesVolume
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageIndex)) {
+		body["PageIndex"] = request.PageIndex
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ShopIds)) {
+		body["ShopIds"] = request.ShopIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartDate)) {
+		body["StartDate"] = request.StartDate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartPrice)) {
+		body["StartPrice"] = request.StartPrice
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartSalesVolume)) {
+		body["StartSalesVolume"] = request.StartSalesVolume
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -2422,8 +3496,44 @@ func (client *Client) GetStoreSearchTopWithOptions(request *GetStoreSearchTopReq
 		return _result, _err
 	}
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BrandNames)) {
+		body["BrandNames"] = request.BrandNames
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.CateIds)) {
 		body["CateIds"] = request.CateIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndingDate)) {
+		body["EndingDate"] = request.EndingDate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndingPrice)) {
+		body["EndingPrice"] = request.EndingPrice
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndingSalesVolume)) {
+		body["EndingSalesVolume"] = request.EndingSalesVolume
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageIndex)) {
+		body["PageIndex"] = request.PageIndex
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ShopIds)) {
+		body["ShopIds"] = request.ShopIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartDate)) {
+		body["StartDate"] = request.StartDate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartPrice)) {
+		body["StartPrice"] = request.StartPrice
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartSalesVolume)) {
+		body["StartSalesVolume"] = request.StartSalesVolume
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -2460,22 +3570,110 @@ func (client *Client) GetStoreSearchTop(request *GetStoreSearchTopRequest) (_res
 	return _result, _err
 }
 
+func (client *Client) GetStyleOnlineWithOptions(request *GetStyleOnlineRequest, runtime *util.RuntimeOptions) (_result *GetStyleOnlineResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BrandNames)) {
+		query["BrandNames"] = request.BrandNames
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CateIds)) {
+		query["CateIds"] = request.CateIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndingDate)) {
+		query["EndingDate"] = request.EndingDate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageIndex)) {
+		query["PageIndex"] = request.PageIndex
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ShopIds)) {
+		query["ShopIds"] = request.ShopIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartDate)) {
+		query["StartDate"] = request.StartDate
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetStyleOnline"),
+		Version:     tea.String("2022-01-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetStyleOnlineResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetStyleOnline(request *GetStyleOnlineRequest) (_result *GetStyleOnlineResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetStyleOnlineResponse{}
+	_body, _err := client.GetStyleOnlineWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) GetStyleTopWithOptions(request *GetStyleTopRequest, runtime *util.RuntimeOptions) (_result *GetStyleTopResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BrandNames)) {
+		body["BrandNames"] = request.BrandNames
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.CateIds)) {
 		body["CateIds"] = request.CateIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndingDate)) {
+		body["EndingDate"] = request.EndingDate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndingPrice)) {
+		body["EndingPrice"] = request.EndingPrice
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.PageIndex)) {
 		body["PageIndex"] = request.PageIndex
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ShopIds)) {
+		body["ShopIds"] = request.ShopIds
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.SortOrder)) {
 		body["SortOrder"] = request.SortOrder
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartDate)) {
+		body["StartDate"] = request.StartDate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartPrice)) {
+		body["StartPrice"] = request.StartPrice
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.TimeDisplay)) {
@@ -2706,8 +3904,24 @@ func (client *Client) GetTrendStatisticWithOptions(request *GetTrendStatisticReq
 		return _result, _err
 	}
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BrandNames)) {
+		body["BrandNames"] = request.BrandNames
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.CateIds)) {
 		body["CateIds"] = request.CateIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndingDate)) {
+		body["EndingDate"] = request.EndingDate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ShopIds)) {
+		body["ShopIds"] = request.ShopIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartDate)) {
+		body["StartDate"] = request.StartDate
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -2737,6 +3951,62 @@ func (client *Client) GetTrendStatistic(request *GetTrendStatisticRequest) (_res
 	runtime := &util.RuntimeOptions{}
 	_result = &GetTrendStatisticResponse{}
 	_body, _err := client.GetTrendStatisticWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetTrendWordAndIndexWithOptions(request *GetTrendWordAndIndexRequest, runtime *util.RuntimeOptions) (_result *GetTrendWordAndIndexResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CateIds)) {
+		body["CateIds"] = request.CateIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndingDate)) {
+		body["EndingDate"] = request.EndingDate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageIndex)) {
+		body["PageIndex"] = request.PageIndex
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartDate)) {
+		body["StartDate"] = request.StartDate
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetTrendWordAndIndex"),
+		Version:     tea.String("2022-01-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetTrendWordAndIndexResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetTrendWordAndIndex(request *GetTrendWordAndIndexRequest) (_result *GetTrendWordAndIndexResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetTrendWordAndIndexResponse{}
+	_body, _err := client.GetTrendWordAndIndexWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
