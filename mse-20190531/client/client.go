@@ -383,11 +383,13 @@ func (s *TrafficPolicyTlsSetting) SetTlsMode(v string) *TrafficPolicyTlsSetting 
 type AddAuthResourceRequest struct {
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	// The ID of the authorization record.
-	AuthId *int64 `json:"AuthId,omitempty" xml:"AuthId,omitempty"`
+	AuthId                 *int64                                          `json:"AuthId,omitempty" xml:"AuthId,omitempty"`
+	AuthResourceHeaderList []*AddAuthResourceRequestAuthResourceHeaderList `json:"AuthResourceHeaderList,omitempty" xml:"AuthResourceHeaderList,omitempty" type:"Repeated"`
 	// The ID of the domain name.
 	DomainId *int64 `json:"DomainId,omitempty" xml:"DomainId,omitempty"`
 	// The unique ID of the gateway.
 	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
+	IgnoreCase      *bool   `json:"IgnoreCase,omitempty" xml:"IgnoreCase,omitempty"`
 	MatchType       *string `json:"MatchType,omitempty" xml:"MatchType,omitempty"`
 	// The path.
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
@@ -411,6 +413,11 @@ func (s *AddAuthResourceRequest) SetAuthId(v int64) *AddAuthResourceRequest {
 	return s
 }
 
+func (s *AddAuthResourceRequest) SetAuthResourceHeaderList(v []*AddAuthResourceRequestAuthResourceHeaderList) *AddAuthResourceRequest {
+	s.AuthResourceHeaderList = v
+	return s
+}
+
 func (s *AddAuthResourceRequest) SetDomainId(v int64) *AddAuthResourceRequest {
 	s.DomainId = &v
 	return s
@@ -421,12 +428,109 @@ func (s *AddAuthResourceRequest) SetGatewayUniqueId(v string) *AddAuthResourceRe
 	return s
 }
 
+func (s *AddAuthResourceRequest) SetIgnoreCase(v bool) *AddAuthResourceRequest {
+	s.IgnoreCase = &v
+	return s
+}
+
 func (s *AddAuthResourceRequest) SetMatchType(v string) *AddAuthResourceRequest {
 	s.MatchType = &v
 	return s
 }
 
 func (s *AddAuthResourceRequest) SetPath(v string) *AddAuthResourceRequest {
+	s.Path = &v
+	return s
+}
+
+type AddAuthResourceRequestAuthResourceHeaderList struct {
+	HeaderKey    *string `json:"HeaderKey,omitempty" xml:"HeaderKey,omitempty"`
+	HeaderMethod *string `json:"HeaderMethod,omitempty" xml:"HeaderMethod,omitempty"`
+	HeaderValue  *string `json:"HeaderValue,omitempty" xml:"HeaderValue,omitempty"`
+}
+
+func (s AddAuthResourceRequestAuthResourceHeaderList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddAuthResourceRequestAuthResourceHeaderList) GoString() string {
+	return s.String()
+}
+
+func (s *AddAuthResourceRequestAuthResourceHeaderList) SetHeaderKey(v string) *AddAuthResourceRequestAuthResourceHeaderList {
+	s.HeaderKey = &v
+	return s
+}
+
+func (s *AddAuthResourceRequestAuthResourceHeaderList) SetHeaderMethod(v string) *AddAuthResourceRequestAuthResourceHeaderList {
+	s.HeaderMethod = &v
+	return s
+}
+
+func (s *AddAuthResourceRequestAuthResourceHeaderList) SetHeaderValue(v string) *AddAuthResourceRequestAuthResourceHeaderList {
+	s.HeaderValue = &v
+	return s
+}
+
+type AddAuthResourceShrinkRequest struct {
+	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// The ID of the authorization record.
+	AuthId                       *int64  `json:"AuthId,omitempty" xml:"AuthId,omitempty"`
+	AuthResourceHeaderListShrink *string `json:"AuthResourceHeaderList,omitempty" xml:"AuthResourceHeaderList,omitempty"`
+	// The ID of the domain name.
+	DomainId *int64 `json:"DomainId,omitempty" xml:"DomainId,omitempty"`
+	// The unique ID of the gateway.
+	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
+	IgnoreCase      *bool   `json:"IgnoreCase,omitempty" xml:"IgnoreCase,omitempty"`
+	MatchType       *string `json:"MatchType,omitempty" xml:"MatchType,omitempty"`
+	// The path.
+	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
+}
+
+func (s AddAuthResourceShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddAuthResourceShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AddAuthResourceShrinkRequest) SetAcceptLanguage(v string) *AddAuthResourceShrinkRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *AddAuthResourceShrinkRequest) SetAuthId(v int64) *AddAuthResourceShrinkRequest {
+	s.AuthId = &v
+	return s
+}
+
+func (s *AddAuthResourceShrinkRequest) SetAuthResourceHeaderListShrink(v string) *AddAuthResourceShrinkRequest {
+	s.AuthResourceHeaderListShrink = &v
+	return s
+}
+
+func (s *AddAuthResourceShrinkRequest) SetDomainId(v int64) *AddAuthResourceShrinkRequest {
+	s.DomainId = &v
+	return s
+}
+
+func (s *AddAuthResourceShrinkRequest) SetGatewayUniqueId(v string) *AddAuthResourceShrinkRequest {
+	s.GatewayUniqueId = &v
+	return s
+}
+
+func (s *AddAuthResourceShrinkRequest) SetIgnoreCase(v bool) *AddAuthResourceShrinkRequest {
+	s.IgnoreCase = &v
+	return s
+}
+
+func (s *AddAuthResourceShrinkRequest) SetMatchType(v string) *AddAuthResourceShrinkRequest {
+	s.MatchType = &v
+	return s
+}
+
+func (s *AddAuthResourceShrinkRequest) SetPath(v string) *AddAuthResourceShrinkRequest {
 	s.Path = &v
 	return s
 }
@@ -516,19 +620,29 @@ func (s *AddAuthResourceResponse) SetBody(v *AddAuthResourceResponseBody) *AddAu
 }
 
 type AddBlackWhiteListRequest struct {
+	// The language of the response. Valid values:
+	//
+	// *   zh: Chinese
+	// *   en: English
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	// The content of the blacklist.
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
 	// The unique ID of the gateway.
 	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
-	// Specifies whether to enable the whitelist mode for authorization.
-	IsWhite            *bool   `json:"IsWhite,omitempty" xml:"IsWhite,omitempty"`
-	Name               *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Note               *string `json:"Note,omitempty" xml:"Note,omitempty"`
+	// Specifies whether to create a whitelist.
+	IsWhite *bool `json:"IsWhite,omitempty" xml:"IsWhite,omitempty"`
+	// The name.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The description.
+	Note *string `json:"Note,omitempty" xml:"Note,omitempty"`
+	// The resource IDs in the JSON format.
 	ResourceIdJsonList *string `json:"ResourceIdJsonList,omitempty" xml:"ResourceIdJsonList,omitempty"`
 	// The resource type to which the blacklist or whitelist applies.
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	// The status of the blacklist.
+	//
+	// *   on: enabled
+	// *   off: disabled
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The type of object in the blacklist or whitelist.
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
@@ -599,14 +713,14 @@ type AddBlackWhiteListResponseBody struct {
 	Data *int64 `json:"Data,omitempty" xml:"Data,omitempty"`
 	// The HTTP status code returned.
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The error message returned if the request fails.
+	// The error message.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request is successful. Valid values:
+	// Indicates whether the request was successful. Valid values:
 	//
-	// - `true`: The request is successful.
-	// - `false`: The request fails.
+	// *   `true`: The request was successful.
+	// *   `false`: The request failed.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -7747,6 +7861,111 @@ func (s *DeleteGatewaySlbResponse) SetBody(v *DeleteGatewaySlbResponseBody) *Del
 	return s
 }
 
+type DeleteMigrationTaskRequest struct {
+	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	Id             *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	RequestPars    *string `json:"RequestPars,omitempty" xml:"RequestPars,omitempty"`
+}
+
+func (s DeleteMigrationTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteMigrationTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteMigrationTaskRequest) SetAcceptLanguage(v string) *DeleteMigrationTaskRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *DeleteMigrationTaskRequest) SetId(v string) *DeleteMigrationTaskRequest {
+	s.Id = &v
+	return s
+}
+
+func (s *DeleteMigrationTaskRequest) SetRequestPars(v string) *DeleteMigrationTaskRequest {
+	s.RequestPars = &v
+	return s
+}
+
+type DeleteMigrationTaskResponseBody struct {
+	Data      *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	HttpCode  *string `json:"HttpCode,omitempty" xml:"HttpCode,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DeleteMigrationTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteMigrationTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteMigrationTaskResponseBody) SetData(v bool) *DeleteMigrationTaskResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *DeleteMigrationTaskResponseBody) SetErrorCode(v string) *DeleteMigrationTaskResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *DeleteMigrationTaskResponseBody) SetHttpCode(v string) *DeleteMigrationTaskResponseBody {
+	s.HttpCode = &v
+	return s
+}
+
+func (s *DeleteMigrationTaskResponseBody) SetMessage(v string) *DeleteMigrationTaskResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DeleteMigrationTaskResponseBody) SetRequestId(v string) *DeleteMigrationTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteMigrationTaskResponseBody) SetSuccess(v bool) *DeleteMigrationTaskResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeleteMigrationTaskResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteMigrationTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteMigrationTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteMigrationTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteMigrationTaskResponse) SetHeaders(v map[string]*string) *DeleteMigrationTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteMigrationTaskResponse) SetStatusCode(v int32) *DeleteMigrationTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteMigrationTaskResponse) SetBody(v *DeleteMigrationTaskResponseBody) *DeleteMigrationTaskResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteNacosConfigRequest struct {
 	// The language of the response. Valid values:
 	//
@@ -14474,10 +14693,10 @@ type GetPluginsRequest struct {
 	//
 	// zh: Chinese en: English
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	// The plug-in directory.
+	// The type of the plug-in. Valid values:
 	//
-	// *   0: user-defined
-	// *   1: permission authentication
+	// *   0: custom
+	// *   1: permission authorization
 	// *   2: security protection
 	// *   3: transmission protocol
 	// *   4: traffic control
@@ -14527,13 +14746,13 @@ func (s *GetPluginsRequest) SetName(v string) *GetPluginsRequest {
 type GetPluginsResponseBody struct {
 	// Code.
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned data.
+	// The data entries returned.
 	Data []*GetPluginsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// The dynamic part in the error message.
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
 	// The dynamic error message.
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	// The error code returned.
+	// The error code returned if the request failed.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	// The HTTP status code returned.
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
@@ -14599,11 +14818,11 @@ func (s *GetPluginsResponseBody) SetSuccess(v bool) *GetPluginsResponseBody {
 }
 
 type GetPluginsResponseBodyData struct {
-	// The directory of the plug-in.
+	// The type of the plug-in. Valid values:
 	//
-	// 0: user-defined
+	// 0: custom
 	//
-	// 1: permission authentication
+	// 1: permission authorization
 	//
 	// 2: security protection
 	//
@@ -14613,7 +14832,7 @@ type GetPluginsResponseBodyData struct {
 	//
 	// 5: traffic observation
 	Category *int32 `json:"Category,omitempty" xml:"Category,omitempty"`
-	// The information about the configuration check.
+	// The information about the plug-in configuration used for checking.
 	ConfigCheck *string `json:"ConfigCheck,omitempty" xml:"ConfigCheck,omitempty"`
 	// The ID of the plug-in.
 	Id         *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
@@ -14622,7 +14841,7 @@ type GetPluginsResponseBodyData struct {
 	// The name of the plug-in.
 	Name                     *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	NewVersionPublishingFlag *bool   `json:"NewVersionPublishingFlag,omitempty" xml:"NewVersionPublishingFlag,omitempty"`
-	// The plug-in execution stage.
+	// The execution stage of the plug-in.
 	//
 	// *   0: default stage
 	// *   1: authorization stage
@@ -14631,7 +14850,7 @@ type GetPluginsResponseBodyData struct {
 	Phase *int32 `json:"Phase,omitempty" xml:"Phase,omitempty"`
 	// The ID of the creator.
 	PrimaryUser *string `json:"PrimaryUser,omitempty" xml:"PrimaryUser,omitempty"`
-	// The plug-in execution priority. A larger value indicates a higher priority.
+	// The execution priority of the plug-in. A larger value indicates a higher priority.
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
 	// The publish status.
 	PublishState *int32 `json:"PublishState,omitempty" xml:"PublishState,omitempty"`
@@ -14644,9 +14863,9 @@ type GetPluginsResponseBodyData struct {
 	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
 	// The version of the plug-in.
 	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
-	// The Object Storage Service (OSS) of the WebAssembly plug-in.
+	// The URL of the Object Storage Service (OSS) bucket that stores the WebAssembly plug-in.
 	WasmFile *string `json:"WasmFile,omitempty" xml:"WasmFile,omitempty"`
-	// The WebAssembly language.
+	// The WebAssembly language. Valid values:
 	//
 	// *   0: C++
 	// *   1: TinyGo
@@ -15043,18 +15262,39 @@ func (s *GetServiceListResponse) SetBody(v *GetServiceListResponseBody) *GetServ
 }
 
 type GetServiceListenersRequest struct {
+	// The language of the response. Valid values:
+	//
+	// *   zh: Chinese
+	// *   en: English
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	ClusterId      *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	ClusterName    *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
-	GroupName      *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	HasIpCount     *string `json:"HasIpCount,omitempty" xml:"HasIpCount,omitempty"`
-	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	NamespaceId    *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
-	PageNum        *int32  `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	PageSize       *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RequestPars    *string `json:"RequestPars,omitempty" xml:"RequestPars,omitempty"`
-	ServiceName    *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+	// The ID of the MSE instance to which the service belongs.
+	//
+	// > You must specify InstanceId or ClusterId.
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The name of the cluster to which the service belongs.
+	//
+	// > The cluster is a concept for Nacos services and does not refer to a Microservices Engine (MSE) instance.
+	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
+	// The group to which the service belongs.
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// A reserved parameter.
+	HasIpCount *string `json:"HasIpCount,omitempty" xml:"HasIpCount,omitempty"`
+	// The ID of the instance to which the service belongs.
+	//
+	// > You must specify InstanceId or ClusterId.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The namespace to which the service belongs.
+	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+	// The number of the page to return.
+	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// The number of entries to return on each page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The region ID.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The extended request parameters in the JSON format.
+	RequestPars *string `json:"RequestPars,omitempty" xml:"RequestPars,omitempty"`
+	// The name of the service whose listeners you want to query.
+	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
 }
 
 func (s GetServiceListenersRequest) String() string {
@@ -15126,15 +15366,30 @@ func (s *GetServiceListenersRequest) SetServiceName(v string) *GetServiceListene
 }
 
 type GetServiceListenersResponseBody struct {
-	Data       []*GetServiceListenersResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	ErrorCode  *string                                `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	HttpCode   *string                                `json:"HttpCode,omitempty" xml:"HttpCode,omitempty"`
-	Message    *string                                `json:"Message,omitempty" xml:"Message,omitempty"`
-	PageNumber *int32                                 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32                                 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId  *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success    *bool                                  `json:"Success,omitempty" xml:"Success,omitempty"`
-	TotalCount *int32                                 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The returned data.
+	Data []*GetServiceListenersResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The error code returned if the request failed.
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The HTTP status code returned.
+	HttpCode *string `json:"HttpCode,omitempty" xml:"HttpCode,omitempty"`
+	// The message returned.
+	//
+	// *   If the request is successful, a success message is returned.
+	// *   If the request fails, an error message is returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The page number of the returned page.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries returned per page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// *   `true`: The request was successful.
+	// *   `false`: The request failed.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The number of listeners that are queried.
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s GetServiceListenersResponseBody) String() string {
@@ -15191,13 +15446,21 @@ func (s *GetServiceListenersResponseBody) SetTotalCount(v int32) *GetServiceList
 }
 
 type GetServiceListenersResponseBodyData struct {
-	Addr        *string `json:"Addr,omitempty" xml:"Addr,omitempty"`
-	Agent       *string `json:"Agent,omitempty" xml:"Agent,omitempty"`
-	App         *string `json:"App,omitempty" xml:"App,omitempty"`
-	Cluster     *string `json:"Cluster,omitempty" xml:"Cluster,omitempty"`
-	IP          *string `json:"IP,omitempty" xml:"IP,omitempty"`
+	// The address of the listener.
+	Addr *string `json:"Addr,omitempty" xml:"Addr,omitempty"`
+	// The listener client version.
+	Agent *string `json:"Agent,omitempty" xml:"Agent,omitempty"`
+	// The application name of the listener.
+	App *string `json:"App,omitempty" xml:"App,omitempty"`
+	// The name of the cluster to which the monitored service belongs.
+	Cluster *string `json:"Cluster,omitempty" xml:"Cluster,omitempty"`
+	// The IP address of the monitored service.
+	IP *string `json:"IP,omitempty" xml:"IP,omitempty"`
+	// The ID of the namespace.
 	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
-	Port        *string `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The port number of the monitored service.
+	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The name of the monitored service.
 	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
 }
 
@@ -18678,6 +18941,272 @@ func (s *ListClustersResponse) SetStatusCode(v int32) *ListClustersResponse {
 }
 
 func (s *ListClustersResponse) SetBody(v *ListClustersResponseBody) *ListClustersResponse {
+	s.Body = v
+	return s
+}
+
+type ListConfigTrackRequest struct {
+	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	DataId         *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
+	EndTs          *int64  `json:"EndTs,omitempty" xml:"EndTs,omitempty"`
+	Group          *string `json:"Group,omitempty" xml:"Group,omitempty"`
+	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Ip             *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	NamespaceId    *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+	PageNum        *int64  `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	PageSize       *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestPars    *string `json:"RequestPars,omitempty" xml:"RequestPars,omitempty"`
+	Reverse        *bool   `json:"Reverse,omitempty" xml:"Reverse,omitempty"`
+	StartTs        *int64  `json:"StartTs,omitempty" xml:"StartTs,omitempty"`
+}
+
+func (s ListConfigTrackRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListConfigTrackRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListConfigTrackRequest) SetAcceptLanguage(v string) *ListConfigTrackRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *ListConfigTrackRequest) SetDataId(v string) *ListConfigTrackRequest {
+	s.DataId = &v
+	return s
+}
+
+func (s *ListConfigTrackRequest) SetEndTs(v int64) *ListConfigTrackRequest {
+	s.EndTs = &v
+	return s
+}
+
+func (s *ListConfigTrackRequest) SetGroup(v string) *ListConfigTrackRequest {
+	s.Group = &v
+	return s
+}
+
+func (s *ListConfigTrackRequest) SetInstanceId(v string) *ListConfigTrackRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListConfigTrackRequest) SetIp(v string) *ListConfigTrackRequest {
+	s.Ip = &v
+	return s
+}
+
+func (s *ListConfigTrackRequest) SetNamespaceId(v string) *ListConfigTrackRequest {
+	s.NamespaceId = &v
+	return s
+}
+
+func (s *ListConfigTrackRequest) SetPageNum(v int64) *ListConfigTrackRequest {
+	s.PageNum = &v
+	return s
+}
+
+func (s *ListConfigTrackRequest) SetPageSize(v int64) *ListConfigTrackRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListConfigTrackRequest) SetRequestPars(v string) *ListConfigTrackRequest {
+	s.RequestPars = &v
+	return s
+}
+
+func (s *ListConfigTrackRequest) SetReverse(v bool) *ListConfigTrackRequest {
+	s.Reverse = &v
+	return s
+}
+
+func (s *ListConfigTrackRequest) SetStartTs(v int64) *ListConfigTrackRequest {
+	s.StartTs = &v
+	return s
+}
+
+type ListConfigTrackResponseBody struct {
+	ErrorCode  *string                              `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	HttpCode   *string                              `json:"HttpCode,omitempty" xml:"HttpCode,omitempty"`
+	Message    *string                              `json:"Message,omitempty" xml:"Message,omitempty"`
+	PageNumber *int64                               `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int64                               `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId  *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success    *bool                                `json:"Success,omitempty" xml:"Success,omitempty"`
+	TotalCount *int64                               `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	Traces     []*ListConfigTrackResponseBodyTraces `json:"Traces,omitempty" xml:"Traces,omitempty" type:"Repeated"`
+}
+
+func (s ListConfigTrackResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListConfigTrackResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListConfigTrackResponseBody) SetErrorCode(v string) *ListConfigTrackResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ListConfigTrackResponseBody) SetHttpCode(v string) *ListConfigTrackResponseBody {
+	s.HttpCode = &v
+	return s
+}
+
+func (s *ListConfigTrackResponseBody) SetMessage(v string) *ListConfigTrackResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListConfigTrackResponseBody) SetPageNumber(v int64) *ListConfigTrackResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListConfigTrackResponseBody) SetPageSize(v int64) *ListConfigTrackResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListConfigTrackResponseBody) SetRequestId(v string) *ListConfigTrackResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListConfigTrackResponseBody) SetSuccess(v bool) *ListConfigTrackResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *ListConfigTrackResponseBody) SetTotalCount(v int64) *ListConfigTrackResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *ListConfigTrackResponseBody) SetTraces(v []*ListConfigTrackResponseBodyTraces) *ListConfigTrackResponseBody {
+	s.Traces = v
+	return s
+}
+
+type ListConfigTrackResponseBodyTraces struct {
+	Client     *bool   `json:"Client,omitempty" xml:"Client,omitempty"`
+	DataId     *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
+	Delay      *string `json:"Delay,omitempty" xml:"Delay,omitempty"`
+	Event      *string `json:"Event,omitempty" xml:"Event,omitempty"`
+	Group      *string `json:"Group,omitempty" xml:"Group,omitempty"`
+	LogDate    *string `json:"LogDate,omitempty" xml:"LogDate,omitempty"`
+	Md5        *string `json:"Md5,omitempty" xml:"Md5,omitempty"`
+	Push       *bool   `json:"Push,omitempty" xml:"Push,omitempty"`
+	RequestIp  *string `json:"RequestIp,omitempty" xml:"RequestIp,omitempty"`
+	ResponseIp *string `json:"ResponseIp,omitempty" xml:"ResponseIp,omitempty"`
+	Result     *string `json:"Result,omitempty" xml:"Result,omitempty"`
+	Ts         *string `json:"Ts,omitempty" xml:"Ts,omitempty"`
+	Type       *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s ListConfigTrackResponseBodyTraces) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListConfigTrackResponseBodyTraces) GoString() string {
+	return s.String()
+}
+
+func (s *ListConfigTrackResponseBodyTraces) SetClient(v bool) *ListConfigTrackResponseBodyTraces {
+	s.Client = &v
+	return s
+}
+
+func (s *ListConfigTrackResponseBodyTraces) SetDataId(v string) *ListConfigTrackResponseBodyTraces {
+	s.DataId = &v
+	return s
+}
+
+func (s *ListConfigTrackResponseBodyTraces) SetDelay(v string) *ListConfigTrackResponseBodyTraces {
+	s.Delay = &v
+	return s
+}
+
+func (s *ListConfigTrackResponseBodyTraces) SetEvent(v string) *ListConfigTrackResponseBodyTraces {
+	s.Event = &v
+	return s
+}
+
+func (s *ListConfigTrackResponseBodyTraces) SetGroup(v string) *ListConfigTrackResponseBodyTraces {
+	s.Group = &v
+	return s
+}
+
+func (s *ListConfigTrackResponseBodyTraces) SetLogDate(v string) *ListConfigTrackResponseBodyTraces {
+	s.LogDate = &v
+	return s
+}
+
+func (s *ListConfigTrackResponseBodyTraces) SetMd5(v string) *ListConfigTrackResponseBodyTraces {
+	s.Md5 = &v
+	return s
+}
+
+func (s *ListConfigTrackResponseBodyTraces) SetPush(v bool) *ListConfigTrackResponseBodyTraces {
+	s.Push = &v
+	return s
+}
+
+func (s *ListConfigTrackResponseBodyTraces) SetRequestIp(v string) *ListConfigTrackResponseBodyTraces {
+	s.RequestIp = &v
+	return s
+}
+
+func (s *ListConfigTrackResponseBodyTraces) SetResponseIp(v string) *ListConfigTrackResponseBodyTraces {
+	s.ResponseIp = &v
+	return s
+}
+
+func (s *ListConfigTrackResponseBodyTraces) SetResult(v string) *ListConfigTrackResponseBodyTraces {
+	s.Result = &v
+	return s
+}
+
+func (s *ListConfigTrackResponseBodyTraces) SetTs(v string) *ListConfigTrackResponseBodyTraces {
+	s.Ts = &v
+	return s
+}
+
+func (s *ListConfigTrackResponseBodyTraces) SetType(v string) *ListConfigTrackResponseBodyTraces {
+	s.Type = &v
+	return s
+}
+
+type ListConfigTrackResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListConfigTrackResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListConfigTrackResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListConfigTrackResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListConfigTrackResponse) SetHeaders(v map[string]*string) *ListConfigTrackResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListConfigTrackResponse) SetStatusCode(v int32) *ListConfigTrackResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListConfigTrackResponse) SetBody(v *ListConfigTrackResponseBody) *ListConfigTrackResponse {
 	s.Body = v
 	return s
 }
@@ -22873,6 +23402,224 @@ func (s *ListListenersByIpResponse) SetBody(v *ListListenersByIpResponseBody) *L
 	return s
 }
 
+type ListMigrationTaskRequest struct {
+	AcceptLanguage     *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	OriginInstanceName *string `json:"OriginInstanceName,omitempty" xml:"OriginInstanceName,omitempty"`
+	PageNum            *int64  `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	PageSize           *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestPars        *string `json:"RequestPars,omitempty" xml:"RequestPars,omitempty"`
+}
+
+func (s ListMigrationTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMigrationTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListMigrationTaskRequest) SetAcceptLanguage(v string) *ListMigrationTaskRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *ListMigrationTaskRequest) SetOriginInstanceName(v string) *ListMigrationTaskRequest {
+	s.OriginInstanceName = &v
+	return s
+}
+
+func (s *ListMigrationTaskRequest) SetPageNum(v int64) *ListMigrationTaskRequest {
+	s.PageNum = &v
+	return s
+}
+
+func (s *ListMigrationTaskRequest) SetPageSize(v int64) *ListMigrationTaskRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListMigrationTaskRequest) SetRequestPars(v string) *ListMigrationTaskRequest {
+	s.RequestPars = &v
+	return s
+}
+
+type ListMigrationTaskResponseBody struct {
+	Data       []*ListMigrationTaskResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	ErrorCode  *string                              `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	HttpCode   *string                              `json:"HttpCode,omitempty" xml:"HttpCode,omitempty"`
+	Message    *string                              `json:"Message,omitempty" xml:"Message,omitempty"`
+	PageNumber *int64                               `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int64                               `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId  *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success    *bool                                `json:"Success,omitempty" xml:"Success,omitempty"`
+	TotalCount *int64                               `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListMigrationTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMigrationTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListMigrationTaskResponseBody) SetData(v []*ListMigrationTaskResponseBodyData) *ListMigrationTaskResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListMigrationTaskResponseBody) SetErrorCode(v string) *ListMigrationTaskResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ListMigrationTaskResponseBody) SetHttpCode(v string) *ListMigrationTaskResponseBody {
+	s.HttpCode = &v
+	return s
+}
+
+func (s *ListMigrationTaskResponseBody) SetMessage(v string) *ListMigrationTaskResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListMigrationTaskResponseBody) SetPageNumber(v int64) *ListMigrationTaskResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListMigrationTaskResponseBody) SetPageSize(v int64) *ListMigrationTaskResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListMigrationTaskResponseBody) SetRequestId(v string) *ListMigrationTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListMigrationTaskResponseBody) SetSuccess(v bool) *ListMigrationTaskResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *ListMigrationTaskResponseBody) SetTotalCount(v int64) *ListMigrationTaskResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListMigrationTaskResponseBodyData struct {
+	ClusterType             *string `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
+	GmtCreate               *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	GmtModified             *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	Id                      *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	OriginInstanceAddress   *string `json:"OriginInstanceAddress,omitempty" xml:"OriginInstanceAddress,omitempty"`
+	OriginInstanceName      *string `json:"OriginInstanceName,omitempty" xml:"OriginInstanceName,omitempty"`
+	OriginInstanceNamespace *string `json:"OriginInstanceNamespace,omitempty" xml:"OriginInstanceNamespace,omitempty"`
+	ProjectDesc             *string `json:"ProjectDesc,omitempty" xml:"ProjectDesc,omitempty"`
+	TargetClusterName       *string `json:"TargetClusterName,omitempty" xml:"TargetClusterName,omitempty"`
+	TargetClusterUrl        *string `json:"TargetClusterUrl,omitempty" xml:"TargetClusterUrl,omitempty"`
+	TargetInstanceId        *string `json:"TargetInstanceId,omitempty" xml:"TargetInstanceId,omitempty"`
+	UserId                  *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+}
+
+func (s ListMigrationTaskResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMigrationTaskResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListMigrationTaskResponseBodyData) SetClusterType(v string) *ListMigrationTaskResponseBodyData {
+	s.ClusterType = &v
+	return s
+}
+
+func (s *ListMigrationTaskResponseBodyData) SetGmtCreate(v string) *ListMigrationTaskResponseBodyData {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *ListMigrationTaskResponseBodyData) SetGmtModified(v string) *ListMigrationTaskResponseBodyData {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *ListMigrationTaskResponseBodyData) SetId(v int64) *ListMigrationTaskResponseBodyData {
+	s.Id = &v
+	return s
+}
+
+func (s *ListMigrationTaskResponseBodyData) SetOriginInstanceAddress(v string) *ListMigrationTaskResponseBodyData {
+	s.OriginInstanceAddress = &v
+	return s
+}
+
+func (s *ListMigrationTaskResponseBodyData) SetOriginInstanceName(v string) *ListMigrationTaskResponseBodyData {
+	s.OriginInstanceName = &v
+	return s
+}
+
+func (s *ListMigrationTaskResponseBodyData) SetOriginInstanceNamespace(v string) *ListMigrationTaskResponseBodyData {
+	s.OriginInstanceNamespace = &v
+	return s
+}
+
+func (s *ListMigrationTaskResponseBodyData) SetProjectDesc(v string) *ListMigrationTaskResponseBodyData {
+	s.ProjectDesc = &v
+	return s
+}
+
+func (s *ListMigrationTaskResponseBodyData) SetTargetClusterName(v string) *ListMigrationTaskResponseBodyData {
+	s.TargetClusterName = &v
+	return s
+}
+
+func (s *ListMigrationTaskResponseBodyData) SetTargetClusterUrl(v string) *ListMigrationTaskResponseBodyData {
+	s.TargetClusterUrl = &v
+	return s
+}
+
+func (s *ListMigrationTaskResponseBodyData) SetTargetInstanceId(v string) *ListMigrationTaskResponseBodyData {
+	s.TargetInstanceId = &v
+	return s
+}
+
+func (s *ListMigrationTaskResponseBodyData) SetUserId(v string) *ListMigrationTaskResponseBodyData {
+	s.UserId = &v
+	return s
+}
+
+type ListMigrationTaskResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListMigrationTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListMigrationTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMigrationTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListMigrationTaskResponse) SetHeaders(v map[string]*string) *ListMigrationTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListMigrationTaskResponse) SetStatusCode(v int32) *ListMigrationTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListMigrationTaskResponse) SetBody(v *ListMigrationTaskResponseBody) *ListMigrationTaskResponse {
+	s.Body = v
+	return s
+}
+
 type ListNacosConfigsRequest struct {
 	// The language of the response. Valid values:
 	//
@@ -23346,6 +24093,248 @@ func (s *ListNacosHistoryConfigsResponse) SetStatusCode(v int32) *ListNacosHisto
 }
 
 func (s *ListNacosHistoryConfigsResponse) SetBody(v *ListNacosHistoryConfigsResponseBody) *ListNacosHistoryConfigsResponse {
+	s.Body = v
+	return s
+}
+
+type ListNamingTrackRequest struct {
+	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	EndTs          *int64  `json:"EndTs,omitempty" xml:"EndTs,omitempty"`
+	Group          *string `json:"Group,omitempty" xml:"Group,omitempty"`
+	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Ip             *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	NamespaceId    *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+	PageNum        *int64  `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	PageSize       *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestPars    *string `json:"RequestPars,omitempty" xml:"RequestPars,omitempty"`
+	Reverse        *bool   `json:"Reverse,omitempty" xml:"Reverse,omitempty"`
+	ServiceName    *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+	StartTs        *int64  `json:"StartTs,omitempty" xml:"StartTs,omitempty"`
+}
+
+func (s ListNamingTrackRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListNamingTrackRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListNamingTrackRequest) SetAcceptLanguage(v string) *ListNamingTrackRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *ListNamingTrackRequest) SetEndTs(v int64) *ListNamingTrackRequest {
+	s.EndTs = &v
+	return s
+}
+
+func (s *ListNamingTrackRequest) SetGroup(v string) *ListNamingTrackRequest {
+	s.Group = &v
+	return s
+}
+
+func (s *ListNamingTrackRequest) SetInstanceId(v string) *ListNamingTrackRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListNamingTrackRequest) SetIp(v string) *ListNamingTrackRequest {
+	s.Ip = &v
+	return s
+}
+
+func (s *ListNamingTrackRequest) SetNamespaceId(v string) *ListNamingTrackRequest {
+	s.NamespaceId = &v
+	return s
+}
+
+func (s *ListNamingTrackRequest) SetPageNum(v int64) *ListNamingTrackRequest {
+	s.PageNum = &v
+	return s
+}
+
+func (s *ListNamingTrackRequest) SetPageSize(v int64) *ListNamingTrackRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListNamingTrackRequest) SetRequestPars(v string) *ListNamingTrackRequest {
+	s.RequestPars = &v
+	return s
+}
+
+func (s *ListNamingTrackRequest) SetReverse(v bool) *ListNamingTrackRequest {
+	s.Reverse = &v
+	return s
+}
+
+func (s *ListNamingTrackRequest) SetServiceName(v string) *ListNamingTrackRequest {
+	s.ServiceName = &v
+	return s
+}
+
+func (s *ListNamingTrackRequest) SetStartTs(v int64) *ListNamingTrackRequest {
+	s.StartTs = &v
+	return s
+}
+
+type ListNamingTrackResponseBody struct {
+	ErrorCode  *string                              `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	HttpCode   *string                              `json:"HttpCode,omitempty" xml:"HttpCode,omitempty"`
+	Message    *string                              `json:"Message,omitempty" xml:"Message,omitempty"`
+	PageNumber *int64                               `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int64                               `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId  *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success    *bool                                `json:"Success,omitempty" xml:"Success,omitempty"`
+	TotalCount *int64                               `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	Traces     []*ListNamingTrackResponseBodyTraces `json:"Traces,omitempty" xml:"Traces,omitempty" type:"Repeated"`
+}
+
+func (s ListNamingTrackResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListNamingTrackResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListNamingTrackResponseBody) SetErrorCode(v string) *ListNamingTrackResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ListNamingTrackResponseBody) SetHttpCode(v string) *ListNamingTrackResponseBody {
+	s.HttpCode = &v
+	return s
+}
+
+func (s *ListNamingTrackResponseBody) SetMessage(v string) *ListNamingTrackResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListNamingTrackResponseBody) SetPageNumber(v int64) *ListNamingTrackResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListNamingTrackResponseBody) SetPageSize(v int64) *ListNamingTrackResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListNamingTrackResponseBody) SetRequestId(v string) *ListNamingTrackResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListNamingTrackResponseBody) SetSuccess(v bool) *ListNamingTrackResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *ListNamingTrackResponseBody) SetTotalCount(v int64) *ListNamingTrackResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *ListNamingTrackResponseBody) SetTraces(v []*ListNamingTrackResponseBodyTraces) *ListNamingTrackResponseBody {
+	s.Traces = v
+	return s
+}
+
+type ListNamingTrackResponseBodyTraces struct {
+	ClientIp        *string `json:"ClientIp,omitempty" xml:"ClientIp,omitempty"`
+	Group           *string `json:"Group,omitempty" xml:"Group,omitempty"`
+	InstanceSize    *string `json:"InstanceSize,omitempty" xml:"InstanceSize,omitempty"`
+	NodeName        *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
+	PushTime        *string `json:"PushTime,omitempty" xml:"PushTime,omitempty"`
+	PushTimeAll     *string `json:"PushTimeAll,omitempty" xml:"PushTimeAll,omitempty"`
+	PushTimeNetwork *string `json:"PushTimeNetwork,omitempty" xml:"PushTimeNetwork,omitempty"`
+	ServerName      *string `json:"ServerName,omitempty" xml:"ServerName,omitempty"`
+	SlaTime         *string `json:"SlaTime,omitempty" xml:"SlaTime,omitempty"`
+}
+
+func (s ListNamingTrackResponseBodyTraces) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListNamingTrackResponseBodyTraces) GoString() string {
+	return s.String()
+}
+
+func (s *ListNamingTrackResponseBodyTraces) SetClientIp(v string) *ListNamingTrackResponseBodyTraces {
+	s.ClientIp = &v
+	return s
+}
+
+func (s *ListNamingTrackResponseBodyTraces) SetGroup(v string) *ListNamingTrackResponseBodyTraces {
+	s.Group = &v
+	return s
+}
+
+func (s *ListNamingTrackResponseBodyTraces) SetInstanceSize(v string) *ListNamingTrackResponseBodyTraces {
+	s.InstanceSize = &v
+	return s
+}
+
+func (s *ListNamingTrackResponseBodyTraces) SetNodeName(v string) *ListNamingTrackResponseBodyTraces {
+	s.NodeName = &v
+	return s
+}
+
+func (s *ListNamingTrackResponseBodyTraces) SetPushTime(v string) *ListNamingTrackResponseBodyTraces {
+	s.PushTime = &v
+	return s
+}
+
+func (s *ListNamingTrackResponseBodyTraces) SetPushTimeAll(v string) *ListNamingTrackResponseBodyTraces {
+	s.PushTimeAll = &v
+	return s
+}
+
+func (s *ListNamingTrackResponseBodyTraces) SetPushTimeNetwork(v string) *ListNamingTrackResponseBodyTraces {
+	s.PushTimeNetwork = &v
+	return s
+}
+
+func (s *ListNamingTrackResponseBodyTraces) SetServerName(v string) *ListNamingTrackResponseBodyTraces {
+	s.ServerName = &v
+	return s
+}
+
+func (s *ListNamingTrackResponseBodyTraces) SetSlaTime(v string) *ListNamingTrackResponseBodyTraces {
+	s.SlaTime = &v
+	return s
+}
+
+type ListNamingTrackResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListNamingTrackResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListNamingTrackResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListNamingTrackResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListNamingTrackResponse) SetHeaders(v map[string]*string) *ListNamingTrackResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListNamingTrackResponse) SetStatusCode(v int32) *ListNamingTrackResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListNamingTrackResponse) SetBody(v *ListNamingTrackResponseBody) *ListNamingTrackResponse {
 	s.Body = v
 	return s
 }
@@ -24144,7 +25133,7 @@ type ListTagResourcesRequest struct {
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	// The token that is required for the next query.
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The ID of the region.
+	// The region ID.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The resource IDs. You can specify a maximum of 50 resource IDs.
 	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
@@ -24221,7 +25210,7 @@ func (s *ListTagResourcesRequestTag) SetValue(v string) *ListTagResourcesRequest
 }
 
 type ListTagResourcesResponseBody struct {
-	// The error code returned.
+	// The error code returned if the request failed.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	// The message returned.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
@@ -27553,8 +28542,8 @@ func (s *QueryGatewayRegionResponse) SetBody(v *QueryGatewayRegionResponseBody) 
 type QueryGatewayTypeRequest struct {
 	// The language of the response. Valid values:
 	//
-	// - zh: Chinese
-	// - en: English
+	// *   zh: Chinese
+	// *   en: English
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 }
 
@@ -27572,9 +28561,9 @@ func (s *QueryGatewayTypeRequest) SetAcceptLanguage(v string) *QueryGatewayTypeR
 }
 
 type QueryGatewayTypeResponseBody struct {
-	// The status code returned. A value of 200 indicates that the request is successful. Other values indicate that the request fails.
+	// The status code returned. The value 200 indicates that the request was successful. Other values indicate that the request failed.
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The information about gateway types.
+	// The information about the gateway type. The data type of this parameter is List.
 	Data []*string `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// The HTTP status code returned.
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
@@ -27582,9 +28571,10 @@ type QueryGatewayTypeResponseBody struct {
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request is successful. Valid values:
-	// - `true`: The request is successful.
-	// - `false`: The request fails.
+	// Indicates whether the request was successful. Valid values:
+	//
+	// *   `true`: The request was successful.
+	// *   `false`: The request failed.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -29093,11 +30083,27 @@ func (s *SelectGatewaySlbResponse) SetBody(v *SelectGatewaySlbResponseBody) *Sel
 }
 
 type TagResourcesRequest struct {
-	AcceptLanguage *string                   `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	RegionId       *string                   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceId     []*string                 `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
-	ResourceType   *string                   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	Tag            []*TagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	// The language of the response. Valid values:
+	//
+	// *   zh: Chinese
+	// *   en: English
+	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// The region ID.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the instance.
+	//
+	// > This parameter specifies the instance ID that is passed. Examples:
+	//
+	// *   **ResourceId.1** indicates the ID of the first instance.
+	// *   **ResourceId.2** indicates the ID of the second instance.
+	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	// The type of the resources. Valid values:
+	//
+	// *   CLUSTER: MSE instance
+	// *   GATEWAY: cloud-native gateway
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The list of tags. You can specify a maximum of 20 tags.
+	Tag []*TagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s TagResourcesRequest) String() string {
@@ -29134,7 +30140,8 @@ func (s *TagResourcesRequest) SetTag(v []*TagResourcesRequestTag) *TagResourcesR
 }
 
 type TagResourcesRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of a tag.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -29157,10 +30164,17 @@ func (s *TagResourcesRequestTag) SetValue(v string) *TagResourcesRequestTag {
 }
 
 type TagResourcesResponseBody struct {
+	// The error code returned if the request failed.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The message returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// *   `true`: The request was successful.
+	// *   `false`: The request failed.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s TagResourcesResponseBody) String() string {
@@ -34121,6 +35135,242 @@ func (s *UpdateMessageQueueRouteResponse) SetBody(v *UpdateMessageQueueRouteResp
 	return s
 }
 
+type UpdateMigrationTaskRequest struct {
+	AcceptLanguage          *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	ClusterType             *string `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
+	Id                      *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	OriginInstanceAddress   *string `json:"OriginInstanceAddress,omitempty" xml:"OriginInstanceAddress,omitempty"`
+	OriginInstanceName      *string `json:"OriginInstanceName,omitempty" xml:"OriginInstanceName,omitempty"`
+	OriginInstanceNamespace *string `json:"OriginInstanceNamespace,omitempty" xml:"OriginInstanceNamespace,omitempty"`
+	ProjectDesc             *string `json:"ProjectDesc,omitempty" xml:"ProjectDesc,omitempty"`
+	RequestPars             *string `json:"RequestPars,omitempty" xml:"RequestPars,omitempty"`
+	TargetClusterName       *string `json:"TargetClusterName,omitempty" xml:"TargetClusterName,omitempty"`
+	TargetClusterUrl        *string `json:"TargetClusterUrl,omitempty" xml:"TargetClusterUrl,omitempty"`
+	TargetInstanceId        *string `json:"TargetInstanceId,omitempty" xml:"TargetInstanceId,omitempty"`
+}
+
+func (s UpdateMigrationTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateMigrationTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateMigrationTaskRequest) SetAcceptLanguage(v string) *UpdateMigrationTaskRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *UpdateMigrationTaskRequest) SetClusterType(v string) *UpdateMigrationTaskRequest {
+	s.ClusterType = &v
+	return s
+}
+
+func (s *UpdateMigrationTaskRequest) SetId(v string) *UpdateMigrationTaskRequest {
+	s.Id = &v
+	return s
+}
+
+func (s *UpdateMigrationTaskRequest) SetOriginInstanceAddress(v string) *UpdateMigrationTaskRequest {
+	s.OriginInstanceAddress = &v
+	return s
+}
+
+func (s *UpdateMigrationTaskRequest) SetOriginInstanceName(v string) *UpdateMigrationTaskRequest {
+	s.OriginInstanceName = &v
+	return s
+}
+
+func (s *UpdateMigrationTaskRequest) SetOriginInstanceNamespace(v string) *UpdateMigrationTaskRequest {
+	s.OriginInstanceNamespace = &v
+	return s
+}
+
+func (s *UpdateMigrationTaskRequest) SetProjectDesc(v string) *UpdateMigrationTaskRequest {
+	s.ProjectDesc = &v
+	return s
+}
+
+func (s *UpdateMigrationTaskRequest) SetRequestPars(v string) *UpdateMigrationTaskRequest {
+	s.RequestPars = &v
+	return s
+}
+
+func (s *UpdateMigrationTaskRequest) SetTargetClusterName(v string) *UpdateMigrationTaskRequest {
+	s.TargetClusterName = &v
+	return s
+}
+
+func (s *UpdateMigrationTaskRequest) SetTargetClusterUrl(v string) *UpdateMigrationTaskRequest {
+	s.TargetClusterUrl = &v
+	return s
+}
+
+func (s *UpdateMigrationTaskRequest) SetTargetInstanceId(v string) *UpdateMigrationTaskRequest {
+	s.TargetInstanceId = &v
+	return s
+}
+
+type UpdateMigrationTaskResponseBody struct {
+	Data      *UpdateMigrationTaskResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	ErrorCode *string                              `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	HttpCode  *string                              `json:"HttpCode,omitempty" xml:"HttpCode,omitempty"`
+	Message   *string                              `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                                `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UpdateMigrationTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateMigrationTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateMigrationTaskResponseBody) SetData(v *UpdateMigrationTaskResponseBodyData) *UpdateMigrationTaskResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *UpdateMigrationTaskResponseBody) SetErrorCode(v string) *UpdateMigrationTaskResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *UpdateMigrationTaskResponseBody) SetHttpCode(v string) *UpdateMigrationTaskResponseBody {
+	s.HttpCode = &v
+	return s
+}
+
+func (s *UpdateMigrationTaskResponseBody) SetMessage(v string) *UpdateMigrationTaskResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UpdateMigrationTaskResponseBody) SetRequestId(v string) *UpdateMigrationTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateMigrationTaskResponseBody) SetSuccess(v bool) *UpdateMigrationTaskResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateMigrationTaskResponseBodyData struct {
+	ClusterType             *string `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
+	GmtCreate               *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	GmtModified             *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	Id                      *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	OriginInstanceAddress   *string `json:"OriginInstanceAddress,omitempty" xml:"OriginInstanceAddress,omitempty"`
+	OriginInstanceName      *string `json:"OriginInstanceName,omitempty" xml:"OriginInstanceName,omitempty"`
+	OriginInstanceNamespace *string `json:"OriginInstanceNamespace,omitempty" xml:"OriginInstanceNamespace,omitempty"`
+	ProjectDesc             *string `json:"ProjectDesc,omitempty" xml:"ProjectDesc,omitempty"`
+	TargetClusterName       *string `json:"TargetClusterName,omitempty" xml:"TargetClusterName,omitempty"`
+	TargetClusterUrl        *string `json:"TargetClusterUrl,omitempty" xml:"TargetClusterUrl,omitempty"`
+	TargetInstanceId        *string `json:"TargetInstanceId,omitempty" xml:"TargetInstanceId,omitempty"`
+	UserId                  *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+}
+
+func (s UpdateMigrationTaskResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateMigrationTaskResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateMigrationTaskResponseBodyData) SetClusterType(v string) *UpdateMigrationTaskResponseBodyData {
+	s.ClusterType = &v
+	return s
+}
+
+func (s *UpdateMigrationTaskResponseBodyData) SetGmtCreate(v string) *UpdateMigrationTaskResponseBodyData {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *UpdateMigrationTaskResponseBodyData) SetGmtModified(v string) *UpdateMigrationTaskResponseBodyData {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *UpdateMigrationTaskResponseBodyData) SetId(v string) *UpdateMigrationTaskResponseBodyData {
+	s.Id = &v
+	return s
+}
+
+func (s *UpdateMigrationTaskResponseBodyData) SetOriginInstanceAddress(v string) *UpdateMigrationTaskResponseBodyData {
+	s.OriginInstanceAddress = &v
+	return s
+}
+
+func (s *UpdateMigrationTaskResponseBodyData) SetOriginInstanceName(v string) *UpdateMigrationTaskResponseBodyData {
+	s.OriginInstanceName = &v
+	return s
+}
+
+func (s *UpdateMigrationTaskResponseBodyData) SetOriginInstanceNamespace(v string) *UpdateMigrationTaskResponseBodyData {
+	s.OriginInstanceNamespace = &v
+	return s
+}
+
+func (s *UpdateMigrationTaskResponseBodyData) SetProjectDesc(v string) *UpdateMigrationTaskResponseBodyData {
+	s.ProjectDesc = &v
+	return s
+}
+
+func (s *UpdateMigrationTaskResponseBodyData) SetTargetClusterName(v string) *UpdateMigrationTaskResponseBodyData {
+	s.TargetClusterName = &v
+	return s
+}
+
+func (s *UpdateMigrationTaskResponseBodyData) SetTargetClusterUrl(v string) *UpdateMigrationTaskResponseBodyData {
+	s.TargetClusterUrl = &v
+	return s
+}
+
+func (s *UpdateMigrationTaskResponseBodyData) SetTargetInstanceId(v string) *UpdateMigrationTaskResponseBodyData {
+	s.TargetInstanceId = &v
+	return s
+}
+
+func (s *UpdateMigrationTaskResponseBodyData) SetUserId(v string) *UpdateMigrationTaskResponseBodyData {
+	s.UserId = &v
+	return s
+}
+
+type UpdateMigrationTaskResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateMigrationTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateMigrationTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateMigrationTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateMigrationTaskResponse) SetHeaders(v map[string]*string) *UpdateMigrationTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateMigrationTaskResponse) SetStatusCode(v int32) *UpdateMigrationTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateMigrationTaskResponse) SetBody(v *UpdateMigrationTaskResponseBody) *UpdateMigrationTaskResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateNacosClusterRequest struct {
 	// The language of the response. Valid values:
 	//
@@ -35706,11 +36956,17 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
-func (client *Client) AddAuthResourceWithOptions(request *AddAuthResourceRequest, runtime *util.RuntimeOptions) (_result *AddAuthResourceResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) AddAuthResourceWithOptions(tmpReq *AddAuthResourceRequest, runtime *util.RuntimeOptions) (_result *AddAuthResourceResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
+	request := &AddAuthResourceShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.AuthResourceHeaderList)) {
+		request.AuthResourceHeaderListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.AuthResourceHeaderList, tea.String("AuthResourceHeaderList"), tea.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
 		query["AcceptLanguage"] = request.AcceptLanguage
@@ -35720,12 +36976,20 @@ func (client *Client) AddAuthResourceWithOptions(request *AddAuthResourceRequest
 		query["AuthId"] = request.AuthId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.AuthResourceHeaderListShrink)) {
+		query["AuthResourceHeaderList"] = request.AuthResourceHeaderListShrink
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.DomainId)) {
 		query["DomainId"] = request.DomainId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.GatewayUniqueId)) {
 		query["GatewayUniqueId"] = request.GatewayUniqueId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IgnoreCase)) {
+		query["IgnoreCase"] = request.IgnoreCase
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.MatchType)) {
@@ -38230,6 +39494,58 @@ func (client *Client) DeleteGatewaySlb(request *DeleteGatewaySlbRequest) (_resul
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteGatewaySlbResponse{}
 	_body, _err := client.DeleteGatewaySlbWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteMigrationTaskWithOptions(request *DeleteMigrationTaskRequest, runtime *util.RuntimeOptions) (_result *DeleteMigrationTaskResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		query["Id"] = request.Id
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RequestPars)) {
+		query["RequestPars"] = request.RequestPars
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteMigrationTask"),
+		Version:     tea.String("2019-05-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteMigrationTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteMigrationTask(request *DeleteMigrationTaskRequest) (_result *DeleteMigrationTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteMigrationTaskResponse{}
+	_body, _err := client.DeleteMigrationTaskWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -41051,6 +42367,46 @@ func (client *Client) ListClusters(request *ListClustersRequest) (_result *ListC
 	return _result, _err
 }
 
+func (client *Client) ListConfigTrackWithOptions(request *ListConfigTrackRequest, runtime *util.RuntimeOptions) (_result *ListConfigTrackResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListConfigTrack"),
+		Version:     tea.String("2019-05-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListConfigTrackResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListConfigTrack(request *ListConfigTrackRequest) (_result *ListConfigTrackResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListConfigTrackResponse{}
+	_body, _err := client.ListConfigTrackWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ListEngineNamespacesWithOptions(request *ListEngineNamespacesRequest, runtime *util.RuntimeOptions) (_result *ListEngineNamespacesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -41691,6 +43047,46 @@ func (client *Client) ListListenersByIp(request *ListListenersByIpRequest) (_res
 	return _result, _err
 }
 
+func (client *Client) ListMigrationTaskWithOptions(request *ListMigrationTaskRequest, runtime *util.RuntimeOptions) (_result *ListMigrationTaskResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListMigrationTask"),
+		Version:     tea.String("2019-05-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListMigrationTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListMigrationTask(request *ListMigrationTaskRequest) (_result *ListMigrationTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListMigrationTaskResponse{}
+	_body, _err := client.ListMigrationTaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 /**
  * > The current API operation is not provided in Nacos SDK. For information about Nacos SDK, see the [official Nacos documentation](https://nacos.io/zh-cn/docs/sdk.html).
  *
@@ -41870,6 +43266,46 @@ func (client *Client) ListNacosHistoryConfigs(request *ListNacosHistoryConfigsRe
 	runtime := &util.RuntimeOptions{}
 	_result = &ListNacosHistoryConfigsResponse{}
 	_body, _err := client.ListNacosHistoryConfigsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListNamingTrackWithOptions(request *ListNamingTrackRequest, runtime *util.RuntimeOptions) (_result *ListNamingTrackResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListNamingTrack"),
+		Version:     tea.String("2019-05-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListNamingTrackResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListNamingTrack(request *ListNamingTrackRequest) (_result *ListNamingTrackResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListNamingTrackResponse{}
+	_body, _err := client.ListNamingTrackWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -44976,6 +46412,90 @@ func (client *Client) UpdateMessageQueueRoute(request *UpdateMessageQueueRouteRe
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateMessageQueueRouteResponse{}
 	_body, _err := client.UpdateMessageQueueRouteWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateMigrationTaskWithOptions(request *UpdateMigrationTaskRequest, runtime *util.RuntimeOptions) (_result *UpdateMigrationTaskResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClusterType)) {
+		query["ClusterType"] = request.ClusterType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		query["Id"] = request.Id
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OriginInstanceAddress)) {
+		query["OriginInstanceAddress"] = request.OriginInstanceAddress
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OriginInstanceName)) {
+		query["OriginInstanceName"] = request.OriginInstanceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OriginInstanceNamespace)) {
+		query["OriginInstanceNamespace"] = request.OriginInstanceNamespace
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectDesc)) {
+		query["ProjectDesc"] = request.ProjectDesc
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RequestPars)) {
+		query["RequestPars"] = request.RequestPars
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetClusterName)) {
+		query["TargetClusterName"] = request.TargetClusterName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetClusterUrl)) {
+		query["TargetClusterUrl"] = request.TargetClusterUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetInstanceId)) {
+		query["TargetInstanceId"] = request.TargetInstanceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateMigrationTask"),
+		Version:     tea.String("2019-05-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateMigrationTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateMigrationTask(request *UpdateMigrationTaskRequest) (_result *UpdateMigrationTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateMigrationTaskResponse{}
+	_body, _err := client.UpdateMigrationTaskWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
