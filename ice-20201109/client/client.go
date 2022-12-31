@@ -234,6 +234,7 @@ func (s *AddEditingProjectMaterialsResponseBodyLiveMaterials) SetStreamName(v st
 }
 
 type AddEditingProjectMaterialsResponseBodyMediaInfos struct {
+	// FileInfos
 	FileInfoList   []*AddEditingProjectMaterialsResponseBodyMediaInfosFileInfoList `json:"FileInfoList,omitempty" xml:"FileInfoList,omitempty" type:"Repeated"`
 	MediaBasicInfo *AddEditingProjectMaterialsResponseBodyMediaInfosMediaBasicInfo `json:"MediaBasicInfo,omitempty" xml:"MediaBasicInfo,omitempty" type:"Struct"`
 	MediaId        *string                                                         `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
@@ -633,6 +634,7 @@ func (s *AddTemplateRequest) SetType(v string) *AddTemplateRequest {
 }
 
 type AddTemplateResponseBody struct {
+	// Id of the request
 	RequestId *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Template  *AddTemplateResponseBodyTemplate `json:"Template,omitempty" xml:"Template,omitempty" type:"Struct"`
 }
@@ -796,6 +798,7 @@ func (s *BatchGetMediaInfosResponseBody) SetRequestId(v string) *BatchGetMediaIn
 }
 
 type BatchGetMediaInfosResponseBodyMediaInfos struct {
+	// FileInfos
 	FileInfoList   []*BatchGetMediaInfosResponseBodyMediaInfosFileInfoList `json:"FileInfoList,omitempty" xml:"FileInfoList,omitempty" type:"Repeated"`
 	MediaBasicInfo *BatchGetMediaInfosResponseBodyMediaInfosMediaBasicInfo `json:"MediaBasicInfo,omitempty" xml:"MediaBasicInfo,omitempty" type:"Struct"`
 	MediaId        *string                                                 `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
@@ -919,13 +922,14 @@ func (s *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListFileBasicInfo) SetW
 }
 
 type BatchGetMediaInfosResponseBodyMediaInfosMediaBasicInfo struct {
-	BusinessType    *string `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
-	Category        *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	CoverURL        *string `json:"CoverURL,omitempty" xml:"CoverURL,omitempty"`
-	CreateTime      *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	DeletedTime     *string `json:"DeletedTime,omitempty" xml:"DeletedTime,omitempty"`
-	Description     *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	InputURL        *string `json:"InputURL,omitempty" xml:"InputURL,omitempty"`
+	BusinessType *string `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
+	Category     *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	CoverURL     *string `json:"CoverURL,omitempty" xml:"CoverURL,omitempty"`
+	CreateTime   *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	DeletedTime  *string `json:"DeletedTime,omitempty" xml:"DeletedTime,omitempty"`
+	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	InputURL     *string `json:"InputURL,omitempty" xml:"InputURL,omitempty"`
+	// MediaId
 	MediaId         *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
 	MediaTags       *string `json:"MediaTags,omitempty" xml:"MediaTags,omitempty"`
 	MediaType       *string `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
@@ -1428,8 +1432,9 @@ func (s *CreateEditingProjectRequest) SetTitle(v string) *CreateEditingProjectRe
 }
 
 type CreateEditingProjectResponseBody struct {
-	Project   *CreateEditingProjectResponseBodyProject `json:"Project,omitempty" xml:"Project,omitempty" type:"Struct"`
-	RequestId *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Project *CreateEditingProjectResponseBodyProject `json:"Project,omitempty" xml:"Project,omitempty" type:"Struct"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateEditingProjectResponseBody) String() string {
@@ -1599,7 +1604,9 @@ func (s *CreateEditingProjectResponse) SetBody(v *CreateEditingProjectResponseBo
 }
 
 type CreateLiveRecordTemplateRequest struct {
-	Name         *string                                        `json:"Name,omitempty" xml:"Name,omitempty"`
+	// 代表资源名称的资源属性字段
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// 录制格式
 	RecordFormat []*CreateLiveRecordTemplateRequestRecordFormat `json:"RecordFormat,omitempty" xml:"RecordFormat,omitempty" type:"Repeated"`
 }
 
@@ -1622,10 +1629,14 @@ func (s *CreateLiveRecordTemplateRequest) SetRecordFormat(v []*CreateLiveRecordT
 }
 
 type CreateLiveRecordTemplateRequestRecordFormat struct {
-	CycleDuration        *int32  `json:"CycleDuration,omitempty" xml:"CycleDuration,omitempty"`
-	Format               *string `json:"Format,omitempty" xml:"Format,omitempty"`
-	OssObjectPrefix      *string `json:"OssObjectPrefix,omitempty" xml:"OssObjectPrefix,omitempty"`
-	SliceDuration        *int32  `json:"SliceDuration,omitempty" xml:"SliceDuration,omitempty"`
+	CycleDuration *int32 `json:"CycleDuration,omitempty" xml:"CycleDuration,omitempty"`
+	// 格式
+	Format *string `json:"Format,omitempty" xml:"Format,omitempty"`
+	// Oss对象名，不包含后缀
+	OssObjectPrefix *string `json:"OssObjectPrefix,omitempty" xml:"OssObjectPrefix,omitempty"`
+	// 切片时长
+	SliceDuration *int32 `json:"SliceDuration,omitempty" xml:"SliceDuration,omitempty"`
+	// 切片Oss对象名，不包含后缀
 	SliceOssObjectPrefix *string `json:"SliceOssObjectPrefix,omitempty" xml:"SliceOssObjectPrefix,omitempty"`
 }
 
@@ -1663,7 +1674,9 @@ func (s *CreateLiveRecordTemplateRequestRecordFormat) SetSliceOssObjectPrefix(v 
 }
 
 type CreateLiveRecordTemplateShrinkRequest struct {
-	Name               *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// 代表资源名称的资源属性字段
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// 录制格式
 	RecordFormatShrink *string `json:"RecordFormat,omitempty" xml:"RecordFormat,omitempty"`
 }
 
@@ -1686,7 +1699,8 @@ func (s *CreateLiveRecordTemplateShrinkRequest) SetRecordFormatShrink(v string) 
 }
 
 type CreateLiveRecordTemplateResponseBody struct {
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// 代表资源一级ID的资源属性字段
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 }
 
@@ -2721,7 +2735,8 @@ func (s *DeleteLiveRecordFilesRequest) SetRemoveFile(v bool) *DeleteLiveRecordFi
 type DeleteLiveRecordFilesResponseBody struct {
 	DeleteFileInfoList []*DeleteLiveRecordFilesResponseBodyDeleteFileInfoList `json:"DeleteFileInfoList,omitempty" xml:"DeleteFileInfoList,omitempty" type:"Repeated"`
 	Message            *string                                                `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId          *string                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DeleteLiveRecordFilesResponseBody) String() string {
@@ -2806,6 +2821,7 @@ func (s *DeleteLiveRecordFilesResponse) SetBody(v *DeleteLiveRecordFilesResponse
 }
 
 type DeleteLiveRecordTemplateRequest struct {
+	// 代表资源一级ID的资源属性字段
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 }
 
@@ -3451,6 +3467,7 @@ func (s *DeleteSmartJobRequest) SetJobId(v string) *DeleteSmartJobRequest {
 }
 
 type DeleteSmartJobResponseBody struct {
+	// RequestId
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3699,8 +3716,9 @@ func (s *DescribeMeterIceEditUsageRequest) SetStartTs(v int64) *DescribeMeterIce
 }
 
 type DescribeMeterIceEditUsageResponseBody struct {
-	Data      []*DescribeMeterIceEditUsageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	RequestId *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data []*DescribeMeterIceEditUsageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// Id
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeMeterIceEditUsageResponseBody) String() string {
@@ -3815,8 +3833,9 @@ func (s *DescribeMeterIceLiveMediaConvertUsageRequest) SetStartTs(v int64) *Desc
 }
 
 type DescribeMeterIceLiveMediaConvertUsageResponseBody struct {
-	Data      []*DescribeMeterIceLiveMediaConvertUsageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	RequestId *string                                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data []*DescribeMeterIceLiveMediaConvertUsageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// Id
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeMeterIceLiveMediaConvertUsageResponseBody) String() string {
@@ -3931,8 +3950,9 @@ func (s *DescribeMeterIceMediaConvertUHDUsageRequest) SetStartTs(v int64) *Descr
 }
 
 type DescribeMeterIceMediaConvertUHDUsageResponseBody struct {
-	Data      []*DescribeMeterIceMediaConvertUHDUsageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	RequestId *string                                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data []*DescribeMeterIceMediaConvertUHDUsageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// Id
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeMeterIceMediaConvertUHDUsageResponseBody) String() string {
@@ -4047,8 +4067,9 @@ func (s *DescribeMeterIceMediaConvertUsageRequest) SetStartTs(v int64) *Describe
 }
 
 type DescribeMeterIceMediaConvertUsageResponseBody struct {
-	Data      []*DescribeMeterIceMediaConvertUsageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	RequestId *string                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data []*DescribeMeterIceMediaConvertUsageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// Id
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeMeterIceMediaConvertUsageResponseBody) String() string {
@@ -4163,8 +4184,9 @@ func (s *DescribeMeterIceMpsAiUsageRequest) SetStartTs(v int64) *DescribeMeterIc
 }
 
 type DescribeMeterIceMpsAiUsageResponseBody struct {
-	Data      []*DescribeMeterIceMpsAiUsageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	RequestId *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data []*DescribeMeterIceMpsAiUsageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// Id
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeMeterIceMpsAiUsageResponseBody) String() string {
@@ -7482,9 +7504,12 @@ func (s *GetDynamicImageJobResponseBodyDynamicImageJobInput) SetType(v string) *
 }
 
 type GetDynamicImageJobResponseBodyDynamicImageJobInputOssFile struct {
-	Bucket   *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
+	// OSS Bucket
+	Bucket *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
+	// OSS Location
 	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
-	Object   *string `json:"Object,omitempty" xml:"Object,omitempty"`
+	// OSS Object
+	Object *string `json:"Object,omitempty" xml:"Object,omitempty"`
 }
 
 func (s GetDynamicImageJobResponseBodyDynamicImageJobInputOssFile) String() string {
@@ -7540,9 +7565,12 @@ func (s *GetDynamicImageJobResponseBodyDynamicImageJobOutput) SetType(v string) 
 }
 
 type GetDynamicImageJobResponseBodyDynamicImageJobOutputOssFile struct {
-	Bucket   *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
+	// OSS Bucket
+	Bucket *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
+	// OSS Location
 	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
-	Object   *string `json:"Object,omitempty" xml:"Object,omitempty"`
+	// OSS Object
+	Object *string `json:"Object,omitempty" xml:"Object,omitempty"`
 }
 
 func (s GetDynamicImageJobResponseBodyDynamicImageJobOutputOssFile) String() string {
@@ -7598,7 +7626,8 @@ func (s *GetDynamicImageJobResponse) SetBody(v *GetDynamicImageJobResponseBody) 
 }
 
 type GetEditingProjectRequest struct {
-	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	ProjectId     *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	RequestSource *string `json:"RequestSource,omitempty" xml:"RequestSource,omitempty"`
 }
 
 func (s GetEditingProjectRequest) String() string {
@@ -7611,6 +7640,11 @@ func (s GetEditingProjectRequest) GoString() string {
 
 func (s *GetEditingProjectRequest) SetProjectId(v string) *GetEditingProjectRequest {
 	s.ProjectId = &v
+	return s
+}
+
+func (s *GetEditingProjectRequest) SetRequestSource(v string) *GetEditingProjectRequest {
+	s.RequestSource = &v
 	return s
 }
 
@@ -7638,23 +7672,25 @@ func (s *GetEditingProjectResponseBody) SetRequestId(v string) *GetEditingProjec
 }
 
 type GetEditingProjectResponseBodyProject struct {
-	BusinessConfig *string `json:"BusinessConfig,omitempty" xml:"BusinessConfig,omitempty"`
-	BusinessStatus *string `json:"BusinessStatus,omitempty" xml:"BusinessStatus,omitempty"`
-	ClipsParam     *string `json:"ClipsParam,omitempty" xml:"ClipsParam,omitempty"`
-	CoverURL       *string `json:"CoverURL,omitempty" xml:"CoverURL,omitempty"`
-	CreateSource   *string `json:"CreateSource,omitempty" xml:"CreateSource,omitempty"`
-	CreateTime     *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Description    *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Duration       *int64  `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	ModifiedSource *string `json:"ModifiedSource,omitempty" xml:"ModifiedSource,omitempty"`
-	ModifiedTime   *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
-	ProjectId      *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	ProjectType    *string `json:"ProjectType,omitempty" xml:"ProjectType,omitempty"`
-	Status         *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	TemplateId     *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	TemplateType   *string `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
-	Timeline       *string `json:"Timeline,omitempty" xml:"Timeline,omitempty"`
-	Title          *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	BusinessConfig              *string `json:"BusinessConfig,omitempty" xml:"BusinessConfig,omitempty"`
+	BusinessStatus              *string `json:"BusinessStatus,omitempty" xml:"BusinessStatus,omitempty"`
+	ClipsParam                  *string `json:"ClipsParam,omitempty" xml:"ClipsParam,omitempty"`
+	CoverURL                    *string `json:"CoverURL,omitempty" xml:"CoverURL,omitempty"`
+	CreateSource                *string `json:"CreateSource,omitempty" xml:"CreateSource,omitempty"`
+	CreateTime                  *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Description                 *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Duration                    *int64  `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	ModifiedSource              *string `json:"ModifiedSource,omitempty" xml:"ModifiedSource,omitempty"`
+	ModifiedTime                *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	ProjectId                   *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	ProjectType                 *string `json:"ProjectType,omitempty" xml:"ProjectType,omitempty"`
+	Status                      *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	TemplateId                  *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	TemplateType                *string `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
+	Timeline                    *string `json:"Timeline,omitempty" xml:"Timeline,omitempty"`
+	TimelineConvertErrorMessage *string `json:"TimelineConvertErrorMessage,omitempty" xml:"TimelineConvertErrorMessage,omitempty"`
+	TimelineConvertStatus       *string `json:"TimelineConvertStatus,omitempty" xml:"TimelineConvertStatus,omitempty"`
+	Title                       *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 
 func (s GetEditingProjectResponseBodyProject) String() string {
@@ -7742,6 +7778,16 @@ func (s *GetEditingProjectResponseBodyProject) SetTemplateType(v string) *GetEdi
 
 func (s *GetEditingProjectResponseBodyProject) SetTimeline(v string) *GetEditingProjectResponseBodyProject {
 	s.Timeline = &v
+	return s
+}
+
+func (s *GetEditingProjectResponseBodyProject) SetTimelineConvertErrorMessage(v string) *GetEditingProjectResponseBodyProject {
+	s.TimelineConvertErrorMessage = &v
+	return s
+}
+
+func (s *GetEditingProjectResponseBodyProject) SetTimelineConvertStatus(v string) *GetEditingProjectResponseBodyProject {
+	s.TimelineConvertStatus = &v
 	return s
 }
 
@@ -7873,7 +7919,9 @@ func (s *GetEditingProjectMaterialsResponseBodyLiveMaterials) SetStreamName(v st
 }
 
 type GetEditingProjectMaterialsResponseBodyMediaInfos struct {
-	FileInfoList   []*GetEditingProjectMaterialsResponseBodyMediaInfosFileInfoList `json:"FileInfoList,omitempty" xml:"FileInfoList,omitempty" type:"Repeated"`
+	// FileInfos
+	FileInfoList []*GetEditingProjectMaterialsResponseBodyMediaInfosFileInfoList `json:"FileInfoList,omitempty" xml:"FileInfoList,omitempty" type:"Repeated"`
+	// BasicInfo
 	MediaBasicInfo *GetEditingProjectMaterialsResponseBodyMediaInfosMediaBasicInfo `json:"MediaBasicInfo,omitempty" xml:"MediaBasicInfo,omitempty" type:"Struct"`
 	MediaId        *string                                                         `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
 }
@@ -7996,13 +8044,14 @@ func (s *GetEditingProjectMaterialsResponseBodyMediaInfosFileInfoListFileBasicIn
 }
 
 type GetEditingProjectMaterialsResponseBodyMediaInfosMediaBasicInfo struct {
-	BusinessType    *string `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
-	Category        *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	CoverURL        *string `json:"CoverURL,omitempty" xml:"CoverURL,omitempty"`
-	CreateTime      *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	DeletedTime     *string `json:"DeletedTime,omitempty" xml:"DeletedTime,omitempty"`
-	Description     *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	InputURL        *string `json:"InputURL,omitempty" xml:"InputURL,omitempty"`
+	BusinessType *string `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
+	Category     *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	CoverURL     *string `json:"CoverURL,omitempty" xml:"CoverURL,omitempty"`
+	CreateTime   *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	DeletedTime  *string `json:"DeletedTime,omitempty" xml:"DeletedTime,omitempty"`
+	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	InputURL     *string `json:"InputURL,omitempty" xml:"InputURL,omitempty"`
+	// MediaId
 	MediaId         *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
 	MediaTags       *string `json:"MediaTags,omitempty" xml:"MediaTags,omitempty"`
 	MediaType       *string `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
@@ -8599,6 +8648,7 @@ func (s *GetLiveRecordJobRequest) SetJobId(v string) *GetLiveRecordJobRequest {
 }
 
 type GetLiveRecordJobResponseBody struct {
+	// 录制任务
 	RecordJob *GetLiveRecordJobResponseBodyRecordJob `json:"RecordJob,omitempty" xml:"RecordJob,omitempty" type:"Struct"`
 	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
@@ -8622,15 +8672,22 @@ func (s *GetLiveRecordJobResponseBody) SetRequestId(v string) *GetLiveRecordJobR
 }
 
 type GetLiveRecordJobResponseBodyRecordJob struct {
-	CreateTime   *string                                            `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	JobId        *string                                            `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	Name         *string                                            `json:"Name,omitempty" xml:"Name,omitempty"`
+	// 代表创建时间的资源属性字段
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// 代表资源名称的资源属性字段
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// 代表资源名称的资源属性字段
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// 回调地址
 	NotifyUrl    *string                                            `json:"NotifyUrl,omitempty" xml:"NotifyUrl,omitempty"`
 	RecordOutput *GetLiveRecordJobResponseBodyRecordJobRecordOutput `json:"RecordOutput,omitempty" xml:"RecordOutput,omitempty" type:"Struct"`
-	Status       *string                                            `json:"Status,omitempty" xml:"Status,omitempty"`
-	StreamInput  *GetLiveRecordJobResponseBodyRecordJobStreamInput  `json:"StreamInput,omitempty" xml:"StreamInput,omitempty" type:"Struct"`
-	TemplateId   *string                                            `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	TemplateName *string                                            `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	// 代表资源名称的资源属性字段
+	Status      *string                                           `json:"Status,omitempty" xml:"Status,omitempty"`
+	StreamInput *GetLiveRecordJobResponseBodyRecordJobStreamInput `json:"StreamInput,omitempty" xml:"StreamInput,omitempty" type:"Struct"`
+	// 录制模板ID
+	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// 录制模板ID
+	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
 }
 
 func (s GetLiveRecordJobResponseBodyRecordJob) String() string {
@@ -8791,6 +8848,7 @@ func (s *GetLiveRecordTemplateRequest) SetTemplateId(v string) *GetLiveRecordTem
 }
 
 type GetLiveRecordTemplateResponseBody struct {
+	// 录制模板
 	RecordTemplate *GetLiveRecordTemplateResponseBodyRecordTemplate `json:"RecordTemplate,omitempty" xml:"RecordTemplate,omitempty" type:"Struct"`
 	RequestId      *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
@@ -8814,12 +8872,18 @@ func (s *GetLiveRecordTemplateResponseBody) SetRequestId(v string) *GetLiveRecor
 }
 
 type GetLiveRecordTemplateResponseBodyRecordTemplate struct {
-	CreateTime       *string                                                            `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	LastModified     *string                                                            `json:"LastModified,omitempty" xml:"LastModified,omitempty"`
-	Name             *string                                                            `json:"Name,omitempty" xml:"Name,omitempty"`
+	// 代表创建时间的资源属性字段
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// 代表创建时间的资源属性字段
+	LastModified *string `json:"LastModified,omitempty" xml:"LastModified,omitempty"`
+	// 代表资源名称的资源属性字段
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// 录制格式
 	RecordFormatList []*GetLiveRecordTemplateResponseBodyRecordTemplateRecordFormatList `json:"RecordFormatList,omitempty" xml:"RecordFormatList,omitempty" type:"Repeated"`
-	TemplateId       *string                                                            `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	Type             *string                                                            `json:"Type,omitempty" xml:"Type,omitempty"`
+	// 代表资源一级ID的资源属性字段
+	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// 代表资源名称的资源属性字段
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s GetLiveRecordTemplateResponseBodyRecordTemplate) String() string {
@@ -8861,10 +8925,13 @@ func (s *GetLiveRecordTemplateResponseBodyRecordTemplate) SetType(v string) *Get
 }
 
 type GetLiveRecordTemplateResponseBodyRecordTemplateRecordFormatList struct {
-	CycleDuration        *int32  `json:"CycleDuration,omitempty" xml:"CycleDuration,omitempty"`
-	Format               *string `json:"Format,omitempty" xml:"Format,omitempty"`
-	OssObjectPrefix      *string `json:"OssObjectPrefix,omitempty" xml:"OssObjectPrefix,omitempty"`
-	SliceDuration        *int32  `json:"SliceDuration,omitempty" xml:"SliceDuration,omitempty"`
+	CycleDuration *int32 `json:"CycleDuration,omitempty" xml:"CycleDuration,omitempty"`
+	// 格式
+	Format *string `json:"Format,omitempty" xml:"Format,omitempty"`
+	// Oss对象名，不包含后缀
+	OssObjectPrefix *string `json:"OssObjectPrefix,omitempty" xml:"OssObjectPrefix,omitempty"`
+	SliceDuration   *int32  `json:"SliceDuration,omitempty" xml:"SliceDuration,omitempty"`
+	// 切片Oss对象名，不包含后缀
 	SliceOssObjectPrefix *string `json:"SliceOssObjectPrefix,omitempty" xml:"SliceOssObjectPrefix,omitempty"`
 }
 
@@ -9723,8 +9790,9 @@ func (s *GetMediaInfoResponseBody) SetRequestId(v string) *GetMediaInfoResponseB
 }
 
 type GetMediaInfoResponseBodyMediaInfo struct {
-	AiRoughData    *GetMediaInfoResponseBodyMediaInfoAiRoughData    `json:"AiRoughData,omitempty" xml:"AiRoughData,omitempty" type:"Struct"`
-	FileInfoList   []*GetMediaInfoResponseBodyMediaInfoFileInfoList `json:"FileInfoList,omitempty" xml:"FileInfoList,omitempty" type:"Repeated"`
+	AiRoughData  *GetMediaInfoResponseBodyMediaInfoAiRoughData    `json:"AiRoughData,omitempty" xml:"AiRoughData,omitempty" type:"Struct"`
+	FileInfoList []*GetMediaInfoResponseBodyMediaInfoFileInfoList `json:"FileInfoList,omitempty" xml:"FileInfoList,omitempty" type:"Repeated"`
+	// BasicInfo
 	MediaBasicInfo *GetMediaInfoResponseBodyMediaInfoMediaBasicInfo `json:"MediaBasicInfo,omitempty" xml:"MediaBasicInfo,omitempty" type:"Struct"`
 	MediaId        *string                                          `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
 }
@@ -9758,9 +9826,11 @@ func (s *GetMediaInfoResponseBodyMediaInfo) SetMediaId(v string) *GetMediaInfoRe
 }
 
 type GetMediaInfoResponseBodyMediaInfoAiRoughData struct {
-	Result   *string `json:"Result,omitempty" xml:"Result,omitempty"`
-	SaveType *string `json:"SaveType,omitempty" xml:"SaveType,omitempty"`
-	Status   *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	AiCategory *string `json:"AiCategory,omitempty" xml:"AiCategory,omitempty"`
+	AiJobId    *string `json:"AiJobId,omitempty" xml:"AiJobId,omitempty"`
+	Result     *string `json:"Result,omitempty" xml:"Result,omitempty"`
+	SaveType   *string `json:"SaveType,omitempty" xml:"SaveType,omitempty"`
+	Status     *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s GetMediaInfoResponseBodyMediaInfoAiRoughData) String() string {
@@ -9769,6 +9839,16 @@ func (s GetMediaInfoResponseBodyMediaInfoAiRoughData) String() string {
 
 func (s GetMediaInfoResponseBodyMediaInfoAiRoughData) GoString() string {
 	return s.String()
+}
+
+func (s *GetMediaInfoResponseBodyMediaInfoAiRoughData) SetAiCategory(v string) *GetMediaInfoResponseBodyMediaInfoAiRoughData {
+	s.AiCategory = &v
+	return s
+}
+
+func (s *GetMediaInfoResponseBodyMediaInfoAiRoughData) SetAiJobId(v string) *GetMediaInfoResponseBodyMediaInfoAiRoughData {
+	s.AiJobId = &v
+	return s
 }
 
 func (s *GetMediaInfoResponseBodyMediaInfoAiRoughData) SetResult(v string) *GetMediaInfoResponseBodyMediaInfoAiRoughData {
@@ -10266,6 +10346,7 @@ type GetMediaInfoResponseBodyMediaInfoMediaBasicInfo struct {
 	DeletedTime  *string `json:"DeletedTime,omitempty" xml:"DeletedTime,omitempty"`
 	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	InputURL     *string `json:"InputURL,omitempty" xml:"InputURL,omitempty"`
+	// MediaId
 	MediaId      *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
 	MediaTags    *string `json:"MediaTags,omitempty" xml:"MediaTags,omitempty"`
 	MediaType    *string `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
@@ -10439,6 +10520,7 @@ func (s *GetMediaInfoJobRequest) SetJobId(v string) *GetMediaInfoJobRequest {
 }
 
 type GetMediaInfoJobResponseBody struct {
+	// MediaInfoJobDTO
 	MediaInfoJob *GetMediaInfoJobResponseBodyMediaInfoJob `json:"MediaInfoJob,omitempty" xml:"MediaInfoJob,omitempty" type:"Struct"`
 	RequestId    *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
@@ -11630,6 +11712,7 @@ type GetPlayInfoResponseBodyPlayInfoList struct {
 	Fps               *string `json:"Fps,omitempty" xml:"Fps,omitempty"`
 	HDRType           *string `json:"HDRType,omitempty" xml:"HDRType,omitempty"`
 	Height            *int64  `json:"Height,omitempty" xml:"Height,omitempty"`
+	JobId             *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	ModificationTime  *string `json:"ModificationTime,omitempty" xml:"ModificationTime,omitempty"`
 	NarrowBandType    *string `json:"NarrowBandType,omitempty" xml:"NarrowBandType,omitempty"`
 	PlayURL           *string `json:"PlayURL,omitempty" xml:"PlayURL,omitempty"`
@@ -11707,6 +11790,11 @@ func (s *GetPlayInfoResponseBodyPlayInfoList) SetHDRType(v string) *GetPlayInfoR
 
 func (s *GetPlayInfoResponseBodyPlayInfoList) SetHeight(v int64) *GetPlayInfoResponseBodyPlayInfoList {
 	s.Height = &v
+	return s
+}
+
+func (s *GetPlayInfoResponseBodyPlayInfoList) SetJobId(v string) *GetPlayInfoResponseBodyPlayInfoList {
+	s.JobId = &v
 	return s
 }
 
@@ -11808,7 +11896,8 @@ func (s *GetPublicMediaInfoRequest) SetMediaId(v string) *GetPublicMediaInfoRequ
 
 type GetPublicMediaInfoResponseBody struct {
 	MediaInfo *GetPublicMediaInfoResponseBodyMediaInfo `json:"MediaInfo,omitempty" xml:"MediaInfo,omitempty" type:"Struct"`
-	RequestId *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// RequestId
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetPublicMediaInfoResponseBody) String() string {
@@ -11831,9 +11920,11 @@ func (s *GetPublicMediaInfoResponseBody) SetRequestId(v string) *GetPublicMediaI
 
 type GetPublicMediaInfoResponseBodyMediaInfo struct {
 	DynamicMetaData *GetPublicMediaInfoResponseBodyMediaInfoDynamicMetaData `json:"DynamicMetaData,omitempty" xml:"DynamicMetaData,omitempty" type:"Struct"`
-	FileInfoList    []*GetPublicMediaInfoResponseBodyMediaInfoFileInfoList  `json:"FileInfoList,omitempty" xml:"FileInfoList,omitempty" type:"Repeated"`
-	MediaBasicInfo  *GetPublicMediaInfoResponseBodyMediaInfoMediaBasicInfo  `json:"MediaBasicInfo,omitempty" xml:"MediaBasicInfo,omitempty" type:"Struct"`
-	MediaId         *string                                                 `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	// FileInfos
+	FileInfoList []*GetPublicMediaInfoResponseBodyMediaInfoFileInfoList `json:"FileInfoList,omitempty" xml:"FileInfoList,omitempty" type:"Repeated"`
+	// BasicInfo
+	MediaBasicInfo *GetPublicMediaInfoResponseBodyMediaInfoMediaBasicInfo `json:"MediaBasicInfo,omitempty" xml:"MediaBasicInfo,omitempty" type:"Struct"`
+	MediaId        *string                                                `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
 }
 
 func (s GetPublicMediaInfoResponseBodyMediaInfo) String() string {
@@ -12351,6 +12442,7 @@ type GetPublicMediaInfoResponseBodyMediaInfoMediaBasicInfo struct {
 	CreateTime   *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	DeletedTime  *string `json:"DeletedTime,omitempty" xml:"DeletedTime,omitempty"`
 	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// MediaId
 	MediaId      *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
 	MediaTags    *string `json:"MediaTags,omitempty" xml:"MediaTags,omitempty"`
 	MediaType    *string `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
@@ -12546,7 +12638,8 @@ type GetSmartHandleJobResponseBodySmartJobInfo struct {
 	ModifiedTime *string                                                `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
 	OutputConfig *GetSmartHandleJobResponseBodySmartJobInfoOutputConfig `json:"OutputConfig,omitempty" xml:"OutputConfig,omitempty" type:"Struct"`
 	Title        *string                                                `json:"Title,omitempty" xml:"Title,omitempty"`
-	UserId       *string                                                `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// userid。
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s GetSmartHandleJobResponseBodySmartJobInfo) String() string {
@@ -12615,7 +12708,9 @@ func (s *GetSmartHandleJobResponseBodySmartJobInfoInputConfig) SetInputFile(v st
 }
 
 type GetSmartHandleJobResponseBodySmartJobInfoOutputConfig struct {
+	// OSS Bucket
 	Bucket *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
+	// OSS Object
 	Object *string `json:"Object,omitempty" xml:"Object,omitempty"`
 }
 
@@ -12861,9 +12956,12 @@ func (s *GetSnapshotJobResponseBodySnapshotJobInput) SetType(v string) *GetSnaps
 }
 
 type GetSnapshotJobResponseBodySnapshotJobInputOssFile struct {
-	Bucket   *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
+	// OSS Bucket
+	Bucket *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
+	// OSS Location
 	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
-	Object   *string `json:"Object,omitempty" xml:"Object,omitempty"`
+	// OSS Object
+	Object *string `json:"Object,omitempty" xml:"Object,omitempty"`
 }
 
 func (s GetSnapshotJobResponseBodySnapshotJobInputOssFile) String() string {
@@ -12919,9 +13017,12 @@ func (s *GetSnapshotJobResponseBodySnapshotJobOutput) SetType(v string) *GetSnap
 }
 
 type GetSnapshotJobResponseBodySnapshotJobOutputOssFile struct {
-	Bucket   *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
+	// OSS Bucket
+	Bucket *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
+	// OSS Location
 	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
-	Object   *string `json:"Object,omitempty" xml:"Object,omitempty"`
+	// OSS Object
+	Object *string `json:"Object,omitempty" xml:"Object,omitempty"`
 }
 
 func (s GetSnapshotJobResponseBodySnapshotJobOutputOssFile) String() string {
@@ -13404,7 +13505,8 @@ func (s *GetTemplateMaterialsRequest) SetTemplateId(v string) *GetTemplateMateri
 
 type GetTemplateMaterialsResponseBody struct {
 	MaterialUrls *string `json:"MaterialUrls,omitempty" xml:"MaterialUrls,omitempty"`
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetTemplateMaterialsResponseBody) String() string {
@@ -13472,7 +13574,8 @@ func (s *GetTranscodeJobRequest) SetParentJobId(v string) *GetTranscodeJobReques
 }
 
 type GetTranscodeJobResponseBody struct {
-	RequestId          *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// TranscodeParentJobWithSubJobDTO
 	TranscodeParentJob *GetTranscodeJobResponseBodyTranscodeParentJob `json:"TranscodeParentJob,omitempty" xml:"TranscodeParentJob,omitempty" type:"Struct"`
 }
 
@@ -16770,15 +16873,19 @@ func (s *ListLiveRecordJobsResponseBody) SetTotalCount(v int64) *ListLiveRecordJ
 }
 
 type ListLiveRecordJobsResponseBodyLiveRecordJobs struct {
-	CreateTime   *string                                                   `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	JobId        *string                                                   `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	Name         *string                                                   `json:"Name,omitempty" xml:"Name,omitempty"`
+	// 代表创建时间的资源属性字段
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	JobId      *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// 代表资源名称的资源属性字段
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// 回调地址
 	NotifyUrl    *string                                                   `json:"NotifyUrl,omitempty" xml:"NotifyUrl,omitempty"`
 	RecordOutput *ListLiveRecordJobsResponseBodyLiveRecordJobsRecordOutput `json:"RecordOutput,omitempty" xml:"RecordOutput,omitempty" type:"Struct"`
 	Status       *string                                                   `json:"Status,omitempty" xml:"Status,omitempty"`
 	StreamInput  *ListLiveRecordJobsResponseBodyLiveRecordJobsStreamInput  `json:"StreamInput,omitempty" xml:"StreamInput,omitempty" type:"Struct"`
-	TemplateId   *string                                                   `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	TemplateName *string                                                   `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	// 录制模板ID
+	TemplateId   *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
 }
 
 func (s ListLiveRecordJobsResponseBodyLiveRecordJobs) String() string {
@@ -17010,12 +17117,18 @@ func (s *ListLiveRecordTemplatesResponseBody) SetTotalCount(v int64) *ListLiveRe
 }
 
 type ListLiveRecordTemplatesResponseBodyRecordTemplateList struct {
-	CreateTime       *string                                                                  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	LastModified     *string                                                                  `json:"LastModified,omitempty" xml:"LastModified,omitempty"`
-	Name             *string                                                                  `json:"Name,omitempty" xml:"Name,omitempty"`
+	// 代表创建时间的资源属性字段
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// 最后修改时间
+	LastModified *string `json:"LastModified,omitempty" xml:"LastModified,omitempty"`
+	// 代表资源名称的资源属性字段
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// 录制格式
 	RecordFormatList []*ListLiveRecordTemplatesResponseBodyRecordTemplateListRecordFormatList `json:"RecordFormatList,omitempty" xml:"RecordFormatList,omitempty" type:"Repeated"`
-	TemplateId       *string                                                                  `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	Type             *string                                                                  `json:"Type,omitempty" xml:"Type,omitempty"`
+	// 代表资源一级ID的资源属性字段
+	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// 代表资源名称的资源属性字段
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s ListLiveRecordTemplatesResponseBodyRecordTemplateList) String() string {
@@ -17057,10 +17170,14 @@ func (s *ListLiveRecordTemplatesResponseBodyRecordTemplateList) SetType(v string
 }
 
 type ListLiveRecordTemplatesResponseBodyRecordTemplateListRecordFormatList struct {
-	CycleDuration        *int32  `json:"CycleDuration,omitempty" xml:"CycleDuration,omitempty"`
-	Format               *string `json:"Format,omitempty" xml:"Format,omitempty"`
-	OssObjectPrefix      *string `json:"OssObjectPrefix,omitempty" xml:"OssObjectPrefix,omitempty"`
-	SliceDuration        *int32  `json:"SliceDuration,omitempty" xml:"SliceDuration,omitempty"`
+	CycleDuration *int32 `json:"CycleDuration,omitempty" xml:"CycleDuration,omitempty"`
+	// 格式
+	Format *string `json:"Format,omitempty" xml:"Format,omitempty"`
+	// Oss对象名，不包含后缀
+	OssObjectPrefix *string `json:"OssObjectPrefix,omitempty" xml:"OssObjectPrefix,omitempty"`
+	// 切片时长
+	SliceDuration *int32 `json:"SliceDuration,omitempty" xml:"SliceDuration,omitempty"`
+	// 切片Oss对象名，不包含后缀
 	SliceOssObjectPrefix *string `json:"SliceOssObjectPrefix,omitempty" xml:"SliceOssObjectPrefix,omitempty"`
 }
 
@@ -17200,9 +17317,10 @@ type ListLiveSnapshotFilesResponseBodyFileList struct {
 	CreateTime      *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	CreateTimestamp *int64  `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
 	IsOverlay       *bool   `json:"IsOverlay,omitempty" xml:"IsOverlay,omitempty"`
-	OssBucket       *string `json:"OssBucket,omitempty" xml:"OssBucket,omitempty"`
-	OssEndpoint     *string `json:"OssEndpoint,omitempty" xml:"OssEndpoint,omitempty"`
-	OssObject       *string `json:"OssObject,omitempty" xml:"OssObject,omitempty"`
+	// OSS bucket。
+	OssBucket   *string `json:"OssBucket,omitempty" xml:"OssBucket,omitempty"`
+	OssEndpoint *string `json:"OssEndpoint,omitempty" xml:"OssEndpoint,omitempty"`
+	OssObject   *string `json:"OssObject,omitempty" xml:"OssObject,omitempty"`
 }
 
 func (s ListLiveSnapshotFilesResponseBodyFileList) String() string {
@@ -18292,7 +18410,9 @@ func (s *ListMediaBasicInfosResponseBody) SetTotalCount(v int64) *ListMediaBasic
 }
 
 type ListMediaBasicInfosResponseBodyMediaInfos struct {
-	FileInfoList   []*ListMediaBasicInfosResponseBodyMediaInfosFileInfoList `json:"FileInfoList,omitempty" xml:"FileInfoList,omitempty" type:"Repeated"`
+	// FileInfos
+	FileInfoList []*ListMediaBasicInfosResponseBodyMediaInfosFileInfoList `json:"FileInfoList,omitempty" xml:"FileInfoList,omitempty" type:"Repeated"`
+	// BasicInfo
 	MediaBasicInfo *ListMediaBasicInfosResponseBodyMediaInfosMediaBasicInfo `json:"MediaBasicInfo,omitempty" xml:"MediaBasicInfo,omitempty" type:"Struct"`
 	MediaId        *string                                                  `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
 }
@@ -19709,7 +19829,9 @@ func (s *ListPublicMediaBasicInfosResponseBody) SetTotalCount(v int64) *ListPubl
 }
 
 type ListPublicMediaBasicInfosResponseBodyMediaInfos struct {
-	FileInfoList   []*ListPublicMediaBasicInfosResponseBodyMediaInfosFileInfoList `json:"FileInfoList,omitempty" xml:"FileInfoList,omitempty" type:"Repeated"`
+	// FileInfos
+	FileInfoList []*ListPublicMediaBasicInfosResponseBodyMediaInfosFileInfoList `json:"FileInfoList,omitempty" xml:"FileInfoList,omitempty" type:"Repeated"`
+	// BasicInfo
 	MediaBasicInfo *ListPublicMediaBasicInfosResponseBodyMediaInfosMediaBasicInfo `json:"MediaBasicInfo,omitempty" xml:"MediaBasicInfo,omitempty" type:"Struct"`
 	MediaId        *string                                                        `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
 }
@@ -19832,13 +19954,14 @@ func (s *ListPublicMediaBasicInfosResponseBodyMediaInfosFileInfoListFileBasicInf
 }
 
 type ListPublicMediaBasicInfosResponseBodyMediaInfosMediaBasicInfo struct {
-	BusinessType    *string `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
-	Category        *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	CoverURL        *string `json:"CoverURL,omitempty" xml:"CoverURL,omitempty"`
-	CreateTime      *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	DeletedTime     *string `json:"DeletedTime,omitempty" xml:"DeletedTime,omitempty"`
-	Description     *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	InputURL        *string `json:"InputURL,omitempty" xml:"InputURL,omitempty"`
+	BusinessType *string `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
+	Category     *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	CoverURL     *string `json:"CoverURL,omitempty" xml:"CoverURL,omitempty"`
+	CreateTime   *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	DeletedTime  *string `json:"DeletedTime,omitempty" xml:"DeletedTime,omitempty"`
+	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	InputURL     *string `json:"InputURL,omitempty" xml:"InputURL,omitempty"`
+	// MediaId
 	MediaId         *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
 	MediaTags       *string `json:"MediaTags,omitempty" xml:"MediaTags,omitempty"`
 	MediaType       *string `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
@@ -20174,7 +20297,9 @@ func (s *ListSmartJobsResponseBodySmartJobListInputConfig) SetKeyword(v string) 
 }
 
 type ListSmartJobsResponseBodySmartJobListOutputConfig struct {
+	// OSS Bucket
 	Bucket *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
+	// OSS Object
 	Object *string `json:"Object,omitempty" xml:"Object,omitempty"`
 }
 
@@ -20736,6 +20861,7 @@ func (s *ListTemplatesResponseBody) SetTotalCount(v int32) *ListTemplatesRespons
 }
 
 type ListTemplatesResponseBodyTemplates struct {
+	// ClipsParam
 	ClipsParam         *string `json:"ClipsParam,omitempty" xml:"ClipsParam,omitempty"`
 	Config             *string `json:"Config,omitempty" xml:"Config,omitempty"`
 	CoverURL           *string `json:"CoverURL,omitempty" xml:"CoverURL,omitempty"`
@@ -24338,8 +24464,9 @@ func (s *SearchMediaResponseBody) SetTotal(v int64) *SearchMediaResponseBody {
 }
 
 type SearchMediaResponseBodyMediaInfoList struct {
-	AiData         *SearchMediaResponseBodyMediaInfoListAiData         `json:"AiData,omitempty" xml:"AiData,omitempty" type:"Struct"`
-	AiRoughData    *SearchMediaResponseBodyMediaInfoListAiRoughData    `json:"AiRoughData,omitempty" xml:"AiRoughData,omitempty" type:"Struct"`
+	AiData      *SearchMediaResponseBodyMediaInfoListAiData      `json:"AiData,omitempty" xml:"AiData,omitempty" type:"Struct"`
+	AiRoughData *SearchMediaResponseBodyMediaInfoListAiRoughData `json:"AiRoughData,omitempty" xml:"AiRoughData,omitempty" type:"Struct"`
+	// FileInfos。
 	FileInfoList   []*SearchMediaResponseBodyMediaInfoListFileInfoList `json:"FileInfoList,omitempty" xml:"FileInfoList,omitempty" type:"Repeated"`
 	MediaBasicInfo *SearchMediaResponseBodyMediaInfoListMediaBasicInfo `json:"MediaBasicInfo,omitempty" xml:"MediaBasicInfo,omitempty" type:"Struct"`
 	MediaId        *string                                             `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
@@ -24643,11 +24770,11 @@ func (s *SearchMediaResponseBodyMediaInfoListAiDataOcrInfo) SetTo(v float64) *Se
 }
 
 type SearchMediaResponseBodyMediaInfoListAiRoughData struct {
-	AiCategoryLevel1 *string `json:"AiCategoryLevel1,omitempty" xml:"AiCategoryLevel1,omitempty"`
-	AiJobId          *string `json:"AiJobId,omitempty" xml:"AiJobId,omitempty"`
-	Result           *string `json:"Result,omitempty" xml:"Result,omitempty"`
-	SaveType         *string `json:"SaveType,omitempty" xml:"SaveType,omitempty"`
-	Status           *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	AiCategory *string `json:"AiCategory,omitempty" xml:"AiCategory,omitempty"`
+	AiJobId    *string `json:"AiJobId,omitempty" xml:"AiJobId,omitempty"`
+	Result     *string `json:"Result,omitempty" xml:"Result,omitempty"`
+	SaveType   *string `json:"SaveType,omitempty" xml:"SaveType,omitempty"`
+	Status     *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s SearchMediaResponseBodyMediaInfoListAiRoughData) String() string {
@@ -24658,8 +24785,8 @@ func (s SearchMediaResponseBodyMediaInfoListAiRoughData) GoString() string {
 	return s.String()
 }
 
-func (s *SearchMediaResponseBodyMediaInfoListAiRoughData) SetAiCategoryLevel1(v string) *SearchMediaResponseBodyMediaInfoListAiRoughData {
-	s.AiCategoryLevel1 = &v
+func (s *SearchMediaResponseBodyMediaInfoListAiRoughData) SetAiCategory(v string) *SearchMediaResponseBodyMediaInfoListAiRoughData {
+	s.AiCategory = &v
 	return s
 }
 
@@ -25092,8 +25219,9 @@ func (s *SearchPublicMediaInfoResponseBodyPublicMediaInfos) SetRemainingAuthTime
 
 type SearchPublicMediaInfoResponseBodyPublicMediaInfosMediaInfo struct {
 	DynamicMetaData *SearchPublicMediaInfoResponseBodyPublicMediaInfosMediaInfoDynamicMetaData `json:"DynamicMetaData,omitempty" xml:"DynamicMetaData,omitempty" type:"Struct"`
-	MediaBasicInfo  *SearchPublicMediaInfoResponseBodyPublicMediaInfosMediaInfoMediaBasicInfo  `json:"MediaBasicInfo,omitempty" xml:"MediaBasicInfo,omitempty" type:"Struct"`
-	MediaId         *string                                                                    `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	// BasicInfo
+	MediaBasicInfo *SearchPublicMediaInfoResponseBodyPublicMediaInfosMediaInfoMediaBasicInfo `json:"MediaBasicInfo,omitempty" xml:"MediaBasicInfo,omitempty" type:"Struct"`
+	MediaId        *string                                                                   `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
 }
 
 func (s SearchPublicMediaInfoResponseBodyPublicMediaInfosMediaInfo) String() string {
@@ -25149,6 +25277,7 @@ type SearchPublicMediaInfoResponseBodyPublicMediaInfosMediaInfoMediaBasicInfo st
 	CreateTime   *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	DeletedTime  *string `json:"DeletedTime,omitempty" xml:"DeletedTime,omitempty"`
 	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// MediaId
 	MediaId      *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
 	MediaTags    *string `json:"MediaTags,omitempty" xml:"MediaTags,omitempty"`
 	MediaType    *string `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
@@ -26705,11 +26834,14 @@ func (s *SubmitLiveEditingJobResponse) SetBody(v *SubmitLiveEditingJobResponseBo
 }
 
 type SubmitLiveRecordJobRequest struct {
-	Name         *string                                 `json:"Name,omitempty" xml:"Name,omitempty"`
+	// 代表资源名称的资源属性字段
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// 回调地址
 	NotifyUrl    *string                                 `json:"NotifyUrl,omitempty" xml:"NotifyUrl,omitempty"`
 	RecordOutput *SubmitLiveRecordJobRequestRecordOutput `json:"RecordOutput,omitempty" xml:"RecordOutput,omitempty" type:"Struct"`
 	StreamInput  *SubmitLiveRecordJobRequestStreamInput  `json:"StreamInput,omitempty" xml:"StreamInput,omitempty" type:"Struct"`
-	TemplateId   *string                                 `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// 录制模板ID
+	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 }
 
 func (s SubmitLiveRecordJobRequest) String() string {
@@ -26798,11 +26930,14 @@ func (s *SubmitLiveRecordJobRequestStreamInput) SetUrl(v string) *SubmitLiveReco
 }
 
 type SubmitLiveRecordJobShrinkRequest struct {
-	Name               *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// 代表资源名称的资源属性字段
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// 回调地址
 	NotifyUrl          *string `json:"NotifyUrl,omitempty" xml:"NotifyUrl,omitempty"`
 	RecordOutputShrink *string `json:"RecordOutput,omitempty" xml:"RecordOutput,omitempty"`
 	StreamInputShrink  *string `json:"StreamInput,omitempty" xml:"StreamInput,omitempty"`
-	TemplateId         *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// 录制模板ID
+	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 }
 
 func (s SubmitLiveRecordJobShrinkRequest) String() string {
@@ -27648,6 +27783,7 @@ func (s *SubmitMediaInfoJobShrinkRequest) SetUserData(v string) *SubmitMediaInfo
 }
 
 type SubmitMediaInfoJobResponseBody struct {
+	// MediaInfoJobDTO
 	MediaInfoJob *SubmitMediaInfoJobResponseBodyMediaInfoJob `json:"MediaInfoJob,omitempty" xml:"MediaInfoJob,omitempty" type:"Struct"`
 	RequestId    *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
@@ -28564,12 +28700,14 @@ func (s *SubmitPackageJobResponse) SetBody(v *SubmitPackageJobResponseBody) *Sub
 }
 
 type SubmitSmarttagJobRequest struct {
-	Content        *string                                 `json:"Content,omitempty" xml:"Content,omitempty"`
-	ContentAddr    *string                                 `json:"ContentAddr,omitempty" xml:"ContentAddr,omitempty"`
-	ContentType    *string                                 `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
-	Input          *SubmitSmarttagJobRequestInput          `json:"Input,omitempty" xml:"Input,omitempty" type:"Struct"`
-	NotifyUrl      *string                                 `json:"NotifyUrl,omitempty" xml:"NotifyUrl,omitempty"`
-	Params         *string                                 `json:"Params,omitempty" xml:"Params,omitempty"`
+	Content     *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	ContentAddr *string `json:"ContentAddr,omitempty" xml:"ContentAddr,omitempty"`
+	ContentType *string `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
+	// input
+	Input     *SubmitSmarttagJobRequestInput `json:"Input,omitempty" xml:"Input,omitempty" type:"Struct"`
+	NotifyUrl *string                        `json:"NotifyUrl,omitempty" xml:"NotifyUrl,omitempty"`
+	Params    *string                        `json:"Params,omitempty" xml:"Params,omitempty"`
+	// scheduleConfig
 	ScheduleConfig *SubmitSmarttagJobRequestScheduleConfig `json:"ScheduleConfig,omitempty" xml:"ScheduleConfig,omitempty" type:"Struct"`
 	TemplateId     *string                                 `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 	Title          *string                                 `json:"Title,omitempty" xml:"Title,omitempty"`
@@ -28681,12 +28819,14 @@ func (s *SubmitSmarttagJobRequestScheduleConfig) SetPriority(v string) *SubmitSm
 }
 
 type SubmitSmarttagJobShrinkRequest struct {
-	Content              *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	ContentAddr          *string `json:"ContentAddr,omitempty" xml:"ContentAddr,omitempty"`
-	ContentType          *string `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
-	InputShrink          *string `json:"Input,omitempty" xml:"Input,omitempty"`
-	NotifyUrl            *string `json:"NotifyUrl,omitempty" xml:"NotifyUrl,omitempty"`
-	Params               *string `json:"Params,omitempty" xml:"Params,omitempty"`
+	Content     *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	ContentAddr *string `json:"ContentAddr,omitempty" xml:"ContentAddr,omitempty"`
+	ContentType *string `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
+	// input
+	InputShrink *string `json:"Input,omitempty" xml:"Input,omitempty"`
+	NotifyUrl   *string `json:"NotifyUrl,omitempty" xml:"NotifyUrl,omitempty"`
+	Params      *string `json:"Params,omitempty" xml:"Params,omitempty"`
+	// scheduleConfig
 	ScheduleConfigShrink *string `json:"ScheduleConfig,omitempty" xml:"ScheduleConfig,omitempty"`
 	TemplateId           *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 	Title                *string `json:"Title,omitempty" xml:"Title,omitempty"`
@@ -29393,6 +29533,7 @@ func (s *SubmitSyncMediaInfoJobShrinkRequest) SetUserData(v string) *SubmitSyncM
 }
 
 type SubmitSyncMediaInfoJobResponseBody struct {
+	// MediaInfoJobDTO
 	MediaInfoJob *SubmitSyncMediaInfoJobResponseBodyMediaInfoJob `json:"MediaInfoJob,omitempty" xml:"MediaInfoJob,omitempty" type:"Struct"`
 	RequestId    *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
@@ -30864,7 +31005,8 @@ func (s *SubmitTranscodeJobShrinkRequest) SetUserData(v string) *SubmitTranscode
 }
 
 type SubmitTranscodeJobResponseBody struct {
-	RequestId          *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// TranscodeParentJobWithSubJobDTO
 	TranscodeParentJob *SubmitTranscodeJobResponseBodyTranscodeParentJob `json:"TranscodeParentJob,omitempty" xml:"TranscodeParentJob,omitempty" type:"Struct"`
 }
 
@@ -33374,9 +33516,12 @@ func (s *UpdateEditingProjectResponse) SetBody(v *UpdateEditingProjectResponseBo
 }
 
 type UpdateLiveRecordTemplateRequest struct {
-	Name         *string                                        `json:"Name,omitempty" xml:"Name,omitempty"`
+	// 代表资源名称的资源属性字段
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// 录制格式
 	RecordFormat []*UpdateLiveRecordTemplateRequestRecordFormat `json:"RecordFormat,omitempty" xml:"RecordFormat,omitempty" type:"Repeated"`
-	TemplateId   *string                                        `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// 代表资源一级ID的资源属性字段
+	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 }
 
 func (s UpdateLiveRecordTemplateRequest) String() string {
@@ -33403,10 +33548,14 @@ func (s *UpdateLiveRecordTemplateRequest) SetTemplateId(v string) *UpdateLiveRec
 }
 
 type UpdateLiveRecordTemplateRequestRecordFormat struct {
-	CycleDuration        *int32  `json:"CycleDuration,omitempty" xml:"CycleDuration,omitempty"`
-	Format               *string `json:"Format,omitempty" xml:"Format,omitempty"`
-	OssObjectPrefix      *string `json:"OssObjectPrefix,omitempty" xml:"OssObjectPrefix,omitempty"`
-	SliceDuration        *int32  `json:"SliceDuration,omitempty" xml:"SliceDuration,omitempty"`
+	CycleDuration *int32 `json:"CycleDuration,omitempty" xml:"CycleDuration,omitempty"`
+	// 格式
+	Format *string `json:"Format,omitempty" xml:"Format,omitempty"`
+	// Oss对象名，不包含后缀
+	OssObjectPrefix *string `json:"OssObjectPrefix,omitempty" xml:"OssObjectPrefix,omitempty"`
+	// 切片时长
+	SliceDuration *int32 `json:"SliceDuration,omitempty" xml:"SliceDuration,omitempty"`
+	// 切片Oss对象名，不包含后缀
 	SliceOssObjectPrefix *string `json:"SliceOssObjectPrefix,omitempty" xml:"SliceOssObjectPrefix,omitempty"`
 }
 
@@ -33444,9 +33593,12 @@ func (s *UpdateLiveRecordTemplateRequestRecordFormat) SetSliceOssObjectPrefix(v 
 }
 
 type UpdateLiveRecordTemplateShrinkRequest struct {
-	Name               *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// 代表资源名称的资源属性字段
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// 录制格式
 	RecordFormatShrink *string `json:"RecordFormat,omitempty" xml:"RecordFormat,omitempty"`
-	TemplateId         *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// 代表资源一级ID的资源属性字段
+	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 }
 
 func (s UpdateLiveRecordTemplateShrinkRequest) String() string {
@@ -33473,6 +33625,7 @@ func (s *UpdateLiveRecordTemplateShrinkRequest) SetTemplateId(v string) *UpdateL
 }
 
 type UpdateLiveRecordTemplateResponseBody struct {
+	// 代表资源一级ID的资源属性字段
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -35393,8 +35546,8 @@ func (client *Client) CreateLiveTranscodeTemplateWithOptions(tmpReq *CreateLiveT
 	}
 	request := &CreateLiveTranscodeTemplateShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.TemplateConfig))) {
-		request.TemplateConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.TemplateConfig), tea.String("TemplateConfig"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.TemplateConfig)) {
+		request.TemplateConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TemplateConfig, tea.String("TemplateConfig"), tea.String("json"))
 	}
 
 	query := map[string]interface{}{}
@@ -37899,6 +38052,10 @@ func (client *Client) GetEditingProjectWithOptions(request *GetEditingProjectReq
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
 		query["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RequestSource)) {
+		query["RequestSource"] = request.RequestSource
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -41371,20 +41528,20 @@ func (client *Client) SubmitDynamicImageJobWithOptions(tmpReq *SubmitDynamicImag
 	}
 	request := &SubmitDynamicImageJobShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.Input))) {
-		request.InputShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.Input), tea.String("Input"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.Input)) {
+		request.InputShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Input, tea.String("Input"), tea.String("json"))
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.Output))) {
-		request.OutputShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.Output), tea.String("Output"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.Output)) {
+		request.OutputShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Output, tea.String("Output"), tea.String("json"))
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.ScheduleConfig))) {
-		request.ScheduleConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.ScheduleConfig), tea.String("ScheduleConfig"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.ScheduleConfig)) {
+		request.ScheduleConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ScheduleConfig, tea.String("ScheduleConfig"), tea.String("json"))
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.TemplateConfig))) {
-		request.TemplateConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.TemplateConfig), tea.String("TemplateConfig"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.TemplateConfig)) {
+		request.TemplateConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TemplateConfig, tea.String("TemplateConfig"), tea.String("json"))
 	}
 
 	query := map[string]interface{}{}
@@ -41453,16 +41610,16 @@ func (client *Client) SubmitIProductionJobWithOptions(tmpReq *SubmitIProductionJ
 	}
 	request := &SubmitIProductionJobShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.Input))) {
-		request.InputShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.Input), tea.String("Input"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.Input)) {
+		request.InputShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Input, tea.String("Input"), tea.String("json"))
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.Output))) {
-		request.OutputShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.Output), tea.String("Output"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.Output)) {
+		request.OutputShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Output, tea.String("Output"), tea.String("json"))
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.ScheduleConfig))) {
-		request.ScheduleConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.ScheduleConfig), tea.String("ScheduleConfig"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.ScheduleConfig)) {
+		request.ScheduleConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ScheduleConfig, tea.String("ScheduleConfig"), tea.String("json"))
 	}
 
 	query := map[string]interface{}{}
@@ -41607,12 +41764,12 @@ func (client *Client) SubmitLiveRecordJobWithOptions(tmpReq *SubmitLiveRecordJob
 	}
 	request := &SubmitLiveRecordJobShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.RecordOutput))) {
-		request.RecordOutputShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.RecordOutput), tea.String("RecordOutput"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.RecordOutput)) {
+		request.RecordOutputShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RecordOutput, tea.String("RecordOutput"), tea.String("json"))
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.StreamInput))) {
-		request.StreamInputShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.StreamInput), tea.String("StreamInput"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.StreamInput)) {
+		request.StreamInputShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.StreamInput, tea.String("StreamInput"), tea.String("json"))
 	}
 
 	body := map[string]interface{}{}
@@ -41677,12 +41834,12 @@ func (client *Client) SubmitLiveSnapshotJobWithOptions(tmpReq *SubmitLiveSnapsho
 	}
 	request := &SubmitLiveSnapshotJobShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.SnapshotOutput))) {
-		request.SnapshotOutputShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.SnapshotOutput), tea.String("SnapshotOutput"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.SnapshotOutput)) {
+		request.SnapshotOutputShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SnapshotOutput, tea.String("SnapshotOutput"), tea.String("json"))
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.StreamInput))) {
-		request.StreamInputShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.StreamInput), tea.String("StreamInput"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.StreamInput)) {
+		request.StreamInputShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.StreamInput, tea.String("StreamInput"), tea.String("json"))
 	}
 
 	body := map[string]interface{}{}
@@ -41747,16 +41904,16 @@ func (client *Client) SubmitLiveTranscodeJobWithOptions(tmpReq *SubmitLiveTransc
 	}
 	request := &SubmitLiveTranscodeJobShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.StreamInput))) {
-		request.StreamInputShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.StreamInput), tea.String("StreamInput"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.StreamInput)) {
+		request.StreamInputShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.StreamInput, tea.String("StreamInput"), tea.String("json"))
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.TimedConfig))) {
-		request.TimedConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.TimedConfig), tea.String("TimedConfig"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.TimedConfig)) {
+		request.TimedConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TimedConfig, tea.String("TimedConfig"), tea.String("json"))
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.TranscodeOutput))) {
-		request.TranscodeOutputShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.TranscodeOutput), tea.String("TranscodeOutput"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.TranscodeOutput)) {
+		request.TranscodeOutputShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TranscodeOutput, tea.String("TranscodeOutput"), tea.String("json"))
 	}
 
 	query := map[string]interface{}{}
@@ -41825,12 +41982,12 @@ func (client *Client) SubmitMediaCensorJobWithOptions(tmpReq *SubmitMediaCensorJ
 	}
 	request := &SubmitMediaCensorJobShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.Input))) {
-		request.InputShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.Input), tea.String("Input"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.Input)) {
+		request.InputShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Input, tea.String("Input"), tea.String("json"))
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.ScheduleConfig))) {
-		request.ScheduleConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.ScheduleConfig), tea.String("ScheduleConfig"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.ScheduleConfig)) {
+		request.ScheduleConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ScheduleConfig, tea.String("ScheduleConfig"), tea.String("json"))
 	}
 
 	query := map[string]interface{}{}
@@ -41915,12 +42072,12 @@ func (client *Client) SubmitMediaInfoJobWithOptions(tmpReq *SubmitMediaInfoJobRe
 	}
 	request := &SubmitMediaInfoJobShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.Input))) {
-		request.InputShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.Input), tea.String("Input"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.Input)) {
+		request.InputShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Input, tea.String("Input"), tea.String("json"))
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.ScheduleConfig))) {
-		request.ScheduleConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.ScheduleConfig), tea.String("ScheduleConfig"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.ScheduleConfig)) {
+		request.ScheduleConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ScheduleConfig, tea.String("ScheduleConfig"), tea.String("json"))
 	}
 
 	query := map[string]interface{}{}
@@ -42069,12 +42226,12 @@ func (client *Client) SubmitPackageJobWithOptions(tmpReq *SubmitPackageJobReques
 		request.InputsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Inputs, tea.String("Inputs"), tea.String("json"))
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.Output))) {
-		request.OutputShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.Output), tea.String("Output"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.Output)) {
+		request.OutputShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Output, tea.String("Output"), tea.String("json"))
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.ScheduleConfig))) {
-		request.ScheduleConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.ScheduleConfig), tea.String("ScheduleConfig"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.ScheduleConfig)) {
+		request.ScheduleConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ScheduleConfig, tea.String("ScheduleConfig"), tea.String("json"))
 	}
 
 	query := map[string]interface{}{}
@@ -42139,12 +42296,12 @@ func (client *Client) SubmitSmarttagJobWithOptions(tmpReq *SubmitSmarttagJobRequ
 	}
 	request := &SubmitSmarttagJobShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.Input))) {
-		request.InputShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.Input), tea.String("Input"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.Input)) {
+		request.InputShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Input, tea.String("Input"), tea.String("json"))
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.ScheduleConfig))) {
-		request.ScheduleConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.ScheduleConfig), tea.String("ScheduleConfig"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.ScheduleConfig)) {
+		request.ScheduleConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ScheduleConfig, tea.String("ScheduleConfig"), tea.String("json"))
 	}
 
 	query := map[string]interface{}{}
@@ -42229,20 +42386,20 @@ func (client *Client) SubmitSnapshotJobWithOptions(tmpReq *SubmitSnapshotJobRequ
 	}
 	request := &SubmitSnapshotJobShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.Input))) {
-		request.InputShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.Input), tea.String("Input"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.Input)) {
+		request.InputShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Input, tea.String("Input"), tea.String("json"))
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.Output))) {
-		request.OutputShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.Output), tea.String("Output"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.Output)) {
+		request.OutputShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Output, tea.String("Output"), tea.String("json"))
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.ScheduleConfig))) {
-		request.ScheduleConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.ScheduleConfig), tea.String("ScheduleConfig"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.ScheduleConfig)) {
+		request.ScheduleConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ScheduleConfig, tea.String("ScheduleConfig"), tea.String("json"))
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.TemplateConfig))) {
-		request.TemplateConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.TemplateConfig), tea.String("TemplateConfig"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.TemplateConfig)) {
+		request.TemplateConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TemplateConfig, tea.String("TemplateConfig"), tea.String("json"))
 	}
 
 	query := map[string]interface{}{}
@@ -42304,6 +42461,14 @@ func (client *Client) SubmitSnapshotJob(request *SubmitSnapshotJobRequest) (_res
 	return _result, _err
 }
 
+/**
+ * @deprecated
+ *
+ * @param request SubmitSubtitleProduceJobRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return SubmitSubtitleProduceJobResponse
+ */
+// Deprecated
 func (client *Client) SubmitSubtitleProduceJobWithOptions(request *SubmitSubtitleProduceJobRequest, runtime *util.RuntimeOptions) (_result *SubmitSubtitleProduceJobResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -42365,6 +42530,13 @@ func (client *Client) SubmitSubtitleProduceJobWithOptions(request *SubmitSubtitl
 	return _result, _err
 }
 
+/**
+ * @deprecated
+ *
+ * @param request SubmitSubtitleProduceJobRequest
+ * @return SubmitSubtitleProduceJobResponse
+ */
+// Deprecated
 func (client *Client) SubmitSubtitleProduceJob(request *SubmitSubtitleProduceJobRequest) (_result *SubmitSubtitleProduceJobResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SubmitSubtitleProduceJobResponse{}
@@ -42383,12 +42555,12 @@ func (client *Client) SubmitSyncMediaInfoJobWithOptions(tmpReq *SubmitSyncMediaI
 	}
 	request := &SubmitSyncMediaInfoJobShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.Input))) {
-		request.InputShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.Input), tea.String("Input"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.Input)) {
+		request.InputShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Input, tea.String("Input"), tea.String("json"))
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.ScheduleConfig))) {
-		request.ScheduleConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.ScheduleConfig), tea.String("ScheduleConfig"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.ScheduleConfig)) {
+		request.ScheduleConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ScheduleConfig, tea.String("ScheduleConfig"), tea.String("json"))
 	}
 
 	query := map[string]interface{}{}
@@ -42457,8 +42629,8 @@ func (client *Client) SubmitTranscodeJobWithOptions(tmpReq *SubmitTranscodeJobRe
 		request.OutputGroupShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.OutputGroup, tea.String("OutputGroup"), tea.String("json"))
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.ScheduleConfig))) {
-		request.ScheduleConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.ScheduleConfig), tea.String("ScheduleConfig"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.ScheduleConfig)) {
+		request.ScheduleConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ScheduleConfig, tea.String("ScheduleConfig"), tea.String("json"))
 	}
 
 	query := map[string]interface{}{}
@@ -42813,16 +42985,16 @@ func (client *Client) UpdateLiveTranscodeJobWithOptions(tmpReq *UpdateLiveTransc
 	}
 	request := &UpdateLiveTranscodeJobShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.StreamInput))) {
-		request.StreamInputShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.StreamInput), tea.String("StreamInput"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.StreamInput)) {
+		request.StreamInputShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.StreamInput, tea.String("StreamInput"), tea.String("json"))
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.TimedConfig))) {
-		request.TimedConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.TimedConfig), tea.String("TimedConfig"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.TimedConfig)) {
+		request.TimedConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TimedConfig, tea.String("TimedConfig"), tea.String("json"))
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.TranscodeOutput))) {
-		request.TranscodeOutputShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.TranscodeOutput), tea.String("TranscodeOutput"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.TranscodeOutput)) {
+		request.TranscodeOutputShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TranscodeOutput, tea.String("TranscodeOutput"), tea.String("json"))
 	}
 
 	query := map[string]interface{}{}
@@ -42887,8 +43059,8 @@ func (client *Client) UpdateLiveTranscodeTemplateWithOptions(tmpReq *UpdateLiveT
 	}
 	request := &UpdateLiveTranscodeTemplateShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.TemplateConfig))) {
-		request.TemplateConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.TemplateConfig), tea.String("TemplateConfig"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.TemplateConfig)) {
+		request.TemplateConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TemplateConfig, tea.String("TemplateConfig"), tea.String("json"))
 	}
 
 	query := map[string]interface{}{}
@@ -43082,6 +43254,14 @@ func (client *Client) UpdatePipeline(request *UpdatePipelineRequest) (_result *U
 	return _result, _err
 }
 
+/**
+ * @deprecated
+ *
+ * @param request UpdateSmartJobRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return UpdateSmartJobResponse
+ */
+// Deprecated
 func (client *Client) UpdateSmartJobWithOptions(request *UpdateSmartJobRequest, runtime *util.RuntimeOptions) (_result *UpdateSmartJobResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -43119,6 +43299,13 @@ func (client *Client) UpdateSmartJobWithOptions(request *UpdateSmartJobRequest, 
 	return _result, _err
 }
 
+/**
+ * @deprecated
+ *
+ * @param request UpdateSmartJobRequest
+ * @return UpdateSmartJobResponse
+ */
+// Deprecated
 func (client *Client) UpdateSmartJob(request *UpdateSmartJobRequest) (_result *UpdateSmartJobResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateSmartJobResponse{}
