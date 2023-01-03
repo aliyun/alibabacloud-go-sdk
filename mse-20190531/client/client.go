@@ -28188,6 +28188,7 @@ type QueryConfigResponseBodyData struct {
 	// *   `true`: supported
 	// *   `false`: not supported
 	ConfigSecretSupported *bool `json:"ConfigSecretSupported,omitempty" xml:"ConfigSecretSupported,omitempty"`
+	ExtendedTypesEnable   *bool `json:"ExtendedTypesEnable,omitempty" xml:"ExtendedTypesEnable,omitempty"`
 	// The maximum connection duration of the instance. This parameter is valid for ZooKeeper instances. Unit: seconds.
 	InitLimit *string `json:"InitLimit,omitempty" xml:"InitLimit,omitempty"`
 	// The maximum amount of data on each node. This parameter is valid for ZooKeeper instances. Unit: bytes.
@@ -28294,6 +28295,11 @@ func (s *QueryConfigResponseBodyData) SetConfigSecretEnabled(v bool) *QueryConfi
 
 func (s *QueryConfigResponseBodyData) SetConfigSecretSupported(v bool) *QueryConfigResponseBodyData {
 	s.ConfigSecretSupported = &v
+	return s
+}
+
+func (s *QueryConfigResponseBodyData) SetExtendedTypesEnable(v bool) *QueryConfigResponseBodyData {
+	s.ExtendedTypesEnable = &v
 	return s
 }
 
@@ -30927,7 +30933,8 @@ type UpdateConfigRequest struct {
 	// > Before you set this parameter, you must call the QueryConfig operation to obtain the ConfigSecretSupported parameter value to check whether the instance supports this feature.
 	ConfigSecretEnabled *bool `json:"ConfigSecretEnabled,omitempty" xml:"ConfigSecretEnabled,omitempty"`
 	// The format of the configuration. Supported formats include TEXT, JSON, XML, and HTML.
-	ConfigType *string `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
+	ConfigType          *string `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
+	ExtendedTypesEnable *string `json:"ExtendedTypesEnable,omitempty" xml:"ExtendedTypesEnable,omitempty"`
 	// The maximum connection duration of the instance. This parameter is valid for ZooKeeper instances. Unit: seconds.
 	InitLimit *string `json:"InitLimit,omitempty" xml:"InitLimit,omitempty"`
 	// The ID of the instance.
@@ -31018,6 +31025,11 @@ func (s *UpdateConfigRequest) SetConfigSecretEnabled(v bool) *UpdateConfigReques
 
 func (s *UpdateConfigRequest) SetConfigType(v string) *UpdateConfigRequest {
 	s.ConfigType = &v
+	return s
+}
+
+func (s *UpdateConfigRequest) SetExtendedTypesEnable(v string) *UpdateConfigRequest {
+	s.ExtendedTypesEnable = &v
 	return s
 }
 
@@ -45254,6 +45266,10 @@ func (client *Client) UpdateConfigWithOptions(request *UpdateConfigRequest, runt
 
 	if !tea.BoolValue(util.IsUnset(request.ConfigType)) {
 		query["ConfigType"] = request.ConfigType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExtendedTypesEnable)) {
+		query["ExtendedTypesEnable"] = request.ExtendedTypesEnable
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.InitLimit)) {

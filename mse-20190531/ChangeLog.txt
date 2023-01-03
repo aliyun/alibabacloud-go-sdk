@@ -1,3 +1,6 @@
+2023-01-03 Version: v3.0.3114
+- Support zookeeper extendedTypesEnabled.
+
 2022-12-30 Version: v3.0.3113
 - Fix read.
 - Fix writeOrRead type.
