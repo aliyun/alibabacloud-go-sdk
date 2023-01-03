@@ -652,8 +652,9 @@ func (s *CreateSlotRequestTags) SetValue(v string) *CreateSlotRequestTags {
 }
 
 type CreateSlotResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SlotId    *string `json:"SlotId,omitempty" xml:"SlotId,omitempty"`
+	EndpointIds *string `json:"EndpointIds,omitempty" xml:"EndpointIds,omitempty"`
+	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SlotId      *string `json:"SlotId,omitempty" xml:"SlotId,omitempty"`
 }
 
 func (s CreateSlotResponseBody) String() string {
@@ -662,6 +663,11 @@ func (s CreateSlotResponseBody) String() string {
 
 func (s CreateSlotResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *CreateSlotResponseBody) SetEndpointIds(v string) *CreateSlotResponseBody {
+	s.EndpointIds = &v
+	return s
 }
 
 func (s *CreateSlotResponseBody) SetRequestId(v string) *CreateSlotResponseBody {
@@ -827,6 +833,23 @@ func (s *DeleteInstanceResponse) SetStatusCode(v int32) *DeleteInstanceResponse 
 
 func (s *DeleteInstanceResponse) SetBody(v *DeleteInstanceResponseBody) *DeleteInstanceResponse {
 	s.Body = v
+	return s
+}
+
+type DeleteSlotRequest struct {
+	Force *bool `json:"Force,omitempty" xml:"Force,omitempty"`
+}
+
+func (s DeleteSlotRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteSlotRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteSlotRequest) SetForce(v bool) *DeleteSlotRequest {
+	s.Force = &v
 	return s
 }
 
@@ -3685,9 +3708,19 @@ func (client *Client) DeleteInstance(InstanceId *string) (_result *DeleteInstanc
 	return _result, _err
 }
 
-func (client *Client) DeleteSlotWithOptions(SlotId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteSlotResponse, _err error) {
+func (client *Client) DeleteSlotWithOptions(SlotId *string, request *DeleteSlotRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteSlotResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Force)) {
+		query["Force"] = request.Force
+	}
+
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
+		Query:   openapiutil.Query(query),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteSlot"),
@@ -3709,11 +3742,11 @@ func (client *Client) DeleteSlotWithOptions(SlotId *string, headers map[string]*
 	return _result, _err
 }
 
-func (client *Client) DeleteSlot(SlotId *string) (_result *DeleteSlotResponse, _err error) {
+func (client *Client) DeleteSlot(SlotId *string, request *DeleteSlotRequest) (_result *DeleteSlotResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &DeleteSlotResponse{}
-	_body, _err := client.DeleteSlotWithOptions(SlotId, headers, runtime)
+	_body, _err := client.DeleteSlotWithOptions(SlotId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
