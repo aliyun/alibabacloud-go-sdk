@@ -93,6 +93,110 @@ func (s *AddTagsBatchResponse) SetBody(v *AddTagsBatchResponseBody) *AddTagsBatc
 	return s
 }
 
+type ApplyAutoSnapshotPolicyRequest struct {
+	DbfsIds  []*string `json:"DbfsIds,omitempty" xml:"DbfsIds,omitempty" type:"Repeated"`
+	PolicyId *string   `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	RegionId *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s ApplyAutoSnapshotPolicyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ApplyAutoSnapshotPolicyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ApplyAutoSnapshotPolicyRequest) SetDbfsIds(v []*string) *ApplyAutoSnapshotPolicyRequest {
+	s.DbfsIds = v
+	return s
+}
+
+func (s *ApplyAutoSnapshotPolicyRequest) SetPolicyId(v string) *ApplyAutoSnapshotPolicyRequest {
+	s.PolicyId = &v
+	return s
+}
+
+func (s *ApplyAutoSnapshotPolicyRequest) SetRegionId(v string) *ApplyAutoSnapshotPolicyRequest {
+	s.RegionId = &v
+	return s
+}
+
+type ApplyAutoSnapshotPolicyShrinkRequest struct {
+	DbfsIdsShrink *string `json:"DbfsIds,omitempty" xml:"DbfsIds,omitempty"`
+	PolicyId      *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s ApplyAutoSnapshotPolicyShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ApplyAutoSnapshotPolicyShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ApplyAutoSnapshotPolicyShrinkRequest) SetDbfsIdsShrink(v string) *ApplyAutoSnapshotPolicyShrinkRequest {
+	s.DbfsIdsShrink = &v
+	return s
+}
+
+func (s *ApplyAutoSnapshotPolicyShrinkRequest) SetPolicyId(v string) *ApplyAutoSnapshotPolicyShrinkRequest {
+	s.PolicyId = &v
+	return s
+}
+
+func (s *ApplyAutoSnapshotPolicyShrinkRequest) SetRegionId(v string) *ApplyAutoSnapshotPolicyShrinkRequest {
+	s.RegionId = &v
+	return s
+}
+
+type ApplyAutoSnapshotPolicyResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ApplyAutoSnapshotPolicyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ApplyAutoSnapshotPolicyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ApplyAutoSnapshotPolicyResponseBody) SetRequestId(v string) *ApplyAutoSnapshotPolicyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ApplyAutoSnapshotPolicyResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ApplyAutoSnapshotPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ApplyAutoSnapshotPolicyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ApplyAutoSnapshotPolicyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ApplyAutoSnapshotPolicyResponse) SetHeaders(v map[string]*string) *ApplyAutoSnapshotPolicyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ApplyAutoSnapshotPolicyResponse) SetStatusCode(v int32) *ApplyAutoSnapshotPolicyResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ApplyAutoSnapshotPolicyResponse) SetBody(v *ApplyAutoSnapshotPolicyResponseBody) *ApplyAutoSnapshotPolicyResponse {
+	s.Body = v
+	return s
+}
+
 type AttachDbfsRequest struct {
 	AttachMode    *string `json:"AttachMode,omitempty" xml:"AttachMode,omitempty"`
 	AttachPoint   *string `json:"AttachPoint,omitempty" xml:"AttachPoint,omitempty"`
@@ -751,6 +855,75 @@ func (s *CreateSnapshotResponse) SetBody(v *CreateSnapshotResponseBody) *CreateS
 	return s
 }
 
+type DeleteAutoSnapshotPolicyRequest struct {
+	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s DeleteAutoSnapshotPolicyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAutoSnapshotPolicyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAutoSnapshotPolicyRequest) SetPolicyId(v string) *DeleteAutoSnapshotPolicyRequest {
+	s.PolicyId = &v
+	return s
+}
+
+func (s *DeleteAutoSnapshotPolicyRequest) SetRegionId(v string) *DeleteAutoSnapshotPolicyRequest {
+	s.RegionId = &v
+	return s
+}
+
+type DeleteAutoSnapshotPolicyResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteAutoSnapshotPolicyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAutoSnapshotPolicyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAutoSnapshotPolicyResponseBody) SetRequestId(v string) *DeleteAutoSnapshotPolicyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteAutoSnapshotPolicyResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteAutoSnapshotPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteAutoSnapshotPolicyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAutoSnapshotPolicyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAutoSnapshotPolicyResponse) SetHeaders(v map[string]*string) *DeleteAutoSnapshotPolicyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteAutoSnapshotPolicyResponse) SetStatusCode(v int32) *DeleteAutoSnapshotPolicyResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteAutoSnapshotPolicyResponse) SetBody(v *DeleteAutoSnapshotPolicyResponseBody) *DeleteAutoSnapshotPolicyResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteDbfsRequest struct {
 	FsId     *string `json:"FsId,omitempty" xml:"FsId,omitempty"`
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
@@ -1236,6 +1409,164 @@ func (s *DetachDbfsResponse) SetBody(v *DetachDbfsResponseBody) *DetachDbfsRespo
 	return s
 }
 
+type GetAutoSnapshotPolicyRequest struct {
+	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s GetAutoSnapshotPolicyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAutoSnapshotPolicyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetAutoSnapshotPolicyRequest) SetPolicyId(v string) *GetAutoSnapshotPolicyRequest {
+	s.PolicyId = &v
+	return s
+}
+
+func (s *GetAutoSnapshotPolicyRequest) SetRegionId(v string) *GetAutoSnapshotPolicyRequest {
+	s.RegionId = &v
+	return s
+}
+
+type GetAutoSnapshotPolicyResponseBody struct {
+	Data      *GetAutoSnapshotPolicyResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetAutoSnapshotPolicyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAutoSnapshotPolicyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetAutoSnapshotPolicyResponseBody) SetData(v *GetAutoSnapshotPolicyResponseBodyData) *GetAutoSnapshotPolicyResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetAutoSnapshotPolicyResponseBody) SetRequestId(v string) *GetAutoSnapshotPolicyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetAutoSnapshotPolicyResponseBodyData struct {
+	AccountId         *string   `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	AppliedDbfsNumber *int32    `json:"AppliedDbfsNumber,omitempty" xml:"AppliedDbfsNumber,omitempty"`
+	CreatedTime       *string   `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	LastModified      *string   `json:"LastModified,omitempty" xml:"LastModified,omitempty"`
+	PolicyId          *string   `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	PolicyName        *string   `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
+	RegionId          *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RepeatWeekdays    []*string `json:"RepeatWeekdays,omitempty" xml:"RepeatWeekdays,omitempty" type:"Repeated"`
+	RetentionDays     *int32    `json:"RetentionDays,omitempty" xml:"RetentionDays,omitempty"`
+	Status            *string   `json:"Status,omitempty" xml:"Status,omitempty"`
+	StatusDetail      *string   `json:"StatusDetail,omitempty" xml:"StatusDetail,omitempty"`
+	TimePoints        []*string `json:"TimePoints,omitempty" xml:"TimePoints,omitempty" type:"Repeated"`
+}
+
+func (s GetAutoSnapshotPolicyResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAutoSnapshotPolicyResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetAutoSnapshotPolicyResponseBodyData) SetAccountId(v string) *GetAutoSnapshotPolicyResponseBodyData {
+	s.AccountId = &v
+	return s
+}
+
+func (s *GetAutoSnapshotPolicyResponseBodyData) SetAppliedDbfsNumber(v int32) *GetAutoSnapshotPolicyResponseBodyData {
+	s.AppliedDbfsNumber = &v
+	return s
+}
+
+func (s *GetAutoSnapshotPolicyResponseBodyData) SetCreatedTime(v string) *GetAutoSnapshotPolicyResponseBodyData {
+	s.CreatedTime = &v
+	return s
+}
+
+func (s *GetAutoSnapshotPolicyResponseBodyData) SetLastModified(v string) *GetAutoSnapshotPolicyResponseBodyData {
+	s.LastModified = &v
+	return s
+}
+
+func (s *GetAutoSnapshotPolicyResponseBodyData) SetPolicyId(v string) *GetAutoSnapshotPolicyResponseBodyData {
+	s.PolicyId = &v
+	return s
+}
+
+func (s *GetAutoSnapshotPolicyResponseBodyData) SetPolicyName(v string) *GetAutoSnapshotPolicyResponseBodyData {
+	s.PolicyName = &v
+	return s
+}
+
+func (s *GetAutoSnapshotPolicyResponseBodyData) SetRegionId(v string) *GetAutoSnapshotPolicyResponseBodyData {
+	s.RegionId = &v
+	return s
+}
+
+func (s *GetAutoSnapshotPolicyResponseBodyData) SetRepeatWeekdays(v []*string) *GetAutoSnapshotPolicyResponseBodyData {
+	s.RepeatWeekdays = v
+	return s
+}
+
+func (s *GetAutoSnapshotPolicyResponseBodyData) SetRetentionDays(v int32) *GetAutoSnapshotPolicyResponseBodyData {
+	s.RetentionDays = &v
+	return s
+}
+
+func (s *GetAutoSnapshotPolicyResponseBodyData) SetStatus(v string) *GetAutoSnapshotPolicyResponseBodyData {
+	s.Status = &v
+	return s
+}
+
+func (s *GetAutoSnapshotPolicyResponseBodyData) SetStatusDetail(v string) *GetAutoSnapshotPolicyResponseBodyData {
+	s.StatusDetail = &v
+	return s
+}
+
+func (s *GetAutoSnapshotPolicyResponseBodyData) SetTimePoints(v []*string) *GetAutoSnapshotPolicyResponseBodyData {
+	s.TimePoints = v
+	return s
+}
+
+type GetAutoSnapshotPolicyResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetAutoSnapshotPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetAutoSnapshotPolicyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAutoSnapshotPolicyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetAutoSnapshotPolicyResponse) SetHeaders(v map[string]*string) *GetAutoSnapshotPolicyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetAutoSnapshotPolicyResponse) SetStatusCode(v int32) *GetAutoSnapshotPolicyResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetAutoSnapshotPolicyResponse) SetBody(v *GetAutoSnapshotPolicyResponseBody) *GetAutoSnapshotPolicyResponse {
+	s.Body = v
+	return s
+}
+
 type GetDbfsRequest struct {
 	FsId     *string `json:"FsId,omitempty" xml:"FsId,omitempty"`
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
@@ -1283,31 +1614,32 @@ func (s *GetDbfsResponseBody) SetRequestId(v string) *GetDbfsResponseBody {
 }
 
 type GetDbfsResponseBodyDBFSInfo struct {
-	AttachNodeNumber *int32                                `json:"AttachNodeNumber,omitempty" xml:"AttachNodeNumber,omitempty"`
-	Category         *string                               `json:"Category,omitempty" xml:"Category,omitempty"`
-	CreatedTime      *string                               `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	DBFSClusterId    *string                               `json:"DBFSClusterId,omitempty" xml:"DBFSClusterId,omitempty"`
-	Description      *string                               `json:"Description,omitempty" xml:"Description,omitempty"`
-	EbsList          []*GetDbfsResponseBodyDBFSInfoEbsList `json:"EbsList,omitempty" xml:"EbsList,omitempty" type:"Repeated"`
-	EcsList          []*GetDbfsResponseBodyDBFSInfoEcsList `json:"EcsList,omitempty" xml:"EcsList,omitempty" type:"Repeated"`
-	EnableRaid       *bool                                 `json:"EnableRaid,omitempty" xml:"EnableRaid,omitempty"`
-	Encryption       *bool                                 `json:"Encryption,omitempty" xml:"Encryption,omitempty"`
-	FsId             *string                               `json:"FsId,omitempty" xml:"FsId,omitempty"`
-	FsName           *string                               `json:"FsName,omitempty" xml:"FsName,omitempty"`
-	InstanceType     *string                               `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	KMSKeyId         *string                               `json:"KMSKeyId,omitempty" xml:"KMSKeyId,omitempty"`
-	LastFailed       *string                               `json:"LastFailed,omitempty" xml:"LastFailed,omitempty"`
-	LastMountTime    *string                               `json:"LastMountTime,omitempty" xml:"LastMountTime,omitempty"`
-	LastUmountTime   *string                               `json:"LastUmountTime,omitempty" xml:"LastUmountTime,omitempty"`
-	PayType          *string                               `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	PerformanceLevel *string                               `json:"PerformanceLevel,omitempty" xml:"PerformanceLevel,omitempty"`
-	RaidStrip        *int32                                `json:"RaidStrip,omitempty" xml:"RaidStrip,omitempty"`
-	RegionId         *string                               `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	SizeG            *int32                                `json:"SizeG,omitempty" xml:"SizeG,omitempty"`
-	Status           *string                               `json:"Status,omitempty" xml:"Status,omitempty"`
-	Tags             []*GetDbfsResponseBodyDBFSInfoTags    `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	UsedScene        *string                               `json:"UsedScene,omitempty" xml:"UsedScene,omitempty"`
-	ZoneId           *string                               `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	AttachNodeNumber *int32                                   `json:"AttachNodeNumber,omitempty" xml:"AttachNodeNumber,omitempty"`
+	Category         *string                                  `json:"Category,omitempty" xml:"Category,omitempty"`
+	CreatedTime      *string                                  `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	DBFSClusterId    *string                                  `json:"DBFSClusterId,omitempty" xml:"DBFSClusterId,omitempty"`
+	Description      *string                                  `json:"Description,omitempty" xml:"Description,omitempty"`
+	EbsList          []*GetDbfsResponseBodyDBFSInfoEbsList    `json:"EbsList,omitempty" xml:"EbsList,omitempty" type:"Repeated"`
+	EcsList          []*GetDbfsResponseBodyDBFSInfoEcsList    `json:"EcsList,omitempty" xml:"EcsList,omitempty" type:"Repeated"`
+	EnableRaid       *bool                                    `json:"EnableRaid,omitempty" xml:"EnableRaid,omitempty"`
+	Encryption       *bool                                    `json:"Encryption,omitempty" xml:"Encryption,omitempty"`
+	FsId             *string                                  `json:"FsId,omitempty" xml:"FsId,omitempty"`
+	FsName           *string                                  `json:"FsName,omitempty" xml:"FsName,omitempty"`
+	InstanceType     *string                                  `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	KMSKeyId         *string                                  `json:"KMSKeyId,omitempty" xml:"KMSKeyId,omitempty"`
+	LastFailed       *string                                  `json:"LastFailed,omitempty" xml:"LastFailed,omitempty"`
+	LastMountTime    *string                                  `json:"LastMountTime,omitempty" xml:"LastMountTime,omitempty"`
+	LastUmountTime   *string                                  `json:"LastUmountTime,omitempty" xml:"LastUmountTime,omitempty"`
+	PayType          *string                                  `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	PerformanceLevel *string                                  `json:"PerformanceLevel,omitempty" xml:"PerformanceLevel,omitempty"`
+	RaidStrip        *int32                                   `json:"RaidStrip,omitempty" xml:"RaidStrip,omitempty"`
+	RegionId         *string                                  `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	SizeG            *int32                                   `json:"SizeG,omitempty" xml:"SizeG,omitempty"`
+	SnapshotInfo     *GetDbfsResponseBodyDBFSInfoSnapshotInfo `json:"SnapshotInfo,omitempty" xml:"SnapshotInfo,omitempty" type:"Struct"`
+	Status           *string                                  `json:"Status,omitempty" xml:"Status,omitempty"`
+	Tags             []*GetDbfsResponseBodyDBFSInfoTags       `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	UsedScene        *string                                  `json:"UsedScene,omitempty" xml:"UsedScene,omitempty"`
+	ZoneId           *string                                  `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s GetDbfsResponseBodyDBFSInfo) String() string {
@@ -1423,6 +1755,11 @@ func (s *GetDbfsResponseBodyDBFSInfo) SetSizeG(v int32) *GetDbfsResponseBodyDBFS
 	return s
 }
 
+func (s *GetDbfsResponseBodyDBFSInfo) SetSnapshotInfo(v *GetDbfsResponseBodyDBFSInfoSnapshotInfo) *GetDbfsResponseBodyDBFSInfo {
+	s.SnapshotInfo = v
+	return s
+}
+
 func (s *GetDbfsResponseBodyDBFSInfo) SetStatus(v string) *GetDbfsResponseBodyDBFSInfo {
 	s.Status = &v
 	return s
@@ -1480,6 +1817,41 @@ func (s GetDbfsResponseBodyDBFSInfoEcsList) GoString() string {
 
 func (s *GetDbfsResponseBodyDBFSInfoEcsList) SetEcsId(v string) *GetDbfsResponseBodyDBFSInfoEcsList {
 	s.EcsId = &v
+	return s
+}
+
+type GetDbfsResponseBodyDBFSInfoSnapshotInfo struct {
+	LinkId        *string `json:"LinkId,omitempty" xml:"LinkId,omitempty"`
+	PolicyId      *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	SnapshotCount *int32  `json:"SnapshotCount,omitempty" xml:"SnapshotCount,omitempty"`
+	TotalSize     *int64  `json:"totalSize,omitempty" xml:"totalSize,omitempty"`
+}
+
+func (s GetDbfsResponseBodyDBFSInfoSnapshotInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDbfsResponseBodyDBFSInfoSnapshotInfo) GoString() string {
+	return s.String()
+}
+
+func (s *GetDbfsResponseBodyDBFSInfoSnapshotInfo) SetLinkId(v string) *GetDbfsResponseBodyDBFSInfoSnapshotInfo {
+	s.LinkId = &v
+	return s
+}
+
+func (s *GetDbfsResponseBodyDBFSInfoSnapshotInfo) SetPolicyId(v string) *GetDbfsResponseBodyDBFSInfoSnapshotInfo {
+	s.PolicyId = &v
+	return s
+}
+
+func (s *GetDbfsResponseBodyDBFSInfoSnapshotInfo) SetSnapshotCount(v int32) *GetDbfsResponseBodyDBFSInfoSnapshotInfo {
+	s.SnapshotCount = &v
+	return s
+}
+
+func (s *GetDbfsResponseBodyDBFSInfoSnapshotInfo) SetTotalSize(v int64) *GetDbfsResponseBodyDBFSInfoSnapshotInfo {
+	s.TotalSize = &v
 	return s
 }
 
@@ -1622,6 +1994,534 @@ func (s *GetServiceLinkedRoleResponse) SetBody(v *GetServiceLinkedRoleResponseBo
 	return s
 }
 
+type ListAutoSnapshotPoliciesRequest struct {
+	FilterKey   *string `json:"FilterKey,omitempty" xml:"FilterKey,omitempty"`
+	FilterValue *string `json:"FilterValue,omitempty" xml:"FilterValue,omitempty"`
+	PageNumber  *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s ListAutoSnapshotPoliciesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAutoSnapshotPoliciesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListAutoSnapshotPoliciesRequest) SetFilterKey(v string) *ListAutoSnapshotPoliciesRequest {
+	s.FilterKey = &v
+	return s
+}
+
+func (s *ListAutoSnapshotPoliciesRequest) SetFilterValue(v string) *ListAutoSnapshotPoliciesRequest {
+	s.FilterValue = &v
+	return s
+}
+
+func (s *ListAutoSnapshotPoliciesRequest) SetPageNumber(v int32) *ListAutoSnapshotPoliciesRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListAutoSnapshotPoliciesRequest) SetPageSize(v int32) *ListAutoSnapshotPoliciesRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListAutoSnapshotPoliciesRequest) SetRegionId(v string) *ListAutoSnapshotPoliciesRequest {
+	s.RegionId = &v
+	return s
+}
+
+type ListAutoSnapshotPoliciesResponseBody struct {
+	PageNumber       *int32                                                  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize         *int32                                                  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId        *string                                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SnapshotPolicies []*ListAutoSnapshotPoliciesResponseBodySnapshotPolicies `json:"SnapshotPolicies,omitempty" xml:"SnapshotPolicies,omitempty" type:"Repeated"`
+	TotalCount       *int32                                                  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListAutoSnapshotPoliciesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAutoSnapshotPoliciesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListAutoSnapshotPoliciesResponseBody) SetPageNumber(v int32) *ListAutoSnapshotPoliciesResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListAutoSnapshotPoliciesResponseBody) SetPageSize(v int32) *ListAutoSnapshotPoliciesResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListAutoSnapshotPoliciesResponseBody) SetRequestId(v string) *ListAutoSnapshotPoliciesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListAutoSnapshotPoliciesResponseBody) SetSnapshotPolicies(v []*ListAutoSnapshotPoliciesResponseBodySnapshotPolicies) *ListAutoSnapshotPoliciesResponseBody {
+	s.SnapshotPolicies = v
+	return s
+}
+
+func (s *ListAutoSnapshotPoliciesResponseBody) SetTotalCount(v int32) *ListAutoSnapshotPoliciesResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListAutoSnapshotPoliciesResponseBodySnapshotPolicies struct {
+	AccountId         *string   `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	AppliedDbfsNumber *int32    `json:"AppliedDbfsNumber,omitempty" xml:"AppliedDbfsNumber,omitempty"`
+	CreatedTime       *string   `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	LastModified      *string   `json:"LastModified,omitempty" xml:"LastModified,omitempty"`
+	PolicyId          *string   `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	PolicyName        *string   `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
+	RegionId          *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RepeatWeekdays    []*string `json:"RepeatWeekdays,omitempty" xml:"RepeatWeekdays,omitempty" type:"Repeated"`
+	RetentionDays     *int32    `json:"RetentionDays,omitempty" xml:"RetentionDays,omitempty"`
+	Status            *string   `json:"Status,omitempty" xml:"Status,omitempty"`
+	StatusDetail      *string   `json:"StatusDetail,omitempty" xml:"StatusDetail,omitempty"`
+	TimePoints        []*string `json:"TimePoints,omitempty" xml:"TimePoints,omitempty" type:"Repeated"`
+}
+
+func (s ListAutoSnapshotPoliciesResponseBodySnapshotPolicies) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAutoSnapshotPoliciesResponseBodySnapshotPolicies) GoString() string {
+	return s.String()
+}
+
+func (s *ListAutoSnapshotPoliciesResponseBodySnapshotPolicies) SetAccountId(v string) *ListAutoSnapshotPoliciesResponseBodySnapshotPolicies {
+	s.AccountId = &v
+	return s
+}
+
+func (s *ListAutoSnapshotPoliciesResponseBodySnapshotPolicies) SetAppliedDbfsNumber(v int32) *ListAutoSnapshotPoliciesResponseBodySnapshotPolicies {
+	s.AppliedDbfsNumber = &v
+	return s
+}
+
+func (s *ListAutoSnapshotPoliciesResponseBodySnapshotPolicies) SetCreatedTime(v string) *ListAutoSnapshotPoliciesResponseBodySnapshotPolicies {
+	s.CreatedTime = &v
+	return s
+}
+
+func (s *ListAutoSnapshotPoliciesResponseBodySnapshotPolicies) SetLastModified(v string) *ListAutoSnapshotPoliciesResponseBodySnapshotPolicies {
+	s.LastModified = &v
+	return s
+}
+
+func (s *ListAutoSnapshotPoliciesResponseBodySnapshotPolicies) SetPolicyId(v string) *ListAutoSnapshotPoliciesResponseBodySnapshotPolicies {
+	s.PolicyId = &v
+	return s
+}
+
+func (s *ListAutoSnapshotPoliciesResponseBodySnapshotPolicies) SetPolicyName(v string) *ListAutoSnapshotPoliciesResponseBodySnapshotPolicies {
+	s.PolicyName = &v
+	return s
+}
+
+func (s *ListAutoSnapshotPoliciesResponseBodySnapshotPolicies) SetRegionId(v string) *ListAutoSnapshotPoliciesResponseBodySnapshotPolicies {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ListAutoSnapshotPoliciesResponseBodySnapshotPolicies) SetRepeatWeekdays(v []*string) *ListAutoSnapshotPoliciesResponseBodySnapshotPolicies {
+	s.RepeatWeekdays = v
+	return s
+}
+
+func (s *ListAutoSnapshotPoliciesResponseBodySnapshotPolicies) SetRetentionDays(v int32) *ListAutoSnapshotPoliciesResponseBodySnapshotPolicies {
+	s.RetentionDays = &v
+	return s
+}
+
+func (s *ListAutoSnapshotPoliciesResponseBodySnapshotPolicies) SetStatus(v string) *ListAutoSnapshotPoliciesResponseBodySnapshotPolicies {
+	s.Status = &v
+	return s
+}
+
+func (s *ListAutoSnapshotPoliciesResponseBodySnapshotPolicies) SetStatusDetail(v string) *ListAutoSnapshotPoliciesResponseBodySnapshotPolicies {
+	s.StatusDetail = &v
+	return s
+}
+
+func (s *ListAutoSnapshotPoliciesResponseBodySnapshotPolicies) SetTimePoints(v []*string) *ListAutoSnapshotPoliciesResponseBodySnapshotPolicies {
+	s.TimePoints = v
+	return s
+}
+
+type ListAutoSnapshotPoliciesResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListAutoSnapshotPoliciesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListAutoSnapshotPoliciesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAutoSnapshotPoliciesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListAutoSnapshotPoliciesResponse) SetHeaders(v map[string]*string) *ListAutoSnapshotPoliciesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListAutoSnapshotPoliciesResponse) SetStatusCode(v int32) *ListAutoSnapshotPoliciesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListAutoSnapshotPoliciesResponse) SetBody(v *ListAutoSnapshotPoliciesResponseBody) *ListAutoSnapshotPoliciesResponse {
+	s.Body = v
+	return s
+}
+
+type ListAutoSnapshotPolicyAppliedDbfsRequest struct {
+	FilterKey   *string `json:"FilterKey,omitempty" xml:"FilterKey,omitempty"`
+	FilterValue *string `json:"FilterValue,omitempty" xml:"FilterValue,omitempty"`
+	PageNumber  *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PolicyId    *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s ListAutoSnapshotPolicyAppliedDbfsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAutoSnapshotPolicyAppliedDbfsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListAutoSnapshotPolicyAppliedDbfsRequest) SetFilterKey(v string) *ListAutoSnapshotPolicyAppliedDbfsRequest {
+	s.FilterKey = &v
+	return s
+}
+
+func (s *ListAutoSnapshotPolicyAppliedDbfsRequest) SetFilterValue(v string) *ListAutoSnapshotPolicyAppliedDbfsRequest {
+	s.FilterValue = &v
+	return s
+}
+
+func (s *ListAutoSnapshotPolicyAppliedDbfsRequest) SetPageNumber(v int32) *ListAutoSnapshotPolicyAppliedDbfsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListAutoSnapshotPolicyAppliedDbfsRequest) SetPageSize(v int32) *ListAutoSnapshotPolicyAppliedDbfsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListAutoSnapshotPolicyAppliedDbfsRequest) SetPolicyId(v string) *ListAutoSnapshotPolicyAppliedDbfsRequest {
+	s.PolicyId = &v
+	return s
+}
+
+func (s *ListAutoSnapshotPolicyAppliedDbfsRequest) SetRegionId(v string) *ListAutoSnapshotPolicyAppliedDbfsRequest {
+	s.RegionId = &v
+	return s
+}
+
+type ListAutoSnapshotPolicyAppliedDbfsResponseBody struct {
+	DbfsList   []*ListAutoSnapshotPolicyAppliedDbfsResponseBodyDbfsList `json:"DbfsList,omitempty" xml:"DbfsList,omitempty" type:"Repeated"`
+	PageNumber *int32                                                   `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32                                                   `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId  *string                                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *int32                                                   `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListAutoSnapshotPolicyAppliedDbfsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAutoSnapshotPolicyAppliedDbfsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListAutoSnapshotPolicyAppliedDbfsResponseBody) SetDbfsList(v []*ListAutoSnapshotPolicyAppliedDbfsResponseBodyDbfsList) *ListAutoSnapshotPolicyAppliedDbfsResponseBody {
+	s.DbfsList = v
+	return s
+}
+
+func (s *ListAutoSnapshotPolicyAppliedDbfsResponseBody) SetPageNumber(v int32) *ListAutoSnapshotPolicyAppliedDbfsResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListAutoSnapshotPolicyAppliedDbfsResponseBody) SetPageSize(v int32) *ListAutoSnapshotPolicyAppliedDbfsResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListAutoSnapshotPolicyAppliedDbfsResponseBody) SetRequestId(v string) *ListAutoSnapshotPolicyAppliedDbfsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListAutoSnapshotPolicyAppliedDbfsResponseBody) SetTotalCount(v int32) *ListAutoSnapshotPolicyAppliedDbfsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListAutoSnapshotPolicyAppliedDbfsResponseBodyDbfsList struct {
+	FsId          *string `json:"FsId,omitempty" xml:"FsId,omitempty"`
+	FsName        *string `json:"FsName,omitempty" xml:"FsName,omitempty"`
+	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	SizeG         *int64  `json:"SizeG,omitempty" xml:"SizeG,omitempty"`
+	SnapshotCount *string `json:"SnapshotCount,omitempty" xml:"SnapshotCount,omitempty"`
+	Status        *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	TotalSize     *string `json:"TotalSize,omitempty" xml:"TotalSize,omitempty"`
+}
+
+func (s ListAutoSnapshotPolicyAppliedDbfsResponseBodyDbfsList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAutoSnapshotPolicyAppliedDbfsResponseBodyDbfsList) GoString() string {
+	return s.String()
+}
+
+func (s *ListAutoSnapshotPolicyAppliedDbfsResponseBodyDbfsList) SetFsId(v string) *ListAutoSnapshotPolicyAppliedDbfsResponseBodyDbfsList {
+	s.FsId = &v
+	return s
+}
+
+func (s *ListAutoSnapshotPolicyAppliedDbfsResponseBodyDbfsList) SetFsName(v string) *ListAutoSnapshotPolicyAppliedDbfsResponseBodyDbfsList {
+	s.FsName = &v
+	return s
+}
+
+func (s *ListAutoSnapshotPolicyAppliedDbfsResponseBodyDbfsList) SetRegionId(v string) *ListAutoSnapshotPolicyAppliedDbfsResponseBodyDbfsList {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ListAutoSnapshotPolicyAppliedDbfsResponseBodyDbfsList) SetSizeG(v int64) *ListAutoSnapshotPolicyAppliedDbfsResponseBodyDbfsList {
+	s.SizeG = &v
+	return s
+}
+
+func (s *ListAutoSnapshotPolicyAppliedDbfsResponseBodyDbfsList) SetSnapshotCount(v string) *ListAutoSnapshotPolicyAppliedDbfsResponseBodyDbfsList {
+	s.SnapshotCount = &v
+	return s
+}
+
+func (s *ListAutoSnapshotPolicyAppliedDbfsResponseBodyDbfsList) SetStatus(v string) *ListAutoSnapshotPolicyAppliedDbfsResponseBodyDbfsList {
+	s.Status = &v
+	return s
+}
+
+func (s *ListAutoSnapshotPolicyAppliedDbfsResponseBodyDbfsList) SetTotalSize(v string) *ListAutoSnapshotPolicyAppliedDbfsResponseBodyDbfsList {
+	s.TotalSize = &v
+	return s
+}
+
+type ListAutoSnapshotPolicyAppliedDbfsResponse struct {
+	Headers    map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListAutoSnapshotPolicyAppliedDbfsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListAutoSnapshotPolicyAppliedDbfsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAutoSnapshotPolicyAppliedDbfsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListAutoSnapshotPolicyAppliedDbfsResponse) SetHeaders(v map[string]*string) *ListAutoSnapshotPolicyAppliedDbfsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListAutoSnapshotPolicyAppliedDbfsResponse) SetStatusCode(v int32) *ListAutoSnapshotPolicyAppliedDbfsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListAutoSnapshotPolicyAppliedDbfsResponse) SetBody(v *ListAutoSnapshotPolicyAppliedDbfsResponseBody) *ListAutoSnapshotPolicyAppliedDbfsResponse {
+	s.Body = v
+	return s
+}
+
+type ListAutoSnapshotPolicyUnappliedDbfsRequest struct {
+	FilterKey   *string `json:"FilterKey,omitempty" xml:"FilterKey,omitempty"`
+	FilterValue *string `json:"FilterValue,omitempty" xml:"FilterValue,omitempty"`
+	PageNumber  *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s ListAutoSnapshotPolicyUnappliedDbfsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAutoSnapshotPolicyUnappliedDbfsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListAutoSnapshotPolicyUnappliedDbfsRequest) SetFilterKey(v string) *ListAutoSnapshotPolicyUnappliedDbfsRequest {
+	s.FilterKey = &v
+	return s
+}
+
+func (s *ListAutoSnapshotPolicyUnappliedDbfsRequest) SetFilterValue(v string) *ListAutoSnapshotPolicyUnappliedDbfsRequest {
+	s.FilterValue = &v
+	return s
+}
+
+func (s *ListAutoSnapshotPolicyUnappliedDbfsRequest) SetPageNumber(v int32) *ListAutoSnapshotPolicyUnappliedDbfsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListAutoSnapshotPolicyUnappliedDbfsRequest) SetPageSize(v int32) *ListAutoSnapshotPolicyUnappliedDbfsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListAutoSnapshotPolicyUnappliedDbfsRequest) SetRegionId(v string) *ListAutoSnapshotPolicyUnappliedDbfsRequest {
+	s.RegionId = &v
+	return s
+}
+
+type ListAutoSnapshotPolicyUnappliedDbfsResponseBody struct {
+	DbfsList   []*ListAutoSnapshotPolicyUnappliedDbfsResponseBodyDbfsList `json:"DbfsList,omitempty" xml:"DbfsList,omitempty" type:"Repeated"`
+	PageNumber *int32                                                     `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32                                                     `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId  *string                                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *int32                                                     `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListAutoSnapshotPolicyUnappliedDbfsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAutoSnapshotPolicyUnappliedDbfsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListAutoSnapshotPolicyUnappliedDbfsResponseBody) SetDbfsList(v []*ListAutoSnapshotPolicyUnappliedDbfsResponseBodyDbfsList) *ListAutoSnapshotPolicyUnappliedDbfsResponseBody {
+	s.DbfsList = v
+	return s
+}
+
+func (s *ListAutoSnapshotPolicyUnappliedDbfsResponseBody) SetPageNumber(v int32) *ListAutoSnapshotPolicyUnappliedDbfsResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListAutoSnapshotPolicyUnappliedDbfsResponseBody) SetPageSize(v int32) *ListAutoSnapshotPolicyUnappliedDbfsResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListAutoSnapshotPolicyUnappliedDbfsResponseBody) SetRequestId(v string) *ListAutoSnapshotPolicyUnappliedDbfsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListAutoSnapshotPolicyUnappliedDbfsResponseBody) SetTotalCount(v int32) *ListAutoSnapshotPolicyUnappliedDbfsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListAutoSnapshotPolicyUnappliedDbfsResponseBodyDbfsList struct {
+	FsId          *string `json:"FsId,omitempty" xml:"FsId,omitempty"`
+	FsName        *string `json:"FsName,omitempty" xml:"FsName,omitempty"`
+	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	SizeG         *int64  `json:"SizeG,omitempty" xml:"SizeG,omitempty"`
+	SnapshotCount *string `json:"SnapshotCount,omitempty" xml:"SnapshotCount,omitempty"`
+	Status        *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	TotalSize     *int64  `json:"TotalSize,omitempty" xml:"TotalSize,omitempty"`
+}
+
+func (s ListAutoSnapshotPolicyUnappliedDbfsResponseBodyDbfsList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAutoSnapshotPolicyUnappliedDbfsResponseBodyDbfsList) GoString() string {
+	return s.String()
+}
+
+func (s *ListAutoSnapshotPolicyUnappliedDbfsResponseBodyDbfsList) SetFsId(v string) *ListAutoSnapshotPolicyUnappliedDbfsResponseBodyDbfsList {
+	s.FsId = &v
+	return s
+}
+
+func (s *ListAutoSnapshotPolicyUnappliedDbfsResponseBodyDbfsList) SetFsName(v string) *ListAutoSnapshotPolicyUnappliedDbfsResponseBodyDbfsList {
+	s.FsName = &v
+	return s
+}
+
+func (s *ListAutoSnapshotPolicyUnappliedDbfsResponseBodyDbfsList) SetRegionId(v string) *ListAutoSnapshotPolicyUnappliedDbfsResponseBodyDbfsList {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ListAutoSnapshotPolicyUnappliedDbfsResponseBodyDbfsList) SetSizeG(v int64) *ListAutoSnapshotPolicyUnappliedDbfsResponseBodyDbfsList {
+	s.SizeG = &v
+	return s
+}
+
+func (s *ListAutoSnapshotPolicyUnappliedDbfsResponseBodyDbfsList) SetSnapshotCount(v string) *ListAutoSnapshotPolicyUnappliedDbfsResponseBodyDbfsList {
+	s.SnapshotCount = &v
+	return s
+}
+
+func (s *ListAutoSnapshotPolicyUnappliedDbfsResponseBodyDbfsList) SetStatus(v string) *ListAutoSnapshotPolicyUnappliedDbfsResponseBodyDbfsList {
+	s.Status = &v
+	return s
+}
+
+func (s *ListAutoSnapshotPolicyUnappliedDbfsResponseBodyDbfsList) SetTotalSize(v int64) *ListAutoSnapshotPolicyUnappliedDbfsResponseBodyDbfsList {
+	s.TotalSize = &v
+	return s
+}
+
+type ListAutoSnapshotPolicyUnappliedDbfsResponse struct {
+	Headers    map[string]*string                               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListAutoSnapshotPolicyUnappliedDbfsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListAutoSnapshotPolicyUnappliedDbfsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAutoSnapshotPolicyUnappliedDbfsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListAutoSnapshotPolicyUnappliedDbfsResponse) SetHeaders(v map[string]*string) *ListAutoSnapshotPolicyUnappliedDbfsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListAutoSnapshotPolicyUnappliedDbfsResponse) SetStatusCode(v int32) *ListAutoSnapshotPolicyUnappliedDbfsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListAutoSnapshotPolicyUnappliedDbfsResponse) SetBody(v *ListAutoSnapshotPolicyUnappliedDbfsResponseBody) *ListAutoSnapshotPolicyUnappliedDbfsResponse {
+	s.Body = v
+	return s
+}
+
 type ListDbfsRequest struct {
 	FilterKey   *string `json:"FilterKey,omitempty" xml:"FilterKey,omitempty"`
 	FilterValue *string `json:"FilterValue,omitempty" xml:"FilterValue,omitempty"`
@@ -1723,30 +2623,31 @@ func (s *ListDbfsResponseBody) SetTotalCount(v int32) *ListDbfsResponseBody {
 }
 
 type ListDbfsResponseBodyDBFSInfo struct {
-	AttachNodeNumber *int32                                 `json:"AttachNodeNumber,omitempty" xml:"AttachNodeNumber,omitempty"`
-	Category         *string                                `json:"Category,omitempty" xml:"Category,omitempty"`
-	CreatedTime      *string                                `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	DBFSClusterId    *string                                `json:"DBFSClusterId,omitempty" xml:"DBFSClusterId,omitempty"`
-	EbsList          []*ListDbfsResponseBodyDBFSInfoEbsList `json:"EbsList,omitempty" xml:"EbsList,omitempty" type:"Repeated"`
-	EcsList          []*ListDbfsResponseBodyDBFSInfoEcsList `json:"EcsList,omitempty" xml:"EcsList,omitempty" type:"Repeated"`
-	EnableRaid       *bool                                  `json:"EnableRaid,omitempty" xml:"EnableRaid,omitempty"`
-	Encryption       *bool                                  `json:"Encryption,omitempty" xml:"Encryption,omitempty"`
-	FsId             *string                                `json:"FsId,omitempty" xml:"FsId,omitempty"`
-	FsName           *string                                `json:"FsName,omitempty" xml:"FsName,omitempty"`
-	InstanceType     *string                                `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	KMSKeyId         *string                                `json:"KMSKeyId,omitempty" xml:"KMSKeyId,omitempty"`
-	LastFailed       *string                                `json:"LastFailed,omitempty" xml:"LastFailed,omitempty"`
-	LastMountTime    *string                                `json:"LastMountTime,omitempty" xml:"LastMountTime,omitempty"`
-	LastUmountTime   *string                                `json:"LastUmountTime,omitempty" xml:"LastUmountTime,omitempty"`
-	PayType          *string                                `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	PerformanceLevel *string                                `json:"PerformanceLevel,omitempty" xml:"PerformanceLevel,omitempty"`
-	RaidStrip        *int32                                 `json:"RaidStrip,omitempty" xml:"RaidStrip,omitempty"`
-	RegionId         *string                                `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	SizeG            *int32                                 `json:"SizeG,omitempty" xml:"SizeG,omitempty"`
-	Status           *string                                `json:"Status,omitempty" xml:"Status,omitempty"`
-	Tags             []*ListDbfsResponseBodyDBFSInfoTags    `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	UsedScene        *string                                `json:"UsedScene,omitempty" xml:"UsedScene,omitempty"`
-	ZoneId           *string                                `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	AttachNodeNumber *int32                                    `json:"AttachNodeNumber,omitempty" xml:"AttachNodeNumber,omitempty"`
+	Category         *string                                   `json:"Category,omitempty" xml:"Category,omitempty"`
+	CreatedTime      *string                                   `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	DBFSClusterId    *string                                   `json:"DBFSClusterId,omitempty" xml:"DBFSClusterId,omitempty"`
+	EbsList          []*ListDbfsResponseBodyDBFSInfoEbsList    `json:"EbsList,omitempty" xml:"EbsList,omitempty" type:"Repeated"`
+	EcsList          []*ListDbfsResponseBodyDBFSInfoEcsList    `json:"EcsList,omitempty" xml:"EcsList,omitempty" type:"Repeated"`
+	EnableRaid       *bool                                     `json:"EnableRaid,omitempty" xml:"EnableRaid,omitempty"`
+	Encryption       *bool                                     `json:"Encryption,omitempty" xml:"Encryption,omitempty"`
+	FsId             *string                                   `json:"FsId,omitempty" xml:"FsId,omitempty"`
+	FsName           *string                                   `json:"FsName,omitempty" xml:"FsName,omitempty"`
+	InstanceType     *string                                   `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	KMSKeyId         *string                                   `json:"KMSKeyId,omitempty" xml:"KMSKeyId,omitempty"`
+	LastFailed       *string                                   `json:"LastFailed,omitempty" xml:"LastFailed,omitempty"`
+	LastMountTime    *string                                   `json:"LastMountTime,omitempty" xml:"LastMountTime,omitempty"`
+	LastUmountTime   *string                                   `json:"LastUmountTime,omitempty" xml:"LastUmountTime,omitempty"`
+	PayType          *string                                   `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	PerformanceLevel *string                                   `json:"PerformanceLevel,omitempty" xml:"PerformanceLevel,omitempty"`
+	RaidStrip        *int32                                    `json:"RaidStrip,omitempty" xml:"RaidStrip,omitempty"`
+	RegionId         *string                                   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	SizeG            *int32                                    `json:"SizeG,omitempty" xml:"SizeG,omitempty"`
+	SnapshotInfo     *ListDbfsResponseBodyDBFSInfoSnapshotInfo `json:"SnapshotInfo,omitempty" xml:"SnapshotInfo,omitempty" type:"Struct"`
+	Status           *string                                   `json:"Status,omitempty" xml:"Status,omitempty"`
+	Tags             []*ListDbfsResponseBodyDBFSInfoTags       `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	UsedScene        *string                                   `json:"UsedScene,omitempty" xml:"UsedScene,omitempty"`
+	ZoneId           *string                                   `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s ListDbfsResponseBodyDBFSInfo) String() string {
@@ -1857,6 +2758,11 @@ func (s *ListDbfsResponseBodyDBFSInfo) SetSizeG(v int32) *ListDbfsResponseBodyDB
 	return s
 }
 
+func (s *ListDbfsResponseBodyDBFSInfo) SetSnapshotInfo(v *ListDbfsResponseBodyDBFSInfoSnapshotInfo) *ListDbfsResponseBodyDBFSInfo {
+	s.SnapshotInfo = v
+	return s
+}
+
 func (s *ListDbfsResponseBodyDBFSInfo) SetStatus(v string) *ListDbfsResponseBodyDBFSInfo {
 	s.Status = &v
 	return s
@@ -1914,6 +2820,41 @@ func (s ListDbfsResponseBodyDBFSInfoEcsList) GoString() string {
 
 func (s *ListDbfsResponseBodyDBFSInfoEcsList) SetEcsId(v string) *ListDbfsResponseBodyDBFSInfoEcsList {
 	s.EcsId = &v
+	return s
+}
+
+type ListDbfsResponseBodyDBFSInfoSnapshotInfo struct {
+	LinkId        *string `json:"LinkId,omitempty" xml:"LinkId,omitempty"`
+	PolicyId      *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	SnapshotCount *int32  `json:"SnapshotCount,omitempty" xml:"SnapshotCount,omitempty"`
+	TotalSize     *int64  `json:"TotalSize,omitempty" xml:"TotalSize,omitempty"`
+}
+
+func (s ListDbfsResponseBodyDBFSInfoSnapshotInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDbfsResponseBodyDBFSInfoSnapshotInfo) GoString() string {
+	return s.String()
+}
+
+func (s *ListDbfsResponseBodyDBFSInfoSnapshotInfo) SetLinkId(v string) *ListDbfsResponseBodyDBFSInfoSnapshotInfo {
+	s.LinkId = &v
+	return s
+}
+
+func (s *ListDbfsResponseBodyDBFSInfoSnapshotInfo) SetPolicyId(v string) *ListDbfsResponseBodyDBFSInfoSnapshotInfo {
+	s.PolicyId = &v
+	return s
+}
+
+func (s *ListDbfsResponseBodyDBFSInfoSnapshotInfo) SetSnapshotCount(v int32) *ListDbfsResponseBodyDBFSInfoSnapshotInfo {
+	s.SnapshotCount = &v
+	return s
+}
+
+func (s *ListDbfsResponseBodyDBFSInfoSnapshotInfo) SetTotalSize(v int64) *ListDbfsResponseBodyDBFSInfoSnapshotInfo {
+	s.TotalSize = &v
 	return s
 }
 
@@ -2635,6 +3576,227 @@ func (s *ListTagValuesResponse) SetBody(v *ListTagValuesResponseBody) *ListTagVa
 	return s
 }
 
+type ModifyAutoSnapshotPolicyRequest struct {
+	PolicyId       *string   `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	PolicyName     *string   `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
+	RegionId       *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RepeatWeekdays []*string `json:"RepeatWeekdays,omitempty" xml:"RepeatWeekdays,omitempty" type:"Repeated"`
+	RetentionDays  *int32    `json:"RetentionDays,omitempty" xml:"RetentionDays,omitempty"`
+	TimePoints     []*string `json:"TimePoints,omitempty" xml:"TimePoints,omitempty" type:"Repeated"`
+}
+
+func (s ModifyAutoSnapshotPolicyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyAutoSnapshotPolicyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyAutoSnapshotPolicyRequest) SetPolicyId(v string) *ModifyAutoSnapshotPolicyRequest {
+	s.PolicyId = &v
+	return s
+}
+
+func (s *ModifyAutoSnapshotPolicyRequest) SetPolicyName(v string) *ModifyAutoSnapshotPolicyRequest {
+	s.PolicyName = &v
+	return s
+}
+
+func (s *ModifyAutoSnapshotPolicyRequest) SetRegionId(v string) *ModifyAutoSnapshotPolicyRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ModifyAutoSnapshotPolicyRequest) SetRepeatWeekdays(v []*string) *ModifyAutoSnapshotPolicyRequest {
+	s.RepeatWeekdays = v
+	return s
+}
+
+func (s *ModifyAutoSnapshotPolicyRequest) SetRetentionDays(v int32) *ModifyAutoSnapshotPolicyRequest {
+	s.RetentionDays = &v
+	return s
+}
+
+func (s *ModifyAutoSnapshotPolicyRequest) SetTimePoints(v []*string) *ModifyAutoSnapshotPolicyRequest {
+	s.TimePoints = v
+	return s
+}
+
+type ModifyAutoSnapshotPolicyShrinkRequest struct {
+	PolicyId             *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	PolicyName           *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RepeatWeekdaysShrink *string `json:"RepeatWeekdays,omitempty" xml:"RepeatWeekdays,omitempty"`
+	RetentionDays        *int32  `json:"RetentionDays,omitempty" xml:"RetentionDays,omitempty"`
+	TimePointsShrink     *string `json:"TimePoints,omitempty" xml:"TimePoints,omitempty"`
+}
+
+func (s ModifyAutoSnapshotPolicyShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyAutoSnapshotPolicyShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyAutoSnapshotPolicyShrinkRequest) SetPolicyId(v string) *ModifyAutoSnapshotPolicyShrinkRequest {
+	s.PolicyId = &v
+	return s
+}
+
+func (s *ModifyAutoSnapshotPolicyShrinkRequest) SetPolicyName(v string) *ModifyAutoSnapshotPolicyShrinkRequest {
+	s.PolicyName = &v
+	return s
+}
+
+func (s *ModifyAutoSnapshotPolicyShrinkRequest) SetRegionId(v string) *ModifyAutoSnapshotPolicyShrinkRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ModifyAutoSnapshotPolicyShrinkRequest) SetRepeatWeekdaysShrink(v string) *ModifyAutoSnapshotPolicyShrinkRequest {
+	s.RepeatWeekdaysShrink = &v
+	return s
+}
+
+func (s *ModifyAutoSnapshotPolicyShrinkRequest) SetRetentionDays(v int32) *ModifyAutoSnapshotPolicyShrinkRequest {
+	s.RetentionDays = &v
+	return s
+}
+
+func (s *ModifyAutoSnapshotPolicyShrinkRequest) SetTimePointsShrink(v string) *ModifyAutoSnapshotPolicyShrinkRequest {
+	s.TimePointsShrink = &v
+	return s
+}
+
+type ModifyAutoSnapshotPolicyResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifyAutoSnapshotPolicyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyAutoSnapshotPolicyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyAutoSnapshotPolicyResponseBody) SetRequestId(v string) *ModifyAutoSnapshotPolicyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifyAutoSnapshotPolicyResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ModifyAutoSnapshotPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ModifyAutoSnapshotPolicyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyAutoSnapshotPolicyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyAutoSnapshotPolicyResponse) SetHeaders(v map[string]*string) *ModifyAutoSnapshotPolicyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyAutoSnapshotPolicyResponse) SetStatusCode(v int32) *ModifyAutoSnapshotPolicyResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyAutoSnapshotPolicyResponse) SetBody(v *ModifyAutoSnapshotPolicyResponseBody) *ModifyAutoSnapshotPolicyResponse {
+	s.Body = v
+	return s
+}
+
+type ModifySnapshotAttributeRequest struct {
+	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	SnapshotId   *string `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
+	SnapshotName *string `json:"SnapshotName,omitempty" xml:"SnapshotName,omitempty"`
+}
+
+func (s ModifySnapshotAttributeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifySnapshotAttributeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifySnapshotAttributeRequest) SetDescription(v string) *ModifySnapshotAttributeRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *ModifySnapshotAttributeRequest) SetRegionId(v string) *ModifySnapshotAttributeRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ModifySnapshotAttributeRequest) SetSnapshotId(v string) *ModifySnapshotAttributeRequest {
+	s.SnapshotId = &v
+	return s
+}
+
+func (s *ModifySnapshotAttributeRequest) SetSnapshotName(v string) *ModifySnapshotAttributeRequest {
+	s.SnapshotName = &v
+	return s
+}
+
+type ModifySnapshotAttributeResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifySnapshotAttributeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifySnapshotAttributeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifySnapshotAttributeResponseBody) SetRequestId(v string) *ModifySnapshotAttributeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifySnapshotAttributeResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ModifySnapshotAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ModifySnapshotAttributeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifySnapshotAttributeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifySnapshotAttributeResponse) SetHeaders(v map[string]*string) *ModifySnapshotAttributeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifySnapshotAttributeResponse) SetStatusCode(v int32) *ModifySnapshotAttributeResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifySnapshotAttributeResponse) SetBody(v *ModifySnapshotAttributeResponseBody) *ModifySnapshotAttributeResponse {
+	s.Body = v
+	return s
+}
+
 type RenameDbfsRequest struct {
 	FsId     *string `json:"FsId,omitempty" xml:"FsId,omitempty"`
 	FsName   *string `json:"FsName,omitempty" xml:"FsName,omitempty"`
@@ -3089,6 +4251,64 @@ func (client *Client) AddTagsBatch(request *AddTagsBatchRequest) (_result *AddTa
 	return _result, _err
 }
 
+func (client *Client) ApplyAutoSnapshotPolicyWithOptions(tmpReq *ApplyAutoSnapshotPolicyRequest, runtime *util.RuntimeOptions) (_result *ApplyAutoSnapshotPolicyResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ApplyAutoSnapshotPolicyShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.DbfsIds)) {
+		request.DbfsIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DbfsIds, tea.String("DbfsIds"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DbfsIdsShrink)) {
+		query["DbfsIds"] = request.DbfsIdsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PolicyId)) {
+		query["PolicyId"] = request.PolicyId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ApplyAutoSnapshotPolicy"),
+		Version:     tea.String("2020-04-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ApplyAutoSnapshotPolicyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ApplyAutoSnapshotPolicy(request *ApplyAutoSnapshotPolicyRequest) (_result *ApplyAutoSnapshotPolicyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ApplyAutoSnapshotPolicyResponse{}
+	_body, _err := client.ApplyAutoSnapshotPolicyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) AttachDbfsWithOptions(request *AttachDbfsRequest, runtime *util.RuntimeOptions) (_result *AttachDbfsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3497,6 +4717,54 @@ func (client *Client) CreateSnapshot(request *CreateSnapshotRequest) (_result *C
 	return _result, _err
 }
 
+func (client *Client) DeleteAutoSnapshotPolicyWithOptions(request *DeleteAutoSnapshotPolicyRequest, runtime *util.RuntimeOptions) (_result *DeleteAutoSnapshotPolicyResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.PolicyId)) {
+		query["PolicyId"] = request.PolicyId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteAutoSnapshotPolicy"),
+		Version:     tea.String("2020-04-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteAutoSnapshotPolicyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteAutoSnapshotPolicy(request *DeleteAutoSnapshotPolicyRequest) (_result *DeleteAutoSnapshotPolicyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteAutoSnapshotPolicyResponse{}
+	_body, _err := client.DeleteAutoSnapshotPolicyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DeleteDbfsWithOptions(request *DeleteDbfsRequest, runtime *util.RuntimeOptions) (_result *DeleteDbfsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3797,6 +5065,54 @@ func (client *Client) DetachDbfs(request *DetachDbfsRequest) (_result *DetachDbf
 	return _result, _err
 }
 
+func (client *Client) GetAutoSnapshotPolicyWithOptions(request *GetAutoSnapshotPolicyRequest, runtime *util.RuntimeOptions) (_result *GetAutoSnapshotPolicyResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.PolicyId)) {
+		query["PolicyId"] = request.PolicyId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetAutoSnapshotPolicy"),
+		Version:     tea.String("2020-04-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetAutoSnapshotPolicyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetAutoSnapshotPolicy(request *GetAutoSnapshotPolicyRequest) (_result *GetAutoSnapshotPolicyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetAutoSnapshotPolicyResponse{}
+	_body, _err := client.GetAutoSnapshotPolicyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) GetDbfsWithOptions(request *GetDbfsRequest, runtime *util.RuntimeOptions) (_result *GetDbfsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3882,6 +5198,190 @@ func (client *Client) GetServiceLinkedRole(request *GetServiceLinkedRoleRequest)
 	runtime := &util.RuntimeOptions{}
 	_result = &GetServiceLinkedRoleResponse{}
 	_body, _err := client.GetServiceLinkedRoleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListAutoSnapshotPoliciesWithOptions(request *ListAutoSnapshotPoliciesRequest, runtime *util.RuntimeOptions) (_result *ListAutoSnapshotPoliciesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.FilterKey)) {
+		query["FilterKey"] = request.FilterKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FilterValue)) {
+		query["FilterValue"] = request.FilterValue
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListAutoSnapshotPolicies"),
+		Version:     tea.String("2020-04-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListAutoSnapshotPoliciesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListAutoSnapshotPolicies(request *ListAutoSnapshotPoliciesRequest) (_result *ListAutoSnapshotPoliciesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListAutoSnapshotPoliciesResponse{}
+	_body, _err := client.ListAutoSnapshotPoliciesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListAutoSnapshotPolicyAppliedDbfsWithOptions(request *ListAutoSnapshotPolicyAppliedDbfsRequest, runtime *util.RuntimeOptions) (_result *ListAutoSnapshotPolicyAppliedDbfsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.FilterKey)) {
+		query["FilterKey"] = request.FilterKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FilterValue)) {
+		query["FilterValue"] = request.FilterValue
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PolicyId)) {
+		query["PolicyId"] = request.PolicyId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListAutoSnapshotPolicyAppliedDbfs"),
+		Version:     tea.String("2020-04-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListAutoSnapshotPolicyAppliedDbfsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListAutoSnapshotPolicyAppliedDbfs(request *ListAutoSnapshotPolicyAppliedDbfsRequest) (_result *ListAutoSnapshotPolicyAppliedDbfsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListAutoSnapshotPolicyAppliedDbfsResponse{}
+	_body, _err := client.ListAutoSnapshotPolicyAppliedDbfsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListAutoSnapshotPolicyUnappliedDbfsWithOptions(request *ListAutoSnapshotPolicyUnappliedDbfsRequest, runtime *util.RuntimeOptions) (_result *ListAutoSnapshotPolicyUnappliedDbfsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.FilterKey)) {
+		query["FilterKey"] = request.FilterKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FilterValue)) {
+		query["FilterValue"] = request.FilterValue
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListAutoSnapshotPolicyUnappliedDbfs"),
+		Version:     tea.String("2020-04-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListAutoSnapshotPolicyUnappliedDbfsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListAutoSnapshotPolicyUnappliedDbfs(request *ListAutoSnapshotPolicyUnappliedDbfsRequest) (_result *ListAutoSnapshotPolicyUnappliedDbfsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListAutoSnapshotPolicyUnappliedDbfsResponse{}
+	_body, _err := client.ListAutoSnapshotPolicyUnappliedDbfsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4242,6 +5742,136 @@ func (client *Client) ListTagValues(request *ListTagValuesRequest) (_result *Lis
 	runtime := &util.RuntimeOptions{}
 	_result = &ListTagValuesResponse{}
 	_body, _err := client.ListTagValuesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ModifyAutoSnapshotPolicyWithOptions(tmpReq *ModifyAutoSnapshotPolicyRequest, runtime *util.RuntimeOptions) (_result *ModifyAutoSnapshotPolicyResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ModifyAutoSnapshotPolicyShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.RepeatWeekdays)) {
+		request.RepeatWeekdaysShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RepeatWeekdays, tea.String("RepeatWeekdays"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.TimePoints)) {
+		request.TimePointsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TimePoints, tea.String("TimePoints"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.PolicyId)) {
+		query["PolicyId"] = request.PolicyId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PolicyName)) {
+		query["PolicyName"] = request.PolicyName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RepeatWeekdaysShrink)) {
+		query["RepeatWeekdays"] = request.RepeatWeekdaysShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RetentionDays)) {
+		query["RetentionDays"] = request.RetentionDays
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TimePointsShrink)) {
+		query["TimePoints"] = request.TimePointsShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyAutoSnapshotPolicy"),
+		Version:     tea.String("2020-04-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyAutoSnapshotPolicyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ModifyAutoSnapshotPolicy(request *ModifyAutoSnapshotPolicyRequest) (_result *ModifyAutoSnapshotPolicyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyAutoSnapshotPolicyResponse{}
+	_body, _err := client.ModifyAutoSnapshotPolicyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ModifySnapshotAttributeWithOptions(request *ModifySnapshotAttributeRequest, runtime *util.RuntimeOptions) (_result *ModifySnapshotAttributeResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SnapshotId)) {
+		query["SnapshotId"] = request.SnapshotId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SnapshotName)) {
+		query["SnapshotName"] = request.SnapshotName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifySnapshotAttribute"),
+		Version:     tea.String("2020-04-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifySnapshotAttributeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ModifySnapshotAttribute(request *ModifySnapshotAttributeRequest) (_result *ModifySnapshotAttributeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifySnapshotAttributeResponse{}
+	_body, _err := client.ModifySnapshotAttributeWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
