@@ -171,6 +171,7 @@ type ApplyCreateDistributionOrderResponseBody struct {
 	Message    *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	Model      *string `json:"Model,omitempty" xml:"Model,omitempty"`
 	PageNumber *int64  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// pageSize
 	PageSize   *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	SubCode    *string `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
@@ -442,12 +443,13 @@ type ApplyRefund4DistributionResponseBody struct {
 	Message    *string                                    `json:"Message,omitempty" xml:"Message,omitempty"`
 	Model      *ApplyRefund4DistributionResponseBodyModel `json:"Model,omitempty" xml:"Model,omitempty" type:"Struct"`
 	PageNumber *int64                                     `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int64                                     `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId  *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SubCode    *string                                    `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
-	SubMessage *string                                    `json:"SubMessage,omitempty" xml:"SubMessage,omitempty"`
-	Success    *bool                                      `json:"Success,omitempty" xml:"Success,omitempty"`
-	TotalCount *int64                                     `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// pageSize
+	PageSize   *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SubCode    *string `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
+	SubMessage *string `json:"SubMessage,omitempty" xml:"SubMessage,omitempty"`
+	Success    *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	TotalCount *int64  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ApplyRefund4DistributionResponseBody) String() string {
@@ -611,6 +613,7 @@ type CancelDistributionTradeResponseBody struct {
 	LogsId     *string `json:"LogsId,omitempty" xml:"LogsId,omitempty"`
 	Message    *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	PageNumber *int64  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// pageSize
 	PageSize   *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	SubCode    *string `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
@@ -747,12 +750,13 @@ type CancelRefund4DistributionResponseBody struct {
 	Message    *string                                     `json:"Message,omitempty" xml:"Message,omitempty"`
 	Model      *CancelRefund4DistributionResponseBodyModel `json:"Model,omitempty" xml:"Model,omitempty" type:"Struct"`
 	PageNumber *int64                                      `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int64                                      `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId  *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SubCode    *string                                     `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
-	SubMessage *string                                     `json:"SubMessage,omitempty" xml:"SubMessage,omitempty"`
-	Success    *bool                                       `json:"Success,omitempty" xml:"Success,omitempty"`
-	TotalCount *int64                                      `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// pageSize
+	PageSize   *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SubCode    *string `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
+	SubMessage *string `json:"SubMessage,omitempty" xml:"SubMessage,omitempty"`
+	Success    *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	TotalCount *int64  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s CancelRefund4DistributionResponseBody) String() string {
@@ -922,6 +926,7 @@ type ConfirmDisburse4DistributionResponseBody struct {
 	LogsId     *string `json:"LogsId,omitempty" xml:"LogsId,omitempty"`
 	Message    *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	PageNumber *int64  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// pageSize
 	PageSize   *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	SubCode    *string `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
@@ -1064,12 +1069,13 @@ type InitApplyRefund4DistributionResponseBody struct {
 	Message    *string                                        `json:"Message,omitempty" xml:"Message,omitempty"`
 	Model      *InitApplyRefund4DistributionResponseBodyModel `json:"Model,omitempty" xml:"Model,omitempty" type:"Struct"`
 	PageNumber *int64                                         `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int64                                         `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId  *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SubCode    *string                                        `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
-	SubMessage *string                                        `json:"SubMessage,omitempty" xml:"SubMessage,omitempty"`
-	Success    *bool                                          `json:"Success,omitempty" xml:"Success,omitempty"`
-	TotalCount *int64                                         `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// pageSize
+	PageSize   *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SubCode    *string `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
+	SubMessage *string `json:"SubMessage,omitempty" xml:"SubMessage,omitempty"`
+	Success    *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	TotalCount *int64  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s InitApplyRefund4DistributionResponseBody) String() string {
@@ -1310,12 +1316,13 @@ type InitModifyRefund4DistributionResponseBody struct {
 	Message    *string                                         `json:"Message,omitempty" xml:"Message,omitempty"`
 	Model      *InitModifyRefund4DistributionResponseBodyModel `json:"Model,omitempty" xml:"Model,omitempty" type:"Struct"`
 	PageNumber *int64                                          `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int64                                          `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId  *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SubCode    *string                                         `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
-	SubMessage *string                                         `json:"SubMessage,omitempty" xml:"SubMessage,omitempty"`
-	Success    *bool                                           `json:"Success,omitempty" xml:"Success,omitempty"`
-	TotalCount *int64                                          `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// pageSize
+	PageSize   *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SubCode    *string `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
+	SubMessage *string `json:"SubMessage,omitempty" xml:"SubMessage,omitempty"`
+	Success    *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	TotalCount *int64  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s InitModifyRefund4DistributionResponseBody) String() string {
@@ -1568,12 +1575,13 @@ type ListDistributionItemResponseBody struct {
 	Message    *string                                  `json:"Message,omitempty" xml:"Message,omitempty"`
 	Model      []*ListDistributionItemResponseBodyModel `json:"Model,omitempty" xml:"Model,omitempty" type:"Repeated"`
 	PageNumber *int64                                   `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int64                                   `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId  *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SubCode    *string                                  `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
-	SubMessage *string                                  `json:"SubMessage,omitempty" xml:"SubMessage,omitempty"`
-	Success    *bool                                    `json:"Success,omitempty" xml:"Success,omitempty"`
-	TotalCount *int64                                   `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// pageSize
+	PageSize   *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SubCode    *string `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
+	SubMessage *string `json:"SubMessage,omitempty" xml:"SubMessage,omitempty"`
+	Success    *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	TotalCount *int64  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListDistributionItemResponseBody) String() string {
@@ -1640,35 +1648,37 @@ func (s *ListDistributionItemResponseBody) SetTotalCount(v int64) *ListDistribut
 }
 
 type ListDistributionItemResponseBodyModel struct {
-	Category                *string                                               `json:"Category,omitempty" xml:"Category,omitempty"`
-	CategoryChain           []*ListDistributionItemResponseBodyModelCategoryChain `json:"CategoryChain,omitempty" xml:"CategoryChain,omitempty" type:"Repeated"`
-	CategoryId              *int64                                                `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
-	DescOption              *string                                               `json:"DescOption,omitempty" xml:"DescOption,omitempty"`
-	DistributionMallId      *string                                               `json:"DistributionMallId,omitempty" xml:"DistributionMallId,omitempty"`
-	GmtCreate               *string                                               `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	GmtModified             *string                                               `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	HasQuantity             *bool                                                 `json:"HasQuantity,omitempty" xml:"HasQuantity,omitempty"`
-	IsCanSell               *bool                                                 `json:"IsCanSell,omitempty" xml:"IsCanSell,omitempty"`
-	ItemDesc                *string                                               `json:"ItemDesc,omitempty" xml:"ItemDesc,omitempty"`
-	ItemId                  *int64                                                `json:"ItemId,omitempty" xml:"ItemId,omitempty"`
-	ItemIdStr               *string                                               `json:"ItemIdStr,omitempty" xml:"ItemIdStr,omitempty"`
-	ItemImages              []*string                                             `json:"ItemImages,omitempty" xml:"ItemImages,omitempty" type:"Repeated"`
-	ItemName                *string                                               `json:"ItemName,omitempty" xml:"ItemName,omitempty"`
-	ItemTitle               *string                                               `json:"ItemTitle,omitempty" xml:"ItemTitle,omitempty"`
-	LmItemId                *string                                               `json:"LmItemId,omitempty" xml:"LmItemId,omitempty"`
-	MainPicUrl              *string                                               `json:"MainPicUrl,omitempty" xml:"MainPicUrl,omitempty"`
-	PicUrl                  *string                                               `json:"PicUrl,omitempty" xml:"PicUrl,omitempty"`
-	PriceCentScope          *string                                               `json:"PriceCentScope,omitempty" xml:"PriceCentScope,omitempty"`
-	PropertiesJson          *string                                               `json:"PropertiesJson,omitempty" xml:"PropertiesJson,omitempty"`
-	Quantity                *int32                                                `json:"Quantity,omitempty" xml:"Quantity,omitempty"`
-	ReservedPrice           *int64                                                `json:"ReservedPrice,omitempty" xml:"ReservedPrice,omitempty"`
-	ReservedPriceScope      *string                                               `json:"ReservedPriceScope,omitempty" xml:"ReservedPriceScope,omitempty"`
-	SimpleQuantity          *string                                               `json:"SimpleQuantity,omitempty" xml:"SimpleQuantity,omitempty"`
-	SimpleTotalSoldQuantity *string                                               `json:"SimpleTotalSoldQuantity,omitempty" xml:"SimpleTotalSoldQuantity,omitempty"`
-	SkuList                 []*ListDistributionItemResponseBodyModelSkuList       `json:"SkuList,omitempty" xml:"SkuList,omitempty" type:"Repeated"`
-	Status                  *int32                                                `json:"Status,omitempty" xml:"Status,omitempty"`
-	Tips                    *string                                               `json:"Tips,omitempty" xml:"Tips,omitempty"`
-	TotalSoldQuantity       *int32                                                `json:"TotalSoldQuantity,omitempty" xml:"TotalSoldQuantity,omitempty"`
+	Category                *string                                                   `json:"Category,omitempty" xml:"Category,omitempty"`
+	CategoryChain           []*ListDistributionItemResponseBodyModelCategoryChain     `json:"CategoryChain,omitempty" xml:"CategoryChain,omitempty" type:"Repeated"`
+	CategoryId              *int64                                                    `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	DescOption              *string                                                   `json:"DescOption,omitempty" xml:"DescOption,omitempty"`
+	DistributionMallId      *string                                                   `json:"DistributionMallId,omitempty" xml:"DistributionMallId,omitempty"`
+	GmtCreate               *string                                                   `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	GmtModified             *string                                                   `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	HasQuantity             *bool                                                     `json:"HasQuantity,omitempty" xml:"HasQuantity,omitempty"`
+	IsCanSell               *bool                                                     `json:"IsCanSell,omitempty" xml:"IsCanSell,omitempty"`
+	ItemDesc                *string                                                   `json:"ItemDesc,omitempty" xml:"ItemDesc,omitempty"`
+	ItemId                  *int64                                                    `json:"ItemId,omitempty" xml:"ItemId,omitempty"`
+	ItemIdStr               *string                                                   `json:"ItemIdStr,omitempty" xml:"ItemIdStr,omitempty"`
+	ItemImages              []*string                                                 `json:"ItemImages,omitempty" xml:"ItemImages,omitempty" type:"Repeated"`
+	ItemName                *string                                                   `json:"ItemName,omitempty" xml:"ItemName,omitempty"`
+	ItemTitle               *string                                                   `json:"ItemTitle,omitempty" xml:"ItemTitle,omitempty"`
+	LmAttributeMap          map[string]*string                                        `json:"LmAttributeMap,omitempty" xml:"LmAttributeMap,omitempty"`
+	LmAttributeModels       []*ListDistributionItemResponseBodyModelLmAttributeModels `json:"LmAttributeModels,omitempty" xml:"LmAttributeModels,omitempty" type:"Repeated"`
+	LmItemId                *string                                                   `json:"LmItemId,omitempty" xml:"LmItemId,omitempty"`
+	MainPicUrl              *string                                                   `json:"MainPicUrl,omitempty" xml:"MainPicUrl,omitempty"`
+	PicUrl                  *string                                                   `json:"PicUrl,omitempty" xml:"PicUrl,omitempty"`
+	PriceCentScope          *string                                                   `json:"PriceCentScope,omitempty" xml:"PriceCentScope,omitempty"`
+	PropertiesJson          *string                                                   `json:"PropertiesJson,omitempty" xml:"PropertiesJson,omitempty"`
+	Quantity                *int32                                                    `json:"Quantity,omitempty" xml:"Quantity,omitempty"`
+	ReservedPrice           *int64                                                    `json:"ReservedPrice,omitempty" xml:"ReservedPrice,omitempty"`
+	ReservedPriceScope      *string                                                   `json:"ReservedPriceScope,omitempty" xml:"ReservedPriceScope,omitempty"`
+	SimpleQuantity          *string                                                   `json:"SimpleQuantity,omitempty" xml:"SimpleQuantity,omitempty"`
+	SimpleTotalSoldQuantity *string                                                   `json:"SimpleTotalSoldQuantity,omitempty" xml:"SimpleTotalSoldQuantity,omitempty"`
+	SkuList                 []*ListDistributionItemResponseBodyModelSkuList           `json:"SkuList,omitempty" xml:"SkuList,omitempty" type:"Repeated"`
+	Status                  *int32                                                    `json:"Status,omitempty" xml:"Status,omitempty"`
+	Tips                    *string                                                   `json:"Tips,omitempty" xml:"Tips,omitempty"`
+	TotalSoldQuantity       *int32                                                    `json:"TotalSoldQuantity,omitempty" xml:"TotalSoldQuantity,omitempty"`
 }
 
 func (s ListDistributionItemResponseBodyModel) String() string {
@@ -1751,6 +1761,16 @@ func (s *ListDistributionItemResponseBodyModel) SetItemName(v string) *ListDistr
 
 func (s *ListDistributionItemResponseBodyModel) SetItemTitle(v string) *ListDistributionItemResponseBodyModel {
 	s.ItemTitle = &v
+	return s
+}
+
+func (s *ListDistributionItemResponseBodyModel) SetLmAttributeMap(v map[string]*string) *ListDistributionItemResponseBodyModel {
+	s.LmAttributeMap = v
+	return s
+}
+
+func (s *ListDistributionItemResponseBodyModel) SetLmAttributeModels(v []*ListDistributionItemResponseBodyModelLmAttributeModels) *ListDistributionItemResponseBodyModel {
+	s.LmAttributeModels = v
 	return s
 }
 
@@ -1865,6 +1885,65 @@ func (s *ListDistributionItemResponseBodyModelCategoryChain) SetParentId(v int64
 	return s
 }
 
+type ListDistributionItemResponseBodyModelLmAttributeModels struct {
+	AttrId      *int64    `json:"AttrId,omitempty" xml:"AttrId,omitempty"`
+	Category    *int32    `json:"Category,omitempty" xml:"Category,omitempty"`
+	DataType    *string   `json:"DataType,omitempty" xml:"DataType,omitempty"`
+	Description *string   `json:"Description,omitempty" xml:"Description,omitempty"`
+	Name        *string   `json:"Name,omitempty" xml:"Name,omitempty"`
+	Restriction *string   `json:"Restriction,omitempty" xml:"Restriction,omitempty"`
+	ScopeList   []*string `json:"ScopeList,omitempty" xml:"ScopeList,omitempty" type:"Repeated"`
+	Value       *string   `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListDistributionItemResponseBodyModelLmAttributeModels) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDistributionItemResponseBodyModelLmAttributeModels) GoString() string {
+	return s.String()
+}
+
+func (s *ListDistributionItemResponseBodyModelLmAttributeModels) SetAttrId(v int64) *ListDistributionItemResponseBodyModelLmAttributeModels {
+	s.AttrId = &v
+	return s
+}
+
+func (s *ListDistributionItemResponseBodyModelLmAttributeModels) SetCategory(v int32) *ListDistributionItemResponseBodyModelLmAttributeModels {
+	s.Category = &v
+	return s
+}
+
+func (s *ListDistributionItemResponseBodyModelLmAttributeModels) SetDataType(v string) *ListDistributionItemResponseBodyModelLmAttributeModels {
+	s.DataType = &v
+	return s
+}
+
+func (s *ListDistributionItemResponseBodyModelLmAttributeModels) SetDescription(v string) *ListDistributionItemResponseBodyModelLmAttributeModels {
+	s.Description = &v
+	return s
+}
+
+func (s *ListDistributionItemResponseBodyModelLmAttributeModels) SetName(v string) *ListDistributionItemResponseBodyModelLmAttributeModels {
+	s.Name = &v
+	return s
+}
+
+func (s *ListDistributionItemResponseBodyModelLmAttributeModels) SetRestriction(v string) *ListDistributionItemResponseBodyModelLmAttributeModels {
+	s.Restriction = &v
+	return s
+}
+
+func (s *ListDistributionItemResponseBodyModelLmAttributeModels) SetScopeList(v []*string) *ListDistributionItemResponseBodyModelLmAttributeModels {
+	s.ScopeList = v
+	return s
+}
+
+func (s *ListDistributionItemResponseBodyModelLmAttributeModels) SetValue(v string) *ListDistributionItemResponseBodyModelLmAttributeModels {
+	s.Value = &v
+	return s
+}
+
 type ListDistributionItemResponseBodyModelSkuList struct {
 	CanSell                *bool                                                            `json:"CanSell,omitempty" xml:"CanSell,omitempty"`
 	CustomizedAttributeMap map[string]*string                                               `json:"CustomizedAttributeMap,omitempty" xml:"CustomizedAttributeMap,omitempty"`
@@ -1886,6 +1965,7 @@ type ListDistributionItemResponseBodyModelSkuList struct {
 	SkuTitle               *string                                                          `json:"SkuTitle,omitempty" xml:"SkuTitle,omitempty"`
 	Status                 *int32                                                           `json:"Status,omitempty" xml:"Status,omitempty"`
 	Tips                   *string                                                          `json:"Tips,omitempty" xml:"Tips,omitempty"`
+	LmSkuAttributeMap      map[string]*string                                               `json:"lmSkuAttributeMap,omitempty" xml:"lmSkuAttributeMap,omitempty"`
 }
 
 func (s ListDistributionItemResponseBodyModelSkuList) String() string {
@@ -1993,6 +2073,11 @@ func (s *ListDistributionItemResponseBodyModelSkuList) SetStatus(v int32) *ListD
 
 func (s *ListDistributionItemResponseBodyModelSkuList) SetTips(v string) *ListDistributionItemResponseBodyModelSkuList {
 	s.Tips = &v
+	return s
+}
+
+func (s *ListDistributionItemResponseBodyModelSkuList) SetLmSkuAttributeMap(v map[string]*string) *ListDistributionItemResponseBodyModelSkuList {
+	s.LmSkuAttributeMap = v
 	return s
 }
 
@@ -2155,12 +2240,13 @@ type ListDistributionMallResponseBody struct {
 	Message    *string                                  `json:"Message,omitempty" xml:"Message,omitempty"`
 	Model      []*ListDistributionMallResponseBodyModel `json:"Model,omitempty" xml:"Model,omitempty" type:"Repeated"`
 	PageNumber *int64                                   `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int64                                   `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId  *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SubCode    *string                                  `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
-	SubMessage *string                                  `json:"SubMessage,omitempty" xml:"SubMessage,omitempty"`
-	Success    *bool                                    `json:"Success,omitempty" xml:"Success,omitempty"`
-	TotalCount *int64                                   `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// pageSize
+	PageSize   *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SubCode    *string `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
+	SubMessage *string `json:"SubMessage,omitempty" xml:"SubMessage,omitempty"`
+	Success    *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	TotalCount *int64  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListDistributionMallResponseBody) String() string {
@@ -2491,12 +2577,13 @@ type ModifyRefund4DistributionResponseBody struct {
 	Message    *string                                     `json:"Message,omitempty" xml:"Message,omitempty"`
 	Model      *ModifyRefund4DistributionResponseBodyModel `json:"Model,omitempty" xml:"Model,omitempty" type:"Struct"`
 	PageNumber *int64                                      `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int64                                      `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId  *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SubCode    *string                                     `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
-	SubMessage *string                                     `json:"SubMessage,omitempty" xml:"SubMessage,omitempty"`
-	Success    *bool                                       `json:"Success,omitempty" xml:"Success,omitempty"`
-	TotalCount *int64                                      `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// pageSize
+	PageSize   *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SubCode    *string `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
+	SubMessage *string `json:"SubMessage,omitempty" xml:"SubMessage,omitempty"`
+	Success    *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	TotalCount *int64  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ModifyRefund4DistributionResponseBody) String() string {
@@ -3037,12 +3124,13 @@ type QueryDistributionMallResponseBody struct {
 	Message     *string                                 `json:"Message,omitempty" xml:"Message,omitempty"`
 	Model       *QueryDistributionMallResponseBodyModel `json:"Model,omitempty" xml:"Model,omitempty" type:"Struct"`
 	PageNumber  *int64                                  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize    *int64                                  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId   *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SubCode     *string                                 `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
-	SubMessage  *string                                 `json:"SubMessage,omitempty" xml:"SubMessage,omitempty"`
-	Success     *bool                                   `json:"Success,omitempty" xml:"Success,omitempty"`
-	TotalCount  *int64                                  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// pageSize
+	PageSize   *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SubCode    *string `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
+	SubMessage *string `json:"SubMessage,omitempty" xml:"SubMessage,omitempty"`
+	Success    *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	TotalCount *int64  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s QueryDistributionMallResponseBody) String() string {
@@ -3242,6 +3330,7 @@ type QueryDistributionTradeStatusResponseBody struct {
 	Message    *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	Model      *string `json:"Model,omitempty" xml:"Model,omitempty"`
 	PageNumber *int64  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// pageSize
 	PageSize   *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	SubCode    *string `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
@@ -3384,12 +3473,13 @@ type QueryItemDetailResponseBody struct {
 	Message     *string                           `json:"Message,omitempty" xml:"Message,omitempty"`
 	Model       *QueryItemDetailResponseBodyModel `json:"Model,omitempty" xml:"Model,omitempty" type:"Struct"`
 	PageNumber  *int64                            `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize    *int64                            `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId   *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SubCode     *string                           `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
-	SubMessage  *string                           `json:"SubMessage,omitempty" xml:"SubMessage,omitempty"`
-	Success     *bool                             `json:"Success,omitempty" xml:"Success,omitempty"`
-	TotalCount  *int64                            `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// pageSize
+	PageSize   *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SubCode    *string `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
+	SubMessage *string `json:"SubMessage,omitempty" xml:"SubMessage,omitempty"`
+	Success    *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	TotalCount *int64  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s QueryItemDetailResponseBody) String() string {
@@ -3461,45 +3551,46 @@ func (s *QueryItemDetailResponseBody) SetTotalCount(v int64) *QueryItemDetailRes
 }
 
 type QueryItemDetailResponseBodyModel struct {
-	CanNotBeSoldCode       *string                                         `json:"CanNotBeSoldCode,omitempty" xml:"CanNotBeSoldCode,omitempty"`
-	CanNotBeSoldMessage    *string                                         `json:"CanNotBeSoldMessage,omitempty" xml:"CanNotBeSoldMessage,omitempty"`
-	CategoryId             *int64                                          `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
-	CategoryIds            []*int64                                        `json:"CategoryIds,omitempty" xml:"CategoryIds,omitempty" type:"Repeated"`
-	City                   *string                                         `json:"City,omitempty" xml:"City,omitempty"`
-	Current                *string                                         `json:"Current,omitempty" xml:"Current,omitempty"`
-	CustomizedAttributeMap map[string]*string                              `json:"CustomizedAttributeMap,omitempty" xml:"CustomizedAttributeMap,omitempty"`
-	DescOption             *string                                         `json:"DescOption,omitempty" xml:"DescOption,omitempty"`
-	DescPath               *string                                         `json:"DescPath,omitempty" xml:"DescPath,omitempty"`
-	DistributionMallId     *string                                         `json:"DistributionMallId,omitempty" xml:"DistributionMallId,omitempty"`
-	Features               map[string]*string                              `json:"Features,omitempty" xml:"Features,omitempty"`
-	FirstPicUrl            *string                                         `json:"FirstPicUrl,omitempty" xml:"FirstPicUrl,omitempty"`
-	HasQuantity            *bool                                           `json:"HasQuantity,omitempty" xml:"HasQuantity,omitempty"`
-	IforestProps           []map[string]*string                            `json:"IforestProps,omitempty" xml:"IforestProps,omitempty" type:"Repeated"`
-	InvoiceType            *int32                                          `json:"InvoiceType,omitempty" xml:"InvoiceType,omitempty"`
-	IsCanSell              *bool                                           `json:"IsCanSell,omitempty" xml:"IsCanSell,omitempty"`
-	IsSellerPayPostfee     *bool                                           `json:"IsSellerPayPostfee,omitempty" xml:"IsSellerPayPostfee,omitempty"`
-	ItemId                 *int64                                          `json:"ItemId,omitempty" xml:"ItemId,omitempty"`
-	ItemImages             []*string                                       `json:"ItemImages,omitempty" xml:"ItemImages,omitempty" type:"Repeated"`
-	ItemTitle              *string                                         `json:"ItemTitle,omitempty" xml:"ItemTitle,omitempty"`
-	ItemTotalSimpleValue   *string                                         `json:"ItemTotalSimpleValue,omitempty" xml:"ItemTotalSimpleValue,omitempty"`
-	ItemTotalValue         *int32                                          `json:"ItemTotalValue,omitempty" xml:"ItemTotalValue,omitempty"`
-	LmItemAttributeMap     map[string]*string                              `json:"LmItemAttributeMap,omitempty" xml:"LmItemAttributeMap,omitempty"`
-	LmItemCategory         *string                                         `json:"LmItemCategory,omitempty" xml:"LmItemCategory,omitempty"`
-	LmItemId               *string                                         `json:"LmItemId,omitempty" xml:"LmItemId,omitempty"`
-	MainPicUrl             *string                                         `json:"MainPicUrl,omitempty" xml:"MainPicUrl,omitempty"`
-	MinPrice               *int64                                          `json:"MinPrice,omitempty" xml:"MinPrice,omitempty"`
-	Properties             map[string][]*string                            `json:"Properties,omitempty" xml:"Properties,omitempty"`
-	Prov                   *string                                         `json:"Prov,omitempty" xml:"Prov,omitempty"`
-	Quantity               *int32                                          `json:"Quantity,omitempty" xml:"Quantity,omitempty"`
-	ReservedPrice          *int64                                          `json:"ReservedPrice,omitempty" xml:"ReservedPrice,omitempty"`
-	SimpleQuantity         *string                                         `json:"SimpleQuantity,omitempty" xml:"SimpleQuantity,omitempty"`
-	SkuModels              []*QueryItemDetailResponseBodyModelSkuModels    `json:"SkuModels,omitempty" xml:"SkuModels,omitempty" type:"Repeated"`
-	SkuPropertys           []*QueryItemDetailResponseBodyModelSkuPropertys `json:"SkuPropertys,omitempty" xml:"SkuPropertys,omitempty" type:"Repeated"`
-	ThirdPartyItemId       *string                                         `json:"ThirdPartyItemId,omitempty" xml:"ThirdPartyItemId,omitempty"`
-	ThirdPartyName         *string                                         `json:"ThirdPartyName,omitempty" xml:"ThirdPartyName,omitempty"`
-	VideoPicUrl            *string                                         `json:"VideoPicUrl,omitempty" xml:"VideoPicUrl,omitempty"`
-	VideoUrl               *string                                         `json:"VideoUrl,omitempty" xml:"VideoUrl,omitempty"`
-	VirtualItemType        *string                                         `json:"VirtualItemType,omitempty" xml:"VirtualItemType,omitempty"`
+	CanNotBeSoldCode       *string              `json:"CanNotBeSoldCode,omitempty" xml:"CanNotBeSoldCode,omitempty"`
+	CanNotBeSoldMessage    *string              `json:"CanNotBeSoldMessage,omitempty" xml:"CanNotBeSoldMessage,omitempty"`
+	CategoryId             *int64               `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	CategoryIds            []*int64             `json:"CategoryIds,omitempty" xml:"CategoryIds,omitempty" type:"Repeated"`
+	City                   *string              `json:"City,omitempty" xml:"City,omitempty"`
+	Current                *string              `json:"Current,omitempty" xml:"Current,omitempty"`
+	CustomizedAttributeMap map[string]*string   `json:"CustomizedAttributeMap,omitempty" xml:"CustomizedAttributeMap,omitempty"`
+	DescOption             *string              `json:"DescOption,omitempty" xml:"DescOption,omitempty"`
+	DescPath               *string              `json:"DescPath,omitempty" xml:"DescPath,omitempty"`
+	DistributionMallId     *string              `json:"DistributionMallId,omitempty" xml:"DistributionMallId,omitempty"`
+	Features               map[string]*string   `json:"Features,omitempty" xml:"Features,omitempty"`
+	FirstPicUrl            *string              `json:"FirstPicUrl,omitempty" xml:"FirstPicUrl,omitempty"`
+	HasQuantity            *bool                `json:"HasQuantity,omitempty" xml:"HasQuantity,omitempty"`
+	IforestProps           []map[string]*string `json:"IforestProps,omitempty" xml:"IforestProps,omitempty" type:"Repeated"`
+	InvoiceType            *int32               `json:"InvoiceType,omitempty" xml:"InvoiceType,omitempty"`
+	IsCanSell              *bool                `json:"IsCanSell,omitempty" xml:"IsCanSell,omitempty"`
+	IsSellerPayPostfee     *bool                `json:"IsSellerPayPostfee,omitempty" xml:"IsSellerPayPostfee,omitempty"`
+	ItemId                 *int64               `json:"ItemId,omitempty" xml:"ItemId,omitempty"`
+	ItemImages             []*string            `json:"ItemImages,omitempty" xml:"ItemImages,omitempty" type:"Repeated"`
+	ItemTitle              *string              `json:"ItemTitle,omitempty" xml:"ItemTitle,omitempty"`
+	ItemTotalSimpleValue   *string              `json:"ItemTotalSimpleValue,omitempty" xml:"ItemTotalSimpleValue,omitempty"`
+	ItemTotalValue         *int32               `json:"ItemTotalValue,omitempty" xml:"ItemTotalValue,omitempty"`
+	LmItemAttributeMap     map[string]*string   `json:"LmItemAttributeMap,omitempty" xml:"LmItemAttributeMap,omitempty"`
+	LmItemCategory         *string              `json:"LmItemCategory,omitempty" xml:"LmItemCategory,omitempty"`
+	LmItemId               *string              `json:"LmItemId,omitempty" xml:"LmItemId,omitempty"`
+	MainPicUrl             *string              `json:"MainPicUrl,omitempty" xml:"MainPicUrl,omitempty"`
+	MinPrice               *int64               `json:"MinPrice,omitempty" xml:"MinPrice,omitempty"`
+	Properties             map[string][]*string `json:"Properties,omitempty" xml:"Properties,omitempty"`
+	Prov                   *string              `json:"Prov,omitempty" xml:"Prov,omitempty"`
+	Quantity               *int32               `json:"Quantity,omitempty" xml:"Quantity,omitempty"`
+	ReservedPrice          *int64               `json:"ReservedPrice,omitempty" xml:"ReservedPrice,omitempty"`
+	SimpleQuantity         *string              `json:"SimpleQuantity,omitempty" xml:"SimpleQuantity,omitempty"`
+	// sku list
+	SkuModels        []*QueryItemDetailResponseBodyModelSkuModels    `json:"SkuModels,omitempty" xml:"SkuModels,omitempty" type:"Repeated"`
+	SkuPropertys     []*QueryItemDetailResponseBodyModelSkuPropertys `json:"SkuPropertys,omitempty" xml:"SkuPropertys,omitempty" type:"Repeated"`
+	ThirdPartyItemId *string                                         `json:"ThirdPartyItemId,omitempty" xml:"ThirdPartyItemId,omitempty"`
+	ThirdPartyName   *string                                         `json:"ThirdPartyName,omitempty" xml:"ThirdPartyName,omitempty"`
+	VideoPicUrl      *string                                         `json:"VideoPicUrl,omitempty" xml:"VideoPicUrl,omitempty"`
+	VideoUrl         *string                                         `json:"VideoUrl,omitempty" xml:"VideoUrl,omitempty"`
+	VirtualItemType  *string                                         `json:"VirtualItemType,omitempty" xml:"VirtualItemType,omitempty"`
 }
 
 func (s QueryItemDetailResponseBodyModel) String() string {
@@ -3958,12 +4049,13 @@ type QueryItemDetailWithDivisionResponseBody struct {
 	Message    *string                                       `json:"Message,omitempty" xml:"Message,omitempty"`
 	Model      *QueryItemDetailWithDivisionResponseBodyModel `json:"Model,omitempty" xml:"Model,omitempty" type:"Struct"`
 	PageNumber *int64                                        `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int64                                        `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId  *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SubCode    *string                                       `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
-	SubMessage *string                                       `json:"SubMessage,omitempty" xml:"SubMessage,omitempty"`
-	Success    *bool                                         `json:"Success,omitempty" xml:"Success,omitempty"`
-	TotalCount *int64                                        `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// pageSize
+	PageSize   *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SubCode    *string `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
+	SubMessage *string `json:"SubMessage,omitempty" xml:"SubMessage,omitempty"`
+	Success    *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	TotalCount *int64  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s QueryItemDetailWithDivisionResponseBody) String() string {
@@ -4030,47 +4122,48 @@ func (s *QueryItemDetailWithDivisionResponseBody) SetTotalCount(v int64) *QueryI
 }
 
 type QueryItemDetailWithDivisionResponseBodyModel struct {
-	CanNotBeSoldCode       *string                                                     `json:"CanNotBeSoldCode,omitempty" xml:"CanNotBeSoldCode,omitempty"`
-	CanNotBeSoldMassage    *string                                                     `json:"CanNotBeSoldMassage,omitempty" xml:"CanNotBeSoldMassage,omitempty"`
-	CanSell                *bool                                                       `json:"CanSell,omitempty" xml:"CanSell,omitempty"`
-	CategoryId             *int64                                                      `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
-	CategoryIds            []*int64                                                    `json:"CategoryIds,omitempty" xml:"CategoryIds,omitempty" type:"Repeated"`
-	City                   *string                                                     `json:"City,omitempty" xml:"City,omitempty"`
-	Current                *string                                                     `json:"Current,omitempty" xml:"Current,omitempty"`
-	CustomizedAttributeMap map[string]*string                                          `json:"CustomizedAttributeMap,omitempty" xml:"CustomizedAttributeMap,omitempty"`
-	DescOption             *string                                                     `json:"DescOption,omitempty" xml:"DescOption,omitempty"`
-	DescPath               *string                                                     `json:"DescPath,omitempty" xml:"DescPath,omitempty"`
-	DistributionMallId     *string                                                     `json:"DistributionMallId,omitempty" xml:"DistributionMallId,omitempty"`
-	Features               map[string]*string                                          `json:"Features,omitempty" xml:"Features,omitempty"`
-	FirstPicUrl            *string                                                     `json:"FirstPicUrl,omitempty" xml:"FirstPicUrl,omitempty"`
-	HasQuantity            *bool                                                       `json:"HasQuantity,omitempty" xml:"HasQuantity,omitempty"`
-	IforestProps           []map[string]*string                                        `json:"IforestProps,omitempty" xml:"IforestProps,omitempty" type:"Repeated"`
-	InvoiceType            *int32                                                      `json:"InvoiceType,omitempty" xml:"InvoiceType,omitempty"`
-	ItemId                 *int64                                                      `json:"ItemId,omitempty" xml:"ItemId,omitempty"`
-	ItemImages             []*string                                                   `json:"ItemImages,omitempty" xml:"ItemImages,omitempty" type:"Repeated"`
-	ItemTitle              *string                                                     `json:"ItemTitle,omitempty" xml:"ItemTitle,omitempty"`
-	ItemTotalSimpleValue   *string                                                     `json:"ItemTotalSimpleValue,omitempty" xml:"ItemTotalSimpleValue,omitempty"`
-	ItemTotalValue         *int32                                                      `json:"ItemTotalValue,omitempty" xml:"ItemTotalValue,omitempty"`
-	LmItemAttributeMap     map[string]*string                                          `json:"LmItemAttributeMap,omitempty" xml:"LmItemAttributeMap,omitempty"`
-	LmItemCategory         *string                                                     `json:"LmItemCategory,omitempty" xml:"LmItemCategory,omitempty"`
-	LmItemId               *string                                                     `json:"LmItemId,omitempty" xml:"LmItemId,omitempty"`
-	MainPicUrl             *string                                                     `json:"MainPicUrl,omitempty" xml:"MainPicUrl,omitempty"`
-	MinPrice               *int64                                                      `json:"MinPrice,omitempty" xml:"MinPrice,omitempty"`
-	Properties             map[string][]*string                                        `json:"Properties,omitempty" xml:"Properties,omitempty"`
-	Prov                   *string                                                     `json:"Prov,omitempty" xml:"Prov,omitempty"`
-	Quantity               *int32                                                      `json:"Quantity,omitempty" xml:"Quantity,omitempty"`
-	ReservePrice           *int64                                                      `json:"ReservePrice,omitempty" xml:"ReservePrice,omitempty"`
-	SecuredTransactions    *int32                                                      `json:"SecuredTransactions,omitempty" xml:"SecuredTransactions,omitempty"`
-	SellerPayPostfee       *bool                                                       `json:"SellerPayPostfee,omitempty" xml:"SellerPayPostfee,omitempty"`
-	SimpleQuantity         *string                                                     `json:"SimpleQuantity,omitempty" xml:"SimpleQuantity,omitempty"`
-	SkuModels              []*QueryItemDetailWithDivisionResponseBodyModelSkuModels    `json:"SkuModels,omitempty" xml:"SkuModels,omitempty" type:"Repeated"`
-	SkuPropertys           []*QueryItemDetailWithDivisionResponseBodyModelSkuPropertys `json:"SkuPropertys,omitempty" xml:"SkuPropertys,omitempty" type:"Repeated"`
-	ThirdPartyItemId       *string                                                     `json:"ThirdPartyItemId,omitempty" xml:"ThirdPartyItemId,omitempty"`
-	ThirdPartyName         *string                                                     `json:"ThirdPartyName,omitempty" xml:"ThirdPartyName,omitempty"`
-	UserType               *int32                                                      `json:"UserType,omitempty" xml:"UserType,omitempty"`
-	VideoPicUrl            *string                                                     `json:"VideoPicUrl,omitempty" xml:"VideoPicUrl,omitempty"`
-	VideoUrl               *string                                                     `json:"VideoUrl,omitempty" xml:"VideoUrl,omitempty"`
-	VirtualItemType        *string                                                     `json:"VirtualItemType,omitempty" xml:"VirtualItemType,omitempty"`
+	CanNotBeSoldCode       *string              `json:"CanNotBeSoldCode,omitempty" xml:"CanNotBeSoldCode,omitempty"`
+	CanNotBeSoldMassage    *string              `json:"CanNotBeSoldMassage,omitempty" xml:"CanNotBeSoldMassage,omitempty"`
+	CanSell                *bool                `json:"CanSell,omitempty" xml:"CanSell,omitempty"`
+	CategoryId             *int64               `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	CategoryIds            []*int64             `json:"CategoryIds,omitempty" xml:"CategoryIds,omitempty" type:"Repeated"`
+	City                   *string              `json:"City,omitempty" xml:"City,omitempty"`
+	Current                *string              `json:"Current,omitempty" xml:"Current,omitempty"`
+	CustomizedAttributeMap map[string]*string   `json:"CustomizedAttributeMap,omitempty" xml:"CustomizedAttributeMap,omitempty"`
+	DescOption             *string              `json:"DescOption,omitempty" xml:"DescOption,omitempty"`
+	DescPath               *string              `json:"DescPath,omitempty" xml:"DescPath,omitempty"`
+	DistributionMallId     *string              `json:"DistributionMallId,omitempty" xml:"DistributionMallId,omitempty"`
+	Features               map[string]*string   `json:"Features,omitempty" xml:"Features,omitempty"`
+	FirstPicUrl            *string              `json:"FirstPicUrl,omitempty" xml:"FirstPicUrl,omitempty"`
+	HasQuantity            *bool                `json:"HasQuantity,omitempty" xml:"HasQuantity,omitempty"`
+	IforestProps           []map[string]*string `json:"IforestProps,omitempty" xml:"IforestProps,omitempty" type:"Repeated"`
+	InvoiceType            *int32               `json:"InvoiceType,omitempty" xml:"InvoiceType,omitempty"`
+	ItemId                 *int64               `json:"ItemId,omitempty" xml:"ItemId,omitempty"`
+	ItemImages             []*string            `json:"ItemImages,omitempty" xml:"ItemImages,omitempty" type:"Repeated"`
+	ItemTitle              *string              `json:"ItemTitle,omitempty" xml:"ItemTitle,omitempty"`
+	ItemTotalSimpleValue   *string              `json:"ItemTotalSimpleValue,omitempty" xml:"ItemTotalSimpleValue,omitempty"`
+	ItemTotalValue         *int32               `json:"ItemTotalValue,omitempty" xml:"ItemTotalValue,omitempty"`
+	LmItemAttributeMap     map[string]*string   `json:"LmItemAttributeMap,omitempty" xml:"LmItemAttributeMap,omitempty"`
+	LmItemCategory         *string              `json:"LmItemCategory,omitempty" xml:"LmItemCategory,omitempty"`
+	LmItemId               *string              `json:"LmItemId,omitempty" xml:"LmItemId,omitempty"`
+	MainPicUrl             *string              `json:"MainPicUrl,omitempty" xml:"MainPicUrl,omitempty"`
+	MinPrice               *int64               `json:"MinPrice,omitempty" xml:"MinPrice,omitempty"`
+	Properties             map[string][]*string `json:"Properties,omitempty" xml:"Properties,omitempty"`
+	Prov                   *string              `json:"Prov,omitempty" xml:"Prov,omitempty"`
+	Quantity               *int32               `json:"Quantity,omitempty" xml:"Quantity,omitempty"`
+	ReservePrice           *int64               `json:"ReservePrice,omitempty" xml:"ReservePrice,omitempty"`
+	SecuredTransactions    *int32               `json:"SecuredTransactions,omitempty" xml:"SecuredTransactions,omitempty"`
+	SellerPayPostfee       *bool                `json:"SellerPayPostfee,omitempty" xml:"SellerPayPostfee,omitempty"`
+	SimpleQuantity         *string              `json:"SimpleQuantity,omitempty" xml:"SimpleQuantity,omitempty"`
+	// sku list
+	SkuModels        []*QueryItemDetailWithDivisionResponseBodyModelSkuModels    `json:"SkuModels,omitempty" xml:"SkuModels,omitempty" type:"Repeated"`
+	SkuPropertys     []*QueryItemDetailWithDivisionResponseBodyModelSkuPropertys `json:"SkuPropertys,omitempty" xml:"SkuPropertys,omitempty" type:"Repeated"`
+	ThirdPartyItemId *string                                                     `json:"ThirdPartyItemId,omitempty" xml:"ThirdPartyItemId,omitempty"`
+	ThirdPartyName   *string                                                     `json:"ThirdPartyName,omitempty" xml:"ThirdPartyName,omitempty"`
+	UserType         *int32                                                      `json:"UserType,omitempty" xml:"UserType,omitempty"`
+	VideoPicUrl      *string                                                     `json:"VideoPicUrl,omitempty" xml:"VideoPicUrl,omitempty"`
+	VideoUrl         *string                                                     `json:"VideoUrl,omitempty" xml:"VideoUrl,omitempty"`
+	VirtualItemType  *string                                                     `json:"VirtualItemType,omitempty" xml:"VirtualItemType,omitempty"`
 }
 
 func (s QueryItemDetailWithDivisionResponseBodyModel) String() string {
@@ -4827,12 +4920,13 @@ type QueryLogistics4DistributionResponseBody struct {
 	Message    *string                                         `json:"Message,omitempty" xml:"Message,omitempty"`
 	Model      []*QueryLogistics4DistributionResponseBodyModel `json:"Model,omitempty" xml:"Model,omitempty" type:"Repeated"`
 	PageNumber *int64                                          `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int64                                          `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId  *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SubCode    *string                                         `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
-	SubMessage *string                                         `json:"SubMessage,omitempty" xml:"SubMessage,omitempty"`
-	Success    *bool                                           `json:"Success,omitempty" xml:"Success,omitempty"`
-	TotalCount *int64                                          `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// pageSize
+	PageSize   *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SubCode    *string `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
+	SubMessage *string `json:"SubMessage,omitempty" xml:"SubMessage,omitempty"`
+	Success    *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	TotalCount *int64  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s QueryLogistics4DistributionResponseBody) String() string {
@@ -5225,12 +5319,13 @@ type QueryOrderDetail4DistributionResponseBody struct {
 	Message    *string                                         `json:"Message,omitempty" xml:"Message,omitempty"`
 	Model      *QueryOrderDetail4DistributionResponseBodyModel `json:"Model,omitempty" xml:"Model,omitempty" type:"Struct"`
 	PageNumber *int64                                          `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int64                                          `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId  *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SubCode    *string                                         `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
-	SubMessage *string                                         `json:"SubMessage,omitempty" xml:"SubMessage,omitempty"`
-	Success    *bool                                           `json:"Success,omitempty" xml:"Success,omitempty"`
-	TotalCount *int64                                          `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// pageSize
+	PageSize   *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SubCode    *string `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
+	SubMessage *string `json:"SubMessage,omitempty" xml:"SubMessage,omitempty"`
+	Success    *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	TotalCount *int64  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s QueryOrderDetail4DistributionResponseBody) String() string {
@@ -5519,12 +5614,13 @@ type QueryOrderList4DistributionResponseBody struct {
 	Message    *string                                         `json:"Message,omitempty" xml:"Message,omitempty"`
 	Model      []*QueryOrderList4DistributionResponseBodyModel `json:"Model,omitempty" xml:"Model,omitempty" type:"Repeated"`
 	PageNumber *int64                                          `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int64                                          `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId  *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SubCode    *string                                         `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
-	SubMessage *string                                         `json:"SubMessage,omitempty" xml:"SubMessage,omitempty"`
-	Success    *bool                                           `json:"Success,omitempty" xml:"Success,omitempty"`
-	TotalCount *int64                                          `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// pageSize
+	PageSize   *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SubCode    *string `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
+	SubMessage *string `json:"SubMessage,omitempty" xml:"SubMessage,omitempty"`
+	Success    *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	TotalCount *int64  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s QueryOrderList4DistributionResponseBody) String() string {
@@ -5801,12 +5897,13 @@ type QueryRefundApplicationDetail4DistributionResponseBody struct {
 	Message    *string                                                     `json:"Message,omitempty" xml:"Message,omitempty"`
 	Model      *QueryRefundApplicationDetail4DistributionResponseBodyModel `json:"Model,omitempty" xml:"Model,omitempty" type:"Struct"`
 	PageNumber *int64                                                      `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int64                                                      `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId  *string                                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SubCode    *string                                                     `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
-	SubMessage *string                                                     `json:"SubMessage,omitempty" xml:"SubMessage,omitempty"`
-	Success    *bool                                                       `json:"Success,omitempty" xml:"Success,omitempty"`
-	TotalCount *int64                                                      `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// pageSize
+	PageSize   *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SubCode    *string `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
+	SubMessage *string `json:"SubMessage,omitempty" xml:"SubMessage,omitempty"`
+	Success    *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	TotalCount *int64  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s QueryRefundApplicationDetail4DistributionResponseBody) String() string {
@@ -6249,12 +6346,13 @@ type RenderDistributionOrderResponseBody struct {
 	Message    *string                                   `json:"Message,omitempty" xml:"Message,omitempty"`
 	Model      *RenderDistributionOrderResponseBodyModel `json:"Model,omitempty" xml:"Model,omitempty" type:"Struct"`
 	PageNumber *int64                                    `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int64                                    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId  *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SubCode    *string                                   `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
-	SubMessage *string                                   `json:"SubMessage,omitempty" xml:"SubMessage,omitempty"`
-	Success    *bool                                     `json:"Success,omitempty" xml:"Success,omitempty"`
-	TotalCount *int64                                    `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// pageSize
+	PageSize   *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SubCode    *string `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
+	SubMessage *string `json:"SubMessage,omitempty" xml:"SubMessage,omitempty"`
+	Success    *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	TotalCount *int64  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s RenderDistributionOrderResponseBody) String() string {
@@ -7721,6 +7819,7 @@ type SubmitReturnGoodLogistics4DistributionResponseBody struct {
 	LogsId     *string `json:"LogsId,omitempty" xml:"LogsId,omitempty"`
 	Message    *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	PageNumber *int64  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// pageSize
 	PageSize   *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	SubCode    *string `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
