@@ -1519,6 +1519,169 @@ func (s *BatchCheckImportDeviceResponse) SetBody(v *BatchCheckImportDeviceRespon
 	return s
 }
 
+type BatchCheckVehicleDeviceRequest struct {
+	DeviceList    []*BatchCheckVehicleDeviceRequestDeviceList `json:"DeviceList,omitempty" xml:"DeviceList,omitempty" type:"Repeated"`
+	IotInstanceId *string                                     `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
+	ProductKey    *string                                     `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
+}
+
+func (s BatchCheckVehicleDeviceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchCheckVehicleDeviceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *BatchCheckVehicleDeviceRequest) SetDeviceList(v []*BatchCheckVehicleDeviceRequestDeviceList) *BatchCheckVehicleDeviceRequest {
+	s.DeviceList = v
+	return s
+}
+
+func (s *BatchCheckVehicleDeviceRequest) SetIotInstanceId(v string) *BatchCheckVehicleDeviceRequest {
+	s.IotInstanceId = &v
+	return s
+}
+
+func (s *BatchCheckVehicleDeviceRequest) SetProductKey(v string) *BatchCheckVehicleDeviceRequest {
+	s.ProductKey = &v
+	return s
+}
+
+type BatchCheckVehicleDeviceRequestDeviceList struct {
+	DeviceId     *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
+	DeviceModel  *string `json:"DeviceModel,omitempty" xml:"DeviceModel,omitempty"`
+	Manufacturer *string `json:"Manufacturer,omitempty" xml:"Manufacturer,omitempty"`
+}
+
+func (s BatchCheckVehicleDeviceRequestDeviceList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchCheckVehicleDeviceRequestDeviceList) GoString() string {
+	return s.String()
+}
+
+func (s *BatchCheckVehicleDeviceRequestDeviceList) SetDeviceId(v string) *BatchCheckVehicleDeviceRequestDeviceList {
+	s.DeviceId = &v
+	return s
+}
+
+func (s *BatchCheckVehicleDeviceRequestDeviceList) SetDeviceModel(v string) *BatchCheckVehicleDeviceRequestDeviceList {
+	s.DeviceModel = &v
+	return s
+}
+
+func (s *BatchCheckVehicleDeviceRequestDeviceList) SetManufacturer(v string) *BatchCheckVehicleDeviceRequestDeviceList {
+	s.Manufacturer = &v
+	return s
+}
+
+type BatchCheckVehicleDeviceResponseBody struct {
+	Code         *string                                  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data         *BatchCheckVehicleDeviceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	ErrorMessage *string                                  `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool                                    `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s BatchCheckVehicleDeviceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchCheckVehicleDeviceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *BatchCheckVehicleDeviceResponseBody) SetCode(v string) *BatchCheckVehicleDeviceResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *BatchCheckVehicleDeviceResponseBody) SetData(v *BatchCheckVehicleDeviceResponseBodyData) *BatchCheckVehicleDeviceResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *BatchCheckVehicleDeviceResponseBody) SetErrorMessage(v string) *BatchCheckVehicleDeviceResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *BatchCheckVehicleDeviceResponseBody) SetRequestId(v string) *BatchCheckVehicleDeviceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *BatchCheckVehicleDeviceResponseBody) SetSuccess(v bool) *BatchCheckVehicleDeviceResponseBody {
+	s.Success = &v
+	return s
+}
+
+type BatchCheckVehicleDeviceResponseBodyData struct {
+	InvalidDeviceIdList     []*string `json:"InvalidDeviceIdList,omitempty" xml:"InvalidDeviceIdList,omitempty" type:"Repeated"`
+	InvalidDeviceModelList  []*string `json:"InvalidDeviceModelList,omitempty" xml:"InvalidDeviceModelList,omitempty" type:"Repeated"`
+	InvalidManufacturerList []*string `json:"InvalidManufacturerList,omitempty" xml:"InvalidManufacturerList,omitempty" type:"Repeated"`
+	RepeatedDeviceIdList    []*string `json:"RepeatedDeviceIdList,omitempty" xml:"RepeatedDeviceIdList,omitempty" type:"Repeated"`
+}
+
+func (s BatchCheckVehicleDeviceResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchCheckVehicleDeviceResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *BatchCheckVehicleDeviceResponseBodyData) SetInvalidDeviceIdList(v []*string) *BatchCheckVehicleDeviceResponseBodyData {
+	s.InvalidDeviceIdList = v
+	return s
+}
+
+func (s *BatchCheckVehicleDeviceResponseBodyData) SetInvalidDeviceModelList(v []*string) *BatchCheckVehicleDeviceResponseBodyData {
+	s.InvalidDeviceModelList = v
+	return s
+}
+
+func (s *BatchCheckVehicleDeviceResponseBodyData) SetInvalidManufacturerList(v []*string) *BatchCheckVehicleDeviceResponseBodyData {
+	s.InvalidManufacturerList = v
+	return s
+}
+
+func (s *BatchCheckVehicleDeviceResponseBodyData) SetRepeatedDeviceIdList(v []*string) *BatchCheckVehicleDeviceResponseBodyData {
+	s.RepeatedDeviceIdList = v
+	return s
+}
+
+type BatchCheckVehicleDeviceResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *BatchCheckVehicleDeviceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s BatchCheckVehicleDeviceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchCheckVehicleDeviceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *BatchCheckVehicleDeviceResponse) SetHeaders(v map[string]*string) *BatchCheckVehicleDeviceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *BatchCheckVehicleDeviceResponse) SetStatusCode(v int32) *BatchCheckVehicleDeviceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *BatchCheckVehicleDeviceResponse) SetBody(v *BatchCheckVehicleDeviceResponseBody) *BatchCheckVehicleDeviceResponse {
+	s.Body = v
+	return s
+}
+
 type BatchClearEdgeInstanceDeviceConfigRequest struct {
 	InstanceId    *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	IotIds        []*string `json:"IotIds,omitempty" xml:"IotIds,omitempty" type:"Repeated"`
@@ -3498,6 +3661,151 @@ func (s *BatchImportDeviceResponse) SetStatusCode(v int32) *BatchImportDeviceRes
 }
 
 func (s *BatchImportDeviceResponse) SetBody(v *BatchImportDeviceResponseBody) *BatchImportDeviceResponse {
+	s.Body = v
+	return s
+}
+
+type BatchImportVehicleDeviceRequest struct {
+	DeviceList    []*BatchImportVehicleDeviceRequestDeviceList `json:"DeviceList,omitempty" xml:"DeviceList,omitempty" type:"Repeated"`
+	IotInstanceId *string                                      `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
+	ProductKey    *string                                      `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
+}
+
+func (s BatchImportVehicleDeviceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchImportVehicleDeviceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *BatchImportVehicleDeviceRequest) SetDeviceList(v []*BatchImportVehicleDeviceRequestDeviceList) *BatchImportVehicleDeviceRequest {
+	s.DeviceList = v
+	return s
+}
+
+func (s *BatchImportVehicleDeviceRequest) SetIotInstanceId(v string) *BatchImportVehicleDeviceRequest {
+	s.IotInstanceId = &v
+	return s
+}
+
+func (s *BatchImportVehicleDeviceRequest) SetProductKey(v string) *BatchImportVehicleDeviceRequest {
+	s.ProductKey = &v
+	return s
+}
+
+type BatchImportVehicleDeviceRequestDeviceList struct {
+	DeviceId     *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
+	DeviceModel  *string `json:"DeviceModel,omitempty" xml:"DeviceModel,omitempty"`
+	Manufacturer *string `json:"Manufacturer,omitempty" xml:"Manufacturer,omitempty"`
+}
+
+func (s BatchImportVehicleDeviceRequestDeviceList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchImportVehicleDeviceRequestDeviceList) GoString() string {
+	return s.String()
+}
+
+func (s *BatchImportVehicleDeviceRequestDeviceList) SetDeviceId(v string) *BatchImportVehicleDeviceRequestDeviceList {
+	s.DeviceId = &v
+	return s
+}
+
+func (s *BatchImportVehicleDeviceRequestDeviceList) SetDeviceModel(v string) *BatchImportVehicleDeviceRequestDeviceList {
+	s.DeviceModel = &v
+	return s
+}
+
+func (s *BatchImportVehicleDeviceRequestDeviceList) SetManufacturer(v string) *BatchImportVehicleDeviceRequestDeviceList {
+	s.Manufacturer = &v
+	return s
+}
+
+type BatchImportVehicleDeviceResponseBody struct {
+	Code         *string                                   `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data         *BatchImportVehicleDeviceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	ErrorMessage *string                                   `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool                                     `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s BatchImportVehicleDeviceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchImportVehicleDeviceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *BatchImportVehicleDeviceResponseBody) SetCode(v string) *BatchImportVehicleDeviceResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *BatchImportVehicleDeviceResponseBody) SetData(v *BatchImportVehicleDeviceResponseBodyData) *BatchImportVehicleDeviceResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *BatchImportVehicleDeviceResponseBody) SetErrorMessage(v string) *BatchImportVehicleDeviceResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *BatchImportVehicleDeviceResponseBody) SetRequestId(v string) *BatchImportVehicleDeviceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *BatchImportVehicleDeviceResponseBody) SetSuccess(v bool) *BatchImportVehicleDeviceResponseBody {
+	s.Success = &v
+	return s
+}
+
+type BatchImportVehicleDeviceResponseBodyData struct {
+	ApplyId *int64 `json:"ApplyId,omitempty" xml:"ApplyId,omitempty"`
+}
+
+func (s BatchImportVehicleDeviceResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchImportVehicleDeviceResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *BatchImportVehicleDeviceResponseBodyData) SetApplyId(v int64) *BatchImportVehicleDeviceResponseBodyData {
+	s.ApplyId = &v
+	return s
+}
+
+type BatchImportVehicleDeviceResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *BatchImportVehicleDeviceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s BatchImportVehicleDeviceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchImportVehicleDeviceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *BatchImportVehicleDeviceResponse) SetHeaders(v map[string]*string) *BatchImportVehicleDeviceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *BatchImportVehicleDeviceResponse) SetStatusCode(v int32) *BatchImportVehicleDeviceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *BatchImportVehicleDeviceResponse) SetBody(v *BatchImportVehicleDeviceResponseBody) *BatchImportVehicleDeviceResponse {
 	s.Body = v
 	return s
 }
@@ -49442,7 +49750,208 @@ func (s *QueryTopicRouteTableResponse) SetBody(v *QueryTopicRouteTableResponseBo
 	return s
 }
 
+type QueryVehicleDeviceRequest struct {
+	DeviceName    *string `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
+	IotInstanceId *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
+	ProductKey    *string `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
+}
+
+func (s QueryVehicleDeviceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryVehicleDeviceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryVehicleDeviceRequest) SetDeviceName(v string) *QueryVehicleDeviceRequest {
+	s.DeviceName = &v
+	return s
+}
+
+func (s *QueryVehicleDeviceRequest) SetIotInstanceId(v string) *QueryVehicleDeviceRequest {
+	s.IotInstanceId = &v
+	return s
+}
+
+func (s *QueryVehicleDeviceRequest) SetProductKey(v string) *QueryVehicleDeviceRequest {
+	s.ProductKey = &v
+	return s
+}
+
+type QueryVehicleDeviceResponseBody struct {
+	Code         *string                             `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data         *QueryVehicleDeviceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	ErrorMessage *string                             `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool                               `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s QueryVehicleDeviceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryVehicleDeviceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryVehicleDeviceResponseBody) SetCode(v string) *QueryVehicleDeviceResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *QueryVehicleDeviceResponseBody) SetData(v *QueryVehicleDeviceResponseBodyData) *QueryVehicleDeviceResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *QueryVehicleDeviceResponseBody) SetErrorMessage(v string) *QueryVehicleDeviceResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *QueryVehicleDeviceResponseBody) SetRequestId(v string) *QueryVehicleDeviceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QueryVehicleDeviceResponseBody) SetSuccess(v bool) *QueryVehicleDeviceResponseBody {
+	s.Success = &v
+	return s
+}
+
+type QueryVehicleDeviceResponseBodyData struct {
+	AuthCode      *string `json:"AuthCode,omitempty" xml:"AuthCode,omitempty"`
+	City          *string `json:"City,omitempty" xml:"City,omitempty"`
+	CreateTime    *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	DeviceId      *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
+	DeviceModel   *string `json:"DeviceModel,omitempty" xml:"DeviceModel,omitempty"`
+	DeviceName    *string `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
+	IotId         *string `json:"IotId,omitempty" xml:"IotId,omitempty"`
+	Manufacturer  *string `json:"Manufacturer,omitempty" xml:"Manufacturer,omitempty"`
+	ModifiedTime  *int64  `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	ProductKey    *string `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
+	Province      *string `json:"Province,omitempty" xml:"Province,omitempty"`
+	RegisterTime  *int64  `json:"RegisterTime,omitempty" xml:"RegisterTime,omitempty"`
+	Status        *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	VehicleColour *string `json:"VehicleColour,omitempty" xml:"VehicleColour,omitempty"`
+	VehicleNumber *string `json:"VehicleNumber,omitempty" xml:"VehicleNumber,omitempty"`
+}
+
+func (s QueryVehicleDeviceResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryVehicleDeviceResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *QueryVehicleDeviceResponseBodyData) SetAuthCode(v string) *QueryVehicleDeviceResponseBodyData {
+	s.AuthCode = &v
+	return s
+}
+
+func (s *QueryVehicleDeviceResponseBodyData) SetCity(v string) *QueryVehicleDeviceResponseBodyData {
+	s.City = &v
+	return s
+}
+
+func (s *QueryVehicleDeviceResponseBodyData) SetCreateTime(v int64) *QueryVehicleDeviceResponseBodyData {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *QueryVehicleDeviceResponseBodyData) SetDeviceId(v string) *QueryVehicleDeviceResponseBodyData {
+	s.DeviceId = &v
+	return s
+}
+
+func (s *QueryVehicleDeviceResponseBodyData) SetDeviceModel(v string) *QueryVehicleDeviceResponseBodyData {
+	s.DeviceModel = &v
+	return s
+}
+
+func (s *QueryVehicleDeviceResponseBodyData) SetDeviceName(v string) *QueryVehicleDeviceResponseBodyData {
+	s.DeviceName = &v
+	return s
+}
+
+func (s *QueryVehicleDeviceResponseBodyData) SetIotId(v string) *QueryVehicleDeviceResponseBodyData {
+	s.IotId = &v
+	return s
+}
+
+func (s *QueryVehicleDeviceResponseBodyData) SetManufacturer(v string) *QueryVehicleDeviceResponseBodyData {
+	s.Manufacturer = &v
+	return s
+}
+
+func (s *QueryVehicleDeviceResponseBodyData) SetModifiedTime(v int64) *QueryVehicleDeviceResponseBodyData {
+	s.ModifiedTime = &v
+	return s
+}
+
+func (s *QueryVehicleDeviceResponseBodyData) SetProductKey(v string) *QueryVehicleDeviceResponseBodyData {
+	s.ProductKey = &v
+	return s
+}
+
+func (s *QueryVehicleDeviceResponseBodyData) SetProvince(v string) *QueryVehicleDeviceResponseBodyData {
+	s.Province = &v
+	return s
+}
+
+func (s *QueryVehicleDeviceResponseBodyData) SetRegisterTime(v int64) *QueryVehicleDeviceResponseBodyData {
+	s.RegisterTime = &v
+	return s
+}
+
+func (s *QueryVehicleDeviceResponseBodyData) SetStatus(v string) *QueryVehicleDeviceResponseBodyData {
+	s.Status = &v
+	return s
+}
+
+func (s *QueryVehicleDeviceResponseBodyData) SetVehicleColour(v string) *QueryVehicleDeviceResponseBodyData {
+	s.VehicleColour = &v
+	return s
+}
+
+func (s *QueryVehicleDeviceResponseBodyData) SetVehicleNumber(v string) *QueryVehicleDeviceResponseBodyData {
+	s.VehicleNumber = &v
+	return s
+}
+
+type QueryVehicleDeviceResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *QueryVehicleDeviceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s QueryVehicleDeviceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryVehicleDeviceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryVehicleDeviceResponse) SetHeaders(v map[string]*string) *QueryVehicleDeviceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryVehicleDeviceResponse) SetStatusCode(v int32) *QueryVehicleDeviceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QueryVehicleDeviceResponse) SetBody(v *QueryVehicleDeviceResponseBody) *QueryVehicleDeviceResponse {
+	s.Body = v
+	return s
+}
+
 type RRpcRequest struct {
+	ContentType       *string `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
 	DeviceName        *string `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
 	IotInstanceId     *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
 	ProductKey        *string `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
@@ -49457,6 +49966,11 @@ func (s RRpcRequest) String() string {
 
 func (s RRpcRequest) GoString() string {
 	return s.String()
+}
+
+func (s *RRpcRequest) SetContentType(v string) *RRpcRequest {
+	s.ContentType = &v
+	return s
 }
 
 func (s *RRpcRequest) SetDeviceName(v string) *RRpcRequest {
@@ -58226,6 +58740,58 @@ func (client *Client) BatchCheckImportDevice(request *BatchCheckImportDeviceRequ
 	return _result, _err
 }
 
+func (client *Client) BatchCheckVehicleDeviceWithOptions(request *BatchCheckVehicleDeviceRequest, runtime *util.RuntimeOptions) (_result *BatchCheckVehicleDeviceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DeviceList)) {
+		query["DeviceList"] = request.DeviceList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IotInstanceId)) {
+		query["IotInstanceId"] = request.IotInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductKey)) {
+		query["ProductKey"] = request.ProductKey
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("BatchCheckVehicleDevice"),
+		Version:     tea.String("2018-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &BatchCheckVehicleDeviceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) BatchCheckVehicleDevice(request *BatchCheckVehicleDeviceRequest) (_result *BatchCheckVehicleDeviceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &BatchCheckVehicleDeviceResponse{}
+	_body, _err := client.BatchCheckVehicleDeviceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) BatchClearEdgeInstanceDeviceConfigWithOptions(request *BatchClearEdgeInstanceDeviceConfigRequest, runtime *util.RuntimeOptions) (_result *BatchClearEdgeInstanceDeviceConfigResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -58963,6 +59529,58 @@ func (client *Client) BatchImportDevice(request *BatchImportDeviceRequest) (_res
 	runtime := &util.RuntimeOptions{}
 	_result = &BatchImportDeviceResponse{}
 	_body, _err := client.BatchImportDeviceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) BatchImportVehicleDeviceWithOptions(request *BatchImportVehicleDeviceRequest, runtime *util.RuntimeOptions) (_result *BatchImportVehicleDeviceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DeviceList)) {
+		query["DeviceList"] = request.DeviceList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IotInstanceId)) {
+		query["IotInstanceId"] = request.IotInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductKey)) {
+		query["ProductKey"] = request.ProductKey
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("BatchImportVehicleDevice"),
+		Version:     tea.String("2018-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &BatchImportVehicleDeviceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) BatchImportVehicleDevice(request *BatchImportVehicleDeviceRequest) (_result *BatchImportVehicleDeviceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &BatchImportVehicleDeviceResponse{}
+	_body, _err := client.BatchImportVehicleDeviceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -75813,12 +76431,68 @@ func (client *Client) QueryTopicRouteTable(request *QueryTopicRouteTableRequest)
 	return _result, _err
 }
 
+func (client *Client) QueryVehicleDeviceWithOptions(request *QueryVehicleDeviceRequest, runtime *util.RuntimeOptions) (_result *QueryVehicleDeviceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DeviceName)) {
+		query["DeviceName"] = request.DeviceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IotInstanceId)) {
+		query["IotInstanceId"] = request.IotInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductKey)) {
+		query["ProductKey"] = request.ProductKey
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryVehicleDevice"),
+		Version:     tea.String("2018-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QueryVehicleDeviceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) QueryVehicleDevice(request *QueryVehicleDeviceRequest) (_result *QueryVehicleDeviceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QueryVehicleDeviceResponse{}
+	_body, _err := client.QueryVehicleDeviceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) RRpcWithOptions(request *RRpcRequest, runtime *util.RuntimeOptions) (_result *RRpcResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ContentType)) {
+		query["ContentType"] = request.ContentType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.DeviceName)) {
 		query["DeviceName"] = request.DeviceName
 	}
