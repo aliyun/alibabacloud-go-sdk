@@ -710,8 +710,9 @@ type AddSmartAccessGatewayDnsForwardResponseBody struct {
 	Data           *AddSmartAccessGatewayDnsForwardResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	HttpStatusCode *int32                                           `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
 	Message        *string                                          `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool                                            `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s AddSmartAccessGatewayDnsForwardResponseBody) String() string {
@@ -5943,8 +5944,9 @@ type DeleteSmartAccessGatewayDnsForwardResponseBody struct {
 	Code           *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	HttpStatusCode *string `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
 	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *string `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DeleteSmartAccessGatewayDnsForwardResponseBody) String() string {
@@ -26415,7 +26417,6 @@ func (s *UpdateEnterpriseCodeResponse) SetBody(v *UpdateEnterpriseCodeResponseBo
 }
 
 type UpdateProbeTaskRequest struct {
-	AddressType            *string `json:"AddressType,omitempty" xml:"AddressType,omitempty"`
 	Domain                 *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	Enable                 *bool   `json:"Enable,omitempty" xml:"Enable,omitempty"`
 	PacketNumber           *int32  `json:"PacketNumber,omitempty" xml:"PacketNumber,omitempty"`
@@ -26435,11 +26436,6 @@ func (s UpdateProbeTaskRequest) String() string {
 
 func (s UpdateProbeTaskRequest) GoString() string {
 	return s.String()
-}
-
-func (s *UpdateProbeTaskRequest) SetAddressType(v string) *UpdateProbeTaskRequest {
-	s.AddressType = &v
-	return s
 }
 
 func (s *UpdateProbeTaskRequest) SetDomain(v string) *UpdateProbeTaskRequest {
@@ -27377,8 +27373,9 @@ type UpdateSmartAccessGatewayDnsForwardResponseBody struct {
 	Code           *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	HttpStatusCode *string `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
 	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *string `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s UpdateSmartAccessGatewayDnsForwardResponseBody) String() string {
@@ -28649,8 +28646,9 @@ type ViewSmartAccessGatewayDnsForwardsResponseBody struct {
 	Data           []*ViewSmartAccessGatewayDnsForwardsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	HttpStatusCode *int32                                               `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
 	Message        *string                                              `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool                                                `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ViewSmartAccessGatewayDnsForwardsResponseBody) String() string {
@@ -38070,6 +38068,13 @@ func (client *Client) GetCloudConnectNetworkUseLimit(request *GetCloudConnectNet
 	return _result, _err
 }
 
+/**
+ * ****
+ *
+ * @param request GetQosAttributeRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return GetQosAttributeResponse
+ */
 func (client *Client) GetQosAttributeWithOptions(request *GetQosAttributeRequest, runtime *util.RuntimeOptions) (_result *GetQosAttributeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -38107,6 +38112,12 @@ func (client *Client) GetQosAttributeWithOptions(request *GetQosAttributeRequest
 	return _result, _err
 }
 
+/**
+ * ****
+ *
+ * @param request GetQosAttributeRequest
+ * @return GetQosAttributeResponse
+ */
 func (client *Client) GetQosAttribute(request *GetQosAttributeRequest) (_result *GetQosAttributeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetQosAttributeResponse{}
@@ -42876,10 +42887,6 @@ func (client *Client) UpdateProbeTaskWithOptions(request *UpdateProbeTaskRequest
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.AddressType)) {
-		query["AddressType"] = request.AddressType
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.Domain)) {
 		query["Domain"] = request.Domain
 	}
