@@ -226,6 +226,367 @@ func (s *DeleteResourceResponse) SetBody(v *DeleteResourceResponseBody) *DeleteR
 	return s
 }
 
+type GetResourceTypeHeaders struct {
+	CommonHeaders      map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsAcceptLanguage *string            `json:"x-acs-accept-language,omitempty" xml:"x-acs-accept-language,omitempty"`
+}
+
+func (s GetResourceTypeHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetResourceTypeHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *GetResourceTypeHeaders) SetCommonHeaders(v map[string]*string) *GetResourceTypeHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *GetResourceTypeHeaders) SetXAcsAcceptLanguage(v string) *GetResourceTypeHeaders {
+	s.XAcsAcceptLanguage = &v
+	return s
+}
+
+type GetResourceTypeResponseBody struct {
+	RequestId    *string                                  `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	ResourceType *GetResourceTypeResponseBodyResourceType `json:"resourceType,omitempty" xml:"resourceType,omitempty" type:"Struct"`
+}
+
+func (s GetResourceTypeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetResourceTypeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetResourceTypeResponseBody) SetRequestId(v string) *GetResourceTypeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetResourceTypeResponseBody) SetResourceType(v *GetResourceTypeResponseBodyResourceType) *GetResourceTypeResponseBody {
+	s.ResourceType = v
+	return s
+}
+
+type GetResourceTypeResponseBodyResourceType struct {
+	CreateOnlyProperties    []*string                                        `json:"createOnlyProperties,omitempty" xml:"createOnlyProperties,omitempty" type:"Repeated"`
+	DeleteOnlyProperties    []*string                                        `json:"deleteOnlyProperties,omitempty" xml:"deleteOnlyProperties,omitempty" type:"Repeated"`
+	FilterProperties        []*string                                        `json:"filterProperties,omitempty" xml:"filterProperties,omitempty" type:"Repeated"`
+	GetOnlyProperties       []*string                                        `json:"getOnlyProperties,omitempty" xml:"getOnlyProperties,omitempty" type:"Repeated"`
+	GetResponseProperties   []*string                                        `json:"getResponseProperties,omitempty" xml:"getResponseProperties,omitempty" type:"Repeated"`
+	Handlers                *GetResourceTypeResponseBodyResourceTypeHandlers `json:"handlers,omitempty" xml:"handlers,omitempty" type:"Struct"`
+	Info                    *GetResourceTypeResponseBodyResourceTypeInfo     `json:"info,omitempty" xml:"info,omitempty" type:"Struct"`
+	ListOnlyProperties      []*string                                        `json:"listOnlyProperties,omitempty" xml:"listOnlyProperties,omitempty" type:"Repeated"`
+	ListResponseProperties  []*string                                        `json:"listResponseProperties,omitempty" xml:"listResponseProperties,omitempty" type:"Repeated"`
+	PrimaryIdentifier       *string                                          `json:"primaryIdentifier,omitempty" xml:"primaryIdentifier,omitempty"`
+	Product                 *string                                          `json:"product,omitempty" xml:"product,omitempty"`
+	Properties              map[string]interface{}                           `json:"properties,omitempty" xml:"properties,omitempty"`
+	PublicProperties        []*string                                        `json:"publicProperties,omitempty" xml:"publicProperties,omitempty" type:"Repeated"`
+	ReadOnlyProperties      []*string                                        `json:"readOnlyProperties,omitempty" xml:"readOnlyProperties,omitempty" type:"Repeated"`
+	Required                []*string                                        `json:"required,omitempty" xml:"required,omitempty" type:"Repeated"`
+	ResourceType            *string                                          `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
+	SensitiveInfoProperties []*string                                        `json:"sensitiveInfoProperties,omitempty" xml:"sensitiveInfoProperties,omitempty" type:"Repeated"`
+	UpdateOnlyProperties    []*string                                        `json:"updateOnlyProperties,omitempty" xml:"updateOnlyProperties,omitempty" type:"Repeated"`
+	UpdateTypeProperties    []*string                                        `json:"updateTypeProperties,omitempty" xml:"updateTypeProperties,omitempty" type:"Repeated"`
+}
+
+func (s GetResourceTypeResponseBodyResourceType) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetResourceTypeResponseBodyResourceType) GoString() string {
+	return s.String()
+}
+
+func (s *GetResourceTypeResponseBodyResourceType) SetCreateOnlyProperties(v []*string) *GetResourceTypeResponseBodyResourceType {
+	s.CreateOnlyProperties = v
+	return s
+}
+
+func (s *GetResourceTypeResponseBodyResourceType) SetDeleteOnlyProperties(v []*string) *GetResourceTypeResponseBodyResourceType {
+	s.DeleteOnlyProperties = v
+	return s
+}
+
+func (s *GetResourceTypeResponseBodyResourceType) SetFilterProperties(v []*string) *GetResourceTypeResponseBodyResourceType {
+	s.FilterProperties = v
+	return s
+}
+
+func (s *GetResourceTypeResponseBodyResourceType) SetGetOnlyProperties(v []*string) *GetResourceTypeResponseBodyResourceType {
+	s.GetOnlyProperties = v
+	return s
+}
+
+func (s *GetResourceTypeResponseBodyResourceType) SetGetResponseProperties(v []*string) *GetResourceTypeResponseBodyResourceType {
+	s.GetResponseProperties = v
+	return s
+}
+
+func (s *GetResourceTypeResponseBodyResourceType) SetHandlers(v *GetResourceTypeResponseBodyResourceTypeHandlers) *GetResourceTypeResponseBodyResourceType {
+	s.Handlers = v
+	return s
+}
+
+func (s *GetResourceTypeResponseBodyResourceType) SetInfo(v *GetResourceTypeResponseBodyResourceTypeInfo) *GetResourceTypeResponseBodyResourceType {
+	s.Info = v
+	return s
+}
+
+func (s *GetResourceTypeResponseBodyResourceType) SetListOnlyProperties(v []*string) *GetResourceTypeResponseBodyResourceType {
+	s.ListOnlyProperties = v
+	return s
+}
+
+func (s *GetResourceTypeResponseBodyResourceType) SetListResponseProperties(v []*string) *GetResourceTypeResponseBodyResourceType {
+	s.ListResponseProperties = v
+	return s
+}
+
+func (s *GetResourceTypeResponseBodyResourceType) SetPrimaryIdentifier(v string) *GetResourceTypeResponseBodyResourceType {
+	s.PrimaryIdentifier = &v
+	return s
+}
+
+func (s *GetResourceTypeResponseBodyResourceType) SetProduct(v string) *GetResourceTypeResponseBodyResourceType {
+	s.Product = &v
+	return s
+}
+
+func (s *GetResourceTypeResponseBodyResourceType) SetProperties(v map[string]interface{}) *GetResourceTypeResponseBodyResourceType {
+	s.Properties = v
+	return s
+}
+
+func (s *GetResourceTypeResponseBodyResourceType) SetPublicProperties(v []*string) *GetResourceTypeResponseBodyResourceType {
+	s.PublicProperties = v
+	return s
+}
+
+func (s *GetResourceTypeResponseBodyResourceType) SetReadOnlyProperties(v []*string) *GetResourceTypeResponseBodyResourceType {
+	s.ReadOnlyProperties = v
+	return s
+}
+
+func (s *GetResourceTypeResponseBodyResourceType) SetRequired(v []*string) *GetResourceTypeResponseBodyResourceType {
+	s.Required = v
+	return s
+}
+
+func (s *GetResourceTypeResponseBodyResourceType) SetResourceType(v string) *GetResourceTypeResponseBodyResourceType {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *GetResourceTypeResponseBodyResourceType) SetSensitiveInfoProperties(v []*string) *GetResourceTypeResponseBodyResourceType {
+	s.SensitiveInfoProperties = v
+	return s
+}
+
+func (s *GetResourceTypeResponseBodyResourceType) SetUpdateOnlyProperties(v []*string) *GetResourceTypeResponseBodyResourceType {
+	s.UpdateOnlyProperties = v
+	return s
+}
+
+func (s *GetResourceTypeResponseBodyResourceType) SetUpdateTypeProperties(v []*string) *GetResourceTypeResponseBodyResourceType {
+	s.UpdateTypeProperties = v
+	return s
+}
+
+type GetResourceTypeResponseBodyResourceTypeHandlers struct {
+	Create *GetResourceTypeResponseBodyResourceTypeHandlersCreate `json:"create,omitempty" xml:"create,omitempty" type:"Struct"`
+	Delete *GetResourceTypeResponseBodyResourceTypeHandlersDelete `json:"delete,omitempty" xml:"delete,omitempty" type:"Struct"`
+	Get    *GetResourceTypeResponseBodyResourceTypeHandlersGet    `json:"get,omitempty" xml:"get,omitempty" type:"Struct"`
+	List   *GetResourceTypeResponseBodyResourceTypeHandlersList   `json:"list,omitempty" xml:"list,omitempty" type:"Struct"`
+	Update *GetResourceTypeResponseBodyResourceTypeHandlersUpdate `json:"update,omitempty" xml:"update,omitempty" type:"Struct"`
+}
+
+func (s GetResourceTypeResponseBodyResourceTypeHandlers) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetResourceTypeResponseBodyResourceTypeHandlers) GoString() string {
+	return s.String()
+}
+
+func (s *GetResourceTypeResponseBodyResourceTypeHandlers) SetCreate(v *GetResourceTypeResponseBodyResourceTypeHandlersCreate) *GetResourceTypeResponseBodyResourceTypeHandlers {
+	s.Create = v
+	return s
+}
+
+func (s *GetResourceTypeResponseBodyResourceTypeHandlers) SetDelete(v *GetResourceTypeResponseBodyResourceTypeHandlersDelete) *GetResourceTypeResponseBodyResourceTypeHandlers {
+	s.Delete = v
+	return s
+}
+
+func (s *GetResourceTypeResponseBodyResourceTypeHandlers) SetGet(v *GetResourceTypeResponseBodyResourceTypeHandlersGet) *GetResourceTypeResponseBodyResourceTypeHandlers {
+	s.Get = v
+	return s
+}
+
+func (s *GetResourceTypeResponseBodyResourceTypeHandlers) SetList(v *GetResourceTypeResponseBodyResourceTypeHandlersList) *GetResourceTypeResponseBodyResourceTypeHandlers {
+	s.List = v
+	return s
+}
+
+func (s *GetResourceTypeResponseBodyResourceTypeHandlers) SetUpdate(v *GetResourceTypeResponseBodyResourceTypeHandlersUpdate) *GetResourceTypeResponseBodyResourceTypeHandlers {
+	s.Update = v
+	return s
+}
+
+type GetResourceTypeResponseBodyResourceTypeHandlersCreate struct {
+	Permissions []*string `json:"permissions,omitempty" xml:"permissions,omitempty" type:"Repeated"`
+}
+
+func (s GetResourceTypeResponseBodyResourceTypeHandlersCreate) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetResourceTypeResponseBodyResourceTypeHandlersCreate) GoString() string {
+	return s.String()
+}
+
+func (s *GetResourceTypeResponseBodyResourceTypeHandlersCreate) SetPermissions(v []*string) *GetResourceTypeResponseBodyResourceTypeHandlersCreate {
+	s.Permissions = v
+	return s
+}
+
+type GetResourceTypeResponseBodyResourceTypeHandlersDelete struct {
+	Permissions []*string `json:"permissions,omitempty" xml:"permissions,omitempty" type:"Repeated"`
+}
+
+func (s GetResourceTypeResponseBodyResourceTypeHandlersDelete) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetResourceTypeResponseBodyResourceTypeHandlersDelete) GoString() string {
+	return s.String()
+}
+
+func (s *GetResourceTypeResponseBodyResourceTypeHandlersDelete) SetPermissions(v []*string) *GetResourceTypeResponseBodyResourceTypeHandlersDelete {
+	s.Permissions = v
+	return s
+}
+
+type GetResourceTypeResponseBodyResourceTypeHandlersGet struct {
+	Permissions []*string `json:"permissions,omitempty" xml:"permissions,omitempty" type:"Repeated"`
+}
+
+func (s GetResourceTypeResponseBodyResourceTypeHandlersGet) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetResourceTypeResponseBodyResourceTypeHandlersGet) GoString() string {
+	return s.String()
+}
+
+func (s *GetResourceTypeResponseBodyResourceTypeHandlersGet) SetPermissions(v []*string) *GetResourceTypeResponseBodyResourceTypeHandlersGet {
+	s.Permissions = v
+	return s
+}
+
+type GetResourceTypeResponseBodyResourceTypeHandlersList struct {
+	Permissions []*string `json:"permissions,omitempty" xml:"permissions,omitempty" type:"Repeated"`
+}
+
+func (s GetResourceTypeResponseBodyResourceTypeHandlersList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetResourceTypeResponseBodyResourceTypeHandlersList) GoString() string {
+	return s.String()
+}
+
+func (s *GetResourceTypeResponseBodyResourceTypeHandlersList) SetPermissions(v []*string) *GetResourceTypeResponseBodyResourceTypeHandlersList {
+	s.Permissions = v
+	return s
+}
+
+type GetResourceTypeResponseBodyResourceTypeHandlersUpdate struct {
+	Permissions []*string `json:"permissions,omitempty" xml:"permissions,omitempty" type:"Repeated"`
+}
+
+func (s GetResourceTypeResponseBodyResourceTypeHandlersUpdate) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetResourceTypeResponseBodyResourceTypeHandlersUpdate) GoString() string {
+	return s.String()
+}
+
+func (s *GetResourceTypeResponseBodyResourceTypeHandlersUpdate) SetPermissions(v []*string) *GetResourceTypeResponseBodyResourceTypeHandlersUpdate {
+	s.Permissions = v
+	return s
+}
+
+type GetResourceTypeResponseBodyResourceTypeInfo struct {
+	ChargeType    *string `json:"chargeType,omitempty" xml:"chargeType,omitempty"`
+	DeliveryScope *string `json:"deliveryScope,omitempty" xml:"deliveryScope,omitempty"`
+	Description   *string `json:"description,omitempty" xml:"description,omitempty"`
+	Title         *string `json:"title,omitempty" xml:"title,omitempty"`
+}
+
+func (s GetResourceTypeResponseBodyResourceTypeInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetResourceTypeResponseBodyResourceTypeInfo) GoString() string {
+	return s.String()
+}
+
+func (s *GetResourceTypeResponseBodyResourceTypeInfo) SetChargeType(v string) *GetResourceTypeResponseBodyResourceTypeInfo {
+	s.ChargeType = &v
+	return s
+}
+
+func (s *GetResourceTypeResponseBodyResourceTypeInfo) SetDeliveryScope(v string) *GetResourceTypeResponseBodyResourceTypeInfo {
+	s.DeliveryScope = &v
+	return s
+}
+
+func (s *GetResourceTypeResponseBodyResourceTypeInfo) SetDescription(v string) *GetResourceTypeResponseBodyResourceTypeInfo {
+	s.Description = &v
+	return s
+}
+
+func (s *GetResourceTypeResponseBodyResourceTypeInfo) SetTitle(v string) *GetResourceTypeResponseBodyResourceTypeInfo {
+	s.Title = &v
+	return s
+}
+
+type GetResourceTypeResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetResourceTypeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetResourceTypeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetResourceTypeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetResourceTypeResponse) SetHeaders(v map[string]*string) *GetResourceTypeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetResourceTypeResponse) SetStatusCode(v int32) *GetResourceTypeResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetResourceTypeResponse) SetBody(v *GetResourceTypeResponseBody) *GetResourceTypeResponse {
+	s.Body = v
+	return s
+}
+
 type GetResourcesRequest struct {
 	Filter     map[string]interface{} `json:"filter,omitempty" xml:"filter,omitempty"`
 	MaxResults *int32                 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
@@ -1545,6 +1906,51 @@ func (client *Client) DeleteResource(resourcePath *string, request *DeleteResour
 	headers := make(map[string]*string)
 	_result = &DeleteResourceResponse{}
 	_body, _err := client.DeleteResourceWithOptions(resourcePath, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetResourceTypeWithOptions(resourcePath *string, headers *GetResourceTypeHeaders, runtime *util.RuntimeOptions) (_result *GetResourceTypeResponse, _err error) {
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsAcceptLanguage)) {
+		realHeaders["x-acs-accept-language"] = util.ToJSONString(headers.XAcsAcceptLanguage)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetResourceType"),
+		Version:     tea.String("2022-08-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String(tea.StringValue(resourcePath)),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetResourceTypeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetResourceType(resourcePath *string) (_result *GetResourceTypeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &GetResourceTypeHeaders{}
+	_result = &GetResourceTypeResponse{}
+	_body, _err := client.GetResourceTypeWithOptions(resourcePath, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
