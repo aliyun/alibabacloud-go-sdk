@@ -403,6 +403,93 @@ func (s *AttachInstancesResponse) SetBody(v *AttachInstancesResponseBody) *Attac
 	return s
 }
 
+type AttachInstancesToNodePoolRequest struct {
+	FormatDisk       *bool     `json:"format_disk,omitempty" xml:"format_disk,omitempty"`
+	Instances        []*string `json:"instances,omitempty" xml:"instances,omitempty" type:"Repeated"`
+	KeepInstanceName *bool     `json:"keep_instance_name,omitempty" xml:"keep_instance_name,omitempty"`
+	Password         *string   `json:"password,omitempty" xml:"password,omitempty"`
+}
+
+func (s AttachInstancesToNodePoolRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AttachInstancesToNodePoolRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AttachInstancesToNodePoolRequest) SetFormatDisk(v bool) *AttachInstancesToNodePoolRequest {
+	s.FormatDisk = &v
+	return s
+}
+
+func (s *AttachInstancesToNodePoolRequest) SetInstances(v []*string) *AttachInstancesToNodePoolRequest {
+	s.Instances = v
+	return s
+}
+
+func (s *AttachInstancesToNodePoolRequest) SetKeepInstanceName(v bool) *AttachInstancesToNodePoolRequest {
+	s.KeepInstanceName = &v
+	return s
+}
+
+func (s *AttachInstancesToNodePoolRequest) SetPassword(v string) *AttachInstancesToNodePoolRequest {
+	s.Password = &v
+	return s
+}
+
+type AttachInstancesToNodePoolResponseBody struct {
+	RequestId *string `json:"request_id,omitempty" xml:"request_id,omitempty"`
+	TaskId    *string `json:"task_id,omitempty" xml:"task_id,omitempty"`
+}
+
+func (s AttachInstancesToNodePoolResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AttachInstancesToNodePoolResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AttachInstancesToNodePoolResponseBody) SetRequestId(v string) *AttachInstancesToNodePoolResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *AttachInstancesToNodePoolResponseBody) SetTaskId(v string) *AttachInstancesToNodePoolResponseBody {
+	s.TaskId = &v
+	return s
+}
+
+type AttachInstancesToNodePoolResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *AttachInstancesToNodePoolResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s AttachInstancesToNodePoolResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AttachInstancesToNodePoolResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AttachInstancesToNodePoolResponse) SetHeaders(v map[string]*string) *AttachInstancesToNodePoolResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AttachInstancesToNodePoolResponse) SetStatusCode(v int32) *AttachInstancesToNodePoolResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *AttachInstancesToNodePoolResponse) SetBody(v *AttachInstancesToNodePoolResponseBody) *AttachInstancesToNodePoolResponse {
+	s.Body = v
+	return s
+}
+
 type CancelClusterUpgradeResponse struct {
 	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
 	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
@@ -1538,39 +1625,40 @@ func (s *CreateClusterNodePoolRequestNodepoolInfo) SetType(v string) *CreateClus
 }
 
 type CreateClusterNodePoolRequestScalingGroup struct {
-	AutoRenew                           *bool                                                     `json:"auto_renew,omitempty" xml:"auto_renew,omitempty"`
-	AutoRenewPeriod                     *int64                                                    `json:"auto_renew_period,omitempty" xml:"auto_renew_period,omitempty"`
-	CompensateWithOnDemand              *bool                                                     `json:"compensate_with_on_demand,omitempty" xml:"compensate_with_on_demand,omitempty"`
-	DataDisks                           []*DataDisk                                               `json:"data_disks,omitempty" xml:"data_disks,omitempty" type:"Repeated"`
-	DeploymentsetId                     *string                                                   `json:"deploymentset_id,omitempty" xml:"deploymentset_id,omitempty"`
-	DesiredSize                         *int64                                                    `json:"desired_size,omitempty" xml:"desired_size,omitempty"`
-	ImageId                             *string                                                   `json:"image_id,omitempty" xml:"image_id,omitempty"`
-	ImageType                           *string                                                   `json:"image_type,omitempty" xml:"image_type,omitempty"`
-	InstanceChargeType                  *string                                                   `json:"instance_charge_type,omitempty" xml:"instance_charge_type,omitempty"`
-	InstanceTypes                       []*string                                                 `json:"instance_types,omitempty" xml:"instance_types,omitempty" type:"Repeated"`
-	InternetChargeType                  *string                                                   `json:"internet_charge_type,omitempty" xml:"internet_charge_type,omitempty"`
-	InternetMaxBandwidthOut             *int64                                                    `json:"internet_max_bandwidth_out,omitempty" xml:"internet_max_bandwidth_out,omitempty"`
-	KeyPair                             *string                                                   `json:"key_pair,omitempty" xml:"key_pair,omitempty"`
-	LoginPassword                       *string                                                   `json:"login_password,omitempty" xml:"login_password,omitempty"`
-	MultiAzPolicy                       *string                                                   `json:"multi_az_policy,omitempty" xml:"multi_az_policy,omitempty"`
-	OnDemandBaseCapacity                *int64                                                    `json:"on_demand_base_capacity,omitempty" xml:"on_demand_base_capacity,omitempty"`
-	OnDemandPercentageAboveBaseCapacity *int64                                                    `json:"on_demand_percentage_above_base_capacity,omitempty" xml:"on_demand_percentage_above_base_capacity,omitempty"`
-	Period                              *int64                                                    `json:"period,omitempty" xml:"period,omitempty"`
-	PeriodUnit                          *string                                                   `json:"period_unit,omitempty" xml:"period_unit,omitempty"`
-	Platform                            *string                                                   `json:"platform,omitempty" xml:"platform,omitempty"`
-	RdsInstances                        []*string                                                 `json:"rds_instances,omitempty" xml:"rds_instances,omitempty" type:"Repeated"`
-	ScalingPolicy                       *string                                                   `json:"scaling_policy,omitempty" xml:"scaling_policy,omitempty"`
-	SecurityGroupId                     *string                                                   `json:"security_group_id,omitempty" xml:"security_group_id,omitempty"`
-	SecurityGroupIds                    []*string                                                 `json:"security_group_ids,omitempty" xml:"security_group_ids,omitempty" type:"Repeated"`
-	SpotInstancePools                   *int64                                                    `json:"spot_instance_pools,omitempty" xml:"spot_instance_pools,omitempty"`
-	SpotInstanceRemedy                  *bool                                                     `json:"spot_instance_remedy,omitempty" xml:"spot_instance_remedy,omitempty"`
-	SpotPriceLimit                      []*CreateClusterNodePoolRequestScalingGroupSpotPriceLimit `json:"spot_price_limit,omitempty" xml:"spot_price_limit,omitempty" type:"Repeated"`
-	SpotStrategy                        *string                                                   `json:"spot_strategy,omitempty" xml:"spot_strategy,omitempty"`
-	SystemDiskCategory                  *string                                                   `json:"system_disk_category,omitempty" xml:"system_disk_category,omitempty"`
-	SystemDiskPerformanceLevel          *string                                                   `json:"system_disk_performance_level,omitempty" xml:"system_disk_performance_level,omitempty"`
-	SystemDiskSize                      *int64                                                    `json:"system_disk_size,omitempty" xml:"system_disk_size,omitempty"`
-	Tags                                []*CreateClusterNodePoolRequestScalingGroupTags           `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
-	VswitchIds                          []*string                                                 `json:"vswitch_ids,omitempty" xml:"vswitch_ids,omitempty" type:"Repeated"`
+	AutoRenew                           *bool                                                       `json:"auto_renew,omitempty" xml:"auto_renew,omitempty"`
+	AutoRenewPeriod                     *int64                                                      `json:"auto_renew_period,omitempty" xml:"auto_renew_period,omitempty"`
+	CompensateWithOnDemand              *bool                                                       `json:"compensate_with_on_demand,omitempty" xml:"compensate_with_on_demand,omitempty"`
+	DataDisks                           []*DataDisk                                                 `json:"data_disks,omitempty" xml:"data_disks,omitempty" type:"Repeated"`
+	DeploymentsetId                     *string                                                     `json:"deploymentset_id,omitempty" xml:"deploymentset_id,omitempty"`
+	DesiredSize                         *int64                                                      `json:"desired_size,omitempty" xml:"desired_size,omitempty"`
+	ImageId                             *string                                                     `json:"image_id,omitempty" xml:"image_id,omitempty"`
+	ImageType                           *string                                                     `json:"image_type,omitempty" xml:"image_type,omitempty"`
+	InstanceChargeType                  *string                                                     `json:"instance_charge_type,omitempty" xml:"instance_charge_type,omitempty"`
+	InstanceTypes                       []*string                                                   `json:"instance_types,omitempty" xml:"instance_types,omitempty" type:"Repeated"`
+	InternetChargeType                  *string                                                     `json:"internet_charge_type,omitempty" xml:"internet_charge_type,omitempty"`
+	InternetMaxBandwidthOut             *int64                                                      `json:"internet_max_bandwidth_out,omitempty" xml:"internet_max_bandwidth_out,omitempty"`
+	KeyPair                             *string                                                     `json:"key_pair,omitempty" xml:"key_pair,omitempty"`
+	LoginPassword                       *string                                                     `json:"login_password,omitempty" xml:"login_password,omitempty"`
+	MultiAzPolicy                       *string                                                     `json:"multi_az_policy,omitempty" xml:"multi_az_policy,omitempty"`
+	OnDemandBaseCapacity                *int64                                                      `json:"on_demand_base_capacity,omitempty" xml:"on_demand_base_capacity,omitempty"`
+	OnDemandPercentageAboveBaseCapacity *int64                                                      `json:"on_demand_percentage_above_base_capacity,omitempty" xml:"on_demand_percentage_above_base_capacity,omitempty"`
+	Period                              *int64                                                      `json:"period,omitempty" xml:"period,omitempty"`
+	PeriodUnit                          *string                                                     `json:"period_unit,omitempty" xml:"period_unit,omitempty"`
+	Platform                            *string                                                     `json:"platform,omitempty" xml:"platform,omitempty"`
+	PrivatePoolOptions                  *CreateClusterNodePoolRequestScalingGroupPrivatePoolOptions `json:"private_pool_options,omitempty" xml:"private_pool_options,omitempty" type:"Struct"`
+	RdsInstances                        []*string                                                   `json:"rds_instances,omitempty" xml:"rds_instances,omitempty" type:"Repeated"`
+	ScalingPolicy                       *string                                                     `json:"scaling_policy,omitempty" xml:"scaling_policy,omitempty"`
+	SecurityGroupId                     *string                                                     `json:"security_group_id,omitempty" xml:"security_group_id,omitempty"`
+	SecurityGroupIds                    []*string                                                   `json:"security_group_ids,omitempty" xml:"security_group_ids,omitempty" type:"Repeated"`
+	SpotInstancePools                   *int64                                                      `json:"spot_instance_pools,omitempty" xml:"spot_instance_pools,omitempty"`
+	SpotInstanceRemedy                  *bool                                                       `json:"spot_instance_remedy,omitempty" xml:"spot_instance_remedy,omitempty"`
+	SpotPriceLimit                      []*CreateClusterNodePoolRequestScalingGroupSpotPriceLimit   `json:"spot_price_limit,omitempty" xml:"spot_price_limit,omitempty" type:"Repeated"`
+	SpotStrategy                        *string                                                     `json:"spot_strategy,omitempty" xml:"spot_strategy,omitempty"`
+	SystemDiskCategory                  *string                                                     `json:"system_disk_category,omitempty" xml:"system_disk_category,omitempty"`
+	SystemDiskPerformanceLevel          *string                                                     `json:"system_disk_performance_level,omitempty" xml:"system_disk_performance_level,omitempty"`
+	SystemDiskSize                      *int64                                                      `json:"system_disk_size,omitempty" xml:"system_disk_size,omitempty"`
+	Tags                                []*CreateClusterNodePoolRequestScalingGroupTags             `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
+	VswitchIds                          []*string                                                   `json:"vswitch_ids,omitempty" xml:"vswitch_ids,omitempty" type:"Repeated"`
 }
 
 func (s CreateClusterNodePoolRequestScalingGroup) String() string {
@@ -1681,6 +1769,11 @@ func (s *CreateClusterNodePoolRequestScalingGroup) SetPlatform(v string) *Create
 	return s
 }
 
+func (s *CreateClusterNodePoolRequestScalingGroup) SetPrivatePoolOptions(v *CreateClusterNodePoolRequestScalingGroupPrivatePoolOptions) *CreateClusterNodePoolRequestScalingGroup {
+	s.PrivatePoolOptions = v
+	return s
+}
+
 func (s *CreateClusterNodePoolRequestScalingGroup) SetRdsInstances(v []*string) *CreateClusterNodePoolRequestScalingGroup {
 	s.RdsInstances = v
 	return s
@@ -1743,6 +1836,29 @@ func (s *CreateClusterNodePoolRequestScalingGroup) SetTags(v []*CreateClusterNod
 
 func (s *CreateClusterNodePoolRequestScalingGroup) SetVswitchIds(v []*string) *CreateClusterNodePoolRequestScalingGroup {
 	s.VswitchIds = v
+	return s
+}
+
+type CreateClusterNodePoolRequestScalingGroupPrivatePoolOptions struct {
+	Id            *string `json:"id,omitempty" xml:"id,omitempty"`
+	MatchCriteria *string `json:"match_criteria,omitempty" xml:"match_criteria,omitempty"`
+}
+
+func (s CreateClusterNodePoolRequestScalingGroupPrivatePoolOptions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateClusterNodePoolRequestScalingGroupPrivatePoolOptions) GoString() string {
+	return s.String()
+}
+
+func (s *CreateClusterNodePoolRequestScalingGroupPrivatePoolOptions) SetId(v string) *CreateClusterNodePoolRequestScalingGroupPrivatePoolOptions {
+	s.Id = &v
+	return s
+}
+
+func (s *CreateClusterNodePoolRequestScalingGroupPrivatePoolOptions) SetMatchCriteria(v string) *CreateClusterNodePoolRequestScalingGroupPrivatePoolOptions {
+	s.MatchCriteria = &v
 	return s
 }
 
@@ -4075,40 +4191,41 @@ func (s *DescribeClusterNodePoolDetailResponseBodyNodepoolInfo) SetUpdated(v str
 }
 
 type DescribeClusterNodePoolDetailResponseBodyScalingGroup struct {
-	AutoRenew                           *bool                                                                  `json:"auto_renew,omitempty" xml:"auto_renew,omitempty"`
-	AutoRenewPeriod                     *int64                                                                 `json:"auto_renew_period,omitempty" xml:"auto_renew_period,omitempty"`
-	CompensateWithOnDemand              *bool                                                                  `json:"compensate_with_on_demand,omitempty" xml:"compensate_with_on_demand,omitempty"`
-	DataDisks                           []*DataDisk                                                            `json:"data_disks,omitempty" xml:"data_disks,omitempty" type:"Repeated"`
-	DeploymentsetId                     *string                                                                `json:"deploymentset_id,omitempty" xml:"deploymentset_id,omitempty"`
-	DesiredSize                         *int64                                                                 `json:"desired_size,omitempty" xml:"desired_size,omitempty"`
-	ImageId                             *string                                                                `json:"image_id,omitempty" xml:"image_id,omitempty"`
-	InstanceChargeType                  *string                                                                `json:"instance_charge_type,omitempty" xml:"instance_charge_type,omitempty"`
-	InstanceTypes                       []*string                                                              `json:"instance_types,omitempty" xml:"instance_types,omitempty" type:"Repeated"`
-	InternetChargeType                  *string                                                                `json:"internet_charge_type,omitempty" xml:"internet_charge_type,omitempty"`
-	InternetMaxBandwidthOut             *int64                                                                 `json:"internet_max_bandwidth_out,omitempty" xml:"internet_max_bandwidth_out,omitempty"`
-	KeyPair                             *string                                                                `json:"key_pair,omitempty" xml:"key_pair,omitempty"`
-	LoginPassword                       *string                                                                `json:"login_password,omitempty" xml:"login_password,omitempty"`
-	MultiAzPolicy                       *string                                                                `json:"multi_az_policy,omitempty" xml:"multi_az_policy,omitempty"`
-	OnDemandBaseCapacity                *int64                                                                 `json:"on_demand_base_capacity,omitempty" xml:"on_demand_base_capacity,omitempty"`
-	OnDemandPercentageAboveBaseCapacity *int64                                                                 `json:"on_demand_percentage_above_base_capacity,omitempty" xml:"on_demand_percentage_above_base_capacity,omitempty"`
-	Period                              *int64                                                                 `json:"period,omitempty" xml:"period,omitempty"`
-	PeriodUnit                          *string                                                                `json:"period_unit,omitempty" xml:"period_unit,omitempty"`
-	Platform                            *string                                                                `json:"platform,omitempty" xml:"platform,omitempty"`
-	RamPolicy                           *string                                                                `json:"ram_policy,omitempty" xml:"ram_policy,omitempty"`
-	RdsInstances                        []*string                                                              `json:"rds_instances,omitempty" xml:"rds_instances,omitempty" type:"Repeated"`
-	ScalingGroupId                      *string                                                                `json:"scaling_group_id,omitempty" xml:"scaling_group_id,omitempty"`
-	ScalingPolicy                       *string                                                                `json:"scaling_policy,omitempty" xml:"scaling_policy,omitempty"`
-	SecurityGroupId                     *string                                                                `json:"security_group_id,omitempty" xml:"security_group_id,omitempty"`
-	SecurityGroupIds                    []*string                                                              `json:"security_group_ids,omitempty" xml:"security_group_ids,omitempty" type:"Repeated"`
-	SpotInstancePools                   *int64                                                                 `json:"spot_instance_pools,omitempty" xml:"spot_instance_pools,omitempty"`
-	SpotInstanceRemedy                  *bool                                                                  `json:"spot_instance_remedy,omitempty" xml:"spot_instance_remedy,omitempty"`
-	SpotPriceLimit                      []*DescribeClusterNodePoolDetailResponseBodyScalingGroupSpotPriceLimit `json:"spot_price_limit,omitempty" xml:"spot_price_limit,omitempty" type:"Repeated"`
-	SpotStrategy                        *string                                                                `json:"spot_strategy,omitempty" xml:"spot_strategy,omitempty"`
-	SystemDiskCategory                  *string                                                                `json:"system_disk_category,omitempty" xml:"system_disk_category,omitempty"`
-	SystemDiskPerformanceLevel          *string                                                                `json:"system_disk_performance_level,omitempty" xml:"system_disk_performance_level,omitempty"`
-	SystemDiskSize                      *int64                                                                 `json:"system_disk_size,omitempty" xml:"system_disk_size,omitempty"`
-	Tags                                []*Tag                                                                 `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
-	VswitchIds                          []*string                                                              `json:"vswitch_ids,omitempty" xml:"vswitch_ids,omitempty" type:"Repeated"`
+	AutoRenew                           *bool                                                                    `json:"auto_renew,omitempty" xml:"auto_renew,omitempty"`
+	AutoRenewPeriod                     *int64                                                                   `json:"auto_renew_period,omitempty" xml:"auto_renew_period,omitempty"`
+	CompensateWithOnDemand              *bool                                                                    `json:"compensate_with_on_demand,omitempty" xml:"compensate_with_on_demand,omitempty"`
+	DataDisks                           []*DataDisk                                                              `json:"data_disks,omitempty" xml:"data_disks,omitempty" type:"Repeated"`
+	DeploymentsetId                     *string                                                                  `json:"deploymentset_id,omitempty" xml:"deploymentset_id,omitempty"`
+	DesiredSize                         *int64                                                                   `json:"desired_size,omitempty" xml:"desired_size,omitempty"`
+	ImageId                             *string                                                                  `json:"image_id,omitempty" xml:"image_id,omitempty"`
+	InstanceChargeType                  *string                                                                  `json:"instance_charge_type,omitempty" xml:"instance_charge_type,omitempty"`
+	InstanceTypes                       []*string                                                                `json:"instance_types,omitempty" xml:"instance_types,omitempty" type:"Repeated"`
+	InternetChargeType                  *string                                                                  `json:"internet_charge_type,omitempty" xml:"internet_charge_type,omitempty"`
+	InternetMaxBandwidthOut             *int64                                                                   `json:"internet_max_bandwidth_out,omitempty" xml:"internet_max_bandwidth_out,omitempty"`
+	KeyPair                             *string                                                                  `json:"key_pair,omitempty" xml:"key_pair,omitempty"`
+	LoginPassword                       *string                                                                  `json:"login_password,omitempty" xml:"login_password,omitempty"`
+	MultiAzPolicy                       *string                                                                  `json:"multi_az_policy,omitempty" xml:"multi_az_policy,omitempty"`
+	OnDemandBaseCapacity                *int64                                                                   `json:"on_demand_base_capacity,omitempty" xml:"on_demand_base_capacity,omitempty"`
+	OnDemandPercentageAboveBaseCapacity *int64                                                                   `json:"on_demand_percentage_above_base_capacity,omitempty" xml:"on_demand_percentage_above_base_capacity,omitempty"`
+	Period                              *int64                                                                   `json:"period,omitempty" xml:"period,omitempty"`
+	PeriodUnit                          *string                                                                  `json:"period_unit,omitempty" xml:"period_unit,omitempty"`
+	Platform                            *string                                                                  `json:"platform,omitempty" xml:"platform,omitempty"`
+	PrivatePoolOptions                  *DescribeClusterNodePoolDetailResponseBodyScalingGroupPrivatePoolOptions `json:"private_pool_options,omitempty" xml:"private_pool_options,omitempty" type:"Struct"`
+	RamPolicy                           *string                                                                  `json:"ram_policy,omitempty" xml:"ram_policy,omitempty"`
+	RdsInstances                        []*string                                                                `json:"rds_instances,omitempty" xml:"rds_instances,omitempty" type:"Repeated"`
+	ScalingGroupId                      *string                                                                  `json:"scaling_group_id,omitempty" xml:"scaling_group_id,omitempty"`
+	ScalingPolicy                       *string                                                                  `json:"scaling_policy,omitempty" xml:"scaling_policy,omitempty"`
+	SecurityGroupId                     *string                                                                  `json:"security_group_id,omitempty" xml:"security_group_id,omitempty"`
+	SecurityGroupIds                    []*string                                                                `json:"security_group_ids,omitempty" xml:"security_group_ids,omitempty" type:"Repeated"`
+	SpotInstancePools                   *int64                                                                   `json:"spot_instance_pools,omitempty" xml:"spot_instance_pools,omitempty"`
+	SpotInstanceRemedy                  *bool                                                                    `json:"spot_instance_remedy,omitempty" xml:"spot_instance_remedy,omitempty"`
+	SpotPriceLimit                      []*DescribeClusterNodePoolDetailResponseBodyScalingGroupSpotPriceLimit   `json:"spot_price_limit,omitempty" xml:"spot_price_limit,omitempty" type:"Repeated"`
+	SpotStrategy                        *string                                                                  `json:"spot_strategy,omitempty" xml:"spot_strategy,omitempty"`
+	SystemDiskCategory                  *string                                                                  `json:"system_disk_category,omitempty" xml:"system_disk_category,omitempty"`
+	SystemDiskPerformanceLevel          *string                                                                  `json:"system_disk_performance_level,omitempty" xml:"system_disk_performance_level,omitempty"`
+	SystemDiskSize                      *int64                                                                   `json:"system_disk_size,omitempty" xml:"system_disk_size,omitempty"`
+	Tags                                []*Tag                                                                   `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
+	VswitchIds                          []*string                                                                `json:"vswitch_ids,omitempty" xml:"vswitch_ids,omitempty" type:"Repeated"`
 }
 
 func (s DescribeClusterNodePoolDetailResponseBodyScalingGroup) String() string {
@@ -4214,6 +4331,11 @@ func (s *DescribeClusterNodePoolDetailResponseBodyScalingGroup) SetPlatform(v st
 	return s
 }
 
+func (s *DescribeClusterNodePoolDetailResponseBodyScalingGroup) SetPrivatePoolOptions(v *DescribeClusterNodePoolDetailResponseBodyScalingGroupPrivatePoolOptions) *DescribeClusterNodePoolDetailResponseBodyScalingGroup {
+	s.PrivatePoolOptions = v
+	return s
+}
+
 func (s *DescribeClusterNodePoolDetailResponseBodyScalingGroup) SetRamPolicy(v string) *DescribeClusterNodePoolDetailResponseBodyScalingGroup {
 	s.RamPolicy = &v
 	return s
@@ -4286,6 +4408,29 @@ func (s *DescribeClusterNodePoolDetailResponseBodyScalingGroup) SetTags(v []*Tag
 
 func (s *DescribeClusterNodePoolDetailResponseBodyScalingGroup) SetVswitchIds(v []*string) *DescribeClusterNodePoolDetailResponseBodyScalingGroup {
 	s.VswitchIds = v
+	return s
+}
+
+type DescribeClusterNodePoolDetailResponseBodyScalingGroupPrivatePoolOptions struct {
+	Id            *string `json:"id,omitempty" xml:"id,omitempty"`
+	MatchCriteria *string `json:"match_criteria,omitempty" xml:"match_criteria,omitempty"`
+}
+
+func (s DescribeClusterNodePoolDetailResponseBodyScalingGroupPrivatePoolOptions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeClusterNodePoolDetailResponseBodyScalingGroupPrivatePoolOptions) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeClusterNodePoolDetailResponseBodyScalingGroupPrivatePoolOptions) SetId(v string) *DescribeClusterNodePoolDetailResponseBodyScalingGroupPrivatePoolOptions {
+	s.Id = &v
+	return s
+}
+
+func (s *DescribeClusterNodePoolDetailResponseBodyScalingGroupPrivatePoolOptions) SetMatchCriteria(v string) *DescribeClusterNodePoolDetailResponseBodyScalingGroupPrivatePoolOptions {
+	s.MatchCriteria = &v
 	return s
 }
 
@@ -4782,40 +4927,41 @@ func (s *DescribeClusterNodePoolsResponseBodyNodepoolsNodepoolInfo) SetUpdated(v
 }
 
 type DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup struct {
-	AutoRenew                           *bool                                                                      `json:"auto_renew,omitempty" xml:"auto_renew,omitempty"`
-	AutoRenewPeriod                     *int64                                                                     `json:"auto_renew_period,omitempty" xml:"auto_renew_period,omitempty"`
-	CompensateWithOnDemand              *bool                                                                      `json:"compensate_with_on_demand,omitempty" xml:"compensate_with_on_demand,omitempty"`
-	DataDisks                           []*DataDisk                                                                `json:"data_disks,omitempty" xml:"data_disks,omitempty" type:"Repeated"`
-	DeploymentsetId                     *string                                                                    `json:"deploymentset_id,omitempty" xml:"deploymentset_id,omitempty"`
-	DesiredSize                         *int64                                                                     `json:"desired_size,omitempty" xml:"desired_size,omitempty"`
-	ImageId                             *string                                                                    `json:"image_id,omitempty" xml:"image_id,omitempty"`
-	InstanceChargeType                  *string                                                                    `json:"instance_charge_type,omitempty" xml:"instance_charge_type,omitempty"`
-	InstanceTypes                       []*string                                                                  `json:"instance_types,omitempty" xml:"instance_types,omitempty" type:"Repeated"`
-	InternetChargeType                  *string                                                                    `json:"internet_charge_type,omitempty" xml:"internet_charge_type,omitempty"`
-	InternetMaxBandwidthOut             *int64                                                                     `json:"internet_max_bandwidth_out,omitempty" xml:"internet_max_bandwidth_out,omitempty"`
-	KeyPair                             *string                                                                    `json:"key_pair,omitempty" xml:"key_pair,omitempty"`
-	LoginPassword                       *string                                                                    `json:"login_password,omitempty" xml:"login_password,omitempty"`
-	MultiAzPolicy                       *string                                                                    `json:"multi_az_policy,omitempty" xml:"multi_az_policy,omitempty"`
-	OnDemandBaseCapacity                *int64                                                                     `json:"on_demand_base_capacity,omitempty" xml:"on_demand_base_capacity,omitempty"`
-	OnDemandPercentageAboveBaseCapacity *int64                                                                     `json:"on_demand_percentage_above_base_capacity,omitempty" xml:"on_demand_percentage_above_base_capacity,omitempty"`
-	Period                              *int64                                                                     `json:"period,omitempty" xml:"period,omitempty"`
-	PeriodUnit                          *string                                                                    `json:"period_unit,omitempty" xml:"period_unit,omitempty"`
-	Platform                            *string                                                                    `json:"platform,omitempty" xml:"platform,omitempty"`
-	RamPolicy                           *string                                                                    `json:"ram_policy,omitempty" xml:"ram_policy,omitempty"`
-	RdsInstances                        []*string                                                                  `json:"rds_instances,omitempty" xml:"rds_instances,omitempty" type:"Repeated"`
-	ScalingGroupId                      *string                                                                    `json:"scaling_group_id,omitempty" xml:"scaling_group_id,omitempty"`
-	ScalingPolicy                       *string                                                                    `json:"scaling_policy,omitempty" xml:"scaling_policy,omitempty"`
-	SecurityGroupId                     *string                                                                    `json:"security_group_id,omitempty" xml:"security_group_id,omitempty"`
-	SecurityGroupIds                    []*string                                                                  `json:"security_group_ids,omitempty" xml:"security_group_ids,omitempty" type:"Repeated"`
-	SpotInstancePools                   *int64                                                                     `json:"spot_instance_pools,omitempty" xml:"spot_instance_pools,omitempty"`
-	SpotInstanceRemedy                  *bool                                                                      `json:"spot_instance_remedy,omitempty" xml:"spot_instance_remedy,omitempty"`
-	SpotPriceLimit                      []*DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroupSpotPriceLimit `json:"spot_price_limit,omitempty" xml:"spot_price_limit,omitempty" type:"Repeated"`
-	SpotStrategy                        *string                                                                    `json:"spot_strategy,omitempty" xml:"spot_strategy,omitempty"`
-	SystemDiskCategory                  *string                                                                    `json:"system_disk_category,omitempty" xml:"system_disk_category,omitempty"`
-	SystemDiskPerformanceLevel          *string                                                                    `json:"system_disk_performance_level,omitempty" xml:"system_disk_performance_level,omitempty"`
-	SystemDiskSize                      *int64                                                                     `json:"system_disk_size,omitempty" xml:"system_disk_size,omitempty"`
-	Tags                                []*Tag                                                                     `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
-	VswitchIds                          []*string                                                                  `json:"vswitch_ids,omitempty" xml:"vswitch_ids,omitempty" type:"Repeated"`
+	AutoRenew                           *bool                                                                        `json:"auto_renew,omitempty" xml:"auto_renew,omitempty"`
+	AutoRenewPeriod                     *int64                                                                       `json:"auto_renew_period,omitempty" xml:"auto_renew_period,omitempty"`
+	CompensateWithOnDemand              *bool                                                                        `json:"compensate_with_on_demand,omitempty" xml:"compensate_with_on_demand,omitempty"`
+	DataDisks                           []*DataDisk                                                                  `json:"data_disks,omitempty" xml:"data_disks,omitempty" type:"Repeated"`
+	DeploymentsetId                     *string                                                                      `json:"deploymentset_id,omitempty" xml:"deploymentset_id,omitempty"`
+	DesiredSize                         *int64                                                                       `json:"desired_size,omitempty" xml:"desired_size,omitempty"`
+	ImageId                             *string                                                                      `json:"image_id,omitempty" xml:"image_id,omitempty"`
+	InstanceChargeType                  *string                                                                      `json:"instance_charge_type,omitempty" xml:"instance_charge_type,omitempty"`
+	InstanceTypes                       []*string                                                                    `json:"instance_types,omitempty" xml:"instance_types,omitempty" type:"Repeated"`
+	InternetChargeType                  *string                                                                      `json:"internet_charge_type,omitempty" xml:"internet_charge_type,omitempty"`
+	InternetMaxBandwidthOut             *int64                                                                       `json:"internet_max_bandwidth_out,omitempty" xml:"internet_max_bandwidth_out,omitempty"`
+	KeyPair                             *string                                                                      `json:"key_pair,omitempty" xml:"key_pair,omitempty"`
+	LoginPassword                       *string                                                                      `json:"login_password,omitempty" xml:"login_password,omitempty"`
+	MultiAzPolicy                       *string                                                                      `json:"multi_az_policy,omitempty" xml:"multi_az_policy,omitempty"`
+	OnDemandBaseCapacity                *int64                                                                       `json:"on_demand_base_capacity,omitempty" xml:"on_demand_base_capacity,omitempty"`
+	OnDemandPercentageAboveBaseCapacity *int64                                                                       `json:"on_demand_percentage_above_base_capacity,omitempty" xml:"on_demand_percentage_above_base_capacity,omitempty"`
+	Period                              *int64                                                                       `json:"period,omitempty" xml:"period,omitempty"`
+	PeriodUnit                          *string                                                                      `json:"period_unit,omitempty" xml:"period_unit,omitempty"`
+	Platform                            *string                                                                      `json:"platform,omitempty" xml:"platform,omitempty"`
+	PrivatePoolOptions                  *DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroupPrivatePoolOptions `json:"private_pool_options,omitempty" xml:"private_pool_options,omitempty" type:"Struct"`
+	RamPolicy                           *string                                                                      `json:"ram_policy,omitempty" xml:"ram_policy,omitempty"`
+	RdsInstances                        []*string                                                                    `json:"rds_instances,omitempty" xml:"rds_instances,omitempty" type:"Repeated"`
+	ScalingGroupId                      *string                                                                      `json:"scaling_group_id,omitempty" xml:"scaling_group_id,omitempty"`
+	ScalingPolicy                       *string                                                                      `json:"scaling_policy,omitempty" xml:"scaling_policy,omitempty"`
+	SecurityGroupId                     *string                                                                      `json:"security_group_id,omitempty" xml:"security_group_id,omitempty"`
+	SecurityGroupIds                    []*string                                                                    `json:"security_group_ids,omitempty" xml:"security_group_ids,omitempty" type:"Repeated"`
+	SpotInstancePools                   *int64                                                                       `json:"spot_instance_pools,omitempty" xml:"spot_instance_pools,omitempty"`
+	SpotInstanceRemedy                  *bool                                                                        `json:"spot_instance_remedy,omitempty" xml:"spot_instance_remedy,omitempty"`
+	SpotPriceLimit                      []*DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroupSpotPriceLimit   `json:"spot_price_limit,omitempty" xml:"spot_price_limit,omitempty" type:"Repeated"`
+	SpotStrategy                        *string                                                                      `json:"spot_strategy,omitempty" xml:"spot_strategy,omitempty"`
+	SystemDiskCategory                  *string                                                                      `json:"system_disk_category,omitempty" xml:"system_disk_category,omitempty"`
+	SystemDiskPerformanceLevel          *string                                                                      `json:"system_disk_performance_level,omitempty" xml:"system_disk_performance_level,omitempty"`
+	SystemDiskSize                      *int64                                                                       `json:"system_disk_size,omitempty" xml:"system_disk_size,omitempty"`
+	Tags                                []*Tag                                                                       `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
+	VswitchIds                          []*string                                                                    `json:"vswitch_ids,omitempty" xml:"vswitch_ids,omitempty" type:"Repeated"`
 }
 
 func (s DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup) String() string {
@@ -4921,6 +5067,11 @@ func (s *DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup) SetPlatform(
 	return s
 }
 
+func (s *DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup) SetPrivatePoolOptions(v *DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroupPrivatePoolOptions) *DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup {
+	s.PrivatePoolOptions = v
+	return s
+}
+
 func (s *DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup) SetRamPolicy(v string) *DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup {
 	s.RamPolicy = &v
 	return s
@@ -4993,6 +5144,29 @@ func (s *DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup) SetTags(v []
 
 func (s *DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup) SetVswitchIds(v []*string) *DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup {
 	s.VswitchIds = v
+	return s
+}
+
+type DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroupPrivatePoolOptions struct {
+	Id            *string `json:"id,omitempty" xml:"id,omitempty"`
+	MatchCriteria *string `json:"match_criteria,omitempty" xml:"match_criteria,omitempty"`
+}
+
+func (s DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroupPrivatePoolOptions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroupPrivatePoolOptions) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroupPrivatePoolOptions) SetId(v string) *DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroupPrivatePoolOptions {
+	s.Id = &v
+	return s
+}
+
+func (s *DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroupPrivatePoolOptions) SetMatchCriteria(v string) *DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroupPrivatePoolOptions {
+	s.MatchCriteria = &v
 	return s
 }
 
@@ -5750,6 +5924,111 @@ func (s *DescribeClusterV2UserKubeconfigResponse) SetStatusCode(v int32) *Descri
 }
 
 func (s *DescribeClusterV2UserKubeconfigResponse) SetBody(v *DescribeClusterV2UserKubeconfigResponseBody) *DescribeClusterV2UserKubeconfigResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeClusterVulsResponseBody struct {
+	VulRecords []*DescribeClusterVulsResponseBodyVulRecords `json:"vul_records,omitempty" xml:"vul_records,omitempty" type:"Repeated"`
+}
+
+func (s DescribeClusterVulsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeClusterVulsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeClusterVulsResponseBody) SetVulRecords(v []*DescribeClusterVulsResponseBodyVulRecords) *DescribeClusterVulsResponseBody {
+	s.VulRecords = v
+	return s
+}
+
+type DescribeClusterVulsResponseBodyVulRecords struct {
+	CveList      []*string `json:"cve_list,omitempty" xml:"cve_list,omitempty" type:"Repeated"`
+	Necessity    *string   `json:"necessity,omitempty" xml:"necessity,omitempty"`
+	NodeCount    *int32    `json:"node_count,omitempty" xml:"node_count,omitempty"`
+	NodepoolId   *string   `json:"nodepool_id,omitempty" xml:"nodepool_id,omitempty"`
+	NodepoolName *string   `json:"nodepool_name,omitempty" xml:"nodepool_name,omitempty"`
+	VulAliasName *string   `json:"vul_alias_name,omitempty" xml:"vul_alias_name,omitempty"`
+	VulName      *string   `json:"vul_name,omitempty" xml:"vul_name,omitempty"`
+	VulType      *string   `json:"vul_type,omitempty" xml:"vul_type,omitempty"`
+}
+
+func (s DescribeClusterVulsResponseBodyVulRecords) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeClusterVulsResponseBodyVulRecords) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeClusterVulsResponseBodyVulRecords) SetCveList(v []*string) *DescribeClusterVulsResponseBodyVulRecords {
+	s.CveList = v
+	return s
+}
+
+func (s *DescribeClusterVulsResponseBodyVulRecords) SetNecessity(v string) *DescribeClusterVulsResponseBodyVulRecords {
+	s.Necessity = &v
+	return s
+}
+
+func (s *DescribeClusterVulsResponseBodyVulRecords) SetNodeCount(v int32) *DescribeClusterVulsResponseBodyVulRecords {
+	s.NodeCount = &v
+	return s
+}
+
+func (s *DescribeClusterVulsResponseBodyVulRecords) SetNodepoolId(v string) *DescribeClusterVulsResponseBodyVulRecords {
+	s.NodepoolId = &v
+	return s
+}
+
+func (s *DescribeClusterVulsResponseBodyVulRecords) SetNodepoolName(v string) *DescribeClusterVulsResponseBodyVulRecords {
+	s.NodepoolName = &v
+	return s
+}
+
+func (s *DescribeClusterVulsResponseBodyVulRecords) SetVulAliasName(v string) *DescribeClusterVulsResponseBodyVulRecords {
+	s.VulAliasName = &v
+	return s
+}
+
+func (s *DescribeClusterVulsResponseBodyVulRecords) SetVulName(v string) *DescribeClusterVulsResponseBodyVulRecords {
+	s.VulName = &v
+	return s
+}
+
+func (s *DescribeClusterVulsResponseBodyVulRecords) SetVulType(v string) *DescribeClusterVulsResponseBodyVulRecords {
+	s.VulType = &v
+	return s
+}
+
+type DescribeClusterVulsResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeClusterVulsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeClusterVulsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeClusterVulsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeClusterVulsResponse) SetHeaders(v map[string]*string) *DescribeClusterVulsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeClusterVulsResponse) SetStatusCode(v int32) *DescribeClusterVulsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeClusterVulsResponse) SetBody(v *DescribeClusterVulsResponseBody) *DescribeClusterVulsResponse {
 	s.Body = v
 	return s
 }
@@ -7226,6 +7505,23 @@ func (s *DescribeKubernetesVersionMetadataResponseBodyImages) SetImageCategory(v
 
 func (s *DescribeKubernetesVersionMetadataResponseBodyImages) SetArchitecture(v string) *DescribeKubernetesVersionMetadataResponseBodyImages {
 	s.Architecture = &v
+	return s
+}
+
+type DescribeNodePoolVulsRequest struct {
+	Necessity *string `json:"necessity,omitempty" xml:"necessity,omitempty"`
+}
+
+func (s DescribeNodePoolVulsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeNodePoolVulsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeNodePoolVulsRequest) SetNecessity(v string) *DescribeNodePoolVulsRequest {
+	s.Necessity = &v
 	return s
 }
 
@@ -10333,35 +10629,36 @@ func (s *ModifyClusterNodePoolRequestNodepoolInfo) SetResourceGroupId(v string) 
 }
 
 type ModifyClusterNodePoolRequestScalingGroup struct {
-	AutoRenew                           *bool                                                     `json:"auto_renew,omitempty" xml:"auto_renew,omitempty"`
-	AutoRenewPeriod                     *int64                                                    `json:"auto_renew_period,omitempty" xml:"auto_renew_period,omitempty"`
-	CompensateWithOnDemand              *bool                                                     `json:"compensate_with_on_demand,omitempty" xml:"compensate_with_on_demand,omitempty"`
-	DataDisks                           []*DataDisk                                               `json:"data_disks,omitempty" xml:"data_disks,omitempty" type:"Repeated"`
-	DesiredSize                         *int64                                                    `json:"desired_size,omitempty" xml:"desired_size,omitempty"`
-	ImageId                             *string                                                   `json:"image_id,omitempty" xml:"image_id,omitempty"`
-	InstanceChargeType                  *string                                                   `json:"instance_charge_type,omitempty" xml:"instance_charge_type,omitempty"`
-	InstanceTypes                       []*string                                                 `json:"instance_types,omitempty" xml:"instance_types,omitempty" type:"Repeated"`
-	InternetChargeType                  *string                                                   `json:"internet_charge_type,omitempty" xml:"internet_charge_type,omitempty"`
-	InternetMaxBandwidthOut             *int64                                                    `json:"internet_max_bandwidth_out,omitempty" xml:"internet_max_bandwidth_out,omitempty"`
-	KeyPair                             *string                                                   `json:"key_pair,omitempty" xml:"key_pair,omitempty"`
-	LoginPassword                       *string                                                   `json:"login_password,omitempty" xml:"login_password,omitempty"`
-	MultiAzPolicy                       *string                                                   `json:"multi_az_policy,omitempty" xml:"multi_az_policy,omitempty"`
-	OnDemandBaseCapacity                *int64                                                    `json:"on_demand_base_capacity,omitempty" xml:"on_demand_base_capacity,omitempty"`
-	OnDemandPercentageAboveBaseCapacity *int64                                                    `json:"on_demand_percentage_above_base_capacity,omitempty" xml:"on_demand_percentage_above_base_capacity,omitempty"`
-	Period                              *int64                                                    `json:"period,omitempty" xml:"period,omitempty"`
-	PeriodUnit                          *string                                                   `json:"period_unit,omitempty" xml:"period_unit,omitempty"`
-	Platform                            *string                                                   `json:"platform,omitempty" xml:"platform,omitempty"`
-	RdsInstances                        []*string                                                 `json:"rds_instances,omitempty" xml:"rds_instances,omitempty" type:"Repeated"`
-	ScalingPolicy                       *string                                                   `json:"scaling_policy,omitempty" xml:"scaling_policy,omitempty"`
-	SpotInstancePools                   *int64                                                    `json:"spot_instance_pools,omitempty" xml:"spot_instance_pools,omitempty"`
-	SpotInstanceRemedy                  *bool                                                     `json:"spot_instance_remedy,omitempty" xml:"spot_instance_remedy,omitempty"`
-	SpotPriceLimit                      []*ModifyClusterNodePoolRequestScalingGroupSpotPriceLimit `json:"spot_price_limit,omitempty" xml:"spot_price_limit,omitempty" type:"Repeated"`
-	SpotStrategy                        *string                                                   `json:"spot_strategy,omitempty" xml:"spot_strategy,omitempty"`
-	SystemDiskCategory                  *string                                                   `json:"system_disk_category,omitempty" xml:"system_disk_category,omitempty"`
-	SystemDiskPerformanceLevel          *string                                                   `json:"system_disk_performance_level,omitempty" xml:"system_disk_performance_level,omitempty"`
-	SystemDiskSize                      *int64                                                    `json:"system_disk_size,omitempty" xml:"system_disk_size,omitempty"`
-	Tags                                []*Tag                                                    `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
-	VswitchIds                          []*string                                                 `json:"vswitch_ids,omitempty" xml:"vswitch_ids,omitempty" type:"Repeated"`
+	AutoRenew                           *bool                                                       `json:"auto_renew,omitempty" xml:"auto_renew,omitempty"`
+	AutoRenewPeriod                     *int64                                                      `json:"auto_renew_period,omitempty" xml:"auto_renew_period,omitempty"`
+	CompensateWithOnDemand              *bool                                                       `json:"compensate_with_on_demand,omitempty" xml:"compensate_with_on_demand,omitempty"`
+	DataDisks                           []*DataDisk                                                 `json:"data_disks,omitempty" xml:"data_disks,omitempty" type:"Repeated"`
+	DesiredSize                         *int64                                                      `json:"desired_size,omitempty" xml:"desired_size,omitempty"`
+	ImageId                             *string                                                     `json:"image_id,omitempty" xml:"image_id,omitempty"`
+	InstanceChargeType                  *string                                                     `json:"instance_charge_type,omitempty" xml:"instance_charge_type,omitempty"`
+	InstanceTypes                       []*string                                                   `json:"instance_types,omitempty" xml:"instance_types,omitempty" type:"Repeated"`
+	InternetChargeType                  *string                                                     `json:"internet_charge_type,omitempty" xml:"internet_charge_type,omitempty"`
+	InternetMaxBandwidthOut             *int64                                                      `json:"internet_max_bandwidth_out,omitempty" xml:"internet_max_bandwidth_out,omitempty"`
+	KeyPair                             *string                                                     `json:"key_pair,omitempty" xml:"key_pair,omitempty"`
+	LoginPassword                       *string                                                     `json:"login_password,omitempty" xml:"login_password,omitempty"`
+	MultiAzPolicy                       *string                                                     `json:"multi_az_policy,omitempty" xml:"multi_az_policy,omitempty"`
+	OnDemandBaseCapacity                *int64                                                      `json:"on_demand_base_capacity,omitempty" xml:"on_demand_base_capacity,omitempty"`
+	OnDemandPercentageAboveBaseCapacity *int64                                                      `json:"on_demand_percentage_above_base_capacity,omitempty" xml:"on_demand_percentage_above_base_capacity,omitempty"`
+	Period                              *int64                                                      `json:"period,omitempty" xml:"period,omitempty"`
+	PeriodUnit                          *string                                                     `json:"period_unit,omitempty" xml:"period_unit,omitempty"`
+	Platform                            *string                                                     `json:"platform,omitempty" xml:"platform,omitempty"`
+	PrivatePoolOptions                  *ModifyClusterNodePoolRequestScalingGroupPrivatePoolOptions `json:"private_pool_options,omitempty" xml:"private_pool_options,omitempty" type:"Struct"`
+	RdsInstances                        []*string                                                   `json:"rds_instances,omitempty" xml:"rds_instances,omitempty" type:"Repeated"`
+	ScalingPolicy                       *string                                                     `json:"scaling_policy,omitempty" xml:"scaling_policy,omitempty"`
+	SpotInstancePools                   *int64                                                      `json:"spot_instance_pools,omitempty" xml:"spot_instance_pools,omitempty"`
+	SpotInstanceRemedy                  *bool                                                       `json:"spot_instance_remedy,omitempty" xml:"spot_instance_remedy,omitempty"`
+	SpotPriceLimit                      []*ModifyClusterNodePoolRequestScalingGroupSpotPriceLimit   `json:"spot_price_limit,omitempty" xml:"spot_price_limit,omitempty" type:"Repeated"`
+	SpotStrategy                        *string                                                     `json:"spot_strategy,omitempty" xml:"spot_strategy,omitempty"`
+	SystemDiskCategory                  *string                                                     `json:"system_disk_category,omitempty" xml:"system_disk_category,omitempty"`
+	SystemDiskPerformanceLevel          *string                                                     `json:"system_disk_performance_level,omitempty" xml:"system_disk_performance_level,omitempty"`
+	SystemDiskSize                      *int64                                                      `json:"system_disk_size,omitempty" xml:"system_disk_size,omitempty"`
+	Tags                                []*Tag                                                      `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
+	VswitchIds                          []*string                                                   `json:"vswitch_ids,omitempty" xml:"vswitch_ids,omitempty" type:"Repeated"`
 }
 
 func (s ModifyClusterNodePoolRequestScalingGroup) String() string {
@@ -10462,6 +10759,11 @@ func (s *ModifyClusterNodePoolRequestScalingGroup) SetPlatform(v string) *Modify
 	return s
 }
 
+func (s *ModifyClusterNodePoolRequestScalingGroup) SetPrivatePoolOptions(v *ModifyClusterNodePoolRequestScalingGroupPrivatePoolOptions) *ModifyClusterNodePoolRequestScalingGroup {
+	s.PrivatePoolOptions = v
+	return s
+}
+
 func (s *ModifyClusterNodePoolRequestScalingGroup) SetRdsInstances(v []*string) *ModifyClusterNodePoolRequestScalingGroup {
 	s.RdsInstances = v
 	return s
@@ -10514,6 +10816,29 @@ func (s *ModifyClusterNodePoolRequestScalingGroup) SetTags(v []*Tag) *ModifyClus
 
 func (s *ModifyClusterNodePoolRequestScalingGroup) SetVswitchIds(v []*string) *ModifyClusterNodePoolRequestScalingGroup {
 	s.VswitchIds = v
+	return s
+}
+
+type ModifyClusterNodePoolRequestScalingGroupPrivatePoolOptions struct {
+	Id            *string `json:"id,omitempty" xml:"id,omitempty"`
+	MatchCriteria *string `json:"match_criteria,omitempty" xml:"match_criteria,omitempty"`
+}
+
+func (s ModifyClusterNodePoolRequestScalingGroupPrivatePoolOptions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyClusterNodePoolRequestScalingGroupPrivatePoolOptions) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyClusterNodePoolRequestScalingGroupPrivatePoolOptions) SetId(v string) *ModifyClusterNodePoolRequestScalingGroupPrivatePoolOptions {
+	s.Id = &v
+	return s
+}
+
+func (s *ModifyClusterNodePoolRequestScalingGroupPrivatePoolOptions) SetMatchCriteria(v string) *ModifyClusterNodePoolRequestScalingGroupPrivatePoolOptions {
+	s.MatchCriteria = &v
 	return s
 }
 
@@ -11929,6 +12254,58 @@ func (s *ScaleOutClusterResponse) SetBody(v *ScaleOutClusterResponseBody) *Scale
 	return s
 }
 
+type ScanClusterVulsResponseBody struct {
+	RequestId *string `json:"request_id,omitempty" xml:"request_id,omitempty"`
+	TaskId    *string `json:"task_id,omitempty" xml:"task_id,omitempty"`
+}
+
+func (s ScanClusterVulsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ScanClusterVulsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ScanClusterVulsResponseBody) SetRequestId(v string) *ScanClusterVulsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ScanClusterVulsResponseBody) SetTaskId(v string) *ScanClusterVulsResponseBody {
+	s.TaskId = &v
+	return s
+}
+
+type ScanClusterVulsResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ScanClusterVulsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ScanClusterVulsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ScanClusterVulsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ScanClusterVulsResponse) SetHeaders(v map[string]*string) *ScanClusterVulsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ScanClusterVulsResponse) SetStatusCode(v int32) *ScanClusterVulsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ScanClusterVulsResponse) SetBody(v *ScanClusterVulsResponseBody) *ScanClusterVulsResponse {
+	s.Body = v
+	return s
+}
+
 type StartAlertResponseBody struct {
 	Msg    *string `json:"msg,omitempty" xml:"msg,omitempty"`
 	Status *bool   `json:"status,omitempty" xml:"status,omitempty"`
@@ -12610,6 +12987,7 @@ func (s *UpdateTemplateResponse) SetStatusCode(v int32) *UpdateTemplateResponse 
 
 type UpgradeClusterRequest struct {
 	ComponentName *string `json:"component_name,omitempty" xml:"component_name,omitempty"`
+	MasterOnly    *bool   `json:"master_only,omitempty" xml:"master_only,omitempty"`
 	NextVersion   *string `json:"next_version,omitempty" xml:"next_version,omitempty"`
 	Version       *string `json:"version,omitempty" xml:"version,omitempty"`
 }
@@ -12624,6 +13002,11 @@ func (s UpgradeClusterRequest) GoString() string {
 
 func (s *UpgradeClusterRequest) SetComponentName(v string) *UpgradeClusterRequest {
 	s.ComponentName = &v
+	return s
+}
+
+func (s *UpgradeClusterRequest) SetMasterOnly(v bool) *UpgradeClusterRequest {
+	s.MasterOnly = &v
 	return s
 }
 
@@ -12983,6 +13366,64 @@ func (client *Client) AttachInstances(ClusterId *string, request *AttachInstance
 	headers := make(map[string]*string)
 	_result = &AttachInstancesResponse{}
 	_body, _err := client.AttachInstancesWithOptions(ClusterId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) AttachInstancesToNodePoolWithOptions(ClusterId *string, NodepoolId *string, request *AttachInstancesToNodePoolRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *AttachInstancesToNodePoolResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.FormatDisk)) {
+		body["format_disk"] = request.FormatDisk
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Instances)) {
+		body["instances"] = request.Instances
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.KeepInstanceName)) {
+		body["keep_instance_name"] = request.KeepInstanceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Password)) {
+		body["password"] = request.Password
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AttachInstancesToNodePool"),
+		Version:     tea.String("2015-12-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/clusters/" + tea.StringValue(openapiutil.GetEncodeParam(ClusterId)) + "/nodepools/" + tea.StringValue(openapiutil.GetEncodeParam(NodepoolId)) + "/attach"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &AttachInstancesToNodePoolResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) AttachInstancesToNodePool(ClusterId *string, NodepoolId *string, request *AttachInstancesToNodePoolRequest) (_result *AttachInstancesToNodePoolResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &AttachInstancesToNodePoolResponse{}
+	_body, _err := client.AttachInstancesToNodePoolWithOptions(ClusterId, NodepoolId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -15190,6 +15631,42 @@ func (client *Client) DescribeClusterV2UserKubeconfig(ClusterId *string, request
 	return _result, _err
 }
 
+func (client *Client) DescribeClusterVulsWithOptions(clusterId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DescribeClusterVulsResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeClusterVuls"),
+		Version:     tea.String("2015-12-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/clusters/" + tea.StringValue(openapiutil.GetEncodeParam(clusterId)) + "/vuls"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeClusterVulsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeClusterVuls(clusterId *string) (_result *DescribeClusterVulsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DescribeClusterVulsResponse{}
+	_body, _err := client.DescribeClusterVulsWithOptions(clusterId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 /**
  * @deprecated
  *
@@ -15666,9 +16143,19 @@ func (client *Client) DescribeKubernetesVersionMetadata(request *DescribeKuberne
 	return _result, _err
 }
 
-func (client *Client) DescribeNodePoolVulsWithOptions(clusterId *string, nodepoolId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DescribeNodePoolVulsResponse, _err error) {
+func (client *Client) DescribeNodePoolVulsWithOptions(clusterId *string, nodepoolId *string, request *DescribeNodePoolVulsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DescribeNodePoolVulsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Necessity)) {
+		query["necessity"] = request.Necessity
+	}
+
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
+		Query:   openapiutil.Query(query),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeNodePoolVuls"),
@@ -15690,11 +16177,11 @@ func (client *Client) DescribeNodePoolVulsWithOptions(clusterId *string, nodepoo
 	return _result, _err
 }
 
-func (client *Client) DescribeNodePoolVuls(clusterId *string, nodepoolId *string) (_result *DescribeNodePoolVulsResponse, _err error) {
+func (client *Client) DescribeNodePoolVuls(clusterId *string, nodepoolId *string, request *DescribeNodePoolVulsRequest) (_result *DescribeNodePoolVulsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &DescribeNodePoolVulsResponse{}
-	_body, _err := client.DescribeNodePoolVulsWithOptions(clusterId, nodepoolId, headers, runtime)
+	_body, _err := client.DescribeNodePoolVulsWithOptions(clusterId, nodepoolId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -17823,6 +18310,42 @@ func (client *Client) ScaleOutCluster(ClusterId *string, request *ScaleOutCluste
 	return _result, _err
 }
 
+func (client *Client) ScanClusterVulsWithOptions(clusterId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ScanClusterVulsResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ScanClusterVuls"),
+		Version:     tea.String("2015-12-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/clusters/" + tea.StringValue(openapiutil.GetEncodeParam(clusterId)) + "/vuls/scan"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ScanClusterVulsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ScanClusterVuls(clusterId *string) (_result *ScanClusterVulsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ScanClusterVulsResponse{}
+	_body, _err := client.ScanClusterVulsWithOptions(clusterId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) StartAlertWithOptions(ClusterId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *StartAlertResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -18366,6 +18889,10 @@ func (client *Client) UpgradeClusterWithOptions(ClusterId *string, request *Upgr
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ComponentName)) {
 		body["component_name"] = request.ComponentName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MasterOnly)) {
+		body["master_only"] = request.MasterOnly
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.NextVersion)) {
