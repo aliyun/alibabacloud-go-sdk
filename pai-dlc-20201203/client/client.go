@@ -654,6 +654,35 @@ func (s *GPUDetail) SetGPUTypeFullName(v string) *GPUDetail {
 	return s
 }
 
+type ImageConfig struct {
+	DockerRegistry *string `json:"DockerRegistry,omitempty" xml:"DockerRegistry,omitempty"`
+	Password       *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	Username       *string `json:"Username,omitempty" xml:"Username,omitempty"`
+}
+
+func (s ImageConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImageConfig) GoString() string {
+	return s.String()
+}
+
+func (s *ImageConfig) SetDockerRegistry(v string) *ImageConfig {
+	s.DockerRegistry = &v
+	return s
+}
+
+func (s *ImageConfig) SetPassword(v string) *ImageConfig {
+	s.Password = &v
+	return s
+}
+
+func (s *ImageConfig) SetUsername(v string) *ImageConfig {
+	s.Username = &v
+	return s
+}
+
 type ImageItem struct {
 	AcceleratorType   *string `json:"AcceleratorType,omitempty" xml:"AcceleratorType,omitempty"`
 	AuthorId          *string `json:"AuthorId,omitempty" xml:"AuthorId,omitempty"`
@@ -1027,6 +1056,7 @@ func (s *JobItemDataSources) SetMountPath(v string) *JobItemDataSources {
 }
 
 type JobSettings struct {
+	AdvancedSettings                map[string]*string `json:"AdvancedSettings,omitempty" xml:"AdvancedSettings,omitempty"`
 	BusinessUserId                  *string            `json:"BusinessUserId,omitempty" xml:"BusinessUserId,omitempty"`
 	Caller                          *string            `json:"Caller,omitempty" xml:"Caller,omitempty"`
 	EnableErrorMonitoringInAIMaster *bool              `json:"EnableErrorMonitoringInAIMaster,omitempty" xml:"EnableErrorMonitoringInAIMaster,omitempty"`
@@ -1044,6 +1074,11 @@ func (s JobSettings) String() string {
 
 func (s JobSettings) GoString() string {
 	return s.String()
+}
+
+func (s *JobSettings) SetAdvancedSettings(v map[string]*string) *JobSettings {
+	s.AdvancedSettings = v
+	return s
 }
 
 func (s *JobSettings) SetBusinessUserId(v string) *JobSettings {
@@ -1095,6 +1130,7 @@ type JobSpec struct {
 	EcsSpec         *string         `json:"EcsSpec,omitempty" xml:"EcsSpec,omitempty"`
 	ExtraPodSpec    *ExtraPodSpec   `json:"ExtraPodSpec,omitempty" xml:"ExtraPodSpec,omitempty"`
 	Image           *string         `json:"Image,omitempty" xml:"Image,omitempty"`
+	ImageConfig     *ImageConfig    `json:"ImageConfig,omitempty" xml:"ImageConfig,omitempty"`
 	PodCount        *int64          `json:"PodCount,omitempty" xml:"PodCount,omitempty"`
 	ResourceConfig  *ResourceConfig `json:"ResourceConfig,omitempty" xml:"ResourceConfig,omitempty"`
 	Type            *string         `json:"Type,omitempty" xml:"Type,omitempty"`
@@ -1121,6 +1157,11 @@ func (s *JobSpec) SetExtraPodSpec(v *ExtraPodSpec) *JobSpec {
 
 func (s *JobSpec) SetImage(v string) *JobSpec {
 	s.Image = &v
+	return s
+}
+
+func (s *JobSpec) SetImageConfig(v *ImageConfig) *JobSpec {
+	s.ImageConfig = v
 	return s
 }
 
