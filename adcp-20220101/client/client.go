@@ -13,9 +13,12 @@ import (
 )
 
 type AttachClusterToHubRequest struct {
-	AttachToMesh *bool   `json:"AttachToMesh,omitempty" xml:"AttachToMesh,omitempty"`
-	ClusterId    *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	ClusterIds   *string `json:"ClusterIds,omitempty" xml:"ClusterIds,omitempty"`
+	// Specifies whether to associate the clusters with Service Mesh (ASM) instances. Valid values:
+	AttachToMesh *bool `json:"AttachToMesh,omitempty" xml:"AttachToMesh,omitempty"`
+	// The ID of the master instance.
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// A JSON string that can be parsed into a string array. The string specifies the clusters that you want to associate with the master instance.
+	ClusterIds *string `json:"ClusterIds,omitempty" xml:"ClusterIds,omitempty"`
 }
 
 func (s AttachClusterToHubRequest) String() string {
@@ -42,10 +45,14 @@ func (s *AttachClusterToHubRequest) SetClusterIds(v string) *AttachClusterToHubR
 }
 
 type AttachClusterToHubResponseBody struct {
-	ClusterId         *string   `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The ID of the master instance.
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// A list of the IDs of the clusters that you want to associate with the master instance.
 	ManagedClusterIds []*string `json:"ManagedClusterIds,omitempty" xml:"ManagedClusterIds,omitempty" type:"Repeated"`
-	RequestId         *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TaskId            *string   `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the task.
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s AttachClusterToHubResponseBody) String() string {
@@ -106,14 +113,27 @@ func (s *AttachClusterToHubResponse) SetBody(v *AttachClusterToHubResponseBody) 
 }
 
 type CreateHubClusterRequest struct {
-	ApiServerPublicEip        *bool   `json:"ApiServerPublicEip,omitempty" xml:"ApiServerPublicEip,omitempty"`
-	AuditLogEnabled           *bool   `json:"AuditLogEnabled,omitempty" xml:"AuditLogEnabled,omitempty"`
-	IsEnterpriseSecurityGroup *bool   `json:"IsEnterpriseSecurityGroup,omitempty" xml:"IsEnterpriseSecurityGroup,omitempty"`
-	Name                      *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Profile                   *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
-	RegionId                  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	VSwitches                 *string `json:"VSwitches,omitempty" xml:"VSwitches,omitempty"`
-	VpcId                     *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// Specifies whether to use a public IP address to expose the API server. Valid values: - true: uses a public IP address to expose the API server. - true: uses an internal IP address to expose the API server.
+	ApiServerPublicEip *bool `json:"ApiServerPublicEip,omitempty" xml:"ApiServerPublicEip,omitempty"`
+	// Specifies whether to enable audit logs. Valid values: - true: enables audit logs. - false: disables audit logs.
+	AuditLogEnabled *bool `json:"AuditLogEnabled,omitempty" xml:"AuditLogEnabled,omitempty"`
+	// Specifies whether the security group is an advanced security group.
+	IsEnterpriseSecurityGroup *bool `json:"IsEnterpriseSecurityGroup,omitempty" xml:"IsEnterpriseSecurityGroup,omitempty"`
+	// The name of the master instance.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Scenario-oriented master control type. The value can be:
+	//
+	// - `Default`: Standard scenario Master instance.
+	// - `XFlow`: Workflow scenario master instance.
+	//
+	// Default Value: `Default`.
+	Profile *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
+	// The ID of the region. You can call the DescribeRegions operation to query available regions.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the vSwitch.
+	VSwitches *string `json:"VSwitches,omitempty" xml:"VSwitches,omitempty"`
+	// The ID of the virtual private cloud (VPC) to which the master instance belongs. You can call the DescribeVpcs operation to query available VPCs.
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s CreateHubClusterRequest) String() string {
@@ -165,9 +185,12 @@ func (s *CreateHubClusterRequest) SetVpcId(v string) *CreateHubClusterRequest {
 }
 
 type CreateHubClusterResponseBody struct {
+	// The ID of the master instance.
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The ID of the task.
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s CreateHubClusterResponseBody) String() string {
@@ -223,8 +246,10 @@ func (s *CreateHubClusterResponse) SetBody(v *CreateHubClusterResponseBody) *Cre
 }
 
 type DeleteHubClusterRequest struct {
+	// The ID of the master instance.
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	Force     *bool   `json:"Force,omitempty" xml:"Force,omitempty"`
+	// Specifies whether to forcefully delete the master instance. Valid values: - true: forcefully delete the master instance. - false: does not forcefully delete the master instance. Default value: false.
+	Force *bool `json:"Force,omitempty" xml:"Force,omitempty"`
 }
 
 func (s DeleteHubClusterRequest) String() string {
@@ -246,9 +271,12 @@ func (s *DeleteHubClusterRequest) SetForce(v bool) *DeleteHubClusterRequest {
 }
 
 type DeleteHubClusterResponseBody struct {
+	// The ID of the master instance.
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The ID of the master instance.
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s DeleteHubClusterResponseBody) String() string {
@@ -304,6 +332,7 @@ func (s *DeleteHubClusterResponse) SetBody(v *DeleteHubClusterResponseBody) *Del
 }
 
 type DescribeHubClusterDetailsRequest struct {
+	// The ID of the master instance.
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 }
 
@@ -321,8 +350,10 @@ func (s *DescribeHubClusterDetailsRequest) SetClusterId(v string) *DescribeHubCl
 }
 
 type DescribeHubClusterDetailsResponseBody struct {
-	Cluster   *DescribeHubClusterDetailsResponseBodyCluster `json:"Cluster,omitempty" xml:"Cluster,omitempty" type:"Struct"`
-	RequestId *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The details about the master instance.
+	Cluster *DescribeHubClusterDetailsResponseBodyCluster `json:"Cluster,omitempty" xml:"Cluster,omitempty" type:"Struct"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeHubClusterDetailsResponseBody) String() string {
@@ -344,13 +375,20 @@ func (s *DescribeHubClusterDetailsResponseBody) SetRequestId(v string) *Describe
 }
 
 type DescribeHubClusterDetailsResponseBodyCluster struct {
-	ApiServer   *DescribeHubClusterDetailsResponseBodyClusterApiServer    `json:"ApiServer,omitempty" xml:"ApiServer,omitempty" type:"Struct"`
-	ClusterInfo *DescribeHubClusterDetailsResponseBodyClusterClusterInfo  `json:"ClusterInfo,omitempty" xml:"ClusterInfo,omitempty" type:"Struct"`
-	Conditions  []*DescribeHubClusterDetailsResponseBodyClusterConditions `json:"Conditions,omitempty" xml:"Conditions,omitempty" type:"Repeated"`
-	Endpoints   *DescribeHubClusterDetailsResponseBodyClusterEndpoints    `json:"Endpoints,omitempty" xml:"Endpoints,omitempty" type:"Struct"`
-	LogConfig   *DescribeHubClusterDetailsResponseBodyClusterLogConfig    `json:"LogConfig,omitempty" xml:"LogConfig,omitempty" type:"Struct"`
-	MeshConfig  *DescribeHubClusterDetailsResponseBodyClusterMeshConfig   `json:"MeshConfig,omitempty" xml:"MeshConfig,omitempty" type:"Struct"`
-	Network     *DescribeHubClusterDetailsResponseBodyClusterNetwork      `json:"Network,omitempty" xml:"Network,omitempty" type:"Struct"`
+	// Information about the API server of the master instance.
+	ApiServer *DescribeHubClusterDetailsResponseBodyClusterApiServer `json:"ApiServer,omitempty" xml:"ApiServer,omitempty" type:"Struct"`
+	// The details about the master instance.
+	ClusterInfo *DescribeHubClusterDetailsResponseBodyClusterClusterInfo `json:"ClusterInfo,omitempty" xml:"ClusterInfo,omitempty" type:"Struct"`
+	// 集群删除条件信息列表
+	Conditions []*DescribeHubClusterDetailsResponseBodyClusterConditions `json:"Conditions,omitempty" xml:"Conditions,omitempty" type:"Repeated"`
+	// The endpoint of the master instance.
+	Endpoints *DescribeHubClusterDetailsResponseBodyClusterEndpoints `json:"Endpoints,omitempty" xml:"Endpoints,omitempty" type:"Struct"`
+	// The logging configuration.
+	LogConfig *DescribeHubClusterDetailsResponseBodyClusterLogConfig `json:"LogConfig,omitempty" xml:"LogConfig,omitempty" type:"Struct"`
+	// The Service Mesh (ASM) configurations.
+	MeshConfig *DescribeHubClusterDetailsResponseBodyClusterMeshConfig `json:"MeshConfig,omitempty" xml:"MeshConfig,omitempty" type:"Struct"`
+	// The network configurations of the master instance.
+	Network *DescribeHubClusterDetailsResponseBodyClusterNetwork `json:"Network,omitempty" xml:"Network,omitempty" type:"Struct"`
 }
 
 func (s DescribeHubClusterDetailsResponseBodyCluster) String() string {
@@ -397,8 +435,11 @@ func (s *DescribeHubClusterDetailsResponseBodyCluster) SetNetwork(v *DescribeHub
 }
 
 type DescribeHubClusterDetailsResponseBodyClusterApiServer struct {
+	// The ID of the elastic IP address (EIP).
 	ApiServerEipId *string `json:"ApiServerEipId,omitempty" xml:"ApiServerEipId,omitempty"`
-	EnabledPublic  *bool   `json:"EnabledPublic,omitempty" xml:"EnabledPublic,omitempty"`
+	// Indicates whether a public endpoint is used to expose the API server. Valid values: - true: a public endpoint is used to expose the API server. - false: no public endpoint is used to expose the API server.
+	EnabledPublic *bool `json:"EnabledPublic,omitempty" xml:"EnabledPublic,omitempty"`
+	// The ID of the Server Load Balancer (SLB) instance.
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
 }
 
@@ -426,16 +467,26 @@ func (s *DescribeHubClusterDetailsResponseBodyClusterApiServer) SetLoadBalancerI
 }
 
 type DescribeHubClusterDetailsResponseBodyClusterClusterInfo struct {
-	ClusterId    *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	ClusterSpec  *string `json:"ClusterSpec,omitempty" xml:"ClusterSpec,omitempty"`
+	// The ID of the master instance.
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The specification of the master instance. Valid values: - ack.pro.small: ACK Pro
+	ClusterSpec *string `json:"ClusterSpec,omitempty" xml:"ClusterSpec,omitempty"`
+	// The time when the master instance was created.
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	// The error message that is returned when the system fails to create the master instance.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Profile      *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
-	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	State        *string `json:"State,omitempty" xml:"State,omitempty"`
-	UpdateTime   *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	Version      *string `json:"Version,omitempty" xml:"Version,omitempty"`
+	// The name of the master instance.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The configurations of the master instance.
+	Profile *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
+	// The ID of the region in which the master instance resides.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The status of the master instance. Valid values: - initial: The master instance is being initialized. - failed: The master instance failed to be created. - running: The master instance is running. - inactive: The master instance is inactive. - deleting: The master instance is being deleted. - delete_failed: The master instance failed to be deleted. - deleted: The master instance is deleted.
+	State *string `json:"State,omitempty" xml:"State,omitempty"`
+	// The time when the master instance was updated.
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The Kubernetes version of the master instance.
+	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s DescribeHubClusterDetailsResponseBodyClusterClusterInfo) String() string {
@@ -497,10 +548,17 @@ func (s *DescribeHubClusterDetailsResponseBodyClusterClusterInfo) SetVersion(v s
 }
 
 type DescribeHubClusterDetailsResponseBodyClusterConditions struct {
+	// 删除条件错误信息
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	Reason  *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
-	Status  *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	Type    *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// 删除条件原因
+	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	// 删除条件状态，取值
+	// - True 不能删除
+	// - False 允许删除
+	// - Unknow 未知
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// 删除条件类型
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s DescribeHubClusterDetailsResponseBodyClusterConditions) String() string {
@@ -532,8 +590,10 @@ func (s *DescribeHubClusterDetailsResponseBodyClusterConditions) SetType(v strin
 }
 
 type DescribeHubClusterDetailsResponseBodyClusterEndpoints struct {
+	// The internal endpoint of the API server of the master instance.
 	IntranetApiServerEndpoint *string `json:"IntranetApiServerEndpoint,omitempty" xml:"IntranetApiServerEndpoint,omitempty"`
-	PublicApiServerEndpoint   *string `json:"PublicApiServerEndpoint,omitempty" xml:"PublicApiServerEndpoint,omitempty"`
+	// The public endpoint of the API server of the master instance.
+	PublicApiServerEndpoint *string `json:"PublicApiServerEndpoint,omitempty" xml:"PublicApiServerEndpoint,omitempty"`
 }
 
 func (s DescribeHubClusterDetailsResponseBodyClusterEndpoints) String() string {
@@ -555,8 +615,11 @@ func (s *DescribeHubClusterDetailsResponseBodyClusterEndpoints) SetPublicApiServ
 }
 
 type DescribeHubClusterDetailsResponseBodyClusterLogConfig struct {
-	EnableLog   *bool   `json:"EnableLog,omitempty" xml:"EnableLog,omitempty"`
-	LogProject  *string `json:"LogProject,omitempty" xml:"LogProject,omitempty"`
+	// Indicates whether audit logs are enabled. Valid values: - true: audit logs are enabled. - false: audit logs are disabled.
+	EnableLog *bool `json:"EnableLog,omitempty" xml:"EnableLog,omitempty"`
+	// The name of the Log Service project.
+	LogProject *string `json:"LogProject,omitempty" xml:"LogProject,omitempty"`
+	// The retention period of the logs.
 	LogStoreTTL *string `json:"LogStoreTTL,omitempty" xml:"LogStoreTTL,omitempty"`
 }
 
@@ -584,8 +647,10 @@ func (s *DescribeHubClusterDetailsResponseBodyClusterLogConfig) SetLogStoreTTL(v
 }
 
 type DescribeHubClusterDetailsResponseBodyClusterMeshConfig struct {
-	EnableMesh *bool   `json:"EnableMesh,omitempty" xml:"EnableMesh,omitempty"`
-	MeshId     *string `json:"MeshId,omitempty" xml:"MeshId,omitempty"`
+	// Indicates whether ASM is enabled. Valid values: - true: ASM is enabled. - false: ASM is disabled.
+	EnableMesh *bool `json:"EnableMesh,omitempty" xml:"EnableMesh,omitempty"`
+	// The ID of the ASM instance.
+	MeshId *string `json:"MeshId,omitempty" xml:"MeshId,omitempty"`
 }
 
 func (s DescribeHubClusterDetailsResponseBodyClusterMeshConfig) String() string {
@@ -607,11 +672,16 @@ func (s *DescribeHubClusterDetailsResponseBodyClusterMeshConfig) SetMeshId(v str
 }
 
 type DescribeHubClusterDetailsResponseBodyClusterNetwork struct {
-	ClusterDomain    *string   `json:"ClusterDomain,omitempty" xml:"ClusterDomain,omitempty"`
-	IPStack          *string   `json:"IPStack,omitempty" xml:"IPStack,omitempty"`
+	// The domain name of the master instance.
+	ClusterDomain *string `json:"ClusterDomain,omitempty" xml:"ClusterDomain,omitempty"`
+	// The IP version that is supported by the master instance. Valid values: - ipv4: IPv4. - ipv6: IPv6. - dual: IPv4 and IPv6.
+	IPStack *string `json:"IPStack,omitempty" xml:"IPStack,omitempty"`
+	// The ID of the associated security group.
 	SecurityGroupIDs []*string `json:"SecurityGroupIDs,omitempty" xml:"SecurityGroupIDs,omitempty" type:"Repeated"`
-	VSwitches        []*string `json:"VSwitches,omitempty" xml:"VSwitches,omitempty" type:"Repeated"`
-	VpcId            *string   `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// A list of the vSwitches that are used by the master instance.
+	VSwitches []*string `json:"VSwitches,omitempty" xml:"VSwitches,omitempty" type:"Repeated"`
+	// The ID of the virtual private cloud (VPC) in which the master instance resides.
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s DescribeHubClusterDetailsResponseBodyClusterNetwork) String() string {
@@ -677,8 +747,10 @@ func (s *DescribeHubClusterDetailsResponse) SetBody(v *DescribeHubClusterDetails
 }
 
 type DescribeHubClusterKubeconfigRequest struct {
-	ClusterId        *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	PrivateIpAddress *bool   `json:"PrivateIpAddress,omitempty" xml:"PrivateIpAddress,omitempty"`
+	// The ID of the master instance.
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// Specifies whether to obtain the credential that is used to connect to the master instance over the internal network. Valid values: - `true`: obtains only the credential that is used to access the master instance over the internal network. - `false`: obtains only the credential that is used to access the master instance over the Internet. Default value: `false`.
+	PrivateIpAddress *bool `json:"PrivateIpAddress,omitempty" xml:"PrivateIpAddress,omitempty"`
 }
 
 func (s DescribeHubClusterKubeconfigRequest) String() string {
@@ -700,8 +772,10 @@ func (s *DescribeHubClusterKubeconfigRequest) SetPrivateIpAddress(v bool) *Descr
 }
 
 type DescribeHubClusterKubeconfigResponseBody struct {
+	// The content of the kubeconfig file of the master instance.
 	Kubeconfig *string `json:"Kubeconfig,omitempty" xml:"Kubeconfig,omitempty"`
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeHubClusterKubeconfigResponseBody) String() string {
@@ -752,6 +826,7 @@ func (s *DescribeHubClusterKubeconfigResponse) SetBody(v *DescribeHubClusterKube
 }
 
 type DescribeHubClusterLogsRequest struct {
+	// The ID of the master instance.
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 }
 
@@ -769,8 +844,10 @@ func (s *DescribeHubClusterLogsRequest) SetClusterId(v string) *DescribeHubClust
 }
 
 type DescribeHubClusterLogsResponseBody struct {
-	Logs      []*DescribeHubClusterLogsResponseBodyLogs `json:"Logs,omitempty" xml:"Logs,omitempty" type:"Repeated"`
-	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Brief information about operation logs.
+	Logs []*DescribeHubClusterLogsResponseBodyLogs `json:"Logs,omitempty" xml:"Logs,omitempty" type:"Repeated"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeHubClusterLogsResponseBody) String() string {
@@ -792,10 +869,14 @@ func (s *DescribeHubClusterLogsResponseBody) SetRequestId(v string) *DescribeHub
 }
 
 type DescribeHubClusterLogsResponseBodyLogs struct {
-	ClusterId    *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	ClusterLog   *string `json:"ClusterLog,omitempty" xml:"ClusterLog,omitempty"`
+	// The ID of the master instance.
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// A log of the master instance.
+	ClusterLog *string `json:"ClusterLog,omitempty" xml:"ClusterLog,omitempty"`
+	// The time when the log was created. Format: <i>yyyy-mm-dd</i>t<i>hh:mm:ss</i>z (UTC time).
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	LogLevel     *string `json:"LogLevel,omitempty" xml:"LogLevel,omitempty"`
+	// The severity level of the log. Valid values: - error: errors. - warn: warnings. - info: information.
+	LogLevel *string `json:"LogLevel,omitempty" xml:"LogLevel,omitempty"`
 }
 
 func (s DescribeHubClusterLogsResponseBodyLogs) String() string {
@@ -856,6 +937,12 @@ func (s *DescribeHubClusterLogsResponse) SetBody(v *DescribeHubClusterLogsRespon
 }
 
 type DescribeHubClustersRequest struct {
+	// The scenario where master instances are used. Valid values:
+	//
+	// *   `Default`: standard scenarios.
+	// *   `XFlow`: workflow scenarios.
+	//
+	// Default value: `Default`.
 	Profile *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
 }
 
@@ -873,8 +960,10 @@ func (s *DescribeHubClustersRequest) SetProfile(v string) *DescribeHubClustersRe
 }
 
 type DescribeHubClustersResponseBody struct {
-	Clusters  []*DescribeHubClustersResponseBodyClusters `json:"Clusters,omitempty" xml:"Clusters,omitempty" type:"Repeated"`
-	RequestId *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The list of the master instances returned.
+	Clusters []*DescribeHubClustersResponseBodyClusters `json:"Clusters,omitempty" xml:"Clusters,omitempty" type:"Repeated"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeHubClustersResponseBody) String() string {
@@ -896,13 +985,20 @@ func (s *DescribeHubClustersResponseBody) SetRequestId(v string) *DescribeHubClu
 }
 
 type DescribeHubClustersResponseBodyClusters struct {
-	ApiServer   *DescribeHubClustersResponseBodyClustersApiServer    `json:"ApiServer,omitempty" xml:"ApiServer,omitempty" type:"Struct"`
-	ClusterInfo *DescribeHubClustersResponseBodyClustersClusterInfo  `json:"ClusterInfo,omitempty" xml:"ClusterInfo,omitempty" type:"Struct"`
-	Conditions  []*DescribeHubClustersResponseBodyClustersConditions `json:"Conditions,omitempty" xml:"Conditions,omitempty" type:"Repeated"`
-	Endpoints   *DescribeHubClustersResponseBodyClustersEndpoints    `json:"Endpoints,omitempty" xml:"Endpoints,omitempty" type:"Struct"`
-	LogConfig   *DescribeHubClustersResponseBodyClustersLogConfig    `json:"LogConfig,omitempty" xml:"LogConfig,omitempty" type:"Struct"`
-	MeshConfig  *DescribeHubClustersResponseBodyClustersMeshConfig   `json:"MeshConfig,omitempty" xml:"MeshConfig,omitempty" type:"Struct"`
-	Network     *DescribeHubClustersResponseBodyClustersNetwork      `json:"Network,omitempty" xml:"Network,omitempty" type:"Struct"`
+	// The details of the Kubernetes API server.
+	ApiServer *DescribeHubClustersResponseBodyClustersApiServer `json:"ApiServer,omitempty" xml:"ApiServer,omitempty" type:"Struct"`
+	// The details of the master instance.
+	ClusterInfo *DescribeHubClustersResponseBodyClustersClusterInfo `json:"ClusterInfo,omitempty" xml:"ClusterInfo,omitempty" type:"Struct"`
+	// The list of the deletion conditions of the master instance.
+	Conditions []*DescribeHubClustersResponseBodyClustersConditions `json:"Conditions,omitempty" xml:"Conditions,omitempty" type:"Repeated"`
+	// The endpoint of the master instance.
+	Endpoints *DescribeHubClustersResponseBodyClustersEndpoints `json:"Endpoints,omitempty" xml:"Endpoints,omitempty" type:"Struct"`
+	// The logging configurations.
+	LogConfig *DescribeHubClustersResponseBodyClustersLogConfig `json:"LogConfig,omitempty" xml:"LogConfig,omitempty" type:"Struct"`
+	// The configurations of Alibaba Cloud Service Mesh (ASM).
+	MeshConfig *DescribeHubClustersResponseBodyClustersMeshConfig `json:"MeshConfig,omitempty" xml:"MeshConfig,omitempty" type:"Struct"`
+	// The network configurations of the master instance.
+	Network *DescribeHubClustersResponseBodyClustersNetwork `json:"Network,omitempty" xml:"Network,omitempty" type:"Struct"`
 }
 
 func (s DescribeHubClustersResponseBodyClusters) String() string {
@@ -949,8 +1045,14 @@ func (s *DescribeHubClustersResponseBodyClusters) SetNetwork(v *DescribeHubClust
 }
 
 type DescribeHubClustersResponseBodyClustersApiServer struct {
+	// The ID of the elastic IP address (EIP).
 	ApiServerEipId *string `json:"ApiServerEipId,omitempty" xml:"ApiServerEipId,omitempty"`
-	EnabledPublic  *bool   `json:"EnabledPublic,omitempty" xml:"EnabledPublic,omitempty"`
+	// Indicates whether the API server is accessible over the Internet. Valid values:
+	//
+	// *   true: The API server is accessible over the Internet.
+	// *   false: The API server is inaccessible over the Internet.
+	EnabledPublic *bool `json:"EnabledPublic,omitempty" xml:"EnabledPublic,omitempty"`
+	// The ID of the Server Load Balancer (SLB) instance that is associated with the Kubernetes API server.
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
 }
 
@@ -978,16 +1080,36 @@ func (s *DescribeHubClustersResponseBodyClustersApiServer) SetLoadBalancerId(v s
 }
 
 type DescribeHubClustersResponseBodyClustersClusterInfo struct {
-	ClusterId    *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	ClusterSpec  *string `json:"ClusterSpec,omitempty" xml:"ClusterSpec,omitempty"`
+	// The ID of the master instance.
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The specification of the master instance.
+	//
+	// *   ack.pro.small: ACK Pro cluster
+	ClusterSpec *string `json:"ClusterSpec,omitempty" xml:"ClusterSpec,omitempty"`
+	// The time when the master instance was created.
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	// The error message returned when the master instance failed to be created.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Profile      *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
-	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	State        *string `json:"State,omitempty" xml:"State,omitempty"`
-	UpdateTime   *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	Version      *string `json:"Version,omitempty" xml:"Version,omitempty"`
+	// The name of the master instance.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The configurations of the master instance.
+	Profile *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
+	// The ID of the region in which the master instance resides.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The status of the master instance. Valid values:
+	//
+	// *   initial: The master instance is being initialized.
+	// *   failed: The master instance failed to be created.
+	// *   running: The master instance is running
+	// *   inactive: The master instance is pending.
+	// *   deleting: The master instance is being deleted.
+	// *   delete_failed: The master instance failed to be deleted.
+	// *   deleted: The master instance is deleted.
+	State *string `json:"State,omitempty" xml:"State,omitempty"`
+	// The last time when the master instance was updated.
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The Kubernetes version of the master instance.
+	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s DescribeHubClustersResponseBodyClustersClusterInfo) String() string {
@@ -1049,10 +1171,18 @@ func (s *DescribeHubClustersResponseBodyClustersClusterInfo) SetVersion(v string
 }
 
 type DescribeHubClustersResponseBodyClustersConditions struct {
+	// The error message of the deletion condition.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	Reason  *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
-	Status  *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	Type    *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The reason for the deletion condition.
+	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	// The status of the deletion condition. Valid values:
+	//
+	// *   True: The master instance cannot be deleted.
+	// *   False: The master instance can be deleted.
+	// *   Unknow: Whether the master instance can be deleted is unknown.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The type of deletion condition.
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s DescribeHubClustersResponseBodyClustersConditions) String() string {
@@ -1084,8 +1214,10 @@ func (s *DescribeHubClustersResponseBodyClustersConditions) SetType(v string) *D
 }
 
 type DescribeHubClustersResponseBodyClustersEndpoints struct {
+	// The internal endpoint of the API server.
 	IntranetApiServerEndpoint *string `json:"IntranetApiServerEndpoint,omitempty" xml:"IntranetApiServerEndpoint,omitempty"`
-	PublicApiServerEndpoint   *string `json:"PublicApiServerEndpoint,omitempty" xml:"PublicApiServerEndpoint,omitempty"`
+	// The public endpoint of the API server.
+	PublicApiServerEndpoint *string `json:"PublicApiServerEndpoint,omitempty" xml:"PublicApiServerEndpoint,omitempty"`
 }
 
 func (s DescribeHubClustersResponseBodyClustersEndpoints) String() string {
@@ -1107,8 +1239,14 @@ func (s *DescribeHubClustersResponseBodyClustersEndpoints) SetPublicApiServerEnd
 }
 
 type DescribeHubClustersResponseBodyClustersLogConfig struct {
-	EnableLog   *bool   `json:"EnableLog,omitempty" xml:"EnableLog,omitempty"`
-	LogProject  *string `json:"LogProject,omitempty" xml:"LogProject,omitempty"`
+	// Indicates whether audit logging is enabled. Valid values:
+	//
+	// *   true: Audit logging is enabled.
+	// *   false: Audit logging is disabled.
+	EnableLog *bool `json:"EnableLog,omitempty" xml:"EnableLog,omitempty"`
+	// The name of the project of Log Service.
+	LogProject *string `json:"LogProject,omitempty" xml:"LogProject,omitempty"`
+	// The number of days that logs are retained by Log Service.
 	LogStoreTTL *string `json:"LogStoreTTL,omitempty" xml:"LogStoreTTL,omitempty"`
 }
 
@@ -1136,8 +1274,13 @@ func (s *DescribeHubClustersResponseBodyClustersLogConfig) SetLogStoreTTL(v stri
 }
 
 type DescribeHubClustersResponseBodyClustersMeshConfig struct {
-	EnableMesh *bool   `json:"EnableMesh,omitempty" xml:"EnableMesh,omitempty"`
-	MeshId     *string `json:"MeshId,omitempty" xml:"MeshId,omitempty"`
+	// Indicates whether ASM is enabled. Valid values:
+	//
+	// *   true: ASM is enabled.
+	// *   false: ASM is disabled.
+	EnableMesh *bool `json:"EnableMesh,omitempty" xml:"EnableMesh,omitempty"`
+	// The ID of the ASM instance.
+	MeshId *string `json:"MeshId,omitempty" xml:"MeshId,omitempty"`
 }
 
 func (s DescribeHubClustersResponseBodyClustersMeshConfig) String() string {
@@ -1159,10 +1302,14 @@ func (s *DescribeHubClustersResponseBodyClustersMeshConfig) SetMeshId(v string) 
 }
 
 type DescribeHubClustersResponseBodyClustersNetwork struct {
-	ClusterDomain    *string   `json:"ClusterDomain,omitempty" xml:"ClusterDomain,omitempty"`
+	// The domain name of the master instance.
+	ClusterDomain *string `json:"ClusterDomain,omitempty" xml:"ClusterDomain,omitempty"`
+	// The security group IDs of the master instance.
 	SecurityGroupIDs []*string `json:"SecurityGroupIDs,omitempty" xml:"SecurityGroupIDs,omitempty" type:"Repeated"`
-	VSwitches        []*string `json:"VSwitches,omitempty" xml:"VSwitches,omitempty" type:"Repeated"`
-	VpcId            *string   `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The IDs of the vSwitches to which the master instance is connected.
+	VSwitches []*string `json:"VSwitches,omitempty" xml:"VSwitches,omitempty" type:"Repeated"`
+	// The ID of the virtual private cloud (VPC) to which the master instance belongs.
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s DescribeHubClustersResponseBodyClustersNetwork) String() string {
@@ -1223,6 +1370,7 @@ func (s *DescribeHubClustersResponse) SetBody(v *DescribeHubClustersResponseBody
 }
 
 type DescribeManagedClustersRequest struct {
+	// The ID of the master instance.
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 }
 
@@ -1240,8 +1388,10 @@ func (s *DescribeManagedClustersRequest) SetClusterId(v string) *DescribeManaged
 }
 
 type DescribeManagedClustersResponseBody struct {
-	Clusters  []*DescribeManagedClustersResponseBodyClusters `json:"Clusters,omitempty" xml:"Clusters,omitempty" type:"Repeated"`
-	RequestId *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Information about the master instance.
+	Clusters []*DescribeManagedClustersResponseBodyClusters `json:"Clusters,omitempty" xml:"Clusters,omitempty" type:"Repeated"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeManagedClustersResponseBody) String() string {
@@ -1263,9 +1413,12 @@ func (s *DescribeManagedClustersResponseBody) SetRequestId(v string) *DescribeMa
 }
 
 type DescribeManagedClustersResponseBodyClusters struct {
-	Cluster    *DescribeManagedClustersResponseBodyClustersCluster    `json:"Cluster,omitempty" xml:"Cluster,omitempty" type:"Struct"`
+	// The name of the master instance.
+	Cluster *DescribeManagedClustersResponseBodyClustersCluster `json:"Cluster,omitempty" xml:"Cluster,omitempty" type:"Struct"`
+	// The status of the association between the clusters and Service Mesh (ASM).
 	MeshStatus *DescribeManagedClustersResponseBodyClustersMeshStatus `json:"MeshStatus,omitempty" xml:"MeshStatus,omitempty" type:"Struct"`
-	Status     *DescribeManagedClustersResponseBodyClustersStatus     `json:"Status,omitempty" xml:"Status,omitempty" type:"Struct"`
+	// The status of the association between the clusters and the master instance.
+	Status *DescribeManagedClustersResponseBodyClustersStatus `json:"Status,omitempty" xml:"Status,omitempty" type:"Struct"`
 }
 
 func (s DescribeManagedClustersResponseBodyClusters) String() string {
@@ -1292,20 +1445,34 @@ func (s *DescribeManagedClustersResponseBodyClusters) SetStatus(v *DescribeManag
 }
 
 type DescribeManagedClustersResponseBodyClustersCluster struct {
-	ClusterID       *string `json:"ClusterID,omitempty" xml:"ClusterID,omitempty"`
-	ClusterSpec     *string `json:"ClusterSpec,omitempty" xml:"ClusterSpec,omitempty"`
-	ClusterType     *string `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
-	Created         *string `json:"Created,omitempty" xml:"Created,omitempty"`
-	CurrentVersion  *string `json:"CurrentVersion,omitempty" xml:"CurrentVersion,omitempty"`
-	InitVersion     *string `json:"InitVersion,omitempty" xml:"InitVersion,omitempty"`
-	Name            *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Profile         *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
-	Region          *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The ID of the master instance.
+	ClusterID *string `json:"ClusterID,omitempty" xml:"ClusterID,omitempty"`
+	// The specification of the master instance. Valid values: - ack.pro.small: ACK Pro.
+	ClusterSpec *string `json:"ClusterSpec,omitempty" xml:"ClusterSpec,omitempty"`
+	// The type of the master instance.
+	ClusterType *string `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
+	// The time when the master instance was created.
+	Created *string `json:"Created,omitempty" xml:"Created,omitempty"`
+	// The current Kubernetes version of the master instance.
+	CurrentVersion *string `json:"CurrentVersion,omitempty" xml:"CurrentVersion,omitempty"`
+	// The original Kubernetes version of the master instance.
+	InitVersion *string `json:"InitVersion,omitempty" xml:"InitVersion,omitempty"`
+	// The name of the master instance.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The name of the master instance.
+	Profile *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
+	// The region in which the master instance resides.
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The ID of the resource group.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	State           *string `json:"State,omitempty" xml:"State,omitempty"`
-	Updated         *string `json:"Updated,omitempty" xml:"Updated,omitempty"`
-	VSwitchID       *string `json:"VSwitchID,omitempty" xml:"VSwitchID,omitempty"`
-	VpcID           *string `json:"VpcID,omitempty" xml:"VpcID,omitempty"`
+	// The status of the associated clusters. Valid values: - initial: The associated clusters are being initialized. - failed: The associated clustersfailed to be created. - running: The associated clusters are running. - inactive: The associated clusters are inactive. - deleting: The associated clusters are being deleted. - deleted: The associated clusters are deleted.
+	State *string `json:"State,omitempty" xml:"State,omitempty"`
+	// The time when the master instance was updated.
+	Updated *string `json:"Updated,omitempty" xml:"Updated,omitempty"`
+	// The ID of the vSwitch.
+	VSwitchID *string `json:"VSwitchID,omitempty" xml:"VSwitchID,omitempty"`
+	// VPC ID.
+	VpcID *string `json:"VpcID,omitempty" xml:"VpcID,omitempty"`
 }
 
 func (s DescribeManagedClustersResponseBodyClustersCluster) String() string {
@@ -1387,6 +1554,7 @@ func (s *DescribeManagedClustersResponseBodyClustersCluster) SetVpcID(v string) 
 }
 
 type DescribeManagedClustersResponseBodyClustersMeshStatus struct {
+	// Indicates whether the clusters are associated with ASM instances. Valid values: - true: The clusters are associated with ASM instances. - false: The clusters are not associated with ASM instances.
 	InMesh *bool `json:"InMesh,omitempty" xml:"InMesh,omitempty"`
 }
 
@@ -1404,8 +1572,10 @@ func (s *DescribeManagedClustersResponseBodyClustersMeshStatus) SetInMesh(v bool
 }
 
 type DescribeManagedClustersResponseBodyClustersStatus struct {
+	// The status information.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	State   *string `json:"State,omitempty" xml:"State,omitempty"`
+	// The status of the association between the clusters and the master instance. Valid values: - Installing: The clusters are being associated with the master instance. - Successed: The clusters are associated with the master instance. - Failed: The clusters failed to be associated with the master instance. - Deleting: The clusters are being disassociated from the master instance. - Deleted: The clusters are disassociated from the master instance.
+	State *string `json:"State,omitempty" xml:"State,omitempty"`
 }
 
 func (s DescribeManagedClustersResponseBodyClustersStatus) String() string {
@@ -1456,6 +1626,7 @@ func (s *DescribeManagedClustersResponse) SetBody(v *DescribeManagedClustersResp
 }
 
 type DescribeRegionsRequest struct {
+	// The language. Valid values: zh, en, and jp.
 	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
 }
 
@@ -1473,8 +1644,10 @@ func (s *DescribeRegionsRequest) SetLanguage(v string) *DescribeRegionsRequest {
 }
 
 type DescribeRegionsResponseBody struct {
-	Regions   []*DescribeRegionsResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Repeated"`
-	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// A list of available regions that are returned.
+	Regions []*DescribeRegionsResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Repeated"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeRegionsResponseBody) String() string {
@@ -1496,8 +1669,10 @@ func (s *DescribeRegionsResponseBody) SetRequestId(v string) *DescribeRegionsRes
 }
 
 type DescribeRegionsResponseBodyRegions struct {
+	// The name of the region.
 	LocalName *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
-	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the region.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DescribeRegionsResponseBodyRegions) String() string {
@@ -1548,9 +1723,12 @@ func (s *DescribeRegionsResponse) SetBody(v *DescribeRegionsResponseBody) *Descr
 }
 
 type DetachClusterFromHubRequest struct {
-	ClusterId      *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	ClusterIds     *string `json:"ClusterIds,omitempty" xml:"ClusterIds,omitempty"`
-	DetachFromMesh *bool   `json:"DetachFromMesh,omitempty" xml:"DetachFromMesh,omitempty"`
+	// The ID of the master instance.
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// A JSON string that can be parsed into a string array. The string specifies the clusters that you want to disassociate from the master instance.
+	ClusterIds *string `json:"ClusterIds,omitempty" xml:"ClusterIds,omitempty"`
+	// Specifies whether to only disassociate the clusters from Service Mesh (ASM) instances. Valid values: - true: only disassociates the clusters from ASM instances. - false: disassociates the clusters from the master instance and ASM instances.
+	DetachFromMesh *bool `json:"DetachFromMesh,omitempty" xml:"DetachFromMesh,omitempty"`
 }
 
 func (s DetachClusterFromHubRequest) String() string {
@@ -1577,10 +1755,14 @@ func (s *DetachClusterFromHubRequest) SetDetachFromMesh(v bool) *DetachClusterFr
 }
 
 type DetachClusterFromHubResponseBody struct {
-	ClusterId         *string   `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The ID of the master instance.
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The IDs of the clusters that are disassociated from the master instance.
 	ManagedClusterIds []*string `json:"ManagedClusterIds,omitempty" xml:"ManagedClusterIds,omitempty" type:"Repeated"`
-	RequestId         *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TaskId            *string   `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the task.
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s DetachClusterFromHubResponseBody) String() string {
@@ -1641,14 +1823,30 @@ func (s *DetachClusterFromHubResponse) SetBody(v *DetachClusterFromHubResponseBo
 }
 
 type UpdateHubClusterFeatureRequest struct {
-	ApiServerEipId         *string `json:"ApiServerEipId,omitempty" xml:"ApiServerEipId,omitempty"`
-	AuditLogEnabled        *bool   `json:"AuditLogEnabled,omitempty" xml:"AuditLogEnabled,omitempty"`
-	ClusterId              *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	DeletionProtection     *bool   `json:"DeletionProtection,omitempty" xml:"DeletionProtection,omitempty"`
-	EnableArgoCD           *bool   `json:"EnableArgoCD,omitempty" xml:"EnableArgoCD,omitempty"`
-	EnableMesh             *bool   `json:"EnableMesh,omitempty" xml:"EnableMesh,omitempty"`
-	Name                   *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	PublicApiServerEnabled *bool   `json:"PublicApiServerEnabled,omitempty" xml:"PublicApiServerEnabled,omitempty"`
+	// The ID of the EIP.
+	ApiServerEipId *string `json:"ApiServerEipId,omitempty" xml:"ApiServerEipId,omitempty"`
+	// Specifies whether to enable audit logs. Valid values: - true: enable audit logs. - false: disables audit logs.
+	AuditLogEnabled *bool `json:"AuditLogEnabled,omitempty" xml:"AuditLogEnabled,omitempty"`
+	// The ID of the master instance.
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// Specifies whether to enable deletion protection for the master instance. After you enable deletion protection, you cannot delete the master instance in the console or by calling API operations. Valid values:
+	DeletionProtection *bool `json:"DeletionProtection,omitempty" xml:"DeletionProtection,omitempty"`
+	// Whether to enable ArgoCD.
+	//
+	// - true Enabled
+	// - false Disabled
+	EnableArgoCD *bool `json:"EnableArgoCD,omitempty" xml:"EnableArgoCD,omitempty"`
+	// Specifies whether to enable Service Mesh (ASM). Valid values: true: enables ASM. false: disables ASM.
+	EnableMesh *bool `json:"EnableMesh,omitempty" xml:"EnableMesh,omitempty"`
+	Enabled    *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	// The name of the master instance. The name must be 1 to 63 characters in length, and can contain letters and digits. The name must start with a letter. The name can contain letters, digits, underscores (_), and hyphens (-).
+	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	PriceLimit *string `json:"PriceLimit,omitempty" xml:"PriceLimit,omitempty"`
+	// Specifies whether to associate an elastic IP address (EIP) with the API server. Default value: false. To associate an EIP with the API server, set the value to true. You can use a custom EIP by setting the ApiServerEipId parameter. If you do not set the ApiServerEipId parameter, the system automatically creates an EIP.
+	PublicApiServerEnabled *bool                                  `json:"PublicApiServerEnabled,omitempty" xml:"PublicApiServerEnabled,omitempty"`
+	ScheduleMode           *string                                `json:"ScheduleMode,omitempty" xml:"ScheduleMode,omitempty"`
+	ServerEnabled          *bool                                  `json:"ServerEnabled,omitempty" xml:"ServerEnabled,omitempty"`
+	Units                  []*UpdateHubClusterFeatureRequestUnits `json:"Units,omitempty" xml:"Units,omitempty" type:"Repeated"`
 }
 
 func (s UpdateHubClusterFeatureRequest) String() string {
@@ -1689,8 +1887,18 @@ func (s *UpdateHubClusterFeatureRequest) SetEnableMesh(v bool) *UpdateHubCluster
 	return s
 }
 
+func (s *UpdateHubClusterFeatureRequest) SetEnabled(v bool) *UpdateHubClusterFeatureRequest {
+	s.Enabled = &v
+	return s
+}
+
 func (s *UpdateHubClusterFeatureRequest) SetName(v string) *UpdateHubClusterFeatureRequest {
 	s.Name = &v
+	return s
+}
+
+func (s *UpdateHubClusterFeatureRequest) SetPriceLimit(v string) *UpdateHubClusterFeatureRequest {
+	s.PriceLimit = &v
 	return s
 }
 
@@ -1699,7 +1907,175 @@ func (s *UpdateHubClusterFeatureRequest) SetPublicApiServerEnabled(v bool) *Upda
 	return s
 }
 
+func (s *UpdateHubClusterFeatureRequest) SetScheduleMode(v string) *UpdateHubClusterFeatureRequest {
+	s.ScheduleMode = &v
+	return s
+}
+
+func (s *UpdateHubClusterFeatureRequest) SetServerEnabled(v bool) *UpdateHubClusterFeatureRequest {
+	s.ServerEnabled = &v
+	return s
+}
+
+func (s *UpdateHubClusterFeatureRequest) SetUnits(v []*UpdateHubClusterFeatureRequestUnits) *UpdateHubClusterFeatureRequest {
+	s.Units = v
+	return s
+}
+
+type UpdateHubClusterFeatureRequestUnits struct {
+	RegionId  *string                                         `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	VSwitches []*UpdateHubClusterFeatureRequestUnitsVSwitches `json:"VSwitches,omitempty" xml:"VSwitches,omitempty" type:"Repeated"`
+	VpcId     *string                                         `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+}
+
+func (s UpdateHubClusterFeatureRequestUnits) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateHubClusterFeatureRequestUnits) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateHubClusterFeatureRequestUnits) SetRegionId(v string) *UpdateHubClusterFeatureRequestUnits {
+	s.RegionId = &v
+	return s
+}
+
+func (s *UpdateHubClusterFeatureRequestUnits) SetVSwitches(v []*UpdateHubClusterFeatureRequestUnitsVSwitches) *UpdateHubClusterFeatureRequestUnits {
+	s.VSwitches = v
+	return s
+}
+
+func (s *UpdateHubClusterFeatureRequestUnits) SetVpcId(v string) *UpdateHubClusterFeatureRequestUnits {
+	s.VpcId = &v
+	return s
+}
+
+type UpdateHubClusterFeatureRequestUnitsVSwitches struct {
+	VswitchId *string `json:"VswitchId,omitempty" xml:"VswitchId,omitempty"`
+	ZoneId    *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+}
+
+func (s UpdateHubClusterFeatureRequestUnitsVSwitches) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateHubClusterFeatureRequestUnitsVSwitches) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateHubClusterFeatureRequestUnitsVSwitches) SetVswitchId(v string) *UpdateHubClusterFeatureRequestUnitsVSwitches {
+	s.VswitchId = &v
+	return s
+}
+
+func (s *UpdateHubClusterFeatureRequestUnitsVSwitches) SetZoneId(v string) *UpdateHubClusterFeatureRequestUnitsVSwitches {
+	s.ZoneId = &v
+	return s
+}
+
+type UpdateHubClusterFeatureShrinkRequest struct {
+	// The ID of the EIP.
+	ApiServerEipId *string `json:"ApiServerEipId,omitempty" xml:"ApiServerEipId,omitempty"`
+	// Specifies whether to enable audit logs. Valid values: - true: enable audit logs. - false: disables audit logs.
+	AuditLogEnabled *bool `json:"AuditLogEnabled,omitempty" xml:"AuditLogEnabled,omitempty"`
+	// The ID of the master instance.
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// Specifies whether to enable deletion protection for the master instance. After you enable deletion protection, you cannot delete the master instance in the console or by calling API operations. Valid values:
+	DeletionProtection *bool `json:"DeletionProtection,omitempty" xml:"DeletionProtection,omitempty"`
+	// Whether to enable ArgoCD.
+	//
+	// - true Enabled
+	// - false Disabled
+	EnableArgoCD *bool `json:"EnableArgoCD,omitempty" xml:"EnableArgoCD,omitempty"`
+	// Specifies whether to enable Service Mesh (ASM). Valid values: true: enables ASM. false: disables ASM.
+	EnableMesh *bool `json:"EnableMesh,omitempty" xml:"EnableMesh,omitempty"`
+	Enabled    *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	// The name of the master instance. The name must be 1 to 63 characters in length, and can contain letters and digits. The name must start with a letter. The name can contain letters, digits, underscores (_), and hyphens (-).
+	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	PriceLimit *string `json:"PriceLimit,omitempty" xml:"PriceLimit,omitempty"`
+	// Specifies whether to associate an elastic IP address (EIP) with the API server. Default value: false. To associate an EIP with the API server, set the value to true. You can use a custom EIP by setting the ApiServerEipId parameter. If you do not set the ApiServerEipId parameter, the system automatically creates an EIP.
+	PublicApiServerEnabled *bool   `json:"PublicApiServerEnabled,omitempty" xml:"PublicApiServerEnabled,omitempty"`
+	ScheduleMode           *string `json:"ScheduleMode,omitempty" xml:"ScheduleMode,omitempty"`
+	ServerEnabled          *bool   `json:"ServerEnabled,omitempty" xml:"ServerEnabled,omitempty"`
+	UnitsShrink            *string `json:"Units,omitempty" xml:"Units,omitempty"`
+}
+
+func (s UpdateHubClusterFeatureShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateHubClusterFeatureShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateHubClusterFeatureShrinkRequest) SetApiServerEipId(v string) *UpdateHubClusterFeatureShrinkRequest {
+	s.ApiServerEipId = &v
+	return s
+}
+
+func (s *UpdateHubClusterFeatureShrinkRequest) SetAuditLogEnabled(v bool) *UpdateHubClusterFeatureShrinkRequest {
+	s.AuditLogEnabled = &v
+	return s
+}
+
+func (s *UpdateHubClusterFeatureShrinkRequest) SetClusterId(v string) *UpdateHubClusterFeatureShrinkRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *UpdateHubClusterFeatureShrinkRequest) SetDeletionProtection(v bool) *UpdateHubClusterFeatureShrinkRequest {
+	s.DeletionProtection = &v
+	return s
+}
+
+func (s *UpdateHubClusterFeatureShrinkRequest) SetEnableArgoCD(v bool) *UpdateHubClusterFeatureShrinkRequest {
+	s.EnableArgoCD = &v
+	return s
+}
+
+func (s *UpdateHubClusterFeatureShrinkRequest) SetEnableMesh(v bool) *UpdateHubClusterFeatureShrinkRequest {
+	s.EnableMesh = &v
+	return s
+}
+
+func (s *UpdateHubClusterFeatureShrinkRequest) SetEnabled(v bool) *UpdateHubClusterFeatureShrinkRequest {
+	s.Enabled = &v
+	return s
+}
+
+func (s *UpdateHubClusterFeatureShrinkRequest) SetName(v string) *UpdateHubClusterFeatureShrinkRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *UpdateHubClusterFeatureShrinkRequest) SetPriceLimit(v string) *UpdateHubClusterFeatureShrinkRequest {
+	s.PriceLimit = &v
+	return s
+}
+
+func (s *UpdateHubClusterFeatureShrinkRequest) SetPublicApiServerEnabled(v bool) *UpdateHubClusterFeatureShrinkRequest {
+	s.PublicApiServerEnabled = &v
+	return s
+}
+
+func (s *UpdateHubClusterFeatureShrinkRequest) SetScheduleMode(v string) *UpdateHubClusterFeatureShrinkRequest {
+	s.ScheduleMode = &v
+	return s
+}
+
+func (s *UpdateHubClusterFeatureShrinkRequest) SetServerEnabled(v bool) *UpdateHubClusterFeatureShrinkRequest {
+	s.ServerEnabled = &v
+	return s
+}
+
+func (s *UpdateHubClusterFeatureShrinkRequest) SetUnitsShrink(v string) *UpdateHubClusterFeatureShrinkRequest {
+	s.UnitsShrink = &v
+	return s
+}
+
 type UpdateHubClusterFeatureResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2310,11 +2686,17 @@ func (client *Client) DetachClusterFromHub(request *DetachClusterFromHubRequest)
 	return _result, _err
 }
 
-func (client *Client) UpdateHubClusterFeatureWithOptions(request *UpdateHubClusterFeatureRequest, runtime *util.RuntimeOptions) (_result *UpdateHubClusterFeatureResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) UpdateHubClusterFeatureWithOptions(tmpReq *UpdateHubClusterFeatureRequest, runtime *util.RuntimeOptions) (_result *UpdateHubClusterFeatureResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
+	request := &UpdateHubClusterFeatureShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Units)) {
+		request.UnitsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Units, tea.String("Units"), tea.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ApiServerEipId)) {
 		query["ApiServerEipId"] = request.ApiServerEipId
@@ -2340,12 +2722,32 @@ func (client *Client) UpdateHubClusterFeatureWithOptions(request *UpdateHubClust
 		query["EnableMesh"] = request.EnableMesh
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Enabled)) {
+		query["Enabled"] = request.Enabled
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Name)) {
 		query["Name"] = request.Name
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.PriceLimit)) {
+		query["PriceLimit"] = request.PriceLimit
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.PublicApiServerEnabled)) {
 		query["PublicApiServerEnabled"] = request.PublicApiServerEnabled
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ScheduleMode)) {
+		query["ScheduleMode"] = request.ScheduleMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServerEnabled)) {
+		query["ServerEnabled"] = request.ServerEnabled
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UnitsShrink)) {
+		query["Units"] = request.UnitsShrink
 	}
 
 	req := &openapi.OpenApiRequest{
