@@ -1682,7 +1682,8 @@ type GetStyleOnlineResponseBodyData struct {
 	Material         *string   `json:"Material,omitempty" xml:"Material,omitempty"`
 	Price            *float64  `json:"Price,omitempty" xml:"Price,omitempty"`
 	ProductLink      *string   `json:"ProductLink,omitempty" xml:"ProductLink,omitempty"`
-	SalesVolume      *float64  `json:"SalesVolume,omitempty" xml:"SalesVolume,omitempty"`
+	Sales            *float64  `json:"Sales,omitempty" xml:"Sales,omitempty"`
+	SalesVolume      *int64    `json:"SalesVolume,omitempty" xml:"SalesVolume,omitempty"`
 	SearchVolume     *float64  `json:"SearchVolume,omitempty" xml:"SearchVolume,omitempty"`
 	ShopId           *int64    `json:"ShopId,omitempty" xml:"ShopId,omitempty"`
 	ShopName         *string   `json:"ShopName,omitempty" xml:"ShopName,omitempty"`
@@ -1748,7 +1749,12 @@ func (s *GetStyleOnlineResponseBodyData) SetProductLink(v string) *GetStyleOnlin
 	return s
 }
 
-func (s *GetStyleOnlineResponseBodyData) SetSalesVolume(v float64) *GetStyleOnlineResponseBodyData {
+func (s *GetStyleOnlineResponseBodyData) SetSales(v float64) *GetStyleOnlineResponseBodyData {
+	s.Sales = &v
+	return s
+}
+
+func (s *GetStyleOnlineResponseBodyData) SetSalesVolume(v int64) *GetStyleOnlineResponseBodyData {
 	s.SalesVolume = &v
 	return s
 }
