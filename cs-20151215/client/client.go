@@ -7550,6 +7550,7 @@ func (s *DescribeNodePoolVulsResponseBody) SetVulsFixServicePurchased(v bool) *D
 
 type DescribeNodePoolVulsResponseBodyVulRecords struct {
 	InstanceId *string                                              `json:"instance_id,omitempty" xml:"instance_id,omitempty"`
+	NodeName   *string                                              `json:"node_name,omitempty" xml:"node_name,omitempty"`
 	VulList    []*DescribeNodePoolVulsResponseBodyVulRecordsVulList `json:"vul_list,omitempty" xml:"vul_list,omitempty" type:"Repeated"`
 }
 
@@ -7563,6 +7564,11 @@ func (s DescribeNodePoolVulsResponseBodyVulRecords) GoString() string {
 
 func (s *DescribeNodePoolVulsResponseBodyVulRecords) SetInstanceId(v string) *DescribeNodePoolVulsResponseBodyVulRecords {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeNodePoolVulsResponseBodyVulRecords) SetNodeName(v string) *DescribeNodePoolVulsResponseBodyVulRecords {
+	s.NodeName = &v
 	return s
 }
 
