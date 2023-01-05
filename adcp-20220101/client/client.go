@@ -249,7 +249,8 @@ type DeleteHubClusterRequest struct {
 	// The ID of the master instance.
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	// Specifies whether to forcefully delete the master instance. Valid values: - true: forcefully delete the master instance. - false: does not forcefully delete the master instance. Default value: false.
-	Force *bool `json:"Force,omitempty" xml:"Force,omitempty"`
+	Force           *bool     `json:"Force,omitempty" xml:"Force,omitempty"`
+	RetainResources []*string `json:"RetainResources,omitempty" xml:"RetainResources,omitempty" type:"Repeated"`
 }
 
 func (s DeleteHubClusterRequest) String() string {
@@ -267,6 +268,42 @@ func (s *DeleteHubClusterRequest) SetClusterId(v string) *DeleteHubClusterReques
 
 func (s *DeleteHubClusterRequest) SetForce(v bool) *DeleteHubClusterRequest {
 	s.Force = &v
+	return s
+}
+
+func (s *DeleteHubClusterRequest) SetRetainResources(v []*string) *DeleteHubClusterRequest {
+	s.RetainResources = v
+	return s
+}
+
+type DeleteHubClusterShrinkRequest struct {
+	// The ID of the master instance.
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// Specifies whether to forcefully delete the master instance. Valid values: - true: forcefully delete the master instance. - false: does not forcefully delete the master instance. Default value: false.
+	Force                 *bool   `json:"Force,omitempty" xml:"Force,omitempty"`
+	RetainResourcesShrink *string `json:"RetainResources,omitempty" xml:"RetainResources,omitempty"`
+}
+
+func (s DeleteHubClusterShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteHubClusterShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteHubClusterShrinkRequest) SetClusterId(v string) *DeleteHubClusterShrinkRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *DeleteHubClusterShrinkRequest) SetForce(v bool) *DeleteHubClusterShrinkRequest {
+	s.Force = &v
+	return s
+}
+
+func (s *DeleteHubClusterShrinkRequest) SetRetainResourcesShrink(v string) *DeleteHubClusterShrinkRequest {
+	s.RetainResourcesShrink = &v
 	return s
 }
 
@@ -2320,11 +2357,17 @@ func (client *Client) CreateHubCluster(request *CreateHubClusterRequest) (_resul
 	return _result, _err
 }
 
-func (client *Client) DeleteHubClusterWithOptions(request *DeleteHubClusterRequest, runtime *util.RuntimeOptions) (_result *DeleteHubClusterResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) DeleteHubClusterWithOptions(tmpReq *DeleteHubClusterRequest, runtime *util.RuntimeOptions) (_result *DeleteHubClusterResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
+	request := &DeleteHubClusterShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.RetainResources)) {
+		request.RetainResourcesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RetainResources, tea.String("RetainResources"), tea.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
 		query["ClusterId"] = request.ClusterId
@@ -2332,6 +2375,10 @@ func (client *Client) DeleteHubClusterWithOptions(request *DeleteHubClusterReque
 
 	if !tea.BoolValue(util.IsUnset(request.Force)) {
 		query["Force"] = request.Force
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RetainResourcesShrink)) {
+		query["RetainResources"] = request.RetainResourcesShrink
 	}
 
 	req := &openapi.OpenApiRequest{
