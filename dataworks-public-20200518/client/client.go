@@ -964,11 +964,11 @@ type CreateBaselineRequest struct {
 	AlertMarginThreshold *int32                                   `json:"AlertMarginThreshold,omitempty" xml:"AlertMarginThreshold,omitempty"`
 	BaselineName         *string                                  `json:"BaselineName,omitempty" xml:"BaselineName,omitempty"`
 	BaselineType         *string                                  `json:"BaselineType,omitempty" xml:"BaselineType,omitempty"`
+	NodeIds              *string                                  `json:"NodeIds,omitempty" xml:"NodeIds,omitempty"`
 	OvertimeSettings     []*CreateBaselineRequestOvertimeSettings `json:"OvertimeSettings,omitempty" xml:"OvertimeSettings,omitempty" type:"Repeated"`
 	Owner                *string                                  `json:"Owner,omitempty" xml:"Owner,omitempty"`
 	Priority             *int32                                   `json:"Priority,omitempty" xml:"Priority,omitempty"`
 	ProjectId            *int64                                   `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	TaskIds              *string                                  `json:"TaskIds,omitempty" xml:"TaskIds,omitempty"`
 }
 
 func (s CreateBaselineRequest) String() string {
@@ -994,6 +994,11 @@ func (s *CreateBaselineRequest) SetBaselineType(v string) *CreateBaselineRequest
 	return s
 }
 
+func (s *CreateBaselineRequest) SetNodeIds(v string) *CreateBaselineRequest {
+	s.NodeIds = &v
+	return s
+}
+
 func (s *CreateBaselineRequest) SetOvertimeSettings(v []*CreateBaselineRequestOvertimeSettings) *CreateBaselineRequest {
 	s.OvertimeSettings = v
 	return s
@@ -1011,11 +1016,6 @@ func (s *CreateBaselineRequest) SetPriority(v int32) *CreateBaselineRequest {
 
 func (s *CreateBaselineRequest) SetProjectId(v int64) *CreateBaselineRequest {
 	s.ProjectId = &v
-	return s
-}
-
-func (s *CreateBaselineRequest) SetTaskIds(v string) *CreateBaselineRequest {
-	s.TaskIds = &v
 	return s
 }
 
@@ -36702,6 +36702,105 @@ func (s *ListTopicsResponse) SetBody(v *ListTopicsResponseBody) *ListTopicsRespo
 	return s
 }
 
+type MountDirectoryRequest struct {
+	TargetId   *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
+	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
+}
+
+func (s MountDirectoryRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MountDirectoryRequest) GoString() string {
+	return s.String()
+}
+
+func (s *MountDirectoryRequest) SetTargetId(v string) *MountDirectoryRequest {
+	s.TargetId = &v
+	return s
+}
+
+func (s *MountDirectoryRequest) SetTargetType(v string) *MountDirectoryRequest {
+	s.TargetType = &v
+	return s
+}
+
+type MountDirectoryResponseBody struct {
+	Data           *int32  `json:"Data,omitempty" xml:"Data,omitempty"`
+	ErrorCode      *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage   *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s MountDirectoryResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MountDirectoryResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *MountDirectoryResponseBody) SetData(v int32) *MountDirectoryResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *MountDirectoryResponseBody) SetErrorCode(v string) *MountDirectoryResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *MountDirectoryResponseBody) SetErrorMessage(v string) *MountDirectoryResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *MountDirectoryResponseBody) SetHttpStatusCode(v int32) *MountDirectoryResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *MountDirectoryResponseBody) SetRequestId(v string) *MountDirectoryResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *MountDirectoryResponseBody) SetSuccess(v bool) *MountDirectoryResponseBody {
+	s.Success = &v
+	return s
+}
+
+type MountDirectoryResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *MountDirectoryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s MountDirectoryResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MountDirectoryResponse) GoString() string {
+	return s.String()
+}
+
+func (s *MountDirectoryResponse) SetHeaders(v map[string]*string) *MountDirectoryResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *MountDirectoryResponse) SetStatusCode(v int32) *MountDirectoryResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *MountDirectoryResponse) SetBody(v *MountDirectoryResponseBody) *MountDirectoryResponse {
+	s.Body = v
+	return s
+}
+
 type OfflineNodeRequest struct {
 	NodeId    *int64 `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
@@ -40019,6 +40118,105 @@ func (s *TopTenErrorTimesInstanceResponse) SetBody(v *TopTenErrorTimesInstanceRe
 	return s
 }
 
+type UmountDirectoryRequest struct {
+	TargetId   *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
+	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
+}
+
+func (s UmountDirectoryRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UmountDirectoryRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UmountDirectoryRequest) SetTargetId(v string) *UmountDirectoryRequest {
+	s.TargetId = &v
+	return s
+}
+
+func (s *UmountDirectoryRequest) SetTargetType(v string) *UmountDirectoryRequest {
+	s.TargetType = &v
+	return s
+}
+
+type UmountDirectoryResponseBody struct {
+	Data           *int32  `json:"Data,omitempty" xml:"Data,omitempty"`
+	ErrorCode      *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage   *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UmountDirectoryResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UmountDirectoryResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UmountDirectoryResponseBody) SetData(v int32) *UmountDirectoryResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *UmountDirectoryResponseBody) SetErrorCode(v string) *UmountDirectoryResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *UmountDirectoryResponseBody) SetErrorMessage(v string) *UmountDirectoryResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *UmountDirectoryResponseBody) SetHttpStatusCode(v int32) *UmountDirectoryResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *UmountDirectoryResponseBody) SetRequestId(v string) *UmountDirectoryResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UmountDirectoryResponseBody) SetSuccess(v bool) *UmountDirectoryResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UmountDirectoryResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UmountDirectoryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UmountDirectoryResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UmountDirectoryResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UmountDirectoryResponse) SetHeaders(v map[string]*string) *UmountDirectoryResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UmountDirectoryResponse) SetStatusCode(v int32) *UmountDirectoryResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UmountDirectoryResponse) SetBody(v *UmountDirectoryResponseBody) *UmountDirectoryResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateBaselineRequest struct {
 	AlertEnabled         *bool                                    `json:"AlertEnabled,omitempty" xml:"AlertEnabled,omitempty"`
 	AlertMarginThreshold *int32                                   `json:"AlertMarginThreshold,omitempty" xml:"AlertMarginThreshold,omitempty"`
@@ -40027,12 +40225,12 @@ type UpdateBaselineRequest struct {
 	BaselineName         *string                                  `json:"BaselineName,omitempty" xml:"BaselineName,omitempty"`
 	BaselineType         *string                                  `json:"BaselineType,omitempty" xml:"BaselineType,omitempty"`
 	Enabled              *bool                                    `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	NodeIds              *string                                  `json:"NodeIds,omitempty" xml:"NodeIds,omitempty"`
 	OvertimeSettings     []*UpdateBaselineRequestOvertimeSettings `json:"OvertimeSettings,omitempty" xml:"OvertimeSettings,omitempty" type:"Repeated"`
 	Owner                *string                                  `json:"Owner,omitempty" xml:"Owner,omitempty"`
 	Priority             *int32                                   `json:"Priority,omitempty" xml:"Priority,omitempty"`
 	ProjectId            *int64                                   `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	RemoveTaskIds        *string                                  `json:"RemoveTaskIds,omitempty" xml:"RemoveTaskIds,omitempty"`
-	TaskIds              *string                                  `json:"TaskIds,omitempty" xml:"TaskIds,omitempty"`
+	RemoveNodeIds        *string                                  `json:"RemoveNodeIds,omitempty" xml:"RemoveNodeIds,omitempty"`
 }
 
 func (s UpdateBaselineRequest) String() string {
@@ -40078,6 +40276,11 @@ func (s *UpdateBaselineRequest) SetEnabled(v bool) *UpdateBaselineRequest {
 	return s
 }
 
+func (s *UpdateBaselineRequest) SetNodeIds(v string) *UpdateBaselineRequest {
+	s.NodeIds = &v
+	return s
+}
+
 func (s *UpdateBaselineRequest) SetOvertimeSettings(v []*UpdateBaselineRequestOvertimeSettings) *UpdateBaselineRequest {
 	s.OvertimeSettings = v
 	return s
@@ -40098,13 +40301,8 @@ func (s *UpdateBaselineRequest) SetProjectId(v int64) *UpdateBaselineRequest {
 	return s
 }
 
-func (s *UpdateBaselineRequest) SetRemoveTaskIds(v string) *UpdateBaselineRequest {
-	s.RemoveTaskIds = &v
-	return s
-}
-
-func (s *UpdateBaselineRequest) SetTaskIds(v string) *UpdateBaselineRequest {
-	s.TaskIds = &v
+func (s *UpdateBaselineRequest) SetRemoveNodeIds(v string) *UpdateBaselineRequest {
+	s.RemoveNodeIds = &v
 	return s
 }
 
@@ -40245,12 +40443,12 @@ type UpdateBaselineShrinkRequest struct {
 	BaselineName           *string `json:"BaselineName,omitempty" xml:"BaselineName,omitempty"`
 	BaselineType           *string `json:"BaselineType,omitempty" xml:"BaselineType,omitempty"`
 	Enabled                *bool   `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	NodeIds                *string `json:"NodeIds,omitempty" xml:"NodeIds,omitempty"`
 	OvertimeSettingsShrink *string `json:"OvertimeSettings,omitempty" xml:"OvertimeSettings,omitempty"`
 	Owner                  *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
 	Priority               *int32  `json:"Priority,omitempty" xml:"Priority,omitempty"`
 	ProjectId              *int64  `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	RemoveTaskIds          *string `json:"RemoveTaskIds,omitempty" xml:"RemoveTaskIds,omitempty"`
-	TaskIds                *string `json:"TaskIds,omitempty" xml:"TaskIds,omitempty"`
+	RemoveNodeIds          *string `json:"RemoveNodeIds,omitempty" xml:"RemoveNodeIds,omitempty"`
 }
 
 func (s UpdateBaselineShrinkRequest) String() string {
@@ -40296,6 +40494,11 @@ func (s *UpdateBaselineShrinkRequest) SetEnabled(v bool) *UpdateBaselineShrinkRe
 	return s
 }
 
+func (s *UpdateBaselineShrinkRequest) SetNodeIds(v string) *UpdateBaselineShrinkRequest {
+	s.NodeIds = &v
+	return s
+}
+
 func (s *UpdateBaselineShrinkRequest) SetOvertimeSettingsShrink(v string) *UpdateBaselineShrinkRequest {
 	s.OvertimeSettingsShrink = &v
 	return s
@@ -40316,13 +40519,8 @@ func (s *UpdateBaselineShrinkRequest) SetProjectId(v int64) *UpdateBaselineShrin
 	return s
 }
 
-func (s *UpdateBaselineShrinkRequest) SetRemoveTaskIds(v string) *UpdateBaselineShrinkRequest {
-	s.RemoveTaskIds = &v
-	return s
-}
-
-func (s *UpdateBaselineShrinkRequest) SetTaskIds(v string) *UpdateBaselineShrinkRequest {
-	s.TaskIds = &v
+func (s *UpdateBaselineShrinkRequest) SetRemoveNodeIds(v string) *UpdateBaselineShrinkRequest {
+	s.RemoveNodeIds = &v
 	return s
 }
 
@@ -44239,6 +44437,10 @@ func (client *Client) CreateBaselineWithOptions(request *CreateBaselineRequest, 
 		body["BaselineType"] = request.BaselineType
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.NodeIds)) {
+		body["NodeIds"] = request.NodeIds
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.OvertimeSettings)) {
 		body["OvertimeSettings"] = request.OvertimeSettings
 	}
@@ -44253,10 +44455,6 @@ func (client *Client) CreateBaselineWithOptions(request *CreateBaselineRequest, 
 
 	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
 		body["ProjectId"] = request.ProjectId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.TaskIds)) {
-		body["TaskIds"] = request.TaskIds
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -55125,6 +55323,54 @@ func (client *Client) ListTopics(request *ListTopicsRequest) (_result *ListTopic
 	return _result, _err
 }
 
+func (client *Client) MountDirectoryWithOptions(request *MountDirectoryRequest, runtime *util.RuntimeOptions) (_result *MountDirectoryResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.TargetId)) {
+		body["TargetId"] = request.TargetId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetType)) {
+		body["TargetType"] = request.TargetType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("MountDirectory"),
+		Version:     tea.String("2020-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &MountDirectoryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) MountDirectory(request *MountDirectoryRequest) (_result *MountDirectoryResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &MountDirectoryResponse{}
+	_body, _err := client.MountDirectoryWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) OfflineNodeWithOptions(request *OfflineNodeRequest, runtime *util.RuntimeOptions) (_result *OfflineNodeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -56753,6 +56999,54 @@ func (client *Client) TopTenErrorTimesInstance(request *TopTenErrorTimesInstance
 	return _result, _err
 }
 
+func (client *Client) UmountDirectoryWithOptions(request *UmountDirectoryRequest, runtime *util.RuntimeOptions) (_result *UmountDirectoryResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.TargetId)) {
+		body["TargetId"] = request.TargetId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetType)) {
+		body["TargetType"] = request.TargetType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UmountDirectory"),
+		Version:     tea.String("2020-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UmountDirectoryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UmountDirectory(request *UmountDirectoryRequest) (_result *UmountDirectoryResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UmountDirectoryResponse{}
+	_body, _err := client.UmountDirectoryWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) UpdateBaselineWithOptions(tmpReq *UpdateBaselineRequest, runtime *util.RuntimeOptions) (_result *UpdateBaselineResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -56797,6 +57091,10 @@ func (client *Client) UpdateBaselineWithOptions(tmpReq *UpdateBaselineRequest, r
 		body["Enabled"] = request.Enabled
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.NodeIds)) {
+		body["NodeIds"] = request.NodeIds
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.OvertimeSettingsShrink)) {
 		body["OvertimeSettings"] = request.OvertimeSettingsShrink
 	}
@@ -56813,12 +57111,8 @@ func (client *Client) UpdateBaselineWithOptions(tmpReq *UpdateBaselineRequest, r
 		body["ProjectId"] = request.ProjectId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.RemoveTaskIds)) {
-		body["RemoveTaskIds"] = request.RemoveTaskIds
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.TaskIds)) {
-		body["TaskIds"] = request.TaskIds
+	if !tea.BoolValue(util.IsUnset(request.RemoveNodeIds)) {
+		body["RemoveNodeIds"] = request.RemoveNodeIds
 	}
 
 	req := &openapi.OpenApiRequest{
