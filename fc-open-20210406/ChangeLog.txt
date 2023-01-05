@@ -1,3 +1,6 @@
+2023-01-05 Version: v2.0.1
+- Add instanceConcurrency field to UpdateFunction response.
+
 2022-11-21 Version: v2.0.0
 - Incompatible changes, some of dependencies paths should be altered to v2 paths.
 - Add CPU and disksize to Function object.
