@@ -2708,6 +2708,7 @@ type GetTrendStatisticResponseBodyData struct {
 	ExposureValue  *int64   `json:"ExposureValue,omitempty" xml:"ExposureValue,omitempty"`
 	Hits           *int64   `json:"Hits,omitempty" xml:"Hits,omitempty"`
 	Sales          *float64 `json:"Sales,omitempty" xml:"Sales,omitempty"`
+	SalesVolume    *int64   `json:"SalesVolume,omitempty" xml:"SalesVolume,omitempty"`
 	ShopCount      *int64   `json:"ShopCount,omitempty" xml:"ShopCount,omitempty"`
 }
 
@@ -2741,6 +2742,11 @@ func (s *GetTrendStatisticResponseBodyData) SetHits(v int64) *GetTrendStatisticR
 
 func (s *GetTrendStatisticResponseBodyData) SetSales(v float64) *GetTrendStatisticResponseBodyData {
 	s.Sales = &v
+	return s
+}
+
+func (s *GetTrendStatisticResponseBodyData) SetSalesVolume(v int64) *GetTrendStatisticResponseBodyData {
+	s.SalesVolume = &v
 	return s
 }
 
