@@ -116,7 +116,8 @@ type CreateHubClusterRequest struct {
 	// Specifies whether to use a public IP address to expose the API server. Valid values: - true: uses a public IP address to expose the API server. - true: uses an internal IP address to expose the API server.
 	ApiServerPublicEip *bool `json:"ApiServerPublicEip,omitempty" xml:"ApiServerPublicEip,omitempty"`
 	// Specifies whether to enable audit logs. Valid values: - true: enables audit logs. - false: disables audit logs.
-	AuditLogEnabled *bool `json:"AuditLogEnabled,omitempty" xml:"AuditLogEnabled,omitempty"`
+	AuditLogEnabled      *bool                                        `json:"AuditLogEnabled,omitempty" xml:"AuditLogEnabled,omitempty"`
+	ClusterConfiguration *CreateHubClusterRequestClusterConfiguration `json:"ClusterConfiguration,omitempty" xml:"ClusterConfiguration,omitempty" type:"Struct"`
 	// Specifies whether the security group is an advanced security group.
 	IsEnterpriseSecurityGroup *bool `json:"IsEnterpriseSecurityGroup,omitempty" xml:"IsEnterpriseSecurityGroup,omitempty"`
 	// The name of the master instance.
@@ -154,6 +155,11 @@ func (s *CreateHubClusterRequest) SetAuditLogEnabled(v bool) *CreateHubClusterRe
 	return s
 }
 
+func (s *CreateHubClusterRequest) SetClusterConfiguration(v *CreateHubClusterRequestClusterConfiguration) *CreateHubClusterRequest {
+	s.ClusterConfiguration = v
+	return s
+}
+
 func (s *CreateHubClusterRequest) SetIsEnterpriseSecurityGroup(v bool) *CreateHubClusterRequest {
 	s.IsEnterpriseSecurityGroup = &v
 	return s
@@ -180,6 +186,177 @@ func (s *CreateHubClusterRequest) SetVSwitches(v string) *CreateHubClusterReques
 }
 
 func (s *CreateHubClusterRequest) SetVpcId(v string) *CreateHubClusterRequest {
+	s.VpcId = &v
+	return s
+}
+
+type CreateHubClusterRequestClusterConfiguration struct {
+	ArgoServerEnabled    *bool                                                       `json:"ArgoServerEnabled,omitempty" xml:"ArgoServerEnabled,omitempty"`
+	PriceLimit           *string                                                     `json:"PriceLimit,omitempty" xml:"PriceLimit,omitempty"`
+	WorflowEnabled       *bool                                                       `json:"WorflowEnabled,omitempty" xml:"WorflowEnabled,omitempty"`
+	WorkflowScheduleMode *string                                                     `json:"WorkflowScheduleMode,omitempty" xml:"WorkflowScheduleMode,omitempty"`
+	WorkflowUnits        []*CreateHubClusterRequestClusterConfigurationWorkflowUnits `json:"WorkflowUnits,omitempty" xml:"WorkflowUnits,omitempty" type:"Repeated"`
+}
+
+func (s CreateHubClusterRequestClusterConfiguration) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateHubClusterRequestClusterConfiguration) GoString() string {
+	return s.String()
+}
+
+func (s *CreateHubClusterRequestClusterConfiguration) SetArgoServerEnabled(v bool) *CreateHubClusterRequestClusterConfiguration {
+	s.ArgoServerEnabled = &v
+	return s
+}
+
+func (s *CreateHubClusterRequestClusterConfiguration) SetPriceLimit(v string) *CreateHubClusterRequestClusterConfiguration {
+	s.PriceLimit = &v
+	return s
+}
+
+func (s *CreateHubClusterRequestClusterConfiguration) SetWorflowEnabled(v bool) *CreateHubClusterRequestClusterConfiguration {
+	s.WorflowEnabled = &v
+	return s
+}
+
+func (s *CreateHubClusterRequestClusterConfiguration) SetWorkflowScheduleMode(v string) *CreateHubClusterRequestClusterConfiguration {
+	s.WorkflowScheduleMode = &v
+	return s
+}
+
+func (s *CreateHubClusterRequestClusterConfiguration) SetWorkflowUnits(v []*CreateHubClusterRequestClusterConfigurationWorkflowUnits) *CreateHubClusterRequestClusterConfiguration {
+	s.WorkflowUnits = v
+	return s
+}
+
+type CreateHubClusterRequestClusterConfigurationWorkflowUnits struct {
+	RegionId  *string                                                              `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	VSwitches []*CreateHubClusterRequestClusterConfigurationWorkflowUnitsVSwitches `json:"VSwitches,omitempty" xml:"VSwitches,omitempty" type:"Repeated"`
+	VpcId     *string                                                              `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+}
+
+func (s CreateHubClusterRequestClusterConfigurationWorkflowUnits) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateHubClusterRequestClusterConfigurationWorkflowUnits) GoString() string {
+	return s.String()
+}
+
+func (s *CreateHubClusterRequestClusterConfigurationWorkflowUnits) SetRegionId(v string) *CreateHubClusterRequestClusterConfigurationWorkflowUnits {
+	s.RegionId = &v
+	return s
+}
+
+func (s *CreateHubClusterRequestClusterConfigurationWorkflowUnits) SetVSwitches(v []*CreateHubClusterRequestClusterConfigurationWorkflowUnitsVSwitches) *CreateHubClusterRequestClusterConfigurationWorkflowUnits {
+	s.VSwitches = v
+	return s
+}
+
+func (s *CreateHubClusterRequestClusterConfigurationWorkflowUnits) SetVpcId(v string) *CreateHubClusterRequestClusterConfigurationWorkflowUnits {
+	s.VpcId = &v
+	return s
+}
+
+type CreateHubClusterRequestClusterConfigurationWorkflowUnitsVSwitches struct {
+	VswitchId *string `json:"VswitchId,omitempty" xml:"VswitchId,omitempty"`
+	ZoneId    *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+}
+
+func (s CreateHubClusterRequestClusterConfigurationWorkflowUnitsVSwitches) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateHubClusterRequestClusterConfigurationWorkflowUnitsVSwitches) GoString() string {
+	return s.String()
+}
+
+func (s *CreateHubClusterRequestClusterConfigurationWorkflowUnitsVSwitches) SetVswitchId(v string) *CreateHubClusterRequestClusterConfigurationWorkflowUnitsVSwitches {
+	s.VswitchId = &v
+	return s
+}
+
+func (s *CreateHubClusterRequestClusterConfigurationWorkflowUnitsVSwitches) SetZoneId(v string) *CreateHubClusterRequestClusterConfigurationWorkflowUnitsVSwitches {
+	s.ZoneId = &v
+	return s
+}
+
+type CreateHubClusterShrinkRequest struct {
+	// Specifies whether to use a public IP address to expose the API server. Valid values: - true: uses a public IP address to expose the API server. - true: uses an internal IP address to expose the API server.
+	ApiServerPublicEip *bool `json:"ApiServerPublicEip,omitempty" xml:"ApiServerPublicEip,omitempty"`
+	// Specifies whether to enable audit logs. Valid values: - true: enables audit logs. - false: disables audit logs.
+	AuditLogEnabled            *bool   `json:"AuditLogEnabled,omitempty" xml:"AuditLogEnabled,omitempty"`
+	ClusterConfigurationShrink *string `json:"ClusterConfiguration,omitempty" xml:"ClusterConfiguration,omitempty"`
+	// Specifies whether the security group is an advanced security group.
+	IsEnterpriseSecurityGroup *bool `json:"IsEnterpriseSecurityGroup,omitempty" xml:"IsEnterpriseSecurityGroup,omitempty"`
+	// The name of the master instance.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Scenario-oriented master control type. The value can be:
+	//
+	// - `Default`: Standard scenario Master instance.
+	// - `XFlow`: Workflow scenario master instance.
+	//
+	// Default Value: `Default`.
+	Profile *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
+	// The ID of the region. You can call the DescribeRegions operation to query available regions.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the vSwitch.
+	VSwitches *string `json:"VSwitches,omitempty" xml:"VSwitches,omitempty"`
+	// The ID of the virtual private cloud (VPC) to which the master instance belongs. You can call the DescribeVpcs operation to query available VPCs.
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+}
+
+func (s CreateHubClusterShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateHubClusterShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateHubClusterShrinkRequest) SetApiServerPublicEip(v bool) *CreateHubClusterShrinkRequest {
+	s.ApiServerPublicEip = &v
+	return s
+}
+
+func (s *CreateHubClusterShrinkRequest) SetAuditLogEnabled(v bool) *CreateHubClusterShrinkRequest {
+	s.AuditLogEnabled = &v
+	return s
+}
+
+func (s *CreateHubClusterShrinkRequest) SetClusterConfigurationShrink(v string) *CreateHubClusterShrinkRequest {
+	s.ClusterConfigurationShrink = &v
+	return s
+}
+
+func (s *CreateHubClusterShrinkRequest) SetIsEnterpriseSecurityGroup(v bool) *CreateHubClusterShrinkRequest {
+	s.IsEnterpriseSecurityGroup = &v
+	return s
+}
+
+func (s *CreateHubClusterShrinkRequest) SetName(v string) *CreateHubClusterShrinkRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateHubClusterShrinkRequest) SetProfile(v string) *CreateHubClusterShrinkRequest {
+	s.Profile = &v
+	return s
+}
+
+func (s *CreateHubClusterShrinkRequest) SetRegionId(v string) *CreateHubClusterShrinkRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *CreateHubClusterShrinkRequest) SetVSwitches(v string) *CreateHubClusterShrinkRequest {
+	s.VSwitches = &v
+	return s
+}
+
+func (s *CreateHubClusterShrinkRequest) SetVpcId(v string) *CreateHubClusterShrinkRequest {
 	s.VpcId = &v
 	return s
 }
@@ -2285,11 +2462,22 @@ func (client *Client) AttachClusterToHub(request *AttachClusterToHubRequest) (_r
 	return _result, _err
 }
 
-func (client *Client) CreateHubClusterWithOptions(request *CreateHubClusterRequest, runtime *util.RuntimeOptions) (_result *CreateHubClusterResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) CreateHubClusterWithOptions(tmpReq *CreateHubClusterRequest, runtime *util.RuntimeOptions) (_result *CreateHubClusterResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
+	request := &CreateHubClusterShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.ClusterConfiguration)) {
+		request.ClusterConfigurationShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ClusterConfiguration, tea.String("ClusterConfiguration"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterConfigurationShrink)) {
+		query["ClusterConfiguration"] = request.ClusterConfigurationShrink
+	}
+
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ApiServerPublicEip)) {
 		body["ApiServerPublicEip"] = request.ApiServerPublicEip
@@ -2324,7 +2512,8 @@ func (client *Client) CreateHubClusterWithOptions(request *CreateHubClusterReque
 	}
 
 	req := &openapi.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateHubCluster"),
