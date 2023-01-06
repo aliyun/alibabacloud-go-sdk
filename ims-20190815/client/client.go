@@ -1560,11 +1560,12 @@ func (s *CreateSAMLProviderResponse) SetBody(v *CreateSAMLProviderResponseBody) 
 }
 
 type CreateUserRequest struct {
-	Comments          *string `json:"Comments,omitempty" xml:"Comments,omitempty"`
-	DisplayName       *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	Email             *string `json:"Email,omitempty" xml:"Email,omitempty"`
-	MobilePhone       *string `json:"MobilePhone,omitempty" xml:"MobilePhone,omitempty"`
-	UserPrincipalName *string `json:"UserPrincipalName,omitempty" xml:"UserPrincipalName,omitempty"`
+	Comments          *string                 `json:"Comments,omitempty" xml:"Comments,omitempty"`
+	DisplayName       *string                 `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	Email             *string                 `json:"Email,omitempty" xml:"Email,omitempty"`
+	MobilePhone       *string                 `json:"MobilePhone,omitempty" xml:"MobilePhone,omitempty"`
+	Tag               []*CreateUserRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	UserPrincipalName *string                 `json:"UserPrincipalName,omitempty" xml:"UserPrincipalName,omitempty"`
 }
 
 func (s CreateUserRequest) String() string {
@@ -1595,8 +1596,36 @@ func (s *CreateUserRequest) SetMobilePhone(v string) *CreateUserRequest {
 	return s
 }
 
+func (s *CreateUserRequest) SetTag(v []*CreateUserRequestTag) *CreateUserRequest {
+	s.Tag = v
+	return s
+}
+
 func (s *CreateUserRequest) SetUserPrincipalName(v string) *CreateUserRequest {
 	s.UserPrincipalName = &v
+	return s
+}
+
+type CreateUserRequestTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateUserRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateUserRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *CreateUserRequestTag) SetKey(v string) *CreateUserRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *CreateUserRequestTag) SetValue(v string) *CreateUserRequestTag {
+	s.Value = &v
 	return s
 }
 
@@ -1624,16 +1653,17 @@ func (s *CreateUserResponseBody) SetUser(v *CreateUserResponseBodyUser) *CreateU
 }
 
 type CreateUserResponseBodyUser struct {
-	Comments          *string `json:"Comments,omitempty" xml:"Comments,omitempty"`
-	CreateDate        *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
-	DisplayName       *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	Email             *string `json:"Email,omitempty" xml:"Email,omitempty"`
-	LastLoginDate     *string `json:"LastLoginDate,omitempty" xml:"LastLoginDate,omitempty"`
-	MobilePhone       *string `json:"MobilePhone,omitempty" xml:"MobilePhone,omitempty"`
-	ProvisionType     *string `json:"ProvisionType,omitempty" xml:"ProvisionType,omitempty"`
-	UpdateDate        *string `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
-	UserId            *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	UserPrincipalName *string `json:"UserPrincipalName,omitempty" xml:"UserPrincipalName,omitempty"`
+	Comments          *string                         `json:"Comments,omitempty" xml:"Comments,omitempty"`
+	CreateDate        *string                         `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
+	DisplayName       *string                         `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	Email             *string                         `json:"Email,omitempty" xml:"Email,omitempty"`
+	LastLoginDate     *string                         `json:"LastLoginDate,omitempty" xml:"LastLoginDate,omitempty"`
+	MobilePhone       *string                         `json:"MobilePhone,omitempty" xml:"MobilePhone,omitempty"`
+	ProvisionType     *string                         `json:"ProvisionType,omitempty" xml:"ProvisionType,omitempty"`
+	Tags              *CreateUserResponseBodyUserTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
+	UpdateDate        *string                         `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
+	UserId            *string                         `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	UserPrincipalName *string                         `json:"UserPrincipalName,omitempty" xml:"UserPrincipalName,omitempty"`
 }
 
 func (s CreateUserResponseBodyUser) String() string {
@@ -1679,6 +1709,11 @@ func (s *CreateUserResponseBodyUser) SetProvisionType(v string) *CreateUserRespo
 	return s
 }
 
+func (s *CreateUserResponseBodyUser) SetTags(v *CreateUserResponseBodyUserTags) *CreateUserResponseBodyUser {
+	s.Tags = v
+	return s
+}
+
 func (s *CreateUserResponseBodyUser) SetUpdateDate(v string) *CreateUserResponseBodyUser {
 	s.UpdateDate = &v
 	return s
@@ -1691,6 +1726,46 @@ func (s *CreateUserResponseBodyUser) SetUserId(v string) *CreateUserResponseBody
 
 func (s *CreateUserResponseBodyUser) SetUserPrincipalName(v string) *CreateUserResponseBodyUser {
 	s.UserPrincipalName = &v
+	return s
+}
+
+type CreateUserResponseBodyUserTags struct {
+	Tag []*CreateUserResponseBodyUserTagsTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+}
+
+func (s CreateUserResponseBodyUserTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateUserResponseBodyUserTags) GoString() string {
+	return s.String()
+}
+
+func (s *CreateUserResponseBodyUserTags) SetTag(v []*CreateUserResponseBodyUserTagsTag) *CreateUserResponseBodyUserTags {
+	s.Tag = v
+	return s
+}
+
+type CreateUserResponseBodyUserTagsTag struct {
+	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+}
+
+func (s CreateUserResponseBodyUserTagsTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateUserResponseBodyUserTagsTag) GoString() string {
+	return s.String()
+}
+
+func (s *CreateUserResponseBodyUserTagsTag) SetTagKey(v string) *CreateUserResponseBodyUserTagsTag {
+	s.TagKey = &v
+	return s
+}
+
+func (s *CreateUserResponseBodyUserTagsTag) SetTagValue(v string) *CreateUserResponseBodyUserTagsTag {
+	s.TagValue = &v
 	return s
 }
 
@@ -4295,16 +4370,17 @@ func (s *GetUserResponseBody) SetUser(v *GetUserResponseBodyUser) *GetUserRespon
 }
 
 type GetUserResponseBodyUser struct {
-	Comments          *string `json:"Comments,omitempty" xml:"Comments,omitempty"`
-	CreateDate        *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
-	DisplayName       *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	Email             *string `json:"Email,omitempty" xml:"Email,omitempty"`
-	LastLoginDate     *string `json:"LastLoginDate,omitempty" xml:"LastLoginDate,omitempty"`
-	MobilePhone       *string `json:"MobilePhone,omitempty" xml:"MobilePhone,omitempty"`
-	ProvisionType     *string `json:"ProvisionType,omitempty" xml:"ProvisionType,omitempty"`
-	UpdateDate        *string `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
-	UserId            *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	UserPrincipalName *string `json:"UserPrincipalName,omitempty" xml:"UserPrincipalName,omitempty"`
+	Comments          *string                      `json:"Comments,omitempty" xml:"Comments,omitempty"`
+	CreateDate        *string                      `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
+	DisplayName       *string                      `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	Email             *string                      `json:"Email,omitempty" xml:"Email,omitempty"`
+	LastLoginDate     *string                      `json:"LastLoginDate,omitempty" xml:"LastLoginDate,omitempty"`
+	MobilePhone       *string                      `json:"MobilePhone,omitempty" xml:"MobilePhone,omitempty"`
+	ProvisionType     *string                      `json:"ProvisionType,omitempty" xml:"ProvisionType,omitempty"`
+	Tags              *GetUserResponseBodyUserTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
+	UpdateDate        *string                      `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
+	UserId            *string                      `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	UserPrincipalName *string                      `json:"UserPrincipalName,omitempty" xml:"UserPrincipalName,omitempty"`
 }
 
 func (s GetUserResponseBodyUser) String() string {
@@ -4350,6 +4426,11 @@ func (s *GetUserResponseBodyUser) SetProvisionType(v string) *GetUserResponseBod
 	return s
 }
 
+func (s *GetUserResponseBodyUser) SetTags(v *GetUserResponseBodyUserTags) *GetUserResponseBodyUser {
+	s.Tags = v
+	return s
+}
+
 func (s *GetUserResponseBodyUser) SetUpdateDate(v string) *GetUserResponseBodyUser {
 	s.UpdateDate = &v
 	return s
@@ -4362,6 +4443,46 @@ func (s *GetUserResponseBodyUser) SetUserId(v string) *GetUserResponseBodyUser {
 
 func (s *GetUserResponseBodyUser) SetUserPrincipalName(v string) *GetUserResponseBodyUser {
 	s.UserPrincipalName = &v
+	return s
+}
+
+type GetUserResponseBodyUserTags struct {
+	Tag []*GetUserResponseBodyUserTagsTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+}
+
+func (s GetUserResponseBodyUserTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUserResponseBodyUserTags) GoString() string {
+	return s.String()
+}
+
+func (s *GetUserResponseBodyUserTags) SetTag(v []*GetUserResponseBodyUserTagsTag) *GetUserResponseBodyUserTags {
+	s.Tag = v
+	return s
+}
+
+type GetUserResponseBodyUserTagsTag struct {
+	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+}
+
+func (s GetUserResponseBodyUserTagsTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUserResponseBodyUserTagsTag) GoString() string {
+	return s.String()
+}
+
+func (s *GetUserResponseBodyUserTagsTag) SetTagKey(v string) *GetUserResponseBodyUserTagsTag {
+	s.TagKey = &v
+	return s
+}
+
+func (s *GetUserResponseBodyUserTagsTag) SetTagValue(v string) *GetUserResponseBodyUserTagsTag {
+	s.TagValue = &v
 	return s
 }
 
@@ -5749,8 +5870,9 @@ func (s *ListSAMLProvidersResponse) SetBody(v *ListSAMLProvidersResponseBody) *L
 }
 
 type ListUserBasicInfosRequest struct {
-	Marker   *string `json:"Marker,omitempty" xml:"Marker,omitempty"`
-	MaxItems *int32  `json:"MaxItems,omitempty" xml:"MaxItems,omitempty"`
+	Marker   *string                         `json:"Marker,omitempty" xml:"Marker,omitempty"`
+	MaxItems *int32                          `json:"MaxItems,omitempty" xml:"MaxItems,omitempty"`
+	Tag      []*ListUserBasicInfosRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s ListUserBasicInfosRequest) String() string {
@@ -5768,6 +5890,34 @@ func (s *ListUserBasicInfosRequest) SetMarker(v string) *ListUserBasicInfosReque
 
 func (s *ListUserBasicInfosRequest) SetMaxItems(v int32) *ListUserBasicInfosRequest {
 	s.MaxItems = &v
+	return s
+}
+
+func (s *ListUserBasicInfosRequest) SetTag(v []*ListUserBasicInfosRequestTag) *ListUserBasicInfosRequest {
+	s.Tag = v
+	return s
+}
+
+type ListUserBasicInfosRequestTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListUserBasicInfosRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUserBasicInfosRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *ListUserBasicInfosRequestTag) SetKey(v string) *ListUserBasicInfosRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *ListUserBasicInfosRequestTag) SetValue(v string) *ListUserBasicInfosRequestTag {
+	s.Value = &v
 	return s
 }
 
@@ -5824,9 +5974,10 @@ func (s *ListUserBasicInfosResponseBodyUserBasicInfos) SetUserBasicInfo(v []*Lis
 }
 
 type ListUserBasicInfosResponseBodyUserBasicInfosUserBasicInfo struct {
-	DisplayName       *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	UserId            *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	UserPrincipalName *string `json:"UserPrincipalName,omitempty" xml:"UserPrincipalName,omitempty"`
+	DisplayName       *string                                                        `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	Tags              *ListUserBasicInfosResponseBodyUserBasicInfosUserBasicInfoTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
+	UserId            *string                                                        `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	UserPrincipalName *string                                                        `json:"UserPrincipalName,omitempty" xml:"UserPrincipalName,omitempty"`
 }
 
 func (s ListUserBasicInfosResponseBodyUserBasicInfosUserBasicInfo) String() string {
@@ -5842,6 +5993,11 @@ func (s *ListUserBasicInfosResponseBodyUserBasicInfosUserBasicInfo) SetDisplayNa
 	return s
 }
 
+func (s *ListUserBasicInfosResponseBodyUserBasicInfosUserBasicInfo) SetTags(v *ListUserBasicInfosResponseBodyUserBasicInfosUserBasicInfoTags) *ListUserBasicInfosResponseBodyUserBasicInfosUserBasicInfo {
+	s.Tags = v
+	return s
+}
+
 func (s *ListUserBasicInfosResponseBodyUserBasicInfosUserBasicInfo) SetUserId(v string) *ListUserBasicInfosResponseBodyUserBasicInfosUserBasicInfo {
 	s.UserId = &v
 	return s
@@ -5849,6 +6005,46 @@ func (s *ListUserBasicInfosResponseBodyUserBasicInfosUserBasicInfo) SetUserId(v 
 
 func (s *ListUserBasicInfosResponseBodyUserBasicInfosUserBasicInfo) SetUserPrincipalName(v string) *ListUserBasicInfosResponseBodyUserBasicInfosUserBasicInfo {
 	s.UserPrincipalName = &v
+	return s
+}
+
+type ListUserBasicInfosResponseBodyUserBasicInfosUserBasicInfoTags struct {
+	Tag []*ListUserBasicInfosResponseBodyUserBasicInfosUserBasicInfoTagsTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+}
+
+func (s ListUserBasicInfosResponseBodyUserBasicInfosUserBasicInfoTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUserBasicInfosResponseBodyUserBasicInfosUserBasicInfoTags) GoString() string {
+	return s.String()
+}
+
+func (s *ListUserBasicInfosResponseBodyUserBasicInfosUserBasicInfoTags) SetTag(v []*ListUserBasicInfosResponseBodyUserBasicInfosUserBasicInfoTagsTag) *ListUserBasicInfosResponseBodyUserBasicInfosUserBasicInfoTags {
+	s.Tag = v
+	return s
+}
+
+type ListUserBasicInfosResponseBodyUserBasicInfosUserBasicInfoTagsTag struct {
+	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+}
+
+func (s ListUserBasicInfosResponseBodyUserBasicInfosUserBasicInfoTagsTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUserBasicInfosResponseBodyUserBasicInfosUserBasicInfoTagsTag) GoString() string {
+	return s.String()
+}
+
+func (s *ListUserBasicInfosResponseBodyUserBasicInfosUserBasicInfoTagsTag) SetTagKey(v string) *ListUserBasicInfosResponseBodyUserBasicInfosUserBasicInfoTagsTag {
+	s.TagKey = &v
+	return s
+}
+
+func (s *ListUserBasicInfosResponseBodyUserBasicInfosUserBasicInfoTagsTag) SetTagValue(v string) *ListUserBasicInfosResponseBodyUserBasicInfosUserBasicInfoTagsTag {
+	s.TagValue = &v
 	return s
 }
 
@@ -5882,8 +6078,9 @@ func (s *ListUserBasicInfosResponse) SetBody(v *ListUserBasicInfosResponseBody) 
 }
 
 type ListUsersRequest struct {
-	Marker   *string `json:"Marker,omitempty" xml:"Marker,omitempty"`
-	MaxItems *int32  `json:"MaxItems,omitempty" xml:"MaxItems,omitempty"`
+	Marker   *string                `json:"Marker,omitempty" xml:"Marker,omitempty"`
+	MaxItems *int32                 `json:"MaxItems,omitempty" xml:"MaxItems,omitempty"`
+	Tag      []*ListUsersRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s ListUsersRequest) String() string {
@@ -5901,6 +6098,34 @@ func (s *ListUsersRequest) SetMarker(v string) *ListUsersRequest {
 
 func (s *ListUsersRequest) SetMaxItems(v int32) *ListUsersRequest {
 	s.MaxItems = &v
+	return s
+}
+
+func (s *ListUsersRequest) SetTag(v []*ListUsersRequestTag) *ListUsersRequest {
+	s.Tag = v
+	return s
+}
+
+type ListUsersRequestTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListUsersRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUsersRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *ListUsersRequestTag) SetKey(v string) *ListUsersRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *ListUsersRequestTag) SetValue(v string) *ListUsersRequestTag {
+	s.Value = &v
 	return s
 }
 
@@ -5957,16 +6182,17 @@ func (s *ListUsersResponseBodyUsers) SetUser(v []*ListUsersResponseBodyUsersUser
 }
 
 type ListUsersResponseBodyUsersUser struct {
-	Comments          *string `json:"Comments,omitempty" xml:"Comments,omitempty"`
-	CreateDate        *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
-	DisplayName       *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	Email             *string `json:"Email,omitempty" xml:"Email,omitempty"`
-	LastLoginDate     *string `json:"LastLoginDate,omitempty" xml:"LastLoginDate,omitempty"`
-	MobilePhone       *string `json:"MobilePhone,omitempty" xml:"MobilePhone,omitempty"`
-	ProvisionType     *string `json:"ProvisionType,omitempty" xml:"ProvisionType,omitempty"`
-	UpdateDate        *string `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
-	UserId            *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	UserPrincipalName *string `json:"UserPrincipalName,omitempty" xml:"UserPrincipalName,omitempty"`
+	Comments          *string                             `json:"Comments,omitempty" xml:"Comments,omitempty"`
+	CreateDate        *string                             `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
+	DisplayName       *string                             `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	Email             *string                             `json:"Email,omitempty" xml:"Email,omitempty"`
+	LastLoginDate     *string                             `json:"LastLoginDate,omitempty" xml:"LastLoginDate,omitempty"`
+	MobilePhone       *string                             `json:"MobilePhone,omitempty" xml:"MobilePhone,omitempty"`
+	ProvisionType     *string                             `json:"ProvisionType,omitempty" xml:"ProvisionType,omitempty"`
+	Tags              *ListUsersResponseBodyUsersUserTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
+	UpdateDate        *string                             `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
+	UserId            *string                             `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	UserPrincipalName *string                             `json:"UserPrincipalName,omitempty" xml:"UserPrincipalName,omitempty"`
 }
 
 func (s ListUsersResponseBodyUsersUser) String() string {
@@ -6012,6 +6238,11 @@ func (s *ListUsersResponseBodyUsersUser) SetProvisionType(v string) *ListUsersRe
 	return s
 }
 
+func (s *ListUsersResponseBodyUsersUser) SetTags(v *ListUsersResponseBodyUsersUserTags) *ListUsersResponseBodyUsersUser {
+	s.Tags = v
+	return s
+}
+
 func (s *ListUsersResponseBodyUsersUser) SetUpdateDate(v string) *ListUsersResponseBodyUsersUser {
 	s.UpdateDate = &v
 	return s
@@ -6024,6 +6255,46 @@ func (s *ListUsersResponseBodyUsersUser) SetUserId(v string) *ListUsersResponseB
 
 func (s *ListUsersResponseBodyUsersUser) SetUserPrincipalName(v string) *ListUsersResponseBodyUsersUser {
 	s.UserPrincipalName = &v
+	return s
+}
+
+type ListUsersResponseBodyUsersUserTags struct {
+	Tag []*ListUsersResponseBodyUsersUserTagsTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+}
+
+func (s ListUsersResponseBodyUsersUserTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUsersResponseBodyUsersUserTags) GoString() string {
+	return s.String()
+}
+
+func (s *ListUsersResponseBodyUsersUserTags) SetTag(v []*ListUsersResponseBodyUsersUserTagsTag) *ListUsersResponseBodyUsersUserTags {
+	s.Tag = v
+	return s
+}
+
+type ListUsersResponseBodyUsersUserTagsTag struct {
+	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+}
+
+func (s ListUsersResponseBodyUsersUserTagsTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUsersResponseBodyUsersUserTagsTag) GoString() string {
+	return s.String()
+}
+
+func (s *ListUsersResponseBodyUsersUserTagsTag) SetTagKey(v string) *ListUsersResponseBodyUsersUserTagsTag {
+	s.TagKey = &v
+	return s
+}
+
+func (s *ListUsersResponseBodyUsersUserTagsTag) SetTagValue(v string) *ListUsersResponseBodyUsersUserTagsTag {
+	s.TagValue = &v
 	return s
 }
 
@@ -9205,6 +9476,10 @@ func (client *Client) CreateUserWithOptions(request *CreateUserRequest, runtime 
 		query["MobilePhone"] = request.MobilePhone
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.UserPrincipalName)) {
 		query["UserPrincipalName"] = request.UserPrincipalName
 	}
@@ -10815,6 +11090,10 @@ func (client *Client) ListUserBasicInfosWithOptions(request *ListUserBasicInfosR
 		query["MaxItems"] = request.MaxItems
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -10861,6 +11140,10 @@ func (client *Client) ListUsersWithOptions(request *ListUsersRequest, runtime *u
 
 	if !tea.BoolValue(util.IsUnset(request.MaxItems)) {
 		query["MaxItems"] = request.MaxItems
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
 	}
 
 	req := &openapi.OpenApiRequest{
