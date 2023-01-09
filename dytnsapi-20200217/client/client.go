@@ -1276,7 +1276,6 @@ type PhoneNumberEncryptRequest struct {
 	AuthCode             *string `json:"AuthCode,omitempty" xml:"AuthCode,omitempty"`
 	InputNumber          *string `json:"InputNumber,omitempty" xml:"InputNumber,omitempty"`
 	Mask                 *string `json:"Mask,omitempty" xml:"Mask,omitempty"`
-	NumberType           *int64  `json:"NumberType,omitempty" xml:"NumberType,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -1302,11 +1301,6 @@ func (s *PhoneNumberEncryptRequest) SetInputNumber(v string) *PhoneNumberEncrypt
 
 func (s *PhoneNumberEncryptRequest) SetMask(v string) *PhoneNumberEncryptRequest {
 	s.Mask = &v
-	return s
-}
-
-func (s *PhoneNumberEncryptRequest) SetNumberType(v int64) *PhoneNumberEncryptRequest {
-	s.NumberType = &v
 	return s
 }
 
@@ -3133,10 +3127,6 @@ func (client *Client) PhoneNumberEncryptWithOptions(request *PhoneNumberEncryptR
 
 	if !tea.BoolValue(util.IsUnset(request.Mask)) {
 		query["Mask"] = request.Mask
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.NumberType)) {
-		query["NumberType"] = request.NumberType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
