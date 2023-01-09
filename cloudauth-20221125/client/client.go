@@ -12,6 +12,159 @@ import (
 	"github.com/alibabacloud-go/tea/tea"
 )
 
+type EntElementVerifyRequest struct {
+	EntName           *string `json:"EntName,omitempty" xml:"EntName,omitempty"`
+	InfoVerifyType    *string `json:"InfoVerifyType,omitempty" xml:"InfoVerifyType,omitempty"`
+	LegalPersonCertNo *string `json:"LegalPersonCertNo,omitempty" xml:"LegalPersonCertNo,omitempty"`
+	LegalPersonName   *string `json:"LegalPersonName,omitempty" xml:"LegalPersonName,omitempty"`
+	LicenseNo         *string `json:"LicenseNo,omitempty" xml:"LicenseNo,omitempty"`
+	MerchantBizId     *string `json:"MerchantBizId,omitempty" xml:"MerchantBizId,omitempty"`
+	MerchantUserId    *string `json:"MerchantUserId,omitempty" xml:"MerchantUserId,omitempty"`
+	SceneCode         *string `json:"SceneCode,omitempty" xml:"SceneCode,omitempty"`
+	UserAuthorization *string `json:"UserAuthorization,omitempty" xml:"UserAuthorization,omitempty"`
+}
+
+func (s EntElementVerifyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EntElementVerifyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *EntElementVerifyRequest) SetEntName(v string) *EntElementVerifyRequest {
+	s.EntName = &v
+	return s
+}
+
+func (s *EntElementVerifyRequest) SetInfoVerifyType(v string) *EntElementVerifyRequest {
+	s.InfoVerifyType = &v
+	return s
+}
+
+func (s *EntElementVerifyRequest) SetLegalPersonCertNo(v string) *EntElementVerifyRequest {
+	s.LegalPersonCertNo = &v
+	return s
+}
+
+func (s *EntElementVerifyRequest) SetLegalPersonName(v string) *EntElementVerifyRequest {
+	s.LegalPersonName = &v
+	return s
+}
+
+func (s *EntElementVerifyRequest) SetLicenseNo(v string) *EntElementVerifyRequest {
+	s.LicenseNo = &v
+	return s
+}
+
+func (s *EntElementVerifyRequest) SetMerchantBizId(v string) *EntElementVerifyRequest {
+	s.MerchantBizId = &v
+	return s
+}
+
+func (s *EntElementVerifyRequest) SetMerchantUserId(v string) *EntElementVerifyRequest {
+	s.MerchantUserId = &v
+	return s
+}
+
+func (s *EntElementVerifyRequest) SetSceneCode(v string) *EntElementVerifyRequest {
+	s.SceneCode = &v
+	return s
+}
+
+func (s *EntElementVerifyRequest) SetUserAuthorization(v string) *EntElementVerifyRequest {
+	s.UserAuthorization = &v
+	return s
+}
+
+type EntElementVerifyResponseBody struct {
+	Code    *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *EntElementVerifyResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+}
+
+func (s EntElementVerifyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EntElementVerifyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *EntElementVerifyResponseBody) SetCode(v string) *EntElementVerifyResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *EntElementVerifyResponseBody) SetMessage(v string) *EntElementVerifyResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *EntElementVerifyResponseBody) SetRequestId(v string) *EntElementVerifyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *EntElementVerifyResponseBody) SetResult(v *EntElementVerifyResponseBodyResult) *EntElementVerifyResponseBody {
+	s.Result = v
+	return s
+}
+
+type EntElementVerifyResponseBodyResult struct {
+	BizCode *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
+	Status  *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s EntElementVerifyResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EntElementVerifyResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *EntElementVerifyResponseBodyResult) SetBizCode(v string) *EntElementVerifyResponseBodyResult {
+	s.BizCode = &v
+	return s
+}
+
+func (s *EntElementVerifyResponseBodyResult) SetStatus(v string) *EntElementVerifyResponseBodyResult {
+	s.Status = &v
+	return s
+}
+
+type EntElementVerifyResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *EntElementVerifyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s EntElementVerifyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EntElementVerifyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *EntElementVerifyResponse) SetHeaders(v map[string]*string) *EntElementVerifyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *EntElementVerifyResponse) SetStatusCode(v int32) *EntElementVerifyResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *EntElementVerifyResponse) SetBody(v *EntElementVerifyResponseBody) *EntElementVerifyResponse {
+	s.Body = v
+	return s
+}
+
 type EntVerifyRequest struct {
 	AccountNo         *string `json:"AccountNo,omitempty" xml:"AccountNo,omitempty"`
 	EntName           *string `json:"EntName,omitempty" xml:"EntName,omitempty"`
@@ -269,6 +422,82 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	}
 
 	_body, _err := endpointutil.GetEndpointRules(productId, regionId, endpointRule, network, suffix)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) EntElementVerifyWithOptions(request *EntElementVerifyRequest, runtime *util.RuntimeOptions) (_result *EntElementVerifyResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EntName)) {
+		query["EntName"] = request.EntName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InfoVerifyType)) {
+		query["InfoVerifyType"] = request.InfoVerifyType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LegalPersonCertNo)) {
+		query["LegalPersonCertNo"] = request.LegalPersonCertNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LegalPersonName)) {
+		query["LegalPersonName"] = request.LegalPersonName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LicenseNo)) {
+		query["LicenseNo"] = request.LicenseNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MerchantBizId)) {
+		query["MerchantBizId"] = request.MerchantBizId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MerchantUserId)) {
+		query["MerchantUserId"] = request.MerchantUserId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SceneCode)) {
+		query["SceneCode"] = request.SceneCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserAuthorization)) {
+		query["UserAuthorization"] = request.UserAuthorization
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("EntElementVerify"),
+		Version:     tea.String("2022-11-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &EntElementVerifyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) EntElementVerify(request *EntElementVerifyRequest) (_result *EntElementVerifyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &EntElementVerifyResponse{}
+	_body, _err := client.EntElementVerifyWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
