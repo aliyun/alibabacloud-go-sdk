@@ -2309,6 +2309,7 @@ func (s *GetPtsReportDetailsResponseBodySceneSnapShotRelationList) SetRelationNa
 }
 
 type GetPtsReportDetailsResponseBodySceneSnapShotRelationListApiList struct {
+	// API ID。
 	ApiId              *string                                                                          `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
 	ApiName            *string                                                                          `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
 	Body               *GetPtsReportDetailsResponseBodySceneSnapShotRelationListApiListBody             `json:"Body,omitempty" xml:"Body,omitempty" type:"Struct"`
@@ -3749,6 +3750,7 @@ type GetPtsSceneRunningDataResponseBody struct {
 	Status               *int32                                                    `json:"Status,omitempty" xml:"Status,omitempty"`
 	Success              *bool                                                     `json:"Success,omitempty" xml:"Success,omitempty"`
 	TotalAgents          *int32                                                    `json:"TotalAgents,omitempty" xml:"TotalAgents,omitempty"`
+	TotalRealQps         *int32                                                    `json:"TotalRealQps,omitempty" xml:"TotalRealQps,omitempty"`
 	TotalRequestCount    *int64                                                    `json:"TotalRequestCount,omitempty" xml:"TotalRequestCount,omitempty"`
 	TpsLimit             *int32                                                    `json:"TpsLimit,omitempty" xml:"TpsLimit,omitempty"`
 	Vum                  *int64                                                    `json:"Vum,omitempty" xml:"Vum,omitempty"`
@@ -3859,6 +3861,11 @@ func (s *GetPtsSceneRunningDataResponseBody) SetSuccess(v bool) *GetPtsSceneRunn
 
 func (s *GetPtsSceneRunningDataResponseBody) SetTotalAgents(v int32) *GetPtsSceneRunningDataResponseBody {
 	s.TotalAgents = &v
+	return s
+}
+
+func (s *GetPtsSceneRunningDataResponseBody) SetTotalRealQps(v int32) *GetPtsSceneRunningDataResponseBody {
+	s.TotalRealQps = &v
 	return s
 }
 
@@ -6540,6 +6547,7 @@ func (s *SavePtsSceneRequestSceneLoadConfig) SetVpcLoadConfig(v *SavePtsSceneReq
 }
 
 type SavePtsSceneRequestSceneLoadConfigApiLoadConfigList struct {
+	// API ID。
 	ApiId    *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
 	RpsBegin *int32  `json:"RpsBegin,omitempty" xml:"RpsBegin,omitempty"`
 	RpsLimit *int32  `json:"RpsLimit,omitempty" xml:"RpsLimit,omitempty"`
@@ -6636,7 +6644,8 @@ type SavePtsSceneRequestSceneLoadConfigVpcLoadConfig struct {
 	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
 	VSwitchId       *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	VpcId           *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// VPC ID。
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s SavePtsSceneRequestSceneLoadConfigVpcLoadConfig) String() string {
@@ -9360,8 +9369,8 @@ func (client *Client) SaveEnvWithOptions(tmpReq *SaveEnvRequest, runtime *util.R
 	}
 	request := &SaveEnvShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.Env))) {
-		request.EnvShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.Env), tea.String("Env"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.Env)) {
+		request.EnvShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Env, tea.String("Env"), tea.String("json"))
 	}
 
 	query := map[string]interface{}{}
@@ -9410,8 +9419,8 @@ func (client *Client) SaveOpenJMeterSceneWithOptions(tmpReq *SaveOpenJMeterScene
 	}
 	request := &SaveOpenJMeterSceneShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.OpenJMeterScene))) {
-		request.OpenJMeterSceneShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.OpenJMeterScene), tea.String("OpenJMeterScene"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.OpenJMeterScene)) {
+		request.OpenJMeterSceneShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.OpenJMeterScene, tea.String("OpenJMeterScene"), tea.String("json"))
 	}
 
 	query := map[string]interface{}{}
@@ -9460,8 +9469,8 @@ func (client *Client) SavePtsSceneWithOptions(tmpReq *SavePtsSceneRequest, runti
 	}
 	request := &SavePtsSceneShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.Scene))) {
-		request.SceneShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.Scene), tea.String("Scene"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.Scene)) {
+		request.SceneShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Scene, tea.String("Scene"), tea.String("json"))
 	}
 
 	query := map[string]interface{}{}
