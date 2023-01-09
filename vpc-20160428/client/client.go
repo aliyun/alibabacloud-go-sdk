@@ -8321,6 +8321,7 @@ type CreatePublicIpAddressPoolRequest struct {
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 }
@@ -8373,6 +8374,11 @@ func (s *CreatePublicIpAddressPoolRequest) SetRegionId(v string) *CreatePublicIp
 	return s
 }
 
+func (s *CreatePublicIpAddressPoolRequest) SetResourceGroupId(v string) *CreatePublicIpAddressPoolRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
 func (s *CreatePublicIpAddressPoolRequest) SetResourceOwnerAccount(v string) *CreatePublicIpAddressPoolRequest {
 	s.ResourceOwnerAccount = &v
 	return s
@@ -8386,6 +8392,7 @@ func (s *CreatePublicIpAddressPoolRequest) SetResourceOwnerId(v int64) *CreatePu
 type CreatePublicIpAddressPoolResponseBody struct {
 	PulbicIpAddressPoolId *string `json:"PulbicIpAddressPoolId,omitempty" xml:"PulbicIpAddressPoolId,omitempty"`
 	RequestId             *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResourceGroupId       *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
 func (s CreatePublicIpAddressPoolResponseBody) String() string {
@@ -8403,6 +8410,11 @@ func (s *CreatePublicIpAddressPoolResponseBody) SetPulbicIpAddressPoolId(v strin
 
 func (s *CreatePublicIpAddressPoolResponseBody) SetRequestId(v string) *CreatePublicIpAddressPoolResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *CreatePublicIpAddressPoolResponseBody) SetResourceGroupId(v string) *CreatePublicIpAddressPoolResponseBody {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -11344,6 +11356,7 @@ type CreateVpcPrefixListRequest struct {
 	PrefixListEntries     []*CreateVpcPrefixListRequestPrefixListEntries `json:"PrefixListEntries,omitempty" xml:"PrefixListEntries,omitempty" type:"Repeated"`
 	PrefixListName        *string                                        `json:"PrefixListName,omitempty" xml:"PrefixListName,omitempty"`
 	RegionId              *string                                        `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId       *string                                        `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount  *string                                        `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId       *int64                                         `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 }
@@ -11406,6 +11419,11 @@ func (s *CreateVpcPrefixListRequest) SetRegionId(v string) *CreateVpcPrefixListR
 	return s
 }
 
+func (s *CreateVpcPrefixListRequest) SetResourceGroupId(v string) *CreateVpcPrefixListRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
 func (s *CreateVpcPrefixListRequest) SetResourceOwnerAccount(v string) *CreateVpcPrefixListRequest {
 	s.ResourceOwnerAccount = &v
 	return s
@@ -11440,8 +11458,9 @@ func (s *CreateVpcPrefixListRequestPrefixListEntries) SetDescription(v string) *
 }
 
 type CreateVpcPrefixListResponseBody struct {
-	PrefixListId *string `json:"PrefixListId,omitempty" xml:"PrefixListId,omitempty"`
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	PrefixListId    *string `json:"PrefixListId,omitempty" xml:"PrefixListId,omitempty"`
+	RequestId       *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
 func (s CreateVpcPrefixListResponseBody) String() string {
@@ -11459,6 +11478,11 @@ func (s *CreateVpcPrefixListResponseBody) SetPrefixListId(v string) *CreateVpcPr
 
 func (s *CreateVpcPrefixListResponseBody) SetRequestId(v string) *CreateVpcPrefixListResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *CreateVpcPrefixListResponseBody) SetResourceGroupId(v string) *CreateVpcPrefixListResponseBody {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -21891,6 +21915,8 @@ type DescribeGrantRulesToCenRequest struct {
 	InstanceType         *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	PageNumber           *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
@@ -21927,6 +21953,16 @@ func (s *DescribeGrantRulesToCenRequest) SetOwnerAccount(v string) *DescribeGran
 
 func (s *DescribeGrantRulesToCenRequest) SetOwnerId(v int64) *DescribeGrantRulesToCenRequest {
 	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribeGrantRulesToCenRequest) SetPageNumber(v int32) *DescribeGrantRulesToCenRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeGrantRulesToCenRequest) SetPageSize(v int32) *DescribeGrantRulesToCenRequest {
+	s.PageSize = &v
 	return s
 }
 
@@ -38938,6 +38974,7 @@ type GetVpcPrefixListAssociationsResponseBodyPrefixListAssociation struct {
 	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceId   *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	ResourceUid  *string `json:"ResourceUid,omitempty" xml:"ResourceUid,omitempty"`
 	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -38976,6 +39013,11 @@ func (s *GetVpcPrefixListAssociationsResponseBodyPrefixListAssociation) SetResou
 
 func (s *GetVpcPrefixListAssociationsResponseBodyPrefixListAssociation) SetResourceType(v string) *GetVpcPrefixListAssociationsResponseBodyPrefixListAssociation {
 	s.ResourceType = &v
+	return s
+}
+
+func (s *GetVpcPrefixListAssociationsResponseBodyPrefixListAssociation) SetResourceUid(v string) *GetVpcPrefixListAssociationsResponseBodyPrefixListAssociation {
+	s.ResourceUid = &v
 	return s
 }
 
@@ -41841,15 +41883,17 @@ func (s *ListNatIpsResponse) SetBody(v *ListNatIpsResponseBody) *ListNatIpsRespo
 }
 
 type ListPrefixListsRequest struct {
-	MaxResults           *int64    `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken            *string   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	OwnerAccount         *string   `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	PrefixListIds        []*string `json:"PrefixListIds,omitempty" xml:"PrefixListIds,omitempty" type:"Repeated"`
-	PrefixListName       *string   `json:"PrefixListName,omitempty" xml:"PrefixListName,omitempty"`
-	RegionId             *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	MaxResults           *int64                        `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken            *string                       `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	OwnerAccount         *string                       `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64                        `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	PrefixListIds        []*string                     `json:"PrefixListIds,omitempty" xml:"PrefixListIds,omitempty" type:"Repeated"`
+	PrefixListName       *string                       `json:"PrefixListName,omitempty" xml:"PrefixListName,omitempty"`
+	RegionId             *string                       `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId      *string                       `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ResourceOwnerAccount *string                       `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64                        `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	Tags                 []*ListPrefixListsRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
 func (s ListPrefixListsRequest) String() string {
@@ -41895,6 +41939,11 @@ func (s *ListPrefixListsRequest) SetRegionId(v string) *ListPrefixListsRequest {
 	return s
 }
 
+func (s *ListPrefixListsRequest) SetResourceGroupId(v string) *ListPrefixListsRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
 func (s *ListPrefixListsRequest) SetResourceOwnerAccount(v string) *ListPrefixListsRequest {
 	s.ResourceOwnerAccount = &v
 	return s
@@ -41902,6 +41951,34 @@ func (s *ListPrefixListsRequest) SetResourceOwnerAccount(v string) *ListPrefixLi
 
 func (s *ListPrefixListsRequest) SetResourceOwnerId(v int64) *ListPrefixListsRequest {
 	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *ListPrefixListsRequest) SetTags(v []*ListPrefixListsRequestTags) *ListPrefixListsRequest {
+	s.Tags = v
+	return s
+}
+
+type ListPrefixListsRequestTags struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListPrefixListsRequestTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPrefixListsRequestTags) GoString() string {
+	return s.String()
+}
+
+func (s *ListPrefixListsRequestTags) SetKey(v string) *ListPrefixListsRequestTags {
+	s.Key = &v
+	return s
+}
+
+func (s *ListPrefixListsRequestTags) SetValue(v string) *ListPrefixListsRequestTags {
+	s.Value = &v
 	return s
 }
 
@@ -41947,18 +42024,20 @@ func (s *ListPrefixListsResponseBody) SetTotalCount(v int64) *ListPrefixListsRes
 }
 
 type ListPrefixListsResponseBodyPrefixLists struct {
-	CidrBlocks            []*string `json:"CidrBlocks,omitempty" xml:"CidrBlocks,omitempty" type:"Repeated"`
-	CreationTime          *string   `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	IpVersion             *string   `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
-	MaxEntries            *int32    `json:"MaxEntries,omitempty" xml:"MaxEntries,omitempty"`
-	OwnerId               *string   `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	PrefixListDescription *string   `json:"PrefixListDescription,omitempty" xml:"PrefixListDescription,omitempty"`
-	PrefixListId          *string   `json:"PrefixListId,omitempty" xml:"PrefixListId,omitempty"`
-	PrefixListName        *string   `json:"PrefixListName,omitempty" xml:"PrefixListName,omitempty"`
-	PrefixListStatus      *string   `json:"PrefixListStatus,omitempty" xml:"PrefixListStatus,omitempty"`
-	RegionId              *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ShareType             *string   `json:"ShareType,omitempty" xml:"ShareType,omitempty"`
-	Status                *string   `json:"Status,omitempty" xml:"Status,omitempty"`
+	CidrBlocks            []*string                                     `json:"CidrBlocks,omitempty" xml:"CidrBlocks,omitempty" type:"Repeated"`
+	CreationTime          *string                                       `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	IpVersion             *string                                       `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
+	MaxEntries            *int32                                        `json:"MaxEntries,omitempty" xml:"MaxEntries,omitempty"`
+	OwnerId               *string                                       `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	PrefixListDescription *string                                       `json:"PrefixListDescription,omitempty" xml:"PrefixListDescription,omitempty"`
+	PrefixListId          *string                                       `json:"PrefixListId,omitempty" xml:"PrefixListId,omitempty"`
+	PrefixListName        *string                                       `json:"PrefixListName,omitempty" xml:"PrefixListName,omitempty"`
+	PrefixListStatus      *string                                       `json:"PrefixListStatus,omitempty" xml:"PrefixListStatus,omitempty"`
+	RegionId              *string                                       `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId       *string                                       `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ShareType             *string                                       `json:"ShareType,omitempty" xml:"ShareType,omitempty"`
+	Status                *string                                       `json:"Status,omitempty" xml:"Status,omitempty"`
+	Tags                  []*ListPrefixListsResponseBodyPrefixListsTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
 func (s ListPrefixListsResponseBodyPrefixLists) String() string {
@@ -42019,6 +42098,11 @@ func (s *ListPrefixListsResponseBodyPrefixLists) SetRegionId(v string) *ListPref
 	return s
 }
 
+func (s *ListPrefixListsResponseBodyPrefixLists) SetResourceGroupId(v string) *ListPrefixListsResponseBodyPrefixLists {
+	s.ResourceGroupId = &v
+	return s
+}
+
 func (s *ListPrefixListsResponseBodyPrefixLists) SetShareType(v string) *ListPrefixListsResponseBodyPrefixLists {
 	s.ShareType = &v
 	return s
@@ -42026,6 +42110,34 @@ func (s *ListPrefixListsResponseBodyPrefixLists) SetShareType(v string) *ListPre
 
 func (s *ListPrefixListsResponseBodyPrefixLists) SetStatus(v string) *ListPrefixListsResponseBodyPrefixLists {
 	s.Status = &v
+	return s
+}
+
+func (s *ListPrefixListsResponseBodyPrefixLists) SetTags(v []*ListPrefixListsResponseBodyPrefixListsTags) *ListPrefixListsResponseBodyPrefixLists {
+	s.Tags = v
+	return s
+}
+
+type ListPrefixListsResponseBodyPrefixListsTags struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListPrefixListsResponseBodyPrefixListsTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPrefixListsResponseBodyPrefixListsTags) GoString() string {
+	return s.String()
+}
+
+func (s *ListPrefixListsResponseBodyPrefixListsTags) SetKey(v string) *ListPrefixListsResponseBodyPrefixListsTags {
+	s.Key = &v
+	return s
+}
+
+func (s *ListPrefixListsResponseBodyPrefixListsTags) SetValue(v string) *ListPrefixListsResponseBodyPrefixListsTags {
+	s.Value = &v
 	return s
 }
 
@@ -42247,18 +42359,20 @@ func (s *ListPublicIpAddressPoolCidrBlocksResponse) SetBody(v *ListPublicIpAddre
 }
 
 type ListPublicIpAddressPoolsRequest struct {
-	DryRun                 *bool     `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	Isp                    *string   `json:"Isp,omitempty" xml:"Isp,omitempty"`
-	MaxResults             *int32    `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	Name                   *string   `json:"Name,omitempty" xml:"Name,omitempty"`
-	NextToken              *string   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	OwnerAccount           *string   `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId                *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	PublicIpAddressPoolIds []*string `json:"PublicIpAddressPoolIds,omitempty" xml:"PublicIpAddressPoolIds,omitempty" type:"Repeated"`
-	RegionId               *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceOwnerAccount   *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId        *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	Status                 *string   `json:"Status,omitempty" xml:"Status,omitempty"`
+	DryRun                 *bool                                  `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	Isp                    *string                                `json:"Isp,omitempty" xml:"Isp,omitempty"`
+	MaxResults             *int32                                 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	Name                   *string                                `json:"Name,omitempty" xml:"Name,omitempty"`
+	NextToken              *string                                `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	OwnerAccount           *string                                `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId                *int64                                 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	PublicIpAddressPoolIds []*string                              `json:"PublicIpAddressPoolIds,omitempty" xml:"PublicIpAddressPoolIds,omitempty" type:"Repeated"`
+	RegionId               *string                                `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId        *string                                `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ResourceOwnerAccount   *string                                `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId        *int64                                 `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	Status                 *string                                `json:"Status,omitempty" xml:"Status,omitempty"`
+	Tags                   []*ListPublicIpAddressPoolsRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
 func (s ListPublicIpAddressPoolsRequest) String() string {
@@ -42314,6 +42428,11 @@ func (s *ListPublicIpAddressPoolsRequest) SetRegionId(v string) *ListPublicIpAdd
 	return s
 }
 
+func (s *ListPublicIpAddressPoolsRequest) SetResourceGroupId(v string) *ListPublicIpAddressPoolsRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
 func (s *ListPublicIpAddressPoolsRequest) SetResourceOwnerAccount(v string) *ListPublicIpAddressPoolsRequest {
 	s.ResourceOwnerAccount = &v
 	return s
@@ -42326,6 +42445,34 @@ func (s *ListPublicIpAddressPoolsRequest) SetResourceOwnerId(v int64) *ListPubli
 
 func (s *ListPublicIpAddressPoolsRequest) SetStatus(v string) *ListPublicIpAddressPoolsRequest {
 	s.Status = &v
+	return s
+}
+
+func (s *ListPublicIpAddressPoolsRequest) SetTags(v []*ListPublicIpAddressPoolsRequestTags) *ListPublicIpAddressPoolsRequest {
+	s.Tags = v
+	return s
+}
+
+type ListPublicIpAddressPoolsRequestTags struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListPublicIpAddressPoolsRequestTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPublicIpAddressPoolsRequestTags) GoString() string {
+	return s.String()
+}
+
+func (s *ListPublicIpAddressPoolsRequestTags) SetKey(v string) *ListPublicIpAddressPoolsRequestTags {
+	s.Key = &v
+	return s
+}
+
+func (s *ListPublicIpAddressPoolsRequestTags) SetValue(v string) *ListPublicIpAddressPoolsRequestTags {
+	s.Value = &v
 	return s
 }
 
@@ -42371,18 +42518,20 @@ func (s *ListPublicIpAddressPoolsResponseBody) SetTotalCount(v int32) *ListPubli
 }
 
 type ListPublicIpAddressPoolsResponseBodyPublicIpAddressPoolList struct {
-	CreationTime          *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	Description           *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	IpAddressRemaining    *bool   `json:"IpAddressRemaining,omitempty" xml:"IpAddressRemaining,omitempty"`
-	Isp                   *string `json:"Isp,omitempty" xml:"Isp,omitempty"`
-	Name                  *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	OwnerId               *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	PublicIpAddressPoolId *string `json:"PublicIpAddressPoolId,omitempty" xml:"PublicIpAddressPoolId,omitempty"`
-	RegionId              *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ShareType             *string `json:"ShareType,omitempty" xml:"ShareType,omitempty"`
-	Status                *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	TotalIpNum            *int32  `json:"TotalIpNum,omitempty" xml:"TotalIpNum,omitempty"`
-	UsedIpNum             *int32  `json:"UsedIpNum,omitempty" xml:"UsedIpNum,omitempty"`
+	CreationTime          *string                                                            `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	Description           *string                                                            `json:"Description,omitempty" xml:"Description,omitempty"`
+	IpAddressRemaining    *bool                                                              `json:"IpAddressRemaining,omitempty" xml:"IpAddressRemaining,omitempty"`
+	Isp                   *string                                                            `json:"Isp,omitempty" xml:"Isp,omitempty"`
+	Name                  *string                                                            `json:"Name,omitempty" xml:"Name,omitempty"`
+	OwnerId               *int64                                                             `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	PublicIpAddressPoolId *string                                                            `json:"PublicIpAddressPoolId,omitempty" xml:"PublicIpAddressPoolId,omitempty"`
+	RegionId              *string                                                            `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId       *string                                                            `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ShareType             *string                                                            `json:"ShareType,omitempty" xml:"ShareType,omitempty"`
+	Status                *string                                                            `json:"Status,omitempty" xml:"Status,omitempty"`
+	Tags                  []*ListPublicIpAddressPoolsResponseBodyPublicIpAddressPoolListTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	TotalIpNum            *int32                                                             `json:"TotalIpNum,omitempty" xml:"TotalIpNum,omitempty"`
+	UsedIpNum             *int32                                                             `json:"UsedIpNum,omitempty" xml:"UsedIpNum,omitempty"`
 }
 
 func (s ListPublicIpAddressPoolsResponseBodyPublicIpAddressPoolList) String() string {
@@ -42433,6 +42582,11 @@ func (s *ListPublicIpAddressPoolsResponseBodyPublicIpAddressPoolList) SetRegionI
 	return s
 }
 
+func (s *ListPublicIpAddressPoolsResponseBodyPublicIpAddressPoolList) SetResourceGroupId(v string) *ListPublicIpAddressPoolsResponseBodyPublicIpAddressPoolList {
+	s.ResourceGroupId = &v
+	return s
+}
+
 func (s *ListPublicIpAddressPoolsResponseBodyPublicIpAddressPoolList) SetShareType(v string) *ListPublicIpAddressPoolsResponseBodyPublicIpAddressPoolList {
 	s.ShareType = &v
 	return s
@@ -42443,6 +42597,11 @@ func (s *ListPublicIpAddressPoolsResponseBodyPublicIpAddressPoolList) SetStatus(
 	return s
 }
 
+func (s *ListPublicIpAddressPoolsResponseBodyPublicIpAddressPoolList) SetTags(v []*ListPublicIpAddressPoolsResponseBodyPublicIpAddressPoolListTags) *ListPublicIpAddressPoolsResponseBodyPublicIpAddressPoolList {
+	s.Tags = v
+	return s
+}
+
 func (s *ListPublicIpAddressPoolsResponseBodyPublicIpAddressPoolList) SetTotalIpNum(v int32) *ListPublicIpAddressPoolsResponseBodyPublicIpAddressPoolList {
 	s.TotalIpNum = &v
 	return s
@@ -42450,6 +42609,29 @@ func (s *ListPublicIpAddressPoolsResponseBodyPublicIpAddressPoolList) SetTotalIp
 
 func (s *ListPublicIpAddressPoolsResponseBodyPublicIpAddressPoolList) SetUsedIpNum(v int32) *ListPublicIpAddressPoolsResponseBodyPublicIpAddressPoolList {
 	s.UsedIpNum = &v
+	return s
+}
+
+type ListPublicIpAddressPoolsResponseBodyPublicIpAddressPoolListTags struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListPublicIpAddressPoolsResponseBodyPublicIpAddressPoolListTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPublicIpAddressPoolsResponseBodyPublicIpAddressPoolListTags) GoString() string {
+	return s.String()
+}
+
+func (s *ListPublicIpAddressPoolsResponseBodyPublicIpAddressPoolListTags) SetKey(v string) *ListPublicIpAddressPoolsResponseBodyPublicIpAddressPoolListTags {
+	s.Key = &v
+	return s
+}
+
+func (s *ListPublicIpAddressPoolsResponseBodyPublicIpAddressPoolListTags) SetValue(v string) *ListPublicIpAddressPoolsResponseBodyPublicIpAddressPoolListTags {
+	s.Value = &v
 	return s
 }
 
@@ -61862,6 +62044,10 @@ func (client *Client) CreatePublicIpAddressPoolWithOptions(request *CreatePublic
 		query["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
 		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
 	}
@@ -63536,6 +63722,10 @@ func (client *Client) CreateVpcPrefixListWithOptions(request *CreateVpcPrefixLis
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
@@ -69052,6 +69242,14 @@ func (client *Client) DescribeGrantRulesToCenWithOptions(request *DescribeGrantR
 
 	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
 		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
@@ -75770,12 +75968,20 @@ func (client *Client) ListPrefixListsWithOptions(request *ListPrefixListsRequest
 		query["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
 		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
 		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tags)) {
+		query["Tags"] = request.Tags
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -75940,6 +76146,10 @@ func (client *Client) ListPublicIpAddressPoolsWithOptions(request *ListPublicIpA
 		query["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
 		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
 	}
@@ -75950,6 +76160,10 @@ func (client *Client) ListPublicIpAddressPoolsWithOptions(request *ListPublicIpA
 
 	if !tea.BoolValue(util.IsUnset(request.Status)) {
 		query["Status"] = request.Status
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tags)) {
+		query["Tags"] = request.Tags
 	}
 
 	req := &openapi.OpenApiRequest{
