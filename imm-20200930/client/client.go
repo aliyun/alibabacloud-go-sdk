@@ -15544,8 +15544,7 @@ func (s *UpdateFigureClusterShrinkRequest) SetProjectName(v string) *UpdateFigur
 }
 
 type UpdateFigureClusterResponseBody struct {
-	FigureCluster *FigureCluster `json:"FigureCluster,omitempty" xml:"FigureCluster,omitempty"`
-	RequestId     *string        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s UpdateFigureClusterResponseBody) String() string {
@@ -15554,11 +15553,6 @@ func (s UpdateFigureClusterResponseBody) String() string {
 
 func (s UpdateFigureClusterResponseBody) GoString() string {
 	return s.String()
-}
-
-func (s *UpdateFigureClusterResponseBody) SetFigureCluster(v *FigureCluster) *UpdateFigureClusterResponseBody {
-	s.FigureCluster = v
-	return s
 }
 
 func (s *UpdateFigureClusterResponseBody) SetRequestId(v string) *UpdateFigureClusterResponseBody {
