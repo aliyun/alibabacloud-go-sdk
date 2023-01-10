@@ -18620,8 +18620,11 @@ func (s *DescribeDcdnWafServiceResponse) SetBody(v *DescribeDcdnWafServiceRespon
 }
 
 type DescribeDcdnWafSpecInfoResponseBody struct {
-	Edition   *string                                         `json:"Edition,omitempty" xml:"Edition,omitempty"`
-	RequestId *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The version of WAF.
+	Edition *string `json:"Edition,omitempty" xml:"Edition,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The supported types of protection policies and the configuration information of protection rules.
 	SpecInfos []*DescribeDcdnWafSpecInfoResponseBodySpecInfos `json:"SpecInfos,omitempty" xml:"SpecInfos,omitempty" type:"Repeated"`
 }
 
@@ -18649,8 +18652,17 @@ func (s *DescribeDcdnWafSpecInfoResponseBody) SetSpecInfos(v []*DescribeDcdnWafS
 }
 
 type DescribeDcdnWafSpecInfoResponseBodySpecInfos struct {
-	Configs      []*DescribeDcdnWafSpecInfoResponseBodySpecInfosConfigs `json:"Configs,omitempty" xml:"Configs,omitempty" type:"Repeated"`
-	DefenseScene *string                                                `json:"DefenseScene,omitempty" xml:"DefenseScene,omitempty"`
+	// The configuration information of the protection rule.
+	Configs []*DescribeDcdnWafSpecInfoResponseBodySpecInfosConfigs `json:"Configs,omitempty" xml:"Configs,omitempty" type:"Repeated"`
+	// The type of the protection policy. Valid values:
+	//
+	// *   waf_group: basic web protection
+	// *   custom_acl: custom protection
+	// *   whitelist: IP address whitelist
+	// *   ip_blacklist: IP address blacklist
+	// *   region_block: region blacklist
+	// *   bot: bot management
+	DefenseScene *string `json:"DefenseScene,omitempty" xml:"DefenseScene,omitempty"`
 }
 
 func (s DescribeDcdnWafSpecInfoResponseBodySpecInfos) String() string {
@@ -18672,9 +18684,12 @@ func (s *DescribeDcdnWafSpecInfoResponseBodySpecInfos) SetDefenseScene(v string)
 }
 
 type DescribeDcdnWafSpecInfoResponseBodySpecInfosConfigs struct {
+	// The configuration code of the protection rule.
 	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
-	Expr   *string `json:"Expr,omitempty" xml:"Expr,omitempty"`
-	Value  *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The configuration expression of the protection rule.
+	Expr *string `json:"Expr,omitempty" xml:"Expr,omitempty"`
+	// The value of the configuration expression of the protection rule.
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s DescribeDcdnWafSpecInfoResponseBodySpecInfosConfigs) String() string {
@@ -22056,10 +22071,19 @@ func (s *TagDcdnResourcesResponse) SetBody(v *TagDcdnResourcesResponseBody) *Tag
 }
 
 type UntagDcdnResourcesRequest struct {
-	All          *bool     `json:"All,omitempty" xml:"All,omitempty"`
-	ResourceId   []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
-	ResourceType *string   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	TagKey       []*string `json:"TagKey,omitempty" xml:"TagKey,omitempty" type:"Repeated"`
+	// Specifies whether to delete all tags. Valid values:
+	//
+	// *   **true**: yes
+	// *   **false**: no
+	//
+	// Default value: **false**.
+	All *bool `json:"All,omitempty" xml:"All,omitempty"`
+	// The ID of the resource. Valid values of N: **1** to **50**.
+	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	// The type of the resources from which you want to detach tags. The resource type. Set this value to **DOMAIN**.
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The key of a tag. Valid values of N: **1** to **20**.
+	TagKey []*string `json:"TagKey,omitempty" xml:"TagKey,omitempty" type:"Repeated"`
 }
 
 func (s UntagDcdnResourcesRequest) String() string {
@@ -22091,6 +22115,7 @@ func (s *UntagDcdnResourcesRequest) SetTagKey(v []*string) *UntagDcdnResourcesRe
 }
 
 type UntagDcdnResourcesResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -30262,6 +30287,13 @@ func (client *Client) DescribeDcdnWafService(request *DescribeDcdnWafServiceRequ
 	return _result, _err
 }
 
+/**
+ * You can call this operation up to 20 times per second per account.
+ *
+ * @param request DescribeDcdnWafSpecInfoRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DescribeDcdnWafSpecInfoResponse
+ */
 func (client *Client) DescribeDcdnWafSpecInfoWithOptions(runtime *util.RuntimeOptions) (_result *DescribeDcdnWafSpecInfoResponse, _err error) {
 	req := &openapi.OpenApiRequest{}
 	params := &openapi.Params{
@@ -30284,6 +30316,11 @@ func (client *Client) DescribeDcdnWafSpecInfoWithOptions(runtime *util.RuntimeOp
 	return _result, _err
 }
 
+/**
+ * You can call this operation up to 20 times per second per account.
+ *
+ * @return DescribeDcdnWafSpecInfoResponse
+ */
 func (client *Client) DescribeDcdnWafSpecInfo() (_result *DescribeDcdnWafSpecInfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDcdnWafSpecInfoResponse{}
@@ -32076,6 +32113,13 @@ func (client *Client) TagDcdnResources(request *TagDcdnResourcesRequest) (_resul
 	return _result, _err
 }
 
+/**
+ * >  You can call this API operation up to 100 times per second per account.
+ *
+ * @param request UntagDcdnResourcesRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return UntagDcdnResourcesResponse
+ */
 func (client *Client) UntagDcdnResourcesWithOptions(request *UntagDcdnResourcesRequest, runtime *util.RuntimeOptions) (_result *UntagDcdnResourcesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -32121,6 +32165,12 @@ func (client *Client) UntagDcdnResourcesWithOptions(request *UntagDcdnResourcesR
 	return _result, _err
 }
 
+/**
+ * >  You can call this API operation up to 100 times per second per account.
+ *
+ * @param request UntagDcdnResourcesRequest
+ * @return UntagDcdnResourcesResponse
+ */
 func (client *Client) UntagDcdnResources(request *UntagDcdnResourcesRequest) (_result *UntagDcdnResourcesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UntagDcdnResourcesResponse{}
