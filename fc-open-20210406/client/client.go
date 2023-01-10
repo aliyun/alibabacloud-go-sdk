@@ -8312,7 +8312,7 @@ type ListReservedCapacitiesHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	// The ID of your Alibaba Cloud account.
 	XFcAccountId *string `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
-	// The time when Function Compute API is called. Specify the time in the EEE,d MMM yyyy HH:mm:ss GMT format.
+	// The time when the Function Compute API is called. The format is **EEE,d MMM yyyy HH:mm:ss GMT**.
 	XFcDate *string `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
 	// The custom request ID.
 	XFcTraceId *string `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
@@ -8347,9 +8347,9 @@ func (s *ListReservedCapacitiesHeaders) SetXFcTraceId(v string) *ListReservedCap
 }
 
 type ListReservedCapacitiesRequest struct {
-	// The maximum number of resources to return.
+	// The maximum number of resources to return. Valid values: \[1, 100].
 	Limit *string `json:"limit,omitempty" xml:"limit,omitempty"`
-	// The token used to obtain more results.
+	// The token that is required for pagination.
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
 }
 
@@ -8372,7 +8372,7 @@ func (s *ListReservedCapacitiesRequest) SetNextToken(v string) *ListReservedCapa
 }
 
 type ListReservedCapacitiesResponseBody struct {
-	// The token used to obtain more results.
+	// The pagination token to request the next page of results.
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
 	// The information about subscription instances.
 	ReservedCapacities []*OpenReservedCapacity `json:"reservedCapacities,omitempty" xml:"reservedCapacities,omitempty" type:"Repeated"`
