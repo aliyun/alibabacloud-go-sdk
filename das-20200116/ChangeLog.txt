@@ -1,3 +1,6 @@
+2023-01-10 Version: v3.0.4
+- Public SetEventSubscription API.
+
 2022-11-29 Version: v3.0.2
 - Public NEW API.
 

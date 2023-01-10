@@ -13,9 +13,9 @@ import (
 )
 
 type DataResultValue struct {
-	SqlId      *string `json:"sqlId,omitempty" xml:"sqlId,omitempty"`
-	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	Count      *int32  `json:"count,omitempty" xml:"count,omitempty"`
+	SqlId     *string `json:"sqlId,omitempty" xml:"sqlId,omitempty"`
+	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	Count     *int64  `json:"count,omitempty" xml:"count,omitempty"`
 }
 
 func (s DataResultValue) String() string {
@@ -31,12 +31,12 @@ func (s *DataResultValue) SetSqlId(v string) *DataResultValue {
 	return s
 }
 
-func (s *DataResultValue) SetInstanceId(v string) *DataResultValue {
-	s.InstanceId = &v
+func (s *DataResultValue) SetErrorCode(v string) *DataResultValue {
+	s.ErrorCode = &v
 	return s
 }
 
-func (s *DataResultValue) SetCount(v int32) *DataResultValue {
+func (s *DataResultValue) SetCount(v int64) *DataResultValue {
 	s.Count = &v
 	return s
 }
@@ -53,8 +53,9 @@ type AddHDMInstanceRequest struct {
 	Port          *string `json:"Port,omitempty" xml:"Port,omitempty"`
 	Region        *string `json:"Region,omitempty" xml:"Region,omitempty"`
 	Username      *string `json:"Username,omitempty" xml:"Username,omitempty"`
-	VpcId         *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	Context       *string `json:"__context,omitempty" xml:"__context,omitempty"`
+	// VPC ID。
+	VpcId   *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	Context *string `json:"__context,omitempty" xml:"__context,omitempty"`
 }
 
 func (s AddHDMInstanceRequest) String() string {
@@ -189,7 +190,8 @@ type AddHDMInstanceResponseBodyData struct {
 	TenantId   *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
 	Token      *string `json:"Token,omitempty" xml:"Token,omitempty"`
 	Uuid       *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
-	VpcId      *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// VPC ID。
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s AddHDMInstanceResponseBodyData) String() string {
@@ -1298,6 +1300,363 @@ func (s *DeleteStopGatewayResponse) SetStatusCode(v int32) *DeleteStopGatewayRes
 }
 
 func (s *DeleteStopGatewayResponse) SetBody(v *DeleteStopGatewayResponseBody) *DeleteStopGatewayResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeAutoScalingConfigRequest struct {
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+}
+
+func (s DescribeAutoScalingConfigRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAutoScalingConfigRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAutoScalingConfigRequest) SetInstanceId(v string) *DescribeAutoScalingConfigRequest {
+	s.InstanceId = &v
+	return s
+}
+
+type DescribeAutoScalingConfigResponseBody struct {
+	Code      *string                                    `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *DescribeAutoScalingConfigResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                                    `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *string                                    `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DescribeAutoScalingConfigResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAutoScalingConfigResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAutoScalingConfigResponseBody) SetCode(v string) *DescribeAutoScalingConfigResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DescribeAutoScalingConfigResponseBody) SetData(v *DescribeAutoScalingConfigResponseBodyData) *DescribeAutoScalingConfigResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DescribeAutoScalingConfigResponseBody) SetMessage(v string) *DescribeAutoScalingConfigResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DescribeAutoScalingConfigResponseBody) SetRequestId(v string) *DescribeAutoScalingConfigResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeAutoScalingConfigResponseBody) SetSuccess(v string) *DescribeAutoScalingConfigResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DescribeAutoScalingConfigResponseBodyData struct {
+	Bandwidth *DescribeAutoScalingConfigResponseBodyDataBandwidth `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty" type:"Struct"`
+	Resource  *DescribeAutoScalingConfigResponseBodyDataResource  `json:"Resource,omitempty" xml:"Resource,omitempty" type:"Struct"`
+	Shard     *DescribeAutoScalingConfigResponseBodyDataShard     `json:"Shard,omitempty" xml:"Shard,omitempty" type:"Struct"`
+	Spec      *DescribeAutoScalingConfigResponseBodyDataSpec      `json:"Spec,omitempty" xml:"Spec,omitempty" type:"Struct"`
+	Storage   *DescribeAutoScalingConfigResponseBodyDataStorage   `json:"Storage,omitempty" xml:"Storage,omitempty" type:"Struct"`
+}
+
+func (s DescribeAutoScalingConfigResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAutoScalingConfigResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAutoScalingConfigResponseBodyData) SetBandwidth(v *DescribeAutoScalingConfigResponseBodyDataBandwidth) *DescribeAutoScalingConfigResponseBodyData {
+	s.Bandwidth = v
+	return s
+}
+
+func (s *DescribeAutoScalingConfigResponseBodyData) SetResource(v *DescribeAutoScalingConfigResponseBodyDataResource) *DescribeAutoScalingConfigResponseBodyData {
+	s.Resource = v
+	return s
+}
+
+func (s *DescribeAutoScalingConfigResponseBodyData) SetShard(v *DescribeAutoScalingConfigResponseBodyDataShard) *DescribeAutoScalingConfigResponseBodyData {
+	s.Shard = v
+	return s
+}
+
+func (s *DescribeAutoScalingConfigResponseBodyData) SetSpec(v *DescribeAutoScalingConfigResponseBodyDataSpec) *DescribeAutoScalingConfigResponseBodyData {
+	s.Spec = v
+	return s
+}
+
+func (s *DescribeAutoScalingConfigResponseBodyData) SetStorage(v *DescribeAutoScalingConfigResponseBodyDataStorage) *DescribeAutoScalingConfigResponseBodyData {
+	s.Storage = v
+	return s
+}
+
+type DescribeAutoScalingConfigResponseBodyDataBandwidth struct {
+	BandwidthUsageLowerThreshold *int32  `json:"BandwidthUsageLowerThreshold,omitempty" xml:"BandwidthUsageLowerThreshold,omitempty"`
+	BandwidthUsageUpperThreshold *int32  `json:"BandwidthUsageUpperThreshold,omitempty" xml:"BandwidthUsageUpperThreshold,omitempty"`
+	Downgrade                    *bool   `json:"Downgrade,omitempty" xml:"Downgrade,omitempty"`
+	ObservationWindowSize        *string `json:"ObservationWindowSize,omitempty" xml:"ObservationWindowSize,omitempty"`
+	Upgrade                      *bool   `json:"Upgrade,omitempty" xml:"Upgrade,omitempty"`
+}
+
+func (s DescribeAutoScalingConfigResponseBodyDataBandwidth) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAutoScalingConfigResponseBodyDataBandwidth) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAutoScalingConfigResponseBodyDataBandwidth) SetBandwidthUsageLowerThreshold(v int32) *DescribeAutoScalingConfigResponseBodyDataBandwidth {
+	s.BandwidthUsageLowerThreshold = &v
+	return s
+}
+
+func (s *DescribeAutoScalingConfigResponseBodyDataBandwidth) SetBandwidthUsageUpperThreshold(v int32) *DescribeAutoScalingConfigResponseBodyDataBandwidth {
+	s.BandwidthUsageUpperThreshold = &v
+	return s
+}
+
+func (s *DescribeAutoScalingConfigResponseBodyDataBandwidth) SetDowngrade(v bool) *DescribeAutoScalingConfigResponseBodyDataBandwidth {
+	s.Downgrade = &v
+	return s
+}
+
+func (s *DescribeAutoScalingConfigResponseBodyDataBandwidth) SetObservationWindowSize(v string) *DescribeAutoScalingConfigResponseBodyDataBandwidth {
+	s.ObservationWindowSize = &v
+	return s
+}
+
+func (s *DescribeAutoScalingConfigResponseBodyDataBandwidth) SetUpgrade(v bool) *DescribeAutoScalingConfigResponseBodyDataBandwidth {
+	s.Upgrade = &v
+	return s
+}
+
+type DescribeAutoScalingConfigResponseBodyDataResource struct {
+	CpuStep                        *int32  `json:"CpuStep,omitempty" xml:"CpuStep,omitempty"`
+	CpuUsageUpperThreshold         *int32  `json:"CpuUsageUpperThreshold,omitempty" xml:"CpuUsageUpperThreshold,omitempty"`
+	DowngradeObservationWindowSize *string `json:"DowngradeObservationWindowSize,omitempty" xml:"DowngradeObservationWindowSize,omitempty"`
+	Enable                         *bool   `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	UpgradeObservationWindowSize   *string `json:"UpgradeObservationWindowSize,omitempty" xml:"UpgradeObservationWindowSize,omitempty"`
+}
+
+func (s DescribeAutoScalingConfigResponseBodyDataResource) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAutoScalingConfigResponseBodyDataResource) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAutoScalingConfigResponseBodyDataResource) SetCpuStep(v int32) *DescribeAutoScalingConfigResponseBodyDataResource {
+	s.CpuStep = &v
+	return s
+}
+
+func (s *DescribeAutoScalingConfigResponseBodyDataResource) SetCpuUsageUpperThreshold(v int32) *DescribeAutoScalingConfigResponseBodyDataResource {
+	s.CpuUsageUpperThreshold = &v
+	return s
+}
+
+func (s *DescribeAutoScalingConfigResponseBodyDataResource) SetDowngradeObservationWindowSize(v string) *DescribeAutoScalingConfigResponseBodyDataResource {
+	s.DowngradeObservationWindowSize = &v
+	return s
+}
+
+func (s *DescribeAutoScalingConfigResponseBodyDataResource) SetEnable(v bool) *DescribeAutoScalingConfigResponseBodyDataResource {
+	s.Enable = &v
+	return s
+}
+
+func (s *DescribeAutoScalingConfigResponseBodyDataResource) SetUpgradeObservationWindowSize(v string) *DescribeAutoScalingConfigResponseBodyDataResource {
+	s.UpgradeObservationWindowSize = &v
+	return s
+}
+
+type DescribeAutoScalingConfigResponseBodyDataShard struct {
+	Downgrade                      *bool   `json:"Downgrade,omitempty" xml:"Downgrade,omitempty"`
+	DowngradeObservationWindowSize *string `json:"DowngradeObservationWindowSize,omitempty" xml:"DowngradeObservationWindowSize,omitempty"`
+	MaxShards                      *int32  `json:"MaxShards,omitempty" xml:"MaxShards,omitempty"`
+	MemUsageLowerThreshold         *int32  `json:"MemUsageLowerThreshold,omitempty" xml:"MemUsageLowerThreshold,omitempty"`
+	MemUsageUpperThreshold         *int32  `json:"MemUsageUpperThreshold,omitempty" xml:"MemUsageUpperThreshold,omitempty"`
+	MinShards                      *int32  `json:"MinShards,omitempty" xml:"MinShards,omitempty"`
+	Upgrade                        *bool   `json:"Upgrade,omitempty" xml:"Upgrade,omitempty"`
+	UpgradeObservationWindowSize   *string `json:"UpgradeObservationWindowSize,omitempty" xml:"UpgradeObservationWindowSize,omitempty"`
+}
+
+func (s DescribeAutoScalingConfigResponseBodyDataShard) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAutoScalingConfigResponseBodyDataShard) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAutoScalingConfigResponseBodyDataShard) SetDowngrade(v bool) *DescribeAutoScalingConfigResponseBodyDataShard {
+	s.Downgrade = &v
+	return s
+}
+
+func (s *DescribeAutoScalingConfigResponseBodyDataShard) SetDowngradeObservationWindowSize(v string) *DescribeAutoScalingConfigResponseBodyDataShard {
+	s.DowngradeObservationWindowSize = &v
+	return s
+}
+
+func (s *DescribeAutoScalingConfigResponseBodyDataShard) SetMaxShards(v int32) *DescribeAutoScalingConfigResponseBodyDataShard {
+	s.MaxShards = &v
+	return s
+}
+
+func (s *DescribeAutoScalingConfigResponseBodyDataShard) SetMemUsageLowerThreshold(v int32) *DescribeAutoScalingConfigResponseBodyDataShard {
+	s.MemUsageLowerThreshold = &v
+	return s
+}
+
+func (s *DescribeAutoScalingConfigResponseBodyDataShard) SetMemUsageUpperThreshold(v int32) *DescribeAutoScalingConfigResponseBodyDataShard {
+	s.MemUsageUpperThreshold = &v
+	return s
+}
+
+func (s *DescribeAutoScalingConfigResponseBodyDataShard) SetMinShards(v int32) *DescribeAutoScalingConfigResponseBodyDataShard {
+	s.MinShards = &v
+	return s
+}
+
+func (s *DescribeAutoScalingConfigResponseBodyDataShard) SetUpgrade(v bool) *DescribeAutoScalingConfigResponseBodyDataShard {
+	s.Upgrade = &v
+	return s
+}
+
+func (s *DescribeAutoScalingConfigResponseBodyDataShard) SetUpgradeObservationWindowSize(v string) *DescribeAutoScalingConfigResponseBodyDataShard {
+	s.UpgradeObservationWindowSize = &v
+	return s
+}
+
+type DescribeAutoScalingConfigResponseBodyDataSpec struct {
+	CoolDownTime           *string `json:"CoolDownTime,omitempty" xml:"CoolDownTime,omitempty"`
+	CpuUsageUpperThreshold *int32  `json:"CpuUsageUpperThreshold,omitempty" xml:"CpuUsageUpperThreshold,omitempty"`
+	Downgrade              *bool   `json:"Downgrade,omitempty" xml:"Downgrade,omitempty"`
+	MaxReadOnlyNodes       *int32  `json:"MaxReadOnlyNodes,omitempty" xml:"MaxReadOnlyNodes,omitempty"`
+	MaxSpec                *string `json:"MaxSpec,omitempty" xml:"MaxSpec,omitempty"`
+	MemUsageUpperThreshold *int32  `json:"MemUsageUpperThreshold,omitempty" xml:"MemUsageUpperThreshold,omitempty"`
+	ObservationWindowSize  *string `json:"ObservationWindowSize,omitempty" xml:"ObservationWindowSize,omitempty"`
+	Upgrade                *bool   `json:"Upgrade,omitempty" xml:"Upgrade,omitempty"`
+}
+
+func (s DescribeAutoScalingConfigResponseBodyDataSpec) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAutoScalingConfigResponseBodyDataSpec) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAutoScalingConfigResponseBodyDataSpec) SetCoolDownTime(v string) *DescribeAutoScalingConfigResponseBodyDataSpec {
+	s.CoolDownTime = &v
+	return s
+}
+
+func (s *DescribeAutoScalingConfigResponseBodyDataSpec) SetCpuUsageUpperThreshold(v int32) *DescribeAutoScalingConfigResponseBodyDataSpec {
+	s.CpuUsageUpperThreshold = &v
+	return s
+}
+
+func (s *DescribeAutoScalingConfigResponseBodyDataSpec) SetDowngrade(v bool) *DescribeAutoScalingConfigResponseBodyDataSpec {
+	s.Downgrade = &v
+	return s
+}
+
+func (s *DescribeAutoScalingConfigResponseBodyDataSpec) SetMaxReadOnlyNodes(v int32) *DescribeAutoScalingConfigResponseBodyDataSpec {
+	s.MaxReadOnlyNodes = &v
+	return s
+}
+
+func (s *DescribeAutoScalingConfigResponseBodyDataSpec) SetMaxSpec(v string) *DescribeAutoScalingConfigResponseBodyDataSpec {
+	s.MaxSpec = &v
+	return s
+}
+
+func (s *DescribeAutoScalingConfigResponseBodyDataSpec) SetMemUsageUpperThreshold(v int32) *DescribeAutoScalingConfigResponseBodyDataSpec {
+	s.MemUsageUpperThreshold = &v
+	return s
+}
+
+func (s *DescribeAutoScalingConfigResponseBodyDataSpec) SetObservationWindowSize(v string) *DescribeAutoScalingConfigResponseBodyDataSpec {
+	s.ObservationWindowSize = &v
+	return s
+}
+
+func (s *DescribeAutoScalingConfigResponseBodyDataSpec) SetUpgrade(v bool) *DescribeAutoScalingConfigResponseBodyDataSpec {
+	s.Upgrade = &v
+	return s
+}
+
+type DescribeAutoScalingConfigResponseBodyDataStorage struct {
+	DiskUsageUpperThreshold *int32 `json:"DiskUsageUpperThreshold,omitempty" xml:"DiskUsageUpperThreshold,omitempty"`
+	MaxStorage              *int32 `json:"MaxStorage,omitempty" xml:"MaxStorage,omitempty"`
+	Upgrade                 *bool  `json:"Upgrade,omitempty" xml:"Upgrade,omitempty"`
+}
+
+func (s DescribeAutoScalingConfigResponseBodyDataStorage) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAutoScalingConfigResponseBodyDataStorage) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAutoScalingConfigResponseBodyDataStorage) SetDiskUsageUpperThreshold(v int32) *DescribeAutoScalingConfigResponseBodyDataStorage {
+	s.DiskUsageUpperThreshold = &v
+	return s
+}
+
+func (s *DescribeAutoScalingConfigResponseBodyDataStorage) SetMaxStorage(v int32) *DescribeAutoScalingConfigResponseBodyDataStorage {
+	s.MaxStorage = &v
+	return s
+}
+
+func (s *DescribeAutoScalingConfigResponseBodyDataStorage) SetUpgrade(v bool) *DescribeAutoScalingConfigResponseBodyDataStorage {
+	s.Upgrade = &v
+	return s
+}
+
+type DescribeAutoScalingConfigResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeAutoScalingConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeAutoScalingConfigResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAutoScalingConfigResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAutoScalingConfigResponse) SetHeaders(v map[string]*string) *DescribeAutoScalingConfigResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeAutoScalingConfigResponse) SetStatusCode(v int32) *DescribeAutoScalingConfigResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeAutoScalingConfigResponse) SetBody(v *DescribeAutoScalingConfigResponseBody) *DescribeAutoScalingConfigResponse {
 	s.Body = v
 	return s
 }
@@ -4369,6 +4728,105 @@ func (s *DisableDasProResponse) SetBody(v *DisableDasProResponseBody) *DisableDa
 	return s
 }
 
+type DisableInstanceDasConfigRequest struct {
+	Engine     *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	ScaleType  *string `json:"ScaleType,omitempty" xml:"ScaleType,omitempty"`
+}
+
+func (s DisableInstanceDasConfigRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DisableInstanceDasConfigRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DisableInstanceDasConfigRequest) SetEngine(v string) *DisableInstanceDasConfigRequest {
+	s.Engine = &v
+	return s
+}
+
+func (s *DisableInstanceDasConfigRequest) SetInstanceId(v string) *DisableInstanceDasConfigRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DisableInstanceDasConfigRequest) SetScaleType(v string) *DisableInstanceDasConfigRequest {
+	s.ScaleType = &v
+	return s
+}
+
+type DisableInstanceDasConfigResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *string `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DisableInstanceDasConfigResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DisableInstanceDasConfigResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DisableInstanceDasConfigResponseBody) SetCode(v string) *DisableInstanceDasConfigResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DisableInstanceDasConfigResponseBody) SetData(v string) *DisableInstanceDasConfigResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *DisableInstanceDasConfigResponseBody) SetMessage(v string) *DisableInstanceDasConfigResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DisableInstanceDasConfigResponseBody) SetRequestId(v string) *DisableInstanceDasConfigResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DisableInstanceDasConfigResponseBody) SetSuccess(v string) *DisableInstanceDasConfigResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DisableInstanceDasConfigResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DisableInstanceDasConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DisableInstanceDasConfigResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DisableInstanceDasConfigResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DisableInstanceDasConfigResponse) SetHeaders(v map[string]*string) *DisableInstanceDasConfigResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DisableInstanceDasConfigResponse) SetStatusCode(v int32) *DisableInstanceDasConfigResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DisableInstanceDasConfigResponse) SetBody(v *DisableInstanceDasConfigResponseBody) *DisableInstanceDasConfigResponse {
+	s.Body = v
+	return s
+}
+
 type DisableSqlConcurrencyControlRequest struct {
 	ConsoleContext *string `json:"ConsoleContext,omitempty" xml:"ConsoleContext,omitempty"`
 	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
@@ -4827,7 +5285,8 @@ func (s *GetAsyncErrorRequestListByCodeResponseBodyData) SetTimestamp(v int64) *
 
 type GetAsyncErrorRequestListByCodeResponseBodyDataResult struct {
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	SqlId      *string `json:"sqlId,omitempty" xml:"sqlId,omitempty"`
+	// SQL ID。
+	SqlId *string `json:"sqlId,omitempty" xml:"sqlId,omitempty"`
 }
 
 func (s GetAsyncErrorRequestListByCodeResponseBodyDataResult) String() string {
@@ -5159,13 +5618,13 @@ func (s *GetAsyncErrorRequestStatResultResponseBody) SetSuccess(v bool) *GetAsyn
 }
 
 type GetAsyncErrorRequestStatResultResponseBodyData struct {
-	Complete  *bool                         `json:"complete,omitempty" xml:"complete,omitempty"`
-	Fail      *bool                         `json:"fail,omitempty" xml:"fail,omitempty"`
-	IsFinish  *bool                         `json:"isFinish,omitempty" xml:"isFinish,omitempty"`
-	Result    []map[string]*DataResultValue `json:"result,omitempty" xml:"result,omitempty" type:"Repeated"`
-	ResultId  *string                       `json:"resultId,omitempty" xml:"resultId,omitempty"`
-	State     *string                       `json:"state,omitempty" xml:"state,omitempty"`
-	Timestamp *int64                        `json:"timestamp,omitempty" xml:"timestamp,omitempty"`
+	Complete  *bool                       `json:"complete,omitempty" xml:"complete,omitempty"`
+	Fail      *bool                       `json:"fail,omitempty" xml:"fail,omitempty"`
+	IsFinish  *bool                       `json:"isFinish,omitempty" xml:"isFinish,omitempty"`
+	Result    map[string]*DataResultValue `json:"result,omitempty" xml:"result,omitempty"`
+	ResultId  *string                     `json:"resultId,omitempty" xml:"resultId,omitempty"`
+	State     *string                     `json:"state,omitempty" xml:"state,omitempty"`
+	Timestamp *int64                      `json:"timestamp,omitempty" xml:"timestamp,omitempty"`
 }
 
 func (s GetAsyncErrorRequestStatResultResponseBodyData) String() string {
@@ -5191,7 +5650,7 @@ func (s *GetAsyncErrorRequestStatResultResponseBodyData) SetIsFinish(v bool) *Ge
 	return s
 }
 
-func (s *GetAsyncErrorRequestStatResultResponseBodyData) SetResult(v []map[string]*DataResultValue) *GetAsyncErrorRequestStatResultResponseBodyData {
+func (s *GetAsyncErrorRequestStatResultResponseBodyData) SetResult(v map[string]*DataResultValue) *GetAsyncErrorRequestStatResultResponseBodyData {
 	s.Result = v
 	return s
 }
@@ -6219,7 +6678,8 @@ type GetDasProServiceUsageResponseBodyData struct {
 	StorageUsed          *int64   `json:"storageUsed,omitempty" xml:"storageUsed,omitempty"`
 	UserId               *string  `json:"userId,omitempty" xml:"userId,omitempty"`
 	Uuid                 *string  `json:"uuid,omitempty" xml:"uuid,omitempty"`
-	VpcId                *string  `json:"vpcId,omitempty" xml:"vpcId,omitempty"`
+	// VPC ID。
+	VpcId *string `json:"vpcId,omitempty" xml:"vpcId,omitempty"`
 }
 
 func (s GetDasProServiceUsageResponseBodyData) String() string {
@@ -6626,15 +7086,16 @@ func (s *GetErrorRequestSampleResponseBody) SetSuccess(v bool) *GetErrorRequestS
 }
 
 type GetErrorRequestSampleResponseBodyData struct {
-	Database   *string   `json:"database,omitempty" xml:"database,omitempty"`
-	ErrorCode  *string   `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
-	InstanceId *string   `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	OriginHost *string   `json:"originHost,omitempty" xml:"originHost,omitempty"`
-	Sql        *string   `json:"sql,omitempty" xml:"sql,omitempty"`
-	SqlId      *string   `json:"sqlId,omitempty" xml:"sqlId,omitempty"`
-	Tables     []*string `json:"tables,omitempty" xml:"tables,omitempty" type:"Repeated"`
-	Timestamp  *int64    `json:"timestamp,omitempty" xml:"timestamp,omitempty"`
-	User       *string   `json:"user,omitempty" xml:"user,omitempty"`
+	Database   *string `json:"database,omitempty" xml:"database,omitempty"`
+	ErrorCode  *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	OriginHost *string `json:"originHost,omitempty" xml:"originHost,omitempty"`
+	Sql        *string `json:"sql,omitempty" xml:"sql,omitempty"`
+	// SQL ID。
+	SqlId     *string   `json:"sqlId,omitempty" xml:"sqlId,omitempty"`
+	Tables    []*string `json:"tables,omitempty" xml:"tables,omitempty" type:"Repeated"`
+	Timestamp *int64    `json:"timestamp,omitempty" xml:"timestamp,omitempty"`
+	User      *string   `json:"user,omitempty" xml:"user,omitempty"`
 }
 
 func (s GetErrorRequestSampleResponseBodyData) String() string {
@@ -6892,7 +7353,8 @@ type GetFullRequestOriginStatByInstanceIdResponseBodyDataList struct {
 	SqlCount                    *int64   `json:"SqlCount,omitempty" xml:"SqlCount,omitempty"`
 	SumUpdatedRows              *int64   `json:"SumUpdatedRows,omitempty" xml:"SumUpdatedRows,omitempty"`
 	Version                     *int64   `json:"Version,omitempty" xml:"Version,omitempty"`
-	VpcId                       *string  `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// VPC ID。
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s GetFullRequestOriginStatByInstanceIdResponseBodyDataList) String() string {
@@ -7096,9 +7558,10 @@ type GetFullRequestSampleByInstanceIdRequest struct {
 	End        *int64  `json:"End,omitempty" xml:"End,omitempty"`
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	Role       *string `json:"Role,omitempty" xml:"Role,omitempty"`
-	SqlId      *string `json:"SqlId,omitempty" xml:"SqlId,omitempty"`
-	Start      *int64  `json:"Start,omitempty" xml:"Start,omitempty"`
-	UserId     *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// SQL ID。
+	SqlId  *string `json:"SqlId,omitempty" xml:"SqlId,omitempty"`
+	Start  *int64  `json:"Start,omitempty" xml:"Start,omitempty"`
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s GetFullRequestSampleByInstanceIdRequest) String() string {
@@ -7195,11 +7658,12 @@ type GetFullRequestSampleByInstanceIdResponseBodyData struct {
 	ScanRows          *int64   `json:"ScanRows,omitempty" xml:"ScanRows,omitempty"`
 	Scnt              *int64   `json:"Scnt,omitempty" xml:"Scnt,omitempty"`
 	Sql               *string  `json:"Sql,omitempty" xml:"Sql,omitempty"`
-	SqlId             *string  `json:"SqlId,omitempty" xml:"SqlId,omitempty"`
-	SqlType           *string  `json:"SqlType,omitempty" xml:"SqlType,omitempty"`
-	Timestamp         *int64   `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
-	UpdateRows        *int64   `json:"UpdateRows,omitempty" xml:"UpdateRows,omitempty"`
-	User              *string  `json:"User,omitempty" xml:"User,omitempty"`
+	// SQL ID。
+	SqlId      *string `json:"SqlId,omitempty" xml:"SqlId,omitempty"`
+	SqlType    *string `json:"SqlType,omitempty" xml:"SqlType,omitempty"`
+	Timestamp  *int64  `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
+	UpdateRows *int64  `json:"UpdateRows,omitempty" xml:"UpdateRows,omitempty"`
+	User       *string `json:"User,omitempty" xml:"User,omitempty"`
 }
 
 func (s GetFullRequestSampleByInstanceIdResponseBodyData) String() string {
@@ -7547,38 +8011,40 @@ func (s *GetFullRequestStatResultByInstanceIdResponseBodyDataResult) SetTotal(v 
 }
 
 type GetFullRequestStatResultByInstanceIdResponseBodyDataResultList struct {
-	AvgExaminedRows             *float64  `json:"AvgExaminedRows,omitempty" xml:"AvgExaminedRows,omitempty"`
-	AvgFetchRows                *int64    `json:"AvgFetchRows,omitempty" xml:"AvgFetchRows,omitempty"`
-	AvgLockWaitTime             *float64  `json:"AvgLockWaitTime,omitempty" xml:"AvgLockWaitTime,omitempty"`
-	AvgLogicalRead              *float64  `json:"AvgLogicalRead,omitempty" xml:"AvgLogicalRead,omitempty"`
-	AvgPhysicalAsyncRead        *int64    `json:"AvgPhysicalAsyncRead,omitempty" xml:"AvgPhysicalAsyncRead,omitempty"`
-	AvgPhysicalSyncRead         *int64    `json:"AvgPhysicalSyncRead,omitempty" xml:"AvgPhysicalSyncRead,omitempty"`
-	AvgReturnedRows             *float64  `json:"AvgReturnedRows,omitempty" xml:"AvgReturnedRows,omitempty"`
-	AvgRt                       *float64  `json:"AvgRt,omitempty" xml:"AvgRt,omitempty"`
-	AvgSqlCount                 *int64    `json:"AvgSqlCount,omitempty" xml:"AvgSqlCount,omitempty"`
-	AvgUpdatedRows              *int64    `json:"AvgUpdatedRows,omitempty" xml:"AvgUpdatedRows,omitempty"`
-	Count                       *int64    `json:"Count,omitempty" xml:"Count,omitempty"`
-	CountRate                   *float64  `json:"CountRate,omitempty" xml:"CountRate,omitempty"`
-	Database                    *string   `json:"Database,omitempty" xml:"Database,omitempty"`
-	ErrorCount                  *int64    `json:"ErrorCount,omitempty" xml:"ErrorCount,omitempty"`
-	ExaminedRows                *int64    `json:"ExaminedRows,omitempty" xml:"ExaminedRows,omitempty"`
-	FetchRows                   *int64    `json:"FetchRows,omitempty" xml:"FetchRows,omitempty"`
-	Ip                          *string   `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	LockWaitTime                *float64  `json:"LockWaitTime,omitempty" xml:"LockWaitTime,omitempty"`
-	LogicalRead                 *int64    `json:"LogicalRead,omitempty" xml:"LogicalRead,omitempty"`
-	PhysicalAsyncRead           *int64    `json:"PhysicalAsyncRead,omitempty" xml:"PhysicalAsyncRead,omitempty"`
-	PhysicalSyncRead            *int64    `json:"PhysicalSyncRead,omitempty" xml:"PhysicalSyncRead,omitempty"`
-	Port                        *int64    `json:"Port,omitempty" xml:"Port,omitempty"`
-	Psql                        *string   `json:"Psql,omitempty" xml:"Psql,omitempty"`
-	Rows                        *int64    `json:"Rows,omitempty" xml:"Rows,omitempty"`
-	RtGreaterThanOneSecondCount *int64    `json:"RtGreaterThanOneSecondCount,omitempty" xml:"RtGreaterThanOneSecondCount,omitempty"`
-	RtRate                      *float64  `json:"RtRate,omitempty" xml:"RtRate,omitempty"`
-	SqlCount                    *int64    `json:"SqlCount,omitempty" xml:"SqlCount,omitempty"`
-	SqlId                       *string   `json:"SqlId,omitempty" xml:"SqlId,omitempty"`
-	SumUpdatedRows              *int64    `json:"SumUpdatedRows,omitempty" xml:"SumUpdatedRows,omitempty"`
-	Tables                      []*string `json:"Tables,omitempty" xml:"Tables,omitempty" type:"Repeated"`
-	Version                     *int64    `json:"Version,omitempty" xml:"Version,omitempty"`
-	VpcId                       *string   `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	AvgExaminedRows             *float64 `json:"AvgExaminedRows,omitempty" xml:"AvgExaminedRows,omitempty"`
+	AvgFetchRows                *int64   `json:"AvgFetchRows,omitempty" xml:"AvgFetchRows,omitempty"`
+	AvgLockWaitTime             *float64 `json:"AvgLockWaitTime,omitempty" xml:"AvgLockWaitTime,omitempty"`
+	AvgLogicalRead              *float64 `json:"AvgLogicalRead,omitempty" xml:"AvgLogicalRead,omitempty"`
+	AvgPhysicalAsyncRead        *int64   `json:"AvgPhysicalAsyncRead,omitempty" xml:"AvgPhysicalAsyncRead,omitempty"`
+	AvgPhysicalSyncRead         *int64   `json:"AvgPhysicalSyncRead,omitempty" xml:"AvgPhysicalSyncRead,omitempty"`
+	AvgReturnedRows             *float64 `json:"AvgReturnedRows,omitempty" xml:"AvgReturnedRows,omitempty"`
+	AvgRt                       *float64 `json:"AvgRt,omitempty" xml:"AvgRt,omitempty"`
+	AvgSqlCount                 *int64   `json:"AvgSqlCount,omitempty" xml:"AvgSqlCount,omitempty"`
+	AvgUpdatedRows              *int64   `json:"AvgUpdatedRows,omitempty" xml:"AvgUpdatedRows,omitempty"`
+	Count                       *int64   `json:"Count,omitempty" xml:"Count,omitempty"`
+	CountRate                   *float64 `json:"CountRate,omitempty" xml:"CountRate,omitempty"`
+	Database                    *string  `json:"Database,omitempty" xml:"Database,omitempty"`
+	ErrorCount                  *int64   `json:"ErrorCount,omitempty" xml:"ErrorCount,omitempty"`
+	ExaminedRows                *int64   `json:"ExaminedRows,omitempty" xml:"ExaminedRows,omitempty"`
+	FetchRows                   *int64   `json:"FetchRows,omitempty" xml:"FetchRows,omitempty"`
+	Ip                          *string  `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	LockWaitTime                *float64 `json:"LockWaitTime,omitempty" xml:"LockWaitTime,omitempty"`
+	LogicalRead                 *int64   `json:"LogicalRead,omitempty" xml:"LogicalRead,omitempty"`
+	PhysicalAsyncRead           *int64   `json:"PhysicalAsyncRead,omitempty" xml:"PhysicalAsyncRead,omitempty"`
+	PhysicalSyncRead            *int64   `json:"PhysicalSyncRead,omitempty" xml:"PhysicalSyncRead,omitempty"`
+	Port                        *int64   `json:"Port,omitempty" xml:"Port,omitempty"`
+	Psql                        *string  `json:"Psql,omitempty" xml:"Psql,omitempty"`
+	Rows                        *int64   `json:"Rows,omitempty" xml:"Rows,omitempty"`
+	RtGreaterThanOneSecondCount *int64   `json:"RtGreaterThanOneSecondCount,omitempty" xml:"RtGreaterThanOneSecondCount,omitempty"`
+	RtRate                      *float64 `json:"RtRate,omitempty" xml:"RtRate,omitempty"`
+	SqlCount                    *int64   `json:"SqlCount,omitempty" xml:"SqlCount,omitempty"`
+	// SQL ID。
+	SqlId          *string   `json:"SqlId,omitempty" xml:"SqlId,omitempty"`
+	SumUpdatedRows *int64    `json:"SumUpdatedRows,omitempty" xml:"SumUpdatedRows,omitempty"`
+	Tables         []*string `json:"Tables,omitempty" xml:"Tables,omitempty" type:"Repeated"`
+	Version        *int64    `json:"Version,omitempty" xml:"Version,omitempty"`
+	// VPC ID。
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s GetFullRequestStatResultByInstanceIdResponseBodyDataResultList) String() string {
@@ -8747,6 +9213,111 @@ func (s *GetInstanceSqlOptimizeStatisticResponse) SetStatusCode(v int32) *GetIns
 }
 
 func (s *GetInstanceSqlOptimizeStatisticResponse) SetBody(v *GetInstanceSqlOptimizeStatisticResponseBody) *GetInstanceSqlOptimizeStatisticResponse {
+	s.Body = v
+	return s
+}
+
+type GetPartitionsHeatmapRequest struct {
+	ConsoleContext *string `json:"ConsoleContext,omitempty" xml:"ConsoleContext,omitempty"`
+	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	TimeRange      *string `json:"TimeRange,omitempty" xml:"TimeRange,omitempty"`
+	Type           *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s GetPartitionsHeatmapRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPartitionsHeatmapRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetPartitionsHeatmapRequest) SetConsoleContext(v string) *GetPartitionsHeatmapRequest {
+	s.ConsoleContext = &v
+	return s
+}
+
+func (s *GetPartitionsHeatmapRequest) SetInstanceId(v string) *GetPartitionsHeatmapRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *GetPartitionsHeatmapRequest) SetTimeRange(v string) *GetPartitionsHeatmapRequest {
+	s.TimeRange = &v
+	return s
+}
+
+func (s *GetPartitionsHeatmapRequest) SetType(v string) *GetPartitionsHeatmapRequest {
+	s.Type = &v
+	return s
+}
+
+type GetPartitionsHeatmapResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *string `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetPartitionsHeatmapResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPartitionsHeatmapResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetPartitionsHeatmapResponseBody) SetCode(v string) *GetPartitionsHeatmapResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetPartitionsHeatmapResponseBody) SetData(v string) *GetPartitionsHeatmapResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *GetPartitionsHeatmapResponseBody) SetMessage(v string) *GetPartitionsHeatmapResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetPartitionsHeatmapResponseBody) SetRequestId(v string) *GetPartitionsHeatmapResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetPartitionsHeatmapResponseBody) SetSuccess(v string) *GetPartitionsHeatmapResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetPartitionsHeatmapResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetPartitionsHeatmapResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetPartitionsHeatmapResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPartitionsHeatmapResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetPartitionsHeatmapResponse) SetHeaders(v map[string]*string) *GetPartitionsHeatmapResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetPartitionsHeatmapResponse) SetStatusCode(v int32) *GetPartitionsHeatmapResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetPartitionsHeatmapResponse) SetBody(v *GetPartitionsHeatmapResponseBody) *GetPartitionsHeatmapResponse {
 	s.Body = v
 	return s
 }
@@ -11726,6 +12297,370 @@ func (s *KillInstanceAllSessionResponse) SetBody(v *KillInstanceAllSessionRespon
 	return s
 }
 
+type ModifyAutoScalingConfigRequest struct {
+	Bandwidth  *ModifyAutoScalingConfigRequestBandwidth `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty" type:"Struct"`
+	InstanceId *string                                  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Resource   *ModifyAutoScalingConfigRequestResource  `json:"Resource,omitempty" xml:"Resource,omitempty" type:"Struct"`
+	Shard      *ModifyAutoScalingConfigRequestShard     `json:"Shard,omitempty" xml:"Shard,omitempty" type:"Struct"`
+	Spec       *ModifyAutoScalingConfigRequestSpec      `json:"Spec,omitempty" xml:"Spec,omitempty" type:"Struct"`
+	Storage    *ModifyAutoScalingConfigRequestStorage   `json:"Storage,omitempty" xml:"Storage,omitempty" type:"Struct"`
+}
+
+func (s ModifyAutoScalingConfigRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyAutoScalingConfigRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyAutoScalingConfigRequest) SetBandwidth(v *ModifyAutoScalingConfigRequestBandwidth) *ModifyAutoScalingConfigRequest {
+	s.Bandwidth = v
+	return s
+}
+
+func (s *ModifyAutoScalingConfigRequest) SetInstanceId(v string) *ModifyAutoScalingConfigRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ModifyAutoScalingConfigRequest) SetResource(v *ModifyAutoScalingConfigRequestResource) *ModifyAutoScalingConfigRequest {
+	s.Resource = v
+	return s
+}
+
+func (s *ModifyAutoScalingConfigRequest) SetShard(v *ModifyAutoScalingConfigRequestShard) *ModifyAutoScalingConfigRequest {
+	s.Shard = v
+	return s
+}
+
+func (s *ModifyAutoScalingConfigRequest) SetSpec(v *ModifyAutoScalingConfigRequestSpec) *ModifyAutoScalingConfigRequest {
+	s.Spec = v
+	return s
+}
+
+func (s *ModifyAutoScalingConfigRequest) SetStorage(v *ModifyAutoScalingConfigRequestStorage) *ModifyAutoScalingConfigRequest {
+	s.Storage = v
+	return s
+}
+
+type ModifyAutoScalingConfigRequestBandwidth struct {
+	Apply                        *bool   `json:"Apply,omitempty" xml:"Apply,omitempty"`
+	BandwidthUsageLowerThreshold *int32  `json:"BandwidthUsageLowerThreshold,omitempty" xml:"BandwidthUsageLowerThreshold,omitempty"`
+	BandwidthUsageUpperThreshold *int32  `json:"BandwidthUsageUpperThreshold,omitempty" xml:"BandwidthUsageUpperThreshold,omitempty"`
+	Downgrade                    *bool   `json:"Downgrade,omitempty" xml:"Downgrade,omitempty"`
+	ObservationWindowSize        *string `json:"ObservationWindowSize,omitempty" xml:"ObservationWindowSize,omitempty"`
+	Upgrade                      *bool   `json:"Upgrade,omitempty" xml:"Upgrade,omitempty"`
+}
+
+func (s ModifyAutoScalingConfigRequestBandwidth) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyAutoScalingConfigRequestBandwidth) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyAutoScalingConfigRequestBandwidth) SetApply(v bool) *ModifyAutoScalingConfigRequestBandwidth {
+	s.Apply = &v
+	return s
+}
+
+func (s *ModifyAutoScalingConfigRequestBandwidth) SetBandwidthUsageLowerThreshold(v int32) *ModifyAutoScalingConfigRequestBandwidth {
+	s.BandwidthUsageLowerThreshold = &v
+	return s
+}
+
+func (s *ModifyAutoScalingConfigRequestBandwidth) SetBandwidthUsageUpperThreshold(v int32) *ModifyAutoScalingConfigRequestBandwidth {
+	s.BandwidthUsageUpperThreshold = &v
+	return s
+}
+
+func (s *ModifyAutoScalingConfigRequestBandwidth) SetDowngrade(v bool) *ModifyAutoScalingConfigRequestBandwidth {
+	s.Downgrade = &v
+	return s
+}
+
+func (s *ModifyAutoScalingConfigRequestBandwidth) SetObservationWindowSize(v string) *ModifyAutoScalingConfigRequestBandwidth {
+	s.ObservationWindowSize = &v
+	return s
+}
+
+func (s *ModifyAutoScalingConfigRequestBandwidth) SetUpgrade(v bool) *ModifyAutoScalingConfigRequestBandwidth {
+	s.Upgrade = &v
+	return s
+}
+
+type ModifyAutoScalingConfigRequestResource struct {
+	Apply                          *bool   `json:"Apply,omitempty" xml:"Apply,omitempty"`
+	CpuUsageUpperThreshold         *int32  `json:"CpuUsageUpperThreshold,omitempty" xml:"CpuUsageUpperThreshold,omitempty"`
+	DowngradeObservationWindowSize *string `json:"DowngradeObservationWindowSize,omitempty" xml:"DowngradeObservationWindowSize,omitempty"`
+	Enable                         *bool   `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	UpgradeObservationWindowSize   *string `json:"UpgradeObservationWindowSize,omitempty" xml:"UpgradeObservationWindowSize,omitempty"`
+}
+
+func (s ModifyAutoScalingConfigRequestResource) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyAutoScalingConfigRequestResource) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyAutoScalingConfigRequestResource) SetApply(v bool) *ModifyAutoScalingConfigRequestResource {
+	s.Apply = &v
+	return s
+}
+
+func (s *ModifyAutoScalingConfigRequestResource) SetCpuUsageUpperThreshold(v int32) *ModifyAutoScalingConfigRequestResource {
+	s.CpuUsageUpperThreshold = &v
+	return s
+}
+
+func (s *ModifyAutoScalingConfigRequestResource) SetDowngradeObservationWindowSize(v string) *ModifyAutoScalingConfigRequestResource {
+	s.DowngradeObservationWindowSize = &v
+	return s
+}
+
+func (s *ModifyAutoScalingConfigRequestResource) SetEnable(v bool) *ModifyAutoScalingConfigRequestResource {
+	s.Enable = &v
+	return s
+}
+
+func (s *ModifyAutoScalingConfigRequestResource) SetUpgradeObservationWindowSize(v string) *ModifyAutoScalingConfigRequestResource {
+	s.UpgradeObservationWindowSize = &v
+	return s
+}
+
+type ModifyAutoScalingConfigRequestShard struct {
+	Apply                          *bool   `json:"Apply,omitempty" xml:"Apply,omitempty"`
+	Downgrade                      *bool   `json:"Downgrade,omitempty" xml:"Downgrade,omitempty"`
+	DowngradeObservationWindowSize *string `json:"DowngradeObservationWindowSize,omitempty" xml:"DowngradeObservationWindowSize,omitempty"`
+	MaxShards                      *int32  `json:"MaxShards,omitempty" xml:"MaxShards,omitempty"`
+	MemUsageLowerThreshold         *int32  `json:"MemUsageLowerThreshold,omitempty" xml:"MemUsageLowerThreshold,omitempty"`
+	MemUsageUpperThreshold         *int32  `json:"MemUsageUpperThreshold,omitempty" xml:"MemUsageUpperThreshold,omitempty"`
+	MinShards                      *int32  `json:"MinShards,omitempty" xml:"MinShards,omitempty"`
+	Upgrade                        *bool   `json:"Upgrade,omitempty" xml:"Upgrade,omitempty"`
+	UpgradeObservationWindowSize   *string `json:"UpgradeObservationWindowSize,omitempty" xml:"UpgradeObservationWindowSize,omitempty"`
+}
+
+func (s ModifyAutoScalingConfigRequestShard) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyAutoScalingConfigRequestShard) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyAutoScalingConfigRequestShard) SetApply(v bool) *ModifyAutoScalingConfigRequestShard {
+	s.Apply = &v
+	return s
+}
+
+func (s *ModifyAutoScalingConfigRequestShard) SetDowngrade(v bool) *ModifyAutoScalingConfigRequestShard {
+	s.Downgrade = &v
+	return s
+}
+
+func (s *ModifyAutoScalingConfigRequestShard) SetDowngradeObservationWindowSize(v string) *ModifyAutoScalingConfigRequestShard {
+	s.DowngradeObservationWindowSize = &v
+	return s
+}
+
+func (s *ModifyAutoScalingConfigRequestShard) SetMaxShards(v int32) *ModifyAutoScalingConfigRequestShard {
+	s.MaxShards = &v
+	return s
+}
+
+func (s *ModifyAutoScalingConfigRequestShard) SetMemUsageLowerThreshold(v int32) *ModifyAutoScalingConfigRequestShard {
+	s.MemUsageLowerThreshold = &v
+	return s
+}
+
+func (s *ModifyAutoScalingConfigRequestShard) SetMemUsageUpperThreshold(v int32) *ModifyAutoScalingConfigRequestShard {
+	s.MemUsageUpperThreshold = &v
+	return s
+}
+
+func (s *ModifyAutoScalingConfigRequestShard) SetMinShards(v int32) *ModifyAutoScalingConfigRequestShard {
+	s.MinShards = &v
+	return s
+}
+
+func (s *ModifyAutoScalingConfigRequestShard) SetUpgrade(v bool) *ModifyAutoScalingConfigRequestShard {
+	s.Upgrade = &v
+	return s
+}
+
+func (s *ModifyAutoScalingConfigRequestShard) SetUpgradeObservationWindowSize(v string) *ModifyAutoScalingConfigRequestShard {
+	s.UpgradeObservationWindowSize = &v
+	return s
+}
+
+type ModifyAutoScalingConfigRequestSpec struct {
+	Apply                  *bool   `json:"Apply,omitempty" xml:"Apply,omitempty"`
+	CoolDownTime           *string `json:"CoolDownTime,omitempty" xml:"CoolDownTime,omitempty"`
+	CpuUsageUpperThreshold *int32  `json:"CpuUsageUpperThreshold,omitempty" xml:"CpuUsageUpperThreshold,omitempty"`
+	Downgrade              *bool   `json:"Downgrade,omitempty" xml:"Downgrade,omitempty"`
+	MaxReadOnlyNodes       *int32  `json:"MaxReadOnlyNodes,omitempty" xml:"MaxReadOnlyNodes,omitempty"`
+	MaxSpec                *string `json:"MaxSpec,omitempty" xml:"MaxSpec,omitempty"`
+	MemUsageUpperThreshold *int32  `json:"MemUsageUpperThreshold,omitempty" xml:"MemUsageUpperThreshold,omitempty"`
+	ObservationWindowSize  *string `json:"ObservationWindowSize,omitempty" xml:"ObservationWindowSize,omitempty"`
+	Upgrade                *bool   `json:"Upgrade,omitempty" xml:"Upgrade,omitempty"`
+}
+
+func (s ModifyAutoScalingConfigRequestSpec) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyAutoScalingConfigRequestSpec) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyAutoScalingConfigRequestSpec) SetApply(v bool) *ModifyAutoScalingConfigRequestSpec {
+	s.Apply = &v
+	return s
+}
+
+func (s *ModifyAutoScalingConfigRequestSpec) SetCoolDownTime(v string) *ModifyAutoScalingConfigRequestSpec {
+	s.CoolDownTime = &v
+	return s
+}
+
+func (s *ModifyAutoScalingConfigRequestSpec) SetCpuUsageUpperThreshold(v int32) *ModifyAutoScalingConfigRequestSpec {
+	s.CpuUsageUpperThreshold = &v
+	return s
+}
+
+func (s *ModifyAutoScalingConfigRequestSpec) SetDowngrade(v bool) *ModifyAutoScalingConfigRequestSpec {
+	s.Downgrade = &v
+	return s
+}
+
+func (s *ModifyAutoScalingConfigRequestSpec) SetMaxReadOnlyNodes(v int32) *ModifyAutoScalingConfigRequestSpec {
+	s.MaxReadOnlyNodes = &v
+	return s
+}
+
+func (s *ModifyAutoScalingConfigRequestSpec) SetMaxSpec(v string) *ModifyAutoScalingConfigRequestSpec {
+	s.MaxSpec = &v
+	return s
+}
+
+func (s *ModifyAutoScalingConfigRequestSpec) SetMemUsageUpperThreshold(v int32) *ModifyAutoScalingConfigRequestSpec {
+	s.MemUsageUpperThreshold = &v
+	return s
+}
+
+func (s *ModifyAutoScalingConfigRequestSpec) SetObservationWindowSize(v string) *ModifyAutoScalingConfigRequestSpec {
+	s.ObservationWindowSize = &v
+	return s
+}
+
+func (s *ModifyAutoScalingConfigRequestSpec) SetUpgrade(v bool) *ModifyAutoScalingConfigRequestSpec {
+	s.Upgrade = &v
+	return s
+}
+
+type ModifyAutoScalingConfigRequestStorage struct {
+	Apply                   *bool  `json:"Apply,omitempty" xml:"Apply,omitempty"`
+	DiskUsageUpperThreshold *int32 `json:"DiskUsageUpperThreshold,omitempty" xml:"DiskUsageUpperThreshold,omitempty"`
+	MaxStorage              *int32 `json:"MaxStorage,omitempty" xml:"MaxStorage,omitempty"`
+	Upgrade                 *bool  `json:"Upgrade,omitempty" xml:"Upgrade,omitempty"`
+}
+
+func (s ModifyAutoScalingConfigRequestStorage) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyAutoScalingConfigRequestStorage) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyAutoScalingConfigRequestStorage) SetApply(v bool) *ModifyAutoScalingConfigRequestStorage {
+	s.Apply = &v
+	return s
+}
+
+func (s *ModifyAutoScalingConfigRequestStorage) SetDiskUsageUpperThreshold(v int32) *ModifyAutoScalingConfigRequestStorage {
+	s.DiskUsageUpperThreshold = &v
+	return s
+}
+
+func (s *ModifyAutoScalingConfigRequestStorage) SetMaxStorage(v int32) *ModifyAutoScalingConfigRequestStorage {
+	s.MaxStorage = &v
+	return s
+}
+
+func (s *ModifyAutoScalingConfigRequestStorage) SetUpgrade(v bool) *ModifyAutoScalingConfigRequestStorage {
+	s.Upgrade = &v
+	return s
+}
+
+type ModifyAutoScalingConfigResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *string `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ModifyAutoScalingConfigResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyAutoScalingConfigResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyAutoScalingConfigResponseBody) SetCode(v string) *ModifyAutoScalingConfigResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ModifyAutoScalingConfigResponseBody) SetMessage(v string) *ModifyAutoScalingConfigResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ModifyAutoScalingConfigResponseBody) SetRequestId(v string) *ModifyAutoScalingConfigResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ModifyAutoScalingConfigResponseBody) SetSuccess(v string) *ModifyAutoScalingConfigResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ModifyAutoScalingConfigResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ModifyAutoScalingConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ModifyAutoScalingConfigResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyAutoScalingConfigResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyAutoScalingConfigResponse) SetHeaders(v map[string]*string) *ModifyAutoScalingConfigResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyAutoScalingConfigResponse) SetStatusCode(v int32) *ModifyAutoScalingConfigResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyAutoScalingConfigResponse) SetBody(v *ModifyAutoScalingConfigResponseBody) *ModifyAutoScalingConfigResponse {
+	s.Body = v
+	return s
+}
+
 type RunCloudBenchTaskRequest struct {
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
@@ -11873,6 +12808,212 @@ func (s *RunCloudBenchTaskResponse) SetStatusCode(v int32) *RunCloudBenchTaskRes
 }
 
 func (s *RunCloudBenchTaskResponse) SetBody(v *RunCloudBenchTaskResponseBody) *RunCloudBenchTaskResponse {
+	s.Body = v
+	return s
+}
+
+type SetEventSubscriptionRequest struct {
+	Active           *string `json:"Active,omitempty" xml:"Active,omitempty"`
+	ChannelType      *string `json:"ChannelType,omitempty" xml:"ChannelType,omitempty"`
+	ContactGroupName *string `json:"ContactGroupName,omitempty" xml:"ContactGroupName,omitempty"`
+	ContactName      *string `json:"ContactName,omitempty" xml:"ContactName,omitempty"`
+	EventContext     *string `json:"EventContext,omitempty" xml:"EventContext,omitempty"`
+	InstanceId       *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Lang             *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	Level            *string `json:"Level,omitempty" xml:"Level,omitempty"`
+	MinInterval      *string `json:"MinInterval,omitempty" xml:"MinInterval,omitempty"`
+}
+
+func (s SetEventSubscriptionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetEventSubscriptionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SetEventSubscriptionRequest) SetActive(v string) *SetEventSubscriptionRequest {
+	s.Active = &v
+	return s
+}
+
+func (s *SetEventSubscriptionRequest) SetChannelType(v string) *SetEventSubscriptionRequest {
+	s.ChannelType = &v
+	return s
+}
+
+func (s *SetEventSubscriptionRequest) SetContactGroupName(v string) *SetEventSubscriptionRequest {
+	s.ContactGroupName = &v
+	return s
+}
+
+func (s *SetEventSubscriptionRequest) SetContactName(v string) *SetEventSubscriptionRequest {
+	s.ContactName = &v
+	return s
+}
+
+func (s *SetEventSubscriptionRequest) SetEventContext(v string) *SetEventSubscriptionRequest {
+	s.EventContext = &v
+	return s
+}
+
+func (s *SetEventSubscriptionRequest) SetInstanceId(v string) *SetEventSubscriptionRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *SetEventSubscriptionRequest) SetLang(v string) *SetEventSubscriptionRequest {
+	s.Lang = &v
+	return s
+}
+
+func (s *SetEventSubscriptionRequest) SetLevel(v string) *SetEventSubscriptionRequest {
+	s.Level = &v
+	return s
+}
+
+func (s *SetEventSubscriptionRequest) SetMinInterval(v string) *SetEventSubscriptionRequest {
+	s.MinInterval = &v
+	return s
+}
+
+type SetEventSubscriptionResponseBody struct {
+	Code      *string                               `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *SetEventSubscriptionResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                               `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *string                               `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s SetEventSubscriptionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetEventSubscriptionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SetEventSubscriptionResponseBody) SetCode(v string) *SetEventSubscriptionResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *SetEventSubscriptionResponseBody) SetData(v *SetEventSubscriptionResponseBodyData) *SetEventSubscriptionResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *SetEventSubscriptionResponseBody) SetMessage(v string) *SetEventSubscriptionResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *SetEventSubscriptionResponseBody) SetRequestId(v string) *SetEventSubscriptionResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SetEventSubscriptionResponseBody) SetSuccess(v string) *SetEventSubscriptionResponseBody {
+	s.Success = &v
+	return s
+}
+
+type SetEventSubscriptionResponseBodyData struct {
+	Active           *int32  `json:"active,omitempty" xml:"active,omitempty"`
+	ChannelType      *string `json:"channelType,omitempty" xml:"channelType,omitempty"`
+	ContactGroupName *string `json:"contactGroupName,omitempty" xml:"contactGroupName,omitempty"`
+	ContactName      *string `json:"contactName,omitempty" xml:"contactName,omitempty"`
+	EventContext     *string `json:"eventContext,omitempty" xml:"eventContext,omitempty"`
+	InstanceId       *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	Lang             *string `json:"lang,omitempty" xml:"lang,omitempty"`
+	Level            *string `json:"level,omitempty" xml:"level,omitempty"`
+	MinInterval      *int32  `json:"minInterval,omitempty" xml:"minInterval,omitempty"`
+	UserId           *string `json:"userId,omitempty" xml:"userId,omitempty"`
+}
+
+func (s SetEventSubscriptionResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetEventSubscriptionResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *SetEventSubscriptionResponseBodyData) SetActive(v int32) *SetEventSubscriptionResponseBodyData {
+	s.Active = &v
+	return s
+}
+
+func (s *SetEventSubscriptionResponseBodyData) SetChannelType(v string) *SetEventSubscriptionResponseBodyData {
+	s.ChannelType = &v
+	return s
+}
+
+func (s *SetEventSubscriptionResponseBodyData) SetContactGroupName(v string) *SetEventSubscriptionResponseBodyData {
+	s.ContactGroupName = &v
+	return s
+}
+
+func (s *SetEventSubscriptionResponseBodyData) SetContactName(v string) *SetEventSubscriptionResponseBodyData {
+	s.ContactName = &v
+	return s
+}
+
+func (s *SetEventSubscriptionResponseBodyData) SetEventContext(v string) *SetEventSubscriptionResponseBodyData {
+	s.EventContext = &v
+	return s
+}
+
+func (s *SetEventSubscriptionResponseBodyData) SetInstanceId(v string) *SetEventSubscriptionResponseBodyData {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *SetEventSubscriptionResponseBodyData) SetLang(v string) *SetEventSubscriptionResponseBodyData {
+	s.Lang = &v
+	return s
+}
+
+func (s *SetEventSubscriptionResponseBodyData) SetLevel(v string) *SetEventSubscriptionResponseBodyData {
+	s.Level = &v
+	return s
+}
+
+func (s *SetEventSubscriptionResponseBodyData) SetMinInterval(v int32) *SetEventSubscriptionResponseBodyData {
+	s.MinInterval = &v
+	return s
+}
+
+func (s *SetEventSubscriptionResponseBodyData) SetUserId(v string) *SetEventSubscriptionResponseBodyData {
+	s.UserId = &v
+	return s
+}
+
+type SetEventSubscriptionResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SetEventSubscriptionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SetEventSubscriptionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetEventSubscriptionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SetEventSubscriptionResponse) SetHeaders(v map[string]*string) *SetEventSubscriptionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SetEventSubscriptionResponse) SetStatusCode(v int32) *SetEventSubscriptionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SetEventSubscriptionResponse) SetBody(v *SetEventSubscriptionResponseBody) *SetEventSubscriptionResponse {
 	s.Body = v
 	return s
 }
@@ -13409,6 +14550,50 @@ func (client *Client) DeleteStopGateway(request *DeleteStopGatewayRequest) (_res
 	return _result, _err
 }
 
+func (client *Client) DescribeAutoScalingConfigWithOptions(request *DescribeAutoScalingConfigRequest, runtime *util.RuntimeOptions) (_result *DescribeAutoScalingConfigResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeAutoScalingConfig"),
+		Version:     tea.String("2020-01-16"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeAutoScalingConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeAutoScalingConfig(request *DescribeAutoScalingConfigRequest) (_result *DescribeAutoScalingConfigResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeAutoScalingConfigResponse{}
+	_body, _err := client.DescribeAutoScalingConfigWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DescribeCacheAnalysisJobWithOptions(request *DescribeCacheAnalysisJobRequest, runtime *util.RuntimeOptions) (_result *DescribeCacheAnalysisJobResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14178,6 +15363,58 @@ func (client *Client) DisableDasPro(request *DisableDasProRequest) (_result *Dis
 	runtime := &util.RuntimeOptions{}
 	_result = &DisableDasProResponse{}
 	_body, _err := client.DisableDasProWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DisableInstanceDasConfigWithOptions(request *DisableInstanceDasConfigRequest, runtime *util.RuntimeOptions) (_result *DisableInstanceDasConfigResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Engine)) {
+		query["Engine"] = request.Engine
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ScaleType)) {
+		query["ScaleType"] = request.ScaleType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DisableInstanceDasConfig"),
+		Version:     tea.String("2020-01-16"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DisableInstanceDasConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DisableInstanceDasConfig(request *DisableInstanceDasConfigRequest) (_result *DisableInstanceDasConfigResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DisableInstanceDasConfigResponse{}
+	_body, _err := client.DisableInstanceDasConfigWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -15479,6 +16716,62 @@ func (client *Client) GetInstanceSqlOptimizeStatistic(request *GetInstanceSqlOpt
 	return _result, _err
 }
 
+func (client *Client) GetPartitionsHeatmapWithOptions(request *GetPartitionsHeatmapRequest, runtime *util.RuntimeOptions) (_result *GetPartitionsHeatmapResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ConsoleContext)) {
+		query["ConsoleContext"] = request.ConsoleContext
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TimeRange)) {
+		query["TimeRange"] = request.TimeRange
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetPartitionsHeatmap"),
+		Version:     tea.String("2020-01-16"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetPartitionsHeatmapResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetPartitionsHeatmap(request *GetPartitionsHeatmapRequest) (_result *GetPartitionsHeatmapResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetPartitionsHeatmapResponse{}
+	_body, _err := client.GetPartitionsHeatmapWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) GetQueryOptimizeDataStatsWithOptions(request *GetQueryOptimizeDataStatsRequest, runtime *util.RuntimeOptions) (_result *GetQueryOptimizeDataStatsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16195,6 +17488,70 @@ func (client *Client) KillInstanceAllSession(request *KillInstanceAllSessionRequ
 	return _result, _err
 }
 
+func (client *Client) ModifyAutoScalingConfigWithOptions(request *ModifyAutoScalingConfigRequest, runtime *util.RuntimeOptions) (_result *ModifyAutoScalingConfigResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Bandwidth)) {
+		query["Bandwidth"] = request.Bandwidth
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Resource)) {
+		query["Resource"] = request.Resource
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Shard)) {
+		query["Shard"] = request.Shard
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Spec)) {
+		query["Spec"] = request.Spec
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Storage)) {
+		query["Storage"] = request.Storage
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyAutoScalingConfig"),
+		Version:     tea.String("2020-01-16"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyAutoScalingConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ModifyAutoScalingConfig(request *ModifyAutoScalingConfigRequest) (_result *ModifyAutoScalingConfigResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyAutoScalingConfigResponse{}
+	_body, _err := client.ModifyAutoScalingConfigWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) RunCloudBenchTaskWithOptions(request *RunCloudBenchTaskRequest, runtime *util.RuntimeOptions) (_result *RunCloudBenchTaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16232,6 +17589,82 @@ func (client *Client) RunCloudBenchTask(request *RunCloudBenchTaskRequest) (_res
 	runtime := &util.RuntimeOptions{}
 	_result = &RunCloudBenchTaskResponse{}
 	_body, _err := client.RunCloudBenchTaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SetEventSubscriptionWithOptions(request *SetEventSubscriptionRequest, runtime *util.RuntimeOptions) (_result *SetEventSubscriptionResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Active)) {
+		query["Active"] = request.Active
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ChannelType)) {
+		query["ChannelType"] = request.ChannelType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ContactGroupName)) {
+		query["ContactGroupName"] = request.ContactGroupName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ContactName)) {
+		query["ContactName"] = request.ContactName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EventContext)) {
+		query["EventContext"] = request.EventContext
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Level)) {
+		query["Level"] = request.Level
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MinInterval)) {
+		query["MinInterval"] = request.MinInterval
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SetEventSubscription"),
+		Version:     tea.String("2020-01-16"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SetEventSubscriptionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SetEventSubscription(request *SetEventSubscriptionRequest) (_result *SetEventSubscriptionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SetEventSubscriptionResponse{}
+	_body, _err := client.SetEventSubscriptionWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
