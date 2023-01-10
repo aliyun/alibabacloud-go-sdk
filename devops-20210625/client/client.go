@@ -7985,6 +7985,460 @@ func (s *GetCodeupOrganizationResponse) SetBody(v *GetCodeupOrganizationResponse
 	return s
 }
 
+type GetCompareDetailRequest struct {
+	From           *string `json:"from,omitempty" xml:"from,omitempty"`
+	MaxDiffByte    *int32  `json:"maxDiffByte,omitempty" xml:"maxDiffByte,omitempty"`
+	MaxDiffFile    *int32  `json:"maxDiffFile,omitempty" xml:"maxDiffFile,omitempty"`
+	MergeBase      *bool   `json:"mergeBase,omitempty" xml:"mergeBase,omitempty"`
+	OrganizationId *string `json:"organizationId,omitempty" xml:"organizationId,omitempty"`
+	To             *string `json:"to,omitempty" xml:"to,omitempty"`
+}
+
+func (s GetCompareDetailRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCompareDetailRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetCompareDetailRequest) SetFrom(v string) *GetCompareDetailRequest {
+	s.From = &v
+	return s
+}
+
+func (s *GetCompareDetailRequest) SetMaxDiffByte(v int32) *GetCompareDetailRequest {
+	s.MaxDiffByte = &v
+	return s
+}
+
+func (s *GetCompareDetailRequest) SetMaxDiffFile(v int32) *GetCompareDetailRequest {
+	s.MaxDiffFile = &v
+	return s
+}
+
+func (s *GetCompareDetailRequest) SetMergeBase(v bool) *GetCompareDetailRequest {
+	s.MergeBase = &v
+	return s
+}
+
+func (s *GetCompareDetailRequest) SetOrganizationId(v string) *GetCompareDetailRequest {
+	s.OrganizationId = &v
+	return s
+}
+
+func (s *GetCompareDetailRequest) SetTo(v string) *GetCompareDetailRequest {
+	s.To = &v
+	return s
+}
+
+type GetCompareDetailResponseBody struct {
+	ErrorCode    *string                             `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMessage *string                             `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	RequestId    *string                             `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Result       *GetCompareDetailResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
+	Success      *bool                               `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s GetCompareDetailResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCompareDetailResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetCompareDetailResponseBody) SetErrorCode(v string) *GetCompareDetailResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetCompareDetailResponseBody) SetErrorMessage(v string) *GetCompareDetailResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetCompareDetailResponseBody) SetRequestId(v string) *GetCompareDetailResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetCompareDetailResponseBody) SetResult(v *GetCompareDetailResponseBodyResult) *GetCompareDetailResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *GetCompareDetailResponseBody) SetSuccess(v bool) *GetCompareDetailResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetCompareDetailResponseBodyResult struct {
+	Commits  []*GetCompareDetailResponseBodyResultCommits `json:"commits,omitempty" xml:"commits,omitempty" type:"Repeated"`
+	Diffs    []*GetCompareDetailResponseBodyResultDiffs   `json:"diffs,omitempty" xml:"diffs,omitempty" type:"Repeated"`
+	Messages []*string                                    `json:"messages,omitempty" xml:"messages,omitempty" type:"Repeated"`
+}
+
+func (s GetCompareDetailResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCompareDetailResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *GetCompareDetailResponseBodyResult) SetCommits(v []*GetCompareDetailResponseBodyResultCommits) *GetCompareDetailResponseBodyResult {
+	s.Commits = v
+	return s
+}
+
+func (s *GetCompareDetailResponseBodyResult) SetDiffs(v []*GetCompareDetailResponseBodyResultDiffs) *GetCompareDetailResponseBodyResult {
+	s.Diffs = v
+	return s
+}
+
+func (s *GetCompareDetailResponseBodyResult) SetMessages(v []*string) *GetCompareDetailResponseBodyResult {
+	s.Messages = v
+	return s
+}
+
+type GetCompareDetailResponseBodyResultCommits struct {
+	Author         *GetCompareDetailResponseBodyResultCommitsAuthor    `json:"author,omitempty" xml:"author,omitempty" type:"Struct"`
+	AuthorEmail    *string                                             `json:"authorEmail,omitempty" xml:"authorEmail,omitempty"`
+	AuthorName     *string                                             `json:"authorName,omitempty" xml:"authorName,omitempty"`
+	AuthoredDate   *string                                             `json:"authoredDate,omitempty" xml:"authoredDate,omitempty"`
+	CommentsCount  *int64                                              `json:"commentsCount,omitempty" xml:"commentsCount,omitempty"`
+	CommittedDate  *string                                             `json:"committedDate,omitempty" xml:"committedDate,omitempty"`
+	Committer      *GetCompareDetailResponseBodyResultCommitsCommitter `json:"committer,omitempty" xml:"committer,omitempty" type:"Struct"`
+	CommitterEmail *string                                             `json:"committerEmail,omitempty" xml:"committerEmail,omitempty"`
+	CommitterName  *string                                             `json:"committerName,omitempty" xml:"committerName,omitempty"`
+	CreatedAt      *string                                             `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
+	Id             *string                                             `json:"id,omitempty" xml:"id,omitempty"`
+	Message        *string                                             `json:"message,omitempty" xml:"message,omitempty"`
+	ParentIds      []*string                                           `json:"parentIds,omitempty" xml:"parentIds,omitempty" type:"Repeated"`
+	ShortId        *string                                             `json:"shortId,omitempty" xml:"shortId,omitempty"`
+	Title          *string                                             `json:"title,omitempty" xml:"title,omitempty"`
+}
+
+func (s GetCompareDetailResponseBodyResultCommits) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCompareDetailResponseBodyResultCommits) GoString() string {
+	return s.String()
+}
+
+func (s *GetCompareDetailResponseBodyResultCommits) SetAuthor(v *GetCompareDetailResponseBodyResultCommitsAuthor) *GetCompareDetailResponseBodyResultCommits {
+	s.Author = v
+	return s
+}
+
+func (s *GetCompareDetailResponseBodyResultCommits) SetAuthorEmail(v string) *GetCompareDetailResponseBodyResultCommits {
+	s.AuthorEmail = &v
+	return s
+}
+
+func (s *GetCompareDetailResponseBodyResultCommits) SetAuthorName(v string) *GetCompareDetailResponseBodyResultCommits {
+	s.AuthorName = &v
+	return s
+}
+
+func (s *GetCompareDetailResponseBodyResultCommits) SetAuthoredDate(v string) *GetCompareDetailResponseBodyResultCommits {
+	s.AuthoredDate = &v
+	return s
+}
+
+func (s *GetCompareDetailResponseBodyResultCommits) SetCommentsCount(v int64) *GetCompareDetailResponseBodyResultCommits {
+	s.CommentsCount = &v
+	return s
+}
+
+func (s *GetCompareDetailResponseBodyResultCommits) SetCommittedDate(v string) *GetCompareDetailResponseBodyResultCommits {
+	s.CommittedDate = &v
+	return s
+}
+
+func (s *GetCompareDetailResponseBodyResultCommits) SetCommitter(v *GetCompareDetailResponseBodyResultCommitsCommitter) *GetCompareDetailResponseBodyResultCommits {
+	s.Committer = v
+	return s
+}
+
+func (s *GetCompareDetailResponseBodyResultCommits) SetCommitterEmail(v string) *GetCompareDetailResponseBodyResultCommits {
+	s.CommitterEmail = &v
+	return s
+}
+
+func (s *GetCompareDetailResponseBodyResultCommits) SetCommitterName(v string) *GetCompareDetailResponseBodyResultCommits {
+	s.CommitterName = &v
+	return s
+}
+
+func (s *GetCompareDetailResponseBodyResultCommits) SetCreatedAt(v string) *GetCompareDetailResponseBodyResultCommits {
+	s.CreatedAt = &v
+	return s
+}
+
+func (s *GetCompareDetailResponseBodyResultCommits) SetId(v string) *GetCompareDetailResponseBodyResultCommits {
+	s.Id = &v
+	return s
+}
+
+func (s *GetCompareDetailResponseBodyResultCommits) SetMessage(v string) *GetCompareDetailResponseBodyResultCommits {
+	s.Message = &v
+	return s
+}
+
+func (s *GetCompareDetailResponseBodyResultCommits) SetParentIds(v []*string) *GetCompareDetailResponseBodyResultCommits {
+	s.ParentIds = v
+	return s
+}
+
+func (s *GetCompareDetailResponseBodyResultCommits) SetShortId(v string) *GetCompareDetailResponseBodyResultCommits {
+	s.ShortId = &v
+	return s
+}
+
+func (s *GetCompareDetailResponseBodyResultCommits) SetTitle(v string) *GetCompareDetailResponseBodyResultCommits {
+	s.Title = &v
+	return s
+}
+
+type GetCompareDetailResponseBodyResultCommitsAuthor struct {
+	AvatarUrl  *string `json:"avatarUrl,omitempty" xml:"avatarUrl,omitempty"`
+	Email      *string `json:"email,omitempty" xml:"email,omitempty"`
+	ExternUid  *string `json:"externUid,omitempty" xml:"externUid,omitempty"`
+	Id         *int64  `json:"id,omitempty" xml:"id,omitempty"`
+	Name       *string `json:"name,omitempty" xml:"name,omitempty"`
+	State      *string `json:"state,omitempty" xml:"state,omitempty"`
+	Username   *string `json:"username,omitempty" xml:"username,omitempty"`
+	WebsiteUrl *string `json:"websiteUrl,omitempty" xml:"websiteUrl,omitempty"`
+}
+
+func (s GetCompareDetailResponseBodyResultCommitsAuthor) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCompareDetailResponseBodyResultCommitsAuthor) GoString() string {
+	return s.String()
+}
+
+func (s *GetCompareDetailResponseBodyResultCommitsAuthor) SetAvatarUrl(v string) *GetCompareDetailResponseBodyResultCommitsAuthor {
+	s.AvatarUrl = &v
+	return s
+}
+
+func (s *GetCompareDetailResponseBodyResultCommitsAuthor) SetEmail(v string) *GetCompareDetailResponseBodyResultCommitsAuthor {
+	s.Email = &v
+	return s
+}
+
+func (s *GetCompareDetailResponseBodyResultCommitsAuthor) SetExternUid(v string) *GetCompareDetailResponseBodyResultCommitsAuthor {
+	s.ExternUid = &v
+	return s
+}
+
+func (s *GetCompareDetailResponseBodyResultCommitsAuthor) SetId(v int64) *GetCompareDetailResponseBodyResultCommitsAuthor {
+	s.Id = &v
+	return s
+}
+
+func (s *GetCompareDetailResponseBodyResultCommitsAuthor) SetName(v string) *GetCompareDetailResponseBodyResultCommitsAuthor {
+	s.Name = &v
+	return s
+}
+
+func (s *GetCompareDetailResponseBodyResultCommitsAuthor) SetState(v string) *GetCompareDetailResponseBodyResultCommitsAuthor {
+	s.State = &v
+	return s
+}
+
+func (s *GetCompareDetailResponseBodyResultCommitsAuthor) SetUsername(v string) *GetCompareDetailResponseBodyResultCommitsAuthor {
+	s.Username = &v
+	return s
+}
+
+func (s *GetCompareDetailResponseBodyResultCommitsAuthor) SetWebsiteUrl(v string) *GetCompareDetailResponseBodyResultCommitsAuthor {
+	s.WebsiteUrl = &v
+	return s
+}
+
+type GetCompareDetailResponseBodyResultCommitsCommitter struct {
+	AvatarUrl  *string `json:"avatarUrl,omitempty" xml:"avatarUrl,omitempty"`
+	Email      *string `json:"email,omitempty" xml:"email,omitempty"`
+	ExternUid  *string `json:"externUid,omitempty" xml:"externUid,omitempty"`
+	Id         *int64  `json:"id,omitempty" xml:"id,omitempty"`
+	Name       *string `json:"name,omitempty" xml:"name,omitempty"`
+	State      *string `json:"state,omitempty" xml:"state,omitempty"`
+	Username   *string `json:"username,omitempty" xml:"username,omitempty"`
+	WebsiteUrl *string `json:"websiteUrl,omitempty" xml:"websiteUrl,omitempty"`
+}
+
+func (s GetCompareDetailResponseBodyResultCommitsCommitter) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCompareDetailResponseBodyResultCommitsCommitter) GoString() string {
+	return s.String()
+}
+
+func (s *GetCompareDetailResponseBodyResultCommitsCommitter) SetAvatarUrl(v string) *GetCompareDetailResponseBodyResultCommitsCommitter {
+	s.AvatarUrl = &v
+	return s
+}
+
+func (s *GetCompareDetailResponseBodyResultCommitsCommitter) SetEmail(v string) *GetCompareDetailResponseBodyResultCommitsCommitter {
+	s.Email = &v
+	return s
+}
+
+func (s *GetCompareDetailResponseBodyResultCommitsCommitter) SetExternUid(v string) *GetCompareDetailResponseBodyResultCommitsCommitter {
+	s.ExternUid = &v
+	return s
+}
+
+func (s *GetCompareDetailResponseBodyResultCommitsCommitter) SetId(v int64) *GetCompareDetailResponseBodyResultCommitsCommitter {
+	s.Id = &v
+	return s
+}
+
+func (s *GetCompareDetailResponseBodyResultCommitsCommitter) SetName(v string) *GetCompareDetailResponseBodyResultCommitsCommitter {
+	s.Name = &v
+	return s
+}
+
+func (s *GetCompareDetailResponseBodyResultCommitsCommitter) SetState(v string) *GetCompareDetailResponseBodyResultCommitsCommitter {
+	s.State = &v
+	return s
+}
+
+func (s *GetCompareDetailResponseBodyResultCommitsCommitter) SetUsername(v string) *GetCompareDetailResponseBodyResultCommitsCommitter {
+	s.Username = &v
+	return s
+}
+
+func (s *GetCompareDetailResponseBodyResultCommitsCommitter) SetWebsiteUrl(v string) *GetCompareDetailResponseBodyResultCommitsCommitter {
+	s.WebsiteUrl = &v
+	return s
+}
+
+type GetCompareDetailResponseBodyResultDiffs struct {
+	AMode       *string `json:"aMode,omitempty" xml:"aMode,omitempty"`
+	BMode       *string `json:"bMode,omitempty" xml:"bMode,omitempty"`
+	DeletedFile *bool   `json:"deletedFile,omitempty" xml:"deletedFile,omitempty"`
+	Diff        *string `json:"diff,omitempty" xml:"diff,omitempty"`
+	IsBinary    *bool   `json:"isBinary,omitempty" xml:"isBinary,omitempty"`
+	IsNewLfs    *bool   `json:"isNewLfs,omitempty" xml:"isNewLfs,omitempty"`
+	IsOldLfs    *bool   `json:"isOldLfs,omitempty" xml:"isOldLfs,omitempty"`
+	NewFile     *bool   `json:"newFile,omitempty" xml:"newFile,omitempty"`
+	NewId       *string `json:"newId,omitempty" xml:"newId,omitempty"`
+	NewPath     *string `json:"newPath,omitempty" xml:"newPath,omitempty"`
+	OldId       *string `json:"oldId,omitempty" xml:"oldId,omitempty"`
+	OldPath     *string `json:"oldPath,omitempty" xml:"oldPath,omitempty"`
+	RenamedFile *bool   `json:"renamedFile,omitempty" xml:"renamedFile,omitempty"`
+}
+
+func (s GetCompareDetailResponseBodyResultDiffs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCompareDetailResponseBodyResultDiffs) GoString() string {
+	return s.String()
+}
+
+func (s *GetCompareDetailResponseBodyResultDiffs) SetAMode(v string) *GetCompareDetailResponseBodyResultDiffs {
+	s.AMode = &v
+	return s
+}
+
+func (s *GetCompareDetailResponseBodyResultDiffs) SetBMode(v string) *GetCompareDetailResponseBodyResultDiffs {
+	s.BMode = &v
+	return s
+}
+
+func (s *GetCompareDetailResponseBodyResultDiffs) SetDeletedFile(v bool) *GetCompareDetailResponseBodyResultDiffs {
+	s.DeletedFile = &v
+	return s
+}
+
+func (s *GetCompareDetailResponseBodyResultDiffs) SetDiff(v string) *GetCompareDetailResponseBodyResultDiffs {
+	s.Diff = &v
+	return s
+}
+
+func (s *GetCompareDetailResponseBodyResultDiffs) SetIsBinary(v bool) *GetCompareDetailResponseBodyResultDiffs {
+	s.IsBinary = &v
+	return s
+}
+
+func (s *GetCompareDetailResponseBodyResultDiffs) SetIsNewLfs(v bool) *GetCompareDetailResponseBodyResultDiffs {
+	s.IsNewLfs = &v
+	return s
+}
+
+func (s *GetCompareDetailResponseBodyResultDiffs) SetIsOldLfs(v bool) *GetCompareDetailResponseBodyResultDiffs {
+	s.IsOldLfs = &v
+	return s
+}
+
+func (s *GetCompareDetailResponseBodyResultDiffs) SetNewFile(v bool) *GetCompareDetailResponseBodyResultDiffs {
+	s.NewFile = &v
+	return s
+}
+
+func (s *GetCompareDetailResponseBodyResultDiffs) SetNewId(v string) *GetCompareDetailResponseBodyResultDiffs {
+	s.NewId = &v
+	return s
+}
+
+func (s *GetCompareDetailResponseBodyResultDiffs) SetNewPath(v string) *GetCompareDetailResponseBodyResultDiffs {
+	s.NewPath = &v
+	return s
+}
+
+func (s *GetCompareDetailResponseBodyResultDiffs) SetOldId(v string) *GetCompareDetailResponseBodyResultDiffs {
+	s.OldId = &v
+	return s
+}
+
+func (s *GetCompareDetailResponseBodyResultDiffs) SetOldPath(v string) *GetCompareDetailResponseBodyResultDiffs {
+	s.OldPath = &v
+	return s
+}
+
+func (s *GetCompareDetailResponseBodyResultDiffs) SetRenamedFile(v bool) *GetCompareDetailResponseBodyResultDiffs {
+	s.RenamedFile = &v
+	return s
+}
+
+type GetCompareDetailResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetCompareDetailResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetCompareDetailResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCompareDetailResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetCompareDetailResponse) SetHeaders(v map[string]*string) *GetCompareDetailResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetCompareDetailResponse) SetStatusCode(v int32) *GetCompareDetailResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetCompareDetailResponse) SetBody(v *GetCompareDetailResponseBody) *GetCompareDetailResponse {
+	s.Body = v
+	return s
+}
+
 type GetCustomFieldOptionRequest struct {
 	SpaceIdentifier        *string `json:"spaceIdentifier,omitempty" xml:"spaceIdentifier,omitempty"`
 	SpaceType              *string `json:"spaceType,omitempty" xml:"spaceType,omitempty"`
@@ -11546,6 +12000,222 @@ func (s *GetRepositoryTagResponse) SetStatusCode(v int32) *GetRepositoryTagRespo
 }
 
 func (s *GetRepositoryTagResponse) SetBody(v *GetRepositoryTagResponseBody) *GetRepositoryTagResponse {
+	s.Body = v
+	return s
+}
+
+type GetSearchCodePreviewRequest struct {
+	DocId          *string `json:"docId,omitempty" xml:"docId,omitempty"`
+	IsDsl          *bool   `json:"isDsl,omitempty" xml:"isDsl,omitempty"`
+	Keyword        *string `json:"keyword,omitempty" xml:"keyword,omitempty"`
+	OrganizationId *string `json:"organizationId,omitempty" xml:"organizationId,omitempty"`
+}
+
+func (s GetSearchCodePreviewRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSearchCodePreviewRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetSearchCodePreviewRequest) SetDocId(v string) *GetSearchCodePreviewRequest {
+	s.DocId = &v
+	return s
+}
+
+func (s *GetSearchCodePreviewRequest) SetIsDsl(v bool) *GetSearchCodePreviewRequest {
+	s.IsDsl = &v
+	return s
+}
+
+func (s *GetSearchCodePreviewRequest) SetKeyword(v string) *GetSearchCodePreviewRequest {
+	s.Keyword = &v
+	return s
+}
+
+func (s *GetSearchCodePreviewRequest) SetOrganizationId(v string) *GetSearchCodePreviewRequest {
+	s.OrganizationId = &v
+	return s
+}
+
+type GetSearchCodePreviewResponseBody struct {
+	ErrorCode    *string                                 `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMessage *string                                 `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	RequestId    *string                                 `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Result       *GetSearchCodePreviewResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
+	Success      *bool                                   `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s GetSearchCodePreviewResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSearchCodePreviewResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetSearchCodePreviewResponseBody) SetErrorCode(v string) *GetSearchCodePreviewResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetSearchCodePreviewResponseBody) SetErrorMessage(v string) *GetSearchCodePreviewResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetSearchCodePreviewResponseBody) SetRequestId(v string) *GetSearchCodePreviewResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetSearchCodePreviewResponseBody) SetResult(v *GetSearchCodePreviewResponseBodyResult) *GetSearchCodePreviewResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *GetSearchCodePreviewResponseBody) SetSuccess(v bool) *GetSearchCodePreviewResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetSearchCodePreviewResponseBodyResult struct {
+	DocId            *string                                                 `json:"docId,omitempty" xml:"docId,omitempty"`
+	HighlightTextMap *GetSearchCodePreviewResponseBodyResultHighlightTextMap `json:"highlightTextMap,omitempty" xml:"highlightTextMap,omitempty" type:"Struct"`
+	Source           *GetSearchCodePreviewResponseBodyResultSource           `json:"source,omitempty" xml:"source,omitempty" type:"Struct"`
+}
+
+func (s GetSearchCodePreviewResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSearchCodePreviewResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *GetSearchCodePreviewResponseBodyResult) SetDocId(v string) *GetSearchCodePreviewResponseBodyResult {
+	s.DocId = &v
+	return s
+}
+
+func (s *GetSearchCodePreviewResponseBodyResult) SetHighlightTextMap(v *GetSearchCodePreviewResponseBodyResultHighlightTextMap) *GetSearchCodePreviewResponseBodyResult {
+	s.HighlightTextMap = v
+	return s
+}
+
+func (s *GetSearchCodePreviewResponseBodyResult) SetSource(v *GetSearchCodePreviewResponseBodyResultSource) *GetSearchCodePreviewResponseBodyResult {
+	s.Source = v
+	return s
+}
+
+type GetSearchCodePreviewResponseBodyResultHighlightTextMap struct {
+	Clob           *string `json:"clob,omitempty" xml:"clob,omitempty"`
+	FileName       *string `json:"fileName,omitempty" xml:"fileName,omitempty"`
+	OrganizationId *string `json:"organizationId,omitempty" xml:"organizationId,omitempty"`
+}
+
+func (s GetSearchCodePreviewResponseBodyResultHighlightTextMap) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSearchCodePreviewResponseBodyResultHighlightTextMap) GoString() string {
+	return s.String()
+}
+
+func (s *GetSearchCodePreviewResponseBodyResultHighlightTextMap) SetClob(v string) *GetSearchCodePreviewResponseBodyResultHighlightTextMap {
+	s.Clob = &v
+	return s
+}
+
+func (s *GetSearchCodePreviewResponseBodyResultHighlightTextMap) SetFileName(v string) *GetSearchCodePreviewResponseBodyResultHighlightTextMap {
+	s.FileName = &v
+	return s
+}
+
+func (s *GetSearchCodePreviewResponseBodyResultHighlightTextMap) SetOrganizationId(v string) *GetSearchCodePreviewResponseBodyResultHighlightTextMap {
+	s.OrganizationId = &v
+	return s
+}
+
+type GetSearchCodePreviewResponseBodyResultSource struct {
+	Branch         *string `json:"branch,omitempty" xml:"branch,omitempty"`
+	CheckinDate    *string `json:"checkinDate,omitempty" xml:"checkinDate,omitempty"`
+	FileName       *string `json:"fileName,omitempty" xml:"fileName,omitempty"`
+	FilePath       *string `json:"filePath,omitempty" xml:"filePath,omitempty"`
+	Language       *string `json:"language,omitempty" xml:"language,omitempty"`
+	OrganizationId *string `json:"organizationId,omitempty" xml:"organizationId,omitempty"`
+	RepoPath       *string `json:"repoPath,omitempty" xml:"repoPath,omitempty"`
+}
+
+func (s GetSearchCodePreviewResponseBodyResultSource) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSearchCodePreviewResponseBodyResultSource) GoString() string {
+	return s.String()
+}
+
+func (s *GetSearchCodePreviewResponseBodyResultSource) SetBranch(v string) *GetSearchCodePreviewResponseBodyResultSource {
+	s.Branch = &v
+	return s
+}
+
+func (s *GetSearchCodePreviewResponseBodyResultSource) SetCheckinDate(v string) *GetSearchCodePreviewResponseBodyResultSource {
+	s.CheckinDate = &v
+	return s
+}
+
+func (s *GetSearchCodePreviewResponseBodyResultSource) SetFileName(v string) *GetSearchCodePreviewResponseBodyResultSource {
+	s.FileName = &v
+	return s
+}
+
+func (s *GetSearchCodePreviewResponseBodyResultSource) SetFilePath(v string) *GetSearchCodePreviewResponseBodyResultSource {
+	s.FilePath = &v
+	return s
+}
+
+func (s *GetSearchCodePreviewResponseBodyResultSource) SetLanguage(v string) *GetSearchCodePreviewResponseBodyResultSource {
+	s.Language = &v
+	return s
+}
+
+func (s *GetSearchCodePreviewResponseBodyResultSource) SetOrganizationId(v string) *GetSearchCodePreviewResponseBodyResultSource {
+	s.OrganizationId = &v
+	return s
+}
+
+func (s *GetSearchCodePreviewResponseBodyResultSource) SetRepoPath(v string) *GetSearchCodePreviewResponseBodyResultSource {
+	s.RepoPath = &v
+	return s
+}
+
+type GetSearchCodePreviewResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetSearchCodePreviewResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetSearchCodePreviewResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSearchCodePreviewResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetSearchCodePreviewResponse) SetHeaders(v map[string]*string) *GetSearchCodePreviewResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetSearchCodePreviewResponse) SetStatusCode(v int32) *GetSearchCodePreviewResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetSearchCodePreviewResponse) SetBody(v *GetSearchCodePreviewResponseBody) *GetSearchCodePreviewResponse {
 	s.Body = v
 	return s
 }
@@ -19753,6 +20423,949 @@ func (s *ListResourceMembersResponse) SetBody(v *ListResourceMembersResponseBody
 	return s
 }
 
+type ListSearchCommitRequest struct {
+	Keyword        *string                          `json:"keyword,omitempty" xml:"keyword,omitempty"`
+	Order          *string                          `json:"order,omitempty" xml:"order,omitempty"`
+	Page           *int32                           `json:"page,omitempty" xml:"page,omitempty"`
+	PageSize       *int32                           `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	RepoPath       *ListSearchCommitRequestRepoPath `json:"repoPath,omitempty" xml:"repoPath,omitempty" type:"Struct"`
+	Scope          *string                          `json:"scope,omitempty" xml:"scope,omitempty"`
+	Sort           *string                          `json:"sort,omitempty" xml:"sort,omitempty"`
+	OrganizationId *string                          `json:"organizationId,omitempty" xml:"organizationId,omitempty"`
+}
+
+func (s ListSearchCommitRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSearchCommitRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListSearchCommitRequest) SetKeyword(v string) *ListSearchCommitRequest {
+	s.Keyword = &v
+	return s
+}
+
+func (s *ListSearchCommitRequest) SetOrder(v string) *ListSearchCommitRequest {
+	s.Order = &v
+	return s
+}
+
+func (s *ListSearchCommitRequest) SetPage(v int32) *ListSearchCommitRequest {
+	s.Page = &v
+	return s
+}
+
+func (s *ListSearchCommitRequest) SetPageSize(v int32) *ListSearchCommitRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListSearchCommitRequest) SetRepoPath(v *ListSearchCommitRequestRepoPath) *ListSearchCommitRequest {
+	s.RepoPath = v
+	return s
+}
+
+func (s *ListSearchCommitRequest) SetScope(v string) *ListSearchCommitRequest {
+	s.Scope = &v
+	return s
+}
+
+func (s *ListSearchCommitRequest) SetSort(v string) *ListSearchCommitRequest {
+	s.Sort = &v
+	return s
+}
+
+func (s *ListSearchCommitRequest) SetOrganizationId(v string) *ListSearchCommitRequest {
+	s.OrganizationId = &v
+	return s
+}
+
+type ListSearchCommitRequestRepoPath struct {
+	MatchType    *string `json:"matchType,omitempty" xml:"matchType,omitempty"`
+	OperatorType *string `json:"operatorType,omitempty" xml:"operatorType,omitempty"`
+	Value        *string `json:"value,omitempty" xml:"value,omitempty"`
+}
+
+func (s ListSearchCommitRequestRepoPath) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSearchCommitRequestRepoPath) GoString() string {
+	return s.String()
+}
+
+func (s *ListSearchCommitRequestRepoPath) SetMatchType(v string) *ListSearchCommitRequestRepoPath {
+	s.MatchType = &v
+	return s
+}
+
+func (s *ListSearchCommitRequestRepoPath) SetOperatorType(v string) *ListSearchCommitRequestRepoPath {
+	s.OperatorType = &v
+	return s
+}
+
+func (s *ListSearchCommitRequestRepoPath) SetValue(v string) *ListSearchCommitRequestRepoPath {
+	s.Value = &v
+	return s
+}
+
+type ListSearchCommitResponseBody struct {
+	ErrorCode    *string                               `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMessage *string                               `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	RequestId    *string                               `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Result       []*ListSearchCommitResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Repeated"`
+	Success      *bool                                 `json:"success,omitempty" xml:"success,omitempty"`
+	Total        *int64                                `json:"total,omitempty" xml:"total,omitempty"`
+}
+
+func (s ListSearchCommitResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSearchCommitResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListSearchCommitResponseBody) SetErrorCode(v string) *ListSearchCommitResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ListSearchCommitResponseBody) SetErrorMessage(v string) *ListSearchCommitResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *ListSearchCommitResponseBody) SetRequestId(v string) *ListSearchCommitResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListSearchCommitResponseBody) SetResult(v []*ListSearchCommitResponseBodyResult) *ListSearchCommitResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *ListSearchCommitResponseBody) SetSuccess(v bool) *ListSearchCommitResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *ListSearchCommitResponseBody) SetTotal(v int64) *ListSearchCommitResponseBody {
+	s.Total = &v
+	return s
+}
+
+type ListSearchCommitResponseBodyResult struct {
+	DocId            *string                                             `json:"docId,omitempty" xml:"docId,omitempty"`
+	HighlightTextMap *ListSearchCommitResponseBodyResultHighlightTextMap `json:"highlightTextMap,omitempty" xml:"highlightTextMap,omitempty" type:"Struct"`
+	Source           *ListSearchCommitResponseBodyResultSource           `json:"source,omitempty" xml:"source,omitempty" type:"Struct"`
+}
+
+func (s ListSearchCommitResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSearchCommitResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *ListSearchCommitResponseBodyResult) SetDocId(v string) *ListSearchCommitResponseBodyResult {
+	s.DocId = &v
+	return s
+}
+
+func (s *ListSearchCommitResponseBodyResult) SetHighlightTextMap(v *ListSearchCommitResponseBodyResultHighlightTextMap) *ListSearchCommitResponseBodyResult {
+	s.HighlightTextMap = v
+	return s
+}
+
+func (s *ListSearchCommitResponseBodyResult) SetSource(v *ListSearchCommitResponseBodyResultSource) *ListSearchCommitResponseBodyResult {
+	s.Source = v
+	return s
+}
+
+type ListSearchCommitResponseBodyResultHighlightTextMap struct {
+	CommitId       *string `json:"commitId,omitempty" xml:"commitId,omitempty"`
+	CommitMessage  *string `json:"commitMessage,omitempty" xml:"commitMessage,omitempty"`
+	OrganizationId *string `json:"organizationId,omitempty" xml:"organizationId,omitempty"`
+	Title          *string `json:"title,omitempty" xml:"title,omitempty"`
+}
+
+func (s ListSearchCommitResponseBodyResultHighlightTextMap) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSearchCommitResponseBodyResultHighlightTextMap) GoString() string {
+	return s.String()
+}
+
+func (s *ListSearchCommitResponseBodyResultHighlightTextMap) SetCommitId(v string) *ListSearchCommitResponseBodyResultHighlightTextMap {
+	s.CommitId = &v
+	return s
+}
+
+func (s *ListSearchCommitResponseBodyResultHighlightTextMap) SetCommitMessage(v string) *ListSearchCommitResponseBodyResultHighlightTextMap {
+	s.CommitMessage = &v
+	return s
+}
+
+func (s *ListSearchCommitResponseBodyResultHighlightTextMap) SetOrganizationId(v string) *ListSearchCommitResponseBodyResultHighlightTextMap {
+	s.OrganizationId = &v
+	return s
+}
+
+func (s *ListSearchCommitResponseBodyResultHighlightTextMap) SetTitle(v string) *ListSearchCommitResponseBodyResultHighlightTextMap {
+	s.Title = &v
+	return s
+}
+
+type ListSearchCommitResponseBodyResultSource struct {
+	Author         *ListSearchCommitResponseBodyResultSourceAuthor `json:"author,omitempty" xml:"author,omitempty" type:"Struct"`
+	AuthorTime     *string                                         `json:"authorTime,omitempty" xml:"authorTime,omitempty"`
+	CommitId       *string                                         `json:"commitId,omitempty" xml:"commitId,omitempty"`
+	CommitMessage  *string                                         `json:"commitMessage,omitempty" xml:"commitMessage,omitempty"`
+	OrganizationId *string                                         `json:"organizationId,omitempty" xml:"organizationId,omitempty"`
+	RepoPath       *string                                         `json:"repoPath,omitempty" xml:"repoPath,omitempty"`
+	Title          *string                                         `json:"title,omitempty" xml:"title,omitempty"`
+}
+
+func (s ListSearchCommitResponseBodyResultSource) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSearchCommitResponseBodyResultSource) GoString() string {
+	return s.String()
+}
+
+func (s *ListSearchCommitResponseBodyResultSource) SetAuthor(v *ListSearchCommitResponseBodyResultSourceAuthor) *ListSearchCommitResponseBodyResultSource {
+	s.Author = v
+	return s
+}
+
+func (s *ListSearchCommitResponseBodyResultSource) SetAuthorTime(v string) *ListSearchCommitResponseBodyResultSource {
+	s.AuthorTime = &v
+	return s
+}
+
+func (s *ListSearchCommitResponseBodyResultSource) SetCommitId(v string) *ListSearchCommitResponseBodyResultSource {
+	s.CommitId = &v
+	return s
+}
+
+func (s *ListSearchCommitResponseBodyResultSource) SetCommitMessage(v string) *ListSearchCommitResponseBodyResultSource {
+	s.CommitMessage = &v
+	return s
+}
+
+func (s *ListSearchCommitResponseBodyResultSource) SetOrganizationId(v string) *ListSearchCommitResponseBodyResultSource {
+	s.OrganizationId = &v
+	return s
+}
+
+func (s *ListSearchCommitResponseBodyResultSource) SetRepoPath(v string) *ListSearchCommitResponseBodyResultSource {
+	s.RepoPath = &v
+	return s
+}
+
+func (s *ListSearchCommitResponseBodyResultSource) SetTitle(v string) *ListSearchCommitResponseBodyResultSource {
+	s.Title = &v
+	return s
+}
+
+type ListSearchCommitResponseBodyResultSourceAuthor struct {
+	Email *string `json:"email,omitempty" xml:"email,omitempty"`
+	Name  *string `json:"name,omitempty" xml:"name,omitempty"`
+}
+
+func (s ListSearchCommitResponseBodyResultSourceAuthor) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSearchCommitResponseBodyResultSourceAuthor) GoString() string {
+	return s.String()
+}
+
+func (s *ListSearchCommitResponseBodyResultSourceAuthor) SetEmail(v string) *ListSearchCommitResponseBodyResultSourceAuthor {
+	s.Email = &v
+	return s
+}
+
+func (s *ListSearchCommitResponseBodyResultSourceAuthor) SetName(v string) *ListSearchCommitResponseBodyResultSourceAuthor {
+	s.Name = &v
+	return s
+}
+
+type ListSearchCommitResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListSearchCommitResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListSearchCommitResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSearchCommitResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListSearchCommitResponse) SetHeaders(v map[string]*string) *ListSearchCommitResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListSearchCommitResponse) SetStatusCode(v int32) *ListSearchCommitResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListSearchCommitResponse) SetBody(v *ListSearchCommitResponseBody) *ListSearchCommitResponse {
+	s.Body = v
+	return s
+}
+
+type ListSearchRepositoryRequest struct {
+	AliyunPk        *string                              `json:"aliyunPk,omitempty" xml:"aliyunPk,omitempty"`
+	Keyword         *string                              `json:"keyword,omitempty" xml:"keyword,omitempty"`
+	Order           *string                              `json:"order,omitempty" xml:"order,omitempty"`
+	Page            *int32                               `json:"page,omitempty" xml:"page,omitempty"`
+	PageSize        *int32                               `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	RepoPath        *ListSearchRepositoryRequestRepoPath `json:"repoPath,omitempty" xml:"repoPath,omitempty" type:"Struct"`
+	Scope           *string                              `json:"scope,omitempty" xml:"scope,omitempty"`
+	Sort            *string                              `json:"sort,omitempty" xml:"sort,omitempty"`
+	VisibilityLevel *int32                               `json:"visibilityLevel,omitempty" xml:"visibilityLevel,omitempty"`
+	OrganizationId  *string                              `json:"organizationId,omitempty" xml:"organizationId,omitempty"`
+}
+
+func (s ListSearchRepositoryRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSearchRepositoryRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListSearchRepositoryRequest) SetAliyunPk(v string) *ListSearchRepositoryRequest {
+	s.AliyunPk = &v
+	return s
+}
+
+func (s *ListSearchRepositoryRequest) SetKeyword(v string) *ListSearchRepositoryRequest {
+	s.Keyword = &v
+	return s
+}
+
+func (s *ListSearchRepositoryRequest) SetOrder(v string) *ListSearchRepositoryRequest {
+	s.Order = &v
+	return s
+}
+
+func (s *ListSearchRepositoryRequest) SetPage(v int32) *ListSearchRepositoryRequest {
+	s.Page = &v
+	return s
+}
+
+func (s *ListSearchRepositoryRequest) SetPageSize(v int32) *ListSearchRepositoryRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListSearchRepositoryRequest) SetRepoPath(v *ListSearchRepositoryRequestRepoPath) *ListSearchRepositoryRequest {
+	s.RepoPath = v
+	return s
+}
+
+func (s *ListSearchRepositoryRequest) SetScope(v string) *ListSearchRepositoryRequest {
+	s.Scope = &v
+	return s
+}
+
+func (s *ListSearchRepositoryRequest) SetSort(v string) *ListSearchRepositoryRequest {
+	s.Sort = &v
+	return s
+}
+
+func (s *ListSearchRepositoryRequest) SetVisibilityLevel(v int32) *ListSearchRepositoryRequest {
+	s.VisibilityLevel = &v
+	return s
+}
+
+func (s *ListSearchRepositoryRequest) SetOrganizationId(v string) *ListSearchRepositoryRequest {
+	s.OrganizationId = &v
+	return s
+}
+
+type ListSearchRepositoryRequestRepoPath struct {
+	MatchType    *string `json:"matchType,omitempty" xml:"matchType,omitempty"`
+	OperatorType *string `json:"operatorType,omitempty" xml:"operatorType,omitempty"`
+	Value        *string `json:"value,omitempty" xml:"value,omitempty"`
+}
+
+func (s ListSearchRepositoryRequestRepoPath) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSearchRepositoryRequestRepoPath) GoString() string {
+	return s.String()
+}
+
+func (s *ListSearchRepositoryRequestRepoPath) SetMatchType(v string) *ListSearchRepositoryRequestRepoPath {
+	s.MatchType = &v
+	return s
+}
+
+func (s *ListSearchRepositoryRequestRepoPath) SetOperatorType(v string) *ListSearchRepositoryRequestRepoPath {
+	s.OperatorType = &v
+	return s
+}
+
+func (s *ListSearchRepositoryRequestRepoPath) SetValue(v string) *ListSearchRepositoryRequestRepoPath {
+	s.Value = &v
+	return s
+}
+
+type ListSearchRepositoryResponseBody struct {
+	ErrorCode    *string                                   `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMessage *string                                   `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	RequestId    *string                                   `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Result       []*ListSearchRepositoryResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Repeated"`
+	Success      *bool                                     `json:"success,omitempty" xml:"success,omitempty"`
+	Total        *int64                                    `json:"total,omitempty" xml:"total,omitempty"`
+}
+
+func (s ListSearchRepositoryResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSearchRepositoryResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListSearchRepositoryResponseBody) SetErrorCode(v string) *ListSearchRepositoryResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ListSearchRepositoryResponseBody) SetErrorMessage(v string) *ListSearchRepositoryResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *ListSearchRepositoryResponseBody) SetRequestId(v string) *ListSearchRepositoryResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListSearchRepositoryResponseBody) SetResult(v []*ListSearchRepositoryResponseBodyResult) *ListSearchRepositoryResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *ListSearchRepositoryResponseBody) SetSuccess(v bool) *ListSearchRepositoryResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *ListSearchRepositoryResponseBody) SetTotal(v int64) *ListSearchRepositoryResponseBody {
+	s.Total = &v
+	return s
+}
+
+type ListSearchRepositoryResponseBodyResult struct {
+	DocId            *string                                                 `json:"docId,omitempty" xml:"docId,omitempty"`
+	HighlightTextMap *ListSearchRepositoryResponseBodyResultHighlightTextMap `json:"highlightTextMap,omitempty" xml:"highlightTextMap,omitempty" type:"Struct"`
+	Source           *ListSearchRepositoryResponseBodyResultSource           `json:"source,omitempty" xml:"source,omitempty" type:"Struct"`
+}
+
+func (s ListSearchRepositoryResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSearchRepositoryResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *ListSearchRepositoryResponseBodyResult) SetDocId(v string) *ListSearchRepositoryResponseBodyResult {
+	s.DocId = &v
+	return s
+}
+
+func (s *ListSearchRepositoryResponseBodyResult) SetHighlightTextMap(v *ListSearchRepositoryResponseBodyResultHighlightTextMap) *ListSearchRepositoryResponseBodyResult {
+	s.HighlightTextMap = v
+	return s
+}
+
+func (s *ListSearchRepositoryResponseBodyResult) SetSource(v *ListSearchRepositoryResponseBodyResultSource) *ListSearchRepositoryResponseBodyResult {
+	s.Source = v
+	return s
+}
+
+type ListSearchRepositoryResponseBodyResultHighlightTextMap struct {
+	CreatorUserId         *string `json:"creatorUserId,omitempty" xml:"creatorUserId,omitempty"`
+	Description           *string `json:"description,omitempty" xml:"description,omitempty"`
+	OrganizationId        *string `json:"organizationId,omitempty" xml:"organizationId,omitempty"`
+	ReadMe                *string `json:"readMe,omitempty" xml:"readMe,omitempty"`
+	RepoNameWithNamespace *string `json:"repoNameWithNamespace,omitempty" xml:"repoNameWithNamespace,omitempty"`
+	RepoPath              *string `json:"repoPath,omitempty" xml:"repoPath,omitempty"`
+}
+
+func (s ListSearchRepositoryResponseBodyResultHighlightTextMap) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSearchRepositoryResponseBodyResultHighlightTextMap) GoString() string {
+	return s.String()
+}
+
+func (s *ListSearchRepositoryResponseBodyResultHighlightTextMap) SetCreatorUserId(v string) *ListSearchRepositoryResponseBodyResultHighlightTextMap {
+	s.CreatorUserId = &v
+	return s
+}
+
+func (s *ListSearchRepositoryResponseBodyResultHighlightTextMap) SetDescription(v string) *ListSearchRepositoryResponseBodyResultHighlightTextMap {
+	s.Description = &v
+	return s
+}
+
+func (s *ListSearchRepositoryResponseBodyResultHighlightTextMap) SetOrganizationId(v string) *ListSearchRepositoryResponseBodyResultHighlightTextMap {
+	s.OrganizationId = &v
+	return s
+}
+
+func (s *ListSearchRepositoryResponseBodyResultHighlightTextMap) SetReadMe(v string) *ListSearchRepositoryResponseBodyResultHighlightTextMap {
+	s.ReadMe = &v
+	return s
+}
+
+func (s *ListSearchRepositoryResponseBodyResultHighlightTextMap) SetRepoNameWithNamespace(v string) *ListSearchRepositoryResponseBodyResultHighlightTextMap {
+	s.RepoNameWithNamespace = &v
+	return s
+}
+
+func (s *ListSearchRepositoryResponseBodyResultHighlightTextMap) SetRepoPath(v string) *ListSearchRepositoryResponseBodyResultHighlightTextMap {
+	s.RepoPath = &v
+	return s
+}
+
+type ListSearchRepositoryResponseBodyResultSource struct {
+	CreateTime       *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	Description      *string `json:"description,omitempty" xml:"description,omitempty"`
+	LastActivityTime *string `json:"lastActivityTime,omitempty" xml:"lastActivityTime,omitempty"`
+	OrganizationId   *string `json:"organizationId,omitempty" xml:"organizationId,omitempty"`
+	ReadMe           *string `json:"readMe,omitempty" xml:"readMe,omitempty"`
+	RepoName         *string `json:"repoName,omitempty" xml:"repoName,omitempty"`
+	RepoPath         *string `json:"repoPath,omitempty" xml:"repoPath,omitempty"`
+	VisibilityLevel  *int32  `json:"visibilityLevel,omitempty" xml:"visibilityLevel,omitempty"`
+}
+
+func (s ListSearchRepositoryResponseBodyResultSource) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSearchRepositoryResponseBodyResultSource) GoString() string {
+	return s.String()
+}
+
+func (s *ListSearchRepositoryResponseBodyResultSource) SetCreateTime(v string) *ListSearchRepositoryResponseBodyResultSource {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListSearchRepositoryResponseBodyResultSource) SetDescription(v string) *ListSearchRepositoryResponseBodyResultSource {
+	s.Description = &v
+	return s
+}
+
+func (s *ListSearchRepositoryResponseBodyResultSource) SetLastActivityTime(v string) *ListSearchRepositoryResponseBodyResultSource {
+	s.LastActivityTime = &v
+	return s
+}
+
+func (s *ListSearchRepositoryResponseBodyResultSource) SetOrganizationId(v string) *ListSearchRepositoryResponseBodyResultSource {
+	s.OrganizationId = &v
+	return s
+}
+
+func (s *ListSearchRepositoryResponseBodyResultSource) SetReadMe(v string) *ListSearchRepositoryResponseBodyResultSource {
+	s.ReadMe = &v
+	return s
+}
+
+func (s *ListSearchRepositoryResponseBodyResultSource) SetRepoName(v string) *ListSearchRepositoryResponseBodyResultSource {
+	s.RepoName = &v
+	return s
+}
+
+func (s *ListSearchRepositoryResponseBodyResultSource) SetRepoPath(v string) *ListSearchRepositoryResponseBodyResultSource {
+	s.RepoPath = &v
+	return s
+}
+
+func (s *ListSearchRepositoryResponseBodyResultSource) SetVisibilityLevel(v int32) *ListSearchRepositoryResponseBodyResultSource {
+	s.VisibilityLevel = &v
+	return s
+}
+
+type ListSearchRepositoryResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListSearchRepositoryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListSearchRepositoryResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSearchRepositoryResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListSearchRepositoryResponse) SetHeaders(v map[string]*string) *ListSearchRepositoryResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListSearchRepositoryResponse) SetStatusCode(v int32) *ListSearchRepositoryResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListSearchRepositoryResponse) SetBody(v *ListSearchRepositoryResponseBody) *ListSearchRepositoryResponse {
+	s.Body = v
+	return s
+}
+
+type ListSearchSourceCodeRequest struct {
+	FilePath       *ListSearchSourceCodeRequestFilePath `json:"filePath,omitempty" xml:"filePath,omitempty" type:"Struct"`
+	IsCodeBlock    *bool                                `json:"isCodeBlock,omitempty" xml:"isCodeBlock,omitempty"`
+	Keyword        *string                              `json:"keyword,omitempty" xml:"keyword,omitempty"`
+	Language       *string                              `json:"language,omitempty" xml:"language,omitempty"`
+	Order          *string                              `json:"order,omitempty" xml:"order,omitempty"`
+	Page           *int32                               `json:"page,omitempty" xml:"page,omitempty"`
+	PageSize       *int32                               `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	RepoPath       *ListSearchSourceCodeRequestRepoPath `json:"repoPath,omitempty" xml:"repoPath,omitempty" type:"Struct"`
+	Scope          *string                              `json:"scope,omitempty" xml:"scope,omitempty"`
+	Sort           *string                              `json:"sort,omitempty" xml:"sort,omitempty"`
+	OrganizationId *string                              `json:"organizationId,omitempty" xml:"organizationId,omitempty"`
+}
+
+func (s ListSearchSourceCodeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSearchSourceCodeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListSearchSourceCodeRequest) SetFilePath(v *ListSearchSourceCodeRequestFilePath) *ListSearchSourceCodeRequest {
+	s.FilePath = v
+	return s
+}
+
+func (s *ListSearchSourceCodeRequest) SetIsCodeBlock(v bool) *ListSearchSourceCodeRequest {
+	s.IsCodeBlock = &v
+	return s
+}
+
+func (s *ListSearchSourceCodeRequest) SetKeyword(v string) *ListSearchSourceCodeRequest {
+	s.Keyword = &v
+	return s
+}
+
+func (s *ListSearchSourceCodeRequest) SetLanguage(v string) *ListSearchSourceCodeRequest {
+	s.Language = &v
+	return s
+}
+
+func (s *ListSearchSourceCodeRequest) SetOrder(v string) *ListSearchSourceCodeRequest {
+	s.Order = &v
+	return s
+}
+
+func (s *ListSearchSourceCodeRequest) SetPage(v int32) *ListSearchSourceCodeRequest {
+	s.Page = &v
+	return s
+}
+
+func (s *ListSearchSourceCodeRequest) SetPageSize(v int32) *ListSearchSourceCodeRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListSearchSourceCodeRequest) SetRepoPath(v *ListSearchSourceCodeRequestRepoPath) *ListSearchSourceCodeRequest {
+	s.RepoPath = v
+	return s
+}
+
+func (s *ListSearchSourceCodeRequest) SetScope(v string) *ListSearchSourceCodeRequest {
+	s.Scope = &v
+	return s
+}
+
+func (s *ListSearchSourceCodeRequest) SetSort(v string) *ListSearchSourceCodeRequest {
+	s.Sort = &v
+	return s
+}
+
+func (s *ListSearchSourceCodeRequest) SetOrganizationId(v string) *ListSearchSourceCodeRequest {
+	s.OrganizationId = &v
+	return s
+}
+
+type ListSearchSourceCodeRequestFilePath struct {
+	MatchType    *string `json:"matchType,omitempty" xml:"matchType,omitempty"`
+	OperatorType *string `json:"operatorType,omitempty" xml:"operatorType,omitempty"`
+	Value        *string `json:"value,omitempty" xml:"value,omitempty"`
+}
+
+func (s ListSearchSourceCodeRequestFilePath) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSearchSourceCodeRequestFilePath) GoString() string {
+	return s.String()
+}
+
+func (s *ListSearchSourceCodeRequestFilePath) SetMatchType(v string) *ListSearchSourceCodeRequestFilePath {
+	s.MatchType = &v
+	return s
+}
+
+func (s *ListSearchSourceCodeRequestFilePath) SetOperatorType(v string) *ListSearchSourceCodeRequestFilePath {
+	s.OperatorType = &v
+	return s
+}
+
+func (s *ListSearchSourceCodeRequestFilePath) SetValue(v string) *ListSearchSourceCodeRequestFilePath {
+	s.Value = &v
+	return s
+}
+
+type ListSearchSourceCodeRequestRepoPath struct {
+	MatchType    *string `json:"matchType,omitempty" xml:"matchType,omitempty"`
+	OperatorType *string `json:"operatorType,omitempty" xml:"operatorType,omitempty"`
+	Value        *string `json:"value,omitempty" xml:"value,omitempty"`
+}
+
+func (s ListSearchSourceCodeRequestRepoPath) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSearchSourceCodeRequestRepoPath) GoString() string {
+	return s.String()
+}
+
+func (s *ListSearchSourceCodeRequestRepoPath) SetMatchType(v string) *ListSearchSourceCodeRequestRepoPath {
+	s.MatchType = &v
+	return s
+}
+
+func (s *ListSearchSourceCodeRequestRepoPath) SetOperatorType(v string) *ListSearchSourceCodeRequestRepoPath {
+	s.OperatorType = &v
+	return s
+}
+
+func (s *ListSearchSourceCodeRequestRepoPath) SetValue(v string) *ListSearchSourceCodeRequestRepoPath {
+	s.Value = &v
+	return s
+}
+
+type ListSearchSourceCodeResponseBody struct {
+	ErrorCode    *string                                   `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMessage *string                                   `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	RequestId    *string                                   `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Result       []*ListSearchSourceCodeResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Repeated"`
+	Success      *bool                                     `json:"success,omitempty" xml:"success,omitempty"`
+	Total        *int64                                    `json:"total,omitempty" xml:"total,omitempty"`
+}
+
+func (s ListSearchSourceCodeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSearchSourceCodeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListSearchSourceCodeResponseBody) SetErrorCode(v string) *ListSearchSourceCodeResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ListSearchSourceCodeResponseBody) SetErrorMessage(v string) *ListSearchSourceCodeResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *ListSearchSourceCodeResponseBody) SetRequestId(v string) *ListSearchSourceCodeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListSearchSourceCodeResponseBody) SetResult(v []*ListSearchSourceCodeResponseBodyResult) *ListSearchSourceCodeResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *ListSearchSourceCodeResponseBody) SetSuccess(v bool) *ListSearchSourceCodeResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *ListSearchSourceCodeResponseBody) SetTotal(v int64) *ListSearchSourceCodeResponseBody {
+	s.Total = &v
+	return s
+}
+
+type ListSearchSourceCodeResponseBodyResult struct {
+	DocId            *string                                                 `json:"docId,omitempty" xml:"docId,omitempty"`
+	HighlightTextMap *ListSearchSourceCodeResponseBodyResultHighlightTextMap `json:"highlightTextMap,omitempty" xml:"highlightTextMap,omitempty" type:"Struct"`
+	Source           *ListSearchSourceCodeResponseBodyResultSource           `json:"source,omitempty" xml:"source,omitempty" type:"Struct"`
+}
+
+func (s ListSearchSourceCodeResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSearchSourceCodeResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *ListSearchSourceCodeResponseBodyResult) SetDocId(v string) *ListSearchSourceCodeResponseBodyResult {
+	s.DocId = &v
+	return s
+}
+
+func (s *ListSearchSourceCodeResponseBodyResult) SetHighlightTextMap(v *ListSearchSourceCodeResponseBodyResultHighlightTextMap) *ListSearchSourceCodeResponseBodyResult {
+	s.HighlightTextMap = v
+	return s
+}
+
+func (s *ListSearchSourceCodeResponseBodyResult) SetSource(v *ListSearchSourceCodeResponseBodyResultSource) *ListSearchSourceCodeResponseBodyResult {
+	s.Source = v
+	return s
+}
+
+type ListSearchSourceCodeResponseBodyResultHighlightTextMap struct {
+	Clob           *string `json:"clob,omitempty" xml:"clob,omitempty"`
+	FileName       *string `json:"fileName,omitempty" xml:"fileName,omitempty"`
+	Language       *string `json:"language,omitempty" xml:"language,omitempty"`
+	OrganizationId *string `json:"organizationId,omitempty" xml:"organizationId,omitempty"`
+}
+
+func (s ListSearchSourceCodeResponseBodyResultHighlightTextMap) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSearchSourceCodeResponseBodyResultHighlightTextMap) GoString() string {
+	return s.String()
+}
+
+func (s *ListSearchSourceCodeResponseBodyResultHighlightTextMap) SetClob(v string) *ListSearchSourceCodeResponseBodyResultHighlightTextMap {
+	s.Clob = &v
+	return s
+}
+
+func (s *ListSearchSourceCodeResponseBodyResultHighlightTextMap) SetFileName(v string) *ListSearchSourceCodeResponseBodyResultHighlightTextMap {
+	s.FileName = &v
+	return s
+}
+
+func (s *ListSearchSourceCodeResponseBodyResultHighlightTextMap) SetLanguage(v string) *ListSearchSourceCodeResponseBodyResultHighlightTextMap {
+	s.Language = &v
+	return s
+}
+
+func (s *ListSearchSourceCodeResponseBodyResultHighlightTextMap) SetOrganizationId(v string) *ListSearchSourceCodeResponseBodyResultHighlightTextMap {
+	s.OrganizationId = &v
+	return s
+}
+
+type ListSearchSourceCodeResponseBodyResultSource struct {
+	Branch         *string `json:"branch,omitempty" xml:"branch,omitempty"`
+	CheckinDate    *string `json:"checkinDate,omitempty" xml:"checkinDate,omitempty"`
+	FileName       *string `json:"fileName,omitempty" xml:"fileName,omitempty"`
+	FilePath       *string `json:"filePath,omitempty" xml:"filePath,omitempty"`
+	Language       *string `json:"language,omitempty" xml:"language,omitempty"`
+	OrganizationId *string `json:"organizationId,omitempty" xml:"organizationId,omitempty"`
+	RepoPath       *string `json:"repoPath,omitempty" xml:"repoPath,omitempty"`
+}
+
+func (s ListSearchSourceCodeResponseBodyResultSource) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSearchSourceCodeResponseBodyResultSource) GoString() string {
+	return s.String()
+}
+
+func (s *ListSearchSourceCodeResponseBodyResultSource) SetBranch(v string) *ListSearchSourceCodeResponseBodyResultSource {
+	s.Branch = &v
+	return s
+}
+
+func (s *ListSearchSourceCodeResponseBodyResultSource) SetCheckinDate(v string) *ListSearchSourceCodeResponseBodyResultSource {
+	s.CheckinDate = &v
+	return s
+}
+
+func (s *ListSearchSourceCodeResponseBodyResultSource) SetFileName(v string) *ListSearchSourceCodeResponseBodyResultSource {
+	s.FileName = &v
+	return s
+}
+
+func (s *ListSearchSourceCodeResponseBodyResultSource) SetFilePath(v string) *ListSearchSourceCodeResponseBodyResultSource {
+	s.FilePath = &v
+	return s
+}
+
+func (s *ListSearchSourceCodeResponseBodyResultSource) SetLanguage(v string) *ListSearchSourceCodeResponseBodyResultSource {
+	s.Language = &v
+	return s
+}
+
+func (s *ListSearchSourceCodeResponseBodyResultSource) SetOrganizationId(v string) *ListSearchSourceCodeResponseBodyResultSource {
+	s.OrganizationId = &v
+	return s
+}
+
+func (s *ListSearchSourceCodeResponseBodyResultSource) SetRepoPath(v string) *ListSearchSourceCodeResponseBodyResultSource {
+	s.RepoPath = &v
+	return s
+}
+
+type ListSearchSourceCodeResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListSearchSourceCodeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListSearchSourceCodeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSearchSourceCodeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListSearchSourceCodeResponse) SetHeaders(v map[string]*string) *ListSearchSourceCodeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListSearchSourceCodeResponse) SetStatusCode(v int32) *ListSearchSourceCodeResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListSearchSourceCodeResponse) SetBody(v *ListSearchSourceCodeResponseBody) *ListSearchSourceCodeResponse {
+	s.Body = v
+	return s
+}
+
 type ListServiceConnectionsRequest struct {
 	SericeConnectionType *string `json:"sericeConnectionType,omitempty" xml:"sericeConnectionType,omitempty"`
 }
@@ -24285,6 +25898,116 @@ func (s *UpdateProtectedBranchesResponse) SetBody(v *UpdateProtectedBranchesResp
 	return s
 }
 
+type UpdatePushReviewOnOffRequest struct {
+	OrganizationId *string `json:"organizationId,omitempty" xml:"organizationId,omitempty"`
+	TrunkMode      *bool   `json:"trunkMode,omitempty" xml:"trunkMode,omitempty"`
+}
+
+func (s UpdatePushReviewOnOffRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdatePushReviewOnOffRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdatePushReviewOnOffRequest) SetOrganizationId(v string) *UpdatePushReviewOnOffRequest {
+	s.OrganizationId = &v
+	return s
+}
+
+func (s *UpdatePushReviewOnOffRequest) SetTrunkMode(v bool) *UpdatePushReviewOnOffRequest {
+	s.TrunkMode = &v
+	return s
+}
+
+type UpdatePushReviewOnOffResponseBody struct {
+	ErrorCode    *string                                  `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMessage *string                                  `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	RequestId    *string                                  `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Result       *UpdatePushReviewOnOffResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
+	Success      *bool                                    `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s UpdatePushReviewOnOffResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdatePushReviewOnOffResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdatePushReviewOnOffResponseBody) SetErrorCode(v string) *UpdatePushReviewOnOffResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *UpdatePushReviewOnOffResponseBody) SetErrorMessage(v string) *UpdatePushReviewOnOffResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *UpdatePushReviewOnOffResponseBody) SetRequestId(v string) *UpdatePushReviewOnOffResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdatePushReviewOnOffResponseBody) SetResult(v *UpdatePushReviewOnOffResponseBodyResult) *UpdatePushReviewOnOffResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *UpdatePushReviewOnOffResponseBody) SetSuccess(v bool) *UpdatePushReviewOnOffResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdatePushReviewOnOffResponseBodyResult struct {
+	Result *bool `json:"result,omitempty" xml:"result,omitempty"`
+}
+
+func (s UpdatePushReviewOnOffResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdatePushReviewOnOffResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *UpdatePushReviewOnOffResponseBodyResult) SetResult(v bool) *UpdatePushReviewOnOffResponseBodyResult {
+	s.Result = &v
+	return s
+}
+
+type UpdatePushReviewOnOffResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdatePushReviewOnOffResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdatePushReviewOnOffResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdatePushReviewOnOffResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdatePushReviewOnOffResponse) SetHeaders(v map[string]*string) *UpdatePushReviewOnOffResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdatePushReviewOnOffResponse) SetStatusCode(v int32) *UpdatePushReviewOnOffResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdatePushReviewOnOffResponse) SetBody(v *UpdatePushReviewOnOffResponseBody) *UpdatePushReviewOnOffResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateRepositoryRequest struct {
 	AccessToken                    *string                                                  `json:"accessToken,omitempty" xml:"accessToken,omitempty"`
 	AdminSettingLanguage           *string                                                  `json:"adminSettingLanguage,omitempty" xml:"adminSettingLanguage,omitempty"`
@@ -28527,6 +30250,72 @@ func (client *Client) GetCodeupOrganization(identity *string, request *GetCodeup
 	return _result, _err
 }
 
+func (client *Client) GetCompareDetailWithOptions(repositoryId *string, request *GetCompareDetailRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetCompareDetailResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.From)) {
+		query["from"] = request.From
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxDiffByte)) {
+		query["maxDiffByte"] = request.MaxDiffByte
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxDiffFile)) {
+		query["maxDiffFile"] = request.MaxDiffFile
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MergeBase)) {
+		query["mergeBase"] = request.MergeBase
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrganizationId)) {
+		query["organizationId"] = request.OrganizationId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.To)) {
+		query["to"] = request.To
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetCompareDetail"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/repository/" + tea.StringValue(openapiutil.GetEncodeParam(repositoryId)) + "/commits/compare/detail"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetCompareDetailResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetCompareDetail(repositoryId *string, request *GetCompareDetailRequest) (_result *GetCompareDetailResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetCompareDetailResponse{}
+	_body, _err := client.GetCompareDetailWithOptions(repositoryId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) GetCustomFieldOptionWithOptions(organizationId *string, fieldId *string, request *GetCustomFieldOptionRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetCustomFieldOptionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -29362,6 +31151,64 @@ func (client *Client) GetRepositoryTag(repositoryId *string, request *GetReposit
 	headers := make(map[string]*string)
 	_result = &GetRepositoryTagResponse{}
 	_body, _err := client.GetRepositoryTagWithOptions(repositoryId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetSearchCodePreviewWithOptions(request *GetSearchCodePreviewRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetSearchCodePreviewResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DocId)) {
+		query["docId"] = request.DocId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IsDsl)) {
+		query["isDsl"] = request.IsDsl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Keyword)) {
+		query["keyword"] = request.Keyword
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrganizationId)) {
+		query["organizationId"] = request.OrganizationId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetSearchCodePreview"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/search/code_preview"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetSearchCodePreviewResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetSearchCodePreview(request *GetSearchCodePreviewRequest) (_result *GetSearchCodePreviewResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetSearchCodePreviewResponse{}
+	_body, _err := client.GetSearchCodePreviewWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -31505,6 +33352,254 @@ func (client *Client) ListResourceMembers(organizationId *string, resourceType *
 	return _result, _err
 }
 
+func (client *Client) ListSearchCommitWithOptions(request *ListSearchCommitRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListSearchCommitResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OrganizationId)) {
+		query["organizationId"] = request.OrganizationId
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Keyword)) {
+		body["keyword"] = request.Keyword
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Order)) {
+		body["order"] = request.Order
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Page)) {
+		body["page"] = request.Page
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		body["pageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RepoPath)) {
+		body["repoPath"] = request.RepoPath
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Scope)) {
+		body["scope"] = request.Scope
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Sort)) {
+		body["sort"] = request.Sort
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListSearchCommit"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/search/commit"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListSearchCommitResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListSearchCommit(request *ListSearchCommitRequest) (_result *ListSearchCommitResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListSearchCommitResponse{}
+	_body, _err := client.ListSearchCommitWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListSearchRepositoryWithOptions(request *ListSearchRepositoryRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListSearchRepositoryResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OrganizationId)) {
+		query["organizationId"] = request.OrganizationId
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AliyunPk)) {
+		body["aliyunPk"] = request.AliyunPk
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Keyword)) {
+		body["keyword"] = request.Keyword
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Order)) {
+		body["order"] = request.Order
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Page)) {
+		body["page"] = request.Page
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		body["pageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RepoPath)) {
+		body["repoPath"] = request.RepoPath
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Scope)) {
+		body["scope"] = request.Scope
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Sort)) {
+		body["sort"] = request.Sort
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VisibilityLevel)) {
+		body["visibilityLevel"] = request.VisibilityLevel
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListSearchRepository"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/search/repo"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListSearchRepositoryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListSearchRepository(request *ListSearchRepositoryRequest) (_result *ListSearchRepositoryResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListSearchRepositoryResponse{}
+	_body, _err := client.ListSearchRepositoryWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListSearchSourceCodeWithOptions(request *ListSearchSourceCodeRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListSearchSourceCodeResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OrganizationId)) {
+		query["organizationId"] = request.OrganizationId
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.FilePath)) {
+		body["filePath"] = request.FilePath
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IsCodeBlock)) {
+		body["isCodeBlock"] = request.IsCodeBlock
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Keyword)) {
+		body["keyword"] = request.Keyword
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Language)) {
+		body["language"] = request.Language
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Order)) {
+		body["order"] = request.Order
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Page)) {
+		body["page"] = request.Page
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		body["pageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RepoPath)) {
+		body["repoPath"] = request.RepoPath
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Scope)) {
+		body["scope"] = request.Scope
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Sort)) {
+		body["sort"] = request.Sort
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListSearchSourceCode"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/search/code"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListSearchSourceCodeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListSearchSourceCode(request *ListSearchSourceCodeRequest) (_result *ListSearchSourceCodeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListSearchSourceCodeResponse{}
+	_body, _err := client.ListSearchSourceCodeWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ListServiceConnectionsWithOptions(organizationId *string, request *ListServiceConnectionsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListServiceConnectionsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -33134,6 +35229,56 @@ func (client *Client) UpdateProtectedBranches(repositoryId *string, id *string, 
 	headers := make(map[string]*string)
 	_result = &UpdateProtectedBranchesResponse{}
 	_body, _err := client.UpdateProtectedBranchesWithOptions(repositoryId, id, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdatePushReviewOnOffWithOptions(repositoryId *string, request *UpdatePushReviewOnOffRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdatePushReviewOnOffResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OrganizationId)) {
+		query["organizationId"] = request.OrganizationId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TrunkMode)) {
+		query["trunkMode"] = request.TrunkMode
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdatePushReviewOnOff"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/repository/" + tea.StringValue(openapiutil.GetEncodeParam(repositoryId)) + "/settings/trunk_mode"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdatePushReviewOnOffResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdatePushReviewOnOff(repositoryId *string, request *UpdatePushReviewOnOffRequest) (_result *UpdatePushReviewOnOffResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdatePushReviewOnOffResponse{}
+	_body, _err := client.UpdatePushReviewOnOffWithOptions(repositoryId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
