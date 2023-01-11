@@ -12,6 +12,87 @@ import (
 	"github.com/alibabacloud-go/tea/tea"
 )
 
+type CancelStackOperationRequest struct {
+	AllowedStackOperations []*string `json:"AllowedStackOperations,omitempty" xml:"AllowedStackOperations,omitempty" type:"Repeated"`
+	CancelType             *string   `json:"CancelType,omitempty" xml:"CancelType,omitempty"`
+	RegionId               *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	StackId                *string   `json:"StackId,omitempty" xml:"StackId,omitempty"`
+}
+
+func (s CancelStackOperationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CancelStackOperationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CancelStackOperationRequest) SetAllowedStackOperations(v []*string) *CancelStackOperationRequest {
+	s.AllowedStackOperations = v
+	return s
+}
+
+func (s *CancelStackOperationRequest) SetCancelType(v string) *CancelStackOperationRequest {
+	s.CancelType = &v
+	return s
+}
+
+func (s *CancelStackOperationRequest) SetRegionId(v string) *CancelStackOperationRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *CancelStackOperationRequest) SetStackId(v string) *CancelStackOperationRequest {
+	s.StackId = &v
+	return s
+}
+
+type CancelStackOperationResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CancelStackOperationResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CancelStackOperationResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CancelStackOperationResponseBody) SetRequestId(v string) *CancelStackOperationResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CancelStackOperationResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CancelStackOperationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CancelStackOperationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CancelStackOperationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CancelStackOperationResponse) SetHeaders(v map[string]*string) *CancelStackOperationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CancelStackOperationResponse) SetStatusCode(v int32) *CancelStackOperationResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CancelStackOperationResponse) SetBody(v *CancelStackOperationResponseBody) *CancelStackOperationResponse {
+	s.Body = v
+	return s
+}
+
 type CancelUpdateStackRequest struct {
 	CancelType *string `json:"CancelType,omitempty" xml:"CancelType,omitempty"`
 	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
@@ -88,9 +169,10 @@ func (s *CancelUpdateStackResponse) SetBody(v *CancelUpdateStackResponseBody) *C
 }
 
 type ContinueCreateStackRequest struct {
-	DryRun              *bool                                   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	Mode                *string                                 `json:"Mode,omitempty" xml:"Mode,omitempty"`
-	Parallelism         *int64                                  `json:"Parallelism,omitempty" xml:"Parallelism,omitempty"`
+	DryRun      *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	Mode        *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	Parallelism *int64  `json:"Parallelism,omitempty" xml:"Parallelism,omitempty"`
+	// test
 	Parameters          []*ContinueCreateStackRequestParameters `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Repeated"`
 	RamRoleName         *string                                 `json:"RamRoleName,omitempty" xml:"RamRoleName,omitempty"`
 	RecreatingOptions   []*string                               `json:"RecreatingOptions,omitempty" xml:"RecreatingOptions,omitempty" type:"Repeated"`
@@ -558,27 +640,29 @@ func (s *CreateChangeSetResponse) SetBody(v *CreateChangeSetResponseBody) *Creat
 }
 
 type CreateStackRequest struct {
-	ClientToken             *string                         `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	CreateOption            *string                         `json:"CreateOption,omitempty" xml:"CreateOption,omitempty"`
-	DeletionProtection      *string                         `json:"DeletionProtection,omitempty" xml:"DeletionProtection,omitempty"`
-	DisableRollback         *bool                           `json:"DisableRollback,omitempty" xml:"DisableRollback,omitempty"`
-	NotificationURLs        []*string                       `json:"NotificationURLs,omitempty" xml:"NotificationURLs,omitempty" type:"Repeated"`
-	Parallelism             *int64                          `json:"Parallelism,omitempty" xml:"Parallelism,omitempty"`
-	Parameters              []*CreateStackRequestParameters `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Repeated"`
-	RamRoleName             *string                         `json:"RamRoleName,omitempty" xml:"RamRoleName,omitempty"`
-	RegionId                *string                         `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceGroupId         *string                         `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	StackName               *string                         `json:"StackName,omitempty" xml:"StackName,omitempty"`
-	StackPolicyBody         *string                         `json:"StackPolicyBody,omitempty" xml:"StackPolicyBody,omitempty"`
-	StackPolicyURL          *string                         `json:"StackPolicyURL,omitempty" xml:"StackPolicyURL,omitempty"`
-	Tags                    []*CreateStackRequestTags       `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	TemplateBody            *string                         `json:"TemplateBody,omitempty" xml:"TemplateBody,omitempty"`
-	TemplateId              *string                         `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	TemplateScratchId       *string                         `json:"TemplateScratchId,omitempty" xml:"TemplateScratchId,omitempty"`
-	TemplateScratchRegionId *string                         `json:"TemplateScratchRegionId,omitempty" xml:"TemplateScratchRegionId,omitempty"`
-	TemplateURL             *string                         `json:"TemplateURL,omitempty" xml:"TemplateURL,omitempty"`
-	TemplateVersion         *string                         `json:"TemplateVersion,omitempty" xml:"TemplateVersion,omitempty"`
-	TimeoutInMinutes        *int64                          `json:"TimeoutInMinutes,omitempty" xml:"TimeoutInMinutes,omitempty"`
+	ClientToken        *string   `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	CreateOption       *string   `json:"CreateOption,omitempty" xml:"CreateOption,omitempty"`
+	DeletionProtection *string   `json:"DeletionProtection,omitempty" xml:"DeletionProtection,omitempty"`
+	DisableRollback    *bool     `json:"DisableRollback,omitempty" xml:"DisableRollback,omitempty"`
+	NotificationURLs   []*string `json:"NotificationURLs,omitempty" xml:"NotificationURLs,omitempty" type:"Repeated"`
+	Parallelism        *int64    `json:"Parallelism,omitempty" xml:"Parallelism,omitempty"`
+	// test
+	Parameters      []*CreateStackRequestParameters `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Repeated"`
+	RamRoleName     *string                         `json:"RamRoleName,omitempty" xml:"RamRoleName,omitempty"`
+	RegionId        *string                         `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId *string                         `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	StackName       *string                         `json:"StackName,omitempty" xml:"StackName,omitempty"`
+	StackPolicyBody *string                         `json:"StackPolicyBody,omitempty" xml:"StackPolicyBody,omitempty"`
+	StackPolicyURL  *string                         `json:"StackPolicyURL,omitempty" xml:"StackPolicyURL,omitempty"`
+	// test
+	Tags                    []*CreateStackRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	TemplateBody            *string                   `json:"TemplateBody,omitempty" xml:"TemplateBody,omitempty"`
+	TemplateId              *string                   `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	TemplateScratchId       *string                   `json:"TemplateScratchId,omitempty" xml:"TemplateScratchId,omitempty"`
+	TemplateScratchRegionId *string                   `json:"TemplateScratchRegionId,omitempty" xml:"TemplateScratchRegionId,omitempty"`
+	TemplateURL             *string                   `json:"TemplateURL,omitempty" xml:"TemplateURL,omitempty"`
+	TemplateVersion         *string                   `json:"TemplateVersion,omitempty" xml:"TemplateVersion,omitempty"`
+	TimeoutInMinutes        *int64                    `json:"TimeoutInMinutes,omitempty" xml:"TimeoutInMinutes,omitempty"`
 }
 
 func (s CreateStackRequest) String() string {
@@ -798,16 +882,17 @@ type CreateStackGroupRequest struct {
 	ClientToken            *string                                `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	Description            *string                                `json:"Description,omitempty" xml:"Description,omitempty"`
 	ExecutionRoleName      *string                                `json:"ExecutionRoleName,omitempty" xml:"ExecutionRoleName,omitempty"`
-	Parameters             []*CreateStackGroupRequestParameters   `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Repeated"`
-	PermissionModel        *string                                `json:"PermissionModel,omitempty" xml:"PermissionModel,omitempty"`
-	RegionId               *string                                `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceGroupId        *string                                `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	StackGroupName         *string                                `json:"StackGroupName,omitempty" xml:"StackGroupName,omitempty"`
-	Tags                   []*CreateStackGroupRequestTags         `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	TemplateBody           *string                                `json:"TemplateBody,omitempty" xml:"TemplateBody,omitempty"`
-	TemplateId             *string                                `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	TemplateURL            *string                                `json:"TemplateURL,omitempty" xml:"TemplateURL,omitempty"`
-	TemplateVersion        *string                                `json:"TemplateVersion,omitempty" xml:"TemplateVersion,omitempty"`
+	// test
+	Parameters      []*CreateStackGroupRequestParameters `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Repeated"`
+	PermissionModel *string                              `json:"PermissionModel,omitempty" xml:"PermissionModel,omitempty"`
+	RegionId        *string                              `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId *string                              `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	StackGroupName  *string                              `json:"StackGroupName,omitempty" xml:"StackGroupName,omitempty"`
+	Tags            []*CreateStackGroupRequestTags       `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	TemplateBody    *string                              `json:"TemplateBody,omitempty" xml:"TemplateBody,omitempty"`
+	TemplateId      *string                              `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	TemplateURL     *string                              `json:"TemplateURL,omitempty" xml:"TemplateURL,omitempty"`
+	TemplateVersion *string                              `json:"TemplateVersion,omitempty" xml:"TemplateVersion,omitempty"`
 }
 
 func (s CreateStackGroupRequest) String() string {
@@ -963,21 +1048,22 @@ func (s *CreateStackGroupRequestTags) SetValue(v string) *CreateStackGroupReques
 }
 
 type CreateStackGroupShrinkRequest struct {
-	AdministrationRoleName *string                                    `json:"AdministrationRoleName,omitempty" xml:"AdministrationRoleName,omitempty"`
-	AutoDeploymentShrink   *string                                    `json:"AutoDeployment,omitempty" xml:"AutoDeployment,omitempty"`
-	ClientToken            *string                                    `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	Description            *string                                    `json:"Description,omitempty" xml:"Description,omitempty"`
-	ExecutionRoleName      *string                                    `json:"ExecutionRoleName,omitempty" xml:"ExecutionRoleName,omitempty"`
-	Parameters             []*CreateStackGroupShrinkRequestParameters `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Repeated"`
-	PermissionModel        *string                                    `json:"PermissionModel,omitempty" xml:"PermissionModel,omitempty"`
-	RegionId               *string                                    `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceGroupId        *string                                    `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	StackGroupName         *string                                    `json:"StackGroupName,omitempty" xml:"StackGroupName,omitempty"`
-	Tags                   []*CreateStackGroupShrinkRequestTags       `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	TemplateBody           *string                                    `json:"TemplateBody,omitempty" xml:"TemplateBody,omitempty"`
-	TemplateId             *string                                    `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	TemplateURL            *string                                    `json:"TemplateURL,omitempty" xml:"TemplateURL,omitempty"`
-	TemplateVersion        *string                                    `json:"TemplateVersion,omitempty" xml:"TemplateVersion,omitempty"`
+	AdministrationRoleName *string `json:"AdministrationRoleName,omitempty" xml:"AdministrationRoleName,omitempty"`
+	AutoDeploymentShrink   *string `json:"AutoDeployment,omitempty" xml:"AutoDeployment,omitempty"`
+	ClientToken            *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	Description            *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	ExecutionRoleName      *string `json:"ExecutionRoleName,omitempty" xml:"ExecutionRoleName,omitempty"`
+	// test
+	Parameters      []*CreateStackGroupShrinkRequestParameters `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Repeated"`
+	PermissionModel *string                                    `json:"PermissionModel,omitempty" xml:"PermissionModel,omitempty"`
+	RegionId        *string                                    `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId *string                                    `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	StackGroupName  *string                                    `json:"StackGroupName,omitempty" xml:"StackGroupName,omitempty"`
+	Tags            []*CreateStackGroupShrinkRequestTags       `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	TemplateBody    *string                                    `json:"TemplateBody,omitempty" xml:"TemplateBody,omitempty"`
+	TemplateId      *string                                    `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	TemplateURL     *string                                    `json:"TemplateURL,omitempty" xml:"TemplateURL,omitempty"`
+	TemplateVersion *string                                    `json:"TemplateVersion,omitempty" xml:"TemplateVersion,omitempty"`
 }
 
 func (s CreateStackGroupShrinkRequest) String() string {
@@ -1162,17 +1248,18 @@ func (s *CreateStackGroupResponse) SetBody(v *CreateStackGroupResponseBody) *Cre
 }
 
 type CreateStackInstancesRequest struct {
-	AccountIds           []*string                                        `json:"AccountIds,omitempty" xml:"AccountIds,omitempty" type:"Repeated"`
-	ClientToken          *string                                          `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	DeploymentTargets    *CreateStackInstancesRequestDeploymentTargets    `json:"DeploymentTargets,omitempty" xml:"DeploymentTargets,omitempty" type:"Struct"`
-	DisableRollback      *bool                                            `json:"DisableRollback,omitempty" xml:"DisableRollback,omitempty"`
-	OperationDescription *string                                          `json:"OperationDescription,omitempty" xml:"OperationDescription,omitempty"`
-	OperationPreferences map[string]interface{}                           `json:"OperationPreferences,omitempty" xml:"OperationPreferences,omitempty"`
-	ParameterOverrides   []*CreateStackInstancesRequestParameterOverrides `json:"ParameterOverrides,omitempty" xml:"ParameterOverrides,omitempty" type:"Repeated"`
-	RegionId             *string                                          `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RegionIds            []*string                                        `json:"RegionIds,omitempty" xml:"RegionIds,omitempty" type:"Repeated"`
-	StackGroupName       *string                                          `json:"StackGroupName,omitempty" xml:"StackGroupName,omitempty"`
-	TimeoutInMinutes     *int64                                           `json:"TimeoutInMinutes,omitempty" xml:"TimeoutInMinutes,omitempty"`
+	AccountIds           []*string                                     `json:"AccountIds,omitempty" xml:"AccountIds,omitempty" type:"Repeated"`
+	ClientToken          *string                                       `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DeploymentTargets    *CreateStackInstancesRequestDeploymentTargets `json:"DeploymentTargets,omitempty" xml:"DeploymentTargets,omitempty" type:"Struct"`
+	DisableRollback      *bool                                         `json:"DisableRollback,omitempty" xml:"DisableRollback,omitempty"`
+	OperationDescription *string                                       `json:"OperationDescription,omitempty" xml:"OperationDescription,omitempty"`
+	OperationPreferences map[string]interface{}                        `json:"OperationPreferences,omitempty" xml:"OperationPreferences,omitempty"`
+	// test
+	ParameterOverrides []*CreateStackInstancesRequestParameterOverrides `json:"ParameterOverrides,omitempty" xml:"ParameterOverrides,omitempty" type:"Repeated"`
+	RegionId           *string                                          `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionIds          []*string                                        `json:"RegionIds,omitempty" xml:"RegionIds,omitempty" type:"Repeated"`
+	StackGroupName     *string                                          `json:"StackGroupName,omitempty" xml:"StackGroupName,omitempty"`
+	TimeoutInMinutes   *int64                                           `json:"TimeoutInMinutes,omitempty" xml:"TimeoutInMinutes,omitempty"`
 }
 
 func (s CreateStackInstancesRequest) String() string {
@@ -1279,17 +1366,18 @@ func (s *CreateStackInstancesRequestParameterOverrides) SetParameterValue(v stri
 }
 
 type CreateStackInstancesShrinkRequest struct {
-	AccountIdsShrink           *string                                                `json:"AccountIds,omitempty" xml:"AccountIds,omitempty"`
-	ClientToken                *string                                                `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	DeploymentTargetsShrink    *string                                                `json:"DeploymentTargets,omitempty" xml:"DeploymentTargets,omitempty"`
-	DisableRollback            *bool                                                  `json:"DisableRollback,omitempty" xml:"DisableRollback,omitempty"`
-	OperationDescription       *string                                                `json:"OperationDescription,omitempty" xml:"OperationDescription,omitempty"`
-	OperationPreferencesShrink *string                                                `json:"OperationPreferences,omitempty" xml:"OperationPreferences,omitempty"`
-	ParameterOverrides         []*CreateStackInstancesShrinkRequestParameterOverrides `json:"ParameterOverrides,omitempty" xml:"ParameterOverrides,omitempty" type:"Repeated"`
-	RegionId                   *string                                                `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RegionIdsShrink            *string                                                `json:"RegionIds,omitempty" xml:"RegionIds,omitempty"`
-	StackGroupName             *string                                                `json:"StackGroupName,omitempty" xml:"StackGroupName,omitempty"`
-	TimeoutInMinutes           *int64                                                 `json:"TimeoutInMinutes,omitempty" xml:"TimeoutInMinutes,omitempty"`
+	AccountIdsShrink           *string `json:"AccountIds,omitempty" xml:"AccountIds,omitempty"`
+	ClientToken                *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DeploymentTargetsShrink    *string `json:"DeploymentTargets,omitempty" xml:"DeploymentTargets,omitempty"`
+	DisableRollback            *bool   `json:"DisableRollback,omitempty" xml:"DisableRollback,omitempty"`
+	OperationDescription       *string `json:"OperationDescription,omitempty" xml:"OperationDescription,omitempty"`
+	OperationPreferencesShrink *string `json:"OperationPreferences,omitempty" xml:"OperationPreferences,omitempty"`
+	// test
+	ParameterOverrides []*CreateStackInstancesShrinkRequestParameterOverrides `json:"ParameterOverrides,omitempty" xml:"ParameterOverrides,omitempty" type:"Repeated"`
+	RegionId           *string                                                `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionIdsShrink    *string                                                `json:"RegionIds,omitempty" xml:"RegionIds,omitempty"`
+	StackGroupName     *string                                                `json:"StackGroupName,omitempty" xml:"StackGroupName,omitempty"`
+	TimeoutInMinutes   *int64                                                 `json:"TimeoutInMinutes,omitempty" xml:"TimeoutInMinutes,omitempty"`
 }
 
 func (s CreateStackInstancesShrinkRequest) String() string {
@@ -5398,7 +5486,8 @@ func (s *GetStackGroupOperationResponseBodyStackGroupOperation) SetStatus(v stri
 }
 
 type GetStackGroupOperationResponseBodyStackGroupOperationDeploymentTargets struct {
-	AccountIds  []*string `json:"AccountIds,omitempty" xml:"AccountIds,omitempty" type:"Repeated"`
+	AccountIds []*string `json:"AccountIds,omitempty" xml:"AccountIds,omitempty" type:"Repeated"`
+	// test
 	RdFolderIds []*string `json:"RdFolderIds,omitempty" xml:"RdFolderIds,omitempty" type:"Repeated"`
 }
 
@@ -5421,11 +5510,12 @@ func (s *GetStackGroupOperationResponseBodyStackGroupOperationDeploymentTargets)
 }
 
 type GetStackGroupOperationResponseBodyStackGroupOperationOperationPreferences struct {
-	FailureToleranceCount      *int32    `json:"FailureToleranceCount,omitempty" xml:"FailureToleranceCount,omitempty"`
-	FailureTolerancePercentage *int32    `json:"FailureTolerancePercentage,omitempty" xml:"FailureTolerancePercentage,omitempty"`
-	MaxConcurrentCount         *int32    `json:"MaxConcurrentCount,omitempty" xml:"MaxConcurrentCount,omitempty"`
-	MaxConcurrentPercentage    *int32    `json:"MaxConcurrentPercentage,omitempty" xml:"MaxConcurrentPercentage,omitempty"`
-	RegionIdsOrder             []*string `json:"RegionIdsOrder,omitempty" xml:"RegionIdsOrder,omitempty" type:"Repeated"`
+	FailureToleranceCount      *int32 `json:"FailureToleranceCount,omitempty" xml:"FailureToleranceCount,omitempty"`
+	FailureTolerancePercentage *int32 `json:"FailureTolerancePercentage,omitempty" xml:"FailureTolerancePercentage,omitempty"`
+	MaxConcurrentCount         *int32 `json:"MaxConcurrentCount,omitempty" xml:"MaxConcurrentCount,omitempty"`
+	MaxConcurrentPercentage    *int32 `json:"MaxConcurrentPercentage,omitempty" xml:"MaxConcurrentPercentage,omitempty"`
+	// test
+	RegionIdsOrder []*string `json:"RegionIdsOrder,omitempty" xml:"RegionIdsOrder,omitempty" type:"Repeated"`
 }
 
 func (s GetStackGroupOperationResponseBodyStackGroupOperationOperationPreferences) String() string {
@@ -6617,14 +6707,15 @@ func (s *GetTemplateParameterConstraintsResponseBody) SetRequestId(v string) *Ge
 }
 
 type GetTemplateParameterConstraintsResponseBodyParameterConstraints struct {
-	AllowedValues                      []*string     `json:"AllowedValues,omitempty" xml:"AllowedValues,omitempty" type:"Repeated"`
-	AssociationParameterNames          []*string     `json:"AssociationParameterNames,omitempty" xml:"AssociationParameterNames,omitempty" type:"Repeated"`
-	Behavior                           *string       `json:"Behavior,omitempty" xml:"Behavior,omitempty"`
-	BehaviorReason                     *string       `json:"BehaviorReason,omitempty" xml:"BehaviorReason,omitempty"`
-	IllegalValueByParameterConstraints []interface{} `json:"IllegalValueByParameterConstraints,omitempty" xml:"IllegalValueByParameterConstraints,omitempty" type:"Repeated"`
-	IllegalValueByRules                []interface{} `json:"IllegalValueByRules,omitempty" xml:"IllegalValueByRules,omitempty" type:"Repeated"`
-	ParameterKey                       *string       `json:"ParameterKey,omitempty" xml:"ParameterKey,omitempty"`
-	Type                               *string       `json:"Type,omitempty" xml:"Type,omitempty"`
+	AllowedValues                      []*string                                                                             `json:"AllowedValues,omitempty" xml:"AllowedValues,omitempty" type:"Repeated"`
+	AssociationParameterNames          []*string                                                                             `json:"AssociationParameterNames,omitempty" xml:"AssociationParameterNames,omitempty" type:"Repeated"`
+	Behavior                           *string                                                                               `json:"Behavior,omitempty" xml:"Behavior,omitempty"`
+	BehaviorReason                     *string                                                                               `json:"BehaviorReason,omitempty" xml:"BehaviorReason,omitempty"`
+	IllegalValueByParameterConstraints []interface{}                                                                         `json:"IllegalValueByParameterConstraints,omitempty" xml:"IllegalValueByParameterConstraints,omitempty" type:"Repeated"`
+	IllegalValueByRules                []interface{}                                                                         `json:"IllegalValueByRules,omitempty" xml:"IllegalValueByRules,omitempty" type:"Repeated"`
+	NotSupportResources                []*GetTemplateParameterConstraintsResponseBodyParameterConstraintsNotSupportResources `json:"NotSupportResources,omitempty" xml:"NotSupportResources,omitempty" type:"Repeated"`
+	ParameterKey                       *string                                                                               `json:"ParameterKey,omitempty" xml:"ParameterKey,omitempty"`
+	Type                               *string                                                                               `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s GetTemplateParameterConstraintsResponseBodyParameterConstraints) String() string {
@@ -6665,6 +6756,11 @@ func (s *GetTemplateParameterConstraintsResponseBodyParameterConstraints) SetIll
 	return s
 }
 
+func (s *GetTemplateParameterConstraintsResponseBodyParameterConstraints) SetNotSupportResources(v []*GetTemplateParameterConstraintsResponseBodyParameterConstraintsNotSupportResources) *GetTemplateParameterConstraintsResponseBodyParameterConstraints {
+	s.NotSupportResources = v
+	return s
+}
+
 func (s *GetTemplateParameterConstraintsResponseBodyParameterConstraints) SetParameterKey(v string) *GetTemplateParameterConstraintsResponseBodyParameterConstraints {
 	s.ParameterKey = &v
 	return s
@@ -6672,6 +6768,29 @@ func (s *GetTemplateParameterConstraintsResponseBodyParameterConstraints) SetPar
 
 func (s *GetTemplateParameterConstraintsResponseBodyParameterConstraints) SetType(v string) *GetTemplateParameterConstraintsResponseBodyParameterConstraints {
 	s.Type = &v
+	return s
+}
+
+type GetTemplateParameterConstraintsResponseBodyParameterConstraintsNotSupportResources struct {
+	PropertyName *string `json:"PropertyName,omitempty" xml:"PropertyName,omitempty"`
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+}
+
+func (s GetTemplateParameterConstraintsResponseBodyParameterConstraintsNotSupportResources) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTemplateParameterConstraintsResponseBodyParameterConstraintsNotSupportResources) GoString() string {
+	return s.String()
+}
+
+func (s *GetTemplateParameterConstraintsResponseBodyParameterConstraintsNotSupportResources) SetPropertyName(v string) *GetTemplateParameterConstraintsResponseBodyParameterConstraintsNotSupportResources {
+	s.PropertyName = &v
+	return s
+}
+
+func (s *GetTemplateParameterConstraintsResponseBodyParameterConstraintsNotSupportResources) SetResourceType(v string) *GetTemplateParameterConstraintsResponseBodyParameterConstraintsNotSupportResources {
+	s.ResourceType = &v
 	return s
 }
 
@@ -7037,8 +7156,9 @@ func (s *GetTemplateScratchResponse) SetBody(v *GetTemplateScratchResponseBody) 
 }
 
 type GetTemplateSummaryRequest struct {
-	ChangeSetId     *string                                `json:"ChangeSetId,omitempty" xml:"ChangeSetId,omitempty"`
-	ClientToken     *string                                `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	ChangeSetId *string `json:"ChangeSetId,omitempty" xml:"ChangeSetId,omitempty"`
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// test
 	Parameters      []*GetTemplateSummaryRequestParameters `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Repeated"`
 	RegionId        *string                                `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	StackGroupName  *string                                `json:"StackGroupName,omitempty" xml:"StackGroupName,omitempty"`
@@ -10518,10 +10638,11 @@ func (s *MoveResourceGroupResponse) SetBody(v *MoveResourceGroupResponseBody) *M
 }
 
 type PreviewStackRequest struct {
-	ClientToken             *string                          `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	DisableRollback         *bool                            `json:"DisableRollback,omitempty" xml:"DisableRollback,omitempty"`
-	EnablePreConfig         *bool                            `json:"EnablePreConfig,omitempty" xml:"EnablePreConfig,omitempty"`
-	Parallelism             *int64                           `json:"Parallelism,omitempty" xml:"Parallelism,omitempty"`
+	ClientToken     *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DisableRollback *bool   `json:"DisableRollback,omitempty" xml:"DisableRollback,omitempty"`
+	EnablePreConfig *bool   `json:"EnablePreConfig,omitempty" xml:"EnablePreConfig,omitempty"`
+	Parallelism     *int64  `json:"Parallelism,omitempty" xml:"Parallelism,omitempty"`
+	// test
 	Parameters              []*PreviewStackRequestParameters `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Repeated"`
 	RegionId                *string                          `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	StackId                 *string                          `json:"StackId,omitempty" xml:"StackId,omitempty"`
@@ -11745,15 +11866,16 @@ type UpdateStackGroupRequest struct {
 	ExecutionRoleName      *string                                   `json:"ExecutionRoleName,omitempty" xml:"ExecutionRoleName,omitempty"`
 	OperationDescription   *string                                   `json:"OperationDescription,omitempty" xml:"OperationDescription,omitempty"`
 	OperationPreferences   map[string]interface{}                    `json:"OperationPreferences,omitempty" xml:"OperationPreferences,omitempty"`
-	Parameters             []*UpdateStackGroupRequestParameters      `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Repeated"`
-	PermissionModel        *string                                   `json:"PermissionModel,omitempty" xml:"PermissionModel,omitempty"`
-	RegionId               *string                                   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RegionIds              []*string                                 `json:"RegionIds,omitempty" xml:"RegionIds,omitempty" type:"Repeated"`
-	StackGroupName         *string                                   `json:"StackGroupName,omitempty" xml:"StackGroupName,omitempty"`
-	TemplateBody           *string                                   `json:"TemplateBody,omitempty" xml:"TemplateBody,omitempty"`
-	TemplateId             *string                                   `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	TemplateURL            *string                                   `json:"TemplateURL,omitempty" xml:"TemplateURL,omitempty"`
-	TemplateVersion        *string                                   `json:"TemplateVersion,omitempty" xml:"TemplateVersion,omitempty"`
+	// test
+	Parameters      []*UpdateStackGroupRequestParameters `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Repeated"`
+	PermissionModel *string                              `json:"PermissionModel,omitempty" xml:"PermissionModel,omitempty"`
+	RegionId        *string                              `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionIds       []*string                            `json:"RegionIds,omitempty" xml:"RegionIds,omitempty" type:"Repeated"`
+	StackGroupName  *string                              `json:"StackGroupName,omitempty" xml:"StackGroupName,omitempty"`
+	TemplateBody    *string                              `json:"TemplateBody,omitempty" xml:"TemplateBody,omitempty"`
+	TemplateId      *string                              `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	TemplateURL     *string                              `json:"TemplateURL,omitempty" xml:"TemplateURL,omitempty"`
+	TemplateVersion *string                              `json:"TemplateVersion,omitempty" xml:"TemplateVersion,omitempty"`
 }
 
 func (s UpdateStackGroupRequest) String() string {
@@ -11878,7 +12000,8 @@ func (s *UpdateStackGroupRequestAutoDeployment) SetRetainStacksOnAccountRemoval(
 }
 
 type UpdateStackGroupRequestDeploymentTargets struct {
-	AccountIds  []*string `json:"AccountIds,omitempty" xml:"AccountIds,omitempty" type:"Repeated"`
+	AccountIds []*string `json:"AccountIds,omitempty" xml:"AccountIds,omitempty" type:"Repeated"`
+	// test
 	RdFolderIds []*string `json:"RdFolderIds,omitempty" xml:"RdFolderIds,omitempty" type:"Repeated"`
 }
 
@@ -11924,24 +12047,25 @@ func (s *UpdateStackGroupRequestParameters) SetParameterValue(v string) *UpdateS
 }
 
 type UpdateStackGroupShrinkRequest struct {
-	AccountIdsShrink           *string                                    `json:"AccountIds,omitempty" xml:"AccountIds,omitempty"`
-	AdministrationRoleName     *string                                    `json:"AdministrationRoleName,omitempty" xml:"AdministrationRoleName,omitempty"`
-	AutoDeploymentShrink       *string                                    `json:"AutoDeployment,omitempty" xml:"AutoDeployment,omitempty"`
-	ClientToken                *string                                    `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	DeploymentTargetsShrink    *string                                    `json:"DeploymentTargets,omitempty" xml:"DeploymentTargets,omitempty"`
-	Description                *string                                    `json:"Description,omitempty" xml:"Description,omitempty"`
-	ExecutionRoleName          *string                                    `json:"ExecutionRoleName,omitempty" xml:"ExecutionRoleName,omitempty"`
-	OperationDescription       *string                                    `json:"OperationDescription,omitempty" xml:"OperationDescription,omitempty"`
-	OperationPreferencesShrink *string                                    `json:"OperationPreferences,omitempty" xml:"OperationPreferences,omitempty"`
-	Parameters                 []*UpdateStackGroupShrinkRequestParameters `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Repeated"`
-	PermissionModel            *string                                    `json:"PermissionModel,omitempty" xml:"PermissionModel,omitempty"`
-	RegionId                   *string                                    `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RegionIdsShrink            *string                                    `json:"RegionIds,omitempty" xml:"RegionIds,omitempty"`
-	StackGroupName             *string                                    `json:"StackGroupName,omitempty" xml:"StackGroupName,omitempty"`
-	TemplateBody               *string                                    `json:"TemplateBody,omitempty" xml:"TemplateBody,omitempty"`
-	TemplateId                 *string                                    `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	TemplateURL                *string                                    `json:"TemplateURL,omitempty" xml:"TemplateURL,omitempty"`
-	TemplateVersion            *string                                    `json:"TemplateVersion,omitempty" xml:"TemplateVersion,omitempty"`
+	AccountIdsShrink           *string `json:"AccountIds,omitempty" xml:"AccountIds,omitempty"`
+	AdministrationRoleName     *string `json:"AdministrationRoleName,omitempty" xml:"AdministrationRoleName,omitempty"`
+	AutoDeploymentShrink       *string `json:"AutoDeployment,omitempty" xml:"AutoDeployment,omitempty"`
+	ClientToken                *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DeploymentTargetsShrink    *string `json:"DeploymentTargets,omitempty" xml:"DeploymentTargets,omitempty"`
+	Description                *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	ExecutionRoleName          *string `json:"ExecutionRoleName,omitempty" xml:"ExecutionRoleName,omitempty"`
+	OperationDescription       *string `json:"OperationDescription,omitempty" xml:"OperationDescription,omitempty"`
+	OperationPreferencesShrink *string `json:"OperationPreferences,omitempty" xml:"OperationPreferences,omitempty"`
+	// test
+	Parameters      []*UpdateStackGroupShrinkRequestParameters `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Repeated"`
+	PermissionModel *string                                    `json:"PermissionModel,omitempty" xml:"PermissionModel,omitempty"`
+	RegionId        *string                                    `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionIdsShrink *string                                    `json:"RegionIds,omitempty" xml:"RegionIds,omitempty"`
+	StackGroupName  *string                                    `json:"StackGroupName,omitempty" xml:"StackGroupName,omitempty"`
+	TemplateBody    *string                                    `json:"TemplateBody,omitempty" xml:"TemplateBody,omitempty"`
+	TemplateId      *string                                    `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	TemplateURL     *string                                    `json:"TemplateURL,omitempty" xml:"TemplateURL,omitempty"`
+	TemplateVersion *string                                    `json:"TemplateVersion,omitempty" xml:"TemplateVersion,omitempty"`
 }
 
 func (s UpdateStackGroupShrinkRequest) String() string {
@@ -12118,16 +12242,17 @@ func (s *UpdateStackGroupResponse) SetBody(v *UpdateStackGroupResponseBody) *Upd
 }
 
 type UpdateStackInstancesRequest struct {
-	AccountIds           []*string                                        `json:"AccountIds,omitempty" xml:"AccountIds,omitempty" type:"Repeated"`
-	ClientToken          *string                                          `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	DeploymentTargets    *UpdateStackInstancesRequestDeploymentTargets    `json:"DeploymentTargets,omitempty" xml:"DeploymentTargets,omitempty" type:"Struct"`
-	OperationDescription *string                                          `json:"OperationDescription,omitempty" xml:"OperationDescription,omitempty"`
-	OperationPreferences map[string]interface{}                           `json:"OperationPreferences,omitempty" xml:"OperationPreferences,omitempty"`
-	ParameterOverrides   []*UpdateStackInstancesRequestParameterOverrides `json:"ParameterOverrides,omitempty" xml:"ParameterOverrides,omitempty" type:"Repeated"`
-	RegionId             *string                                          `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RegionIds            []*string                                        `json:"RegionIds,omitempty" xml:"RegionIds,omitempty" type:"Repeated"`
-	StackGroupName       *string                                          `json:"StackGroupName,omitempty" xml:"StackGroupName,omitempty"`
-	TimeoutInMinutes     *int64                                           `json:"TimeoutInMinutes,omitempty" xml:"TimeoutInMinutes,omitempty"`
+	AccountIds           []*string                                     `json:"AccountIds,omitempty" xml:"AccountIds,omitempty" type:"Repeated"`
+	ClientToken          *string                                       `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DeploymentTargets    *UpdateStackInstancesRequestDeploymentTargets `json:"DeploymentTargets,omitempty" xml:"DeploymentTargets,omitempty" type:"Struct"`
+	OperationDescription *string                                       `json:"OperationDescription,omitempty" xml:"OperationDescription,omitempty"`
+	OperationPreferences map[string]interface{}                        `json:"OperationPreferences,omitempty" xml:"OperationPreferences,omitempty"`
+	// test
+	ParameterOverrides []*UpdateStackInstancesRequestParameterOverrides `json:"ParameterOverrides,omitempty" xml:"ParameterOverrides,omitempty" type:"Repeated"`
+	RegionId           *string                                          `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionIds          []*string                                        `json:"RegionIds,omitempty" xml:"RegionIds,omitempty" type:"Repeated"`
+	StackGroupName     *string                                          `json:"StackGroupName,omitempty" xml:"StackGroupName,omitempty"`
+	TimeoutInMinutes   *int64                                           `json:"TimeoutInMinutes,omitempty" xml:"TimeoutInMinutes,omitempty"`
 }
 
 func (s UpdateStackInstancesRequest) String() string {
@@ -12189,7 +12314,8 @@ func (s *UpdateStackInstancesRequest) SetTimeoutInMinutes(v int64) *UpdateStackI
 }
 
 type UpdateStackInstancesRequestDeploymentTargets struct {
-	AccountIds  []*string `json:"AccountIds,omitempty" xml:"AccountIds,omitempty" type:"Repeated"`
+	AccountIds []*string `json:"AccountIds,omitempty" xml:"AccountIds,omitempty" type:"Repeated"`
+	// test
 	RdFolderIds []*string `json:"RdFolderIds,omitempty" xml:"RdFolderIds,omitempty" type:"Repeated"`
 }
 
@@ -12235,16 +12361,17 @@ func (s *UpdateStackInstancesRequestParameterOverrides) SetParameterValue(v stri
 }
 
 type UpdateStackInstancesShrinkRequest struct {
-	AccountIdsShrink           *string                                                `json:"AccountIds,omitempty" xml:"AccountIds,omitempty"`
-	ClientToken                *string                                                `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	DeploymentTargetsShrink    *string                                                `json:"DeploymentTargets,omitempty" xml:"DeploymentTargets,omitempty"`
-	OperationDescription       *string                                                `json:"OperationDescription,omitempty" xml:"OperationDescription,omitempty"`
-	OperationPreferencesShrink *string                                                `json:"OperationPreferences,omitempty" xml:"OperationPreferences,omitempty"`
-	ParameterOverrides         []*UpdateStackInstancesShrinkRequestParameterOverrides `json:"ParameterOverrides,omitempty" xml:"ParameterOverrides,omitempty" type:"Repeated"`
-	RegionId                   *string                                                `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RegionIdsShrink            *string                                                `json:"RegionIds,omitempty" xml:"RegionIds,omitempty"`
-	StackGroupName             *string                                                `json:"StackGroupName,omitempty" xml:"StackGroupName,omitempty"`
-	TimeoutInMinutes           *int64                                                 `json:"TimeoutInMinutes,omitempty" xml:"TimeoutInMinutes,omitempty"`
+	AccountIdsShrink           *string `json:"AccountIds,omitempty" xml:"AccountIds,omitempty"`
+	ClientToken                *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DeploymentTargetsShrink    *string `json:"DeploymentTargets,omitempty" xml:"DeploymentTargets,omitempty"`
+	OperationDescription       *string `json:"OperationDescription,omitempty" xml:"OperationDescription,omitempty"`
+	OperationPreferencesShrink *string `json:"OperationPreferences,omitempty" xml:"OperationPreferences,omitempty"`
+	// test
+	ParameterOverrides []*UpdateStackInstancesShrinkRequestParameterOverrides `json:"ParameterOverrides,omitempty" xml:"ParameterOverrides,omitempty" type:"Repeated"`
+	RegionId           *string                                                `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionIdsShrink    *string                                                `json:"RegionIds,omitempty" xml:"RegionIds,omitempty"`
+	StackGroupName     *string                                                `json:"StackGroupName,omitempty" xml:"StackGroupName,omitempty"`
+	TimeoutInMinutes   *int64                                                 `json:"TimeoutInMinutes,omitempty" xml:"TimeoutInMinutes,omitempty"`
 }
 
 func (s UpdateStackInstancesShrinkRequest) String() string {
@@ -13102,6 +13229,62 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	}
 
 	_body, _err := endpointutil.GetEndpointRules(productId, regionId, endpointRule, network, suffix)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CancelStackOperationWithOptions(request *CancelStackOperationRequest, runtime *util.RuntimeOptions) (_result *CancelStackOperationResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AllowedStackOperations)) {
+		query["AllowedStackOperations"] = request.AllowedStackOperations
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CancelType)) {
+		query["CancelType"] = request.CancelType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StackId)) {
+		query["StackId"] = request.StackId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CancelStackOperation"),
+		Version:     tea.String("2019-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CancelStackOperationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CancelStackOperation(request *CancelStackOperationRequest) (_result *CancelStackOperationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CancelStackOperationResponse{}
+	_body, _err := client.CancelStackOperationWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
