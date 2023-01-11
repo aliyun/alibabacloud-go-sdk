@@ -3230,6 +3230,7 @@ func (s *RecognizePoiNameResponse) SetBody(v *RecognizePoiNameResponseBody) *Rec
 }
 
 type RecognizeQrCodeRequest struct {
+	// 1
 	Tasks []*RecognizeQrCodeRequestTasks `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Repeated"`
 }
 
@@ -3264,6 +3265,7 @@ func (s *RecognizeQrCodeRequestTasks) SetImageURL(v string) *RecognizeQrCodeRequ
 }
 
 type RecognizeQrCodeAdvanceRequest struct {
+	// 1
 	Tasks []*RecognizeQrCodeAdvanceRequestTasks `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Repeated"`
 }
 
@@ -3367,7 +3369,8 @@ func (s *RecognizeQrCodeResponseBodyDataElements) SetTaskId(v string) *Recognize
 }
 
 type RecognizeQrCodeResponseBodyDataElementsResults struct {
-	Label       *string   `json:"Label,omitempty" xml:"Label,omitempty"`
+	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
+	// 1
 	QrCodesData []*string `json:"QrCodesData,omitempty" xml:"QrCodesData,omitempty" type:"Repeated"`
 	Rate        *float32  `json:"Rate,omitempty" xml:"Rate,omitempty"`
 	Suggestion  *string   `json:"Suggestion,omitempty" xml:"Suggestion,omitempty"`
@@ -5110,25 +5113,45 @@ func (s *RecognizeVATInvoiceResponseBodyData) SetContent(v *RecognizeVATInvoiceR
 }
 
 type RecognizeVATInvoiceResponseBodyDataBox struct {
-	Checkers          []*float32 `json:"Checkers,omitempty" xml:"Checkers,omitempty" type:"Repeated"`
-	Clerks            []*float32 `json:"Clerks,omitempty" xml:"Clerks,omitempty" type:"Repeated"`
-	InvoiceAmounts    []*float32 `json:"InvoiceAmounts,omitempty" xml:"InvoiceAmounts,omitempty" type:"Repeated"`
-	InvoiceCodes      []*float32 `json:"InvoiceCodes,omitempty" xml:"InvoiceCodes,omitempty" type:"Repeated"`
-	InvoiceDates      []*float32 `json:"InvoiceDates,omitempty" xml:"InvoiceDates,omitempty" type:"Repeated"`
-	InvoiceFakeCodes  []*float32 `json:"InvoiceFakeCodes,omitempty" xml:"InvoiceFakeCodes,omitempty" type:"Repeated"`
-	InvoiceNoes       []*float32 `json:"InvoiceNoes,omitempty" xml:"InvoiceNoes,omitempty" type:"Repeated"`
-	ItemNames         []*int32   `json:"ItemNames,omitempty" xml:"ItemNames,omitempty" type:"Repeated"`
-	PayeeAddresses    []*float32 `json:"PayeeAddresses,omitempty" xml:"PayeeAddresses,omitempty" type:"Repeated"`
-	PayeeBankNames    []*float32 `json:"PayeeBankNames,omitempty" xml:"PayeeBankNames,omitempty" type:"Repeated"`
-	PayeeNames        []*float32 `json:"PayeeNames,omitempty" xml:"PayeeNames,omitempty" type:"Repeated"`
+	// 1
+	Checkers []*float32 `json:"Checkers,omitempty" xml:"Checkers,omitempty" type:"Repeated"`
+	// 1
+	Clerks []*float32 `json:"Clerks,omitempty" xml:"Clerks,omitempty" type:"Repeated"`
+	// 1
+	InvoiceAmounts []*float32 `json:"InvoiceAmounts,omitempty" xml:"InvoiceAmounts,omitempty" type:"Repeated"`
+	// 1
+	InvoiceCodes []*float32 `json:"InvoiceCodes,omitempty" xml:"InvoiceCodes,omitempty" type:"Repeated"`
+	// 1
+	InvoiceDates []*float32 `json:"InvoiceDates,omitempty" xml:"InvoiceDates,omitempty" type:"Repeated"`
+	// 1
+	InvoiceFakeCodes []*float32 `json:"InvoiceFakeCodes,omitempty" xml:"InvoiceFakeCodes,omitempty" type:"Repeated"`
+	// 1
+	InvoiceNoes []*float32 `json:"InvoiceNoes,omitempty" xml:"InvoiceNoes,omitempty" type:"Repeated"`
+	// 1
+	ItemNames []*int32 `json:"ItemNames,omitempty" xml:"ItemNames,omitempty" type:"Repeated"`
+	// 1
+	PayeeAddresses []*float32 `json:"PayeeAddresses,omitempty" xml:"PayeeAddresses,omitempty" type:"Repeated"`
+	// 1
+	PayeeBankNames []*float32 `json:"PayeeBankNames,omitempty" xml:"PayeeBankNames,omitempty" type:"Repeated"`
+	// 1
+	PayeeNames []*float32 `json:"PayeeNames,omitempty" xml:"PayeeNames,omitempty" type:"Repeated"`
+	// 1
 	PayeeRegisterNoes []*float32 `json:"PayeeRegisterNoes,omitempty" xml:"PayeeRegisterNoes,omitempty" type:"Repeated"`
-	Payees            []*float32 `json:"Payees,omitempty" xml:"Payees,omitempty" type:"Repeated"`
-	PayerAddresses    []*float32 `json:"PayerAddresses,omitempty" xml:"PayerAddresses,omitempty" type:"Repeated"`
-	PayerBankNames    []*float32 `json:"PayerBankNames,omitempty" xml:"PayerBankNames,omitempty" type:"Repeated"`
-	PayerNames        []*float32 `json:"PayerNames,omitempty" xml:"PayerNames,omitempty" type:"Repeated"`
+	// 1
+	Payees []*float32 `json:"Payees,omitempty" xml:"Payees,omitempty" type:"Repeated"`
+	// 1
+	PayerAddresses []*float32 `json:"PayerAddresses,omitempty" xml:"PayerAddresses,omitempty" type:"Repeated"`
+	// 1
+	PayerBankNames []*float32 `json:"PayerBankNames,omitempty" xml:"PayerBankNames,omitempty" type:"Repeated"`
+	// 1
+	PayerNames []*float32 `json:"PayerNames,omitempty" xml:"PayerNames,omitempty" type:"Repeated"`
+	// 1
 	PayerRegisterNoes []*float32 `json:"PayerRegisterNoes,omitempty" xml:"PayerRegisterNoes,omitempty" type:"Repeated"`
-	SumAmounts        []*float32 `json:"SumAmounts,omitempty" xml:"SumAmounts,omitempty" type:"Repeated"`
-	TaxAmounts        []*float32 `json:"TaxAmounts,omitempty" xml:"TaxAmounts,omitempty" type:"Repeated"`
+	// 1
+	SumAmounts []*float32 `json:"SumAmounts,omitempty" xml:"SumAmounts,omitempty" type:"Repeated"`
+	// 1
+	TaxAmounts []*float32 `json:"TaxAmounts,omitempty" xml:"TaxAmounts,omitempty" type:"Repeated"`
+	// 1
 	WithoutTaxAmounts []*float32 `json:"WithoutTaxAmounts,omitempty" xml:"WithoutTaxAmounts,omitempty" type:"Repeated"`
 }
 
@@ -5241,13 +5264,14 @@ func (s *RecognizeVATInvoiceResponseBodyDataBox) SetWithoutTaxAmounts(v []*float
 }
 
 type RecognizeVATInvoiceResponseBodyDataContent struct {
-	AntiFakeCode     *string   `json:"AntiFakeCode,omitempty" xml:"AntiFakeCode,omitempty"`
-	Checker          *string   `json:"Checker,omitempty" xml:"Checker,omitempty"`
-	Clerk            *string   `json:"Clerk,omitempty" xml:"Clerk,omitempty"`
-	InvoiceAmount    *string   `json:"InvoiceAmount,omitempty" xml:"InvoiceAmount,omitempty"`
-	InvoiceCode      *string   `json:"InvoiceCode,omitempty" xml:"InvoiceCode,omitempty"`
-	InvoiceDate      *string   `json:"InvoiceDate,omitempty" xml:"InvoiceDate,omitempty"`
-	InvoiceNo        *string   `json:"InvoiceNo,omitempty" xml:"InvoiceNo,omitempty"`
+	AntiFakeCode  *string `json:"AntiFakeCode,omitempty" xml:"AntiFakeCode,omitempty"`
+	Checker       *string `json:"Checker,omitempty" xml:"Checker,omitempty"`
+	Clerk         *string `json:"Clerk,omitempty" xml:"Clerk,omitempty"`
+	InvoiceAmount *string `json:"InvoiceAmount,omitempty" xml:"InvoiceAmount,omitempty"`
+	InvoiceCode   *string `json:"InvoiceCode,omitempty" xml:"InvoiceCode,omitempty"`
+	InvoiceDate   *string `json:"InvoiceDate,omitempty" xml:"InvoiceDate,omitempty"`
+	InvoiceNo     *string `json:"InvoiceNo,omitempty" xml:"InvoiceNo,omitempty"`
+	// 1
 	ItemName         []*string `json:"ItemName,omitempty" xml:"ItemName,omitempty" type:"Repeated"`
 	Payee            *string   `json:"Payee,omitempty" xml:"Payee,omitempty"`
 	PayeeAddress     *string   `json:"PayeeAddress,omitempty" xml:"PayeeAddress,omitempty"`
@@ -8258,7 +8282,7 @@ func (client *Client) RecognizeQrCodeAdvance(request *RecognizeQrCodeAdvanceRequ
 	recognizeQrCodeReq := &RecognizeQrCodeRequest{}
 	openapiutil.Convert(request, recognizeQrCodeReq)
 	if !tea.BoolValue(util.IsUnset(request.Tasks)) {
-		i := tea.Int(0)
+		i0 := tea.Int(0)
 		for _, item0 := range request.Tasks {
 			if !tea.BoolValue(util.IsUnset(item0.ImageURLObject)) {
 				authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
@@ -8294,9 +8318,9 @@ func (client *Client) RecognizeQrCodeAdvance(request *RecognizeQrCodeAdvanceRequ
 				if _err != nil {
 					return _result, _err
 				}
-				tmp := recognizeQrCodeReq.Tasks[tea.IntValue(i)]
+				tmp := recognizeQrCodeReq.Tasks[tea.IntValue(i0)]
 				tmp.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
-				i = number.Ltoi(number.Add(number.Itol(i), number.Itol(tea.Int(1))))
+				i0 = number.Ltoi(number.Add(number.Itol(i0), number.Itol(tea.Int(1))))
 			}
 
 		}
