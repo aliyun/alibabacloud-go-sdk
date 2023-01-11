@@ -847,6 +847,887 @@ func (s *BeeBotChatResponse) SetBody(v *BeeBotChatResponseBody) *BeeBotChatRespo
 	return s
 }
 
+type ChatappBindWabaRequest struct {
+	// WabaId
+	WabaId *string `json:"WabaId,omitempty" xml:"WabaId,omitempty"`
+}
+
+func (s ChatappBindWabaRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ChatappBindWabaRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ChatappBindWabaRequest) SetWabaId(v string) *ChatappBindWabaRequest {
+	s.WabaId = &v
+	return s
+}
+
+type ChatappBindWabaResponseBody struct {
+	Code      *string                          `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *ChatappBindWabaResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                          `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ChatappBindWabaResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ChatappBindWabaResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ChatappBindWabaResponseBody) SetCode(v string) *ChatappBindWabaResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ChatappBindWabaResponseBody) SetData(v *ChatappBindWabaResponseBodyData) *ChatappBindWabaResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ChatappBindWabaResponseBody) SetMessage(v string) *ChatappBindWabaResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ChatappBindWabaResponseBody) SetRequestId(v string) *ChatappBindWabaResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ChatappBindWabaResponseBodyData struct {
+	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
+	// wabaId
+	WabaId *string `json:"WabaId,omitempty" xml:"WabaId,omitempty"`
+}
+
+func (s ChatappBindWabaResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ChatappBindWabaResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ChatappBindWabaResponseBodyData) SetCustSpaceId(v string) *ChatappBindWabaResponseBodyData {
+	s.CustSpaceId = &v
+	return s
+}
+
+func (s *ChatappBindWabaResponseBodyData) SetWabaId(v string) *ChatappBindWabaResponseBodyData {
+	s.WabaId = &v
+	return s
+}
+
+type ChatappBindWabaResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ChatappBindWabaResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ChatappBindWabaResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ChatappBindWabaResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ChatappBindWabaResponse) SetHeaders(v map[string]*string) *ChatappBindWabaResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ChatappBindWabaResponse) SetStatusCode(v int32) *ChatappBindWabaResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ChatappBindWabaResponse) SetBody(v *ChatappBindWabaResponseBody) *ChatappBindWabaResponse {
+	s.Body = v
+	return s
+}
+
+type ChatappEmbedSignUpRequest struct {
+	InputToken *string `json:"InputToken,omitempty" xml:"InputToken,omitempty"`
+}
+
+func (s ChatappEmbedSignUpRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ChatappEmbedSignUpRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ChatappEmbedSignUpRequest) SetInputToken(v string) *ChatappEmbedSignUpRequest {
+	s.InputToken = &v
+	return s
+}
+
+type ChatappEmbedSignUpResponseBody struct {
+	Code      *string                                `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string                                `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Wabas     []*ChatappEmbedSignUpResponseBodyWabas `json:"Wabas,omitempty" xml:"Wabas,omitempty" type:"Repeated"`
+}
+
+func (s ChatappEmbedSignUpResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ChatappEmbedSignUpResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ChatappEmbedSignUpResponseBody) SetCode(v string) *ChatappEmbedSignUpResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ChatappEmbedSignUpResponseBody) SetMessage(v string) *ChatappEmbedSignUpResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ChatappEmbedSignUpResponseBody) SetRequestId(v string) *ChatappEmbedSignUpResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ChatappEmbedSignUpResponseBody) SetWabas(v []*ChatappEmbedSignUpResponseBodyWabas) *ChatappEmbedSignUpResponseBody {
+	s.Wabas = v
+	return s
+}
+
+type ChatappEmbedSignUpResponseBodyWabas struct {
+	AccountReviewStatus *string `json:"AccountReviewStatus,omitempty" xml:"AccountReviewStatus,omitempty"`
+	Currency            *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
+	// WabaId
+	Id                       *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	MessageTemplateNamespace *string `json:"MessageTemplateNamespace,omitempty" xml:"MessageTemplateNamespace,omitempty"`
+	// Waba Name
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s ChatappEmbedSignUpResponseBodyWabas) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ChatappEmbedSignUpResponseBodyWabas) GoString() string {
+	return s.String()
+}
+
+func (s *ChatappEmbedSignUpResponseBodyWabas) SetAccountReviewStatus(v string) *ChatappEmbedSignUpResponseBodyWabas {
+	s.AccountReviewStatus = &v
+	return s
+}
+
+func (s *ChatappEmbedSignUpResponseBodyWabas) SetCurrency(v string) *ChatappEmbedSignUpResponseBodyWabas {
+	s.Currency = &v
+	return s
+}
+
+func (s *ChatappEmbedSignUpResponseBodyWabas) SetId(v string) *ChatappEmbedSignUpResponseBodyWabas {
+	s.Id = &v
+	return s
+}
+
+func (s *ChatappEmbedSignUpResponseBodyWabas) SetMessageTemplateNamespace(v string) *ChatappEmbedSignUpResponseBodyWabas {
+	s.MessageTemplateNamespace = &v
+	return s
+}
+
+func (s *ChatappEmbedSignUpResponseBodyWabas) SetName(v string) *ChatappEmbedSignUpResponseBodyWabas {
+	s.Name = &v
+	return s
+}
+
+type ChatappEmbedSignUpResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ChatappEmbedSignUpResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ChatappEmbedSignUpResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ChatappEmbedSignUpResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ChatappEmbedSignUpResponse) SetHeaders(v map[string]*string) *ChatappEmbedSignUpResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ChatappEmbedSignUpResponse) SetStatusCode(v int32) *ChatappEmbedSignUpResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ChatappEmbedSignUpResponse) SetBody(v *ChatappEmbedSignUpResponseBody) *ChatappEmbedSignUpResponse {
+	s.Body = v
+	return s
+}
+
+type ChatappMigrationRegisterRequest struct {
+	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
+	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
+}
+
+func (s ChatappMigrationRegisterRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ChatappMigrationRegisterRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ChatappMigrationRegisterRequest) SetCustSpaceId(v string) *ChatappMigrationRegisterRequest {
+	s.CustSpaceId = &v
+	return s
+}
+
+func (s *ChatappMigrationRegisterRequest) SetPhoneNumber(v string) *ChatappMigrationRegisterRequest {
+	s.PhoneNumber = &v
+	return s
+}
+
+type ChatappMigrationRegisterResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ChatappMigrationRegisterResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ChatappMigrationRegisterResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ChatappMigrationRegisterResponseBody) SetCode(v string) *ChatappMigrationRegisterResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ChatappMigrationRegisterResponseBody) SetMessage(v string) *ChatappMigrationRegisterResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ChatappMigrationRegisterResponseBody) SetRequestId(v string) *ChatappMigrationRegisterResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ChatappMigrationRegisterResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ChatappMigrationRegisterResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ChatappMigrationRegisterResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ChatappMigrationRegisterResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ChatappMigrationRegisterResponse) SetHeaders(v map[string]*string) *ChatappMigrationRegisterResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ChatappMigrationRegisterResponse) SetStatusCode(v int32) *ChatappMigrationRegisterResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ChatappMigrationRegisterResponse) SetBody(v *ChatappMigrationRegisterResponseBody) *ChatappMigrationRegisterResponse {
+	s.Body = v
+	return s
+}
+
+type ChatappMigrationVerifiedRequest struct {
+	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
+	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
+	VerifyCode  *string `json:"VerifyCode,omitempty" xml:"VerifyCode,omitempty"`
+}
+
+func (s ChatappMigrationVerifiedRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ChatappMigrationVerifiedRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ChatappMigrationVerifiedRequest) SetCustSpaceId(v string) *ChatappMigrationVerifiedRequest {
+	s.CustSpaceId = &v
+	return s
+}
+
+func (s *ChatappMigrationVerifiedRequest) SetPhoneNumber(v string) *ChatappMigrationVerifiedRequest {
+	s.PhoneNumber = &v
+	return s
+}
+
+func (s *ChatappMigrationVerifiedRequest) SetVerifyCode(v string) *ChatappMigrationVerifiedRequest {
+	s.VerifyCode = &v
+	return s
+}
+
+type ChatappMigrationVerifiedResponseBody struct {
+	Code      *string                                   `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *ChatappMigrationVerifiedResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                                   `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ChatappMigrationVerifiedResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ChatappMigrationVerifiedResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ChatappMigrationVerifiedResponseBody) SetCode(v string) *ChatappMigrationVerifiedResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ChatappMigrationVerifiedResponseBody) SetData(v *ChatappMigrationVerifiedResponseBodyData) *ChatappMigrationVerifiedResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ChatappMigrationVerifiedResponseBody) SetMessage(v string) *ChatappMigrationVerifiedResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ChatappMigrationVerifiedResponseBody) SetRequestId(v string) *ChatappMigrationVerifiedResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ChatappMigrationVerifiedResponseBodyData struct {
+	Id          *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
+}
+
+func (s ChatappMigrationVerifiedResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ChatappMigrationVerifiedResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ChatappMigrationVerifiedResponseBodyData) SetId(v string) *ChatappMigrationVerifiedResponseBodyData {
+	s.Id = &v
+	return s
+}
+
+func (s *ChatappMigrationVerifiedResponseBodyData) SetPhoneNumber(v string) *ChatappMigrationVerifiedResponseBodyData {
+	s.PhoneNumber = &v
+	return s
+}
+
+type ChatappMigrationVerifiedResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ChatappMigrationVerifiedResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ChatappMigrationVerifiedResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ChatappMigrationVerifiedResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ChatappMigrationVerifiedResponse) SetHeaders(v map[string]*string) *ChatappMigrationVerifiedResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ChatappMigrationVerifiedResponse) SetStatusCode(v int32) *ChatappMigrationVerifiedResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ChatappMigrationVerifiedResponse) SetBody(v *ChatappMigrationVerifiedResponseBody) *ChatappMigrationVerifiedResponse {
+	s.Body = v
+	return s
+}
+
+type ChatappPhoneNumberRegisterRequest struct {
+	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
+	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
+}
+
+func (s ChatappPhoneNumberRegisterRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ChatappPhoneNumberRegisterRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ChatappPhoneNumberRegisterRequest) SetCustSpaceId(v string) *ChatappPhoneNumberRegisterRequest {
+	s.CustSpaceId = &v
+	return s
+}
+
+func (s *ChatappPhoneNumberRegisterRequest) SetPhoneNumber(v string) *ChatappPhoneNumberRegisterRequest {
+	s.PhoneNumber = &v
+	return s
+}
+
+type ChatappPhoneNumberRegisterResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ChatappPhoneNumberRegisterResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ChatappPhoneNumberRegisterResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ChatappPhoneNumberRegisterResponseBody) SetCode(v string) *ChatappPhoneNumberRegisterResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ChatappPhoneNumberRegisterResponseBody) SetMessage(v string) *ChatappPhoneNumberRegisterResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ChatappPhoneNumberRegisterResponseBody) SetRequestId(v string) *ChatappPhoneNumberRegisterResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ChatappPhoneNumberRegisterResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ChatappPhoneNumberRegisterResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ChatappPhoneNumberRegisterResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ChatappPhoneNumberRegisterResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ChatappPhoneNumberRegisterResponse) SetHeaders(v map[string]*string) *ChatappPhoneNumberRegisterResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ChatappPhoneNumberRegisterResponse) SetStatusCode(v int32) *ChatappPhoneNumberRegisterResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ChatappPhoneNumberRegisterResponse) SetBody(v *ChatappPhoneNumberRegisterResponseBody) *ChatappPhoneNumberRegisterResponse {
+	s.Body = v
+	return s
+}
+
+type ChatappSyncPhoneNumberRequest struct {
+	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
+}
+
+func (s ChatappSyncPhoneNumberRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ChatappSyncPhoneNumberRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ChatappSyncPhoneNumberRequest) SetCustSpaceId(v string) *ChatappSyncPhoneNumberRequest {
+	s.CustSpaceId = &v
+	return s
+}
+
+type ChatappSyncPhoneNumberResponseBody struct {
+	Code         *string                                           `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message      *string                                           `json:"Message,omitempty" xml:"Message,omitempty"`
+	PhoneNumbers []*ChatappSyncPhoneNumberResponseBodyPhoneNumbers `json:"PhoneNumbers,omitempty" xml:"PhoneNumbers,omitempty" type:"Repeated"`
+	RequestId    *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ChatappSyncPhoneNumberResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ChatappSyncPhoneNumberResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ChatappSyncPhoneNumberResponseBody) SetCode(v string) *ChatappSyncPhoneNumberResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ChatappSyncPhoneNumberResponseBody) SetMessage(v string) *ChatappSyncPhoneNumberResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ChatappSyncPhoneNumberResponseBody) SetPhoneNumbers(v []*ChatappSyncPhoneNumberResponseBodyPhoneNumbers) *ChatappSyncPhoneNumberResponseBody {
+	s.PhoneNumbers = v
+	return s
+}
+
+func (s *ChatappSyncPhoneNumberResponseBody) SetRequestId(v string) *ChatappSyncPhoneNumberResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ChatappSyncPhoneNumberResponseBodyPhoneNumbers struct {
+	CodeVerificationStatus *string `json:"CodeVerificationStatus,omitempty" xml:"CodeVerificationStatus,omitempty"`
+	MessagingLimitTier     *string `json:"MessagingLimitTier,omitempty" xml:"MessagingLimitTier,omitempty"`
+	NameStatus             *string `json:"NameStatus,omitempty" xml:"NameStatus,omitempty"`
+	NewNameStatus          *string `json:"NewNameStatus,omitempty" xml:"NewNameStatus,omitempty"`
+	PhoneNumber            *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
+	QualityRating          *string `json:"QualityRating,omitempty" xml:"QualityRating,omitempty"`
+	Status                 *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	StatusCallbackUrl      *string `json:"StatusCallbackUrl,omitempty" xml:"StatusCallbackUrl,omitempty"`
+	StatusQueue            *string `json:"StatusQueue,omitempty" xml:"StatusQueue,omitempty"`
+	UpCallbackUrl          *string `json:"UpCallbackUrl,omitempty" xml:"UpCallbackUrl,omitempty"`
+	UpQueue                *string `json:"UpQueue,omitempty" xml:"UpQueue,omitempty"`
+	VerifiedName           *string `json:"VerifiedName,omitempty" xml:"VerifiedName,omitempty"`
+}
+
+func (s ChatappSyncPhoneNumberResponseBodyPhoneNumbers) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ChatappSyncPhoneNumberResponseBodyPhoneNumbers) GoString() string {
+	return s.String()
+}
+
+func (s *ChatappSyncPhoneNumberResponseBodyPhoneNumbers) SetCodeVerificationStatus(v string) *ChatappSyncPhoneNumberResponseBodyPhoneNumbers {
+	s.CodeVerificationStatus = &v
+	return s
+}
+
+func (s *ChatappSyncPhoneNumberResponseBodyPhoneNumbers) SetMessagingLimitTier(v string) *ChatappSyncPhoneNumberResponseBodyPhoneNumbers {
+	s.MessagingLimitTier = &v
+	return s
+}
+
+func (s *ChatappSyncPhoneNumberResponseBodyPhoneNumbers) SetNameStatus(v string) *ChatappSyncPhoneNumberResponseBodyPhoneNumbers {
+	s.NameStatus = &v
+	return s
+}
+
+func (s *ChatappSyncPhoneNumberResponseBodyPhoneNumbers) SetNewNameStatus(v string) *ChatappSyncPhoneNumberResponseBodyPhoneNumbers {
+	s.NewNameStatus = &v
+	return s
+}
+
+func (s *ChatappSyncPhoneNumberResponseBodyPhoneNumbers) SetPhoneNumber(v string) *ChatappSyncPhoneNumberResponseBodyPhoneNumbers {
+	s.PhoneNumber = &v
+	return s
+}
+
+func (s *ChatappSyncPhoneNumberResponseBodyPhoneNumbers) SetQualityRating(v string) *ChatappSyncPhoneNumberResponseBodyPhoneNumbers {
+	s.QualityRating = &v
+	return s
+}
+
+func (s *ChatappSyncPhoneNumberResponseBodyPhoneNumbers) SetStatus(v string) *ChatappSyncPhoneNumberResponseBodyPhoneNumbers {
+	s.Status = &v
+	return s
+}
+
+func (s *ChatappSyncPhoneNumberResponseBodyPhoneNumbers) SetStatusCallbackUrl(v string) *ChatappSyncPhoneNumberResponseBodyPhoneNumbers {
+	s.StatusCallbackUrl = &v
+	return s
+}
+
+func (s *ChatappSyncPhoneNumberResponseBodyPhoneNumbers) SetStatusQueue(v string) *ChatappSyncPhoneNumberResponseBodyPhoneNumbers {
+	s.StatusQueue = &v
+	return s
+}
+
+func (s *ChatappSyncPhoneNumberResponseBodyPhoneNumbers) SetUpCallbackUrl(v string) *ChatappSyncPhoneNumberResponseBodyPhoneNumbers {
+	s.UpCallbackUrl = &v
+	return s
+}
+
+func (s *ChatappSyncPhoneNumberResponseBodyPhoneNumbers) SetUpQueue(v string) *ChatappSyncPhoneNumberResponseBodyPhoneNumbers {
+	s.UpQueue = &v
+	return s
+}
+
+func (s *ChatappSyncPhoneNumberResponseBodyPhoneNumbers) SetVerifiedName(v string) *ChatappSyncPhoneNumberResponseBodyPhoneNumbers {
+	s.VerifiedName = &v
+	return s
+}
+
+type ChatappSyncPhoneNumberResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ChatappSyncPhoneNumberResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ChatappSyncPhoneNumberResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ChatappSyncPhoneNumberResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ChatappSyncPhoneNumberResponse) SetHeaders(v map[string]*string) *ChatappSyncPhoneNumberResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ChatappSyncPhoneNumberResponse) SetStatusCode(v int32) *ChatappSyncPhoneNumberResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ChatappSyncPhoneNumberResponse) SetBody(v *ChatappSyncPhoneNumberResponseBody) *ChatappSyncPhoneNumberResponse {
+	s.Body = v
+	return s
+}
+
+type ChatappVerifyAndRegisterRequest struct {
+	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
+	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
+	VerifyCode  *string `json:"VerifyCode,omitempty" xml:"VerifyCode,omitempty"`
+}
+
+func (s ChatappVerifyAndRegisterRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ChatappVerifyAndRegisterRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ChatappVerifyAndRegisterRequest) SetCustSpaceId(v string) *ChatappVerifyAndRegisterRequest {
+	s.CustSpaceId = &v
+	return s
+}
+
+func (s *ChatappVerifyAndRegisterRequest) SetPhoneNumber(v string) *ChatappVerifyAndRegisterRequest {
+	s.PhoneNumber = &v
+	return s
+}
+
+func (s *ChatappVerifyAndRegisterRequest) SetVerifyCode(v string) *ChatappVerifyAndRegisterRequest {
+	s.VerifyCode = &v
+	return s
+}
+
+type ChatappVerifyAndRegisterResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ChatappVerifyAndRegisterResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ChatappVerifyAndRegisterResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ChatappVerifyAndRegisterResponseBody) SetCode(v string) *ChatappVerifyAndRegisterResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ChatappVerifyAndRegisterResponseBody) SetMessage(v string) *ChatappVerifyAndRegisterResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ChatappVerifyAndRegisterResponseBody) SetRequestId(v string) *ChatappVerifyAndRegisterResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ChatappVerifyAndRegisterResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ChatappVerifyAndRegisterResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ChatappVerifyAndRegisterResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ChatappVerifyAndRegisterResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ChatappVerifyAndRegisterResponse) SetHeaders(v map[string]*string) *ChatappVerifyAndRegisterResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ChatappVerifyAndRegisterResponse) SetStatusCode(v int32) *ChatappVerifyAndRegisterResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ChatappVerifyAndRegisterResponse) SetBody(v *ChatappVerifyAndRegisterResponseBody) *ChatappVerifyAndRegisterResponse {
+	s.Body = v
+	return s
+}
+
+type CreateChatappMigrationInitiateRequest struct {
+	CountryCode  *string `json:"CountryCode,omitempty" xml:"CountryCode,omitempty"`
+	CustSpaceId  *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
+	MobileNumber *string `json:"MobileNumber,omitempty" xml:"MobileNumber,omitempty"`
+}
+
+func (s CreateChatappMigrationInitiateRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateChatappMigrationInitiateRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateChatappMigrationInitiateRequest) SetCountryCode(v string) *CreateChatappMigrationInitiateRequest {
+	s.CountryCode = &v
+	return s
+}
+
+func (s *CreateChatappMigrationInitiateRequest) SetCustSpaceId(v string) *CreateChatappMigrationInitiateRequest {
+	s.CustSpaceId = &v
+	return s
+}
+
+func (s *CreateChatappMigrationInitiateRequest) SetMobileNumber(v string) *CreateChatappMigrationInitiateRequest {
+	s.MobileNumber = &v
+	return s
+}
+
+type CreateChatappMigrationInitiateResponseBody struct {
+	Code      *string                                         `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *CreateChatappMigrationInitiateResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                                         `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateChatappMigrationInitiateResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateChatappMigrationInitiateResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateChatappMigrationInitiateResponseBody) SetCode(v string) *CreateChatappMigrationInitiateResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CreateChatappMigrationInitiateResponseBody) SetData(v *CreateChatappMigrationInitiateResponseBodyData) *CreateChatappMigrationInitiateResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *CreateChatappMigrationInitiateResponseBody) SetMessage(v string) *CreateChatappMigrationInitiateResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CreateChatappMigrationInitiateResponseBody) SetRequestId(v string) *CreateChatappMigrationInitiateResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateChatappMigrationInitiateResponseBodyData struct {
+	Id          *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
+	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s CreateChatappMigrationInitiateResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateChatappMigrationInitiateResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *CreateChatappMigrationInitiateResponseBodyData) SetId(v string) *CreateChatappMigrationInitiateResponseBodyData {
+	s.Id = &v
+	return s
+}
+
+func (s *CreateChatappMigrationInitiateResponseBodyData) SetPhoneNumber(v string) *CreateChatappMigrationInitiateResponseBodyData {
+	s.PhoneNumber = &v
+	return s
+}
+
+func (s *CreateChatappMigrationInitiateResponseBodyData) SetStatus(v string) *CreateChatappMigrationInitiateResponseBodyData {
+	s.Status = &v
+	return s
+}
+
+type CreateChatappMigrationInitiateResponse struct {
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateChatappMigrationInitiateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateChatappMigrationInitiateResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateChatappMigrationInitiateResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateChatappMigrationInitiateResponse) SetHeaders(v map[string]*string) *CreateChatappMigrationInitiateResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateChatappMigrationInitiateResponse) SetStatusCode(v int32) *CreateChatappMigrationInitiateResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateChatappMigrationInitiateResponse) SetBody(v *CreateChatappMigrationInitiateResponseBody) *CreateChatappMigrationInitiateResponse {
+	s.Body = v
+	return s
+}
+
 type CreateChatappTemplateRequest struct {
 	// The category of the message template. Valid values:
 	//
@@ -1678,6 +2559,418 @@ func (s *GetChatappTemplateDetailResponse) SetBody(v *GetChatappTemplateDetailRe
 	return s
 }
 
+type GetChatappVerifyCodeRequest struct {
+	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
+	Locale      *string `json:"Locale,omitempty" xml:"Locale,omitempty"`
+	Method      *string `json:"Method,omitempty" xml:"Method,omitempty"`
+	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
+}
+
+func (s GetChatappVerifyCodeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetChatappVerifyCodeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetChatappVerifyCodeRequest) SetCustSpaceId(v string) *GetChatappVerifyCodeRequest {
+	s.CustSpaceId = &v
+	return s
+}
+
+func (s *GetChatappVerifyCodeRequest) SetLocale(v string) *GetChatappVerifyCodeRequest {
+	s.Locale = &v
+	return s
+}
+
+func (s *GetChatappVerifyCodeRequest) SetMethod(v string) *GetChatappVerifyCodeRequest {
+	s.Method = &v
+	return s
+}
+
+func (s *GetChatappVerifyCodeRequest) SetPhoneNumber(v string) *GetChatappVerifyCodeRequest {
+	s.PhoneNumber = &v
+	return s
+}
+
+type GetChatappVerifyCodeResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetChatappVerifyCodeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetChatappVerifyCodeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetChatappVerifyCodeResponseBody) SetCode(v string) *GetChatappVerifyCodeResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetChatappVerifyCodeResponseBody) SetMessage(v string) *GetChatappVerifyCodeResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetChatappVerifyCodeResponseBody) SetRequestId(v string) *GetChatappVerifyCodeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetChatappVerifyCodeResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetChatappVerifyCodeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetChatappVerifyCodeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetChatappVerifyCodeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetChatappVerifyCodeResponse) SetHeaders(v map[string]*string) *GetChatappVerifyCodeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetChatappVerifyCodeResponse) SetStatusCode(v int32) *GetChatappVerifyCodeResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetChatappVerifyCodeResponse) SetBody(v *GetChatappVerifyCodeResponseBody) *GetChatappVerifyCodeResponse {
+	s.Body = v
+	return s
+}
+
+type GetMigrationVerifyCodeRequest struct {
+	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
+	Locale      *string `json:"Locale,omitempty" xml:"Locale,omitempty"`
+	Method      *string `json:"Method,omitempty" xml:"Method,omitempty"`
+	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
+}
+
+func (s GetMigrationVerifyCodeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMigrationVerifyCodeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetMigrationVerifyCodeRequest) SetCustSpaceId(v string) *GetMigrationVerifyCodeRequest {
+	s.CustSpaceId = &v
+	return s
+}
+
+func (s *GetMigrationVerifyCodeRequest) SetLocale(v string) *GetMigrationVerifyCodeRequest {
+	s.Locale = &v
+	return s
+}
+
+func (s *GetMigrationVerifyCodeRequest) SetMethod(v string) *GetMigrationVerifyCodeRequest {
+	s.Method = &v
+	return s
+}
+
+func (s *GetMigrationVerifyCodeRequest) SetPhoneNumber(v string) *GetMigrationVerifyCodeRequest {
+	s.PhoneNumber = &v
+	return s
+}
+
+type GetMigrationVerifyCodeResponseBody struct {
+	Code      *string                                 `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *GetMigrationVerifyCodeResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                                 `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetMigrationVerifyCodeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMigrationVerifyCodeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetMigrationVerifyCodeResponseBody) SetCode(v string) *GetMigrationVerifyCodeResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetMigrationVerifyCodeResponseBody) SetData(v *GetMigrationVerifyCodeResponseBodyData) *GetMigrationVerifyCodeResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetMigrationVerifyCodeResponseBody) SetMessage(v string) *GetMigrationVerifyCodeResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetMigrationVerifyCodeResponseBody) SetRequestId(v string) *GetMigrationVerifyCodeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetMigrationVerifyCodeResponseBodyData struct {
+	Id          *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
+}
+
+func (s GetMigrationVerifyCodeResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMigrationVerifyCodeResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetMigrationVerifyCodeResponseBodyData) SetId(v string) *GetMigrationVerifyCodeResponseBodyData {
+	s.Id = &v
+	return s
+}
+
+func (s *GetMigrationVerifyCodeResponseBodyData) SetPhoneNumber(v string) *GetMigrationVerifyCodeResponseBodyData {
+	s.PhoneNumber = &v
+	return s
+}
+
+type GetMigrationVerifyCodeResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetMigrationVerifyCodeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetMigrationVerifyCodeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMigrationVerifyCodeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetMigrationVerifyCodeResponse) SetHeaders(v map[string]*string) *GetMigrationVerifyCodeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetMigrationVerifyCodeResponse) SetStatusCode(v int32) *GetMigrationVerifyCodeResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetMigrationVerifyCodeResponse) SetBody(v *GetMigrationVerifyCodeResponseBody) *GetMigrationVerifyCodeResponse {
+	s.Body = v
+	return s
+}
+
+type GetPhoneNumberVerificationStatusRequest struct {
+	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
+	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
+}
+
+func (s GetPhoneNumberVerificationStatusRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPhoneNumberVerificationStatusRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetPhoneNumberVerificationStatusRequest) SetCustSpaceId(v string) *GetPhoneNumberVerificationStatusRequest {
+	s.CustSpaceId = &v
+	return s
+}
+
+func (s *GetPhoneNumberVerificationStatusRequest) SetPhoneNumber(v string) *GetPhoneNumberVerificationStatusRequest {
+	s.PhoneNumber = &v
+	return s
+}
+
+type GetPhoneNumberVerificationStatusResponseBody struct {
+	Code      *string                                           `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *GetPhoneNumberVerificationStatusResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                                           `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetPhoneNumberVerificationStatusResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPhoneNumberVerificationStatusResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetPhoneNumberVerificationStatusResponseBody) SetCode(v string) *GetPhoneNumberVerificationStatusResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetPhoneNumberVerificationStatusResponseBody) SetData(v *GetPhoneNumberVerificationStatusResponseBodyData) *GetPhoneNumberVerificationStatusResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetPhoneNumberVerificationStatusResponseBody) SetMessage(v string) *GetPhoneNumberVerificationStatusResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetPhoneNumberVerificationStatusResponseBody) SetRequestId(v string) *GetPhoneNumberVerificationStatusResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetPhoneNumberVerificationStatusResponseBodyData struct {
+	CodeVerificationStatus *string `json:"CodeVerificationStatus,omitempty" xml:"CodeVerificationStatus,omitempty"`
+	Id                     *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	PhoneNumber            *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
+}
+
+func (s GetPhoneNumberVerificationStatusResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPhoneNumberVerificationStatusResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetPhoneNumberVerificationStatusResponseBodyData) SetCodeVerificationStatus(v string) *GetPhoneNumberVerificationStatusResponseBodyData {
+	s.CodeVerificationStatus = &v
+	return s
+}
+
+func (s *GetPhoneNumberVerificationStatusResponseBodyData) SetId(v string) *GetPhoneNumberVerificationStatusResponseBodyData {
+	s.Id = &v
+	return s
+}
+
+func (s *GetPhoneNumberVerificationStatusResponseBodyData) SetPhoneNumber(v string) *GetPhoneNumberVerificationStatusResponseBodyData {
+	s.PhoneNumber = &v
+	return s
+}
+
+type GetPhoneNumberVerificationStatusResponse struct {
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetPhoneNumberVerificationStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetPhoneNumberVerificationStatusResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPhoneNumberVerificationStatusResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetPhoneNumberVerificationStatusResponse) SetHeaders(v map[string]*string) *GetPhoneNumberVerificationStatusResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetPhoneNumberVerificationStatusResponse) SetStatusCode(v int32) *GetPhoneNumberVerificationStatusResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetPhoneNumberVerificationStatusResponse) SetBody(v *GetPhoneNumberVerificationStatusResponseBody) *GetPhoneNumberVerificationStatusResponse {
+	s.Body = v
+	return s
+}
+
+type IsvGetAppIdRequest struct {
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s IsvGetAppIdRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s IsvGetAppIdRequest) GoString() string {
+	return s.String()
+}
+
+func (s *IsvGetAppIdRequest) SetType(v string) *IsvGetAppIdRequest {
+	s.Type = &v
+	return s
+}
+
+type IsvGetAppIdResponseBody struct {
+	AppId     *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s IsvGetAppIdResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s IsvGetAppIdResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *IsvGetAppIdResponseBody) SetAppId(v string) *IsvGetAppIdResponseBody {
+	s.AppId = &v
+	return s
+}
+
+func (s *IsvGetAppIdResponseBody) SetCode(v string) *IsvGetAppIdResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *IsvGetAppIdResponseBody) SetMessage(v string) *IsvGetAppIdResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *IsvGetAppIdResponseBody) SetRequestId(v string) *IsvGetAppIdResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type IsvGetAppIdResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *IsvGetAppIdResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s IsvGetAppIdResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s IsvGetAppIdResponse) GoString() string {
+	return s.String()
+}
+
+func (s *IsvGetAppIdResponse) SetHeaders(v map[string]*string) *IsvGetAppIdResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *IsvGetAppIdResponse) SetStatusCode(v int32) *IsvGetAppIdResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *IsvGetAppIdResponse) SetBody(v *IsvGetAppIdResponseBody) *IsvGetAppIdResponse {
+	s.Body = v
+	return s
+}
+
 type ListChatappTemplateRequest struct {
 	// The review status of the message template. Valid values:
 	//
@@ -2312,6 +3605,182 @@ func (s *ModifyChatappTemplateResponse) SetBody(v *ModifyChatappTemplateResponse
 	return s
 }
 
+type ModifyPhoneBusinessProfileRequest struct {
+	Address           *string   `json:"Address,omitempty" xml:"Address,omitempty"`
+	CustSpaceId       *string   `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
+	Description       *string   `json:"Description,omitempty" xml:"Description,omitempty"`
+	Email             *string   `json:"Email,omitempty" xml:"Email,omitempty"`
+	PhoneNumber       *string   `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
+	ProfilePictureUrl *string   `json:"ProfilePictureUrl,omitempty" xml:"ProfilePictureUrl,omitempty"`
+	Vertical          *string   `json:"Vertical,omitempty" xml:"Vertical,omitempty"`
+	Websites          []*string `json:"Websites,omitempty" xml:"Websites,omitempty" type:"Repeated"`
+}
+
+func (s ModifyPhoneBusinessProfileRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyPhoneBusinessProfileRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyPhoneBusinessProfileRequest) SetAddress(v string) *ModifyPhoneBusinessProfileRequest {
+	s.Address = &v
+	return s
+}
+
+func (s *ModifyPhoneBusinessProfileRequest) SetCustSpaceId(v string) *ModifyPhoneBusinessProfileRequest {
+	s.CustSpaceId = &v
+	return s
+}
+
+func (s *ModifyPhoneBusinessProfileRequest) SetDescription(v string) *ModifyPhoneBusinessProfileRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *ModifyPhoneBusinessProfileRequest) SetEmail(v string) *ModifyPhoneBusinessProfileRequest {
+	s.Email = &v
+	return s
+}
+
+func (s *ModifyPhoneBusinessProfileRequest) SetPhoneNumber(v string) *ModifyPhoneBusinessProfileRequest {
+	s.PhoneNumber = &v
+	return s
+}
+
+func (s *ModifyPhoneBusinessProfileRequest) SetProfilePictureUrl(v string) *ModifyPhoneBusinessProfileRequest {
+	s.ProfilePictureUrl = &v
+	return s
+}
+
+func (s *ModifyPhoneBusinessProfileRequest) SetVertical(v string) *ModifyPhoneBusinessProfileRequest {
+	s.Vertical = &v
+	return s
+}
+
+func (s *ModifyPhoneBusinessProfileRequest) SetWebsites(v []*string) *ModifyPhoneBusinessProfileRequest {
+	s.Websites = v
+	return s
+}
+
+type ModifyPhoneBusinessProfileShrinkRequest struct {
+	Address           *string `json:"Address,omitempty" xml:"Address,omitempty"`
+	CustSpaceId       *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
+	Description       *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Email             *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	PhoneNumber       *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
+	ProfilePictureUrl *string `json:"ProfilePictureUrl,omitempty" xml:"ProfilePictureUrl,omitempty"`
+	Vertical          *string `json:"Vertical,omitempty" xml:"Vertical,omitempty"`
+	WebsitesShrink    *string `json:"Websites,omitempty" xml:"Websites,omitempty"`
+}
+
+func (s ModifyPhoneBusinessProfileShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyPhoneBusinessProfileShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyPhoneBusinessProfileShrinkRequest) SetAddress(v string) *ModifyPhoneBusinessProfileShrinkRequest {
+	s.Address = &v
+	return s
+}
+
+func (s *ModifyPhoneBusinessProfileShrinkRequest) SetCustSpaceId(v string) *ModifyPhoneBusinessProfileShrinkRequest {
+	s.CustSpaceId = &v
+	return s
+}
+
+func (s *ModifyPhoneBusinessProfileShrinkRequest) SetDescription(v string) *ModifyPhoneBusinessProfileShrinkRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *ModifyPhoneBusinessProfileShrinkRequest) SetEmail(v string) *ModifyPhoneBusinessProfileShrinkRequest {
+	s.Email = &v
+	return s
+}
+
+func (s *ModifyPhoneBusinessProfileShrinkRequest) SetPhoneNumber(v string) *ModifyPhoneBusinessProfileShrinkRequest {
+	s.PhoneNumber = &v
+	return s
+}
+
+func (s *ModifyPhoneBusinessProfileShrinkRequest) SetProfilePictureUrl(v string) *ModifyPhoneBusinessProfileShrinkRequest {
+	s.ProfilePictureUrl = &v
+	return s
+}
+
+func (s *ModifyPhoneBusinessProfileShrinkRequest) SetVertical(v string) *ModifyPhoneBusinessProfileShrinkRequest {
+	s.Vertical = &v
+	return s
+}
+
+func (s *ModifyPhoneBusinessProfileShrinkRequest) SetWebsitesShrink(v string) *ModifyPhoneBusinessProfileShrinkRequest {
+	s.WebsitesShrink = &v
+	return s
+}
+
+type ModifyPhoneBusinessProfileResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifyPhoneBusinessProfileResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyPhoneBusinessProfileResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyPhoneBusinessProfileResponseBody) SetCode(v string) *ModifyPhoneBusinessProfileResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ModifyPhoneBusinessProfileResponseBody) SetMessage(v string) *ModifyPhoneBusinessProfileResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ModifyPhoneBusinessProfileResponseBody) SetRequestId(v string) *ModifyPhoneBusinessProfileResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifyPhoneBusinessProfileResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ModifyPhoneBusinessProfileResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ModifyPhoneBusinessProfileResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyPhoneBusinessProfileResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyPhoneBusinessProfileResponse) SetHeaders(v map[string]*string) *ModifyPhoneBusinessProfileResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyPhoneBusinessProfileResponse) SetStatusCode(v int32) *ModifyPhoneBusinessProfileResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyPhoneBusinessProfileResponse) SetBody(v *ModifyPhoneBusinessProfileResponseBody) *ModifyPhoneBusinessProfileResponse {
+	s.Body = v
+	return s
+}
+
 type QueryChatappBindWabaRequest struct {
 	// The space ID of the user under the ISV account.
 	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
@@ -2641,6 +4110,263 @@ func (s *QueryChatappPhoneNumbersResponse) SetStatusCode(v int32) *QueryChatappP
 }
 
 func (s *QueryChatappPhoneNumbersResponse) SetBody(v *QueryChatappPhoneNumbersResponseBody) *QueryChatappPhoneNumbersResponse {
+	s.Body = v
+	return s
+}
+
+type QueryPhoneBusinessProfileRequest struct {
+	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
+	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
+}
+
+func (s QueryPhoneBusinessProfileRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryPhoneBusinessProfileRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryPhoneBusinessProfileRequest) SetCustSpaceId(v string) *QueryPhoneBusinessProfileRequest {
+	s.CustSpaceId = &v
+	return s
+}
+
+func (s *QueryPhoneBusinessProfileRequest) SetPhoneNumber(v string) *QueryPhoneBusinessProfileRequest {
+	s.PhoneNumber = &v
+	return s
+}
+
+type QueryPhoneBusinessProfileResponseBody struct {
+	Code      *string                                    `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *QueryPhoneBusinessProfileResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                                    `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s QueryPhoneBusinessProfileResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryPhoneBusinessProfileResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryPhoneBusinessProfileResponseBody) SetCode(v string) *QueryPhoneBusinessProfileResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *QueryPhoneBusinessProfileResponseBody) SetData(v *QueryPhoneBusinessProfileResponseBodyData) *QueryPhoneBusinessProfileResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *QueryPhoneBusinessProfileResponseBody) SetMessage(v string) *QueryPhoneBusinessProfileResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *QueryPhoneBusinessProfileResponseBody) SetRequestId(v string) *QueryPhoneBusinessProfileResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type QueryPhoneBusinessProfileResponseBodyData struct {
+	Address           *string   `json:"Address,omitempty" xml:"Address,omitempty"`
+	Description       *string   `json:"Description,omitempty" xml:"Description,omitempty"`
+	Email             *string   `json:"Email,omitempty" xml:"Email,omitempty"`
+	ProfilePictureUrl *string   `json:"ProfilePictureUrl,omitempty" xml:"ProfilePictureUrl,omitempty"`
+	Vertical          *string   `json:"Vertical,omitempty" xml:"Vertical,omitempty"`
+	Websites          []*string `json:"Websites,omitempty" xml:"Websites,omitempty" type:"Repeated"`
+}
+
+func (s QueryPhoneBusinessProfileResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryPhoneBusinessProfileResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *QueryPhoneBusinessProfileResponseBodyData) SetAddress(v string) *QueryPhoneBusinessProfileResponseBodyData {
+	s.Address = &v
+	return s
+}
+
+func (s *QueryPhoneBusinessProfileResponseBodyData) SetDescription(v string) *QueryPhoneBusinessProfileResponseBodyData {
+	s.Description = &v
+	return s
+}
+
+func (s *QueryPhoneBusinessProfileResponseBodyData) SetEmail(v string) *QueryPhoneBusinessProfileResponseBodyData {
+	s.Email = &v
+	return s
+}
+
+func (s *QueryPhoneBusinessProfileResponseBodyData) SetProfilePictureUrl(v string) *QueryPhoneBusinessProfileResponseBodyData {
+	s.ProfilePictureUrl = &v
+	return s
+}
+
+func (s *QueryPhoneBusinessProfileResponseBodyData) SetVertical(v string) *QueryPhoneBusinessProfileResponseBodyData {
+	s.Vertical = &v
+	return s
+}
+
+func (s *QueryPhoneBusinessProfileResponseBodyData) SetWebsites(v []*string) *QueryPhoneBusinessProfileResponseBodyData {
+	s.Websites = v
+	return s
+}
+
+type QueryPhoneBusinessProfileResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *QueryPhoneBusinessProfileResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s QueryPhoneBusinessProfileResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryPhoneBusinessProfileResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryPhoneBusinessProfileResponse) SetHeaders(v map[string]*string) *QueryPhoneBusinessProfileResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryPhoneBusinessProfileResponse) SetStatusCode(v int32) *QueryPhoneBusinessProfileResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QueryPhoneBusinessProfileResponse) SetBody(v *QueryPhoneBusinessProfileResponseBody) *QueryPhoneBusinessProfileResponse {
+	s.Body = v
+	return s
+}
+
+type QueryWabaBusinessInfoRequest struct {
+	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
+	// wabaId
+	WabaId *string `json:"WabaId,omitempty" xml:"WabaId,omitempty"`
+}
+
+func (s QueryWabaBusinessInfoRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryWabaBusinessInfoRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryWabaBusinessInfoRequest) SetCustSpaceId(v string) *QueryWabaBusinessInfoRequest {
+	s.CustSpaceId = &v
+	return s
+}
+
+func (s *QueryWabaBusinessInfoRequest) SetWabaId(v string) *QueryWabaBusinessInfoRequest {
+	s.WabaId = &v
+	return s
+}
+
+type QueryWabaBusinessInfoResponseBody struct {
+	Code      *string                                `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *QueryWabaBusinessInfoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                                `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s QueryWabaBusinessInfoResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryWabaBusinessInfoResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryWabaBusinessInfoResponseBody) SetCode(v string) *QueryWabaBusinessInfoResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *QueryWabaBusinessInfoResponseBody) SetData(v *QueryWabaBusinessInfoResponseBodyData) *QueryWabaBusinessInfoResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *QueryWabaBusinessInfoResponseBody) SetMessage(v string) *QueryWabaBusinessInfoResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *QueryWabaBusinessInfoResponseBody) SetRequestId(v string) *QueryWabaBusinessInfoResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type QueryWabaBusinessInfoResponseBodyData struct {
+	BusinessId         *string `json:"BusinessId,omitempty" xml:"BusinessId,omitempty"`
+	BusinessName       *string `json:"BusinessName,omitempty" xml:"BusinessName,omitempty"`
+	VerificationStatus *string `json:"VerificationStatus,omitempty" xml:"VerificationStatus,omitempty"`
+	Vertical           *string `json:"Vertical,omitempty" xml:"Vertical,omitempty"`
+}
+
+func (s QueryWabaBusinessInfoResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryWabaBusinessInfoResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *QueryWabaBusinessInfoResponseBodyData) SetBusinessId(v string) *QueryWabaBusinessInfoResponseBodyData {
+	s.BusinessId = &v
+	return s
+}
+
+func (s *QueryWabaBusinessInfoResponseBodyData) SetBusinessName(v string) *QueryWabaBusinessInfoResponseBodyData {
+	s.BusinessName = &v
+	return s
+}
+
+func (s *QueryWabaBusinessInfoResponseBodyData) SetVerificationStatus(v string) *QueryWabaBusinessInfoResponseBodyData {
+	s.VerificationStatus = &v
+	return s
+}
+
+func (s *QueryWabaBusinessInfoResponseBodyData) SetVertical(v string) *QueryWabaBusinessInfoResponseBodyData {
+	s.Vertical = &v
+	return s
+}
+
+type QueryWabaBusinessInfoResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *QueryWabaBusinessInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s QueryWabaBusinessInfoResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryWabaBusinessInfoResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryWabaBusinessInfoResponse) SetHeaders(v map[string]*string) *QueryWabaBusinessInfoResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryWabaBusinessInfoResponse) SetStatusCode(v int32) *QueryWabaBusinessInfoResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QueryWabaBusinessInfoResponse) SetBody(v *QueryWabaBusinessInfoResponseBody) *QueryWabaBusinessInfoResponse {
 	s.Body = v
 	return s
 }
@@ -3337,6 +5063,204 @@ func (s *SendChatappMessageResponse) SetBody(v *SendChatappMessageResponseBody) 
 	return s
 }
 
+type UpdateAccountWebhookRequest struct {
+	CustSpaceId       *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
+	HttpFlag          *string `json:"HttpFlag,omitempty" xml:"HttpFlag,omitempty"`
+	QueueFlag         *string `json:"QueueFlag,omitempty" xml:"QueueFlag,omitempty"`
+	StatusCallbackUrl *string `json:"StatusCallbackUrl,omitempty" xml:"StatusCallbackUrl,omitempty"`
+}
+
+func (s UpdateAccountWebhookRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAccountWebhookRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAccountWebhookRequest) SetCustSpaceId(v string) *UpdateAccountWebhookRequest {
+	s.CustSpaceId = &v
+	return s
+}
+
+func (s *UpdateAccountWebhookRequest) SetHttpFlag(v string) *UpdateAccountWebhookRequest {
+	s.HttpFlag = &v
+	return s
+}
+
+func (s *UpdateAccountWebhookRequest) SetQueueFlag(v string) *UpdateAccountWebhookRequest {
+	s.QueueFlag = &v
+	return s
+}
+
+func (s *UpdateAccountWebhookRequest) SetStatusCallbackUrl(v string) *UpdateAccountWebhookRequest {
+	s.StatusCallbackUrl = &v
+	return s
+}
+
+type UpdateAccountWebhookResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateAccountWebhookResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAccountWebhookResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAccountWebhookResponseBody) SetCode(v string) *UpdateAccountWebhookResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UpdateAccountWebhookResponseBody) SetMessage(v string) *UpdateAccountWebhookResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UpdateAccountWebhookResponseBody) SetRequestId(v string) *UpdateAccountWebhookResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateAccountWebhookResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateAccountWebhookResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateAccountWebhookResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAccountWebhookResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAccountWebhookResponse) SetHeaders(v map[string]*string) *UpdateAccountWebhookResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateAccountWebhookResponse) SetStatusCode(v int32) *UpdateAccountWebhookResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateAccountWebhookResponse) SetBody(v *UpdateAccountWebhookResponseBody) *UpdateAccountWebhookResponse {
+	s.Body = v
+	return s
+}
+
+type UpdatePhoneWebhookRequest struct {
+	CustSpaceId       *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
+	HttpFlag          *string `json:"HttpFlag,omitempty" xml:"HttpFlag,omitempty"`
+	PhoneNumber       *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
+	QueueFlag         *string `json:"QueueFlag,omitempty" xml:"QueueFlag,omitempty"`
+	StatusCallbackUrl *string `json:"StatusCallbackUrl,omitempty" xml:"StatusCallbackUrl,omitempty"`
+	UpCallbackUrl     *string `json:"UpCallbackUrl,omitempty" xml:"UpCallbackUrl,omitempty"`
+}
+
+func (s UpdatePhoneWebhookRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdatePhoneWebhookRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdatePhoneWebhookRequest) SetCustSpaceId(v string) *UpdatePhoneWebhookRequest {
+	s.CustSpaceId = &v
+	return s
+}
+
+func (s *UpdatePhoneWebhookRequest) SetHttpFlag(v string) *UpdatePhoneWebhookRequest {
+	s.HttpFlag = &v
+	return s
+}
+
+func (s *UpdatePhoneWebhookRequest) SetPhoneNumber(v string) *UpdatePhoneWebhookRequest {
+	s.PhoneNumber = &v
+	return s
+}
+
+func (s *UpdatePhoneWebhookRequest) SetQueueFlag(v string) *UpdatePhoneWebhookRequest {
+	s.QueueFlag = &v
+	return s
+}
+
+func (s *UpdatePhoneWebhookRequest) SetStatusCallbackUrl(v string) *UpdatePhoneWebhookRequest {
+	s.StatusCallbackUrl = &v
+	return s
+}
+
+func (s *UpdatePhoneWebhookRequest) SetUpCallbackUrl(v string) *UpdatePhoneWebhookRequest {
+	s.UpCallbackUrl = &v
+	return s
+}
+
+type UpdatePhoneWebhookResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdatePhoneWebhookResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdatePhoneWebhookResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdatePhoneWebhookResponseBody) SetCode(v string) *UpdatePhoneWebhookResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UpdatePhoneWebhookResponseBody) SetMessage(v string) *UpdatePhoneWebhookResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UpdatePhoneWebhookResponseBody) SetRequestId(v string) *UpdatePhoneWebhookResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdatePhoneWebhookResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdatePhoneWebhookResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdatePhoneWebhookResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdatePhoneWebhookResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdatePhoneWebhookResponse) SetHeaders(v map[string]*string) *UpdatePhoneWebhookResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdatePhoneWebhookResponse) SetStatusCode(v int32) *UpdatePhoneWebhookResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdatePhoneWebhookResponse) SetBody(v *UpdatePhoneWebhookResponseBody) *UpdatePhoneWebhookResponse {
+	s.Body = v
+	return s
+}
+
 type Client struct {
 	openapi.Client
 }
@@ -3571,6 +5495,390 @@ func (client *Client) BeeBotChat(request *BeeBotChatRequest) (_result *BeeBotCha
 	runtime := &util.RuntimeOptions{}
 	_result = &BeeBotChatResponse{}
 	_body, _err := client.BeeBotChatWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ChatappBindWabaWithOptions(request *ChatappBindWabaRequest, runtime *util.RuntimeOptions) (_result *ChatappBindWabaResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.WabaId)) {
+		body["WabaId"] = request.WabaId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ChatappBindWaba"),
+		Version:     tea.String("2020-06-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ChatappBindWabaResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ChatappBindWaba(request *ChatappBindWabaRequest) (_result *ChatappBindWabaResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ChatappBindWabaResponse{}
+	_body, _err := client.ChatappBindWabaWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ChatappEmbedSignUpWithOptions(request *ChatappEmbedSignUpRequest, runtime *util.RuntimeOptions) (_result *ChatappEmbedSignUpResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InputToken)) {
+		body["InputToken"] = request.InputToken
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ChatappEmbedSignUp"),
+		Version:     tea.String("2020-06-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ChatappEmbedSignUpResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ChatappEmbedSignUp(request *ChatappEmbedSignUpRequest) (_result *ChatappEmbedSignUpResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ChatappEmbedSignUpResponse{}
+	_body, _err := client.ChatappEmbedSignUpWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ChatappMigrationRegisterWithOptions(request *ChatappMigrationRegisterRequest, runtime *util.RuntimeOptions) (_result *ChatappMigrationRegisterResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CustSpaceId)) {
+		query["CustSpaceId"] = request.CustSpaceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PhoneNumber)) {
+		query["PhoneNumber"] = request.PhoneNumber
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ChatappMigrationRegister"),
+		Version:     tea.String("2020-06-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ChatappMigrationRegisterResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ChatappMigrationRegister(request *ChatappMigrationRegisterRequest) (_result *ChatappMigrationRegisterResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ChatappMigrationRegisterResponse{}
+	_body, _err := client.ChatappMigrationRegisterWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ChatappMigrationVerifiedWithOptions(request *ChatappMigrationVerifiedRequest, runtime *util.RuntimeOptions) (_result *ChatappMigrationVerifiedResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CustSpaceId)) {
+		query["CustSpaceId"] = request.CustSpaceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PhoneNumber)) {
+		query["PhoneNumber"] = request.PhoneNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VerifyCode)) {
+		query["VerifyCode"] = request.VerifyCode
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ChatappMigrationVerified"),
+		Version:     tea.String("2020-06-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ChatappMigrationVerifiedResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ChatappMigrationVerified(request *ChatappMigrationVerifiedRequest) (_result *ChatappMigrationVerifiedResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ChatappMigrationVerifiedResponse{}
+	_body, _err := client.ChatappMigrationVerifiedWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ChatappPhoneNumberRegisterWithOptions(request *ChatappPhoneNumberRegisterRequest, runtime *util.RuntimeOptions) (_result *ChatappPhoneNumberRegisterResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CustSpaceId)) {
+		body["CustSpaceId"] = request.CustSpaceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PhoneNumber)) {
+		body["PhoneNumber"] = request.PhoneNumber
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ChatappPhoneNumberRegister"),
+		Version:     tea.String("2020-06-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ChatappPhoneNumberRegisterResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ChatappPhoneNumberRegister(request *ChatappPhoneNumberRegisterRequest) (_result *ChatappPhoneNumberRegisterResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ChatappPhoneNumberRegisterResponse{}
+	_body, _err := client.ChatappPhoneNumberRegisterWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ChatappSyncPhoneNumberWithOptions(request *ChatappSyncPhoneNumberRequest, runtime *util.RuntimeOptions) (_result *ChatappSyncPhoneNumberResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CustSpaceId)) {
+		query["CustSpaceId"] = request.CustSpaceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ChatappSyncPhoneNumber"),
+		Version:     tea.String("2020-06-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ChatappSyncPhoneNumberResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ChatappSyncPhoneNumber(request *ChatappSyncPhoneNumberRequest) (_result *ChatappSyncPhoneNumberResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ChatappSyncPhoneNumberResponse{}
+	_body, _err := client.ChatappSyncPhoneNumberWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ChatappVerifyAndRegisterWithOptions(request *ChatappVerifyAndRegisterRequest, runtime *util.RuntimeOptions) (_result *ChatappVerifyAndRegisterResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CustSpaceId)) {
+		body["CustSpaceId"] = request.CustSpaceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PhoneNumber)) {
+		body["PhoneNumber"] = request.PhoneNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VerifyCode)) {
+		body["VerifyCode"] = request.VerifyCode
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ChatappVerifyAndRegister"),
+		Version:     tea.String("2020-06-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ChatappVerifyAndRegisterResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ChatappVerifyAndRegister(request *ChatappVerifyAndRegisterRequest) (_result *ChatappVerifyAndRegisterResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ChatappVerifyAndRegisterResponse{}
+	_body, _err := client.ChatappVerifyAndRegisterWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateChatappMigrationInitiateWithOptions(request *CreateChatappMigrationInitiateRequest, runtime *util.RuntimeOptions) (_result *CreateChatappMigrationInitiateResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CountryCode)) {
+		query["CountryCode"] = request.CountryCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CustSpaceId)) {
+		query["CustSpaceId"] = request.CustSpaceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MobileNumber)) {
+		query["MobileNumber"] = request.MobileNumber
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateChatappMigrationInitiate"),
+		Version:     tea.String("2020-06-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateChatappMigrationInitiateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateChatappMigrationInitiate(request *CreateChatappMigrationInitiateRequest) (_result *CreateChatappMigrationInitiateResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateChatappMigrationInitiateResponse{}
+	_body, _err := client.CreateChatappMigrationInitiateWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3827,6 +6135,210 @@ func (client *Client) GetChatappTemplateDetail(request *GetChatappTemplateDetail
 	return _result, _err
 }
 
+func (client *Client) GetChatappVerifyCodeWithOptions(request *GetChatappVerifyCodeRequest, runtime *util.RuntimeOptions) (_result *GetChatappVerifyCodeResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CustSpaceId)) {
+		body["CustSpaceId"] = request.CustSpaceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Locale)) {
+		body["Locale"] = request.Locale
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Method)) {
+		body["Method"] = request.Method
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PhoneNumber)) {
+		body["PhoneNumber"] = request.PhoneNumber
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetChatappVerifyCode"),
+		Version:     tea.String("2020-06-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetChatappVerifyCodeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetChatappVerifyCode(request *GetChatappVerifyCodeRequest) (_result *GetChatappVerifyCodeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetChatappVerifyCodeResponse{}
+	_body, _err := client.GetChatappVerifyCodeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetMigrationVerifyCodeWithOptions(request *GetMigrationVerifyCodeRequest, runtime *util.RuntimeOptions) (_result *GetMigrationVerifyCodeResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CustSpaceId)) {
+		query["CustSpaceId"] = request.CustSpaceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Locale)) {
+		query["Locale"] = request.Locale
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Method)) {
+		query["Method"] = request.Method
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PhoneNumber)) {
+		query["PhoneNumber"] = request.PhoneNumber
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetMigrationVerifyCode"),
+		Version:     tea.String("2020-06-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetMigrationVerifyCodeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetMigrationVerifyCode(request *GetMigrationVerifyCodeRequest) (_result *GetMigrationVerifyCodeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetMigrationVerifyCodeResponse{}
+	_body, _err := client.GetMigrationVerifyCodeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetPhoneNumberVerificationStatusWithOptions(request *GetPhoneNumberVerificationStatusRequest, runtime *util.RuntimeOptions) (_result *GetPhoneNumberVerificationStatusResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CustSpaceId)) {
+		body["CustSpaceId"] = request.CustSpaceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PhoneNumber)) {
+		body["PhoneNumber"] = request.PhoneNumber
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetPhoneNumberVerificationStatus"),
+		Version:     tea.String("2020-06-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetPhoneNumberVerificationStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetPhoneNumberVerificationStatus(request *GetPhoneNumberVerificationStatusRequest) (_result *GetPhoneNumberVerificationStatusResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetPhoneNumberVerificationStatusResponse{}
+	_body, _err := client.GetPhoneNumberVerificationStatusWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) IsvGetAppIdWithOptions(request *IsvGetAppIdRequest, runtime *util.RuntimeOptions) (_result *IsvGetAppIdResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		body["Type"] = request.Type
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("IsvGetAppId"),
+		Version:     tea.String("2020-06-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &IsvGetAppIdResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) IsvGetAppId(request *IsvGetAppIdRequest) (_result *IsvGetAppIdResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &IsvGetAppIdResponse{}
+	_body, _err := client.IsvGetAppIdWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 /**
  * ### QPS limit
  * You can call this operation up to 5 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
@@ -3994,6 +6506,84 @@ func (client *Client) ModifyChatappTemplate(request *ModifyChatappTemplateReques
 	return _result, _err
 }
 
+func (client *Client) ModifyPhoneBusinessProfileWithOptions(tmpReq *ModifyPhoneBusinessProfileRequest, runtime *util.RuntimeOptions) (_result *ModifyPhoneBusinessProfileResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ModifyPhoneBusinessProfileShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Websites)) {
+		request.WebsitesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Websites, tea.String("Websites"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Address)) {
+		query["Address"] = request.Address
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CustSpaceId)) {
+		query["CustSpaceId"] = request.CustSpaceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Email)) {
+		query["Email"] = request.Email
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PhoneNumber)) {
+		query["PhoneNumber"] = request.PhoneNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProfilePictureUrl)) {
+		query["ProfilePictureUrl"] = request.ProfilePictureUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Vertical)) {
+		query["Vertical"] = request.Vertical
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WebsitesShrink)) {
+		query["Websites"] = request.WebsitesShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyPhoneBusinessProfile"),
+		Version:     tea.String("2020-06-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyPhoneBusinessProfileResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ModifyPhoneBusinessProfile(request *ModifyPhoneBusinessProfileRequest) (_result *ModifyPhoneBusinessProfileResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyPhoneBusinessProfileResponse{}
+	_body, _err := client.ModifyPhoneBusinessProfileWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 /**
  * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
  *
@@ -4109,6 +6699,102 @@ func (client *Client) QueryChatappPhoneNumbers(request *QueryChatappPhoneNumbers
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryChatappPhoneNumbersResponse{}
 	_body, _err := client.QueryChatappPhoneNumbersWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) QueryPhoneBusinessProfileWithOptions(request *QueryPhoneBusinessProfileRequest, runtime *util.RuntimeOptions) (_result *QueryPhoneBusinessProfileResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CustSpaceId)) {
+		query["CustSpaceId"] = request.CustSpaceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PhoneNumber)) {
+		query["PhoneNumber"] = request.PhoneNumber
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryPhoneBusinessProfile"),
+		Version:     tea.String("2020-06-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QueryPhoneBusinessProfileResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) QueryPhoneBusinessProfile(request *QueryPhoneBusinessProfileRequest) (_result *QueryPhoneBusinessProfileResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QueryPhoneBusinessProfileResponse{}
+	_body, _err := client.QueryPhoneBusinessProfileWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) QueryWabaBusinessInfoWithOptions(request *QueryWabaBusinessInfoRequest, runtime *util.RuntimeOptions) (_result *QueryWabaBusinessInfoResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CustSpaceId)) {
+		query["CustSpaceId"] = request.CustSpaceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WabaId)) {
+		query["WabaId"] = request.WabaId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryWabaBusinessInfo"),
+		Version:     tea.String("2020-06-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QueryWabaBusinessInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) QueryWabaBusinessInfo(request *QueryWabaBusinessInfoRequest) (_result *QueryWabaBusinessInfoResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QueryWabaBusinessInfoResponse{}
+	_body, _err := client.QueryWabaBusinessInfoWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4359,6 +7045,126 @@ func (client *Client) SendChatappMessage(request *SendChatappMessageRequest) (_r
 	runtime := &util.RuntimeOptions{}
 	_result = &SendChatappMessageResponse{}
 	_body, _err := client.SendChatappMessageWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateAccountWebhookWithOptions(request *UpdateAccountWebhookRequest, runtime *util.RuntimeOptions) (_result *UpdateAccountWebhookResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CustSpaceId)) {
+		query["CustSpaceId"] = request.CustSpaceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HttpFlag)) {
+		query["HttpFlag"] = request.HttpFlag
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.QueueFlag)) {
+		query["QueueFlag"] = request.QueueFlag
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StatusCallbackUrl)) {
+		query["StatusCallbackUrl"] = request.StatusCallbackUrl
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateAccountWebhook"),
+		Version:     tea.String("2020-06-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateAccountWebhookResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateAccountWebhook(request *UpdateAccountWebhookRequest) (_result *UpdateAccountWebhookResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateAccountWebhookResponse{}
+	_body, _err := client.UpdateAccountWebhookWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdatePhoneWebhookWithOptions(request *UpdatePhoneWebhookRequest, runtime *util.RuntimeOptions) (_result *UpdatePhoneWebhookResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CustSpaceId)) {
+		query["CustSpaceId"] = request.CustSpaceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HttpFlag)) {
+		query["HttpFlag"] = request.HttpFlag
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PhoneNumber)) {
+		query["PhoneNumber"] = request.PhoneNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.QueueFlag)) {
+		query["QueueFlag"] = request.QueueFlag
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StatusCallbackUrl)) {
+		query["StatusCallbackUrl"] = request.StatusCallbackUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UpCallbackUrl)) {
+		query["UpCallbackUrl"] = request.UpCallbackUrl
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdatePhoneWebhook"),
+		Version:     tea.String("2020-06-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdatePhoneWebhookResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdatePhoneWebhook(request *UpdatePhoneWebhookRequest) (_result *UpdatePhoneWebhookResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdatePhoneWebhookResponse{}
+	_body, _err := client.UpdatePhoneWebhookWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
