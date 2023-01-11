@@ -3068,7 +3068,7 @@ func (client *Client) RecognizeLogoAdvance(request *RecognizeLogoAdvanceRequest,
 	recognizeLogoReq := &RecognizeLogoRequest{}
 	openapiutil.Convert(request, recognizeLogoReq)
 	if !tea.BoolValue(util.IsUnset(request.Tasks)) {
-		i := tea.Int(0)
+		i0 := tea.Int(0)
 		for _, item0 := range request.Tasks {
 			if !tea.BoolValue(util.IsUnset(item0.ImageURLObject)) {
 				authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
@@ -3104,9 +3104,9 @@ func (client *Client) RecognizeLogoAdvance(request *RecognizeLogoAdvanceRequest,
 				if _err != nil {
 					return _result, _err
 				}
-				tmp := recognizeLogoReq.Tasks[tea.IntValue(i)]
+				tmp := recognizeLogoReq.Tasks[tea.IntValue(i0)]
 				tmp.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
-				i = number.Ltoi(number.Add(number.Itol(i), number.Itol(tea.Int(1))))
+				i0 = number.Ltoi(number.Add(number.Itol(i0), number.Itol(tea.Int(1))))
 			}
 
 		}
