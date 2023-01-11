@@ -3200,10 +3200,9 @@ type AddServiceSourceRequest struct {
 	IngressOptionsRequest *AddServiceSourceRequestIngressOptionsRequest `json:"IngressOptionsRequest,omitempty" xml:"IngressOptionsRequest,omitempty" type:"Struct"`
 	// The name.
 	//
-	// >  The parameter value varies based on the source type.
+	// > The parameter value varies based on the source type.
 	//
 	// *   If Type is set to K8S, this parameter specifies the name of the ACK cluster.
-	//
 	// *   If Type is set to NACOS, this parameter specifies the ID of the instance.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// An array of service root paths.
@@ -3329,10 +3328,9 @@ type AddServiceSourceShrinkRequest struct {
 	IngressOptionsRequestShrink *string `json:"IngressOptionsRequest,omitempty" xml:"IngressOptionsRequest,omitempty"`
 	// The name.
 	//
-	// >  The parameter value varies based on the source type.
+	// > The parameter value varies based on the source type.
 	//
 	// *   If Type is set to K8S, this parameter specifies the name of the ACK cluster.
-	//
 	// *   If Type is set to NACOS, this parameter specifies the ID of the instance.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// An array of service root paths.
@@ -4094,10 +4092,9 @@ type CreateApplicationRequest struct {
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	// The name of the application.
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The additional information.
-	ExtraInfo *string `json:"ExtraInfo,omitempty" xml:"ExtraInfo,omitempty"`
 	// The programming language of the application.
-	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	Language  *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	// The region to which the application belongs.
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
 	// Specifies whether to enable the Sentinel-compatible mode.
@@ -4126,13 +4123,13 @@ func (s *CreateApplicationRequest) SetAppName(v string) *CreateApplicationReques
 	return s
 }
 
-func (s *CreateApplicationRequest) SetExtraInfo(v string) *CreateApplicationRequest {
-	s.ExtraInfo = &v
+func (s *CreateApplicationRequest) SetLanguage(v string) *CreateApplicationRequest {
+	s.Language = &v
 	return s
 }
 
-func (s *CreateApplicationRequest) SetLanguage(v string) *CreateApplicationRequest {
-	s.Language = &v
+func (s *CreateApplicationRequest) SetNamespace(v string) *CreateApplicationRequest {
+	s.Namespace = &v
 	return s
 }
 
@@ -4225,6 +4222,7 @@ type CreateApplicationResponseBodyData struct {
 	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
 	// The license key in use.
 	LicenseKey *string `json:"LicenseKey,omitempty" xml:"LicenseKey,omitempty"`
+	Namespace  *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	// The region ID.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The service where the application is deployed. Valid values:
@@ -4237,7 +4235,8 @@ type CreateApplicationResponseBodyData struct {
 	// The update time.
 	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 	// The ID of the Alibaba Cloud account.
-	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	UserId  *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s CreateApplicationResponseBodyData) String() string {
@@ -4278,6 +4277,11 @@ func (s *CreateApplicationResponseBodyData) SetLicenseKey(v string) *CreateAppli
 	return s
 }
 
+func (s *CreateApplicationResponseBodyData) SetNamespace(v string) *CreateApplicationResponseBodyData {
+	s.Namespace = &v
+	return s
+}
+
 func (s *CreateApplicationResponseBodyData) SetRegionId(v string) *CreateApplicationResponseBodyData {
 	s.RegionId = &v
 	return s
@@ -4300,6 +4304,11 @@ func (s *CreateApplicationResponseBodyData) SetUpdateTime(v int64) *CreateApplic
 
 func (s *CreateApplicationResponseBodyData) SetUserId(v string) *CreateApplicationResponseBodyData {
 	s.UserId = &v
+	return s
+}
+
+func (s *CreateApplicationResponseBodyData) SetVersion(v string) *CreateApplicationResponseBodyData {
+	s.Version = &v
 	return s
 }
 
@@ -35739,7 +35748,8 @@ type UpdateMessageQueueRouteRequest struct {
 	// *   en: English
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	// The ID of the application.
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppId   *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
 	// Specifies whether the canary release for messaging feature is enabled for the application. Valid values:
 	//
 	// *   `true`: enabled
@@ -35747,6 +35757,7 @@ type UpdateMessageQueueRouteRequest struct {
 	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
 	// The side for message filtering when the canary release for messaging feature is enabled.
 	FilterSide *string `json:"FilterSide,omitempty" xml:"FilterSide,omitempty"`
+	Namespace  *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	// The region ID.
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
 	// The tag that is negligible for the untagged environment of the application.
@@ -35771,6 +35782,11 @@ func (s *UpdateMessageQueueRouteRequest) SetAppId(v string) *UpdateMessageQueueR
 	return s
 }
 
+func (s *UpdateMessageQueueRouteRequest) SetAppName(v string) *UpdateMessageQueueRouteRequest {
+	s.AppName = &v
+	return s
+}
+
 func (s *UpdateMessageQueueRouteRequest) SetEnable(v bool) *UpdateMessageQueueRouteRequest {
 	s.Enable = &v
 	return s
@@ -35778,6 +35794,11 @@ func (s *UpdateMessageQueueRouteRequest) SetEnable(v bool) *UpdateMessageQueueRo
 
 func (s *UpdateMessageQueueRouteRequest) SetFilterSide(v string) *UpdateMessageQueueRouteRequest {
 	s.FilterSide = &v
+	return s
+}
+
+func (s *UpdateMessageQueueRouteRequest) SetNamespace(v string) *UpdateMessageQueueRouteRequest {
+	s.Namespace = &v
 	return s
 }
 
@@ -35798,7 +35819,8 @@ type UpdateMessageQueueRouteShrinkRequest struct {
 	// *   en: English
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	// The ID of the application.
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppId   *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
 	// Specifies whether the canary release for messaging feature is enabled for the application. Valid values:
 	//
 	// *   `true`: enabled
@@ -35806,6 +35828,7 @@ type UpdateMessageQueueRouteShrinkRequest struct {
 	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
 	// The side for message filtering when the canary release for messaging feature is enabled.
 	FilterSide *string `json:"FilterSide,omitempty" xml:"FilterSide,omitempty"`
+	Namespace  *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	// The region ID.
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
 	// The tag that is negligible for the untagged environment of the application.
@@ -35830,6 +35853,11 @@ func (s *UpdateMessageQueueRouteShrinkRequest) SetAppId(v string) *UpdateMessage
 	return s
 }
 
+func (s *UpdateMessageQueueRouteShrinkRequest) SetAppName(v string) *UpdateMessageQueueRouteShrinkRequest {
+	s.AppName = &v
+	return s
+}
+
 func (s *UpdateMessageQueueRouteShrinkRequest) SetEnable(v bool) *UpdateMessageQueueRouteShrinkRequest {
 	s.Enable = &v
 	return s
@@ -35837,6 +35865,11 @@ func (s *UpdateMessageQueueRouteShrinkRequest) SetEnable(v bool) *UpdateMessageQ
 
 func (s *UpdateMessageQueueRouteShrinkRequest) SetFilterSide(v string) *UpdateMessageQueueRouteShrinkRequest {
 	s.FilterSide = &v
+	return s
+}
+
+func (s *UpdateMessageQueueRouteShrinkRequest) SetNamespace(v string) *UpdateMessageQueueRouteShrinkRequest {
+	s.Namespace = &v
 	return s
 }
 
@@ -38944,12 +38977,12 @@ func (client *Client) CreateApplicationWithOptions(request *CreateApplicationReq
 		query["AppName"] = request.AppName
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.ExtraInfo)) {
-		query["ExtraInfo"] = request.ExtraInfo
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.Language)) {
 		query["Language"] = request.Language
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		query["Namespace"] = request.Namespace
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Region)) {
@@ -39199,6 +39232,14 @@ func (client *Client) CreateEngineNamespace(request *CreateEngineNamespaceReques
 	return _result, _err
 }
 
+/**
+ * @deprecated : CreateMseServiceApplication is deprecated, please use mse::2019-05-31::CreateApplication instead.
+ *
+ * @param request CreateMseServiceApplicationRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return CreateMseServiceApplicationResponse
+ */
+// Deprecated
 func (client *Client) CreateMseServiceApplicationWithOptions(request *CreateMseServiceApplicationRequest, runtime *util.RuntimeOptions) (_result *CreateMseServiceApplicationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -39264,6 +39305,13 @@ func (client *Client) CreateMseServiceApplicationWithOptions(request *CreateMseS
 	return _result, _err
 }
 
+/**
+ * @deprecated : CreateMseServiceApplication is deprecated, please use mse::2019-05-31::CreateApplication instead.
+ *
+ * @param request CreateMseServiceApplicationRequest
+ * @return CreateMseServiceApplicationResponse
+ */
+// Deprecated
 func (client *Client) CreateMseServiceApplication(request *CreateMseServiceApplicationRequest) (_result *CreateMseServiceApplicationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateMseServiceApplicationResponse{}
@@ -47312,12 +47360,20 @@ func (client *Client) UpdateMessageQueueRouteWithOptions(tmpReq *UpdateMessageQu
 		query["AppId"] = request.AppId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.AppName)) {
+		query["AppName"] = request.AppName
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Enable)) {
 		query["Enable"] = request.Enable
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.FilterSide)) {
 		query["FilterSide"] = request.FilterSide
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		query["Namespace"] = request.Namespace
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Region)) {
