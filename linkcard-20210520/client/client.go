@@ -13,7 +13,8 @@ import (
 )
 
 type AddCardToDirectionalGroupRequest struct {
-	AddType    *string   `json:"AddType,omitempty" xml:"AddType,omitempty"`
+	AddType *string `json:"AddType,omitempty" xml:"AddType,omitempty"`
+	// Linkcard
 	ApiProduct *string   `json:"ApiProduct,omitempty" xml:"ApiProduct,omitempty"`
 	GroupId    *string   `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	IccidList  []*string `json:"IccidList,omitempty" xml:"IccidList,omitempty" type:"Repeated"`
@@ -60,7 +61,8 @@ func (s *AddCardToDirectionalGroupRequest) SetSerialNo(v string) *AddCardToDirec
 }
 
 type AddCardToDirectionalGroupShrinkRequest struct {
-	AddType         *string `json:"AddType,omitempty" xml:"AddType,omitempty"`
+	AddType *string `json:"AddType,omitempty" xml:"AddType,omitempty"`
+	// Linkcard
 	ApiProduct      *string `json:"ApiProduct,omitempty" xml:"ApiProduct,omitempty"`
 	GroupId         *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	IccidListShrink *string `json:"IccidList,omitempty" xml:"IccidList,omitempty"`
@@ -1782,6 +1784,584 @@ func (s *GetCardFlowInfoResponse) SetBody(v *GetCardFlowInfoResponseBody) *GetCa
 	return s
 }
 
+type GetCardLatestFlowRequest struct {
+	Iccid *string `json:"Iccid,omitempty" xml:"Iccid,omitempty"`
+}
+
+func (s GetCardLatestFlowRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCardLatestFlowRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetCardLatestFlowRequest) SetIccid(v string) *GetCardLatestFlowRequest {
+	s.Iccid = &v
+	return s
+}
+
+type GetCardLatestFlowResponseBody struct {
+	Code             *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data             *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	ErrorMessage     *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	LocalizedMessage *string `json:"LocalizedMessage,omitempty" xml:"LocalizedMessage,omitempty"`
+	RequestId        *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success          *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetCardLatestFlowResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCardLatestFlowResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetCardLatestFlowResponseBody) SetCode(v string) *GetCardLatestFlowResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetCardLatestFlowResponseBody) SetData(v string) *GetCardLatestFlowResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *GetCardLatestFlowResponseBody) SetErrorMessage(v string) *GetCardLatestFlowResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetCardLatestFlowResponseBody) SetLocalizedMessage(v string) *GetCardLatestFlowResponseBody {
+	s.LocalizedMessage = &v
+	return s
+}
+
+func (s *GetCardLatestFlowResponseBody) SetRequestId(v string) *GetCardLatestFlowResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetCardLatestFlowResponseBody) SetSuccess(v bool) *GetCardLatestFlowResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetCardLatestFlowResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetCardLatestFlowResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetCardLatestFlowResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCardLatestFlowResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetCardLatestFlowResponse) SetHeaders(v map[string]*string) *GetCardLatestFlowResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetCardLatestFlowResponse) SetStatusCode(v int32) *GetCardLatestFlowResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetCardLatestFlowResponse) SetBody(v *GetCardLatestFlowResponseBody) *GetCardLatestFlowResponse {
+	s.Body = v
+	return s
+}
+
+type GetCardStatusStatisticsResponseBody struct {
+	Code             *string                                  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data             *GetCardStatusStatisticsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	ErrorMessage     *string                                  `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	LocalizedMessage *string                                  `json:"LocalizedMessage,omitempty" xml:"LocalizedMessage,omitempty"`
+	RequestId        *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success          *bool                                    `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetCardStatusStatisticsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCardStatusStatisticsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetCardStatusStatisticsResponseBody) SetCode(v string) *GetCardStatusStatisticsResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetCardStatusStatisticsResponseBody) SetData(v *GetCardStatusStatisticsResponseBodyData) *GetCardStatusStatisticsResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetCardStatusStatisticsResponseBody) SetErrorMessage(v string) *GetCardStatusStatisticsResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetCardStatusStatisticsResponseBody) SetLocalizedMessage(v string) *GetCardStatusStatisticsResponseBody {
+	s.LocalizedMessage = &v
+	return s
+}
+
+func (s *GetCardStatusStatisticsResponseBody) SetRequestId(v string) *GetCardStatusStatisticsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetCardStatusStatisticsResponseBody) SetSuccess(v bool) *GetCardStatusStatisticsResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetCardStatusStatisticsResponseBodyData struct {
+	ErrorStopStatisticsDTO        *GetCardStatusStatisticsResponseBodyDataErrorStopStatisticsDTO        `json:"ErrorStopStatisticsDTO,omitempty" xml:"ErrorStopStatisticsDTO,omitempty" type:"Struct"`
+	ExhaustStopStatisticsDTO      *GetCardStatusStatisticsResponseBodyDataExhaustStopStatisticsDTO      `json:"ExhaustStopStatisticsDTO,omitempty" xml:"ExhaustStopStatisticsDTO,omitempty" type:"Struct"`
+	ExpireStopStatisticsDTO       *GetCardStatusStatisticsResponseBodyDataExpireStopStatisticsDTO       `json:"ExpireStopStatisticsDTO,omitempty" xml:"ExpireStopStatisticsDTO,omitempty" type:"Struct"`
+	FlowOutStatisticsDTO          *GetCardStatusStatisticsResponseBodyDataFlowOutStatisticsDTO          `json:"FlowOutStatisticsDTO,omitempty" xml:"FlowOutStatisticsDTO,omitempty" type:"Struct"`
+	ManageStopStatisticsDTO       *GetCardStatusStatisticsResponseBodyDataManageStopStatisticsDTO       `json:"ManageStopStatisticsDTO,omitempty" xml:"ManageStopStatisticsDTO,omitempty" type:"Struct"`
+	RiskWaringStatisticsDTO       *GetCardStatusStatisticsResponseBodyDataRiskWaringStatisticsDTO       `json:"RiskWaringStatisticsDTO,omitempty" xml:"RiskWaringStatisticsDTO,omitempty" type:"Struct"`
+	SingCardPeriodLeftFlowWarnDTO *GetCardStatusStatisticsResponseBodyDataSingCardPeriodLeftFlowWarnDTO `json:"SingCardPeriodLeftFlowWarnDTO,omitempty" xml:"SingCardPeriodLeftFlowWarnDTO,omitempty" type:"Struct"`
+	UnCertifiedStopStatisticsDTO  *GetCardStatusStatisticsResponseBodyDataUnCertifiedStopStatisticsDTO  `json:"UnCertifiedStopStatisticsDTO,omitempty" xml:"UnCertifiedStopStatisticsDTO,omitempty" type:"Struct"`
+	UnbindResumeStatisticsDTO     *GetCardStatusStatisticsResponseBodyDataUnbindResumeStatisticsDTO     `json:"UnbindResumeStatisticsDTO,omitempty" xml:"UnbindResumeStatisticsDTO,omitempty" type:"Struct"`
+	WeekWarnStatisticsDTO         *GetCardStatusStatisticsResponseBodyDataWeekWarnStatisticsDTO         `json:"WeekWarnStatisticsDTO,omitempty" xml:"WeekWarnStatisticsDTO,omitempty" type:"Struct"`
+}
+
+func (s GetCardStatusStatisticsResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCardStatusStatisticsResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetCardStatusStatisticsResponseBodyData) SetErrorStopStatisticsDTO(v *GetCardStatusStatisticsResponseBodyDataErrorStopStatisticsDTO) *GetCardStatusStatisticsResponseBodyData {
+	s.ErrorStopStatisticsDTO = v
+	return s
+}
+
+func (s *GetCardStatusStatisticsResponseBodyData) SetExhaustStopStatisticsDTO(v *GetCardStatusStatisticsResponseBodyDataExhaustStopStatisticsDTO) *GetCardStatusStatisticsResponseBodyData {
+	s.ExhaustStopStatisticsDTO = v
+	return s
+}
+
+func (s *GetCardStatusStatisticsResponseBodyData) SetExpireStopStatisticsDTO(v *GetCardStatusStatisticsResponseBodyDataExpireStopStatisticsDTO) *GetCardStatusStatisticsResponseBodyData {
+	s.ExpireStopStatisticsDTO = v
+	return s
+}
+
+func (s *GetCardStatusStatisticsResponseBodyData) SetFlowOutStatisticsDTO(v *GetCardStatusStatisticsResponseBodyDataFlowOutStatisticsDTO) *GetCardStatusStatisticsResponseBodyData {
+	s.FlowOutStatisticsDTO = v
+	return s
+}
+
+func (s *GetCardStatusStatisticsResponseBodyData) SetManageStopStatisticsDTO(v *GetCardStatusStatisticsResponseBodyDataManageStopStatisticsDTO) *GetCardStatusStatisticsResponseBodyData {
+	s.ManageStopStatisticsDTO = v
+	return s
+}
+
+func (s *GetCardStatusStatisticsResponseBodyData) SetRiskWaringStatisticsDTO(v *GetCardStatusStatisticsResponseBodyDataRiskWaringStatisticsDTO) *GetCardStatusStatisticsResponseBodyData {
+	s.RiskWaringStatisticsDTO = v
+	return s
+}
+
+func (s *GetCardStatusStatisticsResponseBodyData) SetSingCardPeriodLeftFlowWarnDTO(v *GetCardStatusStatisticsResponseBodyDataSingCardPeriodLeftFlowWarnDTO) *GetCardStatusStatisticsResponseBodyData {
+	s.SingCardPeriodLeftFlowWarnDTO = v
+	return s
+}
+
+func (s *GetCardStatusStatisticsResponseBodyData) SetUnCertifiedStopStatisticsDTO(v *GetCardStatusStatisticsResponseBodyDataUnCertifiedStopStatisticsDTO) *GetCardStatusStatisticsResponseBodyData {
+	s.UnCertifiedStopStatisticsDTO = v
+	return s
+}
+
+func (s *GetCardStatusStatisticsResponseBodyData) SetUnbindResumeStatisticsDTO(v *GetCardStatusStatisticsResponseBodyDataUnbindResumeStatisticsDTO) *GetCardStatusStatisticsResponseBodyData {
+	s.UnbindResumeStatisticsDTO = v
+	return s
+}
+
+func (s *GetCardStatusStatisticsResponseBodyData) SetWeekWarnStatisticsDTO(v *GetCardStatusStatisticsResponseBodyDataWeekWarnStatisticsDTO) *GetCardStatusStatisticsResponseBodyData {
+	s.WeekWarnStatisticsDTO = v
+	return s
+}
+
+type GetCardStatusStatisticsResponseBodyDataErrorStopStatisticsDTO struct {
+	PoolCount         *int64 `json:"PoolCount,omitempty" xml:"PoolCount,omitempty"`
+	SameFlowCardCount *int64 `json:"SameFlowCardCount,omitempty" xml:"SameFlowCardCount,omitempty"`
+	SingleCardCount   *int64 `json:"SingleCardCount,omitempty" xml:"SingleCardCount,omitempty"`
+	TotalCount        *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s GetCardStatusStatisticsResponseBodyDataErrorStopStatisticsDTO) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCardStatusStatisticsResponseBodyDataErrorStopStatisticsDTO) GoString() string {
+	return s.String()
+}
+
+func (s *GetCardStatusStatisticsResponseBodyDataErrorStopStatisticsDTO) SetPoolCount(v int64) *GetCardStatusStatisticsResponseBodyDataErrorStopStatisticsDTO {
+	s.PoolCount = &v
+	return s
+}
+
+func (s *GetCardStatusStatisticsResponseBodyDataErrorStopStatisticsDTO) SetSameFlowCardCount(v int64) *GetCardStatusStatisticsResponseBodyDataErrorStopStatisticsDTO {
+	s.SameFlowCardCount = &v
+	return s
+}
+
+func (s *GetCardStatusStatisticsResponseBodyDataErrorStopStatisticsDTO) SetSingleCardCount(v int64) *GetCardStatusStatisticsResponseBodyDataErrorStopStatisticsDTO {
+	s.SingleCardCount = &v
+	return s
+}
+
+func (s *GetCardStatusStatisticsResponseBodyDataErrorStopStatisticsDTO) SetTotalCount(v int64) *GetCardStatusStatisticsResponseBodyDataErrorStopStatisticsDTO {
+	s.TotalCount = &v
+	return s
+}
+
+type GetCardStatusStatisticsResponseBodyDataExhaustStopStatisticsDTO struct {
+	PoolCount         *int64 `json:"PoolCount,omitempty" xml:"PoolCount,omitempty"`
+	SameFlowCardCount *int64 `json:"SameFlowCardCount,omitempty" xml:"SameFlowCardCount,omitempty"`
+	SingleCardCount   *int64 `json:"SingleCardCount,omitempty" xml:"SingleCardCount,omitempty"`
+	TotalCount        *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s GetCardStatusStatisticsResponseBodyDataExhaustStopStatisticsDTO) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCardStatusStatisticsResponseBodyDataExhaustStopStatisticsDTO) GoString() string {
+	return s.String()
+}
+
+func (s *GetCardStatusStatisticsResponseBodyDataExhaustStopStatisticsDTO) SetPoolCount(v int64) *GetCardStatusStatisticsResponseBodyDataExhaustStopStatisticsDTO {
+	s.PoolCount = &v
+	return s
+}
+
+func (s *GetCardStatusStatisticsResponseBodyDataExhaustStopStatisticsDTO) SetSameFlowCardCount(v int64) *GetCardStatusStatisticsResponseBodyDataExhaustStopStatisticsDTO {
+	s.SameFlowCardCount = &v
+	return s
+}
+
+func (s *GetCardStatusStatisticsResponseBodyDataExhaustStopStatisticsDTO) SetSingleCardCount(v int64) *GetCardStatusStatisticsResponseBodyDataExhaustStopStatisticsDTO {
+	s.SingleCardCount = &v
+	return s
+}
+
+func (s *GetCardStatusStatisticsResponseBodyDataExhaustStopStatisticsDTO) SetTotalCount(v int64) *GetCardStatusStatisticsResponseBodyDataExhaustStopStatisticsDTO {
+	s.TotalCount = &v
+	return s
+}
+
+type GetCardStatusStatisticsResponseBodyDataExpireStopStatisticsDTO struct {
+	PoolCount         *int64 `json:"PoolCount,omitempty" xml:"PoolCount,omitempty"`
+	SameFlowCardCount *int64 `json:"SameFlowCardCount,omitempty" xml:"SameFlowCardCount,omitempty"`
+	SingleCardCount   *int64 `json:"SingleCardCount,omitempty" xml:"SingleCardCount,omitempty"`
+	TotalCount        *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s GetCardStatusStatisticsResponseBodyDataExpireStopStatisticsDTO) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCardStatusStatisticsResponseBodyDataExpireStopStatisticsDTO) GoString() string {
+	return s.String()
+}
+
+func (s *GetCardStatusStatisticsResponseBodyDataExpireStopStatisticsDTO) SetPoolCount(v int64) *GetCardStatusStatisticsResponseBodyDataExpireStopStatisticsDTO {
+	s.PoolCount = &v
+	return s
+}
+
+func (s *GetCardStatusStatisticsResponseBodyDataExpireStopStatisticsDTO) SetSameFlowCardCount(v int64) *GetCardStatusStatisticsResponseBodyDataExpireStopStatisticsDTO {
+	s.SameFlowCardCount = &v
+	return s
+}
+
+func (s *GetCardStatusStatisticsResponseBodyDataExpireStopStatisticsDTO) SetSingleCardCount(v int64) *GetCardStatusStatisticsResponseBodyDataExpireStopStatisticsDTO {
+	s.SingleCardCount = &v
+	return s
+}
+
+func (s *GetCardStatusStatisticsResponseBodyDataExpireStopStatisticsDTO) SetTotalCount(v int64) *GetCardStatusStatisticsResponseBodyDataExpireStopStatisticsDTO {
+	s.TotalCount = &v
+	return s
+}
+
+type GetCardStatusStatisticsResponseBodyDataFlowOutStatisticsDTO struct {
+	PoolCount         *int64 `json:"PoolCount,omitempty" xml:"PoolCount,omitempty"`
+	SameFlowCardCount *int64 `json:"SameFlowCardCount,omitempty" xml:"SameFlowCardCount,omitempty"`
+	SingleCardCount   *int64 `json:"SingleCardCount,omitempty" xml:"SingleCardCount,omitempty"`
+	TotalCount        *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s GetCardStatusStatisticsResponseBodyDataFlowOutStatisticsDTO) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCardStatusStatisticsResponseBodyDataFlowOutStatisticsDTO) GoString() string {
+	return s.String()
+}
+
+func (s *GetCardStatusStatisticsResponseBodyDataFlowOutStatisticsDTO) SetPoolCount(v int64) *GetCardStatusStatisticsResponseBodyDataFlowOutStatisticsDTO {
+	s.PoolCount = &v
+	return s
+}
+
+func (s *GetCardStatusStatisticsResponseBodyDataFlowOutStatisticsDTO) SetSameFlowCardCount(v int64) *GetCardStatusStatisticsResponseBodyDataFlowOutStatisticsDTO {
+	s.SameFlowCardCount = &v
+	return s
+}
+
+func (s *GetCardStatusStatisticsResponseBodyDataFlowOutStatisticsDTO) SetSingleCardCount(v int64) *GetCardStatusStatisticsResponseBodyDataFlowOutStatisticsDTO {
+	s.SingleCardCount = &v
+	return s
+}
+
+func (s *GetCardStatusStatisticsResponseBodyDataFlowOutStatisticsDTO) SetTotalCount(v int64) *GetCardStatusStatisticsResponseBodyDataFlowOutStatisticsDTO {
+	s.TotalCount = &v
+	return s
+}
+
+type GetCardStatusStatisticsResponseBodyDataManageStopStatisticsDTO struct {
+	PoolCount         *int64 `json:"PoolCount,omitempty" xml:"PoolCount,omitempty"`
+	SameFlowCardCount *int64 `json:"SameFlowCardCount,omitempty" xml:"SameFlowCardCount,omitempty"`
+	SingleCardCount   *int64 `json:"SingleCardCount,omitempty" xml:"SingleCardCount,omitempty"`
+	TotalCount        *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s GetCardStatusStatisticsResponseBodyDataManageStopStatisticsDTO) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCardStatusStatisticsResponseBodyDataManageStopStatisticsDTO) GoString() string {
+	return s.String()
+}
+
+func (s *GetCardStatusStatisticsResponseBodyDataManageStopStatisticsDTO) SetPoolCount(v int64) *GetCardStatusStatisticsResponseBodyDataManageStopStatisticsDTO {
+	s.PoolCount = &v
+	return s
+}
+
+func (s *GetCardStatusStatisticsResponseBodyDataManageStopStatisticsDTO) SetSameFlowCardCount(v int64) *GetCardStatusStatisticsResponseBodyDataManageStopStatisticsDTO {
+	s.SameFlowCardCount = &v
+	return s
+}
+
+func (s *GetCardStatusStatisticsResponseBodyDataManageStopStatisticsDTO) SetSingleCardCount(v int64) *GetCardStatusStatisticsResponseBodyDataManageStopStatisticsDTO {
+	s.SingleCardCount = &v
+	return s
+}
+
+func (s *GetCardStatusStatisticsResponseBodyDataManageStopStatisticsDTO) SetTotalCount(v int64) *GetCardStatusStatisticsResponseBodyDataManageStopStatisticsDTO {
+	s.TotalCount = &v
+	return s
+}
+
+type GetCardStatusStatisticsResponseBodyDataRiskWaringStatisticsDTO struct {
+	LeftFlowPercentageWarnCount *int64 `json:"LeftFlowPercentageWarnCount,omitempty" xml:"LeftFlowPercentageWarnCount,omitempty"`
+	StopCount                   *int64 `json:"StopCount,omitempty" xml:"StopCount,omitempty"`
+	WaringTotalCount            *int64 `json:"WaringTotalCount,omitempty" xml:"WaringTotalCount,omitempty"`
+	WarningCount                *int64 `json:"WarningCount,omitempty" xml:"WarningCount,omitempty"`
+}
+
+func (s GetCardStatusStatisticsResponseBodyDataRiskWaringStatisticsDTO) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCardStatusStatisticsResponseBodyDataRiskWaringStatisticsDTO) GoString() string {
+	return s.String()
+}
+
+func (s *GetCardStatusStatisticsResponseBodyDataRiskWaringStatisticsDTO) SetLeftFlowPercentageWarnCount(v int64) *GetCardStatusStatisticsResponseBodyDataRiskWaringStatisticsDTO {
+	s.LeftFlowPercentageWarnCount = &v
+	return s
+}
+
+func (s *GetCardStatusStatisticsResponseBodyDataRiskWaringStatisticsDTO) SetStopCount(v int64) *GetCardStatusStatisticsResponseBodyDataRiskWaringStatisticsDTO {
+	s.StopCount = &v
+	return s
+}
+
+func (s *GetCardStatusStatisticsResponseBodyDataRiskWaringStatisticsDTO) SetWaringTotalCount(v int64) *GetCardStatusStatisticsResponseBodyDataRiskWaringStatisticsDTO {
+	s.WaringTotalCount = &v
+	return s
+}
+
+func (s *GetCardStatusStatisticsResponseBodyDataRiskWaringStatisticsDTO) SetWarningCount(v int64) *GetCardStatusStatisticsResponseBodyDataRiskWaringStatisticsDTO {
+	s.WarningCount = &v
+	return s
+}
+
+type GetCardStatusStatisticsResponseBodyDataSingCardPeriodLeftFlowWarnDTO struct {
+	LessFlowPercentage10Count *int64 `json:"LessFlowPercentage10Count,omitempty" xml:"LessFlowPercentage10Count,omitempty"`
+	LessFlowPercentage30Count *int64 `json:"LessFlowPercentage30Count,omitempty" xml:"LessFlowPercentage30Count,omitempty"`
+}
+
+func (s GetCardStatusStatisticsResponseBodyDataSingCardPeriodLeftFlowWarnDTO) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCardStatusStatisticsResponseBodyDataSingCardPeriodLeftFlowWarnDTO) GoString() string {
+	return s.String()
+}
+
+func (s *GetCardStatusStatisticsResponseBodyDataSingCardPeriodLeftFlowWarnDTO) SetLessFlowPercentage10Count(v int64) *GetCardStatusStatisticsResponseBodyDataSingCardPeriodLeftFlowWarnDTO {
+	s.LessFlowPercentage10Count = &v
+	return s
+}
+
+func (s *GetCardStatusStatisticsResponseBodyDataSingCardPeriodLeftFlowWarnDTO) SetLessFlowPercentage30Count(v int64) *GetCardStatusStatisticsResponseBodyDataSingCardPeriodLeftFlowWarnDTO {
+	s.LessFlowPercentage30Count = &v
+	return s
+}
+
+type GetCardStatusStatisticsResponseBodyDataUnCertifiedStopStatisticsDTO struct {
+	PoolCount         *int64 `json:"PoolCount,omitempty" xml:"PoolCount,omitempty"`
+	SameFlowCardCount *int64 `json:"SameFlowCardCount,omitempty" xml:"SameFlowCardCount,omitempty"`
+	SingleCardCount   *int64 `json:"SingleCardCount,omitempty" xml:"SingleCardCount,omitempty"`
+	TotalCount        *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s GetCardStatusStatisticsResponseBodyDataUnCertifiedStopStatisticsDTO) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCardStatusStatisticsResponseBodyDataUnCertifiedStopStatisticsDTO) GoString() string {
+	return s.String()
+}
+
+func (s *GetCardStatusStatisticsResponseBodyDataUnCertifiedStopStatisticsDTO) SetPoolCount(v int64) *GetCardStatusStatisticsResponseBodyDataUnCertifiedStopStatisticsDTO {
+	s.PoolCount = &v
+	return s
+}
+
+func (s *GetCardStatusStatisticsResponseBodyDataUnCertifiedStopStatisticsDTO) SetSameFlowCardCount(v int64) *GetCardStatusStatisticsResponseBodyDataUnCertifiedStopStatisticsDTO {
+	s.SameFlowCardCount = &v
+	return s
+}
+
+func (s *GetCardStatusStatisticsResponseBodyDataUnCertifiedStopStatisticsDTO) SetSingleCardCount(v int64) *GetCardStatusStatisticsResponseBodyDataUnCertifiedStopStatisticsDTO {
+	s.SingleCardCount = &v
+	return s
+}
+
+func (s *GetCardStatusStatisticsResponseBodyDataUnCertifiedStopStatisticsDTO) SetTotalCount(v int64) *GetCardStatusStatisticsResponseBodyDataUnCertifiedStopStatisticsDTO {
+	s.TotalCount = &v
+	return s
+}
+
+type GetCardStatusStatisticsResponseBodyDataUnbindResumeStatisticsDTO struct {
+	PoolCount         *int64 `json:"PoolCount,omitempty" xml:"PoolCount,omitempty"`
+	SameFlowCardCount *int64 `json:"SameFlowCardCount,omitempty" xml:"SameFlowCardCount,omitempty"`
+	SingleCardCount   *int64 `json:"SingleCardCount,omitempty" xml:"SingleCardCount,omitempty"`
+	TotalCount        *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s GetCardStatusStatisticsResponseBodyDataUnbindResumeStatisticsDTO) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCardStatusStatisticsResponseBodyDataUnbindResumeStatisticsDTO) GoString() string {
+	return s.String()
+}
+
+func (s *GetCardStatusStatisticsResponseBodyDataUnbindResumeStatisticsDTO) SetPoolCount(v int64) *GetCardStatusStatisticsResponseBodyDataUnbindResumeStatisticsDTO {
+	s.PoolCount = &v
+	return s
+}
+
+func (s *GetCardStatusStatisticsResponseBodyDataUnbindResumeStatisticsDTO) SetSameFlowCardCount(v int64) *GetCardStatusStatisticsResponseBodyDataUnbindResumeStatisticsDTO {
+	s.SameFlowCardCount = &v
+	return s
+}
+
+func (s *GetCardStatusStatisticsResponseBodyDataUnbindResumeStatisticsDTO) SetSingleCardCount(v int64) *GetCardStatusStatisticsResponseBodyDataUnbindResumeStatisticsDTO {
+	s.SingleCardCount = &v
+	return s
+}
+
+func (s *GetCardStatusStatisticsResponseBodyDataUnbindResumeStatisticsDTO) SetTotalCount(v int64) *GetCardStatusStatisticsResponseBodyDataUnbindResumeStatisticsDTO {
+	s.TotalCount = &v
+	return s
+}
+
+type GetCardStatusStatisticsResponseBodyDataWeekWarnStatisticsDTO struct {
+	PoolCount         *int64 `json:"PoolCount,omitempty" xml:"PoolCount,omitempty"`
+	SameFlowCardCount *int64 `json:"SameFlowCardCount,omitempty" xml:"SameFlowCardCount,omitempty"`
+	SingleCardCount   *int64 `json:"SingleCardCount,omitempty" xml:"SingleCardCount,omitempty"`
+	TotalCount        *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s GetCardStatusStatisticsResponseBodyDataWeekWarnStatisticsDTO) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCardStatusStatisticsResponseBodyDataWeekWarnStatisticsDTO) GoString() string {
+	return s.String()
+}
+
+func (s *GetCardStatusStatisticsResponseBodyDataWeekWarnStatisticsDTO) SetPoolCount(v int64) *GetCardStatusStatisticsResponseBodyDataWeekWarnStatisticsDTO {
+	s.PoolCount = &v
+	return s
+}
+
+func (s *GetCardStatusStatisticsResponseBodyDataWeekWarnStatisticsDTO) SetSameFlowCardCount(v int64) *GetCardStatusStatisticsResponseBodyDataWeekWarnStatisticsDTO {
+	s.SameFlowCardCount = &v
+	return s
+}
+
+func (s *GetCardStatusStatisticsResponseBodyDataWeekWarnStatisticsDTO) SetSingleCardCount(v int64) *GetCardStatusStatisticsResponseBodyDataWeekWarnStatisticsDTO {
+	s.SingleCardCount = &v
+	return s
+}
+
+func (s *GetCardStatusStatisticsResponseBodyDataWeekWarnStatisticsDTO) SetTotalCount(v int64) *GetCardStatusStatisticsResponseBodyDataWeekWarnStatisticsDTO {
+	s.TotalCount = &v
+	return s
+}
+
+type GetCardStatusStatisticsResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetCardStatusStatisticsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetCardStatusStatisticsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCardStatusStatisticsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetCardStatusStatisticsResponse) SetHeaders(v map[string]*string) *GetCardStatusStatisticsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetCardStatusStatisticsResponse) SetStatusCode(v int32) *GetCardStatusStatisticsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetCardStatusStatisticsResponse) SetBody(v *GetCardStatusStatisticsResponseBody) *GetCardStatusStatisticsResponse {
+	s.Body = v
+	return s
+}
+
 type GetCredentialPoolStatisticsRequest struct {
 	CredentialNO *string `json:"CredentialNO,omitempty" xml:"CredentialNO,omitempty"`
 	Date         *string `json:"Date,omitempty" xml:"Date,omitempty"`
@@ -1972,6 +2552,431 @@ func (s *GetCredentialPoolStatisticsResponse) SetStatusCode(v int32) *GetCredent
 }
 
 func (s *GetCredentialPoolStatisticsResponse) SetBody(v *GetCredentialPoolStatisticsResponseBody) *GetCredentialPoolStatisticsResponse {
+	s.Body = v
+	return s
+}
+
+type GetOperateResultRequest struct {
+	ApiProduct *string `json:"ApiProduct,omitempty" xml:"ApiProduct,omitempty"`
+	ResId      *string `json:"ResId,omitempty" xml:"ResId,omitempty"`
+	SerialNo   *string `json:"SerialNo,omitempty" xml:"SerialNo,omitempty"`
+}
+
+func (s GetOperateResultRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetOperateResultRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetOperateResultRequest) SetApiProduct(v string) *GetOperateResultRequest {
+	s.ApiProduct = &v
+	return s
+}
+
+func (s *GetOperateResultRequest) SetResId(v string) *GetOperateResultRequest {
+	s.ResId = &v
+	return s
+}
+
+func (s *GetOperateResultRequest) SetSerialNo(v string) *GetOperateResultRequest {
+	s.SerialNo = &v
+	return s
+}
+
+type GetOperateResultResponseBody struct {
+	Code             *string                           `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data             *GetOperateResultResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	ErrorMessage     *string                           `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	LocalizedMessage *string                           `json:"LocalizedMessage,omitempty" xml:"LocalizedMessage,omitempty"`
+	RequestId        *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success          *bool                             `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetOperateResultResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetOperateResultResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetOperateResultResponseBody) SetCode(v string) *GetOperateResultResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetOperateResultResponseBody) SetData(v *GetOperateResultResponseBodyData) *GetOperateResultResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetOperateResultResponseBody) SetErrorMessage(v string) *GetOperateResultResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetOperateResultResponseBody) SetLocalizedMessage(v string) *GetOperateResultResponseBody {
+	s.LocalizedMessage = &v
+	return s
+}
+
+func (s *GetOperateResultResponseBody) SetRequestId(v string) *GetOperateResultResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetOperateResultResponseBody) SetSuccess(v bool) *GetOperateResultResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetOperateResultResponseBodyData struct {
+	OperateType *string `json:"OperateType,omitempty" xml:"OperateType,omitempty"`
+	Result      *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
+	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s GetOperateResultResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetOperateResultResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetOperateResultResponseBodyData) SetOperateType(v string) *GetOperateResultResponseBodyData {
+	s.OperateType = &v
+	return s
+}
+
+func (s *GetOperateResultResponseBodyData) SetResult(v bool) *GetOperateResultResponseBodyData {
+	s.Result = &v
+	return s
+}
+
+func (s *GetOperateResultResponseBodyData) SetStatus(v string) *GetOperateResultResponseBodyData {
+	s.Status = &v
+	return s
+}
+
+type GetOperateResultResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetOperateResultResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetOperateResultResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetOperateResultResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetOperateResultResponse) SetHeaders(v map[string]*string) *GetOperateResultResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetOperateResultResponse) SetStatusCode(v int32) *GetOperateResultResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetOperateResultResponse) SetBody(v *GetOperateResultResponseBody) *GetOperateResultResponse {
+	s.Body = v
+	return s
+}
+
+type GetRealNameStatusRequest struct {
+	Iccid       *string   `json:"Iccid,omitempty" xml:"Iccid,omitempty"`
+	ListMsisdns []*string `json:"ListMsisdns,omitempty" xml:"ListMsisdns,omitempty" type:"Repeated"`
+}
+
+func (s GetRealNameStatusRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetRealNameStatusRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetRealNameStatusRequest) SetIccid(v string) *GetRealNameStatusRequest {
+	s.Iccid = &v
+	return s
+}
+
+func (s *GetRealNameStatusRequest) SetListMsisdns(v []*string) *GetRealNameStatusRequest {
+	s.ListMsisdns = v
+	return s
+}
+
+type GetRealNameStatusShrinkRequest struct {
+	Iccid             *string `json:"Iccid,omitempty" xml:"Iccid,omitempty"`
+	ListMsisdnsShrink *string `json:"ListMsisdns,omitempty" xml:"ListMsisdns,omitempty"`
+}
+
+func (s GetRealNameStatusShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetRealNameStatusShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetRealNameStatusShrinkRequest) SetIccid(v string) *GetRealNameStatusShrinkRequest {
+	s.Iccid = &v
+	return s
+}
+
+func (s *GetRealNameStatusShrinkRequest) SetListMsisdnsShrink(v string) *GetRealNameStatusShrinkRequest {
+	s.ListMsisdnsShrink = &v
+	return s
+}
+
+type GetRealNameStatusResponseBody struct {
+	Code             *string                            `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data             *GetRealNameStatusResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	ErrorMessage     *string                            `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	LocalizedMessage *string                            `json:"LocalizedMessage,omitempty" xml:"LocalizedMessage,omitempty"`
+	RequestId        *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success          *bool                              `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetRealNameStatusResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetRealNameStatusResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetRealNameStatusResponseBody) SetCode(v string) *GetRealNameStatusResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetRealNameStatusResponseBody) SetData(v *GetRealNameStatusResponseBodyData) *GetRealNameStatusResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetRealNameStatusResponseBody) SetErrorMessage(v string) *GetRealNameStatusResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetRealNameStatusResponseBody) SetLocalizedMessage(v string) *GetRealNameStatusResponseBody {
+	s.LocalizedMessage = &v
+	return s
+}
+
+func (s *GetRealNameStatusResponseBody) SetRequestId(v string) *GetRealNameStatusResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetRealNameStatusResponseBody) SetSuccess(v bool) *GetRealNameStatusResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetRealNameStatusResponseBodyData struct {
+	Desc           *string `json:"Desc,omitempty" xml:"Desc,omitempty"`
+	RealNameStatus *string `json:"RealNameStatus,omitempty" xml:"RealNameStatus,omitempty"`
+}
+
+func (s GetRealNameStatusResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetRealNameStatusResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetRealNameStatusResponseBodyData) SetDesc(v string) *GetRealNameStatusResponseBodyData {
+	s.Desc = &v
+	return s
+}
+
+func (s *GetRealNameStatusResponseBodyData) SetRealNameStatus(v string) *GetRealNameStatusResponseBodyData {
+	s.RealNameStatus = &v
+	return s
+}
+
+type GetRealNameStatusResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetRealNameStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetRealNameStatusResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetRealNameStatusResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetRealNameStatusResponse) SetHeaders(v map[string]*string) *GetRealNameStatusResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetRealNameStatusResponse) SetStatusCode(v int32) *GetRealNameStatusResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetRealNameStatusResponse) SetBody(v *GetRealNameStatusResponseBody) *GetRealNameStatusResponse {
+	s.Body = v
+	return s
+}
+
+type GetSimCardStateDistributionRequest struct {
+	CredentialNO *string `json:"CredentialNO,omitempty" xml:"CredentialNO,omitempty"`
+	Date         *string `json:"Date,omitempty" xml:"Date,omitempty"`
+}
+
+func (s GetSimCardStateDistributionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSimCardStateDistributionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetSimCardStateDistributionRequest) SetCredentialNO(v string) *GetSimCardStateDistributionRequest {
+	s.CredentialNO = &v
+	return s
+}
+
+func (s *GetSimCardStateDistributionRequest) SetDate(v string) *GetSimCardStateDistributionRequest {
+	s.Date = &v
+	return s
+}
+
+type GetSimCardStateDistributionResponseBody struct {
+	Code         *string                                      `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data         *GetSimCardStateDistributionResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	ErrorMessage *string                                      `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool                                        `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetSimCardStateDistributionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSimCardStateDistributionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetSimCardStateDistributionResponseBody) SetCode(v string) *GetSimCardStateDistributionResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetSimCardStateDistributionResponseBody) SetData(v *GetSimCardStateDistributionResponseBodyData) *GetSimCardStateDistributionResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetSimCardStateDistributionResponseBody) SetErrorMessage(v string) *GetSimCardStateDistributionResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetSimCardStateDistributionResponseBody) SetRequestId(v string) *GetSimCardStateDistributionResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetSimCardStateDistributionResponseBody) SetSuccess(v bool) *GetSimCardStateDistributionResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetSimCardStateDistributionResponseBodyData struct {
+	CardCount      *int64 `json:"CardCount,omitempty" xml:"CardCount,omitempty"`
+	DestoryedCount *int64 `json:"DestoryedCount,omitempty" xml:"DestoryedCount,omitempty"`
+	ShutDownCount  *int64 `json:"ShutDownCount,omitempty" xml:"ShutDownCount,omitempty"`
+	StopCount      *int64 `json:"StopCount,omitempty" xml:"StopCount,omitempty"`
+	TestCount      *int64 `json:"TestCount,omitempty" xml:"TestCount,omitempty"`
+	UnusedCount    *int64 `json:"UnusedCount,omitempty" xml:"UnusedCount,omitempty"`
+	UsingCount     *int64 `json:"UsingCount,omitempty" xml:"UsingCount,omitempty"`
+}
+
+func (s GetSimCardStateDistributionResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSimCardStateDistributionResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetSimCardStateDistributionResponseBodyData) SetCardCount(v int64) *GetSimCardStateDistributionResponseBodyData {
+	s.CardCount = &v
+	return s
+}
+
+func (s *GetSimCardStateDistributionResponseBodyData) SetDestoryedCount(v int64) *GetSimCardStateDistributionResponseBodyData {
+	s.DestoryedCount = &v
+	return s
+}
+
+func (s *GetSimCardStateDistributionResponseBodyData) SetShutDownCount(v int64) *GetSimCardStateDistributionResponseBodyData {
+	s.ShutDownCount = &v
+	return s
+}
+
+func (s *GetSimCardStateDistributionResponseBodyData) SetStopCount(v int64) *GetSimCardStateDistributionResponseBodyData {
+	s.StopCount = &v
+	return s
+}
+
+func (s *GetSimCardStateDistributionResponseBodyData) SetTestCount(v int64) *GetSimCardStateDistributionResponseBodyData {
+	s.TestCount = &v
+	return s
+}
+
+func (s *GetSimCardStateDistributionResponseBodyData) SetUnusedCount(v int64) *GetSimCardStateDistributionResponseBodyData {
+	s.UnusedCount = &v
+	return s
+}
+
+func (s *GetSimCardStateDistributionResponseBodyData) SetUsingCount(v int64) *GetSimCardStateDistributionResponseBodyData {
+	s.UsingCount = &v
+	return s
+}
+
+type GetSimCardStateDistributionResponse struct {
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetSimCardStateDistributionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetSimCardStateDistributionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSimCardStateDistributionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetSimCardStateDistributionResponse) SetHeaders(v map[string]*string) *GetSimCardStateDistributionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetSimCardStateDistributionResponse) SetStatusCode(v int32) *GetSimCardStateDistributionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetSimCardStateDistributionResponse) SetBody(v *GetSimCardStateDistributionResponseBody) *GetSimCardStateDistributionResponse {
 	s.Body = v
 	return s
 }
@@ -4708,6 +5713,83 @@ func (client *Client) GetCardFlowInfo(request *GetCardFlowInfoRequest) (_result 
 	return _result, _err
 }
 
+func (client *Client) GetCardLatestFlowWithOptions(request *GetCardLatestFlowRequest, runtime *util.RuntimeOptions) (_result *GetCardLatestFlowResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Iccid)) {
+		query["Iccid"] = request.Iccid
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetCardLatestFlow"),
+		Version:     tea.String("2021-05-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetCardLatestFlowResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetCardLatestFlow(request *GetCardLatestFlowRequest) (_result *GetCardLatestFlowResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetCardLatestFlowResponse{}
+	_body, _err := client.GetCardLatestFlowWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetCardStatusStatisticsWithOptions(runtime *util.RuntimeOptions) (_result *GetCardStatusStatisticsResponse, _err error) {
+	req := &openapi.OpenApiRequest{}
+	params := &openapi.Params{
+		Action:      tea.String("GetCardStatusStatistics"),
+		Version:     tea.String("2021-05-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetCardStatusStatisticsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetCardStatusStatistics() (_result *GetCardStatusStatisticsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetCardStatusStatisticsResponse{}
+	_body, _err := client.GetCardStatusStatisticsWithOptions(runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) GetCredentialPoolStatisticsWithOptions(request *GetCredentialPoolStatisticsRequest, runtime *util.RuntimeOptions) (_result *GetCredentialPoolStatisticsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4749,6 +5831,160 @@ func (client *Client) GetCredentialPoolStatistics(request *GetCredentialPoolStat
 	runtime := &util.RuntimeOptions{}
 	_result = &GetCredentialPoolStatisticsResponse{}
 	_body, _err := client.GetCredentialPoolStatisticsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetOperateResultWithOptions(request *GetOperateResultRequest, runtime *util.RuntimeOptions) (_result *GetOperateResultResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ApiProduct)) {
+		query["ApiProduct"] = request.ApiProduct
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResId)) {
+		query["ResId"] = request.ResId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SerialNo)) {
+		query["SerialNo"] = request.SerialNo
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetOperateResult"),
+		Version:     tea.String("2021-05-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetOperateResultResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetOperateResult(request *GetOperateResultRequest) (_result *GetOperateResultResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetOperateResultResponse{}
+	_body, _err := client.GetOperateResultWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetRealNameStatusWithOptions(tmpReq *GetRealNameStatusRequest, runtime *util.RuntimeOptions) (_result *GetRealNameStatusResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &GetRealNameStatusShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.ListMsisdns)) {
+		request.ListMsisdnsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ListMsisdns, tea.String("ListMsisdns"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Iccid)) {
+		query["Iccid"] = request.Iccid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ListMsisdnsShrink)) {
+		query["ListMsisdns"] = request.ListMsisdnsShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetRealNameStatus"),
+		Version:     tea.String("2021-05-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetRealNameStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetRealNameStatus(request *GetRealNameStatusRequest) (_result *GetRealNameStatusResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetRealNameStatusResponse{}
+	_body, _err := client.GetRealNameStatusWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetSimCardStateDistributionWithOptions(request *GetSimCardStateDistributionRequest, runtime *util.RuntimeOptions) (_result *GetSimCardStateDistributionResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CredentialNO)) {
+		query["CredentialNO"] = request.CredentialNO
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Date)) {
+		query["Date"] = request.Date
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetSimCardStateDistribution"),
+		Version:     tea.String("2021-05-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetSimCardStateDistributionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetSimCardStateDistribution(request *GetSimCardStateDistributionRequest) (_result *GetSimCardStateDistributionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetSimCardStateDistributionResponse{}
+	_body, _err := client.GetSimCardStateDistributionWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}

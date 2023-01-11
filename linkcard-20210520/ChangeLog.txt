@@ -1,3 +1,6 @@
+2023-01-11 Version: v2.0.4
+- Generated golang 2021-05-20 for Linkcard.
+
 2022-12-06 Version: v2.0.3
 - Generated golang 2021-05-20 for Linkcard.
 
