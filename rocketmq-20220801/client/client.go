@@ -42,8 +42,9 @@ func (s *CreateConsumerGroupRequest) SetRemark(v string) *CreateConsumerGroupReq
 }
 
 type CreateConsumerGroupRequestConsumeRetryPolicy struct {
-	MaxRetryTimes *int32  `json:"maxRetryTimes,omitempty" xml:"maxRetryTimes,omitempty"`
-	RetryPolicy   *string `json:"retryPolicy,omitempty" xml:"retryPolicy,omitempty"`
+	DeadLetterTargetTopic *string `json:"deadLetterTargetTopic,omitempty" xml:"deadLetterTargetTopic,omitempty"`
+	MaxRetryTimes         *int32  `json:"maxRetryTimes,omitempty" xml:"maxRetryTimes,omitempty"`
+	RetryPolicy           *string `json:"retryPolicy,omitempty" xml:"retryPolicy,omitempty"`
 }
 
 func (s CreateConsumerGroupRequestConsumeRetryPolicy) String() string {
@@ -52,6 +53,11 @@ func (s CreateConsumerGroupRequestConsumeRetryPolicy) String() string {
 
 func (s CreateConsumerGroupRequestConsumeRetryPolicy) GoString() string {
 	return s.String()
+}
+
+func (s *CreateConsumerGroupRequestConsumeRetryPolicy) SetDeadLetterTargetTopic(v string) *CreateConsumerGroupRequestConsumeRetryPolicy {
+	s.DeadLetterTargetTopic = &v
+	return s
 }
 
 func (s *CreateConsumerGroupRequestConsumeRetryPolicy) SetMaxRetryTimes(v int32) *CreateConsumerGroupRequestConsumeRetryPolicy {
@@ -951,8 +957,9 @@ func (s *GetConsumerGroupResponseBodyData) SetUpdateTime(v string) *GetConsumerG
 }
 
 type GetConsumerGroupResponseBodyDataConsumeRetryPolicy struct {
-	MaxRetryTimes *int32  `json:"maxRetryTimes,omitempty" xml:"maxRetryTimes,omitempty"`
-	RetryPolicy   *string `json:"retryPolicy,omitempty" xml:"retryPolicy,omitempty"`
+	DeadLetterTargetTopic *string `json:"deadLetterTargetTopic,omitempty" xml:"deadLetterTargetTopic,omitempty"`
+	MaxRetryTimes         *int32  `json:"maxRetryTimes,omitempty" xml:"maxRetryTimes,omitempty"`
+	RetryPolicy           *string `json:"retryPolicy,omitempty" xml:"retryPolicy,omitempty"`
 }
 
 func (s GetConsumerGroupResponseBodyDataConsumeRetryPolicy) String() string {
@@ -961,6 +968,11 @@ func (s GetConsumerGroupResponseBodyDataConsumeRetryPolicy) String() string {
 
 func (s GetConsumerGroupResponseBodyDataConsumeRetryPolicy) GoString() string {
 	return s.String()
+}
+
+func (s *GetConsumerGroupResponseBodyDataConsumeRetryPolicy) SetDeadLetterTargetTopic(v string) *GetConsumerGroupResponseBodyDataConsumeRetryPolicy {
+	s.DeadLetterTargetTopic = &v
+	return s
 }
 
 func (s *GetConsumerGroupResponseBodyDataConsumeRetryPolicy) SetMaxRetryTimes(v int32) *GetConsumerGroupResponseBodyDataConsumeRetryPolicy {
@@ -2161,9 +2173,10 @@ func (s *ListInstancesResponse) SetBody(v *ListInstancesResponseBody) *ListInsta
 }
 
 type ListTopicsRequest struct {
-	Filter     *string `json:"filter,omitempty" xml:"filter,omitempty"`
-	PageNumber *int32  `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	PageSize   *int32  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	Filter       *string   `json:"filter,omitempty" xml:"filter,omitempty"`
+	MessageTypes []*string `json:"messageTypes,omitempty" xml:"messageTypes,omitempty" type:"Repeated"`
+	PageNumber   *int32    `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	PageSize     *int32    `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
 }
 
 func (s ListTopicsRequest) String() string {
@@ -2179,12 +2192,52 @@ func (s *ListTopicsRequest) SetFilter(v string) *ListTopicsRequest {
 	return s
 }
 
+func (s *ListTopicsRequest) SetMessageTypes(v []*string) *ListTopicsRequest {
+	s.MessageTypes = v
+	return s
+}
+
 func (s *ListTopicsRequest) SetPageNumber(v int32) *ListTopicsRequest {
 	s.PageNumber = &v
 	return s
 }
 
 func (s *ListTopicsRequest) SetPageSize(v int32) *ListTopicsRequest {
+	s.PageSize = &v
+	return s
+}
+
+type ListTopicsShrinkRequest struct {
+	Filter             *string `json:"filter,omitempty" xml:"filter,omitempty"`
+	MessageTypesShrink *string `json:"messageTypes,omitempty" xml:"messageTypes,omitempty"`
+	PageNumber         *int32  `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	PageSize           *int32  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+}
+
+func (s ListTopicsShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTopicsShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListTopicsShrinkRequest) SetFilter(v string) *ListTopicsShrinkRequest {
+	s.Filter = &v
+	return s
+}
+
+func (s *ListTopicsShrinkRequest) SetMessageTypesShrink(v string) *ListTopicsShrinkRequest {
+	s.MessageTypesShrink = &v
+	return s
+}
+
+func (s *ListTopicsShrinkRequest) SetPageNumber(v int32) *ListTopicsShrinkRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListTopicsShrinkRequest) SetPageSize(v int32) *ListTopicsShrinkRequest {
 	s.PageSize = &v
 	return s
 }
@@ -3377,14 +3430,24 @@ func (client *Client) ListInstances(request *ListInstancesRequest) (_result *Lis
 	return _result, _err
 }
 
-func (client *Client) ListTopicsWithOptions(instanceId *string, request *ListTopicsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListTopicsResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) ListTopicsWithOptions(instanceId *string, tmpReq *ListTopicsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListTopicsResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
+	request := &ListTopicsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.MessageTypes)) {
+		request.MessageTypesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.MessageTypes, tea.String("messageTypes"), tea.String("simple"))
+	}
+
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Filter)) {
 		query["filter"] = request.Filter
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MessageTypesShrink)) {
+		query["messageTypes"] = request.MessageTypesShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
