@@ -2381,17 +2381,35 @@ func (s *AddGatewaySlbResponse) SetBody(v *AddGatewaySlbResponseBody) *AddGatewa
 }
 
 type AddMigrationTaskRequest struct {
-	AcceptLanguage          *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	ClusterType             *string `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
-	Id                      *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	OriginInstanceAddress   *string `json:"OriginInstanceAddress,omitempty" xml:"OriginInstanceAddress,omitempty"`
-	OriginInstanceName      *string `json:"OriginInstanceName,omitempty" xml:"OriginInstanceName,omitempty"`
+	// The language of the response. Valid values:
+	//
+	// *   zh: Chinese
+	// *   en: English
+	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// The type of the instance.
+	//
+	// *   Nacos-Ans
+	// *   ZooKeeper
+	// *   Eureka
+	ClusterType *string `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
+	// The ID of the task. You do not need to configure this parameter.
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The source instance node address.
+	OriginInstanceAddress *string `json:"OriginInstanceAddress,omitempty" xml:"OriginInstanceAddress,omitempty"`
+	// The name of the source instance.
+	OriginInstanceName *string `json:"OriginInstanceName,omitempty" xml:"OriginInstanceName,omitempty"`
+	// The list of namespaces. This parameter is optional if the source instance is a Nacos instance.
 	OriginInstanceNamespace *string `json:"OriginInstanceNamespace,omitempty" xml:"OriginInstanceNamespace,omitempty"`
-	ProjectDesc             *string `json:"ProjectDesc,omitempty" xml:"ProjectDesc,omitempty"`
-	RequestPars             *string `json:"RequestPars,omitempty" xml:"RequestPars,omitempty"`
-	TargetClusterName       *string `json:"TargetClusterName,omitempty" xml:"TargetClusterName,omitempty"`
-	TargetClusterUrl        *string `json:"TargetClusterUrl,omitempty" xml:"TargetClusterUrl,omitempty"`
-	TargetInstanceId        *string `json:"TargetInstanceId,omitempty" xml:"TargetInstanceId,omitempty"`
+	// The description.
+	ProjectDesc *string `json:"ProjectDesc,omitempty" xml:"ProjectDesc,omitempty"`
+	// The extended request parameters in the JSON format.
+	RequestPars *string `json:"RequestPars,omitempty" xml:"RequestPars,omitempty"`
+	// The name of the destination instance.
+	TargetClusterName *string `json:"TargetClusterName,omitempty" xml:"TargetClusterName,omitempty"`
+	// The URL of the destination instance.
+	TargetClusterUrl *string `json:"TargetClusterUrl,omitempty" xml:"TargetClusterUrl,omitempty"`
+	// The ID of the destination instance.
+	TargetInstanceId *string `json:"TargetInstanceId,omitempty" xml:"TargetInstanceId,omitempty"`
 }
 
 func (s AddMigrationTaskRequest) String() string {
@@ -2458,12 +2476,21 @@ func (s *AddMigrationTaskRequest) SetTargetInstanceId(v string) *AddMigrationTas
 }
 
 type AddMigrationTaskResponseBody struct {
-	Data      *AddMigrationTaskResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	ErrorCode *string                           `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	HttpCode  *string                           `json:"HttpCode,omitempty" xml:"HttpCode,omitempty"`
-	Message   *string                           `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                             `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The data structure.
+	Data *AddMigrationTaskResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error code returned if the request failed.
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The HTTP status code returned.
+	HttpCode *string `json:"HttpCode,omitempty" xml:"HttpCode,omitempty"`
+	// The message returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// *   `true`: The request was successful.
+	// *   `false`: The request failed.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s AddMigrationTaskResponseBody) String() string {
@@ -2505,18 +2532,34 @@ func (s *AddMigrationTaskResponseBody) SetSuccess(v bool) *AddMigrationTaskRespo
 }
 
 type AddMigrationTaskResponseBodyData struct {
-	ClusterType             *string `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
-	GmtCreate               *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	GmtModified             *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	Id                      *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	OriginInstanceAddress   *string `json:"OriginInstanceAddress,omitempty" xml:"OriginInstanceAddress,omitempty"`
-	OriginInstanceName      *string `json:"OriginInstanceName,omitempty" xml:"OriginInstanceName,omitempty"`
+	// The type of the instance.
+	//
+	// *   Nacos-Ans
+	// *   ZooKeeper
+	// *   Eureka
+	ClusterType *string `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
+	// The creation time.
+	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// The update time.
+	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The ID of the task.
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The source instance node address.
+	OriginInstanceAddress *string `json:"OriginInstanceAddress,omitempty" xml:"OriginInstanceAddress,omitempty"`
+	// The name of the source instance.
+	OriginInstanceName *string `json:"OriginInstanceName,omitempty" xml:"OriginInstanceName,omitempty"`
+	// The list of namespaces. This parameter is optional if the source instance is a Nacos instance.
 	OriginInstanceNamespace *string `json:"OriginInstanceNamespace,omitempty" xml:"OriginInstanceNamespace,omitempty"`
-	ProjectDesc             *string `json:"ProjectDesc,omitempty" xml:"ProjectDesc,omitempty"`
-	TargetClusterName       *string `json:"TargetClusterName,omitempty" xml:"TargetClusterName,omitempty"`
-	TargetClusterUrl        *string `json:"TargetClusterUrl,omitempty" xml:"TargetClusterUrl,omitempty"`
-	TargetInstanceId        *string `json:"TargetInstanceId,omitempty" xml:"TargetInstanceId,omitempty"`
-	UserId                  *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The description.
+	ProjectDesc *string `json:"ProjectDesc,omitempty" xml:"ProjectDesc,omitempty"`
+	// The name of the destination instance.
+	TargetClusterName *string `json:"TargetClusterName,omitempty" xml:"TargetClusterName,omitempty"`
+	// The URL of the destination instance.
+	TargetClusterUrl *string `json:"TargetClusterUrl,omitempty" xml:"TargetClusterUrl,omitempty"`
+	// The ID of the destination instance.
+	TargetInstanceId *string `json:"TargetInstanceId,omitempty" xml:"TargetInstanceId,omitempty"`
+	// The ID of the user.
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s AddMigrationTaskResponseBodyData) String() string {
@@ -5665,7 +5708,8 @@ type CreateOrUpdateSwimmingLaneRequest struct {
 	// The JSON string.
 	EntryRule *string `json:"EntryRule,omitempty" xml:"EntryRule,omitempty"`
 	// The lane.
-	EntryRules []*CreateOrUpdateSwimmingLaneRequestEntryRules `json:"EntryRules,omitempty" xml:"EntryRules,omitempty" type:"Repeated"`
+	EntryRules                   []*CreateOrUpdateSwimmingLaneRequestEntryRules                 `json:"EntryRules,omitempty" xml:"EntryRules,omitempty" type:"Repeated"`
+	GatewaySwimmingLaneRouteJson *CreateOrUpdateSwimmingLaneRequestGatewaySwimmingLaneRouteJson `json:"GatewaySwimmingLaneRouteJson,omitempty" xml:"GatewaySwimmingLaneRouteJson,omitempty" type:"Struct"`
 	// Optional. The time when the lane was created.
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
 	// Optional. The time when the lane was last modified.
@@ -5720,6 +5764,11 @@ func (s *CreateOrUpdateSwimmingLaneRequest) SetEntryRule(v string) *CreateOrUpda
 
 func (s *CreateOrUpdateSwimmingLaneRequest) SetEntryRules(v []*CreateOrUpdateSwimmingLaneRequestEntryRules) *CreateOrUpdateSwimmingLaneRequest {
 	s.EntryRules = v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneRequest) SetGatewaySwimmingLaneRouteJson(v *CreateOrUpdateSwimmingLaneRequestGatewaySwimmingLaneRouteJson) *CreateOrUpdateSwimmingLaneRequest {
+	s.GatewaySwimmingLaneRouteJson = v
 	return s
 }
 
@@ -5911,6 +5960,347 @@ func (s *CreateOrUpdateSwimmingLaneRequestEntryRulesRestItems) SetType(v string)
 }
 
 func (s *CreateOrUpdateSwimmingLaneRequestEntryRulesRestItems) SetValue(v string) *CreateOrUpdateSwimmingLaneRequestEntryRulesRestItems {
+	s.Value = &v
+	return s
+}
+
+type CreateOrUpdateSwimmingLaneRequestGatewaySwimmingLaneRouteJson struct {
+	Conditions      []*CreateOrUpdateSwimmingLaneRequestGatewaySwimmingLaneRouteJsonConditions `json:"Conditions,omitempty" xml:"Conditions,omitempty" type:"Repeated"`
+	GatewayId       *int64                                                                     `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
+	GatewayUniqueId *string                                                                    `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
+	RouteIdList     []*int64                                                                   `json:"RouteIdList,omitempty" xml:"RouteIdList,omitempty" type:"Repeated"`
+}
+
+func (s CreateOrUpdateSwimmingLaneRequestGatewaySwimmingLaneRouteJson) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateOrUpdateSwimmingLaneRequestGatewaySwimmingLaneRouteJson) GoString() string {
+	return s.String()
+}
+
+func (s *CreateOrUpdateSwimmingLaneRequestGatewaySwimmingLaneRouteJson) SetConditions(v []*CreateOrUpdateSwimmingLaneRequestGatewaySwimmingLaneRouteJsonConditions) *CreateOrUpdateSwimmingLaneRequestGatewaySwimmingLaneRouteJson {
+	s.Conditions = v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneRequestGatewaySwimmingLaneRouteJson) SetGatewayId(v int64) *CreateOrUpdateSwimmingLaneRequestGatewaySwimmingLaneRouteJson {
+	s.GatewayId = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneRequestGatewaySwimmingLaneRouteJson) SetGatewayUniqueId(v string) *CreateOrUpdateSwimmingLaneRequestGatewaySwimmingLaneRouteJson {
+	s.GatewayUniqueId = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneRequestGatewaySwimmingLaneRouteJson) SetRouteIdList(v []*int64) *CreateOrUpdateSwimmingLaneRequestGatewaySwimmingLaneRouteJson {
+	s.RouteIdList = v
+	return s
+}
+
+type CreateOrUpdateSwimmingLaneRequestGatewaySwimmingLaneRouteJsonConditions struct {
+	Cond  *string `json:"Cond,omitempty" xml:"Cond,omitempty"`
+	Name  *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Type  *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateOrUpdateSwimmingLaneRequestGatewaySwimmingLaneRouteJsonConditions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateOrUpdateSwimmingLaneRequestGatewaySwimmingLaneRouteJsonConditions) GoString() string {
+	return s.String()
+}
+
+func (s *CreateOrUpdateSwimmingLaneRequestGatewaySwimmingLaneRouteJsonConditions) SetCond(v string) *CreateOrUpdateSwimmingLaneRequestGatewaySwimmingLaneRouteJsonConditions {
+	s.Cond = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneRequestGatewaySwimmingLaneRouteJsonConditions) SetName(v string) *CreateOrUpdateSwimmingLaneRequestGatewaySwimmingLaneRouteJsonConditions {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneRequestGatewaySwimmingLaneRouteJsonConditions) SetType(v string) *CreateOrUpdateSwimmingLaneRequestGatewaySwimmingLaneRouteJsonConditions {
+	s.Type = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneRequestGatewaySwimmingLaneRouteJsonConditions) SetValue(v string) *CreateOrUpdateSwimmingLaneRequestGatewaySwimmingLaneRouteJsonConditions {
+	s.Value = &v
+	return s
+}
+
+type CreateOrUpdateSwimmingLaneShrinkRequest struct {
+	// The language that the value of the **LocalName** response parameter uses. Valid values:
+	//
+	// *   **zh-cn**: Chinese
+	// *   **en-us**: English.
+	//
+	// > Default value: **zh-CN**.
+	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// Specifies whether to enable a lane.
+	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// Specifies whether to set a routing rule for the lane. If an Ingress gateway is used, this parameter is not required.
+	EnableRules *bool `json:"EnableRules,omitempty" xml:"EnableRules,omitempty"`
+	// The JSON string.
+	EntryRule *string `json:"EntryRule,omitempty" xml:"EntryRule,omitempty"`
+	// The lane.
+	EntryRules                         []*CreateOrUpdateSwimmingLaneShrinkRequestEntryRules `json:"EntryRules,omitempty" xml:"EntryRules,omitempty" type:"Repeated"`
+	GatewaySwimmingLaneRouteJsonShrink *string                                              `json:"GatewaySwimmingLaneRouteJson,omitempty" xml:"GatewaySwimmingLaneRouteJson,omitempty"`
+	// Optional. The time when the lane was created.
+	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// Optional. The time when the lane was last modified.
+	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The group to which the lane belongs.
+	GroupId *int64 `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The ID of the primary key. A value -1 specifies a request that is used to create a lane. A value greater than 0 specifies a request that is used to modify a lane.
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The license key in use.
+	LicenseKey *string `json:"LicenseKey,omitempty" xml:"LicenseKey,omitempty"`
+	// The name of the lane.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The ID of the region.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The service source. Valid value: edasmsc.
+	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// The value 0 indicates that the lane is disabled.
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The tag.
+	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	// The Alibaba Cloud account. The format is a number, such as 136246975637\*\*\*\*. You can leave this parameter empty.
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+}
+
+func (s CreateOrUpdateSwimmingLaneShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateOrUpdateSwimmingLaneShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateOrUpdateSwimmingLaneShrinkRequest) SetAcceptLanguage(v string) *CreateOrUpdateSwimmingLaneShrinkRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneShrinkRequest) SetEnable(v bool) *CreateOrUpdateSwimmingLaneShrinkRequest {
+	s.Enable = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneShrinkRequest) SetEnableRules(v bool) *CreateOrUpdateSwimmingLaneShrinkRequest {
+	s.EnableRules = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneShrinkRequest) SetEntryRule(v string) *CreateOrUpdateSwimmingLaneShrinkRequest {
+	s.EntryRule = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneShrinkRequest) SetEntryRules(v []*CreateOrUpdateSwimmingLaneShrinkRequestEntryRules) *CreateOrUpdateSwimmingLaneShrinkRequest {
+	s.EntryRules = v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneShrinkRequest) SetGatewaySwimmingLaneRouteJsonShrink(v string) *CreateOrUpdateSwimmingLaneShrinkRequest {
+	s.GatewaySwimmingLaneRouteJsonShrink = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneShrinkRequest) SetGmtCreate(v string) *CreateOrUpdateSwimmingLaneShrinkRequest {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneShrinkRequest) SetGmtModified(v string) *CreateOrUpdateSwimmingLaneShrinkRequest {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneShrinkRequest) SetGroupId(v int64) *CreateOrUpdateSwimmingLaneShrinkRequest {
+	s.GroupId = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneShrinkRequest) SetId(v int64) *CreateOrUpdateSwimmingLaneShrinkRequest {
+	s.Id = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneShrinkRequest) SetLicenseKey(v string) *CreateOrUpdateSwimmingLaneShrinkRequest {
+	s.LicenseKey = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneShrinkRequest) SetName(v string) *CreateOrUpdateSwimmingLaneShrinkRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneShrinkRequest) SetRegionId(v string) *CreateOrUpdateSwimmingLaneShrinkRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneShrinkRequest) SetSource(v string) *CreateOrUpdateSwimmingLaneShrinkRequest {
+	s.Source = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneShrinkRequest) SetStatus(v int32) *CreateOrUpdateSwimmingLaneShrinkRequest {
+	s.Status = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneShrinkRequest) SetTag(v string) *CreateOrUpdateSwimmingLaneShrinkRequest {
+	s.Tag = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneShrinkRequest) SetUserId(v string) *CreateOrUpdateSwimmingLaneShrinkRequest {
+	s.UserId = &v
+	return s
+}
+
+type CreateOrUpdateSwimmingLaneShrinkRequestEntryRules struct {
+	// The common parameters in the JSON format.
+	Condition *string `json:"Condition,omitempty" xml:"Condition,omitempty"`
+	// Specifies whether to enable the rule. Valid values:
+	//
+	// *   `true`: enables the rule.
+	// *   `false`: disables the rule.
+	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// The path.
+	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	// The list of paths.
+	Paths []*string `json:"Paths,omitempty" xml:"Paths,omitempty" type:"Repeated"`
+	// The priority. A smaller value of this parameter indicates a higher priority.
+	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// The information about the rule for the REST method.
+	RestItems []*CreateOrUpdateSwimmingLaneShrinkRequestEntryRulesRestItems `json:"RestItems,omitempty" xml:"RestItems,omitempty" type:"Repeated"`
+}
+
+func (s CreateOrUpdateSwimmingLaneShrinkRequestEntryRules) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateOrUpdateSwimmingLaneShrinkRequestEntryRules) GoString() string {
+	return s.String()
+}
+
+func (s *CreateOrUpdateSwimmingLaneShrinkRequestEntryRules) SetCondition(v string) *CreateOrUpdateSwimmingLaneShrinkRequestEntryRules {
+	s.Condition = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneShrinkRequestEntryRules) SetEnable(v bool) *CreateOrUpdateSwimmingLaneShrinkRequestEntryRules {
+	s.Enable = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneShrinkRequestEntryRules) SetPath(v string) *CreateOrUpdateSwimmingLaneShrinkRequestEntryRules {
+	s.Path = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneShrinkRequestEntryRules) SetPaths(v []*string) *CreateOrUpdateSwimmingLaneShrinkRequestEntryRules {
+	s.Paths = v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneShrinkRequestEntryRules) SetPriority(v int32) *CreateOrUpdateSwimmingLaneShrinkRequestEntryRules {
+	s.Priority = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneShrinkRequestEntryRules) SetRestItems(v []*CreateOrUpdateSwimmingLaneShrinkRequestEntryRulesRestItems) *CreateOrUpdateSwimmingLaneShrinkRequestEntryRules {
+	s.RestItems = v
+	return s
+}
+
+type CreateOrUpdateSwimmingLaneShrinkRequestEntryRulesRestItems struct {
+	// The expression. =, >, <, >=, <=
+	Cond *string `json:"Cond,omitempty" xml:"Cond,omitempty"`
+	// The base value used for the rawvalue operator.
+	Datum *string `json:"Datum,omitempty" xml:"Datum,omitempty"`
+	// The divisor used for the mod operator.
+	Divisor *int32 `json:"Divisor,omitempty" xml:"Divisor,omitempty"`
+	// The name of the rule. This parameter corresponds to the key of the type parameter.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The list of names.
+	NameList []*string `json:"NameList,omitempty" xml:"NameList,omitempty" type:"Repeated"`
+	// The operator type. Valid values: mod, list, rawvalue, and rate.
+	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	// The rate.
+	Rate *int32 `json:"Rate,omitempty" xml:"Rate,omitempty"`
+	// The remainder used for the mod operator.
+	Remainder *int32 `json:"Remainder,omitempty" xml:"Remainder,omitempty"`
+	// The type of the rule. Valid values: cookie, param, and header.
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The content of the rule.
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateOrUpdateSwimmingLaneShrinkRequestEntryRulesRestItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateOrUpdateSwimmingLaneShrinkRequestEntryRulesRestItems) GoString() string {
+	return s.String()
+}
+
+func (s *CreateOrUpdateSwimmingLaneShrinkRequestEntryRulesRestItems) SetCond(v string) *CreateOrUpdateSwimmingLaneShrinkRequestEntryRulesRestItems {
+	s.Cond = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneShrinkRequestEntryRulesRestItems) SetDatum(v string) *CreateOrUpdateSwimmingLaneShrinkRequestEntryRulesRestItems {
+	s.Datum = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneShrinkRequestEntryRulesRestItems) SetDivisor(v int32) *CreateOrUpdateSwimmingLaneShrinkRequestEntryRulesRestItems {
+	s.Divisor = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneShrinkRequestEntryRulesRestItems) SetName(v string) *CreateOrUpdateSwimmingLaneShrinkRequestEntryRulesRestItems {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneShrinkRequestEntryRulesRestItems) SetNameList(v []*string) *CreateOrUpdateSwimmingLaneShrinkRequestEntryRulesRestItems {
+	s.NameList = v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneShrinkRequestEntryRulesRestItems) SetOperator(v string) *CreateOrUpdateSwimmingLaneShrinkRequestEntryRulesRestItems {
+	s.Operator = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneShrinkRequestEntryRulesRestItems) SetRate(v int32) *CreateOrUpdateSwimmingLaneShrinkRequestEntryRulesRestItems {
+	s.Rate = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneShrinkRequestEntryRulesRestItems) SetRemainder(v int32) *CreateOrUpdateSwimmingLaneShrinkRequestEntryRulesRestItems {
+	s.Remainder = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneShrinkRequestEntryRulesRestItems) SetType(v string) *CreateOrUpdateSwimmingLaneShrinkRequestEntryRulesRestItems {
+	s.Type = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneShrinkRequestEntryRulesRestItems) SetValue(v string) *CreateOrUpdateSwimmingLaneShrinkRequestEntryRulesRestItems {
 	s.Value = &v
 	return s
 }
@@ -23719,11 +24109,19 @@ func (s *ListListenersByIpResponse) SetBody(v *ListListenersByIpResponseBody) *L
 }
 
 type ListMigrationTaskRequest struct {
-	AcceptLanguage     *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// The language of the response. Valid values:
+	//
+	// *   zh: Chinese
+	// *   en: English
+	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// The name of the source instance.
 	OriginInstanceName *string `json:"OriginInstanceName,omitempty" xml:"OriginInstanceName,omitempty"`
-	PageNum            *int64  `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	PageSize           *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestPars        *string `json:"RequestPars,omitempty" xml:"RequestPars,omitempty"`
+	// The number of the page to return.
+	PageNum *int64 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// The number of entries to return on each page.
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The extended request parameters in the JSON format.
+	RequestPars *string `json:"RequestPars,omitempty" xml:"RequestPars,omitempty"`
 }
 
 func (s ListMigrationTaskRequest) String() string {
@@ -23760,15 +24158,27 @@ func (s *ListMigrationTaskRequest) SetRequestPars(v string) *ListMigrationTaskRe
 }
 
 type ListMigrationTaskResponseBody struct {
-	Data       []*ListMigrationTaskResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	ErrorCode  *string                              `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	HttpCode   *string                              `json:"HttpCode,omitempty" xml:"HttpCode,omitempty"`
-	Message    *string                              `json:"Message,omitempty" xml:"Message,omitempty"`
-	PageNumber *int64                               `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int64                               `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId  *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success    *bool                                `json:"Success,omitempty" xml:"Success,omitempty"`
-	TotalCount *int64                               `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The array structure.
+	Data []*ListMigrationTaskResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The error code returned if the request failed.
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The HTTP status code returned.
+	HttpCode *string `json:"HttpCode,omitempty" xml:"HttpCode,omitempty"`
+	// The message returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The page number of the returned page.
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries returned per page.
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// *   `true`: The request was successful.
+	// *   `false`: The request failed.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The total number of entries returned.
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListMigrationTaskResponseBody) String() string {
@@ -23825,18 +24235,34 @@ func (s *ListMigrationTaskResponseBody) SetTotalCount(v int64) *ListMigrationTas
 }
 
 type ListMigrationTaskResponseBodyData struct {
-	ClusterType             *string `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
-	GmtCreate               *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	GmtModified             *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	Id                      *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
-	OriginInstanceAddress   *string `json:"OriginInstanceAddress,omitempty" xml:"OriginInstanceAddress,omitempty"`
-	OriginInstanceName      *string `json:"OriginInstanceName,omitempty" xml:"OriginInstanceName,omitempty"`
+	// The type of the instance.
+	//
+	// *   Nacos-Ans
+	// *   ZooKeeper
+	// *   Eureka
+	ClusterType *string `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
+	// The creation time.
+	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// The update time.
+	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The ID of the task.
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The source instance node address.
+	OriginInstanceAddress *string `json:"OriginInstanceAddress,omitempty" xml:"OriginInstanceAddress,omitempty"`
+	// The name of the source instance.
+	OriginInstanceName *string `json:"OriginInstanceName,omitempty" xml:"OriginInstanceName,omitempty"`
+	// The list of namespaces. This parameter is optional if the source instance is a Nacos instance.
 	OriginInstanceNamespace *string `json:"OriginInstanceNamespace,omitempty" xml:"OriginInstanceNamespace,omitempty"`
-	ProjectDesc             *string `json:"ProjectDesc,omitempty" xml:"ProjectDesc,omitempty"`
-	TargetClusterName       *string `json:"TargetClusterName,omitempty" xml:"TargetClusterName,omitempty"`
-	TargetClusterUrl        *string `json:"TargetClusterUrl,omitempty" xml:"TargetClusterUrl,omitempty"`
-	TargetInstanceId        *string `json:"TargetInstanceId,omitempty" xml:"TargetInstanceId,omitempty"`
-	UserId                  *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The description.
+	ProjectDesc *string `json:"ProjectDesc,omitempty" xml:"ProjectDesc,omitempty"`
+	// The name of the destination instance.
+	TargetClusterName *string `json:"TargetClusterName,omitempty" xml:"TargetClusterName,omitempty"`
+	// The URL of the destination instance.
+	TargetClusterUrl *string `json:"TargetClusterUrl,omitempty" xml:"TargetClusterUrl,omitempty"`
+	// The ID of the destination instance.
+	TargetInstanceId *string `json:"TargetInstanceId,omitempty" xml:"TargetInstanceId,omitempty"`
+	// The ID of the user.
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s ListMigrationTaskResponseBodyData) String() string {
@@ -26602,13 +27028,26 @@ func (s *OfflineGatewayRouteResponse) SetBody(v *OfflineGatewayRouteResponseBody
 }
 
 type OrderClusterHealthCheckRiskNoticeRequest struct {
+	// The language of the response. Valid values:
+	//
+	// *   zh: Chinese
+	// *   en: English
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Mute           *bool   `json:"Mute,omitempty" xml:"Mute,omitempty"`
-	NoticeType     *string `json:"NoticeType,omitempty" xml:"NoticeType,omitempty"`
-	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RequestPars    *string `json:"RequestPars,omitempty" xml:"RequestPars,omitempty"`
-	RiskCode       *string `json:"RiskCode,omitempty" xml:"RiskCode,omitempty"`
+	// The ID of the instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Specifies whether to disable the risk item notification feature.
+	//
+	// *   true: disabled
+	// *   false: enabled
+	Mute *bool `json:"Mute,omitempty" xml:"Mute,omitempty"`
+	// A reserved parameter.
+	NoticeType *string `json:"NoticeType,omitempty" xml:"NoticeType,omitempty"`
+	// The region in which the cluster resides.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The extended request parameters in the JSON format.
+	RequestPars *string `json:"RequestPars,omitempty" xml:"RequestPars,omitempty"`
+	// The code of the risk.
+	RiskCode *string `json:"RiskCode,omitempty" xml:"RiskCode,omitempty"`
 }
 
 func (s OrderClusterHealthCheckRiskNoticeRequest) String() string {
@@ -26655,15 +27094,32 @@ func (s *OrderClusterHealthCheckRiskNoticeRequest) SetRiskCode(v string) *OrderC
 }
 
 type OrderClusterHealthCheckRiskNoticeResponseBody struct {
-	Code           *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data           *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
-	DynamicCode    *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
+	// The status code. A value of 200 is returned if the request is successful.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data of the node.
+	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The dynamic part in the error message.
+	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
+	// The dynamic part in the error message. This parameter is used to replace the \*\*%s\*\* variable in the **ErrMessage** parameter.
+	//
+	// > If the return value of the **ErrMessage** parameter is **The Value of Input Parameter %s is not valid** and the return value of the **DynamicMessage** parameter is **DtsJobId**, the specified **DtsJobId** parameter is invalid.
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	ErrorCode      *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The error code returned if the request failed.
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The HTTP status code returned.
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The message returned.
+	//
+	// *   If the request is successful, a success message is returned.
+	// *   If the request fails, an error message is returned, such as the "TaskId not found" message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// *   `true`: The request was successful.
+	// *   `false`: The request failed.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s OrderClusterHealthCheckRiskNoticeResponseBody) String() string {
@@ -26999,14 +27455,14 @@ type PutClusterHealthCheckTaskResponseBody struct {
 	//
 	// > If the return value of the **ErrMessage** parameter is **The Value of Input Parameter %s is not valid** and the return value of the **DynamicMessage** parameter is **DtsJobId**, the specified **DtsJobId** parameter is invalid.
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	// The error code returned if the request failed.
+	// The error code returned.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	// The HTTP status code returned.
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
 	// The message returned.
 	//
 	// *   If the request is successful, a success message is returned.
-	// *   If the request fails, an error message, such as the "TaskId not found" message, is returned.
+	// *   If the request fails, an error message is returned, such as the "TaskId not found" message.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -30811,12 +31267,12 @@ type TagResourcesRequest struct {
 	//
 	// > This parameter specifies the instance ID that is passed. Examples:
 	//
-	// *   **ResourceId.1** indicates the ID of the first instance.
-	// *   **ResourceId.2** indicates the ID of the second instance.
+	// *   **ResourceId.1** specifies that the first instance ID is passed.
+	// *   **ResourceId.2** specifies that the second instance ID is passed.
 	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
 	// The type of the resources. Valid values:
 	//
-	// *   CLUSTER: MSE instance
+	// *   CLUSTER: Microservices Engine (MSE) instance
 	// *   GATEWAY: cloud-native gateway
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	// The list of tags. You can specify a maximum of 20 tags.
@@ -30857,6 +31313,7 @@ func (s *TagResourcesRequest) SetTag(v []*TagResourcesRequestTag) *TagResourcesR
 }
 
 type TagResourcesRequestTag struct {
+	// The key of a tag that you want to attach to the specified resource. Valid values of N: 1 to 20. The tag key cannot be an empty string. The tag key must be 1 to 128 characters in length. The tag key cannot start with acs: or aliyun or contain [http:// or https://.](http://https://。)
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The value of a tag.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
@@ -30881,7 +31338,7 @@ func (s *TagResourcesRequestTag) SetValue(v string) *TagResourcesRequestTag {
 }
 
 type TagResourcesResponseBody struct {
-	// The error code returned if the request failed.
+	// The error code returned.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	// The message returned.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
@@ -31636,21 +32093,21 @@ type UpdateConfigRequest struct {
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	// Specifies whether to enable RAM authorization for a configuration center. This parameter is valid for Nacos instances. Valid values:
 	//
-	// *   `true`: yes
-	// *   `false`: no
+	// *   `true`: enabled
+	// *   `false`: disabled
 	//
-	// > Before you set this parameter, you must call the QueryConfig operation to obtain the ConfigAuthSupported parameter value to check whether the instance supports this feature.
+	// > Before you configure this parameter, you must call the QueryConfig operation to obtain the ConfigAuthSupported parameter value to check whether the instance supports this feature.
 	ConfigAuthEnabled *bool `json:"ConfigAuthEnabled,omitempty" xml:"ConfigAuthEnabled,omitempty"`
 	// Specifies whether to enable configuration encryption for a configuration center. This parameter is valid for Nacos instances. Valid values:
 	//
-	// *   `true`: yes
-	// *   `false`: no
+	// *   `true`: enabled
+	// *   `false`: disabled
 	//
-	// > Before you set this parameter, you must call the QueryConfig operation to obtain the ConfigSecretSupported parameter value to check whether the instance supports this feature.
+	// > Before you configure this parameter, you must call the QueryConfig operation to obtain the ConfigSecretSupported parameter value to check whether the instance supports this feature.
 	ConfigSecretEnabled *bool `json:"ConfigSecretEnabled,omitempty" xml:"ConfigSecretEnabled,omitempty"`
 	// The format of the configuration. Supported formats include TEXT, JSON, XML, and HTML.
 	ConfigType *string `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
-	// zookeeper参数，是否开启TTL配置。
+	// Specifies whether to enable the time to live (TTL) configuration.
 	ExtendedTypesEnable *string `json:"ExtendedTypesEnable,omitempty" xml:"ExtendedTypesEnable,omitempty"`
 	// The maximum connection duration of the instance. This parameter is valid for ZooKeeper instances. Unit: seconds.
 	InitLimit *string `json:"InitLimit,omitempty" xml:"InitLimit,omitempty"`
@@ -31660,10 +32117,10 @@ type UpdateConfigRequest struct {
 	JuteMaxbuffer *string `json:"JuteMaxbuffer,omitempty" xml:"JuteMaxbuffer,omitempty"`
 	// Specifies whether to enable Mesh Configuration Protocol (MCP). This parameter is valid for Nacos instances. Valid values:
 	//
-	// *   `true`: yes
-	// *   `false`: no
+	// *   `true`: enabled
+	// *   `false`: disabled
 	//
-	// > Before you set this parameter, you must call the QueryConfig operation to obtain the MCPSupported parameter value to check whether the instance supports this feature.
+	// > Before you configure this parameter, you must call the QueryConfig operation to obtain the MCPSupported parameter value to check whether the instance supports this feature.
 	MCPEnabled *bool `json:"MCPEnabled,omitempty" xml:"MCPEnabled,omitempty"`
 	// The number of connections between a client and a server. This parameter is valid for ZooKeeper instances.\
 	// If this parameter is set to 0, no limits are imposed on the number of connections.
@@ -31674,15 +32131,15 @@ type UpdateConfigRequest struct {
 	MinSessionTimeout *string `json:"MinSessionTimeout,omitempty" xml:"MinSessionTimeout,omitempty"`
 	// Specifies whether to enable RAM authorization for a registry. This parameter is valid for Nacos instances. Valid values:
 	//
-	// *   `true`: yes
-	// *   `false`: no
+	// *   `true`: enabled
+	// *   `false`: disabled
 	//
-	// > Before you set this parameter, you must call the QueryConfig operation to obtain the NamingAuthSupported parameter value to check whether the instance supports this feature.
+	// > Before you configure this parameter, you must call the QueryConfig operation to obtain the NamingAuthSupporte parameter value to check whether the instance supports this feature.
 	NamingAuthEnabled *bool `json:"NamingAuthEnabled,omitempty" xml:"NamingAuthEnabled,omitempty"`
 	// Specifies whether to enable super permissions. This parameter is valid for ZooKeeper instances. Valid values:
 	//
-	// *   `true`: yes
-	// *   `false`: no
+	// *   `true`: enabled
+	// *   `false`: disabled
 	OpenSuperAcl *string `json:"OpenSuperAcl,omitempty" xml:"OpenSuperAcl,omitempty"`
 	// The password that corresponds to the username.
 	//
@@ -31696,7 +32153,7 @@ type UpdateConfigRequest struct {
 	SyncLimit *string `json:"SyncLimit,omitempty" xml:"SyncLimit,omitempty"`
 	// The time unit. This parameter is valid for ZooKeeper instances. Default value: 2000. Unit: milliseconds.
 	TickTime *string `json:"TickTime,omitempty" xml:"TickTime,omitempty"`
-	// The username.
+	// The name of the user.
 	//
 	// > You must specify this parameter if OpenSuperAcl is set to true.
 	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
@@ -39608,11 +40065,17 @@ func (client *Client) CreateNacosService(request *CreateNacosServiceRequest) (_r
 	return _result, _err
 }
 
-func (client *Client) CreateOrUpdateSwimmingLaneWithOptions(request *CreateOrUpdateSwimmingLaneRequest, runtime *util.RuntimeOptions) (_result *CreateOrUpdateSwimmingLaneResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) CreateOrUpdateSwimmingLaneWithOptions(tmpReq *CreateOrUpdateSwimmingLaneRequest, runtime *util.RuntimeOptions) (_result *CreateOrUpdateSwimmingLaneResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
+	request := &CreateOrUpdateSwimmingLaneShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.GatewaySwimmingLaneRouteJson)) {
+		request.GatewaySwimmingLaneRouteJsonShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.GatewaySwimmingLaneRouteJson, tea.String("GatewaySwimmingLaneRouteJson"), tea.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
 		query["AcceptLanguage"] = request.AcceptLanguage
@@ -39632,6 +40095,10 @@ func (client *Client) CreateOrUpdateSwimmingLaneWithOptions(request *CreateOrUpd
 
 	if !tea.BoolValue(util.IsUnset(request.EntryRules)) {
 		query["EntryRules"] = request.EntryRules
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GatewaySwimmingLaneRouteJsonShrink)) {
+		query["GatewaySwimmingLaneRouteJson"] = request.GatewaySwimmingLaneRouteJsonShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.GmtCreate)) {
