@@ -59,9 +59,9 @@ func (s *CancelTaskResponse) SetBody(v *CancelTaskResponseBody) *CancelTaskRespo
 }
 
 type CreateResourceRequest struct {
-	Body        *string `json:"body,omitempty" xml:"body,omitempty"`
-	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	RegionId    *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	Body        map[string]interface{} `json:"body,omitempty" xml:"body,omitempty"`
+	ClientToken *string                `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	RegionId    *string                `json:"regionId,omitempty" xml:"regionId,omitempty"`
 }
 
 func (s CreateResourceRequest) String() string {
@@ -72,8 +72,8 @@ func (s CreateResourceRequest) GoString() string {
 	return s.String()
 }
 
-func (s *CreateResourceRequest) SetBody(v string) *CreateResourceRequest {
-	s.Body = &v
+func (s *CreateResourceRequest) SetBody(v map[string]interface{}) *CreateResourceRequest {
+	s.Body = v
 	return s
 }
 
@@ -705,8 +705,8 @@ func (s *GetResourcesResponseBody) SetTotalCount(v int32) *GetResourcesResponseB
 }
 
 type GetResourcesResponseBodyResource struct {
-	ResourceAttributes *string `json:"resourceAttributes,omitempty" xml:"resourceAttributes,omitempty"`
-	ResourceId         *string `json:"resourceId,omitempty" xml:"resourceId,omitempty"`
+	ResourceAttributes map[string]interface{} `json:"resourceAttributes,omitempty" xml:"resourceAttributes,omitempty"`
+	ResourceId         *string                `json:"resourceId,omitempty" xml:"resourceId,omitempty"`
 }
 
 func (s GetResourcesResponseBodyResource) String() string {
@@ -717,8 +717,8 @@ func (s GetResourcesResponseBodyResource) GoString() string {
 	return s.String()
 }
 
-func (s *GetResourcesResponseBodyResource) SetResourceAttributes(v string) *GetResourcesResponseBodyResource {
-	s.ResourceAttributes = &v
+func (s *GetResourcesResponseBodyResource) SetResourceAttributes(v map[string]interface{}) *GetResourcesResponseBodyResource {
+	s.ResourceAttributes = v
 	return s
 }
 
@@ -728,8 +728,8 @@ func (s *GetResourcesResponseBodyResource) SetResourceId(v string) *GetResources
 }
 
 type GetResourcesResponseBodyResources struct {
-	ResourceAttributes *string `json:"resourceAttributes,omitempty" xml:"resourceAttributes,omitempty"`
-	ResourceId         *string `json:"resourceId,omitempty" xml:"resourceId,omitempty"`
+	ResourceAttributes map[string]interface{} `json:"resourceAttributes,omitempty" xml:"resourceAttributes,omitempty"`
+	ResourceId         *string                `json:"resourceId,omitempty" xml:"resourceId,omitempty"`
 }
 
 func (s GetResourcesResponseBodyResources) String() string {
@@ -740,8 +740,8 @@ func (s GetResourcesResponseBodyResources) GoString() string {
 	return s.String()
 }
 
-func (s *GetResourcesResponseBodyResources) SetResourceAttributes(v string) *GetResourcesResponseBodyResources {
-	s.ResourceAttributes = &v
+func (s *GetResourcesResponseBodyResources) SetResourceAttributes(v map[string]interface{}) *GetResourcesResponseBodyResources {
+	s.ResourceAttributes = v
 	return s
 }
 
@@ -1617,9 +1617,9 @@ func (s *ListResourceTypesResponse) SetBody(v *ListResourceTypesResponseBody) *L
 }
 
 type UpdateResourceRequest struct {
-	Body        *string `json:"body,omitempty" xml:"body,omitempty"`
-	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	RegionId    *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	Body        map[string]interface{} `json:"body,omitempty" xml:"body,omitempty"`
+	ClientToken *string                `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	RegionId    *string                `json:"regionId,omitempty" xml:"regionId,omitempty"`
 }
 
 func (s UpdateResourceRequest) String() string {
@@ -1630,8 +1630,8 @@ func (s UpdateResourceRequest) GoString() string {
 	return s.String()
 }
 
-func (s *UpdateResourceRequest) SetBody(v string) *UpdateResourceRequest {
-	s.Body = &v
+func (s *UpdateResourceRequest) SetBody(v map[string]interface{}) *UpdateResourceRequest {
+	s.Body = v
 	return s
 }
 
@@ -1783,13 +1783,13 @@ func (client *Client) CancelTask(taskId *string) (_result *CancelTaskResponse, _
 /**
  * POST /api/v1/providers/{provider}/products/{product}/resources/{parentResourcePath}/{resourceTypeCode}。
  *
- * @param resourcePath the whole path of resource string
+ * @param requestPath the whole path of resource string
  * @param request CreateResourceRequest
  * @param headers map
  * @param runtime runtime options for this request RuntimeOptions
  * @return CreateResourceResponse
  */
-func (client *Client) CreateResourceWithOptions(resourcePath *string, request *CreateResourceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateResourceResponse, _err error) {
+func (client *Client) CreateResourceWithOptions(requestPath *string, request *CreateResourceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateResourceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
@@ -1806,13 +1806,13 @@ func (client *Client) CreateResourceWithOptions(resourcePath *string, request *C
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),
-		Body:    request.Body,
+		Body:    openapiutil.ParseToMap(request.Body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateResource"),
 		Version:     tea.String("2022-08-30"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String(tea.StringValue(resourcePath)),
+		Pathname:    tea.String(tea.StringValue(requestPath)),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -1831,15 +1831,15 @@ func (client *Client) CreateResourceWithOptions(resourcePath *string, request *C
 /**
  * POST /api/v1/providers/{provider}/products/{product}/resources/{parentResourcePath}/{resourceTypeCode}。
  *
- * @param resourcePath the whole path of resource string
+ * @param requestPath the whole path of resource string
  * @param request CreateResourceRequest
  * @return CreateResourceResponse
  */
-func (client *Client) CreateResource(resourcePath *string, request *CreateResourceRequest) (_result *CreateResourceResponse, _err error) {
+func (client *Client) CreateResource(requestPath *string, request *CreateResourceRequest) (_result *CreateResourceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &CreateResourceResponse{}
-	_body, _err := client.CreateResourceWithOptions(resourcePath, request, headers, runtime)
+	_body, _err := client.CreateResourceWithOptions(requestPath, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1850,13 +1850,13 @@ func (client *Client) CreateResource(resourcePath *string, request *CreateResour
 /**
  * DELETE /api/v1/providers/{provider}/products/{product}/resources/{parentResourcePath}/{resourceTypeCode}/{resourceId}。
  *
- * @param resourcePath the whole path of resource string
+ * @param requestPath the whole path of resource string
  * @param request DeleteResourceRequest
  * @param headers map
  * @param runtime runtime options for this request RuntimeOptions
  * @return DeleteResourceResponse
  */
-func (client *Client) DeleteResourceWithOptions(resourcePath *string, request *DeleteResourceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteResourceResponse, _err error) {
+func (client *Client) DeleteResourceWithOptions(requestPath *string, request *DeleteResourceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteResourceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
@@ -1878,7 +1878,7 @@ func (client *Client) DeleteResourceWithOptions(resourcePath *string, request *D
 		Action:      tea.String("DeleteResource"),
 		Version:     tea.String("2022-08-30"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String(tea.StringValue(resourcePath)),
+		Pathname:    tea.String(tea.StringValue(requestPath)),
 		Method:      tea.String("DELETE"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -1897,15 +1897,15 @@ func (client *Client) DeleteResourceWithOptions(resourcePath *string, request *D
 /**
  * DELETE /api/v1/providers/{provider}/products/{product}/resources/{parentResourcePath}/{resourceTypeCode}/{resourceId}。
  *
- * @param resourcePath the whole path of resource string
+ * @param requestPath the whole path of resource string
  * @param request DeleteResourceRequest
  * @return DeleteResourceResponse
  */
-func (client *Client) DeleteResource(resourcePath *string, request *DeleteResourceRequest) (_result *DeleteResourceResponse, _err error) {
+func (client *Client) DeleteResource(requestPath *string, request *DeleteResourceRequest) (_result *DeleteResourceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &DeleteResourceResponse{}
-	_body, _err := client.DeleteResourceWithOptions(resourcePath, request, headers, runtime)
+	_body, _err := client.DeleteResourceWithOptions(requestPath, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1913,7 +1913,7 @@ func (client *Client) DeleteResource(resourcePath *string, request *DeleteResour
 	return _result, _err
 }
 
-func (client *Client) GetResourceTypeWithOptions(resourcePath *string, headers *GetResourceTypeHeaders, runtime *util.RuntimeOptions) (_result *GetResourceTypeResponse, _err error) {
+func (client *Client) GetResourceTypeWithOptions(requestPath *string, headers *GetResourceTypeHeaders, runtime *util.RuntimeOptions) (_result *GetResourceTypeResponse, _err error) {
 	realHeaders := make(map[string]*string)
 	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
 		realHeaders = headers.CommonHeaders
@@ -1930,7 +1930,7 @@ func (client *Client) GetResourceTypeWithOptions(resourcePath *string, headers *
 		Action:      tea.String("GetResourceType"),
 		Version:     tea.String("2022-08-30"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String(tea.StringValue(resourcePath)),
+		Pathname:    tea.String(tea.StringValue(requestPath)),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -1946,11 +1946,11 @@ func (client *Client) GetResourceTypeWithOptions(resourcePath *string, headers *
 	return _result, _err
 }
 
-func (client *Client) GetResourceType(resourcePath *string) (_result *GetResourceTypeResponse, _err error) {
+func (client *Client) GetResourceType(requestPath *string) (_result *GetResourceTypeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &GetResourceTypeHeaders{}
 	_result = &GetResourceTypeResponse{}
-	_body, _err := client.GetResourceTypeWithOptions(resourcePath, headers, runtime)
+	_body, _err := client.GetResourceTypeWithOptions(requestPath, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1958,7 +1958,7 @@ func (client *Client) GetResourceType(resourcePath *string) (_result *GetResourc
 	return _result, _err
 }
 
-func (client *Client) GetResourcesWithOptions(resourcePath *string, tmpReq *GetResourcesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetResourcesResponse, _err error) {
+func (client *Client) GetResourcesWithOptions(requestPath *string, tmpReq *GetResourcesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetResourcesResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
@@ -1994,7 +1994,7 @@ func (client *Client) GetResourcesWithOptions(resourcePath *string, tmpReq *GetR
 		Action:      tea.String("GetResources"),
 		Version:     tea.String("2022-08-30"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String(tea.StringValue(resourcePath)),
+		Pathname:    tea.String(tea.StringValue(requestPath)),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -2010,11 +2010,11 @@ func (client *Client) GetResourcesWithOptions(resourcePath *string, tmpReq *GetR
 	return _result, _err
 }
 
-func (client *Client) GetResources(resourcePath *string, request *GetResourcesRequest) (_result *GetResourcesResponse, _err error) {
+func (client *Client) GetResources(requestPath *string, request *GetResourcesRequest) (_result *GetResourcesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &GetResourcesResponse{}
-	_body, _err := client.GetResourcesWithOptions(resourcePath, request, headers, runtime)
+	_body, _err := client.GetResourcesWithOptions(requestPath, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2073,13 +2073,13 @@ func (client *Client) GetTask(taskId *string) (_result *GetTaskResponse, _err er
 /**
  * GET /api/v1/providers/{provider}/products/{product}/dataSources/{resourceType}。
  *
- * @param resourcePath the whole path of resource string
+ * @param requestPath the whole path of resource string
  * @param tmpReq ListDataSourcesRequest
  * @param headers map
  * @param runtime runtime options for this request RuntimeOptions
  * @return ListDataSourcesResponse
  */
-func (client *Client) ListDataSourcesWithOptions(resourcePath *string, tmpReq *ListDataSourcesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListDataSourcesResponse, _err error) {
+func (client *Client) ListDataSourcesWithOptions(requestPath *string, tmpReq *ListDataSourcesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListDataSourcesResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
@@ -2107,7 +2107,7 @@ func (client *Client) ListDataSourcesWithOptions(resourcePath *string, tmpReq *L
 		Action:      tea.String("ListDataSources"),
 		Version:     tea.String("2022-08-30"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String(tea.StringValue(resourcePath)),
+		Pathname:    tea.String(tea.StringValue(requestPath)),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -2126,15 +2126,15 @@ func (client *Client) ListDataSourcesWithOptions(resourcePath *string, tmpReq *L
 /**
  * GET /api/v1/providers/{provider}/products/{product}/dataSources/{resourceType}。
  *
- * @param resourcePath the whole path of resource string
+ * @param requestPath the whole path of resource string
  * @param request ListDataSourcesRequest
  * @return ListDataSourcesResponse
  */
-func (client *Client) ListDataSources(resourcePath *string, request *ListDataSourcesRequest) (_result *ListDataSourcesResponse, _err error) {
+func (client *Client) ListDataSources(requestPath *string, request *ListDataSourcesRequest) (_result *ListDataSourcesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &ListDataSourcesResponse{}
-	_body, _err := client.ListDataSourcesWithOptions(resourcePath, request, headers, runtime)
+	_body, _err := client.ListDataSourcesWithOptions(requestPath, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2298,7 +2298,7 @@ func (client *Client) ListResourceTypes(provider *string, product *string, reque
 	return _result, _err
 }
 
-func (client *Client) UpdateResourceWithOptions(resourcePath *string, request *UpdateResourceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateResourceResponse, _err error) {
+func (client *Client) UpdateResourceWithOptions(requestPath *string, request *UpdateResourceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateResourceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
@@ -2315,13 +2315,13 @@ func (client *Client) UpdateResourceWithOptions(resourcePath *string, request *U
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),
-		Body:    request.Body,
+		Body:    openapiutil.ParseToMap(request.Body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateResource"),
 		Version:     tea.String("2022-08-30"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String(tea.StringValue(resourcePath)),
+		Pathname:    tea.String(tea.StringValue(requestPath)),
 		Method:      tea.String("PUT"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -2337,11 +2337,11 @@ func (client *Client) UpdateResourceWithOptions(resourcePath *string, request *U
 	return _result, _err
 }
 
-func (client *Client) UpdateResource(resourcePath *string, request *UpdateResourceRequest) (_result *UpdateResourceResponse, _err error) {
+func (client *Client) UpdateResource(requestPath *string, request *UpdateResourceRequest) (_result *UpdateResourceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &UpdateResourceResponse{}
-	_body, _err := client.UpdateResourceWithOptions(resourcePath, request, headers, runtime)
+	_body, _err := client.UpdateResourceWithOptions(requestPath, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
