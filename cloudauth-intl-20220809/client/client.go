@@ -5,10 +5,10 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/client"
+	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
 	openapiutil "github.com/alibabacloud-go/openapi-util/service"
-	util "github.com/alibabacloud-go/tea-utils/service"
+	util "github.com/alibabacloud-go/tea-utils/v2/service"
 	"github.com/alibabacloud-go/tea/tea"
 )
 
@@ -94,6 +94,8 @@ type CheckResultResponseBodyResult struct {
 	ExtFaceInfo  *string `json:"ExtFaceInfo,omitempty" xml:"ExtFaceInfo,omitempty"`
 	ExtIdInfo    *string `json:"ExtIdInfo,omitempty" xml:"ExtIdInfo,omitempty"`
 	ExtRiskInfo  *string `json:"ExtRiskInfo,omitempty" xml:"ExtRiskInfo,omitempty"`
+	Passed       *string `json:"Passed,omitempty" xml:"Passed,omitempty"`
+	SubCode      *string `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
 }
 
 func (s CheckResultResponseBodyResult) String() string {
@@ -129,6 +131,16 @@ func (s *CheckResultResponseBodyResult) SetExtRiskInfo(v string) *CheckResultRes
 	return s
 }
 
+func (s *CheckResultResponseBodyResult) SetPassed(v string) *CheckResultResponseBodyResult {
+	s.Passed = &v
+	return s
+}
+
+func (s *CheckResultResponseBodyResult) SetSubCode(v string) *CheckResultResponseBodyResult {
+	s.SubCode = &v
+	return s
+}
+
 type CheckResultResponse struct {
 	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
 	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
@@ -158,18 +170,155 @@ func (s *CheckResultResponse) SetBody(v *CheckResultResponseBody) *CheckResultRe
 	return s
 }
 
+type FaceCompareRequest struct {
+	MerchantBizId        *string `json:"MerchantBizId,omitempty" xml:"MerchantBizId,omitempty"`
+	SourceFacePicture    *string `json:"SourceFacePicture,omitempty" xml:"SourceFacePicture,omitempty"`
+	SourceFacePictureUrl *string `json:"SourceFacePictureUrl,omitempty" xml:"SourceFacePictureUrl,omitempty"`
+	TargetFacePicture    *string `json:"TargetFacePicture,omitempty" xml:"TargetFacePicture,omitempty"`
+	TargetFacePictureUrl *string `json:"TargetFacePictureUrl,omitempty" xml:"TargetFacePictureUrl,omitempty"`
+}
+
+func (s FaceCompareRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FaceCompareRequest) GoString() string {
+	return s.String()
+}
+
+func (s *FaceCompareRequest) SetMerchantBizId(v string) *FaceCompareRequest {
+	s.MerchantBizId = &v
+	return s
+}
+
+func (s *FaceCompareRequest) SetSourceFacePicture(v string) *FaceCompareRequest {
+	s.SourceFacePicture = &v
+	return s
+}
+
+func (s *FaceCompareRequest) SetSourceFacePictureUrl(v string) *FaceCompareRequest {
+	s.SourceFacePictureUrl = &v
+	return s
+}
+
+func (s *FaceCompareRequest) SetTargetFacePicture(v string) *FaceCompareRequest {
+	s.TargetFacePicture = &v
+	return s
+}
+
+func (s *FaceCompareRequest) SetTargetFacePictureUrl(v string) *FaceCompareRequest {
+	s.TargetFacePictureUrl = &v
+	return s
+}
+
+type FaceCompareResponseBody struct {
+	Code    *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	RequestId *string                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *FaceCompareResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+}
+
+func (s FaceCompareResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FaceCompareResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *FaceCompareResponseBody) SetCode(v string) *FaceCompareResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *FaceCompareResponseBody) SetMessage(v string) *FaceCompareResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *FaceCompareResponseBody) SetRequestId(v string) *FaceCompareResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *FaceCompareResponseBody) SetResult(v *FaceCompareResponseBodyResult) *FaceCompareResponseBody {
+	s.Result = v
+	return s
+}
+
+type FaceCompareResponseBodyResult struct {
+	FaceComparisonScore *float64 `json:"FaceComparisonScore,omitempty" xml:"FaceComparisonScore,omitempty"`
+	Passed              *string  `json:"Passed,omitempty" xml:"Passed,omitempty"`
+	TransactionId       *string  `json:"TransactionId,omitempty" xml:"TransactionId,omitempty"`
+}
+
+func (s FaceCompareResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FaceCompareResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *FaceCompareResponseBodyResult) SetFaceComparisonScore(v float64) *FaceCompareResponseBodyResult {
+	s.FaceComparisonScore = &v
+	return s
+}
+
+func (s *FaceCompareResponseBodyResult) SetPassed(v string) *FaceCompareResponseBodyResult {
+	s.Passed = &v
+	return s
+}
+
+func (s *FaceCompareResponseBodyResult) SetTransactionId(v string) *FaceCompareResponseBodyResult {
+	s.TransactionId = &v
+	return s
+}
+
+type FaceCompareResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *FaceCompareResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s FaceCompareResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FaceCompareResponse) GoString() string {
+	return s.String()
+}
+
+func (s *FaceCompareResponse) SetHeaders(v map[string]*string) *FaceCompareResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *FaceCompareResponse) SetStatusCode(v int32) *FaceCompareResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *FaceCompareResponse) SetBody(v *FaceCompareResponseBody) *FaceCompareResponse {
+	s.Body = v
+	return s
+}
+
 type InitializeRequest struct {
-	DocType        *string `json:"DocType,omitempty" xml:"DocType,omitempty"`
-	FlowType       *string `json:"FlowType,omitempty" xml:"FlowType,omitempty"`
-	MerchantBizId  *string `json:"MerchantBizId,omitempty" xml:"MerchantBizId,omitempty"`
-	MerchantUserId *string `json:"MerchantUserId,omitempty" xml:"MerchantUserId,omitempty"`
-	MetaInfo       *string `json:"MetaInfo,omitempty" xml:"MetaInfo,omitempty"`
-	OperationMode  *string `json:"OperationMode,omitempty" xml:"OperationMode,omitempty"`
-	Pages          *string `json:"Pages,omitempty" xml:"Pages,omitempty"`
-	ProductCode    *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	ProductConfig  *string `json:"ProductConfig,omitempty" xml:"ProductConfig,omitempty"`
-	SceneCode      *string `json:"SceneCode,omitempty" xml:"SceneCode,omitempty"`
-	ServiceLevel   *string `json:"ServiceLevel,omitempty" xml:"ServiceLevel,omitempty"`
+	DocType           *string `json:"DocType,omitempty" xml:"DocType,omitempty"`
+	FacePictureBase64 *string `json:"FacePictureBase64,omitempty" xml:"FacePictureBase64,omitempty"`
+	FacePictureUrl    *string `json:"FacePictureUrl,omitempty" xml:"FacePictureUrl,omitempty"`
+	FlowType          *string `json:"FlowType,omitempty" xml:"FlowType,omitempty"`
+	MerchantBizId     *string `json:"MerchantBizId,omitempty" xml:"MerchantBizId,omitempty"`
+	MerchantUserId    *string `json:"MerchantUserId,omitempty" xml:"MerchantUserId,omitempty"`
+	MetaInfo          *string `json:"MetaInfo,omitempty" xml:"MetaInfo,omitempty"`
+	OperationMode     *string `json:"OperationMode,omitempty" xml:"OperationMode,omitempty"`
+	Pages             *string `json:"Pages,omitempty" xml:"Pages,omitempty"`
+	ProductCode       *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	ProductConfig     *string `json:"ProductConfig,omitempty" xml:"ProductConfig,omitempty"`
+	SceneCode         *string `json:"SceneCode,omitempty" xml:"SceneCode,omitempty"`
+	ServiceLevel      *string `json:"ServiceLevel,omitempty" xml:"ServiceLevel,omitempty"`
 }
 
 func (s InitializeRequest) String() string {
@@ -182,6 +331,16 @@ func (s InitializeRequest) GoString() string {
 
 func (s *InitializeRequest) SetDocType(v string) *InitializeRequest {
 	s.DocType = &v
+	return s
+}
+
+func (s *InitializeRequest) SetFacePictureBase64(v string) *InitializeRequest {
+	s.FacePictureBase64 = &v
+	return s
+}
+
+func (s *InitializeRequest) SetFacePictureUrl(v string) *InitializeRequest {
+	s.FacePictureUrl = &v
 	return s
 }
 
@@ -429,6 +588,66 @@ func (client *Client) CheckResult(request *CheckResultRequest) (_result *CheckRe
 	return _result, _err
 }
 
+func (client *Client) FaceCompareWithOptions(request *FaceCompareRequest, runtime *util.RuntimeOptions) (_result *FaceCompareResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.MerchantBizId)) {
+		query["MerchantBizId"] = request.MerchantBizId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceFacePicture)) {
+		query["SourceFacePicture"] = request.SourceFacePicture
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceFacePictureUrl)) {
+		query["SourceFacePictureUrl"] = request.SourceFacePictureUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetFacePicture)) {
+		query["TargetFacePicture"] = request.TargetFacePicture
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetFacePictureUrl)) {
+		query["TargetFacePictureUrl"] = request.TargetFacePictureUrl
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("FaceCompare"),
+		Version:     tea.String("2022-08-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &FaceCompareResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) FaceCompare(request *FaceCompareRequest) (_result *FaceCompareResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &FaceCompareResponse{}
+	_body, _err := client.FaceCompareWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) InitializeWithOptions(request *InitializeRequest, runtime *util.RuntimeOptions) (_result *InitializeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -437,6 +656,14 @@ func (client *Client) InitializeWithOptions(request *InitializeRequest, runtime 
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.DocType)) {
 		query["DocType"] = request.DocType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FacePictureBase64)) {
+		query["FacePictureBase64"] = request.FacePictureBase64
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FacePictureUrl)) {
+		query["FacePictureUrl"] = request.FacePictureUrl
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.FlowType)) {
