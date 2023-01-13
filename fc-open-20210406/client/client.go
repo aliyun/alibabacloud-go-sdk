@@ -2023,11 +2023,31 @@ func (s *VendorConfig) SetMeteringConfig(v *MeteringConfig) *VendorConfig {
 	return s
 }
 
+type WAFConfig struct {
+	EnableWAF *bool `json:"enableWAF,omitempty" xml:"enableWAF,omitempty"`
+}
+
+func (s WAFConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s WAFConfig) GoString() string {
+	return s.String()
+}
+
+func (s *WAFConfig) SetEnableWAF(v bool) *WAFConfig {
+	s.EnableWAF = &v
+	return s
+}
+
 type ClaimGPUInstanceHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	XFcAccountId  *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
-	XFcDate       *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
-	XFcTraceId    *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
+	// The ID of your Alibaba Cloud account.
+	XFcAccountId *string `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
+	// The time on which the function is invoked. The format of the value is: **EEE,d MMM yyyy HH:mm:ss GMT**.
+	XFcDate *string `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
+	// The custom request ID.
+	XFcTraceId *string `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
 }
 
 func (s ClaimGPUInstanceHeaders) String() string {
@@ -2059,19 +2079,32 @@ func (s *ClaimGPUInstanceHeaders) SetXFcTraceId(v string) *ClaimGPUInstanceHeade
 }
 
 type ClaimGPUInstanceRequest struct {
-	DiskPerformanceLevel *string   `json:"diskPerformanceLevel,omitempty" xml:"diskPerformanceLevel,omitempty"`
-	DiskSizeGigabytes    *string   `json:"diskSizeGigabytes,omitempty" xml:"diskSizeGigabytes,omitempty"`
-	ImageId              *string   `json:"imageId,omitempty" xml:"imageId,omitempty"`
-	InstanceType         *string   `json:"instanceType,omitempty" xml:"instanceType,omitempty"`
-	InternetBandwidthOut *string   `json:"internetBandwidthOut,omitempty" xml:"internetBandwidthOut,omitempty"`
-	Password             *string   `json:"password,omitempty" xml:"password,omitempty"`
-	Role                 *string   `json:"role,omitempty" xml:"role,omitempty"`
-	SgId                 *string   `json:"sgId,omitempty" xml:"sgId,omitempty"`
-	SourceCidrIp         *string   `json:"sourceCidrIp,omitempty" xml:"sourceCidrIp,omitempty"`
-	TcpPortRange         []*string `json:"tcpPortRange,omitempty" xml:"tcpPortRange,omitempty" type:"Repeated"`
-	UdpPortRange         []*string `json:"udpPortRange,omitempty" xml:"udpPortRange,omitempty" type:"Repeated"`
-	VpcId                *string   `json:"vpcId,omitempty" xml:"vpcId,omitempty"`
-	VswId                *string   `json:"vswId,omitempty" xml:"vswId,omitempty"`
+	// The disk performance level of the GPU rendering instance.
+	DiskPerformanceLevel *string `json:"diskPerformanceLevel,omitempty" xml:"diskPerformanceLevel,omitempty"`
+	// The system disk space of the GPU rendering instance.
+	DiskSizeGigabytes *string `json:"diskSizeGigabytes,omitempty" xml:"diskSizeGigabytes,omitempty"`
+	// The image ID of the GPU-rendered instance.
+	ImageId *string `json:"imageId,omitempty" xml:"imageId,omitempty"`
+	// The specifications of the GPU rendering instance.
+	InstanceType *string `json:"instanceType,omitempty" xml:"instanceType,omitempty"`
+	// The outbound Internet bandwidth of the GPU rendering instance.
+	InternetBandwidthOut *string `json:"internetBandwidthOut,omitempty" xml:"internetBandwidthOut,omitempty"`
+	// The password of the GPU rendering instance.
+	Password *string `json:"password,omitempty" xml:"password,omitempty"`
+	// The role of the user.
+	Role *string `json:"role,omitempty" xml:"role,omitempty"`
+	// The ID of the security group.
+	SgId *string `json:"sgId,omitempty" xml:"sgId,omitempty"`
+	// The source IPv4 CIDR block of the GPU rendering instance.
+	SourceCidrIp *string `json:"sourceCidrIp,omitempty" xml:"sourceCidrIp,omitempty"`
+	// The range of TCP ports that are open to the security group of the GPU-rendered instance.
+	TcpPortRange []*string `json:"tcpPortRange,omitempty" xml:"tcpPortRange,omitempty" type:"Repeated"`
+	// The range of UDP ports that are open to the security group of the GPU rendering instance.
+	UdpPortRange []*string `json:"udpPortRange,omitempty" xml:"udpPortRange,omitempty" type:"Repeated"`
+	// The ID of the virtual private cloud (VPC).
+	VpcId *string `json:"vpcId,omitempty" xml:"vpcId,omitempty"`
+	// The ID of the vSwitch.
+	VswId *string `json:"vswId,omitempty" xml:"vswId,omitempty"`
 }
 
 func (s ClaimGPUInstanceRequest) String() string {
@@ -2148,9 +2181,12 @@ func (s *ClaimGPUInstanceRequest) SetVswId(v string) *ClaimGPUInstanceRequest {
 }
 
 type ClaimGPUInstanceResponseBody struct {
+	// The time when the product instance was created.
 	CreatedTime *string `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
-	InstanceId  *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	PublicIp    *string `json:"publicIp,omitempty" xml:"publicIp,omitempty"`
+	// The ID of the instance.
+	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	// The public IP address.
+	PublicIp *string `json:"publicIp,omitempty" xml:"publicIp,omitempty"`
 }
 
 func (s ClaimGPUInstanceResponseBody) String() string {
@@ -2440,6 +2476,7 @@ type CreateCustomDomainRequest struct {
 	RouteConfig *RouteConfig `json:"routeConfig,omitempty" xml:"routeConfig,omitempty"`
 	// The configurations of the TLS.
 	TlsConfig *TLSConfig `json:"tlsConfig,omitempty" xml:"tlsConfig,omitempty"`
+	WafConfig *WAFConfig `json:"wafConfig,omitempty" xml:"wafConfig,omitempty"`
 }
 
 func (s CreateCustomDomainRequest) String() string {
@@ -2475,6 +2512,11 @@ func (s *CreateCustomDomainRequest) SetTlsConfig(v *TLSConfig) *CreateCustomDoma
 	return s
 }
 
+func (s *CreateCustomDomainRequest) SetWafConfig(v *WAFConfig) *CreateCustomDomainRequest {
+	s.WafConfig = v
+	return s
+}
+
 type CreateCustomDomainResponseBody struct {
 	// The ID of the account.
 	AccountId *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
@@ -2498,6 +2540,7 @@ type CreateCustomDomainResponseBody struct {
 	RouteConfig *RouteConfig `json:"routeConfig,omitempty" xml:"routeConfig,omitempty"`
 	// The configurations of the TLS.
 	TlsConfig *TLSConfig `json:"tlsConfig,omitempty" xml:"tlsConfig,omitempty"`
+	WafConfig *WAFConfig `json:"wafConfig,omitempty" xml:"wafConfig,omitempty"`
 }
 
 func (s CreateCustomDomainResponseBody) String() string {
@@ -2550,6 +2593,11 @@ func (s *CreateCustomDomainResponseBody) SetRouteConfig(v *RouteConfig) *CreateC
 
 func (s *CreateCustomDomainResponseBody) SetTlsConfig(v *TLSConfig) *CreateCustomDomainResponseBody {
 	s.TlsConfig = v
+	return s
+}
+
+func (s *CreateCustomDomainResponseBody) SetWafConfig(v *WAFConfig) *CreateCustomDomainResponseBody {
+	s.WafConfig = v
 	return s
 }
 
@@ -4835,6 +4883,7 @@ type GetCustomDomainResponseBody struct {
 	RouteConfig *RouteConfig `json:"routeConfig,omitempty" xml:"routeConfig,omitempty"`
 	// The configurations of the TLS.
 	TlsConfig *TLSConfig `json:"tlsConfig,omitempty" xml:"tlsConfig,omitempty"`
+	WafConfig *WAFConfig `json:"wafConfig,omitempty" xml:"wafConfig,omitempty"`
 }
 
 func (s GetCustomDomainResponseBody) String() string {
@@ -4887,6 +4936,11 @@ func (s *GetCustomDomainResponseBody) SetRouteConfig(v *RouteConfig) *GetCustomD
 
 func (s *GetCustomDomainResponseBody) SetTlsConfig(v *TLSConfig) *GetCustomDomainResponseBody {
 	s.TlsConfig = v
+	return s
+}
+
+func (s *GetCustomDomainResponseBody) SetWafConfig(v *WAFConfig) *GetCustomDomainResponseBody {
+	s.WafConfig = v
 	return s
 }
 
@@ -6835,6 +6889,7 @@ type ListCustomDomainsResponseBodyCustomDomains struct {
 	RouteConfig *RouteConfig `json:"routeConfig,omitempty" xml:"routeConfig,omitempty"`
 	// The configurations of the TLS.
 	TlsConfig *TLSConfig `json:"tlsConfig,omitempty" xml:"tlsConfig,omitempty"`
+	WafConfig *WAFConfig `json:"wafConfig,omitempty" xml:"wafConfig,omitempty"`
 }
 
 func (s ListCustomDomainsResponseBodyCustomDomains) String() string {
@@ -6887,6 +6942,11 @@ func (s *ListCustomDomainsResponseBodyCustomDomains) SetRouteConfig(v *RouteConf
 
 func (s *ListCustomDomainsResponseBodyCustomDomains) SetTlsConfig(v *TLSConfig) *ListCustomDomainsResponseBodyCustomDomains {
 	s.TlsConfig = v
+	return s
+}
+
+func (s *ListCustomDomainsResponseBodyCustomDomains) SetWafConfig(v *WAFConfig) *ListCustomDomainsResponseBodyCustomDomains {
+	s.WafConfig = v
 	return s
 }
 
@@ -10422,9 +10482,12 @@ func (s *RegisterEventSourceResponse) SetBody(v *RegisterEventSourceResponseBody
 
 type ReleaseGPUInstanceHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	XFcAccountId  *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
-	XFcDate       *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
-	XFcTraceId    *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
+	// The ID of your Alibaba Cloud account.
+	XFcAccountId *string `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
+	// The time on which the function is invoked. The format of the value is: EEE,d MMM yyyy HH:mm:ss GMT.
+	XFcDate *string `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
+	// The custom request ID.
+	XFcTraceId *string `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
 }
 
 func (s ReleaseGPUInstanceHeaders) String() string {
@@ -10977,6 +11040,7 @@ type UpdateCustomDomainRequest struct {
 	RouteConfig *RouteConfig `json:"routeConfig,omitempty" xml:"routeConfig,omitempty"`
 	// The configurations of the TLS.
 	TlsConfig *TLSConfig `json:"tlsConfig,omitempty" xml:"tlsConfig,omitempty"`
+	WafConfig *WAFConfig `json:"wafConfig,omitempty" xml:"wafConfig,omitempty"`
 }
 
 func (s UpdateCustomDomainRequest) String() string {
@@ -11007,6 +11071,11 @@ func (s *UpdateCustomDomainRequest) SetTlsConfig(v *TLSConfig) *UpdateCustomDoma
 	return s
 }
 
+func (s *UpdateCustomDomainRequest) SetWafConfig(v *WAFConfig) *UpdateCustomDomainRequest {
+	s.WafConfig = v
+	return s
+}
+
 type UpdateCustomDomainResponseBody struct {
 	// The ID of the account.
 	AccountId *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
@@ -11030,6 +11099,7 @@ type UpdateCustomDomainResponseBody struct {
 	RouteConfig *RouteConfig `json:"routeConfig,omitempty" xml:"routeConfig,omitempty"`
 	// The configurations of the TLS.
 	TlsConfig *TLSConfig `json:"tlsConfig,omitempty" xml:"tlsConfig,omitempty"`
+	WafConfig *WAFConfig `json:"wafConfig,omitempty" xml:"wafConfig,omitempty"`
 }
 
 func (s UpdateCustomDomainResponseBody) String() string {
@@ -11082,6 +11152,11 @@ func (s *UpdateCustomDomainResponseBody) SetRouteConfig(v *RouteConfig) *UpdateC
 
 func (s *UpdateCustomDomainResponseBody) SetTlsConfig(v *TLSConfig) *UpdateCustomDomainResponseBody {
 	s.TlsConfig = v
+	return s
+}
+
+func (s *UpdateCustomDomainResponseBody) SetWafConfig(v *WAFConfig) *UpdateCustomDomainResponseBody {
+	s.WafConfig = v
 	return s
 }
 
@@ -12322,6 +12397,10 @@ func (client *Client) CreateCustomDomainWithOptions(request *CreateCustomDomainR
 
 	if !tea.BoolValue(util.IsUnset(request.TlsConfig)) {
 		body["tlsConfig"] = request.TlsConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WafConfig)) {
+		body["wafConfig"] = request.WafConfig
 	}
 
 	realHeaders := make(map[string]*string)
@@ -16564,6 +16643,10 @@ func (client *Client) UpdateCustomDomainWithOptions(domainName *string, request 
 
 	if !tea.BoolValue(util.IsUnset(request.TlsConfig)) {
 		body["tlsConfig"] = request.TlsConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WafConfig)) {
+		body["wafConfig"] = request.WafConfig
 	}
 
 	realHeaders := make(map[string]*string)
