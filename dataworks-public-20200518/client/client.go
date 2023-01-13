@@ -21461,10 +21461,12 @@ func (s *GetQualityFollowerResponseBody) SetSuccess(v bool) *GetQualityFollowerR
 
 type GetQualityFollowerResponseBodyData struct {
 	AlarmMode           *int32  `json:"AlarmMode,omitempty" xml:"AlarmMode,omitempty"`
+	CreateTime          *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	EntityId            *string `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
 	Follower            *string `json:"Follower,omitempty" xml:"Follower,omitempty"`
 	FollowerAccountName *string `json:"FollowerAccountName,omitempty" xml:"FollowerAccountName,omitempty"`
 	Id                  *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	ModifyTime          *int64  `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
 	ProjectName         *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
 	TableName           *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
 }
@@ -21479,6 +21481,11 @@ func (s GetQualityFollowerResponseBodyData) GoString() string {
 
 func (s *GetQualityFollowerResponseBodyData) SetAlarmMode(v int32) *GetQualityFollowerResponseBodyData {
 	s.AlarmMode = &v
+	return s
+}
+
+func (s *GetQualityFollowerResponseBodyData) SetCreateTime(v int64) *GetQualityFollowerResponseBodyData {
+	s.CreateTime = &v
 	return s
 }
 
@@ -21499,6 +21506,11 @@ func (s *GetQualityFollowerResponseBodyData) SetFollowerAccountName(v string) *G
 
 func (s *GetQualityFollowerResponseBodyData) SetId(v int64) *GetQualityFollowerResponseBodyData {
 	s.Id = &v
+	return s
+}
+
+func (s *GetQualityFollowerResponseBodyData) SetModifyTime(v int64) *GetQualityFollowerResponseBodyData {
+	s.ModifyTime = &v
 	return s
 }
 
@@ -21625,6 +21637,7 @@ type GetQualityRuleResponseBodyData struct {
 	MethodName        *string `json:"MethodName,omitempty" xml:"MethodName,omitempty"`
 	OnDuty            *string `json:"OnDuty,omitempty" xml:"OnDuty,omitempty"`
 	OnDutyAccountName *string `json:"OnDutyAccountName,omitempty" xml:"OnDutyAccountName,omitempty"`
+	OpenSwitch        *bool   `json:"OpenSwitch,omitempty" xml:"OpenSwitch,omitempty"`
 	Operator          *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
 	PredictType       *int32  `json:"PredictType,omitempty" xml:"PredictType,omitempty"`
 	Property          *string `json:"Property,omitempty" xml:"Property,omitempty"`
@@ -21707,6 +21720,11 @@ func (s *GetQualityRuleResponseBodyData) SetOnDuty(v string) *GetQualityRuleResp
 
 func (s *GetQualityRuleResponseBodyData) SetOnDutyAccountName(v string) *GetQualityRuleResponseBodyData {
 	s.OnDutyAccountName = &v
+	return s
+}
+
+func (s *GetQualityRuleResponseBodyData) SetOpenSwitch(v bool) *GetQualityRuleResponseBodyData {
+	s.OpenSwitch = &v
 	return s
 }
 
@@ -34080,7 +34098,7 @@ type ListQualityResultsByRuleRequest struct {
 	PageNumber  *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	RuleId      *int32  `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	RuleId      *int64  `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
 	StartDate   *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
 }
 
@@ -34112,7 +34130,7 @@ func (s *ListQualityResultsByRuleRequest) SetProjectName(v string) *ListQualityR
 	return s
 }
 
-func (s *ListQualityResultsByRuleRequest) SetRuleId(v int32) *ListQualityResultsByRuleRequest {
+func (s *ListQualityResultsByRuleRequest) SetRuleId(v int64) *ListQualityResultsByRuleRequest {
 	s.RuleId = &v
 	return s
 }
@@ -34219,22 +34237,23 @@ type ListQualityResultsByRuleResponseBodyDataRuleChecks struct {
 	DateType          *string                                                             `json:"DateType,omitempty" xml:"DateType,omitempty"`
 	DiscreteCheck     *bool                                                               `json:"DiscreteCheck,omitempty" xml:"DiscreteCheck,omitempty"`
 	EndTime           *int64                                                              `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	EntityId          *int32                                                              `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
+	EntityId          *int64                                                              `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
 	ExpectValue       *float32                                                            `json:"ExpectValue,omitempty" xml:"ExpectValue,omitempty"`
 	ExternalId        *string                                                             `json:"ExternalId,omitempty" xml:"ExternalId,omitempty"`
 	ExternalType      *string                                                             `json:"ExternalType,omitempty" xml:"ExternalType,omitempty"`
 	FixedCheck        *bool                                                               `json:"FixedCheck,omitempty" xml:"FixedCheck,omitempty"`
-	Id                *int32                                                              `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id                *int64                                                              `json:"Id,omitempty" xml:"Id,omitempty"`
 	IsPrediction      *bool                                                               `json:"IsPrediction,omitempty" xml:"IsPrediction,omitempty"`
 	LowerValue        *float32                                                            `json:"LowerValue,omitempty" xml:"LowerValue,omitempty"`
 	MatchExpression   *string                                                             `json:"MatchExpression,omitempty" xml:"MatchExpression,omitempty"`
 	MethodName        *string                                                             `json:"MethodName,omitempty" xml:"MethodName,omitempty"`
 	Op                *string                                                             `json:"Op,omitempty" xml:"Op,omitempty"`
+	Open              *bool                                                               `json:"Open,omitempty" xml:"Open,omitempty"`
 	ProjectName       *string                                                             `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
 	Property          *string                                                             `json:"Property,omitempty" xml:"Property,omitempty"`
 	ReferenceValue    []*ListQualityResultsByRuleResponseBodyDataRuleChecksReferenceValue `json:"ReferenceValue,omitempty" xml:"ReferenceValue,omitempty" type:"Repeated"`
 	ResultString      *string                                                             `json:"ResultString,omitempty" xml:"ResultString,omitempty"`
-	RuleId            *int32                                                              `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	RuleId            *int64                                                              `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
 	RuleName          *string                                                             `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
 	SampleValue       []*ListQualityResultsByRuleResponseBodyDataRuleChecksSampleValue    `json:"SampleValue,omitempty" xml:"SampleValue,omitempty" type:"Repeated"`
 	TableName         *string                                                             `json:"TableName,omitempty" xml:"TableName,omitempty"`
@@ -34326,7 +34345,7 @@ func (s *ListQualityResultsByRuleResponseBodyDataRuleChecks) SetEndTime(v int64)
 	return s
 }
 
-func (s *ListQualityResultsByRuleResponseBodyDataRuleChecks) SetEntityId(v int32) *ListQualityResultsByRuleResponseBodyDataRuleChecks {
+func (s *ListQualityResultsByRuleResponseBodyDataRuleChecks) SetEntityId(v int64) *ListQualityResultsByRuleResponseBodyDataRuleChecks {
 	s.EntityId = &v
 	return s
 }
@@ -34351,7 +34370,7 @@ func (s *ListQualityResultsByRuleResponseBodyDataRuleChecks) SetFixedCheck(v boo
 	return s
 }
 
-func (s *ListQualityResultsByRuleResponseBodyDataRuleChecks) SetId(v int32) *ListQualityResultsByRuleResponseBodyDataRuleChecks {
+func (s *ListQualityResultsByRuleResponseBodyDataRuleChecks) SetId(v int64) *ListQualityResultsByRuleResponseBodyDataRuleChecks {
 	s.Id = &v
 	return s
 }
@@ -34381,6 +34400,11 @@ func (s *ListQualityResultsByRuleResponseBodyDataRuleChecks) SetOp(v string) *Li
 	return s
 }
 
+func (s *ListQualityResultsByRuleResponseBodyDataRuleChecks) SetOpen(v bool) *ListQualityResultsByRuleResponseBodyDataRuleChecks {
+	s.Open = &v
+	return s
+}
+
 func (s *ListQualityResultsByRuleResponseBodyDataRuleChecks) SetProjectName(v string) *ListQualityResultsByRuleResponseBodyDataRuleChecks {
 	s.ProjectName = &v
 	return s
@@ -34401,7 +34425,7 @@ func (s *ListQualityResultsByRuleResponseBodyDataRuleChecks) SetResultString(v s
 	return s
 }
 
-func (s *ListQualityResultsByRuleResponseBodyDataRuleChecks) SetRuleId(v int32) *ListQualityResultsByRuleResponseBodyDataRuleChecks {
+func (s *ListQualityResultsByRuleResponseBodyDataRuleChecks) SetRuleId(v int64) *ListQualityResultsByRuleResponseBodyDataRuleChecks {
 	s.RuleId = &v
 	return s
 }
