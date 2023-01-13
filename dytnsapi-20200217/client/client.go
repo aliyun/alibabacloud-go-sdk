@@ -12,6 +12,140 @@ import (
 	"github.com/alibabacloud-go/tea/tea"
 )
 
+type DescribeEmptyNumberRequest struct {
+	AuthCode             *string `json:"AuthCode,omitempty" xml:"AuthCode,omitempty"`
+	InputNumber          *string `json:"InputNumber,omitempty" xml:"InputNumber,omitempty"`
+	Mask                 *string `json:"Mask,omitempty" xml:"Mask,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s DescribeEmptyNumberRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeEmptyNumberRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeEmptyNumberRequest) SetAuthCode(v string) *DescribeEmptyNumberRequest {
+	s.AuthCode = &v
+	return s
+}
+
+func (s *DescribeEmptyNumberRequest) SetInputNumber(v string) *DescribeEmptyNumberRequest {
+	s.InputNumber = &v
+	return s
+}
+
+func (s *DescribeEmptyNumberRequest) SetMask(v string) *DescribeEmptyNumberRequest {
+	s.Mask = &v
+	return s
+}
+
+func (s *DescribeEmptyNumberRequest) SetOwnerId(v int64) *DescribeEmptyNumberRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribeEmptyNumberRequest) SetResourceOwnerAccount(v string) *DescribeEmptyNumberRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *DescribeEmptyNumberRequest) SetResourceOwnerId(v int64) *DescribeEmptyNumberRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type DescribeEmptyNumberResponseBody struct {
+	Code      *string                              `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *DescribeEmptyNumberResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                              `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeEmptyNumberResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeEmptyNumberResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeEmptyNumberResponseBody) SetCode(v string) *DescribeEmptyNumberResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DescribeEmptyNumberResponseBody) SetData(v *DescribeEmptyNumberResponseBodyData) *DescribeEmptyNumberResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DescribeEmptyNumberResponseBody) SetMessage(v string) *DescribeEmptyNumberResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DescribeEmptyNumberResponseBody) SetRequestId(v string) *DescribeEmptyNumberResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeEmptyNumberResponseBodyData struct {
+	Number *string `json:"Number,omitempty" xml:"Number,omitempty"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s DescribeEmptyNumberResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeEmptyNumberResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeEmptyNumberResponseBodyData) SetNumber(v string) *DescribeEmptyNumberResponseBodyData {
+	s.Number = &v
+	return s
+}
+
+func (s *DescribeEmptyNumberResponseBodyData) SetStatus(v string) *DescribeEmptyNumberResponseBodyData {
+	s.Status = &v
+	return s
+}
+
+type DescribeEmptyNumberResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeEmptyNumberResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeEmptyNumberResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeEmptyNumberResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeEmptyNumberResponse) SetHeaders(v map[string]*string) *DescribeEmptyNumberResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeEmptyNumberResponse) SetStatusCode(v int32) *DescribeEmptyNumberResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeEmptyNumberResponse) SetBody(v *DescribeEmptyNumberResponseBody) *DescribeEmptyNumberResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeEmptyNumberDetectRequest struct {
 	EncryptType          *string `json:"EncryptType,omitempty" xml:"EncryptType,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -2536,6 +2670,70 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	}
 
 	_body, _err := endpointutil.GetEndpointRules(productId, regionId, endpointRule, network, suffix)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeEmptyNumberWithOptions(request *DescribeEmptyNumberRequest, runtime *util.RuntimeOptions) (_result *DescribeEmptyNumberResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AuthCode)) {
+		query["AuthCode"] = request.AuthCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InputNumber)) {
+		query["InputNumber"] = request.InputNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Mask)) {
+		query["Mask"] = request.Mask
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeEmptyNumber"),
+		Version:     tea.String("2020-02-17"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeEmptyNumberResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeEmptyNumber(request *DescribeEmptyNumberRequest) (_result *DescribeEmptyNumberResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeEmptyNumberResponse{}
+	_body, _err := client.DescribeEmptyNumberWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
