@@ -743,6 +743,7 @@ func (s *AddIPv6TranslatorAclListEntryResponse) SetBody(v *AddIPv6TranslatorAclL
 
 type AddPublicIpAddressPoolCidrBlockRequest struct {
 	CidrBlock             *string `json:"CidrBlock,omitempty" xml:"CidrBlock,omitempty"`
+	CidrMask              *int32  `json:"CidrMask,omitempty" xml:"CidrMask,omitempty"`
 	ClientToken           *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	DryRun                *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	OwnerAccount          *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
@@ -763,6 +764,11 @@ func (s AddPublicIpAddressPoolCidrBlockRequest) GoString() string {
 
 func (s *AddPublicIpAddressPoolCidrBlockRequest) SetCidrBlock(v string) *AddPublicIpAddressPoolCidrBlockRequest {
 	s.CidrBlock = &v
+	return s
+}
+
+func (s *AddPublicIpAddressPoolCidrBlockRequest) SetCidrMask(v int32) *AddPublicIpAddressPoolCidrBlockRequest {
+	s.CidrMask = &v
 	return s
 }
 
@@ -6959,27 +6965,28 @@ func (s *CreateIpv6GatewayResponse) SetBody(v *CreateIpv6GatewayResponseBody) *C
 }
 
 type CreateNatGatewayRequest struct {
-	AutoPay                   *bool   `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
-	ClientToken               *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	Description               *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Duration                  *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	EipBindMode               *string `json:"EipBindMode,omitempty" xml:"EipBindMode,omitempty"`
-	IcmpReplyEnabled          *bool   `json:"IcmpReplyEnabled,omitempty" xml:"IcmpReplyEnabled,omitempty"`
-	InstanceChargeType        *string `json:"InstanceChargeType,omitempty" xml:"InstanceChargeType,omitempty"`
-	InternetChargeType        *string `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
-	Name                      *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	NatType                   *string `json:"NatType,omitempty" xml:"NatType,omitempty"`
-	NetworkType               *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
-	OwnerAccount              *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId                   *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	PricingCycle              *string `json:"PricingCycle,omitempty" xml:"PricingCycle,omitempty"`
-	RegionId                  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceOwnerAccount      *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId           *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	SecurityProtectionEnabled *bool   `json:"SecurityProtectionEnabled,omitempty" xml:"SecurityProtectionEnabled,omitempty"`
-	Spec                      *string `json:"Spec,omitempty" xml:"Spec,omitempty"`
-	VSwitchId                 *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	VpcId                     *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	AutoPay                   *bool                         `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
+	ClientToken               *string                       `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	Description               *string                       `json:"Description,omitempty" xml:"Description,omitempty"`
+	Duration                  *string                       `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	EipBindMode               *string                       `json:"EipBindMode,omitempty" xml:"EipBindMode,omitempty"`
+	IcmpReplyEnabled          *bool                         `json:"IcmpReplyEnabled,omitempty" xml:"IcmpReplyEnabled,omitempty"`
+	InstanceChargeType        *string                       `json:"InstanceChargeType,omitempty" xml:"InstanceChargeType,omitempty"`
+	InternetChargeType        *string                       `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
+	Name                      *string                       `json:"Name,omitempty" xml:"Name,omitempty"`
+	NatType                   *string                       `json:"NatType,omitempty" xml:"NatType,omitempty"`
+	NetworkType               *string                       `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
+	OwnerAccount              *string                       `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId                   *int64                        `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	PricingCycle              *string                       `json:"PricingCycle,omitempty" xml:"PricingCycle,omitempty"`
+	RegionId                  *string                       `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount      *string                       `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId           *int64                        `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	SecurityProtectionEnabled *bool                         `json:"SecurityProtectionEnabled,omitempty" xml:"SecurityProtectionEnabled,omitempty"`
+	Spec                      *string                       `json:"Spec,omitempty" xml:"Spec,omitempty"`
+	Tag                       []*CreateNatGatewayRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	VSwitchId                 *string                       `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	VpcId                     *string                       `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s CreateNatGatewayRequest) String() string {
@@ -7085,6 +7092,11 @@ func (s *CreateNatGatewayRequest) SetSpec(v string) *CreateNatGatewayRequest {
 	return s
 }
 
+func (s *CreateNatGatewayRequest) SetTag(v []*CreateNatGatewayRequestTag) *CreateNatGatewayRequest {
+	s.Tag = v
+	return s
+}
+
 func (s *CreateNatGatewayRequest) SetVSwitchId(v string) *CreateNatGatewayRequest {
 	s.VSwitchId = &v
 	return s
@@ -7092,6 +7104,29 @@ func (s *CreateNatGatewayRequest) SetVSwitchId(v string) *CreateNatGatewayReques
 
 func (s *CreateNatGatewayRequest) SetVpcId(v string) *CreateNatGatewayRequest {
 	s.VpcId = &v
+	return s
+}
+
+type CreateNatGatewayRequestTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateNatGatewayRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateNatGatewayRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *CreateNatGatewayRequestTag) SetKey(v string) *CreateNatGatewayRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *CreateNatGatewayRequestTag) SetValue(v string) *CreateNatGatewayRequestTag {
+	s.Value = &v
 	return s
 }
 
@@ -56697,6 +56732,117 @@ func (s *UpdateVpcGatewayEndpointAttributeResponse) SetBody(v *UpdateVpcGatewayE
 	return s
 }
 
+type VpcDescribeVpcNatGatewayNetworkInterfaceQuotaRequest struct {
+	ClientToken          *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	NatGatewayId         *string `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	ResourceUid          *int64  `json:"ResourceUid,omitempty" xml:"ResourceUid,omitempty"`
+}
+
+func (s VpcDescribeVpcNatGatewayNetworkInterfaceQuotaRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s VpcDescribeVpcNatGatewayNetworkInterfaceQuotaRequest) GoString() string {
+	return s.String()
+}
+
+func (s *VpcDescribeVpcNatGatewayNetworkInterfaceQuotaRequest) SetClientToken(v string) *VpcDescribeVpcNatGatewayNetworkInterfaceQuotaRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *VpcDescribeVpcNatGatewayNetworkInterfaceQuotaRequest) SetNatGatewayId(v string) *VpcDescribeVpcNatGatewayNetworkInterfaceQuotaRequest {
+	s.NatGatewayId = &v
+	return s
+}
+
+func (s *VpcDescribeVpcNatGatewayNetworkInterfaceQuotaRequest) SetOwnerAccount(v string) *VpcDescribeVpcNatGatewayNetworkInterfaceQuotaRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *VpcDescribeVpcNatGatewayNetworkInterfaceQuotaRequest) SetOwnerId(v int64) *VpcDescribeVpcNatGatewayNetworkInterfaceQuotaRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *VpcDescribeVpcNatGatewayNetworkInterfaceQuotaRequest) SetRegionId(v string) *VpcDescribeVpcNatGatewayNetworkInterfaceQuotaRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *VpcDescribeVpcNatGatewayNetworkInterfaceQuotaRequest) SetResourceOwnerAccount(v string) *VpcDescribeVpcNatGatewayNetworkInterfaceQuotaRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *VpcDescribeVpcNatGatewayNetworkInterfaceQuotaRequest) SetResourceOwnerId(v int64) *VpcDescribeVpcNatGatewayNetworkInterfaceQuotaRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *VpcDescribeVpcNatGatewayNetworkInterfaceQuotaRequest) SetResourceUid(v int64) *VpcDescribeVpcNatGatewayNetworkInterfaceQuotaRequest {
+	s.ResourceUid = &v
+	return s
+}
+
+type VpcDescribeVpcNatGatewayNetworkInterfaceQuotaResponseBody struct {
+	Quota     *int64  `json:"Quota,omitempty" xml:"Quota,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s VpcDescribeVpcNatGatewayNetworkInterfaceQuotaResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s VpcDescribeVpcNatGatewayNetworkInterfaceQuotaResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *VpcDescribeVpcNatGatewayNetworkInterfaceQuotaResponseBody) SetQuota(v int64) *VpcDescribeVpcNatGatewayNetworkInterfaceQuotaResponseBody {
+	s.Quota = &v
+	return s
+}
+
+func (s *VpcDescribeVpcNatGatewayNetworkInterfaceQuotaResponseBody) SetRequestId(v string) *VpcDescribeVpcNatGatewayNetworkInterfaceQuotaResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type VpcDescribeVpcNatGatewayNetworkInterfaceQuotaResponse struct {
+	Headers    map[string]*string                                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *VpcDescribeVpcNatGatewayNetworkInterfaceQuotaResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s VpcDescribeVpcNatGatewayNetworkInterfaceQuotaResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s VpcDescribeVpcNatGatewayNetworkInterfaceQuotaResponse) GoString() string {
+	return s.String()
+}
+
+func (s *VpcDescribeVpcNatGatewayNetworkInterfaceQuotaResponse) SetHeaders(v map[string]*string) *VpcDescribeVpcNatGatewayNetworkInterfaceQuotaResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *VpcDescribeVpcNatGatewayNetworkInterfaceQuotaResponse) SetStatusCode(v int32) *VpcDescribeVpcNatGatewayNetworkInterfaceQuotaResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *VpcDescribeVpcNatGatewayNetworkInterfaceQuotaResponse) SetBody(v *VpcDescribeVpcNatGatewayNetworkInterfaceQuotaResponseBody) *VpcDescribeVpcNatGatewayNetworkInterfaceQuotaResponse {
+	s.Body = v
+	return s
+}
+
 type Client struct {
 	openapi.Client
 }
@@ -57290,6 +57436,10 @@ func (client *Client) AddPublicIpAddressPoolCidrBlockWithOptions(request *AddPub
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.CidrBlock)) {
 		query["CidrBlock"] = request.CidrBlock
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CidrMask)) {
+		query["CidrMask"] = request.CidrMask
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
@@ -61418,6 +61568,10 @@ func (client *Client) CreateNatGatewayWithOptions(request *CreateNatGatewayReque
 
 	if !tea.BoolValue(util.IsUnset(request.Spec)) {
 		query["Spec"] = request.Spec
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.VSwitchId)) {
@@ -84399,6 +84553,78 @@ func (client *Client) UpdateVpcGatewayEndpointAttribute(request *UpdateVpcGatewa
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateVpcGatewayEndpointAttributeResponse{}
 	_body, _err := client.UpdateVpcGatewayEndpointAttributeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) VpcDescribeVpcNatGatewayNetworkInterfaceQuotaWithOptions(request *VpcDescribeVpcNatGatewayNetworkInterfaceQuotaRequest, runtime *util.RuntimeOptions) (_result *VpcDescribeVpcNatGatewayNetworkInterfaceQuotaResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NatGatewayId)) {
+		query["NatGatewayId"] = request.NatGatewayId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceUid)) {
+		query["ResourceUid"] = request.ResourceUid
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("VpcDescribeVpcNatGatewayNetworkInterfaceQuota"),
+		Version:     tea.String("2016-04-28"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &VpcDescribeVpcNatGatewayNetworkInterfaceQuotaResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) VpcDescribeVpcNatGatewayNetworkInterfaceQuota(request *VpcDescribeVpcNatGatewayNetworkInterfaceQuotaRequest) (_result *VpcDescribeVpcNatGatewayNetworkInterfaceQuotaResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &VpcDescribeVpcNatGatewayNetworkInterfaceQuotaResponse{}
+	_body, _err := client.VpcDescribeVpcNatGatewayNetworkInterfaceQuotaWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
