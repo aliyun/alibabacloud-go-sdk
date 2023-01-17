@@ -2278,6 +2278,7 @@ func (s *DescribeScdnDomainCnameResponseBodyCnameDatas) SetData(v []*DescribeScd
 }
 
 type DescribeScdnDomainCnameResponseBodyCnameDatasData struct {
+	// Cname
 	Cname  *string `json:"Cname,omitempty" xml:"Cname,omitempty"`
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	Status *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
@@ -4134,10 +4135,12 @@ func (s *DescribeScdnDomainQpsDataResponseBodyQpsDataPerInterval) SetDataModule(
 }
 
 type DescribeScdnDomainQpsDataResponseBodyQpsDataPerIntervalDataModule struct {
-	AccValue      *string `json:"AccValue,omitempty" xml:"AccValue,omitempty"`
-	HttpAccValue  *string `json:"HttpAccValue,omitempty" xml:"HttpAccValue,omitempty"`
+	AccValue     *string `json:"AccValue,omitempty" xml:"AccValue,omitempty"`
+	HttpAccValue *string `json:"HttpAccValue,omitempty" xml:"HttpAccValue,omitempty"`
+	// http QPS。
 	HttpQpsValue  *string `json:"HttpQpsValue,omitempty" xml:"HttpQpsValue,omitempty"`
 	HttpsAccValue *string `json:"HttpsAccValue,omitempty" xml:"HttpsAccValue,omitempty"`
+	// https QPS。
 	HttpsQpsValue *string `json:"HttpsQpsValue,omitempty" xml:"HttpsQpsValue,omitempty"`
 	QpsValue      *string `json:"QpsValue,omitempty" xml:"QpsValue,omitempty"`
 	TimeStamp     *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
@@ -7803,6 +7806,7 @@ type PreloadScdnObjectCachesRequest struct {
 	ObjectPath    *string `json:"ObjectPath,omitempty" xml:"ObjectPath,omitempty"`
 	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	WithHeader    *string `json:"WithHeader,omitempty" xml:"WithHeader,omitempty"`
 }
 
 func (s PreloadScdnObjectCachesRequest) String() string {
@@ -7835,6 +7839,11 @@ func (s *PreloadScdnObjectCachesRequest) SetOwnerId(v int64) *PreloadScdnObjectC
 
 func (s *PreloadScdnObjectCachesRequest) SetSecurityToken(v string) *PreloadScdnObjectCachesRequest {
 	s.SecurityToken = &v
+	return s
+}
+
+func (s *PreloadScdnObjectCachesRequest) SetWithHeader(v string) *PreloadScdnObjectCachesRequest {
+	s.WithHeader = &v
 	return s
 }
 
@@ -8441,211 +8450,6 @@ func (s *StopScdnDomainResponse) SetStatusCode(v int32) *StopScdnDomainResponse 
 }
 
 func (s *StopScdnDomainResponse) SetBody(v *StopScdnDomainResponseBody) *StopScdnDomainResponse {
-	s.Body = v
-	return s
-}
-
-type TestAmpDescribeScdnDomainIspDataRequest struct {
-	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	EndTime    *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	StartTime  *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-}
-
-func (s TestAmpDescribeScdnDomainIspDataRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s TestAmpDescribeScdnDomainIspDataRequest) GoString() string {
-	return s.String()
-}
-
-func (s *TestAmpDescribeScdnDomainIspDataRequest) SetDomainName(v string) *TestAmpDescribeScdnDomainIspDataRequest {
-	s.DomainName = &v
-	return s
-}
-
-func (s *TestAmpDescribeScdnDomainIspDataRequest) SetEndTime(v string) *TestAmpDescribeScdnDomainIspDataRequest {
-	s.EndTime = &v
-	return s
-}
-
-func (s *TestAmpDescribeScdnDomainIspDataRequest) SetStartTime(v string) *TestAmpDescribeScdnDomainIspDataRequest {
-	s.StartTime = &v
-	return s
-}
-
-type TestAmpDescribeScdnDomainIspDataResponseBody struct {
-	DataInterval *string                                            `json:"DataInterval,omitempty" xml:"DataInterval,omitempty"`
-	DomainName   *string                                            `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	EndTime      *string                                            `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	RequestId    *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	StartTime    *string                                            `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Value        *TestAmpDescribeScdnDomainIspDataResponseBodyValue `json:"Value,omitempty" xml:"Value,omitempty" type:"Struct"`
-}
-
-func (s TestAmpDescribeScdnDomainIspDataResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s TestAmpDescribeScdnDomainIspDataResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *TestAmpDescribeScdnDomainIspDataResponseBody) SetDataInterval(v string) *TestAmpDescribeScdnDomainIspDataResponseBody {
-	s.DataInterval = &v
-	return s
-}
-
-func (s *TestAmpDescribeScdnDomainIspDataResponseBody) SetDomainName(v string) *TestAmpDescribeScdnDomainIspDataResponseBody {
-	s.DomainName = &v
-	return s
-}
-
-func (s *TestAmpDescribeScdnDomainIspDataResponseBody) SetEndTime(v string) *TestAmpDescribeScdnDomainIspDataResponseBody {
-	s.EndTime = &v
-	return s
-}
-
-func (s *TestAmpDescribeScdnDomainIspDataResponseBody) SetRequestId(v string) *TestAmpDescribeScdnDomainIspDataResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *TestAmpDescribeScdnDomainIspDataResponseBody) SetStartTime(v string) *TestAmpDescribeScdnDomainIspDataResponseBody {
-	s.StartTime = &v
-	return s
-}
-
-func (s *TestAmpDescribeScdnDomainIspDataResponseBody) SetValue(v *TestAmpDescribeScdnDomainIspDataResponseBodyValue) *TestAmpDescribeScdnDomainIspDataResponseBody {
-	s.Value = v
-	return s
-}
-
-type TestAmpDescribeScdnDomainIspDataResponseBodyValue struct {
-	ISPProportionData []*TestAmpDescribeScdnDomainIspDataResponseBodyValueISPProportionData `json:"ISPProportionData,omitempty" xml:"ISPProportionData,omitempty" type:"Repeated"`
-}
-
-func (s TestAmpDescribeScdnDomainIspDataResponseBodyValue) String() string {
-	return tea.Prettify(s)
-}
-
-func (s TestAmpDescribeScdnDomainIspDataResponseBodyValue) GoString() string {
-	return s.String()
-}
-
-func (s *TestAmpDescribeScdnDomainIspDataResponseBodyValue) SetISPProportionData(v []*TestAmpDescribeScdnDomainIspDataResponseBodyValueISPProportionData) *TestAmpDescribeScdnDomainIspDataResponseBodyValue {
-	s.ISPProportionData = v
-	return s
-}
-
-type TestAmpDescribeScdnDomainIspDataResponseBodyValueISPProportionData struct {
-	AvgObjectSize   *string `json:"AvgObjectSize,omitempty" xml:"AvgObjectSize,omitempty"`
-	AvgResponseRate *string `json:"AvgResponseRate,omitempty" xml:"AvgResponseRate,omitempty"`
-	AvgResponseTime *string `json:"AvgResponseTime,omitempty" xml:"AvgResponseTime,omitempty"`
-	Bps             *string `json:"Bps,omitempty" xml:"Bps,omitempty"`
-	BytesProportion *string `json:"BytesProportion,omitempty" xml:"BytesProportion,omitempty"`
-	ISP             *string `json:"ISP,omitempty" xml:"ISP,omitempty"`
-	IspEname        *string `json:"IspEname,omitempty" xml:"IspEname,omitempty"`
-	Proportion      *string `json:"Proportion,omitempty" xml:"Proportion,omitempty"`
-	Qps             *string `json:"Qps,omitempty" xml:"Qps,omitempty"`
-	ReqErrRate      *string `json:"ReqErrRate,omitempty" xml:"ReqErrRate,omitempty"`
-	TotalBytes      *string `json:"TotalBytes,omitempty" xml:"TotalBytes,omitempty"`
-	TotalQuery      *string `json:"TotalQuery,omitempty" xml:"TotalQuery,omitempty"`
-}
-
-func (s TestAmpDescribeScdnDomainIspDataResponseBodyValueISPProportionData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s TestAmpDescribeScdnDomainIspDataResponseBodyValueISPProportionData) GoString() string {
-	return s.String()
-}
-
-func (s *TestAmpDescribeScdnDomainIspDataResponseBodyValueISPProportionData) SetAvgObjectSize(v string) *TestAmpDescribeScdnDomainIspDataResponseBodyValueISPProportionData {
-	s.AvgObjectSize = &v
-	return s
-}
-
-func (s *TestAmpDescribeScdnDomainIspDataResponseBodyValueISPProportionData) SetAvgResponseRate(v string) *TestAmpDescribeScdnDomainIspDataResponseBodyValueISPProportionData {
-	s.AvgResponseRate = &v
-	return s
-}
-
-func (s *TestAmpDescribeScdnDomainIspDataResponseBodyValueISPProportionData) SetAvgResponseTime(v string) *TestAmpDescribeScdnDomainIspDataResponseBodyValueISPProportionData {
-	s.AvgResponseTime = &v
-	return s
-}
-
-func (s *TestAmpDescribeScdnDomainIspDataResponseBodyValueISPProportionData) SetBps(v string) *TestAmpDescribeScdnDomainIspDataResponseBodyValueISPProportionData {
-	s.Bps = &v
-	return s
-}
-
-func (s *TestAmpDescribeScdnDomainIspDataResponseBodyValueISPProportionData) SetBytesProportion(v string) *TestAmpDescribeScdnDomainIspDataResponseBodyValueISPProportionData {
-	s.BytesProportion = &v
-	return s
-}
-
-func (s *TestAmpDescribeScdnDomainIspDataResponseBodyValueISPProportionData) SetISP(v string) *TestAmpDescribeScdnDomainIspDataResponseBodyValueISPProportionData {
-	s.ISP = &v
-	return s
-}
-
-func (s *TestAmpDescribeScdnDomainIspDataResponseBodyValueISPProportionData) SetIspEname(v string) *TestAmpDescribeScdnDomainIspDataResponseBodyValueISPProportionData {
-	s.IspEname = &v
-	return s
-}
-
-func (s *TestAmpDescribeScdnDomainIspDataResponseBodyValueISPProportionData) SetProportion(v string) *TestAmpDescribeScdnDomainIspDataResponseBodyValueISPProportionData {
-	s.Proportion = &v
-	return s
-}
-
-func (s *TestAmpDescribeScdnDomainIspDataResponseBodyValueISPProportionData) SetQps(v string) *TestAmpDescribeScdnDomainIspDataResponseBodyValueISPProportionData {
-	s.Qps = &v
-	return s
-}
-
-func (s *TestAmpDescribeScdnDomainIspDataResponseBodyValueISPProportionData) SetReqErrRate(v string) *TestAmpDescribeScdnDomainIspDataResponseBodyValueISPProportionData {
-	s.ReqErrRate = &v
-	return s
-}
-
-func (s *TestAmpDescribeScdnDomainIspDataResponseBodyValueISPProportionData) SetTotalBytes(v string) *TestAmpDescribeScdnDomainIspDataResponseBodyValueISPProportionData {
-	s.TotalBytes = &v
-	return s
-}
-
-func (s *TestAmpDescribeScdnDomainIspDataResponseBodyValueISPProportionData) SetTotalQuery(v string) *TestAmpDescribeScdnDomainIspDataResponseBodyValueISPProportionData {
-	s.TotalQuery = &v
-	return s
-}
-
-type TestAmpDescribeScdnDomainIspDataResponse struct {
-	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *TestAmpDescribeScdnDomainIspDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s TestAmpDescribeScdnDomainIspDataResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s TestAmpDescribeScdnDomainIspDataResponse) GoString() string {
-	return s.String()
-}
-
-func (s *TestAmpDescribeScdnDomainIspDataResponse) SetHeaders(v map[string]*string) *TestAmpDescribeScdnDomainIspDataResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *TestAmpDescribeScdnDomainIspDataResponse) SetStatusCode(v int32) *TestAmpDescribeScdnDomainIspDataResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *TestAmpDescribeScdnDomainIspDataResponse) SetBody(v *TestAmpDescribeScdnDomainIspDataResponseBody) *TestAmpDescribeScdnDomainIspDataResponse {
 	s.Body = v
 	return s
 }
@@ -11608,6 +11412,10 @@ func (client *Client) PreloadScdnObjectCachesWithOptions(request *PreloadScdnObj
 		query["SecurityToken"] = request.SecurityToken
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.WithHeader)) {
+		query["WithHeader"] = request.WithHeader
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -11995,58 +11803,6 @@ func (client *Client) StopScdnDomain(request *StopScdnDomainRequest) (_result *S
 	runtime := &util.RuntimeOptions{}
 	_result = &StopScdnDomainResponse{}
 	_body, _err := client.StopScdnDomainWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) TestAmpDescribeScdnDomainIspDataWithOptions(request *TestAmpDescribeScdnDomainIspDataRequest, runtime *util.RuntimeOptions) (_result *TestAmpDescribeScdnDomainIspDataResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
-		query["DomainName"] = request.DomainName
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
-		query["EndTime"] = request.EndTime
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
-		query["StartTime"] = request.StartTime
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("TestAmpDescribeScdnDomainIspData"),
-		Version:     tea.String("2017-11-15"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &TestAmpDescribeScdnDomainIspDataResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) TestAmpDescribeScdnDomainIspData(request *TestAmpDescribeScdnDomainIspDataRequest) (_result *TestAmpDescribeScdnDomainIspDataResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &TestAmpDescribeScdnDomainIspDataResponse{}
-	_body, _err := client.TestAmpDescribeScdnDomainIspDataWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
