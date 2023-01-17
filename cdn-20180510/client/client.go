@@ -192,8 +192,6 @@ type AddFCTriggerRequest struct {
 	FunctionARN *string `json:"FunctionARN,omitempty" xml:"FunctionARN,omitempty"`
 	// The remarks.
 	Notes *string `json:"Notes,omitempty" xml:"Notes,omitempty"`
-	// 用户ID。
-	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The assigned Resource Access Management (RAM) role.
 	RoleARN *string `json:"RoleARN,omitempty" xml:"RoleARN,omitempty"`
 	// The resources and filters for event listening.
@@ -227,11 +225,6 @@ func (s *AddFCTriggerRequest) SetFunctionARN(v string) *AddFCTriggerRequest {
 
 func (s *AddFCTriggerRequest) SetNotes(v string) *AddFCTriggerRequest {
 	s.Notes = &v
-	return s
-}
-
-func (s *AddFCTriggerRequest) SetOwnerId(v int64) *AddFCTriggerRequest {
-	s.OwnerId = &v
 	return s
 }
 
@@ -1132,7 +1125,6 @@ type CreateCdnCertificateSigningRequestRequest struct {
 	Organization *string `json:"Organization,omitempty" xml:"Organization,omitempty"`
 	// The name of the organization unit. Default value: Aliyun CDN.
 	OrganizationUnit *string `json:"OrganizationUnit,omitempty" xml:"OrganizationUnit,omitempty"`
-	OwnerId          *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The Subject Alternative Name (SAN) extension of the SSL certificate. This extension is used to add domain names to the certificate. Separate multiple domain names with commas (,).
 	SANs *string `json:"SANs,omitempty" xml:"SANs,omitempty"`
 	// The provincial district to which the organization belongs. Default value: Zhejiang.
@@ -1174,11 +1166,6 @@ func (s *CreateCdnCertificateSigningRequestRequest) SetOrganization(v string) *C
 
 func (s *CreateCdnCertificateSigningRequestRequest) SetOrganizationUnit(v string) *CreateCdnCertificateSigningRequestRequest {
 	s.OrganizationUnit = &v
-	return s
-}
-
-func (s *CreateCdnCertificateSigningRequestRequest) SetOwnerId(v int64) *CreateCdnCertificateSigningRequestRequest {
-	s.OwnerId = &v
 	return s
 }
 
@@ -1268,8 +1255,7 @@ type CreateCdnDeliverTaskRequest struct {
 	// >  If you do not specify a domain name, the custom operations reports are created for all domain names that belong to your Alibaba Cloud account.
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	// The name of the tracking task.
-	Name    *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The operations reports that are tracked by the task. The data must be escaped in JSON.
 	Reports *string `json:"Reports,omitempty" xml:"Reports,omitempty"`
 	// The parameters that specify the time interval at which the tracking task sends operations reports. The settings must be escaped in JSON.
@@ -1296,11 +1282,6 @@ func (s *CreateCdnDeliverTaskRequest) SetDomainName(v string) *CreateCdnDeliverT
 
 func (s *CreateCdnDeliverTaskRequest) SetName(v string) *CreateCdnDeliverTaskRequest {
 	s.Name = &v
-	return s
-}
-
-func (s *CreateCdnDeliverTaskRequest) SetOwnerId(v int64) *CreateCdnDeliverTaskRequest {
-	s.OwnerId = &v
 	return s
 }
 
@@ -1373,7 +1354,6 @@ type CreateCdnSubTaskRequest struct {
 	//
 	// >  If you do not specify a domain name, the custom operations reports are created for all domain names that belong to your Alibaba Cloud account.
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The IDs of the metrics that you want to include in the report. Separate multiple IDs with commas (,). Valid values:
 	//
 	// *   **1**: frequently requested URLs (ranked by the number of requests)
@@ -1401,11 +1381,6 @@ func (s CreateCdnSubTaskRequest) GoString() string {
 
 func (s *CreateCdnSubTaskRequest) SetDomainName(v string) *CreateCdnSubTaskRequest {
 	s.DomainName = &v
-	return s
-}
-
-func (s *CreateCdnSubTaskRequest) SetOwnerId(v int64) *CreateCdnSubTaskRequest {
-	s.OwnerId = &v
 	return s
 }
 
@@ -1462,7 +1437,6 @@ func (s *CreateCdnSubTaskResponse) SetBody(v *CreateCdnSubTaskResponseBody) *Cre
 }
 
 type CreateIllegalUrlExportTaskRequest struct {
-	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The name of the export task.
 	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
 	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-DDThh:mm:ssZ format. The finest granularity is one day.
@@ -1475,11 +1449,6 @@ func (s CreateIllegalUrlExportTaskRequest) String() string {
 
 func (s CreateIllegalUrlExportTaskRequest) GoString() string {
 	return s.String()
-}
-
-func (s *CreateIllegalUrlExportTaskRequest) SetOwnerId(v int64) *CreateIllegalUrlExportTaskRequest {
-	s.OwnerId = &v
-	return s
 }
 
 func (s *CreateIllegalUrlExportTaskRequest) SetTaskName(v string) *CreateIllegalUrlExportTaskRequest {
@@ -1551,7 +1520,6 @@ type CreateRealTimeLogDeliveryRequest struct {
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	// The name of the Logstore that collects log data from Alibaba Cloud Content Delivery Network (CDN) in real time.
 	Logstore *string `json:"Logstore,omitempty" xml:"Logstore,omitempty"`
-	OwnerId  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The name of the Log Service project that is used for real-time log delivery.
 	Project *string `json:"Project,omitempty" xml:"Project,omitempty"`
 	// The ID of the region where the Log Service project is deployed. For more information, see [Regions that support real-time log delivery](~~144883~~).
@@ -1573,11 +1541,6 @@ func (s *CreateRealTimeLogDeliveryRequest) SetDomain(v string) *CreateRealTimeLo
 
 func (s *CreateRealTimeLogDeliveryRequest) SetLogstore(v string) *CreateRealTimeLogDeliveryRequest {
 	s.Logstore = &v
-	return s
-}
-
-func (s *CreateRealTimeLogDeliveryRequest) SetOwnerId(v int64) *CreateRealTimeLogDeliveryRequest {
-	s.OwnerId = &v
 	return s
 }
 
@@ -1656,7 +1619,6 @@ type CreateUsageDetailDataExportTaskRequest struct {
 	// *   **zh-cn**: Chinese. This is the default value.
 	// *   **en-us**: English
 	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
-	OwnerId  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The beginning of the time range to query.
 	//
 	// Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC+0.
@@ -1695,11 +1657,6 @@ func (s *CreateUsageDetailDataExportTaskRequest) SetGroup(v string) *CreateUsage
 
 func (s *CreateUsageDetailDataExportTaskRequest) SetLanguage(v string) *CreateUsageDetailDataExportTaskRequest {
 	s.Language = &v
-	return s
-}
-
-func (s *CreateUsageDetailDataExportTaskRequest) SetOwnerId(v int64) *CreateUsageDetailDataExportTaskRequest {
-	s.OwnerId = &v
 	return s
 }
 
@@ -1796,7 +1753,6 @@ type CreateUserUsageDataExportTaskRequest struct {
 	// *   **zh-cn**: Chinese. This is the default value.
 	// *   **en-us**: English.
 	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
-	OwnerId  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The start of the time range to query. The time interval at which the specified data is collected is five minutes.
 	//
 	// Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC+0.
@@ -1820,11 +1776,6 @@ func (s *CreateUserUsageDataExportTaskRequest) SetEndTime(v string) *CreateUserU
 
 func (s *CreateUserUsageDataExportTaskRequest) SetLanguage(v string) *CreateUserUsageDataExportTaskRequest {
 	s.Language = &v
-	return s
-}
-
-func (s *CreateUserUsageDataExportTaskRequest) SetOwnerId(v int64) *CreateUserUsageDataExportTaskRequest {
-	s.OwnerId = &v
 	return s
 }
 
@@ -1909,7 +1860,6 @@ func (s *CreateUserUsageDataExportTaskResponse) SetBody(v *CreateUserUsageDataEx
 type DeleteCdnDeliverTaskRequest struct {
 	// The IDs of the tracking tasks that you want to delete. You can call the [DescribeCdnDeliverList](~~270877~~) operation to query task IDs.
 	DeliverId *int64 `json:"DeliverId,omitempty" xml:"DeliverId,omitempty"`
-	OwnerId   *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 }
 
 func (s DeleteCdnDeliverTaskRequest) String() string {
@@ -1922,11 +1872,6 @@ func (s DeleteCdnDeliverTaskRequest) GoString() string {
 
 func (s *DeleteCdnDeliverTaskRequest) SetDeliverId(v int64) *DeleteCdnDeliverTaskRequest {
 	s.DeliverId = &v
-	return s
-}
-
-func (s *DeleteCdnDeliverTaskRequest) SetOwnerId(v int64) *DeleteCdnDeliverTaskRequest {
-	s.OwnerId = &v
 	return s
 }
 
@@ -2054,23 +1999,6 @@ func (s *DeleteCdnDomainResponse) SetBody(v *DeleteCdnDomainResponseBody) *Delet
 	return s
 }
 
-type DeleteCdnSubTaskRequest struct {
-	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-}
-
-func (s DeleteCdnSubTaskRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteCdnSubTaskRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteCdnSubTaskRequest) SetOwnerId(v int64) *DeleteCdnSubTaskRequest {
-	s.OwnerId = &v
-	return s
-}
-
 type DeleteCdnSubTaskResponseBody struct {
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -2119,7 +2047,6 @@ func (s *DeleteCdnSubTaskResponse) SetBody(v *DeleteCdnSubTaskResponseBody) *Del
 }
 
 type DeleteFCTriggerRequest struct {
-	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The trigger that corresponds to the Function Compute service.
 	TriggerARN *string `json:"TriggerARN,omitempty" xml:"TriggerARN,omitempty"`
 }
@@ -2130,11 +2057,6 @@ func (s DeleteFCTriggerRequest) String() string {
 
 func (s DeleteFCTriggerRequest) GoString() string {
 	return s.String()
-}
-
-func (s *DeleteFCTriggerRequest) SetOwnerId(v int64) *DeleteFCTriggerRequest {
-	s.OwnerId = &v
-	return s
 }
 
 func (s *DeleteFCTriggerRequest) SetTriggerARN(v string) *DeleteFCTriggerRequest {
@@ -2192,7 +2114,6 @@ func (s *DeleteFCTriggerResponse) SetBody(v *DeleteFCTriggerResponseBody) *Delet
 type DeleteRealTimeLogLogstoreRequest struct {
 	// The name of the Logstore to which log entries are delivered.
 	Logstore *string `json:"Logstore,omitempty" xml:"Logstore,omitempty"`
-	OwnerId  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The name of the Log Service project that is used for real-time log delivery.
 	Project *string `json:"Project,omitempty" xml:"Project,omitempty"`
 	// The ID of the region where the Log Service project is deployed. For more information, see [Regions that support real-time log delivery](~~144883~~).
@@ -2209,11 +2130,6 @@ func (s DeleteRealTimeLogLogstoreRequest) GoString() string {
 
 func (s *DeleteRealTimeLogLogstoreRequest) SetLogstore(v string) *DeleteRealTimeLogLogstoreRequest {
 	s.Logstore = &v
-	return s
-}
-
-func (s *DeleteRealTimeLogLogstoreRequest) SetOwnerId(v int64) *DeleteRealTimeLogLogstoreRequest {
-	s.OwnerId = &v
 	return s
 }
 
@@ -2279,7 +2195,6 @@ type DeleteRealtimeLogDeliveryRequest struct {
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	// The name of the Logstore that collects log data from Alibaba Cloud Content Delivery Network (CDN) in real time.
 	Logstore *string `json:"Logstore,omitempty" xml:"Logstore,omitempty"`
-	OwnerId  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The name of the Log Service project that is used for real-time log delivery.
 	Project *string `json:"Project,omitempty" xml:"Project,omitempty"`
 	// The ID of the region where the Log Service project is deployed. For more information, see [Regions that support real-time log delivery](~~144883~~).
@@ -2301,11 +2216,6 @@ func (s *DeleteRealtimeLogDeliveryRequest) SetDomain(v string) *DeleteRealtimeLo
 
 func (s *DeleteRealtimeLogDeliveryRequest) SetLogstore(v string) *DeleteRealtimeLogDeliveryRequest {
 	s.Logstore = &v
-	return s
-}
-
-func (s *DeleteRealtimeLogDeliveryRequest) SetOwnerId(v int64) *DeleteRealtimeLogDeliveryRequest {
-	s.OwnerId = &v
 	return s
 }
 
@@ -2535,7 +2445,6 @@ func (s *DeleteSpecificStagingConfigResponse) SetBody(v *DeleteSpecificStagingCo
 }
 
 type DeleteUsageDetailDataExportTaskRequest struct {
-	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The ID of the task. You can call the [DescribeUserUsageDataExportTask](~~91062~~) operation to query the most recent task list.
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
@@ -2546,11 +2455,6 @@ func (s DeleteUsageDetailDataExportTaskRequest) String() string {
 
 func (s DeleteUsageDetailDataExportTaskRequest) GoString() string {
 	return s.String()
-}
-
-func (s *DeleteUsageDetailDataExportTaskRequest) SetOwnerId(v int64) *DeleteUsageDetailDataExportTaskRequest {
-	s.OwnerId = &v
-	return s
 }
 
 func (s *DeleteUsageDetailDataExportTaskRequest) SetTaskId(v string) *DeleteUsageDetailDataExportTaskRequest {
@@ -2606,7 +2510,6 @@ func (s *DeleteUsageDetailDataExportTaskResponse) SetBody(v *DeleteUsageDetailDa
 }
 
 type DeleteUserUsageDataExportTaskRequest struct {
-	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The ID of the export task that you want to delete.
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
@@ -2617,11 +2520,6 @@ func (s DeleteUserUsageDataExportTaskRequest) String() string {
 
 func (s DeleteUserUsageDataExportTaskRequest) GoString() string {
 	return s.String()
-}
-
-func (s *DeleteUserUsageDataExportTaskRequest) SetOwnerId(v int64) *DeleteUserUsageDataExportTaskRequest {
-	s.OwnerId = &v
-	return s
 }
 
 func (s *DeleteUserUsageDataExportTaskRequest) SetTaskId(v string) *DeleteUserUsageDataExportTaskRequest {
@@ -2683,7 +2581,6 @@ type DescribeBlockedRegionsRequest struct {
 	// - **en**: English
 	// - **jp**: Japanese
 	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
-	OwnerId  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 }
 
 func (s DescribeBlockedRegionsRequest) String() string {
@@ -2696,11 +2593,6 @@ func (s DescribeBlockedRegionsRequest) GoString() string {
 
 func (s *DescribeBlockedRegionsRequest) SetLanguage(v string) *DescribeBlockedRegionsRequest {
 	s.Language = &v
-	return s
-}
-
-func (s *DescribeBlockedRegionsRequest) SetOwnerId(v int64) *DescribeBlockedRegionsRequest {
-	s.OwnerId = &v
 	return s
 }
 
@@ -3094,7 +2986,6 @@ func (s *DescribeCdnCertificateListResponse) SetBody(v *DescribeCdnCertificateLi
 }
 
 type DescribeCdnDeletedDomainsRequest struct {
-	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The number of the page to return. Pages start from page **1**. Valid values: **1** to **100000**.
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries to return on each page. Default value: **20**. Valid values: **1** to **500**. The value must be an integer.
@@ -3107,11 +2998,6 @@ func (s DescribeCdnDeletedDomainsRequest) String() string {
 
 func (s DescribeCdnDeletedDomainsRequest) GoString() string {
 	return s.String()
-}
-
-func (s *DescribeCdnDeletedDomainsRequest) SetOwnerId(v int64) *DescribeCdnDeletedDomainsRequest {
-	s.OwnerId = &v
-	return s
 }
 
 func (s *DescribeCdnDeletedDomainsRequest) SetPageNumber(v int32) *DescribeCdnDeletedDomainsRequest {
@@ -4251,7 +4137,6 @@ type DescribeCdnDomainStagingConfigRequest struct {
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	// The list of feature names. Separate multiple values with commas (,). For more information, see [A list of features](~~388460~~).
 	FunctionNames *string `json:"FunctionNames,omitempty" xml:"FunctionNames,omitempty"`
-	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 }
 
 func (s DescribeCdnDomainStagingConfigRequest) String() string {
@@ -4269,11 +4154,6 @@ func (s *DescribeCdnDomainStagingConfigRequest) SetDomainName(v string) *Describ
 
 func (s *DescribeCdnDomainStagingConfigRequest) SetFunctionNames(v string) *DescribeCdnDomainStagingConfigRequest {
 	s.FunctionNames = &v
-	return s
-}
-
-func (s *DescribeCdnDomainStagingConfigRequest) SetOwnerId(v int64) *DescribeCdnDomainStagingConfigRequest {
-	s.OwnerId = &v
 	return s
 }
 
@@ -4419,7 +4299,6 @@ func (s *DescribeCdnDomainStagingConfigResponse) SetBody(v *DescribeCdnDomainSta
 type DescribeCdnHttpsDomainListRequest struct {
 	// The keyword used for search.
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
-	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The number of the page to return. Valid values: **1** to **100000**.
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The maximum number of entries to return on each page. Default value: **20**.
@@ -4436,11 +4315,6 @@ func (s DescribeCdnHttpsDomainListRequest) GoString() string {
 
 func (s *DescribeCdnHttpsDomainListRequest) SetKeyword(v string) *DescribeCdnHttpsDomainListRequest {
 	s.Keyword = &v
-	return s
-}
-
-func (s *DescribeCdnHttpsDomainListRequest) SetOwnerId(v int64) *DescribeCdnHttpsDomainListRequest {
-	s.OwnerId = &v
 	return s
 }
 
@@ -4884,7 +4758,6 @@ type DescribeCdnReportRequest struct {
 	// *   **1**: outside the Chinese mainland
 	// *   **0**: inside the Chinese mainland
 	IsOverseas *string `json:"IsOverseas,omitempty" xml:"IsOverseas,omitempty"`
-	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The ID of the operations report that you want to query. You can enter only one ID in each call. You can call the [DescribeCdnSubList](~~271655~~) operation to query the report ID.
 	ReportId *int64 `json:"ReportId,omitempty" xml:"ReportId,omitempty"`
 	// The beginning of the time range to query. Specify the time in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
@@ -4921,11 +4794,6 @@ func (s *DescribeCdnReportRequest) SetHttpCode(v string) *DescribeCdnReportReque
 
 func (s *DescribeCdnReportRequest) SetIsOverseas(v string) *DescribeCdnReportRequest {
 	s.IsOverseas = &v
-	return s
-}
-
-func (s *DescribeCdnReportRequest) SetOwnerId(v int64) *DescribeCdnReportRequest {
-	s.OwnerId = &v
 	return s
 }
 
@@ -4994,7 +4862,6 @@ func (s *DescribeCdnReportResponse) SetBody(v *DescribeCdnReportResponseBody) *D
 }
 
 type DescribeCdnReportListRequest struct {
-	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The ID of the operations report that you want to query. If you do not specify an ID, all operations reports are queried.
 	ReportId *int64 `json:"ReportId,omitempty" xml:"ReportId,omitempty"`
 }
@@ -5005,11 +4872,6 @@ func (s DescribeCdnReportListRequest) String() string {
 
 func (s DescribeCdnReportListRequest) GoString() string {
 	return s.String()
-}
-
-func (s *DescribeCdnReportListRequest) SetOwnerId(v int64) *DescribeCdnReportListRequest {
-	s.OwnerId = &v
-	return s
 }
 
 func (s *DescribeCdnReportListRequest) SetReportId(v int64) *DescribeCdnReportListRequest {
@@ -5522,23 +5384,6 @@ func (s *DescribeCdnServiceResponse) SetBody(v *DescribeCdnServiceResponseBody) 
 	return s
 }
 
-type DescribeCdnSubListRequest struct {
-	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-}
-
-func (s DescribeCdnSubListRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeCdnSubListRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeCdnSubListRequest) SetOwnerId(v int64) *DescribeCdnSubListRequest {
-	s.OwnerId = &v
-	return s
-}
-
 type DescribeCdnSubListResponseBody struct {
 	// The information about the tracking task.
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
@@ -5598,7 +5443,6 @@ type DescribeCdnUserBillHistoryRequest struct {
 	//
 	// The end of the time range to query. The end time must be later than the start time.
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC+0.
 	//
 	// The minimum data collection interval is 5 minutes.
@@ -5615,11 +5459,6 @@ func (s DescribeCdnUserBillHistoryRequest) GoString() string {
 
 func (s *DescribeCdnUserBillHistoryRequest) SetEndTime(v string) *DescribeCdnUserBillHistoryRequest {
 	s.EndTime = &v
-	return s
-}
-
-func (s *DescribeCdnUserBillHistoryRequest) SetOwnerId(v int64) *DescribeCdnUserBillHistoryRequest {
-	s.OwnerId = &v
 	return s
 }
 
@@ -5838,7 +5677,6 @@ type DescribeCdnUserBillPredictionRequest struct {
 	//
 	// >  The end time must be later than the start time.
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The default value is 00:00 on the first day of the current month. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC+0.
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
@@ -5863,11 +5701,6 @@ func (s *DescribeCdnUserBillPredictionRequest) SetDimension(v string) *DescribeC
 
 func (s *DescribeCdnUserBillPredictionRequest) SetEndTime(v string) *DescribeCdnUserBillPredictionRequest {
 	s.EndTime = &v
-	return s
-}
-
-func (s *DescribeCdnUserBillPredictionRequest) SetOwnerId(v int64) *DescribeCdnUserBillPredictionRequest {
-	s.OwnerId = &v
 	return s
 }
 
@@ -6021,7 +5854,6 @@ type DescribeCdnUserBillTypeRequest struct {
 	//
 	// Example: 2016-10-20T04:00:00Z.
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The start of the time range that was queried.
 	//
 	// Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
@@ -6040,11 +5872,6 @@ func (s DescribeCdnUserBillTypeRequest) GoString() string {
 
 func (s *DescribeCdnUserBillTypeRequest) SetEndTime(v string) *DescribeCdnUserBillTypeRequest {
 	s.EndTime = &v
-	return s
-}
-
-func (s *DescribeCdnUserBillTypeRequest) SetOwnerId(v int64) *DescribeCdnUserBillTypeRequest {
-	s.OwnerId = &v
 	return s
 }
 
@@ -6920,7 +6747,6 @@ func (s *DescribeCdnUserResourcePackageResponse) SetBody(v *DescribeCdnUserResou
 type DescribeCdnWafDomainRequest struct {
 	// The accelerated domain name.
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The ID of the region.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group.
@@ -6937,11 +6763,6 @@ func (s DescribeCdnWafDomainRequest) GoString() string {
 
 func (s *DescribeCdnWafDomainRequest) SetDomainName(v string) *DescribeCdnWafDomainRequest {
 	s.DomainName = &v
-	return s
-}
-
-func (s *DescribeCdnWafDomainRequest) SetOwnerId(v int64) *DescribeCdnWafDomainRequest {
-	s.OwnerId = &v
 	return s
 }
 
@@ -7059,8 +6880,7 @@ func (s *DescribeCdnWafDomainResponse) SetBody(v *DescribeCdnWafDomainResponseBo
 
 type DescribeCertificateInfoByIDRequest struct {
 	// The ID of the SSL certificate. You can query only one certificate in each call.
-	CertId  *string `json:"CertId,omitempty" xml:"CertId,omitempty"`
-	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	CertId *string `json:"CertId,omitempty" xml:"CertId,omitempty"`
 }
 
 func (s DescribeCertificateInfoByIDRequest) String() string {
@@ -7073,11 +6893,6 @@ func (s DescribeCertificateInfoByIDRequest) GoString() string {
 
 func (s *DescribeCertificateInfoByIDRequest) SetCertId(v string) *DescribeCertificateInfoByIDRequest {
 	s.CertId = &v
-	return s
-}
-
-func (s *DescribeCertificateInfoByIDRequest) SetOwnerId(v int64) *DescribeCertificateInfoByIDRequest {
-	s.OwnerId = &v
 	return s
 }
 
@@ -7219,7 +7034,6 @@ func (s *DescribeCertificateInfoByIDResponse) SetBody(v *DescribeCertificateInfo
 type DescribeCustomLogConfigRequest struct {
 	// The ID of the custom configuration.
 	ConfigId *string `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
-	OwnerId  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 }
 
 func (s DescribeCustomLogConfigRequest) String() string {
@@ -7232,11 +7046,6 @@ func (s DescribeCustomLogConfigRequest) GoString() string {
 
 func (s *DescribeCustomLogConfigRequest) SetConfigId(v string) *DescribeCustomLogConfigRequest {
 	s.ConfigId = &v
-	return s
-}
-
-func (s *DescribeCustomLogConfigRequest) SetOwnerId(v int64) *DescribeCustomLogConfigRequest {
-	s.OwnerId = &v
 	return s
 }
 
@@ -8131,7 +7940,6 @@ type DescribeDomainCcActivityLogRequest struct {
 	//
 	// The end time must be later than the start time.
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The number of the page to return. Default value: **1**.
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries to return on each page. Default value: **30**.
@@ -8174,11 +7982,6 @@ func (s *DescribeDomainCcActivityLogRequest) SetDomainName(v string) *DescribeDo
 
 func (s *DescribeDomainCcActivityLogRequest) SetEndTime(v string) *DescribeDomainCcActivityLogRequest {
 	s.EndTime = &v
-	return s
-}
-
-func (s *DescribeDomainCcActivityLogRequest) SetOwnerId(v int64) *DescribeDomainCcActivityLogRequest {
-	s.OwnerId = &v
 	return s
 }
 
@@ -8695,7 +8498,6 @@ func (s *DescribeDomainCnameResponse) SetBody(v *DescribeDomainCnameResponseBody
 type DescribeDomainCustomLogConfigRequest struct {
 	// The accelerated domain name. You can specify only one domain name.
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 }
 
 func (s DescribeDomainCustomLogConfigRequest) String() string {
@@ -8708,11 +8510,6 @@ func (s DescribeDomainCustomLogConfigRequest) GoString() string {
 
 func (s *DescribeDomainCustomLogConfigRequest) SetDomainName(v string) *DescribeDomainCustomLogConfigRequest {
 	s.DomainName = &v
-	return s
-}
-
-func (s *DescribeDomainCustomLogConfigRequest) SetOwnerId(v int64) *DescribeDomainCustomLogConfigRequest {
-	s.OwnerId = &v
 	return s
 }
 
@@ -12856,8 +12653,7 @@ func (s *DescribeDomainRealTimeTrafficDataResponse) SetBody(v *DescribeDomainRea
 
 type DescribeDomainRealtimeLogDeliveryRequest struct {
 	// The accelerated domain name for which real-time log delivery is enabled. Only one domain name is supported.
-	Domain  *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 }
 
 func (s DescribeDomainRealtimeLogDeliveryRequest) String() string {
@@ -12870,11 +12666,6 @@ func (s DescribeDomainRealtimeLogDeliveryRequest) GoString() string {
 
 func (s *DescribeDomainRealtimeLogDeliveryRequest) SetDomain(v string) *DescribeDomainRealtimeLogDeliveryRequest {
 	s.Domain = &v
-	return s
-}
-
-func (s *DescribeDomainRealtimeLogDeliveryRequest) SetOwnerId(v int64) *DescribeDomainRealtimeLogDeliveryRequest {
-	s.OwnerId = &v
 	return s
 }
 
@@ -13971,7 +13762,6 @@ type DescribeDomainSrcTopUrlVisitRequest struct {
 	//
 	// >  The end time must be later than the start time. The difference between the end time and the start time cannot exceed seven days.
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The method that is used to sort the returned URLs.**** Valid values:
 	//
 	// *   **traf**: by network traffic.
@@ -13998,11 +13788,6 @@ func (s *DescribeDomainSrcTopUrlVisitRequest) SetDomainName(v string) *DescribeD
 
 func (s *DescribeDomainSrcTopUrlVisitRequest) SetEndTime(v string) *DescribeDomainSrcTopUrlVisitRequest {
 	s.EndTime = &v
-	return s
-}
-
-func (s *DescribeDomainSrcTopUrlVisitRequest) SetOwnerId(v int64) *DescribeDomainSrcTopUrlVisitRequest {
-	s.OwnerId = &v
 	return s
 }
 
@@ -14630,7 +14415,6 @@ type DescribeDomainTopClientIpVisitRequest struct {
 	//
 	// You can call the [DescribeCdnRegionAndIsp](~~91077~~) operation to query regions.
 	LocationNameEn *string `json:"LocationNameEn,omitempty" xml:"LocationNameEn,omitempty"`
-	OwnerId        *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The method that is used to sort the client IP addresses. Valid values:
 	//
 	// *   **traf**: by network traffic. This is the default value.
@@ -14665,11 +14449,6 @@ func (s *DescribeDomainTopClientIpVisitRequest) SetLimit(v string) *DescribeDoma
 
 func (s *DescribeDomainTopClientIpVisitRequest) SetLocationNameEn(v string) *DescribeDomainTopClientIpVisitRequest {
 	s.LocationNameEn = &v
-	return s
-}
-
-func (s *DescribeDomainTopClientIpVisitRequest) SetOwnerId(v int64) *DescribeDomainTopClientIpVisitRequest {
-	s.OwnerId = &v
 	return s
 }
 
@@ -14783,7 +14562,6 @@ type DescribeDomainTopReferVisitRequest struct {
 	//
 	// The end time must be later than the start time.
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The sorting method. Valid values:
 	//
 	// *   **traf**: by network traffic.
@@ -14808,11 +14586,6 @@ func (s *DescribeDomainTopReferVisitRequest) SetDomainName(v string) *DescribeDo
 
 func (s *DescribeDomainTopReferVisitRequest) SetEndTime(v string) *DescribeDomainTopReferVisitRequest {
 	s.EndTime = &v
-	return s
-}
-
-func (s *DescribeDomainTopReferVisitRequest) SetOwnerId(v int64) *DescribeDomainTopReferVisitRequest {
-	s.OwnerId = &v
 	return s
 }
 
@@ -16627,7 +16400,6 @@ type DescribeEsExceptionDataRequest struct {
 	//
 	// >  The end time must be later than the start time.
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The ID of the script that you want to query. You can call the [DescribeCdnDomainConfigs](~~90924~~) operation to query script IDs.
 	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
 	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC+0.
@@ -16644,11 +16416,6 @@ func (s DescribeEsExceptionDataRequest) GoString() string {
 
 func (s *DescribeEsExceptionDataRequest) SetEndTime(v string) *DescribeEsExceptionDataRequest {
 	s.EndTime = &v
-	return s
-}
-
-func (s *DescribeEsExceptionDataRequest) SetOwnerId(v int64) *DescribeEsExceptionDataRequest {
-	s.OwnerId = &v
 	return s
 }
 
@@ -16693,7 +16460,7 @@ type DescribeEsExceptionDataResponseBodyContents struct {
 	// The name of the chart that shows the errors of the script.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The value of each time and the column of each data entry.
-	Points []*string `json:"Points,omitempty" xml:"Points,omitempty" type:"Repeated"`
+	Points []*DescribeEsExceptionDataResponseBodyContentsPoints `json:"Points,omitempty" xml:"Points,omitempty" type:"Repeated"`
 }
 
 func (s DescribeEsExceptionDataResponseBodyContents) String() string {
@@ -16714,7 +16481,24 @@ func (s *DescribeEsExceptionDataResponseBodyContents) SetName(v string) *Describ
 	return s
 }
 
-func (s *DescribeEsExceptionDataResponseBodyContents) SetPoints(v []*string) *DescribeEsExceptionDataResponseBodyContents {
+func (s *DescribeEsExceptionDataResponseBodyContents) SetPoints(v []*DescribeEsExceptionDataResponseBodyContentsPoints) *DescribeEsExceptionDataResponseBodyContents {
+	s.Points = v
+	return s
+}
+
+type DescribeEsExceptionDataResponseBodyContentsPoints struct {
+	Points []*string `json:"Points,omitempty" xml:"Points,omitempty" type:"Repeated"`
+}
+
+func (s DescribeEsExceptionDataResponseBodyContentsPoints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeEsExceptionDataResponseBodyContentsPoints) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeEsExceptionDataResponseBodyContentsPoints) SetPoints(v []*string) *DescribeEsExceptionDataResponseBodyContentsPoints {
 	s.Points = v
 	return s
 }
@@ -16753,7 +16537,6 @@ type DescribeEsExecuteDataRequest struct {
 	//
 	// >  The end time must be later than the start time.
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The ID of the script that you want to query. You can call the [DescribeCdnDomainConfigs](~~90924~~) operation to query script IDs.
 	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
 	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC+0.
@@ -16770,11 +16553,6 @@ func (s DescribeEsExecuteDataRequest) GoString() string {
 
 func (s *DescribeEsExecuteDataRequest) SetEndTime(v string) *DescribeEsExecuteDataRequest {
 	s.EndTime = &v
-	return s
-}
-
-func (s *DescribeEsExecuteDataRequest) SetOwnerId(v int64) *DescribeEsExecuteDataRequest {
-	s.OwnerId = &v
 	return s
 }
 
@@ -16875,7 +16653,6 @@ func (s *DescribeEsExecuteDataResponse) SetBody(v *DescribeEsExecuteDataResponse
 }
 
 type DescribeFCTriggerRequest struct {
-	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The trigger that corresponds to the Function Compute service.
 	TriggerARN *string `json:"TriggerARN,omitempty" xml:"TriggerARN,omitempty"`
 }
@@ -16886,11 +16663,6 @@ func (s DescribeFCTriggerRequest) String() string {
 
 func (s DescribeFCTriggerRequest) GoString() string {
 	return s.String()
-}
-
-func (s *DescribeFCTriggerRequest) SetOwnerId(v int64) *DescribeFCTriggerRequest {
-	s.OwnerId = &v
-	return s
 }
 
 func (s *DescribeFCTriggerRequest) SetTriggerARN(v string) *DescribeFCTriggerRequest {
@@ -17006,7 +16778,6 @@ func (s *DescribeFCTriggerResponse) SetBody(v *DescribeFCTriggerResponseBody) *D
 }
 
 type DescribeIllegalUrlExportTaskRequest struct {
-	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The ID of the task. You can call the [CreateIllegalUrlExportTask](~~156492~~) operation to query task IDs.
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
@@ -17017,11 +16788,6 @@ func (s DescribeIllegalUrlExportTaskRequest) String() string {
 
 func (s DescribeIllegalUrlExportTaskRequest) GoString() string {
 	return s.String()
-}
-
-func (s *DescribeIllegalUrlExportTaskRequest) SetOwnerId(v int64) *DescribeIllegalUrlExportTaskRequest {
-	s.OwnerId = &v
-	return s
 }
 
 func (s *DescribeIllegalUrlExportTaskRequest) SetTaskId(v string) *DescribeIllegalUrlExportTaskRequest {
@@ -17195,8 +16961,7 @@ func (s *DescribeIpInfoResponse) SetBody(v *DescribeIpInfoResponseBody) *Describ
 
 type DescribeIpStatusRequest struct {
 	// The IP addresses that you want to query. Separate IP addresses with underscores (\_), such as Ips=ip1\_ip2.
-	Ips     *string `json:"Ips,omitempty" xml:"Ips,omitempty"`
-	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	Ips *string `json:"Ips,omitempty" xml:"Ips,omitempty"`
 }
 
 func (s DescribeIpStatusRequest) String() string {
@@ -17209,11 +16974,6 @@ func (s DescribeIpStatusRequest) GoString() string {
 
 func (s *DescribeIpStatusRequest) SetIps(v string) *DescribeIpStatusRequest {
 	s.Ips = &v
-	return s
-}
-
-func (s *DescribeIpStatusRequest) SetOwnerId(v int64) *DescribeIpStatusRequest {
-	s.OwnerId = &v
 	return s
 }
 
@@ -17408,6 +17168,169 @@ func (s *DescribeL2VipsByDomainResponse) SetBody(v *DescribeL2VipsByDomainRespon
 	return s
 }
 
+type DescribePreloadDetailByIdRequest struct {
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+}
+
+func (s DescribePreloadDetailByIdRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePreloadDetailByIdRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePreloadDetailByIdRequest) SetTaskId(v string) *DescribePreloadDetailByIdRequest {
+	s.TaskId = &v
+	return s
+}
+
+type DescribePreloadDetailByIdResponseBody struct {
+	RequestId  *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *int64                                             `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	UrlDetails []*DescribePreloadDetailByIdResponseBodyUrlDetails `json:"UrlDetails,omitempty" xml:"UrlDetails,omitempty" type:"Repeated"`
+}
+
+func (s DescribePreloadDetailByIdResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePreloadDetailByIdResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePreloadDetailByIdResponseBody) SetRequestId(v string) *DescribePreloadDetailByIdResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribePreloadDetailByIdResponseBody) SetTotalCount(v int64) *DescribePreloadDetailByIdResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *DescribePreloadDetailByIdResponseBody) SetUrlDetails(v []*DescribePreloadDetailByIdResponseBodyUrlDetails) *DescribePreloadDetailByIdResponseBody {
+	s.UrlDetails = v
+	return s
+}
+
+type DescribePreloadDetailByIdResponseBodyUrlDetails struct {
+	CreationTime *string                                                `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	Domain       *string                                                `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	EndTime      *string                                                `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	Process      *string                                                `json:"Process,omitempty" xml:"Process,omitempty"`
+	RetCode      *string                                                `json:"RetCode,omitempty" xml:"RetCode,omitempty"`
+	Status       *string                                                `json:"Status,omitempty" xml:"Status,omitempty"`
+	TaskId       *string                                                `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	Urls         []*DescribePreloadDetailByIdResponseBodyUrlDetailsUrls `json:"Urls,omitempty" xml:"Urls,omitempty" type:"Repeated"`
+}
+
+func (s DescribePreloadDetailByIdResponseBodyUrlDetails) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePreloadDetailByIdResponseBodyUrlDetails) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePreloadDetailByIdResponseBodyUrlDetails) SetCreationTime(v string) *DescribePreloadDetailByIdResponseBodyUrlDetails {
+	s.CreationTime = &v
+	return s
+}
+
+func (s *DescribePreloadDetailByIdResponseBodyUrlDetails) SetDomain(v string) *DescribePreloadDetailByIdResponseBodyUrlDetails {
+	s.Domain = &v
+	return s
+}
+
+func (s *DescribePreloadDetailByIdResponseBodyUrlDetails) SetEndTime(v string) *DescribePreloadDetailByIdResponseBodyUrlDetails {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribePreloadDetailByIdResponseBodyUrlDetails) SetProcess(v string) *DescribePreloadDetailByIdResponseBodyUrlDetails {
+	s.Process = &v
+	return s
+}
+
+func (s *DescribePreloadDetailByIdResponseBodyUrlDetails) SetRetCode(v string) *DescribePreloadDetailByIdResponseBodyUrlDetails {
+	s.RetCode = &v
+	return s
+}
+
+func (s *DescribePreloadDetailByIdResponseBodyUrlDetails) SetStatus(v string) *DescribePreloadDetailByIdResponseBodyUrlDetails {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribePreloadDetailByIdResponseBodyUrlDetails) SetTaskId(v string) *DescribePreloadDetailByIdResponseBodyUrlDetails {
+	s.TaskId = &v
+	return s
+}
+
+func (s *DescribePreloadDetailByIdResponseBodyUrlDetails) SetUrls(v []*DescribePreloadDetailByIdResponseBodyUrlDetailsUrls) *DescribePreloadDetailByIdResponseBodyUrlDetails {
+	s.Urls = v
+	return s
+}
+
+type DescribePreloadDetailByIdResponseBodyUrlDetailsUrls struct {
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Success     *string `json:"Success,omitempty" xml:"Success,omitempty"`
+	Url         *string `json:"Url,omitempty" xml:"Url,omitempty"`
+}
+
+func (s DescribePreloadDetailByIdResponseBodyUrlDetailsUrls) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePreloadDetailByIdResponseBodyUrlDetailsUrls) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePreloadDetailByIdResponseBodyUrlDetailsUrls) SetDescription(v string) *DescribePreloadDetailByIdResponseBodyUrlDetailsUrls {
+	s.Description = &v
+	return s
+}
+
+func (s *DescribePreloadDetailByIdResponseBodyUrlDetailsUrls) SetSuccess(v string) *DescribePreloadDetailByIdResponseBodyUrlDetailsUrls {
+	s.Success = &v
+	return s
+}
+
+func (s *DescribePreloadDetailByIdResponseBodyUrlDetailsUrls) SetUrl(v string) *DescribePreloadDetailByIdResponseBodyUrlDetailsUrls {
+	s.Url = &v
+	return s
+}
+
+type DescribePreloadDetailByIdResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribePreloadDetailByIdResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribePreloadDetailByIdResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePreloadDetailByIdResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePreloadDetailByIdResponse) SetHeaders(v map[string]*string) *DescribePreloadDetailByIdResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribePreloadDetailByIdResponse) SetStatusCode(v int32) *DescribePreloadDetailByIdResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribePreloadDetailByIdResponse) SetBody(v *DescribePreloadDetailByIdResponseBody) *DescribePreloadDetailByIdResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeRangeDataByLocateAndIspServiceRequest struct {
 	// The accelerated domain name.
 	DomainNames *string `json:"DomainNames,omitempty" xml:"DomainNames,omitempty"`
@@ -17539,7 +17462,6 @@ type DescribeRealtimeDeliveryAccRequest struct {
 	Interval *string `json:"Interval,omitempty" xml:"Interval,omitempty"`
 	// The name of the Logstore that collects log data from Alibaba Cloud Content Delivery Network (CDN) in real time. By default, all Logstores are queried.
 	LogStore *string `json:"LogStore,omitempty" xml:"LogStore,omitempty"`
-	OwnerId  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The name of the Log Service project that is used for real-time log delivery. By default, all projects are queried.
 	Project *string `json:"Project,omitempty" xml:"Project,omitempty"`
 	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC+0.
@@ -17566,11 +17488,6 @@ func (s *DescribeRealtimeDeliveryAccRequest) SetInterval(v string) *DescribeReal
 
 func (s *DescribeRealtimeDeliveryAccRequest) SetLogStore(v string) *DescribeRealtimeDeliveryAccRequest {
 	s.LogStore = &v
-	return s
-}
-
-func (s *DescribeRealtimeDeliveryAccRequest) SetOwnerId(v int64) *DescribeRealtimeDeliveryAccRequest {
-	s.OwnerId = &v
 	return s
 }
 
@@ -18276,23 +18193,6 @@ func (s *DescribeRefreshTasksResponse) SetBody(v *DescribeRefreshTasksResponseBo
 	return s
 }
 
-type DescribeStagingIpRequest struct {
-	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-}
-
-func (s DescribeStagingIpRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeStagingIpRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeStagingIpRequest) SetOwnerId(v int64) *DescribeStagingIpRequest {
-	s.OwnerId = &v
-	return s
-}
-
 type DescribeStagingIpResponseBody struct {
 	// The IPv4 addresses of the nodes.
 	IPV4s *DescribeStagingIpResponseBodyIPV4s `json:"IPV4s,omitempty" xml:"IPV4s,omitempty" type:"Struct"`
@@ -18537,8 +18437,7 @@ type DescribeTopDomainsByFlowRequest struct {
 	// >  The end time must be later than the start time.
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The maximum number of domain names to query. Valid values: **1** to **100**. Default value: **20**.
-	Limit   *int64 `json:"Limit,omitempty" xml:"Limit,omitempty"`
-	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	Limit *int64 `json:"Limit,omitempty" xml:"Limit,omitempty"`
 	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
 	//
 	// >  Set StartTime to UTC time in the yyyy-MM-ddTHH:mm:ssZ format. For example, if the local time is 00:00, June 1, 2021, set StartTime to 2021-05-31T16:00:00Z.
@@ -18560,11 +18459,6 @@ func (s *DescribeTopDomainsByFlowRequest) SetEndTime(v string) *DescribeTopDomai
 
 func (s *DescribeTopDomainsByFlowRequest) SetLimit(v int64) *DescribeTopDomainsByFlowRequest {
 	s.Limit = &v
-	return s
-}
-
-func (s *DescribeTopDomainsByFlowRequest) SetOwnerId(v int64) *DescribeTopDomainsByFlowRequest {
-	s.OwnerId = &v
 	return s
 }
 
@@ -18729,23 +18623,6 @@ func (s *DescribeTopDomainsByFlowResponse) SetStatusCode(v int32) *DescribeTopDo
 
 func (s *DescribeTopDomainsByFlowResponse) SetBody(v *DescribeTopDomainsByFlowResponseBody) *DescribeTopDomainsByFlowResponse {
 	s.Body = v
-	return s
-}
-
-type DescribeUserCertificateExpireCountRequest struct {
-	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-}
-
-func (s DescribeUserCertificateExpireCountRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeUserCertificateExpireCountRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeUserCertificateExpireCountRequest) SetOwnerId(v int64) *DescribeUserCertificateExpireCountRequest {
-	s.OwnerId = &v
 	return s
 }
 
@@ -19414,23 +19291,6 @@ func (s *DescribeUserDomainsResponse) SetBody(v *DescribeUserDomainsResponseBody
 	return s
 }
 
-type DescribeUserTagsRequest struct {
-	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-}
-
-func (s DescribeUserTagsRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeUserTagsRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeUserTagsRequest) SetOwnerId(v int64) *DescribeUserTagsRequest {
-	s.OwnerId = &v
-	return s
-}
-
 type DescribeUserTagsResponseBody struct {
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -19511,7 +19371,6 @@ func (s *DescribeUserTagsResponse) SetBody(v *DescribeUserTagsResponseBody) *Des
 }
 
 type DescribeUserUsageDataExportTaskRequest struct {
-	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The number of the page to return. Valid values: **1** to **100000**.
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries to return on each page. Default value: **20**. Maximum value: **50**.
@@ -19526,11 +19385,6 @@ func (s DescribeUserUsageDataExportTaskRequest) String() string {
 
 func (s DescribeUserUsageDataExportTaskRequest) GoString() string {
 	return s.String()
-}
-
-func (s *DescribeUserUsageDataExportTaskRequest) SetOwnerId(v int64) *DescribeUserUsageDataExportTaskRequest {
-	s.OwnerId = &v
-	return s
 }
 
 func (s *DescribeUserUsageDataExportTaskRequest) SetPageNumber(v string) *DescribeUserUsageDataExportTaskRequest {
@@ -19743,7 +19597,6 @@ func (s *DescribeUserUsageDataExportTaskResponse) SetBody(v *DescribeUserUsageDa
 }
 
 type DescribeUserUsageDetailDataExportTaskRequest struct {
-	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The number of the page to return. Valid values: **1** to **100000**.
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries to return on each page. Default value: **20**. Maximum value: **50**.
@@ -19758,11 +19611,6 @@ func (s DescribeUserUsageDetailDataExportTaskRequest) String() string {
 
 func (s DescribeUserUsageDetailDataExportTaskRequest) GoString() string {
 	return s.String()
-}
-
-func (s *DescribeUserUsageDetailDataExportTaskRequest) SetOwnerId(v int64) *DescribeUserUsageDetailDataExportTaskRequest {
-	s.OwnerId = &v
-	return s
 }
 
 func (s *DescribeUserUsageDetailDataExportTaskRequest) SetPageNumber(v string) *DescribeUserUsageDetailDataExportTaskRequest {
@@ -20085,7 +19933,6 @@ func (s *DescribeUserVipsByDomainResponse) SetBody(v *DescribeUserVipsByDomainRe
 type DescribeVerifyContentRequest struct {
 	// The domain name of which the ownership was verified. You can specify only one domain name.
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 }
 
 func (s DescribeVerifyContentRequest) String() string {
@@ -20098,11 +19945,6 @@ func (s DescribeVerifyContentRequest) GoString() string {
 
 func (s *DescribeVerifyContentRequest) SetDomainName(v string) *DescribeVerifyContentRequest {
 	s.DomainName = &v
-	return s
-}
-
-func (s *DescribeVerifyContentRequest) SetOwnerId(v int64) *DescribeVerifyContentRequest {
-	s.OwnerId = &v
 	return s
 }
 
@@ -20162,8 +20004,7 @@ func (s *DescribeVerifyContentResponse) SetBody(v *DescribeVerifyContentResponse
 
 type DisableRealtimeLogDeliveryRequest struct {
 	// The accelerated domain name for which you want to disable real-time log delivery. You can specify multiple domain names and separate them with commas (,).
-	Domain  *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 }
 
 func (s DisableRealtimeLogDeliveryRequest) String() string {
@@ -20176,11 +20017,6 @@ func (s DisableRealtimeLogDeliveryRequest) GoString() string {
 
 func (s *DisableRealtimeLogDeliveryRequest) SetDomain(v string) *DisableRealtimeLogDeliveryRequest {
 	s.Domain = &v
-	return s
-}
-
-func (s *DisableRealtimeLogDeliveryRequest) SetOwnerId(v int64) *DisableRealtimeLogDeliveryRequest {
-	s.OwnerId = &v
 	return s
 }
 
@@ -20233,8 +20069,7 @@ func (s *DisableRealtimeLogDeliveryResponse) SetBody(v *DisableRealtimeLogDelive
 
 type EnableRealtimeLogDeliveryRequest struct {
 	// The accelerated domain name for which you want to enable real-time log delivery. You can specify multiple domain names and separate them with commas (,).
-	Domain  *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 }
 
 func (s EnableRealtimeLogDeliveryRequest) String() string {
@@ -20247,11 +20082,6 @@ func (s EnableRealtimeLogDeliveryRequest) GoString() string {
 
 func (s *EnableRealtimeLogDeliveryRequest) SetDomain(v string) *EnableRealtimeLogDeliveryRequest {
 	s.Domain = &v
-	return s
-}
-
-func (s *EnableRealtimeLogDeliveryRequest) SetOwnerId(v int64) *EnableRealtimeLogDeliveryRequest {
-	s.OwnerId = &v
 	return s
 }
 
@@ -20305,7 +20135,6 @@ func (s *EnableRealtimeLogDeliveryResponse) SetBody(v *EnableRealtimeLogDelivery
 type ListDomainsByLogConfigIdRequest struct {
 	// The ID of the custom configuration.
 	ConfigId *string `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
-	OwnerId  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 }
 
 func (s ListDomainsByLogConfigIdRequest) String() string {
@@ -20318,11 +20147,6 @@ func (s ListDomainsByLogConfigIdRequest) GoString() string {
 
 func (s *ListDomainsByLogConfigIdRequest) SetConfigId(v string) *ListDomainsByLogConfigIdRequest {
 	s.ConfigId = &v
-	return s
-}
-
-func (s *ListDomainsByLogConfigIdRequest) SetOwnerId(v int64) *ListDomainsByLogConfigIdRequest {
-	s.OwnerId = &v
 	return s
 }
 
@@ -20402,7 +20226,6 @@ type ListFCTriggerRequest struct {
 	EventMetaName *string `json:"EventMetaName,omitempty" xml:"EventMetaName,omitempty"`
 	// The version number of the event. You can specify only one version number.
 	EventMetaVersion *string `json:"EventMetaVersion,omitempty" xml:"EventMetaVersion,omitempty"`
-	OwnerId          *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 }
 
 func (s ListFCTriggerRequest) String() string {
@@ -20420,11 +20243,6 @@ func (s *ListFCTriggerRequest) SetEventMetaName(v string) *ListFCTriggerRequest 
 
 func (s *ListFCTriggerRequest) SetEventMetaVersion(v string) *ListFCTriggerRequest {
 	s.EventMetaVersion = &v
-	return s
-}
-
-func (s *ListFCTriggerRequest) SetOwnerId(v int64) *ListFCTriggerRequest {
-	s.OwnerId = &v
 	return s
 }
 
@@ -20538,7 +20356,6 @@ func (s *ListFCTriggerResponse) SetBody(v *ListFCTriggerResponseBody) *ListFCTri
 type ListRealtimeLogDeliveryDomainsRequest struct {
 	// The name of the Logstore that collects log data from Alibaba Cloud Content Delivery Network (CDN) in real time. You can specify multiple Logstore names and separate them with commas (,).
 	Logstore *string `json:"Logstore,omitempty" xml:"Logstore,omitempty"`
-	OwnerId  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The name of the Log Service project that is used for real-time log delivery. You can specify multiple project names and separate them with commas (,).
 	Project *string `json:"Project,omitempty" xml:"Project,omitempty"`
 	// The ID of the region where the Log Service project is deployed. You can specify multiple region IDs and separate them with commas (,).
@@ -20557,11 +20374,6 @@ func (s ListRealtimeLogDeliveryDomainsRequest) GoString() string {
 
 func (s *ListRealtimeLogDeliveryDomainsRequest) SetLogstore(v string) *ListRealtimeLogDeliveryDomainsRequest {
 	s.Logstore = &v
-	return s
-}
-
-func (s *ListRealtimeLogDeliveryDomainsRequest) SetOwnerId(v int64) *ListRealtimeLogDeliveryDomainsRequest {
-	s.OwnerId = &v
 	return s
 }
 
@@ -20674,23 +20486,6 @@ func (s *ListRealtimeLogDeliveryDomainsResponse) SetBody(v *ListRealtimeLogDeliv
 	return s
 }
 
-type ListRealtimeLogDeliveryInfosRequest struct {
-	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-}
-
-func (s ListRealtimeLogDeliveryInfosRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListRealtimeLogDeliveryInfosRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListRealtimeLogDeliveryInfosRequest) SetOwnerId(v int64) *ListRealtimeLogDeliveryInfosRequest {
-	s.OwnerId = &v
-	return s
-}
-
 type ListRealtimeLogDeliveryInfosResponseBody struct {
 	// The content of the log entry.
 	Content *ListRealtimeLogDeliveryInfosResponseBodyContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Struct"`
@@ -20791,23 +20586,6 @@ func (s *ListRealtimeLogDeliveryInfosResponse) SetStatusCode(v int32) *ListRealt
 
 func (s *ListRealtimeLogDeliveryInfosResponse) SetBody(v *ListRealtimeLogDeliveryInfosResponseBody) *ListRealtimeLogDeliveryInfosResponse {
 	s.Body = v
-	return s
-}
-
-type ListUserCustomLogConfigRequest struct {
-	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-}
-
-func (s ListUserCustomLogConfigRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListUserCustomLogConfigRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListUserCustomLogConfigRequest) SetOwnerId(v int64) *ListUserCustomLogConfigRequest {
-	s.OwnerId = &v
 	return s
 }
 
@@ -20987,7 +20765,6 @@ func (s *ModifyCdnDomainResponse) SetBody(v *ModifyCdnDomainResponseBody) *Modif
 type ModifyCdnDomainSchdmByPropertyRequest struct {
 	// The accelerated domain name for which you want to change the accelerated region. You can specify only one domain name.
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The accelerated region. Valid values for coverage:
 	//
 	// *   **domestic**: Chinese mainland
@@ -21006,11 +20783,6 @@ func (s ModifyCdnDomainSchdmByPropertyRequest) GoString() string {
 
 func (s *ModifyCdnDomainSchdmByPropertyRequest) SetDomainName(v string) *ModifyCdnDomainSchdmByPropertyRequest {
 	s.DomainName = &v
-	return s
-}
-
-func (s *ModifyCdnDomainSchdmByPropertyRequest) SetOwnerId(v int64) *ModifyCdnDomainSchdmByPropertyRequest {
-	s.OwnerId = &v
 	return s
 }
 
@@ -21071,7 +20843,6 @@ type ModifyRealtimeLogDeliveryRequest struct {
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	// The name of the Logstore.
 	Logstore *string `json:"Logstore,omitempty" xml:"Logstore,omitempty"`
-	OwnerId  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The name of the Log Service project that is used for real-time log delivery.
 	Project *string `json:"Project,omitempty" xml:"Project,omitempty"`
 	// The ID of the region where the Log Service project is deployed. For more information, see [Regions that support real-time log delivery](~~144883~~).
@@ -21093,11 +20864,6 @@ func (s *ModifyRealtimeLogDeliveryRequest) SetDomain(v string) *ModifyRealtimeLo
 
 func (s *ModifyRealtimeLogDeliveryRequest) SetLogstore(v string) *ModifyRealtimeLogDeliveryRequest {
 	s.Logstore = &v
-	return s
-}
-
-func (s *ModifyRealtimeLogDeliveryRequest) SetOwnerId(v int64) *ModifyRealtimeLogDeliveryRequest {
-	s.OwnerId = &v
 	return s
 }
 
@@ -21238,7 +21004,6 @@ func (s *OpenCdnServiceResponse) SetBody(v *OpenCdnServiceResponseBody) *OpenCdn
 type PublishStagingConfigToProductionRequest struct {
 	// The accelerated domain name. You can specify only one domain name.
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 }
 
 func (s PublishStagingConfigToProductionRequest) String() string {
@@ -21251,11 +21016,6 @@ func (s PublishStagingConfigToProductionRequest) GoString() string {
 
 func (s *PublishStagingConfigToProductionRequest) SetDomainName(v string) *PublishStagingConfigToProductionRequest {
 	s.DomainName = &v
-	return s
-}
-
-func (s *PublishStagingConfigToProductionRequest) SetOwnerId(v int64) *PublishStagingConfigToProductionRequest {
-	s.OwnerId = &v
 	return s
 }
 
@@ -21329,6 +21089,7 @@ type PushObjectCacheRequest struct {
 	ObjectPath    *string `json:"ObjectPath,omitempty" xml:"ObjectPath,omitempty"`
 	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	WithHeader    *string `json:"WithHeader,omitempty" xml:"WithHeader,omitempty"`
 }
 
 func (s PushObjectCacheRequest) String() string {
@@ -21361,6 +21122,11 @@ func (s *PushObjectCacheRequest) SetOwnerId(v int64) *PushObjectCacheRequest {
 
 func (s *PushObjectCacheRequest) SetSecurityToken(v string) *PushObjectCacheRequest {
 	s.SecurityToken = &v
+	return s
+}
+
+func (s *PushObjectCacheRequest) SetWithHeader(v string) *PushObjectCacheRequest {
+	s.WithHeader = &v
 	return s
 }
 
@@ -21528,7 +21294,6 @@ func (s *RefreshObjectCachesResponse) SetBody(v *RefreshObjectCachesResponseBody
 type RollbackStagingConfigRequest struct {
 	// The accelerated domain name. You can specify only one domain name in each call.
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 }
 
 func (s RollbackStagingConfigRequest) String() string {
@@ -21541,11 +21306,6 @@ func (s RollbackStagingConfigRequest) GoString() string {
 
 func (s *RollbackStagingConfigRequest) SetDomainName(v string) *RollbackStagingConfigRequest {
 	s.DomainName = &v
-	return s
-}
-
-func (s *RollbackStagingConfigRequest) SetOwnerId(v int64) *RollbackStagingConfigRequest {
-	s.OwnerId = &v
 	return s
 }
 
@@ -21599,7 +21359,6 @@ func (s *RollbackStagingConfigResponse) SetBody(v *RollbackStagingConfigResponse
 type SetCdnDomainCSRCertificateRequest struct {
 	// The accelerated domain name for which you want to configure an SSL certificate. The domain name must have HTTPS secure acceleration enabled.
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The content of the certificate. The certificate must match the certificate signing request (CSR) created by calling the [CreateCdnCertificateSigningRequest](~~144478~~) operation. Make sure that the certificate is in the PEM format, and the content of the certificate is encoded in Base64 and then encoded by encodeURIComponent.
 	ServerCertificate *string `json:"ServerCertificate,omitempty" xml:"ServerCertificate,omitempty"`
 }
@@ -21614,11 +21373,6 @@ func (s SetCdnDomainCSRCertificateRequest) GoString() string {
 
 func (s *SetCdnDomainCSRCertificateRequest) SetDomainName(v string) *SetCdnDomainCSRCertificateRequest {
 	s.DomainName = &v
-	return s
-}
-
-func (s *SetCdnDomainCSRCertificateRequest) SetOwnerId(v int64) *SetCdnDomainCSRCertificateRequest {
-	s.OwnerId = &v
 	return s
 }
 
@@ -21797,7 +21551,6 @@ type SetCdnDomainStagingConfigRequest struct {
 	//         ]
 	//  ```
 	Functions *string `json:"Functions,omitempty" xml:"Functions,omitempty"`
-	OwnerId   *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 }
 
 func (s SetCdnDomainStagingConfigRequest) String() string {
@@ -21815,11 +21568,6 @@ func (s *SetCdnDomainStagingConfigRequest) SetDomainName(v string) *SetCdnDomain
 
 func (s *SetCdnDomainStagingConfigRequest) SetFunctions(v string) *SetCdnDomainStagingConfigRequest {
 	s.Functions = &v
-	return s
-}
-
-func (s *SetCdnDomainStagingConfigRequest) SetOwnerId(v int64) *SetCdnDomainStagingConfigRequest {
-	s.OwnerId = &v
 	return s
 }
 
@@ -22146,7 +21894,6 @@ type SetWaitingRoomConfigRequest struct {
 	GapTime *int32 `json:"GapTime,omitempty" xml:"GapTime,omitempty"`
 	// The maximum length of time that users need to wait in the queue. Unit: seconds.
 	MaxTimeWait *int32 `json:"MaxTimeWait,omitempty" xml:"MaxTimeWait,omitempty"`
-	OwnerId     *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The regular expression that is used to match URI strings for which the virtual waiting room feature is enabled.
 	WaitUri *string `json:"WaitUri,omitempty" xml:"WaitUri,omitempty"`
 	// The URL of the waiting page.
@@ -22178,11 +21925,6 @@ func (s *SetWaitingRoomConfigRequest) SetGapTime(v int32) *SetWaitingRoomConfigR
 
 func (s *SetWaitingRoomConfigRequest) SetMaxTimeWait(v int32) *SetWaitingRoomConfigRequest {
 	s.MaxTimeWait = &v
-	return s
-}
-
-func (s *SetWaitingRoomConfigRequest) SetOwnerId(v int64) *SetWaitingRoomConfigRequest {
-	s.OwnerId = &v
 	return s
 }
 
@@ -22398,7 +22140,6 @@ func (s *StopCdnDomainResponse) SetBody(v *StopCdnDomainResponseBody) *StopCdnDo
 }
 
 type TagResourcesRequest struct {
-	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The list of resource ID.
 	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
 	// The type of resource. The resource type. Set the value to **DOMAIN**.
@@ -22413,11 +22154,6 @@ func (s TagResourcesRequest) String() string {
 
 func (s TagResourcesRequest) GoString() string {
 	return s.String()
-}
-
-func (s *TagResourcesRequest) SetOwnerId(v int64) *TagResourcesRequest {
-	s.OwnerId = &v
-	return s
 }
 
 func (s *TagResourcesRequest) SetResourceId(v []*string) *TagResourcesRequest {
@@ -22514,8 +22250,7 @@ type UntagResourcesRequest struct {
 	// *   **false**: no.
 	//
 	// Default value: **false**.
-	All     *bool  `json:"All,omitempty" xml:"All,omitempty"`
-	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	All *bool `json:"All,omitempty" xml:"All,omitempty"`
 	// The list of resource ID. The max items count is up to 20.
 	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
 	// The type of resource. The resource type. Set the value to **DOMAIN**.
@@ -22534,11 +22269,6 @@ func (s UntagResourcesRequest) GoString() string {
 
 func (s *UntagResourcesRequest) SetAll(v bool) *UntagResourcesRequest {
 	s.All = &v
-	return s
-}
-
-func (s *UntagResourcesRequest) SetOwnerId(v int64) *UntagResourcesRequest {
-	s.OwnerId = &v
 	return s
 }
 
@@ -22614,8 +22344,7 @@ type UpdateCdnDeliverTaskRequest struct {
 	// If you do not specify a domain name, the task collects data from all domain names that belong to your Alibaba Cloud account.
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	// The name of the tracking task.
-	Name    *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The operations reports that are tracked by the task. The data must be escaped in JSON.
 	Reports *string `json:"Reports,omitempty" xml:"Reports,omitempty"`
 	// The parameters that specify the time interval at which the tracking task sends operations reports. The settings must be escaped in JSON.
@@ -22647,11 +22376,6 @@ func (s *UpdateCdnDeliverTaskRequest) SetDomainName(v string) *UpdateCdnDeliverT
 
 func (s *UpdateCdnDeliverTaskRequest) SetName(v string) *UpdateCdnDeliverTaskRequest {
 	s.Name = &v
-	return s
-}
-
-func (s *UpdateCdnDeliverTaskRequest) SetOwnerId(v int64) *UpdateCdnDeliverTaskRequest {
-	s.OwnerId = &v
 	return s
 }
 
@@ -22719,7 +22443,6 @@ type UpdateCdnSubTaskRequest struct {
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	// The end time of the operations report. Specify the time in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC+0.
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The IDs of operations reports that you want to update. Separate IDs with commas (,).
 	ReportIds *string `json:"ReportIds,omitempty" xml:"ReportIds,omitempty"`
 	// The start time of the operations report. Specify the time in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC+0.
@@ -22741,11 +22464,6 @@ func (s *UpdateCdnSubTaskRequest) SetDomainName(v string) *UpdateCdnSubTaskReque
 
 func (s *UpdateCdnSubTaskRequest) SetEndTime(v string) *UpdateCdnSubTaskRequest {
 	s.EndTime = &v
-	return s
-}
-
-func (s *UpdateCdnSubTaskRequest) SetOwnerId(v int64) *UpdateCdnSubTaskRequest {
-	s.OwnerId = &v
 	return s
 }
 
@@ -22810,8 +22528,7 @@ type UpdateFCTriggerRequest struct {
 	// The feature trigger.
 	FunctionARN *string `json:"FunctionARN,omitempty" xml:"FunctionARN,omitempty"`
 	// The remarks.
-	Notes   *string `json:"Notes,omitempty" xml:"Notes,omitempty"`
-	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	Notes *string `json:"Notes,omitempty" xml:"Notes,omitempty"`
 	// The assigned Resource Access Management (RAM) role.
 	RoleARN *string `json:"RoleARN,omitempty" xml:"RoleARN,omitempty"`
 	// The resources and filters for event listening.
@@ -22835,11 +22552,6 @@ func (s *UpdateFCTriggerRequest) SetFunctionARN(v string) *UpdateFCTriggerReques
 
 func (s *UpdateFCTriggerRequest) SetNotes(v string) *UpdateFCTriggerRequest {
 	s.Notes = &v
-	return s
-}
-
-func (s *UpdateFCTriggerRequest) SetOwnerId(v int64) *UpdateFCTriggerRequest {
-	s.OwnerId = &v
 	return s
 }
 
@@ -23166,10 +22878,6 @@ func (client *Client) AddFCTriggerWithOptions(request *AddFCTriggerRequest, runt
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.TriggerARN)) {
 		query["TriggerARN"] = request.TriggerARN
 	}
@@ -23838,10 +23546,6 @@ func (client *Client) CreateCdnCertificateSigningRequestWithOptions(request *Cre
 		query["OrganizationUnit"] = request.OrganizationUnit
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.SANs)) {
 		query["SANs"] = request.SANs
 	}
@@ -23902,11 +23606,6 @@ func (client *Client) CreateCdnDeliverTaskWithOptions(request *CreateCdnDeliverT
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
-	}
-
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Deliver)) {
 		body["Deliver"] = request.Deliver
@@ -23929,8 +23628,7 @@ func (client *Client) CreateCdnDeliverTaskWithOptions(request *CreateCdnDeliverT
 	}
 
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  openapiutil.ParseToMap(body),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateCdnDeliverTask"),
@@ -23982,11 +23680,6 @@ func (client *Client) CreateCdnSubTaskWithOptions(request *CreateCdnSubTaskReque
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
-	}
-
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
 		body["DomainName"] = request.DomainName
@@ -23997,8 +23690,7 @@ func (client *Client) CreateCdnSubTaskWithOptions(request *CreateCdnSubTaskReque
 	}
 
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  openapiutil.ParseToMap(body),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateCdnSubTask"),
@@ -24053,10 +23745,6 @@ func (client *Client) CreateIllegalUrlExportTaskWithOptions(request *CreateIlleg
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.TaskName)) {
 		query["TaskName"] = request.TaskName
 	}
@@ -24190,10 +23878,6 @@ func (client *Client) CreateUsageDetailDataExportTaskWithOptions(request *Create
 		query["Language"] = request.Language
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
 		query["StartTime"] = request.StartTime
 	}
@@ -24269,10 +23953,6 @@ func (client *Client) CreateUserUsageDataExportTaskWithOptions(request *CreateUs
 		query["Language"] = request.Language
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
 		query["StartTime"] = request.StartTime
 	}
@@ -24337,10 +24017,6 @@ func (client *Client) DeleteCdnDeliverTaskWithOptions(request *DeleteCdnDeliverT
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.DeliverId)) {
 		query["DeliverId"] = request.DeliverId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -24459,19 +24135,8 @@ func (client *Client) DeleteCdnDomain(request *DeleteCdnDomainRequest) (_result 
  * @param runtime runtime options for this request RuntimeOptions
  * @return DeleteCdnSubTaskResponse
  */
-func (client *Client) DeleteCdnSubTaskWithOptions(request *DeleteCdnSubTaskRequest, runtime *util.RuntimeOptions) (_result *DeleteCdnSubTaskResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
+func (client *Client) DeleteCdnSubTaskWithOptions(runtime *util.RuntimeOptions) (_result *DeleteCdnSubTaskResponse, _err error) {
+	req := &openapi.OpenApiRequest{}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteCdnSubTask"),
 		Version:     tea.String("2018-05-10"),
@@ -24495,13 +24160,12 @@ func (client *Client) DeleteCdnSubTaskWithOptions(request *DeleteCdnSubTaskReque
 /**
  * >  You can call this API operation up to three times per second per account.
  *
- * @param request DeleteCdnSubTaskRequest
  * @return DeleteCdnSubTaskResponse
  */
-func (client *Client) DeleteCdnSubTask(request *DeleteCdnSubTaskRequest) (_result *DeleteCdnSubTaskResponse, _err error) {
+func (client *Client) DeleteCdnSubTask() (_result *DeleteCdnSubTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteCdnSubTaskResponse{}
-	_body, _err := client.DeleteCdnSubTaskWithOptions(request, runtime)
+	_body, _err := client.DeleteCdnSubTaskWithOptions(runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -24515,10 +24179,6 @@ func (client *Client) DeleteFCTriggerWithOptions(request *DeleteFCTriggerRequest
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.TriggerARN)) {
 		query["TriggerARN"] = request.TriggerARN
 	}
@@ -24814,10 +24474,6 @@ func (client *Client) DeleteUsageDetailDataExportTaskWithOptions(request *Delete
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
 		query["TaskId"] = request.TaskId
 	}
@@ -24875,10 +24531,6 @@ func (client *Client) DeleteUserUsageDataExportTaskWithOptions(request *DeleteUs
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
 		query["TaskId"] = request.TaskId
 	}
@@ -25119,10 +24771,6 @@ func (client *Client) DescribeCdnDeletedDomainsWithOptions(request *DescribeCdnD
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
 		query["PageNumber"] = request.PageNumber
 	}
@@ -25537,10 +25185,6 @@ func (client *Client) DescribeCdnDomainStagingConfigWithOptions(request *Describ
 		query["FunctionNames"] = request.FunctionNames
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
-	}
-
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -25596,10 +25240,6 @@ func (client *Client) DescribeCdnHttpsDomainListWithOptions(request *DescribeCdn
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Keyword)) {
 		query["Keyword"] = request.Keyword
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
@@ -25798,10 +25438,6 @@ func (client *Client) DescribeCdnReportWithOptions(request *DescribeCdnReportReq
 		query["IsOverseas"] = request.IsOverseas
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.ReportId)) {
 		query["ReportId"] = request.ReportId
 	}
@@ -25864,10 +25500,6 @@ func (client *Client) DescribeCdnReportListWithOptions(request *DescribeCdnRepor
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.ReportId)) {
 		query["ReportId"] = request.ReportId
 	}
@@ -26112,19 +25744,8 @@ func (client *Client) DescribeCdnService(request *DescribeCdnServiceRequest) (_r
  * @param runtime runtime options for this request RuntimeOptions
  * @return DescribeCdnSubListResponse
  */
-func (client *Client) DescribeCdnSubListWithOptions(request *DescribeCdnSubListRequest, runtime *util.RuntimeOptions) (_result *DescribeCdnSubListResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
+func (client *Client) DescribeCdnSubListWithOptions(runtime *util.RuntimeOptions) (_result *DescribeCdnSubListResponse, _err error) {
+	req := &openapi.OpenApiRequest{}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeCdnSubList"),
 		Version:     tea.String("2018-05-10"),
@@ -26149,13 +25770,12 @@ func (client *Client) DescribeCdnSubListWithOptions(request *DescribeCdnSubListR
  * > - By default, this operation queries all tracking tasks. However, only one tracking task can be displayed. Therefore, only one tracking task is returned.
  * - You can call this API operation up to three times per second per account.
  *
- * @param request DescribeCdnSubListRequest
  * @return DescribeCdnSubListResponse
  */
-func (client *Client) DescribeCdnSubList(request *DescribeCdnSubListRequest) (_result *DescribeCdnSubListResponse, _err error) {
+func (client *Client) DescribeCdnSubList() (_result *DescribeCdnSubListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeCdnSubListResponse{}
-	_body, _err := client.DescribeCdnSubListWithOptions(request, runtime)
+	_body, _err := client.DescribeCdnSubListWithOptions(runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -26179,10 +25799,6 @@ func (client *Client) DescribeCdnUserBillHistoryWithOptions(request *DescribeCdn
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
 		query["EndTime"] = request.EndTime
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
@@ -26261,10 +25877,6 @@ func (client *Client) DescribeCdnUserBillPredictionWithOptions(request *Describe
 		query["EndTime"] = request.EndTime
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
 		query["StartTime"] = request.StartTime
 	}
@@ -26323,10 +25935,6 @@ func (client *Client) DescribeCdnUserBillTypeWithOptions(request *DescribeCdnUse
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
 		query["EndTime"] = request.EndTime
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
@@ -26635,10 +26243,6 @@ func (client *Client) DescribeCdnWafDomainWithOptions(request *DescribeCdnWafDom
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
 		query["DomainName"] = request.DomainName
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
@@ -27185,10 +26789,6 @@ func (client *Client) DescribeDomainCcActivityLogWithOptions(request *DescribeDo
 
 	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
 		query["EndTime"] = request.EndTime
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
@@ -29613,10 +29213,6 @@ func (client *Client) DescribeDomainSrcTopUrlVisitWithOptions(request *DescribeD
 		query["EndTime"] = request.EndTime
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.SortBy)) {
 		query["SortBy"] = request.SortBy
 	}
@@ -29788,10 +29384,6 @@ func (client *Client) DescribeDomainTopClientIpVisitWithOptions(request *Describ
 		query["LocationNameEn"] = request.LocationNameEn
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.SortBy)) {
 		query["SortBy"] = request.SortBy
 	}
@@ -29865,10 +29457,6 @@ func (client *Client) DescribeDomainTopReferVisitWithOptions(request *DescribeDo
 
 	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
 		query["EndTime"] = request.EndTime
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SortBy)) {
@@ -30431,10 +30019,6 @@ func (client *Client) DescribeEsExceptionDataWithOptions(request *DescribeEsExce
 		query["EndTime"] = request.EndTime
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.RuleId)) {
 		query["RuleId"] = request.RuleId
 	}
@@ -30498,10 +30082,6 @@ func (client *Client) DescribeEsExecuteDataWithOptions(request *DescribeEsExecut
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
 		query["EndTime"] = request.EndTime
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.RuleId)) {
@@ -30606,10 +30186,6 @@ func (client *Client) DescribeIllegalUrlExportTaskWithOptions(request *DescribeI
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
 		query["TaskId"] = request.TaskId
 	}
@@ -30832,6 +30408,50 @@ func (client *Client) DescribeL2VipsByDomain(request *DescribeL2VipsByDomainRequ
 	return _result, _err
 }
 
+func (client *Client) DescribePreloadDetailByIdWithOptions(request *DescribePreloadDetailByIdRequest, runtime *util.RuntimeOptions) (_result *DescribePreloadDetailByIdResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
+		query["TaskId"] = request.TaskId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribePreloadDetailById"),
+		Version:     tea.String("2018-05-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribePreloadDetailByIdResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribePreloadDetailById(request *DescribePreloadDetailByIdRequest) (_result *DescribePreloadDetailByIdResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribePreloadDetailByIdResponse{}
+	_body, _err := client.DescribePreloadDetailByIdWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 /**
  * *   The data is collected every 5 minutes.
  * *   The maximum number of times that each user can call this operation per second is 20.
@@ -30934,10 +30554,6 @@ func (client *Client) DescribeRealtimeDeliveryAccWithOptions(request *DescribeRe
 
 	if !tea.BoolValue(util.IsUnset(request.LogStore)) {
 		query["LogStore"] = request.LogStore
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Project)) {
@@ -31230,19 +30846,8 @@ func (client *Client) DescribeRefreshTasks(request *DescribeRefreshTasksRequest)
  * @param runtime runtime options for this request RuntimeOptions
  * @return DescribeStagingIpResponse
  */
-func (client *Client) DescribeStagingIpWithOptions(request *DescribeStagingIpRequest, runtime *util.RuntimeOptions) (_result *DescribeStagingIpResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
+func (client *Client) DescribeStagingIpWithOptions(runtime *util.RuntimeOptions) (_result *DescribeStagingIpResponse, _err error) {
+	req := &openapi.OpenApiRequest{}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeStagingIp"),
 		Version:     tea.String("2018-05-10"),
@@ -31266,13 +30871,12 @@ func (client *Client) DescribeStagingIpWithOptions(request *DescribeStagingIpReq
 /**
  * >  The maximum number of times that each user can call this operation per second is 30.
  *
- * @param request DescribeStagingIpRequest
  * @return DescribeStagingIpResponse
  */
-func (client *Client) DescribeStagingIp(request *DescribeStagingIpRequest) (_result *DescribeStagingIpResponse, _err error) {
+func (client *Client) DescribeStagingIp() (_result *DescribeStagingIpResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeStagingIpResponse{}
-	_body, _err := client.DescribeStagingIpWithOptions(request, runtime)
+	_body, _err := client.DescribeStagingIpWithOptions(runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -31372,10 +30976,6 @@ func (client *Client) DescribeTopDomainsByFlowWithOptions(request *DescribeTopDo
 		query["Limit"] = request.Limit
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
 		query["StartTime"] = request.StartTime
 	}
@@ -31429,19 +31029,8 @@ func (client *Client) DescribeTopDomainsByFlow(request *DescribeTopDomainsByFlow
  * @param runtime runtime options for this request RuntimeOptions
  * @return DescribeUserCertificateExpireCountResponse
  */
-func (client *Client) DescribeUserCertificateExpireCountWithOptions(request *DescribeUserCertificateExpireCountRequest, runtime *util.RuntimeOptions) (_result *DescribeUserCertificateExpireCountResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
+func (client *Client) DescribeUserCertificateExpireCountWithOptions(runtime *util.RuntimeOptions) (_result *DescribeUserCertificateExpireCountResponse, _err error) {
+	req := &openapi.OpenApiRequest{}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeUserCertificateExpireCount"),
 		Version:     tea.String("2018-05-10"),
@@ -31465,13 +31054,12 @@ func (client *Client) DescribeUserCertificateExpireCountWithOptions(request *Des
 /**
  * >  The maximum number of times that each user can call this operation per second is 100.
  *
- * @param request DescribeUserCertificateExpireCountRequest
  * @return DescribeUserCertificateExpireCountResponse
  */
-func (client *Client) DescribeUserCertificateExpireCount(request *DescribeUserCertificateExpireCountRequest) (_result *DescribeUserCertificateExpireCountResponse, _err error) {
+func (client *Client) DescribeUserCertificateExpireCount() (_result *DescribeUserCertificateExpireCountResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeUserCertificateExpireCountResponse{}
-	_body, _err := client.DescribeUserCertificateExpireCountWithOptions(request, runtime)
+	_body, _err := client.DescribeUserCertificateExpireCountWithOptions(runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -31668,19 +31256,8 @@ func (client *Client) DescribeUserDomains(request *DescribeUserDomainsRequest) (
  * @param runtime runtime options for this request RuntimeOptions
  * @return DescribeUserTagsResponse
  */
-func (client *Client) DescribeUserTagsWithOptions(request *DescribeUserTagsRequest, runtime *util.RuntimeOptions) (_result *DescribeUserTagsResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
+func (client *Client) DescribeUserTagsWithOptions(runtime *util.RuntimeOptions) (_result *DescribeUserTagsResponse, _err error) {
+	req := &openapi.OpenApiRequest{}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeUserTags"),
 		Version:     tea.String("2018-05-10"),
@@ -31704,13 +31281,12 @@ func (client *Client) DescribeUserTagsWithOptions(request *DescribeUserTagsReque
 /**
  * >  The maximum number of times that each user can call this operation per second is 100.
  *
- * @param request DescribeUserTagsRequest
  * @return DescribeUserTagsResponse
  */
-func (client *Client) DescribeUserTags(request *DescribeUserTagsRequest) (_result *DescribeUserTagsResponse, _err error) {
+func (client *Client) DescribeUserTags() (_result *DescribeUserTagsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeUserTagsResponse{}
-	_body, _err := client.DescribeUserTagsWithOptions(request, runtime)
+	_body, _err := client.DescribeUserTagsWithOptions(runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -31731,10 +31307,6 @@ func (client *Client) DescribeUserUsageDataExportTaskWithOptions(request *Descri
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
 		query["PageNumber"] = request.PageNumber
 	}
@@ -31797,10 +31369,6 @@ func (client *Client) DescribeUserUsageDetailDataExportTaskWithOptions(request *
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
 		query["PageNumber"] = request.PageNumber
 	}
@@ -31918,10 +31486,6 @@ func (client *Client) DescribeVerifyContentWithOptions(request *DescribeVerifyCo
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
 		query["DomainName"] = request.DomainName
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -32236,15 +31800,8 @@ func (client *Client) ListRealtimeLogDeliveryDomains(request *ListRealtimeLogDel
  * @param runtime runtime options for this request RuntimeOptions
  * @return ListRealtimeLogDeliveryInfosResponse
  */
-func (client *Client) ListRealtimeLogDeliveryInfosWithOptions(request *ListRealtimeLogDeliveryInfosRequest, runtime *util.RuntimeOptions) (_result *ListRealtimeLogDeliveryInfosResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := openapiutil.Query(util.ToMap(request))
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
+func (client *Client) ListRealtimeLogDeliveryInfosWithOptions(runtime *util.RuntimeOptions) (_result *ListRealtimeLogDeliveryInfosResponse, _err error) {
+	req := &openapi.OpenApiRequest{}
 	params := &openapi.Params{
 		Action:      tea.String("ListRealtimeLogDeliveryInfos"),
 		Version:     tea.String("2018-05-10"),
@@ -32268,13 +31825,12 @@ func (client *Client) ListRealtimeLogDeliveryInfosWithOptions(request *ListRealt
 /**
  * >  The maximum number of times that each user can call this operation per second is 100.
  *
- * @param request ListRealtimeLogDeliveryInfosRequest
  * @return ListRealtimeLogDeliveryInfosResponse
  */
-func (client *Client) ListRealtimeLogDeliveryInfos(request *ListRealtimeLogDeliveryInfosRequest) (_result *ListRealtimeLogDeliveryInfosResponse, _err error) {
+func (client *Client) ListRealtimeLogDeliveryInfos() (_result *ListRealtimeLogDeliveryInfosResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListRealtimeLogDeliveryInfosResponse{}
-	_body, _err := client.ListRealtimeLogDeliveryInfosWithOptions(request, runtime)
+	_body, _err := client.ListRealtimeLogDeliveryInfosWithOptions(runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -32289,15 +31845,8 @@ func (client *Client) ListRealtimeLogDeliveryInfos(request *ListRealtimeLogDeliv
  * @param runtime runtime options for this request RuntimeOptions
  * @return ListUserCustomLogConfigResponse
  */
-func (client *Client) ListUserCustomLogConfigWithOptions(request *ListUserCustomLogConfigRequest, runtime *util.RuntimeOptions) (_result *ListUserCustomLogConfigResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := openapiutil.Query(util.ToMap(request))
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
+func (client *Client) ListUserCustomLogConfigWithOptions(runtime *util.RuntimeOptions) (_result *ListUserCustomLogConfigResponse, _err error) {
+	req := &openapi.OpenApiRequest{}
 	params := &openapi.Params{
 		Action:      tea.String("ListUserCustomLogConfig"),
 		Version:     tea.String("2018-05-10"),
@@ -32321,13 +31870,12 @@ func (client *Client) ListUserCustomLogConfigWithOptions(request *ListUserCustom
 /**
  * >  The maximum number of times that each user can call this operation per second is 100.
  *
- * @param request ListUserCustomLogConfigRequest
  * @return ListUserCustomLogConfigResponse
  */
-func (client *Client) ListUserCustomLogConfig(request *ListUserCustomLogConfigRequest) (_result *ListUserCustomLogConfigResponse, _err error) {
+func (client *Client) ListUserCustomLogConfig() (_result *ListUserCustomLogConfigResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListUserCustomLogConfigResponse{}
-	_body, _err := client.ListUserCustomLogConfigWithOptions(request, runtime)
+	_body, _err := client.ListUserCustomLogConfigWithOptions(runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -32427,10 +31975,6 @@ func (client *Client) ModifyCdnDomainSchdmByPropertyWithOptions(request *ModifyC
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
 		query["DomainName"] = request.DomainName
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Property)) {
@@ -32614,10 +32158,6 @@ func (client *Client) PublishStagingConfigToProductionWithOptions(request *Publi
 		query["DomainName"] = request.DomainName
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
-	}
-
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -32699,6 +32239,10 @@ func (client *Client) PushObjectCacheWithOptions(request *PushObjectCacheRequest
 
 	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
 		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WithHeader)) {
+		query["WithHeader"] = request.WithHeader
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -32859,10 +32403,6 @@ func (client *Client) RollbackStagingConfigWithOptions(request *RollbackStagingC
 		query["DomainName"] = request.DomainName
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
-	}
-
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -32918,10 +32458,6 @@ func (client *Client) SetCdnDomainCSRCertificateWithOptions(request *SetCdnDomai
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
 		query["DomainName"] = request.DomainName
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ServerCertificate)) {
@@ -33060,10 +32596,6 @@ func (client *Client) SetCdnDomainStagingConfigWithOptions(request *SetCdnDomain
 
 	if !tea.BoolValue(util.IsUnset(request.Functions)) {
 		query["Functions"] = request.Functions
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -33290,10 +32822,6 @@ func (client *Client) SetWaitingRoomConfigWithOptions(request *SetWaitingRoomCon
 		query["MaxTimeWait"] = request.MaxTimeWait
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.WaitUri)) {
 		query["WaitUri"] = request.WaitUri
 	}
@@ -33489,10 +33017,6 @@ func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runt
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
 		query["ResourceId"] = request.ResourceId
 	}
@@ -33562,10 +33086,6 @@ func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, 
 		query["All"] = request.All
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
 		query["ResourceId"] = request.ResourceId
 	}
@@ -33630,11 +33150,6 @@ func (client *Client) UpdateCdnDeliverTaskWithOptions(request *UpdateCdnDeliverT
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
-	}
-
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Deliver)) {
 		body["Deliver"] = request.Deliver
@@ -33661,8 +33176,7 @@ func (client *Client) UpdateCdnDeliverTaskWithOptions(request *UpdateCdnDeliverT
 	}
 
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  openapiutil.ParseToMap(body),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateCdnDeliverTask"),
@@ -33713,11 +33227,6 @@ func (client *Client) UpdateCdnSubTaskWithOptions(request *UpdateCdnSubTaskReque
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
-	}
-
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
 		body["DomainName"] = request.DomainName
@@ -33736,8 +33245,7 @@ func (client *Client) UpdateCdnSubTaskWithOptions(request *UpdateCdnSubTaskReque
 	}
 
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  openapiutil.ParseToMap(body),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateCdnSubTask"),
@@ -33782,10 +33290,6 @@ func (client *Client) UpdateFCTriggerWithOptions(request *UpdateFCTriggerRequest
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.TriggerARN)) {
 		query["TriggerARN"] = request.TriggerARN
 	}
