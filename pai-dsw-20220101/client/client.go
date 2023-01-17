@@ -325,7 +325,8 @@ func (s *CreateInstanceRequestRequestedResource) SetSharedMemory(v string) *Crea
 type CreateInstanceRequestUserVpc struct {
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
 	VSwitchId       *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	VpcId           *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// Vpc Id。
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s CreateInstanceRequestUserVpc) String() string {
@@ -1083,27 +1084,29 @@ type GetInstanceResponseBody struct {
 	InstanceName               *string                                       `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
 	InstanceShutdownTimer      *GetInstanceResponseBodyInstanceShutdownTimer `json:"InstanceShutdownTimer,omitempty" xml:"InstanceShutdownTimer,omitempty" type:"Struct"`
 	InstanceUrl                *string                                       `json:"InstanceUrl,omitempty" xml:"InstanceUrl,omitempty"`
-	JupyterlabUrl              *string                                       `json:"JupyterlabUrl,omitempty" xml:"JupyterlabUrl,omitempty"`
-	Labels                     []*GetInstanceResponseBodyLabels              `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
-	LatestSnapshot             *GetInstanceResponseBodyLatestSnapshot        `json:"LatestSnapshot,omitempty" xml:"LatestSnapshot,omitempty" type:"Struct"`
-	Message                    *string                                       `json:"Message,omitempty" xml:"Message,omitempty"`
-	PaymentType                *string                                       `json:"PaymentType,omitempty" xml:"PaymentType,omitempty"`
-	Priority                   *int64                                        `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	ReasonCode                 *string                                       `json:"ReasonCode,omitempty" xml:"ReasonCode,omitempty"`
-	ReasonMessage              *string                                       `json:"ReasonMessage,omitempty" xml:"ReasonMessage,omitempty"`
-	RequestId                  *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	RequestedResource          *GetInstanceResponseBodyRequestedResource     `json:"RequestedResource,omitempty" xml:"RequestedResource,omitempty" type:"Struct"`
-	ResourceId                 *string                                       `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	ResourceName               *string                                       `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
-	Status                     *string                                       `json:"Status,omitempty" xml:"Status,omitempty"`
-	Success                    *bool                                         `json:"Success,omitempty" xml:"Success,omitempty"`
-	TerminalUrl                *string                                       `json:"TerminalUrl,omitempty" xml:"TerminalUrl,omitempty"`
-	UserId                     *string                                       `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	UserName                   *string                                       `json:"UserName,omitempty" xml:"UserName,omitempty"`
-	UserVpc                    *GetInstanceResponseBodyUserVpc               `json:"UserVpc,omitempty" xml:"UserVpc,omitempty" type:"Struct"`
-	WebIDEUrl                  *string                                       `json:"WebIDEUrl,omitempty" xml:"WebIDEUrl,omitempty"`
-	WorkspaceId                *string                                       `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
-	WorkspaceName              *string                                       `json:"WorkspaceName,omitempty" xml:"WorkspaceName,omitempty"`
+	// Jupyterlab Url。
+	JupyterlabUrl     *string                                   `json:"JupyterlabUrl,omitempty" xml:"JupyterlabUrl,omitempty"`
+	Labels            []*GetInstanceResponseBodyLabels          `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	LatestSnapshot    *GetInstanceResponseBodyLatestSnapshot    `json:"LatestSnapshot,omitempty" xml:"LatestSnapshot,omitempty" type:"Struct"`
+	Message           *string                                   `json:"Message,omitempty" xml:"Message,omitempty"`
+	PaymentType       *string                                   `json:"PaymentType,omitempty" xml:"PaymentType,omitempty"`
+	Priority          *int64                                    `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	ReasonCode        *string                                   `json:"ReasonCode,omitempty" xml:"ReasonCode,omitempty"`
+	ReasonMessage     *string                                   `json:"ReasonMessage,omitempty" xml:"ReasonMessage,omitempty"`
+	RequestId         *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestedResource *GetInstanceResponseBodyRequestedResource `json:"RequestedResource,omitempty" xml:"RequestedResource,omitempty" type:"Struct"`
+	ResourceId        *string                                   `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	ResourceName      *string                                   `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
+	Status            *string                                   `json:"Status,omitempty" xml:"Status,omitempty"`
+	Success           *bool                                     `json:"Success,omitempty" xml:"Success,omitempty"`
+	TerminalUrl       *string                                   `json:"TerminalUrl,omitempty" xml:"TerminalUrl,omitempty"`
+	UserId            *string                                   `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	UserName          *string                                   `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	UserVpc           *GetInstanceResponseBodyUserVpc           `json:"UserVpc,omitempty" xml:"UserVpc,omitempty" type:"Struct"`
+	// Web IDE url。
+	WebIDEUrl     *string `json:"WebIDEUrl,omitempty" xml:"WebIDEUrl,omitempty"`
+	WorkspaceId   *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	WorkspaceName *string `json:"WorkspaceName,omitempty" xml:"WorkspaceName,omitempty"`
 }
 
 func (s GetInstanceResponseBody) String() string {
@@ -1528,7 +1531,8 @@ func (s *GetInstanceResponseBodyRequestedResource) SetSharedMemory(v string) *Ge
 type GetInstanceResponseBodyUserVpc struct {
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
 	VSwitchId       *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	VpcId           *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// Vpc Id。
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s GetInstanceResponseBodyUserVpc) String() string {
@@ -2996,6 +3000,7 @@ func (s *ListInstanceStatisticsResponse) SetBody(v *ListInstanceStatisticsRespon
 type ListInstancesRequest struct {
 	AcceleratorType *string `json:"AcceleratorType,omitempty" xml:"AcceleratorType,omitempty"`
 	Accessibility   *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
+	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	InstanceName    *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
 	Order           *string `json:"Order,omitempty" xml:"Order,omitempty"`
 	PageNumber      *int64  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
@@ -3022,6 +3027,11 @@ func (s *ListInstancesRequest) SetAcceleratorType(v string) *ListInstancesReques
 
 func (s *ListInstancesRequest) SetAccessibility(v string) *ListInstancesRequest {
 	s.Accessibility = &v
+	return s
+}
+
+func (s *ListInstancesRequest) SetInstanceId(v string) *ListInstancesRequest {
+	s.InstanceId = &v
 	return s
 }
 
@@ -3140,24 +3150,26 @@ type ListInstancesResponseBodyInstances struct {
 	InstanceName               *string                                                  `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
 	InstanceShutdownTimer      *ListInstancesResponseBodyInstancesInstanceShutdownTimer `json:"InstanceShutdownTimer,omitempty" xml:"InstanceShutdownTimer,omitempty" type:"Struct"`
 	InstanceUrl                *string                                                  `json:"InstanceUrl,omitempty" xml:"InstanceUrl,omitempty"`
-	JupyterlabUrl              *string                                                  `json:"JupyterlabUrl,omitempty" xml:"JupyterlabUrl,omitempty"`
-	Labels                     []*ListInstancesResponseBodyInstancesLabels              `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
-	LatestSnapshot             *ListInstancesResponseBodyInstancesLatestSnapshot        `json:"LatestSnapshot,omitempty" xml:"LatestSnapshot,omitempty" type:"Struct"`
-	PaymentType                *string                                                  `json:"PaymentType,omitempty" xml:"PaymentType,omitempty"`
-	Priority                   *int64                                                   `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	ReasonCode                 *string                                                  `json:"ReasonCode,omitempty" xml:"ReasonCode,omitempty"`
-	ReasonMessage              *string                                                  `json:"ReasonMessage,omitempty" xml:"ReasonMessage,omitempty"`
-	RequestedResource          *ListInstancesResponseBodyInstancesRequestedResource     `json:"RequestedResource,omitempty" xml:"RequestedResource,omitempty" type:"Struct"`
-	ResourceId                 *string                                                  `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	ResourceName               *string                                                  `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
-	Status                     *string                                                  `json:"Status,omitempty" xml:"Status,omitempty"`
-	TerminalUrl                *string                                                  `json:"TerminalUrl,omitempty" xml:"TerminalUrl,omitempty"`
-	UserId                     *string                                                  `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	UserName                   *string                                                  `json:"UserName,omitempty" xml:"UserName,omitempty"`
-	UserVpc                    *ListInstancesResponseBodyInstancesUserVpc               `json:"UserVpc,omitempty" xml:"UserVpc,omitempty" type:"Struct"`
-	WebIDEUrl                  *string                                                  `json:"WebIDEUrl,omitempty" xml:"WebIDEUrl,omitempty"`
-	WorkspaceId                *string                                                  `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
-	WorkspaceName              *string                                                  `json:"WorkspaceName,omitempty" xml:"WorkspaceName,omitempty"`
+	// Jupyterlab Url。
+	JupyterlabUrl     *string                                              `json:"JupyterlabUrl,omitempty" xml:"JupyterlabUrl,omitempty"`
+	Labels            []*ListInstancesResponseBodyInstancesLabels          `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	LatestSnapshot    *ListInstancesResponseBodyInstancesLatestSnapshot    `json:"LatestSnapshot,omitempty" xml:"LatestSnapshot,omitempty" type:"Struct"`
+	PaymentType       *string                                              `json:"PaymentType,omitempty" xml:"PaymentType,omitempty"`
+	Priority          *int64                                               `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	ReasonCode        *string                                              `json:"ReasonCode,omitempty" xml:"ReasonCode,omitempty"`
+	ReasonMessage     *string                                              `json:"ReasonMessage,omitempty" xml:"ReasonMessage,omitempty"`
+	RequestedResource *ListInstancesResponseBodyInstancesRequestedResource `json:"RequestedResource,omitempty" xml:"RequestedResource,omitempty" type:"Struct"`
+	ResourceId        *string                                              `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	ResourceName      *string                                              `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
+	Status            *string                                              `json:"Status,omitempty" xml:"Status,omitempty"`
+	TerminalUrl       *string                                              `json:"TerminalUrl,omitempty" xml:"TerminalUrl,omitempty"`
+	UserId            *string                                              `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	UserName          *string                                              `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	UserVpc           *ListInstancesResponseBodyInstancesUserVpc           `json:"UserVpc,omitempty" xml:"UserVpc,omitempty" type:"Struct"`
+	// Web IDE url。
+	WebIDEUrl     *string `json:"WebIDEUrl,omitempty" xml:"WebIDEUrl,omitempty"`
+	WorkspaceId   *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	WorkspaceName *string `json:"WorkspaceName,omitempty" xml:"WorkspaceName,omitempty"`
 }
 
 func (s ListInstancesResponseBodyInstances) String() string {
@@ -3557,7 +3569,8 @@ func (s *ListInstancesResponseBodyInstancesRequestedResource) SetSharedMemory(v 
 type ListInstancesResponseBodyInstancesUserVpc struct {
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
 	VSwitchId       *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	VpcId           *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// Vpc Id。
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s ListInstancesResponseBodyInstancesUserVpc) String() string {
@@ -3919,7 +3932,8 @@ func (s *UpdateInstanceRequestRequestedResource) SetSharedMemory(v string) *Upda
 type UpdateInstanceRequestUserVpc struct {
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
 	VSwitchId       *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	VpcId           *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// Vpc Id。
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s UpdateInstanceRequestUserVpc) String() string {
@@ -5090,6 +5104,10 @@ func (client *Client) ListInstancesWithOptions(request *ListInstancesRequest, he
 
 	if !tea.BoolValue(util.IsUnset(request.Accessibility)) {
 		query["Accessibility"] = request.Accessibility
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.InstanceName)) {
