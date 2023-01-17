@@ -14032,10 +14032,8 @@ type UpdateProjectRequest struct {
 	DatasetMaxRelationCount *int64  `json:"DatasetMaxRelationCount,omitempty" xml:"DatasetMaxRelationCount,omitempty"`
 	DatasetMaxTotalFileSize *int64  `json:"DatasetMaxTotalFileSize,omitempty" xml:"DatasetMaxTotalFileSize,omitempty"`
 	Description             *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	EngineConcurrency       *int64  `json:"EngineConcurrency,omitempty" xml:"EngineConcurrency,omitempty"`
 	ProjectMaxDatasetCount  *int64  `json:"ProjectMaxDatasetCount,omitempty" xml:"ProjectMaxDatasetCount,omitempty"`
 	ProjectName             *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	ProjectQueriesPerSecond *int64  `json:"ProjectQueriesPerSecond,omitempty" xml:"ProjectQueriesPerSecond,omitempty"`
 	ServiceRole             *string `json:"ServiceRole,omitempty" xml:"ServiceRole,omitempty"`
 	TemplateId              *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 }
@@ -14078,11 +14076,6 @@ func (s *UpdateProjectRequest) SetDescription(v string) *UpdateProjectRequest {
 	return s
 }
 
-func (s *UpdateProjectRequest) SetEngineConcurrency(v int64) *UpdateProjectRequest {
-	s.EngineConcurrency = &v
-	return s
-}
-
 func (s *UpdateProjectRequest) SetProjectMaxDatasetCount(v int64) *UpdateProjectRequest {
 	s.ProjectMaxDatasetCount = &v
 	return s
@@ -14090,11 +14083,6 @@ func (s *UpdateProjectRequest) SetProjectMaxDatasetCount(v int64) *UpdateProject
 
 func (s *UpdateProjectRequest) SetProjectName(v string) *UpdateProjectRequest {
 	s.ProjectName = &v
-	return s
-}
-
-func (s *UpdateProjectRequest) SetProjectQueriesPerSecond(v int64) *UpdateProjectRequest {
-	s.ProjectQueriesPerSecond = &v
 	return s
 }
 
@@ -19437,20 +19425,12 @@ func (client *Client) UpdateProjectWithOptions(request *UpdateProjectRequest, ru
 		query["Description"] = request.Description
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.EngineConcurrency)) {
-		query["EngineConcurrency"] = request.EngineConcurrency
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.ProjectMaxDatasetCount)) {
 		query["ProjectMaxDatasetCount"] = request.ProjectMaxDatasetCount
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ProjectName)) {
 		query["ProjectName"] = request.ProjectName
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ProjectQueriesPerSecond)) {
-		query["ProjectQueriesPerSecond"] = request.ProjectQueriesPerSecond
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ServiceRole)) {
