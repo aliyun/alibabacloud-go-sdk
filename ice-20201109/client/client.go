@@ -1070,6 +1070,99 @@ func (s *BatchGetMediaInfosResponse) SetBody(v *BatchGetMediaInfosResponseBody) 
 	return s
 }
 
+type CancelDNAJobRequest struct {
+	JobId                *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s CancelDNAJobRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CancelDNAJobRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CancelDNAJobRequest) SetJobId(v string) *CancelDNAJobRequest {
+	s.JobId = &v
+	return s
+}
+
+func (s *CancelDNAJobRequest) SetOwnerAccount(v string) *CancelDNAJobRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *CancelDNAJobRequest) SetOwnerId(v int64) *CancelDNAJobRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *CancelDNAJobRequest) SetResourceOwnerAccount(v string) *CancelDNAJobRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *CancelDNAJobRequest) SetResourceOwnerId(v int64) *CancelDNAJobRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type CancelDNAJobResponseBody struct {
+	JobId     *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CancelDNAJobResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CancelDNAJobResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CancelDNAJobResponseBody) SetJobId(v string) *CancelDNAJobResponseBody {
+	s.JobId = &v
+	return s
+}
+
+func (s *CancelDNAJobResponseBody) SetRequestId(v string) *CancelDNAJobResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CancelDNAJobResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CancelDNAJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CancelDNAJobResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CancelDNAJobResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CancelDNAJobResponse) SetHeaders(v map[string]*string) *CancelDNAJobResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CancelDNAJobResponse) SetStatusCode(v int32) *CancelDNAJobResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CancelDNAJobResponse) SetBody(v *CancelDNAJobResponseBody) *CancelDNAJobResponse {
+	s.Body = v
+	return s
+}
+
 type CancelFavoritePublicMediaRequest struct {
 	MediaIds *string `json:"MediaIds,omitempty" xml:"MediaIds,omitempty"`
 }
@@ -1362,6 +1455,152 @@ func (s *CreateCustomTemplateResponse) SetStatusCode(v int32) *CreateCustomTempl
 }
 
 func (s *CreateCustomTemplateResponse) SetBody(v *CreateCustomTemplateResponseBody) *CreateCustomTemplateResponse {
+	s.Body = v
+	return s
+}
+
+type CreateDNADBRequest struct {
+	Description          *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Model                *string `json:"Model,omitempty" xml:"Model,omitempty"`
+	Name                 *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s CreateDNADBRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDNADBRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDNADBRequest) SetDescription(v string) *CreateDNADBRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateDNADBRequest) SetModel(v string) *CreateDNADBRequest {
+	s.Model = &v
+	return s
+}
+
+func (s *CreateDNADBRequest) SetName(v string) *CreateDNADBRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateDNADBRequest) SetOwnerAccount(v string) *CreateDNADBRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *CreateDNADBRequest) SetOwnerId(v int64) *CreateDNADBRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *CreateDNADBRequest) SetResourceOwnerAccount(v string) *CreateDNADBRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *CreateDNADBRequest) SetResourceOwnerId(v int64) *CreateDNADBRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type CreateDNADBResponseBody struct {
+	DBInfo    *CreateDNADBResponseBodyDBInfo `json:"DBInfo,omitempty" xml:"DBInfo,omitempty" type:"Struct"`
+	RequestId *string                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateDNADBResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDNADBResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDNADBResponseBody) SetDBInfo(v *CreateDNADBResponseBodyDBInfo) *CreateDNADBResponseBody {
+	s.DBInfo = v
+	return s
+}
+
+func (s *CreateDNADBResponseBody) SetRequestId(v string) *CreateDNADBResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateDNADBResponseBodyDBInfo struct {
+	DBId        *string `json:"DBId,omitempty" xml:"DBId,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Model       *string `json:"Model,omitempty" xml:"Model,omitempty"`
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s CreateDNADBResponseBodyDBInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDNADBResponseBodyDBInfo) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDNADBResponseBodyDBInfo) SetDBId(v string) *CreateDNADBResponseBodyDBInfo {
+	s.DBId = &v
+	return s
+}
+
+func (s *CreateDNADBResponseBodyDBInfo) SetDescription(v string) *CreateDNADBResponseBodyDBInfo {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateDNADBResponseBodyDBInfo) SetModel(v string) *CreateDNADBResponseBodyDBInfo {
+	s.Model = &v
+	return s
+}
+
+func (s *CreateDNADBResponseBodyDBInfo) SetName(v string) *CreateDNADBResponseBodyDBInfo {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateDNADBResponseBodyDBInfo) SetStatus(v string) *CreateDNADBResponseBodyDBInfo {
+	s.Status = &v
+	return s
+}
+
+type CreateDNADBResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateDNADBResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateDNADBResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDNADBResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDNADBResponse) SetHeaders(v map[string]*string) *CreateDNADBResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateDNADBResponse) SetStatusCode(v int32) *CreateDNADBResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateDNADBResponse) SetBody(v *CreateDNADBResponseBody) *CreateDNADBResponse {
 	s.Body = v
 	return s
 }
@@ -2567,6 +2806,186 @@ func (s *DeleteCustomTemplateResponse) SetStatusCode(v int32) *DeleteCustomTempl
 }
 
 func (s *DeleteCustomTemplateResponse) SetBody(v *DeleteCustomTemplateResponseBody) *DeleteCustomTemplateResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteDNADBRequest struct {
+	DBId                 *string `json:"DBId,omitempty" xml:"DBId,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s DeleteDNADBRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDNADBRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDNADBRequest) SetDBId(v string) *DeleteDNADBRequest {
+	s.DBId = &v
+	return s
+}
+
+func (s *DeleteDNADBRequest) SetOwnerAccount(v string) *DeleteDNADBRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *DeleteDNADBRequest) SetOwnerId(v int64) *DeleteDNADBRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DeleteDNADBRequest) SetResourceOwnerAccount(v string) *DeleteDNADBRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *DeleteDNADBRequest) SetResourceOwnerId(v int64) *DeleteDNADBRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type DeleteDNADBResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteDNADBResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDNADBResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDNADBResponseBody) SetRequestId(v string) *DeleteDNADBResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteDNADBResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteDNADBResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteDNADBResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDNADBResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDNADBResponse) SetHeaders(v map[string]*string) *DeleteDNADBResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteDNADBResponse) SetStatusCode(v int32) *DeleteDNADBResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteDNADBResponse) SetBody(v *DeleteDNADBResponseBody) *DeleteDNADBResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteDNAFilesRequest struct {
+	DBId                 *string `json:"DBId,omitempty" xml:"DBId,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	PrimaryKeys          *string `json:"PrimaryKeys,omitempty" xml:"PrimaryKeys,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s DeleteDNAFilesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDNAFilesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDNAFilesRequest) SetDBId(v string) *DeleteDNAFilesRequest {
+	s.DBId = &v
+	return s
+}
+
+func (s *DeleteDNAFilesRequest) SetOwnerAccount(v string) *DeleteDNAFilesRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *DeleteDNAFilesRequest) SetOwnerId(v int64) *DeleteDNAFilesRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DeleteDNAFilesRequest) SetPrimaryKeys(v string) *DeleteDNAFilesRequest {
+	s.PrimaryKeys = &v
+	return s
+}
+
+func (s *DeleteDNAFilesRequest) SetResourceOwnerAccount(v string) *DeleteDNAFilesRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *DeleteDNAFilesRequest) SetResourceOwnerId(v int64) *DeleteDNAFilesRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type DeleteDNAFilesResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteDNAFilesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDNAFilesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDNAFilesResponseBody) SetRequestId(v string) *DeleteDNAFilesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteDNAFilesResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteDNAFilesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteDNAFilesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDNAFilesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDNAFilesResponse) SetHeaders(v map[string]*string) *DeleteDNAFilesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteDNAFilesResponse) SetStatusCode(v int32) *DeleteDNAFilesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteDNAFilesResponse) SetBody(v *DeleteDNAFilesResponseBody) *DeleteDNAFilesResponse {
 	s.Body = v
 	return s
 }
@@ -15987,6 +16406,170 @@ func (s *GetUrlUploadInfosResponse) SetBody(v *GetUrlUploadInfosResponseBody) *G
 	return s
 }
 
+type GetWorkflowTaskRequest struct {
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+}
+
+func (s GetWorkflowTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetWorkflowTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetWorkflowTaskRequest) SetTaskId(v string) *GetWorkflowTaskRequest {
+	s.TaskId = &v
+	return s
+}
+
+type GetWorkflowTaskResponseBody struct {
+	// Id of the request
+	RequestId    *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	WorkflowTask *GetWorkflowTaskResponseBodyWorkflowTask `json:"WorkflowTask,omitempty" xml:"WorkflowTask,omitempty" type:"Struct"`
+}
+
+func (s GetWorkflowTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetWorkflowTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetWorkflowTaskResponseBody) SetRequestId(v string) *GetWorkflowTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetWorkflowTaskResponseBody) SetWorkflowTask(v *GetWorkflowTaskResponseBodyWorkflowTask) *GetWorkflowTaskResponseBody {
+	s.WorkflowTask = v
+	return s
+}
+
+type GetWorkflowTaskResponseBodyWorkflowTask struct {
+	CreateTime *string                                          `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	FinishTime *string                                          `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
+	Status     *string                                          `json:"Status,omitempty" xml:"Status,omitempty"`
+	TaskId     *string                                          `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	TaskInput  *string                                          `json:"TaskInput,omitempty" xml:"TaskInput,omitempty"`
+	Workflow   *GetWorkflowTaskResponseBodyWorkflowTaskWorkflow `json:"Workflow,omitempty" xml:"Workflow,omitempty" type:"Struct"`
+}
+
+func (s GetWorkflowTaskResponseBodyWorkflowTask) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetWorkflowTaskResponseBodyWorkflowTask) GoString() string {
+	return s.String()
+}
+
+func (s *GetWorkflowTaskResponseBodyWorkflowTask) SetCreateTime(v string) *GetWorkflowTaskResponseBodyWorkflowTask {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *GetWorkflowTaskResponseBodyWorkflowTask) SetFinishTime(v string) *GetWorkflowTaskResponseBodyWorkflowTask {
+	s.FinishTime = &v
+	return s
+}
+
+func (s *GetWorkflowTaskResponseBodyWorkflowTask) SetStatus(v string) *GetWorkflowTaskResponseBodyWorkflowTask {
+	s.Status = &v
+	return s
+}
+
+func (s *GetWorkflowTaskResponseBodyWorkflowTask) SetTaskId(v string) *GetWorkflowTaskResponseBodyWorkflowTask {
+	s.TaskId = &v
+	return s
+}
+
+func (s *GetWorkflowTaskResponseBodyWorkflowTask) SetTaskInput(v string) *GetWorkflowTaskResponseBodyWorkflowTask {
+	s.TaskInput = &v
+	return s
+}
+
+func (s *GetWorkflowTaskResponseBodyWorkflowTask) SetWorkflow(v *GetWorkflowTaskResponseBodyWorkflowTaskWorkflow) *GetWorkflowTaskResponseBodyWorkflowTask {
+	s.Workflow = v
+	return s
+}
+
+type GetWorkflowTaskResponseBodyWorkflowTaskWorkflow struct {
+	CreateTime   *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Type         *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	WorkflowId   *string `json:"WorkflowId,omitempty" xml:"WorkflowId,omitempty"`
+}
+
+func (s GetWorkflowTaskResponseBodyWorkflowTaskWorkflow) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetWorkflowTaskResponseBodyWorkflowTaskWorkflow) GoString() string {
+	return s.String()
+}
+
+func (s *GetWorkflowTaskResponseBodyWorkflowTaskWorkflow) SetCreateTime(v string) *GetWorkflowTaskResponseBodyWorkflowTaskWorkflow {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *GetWorkflowTaskResponseBodyWorkflowTaskWorkflow) SetModifiedTime(v string) *GetWorkflowTaskResponseBodyWorkflowTaskWorkflow {
+	s.ModifiedTime = &v
+	return s
+}
+
+func (s *GetWorkflowTaskResponseBodyWorkflowTaskWorkflow) SetName(v string) *GetWorkflowTaskResponseBodyWorkflowTaskWorkflow {
+	s.Name = &v
+	return s
+}
+
+func (s *GetWorkflowTaskResponseBodyWorkflowTaskWorkflow) SetStatus(v string) *GetWorkflowTaskResponseBodyWorkflowTaskWorkflow {
+	s.Status = &v
+	return s
+}
+
+func (s *GetWorkflowTaskResponseBodyWorkflowTaskWorkflow) SetType(v string) *GetWorkflowTaskResponseBodyWorkflowTaskWorkflow {
+	s.Type = &v
+	return s
+}
+
+func (s *GetWorkflowTaskResponseBodyWorkflowTaskWorkflow) SetWorkflowId(v string) *GetWorkflowTaskResponseBodyWorkflowTaskWorkflow {
+	s.WorkflowId = &v
+	return s
+}
+
+type GetWorkflowTaskResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetWorkflowTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetWorkflowTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetWorkflowTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetWorkflowTaskResponse) SetHeaders(v map[string]*string) *GetWorkflowTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetWorkflowTaskResponse) SetStatusCode(v int32) *GetWorkflowTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetWorkflowTaskResponse) SetBody(v *GetWorkflowTaskResponseBody) *GetWorkflowTaskResponse {
+	s.Body = v
+	return s
+}
+
 type ListAllPublicMediaTagsRequest struct {
 	BusinessType *string `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
 	EntityId     *string `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
@@ -16310,6 +16893,303 @@ func (s *ListCustomTemplatesResponse) SetStatusCode(v int32) *ListCustomTemplate
 }
 
 func (s *ListCustomTemplatesResponse) SetBody(v *ListCustomTemplatesResponseBody) *ListCustomTemplatesResponse {
+	s.Body = v
+	return s
+}
+
+type ListDNADBRequest struct {
+	DBIds                *string `json:"DBIds,omitempty" xml:"DBIds,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s ListDNADBRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDNADBRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListDNADBRequest) SetDBIds(v string) *ListDNADBRequest {
+	s.DBIds = &v
+	return s
+}
+
+func (s *ListDNADBRequest) SetOwnerAccount(v string) *ListDNADBRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *ListDNADBRequest) SetOwnerId(v int64) *ListDNADBRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *ListDNADBRequest) SetResourceOwnerAccount(v string) *ListDNADBRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *ListDNADBRequest) SetResourceOwnerId(v int64) *ListDNADBRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type ListDNADBResponseBody struct {
+	DBList    []*ListDNADBResponseBodyDBList `json:"DBList,omitempty" xml:"DBList,omitempty" type:"Repeated"`
+	RequestId *string                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListDNADBResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDNADBResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListDNADBResponseBody) SetDBList(v []*ListDNADBResponseBodyDBList) *ListDNADBResponseBody {
+	s.DBList = v
+	return s
+}
+
+func (s *ListDNADBResponseBody) SetRequestId(v string) *ListDNADBResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListDNADBResponseBodyDBList struct {
+	DBId        *string `json:"DBId,omitempty" xml:"DBId,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Model       *int32  `json:"Model,omitempty" xml:"Model,omitempty"`
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s ListDNADBResponseBodyDBList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDNADBResponseBodyDBList) GoString() string {
+	return s.String()
+}
+
+func (s *ListDNADBResponseBodyDBList) SetDBId(v string) *ListDNADBResponseBodyDBList {
+	s.DBId = &v
+	return s
+}
+
+func (s *ListDNADBResponseBodyDBList) SetDescription(v string) *ListDNADBResponseBodyDBList {
+	s.Description = &v
+	return s
+}
+
+func (s *ListDNADBResponseBodyDBList) SetModel(v int32) *ListDNADBResponseBodyDBList {
+	s.Model = &v
+	return s
+}
+
+func (s *ListDNADBResponseBodyDBList) SetName(v string) *ListDNADBResponseBodyDBList {
+	s.Name = &v
+	return s
+}
+
+func (s *ListDNADBResponseBodyDBList) SetStatus(v string) *ListDNADBResponseBodyDBList {
+	s.Status = &v
+	return s
+}
+
+type ListDNADBResponse struct {
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListDNADBResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListDNADBResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDNADBResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListDNADBResponse) SetHeaders(v map[string]*string) *ListDNADBResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListDNADBResponse) SetStatusCode(v int32) *ListDNADBResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListDNADBResponse) SetBody(v *ListDNADBResponseBody) *ListDNADBResponse {
+	s.Body = v
+	return s
+}
+
+type ListDNAFilesRequest struct {
+	DBId                 *string `json:"DBId,omitempty" xml:"DBId,omitempty"`
+	NextPageToken        *string `json:"NextPageToken,omitempty" xml:"NextPageToken,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s ListDNAFilesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDNAFilesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListDNAFilesRequest) SetDBId(v string) *ListDNAFilesRequest {
+	s.DBId = &v
+	return s
+}
+
+func (s *ListDNAFilesRequest) SetNextPageToken(v string) *ListDNAFilesRequest {
+	s.NextPageToken = &v
+	return s
+}
+
+func (s *ListDNAFilesRequest) SetOwnerAccount(v string) *ListDNAFilesRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *ListDNAFilesRequest) SetOwnerId(v int64) *ListDNAFilesRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *ListDNAFilesRequest) SetPageSize(v int32) *ListDNAFilesRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListDNAFilesRequest) SetResourceOwnerAccount(v string) *ListDNAFilesRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *ListDNAFilesRequest) SetResourceOwnerId(v int64) *ListDNAFilesRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type ListDNAFilesResponseBody struct {
+	FileList      []*ListDNAFilesResponseBodyFileList `json:"FileList,omitempty" xml:"FileList,omitempty" type:"Repeated"`
+	NextPageToken *string                             `json:"NextPageToken,omitempty" xml:"NextPageToken,omitempty"`
+	RequestId     *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListDNAFilesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDNAFilesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListDNAFilesResponseBody) SetFileList(v []*ListDNAFilesResponseBodyFileList) *ListDNAFilesResponseBody {
+	s.FileList = v
+	return s
+}
+
+func (s *ListDNAFilesResponseBody) SetNextPageToken(v string) *ListDNAFilesResponseBody {
+	s.NextPageToken = &v
+	return s
+}
+
+func (s *ListDNAFilesResponseBody) SetRequestId(v string) *ListDNAFilesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListDNAFilesResponseBodyFileList struct {
+	InputFile  *ListDNAFilesResponseBodyFileListInputFile `json:"InputFile,omitempty" xml:"InputFile,omitempty" type:"Struct"`
+	PrimaryKey *string                                    `json:"PrimaryKey,omitempty" xml:"PrimaryKey,omitempty"`
+}
+
+func (s ListDNAFilesResponseBodyFileList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDNAFilesResponseBodyFileList) GoString() string {
+	return s.String()
+}
+
+func (s *ListDNAFilesResponseBodyFileList) SetInputFile(v *ListDNAFilesResponseBodyFileListInputFile) *ListDNAFilesResponseBodyFileList {
+	s.InputFile = v
+	return s
+}
+
+func (s *ListDNAFilesResponseBodyFileList) SetPrimaryKey(v string) *ListDNAFilesResponseBodyFileList {
+	s.PrimaryKey = &v
+	return s
+}
+
+type ListDNAFilesResponseBodyFileListInputFile struct {
+	Bucket   *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
+	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
+	Object   *string `json:"Object,omitempty" xml:"Object,omitempty"`
+}
+
+func (s ListDNAFilesResponseBodyFileListInputFile) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDNAFilesResponseBodyFileListInputFile) GoString() string {
+	return s.String()
+}
+
+func (s *ListDNAFilesResponseBodyFileListInputFile) SetBucket(v string) *ListDNAFilesResponseBodyFileListInputFile {
+	s.Bucket = &v
+	return s
+}
+
+func (s *ListDNAFilesResponseBodyFileListInputFile) SetLocation(v string) *ListDNAFilesResponseBodyFileListInputFile {
+	s.Location = &v
+	return s
+}
+
+func (s *ListDNAFilesResponseBodyFileListInputFile) SetObject(v string) *ListDNAFilesResponseBodyFileListInputFile {
+	s.Object = &v
+	return s
+}
+
+type ListDNAFilesResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListDNAFilesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListDNAFilesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDNAFilesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListDNAFilesResponse) SetHeaders(v map[string]*string) *ListDNAFilesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListDNAFilesResponse) SetStatusCode(v int32) *ListDNAFilesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListDNAFilesResponse) SetBody(v *ListDNAFilesResponseBody) *ListDNAFilesResponse {
 	s.Body = v
 	return s
 }
@@ -22025,6 +22905,205 @@ func (s *ListTranscodeJobsResponse) SetBody(v *ListTranscodeJobsResponseBody) *L
 	return s
 }
 
+type QueryDNAJobListRequest struct {
+	JobIds               *string `json:"JobIds,omitempty" xml:"JobIds,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s QueryDNAJobListRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryDNAJobListRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryDNAJobListRequest) SetJobIds(v string) *QueryDNAJobListRequest {
+	s.JobIds = &v
+	return s
+}
+
+func (s *QueryDNAJobListRequest) SetOwnerAccount(v string) *QueryDNAJobListRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *QueryDNAJobListRequest) SetOwnerId(v int64) *QueryDNAJobListRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *QueryDNAJobListRequest) SetResourceOwnerAccount(v string) *QueryDNAJobListRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *QueryDNAJobListRequest) SetResourceOwnerId(v int64) *QueryDNAJobListRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type QueryDNAJobListResponseBody struct {
+	JobList   []*QueryDNAJobListResponseBodyJobList `json:"JobList,omitempty" xml:"JobList,omitempty" type:"Repeated"`
+	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s QueryDNAJobListResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryDNAJobListResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryDNAJobListResponseBody) SetJobList(v []*QueryDNAJobListResponseBodyJobList) *QueryDNAJobListResponseBody {
+	s.JobList = v
+	return s
+}
+
+func (s *QueryDNAJobListResponseBody) SetRequestId(v string) *QueryDNAJobListResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type QueryDNAJobListResponseBodyJobList struct {
+	Code         *string                                  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Config       *string                                  `json:"Config,omitempty" xml:"Config,omitempty"`
+	CreationTime *string                                  `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	DBId         *string                                  `json:"DBId,omitempty" xml:"DBId,omitempty"`
+	DNAResult    *string                                  `json:"DNAResult,omitempty" xml:"DNAResult,omitempty"`
+	FinishTime   *string                                  `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
+	Id           *string                                  `json:"Id,omitempty" xml:"Id,omitempty"`
+	Input        *QueryDNAJobListResponseBodyJobListInput `json:"Input,omitempty" xml:"Input,omitempty" type:"Struct"`
+	Message      *string                                  `json:"Message,omitempty" xml:"Message,omitempty"`
+	PrimaryKey   *string                                  `json:"PrimaryKey,omitempty" xml:"PrimaryKey,omitempty"`
+	Status       *string                                  `json:"Status,omitempty" xml:"Status,omitempty"`
+	UserData     *string                                  `json:"UserData,omitempty" xml:"UserData,omitempty"`
+}
+
+func (s QueryDNAJobListResponseBodyJobList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryDNAJobListResponseBodyJobList) GoString() string {
+	return s.String()
+}
+
+func (s *QueryDNAJobListResponseBodyJobList) SetCode(v string) *QueryDNAJobListResponseBodyJobList {
+	s.Code = &v
+	return s
+}
+
+func (s *QueryDNAJobListResponseBodyJobList) SetConfig(v string) *QueryDNAJobListResponseBodyJobList {
+	s.Config = &v
+	return s
+}
+
+func (s *QueryDNAJobListResponseBodyJobList) SetCreationTime(v string) *QueryDNAJobListResponseBodyJobList {
+	s.CreationTime = &v
+	return s
+}
+
+func (s *QueryDNAJobListResponseBodyJobList) SetDBId(v string) *QueryDNAJobListResponseBodyJobList {
+	s.DBId = &v
+	return s
+}
+
+func (s *QueryDNAJobListResponseBodyJobList) SetDNAResult(v string) *QueryDNAJobListResponseBodyJobList {
+	s.DNAResult = &v
+	return s
+}
+
+func (s *QueryDNAJobListResponseBodyJobList) SetFinishTime(v string) *QueryDNAJobListResponseBodyJobList {
+	s.FinishTime = &v
+	return s
+}
+
+func (s *QueryDNAJobListResponseBodyJobList) SetId(v string) *QueryDNAJobListResponseBodyJobList {
+	s.Id = &v
+	return s
+}
+
+func (s *QueryDNAJobListResponseBodyJobList) SetInput(v *QueryDNAJobListResponseBodyJobListInput) *QueryDNAJobListResponseBodyJobList {
+	s.Input = v
+	return s
+}
+
+func (s *QueryDNAJobListResponseBodyJobList) SetMessage(v string) *QueryDNAJobListResponseBodyJobList {
+	s.Message = &v
+	return s
+}
+
+func (s *QueryDNAJobListResponseBodyJobList) SetPrimaryKey(v string) *QueryDNAJobListResponseBodyJobList {
+	s.PrimaryKey = &v
+	return s
+}
+
+func (s *QueryDNAJobListResponseBodyJobList) SetStatus(v string) *QueryDNAJobListResponseBodyJobList {
+	s.Status = &v
+	return s
+}
+
+func (s *QueryDNAJobListResponseBodyJobList) SetUserData(v string) *QueryDNAJobListResponseBodyJobList {
+	s.UserData = &v
+	return s
+}
+
+type QueryDNAJobListResponseBodyJobListInput struct {
+	Media *string `json:"Media,omitempty" xml:"Media,omitempty"`
+	Type  *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s QueryDNAJobListResponseBodyJobListInput) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryDNAJobListResponseBodyJobListInput) GoString() string {
+	return s.String()
+}
+
+func (s *QueryDNAJobListResponseBodyJobListInput) SetMedia(v string) *QueryDNAJobListResponseBodyJobListInput {
+	s.Media = &v
+	return s
+}
+
+func (s *QueryDNAJobListResponseBodyJobListInput) SetType(v string) *QueryDNAJobListResponseBodyJobListInput {
+	s.Type = &v
+	return s
+}
+
+type QueryDNAJobListResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *QueryDNAJobListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s QueryDNAJobListResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryDNAJobListResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryDNAJobListResponse) SetHeaders(v map[string]*string) *QueryDNAJobListResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryDNAJobListResponse) SetStatusCode(v int32) *QueryDNAJobListResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QueryDNAJobListResponse) SetBody(v *QueryDNAJobListResponseBody) *QueryDNAJobListResponse {
+	s.Body = v
+	return s
+}
+
 type QueryIProductionJobRequest struct {
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	JobId       *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
@@ -25788,6 +26867,87 @@ func (s *SetEventCallbackResponse) SetBody(v *SetEventCallbackResponseBody) *Set
 	return s
 }
 
+type StartWorkflowRequest struct {
+	TaskInput  *string `json:"TaskInput,omitempty" xml:"TaskInput,omitempty"`
+	UserData   *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	WorkflowId *string `json:"WorkflowId,omitempty" xml:"WorkflowId,omitempty"`
+}
+
+func (s StartWorkflowRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartWorkflowRequest) GoString() string {
+	return s.String()
+}
+
+func (s *StartWorkflowRequest) SetTaskInput(v string) *StartWorkflowRequest {
+	s.TaskInput = &v
+	return s
+}
+
+func (s *StartWorkflowRequest) SetUserData(v string) *StartWorkflowRequest {
+	s.UserData = &v
+	return s
+}
+
+func (s *StartWorkflowRequest) SetWorkflowId(v string) *StartWorkflowRequest {
+	s.WorkflowId = &v
+	return s
+}
+
+type StartWorkflowResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+}
+
+func (s StartWorkflowResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartWorkflowResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *StartWorkflowResponseBody) SetRequestId(v string) *StartWorkflowResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *StartWorkflowResponseBody) SetTaskId(v string) *StartWorkflowResponseBody {
+	s.TaskId = &v
+	return s
+}
+
+type StartWorkflowResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *StartWorkflowResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s StartWorkflowResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartWorkflowResponse) GoString() string {
+	return s.String()
+}
+
+func (s *StartWorkflowResponse) SetHeaders(v map[string]*string) *StartWorkflowResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *StartWorkflowResponse) SetStatusCode(v int32) *StartWorkflowResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *StartWorkflowResponse) SetBody(v *StartWorkflowResponseBody) *StartWorkflowResponse {
+	s.Body = v
+	return s
+}
+
 type SubmitASRJobRequest struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	Duration    *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
@@ -26000,6 +27160,235 @@ func (s *SubmitAudioProduceJobResponse) SetStatusCode(v int32) *SubmitAudioProdu
 }
 
 func (s *SubmitAudioProduceJobResponse) SetBody(v *SubmitAudioProduceJobResponseBody) *SubmitAudioProduceJobResponse {
+	s.Body = v
+	return s
+}
+
+type SubmitDNAJobRequest struct {
+	Config               *string                   `json:"Config,omitempty" xml:"Config,omitempty"`
+	DBId                 *string                   `json:"DBId,omitempty" xml:"DBId,omitempty"`
+	Input                *SubmitDNAJobRequestInput `json:"Input,omitempty" xml:"Input,omitempty" type:"Struct"`
+	OwnerAccount         *string                   `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64                    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	PipelineId           *string                   `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
+	PrimaryKey           *string                   `json:"PrimaryKey,omitempty" xml:"PrimaryKey,omitempty"`
+	ResourceOwnerAccount *string                   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64                    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	TemplateId           *string                   `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	UserData             *string                   `json:"UserData,omitempty" xml:"UserData,omitempty"`
+}
+
+func (s SubmitDNAJobRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitDNAJobRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitDNAJobRequest) SetConfig(v string) *SubmitDNAJobRequest {
+	s.Config = &v
+	return s
+}
+
+func (s *SubmitDNAJobRequest) SetDBId(v string) *SubmitDNAJobRequest {
+	s.DBId = &v
+	return s
+}
+
+func (s *SubmitDNAJobRequest) SetInput(v *SubmitDNAJobRequestInput) *SubmitDNAJobRequest {
+	s.Input = v
+	return s
+}
+
+func (s *SubmitDNAJobRequest) SetOwnerAccount(v string) *SubmitDNAJobRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *SubmitDNAJobRequest) SetOwnerId(v int64) *SubmitDNAJobRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *SubmitDNAJobRequest) SetPipelineId(v string) *SubmitDNAJobRequest {
+	s.PipelineId = &v
+	return s
+}
+
+func (s *SubmitDNAJobRequest) SetPrimaryKey(v string) *SubmitDNAJobRequest {
+	s.PrimaryKey = &v
+	return s
+}
+
+func (s *SubmitDNAJobRequest) SetResourceOwnerAccount(v string) *SubmitDNAJobRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *SubmitDNAJobRequest) SetResourceOwnerId(v int64) *SubmitDNAJobRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *SubmitDNAJobRequest) SetTemplateId(v string) *SubmitDNAJobRequest {
+	s.TemplateId = &v
+	return s
+}
+
+func (s *SubmitDNAJobRequest) SetUserData(v string) *SubmitDNAJobRequest {
+	s.UserData = &v
+	return s
+}
+
+type SubmitDNAJobRequestInput struct {
+	Media *string `json:"Media,omitempty" xml:"Media,omitempty"`
+	Type  *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s SubmitDNAJobRequestInput) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitDNAJobRequestInput) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitDNAJobRequestInput) SetMedia(v string) *SubmitDNAJobRequestInput {
+	s.Media = &v
+	return s
+}
+
+func (s *SubmitDNAJobRequestInput) SetType(v string) *SubmitDNAJobRequestInput {
+	s.Type = &v
+	return s
+}
+
+type SubmitDNAJobShrinkRequest struct {
+	Config               *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	DBId                 *string `json:"DBId,omitempty" xml:"DBId,omitempty"`
+	InputShrink          *string `json:"Input,omitempty" xml:"Input,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	PipelineId           *string `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
+	PrimaryKey           *string `json:"PrimaryKey,omitempty" xml:"PrimaryKey,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	TemplateId           *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	UserData             *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+}
+
+func (s SubmitDNAJobShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitDNAJobShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitDNAJobShrinkRequest) SetConfig(v string) *SubmitDNAJobShrinkRequest {
+	s.Config = &v
+	return s
+}
+
+func (s *SubmitDNAJobShrinkRequest) SetDBId(v string) *SubmitDNAJobShrinkRequest {
+	s.DBId = &v
+	return s
+}
+
+func (s *SubmitDNAJobShrinkRequest) SetInputShrink(v string) *SubmitDNAJobShrinkRequest {
+	s.InputShrink = &v
+	return s
+}
+
+func (s *SubmitDNAJobShrinkRequest) SetOwnerAccount(v string) *SubmitDNAJobShrinkRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *SubmitDNAJobShrinkRequest) SetOwnerId(v int64) *SubmitDNAJobShrinkRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *SubmitDNAJobShrinkRequest) SetPipelineId(v string) *SubmitDNAJobShrinkRequest {
+	s.PipelineId = &v
+	return s
+}
+
+func (s *SubmitDNAJobShrinkRequest) SetPrimaryKey(v string) *SubmitDNAJobShrinkRequest {
+	s.PrimaryKey = &v
+	return s
+}
+
+func (s *SubmitDNAJobShrinkRequest) SetResourceOwnerAccount(v string) *SubmitDNAJobShrinkRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *SubmitDNAJobShrinkRequest) SetResourceOwnerId(v int64) *SubmitDNAJobShrinkRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *SubmitDNAJobShrinkRequest) SetTemplateId(v string) *SubmitDNAJobShrinkRequest {
+	s.TemplateId = &v
+	return s
+}
+
+func (s *SubmitDNAJobShrinkRequest) SetUserData(v string) *SubmitDNAJobShrinkRequest {
+	s.UserData = &v
+	return s
+}
+
+type SubmitDNAJobResponseBody struct {
+	JobId     *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s SubmitDNAJobResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitDNAJobResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitDNAJobResponseBody) SetJobId(v string) *SubmitDNAJobResponseBody {
+	s.JobId = &v
+	return s
+}
+
+func (s *SubmitDNAJobResponseBody) SetRequestId(v string) *SubmitDNAJobResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type SubmitDNAJobResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SubmitDNAJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SubmitDNAJobResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitDNAJobResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitDNAJobResponse) SetHeaders(v map[string]*string) *SubmitDNAJobResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SubmitDNAJobResponse) SetStatusCode(v int32) *SubmitDNAJobResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SubmitDNAJobResponse) SetBody(v *SubmitDNAJobResponseBody) *SubmitDNAJobResponse {
 	s.Body = v
 	return s
 }
@@ -35205,6 +36594,66 @@ func (client *Client) BatchGetMediaInfos(request *BatchGetMediaInfosRequest) (_r
 	return _result, _err
 }
 
+func (client *Client) CancelDNAJobWithOptions(request *CancelDNAJobRequest, runtime *util.RuntimeOptions) (_result *CancelDNAJobResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.JobId)) {
+		query["JobId"] = request.JobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CancelDNAJob"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CancelDNAJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CancelDNAJob(request *CancelDNAJobRequest) (_result *CancelDNAJobResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CancelDNAJobResponse{}
+	_body, _err := client.CancelDNAJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) CancelFavoritePublicMediaWithOptions(request *CancelFavoritePublicMediaRequest, runtime *util.RuntimeOptions) (_result *CancelFavoritePublicMediaResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -35346,6 +36795,74 @@ func (client *Client) CreateCustomTemplate(request *CreateCustomTemplateRequest)
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateCustomTemplateResponse{}
 	_body, _err := client.CreateCustomTemplateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateDNADBWithOptions(request *CreateDNADBRequest, runtime *util.RuntimeOptions) (_result *CreateDNADBResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Model)) {
+		query["Model"] = request.Model
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateDNADB"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateDNADBResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateDNADB(request *CreateDNADBRequest) (_result *CreateDNADBResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateDNADBResponse{}
+	_body, _err := client.CreateDNADBWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -35858,6 +37375,130 @@ func (client *Client) DeleteCustomTemplate(request *DeleteCustomTemplateRequest)
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteCustomTemplateResponse{}
 	_body, _err := client.DeleteCustomTemplateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteDNADBWithOptions(request *DeleteDNADBRequest, runtime *util.RuntimeOptions) (_result *DeleteDNADBResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBId)) {
+		query["DBId"] = request.DBId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteDNADB"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteDNADBResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteDNADB(request *DeleteDNADBRequest) (_result *DeleteDNADBResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteDNADBResponse{}
+	_body, _err := client.DeleteDNADBWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteDNAFilesWithOptions(request *DeleteDNAFilesRequest, runtime *util.RuntimeOptions) (_result *DeleteDNAFilesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBId)) {
+		query["DBId"] = request.DBId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PrimaryKeys)) {
+		query["PrimaryKeys"] = request.PrimaryKeys
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteDNAFiles"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteDNAFilesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteDNAFiles(request *DeleteDNAFilesRequest) (_result *DeleteDNAFilesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteDNAFilesResponse{}
+	_body, _err := client.DeleteDNAFilesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -39193,6 +40834,50 @@ func (client *Client) GetUrlUploadInfos(request *GetUrlUploadInfosRequest) (_res
 	return _result, _err
 }
 
+func (client *Client) GetWorkflowTaskWithOptions(request *GetWorkflowTaskRequest, runtime *util.RuntimeOptions) (_result *GetWorkflowTaskResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
+		query["TaskId"] = request.TaskId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetWorkflowTask"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetWorkflowTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetWorkflowTask(request *GetWorkflowTaskRequest) (_result *GetWorkflowTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetWorkflowTaskResponse{}
+	_body, _err := client.GetWorkflowTaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ListAllPublicMediaTagsWithOptions(request *ListAllPublicMediaTagsRequest, runtime *util.RuntimeOptions) (_result *ListAllPublicMediaTagsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -39302,6 +40987,134 @@ func (client *Client) ListCustomTemplates(request *ListCustomTemplatesRequest) (
 	runtime := &util.RuntimeOptions{}
 	_result = &ListCustomTemplatesResponse{}
 	_body, _err := client.ListCustomTemplatesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListDNADBWithOptions(request *ListDNADBRequest, runtime *util.RuntimeOptions) (_result *ListDNADBResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBIds)) {
+		query["DBIds"] = request.DBIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListDNADB"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListDNADBResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListDNADB(request *ListDNADBRequest) (_result *ListDNADBResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListDNADBResponse{}
+	_body, _err := client.ListDNADBWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListDNAFilesWithOptions(request *ListDNAFilesRequest, runtime *util.RuntimeOptions) (_result *ListDNAFilesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBId)) {
+		query["DBId"] = request.DBId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextPageToken)) {
+		query["NextPageToken"] = request.NextPageToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListDNAFiles"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListDNAFilesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListDNAFiles(request *ListDNAFilesRequest) (_result *ListDNAFilesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListDNAFilesResponse{}
+	_body, _err := client.ListDNAFilesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -40393,6 +42206,66 @@ func (client *Client) ListTranscodeJobs(request *ListTranscodeJobsRequest) (_res
 	return _result, _err
 }
 
+func (client *Client) QueryDNAJobListWithOptions(request *QueryDNAJobListRequest, runtime *util.RuntimeOptions) (_result *QueryDNAJobListResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.JobIds)) {
+		query["JobIds"] = request.JobIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryDNAJobList"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QueryDNAJobListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) QueryDNAJobList(request *QueryDNAJobListRequest) (_result *QueryDNAJobListResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QueryDNAJobListResponse{}
+	_body, _err := client.QueryDNAJobListWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) QueryIProductionJobWithOptions(request *QueryIProductionJobRequest, runtime *util.RuntimeOptions) (_result *QueryIProductionJobResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -41297,6 +43170,58 @@ func (client *Client) SetEventCallback(request *SetEventCallbackRequest) (_resul
 	return _result, _err
 }
 
+func (client *Client) StartWorkflowWithOptions(request *StartWorkflowRequest, runtime *util.RuntimeOptions) (_result *StartWorkflowResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.TaskInput)) {
+		query["TaskInput"] = request.TaskInput
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserData)) {
+		query["UserData"] = request.UserData
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkflowId)) {
+		query["WorkflowId"] = request.WorkflowId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("StartWorkflow"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &StartWorkflowResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) StartWorkflow(request *StartWorkflowRequest) (_result *StartWorkflowResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &StartWorkflowResponse{}
+	_body, _err := client.StartWorkflowWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) SubmitASRJobWithOptions(request *SubmitASRJobRequest, runtime *util.RuntimeOptions) (_result *SubmitASRJobResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -41422,6 +43347,96 @@ func (client *Client) SubmitAudioProduceJob(request *SubmitAudioProduceJobReques
 	runtime := &util.RuntimeOptions{}
 	_result = &SubmitAudioProduceJobResponse{}
 	_body, _err := client.SubmitAudioProduceJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SubmitDNAJobWithOptions(tmpReq *SubmitDNAJobRequest, runtime *util.RuntimeOptions) (_result *SubmitDNAJobResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &SubmitDNAJobShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Input)) {
+		request.InputShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Input, tea.String("Input"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Config)) {
+		query["Config"] = request.Config
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DBId)) {
+		query["DBId"] = request.DBId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InputShrink)) {
+		query["Input"] = request.InputShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PipelineId)) {
+		query["PipelineId"] = request.PipelineId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PrimaryKey)) {
+		query["PrimaryKey"] = request.PrimaryKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateId)) {
+		query["TemplateId"] = request.TemplateId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserData)) {
+		query["UserData"] = request.UserData
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SubmitDNAJob"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SubmitDNAJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SubmitDNAJob(request *SubmitDNAJobRequest) (_result *SubmitDNAJobResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SubmitDNAJobResponse{}
+	_body, _err := client.SubmitDNAJobWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
