@@ -18749,9 +18749,11 @@ func (s *ListEventsResponse) SetBody(v *ListEventsResponseBody) *ListEventsRespo
 }
 
 type ListInspectionDevicesRequest struct {
+	AppState   *string   `json:"AppState,omitempty" xml:"AppState,omitempty"`
 	InstanceId *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	Model      []*string `json:"Model,omitempty" xml:"Model,omitempty" type:"Repeated"`
 	Role       *string   `json:"Role,omitempty" xml:"Role,omitempty"`
+	Space      *string   `json:"Space,omitempty" xml:"Space,omitempty"`
 	Vendor     *string   `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
 }
 
@@ -18761,6 +18763,11 @@ func (s ListInspectionDevicesRequest) String() string {
 
 func (s ListInspectionDevicesRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ListInspectionDevicesRequest) SetAppState(v string) *ListInspectionDevicesRequest {
+	s.AppState = &v
+	return s
 }
 
 func (s *ListInspectionDevicesRequest) SetInstanceId(v string) *ListInspectionDevicesRequest {
@@ -18778,15 +18785,22 @@ func (s *ListInspectionDevicesRequest) SetRole(v string) *ListInspectionDevicesR
 	return s
 }
 
+func (s *ListInspectionDevicesRequest) SetSpace(v string) *ListInspectionDevicesRequest {
+	s.Space = &v
+	return s
+}
+
 func (s *ListInspectionDevicesRequest) SetVendor(v string) *ListInspectionDevicesRequest {
 	s.Vendor = &v
 	return s
 }
 
 type ListInspectionDevicesShrinkRequest struct {
+	AppState    *string `json:"AppState,omitempty" xml:"AppState,omitempty"`
 	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	ModelShrink *string `json:"Model,omitempty" xml:"Model,omitempty"`
 	Role        *string `json:"Role,omitempty" xml:"Role,omitempty"`
+	Space       *string `json:"Space,omitempty" xml:"Space,omitempty"`
 	Vendor      *string `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
 }
 
@@ -18796,6 +18810,11 @@ func (s ListInspectionDevicesShrinkRequest) String() string {
 
 func (s ListInspectionDevicesShrinkRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ListInspectionDevicesShrinkRequest) SetAppState(v string) *ListInspectionDevicesShrinkRequest {
+	s.AppState = &v
+	return s
 }
 
 func (s *ListInspectionDevicesShrinkRequest) SetInstanceId(v string) *ListInspectionDevicesShrinkRequest {
@@ -18810,6 +18829,11 @@ func (s *ListInspectionDevicesShrinkRequest) SetModelShrink(v string) *ListInspe
 
 func (s *ListInspectionDevicesShrinkRequest) SetRole(v string) *ListInspectionDevicesShrinkRequest {
 	s.Role = &v
+	return s
+}
+
+func (s *ListInspectionDevicesShrinkRequest) SetSpace(v string) *ListInspectionDevicesShrinkRequest {
+	s.Space = &v
 	return s
 }
 
@@ -18842,6 +18866,7 @@ func (s *ListInspectionDevicesResponseBody) SetRequestId(v string) *ListInspecti
 }
 
 type ListInspectionDevicesResponseBodyInspectionScripts struct {
+	AppState    *string `json:"AppState,omitempty" xml:"AppState,omitempty"`
 	DeviceId    *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
 	DeviceState *string `json:"DeviceState,omitempty" xml:"DeviceState,omitempty"`
 	HostName    *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
@@ -18858,6 +18883,11 @@ func (s ListInspectionDevicesResponseBodyInspectionScripts) String() string {
 
 func (s ListInspectionDevicesResponseBodyInspectionScripts) GoString() string {
 	return s.String()
+}
+
+func (s *ListInspectionDevicesResponseBodyInspectionScripts) SetAppState(v string) *ListInspectionDevicesResponseBodyInspectionScripts {
+	s.AppState = &v
+	return s
 }
 
 func (s *ListInspectionDevicesResponseBodyInspectionScripts) SetDeviceId(v string) *ListInspectionDevicesResponseBodyInspectionScripts {
