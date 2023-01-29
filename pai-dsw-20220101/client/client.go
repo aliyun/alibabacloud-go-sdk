@@ -1066,24 +1066,25 @@ func (s *GetIdleInstanceCullerResponse) SetBody(v *GetIdleInstanceCullerResponse
 }
 
 type GetInstanceResponseBody struct {
-	AcceleratorType            *string                                       `json:"AcceleratorType,omitempty" xml:"AcceleratorType,omitempty"`
-	Accessibility              *string                                       `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
-	AccumulatedRunningTimeInMs *int64                                        `json:"AccumulatedRunningTimeInMs,omitempty" xml:"AccumulatedRunningTimeInMs,omitempty"`
-	Code                       *string                                       `json:"Code,omitempty" xml:"Code,omitempty"`
-	Datasets                   []*GetInstanceResponseBodyDatasets            `json:"Datasets,omitempty" xml:"Datasets,omitempty" type:"Repeated"`
-	EcsSpec                    *string                                       `json:"EcsSpec,omitempty" xml:"EcsSpec,omitempty"`
-	EnvironmentVariables       map[string]*string                            `json:"EnvironmentVariables,omitempty" xml:"EnvironmentVariables,omitempty"`
-	GmtCreateTime              *string                                       `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	GmtModifiedTime            *string                                       `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
-	HttpStatusCode             *int32                                        `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	IdleInstanceCuller         *GetInstanceResponseBodyIdleInstanceCuller    `json:"IdleInstanceCuller,omitempty" xml:"IdleInstanceCuller,omitempty" type:"Struct"`
-	ImageId                    *string                                       `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	ImageName                  *string                                       `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
-	ImageUrl                   *string                                       `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
-	InstanceId                 *string                                       `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	InstanceName               *string                                       `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	InstanceShutdownTimer      *GetInstanceResponseBodyInstanceShutdownTimer `json:"InstanceShutdownTimer,omitempty" xml:"InstanceShutdownTimer,omitempty" type:"Struct"`
-	InstanceUrl                *string                                       `json:"InstanceUrl,omitempty" xml:"InstanceUrl,omitempty"`
+	AcceleratorType            *string                                        `json:"AcceleratorType,omitempty" xml:"AcceleratorType,omitempty"`
+	Accessibility              *string                                        `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
+	AccumulatedRunningTimeInMs *int64                                         `json:"AccumulatedRunningTimeInMs,omitempty" xml:"AccumulatedRunningTimeInMs,omitempty"`
+	Code                       *string                                        `json:"Code,omitempty" xml:"Code,omitempty"`
+	Datasets                   []*GetInstanceResponseBodyDatasets             `json:"Datasets,omitempty" xml:"Datasets,omitempty" type:"Repeated"`
+	EcsSpec                    *string                                        `json:"EcsSpec,omitempty" xml:"EcsSpec,omitempty"`
+	EnvironmentVariables       map[string]*string                             `json:"EnvironmentVariables,omitempty" xml:"EnvironmentVariables,omitempty"`
+	GmtCreateTime              *string                                        `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	GmtModifiedTime            *string                                        `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	HttpStatusCode             *int32                                         `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	IdleInstanceCuller         *GetInstanceResponseBodyIdleInstanceCuller     `json:"IdleInstanceCuller,omitempty" xml:"IdleInstanceCuller,omitempty" type:"Struct"`
+	ImageId                    *string                                        `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	ImageName                  *string                                        `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
+	ImageUrl                   *string                                        `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
+	InstanceId                 *string                                        `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceName               *string                                        `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	InstanceShutdownTimer      *GetInstanceResponseBodyInstanceShutdownTimer  `json:"InstanceShutdownTimer,omitempty" xml:"InstanceShutdownTimer,omitempty" type:"Struct"`
+	InstanceSnapshotList       []*GetInstanceResponseBodyInstanceSnapshotList `json:"InstanceSnapshotList,omitempty" xml:"InstanceSnapshotList,omitempty" type:"Repeated"`
+	InstanceUrl                *string                                        `json:"InstanceUrl,omitempty" xml:"InstanceUrl,omitempty"`
 	// Jupyterlab Url。
 	JupyterlabUrl     *string                                   `json:"JupyterlabUrl,omitempty" xml:"JupyterlabUrl,omitempty"`
 	Labels            []*GetInstanceResponseBodyLabels          `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
@@ -1199,6 +1200,11 @@ func (s *GetInstanceResponseBody) SetInstanceName(v string) *GetInstanceResponse
 
 func (s *GetInstanceResponseBody) SetInstanceShutdownTimer(v *GetInstanceResponseBodyInstanceShutdownTimer) *GetInstanceResponseBody {
 	s.InstanceShutdownTimer = v
+	return s
+}
+
+func (s *GetInstanceResponseBody) SetInstanceSnapshotList(v []*GetInstanceResponseBodyInstanceSnapshotList) *GetInstanceResponseBody {
+	s.InstanceSnapshotList = v
 	return s
 }
 
@@ -1417,6 +1423,71 @@ func (s *GetInstanceResponseBodyInstanceShutdownTimer) SetRemainingTimeInMs(v in
 	return s
 }
 
+type GetInstanceResponseBodyInstanceSnapshotList struct {
+	GmtCreateTime   *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	ImageId         *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	ImageName       *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
+	ImageUrl        *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
+	ReasonCode      *string `json:"ReasonCode,omitempty" xml:"ReasonCode,omitempty"`
+	ReasonMessage   *string `json:"ReasonMessage,omitempty" xml:"ReasonMessage,omitempty"`
+	RepositoryUrl   *string `json:"RepositoryUrl,omitempty" xml:"RepositoryUrl,omitempty"`
+	Status          *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s GetInstanceResponseBodyInstanceSnapshotList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetInstanceResponseBodyInstanceSnapshotList) GoString() string {
+	return s.String()
+}
+
+func (s *GetInstanceResponseBodyInstanceSnapshotList) SetGmtCreateTime(v string) *GetInstanceResponseBodyInstanceSnapshotList {
+	s.GmtCreateTime = &v
+	return s
+}
+
+func (s *GetInstanceResponseBodyInstanceSnapshotList) SetGmtModifiedTime(v string) *GetInstanceResponseBodyInstanceSnapshotList {
+	s.GmtModifiedTime = &v
+	return s
+}
+
+func (s *GetInstanceResponseBodyInstanceSnapshotList) SetImageId(v string) *GetInstanceResponseBodyInstanceSnapshotList {
+	s.ImageId = &v
+	return s
+}
+
+func (s *GetInstanceResponseBodyInstanceSnapshotList) SetImageName(v string) *GetInstanceResponseBodyInstanceSnapshotList {
+	s.ImageName = &v
+	return s
+}
+
+func (s *GetInstanceResponseBodyInstanceSnapshotList) SetImageUrl(v string) *GetInstanceResponseBodyInstanceSnapshotList {
+	s.ImageUrl = &v
+	return s
+}
+
+func (s *GetInstanceResponseBodyInstanceSnapshotList) SetReasonCode(v string) *GetInstanceResponseBodyInstanceSnapshotList {
+	s.ReasonCode = &v
+	return s
+}
+
+func (s *GetInstanceResponseBodyInstanceSnapshotList) SetReasonMessage(v string) *GetInstanceResponseBodyInstanceSnapshotList {
+	s.ReasonMessage = &v
+	return s
+}
+
+func (s *GetInstanceResponseBodyInstanceSnapshotList) SetRepositoryUrl(v string) *GetInstanceResponseBodyInstanceSnapshotList {
+	s.RepositoryUrl = &v
+	return s
+}
+
+func (s *GetInstanceResponseBodyInstanceSnapshotList) SetStatus(v string) *GetInstanceResponseBodyInstanceSnapshotList {
+	s.Status = &v
+	return s
+}
+
 type GetInstanceResponseBodyLabels struct {
 	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
@@ -1446,7 +1517,10 @@ type GetInstanceResponseBodyLatestSnapshot struct {
 	ImageId         *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
 	ImageName       *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
 	ImageUrl        *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
+	ReasonCode      *string `json:"ReasonCode,omitempty" xml:"ReasonCode,omitempty"`
+	ReasonMessage   *string `json:"ReasonMessage,omitempty" xml:"ReasonMessage,omitempty"`
 	RepositoryUrl   *string `json:"RepositoryUrl,omitempty" xml:"RepositoryUrl,omitempty"`
+	Status          *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s GetInstanceResponseBodyLatestSnapshot) String() string {
@@ -1482,8 +1556,23 @@ func (s *GetInstanceResponseBodyLatestSnapshot) SetImageUrl(v string) *GetInstan
 	return s
 }
 
+func (s *GetInstanceResponseBodyLatestSnapshot) SetReasonCode(v string) *GetInstanceResponseBodyLatestSnapshot {
+	s.ReasonCode = &v
+	return s
+}
+
+func (s *GetInstanceResponseBodyLatestSnapshot) SetReasonMessage(v string) *GetInstanceResponseBodyLatestSnapshot {
+	s.ReasonMessage = &v
+	return s
+}
+
 func (s *GetInstanceResponseBodyLatestSnapshot) SetRepositoryUrl(v string) *GetInstanceResponseBodyLatestSnapshot {
 	s.RepositoryUrl = &v
+	return s
+}
+
+func (s *GetInstanceResponseBodyLatestSnapshot) SetStatus(v string) *GetInstanceResponseBodyLatestSnapshot {
+	s.Status = &v
 	return s
 }
 
@@ -3134,22 +3223,23 @@ func (s *ListInstancesResponseBody) SetTotalCount(v int64) *ListInstancesRespons
 }
 
 type ListInstancesResponseBodyInstances struct {
-	AcceleratorType            *string                                                  `json:"AcceleratorType,omitempty" xml:"AcceleratorType,omitempty"`
-	Accessibility              *string                                                  `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
-	AccumulatedRunningTimeInMs *int64                                                   `json:"AccumulatedRunningTimeInMs,omitempty" xml:"AccumulatedRunningTimeInMs,omitempty"`
-	Datasets                   []*ListInstancesResponseBodyInstancesDatasets            `json:"Datasets,omitempty" xml:"Datasets,omitempty" type:"Repeated"`
-	EcsSpec                    *string                                                  `json:"EcsSpec,omitempty" xml:"EcsSpec,omitempty"`
-	EnvironmentVariables       map[string]*string                                       `json:"EnvironmentVariables,omitempty" xml:"EnvironmentVariables,omitempty"`
-	GmtCreateTime              *string                                                  `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	GmtModifiedTime            *string                                                  `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
-	IdleInstanceCuller         *ListInstancesResponseBodyInstancesIdleInstanceCuller    `json:"IdleInstanceCuller,omitempty" xml:"IdleInstanceCuller,omitempty" type:"Struct"`
-	ImageId                    *string                                                  `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	ImageName                  *string                                                  `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
-	ImageUrl                   *string                                                  `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
-	InstanceId                 *string                                                  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	InstanceName               *string                                                  `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	InstanceShutdownTimer      *ListInstancesResponseBodyInstancesInstanceShutdownTimer `json:"InstanceShutdownTimer,omitempty" xml:"InstanceShutdownTimer,omitempty" type:"Struct"`
-	InstanceUrl                *string                                                  `json:"InstanceUrl,omitempty" xml:"InstanceUrl,omitempty"`
+	AcceleratorType            *string                                                   `json:"AcceleratorType,omitempty" xml:"AcceleratorType,omitempty"`
+	Accessibility              *string                                                   `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
+	AccumulatedRunningTimeInMs *int64                                                    `json:"AccumulatedRunningTimeInMs,omitempty" xml:"AccumulatedRunningTimeInMs,omitempty"`
+	Datasets                   []*ListInstancesResponseBodyInstancesDatasets             `json:"Datasets,omitempty" xml:"Datasets,omitempty" type:"Repeated"`
+	EcsSpec                    *string                                                   `json:"EcsSpec,omitempty" xml:"EcsSpec,omitempty"`
+	EnvironmentVariables       map[string]*string                                        `json:"EnvironmentVariables,omitempty" xml:"EnvironmentVariables,omitempty"`
+	GmtCreateTime              *string                                                   `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	GmtModifiedTime            *string                                                   `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	IdleInstanceCuller         *ListInstancesResponseBodyInstancesIdleInstanceCuller     `json:"IdleInstanceCuller,omitempty" xml:"IdleInstanceCuller,omitempty" type:"Struct"`
+	ImageId                    *string                                                   `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	ImageName                  *string                                                   `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
+	ImageUrl                   *string                                                   `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
+	InstanceId                 *string                                                   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceName               *string                                                   `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	InstanceShutdownTimer      *ListInstancesResponseBodyInstancesInstanceShutdownTimer  `json:"InstanceShutdownTimer,omitempty" xml:"InstanceShutdownTimer,omitempty" type:"Struct"`
+	InstanceSnapshotList       []*ListInstancesResponseBodyInstancesInstanceSnapshotList `json:"InstanceSnapshotList,omitempty" xml:"InstanceSnapshotList,omitempty" type:"Repeated"`
+	InstanceUrl                *string                                                   `json:"InstanceUrl,omitempty" xml:"InstanceUrl,omitempty"`
 	// Jupyterlab Url。
 	JupyterlabUrl     *string                                              `json:"JupyterlabUrl,omitempty" xml:"JupyterlabUrl,omitempty"`
 	Labels            []*ListInstancesResponseBodyInstancesLabels          `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
@@ -3252,6 +3342,11 @@ func (s *ListInstancesResponseBodyInstances) SetInstanceName(v string) *ListInst
 
 func (s *ListInstancesResponseBodyInstances) SetInstanceShutdownTimer(v *ListInstancesResponseBodyInstancesInstanceShutdownTimer) *ListInstancesResponseBodyInstances {
 	s.InstanceShutdownTimer = v
+	return s
+}
+
+func (s *ListInstancesResponseBodyInstances) SetInstanceSnapshotList(v []*ListInstancesResponseBodyInstancesInstanceSnapshotList) *ListInstancesResponseBodyInstances {
+	s.InstanceSnapshotList = v
 	return s
 }
 
@@ -3455,6 +3550,71 @@ func (s *ListInstancesResponseBodyInstancesInstanceShutdownTimer) SetRemainingTi
 	return s
 }
 
+type ListInstancesResponseBodyInstancesInstanceSnapshotList struct {
+	GmtCreateTime   *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	ImageId         *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	ImageName       *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
+	ImageUrl        *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
+	ReasonCode      *string `json:"ReasonCode,omitempty" xml:"ReasonCode,omitempty"`
+	ReasonMessage   *string `json:"ReasonMessage,omitempty" xml:"ReasonMessage,omitempty"`
+	RepositoryUrl   *string `json:"RepositoryUrl,omitempty" xml:"RepositoryUrl,omitempty"`
+	Status          *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s ListInstancesResponseBodyInstancesInstanceSnapshotList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInstancesResponseBodyInstancesInstanceSnapshotList) GoString() string {
+	return s.String()
+}
+
+func (s *ListInstancesResponseBodyInstancesInstanceSnapshotList) SetGmtCreateTime(v string) *ListInstancesResponseBodyInstancesInstanceSnapshotList {
+	s.GmtCreateTime = &v
+	return s
+}
+
+func (s *ListInstancesResponseBodyInstancesInstanceSnapshotList) SetGmtModifiedTime(v string) *ListInstancesResponseBodyInstancesInstanceSnapshotList {
+	s.GmtModifiedTime = &v
+	return s
+}
+
+func (s *ListInstancesResponseBodyInstancesInstanceSnapshotList) SetImageId(v string) *ListInstancesResponseBodyInstancesInstanceSnapshotList {
+	s.ImageId = &v
+	return s
+}
+
+func (s *ListInstancesResponseBodyInstancesInstanceSnapshotList) SetImageName(v string) *ListInstancesResponseBodyInstancesInstanceSnapshotList {
+	s.ImageName = &v
+	return s
+}
+
+func (s *ListInstancesResponseBodyInstancesInstanceSnapshotList) SetImageUrl(v string) *ListInstancesResponseBodyInstancesInstanceSnapshotList {
+	s.ImageUrl = &v
+	return s
+}
+
+func (s *ListInstancesResponseBodyInstancesInstanceSnapshotList) SetReasonCode(v string) *ListInstancesResponseBodyInstancesInstanceSnapshotList {
+	s.ReasonCode = &v
+	return s
+}
+
+func (s *ListInstancesResponseBodyInstancesInstanceSnapshotList) SetReasonMessage(v string) *ListInstancesResponseBodyInstancesInstanceSnapshotList {
+	s.ReasonMessage = &v
+	return s
+}
+
+func (s *ListInstancesResponseBodyInstancesInstanceSnapshotList) SetRepositoryUrl(v string) *ListInstancesResponseBodyInstancesInstanceSnapshotList {
+	s.RepositoryUrl = &v
+	return s
+}
+
+func (s *ListInstancesResponseBodyInstancesInstanceSnapshotList) SetStatus(v string) *ListInstancesResponseBodyInstancesInstanceSnapshotList {
+	s.Status = &v
+	return s
+}
+
 type ListInstancesResponseBodyInstancesLabels struct {
 	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
@@ -3484,7 +3644,10 @@ type ListInstancesResponseBodyInstancesLatestSnapshot struct {
 	ImageId         *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
 	ImageName       *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
 	ImageUrl        *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
+	ReasonCode      *string `json:"ReasonCode,omitempty" xml:"ReasonCode,omitempty"`
+	ReasonMessage   *string `json:"ReasonMessage,omitempty" xml:"ReasonMessage,omitempty"`
 	RepositoryUrl   *string `json:"RepositoryUrl,omitempty" xml:"RepositoryUrl,omitempty"`
+	Status          *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ListInstancesResponseBodyInstancesLatestSnapshot) String() string {
@@ -3520,8 +3683,23 @@ func (s *ListInstancesResponseBodyInstancesLatestSnapshot) SetImageUrl(v string)
 	return s
 }
 
+func (s *ListInstancesResponseBodyInstancesLatestSnapshot) SetReasonCode(v string) *ListInstancesResponseBodyInstancesLatestSnapshot {
+	s.ReasonCode = &v
+	return s
+}
+
+func (s *ListInstancesResponseBodyInstancesLatestSnapshot) SetReasonMessage(v string) *ListInstancesResponseBodyInstancesLatestSnapshot {
+	s.ReasonMessage = &v
+	return s
+}
+
 func (s *ListInstancesResponseBodyInstancesLatestSnapshot) SetRepositoryUrl(v string) *ListInstancesResponseBodyInstancesLatestSnapshot {
 	s.RepositoryUrl = &v
+	return s
+}
+
+func (s *ListInstancesResponseBodyInstancesLatestSnapshot) SetStatus(v string) *ListInstancesResponseBodyInstancesLatestSnapshot {
+	s.Status = &v
 	return s
 }
 
