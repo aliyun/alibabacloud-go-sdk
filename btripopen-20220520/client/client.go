@@ -14303,6 +14303,7 @@ type FlightSearchListResponseBodyModuleFlightList struct {
 	AirlineInfo       *FlightSearchListResponseBodyModuleFlightListAirlineInfo      `json:"airline_info,omitempty" xml:"airline_info,omitempty" type:"Struct"`
 	ArrAirportInfo    *FlightSearchListResponseBodyModuleFlightListArrAirportInfo   `json:"arr_airport_info,omitempty" xml:"arr_airport_info,omitempty" type:"Struct"`
 	ArrDate           *string                                                       `json:"arr_date,omitempty" xml:"arr_date,omitempty"`
+	BasicCabinPrice   *int32                                                        `json:"basic_cabin_price,omitempty" xml:"basic_cabin_price,omitempty"`
 	BuildPrice        *int32                                                        `json:"build_price,omitempty" xml:"build_price,omitempty"`
 	Cabin             *string                                                       `json:"cabin,omitempty" xml:"cabin,omitempty"`
 	CabinClass        *string                                                       `json:"cabin_class,omitempty" xml:"cabin_class,omitempty"`
@@ -14364,6 +14365,11 @@ func (s *FlightSearchListResponseBodyModuleFlightList) SetArrAirportInfo(v *Flig
 
 func (s *FlightSearchListResponseBodyModuleFlightList) SetArrDate(v string) *FlightSearchListResponseBodyModuleFlightList {
 	s.ArrDate = &v
+	return s
+}
+
+func (s *FlightSearchListResponseBodyModuleFlightList) SetBasicCabinPrice(v int32) *FlightSearchListResponseBodyModuleFlightList {
+	s.BasicCabinPrice = &v
 	return s
 }
 
