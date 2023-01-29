@@ -2221,6 +2221,117 @@ func (s *GetLifecycleResponse) SetBody(v *GetLifecycleResponseBody) *GetLifecycl
 	return s
 }
 
+type GetResourceGroupStatisticsRequest struct {
+	EndTime      *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	ResourceId   *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	StartTime    *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	WorkspaceIds *string `json:"WorkspaceIds,omitempty" xml:"WorkspaceIds,omitempty"`
+}
+
+func (s GetResourceGroupStatisticsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetResourceGroupStatisticsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetResourceGroupStatisticsRequest) SetEndTime(v string) *GetResourceGroupStatisticsRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *GetResourceGroupStatisticsRequest) SetResourceId(v string) *GetResourceGroupStatisticsRequest {
+	s.ResourceId = &v
+	return s
+}
+
+func (s *GetResourceGroupStatisticsRequest) SetStartTime(v string) *GetResourceGroupStatisticsRequest {
+	s.StartTime = &v
+	return s
+}
+
+func (s *GetResourceGroupStatisticsRequest) SetWorkspaceIds(v string) *GetResourceGroupStatisticsRequest {
+	s.WorkspaceIds = &v
+	return s
+}
+
+type GetResourceGroupStatisticsResponseBody struct {
+	Code           *string                           `json:"Code,omitempty" xml:"Code,omitempty"`
+	HttpStatusCode *int32                            `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string                           `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId      *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Statistics     map[string]map[string]interface{} `json:"Statistics,omitempty" xml:"Statistics,omitempty"`
+	Success        *bool                             `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetResourceGroupStatisticsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetResourceGroupStatisticsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetResourceGroupStatisticsResponseBody) SetCode(v string) *GetResourceGroupStatisticsResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetResourceGroupStatisticsResponseBody) SetHttpStatusCode(v int32) *GetResourceGroupStatisticsResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *GetResourceGroupStatisticsResponseBody) SetMessage(v string) *GetResourceGroupStatisticsResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetResourceGroupStatisticsResponseBody) SetRequestId(v string) *GetResourceGroupStatisticsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetResourceGroupStatisticsResponseBody) SetStatistics(v map[string]map[string]interface{}) *GetResourceGroupStatisticsResponseBody {
+	s.Statistics = v
+	return s
+}
+
+func (s *GetResourceGroupStatisticsResponseBody) SetSuccess(v bool) *GetResourceGroupStatisticsResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetResourceGroupStatisticsResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetResourceGroupStatisticsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetResourceGroupStatisticsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetResourceGroupStatisticsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetResourceGroupStatisticsResponse) SetHeaders(v map[string]*string) *GetResourceGroupStatisticsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetResourceGroupStatisticsResponse) SetStatusCode(v int32) *GetResourceGroupStatisticsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetResourceGroupStatisticsResponse) SetBody(v *GetResourceGroupStatisticsResponseBody) *GetResourceGroupStatisticsResponse {
+	s.Body = v
+	return s
+}
+
 type GetTokenRequest struct {
 	ExpireTime *int32  `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
@@ -4917,6 +5028,64 @@ func (client *Client) GetLifecycle(InstanceId *string, request *GetLifecycleRequ
 	headers := make(map[string]*string)
 	_result = &GetLifecycleResponse{}
 	_body, _err := client.GetLifecycleWithOptions(InstanceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetResourceGroupStatisticsWithOptions(request *GetResourceGroupStatisticsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetResourceGroupStatisticsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
+		query["ResourceId"] = request.ResourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceIds)) {
+		query["WorkspaceIds"] = request.WorkspaceIds
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetResourceGroupStatistics"),
+		Version:     tea.String("2022-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/resourcegroupstatistics"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetResourceGroupStatisticsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetResourceGroupStatistics(request *GetResourceGroupStatisticsRequest) (_result *GetResourceGroupStatisticsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetResourceGroupStatisticsResponse{}
+	_body, _err := client.GetResourceGroupStatisticsWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
