@@ -925,6 +925,7 @@ func (s *DeleteAutoSnapshotPolicyResponse) SetBody(v *DeleteAutoSnapshotPolicyRe
 }
 
 type DeleteDbfsRequest struct {
+	Force    *bool   `json:"Force,omitempty" xml:"Force,omitempty"`
 	FsId     *string `json:"FsId,omitempty" xml:"FsId,omitempty"`
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
@@ -935,6 +936,11 @@ func (s DeleteDbfsRequest) String() string {
 
 func (s DeleteDbfsRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DeleteDbfsRequest) SetForce(v bool) *DeleteDbfsRequest {
+	s.Force = &v
+	return s
 }
 
 func (s *DeleteDbfsRequest) SetFsId(v string) *DeleteDbfsRequest {
@@ -1824,7 +1830,7 @@ type GetDbfsResponseBodyDBFSInfoSnapshotInfo struct {
 	LinkId        *string `json:"LinkId,omitempty" xml:"LinkId,omitempty"`
 	PolicyId      *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
 	SnapshotCount *int32  `json:"SnapshotCount,omitempty" xml:"SnapshotCount,omitempty"`
-	TotalSize     *int64  `json:"totalSize,omitempty" xml:"totalSize,omitempty"`
+	TotalSize     *int64  `json:"TotalSize,omitempty" xml:"TotalSize,omitempty"`
 }
 
 func (s GetDbfsResponseBodyDBFSInfoSnapshotInfo) String() string {
@@ -1990,6 +1996,163 @@ func (s *GetServiceLinkedRoleResponse) SetStatusCode(v int32) *GetServiceLinkedR
 }
 
 func (s *GetServiceLinkedRoleResponse) SetBody(v *GetServiceLinkedRoleResponseBody) *GetServiceLinkedRoleResponse {
+	s.Body = v
+	return s
+}
+
+type GetSnapshotLinkRequest struct {
+	LinkId   *string `json:"LinkId,omitempty" xml:"LinkId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s GetSnapshotLinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSnapshotLinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetSnapshotLinkRequest) SetLinkId(v string) *GetSnapshotLinkRequest {
+	s.LinkId = &v
+	return s
+}
+
+func (s *GetSnapshotLinkRequest) SetRegionId(v string) *GetSnapshotLinkRequest {
+	s.RegionId = &v
+	return s
+}
+
+type GetSnapshotLinkResponseBody struct {
+	Data      *GetSnapshotLinkResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetSnapshotLinkResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSnapshotLinkResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetSnapshotLinkResponseBody) SetData(v *GetSnapshotLinkResponseBodyData) *GetSnapshotLinkResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetSnapshotLinkResponseBody) SetRequestId(v string) *GetSnapshotLinkResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetSnapshotLinkResponseBodyData struct {
+	Category      *string                                   `json:"Category,omitempty" xml:"Category,omitempty"`
+	EcsList       []*GetSnapshotLinkResponseBodyDataEcsList `json:"EcsList,omitempty" xml:"EcsList,omitempty" type:"Repeated"`
+	FsId          *string                                   `json:"FsId,omitempty" xml:"FsId,omitempty"`
+	FsName        *string                                   `json:"FsName,omitempty" xml:"FsName,omitempty"`
+	LinkId        *string                                   `json:"LinkId,omitempty" xml:"LinkId,omitempty"`
+	SnapshotCount *int32                                    `json:"SnapshotCount,omitempty" xml:"SnapshotCount,omitempty"`
+	SourceSize    *int32                                    `json:"SourceSize,omitempty" xml:"SourceSize,omitempty"`
+	Status        *string                                   `json:"Status,omitempty" xml:"Status,omitempty"`
+	TotalSize     *int64                                    `json:"TotalSize,omitempty" xml:"TotalSize,omitempty"`
+}
+
+func (s GetSnapshotLinkResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSnapshotLinkResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetSnapshotLinkResponseBodyData) SetCategory(v string) *GetSnapshotLinkResponseBodyData {
+	s.Category = &v
+	return s
+}
+
+func (s *GetSnapshotLinkResponseBodyData) SetEcsList(v []*GetSnapshotLinkResponseBodyDataEcsList) *GetSnapshotLinkResponseBodyData {
+	s.EcsList = v
+	return s
+}
+
+func (s *GetSnapshotLinkResponseBodyData) SetFsId(v string) *GetSnapshotLinkResponseBodyData {
+	s.FsId = &v
+	return s
+}
+
+func (s *GetSnapshotLinkResponseBodyData) SetFsName(v string) *GetSnapshotLinkResponseBodyData {
+	s.FsName = &v
+	return s
+}
+
+func (s *GetSnapshotLinkResponseBodyData) SetLinkId(v string) *GetSnapshotLinkResponseBodyData {
+	s.LinkId = &v
+	return s
+}
+
+func (s *GetSnapshotLinkResponseBodyData) SetSnapshotCount(v int32) *GetSnapshotLinkResponseBodyData {
+	s.SnapshotCount = &v
+	return s
+}
+
+func (s *GetSnapshotLinkResponseBodyData) SetSourceSize(v int32) *GetSnapshotLinkResponseBodyData {
+	s.SourceSize = &v
+	return s
+}
+
+func (s *GetSnapshotLinkResponseBodyData) SetStatus(v string) *GetSnapshotLinkResponseBodyData {
+	s.Status = &v
+	return s
+}
+
+func (s *GetSnapshotLinkResponseBodyData) SetTotalSize(v int64) *GetSnapshotLinkResponseBodyData {
+	s.TotalSize = &v
+	return s
+}
+
+type GetSnapshotLinkResponseBodyDataEcsList struct {
+	EcsId *string `json:"EcsId,omitempty" xml:"EcsId,omitempty"`
+}
+
+func (s GetSnapshotLinkResponseBodyDataEcsList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSnapshotLinkResponseBodyDataEcsList) GoString() string {
+	return s.String()
+}
+
+func (s *GetSnapshotLinkResponseBodyDataEcsList) SetEcsId(v string) *GetSnapshotLinkResponseBodyDataEcsList {
+	s.EcsId = &v
+	return s
+}
+
+type GetSnapshotLinkResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetSnapshotLinkResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetSnapshotLinkResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSnapshotLinkResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetSnapshotLinkResponse) SetHeaders(v map[string]*string) *GetSnapshotLinkResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetSnapshotLinkResponse) SetStatusCode(v int32) *GetSnapshotLinkResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetSnapshotLinkResponse) SetBody(v *GetSnapshotLinkResponseBody) *GetSnapshotLinkResponse {
 	s.Body = v
 	return s
 }
@@ -2281,9 +2444,9 @@ type ListAutoSnapshotPolicyAppliedDbfsResponseBodyDbfsList struct {
 	FsName        *string `json:"FsName,omitempty" xml:"FsName,omitempty"`
 	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	SizeG         *int64  `json:"SizeG,omitempty" xml:"SizeG,omitempty"`
-	SnapshotCount *string `json:"SnapshotCount,omitempty" xml:"SnapshotCount,omitempty"`
+	SnapshotCount *int32  `json:"SnapshotCount,omitempty" xml:"SnapshotCount,omitempty"`
 	Status        *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	TotalSize     *string `json:"TotalSize,omitempty" xml:"TotalSize,omitempty"`
+	TotalSize     *int64  `json:"TotalSize,omitempty" xml:"TotalSize,omitempty"`
 }
 
 func (s ListAutoSnapshotPolicyAppliedDbfsResponseBodyDbfsList) String() string {
@@ -2314,7 +2477,7 @@ func (s *ListAutoSnapshotPolicyAppliedDbfsResponseBodyDbfsList) SetSizeG(v int64
 	return s
 }
 
-func (s *ListAutoSnapshotPolicyAppliedDbfsResponseBodyDbfsList) SetSnapshotCount(v string) *ListAutoSnapshotPolicyAppliedDbfsResponseBodyDbfsList {
+func (s *ListAutoSnapshotPolicyAppliedDbfsResponseBodyDbfsList) SetSnapshotCount(v int32) *ListAutoSnapshotPolicyAppliedDbfsResponseBodyDbfsList {
 	s.SnapshotCount = &v
 	return s
 }
@@ -2324,7 +2487,7 @@ func (s *ListAutoSnapshotPolicyAppliedDbfsResponseBodyDbfsList) SetStatus(v stri
 	return s
 }
 
-func (s *ListAutoSnapshotPolicyAppliedDbfsResponseBodyDbfsList) SetTotalSize(v string) *ListAutoSnapshotPolicyAppliedDbfsResponseBodyDbfsList {
+func (s *ListAutoSnapshotPolicyAppliedDbfsResponseBodyDbfsList) SetTotalSize(v int64) *ListAutoSnapshotPolicyAppliedDbfsResponseBodyDbfsList {
 	s.TotalSize = &v
 	return s
 }
@@ -2445,7 +2608,7 @@ type ListAutoSnapshotPolicyUnappliedDbfsResponseBodyDbfsList struct {
 	FsName        *string `json:"FsName,omitempty" xml:"FsName,omitempty"`
 	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	SizeG         *int64  `json:"SizeG,omitempty" xml:"SizeG,omitempty"`
-	SnapshotCount *string `json:"SnapshotCount,omitempty" xml:"SnapshotCount,omitempty"`
+	SnapshotCount *int32  `json:"SnapshotCount,omitempty" xml:"SnapshotCount,omitempty"`
 	Status        *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	TotalSize     *int64  `json:"TotalSize,omitempty" xml:"TotalSize,omitempty"`
 }
@@ -2478,7 +2641,7 @@ func (s *ListAutoSnapshotPolicyUnappliedDbfsResponseBodyDbfsList) SetSizeG(v int
 	return s
 }
 
-func (s *ListAutoSnapshotPolicyUnappliedDbfsResponseBodyDbfsList) SetSnapshotCount(v string) *ListAutoSnapshotPolicyUnappliedDbfsResponseBodyDbfsList {
+func (s *ListAutoSnapshotPolicyUnappliedDbfsResponseBodyDbfsList) SetSnapshotCount(v int32) *ListAutoSnapshotPolicyUnappliedDbfsResponseBodyDbfsList {
 	s.SnapshotCount = &v
 	return s
 }
@@ -3428,6 +3591,193 @@ func (s *ListSnapshotResponse) SetStatusCode(v int32) *ListSnapshotResponse {
 }
 
 func (s *ListSnapshotResponse) SetBody(v *ListSnapshotResponseBody) *ListSnapshotResponse {
+	s.Body = v
+	return s
+}
+
+type ListSnapshotLinksRequest struct {
+	FilterKey   *string `json:"FilterKey,omitempty" xml:"FilterKey,omitempty"`
+	FilterValue *string `json:"FilterValue,omitempty" xml:"FilterValue,omitempty"`
+	PageNumber  *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s ListSnapshotLinksRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSnapshotLinksRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListSnapshotLinksRequest) SetFilterKey(v string) *ListSnapshotLinksRequest {
+	s.FilterKey = &v
+	return s
+}
+
+func (s *ListSnapshotLinksRequest) SetFilterValue(v string) *ListSnapshotLinksRequest {
+	s.FilterValue = &v
+	return s
+}
+
+func (s *ListSnapshotLinksRequest) SetPageNumber(v int32) *ListSnapshotLinksRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListSnapshotLinksRequest) SetPageSize(v int32) *ListSnapshotLinksRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListSnapshotLinksRequest) SetRegionId(v string) *ListSnapshotLinksRequest {
+	s.RegionId = &v
+	return s
+}
+
+type ListSnapshotLinksResponseBody struct {
+	PageNumber    *int32                                        `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize      *int32                                        `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId     *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SnapshotLinks []*ListSnapshotLinksResponseBodySnapshotLinks `json:"SnapshotLinks,omitempty" xml:"SnapshotLinks,omitempty" type:"Repeated"`
+	TotalCount    *int32                                        `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListSnapshotLinksResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSnapshotLinksResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListSnapshotLinksResponseBody) SetPageNumber(v int32) *ListSnapshotLinksResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListSnapshotLinksResponseBody) SetPageSize(v int32) *ListSnapshotLinksResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListSnapshotLinksResponseBody) SetRequestId(v string) *ListSnapshotLinksResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListSnapshotLinksResponseBody) SetSnapshotLinks(v []*ListSnapshotLinksResponseBodySnapshotLinks) *ListSnapshotLinksResponseBody {
+	s.SnapshotLinks = v
+	return s
+}
+
+func (s *ListSnapshotLinksResponseBody) SetTotalCount(v int32) *ListSnapshotLinksResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListSnapshotLinksResponseBodySnapshotLinks struct {
+	EcsList       []*ListSnapshotLinksResponseBodySnapshotLinksEcsList `json:"EcsList,omitempty" xml:"EcsList,omitempty" type:"Repeated"`
+	FsId          *string                                              `json:"FsId,omitempty" xml:"FsId,omitempty"`
+	FsName        *string                                              `json:"FsName,omitempty" xml:"FsName,omitempty"`
+	LinkId        *string                                              `json:"LinkId,omitempty" xml:"LinkId,omitempty"`
+	SnapshotCount *int32                                               `json:"SnapshotCount,omitempty" xml:"SnapshotCount,omitempty"`
+	SourceSize    *int32                                               `json:"SourceSize,omitempty" xml:"SourceSize,omitempty"`
+	Status        *string                                              `json:"Status,omitempty" xml:"Status,omitempty"`
+	TotalSize     *int64                                               `json:"TotalSize,omitempty" xml:"TotalSize,omitempty"`
+}
+
+func (s ListSnapshotLinksResponseBodySnapshotLinks) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSnapshotLinksResponseBodySnapshotLinks) GoString() string {
+	return s.String()
+}
+
+func (s *ListSnapshotLinksResponseBodySnapshotLinks) SetEcsList(v []*ListSnapshotLinksResponseBodySnapshotLinksEcsList) *ListSnapshotLinksResponseBodySnapshotLinks {
+	s.EcsList = v
+	return s
+}
+
+func (s *ListSnapshotLinksResponseBodySnapshotLinks) SetFsId(v string) *ListSnapshotLinksResponseBodySnapshotLinks {
+	s.FsId = &v
+	return s
+}
+
+func (s *ListSnapshotLinksResponseBodySnapshotLinks) SetFsName(v string) *ListSnapshotLinksResponseBodySnapshotLinks {
+	s.FsName = &v
+	return s
+}
+
+func (s *ListSnapshotLinksResponseBodySnapshotLinks) SetLinkId(v string) *ListSnapshotLinksResponseBodySnapshotLinks {
+	s.LinkId = &v
+	return s
+}
+
+func (s *ListSnapshotLinksResponseBodySnapshotLinks) SetSnapshotCount(v int32) *ListSnapshotLinksResponseBodySnapshotLinks {
+	s.SnapshotCount = &v
+	return s
+}
+
+func (s *ListSnapshotLinksResponseBodySnapshotLinks) SetSourceSize(v int32) *ListSnapshotLinksResponseBodySnapshotLinks {
+	s.SourceSize = &v
+	return s
+}
+
+func (s *ListSnapshotLinksResponseBodySnapshotLinks) SetStatus(v string) *ListSnapshotLinksResponseBodySnapshotLinks {
+	s.Status = &v
+	return s
+}
+
+func (s *ListSnapshotLinksResponseBodySnapshotLinks) SetTotalSize(v int64) *ListSnapshotLinksResponseBodySnapshotLinks {
+	s.TotalSize = &v
+	return s
+}
+
+type ListSnapshotLinksResponseBodySnapshotLinksEcsList struct {
+	EcsId *string `json:"EcsId,omitempty" xml:"EcsId,omitempty"`
+}
+
+func (s ListSnapshotLinksResponseBodySnapshotLinksEcsList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSnapshotLinksResponseBodySnapshotLinksEcsList) GoString() string {
+	return s.String()
+}
+
+func (s *ListSnapshotLinksResponseBodySnapshotLinksEcsList) SetEcsId(v string) *ListSnapshotLinksResponseBodySnapshotLinksEcsList {
+	s.EcsId = &v
+	return s
+}
+
+type ListSnapshotLinksResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListSnapshotLinksResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListSnapshotLinksResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSnapshotLinksResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListSnapshotLinksResponse) SetHeaders(v map[string]*string) *ListSnapshotLinksResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListSnapshotLinksResponse) SetStatusCode(v int32) *ListSnapshotLinksResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListSnapshotLinksResponse) SetBody(v *ListSnapshotLinksResponseBody) *ListSnapshotLinksResponse {
 	s.Body = v
 	return s
 }
@@ -4771,6 +5121,10 @@ func (client *Client) DeleteDbfsWithOptions(request *DeleteDbfsRequest, runtime 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Force)) {
+		query["Force"] = request.Force
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.FsId)) {
 		query["FsId"] = request.FsId
 	}
@@ -5198,6 +5552,46 @@ func (client *Client) GetServiceLinkedRole(request *GetServiceLinkedRoleRequest)
 	runtime := &util.RuntimeOptions{}
 	_result = &GetServiceLinkedRoleResponse{}
 	_body, _err := client.GetServiceLinkedRoleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetSnapshotLinkWithOptions(request *GetSnapshotLinkRequest, runtime *util.RuntimeOptions) (_result *GetSnapshotLinkResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetSnapshotLink"),
+		Version:     tea.String("2020-04-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetSnapshotLinkResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetSnapshotLink(request *GetSnapshotLinkRequest) (_result *GetSnapshotLinkResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetSnapshotLinkResponse{}
+	_body, _err := client.GetSnapshotLinkWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5650,6 +6044,66 @@ func (client *Client) ListSnapshot(request *ListSnapshotRequest) (_result *ListS
 	runtime := &util.RuntimeOptions{}
 	_result = &ListSnapshotResponse{}
 	_body, _err := client.ListSnapshotWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListSnapshotLinksWithOptions(request *ListSnapshotLinksRequest, runtime *util.RuntimeOptions) (_result *ListSnapshotLinksResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.FilterKey)) {
+		query["FilterKey"] = request.FilterKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FilterValue)) {
+		query["FilterValue"] = request.FilterValue
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListSnapshotLinks"),
+		Version:     tea.String("2020-04-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListSnapshotLinksResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListSnapshotLinks(request *ListSnapshotLinksRequest) (_result *ListSnapshotLinksResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListSnapshotLinksResponse{}
+	_body, _err := client.ListSnapshotLinksWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
