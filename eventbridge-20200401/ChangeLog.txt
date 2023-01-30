@@ -1,0 +1,3 @@
+2023-01-30 Version: v1.0.0
+- Update EventBridge API.
+
