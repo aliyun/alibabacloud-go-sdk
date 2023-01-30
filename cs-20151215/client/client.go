@@ -3582,9 +3582,9 @@ func (s *DescribeClusterDetailResponse) SetBody(v *DescribeClusterDetailResponse
 }
 
 type DescribeClusterEventsRequest struct {
-	PageNumber *int64 `json:"page_number,omitempty" xml:"page_number,omitempty"`
-	PageSize   *int64 `json:"page_size,omitempty" xml:"page_size,omitempty"`
-	TaskId     *int64 `json:"task_id,omitempty" xml:"task_id,omitempty"`
+	PageNumber *int64  `json:"page_number,omitempty" xml:"page_number,omitempty"`
+	PageSize   *int64  `json:"page_size,omitempty" xml:"page_size,omitempty"`
+	TaskId     *string `json:"task_id,omitempty" xml:"task_id,omitempty"`
 }
 
 func (s DescribeClusterEventsRequest) String() string {
@@ -3605,7 +3605,7 @@ func (s *DescribeClusterEventsRequest) SetPageSize(v int64) *DescribeClusterEven
 	return s
 }
 
-func (s *DescribeClusterEventsRequest) SetTaskId(v int64) *DescribeClusterEventsRequest {
+func (s *DescribeClusterEventsRequest) SetTaskId(v string) *DescribeClusterEventsRequest {
 	s.TaskId = &v
 	return s
 }
@@ -9410,7 +9410,7 @@ func (s *EdgeClusterAddEdgeMachineResponse) SetBody(v *EdgeClusterAddEdgeMachine
 type FixNodePoolVulsRequest struct {
 	Nodes         []*string                            `json:"nodes,omitempty" xml:"nodes,omitempty" type:"Repeated"`
 	RolloutPolicy *FixNodePoolVulsRequestRolloutPolicy `json:"rollout_policy,omitempty" xml:"rollout_policy,omitempty" type:"Struct"`
-	VulList       []*string                            `json:"vul_list,omitempty" xml:"vul_list,omitempty" type:"Repeated"`
+	Vuls          []*string                            `json:"vuls,omitempty" xml:"vuls,omitempty" type:"Repeated"`
 }
 
 func (s FixNodePoolVulsRequest) String() string {
@@ -9431,8 +9431,8 @@ func (s *FixNodePoolVulsRequest) SetRolloutPolicy(v *FixNodePoolVulsRequestRollo
 	return s
 }
 
-func (s *FixNodePoolVulsRequest) SetVulList(v []*string) *FixNodePoolVulsRequest {
-	s.VulList = v
+func (s *FixNodePoolVulsRequest) SetVuls(v []*string) *FixNodePoolVulsRequest {
+	s.Vuls = v
 	return s
 }
 
@@ -12992,10 +12992,12 @@ func (s *UpdateTemplateResponse) SetStatusCode(v int32) *UpdateTemplateResponse 
 }
 
 type UpgradeClusterRequest struct {
+	// Deprecated
 	ComponentName *string `json:"component_name,omitempty" xml:"component_name,omitempty"`
 	MasterOnly    *bool   `json:"master_only,omitempty" xml:"master_only,omitempty"`
 	NextVersion   *string `json:"next_version,omitempty" xml:"next_version,omitempty"`
-	Version       *string `json:"version,omitempty" xml:"version,omitempty"`
+	// Deprecated
+	Version *string `json:"version,omitempty" xml:"version,omitempty"`
 }
 
 func (s UpgradeClusterRequest) String() string {
@@ -16809,8 +16811,8 @@ func (client *Client) FixNodePoolVulsWithOptions(clusterId *string, nodepoolId *
 		body["rollout_policy"] = request.RolloutPolicy
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.VulList)) {
-		body["vul_list"] = request.VulList
+	if !tea.BoolValue(util.IsUnset(request.Vuls)) {
+		body["vuls"] = request.Vuls
 	}
 
 	req := &openapi.OpenApiRequest{
