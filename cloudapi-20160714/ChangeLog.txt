@@ -1,3 +1,6 @@
+2023-01-30 Version: v3.0.6
+- Modify DescribeApis.
+
 2022-12-05 Version: v3.0.5
 - Modify QueryRequestLogs.
 
