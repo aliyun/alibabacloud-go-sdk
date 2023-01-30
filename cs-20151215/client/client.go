@@ -11440,6 +11440,7 @@ func (s *RemoveClusterNodesResponse) SetStatusCode(v int32) *RemoveClusterNodesR
 
 type RemoveNodePoolNodesRequest struct {
 	DrainNode   *bool     `json:"drain_node,omitempty" xml:"drain_node,omitempty"`
+	InstanceIds []*string `json:"instance_ids,omitempty" xml:"instance_ids,omitempty" type:"Repeated"`
 	Nodes       []*string `json:"nodes,omitempty" xml:"nodes,omitempty" type:"Repeated"`
 	ReleaseNode *bool     `json:"release_node,omitempty" xml:"release_node,omitempty"`
 }
@@ -11457,6 +11458,11 @@ func (s *RemoveNodePoolNodesRequest) SetDrainNode(v bool) *RemoveNodePoolNodesRe
 	return s
 }
 
+func (s *RemoveNodePoolNodesRequest) SetInstanceIds(v []*string) *RemoveNodePoolNodesRequest {
+	s.InstanceIds = v
+	return s
+}
+
 func (s *RemoveNodePoolNodesRequest) SetNodes(v []*string) *RemoveNodePoolNodesRequest {
 	s.Nodes = v
 	return s
@@ -11468,9 +11474,10 @@ func (s *RemoveNodePoolNodesRequest) SetReleaseNode(v bool) *RemoveNodePoolNodes
 }
 
 type RemoveNodePoolNodesShrinkRequest struct {
-	DrainNode   *bool   `json:"drain_node,omitempty" xml:"drain_node,omitempty"`
-	NodesShrink *string `json:"nodes,omitempty" xml:"nodes,omitempty"`
-	ReleaseNode *bool   `json:"release_node,omitempty" xml:"release_node,omitempty"`
+	DrainNode         *bool   `json:"drain_node,omitempty" xml:"drain_node,omitempty"`
+	InstanceIdsShrink *string `json:"instance_ids,omitempty" xml:"instance_ids,omitempty"`
+	NodesShrink       *string `json:"nodes,omitempty" xml:"nodes,omitempty"`
+	ReleaseNode       *bool   `json:"release_node,omitempty" xml:"release_node,omitempty"`
 }
 
 func (s RemoveNodePoolNodesShrinkRequest) String() string {
@@ -11483,6 +11490,11 @@ func (s RemoveNodePoolNodesShrinkRequest) GoString() string {
 
 func (s *RemoveNodePoolNodesShrinkRequest) SetDrainNode(v bool) *RemoveNodePoolNodesShrinkRequest {
 	s.DrainNode = &v
+	return s
+}
+
+func (s *RemoveNodePoolNodesShrinkRequest) SetInstanceIdsShrink(v string) *RemoveNodePoolNodesShrinkRequest {
+	s.InstanceIdsShrink = &v
 	return s
 }
 
@@ -17769,6 +17781,10 @@ func (client *Client) RemoveNodePoolNodesWithOptions(ClusterId *string, Nodepool
 	}
 	request := &RemoveNodePoolNodesShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.InstanceIds)) {
+		request.InstanceIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.InstanceIds, tea.String("instance_ids"), tea.String("json"))
+	}
+
 	if !tea.BoolValue(util.IsUnset(tmpReq.Nodes)) {
 		request.NodesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Nodes, tea.String("nodes"), tea.String("json"))
 	}
@@ -17776,6 +17792,10 @@ func (client *Client) RemoveNodePoolNodesWithOptions(ClusterId *string, Nodepool
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.DrainNode)) {
 		query["drain_node"] = request.DrainNode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceIdsShrink)) {
+		query["instance_ids"] = request.InstanceIdsShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.NodesShrink)) {
