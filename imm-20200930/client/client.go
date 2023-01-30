@@ -1719,6 +1719,140 @@ func (s *ImageScore) SetOverallQualityScore(v float32) *ImageScore {
 	return s
 }
 
+type Input struct {
+	OSS *InputOSS `json:"OSS,omitempty" xml:"OSS,omitempty"`
+}
+
+func (s Input) String() string {
+	return tea.Prettify(s)
+}
+
+func (s Input) GoString() string {
+	return s.String()
+}
+
+func (s *Input) SetOSS(v *InputOSS) *Input {
+	s.OSS = v
+	return s
+}
+
+type InputFile struct {
+	ContentType  *string                `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
+	CustomId     *string                `json:"CustomId,omitempty" xml:"CustomId,omitempty"`
+	CustomLabels map[string]interface{} `json:"CustomLabels,omitempty" xml:"CustomLabels,omitempty"`
+	Figures      []*InputFileFigures    `json:"Figures,omitempty" xml:"Figures,omitempty" type:"Repeated"`
+	FileHash     *string                `json:"FileHash,omitempty" xml:"FileHash,omitempty"`
+	MediaType    *string                `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
+	OSSURI       *string                `json:"OSSURI,omitempty" xml:"OSSURI,omitempty"`
+	URI          *string                `json:"URI,omitempty" xml:"URI,omitempty"`
+}
+
+func (s InputFile) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InputFile) GoString() string {
+	return s.String()
+}
+
+func (s *InputFile) SetContentType(v string) *InputFile {
+	s.ContentType = &v
+	return s
+}
+
+func (s *InputFile) SetCustomId(v string) *InputFile {
+	s.CustomId = &v
+	return s
+}
+
+func (s *InputFile) SetCustomLabels(v map[string]interface{}) *InputFile {
+	s.CustomLabels = v
+	return s
+}
+
+func (s *InputFile) SetFigures(v []*InputFileFigures) *InputFile {
+	s.Figures = v
+	return s
+}
+
+func (s *InputFile) SetFileHash(v string) *InputFile {
+	s.FileHash = &v
+	return s
+}
+
+func (s *InputFile) SetMediaType(v string) *InputFile {
+	s.MediaType = &v
+	return s
+}
+
+func (s *InputFile) SetOSSURI(v string) *InputFile {
+	s.OSSURI = &v
+	return s
+}
+
+func (s *InputFile) SetURI(v string) *InputFile {
+	s.URI = &v
+	return s
+}
+
+type InputFileFigures struct {
+	FigureClusterId *string `json:"FigureClusterId,omitempty" xml:"FigureClusterId,omitempty"`
+	FigureId        *string `json:"FigureId,omitempty" xml:"FigureId,omitempty"`
+	FigureType      *string `json:"FigureType,omitempty" xml:"FigureType,omitempty"`
+}
+
+func (s InputFileFigures) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InputFileFigures) GoString() string {
+	return s.String()
+}
+
+func (s *InputFileFigures) SetFigureClusterId(v string) *InputFileFigures {
+	s.FigureClusterId = &v
+	return s
+}
+
+func (s *InputFileFigures) SetFigureId(v string) *InputFileFigures {
+	s.FigureId = &v
+	return s
+}
+
+func (s *InputFileFigures) SetFigureType(v string) *InputFileFigures {
+	s.FigureType = &v
+	return s
+}
+
+type InputOSS struct {
+	Bucket           *string   `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
+	MatchExpressions []*string `json:"MatchExpressions,omitempty" xml:"MatchExpressions,omitempty" type:"Repeated"`
+	Prefix           *string   `json:"Prefix,omitempty" xml:"Prefix,omitempty"`
+}
+
+func (s InputOSS) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InputOSS) GoString() string {
+	return s.String()
+}
+
+func (s *InputOSS) SetBucket(v string) *InputOSS {
+	s.Bucket = &v
+	return s
+}
+
+func (s *InputOSS) SetMatchExpressions(v []*string) *InputOSS {
+	s.MatchExpressions = v
+	return s
+}
+
+func (s *InputOSS) SetPrefix(v string) *InputOSS {
+	s.Prefix = &v
+	return s
+}
+
 type KdtreeOption struct {
 	CompressionLevel *int32  `json:"CompressionLevel,omitempty" xml:"CompressionLevel,omitempty"`
 	LibraryName      *string `json:"LibraryName,omitempty" xml:"LibraryName,omitempty"`
@@ -8615,6 +8749,75 @@ func (s *CreateVideoModerationTaskResponse) SetBody(v *CreateVideoModerationTask
 	return s
 }
 
+type DeleteBatchRequest struct {
+	Id          *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+}
+
+func (s DeleteBatchRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteBatchRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteBatchRequest) SetId(v string) *DeleteBatchRequest {
+	s.Id = &v
+	return s
+}
+
+func (s *DeleteBatchRequest) SetProjectName(v string) *DeleteBatchRequest {
+	s.ProjectName = &v
+	return s
+}
+
+type DeleteBatchResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteBatchResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteBatchResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteBatchResponseBody) SetRequestId(v string) *DeleteBatchResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteBatchResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteBatchResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteBatchResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteBatchResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteBatchResponse) SetHeaders(v map[string]*string) *DeleteBatchResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteBatchResponse) SetStatusCode(v int32) *DeleteBatchResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteBatchResponse) SetBody(v *DeleteBatchResponseBody) *DeleteBatchResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteBindingRequest struct {
 	Cleanup     *bool   `json:"Cleanup,omitempty" xml:"Cleanup,omitempty"`
 	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
@@ -9049,6 +9252,75 @@ func (s *DeleteStoryResponse) SetStatusCode(v int32) *DeleteStoryResponse {
 }
 
 func (s *DeleteStoryResponse) SetBody(v *DeleteStoryResponseBody) *DeleteStoryResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteTriggerRequest struct {
+	Id          *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+}
+
+func (s DeleteTriggerRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteTriggerRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteTriggerRequest) SetId(v string) *DeleteTriggerRequest {
+	s.Id = &v
+	return s
+}
+
+func (s *DeleteTriggerRequest) SetProjectName(v string) *DeleteTriggerRequest {
+	s.ProjectName = &v
+	return s
+}
+
+type DeleteTriggerResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteTriggerResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteTriggerResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteTriggerResponseBody) SetRequestId(v string) *DeleteTriggerResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteTriggerResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteTriggerResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteTriggerResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteTriggerResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteTriggerResponse) SetHeaders(v map[string]*string) *DeleteTriggerResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteTriggerResponse) SetStatusCode(v int32) *DeleteTriggerResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteTriggerResponse) SetBody(v *DeleteTriggerResponseBody) *DeleteTriggerResponse {
 	s.Body = v
 	return s
 }
@@ -13035,6 +13307,144 @@ func (s *RemoveStoryFilesResponse) SetBody(v *RemoveStoryFilesResponseBody) *Rem
 	return s
 }
 
+type ResumeBatchRequest struct {
+	Id          *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+}
+
+func (s ResumeBatchRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ResumeBatchRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ResumeBatchRequest) SetId(v string) *ResumeBatchRequest {
+	s.Id = &v
+	return s
+}
+
+func (s *ResumeBatchRequest) SetProjectName(v string) *ResumeBatchRequest {
+	s.ProjectName = &v
+	return s
+}
+
+type ResumeBatchResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ResumeBatchResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ResumeBatchResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ResumeBatchResponseBody) SetRequestId(v string) *ResumeBatchResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ResumeBatchResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ResumeBatchResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ResumeBatchResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ResumeBatchResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ResumeBatchResponse) SetHeaders(v map[string]*string) *ResumeBatchResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ResumeBatchResponse) SetStatusCode(v int32) *ResumeBatchResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ResumeBatchResponse) SetBody(v *ResumeBatchResponseBody) *ResumeBatchResponse {
+	s.Body = v
+	return s
+}
+
+type ResumeTriggerRequest struct {
+	Id          *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+}
+
+func (s ResumeTriggerRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ResumeTriggerRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ResumeTriggerRequest) SetId(v string) *ResumeTriggerRequest {
+	s.Id = &v
+	return s
+}
+
+func (s *ResumeTriggerRequest) SetProjectName(v string) *ResumeTriggerRequest {
+	s.ProjectName = &v
+	return s
+}
+
+type ResumeTriggerResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ResumeTriggerResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ResumeTriggerResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ResumeTriggerResponseBody) SetRequestId(v string) *ResumeTriggerResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ResumeTriggerResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ResumeTriggerResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ResumeTriggerResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ResumeTriggerResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ResumeTriggerResponse) SetHeaders(v map[string]*string) *ResumeTriggerResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ResumeTriggerResponse) SetStatusCode(v int32) *ResumeTriggerResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ResumeTriggerResponse) SetBody(v *ResumeTriggerResponseBody) *ResumeTriggerResponse {
+	s.Body = v
+	return s
+}
+
 type SearchImageFigureClusterRequest struct {
 	CredentialConfig *CredentialConfig `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
 	DatasetName      *string           `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
@@ -13556,6 +13966,330 @@ func (s *SimpleQueryResponse) SetStatusCode(v int32) *SimpleQueryResponse {
 }
 
 func (s *SimpleQueryResponse) SetBody(v *SimpleQueryResponseBody) *SimpleQueryResponse {
+	s.Body = v
+	return s
+}
+
+type SuspendBatchRequest struct {
+	Id          *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+}
+
+func (s SuspendBatchRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SuspendBatchRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SuspendBatchRequest) SetId(v string) *SuspendBatchRequest {
+	s.Id = &v
+	return s
+}
+
+func (s *SuspendBatchRequest) SetProjectName(v string) *SuspendBatchRequest {
+	s.ProjectName = &v
+	return s
+}
+
+type SuspendBatchResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s SuspendBatchResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SuspendBatchResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SuspendBatchResponseBody) SetRequestId(v string) *SuspendBatchResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type SuspendBatchResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SuspendBatchResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SuspendBatchResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SuspendBatchResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SuspendBatchResponse) SetHeaders(v map[string]*string) *SuspendBatchResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SuspendBatchResponse) SetStatusCode(v int32) *SuspendBatchResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SuspendBatchResponse) SetBody(v *SuspendBatchResponseBody) *SuspendBatchResponse {
+	s.Body = v
+	return s
+}
+
+type SuspendTriggerRequest struct {
+	Id          *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+}
+
+func (s SuspendTriggerRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SuspendTriggerRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SuspendTriggerRequest) SetId(v string) *SuspendTriggerRequest {
+	s.Id = &v
+	return s
+}
+
+func (s *SuspendTriggerRequest) SetProjectName(v string) *SuspendTriggerRequest {
+	s.ProjectName = &v
+	return s
+}
+
+type SuspendTriggerResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s SuspendTriggerResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SuspendTriggerResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SuspendTriggerResponseBody) SetRequestId(v string) *SuspendTriggerResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type SuspendTriggerResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SuspendTriggerResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SuspendTriggerResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SuspendTriggerResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SuspendTriggerResponse) SetHeaders(v map[string]*string) *SuspendTriggerResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SuspendTriggerResponse) SetStatusCode(v int32) *SuspendTriggerResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SuspendTriggerResponse) SetBody(v *SuspendTriggerResponseBody) *SuspendTriggerResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateBatchRequest struct {
+	Actions      []*UpdateBatchRequestActions    `json:"Actions,omitempty" xml:"Actions,omitempty" type:"Repeated"`
+	Id           *string                         `json:"Id,omitempty" xml:"Id,omitempty"`
+	Input        *Input                          `json:"Input,omitempty" xml:"Input,omitempty"`
+	Notification *UpdateBatchRequestNotification `json:"Notification,omitempty" xml:"Notification,omitempty" type:"Struct"`
+	ProjectName  *string                         `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	Tags         map[string]interface{}          `json:"Tags,omitempty" xml:"Tags,omitempty"`
+}
+
+func (s UpdateBatchRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateBatchRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateBatchRequest) SetActions(v []*UpdateBatchRequestActions) *UpdateBatchRequest {
+	s.Actions = v
+	return s
+}
+
+func (s *UpdateBatchRequest) SetId(v string) *UpdateBatchRequest {
+	s.Id = &v
+	return s
+}
+
+func (s *UpdateBatchRequest) SetInput(v *Input) *UpdateBatchRequest {
+	s.Input = v
+	return s
+}
+
+func (s *UpdateBatchRequest) SetNotification(v *UpdateBatchRequestNotification) *UpdateBatchRequest {
+	s.Notification = v
+	return s
+}
+
+func (s *UpdateBatchRequest) SetProjectName(v string) *UpdateBatchRequest {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *UpdateBatchRequest) SetTags(v map[string]interface{}) *UpdateBatchRequest {
+	s.Tags = v
+	return s
+}
+
+type UpdateBatchRequestActions struct {
+	Name       *string   `json:"Name,omitempty" xml:"Name,omitempty"`
+	Parameters []*string `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Repeated"`
+}
+
+func (s UpdateBatchRequestActions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateBatchRequestActions) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateBatchRequestActions) SetName(v string) *UpdateBatchRequestActions {
+	s.Name = &v
+	return s
+}
+
+func (s *UpdateBatchRequestActions) SetParameters(v []*string) *UpdateBatchRequestActions {
+	s.Parameters = v
+	return s
+}
+
+type UpdateBatchRequestNotification struct {
+	Endpoint *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
+	Topic    *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
+}
+
+func (s UpdateBatchRequestNotification) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateBatchRequestNotification) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateBatchRequestNotification) SetEndpoint(v string) *UpdateBatchRequestNotification {
+	s.Endpoint = &v
+	return s
+}
+
+func (s *UpdateBatchRequestNotification) SetTopic(v string) *UpdateBatchRequestNotification {
+	s.Topic = &v
+	return s
+}
+
+type UpdateBatchShrinkRequest struct {
+	ActionsShrink      *string `json:"Actions,omitempty" xml:"Actions,omitempty"`
+	Id                 *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	InputShrink        *string `json:"Input,omitempty" xml:"Input,omitempty"`
+	NotificationShrink *string `json:"Notification,omitempty" xml:"Notification,omitempty"`
+	ProjectName        *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	TagsShrink         *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+}
+
+func (s UpdateBatchShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateBatchShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateBatchShrinkRequest) SetActionsShrink(v string) *UpdateBatchShrinkRequest {
+	s.ActionsShrink = &v
+	return s
+}
+
+func (s *UpdateBatchShrinkRequest) SetId(v string) *UpdateBatchShrinkRequest {
+	s.Id = &v
+	return s
+}
+
+func (s *UpdateBatchShrinkRequest) SetInputShrink(v string) *UpdateBatchShrinkRequest {
+	s.InputShrink = &v
+	return s
+}
+
+func (s *UpdateBatchShrinkRequest) SetNotificationShrink(v string) *UpdateBatchShrinkRequest {
+	s.NotificationShrink = &v
+	return s
+}
+
+func (s *UpdateBatchShrinkRequest) SetProjectName(v string) *UpdateBatchShrinkRequest {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *UpdateBatchShrinkRequest) SetTagsShrink(v string) *UpdateBatchShrinkRequest {
+	s.TagsShrink = &v
+	return s
+}
+
+type UpdateBatchResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateBatchResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateBatchResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateBatchResponseBody) SetRequestId(v string) *UpdateBatchResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateBatchResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateBatchResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateBatchResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateBatchResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateBatchResponse) SetHeaders(v map[string]*string) *UpdateBatchResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateBatchResponse) SetStatusCode(v int32) *UpdateBatchResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateBatchResponse) SetBody(v *UpdateBatchResponseBody) *UpdateBatchResponse {
 	s.Body = v
 	return s
 }
@@ -14313,6 +15047,192 @@ func (s *UpdateStoryResponse) SetStatusCode(v int32) *UpdateStoryResponse {
 }
 
 func (s *UpdateStoryResponse) SetBody(v *UpdateStoryResponseBody) *UpdateStoryResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateTriggerRequest struct {
+	Actions      []*UpdateTriggerRequestActions    `json:"Actions,omitempty" xml:"Actions,omitempty" type:"Repeated"`
+	Id           *string                           `json:"Id,omitempty" xml:"Id,omitempty"`
+	Input        *Input                            `json:"Input,omitempty" xml:"Input,omitempty"`
+	Notification *UpdateTriggerRequestNotification `json:"Notification,omitempty" xml:"Notification,omitempty" type:"Struct"`
+	ProjectName  *string                           `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	Tags         map[string]interface{}            `json:"Tags,omitempty" xml:"Tags,omitempty"`
+}
+
+func (s UpdateTriggerRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTriggerRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTriggerRequest) SetActions(v []*UpdateTriggerRequestActions) *UpdateTriggerRequest {
+	s.Actions = v
+	return s
+}
+
+func (s *UpdateTriggerRequest) SetId(v string) *UpdateTriggerRequest {
+	s.Id = &v
+	return s
+}
+
+func (s *UpdateTriggerRequest) SetInput(v *Input) *UpdateTriggerRequest {
+	s.Input = v
+	return s
+}
+
+func (s *UpdateTriggerRequest) SetNotification(v *UpdateTriggerRequestNotification) *UpdateTriggerRequest {
+	s.Notification = v
+	return s
+}
+
+func (s *UpdateTriggerRequest) SetProjectName(v string) *UpdateTriggerRequest {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *UpdateTriggerRequest) SetTags(v map[string]interface{}) *UpdateTriggerRequest {
+	s.Tags = v
+	return s
+}
+
+type UpdateTriggerRequestActions struct {
+	Name       *string   `json:"Name,omitempty" xml:"Name,omitempty"`
+	Parameters []*string `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Repeated"`
+}
+
+func (s UpdateTriggerRequestActions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTriggerRequestActions) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTriggerRequestActions) SetName(v string) *UpdateTriggerRequestActions {
+	s.Name = &v
+	return s
+}
+
+func (s *UpdateTriggerRequestActions) SetParameters(v []*string) *UpdateTriggerRequestActions {
+	s.Parameters = v
+	return s
+}
+
+type UpdateTriggerRequestNotification struct {
+	Endpoint *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
+	Topic    *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
+}
+
+func (s UpdateTriggerRequestNotification) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTriggerRequestNotification) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTriggerRequestNotification) SetEndpoint(v string) *UpdateTriggerRequestNotification {
+	s.Endpoint = &v
+	return s
+}
+
+func (s *UpdateTriggerRequestNotification) SetTopic(v string) *UpdateTriggerRequestNotification {
+	s.Topic = &v
+	return s
+}
+
+type UpdateTriggerShrinkRequest struct {
+	ActionsShrink      *string `json:"Actions,omitempty" xml:"Actions,omitempty"`
+	Id                 *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	InputShrink        *string `json:"Input,omitempty" xml:"Input,omitempty"`
+	NotificationShrink *string `json:"Notification,omitempty" xml:"Notification,omitempty"`
+	ProjectName        *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	TagsShrink         *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+}
+
+func (s UpdateTriggerShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTriggerShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTriggerShrinkRequest) SetActionsShrink(v string) *UpdateTriggerShrinkRequest {
+	s.ActionsShrink = &v
+	return s
+}
+
+func (s *UpdateTriggerShrinkRequest) SetId(v string) *UpdateTriggerShrinkRequest {
+	s.Id = &v
+	return s
+}
+
+func (s *UpdateTriggerShrinkRequest) SetInputShrink(v string) *UpdateTriggerShrinkRequest {
+	s.InputShrink = &v
+	return s
+}
+
+func (s *UpdateTriggerShrinkRequest) SetNotificationShrink(v string) *UpdateTriggerShrinkRequest {
+	s.NotificationShrink = &v
+	return s
+}
+
+func (s *UpdateTriggerShrinkRequest) SetProjectName(v string) *UpdateTriggerShrinkRequest {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *UpdateTriggerShrinkRequest) SetTagsShrink(v string) *UpdateTriggerShrinkRequest {
+	s.TagsShrink = &v
+	return s
+}
+
+type UpdateTriggerResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateTriggerResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTriggerResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTriggerResponseBody) SetRequestId(v string) *UpdateTriggerResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateTriggerResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateTriggerResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateTriggerResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTriggerResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTriggerResponse) SetHeaders(v map[string]*string) *UpdateTriggerResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateTriggerResponse) SetStatusCode(v int32) *UpdateTriggerResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateTriggerResponse) SetBody(v *UpdateTriggerResponseBody) *UpdateTriggerResponse {
 	s.Body = v
 	return s
 }
@@ -16641,6 +17561,54 @@ func (client *Client) CreateVideoModerationTask(request *CreateVideoModerationTa
 	return _result, _err
 }
 
+func (client *Client) DeleteBatchWithOptions(request *DeleteBatchRequest, runtime *util.RuntimeOptions) (_result *DeleteBatchResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		body["Id"] = request.Id
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectName)) {
+		body["ProjectName"] = request.ProjectName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteBatch"),
+		Version:     tea.String("2020-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteBatchResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteBatch(request *DeleteBatchRequest) (_result *DeleteBatchResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteBatchResponse{}
+	_body, _err := client.DeleteBatchWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DeleteBindingWithOptions(request *DeleteBindingRequest, runtime *util.RuntimeOptions) (_result *DeleteBindingResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16940,6 +17908,54 @@ func (client *Client) DeleteStory(request *DeleteStoryRequest) (_result *DeleteS
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteStoryResponse{}
 	_body, _err := client.DeleteStoryWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteTriggerWithOptions(request *DeleteTriggerRequest, runtime *util.RuntimeOptions) (_result *DeleteTriggerResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		body["Id"] = request.Id
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectName)) {
+		body["ProjectName"] = request.ProjectName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteTrigger"),
+		Version:     tea.String("2020-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteTriggerResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteTrigger(request *DeleteTriggerRequest) (_result *DeleteTriggerResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteTriggerResponse{}
+	_body, _err := client.DeleteTriggerWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -18921,6 +19937,102 @@ func (client *Client) RemoveStoryFiles(request *RemoveStoryFilesRequest) (_resul
 	return _result, _err
 }
 
+func (client *Client) ResumeBatchWithOptions(request *ResumeBatchRequest, runtime *util.RuntimeOptions) (_result *ResumeBatchResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		body["Id"] = request.Id
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectName)) {
+		body["ProjectName"] = request.ProjectName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ResumeBatch"),
+		Version:     tea.String("2020-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ResumeBatchResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ResumeBatch(request *ResumeBatchRequest) (_result *ResumeBatchResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ResumeBatchResponse{}
+	_body, _err := client.ResumeBatchWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ResumeTriggerWithOptions(request *ResumeTriggerRequest, runtime *util.RuntimeOptions) (_result *ResumeTriggerResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		body["Id"] = request.Id
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectName)) {
+		body["ProjectName"] = request.ProjectName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ResumeTrigger"),
+		Version:     tea.String("2020-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ResumeTriggerResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ResumeTrigger(request *ResumeTriggerRequest) (_result *ResumeTriggerResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ResumeTriggerResponse{}
+	_body, _err := client.ResumeTriggerWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) SearchImageFigureClusterWithOptions(tmpReq *SearchImageFigureClusterRequest, runtime *util.RuntimeOptions) (_result *SearchImageFigureClusterResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -19126,6 +20238,184 @@ func (client *Client) SimpleQuery(request *SimpleQueryRequest) (_result *SimpleQ
 	runtime := &util.RuntimeOptions{}
 	_result = &SimpleQueryResponse{}
 	_body, _err := client.SimpleQueryWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SuspendBatchWithOptions(request *SuspendBatchRequest, runtime *util.RuntimeOptions) (_result *SuspendBatchResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		body["Id"] = request.Id
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectName)) {
+		body["ProjectName"] = request.ProjectName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SuspendBatch"),
+		Version:     tea.String("2020-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SuspendBatchResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SuspendBatch(request *SuspendBatchRequest) (_result *SuspendBatchResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SuspendBatchResponse{}
+	_body, _err := client.SuspendBatchWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SuspendTriggerWithOptions(request *SuspendTriggerRequest, runtime *util.RuntimeOptions) (_result *SuspendTriggerResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		body["Id"] = request.Id
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectName)) {
+		body["ProjectName"] = request.ProjectName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SuspendTrigger"),
+		Version:     tea.String("2020-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SuspendTriggerResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SuspendTrigger(request *SuspendTriggerRequest) (_result *SuspendTriggerResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SuspendTriggerResponse{}
+	_body, _err := client.SuspendTriggerWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateBatchWithOptions(tmpReq *UpdateBatchRequest, runtime *util.RuntimeOptions) (_result *UpdateBatchResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &UpdateBatchShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Actions)) {
+		request.ActionsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Actions, tea.String("Actions"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.Input)) {
+		request.InputShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Input, tea.String("Input"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.Notification)) {
+		request.NotificationShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Notification, tea.String("Notification"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.Tags)) {
+		request.TagsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Tags, tea.String("Tags"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ActionsShrink)) {
+		body["Actions"] = request.ActionsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		body["Id"] = request.Id
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InputShrink)) {
+		body["Input"] = request.InputShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NotificationShrink)) {
+		body["Notification"] = request.NotificationShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectName)) {
+		body["ProjectName"] = request.ProjectName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagsShrink)) {
+		body["Tags"] = request.TagsShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateBatch"),
+		Version:     tea.String("2020-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateBatchResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateBatch(request *UpdateBatchRequest) (_result *UpdateBatchResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateBatchResponse{}
+	_body, _err := client.UpdateBatchWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19546,6 +20836,88 @@ func (client *Client) UpdateStory(request *UpdateStoryRequest) (_result *UpdateS
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateStoryResponse{}
 	_body, _err := client.UpdateStoryWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateTriggerWithOptions(tmpReq *UpdateTriggerRequest, runtime *util.RuntimeOptions) (_result *UpdateTriggerResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &UpdateTriggerShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Actions)) {
+		request.ActionsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Actions, tea.String("Actions"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.Input)) {
+		request.InputShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Input, tea.String("Input"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.Notification)) {
+		request.NotificationShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Notification, tea.String("Notification"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.Tags)) {
+		request.TagsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Tags, tea.String("Tags"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ActionsShrink)) {
+		body["Actions"] = request.ActionsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		body["Id"] = request.Id
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InputShrink)) {
+		body["Input"] = request.InputShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NotificationShrink)) {
+		body["Notification"] = request.NotificationShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectName)) {
+		body["ProjectName"] = request.ProjectName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagsShrink)) {
+		body["Tags"] = request.TagsShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateTrigger"),
+		Version:     tea.String("2020-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateTriggerResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateTrigger(request *UpdateTriggerRequest) (_result *UpdateTriggerResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateTriggerResponse{}
+	_body, _err := client.UpdateTriggerWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
