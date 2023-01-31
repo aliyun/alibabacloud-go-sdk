@@ -4408,6 +4408,7 @@ type CreateBgpGroupRequest struct {
 	Description          *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	IpVersion            *string `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
 	IsFakeAsn            *bool   `json:"IsFakeAsn,omitempty" xml:"IsFakeAsn,omitempty"`
+	LocalAsn             *int64  `json:"LocalAsn,omitempty" xml:"LocalAsn,omitempty"`
 	Name                 *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -4415,6 +4416,7 @@ type CreateBgpGroupRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	RouteQuota           *int32  `json:"RouteQuota,omitempty" xml:"RouteQuota,omitempty"`
 	RouterId             *string `json:"RouterId,omitempty" xml:"RouterId,omitempty"`
 }
 
@@ -4451,6 +4453,11 @@ func (s *CreateBgpGroupRequest) SetIsFakeAsn(v bool) *CreateBgpGroupRequest {
 	return s
 }
 
+func (s *CreateBgpGroupRequest) SetLocalAsn(v int64) *CreateBgpGroupRequest {
+	s.LocalAsn = &v
+	return s
+}
+
 func (s *CreateBgpGroupRequest) SetName(v string) *CreateBgpGroupRequest {
 	s.Name = &v
 	return s
@@ -4483,6 +4490,11 @@ func (s *CreateBgpGroupRequest) SetResourceOwnerAccount(v string) *CreateBgpGrou
 
 func (s *CreateBgpGroupRequest) SetResourceOwnerId(v int64) *CreateBgpGroupRequest {
 	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *CreateBgpGroupRequest) SetRouteQuota(v int32) *CreateBgpGroupRequest {
+	s.RouteQuota = &v
 	return s
 }
 
@@ -6850,7 +6862,6 @@ type CreateIpv6GatewayRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	Spec                 *string `json:"Spec,omitempty" xml:"Spec,omitempty"`
 	VpcId                *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
@@ -6899,11 +6910,6 @@ func (s *CreateIpv6GatewayRequest) SetResourceOwnerAccount(v string) *CreateIpv6
 
 func (s *CreateIpv6GatewayRequest) SetResourceOwnerId(v int64) *CreateIpv6GatewayRequest {
 	s.ResourceOwnerId = &v
-	return s
-}
-
-func (s *CreateIpv6GatewayRequest) SetSpec(v string) *CreateIpv6GatewayRequest {
-	s.Spec = &v
 	return s
 }
 
@@ -24149,7 +24155,6 @@ type DescribeIpv6GatewayAttributeResponseBody struct {
 	Name               *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	RegionId           *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	RequestId          *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Spec               *string `json:"Spec,omitempty" xml:"Spec,omitempty"`
 	Status             *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	VpcId              *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
@@ -24204,11 +24209,6 @@ func (s *DescribeIpv6GatewayAttributeResponseBody) SetRegionId(v string) *Descri
 
 func (s *DescribeIpv6GatewayAttributeResponseBody) SetRequestId(v string) *DescribeIpv6GatewayAttributeResponseBody {
 	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeIpv6GatewayAttributeResponseBody) SetSpec(v string) *DescribeIpv6GatewayAttributeResponseBody {
-	s.Spec = &v
 	return s
 }
 
@@ -24389,7 +24389,6 @@ type DescribeIpv6GatewaysResponseBodyIpv6GatewaysIpv6Gateway struct {
 	Ipv6GatewayId      *string `json:"Ipv6GatewayId,omitempty" xml:"Ipv6GatewayId,omitempty"`
 	Name               *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	RegionId           *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Spec               *string `json:"Spec,omitempty" xml:"Spec,omitempty"`
 	Status             *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	VpcId              *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
@@ -24439,11 +24438,6 @@ func (s *DescribeIpv6GatewaysResponseBodyIpv6GatewaysIpv6Gateway) SetName(v stri
 
 func (s *DescribeIpv6GatewaysResponseBodyIpv6GatewaysIpv6Gateway) SetRegionId(v string) *DescribeIpv6GatewaysResponseBodyIpv6GatewaysIpv6Gateway {
 	s.RegionId = &v
-	return s
-}
-
-func (s *DescribeIpv6GatewaysResponseBodyIpv6GatewaysIpv6Gateway) SetSpec(v string) *DescribeIpv6GatewaysResponseBodyIpv6GatewaysIpv6Gateway {
-	s.Spec = &v
 	return s
 }
 
@@ -59890,6 +59884,10 @@ func (client *Client) CreateBgpGroupWithOptions(request *CreateBgpGroupRequest, 
 		query["IsFakeAsn"] = request.IsFakeAsn
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.LocalAsn)) {
+		query["LocalAsn"] = request.LocalAsn
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Name)) {
 		query["Name"] = request.Name
 	}
@@ -59916,6 +59914,10 @@ func (client *Client) CreateBgpGroupWithOptions(request *CreateBgpGroupRequest, 
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
 		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RouteQuota)) {
+		query["RouteQuota"] = request.RouteQuota
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.RouterId)) {
@@ -61444,10 +61446,6 @@ func (client *Client) CreateIpv6GatewayWithOptions(request *CreateIpv6GatewayReq
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
 		query["ResourceOwnerId"] = request.ResourceOwnerId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Spec)) {
-		query["Spec"] = request.Spec
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.VpcId)) {
