@@ -12670,7 +12670,7 @@ func (s *DescribeDomainRealtimeLogDeliveryRequest) SetDomain(v string) *Describe
 }
 
 type DescribeDomainRealtimeLogDeliveryResponseBody struct {
-	// The name of the Logstore that collects log data from Alibaba Cloud Content Delivery Network (CDN) in real time.
+	// The name of the Logstore where log entries are stored.
 	Logstore *string `json:"Logstore,omitempty" xml:"Logstore,omitempty"`
 	// The name of the Log Service project that is used for real-time log delivery.
 	Project *string `json:"Project,omitempty" xml:"Project,omitempty"`
@@ -12678,7 +12678,10 @@ type DescribeDomainRealtimeLogDeliveryResponseBody struct {
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The status of the real-time log delivery feature.
+	// The status of the real-time log delivery feature. Valid values:
+	//
+	// *   **online**
+	// *   **offline**
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -17759,7 +17762,6 @@ func (s *DescribeRefreshQuotaResponse) SetBody(v *DescribeRefreshQuotaResponseBo
 }
 
 type DescribeRefreshTaskByIdRequest struct {
-	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The ID of the task that you want to query.
 	//
 	// You can call the [RefreshObjectCaches](~~91164~~) operation to query task IDs. Then, you can use the task IDs to query task status.
@@ -17774,11 +17776,6 @@ func (s DescribeRefreshTaskByIdRequest) String() string {
 
 func (s DescribeRefreshTaskByIdRequest) GoString() string {
 	return s.String()
-}
-
-func (s *DescribeRefreshTaskByIdRequest) SetOwnerId(v int64) *DescribeRefreshTaskByIdRequest {
-	s.OwnerId = &v
-	return s
 }
 
 func (s *DescribeRefreshTaskByIdRequest) SetTaskId(v string) *DescribeRefreshTaskByIdRequest {
@@ -28707,7 +28704,7 @@ func (client *Client) DescribeDomainRealTimeTrafficData(request *DescribeDomainR
 }
 
 /**
- * >  The maximum number of times that each user can call this operation per second is 100.
+ * >  You can call this API operation up to 100 times per second per account.
  *
  * @param request DescribeDomainRealtimeLogDeliveryRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -28743,7 +28740,7 @@ func (client *Client) DescribeDomainRealtimeLogDeliveryWithOptions(request *Desc
 }
 
 /**
- * >  The maximum number of times that each user can call this operation per second is 100.
+ * >  You can call this API operation up to 100 times per second per account.
  *
  * @param request DescribeDomainRealtimeLogDeliveryRequest
  * @return DescribeDomainRealtimeLogDeliveryResponse
@@ -30681,10 +30678,6 @@ func (client *Client) DescribeRefreshTaskByIdWithOptions(request *DescribeRefres
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
 		query["TaskId"] = request.TaskId
 	}
