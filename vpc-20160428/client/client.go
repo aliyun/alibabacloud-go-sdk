@@ -44587,6 +44587,7 @@ type ModifyBgpGroupAttributeRequest struct {
 	ClientToken          *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	Description          *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	IsFakeAsn            *bool   `json:"IsFakeAsn,omitempty" xml:"IsFakeAsn,omitempty"`
+	LocalAsn             *int64  `json:"LocalAsn,omitempty" xml:"LocalAsn,omitempty"`
 	Name                 *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -44594,6 +44595,7 @@ type ModifyBgpGroupAttributeRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	RouteQuota           *int32  `json:"RouteQuota,omitempty" xml:"RouteQuota,omitempty"`
 }
 
 func (s ModifyBgpGroupAttributeRequest) String() string {
@@ -44634,6 +44636,11 @@ func (s *ModifyBgpGroupAttributeRequest) SetIsFakeAsn(v bool) *ModifyBgpGroupAtt
 	return s
 }
 
+func (s *ModifyBgpGroupAttributeRequest) SetLocalAsn(v int64) *ModifyBgpGroupAttributeRequest {
+	s.LocalAsn = &v
+	return s
+}
+
 func (s *ModifyBgpGroupAttributeRequest) SetName(v string) *ModifyBgpGroupAttributeRequest {
 	s.Name = &v
 	return s
@@ -44666,6 +44673,11 @@ func (s *ModifyBgpGroupAttributeRequest) SetResourceOwnerAccount(v string) *Modi
 
 func (s *ModifyBgpGroupAttributeRequest) SetResourceOwnerId(v int64) *ModifyBgpGroupAttributeRequest {
 	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *ModifyBgpGroupAttributeRequest) SetRouteQuota(v int32) *ModifyBgpGroupAttributeRequest {
+	s.RouteQuota = &v
 	return s
 }
 
@@ -77022,6 +77034,10 @@ func (client *Client) ModifyBgpGroupAttributeWithOptions(request *ModifyBgpGroup
 		query["IsFakeAsn"] = request.IsFakeAsn
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.LocalAsn)) {
+		query["LocalAsn"] = request.LocalAsn
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Name)) {
 		query["Name"] = request.Name
 	}
@@ -77048,6 +77064,10 @@ func (client *Client) ModifyBgpGroupAttributeWithOptions(request *ModifyBgpGroup
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
 		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RouteQuota)) {
+		query["RouteQuota"] = request.RouteQuota
 	}
 
 	req := &openapi.OpenApiRequest{
