@@ -3383,6 +3383,7 @@ type DescribeClusterDetailResponseBody struct {
 	Name                   *string            `json:"name,omitempty" xml:"name,omitempty"`
 	NetworkMode            *string            `json:"network_mode,omitempty" xml:"network_mode,omitempty"`
 	NextVersion            *string            `json:"next_version,omitempty" xml:"next_version,omitempty"`
+	Parameters             map[string]*string `json:"parameters,omitempty" xml:"parameters,omitempty"`
 	PrivateZone            *bool              `json:"private_zone,omitempty" xml:"private_zone,omitempty"`
 	Profile                *string            `json:"profile,omitempty" xml:"profile,omitempty"`
 	RegionId               *string            `json:"region_id,omitempty" xml:"region_id,omitempty"`
@@ -3479,6 +3480,11 @@ func (s *DescribeClusterDetailResponseBody) SetNetworkMode(v string) *DescribeCl
 
 func (s *DescribeClusterDetailResponseBody) SetNextVersion(v string) *DescribeClusterDetailResponseBody {
 	s.NextVersion = &v
+	return s
+}
+
+func (s *DescribeClusterDetailResponseBody) SetParameters(v map[string]*string) *DescribeClusterDetailResponseBody {
+	s.Parameters = v
 	return s
 }
 
