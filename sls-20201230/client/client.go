@@ -5381,7 +5381,6 @@ type UpdateEtlJobRequest struct {
 	LogConfig      *EtlLogConfig      `json:"logConfig,omitempty" xml:"logConfig,omitempty"`
 	SourceConfig   *EtlSourceConfig   `json:"sourceConfig,omitempty" xml:"sourceConfig,omitempty"`
 	TriggerConfig  *EtlTriggerConfig  `json:"triggerConfig,omitempty" xml:"triggerConfig,omitempty"`
-	Project        *string            `json:"project,omitempty" xml:"project,omitempty"`
 }
 
 func (s UpdateEtlJobRequest) String() string {
@@ -5419,11 +5418,6 @@ func (s *UpdateEtlJobRequest) SetSourceConfig(v *EtlSourceConfig) *UpdateEtlJobR
 
 func (s *UpdateEtlJobRequest) SetTriggerConfig(v *EtlTriggerConfig) *UpdateEtlJobRequest {
 	s.TriggerConfig = v
-	return s
-}
-
-func (s *UpdateEtlJobRequest) SetProject(v string) *UpdateEtlJobRequest {
-	s.Project = &v
 	return s
 }
 
@@ -9823,16 +9817,13 @@ func (client *Client) UpdateConsumerGroup(project *string, logstore *string, con
 	return _result, _err
 }
 
-func (client *Client) UpdateEtlJobWithOptions(etlJob *string, request *UpdateEtlJobRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateEtlJobResponse, _err error) {
+func (client *Client) UpdateEtlJobWithOptions(project *string, etlJob *string, request *UpdateEtlJobRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateEtlJobResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.Project)) {
-		query["project"] = request.Project
-	}
-
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Enable)) {
 		body["enable"] = request.Enable
@@ -9859,8 +9850,8 @@ func (client *Client) UpdateEtlJobWithOptions(etlJob *string, request *UpdateEtl
 	}
 
 	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
 		Headers: headers,
-		Query:   openapiutil.Query(query),
 		Body:    openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
@@ -9883,11 +9874,11 @@ func (client *Client) UpdateEtlJobWithOptions(etlJob *string, request *UpdateEtl
 	return _result, _err
 }
 
-func (client *Client) UpdateEtlJob(etlJob *string, request *UpdateEtlJobRequest) (_result *UpdateEtlJobResponse, _err error) {
+func (client *Client) UpdateEtlJob(project *string, etlJob *string, request *UpdateEtlJobRequest) (_result *UpdateEtlJobResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &UpdateEtlJobResponse{}
-	_body, _err := client.UpdateEtlJobWithOptions(etlJob, request, headers, runtime)
+	_body, _err := client.UpdateEtlJobWithOptions(project, etlJob, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
