@@ -346,6 +346,23 @@ func (s *Dashboard) SetDisplayName(v string) *Dashboard {
 	return s
 }
 
+type EtlFunctionConfig struct {
+	FunctionProvider *string `json:"functionProvider,omitempty" xml:"functionProvider,omitempty"`
+}
+
+func (s EtlFunctionConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EtlFunctionConfig) GoString() string {
+	return s.String()
+}
+
+func (s *EtlFunctionConfig) SetFunctionProvider(v string) *EtlFunctionConfig {
+	s.FunctionProvider = &v
+	return s
+}
+
 type EtlJob struct {
 	Enable            *bool                  `json:"enable,omitempty" xml:"enable,omitempty"`
 	EtlJobName        *string                `json:"etlJobName,omitempty" xml:"etlJobName,omitempty"`
@@ -539,6 +556,35 @@ func (s *EtlJobTriggerConfig) SetTriggerInterval(v int32) *EtlJobTriggerConfig {
 	return s
 }
 
+type EtlLogConfig struct {
+	Endpoint     *string `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
+	LogstoreName *string `json:"logstoreName,omitempty" xml:"logstoreName,omitempty"`
+	ProjectName  *string `json:"projectName,omitempty" xml:"projectName,omitempty"`
+}
+
+func (s EtlLogConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EtlLogConfig) GoString() string {
+	return s.String()
+}
+
+func (s *EtlLogConfig) SetEndpoint(v string) *EtlLogConfig {
+	s.Endpoint = &v
+	return s
+}
+
+func (s *EtlLogConfig) SetLogstoreName(v string) *EtlLogConfig {
+	s.LogstoreName = &v
+	return s
+}
+
+func (s *EtlLogConfig) SetProjectName(v string) *EtlLogConfig {
+	s.ProjectName = &v
+	return s
+}
+
 type EtlMeta struct {
 	Enable       *bool   `json:"enable,omitempty" xml:"enable,omitempty"`
 	EtlMetaKey   *string `json:"etlMetaKey,omitempty" xml:"etlMetaKey,omitempty"`
@@ -577,6 +623,64 @@ func (s *EtlMeta) SetEtlMetaTag(v string) *EtlMeta {
 
 func (s *EtlMeta) SetEtlMetaValue(v string) *EtlMeta {
 	s.EtlMetaValue = &v
+	return s
+}
+
+type EtlSourceConfig struct {
+	LogstoreName *string `json:"logstoreName,omitempty" xml:"logstoreName,omitempty"`
+}
+
+func (s EtlSourceConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EtlSourceConfig) GoString() string {
+	return s.String()
+}
+
+func (s *EtlSourceConfig) SetLogstoreName(v string) *EtlSourceConfig {
+	s.LogstoreName = &v
+	return s
+}
+
+type EtlTriggerConfig struct {
+	MaxRetryTime     *int32  `json:"maxRetryTime,omitempty" xml:"maxRetryTime,omitempty"`
+	RoleArn          *string `json:"roleArn,omitempty" xml:"roleArn,omitempty"`
+	StartingPosition *string `json:"startingPosition,omitempty" xml:"startingPosition,omitempty"`
+	StartingUnixtime *int64  `json:"startingUnixtime,omitempty" xml:"startingUnixtime,omitempty"`
+	TriggerInterval  *int32  `json:"triggerInterval,omitempty" xml:"triggerInterval,omitempty"`
+}
+
+func (s EtlTriggerConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EtlTriggerConfig) GoString() string {
+	return s.String()
+}
+
+func (s *EtlTriggerConfig) SetMaxRetryTime(v int32) *EtlTriggerConfig {
+	s.MaxRetryTime = &v
+	return s
+}
+
+func (s *EtlTriggerConfig) SetRoleArn(v string) *EtlTriggerConfig {
+	s.RoleArn = &v
+	return s
+}
+
+func (s *EtlTriggerConfig) SetStartingPosition(v string) *EtlTriggerConfig {
+	s.StartingPosition = &v
+	return s
+}
+
+func (s *EtlTriggerConfig) SetStartingUnixtime(v int64) *EtlTriggerConfig {
+	s.StartingUnixtime = &v
+	return s
+}
+
+func (s *EtlTriggerConfig) SetTriggerInterval(v int32) *EtlTriggerConfig {
+	s.TriggerInterval = &v
 	return s
 }
 
@@ -950,13 +1054,14 @@ func (s *MachineGroupGroupAttribute) SetGroupTopic(v string) *MachineGroupGroupA
 }
 
 type Project struct {
-	CreateTime     *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	Description    *string `json:"description,omitempty" xml:"description,omitempty"`
-	LastModifyTime *string `json:"lastModifyTime,omitempty" xml:"lastModifyTime,omitempty"`
-	Owner          *string `json:"owner,omitempty" xml:"owner,omitempty"`
-	ProjectName    *string `json:"projectName,omitempty" xml:"projectName,omitempty"`
-	Region         *string `json:"region,omitempty" xml:"region,omitempty"`
-	Status         *string `json:"status,omitempty" xml:"status,omitempty"`
+	CreateTime      *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	Description     *string `json:"description,omitempty" xml:"description,omitempty"`
+	LastModifyTime  *string `json:"lastModifyTime,omitempty" xml:"lastModifyTime,omitempty"`
+	Owner           *string `json:"owner,omitempty" xml:"owner,omitempty"`
+	ProjectName     *string `json:"projectName,omitempty" xml:"projectName,omitempty"`
+	Region          *string `json:"region,omitempty" xml:"region,omitempty"`
+	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
+	Status          *string `json:"status,omitempty" xml:"status,omitempty"`
 }
 
 func (s Project) String() string {
@@ -994,6 +1099,11 @@ func (s *Project) SetProjectName(v string) *Project {
 
 func (s *Project) SetRegion(v string) *Project {
 	s.Region = &v
+	return s
+}
+
+func (s *Project) SetResourceGroupId(v string) *Project {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -1160,6 +1270,58 @@ func (s *ApplyConfigToMachineGroupResponse) SetStatusCode(v int32) *ApplyConfigT
 	return s
 }
 
+type ChangeResourceGroupRequest struct {
+	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
+	ResourceId      *string `json:"resourceId,omitempty" xml:"resourceId,omitempty"`
+	ResourceType    *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
+}
+
+func (s ChangeResourceGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ChangeResourceGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ChangeResourceGroupRequest) SetResourceGroupId(v string) *ChangeResourceGroupRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *ChangeResourceGroupRequest) SetResourceId(v string) *ChangeResourceGroupRequest {
+	s.ResourceId = &v
+	return s
+}
+
+func (s *ChangeResourceGroupRequest) SetResourceType(v string) *ChangeResourceGroupRequest {
+	s.ResourceType = &v
+	return s
+}
+
+type ChangeResourceGroupResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+}
+
+func (s ChangeResourceGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ChangeResourceGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ChangeResourceGroupResponse) SetHeaders(v map[string]*string) *ChangeResourceGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ChangeResourceGroupResponse) SetStatusCode(v int32) *ChangeResourceGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
 type CreateConsumerGroupRequest struct {
 	ConsumerGroup *string `json:"consumerGroup,omitempty" xml:"consumerGroup,omitempty"`
 	Order         *bool   `json:"order,omitempty" xml:"order,omitempty"`
@@ -1249,6 +1411,93 @@ func (s *CreateDomainResponse) SetHeaders(v map[string]*string) *CreateDomainRes
 
 func (s *CreateDomainResponse) SetStatusCode(v int32) *CreateDomainResponse {
 	s.StatusCode = &v
+	return s
+}
+
+type CreateETLJobRequest struct {
+	EtlJob *EtlJob `json:"etlJob,omitempty" xml:"etlJob,omitempty"`
+}
+
+func (s CreateETLJobRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateETLJobRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateETLJobRequest) SetEtlJob(v *EtlJob) *CreateETLJobRequest {
+	s.EtlJob = v
+	return s
+}
+
+type CreateETLJobResponseBody struct {
+	Code      *int32                   `json:"code,omitempty" xml:"code,omitempty"`
+	Data      []map[string]interface{} `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	Message   *string                  `json:"message,omitempty" xml:"message,omitempty"`
+	RequestId *string                  `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success   *string                  `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s CreateETLJobResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateETLJobResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateETLJobResponseBody) SetCode(v int32) *CreateETLJobResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CreateETLJobResponseBody) SetData(v []map[string]interface{}) *CreateETLJobResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *CreateETLJobResponseBody) SetMessage(v string) *CreateETLJobResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CreateETLJobResponseBody) SetRequestId(v string) *CreateETLJobResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateETLJobResponseBody) SetSuccess(v string) *CreateETLJobResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreateETLJobResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateETLJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateETLJobResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateETLJobResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateETLJobResponse) SetHeaders(v map[string]*string) *CreateETLJobResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateETLJobResponse) SetStatusCode(v int32) *CreateETLJobResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateETLJobResponse) SetBody(v *CreateETLJobResponseBody) *CreateETLJobResponse {
+	s.Body = v
 	return s
 }
 
@@ -2005,8 +2254,9 @@ func (s *CreateOssShipperResponse) SetStatusCode(v int32) *CreateOssShipperRespo
 }
 
 type CreateProjectRequest struct {
-	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	ProjectName *string `json:"projectName,omitempty" xml:"projectName,omitempty"`
+	Description     *string `json:"description,omitempty" xml:"description,omitempty"`
+	ProjectName     *string `json:"projectName,omitempty" xml:"projectName,omitempty"`
+	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
 }
 
 func (s CreateProjectRequest) String() string {
@@ -2024,6 +2274,11 @@ func (s *CreateProjectRequest) SetDescription(v string) *CreateProjectRequest {
 
 func (s *CreateProjectRequest) SetProjectName(v string) *CreateProjectRequest {
 	s.ProjectName = &v
+	return s
+}
+
+func (s *CreateProjectRequest) SetResourceGroupId(v string) *CreateProjectRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -2274,6 +2529,52 @@ func (s *DeleteDomainResponse) SetHeaders(v map[string]*string) *DeleteDomainRes
 
 func (s *DeleteDomainResponse) SetStatusCode(v int32) *DeleteDomainResponse {
 	s.StatusCode = &v
+	return s
+}
+
+type DeleteETLJobRequest struct {
+	Project *string `json:"project,omitempty" xml:"project,omitempty"`
+}
+
+func (s DeleteETLJobRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteETLJobRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteETLJobRequest) SetProject(v string) *DeleteETLJobRequest {
+	s.Project = &v
+	return s
+}
+
+type DeleteETLJobResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       []map[string]interface{} `json:"body,omitempty" xml:"body,omitempty" require:"true" type:"Repeated"`
+}
+
+func (s DeleteETLJobResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteETLJobResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteETLJobResponse) SetHeaders(v map[string]*string) *DeleteETLJobResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteETLJobResponse) SetStatusCode(v int32) *DeleteETLJobResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteETLJobResponse) SetBody(v []map[string]interface{}) *DeleteETLJobResponse {
+	s.Body = v
 	return s
 }
 
@@ -2635,6 +2936,7 @@ func (s *GetCheckPointResponse) SetBody(v []*GetCheckPointResponseBody) *GetChec
 }
 
 type GetCheckPointResponseBody struct {
+	// Shard ID。
 	Shard      *int32  `json:"shard,omitempty" xml:"shard,omitempty"`
 	Checkpoint *string `json:"checkpoint,omitempty" xml:"checkpoint,omitempty"`
 	UpdateTime *int64  `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
@@ -2902,6 +3204,76 @@ func (s *GetCursorTimeResponse) SetStatusCode(v int32) *GetCursorTimeResponse {
 }
 
 func (s *GetCursorTimeResponse) SetBody(v *GetCursorTimeResponseBody) *GetCursorTimeResponse {
+	s.Body = v
+	return s
+}
+
+type GetEtlJobResponseBody struct {
+	Code      *int32                   `json:"code,omitempty" xml:"code,omitempty"`
+	Data      []map[string]interface{} `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	Message   *string                  `json:"message,omitempty" xml:"message,omitempty"`
+	RequestId *string                  `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success   *string                  `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s GetEtlJobResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEtlJobResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetEtlJobResponseBody) SetCode(v int32) *GetEtlJobResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetEtlJobResponseBody) SetData(v []map[string]interface{}) *GetEtlJobResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetEtlJobResponseBody) SetMessage(v string) *GetEtlJobResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetEtlJobResponseBody) SetRequestId(v string) *GetEtlJobResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetEtlJobResponseBody) SetSuccess(v string) *GetEtlJobResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetEtlJobResponse struct {
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetEtlJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetEtlJobResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEtlJobResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetEtlJobResponse) SetHeaders(v map[string]*string) *GetEtlJobResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetEtlJobResponse) SetStatusCode(v int32) *GetEtlJobResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetEtlJobResponse) SetBody(v *GetEtlJobResponseBody) *GetEtlJobResponse {
 	s.Body = v
 	return s
 }
@@ -3434,6 +3806,7 @@ func (s *GetProjectLogsResponse) SetBody(v []map[string]*string) *GetProjectLogs
 type GetProjectPolicyResponse struct {
 	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
 	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *string            `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetProjectPolicyResponse) String() string {
@@ -3451,6 +3824,11 @@ func (s *GetProjectPolicyResponse) SetHeaders(v map[string]*string) *GetProjectP
 
 func (s *GetProjectPolicyResponse) SetStatusCode(v int32) *GetProjectPolicyResponse {
 	s.StatusCode = &v
+	return s
+}
+
+func (s *GetProjectPolicyResponse) SetBody(v string) *GetProjectPolicyResponse {
+	s.Body = &v
 	return s
 }
 
@@ -3788,6 +4166,35 @@ func (s *ListDomainsResponse) SetStatusCode(v int32) *ListDomainsResponse {
 }
 
 func (s *ListDomainsResponse) SetBody(v *ListDomainsResponseBody) *ListDomainsResponse {
+	s.Body = v
+	return s
+}
+
+type ListETLJobsResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       []map[string]interface{} `json:"body,omitempty" xml:"body,omitempty" require:"true" type:"Repeated"`
+}
+
+func (s ListETLJobsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListETLJobsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListETLJobsResponse) SetHeaders(v map[string]*string) *ListETLJobsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListETLJobsResponse) SetStatusCode(v int32) *ListETLJobsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListETLJobsResponse) SetBody(v []map[string]interface{}) *ListETLJobsResponse {
 	s.Body = v
 	return s
 }
@@ -4967,6 +5374,129 @@ func (s *UpdateConsumerGroupResponse) SetStatusCode(v int32) *UpdateConsumerGrou
 	return s
 }
 
+type UpdateEtlJobRequest struct {
+	Enable         *bool              `json:"enable,omitempty" xml:"enable,omitempty"`
+	FunctionConfig *EtlFunctionConfig `json:"functionConfig,omitempty" xml:"functionConfig,omitempty"`
+	JobName        *string            `json:"jobName,omitempty" xml:"jobName,omitempty"`
+	LogConfig      *EtlLogConfig      `json:"logConfig,omitempty" xml:"logConfig,omitempty"`
+	SourceConfig   *EtlSourceConfig   `json:"sourceConfig,omitempty" xml:"sourceConfig,omitempty"`
+	TriggerConfig  *EtlTriggerConfig  `json:"triggerConfig,omitempty" xml:"triggerConfig,omitempty"`
+	Project        *string            `json:"project,omitempty" xml:"project,omitempty"`
+}
+
+func (s UpdateEtlJobRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateEtlJobRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateEtlJobRequest) SetEnable(v bool) *UpdateEtlJobRequest {
+	s.Enable = &v
+	return s
+}
+
+func (s *UpdateEtlJobRequest) SetFunctionConfig(v *EtlFunctionConfig) *UpdateEtlJobRequest {
+	s.FunctionConfig = v
+	return s
+}
+
+func (s *UpdateEtlJobRequest) SetJobName(v string) *UpdateEtlJobRequest {
+	s.JobName = &v
+	return s
+}
+
+func (s *UpdateEtlJobRequest) SetLogConfig(v *EtlLogConfig) *UpdateEtlJobRequest {
+	s.LogConfig = v
+	return s
+}
+
+func (s *UpdateEtlJobRequest) SetSourceConfig(v *EtlSourceConfig) *UpdateEtlJobRequest {
+	s.SourceConfig = v
+	return s
+}
+
+func (s *UpdateEtlJobRequest) SetTriggerConfig(v *EtlTriggerConfig) *UpdateEtlJobRequest {
+	s.TriggerConfig = v
+	return s
+}
+
+func (s *UpdateEtlJobRequest) SetProject(v string) *UpdateEtlJobRequest {
+	s.Project = &v
+	return s
+}
+
+type UpdateEtlJobResponseBody struct {
+	Code      *int32                   `json:"code,omitempty" xml:"code,omitempty"`
+	Data      []map[string]interface{} `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	Message   *string                  `json:"message,omitempty" xml:"message,omitempty"`
+	RequestId *string                  `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success   *string                  `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s UpdateEtlJobResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateEtlJobResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateEtlJobResponseBody) SetCode(v int32) *UpdateEtlJobResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UpdateEtlJobResponseBody) SetData(v []map[string]interface{}) *UpdateEtlJobResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *UpdateEtlJobResponseBody) SetMessage(v string) *UpdateEtlJobResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UpdateEtlJobResponseBody) SetRequestId(v string) *UpdateEtlJobResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateEtlJobResponseBody) SetSuccess(v string) *UpdateEtlJobResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateEtlJobResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateEtlJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateEtlJobResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateEtlJobResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateEtlJobResponse) SetHeaders(v map[string]*string) *UpdateEtlJobResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateEtlJobResponse) SetStatusCode(v int32) *UpdateEtlJobResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateEtlJobResponse) SetBody(v *UpdateEtlJobResponseBody) *UpdateEtlJobResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateIndexRequest struct {
 	Keys               map[string]*KeysValue   `json:"keys,omitempty" xml:"keys,omitempty"`
 	Line               *UpdateIndexRequestLine `json:"line,omitempty" xml:"line,omitempty" type:"Struct"`
@@ -6011,18 +6541,6 @@ func (client *Client) Init(config *openapi.Config) (_err error) {
 	return nil
 }
 
-func (client *Client) ApplyConfigToMachineGroup(project *string, machineGroup *string, configName *string) (_result *ApplyConfigToMachineGroupResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ApplyConfigToMachineGroupResponse{}
-	_body, _err := client.ApplyConfigToMachineGroupWithOptions(project, machineGroup, configName, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) ApplyConfigToMachineGroupWithOptions(project *string, machineGroup *string, configName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ApplyConfigToMachineGroupResponse, _err error) {
 	hostMap := make(map[string]*string)
 	hostMap["project"] = project
@@ -6050,11 +6568,65 @@ func (client *Client) ApplyConfigToMachineGroupWithOptions(project *string, mach
 	return _result, _err
 }
 
-func (client *Client) CreateConsumerGroup(project *string, logstore *string, request *CreateConsumerGroupRequest) (_result *CreateConsumerGroupResponse, _err error) {
+func (client *Client) ApplyConfigToMachineGroup(project *string, machineGroup *string, configName *string) (_result *ApplyConfigToMachineGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &CreateConsumerGroupResponse{}
-	_body, _err := client.CreateConsumerGroupWithOptions(project, logstore, request, headers, runtime)
+	_result = &ApplyConfigToMachineGroupResponse{}
+	_body, _err := client.ApplyConfigToMachineGroupWithOptions(project, machineGroup, configName, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ChangeResourceGroupWithOptions(request *ChangeResourceGroupRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ChangeResourceGroupResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		body["resourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
+		body["resourceId"] = request.ResourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		body["resourceType"] = request.ResourceType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ChangeResourceGroup"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/resourcegroup"),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
+	_result = &ChangeResourceGroupResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ChangeResourceGroup(request *ChangeResourceGroupRequest) (_result *ChangeResourceGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ChangeResourceGroupResponse{}
+	_body, _err := client.ChangeResourceGroupWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6107,11 +6679,11 @@ func (client *Client) CreateConsumerGroupWithOptions(project *string, logstore *
 	return _result, _err
 }
 
-func (client *Client) CreateDomain(project *string, request *CreateDomainRequest) (_result *CreateDomainResponse, _err error) {
+func (client *Client) CreateConsumerGroup(project *string, logstore *string, request *CreateConsumerGroupRequest) (_result *CreateConsumerGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &CreateDomainResponse{}
-	_body, _err := client.CreateDomainWithOptions(project, request, headers, runtime)
+	_result = &CreateConsumerGroupResponse{}
+	_body, _err := client.CreateConsumerGroupWithOptions(project, logstore, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6156,11 +6728,60 @@ func (client *Client) CreateDomainWithOptions(project *string, request *CreateDo
 	return _result, _err
 }
 
-func (client *Client) CreateIndex(project *string, logstore *string, request *CreateIndexRequest) (_result *CreateIndexResponse, _err error) {
+func (client *Client) CreateDomain(project *string, request *CreateDomainRequest) (_result *CreateDomainResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &CreateIndexResponse{}
-	_body, _err := client.CreateIndexWithOptions(project, logstore, request, headers, runtime)
+	_result = &CreateDomainResponse{}
+	_body, _err := client.CreateDomainWithOptions(project, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateETLJobWithOptions(project *string, request *CreateETLJobRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateETLJobResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EtlJob)) {
+		body["etlJob"] = request.EtlJob
+	}
+
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateETLJob"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/etljobs"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateETLJobResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateETLJob(project *string, request *CreateETLJobRequest) (_result *CreateETLJobResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateETLJobResponse{}
+	_body, _err := client.CreateETLJobWithOptions(project, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6180,7 +6801,7 @@ func (client *Client) CreateIndexWithOptions(project *string, logstore *string, 
 		body["keys"] = request.Keys
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.Line))) {
+	if !tea.BoolValue(util.IsUnset(request.Line)) {
 		body["line"] = request.Line
 	}
 
@@ -6229,11 +6850,11 @@ func (client *Client) CreateIndexWithOptions(project *string, logstore *string, 
 	return _result, _err
 }
 
-func (client *Client) CreateLogStore(project *string, request *CreateLogStoreRequest) (_result *CreateLogStoreResponse, _err error) {
+func (client *Client) CreateIndex(project *string, logstore *string, request *CreateIndexRequest) (_result *CreateIndexResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &CreateLogStoreResponse{}
-	_body, _err := client.CreateLogStoreWithOptions(project, request, headers, runtime)
+	_result = &CreateIndexResponse{}
+	_body, _err := client.CreateIndexWithOptions(project, logstore, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6261,7 +6882,7 @@ func (client *Client) CreateLogStoreWithOptions(project *string, request *Create
 		body["enable_tracking"] = request.EnableTracking
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.EncryptConf))) {
+	if !tea.BoolValue(util.IsUnset(request.EncryptConf)) {
 		body["encrypt_conf"] = request.EncryptConf
 	}
 
@@ -6318,11 +6939,11 @@ func (client *Client) CreateLogStoreWithOptions(project *string, request *Create
 	return _result, _err
 }
 
-func (client *Client) CreateLogging(project *string, request *CreateLoggingRequest) (_result *CreateLoggingResponse, _err error) {
+func (client *Client) CreateLogStore(project *string, request *CreateLogStoreRequest) (_result *CreateLogStoreResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &CreateLoggingResponse{}
-	_body, _err := client.CreateLoggingWithOptions(project, request, headers, runtime)
+	_result = &CreateLogStoreResponse{}
+	_body, _err := client.CreateLogStoreWithOptions(project, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6371,11 +6992,11 @@ func (client *Client) CreateLoggingWithOptions(project *string, request *CreateL
 	return _result, _err
 }
 
-func (client *Client) CreateMachineGroup(project *string, request *CreateMachineGroupRequest) (_result *CreateMachineGroupResponse, _err error) {
+func (client *Client) CreateLogging(project *string, request *CreateLoggingRequest) (_result *CreateLoggingResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &CreateMachineGroupResponse{}
-	_body, _err := client.CreateMachineGroupWithOptions(project, request, headers, runtime)
+	_result = &CreateLoggingResponse{}
+	_body, _err := client.CreateLoggingWithOptions(project, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6391,7 +7012,7 @@ func (client *Client) CreateMachineGroupWithOptions(project *string, request *Cr
 	hostMap := make(map[string]*string)
 	hostMap["project"] = project
 	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.GroupAttribute))) {
+	if !tea.BoolValue(util.IsUnset(request.GroupAttribute)) {
 		body["groupAttribute"] = request.GroupAttribute
 	}
 
@@ -6436,11 +7057,11 @@ func (client *Client) CreateMachineGroupWithOptions(project *string, request *Cr
 	return _result, _err
 }
 
-func (client *Client) CreateOdpsShipper(project *string, logstore *string, request *CreateOdpsShipperRequest) (_result *CreateOdpsShipperResponse, _err error) {
+func (client *Client) CreateMachineGroup(project *string, request *CreateMachineGroupRequest) (_result *CreateMachineGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &CreateOdpsShipperResponse{}
-	_body, _err := client.CreateOdpsShipperWithOptions(project, logstore, request, headers, runtime)
+	_result = &CreateMachineGroupResponse{}
+	_body, _err := client.CreateMachineGroupWithOptions(project, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6460,7 +7081,7 @@ func (client *Client) CreateOdpsShipperWithOptions(project *string, logstore *st
 		body["shipperName"] = request.ShipperName
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.TargetConfiguration))) {
+	if !tea.BoolValue(util.IsUnset(request.TargetConfiguration)) {
 		body["targetConfiguration"] = request.TargetConfiguration
 	}
 
@@ -6493,11 +7114,11 @@ func (client *Client) CreateOdpsShipperWithOptions(project *string, logstore *st
 	return _result, _err
 }
 
-func (client *Client) CreateOssExternalStore(project *string, request *CreateOssExternalStoreRequest) (_result *CreateOssExternalStoreResponse, _err error) {
+func (client *Client) CreateOdpsShipper(project *string, logstore *string, request *CreateOdpsShipperRequest) (_result *CreateOdpsShipperResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &CreateOssExternalStoreResponse{}
-	_body, _err := client.CreateOssExternalStoreWithOptions(project, request, headers, runtime)
+	_result = &CreateOdpsShipperResponse{}
+	_body, _err := client.CreateOdpsShipperWithOptions(project, logstore, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6517,7 +7138,7 @@ func (client *Client) CreateOssExternalStoreWithOptions(project *string, request
 		body["externalStoreName"] = request.ExternalStoreName
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.Parameter))) {
+	if !tea.BoolValue(util.IsUnset(request.Parameter)) {
 		body["parameter"] = request.Parameter
 	}
 
@@ -6550,11 +7171,11 @@ func (client *Client) CreateOssExternalStoreWithOptions(project *string, request
 	return _result, _err
 }
 
-func (client *Client) CreateOssShipper(project *string, logstore *string, request *CreateOssShipperRequest) (_result *CreateOssShipperResponse, _err error) {
+func (client *Client) CreateOssExternalStore(project *string, request *CreateOssExternalStoreRequest) (_result *CreateOssExternalStoreResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &CreateOssShipperResponse{}
-	_body, _err := client.CreateOssShipperWithOptions(project, logstore, request, headers, runtime)
+	_result = &CreateOssExternalStoreResponse{}
+	_body, _err := client.CreateOssExternalStoreWithOptions(project, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6574,7 +7195,7 @@ func (client *Client) CreateOssShipperWithOptions(project *string, logstore *str
 		body["shipperName"] = request.ShipperName
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.TargetConfiguration))) {
+	if !tea.BoolValue(util.IsUnset(request.TargetConfiguration)) {
 		body["targetConfiguration"] = request.TargetConfiguration
 	}
 
@@ -6607,11 +7228,11 @@ func (client *Client) CreateOssShipperWithOptions(project *string, logstore *str
 	return _result, _err
 }
 
-func (client *Client) CreateProject(request *CreateProjectRequest) (_result *CreateProjectResponse, _err error) {
+func (client *Client) CreateOssShipper(project *string, logstore *string, request *CreateOssShipperRequest) (_result *CreateOssShipperResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &CreateProjectResponse{}
-	_body, _err := client.CreateProjectWithOptions(request, headers, runtime)
+	_result = &CreateOssShipperResponse{}
+	_body, _err := client.CreateOssShipperWithOptions(project, logstore, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6631,6 +7252,10 @@ func (client *Client) CreateProjectWithOptions(request *CreateProjectRequest, he
 
 	if !tea.BoolValue(util.IsUnset(request.ProjectName)) {
 		body["projectName"] = request.ProjectName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		body["resourceGroupId"] = request.ResourceGroupId
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -6657,11 +7282,11 @@ func (client *Client) CreateProjectWithOptions(request *CreateProjectRequest, he
 	return _result, _err
 }
 
-func (client *Client) CreateRdsExternalStore(project *string, request *CreateRdsExternalStoreRequest) (_result *CreateRdsExternalStoreResponse, _err error) {
+func (client *Client) CreateProject(request *CreateProjectRequest) (_result *CreateProjectResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &CreateRdsExternalStoreResponse{}
-	_body, _err := client.CreateRdsExternalStoreWithOptions(project, request, headers, runtime)
+	_result = &CreateProjectResponse{}
+	_body, _err := client.CreateProjectWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6681,7 +7306,7 @@ func (client *Client) CreateRdsExternalStoreWithOptions(project *string, request
 		body["externalStoreName"] = request.ExternalStoreName
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.Parameter))) {
+	if !tea.BoolValue(util.IsUnset(request.Parameter)) {
 		body["parameter"] = request.Parameter
 	}
 
@@ -6714,11 +7339,11 @@ func (client *Client) CreateRdsExternalStoreWithOptions(project *string, request
 	return _result, _err
 }
 
-func (client *Client) CreateSavedSearch(project *string, request *CreateSavedSearchRequest) (_result *CreateSavedSearchResponse, _err error) {
+func (client *Client) CreateRdsExternalStore(project *string, request *CreateRdsExternalStoreRequest) (_result *CreateRdsExternalStoreResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &CreateSavedSearchResponse{}
-	_body, _err := client.CreateSavedSearchWithOptions(project, request, headers, runtime)
+	_result = &CreateRdsExternalStoreResponse{}
+	_body, _err := client.CreateRdsExternalStoreWithOptions(project, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6779,11 +7404,11 @@ func (client *Client) CreateSavedSearchWithOptions(project *string, request *Cre
 	return _result, _err
 }
 
-func (client *Client) DeleteConsumerGroup(project *string, logstore *string, consumerGroup *string) (_result *DeleteConsumerGroupResponse, _err error) {
+func (client *Client) CreateSavedSearch(project *string, request *CreateSavedSearchRequest) (_result *CreateSavedSearchResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DeleteConsumerGroupResponse{}
-	_body, _err := client.DeleteConsumerGroupWithOptions(project, logstore, consumerGroup, headers, runtime)
+	_result = &CreateSavedSearchResponse{}
+	_body, _err := client.CreateSavedSearchWithOptions(project, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6818,11 +7443,11 @@ func (client *Client) DeleteConsumerGroupWithOptions(project *string, logstore *
 	return _result, _err
 }
 
-func (client *Client) DeleteDomain(project *string, domainName *string) (_result *DeleteDomainResponse, _err error) {
+func (client *Client) DeleteConsumerGroup(project *string, logstore *string, consumerGroup *string) (_result *DeleteConsumerGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DeleteDomainResponse{}
-	_body, _err := client.DeleteDomainWithOptions(project, domainName, headers, runtime)
+	_result = &DeleteConsumerGroupResponse{}
+	_body, _err := client.DeleteConsumerGroupWithOptions(project, logstore, consumerGroup, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6857,11 +7482,57 @@ func (client *Client) DeleteDomainWithOptions(project *string, domainName *strin
 	return _result, _err
 }
 
-func (client *Client) DeleteExternalStore(project *string, externalStoreName *string) (_result *DeleteExternalStoreResponse, _err error) {
+func (client *Client) DeleteDomain(project *string, domainName *string) (_result *DeleteDomainResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DeleteExternalStoreResponse{}
-	_body, _err := client.DeleteExternalStoreWithOptions(project, externalStoreName, headers, runtime)
+	_result = &DeleteDomainResponse{}
+	_body, _err := client.DeleteDomainWithOptions(project, domainName, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteETLJobWithOptions(etlJobName *string, request *DeleteETLJobRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteETLJobResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Project)) {
+		query["project"] = request.Project
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteETLJob"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/etljobs/" + tea.StringValue(etlJobName)),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("array"),
+	}
+	_result = &DeleteETLJobResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteETLJob(etlJobName *string, request *DeleteETLJobRequest) (_result *DeleteETLJobResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteETLJobResponse{}
+	_body, _err := client.DeleteETLJobWithOptions(etlJobName, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6896,11 +7567,11 @@ func (client *Client) DeleteExternalStoreWithOptions(project *string, externalSt
 	return _result, _err
 }
 
-func (client *Client) DeleteIndex(project *string, logstore *string) (_result *DeleteIndexResponse, _err error) {
+func (client *Client) DeleteExternalStore(project *string, externalStoreName *string) (_result *DeleteExternalStoreResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DeleteIndexResponse{}
-	_body, _err := client.DeleteIndexWithOptions(project, logstore, headers, runtime)
+	_result = &DeleteExternalStoreResponse{}
+	_body, _err := client.DeleteExternalStoreWithOptions(project, externalStoreName, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6935,11 +7606,11 @@ func (client *Client) DeleteIndexWithOptions(project *string, logstore *string, 
 	return _result, _err
 }
 
-func (client *Client) DeleteLogStore(project *string, logstore *string) (_result *DeleteLogStoreResponse, _err error) {
+func (client *Client) DeleteIndex(project *string, logstore *string) (_result *DeleteIndexResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DeleteLogStoreResponse{}
-	_body, _err := client.DeleteLogStoreWithOptions(project, logstore, headers, runtime)
+	_result = &DeleteIndexResponse{}
+	_body, _err := client.DeleteIndexWithOptions(project, logstore, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6974,11 +7645,11 @@ func (client *Client) DeleteLogStoreWithOptions(project *string, logstore *strin
 	return _result, _err
 }
 
-func (client *Client) DeleteLogging(project *string) (_result *DeleteLoggingResponse, _err error) {
+func (client *Client) DeleteLogStore(project *string, logstore *string) (_result *DeleteLogStoreResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DeleteLoggingResponse{}
-	_body, _err := client.DeleteLoggingWithOptions(project, headers, runtime)
+	_result = &DeleteLogStoreResponse{}
+	_body, _err := client.DeleteLogStoreWithOptions(project, logstore, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7013,11 +7684,11 @@ func (client *Client) DeleteLoggingWithOptions(project *string, headers map[stri
 	return _result, _err
 }
 
-func (client *Client) DeleteMachineGroup(project *string, machineGroup *string) (_result *DeleteMachineGroupResponse, _err error) {
+func (client *Client) DeleteLogging(project *string) (_result *DeleteLoggingResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DeleteMachineGroupResponse{}
-	_body, _err := client.DeleteMachineGroupWithOptions(project, machineGroup, headers, runtime)
+	_result = &DeleteLoggingResponse{}
+	_body, _err := client.DeleteLoggingWithOptions(project, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7052,11 +7723,11 @@ func (client *Client) DeleteMachineGroupWithOptions(project *string, machineGrou
 	return _result, _err
 }
 
-func (client *Client) DeleteProject(project *string) (_result *DeleteProjectResponse, _err error) {
+func (client *Client) DeleteMachineGroup(project *string, machineGroup *string) (_result *DeleteMachineGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DeleteProjectResponse{}
-	_body, _err := client.DeleteProjectWithOptions(project, headers, runtime)
+	_result = &DeleteMachineGroupResponse{}
+	_body, _err := client.DeleteMachineGroupWithOptions(project, machineGroup, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7091,11 +7762,11 @@ func (client *Client) DeleteProjectWithOptions(project *string, headers map[stri
 	return _result, _err
 }
 
-func (client *Client) DeleteProjectPolicy(project *string) (_result *DeleteProjectPolicyResponse, _err error) {
+func (client *Client) DeleteProject(project *string) (_result *DeleteProjectResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DeleteProjectPolicyResponse{}
-	_body, _err := client.DeleteProjectPolicyWithOptions(project, headers, runtime)
+	_result = &DeleteProjectResponse{}
+	_body, _err := client.DeleteProjectWithOptions(project, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7130,11 +7801,11 @@ func (client *Client) DeleteProjectPolicyWithOptions(project *string, headers ma
 	return _result, _err
 }
 
-func (client *Client) DeleteSavedSearch(project *string, savedsearchName *string) (_result *DeleteSavedSearchResponse, _err error) {
+func (client *Client) DeleteProjectPolicy(project *string) (_result *DeleteProjectPolicyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DeleteSavedSearchResponse{}
-	_body, _err := client.DeleteSavedSearchWithOptions(project, savedsearchName, headers, runtime)
+	_result = &DeleteProjectPolicyResponse{}
+	_body, _err := client.DeleteProjectPolicyWithOptions(project, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7169,11 +7840,11 @@ func (client *Client) DeleteSavedSearchWithOptions(project *string, savedsearchN
 	return _result, _err
 }
 
-func (client *Client) DeleteShipper(project *string, logstore *string, shipperName *string) (_result *DeleteShipperResponse, _err error) {
+func (client *Client) DeleteSavedSearch(project *string, savedsearchName *string) (_result *DeleteSavedSearchResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DeleteShipperResponse{}
-	_body, _err := client.DeleteShipperWithOptions(project, logstore, shipperName, headers, runtime)
+	_result = &DeleteSavedSearchResponse{}
+	_body, _err := client.DeleteSavedSearchWithOptions(project, savedsearchName, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7208,11 +7879,11 @@ func (client *Client) DeleteShipperWithOptions(project *string, logstore *string
 	return _result, _err
 }
 
-func (client *Client) GetAppliedConfigs(project *string, machineGroup *string) (_result *GetAppliedConfigsResponse, _err error) {
+func (client *Client) DeleteShipper(project *string, logstore *string, shipperName *string) (_result *DeleteShipperResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetAppliedConfigsResponse{}
-	_body, _err := client.GetAppliedConfigsWithOptions(project, machineGroup, headers, runtime)
+	_result = &DeleteShipperResponse{}
+	_body, _err := client.DeleteShipperWithOptions(project, logstore, shipperName, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7247,11 +7918,11 @@ func (client *Client) GetAppliedConfigsWithOptions(project *string, machineGroup
 	return _result, _err
 }
 
-func (client *Client) GetAppliedMachineGroups(project *string, configName *string) (_result *GetAppliedMachineGroupsResponse, _err error) {
+func (client *Client) GetAppliedConfigs(project *string, machineGroup *string) (_result *GetAppliedConfigsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetAppliedMachineGroupsResponse{}
-	_body, _err := client.GetAppliedMachineGroupsWithOptions(project, configName, headers, runtime)
+	_result = &GetAppliedConfigsResponse{}
+	_body, _err := client.GetAppliedConfigsWithOptions(project, machineGroup, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7286,11 +7957,11 @@ func (client *Client) GetAppliedMachineGroupsWithOptions(project *string, config
 	return _result, _err
 }
 
-func (client *Client) GetCheckPoint(project *string, logstore *string, consumerGroup *string, request *GetCheckPointRequest) (_result *GetCheckPointResponse, _err error) {
+func (client *Client) GetAppliedMachineGroups(project *string, configName *string) (_result *GetAppliedMachineGroupsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetCheckPointResponse{}
-	_body, _err := client.GetCheckPointWithOptions(project, logstore, consumerGroup, request, headers, runtime)
+	_result = &GetAppliedMachineGroupsResponse{}
+	_body, _err := client.GetAppliedMachineGroupsWithOptions(project, configName, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7335,11 +8006,11 @@ func (client *Client) GetCheckPointWithOptions(project *string, logstore *string
 	return _result, _err
 }
 
-func (client *Client) GetContextLogs(project *string, logstore *string, request *GetContextLogsRequest) (_result *GetContextLogsResponse, _err error) {
+func (client *Client) GetCheckPoint(project *string, logstore *string, consumerGroup *string, request *GetCheckPointRequest) (_result *GetCheckPointResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetContextLogsResponse{}
-	_body, _err := client.GetContextLogsWithOptions(project, logstore, request, headers, runtime)
+	_result = &GetCheckPointResponse{}
+	_body, _err := client.GetCheckPointWithOptions(project, logstore, consumerGroup, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7400,11 +8071,11 @@ func (client *Client) GetContextLogsWithOptions(project *string, logstore *strin
 	return _result, _err
 }
 
-func (client *Client) GetCursor(project *string, logstore *string, shardId *string, request *GetCursorRequest) (_result *GetCursorResponse, _err error) {
+func (client *Client) GetContextLogs(project *string, logstore *string, request *GetContextLogsRequest) (_result *GetContextLogsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetCursorResponse{}
-	_body, _err := client.GetCursorWithOptions(project, logstore, shardId, request, headers, runtime)
+	_result = &GetContextLogsResponse{}
+	_body, _err := client.GetContextLogsWithOptions(project, logstore, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7449,11 +8120,11 @@ func (client *Client) GetCursorWithOptions(project *string, logstore *string, sh
 	return _result, _err
 }
 
-func (client *Client) GetCursorTime(project *string, logstore *string, shardId *string, request *GetCursorTimeRequest) (_result *GetCursorTimeResponse, _err error) {
+func (client *Client) GetCursor(project *string, logstore *string, shardId *string, request *GetCursorRequest) (_result *GetCursorResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetCursorTimeResponse{}
-	_body, _err := client.GetCursorTimeWithOptions(project, logstore, shardId, request, headers, runtime)
+	_result = &GetCursorResponse{}
+	_body, _err := client.GetCursorWithOptions(project, logstore, shardId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7498,11 +8169,50 @@ func (client *Client) GetCursorTimeWithOptions(project *string, logstore *string
 	return _result, _err
 }
 
-func (client *Client) GetExternalStore(project *string, externalStoreName *string) (_result *GetExternalStoreResponse, _err error) {
+func (client *Client) GetCursorTime(project *string, logstore *string, shardId *string, request *GetCursorTimeRequest) (_result *GetCursorTimeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetExternalStoreResponse{}
-	_body, _err := client.GetExternalStoreWithOptions(project, externalStoreName, headers, runtime)
+	_result = &GetCursorTimeResponse{}
+	_body, _err := client.GetCursorTimeWithOptions(project, logstore, shardId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetEtlJobWithOptions(project *string, etlJobName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetEtlJobResponse, _err error) {
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetEtlJob"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/etljobs/" + tea.StringValue(etlJobName)),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetEtlJobResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetEtlJob(project *string, etlJobName *string) (_result *GetEtlJobResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetEtlJobResponse{}
+	_body, _err := client.GetEtlJobWithOptions(project, etlJobName, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7537,11 +8247,11 @@ func (client *Client) GetExternalStoreWithOptions(project *string, externalStore
 	return _result, _err
 }
 
-func (client *Client) GetHistograms(project *string, logstore *string, request *GetHistogramsRequest) (_result *GetHistogramsResponse, _err error) {
+func (client *Client) GetExternalStore(project *string, externalStoreName *string) (_result *GetExternalStoreResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetHistogramsResponse{}
-	_body, _err := client.GetHistogramsWithOptions(project, logstore, request, headers, runtime)
+	_result = &GetExternalStoreResponse{}
+	_body, _err := client.GetExternalStoreWithOptions(project, externalStoreName, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7598,11 +8308,11 @@ func (client *Client) GetHistogramsWithOptions(project *string, logstore *string
 	return _result, _err
 }
 
-func (client *Client) GetIndex(project *string, logstore *string) (_result *GetIndexResponse, _err error) {
+func (client *Client) GetHistograms(project *string, logstore *string, request *GetHistogramsRequest) (_result *GetHistogramsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetIndexResponse{}
-	_body, _err := client.GetIndexWithOptions(project, logstore, headers, runtime)
+	_result = &GetHistogramsResponse{}
+	_body, _err := client.GetHistogramsWithOptions(project, logstore, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7637,11 +8347,11 @@ func (client *Client) GetIndexWithOptions(project *string, logstore *string, hea
 	return _result, _err
 }
 
-func (client *Client) GetLogStore(project *string, logstore *string) (_result *GetLogStoreResponse, _err error) {
+func (client *Client) GetIndex(project *string, logstore *string) (_result *GetIndexResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetLogStoreResponse{}
-	_body, _err := client.GetLogStoreWithOptions(project, logstore, headers, runtime)
+	_result = &GetIndexResponse{}
+	_body, _err := client.GetIndexWithOptions(project, logstore, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7676,11 +8386,11 @@ func (client *Client) GetLogStoreWithOptions(project *string, logstore *string, 
 	return _result, _err
 }
 
-func (client *Client) GetLogging(project *string) (_result *GetLoggingResponse, _err error) {
+func (client *Client) GetLogStore(project *string, logstore *string) (_result *GetLogStoreResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetLoggingResponse{}
-	_body, _err := client.GetLoggingWithOptions(project, headers, runtime)
+	_result = &GetLogStoreResponse{}
+	_body, _err := client.GetLogStoreWithOptions(project, logstore, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7715,11 +8425,11 @@ func (client *Client) GetLoggingWithOptions(project *string, headers map[string]
 	return _result, _err
 }
 
-func (client *Client) GetLogs(project *string, logstore *string, request *GetLogsRequest) (_result *GetLogsResponse, _err error) {
+func (client *Client) GetLogging(project *string) (_result *GetLoggingResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetLogsResponse{}
-	_body, _err := client.GetLogsWithOptions(project, logstore, request, headers, runtime)
+	_result = &GetLoggingResponse{}
+	_body, _err := client.GetLoggingWithOptions(project, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7792,11 +8502,11 @@ func (client *Client) GetLogsWithOptions(project *string, logstore *string, requ
 	return _result, _err
 }
 
-func (client *Client) GetMachineGroup(project *string, machineGroup *string) (_result *GetMachineGroupResponse, _err error) {
+func (client *Client) GetLogs(project *string, logstore *string, request *GetLogsRequest) (_result *GetLogsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetMachineGroupResponse{}
-	_body, _err := client.GetMachineGroupWithOptions(project, machineGroup, headers, runtime)
+	_result = &GetLogsResponse{}
+	_body, _err := client.GetLogsWithOptions(project, logstore, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7831,11 +8541,11 @@ func (client *Client) GetMachineGroupWithOptions(project *string, machineGroup *
 	return _result, _err
 }
 
-func (client *Client) GetProject(project *string) (_result *GetProjectResponse, _err error) {
+func (client *Client) GetMachineGroup(project *string, machineGroup *string) (_result *GetMachineGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetProjectResponse{}
-	_body, _err := client.GetProjectWithOptions(project, headers, runtime)
+	_result = &GetMachineGroupResponse{}
+	_body, _err := client.GetMachineGroupWithOptions(project, machineGroup, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7870,11 +8580,11 @@ func (client *Client) GetProjectWithOptions(project *string, headers map[string]
 	return _result, _err
 }
 
-func (client *Client) GetProjectLogs(project *string, request *GetProjectLogsRequest) (_result *GetProjectLogsResponse, _err error) {
+func (client *Client) GetProject(project *string) (_result *GetProjectResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetProjectLogsResponse{}
-	_body, _err := client.GetProjectLogsWithOptions(project, request, headers, runtime)
+	_result = &GetProjectResponse{}
+	_body, _err := client.GetProjectWithOptions(project, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7923,11 +8633,11 @@ func (client *Client) GetProjectLogsWithOptions(project *string, request *GetPro
 	return _result, _err
 }
 
-func (client *Client) GetProjectPolicy(project *string) (_result *GetProjectPolicyResponse, _err error) {
+func (client *Client) GetProjectLogs(project *string, request *GetProjectLogsRequest) (_result *GetProjectLogsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetProjectPolicyResponse{}
-	_body, _err := client.GetProjectPolicyWithOptions(project, headers, runtime)
+	_result = &GetProjectLogsResponse{}
+	_body, _err := client.GetProjectLogsWithOptions(project, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7951,7 +8661,7 @@ func (client *Client) GetProjectPolicyWithOptions(project *string, headers map[s
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
 		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		BodyType:    tea.String("string"),
 	}
 	_result = &GetProjectPolicyResponse{}
 	_body, _err := client.Execute(params, req, runtime)
@@ -7962,11 +8672,11 @@ func (client *Client) GetProjectPolicyWithOptions(project *string, headers map[s
 	return _result, _err
 }
 
-func (client *Client) GetSavedSearch(project *string, savedsearchName *string) (_result *GetSavedSearchResponse, _err error) {
+func (client *Client) GetProjectPolicy(project *string) (_result *GetProjectPolicyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetSavedSearchResponse{}
-	_body, _err := client.GetSavedSearchWithOptions(project, savedsearchName, headers, runtime)
+	_result = &GetProjectPolicyResponse{}
+	_body, _err := client.GetProjectPolicyWithOptions(project, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8001,11 +8711,11 @@ func (client *Client) GetSavedSearchWithOptions(project *string, savedsearchName
 	return _result, _err
 }
 
-func (client *Client) GetShipperStatus(project *string, logstore *string, shipperName *string, request *GetShipperStatusRequest) (_result *GetShipperStatusResponse, _err error) {
+func (client *Client) GetSavedSearch(project *string, savedsearchName *string) (_result *GetSavedSearchResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetShipperStatusResponse{}
-	_body, _err := client.GetShipperStatusWithOptions(project, logstore, shipperName, request, headers, runtime)
+	_result = &GetSavedSearchResponse{}
+	_body, _err := client.GetSavedSearchWithOptions(project, savedsearchName, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8066,11 +8776,11 @@ func (client *Client) GetShipperStatusWithOptions(project *string, logstore *str
 	return _result, _err
 }
 
-func (client *Client) ListConsumerGroup(project *string, logstore *string) (_result *ListConsumerGroupResponse, _err error) {
+func (client *Client) GetShipperStatus(project *string, logstore *string, shipperName *string, request *GetShipperStatusRequest) (_result *GetShipperStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListConsumerGroupResponse{}
-	_body, _err := client.ListConsumerGroupWithOptions(project, logstore, headers, runtime)
+	_result = &GetShipperStatusResponse{}
+	_body, _err := client.GetShipperStatusWithOptions(project, logstore, shipperName, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8105,11 +8815,11 @@ func (client *Client) ListConsumerGroupWithOptions(project *string, logstore *st
 	return _result, _err
 }
 
-func (client *Client) ListDomains(project *string, request *ListDomainsRequest) (_result *ListDomainsResponse, _err error) {
+func (client *Client) ListConsumerGroup(project *string, logstore *string) (_result *ListConsumerGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListDomainsResponse{}
-	_body, _err := client.ListDomainsWithOptions(project, request, headers, runtime)
+	_result = &ListConsumerGroupResponse{}
+	_body, _err := client.ListConsumerGroupWithOptions(project, logstore, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8162,11 +8872,50 @@ func (client *Client) ListDomainsWithOptions(project *string, request *ListDomai
 	return _result, _err
 }
 
-func (client *Client) ListExternalStore(project *string, request *ListExternalStoreRequest) (_result *ListExternalStoreResponse, _err error) {
+func (client *Client) ListDomains(project *string, request *ListDomainsRequest) (_result *ListDomainsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListExternalStoreResponse{}
-	_body, _err := client.ListExternalStoreWithOptions(project, request, headers, runtime)
+	_result = &ListDomainsResponse{}
+	_body, _err := client.ListDomainsWithOptions(project, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListETLJobsWithOptions(project *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListETLJobsResponse, _err error) {
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListETLJobs"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/etljobs"),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("array"),
+	}
+	_result = &ListETLJobsResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListETLJobs(project *string) (_result *ListETLJobsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListETLJobsResponse{}
+	_body, _err := client.ListETLJobsWithOptions(project, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8219,11 +8968,11 @@ func (client *Client) ListExternalStoreWithOptions(project *string, request *Lis
 	return _result, _err
 }
 
-func (client *Client) ListLogStores(project *string, request *ListLogStoresRequest) (_result *ListLogStoresResponse, _err error) {
+func (client *Client) ListExternalStore(project *string, request *ListExternalStoreRequest) (_result *ListExternalStoreResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListLogStoresResponse{}
-	_body, _err := client.ListLogStoresWithOptions(project, request, headers, runtime)
+	_result = &ListExternalStoreResponse{}
+	_body, _err := client.ListExternalStoreWithOptions(project, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8284,11 +9033,11 @@ func (client *Client) ListLogStoresWithOptions(project *string, request *ListLog
 	return _result, _err
 }
 
-func (client *Client) ListMachineGroup(project *string, request *ListMachineGroupRequest) (_result *ListMachineGroupResponse, _err error) {
+func (client *Client) ListLogStores(project *string, request *ListLogStoresRequest) (_result *ListLogStoresResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListMachineGroupResponse{}
-	_body, _err := client.ListMachineGroupWithOptions(project, request, headers, runtime)
+	_result = &ListLogStoresResponse{}
+	_body, _err := client.ListLogStoresWithOptions(project, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8341,11 +9090,11 @@ func (client *Client) ListMachineGroupWithOptions(project *string, request *List
 	return _result, _err
 }
 
-func (client *Client) ListMachines(project *string, machineGroup *string, request *ListMachinesRequest) (_result *ListMachinesResponse, _err error) {
+func (client *Client) ListMachineGroup(project *string, request *ListMachineGroupRequest) (_result *ListMachineGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListMachinesResponse{}
-	_body, _err := client.ListMachinesWithOptions(project, machineGroup, request, headers, runtime)
+	_result = &ListMachineGroupResponse{}
+	_body, _err := client.ListMachineGroupWithOptions(project, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8394,11 +9143,11 @@ func (client *Client) ListMachinesWithOptions(project *string, machineGroup *str
 	return _result, _err
 }
 
-func (client *Client) ListProject(request *ListProjectRequest) (_result *ListProjectResponse, _err error) {
+func (client *Client) ListMachines(project *string, machineGroup *string, request *ListMachinesRequest) (_result *ListMachinesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListProjectResponse{}
-	_body, _err := client.ListProjectWithOptions(request, headers, runtime)
+	_result = &ListMachinesResponse{}
+	_body, _err := client.ListMachinesWithOptions(project, machineGroup, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8406,7 +9155,7 @@ func (client *Client) ListProject(request *ListProjectRequest) (_result *ListPro
 	return _result, _err
 }
 
-func (client *Client) ListProjectWithOptions(request *ListProjectRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListProjectResponse, _err error) {
+func (client *Client) ListProjectWithOptions(resourceGroupId *string, request *ListProjectRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListProjectResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
@@ -8448,11 +9197,11 @@ func (client *Client) ListProjectWithOptions(request *ListProjectRequest, header
 	return _result, _err
 }
 
-func (client *Client) ListSavedSearch(project *string, request *ListSavedSearchRequest) (_result *ListSavedSearchResponse, _err error) {
+func (client *Client) ListProject(resourceGroupId *string, request *ListProjectRequest) (_result *ListProjectResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListSavedSearchResponse{}
-	_body, _err := client.ListSavedSearchWithOptions(project, request, headers, runtime)
+	_result = &ListProjectResponse{}
+	_body, _err := client.ListProjectWithOptions(resourceGroupId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8501,11 +9250,11 @@ func (client *Client) ListSavedSearchWithOptions(project *string, request *ListS
 	return _result, _err
 }
 
-func (client *Client) ListShards(project *string, logstore *string) (_result *ListShardsResponse, _err error) {
+func (client *Client) ListSavedSearch(project *string, request *ListSavedSearchRequest) (_result *ListSavedSearchResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListShardsResponse{}
-	_body, _err := client.ListShardsWithOptions(project, logstore, headers, runtime)
+	_result = &ListSavedSearchResponse{}
+	_body, _err := client.ListSavedSearchWithOptions(project, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8540,11 +9289,11 @@ func (client *Client) ListShardsWithOptions(project *string, logstore *string, h
 	return _result, _err
 }
 
-func (client *Client) ListShipper(project *string, logstore *string) (_result *ListShipperResponse, _err error) {
+func (client *Client) ListShards(project *string, logstore *string) (_result *ListShardsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListShipperResponse{}
-	_body, _err := client.ListShipperWithOptions(project, logstore, headers, runtime)
+	_result = &ListShardsResponse{}
+	_body, _err := client.ListShardsWithOptions(project, logstore, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8579,11 +9328,11 @@ func (client *Client) ListShipperWithOptions(project *string, logstore *string, 
 	return _result, _err
 }
 
-func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_result *ListTagResourcesResponse, _err error) {
+func (client *Client) ListShipper(project *string, logstore *string) (_result *ListShipperResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListTagResourcesResponse{}
-	_body, _err := client.ListTagResourcesWithOptions(request, headers, runtime)
+	_result = &ListShipperResponse{}
+	_body, _err := client.ListShipperWithOptions(project, logstore, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8643,11 +9392,11 @@ func (client *Client) ListTagResourcesWithOptions(tmpReq *ListTagResourcesReques
 	return _result, _err
 }
 
-func (client *Client) PullData(project *string, logstore *string, shard *string, request *PullDataRequest) (_result *PullDataResponse, _err error) {
+func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_result *ListTagResourcesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &PullDataResponse{}
-	_body, _err := client.PullDataWithOptions(project, logstore, shard, request, headers, runtime)
+	_result = &ListTagResourcesResponse{}
+	_body, _err := client.ListTagResourcesWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8700,11 +9449,11 @@ func (client *Client) PullDataWithOptions(project *string, logstore *string, sha
 	return _result, _err
 }
 
-func (client *Client) PutProjectPolicy(project *string, request *PutProjectPolicyRequest) (_result *PutProjectPolicyResponse, _err error) {
+func (client *Client) PullData(project *string, logstore *string, shard *string, request *PullDataRequest) (_result *PullDataResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &PutProjectPolicyResponse{}
-	_body, _err := client.PutProjectPolicyWithOptions(project, request, headers, runtime)
+	_result = &PullDataResponse{}
+	_body, _err := client.PullDataWithOptions(project, logstore, shard, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8744,11 +9493,11 @@ func (client *Client) PutProjectPolicyWithOptions(project *string, request *PutP
 	return _result, _err
 }
 
-func (client *Client) PutWebtracking(project *string, logstoreName *string, request *PutWebtrackingRequest) (_result *PutWebtrackingResponse, _err error) {
+func (client *Client) PutProjectPolicy(project *string, request *PutProjectPolicyRequest) (_result *PutProjectPolicyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &PutWebtrackingResponse{}
-	_body, _err := client.PutWebtrackingWithOptions(project, logstoreName, request, headers, runtime)
+	_result = &PutProjectPolicyResponse{}
+	_body, _err := client.PutProjectPolicyWithOptions(project, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8805,11 +9554,11 @@ func (client *Client) PutWebtrackingWithOptions(project *string, logstoreName *s
 	return _result, _err
 }
 
-func (client *Client) RemoveConfigFromMachineGroup(project *string, machineGroup *string, configName *string) (_result *RemoveConfigFromMachineGroupResponse, _err error) {
+func (client *Client) PutWebtracking(project *string, logstoreName *string, request *PutWebtrackingRequest) (_result *PutWebtrackingResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &RemoveConfigFromMachineGroupResponse{}
-	_body, _err := client.RemoveConfigFromMachineGroupWithOptions(project, machineGroup, configName, headers, runtime)
+	_result = &PutWebtrackingResponse{}
+	_body, _err := client.PutWebtrackingWithOptions(project, logstoreName, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8844,11 +9593,11 @@ func (client *Client) RemoveConfigFromMachineGroupWithOptions(project *string, m
 	return _result, _err
 }
 
-func (client *Client) SplitShard(project *string, logstore *string, shard *string, request *SplitShardRequest) (_result *SplitShardResponse, _err error) {
+func (client *Client) RemoveConfigFromMachineGroup(project *string, machineGroup *string, configName *string) (_result *RemoveConfigFromMachineGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &SplitShardResponse{}
-	_body, _err := client.SplitShardWithOptions(project, logstore, shard, request, headers, runtime)
+	_result = &RemoveConfigFromMachineGroupResponse{}
+	_body, _err := client.RemoveConfigFromMachineGroupWithOptions(project, machineGroup, configName, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8897,11 +9646,11 @@ func (client *Client) SplitShardWithOptions(project *string, logstore *string, s
 	return _result, _err
 }
 
-func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagResourcesResponse, _err error) {
+func (client *Client) SplitShard(project *string, logstore *string, shard *string, request *SplitShardRequest) (_result *SplitShardResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &TagResourcesResponse{}
-	_body, _err := client.TagResourcesWithOptions(request, headers, runtime)
+	_result = &SplitShardResponse{}
+	_body, _err := client.SplitShardWithOptions(project, logstore, shard, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8951,11 +9700,11 @@ func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, head
 	return _result, _err
 }
 
-func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *UntagResourcesResponse, _err error) {
+func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagResourcesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &UntagResourcesResponse{}
-	_body, _err := client.UntagResourcesWithOptions(request, headers, runtime)
+	_result = &TagResourcesResponse{}
+	_body, _err := client.TagResourcesWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9009,11 +9758,11 @@ func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, 
 	return _result, _err
 }
 
-func (client *Client) UpdateConsumerGroup(project *string, logstore *string, consumerGroup *string, request *UpdateConsumerGroupRequest) (_result *UpdateConsumerGroupResponse, _err error) {
+func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *UntagResourcesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &UpdateConsumerGroupResponse{}
-	_body, _err := client.UpdateConsumerGroupWithOptions(project, logstore, consumerGroup, request, headers, runtime)
+	_result = &UntagResourcesResponse{}
+	_body, _err := client.UntagResourcesWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9062,11 +9811,83 @@ func (client *Client) UpdateConsumerGroupWithOptions(project *string, logstore *
 	return _result, _err
 }
 
-func (client *Client) UpdateIndex(project *string, logstore *string, request *UpdateIndexRequest) (_result *UpdateIndexResponse, _err error) {
+func (client *Client) UpdateConsumerGroup(project *string, logstore *string, consumerGroup *string, request *UpdateConsumerGroupRequest) (_result *UpdateConsumerGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &UpdateIndexResponse{}
-	_body, _err := client.UpdateIndexWithOptions(project, logstore, request, headers, runtime)
+	_result = &UpdateConsumerGroupResponse{}
+	_body, _err := client.UpdateConsumerGroupWithOptions(project, logstore, consumerGroup, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateEtlJobWithOptions(etlJob *string, request *UpdateEtlJobRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateEtlJobResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Project)) {
+		query["project"] = request.Project
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Enable)) {
+		body["enable"] = request.Enable
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FunctionConfig)) {
+		body["functionConfig"] = request.FunctionConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JobName)) {
+		body["jobName"] = request.JobName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LogConfig)) {
+		body["logConfig"] = request.LogConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceConfig)) {
+		body["sourceConfig"] = request.SourceConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TriggerConfig)) {
+		body["triggerConfig"] = request.TriggerConfig
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateEtlJob"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/etljobs/" + tea.StringValue(etlJob)),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateEtlJobResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateEtlJob(etlJob *string, request *UpdateEtlJobRequest) (_result *UpdateEtlJobResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateEtlJobResponse{}
+	_body, _err := client.UpdateEtlJobWithOptions(etlJob, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9086,7 +9907,7 @@ func (client *Client) UpdateIndexWithOptions(project *string, logstore *string, 
 		body["keys"] = request.Keys
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.Line))) {
+	if !tea.BoolValue(util.IsUnset(request.Line)) {
 		body["line"] = request.Line
 	}
 
@@ -9135,11 +9956,11 @@ func (client *Client) UpdateIndexWithOptions(project *string, logstore *string, 
 	return _result, _err
 }
 
-func (client *Client) UpdateLogStore(project *string, logstore *string, request *UpdateLogStoreRequest) (_result *UpdateLogStoreResponse, _err error) {
+func (client *Client) UpdateIndex(project *string, logstore *string, request *UpdateIndexRequest) (_result *UpdateIndexResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &UpdateLogStoreResponse{}
-	_body, _err := client.UpdateLogStoreWithOptions(project, logstore, request, headers, runtime)
+	_result = &UpdateIndexResponse{}
+	_body, _err := client.UpdateIndexWithOptions(project, logstore, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9167,7 +9988,7 @@ func (client *Client) UpdateLogStoreWithOptions(project *string, logstore *strin
 		body["enable_tracking"] = request.EnableTracking
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.EncryptConf))) {
+	if !tea.BoolValue(util.IsUnset(request.EncryptConf)) {
 		body["encrypt_conf"] = request.EncryptConf
 	}
 
@@ -9224,11 +10045,11 @@ func (client *Client) UpdateLogStoreWithOptions(project *string, logstore *strin
 	return _result, _err
 }
 
-func (client *Client) UpdateLogging(project *string, request *UpdateLoggingRequest) (_result *UpdateLoggingResponse, _err error) {
+func (client *Client) UpdateLogStore(project *string, logstore *string, request *UpdateLogStoreRequest) (_result *UpdateLogStoreResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &UpdateLoggingResponse{}
-	_body, _err := client.UpdateLoggingWithOptions(project, request, headers, runtime)
+	_result = &UpdateLogStoreResponse{}
+	_body, _err := client.UpdateLogStoreWithOptions(project, logstore, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9277,11 +10098,11 @@ func (client *Client) UpdateLoggingWithOptions(project *string, request *UpdateL
 	return _result, _err
 }
 
-func (client *Client) UpdateMachineGroup(project *string, groupName *string, request *UpdateMachineGroupRequest) (_result *UpdateMachineGroupResponse, _err error) {
+func (client *Client) UpdateLogging(project *string, request *UpdateLoggingRequest) (_result *UpdateLoggingResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &UpdateMachineGroupResponse{}
-	_body, _err := client.UpdateMachineGroupWithOptions(project, groupName, request, headers, runtime)
+	_result = &UpdateLoggingResponse{}
+	_body, _err := client.UpdateLoggingWithOptions(project, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9297,7 +10118,7 @@ func (client *Client) UpdateMachineGroupWithOptions(project *string, groupName *
 	hostMap := make(map[string]*string)
 	hostMap["project"] = project
 	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.GroupAttribute))) {
+	if !tea.BoolValue(util.IsUnset(request.GroupAttribute)) {
 		body["groupAttribute"] = request.GroupAttribute
 	}
 
@@ -9342,11 +10163,11 @@ func (client *Client) UpdateMachineGroupWithOptions(project *string, groupName *
 	return _result, _err
 }
 
-func (client *Client) UpdateMachineGroupMachine(project *string, machineGroup *string, request *UpdateMachineGroupMachineRequest) (_result *UpdateMachineGroupMachineResponse, _err error) {
+func (client *Client) UpdateMachineGroup(project *string, groupName *string, request *UpdateMachineGroupRequest) (_result *UpdateMachineGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &UpdateMachineGroupMachineResponse{}
-	_body, _err := client.UpdateMachineGroupMachineWithOptions(project, machineGroup, request, headers, runtime)
+	_result = &UpdateMachineGroupResponse{}
+	_body, _err := client.UpdateMachineGroupWithOptions(project, groupName, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9392,11 +10213,11 @@ func (client *Client) UpdateMachineGroupMachineWithOptions(project *string, mach
 	return _result, _err
 }
 
-func (client *Client) UpdateOdpsShipper(project *string, logstore *string, shipperName *string, request *UpdateOdpsShipperRequest) (_result *UpdateOdpsShipperResponse, _err error) {
+func (client *Client) UpdateMachineGroupMachine(project *string, machineGroup *string, request *UpdateMachineGroupMachineRequest) (_result *UpdateMachineGroupMachineResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &UpdateOdpsShipperResponse{}
-	_body, _err := client.UpdateOdpsShipperWithOptions(project, logstore, shipperName, request, headers, runtime)
+	_result = &UpdateMachineGroupMachineResponse{}
+	_body, _err := client.UpdateMachineGroupMachineWithOptions(project, machineGroup, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9416,7 +10237,7 @@ func (client *Client) UpdateOdpsShipperWithOptions(project *string, logstore *st
 		body["shipperName"] = request.ShipperName
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.TargetConfiguration))) {
+	if !tea.BoolValue(util.IsUnset(request.TargetConfiguration)) {
 		body["targetConfiguration"] = request.TargetConfiguration
 	}
 
@@ -9449,11 +10270,11 @@ func (client *Client) UpdateOdpsShipperWithOptions(project *string, logstore *st
 	return _result, _err
 }
 
-func (client *Client) UpdateOssExternalStore(project *string, externalStoreName *string, request *UpdateOssExternalStoreRequest) (_result *UpdateOssExternalStoreResponse, _err error) {
+func (client *Client) UpdateOdpsShipper(project *string, logstore *string, shipperName *string, request *UpdateOdpsShipperRequest) (_result *UpdateOdpsShipperResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &UpdateOssExternalStoreResponse{}
-	_body, _err := client.UpdateOssExternalStoreWithOptions(project, externalStoreName, request, headers, runtime)
+	_result = &UpdateOdpsShipperResponse{}
+	_body, _err := client.UpdateOdpsShipperWithOptions(project, logstore, shipperName, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9473,7 +10294,7 @@ func (client *Client) UpdateOssExternalStoreWithOptions(project *string, externa
 		body["externalStoreName"] = request.ExternalStoreName
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.Parameter))) {
+	if !tea.BoolValue(util.IsUnset(request.Parameter)) {
 		body["parameter"] = request.Parameter
 	}
 
@@ -9506,11 +10327,11 @@ func (client *Client) UpdateOssExternalStoreWithOptions(project *string, externa
 	return _result, _err
 }
 
-func (client *Client) UpdateOssShipper(project *string, logstore *string, shipperName *string, request *UpdateOssShipperRequest) (_result *UpdateOssShipperResponse, _err error) {
+func (client *Client) UpdateOssExternalStore(project *string, externalStoreName *string, request *UpdateOssExternalStoreRequest) (_result *UpdateOssExternalStoreResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &UpdateOssShipperResponse{}
-	_body, _err := client.UpdateOssShipperWithOptions(project, logstore, shipperName, request, headers, runtime)
+	_result = &UpdateOssExternalStoreResponse{}
+	_body, _err := client.UpdateOssExternalStoreWithOptions(project, externalStoreName, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9530,7 +10351,7 @@ func (client *Client) UpdateOssShipperWithOptions(project *string, logstore *str
 		body["shipperName"] = request.ShipperName
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.TargetConfiguration))) {
+	if !tea.BoolValue(util.IsUnset(request.TargetConfiguration)) {
 		body["targetConfiguration"] = request.TargetConfiguration
 	}
 
@@ -9563,11 +10384,11 @@ func (client *Client) UpdateOssShipperWithOptions(project *string, logstore *str
 	return _result, _err
 }
 
-func (client *Client) UpdateProject(project *string, request *UpdateProjectRequest) (_result *UpdateProjectResponse, _err error) {
+func (client *Client) UpdateOssShipper(project *string, logstore *string, shipperName *string, request *UpdateOssShipperRequest) (_result *UpdateOssShipperResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &UpdateProjectResponse{}
-	_body, _err := client.UpdateProjectWithOptions(project, request, headers, runtime)
+	_result = &UpdateOssShipperResponse{}
+	_body, _err := client.UpdateOssShipperWithOptions(project, logstore, shipperName, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9612,11 +10433,11 @@ func (client *Client) UpdateProjectWithOptions(project *string, request *UpdateP
 	return _result, _err
 }
 
-func (client *Client) UpdateRdsExternalStore(project *string, externalStoreName *string, request *UpdateRdsExternalStoreRequest) (_result *UpdateRdsExternalStoreResponse, _err error) {
+func (client *Client) UpdateProject(project *string, request *UpdateProjectRequest) (_result *UpdateProjectResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &UpdateRdsExternalStoreResponse{}
-	_body, _err := client.UpdateRdsExternalStoreWithOptions(project, externalStoreName, request, headers, runtime)
+	_result = &UpdateProjectResponse{}
+	_body, _err := client.UpdateProjectWithOptions(project, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9636,7 +10457,7 @@ func (client *Client) UpdateRdsExternalStoreWithOptions(project *string, externa
 		body["externalStoreName"] = request.ExternalStoreName
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.Parameter))) {
+	if !tea.BoolValue(util.IsUnset(request.Parameter)) {
 		body["parameter"] = request.Parameter
 	}
 
@@ -9669,11 +10490,11 @@ func (client *Client) UpdateRdsExternalStoreWithOptions(project *string, externa
 	return _result, _err
 }
 
-func (client *Client) UpdateSavedSearch(project *string, savedsearchName *string, request *UpdateSavedSearchRequest) (_result *UpdateSavedSearchResponse, _err error) {
+func (client *Client) UpdateRdsExternalStore(project *string, externalStoreName *string, request *UpdateRdsExternalStoreRequest) (_result *UpdateRdsExternalStoreResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &UpdateSavedSearchResponse{}
-	_body, _err := client.UpdateSavedSearchWithOptions(project, savedsearchName, request, headers, runtime)
+	_result = &UpdateRdsExternalStoreResponse{}
+	_body, _err := client.UpdateRdsExternalStoreWithOptions(project, externalStoreName, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9731,5 +10552,17 @@ func (client *Client) UpdateSavedSearchWithOptions(project *string, savedsearchN
 		return _result, _err
 	}
 	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateSavedSearch(project *string, savedsearchName *string, request *UpdateSavedSearchRequest) (_result *UpdateSavedSearchResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateSavedSearchResponse{}
+	_body, _err := client.UpdateSavedSearchWithOptions(project, savedsearchName, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
 	return _result, _err
 }
