@@ -5042,6 +5042,209 @@ func (s *SegmentOARResponse) SetBody(v *SegmentOARResponseBody) *SegmentOARRespo
 	return s
 }
 
+type TargetVolumeSegmentRequest struct {
+	CancerType       *string                              `json:"CancerType,omitempty" xml:"CancerType,omitempty"`
+	DataFormat       *string                              `json:"DataFormat,omitempty" xml:"DataFormat,omitempty"`
+	OrgId            *string                              `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
+	OrgName          *string                              `json:"OrgName,omitempty" xml:"OrgName,omitempty"`
+	TargetVolumeType *string                              `json:"TargetVolumeType,omitempty" xml:"TargetVolumeType,omitempty"`
+	URLList          []*TargetVolumeSegmentRequestURLList `json:"URLList,omitempty" xml:"URLList,omitempty" type:"Repeated"`
+}
+
+func (s TargetVolumeSegmentRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TargetVolumeSegmentRequest) GoString() string {
+	return s.String()
+}
+
+func (s *TargetVolumeSegmentRequest) SetCancerType(v string) *TargetVolumeSegmentRequest {
+	s.CancerType = &v
+	return s
+}
+
+func (s *TargetVolumeSegmentRequest) SetDataFormat(v string) *TargetVolumeSegmentRequest {
+	s.DataFormat = &v
+	return s
+}
+
+func (s *TargetVolumeSegmentRequest) SetOrgId(v string) *TargetVolumeSegmentRequest {
+	s.OrgId = &v
+	return s
+}
+
+func (s *TargetVolumeSegmentRequest) SetOrgName(v string) *TargetVolumeSegmentRequest {
+	s.OrgName = &v
+	return s
+}
+
+func (s *TargetVolumeSegmentRequest) SetTargetVolumeType(v string) *TargetVolumeSegmentRequest {
+	s.TargetVolumeType = &v
+	return s
+}
+
+func (s *TargetVolumeSegmentRequest) SetURLList(v []*TargetVolumeSegmentRequestURLList) *TargetVolumeSegmentRequest {
+	s.URLList = v
+	return s
+}
+
+type TargetVolumeSegmentRequestURLList struct {
+	URL *string `json:"URL,omitempty" xml:"URL,omitempty"`
+}
+
+func (s TargetVolumeSegmentRequestURLList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TargetVolumeSegmentRequestURLList) GoString() string {
+	return s.String()
+}
+
+func (s *TargetVolumeSegmentRequestURLList) SetURL(v string) *TargetVolumeSegmentRequestURLList {
+	s.URL = &v
+	return s
+}
+
+type TargetVolumeSegmentAdvanceRequest struct {
+	CancerType       *string                                     `json:"CancerType,omitempty" xml:"CancerType,omitempty"`
+	DataFormat       *string                                     `json:"DataFormat,omitempty" xml:"DataFormat,omitempty"`
+	OrgId            *string                                     `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
+	OrgName          *string                                     `json:"OrgName,omitempty" xml:"OrgName,omitempty"`
+	TargetVolumeType *string                                     `json:"TargetVolumeType,omitempty" xml:"TargetVolumeType,omitempty"`
+	URLList          []*TargetVolumeSegmentAdvanceRequestURLList `json:"URLList,omitempty" xml:"URLList,omitempty" type:"Repeated"`
+}
+
+func (s TargetVolumeSegmentAdvanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TargetVolumeSegmentAdvanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *TargetVolumeSegmentAdvanceRequest) SetCancerType(v string) *TargetVolumeSegmentAdvanceRequest {
+	s.CancerType = &v
+	return s
+}
+
+func (s *TargetVolumeSegmentAdvanceRequest) SetDataFormat(v string) *TargetVolumeSegmentAdvanceRequest {
+	s.DataFormat = &v
+	return s
+}
+
+func (s *TargetVolumeSegmentAdvanceRequest) SetOrgId(v string) *TargetVolumeSegmentAdvanceRequest {
+	s.OrgId = &v
+	return s
+}
+
+func (s *TargetVolumeSegmentAdvanceRequest) SetOrgName(v string) *TargetVolumeSegmentAdvanceRequest {
+	s.OrgName = &v
+	return s
+}
+
+func (s *TargetVolumeSegmentAdvanceRequest) SetTargetVolumeType(v string) *TargetVolumeSegmentAdvanceRequest {
+	s.TargetVolumeType = &v
+	return s
+}
+
+func (s *TargetVolumeSegmentAdvanceRequest) SetURLList(v []*TargetVolumeSegmentAdvanceRequestURLList) *TargetVolumeSegmentAdvanceRequest {
+	s.URLList = v
+	return s
+}
+
+type TargetVolumeSegmentAdvanceRequestURLList struct {
+	URLObject io.Reader `json:"URL,omitempty" xml:"URL,omitempty"`
+}
+
+func (s TargetVolumeSegmentAdvanceRequestURLList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TargetVolumeSegmentAdvanceRequestURLList) GoString() string {
+	return s.String()
+}
+
+func (s *TargetVolumeSegmentAdvanceRequestURLList) SetURLObject(v io.Reader) *TargetVolumeSegmentAdvanceRequestURLList {
+	s.URLObject = v
+	return s
+}
+
+type TargetVolumeSegmentResponseBody struct {
+	Data      *TargetVolumeSegmentResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                              `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s TargetVolumeSegmentResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TargetVolumeSegmentResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *TargetVolumeSegmentResponseBody) SetData(v *TargetVolumeSegmentResponseBodyData) *TargetVolumeSegmentResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *TargetVolumeSegmentResponseBody) SetMessage(v string) *TargetVolumeSegmentResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *TargetVolumeSegmentResponseBody) SetRequestId(v string) *TargetVolumeSegmentResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type TargetVolumeSegmentResponseBodyData struct {
+	ResultURL *string `json:"ResultURL,omitempty" xml:"ResultURL,omitempty"`
+}
+
+func (s TargetVolumeSegmentResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TargetVolumeSegmentResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *TargetVolumeSegmentResponseBodyData) SetResultURL(v string) *TargetVolumeSegmentResponseBodyData {
+	s.ResultURL = &v
+	return s
+}
+
+type TargetVolumeSegmentResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *TargetVolumeSegmentResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s TargetVolumeSegmentResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TargetVolumeSegmentResponse) GoString() string {
+	return s.String()
+}
+
+func (s *TargetVolumeSegmentResponse) SetHeaders(v map[string]*string) *TargetVolumeSegmentResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *TargetVolumeSegmentResponse) SetStatusCode(v int32) *TargetVolumeSegmentResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *TargetVolumeSegmentResponse) SetBody(v *TargetVolumeSegmentResponseBody) *TargetVolumeSegmentResponse {
+	s.Body = v
+	return s
+}
+
 type TranslateMedRequest struct {
 	FromLanguage *string `json:"FromLanguage,omitempty" xml:"FromLanguage,omitempty"`
 	Text         *string `json:"Text,omitempty" xml:"Text,omitempty"`
@@ -8277,6 +8480,184 @@ func (client *Client) SegmentOARAdvance(request *SegmentOARAdvanceRequest, runti
 	}
 
 	_result = segmentOARResp
+	return _result, _err
+}
+
+func (client *Client) TargetVolumeSegmentWithOptions(request *TargetVolumeSegmentRequest, runtime *util.RuntimeOptions) (_result *TargetVolumeSegmentResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CancerType)) {
+		body["CancerType"] = request.CancerType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DataFormat)) {
+		body["DataFormat"] = request.DataFormat
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrgId)) {
+		body["OrgId"] = request.OrgId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrgName)) {
+		body["OrgName"] = request.OrgName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetVolumeType)) {
+		body["TargetVolumeType"] = request.TargetVolumeType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.URLList)) {
+		body["URLList"] = request.URLList
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("TargetVolumeSegment"),
+		Version:     tea.String("2020-03-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &TargetVolumeSegmentResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) TargetVolumeSegment(request *TargetVolumeSegmentRequest) (_result *TargetVolumeSegmentResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &TargetVolumeSegmentResponse{}
+	_body, _err := client.TargetVolumeSegmentWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) TargetVolumeSegmentAdvance(request *TargetVolumeSegmentAdvanceRequest, runtime *util.RuntimeOptions) (_result *TargetVolumeSegmentResponse, _err error) {
+	// Step 0: init client
+	accessKeyId, _err := client.Credential.GetAccessKeyId()
+	if _err != nil {
+		return _result, _err
+	}
+
+	accessKeySecret, _err := client.Credential.GetAccessKeySecret()
+	if _err != nil {
+		return _result, _err
+	}
+
+	securityToken, _err := client.Credential.GetSecurityToken()
+	if _err != nil {
+		return _result, _err
+	}
+
+	credentialType := client.Credential.GetType()
+	openPlatformEndpoint := client.OpenPlatformEndpoint
+	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
+	}
+
+	if tea.BoolValue(util.IsUnset(credentialType)) {
+		credentialType = tea.String("access_key")
+	}
+
+	authConfig := &openapi.Config{
+		AccessKeyId:     accessKeyId,
+		AccessKeySecret: accessKeySecret,
+		SecurityToken:   securityToken,
+		Type:            credentialType,
+		Endpoint:        openPlatformEndpoint,
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	authClient, _err := openplatform.NewClient(authConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
+	authRequest := &openplatform.AuthorizeFileUploadRequest{
+		Product:  tea.String("imageprocess"),
+		RegionId: client.RegionId,
+	}
+	authResponse := &openplatform.AuthorizeFileUploadResponse{}
+	ossConfig := &oss.Config{
+		AccessKeySecret: accessKeySecret,
+		Type:            tea.String("access_key"),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	var ossClient *oss.Client
+	fileObj := &fileform.FileField{}
+	ossHeader := &oss.PostObjectRequestHeader{}
+	uploadRequest := &oss.PostObjectRequest{}
+	ossRuntime := &ossutil.RuntimeOptions{}
+	openapiutil.Convert(runtime, ossRuntime)
+	targetVolumeSegmentReq := &TargetVolumeSegmentRequest{}
+	openapiutil.Convert(request, targetVolumeSegmentReq)
+	if !tea.BoolValue(util.IsUnset(request.URLList)) {
+		i0 := tea.Int(0)
+		for _, item0 := range request.URLList {
+			if !tea.BoolValue(util.IsUnset(item0.URLObject)) {
+				authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+				if _err != nil {
+					return _result, _err
+				}
+
+				ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
+				ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
+				ossClient, _err = oss.NewClient(ossConfig)
+				if _err != nil {
+					return _result, _err
+				}
+
+				fileObj = &fileform.FileField{
+					Filename:    authResponse.Body.ObjectKey,
+					Content:     item0.URLObject,
+					ContentType: tea.String(""),
+				}
+				ossHeader = &oss.PostObjectRequestHeader{
+					AccessKeyId:         authResponse.Body.AccessKeyId,
+					Policy:              authResponse.Body.EncodedPolicy,
+					Signature:           authResponse.Body.Signature,
+					Key:                 authResponse.Body.ObjectKey,
+					File:                fileObj,
+					SuccessActionStatus: tea.String("201"),
+				}
+				uploadRequest = &oss.PostObjectRequest{
+					BucketName: authResponse.Body.Bucket,
+					Header:     ossHeader,
+				}
+				_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+				if _err != nil {
+					return _result, _err
+				}
+				tmp := targetVolumeSegmentReq.URLList[tea.IntValue(i0)]
+				tmp.URL = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
+				i0 = number.Ltoi(number.Add(number.Itol(i0), number.Itol(tea.Int(1))))
+			}
+
+		}
+	}
+
+	targetVolumeSegmentResp, _err := client.TargetVolumeSegmentWithOptions(targetVolumeSegmentReq, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+
+	_result = targetVolumeSegmentResp
 	return _result, _err
 }
 
