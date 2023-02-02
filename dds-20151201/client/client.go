@@ -2466,8 +2466,8 @@ type DescribeActiveOperationTaskTypeResponseBodyTypeList struct {
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
 	// The type of the task. Valid values:
 	//
-	// *   **rds_apsaradb_transfer**: instance migration
-	// *   **rds_apsaradb_upgrade**: minor version update
+	// *   **rds\_apsaradb\_transfer**: instance migration
+	// *   **rds\_apsaradb\_upgrade**: minor version update
 	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
 	// The task type (English).
 	TaskTypeInfoEn *string `json:"TaskTypeInfoEn,omitempty" xml:"TaskTypeInfoEn,omitempty"`
@@ -4430,6 +4430,11 @@ type DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance struct {
 	// *   **replicate**: replica set instance
 	// *   **sharding**: sharded cluster instance
 	DBInstanceType *string `json:"DBInstanceType,omitempty" xml:"DBInstanceType,omitempty"`
+	// The time when the instance data was destroyed. The time is in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+	//
+	// > - Subscription instances are released 15 days after expiration. After an instance is released, its data is deleted and cannot be restored.
+	// > - Pay-as-you-go instances are locked after the payments have been overdue for longer than 24 hours. The instances are released after the payments have been overdue for longer than 15 days. The data of released instances is deleted and cannot be restored.
+	DestroyTime *string `json:"DestroyTime,omitempty" xml:"DestroyTime,omitempty"`
 	// The database engine of the instance.
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
 	// The database engine version of the instance. Valid values:
@@ -4566,6 +4571,11 @@ type DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance struct {
 	ShardList *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceShardList `json:"ShardList,omitempty" xml:"ShardList,omitempty" type:"Struct"`
 	// The storage engine of the instance.
 	StorageEngine *string `json:"StorageEngine,omitempty" xml:"StorageEngine,omitempty"`
+	// The storage type of the instance. Valid values:
+	//
+	// *   **cloud_essd**: enhanced SSD (ESSD)
+	// *   **local_ssd**: local SSD
+	StorageType *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
 	// Details of the instance tags.
 	Tags *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
 	// The ID of the instance.
@@ -4655,6 +4665,11 @@ func (s *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance) SetDBInst
 
 func (s *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance) SetDBInstanceType(v string) *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance {
 	s.DBInstanceType = &v
+	return s
+}
+
+func (s *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance) SetDestroyTime(v string) *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance {
+	s.DestroyTime = &v
 	return s
 }
 
@@ -4775,6 +4790,11 @@ func (s *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance) SetShardL
 
 func (s *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance) SetStorageEngine(v string) *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance {
 	s.StorageEngine = &v
+	return s
+}
+
+func (s *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance) SetStorageType(v string) *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance {
+	s.StorageType = &v
 	return s
 }
 
@@ -7367,468 +7387,6 @@ func (s *DescribeDBInstancesOverviewResponse) SetStatusCode(v int32) *DescribeDB
 }
 
 func (s *DescribeDBInstancesOverviewResponse) SetBody(v *DescribeDBInstancesOverviewResponseBody) *DescribeDBInstancesOverviewResponse {
-	s.Body = v
-	return s
-}
-
-type DescribeDedicatedClusterInstanceListRequest struct {
-	// The ID of the dedicated cluster to which the instance belongs.
-	//
-	// >  Separate multiple IDs with commas (,).
-	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The name of the dedicated host.
-	//
-	// >  Separate multiple names with commas (,).
-	DedicatedHostName *string `json:"DedicatedHostName,omitempty" xml:"DedicatedHostName,omitempty"`
-	// The database engine. Set the value to MongoDB.
-	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	// The version number of the database engine. Set the value to **4.2**.
-	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
-	// The ID of the ApsaraDB for MongoDB instance.
-	//
-	// >  Separate multiple IDs with commas (,).
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The network type of the instance. Valid values:
-	//
-	// *   0: The instance is connected over the Internet.
-	// *   1: The instance is connected over an internal network.
-	// *   2\. The instance is deployed in a VPC.
-	//
-	// Default value: 1.
-	InstanceNetType *string `json:"InstanceNetType,omitempty" xml:"InstanceNetType,omitempty"`
-	// The status of the instance. For information about the valid values of this parameter, see [Valid values of the InstanceStatus parameter for DescribeDedicatedClusterInstanceList](~~190071~~).
-	InstanceStatus *string `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
-	OwnerAccount   *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId        *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The number of the page to return. Valid values: any non-zero positive integer. Default value: **1**.
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. Valid values: **30**, **50**, and **100**. Default value: **30**.
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the region. You can call the [DescribeRegions](~~61933~~) operation to query the most recent region list.
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// The ID of the zone. You can call [DescribeZones](~~61933~~) to query the zone ID.
-	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
-}
-
-func (s DescribeDedicatedClusterInstanceListRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeDedicatedClusterInstanceListRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeDedicatedClusterInstanceListRequest) SetClusterId(v string) *DescribeDedicatedClusterInstanceListRequest {
-	s.ClusterId = &v
-	return s
-}
-
-func (s *DescribeDedicatedClusterInstanceListRequest) SetDedicatedHostName(v string) *DescribeDedicatedClusterInstanceListRequest {
-	s.DedicatedHostName = &v
-	return s
-}
-
-func (s *DescribeDedicatedClusterInstanceListRequest) SetEngine(v string) *DescribeDedicatedClusterInstanceListRequest {
-	s.Engine = &v
-	return s
-}
-
-func (s *DescribeDedicatedClusterInstanceListRequest) SetEngineVersion(v string) *DescribeDedicatedClusterInstanceListRequest {
-	s.EngineVersion = &v
-	return s
-}
-
-func (s *DescribeDedicatedClusterInstanceListRequest) SetInstanceId(v string) *DescribeDedicatedClusterInstanceListRequest {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *DescribeDedicatedClusterInstanceListRequest) SetInstanceNetType(v string) *DescribeDedicatedClusterInstanceListRequest {
-	s.InstanceNetType = &v
-	return s
-}
-
-func (s *DescribeDedicatedClusterInstanceListRequest) SetInstanceStatus(v string) *DescribeDedicatedClusterInstanceListRequest {
-	s.InstanceStatus = &v
-	return s
-}
-
-func (s *DescribeDedicatedClusterInstanceListRequest) SetOwnerAccount(v string) *DescribeDedicatedClusterInstanceListRequest {
-	s.OwnerAccount = &v
-	return s
-}
-
-func (s *DescribeDedicatedClusterInstanceListRequest) SetOwnerId(v int64) *DescribeDedicatedClusterInstanceListRequest {
-	s.OwnerId = &v
-	return s
-}
-
-func (s *DescribeDedicatedClusterInstanceListRequest) SetPageNumber(v int32) *DescribeDedicatedClusterInstanceListRequest {
-	s.PageNumber = &v
-	return s
-}
-
-func (s *DescribeDedicatedClusterInstanceListRequest) SetPageSize(v int32) *DescribeDedicatedClusterInstanceListRequest {
-	s.PageSize = &v
-	return s
-}
-
-func (s *DescribeDedicatedClusterInstanceListRequest) SetRegionId(v string) *DescribeDedicatedClusterInstanceListRequest {
-	s.RegionId = &v
-	return s
-}
-
-func (s *DescribeDedicatedClusterInstanceListRequest) SetResourceOwnerAccount(v string) *DescribeDedicatedClusterInstanceListRequest {
-	s.ResourceOwnerAccount = &v
-	return s
-}
-
-func (s *DescribeDedicatedClusterInstanceListRequest) SetResourceOwnerId(v int64) *DescribeDedicatedClusterInstanceListRequest {
-	s.ResourceOwnerId = &v
-	return s
-}
-
-func (s *DescribeDedicatedClusterInstanceListRequest) SetSecurityToken(v string) *DescribeDedicatedClusterInstanceListRequest {
-	s.SecurityToken = &v
-	return s
-}
-
-func (s *DescribeDedicatedClusterInstanceListRequest) SetZoneId(v string) *DescribeDedicatedClusterInstanceListRequest {
-	s.ZoneId = &v
-	return s
-}
-
-type DescribeDedicatedClusterInstanceListResponseBody struct {
-	// Details about the instances.
-	Instances *DescribeDedicatedClusterInstanceListResponseBodyInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Struct"`
-	// The number of the page to return.
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page.
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The number of instances in the response.
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-}
-
-func (s DescribeDedicatedClusterInstanceListResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeDedicatedClusterInstanceListResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeDedicatedClusterInstanceListResponseBody) SetInstances(v *DescribeDedicatedClusterInstanceListResponseBodyInstances) *DescribeDedicatedClusterInstanceListResponseBody {
-	s.Instances = v
-	return s
-}
-
-func (s *DescribeDedicatedClusterInstanceListResponseBody) SetPageNumber(v int32) *DescribeDedicatedClusterInstanceListResponseBody {
-	s.PageNumber = &v
-	return s
-}
-
-func (s *DescribeDedicatedClusterInstanceListResponseBody) SetPageSize(v int32) *DescribeDedicatedClusterInstanceListResponseBody {
-	s.PageSize = &v
-	return s
-}
-
-func (s *DescribeDedicatedClusterInstanceListResponseBody) SetRequestId(v string) *DescribeDedicatedClusterInstanceListResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeDedicatedClusterInstanceListResponseBody) SetTotalCount(v int32) *DescribeDedicatedClusterInstanceListResponseBody {
-	s.TotalCount = &v
-	return s
-}
-
-type DescribeDedicatedClusterInstanceListResponseBodyInstances struct {
-	DbInstance []*DescribeDedicatedClusterInstanceListResponseBodyInstancesDbInstance `json:"dbInstance,omitempty" xml:"dbInstance,omitempty" type:"Repeated"`
-}
-
-func (s DescribeDedicatedClusterInstanceListResponseBodyInstances) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeDedicatedClusterInstanceListResponseBodyInstances) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeDedicatedClusterInstanceListResponseBodyInstances) SetDbInstance(v []*DescribeDedicatedClusterInstanceListResponseBodyInstancesDbInstance) *DescribeDedicatedClusterInstanceListResponseBodyInstances {
-	s.DbInstance = v
-	return s
-}
-
-type DescribeDedicatedClusterInstanceListResponseBodyInstancesDbInstance struct {
-	// The type of the ApsaraDB for MongoDB instance. Valid value: **normal**.
-	//
-	// **normal**: a replica set instance.
-	CharacterType *string `json:"CharacterType,omitempty" xml:"CharacterType,omitempty"`
-	// The ID of the dedicated cluster to which the instance belongs.
-	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The name of the dedicated cluster to which the instance belongs.
-	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
-	// The time when the instance was created. The time is displayed in the *yyyy*-*MM*-*dd*T*HH*:*mm*:*ss*Z format.
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The instance ID of the backend O\&M platform.
-	CustomId *string `json:"CustomId,omitempty" xml:"CustomId,omitempty"`
-	// The database engine. Valid value: **MongoDB**.
-	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	// The version number of the database engine. Valid value: **4.2**.
-	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
-	// The instance type. For more information, see **Table 1. Standalone or replica set instance types** in [Instance types](~~57141~~).
-	InstanceClass *string `json:"InstanceClass,omitempty" xml:"InstanceClass,omitempty"`
-	// The ID of the ApsaraDB for MongoDB instance.
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The name of the ApsaraDB for MongoDB instance.
-	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// Details about the instance nodes.
-	InstanceNodeList *DescribeDedicatedClusterInstanceListResponseBodyInstancesDbInstanceInstanceNodeList `json:"InstanceNodeList,omitempty" xml:"InstanceNodeList,omitempty" type:"Struct"`
-	// The status of the instance. More details of status, please see [instance status list](~~190071~~).
-	InstanceStatus *string `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
-	// The end time of the maintenance window. The time is in the *HH:mmZ* format. The time is displayed in UTC.
-	MaintainEndTime *string `json:"MaintainEndTime,omitempty" xml:"MaintainEndTime,omitempty"`
-	// The start time of the maintenance window. The time is in the *HH:mm*Z format. The time is displayed in UTC.
-	MaintainStartTime *string `json:"MaintainStartTime,omitempty" xml:"MaintainStartTime,omitempty"`
-	// The region where the instance is deployed.
-	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// The ID of the region where the instance is deployed.
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The type of the storage.
-	StorageType *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
-	// The ID of the VPC.
-	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// The vSwitch ID of the VPC.
-	VswitchId *string `json:"VswitchId,omitempty" xml:"VswitchId,omitempty"`
-	// The zone ID of the instance.
-	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
-}
-
-func (s DescribeDedicatedClusterInstanceListResponseBodyInstancesDbInstance) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeDedicatedClusterInstanceListResponseBodyInstancesDbInstance) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeDedicatedClusterInstanceListResponseBodyInstancesDbInstance) SetCharacterType(v string) *DescribeDedicatedClusterInstanceListResponseBodyInstancesDbInstance {
-	s.CharacterType = &v
-	return s
-}
-
-func (s *DescribeDedicatedClusterInstanceListResponseBodyInstancesDbInstance) SetClusterId(v string) *DescribeDedicatedClusterInstanceListResponseBodyInstancesDbInstance {
-	s.ClusterId = &v
-	return s
-}
-
-func (s *DescribeDedicatedClusterInstanceListResponseBodyInstancesDbInstance) SetClusterName(v string) *DescribeDedicatedClusterInstanceListResponseBodyInstancesDbInstance {
-	s.ClusterName = &v
-	return s
-}
-
-func (s *DescribeDedicatedClusterInstanceListResponseBodyInstancesDbInstance) SetCreateTime(v string) *DescribeDedicatedClusterInstanceListResponseBodyInstancesDbInstance {
-	s.CreateTime = &v
-	return s
-}
-
-func (s *DescribeDedicatedClusterInstanceListResponseBodyInstancesDbInstance) SetCustomId(v string) *DescribeDedicatedClusterInstanceListResponseBodyInstancesDbInstance {
-	s.CustomId = &v
-	return s
-}
-
-func (s *DescribeDedicatedClusterInstanceListResponseBodyInstancesDbInstance) SetEngine(v string) *DescribeDedicatedClusterInstanceListResponseBodyInstancesDbInstance {
-	s.Engine = &v
-	return s
-}
-
-func (s *DescribeDedicatedClusterInstanceListResponseBodyInstancesDbInstance) SetEngineVersion(v string) *DescribeDedicatedClusterInstanceListResponseBodyInstancesDbInstance {
-	s.EngineVersion = &v
-	return s
-}
-
-func (s *DescribeDedicatedClusterInstanceListResponseBodyInstancesDbInstance) SetInstanceClass(v string) *DescribeDedicatedClusterInstanceListResponseBodyInstancesDbInstance {
-	s.InstanceClass = &v
-	return s
-}
-
-func (s *DescribeDedicatedClusterInstanceListResponseBodyInstancesDbInstance) SetInstanceId(v string) *DescribeDedicatedClusterInstanceListResponseBodyInstancesDbInstance {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *DescribeDedicatedClusterInstanceListResponseBodyInstancesDbInstance) SetInstanceName(v string) *DescribeDedicatedClusterInstanceListResponseBodyInstancesDbInstance {
-	s.InstanceName = &v
-	return s
-}
-
-func (s *DescribeDedicatedClusterInstanceListResponseBodyInstancesDbInstance) SetInstanceNodeList(v *DescribeDedicatedClusterInstanceListResponseBodyInstancesDbInstanceInstanceNodeList) *DescribeDedicatedClusterInstanceListResponseBodyInstancesDbInstance {
-	s.InstanceNodeList = v
-	return s
-}
-
-func (s *DescribeDedicatedClusterInstanceListResponseBodyInstancesDbInstance) SetInstanceStatus(v string) *DescribeDedicatedClusterInstanceListResponseBodyInstancesDbInstance {
-	s.InstanceStatus = &v
-	return s
-}
-
-func (s *DescribeDedicatedClusterInstanceListResponseBodyInstancesDbInstance) SetMaintainEndTime(v string) *DescribeDedicatedClusterInstanceListResponseBodyInstancesDbInstance {
-	s.MaintainEndTime = &v
-	return s
-}
-
-func (s *DescribeDedicatedClusterInstanceListResponseBodyInstancesDbInstance) SetMaintainStartTime(v string) *DescribeDedicatedClusterInstanceListResponseBodyInstancesDbInstance {
-	s.MaintainStartTime = &v
-	return s
-}
-
-func (s *DescribeDedicatedClusterInstanceListResponseBodyInstancesDbInstance) SetRegion(v string) *DescribeDedicatedClusterInstanceListResponseBodyInstancesDbInstance {
-	s.Region = &v
-	return s
-}
-
-func (s *DescribeDedicatedClusterInstanceListResponseBodyInstancesDbInstance) SetRegionId(v string) *DescribeDedicatedClusterInstanceListResponseBodyInstancesDbInstance {
-	s.RegionId = &v
-	return s
-}
-
-func (s *DescribeDedicatedClusterInstanceListResponseBodyInstancesDbInstance) SetStorageType(v string) *DescribeDedicatedClusterInstanceListResponseBodyInstancesDbInstance {
-	s.StorageType = &v
-	return s
-}
-
-func (s *DescribeDedicatedClusterInstanceListResponseBodyInstancesDbInstance) SetVpcId(v string) *DescribeDedicatedClusterInstanceListResponseBodyInstancesDbInstance {
-	s.VpcId = &v
-	return s
-}
-
-func (s *DescribeDedicatedClusterInstanceListResponseBodyInstancesDbInstance) SetVswitchId(v string) *DescribeDedicatedClusterInstanceListResponseBodyInstancesDbInstance {
-	s.VswitchId = &v
-	return s
-}
-
-func (s *DescribeDedicatedClusterInstanceListResponseBodyInstancesDbInstance) SetZoneId(v string) *DescribeDedicatedClusterInstanceListResponseBodyInstancesDbInstance {
-	s.ZoneId = &v
-	return s
-}
-
-type DescribeDedicatedClusterInstanceListResponseBodyInstancesDbInstanceInstanceNodeList struct {
-	InstanceNodes []*DescribeDedicatedClusterInstanceListResponseBodyInstancesDbInstanceInstanceNodeListInstanceNodes `json:"InstanceNodes,omitempty" xml:"InstanceNodes,omitempty" type:"Repeated"`
-}
-
-func (s DescribeDedicatedClusterInstanceListResponseBodyInstancesDbInstanceInstanceNodeList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeDedicatedClusterInstanceListResponseBodyInstancesDbInstanceInstanceNodeList) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeDedicatedClusterInstanceListResponseBodyInstancesDbInstanceInstanceNodeList) SetInstanceNodes(v []*DescribeDedicatedClusterInstanceListResponseBodyInstancesDbInstanceInstanceNodeListInstanceNodes) *DescribeDedicatedClusterInstanceListResponseBodyInstancesDbInstanceInstanceNodeList {
-	s.InstanceNodes = v
-	return s
-}
-
-type DescribeDedicatedClusterInstanceListResponseBodyInstancesDbInstanceInstanceNodeListInstanceNodes struct {
-	// The ID of the host to which the instances in a dedicated cluster belong.
-	DedicatedHostName *string `json:"DedicatedHostName,omitempty" xml:"DedicatedHostName,omitempty"`
-	// The name of the shard.
-	InsName *string `json:"InsName,omitempty" xml:"InsName,omitempty"`
-	// The ID of the node.
-	NodeId *int32 `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	// The IP address of the node.
-	NodeIp *string `json:"NodeIp,omitempty" xml:"NodeIp,omitempty"`
-	// The type of the node.
-	NodeType *string `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
-	// The port number corresponding to the node.
-	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The role of the node. Valid values:
-	//
-	// *   **master**: a primary node.
-	// *   **slave**: a secondary node.
-	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
-	// The zone ID of the instance.
-	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
-}
-
-func (s DescribeDedicatedClusterInstanceListResponseBodyInstancesDbInstanceInstanceNodeListInstanceNodes) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeDedicatedClusterInstanceListResponseBodyInstancesDbInstanceInstanceNodeListInstanceNodes) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeDedicatedClusterInstanceListResponseBodyInstancesDbInstanceInstanceNodeListInstanceNodes) SetDedicatedHostName(v string) *DescribeDedicatedClusterInstanceListResponseBodyInstancesDbInstanceInstanceNodeListInstanceNodes {
-	s.DedicatedHostName = &v
-	return s
-}
-
-func (s *DescribeDedicatedClusterInstanceListResponseBodyInstancesDbInstanceInstanceNodeListInstanceNodes) SetInsName(v string) *DescribeDedicatedClusterInstanceListResponseBodyInstancesDbInstanceInstanceNodeListInstanceNodes {
-	s.InsName = &v
-	return s
-}
-
-func (s *DescribeDedicatedClusterInstanceListResponseBodyInstancesDbInstanceInstanceNodeListInstanceNodes) SetNodeId(v int32) *DescribeDedicatedClusterInstanceListResponseBodyInstancesDbInstanceInstanceNodeListInstanceNodes {
-	s.NodeId = &v
-	return s
-}
-
-func (s *DescribeDedicatedClusterInstanceListResponseBodyInstancesDbInstanceInstanceNodeListInstanceNodes) SetNodeIp(v string) *DescribeDedicatedClusterInstanceListResponseBodyInstancesDbInstanceInstanceNodeListInstanceNodes {
-	s.NodeIp = &v
-	return s
-}
-
-func (s *DescribeDedicatedClusterInstanceListResponseBodyInstancesDbInstanceInstanceNodeListInstanceNodes) SetNodeType(v string) *DescribeDedicatedClusterInstanceListResponseBodyInstancesDbInstanceInstanceNodeListInstanceNodes {
-	s.NodeType = &v
-	return s
-}
-
-func (s *DescribeDedicatedClusterInstanceListResponseBodyInstancesDbInstanceInstanceNodeListInstanceNodes) SetPort(v int32) *DescribeDedicatedClusterInstanceListResponseBodyInstancesDbInstanceInstanceNodeListInstanceNodes {
-	s.Port = &v
-	return s
-}
-
-func (s *DescribeDedicatedClusterInstanceListResponseBodyInstancesDbInstanceInstanceNodeListInstanceNodes) SetRole(v string) *DescribeDedicatedClusterInstanceListResponseBodyInstancesDbInstanceInstanceNodeListInstanceNodes {
-	s.Role = &v
-	return s
-}
-
-func (s *DescribeDedicatedClusterInstanceListResponseBodyInstancesDbInstanceInstanceNodeListInstanceNodes) SetZoneId(v string) *DescribeDedicatedClusterInstanceListResponseBodyInstancesDbInstanceInstanceNodeListInstanceNodes {
-	s.ZoneId = &v
-	return s
-}
-
-type DescribeDedicatedClusterInstanceListResponse struct {
-	Headers    map[string]*string                                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeDedicatedClusterInstanceListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribeDedicatedClusterInstanceListResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeDedicatedClusterInstanceListResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeDedicatedClusterInstanceListResponse) SetHeaders(v map[string]*string) *DescribeDedicatedClusterInstanceListResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeDedicatedClusterInstanceListResponse) SetStatusCode(v int32) *DescribeDedicatedClusterInstanceListResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *DescribeDedicatedClusterInstanceListResponse) SetBody(v *DescribeDedicatedClusterInstanceListResponseBody) *DescribeDedicatedClusterInstanceListResponse {
 	s.Body = v
 	return s
 }
@@ -12496,6 +12054,7 @@ type EvaluateResourceRequest struct {
 	//     *   NodeId: the ID of the node. You can call the [DescribeDBInstanceAttribute](~~62010~~) operation to query the node ID.
 	//     *   NodeClass: the instance type of the node. For more information, see [Instance types](~~57141~~).
 	ShardsInfo *string `json:"ShardsInfo,omitempty" xml:"ShardsInfo,omitempty"`
+	Storage    *string `json:"Storage,omitempty" xml:"Storage,omitempty"`
 	// The zone ID of the instance. You can call the [DescribeRegions](~~61933~~) operation to query the most recent zone list.
 	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
@@ -12570,6 +12129,11 @@ func (s *EvaluateResourceRequest) SetSecurityToken(v string) *EvaluateResourceRe
 
 func (s *EvaluateResourceRequest) SetShardsInfo(v string) *EvaluateResourceRequest {
 	s.ShardsInfo = &v
+	return s
+}
+
+func (s *EvaluateResourceRequest) SetStorage(v string) *EvaluateResourceRequest {
+	s.Storage = &v
 	return s
 }
 
@@ -13779,17 +13343,21 @@ func (s *ModifyDBInstanceConnectionStringResponse) SetBody(v *ModifyDBInstanceCo
 type ModifyDBInstanceDescriptionRequest struct {
 	// The name of the instance.
 	//
-	// > * The name cannot start with `http://` or `https://`.
-	// > * The name must start with a letter.
-	// > * The name must be 2 to 256 characters in length, and can contain letters, underscores (\_), hyphens (-), and digits.
-	DBInstanceDescription *string `json:"DBInstanceDescription,omitempty" xml:"DBInstanceDescription,omitempty"`
-	// The ID of the instance.
+	// >
 	//
-	// >  To modify the name of a shard or mongos node in a sharded cluster instance, you must also specify the **NodeId** parameter.
+	// *   The name cannot start with `http://` or `https://`.
+	//
+	// *   The name must start with a letter.
+	//
+	// *   The name must be 2 to 256 characters in length, and can contain letters, underscores (\_), hyphens (-), and digits.
+	DBInstanceDescription *string `json:"DBInstanceDescription,omitempty" xml:"DBInstanceDescription,omitempty"`
+	// The ID of the instance
+	//
+	// > To modify the name of a shard or mongos node in a sharded cluster instance, you must also specify the **NodeId** parameter.
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The ID of the shard or mongos node in the sharded cluster instance.
 	//
-	// >  This parameter is valid only if you set the **DBInstanceId** parameter to the ID of a sharded cluster instance.
+	// > This parameter is valid only if you set the **DBInstanceId** parameter to the ID of a sharded cluster instance.
 	NodeId               *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -14492,6 +14060,7 @@ type ModifyDBInstanceSpecRequest struct {
 	// *   **Immediately**: The configurations immediately take effect.
 	// *   **MaintainTime**: The configurations take effect during the maintenance window of the instance.
 	EffectiveTime *string `json:"EffectiveTime,omitempty" xml:"EffectiveTime,omitempty"`
+	ExtraParam    *string `json:"ExtraParam,omitempty" xml:"ExtraParam,omitempty"`
 	// The type of the modification. Valid values:
 	//
 	// *   **UPGRADE**
@@ -14559,6 +14128,11 @@ func (s *ModifyDBInstanceSpecRequest) SetDBInstanceStorage(v string) *ModifyDBIn
 
 func (s *ModifyDBInstanceSpecRequest) SetEffectiveTime(v string) *ModifyDBInstanceSpecRequest {
 	s.EffectiveTime = &v
+	return s
+}
+
+func (s *ModifyDBInstanceSpecRequest) SetExtraParam(v string) *ModifyDBInstanceSpecRequest {
+	s.ExtraParam = &v
 	return s
 }
 
@@ -16852,38 +16426,32 @@ func (s *TagResourcesResponse) SetBody(v *TagResourcesResponseBody) *TagResource
 type TransformInstanceChargeTypeRequest struct {
 	// Specifies whether to enable automatic payment. Valid values:
 	//
-	// *   **true**: enables automatic payment.
-	// *   **false**: disables automatic payment. For more information, see [Renew an ApsaraDB for MongoDB subscription instance](~~85052~~).
+	// *   **true**
+	// *   **false**
 	//
-	// >  Default value: **true**.
+	// > The default value is **true**.
 	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
 	// Specifies whether to enable auto-renewal for the instance. Valid values:
 	//
 	// *   **true**
 	// *   **false**
 	//
-	// >  Default value: **false**.
+	// > The default value is **false**.
 	AutoRenew *string `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
 	// The business information. This is an additional parameter.
 	BusinessInfo *string `json:"BusinessInfo,omitempty" xml:"BusinessInfo,omitempty"`
 	// The billing method of the instance. Valid values:
 	//
-	// *   **PostPaid: pay-as-you-go.**
 	// *   **PrePaid**: subscription
-	//
-	// >  If you specify this parameter to **PrePaid**, you must also specify the **Period** parameter.
+	// *   **PostPaid**: pay-as-you-go
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
 	// The coupon code. Default value: `youhuiquan_promotion_option_id_for_blank`.
 	CouponNo *string `json:"CouponNo,omitempty" xml:"CouponNo,omitempty"`
-	// The ID of the instance.
+	// The ID of the instance
 	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The subscription period of the instance. Unit: months.
-	//
-	// Valid values: **1** to **9**, **12**, **24**, **36**, and **60**.
-	//
-	// >  If you set the ChargeType property to PrePaid, you must configure this property.
+	// The subscription duration of the instance. Unit: months. Valid values: **1, 2, 3, 4, 5, 6, 7, 8, 9******, **12**, **24**, and **36**.
 	Period               *int64  `json:"Period,omitempty" xml:"Period,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -17160,27 +16728,27 @@ func (s *TransformToPrePaidResponse) SetBody(v *TransformToPrePaidResponseBody) 
 }
 
 type UntagResourcesRequest struct {
-	// Specifies whether to unbind all tags from the instance. Valid values:
+	// Specifies whether to remove all tags from the instances. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// *   **true**: Remove all tags from the instances.
+	// *   **false**: Do not remove all tags from the instances.
 	//
 	// > * Default value: **false**.
-	// > * If you specify both this parameter and **TagKey.N**, this parameter is invalid.
+	// > * If you specify the **TagKey** parameter together with this parameter, this parameter does not take effect.
 	All          *bool   `json:"All,omitempty" xml:"All,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The region ID of the instance. You can call the [DescribeDBInstanceAttribute](~~62010~~) operation to query the region ID of the instance.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group.
+	// The ID of the resource group to which the instances you want to query belong.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The resource IDs.
+	// The list of resource IDs.
 	ResourceId           []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
 	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The resource type. Set the value to **INSTANCE**.
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The keys of the tags.
+	// The tag keys of the resource.
 	TagKey []*string `json:"TagKey,omitempty" xml:"TagKey,omitempty" type:"Repeated"`
 }
 
@@ -20417,110 +19985,6 @@ func (client *Client) DescribeDBInstancesOverview(request *DescribeDBInstancesOv
 	return _result, _err
 }
 
-func (client *Client) DescribeDedicatedClusterInstanceListWithOptions(request *DescribeDedicatedClusterInstanceListRequest, runtime *util.RuntimeOptions) (_result *DescribeDedicatedClusterInstanceListResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
-		query["ClusterId"] = request.ClusterId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.DedicatedHostName)) {
-		query["DedicatedHostName"] = request.DedicatedHostName
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Engine)) {
-		query["Engine"] = request.Engine
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.EngineVersion)) {
-		query["EngineVersion"] = request.EngineVersion
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
-		query["InstanceId"] = request.InstanceId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.InstanceNetType)) {
-		query["InstanceNetType"] = request.InstanceNetType
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.InstanceStatus)) {
-		query["InstanceStatus"] = request.InstanceStatus
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
-		query["OwnerAccount"] = request.OwnerAccount
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
-		query["PageNumber"] = request.PageNumber
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
-		query["PageSize"] = request.PageSize
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
-		query["RegionId"] = request.RegionId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
-		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
-		query["ResourceOwnerId"] = request.ResourceOwnerId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
-		query["SecurityToken"] = request.SecurityToken
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ZoneId)) {
-		query["ZoneId"] = request.ZoneId
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribeDedicatedClusterInstanceList"),
-		Version:     tea.String("2015-12-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DescribeDedicatedClusterInstanceListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeDedicatedClusterInstanceList(request *DescribeDedicatedClusterInstanceListRequest) (_result *DescribeDedicatedClusterInstanceListResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeDedicatedClusterInstanceListResponse{}
-	_body, _err := client.DescribeDedicatedClusterInstanceListWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 /**
  * *   This operation is applicable only to **general-purpose local-disk** and **dedicated local-disk** instances.
  * *   You can call this operation up to 30 times per minute. To call this operation at a higher frequency, use a Logstore. For more information, see [Manage a Logstore](~~48990~~).
@@ -22265,6 +21729,10 @@ func (client *Client) EvaluateResourceWithOptions(request *EvaluateResourceReque
 		query["ShardsInfo"] = request.ShardsInfo
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Storage)) {
+		query["Storage"] = request.Storage
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ZoneId)) {
 		query["ZoneId"] = request.ZoneId
 	}
@@ -23542,6 +23010,10 @@ func (client *Client) ModifyDBInstanceSpecWithOptions(request *ModifyDBInstanceS
 
 	if !tea.BoolValue(util.IsUnset(request.EffectiveTime)) {
 		query["EffectiveTime"] = request.EffectiveTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExtraParam)) {
+		query["ExtraParam"] = request.ExtraParam
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.OrderType)) {
@@ -25181,12 +24653,12 @@ func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagRe
 }
 
 /**
- * Please ensure that you have fully understood the charging method and [Price](https://www.alibabacloud.com/zh/product/apsaradb-for-mongodb/pricing) of MongoDB products before using this API.
- * When calling this interface, the instance must meet the following conditions:
- * - The instance status is Running.
- * - The instance does not have a conversion payment type order that has not been paid.
- * - The instance type cannot be a historical type (no longer sold). For the list of historical types, see [Instance Type Table](~~57141~~).
- * > To convert the payment type of the historical type instance, first call the [ModifyDBInstanceSpec] (~~61816~~) or [ModifyNodeSpec] (~~61923~~) interface to change the instance type.
+ * Before you call this operation, make sure that you understand the billing methods and [pricing](https://www.aliyun.com/price/product#/mongodb/detail) of ApsaraDB for MongoDB.
+ * Before you call this API operation, make sure that the ApsaraDB for MongoDB instance meets the following requirements:
+ * *   The instance is in the Running state.
+ * *   Your instance has no unpaid billing method change orders.
+ * *   The instance type is available for purchase. For more information about unavailable instance types, see [Instance types](~~57141~~).
+ * > To change the billing method of an instance whose instance type is no longer available to purchase, call the [ModifyDBInstanceSpec](~~61816~~) or [ModifyNodeSpec](~~61923~~) operation to first change the instance type.
  *
  * @param request TransformInstanceChargeTypeRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -25270,12 +24742,12 @@ func (client *Client) TransformInstanceChargeTypeWithOptions(request *TransformI
 }
 
 /**
- * Please ensure that you have fully understood the charging method and [Price](https://www.alibabacloud.com/zh/product/apsaradb-for-mongodb/pricing) of MongoDB products before using this API.
- * When calling this interface, the instance must meet the following conditions:
- * - The instance status is Running.
- * - The instance does not have a conversion payment type order that has not been paid.
- * - The instance type cannot be a historical type (no longer sold). For the list of historical types, see [Instance Type Table](~~57141~~).
- * > To convert the payment type of the historical type instance, first call the [ModifyDBInstanceSpec] (~~61816~~) or [ModifyNodeSpec] (~~61923~~) interface to change the instance type.
+ * Before you call this operation, make sure that you understand the billing methods and [pricing](https://www.aliyun.com/price/product#/mongodb/detail) of ApsaraDB for MongoDB.
+ * Before you call this API operation, make sure that the ApsaraDB for MongoDB instance meets the following requirements:
+ * *   The instance is in the Running state.
+ * *   Your instance has no unpaid billing method change orders.
+ * *   The instance type is available for purchase. For more information about unavailable instance types, see [Instance types](~~57141~~).
+ * > To change the billing method of an instance whose instance type is no longer available to purchase, call the [ModifyDBInstanceSpec](~~61816~~) or [ModifyNodeSpec](~~61923~~) operation to first change the instance type.
  *
  * @param request TransformInstanceChargeTypeRequest
  * @return TransformInstanceChargeTypeResponse
@@ -25403,8 +24875,8 @@ func (client *Client) TransformToPrePaid(request *TransformToPrePaidRequest) (_r
 }
 
 /**
- * > * You can unbind up to 20 tags at a time.
- * > * When a tag is unbound from all instances, the tag is automatically deleted.
+ * - You can remove up to 20 tags at a time.
+ * - If you remove a tag from all instances, the tag is automatically deleted.
  *
  * @param request UntagResourcesRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -25480,8 +24952,8 @@ func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, 
 }
 
 /**
- * > * You can unbind up to 20 tags at a time.
- * > * When a tag is unbound from all instances, the tag is automatically deleted.
+ * - You can remove up to 20 tags at a time.
+ * - If you remove a tag from all instances, the tag is automatically deleted.
  *
  * @param request UntagResourcesRequest
  * @return UntagResourcesResponse
