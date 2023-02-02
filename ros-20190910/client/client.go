@@ -13,6 +13,7 @@ import (
 )
 
 type CancelStackOperationRequest struct {
+	// test
 	AllowedStackOperations []*string `json:"AllowedStackOperations,omitempty" xml:"AllowedStackOperations,omitempty" type:"Repeated"`
 	CancelType             *string   `json:"CancelType,omitempty" xml:"CancelType,omitempty"`
 	RegionId               *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
@@ -3623,10 +3624,11 @@ func (s *GetFeatureDetailsRequest) SetRegionId(v string) *GetFeatureDetailsReque
 }
 
 type GetFeatureDetailsResponseBody struct {
-	RequestId       *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ResourceCleaner *GetFeatureDetailsResponseBodyResourceCleaner `json:"ResourceCleaner,omitempty" xml:"ResourceCleaner,omitempty" type:"Struct"`
-	TemplateScratch *GetFeatureDetailsResponseBodyTemplateScratch `json:"TemplateScratch,omitempty" xml:"TemplateScratch,omitempty" type:"Struct"`
-	Terraform       *GetFeatureDetailsResponseBodyTerraform       `json:"Terraform,omitempty" xml:"Terraform,omitempty" type:"Struct"`
+	RequestId                    *string                                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResourceCleaner              *GetFeatureDetailsResponseBodyResourceCleaner              `json:"ResourceCleaner,omitempty" xml:"ResourceCleaner,omitempty" type:"Struct"`
+	TemplateParameterConstraints *GetFeatureDetailsResponseBodyTemplateParameterConstraints `json:"TemplateParameterConstraints,omitempty" xml:"TemplateParameterConstraints,omitempty" type:"Struct"`
+	TemplateScratch              *GetFeatureDetailsResponseBodyTemplateScratch              `json:"TemplateScratch,omitempty" xml:"TemplateScratch,omitempty" type:"Struct"`
+	Terraform                    *GetFeatureDetailsResponseBodyTerraform                    `json:"Terraform,omitempty" xml:"Terraform,omitempty" type:"Struct"`
 }
 
 func (s GetFeatureDetailsResponseBody) String() string {
@@ -3644,6 +3646,11 @@ func (s *GetFeatureDetailsResponseBody) SetRequestId(v string) *GetFeatureDetail
 
 func (s *GetFeatureDetailsResponseBody) SetResourceCleaner(v *GetFeatureDetailsResponseBodyResourceCleaner) *GetFeatureDetailsResponseBody {
 	s.ResourceCleaner = v
+	return s
+}
+
+func (s *GetFeatureDetailsResponseBody) SetTemplateParameterConstraints(v *GetFeatureDetailsResponseBodyTemplateParameterConstraints) *GetFeatureDetailsResponseBody {
+	s.TemplateParameterConstraints = v
 	return s
 }
 
@@ -3700,6 +3707,46 @@ func (s *GetFeatureDetailsResponseBodyResourceCleanerSupportedResourceTypes) Set
 
 func (s *GetFeatureDetailsResponseBodyResourceCleanerSupportedResourceTypes) SetSupportedFilters(v []*string) *GetFeatureDetailsResponseBodyResourceCleanerSupportedResourceTypes {
 	s.SupportedFilters = v
+	return s
+}
+
+type GetFeatureDetailsResponseBodyTemplateParameterConstraints struct {
+	SupportedResourceTypes []*GetFeatureDetailsResponseBodyTemplateParameterConstraintsSupportedResourceTypes `json:"SupportedResourceTypes,omitempty" xml:"SupportedResourceTypes,omitempty" type:"Repeated"`
+}
+
+func (s GetFeatureDetailsResponseBodyTemplateParameterConstraints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFeatureDetailsResponseBodyTemplateParameterConstraints) GoString() string {
+	return s.String()
+}
+
+func (s *GetFeatureDetailsResponseBodyTemplateParameterConstraints) SetSupportedResourceTypes(v []*GetFeatureDetailsResponseBodyTemplateParameterConstraintsSupportedResourceTypes) *GetFeatureDetailsResponseBodyTemplateParameterConstraints {
+	s.SupportedResourceTypes = v
+	return s
+}
+
+type GetFeatureDetailsResponseBodyTemplateParameterConstraintsSupportedResourceTypes struct {
+	Properties   []*string `json:"Properties,omitempty" xml:"Properties,omitempty" type:"Repeated"`
+	ResourceType *string   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+}
+
+func (s GetFeatureDetailsResponseBodyTemplateParameterConstraintsSupportedResourceTypes) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFeatureDetailsResponseBodyTemplateParameterConstraintsSupportedResourceTypes) GoString() string {
+	return s.String()
+}
+
+func (s *GetFeatureDetailsResponseBodyTemplateParameterConstraintsSupportedResourceTypes) SetProperties(v []*string) *GetFeatureDetailsResponseBodyTemplateParameterConstraintsSupportedResourceTypes {
+	s.Properties = v
+	return s
+}
+
+func (s *GetFeatureDetailsResponseBodyTemplateParameterConstraintsSupportedResourceTypes) SetResourceType(v string) *GetFeatureDetailsResponseBodyTemplateParameterConstraintsSupportedResourceTypes {
+	s.ResourceType = &v
 	return s
 }
 
@@ -6715,6 +6762,7 @@ type GetTemplateParameterConstraintsResponseBodyParameterConstraints struct {
 	IllegalValueByRules                []interface{}                                                                         `json:"IllegalValueByRules,omitempty" xml:"IllegalValueByRules,omitempty" type:"Repeated"`
 	NotSupportResources                []*GetTemplateParameterConstraintsResponseBodyParameterConstraintsNotSupportResources `json:"NotSupportResources,omitempty" xml:"NotSupportResources,omitempty" type:"Repeated"`
 	ParameterKey                       *string                                                                               `json:"ParameterKey,omitempty" xml:"ParameterKey,omitempty"`
+	QueryErrors                        []*GetTemplateParameterConstraintsResponseBodyParameterConstraintsQueryErrors         `json:"QueryErrors,omitempty" xml:"QueryErrors,omitempty" type:"Repeated"`
 	Type                               *string                                                                               `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
@@ -6766,6 +6814,11 @@ func (s *GetTemplateParameterConstraintsResponseBodyParameterConstraints) SetPar
 	return s
 }
 
+func (s *GetTemplateParameterConstraintsResponseBodyParameterConstraints) SetQueryErrors(v []*GetTemplateParameterConstraintsResponseBodyParameterConstraintsQueryErrors) *GetTemplateParameterConstraintsResponseBodyParameterConstraints {
+	s.QueryErrors = v
+	return s
+}
+
 func (s *GetTemplateParameterConstraintsResponseBodyParameterConstraints) SetType(v string) *GetTemplateParameterConstraintsResponseBodyParameterConstraints {
 	s.Type = &v
 	return s
@@ -6790,6 +6843,35 @@ func (s *GetTemplateParameterConstraintsResponseBodyParameterConstraintsNotSuppo
 }
 
 func (s *GetTemplateParameterConstraintsResponseBodyParameterConstraintsNotSupportResources) SetResourceType(v string) *GetTemplateParameterConstraintsResponseBodyParameterConstraintsNotSupportResources {
+	s.ResourceType = &v
+	return s
+}
+
+type GetTemplateParameterConstraintsResponseBodyParameterConstraintsQueryErrors struct {
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+}
+
+func (s GetTemplateParameterConstraintsResponseBodyParameterConstraintsQueryErrors) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTemplateParameterConstraintsResponseBodyParameterConstraintsQueryErrors) GoString() string {
+	return s.String()
+}
+
+func (s *GetTemplateParameterConstraintsResponseBodyParameterConstraintsQueryErrors) SetErrorMessage(v string) *GetTemplateParameterConstraintsResponseBodyParameterConstraintsQueryErrors {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetTemplateParameterConstraintsResponseBodyParameterConstraintsQueryErrors) SetResourceName(v string) *GetTemplateParameterConstraintsResponseBodyParameterConstraintsQueryErrors {
+	s.ResourceName = &v
+	return s
+}
+
+func (s *GetTemplateParameterConstraintsResponseBodyParameterConstraintsQueryErrors) SetResourceType(v string) *GetTemplateParameterConstraintsResponseBodyParameterConstraintsQueryErrors {
 	s.ResourceType = &v
 	return s
 }
@@ -11630,6 +11712,7 @@ func (s *UntagResourcesResponse) SetBody(v *UntagResourcesResponseBody) *UntagRe
 type UpdateStackRequest struct {
 	ClientToken                 *string                         `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	DisableRollback             *bool                           `json:"DisableRollback,omitempty" xml:"DisableRollback,omitempty"`
+	DryRun                      *bool                           `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	Parallelism                 *int64                          `json:"Parallelism,omitempty" xml:"Parallelism,omitempty"`
 	Parameters                  []*UpdateStackRequestParameters `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Repeated"`
 	RamRoleName                 *string                         `json:"RamRoleName,omitempty" xml:"RamRoleName,omitempty"`
@@ -11665,6 +11748,11 @@ func (s *UpdateStackRequest) SetClientToken(v string) *UpdateStackRequest {
 
 func (s *UpdateStackRequest) SetDisableRollback(v bool) *UpdateStackRequest {
 	s.DisableRollback = &v
+	return s
+}
+
+func (s *UpdateStackRequest) SetDryRun(v bool) *UpdateStackRequest {
+	s.DryRun = &v
 	return s
 }
 
@@ -11805,8 +11893,9 @@ func (s *UpdateStackRequestTags) SetValue(v string) *UpdateStackRequestTags {
 }
 
 type UpdateStackResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	StackId   *string `json:"StackId,omitempty" xml:"StackId,omitempty"`
+	DryRunResult *UpdateStackResponseBodyDryRunResult `json:"DryRunResult,omitempty" xml:"DryRunResult,omitempty" type:"Struct"`
+	RequestId    *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	StackId      *string                              `json:"StackId,omitempty" xml:"StackId,omitempty"`
 }
 
 func (s UpdateStackResponseBody) String() string {
@@ -11817,6 +11906,11 @@ func (s UpdateStackResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *UpdateStackResponseBody) SetDryRunResult(v *UpdateStackResponseBodyDryRunResult) *UpdateStackResponseBody {
+	s.DryRunResult = v
+	return s
+}
+
 func (s *UpdateStackResponseBody) SetRequestId(v string) *UpdateStackResponseBody {
 	s.RequestId = &v
 	return s
@@ -11824,6 +11918,59 @@ func (s *UpdateStackResponseBody) SetRequestId(v string) *UpdateStackResponseBod
 
 func (s *UpdateStackResponseBody) SetStackId(v string) *UpdateStackResponseBody {
 	s.StackId = &v
+	return s
+}
+
+type UpdateStackResponseBodyDryRunResult struct {
+	ParametersAllowedToBeModified                      []*string `json:"ParametersAllowedToBeModified,omitempty" xml:"ParametersAllowedToBeModified,omitempty" type:"Repeated"`
+	ParametersCauseInterruptionIfModified              []*string `json:"ParametersCauseInterruptionIfModified,omitempty" xml:"ParametersCauseInterruptionIfModified,omitempty" type:"Repeated"`
+	ParametersConditionallyAllowedToBeModified         []*string `json:"ParametersConditionallyAllowedToBeModified,omitempty" xml:"ParametersConditionallyAllowedToBeModified,omitempty" type:"Repeated"`
+	ParametersConditionallyCauseInterruptionIfModified []*string `json:"ParametersConditionallyCauseInterruptionIfModified,omitempty" xml:"ParametersConditionallyCauseInterruptionIfModified,omitempty" type:"Repeated"`
+	ParametersNotAllowedToBeModified                   []*string `json:"ParametersNotAllowedToBeModified,omitempty" xml:"ParametersNotAllowedToBeModified,omitempty" type:"Repeated"`
+	ParametersUncertainlyAllowedToBeModified           []*string `json:"ParametersUncertainlyAllowedToBeModified,omitempty" xml:"ParametersUncertainlyAllowedToBeModified,omitempty" type:"Repeated"`
+	ParametersUncertainlyCauseInterruptionIfModified   []*string `json:"ParametersUncertainlyCauseInterruptionIfModified,omitempty" xml:"ParametersUncertainlyCauseInterruptionIfModified,omitempty" type:"Repeated"`
+}
+
+func (s UpdateStackResponseBodyDryRunResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateStackResponseBodyDryRunResult) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateStackResponseBodyDryRunResult) SetParametersAllowedToBeModified(v []*string) *UpdateStackResponseBodyDryRunResult {
+	s.ParametersAllowedToBeModified = v
+	return s
+}
+
+func (s *UpdateStackResponseBodyDryRunResult) SetParametersCauseInterruptionIfModified(v []*string) *UpdateStackResponseBodyDryRunResult {
+	s.ParametersCauseInterruptionIfModified = v
+	return s
+}
+
+func (s *UpdateStackResponseBodyDryRunResult) SetParametersConditionallyAllowedToBeModified(v []*string) *UpdateStackResponseBodyDryRunResult {
+	s.ParametersConditionallyAllowedToBeModified = v
+	return s
+}
+
+func (s *UpdateStackResponseBodyDryRunResult) SetParametersConditionallyCauseInterruptionIfModified(v []*string) *UpdateStackResponseBodyDryRunResult {
+	s.ParametersConditionallyCauseInterruptionIfModified = v
+	return s
+}
+
+func (s *UpdateStackResponseBodyDryRunResult) SetParametersNotAllowedToBeModified(v []*string) *UpdateStackResponseBodyDryRunResult {
+	s.ParametersNotAllowedToBeModified = v
+	return s
+}
+
+func (s *UpdateStackResponseBodyDryRunResult) SetParametersUncertainlyAllowedToBeModified(v []*string) *UpdateStackResponseBodyDryRunResult {
+	s.ParametersUncertainlyAllowedToBeModified = v
+	return s
+}
+
+func (s *UpdateStackResponseBodyDryRunResult) SetParametersUncertainlyCauseInterruptionIfModified(v []*string) *UpdateStackResponseBodyDryRunResult {
+	s.ParametersUncertainlyCauseInterruptionIfModified = v
 	return s
 }
 
@@ -13039,6 +13186,7 @@ type ValidateTemplateResponseBody struct {
 	RequestId     *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ResourceTypes *ValidateTemplateResponseBodyResourceTypes `json:"ResourceTypes,omitempty" xml:"ResourceTypes,omitempty" type:"Struct"`
 	Resources     []*ValidateTemplateResponseBodyResources   `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Repeated"`
+	UpdateInfo    *ValidateTemplateResponseBodyUpdateInfo    `json:"UpdateInfo,omitempty" xml:"UpdateInfo,omitempty" type:"Struct"`
 }
 
 func (s ValidateTemplateResponseBody) String() string {
@@ -13076,6 +13224,11 @@ func (s *ValidateTemplateResponseBody) SetResourceTypes(v *ValidateTemplateRespo
 
 func (s *ValidateTemplateResponseBody) SetResources(v []*ValidateTemplateResponseBodyResources) *ValidateTemplateResponseBody {
 	s.Resources = v
+	return s
+}
+
+func (s *ValidateTemplateResponseBody) SetUpdateInfo(v *ValidateTemplateResponseBodyUpdateInfo) *ValidateTemplateResponseBody {
+	s.UpdateInfo = v
 	return s
 }
 
@@ -13157,6 +13310,59 @@ func (s *ValidateTemplateResponseBodyResources) SetResourcePath(v string) *Valid
 
 func (s *ValidateTemplateResponseBodyResources) SetResourceType(v string) *ValidateTemplateResponseBodyResources {
 	s.ResourceType = &v
+	return s
+}
+
+type ValidateTemplateResponseBodyUpdateInfo struct {
+	ParametersAllowedToBeModified                      []*string `json:"ParametersAllowedToBeModified,omitempty" xml:"ParametersAllowedToBeModified,omitempty" type:"Repeated"`
+	ParametersCauseInterruptionIfModified              []*string `json:"ParametersCauseInterruptionIfModified,omitempty" xml:"ParametersCauseInterruptionIfModified,omitempty" type:"Repeated"`
+	ParametersConditionallyAllowedToBeModified         []*string `json:"ParametersConditionallyAllowedToBeModified,omitempty" xml:"ParametersConditionallyAllowedToBeModified,omitempty" type:"Repeated"`
+	ParametersConditionallyCauseInterruptionIfModified []*string `json:"ParametersConditionallyCauseInterruptionIfModified,omitempty" xml:"ParametersConditionallyCauseInterruptionIfModified,omitempty" type:"Repeated"`
+	ParametersNotAllowedToBeModified                   []*string `json:"ParametersNotAllowedToBeModified,omitempty" xml:"ParametersNotAllowedToBeModified,omitempty" type:"Repeated"`
+	ParametersUncertainlyAllowedToBeModified           []*string `json:"ParametersUncertainlyAllowedToBeModified,omitempty" xml:"ParametersUncertainlyAllowedToBeModified,omitempty" type:"Repeated"`
+	ParametersUncertainlyCauseInterruptionIfModified   []*string `json:"ParametersUncertainlyCauseInterruptionIfModified,omitempty" xml:"ParametersUncertainlyCauseInterruptionIfModified,omitempty" type:"Repeated"`
+}
+
+func (s ValidateTemplateResponseBodyUpdateInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ValidateTemplateResponseBodyUpdateInfo) GoString() string {
+	return s.String()
+}
+
+func (s *ValidateTemplateResponseBodyUpdateInfo) SetParametersAllowedToBeModified(v []*string) *ValidateTemplateResponseBodyUpdateInfo {
+	s.ParametersAllowedToBeModified = v
+	return s
+}
+
+func (s *ValidateTemplateResponseBodyUpdateInfo) SetParametersCauseInterruptionIfModified(v []*string) *ValidateTemplateResponseBodyUpdateInfo {
+	s.ParametersCauseInterruptionIfModified = v
+	return s
+}
+
+func (s *ValidateTemplateResponseBodyUpdateInfo) SetParametersConditionallyAllowedToBeModified(v []*string) *ValidateTemplateResponseBodyUpdateInfo {
+	s.ParametersConditionallyAllowedToBeModified = v
+	return s
+}
+
+func (s *ValidateTemplateResponseBodyUpdateInfo) SetParametersConditionallyCauseInterruptionIfModified(v []*string) *ValidateTemplateResponseBodyUpdateInfo {
+	s.ParametersConditionallyCauseInterruptionIfModified = v
+	return s
+}
+
+func (s *ValidateTemplateResponseBodyUpdateInfo) SetParametersNotAllowedToBeModified(v []*string) *ValidateTemplateResponseBodyUpdateInfo {
+	s.ParametersNotAllowedToBeModified = v
+	return s
+}
+
+func (s *ValidateTemplateResponseBodyUpdateInfo) SetParametersUncertainlyAllowedToBeModified(v []*string) *ValidateTemplateResponseBodyUpdateInfo {
+	s.ParametersUncertainlyAllowedToBeModified = v
+	return s
+}
+
+func (s *ValidateTemplateResponseBodyUpdateInfo) SetParametersUncertainlyCauseInterruptionIfModified(v []*string) *ValidateTemplateResponseBodyUpdateInfo {
+	s.ParametersUncertainlyCauseInterruptionIfModified = v
 	return s
 }
 
@@ -17432,6 +17638,10 @@ func (client *Client) UpdateStackWithOptions(request *UpdateStackRequest, runtim
 
 	if !tea.BoolValue(util.IsUnset(request.DisableRollback)) {
 		query["DisableRollback"] = request.DisableRollback
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Parallelism)) {

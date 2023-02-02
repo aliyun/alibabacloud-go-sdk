@@ -1,3 +1,9 @@
+2023-02-02 Version: v4.0.8
+- UpdateStack supports DryRun and returns DryRunResult.
+- ValidateTemplate returns UpdateInfo.
+- GetFeatureDetails supports parameter constraint query function.
+- Add API GetTemplateRecommendParameters.
+
 2023-01-11 Version: v4.0.7
 - Add API CancelStackOperation.
 
