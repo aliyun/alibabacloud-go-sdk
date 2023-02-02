@@ -331,36 +331,38 @@ func (s *AddLocalNodesResponse) SetBody(v *AddLocalNodesResponseBody) *AddLocalN
 }
 
 type AddNodesRequest struct {
-	AllocatePublicAddress   *bool                       `json:"AllocatePublicAddress,omitempty" xml:"AllocatePublicAddress,omitempty"`
-	AutoRenew               *string                     `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
-	AutoRenewPeriod         *int32                      `json:"AutoRenewPeriod,omitempty" xml:"AutoRenewPeriod,omitempty"`
-	ClientToken             *string                     `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	ClusterId               *string                     `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	ComputeEnableHt         *bool                       `json:"ComputeEnableHt,omitempty" xml:"ComputeEnableHt,omitempty"`
-	ComputeSpotPriceLimit   *string                     `json:"ComputeSpotPriceLimit,omitempty" xml:"ComputeSpotPriceLimit,omitempty"`
-	ComputeSpotStrategy     *string                     `json:"ComputeSpotStrategy,omitempty" xml:"ComputeSpotStrategy,omitempty"`
-	Count                   *int32                      `json:"Count,omitempty" xml:"Count,omitempty"`
-	CreateMode              *string                     `json:"CreateMode,omitempty" xml:"CreateMode,omitempty"`
-	DataDisks               []*AddNodesRequestDataDisks `json:"DataDisks,omitempty" xml:"DataDisks,omitempty" type:"Repeated"`
-	EcsChargeType           *string                     `json:"EcsChargeType,omitempty" xml:"EcsChargeType,omitempty"`
-	HostNamePrefix          *string                     `json:"HostNamePrefix,omitempty" xml:"HostNamePrefix,omitempty"`
-	HostNameSuffix          *string                     `json:"HostNameSuffix,omitempty" xml:"HostNameSuffix,omitempty"`
-	ImageId                 *string                     `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	ImageOwnerAlias         *string                     `json:"ImageOwnerAlias,omitempty" xml:"ImageOwnerAlias,omitempty"`
-	InstanceType            *string                     `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	InternetChargeType      *string                     `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
-	InternetMaxBandWidthIn  *int32                      `json:"InternetMaxBandWidthIn,omitempty" xml:"InternetMaxBandWidthIn,omitempty"`
-	InternetMaxBandWidthOut *int32                      `json:"InternetMaxBandWidthOut,omitempty" xml:"InternetMaxBandWidthOut,omitempty"`
-	JobQueue                *string                     `json:"JobQueue,omitempty" xml:"JobQueue,omitempty"`
-	MinCount                *int32                      `json:"MinCount,omitempty" xml:"MinCount,omitempty"`
-	Period                  *int32                      `json:"Period,omitempty" xml:"Period,omitempty"`
-	PeriodUnit              *string                     `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
-	Sync                    *bool                       `json:"Sync,omitempty" xml:"Sync,omitempty"`
-	SystemDiskLevel         *string                     `json:"SystemDiskLevel,omitempty" xml:"SystemDiskLevel,omitempty"`
-	SystemDiskSize          *int32                      `json:"SystemDiskSize,omitempty" xml:"SystemDiskSize,omitempty"`
-	SystemDiskType          *string                     `json:"SystemDiskType,omitempty" xml:"SystemDiskType,omitempty"`
-	VSwitchId               *string                     `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	ZoneId                  *string                     `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	AllocatePublicAddress           *bool                       `json:"AllocatePublicAddress,omitempty" xml:"AllocatePublicAddress,omitempty"`
+	AutoRenew                       *string                     `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	AutoRenewPeriod                 *int32                      `json:"AutoRenewPeriod,omitempty" xml:"AutoRenewPeriod,omitempty"`
+	ClientToken                     *string                     `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	ClusterId                       *string                     `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	ComputeEnableHt                 *bool                       `json:"ComputeEnableHt,omitempty" xml:"ComputeEnableHt,omitempty"`
+	ComputeSpotDuration             *int32                      `json:"ComputeSpotDuration,omitempty" xml:"ComputeSpotDuration,omitempty"`
+	ComputeSpotInterruptionBehavior *string                     `json:"ComputeSpotInterruptionBehavior,omitempty" xml:"ComputeSpotInterruptionBehavior,omitempty"`
+	ComputeSpotPriceLimit           *string                     `json:"ComputeSpotPriceLimit,omitempty" xml:"ComputeSpotPriceLimit,omitempty"`
+	ComputeSpotStrategy             *string                     `json:"ComputeSpotStrategy,omitempty" xml:"ComputeSpotStrategy,omitempty"`
+	Count                           *int32                      `json:"Count,omitempty" xml:"Count,omitempty"`
+	CreateMode                      *string                     `json:"CreateMode,omitempty" xml:"CreateMode,omitempty"`
+	DataDisks                       []*AddNodesRequestDataDisks `json:"DataDisks,omitempty" xml:"DataDisks,omitempty" type:"Repeated"`
+	EcsChargeType                   *string                     `json:"EcsChargeType,omitempty" xml:"EcsChargeType,omitempty"`
+	HostNamePrefix                  *string                     `json:"HostNamePrefix,omitempty" xml:"HostNamePrefix,omitempty"`
+	HostNameSuffix                  *string                     `json:"HostNameSuffix,omitempty" xml:"HostNameSuffix,omitempty"`
+	ImageId                         *string                     `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	ImageOwnerAlias                 *string                     `json:"ImageOwnerAlias,omitempty" xml:"ImageOwnerAlias,omitempty"`
+	InstanceType                    *string                     `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	InternetChargeType              *string                     `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
+	InternetMaxBandWidthIn          *int32                      `json:"InternetMaxBandWidthIn,omitempty" xml:"InternetMaxBandWidthIn,omitempty"`
+	InternetMaxBandWidthOut         *int32                      `json:"InternetMaxBandWidthOut,omitempty" xml:"InternetMaxBandWidthOut,omitempty"`
+	JobQueue                        *string                     `json:"JobQueue,omitempty" xml:"JobQueue,omitempty"`
+	MinCount                        *int32                      `json:"MinCount,omitempty" xml:"MinCount,omitempty"`
+	Period                          *int32                      `json:"Period,omitempty" xml:"Period,omitempty"`
+	PeriodUnit                      *string                     `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
+	Sync                            *bool                       `json:"Sync,omitempty" xml:"Sync,omitempty"`
+	SystemDiskLevel                 *string                     `json:"SystemDiskLevel,omitempty" xml:"SystemDiskLevel,omitempty"`
+	SystemDiskSize                  *int32                      `json:"SystemDiskSize,omitempty" xml:"SystemDiskSize,omitempty"`
+	SystemDiskType                  *string                     `json:"SystemDiskType,omitempty" xml:"SystemDiskType,omitempty"`
+	VSwitchId                       *string                     `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	ZoneId                          *string                     `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s AddNodesRequest) String() string {
@@ -398,6 +400,16 @@ func (s *AddNodesRequest) SetClusterId(v string) *AddNodesRequest {
 
 func (s *AddNodesRequest) SetComputeEnableHt(v bool) *AddNodesRequest {
 	s.ComputeEnableHt = &v
+	return s
+}
+
+func (s *AddNodesRequest) SetComputeSpotDuration(v int32) *AddNodesRequest {
+	s.ComputeSpotDuration = &v
+	return s
+}
+
+func (s *AddNodesRequest) SetComputeSpotInterruptionBehavior(v string) *AddNodesRequest {
+	s.ComputeSpotInterruptionBehavior = &v
 	return s
 }
 
@@ -788,6 +800,7 @@ func (s *AddSecurityGroupResponse) SetBody(v *AddSecurityGroupResponseBody) *Add
 }
 
 type AddUsersRequest struct {
+	Async     *bool                  `json:"Async,omitempty" xml:"Async,omitempty"`
 	ClusterId *string                `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	User      []*AddUsersRequestUser `json:"User,omitempty" xml:"User,omitempty" type:"Repeated"`
 }
@@ -798,6 +811,11 @@ func (s AddUsersRequest) String() string {
 
 func (s AddUsersRequest) GoString() string {
 	return s.String()
+}
+
+func (s *AddUsersRequest) SetAsync(v bool) *AddUsersRequest {
+	s.Async = &v
+	return s
 }
 
 func (s *AddUsersRequest) SetClusterId(v string) *AddUsersRequest {
@@ -1866,7 +1884,8 @@ type CreateGWSClusterRequest struct {
 	ClusterType *string `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
 	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	VSwitchId   *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	VpcId       *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// VPC ID。
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s CreateGWSClusterRequest) String() string {
@@ -3788,6 +3807,7 @@ func (s *DeleteSecurityGroupResponse) SetBody(v *DeleteSecurityGroupResponseBody
 }
 
 type DeleteUsersRequest struct {
+	Async     *bool                     `json:"Async,omitempty" xml:"Async,omitempty"`
 	ClusterId *string                   `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	User      []*DeleteUsersRequestUser `json:"User,omitempty" xml:"User,omitempty" type:"Repeated"`
 }
@@ -3798,6 +3818,11 @@ func (s DeleteUsersRequest) String() string {
 
 func (s DeleteUsersRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DeleteUsersRequest) SetAsync(v bool) *DeleteUsersRequest {
+	s.Async = &v
+	return s
 }
 
 func (s *DeleteUsersRequest) SetClusterId(v string) *DeleteUsersRequest {
@@ -4087,6 +4112,8 @@ type DescribeClusterResponseBodyClusterInfo struct {
 	OnPremiseInfo      *DescribeClusterResponseBodyClusterInfoOnPremiseInfo      `json:"OnPremiseInfo,omitempty" xml:"OnPremiseInfo,omitempty" type:"Struct"`
 	OsTag              *string                                                   `json:"OsTag,omitempty" xml:"OsTag,omitempty"`
 	PostInstallScripts *DescribeClusterResponseBodyClusterInfoPostInstallScripts `json:"PostInstallScripts,omitempty" xml:"PostInstallScripts,omitempty" type:"Struct"`
+	RamNodeTypes       *string                                                   `json:"RamNodeTypes,omitempty" xml:"RamNodeTypes,omitempty"`
+	RamRoleName        *string                                                   `json:"RamRoleName,omitempty" xml:"RamRoleName,omitempty"`
 	RegionId           *string                                                   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	RemoteDirectory    *string                                                   `json:"RemoteDirectory,omitempty" xml:"RemoteDirectory,omitempty"`
 	SccClusterId       *string                                                   `json:"SccClusterId,omitempty" xml:"SccClusterId,omitempty"`
@@ -4206,6 +4233,16 @@ func (s *DescribeClusterResponseBodyClusterInfo) SetOsTag(v string) *DescribeClu
 
 func (s *DescribeClusterResponseBodyClusterInfo) SetPostInstallScripts(v *DescribeClusterResponseBodyClusterInfoPostInstallScripts) *DescribeClusterResponseBodyClusterInfo {
 	s.PostInstallScripts = v
+	return s
+}
+
+func (s *DescribeClusterResponseBodyClusterInfo) SetRamNodeTypes(v string) *DescribeClusterResponseBodyClusterInfo {
+	s.RamNodeTypes = &v
+	return s
+}
+
+func (s *DescribeClusterResponseBodyClusterInfo) SetRamRoleName(v string) *DescribeClusterResponseBodyClusterInfo {
+	s.RamRoleName = &v
 	return s
 }
 
@@ -5938,6 +5975,7 @@ func (s *DescribeImagePriceResponse) SetBody(v *DescribeImagePriceResponseBody) 
 }
 
 type DescribeJobRequest struct {
+	Async     *bool   `json:"Async,omitempty" xml:"Async,omitempty"`
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	JobId     *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 }
@@ -5948,6 +5986,11 @@ func (s DescribeJobRequest) String() string {
 
 func (s DescribeJobRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeJobRequest) SetAsync(v bool) *DescribeJobRequest {
+	s.Async = &v
+	return s
 }
 
 func (s *DescribeJobRequest) SetClusterId(v string) *DescribeJobRequest {
@@ -7109,12 +7152,14 @@ func (s *GetAutoScaleConfigResponseBodyQueuesQueueInfoInstanceTypes) SetInstance
 }
 
 type GetAutoScaleConfigResponseBodyQueuesQueueInfoInstanceTypesInstanceTypeInfo struct {
-	HostNamePrefix *string  `json:"HostNamePrefix,omitempty" xml:"HostNamePrefix,omitempty"`
-	InstanceType   *string  `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	SpotPriceLimit *float32 `json:"SpotPriceLimit,omitempty" xml:"SpotPriceLimit,omitempty"`
-	SpotStrategy   *string  `json:"SpotStrategy,omitempty" xml:"SpotStrategy,omitempty"`
-	VSwitchId      *string  `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	ZoneId         *string  `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	HostNamePrefix           *string  `json:"HostNamePrefix,omitempty" xml:"HostNamePrefix,omitempty"`
+	InstanceType             *string  `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	SpotDuration             *int32   `json:"SpotDuration,omitempty" xml:"SpotDuration,omitempty"`
+	SpotInterruptionBehavior *string  `json:"SpotInterruptionBehavior,omitempty" xml:"SpotInterruptionBehavior,omitempty"`
+	SpotPriceLimit           *float32 `json:"SpotPriceLimit,omitempty" xml:"SpotPriceLimit,omitempty"`
+	SpotStrategy             *string  `json:"SpotStrategy,omitempty" xml:"SpotStrategy,omitempty"`
+	VSwitchId                *string  `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	ZoneId                   *string  `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s GetAutoScaleConfigResponseBodyQueuesQueueInfoInstanceTypesInstanceTypeInfo) String() string {
@@ -7132,6 +7177,16 @@ func (s *GetAutoScaleConfigResponseBodyQueuesQueueInfoInstanceTypesInstanceTypeI
 
 func (s *GetAutoScaleConfigResponseBodyQueuesQueueInfoInstanceTypesInstanceTypeInfo) SetInstanceType(v string) *GetAutoScaleConfigResponseBodyQueuesQueueInfoInstanceTypesInstanceTypeInfo {
 	s.InstanceType = &v
+	return s
+}
+
+func (s *GetAutoScaleConfigResponseBodyQueuesQueueInfoInstanceTypesInstanceTypeInfo) SetSpotDuration(v int32) *GetAutoScaleConfigResponseBodyQueuesQueueInfoInstanceTypesInstanceTypeInfo {
+	s.SpotDuration = &v
+	return s
+}
+
+func (s *GetAutoScaleConfigResponseBodyQueuesQueueInfoInstanceTypesInstanceTypeInfo) SetSpotInterruptionBehavior(v string) *GetAutoScaleConfigResponseBodyQueuesQueueInfoInstanceTypesInstanceTypeInfo {
+	s.SpotInterruptionBehavior = &v
 	return s
 }
 
@@ -15953,11 +16008,13 @@ func (s *ListVolumesResponse) SetBody(v *ListVolumesResponseBody) *ListVolumesRe
 }
 
 type ModifyClusterAttributesRequest struct {
-	ClusterId       *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	Description     *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	ImageId         *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	ImageOwnerAlias *string `json:"ImageOwnerAlias,omitempty" xml:"ImageOwnerAlias,omitempty"`
-	Name            *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	ClusterId       *string   `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	Description     *string   `json:"Description,omitempty" xml:"Description,omitempty"`
+	ImageId         *string   `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	ImageOwnerAlias *string   `json:"ImageOwnerAlias,omitempty" xml:"ImageOwnerAlias,omitempty"`
+	Name            *string   `json:"Name,omitempty" xml:"Name,omitempty"`
+	RamNodeTypes    []*string `json:"RamNodeTypes,omitempty" xml:"RamNodeTypes,omitempty" type:"Repeated"`
+	RamRoleName     *string   `json:"RamRoleName,omitempty" xml:"RamRoleName,omitempty"`
 }
 
 func (s ModifyClusterAttributesRequest) String() string {
@@ -15990,6 +16047,16 @@ func (s *ModifyClusterAttributesRequest) SetImageOwnerAlias(v string) *ModifyClu
 
 func (s *ModifyClusterAttributesRequest) SetName(v string) *ModifyClusterAttributesRequest {
 	s.Name = &v
+	return s
+}
+
+func (s *ModifyClusterAttributesRequest) SetRamNodeTypes(v []*string) *ModifyClusterAttributesRequest {
+	s.RamNodeTypes = v
+	return s
+}
+
+func (s *ModifyClusterAttributesRequest) SetRamRoleName(v string) *ModifyClusterAttributesRequest {
+	s.RamRoleName = &v
 	return s
 }
 
@@ -16249,6 +16316,7 @@ func (s *ModifyImageGatewayConfigResponse) SetBody(v *ModifyImageGatewayConfigRe
 }
 
 type ModifyUserGroupsRequest struct {
+	Async     *bool                          `json:"Async,omitempty" xml:"Async,omitempty"`
 	ClusterId *string                        `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	User      []*ModifyUserGroupsRequestUser `json:"User,omitempty" xml:"User,omitempty" type:"Repeated"`
 }
@@ -16259,6 +16327,11 @@ func (s ModifyUserGroupsRequest) String() string {
 
 func (s ModifyUserGroupsRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ModifyUserGroupsRequest) SetAsync(v bool) *ModifyUserGroupsRequest {
+	s.Async = &v
+	return s
 }
 
 func (s *ModifyUserGroupsRequest) SetClusterId(v string) *ModifyUserGroupsRequest {
@@ -16341,6 +16414,7 @@ func (s *ModifyUserGroupsResponse) SetBody(v *ModifyUserGroupsResponseBody) *Mod
 }
 
 type ModifyUserPasswordsRequest struct {
+	Async     *bool                             `json:"Async,omitempty" xml:"Async,omitempty"`
 	ClusterId *string                           `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	User      []*ModifyUserPasswordsRequestUser `json:"User,omitempty" xml:"User,omitempty" type:"Repeated"`
 }
@@ -16351,6 +16425,11 @@ func (s ModifyUserPasswordsRequest) String() string {
 
 func (s ModifyUserPasswordsRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ModifyUserPasswordsRequest) SetAsync(v bool) *ModifyUserPasswordsRequest {
+	s.Async = &v
+	return s
 }
 
 func (s *ModifyUserPasswordsRequest) SetClusterId(v string) *ModifyUserPasswordsRequest {
@@ -17472,11 +17551,13 @@ func (s *SetAutoScaleConfigRequestQueuesDataDisks) SetDataDiskSize(v int32) *Set
 }
 
 type SetAutoScaleConfigRequestQueuesInstanceTypes struct {
-	InstanceType   *string  `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	SpotPriceLimit *float32 `json:"SpotPriceLimit,omitempty" xml:"SpotPriceLimit,omitempty"`
-	SpotStrategy   *string  `json:"SpotStrategy,omitempty" xml:"SpotStrategy,omitempty"`
-	VSwitchId      *string  `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	ZoneId         *string  `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	InstanceType             *string  `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	SpotDuration             *int32   `json:"SpotDuration,omitempty" xml:"SpotDuration,omitempty"`
+	SpotInterruptionBehavior *string  `json:"SpotInterruptionBehavior,omitempty" xml:"SpotInterruptionBehavior,omitempty"`
+	SpotPriceLimit           *float32 `json:"SpotPriceLimit,omitempty" xml:"SpotPriceLimit,omitempty"`
+	SpotStrategy             *string  `json:"SpotStrategy,omitempty" xml:"SpotStrategy,omitempty"`
+	VSwitchId                *string  `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	ZoneId                   *string  `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s SetAutoScaleConfigRequestQueuesInstanceTypes) String() string {
@@ -17489,6 +17570,16 @@ func (s SetAutoScaleConfigRequestQueuesInstanceTypes) GoString() string {
 
 func (s *SetAutoScaleConfigRequestQueuesInstanceTypes) SetInstanceType(v string) *SetAutoScaleConfigRequestQueuesInstanceTypes {
 	s.InstanceType = &v
+	return s
+}
+
+func (s *SetAutoScaleConfigRequestQueuesInstanceTypes) SetSpotDuration(v int32) *SetAutoScaleConfigRequestQueuesInstanceTypes {
+	s.SpotDuration = &v
+	return s
+}
+
+func (s *SetAutoScaleConfigRequestQueuesInstanceTypes) SetSpotInterruptionBehavior(v string) *SetAutoScaleConfigRequestQueuesInstanceTypes {
+	s.SpotInterruptionBehavior = &v
 	return s
 }
 
@@ -21596,6 +21687,13 @@ func (client *Client) DescribeNFSClientStatus(request *DescribeNFSClientStatusRe
 	return _result, _err
 }
 
+/**
+ * ****
+ *
+ * @param request DescribePriceRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DescribePriceResponse
+ */
 func (client *Client) DescribePriceWithOptions(request *DescribePriceRequest, runtime *util.RuntimeOptions) (_result *DescribePriceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -21625,6 +21723,12 @@ func (client *Client) DescribePriceWithOptions(request *DescribePriceRequest, ru
 	return _result, _err
 }
 
+/**
+ * ****
+ *
+ * @param request DescribePriceRequest
+ * @return DescribePriceResponse
+ */
 func (client *Client) DescribePrice(request *DescribePriceRequest) (_result *DescribePriceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribePriceResponse{}
