@@ -13,11 +13,22 @@ import (
 )
 
 type ListTagResourcesRequest struct {
-	InstanceId   *string                       `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	NextToken    *string                       `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	ResourceId   []*string                     `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
-	ResourceType *string                       `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	Tag          []*ListTagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	// The ID of the instance to which the resource whose tags you want to query belongs.
+	//
+	// > : This parameter is required when you query the tags of a topic or a group.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The token that determines the start point of the query.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The list of resource IDs.
+	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	// The type of the resource to which you want to attach tags. Valid values:
+	//
+	// *   **INSTANCE**
+	// *   **TOPIC**
+	// *   **GROUP**
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The list of tags that are attached to the resources. A maximum of 20 tags can be included in the list.
+	Tag []*ListTagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s ListTagResourcesRequest) String() string {
@@ -54,7 +65,15 @@ func (s *ListTagResourcesRequest) SetTag(v []*ListTagResourcesRequestTag) *ListT
 }
 
 type ListTagResourcesRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The key of the tag that you want to attach to the specified resource.
+	//
+	// *   If you include this parameter in a request, the value of this parameter cannot be an empty string.
+	// *   The tag key can be up to 128 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of the tag that you want to attach to the specified resource.
+	//
+	// *   The value of this parameter can be an empty string.
+	// *   The tag key can be up to 128 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -77,8 +96,11 @@ func (s *ListTagResourcesRequestTag) SetValue(v string) *ListTagResourcesRequest
 }
 
 type ListTagResourcesResponseBody struct {
-	NextToken    *string                                     `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	RequestId    *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The token that determines the start point of the query.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The ID of the request. This parameter is a common parameter. Each request has a unique ID. You can use this ID to troubleshoot issues.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Details of the resource and tags, including the resource ID, the resource type, and the keys and values of tags.
 	TagResources []*ListTagResourcesResponseBodyTagResources `json:"TagResources,omitempty" xml:"TagResources,omitempty" type:"Repeated"`
 }
 
@@ -106,11 +128,20 @@ func (s *ListTagResourcesResponseBody) SetTagResources(v []*ListTagResourcesResp
 }
 
 type ListTagResourcesResponseBodyTagResources struct {
-	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	ResourceId   *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The ID of the instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ID of the resource.
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The type of the resource to which you want to attach tags.
+	//
+	// *   ALIYUN::MQ::INSTANCE: indicates that the resource is an instance.
+	// *   ALIYUN::MQ::TOPIC: indicates that the resource is a topic.
+	// *   ALIYUN::MQ::GROUP: indicates that the resource is a group.
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	TagKey       *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	TagValue     *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+	// The key of the tag.
+	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The value of the tag.
+	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 
 func (s ListTagResourcesResponseBodyTagResources) String() string {
@@ -176,8 +207,14 @@ func (s *ListTagResourcesResponse) SetBody(v *ListTagResourcesResponseBody) *Lis
 }
 
 type OnsConsumerAccumulateRequest struct {
-	Detail     *bool   `json:"Detail,omitempty" xml:"Detail,omitempty"`
-	GroupId    *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// Specifies whether to query the details of each topic to which the consumer group subscribes. Valid values:
+	//
+	// *   **true**: The details of each topic are queried. You can obtain the details from the **DetailInTopicList** response parameter.
+	// *   **false**: The details of each topic are not queried. This is the default value. If you use this value, the value of the **DetailInTopicList** response parameter is empty.
+	Detail *bool `json:"Detail,omitempty" xml:"Detail,omitempty"`
+	// The ID of the consumer group whose message accumulation you want to query.
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The ID of the instance.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -205,8 +242,10 @@ func (s *OnsConsumerAccumulateRequest) SetInstanceId(v string) *OnsConsumerAccum
 }
 
 type OnsConsumerAccumulateResponseBody struct {
-	Data      *OnsConsumerAccumulateResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The information about message accumulation of topics to which the consumer group subscribes.
+	Data *OnsConsumerAccumulateResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The ID of the request. This parameter is a common parameter. Each request has a unique ID. You can use this ID to troubleshoot issues.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s OnsConsumerAccumulateResponseBody) String() string {
@@ -228,12 +267,21 @@ func (s *OnsConsumerAccumulateResponseBody) SetRequestId(v string) *OnsConsumerA
 }
 
 type OnsConsumerAccumulateResponseBodyData struct {
-	ConsumeTps        *float32                                                `json:"ConsumeTps,omitempty" xml:"ConsumeTps,omitempty"`
-	DelayTime         *int64                                                  `json:"DelayTime,omitempty" xml:"DelayTime,omitempty"`
+	// The transactions per second (TPS) for message consumption performed by consumers in the group.
+	ConsumeTps *float32 `json:"ConsumeTps,omitempty" xml:"ConsumeTps,omitempty"`
+	// The consumption latency.
+	DelayTime *int64 `json:"DelayTime,omitempty" xml:"DelayTime,omitempty"`
+	// The information about each topic to which the consumer group subscribes. If the **Detail** parameter in the request is set to **false**, the value of this parameter is empty.
 	DetailInTopicList *OnsConsumerAccumulateResponseBodyDataDetailInTopicList `json:"DetailInTopicList,omitempty" xml:"DetailInTopicList,omitempty" type:"Struct"`
-	LastTimestamp     *int64                                                  `json:"LastTimestamp,omitempty" xml:"LastTimestamp,omitempty"`
-	Online            *bool                                                   `json:"Online,omitempty" xml:"Online,omitempty"`
-	TotalDiff         *int64                                                  `json:"TotalDiff,omitempty" xml:"TotalDiff,omitempty"`
+	// The point in time when the latest message that was consumed by a consumer in the consumer group was produced.
+	LastTimestamp *int64 `json:"LastTimestamp,omitempty" xml:"LastTimestamp,omitempty"`
+	// Indicates whether the consumer group is online. The group is online if one of the consumers in the group is online. Valid values:
+	//
+	// *   **true**: The consumer group is online.
+	// *   **false**: The consumer group is offline.
+	Online *bool `json:"Online,omitempty" xml:"Online,omitempty"`
+	// The total number of accumulated messages in all topics to which the consumer group subscribes.
+	TotalDiff *int64 `json:"TotalDiff,omitempty" xml:"TotalDiff,omitempty"`
 }
 
 func (s OnsConsumerAccumulateResponseBodyData) String() string {
@@ -292,10 +340,14 @@ func (s *OnsConsumerAccumulateResponseBodyDataDetailInTopicList) SetDetailInTopi
 }
 
 type OnsConsumerAccumulateResponseBodyDataDetailInTopicListDetailInTopicDo struct {
-	DelayTime     *int64  `json:"DelayTime,omitempty" xml:"DelayTime,omitempty"`
-	LastTimestamp *int64  `json:"LastTimestamp,omitempty" xml:"LastTimestamp,omitempty"`
-	Topic         *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
-	TotalDiff     *int64  `json:"TotalDiff,omitempty" xml:"TotalDiff,omitempty"`
+	// The maximum latency of message consumption in the topic.
+	DelayTime *int64 `json:"DelayTime,omitempty" xml:"DelayTime,omitempty"`
+	// The point in time when the latest consumed message in the topic was produced.
+	LastTimestamp *int64 `json:"LastTimestamp,omitempty" xml:"LastTimestamp,omitempty"`
+	// The name of the topic.
+	Topic *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
+	// The number of accumulated messages in the topic.
+	TotalDiff *int64 `json:"TotalDiff,omitempty" xml:"TotalDiff,omitempty"`
 }
 
 func (s OnsConsumerAccumulateResponseBodyDataDetailInTopicListDetailInTopicDo) String() string {
@@ -356,7 +408,9 @@ func (s *OnsConsumerAccumulateResponse) SetBody(v *OnsConsumerAccumulateResponse
 }
 
 type OnsConsumerGetConnectionRequest struct {
-	GroupId    *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The ID of the consumer group whose client connection status you want to query.
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The ID of the instance to which the consumer group belongs.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -379,8 +433,10 @@ func (s *OnsConsumerGetConnectionRequest) SetInstanceId(v string) *OnsConsumerGe
 }
 
 type OnsConsumerGetConnectionResponseBody struct {
-	Data      *OnsConsumerGetConnectionResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The data that is returned.
+	Data *OnsConsumerGetConnectionResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The ID of the request. This parameter is a common parameter. Each request has a unique ID. You can use this ID to troubleshoot issues.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s OnsConsumerGetConnectionResponseBody) String() string {
@@ -402,6 +458,7 @@ func (s *OnsConsumerGetConnectionResponseBody) SetRequestId(v string) *OnsConsum
 }
 
 type OnsConsumerGetConnectionResponseBodyData struct {
+	// The connection information about the consumers in the specified group.
 	ConnectionList *OnsConsumerGetConnectionResponseBodyDataConnectionList `json:"ConnectionList,omitempty" xml:"ConnectionList,omitempty" type:"Struct"`
 }
 
@@ -436,10 +493,14 @@ func (s *OnsConsumerGetConnectionResponseBodyDataConnectionList) SetConnectionDo
 }
 
 type OnsConsumerGetConnectionResponseBodyDataConnectionListConnectionDo struct {
+	// The IP address and port number of the consumer instance.
 	ClientAddr *string `json:"ClientAddr,omitempty" xml:"ClientAddr,omitempty"`
-	ClientId   *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
-	Language   *string `json:"Language,omitempty" xml:"Language,omitempty"`
-	Version    *string `json:"Version,omitempty" xml:"Version,omitempty"`
+	// The ID of the consumer instance.
+	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	// The programming language in which the consumer application was developed.
+	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	// The version of the consumer client.
+	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s OnsConsumerGetConnectionResponseBodyDataConnectionListConnectionDo) String() string {
@@ -500,11 +561,24 @@ func (s *OnsConsumerGetConnectionResponse) SetBody(v *OnsConsumerGetConnectionRe
 }
 
 type OnsConsumerResetOffsetRequest struct {
-	GroupId        *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	ResetTimestamp *int64  `json:"ResetTimestamp,omitempty" xml:"ResetTimestamp,omitempty"`
-	Topic          *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
-	Type           *int32  `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The ID of the consumer group for which you want to reset the consumer offset.
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The ID of the instance to which the consumer group belongs.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The timestamp to which you want to reset the consumer offset. This parameter takes effect only when the **Type** parameter is set to **1**. Unit: milliseconds.
+	ResetTimestamp *int64 `json:"ResetTimestamp,omitempty" xml:"ResetTimestamp,omitempty"`
+	// The name of the topic for which you want to reset the consumer offset.
+	Topic *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
+	// The method that you want to use to clear accumulated messages. Valid values:
+	//
+	// *   **0:** All accumulated messages are cleared. Messages that are not consumed are ignored. Consumers in the specified consumer group consume only messages that are published to the topic after the current point in time.
+	//
+	// If "reconsumeLater" is returned, the accumulated messages are not cleared because the system is retrying to send the messages to consumers.
+	//
+	// *   **1:** The messages that were published to the topic before a specified point in time are cleared. You must specify a point in time. Consumers in the specified consumer group consume only the messages that are published to the topic after the specified point in time.
+	//
+	// You can specify a point in time within the time range that is from the earliest point in time when a message was published to the topic to the most recent point in time when a message was published to the topic. Points in time that are not within the allowed time range are invalid.
+	Type *int32 `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s OnsConsumerResetOffsetRequest) String() string {
@@ -541,6 +615,7 @@ func (s *OnsConsumerResetOffsetRequest) SetType(v int32) *OnsConsumerResetOffset
 }
 
 type OnsConsumerResetOffsetResponseBody struct {
+	// The ID of the request. This parameter is a common parameter. Each request has a unique ID. You can use this ID to troubleshoot issues.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -587,10 +662,23 @@ func (s *OnsConsumerResetOffsetResponse) SetBody(v *OnsConsumerResetOffsetRespon
 }
 
 type OnsConsumerStatusRequest struct {
-	Detail     *bool   `json:"Detail,omitempty" xml:"Detail,omitempty"`
-	GroupId    *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// Specifies whether to query the details of the consumer group. Valid values:
+	//
+	// *   **true**: The details of the consumer group are queried. You can obtain details from the **ConsumerConnectionInfoList** and **DetailInTopicList** response parameters.
+	// *   **false**: The details of the consumer group are not queried. The values of the **ConsumerConnectionInfoList** and **DetailInTopicList** response parameters are empty. This value is the default value of the Detail parameter.
+	Detail *bool `json:"Detail,omitempty" xml:"Detail,omitempty"`
+	// The ID of the consumer group whose details you want to query.
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The ID of the instance to which the consumer group belongs.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	NeedJstack *bool   `json:"NeedJstack,omitempty" xml:"NeedJstack,omitempty"`
+	// Specifies whether to query the information about thread stack traces. Valid values:
+	//
+	// *   **true**: The information about thread stack traces is queried. You can obtain the information from the **Jstack** response parameter.
+	//
+	// >  If you want to obtain the information about thread stack traces, make sure that the **Detail** parameter in the request is set to **true**.
+	//
+	// *   **false**: The information about thread stack traces is not queried. The value of the **Jstack** response parameter is empty. This value is the default value of the NeedJstack parameter.
+	NeedJstack *bool `json:"NeedJstack,omitempty" xml:"NeedJstack,omitempty"`
 }
 
 func (s OnsConsumerStatusRequest) String() string {
@@ -622,8 +710,10 @@ func (s *OnsConsumerStatusRequest) SetNeedJstack(v bool) *OnsConsumerStatusReque
 }
 
 type OnsConsumerStatusResponseBody struct {
-	Data      *OnsConsumerStatusResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The query results.
+	Data *OnsConsumerStatusResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The ID of the request. This parameter is a common parameter. Each request has a unique ID. You can use this ID to troubleshoot issues.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s OnsConsumerStatusResponseBody) String() string {
@@ -645,18 +735,40 @@ func (s *OnsConsumerStatusResponseBody) SetRequestId(v string) *OnsConsumerStatu
 }
 
 type OnsConsumerStatusResponseBodyData struct {
-	ConnectionSet              *OnsConsumerStatusResponseBodyDataConnectionSet              `json:"ConnectionSet,omitempty" xml:"ConnectionSet,omitempty" type:"Struct"`
-	ConsumeModel               *string                                                      `json:"ConsumeModel,omitempty" xml:"ConsumeModel,omitempty"`
-	ConsumeTps                 *float32                                                     `json:"ConsumeTps,omitempty" xml:"ConsumeTps,omitempty"`
+	// The information about online consumers in the consumer group.
+	ConnectionSet *OnsConsumerStatusResponseBodyDataConnectionSet `json:"ConnectionSet,omitempty" xml:"ConnectionSet,omitempty" type:"Struct"`
+	// The consumption mode. Valid values:
+	//
+	// *   **CLUSTERING:** the clustering consumption mode
+	// *   **BROADCASTING:** the broadcasting consumption mode
+	//
+	// For more information about consumption modes, see [Clustering consumption and broadcasting consumption](~~43163~~).
+	ConsumeModel *string `json:"ConsumeModel,omitempty" xml:"ConsumeModel,omitempty"`
+	// The TPS for message consumption.
+	ConsumeTps *float32 `json:"ConsumeTps,omitempty" xml:"ConsumeTps,omitempty"`
+	// The details of online consumers in the consumer group, including the information about the thread stack traces and the consumption response time (RT). If you want to obtain the details of online consumers in the consumer group, make sure that the **Detail** parameter in the request is set to **true**. If the Detail parameter is not set to true, the value of this parameter is empty.
 	ConsumerConnectionInfoList *OnsConsumerStatusResponseBodyDataConsumerConnectionInfoList `json:"ConsumerConnectionInfoList,omitempty" xml:"ConsumerConnectionInfoList,omitempty" type:"Struct"`
-	DelayTime                  *int64                                                       `json:"DelayTime,omitempty" xml:"DelayTime,omitempty"`
-	DetailInTopicList          *OnsConsumerStatusResponseBodyDataDetailInTopicList          `json:"DetailInTopicList,omitempty" xml:"DetailInTopicList,omitempty" type:"Struct"`
-	InstanceId                 *string                                                      `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	LastTimestamp              *int64                                                       `json:"LastTimestamp,omitempty" xml:"LastTimestamp,omitempty"`
-	Online                     *bool                                                        `json:"Online,omitempty" xml:"Online,omitempty"`
-	RebalanceOK                *bool                                                        `json:"RebalanceOK,omitempty" xml:"RebalanceOK,omitempty"`
-	SubscriptionSame           *bool                                                        `json:"SubscriptionSame,omitempty" xml:"SubscriptionSame,omitempty"`
-	TotalDiff                  *int64                                                       `json:"TotalDiff,omitempty" xml:"TotalDiff,omitempty"`
+	// The maximum latency of message consumption in all topics to which the consumer group subscribe. Unit: milliseconds.
+	DelayTime *int64 `json:"DelayTime,omitempty" xml:"DelayTime,omitempty"`
+	// The information about message consumption by topic. If you want to obtain the information about the consumption status of each topic, make sure that the **Detail** parameter in the request is set to **true**. If the Detail parameter is not set to true, the value of this parameter is empty.
+	DetailInTopicList *OnsConsumerStatusResponseBodyDataDetailInTopicList `json:"DetailInTopicList,omitempty" xml:"DetailInTopicList,omitempty" type:"Struct"`
+	// The ID of the instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The most recent point in time when a message was consumed.
+	//
+	// The value of this parameter is a UNIX timestamp in milliseconds.
+	LastTimestamp *int64 `json:"LastTimestamp,omitempty" xml:"LastTimestamp,omitempty"`
+	// Indicates whether the consumer group is online.
+	Online *bool `json:"Online,omitempty" xml:"Online,omitempty"`
+	// Indicates whether load balancing is performed as expected. Valid values:
+	//
+	// *   **true:** Load balancing is performed as expected.
+	// *   **false:** Load balancing is not performed as expected.
+	RebalanceOK *bool `json:"RebalanceOK,omitempty" xml:"RebalanceOK,omitempty"`
+	// Indicates whether all consumers in the consumer group subscribe to the same topics and tags.
+	SubscriptionSame *bool `json:"SubscriptionSame,omitempty" xml:"SubscriptionSame,omitempty"`
+	// The total number of accumulated messages.
+	TotalDiff *int64 `json:"TotalDiff,omitempty" xml:"TotalDiff,omitempty"`
 }
 
 func (s OnsConsumerStatusResponseBodyData) String() string {
@@ -745,11 +857,16 @@ func (s *OnsConsumerStatusResponseBodyDataConnectionSet) SetConnectionDo(v []*On
 }
 
 type OnsConsumerStatusResponseBodyDataConnectionSetConnectionDo struct {
+	// The IP address and port number of the consumer instance.
 	ClientAddr *string `json:"ClientAddr,omitempty" xml:"ClientAddr,omitempty"`
-	ClientId   *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
-	Language   *string `json:"Language,omitempty" xml:"Language,omitempty"`
-	RemoteIP   *string `json:"RemoteIP,omitempty" xml:"RemoteIP,omitempty"`
-	Version    *string `json:"Version,omitempty" xml:"Version,omitempty"`
+	// The ID of the consumer instance.
+	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	// The programming language that the consumer client supports.
+	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	// The private or public IP address of the host.
+	RemoteIP *string `json:"RemoteIP,omitempty" xml:"RemoteIP,omitempty"`
+	// The version of the consumer client.
+	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s OnsConsumerStatusResponseBodyDataConnectionSetConnectionDo) String() string {
@@ -803,18 +920,42 @@ func (s *OnsConsumerStatusResponseBodyDataConsumerConnectionInfoList) SetConsume
 }
 
 type OnsConsumerStatusResponseBodyDataConsumerConnectionInfoListConsumerConnectionInfoDo struct {
-	ClientId        *string                                                                                             `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
-	Connection      *string                                                                                             `json:"Connection,omitempty" xml:"Connection,omitempty"`
-	ConsumeModel    *string                                                                                             `json:"ConsumeModel,omitempty" xml:"ConsumeModel,omitempty"`
-	ConsumeType     *string                                                                                             `json:"ConsumeType,omitempty" xml:"ConsumeType,omitempty"`
-	Jstack          *OnsConsumerStatusResponseBodyDataConsumerConnectionInfoListConsumerConnectionInfoDoJstack          `json:"Jstack,omitempty" xml:"Jstack,omitempty" type:"Struct"`
-	Language        *string                                                                                             `json:"Language,omitempty" xml:"Language,omitempty"`
-	LastTimeStamp   *int64                                                                                              `json:"LastTimeStamp,omitempty" xml:"LastTimeStamp,omitempty"`
+	// The ID of the consumer instance.
+	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	// The connection information.
+	Connection *string `json:"Connection,omitempty" xml:"Connection,omitempty"`
+	// The consumption mode. Valid values:
+	//
+	// *   **CLUSTERING:** the clustering consumption mode
+	// *   **BROADCASTING:** the broadcasting consumption mode
+	//
+	// For more information about consumption modes, see [Clustering consumption and broadcasting consumption](~~43163~~).
+	ConsumeModel *string `json:"ConsumeModel,omitempty" xml:"ConsumeModel,omitempty"`
+	// The mode in which the consumer consumes messages. Valid values:
+	//
+	// *   **PUSH:** The Message Queue for Apache RocketMQ broker pushes messages to the consumer.
+	// *   **PULL:** The consumer pulls messages from the Message Queue for Apache RocketMQ broker.
+	ConsumeType *string `json:"ConsumeType,omitempty" xml:"ConsumeType,omitempty"`
+	// The information about thread stack traces. If you want to obtain the information about thread stack traces, make sure that the **NeedJstack** parameter in the request is set to **true**. If the NeedJstack parameter is not set to true, the value of this parameter is empty.
+	Jstack *OnsConsumerStatusResponseBodyDataConsumerConnectionInfoListConsumerConnectionInfoDoJstack `json:"Jstack,omitempty" xml:"Jstack,omitempty" type:"Struct"`
+	// The programming language that the consumer supports.
+	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	// The most recent point in time when a message was consumed.
+	//
+	// The value of this parameter is a UNIX timestamp in milliseconds.
+	LastTimeStamp *int64 `json:"LastTimeStamp,omitempty" xml:"LastTimeStamp,omitempty"`
+	// The real-time statistics.
 	RunningDataList *OnsConsumerStatusResponseBodyDataConsumerConnectionInfoListConsumerConnectionInfoDoRunningDataList `json:"RunningDataList,omitempty" xml:"RunningDataList,omitempty" type:"Struct"`
-	StartTimeStamp  *int64                                                                                              `json:"StartTimeStamp,omitempty" xml:"StartTimeStamp,omitempty"`
+	// The earliest point in time when a message was consumed.
+	//
+	// The value of this parameter is a UNIX timestamp in milliseconds.
+	StartTimeStamp *int64 `json:"StartTimeStamp,omitempty" xml:"StartTimeStamp,omitempty"`
+	// The information about subscriptions.
 	SubscriptionSet *OnsConsumerStatusResponseBodyDataConsumerConnectionInfoListConsumerConnectionInfoDoSubscriptionSet `json:"SubscriptionSet,omitempty" xml:"SubscriptionSet,omitempty" type:"Struct"`
-	ThreadCount     *int32                                                                                              `json:"ThreadCount,omitempty" xml:"ThreadCount,omitempty"`
-	Version         *string                                                                                             `json:"Version,omitempty" xml:"Version,omitempty"`
+	// The number of consumer threads.
+	ThreadCount *int32 `json:"ThreadCount,omitempty" xml:"ThreadCount,omitempty"`
+	// The version of the consumer client.
+	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s OnsConsumerStatusResponseBodyDataConsumerConnectionInfoListConsumerConnectionInfoDo) String() string {
@@ -903,7 +1044,9 @@ func (s *OnsConsumerStatusResponseBodyDataConsumerConnectionInfoListConsumerConn
 }
 
 type OnsConsumerStatusResponseBodyDataConsumerConnectionInfoListConsumerConnectionInfoDoJstackThreadTrackDo struct {
-	Thread    *string                                                                                                          `json:"Thread,omitempty" xml:"Thread,omitempty"`
+	// The name of the thread.
+	Thread *string `json:"Thread,omitempty" xml:"Thread,omitempty"`
+	// The details of thread stack traces.
 	TrackList *OnsConsumerStatusResponseBodyDataConsumerConnectionInfoListConsumerConnectionInfoDoJstackThreadTrackDoTrackList `json:"TrackList,omitempty" xml:"TrackList,omitempty" type:"Struct"`
 }
 
@@ -960,12 +1103,18 @@ func (s *OnsConsumerStatusResponseBodyDataConsumerConnectionInfoListConsumerConn
 }
 
 type OnsConsumerStatusResponseBodyDataConsumerConnectionInfoListConsumerConnectionInfoDoRunningDataListConsumerRunningDataDo struct {
-	FailedCountPerHour *int64   `json:"FailedCountPerHour,omitempty" xml:"FailedCountPerHour,omitempty"`
-	FailedTps          *float32 `json:"FailedTps,omitempty" xml:"FailedTps,omitempty"`
-	GroupId            *string  `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	OkTps              *float32 `json:"OkTps,omitempty" xml:"OkTps,omitempty"`
-	Rt                 *float32 `json:"Rt,omitempty" xml:"Rt,omitempty"`
-	Topic              *string  `json:"Topic,omitempty" xml:"Topic,omitempty"`
+	// The number of messages that failed to be consumed each hour.
+	FailedCountPerHour *int64 `json:"FailedCountPerHour,omitempty" xml:"FailedCountPerHour,omitempty"`
+	// The TPS for failed message consumption.
+	FailedTps *float32 `json:"FailedTps,omitempty" xml:"FailedTps,omitempty"`
+	// The ID of the consumer group.
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The TPS for successful message consumption.
+	OkTps *float32 `json:"OkTps,omitempty" xml:"OkTps,omitempty"`
+	// The consumption RT. Unit: milliseconds.
+	Rt *float32 `json:"Rt,omitempty" xml:"Rt,omitempty"`
+	// The name of the topic to which the consumer subscribes.
+	Topic *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
 }
 
 func (s OnsConsumerStatusResponseBodyDataConsumerConnectionInfoListConsumerConnectionInfoDoRunningDataListConsumerRunningDataDo) String() string {
@@ -1024,10 +1173,14 @@ func (s *OnsConsumerStatusResponseBodyDataConsumerConnectionInfoListConsumerConn
 }
 
 type OnsConsumerStatusResponseBodyDataConsumerConnectionInfoListConsumerConnectionInfoDoSubscriptionSetSubscriptionData struct {
-	SubString  *string                                                                                                                    `json:"SubString,omitempty" xml:"SubString,omitempty"`
-	SubVersion *int64                                                                                                                     `json:"SubVersion,omitempty" xml:"SubVersion,omitempty"`
-	TagsSet    *OnsConsumerStatusResponseBodyDataConsumerConnectionInfoListConsumerConnectionInfoDoSubscriptionSetSubscriptionDataTagsSet `json:"TagsSet,omitempty" xml:"TagsSet,omitempty" type:"Struct"`
-	Topic      *string                                                                                                                    `json:"Topic,omitempty" xml:"Topic,omitempty"`
+	// The expression that is used to specify the tags of messages in the subscribed topic.
+	SubString *string `json:"SubString,omitempty" xml:"SubString,omitempty"`
+	// The subscription version. The value is of the LONG type and is automatically incremented.
+	SubVersion *int64 `json:"SubVersion,omitempty" xml:"SubVersion,omitempty"`
+	// The information about the tags of the topic to which the consumer subscribes.
+	TagsSet *OnsConsumerStatusResponseBodyDataConsumerConnectionInfoListConsumerConnectionInfoDoSubscriptionSetSubscriptionDataTagsSet `json:"TagsSet,omitempty" xml:"TagsSet,omitempty" type:"Struct"`
+	// The name of the topic to which the consumer subscribes.
+	Topic *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
 }
 
 func (s OnsConsumerStatusResponseBodyDataConsumerConnectionInfoListConsumerConnectionInfoDoSubscriptionSetSubscriptionData) String() string {
@@ -1093,10 +1246,16 @@ func (s *OnsConsumerStatusResponseBodyDataDetailInTopicList) SetDetailInTopicDo(
 }
 
 type OnsConsumerStatusResponseBodyDataDetailInTopicListDetailInTopicDo struct {
-	DelayTime     *int64  `json:"DelayTime,omitempty" xml:"DelayTime,omitempty"`
-	LastTimestamp *int64  `json:"LastTimestamp,omitempty" xml:"LastTimestamp,omitempty"`
-	Topic         *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
-	TotalDiff     *int64  `json:"TotalDiff,omitempty" xml:"TotalDiff,omitempty"`
+	// The latency of message consumption in the topic. Unit: milliseconds.
+	DelayTime *int64 `json:"DelayTime,omitempty" xml:"DelayTime,omitempty"`
+	// The most recent point in time when a message was consumed.
+	//
+	// The value of this parameter is a UNIX timestamp in milliseconds.
+	LastTimestamp *int64 `json:"LastTimestamp,omitempty" xml:"LastTimestamp,omitempty"`
+	// The name of the topic.
+	Topic *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
+	// The number of accumulated messages in the topic.
+	TotalDiff *int64 `json:"TotalDiff,omitempty" xml:"TotalDiff,omitempty"`
 }
 
 func (s OnsConsumerStatusResponseBodyDataDetailInTopicListDetailInTopicDo) String() string {
@@ -1157,9 +1316,12 @@ func (s *OnsConsumerStatusResponse) SetBody(v *OnsConsumerStatusResponseBody) *O
 }
 
 type OnsConsumerTimeSpanRequest struct {
-	GroupId    *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The ID of the consumer group whose reset time range you want to query.
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The ID of the instance to which the consumer group belongs.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Topic      *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
+	// The topic to which the consumer group subscribes.
+	Topic *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
 }
 
 func (s OnsConsumerTimeSpanRequest) String() string {
@@ -1186,8 +1348,10 @@ func (s *OnsConsumerTimeSpanRequest) SetTopic(v string) *OnsConsumerTimeSpanRequ
 }
 
 type OnsConsumerTimeSpanResponseBody struct {
-	Data      *OnsConsumerTimeSpanResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The query results.
+	Data *OnsConsumerTimeSpanResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The ID of the request. This parameter is a common parameter. Each request has a unique ID. You can use this ID to troubleshoot issues.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s OnsConsumerTimeSpanResponseBody) String() string {
@@ -1209,11 +1373,16 @@ func (s *OnsConsumerTimeSpanResponseBody) SetRequestId(v string) *OnsConsumerTim
 }
 
 type OnsConsumerTimeSpanResponseBodyData struct {
-	ConsumeTimeStamp *int64  `json:"ConsumeTimeStamp,omitempty" xml:"ConsumeTimeStamp,omitempty"`
-	InstanceId       *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	MaxTimeStamp     *int64  `json:"MaxTimeStamp,omitempty" xml:"MaxTimeStamp,omitempty"`
-	MinTimeStamp     *int64  `json:"MinTimeStamp,omitempty" xml:"MinTimeStamp,omitempty"`
-	Topic            *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
+	// The most recent point in time when a message in the topic was consumed by the customer group.
+	ConsumeTimeStamp *int64 `json:"ConsumeTimeStamp,omitempty" xml:"ConsumeTimeStamp,omitempty"`
+	// The ID of the instance to which the consumer group belongs.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The earliest point in time when a message was published to the topic.
+	MaxTimeStamp *int64 `json:"MaxTimeStamp,omitempty" xml:"MaxTimeStamp,omitempty"`
+	// The most recent point in time when a message was published to the topic.
+	MinTimeStamp *int64 `json:"MinTimeStamp,omitempty" xml:"MinTimeStamp,omitempty"`
+	// The name of the topic that you want to query.
+	Topic *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
 }
 
 func (s OnsConsumerTimeSpanResponseBodyData) String() string {
@@ -1279,9 +1448,12 @@ func (s *OnsConsumerTimeSpanResponse) SetBody(v *OnsConsumerTimeSpanResponseBody
 }
 
 type OnsDLQMessageGetByIdRequest struct {
-	GroupId    *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The ID of the consumer group whose dead-letter messages you want to query.
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The ID of the instance to which the message you want to query belongs.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	MsgId      *string `json:"MsgId,omitempty" xml:"MsgId,omitempty"`
+	// The ID of the dead-letter message that you want to query.
+	MsgId *string `json:"MsgId,omitempty" xml:"MsgId,omitempty"`
 }
 
 func (s OnsDLQMessageGetByIdRequest) String() string {
@@ -1308,8 +1480,10 @@ func (s *OnsDLQMessageGetByIdRequest) SetMsgId(v string) *OnsDLQMessageGetByIdRe
 }
 
 type OnsDLQMessageGetByIdResponseBody struct {
-	Data      *OnsDLQMessageGetByIdResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The returned results.
+	Data *OnsDLQMessageGetByIdResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The ID of the request. This parameter is a common parameter. Each request has a unique ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s OnsDLQMessageGetByIdResponseBody) String() string {
@@ -1331,17 +1505,28 @@ func (s *OnsDLQMessageGetByIdResponseBody) SetRequestId(v string) *OnsDLQMessage
 }
 
 type OnsDLQMessageGetByIdResponseBodyData struct {
-	BodyCRC        *int32                                            `json:"BodyCRC,omitempty" xml:"BodyCRC,omitempty"`
-	BornHost       *string                                           `json:"BornHost,omitempty" xml:"BornHost,omitempty"`
-	BornTimestamp  *int64                                            `json:"BornTimestamp,omitempty" xml:"BornTimestamp,omitempty"`
-	InstanceId     *string                                           `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	MsgId          *string                                           `json:"MsgId,omitempty" xml:"MsgId,omitempty"`
-	PropertyList   *OnsDLQMessageGetByIdResponseBodyDataPropertyList `json:"PropertyList,omitempty" xml:"PropertyList,omitempty" type:"Struct"`
-	ReconsumeTimes *int32                                            `json:"ReconsumeTimes,omitempty" xml:"ReconsumeTimes,omitempty"`
-	StoreHost      *string                                           `json:"StoreHost,omitempty" xml:"StoreHost,omitempty"`
-	StoreSize      *int32                                            `json:"StoreSize,omitempty" xml:"StoreSize,omitempty"`
-	StoreTimestamp *int64                                            `json:"StoreTimestamp,omitempty" xml:"StoreTimestamp,omitempty"`
-	Topic          *string                                           `json:"Topic,omitempty" xml:"Topic,omitempty"`
+	// The cyclic redundancy check (CRC) value of the message body.
+	BodyCRC *int32 `json:"BodyCRC,omitempty" xml:"BodyCRC,omitempty"`
+	// The producer instance that generated the message.
+	BornHost *string `json:"BornHost,omitempty" xml:"BornHost,omitempty"`
+	// The timestamp that indicates the point in time when the dead-letter message was generated. Unit: milliseconds.
+	BornTimestamp *int64 `json:"BornTimestamp,omitempty" xml:"BornTimestamp,omitempty"`
+	// The ID of the instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ID of the dead-letter message.
+	MsgId *string `json:"MsgId,omitempty" xml:"MsgId,omitempty"`
+	// The attributes of the message.
+	PropertyList *OnsDLQMessageGetByIdResponseBodyDataPropertyList `json:"PropertyList,omitempty" xml:"PropertyList,omitempty" type:"Struct"`
+	// The number of retries that Message Queue for Apache RocketMQ performed to send the message to consumers.
+	ReconsumeTimes *int32 `json:"ReconsumeTimes,omitempty" xml:"ReconsumeTimes,omitempty"`
+	// The Message Queue for Apache RocketMQ broker that stores the message.
+	StoreHost *string `json:"StoreHost,omitempty" xml:"StoreHost,omitempty"`
+	// The size of the message. Unit: KB.
+	StoreSize *int32 `json:"StoreSize,omitempty" xml:"StoreSize,omitempty"`
+	// The timestamp when the Message Queue for Apache RocketMQ broker stored the message. Unit: milliseconds.
+	StoreTimestamp *int64 `json:"StoreTimestamp,omitempty" xml:"StoreTimestamp,omitempty"`
+	// The topic to which the message belongs.
+	Topic *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
 }
 
 func (s OnsDLQMessageGetByIdResponseBodyData) String() string {
@@ -1425,7 +1610,16 @@ func (s *OnsDLQMessageGetByIdResponseBodyDataPropertyList) SetMessageProperty(v 
 }
 
 type OnsDLQMessageGetByIdResponseBodyDataPropertyListMessageProperty struct {
-	Name  *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The name of the attribute. Valid values:
+	//
+	// *   **TRACE_ON**: indicates whether a trace of the message exists.
+	// *   **KEYS**: indicates the message key of the message.
+	// *   **TAGS**: indicates the tag that is attached to the message.
+	// *   **INSTANCE_ID**: indicates the ID of the instance that contains the dead-letter message.
+	//
+	// For more information about the terms that are used in Message Queue for Apache RocketMQ, see [Terms](~~29533~~).
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The value of the attribute.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -1477,13 +1671,20 @@ func (s *OnsDLQMessageGetByIdResponse) SetBody(v *OnsDLQMessageGetByIdResponseBo
 }
 
 type OnsDLQMessagePageQueryByGroupIdRequest struct {
-	BeginTime   *int64  `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
-	CurrentPage *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	EndTime     *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	GroupId     *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	TaskId      *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The beginning of the time range to query. The value of this parameter is a UNIX timestamp in milliseconds. If you specify a valid value for the **TaskId** parameter in the request, this parameter does not take effect. The system uses the value of the BeginTime parameter that you specified in the request when you created the specified query task.
+	BeginTime *int64 `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
+	// The number of the page to return. Pages start from page 1. Valid values: 1 to 50.
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The end of the time range to query. The value of this parameter is a UNIX timestamp in milliseconds. If you specify a valid value for the **TaskId** parameter in the request, this parameter does not take effect. The system uses the value of the EndTime parameter that you specified in the request when you created the specified query task.
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The ID of the consumer group whose dead-letter messages you want to query.
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The ID of the instance to which the dead-letter messages you want to query belong.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The number of dead-letter messages to return on each page. Valid values: 5 to 50. Default value: 20. If you specify a valid value for the **TaskId** parameter in the request, this parameter does not take effect. The system uses the value of the PageSize parameter that you specified in the request when you created the specified query task.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the query task. The first time you call this operation to query dead-letter messages that are sent to a specified consumer group within a specified time range, this parameter is not required. This parameter is required in subsequent queries for dead-letter messages on a specified page. You can obtain the task ID from the returned result of the first query.
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s OnsDLQMessagePageQueryByGroupIdRequest) String() string {
@@ -1530,8 +1731,10 @@ func (s *OnsDLQMessagePageQueryByGroupIdRequest) SetTaskId(v string) *OnsDLQMess
 }
 
 type OnsDLQMessagePageQueryByGroupIdResponseBody struct {
+	// The returned results.
 	MsgFoundDo *OnsDLQMessagePageQueryByGroupIdResponseBodyMsgFoundDo `json:"MsgFoundDo,omitempty" xml:"MsgFoundDo,omitempty" type:"Struct"`
-	RequestId  *string                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request. This parameter is a common parameter. Each request has a unique ID. You can use this ID to troubleshoot issues.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s OnsDLQMessagePageQueryByGroupIdResponseBody) String() string {
@@ -1553,10 +1756,14 @@ func (s *OnsDLQMessagePageQueryByGroupIdResponseBody) SetRequestId(v string) *On
 }
 
 type OnsDLQMessagePageQueryByGroupIdResponseBodyMsgFoundDo struct {
-	CurrentPage  *int64                                                             `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	MaxPageCount *int64                                                             `json:"MaxPageCount,omitempty" xml:"MaxPageCount,omitempty"`
+	// The page number of the returned page.
+	CurrentPage *int64 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The total number of returned pages.
+	MaxPageCount *int64 `json:"MaxPageCount,omitempty" xml:"MaxPageCount,omitempty"`
+	// The information about dead-letter messages that are returned on the current page. The information that is contained in this parameter is the same as the information that is returned by the [OnsDLQMessageGetById](~~112667~~) operation.
 	MsgFoundList *OnsDLQMessagePageQueryByGroupIdResponseBodyMsgFoundDoMsgFoundList `json:"MsgFoundList,omitempty" xml:"MsgFoundList,omitempty" type:"Struct"`
-	TaskId       *string                                                            `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The ID of the query task. The first time you call this operation to query the dead-letter messages that are sent to a specified consumer group within a specified time range, this parameter is returned. You can use the task ID to query the details of dead-letter messages on other returned pages.
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s OnsDLQMessagePageQueryByGroupIdResponseBodyMsgFoundDo) String() string {
@@ -1605,17 +1812,28 @@ func (s *OnsDLQMessagePageQueryByGroupIdResponseBodyMsgFoundDoMsgFoundList) SetO
 }
 
 type OnsDLQMessagePageQueryByGroupIdResponseBodyMsgFoundDoMsgFoundListOnsRestMessageDo struct {
-	BodyCRC        *int32                                                                                         `json:"BodyCRC,omitempty" xml:"BodyCRC,omitempty"`
-	BornHost       *string                                                                                        `json:"BornHost,omitempty" xml:"BornHost,omitempty"`
-	BornTimestamp  *int64                                                                                         `json:"BornTimestamp,omitempty" xml:"BornTimestamp,omitempty"`
-	InstanceId     *string                                                                                        `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	MsgId          *string                                                                                        `json:"MsgId,omitempty" xml:"MsgId,omitempty"`
-	PropertyList   *OnsDLQMessagePageQueryByGroupIdResponseBodyMsgFoundDoMsgFoundListOnsRestMessageDoPropertyList `json:"PropertyList,omitempty" xml:"PropertyList,omitempty" type:"Struct"`
-	ReconsumeTimes *int32                                                                                         `json:"ReconsumeTimes,omitempty" xml:"ReconsumeTimes,omitempty"`
-	StoreHost      *string                                                                                        `json:"StoreHost,omitempty" xml:"StoreHost,omitempty"`
-	StoreSize      *int32                                                                                         `json:"StoreSize,omitempty" xml:"StoreSize,omitempty"`
-	StoreTimestamp *int64                                                                                         `json:"StoreTimestamp,omitempty" xml:"StoreTimestamp,omitempty"`
-	Topic          *string                                                                                        `json:"Topic,omitempty" xml:"Topic,omitempty"`
+	// The cyclic redundancy check (CRC) value of the message body.
+	BodyCRC *int32 `json:"BodyCRC,omitempty" xml:"BodyCRC,omitempty"`
+	// The producer instance that generated the message.
+	BornHost *string `json:"BornHost,omitempty" xml:"BornHost,omitempty"`
+	// The timestamp when the message was produced.
+	BornTimestamp *int64 `json:"BornTimestamp,omitempty" xml:"BornTimestamp,omitempty"`
+	// The ID of the instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ID of the message.
+	MsgId *string `json:"MsgId,omitempty" xml:"MsgId,omitempty"`
+	// The attributes of the message.
+	PropertyList *OnsDLQMessagePageQueryByGroupIdResponseBodyMsgFoundDoMsgFoundListOnsRestMessageDoPropertyList `json:"PropertyList,omitempty" xml:"PropertyList,omitempty" type:"Struct"`
+	// The number of retries that Message Queue for Apache RocketMQ performed to send the message to consumers.
+	ReconsumeTimes *int32 `json:"ReconsumeTimes,omitempty" xml:"ReconsumeTimes,omitempty"`
+	// The Message Queue for Apache RocketMQ broker that stores the message.
+	StoreHost *string `json:"StoreHost,omitempty" xml:"StoreHost,omitempty"`
+	// The size of the message. Unit: KB.
+	StoreSize *int32 `json:"StoreSize,omitempty" xml:"StoreSize,omitempty"`
+	// The timestamp when the Message Queue for Apache RocketMQ broker stored the message.
+	StoreTimestamp *int64 `json:"StoreTimestamp,omitempty" xml:"StoreTimestamp,omitempty"`
+	// The topic to which the message belongs.
+	Topic *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
 }
 
 func (s OnsDLQMessagePageQueryByGroupIdResponseBodyMsgFoundDoMsgFoundListOnsRestMessageDo) String() string {
@@ -1699,7 +1917,16 @@ func (s *OnsDLQMessagePageQueryByGroupIdResponseBodyMsgFoundDoMsgFoundListOnsRes
 }
 
 type OnsDLQMessagePageQueryByGroupIdResponseBodyMsgFoundDoMsgFoundListOnsRestMessageDoPropertyListMessageProperty struct {
-	Name  *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The name of the attribute. Valid values:
+	//
+	// *   **TRACE_ON**: indicates whether a trace of the message exists.
+	// *   **KEYS**: indicates the message key of the message.
+	// *   **TAGS**: indicates the tag of the message.
+	// *   **INSTANCE_ID**: indicates the ID of the instance that contains the message.
+	//
+	// For more information about the terms that are used in Message Queue for Apache RocketMQ, see [Terms](~~29533~~).
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The value of the attribute.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -1751,9 +1978,12 @@ func (s *OnsDLQMessagePageQueryByGroupIdResponse) SetBody(v *OnsDLQMessagePageQu
 }
 
 type OnsDLQMessageResendByIdRequest struct {
-	GroupId    *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The ID of the consumer group whose dead-letter messages you want to query.
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The ID of the instance to which the message you want to query belongs.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	MsgId      *string `json:"MsgId,omitempty" xml:"MsgId,omitempty"`
+	// The ID of the dead-letter message that you want to query.
+	MsgId *string `json:"MsgId,omitempty" xml:"MsgId,omitempty"`
 }
 
 func (s OnsDLQMessageResendByIdRequest) String() string {
@@ -1780,8 +2010,10 @@ func (s *OnsDLQMessageResendByIdRequest) SetMsgId(v string) *OnsDLQMessageResend
 }
 
 type OnsDLQMessageResendByIdResponseBody struct {
-	Data      *OnsDLQMessageResendByIdResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The returned messages.
+	Data *OnsDLQMessageResendByIdResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The ID of the request. This parameter is a common parameter. Each request has a unique ID. You can use this ID to troubleshoot issues.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s OnsDLQMessageResendByIdResponseBody) String() string {
@@ -1849,9 +2081,17 @@ func (s *OnsDLQMessageResendByIdResponse) SetBody(v *OnsDLQMessageResendByIdResp
 }
 
 type OnsGroupConsumerUpdateRequest struct {
-	GroupId    *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The ID of the consumer group for which you want to configure the read permissions.
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The ID of the instance to which the consumer group you want to configure belongs.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	ReadEnable *bool   `json:"ReadEnable,omitempty" xml:"ReadEnable,omitempty"`
+	// Specifies whether to authorize the consumer group with the specified ID to read messages. Valid values:
+	//
+	// *   **true**: Authorize the consumer group with the specified ID to read messages.
+	// *   **false**: Do not authorize the consumer group with the specified group ID to read messages.
+	//
+	// Default value: **true**.
+	ReadEnable *bool `json:"ReadEnable,omitempty" xml:"ReadEnable,omitempty"`
 }
 
 func (s OnsGroupConsumerUpdateRequest) String() string {
@@ -1878,6 +2118,7 @@ func (s *OnsGroupConsumerUpdateRequest) SetReadEnable(v bool) *OnsGroupConsumerU
 }
 
 type OnsGroupConsumerUpdateResponseBody struct {
+	// The ID of the request. This parameter is a common parameter. Each request has a unique ID. You can use this ID to troubleshoot issues.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1924,10 +2165,27 @@ func (s *OnsGroupConsumerUpdateResponse) SetBody(v *OnsGroupConsumerUpdateRespon
 }
 
 type OnsGroupCreateRequest struct {
-	GroupId    *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	GroupType  *string `json:"GroupType,omitempty" xml:"GroupType,omitempty"`
+	// The ID of the consumer group that you want to create. Specify the group ID based on the following rules:
+	//
+	// *   The group ID must be 2 to 64 characters in length and can contain only letters, digits, hyphens (-), and underscores (\_).
+	// *   If the Message Queue for Apache RocketMQ instance in which you want to create the consumer group uses a namespace, the group ID must be unique in the instance. The group ID cannot be the same as an existing group ID or a topic name in the instance. The group ID can be the same as a group ID or a topic name in another instance that uses a different namespace. For example, if Instance A and Instance B use different namespaces, a group ID in Instance A can be the same as a group ID or a topic name in Instance B.
+	// *   If the instance does not use a namespace, the group ID must be globally unique across instances and regions. The group ID cannot be the same as an existing group ID or topic name in Message Queue for Apache RocketMQ instances that belong to your Alibaba Cloud account.
+	//
+	// >
+	//
+	// *   After the consumer group is created, the group ID cannot be changed.
+	//
+	// *   To check whether an instance uses a namespace, log on to the Message Queue for Apache RocketMQ console, go to the **Instance Details** page, and then view the value of the Namespace field in the **Basic Information** section.
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The protocol over which clients in the consumer group communicate with the Message Queue for Apache RocketMQ broker. All clients in a consumer group communicate with the Message Queue for Apache RocketMQ broker over the same protocol. You must create different groups for TCP clients and HTTP clients. Valid values:
+	//
+	// *   **tcp**: Clients in the consumer group consume messages over TCP. This is the default value.
+	// *   **http**: Clients in the consumer group consume messages over HTTP.
+	GroupType *string `json:"GroupType,omitempty" xml:"GroupType,omitempty"`
+	// The ID of the instance in which you want to create the consumer group.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Remark     *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// The description of the consumer group.
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
 }
 
 func (s OnsGroupCreateRequest) String() string {
@@ -1959,6 +2217,7 @@ func (s *OnsGroupCreateRequest) SetRemark(v string) *OnsGroupCreateRequest {
 }
 
 type OnsGroupCreateResponseBody struct {
+	// The ID of the request. This parameter is a common parameter. Each request has a unique ID. You can use this ID to troubleshoot issues.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2005,7 +2264,9 @@ func (s *OnsGroupCreateResponse) SetBody(v *OnsGroupCreateResponseBody) *OnsGrou
 }
 
 type OnsGroupDeleteRequest struct {
-	GroupId    *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The ID of the consumer group that you want to delete.
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The ID of the Message Queue for Apache RocketMQ instance that contains the specified group.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -2028,6 +2289,7 @@ func (s *OnsGroupDeleteRequest) SetInstanceId(v string) *OnsGroupDeleteRequest {
 }
 
 type OnsGroupDeleteResponseBody struct {
+	// The ID of the request. This parameter is a common parameter. Each request has a unique ID. You can use this ID to troubleshoot issues.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2074,10 +2336,19 @@ func (s *OnsGroupDeleteResponse) SetBody(v *OnsGroupDeleteResponseBody) *OnsGrou
 }
 
 type OnsGroupListRequest struct {
-	GroupId    *string                   `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	GroupType  *string                   `json:"GroupType,omitempty" xml:"GroupType,omitempty"`
-	InstanceId *string                   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Tag        []*OnsGroupListRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	// This parameter is required only when you query specific consumer groups by using the fuzzy query method. If this parameter is not configured, the system queries all consumer groups that can be accessed by the current account.
+	//
+	// If you set this parameter to GID_ABC, the information about the consumer groups whose IDs contain GID_ABC is returned. For example, the information about the GID_test_GID_ABC\_123 and GID_ABC\_356 consumer groups is returned.
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The protocol over which the queried consumer groups consume messages. All clients in a consumer group communicate with the Message Queue for Apache RocketMQ broker over the same protocol. A consumer group cannot contain TCP clients and HTTP clients at the same time. You must create different consumer groups for TCP clients and HTTP clients. Valid values:
+	//
+	// *   **tcp**: specifies the consumer groups that consume messages over TCP. This is the default value.
+	// *   **http**: indicates that the consumer group consumes messages over HTTP.
+	GroupType *string `json:"GroupType,omitempty" xml:"GroupType,omitempty"`
+	// The ID of the instance to which the consumer group you want to query belongs.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The list of tags that are attached to the consumer group. A maximum of 20 tags can be included in the list.
+	Tag []*OnsGroupListRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s OnsGroupListRequest) String() string {
@@ -2109,7 +2380,15 @@ func (s *OnsGroupListRequest) SetTag(v []*OnsGroupListRequestTag) *OnsGroupListR
 }
 
 type OnsGroupListRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The key of a tag that is attached to the consumer group. This parameter is not required. If you configure this parameter, you must configure the **Tag.N.Value** parameter.**** If you configure both the Tag.N.Key and Tag.N.Value parameters, the group IDs are filtered based on the specified tag. If you do not configure these parameters, all group IDs are queried.
+	//
+	// *   The value of this parameter cannot be an empty string.
+	// *   The tag key can be up to 128 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of the tag that is attached to the group. This parameter is not required. If you configure this parameter, you must configure the **Tag.N.Value** parameter.**** If you configure both the Tag.N.Key and Tag.N.Value parameters, the group IDs are filtered based on the specified tag. If you do not configure these parameters, all group IDs are queried.
+	//
+	// *   The value of this parameter can be an empty string.
+	// *   The tag key can be up to 128 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -2132,8 +2411,10 @@ func (s *OnsGroupListRequestTag) SetValue(v string) *OnsGroupListRequestTag {
 }
 
 type OnsGroupListResponseBody struct {
-	Data      *OnsGroupListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The returned list of subscriptions.
+	Data *OnsGroupListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The ID of the request. This parameter is a common parameter. Each request has a unique ID. You can use this ID to troubleshoot issues.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s OnsGroupListResponseBody) String() string {
@@ -2172,15 +2453,30 @@ func (s *OnsGroupListResponseBodyData) SetSubscribeInfoDo(v []*OnsGroupListRespo
 }
 
 type OnsGroupListResponseBodyDataSubscribeInfoDo struct {
-	CreateTime        *int64                                           `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	GroupId           *string                                          `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	GroupType         *string                                          `json:"GroupType,omitempty" xml:"GroupType,omitempty"`
-	IndependentNaming *bool                                            `json:"IndependentNaming,omitempty" xml:"IndependentNaming,omitempty"`
-	InstanceId        *string                                          `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Owner             *string                                          `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	Remark            *string                                          `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	Tags              *OnsGroupListResponseBodyDataSubscribeInfoDoTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
-	UpdateTime        *int64                                           `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The time when the group was created.
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The ID of the consumer group.
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The protocol over which the queried consumer groups consume messages. All clients in a consumer group communicate with the Message Queue for Apache RocketMQ broker over the same protocol. A consumer group cannot contain TCP clients and HTTP clients at the same time. You must create different consumer groups for TCP clients and HTTP clients. Valid values:
+	//
+	// *   **tcp**: indicates that the consumer group consumes messages over TCP.
+	// *   **http**: indicates that the consumer group consumes messages over HTTP.
+	GroupType *string `json:"GroupType,omitempty" xml:"GroupType,omitempty"`
+	// Indicates whether the instance uses a namespace. Valid values:
+	//
+	// *   **true**: The instance uses a separate namespace. The name of each resource must be unique in the instance. The names of resources in different instances can be the same.
+	// *   **false**: The instance does not use a separate namespace. The name of each resource must be globally unique within and across all instances.
+	IndependentNaming *bool `json:"IndependentNaming,omitempty" xml:"IndependentNaming,omitempty"`
+	// The ID of the instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ID of the user who created the consumer group.
+	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// The description of the consumer group.
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// The tags that are attached to the consumer group.
+	Tags *OnsGroupListResponseBodyDataSubscribeInfoDoTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
+	// The time when the group ID was updated.
+	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s OnsGroupListResponseBodyDataSubscribeInfoDo) String() string {
@@ -2254,7 +2550,9 @@ func (s *OnsGroupListResponseBodyDataSubscribeInfoDoTags) SetTag(v []*OnsGroupLi
 }
 
 type OnsGroupListResponseBodyDataSubscribeInfoDoTagsTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The key of the tag.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of the tag.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -2306,7 +2604,9 @@ func (s *OnsGroupListResponse) SetBody(v *OnsGroupListResponseBody) *OnsGroupLis
 }
 
 type OnsGroupSubDetailRequest struct {
-	GroupId    *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The ID of the consumer group that you want to query.
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The ID of the instance to which the consumer group you want to query belongs.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -2329,8 +2629,10 @@ func (s *OnsGroupSubDetailRequest) SetInstanceId(v string) *OnsGroupSubDetailReq
 }
 
 type OnsGroupSubDetailResponseBody struct {
-	Data      *OnsGroupSubDetailResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The data that is returned.
+	Data *OnsGroupSubDetailResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The ID of the request. This parameter is a common parameter. Each request has a unique ID. You can use this ID to troubleshoot issues.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s OnsGroupSubDetailResponseBody) String() string {
@@ -2352,9 +2654,18 @@ func (s *OnsGroupSubDetailResponseBody) SetRequestId(v string) *OnsGroupSubDetai
 }
 
 type OnsGroupSubDetailResponseBodyData struct {
-	GroupId              *string                                                `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	MessageModel         *string                                                `json:"MessageModel,omitempty" xml:"MessageModel,omitempty"`
-	Online               *bool                                                  `json:"Online,omitempty" xml:"Online,omitempty"`
+	// The ID of the consumer group that you want to query.
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The consumption mode. Valid values:
+	//
+	// *   **CLUSTERING**: the clustering consumption mode
+	// *   **BROADCASTING**: the broadcasting consumption mode
+	//
+	// For more information about consumption modes, see [Clustering consumption and broadcasting consumption](~~43163~~).
+	MessageModel *string `json:"MessageModel,omitempty" xml:"MessageModel,omitempty"`
+	// Indicates whether consumers in the group are online.
+	Online *bool `json:"Online,omitempty" xml:"Online,omitempty"`
+	// The topics to which consumers in the consumer group subscribe. If all consumers in the specified group are offline, no topics are returned.
 	SubscriptionDataList *OnsGroupSubDetailResponseBodyDataSubscriptionDataList `json:"SubscriptionDataList,omitempty" xml:"SubscriptionDataList,omitempty" type:"Struct"`
 }
 
@@ -2404,8 +2715,10 @@ func (s *OnsGroupSubDetailResponseBodyDataSubscriptionDataList) SetSubscriptionD
 }
 
 type OnsGroupSubDetailResponseBodyDataSubscriptionDataListSubscriptionDataList struct {
+	// The expression based on which consumers in the consumer group subscribe to the topic.
 	SubString *string `json:"SubString,omitempty" xml:"SubString,omitempty"`
-	Topic     *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
+	// The name of the topic to which consumers in the consumer group subscribe.
+	Topic *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
 }
 
 func (s OnsGroupSubDetailResponseBodyDataSubscriptionDataListSubscriptionDataList) String() string {
@@ -2456,6 +2769,7 @@ func (s *OnsGroupSubDetailResponse) SetBody(v *OnsGroupSubDetailResponseBody) *O
 }
 
 type OnsInstanceBaseInfoRequest struct {
+	// The ID of the instance that you want to query.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -2473,8 +2787,10 @@ func (s *OnsInstanceBaseInfoRequest) SetInstanceId(v string) *OnsInstanceBaseInf
 }
 
 type OnsInstanceBaseInfoResponseBody struct {
+	// The information about the instance.
 	InstanceBaseInfo *OnsInstanceBaseInfoResponseBodyInstanceBaseInfo `json:"InstanceBaseInfo,omitempty" xml:"InstanceBaseInfo,omitempty" type:"Struct"`
-	RequestId        *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request. This parameter is a common parameter. Each request has a unique ID. You can use this ID to troubleshoot issues.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s OnsInstanceBaseInfoResponseBody) String() string {
@@ -2496,19 +2812,50 @@ func (s *OnsInstanceBaseInfoResponseBody) SetRequestId(v string) *OnsInstanceBas
 }
 
 type OnsInstanceBaseInfoResponseBodyInstanceBaseInfo struct {
-	CreateTime        *string                                                   `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Endpoints         *OnsInstanceBaseInfoResponseBodyInstanceBaseInfoEndpoints `json:"Endpoints,omitempty" xml:"Endpoints,omitempty" type:"Struct"`
-	IndependentNaming *bool                                                     `json:"IndependentNaming,omitempty" xml:"IndependentNaming,omitempty"`
-	InstanceId        *string                                                   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	InstanceName      *string                                                   `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	InstanceStatus    *int32                                                    `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
-	InstanceType      *int32                                                    `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	MaxTps            *int64                                                    `json:"MaxTps,omitempty" xml:"MaxTps,omitempty"`
-	ReleaseTime       *int64                                                    `json:"ReleaseTime,omitempty" xml:"ReleaseTime,omitempty"`
-	Remark            *string                                                   `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	TopicCapacity     *int32                                                    `json:"TopicCapacity,omitempty" xml:"TopicCapacity,omitempty"`
-	SpInstanceId      *string                                                   `json:"spInstanceId,omitempty" xml:"spInstanceId,omitempty"`
-	SpInstanceType    *int32                                                    `json:"spInstanceType,omitempty" xml:"spInstanceType,omitempty"`
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The endpoints that correspond to different protocols.
+	Endpoints *OnsInstanceBaseInfoResponseBodyInstanceBaseInfoEndpoints `json:"Endpoints,omitempty" xml:"Endpoints,omitempty" type:"Struct"`
+	// Indicates whether the instance uses a namespace. Valid values:
+	//
+	// *   **true**: The instance uses a separate namespace. The name of each resource must be unique in the instance. The names of resources in different instances can be the same.
+	// *   **false**: The instance does not use a separate namespace. The name of each resource must be globally unique within and across all instances.
+	IndependentNaming *bool `json:"IndependentNaming,omitempty" xml:"IndependentNaming,omitempty"`
+	// The ID of the instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The name of the instance.
+	//
+	// The name must be 3 to 64 characters in length and can contain letters, digits, hyphens (-), and underscores (\_).
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The status of the instance. Valid values:
+	//
+	// *   **0**: The instance is being deployed. This value is valid only for Enterprise Platinum Edition instances.
+	// *   **2**: The instance has overdue payments. This value is valid only for Standard Edition instances.
+	// *   **5**: The instance is running. This value is valid for Standard Edition instances and Enterprise Platinum Edition instances.
+	// *   **7**: The instance is being upgraded and is running. This value is valid only for Enterprise Platinum Edition instances.
+	InstanceStatus *int32 `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
+	// The instance type. Valid values:
+	//
+	// *   **1**: The instance is a Standard Edition instance that uses the pay-as-you-go billing method.
+	// *   **2**: The instance is an Enterprise Platinum Edition instance that uses the subscription billing method.
+	//
+	// For information about the editions and specifications of Message Queue for Apache RocketMQ instances, see [Instance editions](~~185261~~).
+	InstanceType *int32 `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	// The maximum transactions per second (TPS) for sending and receiving messages. Valid values: 5000, 10000, 20000, 50000, 100000, 200000, 300000, 500000, 800000, and 1000000.
+	//
+	// For more information, see the description on the buy page.
+	//
+	// >  This parameter is available only for Message Queue for Apache RocketMQ instances of the Enterprise Platinum Edition.
+	MaxTps *int64 `json:"MaxTps,omitempty" xml:"MaxTps,omitempty"`
+	// The point in time when the Enterprise Platinum Edition instance expires.
+	ReleaseTime *int64 `json:"ReleaseTime,omitempty" xml:"ReleaseTime,omitempty"`
+	// The description of the instance.
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// The maximum number of topics that can be created on the instance. Valid values: 25, 50, 100, 300, and 500.
+	//
+	// >  This parameter is available only for Message Queue for Apache RocketMQ instances of the Enterprise Platinum Edition.
+	TopicCapacity  *int32  `json:"TopicCapacity,omitempty" xml:"TopicCapacity,omitempty"`
+	SpInstanceId   *string `json:"spInstanceId,omitempty" xml:"spInstanceId,omitempty"`
+	SpInstanceType *int32  `json:"spInstanceType,omitempty" xml:"spInstanceType,omitempty"`
 }
 
 func (s OnsInstanceBaseInfoResponseBodyInstanceBaseInfo) String() string {
@@ -2585,11 +2932,25 @@ func (s *OnsInstanceBaseInfoResponseBodyInstanceBaseInfo) SetSpInstanceType(v in
 }
 
 type OnsInstanceBaseInfoResponseBodyInstanceBaseInfoEndpoints struct {
-	HttpInternalEndpoint       *string `json:"HttpInternalEndpoint,omitempty" xml:"HttpInternalEndpoint,omitempty"`
-	HttpInternetEndpoint       *string `json:"HttpInternetEndpoint,omitempty" xml:"HttpInternetEndpoint,omitempty"`
+	// The private HTTP endpoint of the instance.
+	HttpInternalEndpoint *string `json:"HttpInternalEndpoint,omitempty" xml:"HttpInternalEndpoint,omitempty"`
+	// The public HTTP endpoint of the instance.
+	HttpInternetEndpoint *string `json:"HttpInternetEndpoint,omitempty" xml:"HttpInternetEndpoint,omitempty"`
+	// The public HTTPS endpoint of the instance.
 	HttpInternetSecureEndpoint *string `json:"HttpInternetSecureEndpoint,omitempty" xml:"HttpInternetSecureEndpoint,omitempty"`
-	TcpEndpoint                *string `json:"TcpEndpoint,omitempty" xml:"TcpEndpoint,omitempty"`
-	TcpInternetEndpoint        *string `json:"TcpInternetEndpoint,omitempty" xml:"TcpInternetEndpoint,omitempty"`
+	// The private TCP endpoint of the instance.
+	TcpEndpoint *string `json:"TcpEndpoint,omitempty" xml:"TcpEndpoint,omitempty"`
+	// The public TCP endpoint of the instance.
+	//
+	// *   Only instances that are deployed in the China (Chengdu), China (Qingdao), or China (Shenzhen) region can be accessed by using public TCP endpoints.
+	//
+	// *   Before you use a public TCP endpoint, make sure that your client SDK meets the following requirements:
+	//
+	//     *   TCP client SDK for Java: V2.0.0.Final or later For more information, see [Release notes for the SDK for Java](~~325569~~).
+	//     *   TCP client SDK for C++: V3.0.0 or later For more information, see [Release notes for the SDK for C++](~~325570~~).
+	//
+	// *   You must pay the data transfer cost when you use a public TCP endpoint. For more information, see [Internet traffic fee](~~325571~~).
+	TcpInternetEndpoint *string `json:"TcpInternetEndpoint,omitempty" xml:"TcpInternetEndpoint,omitempty"`
 }
 
 func (s OnsInstanceBaseInfoResponseBodyInstanceBaseInfoEndpoints) String() string {
@@ -2655,8 +3016,13 @@ func (s *OnsInstanceBaseInfoResponse) SetBody(v *OnsInstanceBaseInfoResponseBody
 }
 
 type OnsInstanceCreateRequest struct {
+	// The name of the instance. Valid values:
+	//
+	// *   The name of the instance must be unique in the region where the instance is deployed.
+	// *   The name must be 3 to 64 characters in length and can contain letters, digits, hyphens (-), and underscores (\_).
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	Remark       *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// The description of the instance.
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
 }
 
 func (s OnsInstanceCreateRequest) String() string {
@@ -2678,8 +3044,10 @@ func (s *OnsInstanceCreateRequest) SetRemark(v string) *OnsInstanceCreateRequest
 }
 
 type OnsInstanceCreateResponseBody struct {
-	Data      *OnsInstanceCreateResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The results that are returned.
+	Data *OnsInstanceCreateResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The ID of the request. This parameter is a common parameter. Each request has a unique ID. You can use this ID to troubleshoot issues.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s OnsInstanceCreateResponseBody) String() string {
@@ -2701,8 +3069,12 @@ func (s *OnsInstanceCreateResponseBody) SetRequestId(v string) *OnsInstanceCreat
 }
 
 type OnsInstanceCreateResponseBodyData struct {
-	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	InstanceType *int32  `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	// The ID of the instance that you created.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The edition of the instance. Valid value:
+	//
+	// *   **1**: Standard Edition
+	InstanceType *int32 `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
 }
 
 func (s OnsInstanceCreateResponseBodyData) String() string {
@@ -2753,6 +3125,7 @@ func (s *OnsInstanceCreateResponse) SetBody(v *OnsInstanceCreateResponseBody) *O
 }
 
 type OnsInstanceDeleteRequest struct {
+	// The ID of the instance.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -2770,6 +3143,7 @@ func (s *OnsInstanceDeleteRequest) SetInstanceId(v string) *OnsInstanceDeleteReq
 }
 
 type OnsInstanceDeleteResponseBody struct {
+	// The ID of the request. This parameter is a common parameter. Each request has a unique ID. You can use this ID to troubleshoot issues.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2816,6 +3190,7 @@ func (s *OnsInstanceDeleteResponse) SetBody(v *OnsInstanceDeleteResponseBody) *O
 }
 
 type OnsInstanceInServiceListRequest struct {
+	// The list of tags that are attached to the instance. A maximum of 20 tags can be included in a list.
 	Tag []*OnsInstanceInServiceListRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
@@ -2833,7 +3208,15 @@ func (s *OnsInstanceInServiceListRequest) SetTag(v []*OnsInstanceInServiceListRe
 }
 
 type OnsInstanceInServiceListRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The key of a tag that is attached to the instances you want to query. This parameter is not required. If you configure this parameter, you must also configure the **Tag.N.Key** parameter.**** If you include the Key and Value parameters in a request, this operation queries only the instances that use the specified tags. If you do not include these parameters in a request, this operation queries all instances that you can access.
+	//
+	// *   The value of this parameter cannot be an empty string.
+	// *   The tag key can be up to 128 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of a tag that is attached to the instances you want to query. This parameter is not required. If you configure this parameter, you must also configure the **Tag.N.Key** parameter.**** If you include the Key and Value parameters in a request, this operation queries only the instances that use the specified tags. If you do not include these parameters in a request, this operation queries all instances that you can access.
+	//
+	// *   The value of this parameter can be an empty string.
+	// *   The tag key can be up to 128 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -2856,8 +3239,10 @@ func (s *OnsInstanceInServiceListRequestTag) SetValue(v string) *OnsInstanceInSe
 }
 
 type OnsInstanceInServiceListResponseBody struct {
-	Data      *OnsInstanceInServiceListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The returned list of all published instances.
+	Data *OnsInstanceInServiceListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The ID of the request. This parameter is a common parameter. Each request has a unique ID. You can use this ID to troubleshoot issues.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s OnsInstanceInServiceListResponseBody) String() string {
@@ -2896,14 +3281,36 @@ func (s *OnsInstanceInServiceListResponseBodyData) SetInstanceVO(v []*OnsInstanc
 }
 
 type OnsInstanceInServiceListResponseBodyDataInstanceVO struct {
-	CreateTime        *int64                                                  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	IndependentNaming *bool                                                   `json:"IndependentNaming,omitempty" xml:"IndependentNaming,omitempty"`
-	InstanceId        *string                                                 `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	InstanceName      *string                                                 `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	InstanceStatus    *int32                                                  `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
-	InstanceType      *int32                                                  `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	ReleaseTime       *int64                                                  `json:"ReleaseTime,omitempty" xml:"ReleaseTime,omitempty"`
-	Tags              *OnsInstanceInServiceListResponseBodyDataInstanceVOTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Indicates whether the instance uses a namespace. Valid values:
+	//
+	// *   **true**: The instance uses a separate namespace. The name of each resource must be unique in the instance. The names of resources in different instances can be the same.
+	// *   **false**: The instance does not use a separate namespace. The name of each resource must be globally unique within and across all instances.
+	IndependentNaming *bool `json:"IndependentNaming,omitempty" xml:"IndependentNaming,omitempty"`
+	// The ID of the instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The name of the instance.
+	//
+	// The name must be 3 to 64 characters in length and can contain letters, digits, hyphens (-), and underscores (\_).
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The status of the instance. Valid values:
+	//
+	// *   **0**: The instance is being deployed. This value is valid only for Enterprise Platinum Edition instances.
+	// *   **2**: The instance has overdue payments. This value is valid only for Standard Edition instances.
+	// *   **5**: The instance is running. This value is valid for Standard Edition instances and Enterprise Platinum Edition instances.
+	// *   **7**: The instance is being upgraded and is running. This value is valid only for Enterprise Platinum Edition instances.
+	InstanceStatus *int32 `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
+	// The instance type. Valid values:
+	//
+	// *   **1**: Standard Edition
+	// *   **2**: Enterprise Platinum Edition
+	//
+	// For more information about the instance editions and differences between the editions, see [Instance editions](~~185261~~).
+	InstanceType *int32 `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	// The point in time when the instance expires. If the instance is an Enterprise Platinum Edition instance, this parameter is returned.
+	ReleaseTime *int64 `json:"ReleaseTime,omitempty" xml:"ReleaseTime,omitempty"`
+	// The tags that are attached to the instance.
+	Tags *OnsInstanceInServiceListResponseBodyDataInstanceVOTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
 }
 
 func (s OnsInstanceInServiceListResponseBodyDataInstanceVO) String() string {
@@ -2972,7 +3379,9 @@ func (s *OnsInstanceInServiceListResponseBodyDataInstanceVOTags) SetTag(v []*Ons
 }
 
 type OnsInstanceInServiceListResponseBodyDataInstanceVOTagsTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The key of the tag.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of the tag.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -3024,9 +3433,16 @@ func (s *OnsInstanceInServiceListResponse) SetBody(v *OnsInstanceInServiceListRe
 }
 
 type OnsInstanceUpdateRequest struct {
-	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ID of the instance whose name or description you want to update.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The new name of the instance. The name must meet the following rules:
+	//
+	// *   The name of the instance must be unique in the region where the instance is deployed.
+	// *   The name must be 3 to 64 characters in length and can contain letters, digits, hyphens (-), and underscores (\_).
+	// *   If you do not configure this parameter, the instance name remains unchanged.
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	Remark       *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// The updated description of the instance. If you do not configure this parameter, the instance description remains unchanged.
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
 }
 
 func (s OnsInstanceUpdateRequest) String() string {
@@ -3053,6 +3469,7 @@ func (s *OnsInstanceUpdateRequest) SetRemark(v string) *OnsInstanceUpdateRequest
 }
 
 type OnsInstanceUpdateResponseBody struct {
+	// The ID of the request. This parameter is a common parameter. Each request has a unique ID. You can use this ID to troubleshoot issues.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3098,10 +3515,234 @@ func (s *OnsInstanceUpdateResponse) SetBody(v *OnsInstanceUpdateResponseBody) *O
 	return s
 }
 
-type OnsMessageGetByKeyRequest struct {
+type OnsMessageDetailRequest struct {
+	// The ID of the Message Queue for Apache RocketMQ Instance.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Key        *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	Topic      *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
+	// The ID of the message that you want to query.
+	MsgId *string `json:"MsgId,omitempty" xml:"MsgId,omitempty"`
+	// The name of the topic in which the message you want to query is stored.
+	Topic *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
+}
+
+func (s OnsMessageDetailRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s OnsMessageDetailRequest) GoString() string {
+	return s.String()
+}
+
+func (s *OnsMessageDetailRequest) SetInstanceId(v string) *OnsMessageDetailRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *OnsMessageDetailRequest) SetMsgId(v string) *OnsMessageDetailRequest {
+	s.MsgId = &v
+	return s
+}
+
+func (s *OnsMessageDetailRequest) SetTopic(v string) *OnsMessageDetailRequest {
+	s.Topic = &v
+	return s
+}
+
+type OnsMessageDetailResponseBody struct {
+	// The data returned.
+	Data *OnsMessageDetailResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The ID of the request. This parameter is a common parameter. Each request has a unique ID. You can use this ID to troubleshoot issues.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s OnsMessageDetailResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s OnsMessageDetailResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *OnsMessageDetailResponseBody) SetData(v *OnsMessageDetailResponseBodyData) *OnsMessageDetailResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *OnsMessageDetailResponseBody) SetRequestId(v string) *OnsMessageDetailResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type OnsMessageDetailResponseBodyData struct {
+	// The body of the message.
+	Body *string `json:"Body,omitempty" xml:"Body,omitempty"`
+	// The cyclic redundancy check (CRC) value of the message body.
+	BodyCRC *int32 `json:"BodyCRC,omitempty" xml:"BodyCRC,omitempty"`
+	// 消息体内容。
+	BodyStr *string `json:"BodyStr,omitempty" xml:"BodyStr,omitempty"`
+	// The producer instance that generated the message.
+	BornHost *string `json:"BornHost,omitempty" xml:"BornHost,omitempty"`
+	// The timestamp that indicates the point in time when the message was generated. Unit: milliseconds.
+	BornTimestamp *int64 `json:"BornTimestamp,omitempty" xml:"BornTimestamp,omitempty"`
+	// The ID of the Message Queue for Apache RocketMQ Instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ID of the message.
+	MsgId *string `json:"MsgId,omitempty" xml:"MsgId,omitempty"`
+	// The attributes of the message.
+	PropertyList []*OnsMessageDetailResponseBodyDataPropertyList `json:"PropertyList,omitempty" xml:"PropertyList,omitempty" type:"Repeated"`
+	// The number of retries that Message Queue for Apache RocketMQ performed to send the message to consumers.
+	ReconsumeTimes *int32 `json:"ReconsumeTimes,omitempty" xml:"ReconsumeTimes,omitempty"`
+	// The Message Queue for Apache RocketMQ broker that stores the message.
+	StoreHost *string `json:"StoreHost,omitempty" xml:"StoreHost,omitempty"`
+	// The size of the message. Unit: KB.
+	StoreSize *int32 `json:"StoreSize,omitempty" xml:"StoreSize,omitempty"`
+	// The timestamp that indicates the point in time when the Message Queue for Apache RocketMQ broker stored the message. Unit: milliseconds.
+	StoreTimestamp *int64 `json:"StoreTimestamp,omitempty" xml:"StoreTimestamp,omitempty"`
+	// The topic to which the message belongs.
+	Topic *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
+}
+
+func (s OnsMessageDetailResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s OnsMessageDetailResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *OnsMessageDetailResponseBodyData) SetBody(v string) *OnsMessageDetailResponseBodyData {
+	s.Body = &v
+	return s
+}
+
+func (s *OnsMessageDetailResponseBodyData) SetBodyCRC(v int32) *OnsMessageDetailResponseBodyData {
+	s.BodyCRC = &v
+	return s
+}
+
+func (s *OnsMessageDetailResponseBodyData) SetBodyStr(v string) *OnsMessageDetailResponseBodyData {
+	s.BodyStr = &v
+	return s
+}
+
+func (s *OnsMessageDetailResponseBodyData) SetBornHost(v string) *OnsMessageDetailResponseBodyData {
+	s.BornHost = &v
+	return s
+}
+
+func (s *OnsMessageDetailResponseBodyData) SetBornTimestamp(v int64) *OnsMessageDetailResponseBodyData {
+	s.BornTimestamp = &v
+	return s
+}
+
+func (s *OnsMessageDetailResponseBodyData) SetInstanceId(v string) *OnsMessageDetailResponseBodyData {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *OnsMessageDetailResponseBodyData) SetMsgId(v string) *OnsMessageDetailResponseBodyData {
+	s.MsgId = &v
+	return s
+}
+
+func (s *OnsMessageDetailResponseBodyData) SetPropertyList(v []*OnsMessageDetailResponseBodyDataPropertyList) *OnsMessageDetailResponseBodyData {
+	s.PropertyList = v
+	return s
+}
+
+func (s *OnsMessageDetailResponseBodyData) SetReconsumeTimes(v int32) *OnsMessageDetailResponseBodyData {
+	s.ReconsumeTimes = &v
+	return s
+}
+
+func (s *OnsMessageDetailResponseBodyData) SetStoreHost(v string) *OnsMessageDetailResponseBodyData {
+	s.StoreHost = &v
+	return s
+}
+
+func (s *OnsMessageDetailResponseBodyData) SetStoreSize(v int32) *OnsMessageDetailResponseBodyData {
+	s.StoreSize = &v
+	return s
+}
+
+func (s *OnsMessageDetailResponseBodyData) SetStoreTimestamp(v int64) *OnsMessageDetailResponseBodyData {
+	s.StoreTimestamp = &v
+	return s
+}
+
+func (s *OnsMessageDetailResponseBodyData) SetTopic(v string) *OnsMessageDetailResponseBodyData {
+	s.Topic = &v
+	return s
+}
+
+type OnsMessageDetailResponseBodyDataPropertyList struct {
+	// The name of the attribute. Valid values:
+	//
+	// *   **BODY**: indicates the message body
+	// *   **TRACE_ON**: indicates whether the trace of the message exists.
+	// *   **KEYS**: indicates the key of the message.
+	// *   **TAGS**: indicates the tag that is attached to the message.
+	// *   **INSTANCE_ID**: indicates the ID of the instance that contains the message.
+	//
+	// For more information about the terms that are used in Message Queue for Apache RocketMQ, see [Terms](~~29533~~).
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The value of the attribute.
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s OnsMessageDetailResponseBodyDataPropertyList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s OnsMessageDetailResponseBodyDataPropertyList) GoString() string {
+	return s.String()
+}
+
+func (s *OnsMessageDetailResponseBodyDataPropertyList) SetName(v string) *OnsMessageDetailResponseBodyDataPropertyList {
+	s.Name = &v
+	return s
+}
+
+func (s *OnsMessageDetailResponseBodyDataPropertyList) SetValue(v string) *OnsMessageDetailResponseBodyDataPropertyList {
+	s.Value = &v
+	return s
+}
+
+type OnsMessageDetailResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *OnsMessageDetailResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s OnsMessageDetailResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s OnsMessageDetailResponse) GoString() string {
+	return s.String()
+}
+
+func (s *OnsMessageDetailResponse) SetHeaders(v map[string]*string) *OnsMessageDetailResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *OnsMessageDetailResponse) SetStatusCode(v int32) *OnsMessageDetailResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *OnsMessageDetailResponse) SetBody(v *OnsMessageDetailResponseBody) *OnsMessageDetailResponse {
+	s.Body = v
+	return s
+}
+
+type OnsMessageGetByKeyRequest struct {
+	// The ID of the instance where the message that you want to query resides.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The key of the message that you want to query.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The topic that contains the message that you want to query.
+	Topic *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
 }
 
 func (s OnsMessageGetByKeyRequest) String() string {
@@ -3128,8 +3769,10 @@ func (s *OnsMessageGetByKeyRequest) SetTopic(v string) *OnsMessageGetByKeyReques
 }
 
 type OnsMessageGetByKeyResponseBody struct {
-	Data      *OnsMessageGetByKeyResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The information about the message that is queried.
+	Data *OnsMessageGetByKeyResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The ID of the request. This parameter is a common parameter. Each request has a unique ID. You can use this ID to troubleshoot issues.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s OnsMessageGetByKeyResponseBody) String() string {
@@ -3168,17 +3811,28 @@ func (s *OnsMessageGetByKeyResponseBodyData) SetOnsRestMessageDo(v []*OnsMessage
 }
 
 type OnsMessageGetByKeyResponseBodyDataOnsRestMessageDo struct {
-	BodyCRC        *int32                                                          `json:"BodyCRC,omitempty" xml:"BodyCRC,omitempty"`
-	BornHost       *string                                                         `json:"BornHost,omitempty" xml:"BornHost,omitempty"`
-	BornTimestamp  *int64                                                          `json:"BornTimestamp,omitempty" xml:"BornTimestamp,omitempty"`
-	InstanceId     *string                                                         `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	MsgId          *string                                                         `json:"MsgId,omitempty" xml:"MsgId,omitempty"`
-	PropertyList   *OnsMessageGetByKeyResponseBodyDataOnsRestMessageDoPropertyList `json:"PropertyList,omitempty" xml:"PropertyList,omitempty" type:"Struct"`
-	ReconsumeTimes *int32                                                          `json:"ReconsumeTimes,omitempty" xml:"ReconsumeTimes,omitempty"`
-	StoreHost      *string                                                         `json:"StoreHost,omitempty" xml:"StoreHost,omitempty"`
-	StoreSize      *int32                                                          `json:"StoreSize,omitempty" xml:"StoreSize,omitempty"`
-	StoreTimestamp *int64                                                          `json:"StoreTimestamp,omitempty" xml:"StoreTimestamp,omitempty"`
-	Topic          *string                                                         `json:"Topic,omitempty" xml:"Topic,omitempty"`
+	// The cyclic redundancy check (CRC) value of the message body.
+	BodyCRC *int32 `json:"BodyCRC,omitempty" xml:"BodyCRC,omitempty"`
+	// The producer client that generated the message.
+	BornHost *string `json:"BornHost,omitempty" xml:"BornHost,omitempty"`
+	// The timestamp when the message was produced.
+	BornTimestamp *int64 `json:"BornTimestamp,omitempty" xml:"BornTimestamp,omitempty"`
+	// The ID of the instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ID of the message.
+	MsgId *string `json:"MsgId,omitempty" xml:"MsgId,omitempty"`
+	// The attributes of the message.
+	PropertyList *OnsMessageGetByKeyResponseBodyDataOnsRestMessageDoPropertyList `json:"PropertyList,omitempty" xml:"PropertyList,omitempty" type:"Struct"`
+	// The number of retries that Message Queue for Apache RocketMQ performed to send the message to consumers.
+	ReconsumeTimes *int32 `json:"ReconsumeTimes,omitempty" xml:"ReconsumeTimes,omitempty"`
+	// The Message Queue for Apache RocketMQ broker that stores the message.
+	StoreHost *string `json:"StoreHost,omitempty" xml:"StoreHost,omitempty"`
+	// The size of the message.
+	StoreSize *int32 `json:"StoreSize,omitempty" xml:"StoreSize,omitempty"`
+	// The timestamp when the Message Queue for Apache RocketMQ broker stored the message.
+	StoreTimestamp *int64 `json:"StoreTimestamp,omitempty" xml:"StoreTimestamp,omitempty"`
+	// The topic to which the message belongs.
+	Topic *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
 }
 
 func (s OnsMessageGetByKeyResponseBodyDataOnsRestMessageDo) String() string {
@@ -3262,7 +3916,18 @@ func (s *OnsMessageGetByKeyResponseBodyDataOnsRestMessageDoPropertyList) SetMess
 }
 
 type OnsMessageGetByKeyResponseBodyDataOnsRestMessageDoPropertyListMessageProperty struct {
-	Name  *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The name of the attribute. Valid values:
+	//
+	// *   **TRACE_ON**: indicates whether a trace of the message exists.
+	//
+	// \-\*\* KEYS\*\*: indicates the key of the message.
+	//
+	// *   **TAGS**: indicates the tag that is attached to the message.
+	// *   **INSTANCE_ID**: indicates the ID of the instance that contains the message.
+	//
+	// For more information about the terms that are used in Message Queue for Apache RocketMQ, see [Terms](~~29533~~).
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The value of the attribute.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -3314,9 +3979,12 @@ func (s *OnsMessageGetByKeyResponse) SetBody(v *OnsMessageGetByKeyResponseBody) 
 }
 
 type OnsMessageGetByMsgIdRequest struct {
+	// The ID of the instance where the message that you want to query resides.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	MsgId      *string `json:"MsgId,omitempty" xml:"MsgId,omitempty"`
-	Topic      *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
+	// The ID of the message that you want to query.
+	MsgId *string `json:"MsgId,omitempty" xml:"MsgId,omitempty"`
+	// The topic that contains the message that you want to query.
+	Topic *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
 }
 
 func (s OnsMessageGetByMsgIdRequest) String() string {
@@ -3343,8 +4011,10 @@ func (s *OnsMessageGetByMsgIdRequest) SetTopic(v string) *OnsMessageGetByMsgIdRe
 }
 
 type OnsMessageGetByMsgIdResponseBody struct {
-	Data      *OnsMessageGetByMsgIdResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The information about the message that is queried.
+	Data *OnsMessageGetByMsgIdResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The ID of the request. This parameter is a common parameter. Each request has a unique ID. You can use this ID to troubleshoot issues.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s OnsMessageGetByMsgIdResponseBody) String() string {
@@ -3366,17 +4036,28 @@ func (s *OnsMessageGetByMsgIdResponseBody) SetRequestId(v string) *OnsMessageGet
 }
 
 type OnsMessageGetByMsgIdResponseBodyData struct {
-	BodyCRC        *int32                                            `json:"BodyCRC,omitempty" xml:"BodyCRC,omitempty"`
-	BornHost       *string                                           `json:"BornHost,omitempty" xml:"BornHost,omitempty"`
-	BornTimestamp  *int64                                            `json:"BornTimestamp,omitempty" xml:"BornTimestamp,omitempty"`
-	InstanceId     *string                                           `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	MsgId          *string                                           `json:"MsgId,omitempty" xml:"MsgId,omitempty"`
-	PropertyList   *OnsMessageGetByMsgIdResponseBodyDataPropertyList `json:"PropertyList,omitempty" xml:"PropertyList,omitempty" type:"Struct"`
-	ReconsumeTimes *int32                                            `json:"ReconsumeTimes,omitempty" xml:"ReconsumeTimes,omitempty"`
-	StoreHost      *string                                           `json:"StoreHost,omitempty" xml:"StoreHost,omitempty"`
-	StoreSize      *int32                                            `json:"StoreSize,omitempty" xml:"StoreSize,omitempty"`
-	StoreTimestamp *int64                                            `json:"StoreTimestamp,omitempty" xml:"StoreTimestamp,omitempty"`
-	Topic          *string                                           `json:"Topic,omitempty" xml:"Topic,omitempty"`
+	// The cyclic redundancy check (CRC) value of the message body.
+	BodyCRC *int32 `json:"BodyCRC,omitempty" xml:"BodyCRC,omitempty"`
+	// The producer client that generated the message.
+	BornHost *string `json:"BornHost,omitempty" xml:"BornHost,omitempty"`
+	// The timestamp when the message was produced.
+	BornTimestamp *int64 `json:"BornTimestamp,omitempty" xml:"BornTimestamp,omitempty"`
+	// The ID of the instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ID of the message.
+	MsgId *string `json:"MsgId,omitempty" xml:"MsgId,omitempty"`
+	// The attributes of the message.
+	PropertyList *OnsMessageGetByMsgIdResponseBodyDataPropertyList `json:"PropertyList,omitempty" xml:"PropertyList,omitempty" type:"Struct"`
+	// The number of retries that Message Queue for Apache RocketMQ performed to send the message to consumers.
+	ReconsumeTimes *int32 `json:"ReconsumeTimes,omitempty" xml:"ReconsumeTimes,omitempty"`
+	// The Message Queue for Apache RocketMQ broker that stores the message.
+	StoreHost *string `json:"StoreHost,omitempty" xml:"StoreHost,omitempty"`
+	// The size of the message.
+	StoreSize *int32 `json:"StoreSize,omitempty" xml:"StoreSize,omitempty"`
+	// The timestamp when the Message Queue for Apache RocketMQ broker stored the message.
+	StoreTimestamp *int64 `json:"StoreTimestamp,omitempty" xml:"StoreTimestamp,omitempty"`
+	// The topic to which the message belongs.
+	Topic *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
 }
 
 func (s OnsMessageGetByMsgIdResponseBodyData) String() string {
@@ -3460,7 +4141,16 @@ func (s *OnsMessageGetByMsgIdResponseBodyDataPropertyList) SetMessageProperty(v 
 }
 
 type OnsMessageGetByMsgIdResponseBodyDataPropertyListMessageProperty struct {
-	Name  *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The name of the attribute. Valid values:
+	//
+	// *   **TRACE_ON**: indicates whether a trace of the message exists.
+	// *   **KEYS**: indicates the key of the message.
+	// *   **TAGS**: indicates the tag that is attached to the message.
+	// *   **INSTANCE_ID**: indicates the ID of the instance that contains the message.
+	//
+	// For more information about the terms that are used in Message Queue for Apache RocketMQ, see [Terms](~~29533~~).
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The value of the attribute.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -3512,13 +4202,20 @@ func (s *OnsMessageGetByMsgIdResponse) SetBody(v *OnsMessageGetByMsgIdResponseBo
 }
 
 type OnsMessagePageQueryByTopicRequest struct {
-	BeginTime   *int64  `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
-	CurrentPage *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	EndTime     *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	TaskId      *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	Topic       *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
+	// The beginning of the time range to query. Set the value to a UNIX timestamp that represents the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC. If you specify a valid value for the **TaskId** parameter in the request, this parameter does not take effect. The system uses the value of the BeginTime parameter that you specified in the request when you created the specified query task.
+	BeginTime *int64 `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
+	// The number of the page to return. Pages start from page 1. Valid values: 1 to 50.
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The end of the time range to query. Set the value to a UNIX timestamp that represents the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC. If you specify a valid value for the **TaskId** parameter in the request, this parameter does not take effect. The system uses the value of the EndTime parameter that you specified in the request when you created the specified query task.
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The ID of the instance where the message that you want to query resides.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The number of entries to return on each page. Valid values: 5 to 50. Default value: 20. If you specify a valid value for the **TaskId** parameter in the request, this parameter does not take effect. The system uses the value of the PageSize parameter that you specified in the request for creating the query task.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the query task. The first time you call this operation to query dead-letter messages that are sent to a specified consumer group within a specified time range, this parameter is not required. This parameter is required in subsequent queries for dead-letter messages on a specified page. You can obtain the task ID from the returned result of the first query.
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The topic in which the messages you want to query are stored.
+	Topic *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
 }
 
 func (s OnsMessagePageQueryByTopicRequest) String() string {
@@ -3565,8 +4262,10 @@ func (s *OnsMessagePageQueryByTopicRequest) SetTopic(v string) *OnsMessagePageQu
 }
 
 type OnsMessagePageQueryByTopicResponseBody struct {
+	// The information about the message that is queried.
 	MsgFoundDo *OnsMessagePageQueryByTopicResponseBodyMsgFoundDo `json:"MsgFoundDo,omitempty" xml:"MsgFoundDo,omitempty" type:"Struct"`
-	RequestId  *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request. This parameter is a common parameter. Each request has a unique ID. You can use this ID to troubleshoot issues.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s OnsMessagePageQueryByTopicResponseBody) String() string {
@@ -3588,10 +4287,14 @@ func (s *OnsMessagePageQueryByTopicResponseBody) SetRequestId(v string) *OnsMess
 }
 
 type OnsMessagePageQueryByTopicResponseBodyMsgFoundDo struct {
-	CurrentPage  *int64                                                        `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	MaxPageCount *int64                                                        `json:"MaxPageCount,omitempty" xml:"MaxPageCount,omitempty"`
+	// The page number of the returned page.
+	CurrentPage *int64 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The total number of returned pages.
+	MaxPageCount *int64 `json:"MaxPageCount,omitempty" xml:"MaxPageCount,omitempty"`
+	// The information about messages on the returned page. The information that is contained in this parameter is the same as the information that is returned by the [OnsMessageGetByMsgId](~~29607~~) operation.
 	MsgFoundList *OnsMessagePageQueryByTopicResponseBodyMsgFoundDoMsgFoundList `json:"MsgFoundList,omitempty" xml:"MsgFoundList,omitempty" type:"Struct"`
-	TaskId       *string                                                       `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The ID of the query task. The first time you call this operation to query the dead-letter messages that are sent to a specified consumer group within a specified time range, this parameter is returned. You can use the task ID to query the details of dead-letter messages on other returned pages.
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s OnsMessagePageQueryByTopicResponseBodyMsgFoundDo) String() string {
@@ -3640,17 +4343,28 @@ func (s *OnsMessagePageQueryByTopicResponseBodyMsgFoundDoMsgFoundList) SetOnsRes
 }
 
 type OnsMessagePageQueryByTopicResponseBodyMsgFoundDoMsgFoundListOnsRestMessageDo struct {
-	BodyCRC        *int32                                                                                    `json:"BodyCRC,omitempty" xml:"BodyCRC,omitempty"`
-	BornHost       *string                                                                                   `json:"BornHost,omitempty" xml:"BornHost,omitempty"`
-	BornTimestamp  *int64                                                                                    `json:"BornTimestamp,omitempty" xml:"BornTimestamp,omitempty"`
-	InstanceId     *string                                                                                   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	MsgId          *string                                                                                   `json:"MsgId,omitempty" xml:"MsgId,omitempty"`
-	PropertyList   *OnsMessagePageQueryByTopicResponseBodyMsgFoundDoMsgFoundListOnsRestMessageDoPropertyList `json:"PropertyList,omitempty" xml:"PropertyList,omitempty" type:"Struct"`
-	ReconsumeTimes *int32                                                                                    `json:"ReconsumeTimes,omitempty" xml:"ReconsumeTimes,omitempty"`
-	StoreHost      *string                                                                                   `json:"StoreHost,omitempty" xml:"StoreHost,omitempty"`
-	StoreSize      *int32                                                                                    `json:"StoreSize,omitempty" xml:"StoreSize,omitempty"`
-	StoreTimestamp *int64                                                                                    `json:"StoreTimestamp,omitempty" xml:"StoreTimestamp,omitempty"`
-	Topic          *string                                                                                   `json:"Topic,omitempty" xml:"Topic,omitempty"`
+	// The cyclic redundancy check (CRC) value of the message body.
+	BodyCRC *int32 `json:"BodyCRC,omitempty" xml:"BodyCRC,omitempty"`
+	// The producer client that generated the message.
+	BornHost *string `json:"BornHost,omitempty" xml:"BornHost,omitempty"`
+	// The timestamp when the message was generated. The value is a UNIX timestamp that represents the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
+	BornTimestamp *int64 `json:"BornTimestamp,omitempty" xml:"BornTimestamp,omitempty"`
+	// The ID of the instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ID of the message.
+	MsgId *string `json:"MsgId,omitempty" xml:"MsgId,omitempty"`
+	// The attributes of the message.
+	PropertyList *OnsMessagePageQueryByTopicResponseBodyMsgFoundDoMsgFoundListOnsRestMessageDoPropertyList `json:"PropertyList,omitempty" xml:"PropertyList,omitempty" type:"Struct"`
+	// The number of retries that Message Queue for Apache RocketMQ performed to send the message to consumers.
+	ReconsumeTimes *int32 `json:"ReconsumeTimes,omitempty" xml:"ReconsumeTimes,omitempty"`
+	// The Message Queue for Apache RocketMQ broker that stores the message.
+	StoreHost *string `json:"StoreHost,omitempty" xml:"StoreHost,omitempty"`
+	// The size of the message. Unit: KB.
+	StoreSize *int32 `json:"StoreSize,omitempty" xml:"StoreSize,omitempty"`
+	// The timestamp when the Message Queue for Apache RocketMQ broker stored the message. The value is a UNIX timestamp that represents the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
+	StoreTimestamp *int64 `json:"StoreTimestamp,omitempty" xml:"StoreTimestamp,omitempty"`
+	// The topic to which the message belongs.
+	Topic *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
 }
 
 func (s OnsMessagePageQueryByTopicResponseBodyMsgFoundDoMsgFoundListOnsRestMessageDo) String() string {
@@ -3734,7 +4448,16 @@ func (s *OnsMessagePageQueryByTopicResponseBodyMsgFoundDoMsgFoundListOnsRestMess
 }
 
 type OnsMessagePageQueryByTopicResponseBodyMsgFoundDoMsgFoundListOnsRestMessageDoPropertyListMessageProperty struct {
-	Name  *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The name of the attribute. Valid values:
+	//
+	// *   **TRACE_ON**: indicates whether a trace of the message exists.
+	// *   **KEYS**: indicates the key of the message.
+	// *   **TAGS**: indicates the tag that is attached to the message.
+	// *   **INSTANCE_ID**: indicates the ID of the instance that contains the message.
+	//
+	// For more information about the terms that are used in Message Queue for Apache RocketMQ, see [Terms](~~29533~~).
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The value of the attribute.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -3786,11 +4509,16 @@ func (s *OnsMessagePageQueryByTopicResponse) SetBody(v *OnsMessagePageQueryByTop
 }
 
 type OnsMessagePushRequest struct {
-	ClientId   *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
-	GroupId    *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The ID of the consumer. You can call the [OnsConsumerGetConnection](~~29598~~) operation to query the ID of each consumer in a consumer group.
+	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	// The ID of the consumer group. For information about what a consumer group is, see [Terms](~~29533~~).
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The ID of the Message Queue for Apache RocketMQ instance to which the specified consumer group belongs.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	MsgId      *string `json:"MsgId,omitempty" xml:"MsgId,omitempty"`
-	Topic      *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
+	// The ID of the message.
+	MsgId *string `json:"MsgId,omitempty" xml:"MsgId,omitempty"`
+	// The topic to which the message is pushed.
+	Topic *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
 }
 
 func (s OnsMessagePushRequest) String() string {
@@ -3827,6 +4555,7 @@ func (s *OnsMessagePushRequest) SetTopic(v string) *OnsMessagePushRequest {
 }
 
 type OnsMessagePushResponseBody struct {
+	// The ID of the request. The system generates a unique ID for each request. You can troubleshoot issues based on the request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3873,9 +4602,12 @@ func (s *OnsMessagePushResponse) SetBody(v *OnsMessagePushResponseBody) *OnsMess
 }
 
 type OnsMessageTraceRequest struct {
+	// The ID of the instance where the message that you want to query resides.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	MsgId      *string `json:"MsgId,omitempty" xml:"MsgId,omitempty"`
-	Topic      *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
+	// The ID of the message that you want to query.
+	MsgId *string `json:"MsgId,omitempty" xml:"MsgId,omitempty"`
+	// The topic to which the message belongs.
+	Topic *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
 }
 
 func (s OnsMessageTraceRequest) String() string {
@@ -3902,8 +4634,10 @@ func (s *OnsMessageTraceRequest) SetTopic(v string) *OnsMessageTraceRequest {
 }
 
 type OnsMessageTraceResponseBody struct {
-	Data      *OnsMessageTraceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The information about the message that is queried.
+	Data *OnsMessageTraceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The ID of the request. This parameter is a common parameter. Each request has a unique ID. You can use this ID to troubleshoot issues.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s OnsMessageTraceResponseBody) String() string {
@@ -3942,9 +4676,18 @@ func (s *OnsMessageTraceResponseBodyData) SetMessageTrack(v []*OnsMessageTraceRe
 }
 
 type OnsMessageTraceResponseBodyDataMessageTrack struct {
+	// The ID of the consumer group that subscribes to the topic.
 	ConsumerGroup *string `json:"ConsumerGroup,omitempty" xml:"ConsumerGroup,omitempty"`
-	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	TrackType     *string `json:"TrackType,omitempty" xml:"TrackType,omitempty"`
+	// The ID of the instance where the message that you want to query resides.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The status of the message. Valid values:
+	//
+	// *   **CONSUMED**: The message is consumed.
+	// *   **CONSUMED_BUT_FILTERED:** No consumer groups subscribe to the message. The message is filtered out and not consumed.
+	// *   **NOT_CONSUME_YET**: The message is pending to be consumed.
+	// *   **NOT_ONLINE**: The consumer group is offline.
+	// *   **UNKNOWN**: The message is not consumed due to unknown reasons.
+	TrackType *string `json:"TrackType,omitempty" xml:"TrackType,omitempty"`
 }
 
 func (s OnsMessageTraceResponseBodyDataMessageTrack) String() string {
@@ -4000,8 +4743,10 @@ func (s *OnsMessageTraceResponse) SetBody(v *OnsMessageTraceResponseBody) *OnsMe
 }
 
 type OnsRegionListResponseBody struct {
-	Data      *OnsRegionListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The information about the message that is queried.
+	Data *OnsRegionListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The ID of the request. This parameter is a common parameter. Each request has a unique ID. You can use this ID to troubleshoot issues.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s OnsRegionListResponseBody) String() string {
@@ -4040,8 +4785,10 @@ func (s *OnsRegionListResponseBodyData) SetRegionDo(v []*OnsRegionListResponseBo
 }
 
 type OnsRegionListResponseBodyDataRegionDo struct {
+	// The ID of the region.
 	OnsRegionId *string `json:"OnsRegionId,omitempty" xml:"OnsRegionId,omitempty"`
-	RegionName  *string `json:"RegionName,omitempty" xml:"RegionName,omitempty"`
+	// The ID of the region.
+	RegionName *string `json:"RegionName,omitempty" xml:"RegionName,omitempty"`
 }
 
 func (s OnsRegionListResponseBodyDataRegionDo) String() string {
@@ -4092,10 +4839,29 @@ func (s *OnsRegionListResponse) SetBody(v *OnsRegionListResponseBody) *OnsRegion
 }
 
 type OnsTopicCreateRequest struct {
-	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	MessageType *int32  `json:"MessageType,omitempty" xml:"MessageType,omitempty"`
-	Remark      *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	Topic       *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
+	// The ID of the instance in which you want to create the topic.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The type of the message. Valid values:
+	//
+	// *   **0**: normal messages
+	// *   **1**: partitionally ordered messages
+	// *   **2**: globally ordered messages
+	// *   **4**: transactional messages
+	// *   **5**: scheduled or delayed messages
+	//
+	// For more information about message types, see [Message types](~~155952~~).
+	MessageType *int32 `json:"MessageType,omitempty" xml:"MessageType,omitempty"`
+	// The description of the topic that you want to create.
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// The name of the topic that you want to create. The name must meet the following rules:
+	//
+	// *   The name must be 3 to 64 characters in length and can contain letters, digits, hyphens (-), and underscores (\_).
+	// *   The topic name cannot start with CID or GID because CID and GID are reserved prefixes for group IDs.
+	// *   If the Message Queue for Apache RocketMQ instance in which you want to create the topic uses a namespace, the topic name must be unique in the instance. The topic name cannot be the same as an existing topic name or a group ID in the instance. The topic name can be the same as a topic name or a group ID in another instance that uses a different namespace. For example, if Instance A and Instance B use different namespaces, a topic name in Instance A can be the same as a topic name or a group ID in Instance B.
+	// *   If the instance in which you want to create the topic does not use a namespace, the topic name must be globally unique across instances and regions. The topic name cannot be the same as an existing topic name or group ID in Message Queue for Apache RocketMQ instances that belong to your Alibaba Cloud account.
+	//
+	// >  To check whether an instance uses a namespace, log on to the Message Queue for Apache RocketMQ console, go to the **Instance Details** page, and then view the value of the Namespace field in the **Basic Information** section.
+	Topic *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
 }
 
 func (s OnsTopicCreateRequest) String() string {
@@ -4127,6 +4893,7 @@ func (s *OnsTopicCreateRequest) SetTopic(v string) *OnsTopicCreateRequest {
 }
 
 type OnsTopicCreateResponseBody struct {
+	// The ID of the request. This parameter is a common parameter. Each request has a unique ID. You can use this ID to troubleshoot issues.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4173,8 +4940,10 @@ func (s *OnsTopicCreateResponse) SetBody(v *OnsTopicCreateResponseBody) *OnsTopi
 }
 
 type OnsTopicDeleteRequest struct {
+	// The ID of the instance that contains the topic you want to delete.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Topic      *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
+	// The name of the topic that you want to delete.
+	Topic *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
 }
 
 func (s OnsTopicDeleteRequest) String() string {
@@ -4196,6 +4965,7 @@ func (s *OnsTopicDeleteRequest) SetTopic(v string) *OnsTopicDeleteRequest {
 }
 
 type OnsTopicDeleteResponseBody struct {
+	// The ID of the request. This parameter is a common parameter. Each request has a unique ID. You can use this ID to troubleshoot issues.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4242,10 +5012,13 @@ func (s *OnsTopicDeleteResponse) SetBody(v *OnsTopicDeleteResponseBody) *OnsTopi
 }
 
 type OnsTopicListRequest struct {
-	InstanceId *string                   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Tag        []*OnsTopicListRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	Topic      *string                   `json:"Topic,omitempty" xml:"Topic,omitempty"`
-	UserId     *string                   `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The ID of the instance that contains the topics you want to query.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The list of tags that are attached to the topic. A maximum of 20 tags can be included in the list.
+	Tag []*OnsTopicListRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	// The name of the topic that you want to query. This parameter is required when you want to query a specific topic. If you do not include this parameter in a request, all topics that you can access are queried.
+	Topic  *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s OnsTopicListRequest) String() string {
@@ -4277,7 +5050,15 @@ func (s *OnsTopicListRequest) SetUserId(v string) *OnsTopicListRequest {
 }
 
 type OnsTopicListRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The key of a tag that is attached to the topics you want to query. This parameter is not required. If you configure this parameter, you must also configure the **Tag.N.Value** parameter.**** If you include the Key and Value parameters in a request, this operation queries only the topics that use the specified tags. If you do not include these parameters in a request, this operation queries all topics that you can access.
+	//
+	// *   The value of this parameter cannot be an empty string.
+	// *   The tag value can be up to 128 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of a tag that is attached to the topics you want to query. This parameter is not required. If you configure this parameter, you must also configure the **Tag.N.Key** parameter.**** If you include the Key and Value parameters in a request, this operation queries only the topics that use the specified tags. If you do not include these parameters in a request, this operation queries all topics that you can access.
+	//
+	// *   The value of this parameter can be an empty string.
+	// *   The tag value can be up to 128 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -4300,8 +5081,10 @@ func (s *OnsTopicListRequestTag) SetValue(v string) *OnsTopicListRequestTag {
 }
 
 type OnsTopicListResponseBody struct {
-	Data      *OnsTopicListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The information about the topics.
+	Data *OnsTopicListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The ID of the request. This is a common parameter. Each request has a unique ID. You can use this ID to troubleshoot issues.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s OnsTopicListResponseBody) String() string {
@@ -4340,17 +5123,45 @@ func (s *OnsTopicListResponseBodyData) SetPublishInfoDo(v []*OnsTopicListRespons
 }
 
 type OnsTopicListResponseBodyDataPublishInfoDo struct {
-	CreateTime        *int64                                         `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	IndependentNaming *bool                                          `json:"IndependentNaming,omitempty" xml:"IndependentNaming,omitempty"`
-	InstanceId        *string                                        `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	MessageType       *int32                                         `json:"MessageType,omitempty" xml:"MessageType,omitempty"`
-	Owner             *string                                        `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	Relation          *int32                                         `json:"Relation,omitempty" xml:"Relation,omitempty"`
-	RelationName      *string                                        `json:"RelationName,omitempty" xml:"RelationName,omitempty"`
-	Remark            *string                                        `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	ServiceStatus     *int32                                         `json:"ServiceStatus,omitempty" xml:"ServiceStatus,omitempty"`
-	Tags              *OnsTopicListResponseBodyDataPublishInfoDoTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
-	Topic             *string                                        `json:"Topic,omitempty" xml:"Topic,omitempty"`
+	// The point in time when the topic was created.
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Indicates whether the instance that contains the topic uses a namespace. Valid values:
+	//
+	// *   **true**: The instance uses a separate namespace. The name of each resource must be unique in the instance. The names of resources in different instances can be the same.
+	// *   **false**: The instance does not use a separate namespace. The name of each resource must be globally unique within and across all instances.
+	IndependentNaming *bool `json:"IndependentNaming,omitempty" xml:"IndependentNaming,omitempty"`
+	// The ID of the instance that contains the topic.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The type of the messages. Valid values:
+	//
+	// *   **0**: normal messages
+	// *   **1**: partitionally ordered messages
+	// *   **2**: globally ordered messages
+	// *   **4**: transactional messages
+	// *   **5**: scheduled or delayed messages
+	MessageType *int32 `json:"MessageType,omitempty" xml:"MessageType,omitempty"`
+	// The user ID of the topic owner.
+	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// The code of the relationship between the current account and the topic. Valid values:
+	//
+	// *   **1**: The current account is the owner of the topic.
+	// *   **2**: The current account can publish messages to the topic.
+	// *   **4**: The current account can subscribe to the topic.
+	// *   **6**: The current account can publish messages to and subscribe to the topic.
+	Relation *int32 `json:"Relation,omitempty" xml:"Relation,omitempty"`
+	// The name of the relationship between the current account and the topic. The value of this parameter indicates that the current account is the owner of the topic, the current account can publish messages to the topic, the current account can subscribe to the topic, or the current account can publish messages to and subscribe to the topic.
+	RelationName *string `json:"RelationName,omitempty" xml:"RelationName,omitempty"`
+	// The description of the topic.
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// The status of the topic. Valid values:
+	//
+	// *   **0**: The topic is being created.
+	// *   **1**: The topic is being used.
+	ServiceStatus *int32 `json:"ServiceStatus,omitempty" xml:"ServiceStatus,omitempty"`
+	// The tags that are attached to the topic.
+	Tags *OnsTopicListResponseBodyDataPublishInfoDoTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
+	// The name of the topic.
+	Topic *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
 }
 
 func (s OnsTopicListResponseBodyDataPublishInfoDo) String() string {
@@ -4434,7 +5245,9 @@ func (s *OnsTopicListResponseBodyDataPublishInfoDoTags) SetTag(v []*OnsTopicList
 }
 
 type OnsTopicListResponseBodyDataPublishInfoDoTagsTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The key of the tag.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of the tag.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -4486,8 +5299,10 @@ func (s *OnsTopicListResponse) SetBody(v *OnsTopicListResponseBody) *OnsTopicLis
 }
 
 type OnsTopicStatusRequest struct {
+	// The ID of the instance that contains the topic you want to query.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Topic      *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
+	// The name of the topic that you want to query.
+	Topic *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
 }
 
 func (s OnsTopicStatusRequest) String() string {
@@ -4509,8 +5324,10 @@ func (s *OnsTopicStatusRequest) SetTopic(v string) *OnsTopicStatusRequest {
 }
 
 type OnsTopicStatusResponseBody struct {
-	Data      *OnsTopicStatusResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The data structure of the queried topic.
+	Data *OnsTopicStatusResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The ID of the request. This parameter is a common parameter. Each request has a unique ID. You can use this ID to troubleshoot issues.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s OnsTopicStatusResponseBody) String() string {
@@ -4532,9 +5349,20 @@ func (s *OnsTopicStatusResponseBody) SetRequestId(v string) *OnsTopicStatusRespo
 }
 
 type OnsTopicStatusResponseBodyData struct {
+	// The point in time when the latest message is ready in the topic. If no message exists in the topic, the return value of this parameter is 0.
+	//
+	// The value of this parameter is a UNIX timestamp in milliseconds.
+	//
+	// For information about the definition of ready messages and ready time, see [Terms](~~29533~~).
 	LastTimeStamp *int64 `json:"LastTimeStamp,omitempty" xml:"LastTimeStamp,omitempty"`
-	Perm          *int32 `json:"Perm,omitempty" xml:"Perm,omitempty"`
-	TotalCount    *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// Indicates the operations that you can perform on the topic. Valid values:
+	//
+	// *   **2**: You can publish messages to the topic.
+	// *   **4**: You can subscribe to the topic.
+	// *   **6**: You can publish messages to and subscribe to the topic.
+	Perm *int32 `json:"Perm,omitempty" xml:"Perm,omitempty"`
+	// The total number of messages in all partitions of the topic.
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s OnsTopicStatusResponseBodyData) String() string {
@@ -4590,8 +5418,10 @@ func (s *OnsTopicStatusResponse) SetBody(v *OnsTopicStatusResponseBody) *OnsTopi
 }
 
 type OnsTopicSubDetailRequest struct {
+	// The ID of the instance that contains the topic you want to query.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Topic      *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
+	// The name of the topic that you want to query.
+	Topic *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
 }
 
 func (s OnsTopicSubDetailRequest) String() string {
@@ -4613,8 +5443,10 @@ func (s *OnsTopicSubDetailRequest) SetTopic(v string) *OnsTopicSubDetailRequest 
 }
 
 type OnsTopicSubDetailResponseBody struct {
-	Data      *OnsTopicSubDetailResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The returned data.
+	Data *OnsTopicSubDetailResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The ID of the request. This parameter is a common parameter. Each request has a unique ID. You can use this ID to troubleshoot issues.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s OnsTopicSubDetailResponseBody) String() string {
@@ -4636,8 +5468,10 @@ func (s *OnsTopicSubDetailResponseBody) SetRequestId(v string) *OnsTopicSubDetai
 }
 
 type OnsTopicSubDetailResponseBodyData struct {
+	// The information about the online consumer groups that subscribe to the topic.
 	SubscriptionDataList *OnsTopicSubDetailResponseBodyDataSubscriptionDataList `json:"SubscriptionDataList,omitempty" xml:"SubscriptionDataList,omitempty" type:"Struct"`
-	Topic                *string                                                `json:"Topic,omitempty" xml:"Topic,omitempty"`
+	// The name of the topic.
+	Topic *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
 }
 
 func (s OnsTopicSubDetailResponseBodyData) String() string {
@@ -4676,9 +5510,17 @@ func (s *OnsTopicSubDetailResponseBodyDataSubscriptionDataList) SetSubscriptionD
 }
 
 type OnsTopicSubDetailResponseBodyDataSubscriptionDataListSubscriptionDataList struct {
-	GroupId      *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The ID of the consumer group.
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The consumption mode. Valid values:
+	//
+	// *   **CLUSTERING**: the clustering consumption mode
+	// *   **BROADCASTING**: the broadcasting consumption mode
+	//
+	// For more information about consumption modes, see [Clustering consumption and broadcasting consumption](~~43163~~).
 	MessageModel *string `json:"MessageModel,omitempty" xml:"MessageModel,omitempty"`
-	SubString    *string `json:"SubString,omitempty" xml:"SubString,omitempty"`
+	// The expression based on which consumers in the consumer group subscribe to the topic.
+	SubString *string `json:"SubString,omitempty" xml:"SubString,omitempty"`
 }
 
 func (s OnsTopicSubDetailResponseBodyDataSubscriptionDataListSubscriptionDataList) String() string {
@@ -4734,9 +5576,16 @@ func (s *OnsTopicSubDetailResponse) SetBody(v *OnsTopicSubDetailResponseBody) *O
 }
 
 type OnsTopicUpdateRequest struct {
+	// The ID of the instance to which the topic belongs.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Perm       *int32  `json:"Perm,omitempty" xml:"Perm,omitempty"`
-	Topic      *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
+	// The read/write mode that you want to configure for the topic. Valid values:
+	//
+	// *   **6:** Both read and write operations are allowed.
+	// *   **4:** Write operations are forbidden.
+	// *   **2:** Read operations are forbidden.
+	Perm *int32 `json:"Perm,omitempty" xml:"Perm,omitempty"`
+	// The name of the topic that you want to manage.
+	Topic *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
 }
 
 func (s OnsTopicUpdateRequest) String() string {
@@ -4763,6 +5612,7 @@ func (s *OnsTopicUpdateRequest) SetTopic(v string) *OnsTopicUpdateRequest {
 }
 
 type OnsTopicUpdateResponseBody struct {
+	// The ID of the request. This parameter is a common parameter. Each request has a unique ID. You can use this ID to troubleshoot issues.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4809,6 +5659,7 @@ func (s *OnsTopicUpdateResponse) SetBody(v *OnsTopicUpdateResponseBody) *OnsTopi
 }
 
 type OnsTraceGetResultRequest struct {
+	// The ID of the task that was created to query the trace of the message.
 	QueryId *string `json:"QueryId,omitempty" xml:"QueryId,omitempty"`
 }
 
@@ -4826,7 +5677,9 @@ func (s *OnsTraceGetResultRequest) SetQueryId(v string) *OnsTraceGetResultReques
 }
 
 type OnsTraceGetResultResponseBody struct {
-	RequestId *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request. The system generates a unique ID for each request. You can troubleshoot issues based on the request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The details of the message trace.
 	TraceData *OnsTraceGetResultResponseBodyTraceData `json:"TraceData,omitempty" xml:"TraceData,omitempty" type:"Struct"`
 }
 
@@ -4849,16 +5702,30 @@ func (s *OnsTraceGetResultResponseBody) SetTraceData(v *OnsTraceGetResultRespons
 }
 
 type OnsTraceGetResultResponseBodyTraceData struct {
-	CreateTime *int64                                           `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	InstanceId *string                                          `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	MsgId      *string                                          `json:"MsgId,omitempty" xml:"MsgId,omitempty"`
-	MsgKey     *string                                          `json:"MsgKey,omitempty" xml:"MsgKey,omitempty"`
-	QueryId    *string                                          `json:"QueryId,omitempty" xml:"QueryId,omitempty"`
-	Status     *string                                          `json:"Status,omitempty" xml:"Status,omitempty"`
-	Topic      *string                                          `json:"Topic,omitempty" xml:"Topic,omitempty"`
-	TraceList  *OnsTraceGetResultResponseBodyTraceDataTraceList `json:"TraceList,omitempty" xml:"TraceList,omitempty" type:"Struct"`
-	UpdateTime *int64                                           `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	UserId     *string                                          `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The point in time when the task was created.
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The ID of the instance that contains the message.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ID of the message that is queried.
+	MsgId *string `json:"MsgId,omitempty" xml:"MsgId,omitempty"`
+	// The key of the message that is queried.
+	MsgKey *string `json:"MsgKey,omitempty" xml:"MsgKey,omitempty"`
+	// The ID of the task.
+	QueryId *string `json:"QueryId,omitempty" xml:"QueryId,omitempty"`
+	// The status of the task. Valid values:
+	//
+	// *   **finish**: The task is complete.
+	// *   **working**: The task is in progress.
+	// *   **removed**: The task is deleted.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The topic in which the message is stored.
+	Topic *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
+	// The details of the message trace.
+	TraceList *OnsTraceGetResultResponseBodyTraceDataTraceList `json:"TraceList,omitempty" xml:"TraceList,omitempty" type:"Struct"`
+	// The most recent point in time when the task was updated.
+	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The ID of the user who created the task.
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s OnsTraceGetResultResponseBodyTraceData) String() string {
@@ -4937,16 +5804,32 @@ func (s *OnsTraceGetResultResponseBodyTraceDataTraceList) SetTraceMapDo(v []*Ons
 }
 
 type OnsTraceGetResultResponseBodyTraceDataTraceListTraceMapDo struct {
-	BornHost     *string                                                           `json:"BornHost,omitempty" xml:"BornHost,omitempty"`
-	CostTime     *int32                                                            `json:"CostTime,omitempty" xml:"CostTime,omitempty"`
-	MsgId        *string                                                           `json:"MsgId,omitempty" xml:"MsgId,omitempty"`
-	MsgKey       *string                                                           `json:"MsgKey,omitempty" xml:"MsgKey,omitempty"`
-	PubGroupName *string                                                           `json:"PubGroupName,omitempty" xml:"PubGroupName,omitempty"`
-	PubTime      *int64                                                            `json:"PubTime,omitempty" xml:"PubTime,omitempty"`
-	Status       *string                                                           `json:"Status,omitempty" xml:"Status,omitempty"`
-	SubList      *OnsTraceGetResultResponseBodyTraceDataTraceListTraceMapDoSubList `json:"SubList,omitempty" xml:"SubList,omitempty" type:"Struct"`
-	Tag          *string                                                           `json:"Tag,omitempty" xml:"Tag,omitempty"`
-	Topic        *string                                                           `json:"Topic,omitempty" xml:"Topic,omitempty"`
+	// The address of the producer that generated the message.
+	BornHost *string `json:"BornHost,omitempty" xml:"BornHost,omitempty"`
+	// The period of time that the system took to send the message. Unit: milliseconds.
+	CostTime *int32 `json:"CostTime,omitempty" xml:"CostTime,omitempty"`
+	// The ID of the message.
+	MsgId *string `json:"MsgId,omitempty" xml:"MsgId,omitempty"`
+	// The key of the message.
+	MsgKey *string `json:"MsgKey,omitempty" xml:"MsgKey,omitempty"`
+	// The ID of the group that contains the producer.
+	PubGroupName *string `json:"PubGroupName,omitempty" xml:"PubGroupName,omitempty"`
+	// The point in time when the message was sent.
+	PubTime *int64 `json:"PubTime,omitempty" xml:"PubTime,omitempty"`
+	// Indicates whether the message is sent. Valid values:
+	//
+	// *   **SEND_SUCCESS**: The message is sent.
+	// *   **SEND_FAILED**: The message failed to be sent.
+	// *   **SEND_ROLLBACK:** The message is a transactional message and is rolled back.
+	// *   **SEND_UNKNOWN:** The message is a transactional message and is not committed.
+	// *   **SEND_DELAY:** The message is a scheduled or delayed message and is waiting to be sent at the specified point in time.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The consumption traces of the message.
+	SubList *OnsTraceGetResultResponseBodyTraceDataTraceListTraceMapDoSubList `json:"SubList,omitempty" xml:"SubList,omitempty" type:"Struct"`
+	// The tag of the message.
+	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	// The topic in which the message is stored.
+	Topic *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
 }
 
 func (s OnsTraceGetResultResponseBodyTraceDataTraceListTraceMapDo) String() string {
@@ -5025,10 +5908,14 @@ func (s *OnsTraceGetResultResponseBodyTraceDataTraceListTraceMapDoSubList) SetSu
 }
 
 type OnsTraceGetResultResponseBodyTraceDataTraceListTraceMapDoSubListSubMapDo struct {
-	ClientList   *OnsTraceGetResultResponseBodyTraceDataTraceListTraceMapDoSubListSubMapDoClientList `json:"ClientList,omitempty" xml:"ClientList,omitempty" type:"Struct"`
-	FailCount    *int32                                                                              `json:"FailCount,omitempty" xml:"FailCount,omitempty"`
-	SubGroupName *string                                                                             `json:"SubGroupName,omitempty" xml:"SubGroupName,omitempty"`
-	SuccessCount *int32                                                                              `json:"SuccessCount,omitempty" xml:"SuccessCount,omitempty"`
+	// The information about message consumption by consumers in the group.
+	ClientList *OnsTraceGetResultResponseBodyTraceDataTraceListTraceMapDoSubListSubMapDoClientList `json:"ClientList,omitempty" xml:"ClientList,omitempty" type:"Struct"`
+	// The number of consumption failures.
+	FailCount *int32 `json:"FailCount,omitempty" xml:"FailCount,omitempty"`
+	// The ID of the consumer group.
+	SubGroupName *string `json:"SubGroupName,omitempty" xml:"SubGroupName,omitempty"`
+	// The number of successful consumptions.
+	SuccessCount *int32 `json:"SuccessCount,omitempty" xml:"SuccessCount,omitempty"`
 }
 
 func (s OnsTraceGetResultResponseBodyTraceDataTraceListTraceMapDoSubListSubMapDo) String() string {
@@ -5077,12 +5964,24 @@ func (s *OnsTraceGetResultResponseBodyTraceDataTraceListTraceMapDoSubListSubMapD
 }
 
 type OnsTraceGetResultResponseBodyTraceDataTraceListTraceMapDoSubListSubMapDoClientListSubClientInfoDo struct {
-	ClientHost     *string `json:"ClientHost,omitempty" xml:"ClientHost,omitempty"`
-	CostTime       *int32  `json:"CostTime,omitempty" xml:"CostTime,omitempty"`
-	ReconsumeTimes *int32  `json:"ReconsumeTimes,omitempty" xml:"ReconsumeTimes,omitempty"`
-	Status         *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	SubGroupName   *string `json:"SubGroupName,omitempty" xml:"SubGroupName,omitempty"`
-	SubTime        *int64  `json:"SubTime,omitempty" xml:"SubTime,omitempty"`
+	// The address of the consumer.
+	ClientHost *string `json:"ClientHost,omitempty" xml:"ClientHost,omitempty"`
+	// The period of time that the system took to consume the message. Unit: milliseconds.
+	CostTime *int32 `json:"CostTime,omitempty" xml:"CostTime,omitempty"`
+	// The number of attempts that the Message Queue for Apache RocketMQ broker tried to send the message to the consumer.
+	ReconsumeTimes *int32 `json:"ReconsumeTimes,omitempty" xml:"ReconsumeTimes,omitempty"`
+	// Indicates whether the message is consumed. Valid values:
+	//
+	// *   **CONSUME_FAILED**: The message failed to be consumed.
+	// *   **CONSUME_SUCCESS**: The message is consumed.
+	// *   **CONSUME_NOT_RETURN:** No responses are returned.
+	// *   **SEND_UNKNOWN:** The message is a transactional message and is not committed.
+	// *   **SEND_DELAY:** The message is a scheduled or delayed message and is waiting to be consumed at the specified point in time.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The ID of the group that contains the consumer.
+	SubGroupName *string `json:"SubGroupName,omitempty" xml:"SubGroupName,omitempty"`
+	// The earliest point in time when the message was consumed.
+	SubTime *int64 `json:"SubTime,omitempty" xml:"SubTime,omitempty"`
 }
 
 func (s OnsTraceGetResultResponseBodyTraceDataTraceListTraceMapDoSubListSubMapDoClientListSubClientInfoDo) String() string {
@@ -5153,11 +6052,16 @@ func (s *OnsTraceGetResultResponse) SetBody(v *OnsTraceGetResultResponseBody) *O
 }
 
 type OnsTraceQueryByMsgIdRequest struct {
-	BeginTime  *int64  `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
-	EndTime    *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The beginning of the time range to query. The value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
+	BeginTime *int64 `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
+	// The end of the time range to query. The value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The ID of the Message Queue for Apache RocketMQ instance which contains the specified topic.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	MsgId      *string `json:"MsgId,omitempty" xml:"MsgId,omitempty"`
-	Topic      *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
+	// The ID of the message that you want to query.
+	MsgId *string `json:"MsgId,omitempty" xml:"MsgId,omitempty"`
+	// The topic in which the message you want to query is stored.
+	Topic *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
 }
 
 func (s OnsTraceQueryByMsgIdRequest) String() string {
@@ -5194,7 +6098,9 @@ func (s *OnsTraceQueryByMsgIdRequest) SetTopic(v string) *OnsTraceQueryByMsgIdRe
 }
 
 type OnsTraceQueryByMsgIdResponseBody struct {
-	QueryId   *string `json:"QueryId,omitempty" xml:"QueryId,omitempty"`
+	// The ID of the query task. You can call the [OnsTraceGetResult](~~59832~~) operation to query the details of the message trace based on the task ID.
+	QueryId *string `json:"QueryId,omitempty" xml:"QueryId,omitempty"`
+	// The ID of the request. The system generates a unique ID for each request. You can troubleshoot issues based on the request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -5246,11 +6152,16 @@ func (s *OnsTraceQueryByMsgIdResponse) SetBody(v *OnsTraceQueryByMsgIdResponseBo
 }
 
 type OnsTraceQueryByMsgKeyRequest struct {
-	BeginTime  *int64  `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
-	EndTime    *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The beginning of the time range to query. The value of this parameter is a UNIX timestamp in milliseconds.
+	BeginTime *int64 `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
+	// The end of the time range to query. The value of this parameter is a UNIX timestamp in milliseconds.
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The ID of the Message Queue for Apache RocketMQ instance that contains the specified topic.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	MsgKey     *string `json:"MsgKey,omitempty" xml:"MsgKey,omitempty"`
-	Topic      *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
+	// The key of the messages that you want to query.
+	MsgKey *string `json:"MsgKey,omitempty" xml:"MsgKey,omitempty"`
+	// The topic that contains the messages you want to query.
+	Topic *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
 }
 
 func (s OnsTraceQueryByMsgKeyRequest) String() string {
@@ -5287,7 +6198,9 @@ func (s *OnsTraceQueryByMsgKeyRequest) SetTopic(v string) *OnsTraceQueryByMsgKey
 }
 
 type OnsTraceQueryByMsgKeyResponseBody struct {
-	QueryId   *string `json:"QueryId,omitempty" xml:"QueryId,omitempty"`
+	// The ID of the query task. You can call the [OnsTraceGetResult](~~59832~~) operation to query the details of the message trace based on the task ID.
+	QueryId *string `json:"QueryId,omitempty" xml:"QueryId,omitempty"`
+	// The ID of the request. This parameter is a common parameter. Each request has a unique ID. You can use this ID to troubleshoot issues.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -5339,13 +6252,23 @@ func (s *OnsTraceQueryByMsgKeyResponse) SetBody(v *OnsTraceQueryByMsgKeyResponse
 }
 
 type OnsTrendGroupOutputTpsRequest struct {
-	BeginTime  *int64  `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
-	EndTime    *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	GroupId    *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The beginning of the time range to query. The value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
+	BeginTime *int64 `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
+	// The end of the time range to query. The value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The ID of the consumer group that you want to query.
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The ID of the Message Queue for Apache RocketMQ instance which contains the specified consumer group.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Period     *int64  `json:"Period,omitempty" xml:"Period,omitempty"`
-	Topic      *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
-	Type       *int32  `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The sampling period. Unit: minutes. Valid values: 1, 5, and 10.
+	Period *int64 `json:"Period,omitempty" xml:"Period,omitempty"`
+	// The name of the topic that you want to query.
+	Topic *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
+	// The type of information that you want to query. Valid values:
+	//
+	// *   **0**: the number of messages that are consumed during each sampling period.
+	// *   **1**: the TPS for message consumption during each sampling period.
+	Type *int32 `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s OnsTrendGroupOutputTpsRequest) String() string {
@@ -5392,8 +6315,10 @@ func (s *OnsTrendGroupOutputTpsRequest) SetType(v int32) *OnsTrendGroupOutputTps
 }
 
 type OnsTrendGroupOutputTpsResponseBody struct {
-	Data      *OnsTrendGroupOutputTpsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The data that is returned.
+	Data *OnsTrendGroupOutputTpsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The ID of the request. The system generates a unique ID for each request. You can troubleshoot issues based on the request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s OnsTrendGroupOutputTpsResponseBody) String() string {
@@ -5415,10 +6340,14 @@ func (s *OnsTrendGroupOutputTpsResponseBody) SetRequestId(v string) *OnsTrendGro
 }
 
 type OnsTrendGroupOutputTpsResponseBodyData struct {
+	// The data set that is returned based on sampling period.
 	Records *OnsTrendGroupOutputTpsResponseBodyDataRecords `json:"Records,omitempty" xml:"Records,omitempty" type:"Struct"`
-	Title   *string                                        `json:"Title,omitempty" xml:"Title,omitempty"`
-	XUnit   *string                                        `json:"XUnit,omitempty" xml:"XUnit,omitempty"`
-	YUnit   *string                                        `json:"YUnit,omitempty" xml:"YUnit,omitempty"`
+	// The name of the table that stores the data.
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// The unit of the timestamp. Unit: milliseconds.
+	XUnit *string `json:"XUnit,omitempty" xml:"XUnit,omitempty"`
+	// The unit of the value of the Y parameter.
+	YUnit *string `json:"YUnit,omitempty" xml:"YUnit,omitempty"`
 }
 
 func (s OnsTrendGroupOutputTpsResponseBodyData) String() string {
@@ -5467,7 +6396,9 @@ func (s *OnsTrendGroupOutputTpsResponseBodyDataRecords) SetStatsDataDo(v []*OnsT
 }
 
 type OnsTrendGroupOutputTpsResponseBodyDataRecordsStatsDataDo struct {
-	X *int64   `json:"X,omitempty" xml:"X,omitempty"`
+	// Indicates the timestamp. The value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
+	X *int64 `json:"X,omitempty" xml:"X,omitempty"`
+	// Indicates the TPS for message consumption or the number of messages that are consumed.
 	Y *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
 }
 
@@ -5519,12 +6450,21 @@ func (s *OnsTrendGroupOutputTpsResponse) SetBody(v *OnsTrendGroupOutputTpsRespon
 }
 
 type OnsTrendTopicInputTpsRequest struct {
-	BeginTime  *int64  `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
-	EndTime    *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The beginning of the time range to query. The value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
+	BeginTime *int64 `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
+	// The end of the time range to query. The value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The ID of the Message Queue for Apache RocketMQ instance which contains the topic you want to query.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Period     *int64  `json:"Period,omitempty" xml:"Period,omitempty"`
-	Topic      *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
-	Type       *int32  `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The sampling period. Unit: minutes. Valid values: 1, 5, and 10.
+	Period *int64 `json:"Period,omitempty" xml:"Period,omitempty"`
+	// The name of the topic that you want to query.
+	Topic *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
+	// The type of information that you want to query. Valid values:
+	//
+	// *   **0**: the number of the messages that are published to the specified topic during each sampling period.
+	// *   **1**: the TPS for message publishing to the specified topic during each sampling period.
+	Type *int32 `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s OnsTrendTopicInputTpsRequest) String() string {
@@ -5566,8 +6506,10 @@ func (s *OnsTrendTopicInputTpsRequest) SetType(v int32) *OnsTrendTopicInputTpsRe
 }
 
 type OnsTrendTopicInputTpsResponseBody struct {
-	Data      *OnsTrendTopicInputTpsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The data that is returned.
+	Data *OnsTrendTopicInputTpsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The ID of the request. The system generates a unique ID for each request. You can troubleshoot issues based on the request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s OnsTrendTopicInputTpsResponseBody) String() string {
@@ -5589,10 +6531,14 @@ func (s *OnsTrendTopicInputTpsResponseBody) SetRequestId(v string) *OnsTrendTopi
 }
 
 type OnsTrendTopicInputTpsResponseBodyData struct {
+	// The data set that is returned based on each sampling period.
 	Records *OnsTrendTopicInputTpsResponseBodyDataRecords `json:"Records,omitempty" xml:"Records,omitempty" type:"Struct"`
-	Title   *string                                       `json:"Title,omitempty" xml:"Title,omitempty"`
-	XUnit   *string                                       `json:"XUnit,omitempty" xml:"XUnit,omitempty"`
-	YUnit   *string                                       `json:"YUnit,omitempty" xml:"YUnit,omitempty"`
+	// The name of the table that stores the data.
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// The unit of the timestamp. Unit: milliseconds.
+	XUnit *string `json:"XUnit,omitempty" xml:"XUnit,omitempty"`
+	// The unit of the value of the Y parameter.
+	YUnit *string `json:"YUnit,omitempty" xml:"YUnit,omitempty"`
 }
 
 func (s OnsTrendTopicInputTpsResponseBodyData) String() string {
@@ -5641,7 +6587,9 @@ func (s *OnsTrendTopicInputTpsResponseBodyDataRecords) SetStatsDataDo(v []*OnsTr
 }
 
 type OnsTrendTopicInputTpsResponseBodyDataRecordsStatsDataDo struct {
-	X *int64   `json:"X,omitempty" xml:"X,omitempty"`
+	// Indicates the timestamp. The value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
+	X *int64 `json:"X,omitempty" xml:"X,omitempty"`
+	// Indicates the TPS for message publishing or the number of messages that are published to the topic.
 	Y *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
 }
 
@@ -5693,7 +6641,9 @@ func (s *OnsTrendTopicInputTpsResponse) SetBody(v *OnsTrendTopicInputTpsResponse
 }
 
 type OpenOnsServiceResponseBody struct {
-	OrderId   *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// The ID of the order.
+	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// The ID of the request. This parameter is a common parameter. Each request has a unique ID. You can use this ID to troubleshoot issues.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -5745,10 +6695,20 @@ func (s *OpenOnsServiceResponse) SetBody(v *OpenOnsServiceResponseBody) *OpenOns
 }
 
 type TagResourcesRequest struct {
-	InstanceId   *string                   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	ResourceId   []*string                 `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
-	ResourceType *string                   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	Tag          []*TagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	// The ID of the Message Queue for Apache RocketMQ instance which contains the resource to which you want to attach tags.
+	//
+	// > : This parameter is required when you attach tags to a topic or a group.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The list of resource IDs.
+	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	// The type of the resource to which you want to attach tags. Valid values:
+	//
+	// *   **INSTANCE**
+	// *   **TOPIC**
+	// *   **GROUP**
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The list of tags that are attached to the resources.
+	Tag []*TagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s TagResourcesRequest) String() string {
@@ -5780,7 +6740,17 @@ func (s *TagResourcesRequest) SetTag(v []*TagResourcesRequestTag) *TagResourcesR
 }
 
 type TagResourcesRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The key of the tag that you want to attach to the specified resource. If you configure this parameter, you must also configure the **Tag.N.Key** parameter.****
+	//
+	// *   The value of N can be an integer value from 1 to 20.
+	// *   The value of this parameter cannot be an empty string.
+	// *   The tag key can be up to 128 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of the tag that you want to attach to the specified resource. If you configure this parameter, you must also configure the **Tag.N.Key** parameter.****
+	//
+	// *   The value of N can be an integer value from 1 to 20.
+	// *   The value of this parameter can be an empty string.
+	// *   The tag key can be up to 128 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -5803,6 +6773,7 @@ func (s *TagResourcesRequestTag) SetValue(v string) *TagResourcesRequestTag {
 }
 
 type TagResourcesResponseBody struct {
+	// The ID of the request. This parameter is a common parameter. Each request has a unique ID. You can use this ID to troubleshoot issues.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -5849,11 +6820,20 @@ func (s *TagResourcesResponse) SetBody(v *TagResourcesResponseBody) *TagResource
 }
 
 type UntagResourcesRequest struct {
-	All          *bool     `json:"All,omitempty" xml:"All,omitempty"`
-	InstanceId   *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	ResourceId   []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
-	ResourceType *string   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	TagKey       []*string `json:"TagKey,omitempty" xml:"TagKey,omitempty" type:"Repeated"`
+	// Specifies whether to remove all tags that are attached to the specified resource. This parameter takes effect only when the **TagKey.N** parameter is not configured. Default value: **false**.
+	All *bool `json:"All,omitempty" xml:"All,omitempty"`
+	// This parameter is required when you detach tags from a topic or a group.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The list of resource IDs.
+	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	// The type of the resources from which you want to detach tags. Valid values:
+	//
+	// *   **INSTANCE**
+	// *   **TOPIC**
+	// *   **GROUP**
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The tag keys of the resource.
+	TagKey []*string `json:"TagKey,omitempty" xml:"TagKey,omitempty" type:"Repeated"`
 }
 
 func (s UntagResourcesRequest) String() string {
@@ -5890,6 +6870,7 @@ func (s *UntagResourcesRequest) SetTagKey(v []*string) *UntagResourcesRequest {
 }
 
 type UntagResourcesResponseBody struct {
+	// The ID of the request. This parameter is a common parameter. Each request has a unique ID. You can use this ID to troubleshoot issues.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -6014,6 +6995,16 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+/**
+ * > : The API operations that are provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
+ * When you call the **ListTagResources** operation, specify at least one of the following parameters in the request: **Tag.N.Key** and **ResourceId.N**. You can specify a resource ID to query all tags that are attached to the specified resource. You can also specify a tag key to query the tag value and the resource to which the tag is attached.
+ * *   If you include the **Tag.N.Key** parameter in a request, you can obtain the tag value and the ID of the resource to which the tag is attached.********
+ * *   If you include the **ResourceId.N** parameter in a request, you can obtain the keys and values of all tags that are attached to the specified resource.
+ *
+ * @param request ListTagResourcesRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ListTagResourcesResponse
+ */
 func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesRequest, runtime *util.RuntimeOptions) (_result *ListTagResourcesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6063,6 +7054,15 @@ func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesReque
 	return _result, _err
 }
 
+/**
+ * > : The API operations that are provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
+ * When you call the **ListTagResources** operation, specify at least one of the following parameters in the request: **Tag.N.Key** and **ResourceId.N**. You can specify a resource ID to query all tags that are attached to the specified resource. You can also specify a tag key to query the tag value and the resource to which the tag is attached.
+ * *   If you include the **Tag.N.Key** parameter in a request, you can obtain the tag value and the ID of the resource to which the tag is attached.********
+ * *   If you include the **ResourceId.N** parameter in a request, you can obtain the keys and values of all tags that are attached to the specified resource.
+ *
+ * @param request ListTagResourcesRequest
+ * @return ListTagResourcesResponse
+ */
 func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_result *ListTagResourcesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListTagResourcesResponse{}
@@ -6074,6 +7074,14 @@ func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_resul
 	return _result, _err
 }
 
+/**
+ * > : The API operations that are provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
+ * You can call this operation in scenarios in which you want to know the message consumption progress of a specified consumer group in production environments. You can obtain the information about message consumption and consumption latency based on the returned information. This operation returns the total number of accumulated messages in all topics to which the specified consumer group subscribes and the number of accumulated messages in each topic.
+ *
+ * @param request OnsConsumerAccumulateRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return OnsConsumerAccumulateResponse
+ */
 func (client *Client) OnsConsumerAccumulateWithOptions(request *OnsConsumerAccumulateRequest, runtime *util.RuntimeOptions) (_result *OnsConsumerAccumulateResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6115,6 +7123,13 @@ func (client *Client) OnsConsumerAccumulateWithOptions(request *OnsConsumerAccum
 	return _result, _err
 }
 
+/**
+ * > : The API operations that are provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
+ * You can call this operation in scenarios in which you want to know the message consumption progress of a specified consumer group in production environments. You can obtain the information about message consumption and consumption latency based on the returned information. This operation returns the total number of accumulated messages in all topics to which the specified consumer group subscribes and the number of accumulated messages in each topic.
+ *
+ * @param request OnsConsumerAccumulateRequest
+ * @return OnsConsumerAccumulateResponse
+ */
 func (client *Client) OnsConsumerAccumulate(request *OnsConsumerAccumulateRequest) (_result *OnsConsumerAccumulateResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &OnsConsumerAccumulateResponse{}
@@ -6126,6 +7141,14 @@ func (client *Client) OnsConsumerAccumulate(request *OnsConsumerAccumulateReques
 	return _result, _err
 }
 
+/**
+ * > : The API operations that are provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
+ * When messages are accumulated in a topic, you can call this operation to check whether a consumer is online.
+ *
+ * @param request OnsConsumerGetConnectionRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return OnsConsumerGetConnectionResponse
+ */
 func (client *Client) OnsConsumerGetConnectionWithOptions(request *OnsConsumerGetConnectionRequest, runtime *util.RuntimeOptions) (_result *OnsConsumerGetConnectionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6163,6 +7186,13 @@ func (client *Client) OnsConsumerGetConnectionWithOptions(request *OnsConsumerGe
 	return _result, _err
 }
 
+/**
+ * > : The API operations that are provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
+ * When messages are accumulated in a topic, you can call this operation to check whether a consumer is online.
+ *
+ * @param request OnsConsumerGetConnectionRequest
+ * @return OnsConsumerGetConnectionResponse
+ */
 func (client *Client) OnsConsumerGetConnection(request *OnsConsumerGetConnectionRequest) (_result *OnsConsumerGetConnectionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &OnsConsumerGetConnectionResponse{}
@@ -6174,6 +7204,16 @@ func (client *Client) OnsConsumerGetConnection(request *OnsConsumerGetConnection
 	return _result, _err
 }
 
+/**
+ * > : The API operations that are provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
+ * You can call this operation to clear accumulated messages or reset the consumption progress. You can use one of the following methods to clear accumulated messages:
+ * *   Clear all accumulated messages in a specified topic.
+ * *   Clear the messages that were published to the specified topic before a specified point in time.
+ *
+ * @param request OnsConsumerResetOffsetRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return OnsConsumerResetOffsetResponse
+ */
 func (client *Client) OnsConsumerResetOffsetWithOptions(request *OnsConsumerResetOffsetRequest, runtime *util.RuntimeOptions) (_result *OnsConsumerResetOffsetResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6223,6 +7263,15 @@ func (client *Client) OnsConsumerResetOffsetWithOptions(request *OnsConsumerRese
 	return _result, _err
 }
 
+/**
+ * > : The API operations that are provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
+ * You can call this operation to clear accumulated messages or reset the consumption progress. You can use one of the following methods to clear accumulated messages:
+ * *   Clear all accumulated messages in a specified topic.
+ * *   Clear the messages that were published to the specified topic before a specified point in time.
+ *
+ * @param request OnsConsumerResetOffsetRequest
+ * @return OnsConsumerResetOffsetResponse
+ */
 func (client *Client) OnsConsumerResetOffset(request *OnsConsumerResetOffsetRequest) (_result *OnsConsumerResetOffsetResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &OnsConsumerResetOffsetResponse{}
@@ -6234,6 +7283,15 @@ func (client *Client) OnsConsumerResetOffset(request *OnsConsumerResetOffsetRequ
 	return _result, _err
 }
 
+/**
+ * > : The API operations that are provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
+ * *   You can call this operation in scenarios in which consumers are online and messages are accumulated. You can troubleshoot errors based on the information that is returned by this operation. You can check whether all consumers in the consumer group subscribe to the same topics and tags, and whether load balancing is performed as expected. You can also obtain the information about thread stack traces of online consumers.
+ * *   This operation uses multiple backend operations to query and aggregate data. The system requires a long period of time to process a request. We recommend that you do not frequently call this operation.
+ *
+ * @param request OnsConsumerStatusRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return OnsConsumerStatusResponse
+ */
 func (client *Client) OnsConsumerStatusWithOptions(request *OnsConsumerStatusRequest, runtime *util.RuntimeOptions) (_result *OnsConsumerStatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6279,6 +7337,14 @@ func (client *Client) OnsConsumerStatusWithOptions(request *OnsConsumerStatusReq
 	return _result, _err
 }
 
+/**
+ * > : The API operations that are provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
+ * *   You can call this operation in scenarios in which consumers are online and messages are accumulated. You can troubleshoot errors based on the information that is returned by this operation. You can check whether all consumers in the consumer group subscribe to the same topics and tags, and whether load balancing is performed as expected. You can also obtain the information about thread stack traces of online consumers.
+ * *   This operation uses multiple backend operations to query and aggregate data. The system requires a long period of time to process a request. We recommend that you do not frequently call this operation.
+ *
+ * @param request OnsConsumerStatusRequest
+ * @return OnsConsumerStatusResponse
+ */
 func (client *Client) OnsConsumerStatus(request *OnsConsumerStatusRequest) (_result *OnsConsumerStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &OnsConsumerStatusResponse{}
@@ -6290,6 +7356,14 @@ func (client *Client) OnsConsumerStatus(request *OnsConsumerStatusRequest) (_res
 	return _result, _err
 }
 
+/**
+ * > : The API operations that are provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
+ * You can call this operation to query the earliest point in time when a message was published to a specified topic and the most recent point in time when a message was published to the specified topic. You can also obtain the most recent point in time when a message in the topic was consumed. This operation is usually used with the \\*\\*OnsConsumerAccumulate\\*\\* operation to display the overview of the consumption progress.
+ *
+ * @param request OnsConsumerTimeSpanRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return OnsConsumerTimeSpanResponse
+ */
 func (client *Client) OnsConsumerTimeSpanWithOptions(request *OnsConsumerTimeSpanRequest, runtime *util.RuntimeOptions) (_result *OnsConsumerTimeSpanResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6331,6 +7405,13 @@ func (client *Client) OnsConsumerTimeSpanWithOptions(request *OnsConsumerTimeSpa
 	return _result, _err
 }
 
+/**
+ * > : The API operations that are provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
+ * You can call this operation to query the earliest point in time when a message was published to a specified topic and the most recent point in time when a message was published to the specified topic. You can also obtain the most recent point in time when a message in the topic was consumed. This operation is usually used with the \\*\\*OnsConsumerAccumulate\\*\\* operation to display the overview of the consumption progress.
+ *
+ * @param request OnsConsumerTimeSpanRequest
+ * @return OnsConsumerTimeSpanResponse
+ */
 func (client *Client) OnsConsumerTimeSpan(request *OnsConsumerTimeSpanRequest) (_result *OnsConsumerTimeSpanResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &OnsConsumerTimeSpanResponse{}
@@ -6342,6 +7423,14 @@ func (client *Client) OnsConsumerTimeSpan(request *OnsConsumerTimeSpanRequest) (
 	return _result, _err
 }
 
+/**
+ * > : The API operations that are provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
+ * This operation uses the exact match method to query a dead-letter message based on the message ID. You can obtain the message ID that is required to query the information about a dead-letter message from the SendResult parameter that is returned after the message is sent. You can also obtain the message ID by calling the OnsDLQMessagePageQueryByGroupId operation to query multiple messages at a time. The queried information about the dead-letter message includes the point in time when the message is stored, the message body, and attributes such as the message tag and the message key.
+ *
+ * @param request OnsDLQMessageGetByIdRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return OnsDLQMessageGetByIdResponse
+ */
 func (client *Client) OnsDLQMessageGetByIdWithOptions(request *OnsDLQMessageGetByIdRequest, runtime *util.RuntimeOptions) (_result *OnsDLQMessageGetByIdResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6383,6 +7472,13 @@ func (client *Client) OnsDLQMessageGetByIdWithOptions(request *OnsDLQMessageGetB
 	return _result, _err
 }
 
+/**
+ * > : The API operations that are provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
+ * This operation uses the exact match method to query a dead-letter message based on the message ID. You can obtain the message ID that is required to query the information about a dead-letter message from the SendResult parameter that is returned after the message is sent. You can also obtain the message ID by calling the OnsDLQMessagePageQueryByGroupId operation to query multiple messages at a time. The queried information about the dead-letter message includes the point in time when the message is stored, the message body, and attributes such as the message tag and the message key.
+ *
+ * @param request OnsDLQMessageGetByIdRequest
+ * @return OnsDLQMessageGetByIdResponse
+ */
 func (client *Client) OnsDLQMessageGetById(request *OnsDLQMessageGetByIdRequest) (_result *OnsDLQMessageGetByIdResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &OnsDLQMessageGetByIdResponse{}
@@ -6394,6 +7490,17 @@ func (client *Client) OnsDLQMessageGetById(request *OnsDLQMessageGetByIdRequest)
 	return _result, _err
 }
 
+/**
+ * > : The API operations that are provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
+ * *   If you do not know the ID of the dead-letter message that you want to query, you can call this operation to query all dead-letter messages that are sent to a specified consumer group within a specified time range. The results are returned by page.
+ * *   We recommend that you specify a short time range to query dead-letter messages in this method. If you specify a long time range, a large number of dead-letter messages are returned. In this case, you cannot find the dead-letter message that you want to query in an efficient manner. You can perform the following steps to query dead-letter messages:
+ *     1.  Perform a paged query by specifying the group ID, start time, end time, and number of entries to return on each page. If matched messages are found, the information about the dead-letter messages on the first page, total number of pages, and task ID are returned by default.
+ *     2.  Specify the task ID and a page number to call this operation again to query the dead-letter messages on the specified page. In this query, the BeginTime, EndTime, and PageSize parameters do not take effect. By default, the system uses the values of these parameters that you specified in the request when you created the specified query task.
+ *
+ * @param request OnsDLQMessagePageQueryByGroupIdRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return OnsDLQMessagePageQueryByGroupIdResponse
+ */
 func (client *Client) OnsDLQMessagePageQueryByGroupIdWithOptions(request *OnsDLQMessagePageQueryByGroupIdRequest, runtime *util.RuntimeOptions) (_result *OnsDLQMessagePageQueryByGroupIdResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6451,6 +7558,16 @@ func (client *Client) OnsDLQMessagePageQueryByGroupIdWithOptions(request *OnsDLQ
 	return _result, _err
 }
 
+/**
+ * > : The API operations that are provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
+ * *   If you do not know the ID of the dead-letter message that you want to query, you can call this operation to query all dead-letter messages that are sent to a specified consumer group within a specified time range. The results are returned by page.
+ * *   We recommend that you specify a short time range to query dead-letter messages in this method. If you specify a long time range, a large number of dead-letter messages are returned. In this case, you cannot find the dead-letter message that you want to query in an efficient manner. You can perform the following steps to query dead-letter messages:
+ *     1.  Perform a paged query by specifying the group ID, start time, end time, and number of entries to return on each page. If matched messages are found, the information about the dead-letter messages on the first page, total number of pages, and task ID are returned by default.
+ *     2.  Specify the task ID and a page number to call this operation again to query the dead-letter messages on the specified page. In this query, the BeginTime, EndTime, and PageSize parameters do not take effect. By default, the system uses the values of these parameters that you specified in the request when you created the specified query task.
+ *
+ * @param request OnsDLQMessagePageQueryByGroupIdRequest
+ * @return OnsDLQMessagePageQueryByGroupIdResponse
+ */
 func (client *Client) OnsDLQMessagePageQueryByGroupId(request *OnsDLQMessagePageQueryByGroupIdRequest) (_result *OnsDLQMessagePageQueryByGroupIdResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &OnsDLQMessagePageQueryByGroupIdResponse{}
@@ -6462,6 +7579,16 @@ func (client *Client) OnsDLQMessagePageQueryByGroupId(request *OnsDLQMessagePage
 	return _result, _err
 }
 
+/**
+ * > : The API operations that are provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
+ * *   After the number of retries to send a message to a consumer group for consumption reaches the upper limit and the message is not consumed by a consumer in the group, the message is added to the dead-letter queue of the consumer group. The message is a dead-letter message. After you resend the dead-letter message to the consumer group for consumption and the message fails to be consumed again after the maximum number of retries, a dead-letter message with the same message ID is added to the dead-letter queue. You can view the details of the dead-letter message on the Dead-letter Queues page in the Message Queue for Apache RocketMQ console or by calling the API operations that are used to query dead-letter messages. You can obtain the number of consumption failures for a message based on the number of dead-letter messages with the same message ID in the dead-letter queue.
+ * *   A dead-letter message is a message that fails to be consumed after the number of consumption retries reaches the upper limit. Generally, dead-letter messages are produced because of incorrect consumption logic. We recommend that you troubleshoot the consumption failures and then call this operation to send the message to the consumer group for consumption again.
+ * *   Message Queue for Apache RocketMQ does not manage the status of dead-letter messages based on the consumption status of the dead-letter messages. After you call this operation to send a dead-letter message to a consumer group and the message is consumed, Message Queue for Apache RocketMQ does not remove the dead-letter message from the dead-letter queue. You must manage dead-letter messages and determine whether to send a dead-letter message to a consumer group for consumption. This way, you do not resend and reconsume the messages that are consumed.
+ *
+ * @param request OnsDLQMessageResendByIdRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return OnsDLQMessageResendByIdResponse
+ */
 func (client *Client) OnsDLQMessageResendByIdWithOptions(request *OnsDLQMessageResendByIdRequest, runtime *util.RuntimeOptions) (_result *OnsDLQMessageResendByIdResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6503,6 +7630,15 @@ func (client *Client) OnsDLQMessageResendByIdWithOptions(request *OnsDLQMessageR
 	return _result, _err
 }
 
+/**
+ * > : The API operations that are provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
+ * *   After the number of retries to send a message to a consumer group for consumption reaches the upper limit and the message is not consumed by a consumer in the group, the message is added to the dead-letter queue of the consumer group. The message is a dead-letter message. After you resend the dead-letter message to the consumer group for consumption and the message fails to be consumed again after the maximum number of retries, a dead-letter message with the same message ID is added to the dead-letter queue. You can view the details of the dead-letter message on the Dead-letter Queues page in the Message Queue for Apache RocketMQ console or by calling the API operations that are used to query dead-letter messages. You can obtain the number of consumption failures for a message based on the number of dead-letter messages with the same message ID in the dead-letter queue.
+ * *   A dead-letter message is a message that fails to be consumed after the number of consumption retries reaches the upper limit. Generally, dead-letter messages are produced because of incorrect consumption logic. We recommend that you troubleshoot the consumption failures and then call this operation to send the message to the consumer group for consumption again.
+ * *   Message Queue for Apache RocketMQ does not manage the status of dead-letter messages based on the consumption status of the dead-letter messages. After you call this operation to send a dead-letter message to a consumer group and the message is consumed, Message Queue for Apache RocketMQ does not remove the dead-letter message from the dead-letter queue. You must manage dead-letter messages and determine whether to send a dead-letter message to a consumer group for consumption. This way, you do not resend and reconsume the messages that are consumed.
+ *
+ * @param request OnsDLQMessageResendByIdRequest
+ * @return OnsDLQMessageResendByIdResponse
+ */
 func (client *Client) OnsDLQMessageResendById(request *OnsDLQMessageResendByIdRequest) (_result *OnsDLQMessageResendByIdResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &OnsDLQMessageResendByIdResponse{}
@@ -6514,6 +7650,14 @@ func (client *Client) OnsDLQMessageResendById(request *OnsDLQMessageResendByIdRe
 	return _result, _err
 }
 
+/**
+ * > : The API operations that are provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
+ * You can call this operation to configure the permissions for a consumer group to read messages based on a specified region of Message Queue for Apache RocketMQ and a specified group ID. You can call this operation in scenarios in which you want to forbid consumers in a specific group from reading messages.
+ *
+ * @param request OnsGroupConsumerUpdateRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return OnsGroupConsumerUpdateResponse
+ */
 func (client *Client) OnsGroupConsumerUpdateWithOptions(request *OnsGroupConsumerUpdateRequest, runtime *util.RuntimeOptions) (_result *OnsGroupConsumerUpdateResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6555,6 +7699,13 @@ func (client *Client) OnsGroupConsumerUpdateWithOptions(request *OnsGroupConsume
 	return _result, _err
 }
 
+/**
+ * > : The API operations that are provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
+ * You can call this operation to configure the permissions for a consumer group to read messages based on a specified region of Message Queue for Apache RocketMQ and a specified group ID. You can call this operation in scenarios in which you want to forbid consumers in a specific group from reading messages.
+ *
+ * @param request OnsGroupConsumerUpdateRequest
+ * @return OnsGroupConsumerUpdateResponse
+ */
 func (client *Client) OnsGroupConsumerUpdate(request *OnsGroupConsumerUpdateRequest) (_result *OnsGroupConsumerUpdateResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &OnsGroupConsumerUpdateResponse{}
@@ -6566,6 +7717,14 @@ func (client *Client) OnsGroupConsumerUpdate(request *OnsGroupConsumerUpdateRequ
 	return _result, _err
 }
 
+/**
+ * > : The API operations that are provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
+ * When you release a new application or implement new business logic, you need new consumer groups. You can call this operation to create a consumer group.
+ *
+ * @param request OnsGroupCreateRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return OnsGroupCreateResponse
+ */
 func (client *Client) OnsGroupCreateWithOptions(request *OnsGroupCreateRequest, runtime *util.RuntimeOptions) (_result *OnsGroupCreateResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6611,6 +7770,13 @@ func (client *Client) OnsGroupCreateWithOptions(request *OnsGroupCreateRequest, 
 	return _result, _err
 }
 
+/**
+ * > : The API operations that are provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
+ * When you release a new application or implement new business logic, you need new consumer groups. You can call this operation to create a consumer group.
+ *
+ * @param request OnsGroupCreateRequest
+ * @return OnsGroupCreateResponse
+ */
 func (client *Client) OnsGroupCreate(request *OnsGroupCreateRequest) (_result *OnsGroupCreateResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &OnsGroupCreateResponse{}
@@ -6622,6 +7788,16 @@ func (client *Client) OnsGroupCreate(request *OnsGroupCreateRequest) (_result *O
 	return _result, _err
 }
 
+/**
+ * >
+ * *   The API operations that are provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
+ * *   After you delete a group, the consumers in the group immediately stop receiving messages. Exercise caution when you call this operation.
+ * You can call this operation to delete a group when you need to deallocate the resources of the group. For example, after an application is brought offline, you can delete the groups that are used for the application. After you delete a group, the backend of Message Queue for Apache RocketMQ deallocates the resources of the group. The system requires a long period of time to deallocate the resources. We recommend that you do not create a group that uses the same name as a deleted group immediately after you delete the group. If the system fails to delete the specified group, troubleshoot the issue based on the error code.
+ *
+ * @param request OnsGroupDeleteRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return OnsGroupDeleteResponse
+ */
 func (client *Client) OnsGroupDeleteWithOptions(request *OnsGroupDeleteRequest, runtime *util.RuntimeOptions) (_result *OnsGroupDeleteResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6659,6 +7835,15 @@ func (client *Client) OnsGroupDeleteWithOptions(request *OnsGroupDeleteRequest, 
 	return _result, _err
 }
 
+/**
+ * >
+ * *   The API operations that are provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
+ * *   After you delete a group, the consumers in the group immediately stop receiving messages. Exercise caution when you call this operation.
+ * You can call this operation to delete a group when you need to deallocate the resources of the group. For example, after an application is brought offline, you can delete the groups that are used for the application. After you delete a group, the backend of Message Queue for Apache RocketMQ deallocates the resources of the group. The system requires a long period of time to deallocate the resources. We recommend that you do not create a group that uses the same name as a deleted group immediately after you delete the group. If the system fails to delete the specified group, troubleshoot the issue based on the error code.
+ *
+ * @param request OnsGroupDeleteRequest
+ * @return OnsGroupDeleteResponse
+ */
 func (client *Client) OnsGroupDelete(request *OnsGroupDeleteRequest) (_result *OnsGroupDeleteResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &OnsGroupDeleteResponse{}
@@ -6670,6 +7855,13 @@ func (client *Client) OnsGroupDelete(request *OnsGroupDeleteRequest) (_result *O
 	return _result, _err
 }
 
+/**
+ * > : The API operations that are provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
+ *
+ * @param request OnsGroupListRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return OnsGroupListResponse
+ */
 func (client *Client) OnsGroupListWithOptions(request *OnsGroupListRequest, runtime *util.RuntimeOptions) (_result *OnsGroupListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6715,6 +7907,12 @@ func (client *Client) OnsGroupListWithOptions(request *OnsGroupListRequest, runt
 	return _result, _err
 }
 
+/**
+ * > : The API operations that are provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
+ *
+ * @param request OnsGroupListRequest
+ * @return OnsGroupListResponse
+ */
 func (client *Client) OnsGroupList(request *OnsGroupListRequest) (_result *OnsGroupListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &OnsGroupListResponse{}
@@ -6726,6 +7924,13 @@ func (client *Client) OnsGroupList(request *OnsGroupListRequest) (_result *OnsGr
 	return _result, _err
 }
 
+/**
+ * > : The API operations that are provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
+ *
+ * @param request OnsGroupSubDetailRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return OnsGroupSubDetailResponse
+ */
 func (client *Client) OnsGroupSubDetailWithOptions(request *OnsGroupSubDetailRequest, runtime *util.RuntimeOptions) (_result *OnsGroupSubDetailResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6763,6 +7968,12 @@ func (client *Client) OnsGroupSubDetailWithOptions(request *OnsGroupSubDetailReq
 	return _result, _err
 }
 
+/**
+ * > : The API operations that are provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
+ *
+ * @param request OnsGroupSubDetailRequest
+ * @return OnsGroupSubDetailResponse
+ */
 func (client *Client) OnsGroupSubDetail(request *OnsGroupSubDetailRequest) (_result *OnsGroupSubDetailResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &OnsGroupSubDetailResponse{}
@@ -6774,6 +7985,14 @@ func (client *Client) OnsGroupSubDetail(request *OnsGroupSubDetailRequest) (_res
 	return _result, _err
 }
 
+/**
+ * > : The API operations that are provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
+ * To send and receive messages, a client must be connected to a Message Queue for Apache RocketMQ instance by using an endpoint. You can call this operation to query the endpoints of the instance.
+ *
+ * @param request OnsInstanceBaseInfoRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return OnsInstanceBaseInfoResponse
+ */
 func (client *Client) OnsInstanceBaseInfoWithOptions(request *OnsInstanceBaseInfoRequest, runtime *util.RuntimeOptions) (_result *OnsInstanceBaseInfoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6807,6 +8026,13 @@ func (client *Client) OnsInstanceBaseInfoWithOptions(request *OnsInstanceBaseInf
 	return _result, _err
 }
 
+/**
+ * > : The API operations that are provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
+ * To send and receive messages, a client must be connected to a Message Queue for Apache RocketMQ instance by using an endpoint. You can call this operation to query the endpoints of the instance.
+ *
+ * @param request OnsInstanceBaseInfoRequest
+ * @return OnsInstanceBaseInfoResponse
+ */
 func (client *Client) OnsInstanceBaseInfo(request *OnsInstanceBaseInfoRequest) (_result *OnsInstanceBaseInfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &OnsInstanceBaseInfoResponse{}
@@ -6818,6 +8044,16 @@ func (client *Client) OnsInstanceBaseInfo(request *OnsInstanceBaseInfoRequest) (
 	return _result, _err
 }
 
+/**
+ * > : The API operations that are provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
+ * An instance is a virtual machine (VM) that can be used to store information about the topics and groups of Message Queue for Apache RocketMQ. You can call this operation when you need to create service resources for the business that you want to launch. Take note of the following points when you call this operation:
+ * *   A maximum of eight Message Queue for Apache RocketMQ instances can be deployed in each region.
+ * *   This operation can be called to create only a Standard Edition instance. You can use the Message Queue for Apache RocketMQ console to create Standard Edition instances and Enterprise Platinum Edition instances. For information about how to create Message Queue for Apache RocketMQ instances, see [Manage instances](~~200153~~).
+ *
+ * @param request OnsInstanceCreateRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return OnsInstanceCreateResponse
+ */
 func (client *Client) OnsInstanceCreateWithOptions(request *OnsInstanceCreateRequest, runtime *util.RuntimeOptions) (_result *OnsInstanceCreateResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6855,6 +8091,15 @@ func (client *Client) OnsInstanceCreateWithOptions(request *OnsInstanceCreateReq
 	return _result, _err
 }
 
+/**
+ * > : The API operations that are provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
+ * An instance is a virtual machine (VM) that can be used to store information about the topics and groups of Message Queue for Apache RocketMQ. You can call this operation when you need to create service resources for the business that you want to launch. Take note of the following points when you call this operation:
+ * *   A maximum of eight Message Queue for Apache RocketMQ instances can be deployed in each region.
+ * *   This operation can be called to create only a Standard Edition instance. You can use the Message Queue for Apache RocketMQ console to create Standard Edition instances and Enterprise Platinum Edition instances. For information about how to create Message Queue for Apache RocketMQ instances, see [Manage instances](~~200153~~).
+ *
+ * @param request OnsInstanceCreateRequest
+ * @return OnsInstanceCreateResponse
+ */
 func (client *Client) OnsInstanceCreate(request *OnsInstanceCreateRequest) (_result *OnsInstanceCreateResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &OnsInstanceCreateResponse{}
@@ -6866,6 +8111,15 @@ func (client *Client) OnsInstanceCreate(request *OnsInstanceCreateRequest) (_res
 	return _result, _err
 }
 
+/**
+ * > : The API operations that are provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
+ * *   You can call this operation when you need to reclaim resources. For example, after you unpublish an application, you can reclaim the resources that were used for the application. An instance can be deleted only when the instance does not contain topics and groups.
+ * *   After an instance is deleted, the instance cannot be recovered. Exercise caution when you call this operation.
+ *
+ * @param request OnsInstanceDeleteRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return OnsInstanceDeleteResponse
+ */
 func (client *Client) OnsInstanceDeleteWithOptions(request *OnsInstanceDeleteRequest, runtime *util.RuntimeOptions) (_result *OnsInstanceDeleteResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6899,6 +8153,14 @@ func (client *Client) OnsInstanceDeleteWithOptions(request *OnsInstanceDeleteReq
 	return _result, _err
 }
 
+/**
+ * > : The API operations that are provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
+ * *   You can call this operation when you need to reclaim resources. For example, after you unpublish an application, you can reclaim the resources that were used for the application. An instance can be deleted only when the instance does not contain topics and groups.
+ * *   After an instance is deleted, the instance cannot be recovered. Exercise caution when you call this operation.
+ *
+ * @param request OnsInstanceDeleteRequest
+ * @return OnsInstanceDeleteResponse
+ */
 func (client *Client) OnsInstanceDelete(request *OnsInstanceDeleteRequest) (_result *OnsInstanceDeleteResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &OnsInstanceDeleteResponse{}
@@ -6910,6 +8172,13 @@ func (client *Client) OnsInstanceDelete(request *OnsInstanceDeleteRequest) (_res
 	return _result, _err
 }
 
+/**
+ * > : The API operations that are provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
+ *
+ * @param request OnsInstanceInServiceListRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return OnsInstanceInServiceListResponse
+ */
 func (client *Client) OnsInstanceInServiceListWithOptions(request *OnsInstanceInServiceListRequest, runtime *util.RuntimeOptions) (_result *OnsInstanceInServiceListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6943,6 +8212,12 @@ func (client *Client) OnsInstanceInServiceListWithOptions(request *OnsInstanceIn
 	return _result, _err
 }
 
+/**
+ * > : The API operations that are provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
+ *
+ * @param request OnsInstanceInServiceListRequest
+ * @return OnsInstanceInServiceListResponse
+ */
 func (client *Client) OnsInstanceInServiceList(request *OnsInstanceInServiceListRequest) (_result *OnsInstanceInServiceListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &OnsInstanceInServiceListResponse{}
@@ -6954,6 +8229,14 @@ func (client *Client) OnsInstanceInServiceList(request *OnsInstanceInServiceList
 	return _result, _err
 }
 
+/**
+ * > : The API operations that are provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
+ * A maximum of eight Message Queue for Apache RocketMQ instances can be deployed in each region.
+ *
+ * @param request OnsInstanceUpdateRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return OnsInstanceUpdateResponse
+ */
 func (client *Client) OnsInstanceUpdateWithOptions(request *OnsInstanceUpdateRequest, runtime *util.RuntimeOptions) (_result *OnsInstanceUpdateResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6995,6 +8278,13 @@ func (client *Client) OnsInstanceUpdateWithOptions(request *OnsInstanceUpdateReq
 	return _result, _err
 }
 
+/**
+ * > : The API operations that are provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
+ * A maximum of eight Message Queue for Apache RocketMQ instances can be deployed in each region.
+ *
+ * @param request OnsInstanceUpdateRequest
+ * @return OnsInstanceUpdateResponse
+ */
 func (client *Client) OnsInstanceUpdate(request *OnsInstanceUpdateRequest) (_result *OnsInstanceUpdateResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &OnsInstanceUpdateResponse{}
@@ -7006,6 +8296,57 @@ func (client *Client) OnsInstanceUpdate(request *OnsInstanceUpdateRequest) (_res
 	return _result, _err
 }
 
+func (client *Client) OnsMessageDetailWithOptions(request *OnsMessageDetailRequest, runtime *util.RuntimeOptions) (_result *OnsMessageDetailResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("OnsMessageDetail"),
+		Version:     tea.String("2019-02-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &OnsMessageDetailResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) OnsMessageDetail(request *OnsMessageDetailRequest) (_result *OnsMessageDetailResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &OnsMessageDetailResponse{}
+	_body, _err := client.OnsMessageDetailWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+/**
+ * > : The API operations that are provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
+ * *   This operation uses the fuzzy match method to query messages based on a specified message key. The same message key may be used by multiple messages. Therefore, the returned result may contain the information about multiple messages.
+ * *   This operation can be used in scenarios in which you cannot obtain the IDs of the messages that you want to query. You can perform the following steps to query the information about messages:
+ *     1.  Call this operation to query message IDs.
+ *     2.  Call the **OnsMessageGetByMsgId** operation to query the details of a specified message. The OnsMessageGetByMsgId operation uses the exact match method. For more information about the **OnsMessageGetByMsgId** operation, see [OnsMessageGetByMsgId](~~29607~~).
+ *
+ * @param request OnsMessageGetByKeyRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return OnsMessageGetByKeyResponse
+ */
 func (client *Client) OnsMessageGetByKeyWithOptions(request *OnsMessageGetByKeyRequest, runtime *util.RuntimeOptions) (_result *OnsMessageGetByKeyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7047,6 +8388,16 @@ func (client *Client) OnsMessageGetByKeyWithOptions(request *OnsMessageGetByKeyR
 	return _result, _err
 }
 
+/**
+ * > : The API operations that are provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
+ * *   This operation uses the fuzzy match method to query messages based on a specified message key. The same message key may be used by multiple messages. Therefore, the returned result may contain the information about multiple messages.
+ * *   This operation can be used in scenarios in which you cannot obtain the IDs of the messages that you want to query. You can perform the following steps to query the information about messages:
+ *     1.  Call this operation to query message IDs.
+ *     2.  Call the **OnsMessageGetByMsgId** operation to query the details of a specified message. The OnsMessageGetByMsgId operation uses the exact match method. For more information about the **OnsMessageGetByMsgId** operation, see [OnsMessageGetByMsgId](~~29607~~).
+ *
+ * @param request OnsMessageGetByKeyRequest
+ * @return OnsMessageGetByKeyResponse
+ */
 func (client *Client) OnsMessageGetByKey(request *OnsMessageGetByKeyRequest) (_result *OnsMessageGetByKeyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &OnsMessageGetByKeyResponse{}
@@ -7058,6 +8409,15 @@ func (client *Client) OnsMessageGetByKey(request *OnsMessageGetByKeyRequest) (_r
 	return _result, _err
 }
 
+/**
+ * > : The API operations that are provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
+ * *   If a message is not consumed as expected, you can call this operation to query the information about the message for troubleshooting.
+ * *   This operation uses the exact match method to query a message based on the message ID. You can obtain the message ID from the SendResult parameter that is returned after the message is sent. You must store the returned information after each message is sent. The queried information about a message includes the point in time when the message was sent, the broker on which the message is stored, and the attributes of the message such as the message key and tag.
+ *
+ * @param request OnsMessageGetByMsgIdRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return OnsMessageGetByMsgIdResponse
+ */
 func (client *Client) OnsMessageGetByMsgIdWithOptions(request *OnsMessageGetByMsgIdRequest, runtime *util.RuntimeOptions) (_result *OnsMessageGetByMsgIdResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7099,6 +8459,14 @@ func (client *Client) OnsMessageGetByMsgIdWithOptions(request *OnsMessageGetByMs
 	return _result, _err
 }
 
+/**
+ * > : The API operations that are provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
+ * *   If a message is not consumed as expected, you can call this operation to query the information about the message for troubleshooting.
+ * *   This operation uses the exact match method to query a message based on the message ID. You can obtain the message ID from the SendResult parameter that is returned after the message is sent. You must store the returned information after each message is sent. The queried information about a message includes the point in time when the message was sent, the broker on which the message is stored, and the attributes of the message such as the message key and tag.
+ *
+ * @param request OnsMessageGetByMsgIdRequest
+ * @return OnsMessageGetByMsgIdResponse
+ */
 func (client *Client) OnsMessageGetByMsgId(request *OnsMessageGetByMsgIdRequest) (_result *OnsMessageGetByMsgIdResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &OnsMessageGetByMsgIdResponse{}
@@ -7110,6 +8478,17 @@ func (client *Client) OnsMessageGetByMsgId(request *OnsMessageGetByMsgIdRequest)
 	return _result, _err
 }
 
+/**
+ * > : The API operations that are provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
+ * *   If you do not know the message ID or message key of a message that you want to query, you can call this operation to query all messages that are stored in a topic within a specified time range. The results are displayed by page.
+ * *   We recommend that you specify a short time range to query messages. If you specify a long time range, a large number of messages are returned. In this case, you cannot find the message that you want to query in an efficient manner. You can perform the following steps to query messages:
+ *     1.  Perform a paged query by specifying the topic, start time, end time, and number of entries to return on each page. If the topic contains messages, the information about the messages on the first page, total number of pages, and task ID are returned by default.
+ *     2.  Specify the task ID and a page number to call this operation again to query the messages on the specified page. In this query, the BeginTime, EndTime, and PageSize parameters do not take effect. By default, the system uses the values of these parameters that you specified in the request when you created the specified query task.
+ *
+ * @param request OnsMessagePageQueryByTopicRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return OnsMessagePageQueryByTopicResponse
+ */
 func (client *Client) OnsMessagePageQueryByTopicWithOptions(request *OnsMessagePageQueryByTopicRequest, runtime *util.RuntimeOptions) (_result *OnsMessagePageQueryByTopicResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7167,6 +8546,16 @@ func (client *Client) OnsMessagePageQueryByTopicWithOptions(request *OnsMessageP
 	return _result, _err
 }
 
+/**
+ * > : The API operations that are provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
+ * *   If you do not know the message ID or message key of a message that you want to query, you can call this operation to query all messages that are stored in a topic within a specified time range. The results are displayed by page.
+ * *   We recommend that you specify a short time range to query messages. If you specify a long time range, a large number of messages are returned. In this case, you cannot find the message that you want to query in an efficient manner. You can perform the following steps to query messages:
+ *     1.  Perform a paged query by specifying the topic, start time, end time, and number of entries to return on each page. If the topic contains messages, the information about the messages on the first page, total number of pages, and task ID are returned by default.
+ *     2.  Specify the task ID and a page number to call this operation again to query the messages on the specified page. In this query, the BeginTime, EndTime, and PageSize parameters do not take effect. By default, the system uses the values of these parameters that you specified in the request when you created the specified query task.
+ *
+ * @param request OnsMessagePageQueryByTopicRequest
+ * @return OnsMessagePageQueryByTopicResponse
+ */
 func (client *Client) OnsMessagePageQueryByTopic(request *OnsMessagePageQueryByTopicRequest) (_result *OnsMessagePageQueryByTopicResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &OnsMessagePageQueryByTopicResponse{}
@@ -7178,6 +8567,14 @@ func (client *Client) OnsMessagePageQueryByTopic(request *OnsMessagePageQueryByT
 	return _result, _err
 }
 
+/**
+ * ## Note
+ * This operation can be used to check whether messages in a specified topic can be consumed by consumers in a specified consumer group. This operation obtains the body of the message that is specified by the MsgId parameter, re-encapsulates the message body to produce a new message, and then pushes the new message to a specified consumer. The content of the message that is sent to the consumer is the same as the content of the original message. They are not the same message because they use different message IDs.
+ *
+ * @param request OnsMessagePushRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return OnsMessagePushResponse
+ */
 func (client *Client) OnsMessagePushWithOptions(request *OnsMessagePushRequest, runtime *util.RuntimeOptions) (_result *OnsMessagePushResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7227,6 +8624,13 @@ func (client *Client) OnsMessagePushWithOptions(request *OnsMessagePushRequest, 
 	return _result, _err
 }
 
+/**
+ * ## Note
+ * This operation can be used to check whether messages in a specified topic can be consumed by consumers in a specified consumer group. This operation obtains the body of the message that is specified by the MsgId parameter, re-encapsulates the message body to produce a new message, and then pushes the new message to a specified consumer. The content of the message that is sent to the consumer is the same as the content of the original message. They are not the same message because they use different message IDs.
+ *
+ * @param request OnsMessagePushRequest
+ * @return OnsMessagePushResponse
+ */
 func (client *Client) OnsMessagePush(request *OnsMessagePushRequest) (_result *OnsMessagePushResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &OnsMessagePushResponse{}
@@ -7238,6 +8642,15 @@ func (client *Client) OnsMessagePush(request *OnsMessagePushRequest) (_result *O
 	return _result, _err
 }
 
+/**
+ * > : The API operations that are provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
+ * *   You can call this operation to check whether a specified message is consumed. If the message is not consumed, you can troubleshoot the issue based on the returned information.
+ * *   This operation queries information based on the built-in offset mechanism of Message Queue for Apache RocketMQ. In most cases, the results are correct. If you have reset the consumer offset or cleared accumulated messages, the results may not be correct.
+ *
+ * @param request OnsMessageTraceRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return OnsMessageTraceResponse
+ */
 func (client *Client) OnsMessageTraceWithOptions(request *OnsMessageTraceRequest, runtime *util.RuntimeOptions) (_result *OnsMessageTraceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7279,6 +8692,14 @@ func (client *Client) OnsMessageTraceWithOptions(request *OnsMessageTraceRequest
 	return _result, _err
 }
 
+/**
+ * > : The API operations that are provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
+ * *   You can call this operation to check whether a specified message is consumed. If the message is not consumed, you can troubleshoot the issue based on the returned information.
+ * *   This operation queries information based on the built-in offset mechanism of Message Queue for Apache RocketMQ. In most cases, the results are correct. If you have reset the consumer offset or cleared accumulated messages, the results may not be correct.
+ *
+ * @param request OnsMessageTraceRequest
+ * @return OnsMessageTraceResponse
+ */
 func (client *Client) OnsMessageTrace(request *OnsMessageTraceRequest) (_result *OnsMessageTraceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &OnsMessageTraceResponse{}
@@ -7290,6 +8711,16 @@ func (client *Client) OnsMessageTrace(request *OnsMessageTraceRequest) (_result 
 	return _result, _err
 }
 
+/**
+ * > : The API operations that are provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
+ * When you use an SDK to access and manage a Message Queue for Apache RocketMQ instance, you must sequentially specify the information about two regions. You can query the information about the second region by calling the \\*\\*OnsRegionList\\*\\* operation. You must apply for a public endpoint in the following scenarios:
+ * *   Connect your application to Message Queue for Apache RocketMQ: Select the nearest API gateway endpoint based on the region where your application is deployed, and enter the corresponding **region ID**. The **regionId** is used to access Alibaba Cloud API Gateway because Message Queue for Apache RocketMQ instances provide API services by using the OpenAPI Explorer platform, which is also called POP.
+ * *   Access a region to manage its resources: Specify a region where you want to manage Message Queue for Apache RocketMQ resources and enter the region ID. You can query the region ID by calling the **OnsRegionList** operation.
+ *
+ * @param request OnsRegionListRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return OnsRegionListResponse
+ */
 func (client *Client) OnsRegionListWithOptions(runtime *util.RuntimeOptions) (_result *OnsRegionListResponse, _err error) {
 	req := &openapi.OpenApiRequest{}
 	params := &openapi.Params{
@@ -7312,6 +8743,14 @@ func (client *Client) OnsRegionListWithOptions(runtime *util.RuntimeOptions) (_r
 	return _result, _err
 }
 
+/**
+ * > : The API operations that are provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
+ * When you use an SDK to access and manage a Message Queue for Apache RocketMQ instance, you must sequentially specify the information about two regions. You can query the information about the second region by calling the \\*\\*OnsRegionList\\*\\* operation. You must apply for a public endpoint in the following scenarios:
+ * *   Connect your application to Message Queue for Apache RocketMQ: Select the nearest API gateway endpoint based on the region where your application is deployed, and enter the corresponding **region ID**. The **regionId** is used to access Alibaba Cloud API Gateway because Message Queue for Apache RocketMQ instances provide API services by using the OpenAPI Explorer platform, which is also called POP.
+ * *   Access a region to manage its resources: Specify a region where you want to manage Message Queue for Apache RocketMQ resources and enter the region ID. You can query the region ID by calling the **OnsRegionList** operation.
+ *
+ * @return OnsRegionListResponse
+ */
 func (client *Client) OnsRegionList() (_result *OnsRegionListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &OnsRegionListResponse{}
@@ -7323,6 +8762,14 @@ func (client *Client) OnsRegionList() (_result *OnsRegionListResponse, _err erro
 	return _result, _err
 }
 
+/**
+ * > : The API operations that are provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
+ * When you want to release a new application or expand your business, you can call this operation to create a topic based on your business requirements.
+ *
+ * @param request OnsTopicCreateRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return OnsTopicCreateResponse
+ */
 func (client *Client) OnsTopicCreateWithOptions(request *OnsTopicCreateRequest, runtime *util.RuntimeOptions) (_result *OnsTopicCreateResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7368,6 +8815,13 @@ func (client *Client) OnsTopicCreateWithOptions(request *OnsTopicCreateRequest, 
 	return _result, _err
 }
 
+/**
+ * > : The API operations that are provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
+ * When you want to release a new application or expand your business, you can call this operation to create a topic based on your business requirements.
+ *
+ * @param request OnsTopicCreateRequest
+ * @return OnsTopicCreateResponse
+ */
 func (client *Client) OnsTopicCreate(request *OnsTopicCreateRequest) (_result *OnsTopicCreateResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &OnsTopicCreateResponse{}
@@ -7379,6 +8833,14 @@ func (client *Client) OnsTopicCreate(request *OnsTopicCreateRequest) (_result *O
 	return _result, _err
 }
 
+/**
+ * >  The API operations that are provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur. - After you delete the topic, the publishing and subscription relationships that are constructed based on the topic are cleared. Exercise caution when you call this operation.
+ * You can call this operation to delete a topic when you need to reclaim the resources from the topic. For example, after an application is brought offline, you can delete the topics that are used for the application. After you delete a topic, the backend of Message Queue for Apache RocketMQ reclaims the resources from the topic. The system requires a long period of time to reclaim the resources. After you delete a topic, we recommend that you do not create a topic that uses the same name as the deleted topic within a short period of time. If the system fails to delete the specified topic, troubleshoot the issue based on the error code.
+ *
+ * @param request OnsTopicDeleteRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return OnsTopicDeleteResponse
+ */
 func (client *Client) OnsTopicDeleteWithOptions(request *OnsTopicDeleteRequest, runtime *util.RuntimeOptions) (_result *OnsTopicDeleteResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7416,6 +8878,13 @@ func (client *Client) OnsTopicDeleteWithOptions(request *OnsTopicDeleteRequest, 
 	return _result, _err
 }
 
+/**
+ * >  The API operations that are provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur. - After you delete the topic, the publishing and subscription relationships that are constructed based on the topic are cleared. Exercise caution when you call this operation.
+ * You can call this operation to delete a topic when you need to reclaim the resources from the topic. For example, after an application is brought offline, you can delete the topics that are used for the application. After you delete a topic, the backend of Message Queue for Apache RocketMQ reclaims the resources from the topic. The system requires a long period of time to reclaim the resources. After you delete a topic, we recommend that you do not create a topic that uses the same name as the deleted topic within a short period of time. If the system fails to delete the specified topic, troubleshoot the issue based on the error code.
+ *
+ * @param request OnsTopicDeleteRequest
+ * @return OnsTopicDeleteResponse
+ */
 func (client *Client) OnsTopicDelete(request *OnsTopicDeleteRequest) (_result *OnsTopicDeleteResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &OnsTopicDeleteResponse{}
@@ -7427,6 +8896,14 @@ func (client *Client) OnsTopicDelete(request *OnsTopicDeleteRequest) (_result *O
 	return _result, _err
 }
 
+/**
+ * > : The API operations that are provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
+ * This operation returns the basic information about topics and does not return the details of topics.
+ *
+ * @param request OnsTopicListRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return OnsTopicListResponse
+ */
 func (client *Client) OnsTopicListWithOptions(request *OnsTopicListRequest, runtime *util.RuntimeOptions) (_result *OnsTopicListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7472,6 +8949,13 @@ func (client *Client) OnsTopicListWithOptions(request *OnsTopicListRequest, runt
 	return _result, _err
 }
 
+/**
+ * > : The API operations that are provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
+ * This operation returns the basic information about topics and does not return the details of topics.
+ *
+ * @param request OnsTopicListRequest
+ * @return OnsTopicListResponse
+ */
 func (client *Client) OnsTopicList(request *OnsTopicListRequest) (_result *OnsTopicListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &OnsTopicListResponse{}
@@ -7483,6 +8967,14 @@ func (client *Client) OnsTopicList(request *OnsTopicListRequest) (_result *OnsTo
 	return _result, _err
 }
 
+/**
+ * > : The API operations that are provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
+ * You can determine the resource usage of a topic based on the information that is returned by this operation. The returned information includes the total number of messages in the topic and the most recent point in time when a message was published to the topic.
+ *
+ * @param request OnsTopicStatusRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return OnsTopicStatusResponse
+ */
 func (client *Client) OnsTopicStatusWithOptions(request *OnsTopicStatusRequest, runtime *util.RuntimeOptions) (_result *OnsTopicStatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7520,6 +9012,13 @@ func (client *Client) OnsTopicStatusWithOptions(request *OnsTopicStatusRequest, 
 	return _result, _err
 }
 
+/**
+ * > : The API operations that are provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
+ * You can determine the resource usage of a topic based on the information that is returned by this operation. The returned information includes the total number of messages in the topic and the most recent point in time when a message was published to the topic.
+ *
+ * @param request OnsTopicStatusRequest
+ * @return OnsTopicStatusResponse
+ */
 func (client *Client) OnsTopicStatus(request *OnsTopicStatusRequest) (_result *OnsTopicStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &OnsTopicStatusResponse{}
@@ -7531,6 +9030,14 @@ func (client *Client) OnsTopicStatus(request *OnsTopicStatusRequest) (_result *O
 	return _result, _err
 }
 
+/**
+ * > : The API operations that are provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
+ * You can call this operation to query the online consumer groups that subscribe to a specified topic. If all consumers in a group are offline, the information about the group is not returned.
+ *
+ * @param request OnsTopicSubDetailRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return OnsTopicSubDetailResponse
+ */
 func (client *Client) OnsTopicSubDetailWithOptions(request *OnsTopicSubDetailRequest, runtime *util.RuntimeOptions) (_result *OnsTopicSubDetailResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7568,6 +9075,13 @@ func (client *Client) OnsTopicSubDetailWithOptions(request *OnsTopicSubDetailReq
 	return _result, _err
 }
 
+/**
+ * > : The API operations that are provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
+ * You can call this operation to query the online consumer groups that subscribe to a specified topic. If all consumers in a group are offline, the information about the group is not returned.
+ *
+ * @param request OnsTopicSubDetailRequest
+ * @return OnsTopicSubDetailResponse
+ */
 func (client *Client) OnsTopicSubDetail(request *OnsTopicSubDetailRequest) (_result *OnsTopicSubDetailResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &OnsTopicSubDetailResponse{}
@@ -7579,6 +9093,16 @@ func (client *Client) OnsTopicSubDetail(request *OnsTopicSubDetailRequest) (_res
 	return _result, _err
 }
 
+/**
+ * @deprecated
+ * > : The API operations that are provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise system risks may occur.
+ * You can call this operation to forbid read or write operations on a specific topic.
+ *
+ * @param request OnsTopicUpdateRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return OnsTopicUpdateResponse
+ */
+// Deprecated
 func (client *Client) OnsTopicUpdateWithOptions(request *OnsTopicUpdateRequest, runtime *util.RuntimeOptions) (_result *OnsTopicUpdateResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7620,6 +9144,15 @@ func (client *Client) OnsTopicUpdateWithOptions(request *OnsTopicUpdateRequest, 
 	return _result, _err
 }
 
+/**
+ * @deprecated
+ * > : The API operations that are provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise system risks may occur.
+ * You can call this operation to forbid read or write operations on a specific topic.
+ *
+ * @param request OnsTopicUpdateRequest
+ * @return OnsTopicUpdateResponse
+ */
+// Deprecated
 func (client *Client) OnsTopicUpdate(request *OnsTopicUpdateRequest) (_result *OnsTopicUpdateResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &OnsTopicUpdateResponse{}
@@ -7631,6 +9164,15 @@ func (client *Client) OnsTopicUpdate(request *OnsTopicUpdateRequest) (_result *O
 	return _result, _err
 }
 
+/**
+ * ## Usage notes
+ * *   Before you call this operation to query the details of the trace of a message, you must create a task to query the trace of the message based on the message ID or message key and obtains the task ID. Then, you can call this operation to query the details of the message trace based on the task ID. You can call the [OnsTraceQueryByMsgId](~~59830~~) operation or the [OnsTraceQueryByMsgKey](~~59831~~) operation to create a task to query the trace of the message and obtain the task ID from the **QueryId** response parameter.
+ * *   A trace query task is time-consuming. If you call this operation to query the details immediately after you create a trace query task, the results may be empty. In this case, we recommend that you try again later.
+ *
+ * @param request OnsTraceGetResultRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return OnsTraceGetResultResponse
+ */
 func (client *Client) OnsTraceGetResultWithOptions(request *OnsTraceGetResultRequest, runtime *util.RuntimeOptions) (_result *OnsTraceGetResultResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7664,6 +9206,14 @@ func (client *Client) OnsTraceGetResultWithOptions(request *OnsTraceGetResultReq
 	return _result, _err
 }
 
+/**
+ * ## Usage notes
+ * *   Before you call this operation to query the details of the trace of a message, you must create a task to query the trace of the message based on the message ID or message key and obtains the task ID. Then, you can call this operation to query the details of the message trace based on the task ID. You can call the [OnsTraceQueryByMsgId](~~59830~~) operation or the [OnsTraceQueryByMsgKey](~~59831~~) operation to create a task to query the trace of the message and obtain the task ID from the **QueryId** response parameter.
+ * *   A trace query task is time-consuming. If you call this operation to query the details immediately after you create a trace query task, the results may be empty. In this case, we recommend that you try again later.
+ *
+ * @param request OnsTraceGetResultRequest
+ * @return OnsTraceGetResultResponse
+ */
 func (client *Client) OnsTraceGetResult(request *OnsTraceGetResultRequest) (_result *OnsTraceGetResultResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &OnsTraceGetResultResponse{}
@@ -7675,6 +9225,14 @@ func (client *Client) OnsTraceGetResult(request *OnsTraceGetResultRequest) (_res
 	return _result, _err
 }
 
+/**
+ * ## Note
+ * If you want to query the trace of a message based on the message ID, you can call this operation to create a query task. After you obtain the task ID, you can call the [OnsTraceGetResult](~~59832~~) operation to query the details of the message trace based on the task ID.
+ *
+ * @param request OnsTraceQueryByMsgIdRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return OnsTraceQueryByMsgIdResponse
+ */
 func (client *Client) OnsTraceQueryByMsgIdWithOptions(request *OnsTraceQueryByMsgIdRequest, runtime *util.RuntimeOptions) (_result *OnsTraceQueryByMsgIdResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7724,6 +9282,13 @@ func (client *Client) OnsTraceQueryByMsgIdWithOptions(request *OnsTraceQueryByMs
 	return _result, _err
 }
 
+/**
+ * ## Note
+ * If you want to query the trace of a message based on the message ID, you can call this operation to create a query task. After you obtain the task ID, you can call the [OnsTraceGetResult](~~59832~~) operation to query the details of the message trace based on the task ID.
+ *
+ * @param request OnsTraceQueryByMsgIdRequest
+ * @return OnsTraceQueryByMsgIdResponse
+ */
 func (client *Client) OnsTraceQueryByMsgId(request *OnsTraceQueryByMsgIdRequest) (_result *OnsTraceQueryByMsgIdResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &OnsTraceQueryByMsgIdResponse{}
@@ -7735,6 +9300,14 @@ func (client *Client) OnsTraceQueryByMsgId(request *OnsTraceQueryByMsgIdRequest)
 	return _result, _err
 }
 
+/**
+ * > : The API operations that are provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
+ * If you obtain the key of a message and want to query the trace of the message, you can call this operation to create a query task. After you obtain the task ID, you can call the OnsTraceGetResult operation to query the details of the message trace based on the task ID.
+ *
+ * @param request OnsTraceQueryByMsgKeyRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return OnsTraceQueryByMsgKeyResponse
+ */
 func (client *Client) OnsTraceQueryByMsgKeyWithOptions(request *OnsTraceQueryByMsgKeyRequest, runtime *util.RuntimeOptions) (_result *OnsTraceQueryByMsgKeyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7784,6 +9357,13 @@ func (client *Client) OnsTraceQueryByMsgKeyWithOptions(request *OnsTraceQueryByM
 	return _result, _err
 }
 
+/**
+ * > : The API operations that are provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
+ * If you obtain the key of a message and want to query the trace of the message, you can call this operation to create a query task. After you obtain the task ID, you can call the OnsTraceGetResult operation to query the details of the message trace based on the task ID.
+ *
+ * @param request OnsTraceQueryByMsgKeyRequest
+ * @return OnsTraceQueryByMsgKeyResponse
+ */
 func (client *Client) OnsTraceQueryByMsgKey(request *OnsTraceQueryByMsgKeyRequest) (_result *OnsTraceQueryByMsgKeyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &OnsTraceQueryByMsgKeyResponse{}
@@ -7795,6 +9375,17 @@ func (client *Client) OnsTraceQueryByMsgKey(request *OnsTraceQueryByMsgKeyReques
 	return _result, _err
 }
 
+/**
+ * ## Note
+ * You can call this operation to query the following statistics that are collected in the production environment:
+ * *   The number of messages that are consumed during each sampling period
+ * *   The transactions per second (TPS) for message consumption during each sampling period
+ * >  If your application publishes a small number of messages and does not publish messages at a specific interval, we recommend that you query the number of messages that are consumed during each sampling period because the statistics of TPS may not show a clear change trend.
+ *
+ * @param request OnsTrendGroupOutputTpsRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return OnsTrendGroupOutputTpsResponse
+ */
 func (client *Client) OnsTrendGroupOutputTpsWithOptions(request *OnsTrendGroupOutputTpsRequest, runtime *util.RuntimeOptions) (_result *OnsTrendGroupOutputTpsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7852,6 +9443,16 @@ func (client *Client) OnsTrendGroupOutputTpsWithOptions(request *OnsTrendGroupOu
 	return _result, _err
 }
 
+/**
+ * ## Note
+ * You can call this operation to query the following statistics that are collected in the production environment:
+ * *   The number of messages that are consumed during each sampling period
+ * *   The transactions per second (TPS) for message consumption during each sampling period
+ * >  If your application publishes a small number of messages and does not publish messages at a specific interval, we recommend that you query the number of messages that are consumed during each sampling period because the statistics of TPS may not show a clear change trend.
+ *
+ * @param request OnsTrendGroupOutputTpsRequest
+ * @return OnsTrendGroupOutputTpsResponse
+ */
 func (client *Client) OnsTrendGroupOutputTps(request *OnsTrendGroupOutputTpsRequest) (_result *OnsTrendGroupOutputTpsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &OnsTrendGroupOutputTpsResponse{}
@@ -7863,6 +9464,15 @@ func (client *Client) OnsTrendGroupOutputTps(request *OnsTrendGroupOutputTpsRequ
 	return _result, _err
 }
 
+/**
+ * ## Note
+ * You can call this operation to query the statistics of messages that are published to a specified topic in the production environment. You can obtain the number of messages that are published to the topic or the transactions per second (TPS) for message publishing during each sampling period within a specified time range.
+ * >  If your application publishes a small number of messages and does not publish messages at a specific interval, we recommend that you query the number of messages that are published to the topic during each sampling period because the statistics of TPS may not show a clear change trend.
+ *
+ * @param request OnsTrendTopicInputTpsRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return OnsTrendTopicInputTpsResponse
+ */
 func (client *Client) OnsTrendTopicInputTpsWithOptions(request *OnsTrendTopicInputTpsRequest, runtime *util.RuntimeOptions) (_result *OnsTrendTopicInputTpsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7916,6 +9526,14 @@ func (client *Client) OnsTrendTopicInputTpsWithOptions(request *OnsTrendTopicInp
 	return _result, _err
 }
 
+/**
+ * ## Note
+ * You can call this operation to query the statistics of messages that are published to a specified topic in the production environment. You can obtain the number of messages that are published to the topic or the transactions per second (TPS) for message publishing during each sampling period within a specified time range.
+ * >  If your application publishes a small number of messages and does not publish messages at a specific interval, we recommend that you query the number of messages that are published to the topic during each sampling period because the statistics of TPS may not show a clear change trend.
+ *
+ * @param request OnsTrendTopicInputTpsRequest
+ * @return OnsTrendTopicInputTpsResponse
+ */
 func (client *Client) OnsTrendTopicInputTps(request *OnsTrendTopicInputTpsRequest) (_result *OnsTrendTopicInputTpsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &OnsTrendTopicInputTpsResponse{}
@@ -7927,6 +9545,15 @@ func (client *Client) OnsTrendTopicInputTps(request *OnsTrendTopicInputTpsReques
 	return _result, _err
 }
 
+/**
+ * > : The API operations that are provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
+ * You can call this operation when you use Message Queue for Apache RocketMQ for the first time. You can use Message Queue for Apache RocketMQ only after this service is activated.
+ * The Message Queue for Apache RocketMQ service can be activated only in the China (Hangzhou) region. Service activation is not billed.
+ *
+ * @param request OpenOnsServiceRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return OpenOnsServiceResponse
+ */
 func (client *Client) OpenOnsServiceWithOptions(runtime *util.RuntimeOptions) (_result *OpenOnsServiceResponse, _err error) {
 	req := &openapi.OpenApiRequest{}
 	params := &openapi.Params{
@@ -7949,6 +9576,13 @@ func (client *Client) OpenOnsServiceWithOptions(runtime *util.RuntimeOptions) (_
 	return _result, _err
 }
 
+/**
+ * > : The API operations that are provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
+ * You can call this operation when you use Message Queue for Apache RocketMQ for the first time. You can use Message Queue for Apache RocketMQ only after this service is activated.
+ * The Message Queue for Apache RocketMQ service can be activated only in the China (Hangzhou) region. Service activation is not billed.
+ *
+ * @return OpenOnsServiceResponse
+ */
 func (client *Client) OpenOnsService() (_result *OpenOnsServiceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &OpenOnsServiceResponse{}
@@ -7960,6 +9594,14 @@ func (client *Client) OpenOnsService() (_result *OpenOnsServiceResponse, _err er
 	return _result, _err
 }
 
+/**
+ * > : The API operations that are provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
+ * You can call this operation to attach tags to a source. You can use tags to classify resources in Message Queue for Apache RocketMQ. This can help you aggregate and search resources in an efficient manner.
+ *
+ * @param request TagResourcesRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return TagResourcesResponse
+ */
 func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runtime *util.RuntimeOptions) (_result *TagResourcesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8005,6 +9647,13 @@ func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runt
 	return _result, _err
 }
 
+/**
+ * > : The API operations that are provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
+ * You can call this operation to attach tags to a source. You can use tags to classify resources in Message Queue for Apache RocketMQ. This can help you aggregate and search resources in an efficient manner.
+ *
+ * @param request TagResourcesRequest
+ * @return TagResourcesResponse
+ */
 func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagResourcesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &TagResourcesResponse{}
@@ -8016,6 +9665,13 @@ func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagRe
 	return _result, _err
 }
 
+/**
+ * > : The API operations that are provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
+ *
+ * @param request UntagResourcesRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return UntagResourcesResponse
+ */
 func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, runtime *util.RuntimeOptions) (_result *UntagResourcesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8065,6 +9721,12 @@ func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, 
 	return _result, _err
 }
 
+/**
+ * > : The API operations that are provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
+ *
+ * @param request UntagResourcesRequest
+ * @return UntagResourcesResponse
+ */
 func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *UntagResourcesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UntagResourcesResponse{}

@@ -1,3 +1,6 @@
+2023-02-02 Version: v2.0.1
+- Add OnsMessageDetail for query message body.
+
 2022-09-23 Version: v2.0.0
 - Generated golang 2019-02-14 for Ons.
 
