@@ -1075,6 +1075,279 @@ func (s *GenerateDynamicImageResponse) SetBody(v *GenerateDynamicImageResponseBo
 	return s
 }
 
+type GenerateImageWithTextRequest struct {
+	Number     *int32  `json:"Number,omitempty" xml:"Number,omitempty"`
+	Resolution *string `json:"Resolution,omitempty" xml:"Resolution,omitempty"`
+	Text       *string `json:"Text,omitempty" xml:"Text,omitempty"`
+}
+
+func (s GenerateImageWithTextRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GenerateImageWithTextRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GenerateImageWithTextRequest) SetNumber(v int32) *GenerateImageWithTextRequest {
+	s.Number = &v
+	return s
+}
+
+func (s *GenerateImageWithTextRequest) SetResolution(v string) *GenerateImageWithTextRequest {
+	s.Resolution = &v
+	return s
+}
+
+func (s *GenerateImageWithTextRequest) SetText(v string) *GenerateImageWithTextRequest {
+	s.Text = &v
+	return s
+}
+
+type GenerateImageWithTextResponseBody struct {
+	Data      *GenerateImageWithTextResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                                `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GenerateImageWithTextResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GenerateImageWithTextResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GenerateImageWithTextResponseBody) SetData(v *GenerateImageWithTextResponseBodyData) *GenerateImageWithTextResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GenerateImageWithTextResponseBody) SetMessage(v string) *GenerateImageWithTextResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GenerateImageWithTextResponseBody) SetRequestId(v string) *GenerateImageWithTextResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GenerateImageWithTextResponseBodyData struct {
+	ImageUrls []*string `json:"ImageUrls,omitempty" xml:"ImageUrls,omitempty" type:"Repeated"`
+}
+
+func (s GenerateImageWithTextResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GenerateImageWithTextResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GenerateImageWithTextResponseBodyData) SetImageUrls(v []*string) *GenerateImageWithTextResponseBodyData {
+	s.ImageUrls = v
+	return s
+}
+
+type GenerateImageWithTextResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GenerateImageWithTextResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GenerateImageWithTextResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GenerateImageWithTextResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GenerateImageWithTextResponse) SetHeaders(v map[string]*string) *GenerateImageWithTextResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GenerateImageWithTextResponse) SetStatusCode(v int32) *GenerateImageWithTextResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GenerateImageWithTextResponse) SetBody(v *GenerateImageWithTextResponseBody) *GenerateImageWithTextResponse {
+	s.Body = v
+	return s
+}
+
+type GenerateImageWithTextAndImageRequest struct {
+	AspectRatioMode *string  `json:"AspectRatioMode,omitempty" xml:"AspectRatioMode,omitempty"`
+	Number          *int32   `json:"Number,omitempty" xml:"Number,omitempty"`
+	RefImageUrl     *string  `json:"RefImageUrl,omitempty" xml:"RefImageUrl,omitempty"`
+	Resolution      *string  `json:"Resolution,omitempty" xml:"Resolution,omitempty"`
+	Similarity      *float32 `json:"Similarity,omitempty" xml:"Similarity,omitempty"`
+	Text            *string  `json:"Text,omitempty" xml:"Text,omitempty"`
+}
+
+func (s GenerateImageWithTextAndImageRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GenerateImageWithTextAndImageRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GenerateImageWithTextAndImageRequest) SetAspectRatioMode(v string) *GenerateImageWithTextAndImageRequest {
+	s.AspectRatioMode = &v
+	return s
+}
+
+func (s *GenerateImageWithTextAndImageRequest) SetNumber(v int32) *GenerateImageWithTextAndImageRequest {
+	s.Number = &v
+	return s
+}
+
+func (s *GenerateImageWithTextAndImageRequest) SetRefImageUrl(v string) *GenerateImageWithTextAndImageRequest {
+	s.RefImageUrl = &v
+	return s
+}
+
+func (s *GenerateImageWithTextAndImageRequest) SetResolution(v string) *GenerateImageWithTextAndImageRequest {
+	s.Resolution = &v
+	return s
+}
+
+func (s *GenerateImageWithTextAndImageRequest) SetSimilarity(v float32) *GenerateImageWithTextAndImageRequest {
+	s.Similarity = &v
+	return s
+}
+
+func (s *GenerateImageWithTextAndImageRequest) SetText(v string) *GenerateImageWithTextAndImageRequest {
+	s.Text = &v
+	return s
+}
+
+type GenerateImageWithTextAndImageAdvanceRequest struct {
+	AspectRatioMode   *string   `json:"AspectRatioMode,omitempty" xml:"AspectRatioMode,omitempty"`
+	Number            *int32    `json:"Number,omitempty" xml:"Number,omitempty"`
+	RefImageUrlObject io.Reader `json:"RefImageUrl,omitempty" xml:"RefImageUrl,omitempty"`
+	Resolution        *string   `json:"Resolution,omitempty" xml:"Resolution,omitempty"`
+	Similarity        *float32  `json:"Similarity,omitempty" xml:"Similarity,omitempty"`
+	Text              *string   `json:"Text,omitempty" xml:"Text,omitempty"`
+}
+
+func (s GenerateImageWithTextAndImageAdvanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GenerateImageWithTextAndImageAdvanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GenerateImageWithTextAndImageAdvanceRequest) SetAspectRatioMode(v string) *GenerateImageWithTextAndImageAdvanceRequest {
+	s.AspectRatioMode = &v
+	return s
+}
+
+func (s *GenerateImageWithTextAndImageAdvanceRequest) SetNumber(v int32) *GenerateImageWithTextAndImageAdvanceRequest {
+	s.Number = &v
+	return s
+}
+
+func (s *GenerateImageWithTextAndImageAdvanceRequest) SetRefImageUrlObject(v io.Reader) *GenerateImageWithTextAndImageAdvanceRequest {
+	s.RefImageUrlObject = v
+	return s
+}
+
+func (s *GenerateImageWithTextAndImageAdvanceRequest) SetResolution(v string) *GenerateImageWithTextAndImageAdvanceRequest {
+	s.Resolution = &v
+	return s
+}
+
+func (s *GenerateImageWithTextAndImageAdvanceRequest) SetSimilarity(v float32) *GenerateImageWithTextAndImageAdvanceRequest {
+	s.Similarity = &v
+	return s
+}
+
+func (s *GenerateImageWithTextAndImageAdvanceRequest) SetText(v string) *GenerateImageWithTextAndImageAdvanceRequest {
+	s.Text = &v
+	return s
+}
+
+type GenerateImageWithTextAndImageResponseBody struct {
+	Data      *GenerateImageWithTextAndImageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                                        `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GenerateImageWithTextAndImageResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GenerateImageWithTextAndImageResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GenerateImageWithTextAndImageResponseBody) SetData(v *GenerateImageWithTextAndImageResponseBodyData) *GenerateImageWithTextAndImageResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GenerateImageWithTextAndImageResponseBody) SetMessage(v string) *GenerateImageWithTextAndImageResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GenerateImageWithTextAndImageResponseBody) SetRequestId(v string) *GenerateImageWithTextAndImageResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GenerateImageWithTextAndImageResponseBodyData struct {
+	ImageUrls []*string `json:"ImageUrls,omitempty" xml:"ImageUrls,omitempty" type:"Repeated"`
+}
+
+func (s GenerateImageWithTextAndImageResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GenerateImageWithTextAndImageResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GenerateImageWithTextAndImageResponseBodyData) SetImageUrls(v []*string) *GenerateImageWithTextAndImageResponseBodyData {
+	s.ImageUrls = v
+	return s
+}
+
+type GenerateImageWithTextAndImageResponse struct {
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GenerateImageWithTextAndImageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GenerateImageWithTextAndImageResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GenerateImageWithTextAndImageResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GenerateImageWithTextAndImageResponse) SetHeaders(v map[string]*string) *GenerateImageWithTextAndImageResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GenerateImageWithTextAndImageResponse) SetStatusCode(v int32) *GenerateImageWithTextAndImageResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GenerateImageWithTextAndImageResponse) SetBody(v *GenerateImageWithTextAndImageResponseBody) *GenerateImageWithTextAndImageResponse {
+	s.Body = v
+	return s
+}
+
 type GetAsyncJobResultRequest struct {
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 }
@@ -4089,6 +4362,228 @@ func (client *Client) GenerateDynamicImageAdvance(request *GenerateDynamicImageA
 	}
 
 	_result = generateDynamicImageResp
+	return _result, _err
+}
+
+func (client *Client) GenerateImageWithTextWithOptions(request *GenerateImageWithTextRequest, runtime *util.RuntimeOptions) (_result *GenerateImageWithTextResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Number)) {
+		body["Number"] = request.Number
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Resolution)) {
+		body["Resolution"] = request.Resolution
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Text)) {
+		body["Text"] = request.Text
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GenerateImageWithText"),
+		Version:     tea.String("2019-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GenerateImageWithTextResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GenerateImageWithText(request *GenerateImageWithTextRequest) (_result *GenerateImageWithTextResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GenerateImageWithTextResponse{}
+	_body, _err := client.GenerateImageWithTextWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GenerateImageWithTextAndImageWithOptions(request *GenerateImageWithTextAndImageRequest, runtime *util.RuntimeOptions) (_result *GenerateImageWithTextAndImageResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AspectRatioMode)) {
+		body["AspectRatioMode"] = request.AspectRatioMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Number)) {
+		body["Number"] = request.Number
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RefImageUrl)) {
+		body["RefImageUrl"] = request.RefImageUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Resolution)) {
+		body["Resolution"] = request.Resolution
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Similarity)) {
+		body["Similarity"] = request.Similarity
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Text)) {
+		body["Text"] = request.Text
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GenerateImageWithTextAndImage"),
+		Version:     tea.String("2019-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GenerateImageWithTextAndImageResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GenerateImageWithTextAndImage(request *GenerateImageWithTextAndImageRequest) (_result *GenerateImageWithTextAndImageResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GenerateImageWithTextAndImageResponse{}
+	_body, _err := client.GenerateImageWithTextAndImageWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GenerateImageWithTextAndImageAdvance(request *GenerateImageWithTextAndImageAdvanceRequest, runtime *util.RuntimeOptions) (_result *GenerateImageWithTextAndImageResponse, _err error) {
+	// Step 0: init client
+	accessKeyId, _err := client.Credential.GetAccessKeyId()
+	if _err != nil {
+		return _result, _err
+	}
+
+	accessKeySecret, _err := client.Credential.GetAccessKeySecret()
+	if _err != nil {
+		return _result, _err
+	}
+
+	securityToken, _err := client.Credential.GetSecurityToken()
+	if _err != nil {
+		return _result, _err
+	}
+
+	credentialType := client.Credential.GetType()
+	openPlatformEndpoint := client.OpenPlatformEndpoint
+	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
+	}
+
+	if tea.BoolValue(util.IsUnset(credentialType)) {
+		credentialType = tea.String("access_key")
+	}
+
+	authConfig := &openapi.Config{
+		AccessKeyId:     accessKeyId,
+		AccessKeySecret: accessKeySecret,
+		SecurityToken:   securityToken,
+		Type:            credentialType,
+		Endpoint:        openPlatformEndpoint,
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	authClient, _err := openplatform.NewClient(authConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
+	authRequest := &openplatform.AuthorizeFileUploadRequest{
+		Product:  tea.String("imageenhan"),
+		RegionId: client.RegionId,
+	}
+	authResponse := &openplatform.AuthorizeFileUploadResponse{}
+	ossConfig := &oss.Config{
+		AccessKeySecret: accessKeySecret,
+		Type:            tea.String("access_key"),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	var ossClient *oss.Client
+	fileObj := &fileform.FileField{}
+	ossHeader := &oss.PostObjectRequestHeader{}
+	uploadRequest := &oss.PostObjectRequest{}
+	ossRuntime := &ossutil.RuntimeOptions{}
+	openapiutil.Convert(runtime, ossRuntime)
+	generateImageWithTextAndImageReq := &GenerateImageWithTextAndImageRequest{}
+	openapiutil.Convert(request, generateImageWithTextAndImageReq)
+	if !tea.BoolValue(util.IsUnset(request.RefImageUrlObject)) {
+		authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+
+		ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
+		ossClient, _err = oss.NewClient(ossConfig)
+		if _err != nil {
+			return _result, _err
+		}
+
+		fileObj = &fileform.FileField{
+			Filename:    authResponse.Body.ObjectKey,
+			Content:     request.RefImageUrlObject,
+			ContentType: tea.String(""),
+		}
+		ossHeader = &oss.PostObjectRequestHeader{
+			AccessKeyId:         authResponse.Body.AccessKeyId,
+			Policy:              authResponse.Body.EncodedPolicy,
+			Signature:           authResponse.Body.Signature,
+			Key:                 authResponse.Body.ObjectKey,
+			File:                fileObj,
+			SuccessActionStatus: tea.String("201"),
+		}
+		uploadRequest = &oss.PostObjectRequest{
+			BucketName: authResponse.Body.Bucket,
+			Header:     ossHeader,
+		}
+		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+		if _err != nil {
+			return _result, _err
+		}
+		generateImageWithTextAndImageReq.RefImageUrl = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
+	}
+
+	generateImageWithTextAndImageResp, _err := client.GenerateImageWithTextAndImageWithOptions(generateImageWithTextAndImageReq, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+
+	_result = generateImageWithTextAndImageResp
 	return _result, _err
 }
 
