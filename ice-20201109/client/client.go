@@ -574,6 +574,87 @@ func (s *AddFavoritePublicMediaResponse) SetBody(v *AddFavoritePublicMediaRespon
 	return s
 }
 
+type AddMediaMarksRequest struct {
+	MediaId    *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	MediaMarks *string `json:"MediaMarks,omitempty" xml:"MediaMarks,omitempty"`
+}
+
+func (s AddMediaMarksRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddMediaMarksRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AddMediaMarksRequest) SetMediaId(v string) *AddMediaMarksRequest {
+	s.MediaId = &v
+	return s
+}
+
+func (s *AddMediaMarksRequest) SetMediaMarks(v string) *AddMediaMarksRequest {
+	s.MediaMarks = &v
+	return s
+}
+
+type AddMediaMarksResponseBody struct {
+	MediaId      *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	MediaMarkIds *string `json:"MediaMarkIds,omitempty" xml:"MediaMarkIds,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s AddMediaMarksResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddMediaMarksResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AddMediaMarksResponseBody) SetMediaId(v string) *AddMediaMarksResponseBody {
+	s.MediaId = &v
+	return s
+}
+
+func (s *AddMediaMarksResponseBody) SetMediaMarkIds(v string) *AddMediaMarksResponseBody {
+	s.MediaMarkIds = &v
+	return s
+}
+
+func (s *AddMediaMarksResponseBody) SetRequestId(v string) *AddMediaMarksResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type AddMediaMarksResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *AddMediaMarksResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s AddMediaMarksResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddMediaMarksResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AddMediaMarksResponse) SetHeaders(v map[string]*string) *AddMediaMarksResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AddMediaMarksResponse) SetStatusCode(v int32) *AddMediaMarksResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *AddMediaMarksResponse) SetBody(v *AddMediaMarksResponseBody) *AddMediaMarksResponse {
+	s.Body = v
+	return s
+}
+
 type AddTemplateRequest struct {
 	Config          *string `json:"Config,omitempty" xml:"Config,omitempty"`
 	CoverUrl        *string `json:"CoverUrl,omitempty" xml:"CoverUrl,omitempty"`
@@ -3708,6 +3789,87 @@ func (s *DeleteMediaInfosResponse) SetStatusCode(v int32) *DeleteMediaInfosRespo
 }
 
 func (s *DeleteMediaInfosResponse) SetBody(v *DeleteMediaInfosResponseBody) *DeleteMediaInfosResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteMediaMarksRequest struct {
+	MediaId      *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	MediaMarkIds *string `json:"MediaMarkIds,omitempty" xml:"MediaMarkIds,omitempty"`
+}
+
+func (s DeleteMediaMarksRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteMediaMarksRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteMediaMarksRequest) SetMediaId(v string) *DeleteMediaMarksRequest {
+	s.MediaId = &v
+	return s
+}
+
+func (s *DeleteMediaMarksRequest) SetMediaMarkIds(v string) *DeleteMediaMarksRequest {
+	s.MediaMarkIds = &v
+	return s
+}
+
+type DeleteMediaMarksResponseBody struct {
+	MediaId      *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	MediaMarkIds *string `json:"MediaMarkIds,omitempty" xml:"MediaMarkIds,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteMediaMarksResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteMediaMarksResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteMediaMarksResponseBody) SetMediaId(v string) *DeleteMediaMarksResponseBody {
+	s.MediaId = &v
+	return s
+}
+
+func (s *DeleteMediaMarksResponseBody) SetMediaMarkIds(v string) *DeleteMediaMarksResponseBody {
+	s.MediaMarkIds = &v
+	return s
+}
+
+func (s *DeleteMediaMarksResponseBody) SetRequestId(v string) *DeleteMediaMarksResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteMediaMarksResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteMediaMarksResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteMediaMarksResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteMediaMarksResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteMediaMarksResponse) SetHeaders(v map[string]*string) *DeleteMediaMarksResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteMediaMarksResponse) SetStatusCode(v int32) *DeleteMediaMarksResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteMediaMarksResponse) SetBody(v *DeleteMediaMarksResponseBody) *DeleteMediaMarksResponse {
 	s.Body = v
 	return s
 }
@@ -11488,6 +11650,87 @@ func (s *GetMediaInfoJobResponse) SetBody(v *GetMediaInfoJobResponseBody) *GetMe
 	return s
 }
 
+type GetMediaMarksRequest struct {
+	MediaId      *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	MediaMarkIds *string `json:"MediaMarkIds,omitempty" xml:"MediaMarkIds,omitempty"`
+}
+
+func (s GetMediaMarksRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMediaMarksRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetMediaMarksRequest) SetMediaId(v string) *GetMediaMarksRequest {
+	s.MediaId = &v
+	return s
+}
+
+func (s *GetMediaMarksRequest) SetMediaMarkIds(v string) *GetMediaMarksRequest {
+	s.MediaMarkIds = &v
+	return s
+}
+
+type GetMediaMarksResponseBody struct {
+	MediaId    *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	MediaMarks *string `json:"MediaMarks,omitempty" xml:"MediaMarks,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetMediaMarksResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMediaMarksResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetMediaMarksResponseBody) SetMediaId(v string) *GetMediaMarksResponseBody {
+	s.MediaId = &v
+	return s
+}
+
+func (s *GetMediaMarksResponseBody) SetMediaMarks(v string) *GetMediaMarksResponseBody {
+	s.MediaMarks = &v
+	return s
+}
+
+func (s *GetMediaMarksResponseBody) SetRequestId(v string) *GetMediaMarksResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetMediaMarksResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetMediaMarksResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetMediaMarksResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMediaMarksResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetMediaMarksResponse) SetHeaders(v map[string]*string) *GetMediaMarksResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetMediaMarksResponse) SetStatusCode(v int32) *GetMediaMarksResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetMediaMarksResponse) SetBody(v *GetMediaMarksResponseBody) *GetMediaMarksResponse {
+	s.Body = v
+	return s
+}
+
 type GetMediaProducingJobRequest struct {
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 }
@@ -13971,6 +14214,123 @@ func (s *GetTemplateMaterialsResponse) SetStatusCode(v int32) *GetTemplateMateri
 }
 
 func (s *GetTemplateMaterialsResponse) SetBody(v *GetTemplateMaterialsResponseBody) *GetTemplateMaterialsResponse {
+	s.Body = v
+	return s
+}
+
+type GetTemplateParamsRequest struct {
+	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+}
+
+func (s GetTemplateParamsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTemplateParamsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetTemplateParamsRequest) SetTemplateId(v string) *GetTemplateParamsRequest {
+	s.TemplateId = &v
+	return s
+}
+
+type GetTemplateParamsResponseBody struct {
+	ParamList []*GetTemplateParamsResponseBodyParamList `json:"ParamList,omitempty" xml:"ParamList,omitempty" type:"Repeated"`
+	// Id of the request
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+}
+
+func (s GetTemplateParamsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTemplateParamsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetTemplateParamsResponseBody) SetParamList(v []*GetTemplateParamsResponseBodyParamList) *GetTemplateParamsResponseBody {
+	s.ParamList = v
+	return s
+}
+
+func (s *GetTemplateParamsResponseBody) SetRequestId(v string) *GetTemplateParamsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetTemplateParamsResponseBody) SetTemplateId(v string) *GetTemplateParamsResponseBody {
+	s.TemplateId = &v
+	return s
+}
+
+type GetTemplateParamsResponseBodyParamList struct {
+	Content  *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	CoverUrl *string `json:"CoverUrl,omitempty" xml:"CoverUrl,omitempty"`
+	Key      *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	MediaUrl *string `json:"MediaUrl,omitempty" xml:"MediaUrl,omitempty"`
+	Type     *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s GetTemplateParamsResponseBodyParamList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTemplateParamsResponseBodyParamList) GoString() string {
+	return s.String()
+}
+
+func (s *GetTemplateParamsResponseBodyParamList) SetContent(v string) *GetTemplateParamsResponseBodyParamList {
+	s.Content = &v
+	return s
+}
+
+func (s *GetTemplateParamsResponseBodyParamList) SetCoverUrl(v string) *GetTemplateParamsResponseBodyParamList {
+	s.CoverUrl = &v
+	return s
+}
+
+func (s *GetTemplateParamsResponseBodyParamList) SetKey(v string) *GetTemplateParamsResponseBodyParamList {
+	s.Key = &v
+	return s
+}
+
+func (s *GetTemplateParamsResponseBodyParamList) SetMediaUrl(v string) *GetTemplateParamsResponseBodyParamList {
+	s.MediaUrl = &v
+	return s
+}
+
+func (s *GetTemplateParamsResponseBodyParamList) SetType(v string) *GetTemplateParamsResponseBodyParamList {
+	s.Type = &v
+	return s
+}
+
+type GetTemplateParamsResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetTemplateParamsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetTemplateParamsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTemplateParamsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetTemplateParamsResponse) SetHeaders(v map[string]*string) *GetTemplateParamsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetTemplateParamsResponse) SetStatusCode(v int32) *GetTemplateParamsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetTemplateParamsResponse) SetBody(v *GetTemplateParamsResponseBody) *GetTemplateParamsResponse {
 	s.Body = v
 	return s
 }
@@ -20206,6 +20566,87 @@ func (s *ListMediaInfoJobsResponse) SetBody(v *ListMediaInfoJobsResponseBody) *L
 	return s
 }
 
+type ListMediaMarksRequest struct {
+	MediaId      *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	MediaMarkIds *string `json:"MediaMarkIds,omitempty" xml:"MediaMarkIds,omitempty"`
+}
+
+func (s ListMediaMarksRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMediaMarksRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListMediaMarksRequest) SetMediaId(v string) *ListMediaMarksRequest {
+	s.MediaId = &v
+	return s
+}
+
+func (s *ListMediaMarksRequest) SetMediaMarkIds(v string) *ListMediaMarksRequest {
+	s.MediaMarkIds = &v
+	return s
+}
+
+type ListMediaMarksResponseBody struct {
+	MediaId    *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	MediaMarks *string `json:"MediaMarks,omitempty" xml:"MediaMarks,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListMediaMarksResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMediaMarksResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListMediaMarksResponseBody) SetMediaId(v string) *ListMediaMarksResponseBody {
+	s.MediaId = &v
+	return s
+}
+
+func (s *ListMediaMarksResponseBody) SetMediaMarks(v string) *ListMediaMarksResponseBody {
+	s.MediaMarks = &v
+	return s
+}
+
+func (s *ListMediaMarksResponseBody) SetRequestId(v string) *ListMediaMarksResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListMediaMarksResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListMediaMarksResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListMediaMarksResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMediaMarksResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListMediaMarksResponse) SetHeaders(v map[string]*string) *ListMediaMarksResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListMediaMarksResponse) SetStatusCode(v int32) *ListMediaMarksResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListMediaMarksResponse) SetBody(v *ListMediaMarksResponseBody) *ListMediaMarksResponse {
+	s.Body = v
+	return s
+}
+
 type ListPackageJobsRequest struct {
 	EndOfCreateTime   *string `json:"EndOfCreateTime,omitempty" xml:"EndOfCreateTime,omitempty"`
 	JobId             *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
@@ -25215,8 +25656,8 @@ func (s *RegisterMediaStreamResponse) SetBody(v *RegisterMediaStreamResponseBody
 type SearchEditingProjectRequest struct {
 	CreateSource *string `json:"CreateSource,omitempty" xml:"CreateSource,omitempty"`
 	EndTime      *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	MaxResults   *int64  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	PageNo       *int64  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	PageSize     *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	ProjectType  *string `json:"ProjectType,omitempty" xml:"ProjectType,omitempty"`
 	SortBy       *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
 	StartTime    *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
@@ -25242,13 +25683,13 @@ func (s *SearchEditingProjectRequest) SetEndTime(v string) *SearchEditingProject
 	return s
 }
 
-func (s *SearchEditingProjectRequest) SetMaxResults(v int64) *SearchEditingProjectRequest {
-	s.MaxResults = &v
+func (s *SearchEditingProjectRequest) SetPageNo(v int64) *SearchEditingProjectRequest {
+	s.PageNo = &v
 	return s
 }
 
-func (s *SearchEditingProjectRequest) SetNextToken(v string) *SearchEditingProjectRequest {
-	s.NextToken = &v
+func (s *SearchEditingProjectRequest) SetPageSize(v int64) *SearchEditingProjectRequest {
+	s.PageSize = &v
 	return s
 }
 
@@ -35700,6 +36141,87 @@ func (s *UpdateMediaInfoResponse) SetBody(v *UpdateMediaInfoResponseBody) *Updat
 	return s
 }
 
+type UpdateMediaMarksRequest struct {
+	MediaId    *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	MediaMarks *string `json:"MediaMarks,omitempty" xml:"MediaMarks,omitempty"`
+}
+
+func (s UpdateMediaMarksRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateMediaMarksRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateMediaMarksRequest) SetMediaId(v string) *UpdateMediaMarksRequest {
+	s.MediaId = &v
+	return s
+}
+
+func (s *UpdateMediaMarksRequest) SetMediaMarks(v string) *UpdateMediaMarksRequest {
+	s.MediaMarks = &v
+	return s
+}
+
+type UpdateMediaMarksResponseBody struct {
+	MediaId      *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	MediaMarkIds *string `json:"MediaMarkIds,omitempty" xml:"MediaMarkIds,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateMediaMarksResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateMediaMarksResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateMediaMarksResponseBody) SetMediaId(v string) *UpdateMediaMarksResponseBody {
+	s.MediaId = &v
+	return s
+}
+
+func (s *UpdateMediaMarksResponseBody) SetMediaMarkIds(v string) *UpdateMediaMarksResponseBody {
+	s.MediaMarkIds = &v
+	return s
+}
+
+func (s *UpdateMediaMarksResponseBody) SetRequestId(v string) *UpdateMediaMarksResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateMediaMarksResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateMediaMarksResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateMediaMarksResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateMediaMarksResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateMediaMarksResponse) SetHeaders(v map[string]*string) *UpdateMediaMarksResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateMediaMarksResponse) SetStatusCode(v int32) *UpdateMediaMarksResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateMediaMarksResponse) SetBody(v *UpdateMediaMarksResponseBody) *UpdateMediaMarksResponse {
+	s.Body = v
+	return s
+}
+
 type UpdatePipelineRequest struct {
 	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	PipelineId *string `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
@@ -36467,6 +36989,54 @@ func (client *Client) AddFavoritePublicMedia(request *AddFavoritePublicMediaRequ
 	runtime := &util.RuntimeOptions{}
 	_result = &AddFavoritePublicMediaResponse{}
 	_body, _err := client.AddFavoritePublicMediaWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) AddMediaMarksWithOptions(request *AddMediaMarksRequest, runtime *util.RuntimeOptions) (_result *AddMediaMarksResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.MediaId)) {
+		query["MediaId"] = request.MediaId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MediaMarks)) {
+		query["MediaMarks"] = request.MediaMarks
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AddMediaMarks"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &AddMediaMarksResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) AddMediaMarks(request *AddMediaMarksRequest) (_result *AddMediaMarksResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &AddMediaMarksResponse{}
+	_body, _err := client.AddMediaMarksWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -37929,6 +38499,54 @@ func (client *Client) DeleteMediaInfos(request *DeleteMediaInfosRequest) (_resul
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteMediaInfosResponse{}
 	_body, _err := client.DeleteMediaInfosWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteMediaMarksWithOptions(request *DeleteMediaMarksRequest, runtime *util.RuntimeOptions) (_result *DeleteMediaMarksResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.MediaId)) {
+		query["MediaId"] = request.MediaId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MediaMarkIds)) {
+		query["MediaMarkIds"] = request.MediaMarkIds
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteMediaMarks"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteMediaMarksResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteMediaMarks(request *DeleteMediaMarksRequest) (_result *DeleteMediaMarksResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteMediaMarksResponse{}
+	_body, _err := client.DeleteMediaMarksWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -40238,6 +40856,54 @@ func (client *Client) GetMediaInfoJob(request *GetMediaInfoJobRequest) (_result 
 	return _result, _err
 }
 
+func (client *Client) GetMediaMarksWithOptions(request *GetMediaMarksRequest, runtime *util.RuntimeOptions) (_result *GetMediaMarksResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.MediaId)) {
+		query["MediaId"] = request.MediaId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MediaMarkIds)) {
+		query["MediaMarkIds"] = request.MediaMarkIds
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetMediaMarks"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetMediaMarksResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetMediaMarks(request *GetMediaMarksRequest) (_result *GetMediaMarksResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetMediaMarksResponse{}
+	_body, _err := client.GetMediaMarksWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) GetMediaProducingJobWithOptions(request *GetMediaProducingJobRequest, runtime *util.RuntimeOptions) (_result *GetMediaProducingJobResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -40735,6 +41401,46 @@ func (client *Client) GetTemplateMaterials(request *GetTemplateMaterialsRequest)
 	runtime := &util.RuntimeOptions{}
 	_result = &GetTemplateMaterialsResponse{}
 	_body, _err := client.GetTemplateMaterialsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetTemplateParamsWithOptions(request *GetTemplateParamsRequest, runtime *util.RuntimeOptions) (_result *GetTemplateParamsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetTemplateParams"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetTemplateParamsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetTemplateParams(request *GetTemplateParamsRequest) (_result *GetTemplateParamsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetTemplateParamsResponse{}
+	_body, _err := client.GetTemplateParamsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -41711,6 +42417,54 @@ func (client *Client) ListMediaInfoJobs(request *ListMediaInfoJobsRequest) (_res
 	runtime := &util.RuntimeOptions{}
 	_result = &ListMediaInfoJobsResponse{}
 	_body, _err := client.ListMediaInfoJobsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListMediaMarksWithOptions(request *ListMediaMarksRequest, runtime *util.RuntimeOptions) (_result *ListMediaMarksResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.MediaId)) {
+		query["MediaId"] = request.MediaId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MediaMarkIds)) {
+		query["MediaMarkIds"] = request.MediaMarkIds
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListMediaMarks"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListMediaMarksResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListMediaMarks(request *ListMediaMarksRequest) (_result *ListMediaMarksResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListMediaMarksResponse{}
+	_body, _err := client.ListMediaMarksWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -42720,12 +43474,12 @@ func (client *Client) SearchEditingProjectWithOptions(request *SearchEditingProj
 		query["EndTime"] = request.EndTime
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
-		query["MaxResults"] = request.MaxResults
+	if !tea.BoolValue(util.IsUnset(request.PageNo)) {
+		query["PageNo"] = request.PageNo
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
-		query["NextToken"] = request.NextToken
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ProjectType)) {
@@ -45206,6 +45960,54 @@ func (client *Client) UpdateMediaInfo(request *UpdateMediaInfoRequest) (_result 
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateMediaInfoResponse{}
 	_body, _err := client.UpdateMediaInfoWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateMediaMarksWithOptions(request *UpdateMediaMarksRequest, runtime *util.RuntimeOptions) (_result *UpdateMediaMarksResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.MediaId)) {
+		query["MediaId"] = request.MediaId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MediaMarks)) {
+		query["MediaMarks"] = request.MediaMarks
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateMediaMarks"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateMediaMarksResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateMediaMarks(request *UpdateMediaMarksRequest) (_result *UpdateMediaMarksResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateMediaMarksResponse{}
+	_body, _err := client.UpdateMediaMarksWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
