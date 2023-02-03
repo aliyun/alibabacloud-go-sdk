@@ -1899,6 +1899,193 @@ func (s *CompareFaceResponse) SetBody(v *CompareFaceResponseBody) *CompareFaceRe
 	return s
 }
 
+type CompareFaceWithMaskRequest struct {
+	ImageURLA             *string  `json:"ImageURLA,omitempty" xml:"ImageURLA,omitempty"`
+	ImageURLB             *string  `json:"ImageURLB,omitempty" xml:"ImageURLB,omitempty"`
+	QualityScoreThreshold *float32 `json:"QualityScoreThreshold,omitempty" xml:"QualityScoreThreshold,omitempty"`
+}
+
+func (s CompareFaceWithMaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CompareFaceWithMaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CompareFaceWithMaskRequest) SetImageURLA(v string) *CompareFaceWithMaskRequest {
+	s.ImageURLA = &v
+	return s
+}
+
+func (s *CompareFaceWithMaskRequest) SetImageURLB(v string) *CompareFaceWithMaskRequest {
+	s.ImageURLB = &v
+	return s
+}
+
+func (s *CompareFaceWithMaskRequest) SetQualityScoreThreshold(v float32) *CompareFaceWithMaskRequest {
+	s.QualityScoreThreshold = &v
+	return s
+}
+
+type CompareFaceWithMaskAdvanceRequest struct {
+	ImageURLAObject       io.Reader `json:"ImageURLA,omitempty" xml:"ImageURLA,omitempty"`
+	ImageURLBObject       io.Reader `json:"ImageURLB,omitempty" xml:"ImageURLB,omitempty"`
+	QualityScoreThreshold *float32  `json:"QualityScoreThreshold,omitempty" xml:"QualityScoreThreshold,omitempty"`
+}
+
+func (s CompareFaceWithMaskAdvanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CompareFaceWithMaskAdvanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CompareFaceWithMaskAdvanceRequest) SetImageURLAObject(v io.Reader) *CompareFaceWithMaskAdvanceRequest {
+	s.ImageURLAObject = v
+	return s
+}
+
+func (s *CompareFaceWithMaskAdvanceRequest) SetImageURLBObject(v io.Reader) *CompareFaceWithMaskAdvanceRequest {
+	s.ImageURLBObject = v
+	return s
+}
+
+func (s *CompareFaceWithMaskAdvanceRequest) SetQualityScoreThreshold(v float32) *CompareFaceWithMaskAdvanceRequest {
+	s.QualityScoreThreshold = &v
+	return s
+}
+
+type CompareFaceWithMaskResponseBody struct {
+	Data      *CompareFaceWithMaskResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CompareFaceWithMaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CompareFaceWithMaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CompareFaceWithMaskResponseBody) SetData(v *CompareFaceWithMaskResponseBodyData) *CompareFaceWithMaskResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *CompareFaceWithMaskResponseBody) SetRequestId(v string) *CompareFaceWithMaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CompareFaceWithMaskResponseBodyData struct {
+	Confidence     *float32 `json:"Confidence,omitempty" xml:"Confidence,omitempty"`
+	IsMaskA        *int64   `json:"IsMaskA,omitempty" xml:"IsMaskA,omitempty"`
+	IsMaskB        *int64   `json:"IsMaskB,omitempty" xml:"IsMaskB,omitempty"`
+	LandmarksAList []*int64 `json:"LandmarksAList,omitempty" xml:"LandmarksAList,omitempty" type:"Repeated"`
+	LandmarksBList []*int64 `json:"LandmarksBList,omitempty" xml:"LandmarksBList,omitempty" type:"Repeated"`
+	MessageTips    *string  `json:"MessageTips,omitempty" xml:"MessageTips,omitempty"`
+	QualityScoreA  *float32 `json:"QualityScoreA,omitempty" xml:"QualityScoreA,omitempty"`
+	QualityScoreB  *float32 `json:"QualityScoreB,omitempty" xml:"QualityScoreB,omitempty"`
+	RectAList      []*int64 `json:"RectAList,omitempty" xml:"RectAList,omitempty" type:"Repeated"`
+	RectBList      []*int64 `json:"RectBList,omitempty" xml:"RectBList,omitempty" type:"Repeated"`
+	Thresholds     []*int64 `json:"Thresholds,omitempty" xml:"Thresholds,omitempty" type:"Repeated"`
+}
+
+func (s CompareFaceWithMaskResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CompareFaceWithMaskResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *CompareFaceWithMaskResponseBodyData) SetConfidence(v float32) *CompareFaceWithMaskResponseBodyData {
+	s.Confidence = &v
+	return s
+}
+
+func (s *CompareFaceWithMaskResponseBodyData) SetIsMaskA(v int64) *CompareFaceWithMaskResponseBodyData {
+	s.IsMaskA = &v
+	return s
+}
+
+func (s *CompareFaceWithMaskResponseBodyData) SetIsMaskB(v int64) *CompareFaceWithMaskResponseBodyData {
+	s.IsMaskB = &v
+	return s
+}
+
+func (s *CompareFaceWithMaskResponseBodyData) SetLandmarksAList(v []*int64) *CompareFaceWithMaskResponseBodyData {
+	s.LandmarksAList = v
+	return s
+}
+
+func (s *CompareFaceWithMaskResponseBodyData) SetLandmarksBList(v []*int64) *CompareFaceWithMaskResponseBodyData {
+	s.LandmarksBList = v
+	return s
+}
+
+func (s *CompareFaceWithMaskResponseBodyData) SetMessageTips(v string) *CompareFaceWithMaskResponseBodyData {
+	s.MessageTips = &v
+	return s
+}
+
+func (s *CompareFaceWithMaskResponseBodyData) SetQualityScoreA(v float32) *CompareFaceWithMaskResponseBodyData {
+	s.QualityScoreA = &v
+	return s
+}
+
+func (s *CompareFaceWithMaskResponseBodyData) SetQualityScoreB(v float32) *CompareFaceWithMaskResponseBodyData {
+	s.QualityScoreB = &v
+	return s
+}
+
+func (s *CompareFaceWithMaskResponseBodyData) SetRectAList(v []*int64) *CompareFaceWithMaskResponseBodyData {
+	s.RectAList = v
+	return s
+}
+
+func (s *CompareFaceWithMaskResponseBodyData) SetRectBList(v []*int64) *CompareFaceWithMaskResponseBodyData {
+	s.RectBList = v
+	return s
+}
+
+func (s *CompareFaceWithMaskResponseBodyData) SetThresholds(v []*int64) *CompareFaceWithMaskResponseBodyData {
+	s.Thresholds = v
+	return s
+}
+
+type CompareFaceWithMaskResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CompareFaceWithMaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CompareFaceWithMaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CompareFaceWithMaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CompareFaceWithMaskResponse) SetHeaders(v map[string]*string) *CompareFaceWithMaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CompareFaceWithMaskResponse) SetStatusCode(v int32) *CompareFaceWithMaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CompareFaceWithMaskResponse) SetBody(v *CompareFaceWithMaskResponseBody) *CompareFaceWithMaskResponse {
+	s.Body = v
+	return s
+}
+
 type CountCrowdRequest struct {
 	ImageURL *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
 	IsShow   *bool   `json:"IsShow,omitempty" xml:"IsShow,omitempty"`
@@ -3162,6 +3349,248 @@ func (s *DetectIPCPedestrianResponse) SetStatusCode(v int32) *DetectIPCPedestria
 }
 
 func (s *DetectIPCPedestrianResponse) SetBody(v *DetectIPCPedestrianResponseBody) *DetectIPCPedestrianResponse {
+	s.Body = v
+	return s
+}
+
+type DetectInfraredLivingFaceRequest struct {
+	Tasks []*DetectInfraredLivingFaceRequestTasks `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Repeated"`
+}
+
+func (s DetectInfraredLivingFaceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetectInfraredLivingFaceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DetectInfraredLivingFaceRequest) SetTasks(v []*DetectInfraredLivingFaceRequestTasks) *DetectInfraredLivingFaceRequest {
+	s.Tasks = v
+	return s
+}
+
+type DetectInfraredLivingFaceRequestTasks struct {
+	ImageURL *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
+}
+
+func (s DetectInfraredLivingFaceRequestTasks) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetectInfraredLivingFaceRequestTasks) GoString() string {
+	return s.String()
+}
+
+func (s *DetectInfraredLivingFaceRequestTasks) SetImageURL(v string) *DetectInfraredLivingFaceRequestTasks {
+	s.ImageURL = &v
+	return s
+}
+
+type DetectInfraredLivingFaceAdvanceRequest struct {
+	Tasks []*DetectInfraredLivingFaceAdvanceRequestTasks `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Repeated"`
+}
+
+func (s DetectInfraredLivingFaceAdvanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetectInfraredLivingFaceAdvanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DetectInfraredLivingFaceAdvanceRequest) SetTasks(v []*DetectInfraredLivingFaceAdvanceRequestTasks) *DetectInfraredLivingFaceAdvanceRequest {
+	s.Tasks = v
+	return s
+}
+
+type DetectInfraredLivingFaceAdvanceRequestTasks struct {
+	ImageURLObject io.Reader `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
+}
+
+func (s DetectInfraredLivingFaceAdvanceRequestTasks) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetectInfraredLivingFaceAdvanceRequestTasks) GoString() string {
+	return s.String()
+}
+
+func (s *DetectInfraredLivingFaceAdvanceRequestTasks) SetImageURLObject(v io.Reader) *DetectInfraredLivingFaceAdvanceRequestTasks {
+	s.ImageURLObject = v
+	return s
+}
+
+type DetectInfraredLivingFaceResponseBody struct {
+	Data      *DetectInfraredLivingFaceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DetectInfraredLivingFaceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetectInfraredLivingFaceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DetectInfraredLivingFaceResponseBody) SetData(v *DetectInfraredLivingFaceResponseBodyData) *DetectInfraredLivingFaceResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DetectInfraredLivingFaceResponseBody) SetRequestId(v string) *DetectInfraredLivingFaceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DetectInfraredLivingFaceResponseBodyData struct {
+	Elements []*DetectInfraredLivingFaceResponseBodyDataElements `json:"Elements,omitempty" xml:"Elements,omitempty" type:"Repeated"`
+}
+
+func (s DetectInfraredLivingFaceResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetectInfraredLivingFaceResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DetectInfraredLivingFaceResponseBodyData) SetElements(v []*DetectInfraredLivingFaceResponseBodyDataElements) *DetectInfraredLivingFaceResponseBodyData {
+	s.Elements = v
+	return s
+}
+
+type DetectInfraredLivingFaceResponseBodyDataElements struct {
+	FaceNumber *int64                                                     `json:"FaceNumber,omitempty" xml:"FaceNumber,omitempty"`
+	ImageURL   *string                                                    `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
+	Results    []*DetectInfraredLivingFaceResponseBodyDataElementsResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Repeated"`
+}
+
+func (s DetectInfraredLivingFaceResponseBodyDataElements) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetectInfraredLivingFaceResponseBodyDataElements) GoString() string {
+	return s.String()
+}
+
+func (s *DetectInfraredLivingFaceResponseBodyDataElements) SetFaceNumber(v int64) *DetectInfraredLivingFaceResponseBodyDataElements {
+	s.FaceNumber = &v
+	return s
+}
+
+func (s *DetectInfraredLivingFaceResponseBodyDataElements) SetImageURL(v string) *DetectInfraredLivingFaceResponseBodyDataElements {
+	s.ImageURL = &v
+	return s
+}
+
+func (s *DetectInfraredLivingFaceResponseBodyDataElements) SetResults(v []*DetectInfraredLivingFaceResponseBodyDataElementsResults) *DetectInfraredLivingFaceResponseBodyDataElements {
+	s.Results = v
+	return s
+}
+
+type DetectInfraredLivingFaceResponseBodyDataElementsResults struct {
+	Label       *string                                                      `json:"Label,omitempty" xml:"Label,omitempty"`
+	MessageTips *string                                                      `json:"MessageTips,omitempty" xml:"MessageTips,omitempty"`
+	Rate        *float32                                                     `json:"Rate,omitempty" xml:"Rate,omitempty"`
+	Rect        *DetectInfraredLivingFaceResponseBodyDataElementsResultsRect `json:"Rect,omitempty" xml:"Rect,omitempty" type:"Struct"`
+	Suggestion  *string                                                      `json:"Suggestion,omitempty" xml:"Suggestion,omitempty"`
+}
+
+func (s DetectInfraredLivingFaceResponseBodyDataElementsResults) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetectInfraredLivingFaceResponseBodyDataElementsResults) GoString() string {
+	return s.String()
+}
+
+func (s *DetectInfraredLivingFaceResponseBodyDataElementsResults) SetLabel(v string) *DetectInfraredLivingFaceResponseBodyDataElementsResults {
+	s.Label = &v
+	return s
+}
+
+func (s *DetectInfraredLivingFaceResponseBodyDataElementsResults) SetMessageTips(v string) *DetectInfraredLivingFaceResponseBodyDataElementsResults {
+	s.MessageTips = &v
+	return s
+}
+
+func (s *DetectInfraredLivingFaceResponseBodyDataElementsResults) SetRate(v float32) *DetectInfraredLivingFaceResponseBodyDataElementsResults {
+	s.Rate = &v
+	return s
+}
+
+func (s *DetectInfraredLivingFaceResponseBodyDataElementsResults) SetRect(v *DetectInfraredLivingFaceResponseBodyDataElementsResultsRect) *DetectInfraredLivingFaceResponseBodyDataElementsResults {
+	s.Rect = v
+	return s
+}
+
+func (s *DetectInfraredLivingFaceResponseBodyDataElementsResults) SetSuggestion(v string) *DetectInfraredLivingFaceResponseBodyDataElementsResults {
+	s.Suggestion = &v
+	return s
+}
+
+type DetectInfraredLivingFaceResponseBodyDataElementsResultsRect struct {
+	Height *int64 `json:"Height,omitempty" xml:"Height,omitempty"`
+	Left   *int64 `json:"Left,omitempty" xml:"Left,omitempty"`
+	Top    *int64 `json:"Top,omitempty" xml:"Top,omitempty"`
+	Width  *int64 `json:"Width,omitempty" xml:"Width,omitempty"`
+}
+
+func (s DetectInfraredLivingFaceResponseBodyDataElementsResultsRect) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetectInfraredLivingFaceResponseBodyDataElementsResultsRect) GoString() string {
+	return s.String()
+}
+
+func (s *DetectInfraredLivingFaceResponseBodyDataElementsResultsRect) SetHeight(v int64) *DetectInfraredLivingFaceResponseBodyDataElementsResultsRect {
+	s.Height = &v
+	return s
+}
+
+func (s *DetectInfraredLivingFaceResponseBodyDataElementsResultsRect) SetLeft(v int64) *DetectInfraredLivingFaceResponseBodyDataElementsResultsRect {
+	s.Left = &v
+	return s
+}
+
+func (s *DetectInfraredLivingFaceResponseBodyDataElementsResultsRect) SetTop(v int64) *DetectInfraredLivingFaceResponseBodyDataElementsResultsRect {
+	s.Top = &v
+	return s
+}
+
+func (s *DetectInfraredLivingFaceResponseBodyDataElementsResultsRect) SetWidth(v int64) *DetectInfraredLivingFaceResponseBodyDataElementsResultsRect {
+	s.Width = &v
+	return s
+}
+
+type DetectInfraredLivingFaceResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DetectInfraredLivingFaceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DetectInfraredLivingFaceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetectInfraredLivingFaceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DetectInfraredLivingFaceResponse) SetHeaders(v map[string]*string) *DetectInfraredLivingFaceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DetectInfraredLivingFaceResponse) SetStatusCode(v int32) *DetectInfraredLivingFaceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DetectInfraredLivingFaceResponse) SetBody(v *DetectInfraredLivingFaceResponseBody) *DetectInfraredLivingFaceResponse {
 	s.Body = v
 	return s
 }
@@ -10893,6 +11322,201 @@ func (client *Client) CompareFaceAdvance(request *CompareFaceAdvanceRequest, run
 	return _result, _err
 }
 
+func (client *Client) CompareFaceWithMaskWithOptions(request *CompareFaceWithMaskRequest, runtime *util.RuntimeOptions) (_result *CompareFaceWithMaskResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ImageURLA)) {
+		body["ImageURLA"] = request.ImageURLA
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ImageURLB)) {
+		body["ImageURLB"] = request.ImageURLB
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.QualityScoreThreshold)) {
+		body["QualityScoreThreshold"] = request.QualityScoreThreshold
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CompareFaceWithMask"),
+		Version:     tea.String("2019-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CompareFaceWithMaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CompareFaceWithMask(request *CompareFaceWithMaskRequest) (_result *CompareFaceWithMaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CompareFaceWithMaskResponse{}
+	_body, _err := client.CompareFaceWithMaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CompareFaceWithMaskAdvance(request *CompareFaceWithMaskAdvanceRequest, runtime *util.RuntimeOptions) (_result *CompareFaceWithMaskResponse, _err error) {
+	// Step 0: init client
+	accessKeyId, _err := client.Credential.GetAccessKeyId()
+	if _err != nil {
+		return _result, _err
+	}
+
+	accessKeySecret, _err := client.Credential.GetAccessKeySecret()
+	if _err != nil {
+		return _result, _err
+	}
+
+	securityToken, _err := client.Credential.GetSecurityToken()
+	if _err != nil {
+		return _result, _err
+	}
+
+	credentialType := client.Credential.GetType()
+	openPlatformEndpoint := client.OpenPlatformEndpoint
+	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
+	}
+
+	if tea.BoolValue(util.IsUnset(credentialType)) {
+		credentialType = tea.String("access_key")
+	}
+
+	authConfig := &openapi.Config{
+		AccessKeyId:     accessKeyId,
+		AccessKeySecret: accessKeySecret,
+		SecurityToken:   securityToken,
+		Type:            credentialType,
+		Endpoint:        openPlatformEndpoint,
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	authClient, _err := openplatform.NewClient(authConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
+	authRequest := &openplatform.AuthorizeFileUploadRequest{
+		Product:  tea.String("facebody"),
+		RegionId: client.RegionId,
+	}
+	authResponse := &openplatform.AuthorizeFileUploadResponse{}
+	ossConfig := &oss.Config{
+		AccessKeySecret: accessKeySecret,
+		Type:            tea.String("access_key"),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	var ossClient *oss.Client
+	fileObj := &fileform.FileField{}
+	ossHeader := &oss.PostObjectRequestHeader{}
+	uploadRequest := &oss.PostObjectRequest{}
+	ossRuntime := &ossutil.RuntimeOptions{}
+	openapiutil.Convert(runtime, ossRuntime)
+	compareFaceWithMaskReq := &CompareFaceWithMaskRequest{}
+	openapiutil.Convert(request, compareFaceWithMaskReq)
+	if !tea.BoolValue(util.IsUnset(request.ImageURLAObject)) {
+		authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+
+		ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
+		ossClient, _err = oss.NewClient(ossConfig)
+		if _err != nil {
+			return _result, _err
+		}
+
+		fileObj = &fileform.FileField{
+			Filename:    authResponse.Body.ObjectKey,
+			Content:     request.ImageURLAObject,
+			ContentType: tea.String(""),
+		}
+		ossHeader = &oss.PostObjectRequestHeader{
+			AccessKeyId:         authResponse.Body.AccessKeyId,
+			Policy:              authResponse.Body.EncodedPolicy,
+			Signature:           authResponse.Body.Signature,
+			Key:                 authResponse.Body.ObjectKey,
+			File:                fileObj,
+			SuccessActionStatus: tea.String("201"),
+		}
+		uploadRequest = &oss.PostObjectRequest{
+			BucketName: authResponse.Body.Bucket,
+			Header:     ossHeader,
+		}
+		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+		if _err != nil {
+			return _result, _err
+		}
+		compareFaceWithMaskReq.ImageURLA = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ImageURLBObject)) {
+		authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+
+		ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
+		ossClient, _err = oss.NewClient(ossConfig)
+		if _err != nil {
+			return _result, _err
+		}
+
+		fileObj = &fileform.FileField{
+			Filename:    authResponse.Body.ObjectKey,
+			Content:     request.ImageURLBObject,
+			ContentType: tea.String(""),
+		}
+		ossHeader = &oss.PostObjectRequestHeader{
+			AccessKeyId:         authResponse.Body.AccessKeyId,
+			Policy:              authResponse.Body.EncodedPolicy,
+			Signature:           authResponse.Body.Signature,
+			Key:                 authResponse.Body.ObjectKey,
+			File:                fileObj,
+			SuccessActionStatus: tea.String("201"),
+		}
+		uploadRequest = &oss.PostObjectRequest{
+			BucketName: authResponse.Body.Bucket,
+			Header:     ossHeader,
+		}
+		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+		if _err != nil {
+			return _result, _err
+		}
+		compareFaceWithMaskReq.ImageURLB = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
+	}
+
+	compareFaceWithMaskResp, _err := client.CompareFaceWithMaskWithOptions(compareFaceWithMaskReq, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+
+	_result = compareFaceWithMaskResp
+	return _result, _err
+}
+
 func (client *Client) CountCrowdWithOptions(request *CountCrowdRequest, runtime *util.RuntimeOptions) (_result *CountCrowdResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12050,6 +12674,164 @@ func (client *Client) DetectIPCPedestrianAdvance(request *DetectIPCPedestrianAdv
 	}
 
 	_result = detectIPCPedestrianResp
+	return _result, _err
+}
+
+func (client *Client) DetectInfraredLivingFaceWithOptions(request *DetectInfraredLivingFaceRequest, runtime *util.RuntimeOptions) (_result *DetectInfraredLivingFaceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Tasks)) {
+		body["Tasks"] = request.Tasks
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DetectInfraredLivingFace"),
+		Version:     tea.String("2019-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DetectInfraredLivingFaceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DetectInfraredLivingFace(request *DetectInfraredLivingFaceRequest) (_result *DetectInfraredLivingFaceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DetectInfraredLivingFaceResponse{}
+	_body, _err := client.DetectInfraredLivingFaceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DetectInfraredLivingFaceAdvance(request *DetectInfraredLivingFaceAdvanceRequest, runtime *util.RuntimeOptions) (_result *DetectInfraredLivingFaceResponse, _err error) {
+	// Step 0: init client
+	accessKeyId, _err := client.Credential.GetAccessKeyId()
+	if _err != nil {
+		return _result, _err
+	}
+
+	accessKeySecret, _err := client.Credential.GetAccessKeySecret()
+	if _err != nil {
+		return _result, _err
+	}
+
+	securityToken, _err := client.Credential.GetSecurityToken()
+	if _err != nil {
+		return _result, _err
+	}
+
+	credentialType := client.Credential.GetType()
+	openPlatformEndpoint := client.OpenPlatformEndpoint
+	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
+	}
+
+	if tea.BoolValue(util.IsUnset(credentialType)) {
+		credentialType = tea.String("access_key")
+	}
+
+	authConfig := &openapi.Config{
+		AccessKeyId:     accessKeyId,
+		AccessKeySecret: accessKeySecret,
+		SecurityToken:   securityToken,
+		Type:            credentialType,
+		Endpoint:        openPlatformEndpoint,
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	authClient, _err := openplatform.NewClient(authConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
+	authRequest := &openplatform.AuthorizeFileUploadRequest{
+		Product:  tea.String("facebody"),
+		RegionId: client.RegionId,
+	}
+	authResponse := &openplatform.AuthorizeFileUploadResponse{}
+	ossConfig := &oss.Config{
+		AccessKeySecret: accessKeySecret,
+		Type:            tea.String("access_key"),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	var ossClient *oss.Client
+	fileObj := &fileform.FileField{}
+	ossHeader := &oss.PostObjectRequestHeader{}
+	uploadRequest := &oss.PostObjectRequest{}
+	ossRuntime := &ossutil.RuntimeOptions{}
+	openapiutil.Convert(runtime, ossRuntime)
+	detectInfraredLivingFaceReq := &DetectInfraredLivingFaceRequest{}
+	openapiutil.Convert(request, detectInfraredLivingFaceReq)
+	if !tea.BoolValue(util.IsUnset(request.Tasks)) {
+		i0 := tea.Int(0)
+		for _, item0 := range request.Tasks {
+			if !tea.BoolValue(util.IsUnset(item0.ImageURLObject)) {
+				authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+				if _err != nil {
+					return _result, _err
+				}
+
+				ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
+				ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
+				ossClient, _err = oss.NewClient(ossConfig)
+				if _err != nil {
+					return _result, _err
+				}
+
+				fileObj = &fileform.FileField{
+					Filename:    authResponse.Body.ObjectKey,
+					Content:     item0.ImageURLObject,
+					ContentType: tea.String(""),
+				}
+				ossHeader = &oss.PostObjectRequestHeader{
+					AccessKeyId:         authResponse.Body.AccessKeyId,
+					Policy:              authResponse.Body.EncodedPolicy,
+					Signature:           authResponse.Body.Signature,
+					Key:                 authResponse.Body.ObjectKey,
+					File:                fileObj,
+					SuccessActionStatus: tea.String("201"),
+				}
+				uploadRequest = &oss.PostObjectRequest{
+					BucketName: authResponse.Body.Bucket,
+					Header:     ossHeader,
+				}
+				_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+				if _err != nil {
+					return _result, _err
+				}
+				tmp := detectInfraredLivingFaceReq.Tasks[tea.IntValue(i0)]
+				tmp.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
+				i0 = number.Ltoi(number.Add(number.Itol(i0), number.Itol(tea.Int(1))))
+			}
+
+		}
+	}
+
+	detectInfraredLivingFaceResp, _err := client.DetectInfraredLivingFaceWithOptions(detectInfraredLivingFaceReq, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+
+	_result = detectInfraredLivingFaceResp
 	return _result, _err
 }
 
