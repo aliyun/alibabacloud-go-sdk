@@ -1415,7 +1415,13 @@ func (s *CreateDomainResponse) SetStatusCode(v int32) *CreateDomainResponse {
 }
 
 type CreateETLJobRequest struct {
-	EtlJob *EtlJob `json:"etlJob,omitempty" xml:"etlJob,omitempty"`
+	Enable            *bool              `json:"enable,omitempty" xml:"enable,omitempty"`
+	FunctionConfig    *EtlFunctionConfig `json:"functionConfig,omitempty" xml:"functionConfig,omitempty"`
+	FunctionParameter *string            `json:"functionParameter,omitempty" xml:"functionParameter,omitempty"`
+	JobName           *string            `json:"jobName,omitempty" xml:"jobName,omitempty"`
+	LogConfig         *EtlLogConfig      `json:"logConfig,omitempty" xml:"logConfig,omitempty"`
+	SourceConfig      *EtlSourceConfig   `json:"sourceConfig,omitempty" xml:"sourceConfig,omitempty"`
+	TriggerConfig     *EtlTriggerConfig  `json:"triggerConfig,omitempty" xml:"triggerConfig,omitempty"`
 }
 
 func (s CreateETLJobRequest) String() string {
@@ -1426,8 +1432,38 @@ func (s CreateETLJobRequest) GoString() string {
 	return s.String()
 }
 
-func (s *CreateETLJobRequest) SetEtlJob(v *EtlJob) *CreateETLJobRequest {
-	s.EtlJob = v
+func (s *CreateETLJobRequest) SetEnable(v bool) *CreateETLJobRequest {
+	s.Enable = &v
+	return s
+}
+
+func (s *CreateETLJobRequest) SetFunctionConfig(v *EtlFunctionConfig) *CreateETLJobRequest {
+	s.FunctionConfig = v
+	return s
+}
+
+func (s *CreateETLJobRequest) SetFunctionParameter(v string) *CreateETLJobRequest {
+	s.FunctionParameter = &v
+	return s
+}
+
+func (s *CreateETLJobRequest) SetJobName(v string) *CreateETLJobRequest {
+	s.JobName = &v
+	return s
+}
+
+func (s *CreateETLJobRequest) SetLogConfig(v *EtlLogConfig) *CreateETLJobRequest {
+	s.LogConfig = v
+	return s
+}
+
+func (s *CreateETLJobRequest) SetSourceConfig(v *EtlSourceConfig) *CreateETLJobRequest {
+	s.SourceConfig = v
+	return s
+}
+
+func (s *CreateETLJobRequest) SetTriggerConfig(v *EtlTriggerConfig) *CreateETLJobRequest {
+	s.TriggerConfig = v
 	return s
 }
 
@@ -2529,23 +2565,6 @@ func (s *DeleteDomainResponse) SetHeaders(v map[string]*string) *DeleteDomainRes
 
 func (s *DeleteDomainResponse) SetStatusCode(v int32) *DeleteDomainResponse {
 	s.StatusCode = &v
-	return s
-}
-
-type DeleteETLJobRequest struct {
-	Project *string `json:"project,omitempty" xml:"project,omitempty"`
-}
-
-func (s DeleteETLJobRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteETLJobRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteETLJobRequest) SetProject(v string) *DeleteETLJobRequest {
-	s.Project = &v
 	return s
 }
 
@@ -6742,8 +6761,32 @@ func (client *Client) CreateETLJobWithOptions(project *string, request *CreateET
 	hostMap := make(map[string]*string)
 	hostMap["project"] = project
 	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.EtlJob)) {
-		body["etlJob"] = request.EtlJob
+	if !tea.BoolValue(util.IsUnset(request.Enable)) {
+		body["enable"] = request.Enable
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FunctionConfig)) {
+		body["functionConfig"] = request.FunctionConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FunctionParameter)) {
+		body["functionParameter"] = request.FunctionParameter
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JobName)) {
+		body["jobName"] = request.JobName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LogConfig)) {
+		body["logConfig"] = request.LogConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceConfig)) {
+		body["sourceConfig"] = request.SourceConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TriggerConfig)) {
+		body["triggerConfig"] = request.TriggerConfig
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -7488,19 +7531,12 @@ func (client *Client) DeleteDomain(project *string, domainName *string) (_result
 	return _result, _err
 }
 
-func (client *Client) DeleteETLJobWithOptions(etlJobName *string, request *DeleteETLJobRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteETLJobResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.Project)) {
-		query["project"] = request.Project
-	}
-
+func (client *Client) DeleteETLJobWithOptions(project *string, etlJobName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteETLJobResponse, _err error) {
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
 	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
 		Headers: headers,
-		Query:   openapiutil.Query(query),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteETLJob"),
@@ -7522,11 +7558,11 @@ func (client *Client) DeleteETLJobWithOptions(etlJobName *string, request *Delet
 	return _result, _err
 }
 
-func (client *Client) DeleteETLJob(etlJobName *string, request *DeleteETLJobRequest) (_result *DeleteETLJobResponse, _err error) {
+func (client *Client) DeleteETLJob(project *string, etlJobName *string) (_result *DeleteETLJobResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &DeleteETLJobResponse{}
-	_body, _err := client.DeleteETLJobWithOptions(etlJobName, request, headers, runtime)
+	_body, _err := client.DeleteETLJobWithOptions(project, etlJobName, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
