@@ -2569,9 +2569,9 @@ func (s *DeleteDomainResponse) SetStatusCode(v int32) *DeleteDomainResponse {
 }
 
 type DeleteETLJobResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       []map[string]interface{} `json:"body,omitempty" xml:"body,omitempty" require:"true" type:"Repeated"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *string            `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteETLJobResponse) String() string {
@@ -2592,8 +2592,8 @@ func (s *DeleteETLJobResponse) SetStatusCode(v int32) *DeleteETLJobResponse {
 	return s
 }
 
-func (s *DeleteETLJobResponse) SetBody(v []map[string]interface{}) *DeleteETLJobResponse {
-	s.Body = v
+func (s *DeleteETLJobResponse) SetBody(v string) *DeleteETLJobResponse {
+	s.Body = &v
 	return s
 }
 
@@ -4189,10 +4189,33 @@ func (s *ListDomainsResponse) SetBody(v *ListDomainsResponseBody) *ListDomainsRe
 	return s
 }
 
+type ListETLJobsResponseBody struct {
+	EtlJobNameList []*string `json:"etlJobNameList,omitempty" xml:"etlJobNameList,omitempty" type:"Repeated"`
+	Total          *int32    `json:"total,omitempty" xml:"total,omitempty"`
+}
+
+func (s ListETLJobsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListETLJobsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListETLJobsResponseBody) SetEtlJobNameList(v []*string) *ListETLJobsResponseBody {
+	s.EtlJobNameList = v
+	return s
+}
+
+func (s *ListETLJobsResponseBody) SetTotal(v int32) *ListETLJobsResponseBody {
+	s.Total = &v
+	return s
+}
+
 type ListETLJobsResponse struct {
 	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
 	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       []map[string]interface{} `json:"body,omitempty" xml:"body,omitempty" require:"true" type:"Repeated"`
+	Body       *ListETLJobsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListETLJobsResponse) String() string {
@@ -4213,7 +4236,7 @@ func (s *ListETLJobsResponse) SetStatusCode(v int32) *ListETLJobsResponse {
 	return s
 }
 
-func (s *ListETLJobsResponse) SetBody(v []map[string]interface{}) *ListETLJobsResponse {
+func (s *ListETLJobsResponse) SetBody(v *ListETLJobsResponseBody) *ListETLJobsResponse {
 	s.Body = v
 	return s
 }
@@ -5394,12 +5417,13 @@ func (s *UpdateConsumerGroupResponse) SetStatusCode(v int32) *UpdateConsumerGrou
 }
 
 type UpdateEtlJobRequest struct {
-	Enable         *bool              `json:"enable,omitempty" xml:"enable,omitempty"`
-	FunctionConfig *EtlFunctionConfig `json:"functionConfig,omitempty" xml:"functionConfig,omitempty"`
-	JobName        *string            `json:"jobName,omitempty" xml:"jobName,omitempty"`
-	LogConfig      *EtlLogConfig      `json:"logConfig,omitempty" xml:"logConfig,omitempty"`
-	SourceConfig   *EtlSourceConfig   `json:"sourceConfig,omitempty" xml:"sourceConfig,omitempty"`
-	TriggerConfig  *EtlTriggerConfig  `json:"triggerConfig,omitempty" xml:"triggerConfig,omitempty"`
+	Enable            *bool              `json:"enable,omitempty" xml:"enable,omitempty"`
+	FunctionConfig    *EtlFunctionConfig `json:"functionConfig,omitempty" xml:"functionConfig,omitempty"`
+	FunctionParameter *string            `json:"functionParameter,omitempty" xml:"functionParameter,omitempty"`
+	JobName           *string            `json:"jobName,omitempty" xml:"jobName,omitempty"`
+	LogConfig         *EtlLogConfig      `json:"logConfig,omitempty" xml:"logConfig,omitempty"`
+	SourceConfig      *EtlSourceConfig   `json:"sourceConfig,omitempty" xml:"sourceConfig,omitempty"`
+	TriggerConfig     *EtlTriggerConfig  `json:"triggerConfig,omitempty" xml:"triggerConfig,omitempty"`
 }
 
 func (s UpdateEtlJobRequest) String() string {
@@ -5417,6 +5441,11 @@ func (s *UpdateEtlJobRequest) SetEnable(v bool) *UpdateEtlJobRequest {
 
 func (s *UpdateEtlJobRequest) SetFunctionConfig(v *EtlFunctionConfig) *UpdateEtlJobRequest {
 	s.FunctionConfig = v
+	return s
+}
+
+func (s *UpdateEtlJobRequest) SetFunctionParameter(v string) *UpdateEtlJobRequest {
+	s.FunctionParameter = &v
 	return s
 }
 
@@ -7547,7 +7576,7 @@ func (client *Client) DeleteETLJobWithOptions(project *string, etlJobName *strin
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
 		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("array"),
+		BodyType:    tea.String("string"),
 	}
 	_result = &DeleteETLJobResponse{}
 	_body, _err := client.Execute(params, req, runtime)
@@ -8930,7 +8959,7 @@ func (client *Client) ListETLJobsWithOptions(project *string, headers map[string
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
 		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("array"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListETLJobsResponse{}
 	_body, _err := client.Execute(params, req, runtime)
@@ -9867,6 +9896,10 @@ func (client *Client) UpdateEtlJobWithOptions(project *string, etlJob *string, r
 
 	if !tea.BoolValue(util.IsUnset(request.FunctionConfig)) {
 		body["functionConfig"] = request.FunctionConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FunctionParameter)) {
+		body["functionParameter"] = request.FunctionParameter
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.JobName)) {
