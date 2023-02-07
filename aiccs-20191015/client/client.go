@@ -2974,8 +2974,9 @@ type CreateThirdSsoAgentResponseBody struct {
 	Data           *int64  `json:"Data,omitempty" xml:"Data,omitempty"`
 	HttpStatusCode *int64  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
 	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// requestId
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CreateThirdSsoAgentResponseBody) String() string {
@@ -24633,8 +24634,8 @@ func (client *Client) CreateAiOutboundTaskWithOptions(tmpReq *CreateAiOutboundTa
 		request.OutboundNumsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.OutboundNums, tea.String("OutboundNums"), tea.String("json"))
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.RecallRule))) {
-		request.RecallRuleShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.RecallRule), tea.String("RecallRule"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.RecallRule)) {
+		request.RecallRuleShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RecallRule, tea.String("RecallRule"), tea.String("json"))
 	}
 
 	query := map[string]interface{}{}
@@ -32250,8 +32251,8 @@ func (client *Client) UpdateAiOutboundTaskWithOptions(tmpReq *UpdateAiOutboundTa
 		request.OutboundNumsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.OutboundNums, tea.String("OutboundNums"), tea.String("json"))
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.RecallRule))) {
-		request.RecallRuleShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.RecallRule), tea.String("RecallRule"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.RecallRule)) {
+		request.RecallRuleShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RecallRule, tea.String("RecallRule"), tea.String("json"))
 	}
 
 	query := map[string]interface{}{}
