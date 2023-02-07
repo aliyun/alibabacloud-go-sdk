@@ -115,13 +115,14 @@ func (s *AttachClusterToHubResponse) SetBody(v *AttachClusterToHubResponseBody) 
 type CreateHubClusterRequest struct {
 	// Specifies whether to use a public IP address to expose the API server. Valid values: - true: uses a public IP address to expose the API server. - true: uses an internal IP address to expose the API server.
 	ApiServerPublicEip *bool `json:"ApiServerPublicEip,omitempty" xml:"ApiServerPublicEip,omitempty"`
+	ArgoServerEnabled  *bool `json:"ArgoServerEnabled,omitempty" xml:"ArgoServerEnabled,omitempty"`
 	// Specifies whether to enable audit logs. Valid values: - true: enables audit logs. - false: disables audit logs.
-	AuditLogEnabled      *bool                                        `json:"AuditLogEnabled,omitempty" xml:"AuditLogEnabled,omitempty"`
-	ClusterConfiguration *CreateHubClusterRequestClusterConfiguration `json:"ClusterConfiguration,omitempty" xml:"ClusterConfiguration,omitempty" type:"Struct"`
+	AuditLogEnabled *bool `json:"AuditLogEnabled,omitempty" xml:"AuditLogEnabled,omitempty"`
 	// Specifies whether the security group is an advanced security group.
 	IsEnterpriseSecurityGroup *bool `json:"IsEnterpriseSecurityGroup,omitempty" xml:"IsEnterpriseSecurityGroup,omitempty"`
 	// The name of the master instance.
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	PriceLimit *string `json:"PriceLimit,omitempty" xml:"PriceLimit,omitempty"`
 	// Scenario-oriented master control type. The value can be:
 	//
 	// - `Default`: Standard scenario Master instance.
@@ -134,7 +135,8 @@ type CreateHubClusterRequest struct {
 	// The ID of the vSwitch.
 	VSwitches *string `json:"VSwitches,omitempty" xml:"VSwitches,omitempty"`
 	// The ID of the virtual private cloud (VPC) to which the master instance belongs. You can call the DescribeVpcs operation to query available VPCs.
-	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	VpcId                *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	WorkflowScheduleMode *string `json:"WorkflowScheduleMode,omitempty" xml:"WorkflowScheduleMode,omitempty"`
 }
 
 func (s CreateHubClusterRequest) String() string {
@@ -150,13 +152,13 @@ func (s *CreateHubClusterRequest) SetApiServerPublicEip(v bool) *CreateHubCluste
 	return s
 }
 
-func (s *CreateHubClusterRequest) SetAuditLogEnabled(v bool) *CreateHubClusterRequest {
-	s.AuditLogEnabled = &v
+func (s *CreateHubClusterRequest) SetArgoServerEnabled(v bool) *CreateHubClusterRequest {
+	s.ArgoServerEnabled = &v
 	return s
 }
 
-func (s *CreateHubClusterRequest) SetClusterConfiguration(v *CreateHubClusterRequestClusterConfiguration) *CreateHubClusterRequest {
-	s.ClusterConfiguration = v
+func (s *CreateHubClusterRequest) SetAuditLogEnabled(v bool) *CreateHubClusterRequest {
+	s.AuditLogEnabled = &v
 	return s
 }
 
@@ -167,6 +169,11 @@ func (s *CreateHubClusterRequest) SetIsEnterpriseSecurityGroup(v bool) *CreateHu
 
 func (s *CreateHubClusterRequest) SetName(v string) *CreateHubClusterRequest {
 	s.Name = &v
+	return s
+}
+
+func (s *CreateHubClusterRequest) SetPriceLimit(v string) *CreateHubClusterRequest {
+	s.PriceLimit = &v
 	return s
 }
 
@@ -190,174 +197,8 @@ func (s *CreateHubClusterRequest) SetVpcId(v string) *CreateHubClusterRequest {
 	return s
 }
 
-type CreateHubClusterRequestClusterConfiguration struct {
-	ArgoServerEnabled    *bool                                                       `json:"ArgoServerEnabled,omitempty" xml:"ArgoServerEnabled,omitempty"`
-	PriceLimit           *string                                                     `json:"PriceLimit,omitempty" xml:"PriceLimit,omitempty"`
-	WorflowEnabled       *bool                                                       `json:"WorflowEnabled,omitempty" xml:"WorflowEnabled,omitempty"`
-	WorkflowScheduleMode *string                                                     `json:"WorkflowScheduleMode,omitempty" xml:"WorkflowScheduleMode,omitempty"`
-	WorkflowUnits        []*CreateHubClusterRequestClusterConfigurationWorkflowUnits `json:"WorkflowUnits,omitempty" xml:"WorkflowUnits,omitempty" type:"Repeated"`
-}
-
-func (s CreateHubClusterRequestClusterConfiguration) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateHubClusterRequestClusterConfiguration) GoString() string {
-	return s.String()
-}
-
-func (s *CreateHubClusterRequestClusterConfiguration) SetArgoServerEnabled(v bool) *CreateHubClusterRequestClusterConfiguration {
-	s.ArgoServerEnabled = &v
-	return s
-}
-
-func (s *CreateHubClusterRequestClusterConfiguration) SetPriceLimit(v string) *CreateHubClusterRequestClusterConfiguration {
-	s.PriceLimit = &v
-	return s
-}
-
-func (s *CreateHubClusterRequestClusterConfiguration) SetWorflowEnabled(v bool) *CreateHubClusterRequestClusterConfiguration {
-	s.WorflowEnabled = &v
-	return s
-}
-
-func (s *CreateHubClusterRequestClusterConfiguration) SetWorkflowScheduleMode(v string) *CreateHubClusterRequestClusterConfiguration {
+func (s *CreateHubClusterRequest) SetWorkflowScheduleMode(v string) *CreateHubClusterRequest {
 	s.WorkflowScheduleMode = &v
-	return s
-}
-
-func (s *CreateHubClusterRequestClusterConfiguration) SetWorkflowUnits(v []*CreateHubClusterRequestClusterConfigurationWorkflowUnits) *CreateHubClusterRequestClusterConfiguration {
-	s.WorkflowUnits = v
-	return s
-}
-
-type CreateHubClusterRequestClusterConfigurationWorkflowUnits struct {
-	RegionId  *string                                                              `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	VSwitches []*CreateHubClusterRequestClusterConfigurationWorkflowUnitsVSwitches `json:"VSwitches,omitempty" xml:"VSwitches,omitempty" type:"Repeated"`
-	VpcId     *string                                                              `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-}
-
-func (s CreateHubClusterRequestClusterConfigurationWorkflowUnits) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateHubClusterRequestClusterConfigurationWorkflowUnits) GoString() string {
-	return s.String()
-}
-
-func (s *CreateHubClusterRequestClusterConfigurationWorkflowUnits) SetRegionId(v string) *CreateHubClusterRequestClusterConfigurationWorkflowUnits {
-	s.RegionId = &v
-	return s
-}
-
-func (s *CreateHubClusterRequestClusterConfigurationWorkflowUnits) SetVSwitches(v []*CreateHubClusterRequestClusterConfigurationWorkflowUnitsVSwitches) *CreateHubClusterRequestClusterConfigurationWorkflowUnits {
-	s.VSwitches = v
-	return s
-}
-
-func (s *CreateHubClusterRequestClusterConfigurationWorkflowUnits) SetVpcId(v string) *CreateHubClusterRequestClusterConfigurationWorkflowUnits {
-	s.VpcId = &v
-	return s
-}
-
-type CreateHubClusterRequestClusterConfigurationWorkflowUnitsVSwitches struct {
-	VswitchId *string `json:"VswitchId,omitempty" xml:"VswitchId,omitempty"`
-	ZoneId    *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
-}
-
-func (s CreateHubClusterRequestClusterConfigurationWorkflowUnitsVSwitches) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateHubClusterRequestClusterConfigurationWorkflowUnitsVSwitches) GoString() string {
-	return s.String()
-}
-
-func (s *CreateHubClusterRequestClusterConfigurationWorkflowUnitsVSwitches) SetVswitchId(v string) *CreateHubClusterRequestClusterConfigurationWorkflowUnitsVSwitches {
-	s.VswitchId = &v
-	return s
-}
-
-func (s *CreateHubClusterRequestClusterConfigurationWorkflowUnitsVSwitches) SetZoneId(v string) *CreateHubClusterRequestClusterConfigurationWorkflowUnitsVSwitches {
-	s.ZoneId = &v
-	return s
-}
-
-type CreateHubClusterShrinkRequest struct {
-	// Specifies whether to use a public IP address to expose the API server. Valid values: - true: uses a public IP address to expose the API server. - true: uses an internal IP address to expose the API server.
-	ApiServerPublicEip *bool `json:"ApiServerPublicEip,omitempty" xml:"ApiServerPublicEip,omitempty"`
-	// Specifies whether to enable audit logs. Valid values: - true: enables audit logs. - false: disables audit logs.
-	AuditLogEnabled            *bool   `json:"AuditLogEnabled,omitempty" xml:"AuditLogEnabled,omitempty"`
-	ClusterConfigurationShrink *string `json:"ClusterConfiguration,omitempty" xml:"ClusterConfiguration,omitempty"`
-	// Specifies whether the security group is an advanced security group.
-	IsEnterpriseSecurityGroup *bool `json:"IsEnterpriseSecurityGroup,omitempty" xml:"IsEnterpriseSecurityGroup,omitempty"`
-	// The name of the master instance.
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Scenario-oriented master control type. The value can be:
-	//
-	// - `Default`: Standard scenario Master instance.
-	// - `XFlow`: Workflow scenario master instance.
-	//
-	// Default Value: `Default`.
-	Profile *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
-	// The ID of the region. You can call the DescribeRegions operation to query available regions.
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the vSwitch.
-	VSwitches *string `json:"VSwitches,omitempty" xml:"VSwitches,omitempty"`
-	// The ID of the virtual private cloud (VPC) to which the master instance belongs. You can call the DescribeVpcs operation to query available VPCs.
-	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-}
-
-func (s CreateHubClusterShrinkRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateHubClusterShrinkRequest) GoString() string {
-	return s.String()
-}
-
-func (s *CreateHubClusterShrinkRequest) SetApiServerPublicEip(v bool) *CreateHubClusterShrinkRequest {
-	s.ApiServerPublicEip = &v
-	return s
-}
-
-func (s *CreateHubClusterShrinkRequest) SetAuditLogEnabled(v bool) *CreateHubClusterShrinkRequest {
-	s.AuditLogEnabled = &v
-	return s
-}
-
-func (s *CreateHubClusterShrinkRequest) SetClusterConfigurationShrink(v string) *CreateHubClusterShrinkRequest {
-	s.ClusterConfigurationShrink = &v
-	return s
-}
-
-func (s *CreateHubClusterShrinkRequest) SetIsEnterpriseSecurityGroup(v bool) *CreateHubClusterShrinkRequest {
-	s.IsEnterpriseSecurityGroup = &v
-	return s
-}
-
-func (s *CreateHubClusterShrinkRequest) SetName(v string) *CreateHubClusterShrinkRequest {
-	s.Name = &v
-	return s
-}
-
-func (s *CreateHubClusterShrinkRequest) SetProfile(v string) *CreateHubClusterShrinkRequest {
-	s.Profile = &v
-	return s
-}
-
-func (s *CreateHubClusterShrinkRequest) SetRegionId(v string) *CreateHubClusterShrinkRequest {
-	s.RegionId = &v
-	return s
-}
-
-func (s *CreateHubClusterShrinkRequest) SetVSwitches(v string) *CreateHubClusterShrinkRequest {
-	s.VSwitches = &v
-	return s
-}
-
-func (s *CreateHubClusterShrinkRequest) SetVpcId(v string) *CreateHubClusterShrinkRequest {
-	s.VpcId = &v
 	return s
 }
 
@@ -593,7 +434,7 @@ type DescribeHubClusterDetailsResponseBodyCluster struct {
 	ApiServer *DescribeHubClusterDetailsResponseBodyClusterApiServer `json:"ApiServer,omitempty" xml:"ApiServer,omitempty" type:"Struct"`
 	// The details about the master instance.
 	ClusterInfo *DescribeHubClusterDetailsResponseBodyClusterClusterInfo `json:"ClusterInfo,omitempty" xml:"ClusterInfo,omitempty" type:"Struct"`
-	// 集群删除条件信息列表
+	// The list of the deletion conditions of the master instance.
 	Conditions []*DescribeHubClusterDetailsResponseBodyClusterConditions `json:"Conditions,omitempty" xml:"Conditions,omitempty" type:"Repeated"`
 	// The endpoint of the master instance.
 	Endpoints *DescribeHubClusterDetailsResponseBodyClusterEndpoints `json:"Endpoints,omitempty" xml:"Endpoints,omitempty" type:"Struct"`
@@ -602,7 +443,8 @@ type DescribeHubClusterDetailsResponseBodyCluster struct {
 	// The Service Mesh (ASM) configurations.
 	MeshConfig *DescribeHubClusterDetailsResponseBodyClusterMeshConfig `json:"MeshConfig,omitempty" xml:"MeshConfig,omitempty" type:"Struct"`
 	// The network configurations of the master instance.
-	Network *DescribeHubClusterDetailsResponseBodyClusterNetwork `json:"Network,omitempty" xml:"Network,omitempty" type:"Struct"`
+	Network        *DescribeHubClusterDetailsResponseBodyClusterNetwork        `json:"Network,omitempty" xml:"Network,omitempty" type:"Struct"`
+	WorkflowConfig *DescribeHubClusterDetailsResponseBodyClusterWorkflowConfig `json:"WorkflowConfig,omitempty" xml:"WorkflowConfig,omitempty" type:"Struct"`
 }
 
 func (s DescribeHubClusterDetailsResponseBodyCluster) String() string {
@@ -645,6 +487,11 @@ func (s *DescribeHubClusterDetailsResponseBodyCluster) SetMeshConfig(v *Describe
 
 func (s *DescribeHubClusterDetailsResponseBodyCluster) SetNetwork(v *DescribeHubClusterDetailsResponseBodyClusterNetwork) *DescribeHubClusterDetailsResponseBodyCluster {
 	s.Network = v
+	return s
+}
+
+func (s *DescribeHubClusterDetailsResponseBodyCluster) SetWorkflowConfig(v *DescribeHubClusterDetailsResponseBodyClusterWorkflowConfig) *DescribeHubClusterDetailsResponseBodyCluster {
+	s.WorkflowConfig = v
 	return s
 }
 
@@ -762,16 +609,16 @@ func (s *DescribeHubClusterDetailsResponseBodyClusterClusterInfo) SetVersion(v s
 }
 
 type DescribeHubClusterDetailsResponseBodyClusterConditions struct {
-	// 删除条件错误信息
+	// The error message of the deletion condition.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// 删除条件原因
+	// The reason for the deletion condition.
 	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
-	// 删除条件状态，取值
-	// - True 不能删除
-	// - False 允许删除
-	// - Unknow 未知
+	// The status of the deletion condition. Valid values:
+	// - True: The master instance cannot be deleted.
+	// - False: The master instance can be deleted.
+	// - Unknow: Whether the master instance can be deleted is unknown.
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// 删除条件类型
+	// The type of deletion condition.
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
@@ -928,6 +775,93 @@ func (s *DescribeHubClusterDetailsResponseBodyClusterNetwork) SetVSwitches(v []*
 
 func (s *DescribeHubClusterDetailsResponseBodyClusterNetwork) SetVpcId(v string) *DescribeHubClusterDetailsResponseBodyClusterNetwork {
 	s.VpcId = &v
+	return s
+}
+
+type DescribeHubClusterDetailsResponseBodyClusterWorkflowConfig struct {
+	ArgoServerEnabled    *bool                                                                      `json:"ArgoServerEnabled,omitempty" xml:"ArgoServerEnabled,omitempty"`
+	PriceLimit           *string                                                                    `json:"PriceLimit,omitempty" xml:"PriceLimit,omitempty"`
+	WorkflowScheduleMode *string                                                                    `json:"WorkflowScheduleMode,omitempty" xml:"WorkflowScheduleMode,omitempty"`
+	WorkflowUnits        []*DescribeHubClusterDetailsResponseBodyClusterWorkflowConfigWorkflowUnits `json:"WorkflowUnits,omitempty" xml:"WorkflowUnits,omitempty" type:"Repeated"`
+}
+
+func (s DescribeHubClusterDetailsResponseBodyClusterWorkflowConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeHubClusterDetailsResponseBodyClusterWorkflowConfig) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeHubClusterDetailsResponseBodyClusterWorkflowConfig) SetArgoServerEnabled(v bool) *DescribeHubClusterDetailsResponseBodyClusterWorkflowConfig {
+	s.ArgoServerEnabled = &v
+	return s
+}
+
+func (s *DescribeHubClusterDetailsResponseBodyClusterWorkflowConfig) SetPriceLimit(v string) *DescribeHubClusterDetailsResponseBodyClusterWorkflowConfig {
+	s.PriceLimit = &v
+	return s
+}
+
+func (s *DescribeHubClusterDetailsResponseBodyClusterWorkflowConfig) SetWorkflowScheduleMode(v string) *DescribeHubClusterDetailsResponseBodyClusterWorkflowConfig {
+	s.WorkflowScheduleMode = &v
+	return s
+}
+
+func (s *DescribeHubClusterDetailsResponseBodyClusterWorkflowConfig) SetWorkflowUnits(v []*DescribeHubClusterDetailsResponseBodyClusterWorkflowConfigWorkflowUnits) *DescribeHubClusterDetailsResponseBodyClusterWorkflowConfig {
+	s.WorkflowUnits = v
+	return s
+}
+
+type DescribeHubClusterDetailsResponseBodyClusterWorkflowConfigWorkflowUnits struct {
+	RegionId  *string                                                                             `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	VSwitches []*DescribeHubClusterDetailsResponseBodyClusterWorkflowConfigWorkflowUnitsVSwitches `json:"VSwitches,omitempty" xml:"VSwitches,omitempty" type:"Repeated"`
+	VpcId     *string                                                                             `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+}
+
+func (s DescribeHubClusterDetailsResponseBodyClusterWorkflowConfigWorkflowUnits) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeHubClusterDetailsResponseBodyClusterWorkflowConfigWorkflowUnits) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeHubClusterDetailsResponseBodyClusterWorkflowConfigWorkflowUnits) SetRegionId(v string) *DescribeHubClusterDetailsResponseBodyClusterWorkflowConfigWorkflowUnits {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeHubClusterDetailsResponseBodyClusterWorkflowConfigWorkflowUnits) SetVSwitches(v []*DescribeHubClusterDetailsResponseBodyClusterWorkflowConfigWorkflowUnitsVSwitches) *DescribeHubClusterDetailsResponseBodyClusterWorkflowConfigWorkflowUnits {
+	s.VSwitches = v
+	return s
+}
+
+func (s *DescribeHubClusterDetailsResponseBodyClusterWorkflowConfigWorkflowUnits) SetVpcId(v string) *DescribeHubClusterDetailsResponseBodyClusterWorkflowConfigWorkflowUnits {
+	s.VpcId = &v
+	return s
+}
+
+type DescribeHubClusterDetailsResponseBodyClusterWorkflowConfigWorkflowUnitsVSwitches struct {
+	VswitchId *string `json:"VswitchId,omitempty" xml:"VswitchId,omitempty"`
+	ZoneId    *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+}
+
+func (s DescribeHubClusterDetailsResponseBodyClusterWorkflowConfigWorkflowUnitsVSwitches) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeHubClusterDetailsResponseBodyClusterWorkflowConfigWorkflowUnitsVSwitches) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeHubClusterDetailsResponseBodyClusterWorkflowConfigWorkflowUnitsVSwitches) SetVswitchId(v string) *DescribeHubClusterDetailsResponseBodyClusterWorkflowConfigWorkflowUnitsVSwitches {
+	s.VswitchId = &v
+	return s
+}
+
+func (s *DescribeHubClusterDetailsResponseBodyClusterWorkflowConfigWorkflowUnitsVSwitches) SetZoneId(v string) *DescribeHubClusterDetailsResponseBodyClusterWorkflowConfigWorkflowUnitsVSwitches {
+	s.ZoneId = &v
 	return s
 }
 
@@ -2038,29 +1972,24 @@ func (s *DetachClusterFromHubResponse) SetBody(v *DetachClusterFromHubResponseBo
 
 type UpdateHubClusterFeatureRequest struct {
 	// The ID of the EIP.
-	ApiServerEipId *string `json:"ApiServerEipId,omitempty" xml:"ApiServerEipId,omitempty"`
+	ApiServerEipId    *string `json:"ApiServerEipId,omitempty" xml:"ApiServerEipId,omitempty"`
+	ArgoCDEnabled     *bool   `json:"ArgoCDEnabled,omitempty" xml:"ArgoCDEnabled,omitempty"`
+	ArgoServerEnabled *bool   `json:"ArgoServerEnabled,omitempty" xml:"ArgoServerEnabled,omitempty"`
 	// Specifies whether to enable audit logs. Valid values: - true: enable audit logs. - false: disables audit logs.
 	AuditLogEnabled *bool `json:"AuditLogEnabled,omitempty" xml:"AuditLogEnabled,omitempty"`
 	// The ID of the master instance.
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	// Specifies whether to enable deletion protection for the master instance. After you enable deletion protection, you cannot delete the master instance in the console or by calling API operations. Valid values:
 	DeletionProtection *bool `json:"DeletionProtection,omitempty" xml:"DeletionProtection,omitempty"`
-	// Whether to enable ArgoCD.
-	//
-	// - true Enabled
-	// - false Disabled
-	EnableArgoCD *bool `json:"EnableArgoCD,omitempty" xml:"EnableArgoCD,omitempty"`
 	// Specifies whether to enable Service Mesh (ASM). Valid values: true: enables ASM. false: disables ASM.
 	EnableMesh *bool `json:"EnableMesh,omitempty" xml:"EnableMesh,omitempty"`
-	Enabled    *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
 	// The name of the master instance. The name must be 1 to 63 characters in length, and can contain letters and digits. The name must start with a letter. The name can contain letters, digits, underscores (_), and hyphens (-).
 	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	PriceLimit *string `json:"PriceLimit,omitempty" xml:"PriceLimit,omitempty"`
 	// Specifies whether to associate an elastic IP address (EIP) with the API server. Default value: false. To associate an EIP with the API server, set the value to true. You can use a custom EIP by setting the ApiServerEipId parameter. If you do not set the ApiServerEipId parameter, the system automatically creates an EIP.
-	PublicApiServerEnabled *bool                                  `json:"PublicApiServerEnabled,omitempty" xml:"PublicApiServerEnabled,omitempty"`
-	ScheduleMode           *string                                `json:"ScheduleMode,omitempty" xml:"ScheduleMode,omitempty"`
-	ServerEnabled          *bool                                  `json:"ServerEnabled,omitempty" xml:"ServerEnabled,omitempty"`
-	Units                  []*UpdateHubClusterFeatureRequestUnits `json:"Units,omitempty" xml:"Units,omitempty" type:"Repeated"`
+	PublicApiServerEnabled *bool     `json:"PublicApiServerEnabled,omitempty" xml:"PublicApiServerEnabled,omitempty"`
+	VSwitches              []*string `json:"VSwitches,omitempty" xml:"VSwitches,omitempty" type:"Repeated"`
+	WorkflowScheduleMode   *string   `json:"WorkflowScheduleMode,omitempty" xml:"WorkflowScheduleMode,omitempty"`
 }
 
 func (s UpdateHubClusterFeatureRequest) String() string {
@@ -2073,6 +2002,16 @@ func (s UpdateHubClusterFeatureRequest) GoString() string {
 
 func (s *UpdateHubClusterFeatureRequest) SetApiServerEipId(v string) *UpdateHubClusterFeatureRequest {
 	s.ApiServerEipId = &v
+	return s
+}
+
+func (s *UpdateHubClusterFeatureRequest) SetArgoCDEnabled(v bool) *UpdateHubClusterFeatureRequest {
+	s.ArgoCDEnabled = &v
+	return s
+}
+
+func (s *UpdateHubClusterFeatureRequest) SetArgoServerEnabled(v bool) *UpdateHubClusterFeatureRequest {
+	s.ArgoServerEnabled = &v
 	return s
 }
 
@@ -2091,18 +2030,8 @@ func (s *UpdateHubClusterFeatureRequest) SetDeletionProtection(v bool) *UpdateHu
 	return s
 }
 
-func (s *UpdateHubClusterFeatureRequest) SetEnableArgoCD(v bool) *UpdateHubClusterFeatureRequest {
-	s.EnableArgoCD = &v
-	return s
-}
-
 func (s *UpdateHubClusterFeatureRequest) SetEnableMesh(v bool) *UpdateHubClusterFeatureRequest {
 	s.EnableMesh = &v
-	return s
-}
-
-func (s *UpdateHubClusterFeatureRequest) SetEnabled(v bool) *UpdateHubClusterFeatureRequest {
-	s.Enabled = &v
 	return s
 }
 
@@ -2121,98 +2050,36 @@ func (s *UpdateHubClusterFeatureRequest) SetPublicApiServerEnabled(v bool) *Upda
 	return s
 }
 
-func (s *UpdateHubClusterFeatureRequest) SetScheduleMode(v string) *UpdateHubClusterFeatureRequest {
-	s.ScheduleMode = &v
-	return s
-}
-
-func (s *UpdateHubClusterFeatureRequest) SetServerEnabled(v bool) *UpdateHubClusterFeatureRequest {
-	s.ServerEnabled = &v
-	return s
-}
-
-func (s *UpdateHubClusterFeatureRequest) SetUnits(v []*UpdateHubClusterFeatureRequestUnits) *UpdateHubClusterFeatureRequest {
-	s.Units = v
-	return s
-}
-
-type UpdateHubClusterFeatureRequestUnits struct {
-	RegionId  *string                                         `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	VSwitches []*UpdateHubClusterFeatureRequestUnitsVSwitches `json:"VSwitches,omitempty" xml:"VSwitches,omitempty" type:"Repeated"`
-	VpcId     *string                                         `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-}
-
-func (s UpdateHubClusterFeatureRequestUnits) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateHubClusterFeatureRequestUnits) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateHubClusterFeatureRequestUnits) SetRegionId(v string) *UpdateHubClusterFeatureRequestUnits {
-	s.RegionId = &v
-	return s
-}
-
-func (s *UpdateHubClusterFeatureRequestUnits) SetVSwitches(v []*UpdateHubClusterFeatureRequestUnitsVSwitches) *UpdateHubClusterFeatureRequestUnits {
+func (s *UpdateHubClusterFeatureRequest) SetVSwitches(v []*string) *UpdateHubClusterFeatureRequest {
 	s.VSwitches = v
 	return s
 }
 
-func (s *UpdateHubClusterFeatureRequestUnits) SetVpcId(v string) *UpdateHubClusterFeatureRequestUnits {
-	s.VpcId = &v
-	return s
-}
-
-type UpdateHubClusterFeatureRequestUnitsVSwitches struct {
-	VswitchId *string `json:"VswitchId,omitempty" xml:"VswitchId,omitempty"`
-	ZoneId    *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
-}
-
-func (s UpdateHubClusterFeatureRequestUnitsVSwitches) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateHubClusterFeatureRequestUnitsVSwitches) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateHubClusterFeatureRequestUnitsVSwitches) SetVswitchId(v string) *UpdateHubClusterFeatureRequestUnitsVSwitches {
-	s.VswitchId = &v
-	return s
-}
-
-func (s *UpdateHubClusterFeatureRequestUnitsVSwitches) SetZoneId(v string) *UpdateHubClusterFeatureRequestUnitsVSwitches {
-	s.ZoneId = &v
+func (s *UpdateHubClusterFeatureRequest) SetWorkflowScheduleMode(v string) *UpdateHubClusterFeatureRequest {
+	s.WorkflowScheduleMode = &v
 	return s
 }
 
 type UpdateHubClusterFeatureShrinkRequest struct {
 	// The ID of the EIP.
-	ApiServerEipId *string `json:"ApiServerEipId,omitempty" xml:"ApiServerEipId,omitempty"`
+	ApiServerEipId    *string `json:"ApiServerEipId,omitempty" xml:"ApiServerEipId,omitempty"`
+	ArgoCDEnabled     *bool   `json:"ArgoCDEnabled,omitempty" xml:"ArgoCDEnabled,omitempty"`
+	ArgoServerEnabled *bool   `json:"ArgoServerEnabled,omitempty" xml:"ArgoServerEnabled,omitempty"`
 	// Specifies whether to enable audit logs. Valid values: - true: enable audit logs. - false: disables audit logs.
 	AuditLogEnabled *bool `json:"AuditLogEnabled,omitempty" xml:"AuditLogEnabled,omitempty"`
 	// The ID of the master instance.
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	// Specifies whether to enable deletion protection for the master instance. After you enable deletion protection, you cannot delete the master instance in the console or by calling API operations. Valid values:
 	DeletionProtection *bool `json:"DeletionProtection,omitempty" xml:"DeletionProtection,omitempty"`
-	// Whether to enable ArgoCD.
-	//
-	// - true Enabled
-	// - false Disabled
-	EnableArgoCD *bool `json:"EnableArgoCD,omitempty" xml:"EnableArgoCD,omitempty"`
 	// Specifies whether to enable Service Mesh (ASM). Valid values: true: enables ASM. false: disables ASM.
 	EnableMesh *bool `json:"EnableMesh,omitempty" xml:"EnableMesh,omitempty"`
-	Enabled    *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
 	// The name of the master instance. The name must be 1 to 63 characters in length, and can contain letters and digits. The name must start with a letter. The name can contain letters, digits, underscores (_), and hyphens (-).
 	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	PriceLimit *string `json:"PriceLimit,omitempty" xml:"PriceLimit,omitempty"`
 	// Specifies whether to associate an elastic IP address (EIP) with the API server. Default value: false. To associate an EIP with the API server, set the value to true. You can use a custom EIP by setting the ApiServerEipId parameter. If you do not set the ApiServerEipId parameter, the system automatically creates an EIP.
 	PublicApiServerEnabled *bool   `json:"PublicApiServerEnabled,omitempty" xml:"PublicApiServerEnabled,omitempty"`
-	ScheduleMode           *string `json:"ScheduleMode,omitempty" xml:"ScheduleMode,omitempty"`
-	ServerEnabled          *bool   `json:"ServerEnabled,omitempty" xml:"ServerEnabled,omitempty"`
-	UnitsShrink            *string `json:"Units,omitempty" xml:"Units,omitempty"`
+	VSwitchesShrink        *string `json:"VSwitches,omitempty" xml:"VSwitches,omitempty"`
+	WorkflowScheduleMode   *string `json:"WorkflowScheduleMode,omitempty" xml:"WorkflowScheduleMode,omitempty"`
 }
 
 func (s UpdateHubClusterFeatureShrinkRequest) String() string {
@@ -2225,6 +2092,16 @@ func (s UpdateHubClusterFeatureShrinkRequest) GoString() string {
 
 func (s *UpdateHubClusterFeatureShrinkRequest) SetApiServerEipId(v string) *UpdateHubClusterFeatureShrinkRequest {
 	s.ApiServerEipId = &v
+	return s
+}
+
+func (s *UpdateHubClusterFeatureShrinkRequest) SetArgoCDEnabled(v bool) *UpdateHubClusterFeatureShrinkRequest {
+	s.ArgoCDEnabled = &v
+	return s
+}
+
+func (s *UpdateHubClusterFeatureShrinkRequest) SetArgoServerEnabled(v bool) *UpdateHubClusterFeatureShrinkRequest {
+	s.ArgoServerEnabled = &v
 	return s
 }
 
@@ -2243,18 +2120,8 @@ func (s *UpdateHubClusterFeatureShrinkRequest) SetDeletionProtection(v bool) *Up
 	return s
 }
 
-func (s *UpdateHubClusterFeatureShrinkRequest) SetEnableArgoCD(v bool) *UpdateHubClusterFeatureShrinkRequest {
-	s.EnableArgoCD = &v
-	return s
-}
-
 func (s *UpdateHubClusterFeatureShrinkRequest) SetEnableMesh(v bool) *UpdateHubClusterFeatureShrinkRequest {
 	s.EnableMesh = &v
-	return s
-}
-
-func (s *UpdateHubClusterFeatureShrinkRequest) SetEnabled(v bool) *UpdateHubClusterFeatureShrinkRequest {
-	s.Enabled = &v
 	return s
 }
 
@@ -2273,18 +2140,13 @@ func (s *UpdateHubClusterFeatureShrinkRequest) SetPublicApiServerEnabled(v bool)
 	return s
 }
 
-func (s *UpdateHubClusterFeatureShrinkRequest) SetScheduleMode(v string) *UpdateHubClusterFeatureShrinkRequest {
-	s.ScheduleMode = &v
+func (s *UpdateHubClusterFeatureShrinkRequest) SetVSwitchesShrink(v string) *UpdateHubClusterFeatureShrinkRequest {
+	s.VSwitchesShrink = &v
 	return s
 }
 
-func (s *UpdateHubClusterFeatureShrinkRequest) SetServerEnabled(v bool) *UpdateHubClusterFeatureShrinkRequest {
-	s.ServerEnabled = &v
-	return s
-}
-
-func (s *UpdateHubClusterFeatureShrinkRequest) SetUnitsShrink(v string) *UpdateHubClusterFeatureShrinkRequest {
-	s.UnitsShrink = &v
+func (s *UpdateHubClusterFeatureShrinkRequest) SetWorkflowScheduleMode(v string) *UpdateHubClusterFeatureShrinkRequest {
+	s.WorkflowScheduleMode = &v
 	return s
 }
 
@@ -2462,25 +2324,18 @@ func (client *Client) AttachClusterToHub(request *AttachClusterToHubRequest) (_r
 	return _result, _err
 }
 
-func (client *Client) CreateHubClusterWithOptions(tmpReq *CreateHubClusterRequest, runtime *util.RuntimeOptions) (_result *CreateHubClusterResponse, _err error) {
-	_err = util.ValidateModel(tmpReq)
+func (client *Client) CreateHubClusterWithOptions(request *CreateHubClusterRequest, runtime *util.RuntimeOptions) (_result *CreateHubClusterResponse, _err error) {
+	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
-	request := &CreateHubClusterShrinkRequest{}
-	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tmpReq.ClusterConfiguration)) {
-		request.ClusterConfigurationShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ClusterConfiguration, tea.String("ClusterConfiguration"), tea.String("json"))
-	}
-
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ClusterConfigurationShrink)) {
-		query["ClusterConfiguration"] = request.ClusterConfigurationShrink
-	}
-
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ApiServerPublicEip)) {
 		body["ApiServerPublicEip"] = request.ApiServerPublicEip
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ArgoServerEnabled)) {
+		body["ArgoServerEnabled"] = request.ArgoServerEnabled
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.AuditLogEnabled)) {
@@ -2493,6 +2348,10 @@ func (client *Client) CreateHubClusterWithOptions(tmpReq *CreateHubClusterReques
 
 	if !tea.BoolValue(util.IsUnset(request.Name)) {
 		body["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PriceLimit)) {
+		body["PriceLimit"] = request.PriceLimit
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Profile)) {
@@ -2511,9 +2370,12 @@ func (client *Client) CreateHubClusterWithOptions(tmpReq *CreateHubClusterReques
 		body["VpcId"] = request.VpcId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.WorkflowScheduleMode)) {
+		body["WorkflowScheduleMode"] = request.WorkflowScheduleMode
+	}
+
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  openapiutil.ParseToMap(body),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateHubCluster"),
@@ -2929,13 +2791,21 @@ func (client *Client) UpdateHubClusterFeatureWithOptions(tmpReq *UpdateHubCluste
 	}
 	request := &UpdateHubClusterFeatureShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tmpReq.Units)) {
-		request.UnitsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Units, tea.String("Units"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.VSwitches)) {
+		request.VSwitchesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.VSwitches, tea.String("VSwitches"), tea.String("json"))
 	}
 
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ApiServerEipId)) {
 		query["ApiServerEipId"] = request.ApiServerEipId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ArgoCDEnabled)) {
+		query["ArgoCDEnabled"] = request.ArgoCDEnabled
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ArgoServerEnabled)) {
+		query["ArgoServerEnabled"] = request.ArgoServerEnabled
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.AuditLogEnabled)) {
@@ -2950,16 +2820,8 @@ func (client *Client) UpdateHubClusterFeatureWithOptions(tmpReq *UpdateHubCluste
 		query["DeletionProtection"] = request.DeletionProtection
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.EnableArgoCD)) {
-		query["EnableArgoCD"] = request.EnableArgoCD
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.EnableMesh)) {
 		query["EnableMesh"] = request.EnableMesh
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Enabled)) {
-		query["Enabled"] = request.Enabled
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Name)) {
@@ -2974,16 +2836,12 @@ func (client *Client) UpdateHubClusterFeatureWithOptions(tmpReq *UpdateHubCluste
 		query["PublicApiServerEnabled"] = request.PublicApiServerEnabled
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.ScheduleMode)) {
-		query["ScheduleMode"] = request.ScheduleMode
+	if !tea.BoolValue(util.IsUnset(request.VSwitchesShrink)) {
+		query["VSwitches"] = request.VSwitchesShrink
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.ServerEnabled)) {
-		query["ServerEnabled"] = request.ServerEnabled
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.UnitsShrink)) {
-		query["Units"] = request.UnitsShrink
+	if !tea.BoolValue(util.IsUnset(request.WorkflowScheduleMode)) {
+		query["WorkflowScheduleMode"] = request.WorkflowScheduleMode
 	}
 
 	req := &openapi.OpenApiRequest{
