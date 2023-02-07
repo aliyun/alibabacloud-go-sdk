@@ -1243,6 +1243,47 @@ func (s *TaskExec) SetTaskTemplate(v string) *TaskExec {
 	return s
 }
 
+type TaskInvocation struct {
+	InvocationID     *string                `json:"invocationID,omitempty" xml:"invocationID,omitempty"`
+	InvocationTarget *string                `json:"invocationTarget,omitempty" xml:"invocationTarget,omitempty"`
+	Output           map[string]interface{} `json:"output,omitempty" xml:"output,omitempty"`
+	RequestID        *string                `json:"requestID,omitempty" xml:"requestID,omitempty"`
+	Status           *string                `json:"status,omitempty" xml:"status,omitempty"`
+}
+
+func (s TaskInvocation) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TaskInvocation) GoString() string {
+	return s.String()
+}
+
+func (s *TaskInvocation) SetInvocationID(v string) *TaskInvocation {
+	s.InvocationID = &v
+	return s
+}
+
+func (s *TaskInvocation) SetInvocationTarget(v string) *TaskInvocation {
+	s.InvocationTarget = &v
+	return s
+}
+
+func (s *TaskInvocation) SetOutput(v map[string]interface{}) *TaskInvocation {
+	s.Output = v
+	return s
+}
+
+func (s *TaskInvocation) SetRequestID(v string) *TaskInvocation {
+	s.RequestID = &v
+	return s
+}
+
+func (s *TaskInvocation) SetStatus(v string) *TaskInvocation {
+	s.Status = &v
+	return s
+}
+
 type TaskSpec struct {
 	Context      *Context `json:"context,omitempty" xml:"context,omitempty"`
 	TemplateName *string  `json:"templateName,omitempty" xml:"templateName,omitempty"`
@@ -1267,9 +1308,10 @@ func (s *TaskSpec) SetTemplateName(v string) *TaskSpec {
 }
 
 type TaskStatus struct {
-	ExecutionDetails []*string `json:"executionDetails,omitempty" xml:"executionDetails,omitempty" type:"Repeated"`
-	Phase            *string   `json:"phase,omitempty" xml:"phase,omitempty"`
-	StatusGeneration *int64    `json:"statusGeneration,omitempty" xml:"statusGeneration,omitempty"`
+	ExecutionDetails []*string         `json:"executionDetails,omitempty" xml:"executionDetails,omitempty" type:"Repeated"`
+	Invocations      []*TaskInvocation `json:"invocations,omitempty" xml:"invocations,omitempty" type:"Repeated"`
+	Phase            *string           `json:"phase,omitempty" xml:"phase,omitempty"`
+	StatusGeneration *int64            `json:"statusGeneration,omitempty" xml:"statusGeneration,omitempty"`
 }
 
 func (s TaskStatus) String() string {
@@ -1282,6 +1324,11 @@ func (s TaskStatus) GoString() string {
 
 func (s *TaskStatus) SetExecutionDetails(v []*string) *TaskStatus {
 	s.ExecutionDetails = v
+	return s
+}
+
+func (s *TaskStatus) SetInvocations(v []*TaskInvocation) *TaskStatus {
+	s.Invocations = v
 	return s
 }
 
@@ -3367,6 +3414,35 @@ func (s *ResumeTaskResponse) SetBody(v *Task) *ResumeTaskResponse {
 	return s
 }
 
+type RetryTaskResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *Task              `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s RetryTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RetryTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RetryTaskResponse) SetHeaders(v map[string]*string) *RetryTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RetryTaskResponse) SetStatusCode(v int32) *RetryTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RetryTaskResponse) SetBody(v *Task) *RetryTaskResponse {
+	s.Body = v
+	return s
+}
+
 type StartPipelineResponse struct {
 	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
 	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
@@ -3518,18 +3594,6 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
-func (client *Client) CancelTask(name *string) (_result *CancelTaskResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &CancelTaskResponse{}
-	_body, _err := client.CancelTaskWithOptions(name, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) CancelTaskWithOptions(name *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CancelTaskResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -3554,11 +3618,11 @@ func (client *Client) CancelTaskWithOptions(name *string, headers map[string]*st
 	return _result, _err
 }
 
-func (client *Client) CreateApplication(request *CreateApplicationRequest) (_result *CreateApplicationResponse, _err error) {
+func (client *Client) CancelTask(name *string) (_result *CancelTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &CreateApplicationResponse{}
-	_body, _err := client.CreateApplicationWithOptions(request, headers, runtime)
+	_result = &CancelTaskResponse{}
+	_body, _err := client.CancelTaskWithOptions(name, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3632,11 +3696,11 @@ func (client *Client) CreateApplicationWithOptions(request *CreateApplicationReq
 	return _result, _err
 }
 
-func (client *Client) CreatePipeline(request *CreatePipelineRequest) (_result *CreatePipelineResponse, _err error) {
+func (client *Client) CreateApplication(request *CreateApplicationRequest) (_result *CreateApplicationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &CreatePipelineResponse{}
-	_body, _err := client.CreatePipelineWithOptions(request, headers, runtime)
+	_result = &CreateApplicationResponse{}
+	_body, _err := client.CreateApplicationWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3673,11 +3737,11 @@ func (client *Client) CreatePipelineWithOptions(request *CreatePipelineRequest, 
 	return _result, _err
 }
 
-func (client *Client) CreatePipelineTemplate(request *CreatePipelineTemplateRequest) (_result *CreatePipelineTemplateResponse, _err error) {
+func (client *Client) CreatePipeline(request *CreatePipelineRequest) (_result *CreatePipelineResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &CreatePipelineTemplateResponse{}
-	_body, _err := client.CreatePipelineTemplateWithOptions(request, headers, runtime)
+	_result = &CreatePipelineResponse{}
+	_body, _err := client.CreatePipelineWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3714,11 +3778,11 @@ func (client *Client) CreatePipelineTemplateWithOptions(request *CreatePipelineT
 	return _result, _err
 }
 
-func (client *Client) CreateRelease(appName *string, request *CreateReleaseRequest) (_result *CreateReleaseResponse, _err error) {
+func (client *Client) CreatePipelineTemplate(request *CreatePipelineTemplateRequest) (_result *CreatePipelineTemplateResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &CreateReleaseResponse{}
-	_body, _err := client.CreateReleaseWithOptions(appName, request, headers, runtime)
+	_result = &CreatePipelineTemplateResponse{}
+	_body, _err := client.CreatePipelineTemplateWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3760,11 +3824,11 @@ func (client *Client) CreateReleaseWithOptions(appName *string, request *CreateR
 	return _result, _err
 }
 
-func (client *Client) CreateTask(request *CreateTaskRequest) (_result *CreateTaskResponse, _err error) {
+func (client *Client) CreateRelease(appName *string, request *CreateReleaseRequest) (_result *CreateReleaseResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &CreateTaskResponse{}
-	_body, _err := client.CreateTaskWithOptions(request, headers, runtime)
+	_result = &CreateReleaseResponse{}
+	_body, _err := client.CreateReleaseWithOptions(appName, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3801,11 +3865,11 @@ func (client *Client) CreateTaskWithOptions(request *CreateTaskRequest, headers 
 	return _result, _err
 }
 
-func (client *Client) CreateTaskTemplate(request *CreateTaskTemplateRequest) (_result *CreateTaskTemplateResponse, _err error) {
+func (client *Client) CreateTask(request *CreateTaskRequest) (_result *CreateTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &CreateTaskTemplateResponse{}
-	_body, _err := client.CreateTaskTemplateWithOptions(request, headers, runtime)
+	_result = &CreateTaskResponse{}
+	_body, _err := client.CreateTaskWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3842,11 +3906,11 @@ func (client *Client) CreateTaskTemplateWithOptions(request *CreateTaskTemplateR
 	return _result, _err
 }
 
-func (client *Client) DeleteApplication(name *string) (_result *DeleteApplicationResponse, _err error) {
+func (client *Client) CreateTaskTemplate(request *CreateTaskTemplateRequest) (_result *CreateTaskTemplateResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DeleteApplicationResponse{}
-	_body, _err := client.DeleteApplicationWithOptions(name, headers, runtime)
+	_result = &CreateTaskTemplateResponse{}
+	_body, _err := client.CreateTaskTemplateWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3878,11 +3942,11 @@ func (client *Client) DeleteApplicationWithOptions(name *string, headers map[str
 	return _result, _err
 }
 
-func (client *Client) DeleteEnvironment(name *string) (_result *DeleteEnvironmentResponse, _err error) {
+func (client *Client) DeleteApplication(name *string) (_result *DeleteApplicationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DeleteEnvironmentResponse{}
-	_body, _err := client.DeleteEnvironmentWithOptions(name, headers, runtime)
+	_result = &DeleteApplicationResponse{}
+	_body, _err := client.DeleteApplicationWithOptions(name, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3914,11 +3978,11 @@ func (client *Client) DeleteEnvironmentWithOptions(name *string, headers map[str
 	return _result, _err
 }
 
-func (client *Client) DeletePipelineTemplate(name *string) (_result *DeletePipelineTemplateResponse, _err error) {
+func (client *Client) DeleteEnvironment(name *string) (_result *DeleteEnvironmentResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DeletePipelineTemplateResponse{}
-	_body, _err := client.DeletePipelineTemplateWithOptions(name, headers, runtime)
+	_result = &DeleteEnvironmentResponse{}
+	_body, _err := client.DeleteEnvironmentWithOptions(name, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3950,11 +4014,11 @@ func (client *Client) DeletePipelineTemplateWithOptions(name *string, headers ma
 	return _result, _err
 }
 
-func (client *Client) DeleteTaskTemplate(name *string) (_result *DeleteTaskTemplateResponse, _err error) {
+func (client *Client) DeletePipelineTemplate(name *string) (_result *DeletePipelineTemplateResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DeleteTaskTemplateResponse{}
-	_body, _err := client.DeleteTaskTemplateWithOptions(name, headers, runtime)
+	_result = &DeletePipelineTemplateResponse{}
+	_body, _err := client.DeletePipelineTemplateWithOptions(name, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3986,11 +4050,11 @@ func (client *Client) DeleteTaskTemplateWithOptions(name *string, headers map[st
 	return _result, _err
 }
 
-func (client *Client) DeleteTemplate(name *string, request *DeleteTemplateRequest) (_result *DeleteTemplateResponse, _err error) {
+func (client *Client) DeleteTaskTemplate(name *string) (_result *DeleteTaskTemplateResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DeleteTemplateResponse{}
-	_body, _err := client.DeleteTemplateWithOptions(name, request, headers, runtime)
+	_result = &DeleteTaskTemplateResponse{}
+	_body, _err := client.DeleteTaskTemplateWithOptions(name, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4032,11 +4096,11 @@ func (client *Client) DeleteTemplateWithOptions(name *string, request *DeleteTem
 	return _result, _err
 }
 
-func (client *Client) GetApplication(name *string) (_result *GetApplicationResponse, _err error) {
+func (client *Client) DeleteTemplate(name *string, request *DeleteTemplateRequest) (_result *DeleteTemplateResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetApplicationResponse{}
-	_body, _err := client.GetApplicationWithOptions(name, headers, runtime)
+	_result = &DeleteTemplateResponse{}
+	_body, _err := client.DeleteTemplateWithOptions(name, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4068,11 +4132,11 @@ func (client *Client) GetApplicationWithOptions(name *string, headers map[string
 	return _result, _err
 }
 
-func (client *Client) GetEnvironment(name *string) (_result *GetEnvironmentResponse, _err error) {
+func (client *Client) GetApplication(name *string) (_result *GetApplicationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetEnvironmentResponse{}
-	_body, _err := client.GetEnvironmentWithOptions(name, headers, runtime)
+	_result = &GetApplicationResponse{}
+	_body, _err := client.GetApplicationWithOptions(name, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4104,11 +4168,11 @@ func (client *Client) GetEnvironmentWithOptions(name *string, headers map[string
 	return _result, _err
 }
 
-func (client *Client) GetPipeline(name *string) (_result *GetPipelineResponse, _err error) {
+func (client *Client) GetEnvironment(name *string) (_result *GetEnvironmentResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetPipelineResponse{}
-	_body, _err := client.GetPipelineWithOptions(name, headers, runtime)
+	_result = &GetEnvironmentResponse{}
+	_body, _err := client.GetEnvironmentWithOptions(name, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4140,11 +4204,11 @@ func (client *Client) GetPipelineWithOptions(name *string, headers map[string]*s
 	return _result, _err
 }
 
-func (client *Client) GetPipelineTemplate(name *string) (_result *GetPipelineTemplateResponse, _err error) {
+func (client *Client) GetPipeline(name *string) (_result *GetPipelineResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetPipelineTemplateResponse{}
-	_body, _err := client.GetPipelineTemplateWithOptions(name, headers, runtime)
+	_result = &GetPipelineResponse{}
+	_body, _err := client.GetPipelineWithOptions(name, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4176,11 +4240,11 @@ func (client *Client) GetPipelineTemplateWithOptions(name *string, headers map[s
 	return _result, _err
 }
 
-func (client *Client) GetRelease(appName *string, versionId *string) (_result *GetReleaseResponse, _err error) {
+func (client *Client) GetPipelineTemplate(name *string) (_result *GetPipelineTemplateResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetReleaseResponse{}
-	_body, _err := client.GetReleaseWithOptions(appName, versionId, headers, runtime)
+	_result = &GetPipelineTemplateResponse{}
+	_body, _err := client.GetPipelineTemplateWithOptions(name, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4212,11 +4276,11 @@ func (client *Client) GetReleaseWithOptions(appName *string, versionId *string, 
 	return _result, _err
 }
 
-func (client *Client) GetService(name *string) (_result *GetServiceResponse, _err error) {
+func (client *Client) GetRelease(appName *string, versionId *string) (_result *GetReleaseResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetServiceResponse{}
-	_body, _err := client.GetServiceWithOptions(name, headers, runtime)
+	_result = &GetReleaseResponse{}
+	_body, _err := client.GetReleaseWithOptions(appName, versionId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4248,11 +4312,11 @@ func (client *Client) GetServiceWithOptions(name *string, headers map[string]*st
 	return _result, _err
 }
 
-func (client *Client) GetTask(name *string) (_result *GetTaskResponse, _err error) {
+func (client *Client) GetService(name *string) (_result *GetServiceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetTaskResponse{}
-	_body, _err := client.GetTaskWithOptions(name, headers, runtime)
+	_result = &GetServiceResponse{}
+	_body, _err := client.GetServiceWithOptions(name, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4284,11 +4348,11 @@ func (client *Client) GetTaskWithOptions(name *string, headers map[string]*strin
 	return _result, _err
 }
 
-func (client *Client) GetTaskTemplate(name *string) (_result *GetTaskTemplateResponse, _err error) {
+func (client *Client) GetTask(name *string) (_result *GetTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetTaskTemplateResponse{}
-	_body, _err := client.GetTaskTemplateWithOptions(name, headers, runtime)
+	_result = &GetTaskResponse{}
+	_body, _err := client.GetTaskWithOptions(name, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4320,11 +4384,11 @@ func (client *Client) GetTaskTemplateWithOptions(name *string, headers map[strin
 	return _result, _err
 }
 
-func (client *Client) GetTemplate(name *string, request *GetTemplateRequest) (_result *GetTemplateResponse, _err error) {
+func (client *Client) GetTaskTemplate(name *string) (_result *GetTaskTemplateResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetTemplateResponse{}
-	_body, _err := client.GetTemplateWithOptions(name, request, headers, runtime)
+	_result = &GetTaskTemplateResponse{}
+	_body, _err := client.GetTaskTemplateWithOptions(name, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4366,11 +4430,11 @@ func (client *Client) GetTemplateWithOptions(name *string, request *GetTemplateR
 	return _result, _err
 }
 
-func (client *Client) ListEnvironmentRevisions(request *ListEnvironmentRevisionsRequest) (_result *ListEnvironmentRevisionsResponse, _err error) {
+func (client *Client) GetTemplate(name *string, request *GetTemplateRequest) (_result *GetTemplateResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListEnvironmentRevisionsResponse{}
-	_body, _err := client.ListEnvironmentRevisionsWithOptions(request, headers, runtime)
+	_result = &GetTemplateResponse{}
+	_body, _err := client.GetTemplateWithOptions(name, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4412,11 +4476,11 @@ func (client *Client) ListEnvironmentRevisionsWithOptions(request *ListEnvironme
 	return _result, _err
 }
 
-func (client *Client) ListEnvironments() (_result *ListEnvironmentsResponse, _err error) {
+func (client *Client) ListEnvironmentRevisions(request *ListEnvironmentRevisionsRequest) (_result *ListEnvironmentRevisionsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListEnvironmentsResponse{}
-	_body, _err := client.ListEnvironmentsWithOptions(headers, runtime)
+	_result = &ListEnvironmentRevisionsResponse{}
+	_body, _err := client.ListEnvironmentRevisionsWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4448,11 +4512,11 @@ func (client *Client) ListEnvironmentsWithOptions(headers map[string]*string, ru
 	return _result, _err
 }
 
-func (client *Client) ListPipelineTemplates(request *ListPipelineTemplatesRequest) (_result *ListPipelineTemplatesResponse, _err error) {
+func (client *Client) ListEnvironments() (_result *ListEnvironmentsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListPipelineTemplatesResponse{}
-	_body, _err := client.ListPipelineTemplatesWithOptions(request, headers, runtime)
+	_result = &ListEnvironmentsResponse{}
+	_body, _err := client.ListEnvironmentsWithOptions(headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4500,11 +4564,11 @@ func (client *Client) ListPipelineTemplatesWithOptions(tmpReq *ListPipelineTempl
 	return _result, _err
 }
 
-func (client *Client) ListPipelines(request *ListPipelinesRequest) (_result *ListPipelinesResponse, _err error) {
+func (client *Client) ListPipelineTemplates(request *ListPipelineTemplatesRequest) (_result *ListPipelineTemplatesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListPipelinesResponse{}
-	_body, _err := client.ListPipelinesWithOptions(request, headers, runtime)
+	_result = &ListPipelineTemplatesResponse{}
+	_body, _err := client.ListPipelineTemplatesWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4552,11 +4616,11 @@ func (client *Client) ListPipelinesWithOptions(tmpReq *ListPipelinesRequest, hea
 	return _result, _err
 }
 
-func (client *Client) ListServiceRevisions(request *ListServiceRevisionsRequest) (_result *ListServiceRevisionsResponse, _err error) {
+func (client *Client) ListPipelines(request *ListPipelinesRequest) (_result *ListPipelinesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListServiceRevisionsResponse{}
-	_body, _err := client.ListServiceRevisionsWithOptions(request, headers, runtime)
+	_result = &ListPipelinesResponse{}
+	_body, _err := client.ListPipelinesWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4598,11 +4662,11 @@ func (client *Client) ListServiceRevisionsWithOptions(request *ListServiceRevisi
 	return _result, _err
 }
 
-func (client *Client) ListServices() (_result *ListServicesResponse, _err error) {
+func (client *Client) ListServiceRevisions(request *ListServiceRevisionsRequest) (_result *ListServiceRevisionsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListServicesResponse{}
-	_body, _err := client.ListServicesWithOptions(headers, runtime)
+	_result = &ListServiceRevisionsResponse{}
+	_body, _err := client.ListServiceRevisionsWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4634,11 +4698,11 @@ func (client *Client) ListServicesWithOptions(headers map[string]*string, runtim
 	return _result, _err
 }
 
-func (client *Client) ListTaskTemplates(request *ListTaskTemplatesRequest) (_result *ListTaskTemplatesResponse, _err error) {
+func (client *Client) ListServices() (_result *ListServicesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListTaskTemplatesResponse{}
-	_body, _err := client.ListTaskTemplatesWithOptions(request, headers, runtime)
+	_result = &ListServicesResponse{}
+	_body, _err := client.ListServicesWithOptions(headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4686,11 +4750,11 @@ func (client *Client) ListTaskTemplatesWithOptions(tmpReq *ListTaskTemplatesRequ
 	return _result, _err
 }
 
-func (client *Client) ListTasks(request *ListTasksRequest) (_result *ListTasksResponse, _err error) {
+func (client *Client) ListTaskTemplates(request *ListTaskTemplatesRequest) (_result *ListTaskTemplatesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListTasksResponse{}
-	_body, _err := client.ListTasksWithOptions(request, headers, runtime)
+	_result = &ListTaskTemplatesResponse{}
+	_body, _err := client.ListTaskTemplatesWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4738,11 +4802,11 @@ func (client *Client) ListTasksWithOptions(tmpReq *ListTasksRequest, headers map
 	return _result, _err
 }
 
-func (client *Client) ListTemplateRevisions(request *ListTemplateRevisionsRequest) (_result *ListTemplateRevisionsResponse, _err error) {
+func (client *Client) ListTasks(request *ListTasksRequest) (_result *ListTasksResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListTemplateRevisionsResponse{}
-	_body, _err := client.ListTemplateRevisionsWithOptions(request, headers, runtime)
+	_result = &ListTasksResponse{}
+	_body, _err := client.ListTasksWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4788,11 +4852,11 @@ func (client *Client) ListTemplateRevisionsWithOptions(request *ListTemplateRevi
 	return _result, _err
 }
 
-func (client *Client) ListTemplates(request *ListTemplatesRequest) (_result *ListTemplatesResponse, _err error) {
+func (client *Client) ListTemplateRevisions(request *ListTemplateRevisionsRequest) (_result *ListTemplateRevisionsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListTemplatesResponse{}
-	_body, _err := client.ListTemplatesWithOptions(request, headers, runtime)
+	_result = &ListTemplateRevisionsResponse{}
+	_body, _err := client.ListTemplateRevisionsWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4834,11 +4898,11 @@ func (client *Client) ListTemplatesWithOptions(request *ListTemplatesRequest, he
 	return _result, _err
 }
 
-func (client *Client) PutEnvironment(name *string, request *PutEnvironmentRequest) (_result *PutEnvironmentResponse, _err error) {
+func (client *Client) ListTemplates(request *ListTemplatesRequest) (_result *ListTemplatesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &PutEnvironmentResponse{}
-	_body, _err := client.PutEnvironmentWithOptions(name, request, headers, runtime)
+	_result = &ListTemplatesResponse{}
+	_body, _err := client.ListTemplatesWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4875,11 +4939,11 @@ func (client *Client) PutEnvironmentWithOptions(name *string, request *PutEnviro
 	return _result, _err
 }
 
-func (client *Client) PutPipelineStatus(name *string, request *PutPipelineStatusRequest) (_result *PutPipelineStatusResponse, _err error) {
+func (client *Client) PutEnvironment(name *string, request *PutEnvironmentRequest) (_result *PutEnvironmentResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &PutPipelineStatusResponse{}
-	_body, _err := client.PutPipelineStatusWithOptions(name, request, headers, runtime)
+	_result = &PutEnvironmentResponse{}
+	_body, _err := client.PutEnvironmentWithOptions(name, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4922,11 +4986,11 @@ func (client *Client) PutPipelineStatusWithOptions(name *string, request *PutPip
 	return _result, _err
 }
 
-func (client *Client) PutPipelineTemplate(name *string, request *PutPipelineTemplateRequest) (_result *PutPipelineTemplateResponse, _err error) {
+func (client *Client) PutPipelineStatus(name *string, request *PutPipelineStatusRequest) (_result *PutPipelineStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &PutPipelineTemplateResponse{}
-	_body, _err := client.PutPipelineTemplateWithOptions(name, request, headers, runtime)
+	_result = &PutPipelineStatusResponse{}
+	_body, _err := client.PutPipelineStatusWithOptions(name, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4969,11 +5033,11 @@ func (client *Client) PutPipelineTemplateWithOptions(name *string, request *PutP
 	return _result, _err
 }
 
-func (client *Client) PutService(name *string, request *PutServiceRequest) (_result *PutServiceResponse, _err error) {
+func (client *Client) PutPipelineTemplate(name *string, request *PutPipelineTemplateRequest) (_result *PutPipelineTemplateResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &PutServiceResponse{}
-	_body, _err := client.PutServiceWithOptions(name, request, headers, runtime)
+	_result = &PutPipelineTemplateResponse{}
+	_body, _err := client.PutPipelineTemplateWithOptions(name, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5010,11 +5074,11 @@ func (client *Client) PutServiceWithOptions(name *string, request *PutServiceReq
 	return _result, _err
 }
 
-func (client *Client) PutTaskStatus(name *string, request *PutTaskStatusRequest) (_result *PutTaskStatusResponse, _err error) {
+func (client *Client) PutService(name *string, request *PutServiceRequest) (_result *PutServiceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &PutTaskStatusResponse{}
-	_body, _err := client.PutTaskStatusWithOptions(name, request, headers, runtime)
+	_result = &PutServiceResponse{}
+	_body, _err := client.PutServiceWithOptions(name, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5057,11 +5121,11 @@ func (client *Client) PutTaskStatusWithOptions(name *string, request *PutTaskSta
 	return _result, _err
 }
 
-func (client *Client) PutTaskTemplate(name *string, request *PutTaskTemplateRequest) (_result *PutTaskTemplateResponse, _err error) {
+func (client *Client) PutTaskStatus(name *string, request *PutTaskStatusRequest) (_result *PutTaskStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &PutTaskTemplateResponse{}
-	_body, _err := client.PutTaskTemplateWithOptions(name, request, headers, runtime)
+	_result = &PutTaskStatusResponse{}
+	_body, _err := client.PutTaskStatusWithOptions(name, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5104,11 +5168,11 @@ func (client *Client) PutTaskTemplateWithOptions(name *string, request *PutTaskT
 	return _result, _err
 }
 
-func (client *Client) PutTemplate(name *string, request *PutTemplateRequest) (_result *PutTemplateResponse, _err error) {
+func (client *Client) PutTaskTemplate(name *string, request *PutTaskTemplateRequest) (_result *PutTaskTemplateResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &PutTemplateResponse{}
-	_body, _err := client.PutTemplateWithOptions(name, request, headers, runtime)
+	_result = &PutTaskTemplateResponse{}
+	_body, _err := client.PutTaskTemplateWithOptions(name, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5151,11 +5215,11 @@ func (client *Client) PutTemplateWithOptions(name *string, request *PutTemplateR
 	return _result, _err
 }
 
-func (client *Client) ResumeTask(name *string) (_result *ResumeTaskResponse, _err error) {
+func (client *Client) PutTemplate(name *string, request *PutTemplateRequest) (_result *PutTemplateResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ResumeTaskResponse{}
-	_body, _err := client.ResumeTaskWithOptions(name, headers, runtime)
+	_result = &PutTemplateResponse{}
+	_body, _err := client.PutTemplateWithOptions(name, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5187,11 +5251,47 @@ func (client *Client) ResumeTaskWithOptions(name *string, headers map[string]*st
 	return _result, _err
 }
 
-func (client *Client) StartPipeline(name *string) (_result *StartPipelineResponse, _err error) {
+func (client *Client) ResumeTask(name *string) (_result *ResumeTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &StartPipelineResponse{}
-	_body, _err := client.StartPipelineWithOptions(name, headers, runtime)
+	_result = &ResumeTaskResponse{}
+	_body, _err := client.ResumeTaskWithOptions(name, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) RetryTaskWithOptions(name *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *RetryTaskResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RetryTask"),
+		Version:     tea.String("2021-09-24"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/apis/serverlessdeployment/v1/tasks/" + tea.StringValue(openapiutil.GetEncodeParam(name)) + "/retry"),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RetryTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) RetryTask(name *string) (_result *RetryTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &RetryTaskResponse{}
+	_body, _err := client.RetryTaskWithOptions(name, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5223,11 +5323,11 @@ func (client *Client) StartPipelineWithOptions(name *string, headers map[string]
 	return _result, _err
 }
 
-func (client *Client) StartTask(name *string) (_result *StartTaskResponse, _err error) {
+func (client *Client) StartPipeline(name *string) (_result *StartPipelineResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &StartTaskResponse{}
-	_body, _err := client.StartTaskWithOptions(name, headers, runtime)
+	_result = &StartPipelineResponse{}
+	_body, _err := client.StartPipelineWithOptions(name, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5259,11 +5359,11 @@ func (client *Client) StartTaskWithOptions(name *string, headers map[string]*str
 	return _result, _err
 }
 
-func (client *Client) UpdateApplication(name *string, request *UpdateApplicationRequest) (_result *UpdateApplicationResponse, _err error) {
+func (client *Client) StartTask(name *string) (_result *StartTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &UpdateApplicationResponse{}
-	_body, _err := client.UpdateApplicationWithOptions(name, request, headers, runtime)
+	_result = &StartTaskResponse{}
+	_body, _err := client.StartTaskWithOptions(name, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5297,5 +5397,17 @@ func (client *Client) UpdateApplicationWithOptions(name *string, request *Update
 		return _result, _err
 	}
 	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateApplication(name *string, request *UpdateApplicationRequest) (_result *UpdateApplicationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateApplicationResponse{}
+	_body, _err := client.UpdateApplicationWithOptions(name, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
 	return _result, _err
 }
