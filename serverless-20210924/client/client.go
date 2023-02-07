@@ -1244,6 +1244,7 @@ func (s *TaskExec) SetTaskTemplate(v string) *TaskExec {
 }
 
 type TaskInvocation struct {
+	InstanceID       *string                `json:"instanceID,omitempty" xml:"instanceID,omitempty"`
 	InvocationID     *string                `json:"invocationID,omitempty" xml:"invocationID,omitempty"`
 	InvocationTarget *string                `json:"invocationTarget,omitempty" xml:"invocationTarget,omitempty"`
 	Output           map[string]interface{} `json:"output,omitempty" xml:"output,omitempty"`
@@ -1257,6 +1258,11 @@ func (s TaskInvocation) String() string {
 
 func (s TaskInvocation) GoString() string {
 	return s.String()
+}
+
+func (s *TaskInvocation) SetInstanceID(v string) *TaskInvocation {
+	s.InstanceID = &v
+	return s
 }
 
 func (s *TaskInvocation) SetInvocationID(v string) *TaskInvocation {

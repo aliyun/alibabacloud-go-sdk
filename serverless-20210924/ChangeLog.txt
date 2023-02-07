@@ -1,3 +1,6 @@
+2023-02-07 Version: v1.1.6
+- Add missing fields to TaskStatus.
+
 2023-02-07 Version: v1.1.5
 - Add RetryTask API.
 
