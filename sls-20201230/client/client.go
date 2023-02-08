@@ -5181,8 +5181,8 @@ func (s *ListExternalStoreResponse) SetBody(v *ListExternalStoreResponseBody) *L
 }
 
 type ListJobsResponseBody struct {
-	EtlJobNameList []*string `json:"etlJobNameList,omitempty" xml:"etlJobNameList,omitempty" type:"Repeated"`
-	Total          *int32    `json:"total,omitempty" xml:"total,omitempty"`
+	Results []*EtlJob `json:"results,omitempty" xml:"results,omitempty" type:"Repeated"`
+	Total   *int32    `json:"total,omitempty" xml:"total,omitempty"`
 }
 
 func (s ListJobsResponseBody) String() string {
@@ -5193,8 +5193,8 @@ func (s ListJobsResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ListJobsResponseBody) SetEtlJobNameList(v []*string) *ListJobsResponseBody {
-	s.EtlJobNameList = v
+func (s *ListJobsResponseBody) SetResults(v []*EtlJob) *ListJobsResponseBody {
+	s.Results = v
 	return s
 }
 
