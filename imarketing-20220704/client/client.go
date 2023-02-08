@@ -203,9 +203,11 @@ func (s *CreateDeviceShrinkRequest) SetSecondScene(v string) *CreateDeviceShrink
 }
 
 type CreateDeviceResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	Model     *string `json:"Model,omitempty" xml:"Model,omitempty"`
+	// Id of the request
+	Code    *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	Model   *string `json:"Model,omitempty" xml:"Model,omitempty"`
+	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
@@ -2622,6 +2624,7 @@ func (s *QueryAuditResultResponse) SetBody(v *QueryAuditResultResponseBody) *Que
 }
 
 type ReportImpressionRequest struct {
+	// impressionlink
 	Impressionlink *string `json:"Impressionlink,omitempty" xml:"Impressionlink,omitempty"`
 }
 
@@ -2639,13 +2642,18 @@ func (s *ReportImpressionRequest) SetImpressionlink(v string) *ReportImpressionR
 }
 
 type ReportImpressionResponseBody struct {
-	ErrorCode *string                             `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMsg  *string                             `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
-	Ext       map[string]*string                  `json:"Ext,omitempty" xml:"Ext,omitempty"`
+	// errorCode
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// errorMsg
+	ErrorMsg *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	// ext
+	Ext map[string]*string `json:"Ext,omitempty" xml:"Ext,omitempty"`
+	// header
 	Header    *ReportImpressionResponseBodyHeader `json:"Header,omitempty" xml:"Header,omitempty" type:"Struct"`
 	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Result    *ReportImpressionResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-	Success   *bool                               `json:"Success,omitempty" xml:"Success,omitempty"`
+	// success
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ReportImpressionResponseBody) String() string {
@@ -2692,10 +2700,14 @@ func (s *ReportImpressionResponseBody) SetSuccess(v bool) *ReportImpressionRespo
 }
 
 type ReportImpressionResponseBodyHeader struct {
-	CostTime *int64  `json:"CostTime,omitempty" xml:"CostTime,omitempty"`
-	RpcId    *string `json:"RpcId,omitempty" xml:"RpcId,omitempty"`
-	TraceId  *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
-	Version  *string `json:"Version,omitempty" xml:"Version,omitempty"`
+	// costTime
+	CostTime *int64 `json:"CostTime,omitempty" xml:"CostTime,omitempty"`
+	// rpcId
+	RpcId *string `json:"RpcId,omitempty" xml:"RpcId,omitempty"`
+	// traceId
+	TraceId *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
+	// version
+	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s ReportImpressionResponseBodyHeader) String() string {
@@ -3095,14 +3107,18 @@ func (s *UpdateAdxCreativeContentRequest) SetDspId(v string) *UpdateAdxCreativeC
 }
 
 type UpdateAdxCreativeContentRequestAd struct {
+	Bundle       []*string                                    `json:"Bundle,omitempty" xml:"Bundle,omitempty" type:"Repeated"`
 	Clicks       []*string                                    `json:"Clicks,omitempty" xml:"Clicks,omitempty" type:"Repeated"`
 	Crid         *string                                      `json:"Crid,omitempty" xml:"Crid,omitempty"`
 	Enddate      *string                                      `json:"Enddate,omitempty" xml:"Enddate,omitempty"`
 	Imps         []*string                                    `json:"Imps,omitempty" xml:"Imps,omitempty" type:"Repeated"`
 	Interacttype *int32                                       `json:"Interacttype,omitempty" xml:"Interacttype,omitempty"`
+	MediaIdList  []*string                                    `json:"MediaIdList,omitempty" xml:"MediaIdList,omitempty" type:"Repeated"`
 	Nativead     []*UpdateAdxCreativeContentRequestAdNativead `json:"Nativead,omitempty" xml:"Nativead,omitempty" type:"Repeated"`
 	Op           *int32                                       `json:"Op,omitempty" xml:"Op,omitempty"`
 	Ostype       *string                                      `json:"Ostype,omitempty" xml:"Ostype,omitempty"`
+	Prereview    *bool                                        `json:"Prereview,omitempty" xml:"Prereview,omitempty"`
+	Seat         *string                                      `json:"Seat,omitempty" xml:"Seat,omitempty"`
 	Startdate    *string                                      `json:"Startdate,omitempty" xml:"Startdate,omitempty"`
 	Template     *int32                                       `json:"Template,omitempty" xml:"Template,omitempty"`
 	Type         *int32                                       `json:"Type,omitempty" xml:"Type,omitempty"`
@@ -3114,6 +3130,11 @@ func (s UpdateAdxCreativeContentRequestAd) String() string {
 
 func (s UpdateAdxCreativeContentRequestAd) GoString() string {
 	return s.String()
+}
+
+func (s *UpdateAdxCreativeContentRequestAd) SetBundle(v []*string) *UpdateAdxCreativeContentRequestAd {
+	s.Bundle = v
+	return s
 }
 
 func (s *UpdateAdxCreativeContentRequestAd) SetClicks(v []*string) *UpdateAdxCreativeContentRequestAd {
@@ -3141,6 +3162,11 @@ func (s *UpdateAdxCreativeContentRequestAd) SetInteracttype(v int32) *UpdateAdxC
 	return s
 }
 
+func (s *UpdateAdxCreativeContentRequestAd) SetMediaIdList(v []*string) *UpdateAdxCreativeContentRequestAd {
+	s.MediaIdList = v
+	return s
+}
+
 func (s *UpdateAdxCreativeContentRequestAd) SetNativead(v []*UpdateAdxCreativeContentRequestAdNativead) *UpdateAdxCreativeContentRequestAd {
 	s.Nativead = v
 	return s
@@ -3153,6 +3179,16 @@ func (s *UpdateAdxCreativeContentRequestAd) SetOp(v int32) *UpdateAdxCreativeCon
 
 func (s *UpdateAdxCreativeContentRequestAd) SetOstype(v string) *UpdateAdxCreativeContentRequestAd {
 	s.Ostype = &v
+	return s
+}
+
+func (s *UpdateAdxCreativeContentRequestAd) SetPrereview(v bool) *UpdateAdxCreativeContentRequestAd {
+	s.Prereview = &v
+	return s
+}
+
+func (s *UpdateAdxCreativeContentRequestAd) SetSeat(v string) *UpdateAdxCreativeContentRequestAd {
+	s.Seat = &v
 	return s
 }
 
@@ -3266,6 +3302,821 @@ func (s *UpdateAdxCreativeContentResponse) SetStatusCode(v int32) *UpdateAdxCrea
 }
 
 func (s *UpdateAdxCreativeContentResponse) SetBody(v *UpdateAdxCreativeContentResponseBody) *UpdateAdxCreativeContentResponse {
+	s.Body = v
+	return s
+}
+
+type VerifyAdvertisingRequest struct {
+	// app
+	App      *VerifyAdvertisingRequestApp `json:"App,omitempty" xml:"App,omitempty" type:"Struct"`
+	Dealtype *int32                       `json:"Dealtype,omitempty" xml:"Dealtype,omitempty"`
+	// device
+	Device *VerifyAdvertisingRequestDevice `json:"Device,omitempty" xml:"Device,omitempty" type:"Struct"`
+	// ext
+	Ext map[string]interface{} `json:"Ext,omitempty" xml:"Ext,omitempty"`
+	// id
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// imp
+	Imp []*VerifyAdvertisingRequestImp `json:"Imp,omitempty" xml:"Imp,omitempty" type:"Repeated"`
+	// test
+	Test *int32 `json:"Test,omitempty" xml:"Test,omitempty"`
+	// user
+	User     *VerifyAdvertisingRequestUser       `json:"User,omitempty" xml:"User,omitempty" type:"Struct"`
+	Verifyad []*VerifyAdvertisingRequestVerifyad `json:"Verifyad,omitempty" xml:"Verifyad,omitempty" type:"Repeated"`
+}
+
+func (s VerifyAdvertisingRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s VerifyAdvertisingRequest) GoString() string {
+	return s.String()
+}
+
+func (s *VerifyAdvertisingRequest) SetApp(v *VerifyAdvertisingRequestApp) *VerifyAdvertisingRequest {
+	s.App = v
+	return s
+}
+
+func (s *VerifyAdvertisingRequest) SetDealtype(v int32) *VerifyAdvertisingRequest {
+	s.Dealtype = &v
+	return s
+}
+
+func (s *VerifyAdvertisingRequest) SetDevice(v *VerifyAdvertisingRequestDevice) *VerifyAdvertisingRequest {
+	s.Device = v
+	return s
+}
+
+func (s *VerifyAdvertisingRequest) SetExt(v map[string]interface{}) *VerifyAdvertisingRequest {
+	s.Ext = v
+	return s
+}
+
+func (s *VerifyAdvertisingRequest) SetId(v string) *VerifyAdvertisingRequest {
+	s.Id = &v
+	return s
+}
+
+func (s *VerifyAdvertisingRequest) SetImp(v []*VerifyAdvertisingRequestImp) *VerifyAdvertisingRequest {
+	s.Imp = v
+	return s
+}
+
+func (s *VerifyAdvertisingRequest) SetTest(v int32) *VerifyAdvertisingRequest {
+	s.Test = &v
+	return s
+}
+
+func (s *VerifyAdvertisingRequest) SetUser(v *VerifyAdvertisingRequestUser) *VerifyAdvertisingRequest {
+	s.User = v
+	return s
+}
+
+func (s *VerifyAdvertisingRequest) SetVerifyad(v []*VerifyAdvertisingRequestVerifyad) *VerifyAdvertisingRequest {
+	s.Verifyad = v
+	return s
+}
+
+type VerifyAdvertisingRequestApp struct {
+	// ext
+	Ext map[string]interface{} `json:"Ext,omitempty" xml:"Ext,omitempty"`
+	// mediaid
+	Mediaid *string `json:"Mediaid,omitempty" xml:"Mediaid,omitempty"`
+	// sn
+	Sn *string `json:"Sn,omitempty" xml:"Sn,omitempty"`
+}
+
+func (s VerifyAdvertisingRequestApp) String() string {
+	return tea.Prettify(s)
+}
+
+func (s VerifyAdvertisingRequestApp) GoString() string {
+	return s.String()
+}
+
+func (s *VerifyAdvertisingRequestApp) SetExt(v map[string]interface{}) *VerifyAdvertisingRequestApp {
+	s.Ext = v
+	return s
+}
+
+func (s *VerifyAdvertisingRequestApp) SetMediaid(v string) *VerifyAdvertisingRequestApp {
+	s.Mediaid = &v
+	return s
+}
+
+func (s *VerifyAdvertisingRequestApp) SetSn(v string) *VerifyAdvertisingRequestApp {
+	s.Sn = &v
+	return s
+}
+
+type VerifyAdvertisingRequestDevice struct {
+	// androidid
+	Androidid *string `json:"Androidid,omitempty" xml:"Androidid,omitempty"`
+	// androidmd5
+	Androidmd5 *string `json:"Androidmd5,omitempty" xml:"Androidmd5,omitempty"`
+	// Caid
+	Caid           *string `json:"Caid,omitempty" xml:"Caid,omitempty"`
+	Carrier        *string `json:"Carrier,omitempty" xml:"Carrier,omitempty"`
+	Connectiontype *int32  `json:"Connectiontype,omitempty" xml:"Connectiontype,omitempty"`
+	// deviceType
+	Devicetype *int32                             `json:"Devicetype,omitempty" xml:"Devicetype,omitempty"`
+	Geo        *VerifyAdvertisingRequestDeviceGeo `json:"Geo,omitempty" xml:"Geo,omitempty" type:"Struct"`
+	// Idfa
+	Idfa *string `json:"Idfa,omitempty" xml:"Idfa,omitempty"`
+	// imei
+	Imei *string `json:"Imei,omitempty" xml:"Imei,omitempty"`
+	// imeimd5
+	Imeimd5  *string `json:"Imeimd5,omitempty" xml:"Imeimd5,omitempty"`
+	Ip       *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	Mac      *string `json:"Mac,omitempty" xml:"Mac,omitempty"`
+	// Macmd5
+	Macmd5 *string `json:"Macmd5,omitempty" xml:"Macmd5,omitempty"`
+	// make
+	Make *string `json:"Make,omitempty" xml:"Make,omitempty"`
+	// model
+	Model *string `json:"Model,omitempty" xml:"Model,omitempty"`
+	// oaid
+	Oaid *string `json:"Oaid,omitempty" xml:"Oaid,omitempty"`
+	// os
+	Os *string `json:"Os,omitempty" xml:"Os,omitempty"`
+	// osv
+	Osv *string `json:"Osv,omitempty" xml:"Osv,omitempty"`
+	// ua
+	Ua *string `json:"Ua,omitempty" xml:"Ua,omitempty"`
+	// Utdid
+	Utdid *string `json:"Utdid,omitempty" xml:"Utdid,omitempty"`
+}
+
+func (s VerifyAdvertisingRequestDevice) String() string {
+	return tea.Prettify(s)
+}
+
+func (s VerifyAdvertisingRequestDevice) GoString() string {
+	return s.String()
+}
+
+func (s *VerifyAdvertisingRequestDevice) SetAndroidid(v string) *VerifyAdvertisingRequestDevice {
+	s.Androidid = &v
+	return s
+}
+
+func (s *VerifyAdvertisingRequestDevice) SetAndroidmd5(v string) *VerifyAdvertisingRequestDevice {
+	s.Androidmd5 = &v
+	return s
+}
+
+func (s *VerifyAdvertisingRequestDevice) SetCaid(v string) *VerifyAdvertisingRequestDevice {
+	s.Caid = &v
+	return s
+}
+
+func (s *VerifyAdvertisingRequestDevice) SetCarrier(v string) *VerifyAdvertisingRequestDevice {
+	s.Carrier = &v
+	return s
+}
+
+func (s *VerifyAdvertisingRequestDevice) SetConnectiontype(v int32) *VerifyAdvertisingRequestDevice {
+	s.Connectiontype = &v
+	return s
+}
+
+func (s *VerifyAdvertisingRequestDevice) SetDevicetype(v int32) *VerifyAdvertisingRequestDevice {
+	s.Devicetype = &v
+	return s
+}
+
+func (s *VerifyAdvertisingRequestDevice) SetGeo(v *VerifyAdvertisingRequestDeviceGeo) *VerifyAdvertisingRequestDevice {
+	s.Geo = v
+	return s
+}
+
+func (s *VerifyAdvertisingRequestDevice) SetIdfa(v string) *VerifyAdvertisingRequestDevice {
+	s.Idfa = &v
+	return s
+}
+
+func (s *VerifyAdvertisingRequestDevice) SetImei(v string) *VerifyAdvertisingRequestDevice {
+	s.Imei = &v
+	return s
+}
+
+func (s *VerifyAdvertisingRequestDevice) SetImeimd5(v string) *VerifyAdvertisingRequestDevice {
+	s.Imeimd5 = &v
+	return s
+}
+
+func (s *VerifyAdvertisingRequestDevice) SetIp(v string) *VerifyAdvertisingRequestDevice {
+	s.Ip = &v
+	return s
+}
+
+func (s *VerifyAdvertisingRequestDevice) SetLanguage(v string) *VerifyAdvertisingRequestDevice {
+	s.Language = &v
+	return s
+}
+
+func (s *VerifyAdvertisingRequestDevice) SetMac(v string) *VerifyAdvertisingRequestDevice {
+	s.Mac = &v
+	return s
+}
+
+func (s *VerifyAdvertisingRequestDevice) SetMacmd5(v string) *VerifyAdvertisingRequestDevice {
+	s.Macmd5 = &v
+	return s
+}
+
+func (s *VerifyAdvertisingRequestDevice) SetMake(v string) *VerifyAdvertisingRequestDevice {
+	s.Make = &v
+	return s
+}
+
+func (s *VerifyAdvertisingRequestDevice) SetModel(v string) *VerifyAdvertisingRequestDevice {
+	s.Model = &v
+	return s
+}
+
+func (s *VerifyAdvertisingRequestDevice) SetOaid(v string) *VerifyAdvertisingRequestDevice {
+	s.Oaid = &v
+	return s
+}
+
+func (s *VerifyAdvertisingRequestDevice) SetOs(v string) *VerifyAdvertisingRequestDevice {
+	s.Os = &v
+	return s
+}
+
+func (s *VerifyAdvertisingRequestDevice) SetOsv(v string) *VerifyAdvertisingRequestDevice {
+	s.Osv = &v
+	return s
+}
+
+func (s *VerifyAdvertisingRequestDevice) SetUa(v string) *VerifyAdvertisingRequestDevice {
+	s.Ua = &v
+	return s
+}
+
+func (s *VerifyAdvertisingRequestDevice) SetUtdid(v string) *VerifyAdvertisingRequestDevice {
+	s.Utdid = &v
+	return s
+}
+
+type VerifyAdvertisingRequestDeviceGeo struct {
+	City     *string `json:"City,omitempty" xml:"City,omitempty"`
+	District *string `json:"District,omitempty" xml:"District,omitempty"`
+	// lat
+	Lat *float64 `json:"Lat,omitempty" xml:"Lat,omitempty"`
+	// lon
+	Lon      *float64 `json:"Lon,omitempty" xml:"Lon,omitempty"`
+	Province *string  `json:"Province,omitempty" xml:"Province,omitempty"`
+}
+
+func (s VerifyAdvertisingRequestDeviceGeo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s VerifyAdvertisingRequestDeviceGeo) GoString() string {
+	return s.String()
+}
+
+func (s *VerifyAdvertisingRequestDeviceGeo) SetCity(v string) *VerifyAdvertisingRequestDeviceGeo {
+	s.City = &v
+	return s
+}
+
+func (s *VerifyAdvertisingRequestDeviceGeo) SetDistrict(v string) *VerifyAdvertisingRequestDeviceGeo {
+	s.District = &v
+	return s
+}
+
+func (s *VerifyAdvertisingRequestDeviceGeo) SetLat(v float64) *VerifyAdvertisingRequestDeviceGeo {
+	s.Lat = &v
+	return s
+}
+
+func (s *VerifyAdvertisingRequestDeviceGeo) SetLon(v float64) *VerifyAdvertisingRequestDeviceGeo {
+	s.Lon = &v
+	return s
+}
+
+func (s *VerifyAdvertisingRequestDeviceGeo) SetProvince(v string) *VerifyAdvertisingRequestDeviceGeo {
+	s.Province = &v
+	return s
+}
+
+type VerifyAdvertisingRequestImp struct {
+	// id
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// tagid
+	Tagid *string `json:"Tagid,omitempty" xml:"Tagid,omitempty"`
+}
+
+func (s VerifyAdvertisingRequestImp) String() string {
+	return tea.Prettify(s)
+}
+
+func (s VerifyAdvertisingRequestImp) GoString() string {
+	return s.String()
+}
+
+func (s *VerifyAdvertisingRequestImp) SetId(v string) *VerifyAdvertisingRequestImp {
+	s.Id = &v
+	return s
+}
+
+func (s *VerifyAdvertisingRequestImp) SetTagid(v string) *VerifyAdvertisingRequestImp {
+	s.Tagid = &v
+	return s
+}
+
+type VerifyAdvertisingRequestUser struct {
+	// uid
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// uidtype
+	Usertype *string `json:"Usertype,omitempty" xml:"Usertype,omitempty"`
+}
+
+func (s VerifyAdvertisingRequestUser) String() string {
+	return tea.Prettify(s)
+}
+
+func (s VerifyAdvertisingRequestUser) GoString() string {
+	return s.String()
+}
+
+func (s *VerifyAdvertisingRequestUser) SetId(v string) *VerifyAdvertisingRequestUser {
+	s.Id = &v
+	return s
+}
+
+func (s *VerifyAdvertisingRequestUser) SetUsertype(v string) *VerifyAdvertisingRequestUser {
+	s.Usertype = &v
+	return s
+}
+
+type VerifyAdvertisingRequestVerifyad struct {
+	Id   *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	Seat *int64 `json:"Seat,omitempty" xml:"Seat,omitempty"`
+}
+
+func (s VerifyAdvertisingRequestVerifyad) String() string {
+	return tea.Prettify(s)
+}
+
+func (s VerifyAdvertisingRequestVerifyad) GoString() string {
+	return s.String()
+}
+
+func (s *VerifyAdvertisingRequestVerifyad) SetId(v int64) *VerifyAdvertisingRequestVerifyad {
+	s.Id = &v
+	return s
+}
+
+func (s *VerifyAdvertisingRequestVerifyad) SetSeat(v int64) *VerifyAdvertisingRequestVerifyad {
+	s.Seat = &v
+	return s
+}
+
+type VerifyAdvertisingShrinkRequest struct {
+	// app
+	AppShrink *string `json:"App,omitempty" xml:"App,omitempty"`
+	Dealtype  *int32  `json:"Dealtype,omitempty" xml:"Dealtype,omitempty"`
+	// device
+	DeviceShrink *string `json:"Device,omitempty" xml:"Device,omitempty"`
+	// ext
+	ExtShrink *string `json:"Ext,omitempty" xml:"Ext,omitempty"`
+	// id
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// imp
+	ImpShrink *string `json:"Imp,omitempty" xml:"Imp,omitempty"`
+	// test
+	Test *int32 `json:"Test,omitempty" xml:"Test,omitempty"`
+	// user
+	UserShrink     *string `json:"User,omitempty" xml:"User,omitempty"`
+	VerifyadShrink *string `json:"Verifyad,omitempty" xml:"Verifyad,omitempty"`
+}
+
+func (s VerifyAdvertisingShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s VerifyAdvertisingShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *VerifyAdvertisingShrinkRequest) SetAppShrink(v string) *VerifyAdvertisingShrinkRequest {
+	s.AppShrink = &v
+	return s
+}
+
+func (s *VerifyAdvertisingShrinkRequest) SetDealtype(v int32) *VerifyAdvertisingShrinkRequest {
+	s.Dealtype = &v
+	return s
+}
+
+func (s *VerifyAdvertisingShrinkRequest) SetDeviceShrink(v string) *VerifyAdvertisingShrinkRequest {
+	s.DeviceShrink = &v
+	return s
+}
+
+func (s *VerifyAdvertisingShrinkRequest) SetExtShrink(v string) *VerifyAdvertisingShrinkRequest {
+	s.ExtShrink = &v
+	return s
+}
+
+func (s *VerifyAdvertisingShrinkRequest) SetId(v string) *VerifyAdvertisingShrinkRequest {
+	s.Id = &v
+	return s
+}
+
+func (s *VerifyAdvertisingShrinkRequest) SetImpShrink(v string) *VerifyAdvertisingShrinkRequest {
+	s.ImpShrink = &v
+	return s
+}
+
+func (s *VerifyAdvertisingShrinkRequest) SetTest(v int32) *VerifyAdvertisingShrinkRequest {
+	s.Test = &v
+	return s
+}
+
+func (s *VerifyAdvertisingShrinkRequest) SetUserShrink(v string) *VerifyAdvertisingShrinkRequest {
+	s.UserShrink = &v
+	return s
+}
+
+func (s *VerifyAdvertisingShrinkRequest) SetVerifyadShrink(v string) *VerifyAdvertisingShrinkRequest {
+	s.VerifyadShrink = &v
+	return s
+}
+
+type VerifyAdvertisingResponseBody struct {
+	// errorCode
+	Errorcode *string `json:"Errorcode,omitempty" xml:"Errorcode,omitempty"`
+	// errorMsg
+	Errormsg *string `json:"Errormsg,omitempty" xml:"Errormsg,omitempty"`
+	// ext
+	Ext map[string]*string `json:"Ext,omitempty" xml:"Ext,omitempty"`
+	// header
+	Header    *VerifyAdvertisingResponseBodyHeader `json:"Header,omitempty" xml:"Header,omitempty" type:"Struct"`
+	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *VerifyAdvertisingResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	// success
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s VerifyAdvertisingResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s VerifyAdvertisingResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *VerifyAdvertisingResponseBody) SetErrorcode(v string) *VerifyAdvertisingResponseBody {
+	s.Errorcode = &v
+	return s
+}
+
+func (s *VerifyAdvertisingResponseBody) SetErrormsg(v string) *VerifyAdvertisingResponseBody {
+	s.Errormsg = &v
+	return s
+}
+
+func (s *VerifyAdvertisingResponseBody) SetExt(v map[string]*string) *VerifyAdvertisingResponseBody {
+	s.Ext = v
+	return s
+}
+
+func (s *VerifyAdvertisingResponseBody) SetHeader(v *VerifyAdvertisingResponseBodyHeader) *VerifyAdvertisingResponseBody {
+	s.Header = v
+	return s
+}
+
+func (s *VerifyAdvertisingResponseBody) SetRequestId(v string) *VerifyAdvertisingResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *VerifyAdvertisingResponseBody) SetResult(v *VerifyAdvertisingResponseBodyResult) *VerifyAdvertisingResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *VerifyAdvertisingResponseBody) SetSuccess(v bool) *VerifyAdvertisingResponseBody {
+	s.Success = &v
+	return s
+}
+
+type VerifyAdvertisingResponseBodyHeader struct {
+	// costTime
+	CostTime *int64 `json:"CostTime,omitempty" xml:"CostTime,omitempty"`
+	// rpcId
+	RpcId *string `json:"RpcId,omitempty" xml:"RpcId,omitempty"`
+	// traceId
+	TraceId *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
+	// version
+	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
+}
+
+func (s VerifyAdvertisingResponseBodyHeader) String() string {
+	return tea.Prettify(s)
+}
+
+func (s VerifyAdvertisingResponseBodyHeader) GoString() string {
+	return s.String()
+}
+
+func (s *VerifyAdvertisingResponseBodyHeader) SetCostTime(v int64) *VerifyAdvertisingResponseBodyHeader {
+	s.CostTime = &v
+	return s
+}
+
+func (s *VerifyAdvertisingResponseBodyHeader) SetRpcId(v string) *VerifyAdvertisingResponseBodyHeader {
+	s.RpcId = &v
+	return s
+}
+
+func (s *VerifyAdvertisingResponseBodyHeader) SetTraceId(v string) *VerifyAdvertisingResponseBodyHeader {
+	s.TraceId = &v
+	return s
+}
+
+func (s *VerifyAdvertisingResponseBodyHeader) SetVersion(v string) *VerifyAdvertisingResponseBodyHeader {
+	s.Version = &v
+	return s
+}
+
+type VerifyAdvertisingResponseBodyResult struct {
+	Bidid *string `json:"Bidid,omitempty" xml:"Bidid,omitempty"`
+	// id
+	Id      *string                                       `json:"Id,omitempty" xml:"Id,omitempty"`
+	Seatbid []*VerifyAdvertisingResponseBodyResultSeatbid `json:"Seatbid,omitempty" xml:"Seatbid,omitempty" type:"Repeated"`
+}
+
+func (s VerifyAdvertisingResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s VerifyAdvertisingResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *VerifyAdvertisingResponseBodyResult) SetBidid(v string) *VerifyAdvertisingResponseBodyResult {
+	s.Bidid = &v
+	return s
+}
+
+func (s *VerifyAdvertisingResponseBodyResult) SetId(v string) *VerifyAdvertisingResponseBodyResult {
+	s.Id = &v
+	return s
+}
+
+func (s *VerifyAdvertisingResponseBodyResult) SetSeatbid(v []*VerifyAdvertisingResponseBodyResultSeatbid) *VerifyAdvertisingResponseBodyResult {
+	s.Seatbid = v
+	return s
+}
+
+type VerifyAdvertisingResponseBodyResultSeatbid struct {
+	// bid
+	Bid []*VerifyAdvertisingResponseBodyResultSeatbidBid `json:"Bid,omitempty" xml:"Bid,omitempty" type:"Repeated"`
+}
+
+func (s VerifyAdvertisingResponseBodyResultSeatbid) String() string {
+	return tea.Prettify(s)
+}
+
+func (s VerifyAdvertisingResponseBodyResultSeatbid) GoString() string {
+	return s.String()
+}
+
+func (s *VerifyAdvertisingResponseBodyResultSeatbid) SetBid(v []*VerifyAdvertisingResponseBodyResultSeatbidBid) *VerifyAdvertisingResponseBodyResultSeatbid {
+	s.Bid = v
+	return s
+}
+
+type VerifyAdvertisingResponseBodyResultSeatbidBid struct {
+	Ads []*VerifyAdvertisingResponseBodyResultSeatbidBidAds `json:"Ads,omitempty" xml:"Ads,omitempty" type:"Repeated"`
+	// impId
+	Impid *string `json:"Impid,omitempty" xml:"Impid,omitempty"`
+}
+
+func (s VerifyAdvertisingResponseBodyResultSeatbidBid) String() string {
+	return tea.Prettify(s)
+}
+
+func (s VerifyAdvertisingResponseBodyResultSeatbidBid) GoString() string {
+	return s.String()
+}
+
+func (s *VerifyAdvertisingResponseBodyResultSeatbidBid) SetAds(v []*VerifyAdvertisingResponseBodyResultSeatbidBidAds) *VerifyAdvertisingResponseBodyResultSeatbidBid {
+	s.Ads = v
+	return s
+}
+
+func (s *VerifyAdvertisingResponseBodyResultSeatbidBid) SetImpid(v string) *VerifyAdvertisingResponseBodyResultSeatbidBid {
+	s.Impid = &v
+	return s
+}
+
+type VerifyAdvertisingResponseBodyResultSeatbidBidAds struct {
+	// crid
+	Crid   *string                                                   `json:"Crid,omitempty" xml:"Crid,omitempty"`
+	Crurl  *string                                                   `json:"Crurl,omitempty" xml:"Crurl,omitempty"`
+	Icon   *VerifyAdvertisingResponseBodyResultSeatbidBidAdsIcon     `json:"Icon,omitempty" xml:"Icon,omitempty" type:"Struct"`
+	Id     *string                                                   `json:"Id,omitempty" xml:"Id,omitempty"`
+	Images []*VerifyAdvertisingResponseBodyResultSeatbidBidAdsImages `json:"Images,omitempty" xml:"Images,omitempty" type:"Repeated"`
+	// Interacttype
+	Interacttype  *int32    `json:"Interacttype,omitempty" xml:"Interacttype,omitempty"`
+	Labeltype     *string   `json:"Labeltype,omitempty" xml:"Labeltype,omitempty"`
+	Landingurls   []*string `json:"Landingurls,omitempty" xml:"Landingurls,omitempty" type:"Repeated"`
+	Marketingtype *string   `json:"Marketingtype,omitempty" xml:"Marketingtype,omitempty"`
+	Objective     *string   `json:"Objective,omitempty" xml:"Objective,omitempty"`
+	Price         *string   `json:"Price,omitempty" xml:"Price,omitempty"`
+	// seat
+	Seat     *string                                                   `json:"Seat,omitempty" xml:"Seat,omitempty"`
+	Style    *string                                                   `json:"Style,omitempty" xml:"Style,omitempty"`
+	Title    *string                                                   `json:"Title,omitempty" xml:"Title,omitempty"`
+	Trackers *VerifyAdvertisingResponseBodyResultSeatbidBidAdsTrackers `json:"Trackers,omitempty" xml:"Trackers,omitempty" type:"Struct"`
+	Type     *string                                                   `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s VerifyAdvertisingResponseBodyResultSeatbidBidAds) String() string {
+	return tea.Prettify(s)
+}
+
+func (s VerifyAdvertisingResponseBodyResultSeatbidBidAds) GoString() string {
+	return s.String()
+}
+
+func (s *VerifyAdvertisingResponseBodyResultSeatbidBidAds) SetCrid(v string) *VerifyAdvertisingResponseBodyResultSeatbidBidAds {
+	s.Crid = &v
+	return s
+}
+
+func (s *VerifyAdvertisingResponseBodyResultSeatbidBidAds) SetCrurl(v string) *VerifyAdvertisingResponseBodyResultSeatbidBidAds {
+	s.Crurl = &v
+	return s
+}
+
+func (s *VerifyAdvertisingResponseBodyResultSeatbidBidAds) SetIcon(v *VerifyAdvertisingResponseBodyResultSeatbidBidAdsIcon) *VerifyAdvertisingResponseBodyResultSeatbidBidAds {
+	s.Icon = v
+	return s
+}
+
+func (s *VerifyAdvertisingResponseBodyResultSeatbidBidAds) SetId(v string) *VerifyAdvertisingResponseBodyResultSeatbidBidAds {
+	s.Id = &v
+	return s
+}
+
+func (s *VerifyAdvertisingResponseBodyResultSeatbidBidAds) SetImages(v []*VerifyAdvertisingResponseBodyResultSeatbidBidAdsImages) *VerifyAdvertisingResponseBodyResultSeatbidBidAds {
+	s.Images = v
+	return s
+}
+
+func (s *VerifyAdvertisingResponseBodyResultSeatbidBidAds) SetInteracttype(v int32) *VerifyAdvertisingResponseBodyResultSeatbidBidAds {
+	s.Interacttype = &v
+	return s
+}
+
+func (s *VerifyAdvertisingResponseBodyResultSeatbidBidAds) SetLabeltype(v string) *VerifyAdvertisingResponseBodyResultSeatbidBidAds {
+	s.Labeltype = &v
+	return s
+}
+
+func (s *VerifyAdvertisingResponseBodyResultSeatbidBidAds) SetLandingurls(v []*string) *VerifyAdvertisingResponseBodyResultSeatbidBidAds {
+	s.Landingurls = v
+	return s
+}
+
+func (s *VerifyAdvertisingResponseBodyResultSeatbidBidAds) SetMarketingtype(v string) *VerifyAdvertisingResponseBodyResultSeatbidBidAds {
+	s.Marketingtype = &v
+	return s
+}
+
+func (s *VerifyAdvertisingResponseBodyResultSeatbidBidAds) SetObjective(v string) *VerifyAdvertisingResponseBodyResultSeatbidBidAds {
+	s.Objective = &v
+	return s
+}
+
+func (s *VerifyAdvertisingResponseBodyResultSeatbidBidAds) SetPrice(v string) *VerifyAdvertisingResponseBodyResultSeatbidBidAds {
+	s.Price = &v
+	return s
+}
+
+func (s *VerifyAdvertisingResponseBodyResultSeatbidBidAds) SetSeat(v string) *VerifyAdvertisingResponseBodyResultSeatbidBidAds {
+	s.Seat = &v
+	return s
+}
+
+func (s *VerifyAdvertisingResponseBodyResultSeatbidBidAds) SetStyle(v string) *VerifyAdvertisingResponseBodyResultSeatbidBidAds {
+	s.Style = &v
+	return s
+}
+
+func (s *VerifyAdvertisingResponseBodyResultSeatbidBidAds) SetTitle(v string) *VerifyAdvertisingResponseBodyResultSeatbidBidAds {
+	s.Title = &v
+	return s
+}
+
+func (s *VerifyAdvertisingResponseBodyResultSeatbidBidAds) SetTrackers(v *VerifyAdvertisingResponseBodyResultSeatbidBidAdsTrackers) *VerifyAdvertisingResponseBodyResultSeatbidBidAds {
+	s.Trackers = v
+	return s
+}
+
+func (s *VerifyAdvertisingResponseBodyResultSeatbidBidAds) SetType(v string) *VerifyAdvertisingResponseBodyResultSeatbidBidAds {
+	s.Type = &v
+	return s
+}
+
+type VerifyAdvertisingResponseBodyResultSeatbidBidAdsIcon struct {
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+}
+
+func (s VerifyAdvertisingResponseBodyResultSeatbidBidAdsIcon) String() string {
+	return tea.Prettify(s)
+}
+
+func (s VerifyAdvertisingResponseBodyResultSeatbidBidAdsIcon) GoString() string {
+	return s.String()
+}
+
+func (s *VerifyAdvertisingResponseBodyResultSeatbidBidAdsIcon) SetUrl(v string) *VerifyAdvertisingResponseBodyResultSeatbidBidAdsIcon {
+	s.Url = &v
+	return s
+}
+
+type VerifyAdvertisingResponseBodyResultSeatbidBidAdsImages struct {
+	Desc   *string `json:"Desc,omitempty" xml:"Desc,omitempty"`
+	Format *string `json:"Format,omitempty" xml:"Format,omitempty"`
+	Url    *string `json:"Url,omitempty" xml:"Url,omitempty"`
+}
+
+func (s VerifyAdvertisingResponseBodyResultSeatbidBidAdsImages) String() string {
+	return tea.Prettify(s)
+}
+
+func (s VerifyAdvertisingResponseBodyResultSeatbidBidAdsImages) GoString() string {
+	return s.String()
+}
+
+func (s *VerifyAdvertisingResponseBodyResultSeatbidBidAdsImages) SetDesc(v string) *VerifyAdvertisingResponseBodyResultSeatbidBidAdsImages {
+	s.Desc = &v
+	return s
+}
+
+func (s *VerifyAdvertisingResponseBodyResultSeatbidBidAdsImages) SetFormat(v string) *VerifyAdvertisingResponseBodyResultSeatbidBidAdsImages {
+	s.Format = &v
+	return s
+}
+
+func (s *VerifyAdvertisingResponseBodyResultSeatbidBidAdsImages) SetUrl(v string) *VerifyAdvertisingResponseBodyResultSeatbidBidAdsImages {
+	s.Url = &v
+	return s
+}
+
+type VerifyAdvertisingResponseBodyResultSeatbidBidAdsTrackers struct {
+	Imps []*string `json:"Imps,omitempty" xml:"Imps,omitempty" type:"Repeated"`
+}
+
+func (s VerifyAdvertisingResponseBodyResultSeatbidBidAdsTrackers) String() string {
+	return tea.Prettify(s)
+}
+
+func (s VerifyAdvertisingResponseBodyResultSeatbidBidAdsTrackers) GoString() string {
+	return s.String()
+}
+
+func (s *VerifyAdvertisingResponseBodyResultSeatbidBidAdsTrackers) SetImps(v []*string) *VerifyAdvertisingResponseBodyResultSeatbidBidAdsTrackers {
+	s.Imps = v
+	return s
+}
+
+type VerifyAdvertisingResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *VerifyAdvertisingResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s VerifyAdvertisingResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s VerifyAdvertisingResponse) GoString() string {
+	return s.String()
+}
+
+func (s *VerifyAdvertisingResponse) SetHeaders(v map[string]*string) *VerifyAdvertisingResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *VerifyAdvertisingResponse) SetStatusCode(v int32) *VerifyAdvertisingResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *VerifyAdvertisingResponse) SetBody(v *VerifyAdvertisingResponseBody) *VerifyAdvertisingResponse {
 	s.Body = v
 	return s
 }
@@ -4007,12 +4858,12 @@ func (client *Client) ListAdvertisingWithOptions(tmpReq *ListAdvertisingRequest,
 	}
 	request := &ListAdvertisingShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.App))) {
-		request.AppShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.App), tea.String("App"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.App)) {
+		request.AppShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.App, tea.String("App"), tea.String("json"))
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.Device))) {
-		request.DeviceShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.Device), tea.String("Device"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.Device)) {
+		request.DeviceShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Device, tea.String("Device"), tea.String("json"))
 	}
 
 	if !tea.BoolValue(util.IsUnset(tmpReq.Ext)) {
@@ -4023,8 +4874,8 @@ func (client *Client) ListAdvertisingWithOptions(tmpReq *ListAdvertisingRequest,
 		request.ImpShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Imp, tea.String("Imp"), tea.String("json"))
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.User))) {
-		request.UserShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.User), tea.String("User"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.User)) {
+		request.UserShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.User, tea.String("User"), tea.String("json"))
 	}
 
 	query := openapiutil.Query(util.ToMap(request))
@@ -4347,6 +5198,72 @@ func (client *Client) UpdateAdxCreativeContent(request *UpdateAdxCreativeContent
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateAdxCreativeContentResponse{}
 	_body, _err := client.UpdateAdxCreativeContentWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) VerifyAdvertisingWithOptions(tmpReq *VerifyAdvertisingRequest, runtime *util.RuntimeOptions) (_result *VerifyAdvertisingResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &VerifyAdvertisingShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.App)) {
+		request.AppShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.App, tea.String("App"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.Device)) {
+		request.DeviceShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Device, tea.String("Device"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.Ext)) {
+		request.ExtShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Ext, tea.String("Ext"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.Imp)) {
+		request.ImpShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Imp, tea.String("Imp"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.User)) {
+		request.UserShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.User, tea.String("User"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.Verifyad)) {
+		request.VerifyadShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Verifyad, tea.String("Verifyad"), tea.String("json"))
+	}
+
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("VerifyAdvertising"),
+		Version:     tea.String("2022-07-04"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &VerifyAdvertisingResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) VerifyAdvertising(request *VerifyAdvertisingRequest) (_result *VerifyAdvertisingResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &VerifyAdvertisingResponse{}
+	_body, _err := client.VerifyAdvertisingWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
