@@ -1250,8 +1250,12 @@ func (s *CreateApplicationScalingRuleRequest) SetScalingRuleType(v string) *Crea
 }
 
 type CreateApplicationScalingRuleResponseBody struct {
+	Code      *string                                       `json:"Code,omitempty" xml:"Code,omitempty"`
 	Data      *CreateApplicationScalingRuleResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	ErrorCode *string                                       `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	Message   *string                                       `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                                         `json:"Success,omitempty" xml:"Success,omitempty"`
 	TraceId   *string                                       `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
 }
 
@@ -1263,13 +1267,33 @@ func (s CreateApplicationScalingRuleResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *CreateApplicationScalingRuleResponseBody) SetCode(v string) *CreateApplicationScalingRuleResponseBody {
+	s.Code = &v
+	return s
+}
+
 func (s *CreateApplicationScalingRuleResponseBody) SetData(v *CreateApplicationScalingRuleResponseBodyData) *CreateApplicationScalingRuleResponseBody {
 	s.Data = v
 	return s
 }
 
+func (s *CreateApplicationScalingRuleResponseBody) SetErrorCode(v string) *CreateApplicationScalingRuleResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *CreateApplicationScalingRuleResponseBody) SetMessage(v string) *CreateApplicationScalingRuleResponseBody {
+	s.Message = &v
+	return s
+}
+
 func (s *CreateApplicationScalingRuleResponseBody) SetRequestId(v string) *CreateApplicationScalingRuleResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *CreateApplicationScalingRuleResponseBody) SetSuccess(v bool) *CreateApplicationScalingRuleResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -1934,9 +1958,9 @@ func (s *CreateIngressResponse) SetBody(v *CreateIngressResponseBody) *CreateIng
 
 type CreateJobRequest struct {
 	AcrAssumeRoleArn              *string `json:"AcrAssumeRoleArn,omitempty" xml:"AcrAssumeRoleArn,omitempty"`
+	AcrInstanceId                 *string `json:"AcrInstanceId,omitempty" xml:"AcrInstanceId,omitempty"`
 	AppDescription                *string `json:"AppDescription,omitempty" xml:"AppDescription,omitempty"`
 	AppName                       *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	AssociateEip                  *bool   `json:"AssociateEip,omitempty" xml:"AssociateEip,omitempty"`
 	AutoConfig                    *bool   `json:"AutoConfig,omitempty" xml:"AutoConfig,omitempty"`
 	BackoffLimit                  *int64  `json:"BackoffLimit,omitempty" xml:"BackoffLimit,omitempty"`
 	Command                       *string `json:"Command,omitempty" xml:"Command,omitempty"`
@@ -1945,15 +1969,14 @@ type CreateJobRequest struct {
 	ConfigMapMountDesc            *string `json:"ConfigMapMountDesc,omitempty" xml:"ConfigMapMountDesc,omitempty"`
 	Cpu                           *int32  `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
 	CustomHostAlias               *string `json:"CustomHostAlias,omitempty" xml:"CustomHostAlias,omitempty"`
-	Deploy                        *bool   `json:"Deploy,omitempty" xml:"Deploy,omitempty"`
 	EdasContainerVersion          *string `json:"EdasContainerVersion,omitempty" xml:"EdasContainerVersion,omitempty"`
+	EnableImageAccl               *bool   `json:"EnableImageAccl,omitempty" xml:"EnableImageAccl,omitempty"`
 	Envs                          *string `json:"Envs,omitempty" xml:"Envs,omitempty"`
 	ImagePullSecrets              *string `json:"ImagePullSecrets,omitempty" xml:"ImagePullSecrets,omitempty"`
 	ImageUrl                      *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
 	JarStartArgs                  *string `json:"JarStartArgs,omitempty" xml:"JarStartArgs,omitempty"`
 	JarStartOptions               *string `json:"JarStartOptions,omitempty" xml:"JarStartOptions,omitempty"`
 	Jdk                           *string `json:"Jdk,omitempty" xml:"Jdk,omitempty"`
-	Liveness                      *string `json:"Liveness,omitempty" xml:"Liveness,omitempty"`
 	Memory                        *int32  `json:"Memory,omitempty" xml:"Memory,omitempty"`
 	MountDesc                     *string `json:"MountDesc,omitempty" xml:"MountDesc,omitempty"`
 	MountHost                     *string `json:"MountHost,omitempty" xml:"MountHost,omitempty"`
@@ -1965,7 +1988,6 @@ type CreateJobRequest struct {
 	PackageType                   *string `json:"PackageType,omitempty" xml:"PackageType,omitempty"`
 	PackageUrl                    *string `json:"PackageUrl,omitempty" xml:"PackageUrl,omitempty"`
 	PackageVersion                *string `json:"PackageVersion,omitempty" xml:"PackageVersion,omitempty"`
-	PhpArmsConfigLocation         *string `json:"PhpArmsConfigLocation,omitempty" xml:"PhpArmsConfigLocation,omitempty"`
 	PhpConfig                     *string `json:"PhpConfig,omitempty" xml:"PhpConfig,omitempty"`
 	PhpConfigLocation             *string `json:"PhpConfigLocation,omitempty" xml:"PhpConfigLocation,omitempty"`
 	PostStart                     *string `json:"PostStart,omitempty" xml:"PostStart,omitempty"`
@@ -1973,7 +1995,6 @@ type CreateJobRequest struct {
 	ProgrammingLanguage           *string `json:"ProgrammingLanguage,omitempty" xml:"ProgrammingLanguage,omitempty"`
 	Python                        *string `json:"Python,omitempty" xml:"Python,omitempty"`
 	PythonModules                 *string `json:"PythonModules,omitempty" xml:"PythonModules,omitempty"`
-	Readiness                     *string `json:"Readiness,omitempty" xml:"Readiness,omitempty"`
 	RefAppId                      *string `json:"RefAppId,omitempty" xml:"RefAppId,omitempty"`
 	Replicas                      *int32  `json:"Replicas,omitempty" xml:"Replicas,omitempty"`
 	SecurityGroupId               *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
@@ -2005,6 +2026,11 @@ func (s *CreateJobRequest) SetAcrAssumeRoleArn(v string) *CreateJobRequest {
 	return s
 }
 
+func (s *CreateJobRequest) SetAcrInstanceId(v string) *CreateJobRequest {
+	s.AcrInstanceId = &v
+	return s
+}
+
 func (s *CreateJobRequest) SetAppDescription(v string) *CreateJobRequest {
 	s.AppDescription = &v
 	return s
@@ -2012,11 +2038,6 @@ func (s *CreateJobRequest) SetAppDescription(v string) *CreateJobRequest {
 
 func (s *CreateJobRequest) SetAppName(v string) *CreateJobRequest {
 	s.AppName = &v
-	return s
-}
-
-func (s *CreateJobRequest) SetAssociateEip(v bool) *CreateJobRequest {
-	s.AssociateEip = &v
 	return s
 }
 
@@ -2060,13 +2081,13 @@ func (s *CreateJobRequest) SetCustomHostAlias(v string) *CreateJobRequest {
 	return s
 }
 
-func (s *CreateJobRequest) SetDeploy(v bool) *CreateJobRequest {
-	s.Deploy = &v
+func (s *CreateJobRequest) SetEdasContainerVersion(v string) *CreateJobRequest {
+	s.EdasContainerVersion = &v
 	return s
 }
 
-func (s *CreateJobRequest) SetEdasContainerVersion(v string) *CreateJobRequest {
-	s.EdasContainerVersion = &v
+func (s *CreateJobRequest) SetEnableImageAccl(v bool) *CreateJobRequest {
+	s.EnableImageAccl = &v
 	return s
 }
 
@@ -2097,11 +2118,6 @@ func (s *CreateJobRequest) SetJarStartOptions(v string) *CreateJobRequest {
 
 func (s *CreateJobRequest) SetJdk(v string) *CreateJobRequest {
 	s.Jdk = &v
-	return s
-}
-
-func (s *CreateJobRequest) SetLiveness(v string) *CreateJobRequest {
-	s.Liveness = &v
 	return s
 }
 
@@ -2160,11 +2176,6 @@ func (s *CreateJobRequest) SetPackageVersion(v string) *CreateJobRequest {
 	return s
 }
 
-func (s *CreateJobRequest) SetPhpArmsConfigLocation(v string) *CreateJobRequest {
-	s.PhpArmsConfigLocation = &v
-	return s
-}
-
 func (s *CreateJobRequest) SetPhpConfig(v string) *CreateJobRequest {
 	s.PhpConfig = &v
 	return s
@@ -2197,11 +2208,6 @@ func (s *CreateJobRequest) SetPython(v string) *CreateJobRequest {
 
 func (s *CreateJobRequest) SetPythonModules(v string) *CreateJobRequest {
 	s.PythonModules = &v
-	return s
-}
-
-func (s *CreateJobRequest) SetReadiness(v string) *CreateJobRequest {
-	s.Readiness = &v
 	return s
 }
 
@@ -2391,6 +2397,7 @@ func (s *CreateJobResponse) SetBody(v *CreateJobResponseBody) *CreateJobResponse
 }
 
 type CreateNamespaceRequest struct {
+	NameSpaceShortId     *string `json:"NameSpaceShortId,omitempty" xml:"NameSpaceShortId,omitempty"`
 	NamespaceDescription *string `json:"NamespaceDescription,omitempty" xml:"NamespaceDescription,omitempty"`
 	NamespaceId          *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
 	NamespaceName        *string `json:"NamespaceName,omitempty" xml:"NamespaceName,omitempty"`
@@ -2402,6 +2409,11 @@ func (s CreateNamespaceRequest) String() string {
 
 func (s CreateNamespaceRequest) GoString() string {
 	return s.String()
+}
+
+func (s *CreateNamespaceRequest) SetNameSpaceShortId(v string) *CreateNamespaceRequest {
+	s.NameSpaceShortId = &v
+	return s
 }
 
 func (s *CreateNamespaceRequest) SetNamespaceDescription(v string) *CreateNamespaceRequest {
@@ -2473,6 +2485,7 @@ func (s *CreateNamespaceResponseBody) SetTraceId(v string) *CreateNamespaceRespo
 }
 
 type CreateNamespaceResponseBodyData struct {
+	NameSpaceShortId     *string `json:"NameSpaceShortId,omitempty" xml:"NameSpaceShortId,omitempty"`
 	NamespaceDescription *string `json:"NamespaceDescription,omitempty" xml:"NamespaceDescription,omitempty"`
 	NamespaceId          *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
 	NamespaceName        *string `json:"NamespaceName,omitempty" xml:"NamespaceName,omitempty"`
@@ -2485,6 +2498,11 @@ func (s CreateNamespaceResponseBodyData) String() string {
 
 func (s CreateNamespaceResponseBodyData) GoString() string {
 	return s.String()
+}
+
+func (s *CreateNamespaceResponseBodyData) SetNameSpaceShortId(v string) *CreateNamespaceResponseBodyData {
+	s.NameSpaceShortId = &v
+	return s
 }
 
 func (s *CreateNamespaceResponseBodyData) SetNamespaceDescription(v string) *CreateNamespaceResponseBodyData {
@@ -2810,7 +2828,11 @@ func (s *DeleteApplicationScalingRuleRequest) SetScalingRuleName(v string) *Dele
 }
 
 type DeleteApplicationScalingRuleResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 	TraceId   *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
 }
 
@@ -2822,8 +2844,28 @@ func (s DeleteApplicationScalingRuleResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *DeleteApplicationScalingRuleResponseBody) SetCode(v string) *DeleteApplicationScalingRuleResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DeleteApplicationScalingRuleResponseBody) SetErrorCode(v string) *DeleteApplicationScalingRuleResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *DeleteApplicationScalingRuleResponseBody) SetMessage(v string) *DeleteApplicationScalingRuleResponseBody {
+	s.Message = &v
+	return s
+}
+
 func (s *DeleteApplicationScalingRuleResponseBody) SetRequestId(v string) *DeleteApplicationScalingRuleResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteApplicationScalingRuleResponseBody) SetSuccess(v bool) *DeleteApplicationScalingRuleResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -3414,7 +3456,8 @@ func (s *DeleteJobResponse) SetBody(v *DeleteJobResponseBody) *DeleteJobResponse
 }
 
 type DeleteNamespaceRequest struct {
-	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+	NameSpaceShortId *string `json:"NameSpaceShortId,omitempty" xml:"NameSpaceShortId,omitempty"`
+	NamespaceId      *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
 }
 
 func (s DeleteNamespaceRequest) String() string {
@@ -3423,6 +3466,11 @@ func (s DeleteNamespaceRequest) String() string {
 
 func (s DeleteNamespaceRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DeleteNamespaceRequest) SetNameSpaceShortId(v string) *DeleteNamespaceRequest {
+	s.NameSpaceShortId = &v
+	return s
 }
 
 func (s *DeleteNamespaceRequest) SetNamespaceId(v string) *DeleteNamespaceRequest {
@@ -3640,6 +3688,7 @@ type DeployApplicationRequest struct {
 	CommandArgs                      *string `json:"CommandArgs,omitempty" xml:"CommandArgs,omitempty"`
 	ConfigMapMountDesc               *string `json:"ConfigMapMountDesc,omitempty" xml:"ConfigMapMountDesc,omitempty"`
 	CustomHostAlias                  *string `json:"CustomHostAlias,omitempty" xml:"CustomHostAlias,omitempty"`
+	Deploy                           *string `json:"Deploy,omitempty" xml:"Deploy,omitempty"`
 	EdasContainerVersion             *string `json:"EdasContainerVersion,omitempty" xml:"EdasContainerVersion,omitempty"`
 	EnableAhas                       *string `json:"EnableAhas,omitempty" xml:"EnableAhas,omitempty"`
 	EnableGreyTagRoute               *bool   `json:"EnableGreyTagRoute,omitempty" xml:"EnableGreyTagRoute,omitempty"`
@@ -3661,6 +3710,7 @@ type DeployApplicationRequest struct {
 	OssAkId                          *string `json:"OssAkId,omitempty" xml:"OssAkId,omitempty"`
 	OssAkSecret                      *string `json:"OssAkSecret,omitempty" xml:"OssAkSecret,omitempty"`
 	OssMountDescs                    *string `json:"OssMountDescs,omitempty" xml:"OssMountDescs,omitempty"`
+	PackageType                      *string `json:"PackageType,omitempty" xml:"PackageType,omitempty"`
 	PackageUrl                       *string `json:"PackageUrl,omitempty" xml:"PackageUrl,omitempty"`
 	PackageVersion                   *string `json:"PackageVersion,omitempty" xml:"PackageVersion,omitempty"`
 	PhpArmsConfigLocation            *string `json:"PhpArmsConfigLocation,omitempty" xml:"PhpArmsConfigLocation,omitempty"`
@@ -3741,6 +3791,11 @@ func (s *DeployApplicationRequest) SetConfigMapMountDesc(v string) *DeployApplic
 
 func (s *DeployApplicationRequest) SetCustomHostAlias(v string) *DeployApplicationRequest {
 	s.CustomHostAlias = &v
+	return s
+}
+
+func (s *DeployApplicationRequest) SetDeploy(v string) *DeployApplicationRequest {
+	s.Deploy = &v
 	return s
 }
 
@@ -3846,6 +3901,11 @@ func (s *DeployApplicationRequest) SetOssAkSecret(v string) *DeployApplicationRe
 
 func (s *DeployApplicationRequest) SetOssMountDescs(v string) *DeployApplicationRequest {
 	s.OssMountDescs = &v
+	return s
+}
+
+func (s *DeployApplicationRequest) SetPackageType(v string) *DeployApplicationRequest {
+	s.PackageType = &v
 	return s
 }
 
@@ -4415,68 +4475,71 @@ func (s *DescribeApplicationConfigResponseBody) SetTraceId(v string) *DescribeAp
 }
 
 type DescribeApplicationConfigResponseBodyData struct {
-	AcrAssumeRoleArn              *string                                                        `json:"AcrAssumeRoleArn,omitempty" xml:"AcrAssumeRoleArn,omitempty"`
-	AcrInstanceId                 *string                                                        `json:"AcrInstanceId,omitempty" xml:"AcrInstanceId,omitempty"`
-	AppDescription                *string                                                        `json:"AppDescription,omitempty" xml:"AppDescription,omitempty"`
-	AppId                         *string                                                        `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	AppName                       *string                                                        `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	AssociateEip                  *bool                                                          `json:"AssociateEip,omitempty" xml:"AssociateEip,omitempty"`
-	BatchWaitTime                 *int32                                                         `json:"BatchWaitTime,omitempty" xml:"BatchWaitTime,omitempty"`
-	Command                       *string                                                        `json:"Command,omitempty" xml:"Command,omitempty"`
-	CommandArgs                   *string                                                        `json:"CommandArgs,omitempty" xml:"CommandArgs,omitempty"`
-	ConfigMapMountDesc            []*DescribeApplicationConfigResponseBodyDataConfigMapMountDesc `json:"ConfigMapMountDesc,omitempty" xml:"ConfigMapMountDesc,omitempty" type:"Repeated"`
-	Cpu                           *int32                                                         `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
-	CustomHostAlias               *string                                                        `json:"CustomHostAlias,omitempty" xml:"CustomHostAlias,omitempty"`
-	EdasContainerVersion          *string                                                        `json:"EdasContainerVersion,omitempty" xml:"EdasContainerVersion,omitempty"`
-	EnableAhas                    *string                                                        `json:"EnableAhas,omitempty" xml:"EnableAhas,omitempty"`
-	EnableGreyTagRoute            *bool                                                          `json:"EnableGreyTagRoute,omitempty" xml:"EnableGreyTagRoute,omitempty"`
-	Envs                          *string                                                        `json:"Envs,omitempty" xml:"Envs,omitempty"`
-	ImagePullSecrets              *string                                                        `json:"ImagePullSecrets,omitempty" xml:"ImagePullSecrets,omitempty"`
-	ImageUrl                      *string                                                        `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
-	JarStartArgs                  *string                                                        `json:"JarStartArgs,omitempty" xml:"JarStartArgs,omitempty"`
-	JarStartOptions               *string                                                        `json:"JarStartOptions,omitempty" xml:"JarStartOptions,omitempty"`
-	Jdk                           *string                                                        `json:"Jdk,omitempty" xml:"Jdk,omitempty"`
-	KafkaConfigs                  *string                                                        `json:"KafkaConfigs,omitempty" xml:"KafkaConfigs,omitempty"`
-	Liveness                      *string                                                        `json:"Liveness,omitempty" xml:"Liveness,omitempty"`
-	Memory                        *int32                                                         `json:"Memory,omitempty" xml:"Memory,omitempty"`
-	MicroRegistration             *string                                                        `json:"MicroRegistration,omitempty" xml:"MicroRegistration,omitempty"`
-	MinReadyInstanceRatio         *int32                                                         `json:"MinReadyInstanceRatio,omitempty" xml:"MinReadyInstanceRatio,omitempty"`
-	MinReadyInstances             *int32                                                         `json:"MinReadyInstances,omitempty" xml:"MinReadyInstances,omitempty"`
-	MountDesc                     []*DescribeApplicationConfigResponseBodyDataMountDesc          `json:"MountDesc,omitempty" xml:"MountDesc,omitempty" type:"Repeated"`
-	MountHost                     *string                                                        `json:"MountHost,omitempty" xml:"MountHost,omitempty"`
-	MseApplicationId              *string                                                        `json:"MseApplicationId,omitempty" xml:"MseApplicationId,omitempty"`
-	NamespaceId                   *string                                                        `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
-	NasConfigs                    *string                                                        `json:"NasConfigs,omitempty" xml:"NasConfigs,omitempty"`
-	NasId                         *string                                                        `json:"NasId,omitempty" xml:"NasId,omitempty"`
-	OssAkId                       *string                                                        `json:"OssAkId,omitempty" xml:"OssAkId,omitempty"`
-	OssAkSecret                   *string                                                        `json:"OssAkSecret,omitempty" xml:"OssAkSecret,omitempty"`
-	OssMountDescs                 []*DescribeApplicationConfigResponseBodyDataOssMountDescs      `json:"OssMountDescs,omitempty" xml:"OssMountDescs,omitempty" type:"Repeated"`
-	PackageType                   *string                                                        `json:"PackageType,omitempty" xml:"PackageType,omitempty"`
-	PackageUrl                    *string                                                        `json:"PackageUrl,omitempty" xml:"PackageUrl,omitempty"`
-	PackageVersion                *string                                                        `json:"PackageVersion,omitempty" xml:"PackageVersion,omitempty"`
-	PhpArmsConfigLocation         *string                                                        `json:"PhpArmsConfigLocation,omitempty" xml:"PhpArmsConfigLocation,omitempty"`
-	PhpConfig                     *string                                                        `json:"PhpConfig,omitempty" xml:"PhpConfig,omitempty"`
-	PhpConfigLocation             *string                                                        `json:"PhpConfigLocation,omitempty" xml:"PhpConfigLocation,omitempty"`
-	PostStart                     *string                                                        `json:"PostStart,omitempty" xml:"PostStart,omitempty"`
-	PreStop                       *string                                                        `json:"PreStop,omitempty" xml:"PreStop,omitempty"`
-	ProgrammingLanguage           *string                                                        `json:"ProgrammingLanguage,omitempty" xml:"ProgrammingLanguage,omitempty"`
-	PvtzDiscovery                 *string                                                        `json:"PvtzDiscovery,omitempty" xml:"PvtzDiscovery,omitempty"`
-	Python                        *string                                                        `json:"Python,omitempty" xml:"Python,omitempty"`
-	PythonModules                 *string                                                        `json:"PythonModules,omitempty" xml:"PythonModules,omitempty"`
-	Readiness                     *string                                                        `json:"Readiness,omitempty" xml:"Readiness,omitempty"`
-	RegionId                      *string                                                        `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Replicas                      *int32                                                         `json:"Replicas,omitempty" xml:"Replicas,omitempty"`
-	SecurityGroupId               *string                                                        `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	SlsConfigs                    *string                                                        `json:"SlsConfigs,omitempty" xml:"SlsConfigs,omitempty"`
-	Tags                          []*DescribeApplicationConfigResponseBodyDataTags               `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	TerminationGracePeriodSeconds *int32                                                         `json:"TerminationGracePeriodSeconds,omitempty" xml:"TerminationGracePeriodSeconds,omitempty"`
-	Timezone                      *string                                                        `json:"Timezone,omitempty" xml:"Timezone,omitempty"`
-	TomcatConfig                  *string                                                        `json:"TomcatConfig,omitempty" xml:"TomcatConfig,omitempty"`
-	UpdateStrategy                *string                                                        `json:"UpdateStrategy,omitempty" xml:"UpdateStrategy,omitempty"`
-	VSwitchId                     *string                                                        `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	VpcId                         *string                                                        `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	WarStartOptions               *string                                                        `json:"WarStartOptions,omitempty" xml:"WarStartOptions,omitempty"`
-	WebContainer                  *string                                                        `json:"WebContainer,omitempty" xml:"WebContainer,omitempty"`
+	AcrAssumeRoleArn      *string                                                        `json:"AcrAssumeRoleArn,omitempty" xml:"AcrAssumeRoleArn,omitempty"`
+	AcrInstanceId         *string                                                        `json:"AcrInstanceId,omitempty" xml:"AcrInstanceId,omitempty"`
+	AppDescription        *string                                                        `json:"AppDescription,omitempty" xml:"AppDescription,omitempty"`
+	AppId                 *string                                                        `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppName               *string                                                        `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	AssociateEip          *bool                                                          `json:"AssociateEip,omitempty" xml:"AssociateEip,omitempty"`
+	BatchWaitTime         *int32                                                         `json:"BatchWaitTime,omitempty" xml:"BatchWaitTime,omitempty"`
+	Command               *string                                                        `json:"Command,omitempty" xml:"Command,omitempty"`
+	CommandArgs           *string                                                        `json:"CommandArgs,omitempty" xml:"CommandArgs,omitempty"`
+	ConfigMapMountDesc    []*DescribeApplicationConfigResponseBodyDataConfigMapMountDesc `json:"ConfigMapMountDesc,omitempty" xml:"ConfigMapMountDesc,omitempty" type:"Repeated"`
+	Cpu                   *int32                                                         `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	CustomHostAlias       *string                                                        `json:"CustomHostAlias,omitempty" xml:"CustomHostAlias,omitempty"`
+	EdasContainerVersion  *string                                                        `json:"EdasContainerVersion,omitempty" xml:"EdasContainerVersion,omitempty"`
+	EnableAhas            *string                                                        `json:"EnableAhas,omitempty" xml:"EnableAhas,omitempty"`
+	EnableGreyTagRoute    *bool                                                          `json:"EnableGreyTagRoute,omitempty" xml:"EnableGreyTagRoute,omitempty"`
+	Envs                  *string                                                        `json:"Envs,omitempty" xml:"Envs,omitempty"`
+	ImagePullSecrets      *string                                                        `json:"ImagePullSecrets,omitempty" xml:"ImagePullSecrets,omitempty"`
+	ImageUrl              *string                                                        `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
+	JarStartArgs          *string                                                        `json:"JarStartArgs,omitempty" xml:"JarStartArgs,omitempty"`
+	JarStartOptions       *string                                                        `json:"JarStartOptions,omitempty" xml:"JarStartOptions,omitempty"`
+	Jdk                   *string                                                        `json:"Jdk,omitempty" xml:"Jdk,omitempty"`
+	KafkaConfigs          *string                                                        `json:"KafkaConfigs,omitempty" xml:"KafkaConfigs,omitempty"`
+	Liveness              *string                                                        `json:"Liveness,omitempty" xml:"Liveness,omitempty"`
+	Memory                *int32                                                         `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	MicroRegistration     *string                                                        `json:"MicroRegistration,omitempty" xml:"MicroRegistration,omitempty"`
+	MinReadyInstanceRatio *int32                                                         `json:"MinReadyInstanceRatio,omitempty" xml:"MinReadyInstanceRatio,omitempty"`
+	MinReadyInstances     *int32                                                         `json:"MinReadyInstances,omitempty" xml:"MinReadyInstances,omitempty"`
+	MountDesc             []*DescribeApplicationConfigResponseBodyDataMountDesc          `json:"MountDesc,omitempty" xml:"MountDesc,omitempty" type:"Repeated"`
+	MountHost             *string                                                        `json:"MountHost,omitempty" xml:"MountHost,omitempty"`
+	MseApplicationId      *string                                                        `json:"MseApplicationId,omitempty" xml:"MseApplicationId,omitempty"`
+	NamespaceId           *string                                                        `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+	NasConfigs            *string                                                        `json:"NasConfigs,omitempty" xml:"NasConfigs,omitempty"`
+	// NAS ID。
+	NasId                         *string                                                   `json:"NasId,omitempty" xml:"NasId,omitempty"`
+	OssAkId                       *string                                                   `json:"OssAkId,omitempty" xml:"OssAkId,omitempty"`
+	OssAkSecret                   *string                                                   `json:"OssAkSecret,omitempty" xml:"OssAkSecret,omitempty"`
+	OssMountDescs                 []*DescribeApplicationConfigResponseBodyDataOssMountDescs `json:"OssMountDescs,omitempty" xml:"OssMountDescs,omitempty" type:"Repeated"`
+	PackageType                   *string                                                   `json:"PackageType,omitempty" xml:"PackageType,omitempty"`
+	PackageUrl                    *string                                                   `json:"PackageUrl,omitempty" xml:"PackageUrl,omitempty"`
+	PackageVersion                *string                                                   `json:"PackageVersion,omitempty" xml:"PackageVersion,omitempty"`
+	PhpArmsConfigLocation         *string                                                   `json:"PhpArmsConfigLocation,omitempty" xml:"PhpArmsConfigLocation,omitempty"`
+	PhpConfig                     *string                                                   `json:"PhpConfig,omitempty" xml:"PhpConfig,omitempty"`
+	PhpConfigLocation             *string                                                   `json:"PhpConfigLocation,omitempty" xml:"PhpConfigLocation,omitempty"`
+	PostStart                     *string                                                   `json:"PostStart,omitempty" xml:"PostStart,omitempty"`
+	PreStop                       *string                                                   `json:"PreStop,omitempty" xml:"PreStop,omitempty"`
+	ProgrammingLanguage           *string                                                   `json:"ProgrammingLanguage,omitempty" xml:"ProgrammingLanguage,omitempty"`
+	PvtzDiscovery                 *string                                                   `json:"PvtzDiscovery,omitempty" xml:"PvtzDiscovery,omitempty"`
+	Python                        *string                                                   `json:"Python,omitempty" xml:"Python,omitempty"`
+	PythonModules                 *string                                                   `json:"PythonModules,omitempty" xml:"PythonModules,omitempty"`
+	Readiness                     *string                                                   `json:"Readiness,omitempty" xml:"Readiness,omitempty"`
+	RegionId                      *string                                                   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Replicas                      *int32                                                    `json:"Replicas,omitempty" xml:"Replicas,omitempty"`
+	SecurityGroupId               *string                                                   `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	SlsConfigs                    *string                                                   `json:"SlsConfigs,omitempty" xml:"SlsConfigs,omitempty"`
+	Tags                          []*DescribeApplicationConfigResponseBodyDataTags          `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	TerminationGracePeriodSeconds *int32                                                    `json:"TerminationGracePeriodSeconds,omitempty" xml:"TerminationGracePeriodSeconds,omitempty"`
+	Timezone                      *string                                                   `json:"Timezone,omitempty" xml:"Timezone,omitempty"`
+	TomcatConfig                  *string                                                   `json:"TomcatConfig,omitempty" xml:"TomcatConfig,omitempty"`
+	UpdateStrategy                *string                                                   `json:"UpdateStrategy,omitempty" xml:"UpdateStrategy,omitempty"`
+	// vSwitch ID。
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// VPC ID。
+	VpcId           *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	WarStartOptions *string `json:"WarStartOptions,omitempty" xml:"WarStartOptions,omitempty"`
+	WebContainer    *string `json:"WebContainer,omitempty" xml:"WebContainer,omitempty"`
 }
 
 func (s DescribeApplicationConfigResponseBodyData) String() string {
@@ -4798,6 +4861,7 @@ func (s *DescribeApplicationConfigResponseBodyData) SetWebContainer(v string) *D
 }
 
 type DescribeApplicationConfigResponseBodyDataConfigMapMountDesc struct {
+	// ConfigMap ID。
 	ConfigMapId   *int64  `json:"ConfigMapId,omitempty" xml:"ConfigMapId,omitempty"`
 	ConfigMapName *string `json:"ConfigMapName,omitempty" xml:"ConfigMapName,omitempty"`
 	Key           *string `json:"Key,omitempty" xml:"Key,omitempty"`
@@ -5571,8 +5635,12 @@ func (s *DescribeApplicationScalingRuleRequest) SetScalingRuleName(v string) *De
 }
 
 type DescribeApplicationScalingRuleResponseBody struct {
+	Code      *string                                         `json:"Code,omitempty" xml:"Code,omitempty"`
 	Data      *DescribeApplicationScalingRuleResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	ErrorCode *string                                         `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	Message   *string                                         `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                                           `json:"Success,omitempty" xml:"Success,omitempty"`
 	TraceId   *string                                         `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
 }
 
@@ -5584,13 +5652,33 @@ func (s DescribeApplicationScalingRuleResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeApplicationScalingRuleResponseBody) SetCode(v string) *DescribeApplicationScalingRuleResponseBody {
+	s.Code = &v
+	return s
+}
+
 func (s *DescribeApplicationScalingRuleResponseBody) SetData(v *DescribeApplicationScalingRuleResponseBodyData) *DescribeApplicationScalingRuleResponseBody {
 	s.Data = v
 	return s
 }
 
+func (s *DescribeApplicationScalingRuleResponseBody) SetErrorCode(v string) *DescribeApplicationScalingRuleResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *DescribeApplicationScalingRuleResponseBody) SetMessage(v string) *DescribeApplicationScalingRuleResponseBody {
+	s.Message = &v
+	return s
+}
+
 func (s *DescribeApplicationScalingRuleResponseBody) SetRequestId(v string) *DescribeApplicationScalingRuleResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeApplicationScalingRuleResponseBody) SetSuccess(v bool) *DescribeApplicationScalingRuleResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -6002,8 +6090,12 @@ func (s *DescribeApplicationScalingRulesRequest) SetAppId(v string) *DescribeApp
 }
 
 type DescribeApplicationScalingRulesResponseBody struct {
+	Code      *string                                          `json:"Code,omitempty" xml:"Code,omitempty"`
 	Data      *DescribeApplicationScalingRulesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	ErrorCode *string                                          `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	Message   *string                                          `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                                            `json:"Success,omitempty" xml:"Success,omitempty"`
 	TraceId   *string                                          `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
 }
 
@@ -6015,13 +6107,33 @@ func (s DescribeApplicationScalingRulesResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeApplicationScalingRulesResponseBody) SetCode(v string) *DescribeApplicationScalingRulesResponseBody {
+	s.Code = &v
+	return s
+}
+
 func (s *DescribeApplicationScalingRulesResponseBody) SetData(v *DescribeApplicationScalingRulesResponseBodyData) *DescribeApplicationScalingRulesResponseBody {
 	s.Data = v
 	return s
 }
 
+func (s *DescribeApplicationScalingRulesResponseBody) SetErrorCode(v string) *DescribeApplicationScalingRulesResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *DescribeApplicationScalingRulesResponseBody) SetMessage(v string) *DescribeApplicationScalingRulesResponseBody {
+	s.Message = &v
+	return s
+}
+
 func (s *DescribeApplicationScalingRulesResponseBody) SetRequestId(v string) *DescribeApplicationScalingRulesResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeApplicationScalingRulesResponseBody) SetSuccess(v bool) *DescribeApplicationScalingRulesResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -8318,8 +8430,9 @@ type DescribeIngressResponseBodyData struct {
 	Name             *string                                     `json:"Name,omitempty" xml:"Name,omitempty"`
 	NamespaceId      *string                                     `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
 	Rules            []*DescribeIngressResponseBodyDataRules     `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
-	SlbId            *string                                     `json:"SlbId,omitempty" xml:"SlbId,omitempty"`
-	SlbType          *string                                     `json:"SlbType,omitempty" xml:"SlbType,omitempty"`
+	// SLB ID。
+	SlbId   *string `json:"SlbId,omitempty" xml:"SlbId,omitempty"`
+	SlbType *string `json:"SlbType,omitempty" xml:"SlbType,omitempty"`
 }
 
 func (s DescribeIngressResponseBodyData) String() string {
@@ -8735,9 +8848,8 @@ func (s *DescribeInstanceSpecificationsResponse) SetBody(v *DescribeInstanceSpec
 }
 
 type DescribeJobRequest struct {
-	AppId     *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	JobId     *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	VersionId *string `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 }
 
 func (s DescribeJobRequest) String() string {
@@ -8755,11 +8867,6 @@ func (s *DescribeJobRequest) SetAppId(v string) *DescribeJobRequest {
 
 func (s *DescribeJobRequest) SetJobId(v string) *DescribeJobRequest {
 	s.JobId = &v
-	return s
-}
-
-func (s *DescribeJobRequest) SetVersionId(v string) *DescribeJobRequest {
-	s.VersionId = &v
 	return s
 }
 
@@ -8817,73 +8924,68 @@ func (s *DescribeJobResponseBody) SetTraceId(v string) *DescribeJobResponseBody 
 }
 
 type DescribeJobResponseBodyData struct {
-	AcrAssumeRoleArn              *string                                          `json:"AcrAssumeRoleArn,omitempty" xml:"AcrAssumeRoleArn,omitempty"`
-	AppDescription                *string                                          `json:"AppDescription,omitempty" xml:"AppDescription,omitempty"`
-	AppId                         *string                                          `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	AppName                       *string                                          `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	AssociateEip                  *bool                                            `json:"AssociateEip,omitempty" xml:"AssociateEip,omitempty"`
-	BackoffLimit                  *int64                                           `json:"BackoffLimit,omitempty" xml:"BackoffLimit,omitempty"`
-	BatchWaitTime                 *int32                                           `json:"BatchWaitTime,omitempty" xml:"BatchWaitTime,omitempty"`
-	Command                       *string                                          `json:"Command,omitempty" xml:"Command,omitempty"`
-	CommandArgs                   *string                                          `json:"CommandArgs,omitempty" xml:"CommandArgs,omitempty"`
-	ConcurrencyPolicy             *string                                          `json:"ConcurrencyPolicy,omitempty" xml:"ConcurrencyPolicy,omitempty"`
-	ConfigMapMountDesc            []*DescribeJobResponseBodyDataConfigMapMountDesc `json:"ConfigMapMountDesc,omitempty" xml:"ConfigMapMountDesc,omitempty" type:"Repeated"`
-	Cpu                           *int32                                           `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
-	CustomHostAlias               *string                                          `json:"CustomHostAlias,omitempty" xml:"CustomHostAlias,omitempty"`
-	EdasContainerVersion          *string                                          `json:"EdasContainerVersion,omitempty" xml:"EdasContainerVersion,omitempty"`
-	EnableAhas                    *string                                          `json:"EnableAhas,omitempty" xml:"EnableAhas,omitempty"`
-	EnableGreyTagRoute            *bool                                            `json:"EnableGreyTagRoute,omitempty" xml:"EnableGreyTagRoute,omitempty"`
-	Envs                          *string                                          `json:"Envs,omitempty" xml:"Envs,omitempty"`
-	ImagePullSecrets              *string                                          `json:"ImagePullSecrets,omitempty" xml:"ImagePullSecrets,omitempty"`
-	ImageUrl                      *string                                          `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
-	JarStartArgs                  *string                                          `json:"JarStartArgs,omitempty" xml:"JarStartArgs,omitempty"`
-	JarStartOptions               *string                                          `json:"JarStartOptions,omitempty" xml:"JarStartOptions,omitempty"`
-	Jdk                           *string                                          `json:"Jdk,omitempty" xml:"Jdk,omitempty"`
-	Liveness                      *string                                          `json:"Liveness,omitempty" xml:"Liveness,omitempty"`
-	Memory                        *int32                                           `json:"Memory,omitempty" xml:"Memory,omitempty"`
-	MinReadyInstances             *int32                                           `json:"MinReadyInstances,omitempty" xml:"MinReadyInstances,omitempty"`
-	MountDesc                     []*DescribeJobResponseBodyDataMountDesc          `json:"MountDesc,omitempty" xml:"MountDesc,omitempty" type:"Repeated"`
-	MountHost                     *string                                          `json:"MountHost,omitempty" xml:"MountHost,omitempty"`
-	MseApplicationId              *string                                          `json:"MseApplicationId,omitempty" xml:"MseApplicationId,omitempty"`
-	NamespaceId                   *string                                          `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
-	NasConfigs                    *string                                          `json:"NasConfigs,omitempty" xml:"NasConfigs,omitempty"`
-	NasId                         *string                                          `json:"NasId,omitempty" xml:"NasId,omitempty"`
-	OssAkId                       *string                                          `json:"OssAkId,omitempty" xml:"OssAkId,omitempty"`
-	OssAkSecret                   *string                                          `json:"OssAkSecret,omitempty" xml:"OssAkSecret,omitempty"`
-	OssMountDescs                 []*DescribeJobResponseBodyDataOssMountDescs      `json:"OssMountDescs,omitempty" xml:"OssMountDescs,omitempty" type:"Repeated"`
-	PackageType                   *string                                          `json:"PackageType,omitempty" xml:"PackageType,omitempty"`
-	PackageUrl                    *string                                          `json:"PackageUrl,omitempty" xml:"PackageUrl,omitempty"`
-	PackageVersion                *string                                          `json:"PackageVersion,omitempty" xml:"PackageVersion,omitempty"`
-	PhpArmsConfigLocation         *string                                          `json:"PhpArmsConfigLocation,omitempty" xml:"PhpArmsConfigLocation,omitempty"`
-	PhpConfig                     *string                                          `json:"PhpConfig,omitempty" xml:"PhpConfig,omitempty"`
-	PhpConfigLocation             *string                                          `json:"PhpConfigLocation,omitempty" xml:"PhpConfigLocation,omitempty"`
-	PostStart                     *string                                          `json:"PostStart,omitempty" xml:"PostStart,omitempty"`
-	PreStop                       *string                                          `json:"PreStop,omitempty" xml:"PreStop,omitempty"`
-	ProgrammingLanguage           *string                                          `json:"ProgrammingLanguage,omitempty" xml:"ProgrammingLanguage,omitempty"`
-	PublicWebHookUrls             []*string                                        `json:"PublicWebHookUrls,omitempty" xml:"PublicWebHookUrls,omitempty" type:"Repeated"`
-	Python                        *string                                          `json:"Python,omitempty" xml:"Python,omitempty"`
-	PythonModules                 *string                                          `json:"PythonModules,omitempty" xml:"PythonModules,omitempty"`
-	Readiness                     *string                                          `json:"Readiness,omitempty" xml:"Readiness,omitempty"`
-	RefAppId                      *string                                          `json:"RefAppId,omitempty" xml:"RefAppId,omitempty"`
-	RefedAppIds                   []*string                                        `json:"RefedAppIds,omitempty" xml:"RefedAppIds,omitempty" type:"Repeated"`
-	RegionId                      *string                                          `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Replicas                      *int32                                           `json:"Replicas,omitempty" xml:"Replicas,omitempty"`
-	SecurityGroupId               *string                                          `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	Slice                         *bool                                            `json:"Slice,omitempty" xml:"Slice,omitempty"`
-	SliceEnvs                     *string                                          `json:"SliceEnvs,omitempty" xml:"SliceEnvs,omitempty"`
-	SlsConfigs                    *string                                          `json:"SlsConfigs,omitempty" xml:"SlsConfigs,omitempty"`
-	Suspend                       *bool                                            `json:"Suspend,omitempty" xml:"Suspend,omitempty"`
-	Tags                          []*DescribeJobResponseBodyDataTags               `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	TerminationGracePeriodSeconds *int32                                           `json:"TerminationGracePeriodSeconds,omitempty" xml:"TerminationGracePeriodSeconds,omitempty"`
-	Timeout                       *int64                                           `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
-	Timezone                      *string                                          `json:"Timezone,omitempty" xml:"Timezone,omitempty"`
-	TomcatConfig                  *string                                          `json:"TomcatConfig,omitempty" xml:"TomcatConfig,omitempty"`
-	TriggerConfig                 *string                                          `json:"TriggerConfig,omitempty" xml:"TriggerConfig,omitempty"`
-	VSwitchId                     *string                                          `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	VpcId                         *string                                          `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	VpcWebHookUrls                []*string                                        `json:"VpcWebHookUrls,omitempty" xml:"VpcWebHookUrls,omitempty" type:"Repeated"`
-	WarStartOptions               *string                                          `json:"WarStartOptions,omitempty" xml:"WarStartOptions,omitempty"`
-	WebContainer                  *string                                          `json:"WebContainer,omitempty" xml:"WebContainer,omitempty"`
+	AcrAssumeRoleArn     *string                                          `json:"AcrAssumeRoleArn,omitempty" xml:"AcrAssumeRoleArn,omitempty"`
+	AcrInstanceId        *string                                          `json:"AcrInstanceId,omitempty" xml:"AcrInstanceId,omitempty"`
+	AppDescription       *string                                          `json:"AppDescription,omitempty" xml:"AppDescription,omitempty"`
+	AppId                *string                                          `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppName              *string                                          `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	BackoffLimit         *int64                                           `json:"BackoffLimit,omitempty" xml:"BackoffLimit,omitempty"`
+	Command              *string                                          `json:"Command,omitempty" xml:"Command,omitempty"`
+	CommandArgs          *string                                          `json:"CommandArgs,omitempty" xml:"CommandArgs,omitempty"`
+	ConcurrencyPolicy    *string                                          `json:"ConcurrencyPolicy,omitempty" xml:"ConcurrencyPolicy,omitempty"`
+	ConfigMapMountDesc   []*DescribeJobResponseBodyDataConfigMapMountDesc `json:"ConfigMapMountDesc,omitempty" xml:"ConfigMapMountDesc,omitempty" type:"Repeated"`
+	Cpu                  *int32                                           `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	CustomHostAlias      *string                                          `json:"CustomHostAlias,omitempty" xml:"CustomHostAlias,omitempty"`
+	EdasContainerVersion *string                                          `json:"EdasContainerVersion,omitempty" xml:"EdasContainerVersion,omitempty"`
+	Envs                 *string                                          `json:"Envs,omitempty" xml:"Envs,omitempty"`
+	ImagePullSecrets     *string                                          `json:"ImagePullSecrets,omitempty" xml:"ImagePullSecrets,omitempty"`
+	ImageUrl             *string                                          `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
+	JarStartArgs         *string                                          `json:"JarStartArgs,omitempty" xml:"JarStartArgs,omitempty"`
+	JarStartOptions      *string                                          `json:"JarStartOptions,omitempty" xml:"JarStartOptions,omitempty"`
+	Jdk                  *string                                          `json:"Jdk,omitempty" xml:"Jdk,omitempty"`
+	Memory               *int32                                           `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	MountDesc            []*DescribeJobResponseBodyDataMountDesc          `json:"MountDesc,omitempty" xml:"MountDesc,omitempty" type:"Repeated"`
+	MountHost            *string                                          `json:"MountHost,omitempty" xml:"MountHost,omitempty"`
+	NamespaceId          *string                                          `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+	NasConfigs           *string                                          `json:"NasConfigs,omitempty" xml:"NasConfigs,omitempty"`
+	// NAS ID。
+	NasId                         *string                                     `json:"NasId,omitempty" xml:"NasId,omitempty"`
+	OssAkId                       *string                                     `json:"OssAkId,omitempty" xml:"OssAkId,omitempty"`
+	OssAkSecret                   *string                                     `json:"OssAkSecret,omitempty" xml:"OssAkSecret,omitempty"`
+	OssMountDescs                 []*DescribeJobResponseBodyDataOssMountDescs `json:"OssMountDescs,omitempty" xml:"OssMountDescs,omitempty" type:"Repeated"`
+	PackageType                   *string                                     `json:"PackageType,omitempty" xml:"PackageType,omitempty"`
+	PackageUrl                    *string                                     `json:"PackageUrl,omitempty" xml:"PackageUrl,omitempty"`
+	PackageVersion                *string                                     `json:"PackageVersion,omitempty" xml:"PackageVersion,omitempty"`
+	PhpConfig                     *string                                     `json:"PhpConfig,omitempty" xml:"PhpConfig,omitempty"`
+	PhpConfigLocation             *string                                     `json:"PhpConfigLocation,omitempty" xml:"PhpConfigLocation,omitempty"`
+	PostStart                     *string                                     `json:"PostStart,omitempty" xml:"PostStart,omitempty"`
+	PreStop                       *string                                     `json:"PreStop,omitempty" xml:"PreStop,omitempty"`
+	ProgrammingLanguage           *string                                     `json:"ProgrammingLanguage,omitempty" xml:"ProgrammingLanguage,omitempty"`
+	PublicWebHookUrls             []*string                                   `json:"PublicWebHookUrls,omitempty" xml:"PublicWebHookUrls,omitempty" type:"Repeated"`
+	Python                        *string                                     `json:"Python,omitempty" xml:"Python,omitempty"`
+	PythonModules                 *string                                     `json:"PythonModules,omitempty" xml:"PythonModules,omitempty"`
+	RefAppId                      *string                                     `json:"RefAppId,omitempty" xml:"RefAppId,omitempty"`
+	RefedAppIds                   []*string                                   `json:"RefedAppIds,omitempty" xml:"RefedAppIds,omitempty" type:"Repeated"`
+	RegionId                      *string                                     `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Replicas                      *int32                                      `json:"Replicas,omitempty" xml:"Replicas,omitempty"`
+	SecurityGroupId               *string                                     `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	Slice                         *bool                                       `json:"Slice,omitempty" xml:"Slice,omitempty"`
+	SliceEnvs                     *string                                     `json:"SliceEnvs,omitempty" xml:"SliceEnvs,omitempty"`
+	SlsConfigs                    *string                                     `json:"SlsConfigs,omitempty" xml:"SlsConfigs,omitempty"`
+	Suspend                       *bool                                       `json:"Suspend,omitempty" xml:"Suspend,omitempty"`
+	Tags                          []*DescribeJobResponseBodyDataTags          `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	TerminationGracePeriodSeconds *int32                                      `json:"TerminationGracePeriodSeconds,omitempty" xml:"TerminationGracePeriodSeconds,omitempty"`
+	Timeout                       *int64                                      `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+	Timezone                      *string                                     `json:"Timezone,omitempty" xml:"Timezone,omitempty"`
+	TomcatConfig                  *string                                     `json:"TomcatConfig,omitempty" xml:"TomcatConfig,omitempty"`
+	TriggerConfig                 *string                                     `json:"TriggerConfig,omitempty" xml:"TriggerConfig,omitempty"`
+	// vSwitch ID。
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// VPC ID。
+	VpcId           *string   `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	VpcWebHookUrls  []*string `json:"VpcWebHookUrls,omitempty" xml:"VpcWebHookUrls,omitempty" type:"Repeated"`
+	WarStartOptions *string   `json:"WarStartOptions,omitempty" xml:"WarStartOptions,omitempty"`
+	WebContainer    *string   `json:"WebContainer,omitempty" xml:"WebContainer,omitempty"`
 }
 
 func (s DescribeJobResponseBodyData) String() string {
@@ -8896,6 +8998,11 @@ func (s DescribeJobResponseBodyData) GoString() string {
 
 func (s *DescribeJobResponseBodyData) SetAcrAssumeRoleArn(v string) *DescribeJobResponseBodyData {
 	s.AcrAssumeRoleArn = &v
+	return s
+}
+
+func (s *DescribeJobResponseBodyData) SetAcrInstanceId(v string) *DescribeJobResponseBodyData {
+	s.AcrInstanceId = &v
 	return s
 }
 
@@ -8914,18 +9021,8 @@ func (s *DescribeJobResponseBodyData) SetAppName(v string) *DescribeJobResponseB
 	return s
 }
 
-func (s *DescribeJobResponseBodyData) SetAssociateEip(v bool) *DescribeJobResponseBodyData {
-	s.AssociateEip = &v
-	return s
-}
-
 func (s *DescribeJobResponseBodyData) SetBackoffLimit(v int64) *DescribeJobResponseBodyData {
 	s.BackoffLimit = &v
-	return s
-}
-
-func (s *DescribeJobResponseBodyData) SetBatchWaitTime(v int32) *DescribeJobResponseBodyData {
-	s.BatchWaitTime = &v
 	return s
 }
 
@@ -8964,16 +9061,6 @@ func (s *DescribeJobResponseBodyData) SetEdasContainerVersion(v string) *Describ
 	return s
 }
 
-func (s *DescribeJobResponseBodyData) SetEnableAhas(v string) *DescribeJobResponseBodyData {
-	s.EnableAhas = &v
-	return s
-}
-
-func (s *DescribeJobResponseBodyData) SetEnableGreyTagRoute(v bool) *DescribeJobResponseBodyData {
-	s.EnableGreyTagRoute = &v
-	return s
-}
-
 func (s *DescribeJobResponseBodyData) SetEnvs(v string) *DescribeJobResponseBodyData {
 	s.Envs = &v
 	return s
@@ -9004,18 +9091,8 @@ func (s *DescribeJobResponseBodyData) SetJdk(v string) *DescribeJobResponseBodyD
 	return s
 }
 
-func (s *DescribeJobResponseBodyData) SetLiveness(v string) *DescribeJobResponseBodyData {
-	s.Liveness = &v
-	return s
-}
-
 func (s *DescribeJobResponseBodyData) SetMemory(v int32) *DescribeJobResponseBodyData {
 	s.Memory = &v
-	return s
-}
-
-func (s *DescribeJobResponseBodyData) SetMinReadyInstances(v int32) *DescribeJobResponseBodyData {
-	s.MinReadyInstances = &v
 	return s
 }
 
@@ -9026,11 +9103,6 @@ func (s *DescribeJobResponseBodyData) SetMountDesc(v []*DescribeJobResponseBodyD
 
 func (s *DescribeJobResponseBodyData) SetMountHost(v string) *DescribeJobResponseBodyData {
 	s.MountHost = &v
-	return s
-}
-
-func (s *DescribeJobResponseBodyData) SetMseApplicationId(v string) *DescribeJobResponseBodyData {
-	s.MseApplicationId = &v
 	return s
 }
 
@@ -9079,11 +9151,6 @@ func (s *DescribeJobResponseBodyData) SetPackageVersion(v string) *DescribeJobRe
 	return s
 }
 
-func (s *DescribeJobResponseBodyData) SetPhpArmsConfigLocation(v string) *DescribeJobResponseBodyData {
-	s.PhpArmsConfigLocation = &v
-	return s
-}
-
 func (s *DescribeJobResponseBodyData) SetPhpConfig(v string) *DescribeJobResponseBodyData {
 	s.PhpConfig = &v
 	return s
@@ -9121,11 +9188,6 @@ func (s *DescribeJobResponseBodyData) SetPython(v string) *DescribeJobResponseBo
 
 func (s *DescribeJobResponseBodyData) SetPythonModules(v string) *DescribeJobResponseBodyData {
 	s.PythonModules = &v
-	return s
-}
-
-func (s *DescribeJobResponseBodyData) SetReadiness(v string) *DescribeJobResponseBodyData {
-	s.Readiness = &v
 	return s
 }
 
@@ -9230,6 +9292,7 @@ func (s *DescribeJobResponseBodyData) SetWebContainer(v string) *DescribeJobResp
 }
 
 type DescribeJobResponseBodyDataConfigMapMountDesc struct {
+	// ConfigMap ID。
 	ConfigMapId   *int64  `json:"ConfigMapId,omitempty" xml:"ConfigMapId,omitempty"`
 	ConfigMapName *string `json:"ConfigMapName,omitempty" xml:"ConfigMapName,omitempty"`
 	Key           *string `json:"Key,omitempty" xml:"Key,omitempty"`
@@ -9750,7 +9813,8 @@ func (s *DescribeJobStatusResponse) SetBody(v *DescribeJobStatusResponseBody) *D
 }
 
 type DescribeNamespaceRequest struct {
-	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+	NameSpaceShortId *string `json:"NameSpaceShortId,omitempty" xml:"NameSpaceShortId,omitempty"`
+	NamespaceId      *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
 }
 
 func (s DescribeNamespaceRequest) String() string {
@@ -9759,6 +9823,11 @@ func (s DescribeNamespaceRequest) String() string {
 
 func (s DescribeNamespaceRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeNamespaceRequest) SetNameSpaceShortId(v string) *DescribeNamespaceRequest {
+	s.NameSpaceShortId = &v
+	return s
 }
 
 func (s *DescribeNamespaceRequest) SetNamespaceId(v string) *DescribeNamespaceRequest {
@@ -9820,6 +9889,7 @@ func (s *DescribeNamespaceResponseBody) SetTraceId(v string) *DescribeNamespaceR
 }
 
 type DescribeNamespaceResponseBodyData struct {
+	NameSpaceShortId     *string `json:"NameSpaceShortId,omitempty" xml:"NameSpaceShortId,omitempty"`
 	NamespaceDescription *string `json:"NamespaceDescription,omitempty" xml:"NamespaceDescription,omitempty"`
 	NamespaceId          *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
 	NamespaceName        *string `json:"NamespaceName,omitempty" xml:"NamespaceName,omitempty"`
@@ -9832,6 +9902,11 @@ func (s DescribeNamespaceResponseBodyData) String() string {
 
 func (s DescribeNamespaceResponseBodyData) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeNamespaceResponseBodyData) SetNameSpaceShortId(v string) *DescribeNamespaceResponseBodyData {
+	s.NameSpaceShortId = &v
+	return s
 }
 
 func (s *DescribeNamespaceResponseBodyData) SetNamespaceDescription(v string) *DescribeNamespaceResponseBodyData {
@@ -9964,12 +10039,15 @@ type DescribeNamespaceListResponseBodyData struct {
 	Current           *bool   `json:"Current,omitempty" xml:"Current,omitempty"`
 	Custom            *bool   `json:"Custom,omitempty" xml:"Custom,omitempty"`
 	HybridCloudEnable *bool   `json:"HybridCloudEnable,omitempty" xml:"HybridCloudEnable,omitempty"`
+	NameSpaceShortId  *string `json:"NameSpaceShortId,omitempty" xml:"NameSpaceShortId,omitempty"`
 	NamespaceId       *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
 	NamespaceName     *string `json:"NamespaceName,omitempty" xml:"NamespaceName,omitempty"`
 	RegionId          *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	SecurityGroupId   *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	VSwitchId         *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	VpcId             *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// vSwitch ID。
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// VPC ID。
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s DescribeNamespaceListResponseBodyData) String() string {
@@ -9997,6 +10075,11 @@ func (s *DescribeNamespaceListResponseBodyData) SetCustom(v bool) *DescribeNames
 
 func (s *DescribeNamespaceListResponseBodyData) SetHybridCloudEnable(v bool) *DescribeNamespaceListResponseBodyData {
 	s.HybridCloudEnable = &v
+	return s
+}
+
+func (s *DescribeNamespaceListResponseBodyData) SetNameSpaceShortId(v string) *DescribeNamespaceListResponseBodyData {
+	s.NameSpaceShortId = &v
 	return s
 }
 
@@ -10060,7 +10143,8 @@ func (s *DescribeNamespaceListResponse) SetBody(v *DescribeNamespaceListResponse
 }
 
 type DescribeNamespaceResourcesRequest struct {
-	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+	NameSpaceShortId *string `json:"NameSpaceShortId,omitempty" xml:"NameSpaceShortId,omitempty"`
+	NamespaceId      *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
 }
 
 func (s DescribeNamespaceResourcesRequest) String() string {
@@ -10069,6 +10153,11 @@ func (s DescribeNamespaceResourcesRequest) String() string {
 
 func (s DescribeNamespaceResourcesRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeNamespaceResourcesRequest) SetNameSpaceShortId(v string) *DescribeNamespaceResourcesRequest {
+	s.NameSpaceShortId = &v
+	return s
 }
 
 func (s *DescribeNamespaceResourcesRequest) SetNamespaceId(v string) *DescribeNamespaceResourcesRequest {
@@ -10138,16 +10227,19 @@ type DescribeNamespaceResourcesResponseBodyData struct {
 	LastChangeOrderId      *string `json:"LastChangeOrderId,omitempty" xml:"LastChangeOrderId,omitempty"`
 	LastChangeOrderRunning *bool   `json:"LastChangeOrderRunning,omitempty" xml:"LastChangeOrderRunning,omitempty"`
 	LastChangeOrderStatus  *string `json:"LastChangeOrderStatus,omitempty" xml:"LastChangeOrderStatus,omitempty"`
+	NameSpaceShortId       *string `json:"NameSpaceShortId,omitempty" xml:"NameSpaceShortId,omitempty"`
 	NamespaceId            *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
 	NamespaceName          *string `json:"NamespaceName,omitempty" xml:"NamespaceName,omitempty"`
 	NotificationExpired    *bool   `json:"NotificationExpired,omitempty" xml:"NotificationExpired,omitempty"`
 	SecurityGroupId        *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
 	TenantId               *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
 	UserId                 *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	VSwitchId              *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	VSwitchName            *string `json:"VSwitchName,omitempty" xml:"VSwitchName,omitempty"`
-	VpcId                  *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	VpcName                *string `json:"VpcName,omitempty" xml:"VpcName,omitempty"`
+	// vSwitch ID。
+	VSwitchId   *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	VSwitchName *string `json:"VSwitchName,omitempty" xml:"VSwitchName,omitempty"`
+	// VPC ID。
+	VpcId   *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	VpcName *string `json:"VpcName,omitempty" xml:"VpcName,omitempty"`
 }
 
 func (s DescribeNamespaceResourcesResponseBodyData) String() string {
@@ -10195,6 +10287,11 @@ func (s *DescribeNamespaceResourcesResponseBodyData) SetLastChangeOrderRunning(v
 
 func (s *DescribeNamespaceResourcesResponseBodyData) SetLastChangeOrderStatus(v string) *DescribeNamespaceResourcesResponseBodyData {
 	s.LastChangeOrderStatus = &v
+	return s
+}
+
+func (s *DescribeNamespaceResourcesResponseBodyData) SetNameSpaceShortId(v string) *DescribeNamespaceResourcesResponseBodyData {
+	s.NameSpaceShortId = &v
 	return s
 }
 
@@ -10391,6 +10488,7 @@ func (s *DescribeNamespacesResponseBodyData) SetTotalSize(v int32) *DescribeName
 type DescribeNamespacesResponseBodyDataNamespaces struct {
 	AccessKey            *string `json:"AccessKey,omitempty" xml:"AccessKey,omitempty"`
 	AddressServerHost    *string `json:"AddressServerHost,omitempty" xml:"AddressServerHost,omitempty"`
+	NameSpaceShortId     *string `json:"NameSpaceShortId,omitempty" xml:"NameSpaceShortId,omitempty"`
 	NamespaceDescription *string `json:"NamespaceDescription,omitempty" xml:"NamespaceDescription,omitempty"`
 	NamespaceId          *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
 	NamespaceName        *string `json:"NamespaceName,omitempty" xml:"NamespaceName,omitempty"`
@@ -10414,6 +10512,11 @@ func (s *DescribeNamespacesResponseBodyDataNamespaces) SetAccessKey(v string) *D
 
 func (s *DescribeNamespacesResponseBodyDataNamespaces) SetAddressServerHost(v string) *DescribeNamespacesResponseBodyDataNamespaces {
 	s.AddressServerHost = &v
+	return s
+}
+
+func (s *DescribeNamespacesResponseBodyDataNamespaces) SetNameSpaceShortId(v string) *DescribeNamespacesResponseBodyDataNamespaces {
+	s.NameSpaceShortId = &v
 	return s
 }
 
@@ -11084,7 +11187,11 @@ func (s *DisableApplicationScalingRuleRequest) SetScalingRuleName(v string) *Dis
 }
 
 type DisableApplicationScalingRuleResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 	TraceId   *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
 }
 
@@ -11096,8 +11203,28 @@ func (s DisableApplicationScalingRuleResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *DisableApplicationScalingRuleResponseBody) SetCode(v string) *DisableApplicationScalingRuleResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DisableApplicationScalingRuleResponseBody) SetErrorCode(v string) *DisableApplicationScalingRuleResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *DisableApplicationScalingRuleResponseBody) SetMessage(v string) *DisableApplicationScalingRuleResponseBody {
+	s.Message = &v
+	return s
+}
+
 func (s *DisableApplicationScalingRuleResponseBody) SetRequestId(v string) *DisableApplicationScalingRuleResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *DisableApplicationScalingRuleResponseBody) SetSuccess(v bool) *DisableApplicationScalingRuleResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -11159,7 +11286,11 @@ func (s *EnableApplicationScalingRuleRequest) SetScalingRuleName(v string) *Enab
 }
 
 type EnableApplicationScalingRuleResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 	TraceId   *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
 }
 
@@ -11171,8 +11302,28 @@ func (s EnableApplicationScalingRuleResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *EnableApplicationScalingRuleResponseBody) SetCode(v string) *EnableApplicationScalingRuleResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *EnableApplicationScalingRuleResponseBody) SetErrorCode(v string) *EnableApplicationScalingRuleResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *EnableApplicationScalingRuleResponseBody) SetMessage(v string) *EnableApplicationScalingRuleResponseBody {
+	s.Message = &v
+	return s
+}
+
 func (s *EnableApplicationScalingRuleResponseBody) SetRequestId(v string) *EnableApplicationScalingRuleResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *EnableApplicationScalingRuleResponseBody) SetSuccess(v bool) *EnableApplicationScalingRuleResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -11392,201 +11543,575 @@ func (s *ExecJobResponse) SetBody(v *ExecJobResponseBody) *ExecJobResponse {
 	return s
 }
 
-type GetJobHistoryRequest struct {
-	AppId       *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	CurrentPage *int64  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	PageSize    *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+type GetArmsTopNMetricResponseBody struct {
+	Code      *string                              `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      []*GetArmsTopNMetricResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	Message   *string                              `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                                `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
-func (s GetJobHistoryRequest) String() string {
+func (s GetArmsTopNMetricResponseBody) String() string {
 	return tea.Prettify(s)
 }
 
-func (s GetJobHistoryRequest) GoString() string {
+func (s GetArmsTopNMetricResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *GetJobHistoryRequest) SetAppId(v string) *GetJobHistoryRequest {
-	s.AppId = &v
-	return s
-}
-
-func (s *GetJobHistoryRequest) SetCurrentPage(v int64) *GetJobHistoryRequest {
-	s.CurrentPage = &v
-	return s
-}
-
-func (s *GetJobHistoryRequest) SetPageSize(v int64) *GetJobHistoryRequest {
-	s.PageSize = &v
-	return s
-}
-
-type GetJobHistoryResponseBody struct {
-	Code      *string                        `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *GetJobHistoryResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	ErrorCode *string                        `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	Message   *string                        `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                          `json:"Success,omitempty" xml:"Success,omitempty"`
-	TraceId   *string                        `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
-}
-
-func (s GetJobHistoryResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetJobHistoryResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetJobHistoryResponseBody) SetCode(v string) *GetJobHistoryResponseBody {
+func (s *GetArmsTopNMetricResponseBody) SetCode(v string) *GetArmsTopNMetricResponseBody {
 	s.Code = &v
 	return s
 }
 
-func (s *GetJobHistoryResponseBody) SetData(v *GetJobHistoryResponseBodyData) *GetJobHistoryResponseBody {
+func (s *GetArmsTopNMetricResponseBody) SetData(v []*GetArmsTopNMetricResponseBodyData) *GetArmsTopNMetricResponseBody {
 	s.Data = v
 	return s
 }
 
-func (s *GetJobHistoryResponseBody) SetErrorCode(v string) *GetJobHistoryResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *GetJobHistoryResponseBody) SetMessage(v string) *GetJobHistoryResponseBody {
+func (s *GetArmsTopNMetricResponseBody) SetMessage(v string) *GetArmsTopNMetricResponseBody {
 	s.Message = &v
 	return s
 }
 
-func (s *GetJobHistoryResponseBody) SetRequestId(v string) *GetJobHistoryResponseBody {
+func (s *GetArmsTopNMetricResponseBody) SetRequestId(v string) *GetArmsTopNMetricResponseBody {
 	s.RequestId = &v
 	return s
 }
 
-func (s *GetJobHistoryResponseBody) SetSuccess(v bool) *GetJobHistoryResponseBody {
+func (s *GetArmsTopNMetricResponseBody) SetSuccess(v bool) *GetArmsTopNMetricResponseBody {
 	s.Success = &v
 	return s
 }
 
-func (s *GetJobHistoryResponseBody) SetTraceId(v string) *GetJobHistoryResponseBody {
-	s.TraceId = &v
-	return s
+type GetArmsTopNMetricResponseBodyData struct {
+	AppId    *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	Count    *int64  `json:"Count,omitempty" xml:"Count,omitempty"`
+	Error    *int64  `json:"Error,omitempty" xml:"Error,omitempty"`
+	Name     *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Rt       *int64  `json:"Rt,omitempty" xml:"Rt,omitempty"`
 }
 
-type GetJobHistoryResponseBodyData struct {
-	CurrentPage *int64                               `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	Jobs        []*GetJobHistoryResponseBodyDataJobs `json:"Jobs,omitempty" xml:"Jobs,omitempty" type:"Repeated"`
-	PageSize    *int64                               `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	TotalSize   *int64                               `json:"TotalSize,omitempty" xml:"TotalSize,omitempty"`
-}
-
-func (s GetJobHistoryResponseBodyData) String() string {
+func (s GetArmsTopNMetricResponseBodyData) String() string {
 	return tea.Prettify(s)
 }
 
-func (s GetJobHistoryResponseBodyData) GoString() string {
+func (s GetArmsTopNMetricResponseBodyData) GoString() string {
 	return s.String()
 }
 
-func (s *GetJobHistoryResponseBodyData) SetCurrentPage(v int64) *GetJobHistoryResponseBodyData {
-	s.CurrentPage = &v
+func (s *GetArmsTopNMetricResponseBodyData) SetAppId(v string) *GetArmsTopNMetricResponseBodyData {
+	s.AppId = &v
 	return s
 }
 
-func (s *GetJobHistoryResponseBodyData) SetJobs(v []*GetJobHistoryResponseBodyDataJobs) *GetJobHistoryResponseBodyData {
-	s.Jobs = v
+func (s *GetArmsTopNMetricResponseBodyData) SetCount(v int64) *GetArmsTopNMetricResponseBodyData {
+	s.Count = &v
 	return s
 }
 
-func (s *GetJobHistoryResponseBodyData) SetPageSize(v int64) *GetJobHistoryResponseBodyData {
-	s.PageSize = &v
+func (s *GetArmsTopNMetricResponseBodyData) SetError(v int64) *GetArmsTopNMetricResponseBodyData {
+	s.Error = &v
 	return s
 }
 
-func (s *GetJobHistoryResponseBodyData) SetTotalSize(v int64) *GetJobHistoryResponseBodyData {
-	s.TotalSize = &v
+func (s *GetArmsTopNMetricResponseBodyData) SetName(v string) *GetArmsTopNMetricResponseBodyData {
+	s.Name = &v
 	return s
 }
 
-type GetJobHistoryResponseBodyDataJobs struct {
-	Active         *int64  `json:"Active,omitempty" xml:"Active,omitempty"`
-	CompletionTime *int64  `json:"CompletionTime,omitempty" xml:"CompletionTime,omitempty"`
-	Failed         *int64  `json:"Failed,omitempty" xml:"Failed,omitempty"`
-	JobId          *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	StartTime      *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Succeeded      *int64  `json:"Succeeded,omitempty" xml:"Succeeded,omitempty"`
+func (s *GetArmsTopNMetricResponseBodyData) SetRegionId(v string) *GetArmsTopNMetricResponseBodyData {
+	s.RegionId = &v
+	return s
 }
 
-func (s GetJobHistoryResponseBodyDataJobs) String() string {
+func (s *GetArmsTopNMetricResponseBodyData) SetRt(v int64) *GetArmsTopNMetricResponseBodyData {
+	s.Rt = &v
+	return s
+}
+
+type GetArmsTopNMetricResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetArmsTopNMetricResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetArmsTopNMetricResponse) String() string {
 	return tea.Prettify(s)
 }
 
-func (s GetJobHistoryResponseBodyDataJobs) GoString() string {
+func (s GetArmsTopNMetricResponse) GoString() string {
 	return s.String()
 }
 
-func (s *GetJobHistoryResponseBodyDataJobs) SetActive(v int64) *GetJobHistoryResponseBodyDataJobs {
-	s.Active = &v
-	return s
-}
-
-func (s *GetJobHistoryResponseBodyDataJobs) SetCompletionTime(v int64) *GetJobHistoryResponseBodyDataJobs {
-	s.CompletionTime = &v
-	return s
-}
-
-func (s *GetJobHistoryResponseBodyDataJobs) SetFailed(v int64) *GetJobHistoryResponseBodyDataJobs {
-	s.Failed = &v
-	return s
-}
-
-func (s *GetJobHistoryResponseBodyDataJobs) SetJobId(v string) *GetJobHistoryResponseBodyDataJobs {
-	s.JobId = &v
-	return s
-}
-
-func (s *GetJobHistoryResponseBodyDataJobs) SetMessage(v string) *GetJobHistoryResponseBodyDataJobs {
-	s.Message = &v
-	return s
-}
-
-func (s *GetJobHistoryResponseBodyDataJobs) SetStartTime(v int64) *GetJobHistoryResponseBodyDataJobs {
-	s.StartTime = &v
-	return s
-}
-
-func (s *GetJobHistoryResponseBodyDataJobs) SetSucceeded(v int64) *GetJobHistoryResponseBodyDataJobs {
-	s.Succeeded = &v
-	return s
-}
-
-type GetJobHistoryResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetJobHistoryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetJobHistoryResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetJobHistoryResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetJobHistoryResponse) SetHeaders(v map[string]*string) *GetJobHistoryResponse {
+func (s *GetArmsTopNMetricResponse) SetHeaders(v map[string]*string) *GetArmsTopNMetricResponse {
 	s.Headers = v
 	return s
 }
 
-func (s *GetJobHistoryResponse) SetStatusCode(v int32) *GetJobHistoryResponse {
+func (s *GetArmsTopNMetricResponse) SetStatusCode(v int32) *GetArmsTopNMetricResponse {
 	s.StatusCode = &v
 	return s
 }
 
-func (s *GetJobHistoryResponse) SetBody(v *GetJobHistoryResponseBody) *GetJobHistoryResponse {
+func (s *GetArmsTopNMetricResponse) SetBody(v *GetArmsTopNMetricResponseBody) *GetArmsTopNMetricResponse {
+	s.Body = v
+	return s
+}
+
+type GetAvailabilityMetricResponseBody struct {
+	Code      *string                                  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      []*GetAvailabilityMetricResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	Message   *string                                  `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                                    `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetAvailabilityMetricResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAvailabilityMetricResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetAvailabilityMetricResponseBody) SetCode(v string) *GetAvailabilityMetricResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetAvailabilityMetricResponseBody) SetData(v []*GetAvailabilityMetricResponseBodyData) *GetAvailabilityMetricResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetAvailabilityMetricResponseBody) SetMessage(v string) *GetAvailabilityMetricResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetAvailabilityMetricResponseBody) SetRequestId(v string) *GetAvailabilityMetricResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetAvailabilityMetricResponseBody) SetSuccess(v bool) *GetAvailabilityMetricResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetAvailabilityMetricResponseBodyData struct {
+	AppId           *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	EnableAutoscale *int64  `json:"EnableAutoscale,omitempty" xml:"EnableAutoscale,omitempty"`
+	ErrorInstances  *int64  `json:"ErrorInstances,omitempty" xml:"ErrorInstances,omitempty"`
+	Instances       *int64  `json:"Instances,omitempty" xml:"Instances,omitempty"`
+	Name            *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Runnings        *int64  `json:"Runnings,omitempty" xml:"Runnings,omitempty"`
+}
+
+func (s GetAvailabilityMetricResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAvailabilityMetricResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetAvailabilityMetricResponseBodyData) SetAppId(v string) *GetAvailabilityMetricResponseBodyData {
+	s.AppId = &v
+	return s
+}
+
+func (s *GetAvailabilityMetricResponseBodyData) SetEnableAutoscale(v int64) *GetAvailabilityMetricResponseBodyData {
+	s.EnableAutoscale = &v
+	return s
+}
+
+func (s *GetAvailabilityMetricResponseBodyData) SetErrorInstances(v int64) *GetAvailabilityMetricResponseBodyData {
+	s.ErrorInstances = &v
+	return s
+}
+
+func (s *GetAvailabilityMetricResponseBodyData) SetInstances(v int64) *GetAvailabilityMetricResponseBodyData {
+	s.Instances = &v
+	return s
+}
+
+func (s *GetAvailabilityMetricResponseBodyData) SetName(v string) *GetAvailabilityMetricResponseBodyData {
+	s.Name = &v
+	return s
+}
+
+func (s *GetAvailabilityMetricResponseBodyData) SetRegionId(v string) *GetAvailabilityMetricResponseBodyData {
+	s.RegionId = &v
+	return s
+}
+
+func (s *GetAvailabilityMetricResponseBodyData) SetRunnings(v int64) *GetAvailabilityMetricResponseBodyData {
+	s.Runnings = &v
+	return s
+}
+
+type GetAvailabilityMetricResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetAvailabilityMetricResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetAvailabilityMetricResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAvailabilityMetricResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetAvailabilityMetricResponse) SetHeaders(v map[string]*string) *GetAvailabilityMetricResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetAvailabilityMetricResponse) SetStatusCode(v int32) *GetAvailabilityMetricResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetAvailabilityMetricResponse) SetBody(v *GetAvailabilityMetricResponseBody) *GetAvailabilityMetricResponse {
+	s.Body = v
+	return s
+}
+
+type GetChangeOrderMetricResponseBody struct {
+	Code      *string                                 `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      []*GetChangeOrderMetricResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	Message   *string                                 `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                                   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetChangeOrderMetricResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetChangeOrderMetricResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetChangeOrderMetricResponseBody) SetCode(v string) *GetChangeOrderMetricResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetChangeOrderMetricResponseBody) SetData(v []*GetChangeOrderMetricResponseBodyData) *GetChangeOrderMetricResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetChangeOrderMetricResponseBody) SetMessage(v string) *GetChangeOrderMetricResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetChangeOrderMetricResponseBody) SetRequestId(v string) *GetChangeOrderMetricResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetChangeOrderMetricResponseBody) SetSuccess(v bool) *GetChangeOrderMetricResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetChangeOrderMetricResponseBodyData struct {
+	AppId        *string  `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	Error        *int64   `json:"Error,omitempty" xml:"Error,omitempty"`
+	ErrorPercent *float32 `json:"ErrorPercent,omitempty" xml:"ErrorPercent,omitempty"`
+	Name         *string  `json:"Name,omitempty" xml:"Name,omitempty"`
+	RegionId     *string  `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Total        *int64   `json:"Total,omitempty" xml:"Total,omitempty"`
+}
+
+func (s GetChangeOrderMetricResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetChangeOrderMetricResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetChangeOrderMetricResponseBodyData) SetAppId(v string) *GetChangeOrderMetricResponseBodyData {
+	s.AppId = &v
+	return s
+}
+
+func (s *GetChangeOrderMetricResponseBodyData) SetError(v int64) *GetChangeOrderMetricResponseBodyData {
+	s.Error = &v
+	return s
+}
+
+func (s *GetChangeOrderMetricResponseBodyData) SetErrorPercent(v float32) *GetChangeOrderMetricResponseBodyData {
+	s.ErrorPercent = &v
+	return s
+}
+
+func (s *GetChangeOrderMetricResponseBodyData) SetName(v string) *GetChangeOrderMetricResponseBodyData {
+	s.Name = &v
+	return s
+}
+
+func (s *GetChangeOrderMetricResponseBodyData) SetRegionId(v string) *GetChangeOrderMetricResponseBodyData {
+	s.RegionId = &v
+	return s
+}
+
+func (s *GetChangeOrderMetricResponseBodyData) SetTotal(v int64) *GetChangeOrderMetricResponseBodyData {
+	s.Total = &v
+	return s
+}
+
+type GetChangeOrderMetricResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetChangeOrderMetricResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetChangeOrderMetricResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetChangeOrderMetricResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetChangeOrderMetricResponse) SetHeaders(v map[string]*string) *GetChangeOrderMetricResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetChangeOrderMetricResponse) SetStatusCode(v int32) *GetChangeOrderMetricResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetChangeOrderMetricResponse) SetBody(v *GetChangeOrderMetricResponseBody) *GetChangeOrderMetricResponse {
+	s.Body = v
+	return s
+}
+
+type GetScaleAppMetricResponseBody struct {
+	Code      *string                              `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      []*GetScaleAppMetricResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	Message   *string                              `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                                `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetScaleAppMetricResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetScaleAppMetricResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetScaleAppMetricResponseBody) SetCode(v string) *GetScaleAppMetricResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetScaleAppMetricResponseBody) SetData(v []*GetScaleAppMetricResponseBodyData) *GetScaleAppMetricResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetScaleAppMetricResponseBody) SetMessage(v string) *GetScaleAppMetricResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetScaleAppMetricResponseBody) SetRequestId(v string) *GetScaleAppMetricResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetScaleAppMetricResponseBody) SetSuccess(v bool) *GetScaleAppMetricResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetScaleAppMetricResponseBodyData struct {
+	AppId       *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	MaxReplicas *int64  `json:"MaxReplicas,omitempty" xml:"MaxReplicas,omitempty"`
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Runnings    *int64  `json:"Runnings,omitempty" xml:"Runnings,omitempty"`
+}
+
+func (s GetScaleAppMetricResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetScaleAppMetricResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetScaleAppMetricResponseBodyData) SetAppId(v string) *GetScaleAppMetricResponseBodyData {
+	s.AppId = &v
+	return s
+}
+
+func (s *GetScaleAppMetricResponseBodyData) SetMaxReplicas(v int64) *GetScaleAppMetricResponseBodyData {
+	s.MaxReplicas = &v
+	return s
+}
+
+func (s *GetScaleAppMetricResponseBodyData) SetName(v string) *GetScaleAppMetricResponseBodyData {
+	s.Name = &v
+	return s
+}
+
+func (s *GetScaleAppMetricResponseBodyData) SetRegionId(v string) *GetScaleAppMetricResponseBodyData {
+	s.RegionId = &v
+	return s
+}
+
+func (s *GetScaleAppMetricResponseBodyData) SetRunnings(v int64) *GetScaleAppMetricResponseBodyData {
+	s.Runnings = &v
+	return s
+}
+
+type GetScaleAppMetricResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetScaleAppMetricResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetScaleAppMetricResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetScaleAppMetricResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetScaleAppMetricResponse) SetHeaders(v map[string]*string) *GetScaleAppMetricResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetScaleAppMetricResponse) SetStatusCode(v int32) *GetScaleAppMetricResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetScaleAppMetricResponse) SetBody(v *GetScaleAppMetricResponseBody) *GetScaleAppMetricResponse {
+	s.Body = v
+	return s
+}
+
+type GetWarningEventMetricResponseBody struct {
+	Code      *string                                  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      []*GetWarningEventMetricResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	Message   *string                                  `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                                    `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetWarningEventMetricResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetWarningEventMetricResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetWarningEventMetricResponseBody) SetCode(v string) *GetWarningEventMetricResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetWarningEventMetricResponseBody) SetData(v []*GetWarningEventMetricResponseBodyData) *GetWarningEventMetricResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetWarningEventMetricResponseBody) SetMessage(v string) *GetWarningEventMetricResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetWarningEventMetricResponseBody) SetRequestId(v string) *GetWarningEventMetricResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetWarningEventMetricResponseBody) SetSuccess(v bool) *GetWarningEventMetricResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetWarningEventMetricResponseBodyData struct {
+	AppId        *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	WarningCount *int64  `json:"WarningCount,omitempty" xml:"WarningCount,omitempty"`
+}
+
+func (s GetWarningEventMetricResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetWarningEventMetricResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetWarningEventMetricResponseBodyData) SetAppId(v string) *GetWarningEventMetricResponseBodyData {
+	s.AppId = &v
+	return s
+}
+
+func (s *GetWarningEventMetricResponseBodyData) SetName(v string) *GetWarningEventMetricResponseBodyData {
+	s.Name = &v
+	return s
+}
+
+func (s *GetWarningEventMetricResponseBodyData) SetRegionId(v string) *GetWarningEventMetricResponseBodyData {
+	s.RegionId = &v
+	return s
+}
+
+func (s *GetWarningEventMetricResponseBodyData) SetWarningCount(v int64) *GetWarningEventMetricResponseBodyData {
+	s.WarningCount = &v
+	return s
+}
+
+type GetWarningEventMetricResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetWarningEventMetricResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetWarningEventMetricResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetWarningEventMetricResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetWarningEventMetricResponse) SetHeaders(v map[string]*string) *GetWarningEventMetricResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetWarningEventMetricResponse) SetStatusCode(v int32) *GetWarningEventMetricResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetWarningEventMetricResponse) SetBody(v *GetWarningEventMetricResponseBody) *GetWarningEventMetricResponse {
 	s.Body = v
 	return s
 }
@@ -13011,10 +13536,10 @@ func (s *ListGreyTagRouteResponseBodyDataResult) SetUpdateTime(v int64) *ListGre
 }
 
 type ListGreyTagRouteResponseBodyDataResultAlbRules struct {
-	Condition *string                                                `json:"condition,omitempty" xml:"condition,omitempty"`
-	IngressId *string                                                `json:"ingressId,omitempty" xml:"ingressId,omitempty"`
-	Items     []*ListGreyTagRouteResponseBodyDataResultAlbRulesItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
-	ServiceId *string                                                `json:"serviceId,omitempty" xml:"serviceId,omitempty"`
+	Condition   *string                                                `json:"condition,omitempty" xml:"condition,omitempty"`
+	IngressId   *string                                                `json:"ingressId,omitempty" xml:"ingressId,omitempty"`
+	Items       []*ListGreyTagRouteResponseBodyDataResultAlbRulesItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
+	ServiceName *string                                                `json:"serviceName,omitempty" xml:"serviceName,omitempty"`
 }
 
 func (s ListGreyTagRouteResponseBodyDataResultAlbRules) String() string {
@@ -13040,8 +13565,8 @@ func (s *ListGreyTagRouteResponseBodyDataResultAlbRules) SetItems(v []*ListGreyT
 	return s
 }
 
-func (s *ListGreyTagRouteResponseBodyDataResultAlbRules) SetServiceId(v string) *ListGreyTagRouteResponseBodyDataResultAlbRules {
-	s.ServiceId = &v
+func (s *ListGreyTagRouteResponseBodyDataResultAlbRules) SetServiceName(v string) *ListGreyTagRouteResponseBodyDataResultAlbRules {
+	s.ServiceName = &v
 	return s
 }
 
@@ -13412,8 +13937,9 @@ type ListIngressesResponseBodyDataIngressList struct {
 	LoadBalanceType  *string `json:"LoadBalanceType,omitempty" xml:"LoadBalanceType,omitempty"`
 	Name             *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	NamespaceId      *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
-	SlbId            *string `json:"SlbId,omitempty" xml:"SlbId,omitempty"`
-	SlbType          *string `json:"SlbType,omitempty" xml:"SlbType,omitempty"`
+	// SLB ID。
+	SlbId   *string `json:"SlbId,omitempty" xml:"SlbId,omitempty"`
+	SlbType *string `json:"SlbType,omitempty" xml:"SlbType,omitempty"`
 }
 
 func (s ListIngressesResponseBodyDataIngressList) String() string {
@@ -13681,19 +14207,16 @@ func (s *ListJobsResponseBodyData) SetTotalSize(v int32) *ListJobsResponseBodyDa
 
 type ListJobsResponseBodyDataApplications struct {
 	Active               *int64                                      `json:"Active,omitempty" xml:"Active,omitempty"`
-	AppDeletingStatus    *bool                                       `json:"AppDeletingStatus,omitempty" xml:"AppDeletingStatus,omitempty"`
 	AppDescription       *string                                     `json:"AppDescription,omitempty" xml:"AppDescription,omitempty"`
 	AppId                *string                                     `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	AppName              *string                                     `json:"AppName,omitempty" xml:"AppName,omitempty"`
 	CompletionTime       *int64                                      `json:"CompletionTime,omitempty" xml:"CompletionTime,omitempty"`
 	Failed               *int64                                      `json:"Failed,omitempty" xml:"Failed,omitempty"`
-	Instances            *int32                                      `json:"Instances,omitempty" xml:"Instances,omitempty"`
 	LastChangeorderState *string                                     `json:"LastChangeorderState,omitempty" xml:"LastChangeorderState,omitempty"`
 	LastJobState         *string                                     `json:"LastJobState,omitempty" xml:"LastJobState,omitempty"`
 	LastStartTime        *int64                                      `json:"LastStartTime,omitempty" xml:"LastStartTime,omitempty"`
 	NamespaceId          *string                                     `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
 	RegionId             *string                                     `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RunningInstances     *int32                                      `json:"RunningInstances,omitempty" xml:"RunningInstances,omitempty"`
 	Succeeded            *int64                                      `json:"Succeeded,omitempty" xml:"Succeeded,omitempty"`
 	Suspend              *bool                                       `json:"Suspend,omitempty" xml:"Suspend,omitempty"`
 	Tags                 []*ListJobsResponseBodyDataApplicationsTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
@@ -13710,11 +14233,6 @@ func (s ListJobsResponseBodyDataApplications) GoString() string {
 
 func (s *ListJobsResponseBodyDataApplications) SetActive(v int64) *ListJobsResponseBodyDataApplications {
 	s.Active = &v
-	return s
-}
-
-func (s *ListJobsResponseBodyDataApplications) SetAppDeletingStatus(v bool) *ListJobsResponseBodyDataApplications {
-	s.AppDeletingStatus = &v
 	return s
 }
 
@@ -13743,11 +14261,6 @@ func (s *ListJobsResponseBodyDataApplications) SetFailed(v int64) *ListJobsRespo
 	return s
 }
 
-func (s *ListJobsResponseBodyDataApplications) SetInstances(v int32) *ListJobsResponseBodyDataApplications {
-	s.Instances = &v
-	return s
-}
-
 func (s *ListJobsResponseBodyDataApplications) SetLastChangeorderState(v string) *ListJobsResponseBodyDataApplications {
 	s.LastChangeorderState = &v
 	return s
@@ -13770,11 +14283,6 @@ func (s *ListJobsResponseBodyDataApplications) SetNamespaceId(v string) *ListJob
 
 func (s *ListJobsResponseBodyDataApplications) SetRegionId(v string) *ListJobsResponseBodyDataApplications {
 	s.RegionId = &v
-	return s
-}
-
-func (s *ListJobsResponseBodyDataApplications) SetRunningInstances(v int32) *ListJobsResponseBodyDataApplications {
-	s.RunningInstances = &v
 	return s
 }
 
@@ -17006,8 +17514,12 @@ func (s *UpdateApplicationScalingRuleRequest) SetScalingRuleTimer(v string) *Upd
 }
 
 type UpdateApplicationScalingRuleResponseBody struct {
+	Code      *string                                       `json:"Code,omitempty" xml:"Code,omitempty"`
 	Data      *UpdateApplicationScalingRuleResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	ErrorCode *string                                       `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	Message   *string                                       `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                                         `json:"Success,omitempty" xml:"Success,omitempty"`
 	TraceId   *string                                       `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
 }
 
@@ -17019,13 +17531,33 @@ func (s UpdateApplicationScalingRuleResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *UpdateApplicationScalingRuleResponseBody) SetCode(v string) *UpdateApplicationScalingRuleResponseBody {
+	s.Code = &v
+	return s
+}
+
 func (s *UpdateApplicationScalingRuleResponseBody) SetData(v *UpdateApplicationScalingRuleResponseBodyData) *UpdateApplicationScalingRuleResponseBody {
 	s.Data = v
 	return s
 }
 
+func (s *UpdateApplicationScalingRuleResponseBody) SetErrorCode(v string) *UpdateApplicationScalingRuleResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *UpdateApplicationScalingRuleResponseBody) SetMessage(v string) *UpdateApplicationScalingRuleResponseBody {
+	s.Message = &v
+	return s
+}
+
 func (s *UpdateApplicationScalingRuleResponseBody) SetRequestId(v string) *UpdateApplicationScalingRuleResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateApplicationScalingRuleResponseBody) SetSuccess(v bool) *UpdateApplicationScalingRuleResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -17770,63 +18302,51 @@ func (s *UpdateIngressResponse) SetBody(v *UpdateIngressResponseBody) *UpdateIng
 }
 
 type UpdateJobRequest struct {
-	AcrAssumeRoleArn                 *string `json:"AcrAssumeRoleArn,omitempty" xml:"AcrAssumeRoleArn,omitempty"`
-	AcrInstanceId                    *string `json:"AcrInstanceId,omitempty" xml:"AcrInstanceId,omitempty"`
-	AppId                            *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	AssociateEip                     *bool   `json:"AssociateEip,omitempty" xml:"AssociateEip,omitempty"`
-	AutoEnableApplicationScalingRule *bool   `json:"AutoEnableApplicationScalingRule,omitempty" xml:"AutoEnableApplicationScalingRule,omitempty"`
-	BackoffLimit                     *int64  `json:"BackoffLimit,omitempty" xml:"BackoffLimit,omitempty"`
-	BatchWaitTime                    *int32  `json:"BatchWaitTime,omitempty" xml:"BatchWaitTime,omitempty"`
-	ChangeOrderDesc                  *string `json:"ChangeOrderDesc,omitempty" xml:"ChangeOrderDesc,omitempty"`
-	Command                          *string `json:"Command,omitempty" xml:"Command,omitempty"`
-	CommandArgs                      *string `json:"CommandArgs,omitempty" xml:"CommandArgs,omitempty"`
-	ConcurrencyPolicy                *string `json:"ConcurrencyPolicy,omitempty" xml:"ConcurrencyPolicy,omitempty"`
-	ConfigMapMountDesc               *string `json:"ConfigMapMountDesc,omitempty" xml:"ConfigMapMountDesc,omitempty"`
-	CustomHostAlias                  *string `json:"CustomHostAlias,omitempty" xml:"CustomHostAlias,omitempty"`
-	EdasContainerVersion             *string `json:"EdasContainerVersion,omitempty" xml:"EdasContainerVersion,omitempty"`
-	EnableAhas                       *string `json:"EnableAhas,omitempty" xml:"EnableAhas,omitempty"`
-	EnableGreyTagRoute               *bool   `json:"EnableGreyTagRoute,omitempty" xml:"EnableGreyTagRoute,omitempty"`
-	Envs                             *string `json:"Envs,omitempty" xml:"Envs,omitempty"`
-	ImagePullSecrets                 *string `json:"ImagePullSecrets,omitempty" xml:"ImagePullSecrets,omitempty"`
-	ImageUrl                         *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
-	JarStartArgs                     *string `json:"JarStartArgs,omitempty" xml:"JarStartArgs,omitempty"`
-	JarStartOptions                  *string `json:"JarStartOptions,omitempty" xml:"JarStartOptions,omitempty"`
-	Jdk                              *string `json:"Jdk,omitempty" xml:"Jdk,omitempty"`
-	Liveness                         *string `json:"Liveness,omitempty" xml:"Liveness,omitempty"`
-	MinReadyInstances                *int32  `json:"MinReadyInstances,omitempty" xml:"MinReadyInstances,omitempty"`
-	MountDesc                        *string `json:"MountDesc,omitempty" xml:"MountDesc,omitempty"`
-	MountHost                        *string `json:"MountHost,omitempty" xml:"MountHost,omitempty"`
-	NasId                            *string `json:"NasId,omitempty" xml:"NasId,omitempty"`
-	OssAkId                          *string `json:"OssAkId,omitempty" xml:"OssAkId,omitempty"`
-	OssAkSecret                      *string `json:"OssAkSecret,omitempty" xml:"OssAkSecret,omitempty"`
-	OssMountDescs                    *string `json:"OssMountDescs,omitempty" xml:"OssMountDescs,omitempty"`
-	PackageUrl                       *string `json:"PackageUrl,omitempty" xml:"PackageUrl,omitempty"`
-	PackageVersion                   *string `json:"PackageVersion,omitempty" xml:"PackageVersion,omitempty"`
-	Php                              *string `json:"Php,omitempty" xml:"Php,omitempty"`
-	PhpArmsConfigLocation            *string `json:"PhpArmsConfigLocation,omitempty" xml:"PhpArmsConfigLocation,omitempty"`
-	PhpConfig                        *string `json:"PhpConfig,omitempty" xml:"PhpConfig,omitempty"`
-	PhpConfigLocation                *string `json:"PhpConfigLocation,omitempty" xml:"PhpConfigLocation,omitempty"`
-	PhpExtensions                    *string `json:"PhpExtensions,omitempty" xml:"PhpExtensions,omitempty"`
-	PhpPECLExtensions                *string `json:"PhpPECLExtensions,omitempty" xml:"PhpPECLExtensions,omitempty"`
-	PostStart                        *string `json:"PostStart,omitempty" xml:"PostStart,omitempty"`
-	PreStop                          *string `json:"PreStop,omitempty" xml:"PreStop,omitempty"`
-	ProgrammingLanguage              *string `json:"ProgrammingLanguage,omitempty" xml:"ProgrammingLanguage,omitempty"`
-	Python                           *string `json:"Python,omitempty" xml:"Python,omitempty"`
-	PythonModules                    *string `json:"PythonModules,omitempty" xml:"PythonModules,omitempty"`
-	Readiness                        *string `json:"Readiness,omitempty" xml:"Readiness,omitempty"`
-	RefAppId                         *string `json:"RefAppId,omitempty" xml:"RefAppId,omitempty"`
-	Replicas                         *string `json:"Replicas,omitempty" xml:"Replicas,omitempty"`
-	Slice                            *bool   `json:"Slice,omitempty" xml:"Slice,omitempty"`
-	SliceEnvs                        *string `json:"SliceEnvs,omitempty" xml:"SliceEnvs,omitempty"`
-	SlsConfigs                       *string `json:"SlsConfigs,omitempty" xml:"SlsConfigs,omitempty"`
-	TerminationGracePeriodSeconds    *int32  `json:"TerminationGracePeriodSeconds,omitempty" xml:"TerminationGracePeriodSeconds,omitempty"`
-	Timeout                          *int64  `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
-	Timezone                         *string `json:"Timezone,omitempty" xml:"Timezone,omitempty"`
-	TomcatConfig                     *string `json:"TomcatConfig,omitempty" xml:"TomcatConfig,omitempty"`
-	TriggerConfig                    *string `json:"TriggerConfig,omitempty" xml:"TriggerConfig,omitempty"`
-	UpdateStrategy                   *string `json:"UpdateStrategy,omitempty" xml:"UpdateStrategy,omitempty"`
-	WarStartOptions                  *string `json:"WarStartOptions,omitempty" xml:"WarStartOptions,omitempty"`
-	WebContainer                     *string `json:"WebContainer,omitempty" xml:"WebContainer,omitempty"`
+	AcrAssumeRoleArn              *string `json:"AcrAssumeRoleArn,omitempty" xml:"AcrAssumeRoleArn,omitempty"`
+	AcrInstanceId                 *string `json:"AcrInstanceId,omitempty" xml:"AcrInstanceId,omitempty"`
+	AppId                         *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	BackoffLimit                  *int64  `json:"BackoffLimit,omitempty" xml:"BackoffLimit,omitempty"`
+	Command                       *string `json:"Command,omitempty" xml:"Command,omitempty"`
+	CommandArgs                   *string `json:"CommandArgs,omitempty" xml:"CommandArgs,omitempty"`
+	ConcurrencyPolicy             *string `json:"ConcurrencyPolicy,omitempty" xml:"ConcurrencyPolicy,omitempty"`
+	ConfigMapMountDesc            *string `json:"ConfigMapMountDesc,omitempty" xml:"ConfigMapMountDesc,omitempty"`
+	CustomHostAlias               *string `json:"CustomHostAlias,omitempty" xml:"CustomHostAlias,omitempty"`
+	EdasContainerVersion          *string `json:"EdasContainerVersion,omitempty" xml:"EdasContainerVersion,omitempty"`
+	EnableImageAccl               *bool   `json:"EnableImageAccl,omitempty" xml:"EnableImageAccl,omitempty"`
+	Envs                          *string `json:"Envs,omitempty" xml:"Envs,omitempty"`
+	ImagePullSecrets              *string `json:"ImagePullSecrets,omitempty" xml:"ImagePullSecrets,omitempty"`
+	ImageUrl                      *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
+	JarStartArgs                  *string `json:"JarStartArgs,omitempty" xml:"JarStartArgs,omitempty"`
+	JarStartOptions               *string `json:"JarStartOptions,omitempty" xml:"JarStartOptions,omitempty"`
+	Jdk                           *string `json:"Jdk,omitempty" xml:"Jdk,omitempty"`
+	MountDesc                     *string `json:"MountDesc,omitempty" xml:"MountDesc,omitempty"`
+	MountHost                     *string `json:"MountHost,omitempty" xml:"MountHost,omitempty"`
+	NasId                         *string `json:"NasId,omitempty" xml:"NasId,omitempty"`
+	OssAkId                       *string `json:"OssAkId,omitempty" xml:"OssAkId,omitempty"`
+	OssAkSecret                   *string `json:"OssAkSecret,omitempty" xml:"OssAkSecret,omitempty"`
+	OssMountDescs                 *string `json:"OssMountDescs,omitempty" xml:"OssMountDescs,omitempty"`
+	PackageUrl                    *string `json:"PackageUrl,omitempty" xml:"PackageUrl,omitempty"`
+	PackageVersion                *string `json:"PackageVersion,omitempty" xml:"PackageVersion,omitempty"`
+	Php                           *string `json:"Php,omitempty" xml:"Php,omitempty"`
+	PhpConfig                     *string `json:"PhpConfig,omitempty" xml:"PhpConfig,omitempty"`
+	PhpConfigLocation             *string `json:"PhpConfigLocation,omitempty" xml:"PhpConfigLocation,omitempty"`
+	PostStart                     *string `json:"PostStart,omitempty" xml:"PostStart,omitempty"`
+	PreStop                       *string `json:"PreStop,omitempty" xml:"PreStop,omitempty"`
+	ProgrammingLanguage           *string `json:"ProgrammingLanguage,omitempty" xml:"ProgrammingLanguage,omitempty"`
+	Python                        *string `json:"Python,omitempty" xml:"Python,omitempty"`
+	PythonModules                 *string `json:"PythonModules,omitempty" xml:"PythonModules,omitempty"`
+	RefAppId                      *string `json:"RefAppId,omitempty" xml:"RefAppId,omitempty"`
+	Replicas                      *string `json:"Replicas,omitempty" xml:"Replicas,omitempty"`
+	Slice                         *bool   `json:"Slice,omitempty" xml:"Slice,omitempty"`
+	SliceEnvs                     *string `json:"SliceEnvs,omitempty" xml:"SliceEnvs,omitempty"`
+	SlsConfigs                    *string `json:"SlsConfigs,omitempty" xml:"SlsConfigs,omitempty"`
+	TerminationGracePeriodSeconds *int32  `json:"TerminationGracePeriodSeconds,omitempty" xml:"TerminationGracePeriodSeconds,omitempty"`
+	Timeout                       *int64  `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+	Timezone                      *string `json:"Timezone,omitempty" xml:"Timezone,omitempty"`
+	TomcatConfig                  *string `json:"TomcatConfig,omitempty" xml:"TomcatConfig,omitempty"`
+	TriggerConfig                 *string `json:"TriggerConfig,omitempty" xml:"TriggerConfig,omitempty"`
+	WarStartOptions               *string `json:"WarStartOptions,omitempty" xml:"WarStartOptions,omitempty"`
+	WebContainer                  *string `json:"WebContainer,omitempty" xml:"WebContainer,omitempty"`
 }
 
 func (s UpdateJobRequest) String() string {
@@ -17852,28 +18372,8 @@ func (s *UpdateJobRequest) SetAppId(v string) *UpdateJobRequest {
 	return s
 }
 
-func (s *UpdateJobRequest) SetAssociateEip(v bool) *UpdateJobRequest {
-	s.AssociateEip = &v
-	return s
-}
-
-func (s *UpdateJobRequest) SetAutoEnableApplicationScalingRule(v bool) *UpdateJobRequest {
-	s.AutoEnableApplicationScalingRule = &v
-	return s
-}
-
 func (s *UpdateJobRequest) SetBackoffLimit(v int64) *UpdateJobRequest {
 	s.BackoffLimit = &v
-	return s
-}
-
-func (s *UpdateJobRequest) SetBatchWaitTime(v int32) *UpdateJobRequest {
-	s.BatchWaitTime = &v
-	return s
-}
-
-func (s *UpdateJobRequest) SetChangeOrderDesc(v string) *UpdateJobRequest {
-	s.ChangeOrderDesc = &v
 	return s
 }
 
@@ -17907,13 +18407,8 @@ func (s *UpdateJobRequest) SetEdasContainerVersion(v string) *UpdateJobRequest {
 	return s
 }
 
-func (s *UpdateJobRequest) SetEnableAhas(v string) *UpdateJobRequest {
-	s.EnableAhas = &v
-	return s
-}
-
-func (s *UpdateJobRequest) SetEnableGreyTagRoute(v bool) *UpdateJobRequest {
-	s.EnableGreyTagRoute = &v
+func (s *UpdateJobRequest) SetEnableImageAccl(v bool) *UpdateJobRequest {
+	s.EnableImageAccl = &v
 	return s
 }
 
@@ -17944,16 +18439,6 @@ func (s *UpdateJobRequest) SetJarStartOptions(v string) *UpdateJobRequest {
 
 func (s *UpdateJobRequest) SetJdk(v string) *UpdateJobRequest {
 	s.Jdk = &v
-	return s
-}
-
-func (s *UpdateJobRequest) SetLiveness(v string) *UpdateJobRequest {
-	s.Liveness = &v
-	return s
-}
-
-func (s *UpdateJobRequest) SetMinReadyInstances(v int32) *UpdateJobRequest {
-	s.MinReadyInstances = &v
 	return s
 }
 
@@ -18002,11 +18487,6 @@ func (s *UpdateJobRequest) SetPhp(v string) *UpdateJobRequest {
 	return s
 }
 
-func (s *UpdateJobRequest) SetPhpArmsConfigLocation(v string) *UpdateJobRequest {
-	s.PhpArmsConfigLocation = &v
-	return s
-}
-
 func (s *UpdateJobRequest) SetPhpConfig(v string) *UpdateJobRequest {
 	s.PhpConfig = &v
 	return s
@@ -18014,16 +18494,6 @@ func (s *UpdateJobRequest) SetPhpConfig(v string) *UpdateJobRequest {
 
 func (s *UpdateJobRequest) SetPhpConfigLocation(v string) *UpdateJobRequest {
 	s.PhpConfigLocation = &v
-	return s
-}
-
-func (s *UpdateJobRequest) SetPhpExtensions(v string) *UpdateJobRequest {
-	s.PhpExtensions = &v
-	return s
-}
-
-func (s *UpdateJobRequest) SetPhpPECLExtensions(v string) *UpdateJobRequest {
-	s.PhpPECLExtensions = &v
 	return s
 }
 
@@ -18049,11 +18519,6 @@ func (s *UpdateJobRequest) SetPython(v string) *UpdateJobRequest {
 
 func (s *UpdateJobRequest) SetPythonModules(v string) *UpdateJobRequest {
 	s.PythonModules = &v
-	return s
-}
-
-func (s *UpdateJobRequest) SetReadiness(v string) *UpdateJobRequest {
-	s.Readiness = &v
 	return s
 }
 
@@ -18104,11 +18569,6 @@ func (s *UpdateJobRequest) SetTomcatConfig(v string) *UpdateJobRequest {
 
 func (s *UpdateJobRequest) SetTriggerConfig(v string) *UpdateJobRequest {
 	s.TriggerConfig = &v
-	return s
-}
-
-func (s *UpdateJobRequest) SetUpdateStrategy(v string) *UpdateJobRequest {
-	s.UpdateStrategy = &v
 	return s
 }
 
@@ -18228,6 +18688,7 @@ func (s *UpdateJobResponse) SetBody(v *UpdateJobResponseBody) *UpdateJobResponse
 }
 
 type UpdateNamespaceRequest struct {
+	NameSpaceShortId     *string `json:"NameSpaceShortId,omitempty" xml:"NameSpaceShortId,omitempty"`
 	NamespaceDescription *string `json:"NamespaceDescription,omitempty" xml:"NamespaceDescription,omitempty"`
 	NamespaceId          *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
 	NamespaceName        *string `json:"NamespaceName,omitempty" xml:"NamespaceName,omitempty"`
@@ -18239,6 +18700,11 @@ func (s UpdateNamespaceRequest) String() string {
 
 func (s UpdateNamespaceRequest) GoString() string {
 	return s.String()
+}
+
+func (s *UpdateNamespaceRequest) SetNameSpaceShortId(v string) *UpdateNamespaceRequest {
+	s.NameSpaceShortId = &v
+	return s
 }
 
 func (s *UpdateNamespaceRequest) SetNamespaceDescription(v string) *UpdateNamespaceRequest {
@@ -18310,6 +18776,7 @@ func (s *UpdateNamespaceResponseBody) SetTraceId(v string) *UpdateNamespaceRespo
 }
 
 type UpdateNamespaceResponseBodyData struct {
+	NameSpaceShortId     *string `json:"NameSpaceShortId,omitempty" xml:"NameSpaceShortId,omitempty"`
 	NamespaceDescription *string `json:"NamespaceDescription,omitempty" xml:"NamespaceDescription,omitempty"`
 	NamespaceId          *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
 	NamespaceName        *string `json:"NamespaceName,omitempty" xml:"NamespaceName,omitempty"`
@@ -18322,6 +18789,11 @@ func (s UpdateNamespaceResponseBodyData) String() string {
 
 func (s UpdateNamespaceResponseBodyData) GoString() string {
 	return s.String()
+}
+
+func (s *UpdateNamespaceResponseBodyData) SetNameSpaceShortId(v string) *UpdateNamespaceResponseBodyData {
+	s.NameSpaceShortId = &v
+	return s
 }
 
 func (s *UpdateNamespaceResponseBodyData) SetNamespaceDescription(v string) *UpdateNamespaceResponseBodyData {
@@ -18374,8 +18846,9 @@ func (s *UpdateNamespaceResponse) SetBody(v *UpdateNamespaceResponseBody) *Updat
 }
 
 type UpdateNamespaceVpcRequest struct {
-	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
-	VpcId       *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	NameSpaceShortId *string `json:"NameSpaceShortId,omitempty" xml:"NameSpaceShortId,omitempty"`
+	NamespaceId      *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+	VpcId            *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s UpdateNamespaceVpcRequest) String() string {
@@ -18384,6 +18857,11 @@ func (s UpdateNamespaceVpcRequest) String() string {
 
 func (s UpdateNamespaceVpcRequest) GoString() string {
 	return s.String()
+}
+
+func (s *UpdateNamespaceVpcRequest) SetNameSpaceShortId(v string) *UpdateNamespaceVpcRequest {
+	s.NameSpaceShortId = &v
+	return s
 }
 
 func (s *UpdateNamespaceVpcRequest) SetNamespaceId(v string) *UpdateNamespaceVpcRequest {
@@ -18555,7 +19033,7 @@ func (s *UpdateSecretResponseBody) SetTraceId(v string) *UpdateSecretResponseBod
 }
 
 type UpdateSecretResponseBodyData struct {
-	SecretId *string `json:"SecretId,omitempty" xml:"SecretId,omitempty"`
+	SecretId *int64 `json:"SecretId,omitempty" xml:"SecretId,omitempty"`
 }
 
 func (s UpdateSecretResponseBodyData) String() string {
@@ -18566,7 +19044,7 @@ func (s UpdateSecretResponseBodyData) GoString() string {
 	return s.String()
 }
 
-func (s *UpdateSecretResponseBodyData) SetSecretId(v string) *UpdateSecretResponseBodyData {
+func (s *UpdateSecretResponseBodyData) SetSecretId(v int64) *UpdateSecretResponseBodyData {
 	s.SecretId = &v
 	return s
 }
@@ -18647,18 +19125,6 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
-func (client *Client) AbortAndRollbackChangeOrder(request *AbortAndRollbackChangeOrderRequest) (_result *AbortAndRollbackChangeOrderResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &AbortAndRollbackChangeOrderResponse{}
-	_body, _err := client.AbortAndRollbackChangeOrderWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) AbortAndRollbackChangeOrderWithOptions(request *AbortAndRollbackChangeOrderRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *AbortAndRollbackChangeOrderResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18693,11 +19159,11 @@ func (client *Client) AbortAndRollbackChangeOrderWithOptions(request *AbortAndRo
 	return _result, _err
 }
 
-func (client *Client) AbortChangeOrder(request *AbortChangeOrderRequest) (_result *AbortChangeOrderResponse, _err error) {
+func (client *Client) AbortAndRollbackChangeOrder(request *AbortAndRollbackChangeOrderRequest) (_result *AbortAndRollbackChangeOrderResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &AbortChangeOrderResponse{}
-	_body, _err := client.AbortChangeOrderWithOptions(request, headers, runtime)
+	_result = &AbortAndRollbackChangeOrderResponse{}
+	_body, _err := client.AbortAndRollbackChangeOrderWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -18739,11 +19205,11 @@ func (client *Client) AbortChangeOrderWithOptions(request *AbortChangeOrderReque
 	return _result, _err
 }
 
-func (client *Client) BatchStartApplications(request *BatchStartApplicationsRequest) (_result *BatchStartApplicationsResponse, _err error) {
+func (client *Client) AbortChangeOrder(request *AbortChangeOrderRequest) (_result *AbortChangeOrderResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &BatchStartApplicationsResponse{}
-	_body, _err := client.BatchStartApplicationsWithOptions(request, headers, runtime)
+	_result = &AbortChangeOrderResponse{}
+	_body, _err := client.AbortChangeOrderWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -18789,11 +19255,11 @@ func (client *Client) BatchStartApplicationsWithOptions(request *BatchStartAppli
 	return _result, _err
 }
 
-func (client *Client) BatchStopApplications(request *BatchStopApplicationsRequest) (_result *BatchStopApplicationsResponse, _err error) {
+func (client *Client) BatchStartApplications(request *BatchStartApplicationsRequest) (_result *BatchStartApplicationsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &BatchStopApplicationsResponse{}
-	_body, _err := client.BatchStopApplicationsWithOptions(request, headers, runtime)
+	_result = &BatchStartApplicationsResponse{}
+	_body, _err := client.BatchStartApplicationsWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -18839,11 +19305,11 @@ func (client *Client) BatchStopApplicationsWithOptions(request *BatchStopApplica
 	return _result, _err
 }
 
-func (client *Client) BindSlb(request *BindSlbRequest) (_result *BindSlbResponse, _err error) {
+func (client *Client) BatchStopApplications(request *BatchStopApplicationsRequest) (_result *BatchStopApplicationsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &BindSlbResponse{}
-	_body, _err := client.BindSlbWithOptions(request, headers, runtime)
+	_result = &BatchStopApplicationsResponse{}
+	_body, _err := client.BatchStopApplicationsWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -18901,11 +19367,11 @@ func (client *Client) BindSlbWithOptions(request *BindSlbRequest, headers map[st
 	return _result, _err
 }
 
-func (client *Client) ConfirmPipelineBatch(request *ConfirmPipelineBatchRequest) (_result *ConfirmPipelineBatchResponse, _err error) {
+func (client *Client) BindSlb(request *BindSlbRequest) (_result *BindSlbResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ConfirmPipelineBatchResponse{}
-	_body, _err := client.ConfirmPipelineBatchWithOptions(request, headers, runtime)
+	_result = &BindSlbResponse{}
+	_body, _err := client.BindSlbWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -18951,11 +19417,11 @@ func (client *Client) ConfirmPipelineBatchWithOptions(request *ConfirmPipelineBa
 	return _result, _err
 }
 
-func (client *Client) CreateApplication(request *CreateApplicationRequest) (_result *CreateApplicationResponse, _err error) {
+func (client *Client) ConfirmPipelineBatch(request *ConfirmPipelineBatchRequest) (_result *ConfirmPipelineBatchResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &CreateApplicationResponse{}
-	_body, _err := client.CreateApplicationWithOptions(request, headers, runtime)
+	_result = &ConfirmPipelineBatchResponse{}
+	_body, _err := client.ConfirmPipelineBatchWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19211,11 +19677,11 @@ func (client *Client) CreateApplicationWithOptions(request *CreateApplicationReq
 	return _result, _err
 }
 
-func (client *Client) CreateApplicationScalingRule(request *CreateApplicationScalingRuleRequest) (_result *CreateApplicationScalingRuleResponse, _err error) {
+func (client *Client) CreateApplication(request *CreateApplicationRequest) (_result *CreateApplicationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &CreateApplicationScalingRuleResponse{}
-	_body, _err := client.CreateApplicationScalingRuleWithOptions(request, headers, runtime)
+	_result = &CreateApplicationResponse{}
+	_body, _err := client.CreateApplicationWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19285,11 +19751,11 @@ func (client *Client) CreateApplicationScalingRuleWithOptions(request *CreateApp
 	return _result, _err
 }
 
-func (client *Client) CreateConfigMap(request *CreateConfigMapRequest) (_result *CreateConfigMapResponse, _err error) {
+func (client *Client) CreateApplicationScalingRule(request *CreateApplicationScalingRuleRequest) (_result *CreateApplicationScalingRuleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &CreateConfigMapResponse{}
-	_body, _err := client.CreateConfigMapWithOptions(request, headers, runtime)
+	_result = &CreateApplicationScalingRuleResponse{}
+	_body, _err := client.CreateApplicationScalingRuleWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19345,11 +19811,11 @@ func (client *Client) CreateConfigMapWithOptions(request *CreateConfigMapRequest
 	return _result, _err
 }
 
-func (client *Client) CreateGreyTagRoute(request *CreateGreyTagRouteRequest) (_result *CreateGreyTagRouteResponse, _err error) {
+func (client *Client) CreateConfigMap(request *CreateConfigMapRequest) (_result *CreateConfigMapResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &CreateGreyTagRouteResponse{}
-	_body, _err := client.CreateGreyTagRouteWithOptions(request, headers, runtime)
+	_result = &CreateConfigMapResponse{}
+	_body, _err := client.CreateConfigMapWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19411,11 +19877,11 @@ func (client *Client) CreateGreyTagRouteWithOptions(request *CreateGreyTagRouteR
 	return _result, _err
 }
 
-func (client *Client) CreateIngress(request *CreateIngressRequest) (_result *CreateIngressResponse, _err error) {
+func (client *Client) CreateGreyTagRoute(request *CreateGreyTagRouteRequest) (_result *CreateGreyTagRouteResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &CreateIngressResponse{}
-	_body, _err := client.CreateIngressWithOptions(request, headers, runtime)
+	_result = &CreateGreyTagRouteResponse{}
+	_body, _err := client.CreateGreyTagRouteWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19495,11 +19961,11 @@ func (client *Client) CreateIngressWithOptions(request *CreateIngressRequest, he
 	return _result, _err
 }
 
-func (client *Client) CreateJob(request *CreateJobRequest) (_result *CreateJobResponse, _err error) {
+func (client *Client) CreateIngress(request *CreateIngressRequest) (_result *CreateIngressResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &CreateJobResponse{}
-	_body, _err := client.CreateJobWithOptions(request, headers, runtime)
+	_result = &CreateIngressResponse{}
+	_body, _err := client.CreateIngressWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19553,10 +20019,6 @@ func (client *Client) CreateJobWithOptions(request *CreateJobRequest, headers ma
 		query["CustomHostAlias"] = request.CustomHostAlias
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.Deploy)) {
-		query["Deploy"] = request.Deploy
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.EdasContainerVersion)) {
 		query["EdasContainerVersion"] = request.EdasContainerVersion
 	}
@@ -19583,10 +20045,6 @@ func (client *Client) CreateJobWithOptions(request *CreateJobRequest, headers ma
 
 	if !tea.BoolValue(util.IsUnset(request.Jdk)) {
 		query["Jdk"] = request.Jdk
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Liveness)) {
-		query["Liveness"] = request.Liveness
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Memory)) {
@@ -19621,10 +20079,6 @@ func (client *Client) CreateJobWithOptions(request *CreateJobRequest, headers ma
 		query["PackageVersion"] = request.PackageVersion
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.PhpArmsConfigLocation)) {
-		query["PhpArmsConfigLocation"] = request.PhpArmsConfigLocation
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.PhpConfigLocation)) {
 		query["PhpConfigLocation"] = request.PhpConfigLocation
 	}
@@ -19647,10 +20101,6 @@ func (client *Client) CreateJobWithOptions(request *CreateJobRequest, headers ma
 
 	if !tea.BoolValue(util.IsUnset(request.PythonModules)) {
 		query["PythonModules"] = request.PythonModules
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Readiness)) {
-		query["Readiness"] = request.Readiness
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.RefAppId)) {
@@ -19718,12 +20168,16 @@ func (client *Client) CreateJobWithOptions(request *CreateJobRequest, headers ma
 	}
 
 	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.AssociateEip)) {
-		body["AssociateEip"] = request.AssociateEip
+	if !tea.BoolValue(util.IsUnset(request.AcrInstanceId)) {
+		body["AcrInstanceId"] = request.AcrInstanceId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ConfigMapMountDesc)) {
 		body["ConfigMapMountDesc"] = request.ConfigMapMountDesc
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnableImageAccl)) {
+		body["EnableImageAccl"] = request.EnableImageAccl
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.OssAkId)) {
@@ -19767,11 +20221,11 @@ func (client *Client) CreateJobWithOptions(request *CreateJobRequest, headers ma
 	return _result, _err
 }
 
-func (client *Client) CreateNamespace(request *CreateNamespaceRequest) (_result *CreateNamespaceResponse, _err error) {
+func (client *Client) CreateJob(request *CreateJobRequest) (_result *CreateJobResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &CreateNamespaceResponse{}
-	_body, _err := client.CreateNamespaceWithOptions(request, headers, runtime)
+	_result = &CreateJobResponse{}
+	_body, _err := client.CreateJobWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19785,6 +20239,10 @@ func (client *Client) CreateNamespaceWithOptions(request *CreateNamespaceRequest
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.NameSpaceShortId)) {
+		query["NameSpaceShortId"] = request.NameSpaceShortId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.NamespaceDescription)) {
 		query["NamespaceDescription"] = request.NamespaceDescription
 	}
@@ -19821,11 +20279,11 @@ func (client *Client) CreateNamespaceWithOptions(request *CreateNamespaceRequest
 	return _result, _err
 }
 
-func (client *Client) CreateSecret(request *CreateSecretRequest) (_result *CreateSecretResponse, _err error) {
+func (client *Client) CreateNamespace(request *CreateNamespaceRequest) (_result *CreateNamespaceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &CreateSecretResponse{}
-	_body, _err := client.CreateSecretWithOptions(request, headers, runtime)
+	_result = &CreateNamespaceResponse{}
+	_body, _err := client.CreateNamespaceWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19881,11 +20339,11 @@ func (client *Client) CreateSecretWithOptions(request *CreateSecretRequest, head
 	return _result, _err
 }
 
-func (client *Client) DeleteApplication(request *DeleteApplicationRequest) (_result *DeleteApplicationResponse, _err error) {
+func (client *Client) CreateSecret(request *CreateSecretRequest) (_result *CreateSecretResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DeleteApplicationResponse{}
-	_body, _err := client.DeleteApplicationWithOptions(request, headers, runtime)
+	_result = &CreateSecretResponse{}
+	_body, _err := client.CreateSecretWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19927,11 +20385,11 @@ func (client *Client) DeleteApplicationWithOptions(request *DeleteApplicationReq
 	return _result, _err
 }
 
-func (client *Client) DeleteApplicationScalingRule(request *DeleteApplicationScalingRuleRequest) (_result *DeleteApplicationScalingRuleResponse, _err error) {
+func (client *Client) DeleteApplication(request *DeleteApplicationRequest) (_result *DeleteApplicationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DeleteApplicationScalingRuleResponse{}
-	_body, _err := client.DeleteApplicationScalingRuleWithOptions(request, headers, runtime)
+	_result = &DeleteApplicationResponse{}
+	_body, _err := client.DeleteApplicationWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19977,11 +20435,11 @@ func (client *Client) DeleteApplicationScalingRuleWithOptions(request *DeleteApp
 	return _result, _err
 }
 
-func (client *Client) DeleteConfigMap(request *DeleteConfigMapRequest) (_result *DeleteConfigMapResponse, _err error) {
+func (client *Client) DeleteApplicationScalingRule(request *DeleteApplicationScalingRuleRequest) (_result *DeleteApplicationScalingRuleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DeleteConfigMapResponse{}
-	_body, _err := client.DeleteConfigMapWithOptions(request, headers, runtime)
+	_result = &DeleteApplicationScalingRuleResponse{}
+	_body, _err := client.DeleteApplicationScalingRuleWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20023,11 +20481,11 @@ func (client *Client) DeleteConfigMapWithOptions(request *DeleteConfigMapRequest
 	return _result, _err
 }
 
-func (client *Client) DeleteGreyTagRoute(request *DeleteGreyTagRouteRequest) (_result *DeleteGreyTagRouteResponse, _err error) {
+func (client *Client) DeleteConfigMap(request *DeleteConfigMapRequest) (_result *DeleteConfigMapResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DeleteGreyTagRouteResponse{}
-	_body, _err := client.DeleteGreyTagRouteWithOptions(request, headers, runtime)
+	_result = &DeleteConfigMapResponse{}
+	_body, _err := client.DeleteConfigMapWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20069,11 +20527,11 @@ func (client *Client) DeleteGreyTagRouteWithOptions(request *DeleteGreyTagRouteR
 	return _result, _err
 }
 
-func (client *Client) DeleteHistoryJob(request *DeleteHistoryJobRequest) (_result *DeleteHistoryJobResponse, _err error) {
+func (client *Client) DeleteGreyTagRoute(request *DeleteGreyTagRouteRequest) (_result *DeleteGreyTagRouteResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DeleteHistoryJobResponse{}
-	_body, _err := client.DeleteHistoryJobWithOptions(request, headers, runtime)
+	_result = &DeleteGreyTagRouteResponse{}
+	_body, _err := client.DeleteGreyTagRouteWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20119,11 +20577,11 @@ func (client *Client) DeleteHistoryJobWithOptions(request *DeleteHistoryJobReque
 	return _result, _err
 }
 
-func (client *Client) DeleteIngress(request *DeleteIngressRequest) (_result *DeleteIngressResponse, _err error) {
+func (client *Client) DeleteHistoryJob(request *DeleteHistoryJobRequest) (_result *DeleteHistoryJobResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DeleteIngressResponse{}
-	_body, _err := client.DeleteIngressWithOptions(request, headers, runtime)
+	_result = &DeleteHistoryJobResponse{}
+	_body, _err := client.DeleteHistoryJobWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20165,11 +20623,11 @@ func (client *Client) DeleteIngressWithOptions(request *DeleteIngressRequest, he
 	return _result, _err
 }
 
-func (client *Client) DeleteJob(request *DeleteJobRequest) (_result *DeleteJobResponse, _err error) {
+func (client *Client) DeleteIngress(request *DeleteIngressRequest) (_result *DeleteIngressResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DeleteJobResponse{}
-	_body, _err := client.DeleteJobWithOptions(request, headers, runtime)
+	_result = &DeleteIngressResponse{}
+	_body, _err := client.DeleteIngressWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20211,11 +20669,11 @@ func (client *Client) DeleteJobWithOptions(request *DeleteJobRequest, headers ma
 	return _result, _err
 }
 
-func (client *Client) DeleteNamespace(request *DeleteNamespaceRequest) (_result *DeleteNamespaceResponse, _err error) {
+func (client *Client) DeleteJob(request *DeleteJobRequest) (_result *DeleteJobResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DeleteNamespaceResponse{}
-	_body, _err := client.DeleteNamespaceWithOptions(request, headers, runtime)
+	_result = &DeleteJobResponse{}
+	_body, _err := client.DeleteJobWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20229,6 +20687,10 @@ func (client *Client) DeleteNamespaceWithOptions(request *DeleteNamespaceRequest
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.NameSpaceShortId)) {
+		query["NameSpaceShortId"] = request.NameSpaceShortId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.NamespaceId)) {
 		query["NamespaceId"] = request.NamespaceId
 	}
@@ -20257,11 +20719,11 @@ func (client *Client) DeleteNamespaceWithOptions(request *DeleteNamespaceRequest
 	return _result, _err
 }
 
-func (client *Client) DeleteSecret(request *DeleteSecretRequest) (_result *DeleteSecretResponse, _err error) {
+func (client *Client) DeleteNamespace(request *DeleteNamespaceRequest) (_result *DeleteNamespaceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DeleteSecretResponse{}
-	_body, _err := client.DeleteSecretWithOptions(request, headers, runtime)
+	_result = &DeleteNamespaceResponse{}
+	_body, _err := client.DeleteNamespaceWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20307,11 +20769,11 @@ func (client *Client) DeleteSecretWithOptions(request *DeleteSecretRequest, head
 	return _result, _err
 }
 
-func (client *Client) DeployApplication(request *DeployApplicationRequest) (_result *DeployApplicationResponse, _err error) {
+func (client *Client) DeleteSecret(request *DeleteSecretRequest) (_result *DeleteSecretResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DeployApplicationResponse{}
-	_body, _err := client.DeployApplicationWithOptions(request, headers, runtime)
+	_result = &DeleteSecretResponse{}
+	_body, _err := client.DeleteSecretWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20355,6 +20817,10 @@ func (client *Client) DeployApplicationWithOptions(request *DeployApplicationReq
 
 	if !tea.BoolValue(util.IsUnset(request.CustomHostAlias)) {
 		query["CustomHostAlias"] = request.CustomHostAlias
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Deploy)) {
+		query["Deploy"] = request.Deploy
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.EdasContainerVersion)) {
@@ -20427,6 +20893,10 @@ func (client *Client) DeployApplicationWithOptions(request *DeployApplicationReq
 
 	if !tea.BoolValue(util.IsUnset(request.NasId)) {
 		query["NasId"] = request.NasId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PackageType)) {
+		query["PackageType"] = request.PackageType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.PackageUrl)) {
@@ -20551,11 +21021,11 @@ func (client *Client) DeployApplicationWithOptions(request *DeployApplicationReq
 	return _result, _err
 }
 
-func (client *Client) DescribeAppServiceDetail(request *DescribeAppServiceDetailRequest) (_result *DescribeAppServiceDetailResponse, _err error) {
+func (client *Client) DeployApplication(request *DeployApplicationRequest) (_result *DeployApplicationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DescribeAppServiceDetailResponse{}
-	_body, _err := client.DescribeAppServiceDetailWithOptions(request, headers, runtime)
+	_result = &DeployApplicationResponse{}
+	_body, _err := client.DeployApplicationWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20613,11 +21083,11 @@ func (client *Client) DescribeAppServiceDetailWithOptions(request *DescribeAppSe
 	return _result, _err
 }
 
-func (client *Client) DescribeApplicationConfig(request *DescribeApplicationConfigRequest) (_result *DescribeApplicationConfigResponse, _err error) {
+func (client *Client) DescribeAppServiceDetail(request *DescribeAppServiceDetailRequest) (_result *DescribeAppServiceDetailResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DescribeApplicationConfigResponse{}
-	_body, _err := client.DescribeApplicationConfigWithOptions(request, headers, runtime)
+	_result = &DescribeAppServiceDetailResponse{}
+	_body, _err := client.DescribeAppServiceDetailWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20663,11 +21133,11 @@ func (client *Client) DescribeApplicationConfigWithOptions(request *DescribeAppl
 	return _result, _err
 }
 
-func (client *Client) DescribeApplicationGroups(request *DescribeApplicationGroupsRequest) (_result *DescribeApplicationGroupsResponse, _err error) {
+func (client *Client) DescribeApplicationConfig(request *DescribeApplicationConfigRequest) (_result *DescribeApplicationConfigResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DescribeApplicationGroupsResponse{}
-	_body, _err := client.DescribeApplicationGroupsWithOptions(request, headers, runtime)
+	_result = &DescribeApplicationConfigResponse{}
+	_body, _err := client.DescribeApplicationConfigWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20717,11 +21187,11 @@ func (client *Client) DescribeApplicationGroupsWithOptions(request *DescribeAppl
 	return _result, _err
 }
 
-func (client *Client) DescribeApplicationImage(request *DescribeApplicationImageRequest) (_result *DescribeApplicationImageResponse, _err error) {
+func (client *Client) DescribeApplicationGroups(request *DescribeApplicationGroupsRequest) (_result *DescribeApplicationGroupsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DescribeApplicationImageResponse{}
-	_body, _err := client.DescribeApplicationImageWithOptions(request, headers, runtime)
+	_result = &DescribeApplicationGroupsResponse{}
+	_body, _err := client.DescribeApplicationGroupsWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20767,11 +21237,11 @@ func (client *Client) DescribeApplicationImageWithOptions(request *DescribeAppli
 	return _result, _err
 }
 
-func (client *Client) DescribeApplicationInstances(request *DescribeApplicationInstancesRequest) (_result *DescribeApplicationInstancesResponse, _err error) {
+func (client *Client) DescribeApplicationImage(request *DescribeApplicationImageRequest) (_result *DescribeApplicationImageResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DescribeApplicationInstancesResponse{}
-	_body, _err := client.DescribeApplicationInstancesWithOptions(request, headers, runtime)
+	_result = &DescribeApplicationImageResponse{}
+	_body, _err := client.DescribeApplicationImageWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20829,11 +21299,11 @@ func (client *Client) DescribeApplicationInstancesWithOptions(request *DescribeA
 	return _result, _err
 }
 
-func (client *Client) DescribeApplicationScalingRule(request *DescribeApplicationScalingRuleRequest) (_result *DescribeApplicationScalingRuleResponse, _err error) {
+func (client *Client) DescribeApplicationInstances(request *DescribeApplicationInstancesRequest) (_result *DescribeApplicationInstancesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DescribeApplicationScalingRuleResponse{}
-	_body, _err := client.DescribeApplicationScalingRuleWithOptions(request, headers, runtime)
+	_result = &DescribeApplicationInstancesResponse{}
+	_body, _err := client.DescribeApplicationInstancesWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20879,11 +21349,11 @@ func (client *Client) DescribeApplicationScalingRuleWithOptions(request *Describ
 	return _result, _err
 }
 
-func (client *Client) DescribeApplicationScalingRules(request *DescribeApplicationScalingRulesRequest) (_result *DescribeApplicationScalingRulesResponse, _err error) {
+func (client *Client) DescribeApplicationScalingRule(request *DescribeApplicationScalingRuleRequest) (_result *DescribeApplicationScalingRuleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DescribeApplicationScalingRulesResponse{}
-	_body, _err := client.DescribeApplicationScalingRulesWithOptions(request, headers, runtime)
+	_result = &DescribeApplicationScalingRuleResponse{}
+	_body, _err := client.DescribeApplicationScalingRuleWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20925,11 +21395,11 @@ func (client *Client) DescribeApplicationScalingRulesWithOptions(request *Descri
 	return _result, _err
 }
 
-func (client *Client) DescribeApplicationSlbs(request *DescribeApplicationSlbsRequest) (_result *DescribeApplicationSlbsResponse, _err error) {
+func (client *Client) DescribeApplicationScalingRules(request *DescribeApplicationScalingRulesRequest) (_result *DescribeApplicationScalingRulesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DescribeApplicationSlbsResponse{}
-	_body, _err := client.DescribeApplicationSlbsWithOptions(request, headers, runtime)
+	_result = &DescribeApplicationScalingRulesResponse{}
+	_body, _err := client.DescribeApplicationScalingRulesWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20971,11 +21441,11 @@ func (client *Client) DescribeApplicationSlbsWithOptions(request *DescribeApplic
 	return _result, _err
 }
 
-func (client *Client) DescribeApplicationStatus(request *DescribeApplicationStatusRequest) (_result *DescribeApplicationStatusResponse, _err error) {
+func (client *Client) DescribeApplicationSlbs(request *DescribeApplicationSlbsRequest) (_result *DescribeApplicationSlbsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DescribeApplicationStatusResponse{}
-	_body, _err := client.DescribeApplicationStatusWithOptions(request, headers, runtime)
+	_result = &DescribeApplicationSlbsResponse{}
+	_body, _err := client.DescribeApplicationSlbsWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21017,11 +21487,11 @@ func (client *Client) DescribeApplicationStatusWithOptions(request *DescribeAppl
 	return _result, _err
 }
 
-func (client *Client) DescribeChangeOrder(request *DescribeChangeOrderRequest) (_result *DescribeChangeOrderResponse, _err error) {
+func (client *Client) DescribeApplicationStatus(request *DescribeApplicationStatusRequest) (_result *DescribeApplicationStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DescribeChangeOrderResponse{}
-	_body, _err := client.DescribeChangeOrderWithOptions(request, headers, runtime)
+	_result = &DescribeApplicationStatusResponse{}
+	_body, _err := client.DescribeApplicationStatusWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21063,11 +21533,11 @@ func (client *Client) DescribeChangeOrderWithOptions(request *DescribeChangeOrde
 	return _result, _err
 }
 
-func (client *Client) DescribeComponents(request *DescribeComponentsRequest) (_result *DescribeComponentsResponse, _err error) {
+func (client *Client) DescribeChangeOrder(request *DescribeChangeOrderRequest) (_result *DescribeChangeOrderResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DescribeComponentsResponse{}
-	_body, _err := client.DescribeComponentsWithOptions(request, headers, runtime)
+	_result = &DescribeChangeOrderResponse{}
+	_body, _err := client.DescribeChangeOrderWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21113,11 +21583,11 @@ func (client *Client) DescribeComponentsWithOptions(request *DescribeComponentsR
 	return _result, _err
 }
 
-func (client *Client) DescribeConfigMap(request *DescribeConfigMapRequest) (_result *DescribeConfigMapResponse, _err error) {
+func (client *Client) DescribeComponents(request *DescribeComponentsRequest) (_result *DescribeComponentsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DescribeConfigMapResponse{}
-	_body, _err := client.DescribeConfigMapWithOptions(request, headers, runtime)
+	_result = &DescribeComponentsResponse{}
+	_body, _err := client.DescribeComponentsWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21159,11 +21629,11 @@ func (client *Client) DescribeConfigMapWithOptions(request *DescribeConfigMapReq
 	return _result, _err
 }
 
-func (client *Client) DescribeConfigurationPrice(request *DescribeConfigurationPriceRequest) (_result *DescribeConfigurationPriceResponse, _err error) {
+func (client *Client) DescribeConfigMap(request *DescribeConfigMapRequest) (_result *DescribeConfigMapResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DescribeConfigurationPriceResponse{}
-	_body, _err := client.DescribeConfigurationPriceWithOptions(request, headers, runtime)
+	_result = &DescribeConfigMapResponse{}
+	_body, _err := client.DescribeConfigMapWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21213,11 +21683,11 @@ func (client *Client) DescribeConfigurationPriceWithOptions(request *DescribeCon
 	return _result, _err
 }
 
-func (client *Client) DescribeEdasContainers() (_result *DescribeEdasContainersResponse, _err error) {
+func (client *Client) DescribeConfigurationPrice(request *DescribeConfigurationPriceRequest) (_result *DescribeConfigurationPriceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DescribeEdasContainersResponse{}
-	_body, _err := client.DescribeEdasContainersWithOptions(headers, runtime)
+	_result = &DescribeConfigurationPriceResponse{}
+	_body, _err := client.DescribeConfigurationPriceWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21249,11 +21719,11 @@ func (client *Client) DescribeEdasContainersWithOptions(headers map[string]*stri
 	return _result, _err
 }
 
-func (client *Client) DescribeGreyTagRoute(request *DescribeGreyTagRouteRequest) (_result *DescribeGreyTagRouteResponse, _err error) {
+func (client *Client) DescribeEdasContainers() (_result *DescribeEdasContainersResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DescribeGreyTagRouteResponse{}
-	_body, _err := client.DescribeGreyTagRouteWithOptions(request, headers, runtime)
+	_result = &DescribeEdasContainersResponse{}
+	_body, _err := client.DescribeEdasContainersWithOptions(headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21295,11 +21765,11 @@ func (client *Client) DescribeGreyTagRouteWithOptions(request *DescribeGreyTagRo
 	return _result, _err
 }
 
-func (client *Client) DescribeIngress(request *DescribeIngressRequest) (_result *DescribeIngressResponse, _err error) {
+func (client *Client) DescribeGreyTagRoute(request *DescribeGreyTagRouteRequest) (_result *DescribeGreyTagRouteResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DescribeIngressResponse{}
-	_body, _err := client.DescribeIngressWithOptions(request, headers, runtime)
+	_result = &DescribeGreyTagRouteResponse{}
+	_body, _err := client.DescribeGreyTagRouteWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21341,11 +21811,11 @@ func (client *Client) DescribeIngressWithOptions(request *DescribeIngressRequest
 	return _result, _err
 }
 
-func (client *Client) DescribeInstanceLog(request *DescribeInstanceLogRequest) (_result *DescribeInstanceLogResponse, _err error) {
+func (client *Client) DescribeIngress(request *DescribeIngressRequest) (_result *DescribeIngressResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DescribeInstanceLogResponse{}
-	_body, _err := client.DescribeInstanceLogWithOptions(request, headers, runtime)
+	_result = &DescribeIngressResponse{}
+	_body, _err := client.DescribeIngressWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21387,11 +21857,11 @@ func (client *Client) DescribeInstanceLogWithOptions(request *DescribeInstanceLo
 	return _result, _err
 }
 
-func (client *Client) DescribeInstanceSpecifications() (_result *DescribeInstanceSpecificationsResponse, _err error) {
+func (client *Client) DescribeInstanceLog(request *DescribeInstanceLogRequest) (_result *DescribeInstanceLogResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DescribeInstanceSpecificationsResponse{}
-	_body, _err := client.DescribeInstanceSpecificationsWithOptions(headers, runtime)
+	_result = &DescribeInstanceLogResponse{}
+	_body, _err := client.DescribeInstanceLogWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21423,11 +21893,11 @@ func (client *Client) DescribeInstanceSpecificationsWithOptions(headers map[stri
 	return _result, _err
 }
 
-func (client *Client) DescribeJob(request *DescribeJobRequest) (_result *DescribeJobResponse, _err error) {
+func (client *Client) DescribeInstanceSpecifications() (_result *DescribeInstanceSpecificationsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DescribeJobResponse{}
-	_body, _err := client.DescribeJobWithOptions(request, headers, runtime)
+	_result = &DescribeInstanceSpecificationsResponse{}
+	_body, _err := client.DescribeInstanceSpecificationsWithOptions(headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21447,10 +21917,6 @@ func (client *Client) DescribeJobWithOptions(request *DescribeJobRequest, header
 
 	if !tea.BoolValue(util.IsUnset(request.JobId)) {
 		query["JobId"] = request.JobId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.VersionId)) {
-		query["VersionId"] = request.VersionId
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -21477,11 +21943,11 @@ func (client *Client) DescribeJobWithOptions(request *DescribeJobRequest, header
 	return _result, _err
 }
 
-func (client *Client) DescribeJobHistory(request *DescribeJobHistoryRequest) (_result *DescribeJobHistoryResponse, _err error) {
+func (client *Client) DescribeJob(request *DescribeJobRequest) (_result *DescribeJobResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DescribeJobHistoryResponse{}
-	_body, _err := client.DescribeJobHistoryWithOptions(request, headers, runtime)
+	_result = &DescribeJobResponse{}
+	_body, _err := client.DescribeJobWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21535,11 +22001,11 @@ func (client *Client) DescribeJobHistoryWithOptions(request *DescribeJobHistoryR
 	return _result, _err
 }
 
-func (client *Client) DescribeJobStatus(request *DescribeJobStatusRequest) (_result *DescribeJobStatusResponse, _err error) {
+func (client *Client) DescribeJobHistory(request *DescribeJobHistoryRequest) (_result *DescribeJobHistoryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DescribeJobStatusResponse{}
-	_body, _err := client.DescribeJobStatusWithOptions(request, headers, runtime)
+	_result = &DescribeJobHistoryResponse{}
+	_body, _err := client.DescribeJobHistoryWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21585,11 +22051,11 @@ func (client *Client) DescribeJobStatusWithOptions(request *DescribeJobStatusReq
 	return _result, _err
 }
 
-func (client *Client) DescribeNamespace(request *DescribeNamespaceRequest) (_result *DescribeNamespaceResponse, _err error) {
+func (client *Client) DescribeJobStatus(request *DescribeJobStatusRequest) (_result *DescribeJobStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DescribeNamespaceResponse{}
-	_body, _err := client.DescribeNamespaceWithOptions(request, headers, runtime)
+	_result = &DescribeJobStatusResponse{}
+	_body, _err := client.DescribeJobStatusWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21603,6 +22069,10 @@ func (client *Client) DescribeNamespaceWithOptions(request *DescribeNamespaceReq
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.NameSpaceShortId)) {
+		query["NameSpaceShortId"] = request.NameSpaceShortId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.NamespaceId)) {
 		query["NamespaceId"] = request.NamespaceId
 	}
@@ -21631,11 +22101,11 @@ func (client *Client) DescribeNamespaceWithOptions(request *DescribeNamespaceReq
 	return _result, _err
 }
 
-func (client *Client) DescribeNamespaceList(request *DescribeNamespaceListRequest) (_result *DescribeNamespaceListResponse, _err error) {
+func (client *Client) DescribeNamespace(request *DescribeNamespaceRequest) (_result *DescribeNamespaceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DescribeNamespaceListResponse{}
-	_body, _err := client.DescribeNamespaceListWithOptions(request, headers, runtime)
+	_result = &DescribeNamespaceResponse{}
+	_body, _err := client.DescribeNamespaceWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21681,11 +22151,11 @@ func (client *Client) DescribeNamespaceListWithOptions(request *DescribeNamespac
 	return _result, _err
 }
 
-func (client *Client) DescribeNamespaceResources(request *DescribeNamespaceResourcesRequest) (_result *DescribeNamespaceResourcesResponse, _err error) {
+func (client *Client) DescribeNamespaceList(request *DescribeNamespaceListRequest) (_result *DescribeNamespaceListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DescribeNamespaceResourcesResponse{}
-	_body, _err := client.DescribeNamespaceResourcesWithOptions(request, headers, runtime)
+	_result = &DescribeNamespaceListResponse{}
+	_body, _err := client.DescribeNamespaceListWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21699,6 +22169,10 @@ func (client *Client) DescribeNamespaceResourcesWithOptions(request *DescribeNam
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.NameSpaceShortId)) {
+		query["NameSpaceShortId"] = request.NameSpaceShortId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.NamespaceId)) {
 		query["NamespaceId"] = request.NamespaceId
 	}
@@ -21727,11 +22201,11 @@ func (client *Client) DescribeNamespaceResourcesWithOptions(request *DescribeNam
 	return _result, _err
 }
 
-func (client *Client) DescribeNamespaces(request *DescribeNamespacesRequest) (_result *DescribeNamespacesResponse, _err error) {
+func (client *Client) DescribeNamespaceResources(request *DescribeNamespaceResourcesRequest) (_result *DescribeNamespaceResourcesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DescribeNamespacesResponse{}
-	_body, _err := client.DescribeNamespacesWithOptions(request, headers, runtime)
+	_result = &DescribeNamespaceResourcesResponse{}
+	_body, _err := client.DescribeNamespaceResourcesWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21777,11 +22251,11 @@ func (client *Client) DescribeNamespacesWithOptions(request *DescribeNamespacesR
 	return _result, _err
 }
 
-func (client *Client) DescribePipeline(request *DescribePipelineRequest) (_result *DescribePipelineResponse, _err error) {
+func (client *Client) DescribeNamespaces(request *DescribeNamespacesRequest) (_result *DescribeNamespacesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DescribePipelineResponse{}
-	_body, _err := client.DescribePipelineWithOptions(request, headers, runtime)
+	_result = &DescribeNamespacesResponse{}
+	_body, _err := client.DescribeNamespacesWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21823,11 +22297,11 @@ func (client *Client) DescribePipelineWithOptions(request *DescribePipelineReque
 	return _result, _err
 }
 
-func (client *Client) DescribeRegions() (_result *DescribeRegionsResponse, _err error) {
+func (client *Client) DescribePipeline(request *DescribePipelineRequest) (_result *DescribePipelineResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DescribeRegionsResponse{}
-	_body, _err := client.DescribeRegionsWithOptions(headers, runtime)
+	_result = &DescribePipelineResponse{}
+	_body, _err := client.DescribePipelineWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21859,11 +22333,11 @@ func (client *Client) DescribeRegionsWithOptions(headers map[string]*string, run
 	return _result, _err
 }
 
-func (client *Client) DescribeSecret(request *DescribeSecretRequest) (_result *DescribeSecretResponse, _err error) {
+func (client *Client) DescribeRegions() (_result *DescribeRegionsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DescribeSecretResponse{}
-	_body, _err := client.DescribeSecretWithOptions(request, headers, runtime)
+	_result = &DescribeRegionsResponse{}
+	_body, _err := client.DescribeRegionsWithOptions(headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21909,11 +22383,11 @@ func (client *Client) DescribeSecretWithOptions(request *DescribeSecretRequest, 
 	return _result, _err
 }
 
-func (client *Client) DisableApplicationScalingRule(request *DisableApplicationScalingRuleRequest) (_result *DisableApplicationScalingRuleResponse, _err error) {
+func (client *Client) DescribeSecret(request *DescribeSecretRequest) (_result *DescribeSecretResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DisableApplicationScalingRuleResponse{}
-	_body, _err := client.DisableApplicationScalingRuleWithOptions(request, headers, runtime)
+	_result = &DescribeSecretResponse{}
+	_body, _err := client.DescribeSecretWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21959,11 +22433,11 @@ func (client *Client) DisableApplicationScalingRuleWithOptions(request *DisableA
 	return _result, _err
 }
 
-func (client *Client) EnableApplicationScalingRule(request *EnableApplicationScalingRuleRequest) (_result *EnableApplicationScalingRuleResponse, _err error) {
+func (client *Client) DisableApplicationScalingRule(request *DisableApplicationScalingRuleRequest) (_result *DisableApplicationScalingRuleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &EnableApplicationScalingRuleResponse{}
-	_body, _err := client.EnableApplicationScalingRuleWithOptions(request, headers, runtime)
+	_result = &DisableApplicationScalingRuleResponse{}
+	_body, _err := client.DisableApplicationScalingRuleWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -22009,11 +22483,11 @@ func (client *Client) EnableApplicationScalingRuleWithOptions(request *EnableApp
 	return _result, _err
 }
 
-func (client *Client) ExecJob(request *ExecJobRequest) (_result *ExecJobResponse, _err error) {
+func (client *Client) EnableApplicationScalingRule(request *EnableApplicationScalingRuleRequest) (_result *EnableApplicationScalingRuleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ExecJobResponse{}
-	_body, _err := client.ExecJobWithOptions(request, headers, runtime)
+	_result = &EnableApplicationScalingRuleResponse{}
+	_body, _err := client.EnableApplicationScalingRuleWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -22087,11 +22561,11 @@ func (client *Client) ExecJobWithOptions(request *ExecJobRequest, headers map[st
 	return _result, _err
 }
 
-func (client *Client) GetJobHistory(request *GetJobHistoryRequest) (_result *GetJobHistoryResponse, _err error) {
+func (client *Client) ExecJob(request *ExecJobRequest) (_result *ExecJobResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetJobHistoryResponse{}
-	_body, _err := client.GetJobHistoryWithOptions(request, headers, runtime)
+	_result = &ExecJobResponse{}
+	_body, _err := client.ExecJobWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -22099,40 +22573,22 @@ func (client *Client) GetJobHistory(request *GetJobHistoryRequest) (_result *Get
 	return _result, _err
 }
 
-func (client *Client) GetJobHistoryWithOptions(request *GetJobHistoryRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetJobHistoryResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.AppId)) {
-		query["AppId"] = request.AppId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.CurrentPage)) {
-		query["CurrentPage"] = request.CurrentPage
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
-		query["PageSize"] = request.PageSize
-	}
-
+func (client *Client) GetArmsTopNMetricWithOptions(RegionId *string, OrderBy *string, Limit *string, StartTime *string, EndTime *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetArmsTopNMetricResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
-		Query:   openapiutil.Query(query),
 	}
 	params := &openapi.Params{
-		Action:      tea.String("GetJobHistory"),
+		Action:      tea.String("GetArmsTopNMetric"),
 		Version:     tea.String("2019-05-06"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/pop/v1/sam/job/getJobHistory"),
+		Pathname:    tea.String("/pop/v1/sam/getArmsTopNMetric"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetJobHistoryResponse{}
+	_result = &GetArmsTopNMetricResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -22141,11 +22597,155 @@ func (client *Client) GetJobHistoryWithOptions(request *GetJobHistoryRequest, he
 	return _result, _err
 }
 
-func (client *Client) ListAppEvents(request *ListAppEventsRequest) (_result *ListAppEventsResponse, _err error) {
+func (client *Client) GetArmsTopNMetric(RegionId *string, OrderBy *string, Limit *string, StartTime *string, EndTime *string) (_result *GetArmsTopNMetricResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListAppEventsResponse{}
-	_body, _err := client.ListAppEventsWithOptions(request, headers, runtime)
+	_result = &GetArmsTopNMetricResponse{}
+	_body, _err := client.GetArmsTopNMetricWithOptions(RegionId, OrderBy, Limit, StartTime, EndTime, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetAvailabilityMetricWithOptions(RegionId *string, Limit *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetAvailabilityMetricResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetAvailabilityMetric"),
+		Version:     tea.String("2019-05-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/pop/v1/sam/getAvailabilityMetric"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetAvailabilityMetricResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetAvailabilityMetric(RegionId *string, Limit *string) (_result *GetAvailabilityMetricResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetAvailabilityMetricResponse{}
+	_body, _err := client.GetAvailabilityMetricWithOptions(RegionId, Limit, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetChangeOrderMetricWithOptions(RegionId *string, CreateTime *string, OrderBy *string, Limit *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetChangeOrderMetricResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetChangeOrderMetric"),
+		Version:     tea.String("2019-05-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/pop/v1/sam/getChangeOrderMetric"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetChangeOrderMetricResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetChangeOrderMetric(RegionId *string, CreateTime *string, OrderBy *string, Limit *string) (_result *GetChangeOrderMetricResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetChangeOrderMetricResponse{}
+	_body, _err := client.GetChangeOrderMetricWithOptions(RegionId, CreateTime, OrderBy, Limit, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetScaleAppMetricWithOptions(RegionId *string, Limit *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetScaleAppMetricResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetScaleAppMetric"),
+		Version:     tea.String("2019-05-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/pop/v1/sam/getScaleAppMetric"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetScaleAppMetricResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetScaleAppMetric(RegionId *string, Limit *string) (_result *GetScaleAppMetricResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetScaleAppMetricResponse{}
+	_body, _err := client.GetScaleAppMetricWithOptions(RegionId, Limit, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetWarningEventMetricWithOptions(RegionId *string, StartTime *string, EndTime *string, Limit *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetWarningEventMetricResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetWarningEventMetric"),
+		Version:     tea.String("2019-05-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/pop/v1/sam/getWarningEventMetric"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetWarningEventMetricResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetWarningEventMetric(RegionId *string, StartTime *string, EndTime *string, Limit *string) (_result *GetWarningEventMetricResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetWarningEventMetricResponse{}
+	_body, _err := client.GetWarningEventMetricWithOptions(RegionId, StartTime, EndTime, Limit, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -22215,11 +22815,11 @@ func (client *Client) ListAppEventsWithOptions(request *ListAppEventsRequest, he
 	return _result, _err
 }
 
-func (client *Client) ListAppServicesPage(request *ListAppServicesPageRequest) (_result *ListAppServicesPageResponse, _err error) {
+func (client *Client) ListAppEvents(request *ListAppEventsRequest) (_result *ListAppEventsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListAppServicesPageResponse{}
-	_body, _err := client.ListAppServicesPageWithOptions(request, headers, runtime)
+	_result = &ListAppEventsResponse{}
+	_body, _err := client.ListAppEventsWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -22273,11 +22873,11 @@ func (client *Client) ListAppServicesPageWithOptions(request *ListAppServicesPag
 	return _result, _err
 }
 
-func (client *Client) ListAppVersions(request *ListAppVersionsRequest) (_result *ListAppVersionsResponse, _err error) {
+func (client *Client) ListAppServicesPage(request *ListAppServicesPageRequest) (_result *ListAppServicesPageResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListAppVersionsResponse{}
-	_body, _err := client.ListAppVersionsWithOptions(request, headers, runtime)
+	_result = &ListAppServicesPageResponse{}
+	_body, _err := client.ListAppServicesPageWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -22319,11 +22919,11 @@ func (client *Client) ListAppVersionsWithOptions(request *ListAppVersionsRequest
 	return _result, _err
 }
 
-func (client *Client) ListApplications(request *ListApplicationsRequest) (_result *ListApplicationsResponse, _err error) {
+func (client *Client) ListAppVersions(request *ListAppVersionsRequest) (_result *ListAppVersionsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListApplicationsResponse{}
-	_body, _err := client.ListApplicationsWithOptions(request, headers, runtime)
+	_result = &ListAppVersionsResponse{}
+	_body, _err := client.ListAppVersionsWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -22397,11 +22997,11 @@ func (client *Client) ListApplicationsWithOptions(request *ListApplicationsReque
 	return _result, _err
 }
 
-func (client *Client) ListChangeOrders(request *ListChangeOrdersRequest) (_result *ListChangeOrdersResponse, _err error) {
+func (client *Client) ListApplications(request *ListApplicationsRequest) (_result *ListApplicationsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListChangeOrdersResponse{}
-	_body, _err := client.ListChangeOrdersWithOptions(request, headers, runtime)
+	_result = &ListApplicationsResponse{}
+	_body, _err := client.ListApplicationsWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -22463,11 +23063,11 @@ func (client *Client) ListChangeOrdersWithOptions(request *ListChangeOrdersReque
 	return _result, _err
 }
 
-func (client *Client) ListConsumedServices(request *ListConsumedServicesRequest) (_result *ListConsumedServicesResponse, _err error) {
+func (client *Client) ListChangeOrders(request *ListChangeOrdersRequest) (_result *ListChangeOrdersResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListConsumedServicesResponse{}
-	_body, _err := client.ListConsumedServicesWithOptions(request, headers, runtime)
+	_result = &ListChangeOrdersResponse{}
+	_body, _err := client.ListChangeOrdersWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -22509,11 +23109,11 @@ func (client *Client) ListConsumedServicesWithOptions(request *ListConsumedServi
 	return _result, _err
 }
 
-func (client *Client) ListGreyTagRoute(request *ListGreyTagRouteRequest) (_result *ListGreyTagRouteResponse, _err error) {
+func (client *Client) ListConsumedServices(request *ListConsumedServicesRequest) (_result *ListConsumedServicesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListGreyTagRouteResponse{}
-	_body, _err := client.ListGreyTagRouteWithOptions(request, headers, runtime)
+	_result = &ListConsumedServicesResponse{}
+	_body, _err := client.ListConsumedServicesWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -22555,11 +23155,11 @@ func (client *Client) ListGreyTagRouteWithOptions(request *ListGreyTagRouteReque
 	return _result, _err
 }
 
-func (client *Client) ListIngresses(request *ListIngressesRequest) (_result *ListIngressesResponse, _err error) {
+func (client *Client) ListGreyTagRoute(request *ListGreyTagRouteRequest) (_result *ListGreyTagRouteResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListIngressesResponse{}
-	_body, _err := client.ListIngressesWithOptions(request, headers, runtime)
+	_result = &ListGreyTagRouteResponse{}
+	_body, _err := client.ListGreyTagRouteWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -22605,11 +23205,11 @@ func (client *Client) ListIngressesWithOptions(request *ListIngressesRequest, he
 	return _result, _err
 }
 
-func (client *Client) ListJobs(request *ListJobsRequest) (_result *ListJobsResponse, _err error) {
+func (client *Client) ListIngresses(request *ListIngressesRequest) (_result *ListIngressesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListJobsResponse{}
-	_body, _err := client.ListJobsWithOptions(request, headers, runtime)
+	_result = &ListIngressesResponse{}
+	_body, _err := client.ListIngressesWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -22687,11 +23287,11 @@ func (client *Client) ListJobsWithOptions(request *ListJobsRequest, headers map[
 	return _result, _err
 }
 
-func (client *Client) ListLogConfigs(request *ListLogConfigsRequest) (_result *ListLogConfigsResponse, _err error) {
+func (client *Client) ListJobs(request *ListJobsRequest) (_result *ListJobsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListLogConfigsResponse{}
-	_body, _err := client.ListLogConfigsWithOptions(request, headers, runtime)
+	_result = &ListJobsResponse{}
+	_body, _err := client.ListJobsWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -22741,11 +23341,11 @@ func (client *Client) ListLogConfigsWithOptions(request *ListLogConfigsRequest, 
 	return _result, _err
 }
 
-func (client *Client) ListNamespaceChangeOrders(request *ListNamespaceChangeOrdersRequest) (_result *ListNamespaceChangeOrdersResponse, _err error) {
+func (client *Client) ListLogConfigs(request *ListLogConfigsRequest) (_result *ListLogConfigsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListNamespaceChangeOrdersResponse{}
-	_body, _err := client.ListNamespaceChangeOrdersWithOptions(request, headers, runtime)
+	_result = &ListLogConfigsResponse{}
+	_body, _err := client.ListLogConfigsWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -22807,11 +23407,11 @@ func (client *Client) ListNamespaceChangeOrdersWithOptions(request *ListNamespac
 	return _result, _err
 }
 
-func (client *Client) ListNamespacedConfigMaps(request *ListNamespacedConfigMapsRequest) (_result *ListNamespacedConfigMapsResponse, _err error) {
+func (client *Client) ListNamespaceChangeOrders(request *ListNamespaceChangeOrdersRequest) (_result *ListNamespaceChangeOrdersResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListNamespacedConfigMapsResponse{}
-	_body, _err := client.ListNamespacedConfigMapsWithOptions(request, headers, runtime)
+	_result = &ListNamespaceChangeOrdersResponse{}
+	_body, _err := client.ListNamespaceChangeOrdersWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -22853,11 +23453,11 @@ func (client *Client) ListNamespacedConfigMapsWithOptions(request *ListNamespace
 	return _result, _err
 }
 
-func (client *Client) ListPublishedServices(request *ListPublishedServicesRequest) (_result *ListPublishedServicesResponse, _err error) {
+func (client *Client) ListNamespacedConfigMaps(request *ListNamespacedConfigMapsRequest) (_result *ListNamespacedConfigMapsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListPublishedServicesResponse{}
-	_body, _err := client.ListPublishedServicesWithOptions(request, headers, runtime)
+	_result = &ListNamespacedConfigMapsResponse{}
+	_body, _err := client.ListNamespacedConfigMapsWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -22899,11 +23499,11 @@ func (client *Client) ListPublishedServicesWithOptions(request *ListPublishedSer
 	return _result, _err
 }
 
-func (client *Client) ListSecrets(request *ListSecretsRequest) (_result *ListSecretsResponse, _err error) {
+func (client *Client) ListPublishedServices(request *ListPublishedServicesRequest) (_result *ListPublishedServicesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListSecretsResponse{}
-	_body, _err := client.ListSecretsWithOptions(request, headers, runtime)
+	_result = &ListPublishedServicesResponse{}
+	_body, _err := client.ListPublishedServicesWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -22945,11 +23545,11 @@ func (client *Client) ListSecretsWithOptions(request *ListSecretsRequest, header
 	return _result, _err
 }
 
-func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_result *ListTagResourcesResponse, _err error) {
+func (client *Client) ListSecrets(request *ListSecretsRequest) (_result *ListSecretsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListTagResourcesResponse{}
-	_body, _err := client.ListTagResourcesWithOptions(request, headers, runtime)
+	_result = &ListSecretsResponse{}
+	_body, _err := client.ListSecretsWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -23007,11 +23607,11 @@ func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesReque
 	return _result, _err
 }
 
-func (client *Client) OpenSaeService() (_result *OpenSaeServiceResponse, _err error) {
+func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_result *ListTagResourcesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &OpenSaeServiceResponse{}
-	_body, _err := client.OpenSaeServiceWithOptions(headers, runtime)
+	_result = &ListTagResourcesResponse{}
+	_body, _err := client.ListTagResourcesWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -23043,11 +23643,11 @@ func (client *Client) OpenSaeServiceWithOptions(headers map[string]*string, runt
 	return _result, _err
 }
 
-func (client *Client) QueryResourceStatics(request *QueryResourceStaticsRequest) (_result *QueryResourceStaticsResponse, _err error) {
+func (client *Client) OpenSaeService() (_result *OpenSaeServiceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &QueryResourceStaticsResponse{}
-	_body, _err := client.QueryResourceStaticsWithOptions(request, headers, runtime)
+	_result = &OpenSaeServiceResponse{}
+	_body, _err := client.OpenSaeServiceWithOptions(headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -23089,11 +23689,11 @@ func (client *Client) QueryResourceStaticsWithOptions(request *QueryResourceStat
 	return _result, _err
 }
 
-func (client *Client) ReduceApplicationCapacityByInstanceIds(request *ReduceApplicationCapacityByInstanceIdsRequest) (_result *ReduceApplicationCapacityByInstanceIdsResponse, _err error) {
+func (client *Client) QueryResourceStatics(request *QueryResourceStaticsRequest) (_result *QueryResourceStaticsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ReduceApplicationCapacityByInstanceIdsResponse{}
-	_body, _err := client.ReduceApplicationCapacityByInstanceIdsWithOptions(request, headers, runtime)
+	_result = &QueryResourceStaticsResponse{}
+	_body, _err := client.QueryResourceStaticsWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -23139,11 +23739,11 @@ func (client *Client) ReduceApplicationCapacityByInstanceIdsWithOptions(request 
 	return _result, _err
 }
 
-func (client *Client) RescaleApplication(request *RescaleApplicationRequest) (_result *RescaleApplicationResponse, _err error) {
+func (client *Client) ReduceApplicationCapacityByInstanceIds(request *ReduceApplicationCapacityByInstanceIdsRequest) (_result *ReduceApplicationCapacityByInstanceIdsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &RescaleApplicationResponse{}
-	_body, _err := client.RescaleApplicationWithOptions(request, headers, runtime)
+	_result = &ReduceApplicationCapacityByInstanceIdsResponse{}
+	_body, _err := client.ReduceApplicationCapacityByInstanceIdsWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -23201,11 +23801,11 @@ func (client *Client) RescaleApplicationWithOptions(request *RescaleApplicationR
 	return _result, _err
 }
 
-func (client *Client) RescaleApplicationVertically(request *RescaleApplicationVerticallyRequest) (_result *RescaleApplicationVerticallyResponse, _err error) {
+func (client *Client) RescaleApplication(request *RescaleApplicationRequest) (_result *RescaleApplicationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &RescaleApplicationVerticallyResponse{}
-	_body, _err := client.RescaleApplicationVerticallyWithOptions(request, headers, runtime)
+	_result = &RescaleApplicationResponse{}
+	_body, _err := client.RescaleApplicationWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -23255,11 +23855,11 @@ func (client *Client) RescaleApplicationVerticallyWithOptions(request *RescaleAp
 	return _result, _err
 }
 
-func (client *Client) RestartApplication(request *RestartApplicationRequest) (_result *RestartApplicationResponse, _err error) {
+func (client *Client) RescaleApplicationVertically(request *RescaleApplicationVerticallyRequest) (_result *RescaleApplicationVerticallyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &RestartApplicationResponse{}
-	_body, _err := client.RestartApplicationWithOptions(request, headers, runtime)
+	_result = &RescaleApplicationVerticallyResponse{}
+	_body, _err := client.RescaleApplicationVerticallyWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -23309,11 +23909,11 @@ func (client *Client) RestartApplicationWithOptions(request *RestartApplicationR
 	return _result, _err
 }
 
-func (client *Client) RestartInstances(request *RestartInstancesRequest) (_result *RestartInstancesResponse, _err error) {
+func (client *Client) RestartApplication(request *RestartApplicationRequest) (_result *RestartApplicationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &RestartInstancesResponse{}
-	_body, _err := client.RestartInstancesWithOptions(request, headers, runtime)
+	_result = &RestartApplicationResponse{}
+	_body, _err := client.RestartApplicationWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -23359,11 +23959,11 @@ func (client *Client) RestartInstancesWithOptions(request *RestartInstancesReque
 	return _result, _err
 }
 
-func (client *Client) RollbackApplication(request *RollbackApplicationRequest) (_result *RollbackApplicationResponse, _err error) {
+func (client *Client) RestartInstances(request *RestartInstancesRequest) (_result *RestartInstancesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &RollbackApplicationResponse{}
-	_body, _err := client.RollbackApplicationWithOptions(request, headers, runtime)
+	_result = &RestartInstancesResponse{}
+	_body, _err := client.RestartInstancesWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -23429,11 +24029,11 @@ func (client *Client) RollbackApplicationWithOptions(request *RollbackApplicatio
 	return _result, _err
 }
 
-func (client *Client) StartApplication(request *StartApplicationRequest) (_result *StartApplicationResponse, _err error) {
+func (client *Client) RollbackApplication(request *RollbackApplicationRequest) (_result *RollbackApplicationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &StartApplicationResponse{}
-	_body, _err := client.StartApplicationWithOptions(request, headers, runtime)
+	_result = &RollbackApplicationResponse{}
+	_body, _err := client.RollbackApplicationWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -23475,11 +24075,11 @@ func (client *Client) StartApplicationWithOptions(request *StartApplicationReque
 	return _result, _err
 }
 
-func (client *Client) StopApplication(request *StopApplicationRequest) (_result *StopApplicationResponse, _err error) {
+func (client *Client) StartApplication(request *StartApplicationRequest) (_result *StartApplicationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &StopApplicationResponse{}
-	_body, _err := client.StopApplicationWithOptions(request, headers, runtime)
+	_result = &StartApplicationResponse{}
+	_body, _err := client.StartApplicationWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -23521,11 +24121,11 @@ func (client *Client) StopApplicationWithOptions(request *StopApplicationRequest
 	return _result, _err
 }
 
-func (client *Client) SuspendJob(request *SuspendJobRequest) (_result *SuspendJobResponse, _err error) {
+func (client *Client) StopApplication(request *StopApplicationRequest) (_result *StopApplicationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &SuspendJobResponse{}
-	_body, _err := client.SuspendJobWithOptions(request, headers, runtime)
+	_result = &StopApplicationResponse{}
+	_body, _err := client.StopApplicationWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -23571,11 +24171,11 @@ func (client *Client) SuspendJobWithOptions(request *SuspendJobRequest, headers 
 	return _result, _err
 }
 
-func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagResourcesResponse, _err error) {
+func (client *Client) SuspendJob(request *SuspendJobRequest) (_result *SuspendJobResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &TagResourcesResponse{}
-	_body, _err := client.TagResourcesWithOptions(request, headers, runtime)
+	_result = &SuspendJobResponse{}
+	_body, _err := client.SuspendJobWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -23629,11 +24229,11 @@ func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, head
 	return _result, _err
 }
 
-func (client *Client) UnbindSlb(request *UnbindSlbRequest) (_result *UnbindSlbResponse, _err error) {
+func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagResourcesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &UnbindSlbResponse{}
-	_body, _err := client.UnbindSlbWithOptions(request, headers, runtime)
+	_result = &TagResourcesResponse{}
+	_body, _err := client.TagResourcesWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -23683,11 +24283,11 @@ func (client *Client) UnbindSlbWithOptions(request *UnbindSlbRequest, headers ma
 	return _result, _err
 }
 
-func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *UntagResourcesResponse, _err error) {
+func (client *Client) UnbindSlb(request *UnbindSlbRequest) (_result *UnbindSlbResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &UntagResourcesResponse{}
-	_body, _err := client.UntagResourcesWithOptions(request, headers, runtime)
+	_result = &UnbindSlbResponse{}
+	_body, _err := client.UnbindSlbWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -23745,11 +24345,11 @@ func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, 
 	return _result, _err
 }
 
-func (client *Client) UpdateAppSecurityGroup(request *UpdateAppSecurityGroupRequest) (_result *UpdateAppSecurityGroupResponse, _err error) {
+func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *UntagResourcesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &UpdateAppSecurityGroupResponse{}
-	_body, _err := client.UpdateAppSecurityGroupWithOptions(request, headers, runtime)
+	_result = &UntagResourcesResponse{}
+	_body, _err := client.UntagResourcesWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -23795,11 +24395,11 @@ func (client *Client) UpdateAppSecurityGroupWithOptions(request *UpdateAppSecuri
 	return _result, _err
 }
 
-func (client *Client) UpdateApplicationDescription(request *UpdateApplicationDescriptionRequest) (_result *UpdateApplicationDescriptionResponse, _err error) {
+func (client *Client) UpdateAppSecurityGroup(request *UpdateAppSecurityGroupRequest) (_result *UpdateAppSecurityGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &UpdateApplicationDescriptionResponse{}
-	_body, _err := client.UpdateApplicationDescriptionWithOptions(request, headers, runtime)
+	_result = &UpdateAppSecurityGroupResponse{}
+	_body, _err := client.UpdateAppSecurityGroupWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -23845,11 +24445,11 @@ func (client *Client) UpdateApplicationDescriptionWithOptions(request *UpdateApp
 	return _result, _err
 }
 
-func (client *Client) UpdateApplicationScalingRule(request *UpdateApplicationScalingRuleRequest) (_result *UpdateApplicationScalingRuleResponse, _err error) {
+func (client *Client) UpdateApplicationDescription(request *UpdateApplicationDescriptionRequest) (_result *UpdateApplicationDescriptionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &UpdateApplicationScalingRuleResponse{}
-	_body, _err := client.UpdateApplicationScalingRuleWithOptions(request, headers, runtime)
+	_result = &UpdateApplicationDescriptionResponse{}
+	_body, _err := client.UpdateApplicationDescriptionWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -23911,11 +24511,11 @@ func (client *Client) UpdateApplicationScalingRuleWithOptions(request *UpdateApp
 	return _result, _err
 }
 
-func (client *Client) UpdateApplicationVswitches(request *UpdateApplicationVswitchesRequest) (_result *UpdateApplicationVswitchesResponse, _err error) {
+func (client *Client) UpdateApplicationScalingRule(request *UpdateApplicationScalingRuleRequest) (_result *UpdateApplicationScalingRuleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &UpdateApplicationVswitchesResponse{}
-	_body, _err := client.UpdateApplicationVswitchesWithOptions(request, headers, runtime)
+	_result = &UpdateApplicationScalingRuleResponse{}
+	_body, _err := client.UpdateApplicationScalingRuleWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -23961,11 +24561,11 @@ func (client *Client) UpdateApplicationVswitchesWithOptions(request *UpdateAppli
 	return _result, _err
 }
 
-func (client *Client) UpdateConfigMap(request *UpdateConfigMapRequest) (_result *UpdateConfigMapResponse, _err error) {
+func (client *Client) UpdateApplicationVswitches(request *UpdateApplicationVswitchesRequest) (_result *UpdateApplicationVswitchesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &UpdateConfigMapResponse{}
-	_body, _err := client.UpdateConfigMapWithOptions(request, headers, runtime)
+	_result = &UpdateApplicationVswitchesResponse{}
+	_body, _err := client.UpdateApplicationVswitchesWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -24017,11 +24617,11 @@ func (client *Client) UpdateConfigMapWithOptions(request *UpdateConfigMapRequest
 	return _result, _err
 }
 
-func (client *Client) UpdateGreyTagRoute(request *UpdateGreyTagRouteRequest) (_result *UpdateGreyTagRouteResponse, _err error) {
+func (client *Client) UpdateConfigMap(request *UpdateConfigMapRequest) (_result *UpdateConfigMapResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &UpdateGreyTagRouteResponse{}
-	_body, _err := client.UpdateGreyTagRouteWithOptions(request, headers, runtime)
+	_result = &UpdateConfigMapResponse{}
+	_body, _err := client.UpdateConfigMapWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -24079,11 +24679,11 @@ func (client *Client) UpdateGreyTagRouteWithOptions(request *UpdateGreyTagRouteR
 	return _result, _err
 }
 
-func (client *Client) UpdateIngress(request *UpdateIngressRequest) (_result *UpdateIngressResponse, _err error) {
+func (client *Client) UpdateGreyTagRoute(request *UpdateGreyTagRouteRequest) (_result *UpdateGreyTagRouteResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &UpdateIngressResponse{}
-	_body, _err := client.UpdateIngressWithOptions(request, headers, runtime)
+	_result = &UpdateGreyTagRouteResponse{}
+	_body, _err := client.UpdateGreyTagRouteWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -24159,11 +24759,11 @@ func (client *Client) UpdateIngressWithOptions(request *UpdateIngressRequest, he
 	return _result, _err
 }
 
-func (client *Client) UpdateJob(request *UpdateJobRequest) (_result *UpdateJobResponse, _err error) {
+func (client *Client) UpdateIngress(request *UpdateIngressRequest) (_result *UpdateIngressResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &UpdateJobResponse{}
-	_body, _err := client.UpdateJobWithOptions(request, headers, runtime)
+	_result = &UpdateIngressResponse{}
+	_body, _err := client.UpdateIngressWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -24185,20 +24785,8 @@ func (client *Client) UpdateJobWithOptions(request *UpdateJobRequest, headers ma
 		query["AppId"] = request.AppId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.AutoEnableApplicationScalingRule)) {
-		query["AutoEnableApplicationScalingRule"] = request.AutoEnableApplicationScalingRule
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.BackoffLimit)) {
 		query["BackoffLimit"] = request.BackoffLimit
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.BatchWaitTime)) {
-		query["BatchWaitTime"] = request.BatchWaitTime
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ChangeOrderDesc)) {
-		query["ChangeOrderDesc"] = request.ChangeOrderDesc
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Command)) {
@@ -24219,14 +24807,6 @@ func (client *Client) UpdateJobWithOptions(request *UpdateJobRequest, headers ma
 
 	if !tea.BoolValue(util.IsUnset(request.EdasContainerVersion)) {
 		query["EdasContainerVersion"] = request.EdasContainerVersion
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.EnableAhas)) {
-		query["EnableAhas"] = request.EnableAhas
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.EnableGreyTagRoute)) {
-		query["EnableGreyTagRoute"] = request.EnableGreyTagRoute
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Envs)) {
@@ -24253,14 +24833,6 @@ func (client *Client) UpdateJobWithOptions(request *UpdateJobRequest, headers ma
 		query["Jdk"] = request.Jdk
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.Liveness)) {
-		query["Liveness"] = request.Liveness
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.MinReadyInstances)) {
-		query["MinReadyInstances"] = request.MinReadyInstances
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.MountDesc)) {
 		query["MountDesc"] = request.MountDesc
 	}
@@ -24279,10 +24851,6 @@ func (client *Client) UpdateJobWithOptions(request *UpdateJobRequest, headers ma
 
 	if !tea.BoolValue(util.IsUnset(request.PackageVersion)) {
 		query["PackageVersion"] = request.PackageVersion
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PhpArmsConfigLocation)) {
-		query["PhpArmsConfigLocation"] = request.PhpArmsConfigLocation
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.PhpConfigLocation)) {
@@ -24307,10 +24875,6 @@ func (client *Client) UpdateJobWithOptions(request *UpdateJobRequest, headers ma
 
 	if !tea.BoolValue(util.IsUnset(request.PythonModules)) {
 		query["PythonModules"] = request.PythonModules
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Readiness)) {
-		query["Readiness"] = request.Readiness
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.RefAppId)) {
@@ -24353,10 +24917,6 @@ func (client *Client) UpdateJobWithOptions(request *UpdateJobRequest, headers ma
 		query["TriggerConfig"] = request.TriggerConfig
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.UpdateStrategy)) {
-		query["UpdateStrategy"] = request.UpdateStrategy
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.WarStartOptions)) {
 		query["WarStartOptions"] = request.WarStartOptions
 	}
@@ -24370,12 +24930,12 @@ func (client *Client) UpdateJobWithOptions(request *UpdateJobRequest, headers ma
 		body["AcrInstanceId"] = request.AcrInstanceId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.AssociateEip)) {
-		body["AssociateEip"] = request.AssociateEip
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.ConfigMapMountDesc)) {
 		body["ConfigMapMountDesc"] = request.ConfigMapMountDesc
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnableImageAccl)) {
+		body["EnableImageAccl"] = request.EnableImageAccl
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.OssAkId)) {
@@ -24396,14 +24956,6 @@ func (client *Client) UpdateJobWithOptions(request *UpdateJobRequest, headers ma
 
 	if !tea.BoolValue(util.IsUnset(request.PhpConfig)) {
 		body["PhpConfig"] = request.PhpConfig
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PhpExtensions)) {
-		body["PhpExtensions"] = request.PhpExtensions
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PhpPECLExtensions)) {
-		body["PhpPECLExtensions"] = request.PhpPECLExtensions
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -24431,11 +24983,11 @@ func (client *Client) UpdateJobWithOptions(request *UpdateJobRequest, headers ma
 	return _result, _err
 }
 
-func (client *Client) UpdateNamespace(request *UpdateNamespaceRequest) (_result *UpdateNamespaceResponse, _err error) {
+func (client *Client) UpdateJob(request *UpdateJobRequest) (_result *UpdateJobResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &UpdateNamespaceResponse{}
-	_body, _err := client.UpdateNamespaceWithOptions(request, headers, runtime)
+	_result = &UpdateJobResponse{}
+	_body, _err := client.UpdateJobWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -24449,6 +25001,10 @@ func (client *Client) UpdateNamespaceWithOptions(request *UpdateNamespaceRequest
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.NameSpaceShortId)) {
+		query["NameSpaceShortId"] = request.NameSpaceShortId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.NamespaceDescription)) {
 		query["NamespaceDescription"] = request.NamespaceDescription
 	}
@@ -24485,11 +25041,11 @@ func (client *Client) UpdateNamespaceWithOptions(request *UpdateNamespaceRequest
 	return _result, _err
 }
 
-func (client *Client) UpdateNamespaceVpc(request *UpdateNamespaceVpcRequest) (_result *UpdateNamespaceVpcResponse, _err error) {
+func (client *Client) UpdateNamespace(request *UpdateNamespaceRequest) (_result *UpdateNamespaceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &UpdateNamespaceVpcResponse{}
-	_body, _err := client.UpdateNamespaceVpcWithOptions(request, headers, runtime)
+	_result = &UpdateNamespaceResponse{}
+	_body, _err := client.UpdateNamespaceWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -24503,6 +25059,10 @@ func (client *Client) UpdateNamespaceVpcWithOptions(request *UpdateNamespaceVpcR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.NameSpaceShortId)) {
+		query["NameSpaceShortId"] = request.NameSpaceShortId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.NamespaceId)) {
 		query["NamespaceId"] = request.NamespaceId
 	}
@@ -24535,11 +25095,11 @@ func (client *Client) UpdateNamespaceVpcWithOptions(request *UpdateNamespaceVpcR
 	return _result, _err
 }
 
-func (client *Client) UpdateSecret(request *UpdateSecretRequest) (_result *UpdateSecretResponse, _err error) {
+func (client *Client) UpdateNamespaceVpc(request *UpdateNamespaceVpcRequest) (_result *UpdateNamespaceVpcResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &UpdateSecretResponse{}
-	_body, _err := client.UpdateSecretWithOptions(request, headers, runtime)
+	_result = &UpdateNamespaceVpcResponse{}
+	_body, _err := client.UpdateNamespaceVpcWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -24588,5 +25148,17 @@ func (client *Client) UpdateSecretWithOptions(request *UpdateSecretRequest, head
 		return _result, _err
 	}
 	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateSecret(request *UpdateSecretRequest) (_result *UpdateSecretResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateSecretResponse{}
+	_body, _err := client.UpdateSecretWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
 	return _result, _err
 }
