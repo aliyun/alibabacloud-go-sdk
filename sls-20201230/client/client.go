@@ -264,6 +264,59 @@ func (s *SavedSearch) SetTopic(v string) *SavedSearch {
 	return s
 }
 
+type Alert struct {
+	Configuration *Configuration `json:"configuration,omitempty" xml:"configuration,omitempty"`
+	Description   *string        `json:"description,omitempty" xml:"description,omitempty"`
+	DisplayName   *string        `json:"displayName,omitempty" xml:"displayName,omitempty"`
+	Name          *string        `json:"name,omitempty" xml:"name,omitempty"`
+	Schedule      *Schedule      `json:"schedule,omitempty" xml:"schedule,omitempty"`
+	State         *string        `json:"state,omitempty" xml:"state,omitempty"`
+	Type          *string        `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s Alert) String() string {
+	return tea.Prettify(s)
+}
+
+func (s Alert) GoString() string {
+	return s.String()
+}
+
+func (s *Alert) SetConfiguration(v *Configuration) *Alert {
+	s.Configuration = v
+	return s
+}
+
+func (s *Alert) SetDescription(v string) *Alert {
+	s.Description = &v
+	return s
+}
+
+func (s *Alert) SetDisplayName(v string) *Alert {
+	s.DisplayName = &v
+	return s
+}
+
+func (s *Alert) SetName(v string) *Alert {
+	s.Name = &v
+	return s
+}
+
+func (s *Alert) SetSchedule(v *Schedule) *Alert {
+	s.Schedule = v
+	return s
+}
+
+func (s *Alert) SetState(v string) *Alert {
+	s.State = &v
+	return s
+}
+
+func (s *Alert) SetType(v string) *Alert {
+	s.Type = &v
+	return s
+}
+
 type Chart struct {
 	Action  map[string]interface{} `json:"action,omitempty" xml:"action,omitempty"`
 	Display map[string]interface{} `json:"display,omitempty" xml:"display,omitempty"`
@@ -302,6 +355,351 @@ func (s *Chart) SetTitle(v string) *Chart {
 
 func (s *Chart) SetType(v string) *Chart {
 	s.Type = &v
+	return s
+}
+
+type Configuration struct {
+	Annotations            []*ConfigurationAnnotations            `json:"annotations,omitempty" xml:"annotations,omitempty" type:"Repeated"`
+	AutoAnnotation         *bool                                  `json:"autoAnnotation,omitempty" xml:"autoAnnotation,omitempty"`
+	Dashboard              *string                                `json:"dashboard,omitempty" xml:"dashboard,omitempty"`
+	GroupConfiguration     *ConfigurationGroupConfiguration       `json:"groupConfiguration,omitempty" xml:"groupConfiguration,omitempty" type:"Struct"`
+	JoinConfigurations     []*ConfigurationJoinConfigurations     `json:"joinConfigurations,omitempty" xml:"joinConfigurations,omitempty" type:"Repeated"`
+	Labels                 []*ConfigurationLabels                 `json:"labels,omitempty" xml:"labels,omitempty" type:"Repeated"`
+	NoDataFire             *bool                                  `json:"noDataFire,omitempty" xml:"noDataFire,omitempty"`
+	NoDataSeverity         *int64                                 `json:"noDataSeverity,omitempty" xml:"noDataSeverity,omitempty"`
+	PolicyConfiguration    *ConfigurationPolicyConfiguration      `json:"policyConfiguration,omitempty" xml:"policyConfiguration,omitempty" type:"Struct"`
+	QueryList              *ConfigurationQueryList                `json:"queryList,omitempty" xml:"queryList,omitempty" type:"Struct"`
+	SendResolved           *bool                                  `json:"sendResolved,omitempty" xml:"sendResolved,omitempty"`
+	SeverityConfigurations []*ConfigurationSeverityConfigurations `json:"severityConfigurations,omitempty" xml:"severityConfigurations,omitempty" type:"Repeated"`
+	Tags                   []*string                              `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
+	Threshold              *int64                                 `json:"threshold,omitempty" xml:"threshold,omitempty"`
+	Type                   *string                                `json:"type,omitempty" xml:"type,omitempty"`
+	Version                *string                                `json:"version,omitempty" xml:"version,omitempty"`
+}
+
+func (s Configuration) String() string {
+	return tea.Prettify(s)
+}
+
+func (s Configuration) GoString() string {
+	return s.String()
+}
+
+func (s *Configuration) SetAnnotations(v []*ConfigurationAnnotations) *Configuration {
+	s.Annotations = v
+	return s
+}
+
+func (s *Configuration) SetAutoAnnotation(v bool) *Configuration {
+	s.AutoAnnotation = &v
+	return s
+}
+
+func (s *Configuration) SetDashboard(v string) *Configuration {
+	s.Dashboard = &v
+	return s
+}
+
+func (s *Configuration) SetGroupConfiguration(v *ConfigurationGroupConfiguration) *Configuration {
+	s.GroupConfiguration = v
+	return s
+}
+
+func (s *Configuration) SetJoinConfigurations(v []*ConfigurationJoinConfigurations) *Configuration {
+	s.JoinConfigurations = v
+	return s
+}
+
+func (s *Configuration) SetLabels(v []*ConfigurationLabels) *Configuration {
+	s.Labels = v
+	return s
+}
+
+func (s *Configuration) SetNoDataFire(v bool) *Configuration {
+	s.NoDataFire = &v
+	return s
+}
+
+func (s *Configuration) SetNoDataSeverity(v int64) *Configuration {
+	s.NoDataSeverity = &v
+	return s
+}
+
+func (s *Configuration) SetPolicyConfiguration(v *ConfigurationPolicyConfiguration) *Configuration {
+	s.PolicyConfiguration = v
+	return s
+}
+
+func (s *Configuration) SetQueryList(v *ConfigurationQueryList) *Configuration {
+	s.QueryList = v
+	return s
+}
+
+func (s *Configuration) SetSendResolved(v bool) *Configuration {
+	s.SendResolved = &v
+	return s
+}
+
+func (s *Configuration) SetSeverityConfigurations(v []*ConfigurationSeverityConfigurations) *Configuration {
+	s.SeverityConfigurations = v
+	return s
+}
+
+func (s *Configuration) SetTags(v []*string) *Configuration {
+	s.Tags = v
+	return s
+}
+
+func (s *Configuration) SetThreshold(v int64) *Configuration {
+	s.Threshold = &v
+	return s
+}
+
+func (s *Configuration) SetType(v string) *Configuration {
+	s.Type = &v
+	return s
+}
+
+func (s *Configuration) SetVersion(v string) *Configuration {
+	s.Version = &v
+	return s
+}
+
+type ConfigurationAnnotations struct {
+	Key   *string `json:"key,omitempty" xml:"key,omitempty"`
+	Value *string `json:"value,omitempty" xml:"value,omitempty"`
+}
+
+func (s ConfigurationAnnotations) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ConfigurationAnnotations) GoString() string {
+	return s.String()
+}
+
+func (s *ConfigurationAnnotations) SetKey(v string) *ConfigurationAnnotations {
+	s.Key = &v
+	return s
+}
+
+func (s *ConfigurationAnnotations) SetValue(v string) *ConfigurationAnnotations {
+	s.Value = &v
+	return s
+}
+
+type ConfigurationGroupConfiguration struct {
+	Fields []*string `json:"fields,omitempty" xml:"fields,omitempty" type:"Repeated"`
+	Type   *string   `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s ConfigurationGroupConfiguration) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ConfigurationGroupConfiguration) GoString() string {
+	return s.String()
+}
+
+func (s *ConfigurationGroupConfiguration) SetFields(v []*string) *ConfigurationGroupConfiguration {
+	s.Fields = v
+	return s
+}
+
+func (s *ConfigurationGroupConfiguration) SetType(v string) *ConfigurationGroupConfiguration {
+	s.Type = &v
+	return s
+}
+
+type ConfigurationJoinConfigurations struct {
+	Condition *string `json:"condition,omitempty" xml:"condition,omitempty"`
+	Type      *string `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s ConfigurationJoinConfigurations) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ConfigurationJoinConfigurations) GoString() string {
+	return s.String()
+}
+
+func (s *ConfigurationJoinConfigurations) SetCondition(v string) *ConfigurationJoinConfigurations {
+	s.Condition = &v
+	return s
+}
+
+func (s *ConfigurationJoinConfigurations) SetType(v string) *ConfigurationJoinConfigurations {
+	s.Type = &v
+	return s
+}
+
+type ConfigurationLabels struct {
+	Key   *string `json:"key,omitempty" xml:"key,omitempty"`
+	Value *string `json:"value,omitempty" xml:"value,omitempty"`
+}
+
+func (s ConfigurationLabels) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ConfigurationLabels) GoString() string {
+	return s.String()
+}
+
+func (s *ConfigurationLabels) SetKey(v string) *ConfigurationLabels {
+	s.Key = &v
+	return s
+}
+
+func (s *ConfigurationLabels) SetValue(v string) *ConfigurationLabels {
+	s.Value = &v
+	return s
+}
+
+type ConfigurationPolicyConfiguration struct {
+	ActionPolicyId *string `json:"actionPolicyId,omitempty" xml:"actionPolicyId,omitempty"`
+	AlertPolicyId  *string `json:"alertPolicyId,omitempty" xml:"alertPolicyId,omitempty"`
+	RepeatInterval *string `json:"repeatInterval,omitempty" xml:"repeatInterval,omitempty"`
+	UseDefault     *bool   `json:"useDefault,omitempty" xml:"useDefault,omitempty"`
+}
+
+func (s ConfigurationPolicyConfiguration) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ConfigurationPolicyConfiguration) GoString() string {
+	return s.String()
+}
+
+func (s *ConfigurationPolicyConfiguration) SetActionPolicyId(v string) *ConfigurationPolicyConfiguration {
+	s.ActionPolicyId = &v
+	return s
+}
+
+func (s *ConfigurationPolicyConfiguration) SetAlertPolicyId(v string) *ConfigurationPolicyConfiguration {
+	s.AlertPolicyId = &v
+	return s
+}
+
+func (s *ConfigurationPolicyConfiguration) SetRepeatInterval(v string) *ConfigurationPolicyConfiguration {
+	s.RepeatInterval = &v
+	return s
+}
+
+func (s *ConfigurationPolicyConfiguration) SetUseDefault(v bool) *ConfigurationPolicyConfiguration {
+	s.UseDefault = &v
+	return s
+}
+
+type ConfigurationQueryList struct {
+	PowerSqlMode *string `json:"powerSqlMode,omitempty" xml:"powerSqlMode,omitempty"`
+	Project      *string `json:"project,omitempty" xml:"project,omitempty"`
+	Query        *string `json:"query,omitempty" xml:"query,omitempty"`
+	Region       *string `json:"region,omitempty" xml:"region,omitempty"`
+	RoleArn      *string `json:"roleArn,omitempty" xml:"roleArn,omitempty"`
+	Start        *string `json:"start,omitempty" xml:"start,omitempty"`
+	Store        *string `json:"store,omitempty" xml:"store,omitempty"`
+	StoreType    *string `json:"storeType,omitempty" xml:"storeType,omitempty"`
+	TimeSpanType *string `json:"timeSpanType,omitempty" xml:"timeSpanType,omitempty"`
+}
+
+func (s ConfigurationQueryList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ConfigurationQueryList) GoString() string {
+	return s.String()
+}
+
+func (s *ConfigurationQueryList) SetPowerSqlMode(v string) *ConfigurationQueryList {
+	s.PowerSqlMode = &v
+	return s
+}
+
+func (s *ConfigurationQueryList) SetProject(v string) *ConfigurationQueryList {
+	s.Project = &v
+	return s
+}
+
+func (s *ConfigurationQueryList) SetQuery(v string) *ConfigurationQueryList {
+	s.Query = &v
+	return s
+}
+
+func (s *ConfigurationQueryList) SetRegion(v string) *ConfigurationQueryList {
+	s.Region = &v
+	return s
+}
+
+func (s *ConfigurationQueryList) SetRoleArn(v string) *ConfigurationQueryList {
+	s.RoleArn = &v
+	return s
+}
+
+func (s *ConfigurationQueryList) SetStart(v string) *ConfigurationQueryList {
+	s.Start = &v
+	return s
+}
+
+func (s *ConfigurationQueryList) SetStore(v string) *ConfigurationQueryList {
+	s.Store = &v
+	return s
+}
+
+func (s *ConfigurationQueryList) SetStoreType(v string) *ConfigurationQueryList {
+	s.StoreType = &v
+	return s
+}
+
+func (s *ConfigurationQueryList) SetTimeSpanType(v string) *ConfigurationQueryList {
+	s.TimeSpanType = &v
+	return s
+}
+
+type ConfigurationSeverityConfigurations struct {
+	EvalCondition *ConfigurationSeverityConfigurationsEvalCondition `json:"evalCondition,omitempty" xml:"evalCondition,omitempty" type:"Struct"`
+	Severity      *int64                                            `json:"severity,omitempty" xml:"severity,omitempty"`
+}
+
+func (s ConfigurationSeverityConfigurations) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ConfigurationSeverityConfigurations) GoString() string {
+	return s.String()
+}
+
+func (s *ConfigurationSeverityConfigurations) SetEvalCondition(v *ConfigurationSeverityConfigurationsEvalCondition) *ConfigurationSeverityConfigurations {
+	s.EvalCondition = v
+	return s
+}
+
+func (s *ConfigurationSeverityConfigurations) SetSeverity(v int64) *ConfigurationSeverityConfigurations {
+	s.Severity = &v
+	return s
+}
+
+type ConfigurationSeverityConfigurationsEvalCondition struct {
+	Condition      *string `json:"condition,omitempty" xml:"condition,omitempty"`
+	CountCondition *string `json:"countCondition,omitempty" xml:"countCondition,omitempty"`
+}
+
+func (s ConfigurationSeverityConfigurationsEvalCondition) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ConfigurationSeverityConfigurationsEvalCondition) GoString() string {
+	return s.String()
+}
+
+func (s *ConfigurationSeverityConfigurationsEvalCondition) SetCondition(v string) *ConfigurationSeverityConfigurationsEvalCondition {
+	s.Condition = &v
+	return s
+}
+
+func (s *ConfigurationSeverityConfigurationsEvalCondition) SetCountCondition(v string) *ConfigurationSeverityConfigurationsEvalCondition {
+	s.CountCondition = &v
 	return s
 }
 
@@ -1112,6 +1510,53 @@ func (s *Project) SetStatus(v string) *Project {
 	return s
 }
 
+type Schedule struct {
+	CronExpression *string `json:"cronExpression,omitempty" xml:"cronExpression,omitempty"`
+	DayOfWeek      *int64  `json:"dayOfWeek,omitempty" xml:"dayOfWeek,omitempty"`
+	Hour           *int64  `json:"hour,omitempty" xml:"hour,omitempty"`
+	Interval       *string `json:"interval,omitempty" xml:"interval,omitempty"`
+	RunImmediately *bool   `json:"runImmediately,omitempty" xml:"runImmediately,omitempty"`
+	Type           *string `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s Schedule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s Schedule) GoString() string {
+	return s.String()
+}
+
+func (s *Schedule) SetCronExpression(v string) *Schedule {
+	s.CronExpression = &v
+	return s
+}
+
+func (s *Schedule) SetDayOfWeek(v int64) *Schedule {
+	s.DayOfWeek = &v
+	return s
+}
+
+func (s *Schedule) SetHour(v int64) *Schedule {
+	s.Hour = &v
+	return s
+}
+
+func (s *Schedule) SetInterval(v string) *Schedule {
+	s.Interval = &v
+	return s
+}
+
+func (s *Schedule) SetRunImmediately(v bool) *Schedule {
+	s.RunImmediately = &v
+	return s
+}
+
+func (s *Schedule) SetType(v string) *Schedule {
+	s.Type = &v
+	return s
+}
+
 type Shard struct {
 	CreateTime        *int32  `json:"createTime,omitempty" xml:"createTime,omitempty"`
 	ExclusiveEndKey   *string `json:"exclusiveEndKey,omitempty" xml:"exclusiveEndKey,omitempty"`
@@ -1318,6 +1763,46 @@ func (s *ChangeResourceGroupResponse) SetHeaders(v map[string]*string) *ChangeRe
 }
 
 func (s *ChangeResourceGroupResponse) SetStatusCode(v int32) *ChangeResourceGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
+type CreateAlertRequest struct {
+	Body *Alert `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateAlertRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAlertRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAlertRequest) SetBody(v *Alert) *CreateAlertRequest {
+	s.Body = v
+	return s
+}
+
+type CreateAlertResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+}
+
+func (s CreateAlertResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAlertResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAlertResponse) SetHeaders(v map[string]*string) *CreateAlertResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateAlertResponse) SetStatusCode(v int32) *CreateAlertResponse {
 	s.StatusCode = &v
 	return s
 }
@@ -1651,6 +2136,129 @@ func (s *CreateIndexResponse) SetHeaders(v map[string]*string) *CreateIndexRespo
 
 func (s *CreateIndexResponse) SetStatusCode(v int32) *CreateIndexResponse {
 	s.StatusCode = &v
+	return s
+}
+
+type CreateJobRequest struct {
+	Enable            *bool              `json:"enable,omitempty" xml:"enable,omitempty"`
+	FunctionConfig    *EtlFunctionConfig `json:"functionConfig,omitempty" xml:"functionConfig,omitempty"`
+	FunctionParameter *string            `json:"functionParameter,omitempty" xml:"functionParameter,omitempty"`
+	JobName           *string            `json:"jobName,omitempty" xml:"jobName,omitempty"`
+	LogConfig         *EtlLogConfig      `json:"logConfig,omitempty" xml:"logConfig,omitempty"`
+	SourceConfig      *EtlSourceConfig   `json:"sourceConfig,omitempty" xml:"sourceConfig,omitempty"`
+	TriggerConfig     *EtlTriggerConfig  `json:"triggerConfig,omitempty" xml:"triggerConfig,omitempty"`
+}
+
+func (s CreateJobRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateJobRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateJobRequest) SetEnable(v bool) *CreateJobRequest {
+	s.Enable = &v
+	return s
+}
+
+func (s *CreateJobRequest) SetFunctionConfig(v *EtlFunctionConfig) *CreateJobRequest {
+	s.FunctionConfig = v
+	return s
+}
+
+func (s *CreateJobRequest) SetFunctionParameter(v string) *CreateJobRequest {
+	s.FunctionParameter = &v
+	return s
+}
+
+func (s *CreateJobRequest) SetJobName(v string) *CreateJobRequest {
+	s.JobName = &v
+	return s
+}
+
+func (s *CreateJobRequest) SetLogConfig(v *EtlLogConfig) *CreateJobRequest {
+	s.LogConfig = v
+	return s
+}
+
+func (s *CreateJobRequest) SetSourceConfig(v *EtlSourceConfig) *CreateJobRequest {
+	s.SourceConfig = v
+	return s
+}
+
+func (s *CreateJobRequest) SetTriggerConfig(v *EtlTriggerConfig) *CreateJobRequest {
+	s.TriggerConfig = v
+	return s
+}
+
+type CreateJobResponseBody struct {
+	Code      *int32  `json:"code,omitempty" xml:"code,omitempty"`
+	Data      *string `json:"data,omitempty" xml:"data,omitempty"`
+	Message   *string `json:"message,omitempty" xml:"message,omitempty"`
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success   *string `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s CreateJobResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateJobResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateJobResponseBody) SetCode(v int32) *CreateJobResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CreateJobResponseBody) SetData(v string) *CreateJobResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *CreateJobResponseBody) SetMessage(v string) *CreateJobResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CreateJobResponseBody) SetRequestId(v string) *CreateJobResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateJobResponseBody) SetSuccess(v string) *CreateJobResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreateJobResponse struct {
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateJobResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateJobResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateJobResponse) SetHeaders(v map[string]*string) *CreateJobResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateJobResponse) SetStatusCode(v int32) *CreateJobResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateJobResponse) SetBody(v *CreateJobResponseBody) *CreateJobResponse {
+	s.Body = v
 	return s
 }
 
@@ -2522,6 +3130,29 @@ func (s *CreateSavedSearchResponse) SetStatusCode(v int32) *CreateSavedSearchRes
 	return s
 }
 
+type DeleteAlertResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+}
+
+func (s DeleteAlertResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAlertResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAlertResponse) SetHeaders(v map[string]*string) *DeleteAlertResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteAlertResponse) SetStatusCode(v int32) *DeleteAlertResponse {
+	s.StatusCode = &v
+	return s
+}
+
 type DeleteConsumerGroupResponse struct {
 	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
 	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
@@ -2640,6 +3271,70 @@ func (s *DeleteIndexResponse) SetHeaders(v map[string]*string) *DeleteIndexRespo
 
 func (s *DeleteIndexResponse) SetStatusCode(v int32) *DeleteIndexResponse {
 	s.StatusCode = &v
+	return s
+}
+
+type DeleteJobResponseBody struct {
+	Code      *int32  `json:"code,omitempty" xml:"code,omitempty"`
+	Data      *string `json:"data,omitempty" xml:"data,omitempty"`
+	Message   *string `json:"message,omitempty" xml:"message,omitempty"`
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s DeleteJobResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteJobResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteJobResponseBody) SetCode(v int32) *DeleteJobResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DeleteJobResponseBody) SetData(v string) *DeleteJobResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *DeleteJobResponseBody) SetMessage(v string) *DeleteJobResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DeleteJobResponseBody) SetRequestId(v string) *DeleteJobResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteJobResponse struct {
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteJobResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteJobResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteJobResponse) SetHeaders(v map[string]*string) *DeleteJobResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteJobResponse) SetStatusCode(v int32) *DeleteJobResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteJobResponse) SetBody(v *DeleteJobResponseBody) *DeleteJobResponse {
+	s.Body = v
 	return s
 }
 
@@ -2801,6 +3496,35 @@ func (s *DeleteShipperResponse) SetHeaders(v map[string]*string) *DeleteShipperR
 
 func (s *DeleteShipperResponse) SetStatusCode(v int32) *DeleteShipperResponse {
 	s.StatusCode = &v
+	return s
+}
+
+type GetAlertResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *Alert             `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetAlertResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAlertResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetAlertResponse) SetHeaders(v map[string]*string) *GetAlertResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetAlertResponse) SetStatusCode(v int32) *GetAlertResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetAlertResponse) SetBody(v *Alert) *GetAlertResponse {
+	s.Body = v
 	return s
 }
 
@@ -3566,6 +4290,76 @@ func (s *GetIndexResponse) SetBody(v *GetIndexResponseBody) *GetIndexResponse {
 	return s
 }
 
+type GetJobResponseBody struct {
+	Code      *int32               `json:"code,omitempty" xml:"code,omitempty"`
+	Data      []map[string]*string `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	Message   *string              `json:"message,omitempty" xml:"message,omitempty"`
+	RequestId *string              `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success   *string              `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s GetJobResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetJobResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetJobResponseBody) SetCode(v int32) *GetJobResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetJobResponseBody) SetData(v []map[string]*string) *GetJobResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetJobResponseBody) SetMessage(v string) *GetJobResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetJobResponseBody) SetRequestId(v string) *GetJobResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetJobResponseBody) SetSuccess(v string) *GetJobResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetJobResponse struct {
+	Headers    map[string]*string  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetJobResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetJobResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetJobResponse) SetHeaders(v map[string]*string) *GetJobResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetJobResponse) SetStatusCode(v int32) *GetJobResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetJobResponse) SetBody(v *GetJobResponseBody) *GetJobResponse {
+	s.Body = v
+	return s
+}
+
 type GetLogStoreResponse struct {
 	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
 	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
@@ -4073,6 +4867,64 @@ func (s *GetShipperStatusResponse) SetBody(v *GetShipperStatusResponseBody) *Get
 	return s
 }
 
+type ListAlertResponseBody struct {
+	Count   *int64   `json:"count,omitempty" xml:"count,omitempty"`
+	Results []*Alert `json:"results,omitempty" xml:"results,omitempty" type:"Repeated"`
+	Total   *int64   `json:"total,omitempty" xml:"total,omitempty"`
+}
+
+func (s ListAlertResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAlertResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListAlertResponseBody) SetCount(v int64) *ListAlertResponseBody {
+	s.Count = &v
+	return s
+}
+
+func (s *ListAlertResponseBody) SetResults(v []*Alert) *ListAlertResponseBody {
+	s.Results = v
+	return s
+}
+
+func (s *ListAlertResponseBody) SetTotal(v int64) *ListAlertResponseBody {
+	s.Total = &v
+	return s
+}
+
+type ListAlertResponse struct {
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListAlertResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListAlertResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAlertResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListAlertResponse) SetHeaders(v map[string]*string) *ListAlertResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListAlertResponse) SetStatusCode(v int32) *ListAlertResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListAlertResponse) SetBody(v *ListAlertResponseBody) *ListAlertResponse {
+	s.Body = v
+	return s
+}
+
 type ListConsumerGroupResponse struct {
 	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
 	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
@@ -4190,8 +5042,8 @@ func (s *ListDomainsResponse) SetBody(v *ListDomainsResponseBody) *ListDomainsRe
 }
 
 type ListETLJobsResponseBody struct {
-	EtlJobNameList []*string `json:"etlJobNameList,omitempty" xml:"etlJobNameList,omitempty" type:"Repeated"`
-	Total          *int32    `json:"total,omitempty" xml:"total,omitempty"`
+	Results []*EtlJob `json:"results,omitempty" xml:"results,omitempty" type:"Repeated"`
+	Total   *int32    `json:"total,omitempty" xml:"total,omitempty"`
 }
 
 func (s ListETLJobsResponseBody) String() string {
@@ -4202,8 +5054,8 @@ func (s ListETLJobsResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ListETLJobsResponseBody) SetEtlJobNameList(v []*string) *ListETLJobsResponseBody {
-	s.EtlJobNameList = v
+func (s *ListETLJobsResponseBody) SetResults(v []*EtlJob) *ListETLJobsResponseBody {
+	s.Results = v
 	return s
 }
 
@@ -4324,6 +5176,58 @@ func (s *ListExternalStoreResponse) SetStatusCode(v int32) *ListExternalStoreRes
 }
 
 func (s *ListExternalStoreResponse) SetBody(v *ListExternalStoreResponseBody) *ListExternalStoreResponse {
+	s.Body = v
+	return s
+}
+
+type ListJobsResponseBody struct {
+	EtlJobNameList []*string `json:"etlJobNameList,omitempty" xml:"etlJobNameList,omitempty" type:"Repeated"`
+	Total          *int32    `json:"total,omitempty" xml:"total,omitempty"`
+}
+
+func (s ListJobsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListJobsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListJobsResponseBody) SetEtlJobNameList(v []*string) *ListJobsResponseBody {
+	s.EtlJobNameList = v
+	return s
+}
+
+func (s *ListJobsResponseBody) SetTotal(v int32) *ListJobsResponseBody {
+	s.Total = &v
+	return s
+}
+
+type ListJobsResponse struct {
+	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListJobsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListJobsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListJobsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListJobsResponse) SetHeaders(v map[string]*string) *ListJobsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListJobsResponse) SetStatusCode(v int32) *ListJobsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListJobsResponse) SetBody(v *ListJobsResponseBody) *ListJobsResponse {
 	s.Body = v
 	return s
 }
@@ -5370,6 +6274,46 @@ func (s *UntagResourcesResponse) SetStatusCode(v int32) *UntagResourcesResponse 
 	return s
 }
 
+type UpdateAlertRequest struct {
+	Alert *Alert `json:"alert,omitempty" xml:"alert,omitempty"`
+}
+
+func (s UpdateAlertRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAlertRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAlertRequest) SetAlert(v *Alert) *UpdateAlertRequest {
+	s.Alert = v
+	return s
+}
+
+type UpdateAlertResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+}
+
+func (s UpdateAlertResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAlertResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAlertResponse) SetHeaders(v map[string]*string) *UpdateAlertResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateAlertResponse) SetStatusCode(v int32) *UpdateAlertResponse {
+	s.StatusCode = &v
+	return s
+}
+
 type UpdateConsumerGroupRequest struct {
 	Order   *bool  `json:"order,omitempty" xml:"order,omitempty"`
 	Timeout *int32 `json:"timeout,omitempty" xml:"timeout,omitempty"`
@@ -5653,6 +6597,163 @@ func (s *UpdateIndexResponse) SetHeaders(v map[string]*string) *UpdateIndexRespo
 
 func (s *UpdateIndexResponse) SetStatusCode(v int32) *UpdateIndexResponse {
 	s.StatusCode = &v
+	return s
+}
+
+type UpdateJobRequest struct {
+	Body *UpdateJobRequestBody `json:"body,omitempty" xml:"body,omitempty" type:"Struct"`
+}
+
+func (s UpdateJobRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateJobRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateJobRequest) SetBody(v *UpdateJobRequestBody) *UpdateJobRequest {
+	s.Body = v
+	return s
+}
+
+type UpdateJobRequestBody struct {
+	Enable            *string            `json:"enable,omitempty" xml:"enable,omitempty"`
+	FunctionConfig    *EtlFunctionConfig `json:"functionConfig,omitempty" xml:"functionConfig,omitempty"`
+	FunctionParameter *string            `json:"functionParameter,omitempty" xml:"functionParameter,omitempty"`
+	JobName           *string            `json:"jobName,omitempty" xml:"jobName,omitempty"`
+	LogConfig         *EtlLogConfig      `json:"logConfig,omitempty" xml:"logConfig,omitempty"`
+	SourceConfig      *EtlSourceConfig   `json:"sourceConfig,omitempty" xml:"sourceConfig,omitempty"`
+	TriggerConfig     *EtlTriggerConfig  `json:"triggerConfig,omitempty" xml:"triggerConfig,omitempty"`
+}
+
+func (s UpdateJobRequestBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateJobRequestBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateJobRequestBody) SetEnable(v string) *UpdateJobRequestBody {
+	s.Enable = &v
+	return s
+}
+
+func (s *UpdateJobRequestBody) SetFunctionConfig(v *EtlFunctionConfig) *UpdateJobRequestBody {
+	s.FunctionConfig = v
+	return s
+}
+
+func (s *UpdateJobRequestBody) SetFunctionParameter(v string) *UpdateJobRequestBody {
+	s.FunctionParameter = &v
+	return s
+}
+
+func (s *UpdateJobRequestBody) SetJobName(v string) *UpdateJobRequestBody {
+	s.JobName = &v
+	return s
+}
+
+func (s *UpdateJobRequestBody) SetLogConfig(v *EtlLogConfig) *UpdateJobRequestBody {
+	s.LogConfig = v
+	return s
+}
+
+func (s *UpdateJobRequestBody) SetSourceConfig(v *EtlSourceConfig) *UpdateJobRequestBody {
+	s.SourceConfig = v
+	return s
+}
+
+func (s *UpdateJobRequestBody) SetTriggerConfig(v *EtlTriggerConfig) *UpdateJobRequestBody {
+	s.TriggerConfig = v
+	return s
+}
+
+type UpdateJobShrinkRequest struct {
+	BodyShrink *string `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateJobShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateJobShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateJobShrinkRequest) SetBodyShrink(v string) *UpdateJobShrinkRequest {
+	s.BodyShrink = &v
+	return s
+}
+
+type UpdateJobResponseBody struct {
+	Code      *string `json:"code,omitempty" xml:"code,omitempty"`
+	Data      *string `json:"data,omitempty" xml:"data,omitempty"`
+	Message   *string `json:"message,omitempty" xml:"message,omitempty"`
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success   *string `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s UpdateJobResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateJobResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateJobResponseBody) SetCode(v string) *UpdateJobResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UpdateJobResponseBody) SetData(v string) *UpdateJobResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *UpdateJobResponseBody) SetMessage(v string) *UpdateJobResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UpdateJobResponseBody) SetRequestId(v string) *UpdateJobResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateJobResponseBody) SetSuccess(v string) *UpdateJobResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateJobResponse struct {
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateJobResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateJobResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateJobResponse) SetHeaders(v map[string]*string) *UpdateJobResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateJobResponse) SetStatusCode(v int32) *UpdateJobResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateJobResponse) SetBody(v *UpdateJobResponseBody) *UpdateJobResponse {
+	s.Body = v
 	return s
 }
 
@@ -6676,6 +7777,50 @@ func (client *Client) ChangeResourceGroup(request *ChangeResourceGroupRequest) (
 	return _result, _err
 }
 
+func (client *Client) CreateAlertWithOptions(project *string, request *CreateAlertRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateAlertResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(request.Body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateAlert"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/jobs"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
+	_result = &CreateAlertResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateAlert(project *string, request *CreateAlertRequest) (_result *CreateAlertResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateAlertResponse{}
+	_body, _err := client.CreateAlertWithOptions(project, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) CreateConsumerGroupWithOptions(project *string, logstore *string, request *CreateConsumerGroupRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateConsumerGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6827,7 +7972,7 @@ func (client *Client) CreateETLJobWithOptions(project *string, request *CreateET
 		Action:      tea.String("CreateETLJob"),
 		Version:     tea.String("2020-12-30"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/etljobs"),
+		Pathname:    tea.String("/jobs"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -6921,6 +8066,79 @@ func (client *Client) CreateIndex(project *string, logstore *string, request *Cr
 	headers := make(map[string]*string)
 	_result = &CreateIndexResponse{}
 	_body, _err := client.CreateIndexWithOptions(project, logstore, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateJobWithOptions(project *string, request *CreateJobRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateJobResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Enable)) {
+		body["enable"] = request.Enable
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FunctionConfig)) {
+		body["functionConfig"] = request.FunctionConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FunctionParameter)) {
+		body["functionParameter"] = request.FunctionParameter
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JobName)) {
+		body["jobName"] = request.JobName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LogConfig)) {
+		body["logConfig"] = request.LogConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceConfig)) {
+		body["sourceConfig"] = request.SourceConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TriggerConfig)) {
+		body["triggerConfig"] = request.TriggerConfig
+	}
+
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateJob"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/jobs"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateJobResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateJob(project *string, request *CreateJobRequest) (_result *CreateJobResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateJobResponse{}
+	_body, _err := client.CreateJobWithOptions(project, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7482,6 +8700,45 @@ func (client *Client) CreateSavedSearch(project *string, request *CreateSavedSea
 	return _result, _err
 }
 
+func (client *Client) DeleteAlertWithOptions(project *string, alert *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteAlertResponse, _err error) {
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteAlert"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/jobs/" + tea.StringValue(alert)),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
+	_result = &DeleteAlertResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteAlert(project *string, alert *string) (_result *DeleteAlertResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteAlertResponse{}
+	_body, _err := client.DeleteAlertWithOptions(project, alert, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DeleteConsumerGroupWithOptions(project *string, logstore *string, consumerGroup *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteConsumerGroupResponse, _err error) {
 	hostMap := make(map[string]*string)
 	hostMap["project"] = project
@@ -7571,7 +8828,7 @@ func (client *Client) DeleteETLJobWithOptions(project *string, etlJobName *strin
 		Action:      tea.String("DeleteETLJob"),
 		Version:     tea.String("2020-12-30"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/etljobs/" + tea.StringValue(etlJobName)),
+		Pathname:    tea.String("/jobs/" + tea.StringValue(etlJobName)),
 		Method:      tea.String("DELETE"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -7670,6 +8927,45 @@ func (client *Client) DeleteIndex(project *string, logstore *string) (_result *D
 	headers := make(map[string]*string)
 	_result = &DeleteIndexResponse{}
 	_body, _err := client.DeleteIndexWithOptions(project, logstore, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteJobWithOptions(project *string, etlJobName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteJobResponse, _err error) {
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteJob"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/jobs/" + tea.StringValue(etlJobName)),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteJobResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteJob(project *string, etlJobName *string) (_result *DeleteJobResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteJobResponse{}
+	_body, _err := client.DeleteJobWithOptions(project, etlJobName, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7943,6 +9239,45 @@ func (client *Client) DeleteShipper(project *string, logstore *string, shipperNa
 	headers := make(map[string]*string)
 	_result = &DeleteShipperResponse{}
 	_body, _err := client.DeleteShipperWithOptions(project, logstore, shipperName, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetAlertWithOptions(project *string, alert *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetAlertResponse, _err error) {
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetAlert"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/jobs/" + tea.StringValue(alert)),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetAlertResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetAlert(project *string, alert *string) (_result *GetAlertResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetAlertResponse{}
+	_body, _err := client.GetAlertWithOptions(project, alert, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8251,7 +9586,7 @@ func (client *Client) GetEtlJobWithOptions(project *string, etlJobName *string, 
 		Action:      tea.String("GetEtlJob"),
 		Version:     tea.String("2020-12-30"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/etljobs/" + tea.StringValue(etlJobName)),
+		Pathname:    tea.String("/jobs/" + tea.StringValue(etlJobName)),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -8411,6 +9746,45 @@ func (client *Client) GetIndex(project *string, logstore *string) (_result *GetI
 	headers := make(map[string]*string)
 	_result = &GetIndexResponse{}
 	_body, _err := client.GetIndexWithOptions(project, logstore, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetJobWithOptions(project *string, etlJobName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetJobResponse, _err error) {
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetJob"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/jobs/" + tea.StringValue(etlJobName)),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetJobResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetJob(project *string, etlJobName *string) (_result *GetJobResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetJobResponse{}
+	_body, _err := client.GetJobWithOptions(project, etlJobName, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8847,6 +10221,45 @@ func (client *Client) GetShipperStatus(project *string, logstore *string, shippe
 	return _result, _err
 }
 
+func (client *Client) ListAlertWithOptions(project *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListAlertResponse, _err error) {
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListAlert"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/jobs"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListAlertResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListAlert(project *string) (_result *ListAlertResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListAlertResponse{}
+	_body, _err := client.ListAlertWithOptions(project, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ListConsumerGroupWithOptions(project *string, logstore *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListConsumerGroupResponse, _err error) {
 	hostMap := make(map[string]*string)
 	hostMap["project"] = project
@@ -8954,7 +10367,7 @@ func (client *Client) ListETLJobsWithOptions(project *string, headers map[string
 		Action:      tea.String("ListETLJobs"),
 		Version:     tea.String("2020-12-30"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/etljobs"),
+		Pathname:    tea.String("/jobs"),
 		Method:      tea.String("PUT"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -9032,6 +10445,45 @@ func (client *Client) ListExternalStore(project *string, request *ListExternalSt
 	headers := make(map[string]*string)
 	_result = &ListExternalStoreResponse{}
 	_body, _err := client.ListExternalStoreWithOptions(project, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListJobsWithOptions(project *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListJobsResponse, _err error) {
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListJobs"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/jobs"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListJobsResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListJobs(project *string) (_result *ListJobsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListJobsResponse{}
+	_body, _err := client.ListJobsWithOptions(project, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9829,6 +11281,50 @@ func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *U
 	return _result, _err
 }
 
+func (client *Client) UpdateAlertWithOptions(project *string, alert *string, request *UpdateAlertRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateAlertResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(request.Alert),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateAlert"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/jobs/" + tea.StringValue(alert)),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateAlertResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateAlert(project *string, alert *string, request *UpdateAlertRequest) (_result *UpdateAlertResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateAlertResponse{}
+	_body, _err := client.UpdateAlertWithOptions(project, alert, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) UpdateConsumerGroupWithOptions(project *string, logstore *string, consumerGroup *string, request *UpdateConsumerGroupRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateConsumerGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9927,7 +11423,7 @@ func (client *Client) UpdateEtlJobWithOptions(project *string, etlJob *string, r
 		Action:      tea.String("UpdateEtlJob"),
 		Version:     tea.String("2020-12-30"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/etljobs/" + tea.StringValue(etlJob)),
+		Pathname:    tea.String("/jobs/" + tea.StringValue(etlJob)),
 		Method:      tea.String("PUT"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -10021,6 +11517,61 @@ func (client *Client) UpdateIndex(project *string, logstore *string, request *Up
 	headers := make(map[string]*string)
 	_result = &UpdateIndexResponse{}
 	_body, _err := client.UpdateIndexWithOptions(project, logstore, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateJobWithOptions(project *string, etlJob *string, tmpReq *UpdateJobRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateJobResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	request := &UpdateJobShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Body)) {
+		request.BodyShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Body, tea.String("body"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BodyShrink)) {
+		query["body"] = request.BodyShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateJob"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/jobs/" + tea.StringValue(etlJob)),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateJobResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateJob(project *string, etlJob *string, request *UpdateJobRequest) (_result *UpdateJobResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateJobResponse{}
+	_body, _err := client.UpdateJobWithOptions(project, etlJob, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
