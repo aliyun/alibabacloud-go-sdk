@@ -12,6 +12,129 @@ import (
 	"github.com/alibabacloud-go/tea/tea"
 )
 
+type ChangeResourceGroupRequest struct {
+	RegionId        *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
+	ResourceId      *string `json:"resourceId,omitempty" xml:"resourceId,omitempty"`
+	ResourceType    *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
+}
+
+func (s ChangeResourceGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ChangeResourceGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ChangeResourceGroupRequest) SetRegionId(v string) *ChangeResourceGroupRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ChangeResourceGroupRequest) SetResourceGroupId(v string) *ChangeResourceGroupRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *ChangeResourceGroupRequest) SetResourceId(v string) *ChangeResourceGroupRequest {
+	s.ResourceId = &v
+	return s
+}
+
+func (s *ChangeResourceGroupRequest) SetResourceType(v string) *ChangeResourceGroupRequest {
+	s.ResourceType = &v
+	return s
+}
+
+type ChangeResourceGroupResponseBody struct {
+	Code           *string `json:"code,omitempty" xml:"code,omitempty"`
+	Data           *bool   `json:"data,omitempty" xml:"data,omitempty"`
+	DynamicCode    *string `json:"dynamicCode,omitempty" xml:"dynamicCode,omitempty"`
+	DynamicMessage *string `json:"dynamicMessage,omitempty" xml:"dynamicMessage,omitempty"`
+	HttpStatusCode *int32  `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	Message        *string `json:"message,omitempty" xml:"message,omitempty"`
+	RequestId      *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success        *bool   `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s ChangeResourceGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ChangeResourceGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ChangeResourceGroupResponseBody) SetCode(v string) *ChangeResourceGroupResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ChangeResourceGroupResponseBody) SetData(v bool) *ChangeResourceGroupResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *ChangeResourceGroupResponseBody) SetDynamicCode(v string) *ChangeResourceGroupResponseBody {
+	s.DynamicCode = &v
+	return s
+}
+
+func (s *ChangeResourceGroupResponseBody) SetDynamicMessage(v string) *ChangeResourceGroupResponseBody {
+	s.DynamicMessage = &v
+	return s
+}
+
+func (s *ChangeResourceGroupResponseBody) SetHttpStatusCode(v int32) *ChangeResourceGroupResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ChangeResourceGroupResponseBody) SetMessage(v string) *ChangeResourceGroupResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ChangeResourceGroupResponseBody) SetRequestId(v string) *ChangeResourceGroupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ChangeResourceGroupResponseBody) SetSuccess(v bool) *ChangeResourceGroupResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ChangeResourceGroupResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ChangeResourceGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ChangeResourceGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ChangeResourceGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ChangeResourceGroupResponse) SetHeaders(v map[string]*string) *ChangeResourceGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ChangeResourceGroupResponse) SetStatusCode(v int32) *ChangeResourceGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ChangeResourceGroupResponse) SetBody(v *ChangeResourceGroupResponseBody) *ChangeResourceGroupResponse {
+	s.Body = v
+	return s
+}
+
 type CreateConsumerGroupRequest struct {
 	ConsumeRetryPolicy *CreateConsumerGroupRequestConsumeRetryPolicy `json:"consumeRetryPolicy,omitempty" xml:"consumeRetryPolicy,omitempty" type:"Struct"`
 	DeliveryOrderType  *string                                       `json:"deliveryOrderType,omitempty" xml:"deliveryOrderType,omitempty"`
@@ -1902,9 +2025,10 @@ func (s *ListConsumerGroupsResponse) SetBody(v *ListConsumerGroupsResponseBody) 
 }
 
 type ListInstancesRequest struct {
-	Filter     *string `json:"filter,omitempty" xml:"filter,omitempty"`
-	PageNumber *int32  `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	PageSize   *int32  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	Filter          *string `json:"filter,omitempty" xml:"filter,omitempty"`
+	PageNumber      *int32  `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	PageSize        *int32  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
 }
 
 func (s ListInstancesRequest) String() string {
@@ -1927,6 +2051,11 @@ func (s *ListInstancesRequest) SetPageNumber(v int32) *ListInstancesRequest {
 
 func (s *ListInstancesRequest) SetPageSize(v int32) *ListInstancesRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *ListInstancesRequest) SetResourceGroupId(v string) *ListInstancesRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -2025,24 +2154,25 @@ func (s *ListInstancesResponseBodyData) SetTotalCount(v int64) *ListInstancesRes
 }
 
 type ListInstancesResponseBodyDataList struct {
-	CommodityCode *string `json:"commodityCode,omitempty" xml:"commodityCode,omitempty"`
-	CreateTime    *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	ExpireTime    *string `json:"expireTime,omitempty" xml:"expireTime,omitempty"`
-	GroupCount    *int64  `json:"groupCount,omitempty" xml:"groupCount,omitempty"`
-	InstanceId    *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	InstanceName  *string `json:"instanceName,omitempty" xml:"instanceName,omitempty"`
-	PaymentType   *string `json:"paymentType,omitempty" xml:"paymentType,omitempty"`
-	RegionId      *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	ReleaseTime   *string `json:"releaseTime,omitempty" xml:"releaseTime,omitempty"`
-	Remark        *string `json:"remark,omitempty" xml:"remark,omitempty"`
-	SeriesCode    *string `json:"seriesCode,omitempty" xml:"seriesCode,omitempty"`
-	ServiceCode   *string `json:"serviceCode,omitempty" xml:"serviceCode,omitempty"`
-	StartTime     *string `json:"startTime,omitempty" xml:"startTime,omitempty"`
-	Status        *string `json:"status,omitempty" xml:"status,omitempty"`
-	SubSeriesCode *string `json:"subSeriesCode,omitempty" xml:"subSeriesCode,omitempty"`
-	TopicCount    *int64  `json:"topicCount,omitempty" xml:"topicCount,omitempty"`
-	UpdateTime    *string `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
-	UserId        *string `json:"userId,omitempty" xml:"userId,omitempty"`
+	CommodityCode   *string `json:"commodityCode,omitempty" xml:"commodityCode,omitempty"`
+	CreateTime      *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	ExpireTime      *string `json:"expireTime,omitempty" xml:"expireTime,omitempty"`
+	GroupCount      *int64  `json:"groupCount,omitempty" xml:"groupCount,omitempty"`
+	InstanceId      *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	InstanceName    *string `json:"instanceName,omitempty" xml:"instanceName,omitempty"`
+	PaymentType     *string `json:"paymentType,omitempty" xml:"paymentType,omitempty"`
+	RegionId        *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	ReleaseTime     *string `json:"releaseTime,omitempty" xml:"releaseTime,omitempty"`
+	Remark          *string `json:"remark,omitempty" xml:"remark,omitempty"`
+	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
+	SeriesCode      *string `json:"seriesCode,omitempty" xml:"seriesCode,omitempty"`
+	ServiceCode     *string `json:"serviceCode,omitempty" xml:"serviceCode,omitempty"`
+	StartTime       *string `json:"startTime,omitempty" xml:"startTime,omitempty"`
+	Status          *string `json:"status,omitempty" xml:"status,omitempty"`
+	SubSeriesCode   *string `json:"subSeriesCode,omitempty" xml:"subSeriesCode,omitempty"`
+	TopicCount      *int64  `json:"topicCount,omitempty" xml:"topicCount,omitempty"`
+	UpdateTime      *string `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
+	UserId          *string `json:"userId,omitempty" xml:"userId,omitempty"`
 }
 
 func (s ListInstancesResponseBodyDataList) String() string {
@@ -2100,6 +2230,11 @@ func (s *ListInstancesResponseBodyDataList) SetReleaseTime(v string) *ListInstan
 
 func (s *ListInstancesResponseBodyDataList) SetRemark(v string) *ListInstancesResponseBodyDataList {
 	s.Remark = &v
+	return s
+}
+
+func (s *ListInstancesResponseBodyDataList) SetResourceGroupId(v string) *ListInstancesResponseBodyDataList {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -2454,8 +2589,9 @@ func (s *UpdateConsumerGroupRequest) SetRemark(v string) *UpdateConsumerGroupReq
 }
 
 type UpdateConsumerGroupRequestConsumeRetryPolicy struct {
-	MaxRetryTimes *int32  `json:"maxRetryTimes,omitempty" xml:"maxRetryTimes,omitempty"`
-	RetryPolicy   *string `json:"retryPolicy,omitempty" xml:"retryPolicy,omitempty"`
+	DeadLetterTargetTopic *string `json:"deadLetterTargetTopic,omitempty" xml:"deadLetterTargetTopic,omitempty"`
+	MaxRetryTimes         *int32  `json:"maxRetryTimes,omitempty" xml:"maxRetryTimes,omitempty"`
+	RetryPolicy           *string `json:"retryPolicy,omitempty" xml:"retryPolicy,omitempty"`
 }
 
 func (s UpdateConsumerGroupRequestConsumeRetryPolicy) String() string {
@@ -2464,6 +2600,11 @@ func (s UpdateConsumerGroupRequestConsumeRetryPolicy) String() string {
 
 func (s UpdateConsumerGroupRequestConsumeRetryPolicy) GoString() string {
 	return s.String()
+}
+
+func (s *UpdateConsumerGroupRequestConsumeRetryPolicy) SetDeadLetterTargetTopic(v string) *UpdateConsumerGroupRequestConsumeRetryPolicy {
+	s.DeadLetterTargetTopic = &v
+	return s
 }
 
 func (s *UpdateConsumerGroupRequestConsumeRetryPolicy) SetMaxRetryTimes(v int32) *UpdateConsumerGroupRequestConsumeRetryPolicy {
@@ -2895,6 +3036,64 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	}
 
 	_body, _err := endpointutil.GetEndpointRules(productId, regionId, endpointRule, network, suffix)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ChangeResourceGroupWithOptions(request *ChangeResourceGroupRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ChangeResourceGroupResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["regionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["resourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
+		query["resourceId"] = request.ResourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["resourceType"] = request.ResourceType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ChangeResourceGroup"),
+		Version:     tea.String("2022-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/resourceGroup/change"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ChangeResourceGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ChangeResourceGroup(request *ChangeResourceGroupRequest) (_result *ChangeResourceGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ChangeResourceGroupResponse{}
+	_body, _err := client.ChangeResourceGroupWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3392,6 +3591,10 @@ func (client *Client) ListInstancesWithOptions(request *ListInstancesRequest, he
 
 	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
 		query["pageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["resourceGroupId"] = request.ResourceGroupId
 	}
 
 	req := &openapi.OpenApiRequest{
