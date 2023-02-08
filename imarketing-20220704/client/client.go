@@ -3113,7 +3113,6 @@ type UpdateAdxCreativeContentRequestAd struct {
 	Enddate      *string                                      `json:"Enddate,omitempty" xml:"Enddate,omitempty"`
 	Imps         []*string                                    `json:"Imps,omitempty" xml:"Imps,omitempty" type:"Repeated"`
 	Interacttype *int32                                       `json:"Interacttype,omitempty" xml:"Interacttype,omitempty"`
-	MediaIdList  []*string                                    `json:"MediaIdList,omitempty" xml:"MediaIdList,omitempty" type:"Repeated"`
 	Nativead     []*UpdateAdxCreativeContentRequestAdNativead `json:"Nativead,omitempty" xml:"Nativead,omitempty" type:"Repeated"`
 	Op           *int32                                       `json:"Op,omitempty" xml:"Op,omitempty"`
 	Ostype       *string                                      `json:"Ostype,omitempty" xml:"Ostype,omitempty"`
@@ -3159,11 +3158,6 @@ func (s *UpdateAdxCreativeContentRequestAd) SetImps(v []*string) *UpdateAdxCreat
 
 func (s *UpdateAdxCreativeContentRequestAd) SetInteracttype(v int32) *UpdateAdxCreativeContentRequestAd {
 	s.Interacttype = &v
-	return s
-}
-
-func (s *UpdateAdxCreativeContentRequestAd) SetMediaIdList(v []*string) *UpdateAdxCreativeContentRequestAd {
-	s.MediaIdList = v
 	return s
 }
 
