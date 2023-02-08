@@ -3275,10 +3275,7 @@ func (s *DeleteIndexResponse) SetStatusCode(v int32) *DeleteIndexResponse {
 }
 
 type DeleteJobResponseBody struct {
-	Code      *int32  `json:"code,omitempty" xml:"code,omitempty"`
-	Data      *string `json:"data,omitempty" xml:"data,omitempty"`
-	Message   *string `json:"message,omitempty" xml:"message,omitempty"`
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Data interface{} `json:"data,omitempty" xml:"data,omitempty"`
 }
 
 func (s DeleteJobResponseBody) String() string {
@@ -3289,23 +3286,8 @@ func (s DeleteJobResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DeleteJobResponseBody) SetCode(v int32) *DeleteJobResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *DeleteJobResponseBody) SetData(v string) *DeleteJobResponseBody {
-	s.Data = &v
-	return s
-}
-
-func (s *DeleteJobResponseBody) SetMessage(v string) *DeleteJobResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *DeleteJobResponseBody) SetRequestId(v string) *DeleteJobResponseBody {
-	s.RequestId = &v
+func (s *DeleteJobResponseBody) SetData(v interface{}) *DeleteJobResponseBody {
+	s.Data = v
 	return s
 }
 
@@ -5181,8 +5163,8 @@ func (s *ListExternalStoreResponse) SetBody(v *ListExternalStoreResponseBody) *L
 }
 
 type ListJobsResponseBody struct {
-	Results []*EtlJob `json:"results,omitempty" xml:"results,omitempty" type:"Repeated"`
-	Total   *int32    `json:"total,omitempty" xml:"total,omitempty"`
+	Results interface{} `json:"results,omitempty" xml:"results,omitempty"`
+	Total   *int32      `json:"total,omitempty" xml:"total,omitempty"`
 }
 
 func (s ListJobsResponseBody) String() string {
@@ -5193,7 +5175,7 @@ func (s ListJobsResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ListJobsResponseBody) SetResults(v []*EtlJob) *ListJobsResponseBody {
+func (s *ListJobsResponseBody) SetResults(v interface{}) *ListJobsResponseBody {
 	s.Results = v
 	return s
 }
