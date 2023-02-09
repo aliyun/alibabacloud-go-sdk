@@ -1218,11 +1218,12 @@ func (s *OutputCodeLocation) SetRepositoryType(v string) *OutputCodeLocation {
 }
 
 type PathConfig struct {
-	FunctionName *string   `json:"functionName,omitempty" xml:"functionName,omitempty"`
-	Methods      []*string `json:"methods,omitempty" xml:"methods,omitempty" type:"Repeated"`
-	Path         *string   `json:"path,omitempty" xml:"path,omitempty"`
-	Qualifier    *string   `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
-	ServiceName  *string   `json:"serviceName,omitempty" xml:"serviceName,omitempty"`
+	FunctionName  *string        `json:"functionName,omitempty" xml:"functionName,omitempty"`
+	Methods       []*string      `json:"methods,omitempty" xml:"methods,omitempty" type:"Repeated"`
+	Path          *string        `json:"path,omitempty" xml:"path,omitempty"`
+	Qualifier     *string        `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
+	RewriteConfig *RewriteConfig `json:"rewriteConfig,omitempty" xml:"rewriteConfig,omitempty"`
+	ServiceName   *string        `json:"serviceName,omitempty" xml:"serviceName,omitempty"`
 }
 
 func (s PathConfig) String() string {
@@ -1250,6 +1251,11 @@ func (s *PathConfig) SetPath(v string) *PathConfig {
 
 func (s *PathConfig) SetQualifier(v string) *PathConfig {
 	s.Qualifier = &v
+	return s
+}
+
+func (s *PathConfig) SetRewriteConfig(v *RewriteConfig) *PathConfig {
+	s.RewriteConfig = v
 	return s
 }
 
@@ -1394,6 +1400,104 @@ func (s *Resource) SetResourceArn(v string) *Resource {
 
 func (s *Resource) SetTags(v map[string]*string) *Resource {
 	s.Tags = v
+	return s
+}
+
+type RewriteConfig struct {
+	EqualRules    []*RewriteConfigEqualRules    `json:"equalRules,omitempty" xml:"equalRules,omitempty" type:"Repeated"`
+	RegexRules    []*RewriteConfigRegexRules    `json:"regexRules,omitempty" xml:"regexRules,omitempty" type:"Repeated"`
+	WildcardRules []*RewriteConfigWildcardRules `json:"wildcardRules,omitempty" xml:"wildcardRules,omitempty" type:"Repeated"`
+}
+
+func (s RewriteConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RewriteConfig) GoString() string {
+	return s.String()
+}
+
+func (s *RewriteConfig) SetEqualRules(v []*RewriteConfigEqualRules) *RewriteConfig {
+	s.EqualRules = v
+	return s
+}
+
+func (s *RewriteConfig) SetRegexRules(v []*RewriteConfigRegexRules) *RewriteConfig {
+	s.RegexRules = v
+	return s
+}
+
+func (s *RewriteConfig) SetWildcardRules(v []*RewriteConfigWildcardRules) *RewriteConfig {
+	s.WildcardRules = v
+	return s
+}
+
+type RewriteConfigEqualRules struct {
+	Match       *string `json:"match,omitempty" xml:"match,omitempty"`
+	Replacement *string `json:"replacement,omitempty" xml:"replacement,omitempty"`
+}
+
+func (s RewriteConfigEqualRules) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RewriteConfigEqualRules) GoString() string {
+	return s.String()
+}
+
+func (s *RewriteConfigEqualRules) SetMatch(v string) *RewriteConfigEqualRules {
+	s.Match = &v
+	return s
+}
+
+func (s *RewriteConfigEqualRules) SetReplacement(v string) *RewriteConfigEqualRules {
+	s.Replacement = &v
+	return s
+}
+
+type RewriteConfigRegexRules struct {
+	Match       *string `json:"match,omitempty" xml:"match,omitempty"`
+	Replacement *string `json:"replacement,omitempty" xml:"replacement,omitempty"`
+}
+
+func (s RewriteConfigRegexRules) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RewriteConfigRegexRules) GoString() string {
+	return s.String()
+}
+
+func (s *RewriteConfigRegexRules) SetMatch(v string) *RewriteConfigRegexRules {
+	s.Match = &v
+	return s
+}
+
+func (s *RewriteConfigRegexRules) SetReplacement(v string) *RewriteConfigRegexRules {
+	s.Replacement = &v
+	return s
+}
+
+type RewriteConfigWildcardRules struct {
+	Match       *string `json:"match,omitempty" xml:"match,omitempty"`
+	Replacement *string `json:"replacement,omitempty" xml:"replacement,omitempty"`
+}
+
+func (s RewriteConfigWildcardRules) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RewriteConfigWildcardRules) GoString() string {
+	return s.String()
+}
+
+func (s *RewriteConfigWildcardRules) SetMatch(v string) *RewriteConfigWildcardRules {
+	s.Match = &v
+	return s
+}
+
+func (s *RewriteConfigWildcardRules) SetReplacement(v string) *RewriteConfigWildcardRules {
+	s.Replacement = &v
 	return s
 }
 
@@ -2097,11 +2201,11 @@ type ClaimGPUInstanceRequest struct {
 	SgId *string `json:"sgId,omitempty" xml:"sgId,omitempty"`
 	// The source IPv4 CIDR block of the GPU rendering instance.
 	SourceCidrIp *string `json:"sourceCidrIp,omitempty" xml:"sourceCidrIp,omitempty"`
-	// The range of TCP ports that are open to the security group of the GPU-rendered instance.
+	// The range of TCP ports that are open to the security group of the GPU rendering instance.
 	TcpPortRange []*string `json:"tcpPortRange,omitempty" xml:"tcpPortRange,omitempty" type:"Repeated"`
 	// The range of UDP ports that are open to the security group of the GPU rendering instance.
 	UdpPortRange []*string `json:"udpPortRange,omitempty" xml:"udpPortRange,omitempty" type:"Repeated"`
-	// The ID of the virtual private cloud (VPC).
+	// The ID of the VPC in which the instance resides.
 	VpcId *string `json:"vpcId,omitempty" xml:"vpcId,omitempty"`
 	// The ID of the vSwitch.
 	VswId *string `json:"vswId,omitempty" xml:"vswId,omitempty"`
@@ -2181,11 +2285,11 @@ func (s *ClaimGPUInstanceRequest) SetVswId(v string) *ClaimGPUInstanceRequest {
 }
 
 type ClaimGPUInstanceResponseBody struct {
-	// The time when the product instance was created.
+	// The time when the product instance is created.
 	CreatedTime *string `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
-	// The ID of the instance.
+	// The ID of the instance that you query.
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	// The public IP address.
+	// The public IP address of the server.
 	PublicIp *string `json:"publicIp,omitempty" xml:"publicIp,omitempty"`
 }
 
@@ -2427,7 +2531,7 @@ type CreateCustomDomainHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	// The ID of your Alibaba Cloud account.
 	XFcAccountId *string `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
-	// The time when Function Compute API is called. Specify the time in the **EEE,d MMM yyyy HH:mm:ss GMT** format.
+	// The time when the operation is called. The format is: **EEE,d MMM yyyy HH:mm:ss GMT**.
 	XFcDate *string `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
 	// The custom request ID.
 	XFcTraceId *string `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
@@ -2468,14 +2572,15 @@ type CreateCustomDomainRequest struct {
 	DomainName *string `json:"domainName,omitempty" xml:"domainName,omitempty"`
 	// The protocol types supported by the domain name. Valid values:
 	//
-	// - **HTTP**: Only HTTP is supported.
-	// - **HTTPS**: Only HTTPS is supported.
-	// - **HTTP,HTTPS**: Both HTTP and HTTPS are supported.
+	// *   **HTTP**: Only HTTP is supported.
+	// *   **HTTPS**: Only HTTPS is supported.
+	// *   **HTTP,HTTPS**: HTTP and HTTPS are supported.
 	Protocol *string `json:"protocol,omitempty" xml:"protocol,omitempty"`
 	// The route table that maps the paths to functions when the functions are invoked by using the custom domain name.
 	RouteConfig *RouteConfig `json:"routeConfig,omitempty" xml:"routeConfig,omitempty"`
-	// The configurations of the TLS.
+	// The Transport Layer Security (TLS) configuration.
 	TlsConfig *TLSConfig `json:"tlsConfig,omitempty" xml:"tlsConfig,omitempty"`
+	// The Web Application Firewall (WAF) configuration.
 	WafConfig *WAFConfig `json:"wafConfig,omitempty" xml:"wafConfig,omitempty"`
 }
 
@@ -2518,7 +2623,7 @@ func (s *CreateCustomDomainRequest) SetWafConfig(v *WAFConfig) *CreateCustomDoma
 }
 
 type CreateCustomDomainResponseBody struct {
-	// The ID of the account.
+	// The ID of your Alibaba Cloud account.
 	AccountId *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
 	// The version of the API.
 	ApiVersion *string `json:"apiVersion,omitempty" xml:"apiVersion,omitempty"`
@@ -2532,14 +2637,15 @@ type CreateCustomDomainResponseBody struct {
 	LastModifiedTime *string `json:"lastModifiedTime,omitempty" xml:"lastModifiedTime,omitempty"`
 	// The protocol types supported by the domain name. Valid values:
 	//
-	// - **HTTP**: Only HTTP is supported.
-	// - **HTTPS**: Only HTTPS is supported.
-	// - **HTTP,HTTPS**: Both HTTP and HTTPS are supported.
+	// *   **HTTP**: Only HTTP is supported.
+	// *   **HTTPS**: Only HTTPS is supported.
+	// *   **HTTP,HTTPS**: HTTP and HTTPS are supported.
 	Protocol *string `json:"protocol,omitempty" xml:"protocol,omitempty"`
 	// The route table that maps the paths to functions when the functions are invoked by using the custom domain name.
 	RouteConfig *RouteConfig `json:"routeConfig,omitempty" xml:"routeConfig,omitempty"`
-	// The configurations of the TLS.
+	// The Transport Layer Security (TLS) configuration.
 	TlsConfig *TLSConfig `json:"tlsConfig,omitempty" xml:"tlsConfig,omitempty"`
+	// The Web Application Firewall (WAF) configuration.
 	WafConfig *WAFConfig `json:"wafConfig,omitempty" xml:"wafConfig,omitempty"`
 }
 
@@ -2697,7 +2803,8 @@ type CreateFunctionRequest struct {
 	// The environment variables that you configured for the function. You can obtain the values of the environment variables from the function. For more information, see [Overview](~~69777~~).
 	EnvironmentVariables map[string]*string `json:"environmentVariables,omitempty" xml:"environmentVariables,omitempty"`
 	// The name of the function. The name can contain letters, digits, underscores (\_), and hyphens (-) only. The name cannot start with a digit or a hyphen (-). The name must be 1 to 64 characters in length.
-	FunctionName *string `json:"functionName,omitempty" xml:"functionName,omitempty"`
+	FunctionName  *string `json:"functionName,omitempty" xml:"functionName,omitempty"`
+	GpuMemorySize *int32  `json:"gpuMemorySize,omitempty" xml:"gpuMemorySize,omitempty"`
 	// The handler of the function. The format varies based on the programming language. For more information, see [Function handlers](~~157704~~).
 	Handler *string `json:"handler,omitempty" xml:"handler,omitempty"`
 	// The timeout period for the execution of the initializer function. Unit: seconds. Default value: 3. Valid values: 1 to 300. When this period expires, the execution of the initializer function is terminated.
@@ -2792,6 +2899,11 @@ func (s *CreateFunctionRequest) SetFunctionName(v string) *CreateFunctionRequest
 	return s
 }
 
+func (s *CreateFunctionRequest) SetGpuMemorySize(v int32) *CreateFunctionRequest {
+	s.GpuMemorySize = &v
+	return s
+}
+
 func (s *CreateFunctionRequest) SetHandler(v string) *CreateFunctionRequest {
 	s.Handler = &v
 	return s
@@ -2875,7 +2987,8 @@ type CreateFunctionResponseBody struct {
 	// The unique ID generated by the system for the function.
 	FunctionId *string `json:"functionId,omitempty" xml:"functionId,omitempty"`
 	// The name of the function.
-	FunctionName *string `json:"functionName,omitempty" xml:"functionName,omitempty"`
+	FunctionName  *string `json:"functionName,omitempty" xml:"functionName,omitempty"`
+	GpuMemorySize *int32  `json:"gpuMemorySize,omitempty" xml:"gpuMemorySize,omitempty"`
 	// The handler of the function.
 	Handler *string `json:"handler,omitempty" xml:"handler,omitempty"`
 	// The timeout period for the execution of the initializer function. Unit: seconds. Default value: 3. Minimum value: 1. When this period ends, the execution of the initializer function is terminated.
@@ -2984,6 +3097,11 @@ func (s *CreateFunctionResponseBody) SetFunctionId(v string) *CreateFunctionResp
 
 func (s *CreateFunctionResponseBody) SetFunctionName(v string) *CreateFunctionResponseBody {
 	s.FunctionName = &v
+	return s
+}
+
+func (s *CreateFunctionResponseBody) SetGpuMemorySize(v int32) *CreateFunctionResponseBody {
+	s.GpuMemorySize = &v
 	return s
 }
 
@@ -4826,7 +4944,7 @@ type GetCustomDomainHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	// The ID of your Alibaba Cloud account.
 	XFcAccountId *string `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
-	// The time when Function Compute API is called. Specify the time in the **EEE,d MMM yyyy HH:mm:ss GMT** format.
+	// The time when the operation is called. The format is: **EEE,d MMM yyyy HH:mm:ss GMT**.
 	XFcDate *string `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
 	// The custom request ID.
 	XFcTraceId *string `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
@@ -4861,13 +4979,13 @@ func (s *GetCustomDomainHeaders) SetXFcTraceId(v string) *GetCustomDomainHeaders
 }
 
 type GetCustomDomainResponseBody struct {
-	// The version number of the API.
+	// The ID of your Alibaba Cloud account.
 	AccountId *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
-	// The version number of the API.
+	// The version of the API.
 	ApiVersion *string `json:"apiVersion,omitempty" xml:"apiVersion,omitempty"`
 	// The configurations of the HTTPS certificate.
 	CertConfig *CertConfig `json:"certConfig,omitempty" xml:"certConfig,omitempty"`
-	// The time when the domain name was added.
+	// The time when the custom domain name was created.
 	CreatedTime *string `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
 	// The domain name.
 	DomainName *string `json:"domainName,omitempty" xml:"domainName,omitempty"`
@@ -4875,14 +4993,15 @@ type GetCustomDomainResponseBody struct {
 	LastModifiedTime *string `json:"lastModifiedTime,omitempty" xml:"lastModifiedTime,omitempty"`
 	// The protocol types supported by the domain name. Valid values:
 	//
-	// - **HTTP**: Only HTTP is supported.
-	// - **HTTPS**: Only HTTPS is supported.
-	// - **HTTP,HTTPS**: Both HTTP and HTTPS are supported.
+	// *   **HTTP**: Only HTTP is supported.
+	// *   **HTTPS**: Only HTTPS is supported.
+	// *   **HTTP,HTTPS**: HTTP and HTTPS are supported.
 	Protocol *string `json:"protocol,omitempty" xml:"protocol,omitempty"`
 	// The route table that maps the paths to functions when the functions are invoked by using the custom domain name.
 	RouteConfig *RouteConfig `json:"routeConfig,omitempty" xml:"routeConfig,omitempty"`
-	// The configurations of the TLS.
+	// The Transport Layer Security (TLS) configuration.
 	TlsConfig *TLSConfig `json:"tlsConfig,omitempty" xml:"tlsConfig,omitempty"`
+	// The Web Application Firewall (WAF) configuration.
 	WafConfig *WAFConfig `json:"wafConfig,omitempty" xml:"wafConfig,omitempty"`
 }
 
@@ -5057,7 +5176,8 @@ type GetFunctionResponseBody struct {
 	// The ID that is generated by the system for the function. Each function ID is unique in Function Compute.
 	FunctionId *string `json:"functionId,omitempty" xml:"functionId,omitempty"`
 	// The name of the function.
-	FunctionName *string `json:"functionName,omitempty" xml:"functionName,omitempty"`
+	FunctionName  *string `json:"functionName,omitempty" xml:"functionName,omitempty"`
+	GpuMemorySize *int32  `json:"gpuMemorySize,omitempty" xml:"gpuMemorySize,omitempty"`
 	// The handler of the function. For more information, see [Function handler](~~157704~~).
 	Handler *string `json:"handler,omitempty" xml:"handler,omitempty"`
 	// The timeout period for the execution of the initializer function. Unit: seconds. Default value: 3. Valid values: 1 to 300. When this period ends, the execution of the initializer function is terminated.
@@ -5167,6 +5287,11 @@ func (s *GetFunctionResponseBody) SetFunctionId(v string) *GetFunctionResponseBo
 
 func (s *GetFunctionResponseBody) SetFunctionName(v string) *GetFunctionResponseBody {
 	s.FunctionName = &v
+	return s
+}
+
+func (s *GetFunctionResponseBody) SetGpuMemorySize(v int32) *GetFunctionResponseBody {
+	s.GpuMemorySize = &v
 	return s
 }
 
@@ -6768,7 +6893,7 @@ type ListCustomDomainsHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	// The ID of your Alibaba Cloud account.
 	XFcAccountId *string `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
-	// The time when Function Compute API is called. Specify the time in the **EEE,d MMM yyyy HH:mm:ss GMT** format.
+	// The time when the operation is called. The format is: **EEE,d MMM yyyy HH:mm:ss GMT**.
 	XFcDate *string `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
 	// The custom request ID.
 	XFcTraceId *string `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
@@ -6803,13 +6928,13 @@ func (s *ListCustomDomainsHeaders) SetXFcTraceId(v string) *ListCustomDomainsHea
 }
 
 type ListCustomDomainsRequest struct {
-	// The maximum number of resources to return. Default value: 20. Maximum value: 100. The number of returned resources is less than or equal to the specified number.
+	// The maximum number of resources to return. Valid values: \[0,100]. Default value: 20. The number of returned results is less than or equal to the specified number.
 	Limit *int32 `json:"limit,omitempty" xml:"limit,omitempty"`
-	// The token used to obtain more results. If the number of resources exceeds the limit, the nextToken parameter is returned. You can include the parameter in subsequent calls to obtain more results. You do not need to provide this parameter in the first call.
+	// The token that is required for pagination. If the number of resources exceeds the limit, the nextToken parameter is returned. You can include the parameter in subsequent calls to obtain more results. You do not need to provide this parameter in the first call.
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
 	// The prefix that the returned domain names must contain.
 	Prefix *string `json:"prefix,omitempty" xml:"prefix,omitempty"`
-	// The returned resources are sorted in alphabetical order, and the resources that include and follow the resource specified by the startKey parameter are returned.
+	// The starting position of the result list. The returned resources are sorted in alphabetical order, and the resources that include and follow the resource specified by the startKey parameter are returned.
 	StartKey *string `json:"startKey,omitempty" xml:"startKey,omitempty"`
 }
 
@@ -6844,7 +6969,7 @@ func (s *ListCustomDomainsRequest) SetStartKey(v string) *ListCustomDomainsReque
 type ListCustomDomainsResponseBody struct {
 	// The information about custom domain names.
 	CustomDomains []*ListCustomDomainsResponseBodyCustomDomains `json:"customDomains,omitempty" xml:"customDomains,omitempty" type:"Repeated"`
-	// The token used to obtain more results. If the number of resources exceeds the limit, the nextToken parameter is returned. You can include the parameter in subsequent calls to obtain more results. You do not need to provide this parameter in the first call.
+	// The pagination token to use to request the next page of results. If the number of resources exceeds the limit, the nextToken parameter is returned. You can include the parameter in subsequent calls to obtain more results. You do not need to provide this parameter in the first call.
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
 }
 
@@ -6867,28 +6992,29 @@ func (s *ListCustomDomainsResponseBody) SetNextToken(v string) *ListCustomDomain
 }
 
 type ListCustomDomainsResponseBodyCustomDomains struct {
-	// The ID of the account.
+	// The ID of your Alibaba Cloud account.
 	AccountId *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
 	// The version of the API.
 	ApiVersion *string `json:"apiVersion,omitempty" xml:"apiVersion,omitempty"`
 	// The configurations of the HTTPS certificate.
 	CertConfig *CertConfig `json:"certConfig,omitempty" xml:"certConfig,omitempty"`
-	// The time when the domain name was added.
+	// The time when the custom domain name was created.
 	CreatedTime *string `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
 	// The domain name.
 	DomainName *string `json:"domainName,omitempty" xml:"domainName,omitempty"`
 	// The time when the domain name was last modified.
 	LastModifiedTime *string `json:"lastModifiedTime,omitempty" xml:"lastModifiedTime,omitempty"`
-	// The protocol types supported by the domain name. Valid values:
+	// The protocol type that is supported by the custom domain name.
 	//
-	// - **HTTP**: Only HTTP is supported.
-	// - **HTTPS**: Only HTTPS is supported.
-	// - **HTTP,HTTPS**: Both HTTP and HTTPS are supported.
+	// *   **HTTP**: Only HTTP is supported.
+	// *   **HTTPS**: Only HTTPS is supported.
+	// *   **HTTP,HTTPS**: HTTP and HTTPS are supported.
 	Protocol *string `json:"protocol,omitempty" xml:"protocol,omitempty"`
 	// The route table that maps the paths to functions when the functions are invoked by using the custom domain name.
 	RouteConfig *RouteConfig `json:"routeConfig,omitempty" xml:"routeConfig,omitempty"`
-	// The configurations of the TLS.
+	// The Transport Layer Security (TLS) configuration.
 	TlsConfig *TLSConfig `json:"tlsConfig,omitempty" xml:"tlsConfig,omitempty"`
+	// The Web Application Firewall (WAF) configuration.
 	WafConfig *WAFConfig `json:"wafConfig,omitempty" xml:"wafConfig,omitempty"`
 }
 
@@ -7463,7 +7589,8 @@ type ListFunctionsResponseBodyFunctions struct {
 	// The unique ID generated by the system for the function.
 	FunctionId *string `json:"functionId,omitempty" xml:"functionId,omitempty"`
 	// The name of the function.
-	FunctionName *string `json:"functionName,omitempty" xml:"functionName,omitempty"`
+	FunctionName  *string `json:"functionName,omitempty" xml:"functionName,omitempty"`
+	GpuMemorySize *int32  `json:"gpuMemorySize,omitempty" xml:"gpuMemorySize,omitempty"`
 	// The handler of the function.
 	Handler *string `json:"handler,omitempty" xml:"handler,omitempty"`
 	// The timeout period for the execution of the initializer function. Unit: seconds. Default value: 3. Valid values: 1 to 300. When this period ends, the execution of the initializer function is terminated.
@@ -7562,6 +7689,11 @@ func (s *ListFunctionsResponseBodyFunctions) SetFunctionId(v string) *ListFuncti
 
 func (s *ListFunctionsResponseBodyFunctions) SetFunctionName(v string) *ListFunctionsResponseBodyFunctions {
 	s.FunctionName = &v
+	return s
+}
+
+func (s *ListFunctionsResponseBodyFunctions) SetGpuMemorySize(v int32) *ListFunctionsResponseBodyFunctions {
+	s.GpuMemorySize = &v
 	return s
 }
 
@@ -8409,7 +8541,7 @@ func (s *ListReservedCapacitiesHeaders) SetXFcTraceId(v string) *ListReservedCap
 type ListReservedCapacitiesRequest struct {
 	// The maximum number of resources to return. Valid values: \[1, 100].
 	Limit *string `json:"limit,omitempty" xml:"limit,omitempty"`
-	// The token that is required for pagination.
+	// The token that determines the start point of the query.
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
 }
 
@@ -8432,7 +8564,7 @@ func (s *ListReservedCapacitiesRequest) SetNextToken(v string) *ListReservedCapa
 }
 
 type ListReservedCapacitiesResponseBody struct {
-	// The pagination token to request the next page of results.
+	// The token used to obtain more results.
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
 	// The information about subscription instances.
 	ReservedCapacities []*OpenReservedCapacity `json:"reservedCapacities,omitempty" xml:"reservedCapacities,omitempty" type:"Repeated"`
@@ -10484,7 +10616,7 @@ type ReleaseGPUInstanceHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	// The ID of your Alibaba Cloud account.
 	XFcAccountId *string `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
-	// The time on which the function is invoked. The format of the value is: EEE,d MMM yyyy HH:mm:ss GMT.
+	// The time when the function is invoked. The format of the value is: EEE,d MMM yyyy HH:mm:ss GMT.
 	XFcDate *string `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
 	// The custom request ID.
 	XFcTraceId *string `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
@@ -10993,7 +11125,7 @@ type UpdateCustomDomainHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	// The ID of your Alibaba Cloud account.
 	XFcAccountId *string `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
-	// The time when Function Compute API is called. Specify the time in the **EEE,d MMM yyyy HH:mm:ss GMT** format.
+	// The time when the operation is called. The format is: **EEE,d MMM yyyy HH:mm:ss GMT**.
 	XFcDate *string `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
 	// The custom request ID.
 	XFcTraceId *string `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
@@ -11032,14 +11164,15 @@ type UpdateCustomDomainRequest struct {
 	CertConfig *CertConfig `json:"certConfig,omitempty" xml:"certConfig,omitempty"`
 	// The protocol types supported by the domain name. Valid values:
 	//
-	// - **HTTP**: Only HTTP is supported.
-	// - **HTTPS**: Only HTTPS is supported.
-	// - **HTTP,HTTPS**: Both HTTP and HTTPS are supported.
+	// *   **HTTP**: Only HTTP is supported.
+	// *   **HTTPS**: Only HTTPS is supported.
+	// *   **HTTP,HTTPS**: Both HTTP and HTTPS are supported.
 	Protocol *string `json:"protocol,omitempty" xml:"protocol,omitempty"`
 	// The route table that maps the paths to functions when the functions are invoked by using the custom domain name.
 	RouteConfig *RouteConfig `json:"routeConfig,omitempty" xml:"routeConfig,omitempty"`
-	// The configurations of the TLS.
+	// The Transport Layer Security (TLS) configuration.
 	TlsConfig *TLSConfig `json:"tlsConfig,omitempty" xml:"tlsConfig,omitempty"`
+	// The Web Application Firewall (WAF) configuration.
 	WafConfig *WAFConfig `json:"wafConfig,omitempty" xml:"wafConfig,omitempty"`
 }
 
@@ -11077,28 +11210,29 @@ func (s *UpdateCustomDomainRequest) SetWafConfig(v *WAFConfig) *UpdateCustomDoma
 }
 
 type UpdateCustomDomainResponseBody struct {
-	// The ID of the account.
+	// The ID of your Alibaba Cloud account.
 	AccountId *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
-	// The version number of the API.
+	// The version of the API.
 	ApiVersion *string `json:"apiVersion,omitempty" xml:"apiVersion,omitempty"`
 	// The configurations of the HTTPS certificate.
 	CertConfig *CertConfig `json:"certConfig,omitempty" xml:"certConfig,omitempty"`
-	// The time when the domain name was added.
+	// The time when the custom domain name was created.
 	CreatedTime *string `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
 	// The domain name.
 	DomainName *string `json:"domainName,omitempty" xml:"domainName,omitempty"`
 	// The time when the domain name was last modified.
 	LastModifiedTime *string `json:"lastModifiedTime,omitempty" xml:"lastModifiedTime,omitempty"`
-	// The protocol types supported by the domain name. Valid values:
+	// The protocol type that is supported by the custom domain name.
 	//
-	// - **HTTP**: Only HTTP is supported.
-	// - **HTTPS**: Only HTTPS is supported.
-	// - **HTTP,HTTPS**: Both HTTP and HTTPS are supported.
+	// *   **HTTP**: Only HTTP is supported.
+	// *   **HTTPS**: Only HTTPS is supported.
+	// *   **HTTP,HTTPS**: HTTP and HTTPS are supported.
 	Protocol *string `json:"protocol,omitempty" xml:"protocol,omitempty"`
 	// The route table that maps the paths to functions when the functions are invoked by using the custom domain name.
 	RouteConfig *RouteConfig `json:"routeConfig,omitempty" xml:"routeConfig,omitempty"`
-	// The configurations of the TLS.
+	// The Transport Layer Security (TLS) configuration.
 	TlsConfig *TLSConfig `json:"tlsConfig,omitempty" xml:"tlsConfig,omitempty"`
+	// The Web Application Firewall (WAF) configuration.
 	WafConfig *WAFConfig `json:"wafConfig,omitempty" xml:"wafConfig,omitempty"`
 }
 
@@ -11246,18 +11380,18 @@ type UpdateFunctionRequest struct {
 	InstanceConcurrency *int32 `json:"InstanceConcurrency,omitempty" xml:"InstanceConcurrency,omitempty"`
 	// The port on which the HTTP server listens for the custom runtime or custom container runtime.
 	CaPort *int32 `json:"caPort,omitempty" xml:"caPort,omitempty"`
-	// **Function code packages** can be provided with the following two methods. You must use only one of the methods in a single request.
+	// **Function code packages** can be provided with the following two methods. You must use only one of the methods in a request.
 	//
-	// *   Specify the names of the **Object Storage Service (OSS) bucket** and **object** where the code package is stored.
-	// *   Set the **zipFile** parameter to the Base64-encoded content of the ZIP file.
+	// *   Specify the name of the **Object Storage Service (OSS) bucket** and **object** where the code package is stored.
+	// *   Specify that the **zipFile** parameter is used as the Base64-encoded content of the ZIP file.
 	Code *Code `json:"code,omitempty" xml:"code,omitempty"`
 	// The number of vCPUs of the function. The value must be a multiple of 0.05.
 	Cpu *float32 `json:"cpu,omitempty" xml:"cpu,omitempty"`
-	// The configurations of the custom container runtime. After you configure the custom container, Function Compute can execute functions in a container created from a custom image.
+	// The configuration of the custom container. After you configure the custom container, Function Compute can execute functions in a container created from a custom image.
 	CustomContainerConfig *CustomContainerConfig `json:"customContainerConfig,omitempty" xml:"customContainerConfig,omitempty"`
-	// The custom Domain Name System (DNS) configurations of the function.
+	// The custom DNS configurations of the function.
 	CustomDNS *CustomDNS `json:"customDNS,omitempty" xml:"customDNS,omitempty"`
-	// The custom health check configuration of the function. This parameter is applicable only to custom runtimes and custom containers.
+	// The custom health check configurations of the function. This parameter is applicable to only custom runtimes and custom containers.
 	CustomHealthCheckConfig *CustomHealthCheckConfig `json:"customHealthCheckConfig,omitempty" xml:"customHealthCheckConfig,omitempty"`
 	// The configurations of the custom runtime.
 	CustomRuntimeConfig *CustomRuntimeConfig `json:"customRuntimeConfig,omitempty" xml:"customRuntimeConfig,omitempty"`
@@ -11265,34 +11399,35 @@ type UpdateFunctionRequest struct {
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The disk size of the function. Unit: MB. Valid values: 512 and 10240.
 	DiskSize *int32 `json:"diskSize,omitempty" xml:"diskSize,omitempty"`
-	// The environment variables that you configured for the function. You can obtain the values of the environment variables from the function. For more information, see [Overview](~~69777~~).
+	// The environment variables that are configured for the function. You can obtain the values of the environment variables from the function. For more information, see [Environment variables](~~69777~~).
 	EnvironmentVariables map[string]*string `json:"environmentVariables,omitempty" xml:"environmentVariables,omitempty"`
+	GpuMemorySize        *int32             `json:"gpuMemorySize,omitempty" xml:"gpuMemorySize,omitempty"`
 	// The handler of the function. The format varies based on the programming language. For more information, see [Function handlers](~~157704~~).
 	Handler *string `json:"handler,omitempty" xml:"handler,omitempty"`
-	// The timeout period for the execution of the initializer function. Unit: seconds. Default value: 3. Minimum value: 1. When this period ends, the execution of the initializer function is terminated.
+	// The timeout period for the execution of the initializer function. Unit: seconds. Default value: 3. Minimum value: 1. When the period ends, the execution of the initializer function is terminated.
 	InitializationTimeout *int32 `json:"initializationTimeout,omitempty" xml:"initializationTimeout,omitempty"`
 	// The handler of the initializer function. The format is determined by the programming language. For more information, see [Function handlers](~~157704~~).
 	Initializer *string `json:"initializer,omitempty" xml:"initializer,omitempty"`
 	// The lifecycle configurations of the instance.
 	InstanceLifecycleConfig *InstanceLifecycleConfig `json:"instanceLifecycleConfig,omitempty" xml:"instanceLifecycleConfig,omitempty"`
-	// The soft concurrency of the instance. You can use this parameter to implement graceful scale-up of instances. If the number of concurrent requests on an instance is greater than the number of the soft concurrency, the instance scale-up is triggered. For example, if your instance requires a long term to start, you can specify a suitable soft concurrency to start the instance in advance.
+	// The soft concurrency of the instance. You can use this parameter to implement graceful scale-up of instances. If the number of concurrent requests on an instance is greater than the number of the soft concurrency, the instance scale-up is triggered. For example, if your instance requires a long time to start, you can specify a suitable soft concurrency to start the instance in advance.
 	//
-	// The value must be less than or equal to that of **instanceConcurrency**.
+	// The value must be less than or equal to that of the **instanceConcurrency** parameter.
 	InstanceSoftConcurrency *int32 `json:"instanceSoftConcurrency,omitempty" xml:"instanceSoftConcurrency,omitempty"`
 	// The instance type of the function. Valid values:
 	//
 	// *   **e1**: elastic instance
 	// *   **c1**: performance instance
 	InstanceType *string `json:"instanceType,omitempty" xml:"instanceType,omitempty"`
-	// An array that consists of the information of layers.
+	// The information about layers.
 	//
-	// >  Multiple layers are merged based on the order of array subscripts. The content of a layer with a smaller subscript overwrites the file with the same name in the layer with a larger subscript.
+	// > Multiple layers are merged based on the order of array subscripts. The content of a layer with a smaller subscript overwrites the file that has the same name and a larger subscript in the layer.
 	Layers []*string `json:"layers,omitempty" xml:"layers,omitempty" type:"Repeated"`
 	// The memory size for the function. Unit: MB. The memory size must be a multiple of 64 MB. The memory size varies based on the function instance type. For more information, see [Instance types](~~179379~~).
 	MemorySize *int32 `json:"memorySize,omitempty" xml:"memorySize,omitempty"`
-	// The runtime environment of the function. Valid values: **nodejs14**, **nodejs12**, **nodejs10**, **nodejs8**, **nodejs6**, **nodejs4.4**, **python3.9**, **python3**, **python2.7**, **java11**, **java8**, **go1**, **php7.2**, **dotnetcore2.1**, **custom** and **custom-container**.
+	// The runtime environment of the function. Valid values: **nodejs16**, **nodejs14**, **nodejs12**, **nodejs10**, **nodejs8**, **nodejs6**, **nodejs4.4**, **python3.9**, **python3**, **python2.7**, **java11**, **java8**, **go1**, **php7.2**, **dotnetcore3.1**, **dotnetcore2.1**, **custom** and **custom-container**. For more information, see [Supported function runtime environments](~~73338~~).
 	Runtime *string `json:"runtime,omitempty" xml:"runtime,omitempty"`
-	// The timeout period for the execution of the function. Unit: seconds. Default value: 3. Minimum value: 1. When this period ends, the execution of the function is terminated.
+	// The timeout period for the execution of the function. Unit: seconds. Default value: 3. Minimum value: 1. When the period ends, the execution of the function is terminated.
 	Timeout *int32 `json:"timeout,omitempty" xml:"timeout,omitempty"`
 }
 
@@ -11359,6 +11494,11 @@ func (s *UpdateFunctionRequest) SetEnvironmentVariables(v map[string]*string) *U
 	return s
 }
 
+func (s *UpdateFunctionRequest) SetGpuMemorySize(v int32) *UpdateFunctionRequest {
+	s.GpuMemorySize = &v
+	return s
+}
+
 func (s *UpdateFunctionRequest) SetHandler(v string) *UpdateFunctionRequest {
 	s.Handler = &v
 	return s
@@ -11418,13 +11558,13 @@ type UpdateFunctionResponseBody struct {
 	CodeSize *int64 `json:"codeSize,omitempty" xml:"codeSize,omitempty"`
 	// The number of vCPUs of the function. The value must be a multiple of 0.05.
 	Cpu *float32 `json:"cpu,omitempty" xml:"cpu,omitempty"`
-	// The time when the function was created.
+	// The time when the function is created.
 	CreatedTime *string `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
 	// The configurations of the custom container runtime. After you configure the custom container runtime, Function Compute can execute the function in a container created from a custom image.
 	CustomContainerConfig *CustomContainerConfig `json:"customContainerConfig,omitempty" xml:"customContainerConfig,omitempty"`
 	// The custom DNS configurations of the function.
 	CustomDNS *CustomDNS `json:"customDNS,omitempty" xml:"customDNS,omitempty"`
-	// The custom health check configuration of the function. This parameter is applicable only to custom runtimes and custom containers.
+	// The custom health check configurations of the function. This parameter is applicable to only custom runtimes and custom containers.
 	CustomHealthCheckConfig *CustomHealthCheckConfig `json:"customHealthCheckConfig,omitempty" xml:"customHealthCheckConfig,omitempty"`
 	// The configurations of the custom runtime.
 	CustomRuntimeConfig *CustomRuntimeConfig `json:"customRuntimeConfig,omitempty" xml:"customRuntimeConfig,omitempty"`
@@ -11432,15 +11572,16 @@ type UpdateFunctionResponseBody struct {
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The disk size of the function. Unit: MB. Valid values: 512 and 10240.
 	DiskSize *int32 `json:"diskSize,omitempty" xml:"diskSize,omitempty"`
-	// The environment variables that you configured for the function. You can obtain the values of the environment variables from the function. For more information, see [Overview](~~69777~~).
+	// The environment variables that are configured for the function. You can obtain the values of the environment variables from the function. For more information, see [Environment variables](~~69777~~).
 	EnvironmentVariables map[string]*string `json:"environmentVariables,omitempty" xml:"environmentVariables,omitempty"`
-	// The unique ID generated by the system for the function.
+	// The unique ID that is generated by the system for the function.
 	FunctionId *string `json:"functionId,omitempty" xml:"functionId,omitempty"`
 	// The name of the function.
-	FunctionName *string `json:"functionName,omitempty" xml:"functionName,omitempty"`
+	FunctionName  *string `json:"functionName,omitempty" xml:"functionName,omitempty"`
+	GpuMemorySize *int32  `json:"gpuMemorySize,omitempty" xml:"gpuMemorySize,omitempty"`
 	// The handler of the function.
 	Handler *string `json:"handler,omitempty" xml:"handler,omitempty"`
-	// The timeout period for the execution of the initializer function. Unit: seconds. Default value: 3. Minimum value: 1. When this period ends, the execution of the initializer function is terminated.
+	// The timeout period for the execution of the initializer function. Unit: seconds. Default value: 3. Minimum value: 1. When the period ends, the execution of the initializer function is terminated.
 	InitializationTimeout *int32 `json:"initializationTimeout,omitempty" xml:"initializationTimeout,omitempty"`
 	// The handler of the initializer function. The format is determined by the programming language.
 	Initializer *string `json:"initializer,omitempty" xml:"initializer,omitempty"`
@@ -11448,9 +11589,9 @@ type UpdateFunctionResponseBody struct {
 	InstanceConcurrency *int32 `json:"instanceConcurrency,omitempty" xml:"instanceConcurrency,omitempty"`
 	// The lifecycle configurations of the instance.
 	InstanceLifecycleConfig *InstanceLifecycleConfig `json:"instanceLifecycleConfig,omitempty" xml:"instanceLifecycleConfig,omitempty"`
-	// The soft concurrency of the instance. You can use this parameter to implement graceful scale-up of instances. If the number of concurrent requests on an instance is greater than the number of the soft concurrency, the instance scale-up is triggered. For example, if your instance requires a long term to start, you can specify a suitable soft concurrency to start the instance in advance.
+	// The soft concurrency of the instance. You can use this parameter to implement graceful scale-up of instances. If the number of concurrent requests on an instance is greater than the number of the soft concurrency, the instance scale-up is triggered. For example, if your instance requires a long time to start, you can specify a suitable soft concurrency to start the instance in advance.
 	//
-	// The value must be less than or equal to that of **instanceConcurrency**.
+	// The value must be less than or equal to that of the **instanceConcurrency** parameter.
 	InstanceSoftConcurrency *int32 `json:"instanceSoftConcurrency,omitempty" xml:"instanceSoftConcurrency,omitempty"`
 	// The instance type of the function. Valid values:
 	//
@@ -11459,13 +11600,13 @@ type UpdateFunctionResponseBody struct {
 	InstanceType *string `json:"instanceType,omitempty" xml:"instanceType,omitempty"`
 	// The time when the function was last modified.
 	LastModifiedTime *string `json:"lastModifiedTime,omitempty" xml:"lastModifiedTime,omitempty"`
-	// An array that consists of the information of layers.
+	// The information about layers.
 	//
-	// >  Multiple layers are merged based on the order of array subscripts. The content of a layer with a smaller subscript overwrites the file with the same name in the layer with a larger subscript.
+	// > Multiple layers are merged based on the order of array subscripts. The content of a layer with a smaller subscript overwrites the file that has the same name and a larger subscript in the layer.
 	Layers []*string `json:"layers,omitempty" xml:"layers,omitempty" type:"Repeated"`
-	// The memory size for the function. Unit: MB.
+	// The memory size that is configured for the function. Unit: MB.
 	MemorySize *int32 `json:"memorySize,omitempty" xml:"memorySize,omitempty"`
-	// The runtime environment of the function. Valid values: **nodejs14**, **nodejs12**, **nodejs10**, **nodejs8**, **nodejs6**, **nodejs4.4**, **python3.9**, **python3**, **python2.7**, **java11**, **java8**, **go1**, **php7.2**, **dotnetcore2.1**, **custom** and **custom-container**.
+	// The runtime environment of the function. Valid values: **nodejs16**, **nodejs14**, **nodejs12**, **nodejs10**, **nodejs8**, **nodejs6**, **nodejs4.4**, **python3.9**, **python3**, **python2.7**, **java11**, **java8**, **go1**, **php7.2**, **dotnetcore3.1**, **dotnetcore2.1**, **custom** and **custom-container**. For more information, see [Supported function runtime environments](~~73338~~).
 	Runtime *string `json:"runtime,omitempty" xml:"runtime,omitempty"`
 	// The timeout period for the execution. Unit: seconds.
 	Timeout *int32 `json:"timeout,omitempty" xml:"timeout,omitempty"`
@@ -11546,6 +11687,11 @@ func (s *UpdateFunctionResponseBody) SetFunctionId(v string) *UpdateFunctionResp
 
 func (s *UpdateFunctionResponseBody) SetFunctionName(v string) *UpdateFunctionResponseBody {
 	s.FunctionName = &v
+	return s
+}
+
+func (s *UpdateFunctionResponseBody) SetGpuMemorySize(v int32) *UpdateFunctionResponseBody {
+	s.GpuMemorySize = &v
 	return s
 }
 
@@ -12504,6 +12650,10 @@ func (client *Client) CreateFunctionWithOptions(serviceName *string, request *Cr
 
 	if !tea.BoolValue(util.IsUnset(request.FunctionName)) {
 		body["functionName"] = request.FunctionName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GpuMemorySize)) {
+		body["gpuMemorySize"] = request.GpuMemorySize
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Handler)) {
@@ -16750,6 +16900,10 @@ func (client *Client) UpdateFunctionWithOptions(serviceName *string, functionNam
 
 	if !tea.BoolValue(util.IsUnset(request.EnvironmentVariables)) {
 		body["environmentVariables"] = request.EnvironmentVariables
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GpuMemorySize)) {
+		body["gpuMemorySize"] = request.GpuMemorySize
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Handler)) {
