@@ -1,3 +1,6 @@
+2023-02-09 Version: v1.1.7
+- Fix the output field type in TaskStatus.
+
 2023-02-07 Version: v1.1.6
 - Add missing fields to TaskStatus.
 

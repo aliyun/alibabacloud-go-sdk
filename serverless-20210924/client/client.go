@@ -1244,12 +1244,12 @@ func (s *TaskExec) SetTaskTemplate(v string) *TaskExec {
 }
 
 type TaskInvocation struct {
-	InstanceID       *string                `json:"instanceID,omitempty" xml:"instanceID,omitempty"`
-	InvocationID     *string                `json:"invocationID,omitempty" xml:"invocationID,omitempty"`
-	InvocationTarget *string                `json:"invocationTarget,omitempty" xml:"invocationTarget,omitempty"`
-	Output           map[string]interface{} `json:"output,omitempty" xml:"output,omitempty"`
-	RequestID        *string                `json:"requestID,omitempty" xml:"requestID,omitempty"`
-	Status           *string                `json:"status,omitempty" xml:"status,omitempty"`
+	InstanceID       *string `json:"instanceID,omitempty" xml:"instanceID,omitempty"`
+	InvocationID     *string `json:"invocationID,omitempty" xml:"invocationID,omitempty"`
+	InvocationTarget *string `json:"invocationTarget,omitempty" xml:"invocationTarget,omitempty"`
+	Output           *string `json:"output,omitempty" xml:"output,omitempty"`
+	RequestID        *string `json:"requestID,omitempty" xml:"requestID,omitempty"`
+	Status           *string `json:"status,omitempty" xml:"status,omitempty"`
 }
 
 func (s TaskInvocation) String() string {
@@ -1275,8 +1275,8 @@ func (s *TaskInvocation) SetInvocationTarget(v string) *TaskInvocation {
 	return s
 }
 
-func (s *TaskInvocation) SetOutput(v map[string]interface{}) *TaskInvocation {
-	s.Output = v
+func (s *TaskInvocation) SetOutput(v string) *TaskInvocation {
+	s.Output = &v
 	return s
 }
 
