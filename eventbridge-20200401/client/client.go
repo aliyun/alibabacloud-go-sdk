@@ -859,8 +859,6 @@ type CreateEventSourceRequest struct {
 	EventBusName []byte `json:"EventBusName,omitempty" xml:"EventBusName,omitempty"`
 	// 事件源英文Code
 	EventSourceName           []byte                                             `json:"EventSourceName,omitempty" xml:"EventSourceName,omitempty"`
-	ExternalSourceType        []byte                                             `json:"ExternalSourceType,omitempty" xml:"ExternalSourceType,omitempty"`
-	LinkedExternalSource      *bool                                              `json:"LinkedExternalSource,omitempty" xml:"LinkedExternalSource,omitempty"`
 	SourceHttpEventParameters *CreateEventSourceRequestSourceHttpEventParameters `json:"SourceHttpEventParameters,omitempty" xml:"SourceHttpEventParameters,omitempty" type:"Struct"`
 	SourceMNSParameters       *CreateEventSourceRequestSourceMNSParameters       `json:"SourceMNSParameters,omitempty" xml:"SourceMNSParameters,omitempty" type:"Struct"`
 	SourceRabbitMQParameters  *CreateEventSourceRequestSourceRabbitMQParameters  `json:"SourceRabbitMQParameters,omitempty" xml:"SourceRabbitMQParameters,omitempty" type:"Struct"`
@@ -889,16 +887,6 @@ func (s *CreateEventSourceRequest) SetEventBusName(v []byte) *CreateEventSourceR
 
 func (s *CreateEventSourceRequest) SetEventSourceName(v []byte) *CreateEventSourceRequest {
 	s.EventSourceName = v
-	return s
-}
-
-func (s *CreateEventSourceRequest) SetExternalSourceType(v []byte) *CreateEventSourceRequest {
-	s.ExternalSourceType = v
-	return s
-}
-
-func (s *CreateEventSourceRequest) SetLinkedExternalSource(v bool) *CreateEventSourceRequest {
-	s.LinkedExternalSource = &v
 	return s
 }
 
@@ -1126,8 +1114,6 @@ type CreateEventSourceShrinkRequest struct {
 	EventBusName []byte `json:"EventBusName,omitempty" xml:"EventBusName,omitempty"`
 	// 事件源英文Code
 	EventSourceName                 []byte  `json:"EventSourceName,omitempty" xml:"EventSourceName,omitempty"`
-	ExternalSourceType              []byte  `json:"ExternalSourceType,omitempty" xml:"ExternalSourceType,omitempty"`
-	LinkedExternalSource            *bool   `json:"LinkedExternalSource,omitempty" xml:"LinkedExternalSource,omitempty"`
 	SourceHttpEventParametersShrink *string `json:"SourceHttpEventParameters,omitempty" xml:"SourceHttpEventParameters,omitempty"`
 	SourceMNSParametersShrink       *string `json:"SourceMNSParameters,omitempty" xml:"SourceMNSParameters,omitempty"`
 	SourceRabbitMQParametersShrink  *string `json:"SourceRabbitMQParameters,omitempty" xml:"SourceRabbitMQParameters,omitempty"`
@@ -1156,16 +1142,6 @@ func (s *CreateEventSourceShrinkRequest) SetEventBusName(v []byte) *CreateEventS
 
 func (s *CreateEventSourceShrinkRequest) SetEventSourceName(v []byte) *CreateEventSourceShrinkRequest {
 	s.EventSourceName = v
-	return s
-}
-
-func (s *CreateEventSourceShrinkRequest) SetExternalSourceType(v []byte) *CreateEventSourceShrinkRequest {
-	s.ExternalSourceType = v
-	return s
-}
-
-func (s *CreateEventSourceShrinkRequest) SetLinkedExternalSource(v bool) *CreateEventSourceShrinkRequest {
-	s.LinkedExternalSource = &v
 	return s
 }
 
@@ -15336,14 +15312,6 @@ func (client *Client) CreateEventSourceWithOptions(tmpReq *CreateEventSourceRequ
 
 	if !tea.BoolValue(util.IsUnset(request.EventSourceName)) {
 		body["EventSourceName"] = request.EventSourceName
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ExternalSourceType)) {
-		body["ExternalSourceType"] = request.ExternalSourceType
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.LinkedExternalSource)) {
-		body["LinkedExternalSource"] = request.LinkedExternalSource
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SourceHttpEventParametersShrink)) {
