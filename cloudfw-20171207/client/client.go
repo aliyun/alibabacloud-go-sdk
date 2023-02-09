@@ -680,6 +680,7 @@ type CreateVpcFirewallCenConfigureRequest struct {
 	MemberUid *string `json:"MemberUid,omitempty" xml:"MemberUid,omitempty"`
 	// The ID of the VPC for which you want to create the VPC firewall.
 	NetworkInstanceId *string `json:"NetworkInstanceId,omitempty" xml:"NetworkInstanceId,omitempty"`
+	VSwitchId         *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 	// The instance name of the VPC firewall.
 	VpcFirewallName *string `json:"VpcFirewallName,omitempty" xml:"VpcFirewallName,omitempty"`
 	// The ID of the region to which the VPC belongs.
@@ -718,6 +719,11 @@ func (s *CreateVpcFirewallCenConfigureRequest) SetMemberUid(v string) *CreateVpc
 
 func (s *CreateVpcFirewallCenConfigureRequest) SetNetworkInstanceId(v string) *CreateVpcFirewallCenConfigureRequest {
 	s.NetworkInstanceId = &v
+	return s
+}
+
+func (s *CreateVpcFirewallCenConfigureRequest) SetVSwitchId(v string) *CreateVpcFirewallCenConfigureRequest {
+	s.VSwitchId = &v
 	return s
 }
 
@@ -781,6 +787,157 @@ func (s *CreateVpcFirewallCenConfigureResponse) SetStatusCode(v int32) *CreateVp
 }
 
 func (s *CreateVpcFirewallCenConfigureResponse) SetBody(v *CreateVpcFirewallCenConfigureResponseBody) *CreateVpcFirewallCenConfigureResponse {
+	s.Body = v
+	return s
+}
+
+type CreateVpcFirewallConfigureRequest struct {
+	// The status of the VPC firewall after you create the firewall. Valid values:
+	//
+	// *   **open**: After you create the VPC firewall, the firewall is automatically enabled. This is the default value.
+	// *   **close**: After you create the VPC firewall, the firewall is not automatically enabled. To enable the firewall, you can call the [ModifyVpcFirewallSwitchStatus](~~342935~~) operation.
+	FirewallSwitch *string `json:"FirewallSwitch,omitempty" xml:"FirewallSwitch,omitempty"`
+	// The natural language of the request and response. Valid values:
+	//
+	// *   **zh**: Chinese (default)
+	// *   **en**: English
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The CIDR blocks of the local VPC. The value is a JSON string that contains the following parameters:
+	//
+	// *   **RouteTableId**: the ID of the route table for the local VPC.
+	// *   **RouteEntryList**: The value is a JSON string that contains the DestinationCidr and NextHopInstanceId parameters. The DestinationCidr parameter indicates the destination CIDR block of the local VPC. The NextHopInstanceId parameter indicates the instance ID of the next hop for the local VPC.
+	LocalVpcCidrTableList *string `json:"LocalVpcCidrTableList,omitempty" xml:"LocalVpcCidrTableList,omitempty"`
+	// The ID of the local VPC.
+	LocalVpcId *string `json:"LocalVpcId,omitempty" xml:"LocalVpcId,omitempty"`
+	// The region ID of the local VPC.
+	//
+	// >  For more information about regions in which Cloud Firewall is supported, see [Supported regions](~~195657~~).
+	LocalVpcRegion *string `json:"LocalVpcRegion,omitempty" xml:"LocalVpcRegion,omitempty"`
+	// The UID of the member that is managed by your Alibaba Cloud account.
+	MemberUid *string `json:"MemberUid,omitempty" xml:"MemberUid,omitempty"`
+	// The CIDR blocks of the peer VPC. The value is a JSON string that contains the following parameters:
+	//
+	// *   **RouteTableId**: the ID of the route table for the peer VPC.
+	// *   **RouteEntryList**: The value is a JSON string that contains the DestinationCidr and NextHopInstanceId parameters. The DestinationCidr parameter indicates the destination CIDR block of the peer VPC. The NextHopInstanceId parameter indicates the instance ID of the next hop for the peer VPC.
+	PeerVpcCidrTableList *string `json:"PeerVpcCidrTableList,omitempty" xml:"PeerVpcCidrTableList,omitempty"`
+	// The ID of the peer VPC.
+	PeerVpcId *string `json:"PeerVpcId,omitempty" xml:"PeerVpcId,omitempty"`
+	// The region ID of the peer VPC.
+	//
+	// >  For more information about regions in which Cloud Firewall is supported, see [Supported regions](~~195657~~).
+	PeerVpcRegion *string `json:"PeerVpcRegion,omitempty" xml:"PeerVpcRegion,omitempty"`
+	// The instance name of the VPC firewall.
+	VpcFirewallName *string `json:"VpcFirewallName,omitempty" xml:"VpcFirewallName,omitempty"`
+}
+
+func (s CreateVpcFirewallConfigureRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateVpcFirewallConfigureRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateVpcFirewallConfigureRequest) SetFirewallSwitch(v string) *CreateVpcFirewallConfigureRequest {
+	s.FirewallSwitch = &v
+	return s
+}
+
+func (s *CreateVpcFirewallConfigureRequest) SetLang(v string) *CreateVpcFirewallConfigureRequest {
+	s.Lang = &v
+	return s
+}
+
+func (s *CreateVpcFirewallConfigureRequest) SetLocalVpcCidrTableList(v string) *CreateVpcFirewallConfigureRequest {
+	s.LocalVpcCidrTableList = &v
+	return s
+}
+
+func (s *CreateVpcFirewallConfigureRequest) SetLocalVpcId(v string) *CreateVpcFirewallConfigureRequest {
+	s.LocalVpcId = &v
+	return s
+}
+
+func (s *CreateVpcFirewallConfigureRequest) SetLocalVpcRegion(v string) *CreateVpcFirewallConfigureRequest {
+	s.LocalVpcRegion = &v
+	return s
+}
+
+func (s *CreateVpcFirewallConfigureRequest) SetMemberUid(v string) *CreateVpcFirewallConfigureRequest {
+	s.MemberUid = &v
+	return s
+}
+
+func (s *CreateVpcFirewallConfigureRequest) SetPeerVpcCidrTableList(v string) *CreateVpcFirewallConfigureRequest {
+	s.PeerVpcCidrTableList = &v
+	return s
+}
+
+func (s *CreateVpcFirewallConfigureRequest) SetPeerVpcId(v string) *CreateVpcFirewallConfigureRequest {
+	s.PeerVpcId = &v
+	return s
+}
+
+func (s *CreateVpcFirewallConfigureRequest) SetPeerVpcRegion(v string) *CreateVpcFirewallConfigureRequest {
+	s.PeerVpcRegion = &v
+	return s
+}
+
+func (s *CreateVpcFirewallConfigureRequest) SetVpcFirewallName(v string) *CreateVpcFirewallConfigureRequest {
+	s.VpcFirewallName = &v
+	return s
+}
+
+type CreateVpcFirewallConfigureResponseBody struct {
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The instance ID of the VPC firewall.
+	VpcFirewallId *string `json:"VpcFirewallId,omitempty" xml:"VpcFirewallId,omitempty"`
+}
+
+func (s CreateVpcFirewallConfigureResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateVpcFirewallConfigureResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateVpcFirewallConfigureResponseBody) SetRequestId(v string) *CreateVpcFirewallConfigureResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateVpcFirewallConfigureResponseBody) SetVpcFirewallId(v string) *CreateVpcFirewallConfigureResponseBody {
+	s.VpcFirewallId = &v
+	return s
+}
+
+type CreateVpcFirewallConfigureResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateVpcFirewallConfigureResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateVpcFirewallConfigureResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateVpcFirewallConfigureResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateVpcFirewallConfigureResponse) SetHeaders(v map[string]*string) *CreateVpcFirewallConfigureResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateVpcFirewallConfigureResponse) SetStatusCode(v int32) *CreateVpcFirewallConfigureResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateVpcFirewallConfigureResponse) SetBody(v *CreateVpcFirewallConfigureResponseBody) *CreateVpcFirewallConfigureResponse {
 	s.Body = v
 	return s
 }
@@ -3412,28 +3569,37 @@ func (s *DescribeInvadeEventListResponse) SetBody(v *DescribeInvadeEventListResp
 }
 
 type DescribeOutgoingDestinationIPRequest struct {
-	// The type of the applications that the access control policy supports. Valid values:
+	// The application type in the access control policy. Valid values:
 	//
-	// - **FTP**
-	// - **HTTP**
-	// - **HTTPS**
-	// - **MySQL**
-	// - **SMTP**
-	// - **SMTPS**
-	// - **RDP**
-	// - **VNC**
-	// - **SSH**
-	// - **Redis**
-	// - **MQTT**
-	// - **MongoDB**
-	// - **Memcache**
-	// - **SSL**
-	// - **ANY**: all types of applications
+	// *   **FTP**
+	// *   **HTTP**
+	// *   **HTTPS**
+	// *   **Memcache**
+	// *   **MongoDB**
+	// *   **MQTT**
+	// *   **MySQL**
+	// *   **RDP**
+	// *   **Redis**
+	// *   **SMTP**
+	// *   **SMTPS**
+	// *   **SSH**
+	// *   **SSL_No_Cert**
+	// *   **SSL**
+	// *   **VNC**
+	//
+	// >  The value of this parameter depends on the value of Proto. If you set Proto to TCP, you can set ApplicationNameList to any valid value. If you specify both ApplicationNameList and ApplicationName, only the value of ApplicationNameList is used.
 	ApplicationName *string `json:"ApplicationName,omitempty" xml:"ApplicationName,omitempty"`
-	CategoryId      *string `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	// The ID of the service to which the destination IP address belongs. This parameter is left empty by default. Valid values:
+	//
+	// *   **All**: all services
+	// *   **RiskDomain**: risky domain names
+	// *   **RiskIP**: risky IP addresses
+	// *   **AliYun**: Alibaba Cloud services
+	// *   **NotAliYun**: third-party services
+	CategoryId *string `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
 	// The number of the page to return.
 	//
-	// Pages start from page 1. Default value: 1.
+	// Default value: 1.
 	CurrentPage *string `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	// The destination IP address in the outbound connection that is initiated to access a domain name.
 	DstIP *string `json:"DstIP,omitempty" xml:"DstIP,omitempty"`
@@ -3444,11 +3610,10 @@ type DescribeOutgoingDestinationIPRequest struct {
 	// *   **zh**: Chinese (default)
 	// *   **en**: English
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The field based on which you want to sort the queried information. Valid values:
+	// The order in which you want to sort the queried information. Valid values:
 	//
-	// *   **SessionCount**: the number of requests. This is the default value.
-	// *   **InBytes**: the inbound traffic.
-	// *   **OutBytes**: the outbound traffic.
+	// *   **asc**: the ascending order.
+	// *   **desc**: the descending order. This is the default value.
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
 	// The number of entries to return on each page.
 	//
@@ -3460,14 +3625,53 @@ type DescribeOutgoingDestinationIPRequest struct {
 	PrivateIP *string `json:"PrivateIP,omitempty" xml:"PrivateIP,omitempty"`
 	// The public IP address of the Elastic Compute Service (ECS) instance that initiates the outbound connection.
 	PublicIP *string `json:"PublicIP,omitempty" xml:"PublicIP,omitempty"`
-	// The order in which you want to sort the queried information. Valid values:
+	// The field based on which you want to sort the queried information. Valid values:
 	//
-	// *   **asc**: the ascending order
-	// *   **desc**: the descending order
+	// *   **SessionCount**: the number of requests. This is the default value.
+	// *   **TotalBytes**: the total volume of traffic.
 	Sort *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
 	// The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds.
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	TagIdNew  *string `json:"TagIdNew,omitempty" xml:"TagIdNew,omitempty"`
+	// The ID of the tag. Valid values:
+	//
+	// *   **AliYun**: Alibaba Cloud service
+	// *   **RiskDomain**: risky domain name
+	// *   **RiskIP**: risky IP address
+	// *   **TrustedDomain**: trusted website
+	// *   **AliPay**: Alipay
+	// *   **DingDing**: DingTalk
+	// *   **WeChat**: WeChat
+	// *   **QQ**: Tencent QQ
+	// *   **SecurityService**: security service
+	// *   **Microsoft**: Microsoft
+	// *   **Amazon**: Amazon Web Services (AWS)
+	// *   **Pan**: cloud disk
+	// *   **Map**: map
+	// *   **Code**: code hosting
+	// *   **SystemService**: system service
+	// *   **Taobao**: Taobao
+	// *   **Google**: Google
+	// *   **ThirdPartyService**: third-party service
+	// *   **FirstFlow**: the first time
+	// *   **Downloader**: malicious download
+	// *   **Alexa Top1M**: popular website
+	// *   **Miner**: mining pool
+	// *   **Intelligence**: threat intelligence
+	// *   **DDoS**: DDoS trojan
+	// *   **Ransomware**: ransomware
+	// *   **Spyware**: spyware
+	// *   **Rogue**: rogue software
+	// *   **Botnet**: botnet
+	// *   **Suspicious**: suspicious website
+	// *   **C\&C**: command and control (C\&C)
+	// *   **Gang**: gang
+	// *   **CVE**: Common Vulnerabilities and Exposures (CVE)
+	// *   **Backdoor**: webshell
+	// *   **Phishing**: phishing website
+	// *   **APT**: advanced persistent threat (APT) attack
+	// *   **Supply Chain Attack**: supply chain attack
+	// *   **Malicious software**: malware
+	TagIdNew *string `json:"TagIdNew,omitempty" xml:"TagIdNew,omitempty"`
 }
 
 func (s DescribeOutgoingDestinationIPRequest) String() string {
@@ -3549,7 +3753,7 @@ func (s *DescribeOutgoingDestinationIPRequest) SetTagIdNew(v string) *DescribeOu
 }
 
 type DescribeOutgoingDestinationIPResponseBody struct {
-	// An array that consists of destination IP addresses in outbound connections.
+	// The destination IP addresses in outbound connections.
 	DstIPList []*DescribeOutgoingDestinationIPResponseBodyDstIPList `json:"DstIPList,omitempty" xml:"DstIPList,omitempty" type:"Repeated"`
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -3590,13 +3794,19 @@ type DescribeOutgoingDestinationIPResponseBodyDstIPList struct {
 	AclRecommendDetail *string `json:"AclRecommendDetail,omitempty" xml:"AclRecommendDetail,omitempty"`
 	// The state of the access control policy. Valid values:
 	//
-	// *   **normal**: healthy
-	// *   **abnormal**: unhealthy
-	AclStatus        *string                                                               `json:"AclStatus,omitempty" xml:"AclStatus,omitempty"`
+	// *   **Normal**: healthy
+	// *   **Abnormal**: unhealthy
+	AclStatus *string `json:"AclStatus,omitempty" xml:"AclStatus,omitempty"`
+	// The information about the address book.
 	AddressGroupList []*DescribeOutgoingDestinationIPResponseBodyDstIPListAddressGroupList `json:"AddressGroupList,omitempty" xml:"AddressGroupList,omitempty" type:"Repeated"`
 	// An array that consists of application ports.
 	ApplicationPortList []*DescribeOutgoingDestinationIPResponseBodyDstIPListApplicationPortList `json:"ApplicationPortList,omitempty" xml:"ApplicationPortList,omitempty" type:"Repeated"`
-	CategoryClassId     *string                                                                  `json:"CategoryClassId,omitempty" xml:"CategoryClassId,omitempty"`
+	// The type of the tag. Valid values:
+	//
+	// *   **Suspicious**
+	// *   **Malicious**
+	// *   **Trusted**
+	CategoryClassId *string `json:"CategoryClassId,omitempty" xml:"CategoryClassId,omitempty"`
 	// The ID of the service to which the destination IP address belongs. Valid values:
 	//
 	// *   **Aliyun**: Alibaba Cloud services
@@ -3611,7 +3821,11 @@ type DescribeOutgoingDestinationIPResponseBodyDstIPList struct {
 	DstIP *string `json:"DstIP,omitempty" xml:"DstIP,omitempty"`
 	// The name of the group to which the access control policy belongs.
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	HasAcl    *string `json:"HasAcl,omitempty" xml:"HasAcl,omitempty"`
+	// Indicates whether an access control policy is configured. Valid values:
+	//
+	// *   **true**: yes
+	// *   **false**: no
+	HasAcl *string `json:"HasAcl,omitempty" xml:"HasAcl,omitempty"`
 	// Indicates whether an access control policy is recommended. Valid values:
 	//
 	// *   **true**: yes
@@ -3619,7 +3833,7 @@ type DescribeOutgoingDestinationIPResponseBodyDstIPList struct {
 	HasAclRecommend *bool `json:"HasAclRecommend,omitempty" xml:"HasAclRecommend,omitempty"`
 	// The inbound traffic. Unit: bytes.
 	InBytes *int64 `json:"InBytes,omitempty" xml:"InBytes,omitempty"`
-	// Indicates whether the destination IP address is added to an allowlist. Valid values:
+	// Indicates whether the destination IP address is added to a whitelist. Valid values:
 	//
 	// *   **true**: added
 	// *   **false**: not added
@@ -3629,7 +3843,8 @@ type DescribeOutgoingDestinationIPResponseBodyDstIPList struct {
 	// The UUID of the access control policy.
 	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
 	// The name of the access control policy.
-	RuleName       *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// The reason why the domain name is secure.
 	SecurityReason *string `json:"SecurityReason,omitempty" xml:"SecurityReason,omitempty"`
 	// The suggestion to handle the traffic of the domain name in outbound connections. Valid values:
 	//
@@ -3639,9 +3854,10 @@ type DescribeOutgoingDestinationIPResponseBodyDstIPList struct {
 	SecuritySuggest *string `json:"SecuritySuggest,omitempty" xml:"SecuritySuggest,omitempty"`
 	// The number of requests.
 	SessionCount *int64 `json:"SessionCount,omitempty" xml:"SessionCount,omitempty"`
-	// An array that consists of tags.
-	TagList    []*DescribeOutgoingDestinationIPResponseBodyDstIPListTagList `json:"TagList,omitempty" xml:"TagList,omitempty" type:"Repeated"`
-	TotalBytes *string                                                      `json:"TotalBytes,omitempty" xml:"TotalBytes,omitempty"`
+	// The tags.
+	TagList []*DescribeOutgoingDestinationIPResponseBodyDstIPListTagList `json:"TagList,omitempty" xml:"TagList,omitempty" type:"Repeated"`
+	// The total volume of traffic. Unit: bytes.
+	TotalBytes *string `json:"TotalBytes,omitempty" xml:"TotalBytes,omitempty"`
 }
 
 func (s DescribeOutgoingDestinationIPResponseBodyDstIPList) String() string {
@@ -3763,7 +3979,9 @@ func (s *DescribeOutgoingDestinationIPResponseBodyDstIPList) SetTotalBytes(v str
 }
 
 type DescribeOutgoingDestinationIPResponseBodyDstIPListAddressGroupList struct {
+	// The name of the address book.
 	AddressGroupName *string `json:"AddressGroupName,omitempty" xml:"AddressGroupName,omitempty"`
+	// The UUID of the address book.
 	AddressGroupUUID *string `json:"AddressGroupUUID,omitempty" xml:"AddressGroupUUID,omitempty"`
 }
 
@@ -3786,7 +4004,25 @@ func (s *DescribeOutgoingDestinationIPResponseBodyDstIPListAddressGroupList) Set
 }
 
 type DescribeOutgoingDestinationIPResponseBodyDstIPListApplicationPortList struct {
-	// The type of the application.
+	// The application type in the access control policy. Valid values:
+	//
+	// *   **FTP**
+	// *   **HTTP**
+	// *   **HTTPS**
+	// *   **Memcache**
+	// *   **MongoDB**
+	// *   **MQTT**
+	// *   **MySQL**
+	// *   **RDP**
+	// *   **Redis**
+	// *   **SMTP**
+	// *   **SMTPS**
+	// *   **SSH**
+	// *   **SSL_No_Cert**
+	// *   **SSL**
+	// *   **VNC**
+	//
+	// >  The value of this parameter depends on the value of Proto. If you set Proto to TCP, you can set ApplicationNameList to any valid value. If you specify both ApplicationNameList and ApplicationName, only the value of ApplicationNameList is used.
 	ApplicationName *string `json:"ApplicationName,omitempty" xml:"ApplicationName,omitempty"`
 	// The port of the application.
 	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
@@ -3811,6 +4047,11 @@ func (s *DescribeOutgoingDestinationIPResponseBodyDstIPListApplicationPortList) 
 }
 
 type DescribeOutgoingDestinationIPResponseBodyDstIPListTagList struct {
+	// The type of the tag. Valid values:
+	//
+	// *   **Suspicious**
+	// *   **Malicious**
+	// *   **Trusted**
 	ClassId *string `json:"ClassId,omitempty" xml:"ClassId,omitempty"`
 	// The risk level. Valid values:
 	//
@@ -3928,45 +4169,45 @@ type DescribeOutgoingDomainRequest struct {
 	Sort *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
 	// The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds.
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// 情报标签ID。取值：
+	// The ID of the tag. Valid values:
 	//
-	// - **AliYun**：Alibaba cloud products.
-	// - **RiskDomain**：The risk domain.
-	// - **RiskIP**: The risk IP.
-	// - **TrustedDomain**：The trusted domain.
-	// - **AliPay**：Alipay
-	// - **DingDing**：Ding talk.
-	// - **WeChat**：Wechat.
-	// - **QQ**：Tencent QQ.
-	// - **SecurityService**：The security service.
-	// - **Microsoft**：The Microsoft.
-	// - **Amazon**：Amazon.
-	// - **Pan**：Pan.
-	// - **Map**：Map.
-	// - **Code**：Code hosting
-	// - **SystemService**：System service.
-	// - **Taobao**：Taobao.
-	// - **Google**：Google.
-	// - **ThirdPartyService**：The third party service.
-	// - **FirstFlow**：首次
-	// - **Downloader**：恶意下载
-	// - **Alexa Top1M**：热门网站
-	// - **Miner**：矿池
-	// - **Intelligence**：威胁情报
-	// - **DDoS**：DDoS木马
-	// - **Ransomware**：勒索软件
-	// - **Spyware**：间谍软件
-	// - **Rogue**：流氓软件
-	// - **Botnet**：僵尸网络
-	// - **Suspicious**：可疑网站
-	// - **C&C**：远控
-	// - **Gang**：团伙
-	// - **CVE**：漏洞CVE
-	// - **Backdoor**：木马后门
-	// - **Phishing**：钓鱼网站
-	// - **APT**：APT攻击
-	// - **Supply Chain Attack**：供应链攻击
-	// - **Malicious software**：恶意软件
+	// *   **AliYun**: Alibaba Cloud service
+	// *   **RiskDomain**: risky domain name
+	// *   **RiskIP**: risky IP address
+	// *   **TrustedDomain**: trusted website
+	// *   **AliPay**: Alipay
+	// *   **DingDing**: DingTalk
+	// *   **WeChat**: WeChat
+	// *   **QQ**: Tencent QQ
+	// *   **SecurityService**: security service
+	// *   **Microsoft**: Microsoft
+	// *   **Amazon**: Amazon Web Services (AWS)
+	// *   **Pan**: cloud disk
+	// *   **Map**: map
+	// *   **Code**: code hosting
+	// *   **SystemService**: system service
+	// *   **Taobao**: Taobao
+	// *   **Google**: Google
+	// *   **ThirdPartyService**: third-party service
+	// *   **FirstFlow**: the first time
+	// *   **Downloader**: malicious download
+	// *   **Alexa Top1M**: popular website
+	// *   **Miner**: mining pool
+	// *   **Intelligence**: threat intelligence
+	// *   **DDoS**: DDoS trojan
+	// *   **Ransomware**: ransomware
+	// *   **Spyware**: spyware
+	// *   **Rogue**: rogue software
+	// *   **Botnet**: botnet
+	// *   **Suspicious**: suspicious website
+	// *   **C&C**: command and control (C&C)
+	// *   **Gang**: gang
+	// *   **CVE**: Common Vulnerabilities and Exposures (CVE)
+	// *   **Backdoor**: webshell
+	// *   **Phishing**: phishing website
+	// *   **APT**: advanced persistent threat (APT) attack
+	// *   **Supply Chain Attack**: supply chain attack
+	// *   **Malicious software**: malware
 	TagIdNew *string `json:"TagIdNew,omitempty" xml:"TagIdNew,omitempty"`
 }
 
@@ -7246,10 +7487,10 @@ func (s *DescribeVpcFirewallDetailResponse) SetBody(v *DescribeVpcFirewallDetail
 }
 
 type DescribeVpcFirewallListRequest struct {
-	// The sub type of connection. Valid values:
+	// The sub-type of the connection. Valid values:
 	//
-	// - **vpc2vpc**: High-speed channel.
-	// - **vppeer**: Peer connection.
+	// *   **vpc2vpc**: Express Connect connection
+	// *   **vpcpeer**: peer connection
 	ConnectSubType *string `json:"ConnectSubType,omitempty" xml:"ConnectSubType,omitempty"`
 	// The number of the page to return.
 	//
@@ -7259,12 +7500,12 @@ type DescribeVpcFirewallListRequest struct {
 	//
 	// *   **opened**: The VPC firewall is enabled.
 	// *   **closed**: The VPC firewall is disabled.
-	// *   **notconfigured**: The VPC firewall is not configured.
-	// *   **configured**: The VPC firewall is configured.
+	// *   **notconfigured**: The VPC firewall is not created.
+	// *   **configured**: The VPC firewall is created.
 	//
 	// >  If you do not specify this parameter, VPC firewalls in all states are queried.
 	FirewallSwitchStatus *string `json:"FirewallSwitchStatus,omitempty" xml:"FirewallSwitchStatus,omitempty"`
-	// The natural language of the request and response. Valid values:
+	// The language of the content within the request and response. Valid values:
 	//
 	// *   **zh**: Chinese (default)
 	// *   **en**: English
@@ -7275,11 +7516,11 @@ type DescribeVpcFirewallListRequest struct {
 	//
 	// Default value: **10**.**** Maximum value: **50**.
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The cloud account UID of the peer VPC.
+	// The UID of the Alibaba Cloud account to which the peer VPC belongs.
 	PeerUid *string `json:"PeerUid,omitempty" xml:"PeerUid,omitempty"`
 	// The region ID of the VPC.
 	//
-	// >  For more information about regions in which Cloud Firewall is supported, see [Supported regions](~~195657~~).
+	// >  For more information about the regions, see [Supported regions](~~195657~~).
 	RegionNo *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
 	// The instance ID of the VPC firewall.
 	VpcFirewallId *string `json:"VpcFirewallId,omitempty" xml:"VpcFirewallId,omitempty"`
@@ -7357,7 +7598,7 @@ type DescribeVpcFirewallListResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The total number of VPC firewalls.
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// The details about VPC firewalls.
+	// The details about the VPC firewalls.
 	VpcFirewalls []*DescribeVpcFirewallListResponseBodyVpcFirewalls `json:"VpcFirewalls,omitempty" xml:"VpcFirewalls,omitempty" type:"Repeated"`
 }
 
@@ -7387,20 +7628,20 @@ func (s *DescribeVpcFirewallListResponseBody) SetVpcFirewalls(v []*DescribeVpcFi
 type DescribeVpcFirewallListResponseBodyVpcFirewalls struct {
 	// The bandwidth of the Express Connect circuit. Unit: Mbit/s.
 	Bandwidth *int32 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	// The sub type of connection. Valid values:
+	// The sub-type of the connection. Valid values:
 	//
-	// - **vpc2vpc**: High-speed channel.
-	// - **vppeer**: Peer connection.
+	// *   **vpc2vpc**: Express Connect connection
+	// *   **vpcpeer**: peer connection
 	ConnectSubType *string `json:"ConnectSubType,omitempty" xml:"ConnectSubType,omitempty"`
-	// The connection type of the VPC firewall. The value is fixed as **expressconnect**, which indicates Express Connect circuits.
+	// The connection type of the VPC firewall. The value is fixed as **expressconnect**, which indicates an Express Connect connection.
 	ConnectType *string `json:"ConnectType,omitempty" xml:"ConnectType,omitempty"`
 	// The status of the VPC firewall. Valid values:
 	//
 	// *   **opened**: The VPC firewall is enabled.
 	// *   **closed**: The VPC firewall is disabled.
-	// *   **notconfigured**: The VPC firewall is not configured.
+	// *   **notconfigured**: The VPC firewall is not created.
 	FirewallSwitchStatus *string `json:"FirewallSwitchStatus,omitempty" xml:"FirewallSwitchStatus,omitempty"`
-	// The configuration of the intrusion prevention system (IPS).
+	// The information about the intrusion prevention system (IPS) configuration.
 	IpsConfig *DescribeVpcFirewallListResponseBodyVpcFirewallsIpsConfig `json:"IpsConfig,omitempty" xml:"IpsConfig,omitempty" type:"Struct"`
 	// The details about the local VPC.
 	LocalVpc *DescribeVpcFirewallListResponseBodyVpcFirewallsLocalVpc `json:"LocalVpc,omitempty" xml:"LocalVpc,omitempty" type:"Struct"`
@@ -7408,18 +7649,16 @@ type DescribeVpcFirewallListResponseBodyVpcFirewalls struct {
 	MemberUid *string `json:"MemberUid,omitempty" xml:"MemberUid,omitempty"`
 	// The details about the peer VPC.
 	PeerVpc *DescribeVpcFirewallListResponseBodyVpcFirewallsPeerVpc `json:"PeerVpc,omitempty" xml:"PeerVpc,omitempty" type:"Struct"`
-	// The status of the region. Valid values:
+	// Indicates whether you can create a VPC firewall in a specified region. Valid values:
 	//
-	// *   **enable**: indicates that you can create VPC firewalls in the region.
-	// *   **disable**: indicates that you cannot create VPC firewalls in the region.
+	// *   **enable**: yes
+	// *   **disable**: no
 	RegionStatus *string `json:"RegionStatus,omitempty" xml:"RegionStatus,omitempty"`
 	// The result code of the operation that creates the VPC firewall. Valid values:
 	//
-	// *   **Unauthorized**: Cloud Firewall is not authorized to access the VPC for which the VPC firewall is created, and the VPC firewall cannot be created.
-	// *   **RegionDisable**: .VPC Firewall is not supported in the region of the VPC for which the VPC firewall is created, and the VPC firewall cannot be created.
-	// *   **OpsDisable**: You are not allowed to create the VPC firewall.
-	// *   **VbrNotSupport**: The VPC firewall cannot be created for a VBR that is attached to the CEN instance.
-	// *   Empty string: You can create a VPC firewall for the network instance.
+	// *   **Unauthorized**: Cloud Firewall is not authorized to access a VPC for which the VPC firewall is created, and the VPC firewall cannot be created.
+	// *   **RegionDisable**: VPC Firewall is not supported in the region of a VPC for which the VPC firewall is created, and the VPC firewall cannot be created.
+	// *   **Empty string**: You can create a VPC firewall for the network instance.
 	ResultCode *string `json:"ResultCode,omitempty" xml:"ResultCode,omitempty"`
 	// The instance ID of the VPC firewall.
 	VpcFirewallId *string `json:"VpcFirewallId,omitempty" xml:"VpcFirewallId,omitempty"`
@@ -7496,20 +7735,20 @@ func (s *DescribeVpcFirewallListResponseBodyVpcFirewalls) SetVpcFirewallName(v s
 }
 
 type DescribeVpcFirewallListResponseBodyVpcFirewallsIpsConfig struct {
-	// The status of basic policies. Valid values:
+	// Indicates whether basic protection is enabled. Valid values:
 	//
-	// - **1**: enabled
-	// - **0**: disabled
+	// *   **1**: yes
+	// *   **0**: no
 	BasicRules *int32 `json:"BasicRules,omitempty" xml:"BasicRules,omitempty"`
-	// The status of virtual patches. Valid values:
+	// Indicates whether virtual patching is enabled. Valid values:
 	//
-	// - **1**: enabled
-	// - **0**: disabled
+	// *   **1**: yes
+	// *   **0**: no
 	EnableAllPatch *int32 `json:"EnableAllPatch,omitempty" xml:"EnableAllPatch,omitempty"`
-	// The working mode of the IPS. Valid values:
+	// The mode of the IPS. Valid values:
 	//
-	// - **1**: blocking mode
-	// - **0**: monitoring mode
+	// *   **1**: block mode
+	// *   **0**: monitor mode
 	RunMode *int32 `json:"RunMode,omitempty" xml:"RunMode,omitempty"`
 }
 
@@ -7872,60 +8111,72 @@ func (s *DescribeVpcFirewallPolicyPriorUsedResponse) SetBody(v *DescribeVpcFirew
 }
 
 type DescribeVulnerabilityProtectedListRequest struct {
-	// The attack type of the intrusion events. Valid values:
+	// The attack type of the intrusion event. Valid values:
 	//
-	// * **1**: suspicious connection
-	// * **2**: command execution
-	// * **3**: brute-force attack
-	// * **4**: scanning
-	// * **5**: others
-	// * **6**: information leak
-	// * **7**: DoS attack
-	// * **8**: buffer overflow attack
-	// * **9**: web attack
-	// * **10**: trojan backdoor
-	// * **11**: computer worm
-	// * **12**: mining
-	// * **13**: reverse shell
+	// *   **1**: suspicious connection
+	// *   **2**: command execution
+	// *   **3**: brute-force attack
+	// *   **4**: scanning
+	// *   **5**: others
+	// *   **6**: information leakage
+	// *   **7**: DoS attack
+	// *   **8**: buffer overflow attack
+	// *   **9**: web attack
+	// *   **10**: webshell
+	// *   **11**: computer worm
+	// *   **12**: mining
+	// *   **13**: reverse shell
 	//
-	// > If you do not specify this parameter, the intrusion events of all attack types are queried.
+	// >  If you do not specify this parameter, the intrusion events of all attack types are queried.
 	AttackType *string `json:"AttackType,omitempty" xml:"AttackType,omitempty"`
-	// The edition of Cloud Firewall that you purchase. Valid values:
-	//
-	// *   **2**: Premium Edition
-	// *   **3**: Enterprise Edition
-	// *   **4**: Ultimate Edition
-	// *   **10**: pay-as-you-go edition
+	// The edition of Cloud Firewall.
 	BuyVersion *int64 `json:"BuyVersion,omitempty" xml:"BuyVersion,omitempty"`
-	// The number of the page to return.
-	//
-	// Default value: **1**.
+	// The number of the page to return. Default value: 1.
 	CurrentPage *string `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	// The end of the time range to query. The value is a UNIX timestamp. Unit: seconds.
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The natural language of the request and response. Valid values:
+	// The language of the content within the response. Valid values:
 	//
 	// *   **zh**: Chinese (default)
 	// *   **en**: English
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The method that is used to sort the results. Valid values:
+	// The order in which you want to sort the queried information. Valid values:
 	//
-	// *   **asc**: the ascending order
+	// *   **asc**: the ascending order.
 	// *   **desc**: the descending order. This is the default value.
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
-	// The number of entries to return on each page.
+	// The number of entries to return on each page. Maximum value: 50.
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	SortKey  *string `json:"SortKey,omitempty" xml:"SortKey,omitempty"`
+	// The dimension based on which you want to sort the queried information. Set the value to **attackCnt**, which indicates the number of attacks.
+	SortKey *string `json:"SortKey,omitempty" xml:"SortKey,omitempty"`
 	// The source IP address of the request.
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 	// The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds.
-	StartTime    *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	UserType     *string `json:"UserType,omitempty" xml:"UserType,omitempty"`
-	VulnCveName  *string `json:"VulnCveName,omitempty" xml:"VulnCveName,omitempty"`
-	VulnLevel    *string `json:"VulnLevel,omitempty" xml:"VulnLevel,omitempty"`
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The type of the user. Set the value to **buy**, which indicates users of a paid edition of Cloud Firewall.
+	UserType *string `json:"UserType,omitempty" xml:"UserType,omitempty"`
+	// The Common Vulnerabilities and Exposures (CVE) ID of the vulnerability.
+	VulnCveName *string `json:"VulnCveName,omitempty" xml:"VulnCveName,omitempty"`
+	// The risk level of the vulnerability. Valid values:
+	//
+	// *   **high**
+	// *   **medium**
+	// *   **low**
+	VulnLevel *string `json:"VulnLevel,omitempty" xml:"VulnLevel,omitempty"`
+	// The number of assets that are affected by the vulnerability.
 	VulnResource *string `json:"VulnResource,omitempty" xml:"VulnResource,omitempty"`
-	VulnStatus   *string `json:"VulnStatus,omitempty" xml:"VulnStatus,omitempty"`
-	VulnType     *string `json:"VulnType,omitempty" xml:"VulnType,omitempty"`
+	// The status of vulnerability protection. Valid values:
+	//
+	// *   **partProtected**: partially protected
+	// *   **protected**: protected
+	// *   **unProtected**: unprotected
+	VulnStatus *string `json:"VulnStatus,omitempty" xml:"VulnStatus,omitempty"`
+	// The type of the vulnerability. Valid values:
+	//
+	// *   **App**: application vulnerability
+	// *   **emg**: urgent vulnerability
+	// *   **cms**: Web-CMS vulnerability
+	VulnType *string `json:"VulnType,omitempty" xml:"VulnType,omitempty"`
 }
 
 func (s DescribeVulnerabilityProtectedListRequest) String() string {
@@ -8019,10 +8270,12 @@ func (s *DescribeVulnerabilityProtectedListRequest) SetVulnType(v string) *Descr
 type DescribeVulnerabilityProtectedListResponseBody struct {
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of vulnerabilities.
-	TotalCount        *int32                                                    `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	VulnList          []*DescribeVulnerabilityProtectedListResponseBodyVulnList `json:"VulnList,omitempty" xml:"VulnList,omitempty" type:"Repeated"`
-	ZeroResourceCount *int32                                                    `json:"ZeroResourceCount,omitempty" xml:"ZeroResourceCount,omitempty"`
+	// The total number of vulnerabilities that are detected by Cloud Firewall.
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// An array that consists of the information about the vulnerabilities.
+	VulnList []*DescribeVulnerabilityProtectedListResponseBodyVulnList `json:"VulnList,omitempty" xml:"VulnList,omitempty" type:"Repeated"`
+	// The number of assets on which no vulnerabilities are detected.
+	ZeroResourceCount *int32 `json:"ZeroResourceCount,omitempty" xml:"ZeroResourceCount,omitempty"`
 }
 
 func (s DescribeVulnerabilityProtectedListResponseBody) String() string {
@@ -8054,46 +8307,96 @@ func (s *DescribeVulnerabilityProtectedListResponseBody) SetZeroResourceCount(v 
 }
 
 type DescribeVulnerabilityProtectedListResponseBodyVulnList struct {
+	// The number of vulnerabilities.
 	AttackCnt *int32 `json:"AttackCnt,omitempty" xml:"AttackCnt,omitempty"`
-	// The attack type of the intrusion events. Valid values:
+	// The attack type of the intrusion event. Valid values:
 	//
-	// * **1**: suspicious connection
-	// * **2**: command execution
-	// * **3**: brute-force attack
-	// * **4**: scanning
-	// * **5**: others
-	// * **6**: information leak
-	// * **7**: DoS attack
-	// * **8**: buffer overflow attack
-	// * **9**: web attack
-	// * **10**: trojan backdoor
-	// * **11**: computer worm
-	// * **12**: mining
-	// * **13**: reverse shell
+	// *   **1**: suspicious connection
+	// *   **2**: command execution
+	// *   **3**: brute-force attack
+	// *   **4**: scanning
+	// *   **5**: others
+	// *   **6**: information leakage
+	// *   **7**: DoS attack
+	// *   **8**: buffer overflow attack
+	// *   **9**: web attack
+	// *   **10**: webshell
+	// *   **11**: computer worm
+	// *   **12**: mining
+	// *   **13**: reverse shell
 	//
-	// > If you do not specify this parameter, the intrusion events of all attack types are queried.
-	AttackType   *int32  `json:"AttackType,omitempty" xml:"AttackType,omitempty"`
+	// >  If no attack type is specified, the intrusion events of all attack types are queried.
+	AttackType *int32 `json:"AttackType,omitempty" xml:"AttackType,omitempty"`
+	// The IDs of associated basic protection policies.
 	BasicRuleIds *string `json:"BasicRuleIds,omitempty" xml:"BasicRuleIds,omitempty"`
-	// The Common Vulnerabilities and Exposures (CVE) ID of the vulnerability.
-	CveId                      *string `json:"CveId,omitempty" xml:"CveId,omitempty"`
-	FirstTime                  *int64  `json:"FirstTime,omitempty" xml:"FirstTime,omitempty"`
-	HighlightTag               *int32  `json:"HighlightTag,omitempty" xml:"HighlightTag,omitempty"`
-	LastTime                   *int64  `json:"LastTime,omitempty" xml:"LastTime,omitempty"`
-	NeedOpenBasicRule          *bool   `json:"NeedOpenBasicRule,omitempty" xml:"NeedOpenBasicRule,omitempty"`
-	NeedOpenBasicRuleUuids     *string `json:"NeedOpenBasicRuleUuids,omitempty" xml:"NeedOpenBasicRuleUuids,omitempty"`
-	NeedOpenRunMode            *bool   `json:"NeedOpenRunMode,omitempty" xml:"NeedOpenRunMode,omitempty"`
-	NeedOpenVirtualPatche      *bool   `json:"NeedOpenVirtualPatche,omitempty" xml:"NeedOpenVirtualPatche,omitempty"`
+	// The CVE IDs.
+	CveId *string `json:"CveId,omitempty" xml:"CveId,omitempty"`
+	// The time when the first attack was launched.
+	FirstTime *int64 `json:"FirstTime,omitempty" xml:"FirstTime,omitempty"`
+	// Indicates whether you need to pay special attention to the vulnerability. Valid values:
+	//
+	// *   **0**: no
+	// *   **1**: yes
+	HighlightTag *int32 `json:"HighlightTag,omitempty" xml:"HighlightTag,omitempty"`
+	// The time when the last attack was launched.
+	LastTime *int64 `json:"LastTime,omitempty" xml:"LastTime,omitempty"`
+	// The status of basic protection. Valid values:
+	//
+	// *   **true**: enabled
+	// *   **false**: disabled
+	//
+	// >  If the value of this parameter is true, you must configure the intrusion prevention feature when you enable protection.
+	NeedOpenBasicRule *bool `json:"NeedOpenBasicRule,omitempty" xml:"NeedOpenBasicRule,omitempty"`
+	// The UUIDs of the basic protection policies for which you want to set the Current Action parameter to Block.
+	NeedOpenBasicRuleUuids *string `json:"NeedOpenBasicRuleUuids,omitempty" xml:"NeedOpenBasicRuleUuids,omitempty"`
+	// Indicates whether the intrusion prevention feature needs to be configured when you enable protection. Valid values:
+	//
+	// *   **true**: yes
+	// *   **false**: no
+	NeedOpenRunMode *bool `json:"NeedOpenRunMode,omitempty" xml:"NeedOpenRunMode,omitempty"`
+	// The status of virtual patching. Valid values:
+	//
+	// *   **true**: enabled
+	// *   **false**: disabled
+	//
+	// >  If the value of this parameter is true, you must configure the intrusion prevention feature when you enable protection.
+	NeedOpenVirtualPatche *bool `json:"NeedOpenVirtualPatche,omitempty" xml:"NeedOpenVirtualPatche,omitempty"`
+	// The UUIDs of the virtual patching policies for which you want to set the Current Action parameter to Block.
 	NeedOpenVirtualPatcheUuids *string `json:"NeedOpenVirtualPatcheUuids,omitempty" xml:"NeedOpenVirtualPatcheUuids,omitempty"`
-	NeedRuleClass              *int32  `json:"NeedRuleClass,omitempty" xml:"NeedRuleClass,omitempty"`
-	ResourceCnt                *int32  `json:"ResourceCnt,omitempty" xml:"ResourceCnt,omitempty"`
-	// The list of the resources.
-	ResourceList     []*DescribeVulnerabilityProtectedListResponseBodyVulnListResourceList `json:"ResourceList,omitempty" xml:"ResourceList,omitempty" type:"Repeated"`
-	VirtualPatcheIds *string                                                               `json:"VirtualPatcheIds,omitempty" xml:"VirtualPatcheIds,omitempty"`
-	VulnKey          *string                                                               `json:"VulnKey,omitempty" xml:"VulnKey,omitempty"`
-	VulnLevel        *string                                                               `json:"VulnLevel,omitempty" xml:"VulnLevel,omitempty"`
-	VulnName         *string                                                               `json:"VulnName,omitempty" xml:"VulnName,omitempty"`
-	VulnStatus       *string                                                               `json:"VulnStatus,omitempty" xml:"VulnStatus,omitempty"`
-	VulnType         *string                                                               `json:"VulnType,omitempty" xml:"VulnType,omitempty"`
+	// The Rule Group that you want to specify. Valid values:
+	//
+	// *   **1**: Loose (default)
+	// *   **2**: Medium
+	// *   **3**: Strict
+	NeedRuleClass *int32 `json:"NeedRuleClass,omitempty" xml:"NeedRuleClass,omitempty"`
+	// The number of assets on which vulnerabilities are detected.
+	ResourceCnt *int32 `json:"ResourceCnt,omitempty" xml:"ResourceCnt,omitempty"`
+	// An array consisting of the assets on which vulnerabilities are detected.
+	ResourceList []*DescribeVulnerabilityProtectedListResponseBodyVulnListResourceList `json:"ResourceList,omitempty" xml:"ResourceList,omitempty" type:"Repeated"`
+	// The IDs of associated virtual patching policies.
+	VirtualPatcheIds *string `json:"VirtualPatcheIds,omitempty" xml:"VirtualPatcheIds,omitempty"`
+	// The code of the vulnerability.
+	VulnKey *string `json:"VulnKey,omitempty" xml:"VulnKey,omitempty"`
+	// The risk level of the vulnerability. Valid values:
+	//
+	// *   **high**
+	// *   **medium**
+	// *   **low**
+	VulnLevel *string `json:"VulnLevel,omitempty" xml:"VulnLevel,omitempty"`
+	// The name of the vulnerability.
+	VulnName *string `json:"VulnName,omitempty" xml:"VulnName,omitempty"`
+	// The status of vulnerability protection. Valid values:
+	//
+	// *   **partProtected**: partially protected
+	// *   **protected**: protected
+	// *   **unProtected**: unprotected
+	VulnStatus *string `json:"VulnStatus,omitempty" xml:"VulnStatus,omitempty"`
+	// The type of the vulnerability. Valid values:
+	//
+	// *   **cve**: Windows vulnerability
+	// *   **cms**: Web-CMS vulnerability
+	// *   **App**: application vulnerability
+	VulnType *string `json:"VulnType,omitempty" xml:"VulnType,omitempty"`
 }
 
 func (s DescribeVulnerabilityProtectedListResponseBodyVulnList) String() string {
@@ -8210,30 +8513,32 @@ func (s *DescribeVulnerabilityProtectedListResponseBodyVulnList) SetVulnType(v s
 }
 
 type DescribeVulnerabilityProtectedListResponseBodyVulnListResourceList struct {
-	Eip        *string `json:"Eip,omitempty" xml:"Eip,omitempty"`
+	// The elastic IP address (EIP) that is associated with the instance.
+	Eip *string `json:"Eip,omitempty" xml:"Eip,omitempty"`
+	// The public IP address of the instance.
 	InternetIp *string `json:"InternetIp,omitempty" xml:"InternetIp,omitempty"`
+	// The private IP address of the instance.
 	IntranetIp *string `json:"IntranetIp,omitempty" xml:"IntranetIp,omitempty"`
-	// The ID of the region.
+	// The ID of the region in which Cloud Firewall is supported.
+	//
+	// >  For more information about the regions, see [Supported regions](~~195657~~).
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the service resource.
+	// The ID of the instance.
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// The name of the resource.
+	// The name of the instance.
 	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
 	// The type of the asset. Valid values:
 	//
-	// *   **BastionHostEgressIP**: the egress IP address of a bastion host
-	// *   **BastionHostIngressIP**: the ingress IP address of a bastion host
-	// *   **EcsEIP**: the elastic IP address (EIP) of an Elastic Compute Service (ECS) instance
-	// *   **EcsPublicIP**: the public IP address of an ECS instance
-	// *   **EIP**: the EIP
-	// *   **EniEIP**: the EIP of an elastic network interface (ENI)
-	// *   **NatEIP**: the EIP of a Network Address Translation (NAT) gateway
-	// *   **SlbEIP**: the EIP of a Server Load Balancer (SLB) instance
-	// *   **SlbPublicIP**: the public IP address of an SLB instance
-	// *   **NatPublicIP**: the public IP address of a NAT gateway
-	// *   **HAVIP**: the high-availability virtual IP address (HAVIP)
+	// *   **SLB**
+	// *   **EIP**
+	// *   **ECS**
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	VulnStatus   *string `json:"VulnStatus,omitempty" xml:"VulnStatus,omitempty"`
+	// The status of vulnerability protection. Valid values:
+	//
+	// *   **partProtected**: partially protected
+	// *   **protected**: protected
+	// *   **unProtected**: unprotected
+	VulnStatus *string `json:"VulnStatus,omitempty" xml:"VulnStatus,omitempty"`
 }
 
 func (s DescribeVulnerabilityProtectedListResponseBodyVulnListResourceList) String() string {
@@ -10737,6 +11042,10 @@ func (client *Client) CreateVpcFirewallCenConfigureWithOptions(request *CreateVp
 		query["NetworkInstanceId"] = request.NetworkInstanceId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.VSwitchId)) {
+		query["VSwitchId"] = request.VSwitchId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.VpcFirewallName)) {
 		query["VpcFirewallName"] = request.VpcFirewallName
 	}
@@ -10780,6 +11089,103 @@ func (client *Client) CreateVpcFirewallCenConfigure(request *CreateVpcFirewallCe
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateVpcFirewallCenConfigureResponse{}
 	_body, _err := client.CreateVpcFirewallCenConfigureWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+/**
+ * You can call the CreateVpcFirewallConfigure operation to create a VPC firewall. The VPC firewall controls traffic between two VPCs that are connected by using an Express Connect circuit. The VPC firewall does not control the mutual access traffic between VPCs that reside in different regions or belong to different Alibaba Cloud accounts. The firewall also does not control the mutual access traffic between VPCs and virtual border routers (VBRs). For more information, see [Limits on VPC firewalls](https://www.alibabacloud.com/help/en/cloud-firewall/latest/vpc-firewall-limits).
+ * ### Limits
+ * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request CreateVpcFirewallConfigureRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return CreateVpcFirewallConfigureResponse
+ */
+func (client *Client) CreateVpcFirewallConfigureWithOptions(request *CreateVpcFirewallConfigureRequest, runtime *util.RuntimeOptions) (_result *CreateVpcFirewallConfigureResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.FirewallSwitch)) {
+		query["FirewallSwitch"] = request.FirewallSwitch
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LocalVpcCidrTableList)) {
+		query["LocalVpcCidrTableList"] = request.LocalVpcCidrTableList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LocalVpcId)) {
+		query["LocalVpcId"] = request.LocalVpcId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LocalVpcRegion)) {
+		query["LocalVpcRegion"] = request.LocalVpcRegion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MemberUid)) {
+		query["MemberUid"] = request.MemberUid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PeerVpcCidrTableList)) {
+		query["PeerVpcCidrTableList"] = request.PeerVpcCidrTableList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PeerVpcId)) {
+		query["PeerVpcId"] = request.PeerVpcId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PeerVpcRegion)) {
+		query["PeerVpcRegion"] = request.PeerVpcRegion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VpcFirewallName)) {
+		query["VpcFirewallName"] = request.VpcFirewallName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateVpcFirewallConfigure"),
+		Version:     tea.String("2017-12-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateVpcFirewallConfigureResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+/**
+ * You can call the CreateVpcFirewallConfigure operation to create a VPC firewall. The VPC firewall controls traffic between two VPCs that are connected by using an Express Connect circuit. The VPC firewall does not control the mutual access traffic between VPCs that reside in different regions or belong to different Alibaba Cloud accounts. The firewall also does not control the mutual access traffic between VPCs and virtual border routers (VBRs). For more information, see [Limits on VPC firewalls](https://www.alibabacloud.com/help/en/cloud-firewall/latest/vpc-firewall-limits).
+ * ### Limits
+ * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request CreateVpcFirewallConfigureRequest
+ * @return CreateVpcFirewallConfigureResponse
+ */
+func (client *Client) CreateVpcFirewallConfigure(request *CreateVpcFirewallConfigureRequest) (_result *CreateVpcFirewallConfigureResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateVpcFirewallConfigureResponse{}
+	_body, _err := client.CreateVpcFirewallConfigureWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12891,7 +13297,7 @@ func (client *Client) DescribeVpcFirewallDetail(request *DescribeVpcFirewallDeta
 }
 
 /**
- * You can call the DescribeVpcFirewallList operation to query the details about VPC firewalls by page. Each VPC firewall controls traffic between two VPCs that are connected by using an Express Connect circuit.
+ * You can call the DescribeVpcFirewallList operation to query the details about VPC firewalls by page. Each VPC firewall protects traffic between two VPCs that are connected by using an Express Connect circuit.
  * ## Limits
  * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
  *
@@ -12977,7 +13383,7 @@ func (client *Client) DescribeVpcFirewallListWithOptions(request *DescribeVpcFir
 }
 
 /**
- * You can call the DescribeVpcFirewallList operation to query the details about VPC firewalls by page. Each VPC firewall controls traffic between two VPCs that are connected by using an Express Connect circuit.
+ * You can call the DescribeVpcFirewallList operation to query the details about VPC firewalls by page. Each VPC firewall protects traffic between two VPCs that are connected by using an Express Connect circuit.
  * ## Limits
  * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
  *
