@@ -960,6 +960,139 @@ func (s *ExtendImageStyleResponse) SetBody(v *ExtendImageStyleResponseBody) *Ext
 	return s
 }
 
+type GenerateCartoonizedImageRequest struct {
+	ImageType *string `json:"ImageType,omitempty" xml:"ImageType,omitempty"`
+	ImageUrl  *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
+	Index     *string `json:"Index,omitempty" xml:"Index,omitempty"`
+}
+
+func (s GenerateCartoonizedImageRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GenerateCartoonizedImageRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GenerateCartoonizedImageRequest) SetImageType(v string) *GenerateCartoonizedImageRequest {
+	s.ImageType = &v
+	return s
+}
+
+func (s *GenerateCartoonizedImageRequest) SetImageUrl(v string) *GenerateCartoonizedImageRequest {
+	s.ImageUrl = &v
+	return s
+}
+
+func (s *GenerateCartoonizedImageRequest) SetIndex(v string) *GenerateCartoonizedImageRequest {
+	s.Index = &v
+	return s
+}
+
+type GenerateCartoonizedImageAdvanceRequest struct {
+	ImageType      *string   `json:"ImageType,omitempty" xml:"ImageType,omitempty"`
+	ImageUrlObject io.Reader `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
+	Index          *string   `json:"Index,omitempty" xml:"Index,omitempty"`
+}
+
+func (s GenerateCartoonizedImageAdvanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GenerateCartoonizedImageAdvanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GenerateCartoonizedImageAdvanceRequest) SetImageType(v string) *GenerateCartoonizedImageAdvanceRequest {
+	s.ImageType = &v
+	return s
+}
+
+func (s *GenerateCartoonizedImageAdvanceRequest) SetImageUrlObject(v io.Reader) *GenerateCartoonizedImageAdvanceRequest {
+	s.ImageUrlObject = v
+	return s
+}
+
+func (s *GenerateCartoonizedImageAdvanceRequest) SetIndex(v string) *GenerateCartoonizedImageAdvanceRequest {
+	s.Index = &v
+	return s
+}
+
+type GenerateCartoonizedImageResponseBody struct {
+	Data      *GenerateCartoonizedImageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                                   `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GenerateCartoonizedImageResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GenerateCartoonizedImageResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GenerateCartoonizedImageResponseBody) SetData(v *GenerateCartoonizedImageResponseBodyData) *GenerateCartoonizedImageResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GenerateCartoonizedImageResponseBody) SetMessage(v string) *GenerateCartoonizedImageResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GenerateCartoonizedImageResponseBody) SetRequestId(v string) *GenerateCartoonizedImageResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GenerateCartoonizedImageResponseBodyData struct {
+	ResultUrl *string `json:"ResultUrl,omitempty" xml:"ResultUrl,omitempty"`
+}
+
+func (s GenerateCartoonizedImageResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GenerateCartoonizedImageResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GenerateCartoonizedImageResponseBodyData) SetResultUrl(v string) *GenerateCartoonizedImageResponseBodyData {
+	s.ResultUrl = &v
+	return s
+}
+
+type GenerateCartoonizedImageResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GenerateCartoonizedImageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GenerateCartoonizedImageResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GenerateCartoonizedImageResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GenerateCartoonizedImageResponse) SetHeaders(v map[string]*string) *GenerateCartoonizedImageResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GenerateCartoonizedImageResponse) SetStatusCode(v int32) *GenerateCartoonizedImageResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GenerateCartoonizedImageResponse) SetBody(v *GenerateCartoonizedImageResponseBody) *GenerateCartoonizedImageResponse {
+	s.Body = v
+	return s
+}
+
 type GenerateDynamicImageRequest struct {
 	Operation *string `json:"Operation,omitempty" xml:"Operation,omitempty"`
 	Url       *string `json:"Url,omitempty" xml:"Url,omitempty"`
@@ -4208,6 +4341,164 @@ func (client *Client) ExtendImageStyleAdvance(request *ExtendImageStyleAdvanceRe
 	}
 
 	_result = extendImageStyleResp
+	return _result, _err
+}
+
+func (client *Client) GenerateCartoonizedImageWithOptions(request *GenerateCartoonizedImageRequest, runtime *util.RuntimeOptions) (_result *GenerateCartoonizedImageResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ImageType)) {
+		body["ImageType"] = request.ImageType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ImageUrl)) {
+		body["ImageUrl"] = request.ImageUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Index)) {
+		body["Index"] = request.Index
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GenerateCartoonizedImage"),
+		Version:     tea.String("2019-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GenerateCartoonizedImageResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GenerateCartoonizedImage(request *GenerateCartoonizedImageRequest) (_result *GenerateCartoonizedImageResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GenerateCartoonizedImageResponse{}
+	_body, _err := client.GenerateCartoonizedImageWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GenerateCartoonizedImageAdvance(request *GenerateCartoonizedImageAdvanceRequest, runtime *util.RuntimeOptions) (_result *GenerateCartoonizedImageResponse, _err error) {
+	// Step 0: init client
+	accessKeyId, _err := client.Credential.GetAccessKeyId()
+	if _err != nil {
+		return _result, _err
+	}
+
+	accessKeySecret, _err := client.Credential.GetAccessKeySecret()
+	if _err != nil {
+		return _result, _err
+	}
+
+	securityToken, _err := client.Credential.GetSecurityToken()
+	if _err != nil {
+		return _result, _err
+	}
+
+	credentialType := client.Credential.GetType()
+	openPlatformEndpoint := client.OpenPlatformEndpoint
+	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
+	}
+
+	if tea.BoolValue(util.IsUnset(credentialType)) {
+		credentialType = tea.String("access_key")
+	}
+
+	authConfig := &openapi.Config{
+		AccessKeyId:     accessKeyId,
+		AccessKeySecret: accessKeySecret,
+		SecurityToken:   securityToken,
+		Type:            credentialType,
+		Endpoint:        openPlatformEndpoint,
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	authClient, _err := openplatform.NewClient(authConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
+	authRequest := &openplatform.AuthorizeFileUploadRequest{
+		Product:  tea.String("imageenhan"),
+		RegionId: client.RegionId,
+	}
+	authResponse := &openplatform.AuthorizeFileUploadResponse{}
+	ossConfig := &oss.Config{
+		AccessKeySecret: accessKeySecret,
+		Type:            tea.String("access_key"),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	var ossClient *oss.Client
+	fileObj := &fileform.FileField{}
+	ossHeader := &oss.PostObjectRequestHeader{}
+	uploadRequest := &oss.PostObjectRequest{}
+	ossRuntime := &ossutil.RuntimeOptions{}
+	openapiutil.Convert(runtime, ossRuntime)
+	generateCartoonizedImageReq := &GenerateCartoonizedImageRequest{}
+	openapiutil.Convert(request, generateCartoonizedImageReq)
+	if !tea.BoolValue(util.IsUnset(request.ImageUrlObject)) {
+		authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+
+		ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
+		ossClient, _err = oss.NewClient(ossConfig)
+		if _err != nil {
+			return _result, _err
+		}
+
+		fileObj = &fileform.FileField{
+			Filename:    authResponse.Body.ObjectKey,
+			Content:     request.ImageUrlObject,
+			ContentType: tea.String(""),
+		}
+		ossHeader = &oss.PostObjectRequestHeader{
+			AccessKeyId:         authResponse.Body.AccessKeyId,
+			Policy:              authResponse.Body.EncodedPolicy,
+			Signature:           authResponse.Body.Signature,
+			Key:                 authResponse.Body.ObjectKey,
+			File:                fileObj,
+			SuccessActionStatus: tea.String("201"),
+		}
+		uploadRequest = &oss.PostObjectRequest{
+			BucketName: authResponse.Body.Bucket,
+			Header:     ossHeader,
+		}
+		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+		if _err != nil {
+			return _result, _err
+		}
+		generateCartoonizedImageReq.ImageUrl = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
+	}
+
+	generateCartoonizedImageResp, _err := client.GenerateCartoonizedImageWithOptions(generateCartoonizedImageReq, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+
+	_result = generateCartoonizedImageResp
 	return _result, _err
 }
 
