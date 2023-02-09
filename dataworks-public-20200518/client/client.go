@@ -20533,6 +20533,7 @@ func (s *GetPermissionApplyOrderDetailResponseBodyApplyOrderDetailApproveContent
 type GetPermissionApplyOrderDetailResponseBodyApplyOrderDetailApproveContentProjectMetaObjectMetaListColumnMetaList struct {
 	ColumnComment *string `json:"ColumnComment,omitempty" xml:"ColumnComment,omitempty"`
 	ColumnName    *string `json:"ColumnName,omitempty" xml:"ColumnName,omitempty"`
+	SecurityLevel *string `json:"SecurityLevel,omitempty" xml:"SecurityLevel,omitempty"`
 }
 
 func (s GetPermissionApplyOrderDetailResponseBodyApplyOrderDetailApproveContentProjectMetaObjectMetaListColumnMetaList) String() string {
@@ -20550,6 +20551,11 @@ func (s *GetPermissionApplyOrderDetailResponseBodyApplyOrderDetailApproveContent
 
 func (s *GetPermissionApplyOrderDetailResponseBodyApplyOrderDetailApproveContentProjectMetaObjectMetaListColumnMetaList) SetColumnName(v string) *GetPermissionApplyOrderDetailResponseBodyApplyOrderDetailApproveContentProjectMetaObjectMetaListColumnMetaList {
 	s.ColumnName = &v
+	return s
+}
+
+func (s *GetPermissionApplyOrderDetailResponseBodyApplyOrderDetailApproveContentProjectMetaObjectMetaListColumnMetaList) SetSecurityLevel(v string) *GetPermissionApplyOrderDetailResponseBodyApplyOrderDetailApproveContentProjectMetaObjectMetaListColumnMetaList {
+	s.SecurityLevel = &v
 	return s
 }
 
