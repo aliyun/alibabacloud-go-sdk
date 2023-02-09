@@ -6560,6 +6560,7 @@ type GetTemplateParameterConstraintsRequest struct {
 	ParametersKeyFilter []*string                                           `json:"ParametersKeyFilter,omitempty" xml:"ParametersKeyFilter,omitempty" type:"Repeated"`
 	ParametersOrder     []*string                                           `json:"ParametersOrder,omitempty" xml:"ParametersOrder,omitempty" type:"Repeated"`
 	RegionId            *string                                             `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	StackId             *string                                             `json:"StackId,omitempty" xml:"StackId,omitempty"`
 	TemplateBody        *string                                             `json:"TemplateBody,omitempty" xml:"TemplateBody,omitempty"`
 	TemplateId          *string                                             `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 	TemplateURL         *string                                             `json:"TemplateURL,omitempty" xml:"TemplateURL,omitempty"`
@@ -6596,6 +6597,11 @@ func (s *GetTemplateParameterConstraintsRequest) SetParametersOrder(v []*string)
 
 func (s *GetTemplateParameterConstraintsRequest) SetRegionId(v string) *GetTemplateParameterConstraintsRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *GetTemplateParameterConstraintsRequest) SetStackId(v string) *GetTemplateParameterConstraintsRequest {
+	s.StackId = &v
 	return s
 }
 
@@ -6648,6 +6654,7 @@ type GetTemplateParameterConstraintsShrinkRequest struct {
 	ParametersKeyFilterShrink *string                                                   `json:"ParametersKeyFilter,omitempty" xml:"ParametersKeyFilter,omitempty"`
 	ParametersOrderShrink     *string                                                   `json:"ParametersOrder,omitempty" xml:"ParametersOrder,omitempty"`
 	RegionId                  *string                                                   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	StackId                   *string                                                   `json:"StackId,omitempty" xml:"StackId,omitempty"`
 	TemplateBody              *string                                                   `json:"TemplateBody,omitempty" xml:"TemplateBody,omitempty"`
 	TemplateId                *string                                                   `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 	TemplateURL               *string                                                   `json:"TemplateURL,omitempty" xml:"TemplateURL,omitempty"`
@@ -6684,6 +6691,11 @@ func (s *GetTemplateParameterConstraintsShrinkRequest) SetParametersOrderShrink(
 
 func (s *GetTemplateParameterConstraintsShrinkRequest) SetRegionId(v string) *GetTemplateParameterConstraintsShrinkRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *GetTemplateParameterConstraintsShrinkRequest) SetStackId(v string) *GetTemplateParameterConstraintsShrinkRequest {
+	s.StackId = &v
 	return s
 }
 
@@ -11020,15 +11032,16 @@ func (s *PreviewStackResponseBodyStackParameters) SetParameterValue(v string) *P
 }
 
 type PreviewStackResponseBodyStackResources struct {
-	AcsResourceType   *string                `json:"AcsResourceType,omitempty" xml:"AcsResourceType,omitempty"`
-	Action            *string                `json:"Action,omitempty" xml:"Action,omitempty"`
-	Description       *string                `json:"Description,omitempty" xml:"Description,omitempty"`
-	LogicalResourceId *string                `json:"LogicalResourceId,omitempty" xml:"LogicalResourceId,omitempty"`
-	Properties        map[string]interface{} `json:"Properties,omitempty" xml:"Properties,omitempty"`
-	Replacement       *string                `json:"Replacement,omitempty" xml:"Replacement,omitempty"`
-	RequiredBy        []*string              `json:"RequiredBy,omitempty" xml:"RequiredBy,omitempty" type:"Repeated"`
-	ResourceType      *string                `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	Stack             map[string]interface{} `json:"Stack,omitempty" xml:"Stack,omitempty"`
+	AcsResourceType    *string                `json:"AcsResourceType,omitempty" xml:"AcsResourceType,omitempty"`
+	Action             *string                `json:"Action,omitempty" xml:"Action,omitempty"`
+	Description        *string                `json:"Description,omitempty" xml:"Description,omitempty"`
+	LogicalResourceId  *string                `json:"LogicalResourceId,omitempty" xml:"LogicalResourceId,omitempty"`
+	PhysicalResourceId *string                `json:"PhysicalResourceId,omitempty" xml:"PhysicalResourceId,omitempty"`
+	Properties         map[string]interface{} `json:"Properties,omitempty" xml:"Properties,omitempty"`
+	Replacement        *string                `json:"Replacement,omitempty" xml:"Replacement,omitempty"`
+	RequiredBy         []*string              `json:"RequiredBy,omitempty" xml:"RequiredBy,omitempty" type:"Repeated"`
+	ResourceType       *string                `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	Stack              map[string]interface{} `json:"Stack,omitempty" xml:"Stack,omitempty"`
 }
 
 func (s PreviewStackResponseBodyStackResources) String() string {
@@ -11056,6 +11069,11 @@ func (s *PreviewStackResponseBodyStackResources) SetDescription(v string) *Previ
 
 func (s *PreviewStackResponseBodyStackResources) SetLogicalResourceId(v string) *PreviewStackResponseBodyStackResources {
 	s.LogicalResourceId = &v
+	return s
+}
+
+func (s *PreviewStackResponseBodyStackResources) SetPhysicalResourceId(v string) *PreviewStackResponseBodyStackResources {
+	s.PhysicalResourceId = &v
 	return s
 }
 
@@ -15826,6 +15844,10 @@ func (client *Client) GetTemplateParameterConstraintsWithOptions(tmpReq *GetTemp
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StackId)) {
+		query["StackId"] = request.StackId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.TemplateBody)) {
