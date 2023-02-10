@@ -72,19 +72,23 @@ func (s *Group) SetUpdateTime(v string) *Group {
 }
 
 type Instance struct {
-	HostIP         *string                  `json:"HostIP,omitempty" xml:"HostIP,omitempty"`
-	HostName       *string                  `json:"HostName,omitempty" xml:"HostName,omitempty"`
-	InnerIP        *string                  `json:"InnerIP,omitempty" xml:"InnerIP,omitempty"`
-	InstanceName   *string                  `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	InstancePort   *int32                   `json:"InstancePort,omitempty" xml:"InstancePort,omitempty"`
-	LastState      []map[string]interface{} `json:"LastState,omitempty" xml:"LastState,omitempty" type:"Repeated"`
-	Namespace      *string                  `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	ReadyProcesses *int32                   `json:"ReadyProcesses,omitempty" xml:"ReadyProcesses,omitempty"`
-	Reason         *string                  `json:"Reason,omitempty" xml:"Reason,omitempty"`
-	RestartCount   *int32                   `json:"RestartCount,omitempty" xml:"RestartCount,omitempty"`
-	StartAt        *string                  `json:"StartAt,omitempty" xml:"StartAt,omitempty"`
-	Status         *string                  `json:"Status,omitempty" xml:"Status,omitempty"`
-	TotalProcesses *int32                   `json:"TotalProcesses,omitempty" xml:"TotalProcesses,omitempty"`
+	HostIP           *string                  `json:"HostIP,omitempty" xml:"HostIP,omitempty"`
+	HostName         *string                  `json:"HostName,omitempty" xml:"HostName,omitempty"`
+	InnerIP          *string                  `json:"InnerIP,omitempty" xml:"InnerIP,omitempty"`
+	InstanceName     *string                  `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	InstancePort     *int32                   `json:"InstancePort,omitempty" xml:"InstancePort,omitempty"`
+	LastState        []map[string]interface{} `json:"LastState,omitempty" xml:"LastState,omitempty" type:"Repeated"`
+	Namespace        *string                  `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	ReadyProcesses   *int32                   `json:"ReadyProcesses,omitempty" xml:"ReadyProcesses,omitempty"`
+	Reason           *string                  `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	ResourceType     *string                  `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	RestartCount     *int32                   `json:"RestartCount,omitempty" xml:"RestartCount,omitempty"`
+	Role             *string                  `json:"Role,omitempty" xml:"Role,omitempty"`
+	StartAt          *string                  `json:"StartAt,omitempty" xml:"StartAt,omitempty"`
+	Status           *string                  `json:"Status,omitempty" xml:"Status,omitempty"`
+	TenantHostIP     *string                  `json:"TenantHostIP,omitempty" xml:"TenantHostIP,omitempty"`
+	TenantInstanceIP *string                  `json:"TenantInstanceIP,omitempty" xml:"TenantInstanceIP,omitempty"`
+	TotalProcesses   *int32                   `json:"TotalProcesses,omitempty" xml:"TotalProcesses,omitempty"`
 }
 
 func (s Instance) String() string {
@@ -140,8 +144,18 @@ func (s *Instance) SetReason(v string) *Instance {
 	return s
 }
 
+func (s *Instance) SetResourceType(v string) *Instance {
+	s.ResourceType = &v
+	return s
+}
+
 func (s *Instance) SetRestartCount(v int32) *Instance {
 	s.RestartCount = &v
+	return s
+}
+
+func (s *Instance) SetRole(v string) *Instance {
+	s.Role = &v
 	return s
 }
 
@@ -152,6 +166,16 @@ func (s *Instance) SetStartAt(v string) *Instance {
 
 func (s *Instance) SetStatus(v string) *Instance {
 	s.Status = &v
+	return s
+}
+
+func (s *Instance) SetTenantHostIP(v string) *Instance {
+	s.TenantHostIP = &v
+	return s
+}
+
+func (s *Instance) SetTenantInstanceIP(v string) *Instance {
+	s.TenantInstanceIP = &v
 	return s
 }
 
@@ -250,25 +274,27 @@ func (s *Resource) SetUpdateTime(v string) *Resource {
 }
 
 type ResourceInstance struct {
-	Arch               *string  `json:"Arch,omitempty" xml:"Arch,omitempty"`
-	AutoRenewal        *bool    `json:"AutoRenewal,omitempty" xml:"AutoRenewal,omitempty"`
-	ChargeType         *string  `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	CreateTime         *string  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	ExpiredTime        *string  `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
-	InstanceCpuCount   *int32   `json:"InstanceCpuCount,omitempty" xml:"InstanceCpuCount,omitempty"`
-	InstanceGpuCount   *int32   `json:"InstanceGpuCount,omitempty" xml:"InstanceGpuCount,omitempty"`
-	InstanceGpuMemory  *string  `json:"InstanceGpuMemory,omitempty" xml:"InstanceGpuMemory,omitempty"`
-	InstanceId         *string  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	InstanceIp         *string  `json:"InstanceIp,omitempty" xml:"InstanceIp,omitempty"`
-	InstanceMemory     *string  `json:"InstanceMemory,omitempty" xml:"InstanceMemory,omitempty"`
-	InstanceName       *string  `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	InstanceStatus     *string  `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
-	InstanceType       *string  `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	InstanceUsedCpu    *float32 `json:"InstanceUsedCpu,omitempty" xml:"InstanceUsedCpu,omitempty"`
-	InstanceUsedGpu    *int32   `json:"InstanceUsedGpu,omitempty" xml:"InstanceUsedGpu,omitempty"`
-	InstanceUsedMemory *string  `json:"InstanceUsedMemory,omitempty" xml:"InstanceUsedMemory,omitempty"`
-	Region             *string  `json:"Region,omitempty" xml:"Region,omitempty"`
-	Zone               *string  `json:"Zone,omitempty" xml:"Zone,omitempty"`
+	Arch                  *string  `json:"Arch,omitempty" xml:"Arch,omitempty"`
+	AutoRenewal           *bool    `json:"AutoRenewal,omitempty" xml:"AutoRenewal,omitempty"`
+	ChargeType            *string  `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	CreateTime            *string  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	ExpiredTime           *string  `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
+	InstanceCpuCount      *int32   `json:"InstanceCpuCount,omitempty" xml:"InstanceCpuCount,omitempty"`
+	InstanceGpuCount      *int32   `json:"InstanceGpuCount,omitempty" xml:"InstanceGpuCount,omitempty"`
+	InstanceGpuMemory     *string  `json:"InstanceGpuMemory,omitempty" xml:"InstanceGpuMemory,omitempty"`
+	InstanceId            *string  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceIp            *string  `json:"InstanceIp,omitempty" xml:"InstanceIp,omitempty"`
+	InstanceMemory        *string  `json:"InstanceMemory,omitempty" xml:"InstanceMemory,omitempty"`
+	InstanceName          *string  `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	InstanceStatus        *string  `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
+	InstanceTenantIp      *string  `json:"InstanceTenantIp,omitempty" xml:"InstanceTenantIp,omitempty"`
+	InstanceType          *string  `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	InstanceUsedCpu       *float32 `json:"InstanceUsedCpu,omitempty" xml:"InstanceUsedCpu,omitempty"`
+	InstanceUsedGpu       *float32 `json:"InstanceUsedGpu,omitempty" xml:"InstanceUsedGpu,omitempty"`
+	InstanceUsedGpuMemory *string  `json:"InstanceUsedGpuMemory,omitempty" xml:"InstanceUsedGpuMemory,omitempty"`
+	InstanceUsedMemory    *string  `json:"InstanceUsedMemory,omitempty" xml:"InstanceUsedMemory,omitempty"`
+	Region                *string  `json:"Region,omitempty" xml:"Region,omitempty"`
+	Zone                  *string  `json:"Zone,omitempty" xml:"Zone,omitempty"`
 }
 
 func (s ResourceInstance) String() string {
@@ -344,6 +370,11 @@ func (s *ResourceInstance) SetInstanceStatus(v string) *ResourceInstance {
 	return s
 }
 
+func (s *ResourceInstance) SetInstanceTenantIp(v string) *ResourceInstance {
+	s.InstanceTenantIp = &v
+	return s
+}
+
 func (s *ResourceInstance) SetInstanceType(v string) *ResourceInstance {
 	s.InstanceType = &v
 	return s
@@ -354,8 +385,13 @@ func (s *ResourceInstance) SetInstanceUsedCpu(v float32) *ResourceInstance {
 	return s
 }
 
-func (s *ResourceInstance) SetInstanceUsedGpu(v int32) *ResourceInstance {
+func (s *ResourceInstance) SetInstanceUsedGpu(v float32) *ResourceInstance {
 	s.InstanceUsedGpu = &v
+	return s
+}
+
+func (s *ResourceInstance) SetInstanceUsedGpuMemory(v string) *ResourceInstance {
+	s.InstanceUsedGpuMemory = &v
 	return s
 }
 
@@ -458,41 +494,42 @@ func (s *ResourceInstanceWorker) SetStatus(v string) *ResourceInstanceWorker {
 }
 
 type Service struct {
-	AccessToken      *string `json:"AccessToken,omitempty" xml:"AccessToken,omitempty"`
-	CallerUid        *string `json:"CallerUid,omitempty" xml:"CallerUid,omitempty"`
-	Cpu              *int32  `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
-	CreateTime       *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	CurrentVersion   *int32  `json:"CurrentVersion,omitempty" xml:"CurrentVersion,omitempty"`
-	ExtraData        *string `json:"ExtraData,omitempty" xml:"ExtraData,omitempty"`
-	Gpu              *int32  `json:"Gpu,omitempty" xml:"Gpu,omitempty"`
-	Image            *string `json:"Image,omitempty" xml:"Image,omitempty"`
-	InternetEndpoint *string `json:"InternetEndpoint,omitempty" xml:"InternetEndpoint,omitempty"`
-	IntranetEndpoint *string `json:"IntranetEndpoint,omitempty" xml:"IntranetEndpoint,omitempty"`
-	LatestVersion    *int32  `json:"LatestVersion,omitempty" xml:"LatestVersion,omitempty"`
-	Memory           *int32  `json:"Memory,omitempty" xml:"Memory,omitempty"`
-	Message          *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	Namespace        *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	ParentUid        *string `json:"ParentUid,omitempty" xml:"ParentUid,omitempty"`
-	PendingInstance  *int32  `json:"PendingInstance,omitempty" xml:"PendingInstance,omitempty"`
-	Reason           *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
-	Region           *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	RequestId        *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Resource         *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
-	ResourceAlias    *string `json:"ResourceAlias,omitempty" xml:"ResourceAlias,omitempty"`
-	Role             *string `json:"Role,omitempty" xml:"Role,omitempty"`
-	RoleAttrs        *string `json:"RoleAttrs,omitempty" xml:"RoleAttrs,omitempty"`
-	RunningInstance  *int32  `json:"RunningInstance,omitempty" xml:"RunningInstance,omitempty"`
-	SafetyLock       *string `json:"SafetyLock,omitempty" xml:"SafetyLock,omitempty"`
-	ServiceConfig    *string `json:"ServiceConfig,omitempty" xml:"ServiceConfig,omitempty"`
-	ServiceGroup     *string `json:"ServiceGroup,omitempty" xml:"ServiceGroup,omitempty"`
-	ServiceId        *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
-	ServiceName      *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
-	ServiceUid       *string `json:"ServiceUid,omitempty" xml:"ServiceUid,omitempty"`
-	Source           *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	Status           *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	TotalInstance    *int32  `json:"TotalInstance,omitempty" xml:"TotalInstance,omitempty"`
-	UpdateTime       *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	Weight           *int32  `json:"Weight,omitempty" xml:"Weight,omitempty"`
+	AccessToken      *string          `json:"AccessToken,omitempty" xml:"AccessToken,omitempty"`
+	CallerUid        *string          `json:"CallerUid,omitempty" xml:"CallerUid,omitempty"`
+	Cpu              *int32           `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	CreateTime       *string          `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CurrentVersion   *int32           `json:"CurrentVersion,omitempty" xml:"CurrentVersion,omitempty"`
+	ExtraData        *string          `json:"ExtraData,omitempty" xml:"ExtraData,omitempty"`
+	Gpu              *int32           `json:"Gpu,omitempty" xml:"Gpu,omitempty"`
+	Image            *string          `json:"Image,omitempty" xml:"Image,omitempty"`
+	InternetEndpoint *string          `json:"InternetEndpoint,omitempty" xml:"InternetEndpoint,omitempty"`
+	IntranetEndpoint *string          `json:"IntranetEndpoint,omitempty" xml:"IntranetEndpoint,omitempty"`
+	Labels           []*ServiceLabels `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	LatestVersion    *int32           `json:"LatestVersion,omitempty" xml:"LatestVersion,omitempty"`
+	Memory           *int32           `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	Message          *string          `json:"Message,omitempty" xml:"Message,omitempty"`
+	Namespace        *string          `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	ParentUid        *string          `json:"ParentUid,omitempty" xml:"ParentUid,omitempty"`
+	PendingInstance  *int32           `json:"PendingInstance,omitempty" xml:"PendingInstance,omitempty"`
+	Reason           *string          `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	Region           *string          `json:"Region,omitempty" xml:"Region,omitempty"`
+	RequestId        *string          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Resource         *string          `json:"Resource,omitempty" xml:"Resource,omitempty"`
+	ResourceAlias    *string          `json:"ResourceAlias,omitempty" xml:"ResourceAlias,omitempty"`
+	Role             *string          `json:"Role,omitempty" xml:"Role,omitempty"`
+	RoleAttrs        *string          `json:"RoleAttrs,omitempty" xml:"RoleAttrs,omitempty"`
+	RunningInstance  *int32           `json:"RunningInstance,omitempty" xml:"RunningInstance,omitempty"`
+	SafetyLock       *string          `json:"SafetyLock,omitempty" xml:"SafetyLock,omitempty"`
+	ServiceConfig    *string          `json:"ServiceConfig,omitempty" xml:"ServiceConfig,omitempty"`
+	ServiceGroup     *string          `json:"ServiceGroup,omitempty" xml:"ServiceGroup,omitempty"`
+	ServiceId        *string          `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	ServiceName      *string          `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+	ServiceUid       *string          `json:"ServiceUid,omitempty" xml:"ServiceUid,omitempty"`
+	Source           *string          `json:"Source,omitempty" xml:"Source,omitempty"`
+	Status           *string          `json:"Status,omitempty" xml:"Status,omitempty"`
+	TotalInstance    *int32           `json:"TotalInstance,omitempty" xml:"TotalInstance,omitempty"`
+	UpdateTime       *string          `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	Weight           *int32           `json:"Weight,omitempty" xml:"Weight,omitempty"`
 }
 
 func (s Service) String() string {
@@ -550,6 +587,11 @@ func (s *Service) SetInternetEndpoint(v string) *Service {
 
 func (s *Service) SetIntranetEndpoint(v string) *Service {
 	s.IntranetEndpoint = &v
+	return s
+}
+
+func (s *Service) SetLabels(v []*ServiceLabels) *Service {
+	s.Labels = v
 	return s
 }
 
@@ -675,6 +717,82 @@ func (s *Service) SetUpdateTime(v string) *Service {
 
 func (s *Service) SetWeight(v int32) *Service {
 	s.Weight = &v
+	return s
+}
+
+type ServiceLabels struct {
+	LabelKey   *string `json:"LabelKey,omitempty" xml:"LabelKey,omitempty"`
+	LabelValue *string `json:"LabelValue,omitempty" xml:"LabelValue,omitempty"`
+}
+
+func (s ServiceLabels) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ServiceLabels) GoString() string {
+	return s.String()
+}
+
+func (s *ServiceLabels) SetLabelKey(v string) *ServiceLabels {
+	s.LabelKey = &v
+	return s
+}
+
+func (s *ServiceLabels) SetLabelValue(v string) *ServiceLabels {
+	s.LabelValue = &v
+	return s
+}
+
+type CommitServiceResponseBody struct {
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CommitServiceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CommitServiceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CommitServiceResponseBody) SetMessage(v string) *CommitServiceResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CommitServiceResponseBody) SetRequestId(v string) *CommitServiceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CommitServiceResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CommitServiceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CommitServiceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CommitServiceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CommitServiceResponse) SetHeaders(v map[string]*string) *CommitServiceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CommitServiceResponse) SetStatusCode(v int32) *CommitServiceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CommitServiceResponse) SetBody(v *CommitServiceResponseBody) *CommitServiceResponse {
+	s.Body = v
 	return s
 }
 
@@ -1033,7 +1151,9 @@ func (s *CreateResourceLogResponse) SetBody(v *CreateResourceLogResponseBody) *C
 }
 
 type CreateServiceRequest struct {
-	Body *string `json:"body,omitempty" xml:"body,omitempty"`
+	Develop *string            `json:"Develop,omitempty" xml:"Develop,omitempty"`
+	Labels  map[string]*string `json:"Labels,omitempty" xml:"Labels,omitempty"`
+	Body    *string            `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateServiceRequest) String() string {
@@ -1044,7 +1164,46 @@ func (s CreateServiceRequest) GoString() string {
 	return s.String()
 }
 
+func (s *CreateServiceRequest) SetDevelop(v string) *CreateServiceRequest {
+	s.Develop = &v
+	return s
+}
+
+func (s *CreateServiceRequest) SetLabels(v map[string]*string) *CreateServiceRequest {
+	s.Labels = v
+	return s
+}
+
 func (s *CreateServiceRequest) SetBody(v string) *CreateServiceRequest {
+	s.Body = &v
+	return s
+}
+
+type CreateServiceShrinkRequest struct {
+	Develop      *string `json:"Develop,omitempty" xml:"Develop,omitempty"`
+	LabelsShrink *string `json:"Labels,omitempty" xml:"Labels,omitempty"`
+	Body         *string `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateServiceShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateServiceShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateServiceShrinkRequest) SetDevelop(v string) *CreateServiceShrinkRequest {
+	s.Develop = &v
+	return s
+}
+
+func (s *CreateServiceShrinkRequest) SetLabelsShrink(v string) *CreateServiceShrinkRequest {
+	s.LabelsShrink = &v
+	return s
+}
+
+func (s *CreateServiceShrinkRequest) SetBody(v string) *CreateServiceShrinkRequest {
 	s.Body = &v
 	return s
 }
@@ -1928,6 +2087,92 @@ func (s *DeleteServiceInstancesResponse) SetBody(v *DeleteServiceInstancesRespon
 	return s
 }
 
+type DeleteServiceLabelRequest struct {
+	Keys []*string `json:"Keys,omitempty" xml:"Keys,omitempty" type:"Repeated"`
+}
+
+func (s DeleteServiceLabelRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteServiceLabelRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteServiceLabelRequest) SetKeys(v []*string) *DeleteServiceLabelRequest {
+	s.Keys = v
+	return s
+}
+
+type DeleteServiceLabelShrinkRequest struct {
+	KeysShrink *string `json:"Keys,omitempty" xml:"Keys,omitempty"`
+}
+
+func (s DeleteServiceLabelShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteServiceLabelShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteServiceLabelShrinkRequest) SetKeysShrink(v string) *DeleteServiceLabelShrinkRequest {
+	s.KeysShrink = &v
+	return s
+}
+
+type DeleteServiceLabelResponseBody struct {
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteServiceLabelResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteServiceLabelResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteServiceLabelResponseBody) SetMessage(v string) *DeleteServiceLabelResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DeleteServiceLabelResponseBody) SetRequestId(v string) *DeleteServiceLabelResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteServiceLabelResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteServiceLabelResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteServiceLabelResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteServiceLabelResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteServiceLabelResponse) SetHeaders(v map[string]*string) *DeleteServiceLabelResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteServiceLabelResponse) SetStatusCode(v int32) *DeleteServiceLabelResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteServiceLabelResponse) SetBody(v *DeleteServiceLabelResponseBody) *DeleteServiceLabelResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteServiceMirrorResponseBody struct {
 	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -1981,19 +2226,32 @@ func (s *DeleteServiceMirrorResponse) SetBody(v *DeleteServiceMirrorResponseBody
 }
 
 type DescribeBenchmarkTaskResponseBody struct {
-	AvailableAgent *int64  `json:"AvailableAgent,omitempty" xml:"AvailableAgent,omitempty"`
-	CallerUid      *string `json:"CallerUid,omitempty" xml:"CallerUid,omitempty"`
-	DesiredAgent   *int64  `json:"DesiredAgent,omitempty" xml:"DesiredAgent,omitempty"`
-	Endpoint       *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	ParentUid      *string `json:"ParentUid,omitempty" xml:"ParentUid,omitempty"`
-	Reason         *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
-	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ServiceName    *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
-	Status         *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	TaskId         *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	TaskName       *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
-	Token          *string `json:"Token,omitempty" xml:"Token,omitempty"`
+	// 实际可用的压测实例个数。
+	AvailableAgent *int64 `json:"AvailableAgent,omitempty" xml:"AvailableAgent,omitempty"`
+	// 调用者的UID。
+	CallerUid *string `json:"CallerUid,omitempty" xml:"CallerUid,omitempty"`
+	// 预期的压测实例个数。
+	DesiredAgent *int64 `json:"DesiredAgent,omitempty" xml:"DesiredAgent,omitempty"`
+	// 服务对外公开的访问路径。
+	Endpoint *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
+	// 当前压测任务的运行进度信息。
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// 资源拥有者的UID。
+	ParentUid *string `json:"ParentUid,omitempty" xml:"ParentUid,omitempty"`
+	// 当前压测任务状态产生的原因。
+	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	// 请求ID。
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// 压测的eas服务名。
+	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+	// 压测任务的状态。
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// 压测任务ID。
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// 压测任务名字。
+	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	// 访问eas服务的鉴权token。
+	Token *string `json:"Token,omitempty" xml:"Token,omitempty"`
 }
 
 func (s DescribeBenchmarkTaskResponseBody) String() string {
@@ -3085,6 +3343,76 @@ func (s *DescribeServiceMirrorResponse) SetBody(v *DescribeServiceMirrorResponse
 	return s
 }
 
+type DevelopServiceRequest struct {
+	Exit *string `json:"Exit,omitempty" xml:"Exit,omitempty"`
+}
+
+func (s DevelopServiceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DevelopServiceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DevelopServiceRequest) SetExit(v string) *DevelopServiceRequest {
+	s.Exit = &v
+	return s
+}
+
+type DevelopServiceResponseBody struct {
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DevelopServiceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DevelopServiceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DevelopServiceResponseBody) SetMessage(v string) *DevelopServiceResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DevelopServiceResponseBody) SetRequestId(v string) *DevelopServiceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DevelopServiceResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DevelopServiceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DevelopServiceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DevelopServiceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DevelopServiceResponse) SetHeaders(v map[string]*string) *DevelopServiceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DevelopServiceResponse) SetStatusCode(v int32) *DevelopServiceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DevelopServiceResponse) SetBody(v *DevelopServiceResponseBody) *DevelopServiceResponse {
+	s.Body = v
+	return s
+}
+
 type ListBenchmarkTaskRequest struct {
 	Filter      *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
 	PageNumber  *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
@@ -3288,8 +3616,9 @@ type ListGroupsResponseBody struct {
 	Groups     []*Group `json:"Groups,omitempty" xml:"Groups,omitempty" type:"Repeated"`
 	PageNumber *int64   `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize   *int64   `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId  *string  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *int64   `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// Id of the request
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *int64  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListGroupsResponseBody) String() string {
@@ -3984,12 +4313,23 @@ func (s *ListServiceVersionsResponse) SetBody(v *ListServiceVersionsResponseBody
 }
 
 type ListServicesRequest struct {
-	Filter     *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
-	GroupName  *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	Order      *string `json:"Order,omitempty" xml:"Order,omitempty"`
-	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Sort       *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
+	// 关键字搜索。
+	Filter *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
+	// 所属的group。
+	GroupName *string            `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	Label     map[string]*string `json:"Label,omitempty" xml:"Label,omitempty"`
+	// 排序顺序，支持升序或将序。
+	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// 页号。
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// 每页大小。
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Band类型服务主服务的UID
+	ParentServiceUid *string `json:"ParentServiceUid,omitempty" xml:"ParentServiceUid,omitempty"`
+	// 服务的类型，例如Async, OfflineTask和Standard等
+	ServiceType *string `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
+	// 排序字段。
+	Sort *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
 }
 
 func (s ListServicesRequest) String() string {
@@ -4010,6 +4350,11 @@ func (s *ListServicesRequest) SetGroupName(v string) *ListServicesRequest {
 	return s
 }
 
+func (s *ListServicesRequest) SetLabel(v map[string]*string) *ListServicesRequest {
+	s.Label = v
+	return s
+}
+
 func (s *ListServicesRequest) SetOrder(v string) *ListServicesRequest {
 	s.Order = &v
 	return s
@@ -4025,17 +4370,105 @@ func (s *ListServicesRequest) SetPageSize(v int32) *ListServicesRequest {
 	return s
 }
 
+func (s *ListServicesRequest) SetParentServiceUid(v string) *ListServicesRequest {
+	s.ParentServiceUid = &v
+	return s
+}
+
+func (s *ListServicesRequest) SetServiceType(v string) *ListServicesRequest {
+	s.ServiceType = &v
+	return s
+}
+
 func (s *ListServicesRequest) SetSort(v string) *ListServicesRequest {
 	s.Sort = &v
 	return s
 }
 
+type ListServicesShrinkRequest struct {
+	// 关键字搜索。
+	Filter *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
+	// 所属的group。
+	GroupName   *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	LabelShrink *string `json:"Label,omitempty" xml:"Label,omitempty"`
+	// 排序顺序，支持升序或将序。
+	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// 页号。
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// 每页大小。
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Band类型服务主服务的UID
+	ParentServiceUid *string `json:"ParentServiceUid,omitempty" xml:"ParentServiceUid,omitempty"`
+	// 服务的类型，例如Async, OfflineTask和Standard等
+	ServiceType *string `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
+	// 排序字段。
+	Sort *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
+}
+
+func (s ListServicesShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListServicesShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListServicesShrinkRequest) SetFilter(v string) *ListServicesShrinkRequest {
+	s.Filter = &v
+	return s
+}
+
+func (s *ListServicesShrinkRequest) SetGroupName(v string) *ListServicesShrinkRequest {
+	s.GroupName = &v
+	return s
+}
+
+func (s *ListServicesShrinkRequest) SetLabelShrink(v string) *ListServicesShrinkRequest {
+	s.LabelShrink = &v
+	return s
+}
+
+func (s *ListServicesShrinkRequest) SetOrder(v string) *ListServicesShrinkRequest {
+	s.Order = &v
+	return s
+}
+
+func (s *ListServicesShrinkRequest) SetPageNumber(v int32) *ListServicesShrinkRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListServicesShrinkRequest) SetPageSize(v int32) *ListServicesShrinkRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListServicesShrinkRequest) SetParentServiceUid(v string) *ListServicesShrinkRequest {
+	s.ParentServiceUid = &v
+	return s
+}
+
+func (s *ListServicesShrinkRequest) SetServiceType(v string) *ListServicesShrinkRequest {
+	s.ServiceType = &v
+	return s
+}
+
+func (s *ListServicesShrinkRequest) SetSort(v string) *ListServicesShrinkRequest {
+	s.Sort = &v
+	return s
+}
+
 type ListServicesResponseBody struct {
-	PageNumber *int32     `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32     `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId  *string    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Services   []*Service `json:"Services,omitempty" xml:"Services,omitempty" type:"Repeated"`
-	TotalCount *int32     `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// 页码。
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// 每页显示的服务数。
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// 请求ID。
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// 服务列表。
+	Services []*Service `json:"Services,omitempty" xml:"Services,omitempty" type:"Repeated"`
+	// 服务总数。
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListServicesResponseBody) String() string {
@@ -4972,6 +5405,75 @@ func (s *UpdateServiceCronScalerResponse) SetBody(v *UpdateServiceCronScalerResp
 	return s
 }
 
+type UpdateServiceLabelRequest struct {
+	Labels map[string]*string `json:"Labels,omitempty" xml:"Labels,omitempty"`
+}
+
+func (s UpdateServiceLabelRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateServiceLabelRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateServiceLabelRequest) SetLabels(v map[string]*string) *UpdateServiceLabelRequest {
+	s.Labels = v
+	return s
+}
+
+type UpdateServiceLabelResponseBody struct {
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateServiceLabelResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateServiceLabelResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateServiceLabelResponseBody) SetMessage(v string) *UpdateServiceLabelResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UpdateServiceLabelResponseBody) SetRequestId(v string) *UpdateServiceLabelResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateServiceLabelResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateServiceLabelResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateServiceLabelResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateServiceLabelResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateServiceLabelResponse) SetHeaders(v map[string]*string) *UpdateServiceLabelResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateServiceLabelResponse) SetStatusCode(v int32) *UpdateServiceLabelResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateServiceLabelResponse) SetBody(v *UpdateServiceLabelResponseBody) *UpdateServiceLabelResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateServiceMirrorRequest struct {
 	Ratio  *int32    `json:"Ratio,omitempty" xml:"Ratio,omitempty"`
 	Target []*string `json:"Target,omitempty" xml:"Target,omitempty" type:"Repeated"`
@@ -5249,11 +5751,35 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
-func (client *Client) CreateBenchmarkTask(request *CreateBenchmarkTaskRequest) (_result *CreateBenchmarkTaskResponse, _err error) {
+func (client *Client) CommitServiceWithOptions(ClusterId *string, ServiceName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CommitServiceResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CommitService"),
+		Version:     tea.String("2021-07-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/services/" + tea.StringValue(openapiutil.GetEncodeParam(ClusterId)) + "/" + tea.StringValue(openapiutil.GetEncodeParam(ServiceName)) + "/commit"),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CommitServiceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CommitService(ClusterId *string, ServiceName *string) (_result *CommitServiceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &CreateBenchmarkTaskResponse{}
-	_body, _err := client.CreateBenchmarkTaskWithOptions(request, headers, runtime)
+	_result = &CommitServiceResponse{}
+	_body, _err := client.CommitServiceWithOptions(ClusterId, ServiceName, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5290,11 +5816,11 @@ func (client *Client) CreateBenchmarkTaskWithOptions(request *CreateBenchmarkTas
 	return _result, _err
 }
 
-func (client *Client) CreateResource(request *CreateResourceRequest) (_result *CreateResourceResponse, _err error) {
+func (client *Client) CreateBenchmarkTask(request *CreateBenchmarkTaskRequest) (_result *CreateBenchmarkTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &CreateResourceResponse{}
-	_body, _err := client.CreateResourceWithOptions(request, headers, runtime)
+	_result = &CreateBenchmarkTaskResponse{}
+	_body, _err := client.CreateBenchmarkTaskWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5348,11 +5874,11 @@ func (client *Client) CreateResourceWithOptions(request *CreateResourceRequest, 
 	return _result, _err
 }
 
-func (client *Client) CreateResourceInstances(ClusterId *string, ResourceId *string, request *CreateResourceInstancesRequest) (_result *CreateResourceInstancesResponse, _err error) {
+func (client *Client) CreateResource(request *CreateResourceRequest) (_result *CreateResourceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &CreateResourceInstancesResponse{}
-	_body, _err := client.CreateResourceInstancesWithOptions(ClusterId, ResourceId, request, headers, runtime)
+	_result = &CreateResourceResponse{}
+	_body, _err := client.CreateResourceWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5410,11 +5936,11 @@ func (client *Client) CreateResourceInstancesWithOptions(ClusterId *string, Reso
 	return _result, _err
 }
 
-func (client *Client) CreateResourceLog(ClusterId *string, ResourceId *string, request *CreateResourceLogRequest) (_result *CreateResourceLogResponse, _err error) {
+func (client *Client) CreateResourceInstances(ClusterId *string, ResourceId *string, request *CreateResourceInstancesRequest) (_result *CreateResourceInstancesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &CreateResourceLogResponse{}
-	_body, _err := client.CreateResourceLogWithOptions(ClusterId, ResourceId, request, headers, runtime)
+	_result = &CreateResourceInstancesResponse{}
+	_body, _err := client.CreateResourceInstancesWithOptions(ClusterId, ResourceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5460,11 +5986,11 @@ func (client *Client) CreateResourceLogWithOptions(ClusterId *string, ResourceId
 	return _result, _err
 }
 
-func (client *Client) CreateService(request *CreateServiceRequest) (_result *CreateServiceResponse, _err error) {
+func (client *Client) CreateResourceLog(ClusterId *string, ResourceId *string, request *CreateResourceLogRequest) (_result *CreateResourceLogResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &CreateServiceResponse{}
-	_body, _err := client.CreateServiceWithOptions(request, headers, runtime)
+	_result = &CreateResourceLogResponse{}
+	_body, _err := client.CreateResourceLogWithOptions(ClusterId, ResourceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5472,13 +5998,29 @@ func (client *Client) CreateService(request *CreateServiceRequest) (_result *Cre
 	return _result, _err
 }
 
-func (client *Client) CreateServiceWithOptions(request *CreateServiceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateServiceResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) CreateServiceWithOptions(tmpReq *CreateServiceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateServiceResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
+	request := &CreateServiceShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Labels)) {
+		request.LabelsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Labels, tea.String("Labels"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Develop)) {
+		query["Develop"] = request.Develop
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LabelsShrink)) {
+		query["Labels"] = request.LabelsShrink
+	}
+
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
+		Query:   openapiutil.Query(query),
 		Body:    request.Body,
 	}
 	params := &openapi.Params{
@@ -5501,11 +6043,11 @@ func (client *Client) CreateServiceWithOptions(request *CreateServiceRequest, he
 	return _result, _err
 }
 
-func (client *Client) CreateServiceAutoScaler(ClusterId *string, ServiceName *string, request *CreateServiceAutoScalerRequest) (_result *CreateServiceAutoScalerResponse, _err error) {
+func (client *Client) CreateService(request *CreateServiceRequest) (_result *CreateServiceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &CreateServiceAutoScalerResponse{}
-	_body, _err := client.CreateServiceAutoScalerWithOptions(ClusterId, ServiceName, request, headers, runtime)
+	_result = &CreateServiceResponse{}
+	_body, _err := client.CreateServiceWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5555,11 +6097,11 @@ func (client *Client) CreateServiceAutoScalerWithOptions(ClusterId *string, Serv
 	return _result, _err
 }
 
-func (client *Client) CreateServiceCronScaler(ClusterId *string, ServiceName *string, request *CreateServiceCronScalerRequest) (_result *CreateServiceCronScalerResponse, _err error) {
+func (client *Client) CreateServiceAutoScaler(ClusterId *string, ServiceName *string, request *CreateServiceAutoScalerRequest) (_result *CreateServiceAutoScalerResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &CreateServiceCronScalerResponse{}
-	_body, _err := client.CreateServiceCronScalerWithOptions(ClusterId, ServiceName, request, headers, runtime)
+	_result = &CreateServiceAutoScalerResponse{}
+	_body, _err := client.CreateServiceAutoScalerWithOptions(ClusterId, ServiceName, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5605,11 +6147,11 @@ func (client *Client) CreateServiceCronScalerWithOptions(ClusterId *string, Serv
 	return _result, _err
 }
 
-func (client *Client) CreateServiceMirror(ClusterId *string, ServiceName *string, request *CreateServiceMirrorRequest) (_result *CreateServiceMirrorResponse, _err error) {
+func (client *Client) CreateServiceCronScaler(ClusterId *string, ServiceName *string, request *CreateServiceCronScalerRequest) (_result *CreateServiceCronScalerResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &CreateServiceMirrorResponse{}
-	_body, _err := client.CreateServiceMirrorWithOptions(ClusterId, ServiceName, request, headers, runtime)
+	_result = &CreateServiceCronScalerResponse{}
+	_body, _err := client.CreateServiceCronScalerWithOptions(ClusterId, ServiceName, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5655,11 +6197,11 @@ func (client *Client) CreateServiceMirrorWithOptions(ClusterId *string, ServiceN
 	return _result, _err
 }
 
-func (client *Client) DeleteBenchmarkTask(ClusterId *string, TaskName *string) (_result *DeleteBenchmarkTaskResponse, _err error) {
+func (client *Client) CreateServiceMirror(ClusterId *string, ServiceName *string, request *CreateServiceMirrorRequest) (_result *CreateServiceMirrorResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DeleteBenchmarkTaskResponse{}
-	_body, _err := client.DeleteBenchmarkTaskWithOptions(ClusterId, TaskName, headers, runtime)
+	_result = &CreateServiceMirrorResponse{}
+	_body, _err := client.CreateServiceMirrorWithOptions(ClusterId, ServiceName, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5691,11 +6233,11 @@ func (client *Client) DeleteBenchmarkTaskWithOptions(ClusterId *string, TaskName
 	return _result, _err
 }
 
-func (client *Client) DeleteResource(ClusterId *string, ResourceId *string) (_result *DeleteResourceResponse, _err error) {
+func (client *Client) DeleteBenchmarkTask(ClusterId *string, TaskName *string) (_result *DeleteBenchmarkTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DeleteResourceResponse{}
-	_body, _err := client.DeleteResourceWithOptions(ClusterId, ResourceId, headers, runtime)
+	_result = &DeleteBenchmarkTaskResponse{}
+	_body, _err := client.DeleteBenchmarkTaskWithOptions(ClusterId, TaskName, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5727,11 +6269,11 @@ func (client *Client) DeleteResourceWithOptions(ClusterId *string, ResourceId *s
 	return _result, _err
 }
 
-func (client *Client) DeleteResourceDLink(ClusterId *string, ResourceId *string) (_result *DeleteResourceDLinkResponse, _err error) {
+func (client *Client) DeleteResource(ClusterId *string, ResourceId *string) (_result *DeleteResourceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DeleteResourceDLinkResponse{}
-	_body, _err := client.DeleteResourceDLinkWithOptions(ClusterId, ResourceId, headers, runtime)
+	_result = &DeleteResourceResponse{}
+	_body, _err := client.DeleteResourceWithOptions(ClusterId, ResourceId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5763,11 +6305,11 @@ func (client *Client) DeleteResourceDLinkWithOptions(ClusterId *string, Resource
 	return _result, _err
 }
 
-func (client *Client) DeleteResourceInstances(ClusterId *string, ResourceId *string, request *DeleteResourceInstancesRequest) (_result *DeleteResourceInstancesResponse, _err error) {
+func (client *Client) DeleteResourceDLink(ClusterId *string, ResourceId *string) (_result *DeleteResourceDLinkResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DeleteResourceInstancesResponse{}
-	_body, _err := client.DeleteResourceInstancesWithOptions(ClusterId, ResourceId, request, headers, runtime)
+	_result = &DeleteResourceDLinkResponse{}
+	_body, _err := client.DeleteResourceDLinkWithOptions(ClusterId, ResourceId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5813,11 +6355,11 @@ func (client *Client) DeleteResourceInstancesWithOptions(ClusterId *string, Reso
 	return _result, _err
 }
 
-func (client *Client) DeleteResourceLog(ClusterId *string, ResourceId *string) (_result *DeleteResourceLogResponse, _err error) {
+func (client *Client) DeleteResourceInstances(ClusterId *string, ResourceId *string, request *DeleteResourceInstancesRequest) (_result *DeleteResourceInstancesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DeleteResourceLogResponse{}
-	_body, _err := client.DeleteResourceLogWithOptions(ClusterId, ResourceId, headers, runtime)
+	_result = &DeleteResourceInstancesResponse{}
+	_body, _err := client.DeleteResourceInstancesWithOptions(ClusterId, ResourceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5849,11 +6391,11 @@ func (client *Client) DeleteResourceLogWithOptions(ClusterId *string, ResourceId
 	return _result, _err
 }
 
-func (client *Client) DeleteService(ClusterId *string, ServiceName *string) (_result *DeleteServiceResponse, _err error) {
+func (client *Client) DeleteResourceLog(ClusterId *string, ResourceId *string) (_result *DeleteResourceLogResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DeleteServiceResponse{}
-	_body, _err := client.DeleteServiceWithOptions(ClusterId, ServiceName, headers, runtime)
+	_result = &DeleteResourceLogResponse{}
+	_body, _err := client.DeleteResourceLogWithOptions(ClusterId, ResourceId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5885,11 +6427,11 @@ func (client *Client) DeleteServiceWithOptions(ClusterId *string, ServiceName *s
 	return _result, _err
 }
 
-func (client *Client) DeleteServiceAutoScaler(ClusterId *string, ServiceName *string) (_result *DeleteServiceAutoScalerResponse, _err error) {
+func (client *Client) DeleteService(ClusterId *string, ServiceName *string) (_result *DeleteServiceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DeleteServiceAutoScalerResponse{}
-	_body, _err := client.DeleteServiceAutoScalerWithOptions(ClusterId, ServiceName, headers, runtime)
+	_result = &DeleteServiceResponse{}
+	_body, _err := client.DeleteServiceWithOptions(ClusterId, ServiceName, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5921,11 +6463,11 @@ func (client *Client) DeleteServiceAutoScalerWithOptions(ClusterId *string, Serv
 	return _result, _err
 }
 
-func (client *Client) DeleteServiceCronScaler(ClusterId *string, ServiceName *string) (_result *DeleteServiceCronScalerResponse, _err error) {
+func (client *Client) DeleteServiceAutoScaler(ClusterId *string, ServiceName *string) (_result *DeleteServiceAutoScalerResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DeleteServiceCronScalerResponse{}
-	_body, _err := client.DeleteServiceCronScalerWithOptions(ClusterId, ServiceName, headers, runtime)
+	_result = &DeleteServiceAutoScalerResponse{}
+	_body, _err := client.DeleteServiceAutoScalerWithOptions(ClusterId, ServiceName, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5957,11 +6499,11 @@ func (client *Client) DeleteServiceCronScalerWithOptions(ClusterId *string, Serv
 	return _result, _err
 }
 
-func (client *Client) DeleteServiceInstances(ClusterId *string, ServiceName *string, request *DeleteServiceInstancesRequest) (_result *DeleteServiceInstancesResponse, _err error) {
+func (client *Client) DeleteServiceCronScaler(ClusterId *string, ServiceName *string) (_result *DeleteServiceCronScalerResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DeleteServiceInstancesResponse{}
-	_body, _err := client.DeleteServiceInstancesWithOptions(ClusterId, ServiceName, request, headers, runtime)
+	_result = &DeleteServiceCronScalerResponse{}
+	_body, _err := client.DeleteServiceCronScalerWithOptions(ClusterId, ServiceName, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6003,11 +6545,63 @@ func (client *Client) DeleteServiceInstancesWithOptions(ClusterId *string, Servi
 	return _result, _err
 }
 
-func (client *Client) DeleteServiceMirror(ClusterId *string, ServiceName *string) (_result *DeleteServiceMirrorResponse, _err error) {
+func (client *Client) DeleteServiceInstances(ClusterId *string, ServiceName *string, request *DeleteServiceInstancesRequest) (_result *DeleteServiceInstancesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DeleteServiceMirrorResponse{}
-	_body, _err := client.DeleteServiceMirrorWithOptions(ClusterId, ServiceName, headers, runtime)
+	_result = &DeleteServiceInstancesResponse{}
+	_body, _err := client.DeleteServiceInstancesWithOptions(ClusterId, ServiceName, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteServiceLabelWithOptions(ClusterId *string, ServiceName *string, tmpReq *DeleteServiceLabelRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteServiceLabelResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &DeleteServiceLabelShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Keys)) {
+		request.KeysShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Keys, tea.String("Keys"), tea.String("simple"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.KeysShrink)) {
+		query["Keys"] = request.KeysShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteServiceLabel"),
+		Version:     tea.String("2021-07-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/services/" + tea.StringValue(openapiutil.GetEncodeParam(ClusterId)) + "/" + tea.StringValue(openapiutil.GetEncodeParam(ServiceName)) + "/label"),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteServiceLabelResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteServiceLabel(ClusterId *string, ServiceName *string, request *DeleteServiceLabelRequest) (_result *DeleteServiceLabelResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteServiceLabelResponse{}
+	_body, _err := client.DeleteServiceLabelWithOptions(ClusterId, ServiceName, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6039,11 +6633,11 @@ func (client *Client) DeleteServiceMirrorWithOptions(ClusterId *string, ServiceN
 	return _result, _err
 }
 
-func (client *Client) DescribeBenchmarkTask(ClusterId *string, TaskName *string) (_result *DescribeBenchmarkTaskResponse, _err error) {
+func (client *Client) DeleteServiceMirror(ClusterId *string, ServiceName *string) (_result *DeleteServiceMirrorResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DescribeBenchmarkTaskResponse{}
-	_body, _err := client.DescribeBenchmarkTaskWithOptions(ClusterId, TaskName, headers, runtime)
+	_result = &DeleteServiceMirrorResponse{}
+	_body, _err := client.DeleteServiceMirrorWithOptions(ClusterId, ServiceName, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6075,11 +6669,11 @@ func (client *Client) DescribeBenchmarkTaskWithOptions(ClusterId *string, TaskNa
 	return _result, _err
 }
 
-func (client *Client) DescribeBenchmarkTaskReport(ClusterId *string, TaskName *string, request *DescribeBenchmarkTaskReportRequest) (_result *DescribeBenchmarkTaskReportResponse, _err error) {
+func (client *Client) DescribeBenchmarkTask(ClusterId *string, TaskName *string) (_result *DescribeBenchmarkTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DescribeBenchmarkTaskReportResponse{}
-	_body, _err := client.DescribeBenchmarkTaskReportWithOptions(ClusterId, TaskName, request, headers, runtime)
+	_result = &DescribeBenchmarkTaskResponse{}
+	_body, _err := client.DescribeBenchmarkTaskWithOptions(ClusterId, TaskName, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6121,11 +6715,11 @@ func (client *Client) DescribeBenchmarkTaskReportWithOptions(ClusterId *string, 
 	return _result, _err
 }
 
-func (client *Client) DescribeGroup(ClusterId *string, GroupName *string) (_result *DescribeGroupResponse, _err error) {
+func (client *Client) DescribeBenchmarkTaskReport(ClusterId *string, TaskName *string, request *DescribeBenchmarkTaskReportRequest) (_result *DescribeBenchmarkTaskReportResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DescribeGroupResponse{}
-	_body, _err := client.DescribeGroupWithOptions(ClusterId, GroupName, headers, runtime)
+	_result = &DescribeBenchmarkTaskReportResponse{}
+	_body, _err := client.DescribeBenchmarkTaskReportWithOptions(ClusterId, TaskName, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6157,11 +6751,11 @@ func (client *Client) DescribeGroupWithOptions(ClusterId *string, GroupName *str
 	return _result, _err
 }
 
-func (client *Client) DescribeResource(ClusterId *string, ResourceId *string) (_result *DescribeResourceResponse, _err error) {
+func (client *Client) DescribeGroup(ClusterId *string, GroupName *string) (_result *DescribeGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DescribeResourceResponse{}
-	_body, _err := client.DescribeResourceWithOptions(ClusterId, ResourceId, headers, runtime)
+	_result = &DescribeGroupResponse{}
+	_body, _err := client.DescribeGroupWithOptions(ClusterId, GroupName, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6193,11 +6787,11 @@ func (client *Client) DescribeResourceWithOptions(ClusterId *string, ResourceId 
 	return _result, _err
 }
 
-func (client *Client) DescribeResourceDLink(ClusterId *string, ResourceId *string) (_result *DescribeResourceDLinkResponse, _err error) {
+func (client *Client) DescribeResource(ClusterId *string, ResourceId *string) (_result *DescribeResourceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DescribeResourceDLinkResponse{}
-	_body, _err := client.DescribeResourceDLinkWithOptions(ClusterId, ResourceId, headers, runtime)
+	_result = &DescribeResourceResponse{}
+	_body, _err := client.DescribeResourceWithOptions(ClusterId, ResourceId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6229,11 +6823,11 @@ func (client *Client) DescribeResourceDLinkWithOptions(ClusterId *string, Resour
 	return _result, _err
 }
 
-func (client *Client) DescribeResourceLog(ClusterId *string, ResourceId *string) (_result *DescribeResourceLogResponse, _err error) {
+func (client *Client) DescribeResourceDLink(ClusterId *string, ResourceId *string) (_result *DescribeResourceDLinkResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DescribeResourceLogResponse{}
-	_body, _err := client.DescribeResourceLogWithOptions(ClusterId, ResourceId, headers, runtime)
+	_result = &DescribeResourceDLinkResponse{}
+	_body, _err := client.DescribeResourceDLinkWithOptions(ClusterId, ResourceId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6265,11 +6859,11 @@ func (client *Client) DescribeResourceLogWithOptions(ClusterId *string, Resource
 	return _result, _err
 }
 
-func (client *Client) DescribeService(ClusterId *string, ServiceName *string) (_result *DescribeServiceResponse, _err error) {
+func (client *Client) DescribeResourceLog(ClusterId *string, ResourceId *string) (_result *DescribeResourceLogResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DescribeServiceResponse{}
-	_body, _err := client.DescribeServiceWithOptions(ClusterId, ServiceName, headers, runtime)
+	_result = &DescribeResourceLogResponse{}
+	_body, _err := client.DescribeResourceLogWithOptions(ClusterId, ResourceId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6301,11 +6895,11 @@ func (client *Client) DescribeServiceWithOptions(ClusterId *string, ServiceName 
 	return _result, _err
 }
 
-func (client *Client) DescribeServiceAutoScaler(ClusterId *string, ServiceName *string) (_result *DescribeServiceAutoScalerResponse, _err error) {
+func (client *Client) DescribeService(ClusterId *string, ServiceName *string) (_result *DescribeServiceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DescribeServiceAutoScalerResponse{}
-	_body, _err := client.DescribeServiceAutoScalerWithOptions(ClusterId, ServiceName, headers, runtime)
+	_result = &DescribeServiceResponse{}
+	_body, _err := client.DescribeServiceWithOptions(ClusterId, ServiceName, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6337,11 +6931,11 @@ func (client *Client) DescribeServiceAutoScalerWithOptions(ClusterId *string, Se
 	return _result, _err
 }
 
-func (client *Client) DescribeServiceCronScaler(ClusterId *string, ServiceName *string) (_result *DescribeServiceCronScalerResponse, _err error) {
+func (client *Client) DescribeServiceAutoScaler(ClusterId *string, ServiceName *string) (_result *DescribeServiceAutoScalerResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DescribeServiceCronScalerResponse{}
-	_body, _err := client.DescribeServiceCronScalerWithOptions(ClusterId, ServiceName, headers, runtime)
+	_result = &DescribeServiceAutoScalerResponse{}
+	_body, _err := client.DescribeServiceAutoScalerWithOptions(ClusterId, ServiceName, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6373,11 +6967,11 @@ func (client *Client) DescribeServiceCronScalerWithOptions(ClusterId *string, Se
 	return _result, _err
 }
 
-func (client *Client) DescribeServiceEvent(ClusterId *string, ServiceName *string, request *DescribeServiceEventRequest) (_result *DescribeServiceEventResponse, _err error) {
+func (client *Client) DescribeServiceCronScaler(ClusterId *string, ServiceName *string) (_result *DescribeServiceCronScalerResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DescribeServiceEventResponse{}
-	_body, _err := client.DescribeServiceEventWithOptions(ClusterId, ServiceName, request, headers, runtime)
+	_result = &DescribeServiceCronScalerResponse{}
+	_body, _err := client.DescribeServiceCronScalerWithOptions(ClusterId, ServiceName, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6431,11 +7025,11 @@ func (client *Client) DescribeServiceEventWithOptions(ClusterId *string, Service
 	return _result, _err
 }
 
-func (client *Client) DescribeServiceLog(ClusterId *string, ServiceName *string, request *DescribeServiceLogRequest) (_result *DescribeServiceLogResponse, _err error) {
+func (client *Client) DescribeServiceEvent(ClusterId *string, ServiceName *string, request *DescribeServiceEventRequest) (_result *DescribeServiceEventResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DescribeServiceLogResponse{}
-	_body, _err := client.DescribeServiceLogWithOptions(ClusterId, ServiceName, request, headers, runtime)
+	_result = &DescribeServiceEventResponse{}
+	_body, _err := client.DescribeServiceEventWithOptions(ClusterId, ServiceName, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6497,11 +7091,11 @@ func (client *Client) DescribeServiceLogWithOptions(ClusterId *string, ServiceNa
 	return _result, _err
 }
 
-func (client *Client) DescribeServiceMirror(ClusterId *string, ServiceName *string) (_result *DescribeServiceMirrorResponse, _err error) {
+func (client *Client) DescribeServiceLog(ClusterId *string, ServiceName *string, request *DescribeServiceLogRequest) (_result *DescribeServiceLogResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DescribeServiceMirrorResponse{}
-	_body, _err := client.DescribeServiceMirrorWithOptions(ClusterId, ServiceName, headers, runtime)
+	_result = &DescribeServiceLogResponse{}
+	_body, _err := client.DescribeServiceLogWithOptions(ClusterId, ServiceName, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6533,11 +7127,57 @@ func (client *Client) DescribeServiceMirrorWithOptions(ClusterId *string, Servic
 	return _result, _err
 }
 
-func (client *Client) ListBenchmarkTask(request *ListBenchmarkTaskRequest) (_result *ListBenchmarkTaskResponse, _err error) {
+func (client *Client) DescribeServiceMirror(ClusterId *string, ServiceName *string) (_result *DescribeServiceMirrorResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListBenchmarkTaskResponse{}
-	_body, _err := client.ListBenchmarkTaskWithOptions(request, headers, runtime)
+	_result = &DescribeServiceMirrorResponse{}
+	_body, _err := client.DescribeServiceMirrorWithOptions(ClusterId, ServiceName, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DevelopServiceWithOptions(ClusterId *string, ServiceName *string, request *DevelopServiceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DevelopServiceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Exit)) {
+		query["Exit"] = request.Exit
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DevelopService"),
+		Version:     tea.String("2021-07-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/services/" + tea.StringValue(openapiutil.GetEncodeParam(ClusterId)) + "/" + tea.StringValue(openapiutil.GetEncodeParam(ServiceName)) + "/develop"),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DevelopServiceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DevelopService(ClusterId *string, ServiceName *string, request *DevelopServiceRequest) (_result *DevelopServiceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DevelopServiceResponse{}
+	_body, _err := client.DevelopServiceWithOptions(ClusterId, ServiceName, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6591,11 +7231,11 @@ func (client *Client) ListBenchmarkTaskWithOptions(request *ListBenchmarkTaskReq
 	return _result, _err
 }
 
-func (client *Client) ListGroups(request *ListGroupsRequest) (_result *ListGroupsResponse, _err error) {
+func (client *Client) ListBenchmarkTask(request *ListBenchmarkTaskRequest) (_result *ListBenchmarkTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListGroupsResponse{}
-	_body, _err := client.ListGroupsWithOptions(request, headers, runtime)
+	_result = &ListBenchmarkTaskResponse{}
+	_body, _err := client.ListBenchmarkTaskWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6645,11 +7285,11 @@ func (client *Client) ListGroupsWithOptions(request *ListGroupsRequest, headers 
 	return _result, _err
 }
 
-func (client *Client) ListResourceInstanceWorker(ClusterId *string, ResourceId *string, InstanceName *string, request *ListResourceInstanceWorkerRequest) (_result *ListResourceInstanceWorkerResponse, _err error) {
+func (client *Client) ListGroups(request *ListGroupsRequest) (_result *ListGroupsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListResourceInstanceWorkerResponse{}
-	_body, _err := client.ListResourceInstanceWorkerWithOptions(ClusterId, ResourceId, InstanceName, request, headers, runtime)
+	_result = &ListGroupsResponse{}
+	_body, _err := client.ListGroupsWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6695,11 +7335,11 @@ func (client *Client) ListResourceInstanceWorkerWithOptions(ClusterId *string, R
 	return _result, _err
 }
 
-func (client *Client) ListResourceInstances(ClusterId *string, ResourceId *string, request *ListResourceInstancesRequest) (_result *ListResourceInstancesResponse, _err error) {
+func (client *Client) ListResourceInstanceWorker(ClusterId *string, ResourceId *string, InstanceName *string, request *ListResourceInstanceWorkerRequest) (_result *ListResourceInstanceWorkerResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListResourceInstancesResponse{}
-	_body, _err := client.ListResourceInstancesWithOptions(ClusterId, ResourceId, request, headers, runtime)
+	_result = &ListResourceInstanceWorkerResponse{}
+	_body, _err := client.ListResourceInstanceWorkerWithOptions(ClusterId, ResourceId, InstanceName, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6757,11 +7397,11 @@ func (client *Client) ListResourceInstancesWithOptions(ClusterId *string, Resour
 	return _result, _err
 }
 
-func (client *Client) ListResourceServices(ClusterId *string, ResourceId *string, request *ListResourceServicesRequest) (_result *ListResourceServicesResponse, _err error) {
+func (client *Client) ListResourceInstances(ClusterId *string, ResourceId *string, request *ListResourceInstancesRequest) (_result *ListResourceInstancesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListResourceServicesResponse{}
-	_body, _err := client.ListResourceServicesWithOptions(ClusterId, ResourceId, request, headers, runtime)
+	_result = &ListResourceInstancesResponse{}
+	_body, _err := client.ListResourceInstancesWithOptions(ClusterId, ResourceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6807,11 +7447,11 @@ func (client *Client) ListResourceServicesWithOptions(ClusterId *string, Resourc
 	return _result, _err
 }
 
-func (client *Client) ListResources(request *ListResourcesRequest) (_result *ListResourcesResponse, _err error) {
+func (client *Client) ListResourceServices(ClusterId *string, ResourceId *string, request *ListResourceServicesRequest) (_result *ListResourceServicesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListResourcesResponse{}
-	_body, _err := client.ListResourcesWithOptions(request, headers, runtime)
+	_result = &ListResourceServicesResponse{}
+	_body, _err := client.ListResourceServicesWithOptions(ClusterId, ResourceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6865,11 +7505,11 @@ func (client *Client) ListResourcesWithOptions(request *ListResourcesRequest, he
 	return _result, _err
 }
 
-func (client *Client) ListServiceInstances(ClusterId *string, ServiceName *string, request *ListServiceInstancesRequest) (_result *ListServiceInstancesResponse, _err error) {
+func (client *Client) ListResources(request *ListResourcesRequest) (_result *ListResourcesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListServiceInstancesResponse{}
-	_body, _err := client.ListServiceInstancesWithOptions(ClusterId, ServiceName, request, headers, runtime)
+	_result = &ListResourcesResponse{}
+	_body, _err := client.ListResourcesWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6915,11 +7555,11 @@ func (client *Client) ListServiceInstancesWithOptions(ClusterId *string, Service
 	return _result, _err
 }
 
-func (client *Client) ListServiceVersions(ClusterId *string, ServiceName *string, request *ListServiceVersionsRequest) (_result *ListServiceVersionsResponse, _err error) {
+func (client *Client) ListServiceInstances(ClusterId *string, ServiceName *string, request *ListServiceInstancesRequest) (_result *ListServiceInstancesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListServiceVersionsResponse{}
-	_body, _err := client.ListServiceVersionsWithOptions(ClusterId, ServiceName, request, headers, runtime)
+	_result = &ListServiceInstancesResponse{}
+	_body, _err := client.ListServiceInstancesWithOptions(ClusterId, ServiceName, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6965,11 +7605,11 @@ func (client *Client) ListServiceVersionsWithOptions(ClusterId *string, ServiceN
 	return _result, _err
 }
 
-func (client *Client) ListServices(request *ListServicesRequest) (_result *ListServicesResponse, _err error) {
+func (client *Client) ListServiceVersions(ClusterId *string, ServiceName *string, request *ListServiceVersionsRequest) (_result *ListServiceVersionsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListServicesResponse{}
-	_body, _err := client.ListServicesWithOptions(request, headers, runtime)
+	_result = &ListServiceVersionsResponse{}
+	_body, _err := client.ListServiceVersionsWithOptions(ClusterId, ServiceName, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6977,11 +7617,17 @@ func (client *Client) ListServices(request *ListServicesRequest) (_result *ListS
 	return _result, _err
 }
 
-func (client *Client) ListServicesWithOptions(request *ListServicesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListServicesResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) ListServicesWithOptions(tmpReq *ListServicesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListServicesResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
+	request := &ListServicesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Label)) {
+		request.LabelShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Label, tea.String("Label"), tea.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Filter)) {
 		query["Filter"] = request.Filter
@@ -6989,6 +7635,10 @@ func (client *Client) ListServicesWithOptions(request *ListServicesRequest, head
 
 	if !tea.BoolValue(util.IsUnset(request.GroupName)) {
 		query["GroupName"] = request.GroupName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LabelShrink)) {
+		query["Label"] = request.LabelShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Order)) {
@@ -7001,6 +7651,14 @@ func (client *Client) ListServicesWithOptions(request *ListServicesRequest, head
 
 	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
 		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ParentServiceUid)) {
+		query["ParentServiceUid"] = request.ParentServiceUid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceType)) {
+		query["ServiceType"] = request.ServiceType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Sort)) {
@@ -7031,11 +7689,11 @@ func (client *Client) ListServicesWithOptions(request *ListServicesRequest, head
 	return _result, _err
 }
 
-func (client *Client) ReleaseService(ClusterId *string, ServiceName *string, request *ReleaseServiceRequest) (_result *ReleaseServiceResponse, _err error) {
+func (client *Client) ListServices(request *ListServicesRequest) (_result *ListServicesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ReleaseServiceResponse{}
-	_body, _err := client.ReleaseServiceWithOptions(ClusterId, ServiceName, request, headers, runtime)
+	_result = &ListServicesResponse{}
+	_body, _err := client.ListServicesWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7081,11 +7739,11 @@ func (client *Client) ReleaseServiceWithOptions(ClusterId *string, ServiceName *
 	return _result, _err
 }
 
-func (client *Client) StartBenchmarkTask(ClusterId *string, TaskName *string) (_result *StartBenchmarkTaskResponse, _err error) {
+func (client *Client) ReleaseService(ClusterId *string, ServiceName *string, request *ReleaseServiceRequest) (_result *ReleaseServiceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &StartBenchmarkTaskResponse{}
-	_body, _err := client.StartBenchmarkTaskWithOptions(ClusterId, TaskName, headers, runtime)
+	_result = &ReleaseServiceResponse{}
+	_body, _err := client.ReleaseServiceWithOptions(ClusterId, ServiceName, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7117,11 +7775,11 @@ func (client *Client) StartBenchmarkTaskWithOptions(ClusterId *string, TaskName 
 	return _result, _err
 }
 
-func (client *Client) StartService(ClusterId *string, ServiceName *string) (_result *StartServiceResponse, _err error) {
+func (client *Client) StartBenchmarkTask(ClusterId *string, TaskName *string) (_result *StartBenchmarkTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &StartServiceResponse{}
-	_body, _err := client.StartServiceWithOptions(ClusterId, ServiceName, headers, runtime)
+	_result = &StartBenchmarkTaskResponse{}
+	_body, _err := client.StartBenchmarkTaskWithOptions(ClusterId, TaskName, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7153,11 +7811,11 @@ func (client *Client) StartServiceWithOptions(ClusterId *string, ServiceName *st
 	return _result, _err
 }
 
-func (client *Client) StopBenchmarkTask(ClusterId *string, TaskName *string) (_result *StopBenchmarkTaskResponse, _err error) {
+func (client *Client) StartService(ClusterId *string, ServiceName *string) (_result *StartServiceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &StopBenchmarkTaskResponse{}
-	_body, _err := client.StopBenchmarkTaskWithOptions(ClusterId, TaskName, headers, runtime)
+	_result = &StartServiceResponse{}
+	_body, _err := client.StartServiceWithOptions(ClusterId, ServiceName, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7189,11 +7847,11 @@ func (client *Client) StopBenchmarkTaskWithOptions(ClusterId *string, TaskName *
 	return _result, _err
 }
 
-func (client *Client) StopService(ClusterId *string, ServiceName *string) (_result *StopServiceResponse, _err error) {
+func (client *Client) StopBenchmarkTask(ClusterId *string, TaskName *string) (_result *StopBenchmarkTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &StopServiceResponse{}
-	_body, _err := client.StopServiceWithOptions(ClusterId, ServiceName, headers, runtime)
+	_result = &StopBenchmarkTaskResponse{}
+	_body, _err := client.StopBenchmarkTaskWithOptions(ClusterId, TaskName, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7225,11 +7883,11 @@ func (client *Client) StopServiceWithOptions(ClusterId *string, ServiceName *str
 	return _result, _err
 }
 
-func (client *Client) UpdateBenchmarkTask(ClusterId *string, TaskName *string, request *UpdateBenchmarkTaskRequest) (_result *UpdateBenchmarkTaskResponse, _err error) {
+func (client *Client) StopService(ClusterId *string, ServiceName *string) (_result *StopServiceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &UpdateBenchmarkTaskResponse{}
-	_body, _err := client.UpdateBenchmarkTaskWithOptions(ClusterId, TaskName, request, headers, runtime)
+	_result = &StopServiceResponse{}
+	_body, _err := client.StopServiceWithOptions(ClusterId, ServiceName, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7266,11 +7924,11 @@ func (client *Client) UpdateBenchmarkTaskWithOptions(ClusterId *string, TaskName
 	return _result, _err
 }
 
-func (client *Client) UpdateResource(ClusterId *string, ResourceId *string, request *UpdateResourceRequest) (_result *UpdateResourceResponse, _err error) {
+func (client *Client) UpdateBenchmarkTask(ClusterId *string, TaskName *string, request *UpdateBenchmarkTaskRequest) (_result *UpdateBenchmarkTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &UpdateResourceResponse{}
-	_body, _err := client.UpdateResourceWithOptions(ClusterId, ResourceId, request, headers, runtime)
+	_result = &UpdateBenchmarkTaskResponse{}
+	_body, _err := client.UpdateBenchmarkTaskWithOptions(ClusterId, TaskName, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7312,11 +7970,11 @@ func (client *Client) UpdateResourceWithOptions(ClusterId *string, ResourceId *s
 	return _result, _err
 }
 
-func (client *Client) UpdateResourceDLink(ClusterId *string, ResourceId *string, request *UpdateResourceDLinkRequest) (_result *UpdateResourceDLinkResponse, _err error) {
+func (client *Client) UpdateResource(ClusterId *string, ResourceId *string, request *UpdateResourceRequest) (_result *UpdateResourceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &UpdateResourceDLinkResponse{}
-	_body, _err := client.UpdateResourceDLinkWithOptions(ClusterId, ResourceId, request, headers, runtime)
+	_result = &UpdateResourceResponse{}
+	_body, _err := client.UpdateResourceWithOptions(ClusterId, ResourceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7370,11 +8028,11 @@ func (client *Client) UpdateResourceDLinkWithOptions(ClusterId *string, Resource
 	return _result, _err
 }
 
-func (client *Client) UpdateResourceInstance(ClusterId *string, ResourceId *string, InstanceId *string, request *UpdateResourceInstanceRequest) (_result *UpdateResourceInstanceResponse, _err error) {
+func (client *Client) UpdateResourceDLink(ClusterId *string, ResourceId *string, request *UpdateResourceDLinkRequest) (_result *UpdateResourceDLinkResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &UpdateResourceInstanceResponse{}
-	_body, _err := client.UpdateResourceInstanceWithOptions(ClusterId, ResourceId, InstanceId, request, headers, runtime)
+	_result = &UpdateResourceDLinkResponse{}
+	_body, _err := client.UpdateResourceDLinkWithOptions(ClusterId, ResourceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7416,11 +8074,11 @@ func (client *Client) UpdateResourceInstanceWithOptions(ClusterId *string, Resou
 	return _result, _err
 }
 
-func (client *Client) UpdateService(ClusterId *string, ServiceName *string, request *UpdateServiceRequest) (_result *UpdateServiceResponse, _err error) {
+func (client *Client) UpdateResourceInstance(ClusterId *string, ResourceId *string, InstanceId *string, request *UpdateResourceInstanceRequest) (_result *UpdateResourceInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &UpdateServiceResponse{}
-	_body, _err := client.UpdateServiceWithOptions(ClusterId, ServiceName, request, headers, runtime)
+	_result = &UpdateResourceInstanceResponse{}
+	_body, _err := client.UpdateResourceInstanceWithOptions(ClusterId, ResourceId, InstanceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7457,11 +8115,11 @@ func (client *Client) UpdateServiceWithOptions(ClusterId *string, ServiceName *s
 	return _result, _err
 }
 
-func (client *Client) UpdateServiceAutoScaler(ClusterId *string, ServiceName *string, request *UpdateServiceAutoScalerRequest) (_result *UpdateServiceAutoScalerResponse, _err error) {
+func (client *Client) UpdateService(ClusterId *string, ServiceName *string, request *UpdateServiceRequest) (_result *UpdateServiceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &UpdateServiceAutoScalerResponse{}
-	_body, _err := client.UpdateServiceAutoScalerWithOptions(ClusterId, ServiceName, request, headers, runtime)
+	_result = &UpdateServiceResponse{}
+	_body, _err := client.UpdateServiceWithOptions(ClusterId, ServiceName, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7511,11 +8169,11 @@ func (client *Client) UpdateServiceAutoScalerWithOptions(ClusterId *string, Serv
 	return _result, _err
 }
 
-func (client *Client) UpdateServiceCronScaler(ClusterId *string, ServiceName *string, request *UpdateServiceCronScalerRequest) (_result *UpdateServiceCronScalerResponse, _err error) {
+func (client *Client) UpdateServiceAutoScaler(ClusterId *string, ServiceName *string, request *UpdateServiceAutoScalerRequest) (_result *UpdateServiceAutoScalerResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &UpdateServiceCronScalerResponse{}
-	_body, _err := client.UpdateServiceCronScalerWithOptions(ClusterId, ServiceName, request, headers, runtime)
+	_result = &UpdateServiceAutoScalerResponse{}
+	_body, _err := client.UpdateServiceAutoScalerWithOptions(ClusterId, ServiceName, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7561,11 +8219,57 @@ func (client *Client) UpdateServiceCronScalerWithOptions(ClusterId *string, Serv
 	return _result, _err
 }
 
-func (client *Client) UpdateServiceMirror(ClusterId *string, ServiceName *string, request *UpdateServiceMirrorRequest) (_result *UpdateServiceMirrorResponse, _err error) {
+func (client *Client) UpdateServiceCronScaler(ClusterId *string, ServiceName *string, request *UpdateServiceCronScalerRequest) (_result *UpdateServiceCronScalerResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &UpdateServiceMirrorResponse{}
-	_body, _err := client.UpdateServiceMirrorWithOptions(ClusterId, ServiceName, request, headers, runtime)
+	_result = &UpdateServiceCronScalerResponse{}
+	_body, _err := client.UpdateServiceCronScalerWithOptions(ClusterId, ServiceName, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateServiceLabelWithOptions(ClusterId *string, ServiceName *string, request *UpdateServiceLabelRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateServiceLabelResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Labels)) {
+		body["Labels"] = request.Labels
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateServiceLabel"),
+		Version:     tea.String("2021-07-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/services/" + tea.StringValue(openapiutil.GetEncodeParam(ClusterId)) + "/" + tea.StringValue(openapiutil.GetEncodeParam(ServiceName)) + "/label"),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateServiceLabelResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateServiceLabel(ClusterId *string, ServiceName *string, request *UpdateServiceLabelRequest) (_result *UpdateServiceLabelResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateServiceLabelResponse{}
+	_body, _err := client.UpdateServiceLabelWithOptions(ClusterId, ServiceName, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7611,11 +8315,11 @@ func (client *Client) UpdateServiceMirrorWithOptions(ClusterId *string, ServiceN
 	return _result, _err
 }
 
-func (client *Client) UpdateServiceSafetyLock(ClusterId *string, ServiceName *string, request *UpdateServiceSafetyLockRequest) (_result *UpdateServiceSafetyLockResponse, _err error) {
+func (client *Client) UpdateServiceMirror(ClusterId *string, ServiceName *string, request *UpdateServiceMirrorRequest) (_result *UpdateServiceMirrorResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &UpdateServiceSafetyLockResponse{}
-	_body, _err := client.UpdateServiceSafetyLockWithOptions(ClusterId, ServiceName, request, headers, runtime)
+	_result = &UpdateServiceMirrorResponse{}
+	_body, _err := client.UpdateServiceMirrorWithOptions(ClusterId, ServiceName, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7657,11 +8361,11 @@ func (client *Client) UpdateServiceSafetyLockWithOptions(ClusterId *string, Serv
 	return _result, _err
 }
 
-func (client *Client) UpdateServiceVersion(ClusterId *string, ServiceName *string, request *UpdateServiceVersionRequest) (_result *UpdateServiceVersionResponse, _err error) {
+func (client *Client) UpdateServiceSafetyLock(ClusterId *string, ServiceName *string, request *UpdateServiceSafetyLockRequest) (_result *UpdateServiceSafetyLockResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &UpdateServiceVersionResponse{}
-	_body, _err := client.UpdateServiceVersionWithOptions(ClusterId, ServiceName, request, headers, runtime)
+	_result = &UpdateServiceSafetyLockResponse{}
+	_body, _err := client.UpdateServiceSafetyLockWithOptions(ClusterId, ServiceName, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7700,5 +8404,17 @@ func (client *Client) UpdateServiceVersionWithOptions(ClusterId *string, Service
 		return _result, _err
 	}
 	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateServiceVersion(ClusterId *string, ServiceName *string, request *UpdateServiceVersionRequest) (_result *UpdateServiceVersionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateServiceVersionResponse{}
+	_body, _err := client.UpdateServiceVersionWithOptions(ClusterId, ServiceName, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
 	return _result, _err
 }
