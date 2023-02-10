@@ -13,17 +13,17 @@ import (
 )
 
 type AddCdnDomainRequest struct {
-	// The workload type of the domain name. Valid values:
+	// The workload type of the domain name to accelerate. Valid values:
 	//
-	// *   **web**: images and small files.
-	// *   **download**: large files.
-	// *   **video**: on-demand video and audio streaming.
+	// *   **web**: images and small files
+	// *   **download**: large files
+	// *   **video**: on-demand video and audio streaming
 	CdnType *string `json:"CdnType,omitempty" xml:"CdnType,omitempty"`
 	// The URL that is used for health checks.
 	CheckUrl *string `json:"CheckUrl,omitempty" xml:"CheckUrl,omitempty"`
-	// The domain names that you want to add to Alibaba Cloud CDN.
+	// The domain name that you want to add to Alibaba Cloud CDN.
 	//
-	// Wildcard domain names are supported.A wildcard domain name must start with a period (.), such as .example.com.
+	// A wildcard domain that starts with a period (.) is supported, such as .example.com.
 	DomainName   *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -31,20 +31,18 @@ type AddCdnDomainRequest struct {
 	//
 	// If you do not set this parameter, the system uses the ID of the default resource group.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The accelerated region. Valid values:
+	// The acceleration region. Default value: domestic. Valid values:
 	//
-	// *   **domestic**: regions in mainland China.
-	// *   **overseas**: regions outside mainland China.
-	// *   **global**: regions inside and outside mainland China.
-	//
-	// Default value: **domestic**.
+	// *   **domestic**: Chinese mainland
+	// *   **overseas**: global (excluding the Chinese mainland)
+	// *   **global**: global
 	Scope         *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// The information about the origin address.
+	// The information about the addresses of origin servers.
 	Sources *string `json:"Sources,omitempty" xml:"Sources,omitempty"`
-	// The tags.
+	// Details about the tags. You can specify up to 20 tags.
 	Tag []*AddCdnDomainRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	// The top-level domain name.
+	// The top-level domain.
 	TopLevelDomain *string `json:"TopLevelDomain,omitempty" xml:"TopLevelDomain,omitempty"`
 }
 
@@ -112,9 +110,9 @@ func (s *AddCdnDomainRequest) SetTopLevelDomain(v string) *AddCdnDomainRequest {
 }
 
 type AddCdnDomainRequestTag struct {
-	// The key of tag.
+	// The key of a tag.
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of tag.
+	// The value of a tag.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -291,11 +289,11 @@ func (s *AddFCTriggerResponse) SetBody(v *AddFCTriggerResponseBody) *AddFCTrigge
 }
 
 type BatchAddCdnDomainRequest struct {
-	// The workload type of the domain name to be accelerated. Valid values:
+	// The workload type of the domain name to accelerate. Valid values:
 	//
-	// *   **web**: images and small files.
-	// *   **download**: large files.
-	// *   **video**: on-demand video and audio streaming.
+	// *   **web**: images and small files
+	// *   **download**: large files
+	// *   **video**: on-demand video and audio streaming
 	CdnType *string `json:"CdnType,omitempty" xml:"CdnType,omitempty"`
 	// The URL that is used for health checks.
 	CheckUrl *string `json:"CheckUrl,omitempty" xml:"CheckUrl,omitempty"`
@@ -303,18 +301,18 @@ type BatchAddCdnDomainRequest struct {
 	DomainName   *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the resource group. If you do not set this parameter, the system uses the ID of the default resource group.
+	// The ID of the resource group. If you do not specify a value for this parameter, the system uses the ID of the default resource group.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The accelerated region. Valid values:
+	// The acceleration region. Default value: domestic. Valid values:
 	//
-	// *   **domestic**: mainland China only
-	// *   **overseas**: global (excluding mainland China)
+	// *   **domestic**: Chinese mainland
+	// *   **overseas**: global (excluding the Chinese mainland)
 	// *   **global**: global
 	Scope         *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// The information about the addresses of the origin servers.
+	// The information about the addresses of origin servers.
 	Sources *string `json:"Sources,omitempty" xml:"Sources,omitempty"`
-	// The top-level domain name.
+	// The top-level domain.
 	TopLevelDomain *string `json:"TopLevelDomain,omitempty" xml:"TopLevelDomain,omitempty"`
 }
 
@@ -3130,7 +3128,6 @@ func (s *DescribeCdnDeletedDomainsResponse) SetBody(v *DescribeCdnDeletedDomains
 type DescribeCdnDeliverListRequest struct {
 	// The ID of the tracking task that you want to query. If you do not specify an ID, all tracking tasks are queried.
 	DeliverId *int64 `json:"DeliverId,omitempty" xml:"DeliverId,omitempty"`
-	OwnerId   *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 }
 
 func (s DescribeCdnDeliverListRequest) String() string {
@@ -3143,11 +3140,6 @@ func (s DescribeCdnDeliverListRequest) GoString() string {
 
 func (s *DescribeCdnDeliverListRequest) SetDeliverId(v int64) *DescribeCdnDeliverListRequest {
 	s.DeliverId = &v
-	return s
-}
-
-func (s *DescribeCdnDeliverListRequest) SetOwnerId(v int64) *DescribeCdnDeliverListRequest {
-	s.OwnerId = &v
 	return s
 }
 
@@ -3206,7 +3198,6 @@ func (s *DescribeCdnDeliverListResponse) SetBody(v *DescribeCdnDeliverListRespon
 }
 
 type DescribeCdnDomainByCertificateRequest struct {
-	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The public key of the SSL certificate. You must encode the public key in Base64 and then call the encodeURIComponent function to encode the public key again.
 	//
 	// The public key must be in the PEM format.
@@ -3224,11 +3215,6 @@ func (s DescribeCdnDomainByCertificateRequest) String() string {
 
 func (s DescribeCdnDomainByCertificateRequest) GoString() string {
 	return s.String()
-}
-
-func (s *DescribeCdnDomainByCertificateRequest) SetOwnerId(v int64) *DescribeCdnDomainByCertificateRequest {
-	s.OwnerId = &v
-	return s
 }
 
 func (s *DescribeCdnDomainByCertificateRequest) SetSSLPub(v string) *DescribeCdnDomainByCertificateRequest {
@@ -3633,7 +3619,7 @@ func (s *DescribeCdnDomainDetailRequest) SetSecurityToken(v string) *DescribeCdn
 }
 
 type DescribeCdnDomainDetailResponseBody struct {
-	// The detailed information about the accelerated domain name.
+	// The details about the accelerated domain name.
 	GetDomainDetailModel *DescribeCdnDomainDetailResponseBodyGetDomainDetailModel `json:"GetDomainDetailModel,omitempty" xml:"GetDomainDetailModel,omitempty" type:"Struct"`
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -3660,39 +3646,39 @@ func (s *DescribeCdnDomainDetailResponseBody) SetRequestId(v string) *DescribeCd
 type DescribeCdnDomainDetailResponseBodyGetDomainDetailModel struct {
 	// The workload type of the accelerated domain name. Valid values:
 	//
-	// *   **web**: images and small files.
-	// *   **download**: large files.
-	// *   **video**: on-demand video and audio streaming.
+	// *   **web**: images and small files
+	// *   **download**: large files
+	// *   **video**: on-demand video and audio streaming
 	CdnType *string `json:"CdnType,omitempty" xml:"CdnType,omitempty"`
-	// The Canonical Name (CNAME) that is assigned to the accelerated domain name. You must add a CNAME record in the system of your DNS service provider to map the accelerated domain name to the CNAME.
+	// The CNAME that is assigned to the accelerated domain name. You must add the CNAME record in the system of your DNS service provider to map the accelerated domain name to the CNAME.
 	Cname *string `json:"Cname,omitempty" xml:"Cname,omitempty"`
-	// The remarks of the accelerated domain name.
+	// The description of the request.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The accelerated domain name.
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	// The status of the accelerated domain name. Valid values:
 	//
-	// *   **online**: The domain name is enabled.
-	// *   **offline**: The domain is disabled.
-	// *   **configuring**: The domain is being configured.
-	// *   **configure_failed**: The domain failed to be configured.
-	// *   **checking**: The domain name is under review.
-	// *   **check_failed**: The domain name failed the review.
+	// *   **online:** enabled
+	// *   **offline:** disabled
+	// *   **configuring:** configuring
+	// *   **configure_failed:** configuration failed
+	// *   **checking:** reviewing
+	// *   **check_failed:** review failed
 	DomainStatus *string `json:"DomainStatus,omitempty" xml:"DomainStatus,omitempty"`
-	// The time when the accelerated domain name was added to Alibaba Cloud CDN.
+	// The time when the audio or video file was created.
 	GmtCreated *string `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
-	// The last time when the accelerated domain name was modified.
+	// The time when the domain name was last modified.
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
 	// The CNAME for which HTTPS is enabled.
 	HttpsCname *string `json:"HttpsCname,omitempty" xml:"HttpsCname,omitempty"`
 	// The ID of the resource group.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The accelerated region.
+	// The acceleration region.
 	Scope *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
-	// Specifies whether to enable the Security Socket Layer (SSL) certificate. Valid values:
+	// Indicates whether the Security Socket Layer (SSL) certificate is enabled. Valid values:
 	//
-	// *   **on**: enables the SSL certificate.
-	// *   **off**: disables the SSL certificate.
+	// *   **on**
+	// *   **off**
 	ServerCertificateStatus *string `json:"ServerCertificateStatus,omitempty" xml:"ServerCertificateStatus,omitempty"`
 	// The information about the origin server.
 	SourceModels *DescribeCdnDomainDetailResponseBodyGetDomainDetailModelSourceModels `json:"SourceModels,omitempty" xml:"SourceModels,omitempty" type:"Struct"`
@@ -3786,19 +3772,20 @@ func (s *DescribeCdnDomainDetailResponseBodyGetDomainDetailModelSourceModels) Se
 type DescribeCdnDomainDetailResponseBodyGetDomainDetailModelSourceModelsSourceModel struct {
 	// The address of the origin server.
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// The status of the origin server.
+	// The status.
 	Enabled *string `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
 	// The port over which requests are redirected to the origin server. Ports 443 and 80 are supported.
 	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The priority of the origin server if multiple origin servers are specified.
+	// The priority.
 	Priority *string `json:"Priority,omitempty" xml:"Priority,omitempty"`
 	// The type of the origin server. Valid values:
 	//
-	// *   **ipaddr**: IP address
-	// *   **domain**: domain name
-	// *   **oss**: Object Storage Service (OSS) bucket endpoint
+	// *   **ipaddr:** an IP address.
+	// *   **domain:** a domain name
+	// *   **oss:** the OSS domain of an Object Storage Service (OSS) bucket
+	// *   **fc_domain:** a Function Compute domain name
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The weight of the origin server if multiple origin servers are specified.
+	// The weight of the origin server if multiple origin servers have been specified.
 	Weight *string `json:"Weight,omitempty" xml:"Weight,omitempty"`
 }
 
@@ -3878,7 +3865,6 @@ type DescribeCdnDomainLogsRequest struct {
 	//
 	// >  The end time must be later than the start time.
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The number of the page to return. Pages start from page **1**.
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries to return on each page. Default value: **300**. Maximum value: **1000**. Valid values: **1** to **1000**.
@@ -3904,11 +3890,6 @@ func (s *DescribeCdnDomainLogsRequest) SetDomainName(v string) *DescribeCdnDomai
 
 func (s *DescribeCdnDomainLogsRequest) SetEndTime(v string) *DescribeCdnDomainLogsRequest {
 	s.EndTime = &v
-	return s
-}
-
-func (s *DescribeCdnDomainLogsRequest) SetOwnerId(v int64) *DescribeCdnDomainLogsRequest {
-	s.OwnerId = &v
 	return s
 }
 
@@ -6003,7 +5984,6 @@ type DescribeCdnUserConfigsRequest struct {
 	// *   **domain\_business\_control**: Alibaba Cloud CDN configurations
 	// *   **waf**: Web Application Firewall (WAF) configurations
 	FunctionName *string `json:"FunctionName,omitempty" xml:"FunctionName,omitempty"`
-	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 }
 
 func (s DescribeCdnUserConfigsRequest) String() string {
@@ -6016,11 +5996,6 @@ func (s DescribeCdnUserConfigsRequest) GoString() string {
 
 func (s *DescribeCdnUserConfigsRequest) SetFunctionName(v string) *DescribeCdnUserConfigsRequest {
 	s.FunctionName = &v
-	return s
-}
-
-func (s *DescribeCdnUserConfigsRequest) SetOwnerId(v int64) *DescribeCdnUserConfigsRequest {
-	s.OwnerId = &v
 	return s
 }
 
@@ -6121,11 +6096,8 @@ func (s *DescribeCdnUserConfigsResponse) SetBody(v *DescribeCdnUserConfigsRespon
 }
 
 type DescribeCdnUserDomainsByFuncRequest struct {
-	// The ID of the feature.
-	//
-	// For example, the ID of the origin host feature (set_req_host_header) is 18.
-	FuncId  *int32 `json:"FuncId,omitempty" xml:"FuncId,omitempty"`
-	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The ID of the feature. For more information about how to query feature IDs, see [Feature settings for a domain name](~~388460~~). For example, the ID of the origin host feature (set_req_host_header) is 18.
+	FuncId *int32 `json:"FuncId,omitempty" xml:"FuncId,omitempty"`
 	// The number of the page to return. Default value: **1**.
 	//
 	// Valid values: **1** to **100000**.
@@ -6151,11 +6123,6 @@ func (s *DescribeCdnUserDomainsByFuncRequest) SetFuncId(v int32) *DescribeCdnUse
 	return s
 }
 
-func (s *DescribeCdnUserDomainsByFuncRequest) SetOwnerId(v int64) *DescribeCdnUserDomainsByFuncRequest {
-	s.OwnerId = &v
-	return s
-}
-
 func (s *DescribeCdnUserDomainsByFuncRequest) SetPageNumber(v int32) *DescribeCdnUserDomainsByFuncRequest {
 	s.PageNumber = &v
 	return s
@@ -6176,11 +6143,11 @@ type DescribeCdnUserDomainsByFuncResponseBody struct {
 	Domains *DescribeCdnUserDomainsByFuncResponseBodyDomains `json:"Domains,omitempty" xml:"Domains,omitempty" type:"Struct"`
 	// The page number of the returned page.
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page.
+	// The number of domain names returned per page.
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of domain names returned.
 	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -6235,12 +6202,12 @@ func (s *DescribeCdnUserDomainsByFuncResponseBodyDomains) SetPageData(v []*Descr
 }
 
 type DescribeCdnUserDomainsByFuncResponseBodyDomainsPageData struct {
-	// The type of workload accelerated by Alibaba Cloud CDN. Valid values:
+	// The type of the workload accelerated by Alibaba Cloud CDN. Valid values:
 	//
-	// *   **web**: image and small file distribution
-	// *   **download**: large file distribution
-	// *   **video**: on-demand video and audio streaming
-	// *   **liveStream**: live streaming
+	// *   **web:** image and small file distribution
+	// *   **download:** large file distribution
+	// *   **video:** on-demand video and audio streaming
+	// *   **liveStream:** live streaming
 	CdnType *string `json:"CdnType,omitempty" xml:"CdnType,omitempty"`
 	// The CNAME assigned to the accelerated domain name.
 	Cname *string `json:"Cname,omitempty" xml:"Cname,omitempty"`
@@ -6250,27 +6217,27 @@ type DescribeCdnUserDomainsByFuncResponseBodyDomainsPageData struct {
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	// The status of the accelerated domain name. Valid values:
 	//
-	// *   **online**: The domain name is enabled.
-	// *   **offline**: The domain is disabled.
-	// *   **configuring**: The endpoint group is being configured.
-	// *   **configure_failed**: The domain failed to be configured.
-	// *   **checking**: The domain name is under review.
-	// *   **check_failed**: The domain name failed the review.
-	// *   **stopping**: The domain name is be disabled.
-	// *   **deleting**: being deleted
+	// *   **online**: enabled
+	// *   **offline**: disabled
+	// *   **configuring**: configuring
+	// *   **configure_failed**: configuration failed
+	// *   **checking**: reviewing
+	// *   **check_failed**: failed the review
+	// *   **stopping**: being disabled
+	// *   **deleting**: deleting
 	DomainStatus *string `json:"DomainStatus,omitempty" xml:"DomainStatus,omitempty"`
 	// The time when the accelerated domain name was added to Alibaba Cloud CDN.
 	GmtCreated *string `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
-	// The last time when the accelerated domain was modified.
+	// The time when the accelerated domain name was modified.
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
 	// The ID of the resource group.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The information about the origin server.
+	// Information about the origin server.
 	Sources *DescribeCdnUserDomainsByFuncResponseBodyDomainsPageDataSources `json:"Sources,omitempty" xml:"Sources,omitempty" type:"Struct"`
 	// The status of HTTPS. Valid values:
 	//
-	// - **on**: enabled
-	// - **off**: disabled
+	// *   **on**
+	// *   **off**
 	SslProtocol *string `json:"SslProtocol,omitempty" xml:"SslProtocol,omitempty"`
 }
 
@@ -6354,9 +6321,14 @@ type DescribeCdnUserDomainsByFuncResponseBodyDomainsPageDataSourcesSource struct
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
 	// The port of the origin server.
 	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The priority of the configuration item.
+	// The priority.
 	Priority *string `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// The type of the origin server.
+	// The type of the origin server. Valid values:
+	//
+	// *   **ipaddr**: an origin IP address
+	// *   **domain**: an origin domain name
+	// *   **oss**: the domain name of an Object Storage Service (OSS) bucket
+	// *   **fc_domain**: a Function Compute domain name
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	// The weight of the origin server if multiple origin servers have been specified.
 	Weight *string `json:"Weight,omitempty" xml:"Weight,omitempty"`
@@ -7138,7 +7110,6 @@ type DescribeDomainAverageResponseTimeRequest struct {
 	IspNameEn *string `json:"IspNameEn,omitempty" xml:"IspNameEn,omitempty"`
 	// The name of the region. You can call the [DescribeCdnRegionAndIsp](~~91077~~) operation to query the most recent region list. If you do not set this parameter, all regions are queried.
 	LocationNameEn *string `json:"LocationNameEn,omitempty" xml:"LocationNameEn,omitempty"`
-	OwnerId        *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// Specifies whether to automatically set the interval. If you set the value to 1, the value of the Interval parameter is automatically assigned based on the StartTime and EndTime parameters. You can set this parameter or the Interval parameter.
@@ -7180,11 +7151,6 @@ func (s *DescribeDomainAverageResponseTimeRequest) SetIspNameEn(v string) *Descr
 
 func (s *DescribeDomainAverageResponseTimeRequest) SetLocationNameEn(v string) *DescribeDomainAverageResponseTimeRequest {
 	s.LocationNameEn = &v
-	return s
-}
-
-func (s *DescribeDomainAverageResponseTimeRequest) SetOwnerId(v int64) *DescribeDomainAverageResponseTimeRequest {
-	s.OwnerId = &v
 	return s
 }
 
@@ -7343,7 +7309,6 @@ type DescribeDomainBpsDataRequest struct {
 	//
 	// If you do not set this parameter, the bandwidth monitoring data of the accelerated domain names in all regions is returned.
 	LocationNameEn *string `json:"LocationNameEn,omitempty" xml:"LocationNameEn,omitempty"`
-	OwnerId        *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The start of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
@@ -7378,11 +7343,6 @@ func (s *DescribeDomainBpsDataRequest) SetIspNameEn(v string) *DescribeDomainBps
 
 func (s *DescribeDomainBpsDataRequest) SetLocationNameEn(v string) *DescribeDomainBpsDataRequest {
 	s.LocationNameEn = &v
-	return s
-}
-
-func (s *DescribeDomainBpsDataRequest) SetOwnerId(v int64) *DescribeDomainBpsDataRequest {
-	s.OwnerId = &v
 	return s
 }
 
@@ -7591,7 +7551,6 @@ type DescribeDomainBpsDataByLayerRequest struct {
 	Layer *string `json:"Layer,omitempty" xml:"Layer,omitempty"`
 	// The name of the region. You can call the [DescribeCdnRegionAndIsp](~~91077~~) operation to query the most recent region list. If you do not specify a region, data in all regions is queried.
 	LocationNameEn *string `json:"LocationNameEn,omitempty" xml:"LocationNameEn,omitempty"`
-	OwnerId        *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The beginning of the time range to query.
 	//
 	// Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
@@ -7633,11 +7592,6 @@ func (s *DescribeDomainBpsDataByLayerRequest) SetLayer(v string) *DescribeDomain
 
 func (s *DescribeDomainBpsDataByLayerRequest) SetLocationNameEn(v string) *DescribeDomainBpsDataByLayerRequest {
 	s.LocationNameEn = &v
-	return s
-}
-
-func (s *DescribeDomainBpsDataByLayerRequest) SetOwnerId(v int64) *DescribeDomainBpsDataByLayerRequest {
-	s.OwnerId = &v
 	return s
 }
 
@@ -7767,7 +7721,6 @@ type DescribeDomainBpsDataByTimeStampRequest struct {
 	//
 	// You can call the [DescribeCdnRegionAndIsp](~~91077~~) operation to query regions.
 	LocationNames *string `json:"LocationNames,omitempty" xml:"LocationNames,omitempty"`
-	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The beginning of the time range that was queried. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC+0.
 	//
 	// The data is collected at an interval of five minutes.
@@ -7794,11 +7747,6 @@ func (s *DescribeDomainBpsDataByTimeStampRequest) SetIspNames(v string) *Describ
 
 func (s *DescribeDomainBpsDataByTimeStampRequest) SetLocationNames(v string) *DescribeDomainBpsDataByTimeStampRequest {
 	s.LocationNames = &v
-	return s
-}
-
-func (s *DescribeDomainBpsDataByTimeStampRequest) SetOwnerId(v int64) *DescribeDomainBpsDataByTimeStampRequest {
-	s.OwnerId = &v
 	return s
 }
 
@@ -8153,7 +8101,6 @@ func (s *DescribeDomainCcActivityLogResponse) SetBody(v *DescribeDomainCcActivit
 type DescribeDomainCertificateInfoRequest struct {
 	// The accelerated domain name. You can specify only one domain name in each query.
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 }
 
 func (s DescribeDomainCertificateInfoRequest) String() string {
@@ -8166,11 +8113,6 @@ func (s DescribeDomainCertificateInfoRequest) GoString() string {
 
 func (s *DescribeDomainCertificateInfoRequest) SetDomainName(v string) *DescribeDomainCertificateInfoRequest {
 	s.DomainName = &v
-	return s
-}
-
-func (s *DescribeDomainCertificateInfoRequest) SetOwnerId(v int64) *DescribeDomainCertificateInfoRequest {
-	s.OwnerId = &v
 	return s
 }
 
@@ -8376,7 +8318,6 @@ func (s *DescribeDomainCertificateInfoResponse) SetBody(v *DescribeDomainCertifi
 
 type DescribeDomainCnameRequest struct {
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 }
 
 func (s DescribeDomainCnameRequest) String() string {
@@ -8389,11 +8330,6 @@ func (s DescribeDomainCnameRequest) GoString() string {
 
 func (s *DescribeDomainCnameRequest) SetDomainName(v string) *DescribeDomainCnameRequest {
 	s.DomainName = &v
-	return s
-}
-
-func (s *DescribeDomainCnameRequest) SetOwnerId(v int64) *DescribeDomainCnameRequest {
-	s.OwnerId = &v
 	return s
 }
 
@@ -8609,7 +8545,6 @@ type DescribeDomainDetailDataByLayerRequest struct {
 	//
 	// If you do not specify a region, data in all regions is queried.
 	LocationNameEn *string `json:"LocationNameEn,omitempty" xml:"LocationNameEn,omitempty"`
-	OwnerId        *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
@@ -8649,11 +8584,6 @@ func (s *DescribeDomainDetailDataByLayerRequest) SetLayer(v string) *DescribeDom
 
 func (s *DescribeDomainDetailDataByLayerRequest) SetLocationNameEn(v string) *DescribeDomainDetailDataByLayerRequest {
 	s.LocationNameEn = &v
-	return s
-}
-
-func (s *DescribeDomainDetailDataByLayerRequest) SetOwnerId(v int64) *DescribeDomainDetailDataByLayerRequest {
-	s.OwnerId = &v
 	return s
 }
 
@@ -8836,7 +8766,6 @@ type DescribeDomainHitRateDataRequest struct {
 	//
 	// The time granularity varies with the time range to query. Supported values: 300 (5 minutes), 3600 (1 hour), and 86400 (1 day). For more information, see **Usage notes**.
 	Interval *string `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	OwnerId  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The start of the time range to query.
 	//
 	// Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
@@ -8863,11 +8792,6 @@ func (s *DescribeDomainHitRateDataRequest) SetEndTime(v string) *DescribeDomainH
 
 func (s *DescribeDomainHitRateDataRequest) SetInterval(v string) *DescribeDomainHitRateDataRequest {
 	s.Interval = &v
-	return s
-}
-
-func (s *DescribeDomainHitRateDataRequest) SetOwnerId(v int64) *DescribeDomainHitRateDataRequest {
-	s.OwnerId = &v
 	return s
 }
 
@@ -9021,8 +8945,9 @@ type DescribeDomainHttpCodeDataRequest struct {
 	// The time interval between the data entries. Unit: seconds.
 	//
 	// The time granularity varies with the time range to query. Supported values: 300 (5 minutes), 3600 (1 hour), and 86400 (1 day). For more information, see **Usage notes**.
-	Interval *string `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	OwnerId  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	Interval       *string `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	IspNameEn      *string `json:"IspNameEn,omitempty" xml:"IspNameEn,omitempty"`
+	LocationNameEn *string `json:"LocationNameEn,omitempty" xml:"LocationNameEn,omitempty"`
 	// The start of the time range to query.
 	//
 	// Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
@@ -9052,8 +8977,13 @@ func (s *DescribeDomainHttpCodeDataRequest) SetInterval(v string) *DescribeDomai
 	return s
 }
 
-func (s *DescribeDomainHttpCodeDataRequest) SetOwnerId(v int64) *DescribeDomainHttpCodeDataRequest {
-	s.OwnerId = &v
+func (s *DescribeDomainHttpCodeDataRequest) SetIspNameEn(v string) *DescribeDomainHttpCodeDataRequest {
+	s.IspNameEn = &v
+	return s
+}
+
+func (s *DescribeDomainHttpCodeDataRequest) SetLocationNameEn(v string) *DescribeDomainHttpCodeDataRequest {
+	s.LocationNameEn = &v
 	return s
 }
 
@@ -9260,7 +9190,6 @@ type DescribeDomainHttpCodeDataByLayerRequest struct {
 	//
 	// If you do not specify a region, data in all regions is queried.
 	LocationNameEn *string `json:"LocationNameEn,omitempty" xml:"LocationNameEn,omitempty"`
-	OwnerId        *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
@@ -9300,11 +9229,6 @@ func (s *DescribeDomainHttpCodeDataByLayerRequest) SetLayer(v string) *DescribeD
 
 func (s *DescribeDomainHttpCodeDataByLayerRequest) SetLocationNameEn(v string) *DescribeDomainHttpCodeDataByLayerRequest {
 	s.LocationNameEn = &v
-	return s
-}
-
-func (s *DescribeDomainHttpCodeDataByLayerRequest) SetOwnerId(v int64) *DescribeDomainHttpCodeDataByLayerRequest {
-	s.OwnerId = &v
 	return s
 }
 
@@ -9432,7 +9356,6 @@ type DescribeDomainISPDataRequest struct {
 	//
 	// The end time must be later than the start time.
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
@@ -9452,11 +9375,6 @@ func (s *DescribeDomainISPDataRequest) SetDomainName(v string) *DescribeDomainIS
 
 func (s *DescribeDomainISPDataRequest) SetEndTime(v string) *DescribeDomainISPDataRequest {
 	s.EndTime = &v
-	return s
-}
-
-func (s *DescribeDomainISPDataRequest) SetOwnerId(v int64) *DescribeDomainISPDataRequest {
-	s.OwnerId = &v
 	return s
 }
 
@@ -9663,7 +9581,6 @@ type DescribeDomainMax95BpsDataRequest struct {
 	Cycle      *string `json:"Cycle,omitempty" xml:"Cycle,omitempty"`
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	EndTime    *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	StartTime  *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	TimePoint  *string `json:"TimePoint,omitempty" xml:"TimePoint,omitempty"`
 }
@@ -9688,11 +9605,6 @@ func (s *DescribeDomainMax95BpsDataRequest) SetDomainName(v string) *DescribeDom
 
 func (s *DescribeDomainMax95BpsDataRequest) SetEndTime(v string) *DescribeDomainMax95BpsDataRequest {
 	s.EndTime = &v
-	return s
-}
-
-func (s *DescribeDomainMax95BpsDataRequest) SetOwnerId(v int64) *DescribeDomainMax95BpsDataRequest {
-	s.OwnerId = &v
 	return s
 }
 
@@ -9800,7 +9712,6 @@ type DescribeDomainMultiUsageDataRequest struct {
 	//
 	// >  The end time must be later than the start time.
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
@@ -9820,11 +9731,6 @@ func (s *DescribeDomainMultiUsageDataRequest) SetDomainName(v string) *DescribeD
 
 func (s *DescribeDomainMultiUsageDataRequest) SetEndTime(v string) *DescribeDomainMultiUsageDataRequest {
 	s.EndTime = &v
-	return s
-}
-
-func (s *DescribeDomainMultiUsageDataRequest) SetOwnerId(v int64) *DescribeDomainMultiUsageDataRequest {
-	s.OwnerId = &v
 	return s
 }
 
@@ -10042,7 +9948,6 @@ type DescribeDomainPathDataRequest struct {
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	// The end of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC. The interval between the start time and end time must be less than 30 days. Example: 2016-10-21T04:00:00Z.
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The number of the page to return. Pages start from page **1**.
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries to return on each page.
@@ -10074,11 +9979,6 @@ func (s *DescribeDomainPathDataRequest) SetDomainName(v string) *DescribeDomainP
 
 func (s *DescribeDomainPathDataRequest) SetEndTime(v string) *DescribeDomainPathDataRequest {
 	s.EndTime = &v
-	return s
-}
-
-func (s *DescribeDomainPathDataRequest) SetOwnerId(v int64) *DescribeDomainPathDataRequest {
-	s.OwnerId = &v
 	return s
 }
 
@@ -10261,7 +10161,6 @@ type DescribeDomainPvDataRequest struct {
 	//
 	// The end time must be later than the start time.
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
@@ -10281,11 +10180,6 @@ func (s *DescribeDomainPvDataRequest) SetDomainName(v string) *DescribeDomainPvD
 
 func (s *DescribeDomainPvDataRequest) SetEndTime(v string) *DescribeDomainPvDataRequest {
 	s.EndTime = &v
-	return s
-}
-
-func (s *DescribeDomainPvDataRequest) SetOwnerId(v int64) *DescribeDomainPvDataRequest {
-	s.OwnerId = &v
 	return s
 }
 
@@ -10435,7 +10329,6 @@ type DescribeDomainQpsDataRequest struct {
 	IspNameEn *string `json:"IspNameEn,omitempty" xml:"IspNameEn,omitempty"`
 	// The name of the region. You can call the [DescribeCdnRegionAndIsp](~~91077~~) operation to query the most recent region list. If you do not set this parameter, all regions are queried.
 	LocationNameEn *string `json:"LocationNameEn,omitempty" xml:"LocationNameEn,omitempty"`
-	OwnerId        *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
@@ -10470,11 +10363,6 @@ func (s *DescribeDomainQpsDataRequest) SetIspNameEn(v string) *DescribeDomainQps
 
 func (s *DescribeDomainQpsDataRequest) SetLocationNameEn(v string) *DescribeDomainQpsDataRequest {
 	s.LocationNameEn = &v
-	return s
-}
-
-func (s *DescribeDomainQpsDataRequest) SetOwnerId(v int64) *DescribeDomainQpsDataRequest {
-	s.OwnerId = &v
 	return s
 }
 
@@ -10707,7 +10595,6 @@ type DescribeDomainQpsDataByLayerRequest struct {
 	Layer *string `json:"Layer,omitempty" xml:"Layer,omitempty"`
 	// The name of the region. You can call the [DescribeCdnRegionAndIsp](~~91077~~) operation to query the most recent region list. If you do not set this parameter, all regions are queried.
 	LocationNameEn *string `json:"LocationNameEn,omitempty" xml:"LocationNameEn,omitempty"`
-	OwnerId        *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
@@ -10747,11 +10634,6 @@ func (s *DescribeDomainQpsDataByLayerRequest) SetLayer(v string) *DescribeDomain
 
 func (s *DescribeDomainQpsDataByLayerRequest) SetLocationNameEn(v string) *DescribeDomainQpsDataByLayerRequest {
 	s.LocationNameEn = &v
-	return s
-}
-
-func (s *DescribeDomainQpsDataByLayerRequest) SetOwnerId(v int64) *DescribeDomainQpsDataByLayerRequest {
-	s.OwnerId = &v
 	return s
 }
 
@@ -10945,7 +10827,6 @@ type DescribeDomainRealTimeBpsDataRequest struct {
 	//
 	// You can call the [DescribeCdnRegionAndIsp](~~91077~~) operation to query the most recent region list. If you do not set this parameter, all regions are queried.
 	LocationNameEn *string `json:"LocationNameEn,omitempty" xml:"LocationNameEn,omitempty"`
-	OwnerId        *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The beginning of the time range to query.
 	//
 	// Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
@@ -10977,11 +10858,6 @@ func (s *DescribeDomainRealTimeBpsDataRequest) SetIspNameEn(v string) *DescribeD
 
 func (s *DescribeDomainRealTimeBpsDataRequest) SetLocationNameEn(v string) *DescribeDomainRealTimeBpsDataRequest {
 	s.LocationNameEn = &v
-	return s
-}
-
-func (s *DescribeDomainRealTimeBpsDataRequest) SetOwnerId(v int64) *DescribeDomainRealTimeBpsDataRequest {
-	s.OwnerId = &v
 	return s
 }
 
@@ -11093,7 +10969,6 @@ type DescribeDomainRealTimeByteHitRateDataRequest struct {
 	//
 	// >  The end time must be later than the start time.
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
@@ -11113,11 +10988,6 @@ func (s *DescribeDomainRealTimeByteHitRateDataRequest) SetDomainName(v string) *
 
 func (s *DescribeDomainRealTimeByteHitRateDataRequest) SetEndTime(v string) *DescribeDomainRealTimeByteHitRateDataRequest {
 	s.EndTime = &v
-	return s
-}
-
-func (s *DescribeDomainRealTimeByteHitRateDataRequest) SetOwnerId(v int64) *DescribeDomainRealTimeByteHitRateDataRequest {
-	s.OwnerId = &v
 	return s
 }
 
@@ -11255,7 +11125,6 @@ type DescribeDomainRealTimeDetailDataRequest struct {
 	//
 	// Default value: **false**.
 	MergeLocIsp *string `json:"MergeLocIsp,omitempty" xml:"MergeLocIsp,omitempty"`
-	OwnerId     *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The beginning of the time range to query.
 	//
 	// Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC. Example: 2019-11-30T05:33:00Z.
@@ -11302,11 +11171,6 @@ func (s *DescribeDomainRealTimeDetailDataRequest) SetMerge(v string) *DescribeDo
 
 func (s *DescribeDomainRealTimeDetailDataRequest) SetMergeLocIsp(v string) *DescribeDomainRealTimeDetailDataRequest {
 	s.MergeLocIsp = &v
-	return s
-}
-
-func (s *DescribeDomainRealTimeDetailDataRequest) SetOwnerId(v int64) *DescribeDomainRealTimeDetailDataRequest {
-	s.OwnerId = &v
 	return s
 }
 
@@ -11384,7 +11248,6 @@ type DescribeDomainRealTimeHttpCodeDataRequest struct {
 	IspNameEn *string `json:"IspNameEn,omitempty" xml:"IspNameEn,omitempty"`
 	// The name of the region. If you do not set this parameter, all regions are queried. You can call the [DescribeCdnRegionAndIsp](~~91077~~) operation to query the most recent region list.
 	LocationNameEn *string `json:"LocationNameEn,omitempty" xml:"LocationNameEn,omitempty"`
-	OwnerId        *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The beginning of the time range to query.
 	//
 	// Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
@@ -11416,11 +11279,6 @@ func (s *DescribeDomainRealTimeHttpCodeDataRequest) SetIspNameEn(v string) *Desc
 
 func (s *DescribeDomainRealTimeHttpCodeDataRequest) SetLocationNameEn(v string) *DescribeDomainRealTimeHttpCodeDataRequest {
 	s.LocationNameEn = &v
-	return s
-}
-
-func (s *DescribeDomainRealTimeHttpCodeDataRequest) SetOwnerId(v int64) *DescribeDomainRealTimeHttpCodeDataRequest {
-	s.OwnerId = &v
 	return s
 }
 
@@ -11623,7 +11481,6 @@ type DescribeDomainRealTimeQpsDataRequest struct {
 	//
 	// If you do not set this parameter, all regions are queried. You can call the [DescribeCdnRegionAndIsp](~~91077~~) operation to query the most recent region list.
 	LocationNameEn *string `json:"LocationNameEn,omitempty" xml:"LocationNameEn,omitempty"`
-	OwnerId        *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The beginning of the time range to query.
 	//
 	// Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
@@ -11655,11 +11512,6 @@ func (s *DescribeDomainRealTimeQpsDataRequest) SetIspNameEn(v string) *DescribeD
 
 func (s *DescribeDomainRealTimeQpsDataRequest) SetLocationNameEn(v string) *DescribeDomainRealTimeQpsDataRequest {
 	s.LocationNameEn = &v
-	return s
-}
-
-func (s *DescribeDomainRealTimeQpsDataRequest) SetOwnerId(v int64) *DescribeDomainRealTimeQpsDataRequest {
-	s.OwnerId = &v
 	return s
 }
 
@@ -11771,7 +11623,6 @@ type DescribeDomainRealTimeReqHitRateDataRequest struct {
 	//
 	// >  The end time must be later than the start time.
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
@@ -11791,11 +11642,6 @@ func (s *DescribeDomainRealTimeReqHitRateDataRequest) SetDomainName(v string) *D
 
 func (s *DescribeDomainRealTimeReqHitRateDataRequest) SetEndTime(v string) *DescribeDomainRealTimeReqHitRateDataRequest {
 	s.EndTime = &v
-	return s
-}
-
-func (s *DescribeDomainRealTimeReqHitRateDataRequest) SetOwnerId(v int64) *DescribeDomainRealTimeReqHitRateDataRequest {
-	s.OwnerId = &v
 	return s
 }
 
@@ -11907,7 +11753,6 @@ type DescribeDomainRealTimeSrcBpsDataRequest struct {
 	//
 	// >  The end time must be later than the start time.
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The start of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
@@ -11927,11 +11772,6 @@ func (s *DescribeDomainRealTimeSrcBpsDataRequest) SetDomainName(v string) *Descr
 
 func (s *DescribeDomainRealTimeSrcBpsDataRequest) SetEndTime(v string) *DescribeDomainRealTimeSrcBpsDataRequest {
 	s.EndTime = &v
-	return s
-}
-
-func (s *DescribeDomainRealTimeSrcBpsDataRequest) SetOwnerId(v int64) *DescribeDomainRealTimeSrcBpsDataRequest {
-	s.OwnerId = &v
 	return s
 }
 
@@ -12077,7 +11917,6 @@ type DescribeDomainRealTimeSrcHttpCodeDataRequest struct {
 	IspNameEn *string `json:"IspNameEn,omitempty" xml:"IspNameEn,omitempty"`
 	// The name of the region. You can call the [DescribeCdnRegionAndIsp](~~91077~~) operation to query regions. If you do not set this parameter, all regions are queried.
 	LocationNameEn *string `json:"LocationNameEn,omitempty" xml:"LocationNameEn,omitempty"`
-	OwnerId        *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The start of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
@@ -12107,11 +11946,6 @@ func (s *DescribeDomainRealTimeSrcHttpCodeDataRequest) SetIspNameEn(v string) *D
 
 func (s *DescribeDomainRealTimeSrcHttpCodeDataRequest) SetLocationNameEn(v string) *DescribeDomainRealTimeSrcHttpCodeDataRequest {
 	s.LocationNameEn = &v
-	return s
-}
-
-func (s *DescribeDomainRealTimeSrcHttpCodeDataRequest) SetOwnerId(v int64) *DescribeDomainRealTimeSrcHttpCodeDataRequest {
-	s.OwnerId = &v
 	return s
 }
 
@@ -12302,7 +12136,6 @@ type DescribeDomainRealTimeSrcTrafficDataRequest struct {
 	//
 	// >  The end time must be later than the start time.
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The beginning of the time range to query.
 	//
 	// Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
@@ -12324,11 +12157,6 @@ func (s *DescribeDomainRealTimeSrcTrafficDataRequest) SetDomainName(v string) *D
 
 func (s *DescribeDomainRealTimeSrcTrafficDataRequest) SetEndTime(v string) *DescribeDomainRealTimeSrcTrafficDataRequest {
 	s.EndTime = &v
-	return s
-}
-
-func (s *DescribeDomainRealTimeSrcTrafficDataRequest) SetOwnerId(v int64) *DescribeDomainRealTimeSrcTrafficDataRequest {
-	s.OwnerId = &v
 	return s
 }
 
@@ -12480,7 +12308,6 @@ type DescribeDomainRealTimeTrafficDataRequest struct {
 	//
 	// You can call the [DescribeCdnRegionAndIsp](~~91077~~) operation to query the most recent region list. If you do not set this parameter, all regions are queried.
 	LocationNameEn *string `json:"LocationNameEn,omitempty" xml:"LocationNameEn,omitempty"`
-	OwnerId        *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The beginning of the time range to query.
 	//
 	// Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
@@ -12512,11 +12339,6 @@ func (s *DescribeDomainRealTimeTrafficDataRequest) SetIspNameEn(v string) *Descr
 
 func (s *DescribeDomainRealTimeTrafficDataRequest) SetLocationNameEn(v string) *DescribeDomainRealTimeTrafficDataRequest {
 	s.LocationNameEn = &v
-	return s
-}
-
-func (s *DescribeDomainRealTimeTrafficDataRequest) SetOwnerId(v int64) *DescribeDomainRealTimeTrafficDataRequest {
-	s.OwnerId = &v
 	return s
 }
 
@@ -12756,7 +12578,6 @@ type DescribeDomainRegionDataRequest struct {
 	//
 	// The end time must be later than the start time.
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The start of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
@@ -12776,11 +12597,6 @@ func (s *DescribeDomainRegionDataRequest) SetDomainName(v string) *DescribeDomai
 
 func (s *DescribeDomainRegionDataRequest) SetEndTime(v string) *DescribeDomainRegionDataRequest {
 	s.EndTime = &v
-	return s
-}
-
-func (s *DescribeDomainRegionDataRequest) SetOwnerId(v int64) *DescribeDomainRegionDataRequest {
-	s.OwnerId = &v
 	return s
 }
 
@@ -12998,7 +12814,6 @@ type DescribeDomainReqHitRateDataRequest struct {
 	//
 	// The time granularity varies with the time range to query. Supported values: 300 (5 minutes), 3600 (1 hour), and 86400 (1 day). For more information, see **Usage notes**.
 	Interval *string `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	OwnerId  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The start of the time range to query.
 	//
 	// Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
@@ -13025,11 +12840,6 @@ func (s *DescribeDomainReqHitRateDataRequest) SetEndTime(v string) *DescribeDoma
 
 func (s *DescribeDomainReqHitRateDataRequest) SetInterval(v string) *DescribeDomainReqHitRateDataRequest {
 	s.Interval = &v
-	return s
-}
-
-func (s *DescribeDomainReqHitRateDataRequest) SetOwnerId(v int64) *DescribeDomainReqHitRateDataRequest {
-	s.OwnerId = &v
 	return s
 }
 
@@ -13184,7 +12994,6 @@ type DescribeDomainSrcBpsDataRequest struct {
 	//
 	// The time granularity varies with the time range to query. Supported values: 300 (5 minutes), 3600 (1 hour), and 86400 (1 day). For more information, see **Usage notes**.
 	Interval *string `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	OwnerId  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The start of the time range to query.
 	//
 	// Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
@@ -13211,11 +13020,6 @@ func (s *DescribeDomainSrcBpsDataRequest) SetEndTime(v string) *DescribeDomainSr
 
 func (s *DescribeDomainSrcBpsDataRequest) SetInterval(v string) *DescribeDomainSrcBpsDataRequest {
 	s.Interval = &v
-	return s
-}
-
-func (s *DescribeDomainSrcBpsDataRequest) SetOwnerId(v int64) *DescribeDomainSrcBpsDataRequest {
-	s.OwnerId = &v
 	return s
 }
 
@@ -13368,7 +13172,6 @@ type DescribeDomainSrcHttpCodeDataRequest struct {
 	//
 	// The time granularity varies with the time range to query. Supported values: 300 (5 minutes), 3600 (1 hour), and 86400 (1 day). For more information, see **Usage notes**.
 	Interval *string `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	OwnerId  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The start of the time range to query.
 	//
 	// Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
@@ -13395,11 +13198,6 @@ func (s *DescribeDomainSrcHttpCodeDataRequest) SetEndTime(v string) *DescribeDom
 
 func (s *DescribeDomainSrcHttpCodeDataRequest) SetInterval(v string) *DescribeDomainSrcHttpCodeDataRequest {
 	s.Interval = &v
-	return s
-}
-
-func (s *DescribeDomainSrcHttpCodeDataRequest) SetOwnerId(v int64) *DescribeDomainSrcHttpCodeDataRequest {
-	s.OwnerId = &v
 	return s
 }
 
@@ -13594,7 +13392,6 @@ type DescribeDomainSrcQpsDataRequest struct {
 	//
 	// The time granularity varies with the time range to query. Supported values: 300 (5 minutes), 3600 (1 hour), and 86400 (1 day). For more information, see **Usage notes**.
 	Interval *string `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	OwnerId  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The start of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
 	//
 	// If you do not set this parameter, data collected within the last 24 hours is queried.
@@ -13621,11 +13418,6 @@ func (s *DescribeDomainSrcQpsDataRequest) SetEndTime(v string) *DescribeDomainSr
 
 func (s *DescribeDomainSrcQpsDataRequest) SetInterval(v string) *DescribeDomainSrcQpsDataRequest {
 	s.Interval = &v
-	return s
-}
-
-func (s *DescribeDomainSrcQpsDataRequest) SetOwnerId(v int64) *DescribeDomainSrcQpsDataRequest {
-	s.OwnerId = &v
 	return s
 }
 
@@ -14230,7 +14022,6 @@ type DescribeDomainSrcTrafficDataRequest struct {
 	//
 	// The time granularity varies with the time range to query. Supported values: 300 (5 minutes), 3600 (1 hour), and 86400 (1 day). For more information, see **Usage notes**.
 	Interval *string `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	OwnerId  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The start of the time range to query.
 	//
 	// Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
@@ -14257,11 +14048,6 @@ func (s *DescribeDomainSrcTrafficDataRequest) SetEndTime(v string) *DescribeDoma
 
 func (s *DescribeDomainSrcTrafficDataRequest) SetInterval(v string) *DescribeDomainSrcTrafficDataRequest {
 	s.Interval = &v
-	return s
-}
-
-func (s *DescribeDomainSrcTrafficDataRequest) SetOwnerId(v int64) *DescribeDomainSrcTrafficDataRequest {
-	s.OwnerId = &v
 	return s
 }
 
@@ -14740,7 +14526,6 @@ type DescribeDomainTopUrlVisitRequest struct {
 	//
 	// >  The end time must be later than the start time. The difference between the end time and the start time cannot exceed seven days.
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The method that is used to sort the returned URLs.**** Valid values:
 	//
 	// *   **traf**: network traffic
@@ -14767,11 +14552,6 @@ func (s *DescribeDomainTopUrlVisitRequest) SetDomainName(v string) *DescribeDoma
 
 func (s *DescribeDomainTopUrlVisitRequest) SetEndTime(v string) *DescribeDomainTopUrlVisitRequest {
 	s.EndTime = &v
-	return s
-}
-
-func (s *DescribeDomainTopUrlVisitRequest) SetOwnerId(v int64) *DescribeDomainTopUrlVisitRequest {
-	s.OwnerId = &v
 	return s
 }
 
@@ -15219,7 +14999,6 @@ type DescribeDomainTrafficDataRequest struct {
 	//
 	// If you do not specify a region, monitoring data in all regions is queried.
 	LocationNameEn *string `json:"LocationNameEn,omitempty" xml:"LocationNameEn,omitempty"`
-	OwnerId        *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The start of the time range to query.
 	//
 	// Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
@@ -15256,11 +15035,6 @@ func (s *DescribeDomainTrafficDataRequest) SetIspNameEn(v string) *DescribeDomai
 
 func (s *DescribeDomainTrafficDataRequest) SetLocationNameEn(v string) *DescribeDomainTrafficDataRequest {
 	s.LocationNameEn = &v
-	return s
-}
-
-func (s *DescribeDomainTrafficDataRequest) SetOwnerId(v int64) *DescribeDomainTrafficDataRequest {
-	s.OwnerId = &v
 	return s
 }
 
@@ -15473,7 +15247,6 @@ type DescribeDomainUsageDataRequest struct {
 	//
 	// The time granularity varies with the time range to query. Supported values: 300 (5 minutes), 3600 (1 hour), and 86400 (1 day). For more information, see **Usage notes**.
 	Interval *string `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	OwnerId  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The beginning of the time range to query.
 	//
 	// Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
@@ -15523,11 +15296,6 @@ func (s *DescribeDomainUsageDataRequest) SetField(v string) *DescribeDomainUsage
 
 func (s *DescribeDomainUsageDataRequest) SetInterval(v string) *DescribeDomainUsageDataRequest {
 	s.Interval = &v
-	return s
-}
-
-func (s *DescribeDomainUsageDataRequest) SetOwnerId(v int64) *DescribeDomainUsageDataRequest {
-	s.OwnerId = &v
 	return s
 }
 
@@ -15706,7 +15474,6 @@ type DescribeDomainUvDataRequest struct {
 	//
 	// The end time must be later than the start time.
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
@@ -15726,11 +15493,6 @@ func (s *DescribeDomainUvDataRequest) SetDomainName(v string) *DescribeDomainUvD
 
 func (s *DescribeDomainUvDataRequest) SetEndTime(v string) *DescribeDomainUvDataRequest {
 	s.EndTime = &v
-	return s
-}
-
-func (s *DescribeDomainUvDataRequest) SetOwnerId(v int64) *DescribeDomainUvDataRequest {
-	s.OwnerId = &v
 	return s
 }
 
@@ -16111,7 +15873,6 @@ type DescribeDomainsUsageByDayRequest struct {
 	//
 	// >  The end time must be later than the start time.
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The start of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC+0.
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
@@ -16131,11 +15892,6 @@ func (s *DescribeDomainsUsageByDayRequest) SetDomainName(v string) *DescribeDoma
 
 func (s *DescribeDomainsUsageByDayRequest) SetEndTime(v string) *DescribeDomainsUsageByDayRequest {
 	s.EndTime = &v
-	return s
-}
-
-func (s *DescribeDomainsUsageByDayRequest) SetOwnerId(v int64) *DescribeDomainsUsageByDayRequest {
-	s.OwnerId = &v
 	return s
 }
 
@@ -17351,7 +17107,6 @@ type DescribeRangeDataByLocateAndIspServiceRequest struct {
 	//
 	// You can call the [DescribeCdnRegionAndIsp](~~91077~~) operation to query the most recent region list.
 	LocationNames *string `json:"LocationNames,omitempty" xml:"LocationNames,omitempty"`
-	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The beginning of the time range to query.
 	//
 	// Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC+0.
@@ -17383,11 +17138,6 @@ func (s *DescribeRangeDataByLocateAndIspServiceRequest) SetIspNames(v string) *D
 
 func (s *DescribeRangeDataByLocateAndIspServiceRequest) SetLocationNames(v string) *DescribeRangeDataByLocateAndIspServiceRequest {
 	s.LocationNames = &v
-	return s
-}
-
-func (s *DescribeRangeDataByLocateAndIspServiceRequest) SetOwnerId(v int64) *DescribeRangeDataByLocateAndIspServiceRequest {
-	s.OwnerId = &v
 	return s
 }
 
@@ -17921,20 +17671,20 @@ func (s *DescribeRefreshTaskByIdResponse) SetBody(v *DescribeRefreshTaskByIdResp
 type DescribeRefreshTasksRequest struct {
 	// The accelerated domain name. You can specify only one accelerated domain name in each call. By default, this operation queries the status of tasks for all accelerated domain names.
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The end of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	// The end time. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
 	//
-	// >  The end time must be later than the start time.
+	// > The end time must be later than the start time.
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The path of the object. The path is used as a condition for exact matching.
 	ObjectPath *string `json:"ObjectPath,omitempty" xml:"ObjectPath,omitempty"`
 	// The type of the task. Valid values:
 	//
 	// *   **file**: refreshes one or more files.
-	// *   **directory**: refreshes files under the specified directories.
+	// *   **directory**: refreshes files in the specified directories.
 	// *   **regex**: refreshes content based on a regular expression.
 	// *   **preload**: prefetches one or more files.
 	//
-	// >  If you set the **DomainName** or **Status** parameter, you must also set the **ObjectType** parameter.
+	// > If you set the **DomainName** or **Status** parameter, you must also set the **ObjectType** parameter.
 	ObjectType *string `json:"ObjectType,omitempty" xml:"ObjectType,omitempty"`
 	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The number of the page to return. Valid values: **1** to **100000**.
@@ -17944,12 +17694,12 @@ type DescribeRefreshTasksRequest struct {
 	// The ID of the resource group.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	SecurityToken   *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	// The start of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The status of the task. Valid values:
 	//
 	// *   **Complete**: The task has completed.
-	// *   **Refreshing**: The task is running.
+	// *   **Refreshing**: The task is in progress.
 	// *   **Failed**: The task failed.
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The ID of the task that you want to query.
@@ -18031,7 +17781,7 @@ type DescribeRefreshTasksResponseBody struct {
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The details about the task.
+	// Details about tasks.
 	Tasks *DescribeRefreshTasksResponseBodyTasks `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Struct"`
 	// The total number of entries returned.
 	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
@@ -18094,25 +17844,24 @@ type DescribeRefreshTasksResponseBodyTasksCDNTask struct {
 	//
 	// *   **InternalError**: An internal error occurred.
 	// *   **OriginTimeout**: The response from the origin server timed out.
-	// *   **OriginReturn StatusCode 5XX**: The origin server returned a 5XX error.
+	// *   **OriginReturnStatusCode 5XX**: The origin server returned a 5XX error.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The URL of the object to be refreshed.
+	// The URL of the object refreshed.
 	ObjectPath *string `json:"ObjectPath,omitempty" xml:"ObjectPath,omitempty"`
 	// The type of the task.
 	//
 	// *   **file**: refreshes one or more files.
-	// *   **directory**: refreshes files under the specified directories.
+	// *   **directory**: refreshes files in the specified directories.
 	// *   **regex**: refreshes content based on a regular expression.
 	// *   **preload**: prefetches one or more files.
 	ObjectType *string `json:"ObjectType,omitempty" xml:"ObjectType,omitempty"`
 	// The progress of the task, in percentage.
 	Process *string `json:"Process,omitempty" xml:"Process,omitempty"`
-	// The status. Valid values:
+	// The status of the task. Valid values:
 	//
 	// *   **Complete**: The task has completed.
-	// *   **Refreshing**: The task is running.
+	// *   **Refreshing**: The task is in progress.
 	// *   **Failed**: The task failed.
-	// *   **Pending**: The task is pending.
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The ID of the task.
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
@@ -18262,12 +18011,11 @@ func (s *DescribeStagingIpResponse) SetBody(v *DescribeStagingIpResponseBody) *D
 }
 
 type DescribeTagResourcesRequest struct {
-	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The list of resource ID.
+	// A list of resource IDs. Maximum number of elements: 50.
 	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
-	// The resource type. Set the value to **DOMAIN**.
+	// The resource type. Set this value to **DOMAIN**.
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The tags.
+	// A list of tag combinations. Maximum number of elements: 20.
 	Tag []*DescribeTagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
@@ -18277,11 +18025,6 @@ func (s DescribeTagResourcesRequest) String() string {
 
 func (s DescribeTagResourcesRequest) GoString() string {
 	return s.String()
-}
-
-func (s *DescribeTagResourcesRequest) SetOwnerId(v int64) *DescribeTagResourcesRequest {
-	s.OwnerId = &v
-	return s
 }
 
 func (s *DescribeTagResourcesRequest) SetResourceId(v []*string) *DescribeTagResourcesRequest {
@@ -18300,9 +18043,9 @@ func (s *DescribeTagResourcesRequest) SetTag(v []*DescribeTagResourcesRequestTag
 }
 
 type DescribeTagResourcesRequestTag struct {
-	// The key of the tag. Valid values of N: **1** to **20**.
+	// The key of a tag.
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the tag. Valid values of N: **1** to **20**.
+	// The value of a tag.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -18327,7 +18070,7 @@ func (s *DescribeTagResourcesRequestTag) SetValue(v string) *DescribeTagResource
 type DescribeTagResourcesResponseBody struct {
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The tags that are attached to the specified resource.
+	// The details about the tag.
 	TagResources []*DescribeTagResourcesResponseBodyTagResources `json:"TagResources,omitempty" xml:"TagResources,omitempty" type:"Repeated"`
 }
 
@@ -18352,7 +18095,7 @@ func (s *DescribeTagResourcesResponseBody) SetTagResources(v []*DescribeTagResou
 type DescribeTagResourcesResponseBodyTagResources struct {
 	// The ID of the resource.
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// The key-value pair of the tag.
+	// A list of tags.
 	Tag []*DescribeTagResourcesResponseBodyTagResourcesTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
@@ -18375,9 +18118,9 @@ func (s *DescribeTagResourcesResponseBodyTagResources) SetTag(v []*DescribeTagRe
 }
 
 type DescribeTagResourcesResponseBodyTagResourcesTag struct {
-	// The key of the tag.
+	// The key of a tag.
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the tag.
+	// The value of a tag.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -19823,7 +19566,6 @@ type DescribeUserVipsByDomainRequest struct {
 	Available *string `json:"Available,omitempty" xml:"Available,omitempty"`
 	// The accelerated domain name. You can specify only one domain name.
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 }
 
 func (s DescribeUserVipsByDomainRequest) String() string {
@@ -19841,11 +19583,6 @@ func (s *DescribeUserVipsByDomainRequest) SetAvailable(v string) *DescribeUserVi
 
 func (s *DescribeUserVipsByDomainRequest) SetDomainName(v string) *DescribeUserVipsByDomainRequest {
 	s.DomainName = &v
-	return s
-}
-
-func (s *DescribeUserVipsByDomainRequest) SetOwnerId(v int64) *DescribeUserVipsByDomainRequest {
-	s.OwnerId = &v
 	return s
 }
 
@@ -22617,7 +22354,6 @@ func (s *UpdateFCTriggerResponse) SetBody(v *UpdateFCTriggerResponseBody) *Updat
 type VerifyDomainOwnerRequest struct {
 	// The domain name of which you want to verify the ownership. You can specify only one domain name.
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The verification method. Valid values:
 	//
 	// *   **dnsCheck**: by DNS record
@@ -22635,11 +22371,6 @@ func (s VerifyDomainOwnerRequest) GoString() string {
 
 func (s *VerifyDomainOwnerRequest) SetDomainName(v string) *VerifyDomainOwnerRequest {
 	s.DomainName = &v
-	return s
-}
-
-func (s *VerifyDomainOwnerRequest) SetOwnerId(v int64) *VerifyDomainOwnerRequest {
-	s.OwnerId = &v
 	return s
 }
 
@@ -22766,10 +22497,10 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 /**
  * *   You must activate Alibaba Cloud CDN before you can add a domain name to it. For more information, see [Activate Alibaba Cloud CDN](~~27272~~).
- * *   The domain name that you want to add has a valid Internet Content Provider (ICP) number.
- * *   You can add only one domain name to Alibaba Cloud CDN in each call. Each Alibaba Cloud account can add a maximum of 50 domain names to Alibaba Cloud CDN.
- * *   If the content of the origin server is not stored on Alibaba Cloud, the content must be reviewed. The review will be completed by the end of the next business day after you submit the application.
- * *   The maximum number of times that each user can call this operation per second is 30.
+ * *   If the acceleration region is Chinese Mainland Only or Global, you must apply for an ICP filing for the domain name.
+ * *   You can specify multiple domain names and separate them with commas (,). You can specify at most 50 domain names in each call.
+ * *   For more information, see [Add a domain name](~~122181~~).
+ * *   You can call this operation up to 30 times per second per account.
  *
  * @param request AddCdnDomainRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -22850,10 +22581,10 @@ func (client *Client) AddCdnDomainWithOptions(request *AddCdnDomainRequest, runt
 
 /**
  * *   You must activate Alibaba Cloud CDN before you can add a domain name to it. For more information, see [Activate Alibaba Cloud CDN](~~27272~~).
- * *   The domain name that you want to add has a valid Internet Content Provider (ICP) number.
- * *   You can add only one domain name to Alibaba Cloud CDN in each call. Each Alibaba Cloud account can add a maximum of 50 domain names to Alibaba Cloud CDN.
- * *   If the content of the origin server is not stored on Alibaba Cloud, the content must be reviewed. The review will be completed by the end of the next business day after you submit the application.
- * *   The maximum number of times that each user can call this operation per second is 30.
+ * *   If the acceleration region is Chinese Mainland Only or Global, you must apply for an ICP filing for the domain name.
+ * *   You can specify multiple domain names and separate them with commas (,). You can specify at most 50 domain names in each call.
+ * *   For more information, see [Add a domain name](~~122181~~).
+ * *   You can call this operation up to 30 times per second per account.
  *
  * @param request AddCdnDomainRequest
  * @return AddCdnDomainResponse
@@ -22940,11 +22671,11 @@ func (client *Client) AddFCTrigger(request *AddFCTriggerRequest) (_result *AddFC
 }
 
 /**
- * - You must activate Alibaba Cloud CDN before you can add a domain name to it. For more information, see [Activate Alibaba Cloud CDN](~~27272~~).
- * - The domain name that you want to add has a valid Internet Content Provider (ICP) number.
- * - If the content from the origin server is not stored on Alibaba Cloud, the content must be reviewed by Alibaba Cloud. The review will be completed by the end of the next business day after you submit the application.
- * - You can specify multiple domain names (no more than 50) and separate them with commas (,).
- * - The maximum number of times that each user can call this operation per second is 30.
+ * *   You must activate Alibaba Cloud CDN before you can add a domain name to it. For more information, see [Activate Alibaba Cloud CDN](~~27272~~).
+ * *   If the acceleration region is Chinese Mainland Only or Global, you must apply for an ICP filing for the domain name.
+ * *   You can specify multiple domain names and separate them with commas (,). You can specify at most 50 domain names in each call.
+ * *   For more information, see [Add a domain name](~~122181~~).
+ * *   You can call this operation up to 30 times per second per account.
  *
  * @param request BatchAddCdnDomainRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -23020,11 +22751,11 @@ func (client *Client) BatchAddCdnDomainWithOptions(request *BatchAddCdnDomainReq
 }
 
 /**
- * - You must activate Alibaba Cloud CDN before you can add a domain name to it. For more information, see [Activate Alibaba Cloud CDN](~~27272~~).
- * - The domain name that you want to add has a valid Internet Content Provider (ICP) number.
- * - If the content from the origin server is not stored on Alibaba Cloud, the content must be reviewed by Alibaba Cloud. The review will be completed by the end of the next business day after you submit the application.
- * - You can specify multiple domain names (no more than 50) and separate them with commas (,).
- * - The maximum number of times that each user can call this operation per second is 30.
+ * *   You must activate Alibaba Cloud CDN before you can add a domain name to it. For more information, see [Activate Alibaba Cloud CDN](~~27272~~).
+ * *   If the acceleration region is Chinese Mainland Only or Global, you must apply for an ICP filing for the domain name.
+ * *   You can specify multiple domain names and separate them with commas (,). You can specify at most 50 domain names in each call.
+ * *   For more information, see [Add a domain name](~~122181~~).
+ * *   You can call this operation up to 30 times per second per account.
  *
  * @param request BatchAddCdnDomainRequest
  * @return BatchAddCdnDomainResponse
@@ -24833,10 +24564,6 @@ func (client *Client) DescribeCdnDeliverListWithOptions(request *DescribeCdnDeli
 		query["DeliverId"] = request.DeliverId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
-	}
-
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -24890,10 +24617,6 @@ func (client *Client) DescribeCdnDomainByCertificateWithOptions(request *Describ
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.SSLPub)) {
 		query["SSLPub"] = request.SSLPub
 	}
@@ -25016,7 +24739,7 @@ func (client *Client) DescribeCdnDomainConfigs(request *DescribeCdnDomainConfigs
 }
 
 /**
- * >  The maximum number of times that each user can call this operation per second is 30.
+ * The maximum number of times that each user can call this operation per second is 30.
  *
  * @param request DescribeCdnDomainDetailRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -25064,7 +24787,7 @@ func (client *Client) DescribeCdnDomainDetailWithOptions(request *DescribeCdnDom
 }
 
 /**
- * >  The maximum number of times that each user can call this operation per second is 30.
+ * The maximum number of times that each user can call this operation per second is 30.
  *
  * @param request DescribeCdnDomainDetailRequest
  * @return DescribeCdnDomainDetailResponse
@@ -25101,10 +24824,6 @@ func (client *Client) DescribeCdnDomainLogsWithOptions(request *DescribeCdnDomai
 
 	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
 		query["EndTime"] = request.EndTime
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
@@ -25989,10 +25708,6 @@ func (client *Client) DescribeCdnUserConfigsWithOptions(request *DescribeCdnUser
 		query["FunctionName"] = request.FunctionName
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
-	}
-
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -26034,7 +25749,7 @@ func (client *Client) DescribeCdnUserConfigs(request *DescribeCdnUserConfigsRequ
 }
 
 /**
- * >  The maximum number of times that each user can call this operation per second is 100.
+ * > You can call this operation up to 100 times per second per account.
  *
  * @param request DescribeCdnUserDomainsByFuncRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -26048,10 +25763,6 @@ func (client *Client) DescribeCdnUserDomainsByFuncWithOptions(request *DescribeC
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.FuncId)) {
 		query["FuncId"] = request.FuncId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
@@ -26090,7 +25801,7 @@ func (client *Client) DescribeCdnUserDomainsByFuncWithOptions(request *DescribeC
 }
 
 /**
- * >  The maximum number of times that each user can call this operation per second is 100.
+ * > You can call this operation up to 100 times per second per account.
  *
  * @param request DescribeCdnUserDomainsByFuncRequest
  * @return DescribeCdnUserDomainsByFuncResponse
@@ -26432,10 +26143,6 @@ func (client *Client) DescribeDomainAverageResponseTimeWithOptions(request *Desc
 		query["LocationNameEn"] = request.LocationNameEn
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
 		query["StartTime"] = request.StartTime
 	}
@@ -26526,10 +26233,6 @@ func (client *Client) DescribeDomainBpsDataWithOptions(request *DescribeDomainBp
 
 	if !tea.BoolValue(util.IsUnset(request.LocationNameEn)) {
 		query["LocationNameEn"] = request.LocationNameEn
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
@@ -26629,10 +26332,6 @@ func (client *Client) DescribeDomainBpsDataByLayerWithOptions(request *DescribeD
 		query["LocationNameEn"] = request.LocationNameEn
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
 		query["StartTime"] = request.StartTime
 	}
@@ -26711,10 +26410,6 @@ func (client *Client) DescribeDomainBpsDataByTimeStampWithOptions(request *Descr
 
 	if !tea.BoolValue(util.IsUnset(request.LocationNames)) {
 		query["LocationNames"] = request.LocationNames
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.TimePoint)) {
@@ -26872,10 +26567,6 @@ func (client *Client) DescribeDomainCertificateInfoWithOptions(request *Describe
 		query["DomainName"] = request.DomainName
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
-	}
-
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -26924,10 +26615,6 @@ func (client *Client) DescribeDomainCnameWithOptions(request *DescribeDomainCnam
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
 		query["DomainName"] = request.DomainName
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -27119,10 +26806,6 @@ func (client *Client) DescribeDomainHitRateDataWithOptions(request *DescribeDoma
 		query["Interval"] = request.Interval
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
 		query["StartTime"] = request.StartTime
 	}
@@ -27208,8 +26891,12 @@ func (client *Client) DescribeDomainHttpCodeDataWithOptions(request *DescribeDom
 		query["Interval"] = request.Interval
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
+	if !tea.BoolValue(util.IsUnset(request.IspNameEn)) {
+		query["IspNameEn"] = request.IspNameEn
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LocationNameEn)) {
+		query["LocationNameEn"] = request.LocationNameEn
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
@@ -27309,10 +26996,6 @@ func (client *Client) DescribeDomainHttpCodeDataByLayerWithOptions(request *Desc
 		query["LocationNameEn"] = request.LocationNameEn
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
 		query["StartTime"] = request.StartTime
 	}
@@ -27389,10 +27072,6 @@ func (client *Client) DescribeDomainISPDataWithOptions(request *DescribeDomainIS
 		query["EndTime"] = request.EndTime
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
 		query["StartTime"] = request.StartTime
 	}
@@ -27456,10 +27135,6 @@ func (client *Client) DescribeDomainMax95BpsDataWithOptions(request *DescribeDom
 
 	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
 		query["EndTime"] = request.EndTime
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
@@ -27527,10 +27202,6 @@ func (client *Client) DescribeDomainMultiUsageDataWithOptions(request *DescribeD
 
 	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
 		query["EndTime"] = request.EndTime
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
@@ -27669,10 +27340,6 @@ func (client *Client) DescribeDomainPvDataWithOptions(request *DescribeDomainPvD
 		query["EndTime"] = request.EndTime
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
 		query["StartTime"] = request.StartTime
 	}
@@ -27758,10 +27425,6 @@ func (client *Client) DescribeDomainQpsDataWithOptions(request *DescribeDomainQp
 
 	if !tea.BoolValue(util.IsUnset(request.LocationNameEn)) {
 		query["LocationNameEn"] = request.LocationNameEn
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
@@ -27859,10 +27522,6 @@ func (client *Client) DescribeDomainQpsDataByLayerWithOptions(request *DescribeD
 
 	if !tea.BoolValue(util.IsUnset(request.LocationNameEn)) {
 		query["LocationNameEn"] = request.LocationNameEn
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
@@ -28149,10 +27808,6 @@ func (client *Client) DescribeDomainRealTimeHttpCodeDataWithOptions(request *Des
 		query["LocationNameEn"] = request.LocationNameEn
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
 		query["StartTime"] = request.StartTime
 	}
@@ -28376,10 +28031,6 @@ func (client *Client) DescribeDomainRealTimeSrcBpsDataWithOptions(request *Descr
 		query["EndTime"] = request.EndTime
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
 		query["StartTime"] = request.StartTime
 	}
@@ -28469,10 +28120,6 @@ func (client *Client) DescribeDomainRealTimeSrcHttpCodeDataWithOptions(request *
 		query["LocationNameEn"] = request.LocationNameEn
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
 		query["StartTime"] = request.StartTime
 	}
@@ -28552,10 +28199,6 @@ func (client *Client) DescribeDomainRealTimeSrcTrafficDataWithOptions(request *D
 
 	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
 		query["EndTime"] = request.EndTime
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
@@ -28645,10 +28288,6 @@ func (client *Client) DescribeDomainRealTimeTrafficDataWithOptions(request *Desc
 
 	if !tea.BoolValue(util.IsUnset(request.LocationNameEn)) {
 		query["LocationNameEn"] = request.LocationNameEn
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
@@ -28780,10 +28419,6 @@ func (client *Client) DescribeDomainRegionDataWithOptions(request *DescribeDomai
 		query["EndTime"] = request.EndTime
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
 		query["StartTime"] = request.StartTime
 	}
@@ -28862,10 +28497,6 @@ func (client *Client) DescribeDomainReqHitRateDataWithOptions(request *DescribeD
 
 	if !tea.BoolValue(util.IsUnset(request.Interval)) {
 		query["Interval"] = request.Interval
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
@@ -28953,10 +28584,6 @@ func (client *Client) DescribeDomainSrcBpsDataWithOptions(request *DescribeDomai
 		query["Interval"] = request.Interval
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
 		query["StartTime"] = request.StartTime
 	}
@@ -29042,10 +28669,6 @@ func (client *Client) DescribeDomainSrcHttpCodeDataWithOptions(request *Describe
 		query["Interval"] = request.Interval
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
 		query["StartTime"] = request.StartTime
 	}
@@ -29129,10 +28752,6 @@ func (client *Client) DescribeDomainSrcQpsDataWithOptions(request *DescribeDomai
 
 	if !tea.BoolValue(util.IsUnset(request.Interval)) {
 		query["Interval"] = request.Interval
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
@@ -29291,10 +28910,6 @@ func (client *Client) DescribeDomainSrcTrafficDataWithOptions(request *DescribeD
 
 	if !tea.BoolValue(util.IsUnset(request.Interval)) {
 		query["Interval"] = request.Interval
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
@@ -29531,10 +29146,6 @@ func (client *Client) DescribeDomainTopUrlVisitWithOptions(request *DescribeDoma
 		query["EndTime"] = request.EndTime
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.SortBy)) {
 		query["SortBy"] = request.SortBy
 	}
@@ -29625,10 +29236,6 @@ func (client *Client) DescribeDomainTrafficDataWithOptions(request *DescribeDoma
 
 	if !tea.BoolValue(util.IsUnset(request.LocationNameEn)) {
 		query["LocationNameEn"] = request.LocationNameEn
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
@@ -29728,10 +29335,6 @@ func (client *Client) DescribeDomainUsageDataWithOptions(request *DescribeDomain
 		query["Interval"] = request.Interval
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
 		query["StartTime"] = request.StartTime
 	}
@@ -29810,10 +29413,6 @@ func (client *Client) DescribeDomainUvDataWithOptions(request *DescribeDomainUvD
 
 	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
 		query["EndTime"] = request.EndTime
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
@@ -29948,10 +29547,6 @@ func (client *Client) DescribeDomainsUsageByDayWithOptions(request *DescribeDoma
 
 	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
 		query["EndTime"] = request.EndTime
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
@@ -30479,10 +30074,6 @@ func (client *Client) DescribeRangeDataByLocateAndIspServiceWithOptions(request 
 		query["LocationNames"] = request.LocationNames
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
 		query["StartTime"] = request.StartTime
 	}
@@ -30724,9 +30315,9 @@ func (client *Client) DescribeRefreshTaskById(request *DescribeRefreshTaskByIdRe
 }
 
 /**
- * * You can query the status of tasks by task ID or URL.
- * * You can set both the **TaskId** and **ObjectPath** parameters. If you do not set the **TaskId** or **ObjectPath** parameter, data entries on the first page (20 entries) collected within the last three days are returned.
- * *   You can query data collected within the last three days.
+ * *   You can query the status of tasks by task ID or URL.
+ * *   You can set both the **TaskId** and **ObjectPath** parameters. If you do not set the **TaskId** or **ObjectPath** parameter, data entries on the first page (20 entries) collected in the last 3 days are returned.
+ * *   You can query data collected in the last 3 days.
  * *   If auto CDN cache update is enabled in the Object Storage Service (OSS) console, you cannot call the DescribeRefreshTasks operation to query automatic refresh tasks in OSS.
  * *   You can call this operation up to 10 times per second per account. If you want to query tasks at a higher frequency, call the [DescribeRefreshTaskById](~~187709~~) operation. This operation allows you to query tasks by task ID.
  *
@@ -30812,9 +30403,9 @@ func (client *Client) DescribeRefreshTasksWithOptions(request *DescribeRefreshTa
 }
 
 /**
- * * You can query the status of tasks by task ID or URL.
- * * You can set both the **TaskId** and **ObjectPath** parameters. If you do not set the **TaskId** or **ObjectPath** parameter, data entries on the first page (20 entries) collected within the last three days are returned.
- * *   You can query data collected within the last three days.
+ * *   You can query the status of tasks by task ID or URL.
+ * *   You can set both the **TaskId** and **ObjectPath** parameters. If you do not set the **TaskId** or **ObjectPath** parameter, data entries on the first page (20 entries) collected in the last 3 days are returned.
+ * *   You can query data collected in the last 3 days.
  * *   If auto CDN cache update is enabled in the Object Storage Service (OSS) console, you cannot call the DescribeRefreshTasks operation to query automatic refresh tasks in OSS.
  * *   You can call this operation up to 10 times per second per account. If you want to query tasks at a higher frequency, call the [DescribeRefreshTaskById](~~187709~~) operation. This operation allows you to query tasks by task ID.
  *
@@ -30878,7 +30469,7 @@ func (client *Client) DescribeStagingIp() (_result *DescribeStagingIpResponse, _
 }
 
 /**
- * >  The maximum number of times that each user can call this operation per second is 10.
+ * > You can call this operation up to 10 times per second per account.
  *
  * @param request DescribeTagResourcesRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -30890,10 +30481,6 @@ func (client *Client) DescribeTagResourcesWithOptions(request *DescribeTagResour
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
 		query["ResourceId"] = request.ResourceId
 	}
@@ -30930,7 +30517,7 @@ func (client *Client) DescribeTagResourcesWithOptions(request *DescribeTagResour
 }
 
 /**
- * >  The maximum number of times that each user can call this operation per second is 10.
+ * > You can call this operation up to 10 times per second per account.
  *
  * @param request DescribeTagResourcesRequest
  * @return DescribeTagResourcesResponse
@@ -33354,10 +32941,6 @@ func (client *Client) VerifyDomainOwnerWithOptions(request *VerifyDomainOwnerReq
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
 		query["DomainName"] = request.DomainName
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.VerifyType)) {
