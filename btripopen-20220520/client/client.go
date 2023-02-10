@@ -1783,6 +1783,266 @@ func (s *ApplyApproveResponse) SetBody(v *ApplyApproveResponseBody) *ApplyApprov
 	return s
 }
 
+type ApplyInvoiceTaskHeaders struct {
+	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsBtripSoCorpToken *string            `json:"x-acs-btrip-so-corp-token,omitempty" xml:"x-acs-btrip-so-corp-token,omitempty"`
+}
+
+func (s ApplyInvoiceTaskHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ApplyInvoiceTaskHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *ApplyInvoiceTaskHeaders) SetCommonHeaders(v map[string]*string) *ApplyInvoiceTaskHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *ApplyInvoiceTaskHeaders) SetXAcsBtripSoCorpToken(v string) *ApplyInvoiceTaskHeaders {
+	s.XAcsBtripSoCorpToken = &v
+	return s
+}
+
+type ApplyInvoiceTaskRequest struct {
+	BillDate        *string                                   `json:"bill_date,omitempty" xml:"bill_date,omitempty"`
+	InvoiceTaskList []*ApplyInvoiceTaskRequestInvoiceTaskList `json:"invoice_task_list,omitempty" xml:"invoice_task_list,omitempty" type:"Repeated"`
+}
+
+func (s ApplyInvoiceTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ApplyInvoiceTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ApplyInvoiceTaskRequest) SetBillDate(v string) *ApplyInvoiceTaskRequest {
+	s.BillDate = &v
+	return s
+}
+
+func (s *ApplyInvoiceTaskRequest) SetInvoiceTaskList(v []*ApplyInvoiceTaskRequestInvoiceTaskList) *ApplyInvoiceTaskRequest {
+	s.InvoiceTaskList = v
+	return s
+}
+
+type ApplyInvoiceTaskRequestInvoiceTaskList struct {
+	Contact                       *string `json:"contact,omitempty" xml:"contact,omitempty"`
+	Email                         *string `json:"email,omitempty" xml:"email,omitempty"`
+	FlightInvoiceFee              *string `json:"flight_invoice_fee,omitempty" xml:"flight_invoice_fee,omitempty"`
+	FuPointInvoiceFee             *string `json:"fu_point_invoice_fee,omitempty" xml:"fu_point_invoice_fee,omitempty"`
+	HotelNormalInvoiceFee         *string `json:"hotel_normal_invoice_fee,omitempty" xml:"hotel_normal_invoice_fee,omitempty"`
+	HotelSpecialInvoiceFee        *string `json:"hotel_special_invoice_fee,omitempty" xml:"hotel_special_invoice_fee,omitempty"`
+	InternationalFlightInvoiceFee *string `json:"international_flight_invoice_fee,omitempty" xml:"international_flight_invoice_fee,omitempty"`
+	InvoiceThirdPartId            *string `json:"invoice_third_part_id,omitempty" xml:"invoice_third_part_id,omitempty"`
+	MailAddress                   *string `json:"mail_address,omitempty" xml:"mail_address,omitempty"`
+	MailCity                      *string `json:"mail_city,omitempty" xml:"mail_city,omitempty"`
+	MailFullAddress               *string `json:"mail_full_address,omitempty" xml:"mail_full_address,omitempty"`
+	MailProvince                  *string `json:"mail_province,omitempty" xml:"mail_province,omitempty"`
+	PenaltyFee                    *string `json:"penalty_fee,omitempty" xml:"penalty_fee,omitempty"`
+	Remark                        *string `json:"remark,omitempty" xml:"remark,omitempty"`
+	ServiceFee                    *string `json:"service_fee,omitempty" xml:"service_fee,omitempty"`
+	Telephone                     *string `json:"telephone,omitempty" xml:"telephone,omitempty"`
+	TrainInvoiceFee               *string `json:"train_invoice_fee,omitempty" xml:"train_invoice_fee,omitempty"`
+	VehicleInvoiceFee             *string `json:"vehicle_invoice_fee,omitempty" xml:"vehicle_invoice_fee,omitempty"`
+}
+
+func (s ApplyInvoiceTaskRequestInvoiceTaskList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ApplyInvoiceTaskRequestInvoiceTaskList) GoString() string {
+	return s.String()
+}
+
+func (s *ApplyInvoiceTaskRequestInvoiceTaskList) SetContact(v string) *ApplyInvoiceTaskRequestInvoiceTaskList {
+	s.Contact = &v
+	return s
+}
+
+func (s *ApplyInvoiceTaskRequestInvoiceTaskList) SetEmail(v string) *ApplyInvoiceTaskRequestInvoiceTaskList {
+	s.Email = &v
+	return s
+}
+
+func (s *ApplyInvoiceTaskRequestInvoiceTaskList) SetFlightInvoiceFee(v string) *ApplyInvoiceTaskRequestInvoiceTaskList {
+	s.FlightInvoiceFee = &v
+	return s
+}
+
+func (s *ApplyInvoiceTaskRequestInvoiceTaskList) SetFuPointInvoiceFee(v string) *ApplyInvoiceTaskRequestInvoiceTaskList {
+	s.FuPointInvoiceFee = &v
+	return s
+}
+
+func (s *ApplyInvoiceTaskRequestInvoiceTaskList) SetHotelNormalInvoiceFee(v string) *ApplyInvoiceTaskRequestInvoiceTaskList {
+	s.HotelNormalInvoiceFee = &v
+	return s
+}
+
+func (s *ApplyInvoiceTaskRequestInvoiceTaskList) SetHotelSpecialInvoiceFee(v string) *ApplyInvoiceTaskRequestInvoiceTaskList {
+	s.HotelSpecialInvoiceFee = &v
+	return s
+}
+
+func (s *ApplyInvoiceTaskRequestInvoiceTaskList) SetInternationalFlightInvoiceFee(v string) *ApplyInvoiceTaskRequestInvoiceTaskList {
+	s.InternationalFlightInvoiceFee = &v
+	return s
+}
+
+func (s *ApplyInvoiceTaskRequestInvoiceTaskList) SetInvoiceThirdPartId(v string) *ApplyInvoiceTaskRequestInvoiceTaskList {
+	s.InvoiceThirdPartId = &v
+	return s
+}
+
+func (s *ApplyInvoiceTaskRequestInvoiceTaskList) SetMailAddress(v string) *ApplyInvoiceTaskRequestInvoiceTaskList {
+	s.MailAddress = &v
+	return s
+}
+
+func (s *ApplyInvoiceTaskRequestInvoiceTaskList) SetMailCity(v string) *ApplyInvoiceTaskRequestInvoiceTaskList {
+	s.MailCity = &v
+	return s
+}
+
+func (s *ApplyInvoiceTaskRequestInvoiceTaskList) SetMailFullAddress(v string) *ApplyInvoiceTaskRequestInvoiceTaskList {
+	s.MailFullAddress = &v
+	return s
+}
+
+func (s *ApplyInvoiceTaskRequestInvoiceTaskList) SetMailProvince(v string) *ApplyInvoiceTaskRequestInvoiceTaskList {
+	s.MailProvince = &v
+	return s
+}
+
+func (s *ApplyInvoiceTaskRequestInvoiceTaskList) SetPenaltyFee(v string) *ApplyInvoiceTaskRequestInvoiceTaskList {
+	s.PenaltyFee = &v
+	return s
+}
+
+func (s *ApplyInvoiceTaskRequestInvoiceTaskList) SetRemark(v string) *ApplyInvoiceTaskRequestInvoiceTaskList {
+	s.Remark = &v
+	return s
+}
+
+func (s *ApplyInvoiceTaskRequestInvoiceTaskList) SetServiceFee(v string) *ApplyInvoiceTaskRequestInvoiceTaskList {
+	s.ServiceFee = &v
+	return s
+}
+
+func (s *ApplyInvoiceTaskRequestInvoiceTaskList) SetTelephone(v string) *ApplyInvoiceTaskRequestInvoiceTaskList {
+	s.Telephone = &v
+	return s
+}
+
+func (s *ApplyInvoiceTaskRequestInvoiceTaskList) SetTrainInvoiceFee(v string) *ApplyInvoiceTaskRequestInvoiceTaskList {
+	s.TrainInvoiceFee = &v
+	return s
+}
+
+func (s *ApplyInvoiceTaskRequestInvoiceTaskList) SetVehicleInvoiceFee(v string) *ApplyInvoiceTaskRequestInvoiceTaskList {
+	s.VehicleInvoiceFee = &v
+	return s
+}
+
+type ApplyInvoiceTaskShrinkRequest struct {
+	BillDate              *string `json:"bill_date,omitempty" xml:"bill_date,omitempty"`
+	InvoiceTaskListShrink *string `json:"invoice_task_list,omitempty" xml:"invoice_task_list,omitempty"`
+}
+
+func (s ApplyInvoiceTaskShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ApplyInvoiceTaskShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ApplyInvoiceTaskShrinkRequest) SetBillDate(v string) *ApplyInvoiceTaskShrinkRequest {
+	s.BillDate = &v
+	return s
+}
+
+func (s *ApplyInvoiceTaskShrinkRequest) SetInvoiceTaskListShrink(v string) *ApplyInvoiceTaskShrinkRequest {
+	s.InvoiceTaskListShrink = &v
+	return s
+}
+
+type ApplyInvoiceTaskResponseBody struct {
+	Code    *string `json:"code,omitempty" xml:"code,omitempty"`
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// requestId
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success   *bool   `json:"success,omitempty" xml:"success,omitempty"`
+	// traceId
+	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
+}
+
+func (s ApplyInvoiceTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ApplyInvoiceTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ApplyInvoiceTaskResponseBody) SetCode(v string) *ApplyInvoiceTaskResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ApplyInvoiceTaskResponseBody) SetMessage(v string) *ApplyInvoiceTaskResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ApplyInvoiceTaskResponseBody) SetRequestId(v string) *ApplyInvoiceTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ApplyInvoiceTaskResponseBody) SetSuccess(v bool) *ApplyInvoiceTaskResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *ApplyInvoiceTaskResponseBody) SetTraceId(v string) *ApplyInvoiceTaskResponseBody {
+	s.TraceId = &v
+	return s
+}
+
+type ApplyInvoiceTaskResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ApplyInvoiceTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ApplyInvoiceTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ApplyInvoiceTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ApplyInvoiceTaskResponse) SetHeaders(v map[string]*string) *ApplyInvoiceTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ApplyInvoiceTaskResponse) SetStatusCode(v int32) *ApplyInvoiceTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ApplyInvoiceTaskResponse) SetBody(v *ApplyInvoiceTaskResponseBody) *ApplyInvoiceTaskResponse {
+	s.Body = v
+	return s
+}
+
 type ApplyListQueryHeaders struct {
 	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	XAcsBtripSoCorpToken *string            `json:"x-acs-btrip-so-corp-token,omitempty" xml:"x-acs-btrip-so-corp-token,omitempty"`
@@ -10946,6 +11206,302 @@ func (s *FlightExceedApplyQueryResponse) SetStatusCode(v int32) *FlightExceedApp
 }
 
 func (s *FlightExceedApplyQueryResponse) SetBody(v *FlightExceedApplyQueryResponseBody) *FlightExceedApplyQueryResponse {
+	s.Body = v
+	return s
+}
+
+type FlightItineraryScanQueryHeaders struct {
+	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsBtripSoCorpToken *string            `json:"x-acs-btrip-so-corp-token,omitempty" xml:"x-acs-btrip-so-corp-token,omitempty"`
+}
+
+func (s FlightItineraryScanQueryHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FlightItineraryScanQueryHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *FlightItineraryScanQueryHeaders) SetCommonHeaders(v map[string]*string) *FlightItineraryScanQueryHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *FlightItineraryScanQueryHeaders) SetXAcsBtripSoCorpToken(v string) *FlightItineraryScanQueryHeaders {
+	s.XAcsBtripSoCorpToken = &v
+	return s
+}
+
+type FlightItineraryScanQueryRequest struct {
+	BillDate         *string `json:"bill_date,omitempty" xml:"bill_date,omitempty"`
+	BillId           *int64  `json:"bill_id,omitempty" xml:"bill_id,omitempty"`
+	InvoiceSubTaskId *int64  `json:"invoice_sub_task_id,omitempty" xml:"invoice_sub_task_id,omitempty"`
+	PageNo           *int32  `json:"page_no,omitempty" xml:"page_no,omitempty"`
+	PageSize         *int32  `json:"page_size,omitempty" xml:"page_size,omitempty"`
+}
+
+func (s FlightItineraryScanQueryRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FlightItineraryScanQueryRequest) GoString() string {
+	return s.String()
+}
+
+func (s *FlightItineraryScanQueryRequest) SetBillDate(v string) *FlightItineraryScanQueryRequest {
+	s.BillDate = &v
+	return s
+}
+
+func (s *FlightItineraryScanQueryRequest) SetBillId(v int64) *FlightItineraryScanQueryRequest {
+	s.BillId = &v
+	return s
+}
+
+func (s *FlightItineraryScanQueryRequest) SetInvoiceSubTaskId(v int64) *FlightItineraryScanQueryRequest {
+	s.InvoiceSubTaskId = &v
+	return s
+}
+
+func (s *FlightItineraryScanQueryRequest) SetPageNo(v int32) *FlightItineraryScanQueryRequest {
+	s.PageNo = &v
+	return s
+}
+
+func (s *FlightItineraryScanQueryRequest) SetPageSize(v int32) *FlightItineraryScanQueryRequest {
+	s.PageSize = &v
+	return s
+}
+
+type FlightItineraryScanQueryResponseBody struct {
+	Code    *string                                     `json:"code,omitempty" xml:"code,omitempty"`
+	Message *string                                     `json:"message,omitempty" xml:"message,omitempty"`
+	Module  *FlightItineraryScanQueryResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
+	// requestId
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success   *bool   `json:"success,omitempty" xml:"success,omitempty"`
+	// traceId
+	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
+}
+
+func (s FlightItineraryScanQueryResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FlightItineraryScanQueryResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *FlightItineraryScanQueryResponseBody) SetCode(v string) *FlightItineraryScanQueryResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *FlightItineraryScanQueryResponseBody) SetMessage(v string) *FlightItineraryScanQueryResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *FlightItineraryScanQueryResponseBody) SetModule(v *FlightItineraryScanQueryResponseBodyModule) *FlightItineraryScanQueryResponseBody {
+	s.Module = v
+	return s
+}
+
+func (s *FlightItineraryScanQueryResponseBody) SetRequestId(v string) *FlightItineraryScanQueryResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *FlightItineraryScanQueryResponseBody) SetSuccess(v bool) *FlightItineraryScanQueryResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *FlightItineraryScanQueryResponseBody) SetTraceId(v string) *FlightItineraryScanQueryResponseBody {
+	s.TraceId = &v
+	return s
+}
+
+type FlightItineraryScanQueryResponseBodyModule struct {
+	Items     []*FlightItineraryScanQueryResponseBodyModuleItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
+	PageNo    *int32                                             `json:"page_no,omitempty" xml:"page_no,omitempty"`
+	PageSize  *int32                                             `json:"page_size,omitempty" xml:"page_size,omitempty"`
+	TotalPage *int32                                             `json:"total_page,omitempty" xml:"total_page,omitempty"`
+	TotalSize *int32                                             `json:"total_size,omitempty" xml:"total_size,omitempty"`
+}
+
+func (s FlightItineraryScanQueryResponseBodyModule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FlightItineraryScanQueryResponseBodyModule) GoString() string {
+	return s.String()
+}
+
+func (s *FlightItineraryScanQueryResponseBodyModule) SetItems(v []*FlightItineraryScanQueryResponseBodyModuleItems) *FlightItineraryScanQueryResponseBodyModule {
+	s.Items = v
+	return s
+}
+
+func (s *FlightItineraryScanQueryResponseBodyModule) SetPageNo(v int32) *FlightItineraryScanQueryResponseBodyModule {
+	s.PageNo = &v
+	return s
+}
+
+func (s *FlightItineraryScanQueryResponseBodyModule) SetPageSize(v int32) *FlightItineraryScanQueryResponseBodyModule {
+	s.PageSize = &v
+	return s
+}
+
+func (s *FlightItineraryScanQueryResponseBodyModule) SetTotalPage(v int32) *FlightItineraryScanQueryResponseBodyModule {
+	s.TotalPage = &v
+	return s
+}
+
+func (s *FlightItineraryScanQueryResponseBodyModule) SetTotalSize(v int32) *FlightItineraryScanQueryResponseBodyModule {
+	s.TotalSize = &v
+	return s
+}
+
+type FlightItineraryScanQueryResponseBodyModuleItems struct {
+	BillDate      *string `json:"bill_date,omitempty" xml:"bill_date,omitempty"`
+	Build         *string `json:"build,omitempty" xml:"build,omitempty"`
+	CostCenter    *string `json:"cost_center,omitempty" xml:"cost_center,omitempty"`
+	Department    *string `json:"department,omitempty" xml:"department,omitempty"`
+	FuelSurcharge *string `json:"fuel_surcharge,omitempty" xml:"fuel_surcharge,omitempty"`
+	Insurance     *string `json:"insurance,omitempty" xml:"insurance,omitempty"`
+	InvoiceTitle  *string `json:"invoice_title,omitempty" xml:"invoice_title,omitempty"`
+	ItineraryNum  *string `json:"itinerary_num,omitempty" xml:"itinerary_num,omitempty"`
+	OrderId       *int64  `json:"order_id,omitempty" xml:"order_id,omitempty"`
+	OssUrl        *string `json:"oss_url,omitempty" xml:"oss_url,omitempty"`
+	PassengerName *string `json:"passenger_name,omitempty" xml:"passenger_name,omitempty"`
+	Project       *string `json:"project,omitempty" xml:"project,omitempty"`
+	TaxAmount     *string `json:"tax_amount,omitempty" xml:"tax_amount,omitempty"`
+	TaxRate       *string `json:"tax_rate,omitempty" xml:"tax_rate,omitempty"`
+	TicketNo      *string `json:"ticket_no,omitempty" xml:"ticket_no,omitempty"`
+	TicketPrice   *string `json:"ticket_price,omitempty" xml:"ticket_price,omitempty"`
+	TotalPrice    *string `json:"total_price,omitempty" xml:"total_price,omitempty"`
+}
+
+func (s FlightItineraryScanQueryResponseBodyModuleItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FlightItineraryScanQueryResponseBodyModuleItems) GoString() string {
+	return s.String()
+}
+
+func (s *FlightItineraryScanQueryResponseBodyModuleItems) SetBillDate(v string) *FlightItineraryScanQueryResponseBodyModuleItems {
+	s.BillDate = &v
+	return s
+}
+
+func (s *FlightItineraryScanQueryResponseBodyModuleItems) SetBuild(v string) *FlightItineraryScanQueryResponseBodyModuleItems {
+	s.Build = &v
+	return s
+}
+
+func (s *FlightItineraryScanQueryResponseBodyModuleItems) SetCostCenter(v string) *FlightItineraryScanQueryResponseBodyModuleItems {
+	s.CostCenter = &v
+	return s
+}
+
+func (s *FlightItineraryScanQueryResponseBodyModuleItems) SetDepartment(v string) *FlightItineraryScanQueryResponseBodyModuleItems {
+	s.Department = &v
+	return s
+}
+
+func (s *FlightItineraryScanQueryResponseBodyModuleItems) SetFuelSurcharge(v string) *FlightItineraryScanQueryResponseBodyModuleItems {
+	s.FuelSurcharge = &v
+	return s
+}
+
+func (s *FlightItineraryScanQueryResponseBodyModuleItems) SetInsurance(v string) *FlightItineraryScanQueryResponseBodyModuleItems {
+	s.Insurance = &v
+	return s
+}
+
+func (s *FlightItineraryScanQueryResponseBodyModuleItems) SetInvoiceTitle(v string) *FlightItineraryScanQueryResponseBodyModuleItems {
+	s.InvoiceTitle = &v
+	return s
+}
+
+func (s *FlightItineraryScanQueryResponseBodyModuleItems) SetItineraryNum(v string) *FlightItineraryScanQueryResponseBodyModuleItems {
+	s.ItineraryNum = &v
+	return s
+}
+
+func (s *FlightItineraryScanQueryResponseBodyModuleItems) SetOrderId(v int64) *FlightItineraryScanQueryResponseBodyModuleItems {
+	s.OrderId = &v
+	return s
+}
+
+func (s *FlightItineraryScanQueryResponseBodyModuleItems) SetOssUrl(v string) *FlightItineraryScanQueryResponseBodyModuleItems {
+	s.OssUrl = &v
+	return s
+}
+
+func (s *FlightItineraryScanQueryResponseBodyModuleItems) SetPassengerName(v string) *FlightItineraryScanQueryResponseBodyModuleItems {
+	s.PassengerName = &v
+	return s
+}
+
+func (s *FlightItineraryScanQueryResponseBodyModuleItems) SetProject(v string) *FlightItineraryScanQueryResponseBodyModuleItems {
+	s.Project = &v
+	return s
+}
+
+func (s *FlightItineraryScanQueryResponseBodyModuleItems) SetTaxAmount(v string) *FlightItineraryScanQueryResponseBodyModuleItems {
+	s.TaxAmount = &v
+	return s
+}
+
+func (s *FlightItineraryScanQueryResponseBodyModuleItems) SetTaxRate(v string) *FlightItineraryScanQueryResponseBodyModuleItems {
+	s.TaxRate = &v
+	return s
+}
+
+func (s *FlightItineraryScanQueryResponseBodyModuleItems) SetTicketNo(v string) *FlightItineraryScanQueryResponseBodyModuleItems {
+	s.TicketNo = &v
+	return s
+}
+
+func (s *FlightItineraryScanQueryResponseBodyModuleItems) SetTicketPrice(v string) *FlightItineraryScanQueryResponseBodyModuleItems {
+	s.TicketPrice = &v
+	return s
+}
+
+func (s *FlightItineraryScanQueryResponseBodyModuleItems) SetTotalPrice(v string) *FlightItineraryScanQueryResponseBodyModuleItems {
+	s.TotalPrice = &v
+	return s
+}
+
+type FlightItineraryScanQueryResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *FlightItineraryScanQueryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s FlightItineraryScanQueryResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FlightItineraryScanQueryResponse) GoString() string {
+	return s.String()
+}
+
+func (s *FlightItineraryScanQueryResponse) SetHeaders(v map[string]*string) *FlightItineraryScanQueryResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *FlightItineraryScanQueryResponse) SetStatusCode(v int32) *FlightItineraryScanQueryResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *FlightItineraryScanQueryResponse) SetBody(v *FlightItineraryScanQueryResponseBody) *FlightItineraryScanQueryResponse {
 	s.Body = v
 	return s
 }
@@ -27161,6 +27717,984 @@ func (s *TrainOrderQueryResponse) SetBody(v *TrainOrderQueryResponseBody) *Train
 	return s
 }
 
+type TrainOrderQueryV2Headers struct {
+	CommonHeaders      map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsBtripCorpToken *string            `json:"x-acs-btrip-corp-token,omitempty" xml:"x-acs-btrip-corp-token,omitempty"`
+}
+
+func (s TrainOrderQueryV2Headers) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TrainOrderQueryV2Headers) GoString() string {
+	return s.String()
+}
+
+func (s *TrainOrderQueryV2Headers) SetCommonHeaders(v map[string]*string) *TrainOrderQueryV2Headers {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *TrainOrderQueryV2Headers) SetXAcsBtripCorpToken(v string) *TrainOrderQueryV2Headers {
+	s.XAcsBtripCorpToken = &v
+	return s
+}
+
+type TrainOrderQueryV2Request struct {
+	OrderId *int64  `json:"order_id,omitempty" xml:"order_id,omitempty"`
+	UserId  *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
+}
+
+func (s TrainOrderQueryV2Request) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TrainOrderQueryV2Request) GoString() string {
+	return s.String()
+}
+
+func (s *TrainOrderQueryV2Request) SetOrderId(v int64) *TrainOrderQueryV2Request {
+	s.OrderId = &v
+	return s
+}
+
+func (s *TrainOrderQueryV2Request) SetUserId(v string) *TrainOrderQueryV2Request {
+	s.UserId = &v
+	return s
+}
+
+type TrainOrderQueryV2ResponseBody struct {
+	Code    *string                              `json:"code,omitempty" xml:"code,omitempty"`
+	Message *string                              `json:"message,omitempty" xml:"message,omitempty"`
+	Module  *TrainOrderQueryV2ResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
+	// requestId
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success   *bool   `json:"success,omitempty" xml:"success,omitempty"`
+	// traceId
+	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
+}
+
+func (s TrainOrderQueryV2ResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TrainOrderQueryV2ResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *TrainOrderQueryV2ResponseBody) SetCode(v string) *TrainOrderQueryV2ResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *TrainOrderQueryV2ResponseBody) SetMessage(v string) *TrainOrderQueryV2ResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *TrainOrderQueryV2ResponseBody) SetModule(v *TrainOrderQueryV2ResponseBodyModule) *TrainOrderQueryV2ResponseBody {
+	s.Module = v
+	return s
+}
+
+func (s *TrainOrderQueryV2ResponseBody) SetRequestId(v string) *TrainOrderQueryV2ResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *TrainOrderQueryV2ResponseBody) SetSuccess(v bool) *TrainOrderQueryV2ResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *TrainOrderQueryV2ResponseBody) SetTraceId(v string) *TrainOrderQueryV2ResponseBody {
+	s.TraceId = &v
+	return s
+}
+
+type TrainOrderQueryV2ResponseBodyModule struct {
+	ChangeTicketInfoList []*TrainOrderQueryV2ResponseBodyModuleChangeTicketInfoList `json:"change_ticket_info_list,omitempty" xml:"change_ticket_info_list,omitempty" type:"Repeated"`
+	InvoiceInfo          *TrainOrderQueryV2ResponseBodyModuleInvoiceInfo            `json:"invoice_info,omitempty" xml:"invoice_info,omitempty" type:"Struct"`
+	OrderBaseInfo        *TrainOrderQueryV2ResponseBodyModuleOrderBaseInfo          `json:"order_base_info,omitempty" xml:"order_base_info,omitempty" type:"Struct"`
+	PassengerInfoList    []*TrainOrderQueryV2ResponseBodyModulePassengerInfoList    `json:"passenger_info_list,omitempty" xml:"passenger_info_list,omitempty" type:"Repeated"`
+	PriceInfoList        []*TrainOrderQueryV2ResponseBodyModulePriceInfoList        `json:"price_info_list,omitempty" xml:"price_info_list,omitempty" type:"Repeated"`
+	RefundTicketInfoList []*TrainOrderQueryV2ResponseBodyModuleRefundTicketInfoList `json:"refund_ticket_info_list,omitempty" xml:"refund_ticket_info_list,omitempty" type:"Repeated"`
+	TrainOrderInfo       *TrainOrderQueryV2ResponseBodyModuleTrainOrderInfo         `json:"train_order_info,omitempty" xml:"train_order_info,omitempty" type:"Struct"`
+}
+
+func (s TrainOrderQueryV2ResponseBodyModule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TrainOrderQueryV2ResponseBodyModule) GoString() string {
+	return s.String()
+}
+
+func (s *TrainOrderQueryV2ResponseBodyModule) SetChangeTicketInfoList(v []*TrainOrderQueryV2ResponseBodyModuleChangeTicketInfoList) *TrainOrderQueryV2ResponseBodyModule {
+	s.ChangeTicketInfoList = v
+	return s
+}
+
+func (s *TrainOrderQueryV2ResponseBodyModule) SetInvoiceInfo(v *TrainOrderQueryV2ResponseBodyModuleInvoiceInfo) *TrainOrderQueryV2ResponseBodyModule {
+	s.InvoiceInfo = v
+	return s
+}
+
+func (s *TrainOrderQueryV2ResponseBodyModule) SetOrderBaseInfo(v *TrainOrderQueryV2ResponseBodyModuleOrderBaseInfo) *TrainOrderQueryV2ResponseBodyModule {
+	s.OrderBaseInfo = v
+	return s
+}
+
+func (s *TrainOrderQueryV2ResponseBodyModule) SetPassengerInfoList(v []*TrainOrderQueryV2ResponseBodyModulePassengerInfoList) *TrainOrderQueryV2ResponseBodyModule {
+	s.PassengerInfoList = v
+	return s
+}
+
+func (s *TrainOrderQueryV2ResponseBodyModule) SetPriceInfoList(v []*TrainOrderQueryV2ResponseBodyModulePriceInfoList) *TrainOrderQueryV2ResponseBodyModule {
+	s.PriceInfoList = v
+	return s
+}
+
+func (s *TrainOrderQueryV2ResponseBodyModule) SetRefundTicketInfoList(v []*TrainOrderQueryV2ResponseBodyModuleRefundTicketInfoList) *TrainOrderQueryV2ResponseBodyModule {
+	s.RefundTicketInfoList = v
+	return s
+}
+
+func (s *TrainOrderQueryV2ResponseBodyModule) SetTrainOrderInfo(v *TrainOrderQueryV2ResponseBodyModuleTrainOrderInfo) *TrainOrderQueryV2ResponseBodyModule {
+	s.TrainOrderInfo = v
+	return s
+}
+
+type TrainOrderQueryV2ResponseBodyModuleChangeTicketInfoList struct {
+	ChangeCoachNo       *string  `json:"change_coach_no,omitempty" xml:"change_coach_no,omitempty"`
+	ChangeGapFee        *float64 `json:"change_gap_fee,omitempty" xml:"change_gap_fee,omitempty"`
+	ChangeHandlingFee   *float64 `json:"change_handling_fee,omitempty" xml:"change_handling_fee,omitempty"`
+	ChangeSeatNo        *string  `json:"change_seat_no,omitempty" xml:"change_seat_no,omitempty"`
+	ChangeSeatTypeName  *string  `json:"change_seat_type_name,omitempty" xml:"change_seat_type_name,omitempty"`
+	ChangeServiceFee    *float64 `json:"change_service_fee,omitempty" xml:"change_service_fee,omitempty"`
+	ChangeTrainNo       *string  `json:"change_train_no,omitempty" xml:"change_train_no,omitempty"`
+	ChangeTrainTypeName *string  `json:"change_train_type_name,omitempty" xml:"change_train_type_name,omitempty"`
+	CheckInTime         *string  `json:"check_in_time,omitempty" xml:"check_in_time,omitempty"`
+	CheckOutTime        *string  `json:"check_out_time,omitempty" xml:"check_out_time,omitempty"`
+	EndTime             *string  `json:"end_time,omitempty" xml:"end_time,omitempty"`
+	FromCityName        *string  `json:"from_city_name,omitempty" xml:"from_city_name,omitempty"`
+	FromStationName     *string  `json:"from_station_name,omitempty" xml:"from_station_name,omitempty"`
+	GmtCreate           *string  `json:"gmt_create,omitempty" xml:"gmt_create,omitempty"`
+	GmtModify           *string  `json:"gmt_modify,omitempty" xml:"gmt_modify,omitempty"`
+	OriginTicketNo      *string  `json:"origin_ticket_no,omitempty" xml:"origin_ticket_no,omitempty"`
+	OutTicketStatus     *string  `json:"out_ticket_status,omitempty" xml:"out_ticket_status,omitempty"`
+	SegmentIndex        *int32   `json:"segment_index,omitempty" xml:"segment_index,omitempty"`
+	StartTime           *string  `json:"start_time,omitempty" xml:"start_time,omitempty"`
+	TicketNo            *string  `json:"ticket_no,omitempty" xml:"ticket_no,omitempty"`
+	ToCityName          *string  `json:"to_city_name,omitempty" xml:"to_city_name,omitempty"`
+	ToStationName       *string  `json:"to_station_name,omitempty" xml:"to_station_name,omitempty"`
+	UseTicket           *string  `json:"use_ticket,omitempty" xml:"use_ticket,omitempty"`
+	UserId              *string  `json:"user_id,omitempty" xml:"user_id,omitempty"`
+}
+
+func (s TrainOrderQueryV2ResponseBodyModuleChangeTicketInfoList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TrainOrderQueryV2ResponseBodyModuleChangeTicketInfoList) GoString() string {
+	return s.String()
+}
+
+func (s *TrainOrderQueryV2ResponseBodyModuleChangeTicketInfoList) SetChangeCoachNo(v string) *TrainOrderQueryV2ResponseBodyModuleChangeTicketInfoList {
+	s.ChangeCoachNo = &v
+	return s
+}
+
+func (s *TrainOrderQueryV2ResponseBodyModuleChangeTicketInfoList) SetChangeGapFee(v float64) *TrainOrderQueryV2ResponseBodyModuleChangeTicketInfoList {
+	s.ChangeGapFee = &v
+	return s
+}
+
+func (s *TrainOrderQueryV2ResponseBodyModuleChangeTicketInfoList) SetChangeHandlingFee(v float64) *TrainOrderQueryV2ResponseBodyModuleChangeTicketInfoList {
+	s.ChangeHandlingFee = &v
+	return s
+}
+
+func (s *TrainOrderQueryV2ResponseBodyModuleChangeTicketInfoList) SetChangeSeatNo(v string) *TrainOrderQueryV2ResponseBodyModuleChangeTicketInfoList {
+	s.ChangeSeatNo = &v
+	return s
+}
+
+func (s *TrainOrderQueryV2ResponseBodyModuleChangeTicketInfoList) SetChangeSeatTypeName(v string) *TrainOrderQueryV2ResponseBodyModuleChangeTicketInfoList {
+	s.ChangeSeatTypeName = &v
+	return s
+}
+
+func (s *TrainOrderQueryV2ResponseBodyModuleChangeTicketInfoList) SetChangeServiceFee(v float64) *TrainOrderQueryV2ResponseBodyModuleChangeTicketInfoList {
+	s.ChangeServiceFee = &v
+	return s
+}
+
+func (s *TrainOrderQueryV2ResponseBodyModuleChangeTicketInfoList) SetChangeTrainNo(v string) *TrainOrderQueryV2ResponseBodyModuleChangeTicketInfoList {
+	s.ChangeTrainNo = &v
+	return s
+}
+
+func (s *TrainOrderQueryV2ResponseBodyModuleChangeTicketInfoList) SetChangeTrainTypeName(v string) *TrainOrderQueryV2ResponseBodyModuleChangeTicketInfoList {
+	s.ChangeTrainTypeName = &v
+	return s
+}
+
+func (s *TrainOrderQueryV2ResponseBodyModuleChangeTicketInfoList) SetCheckInTime(v string) *TrainOrderQueryV2ResponseBodyModuleChangeTicketInfoList {
+	s.CheckInTime = &v
+	return s
+}
+
+func (s *TrainOrderQueryV2ResponseBodyModuleChangeTicketInfoList) SetCheckOutTime(v string) *TrainOrderQueryV2ResponseBodyModuleChangeTicketInfoList {
+	s.CheckOutTime = &v
+	return s
+}
+
+func (s *TrainOrderQueryV2ResponseBodyModuleChangeTicketInfoList) SetEndTime(v string) *TrainOrderQueryV2ResponseBodyModuleChangeTicketInfoList {
+	s.EndTime = &v
+	return s
+}
+
+func (s *TrainOrderQueryV2ResponseBodyModuleChangeTicketInfoList) SetFromCityName(v string) *TrainOrderQueryV2ResponseBodyModuleChangeTicketInfoList {
+	s.FromCityName = &v
+	return s
+}
+
+func (s *TrainOrderQueryV2ResponseBodyModuleChangeTicketInfoList) SetFromStationName(v string) *TrainOrderQueryV2ResponseBodyModuleChangeTicketInfoList {
+	s.FromStationName = &v
+	return s
+}
+
+func (s *TrainOrderQueryV2ResponseBodyModuleChangeTicketInfoList) SetGmtCreate(v string) *TrainOrderQueryV2ResponseBodyModuleChangeTicketInfoList {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *TrainOrderQueryV2ResponseBodyModuleChangeTicketInfoList) SetGmtModify(v string) *TrainOrderQueryV2ResponseBodyModuleChangeTicketInfoList {
+	s.GmtModify = &v
+	return s
+}
+
+func (s *TrainOrderQueryV2ResponseBodyModuleChangeTicketInfoList) SetOriginTicketNo(v string) *TrainOrderQueryV2ResponseBodyModuleChangeTicketInfoList {
+	s.OriginTicketNo = &v
+	return s
+}
+
+func (s *TrainOrderQueryV2ResponseBodyModuleChangeTicketInfoList) SetOutTicketStatus(v string) *TrainOrderQueryV2ResponseBodyModuleChangeTicketInfoList {
+	s.OutTicketStatus = &v
+	return s
+}
+
+func (s *TrainOrderQueryV2ResponseBodyModuleChangeTicketInfoList) SetSegmentIndex(v int32) *TrainOrderQueryV2ResponseBodyModuleChangeTicketInfoList {
+	s.SegmentIndex = &v
+	return s
+}
+
+func (s *TrainOrderQueryV2ResponseBodyModuleChangeTicketInfoList) SetStartTime(v string) *TrainOrderQueryV2ResponseBodyModuleChangeTicketInfoList {
+	s.StartTime = &v
+	return s
+}
+
+func (s *TrainOrderQueryV2ResponseBodyModuleChangeTicketInfoList) SetTicketNo(v string) *TrainOrderQueryV2ResponseBodyModuleChangeTicketInfoList {
+	s.TicketNo = &v
+	return s
+}
+
+func (s *TrainOrderQueryV2ResponseBodyModuleChangeTicketInfoList) SetToCityName(v string) *TrainOrderQueryV2ResponseBodyModuleChangeTicketInfoList {
+	s.ToCityName = &v
+	return s
+}
+
+func (s *TrainOrderQueryV2ResponseBodyModuleChangeTicketInfoList) SetToStationName(v string) *TrainOrderQueryV2ResponseBodyModuleChangeTicketInfoList {
+	s.ToStationName = &v
+	return s
+}
+
+func (s *TrainOrderQueryV2ResponseBodyModuleChangeTicketInfoList) SetUseTicket(v string) *TrainOrderQueryV2ResponseBodyModuleChangeTicketInfoList {
+	s.UseTicket = &v
+	return s
+}
+
+func (s *TrainOrderQueryV2ResponseBodyModuleChangeTicketInfoList) SetUserId(v string) *TrainOrderQueryV2ResponseBodyModuleChangeTicketInfoList {
+	s.UserId = &v
+	return s
+}
+
+type TrainOrderQueryV2ResponseBodyModuleInvoiceInfo struct {
+	Id    *int64  `json:"id,omitempty" xml:"id,omitempty"`
+	Title *string `json:"title,omitempty" xml:"title,omitempty"`
+}
+
+func (s TrainOrderQueryV2ResponseBodyModuleInvoiceInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TrainOrderQueryV2ResponseBodyModuleInvoiceInfo) GoString() string {
+	return s.String()
+}
+
+func (s *TrainOrderQueryV2ResponseBodyModuleInvoiceInfo) SetId(v int64) *TrainOrderQueryV2ResponseBodyModuleInvoiceInfo {
+	s.Id = &v
+	return s
+}
+
+func (s *TrainOrderQueryV2ResponseBodyModuleInvoiceInfo) SetTitle(v string) *TrainOrderQueryV2ResponseBodyModuleInvoiceInfo {
+	s.Title = &v
+	return s
+}
+
+type TrainOrderQueryV2ResponseBodyModuleOrderBaseInfo struct {
+	ApplyId                *string `json:"apply_id,omitempty" xml:"apply_id,omitempty"`
+	BtripTitle             *string `json:"btrip_title,omitempty" xml:"btrip_title,omitempty"`
+	ContactName            *string `json:"contact_name,omitempty" xml:"contact_name,omitempty"`
+	ContactPhone           *string `json:"contact_phone,omitempty" xml:"contact_phone,omitempty"`
+	CorpId                 *string `json:"corp_id,omitempty" xml:"corp_id,omitempty"`
+	CorpName               *string `json:"corp_name,omitempty" xml:"corp_name,omitempty"`
+	DepartId               *string `json:"depart_id,omitempty" xml:"depart_id,omitempty"`
+	DepartName             *string `json:"depart_name,omitempty" xml:"depart_name,omitempty"`
+	ExceedApplyId          *string `json:"exceed_apply_id,omitempty" xml:"exceed_apply_id,omitempty"`
+	ExceedThirdpartApplyId *string `json:"exceed_thirdpart_apply_id,omitempty" xml:"exceed_thirdpart_apply_id,omitempty"`
+	GmtCreate              *string `json:"gmt_create,omitempty" xml:"gmt_create,omitempty"`
+	GmtModify              *string `json:"gmt_modify,omitempty" xml:"gmt_modify,omitempty"`
+	ItineraryId            *string `json:"itinerary_id,omitempty" xml:"itinerary_id,omitempty"`
+	OrderId                *int64  `json:"order_id,omitempty" xml:"order_id,omitempty"`
+	OrderStatus            *int32  `json:"order_status,omitempty" xml:"order_status,omitempty"`
+	ThirdpartApplyId       *string `json:"thirdpart_apply_id,omitempty" xml:"thirdpart_apply_id,omitempty"`
+	ThirdpartDepartId      *string `json:"thirdpart_depart_id,omitempty" xml:"thirdpart_depart_id,omitempty"`
+	ThirdpartItineraryId   *string `json:"thirdpart_itinerary_id,omitempty" xml:"thirdpart_itinerary_id,omitempty"`
+	TripType               *int32  `json:"trip_type,omitempty" xml:"trip_type,omitempty"`
+	UserId                 *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
+	UserNick               *string `json:"user_nick,omitempty" xml:"user_nick,omitempty"`
+}
+
+func (s TrainOrderQueryV2ResponseBodyModuleOrderBaseInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TrainOrderQueryV2ResponseBodyModuleOrderBaseInfo) GoString() string {
+	return s.String()
+}
+
+func (s *TrainOrderQueryV2ResponseBodyModuleOrderBaseInfo) SetApplyId(v string) *TrainOrderQueryV2ResponseBodyModuleOrderBaseInfo {
+	s.ApplyId = &v
+	return s
+}
+
+func (s *TrainOrderQueryV2ResponseBodyModuleOrderBaseInfo) SetBtripTitle(v string) *TrainOrderQueryV2ResponseBodyModuleOrderBaseInfo {
+	s.BtripTitle = &v
+	return s
+}
+
+func (s *TrainOrderQueryV2ResponseBodyModuleOrderBaseInfo) SetContactName(v string) *TrainOrderQueryV2ResponseBodyModuleOrderBaseInfo {
+	s.ContactName = &v
+	return s
+}
+
+func (s *TrainOrderQueryV2ResponseBodyModuleOrderBaseInfo) SetContactPhone(v string) *TrainOrderQueryV2ResponseBodyModuleOrderBaseInfo {
+	s.ContactPhone = &v
+	return s
+}
+
+func (s *TrainOrderQueryV2ResponseBodyModuleOrderBaseInfo) SetCorpId(v string) *TrainOrderQueryV2ResponseBodyModuleOrderBaseInfo {
+	s.CorpId = &v
+	return s
+}
+
+func (s *TrainOrderQueryV2ResponseBodyModuleOrderBaseInfo) SetCorpName(v string) *TrainOrderQueryV2ResponseBodyModuleOrderBaseInfo {
+	s.CorpName = &v
+	return s
+}
+
+func (s *TrainOrderQueryV2ResponseBodyModuleOrderBaseInfo) SetDepartId(v string) *TrainOrderQueryV2ResponseBodyModuleOrderBaseInfo {
+	s.DepartId = &v
+	return s
+}
+
+func (s *TrainOrderQueryV2ResponseBodyModuleOrderBaseInfo) SetDepartName(v string) *TrainOrderQueryV2ResponseBodyModuleOrderBaseInfo {
+	s.DepartName = &v
+	return s
+}
+
+func (s *TrainOrderQueryV2ResponseBodyModuleOrderBaseInfo) SetExceedApplyId(v string) *TrainOrderQueryV2ResponseBodyModuleOrderBaseInfo {
+	s.ExceedApplyId = &v
+	return s
+}
+
+func (s *TrainOrderQueryV2ResponseBodyModuleOrderBaseInfo) SetExceedThirdpartApplyId(v string) *TrainOrderQueryV2ResponseBodyModuleOrderBaseInfo {
+	s.ExceedThirdpartApplyId = &v
+	return s
+}
+
+func (s *TrainOrderQueryV2ResponseBodyModuleOrderBaseInfo) SetGmtCreate(v string) *TrainOrderQueryV2ResponseBodyModuleOrderBaseInfo {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *TrainOrderQueryV2ResponseBodyModuleOrderBaseInfo) SetGmtModify(v string) *TrainOrderQueryV2ResponseBodyModuleOrderBaseInfo {
+	s.GmtModify = &v
+	return s
+}
+
+func (s *TrainOrderQueryV2ResponseBodyModuleOrderBaseInfo) SetItineraryId(v string) *TrainOrderQueryV2ResponseBodyModuleOrderBaseInfo {
+	s.ItineraryId = &v
+	return s
+}
+
+func (s *TrainOrderQueryV2ResponseBodyModuleOrderBaseInfo) SetOrderId(v int64) *TrainOrderQueryV2ResponseBodyModuleOrderBaseInfo {
+	s.OrderId = &v
+	return s
+}
+
+func (s *TrainOrderQueryV2ResponseBodyModuleOrderBaseInfo) SetOrderStatus(v int32) *TrainOrderQueryV2ResponseBodyModuleOrderBaseInfo {
+	s.OrderStatus = &v
+	return s
+}
+
+func (s *TrainOrderQueryV2ResponseBodyModuleOrderBaseInfo) SetThirdpartApplyId(v string) *TrainOrderQueryV2ResponseBodyModuleOrderBaseInfo {
+	s.ThirdpartApplyId = &v
+	return s
+}
+
+func (s *TrainOrderQueryV2ResponseBodyModuleOrderBaseInfo) SetThirdpartDepartId(v string) *TrainOrderQueryV2ResponseBodyModuleOrderBaseInfo {
+	s.ThirdpartDepartId = &v
+	return s
+}
+
+func (s *TrainOrderQueryV2ResponseBodyModuleOrderBaseInfo) SetThirdpartItineraryId(v string) *TrainOrderQueryV2ResponseBodyModuleOrderBaseInfo {
+	s.ThirdpartItineraryId = &v
+	return s
+}
+
+func (s *TrainOrderQueryV2ResponseBodyModuleOrderBaseInfo) SetTripType(v int32) *TrainOrderQueryV2ResponseBodyModuleOrderBaseInfo {
+	s.TripType = &v
+	return s
+}
+
+func (s *TrainOrderQueryV2ResponseBodyModuleOrderBaseInfo) SetUserId(v string) *TrainOrderQueryV2ResponseBodyModuleOrderBaseInfo {
+	s.UserId = &v
+	return s
+}
+
+func (s *TrainOrderQueryV2ResponseBodyModuleOrderBaseInfo) SetUserNick(v string) *TrainOrderQueryV2ResponseBodyModuleOrderBaseInfo {
+	s.UserNick = &v
+	return s
+}
+
+type TrainOrderQueryV2ResponseBodyModulePassengerInfoList struct {
+	CostCenterId          *int64  `json:"cost_center_id,omitempty" xml:"cost_center_id,omitempty"`
+	CostCenterName        *string `json:"cost_center_name,omitempty" xml:"cost_center_name,omitempty"`
+	CostCenterNumber      *string `json:"cost_center_number,omitempty" xml:"cost_center_number,omitempty"`
+	ProjectCode           *string `json:"project_code,omitempty" xml:"project_code,omitempty"`
+	ProjectId             *int64  `json:"project_id,omitempty" xml:"project_id,omitempty"`
+	ProjectTitle          *string `json:"project_title,omitempty" xml:"project_title,omitempty"`
+	ThirdpartCostCenterId *string `json:"thirdpart_cost_center_id,omitempty" xml:"thirdpart_cost_center_id,omitempty"`
+	ThirdpartProjectId    *string `json:"thirdpart_project_id,omitempty" xml:"thirdpart_project_id,omitempty"`
+	UserId                *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
+	UserName              *string `json:"user_name,omitempty" xml:"user_name,omitempty"`
+	UserType              *int32  `json:"user_type,omitempty" xml:"user_type,omitempty"`
+}
+
+func (s TrainOrderQueryV2ResponseBodyModulePassengerInfoList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TrainOrderQueryV2ResponseBodyModulePassengerInfoList) GoString() string {
+	return s.String()
+}
+
+func (s *TrainOrderQueryV2ResponseBodyModulePassengerInfoList) SetCostCenterId(v int64) *TrainOrderQueryV2ResponseBodyModulePassengerInfoList {
+	s.CostCenterId = &v
+	return s
+}
+
+func (s *TrainOrderQueryV2ResponseBodyModulePassengerInfoList) SetCostCenterName(v string) *TrainOrderQueryV2ResponseBodyModulePassengerInfoList {
+	s.CostCenterName = &v
+	return s
+}
+
+func (s *TrainOrderQueryV2ResponseBodyModulePassengerInfoList) SetCostCenterNumber(v string) *TrainOrderQueryV2ResponseBodyModulePassengerInfoList {
+	s.CostCenterNumber = &v
+	return s
+}
+
+func (s *TrainOrderQueryV2ResponseBodyModulePassengerInfoList) SetProjectCode(v string) *TrainOrderQueryV2ResponseBodyModulePassengerInfoList {
+	s.ProjectCode = &v
+	return s
+}
+
+func (s *TrainOrderQueryV2ResponseBodyModulePassengerInfoList) SetProjectId(v int64) *TrainOrderQueryV2ResponseBodyModulePassengerInfoList {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *TrainOrderQueryV2ResponseBodyModulePassengerInfoList) SetProjectTitle(v string) *TrainOrderQueryV2ResponseBodyModulePassengerInfoList {
+	s.ProjectTitle = &v
+	return s
+}
+
+func (s *TrainOrderQueryV2ResponseBodyModulePassengerInfoList) SetThirdpartCostCenterId(v string) *TrainOrderQueryV2ResponseBodyModulePassengerInfoList {
+	s.ThirdpartCostCenterId = &v
+	return s
+}
+
+func (s *TrainOrderQueryV2ResponseBodyModulePassengerInfoList) SetThirdpartProjectId(v string) *TrainOrderQueryV2ResponseBodyModulePassengerInfoList {
+	s.ThirdpartProjectId = &v
+	return s
+}
+
+func (s *TrainOrderQueryV2ResponseBodyModulePassengerInfoList) SetUserId(v string) *TrainOrderQueryV2ResponseBodyModulePassengerInfoList {
+	s.UserId = &v
+	return s
+}
+
+func (s *TrainOrderQueryV2ResponseBodyModulePassengerInfoList) SetUserName(v string) *TrainOrderQueryV2ResponseBodyModulePassengerInfoList {
+	s.UserName = &v
+	return s
+}
+
+func (s *TrainOrderQueryV2ResponseBodyModulePassengerInfoList) SetUserType(v int32) *TrainOrderQueryV2ResponseBodyModulePassengerInfoList {
+	s.UserType = &v
+	return s
+}
+
+type TrainOrderQueryV2ResponseBodyModulePriceInfoList struct {
+	CategoryCode  *int32   `json:"category_code,omitempty" xml:"category_code,omitempty"`
+	GmtCreate     *string  `json:"gmt_create,omitempty" xml:"gmt_create,omitempty"`
+	PassengerName *string  `json:"passenger_name,omitempty" xml:"passenger_name,omitempty"`
+	PayType       *int32   `json:"pay_type,omitempty" xml:"pay_type,omitempty"`
+	Price         *float64 `json:"price,omitempty" xml:"price,omitempty"`
+	TradeId       *string  `json:"trade_id,omitempty" xml:"trade_id,omitempty"`
+	Type          *int32   `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s TrainOrderQueryV2ResponseBodyModulePriceInfoList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TrainOrderQueryV2ResponseBodyModulePriceInfoList) GoString() string {
+	return s.String()
+}
+
+func (s *TrainOrderQueryV2ResponseBodyModulePriceInfoList) SetCategoryCode(v int32) *TrainOrderQueryV2ResponseBodyModulePriceInfoList {
+	s.CategoryCode = &v
+	return s
+}
+
+func (s *TrainOrderQueryV2ResponseBodyModulePriceInfoList) SetGmtCreate(v string) *TrainOrderQueryV2ResponseBodyModulePriceInfoList {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *TrainOrderQueryV2ResponseBodyModulePriceInfoList) SetPassengerName(v string) *TrainOrderQueryV2ResponseBodyModulePriceInfoList {
+	s.PassengerName = &v
+	return s
+}
+
+func (s *TrainOrderQueryV2ResponseBodyModulePriceInfoList) SetPayType(v int32) *TrainOrderQueryV2ResponseBodyModulePriceInfoList {
+	s.PayType = &v
+	return s
+}
+
+func (s *TrainOrderQueryV2ResponseBodyModulePriceInfoList) SetPrice(v float64) *TrainOrderQueryV2ResponseBodyModulePriceInfoList {
+	s.Price = &v
+	return s
+}
+
+func (s *TrainOrderQueryV2ResponseBodyModulePriceInfoList) SetTradeId(v string) *TrainOrderQueryV2ResponseBodyModulePriceInfoList {
+	s.TradeId = &v
+	return s
+}
+
+func (s *TrainOrderQueryV2ResponseBodyModulePriceInfoList) SetType(v int32) *TrainOrderQueryV2ResponseBodyModulePriceInfoList {
+	s.Type = &v
+	return s
+}
+
+type TrainOrderQueryV2ResponseBodyModuleRefundTicketInfoList struct {
+	GmtCreate        *string  `json:"gmt_create,omitempty" xml:"gmt_create,omitempty"`
+	GmtModify        *string  `json:"gmt_modify,omitempty" xml:"gmt_modify,omitempty"`
+	RefundFee        *float64 `json:"refund_fee,omitempty" xml:"refund_fee,omitempty"`
+	RefundServiceFee *float64 `json:"refund_service_fee,omitempty" xml:"refund_service_fee,omitempty"`
+	TicketNo         *string  `json:"ticket_no,omitempty" xml:"ticket_no,omitempty"`
+	UserId           *string  `json:"user_id,omitempty" xml:"user_id,omitempty"`
+}
+
+func (s TrainOrderQueryV2ResponseBodyModuleRefundTicketInfoList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TrainOrderQueryV2ResponseBodyModuleRefundTicketInfoList) GoString() string {
+	return s.String()
+}
+
+func (s *TrainOrderQueryV2ResponseBodyModuleRefundTicketInfoList) SetGmtCreate(v string) *TrainOrderQueryV2ResponseBodyModuleRefundTicketInfoList {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *TrainOrderQueryV2ResponseBodyModuleRefundTicketInfoList) SetGmtModify(v string) *TrainOrderQueryV2ResponseBodyModuleRefundTicketInfoList {
+	s.GmtModify = &v
+	return s
+}
+
+func (s *TrainOrderQueryV2ResponseBodyModuleRefundTicketInfoList) SetRefundFee(v float64) *TrainOrderQueryV2ResponseBodyModuleRefundTicketInfoList {
+	s.RefundFee = &v
+	return s
+}
+
+func (s *TrainOrderQueryV2ResponseBodyModuleRefundTicketInfoList) SetRefundServiceFee(v float64) *TrainOrderQueryV2ResponseBodyModuleRefundTicketInfoList {
+	s.RefundServiceFee = &v
+	return s
+}
+
+func (s *TrainOrderQueryV2ResponseBodyModuleRefundTicketInfoList) SetTicketNo(v string) *TrainOrderQueryV2ResponseBodyModuleRefundTicketInfoList {
+	s.TicketNo = &v
+	return s
+}
+
+func (s *TrainOrderQueryV2ResponseBodyModuleRefundTicketInfoList) SetUserId(v string) *TrainOrderQueryV2ResponseBodyModuleRefundTicketInfoList {
+	s.UserId = &v
+	return s
+}
+
+type TrainOrderQueryV2ResponseBodyModuleTrainOrderInfo struct {
+	TrainInfoList     []*TrainOrderQueryV2ResponseBodyModuleTrainOrderInfoTrainInfoList   `json:"train_info_list,omitempty" xml:"train_info_list,omitempty" type:"Repeated"`
+	TrainTransferInfo *TrainOrderQueryV2ResponseBodyModuleTrainOrderInfoTrainTransferInfo `json:"train_transfer_info,omitempty" xml:"train_transfer_info,omitempty" type:"Struct"`
+}
+
+func (s TrainOrderQueryV2ResponseBodyModuleTrainOrderInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TrainOrderQueryV2ResponseBodyModuleTrainOrderInfo) GoString() string {
+	return s.String()
+}
+
+func (s *TrainOrderQueryV2ResponseBodyModuleTrainOrderInfo) SetTrainInfoList(v []*TrainOrderQueryV2ResponseBodyModuleTrainOrderInfoTrainInfoList) *TrainOrderQueryV2ResponseBodyModuleTrainOrderInfo {
+	s.TrainInfoList = v
+	return s
+}
+
+func (s *TrainOrderQueryV2ResponseBodyModuleTrainOrderInfo) SetTrainTransferInfo(v *TrainOrderQueryV2ResponseBodyModuleTrainOrderInfoTrainTransferInfo) *TrainOrderQueryV2ResponseBodyModuleTrainOrderInfo {
+	s.TrainTransferInfo = v
+	return s
+}
+
+type TrainOrderQueryV2ResponseBodyModuleTrainOrderInfoTrainInfoList struct {
+	ArrTime         *string `json:"arr_time,omitempty" xml:"arr_time,omitempty"`
+	DepTime         *string `json:"dep_time,omitempty" xml:"dep_time,omitempty"`
+	FromCityName    *string `json:"from_city_name,omitempty" xml:"from_city_name,omitempty"`
+	FromStationName *string `json:"from_station_name,omitempty" xml:"from_station_name,omitempty"`
+	// itemId
+	ItemId           *int64                                                                            `json:"item_id,omitempty" xml:"item_id,omitempty"`
+	RunTime          *int64                                                                            `json:"run_time,omitempty" xml:"run_time,omitempty"`
+	ToCityName       *string                                                                           `json:"to_city_name,omitempty" xml:"to_city_name,omitempty"`
+	ToStationName    *string                                                                           `json:"to_station_name,omitempty" xml:"to_station_name,omitempty"`
+	TrainNo          *string                                                                           `json:"train_no,omitempty" xml:"train_no,omitempty"`
+	TrainTicketInfos []*TrainOrderQueryV2ResponseBodyModuleTrainOrderInfoTrainInfoListTrainTicketInfos `json:"train_ticket_infos,omitempty" xml:"train_ticket_infos,omitempty" type:"Repeated"`
+}
+
+func (s TrainOrderQueryV2ResponseBodyModuleTrainOrderInfoTrainInfoList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TrainOrderQueryV2ResponseBodyModuleTrainOrderInfoTrainInfoList) GoString() string {
+	return s.String()
+}
+
+func (s *TrainOrderQueryV2ResponseBodyModuleTrainOrderInfoTrainInfoList) SetArrTime(v string) *TrainOrderQueryV2ResponseBodyModuleTrainOrderInfoTrainInfoList {
+	s.ArrTime = &v
+	return s
+}
+
+func (s *TrainOrderQueryV2ResponseBodyModuleTrainOrderInfoTrainInfoList) SetDepTime(v string) *TrainOrderQueryV2ResponseBodyModuleTrainOrderInfoTrainInfoList {
+	s.DepTime = &v
+	return s
+}
+
+func (s *TrainOrderQueryV2ResponseBodyModuleTrainOrderInfoTrainInfoList) SetFromCityName(v string) *TrainOrderQueryV2ResponseBodyModuleTrainOrderInfoTrainInfoList {
+	s.FromCityName = &v
+	return s
+}
+
+func (s *TrainOrderQueryV2ResponseBodyModuleTrainOrderInfoTrainInfoList) SetFromStationName(v string) *TrainOrderQueryV2ResponseBodyModuleTrainOrderInfoTrainInfoList {
+	s.FromStationName = &v
+	return s
+}
+
+func (s *TrainOrderQueryV2ResponseBodyModuleTrainOrderInfoTrainInfoList) SetItemId(v int64) *TrainOrderQueryV2ResponseBodyModuleTrainOrderInfoTrainInfoList {
+	s.ItemId = &v
+	return s
+}
+
+func (s *TrainOrderQueryV2ResponseBodyModuleTrainOrderInfoTrainInfoList) SetRunTime(v int64) *TrainOrderQueryV2ResponseBodyModuleTrainOrderInfoTrainInfoList {
+	s.RunTime = &v
+	return s
+}
+
+func (s *TrainOrderQueryV2ResponseBodyModuleTrainOrderInfoTrainInfoList) SetToCityName(v string) *TrainOrderQueryV2ResponseBodyModuleTrainOrderInfoTrainInfoList {
+	s.ToCityName = &v
+	return s
+}
+
+func (s *TrainOrderQueryV2ResponseBodyModuleTrainOrderInfoTrainInfoList) SetToStationName(v string) *TrainOrderQueryV2ResponseBodyModuleTrainOrderInfoTrainInfoList {
+	s.ToStationName = &v
+	return s
+}
+
+func (s *TrainOrderQueryV2ResponseBodyModuleTrainOrderInfoTrainInfoList) SetTrainNo(v string) *TrainOrderQueryV2ResponseBodyModuleTrainOrderInfoTrainInfoList {
+	s.TrainNo = &v
+	return s
+}
+
+func (s *TrainOrderQueryV2ResponseBodyModuleTrainOrderInfoTrainInfoList) SetTrainTicketInfos(v []*TrainOrderQueryV2ResponseBodyModuleTrainOrderInfoTrainInfoListTrainTicketInfos) *TrainOrderQueryV2ResponseBodyModuleTrainOrderInfoTrainInfoList {
+	s.TrainTicketInfos = v
+	return s
+}
+
+type TrainOrderQueryV2ResponseBodyModuleTrainOrderInfoTrainInfoListTrainTicketInfos struct {
+	Changed         *bool    `json:"changed,omitempty" xml:"changed,omitempty"`
+	CheckInTime     *string  `json:"check_in_time,omitempty" xml:"check_in_time,omitempty"`
+	CheckOutTime    *string  `json:"check_out_time,omitempty" xml:"check_out_time,omitempty"`
+	CoachNo         *string  `json:"coach_no,omitempty" xml:"coach_no,omitempty"`
+	EndTime         *string  `json:"end_time,omitempty" xml:"end_time,omitempty"`
+	GmtCreate       *string  `json:"gmt_create,omitempty" xml:"gmt_create,omitempty"`
+	GmtModify       *string  `json:"gmt_modify,omitempty" xml:"gmt_modify,omitempty"`
+	OutTicketStatus *string  `json:"out_ticket_status,omitempty" xml:"out_ticket_status,omitempty"`
+	PayType         *int32   `json:"pay_type,omitempty" xml:"pay_type,omitempty"`
+	SeatNo          *string  `json:"seat_no,omitempty" xml:"seat_no,omitempty"`
+	SeatTypeName    *string  `json:"seat_type_name,omitempty" xml:"seat_type_name,omitempty"`
+	SegmentIndex    *int32   `json:"segment_index,omitempty" xml:"segment_index,omitempty"`
+	ServiceFee      *float64 `json:"service_fee,omitempty" xml:"service_fee,omitempty"`
+	StartTime       *string  `json:"start_time,omitempty" xml:"start_time,omitempty"`
+	TicketNo        *string  `json:"ticket_no,omitempty" xml:"ticket_no,omitempty"`
+	TicketPrice     *float64 `json:"ticket_price,omitempty" xml:"ticket_price,omitempty"`
+	TicketStatus    *int32   `json:"ticket_status,omitempty" xml:"ticket_status,omitempty"`
+	TrainTypeName   *string  `json:"train_type_name,omitempty" xml:"train_type_name,omitempty"`
+	UseTicket       *string  `json:"use_ticket,omitempty" xml:"use_ticket,omitempty"`
+	UserId          *string  `json:"user_id,omitempty" xml:"user_id,omitempty"`
+}
+
+func (s TrainOrderQueryV2ResponseBodyModuleTrainOrderInfoTrainInfoListTrainTicketInfos) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TrainOrderQueryV2ResponseBodyModuleTrainOrderInfoTrainInfoListTrainTicketInfos) GoString() string {
+	return s.String()
+}
+
+func (s *TrainOrderQueryV2ResponseBodyModuleTrainOrderInfoTrainInfoListTrainTicketInfos) SetChanged(v bool) *TrainOrderQueryV2ResponseBodyModuleTrainOrderInfoTrainInfoListTrainTicketInfos {
+	s.Changed = &v
+	return s
+}
+
+func (s *TrainOrderQueryV2ResponseBodyModuleTrainOrderInfoTrainInfoListTrainTicketInfos) SetCheckInTime(v string) *TrainOrderQueryV2ResponseBodyModuleTrainOrderInfoTrainInfoListTrainTicketInfos {
+	s.CheckInTime = &v
+	return s
+}
+
+func (s *TrainOrderQueryV2ResponseBodyModuleTrainOrderInfoTrainInfoListTrainTicketInfos) SetCheckOutTime(v string) *TrainOrderQueryV2ResponseBodyModuleTrainOrderInfoTrainInfoListTrainTicketInfos {
+	s.CheckOutTime = &v
+	return s
+}
+
+func (s *TrainOrderQueryV2ResponseBodyModuleTrainOrderInfoTrainInfoListTrainTicketInfos) SetCoachNo(v string) *TrainOrderQueryV2ResponseBodyModuleTrainOrderInfoTrainInfoListTrainTicketInfos {
+	s.CoachNo = &v
+	return s
+}
+
+func (s *TrainOrderQueryV2ResponseBodyModuleTrainOrderInfoTrainInfoListTrainTicketInfos) SetEndTime(v string) *TrainOrderQueryV2ResponseBodyModuleTrainOrderInfoTrainInfoListTrainTicketInfos {
+	s.EndTime = &v
+	return s
+}
+
+func (s *TrainOrderQueryV2ResponseBodyModuleTrainOrderInfoTrainInfoListTrainTicketInfos) SetGmtCreate(v string) *TrainOrderQueryV2ResponseBodyModuleTrainOrderInfoTrainInfoListTrainTicketInfos {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *TrainOrderQueryV2ResponseBodyModuleTrainOrderInfoTrainInfoListTrainTicketInfos) SetGmtModify(v string) *TrainOrderQueryV2ResponseBodyModuleTrainOrderInfoTrainInfoListTrainTicketInfos {
+	s.GmtModify = &v
+	return s
+}
+
+func (s *TrainOrderQueryV2ResponseBodyModuleTrainOrderInfoTrainInfoListTrainTicketInfos) SetOutTicketStatus(v string) *TrainOrderQueryV2ResponseBodyModuleTrainOrderInfoTrainInfoListTrainTicketInfos {
+	s.OutTicketStatus = &v
+	return s
+}
+
+func (s *TrainOrderQueryV2ResponseBodyModuleTrainOrderInfoTrainInfoListTrainTicketInfos) SetPayType(v int32) *TrainOrderQueryV2ResponseBodyModuleTrainOrderInfoTrainInfoListTrainTicketInfos {
+	s.PayType = &v
+	return s
+}
+
+func (s *TrainOrderQueryV2ResponseBodyModuleTrainOrderInfoTrainInfoListTrainTicketInfos) SetSeatNo(v string) *TrainOrderQueryV2ResponseBodyModuleTrainOrderInfoTrainInfoListTrainTicketInfos {
+	s.SeatNo = &v
+	return s
+}
+
+func (s *TrainOrderQueryV2ResponseBodyModuleTrainOrderInfoTrainInfoListTrainTicketInfos) SetSeatTypeName(v string) *TrainOrderQueryV2ResponseBodyModuleTrainOrderInfoTrainInfoListTrainTicketInfos {
+	s.SeatTypeName = &v
+	return s
+}
+
+func (s *TrainOrderQueryV2ResponseBodyModuleTrainOrderInfoTrainInfoListTrainTicketInfos) SetSegmentIndex(v int32) *TrainOrderQueryV2ResponseBodyModuleTrainOrderInfoTrainInfoListTrainTicketInfos {
+	s.SegmentIndex = &v
+	return s
+}
+
+func (s *TrainOrderQueryV2ResponseBodyModuleTrainOrderInfoTrainInfoListTrainTicketInfos) SetServiceFee(v float64) *TrainOrderQueryV2ResponseBodyModuleTrainOrderInfoTrainInfoListTrainTicketInfos {
+	s.ServiceFee = &v
+	return s
+}
+
+func (s *TrainOrderQueryV2ResponseBodyModuleTrainOrderInfoTrainInfoListTrainTicketInfos) SetStartTime(v string) *TrainOrderQueryV2ResponseBodyModuleTrainOrderInfoTrainInfoListTrainTicketInfos {
+	s.StartTime = &v
+	return s
+}
+
+func (s *TrainOrderQueryV2ResponseBodyModuleTrainOrderInfoTrainInfoListTrainTicketInfos) SetTicketNo(v string) *TrainOrderQueryV2ResponseBodyModuleTrainOrderInfoTrainInfoListTrainTicketInfos {
+	s.TicketNo = &v
+	return s
+}
+
+func (s *TrainOrderQueryV2ResponseBodyModuleTrainOrderInfoTrainInfoListTrainTicketInfos) SetTicketPrice(v float64) *TrainOrderQueryV2ResponseBodyModuleTrainOrderInfoTrainInfoListTrainTicketInfos {
+	s.TicketPrice = &v
+	return s
+}
+
+func (s *TrainOrderQueryV2ResponseBodyModuleTrainOrderInfoTrainInfoListTrainTicketInfos) SetTicketStatus(v int32) *TrainOrderQueryV2ResponseBodyModuleTrainOrderInfoTrainInfoListTrainTicketInfos {
+	s.TicketStatus = &v
+	return s
+}
+
+func (s *TrainOrderQueryV2ResponseBodyModuleTrainOrderInfoTrainInfoListTrainTicketInfos) SetTrainTypeName(v string) *TrainOrderQueryV2ResponseBodyModuleTrainOrderInfoTrainInfoListTrainTicketInfos {
+	s.TrainTypeName = &v
+	return s
+}
+
+func (s *TrainOrderQueryV2ResponseBodyModuleTrainOrderInfoTrainInfoListTrainTicketInfos) SetUseTicket(v string) *TrainOrderQueryV2ResponseBodyModuleTrainOrderInfoTrainInfoListTrainTicketInfos {
+	s.UseTicket = &v
+	return s
+}
+
+func (s *TrainOrderQueryV2ResponseBodyModuleTrainOrderInfoTrainInfoListTrainTicketInfos) SetUserId(v string) *TrainOrderQueryV2ResponseBodyModuleTrainOrderInfoTrainInfoListTrainTicketInfos {
+	s.UserId = &v
+	return s
+}
+
+type TrainOrderQueryV2ResponseBodyModuleTrainOrderInfoTrainTransferInfo struct {
+	CostTime        *string `json:"cost_time,omitempty" xml:"cost_time,omitempty"`
+	EndTime         *string `json:"end_time,omitempty" xml:"end_time,omitempty"`
+	FromCityName    *string `json:"from_city_name,omitempty" xml:"from_city_name,omitempty"`
+	FromStationName *string `json:"from_station_name,omitempty" xml:"from_station_name,omitempty"`
+	MiddleCity      *string `json:"middle_city,omitempty" xml:"middle_city,omitempty"`
+	MiddleDate      *string `json:"middle_date,omitempty" xml:"middle_date,omitempty"`
+	MiddleStation   *string `json:"middle_station,omitempty" xml:"middle_station,omitempty"`
+	MiddleType      *string `json:"middle_type,omitempty" xml:"middle_type,omitempty"`
+	StartTime       *string `json:"start_time,omitempty" xml:"start_time,omitempty"`
+	ToCityName      *string `json:"to_city_name,omitempty" xml:"to_city_name,omitempty"`
+	ToStationName   *string `json:"to_station_name,omitempty" xml:"to_station_name,omitempty"`
+	WaitTime        *string `json:"wait_time,omitempty" xml:"wait_time,omitempty"`
+}
+
+func (s TrainOrderQueryV2ResponseBodyModuleTrainOrderInfoTrainTransferInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TrainOrderQueryV2ResponseBodyModuleTrainOrderInfoTrainTransferInfo) GoString() string {
+	return s.String()
+}
+
+func (s *TrainOrderQueryV2ResponseBodyModuleTrainOrderInfoTrainTransferInfo) SetCostTime(v string) *TrainOrderQueryV2ResponseBodyModuleTrainOrderInfoTrainTransferInfo {
+	s.CostTime = &v
+	return s
+}
+
+func (s *TrainOrderQueryV2ResponseBodyModuleTrainOrderInfoTrainTransferInfo) SetEndTime(v string) *TrainOrderQueryV2ResponseBodyModuleTrainOrderInfoTrainTransferInfo {
+	s.EndTime = &v
+	return s
+}
+
+func (s *TrainOrderQueryV2ResponseBodyModuleTrainOrderInfoTrainTransferInfo) SetFromCityName(v string) *TrainOrderQueryV2ResponseBodyModuleTrainOrderInfoTrainTransferInfo {
+	s.FromCityName = &v
+	return s
+}
+
+func (s *TrainOrderQueryV2ResponseBodyModuleTrainOrderInfoTrainTransferInfo) SetFromStationName(v string) *TrainOrderQueryV2ResponseBodyModuleTrainOrderInfoTrainTransferInfo {
+	s.FromStationName = &v
+	return s
+}
+
+func (s *TrainOrderQueryV2ResponseBodyModuleTrainOrderInfoTrainTransferInfo) SetMiddleCity(v string) *TrainOrderQueryV2ResponseBodyModuleTrainOrderInfoTrainTransferInfo {
+	s.MiddleCity = &v
+	return s
+}
+
+func (s *TrainOrderQueryV2ResponseBodyModuleTrainOrderInfoTrainTransferInfo) SetMiddleDate(v string) *TrainOrderQueryV2ResponseBodyModuleTrainOrderInfoTrainTransferInfo {
+	s.MiddleDate = &v
+	return s
+}
+
+func (s *TrainOrderQueryV2ResponseBodyModuleTrainOrderInfoTrainTransferInfo) SetMiddleStation(v string) *TrainOrderQueryV2ResponseBodyModuleTrainOrderInfoTrainTransferInfo {
+	s.MiddleStation = &v
+	return s
+}
+
+func (s *TrainOrderQueryV2ResponseBodyModuleTrainOrderInfoTrainTransferInfo) SetMiddleType(v string) *TrainOrderQueryV2ResponseBodyModuleTrainOrderInfoTrainTransferInfo {
+	s.MiddleType = &v
+	return s
+}
+
+func (s *TrainOrderQueryV2ResponseBodyModuleTrainOrderInfoTrainTransferInfo) SetStartTime(v string) *TrainOrderQueryV2ResponseBodyModuleTrainOrderInfoTrainTransferInfo {
+	s.StartTime = &v
+	return s
+}
+
+func (s *TrainOrderQueryV2ResponseBodyModuleTrainOrderInfoTrainTransferInfo) SetToCityName(v string) *TrainOrderQueryV2ResponseBodyModuleTrainOrderInfoTrainTransferInfo {
+	s.ToCityName = &v
+	return s
+}
+
+func (s *TrainOrderQueryV2ResponseBodyModuleTrainOrderInfoTrainTransferInfo) SetToStationName(v string) *TrainOrderQueryV2ResponseBodyModuleTrainOrderInfoTrainTransferInfo {
+	s.ToStationName = &v
+	return s
+}
+
+func (s *TrainOrderQueryV2ResponseBodyModuleTrainOrderInfoTrainTransferInfo) SetWaitTime(v string) *TrainOrderQueryV2ResponseBodyModuleTrainOrderInfoTrainTransferInfo {
+	s.WaitTime = &v
+	return s
+}
+
+type TrainOrderQueryV2Response struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *TrainOrderQueryV2ResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s TrainOrderQueryV2Response) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TrainOrderQueryV2Response) GoString() string {
+	return s.String()
+}
+
+func (s *TrainOrderQueryV2Response) SetHeaders(v map[string]*string) *TrainOrderQueryV2Response {
+	s.Headers = v
+	return s
+}
+
+func (s *TrainOrderQueryV2Response) SetStatusCode(v int32) *TrainOrderQueryV2Response {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *TrainOrderQueryV2Response) SetBody(v *TrainOrderQueryV2ResponseBody) *TrainOrderQueryV2Response {
+	s.Body = v
+	return s
+}
+
 type TrainStationSearchHeaders struct {
 	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	XAcsBtripSoCorpToken *string            `json:"x-acs-btrip-so-corp-token,omitempty" xml:"x-acs-btrip-so-corp-token,omitempty"`
@@ -27314,6 +28848,308 @@ func (s *TrainStationSearchResponse) SetStatusCode(v int32) *TrainStationSearchR
 }
 
 func (s *TrainStationSearchResponse) SetBody(v *TrainStationSearchResponseBody) *TrainStationSearchResponse {
+	s.Body = v
+	return s
+}
+
+type TrainTicketScanQueryHeaders struct {
+	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsBtripSoCorpToken *string            `json:"x-acs-btrip-so-corp-token,omitempty" xml:"x-acs-btrip-so-corp-token,omitempty"`
+}
+
+func (s TrainTicketScanQueryHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TrainTicketScanQueryHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *TrainTicketScanQueryHeaders) SetCommonHeaders(v map[string]*string) *TrainTicketScanQueryHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *TrainTicketScanQueryHeaders) SetXAcsBtripSoCorpToken(v string) *TrainTicketScanQueryHeaders {
+	s.XAcsBtripSoCorpToken = &v
+	return s
+}
+
+type TrainTicketScanQueryRequest struct {
+	BillDate         *string `json:"bill_date,omitempty" xml:"bill_date,omitempty"`
+	BillId           *int64  `json:"bill_id,omitempty" xml:"bill_id,omitempty"`
+	InvoiceSubTaskId *int64  `json:"invoice_sub_task_id,omitempty" xml:"invoice_sub_task_id,omitempty"`
+	PageNo           *int32  `json:"page_no,omitempty" xml:"page_no,omitempty"`
+	PageSize         *int32  `json:"page_size,omitempty" xml:"page_size,omitempty"`
+}
+
+func (s TrainTicketScanQueryRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TrainTicketScanQueryRequest) GoString() string {
+	return s.String()
+}
+
+func (s *TrainTicketScanQueryRequest) SetBillDate(v string) *TrainTicketScanQueryRequest {
+	s.BillDate = &v
+	return s
+}
+
+func (s *TrainTicketScanQueryRequest) SetBillId(v int64) *TrainTicketScanQueryRequest {
+	s.BillId = &v
+	return s
+}
+
+func (s *TrainTicketScanQueryRequest) SetInvoiceSubTaskId(v int64) *TrainTicketScanQueryRequest {
+	s.InvoiceSubTaskId = &v
+	return s
+}
+
+func (s *TrainTicketScanQueryRequest) SetPageNo(v int32) *TrainTicketScanQueryRequest {
+	s.PageNo = &v
+	return s
+}
+
+func (s *TrainTicketScanQueryRequest) SetPageSize(v int32) *TrainTicketScanQueryRequest {
+	s.PageSize = &v
+	return s
+}
+
+type TrainTicketScanQueryResponseBody struct {
+	Code    *string                                 `json:"code,omitempty" xml:"code,omitempty"`
+	Message *string                                 `json:"message,omitempty" xml:"message,omitempty"`
+	Module  *TrainTicketScanQueryResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
+	// requestId
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success   *bool   `json:"success,omitempty" xml:"success,omitempty"`
+	// traceId
+	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
+}
+
+func (s TrainTicketScanQueryResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TrainTicketScanQueryResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *TrainTicketScanQueryResponseBody) SetCode(v string) *TrainTicketScanQueryResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *TrainTicketScanQueryResponseBody) SetMessage(v string) *TrainTicketScanQueryResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *TrainTicketScanQueryResponseBody) SetModule(v *TrainTicketScanQueryResponseBodyModule) *TrainTicketScanQueryResponseBody {
+	s.Module = v
+	return s
+}
+
+func (s *TrainTicketScanQueryResponseBody) SetRequestId(v string) *TrainTicketScanQueryResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *TrainTicketScanQueryResponseBody) SetSuccess(v bool) *TrainTicketScanQueryResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *TrainTicketScanQueryResponseBody) SetTraceId(v string) *TrainTicketScanQueryResponseBody {
+	s.TraceId = &v
+	return s
+}
+
+type TrainTicketScanQueryResponseBodyModule struct {
+	Items     []*TrainTicketScanQueryResponseBodyModuleItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
+	PageNo    *int32                                         `json:"page_no,omitempty" xml:"page_no,omitempty"`
+	PageSize  *int32                                         `json:"page_size,omitempty" xml:"page_size,omitempty"`
+	TotalPage *int32                                         `json:"total_page,omitempty" xml:"total_page,omitempty"`
+	TotalSize *int32                                         `json:"total_size,omitempty" xml:"total_size,omitempty"`
+}
+
+func (s TrainTicketScanQueryResponseBodyModule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TrainTicketScanQueryResponseBodyModule) GoString() string {
+	return s.String()
+}
+
+func (s *TrainTicketScanQueryResponseBodyModule) SetItems(v []*TrainTicketScanQueryResponseBodyModuleItems) *TrainTicketScanQueryResponseBodyModule {
+	s.Items = v
+	return s
+}
+
+func (s *TrainTicketScanQueryResponseBodyModule) SetPageNo(v int32) *TrainTicketScanQueryResponseBodyModule {
+	s.PageNo = &v
+	return s
+}
+
+func (s *TrainTicketScanQueryResponseBodyModule) SetPageSize(v int32) *TrainTicketScanQueryResponseBodyModule {
+	s.PageSize = &v
+	return s
+}
+
+func (s *TrainTicketScanQueryResponseBodyModule) SetTotalPage(v int32) *TrainTicketScanQueryResponseBodyModule {
+	s.TotalPage = &v
+	return s
+}
+
+func (s *TrainTicketScanQueryResponseBodyModule) SetTotalSize(v int32) *TrainTicketScanQueryResponseBodyModule {
+	s.TotalSize = &v
+	return s
+}
+
+type TrainTicketScanQueryResponseBodyModuleItems struct {
+	ArrStation   *string `json:"arr_station,omitempty" xml:"arr_station,omitempty"`
+	BillDate     *string `json:"bill_date,omitempty" xml:"bill_date,omitempty"`
+	CoachName    *string `json:"coach_name,omitempty" xml:"coach_name,omitempty"`
+	CostCenter   *string `json:"cost_center,omitempty" xml:"cost_center,omitempty"`
+	DepStation   *string `json:"dep_station,omitempty" xml:"dep_station,omitempty"`
+	DepTime      *string `json:"dep_time,omitempty" xml:"dep_time,omitempty"`
+	Department   *string `json:"department,omitempty" xml:"department,omitempty"`
+	InvoiceTitle *string `json:"invoice_title,omitempty" xml:"invoice_title,omitempty"`
+	OrderId      *int64  `json:"order_id,omitempty" xml:"order_id,omitempty"`
+	OssUrl       *string `json:"oss_url,omitempty" xml:"oss_url,omitempty"`
+	Passenger    *string `json:"passenger,omitempty" xml:"passenger,omitempty"`
+	Price        *string `json:"price,omitempty" xml:"price,omitempty"`
+	Project      *string `json:"project,omitempty" xml:"project,omitempty"`
+	Seat         *string `json:"seat,omitempty" xml:"seat,omitempty"`
+	SeatNo       *string `json:"seat_no,omitempty" xml:"seat_no,omitempty"`
+	SerialNumber *string `json:"serial_number,omitempty" xml:"serial_number,omitempty"`
+	TaxAmount    *string `json:"tax_amount,omitempty" xml:"tax_amount,omitempty"`
+	TaxRate      *string `json:"tax_rate,omitempty" xml:"tax_rate,omitempty"`
+}
+
+func (s TrainTicketScanQueryResponseBodyModuleItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TrainTicketScanQueryResponseBodyModuleItems) GoString() string {
+	return s.String()
+}
+
+func (s *TrainTicketScanQueryResponseBodyModuleItems) SetArrStation(v string) *TrainTicketScanQueryResponseBodyModuleItems {
+	s.ArrStation = &v
+	return s
+}
+
+func (s *TrainTicketScanQueryResponseBodyModuleItems) SetBillDate(v string) *TrainTicketScanQueryResponseBodyModuleItems {
+	s.BillDate = &v
+	return s
+}
+
+func (s *TrainTicketScanQueryResponseBodyModuleItems) SetCoachName(v string) *TrainTicketScanQueryResponseBodyModuleItems {
+	s.CoachName = &v
+	return s
+}
+
+func (s *TrainTicketScanQueryResponseBodyModuleItems) SetCostCenter(v string) *TrainTicketScanQueryResponseBodyModuleItems {
+	s.CostCenter = &v
+	return s
+}
+
+func (s *TrainTicketScanQueryResponseBodyModuleItems) SetDepStation(v string) *TrainTicketScanQueryResponseBodyModuleItems {
+	s.DepStation = &v
+	return s
+}
+
+func (s *TrainTicketScanQueryResponseBodyModuleItems) SetDepTime(v string) *TrainTicketScanQueryResponseBodyModuleItems {
+	s.DepTime = &v
+	return s
+}
+
+func (s *TrainTicketScanQueryResponseBodyModuleItems) SetDepartment(v string) *TrainTicketScanQueryResponseBodyModuleItems {
+	s.Department = &v
+	return s
+}
+
+func (s *TrainTicketScanQueryResponseBodyModuleItems) SetInvoiceTitle(v string) *TrainTicketScanQueryResponseBodyModuleItems {
+	s.InvoiceTitle = &v
+	return s
+}
+
+func (s *TrainTicketScanQueryResponseBodyModuleItems) SetOrderId(v int64) *TrainTicketScanQueryResponseBodyModuleItems {
+	s.OrderId = &v
+	return s
+}
+
+func (s *TrainTicketScanQueryResponseBodyModuleItems) SetOssUrl(v string) *TrainTicketScanQueryResponseBodyModuleItems {
+	s.OssUrl = &v
+	return s
+}
+
+func (s *TrainTicketScanQueryResponseBodyModuleItems) SetPassenger(v string) *TrainTicketScanQueryResponseBodyModuleItems {
+	s.Passenger = &v
+	return s
+}
+
+func (s *TrainTicketScanQueryResponseBodyModuleItems) SetPrice(v string) *TrainTicketScanQueryResponseBodyModuleItems {
+	s.Price = &v
+	return s
+}
+
+func (s *TrainTicketScanQueryResponseBodyModuleItems) SetProject(v string) *TrainTicketScanQueryResponseBodyModuleItems {
+	s.Project = &v
+	return s
+}
+
+func (s *TrainTicketScanQueryResponseBodyModuleItems) SetSeat(v string) *TrainTicketScanQueryResponseBodyModuleItems {
+	s.Seat = &v
+	return s
+}
+
+func (s *TrainTicketScanQueryResponseBodyModuleItems) SetSeatNo(v string) *TrainTicketScanQueryResponseBodyModuleItems {
+	s.SeatNo = &v
+	return s
+}
+
+func (s *TrainTicketScanQueryResponseBodyModuleItems) SetSerialNumber(v string) *TrainTicketScanQueryResponseBodyModuleItems {
+	s.SerialNumber = &v
+	return s
+}
+
+func (s *TrainTicketScanQueryResponseBodyModuleItems) SetTaxAmount(v string) *TrainTicketScanQueryResponseBodyModuleItems {
+	s.TaxAmount = &v
+	return s
+}
+
+func (s *TrainTicketScanQueryResponseBodyModuleItems) SetTaxRate(v string) *TrainTicketScanQueryResponseBodyModuleItems {
+	s.TaxRate = &v
+	return s
+}
+
+type TrainTicketScanQueryResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *TrainTicketScanQueryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s TrainTicketScanQueryResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TrainTicketScanQueryResponse) GoString() string {
+	return s.String()
+}
+
+func (s *TrainTicketScanQueryResponse) SetHeaders(v map[string]*string) *TrainTicketScanQueryResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *TrainTicketScanQueryResponse) SetStatusCode(v int32) *TrainTicketScanQueryResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *TrainTicketScanQueryResponse) SetBody(v *TrainTicketScanQueryResponseBody) *TrainTicketScanQueryResponse {
 	s.Body = v
 	return s
 }
@@ -27519,6 +29355,545 @@ func (s *UserQueryResponse) SetStatusCode(v int32) *UserQueryResponse {
 }
 
 func (s *UserQueryResponse) SetBody(v *UserQueryResponseBody) *UserQueryResponse {
+	s.Body = v
+	return s
+}
+
+type VatInvoiceScanQueryHeaders struct {
+	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsBtripSoCorpToken *string            `json:"x-acs-btrip-so-corp-token,omitempty" xml:"x-acs-btrip-so-corp-token,omitempty"`
+}
+
+func (s VatInvoiceScanQueryHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s VatInvoiceScanQueryHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *VatInvoiceScanQueryHeaders) SetCommonHeaders(v map[string]*string) *VatInvoiceScanQueryHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *VatInvoiceScanQueryHeaders) SetXAcsBtripSoCorpToken(v string) *VatInvoiceScanQueryHeaders {
+	s.XAcsBtripSoCorpToken = &v
+	return s
+}
+
+type VatInvoiceScanQueryRequest struct {
+	BillDate         *string `json:"bill_date,omitempty" xml:"bill_date,omitempty"`
+	BillId           *int64  `json:"bill_id,omitempty" xml:"bill_id,omitempty"`
+	InvoiceSubTaskId *int64  `json:"invoice_sub_task_id,omitempty" xml:"invoice_sub_task_id,omitempty"`
+	PageNo           *int32  `json:"page_no,omitempty" xml:"page_no,omitempty"`
+	PageSize         *int32  `json:"page_size,omitempty" xml:"page_size,omitempty"`
+}
+
+func (s VatInvoiceScanQueryRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s VatInvoiceScanQueryRequest) GoString() string {
+	return s.String()
+}
+
+func (s *VatInvoiceScanQueryRequest) SetBillDate(v string) *VatInvoiceScanQueryRequest {
+	s.BillDate = &v
+	return s
+}
+
+func (s *VatInvoiceScanQueryRequest) SetBillId(v int64) *VatInvoiceScanQueryRequest {
+	s.BillId = &v
+	return s
+}
+
+func (s *VatInvoiceScanQueryRequest) SetInvoiceSubTaskId(v int64) *VatInvoiceScanQueryRequest {
+	s.InvoiceSubTaskId = &v
+	return s
+}
+
+func (s *VatInvoiceScanQueryRequest) SetPageNo(v int32) *VatInvoiceScanQueryRequest {
+	s.PageNo = &v
+	return s
+}
+
+func (s *VatInvoiceScanQueryRequest) SetPageSize(v int32) *VatInvoiceScanQueryRequest {
+	s.PageSize = &v
+	return s
+}
+
+type VatInvoiceScanQueryResponseBody struct {
+	Code    *string                                `json:"code,omitempty" xml:"code,omitempty"`
+	Message *string                                `json:"message,omitempty" xml:"message,omitempty"`
+	Module  *VatInvoiceScanQueryResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
+	// requestId
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success   *bool   `json:"success,omitempty" xml:"success,omitempty"`
+	// traceId
+	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
+}
+
+func (s VatInvoiceScanQueryResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s VatInvoiceScanQueryResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *VatInvoiceScanQueryResponseBody) SetCode(v string) *VatInvoiceScanQueryResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *VatInvoiceScanQueryResponseBody) SetMessage(v string) *VatInvoiceScanQueryResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *VatInvoiceScanQueryResponseBody) SetModule(v *VatInvoiceScanQueryResponseBodyModule) *VatInvoiceScanQueryResponseBody {
+	s.Module = v
+	return s
+}
+
+func (s *VatInvoiceScanQueryResponseBody) SetRequestId(v string) *VatInvoiceScanQueryResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *VatInvoiceScanQueryResponseBody) SetSuccess(v bool) *VatInvoiceScanQueryResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *VatInvoiceScanQueryResponseBody) SetTraceId(v string) *VatInvoiceScanQueryResponseBody {
+	s.TraceId = &v
+	return s
+}
+
+type VatInvoiceScanQueryResponseBodyModule struct {
+	Items     []*VatInvoiceScanQueryResponseBodyModuleItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
+	PageNo    *int32                                        `json:"page_no,omitempty" xml:"page_no,omitempty"`
+	PageSize  *int32                                        `json:"page_size,omitempty" xml:"page_size,omitempty"`
+	TotalPage *int32                                        `json:"total_page,omitempty" xml:"total_page,omitempty"`
+	TotalSize *int32                                        `json:"total_size,omitempty" xml:"total_size,omitempty"`
+}
+
+func (s VatInvoiceScanQueryResponseBodyModule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s VatInvoiceScanQueryResponseBodyModule) GoString() string {
+	return s.String()
+}
+
+func (s *VatInvoiceScanQueryResponseBodyModule) SetItems(v []*VatInvoiceScanQueryResponseBodyModuleItems) *VatInvoiceScanQueryResponseBodyModule {
+	s.Items = v
+	return s
+}
+
+func (s *VatInvoiceScanQueryResponseBodyModule) SetPageNo(v int32) *VatInvoiceScanQueryResponseBodyModule {
+	s.PageNo = &v
+	return s
+}
+
+func (s *VatInvoiceScanQueryResponseBodyModule) SetPageSize(v int32) *VatInvoiceScanQueryResponseBodyModule {
+	s.PageSize = &v
+	return s
+}
+
+func (s *VatInvoiceScanQueryResponseBodyModule) SetTotalPage(v int32) *VatInvoiceScanQueryResponseBodyModule {
+	s.TotalPage = &v
+	return s
+}
+
+func (s *VatInvoiceScanQueryResponseBodyModule) SetTotalSize(v int32) *VatInvoiceScanQueryResponseBodyModule {
+	s.TotalSize = &v
+	return s
+}
+
+type VatInvoiceScanQueryResponseBodyModuleItems struct {
+	AmountWithTax    *string `json:"amount_with_tax,omitempty" xml:"amount_with_tax,omitempty"`
+	AmountWithoutTax *string `json:"amount_without_tax,omitempty" xml:"amount_without_tax,omitempty"`
+	BillDate         *string `json:"bill_date,omitempty" xml:"bill_date,omitempty"`
+	InvoiceCode      *string `json:"invoice_code,omitempty" xml:"invoice_code,omitempty"`
+	InvoiceDay       *string `json:"invoice_day,omitempty" xml:"invoice_day,omitempty"`
+	InvoiceDetail    *string `json:"invoice_detail,omitempty" xml:"invoice_detail,omitempty"`
+	InvoiceNo        *string `json:"invoice_no,omitempty" xml:"invoice_no,omitempty"`
+	InvoiceSubTaskId *int64  `json:"invoice_sub_task_id,omitempty" xml:"invoice_sub_task_id,omitempty"`
+	InvoiceType      *int32  `json:"invoice_type,omitempty" xml:"invoice_type,omitempty"`
+	InvoiceTypeDesc  *string `json:"invoice_type_desc,omitempty" xml:"invoice_type_desc,omitempty"`
+	OssUrl           *string `json:"oss_url,omitempty" xml:"oss_url,omitempty"`
+	PurchaserName    *string `json:"purchaser_name,omitempty" xml:"purchaser_name,omitempty"`
+	PurchaserTaxNo   *string `json:"purchaser_tax_no,omitempty" xml:"purchaser_tax_no,omitempty"`
+	SellerName       *string `json:"seller_name,omitempty" xml:"seller_name,omitempty"`
+	SellerTaxNo      *string `json:"seller_tax_no,omitempty" xml:"seller_tax_no,omitempty"`
+	TaxAmount        *string `json:"tax_amount,omitempty" xml:"tax_amount,omitempty"`
+	TaxRate          *string `json:"tax_rate,omitempty" xml:"tax_rate,omitempty"`
+}
+
+func (s VatInvoiceScanQueryResponseBodyModuleItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s VatInvoiceScanQueryResponseBodyModuleItems) GoString() string {
+	return s.String()
+}
+
+func (s *VatInvoiceScanQueryResponseBodyModuleItems) SetAmountWithTax(v string) *VatInvoiceScanQueryResponseBodyModuleItems {
+	s.AmountWithTax = &v
+	return s
+}
+
+func (s *VatInvoiceScanQueryResponseBodyModuleItems) SetAmountWithoutTax(v string) *VatInvoiceScanQueryResponseBodyModuleItems {
+	s.AmountWithoutTax = &v
+	return s
+}
+
+func (s *VatInvoiceScanQueryResponseBodyModuleItems) SetBillDate(v string) *VatInvoiceScanQueryResponseBodyModuleItems {
+	s.BillDate = &v
+	return s
+}
+
+func (s *VatInvoiceScanQueryResponseBodyModuleItems) SetInvoiceCode(v string) *VatInvoiceScanQueryResponseBodyModuleItems {
+	s.InvoiceCode = &v
+	return s
+}
+
+func (s *VatInvoiceScanQueryResponseBodyModuleItems) SetInvoiceDay(v string) *VatInvoiceScanQueryResponseBodyModuleItems {
+	s.InvoiceDay = &v
+	return s
+}
+
+func (s *VatInvoiceScanQueryResponseBodyModuleItems) SetInvoiceDetail(v string) *VatInvoiceScanQueryResponseBodyModuleItems {
+	s.InvoiceDetail = &v
+	return s
+}
+
+func (s *VatInvoiceScanQueryResponseBodyModuleItems) SetInvoiceNo(v string) *VatInvoiceScanQueryResponseBodyModuleItems {
+	s.InvoiceNo = &v
+	return s
+}
+
+func (s *VatInvoiceScanQueryResponseBodyModuleItems) SetInvoiceSubTaskId(v int64) *VatInvoiceScanQueryResponseBodyModuleItems {
+	s.InvoiceSubTaskId = &v
+	return s
+}
+
+func (s *VatInvoiceScanQueryResponseBodyModuleItems) SetInvoiceType(v int32) *VatInvoiceScanQueryResponseBodyModuleItems {
+	s.InvoiceType = &v
+	return s
+}
+
+func (s *VatInvoiceScanQueryResponseBodyModuleItems) SetInvoiceTypeDesc(v string) *VatInvoiceScanQueryResponseBodyModuleItems {
+	s.InvoiceTypeDesc = &v
+	return s
+}
+
+func (s *VatInvoiceScanQueryResponseBodyModuleItems) SetOssUrl(v string) *VatInvoiceScanQueryResponseBodyModuleItems {
+	s.OssUrl = &v
+	return s
+}
+
+func (s *VatInvoiceScanQueryResponseBodyModuleItems) SetPurchaserName(v string) *VatInvoiceScanQueryResponseBodyModuleItems {
+	s.PurchaserName = &v
+	return s
+}
+
+func (s *VatInvoiceScanQueryResponseBodyModuleItems) SetPurchaserTaxNo(v string) *VatInvoiceScanQueryResponseBodyModuleItems {
+	s.PurchaserTaxNo = &v
+	return s
+}
+
+func (s *VatInvoiceScanQueryResponseBodyModuleItems) SetSellerName(v string) *VatInvoiceScanQueryResponseBodyModuleItems {
+	s.SellerName = &v
+	return s
+}
+
+func (s *VatInvoiceScanQueryResponseBodyModuleItems) SetSellerTaxNo(v string) *VatInvoiceScanQueryResponseBodyModuleItems {
+	s.SellerTaxNo = &v
+	return s
+}
+
+func (s *VatInvoiceScanQueryResponseBodyModuleItems) SetTaxAmount(v string) *VatInvoiceScanQueryResponseBodyModuleItems {
+	s.TaxAmount = &v
+	return s
+}
+
+func (s *VatInvoiceScanQueryResponseBodyModuleItems) SetTaxRate(v string) *VatInvoiceScanQueryResponseBodyModuleItems {
+	s.TaxRate = &v
+	return s
+}
+
+type VatInvoiceScanQueryResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *VatInvoiceScanQueryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s VatInvoiceScanQueryResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s VatInvoiceScanQueryResponse) GoString() string {
+	return s.String()
+}
+
+func (s *VatInvoiceScanQueryResponse) SetHeaders(v map[string]*string) *VatInvoiceScanQueryResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *VatInvoiceScanQueryResponse) SetStatusCode(v int32) *VatInvoiceScanQueryResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *VatInvoiceScanQueryResponse) SetBody(v *VatInvoiceScanQueryResponseBody) *VatInvoiceScanQueryResponse {
+	s.Body = v
+	return s
+}
+
+type WaitApplyInvoiceTaskDetailQueryHeaders struct {
+	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsBtripSoCorpToken *string            `json:"x-acs-btrip-so-corp-token,omitempty" xml:"x-acs-btrip-so-corp-token,omitempty"`
+}
+
+func (s WaitApplyInvoiceTaskDetailQueryHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s WaitApplyInvoiceTaskDetailQueryHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *WaitApplyInvoiceTaskDetailQueryHeaders) SetCommonHeaders(v map[string]*string) *WaitApplyInvoiceTaskDetailQueryHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *WaitApplyInvoiceTaskDetailQueryHeaders) SetXAcsBtripSoCorpToken(v string) *WaitApplyInvoiceTaskDetailQueryHeaders {
+	s.XAcsBtripSoCorpToken = &v
+	return s
+}
+
+type WaitApplyInvoiceTaskDetailQueryRequest struct {
+	BillDate *string `json:"bill_date,omitempty" xml:"bill_date,omitempty"`
+}
+
+func (s WaitApplyInvoiceTaskDetailQueryRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s WaitApplyInvoiceTaskDetailQueryRequest) GoString() string {
+	return s.String()
+}
+
+func (s *WaitApplyInvoiceTaskDetailQueryRequest) SetBillDate(v string) *WaitApplyInvoiceTaskDetailQueryRequest {
+	s.BillDate = &v
+	return s
+}
+
+type WaitApplyInvoiceTaskDetailQueryResponseBody struct {
+	Code    *string                                              `json:"code,omitempty" xml:"code,omitempty"`
+	Message *string                                              `json:"message,omitempty" xml:"message,omitempty"`
+	Module  []*WaitApplyInvoiceTaskDetailQueryResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Repeated"`
+	// requestId
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success   *bool   `json:"success,omitempty" xml:"success,omitempty"`
+	// traceId
+	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
+}
+
+func (s WaitApplyInvoiceTaskDetailQueryResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s WaitApplyInvoiceTaskDetailQueryResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *WaitApplyInvoiceTaskDetailQueryResponseBody) SetCode(v string) *WaitApplyInvoiceTaskDetailQueryResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *WaitApplyInvoiceTaskDetailQueryResponseBody) SetMessage(v string) *WaitApplyInvoiceTaskDetailQueryResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *WaitApplyInvoiceTaskDetailQueryResponseBody) SetModule(v []*WaitApplyInvoiceTaskDetailQueryResponseBodyModule) *WaitApplyInvoiceTaskDetailQueryResponseBody {
+	s.Module = v
+	return s
+}
+
+func (s *WaitApplyInvoiceTaskDetailQueryResponseBody) SetRequestId(v string) *WaitApplyInvoiceTaskDetailQueryResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *WaitApplyInvoiceTaskDetailQueryResponseBody) SetSuccess(v bool) *WaitApplyInvoiceTaskDetailQueryResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *WaitApplyInvoiceTaskDetailQueryResponseBody) SetTraceId(v string) *WaitApplyInvoiceTaskDetailQueryResponseBody {
+	s.TraceId = &v
+	return s
+}
+
+type WaitApplyInvoiceTaskDetailQueryResponseBodyModule struct {
+	Contact                       *string `json:"contact,omitempty" xml:"contact,omitempty"`
+	Email                         *string `json:"email,omitempty" xml:"email,omitempty"`
+	FlightInvoiceFee              *string `json:"flight_invoice_fee,omitempty" xml:"flight_invoice_fee,omitempty"`
+	FuPointInvoiceFee             *string `json:"fu_point_invoice_fee,omitempty" xml:"fu_point_invoice_fee,omitempty"`
+	HotelNormalInvoiceFee         *string `json:"hotel_normal_invoice_fee,omitempty" xml:"hotel_normal_invoice_fee,omitempty"`
+	HotelSpecialInvoiceFee        *string `json:"hotel_special_invoice_fee,omitempty" xml:"hotel_special_invoice_fee,omitempty"`
+	InternationalFlightInvoiceFee *string `json:"international_flight_invoice_fee,omitempty" xml:"international_flight_invoice_fee,omitempty"`
+	InvoiceThirdPartId            *string `json:"invoice_third_part_id,omitempty" xml:"invoice_third_part_id,omitempty"`
+	InvoiceTitle                  *string `json:"invoice_title,omitempty" xml:"invoice_title,omitempty"`
+	MailAddress                   *string `json:"mail_address,omitempty" xml:"mail_address,omitempty"`
+	MailCity                      *string `json:"mail_city,omitempty" xml:"mail_city,omitempty"`
+	MailFullAddress               *string `json:"mail_full_address,omitempty" xml:"mail_full_address,omitempty"`
+	MailProvince                  *string `json:"mail_province,omitempty" xml:"mail_province,omitempty"`
+	PenaltyFee                    *string `json:"penalty_fee,omitempty" xml:"penalty_fee,omitempty"`
+	Remark                        *string `json:"remark,omitempty" xml:"remark,omitempty"`
+	ServiceFee                    *string `json:"service_fee,omitempty" xml:"service_fee,omitempty"`
+	Telephone                     *string `json:"telephone,omitempty" xml:"telephone,omitempty"`
+	TrainInvoiceFee               *string `json:"train_invoice_fee,omitempty" xml:"train_invoice_fee,omitempty"`
+	VehicleInvoiceFee             *string `json:"vehicle_invoice_fee,omitempty" xml:"vehicle_invoice_fee,omitempty"`
+}
+
+func (s WaitApplyInvoiceTaskDetailQueryResponseBodyModule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s WaitApplyInvoiceTaskDetailQueryResponseBodyModule) GoString() string {
+	return s.String()
+}
+
+func (s *WaitApplyInvoiceTaskDetailQueryResponseBodyModule) SetContact(v string) *WaitApplyInvoiceTaskDetailQueryResponseBodyModule {
+	s.Contact = &v
+	return s
+}
+
+func (s *WaitApplyInvoiceTaskDetailQueryResponseBodyModule) SetEmail(v string) *WaitApplyInvoiceTaskDetailQueryResponseBodyModule {
+	s.Email = &v
+	return s
+}
+
+func (s *WaitApplyInvoiceTaskDetailQueryResponseBodyModule) SetFlightInvoiceFee(v string) *WaitApplyInvoiceTaskDetailQueryResponseBodyModule {
+	s.FlightInvoiceFee = &v
+	return s
+}
+
+func (s *WaitApplyInvoiceTaskDetailQueryResponseBodyModule) SetFuPointInvoiceFee(v string) *WaitApplyInvoiceTaskDetailQueryResponseBodyModule {
+	s.FuPointInvoiceFee = &v
+	return s
+}
+
+func (s *WaitApplyInvoiceTaskDetailQueryResponseBodyModule) SetHotelNormalInvoiceFee(v string) *WaitApplyInvoiceTaskDetailQueryResponseBodyModule {
+	s.HotelNormalInvoiceFee = &v
+	return s
+}
+
+func (s *WaitApplyInvoiceTaskDetailQueryResponseBodyModule) SetHotelSpecialInvoiceFee(v string) *WaitApplyInvoiceTaskDetailQueryResponseBodyModule {
+	s.HotelSpecialInvoiceFee = &v
+	return s
+}
+
+func (s *WaitApplyInvoiceTaskDetailQueryResponseBodyModule) SetInternationalFlightInvoiceFee(v string) *WaitApplyInvoiceTaskDetailQueryResponseBodyModule {
+	s.InternationalFlightInvoiceFee = &v
+	return s
+}
+
+func (s *WaitApplyInvoiceTaskDetailQueryResponseBodyModule) SetInvoiceThirdPartId(v string) *WaitApplyInvoiceTaskDetailQueryResponseBodyModule {
+	s.InvoiceThirdPartId = &v
+	return s
+}
+
+func (s *WaitApplyInvoiceTaskDetailQueryResponseBodyModule) SetInvoiceTitle(v string) *WaitApplyInvoiceTaskDetailQueryResponseBodyModule {
+	s.InvoiceTitle = &v
+	return s
+}
+
+func (s *WaitApplyInvoiceTaskDetailQueryResponseBodyModule) SetMailAddress(v string) *WaitApplyInvoiceTaskDetailQueryResponseBodyModule {
+	s.MailAddress = &v
+	return s
+}
+
+func (s *WaitApplyInvoiceTaskDetailQueryResponseBodyModule) SetMailCity(v string) *WaitApplyInvoiceTaskDetailQueryResponseBodyModule {
+	s.MailCity = &v
+	return s
+}
+
+func (s *WaitApplyInvoiceTaskDetailQueryResponseBodyModule) SetMailFullAddress(v string) *WaitApplyInvoiceTaskDetailQueryResponseBodyModule {
+	s.MailFullAddress = &v
+	return s
+}
+
+func (s *WaitApplyInvoiceTaskDetailQueryResponseBodyModule) SetMailProvince(v string) *WaitApplyInvoiceTaskDetailQueryResponseBodyModule {
+	s.MailProvince = &v
+	return s
+}
+
+func (s *WaitApplyInvoiceTaskDetailQueryResponseBodyModule) SetPenaltyFee(v string) *WaitApplyInvoiceTaskDetailQueryResponseBodyModule {
+	s.PenaltyFee = &v
+	return s
+}
+
+func (s *WaitApplyInvoiceTaskDetailQueryResponseBodyModule) SetRemark(v string) *WaitApplyInvoiceTaskDetailQueryResponseBodyModule {
+	s.Remark = &v
+	return s
+}
+
+func (s *WaitApplyInvoiceTaskDetailQueryResponseBodyModule) SetServiceFee(v string) *WaitApplyInvoiceTaskDetailQueryResponseBodyModule {
+	s.ServiceFee = &v
+	return s
+}
+
+func (s *WaitApplyInvoiceTaskDetailQueryResponseBodyModule) SetTelephone(v string) *WaitApplyInvoiceTaskDetailQueryResponseBodyModule {
+	s.Telephone = &v
+	return s
+}
+
+func (s *WaitApplyInvoiceTaskDetailQueryResponseBodyModule) SetTrainInvoiceFee(v string) *WaitApplyInvoiceTaskDetailQueryResponseBodyModule {
+	s.TrainInvoiceFee = &v
+	return s
+}
+
+func (s *WaitApplyInvoiceTaskDetailQueryResponseBodyModule) SetVehicleInvoiceFee(v string) *WaitApplyInvoiceTaskDetailQueryResponseBodyModule {
+	s.VehicleInvoiceFee = &v
+	return s
+}
+
+type WaitApplyInvoiceTaskDetailQueryResponse struct {
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *WaitApplyInvoiceTaskDetailQueryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s WaitApplyInvoiceTaskDetailQueryResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s WaitApplyInvoiceTaskDetailQueryResponse) GoString() string {
+	return s.String()
+}
+
+func (s *WaitApplyInvoiceTaskDetailQueryResponse) SetHeaders(v map[string]*string) *WaitApplyInvoiceTaskDetailQueryResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *WaitApplyInvoiceTaskDetailQueryResponse) SetStatusCode(v int32) *WaitApplyInvoiceTaskDetailQueryResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *WaitApplyInvoiceTaskDetailQueryResponse) SetBody(v *WaitApplyInvoiceTaskDetailQueryResponseBody) *WaitApplyInvoiceTaskDetailQueryResponse {
 	s.Body = v
 	return s
 }
@@ -28070,6 +30445,71 @@ func (client *Client) ApplyApprove(request *ApplyApproveRequest) (_result *Apply
 	headers := &ApplyApproveHeaders{}
 	_result = &ApplyApproveResponse{}
 	_body, _err := client.ApplyApproveWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ApplyInvoiceTaskWithOptions(tmpReq *ApplyInvoiceTaskRequest, headers *ApplyInvoiceTaskHeaders, runtime *util.RuntimeOptions) (_result *ApplyInvoiceTaskResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ApplyInvoiceTaskShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.InvoiceTaskList)) {
+		request.InvoiceTaskListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.InvoiceTaskList, tea.String("invoice_task_list"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BillDate)) {
+		body["bill_date"] = request.BillDate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InvoiceTaskListShrink)) {
+		body["invoice_task_list"] = request.InvoiceTaskListShrink
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsBtripSoCorpToken)) {
+		realHeaders["x-acs-btrip-so-corp-token"] = util.ToJSONString(headers.XAcsBtripSoCorpToken)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ApplyInvoiceTask"),
+		Version:     tea.String("2022-05-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/invoice/v1/apply-invoice-task"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ApplyInvoiceTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ApplyInvoiceTask(request *ApplyInvoiceTaskRequest) (_result *ApplyInvoiceTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &ApplyInvoiceTaskHeaders{}
+	_result = &ApplyInvoiceTaskResponse{}
+	_body, _err := client.ApplyInvoiceTaskWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -30197,6 +32637,77 @@ func (client *Client) FlightExceedApplyQuery(request *FlightExceedApplyQueryRequ
 	headers := &FlightExceedApplyQueryHeaders{}
 	_result = &FlightExceedApplyQueryResponse{}
 	_body, _err := client.FlightExceedApplyQueryWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) FlightItineraryScanQueryWithOptions(request *FlightItineraryScanQueryRequest, headers *FlightItineraryScanQueryHeaders, runtime *util.RuntimeOptions) (_result *FlightItineraryScanQueryResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BillDate)) {
+		query["bill_date"] = request.BillDate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BillId)) {
+		query["bill_id"] = request.BillId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InvoiceSubTaskId)) {
+		query["invoice_sub_task_id"] = request.InvoiceSubTaskId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNo)) {
+		query["page_no"] = request.PageNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["page_size"] = request.PageSize
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsBtripSoCorpToken)) {
+		realHeaders["x-acs-btrip-so-corp-token"] = util.ToJSONString(headers.XAcsBtripSoCorpToken)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("FlightItineraryScanQuery"),
+		Version:     tea.String("2022-05-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/scan/v1/flight-itinerary"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &FlightItineraryScanQueryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) FlightItineraryScanQuery(request *FlightItineraryScanQueryRequest) (_result *FlightItineraryScanQueryResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &FlightItineraryScanQueryHeaders{}
+	_result = &FlightItineraryScanQueryResponse{}
+	_body, _err := client.FlightItineraryScanQueryWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -32672,6 +35183,65 @@ func (client *Client) TrainOrderQuery(request *TrainOrderQueryRequest) (_result 
 	return _result, _err
 }
 
+func (client *Client) TrainOrderQueryV2WithOptions(request *TrainOrderQueryV2Request, headers *TrainOrderQueryV2Headers, runtime *util.RuntimeOptions) (_result *TrainOrderQueryV2Response, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OrderId)) {
+		query["order_id"] = request.OrderId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		query["user_id"] = request.UserId
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsBtripCorpToken)) {
+		realHeaders["x-acs-btrip-corp-token"] = util.ToJSONString(headers.XAcsBtripCorpToken)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("TrainOrderQueryV2"),
+		Version:     tea.String("2022-05-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/train/v2/order"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &TrainOrderQueryV2Response{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) TrainOrderQueryV2(request *TrainOrderQueryV2Request) (_result *TrainOrderQueryV2Response, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &TrainOrderQueryV2Headers{}
+	_result = &TrainOrderQueryV2Response{}
+	_body, _err := client.TrainOrderQueryV2WithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) TrainStationSearchWithOptions(request *TrainStationSearchRequest, headers *TrainStationSearchHeaders, runtime *util.RuntimeOptions) (_result *TrainStationSearchResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -32720,6 +35290,77 @@ func (client *Client) TrainStationSearch(request *TrainStationSearchRequest) (_r
 	headers := &TrainStationSearchHeaders{}
 	_result = &TrainStationSearchResponse{}
 	_body, _err := client.TrainStationSearchWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) TrainTicketScanQueryWithOptions(request *TrainTicketScanQueryRequest, headers *TrainTicketScanQueryHeaders, runtime *util.RuntimeOptions) (_result *TrainTicketScanQueryResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BillDate)) {
+		query["bill_date"] = request.BillDate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BillId)) {
+		query["bill_id"] = request.BillId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InvoiceSubTaskId)) {
+		query["invoice_sub_task_id"] = request.InvoiceSubTaskId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNo)) {
+		query["page_no"] = request.PageNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["page_size"] = request.PageSize
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsBtripSoCorpToken)) {
+		realHeaders["x-acs-btrip-so-corp-token"] = util.ToJSONString(headers.XAcsBtripSoCorpToken)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("TrainTicketScanQuery"),
+		Version:     tea.String("2022-05-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/scan/v1/train-ticket"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &TrainTicketScanQueryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) TrainTicketScanQuery(request *TrainTicketScanQueryRequest) (_result *TrainTicketScanQueryResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &TrainTicketScanQueryHeaders{}
+	_result = &TrainTicketScanQueryResponse{}
+	_body, _err := client.TrainTicketScanQueryWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -32787,6 +35428,132 @@ func (client *Client) UserQuery(request *UserQueryRequest) (_result *UserQueryRe
 	headers := &UserQueryHeaders{}
 	_result = &UserQueryResponse{}
 	_body, _err := client.UserQueryWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) VatInvoiceScanQueryWithOptions(request *VatInvoiceScanQueryRequest, headers *VatInvoiceScanQueryHeaders, runtime *util.RuntimeOptions) (_result *VatInvoiceScanQueryResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BillDate)) {
+		query["bill_date"] = request.BillDate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BillId)) {
+		query["bill_id"] = request.BillId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InvoiceSubTaskId)) {
+		query["invoice_sub_task_id"] = request.InvoiceSubTaskId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNo)) {
+		query["page_no"] = request.PageNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["page_size"] = request.PageSize
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsBtripSoCorpToken)) {
+		realHeaders["x-acs-btrip-so-corp-token"] = util.ToJSONString(headers.XAcsBtripSoCorpToken)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("VatInvoiceScanQuery"),
+		Version:     tea.String("2022-05-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/scan/v1/vat-invoice"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &VatInvoiceScanQueryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) VatInvoiceScanQuery(request *VatInvoiceScanQueryRequest) (_result *VatInvoiceScanQueryResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &VatInvoiceScanQueryHeaders{}
+	_result = &VatInvoiceScanQueryResponse{}
+	_body, _err := client.VatInvoiceScanQueryWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) WaitApplyInvoiceTaskDetailQueryWithOptions(request *WaitApplyInvoiceTaskDetailQueryRequest, headers *WaitApplyInvoiceTaskDetailQueryHeaders, runtime *util.RuntimeOptions) (_result *WaitApplyInvoiceTaskDetailQueryResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BillDate)) {
+		query["bill_date"] = request.BillDate
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsBtripSoCorpToken)) {
+		realHeaders["x-acs-btrip-so-corp-token"] = util.ToJSONString(headers.XAcsBtripSoCorpToken)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("WaitApplyInvoiceTaskDetailQuery"),
+		Version:     tea.String("2022-05-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/invoice/v1/wait-apply-task"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &WaitApplyInvoiceTaskDetailQueryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) WaitApplyInvoiceTaskDetailQuery(request *WaitApplyInvoiceTaskDetailQueryRequest) (_result *WaitApplyInvoiceTaskDetailQueryResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &WaitApplyInvoiceTaskDetailQueryHeaders{}
+	_result = &WaitApplyInvoiceTaskDetailQueryResponse{}
+	_body, _err := client.WaitApplyInvoiceTaskDetailQueryWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
