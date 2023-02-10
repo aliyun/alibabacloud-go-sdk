@@ -14,7 +14,7 @@ import (
 
 type PredictClassifierModelRequest struct {
 	AutoPrediction *bool   `json:"AutoPrediction,omitempty" xml:"AutoPrediction,omitempty"`
-	ClassifierId   *string `json:"ClassifierId,omitempty" xml:"ClassifierId,omitempty"`
+	ClassifierId   *int64  `json:"ClassifierId,omitempty" xml:"ClassifierId,omitempty"`
 	Content        *string `json:"Content,omitempty" xml:"Content,omitempty"`
 }
 
@@ -31,7 +31,7 @@ func (s *PredictClassifierModelRequest) SetAutoPrediction(v bool) *PredictClassi
 	return s
 }
 
-func (s *PredictClassifierModelRequest) SetClassifierId(v string) *PredictClassifierModelRequest {
+func (s *PredictClassifierModelRequest) SetClassifierId(v int64) *PredictClassifierModelRequest {
 	s.ClassifierId = &v
 	return s
 }
@@ -207,8 +207,8 @@ func (s *PredictModelResponse) SetBody(v *PredictModelResponseBody) *PredictMode
 }
 
 type PredictTemplateModelRequest struct {
-	Content   *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	ProjectId *int64  `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	TaskId  *int64  `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s PredictTemplateModelRequest) String() string {
@@ -224,8 +224,8 @@ func (s *PredictTemplateModelRequest) SetContent(v string) *PredictTemplateModel
 	return s
 }
 
-func (s *PredictTemplateModelRequest) SetProjectId(v int64) *PredictTemplateModelRequest {
-	s.ProjectId = &v
+func (s *PredictTemplateModelRequest) SetTaskId(v int64) *PredictTemplateModelRequest {
+	s.TaskId = &v
 	return s
 }
 
@@ -459,8 +459,8 @@ func (client *Client) PredictTemplateModelWithOptions(request *PredictTemplateMo
 		query["Content"] = request.Content
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
-		query["ProjectId"] = request.ProjectId
+	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
+		query["TaskId"] = request.TaskId
 	}
 
 	req := &openapi.OpenApiRequest{
