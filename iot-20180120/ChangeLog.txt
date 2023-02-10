@@ -1,3 +1,6 @@
+2023-02-10 Version: v4.0.5
+- Support broadcast for FengTian.
+
 2023-01-03 Version: v4.0.4
 - Pub Support MessageExpiryInterval and Retained.
 - Rrpc Support ContentType.

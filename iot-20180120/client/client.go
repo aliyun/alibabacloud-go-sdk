@@ -6396,6 +6396,134 @@ func (s *CheckBindLicenseDeviceProgressResponse) SetBody(v *CheckBindLicenseDevi
 	return s
 }
 
+type ClearDeviceDesiredPropertyRequest struct {
+	DeviceName    *string   `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
+	Identifies    []*string `json:"Identifies,omitempty" xml:"Identifies,omitempty" type:"Repeated"`
+	IotId         *string   `json:"IotId,omitempty" xml:"IotId,omitempty"`
+	IotInstanceId *string   `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
+	ProductKey    *string   `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
+}
+
+func (s ClearDeviceDesiredPropertyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ClearDeviceDesiredPropertyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ClearDeviceDesiredPropertyRequest) SetDeviceName(v string) *ClearDeviceDesiredPropertyRequest {
+	s.DeviceName = &v
+	return s
+}
+
+func (s *ClearDeviceDesiredPropertyRequest) SetIdentifies(v []*string) *ClearDeviceDesiredPropertyRequest {
+	s.Identifies = v
+	return s
+}
+
+func (s *ClearDeviceDesiredPropertyRequest) SetIotId(v string) *ClearDeviceDesiredPropertyRequest {
+	s.IotId = &v
+	return s
+}
+
+func (s *ClearDeviceDesiredPropertyRequest) SetIotInstanceId(v string) *ClearDeviceDesiredPropertyRequest {
+	s.IotInstanceId = &v
+	return s
+}
+
+func (s *ClearDeviceDesiredPropertyRequest) SetProductKey(v string) *ClearDeviceDesiredPropertyRequest {
+	s.ProductKey = &v
+	return s
+}
+
+type ClearDeviceDesiredPropertyResponseBody struct {
+	Code         *string                                     `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data         *ClearDeviceDesiredPropertyResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	ErrorMessage *string                                     `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool                                       `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ClearDeviceDesiredPropertyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ClearDeviceDesiredPropertyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ClearDeviceDesiredPropertyResponseBody) SetCode(v string) *ClearDeviceDesiredPropertyResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ClearDeviceDesiredPropertyResponseBody) SetData(v *ClearDeviceDesiredPropertyResponseBodyData) *ClearDeviceDesiredPropertyResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ClearDeviceDesiredPropertyResponseBody) SetErrorMessage(v string) *ClearDeviceDesiredPropertyResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *ClearDeviceDesiredPropertyResponseBody) SetRequestId(v string) *ClearDeviceDesiredPropertyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ClearDeviceDesiredPropertyResponseBody) SetSuccess(v bool) *ClearDeviceDesiredPropertyResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ClearDeviceDesiredPropertyResponseBodyData struct {
+	Versions *string `json:"Versions,omitempty" xml:"Versions,omitempty"`
+}
+
+func (s ClearDeviceDesiredPropertyResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ClearDeviceDesiredPropertyResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ClearDeviceDesiredPropertyResponseBodyData) SetVersions(v string) *ClearDeviceDesiredPropertyResponseBodyData {
+	s.Versions = &v
+	return s
+}
+
+type ClearDeviceDesiredPropertyResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ClearDeviceDesiredPropertyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ClearDeviceDesiredPropertyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ClearDeviceDesiredPropertyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ClearDeviceDesiredPropertyResponse) SetHeaders(v map[string]*string) *ClearDeviceDesiredPropertyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ClearDeviceDesiredPropertyResponse) SetStatusCode(v int32) *ClearDeviceDesiredPropertyResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ClearDeviceDesiredPropertyResponse) SetBody(v *ClearDeviceDesiredPropertyResponseBody) *ClearDeviceDesiredPropertyResponse {
+	s.Body = v
+	return s
+}
+
 type ClearEdgeInstanceDriverConfigsRequest struct {
 	DriverId      *string `json:"DriverId,omitempty" xml:"DriverId,omitempty"`
 	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
@@ -12938,6 +13066,7 @@ type CreateSubscribeRelationRequest struct {
 	OtaJobFlag              *bool     `json:"OtaJobFlag,omitempty" xml:"OtaJobFlag,omitempty"`
 	OtaVersionFlag          *bool     `json:"OtaVersionFlag,omitempty" xml:"OtaVersionFlag,omitempty"`
 	ProductKey              *string   `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
+	SubscribeFlags          *string   `json:"SubscribeFlags,omitempty" xml:"SubscribeFlags,omitempty"`
 	ThingHistoryFlag        *bool     `json:"ThingHistoryFlag,omitempty" xml:"ThingHistoryFlag,omitempty"`
 	Type                    *string   `json:"Type,omitempty" xml:"Type,omitempty"`
 }
@@ -13012,6 +13141,11 @@ func (s *CreateSubscribeRelationRequest) SetOtaVersionFlag(v bool) *CreateSubscr
 
 func (s *CreateSubscribeRelationRequest) SetProductKey(v string) *CreateSubscribeRelationRequest {
 	s.ProductKey = &v
+	return s
+}
+
+func (s *CreateSubscribeRelationRequest) SetSubscribeFlags(v string) *CreateSubscribeRelationRequest {
+	s.SubscribeFlags = &v
 	return s
 }
 
@@ -48355,6 +48489,7 @@ type QuerySubscribeRelationResponseBody struct {
 	OtaVersionFlag          *bool     `json:"OtaVersionFlag,omitempty" xml:"OtaVersionFlag,omitempty"`
 	ProductKey              *string   `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
 	RequestId               *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SubscribeFlags          *string   `json:"SubscribeFlags,omitempty" xml:"SubscribeFlags,omitempty"`
 	Success                 *bool     `json:"Success,omitempty" xml:"Success,omitempty"`
 	ThingHistoryFlag        *bool     `json:"ThingHistoryFlag,omitempty" xml:"ThingHistoryFlag,omitempty"`
 	Type                    *string   `json:"Type,omitempty" xml:"Type,omitempty"`
@@ -48440,6 +48575,11 @@ func (s *QuerySubscribeRelationResponseBody) SetProductKey(v string) *QuerySubsc
 
 func (s *QuerySubscribeRelationResponseBody) SetRequestId(v string) *QuerySubscribeRelationResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *QuerySubscribeRelationResponseBody) SetSubscribeFlags(v string) *QuerySubscribeRelationResponseBody {
+	s.SubscribeFlags = &v
 	return s
 }
 
@@ -57522,6 +57662,7 @@ type UpdateSubscribeRelationRequest struct {
 	OtaJobFlag              *bool     `json:"OtaJobFlag,omitempty" xml:"OtaJobFlag,omitempty"`
 	OtaVersionFlag          *bool     `json:"OtaVersionFlag,omitempty" xml:"OtaVersionFlag,omitempty"`
 	ProductKey              *string   `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
+	SubscribeFlags          *string   `json:"SubscribeFlags,omitempty" xml:"SubscribeFlags,omitempty"`
 	ThingHistoryFlag        *bool     `json:"ThingHistoryFlag,omitempty" xml:"ThingHistoryFlag,omitempty"`
 	Type                    *string   `json:"Type,omitempty" xml:"Type,omitempty"`
 }
@@ -57596,6 +57737,11 @@ func (s *UpdateSubscribeRelationRequest) SetOtaVersionFlag(v bool) *UpdateSubscr
 
 func (s *UpdateSubscribeRelationRequest) SetProductKey(v string) *UpdateSubscribeRelationRequest {
 	s.ProductKey = &v
+	return s
+}
+
+func (s *UpdateSubscribeRelationRequest) SetSubscribeFlags(v string) *UpdateSubscribeRelationRequest {
+	s.SubscribeFlags = &v
 	return s
 }
 
@@ -57879,6 +58025,105 @@ func (s *UpdateThingScriptResponse) SetStatusCode(v int32) *UpdateThingScriptRes
 }
 
 func (s *UpdateThingScriptResponse) SetBody(v *UpdateThingScriptResponseBody) *UpdateThingScriptResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateTopicConfigRequest struct {
+	EnableBroadcast *bool   `json:"EnableBroadcast,omitempty" xml:"EnableBroadcast,omitempty"`
+	IotInstanceId   *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
+	ProductKey      *string `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
+	TopicFullName   *string `json:"TopicFullName,omitempty" xml:"TopicFullName,omitempty"`
+}
+
+func (s UpdateTopicConfigRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTopicConfigRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTopicConfigRequest) SetEnableBroadcast(v bool) *UpdateTopicConfigRequest {
+	s.EnableBroadcast = &v
+	return s
+}
+
+func (s *UpdateTopicConfigRequest) SetIotInstanceId(v string) *UpdateTopicConfigRequest {
+	s.IotInstanceId = &v
+	return s
+}
+
+func (s *UpdateTopicConfigRequest) SetProductKey(v string) *UpdateTopicConfigRequest {
+	s.ProductKey = &v
+	return s
+}
+
+func (s *UpdateTopicConfigRequest) SetTopicFullName(v string) *UpdateTopicConfigRequest {
+	s.TopicFullName = &v
+	return s
+}
+
+type UpdateTopicConfigResponseBody struct {
+	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UpdateTopicConfigResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTopicConfigResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTopicConfigResponseBody) SetCode(v string) *UpdateTopicConfigResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UpdateTopicConfigResponseBody) SetErrorMessage(v string) *UpdateTopicConfigResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *UpdateTopicConfigResponseBody) SetRequestId(v string) *UpdateTopicConfigResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateTopicConfigResponseBody) SetSuccess(v bool) *UpdateTopicConfigResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateTopicConfigResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateTopicConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateTopicConfigResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTopicConfigResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTopicConfigResponse) SetHeaders(v map[string]*string) *UpdateTopicConfigResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateTopicConfigResponse) SetStatusCode(v int32) *UpdateTopicConfigResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateTopicConfigResponse) SetBody(v *UpdateTopicConfigResponseBody) *UpdateTopicConfigResponse {
 	s.Body = v
 	return s
 }
@@ -60843,6 +61088,68 @@ func (client *Client) CheckBindLicenseDeviceProgress(request *CheckBindLicenseDe
 	runtime := &util.RuntimeOptions{}
 	_result = &CheckBindLicenseDeviceProgressResponse{}
 	_body, _err := client.CheckBindLicenseDeviceProgressWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ClearDeviceDesiredPropertyWithOptions(request *ClearDeviceDesiredPropertyRequest, runtime *util.RuntimeOptions) (_result *ClearDeviceDesiredPropertyResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DeviceName)) {
+		query["DeviceName"] = request.DeviceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IotId)) {
+		query["IotId"] = request.IotId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IotInstanceId)) {
+		query["IotInstanceId"] = request.IotInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductKey)) {
+		query["ProductKey"] = request.ProductKey
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Identifies)) {
+		body["Identifies"] = request.Identifies
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ClearDeviceDesiredProperty"),
+		Version:     tea.String("2018-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ClearDeviceDesiredPropertyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ClearDeviceDesiredProperty(request *ClearDeviceDesiredPropertyRequest) (_result *ClearDeviceDesiredPropertyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ClearDeviceDesiredPropertyResponse{}
+	_body, _err := client.ClearDeviceDesiredPropertyWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -63876,6 +64183,10 @@ func (client *Client) CreateSubscribeRelationWithOptions(request *CreateSubscrib
 
 	if !tea.BoolValue(util.IsUnset(request.ProductKey)) {
 		query["ProductKey"] = request.ProductKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SubscribeFlags)) {
+		query["SubscribeFlags"] = request.SubscribeFlags
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ThingHistoryFlag)) {
@@ -80457,6 +80768,10 @@ func (client *Client) UpdateSubscribeRelationWithOptions(request *UpdateSubscrib
 		query["ProductKey"] = request.ProductKey
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.SubscribeFlags)) {
+		query["SubscribeFlags"] = request.SubscribeFlags
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ThingHistoryFlag)) {
 		query["ThingHistoryFlag"] = request.ThingHistoryFlag
 	}
@@ -80612,6 +80927,62 @@ func (client *Client) UpdateThingScript(request *UpdateThingScriptRequest) (_res
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateThingScriptResponse{}
 	_body, _err := client.UpdateThingScriptWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateTopicConfigWithOptions(request *UpdateTopicConfigRequest, runtime *util.RuntimeOptions) (_result *UpdateTopicConfigResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EnableBroadcast)) {
+		query["EnableBroadcast"] = request.EnableBroadcast
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IotInstanceId)) {
+		query["IotInstanceId"] = request.IotInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductKey)) {
+		query["ProductKey"] = request.ProductKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TopicFullName)) {
+		query["TopicFullName"] = request.TopicFullName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateTopicConfig"),
+		Version:     tea.String("2018-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateTopicConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateTopicConfig(request *UpdateTopicConfigRequest) (_result *UpdateTopicConfigResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateTopicConfigResponse{}
+	_body, _err := client.UpdateTopicConfigWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
