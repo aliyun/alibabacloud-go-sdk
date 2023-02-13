@@ -1,3 +1,6 @@
+2023-02-13 Version: v3.0.2
+- SubscribeBillToOSS add param: RowLimitPerFile. 
+
 2023-02-07 Version: v3.0.1
 - Add other language.
 

@@ -8046,7 +8046,8 @@ func (s *DescribeSplitItemBillResponse) SetBody(v *DescribeSplitItemBillResponse
 }
 
 type EnableBillGenerationRequest struct {
-	OwnerId     *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The code of the product.
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
 }
 
@@ -8069,11 +8070,16 @@ func (s *EnableBillGenerationRequest) SetProductCode(v string) *EnableBillGenera
 }
 
 type EnableBillGenerationResponseBody struct {
-	Code      *string                               `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *EnableBillGenerationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                               `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                                 `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The status code.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data returned.
+	Data *EnableBillGenerationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The message returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the call was successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s EnableBillGenerationResponseBody) String() string {
@@ -8110,6 +8116,7 @@ func (s *EnableBillGenerationResponseBody) SetSuccess(v bool) *EnableBillGenerat
 }
 
 type EnableBillGenerationResponseBodyData struct {
+	// Indicates whether the feature is enabled.
 	Boolean *bool `json:"Boolean,omitempty" xml:"Boolean,omitempty"`
 }
 
@@ -12495,6 +12502,7 @@ func (s *QueryBillToOSSSubscriptionResponseBodyDataItems) SetItem(v []*QueryBill
 type QueryBillToOSSSubscriptionResponseBodyDataItemsItem struct {
 	BucketOwnerId     *int64  `json:"BucketOwnerId,omitempty" xml:"BucketOwnerId,omitempty"`
 	BucketPath        *string `json:"BucketPath,omitempty" xml:"BucketPath,omitempty"`
+	RowLimitPerFile   *int32  `json:"RowLimitPerFile,omitempty" xml:"RowLimitPerFile,omitempty"`
 	SubscribeBucket   *string `json:"SubscribeBucket,omitempty" xml:"SubscribeBucket,omitempty"`
 	SubscribeLanguage *string `json:"SubscribeLanguage,omitempty" xml:"SubscribeLanguage,omitempty"`
 	SubscribeTime     *string `json:"SubscribeTime,omitempty" xml:"SubscribeTime,omitempty"`
@@ -12516,6 +12524,11 @@ func (s *QueryBillToOSSSubscriptionResponseBodyDataItemsItem) SetBucketOwnerId(v
 
 func (s *QueryBillToOSSSubscriptionResponseBodyDataItemsItem) SetBucketPath(v string) *QueryBillToOSSSubscriptionResponseBodyDataItemsItem {
 	s.BucketPath = &v
+	return s
+}
+
+func (s *QueryBillToOSSSubscriptionResponseBodyDataItemsItem) SetRowLimitPerFile(v int32) *QueryBillToOSSSubscriptionResponseBodyDataItemsItem {
+	s.RowLimitPerFile = &v
 	return s
 }
 
@@ -21752,6 +21765,7 @@ type SubscribeBillToOSSRequest struct {
 	BucketOwnerId           *int64  `json:"BucketOwnerId,omitempty" xml:"BucketOwnerId,omitempty"`
 	BucketPath              *string `json:"BucketPath,omitempty" xml:"BucketPath,omitempty"`
 	MultAccountRelSubscribe *string `json:"MultAccountRelSubscribe,omitempty" xml:"MultAccountRelSubscribe,omitempty"`
+	RowLimitPerFile         *int32  `json:"RowLimitPerFile,omitempty" xml:"RowLimitPerFile,omitempty"`
 	SubscribeBucket         *string `json:"SubscribeBucket,omitempty" xml:"SubscribeBucket,omitempty"`
 	SubscribeType           *string `json:"SubscribeType,omitempty" xml:"SubscribeType,omitempty"`
 }
@@ -21781,6 +21795,11 @@ func (s *SubscribeBillToOSSRequest) SetBucketPath(v string) *SubscribeBillToOSSR
 
 func (s *SubscribeBillToOSSRequest) SetMultAccountRelSubscribe(v string) *SubscribeBillToOSSRequest {
 	s.MultAccountRelSubscribe = &v
+	return s
+}
+
+func (s *SubscribeBillToOSSRequest) SetRowLimitPerFile(v int32) *SubscribeBillToOSSRequest {
+	s.RowLimitPerFile = &v
 	return s
 }
 
@@ -28258,6 +28277,10 @@ func (client *Client) SubscribeBillToOSSWithOptions(request *SubscribeBillToOSSR
 
 	if !tea.BoolValue(util.IsUnset(request.MultAccountRelSubscribe)) {
 		query["MultAccountRelSubscribe"] = request.MultAccountRelSubscribe
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RowLimitPerFile)) {
+		query["RowLimitPerFile"] = request.RowLimitPerFile
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SubscribeBucket)) {
