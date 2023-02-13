@@ -13,23 +13,74 @@ import (
 )
 
 type CreateClientCertificateRequest struct {
-	AfterTime        *int64  `json:"AfterTime,omitempty" xml:"AfterTime,omitempty"`
-	Algorithm        *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
-	BeforeTime       *int64  `json:"BeforeTime,omitempty" xml:"BeforeTime,omitempty"`
-	CommonName       *string `json:"CommonName,omitempty" xml:"CommonName,omitempty"`
-	Country          *string `json:"Country,omitempty" xml:"Country,omitempty"`
-	Csr              *string `json:"Csr,omitempty" xml:"Csr,omitempty"`
-	Days             *int32  `json:"Days,omitempty" xml:"Days,omitempty"`
-	Immediately      *int32  `json:"Immediately,omitempty" xml:"Immediately,omitempty"`
-	Locality         *string `json:"Locality,omitempty" xml:"Locality,omitempty"`
-	Months           *int32  `json:"Months,omitempty" xml:"Months,omitempty"`
-	Organization     *string `json:"Organization,omitempty" xml:"Organization,omitempty"`
+	// The expiration time of the client certificate. This value is a UNIX timestamp. Unit: seconds.
+	//
+	// >  The **BeforeTime** and **AfterTime** parameters must be both empty or both specified.
+	AfterTime *int64 `json:"AfterTime,omitempty" xml:"AfterTime,omitempty"`
+	// The key algorithm of the client certificate. The key algorithm is in the `<Encryption algorithm>_<Key length>` format. Valid values:
+	//
+	// *   **RSA\_1024**: The signature algorithm is Sha256WithRSA.
+	// *   **RSA\_2048**: The signature algorithm is Sha256WithRSA.
+	// *   **RSA\_4096**: The signature algorithm is Sha256WithRSA.
+	// *   **ECC\_256**: The signature algorithm is Sha256WithECDSA.
+	// *   **ECC\_384**: The signature algorithm is Sha256WithECDSA.
+	// *   **ECC\_512**: The signature algorithm is Sha256WithECDSA.
+	// *   **SM2\_256**: The signature algorithm is SM3WithSM2.
+	//
+	// The encryption algorithm of the client certificate must be the same with the encryption algorithm of the intermediate CA certificate. The key length can be different. For example, if the key algorithm of the intermediate CA certificate is RSA\_2048, the key algorithm of the client certificate must be RSA\_1024, RSA\_2048, or RSA\_4096.
+	//
+	// >  You can call the [DescribeCACertificate](~~328096~~) operation to query the key algorithm of an intermediate CA certificate.
+	Algorithm *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
+	// The issuance time of the client certificate. This value is a UNIX timestamp. The default value is the time when you call this operation. Unit: seconds.
+	//
+	// >  The **BeforeTime** and **AfterTime** parameters must be both empty or both specified.
+	BeforeTime *int64 `json:"BeforeTime,omitempty" xml:"BeforeTime,omitempty"`
+	// The name of the client certificate user. In most cases, the user of a client certificate is an individual, a company, an organization, or an application. We recommend that you enter the common name of a user. Examples: Bob, Alibaba, Alibaba Cloud password platform, and Tmall Genie.
+	CommonName *string `json:"CommonName,omitempty" xml:"CommonName,omitempty"`
+	// The country in which the organization is located. Default value: CN.
+	Country *string `json:"Country,omitempty" xml:"Country,omitempty"`
+	// The content of the CSR file. You can generate a CSR file by using the OpenSSL tool or Keytool. For more information, see [How do I create a CSR file?](~~42218~~) You can also create a CSR file in the Certificate Management Service console. For more information, see [Create a CSR](~~313297~~).
+	Csr *string `json:"Csr,omitempty" xml:"Csr,omitempty"`
+	// The validity period of the client certificate. Unit: days. You must specify at least one of the **Days**, **BeforeTime**, and **AfterTime** parameters. The **BeforeTime** and **AfterTime** parameters must be both empty or both specified. The following list describes how to specify these parameters:
+	//
+	// *   If you specify the **Days** parameter, you can specify both the **BeforeTime** and **AfterTime** parameters or leave them both empty.********
+	// *   If you do not specify the **Days** parameter, you must specify both the **BeforeTime** and **AfterTime** parameters.
+	//
+	// >
+	//
+	// *   If you specify the **Days**, **BeforeTime**, and **AfterTime** parameters together, the validity period of the client certificate is determined by the value of the **Days** parameter.
+	//
+	// *   The validity period of the client certificate cannot exceed the validity period of the intermediate CA certificate. You can call the [DescribeCACertificate](~~328096~~) operation to query the validity period of an intermediate CA certificate.
+	Days *int32 `json:"Days,omitempty" xml:"Days,omitempty"`
+	// Specifies whether to return the certificate. Valid values:
+	//
+	// *   **0**: does not return the certificate. This is the default value.
+	// *   **1**: returns the certificate.
+	// *   **2**: returns the certificate and the certificate chain of the certificate.
+	Immediately *int32 `json:"Immediately,omitempty" xml:"Immediately,omitempty"`
+	// The name of the city in which the organization is located. The value can contain letters. The default value is the name of the city in which the organization is located. The organization is associated with the intermediate CA certificate from which the certificate is issued.
+	Locality *string `json:"Locality,omitempty" xml:"Locality,omitempty"`
+	// The validity period of the client certificate. Unit: months.
+	Months *int32 `json:"Months,omitempty" xml:"Months,omitempty"`
+	// The name of the organization. Default value: Alibaba Inc.
+	Organization *string `json:"Organization,omitempty" xml:"Organization,omitempty"`
+	// The name of the department. Default value: Aliyun CDN.
 	OrganizationUnit *string `json:"OrganizationUnit,omitempty" xml:"OrganizationUnit,omitempty"`
+	// The unique identifier of the intermediate CA certificate from which the client certificate is issued.
+	//
+	// >  You can call the [DescribeCACertificateList](~~328095~~) operation to query the unique identifier of an intermediate CA certificate.
 	ParentIdentifier *string `json:"ParentIdentifier,omitempty" xml:"ParentIdentifier,omitempty"`
-	SanType          *int32  `json:"SanType,omitempty" xml:"SanType,omitempty"`
-	SanValue         *string `json:"SanValue,omitempty" xml:"SanValue,omitempty"`
-	State            *string `json:"State,omitempty" xml:"State,omitempty"`
-	Years            *int32  `json:"Years,omitempty" xml:"Years,omitempty"`
+	// The type of the Subject Alternative Name (SAN) extension that is supported by the client certificate. Valid values:
+	//
+	// *   **1**: an email address
+	// *   **6**: a Uniform Resource Identifier (URI)
+	SanType *int32 `json:"SanType,omitempty" xml:"SanType,omitempty"`
+	// The content of the extension. You can specify multiple SAN extensions. If you want to specify multiple SAN extensions, separate them with commas (,).
+	SanValue *string `json:"SanValue,omitempty" xml:"SanValue,omitempty"`
+	// The province, municipality, or autonomous region in which the organization is located. The value can contain letters. The default value is the name of the province, municipality, or autonomous region in which the organization is located. The organization is associated with the intermediate CA certificate from which the certificate is issued.
+	State *string `json:"State,omitempty" xml:"State,omitempty"`
+	// The validity period of the client certificate. Unit: years.
+	Years *int32 `json:"Years,omitempty" xml:"Years,omitempty"`
 }
 
 func (s CreateClientCertificateRequest) String() string {
@@ -126,12 +177,15 @@ func (s *CreateClientCertificateRequest) SetYears(v int32) *CreateClientCertific
 }
 
 type CreateClientCertificateResponseBody struct {
-	CertificateChain      *string `json:"CertificateChain,omitempty" xml:"CertificateChain,omitempty"`
-	Identifier            *string `json:"Identifier,omitempty" xml:"Identifier,omitempty"`
-	ParentX509Certificate *string `json:"ParentX509Certificate,omitempty" xml:"ParentX509Certificate,omitempty"`
-	RequestId             *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	RootX509Certificate   *string `json:"RootX509Certificate,omitempty" xml:"RootX509Certificate,omitempty"`
-	X509Certificate       *string `json:"X509Certificate,omitempty" xml:"X509Certificate,omitempty"`
+	// The certificate chain of the client certificate.
+	CertificateChain *string `json:"CertificateChain,omitempty" xml:"CertificateChain,omitempty"`
+	// The unique identifier of the client certificate.
+	Identifier *string `json:"Identifier,omitempty" xml:"Identifier,omitempty"`
+	// The ID of the request, which is used to locate and troubleshoot issues.
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SerialNumber *string `json:"SerialNumber,omitempty" xml:"SerialNumber,omitempty"`
+	// The content of the client certificate.
+	X509Certificate *string `json:"X509Certificate,omitempty" xml:"X509Certificate,omitempty"`
 }
 
 func (s CreateClientCertificateResponseBody) String() string {
@@ -152,18 +206,13 @@ func (s *CreateClientCertificateResponseBody) SetIdentifier(v string) *CreateCli
 	return s
 }
 
-func (s *CreateClientCertificateResponseBody) SetParentX509Certificate(v string) *CreateClientCertificateResponseBody {
-	s.ParentX509Certificate = &v
-	return s
-}
-
 func (s *CreateClientCertificateResponseBody) SetRequestId(v string) *CreateClientCertificateResponseBody {
 	s.RequestId = &v
 	return s
 }
 
-func (s *CreateClientCertificateResponseBody) SetRootX509Certificate(v string) *CreateClientCertificateResponseBody {
-	s.RootX509Certificate = &v
+func (s *CreateClientCertificateResponseBody) SetSerialNumber(v string) *CreateClientCertificateResponseBody {
+	s.SerialNumber = &v
 	return s
 }
 
@@ -202,24 +251,78 @@ func (s *CreateClientCertificateResponse) SetBody(v *CreateClientCertificateResp
 }
 
 type CreateClientCertificateWithCsrRequest struct {
-	AfterTime        *int64  `json:"AfterTime,omitempty" xml:"AfterTime,omitempty"`
-	Algorithm        *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
-	BeforeTime       *int64  `json:"BeforeTime,omitempty" xml:"BeforeTime,omitempty"`
-	CommonName       *string `json:"CommonName,omitempty" xml:"CommonName,omitempty"`
-	Country          *string `json:"Country,omitempty" xml:"Country,omitempty"`
-	Csr              *string `json:"Csr,omitempty" xml:"Csr,omitempty"`
-	Csr1             *string `json:"Csr1,omitempty" xml:"Csr1,omitempty"`
-	Days             *int32  `json:"Days,omitempty" xml:"Days,omitempty"`
-	Immediately      *int32  `json:"Immediately,omitempty" xml:"Immediately,omitempty"`
-	Locality         *string `json:"Locality,omitempty" xml:"Locality,omitempty"`
-	Months           *int32  `json:"Months,omitempty" xml:"Months,omitempty"`
-	Organization     *string `json:"Organization,omitempty" xml:"Organization,omitempty"`
+	// The expiration time of the client certificate. This value is a UNIX timestamp. Unit: seconds.
+	//
+	// >  The **BeforeTime** and **AfterTime** parameters must be both empty or both specified.
+	AfterTime *int64 `json:"AfterTime,omitempty" xml:"AfterTime,omitempty"`
+	// The key algorithm of the client certificate. The key algorithm is in the `<Encryption algorithm>_<Key length>` format. Valid values:
+	//
+	// *   **RSA\_1024**: The signature algorithm is Sha256WithRSA.
+	// *   **RSA\_2048**: The signature algorithm is Sha256WithRSA.
+	// *   **RSA\_4096**: The signature algorithm is Sha256WithRSA.
+	// *   **ECC\_256**: The signature algorithm is Sha256WithECDSA.
+	// *   **ECC\_384**: The signature algorithm is Sha256WithECDSA.
+	// *   **ECC\_512**: The signature algorithm is Sha256WithECDSA.
+	// *   **SM2\_256**: The signature algorithm is SM3WithSM2.
+	//
+	// The encryption algorithm of the client certificate must be the same with the encryption algorithm of the intermediate CA certificate. The key length can be different. For example, if the key algorithm of the intermediate CA certificate is RSA\_2048, the key algorithm of the client certificate must be RSA\_1024, RSA\_2048, or RSA\_4096.
+	//
+	// >  You can call the [DescribeCACertificate](~~328096~~) operation to query the key algorithm of an intermediate CA certificate.
+	Algorithm *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
+	// The issuance time of the client certificate. This value is a UNIX timestamp. The default value is the time when you call this operation. Unit: seconds.
+	//
+	// >  The **BeforeTime** and **AfterTime** parameters must be both empty or both specified.
+	BeforeTime *int64 `json:"BeforeTime,omitempty" xml:"BeforeTime,omitempty"`
+	// The common name of the certificate. The value can contain letters.
+	//
+	// >  If you specify the **CsrPemString** parameter, the value of the **CommonName** parameter is determined by the **CsrPemString** parameter.
+	CommonName *string `json:"CommonName,omitempty" xml:"CommonName,omitempty"`
+	// The code of the country in which the organization is located, such as **CN** and **US**.
+	Country *string `json:"Country,omitempty" xml:"Country,omitempty"`
+	// The content of the CSR file. You can generate a CSR file by using the OpenSSL tool or Keytool. For more information, see [How do I create a CSR file?](~~42218~~) You can also create a CSR file in the Certificate Management Service console. For more information, see [Create a CSR](~~313297~~).
+	Csr *string `json:"Csr,omitempty" xml:"Csr,omitempty"`
+	// The content of the CSR file. You can generate a CSR file by using the OpenSSL tool or Keytool. For more information, see [How do I create a CSR file?](~~42218~~) You can also create a CSR file in the Certificate Management Service console. For more information, see [Create a CSR](~~313297~~).
+	Csr1 *string `json:"Csr1,omitempty" xml:"Csr1,omitempty"`
+	// The validity period of the client certificate. Unit: days. You must specify at least one of the **Days**, **BeforeTime**, and **AfterTime** parameters. The **BeforeTime** and **AfterTime** parameters must be both empty or both specified. The following list describes how to specify these parameters:
+	//
+	// *   If you specify the **Days** parameter, you can specify both the **BeforeTime** and **AfterTime** parameters or leave them both empty.********
+	// *   If you do not specify the **Days** parameter, you must specify both the **BeforeTime** and **AfterTime** parameters.
+	//
+	// >
+	//
+	// *   If you specify the **Days**, **BeforeTime**, and **AfterTime** parameters together, the validity period of the client certificate is determined by the value of the **Days** parameter.
+	//
+	// *   The validity period of the client certificate cannot exceed the validity period of the intermediate CA certificate. You can call the [DescribeCACertificate](~~328096~~) operation to query the validity period of an intermediate CA certificate.
+	Days *int32 `json:"Days,omitempty" xml:"Days,omitempty"`
+	// Specifies whether to return the certificate. Valid values:
+	//
+	// *   **0**: does not return the certificate. This is the default value.
+	// *   **1**: returns the certificate.
+	// *   **2**: returns the certificate and the certificate chain of the certificate.
+	Immediately *int32 `json:"Immediately,omitempty" xml:"Immediately,omitempty"`
+	// The name of the city in which the organization is located. The value can contain letters. The default value is the name of the city in which the organization is located. The organization is associated with the intermediate CA certificate from which the certificate is issued.
+	Locality *string `json:"Locality,omitempty" xml:"Locality,omitempty"`
+	// The validity period of the client certificate. Unit: months.
+	Months *int32 `json:"Months,omitempty" xml:"Months,omitempty"`
+	// The name of the organization. Default value: Alibaba Inc.
+	Organization *string `json:"Organization,omitempty" xml:"Organization,omitempty"`
+	// The name of the department. Default value: Aliyun CDN.
 	OrganizationUnit *string `json:"OrganizationUnit,omitempty" xml:"OrganizationUnit,omitempty"`
+	// The unique identifier of the intermediate CA certificate from which the client certificate is issued.
+	//
+	// >  You can call the [DescribeCACertificateList](~~328095~~) operation to query the unique identifier of an intermediate CA certificate.
 	ParentIdentifier *string `json:"ParentIdentifier,omitempty" xml:"ParentIdentifier,omitempty"`
-	SanType          *int32  `json:"SanType,omitempty" xml:"SanType,omitempty"`
-	SanValue         *string `json:"SanValue,omitempty" xml:"SanValue,omitempty"`
-	State            *string `json:"State,omitempty" xml:"State,omitempty"`
-	Years            *int32  `json:"Years,omitempty" xml:"Years,omitempty"`
+	// The type of the Subject Alternative Name (SAN) extension that is supported by the client certificate. Valid values:
+	//
+	// *   **1**: an email address
+	// *   **6**: a Uniform Resource Identifier (URI)
+	SanType *int32 `json:"SanType,omitempty" xml:"SanType,omitempty"`
+	// The content of the extension. You can specify multiple SAN extensions. If you want to specify multiple SAN extensions, separate them with commas (,).
+	SanValue *string `json:"SanValue,omitempty" xml:"SanValue,omitempty"`
+	// The province, municipality, or autonomous region in which the organization is located. The value can contain letters. The default value is the name of the province, municipality, or autonomous region in which the organization is located. The organization is associated with the intermediate CA certificate from which the certificate is issued.
+	State *string `json:"State,omitempty" xml:"State,omitempty"`
+	// The validity period of the client certificate. Unit: years.
+	Years *int32 `json:"Years,omitempty" xml:"Years,omitempty"`
 }
 
 func (s CreateClientCertificateWithCsrRequest) String() string {
@@ -321,12 +424,15 @@ func (s *CreateClientCertificateWithCsrRequest) SetYears(v int32) *CreateClientC
 }
 
 type CreateClientCertificateWithCsrResponseBody struct {
-	CertificateChain      *string `json:"CertificateChain,omitempty" xml:"CertificateChain,omitempty"`
-	Identifier            *string `json:"Identifier,omitempty" xml:"Identifier,omitempty"`
-	ParentX509Certificate *string `json:"ParentX509Certificate,omitempty" xml:"ParentX509Certificate,omitempty"`
-	RequestId             *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	RootX509Certificate   *string `json:"RootX509Certificate,omitempty" xml:"RootX509Certificate,omitempty"`
-	X509Certificate       *string `json:"X509Certificate,omitempty" xml:"X509Certificate,omitempty"`
+	// The certificate chain of the client certificate.
+	CertificateChain *string `json:"CertificateChain,omitempty" xml:"CertificateChain,omitempty"`
+	// The unique identifier of the client certificate.
+	Identifier *string `json:"Identifier,omitempty" xml:"Identifier,omitempty"`
+	// The ID of the request, which is used to locate and troubleshoot issues.
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SerialNumber *string `json:"SerialNumber,omitempty" xml:"SerialNumber,omitempty"`
+	// The content of the client certificate.
+	X509Certificate *string `json:"X509Certificate,omitempty" xml:"X509Certificate,omitempty"`
 }
 
 func (s CreateClientCertificateWithCsrResponseBody) String() string {
@@ -347,18 +453,13 @@ func (s *CreateClientCertificateWithCsrResponseBody) SetIdentifier(v string) *Cr
 	return s
 }
 
-func (s *CreateClientCertificateWithCsrResponseBody) SetParentX509Certificate(v string) *CreateClientCertificateWithCsrResponseBody {
-	s.ParentX509Certificate = &v
-	return s
-}
-
 func (s *CreateClientCertificateWithCsrResponseBody) SetRequestId(v string) *CreateClientCertificateWithCsrResponseBody {
 	s.RequestId = &v
 	return s
 }
 
-func (s *CreateClientCertificateWithCsrResponseBody) SetRootX509Certificate(v string) *CreateClientCertificateWithCsrResponseBody {
-	s.RootX509Certificate = &v
+func (s *CreateClientCertificateWithCsrResponseBody) SetSerialNumber(v string) *CreateClientCertificateWithCsrResponseBody {
+	s.SerialNumber = &v
 	return s
 }
 
@@ -397,6 +498,9 @@ func (s *CreateClientCertificateWithCsrResponse) SetBody(v *CreateClientCertific
 }
 
 type CreateRevokeClientCertificateRequest struct {
+	// The unique identifier of the client certificate or server certificate that you want to revoke.
+	//
+	// >  You can call the [ListClientCertificate](~~330884~~) operation to query the unique identifiers of all client certificates and server certificates.
 	Identifier *string `json:"Identifier,omitempty" xml:"Identifier,omitempty"`
 }
 
@@ -414,6 +518,7 @@ func (s *CreateRevokeClientCertificateRequest) SetIdentifier(v string) *CreateRe
 }
 
 type CreateRevokeClientCertificateResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -460,14 +565,36 @@ func (s *CreateRevokeClientCertificateResponse) SetBody(v *CreateRevokeClientCer
 }
 
 type CreateRootCACertificateRequest struct {
-	Algorithm        *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
-	CommonName       *string `json:"CommonName,omitempty" xml:"CommonName,omitempty"`
-	CountryCode      *string `json:"CountryCode,omitempty" xml:"CountryCode,omitempty"`
-	Locality         *string `json:"Locality,omitempty" xml:"Locality,omitempty"`
-	Organization     *string `json:"Organization,omitempty" xml:"Organization,omitempty"`
+	// The key algorithm of the root CA certificate. The key algorithm is in the `<Encryption algorithm>_<Key length>` format. Valid values:
+	//
+	// *   **RSA\_1024**: The signature algorithm is Sha256WithRSA.
+	// *   **RSA\_2048**: The signature algorithm is Sha256WithRSA.
+	// *   **RSA\_4096**: The signature algorithm is Sha256WithRSA.
+	// *   **ECC\_256**: The signature algorithm is Sha256WithECDSA.
+	// *   **ECC\_384**: The signature algorithm is Sha256WithECDSA.
+	// *   **ECC\_512**: The signature algorithm is Sha256WithECDSA.
+	// *   **SM2\_256**: The signature algorithm is SM3WithSM2.
+	//
+	// The encryption algorithm of the root CA certificate must be consistent with the **encryption algorithm** of the private root CA instance that you purchase. For example, if the **encryption algorithm** of the private root CA instance that you purchase is **RSA**, the key algorithm of the root CA certificate must be **RSA\_1024**, **RSA\_2048**, or **RSA\_4096**.
+	Algorithm *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
+	// The common name or abbreviation of the organization. The value can contain letters.
+	CommonName *string `json:"CommonName,omitempty" xml:"CommonName,omitempty"`
+	// The code of the country or region in which the organization is located. You can enter an alpha-2 code. For example, you can use **CN** to indicate China and use **US** to indicate the United States.
+	//
+	// For more information about country codes, see the **"Country codes"** section of the [Manage company profiles](~~198289~~) topic.
+	CountryCode *string `json:"CountryCode,omitempty" xml:"CountryCode,omitempty"`
+	// The name of the city in which the organization is located. The value can contain letters.
+	Locality *string `json:"Locality,omitempty" xml:"Locality,omitempty"`
+	// The name of the organization that is associated with the root CA certificate. You can enter the name of your enterprise or company. The value can contain letters.
+	Organization *string `json:"Organization,omitempty" xml:"Organization,omitempty"`
+	// The name of the department or branch in the organization. The value can contain letters.
 	OrganizationUnit *string `json:"OrganizationUnit,omitempty" xml:"OrganizationUnit,omitempty"`
-	State            *string `json:"State,omitempty" xml:"State,omitempty"`
-	Years            *int32  `json:"Years,omitempty" xml:"Years,omitempty"`
+	// The name of the province, municipality, or autonomous region in which the organization is located. The value can contain letters.
+	State *string `json:"State,omitempty" xml:"State,omitempty"`
+	// The validity period of the root CA certificate. Unit: years.
+	//
+	// >  We recommend that you set this parameter to a value from 5 to 10.
+	Years *int32 `json:"Years,omitempty" xml:"Years,omitempty"`
 }
 
 func (s CreateRootCACertificateRequest) String() string {
@@ -519,10 +646,14 @@ func (s *CreateRootCACertificateRequest) SetYears(v int32) *CreateRootCACertific
 }
 
 type CreateRootCACertificateResponseBody struct {
-	Certificate      *string `json:"Certificate,omitempty" xml:"Certificate,omitempty"`
+	// The root CA certificate in the PEM format.
+	Certificate *string `json:"Certificate,omitempty" xml:"Certificate,omitempty"`
+	// The certificate chain of the root CA certificate.
 	CertificateChain *string `json:"CertificateChain,omitempty" xml:"CertificateChain,omitempty"`
-	Identifier       *string `json:"Identifier,omitempty" xml:"Identifier,omitempty"`
-	RequestId        *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The unique identifier of the root CA certificate.
+	Identifier *string `json:"Identifier,omitempty" xml:"Identifier,omitempty"`
+	// The ID of the request, which is used to locate and troubleshoot issues.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateRootCACertificateResponseBody) String() string {
@@ -583,22 +714,71 @@ func (s *CreateRootCACertificateResponse) SetBody(v *CreateRootCACertificateResp
 }
 
 type CreateServerCertificateRequest struct {
-	AfterTime        *int64  `json:"AfterTime,omitempty" xml:"AfterTime,omitempty"`
-	Algorithm        *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
-	BeforeTime       *int64  `json:"BeforeTime,omitempty" xml:"BeforeTime,omitempty"`
-	CommonName       *string `json:"CommonName,omitempty" xml:"CommonName,omitempty"`
-	Country          *string `json:"Country,omitempty" xml:"Country,omitempty"`
-	Csr              *string `json:"Csr,omitempty" xml:"Csr,omitempty"`
-	Days             *int32  `json:"Days,omitempty" xml:"Days,omitempty"`
-	Domain           *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	Immediately      *int32  `json:"Immediately,omitempty" xml:"Immediately,omitempty"`
-	Locality         *string `json:"Locality,omitempty" xml:"Locality,omitempty"`
-	Months           *int32  `json:"Months,omitempty" xml:"Months,omitempty"`
-	Organization     *string `json:"Organization,omitempty" xml:"Organization,omitempty"`
+	// The expiration time of the server certificate. This value is a UNIX timestamp. Unit: seconds.
+	//
+	// >  The **BeforeTime** and **AfterTime** parameters must be both empty or both specified.
+	AfterTime *int64 `json:"AfterTime,omitempty" xml:"AfterTime,omitempty"`
+	// The key algorithm of the server certificate. The key algorithm is in the `<Encryption algorithm>_<Key length>` format. Valid values:
+	//
+	// *   **RSA\_1024**: The signature algorithm is Sha256WithRSA.
+	// *   **RSA\_2048**: The signature algorithm is Sha256WithRSA.
+	// *   **RSA\_4096**: The signature algorithm is Sha256WithRSA.
+	// *   **ECC\_256**: The signature algorithm is Sha256WithECDSA.
+	// *   **ECC\_384**: The signature algorithm is Sha256WithECDSA.
+	// *   **ECC\_512**: The signature algorithm is Sha256WithECDSA.
+	// *   **SM2\_256**: The signature algorithm is SM3WithSM2.
+	//
+	// The encryption algorithm of the server certificate must be the same as the encryption algorithm of the intermediate CA certificate. The key length can be different. For example, if the key algorithm of the intermediate CA certificate is RSA\_2048, the key algorithm of the server certificate must be RSA\_1024, RSA\_2048, or RSA\_4096.
+	//
+	// >  You can call the [DescribeCACertificate](~~328096~~) operation to query the key algorithm of an intermediate CA certificate.
+	Algorithm *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
+	// The issuance time of the server certificate. This value is a UNIX timestamp. The default value is the time when you call this operation. Unit: seconds.
+	//
+	// >  The **BeforeTime** and **AfterTime** parameters must be both empty or both specified.
+	BeforeTime *int64 `json:"BeforeTime,omitempty" xml:"BeforeTime,omitempty"`
+	// The name of the certificate user. The user of a server certificate is a server. We recommend that you enter the domain name or IP address of the server.
+	CommonName *string `json:"CommonName,omitempty" xml:"CommonName,omitempty"`
+	// The code of the country in which the organization is located, such as CN or US.
+	Country *string `json:"Country,omitempty" xml:"Country,omitempty"`
+	// The content of the CSR file. You can generate a CSR file by using the OpenSSL tool or Keytool. For more information, see [How do I create a CSR file?](~~42218~~) You can also create a CSR file in the Certificate Management Service console. For more information, see [Create a CSR](~~313297~~).
+	Csr *string `json:"Csr,omitempty" xml:"Csr,omitempty"`
+	// The validity period of the server certificate. Unit: days. You must specify at least one of the **Days**, **BeforeTime**, and **AfterTime** parameters. The **BeforeTime** and **AfterTime** parameters must be both empty or both specified. The following list describes how to specify these parameters:
+	//
+	// *   If you specify the **Days** parameter, you can specify both the **BeforeTime** and **AfterTime** parameters or leave them both empty.********
+	// *   If you do not specify the **Days** parameter, you must specify both the **BeforeTime** and **AfterTime** parameters.
+	//
+	// >
+	//
+	// *   If you specify the **Days**, **BeforeTime**, and **AfterTime** parameters together, the validity period of the server certificate is determined by the value of the **Days** parameter.
+	//
+	// *   The validity period of the server certificate cannot exceed the validity period of the intermediate CA certificate. You can call the [DescribeCACertificate](~~328096~~) operation to query the validity period of an intermediate CA certificate.
+	Days *int32 `json:"Days,omitempty" xml:"Days,omitempty"`
+	// The additional domain names and additional IP addresses of the server certificate. After you add additional domain names and additional IP addresses to a certificate, you can apply the certificate to the domain names and IP addresses.
+	//
+	// Separate multiple domain names and multiple IP addresses with commas (,).
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// Specifies whether to return the certificate. Valid values:
+	//
+	// *   **0**: does not return the certificate. This is the default value.
+	// *   **1**: returns the certificate.
+	// *   **2**: returns the certificate and the certificate chain of the certificate.
+	Immediately *int32 `json:"Immediately,omitempty" xml:"Immediately,omitempty"`
+	// The name of the city in which the organization is located. The value can contain letters. The default value is the name of the city in which the organization is located. The organization is associated with the intermediate CA certificate from which the certificate is issued.
+	Locality *string `json:"Locality,omitempty" xml:"Locality,omitempty"`
+	// The validity period of the server certificate. Unit: months.
+	Months *int32 `json:"Months,omitempty" xml:"Months,omitempty"`
+	// The name of the organization. Default value: Alibaba Inc.
+	Organization *string `json:"Organization,omitempty" xml:"Organization,omitempty"`
+	// The name of the department. Default value: Aliyun CDN.
 	OrganizationUnit *string `json:"OrganizationUnit,omitempty" xml:"OrganizationUnit,omitempty"`
+	// The unique identifier of the intermediate CA certificate from which the server certificate is issued.
+	//
+	// >  You can call the [DescribeCACertificateList](~~328095~~) operation to query the unique identifier of an intermediate CA certificate.
 	ParentIdentifier *string `json:"ParentIdentifier,omitempty" xml:"ParentIdentifier,omitempty"`
-	State            *string `json:"State,omitempty" xml:"State,omitempty"`
-	Years            *int32  `json:"Years,omitempty" xml:"Years,omitempty"`
+	// The province, municipality, or autonomous region in which the organization is located. The value can contain letters. The default value is the name of the province, municipality, or autonomous region in which the organization is located. The organization is associated with the intermediate CA certificate from which the certificate is issued.
+	State *string `json:"State,omitempty" xml:"State,omitempty"`
+	// The validity period of the server certificate. Unit: years.
+	Years *int32 `json:"Years,omitempty" xml:"Years,omitempty"`
 }
 
 func (s CreateServerCertificateRequest) String() string {
@@ -690,12 +870,15 @@ func (s *CreateServerCertificateRequest) SetYears(v int32) *CreateServerCertific
 }
 
 type CreateServerCertificateResponseBody struct {
-	CertificateChain      *string `json:"CertificateChain,omitempty" xml:"CertificateChain,omitempty"`
-	Identifier            *string `json:"Identifier,omitempty" xml:"Identifier,omitempty"`
-	ParentX509Certificate *string `json:"ParentX509Certificate,omitempty" xml:"ParentX509Certificate,omitempty"`
-	RequestId             *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	RootX509Certificate   *string `json:"RootX509Certificate,omitempty" xml:"RootX509Certificate,omitempty"`
-	X509Certificate       *string `json:"X509Certificate,omitempty" xml:"X509Certificate,omitempty"`
+	// The certificate chain of the server certificate.
+	CertificateChain *string `json:"CertificateChain,omitempty" xml:"CertificateChain,omitempty"`
+	// The unique identifier of the server certificate.
+	Identifier *string `json:"Identifier,omitempty" xml:"Identifier,omitempty"`
+	// The ID of the request, which is used to locate and troubleshoot issues.
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SerialNumber *string `json:"SerialNumber,omitempty" xml:"SerialNumber,omitempty"`
+	// The content of the server certificate.
+	X509Certificate *string `json:"X509Certificate,omitempty" xml:"X509Certificate,omitempty"`
 }
 
 func (s CreateServerCertificateResponseBody) String() string {
@@ -716,18 +899,13 @@ func (s *CreateServerCertificateResponseBody) SetIdentifier(v string) *CreateSer
 	return s
 }
 
-func (s *CreateServerCertificateResponseBody) SetParentX509Certificate(v string) *CreateServerCertificateResponseBody {
-	s.ParentX509Certificate = &v
-	return s
-}
-
 func (s *CreateServerCertificateResponseBody) SetRequestId(v string) *CreateServerCertificateResponseBody {
 	s.RequestId = &v
 	return s
 }
 
-func (s *CreateServerCertificateResponseBody) SetRootX509Certificate(v string) *CreateServerCertificateResponseBody {
-	s.RootX509Certificate = &v
+func (s *CreateServerCertificateResponseBody) SetSerialNumber(v string) *CreateServerCertificateResponseBody {
+	s.SerialNumber = &v
 	return s
 }
 
@@ -766,23 +944,77 @@ func (s *CreateServerCertificateResponse) SetBody(v *CreateServerCertificateResp
 }
 
 type CreateServerCertificateWithCsrRequest struct {
-	AfterTime        *int64  `json:"AfterTime,omitempty" xml:"AfterTime,omitempty"`
-	Algorithm        *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
-	BeforeTime       *int64  `json:"BeforeTime,omitempty" xml:"BeforeTime,omitempty"`
-	CommonName       *string `json:"CommonName,omitempty" xml:"CommonName,omitempty"`
-	Country          *string `json:"Country,omitempty" xml:"Country,omitempty"`
-	Csr              *string `json:"Csr,omitempty" xml:"Csr,omitempty"`
-	Csr1             *string `json:"Csr1,omitempty" xml:"Csr1,omitempty"`
-	Days             *int32  `json:"Days,omitempty" xml:"Days,omitempty"`
-	Domain           *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	Immediately      *int32  `json:"Immediately,omitempty" xml:"Immediately,omitempty"`
-	Locality         *string `json:"Locality,omitempty" xml:"Locality,omitempty"`
-	Months           *int32  `json:"Months,omitempty" xml:"Months,omitempty"`
-	Organization     *string `json:"Organization,omitempty" xml:"Organization,omitempty"`
+	// The expiration time of the server certificate. This value is a UNIX timestamp. Unit: seconds.
+	//
+	// >  The **BeforeTime** and **AfterTime** parameters must be both empty or both specified.
+	AfterTime *int64 `json:"AfterTime,omitempty" xml:"AfterTime,omitempty"`
+	// The key algorithm of the server certificate. The key algorithm is in the `<Encryption algorithm>_<Key length>` format. Valid values:
+	//
+	// *   **RSA\_1024**: The signature algorithm is Sha256WithRSA.
+	// *   **RSA\_2048**: The signature algorithm is Sha256WithRSA.
+	// *   **RSA\_4096**: The signature algorithm is Sha256WithRSA.
+	// *   **ECC\_256**: The signature algorithm is Sha256WithECDSA.
+	// *   **ECC\_384**: The signature algorithm is Sha256WithECDSA.
+	// *   **ECC\_512**: The signature algorithm is Sha256WithECDSA.
+	// *   **SM2\_256**: The signature algorithm is SM3WithSM2.
+	//
+	// The encryption algorithm of the server certificate must be the same as the encryption algorithm of the intermediate CA certificate. The key length can be different. For example, if the key algorithm of the intermediate CA certificate is RSA\_2048, the key algorithm of the server certificate must be RSA\_1024, RSA\_2048, or RSA\_4096.
+	//
+	// >  You can call the [DescribeCACertificate](~~328096~~) operation to query the key algorithm of an intermediate CA certificate.
+	Algorithm *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
+	// The issuance time of the server certificate. This value is a UNIX timestamp. The default value is the time when you call this operation. Unit: seconds.
+	//
+	// >  The **BeforeTime** and **AfterTime** parameters must be both empty or both specified.
+	BeforeTime *int64 `json:"BeforeTime,omitempty" xml:"BeforeTime,omitempty"`
+	// The common name of the certificate. The value can contain letters.
+	//
+	// >  If you specify the **CsrPemString** parameter, the value of the **CommonName** parameter is determined by the **CsrPemString** parameter.
+	CommonName *string `json:"CommonName,omitempty" xml:"CommonName,omitempty"`
+	// The code of the country in which the organization is located, such as **CN**.
+	//
+	// >  This parameter is available and required only when the **RegistrantProfileId** parameter is not specified. In this case, you must specify this parameter. If this parameter is not specified, the domain name fails to be registered.
+	Country *string `json:"Country,omitempty" xml:"Country,omitempty"`
+	// The content of the CSR file. You can generate a CSR file by using the OpenSSL tool or Keytool. For more information, see [How do I create a CSR file?](~~42218~~) You can also create a CSR file in the Certificate Management Service console. For more information, see [Create a CSR](~~313297~~).
+	Csr *string `json:"Csr,omitempty" xml:"Csr,omitempty"`
+	// The content of the CSR file. You can generate a CSR file by using the OpenSSL tool or Keytool. For more information, see [How do I create a CSR file?](~~42218~~) You can also create a CSR file in the Certificate Management Service console. For more information, see [Create a CSR](~~313297~~).
+	Csr1 *string `json:"Csr1,omitempty" xml:"Csr1,omitempty"`
+	// The validity period of the server certificate. Unit: days. You must specify at least one of the **Days**, **BeforeTime**, and **AfterTime** parameters. The **BeforeTime** and **AfterTime** parameters must be both empty or both specified. The following list describes how to specify these parameters:
+	//
+	// *   If you specify the **Days** parameter, you can specify both the **BeforeTime** and **AfterTime** parameters or leave them both empty.********
+	// *   If you do not specify the **Days** parameter, you must specify both the **BeforeTime** and **AfterTime** parameters.
+	//
+	// >
+	//
+	// *   If you specify the **Days**, **BeforeTime**, and **AfterTime** parameters together, the validity period of the server certificate is determined by the value of the **Days** parameter.
+	//
+	// *   The validity period of the server certificate cannot exceed the validity period of the intermediate CA certificate. You can call the [DescribeCACertificate](~~328096~~) operation to query the validity period of an intermediate CA certificate.
+	Days *int32 `json:"Days,omitempty" xml:"Days,omitempty"`
+	// The additional domain names or additional IP addresses of the server certificate. After you add additional domain names and additional IP addresses to a certificate, you can apply the certificate to the domain names and IP addresses.
+	//
+	// You can specify multiple domain names and IP addresses. If you specify multiple domain names and IP addresses, separate them with commas (,).
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// Specifies whether to return the certificate. Valid values:
+	//
+	// *   **0**: does not return the certificate. This is the default value.
+	// *   **1**: returns the certificate.
+	// *   **2**: returns the certificate and the certificate chain of the certificate.
+	Immediately *int32 `json:"Immediately,omitempty" xml:"Immediately,omitempty"`
+	// The name of the city in which the organization is located. The value can contain letters. The default value is the name of the city in which the organization is located. The organization is associated with the intermediate CA certificate from which the certificate is issued.
+	Locality *string `json:"Locality,omitempty" xml:"Locality,omitempty"`
+	// The validity period of the server certificate. Unit: months.
+	Months *int32 `json:"Months,omitempty" xml:"Months,omitempty"`
+	// The name of the organization. Default value: Alibaba Inc.
+	Organization *string `json:"Organization,omitempty" xml:"Organization,omitempty"`
+	// The name of the department. Default value: Aliyun CDN.
 	OrganizationUnit *string `json:"OrganizationUnit,omitempty" xml:"OrganizationUnit,omitempty"`
+	// The unique identifier of the intermediate CA certificate from which the server certificate is issued.
+	//
+	// >  You can call the [DescribeCACertificateList](~~328095~~) operation to query the unique identifier of an intermediate CA certificate.
 	ParentIdentifier *string `json:"ParentIdentifier,omitempty" xml:"ParentIdentifier,omitempty"`
-	State            *string `json:"State,omitempty" xml:"State,omitempty"`
-	Years            *int32  `json:"Years,omitempty" xml:"Years,omitempty"`
+	// The province, municipality, or autonomous region in which the organization is located. The value can contain letters. The default value is the name of the province, municipality, or autonomous region in which the organization is located. The organization is associated with the intermediate CA certificate from which the certificate is issued.
+	State *string `json:"State,omitempty" xml:"State,omitempty"`
+	// The validity period of the server certificate. Unit: years.
+	Years *int32 `json:"Years,omitempty" xml:"Years,omitempty"`
 }
 
 func (s CreateServerCertificateWithCsrRequest) String() string {
@@ -879,12 +1111,15 @@ func (s *CreateServerCertificateWithCsrRequest) SetYears(v int32) *CreateServerC
 }
 
 type CreateServerCertificateWithCsrResponseBody struct {
-	CertificateChain      *string `json:"CertificateChain,omitempty" xml:"CertificateChain,omitempty"`
-	Identifier            *string `json:"Identifier,omitempty" xml:"Identifier,omitempty"`
-	ParentX509Certificate *string `json:"ParentX509Certificate,omitempty" xml:"ParentX509Certificate,omitempty"`
-	RequestId             *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	RootX509Certificate   *string `json:"RootX509Certificate,omitempty" xml:"RootX509Certificate,omitempty"`
-	X509Certificate       *string `json:"X509Certificate,omitempty" xml:"X509Certificate,omitempty"`
+	// The certificate chain of the server certificate.
+	CertificateChain *string `json:"CertificateChain,omitempty" xml:"CertificateChain,omitempty"`
+	// The unique identifier of the server certificate.
+	Identifier *string `json:"Identifier,omitempty" xml:"Identifier,omitempty"`
+	// The ID of the request, which is used to locate and troubleshoot issues.
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SerialNumber *string `json:"SerialNumber,omitempty" xml:"SerialNumber,omitempty"`
+	// The content of the server certificate.
+	X509Certificate *string `json:"X509Certificate,omitempty" xml:"X509Certificate,omitempty"`
 }
 
 func (s CreateServerCertificateWithCsrResponseBody) String() string {
@@ -905,18 +1140,13 @@ func (s *CreateServerCertificateWithCsrResponseBody) SetIdentifier(v string) *Cr
 	return s
 }
 
-func (s *CreateServerCertificateWithCsrResponseBody) SetParentX509Certificate(v string) *CreateServerCertificateWithCsrResponseBody {
-	s.ParentX509Certificate = &v
-	return s
-}
-
 func (s *CreateServerCertificateWithCsrResponseBody) SetRequestId(v string) *CreateServerCertificateWithCsrResponseBody {
 	s.RequestId = &v
 	return s
 }
 
-func (s *CreateServerCertificateWithCsrResponseBody) SetRootX509Certificate(v string) *CreateServerCertificateWithCsrResponseBody {
-	s.RootX509Certificate = &v
+func (s *CreateServerCertificateWithCsrResponseBody) SetSerialNumber(v string) *CreateServerCertificateWithCsrResponseBody {
+	s.SerialNumber = &v
 	return s
 }
 
@@ -955,15 +1185,42 @@ func (s *CreateServerCertificateWithCsrResponse) SetBody(v *CreateServerCertific
 }
 
 type CreateSubCACertificateRequest struct {
-	Algorithm        *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
-	CommonName       *string `json:"CommonName,omitempty" xml:"CommonName,omitempty"`
-	CountryCode      *string `json:"CountryCode,omitempty" xml:"CountryCode,omitempty"`
-	Locality         *string `json:"Locality,omitempty" xml:"Locality,omitempty"`
-	Organization     *string `json:"Organization,omitempty" xml:"Organization,omitempty"`
+	// The type of the key algorithm of the intermediate CA. The key algorithm is in the `<Encryption algorithm>_<Key length>` format. Valid values:
+	//
+	// *   **RSA\_1024**: The signature algorithm is Sha256WithRSA.
+	// *   **RSA\_2048**: The signature algorithm is Sha256WithRSA.
+	// *   **RSA\_4096**: The signature algorithm is Sha256WithRSA.
+	// *   **ECC\_256**: The signature algorithm is Sha256WithECDSA.
+	// *   **SM2\_256**: The signature algorithm is SM3WithSM2.
+	//
+	// The encryption algorithm of an intermediate CA certificate must be consistent with the encryption algorithm of a root CA certificate. The length of the keys can be different. For example, if the key algorithm of the root CA certificate is **RSA\_2048**, the key algorithm of the intermediate CA certificate must be **RSA\_1024**, **RSA\_2048**, or **RSA\_4096**.
+	//
+	// >  You can call the [DescribeCACertificate](~~328096~~) operation to query the key algorithm of a root CA certificate.
+	Algorithm *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
+	// The common name or abbreviation of the organization. The value can contain letters.
+	CommonName *string `json:"CommonName,omitempty" xml:"CommonName,omitempty"`
+	// The code of the country or region in which the organization is located. You can enter an alpha-2 or alpha-3 code. For example, you can use **CN** to indicate China and use **US** to indicate the United States.
+	//
+	// For more information about country codes, see the **"Country codes"** section of the [Manage company profiles](~~198289~~) topic.
+	CountryCode *string `json:"CountryCode,omitempty" xml:"CountryCode,omitempty"`
+	// The name of the city in which the organization is located. The value can contain letters.
+	Locality *string `json:"Locality,omitempty" xml:"Locality,omitempty"`
+	// The name of the organization that is associated with the intermediate CA certificate. You can enter the name of your enterprise or company. The value can contain letters.
+	Organization *string `json:"Organization,omitempty" xml:"Organization,omitempty"`
+	// The name of the department or branch in the organization. The value can contain letters.
 	OrganizationUnit *string `json:"OrganizationUnit,omitempty" xml:"OrganizationUnit,omitempty"`
+	// The unique identifier of the root CA certificate.
+	//
+	// >  You can call the [DescribeCACertificateList](~~328095~~) operation to query the unique identifiers of all CA certificates.
 	ParentIdentifier *string `json:"ParentIdentifier,omitempty" xml:"ParentIdentifier,omitempty"`
-	State            *string `json:"State,omitempty" xml:"State,omitempty"`
-	Years            *int32  `json:"Years,omitempty" xml:"Years,omitempty"`
+	// The name of the province, municipality, or autonomous region in which the organization is located. The value can contain letters.
+	State *string `json:"State,omitempty" xml:"State,omitempty"`
+	// The validity period of the intermediate CA certificate. Unit: years.
+	//
+	// We recommend that you set this parameter to 5 to 10.
+	//
+	// >  The validity period of the intermediate CA certificate cannot exceed the validity period of the root CA certificate. You can call the [DescribeCACertificate](~~328095~~) operation to query the validity period of a root CA certificate.
+	Years *int32 `json:"Years,omitempty" xml:"Years,omitempty"`
 }
 
 func (s CreateSubCACertificateRequest) String() string {
@@ -1020,10 +1277,14 @@ func (s *CreateSubCACertificateRequest) SetYears(v int32) *CreateSubCACertificat
 }
 
 type CreateSubCACertificateResponseBody struct {
-	Certificate      *string `json:"Certificate,omitempty" xml:"Certificate,omitempty"`
+	// The intermediate CA certificate in the PEM format.
+	Certificate *string `json:"Certificate,omitempty" xml:"Certificate,omitempty"`
+	// The certificate chain of the intermediate CA certificate.
 	CertificateChain *string `json:"CertificateChain,omitempty" xml:"CertificateChain,omitempty"`
-	Identifier       *string `json:"Identifier,omitempty" xml:"Identifier,omitempty"`
-	RequestId        *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The unique identifier of the intermediate CA certificate.
+	Identifier *string `json:"Identifier,omitempty" xml:"Identifier,omitempty"`
+	// The ID of the request, which is used to locate and troubleshoot issues.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateSubCACertificateResponseBody) String() string {
@@ -1084,6 +1345,9 @@ func (s *CreateSubCACertificateResponse) SetBody(v *CreateSubCACertificateRespon
 }
 
 type DeleteClientCertificateRequest struct {
+	// The unique identifier of the client certificate or server certificate that you want to delete. The status of the certificate must be **REVOKE**.
+	//
+	// >  You can call the [ListClientCertificate](~~330884~~) operation to query the unique identifiers and status of all client certificates and server certificates.
 	Identifier *string `json:"Identifier,omitempty" xml:"Identifier,omitempty"`
 }
 
@@ -1101,6 +1365,7 @@ func (s *DeleteClientCertificateRequest) SetIdentifier(v string) *DeleteClientCe
 }
 
 type DeleteClientCertificateResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1147,6 +1412,9 @@ func (s *DeleteClientCertificateResponse) SetBody(v *DeleteClientCertificateResp
 }
 
 type DescribeCACertificateRequest struct {
+	// The unique identifier of the CA certificate that you want to query.
+	//
+	// >  You can call the [DescribeCACertificateList](~~328095~~) operation to query the unique identifiers of all CA certificates.
 	Identifier *string `json:"Identifier,omitempty" xml:"Identifier,omitempty"`
 }
 
@@ -1164,9 +1432,12 @@ func (s *DescribeCACertificateRequest) SetIdentifier(v string) *DescribeCACertif
 }
 
 type DescribeCACertificateResponseBody struct {
+	// The details about the CA certificate.
 	Certificate *DescribeCACertificateResponseBodyCertificate `json:"Certificate,omitempty" xml:"Certificate,omitempty" type:"Struct"`
-	RequestId   *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Years       *int32                                        `json:"Years,omitempty" xml:"Years,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The validity period of the CA certificate. Unit: years.
+	Years *int32 `json:"Years,omitempty" xml:"Years,omitempty"`
 }
 
 func (s DescribeCACertificateResponseBody) String() string {
@@ -1193,29 +1464,73 @@ func (s *DescribeCACertificateResponseBody) SetYears(v int32) *DescribeCACertifi
 }
 
 type DescribeCACertificateResponseBodyCertificate struct {
-	AfterDate        *int64  `json:"AfterDate,omitempty" xml:"AfterDate,omitempty"`
-	Algorithm        *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
-	BeforeDate       *int64  `json:"BeforeDate,omitempty" xml:"BeforeDate,omitempty"`
-	CertificateType  *string `json:"CertificateType,omitempty" xml:"CertificateType,omitempty"`
-	CommonName       *string `json:"CommonName,omitempty" xml:"CommonName,omitempty"`
-	CountryCode      *string `json:"CountryCode,omitempty" xml:"CountryCode,omitempty"`
-	CrlStatus        *string `json:"CrlStatus,omitempty" xml:"CrlStatus,omitempty"`
-	CrlUrl           *string `json:"CrlUrl,omitempty" xml:"CrlUrl,omitempty"`
-	Identifier       *string `json:"Identifier,omitempty" xml:"Identifier,omitempty"`
-	KeySize          *int32  `json:"KeySize,omitempty" xml:"KeySize,omitempty"`
-	Locality         *string `json:"Locality,omitempty" xml:"Locality,omitempty"`
-	Md5              *string `json:"Md5,omitempty" xml:"Md5,omitempty"`
-	Organization     *string `json:"Organization,omitempty" xml:"Organization,omitempty"`
+	// The expiration date of the CA certificate. This value is a UNIX timestamp. Unit: milliseconds.
+	AfterDate *int64 `json:"AfterDate,omitempty" xml:"AfterDate,omitempty"`
+	// The encryption algorithm of the CA certificate. Valid values:
+	//
+	// *   **RSA**: the Rivest-Shamir-Adleman (RSA) algorithm.
+	// *   **ECC**: the elliptic curve cryptography (ECC) algorithm.
+	// *   **SM2**: the SM2 algorithm, which is developed and approved by the State Cryptography Administration of China.
+	Algorithm *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
+	// The issuance date of the CA certificate. This value is a UNIX timestamp. Unit: milliseconds.
+	BeforeDate *int64 `json:"BeforeDate,omitempty" xml:"BeforeDate,omitempty"`
+	// The type of the CA certificate. Valid values:
+	//
+	// *   **ROOT**: root CA certificate
+	// *   **SUB_ROOT**: intermediate CA certificate
+	CertificateType *string `json:"CertificateType,omitempty" xml:"CertificateType,omitempty"`
+	// The common name or abbreviation of the organization that is associated with the CA certificate.
+	CommonName *string `json:"CommonName,omitempty" xml:"CommonName,omitempty"`
+	// The code of the country in which the organization is located.
+	//
+	// For more information about country codes, see the **"Country codes"** section of the [Manage company profiles](~~198289~~) topic.
+	CountryCode *string `json:"CountryCode,omitempty" xml:"CountryCode,omitempty"`
+	// The status of the certificate revocation list (CRL) feature.
+	CrlStatus *string `json:"CrlStatus,omitempty" xml:"CrlStatus,omitempty"`
+	// The address of the CRL.
+	CrlUrl *string `json:"CrlUrl,omitempty" xml:"CrlUrl,omitempty"`
+	// The unique identifier of the CA certificate.
+	Identifier *string `json:"Identifier,omitempty" xml:"Identifier,omitempty"`
+	// The key length of the CA certificate.
+	KeySize *int32 `json:"KeySize,omitempty" xml:"KeySize,omitempty"`
+	// The name of the city in which the organization is located.
+	Locality *string `json:"Locality,omitempty" xml:"Locality,omitempty"`
+	// The MD5 fingerprint of the CA certificate.
+	Md5 *string `json:"Md5,omitempty" xml:"Md5,omitempty"`
+	// The name of the organization that is associated with the CA certificate.
+	Organization *string `json:"Organization,omitempty" xml:"Organization,omitempty"`
+	// The name of the department or branch in the organization that is associated with the CA certificate.
 	OrganizationUnit *string `json:"OrganizationUnit,omitempty" xml:"OrganizationUnit,omitempty"`
+	// The unique identifier of the root CA certificate from which the CA certificate is issued.
+	//
+	// >  This parameter is returned only if the value of the **CertificateType** parameter is **SUB_ROOT**. The value SUB_ROOT indicates an intermediate CA certificate.
 	ParentIdentifier *string `json:"ParentIdentifier,omitempty" xml:"ParentIdentifier,omitempty"`
-	Sans             *string `json:"Sans,omitempty" xml:"Sans,omitempty"`
-	SerialNumber     *string `json:"SerialNumber,omitempty" xml:"SerialNumber,omitempty"`
-	Sha2             *string `json:"Sha2,omitempty" xml:"Sha2,omitempty"`
-	SignAlgorithm    *string `json:"SignAlgorithm,omitempty" xml:"SignAlgorithm,omitempty"`
-	State            *string `json:"State,omitempty" xml:"State,omitempty"`
-	Status           *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	SubjectDN        *string `json:"SubjectDN,omitempty" xml:"SubjectDN,omitempty"`
-	X509Certificate  *string `json:"X509Certificate,omitempty" xml:"X509Certificate,omitempty"`
+	// This parameter is deprecated.
+	Sans *string `json:"Sans,omitempty" xml:"Sans,omitempty"`
+	// The serial number of the CA certificate.
+	SerialNumber *string `json:"SerialNumber,omitempty" xml:"SerialNumber,omitempty"`
+	// The SHA-256 fingerprint of the CA certificate.
+	Sha2 *string `json:"Sha2,omitempty" xml:"Sha2,omitempty"`
+	// The signature algorithm of the CA certificate.
+	SignAlgorithm *string `json:"SignAlgorithm,omitempty" xml:"SignAlgorithm,omitempty"`
+	// The name of the province, municipality, or autonomous region in which the organization is located.
+	State *string `json:"State,omitempty" xml:"State,omitempty"`
+	// The status of the CA certificate. Valid values:
+	//
+	// *   **ISSUE**: The CA certificate is issued.
+	// *   **REVOKE**: The CA certificate is revoked.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The user attribute of the CA certificate, which contains the following information:
+	//
+	// *   **C**: the country code in which the organization is located
+	// *   **O**: the name of the organization
+	// *   **OU**: the name of the department or branch in the organization
+	// *   **L**: the name of the city in which the organization is located
+	// *   **ST**: the name of the province, municipality, or autonomous region in which the organization is located
+	// *   **CN**: the common name or abbreviation of the organization
+	SubjectDN *string `json:"SubjectDN,omitempty" xml:"SubjectDN,omitempty"`
+	// The content of the CA certificate.
+	X509Certificate *string `json:"X509Certificate,omitempty" xml:"X509Certificate,omitempty"`
 }
 
 func (s DescribeCACertificateResponseBodyCertificate) String() string {
@@ -1371,8 +1686,10 @@ func (s *DescribeCACertificateResponse) SetBody(v *DescribeCACertificateResponse
 }
 
 type DescribeCACertificateCountResponseBody struct {
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *int32  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The number of created CA certificates, which includes root CA certificates and intermediate CA certificates.
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeCACertificateCountResponseBody) String() string {
@@ -1423,8 +1740,10 @@ func (s *DescribeCACertificateCountResponse) SetBody(v *DescribeCACertificateCou
 }
 
 type DescribeCACertificateListRequest struct {
+	// The number of the page to return. Default value: **1**.
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	ShowSize    *int32 `json:"ShowSize,omitempty" xml:"ShowSize,omitempty"`
+	// The number of CA certificates to return on each page. Default value: **20**.
+	ShowSize *int32 `json:"ShowSize,omitempty" xml:"ShowSize,omitempty"`
 }
 
 func (s DescribeCACertificateListRequest) String() string {
@@ -1446,12 +1765,18 @@ func (s *DescribeCACertificateListRequest) SetShowSize(v int32) *DescribeCACerti
 }
 
 type DescribeCACertificateListResponseBody struct {
+	// An array that consists of the details about the CA certificate.
 	CertificateList []*DescribeCACertificateListResponseBodyCertificateList `json:"CertificateList,omitempty" xml:"CertificateList,omitempty" type:"Repeated"`
-	CurrentPage     *int32                                                  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	PageCount       *int32                                                  `json:"PageCount,omitempty" xml:"PageCount,omitempty"`
-	RequestId       *string                                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ShowSize        *int32                                                  `json:"ShowSize,omitempty" xml:"ShowSize,omitempty"`
-	TotalCount      *int32                                                  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The page number of the returned page.
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The number of returned pages.
+	PageCount *int32 `json:"PageCount,omitempty" xml:"PageCount,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The number of CA certificates returned per page.
+	ShowSize *int32 `json:"ShowSize,omitempty" xml:"ShowSize,omitempty"`
+	// The total number of root CA certificates and intermediate CA certificates that are returned.
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeCACertificateListResponseBody) String() string {
@@ -1493,28 +1818,73 @@ func (s *DescribeCACertificateListResponseBody) SetTotalCount(v int32) *Describe
 }
 
 type DescribeCACertificateListResponseBodyCertificateList struct {
-	AfterDate        *int64  `json:"AfterDate,omitempty" xml:"AfterDate,omitempty"`
-	Algorithm        *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
-	BeforeDate       *int64  `json:"BeforeDate,omitempty" xml:"BeforeDate,omitempty"`
-	CertificateType  *string `json:"CertificateType,omitempty" xml:"CertificateType,omitempty"`
-	CommonName       *string `json:"CommonName,omitempty" xml:"CommonName,omitempty"`
-	CountryCode      *string `json:"CountryCode,omitempty" xml:"CountryCode,omitempty"`
-	Identifier       *string `json:"Identifier,omitempty" xml:"Identifier,omitempty"`
-	KeySize          *int32  `json:"KeySize,omitempty" xml:"KeySize,omitempty"`
-	Locality         *string `json:"Locality,omitempty" xml:"Locality,omitempty"`
-	Md5              *string `json:"Md5,omitempty" xml:"Md5,omitempty"`
-	Organization     *string `json:"Organization,omitempty" xml:"Organization,omitempty"`
+	// The expiration date of the CA certificate. This value is a UNIX timestamp. Unit: milliseconds.
+	AfterDate *int64 `json:"AfterDate,omitempty" xml:"AfterDate,omitempty"`
+	// The encryption algorithm of the CA certificate. Valid values:
+	//
+	// *   **RSA**: the Rivest-Shamir-Adleman (RSA) algorithm.
+	// *   **ECC**: the elliptic curve cryptography (ECC) algorithm.
+	// *   **SM2**: the SM2 algorithm, which is developed and approved by the State Cryptography Administration of China.
+	Algorithm *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
+	// The issuance date of the CA certificate. This value is a UNIX timestamp. Unit: milliseconds.
+	BeforeDate *int64 `json:"BeforeDate,omitempty" xml:"BeforeDate,omitempty"`
+	// The type of the CA certificate. Valid values:
+	//
+	// *   **ROOT**: root CA certificate
+	// *   **SUB_ROOT**: intermediate CA certificate
+	CertificateType *string `json:"CertificateType,omitempty" xml:"CertificateType,omitempty"`
+	// The common name or abbreviation of the organization that is associated with the CA certificate.
+	CommonName *string `json:"CommonName,omitempty" xml:"CommonName,omitempty"`
+	// The code of the country in which the organization is located.
+	//
+	// For more information about country codes, see the **"Country codes"** section of the [Manage company profiles](~~198289~~) topic.
+	CountryCode *string `json:"CountryCode,omitempty" xml:"CountryCode,omitempty"`
+	// The unique identifier of the CA certificate.
+	Identifier *string `json:"Identifier,omitempty" xml:"Identifier,omitempty"`
+	// The key length of the CA certificate.
+	KeySize *int32 `json:"KeySize,omitempty" xml:"KeySize,omitempty"`
+	// The name of the city in which the organization is located.
+	Locality *string `json:"Locality,omitempty" xml:"Locality,omitempty"`
+	// The MD5 fingerprint of the CA certificate.
+	Md5 *string `json:"Md5,omitempty" xml:"Md5,omitempty"`
+	// The name of the organization that is associated with the CA certificate.
+	Organization *string `json:"Organization,omitempty" xml:"Organization,omitempty"`
+	// The name of the department or branch in the organization that is associated with the CA certificate.
 	OrganizationUnit *string `json:"OrganizationUnit,omitempty" xml:"OrganizationUnit,omitempty"`
+	// The unique identifier of the root CA certificate from which the CA certificate is issued.
+	//
+	// >  This parameter is returned only if the value of the **CertificateType** parameter is **SUB_ROOT**. The value SUB_ROOT indicates an intermediate CA certificate.
 	ParentIdentifier *string `json:"ParentIdentifier,omitempty" xml:"ParentIdentifier,omitempty"`
-	Sans             *string `json:"Sans,omitempty" xml:"Sans,omitempty"`
-	SerialNumber     *string `json:"SerialNumber,omitempty" xml:"SerialNumber,omitempty"`
-	Sha2             *string `json:"Sha2,omitempty" xml:"Sha2,omitempty"`
-	SignAlgorithm    *string `json:"SignAlgorithm,omitempty" xml:"SignAlgorithm,omitempty"`
-	State            *string `json:"State,omitempty" xml:"State,omitempty"`
-	Status           *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	SubjectDN        *string `json:"SubjectDN,omitempty" xml:"SubjectDN,omitempty"`
-	X509Certificate  *string `json:"X509Certificate,omitempty" xml:"X509Certificate,omitempty"`
-	Years            *int32  `json:"Years,omitempty" xml:"Years,omitempty"`
+	// This parameter is deprecated.
+	Sans *string `json:"Sans,omitempty" xml:"Sans,omitempty"`
+	// The serial number of the CA certificate.
+	SerialNumber *string `json:"SerialNumber,omitempty" xml:"SerialNumber,omitempty"`
+	// The SHA-256 fingerprint of the CA certificate.
+	Sha2 *string `json:"Sha2,omitempty" xml:"Sha2,omitempty"`
+	// The signature algorithm of the CA certificate.
+	SignAlgorithm *string `json:"SignAlgorithm,omitempty" xml:"SignAlgorithm,omitempty"`
+	// The name of the province, municipality, or autonomous region in which the organization is located.
+	State *string `json:"State,omitempty" xml:"State,omitempty"`
+	// The status of the CA certificate. Valid values:
+	//
+	// *   **ISSUE**: The CA certificate is issued.
+	// *   **REVOKE**: The CA certificate is revoked.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The Distinguished Name (DN) attribute of the CA certificate, which indicates the user information of the certificate. The DN attribute contains the following information:
+	//
+	// *   **C**: the country code in which the organization is located
+	// *   **O**: the name of the organization
+	// *   **OU**: the name of the department or branch in the organization
+	// *   **L**: the name of the city in which the organization is located
+	//
+	// \<props="china">- **ST**: the name of the province, municipality, or autonomous region in which the organization is located \<props="intl">- **ST**: the name of the province or state in which the organization is located
+	//
+	// *   **CN**: the common name or abbreviation of the organization
+	SubjectDN *string `json:"SubjectDN,omitempty" xml:"SubjectDN,omitempty"`
+	// The content of the CA certificate.
+	X509Certificate *string `json:"X509Certificate,omitempty" xml:"X509Certificate,omitempty"`
+	// The validity period of the CA certificate. Unit: years.
+	Years *int32 `json:"Years,omitempty" xml:"Years,omitempty"`
 }
 
 func (s DescribeCACertificateListResponseBodyCertificateList) String() string {
@@ -1665,8 +2035,16 @@ func (s *DescribeCACertificateListResponse) SetBody(v *DescribeCACertificateList
 }
 
 type DescribeCertificatePrivateKeyRequest struct {
+	// The password that is used to encrypt the private key. The password can contain letters, digits, and special characters, such as `, + - _ #`. The password can be up to 32 bytes in length.
+	//
+	// **
+	//
+	// **Warning** You must remember the password that you specify. The password is required to decrypt the encrypted private key. If you forget the password, the encrypted private key that is returned cannot be decrypted. You must call this operation again.
 	EncryptedCode *string `json:"EncryptedCode,omitempty" xml:"EncryptedCode,omitempty"`
-	Identifier    *string `json:"Identifier,omitempty" xml:"Identifier,omitempty"`
+	// The unique identifier of the client certificate or server certificate that you want to query.
+	//
+	// >  You can call the [ListClientCertificate](~~330884~~) operation to query the unique identifiers of all client certificates and server certificates.
+	Identifier *string `json:"Identifier,omitempty" xml:"Identifier,omitempty"`
 }
 
 func (s DescribeCertificatePrivateKeyRequest) String() string {
@@ -1688,8 +2066,10 @@ func (s *DescribeCertificatePrivateKeyRequest) SetIdentifier(v string) *Describe
 }
 
 type DescribeCertificatePrivateKeyResponseBody struct {
+	// The content of the encrypted private key.
 	EncryptedData *string `json:"EncryptedData,omitempty" xml:"EncryptedData,omitempty"`
-	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeCertificatePrivateKeyResponseBody) String() string {
@@ -1740,6 +2120,9 @@ func (s *DescribeCertificatePrivateKeyResponse) SetBody(v *DescribeCertificatePr
 }
 
 type DescribeClientCertificateRequest struct {
+	// The unique identifier of the client certificate or the server certificate that you want to query.
+	//
+	// >  You can call the [ListClientCertificate](~~330884~~) operation to query the unique identifiers of all client certificates and server certificates.
 	Identifier *string `json:"Identifier,omitempty" xml:"Identifier,omitempty"`
 }
 
@@ -1757,8 +2140,10 @@ func (s *DescribeClientCertificateRequest) SetIdentifier(v string) *DescribeClie
 }
 
 type DescribeClientCertificateResponseBody struct {
+	// The details about the client certificate or the server certificate.
 	Certificate *DescribeClientCertificateResponseBodyCertificate `json:"Certificate,omitempty" xml:"Certificate,omitempty" type:"Struct"`
-	RequestId   *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeClientCertificateResponseBody) String() string {
@@ -1780,28 +2165,80 @@ func (s *DescribeClientCertificateResponseBody) SetRequestId(v string) *Describe
 }
 
 type DescribeClientCertificateResponseBodyCertificate struct {
-	AfterDate        *int64  `json:"AfterDate,omitempty" xml:"AfterDate,omitempty"`
-	Algorithm        *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
-	BeforeDate       *int64  `json:"BeforeDate,omitempty" xml:"BeforeDate,omitempty"`
-	CertificateType  *string `json:"CertificateType,omitempty" xml:"CertificateType,omitempty"`
-	CommonName       *string `json:"CommonName,omitempty" xml:"CommonName,omitempty"`
-	CountryCode      *string `json:"CountryCode,omitempty" xml:"CountryCode,omitempty"`
-	Days             *int32  `json:"Days,omitempty" xml:"Days,omitempty"`
-	Identifier       *string `json:"Identifier,omitempty" xml:"Identifier,omitempty"`
-	KeySize          *int32  `json:"KeySize,omitempty" xml:"KeySize,omitempty"`
-	Locality         *string `json:"Locality,omitempty" xml:"Locality,omitempty"`
-	Md5              *string `json:"Md5,omitempty" xml:"Md5,omitempty"`
-	Organization     *string `json:"Organization,omitempty" xml:"Organization,omitempty"`
+	// The expiration date of the certificate. This value is a UNIX timestamp. Unit: milliseconds.
+	AfterDate *int64 `json:"AfterDate,omitempty" xml:"AfterDate,omitempty"`
+	// The type of the encryption algorithm of the certificate. Valid values:
+	//
+	// *   **RSA**: the Rivest-Shamir-Adleman (RSA) algorithm.
+	// *   **ECC**: the elliptic curve cryptography (ECC) algorithm.
+	// *   **SM2**: the SM2 algorithm, which is developed and approved by the State Cryptography Administration of China.
+	Algorithm *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
+	// The issuance date of the certificate. This value is a UNIX timestamp. Unit: milliseconds.
+	BeforeDate *int64 `json:"BeforeDate,omitempty" xml:"BeforeDate,omitempty"`
+	// The type of the certificate. Valid values:
+	//
+	// *   **CLIENT**: client certificate
+	// *   **SERVER**: server certificate
+	CertificateType *string `json:"CertificateType,omitempty" xml:"CertificateType,omitempty"`
+	// The common name of the certificate.
+	CommonName *string `json:"CommonName,omitempty" xml:"CommonName,omitempty"`
+	// The code of the country in which the organization is located. The organization is associated with the intermediate certificate from which the certificate is issued.
+	//
+	// For more information about country codes, see the **"Country codes"** section of the [Manage company profiles](~~198289~~) topic.
+	CountryCode *string `json:"CountryCode,omitempty" xml:"CountryCode,omitempty"`
+	// The validity period of the certificate. Unit: days.
+	Days *int32 `json:"Days,omitempty" xml:"Days,omitempty"`
+	// The unique identifier of the certificate.
+	Identifier *string `json:"Identifier,omitempty" xml:"Identifier,omitempty"`
+	// The key length of the certificate.
+	KeySize *int32 `json:"KeySize,omitempty" xml:"KeySize,omitempty"`
+	// The name of the city in which the organization is located. The organization is associated with the intermediate certificate from which the certificate is issued.
+	Locality *string `json:"Locality,omitempty" xml:"Locality,omitempty"`
+	// The MD5 fingerprint of the certificate.
+	Md5 *string `json:"Md5,omitempty" xml:"Md5,omitempty"`
+	// The name of the organization. The organization is associated with the intermediate certificate from which the certificate is issued.
+	Organization *string `json:"Organization,omitempty" xml:"Organization,omitempty"`
+	// The name of the department in the organization. The organization is associated with the intermediate certificate authority (CA) certificate from which the certificate is issued.
 	OrganizationUnit *string `json:"OrganizationUnit,omitempty" xml:"OrganizationUnit,omitempty"`
+	// The unique identifier of the intermediate certificate from which the client certificate is issued.
 	ParentIdentifier *string `json:"ParentIdentifier,omitempty" xml:"ParentIdentifier,omitempty"`
-	Sans             *string `json:"Sans,omitempty" xml:"Sans,omitempty"`
-	SerialNumber     *string `json:"SerialNumber,omitempty" xml:"SerialNumber,omitempty"`
-	Sha2             *string `json:"Sha2,omitempty" xml:"Sha2,omitempty"`
-	SignAlgorithm    *string `json:"SignAlgorithm,omitempty" xml:"SignAlgorithm,omitempty"`
-	State            *string `json:"State,omitempty" xml:"State,omitempty"`
-	Status           *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	SubjectDN        *string `json:"SubjectDN,omitempty" xml:"SubjectDN,omitempty"`
-	X509Certificate  *string `json:"X509Certificate,omitempty" xml:"X509Certificate,omitempty"`
+	// The subject alternative name (SAN) extension of the certificate. The value indicates additional information, including the additional domain names or IP addresses that are associated with the certificate.
+	//
+	// The value is a string that consists of JSON arrays. Each element in a JSON array is a JSON struct that corresponds to a SAN extension. A SAN extension struct contains the following parameters:
+	//
+	// *   **Type**: the type of the extension. Data type: integer. Valid values:
+	//
+	//     *   **1**: an email address
+	//     *   **2**: a domain name
+	//     *   **6**: a Uniform Resource Identifier (URI)
+	//     *   **7**: an IP address
+	//
+	// *   **Value**: the value of the extension. Data type: string.
+	Sans *string `json:"Sans,omitempty" xml:"Sans,omitempty"`
+	// The serial number of the certificate.
+	SerialNumber *string `json:"SerialNumber,omitempty" xml:"SerialNumber,omitempty"`
+	// The SHA-256 fingerprint of the certificate.
+	Sha2 *string `json:"Sha2,omitempty" xml:"Sha2,omitempty"`
+	// The signature algorithm of the certificate.
+	SignAlgorithm *string `json:"SignAlgorithm,omitempty" xml:"SignAlgorithm,omitempty"`
+	// The name of the province, municipality, or autonomous region in which the organization is located. The organization is associated with the intermediate certificate from which the certificate is issued.
+	State *string `json:"State,omitempty" xml:"State,omitempty"`
+	// The status of the certificate. Valid values:
+	//
+	// *   **ISSUE**: issued
+	// *   **REVOKE**: revoked
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The distinguished name (DN) extension of the certificate, which indicates the user of the certificate. The DN extension includes the following information:
+	//
+	// *   **C**: the country
+	// *   **O**: the organization
+	// *   **OU**: the department
+	// *   **L**: the city
+	// *   **ST**: the province, municipality, or autonomous region
+	// *   **CN**: the common name
+	SubjectDN *string `json:"SubjectDN,omitempty" xml:"SubjectDN,omitempty"`
+	// The content of the certificate.
+	X509Certificate *string `json:"X509Certificate,omitempty" xml:"X509Certificate,omitempty"`
 }
 
 func (s DescribeClientCertificateResponseBodyCertificate) String() string {
@@ -1952,6 +2389,9 @@ func (s *DescribeClientCertificateResponse) SetBody(v *DescribeClientCertificate
 }
 
 type DescribeClientCertificateStatusRequest struct {
+	// The unique identifiers of the client certificates or server certificates that you want to query. Separate multiple unique identifiers with commas (,).
+	//
+	// >  You can call the [ListClientCertificate](~~330884~~) operation to query the unique identifiers of all client certificates and server certificates.
 	Identifier *string `json:"Identifier,omitempty" xml:"Identifier,omitempty"`
 }
 
@@ -1969,8 +2409,10 @@ func (s *DescribeClientCertificateStatusRequest) SetIdentifier(v string) *Descri
 }
 
 type DescribeClientCertificateStatusResponseBody struct {
+	// An array that consists of the status information about the certificates.
 	CertificateStatus []*DescribeClientCertificateStatusResponseBodyCertificateStatus `json:"CertificateStatus,omitempty" xml:"CertificateStatus,omitempty" type:"Repeated"`
-	RequestId         *string                                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeClientCertificateStatusResponseBody) String() string {
@@ -1992,9 +2434,18 @@ func (s *DescribeClientCertificateStatusResponseBody) SetRequestId(v string) *De
 }
 
 type DescribeClientCertificateStatusResponseBodyCertificateStatus struct {
-	RevokeTime   *int64  `json:"RevokeTime,omitempty" xml:"RevokeTime,omitempty"`
+	// The date on which the certificate was revoked.
+	//
+	// >  This parameter is returned only when the value of the **Status** parameter is **revoked**. The value revoked indicates that the certificate is revoked.
+	RevokeTime *int64 `json:"RevokeTime,omitempty" xml:"RevokeTime,omitempty"`
+	// The serial number of the certificate.
 	SerialNumber *string `json:"SerialNumber,omitempty" xml:"SerialNumber,omitempty"`
-	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The status of the certificate. Valid values:
+	//
+	// *   **good**: The certificate is not revoked.
+	// *   **revoked**: The certificate is revoked.
+	// *   **unknown**: The server cannot determine the status of the certificate.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeClientCertificateStatusResponseBodyCertificateStatus) String() string {
@@ -2050,6 +2501,9 @@ func (s *DescribeClientCertificateStatusResponse) SetBody(v *DescribeClientCerti
 }
 
 type GetCAInstanceStatusRequest struct {
+	// The ID of the private CA instance.
+	//
+	// >  After you purchase a private CA instance by using the [Certificate Management Service console](https://yundun.console.aliyun.com/?p=cas#/pca/rootlist), you can click **Details** for the private CA instance on the **Private Certificates** page to obtain the ID of the private CA instance.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -2067,8 +2521,10 @@ func (s *GetCAInstanceStatusRequest) SetInstanceId(v string) *GetCAInstanceStatu
 }
 
 type GetCAInstanceStatusResponseBody struct {
+	// An array that consists of the status information about the private CA instance.
 	InstanceStatusList []*GetCAInstanceStatusResponseBodyInstanceStatusList `json:"InstanceStatusList,omitempty" xml:"InstanceStatusList,omitempty" type:"Repeated"`
-	RequestId          *string                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetCAInstanceStatusResponseBody) String() string {
@@ -2090,15 +2546,42 @@ func (s *GetCAInstanceStatusResponseBody) SetRequestId(v string) *GetCAInstanceS
 }
 
 type GetCAInstanceStatusResponseBodyInstanceStatusList struct {
-	AfterTime       *int64  `json:"AfterTime,omitempty" xml:"AfterTime,omitempty"`
-	BeforeTime      *int64  `json:"BeforeTime,omitempty" xml:"BeforeTime,omitempty"`
-	CertIssuedCount *int32  `json:"CertIssuedCount,omitempty" xml:"CertIssuedCount,omitempty"`
-	CertTotalCount  *int32  `json:"CertTotalCount,omitempty" xml:"CertTotalCount,omitempty"`
-	Identifier      *string `json:"Identifier,omitempty" xml:"Identifier,omitempty"`
-	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Status          *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	Type            *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	UseExpireTime   *int64  `json:"UseExpireTime,omitempty" xml:"UseExpireTime,omitempty"`
+	// The expiration date of the private CA certificate. This value is a UNIX timestamp. Unit: milliseconds.
+	//
+	// >  This parameter is returned only when the value of the **Status** parameter is **USED** or **REVOKE**. The value USED indicates that the private CA instance is enabled, and the value REVOKE indicates that the instance is revoked.
+	AfterTime *int64 `json:"AfterTime,omitempty" xml:"AfterTime,omitempty"`
+	// The issuance date of the private CA certificate. This value is a UNIX timestamp. Unit: milliseconds.
+	//
+	// >  This parameter is returned only when the value of the **Status** parameter is **USED** or **REVOKE**. The value USED indicates that the private CA instance is enabled, and the value REVOKE indicates that the instance is revoked.
+	BeforeTime *int64 `json:"BeforeTime,omitempty" xml:"BeforeTime,omitempty"`
+	// The number of certificates that are issued by using the private CA instance.
+	CertIssuedCount *int32 `json:"CertIssuedCount,omitempty" xml:"CertIssuedCount,omitempty"`
+	// The number of certificates that can be issued by using the private CA instance.
+	//
+	// For a private root CA instance whose **Type** is **ROOT**, this parameter indicates the number of intermediate CA certificates that can be issued. For a private intermediate CA instance whose **Type** is **SUB_ROOT**, this parameter indicates the total number of client certificates and server certificates that can be issued
+	CertTotalCount *int32 `json:"CertTotalCount,omitempty" xml:"CertTotalCount,omitempty"`
+	// The unique identifier of the private CA certificate.
+	//
+	// >  This parameter is returned only when the value of the **Status** parameter is **USED** or **REVOKE**. The value USED indicates that the private CA instance is enabled, and the value REVOKE indicates that the instance is revoked.
+	Identifier *string `json:"Identifier,omitempty" xml:"Identifier,omitempty"`
+	// The ID of the private CA instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The status of the private CA instance. Valid values:
+	//
+	// *   **BUY**: The private CA instance is purchased but is not enabled.
+	// *   **USED**: The private CA instance is enabled.
+	// *   **REFUND**: The payment of the private CA instance is refunded.
+	// *   **REVOKE**: The private CA instance is revoked.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The type of the private CA instance. Valid values:
+	//
+	// *   **ROOT**: root CA instance
+	// *   **SUB_ROOT**: intermediate CA instance
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The expiration date of the private CA instance. This value is a UNIX timestamp. Unit: milliseconds.
+	//
+	// >  This parameter corresponds to the duration that you select when you purchase the private CA instance. The duration indicates the subscription period of the Private Certificate Authority (PCA) service.
+	UseExpireTime *int64 `json:"UseExpireTime,omitempty" xml:"UseExpireTime,omitempty"`
 }
 
 func (s GetCAInstanceStatusResponseBodyInstanceStatusList) String() string {
@@ -2184,8 +2667,10 @@ func (s *GetCAInstanceStatusResponse) SetBody(v *GetCAInstanceStatusResponseBody
 }
 
 type ListClientCertificateRequest struct {
+	// The number of the page to return. Default value: **1**.
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	ShowSize    *int32 `json:"ShowSize,omitempty" xml:"ShowSize,omitempty"`
+	// The number of certificates to return on each page. Default value: **20**.
+	ShowSize *int32 `json:"ShowSize,omitempty" xml:"ShowSize,omitempty"`
 }
 
 func (s ListClientCertificateRequest) String() string {
@@ -2207,12 +2692,18 @@ func (s *ListClientCertificateRequest) SetShowSize(v int32) *ListClientCertifica
 }
 
 type ListClientCertificateResponseBody struct {
+	// An array that consists of the details about all client certificates and server certificates.
 	CertificateList []*ListClientCertificateResponseBodyCertificateList `json:"CertificateList,omitempty" xml:"CertificateList,omitempty" type:"Repeated"`
-	CurrentPage     *int32                                              `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	PageCount       *int32                                              `json:"PageCount,omitempty" xml:"PageCount,omitempty"`
-	RequestId       *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ShowSize        *int32                                              `json:"ShowSize,omitempty" xml:"ShowSize,omitempty"`
-	TotalCount      *int64                                              `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The page number of the current page.
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The total number of pages returned.
+	PageCount *int32 `json:"PageCount,omitempty" xml:"PageCount,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The number of certificates that are returned per page.
+	ShowSize *int32 `json:"ShowSize,omitempty" xml:"ShowSize,omitempty"`
+	// The number of client certificates and server certificates that are returned.
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListClientCertificateResponseBody) String() string {
@@ -2254,28 +2745,80 @@ func (s *ListClientCertificateResponseBody) SetTotalCount(v int64) *ListClientCe
 }
 
 type ListClientCertificateResponseBodyCertificateList struct {
-	AfterDate        *int64  `json:"AfterDate,omitempty" xml:"AfterDate,omitempty"`
-	Algorithm        *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
-	BeforeDate       *int64  `json:"BeforeDate,omitempty" xml:"BeforeDate,omitempty"`
-	CertificateType  *string `json:"CertificateType,omitempty" xml:"CertificateType,omitempty"`
-	CommonName       *string `json:"CommonName,omitempty" xml:"CommonName,omitempty"`
-	CountryCode      *string `json:"CountryCode,omitempty" xml:"CountryCode,omitempty"`
-	Days             *int32  `json:"Days,omitempty" xml:"Days,omitempty"`
-	Identifier       *string `json:"Identifier,omitempty" xml:"Identifier,omitempty"`
-	KeySize          *int32  `json:"KeySize,omitempty" xml:"KeySize,omitempty"`
-	Locality         *string `json:"Locality,omitempty" xml:"Locality,omitempty"`
-	Md5              *string `json:"Md5,omitempty" xml:"Md5,omitempty"`
-	Organization     *string `json:"Organization,omitempty" xml:"Organization,omitempty"`
+	// The expiration date of the certificate. This value is a UNIX timestamp. Unit: milliseconds.
+	AfterDate *int64 `json:"AfterDate,omitempty" xml:"AfterDate,omitempty"`
+	// The type of the encryption algorithm of the certificate. Valid values:
+	//
+	// *   **RSA**: the Rivest-Shamir-Adleman (RSA) algorithm.
+	// *   **ECC**: the elliptic curve cryptography (ECC) algorithm.
+	// *   **SM2**: the SM2 algorithm, which is developed and approved by the State Cryptography Administration of China.
+	Algorithm *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
+	// The issuance date of the certificate. This value is a UNIX timestamp. Unit: milliseconds.
+	BeforeDate *int64 `json:"BeforeDate,omitempty" xml:"BeforeDate,omitempty"`
+	// The type of the certificate. Valid values:
+	//
+	// *   **CLIENT**: client certificate
+	// *   **SERVER**: server certificate
+	CertificateType *string `json:"CertificateType,omitempty" xml:"CertificateType,omitempty"`
+	// The common name of the certificate.
+	CommonName *string `json:"CommonName,omitempty" xml:"CommonName,omitempty"`
+	// The code of the country in which the organization is located. The organization is associated with the intermediate certificate from which the certificate is issued.
+	//
+	// For more information about country codes, see the **"Country codes"** section of the [Manage company profiles](~~198289~~) topic.
+	CountryCode *string `json:"CountryCode,omitempty" xml:"CountryCode,omitempty"`
+	// The validity period of the certificate. Unit: days.
+	Days *int32 `json:"Days,omitempty" xml:"Days,omitempty"`
+	// The unique identifier of the certificate.
+	Identifier *string `json:"Identifier,omitempty" xml:"Identifier,omitempty"`
+	// The key length of the certificate.
+	KeySize *int32 `json:"KeySize,omitempty" xml:"KeySize,omitempty"`
+	// The name of the city in which the organization is located. The organization is associated with the intermediate certificate from which the certificate is issued.
+	Locality *string `json:"Locality,omitempty" xml:"Locality,omitempty"`
+	// The MD5 fingerprint of the certificate.
+	Md5 *string `json:"Md5,omitempty" xml:"Md5,omitempty"`
+	// The name of the organization. The organization is associated with the intermediate certificate from which the certificate is issued.
+	Organization *string `json:"Organization,omitempty" xml:"Organization,omitempty"`
+	// The name of the department in the organization. The organization is associated with the intermediate certificate authority (CA) certificate from which the certificate is issued.
 	OrganizationUnit *string `json:"OrganizationUnit,omitempty" xml:"OrganizationUnit,omitempty"`
+	// The unique identifier of the intermediate certificate from which the client certificate is issued.
 	ParentIdentifier *string `json:"ParentIdentifier,omitempty" xml:"ParentIdentifier,omitempty"`
-	Sans             *string `json:"Sans,omitempty" xml:"Sans,omitempty"`
-	SerialNumber     *string `json:"SerialNumber,omitempty" xml:"SerialNumber,omitempty"`
-	Sha2             *string `json:"Sha2,omitempty" xml:"Sha2,omitempty"`
-	SignAlgorithm    *string `json:"SignAlgorithm,omitempty" xml:"SignAlgorithm,omitempty"`
-	State            *string `json:"State,omitempty" xml:"State,omitempty"`
-	Status           *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	SubjectDN        *string `json:"SubjectDN,omitempty" xml:"SubjectDN,omitempty"`
-	X509Certificate  *string `json:"X509Certificate,omitempty" xml:"X509Certificate,omitempty"`
+	// The subject alternative name (SAN) extension of the certificate. The value indicates additional information, including the additional domain names or IP addresses that are associated with the certificate.
+	//
+	// The value is a string that consists of JSON arrays. Each element in a JSON array is a JSON struct that corresponds to a SAN extension. A SAN extension struct contains the following parameters:
+	//
+	// *   **Type**: the type of the extension. Data type: integer. Valid values:
+	//
+	//     *   **1**: an email address
+	//     *   **2**: a domain name
+	//     *   **6**: a Uniform Resource Identifier (URI)
+	//     *   **7**: an IP address
+	//
+	// *   **Value**: the value of the extension. Data type: string.
+	Sans *string `json:"Sans,omitempty" xml:"Sans,omitempty"`
+	// The serial number of the certificate.
+	SerialNumber *string `json:"SerialNumber,omitempty" xml:"SerialNumber,omitempty"`
+	// The SHA-256 fingerprint of the certificate.
+	Sha2 *string `json:"Sha2,omitempty" xml:"Sha2,omitempty"`
+	// The signature algorithm of the certificate.
+	SignAlgorithm *string `json:"SignAlgorithm,omitempty" xml:"SignAlgorithm,omitempty"`
+	// The name of the province, municipality, or autonomous region in which the organization is located. The organization is associated with the intermediate certificate from which the certificate is issued.
+	State *string `json:"State,omitempty" xml:"State,omitempty"`
+	// The status of the certificate. Valid values:
+	//
+	// *   **ISSUE**: issued
+	// *   **REVOKE**: revoked
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The distinguished name (DN) extension of the certificate, which indicates the user of the certificate. The DN extension includes the following information:
+	//
+	// *   **C**: the country
+	// *   **O**: the organization
+	// *   **OU**: the department
+	// *   **L**: the city
+	// *   **ST**: the province, municipality, or autonomous region
+	// *   **CN**: the common name
+	SubjectDN *string `json:"SubjectDN,omitempty" xml:"SubjectDN,omitempty"`
+	// The content of the certificate.
+	X509Certificate *string `json:"X509Certificate,omitempty" xml:"X509Certificate,omitempty"`
 }
 
 func (s ListClientCertificateResponseBodyCertificateList) String() string {
@@ -2426,8 +2969,10 @@ func (s *ListClientCertificateResponse) SetBody(v *ListClientCertificateResponse
 }
 
 type ListRevokeCertificateRequest struct {
+	// The number of the page to return. Default value: **1**.
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	ShowSize    *int32 `json:"ShowSize,omitempty" xml:"ShowSize,omitempty"`
+	// The number of revoked certificates to return on each page. Default value: **20**.
+	ShowSize *int32 `json:"ShowSize,omitempty" xml:"ShowSize,omitempty"`
 }
 
 func (s ListRevokeCertificateRequest) String() string {
@@ -2449,12 +2994,18 @@ func (s *ListRevokeCertificateRequest) SetShowSize(v int32) *ListRevokeCertifica
 }
 
 type ListRevokeCertificateResponseBody struct {
+	// An array that consists of the details about the revoked client certificates or server certificates.
 	CertificateList []*ListRevokeCertificateResponseBodyCertificateList `json:"CertificateList,omitempty" xml:"CertificateList,omitempty" type:"Repeated"`
-	CurrentPage     *int32                                              `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	PageCount       *int32                                              `json:"PageCount,omitempty" xml:"PageCount,omitempty"`
-	RequestId       *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ShowSize        *int32                                              `json:"ShowSize,omitempty" xml:"ShowSize,omitempty"`
-	TotalCount      *int64                                              `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The page number of the current page.
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The total number of pages returned.
+	PageCount *int32 `json:"PageCount,omitempty" xml:"PageCount,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The number of revoked certificates that are returned per page.
+	ShowSize *int32 `json:"ShowSize,omitempty" xml:"ShowSize,omitempty"`
+	// The total number of revoked client certificates and server certificates that are returned.
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListRevokeCertificateResponseBody) String() string {
@@ -2496,27 +3047,72 @@ func (s *ListRevokeCertificateResponseBody) SetTotalCount(v int64) *ListRevokeCe
 }
 
 type ListRevokeCertificateResponseBodyCertificateList struct {
-	AfterDate        *string `json:"AfterDate,omitempty" xml:"AfterDate,omitempty"`
-	Algorithm        *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
-	BeforeDate       *string `json:"BeforeDate,omitempty" xml:"BeforeDate,omitempty"`
-	CertificateType  *string `json:"CertificateType,omitempty" xml:"CertificateType,omitempty"`
-	CommonName       *string `json:"CommonName,omitempty" xml:"CommonName,omitempty"`
-	CountryCode      *string `json:"CountryCode,omitempty" xml:"CountryCode,omitempty"`
-	Identifier       *string `json:"Identifier,omitempty" xml:"Identifier,omitempty"`
-	KeySize          *int32  `json:"KeySize,omitempty" xml:"KeySize,omitempty"`
-	Locality         *string `json:"Locality,omitempty" xml:"Locality,omitempty"`
-	Md5              *string `json:"Md5,omitempty" xml:"Md5,omitempty"`
-	Organization     *string `json:"Organization,omitempty" xml:"Organization,omitempty"`
+	// The expiration date of the certificate. The date is in the `yyyy-MM-ddT00:00Z` format. For example, the value `2021-12-31T00:00Z` indicates December 31, 2021.
+	AfterDate *string `json:"AfterDate,omitempty" xml:"AfterDate,omitempty"`
+	// The type of the encryption algorithm of the certificate. Valid values:
+	//
+	// *   **RSA**: the Rivest-Shamir-Adleman (RSA) algorithm.
+	// *   **ECC**: the elliptic curve cryptography (ECC) algorithm.
+	// *   **SM2**: the SM2 algorithm, which is developed and approved by the State Cryptography Administration of China.
+	Algorithm *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
+	// The issuance date of the certificate. The date is in the `yyyy-MM-ddT00:00Z` format. For example, the value `2021-01-01T00:00Z` indicates January 1, 2021.
+	BeforeDate *string `json:"BeforeDate,omitempty" xml:"BeforeDate,omitempty"`
+	// The type of the certificate.
+	CertificateType *string `json:"CertificateType,omitempty" xml:"CertificateType,omitempty"`
+	// The common name of the certificate.
+	CommonName *string `json:"CommonName,omitempty" xml:"CommonName,omitempty"`
+	// The code of the country in which the organization is located. The organization is associated with the intermediate certificate from which the certificate is issued.
+	//
+	// For more information about country codes, see the **"Country codes"** section of the [Manage company profiles](~~198289~~) topic.
+	CountryCode *string `json:"CountryCode,omitempty" xml:"CountryCode,omitempty"`
+	// The unique identifier of the certificate.
+	Identifier *string `json:"Identifier,omitempty" xml:"Identifier,omitempty"`
+	// The key length of the certificate.
+	KeySize *int32 `json:"KeySize,omitempty" xml:"KeySize,omitempty"`
+	// The name of the city in which the organization is located. The organization is associated with the intermediate certificate from which the certificate is issued.
+	Locality *string `json:"Locality,omitempty" xml:"Locality,omitempty"`
+	// The MD5 fingerprint of the certificate.
+	Md5 *string `json:"Md5,omitempty" xml:"Md5,omitempty"`
+	// The name of the organization. The organization is associated with the intermediate certificate from which the certificate is issued.
+	Organization *string `json:"Organization,omitempty" xml:"Organization,omitempty"`
+	// The name of the department in the organization. The organization is associated with the intermediate certificate authority (CA) certificate from which the certificate is issued.
 	OrganizationUnit *string `json:"OrganizationUnit,omitempty" xml:"OrganizationUnit,omitempty"`
+	// The identifier of the root certificate.
 	ParentIdentifier *string `json:"ParentIdentifier,omitempty" xml:"ParentIdentifier,omitempty"`
-	RevokeDate       *string `json:"RevokeDate,omitempty" xml:"RevokeDate,omitempty"`
-	Sans             *string `json:"Sans,omitempty" xml:"Sans,omitempty"`
-	SerialNumber     *string `json:"SerialNumber,omitempty" xml:"SerialNumber,omitempty"`
-	Sha2             *string `json:"Sha2,omitempty" xml:"Sha2,omitempty"`
-	SignAlgorithm    *string `json:"SignAlgorithm,omitempty" xml:"SignAlgorithm,omitempty"`
-	State            *string `json:"State,omitempty" xml:"State,omitempty"`
-	Status           *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	SubjectDN        *string `json:"SubjectDN,omitempty" xml:"SubjectDN,omitempty"`
+	// The date on which the certificate was revoked. The value is in the `yyyy-MM-ddT00:00Z` format. For example, the value `2021-09-01T00:00Z` indicates September 1, 2021.
+	RevokeDate *string `json:"RevokeDate,omitempty" xml:"RevokeDate,omitempty"`
+	// The subject alternative name (SAN) extension of the certificate.
+	//
+	// The value is a string that consists of JSON arrays. Each element in a JSON array is a JSON struct that corresponds to a SAN extension. A SAN extension struct contains the following parameters:
+	//
+	// *   **Type**: the type of the extension. Data type: integer. Valid values:
+	//
+	//     *   **1**: an email address
+	//     *   **2**: a domain name
+	//     *   **6**: a Uniform Resource Identifier (URI)
+	//     *   **7**: an IP address
+	//
+	// *   **Value**: the value of the extension. Data type: string.
+	Sans *string `json:"Sans,omitempty" xml:"Sans,omitempty"`
+	// The serial number of the certificate.
+	SerialNumber *string `json:"SerialNumber,omitempty" xml:"SerialNumber,omitempty"`
+	// The SHA-256 fingerprint of the certificate.
+	Sha2 *string `json:"Sha2,omitempty" xml:"Sha2,omitempty"`
+	// The signature algorithm of the certificate.
+	SignAlgorithm *string `json:"SignAlgorithm,omitempty" xml:"SignAlgorithm,omitempty"`
+	// The name of the province, municipality, or autonomous region in which the organization is located. The organization is associated with the intermediate certificate from which the certificate is issued.
+	State *string `json:"State,omitempty" xml:"State,omitempty"`
+	// The status.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The distinguished name (DN) extension of the certificate, which indicates the user of the certificate. The DN extension includes the following information:
+	//
+	// *   **C**: the country
+	// *   **O**: the organization
+	// *   **OU**: the department
+	// *   **L**: the city
+	// *   **ST**: the province, municipality, or autonomous region
+	// *   **CN**: the common name
+	SubjectDN *string `json:"SubjectDN,omitempty" xml:"SubjectDN,omitempty"`
 }
 
 func (s ListRevokeCertificateResponseBodyCertificateList) String() string {
@@ -2662,8 +3258,14 @@ func (s *ListRevokeCertificateResponse) SetBody(v *ListRevokeCertificateResponse
 }
 
 type UpdateCACertificateStatusRequest struct {
+	// The unique identifier of the CA certificate whose status you want to change.
+	//
+	// >  You can call the [DescribeCACertificateList](~~328095~~) operation to query the unique identifiers of all CA certificates.
 	Identifier *string `json:"Identifier,omitempty" xml:"Identifier,omitempty"`
-	Status     *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The state to which you want to change the CA certificate. Set to the value to **REVOKE**. After this operation is called, the status of the CA certificate is changed to **REVOKE**.
+	//
+	// >  You can call this operation only if the status of a CA certificate is **ISSUE**. You can call the [DescribeCACertificate](~~328096~~) operation to query the status of a CA certificate.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s UpdateCACertificateStatusRequest) String() string {
@@ -2685,6 +3287,7 @@ func (s *UpdateCACertificateStatusRequest) SetStatus(v string) *UpdateCACertific
 }
 
 type UpdateCACertificateStatusResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2828,6 +3431,15 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+/**
+ * Before you call this operation, make sure that you have created a root certificate authority (CA) certificate by calling the [CreateRootCACertificate](~~328093~~) operation and an intermediate CA certificate by calling the [CreateSubCACertificate](~~328094~~) operation. Only intermediate CA certificates can be used to issue client certificates.
+ * ## Limits
+ * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request CreateClientCertificateRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return CreateClientCertificateResponse
+ */
 func (client *Client) CreateClientCertificateWithOptions(request *CreateClientCertificateRequest, runtime *util.RuntimeOptions) (_result *CreateClientCertificateResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2925,6 +3537,14 @@ func (client *Client) CreateClientCertificateWithOptions(request *CreateClientCe
 	return _result, _err
 }
 
+/**
+ * Before you call this operation, make sure that you have created a root certificate authority (CA) certificate by calling the [CreateRootCACertificate](~~328093~~) operation and an intermediate CA certificate by calling the [CreateSubCACertificate](~~328094~~) operation. Only intermediate CA certificates can be used to issue client certificates.
+ * ## Limits
+ * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request CreateClientCertificateRequest
+ * @return CreateClientCertificateResponse
+ */
 func (client *Client) CreateClientCertificate(request *CreateClientCertificateRequest) (_result *CreateClientCertificateResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateClientCertificateResponse{}
@@ -2936,6 +3556,15 @@ func (client *Client) CreateClientCertificate(request *CreateClientCertificateRe
 	return _result, _err
 }
 
+/**
+ * Before you call this operation, make sure that you have created a root certificate authority (CA) certificate by calling the [CreateRootCACertificate](~~328093~~) operation and an intermediate CA certificate by calling the [CreateSubCACertificate](~~328094~~) operation. Only intermediate CA certificates can be used to issue client certificates.
+ * ## Limits
+ * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request CreateClientCertificateWithCsrRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return CreateClientCertificateWithCsrResponse
+ */
 func (client *Client) CreateClientCertificateWithCsrWithOptions(request *CreateClientCertificateWithCsrRequest, runtime *util.RuntimeOptions) (_result *CreateClientCertificateWithCsrResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3037,6 +3666,14 @@ func (client *Client) CreateClientCertificateWithCsrWithOptions(request *CreateC
 	return _result, _err
 }
 
+/**
+ * Before you call this operation, make sure that you have created a root certificate authority (CA) certificate by calling the [CreateRootCACertificate](~~328093~~) operation and an intermediate CA certificate by calling the [CreateSubCACertificate](~~328094~~) operation. Only intermediate CA certificates can be used to issue client certificates.
+ * ## Limits
+ * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request CreateClientCertificateWithCsrRequest
+ * @return CreateClientCertificateWithCsrResponse
+ */
 func (client *Client) CreateClientCertificateWithCsr(request *CreateClientCertificateWithCsrRequest) (_result *CreateClientCertificateWithCsrResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateClientCertificateWithCsrResponse{}
@@ -3048,6 +3685,16 @@ func (client *Client) CreateClientCertificateWithCsr(request *CreateClientCertif
 	return _result, _err
 }
 
+/**
+ * After a client certificate or a server certificate is revoked, the client or the server on which the certificate is installed cannot establish HTTPS connections with other devices.
+ * After a client certificate or a server certificate is revoked, you can call the [DeleteClientCertificate](~~330880~~) operation to permanently delete the certificate.
+ * ## Limits
+ * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request CreateRevokeClientCertificateRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return CreateRevokeClientCertificateResponse
+ */
 func (client *Client) CreateRevokeClientCertificateWithOptions(request *CreateRevokeClientCertificateRequest, runtime *util.RuntimeOptions) (_result *CreateRevokeClientCertificateResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3081,6 +3728,15 @@ func (client *Client) CreateRevokeClientCertificateWithOptions(request *CreateRe
 	return _result, _err
 }
 
+/**
+ * After a client certificate or a server certificate is revoked, the client or the server on which the certificate is installed cannot establish HTTPS connections with other devices.
+ * After a client certificate or a server certificate is revoked, you can call the [DeleteClientCertificate](~~330880~~) operation to permanently delete the certificate.
+ * ## Limits
+ * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request CreateRevokeClientCertificateRequest
+ * @return CreateRevokeClientCertificateResponse
+ */
 func (client *Client) CreateRevokeClientCertificate(request *CreateRevokeClientCertificateRequest) (_result *CreateRevokeClientCertificateResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateRevokeClientCertificateResponse{}
@@ -3092,6 +3748,16 @@ func (client *Client) CreateRevokeClientCertificate(request *CreateRevokeClientC
 	return _result, _err
 }
 
+/**
+ * You can call the CreateRootCACertificate operation to create a self-signed root CA certificate. A root CA certificate is the trust anchor in a chain of trust for private certificates that are used within an enterprise. You must create a root CA certificate before you can use the root CA certificate to issue intermediate CA certificates. Then, you can use the intermediate CA certificates to issue client certificates and server certificates.
+ * Before you call this operation, make sure that you have purchased a private root CA instance by using the [Certificate Management Service console](https://yundun.console.aliyun.com/?p=cas#/pca/rootlist). For more information, see [Create a private CA](~~208553~~).
+ * ## Limits
+ * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request CreateRootCACertificateRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return CreateRootCACertificateResponse
+ */
 func (client *Client) CreateRootCACertificateWithOptions(request *CreateRootCACertificateRequest, runtime *util.RuntimeOptions) (_result *CreateRootCACertificateResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3153,6 +3819,15 @@ func (client *Client) CreateRootCACertificateWithOptions(request *CreateRootCACe
 	return _result, _err
 }
 
+/**
+ * You can call the CreateRootCACertificate operation to create a self-signed root CA certificate. A root CA certificate is the trust anchor in a chain of trust for private certificates that are used within an enterprise. You must create a root CA certificate before you can use the root CA certificate to issue intermediate CA certificates. Then, you can use the intermediate CA certificates to issue client certificates and server certificates.
+ * Before you call this operation, make sure that you have purchased a private root CA instance by using the [Certificate Management Service console](https://yundun.console.aliyun.com/?p=cas#/pca/rootlist). For more information, see [Create a private CA](~~208553~~).
+ * ## Limits
+ * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request CreateRootCACertificateRequest
+ * @return CreateRootCACertificateResponse
+ */
 func (client *Client) CreateRootCACertificate(request *CreateRootCACertificateRequest) (_result *CreateRootCACertificateResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateRootCACertificateResponse{}
@@ -3164,6 +3839,15 @@ func (client *Client) CreateRootCACertificate(request *CreateRootCACertificateRe
 	return _result, _err
 }
 
+/**
+ * Before you call this operation, make sure that you have created a root certificate authority (CA) certificate by calling the [CreateRootCACertificate](~~328093~~) operation and an intermediate CA certificate by calling the [CreateSubCACertificate](~~328094~~) operation. Only intermediate CA certificates can be used to issue server certificates.
+ * ## Limits
+ * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request CreateServerCertificateRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return CreateServerCertificateResponse
+ */
 func (client *Client) CreateServerCertificateWithOptions(request *CreateServerCertificateRequest, runtime *util.RuntimeOptions) (_result *CreateServerCertificateResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3257,6 +3941,14 @@ func (client *Client) CreateServerCertificateWithOptions(request *CreateServerCe
 	return _result, _err
 }
 
+/**
+ * Before you call this operation, make sure that you have created a root certificate authority (CA) certificate by calling the [CreateRootCACertificate](~~328093~~) operation and an intermediate CA certificate by calling the [CreateSubCACertificate](~~328094~~) operation. Only intermediate CA certificates can be used to issue server certificates.
+ * ## Limits
+ * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request CreateServerCertificateRequest
+ * @return CreateServerCertificateResponse
+ */
 func (client *Client) CreateServerCertificate(request *CreateServerCertificateRequest) (_result *CreateServerCertificateResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateServerCertificateResponse{}
@@ -3268,6 +3960,15 @@ func (client *Client) CreateServerCertificate(request *CreateServerCertificateRe
 	return _result, _err
 }
 
+/**
+ * Before you call this operation, make sure that you have created a root certificate authority (CA) certificate by calling the [CreateRootCACertificate](~~328093~~) operation and an intermediate CA certificate by calling the [CreateSubCACertificate](~~328094~~) operation. Only intermediate CA certificates can be used to issue server certificates.
+ * ## Limits
+ * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request CreateServerCertificateWithCsrRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return CreateServerCertificateWithCsrResponse
+ */
 func (client *Client) CreateServerCertificateWithCsrWithOptions(request *CreateServerCertificateWithCsrRequest, runtime *util.RuntimeOptions) (_result *CreateServerCertificateWithCsrResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3365,6 +4066,14 @@ func (client *Client) CreateServerCertificateWithCsrWithOptions(request *CreateS
 	return _result, _err
 }
 
+/**
+ * Before you call this operation, make sure that you have created a root certificate authority (CA) certificate by calling the [CreateRootCACertificate](~~328093~~) operation and an intermediate CA certificate by calling the [CreateSubCACertificate](~~328094~~) operation. Only intermediate CA certificates can be used to issue server certificates.
+ * ## Limits
+ * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request CreateServerCertificateWithCsrRequest
+ * @return CreateServerCertificateWithCsrResponse
+ */
 func (client *Client) CreateServerCertificateWithCsr(request *CreateServerCertificateWithCsrRequest) (_result *CreateServerCertificateWithCsrResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateServerCertificateWithCsrResponse{}
@@ -3376,6 +4085,16 @@ func (client *Client) CreateServerCertificateWithCsr(request *CreateServerCertif
 	return _result, _err
 }
 
+/**
+ * You can call the CreateSubCACertificate operation to issue an intermediate CA certificate by using an existing root CA certificate. Intermediate CA certificates can be used to issue client certificates and server certificates.
+ * Before you call this operation, make sure that you have created a root CA certificate by calling the [CreateRootCACertificate](~~328093~~) operation.
+ * ## Limits
+ * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request CreateSubCACertificateRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return CreateSubCACertificateResponse
+ */
 func (client *Client) CreateSubCACertificateWithOptions(request *CreateSubCACertificateRequest, runtime *util.RuntimeOptions) (_result *CreateSubCACertificateResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3441,6 +4160,15 @@ func (client *Client) CreateSubCACertificateWithOptions(request *CreateSubCACert
 	return _result, _err
 }
 
+/**
+ * You can call the CreateSubCACertificate operation to issue an intermediate CA certificate by using an existing root CA certificate. Intermediate CA certificates can be used to issue client certificates and server certificates.
+ * Before you call this operation, make sure that you have created a root CA certificate by calling the [CreateRootCACertificate](~~328093~~) operation.
+ * ## Limits
+ * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request CreateSubCACertificateRequest
+ * @return CreateSubCACertificateResponse
+ */
 func (client *Client) CreateSubCACertificate(request *CreateSubCACertificateRequest) (_result *CreateSubCACertificateResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateSubCACertificateResponse{}
@@ -3452,6 +4180,15 @@ func (client *Client) CreateSubCACertificate(request *CreateSubCACertificateRequ
 	return _result, _err
 }
 
+/**
+ * Before you call this operation, you must call the [CreateRevokeClientCertificate](~~330876~~) operation to revoke a client certificate or a server certificate.
+ * ## Limits
+ * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request DeleteClientCertificateRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DeleteClientCertificateResponse
+ */
 func (client *Client) DeleteClientCertificateWithOptions(request *DeleteClientCertificateRequest, runtime *util.RuntimeOptions) (_result *DeleteClientCertificateResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3485,6 +4222,14 @@ func (client *Client) DeleteClientCertificateWithOptions(request *DeleteClientCe
 	return _result, _err
 }
 
+/**
+ * Before you call this operation, you must call the [CreateRevokeClientCertificate](~~330876~~) operation to revoke a client certificate or a server certificate.
+ * ## Limits
+ * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request DeleteClientCertificateRequest
+ * @return DeleteClientCertificateResponse
+ */
 func (client *Client) DeleteClientCertificate(request *DeleteClientCertificateRequest) (_result *DeleteClientCertificateResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteClientCertificateResponse{}
@@ -3496,6 +4241,16 @@ func (client *Client) DeleteClientCertificate(request *DeleteClientCertificateRe
 	return _result, _err
 }
 
+/**
+ * You can call the DescribeCACertificate operation to query the details about a root CA certificate or an intermediate CA certificate by using the unique identifier of the root CA certificate or intermediate CA certificate. The details include the serial number, user information, and content of a CA certificate.
+ * Before you call this operation, make sure that you have created a root CA by calling the [CreateRootCACertificate](~~328093~~) operation or an intermediate CA certificate by calling the [CreateSubCACertificate](~~328094~~) operation.
+ * ## Limits
+ * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request DescribeCACertificateRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DescribeCACertificateResponse
+ */
 func (client *Client) DescribeCACertificateWithOptions(request *DescribeCACertificateRequest, runtime *util.RuntimeOptions) (_result *DescribeCACertificateResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3529,6 +4284,15 @@ func (client *Client) DescribeCACertificateWithOptions(request *DescribeCACertif
 	return _result, _err
 }
 
+/**
+ * You can call the DescribeCACertificate operation to query the details about a root CA certificate or an intermediate CA certificate by using the unique identifier of the root CA certificate or intermediate CA certificate. The details include the serial number, user information, and content of a CA certificate.
+ * Before you call this operation, make sure that you have created a root CA by calling the [CreateRootCACertificate](~~328093~~) operation or an intermediate CA certificate by calling the [CreateSubCACertificate](~~328094~~) operation.
+ * ## Limits
+ * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request DescribeCACertificateRequest
+ * @return DescribeCACertificateResponse
+ */
 func (client *Client) DescribeCACertificate(request *DescribeCACertificateRequest) (_result *DescribeCACertificateResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeCACertificateResponse{}
@@ -3540,6 +4304,15 @@ func (client *Client) DescribeCACertificate(request *DescribeCACertificateReques
 	return _result, _err
 }
 
+/**
+ * You can call the DescribeCACertificateCount operation to query the number of created CA certificates, which includes root CA certificates and intermediate CA certificates.
+ * ## Limits
+ * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request DescribeCACertificateCountRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DescribeCACertificateCountResponse
+ */
 func (client *Client) DescribeCACertificateCountWithOptions(runtime *util.RuntimeOptions) (_result *DescribeCACertificateCountResponse, _err error) {
 	req := &openapi.OpenApiRequest{}
 	params := &openapi.Params{
@@ -3562,6 +4335,13 @@ func (client *Client) DescribeCACertificateCountWithOptions(runtime *util.Runtim
 	return _result, _err
 }
 
+/**
+ * You can call the DescribeCACertificateCount operation to query the number of created CA certificates, which includes root CA certificates and intermediate CA certificates.
+ * ## Limits
+ * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @return DescribeCACertificateCountResponse
+ */
 func (client *Client) DescribeCACertificateCount() (_result *DescribeCACertificateCountResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeCACertificateCountResponse{}
@@ -3573,6 +4353,15 @@ func (client *Client) DescribeCACertificateCount() (_result *DescribeCACertifica
 	return _result, _err
 }
 
+/**
+ * You can call the DescribeCACertificateList operation to perform a paged query of the details about all CA certificates that you create. The details include the unique identifier, serial number, user information, and content of each root CA certificate or intermediate CA certificate.
+ * ## Limits
+ * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request DescribeCACertificateListRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DescribeCACertificateListResponse
+ */
 func (client *Client) DescribeCACertificateListWithOptions(request *DescribeCACertificateListRequest, runtime *util.RuntimeOptions) (_result *DescribeCACertificateListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3610,6 +4399,14 @@ func (client *Client) DescribeCACertificateListWithOptions(request *DescribeCACe
 	return _result, _err
 }
 
+/**
+ * You can call the DescribeCACertificateList operation to perform a paged query of the details about all CA certificates that you create. The details include the unique identifier, serial number, user information, and content of each root CA certificate or intermediate CA certificate.
+ * ## Limits
+ * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request DescribeCACertificateListRequest
+ * @return DescribeCACertificateListResponse
+ */
 func (client *Client) DescribeCACertificateList(request *DescribeCACertificateListRequest) (_result *DescribeCACertificateListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeCACertificateListResponse{}
@@ -3621,6 +4418,23 @@ func (client *Client) DescribeCACertificateList(request *DescribeCACertificateLi
 	return _result, _err
 }
 
+/**
+ * ## Usage notes
+ * You can call the DescribeCertificatePrivateKey operation to obtain the encrypted private key of a client certificate or a server certificate. The certificate is issued based on a system-generated certificate signing request (CSR). Before you call this operation, make sure that you have issued a client certificate or a server certificate by calling the following operation:
+ * *   [CreateClientCertificate](~~330873~~)
+ * *   [CreateServerCertificate](~~330877~~)
+ * To ensure the security of private key transmission, the DescribeCertificatePrivateKey operation encrypts the private key by using the private key password that you specify and returns the encrypted private key. The private key password is an string that is used to encrypt the private key. After you obtain the encrypted private key of the certificate, you can use the following methods to decrypt the private key:
+ * *   If the encryption algorithm of the certificate is RSA, you must run the `openssl rsa -in <Encrypted private key file> -passin pass:<Private key password> -out <Decrypted private key file>` command in the computer on which [OpenSSL](https://www.openssl.org/source/) or [BabaSSL](https://github.com/BabaSSL/BabaSSL) is installed.
+ * *   If the encryption algorithm of the certificate is ECC, you must run the `openssl ec -in <Encrypted private key file> -passin pass:<Private key password> -out <Decrypted private key file>` command in the computer on which [OpenSSL](https://www.openssl.org/source/) or [BabaSSL](https://github.com/BabaSSL/BabaSSL) is installed.
+ * *   If the encryption algorithm of the certificate is SM2, you must run the `openssl ec -in <Encrypted private key file> -passin pass:<Private key password> -out <Decrypted private key file>` command in the computer on which [BabaSSL](https://github.com/BabaSSL/BabaSSL) is installed.
+ * >  You can call the [DescribeClientCertificate](~~329929~~) operation to query the encryption algorithm type of a client certificate or a server certificate.
+ * ## Limits
+ * You can call this operation up to 100 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request DescribeCertificatePrivateKeyRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DescribeCertificatePrivateKeyResponse
+ */
 func (client *Client) DescribeCertificatePrivateKeyWithOptions(request *DescribeCertificatePrivateKeyRequest, runtime *util.RuntimeOptions) (_result *DescribeCertificatePrivateKeyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3658,6 +4472,22 @@ func (client *Client) DescribeCertificatePrivateKeyWithOptions(request *Describe
 	return _result, _err
 }
 
+/**
+ * ## Usage notes
+ * You can call the DescribeCertificatePrivateKey operation to obtain the encrypted private key of a client certificate or a server certificate. The certificate is issued based on a system-generated certificate signing request (CSR). Before you call this operation, make sure that you have issued a client certificate or a server certificate by calling the following operation:
+ * *   [CreateClientCertificate](~~330873~~)
+ * *   [CreateServerCertificate](~~330877~~)
+ * To ensure the security of private key transmission, the DescribeCertificatePrivateKey operation encrypts the private key by using the private key password that you specify and returns the encrypted private key. The private key password is an string that is used to encrypt the private key. After you obtain the encrypted private key of the certificate, you can use the following methods to decrypt the private key:
+ * *   If the encryption algorithm of the certificate is RSA, you must run the `openssl rsa -in <Encrypted private key file> -passin pass:<Private key password> -out <Decrypted private key file>` command in the computer on which [OpenSSL](https://www.openssl.org/source/) or [BabaSSL](https://github.com/BabaSSL/BabaSSL) is installed.
+ * *   If the encryption algorithm of the certificate is ECC, you must run the `openssl ec -in <Encrypted private key file> -passin pass:<Private key password> -out <Decrypted private key file>` command in the computer on which [OpenSSL](https://www.openssl.org/source/) or [BabaSSL](https://github.com/BabaSSL/BabaSSL) is installed.
+ * *   If the encryption algorithm of the certificate is SM2, you must run the `openssl ec -in <Encrypted private key file> -passin pass:<Private key password> -out <Decrypted private key file>` command in the computer on which [BabaSSL](https://github.com/BabaSSL/BabaSSL) is installed.
+ * >  You can call the [DescribeClientCertificate](~~329929~~) operation to query the encryption algorithm type of a client certificate or a server certificate.
+ * ## Limits
+ * You can call this operation up to 100 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request DescribeCertificatePrivateKeyRequest
+ * @return DescribeCertificatePrivateKeyResponse
+ */
 func (client *Client) DescribeCertificatePrivateKey(request *DescribeCertificatePrivateKeyRequest) (_result *DescribeCertificatePrivateKeyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeCertificatePrivateKeyResponse{}
@@ -3669,6 +4499,22 @@ func (client *Client) DescribeCertificatePrivateKey(request *DescribeCertificate
 	return _result, _err
 }
 
+/**
+ * You can call the DescribeClientCertificate operation to query the details about a client certificate or a server certificate by using the unique identifier of the certificate. The details include the serial number, user information, content, and status of each certificate.
+ * Before you call this operation, make sure that you have created a client certificate or a server certificate.
+ * For more information about how to call an operation to create a client certificate, see the following topics:
+ * *   [CreateClientCertificate](~~330873~~)
+ * *   [CreateClientCertificateWithCsr](~~330875~~)
+ * For more information about how to call an operation to create a server certificate, see the following topics:
+ * *   [CreateServerCertificate](~~330877~~)
+ * *   [CreateServerCertificateWithCsr](~~330878~~)
+ * ## Limits
+ * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request DescribeClientCertificateRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DescribeClientCertificateResponse
+ */
 func (client *Client) DescribeClientCertificateWithOptions(request *DescribeClientCertificateRequest, runtime *util.RuntimeOptions) (_result *DescribeClientCertificateResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3702,6 +4548,21 @@ func (client *Client) DescribeClientCertificateWithOptions(request *DescribeClie
 	return _result, _err
 }
 
+/**
+ * You can call the DescribeClientCertificate operation to query the details about a client certificate or a server certificate by using the unique identifier of the certificate. The details include the serial number, user information, content, and status of each certificate.
+ * Before you call this operation, make sure that you have created a client certificate or a server certificate.
+ * For more information about how to call an operation to create a client certificate, see the following topics:
+ * *   [CreateClientCertificate](~~330873~~)
+ * *   [CreateClientCertificateWithCsr](~~330875~~)
+ * For more information about how to call an operation to create a server certificate, see the following topics:
+ * *   [CreateServerCertificate](~~330877~~)
+ * *   [CreateServerCertificateWithCsr](~~330878~~)
+ * ## Limits
+ * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request DescribeClientCertificateRequest
+ * @return DescribeClientCertificateResponse
+ */
 func (client *Client) DescribeClientCertificate(request *DescribeClientCertificateRequest) (_result *DescribeClientCertificateResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeClientCertificateResponse{}
@@ -3713,6 +4574,15 @@ func (client *Client) DescribeClientCertificate(request *DescribeClientCertifica
 	return _result, _err
 }
 
+/**
+ * You can call the DescribeClientCertificateStatus operation to query the status information about multiple client certificates or server certificates at a time by using the unique identifiers of the certificates. For example, you can check whether a certificate is revoked.
+ * ## Limits
+ * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request DescribeClientCertificateStatusRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DescribeClientCertificateStatusResponse
+ */
 func (client *Client) DescribeClientCertificateStatusWithOptions(request *DescribeClientCertificateStatusRequest, runtime *util.RuntimeOptions) (_result *DescribeClientCertificateStatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3746,6 +4616,14 @@ func (client *Client) DescribeClientCertificateStatusWithOptions(request *Descri
 	return _result, _err
 }
 
+/**
+ * You can call the DescribeClientCertificateStatus operation to query the status information about multiple client certificates or server certificates at a time by using the unique identifiers of the certificates. For example, you can check whether a certificate is revoked.
+ * ## Limits
+ * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request DescribeClientCertificateStatusRequest
+ * @return DescribeClientCertificateStatusResponse
+ */
 func (client *Client) DescribeClientCertificateStatus(request *DescribeClientCertificateStatusRequest) (_result *DescribeClientCertificateStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeClientCertificateStatusResponse{}
@@ -3757,6 +4635,16 @@ func (client *Client) DescribeClientCertificateStatus(request *DescribeClientCer
 	return _result, _err
 }
 
+/**
+ * You can call the GetCAInstanceStatus operation to query the status information about a private CA instance by using the ID of the instance. The instance is purchased by using the Certificate Management Service console. The status information includes the status of the private CA instance, the number of certificates that can be issued by using the private CA instance, and the number of issued certificates.
+ * Before you call this operation, make sure that you have purchased a private CA by using the [Certificate Management Service console](https://yundun.console.aliyun.com/?p=cas#/pca/rootlist). For more information, see [Create a private CA](~~208553~~).
+ * ## Limits
+ * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request GetCAInstanceStatusRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return GetCAInstanceStatusResponse
+ */
 func (client *Client) GetCAInstanceStatusWithOptions(request *GetCAInstanceStatusRequest, runtime *util.RuntimeOptions) (_result *GetCAInstanceStatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3790,6 +4678,15 @@ func (client *Client) GetCAInstanceStatusWithOptions(request *GetCAInstanceStatu
 	return _result, _err
 }
 
+/**
+ * You can call the GetCAInstanceStatus operation to query the status information about a private CA instance by using the ID of the instance. The instance is purchased by using the Certificate Management Service console. The status information includes the status of the private CA instance, the number of certificates that can be issued by using the private CA instance, and the number of issued certificates.
+ * Before you call this operation, make sure that you have purchased a private CA by using the [Certificate Management Service console](https://yundun.console.aliyun.com/?p=cas#/pca/rootlist). For more information, see [Create a private CA](~~208553~~).
+ * ## Limits
+ * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request GetCAInstanceStatusRequest
+ * @return GetCAInstanceStatusResponse
+ */
 func (client *Client) GetCAInstanceStatus(request *GetCAInstanceStatusRequest) (_result *GetCAInstanceStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetCAInstanceStatusResponse{}
@@ -3801,6 +4698,15 @@ func (client *Client) GetCAInstanceStatus(request *GetCAInstanceStatusRequest) (
 	return _result, _err
 }
 
+/**
+ * You can call the ListClientCertificate operation to perform a paged query of the details about all client certificates and server certificates that you create. The details include the unique identifier, serial number, user information, content, and status of each certificate.
+ * ## Limits
+ * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request ListClientCertificateRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ListClientCertificateResponse
+ */
 func (client *Client) ListClientCertificateWithOptions(request *ListClientCertificateRequest, runtime *util.RuntimeOptions) (_result *ListClientCertificateResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3838,6 +4744,14 @@ func (client *Client) ListClientCertificateWithOptions(request *ListClientCertif
 	return _result, _err
 }
 
+/**
+ * You can call the ListClientCertificate operation to perform a paged query of the details about all client certificates and server certificates that you create. The details include the unique identifier, serial number, user information, content, and status of each certificate.
+ * ## Limits
+ * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request ListClientCertificateRequest
+ * @return ListClientCertificateResponse
+ */
 func (client *Client) ListClientCertificate(request *ListClientCertificateRequest) (_result *ListClientCertificateResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListClientCertificateResponse{}
@@ -3849,6 +4763,15 @@ func (client *Client) ListClientCertificate(request *ListClientCertificateReques
 	return _result, _err
 }
 
+/**
+ * You can call the ListRevokeCertificate operation to perform a paged query of the details about all revoked client certificates and server certificates. The details include the unique identifier, serial number, and revocation date of each certificate.
+ * ## Limits
+ * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request ListRevokeCertificateRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ListRevokeCertificateResponse
+ */
 func (client *Client) ListRevokeCertificateWithOptions(request *ListRevokeCertificateRequest, runtime *util.RuntimeOptions) (_result *ListRevokeCertificateResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3886,6 +4809,14 @@ func (client *Client) ListRevokeCertificateWithOptions(request *ListRevokeCertif
 	return _result, _err
 }
 
+/**
+ * You can call the ListRevokeCertificate operation to perform a paged query of the details about all revoked client certificates and server certificates. The details include the unique identifier, serial number, and revocation date of each certificate.
+ * ## Limits
+ * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request ListRevokeCertificateRequest
+ * @return ListRevokeCertificateResponse
+ */
 func (client *Client) ListRevokeCertificate(request *ListRevokeCertificateRequest) (_result *ListRevokeCertificateResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListRevokeCertificateResponse{}
@@ -3897,6 +4828,16 @@ func (client *Client) ListRevokeCertificate(request *ListRevokeCertificateReques
 	return _result, _err
 }
 
+/**
+ * After a CA certificate is created, the CA certificate is in the ISSUE state by default. You can call the UpdateCACertificateStatus operation to change the status of a CA certificate from ISSUE to REVOKE. If a CA certificate is in the ISSUE state, the CA certificate can be used to issue certificates. If a CA certificate is in the REVOKE state, the CA certificate cannot be used to issue certificates, and the certificates that are issued from the CA certificate become invalid.
+ * Before you call this operation, make sure that you have created a root CA by calling the [CreateRootCACertificate](~~328093~~) operation or an intermediate CA certificate by calling the [CreateSubCACertificate](~~328094~~) operation.
+ * ## Limits
+ * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request UpdateCACertificateStatusRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return UpdateCACertificateStatusResponse
+ */
 func (client *Client) UpdateCACertificateStatusWithOptions(request *UpdateCACertificateStatusRequest, runtime *util.RuntimeOptions) (_result *UpdateCACertificateStatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3934,6 +4875,15 @@ func (client *Client) UpdateCACertificateStatusWithOptions(request *UpdateCACert
 	return _result, _err
 }
 
+/**
+ * After a CA certificate is created, the CA certificate is in the ISSUE state by default. You can call the UpdateCACertificateStatus operation to change the status of a CA certificate from ISSUE to REVOKE. If a CA certificate is in the ISSUE state, the CA certificate can be used to issue certificates. If a CA certificate is in the REVOKE state, the CA certificate cannot be used to issue certificates, and the certificates that are issued from the CA certificate become invalid.
+ * Before you call this operation, make sure that you have created a root CA by calling the [CreateRootCACertificate](~~328093~~) operation or an intermediate CA certificate by calling the [CreateSubCACertificate](~~328094~~) operation.
+ * ## Limits
+ * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request UpdateCACertificateStatusRequest
+ * @return UpdateCACertificateStatusResponse
+ */
 func (client *Client) UpdateCACertificateStatus(request *UpdateCACertificateStatusRequest) (_result *UpdateCACertificateStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateCACertificateStatusResponse{}
