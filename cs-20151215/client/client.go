@@ -233,6 +233,41 @@ func (s *StandardComponentsValue) SetDisabled(v bool) *StandardComponentsValue {
 	return s
 }
 
+type QuotasValue struct {
+	Quota         *string `json:"quota,omitempty" xml:"quota,omitempty"`
+	OperationCode *string `json:"operation_code,omitempty" xml:"operation_code,omitempty"`
+	Adjustable    *bool   `json:"adjustable,omitempty" xml:"adjustable,omitempty"`
+	Unit          *string `json:"unit,omitempty" xml:"unit,omitempty"`
+}
+
+func (s QuotasValue) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QuotasValue) GoString() string {
+	return s.String()
+}
+
+func (s *QuotasValue) SetQuota(v string) *QuotasValue {
+	s.Quota = &v
+	return s
+}
+
+func (s *QuotasValue) SetOperationCode(v string) *QuotasValue {
+	s.OperationCode = &v
+	return s
+}
+
+func (s *QuotasValue) SetAdjustable(v bool) *QuotasValue {
+	s.Adjustable = &v
+	return s
+}
+
+func (s *QuotasValue) SetUnit(v string) *QuotasValue {
+	s.Unit = &v
+	return s
+}
+
 type AttachInstancesRequest struct {
 	CpuPolicy        *string   `json:"cpu_policy,omitempty" xml:"cpu_policy,omitempty"`
 	FormatDisk       *bool     `json:"format_disk,omitempty" xml:"format_disk,omitempty"`
@@ -9159,6 +9194,7 @@ type DescribeUserQuotaResponseBody struct {
 	ClusterQuota              *int64                                                  `json:"cluster_quota,omitempty" xml:"cluster_quota,omitempty"`
 	EdgeImprovedNodepoolQuota *DescribeUserQuotaResponseBodyEdgeImprovedNodepoolQuota `json:"edge_improved_nodepool_quota,omitempty" xml:"edge_improved_nodepool_quota,omitempty" type:"Struct"`
 	NodeQuota                 *int64                                                  `json:"node_quota,omitempty" xml:"node_quota,omitempty"`
+	Quotas                    map[string]*QuotasValue                                 `json:"quotas,omitempty" xml:"quotas,omitempty"`
 }
 
 func (s DescribeUserQuotaResponseBody) String() string {
@@ -9196,6 +9232,11 @@ func (s *DescribeUserQuotaResponseBody) SetEdgeImprovedNodepoolQuota(v *Describe
 
 func (s *DescribeUserQuotaResponseBody) SetNodeQuota(v int64) *DescribeUserQuotaResponseBody {
 	s.NodeQuota = &v
+	return s
+}
+
+func (s *DescribeUserQuotaResponseBody) SetQuotas(v map[string]*QuotasValue) *DescribeUserQuotaResponseBody {
+	s.Quotas = v
 	return s
 }
 
@@ -13090,6 +13131,7 @@ type UpgradeClusterAddonsRequestBody struct {
 	ComponentName *string `json:"component_name,omitempty" xml:"component_name,omitempty"`
 	Config        *string `json:"config,omitempty" xml:"config,omitempty"`
 	NextVersion   *string `json:"next_version,omitempty" xml:"next_version,omitempty"`
+	Policy        *string `json:"policy,omitempty" xml:"policy,omitempty"`
 	Version       *string `json:"version,omitempty" xml:"version,omitempty"`
 }
 
@@ -13113,6 +13155,11 @@ func (s *UpgradeClusterAddonsRequestBody) SetConfig(v string) *UpgradeClusterAdd
 
 func (s *UpgradeClusterAddonsRequestBody) SetNextVersion(v string) *UpgradeClusterAddonsRequestBody {
 	s.NextVersion = &v
+	return s
+}
+
+func (s *UpgradeClusterAddonsRequestBody) SetPolicy(v string) *UpgradeClusterAddonsRequestBody {
+	s.Policy = &v
 	return s
 }
 
