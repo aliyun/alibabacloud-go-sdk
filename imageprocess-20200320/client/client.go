@@ -1128,7 +1128,6 @@ func (s *DetectHipKeypointXRayResponseBodyData) SetOrgName(v string) *DetectHipK
 }
 
 type DetectHipKeypointXRayResponseBodyDataKeyPoints struct {
-	// 1
 	Coordinates []*int32                                           `json:"Coordinates,omitempty" xml:"Coordinates,omitempty" type:"Repeated"`
 	Tag         *DetectHipKeypointXRayResponseBodyDataKeyPointsTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Struct"`
 	Value       *float32                                           `json:"Value,omitempty" xml:"Value,omitempty"`
@@ -1795,20 +1794,24 @@ func (s *DetectLungNoduleResponseBodyDataSeries) SetSpacing(v []*float32) *Detec
 }
 
 type DetectLungNoduleResponseBodyDataSeriesElements struct {
-	Category       *string  `json:"Category,omitempty" xml:"Category,omitempty"`
-	Confidence     *float32 `json:"Confidence,omitempty" xml:"Confidence,omitempty"`
-	Diameter       *float32 `json:"Diameter,omitempty" xml:"Diameter,omitempty"`
-	ImageX         *float32 `json:"ImageX,omitempty" xml:"ImageX,omitempty"`
-	ImageY         *float32 `json:"ImageY,omitempty" xml:"ImageY,omitempty"`
-	ImageZ         *float32 `json:"ImageZ,omitempty" xml:"ImageZ,omitempty"`
-	Lobe           *string  `json:"Lobe,omitempty" xml:"Lobe,omitempty"`
-	Lung           *string  `json:"Lung,omitempty" xml:"Lung,omitempty"`
-	MeanValue      *float32 `json:"MeanValue,omitempty" xml:"MeanValue,omitempty"`
-	SOPInstanceUID *string  `json:"SOPInstanceUID,omitempty" xml:"SOPInstanceUID,omitempty"`
-	Volume         *float32 `json:"Volume,omitempty" xml:"Volume,omitempty"`
-	X              *float32 `json:"X,omitempty" xml:"X,omitempty"`
-	Y              *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
-	Z              *float32 `json:"Z,omitempty" xml:"Z,omitempty"`
+	Category             *string    `json:"Category,omitempty" xml:"Category,omitempty"`
+	Confidence           *float32   `json:"Confidence,omitempty" xml:"Confidence,omitempty"`
+	Diameter             *float32   `json:"Diameter,omitempty" xml:"Diameter,omitempty"`
+	ImageX               *float32   `json:"ImageX,omitempty" xml:"ImageX,omitempty"`
+	ImageY               *float32   `json:"ImageY,omitempty" xml:"ImageY,omitempty"`
+	ImageZ               *float32   `json:"ImageZ,omitempty" xml:"ImageZ,omitempty"`
+	Lobe                 *string    `json:"Lobe,omitempty" xml:"Lobe,omitempty"`
+	Lung                 *string    `json:"Lung,omitempty" xml:"Lung,omitempty"`
+	MajorAxis            []*float32 `json:"MajorAxis,omitempty" xml:"MajorAxis,omitempty" type:"Repeated"`
+	MeanValue            *float32   `json:"MeanValue,omitempty" xml:"MeanValue,omitempty"`
+	MinorAxis            []*float32 `json:"MinorAxis,omitempty" xml:"MinorAxis,omitempty" type:"Repeated"`
+	RecistSOPInstanceUID *string    `json:"RecistSOPInstanceUID,omitempty" xml:"RecistSOPInstanceUID,omitempty"`
+	Risk                 *float32   `json:"Risk,omitempty" xml:"Risk,omitempty"`
+	SOPInstanceUID       *string    `json:"SOPInstanceUID,omitempty" xml:"SOPInstanceUID,omitempty"`
+	Volume               *float32   `json:"Volume,omitempty" xml:"Volume,omitempty"`
+	X                    *float32   `json:"X,omitempty" xml:"X,omitempty"`
+	Y                    *float32   `json:"Y,omitempty" xml:"Y,omitempty"`
+	Z                    *float32   `json:"Z,omitempty" xml:"Z,omitempty"`
 }
 
 func (s DetectLungNoduleResponseBodyDataSeriesElements) String() string {
@@ -1859,8 +1862,28 @@ func (s *DetectLungNoduleResponseBodyDataSeriesElements) SetLung(v string) *Dete
 	return s
 }
 
+func (s *DetectLungNoduleResponseBodyDataSeriesElements) SetMajorAxis(v []*float32) *DetectLungNoduleResponseBodyDataSeriesElements {
+	s.MajorAxis = v
+	return s
+}
+
 func (s *DetectLungNoduleResponseBodyDataSeriesElements) SetMeanValue(v float32) *DetectLungNoduleResponseBodyDataSeriesElements {
 	s.MeanValue = &v
+	return s
+}
+
+func (s *DetectLungNoduleResponseBodyDataSeriesElements) SetMinorAxis(v []*float32) *DetectLungNoduleResponseBodyDataSeriesElements {
+	s.MinorAxis = v
+	return s
+}
+
+func (s *DetectLungNoduleResponseBodyDataSeriesElements) SetRecistSOPInstanceUID(v string) *DetectLungNoduleResponseBodyDataSeriesElements {
+	s.RecistSOPInstanceUID = &v
+	return s
+}
+
+func (s *DetectLungNoduleResponseBodyDataSeriesElements) SetRisk(v float32) *DetectLungNoduleResponseBodyDataSeriesElements {
+	s.Risk = &v
 	return s
 }
 
@@ -3961,7 +3984,6 @@ func (s *ScreenChestCTResponseBodyDataAnalyzeChestVessel) SetResultURL(v string)
 }
 
 type ScreenChestCTResponseBodyDataAnalyzeChestVesselAortaInfo struct {
-	// 1
 	Area         []*float32   `json:"Area,omitempty" xml:"Area,omitempty" type:"Repeated"`
 	Coordinates  [][]*float32 `json:"Coordinates,omitempty" xml:"Coordinates,omitempty" type:"Repeated"`
 	LabelValue   *int64       `json:"LabelValue,omitempty" xml:"LabelValue,omitempty"`
@@ -4009,7 +4031,6 @@ func (s *ScreenChestCTResponseBodyDataAnalyzeChestVesselAortaInfo) SetMaxDiamete
 }
 
 type ScreenChestCTResponseBodyDataAnalyzeChestVesselPulmonaryInfo struct {
-	// 1
 	Area             []*float32   `json:"Area,omitempty" xml:"Area,omitempty" type:"Repeated"`
 	Coordinates      [][]*float32 `json:"Coordinates,omitempty" xml:"Coordinates,omitempty" type:"Repeated"`
 	LabelValue       *int64       `json:"LabelValue,omitempty" xml:"LabelValue,omitempty"`
@@ -4484,20 +4505,24 @@ func (s *ScreenChestCTResponseBodyDataLungNoduleSeries) SetSpacing(v []*float32)
 }
 
 type ScreenChestCTResponseBodyDataLungNoduleSeriesElements struct {
-	Category       *string  `json:"Category,omitempty" xml:"Category,omitempty"`
-	Confidence     *float32 `json:"Confidence,omitempty" xml:"Confidence,omitempty"`
-	Diameter       *float32 `json:"Diameter,omitempty" xml:"Diameter,omitempty"`
-	ImageX         *float32 `json:"ImageX,omitempty" xml:"ImageX,omitempty"`
-	ImageY         *float32 `json:"ImageY,omitempty" xml:"ImageY,omitempty"`
-	ImageZ         *float32 `json:"ImageZ,omitempty" xml:"ImageZ,omitempty"`
-	Lobe           *string  `json:"Lobe,omitempty" xml:"Lobe,omitempty"`
-	Lung           *string  `json:"Lung,omitempty" xml:"Lung,omitempty"`
-	MeanValue      *float32 `json:"MeanValue,omitempty" xml:"MeanValue,omitempty"`
-	SOPInstanceUID *string  `json:"SOPInstanceUID,omitempty" xml:"SOPInstanceUID,omitempty"`
-	Volume         *float32 `json:"Volume,omitempty" xml:"Volume,omitempty"`
-	X              *float32 `json:"X,omitempty" xml:"X,omitempty"`
-	Y              *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
-	Z              *float32 `json:"Z,omitempty" xml:"Z,omitempty"`
+	Category             *string    `json:"Category,omitempty" xml:"Category,omitempty"`
+	Confidence           *float32   `json:"Confidence,omitempty" xml:"Confidence,omitempty"`
+	Diameter             *float32   `json:"Diameter,omitempty" xml:"Diameter,omitempty"`
+	ImageX               *float32   `json:"ImageX,omitempty" xml:"ImageX,omitempty"`
+	ImageY               *float32   `json:"ImageY,omitempty" xml:"ImageY,omitempty"`
+	ImageZ               *float32   `json:"ImageZ,omitempty" xml:"ImageZ,omitempty"`
+	Lobe                 *string    `json:"Lobe,omitempty" xml:"Lobe,omitempty"`
+	Lung                 *string    `json:"Lung,omitempty" xml:"Lung,omitempty"`
+	MajorAxis            []*float32 `json:"MajorAxis,omitempty" xml:"MajorAxis,omitempty" type:"Repeated"`
+	MeanValue            *float32   `json:"MeanValue,omitempty" xml:"MeanValue,omitempty"`
+	MinorAxis            []*float32 `json:"MinorAxis,omitempty" xml:"MinorAxis,omitempty" type:"Repeated"`
+	RecistSOPInstanceUID *string    `json:"RecistSOPInstanceUID,omitempty" xml:"RecistSOPInstanceUID,omitempty"`
+	Risk                 *float32   `json:"Risk,omitempty" xml:"Risk,omitempty"`
+	SOPInstanceUID       *string    `json:"SOPInstanceUID,omitempty" xml:"SOPInstanceUID,omitempty"`
+	Volume               *float32   `json:"Volume,omitempty" xml:"Volume,omitempty"`
+	X                    *float32   `json:"X,omitempty" xml:"X,omitempty"`
+	Y                    *float32   `json:"Y,omitempty" xml:"Y,omitempty"`
+	Z                    *float32   `json:"Z,omitempty" xml:"Z,omitempty"`
 }
 
 func (s ScreenChestCTResponseBodyDataLungNoduleSeriesElements) String() string {
@@ -4548,8 +4573,28 @@ func (s *ScreenChestCTResponseBodyDataLungNoduleSeriesElements) SetLung(v string
 	return s
 }
 
+func (s *ScreenChestCTResponseBodyDataLungNoduleSeriesElements) SetMajorAxis(v []*float32) *ScreenChestCTResponseBodyDataLungNoduleSeriesElements {
+	s.MajorAxis = v
+	return s
+}
+
 func (s *ScreenChestCTResponseBodyDataLungNoduleSeriesElements) SetMeanValue(v float32) *ScreenChestCTResponseBodyDataLungNoduleSeriesElements {
 	s.MeanValue = &v
+	return s
+}
+
+func (s *ScreenChestCTResponseBodyDataLungNoduleSeriesElements) SetMinorAxis(v []*float32) *ScreenChestCTResponseBodyDataLungNoduleSeriesElements {
+	s.MinorAxis = v
+	return s
+}
+
+func (s *ScreenChestCTResponseBodyDataLungNoduleSeriesElements) SetRecistSOPInstanceUID(v string) *ScreenChestCTResponseBodyDataLungNoduleSeriesElements {
+	s.RecistSOPInstanceUID = &v
+	return s
+}
+
+func (s *ScreenChestCTResponseBodyDataLungNoduleSeriesElements) SetRisk(v float32) *ScreenChestCTResponseBodyDataLungNoduleSeriesElements {
+	s.Risk = &v
 	return s
 }
 
@@ -4579,8 +4624,8 @@ func (s *ScreenChestCTResponseBodyDataLungNoduleSeriesElements) SetZ(v float32) 
 }
 
 type ScreenChestCTResponseBodyDataScreenEc struct {
-	Lesion           *ScreenChestCTResponseBodyDataScreenEcLesion `json:"Lesion,omitempty" xml:"Lesion,omitempty" type:"Struct"`
-	SeriesInsanceUid *string                                      `json:"SeriesInsanceUid,omitempty" xml:"SeriesInsanceUid,omitempty"`
+	Lesion            *ScreenChestCTResponseBodyDataScreenEcLesion `json:"Lesion,omitempty" xml:"Lesion,omitempty" type:"Struct"`
+	SeriesInstanceUid *string                                      `json:"SeriesInstanceUid,omitempty" xml:"SeriesInstanceUid,omitempty"`
 }
 
 func (s ScreenChestCTResponseBodyDataScreenEc) String() string {
@@ -4596,8 +4641,8 @@ func (s *ScreenChestCTResponseBodyDataScreenEc) SetLesion(v *ScreenChestCTRespon
 	return s
 }
 
-func (s *ScreenChestCTResponseBodyDataScreenEc) SetSeriesInsanceUid(v string) *ScreenChestCTResponseBodyDataScreenEc {
-	s.SeriesInsanceUid = &v
+func (s *ScreenChestCTResponseBodyDataScreenEc) SetSeriesInstanceUid(v string) *ScreenChestCTResponseBodyDataScreenEc {
+	s.SeriesInstanceUid = &v
 	return s
 }
 
