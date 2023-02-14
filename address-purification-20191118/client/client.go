@@ -60,7 +60,8 @@ func (s *CorrectAddressRequest) SetText(v string) *CorrectAddressRequest {
 }
 
 type CorrectAddressResponseBody struct {
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// RequestId
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -159,7 +160,8 @@ func (s *ExtractAddressRequest) SetText(v string) *ExtractAddressRequest {
 }
 
 type ExtractAddressResponseBody struct {
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// RequestId
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -258,7 +260,8 @@ func (s *ExtractNameRequest) SetText(v string) *ExtractNameRequest {
 }
 
 type ExtractNameResponseBody struct {
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// RequestId
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -357,7 +360,8 @@ func (s *ExtractPhoneRequest) SetText(v string) *ExtractPhoneRequest {
 }
 
 type ExtractPhoneResponseBody struct {
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// RequestId
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -456,7 +460,8 @@ func (s *GetAddressDivisionCodeRequest) SetText(v string) *GetAddressDivisionCod
 }
 
 type GetAddressDivisionCodeResponseBody struct {
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// RequestId
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -555,7 +560,8 @@ func (s *GetAddressSimilarityRequest) SetText(v string) *GetAddressSimilarityReq
 }
 
 type GetAddressSimilarityResponseBody struct {
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// RequestId
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -654,7 +660,8 @@ func (s *GetZipcodeRequest) SetText(v string) *GetZipcodeRequest {
 }
 
 type GetZipcodeResponseBody struct {
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// RequestId
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -753,7 +760,8 @@ func (s *StructureAddressRequest) SetText(v string) *StructureAddressRequest {
 }
 
 type StructureAddressResponseBody struct {
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// RequestId
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
