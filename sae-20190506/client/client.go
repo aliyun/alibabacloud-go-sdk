@@ -11369,6 +11369,7 @@ type ExecJobRequest struct {
 	EventId         *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
 	JarStartArgs    *string `json:"JarStartArgs,omitempty" xml:"JarStartArgs,omitempty"`
 	JarStartOptions *string `json:"JarStartOptions,omitempty" xml:"JarStartOptions,omitempty"`
+	Replicas        *string `json:"Replicas,omitempty" xml:"Replicas,omitempty"`
 	Time            *string `json:"Time,omitempty" xml:"Time,omitempty"`
 	WarStartOptions *string `json:"WarStartOptions,omitempty" xml:"WarStartOptions,omitempty"`
 }
@@ -11413,6 +11414,11 @@ func (s *ExecJobRequest) SetJarStartArgs(v string) *ExecJobRequest {
 
 func (s *ExecJobRequest) SetJarStartOptions(v string) *ExecJobRequest {
 	s.JarStartOptions = &v
+	return s
+}
+
+func (s *ExecJobRequest) SetReplicas(v string) *ExecJobRequest {
+	s.Replicas = &v
 	return s
 }
 
@@ -22527,6 +22533,10 @@ func (client *Client) ExecJobWithOptions(request *ExecJobRequest, headers map[st
 
 	if !tea.BoolValue(util.IsUnset(request.JarStartOptions)) {
 		query["JarStartOptions"] = request.JarStartOptions
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Replicas)) {
+		query["Replicas"] = request.Replicas
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Time)) {
