@@ -3113,6 +3113,7 @@ type UpdateAdxCreativeContentRequestAd struct {
 	Enddate      *string                                      `json:"Enddate,omitempty" xml:"Enddate,omitempty"`
 	Imps         []*string                                    `json:"Imps,omitempty" xml:"Imps,omitempty" type:"Repeated"`
 	Interacttype *int32                                       `json:"Interacttype,omitempty" xml:"Interacttype,omitempty"`
+	MediaIdList  []*string                                    `json:"MediaIdList,omitempty" xml:"MediaIdList,omitempty" type:"Repeated"`
 	Nativead     []*UpdateAdxCreativeContentRequestAdNativead `json:"Nativead,omitempty" xml:"Nativead,omitempty" type:"Repeated"`
 	Op           *int32                                       `json:"Op,omitempty" xml:"Op,omitempty"`
 	Ostype       *string                                      `json:"Ostype,omitempty" xml:"Ostype,omitempty"`
@@ -3158,6 +3159,11 @@ func (s *UpdateAdxCreativeContentRequestAd) SetImps(v []*string) *UpdateAdxCreat
 
 func (s *UpdateAdxCreativeContentRequestAd) SetInteracttype(v int32) *UpdateAdxCreativeContentRequestAd {
 	s.Interacttype = &v
+	return s
+}
+
+func (s *UpdateAdxCreativeContentRequestAd) SetMediaIdList(v []*string) *UpdateAdxCreativeContentRequestAd {
+	s.MediaIdList = v
 	return s
 }
 
@@ -3650,8 +3656,8 @@ func (s *VerifyAdvertisingRequestUser) SetUsertype(v string) *VerifyAdvertisingR
 }
 
 type VerifyAdvertisingRequestVerifyad struct {
-	Id   *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	Seat *int64 `json:"Seat,omitempty" xml:"Seat,omitempty"`
+	Id   *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Seat *string `json:"Seat,omitempty" xml:"Seat,omitempty"`
 }
 
 func (s VerifyAdvertisingRequestVerifyad) String() string {
@@ -3662,12 +3668,12 @@ func (s VerifyAdvertisingRequestVerifyad) GoString() string {
 	return s.String()
 }
 
-func (s *VerifyAdvertisingRequestVerifyad) SetId(v int64) *VerifyAdvertisingRequestVerifyad {
+func (s *VerifyAdvertisingRequestVerifyad) SetId(v string) *VerifyAdvertisingRequestVerifyad {
 	s.Id = &v
 	return s
 }
 
-func (s *VerifyAdvertisingRequestVerifyad) SetSeat(v int64) *VerifyAdvertisingRequestVerifyad {
+func (s *VerifyAdvertisingRequestVerifyad) SetSeat(v string) *VerifyAdvertisingRequestVerifyad {
 	s.Seat = &v
 	return s
 }

@@ -1,3 +1,7 @@
+2023-02-15 Version: v5.1.2
+- Add ad verify api.
+
+
 2023-02-08 Version: v5.1.1
 - Generated golang 2022-07-04 for imarketing.
 
