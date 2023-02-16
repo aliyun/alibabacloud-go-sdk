@@ -4048,6 +4048,87 @@ func (s *CreateRuleResponse) SetBody(v *CreateRuleResponseBody) *CreateRuleRespo
 	return s
 }
 
+type CreateServiceLinkedRoleForProductRequest struct {
+	ProductName *string `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
+}
+
+func (s CreateServiceLinkedRoleForProductRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateServiceLinkedRoleForProductRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateServiceLinkedRoleForProductRequest) SetProductName(v string) *CreateServiceLinkedRoleForProductRequest {
+	s.ProductName = &v
+	return s
+}
+
+type CreateServiceLinkedRoleForProductResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s CreateServiceLinkedRoleForProductResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateServiceLinkedRoleForProductResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateServiceLinkedRoleForProductResponseBody) SetCode(v string) *CreateServiceLinkedRoleForProductResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CreateServiceLinkedRoleForProductResponseBody) SetMessage(v string) *CreateServiceLinkedRoleForProductResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CreateServiceLinkedRoleForProductResponseBody) SetRequestId(v string) *CreateServiceLinkedRoleForProductResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateServiceLinkedRoleForProductResponseBody) SetSuccess(v bool) *CreateServiceLinkedRoleForProductResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreateServiceLinkedRoleForProductResponse struct {
+	Headers    map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateServiceLinkedRoleForProductResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateServiceLinkedRoleForProductResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateServiceLinkedRoleForProductResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateServiceLinkedRoleForProductResponse) SetHeaders(v map[string]*string) *CreateServiceLinkedRoleForProductResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateServiceLinkedRoleForProductResponse) SetStatusCode(v int32) *CreateServiceLinkedRoleForProductResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateServiceLinkedRoleForProductResponse) SetBody(v *CreateServiceLinkedRoleForProductResponseBody) *CreateServiceLinkedRoleForProductResponse {
+	s.Body = v
+	return s
+}
+
 type CreateTargetsRequest struct {
 	EventBusName *string                        `json:"EventBusName,omitempty" xml:"EventBusName,omitempty"`
 	RuleName     *string                        `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
@@ -15509,6 +15590,50 @@ func (client *Client) CreateRule(request *CreateRuleRequest) (_result *CreateRul
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateRuleResponse{}
 	_body, _err := client.CreateRuleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateServiceLinkedRoleForProductWithOptions(request *CreateServiceLinkedRoleForProductRequest, runtime *util.RuntimeOptions) (_result *CreateServiceLinkedRoleForProductResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ProductName)) {
+		query["ProductName"] = request.ProductName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateServiceLinkedRoleForProduct"),
+		Version:     tea.String("2020-04-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateServiceLinkedRoleForProductResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateServiceLinkedRoleForProduct(request *CreateServiceLinkedRoleForProductRequest) (_result *CreateServiceLinkedRoleForProductResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateServiceLinkedRoleForProductResponse{}
+	_body, _err := client.CreateServiceLinkedRoleForProductWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}

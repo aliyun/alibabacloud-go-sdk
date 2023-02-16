@@ -1,3 +1,6 @@
+2023-02-16 Version: v1.0.2
+- Add new interface.
+
 2023-02-09 Version: v1.0.1
 - Mask some parameters.
 
