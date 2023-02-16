@@ -13,11 +13,16 @@ import (
 )
 
 type BatchDeleteJobsRequest struct {
-	GroupId         *string  `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	JobIdList       []*int64 `json:"JobIdList,omitempty" xml:"JobIdList,omitempty" type:"Repeated"`
-	Namespace       *string  `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	NamespaceSource *string  `json:"NamespaceSource,omitempty" xml:"NamespaceSource,omitempty"`
-	RegionId        *string  `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the application. You can obtain the application ID on the **Application Management** page in Distributed Task Scheduling Platform.
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The job IDs. Multiple job IDs are separated by commas (,).
+	JobIdList []*int64 `json:"JobIdList,omitempty" xml:"JobIdList,omitempty" type:"Repeated"`
+	// The ID of the namespace to which the job belongs. You can obtain the ID of the namespace on the **Namespace** page in Distributed Task Scheduling Platform.
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// This parameter is required only for a special third party.
+	NamespaceSource *string `json:"NamespaceSource,omitempty" xml:"NamespaceSource,omitempty"`
+	// The ID of the region to which the job belongs.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s BatchDeleteJobsRequest) String() string {
@@ -54,10 +59,17 @@ func (s *BatchDeleteJobsRequest) SetRegionId(v string) *BatchDeleteJobsRequest {
 }
 
 type BatchDeleteJobsResponseBody struct {
-	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The HTTP status code that is returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The additional information that is returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether jobs are deleted in batches. Valid values:
+	//
+	// *   **true**: Jobs are deleted in batches.
+	// *   **false**: Failed to delete jobs in batches.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s BatchDeleteJobsResponseBody) String() string {
@@ -118,11 +130,16 @@ func (s *BatchDeleteJobsResponse) SetBody(v *BatchDeleteJobsResponseBody) *Batch
 }
 
 type BatchDisableJobsRequest struct {
-	GroupId         *string  `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	JobIdList       []*int64 `json:"JobIdList,omitempty" xml:"JobIdList,omitempty" type:"Repeated"`
-	Namespace       *string  `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	NamespaceSource *string  `json:"NamespaceSource,omitempty" xml:"NamespaceSource,omitempty"`
-	RegionId        *string  `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the application. You can obtain the ID of the application on the **Application Management** page in the SchedulerX console.
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The job IDs. Separate multiple job IDs with commas (,).
+	JobIdList []*int64 `json:"JobIdList,omitempty" xml:"JobIdList,omitempty" type:"Repeated"`
+	// The ID of the namespace to which the job belongs. You can obtain the ID of the namespace on the **Namespace** page in the SchedulerX console.
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// Required only for a special third party.
+	NamespaceSource *string `json:"NamespaceSource,omitempty" xml:"NamespaceSource,omitempty"`
+	// The ID of the region in which the job resides.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s BatchDisableJobsRequest) String() string {
@@ -159,10 +176,17 @@ func (s *BatchDisableJobsRequest) SetRegionId(v string) *BatchDisableJobsRequest
 }
 
 type BatchDisableJobsResponseBody struct {
-	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The status code.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The additional information returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the call is successful. Valid values:
+	//
+	// *   **true**: The call is successful.
+	// *   **false**: The call fails.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s BatchDisableJobsResponseBody) String() string {
@@ -223,11 +247,16 @@ func (s *BatchDisableJobsResponse) SetBody(v *BatchDisableJobsResponseBody) *Bat
 }
 
 type BatchEnableJobsRequest struct {
-	GroupId         *string  `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	JobIdList       []*int64 `json:"JobIdList,omitempty" xml:"JobIdList,omitempty" type:"Repeated"`
-	Namespace       *string  `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	NamespaceSource *string  `json:"NamespaceSource,omitempty" xml:"NamespaceSource,omitempty"`
-	RegionId        *string  `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the application. You can obtain the ID of the application on the **Application Management** page in the SchedulerX console.
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The job IDs. Separate multiple job IDs with commas (,).
+	JobIdList []*int64 `json:"JobIdList,omitempty" xml:"JobIdList,omitempty" type:"Repeated"`
+	// The ID of the namespace to which the job belongs. You can obtain the ID of the namespace on the **Namespace** page in the SchedulerX console.
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// Required only for a special third party.
+	NamespaceSource *string `json:"NamespaceSource,omitempty" xml:"NamespaceSource,omitempty"`
+	// The ID of the region in which the job resides.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s BatchEnableJobsRequest) String() string {
@@ -264,10 +293,17 @@ func (s *BatchEnableJobsRequest) SetRegionId(v string) *BatchEnableJobsRequest {
 }
 
 type BatchEnableJobsResponseBody struct {
-	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The status code.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The additional information returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the call is successful. Valid values:
+	//
+	// *   **true**: The call is successful.
+	// *   **false**: The call fails.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s BatchEnableJobsResponseBody) String() string {
@@ -328,19 +364,30 @@ func (s *BatchEnableJobsResponse) SetBody(v *BatchEnableJobsResponseBody) *Batch
 }
 
 type CreateAppGroupRequest struct {
-	AppKey              *string `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
-	AppName             *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	AppType             *int32  `json:"AppType,omitempty" xml:"AppType,omitempty"`
-	Description         *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	GroupId             *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	MaxJobs             *int32  `json:"MaxJobs,omitempty" xml:"MaxJobs,omitempty"`
-	MonitorConfigJson   *string `json:"MonitorConfigJson,omitempty" xml:"MonitorConfigJson,omitempty"`
+	// The AppKey for the application.
+	AppKey *string `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	// The name of the application.
+	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// The description of the application.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of the application. You can obtain the application ID on the Application Management page in Distributed Task Scheduling Platform.
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The maximum number of jobs.
+	MaxJobs *int32 `json:"MaxJobs,omitempty" xml:"MaxJobs,omitempty"`
+	// The configuration of the alert. The value is a JSON string. For more information about this parameter, see **Additional information about request parameters**.
+	MonitorConfigJson *string `json:"MonitorConfigJson,omitempty" xml:"MonitorConfigJson,omitempty"`
+	// The configuration of alert contacts. The value is a JSON string.
 	MonitorContactsJson *string `json:"MonitorContactsJson,omitempty" xml:"MonitorContactsJson,omitempty"`
-	Namespace           *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	NamespaceName       *string `json:"NamespaceName,omitempty" xml:"NamespaceName,omitempty"`
-	NamespaceSource     *string `json:"NamespaceSource,omitempty" xml:"NamespaceSource,omitempty"`
-	RegionId            *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ScheduleBusyWorkers *bool   `json:"ScheduleBusyWorkers,omitempty" xml:"ScheduleBusyWorkers,omitempty"`
+	// The ID of the namespace. You can obtain the ID of the namespace on the Namespace page in Distributed Task Scheduling Platform.
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The name of the namespace.
+	NamespaceName *string `json:"NamespaceName,omitempty" xml:"NamespaceName,omitempty"`
+	// This parameter is not supported. You do not need to specify this parameter.
+	NamespaceSource *string `json:"NamespaceSource,omitempty" xml:"NamespaceSource,omitempty"`
+	// The ID of the region.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Specifies whether to schedule a busy worker.
+	ScheduleBusyWorkers *bool `json:"ScheduleBusyWorkers,omitempty" xml:"ScheduleBusyWorkers,omitempty"`
 }
 
 func (s CreateAppGroupRequest) String() string {
@@ -358,11 +405,6 @@ func (s *CreateAppGroupRequest) SetAppKey(v string) *CreateAppGroupRequest {
 
 func (s *CreateAppGroupRequest) SetAppName(v string) *CreateAppGroupRequest {
 	s.AppName = &v
-	return s
-}
-
-func (s *CreateAppGroupRequest) SetAppType(v int32) *CreateAppGroupRequest {
-	s.AppType = &v
 	return s
 }
 
@@ -417,11 +459,19 @@ func (s *CreateAppGroupRequest) SetScheduleBusyWorkers(v bool) *CreateAppGroupRe
 }
 
 type CreateAppGroupResponseBody struct {
-	Code      *int32                          `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *CreateAppGroupResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                         `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                           `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The HTTP status code that is returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The information about the job group.
+	Data *CreateAppGroupResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error message that is returned only if an error occurs.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the application is created. Valid values:
+	//
+	// *   **true**: The application is created.
+	// *   **false**: Failed to create the application.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CreateAppGroupResponseBody) String() string {
@@ -458,8 +508,10 @@ func (s *CreateAppGroupResponseBody) SetSuccess(v bool) *CreateAppGroupResponseB
 }
 
 type CreateAppGroupResponseBodyData struct {
-	AppGroupId *int64  `json:"AppGroupId,omitempty" xml:"AppGroupId,omitempty"`
-	AppKey     *string `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	// The ID of the job group.
+	AppGroupId *int64 `json:"AppGroupId,omitempty" xml:"AppGroupId,omitempty"`
+	// The AppKey for the application.
+	AppKey *string `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
 }
 
 func (s CreateAppGroupResponseBodyData) String() string {
@@ -510,40 +562,117 @@ func (s *CreateAppGroupResponse) SetBody(v *CreateAppGroupResponseBody) *CreateA
 }
 
 type CreateJobRequest struct {
-	AttemptInterval     *int32                         `json:"AttemptInterval,omitempty" xml:"AttemptInterval,omitempty"`
-	Calendar            *string                        `json:"Calendar,omitempty" xml:"Calendar,omitempty"`
-	ClassName           *string                        `json:"ClassName,omitempty" xml:"ClassName,omitempty"`
-	ConsumerSize        *int32                         `json:"ConsumerSize,omitempty" xml:"ConsumerSize,omitempty"`
-	ContactInfo         []*CreateJobRequestContactInfo `json:"ContactInfo,omitempty" xml:"ContactInfo,omitempty" type:"Repeated"`
-	Content             *string                        `json:"Content,omitempty" xml:"Content,omitempty"`
-	DataOffset          *int32                         `json:"DataOffset,omitempty" xml:"DataOffset,omitempty"`
-	Description         *string                        `json:"Description,omitempty" xml:"Description,omitempty"`
-	DispatcherSize      *int32                         `json:"DispatcherSize,omitempty" xml:"DispatcherSize,omitempty"`
-	ExecuteMode         *string                        `json:"ExecuteMode,omitempty" xml:"ExecuteMode,omitempty"`
-	FailEnable          *bool                          `json:"FailEnable,omitempty" xml:"FailEnable,omitempty"`
-	GroupId             *string                        `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	JarUrl              *string                        `json:"JarUrl,omitempty" xml:"JarUrl,omitempty"`
-	JobType             *string                        `json:"JobType,omitempty" xml:"JobType,omitempty"`
-	MaxAttempt          *int32                         `json:"MaxAttempt,omitempty" xml:"MaxAttempt,omitempty"`
-	MaxConcurrency      *int32                         `json:"MaxConcurrency,omitempty" xml:"MaxConcurrency,omitempty"`
-	MissWorkerEnable    *bool                          `json:"MissWorkerEnable,omitempty" xml:"MissWorkerEnable,omitempty"`
-	Name                *string                        `json:"Name,omitempty" xml:"Name,omitempty"`
-	Namespace           *string                        `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	NamespaceSource     *string                        `json:"NamespaceSource,omitempty" xml:"NamespaceSource,omitempty"`
-	PageSize            *int32                         `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Parameters          *string                        `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
-	QueueSize           *int32                         `json:"QueueSize,omitempty" xml:"QueueSize,omitempty"`
-	RegionId            *string                        `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	SendChannel         *string                        `json:"SendChannel,omitempty" xml:"SendChannel,omitempty"`
-	Status              *int32                         `json:"Status,omitempty" xml:"Status,omitempty"`
-	TaskAttemptInterval *int32                         `json:"TaskAttemptInterval,omitempty" xml:"TaskAttemptInterval,omitempty"`
-	TaskMaxAttempt      *int32                         `json:"TaskMaxAttempt,omitempty" xml:"TaskMaxAttempt,omitempty"`
-	TimeExpression      *string                        `json:"TimeExpression,omitempty" xml:"TimeExpression,omitempty"`
-	TimeType            *int32                         `json:"TimeType,omitempty" xml:"TimeType,omitempty"`
-	Timeout             *int64                         `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
-	TimeoutEnable       *bool                          `json:"TimeoutEnable,omitempty" xml:"TimeoutEnable,omitempty"`
-	TimeoutKillEnable   *bool                          `json:"TimeoutKillEnable,omitempty" xml:"TimeoutKillEnable,omitempty"`
-	XAttrs              *string                        `json:"XAttrs,omitempty" xml:"XAttrs,omitempty"`
+	// The interval at which the system attempts to rerun a job. Default value: 30. Unit: seconds.
+	AttemptInterval *int32 `json:"AttemptInterval,omitempty" xml:"AttemptInterval,omitempty"`
+	// When the Time type parameter is set to cron, you can specify a custom calendar.
+	Calendar *string `json:"Calendar,omitempty" xml:"Calendar,omitempty"`
+	// The full path of the job interface class.
+	//
+	// This field is available only when you select a java job. In this case, you must enter a full path.
+	ClassName *string `json:"ClassName,omitempty" xml:"ClassName,omitempty"`
+	// The number of threads that are triggered by a single worker at a time. Default value: 5. This parameter is an advanced configuration item of the MapReduce job.
+	ConsumerSize *int32 `json:"ConsumerSize,omitempty" xml:"ConsumerSize,omitempty"`
+	// The information of the job contact.
+	ContactInfo []*CreateJobRequestContactInfo `json:"ContactInfo,omitempty" xml:"ContactInfo,omitempty" type:"Repeated"`
+	// The script code content that is required when you set the job type to **python**, **shell**, or **go**.
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// When the Time type parameter is set to cron, you can specify a time offset. Unit: seconds.
+	DataOffset *int32 `json:"DataOffset,omitempty" xml:"DataOffset,omitempty"`
+	// The description of the job.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Default value: 5. This parameter is an advanced configuration item of the MapReduce job.
+	DispatcherSize *int32 `json:"DispatcherSize,omitempty" xml:"DispatcherSize,omitempty"`
+	// The execution mode of the job. The following execution modes are supported:
+	//
+	// *   **standalone**: The job runs in standalone mode.
+	// *   **broadcast**: The job runs in broadcast mode.
+	// *   **parallel**: The job runs in parallel computing mode.
+	// *   **grid**: The job runs in memory grid mode.
+	// *   **batch**: The job runs in grid computing mode.
+	// *   **sharding**: The job runs in sharding mode.
+	ExecuteMode *string `json:"ExecuteMode,omitempty" xml:"ExecuteMode,omitempty"`
+	// Specifies whether to turn on Failure alarm. Valid values:
+	//
+	// *   **true**: Turn on Failure alarm.
+	// *   **false**: Turn off Failure alarm.
+	FailEnable *bool  `json:"FailEnable,omitempty" xml:"FailEnable,omitempty"`
+	FailTimes  *int32 `json:"FailTimes,omitempty" xml:"FailTimes,omitempty"`
+	// The ID of the application. You can obtain the application ID on the Application Management page in Distributed Task Scheduling Platform.
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The type of the job. The following job types are supported:
+	//
+	// *   java
+	// *   python
+	// *   shell
+	// *   go
+	// *   http
+	// *   xxljob
+	// *   dataworks
+	// *   k8s
+	// *   springschedule
+	JobType *string `json:"JobType,omitempty" xml:"JobType,omitempty"`
+	// The maximum number of attempts that the system can make when an error occurs on a job. You can specify this parameter based on your business requirements. Default value: 0.
+	MaxAttempt *int32 `json:"MaxAttempt,omitempty" xml:"MaxAttempt,omitempty"`
+	// The maximum number of instances that the system can run at the same time. Default value: 1. When you set this parameter to 1, if the current job does not end, the system will not run the next job even if the runtime is reached.
+	MaxConcurrency *int32 `json:"MaxConcurrency,omitempty" xml:"MaxConcurrency,omitempty"`
+	// Specifies whether to turn on No machine alarm available.
+	//
+	// *   **true**: Turn on No machine alarm available.
+	// *   **false**: Turn off No machine alarm available.
+	MissWorkerEnable *bool `json:"MissWorkerEnable,omitempty" xml:"MissWorkerEnable,omitempty"`
+	// The name of the job.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The ID of the namespace. You can obtain the ID of the namespace on the Namespace page in Distributed Task Scheduling Platform.
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// This parameter is required only for a special third party.
+	NamespaceSource *string `json:"NamespaceSource,omitempty" xml:"NamespaceSource,omitempty"`
+	// The number of subtasks that can be pulled at a time. Default value: 100. This parameter is an advanced configuration item of MapReduce job.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The user-defined parameters that you can obtain when the job is running.
+	Parameters *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
+	// The maximum number of subtask queues that you can cache. Default value: 10000. This parameter is an advanced configuration item of the MapReduce job.
+	QueueSize *int32 `json:"QueueSize,omitempty" xml:"QueueSize,omitempty"`
+	// The ID of the region.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The channel for sending alerts. Only SMS messages are supported. Set the value to sms.
+	SendChannel *string `json:"SendChannel,omitempty" xml:"SendChannel,omitempty"`
+	// 0: disabled. 1: enabled. Default value: 1.
+	Status              *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	SuccessNoticeEnable *bool  `json:"SuccessNoticeEnable,omitempty" xml:"SuccessNoticeEnable,omitempty"`
+	// The interval at which the system can rerun the subtask when the subtask fails. Default value: 0. This parameter is an advanced configuration item of the MapReduce job.
+	TaskAttemptInterval *int32 `json:"TaskAttemptInterval,omitempty" xml:"TaskAttemptInterval,omitempty"`
+	// The number of retries that the system can perform when the subtask fails. Default value: 0. This parameter is an advanced configuration item of the MapReduce job.
+	TaskMaxAttempt *int32 `json:"TaskMaxAttempt,omitempty" xml:"TaskMaxAttempt,omitempty"`
+	// The time expression. You can set the time expression according to the selected time type.
+	//
+	// *   **cron**: Specify a standard Cron expression. You can verify the expression online after you specify the expression.
+	// *   **api**: No time expression is available.
+	// *   **fixed_rate**: Specify a fixed frequency value. Unit: seconds. For example, if you set this parameter to 30, the system triggers a job every 30 seconds.
+	// *   **second_delay**: Specify a delay after which you can run a job. You can specify a value from 1 to 60. Unit: seconds.
+	// *   **one_time**: Specify a time in the format of yyyy-MM-dd HH:mm:ss or specify a timestamp in milliseconds. Example: 2022-10-10 10:10:00.
+	TimeExpression *string `json:"TimeExpression,omitempty" xml:"TimeExpression,omitempty"`
+	// The type of time. The following time types are supported:
+	//
+	// *   **cron**: 1
+	// *   **fixed_rate**: 3
+	// *   **second_delay**: 4
+	// *   **one_time**: 5
+	// *   **api**: 100
+	TimeType *int32 `json:"TimeType,omitempty" xml:"TimeType,omitempty"`
+	// The timeout threshold. Default value: 7200. Unit: seconds.
+	Timeout *int64 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+	// Specifies whether to turn on Timeout alarm. Valid values:
+	//
+	// *   **true**: Turn on Timeout alarm.
+	// *   **false**: Turn off Timeout alarm.
+	TimeoutEnable *bool `json:"TimeoutEnable,omitempty" xml:"TimeoutEnable,omitempty"`
+	// Specifies whether to turn on Timeout termination. Valid values:
+	//
+	// *   **true**: Turn on Timeout termination.
+	// *   **false**: Turn off Timeout termination.
+	TimeoutKillEnable *bool `json:"TimeoutKillEnable,omitempty" xml:"TimeoutKillEnable,omitempty"`
+	// If the Task type parameter is set to k8s, this parameter is required. xxljob task: {"resource":"job"} shell task: {"image":"busybox","resource":"shell"}
+	XAttrs *string `json:"XAttrs,omitempty" xml:"XAttrs,omitempty"`
 }
 
 func (s CreateJobRequest) String() string {
@@ -609,13 +738,13 @@ func (s *CreateJobRequest) SetFailEnable(v bool) *CreateJobRequest {
 	return s
 }
 
-func (s *CreateJobRequest) SetGroupId(v string) *CreateJobRequest {
-	s.GroupId = &v
+func (s *CreateJobRequest) SetFailTimes(v int32) *CreateJobRequest {
+	s.FailTimes = &v
 	return s
 }
 
-func (s *CreateJobRequest) SetJarUrl(v string) *CreateJobRequest {
-	s.JarUrl = &v
+func (s *CreateJobRequest) SetGroupId(v string) *CreateJobRequest {
+	s.GroupId = &v
 	return s
 }
 
@@ -684,6 +813,11 @@ func (s *CreateJobRequest) SetStatus(v int32) *CreateJobRequest {
 	return s
 }
 
+func (s *CreateJobRequest) SetSuccessNoticeEnable(v bool) *CreateJobRequest {
+	s.SuccessNoticeEnable = &v
+	return s
+}
+
 func (s *CreateJobRequest) SetTaskAttemptInterval(v int32) *CreateJobRequest {
 	s.TaskAttemptInterval = &v
 	return s
@@ -725,9 +859,13 @@ func (s *CreateJobRequest) SetXAttrs(v string) *CreateJobRequest {
 }
 
 type CreateJobRequestContactInfo struct {
-	Ding      *string `json:"Ding,omitempty" xml:"Ding,omitempty"`
-	UserMail  *string `json:"UserMail,omitempty" xml:"UserMail,omitempty"`
-	UserName  *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	// The webhook URL of the DingTalk chatbot. For more information, see [DingTalk development documentation](https://open.dingtalk.com/document/org/application-types).
+	Ding *string `json:"Ding,omitempty" xml:"Ding,omitempty"`
+	// The email address of the alert contact.
+	UserMail *string `json:"UserMail,omitempty" xml:"UserMail,omitempty"`
+	// The name of the alert contact.
+	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	// The mobile phone number of the alert contact.
 	UserPhone *string `json:"UserPhone,omitempty" xml:"UserPhone,omitempty"`
 }
 
@@ -760,11 +898,19 @@ func (s *CreateJobRequestContactInfo) SetUserPhone(v string) *CreateJobRequestCo
 }
 
 type CreateJobResponseBody struct {
-	Code      *int32                     `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *CreateJobResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                    `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                      `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The HTTP status code that is returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The details of the job.
+	Data *CreateJobResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The additional information that is returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the job is created. Valid values:
+	//
+	// *   **true**: The job is created.
+	// *   **false**: Failed to create the job.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CreateJobResponseBody) String() string {
@@ -801,6 +947,7 @@ func (s *CreateJobResponseBody) SetSuccess(v bool) *CreateJobResponseBody {
 }
 
 type CreateJobResponseBodyData struct {
+	// The ID of the job.
 	JobId *int64 `json:"JobId,omitempty" xml:"JobId,omitempty"`
 }
 
@@ -847,10 +994,14 @@ func (s *CreateJobResponse) SetBody(v *CreateJobResponseBody) *CreateJobResponse
 }
 
 type CreateNamespaceRequest struct {
+	// The description of the namespace.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Uid         *string `json:"Uid,omitempty" xml:"Uid,omitempty"`
+	// The name of the namespace.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The ID of the region.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The UID of the namespace, which is globally unique. We recommend that you use the UUID to generate the UID.
+	Uid *string `json:"Uid,omitempty" xml:"Uid,omitempty"`
 }
 
 func (s CreateNamespaceRequest) String() string {
@@ -882,11 +1033,19 @@ func (s *CreateNamespaceRequest) SetUid(v string) *CreateNamespaceRequest {
 }
 
 type CreateNamespaceResponseBody struct {
-	Code      *int32                           `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *CreateNamespaceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                          `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                            `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The HTTP status code that is returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The information of the namespace.
+	Data *CreateNamespaceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error message that is returned only if the error occurs.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether an application is created. Valid values:
+	//
+	// *   **true**: The application is created.
+	// *   **false**: Failed to create the application.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CreateNamespaceResponseBody) String() string {
@@ -923,6 +1082,7 @@ func (s *CreateNamespaceResponseBody) SetSuccess(v bool) *CreateNamespaceRespons
 }
 
 type CreateNamespaceResponseBodyData struct {
+	// The unique identifier of the namespace.
 	NamespaceUid *string `json:"NamespaceUid,omitempty" xml:"NamespaceUid,omitempty"`
 }
 
@@ -968,12 +1128,175 @@ func (s *CreateNamespaceResponse) SetBody(v *CreateNamespaceResponseBody) *Creat
 	return s
 }
 
-type DeleteJobRequest struct {
+type CreateWorkflowRequest struct {
+	Description     *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	GroupId         *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	JobId           *int64  `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	MaxConcurrency  *int32  `json:"MaxConcurrency,omitempty" xml:"MaxConcurrency,omitempty"`
+	Name            *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	Namespace       *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	NamespaceSource *string `json:"NamespaceSource,omitempty" xml:"NamespaceSource,omitempty"`
 	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	TimeExpression  *string `json:"TimeExpression,omitempty" xml:"TimeExpression,omitempty"`
+	TimeType        *int32  `json:"TimeType,omitempty" xml:"TimeType,omitempty"`
+	Timezone        *string `json:"Timezone,omitempty" xml:"Timezone,omitempty"`
+}
+
+func (s CreateWorkflowRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateWorkflowRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateWorkflowRequest) SetDescription(v string) *CreateWorkflowRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateWorkflowRequest) SetGroupId(v string) *CreateWorkflowRequest {
+	s.GroupId = &v
+	return s
+}
+
+func (s *CreateWorkflowRequest) SetMaxConcurrency(v int32) *CreateWorkflowRequest {
+	s.MaxConcurrency = &v
+	return s
+}
+
+func (s *CreateWorkflowRequest) SetName(v string) *CreateWorkflowRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateWorkflowRequest) SetNamespace(v string) *CreateWorkflowRequest {
+	s.Namespace = &v
+	return s
+}
+
+func (s *CreateWorkflowRequest) SetNamespaceSource(v string) *CreateWorkflowRequest {
+	s.NamespaceSource = &v
+	return s
+}
+
+func (s *CreateWorkflowRequest) SetRegionId(v string) *CreateWorkflowRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *CreateWorkflowRequest) SetTimeExpression(v string) *CreateWorkflowRequest {
+	s.TimeExpression = &v
+	return s
+}
+
+func (s *CreateWorkflowRequest) SetTimeType(v int32) *CreateWorkflowRequest {
+	s.TimeType = &v
+	return s
+}
+
+func (s *CreateWorkflowRequest) SetTimezone(v string) *CreateWorkflowRequest {
+	s.Timezone = &v
+	return s
+}
+
+type CreateWorkflowResponseBody struct {
+	Code      *string                         `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *CreateWorkflowResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                         `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                           `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s CreateWorkflowResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateWorkflowResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateWorkflowResponseBody) SetCode(v string) *CreateWorkflowResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CreateWorkflowResponseBody) SetData(v *CreateWorkflowResponseBodyData) *CreateWorkflowResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *CreateWorkflowResponseBody) SetMessage(v string) *CreateWorkflowResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CreateWorkflowResponseBody) SetRequestId(v string) *CreateWorkflowResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateWorkflowResponseBody) SetSuccess(v bool) *CreateWorkflowResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreateWorkflowResponseBodyData struct {
+	WorkflowId *int64 `json:"WorkflowId,omitempty" xml:"WorkflowId,omitempty"`
+}
+
+func (s CreateWorkflowResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateWorkflowResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *CreateWorkflowResponseBodyData) SetWorkflowId(v int64) *CreateWorkflowResponseBodyData {
+	s.WorkflowId = &v
+	return s
+}
+
+type CreateWorkflowResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateWorkflowResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateWorkflowResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateWorkflowResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateWorkflowResponse) SetHeaders(v map[string]*string) *CreateWorkflowResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateWorkflowResponse) SetStatusCode(v int32) *CreateWorkflowResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateWorkflowResponse) SetBody(v *CreateWorkflowResponseBody) *CreateWorkflowResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteJobRequest struct {
+	// The ID of the application. You can obtain the application ID on the **Application Management** page in Distributed Task Scheduling Platform.
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The ID of the job. You can obtain the ID on the **Task Management** page in Distributed Task Scheduling Platform.
+	JobId *int64 `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The ID of the namespace. You can obtain the ID of the namespace on the **Namespace** page in Distributed Task Scheduling Platform.
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// This parameter is required only for a special third party.
+	NamespaceSource *string `json:"NamespaceSource,omitempty" xml:"NamespaceSource,omitempty"`
+	// The ID of the region.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DeleteJobRequest) String() string {
@@ -1010,10 +1333,17 @@ func (s *DeleteJobRequest) SetRegionId(v string) *DeleteJobRequest {
 }
 
 type DeleteJobResponseBody struct {
-	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The HTTP status code that is returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The additional information that is returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the job is deleted.
+	//
+	// *   **true**: The job is deleted.
+	// *   **false**: Failed to delete the job.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DeleteJobResponseBody) String() string {
@@ -1074,11 +1404,16 @@ func (s *DeleteJobResponse) SetBody(v *DeleteJobResponseBody) *DeleteJobResponse
 }
 
 type DeleteWorkflowRequest struct {
-	GroupId         *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	Namespace       *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The ID of the application. You can obtain the application ID on the Application Management page in Distributed Task Scheduling Platform.
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The ID of the namespace. You can obtain the ID of the namespace on the Namespace page in Distributed Task Scheduling Platform.
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// This parameter is required only for a special third party.
 	NamespaceSource *string `json:"NamespaceSource,omitempty" xml:"NamespaceSource,omitempty"`
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	WorkflowId      *int64  `json:"WorkflowId,omitempty" xml:"WorkflowId,omitempty"`
+	// The ID of the region.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the workflow.
+	WorkflowId *int64 `json:"WorkflowId,omitempty" xml:"WorkflowId,omitempty"`
 }
 
 func (s DeleteWorkflowRequest) String() string {
@@ -1115,10 +1450,17 @@ func (s *DeleteWorkflowRequest) SetWorkflowId(v int64) *DeleteWorkflowRequest {
 }
 
 type DeleteWorkflowResponseBody struct {
-	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The HTTP status code that is returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The error message that is returned only if the error occurs.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The unique ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the workflow is deleted. Valid values:
+	//
+	// *   **true**: The workflow is deleted.
+	// *   **false**: Failed to delete the workflow.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DeleteWorkflowResponseBody) String() string {
@@ -1179,11 +1521,19 @@ func (s *DeleteWorkflowResponse) SetBody(v *DeleteWorkflowResponseBody) *DeleteW
 }
 
 type DescribeRegionsResponseBody struct {
-	Code      *int32                                `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string                               `json:"Message,omitempty" xml:"Message,omitempty"`
-	Regions   []*DescribeRegionsResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Repeated"`
-	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                                 `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The HTTP status code that is returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The error message that is returned only if the error occurs.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The list of regions.
+	Regions []*DescribeRegionsResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Repeated"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the call is successful. Valid values:
+	//
+	// *   **true**: The call is successful.
+	// *   **false**: The call fails.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeRegionsResponseBody) String() string {
@@ -1220,9 +1570,12 @@ func (s *DescribeRegionsResponseBody) SetSuccess(v bool) *DescribeRegionsRespons
 }
 
 type DescribeRegionsResponseBodyRegions struct {
-	LocalName      *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
+	// The displayed name of the region, which varies based on the current language.
+	LocalName *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
+	// The endpoint of the region.
 	RegionEndpoint *string `json:"RegionEndpoint,omitempty" xml:"RegionEndpoint,omitempty"`
-	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the region.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DescribeRegionsResponseBodyRegions) String() string {
@@ -1278,15 +1631,24 @@ func (s *DescribeRegionsResponse) SetBody(v *DescribeRegionsResponseBody) *Descr
 }
 
 type DesignateWorkersRequest struct {
-	DesignateType   *int32  `json:"DesignateType,omitempty" xml:"DesignateType,omitempty"`
-	GroupId         *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	JobId           *int64  `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	Labels          *string `json:"Labels,omitempty" xml:"Labels,omitempty"`
-	Namespace       *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The type of the designated machines. Valid values: 1: worker. 2: label.
+	DesignateType *int32 `json:"DesignateType,omitempty" xml:"DesignateType,omitempty"`
+	// The ID of the application group.
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The ID of the job.
+	JobId *int64 `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The designated `labels`. The value is a `JSON` string.
+	Labels *string `json:"Labels,omitempty" xml:"Labels,omitempty"`
+	// The ID of the namespace.
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The source of the namespace.
 	NamespaceSource *string `json:"NamespaceSource,omitempty" xml:"NamespaceSource,omitempty"`
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Transferable    *bool   `json:"Transferable,omitempty" xml:"Transferable,omitempty"`
-	Workers         *string `json:"Workers,omitempty" xml:"Workers,omitempty"`
+	// The ID of the region.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Specifies whether to allow a failover.
+	Transferable *bool `json:"Transferable,omitempty" xml:"Transferable,omitempty"`
+	// The designated workers. The value is a JSON string.
+	Workers *string `json:"Workers,omitempty" xml:"Workers,omitempty"`
 }
 
 func (s DesignateWorkersRequest) String() string {
@@ -1343,10 +1705,14 @@ func (s *DesignateWorkersRequest) SetWorkers(v string) *DesignateWorkersRequest 
 }
 
 type DesignateWorkersResponseBody struct {
-	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The HTTP status code that is returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The error message that is returned if an error occurs.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the call is successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DesignateWorkersResponseBody) String() string {
@@ -1407,11 +1773,16 @@ func (s *DesignateWorkersResponse) SetBody(v *DesignateWorkersResponseBody) *Des
 }
 
 type DisableJobRequest struct {
-	GroupId         *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	JobId           *int64  `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	Namespace       *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The ID of the application. You can obtain the ID of the application on the Application Management page in the SchedulerX console.
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The ID of the job. You can obtain the ID of the job on the Task Management page in the SchedulerX console.
+	JobId *int64 `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The ID of the namespace. You can obtain the ID of the namespace on the Namespace page in the SchedulerX console.
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// Required only for a special third party.
 	NamespaceSource *string `json:"NamespaceSource,omitempty" xml:"NamespaceSource,omitempty"`
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the region.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DisableJobRequest) String() string {
@@ -1448,10 +1819,17 @@ func (s *DisableJobRequest) SetRegionId(v string) *DisableJobRequest {
 }
 
 type DisableJobResponseBody struct {
-	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The status code.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The error message. The error message is returned only when an error occurs.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the call is successful. Valid values:
+	//
+	// *   **true**: The call is successful.
+	// *   **false**: The call fails.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DisableJobResponseBody) String() string {
@@ -1512,11 +1890,16 @@ func (s *DisableJobResponse) SetBody(v *DisableJobResponseBody) *DisableJobRespo
 }
 
 type DisableWorkflowRequest struct {
-	GroupId         *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	Namespace       *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The ID of the application. You can obtain the application ID on the Application Management page in Distributed Task Scheduling Platform.
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The ID of the namespace. You can obtain the ID of the namespace on the Namespace page in Distributed Task Scheduling Platform.
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// This parameter is required only for a special third party.
 	NamespaceSource *string `json:"NamespaceSource,omitempty" xml:"NamespaceSource,omitempty"`
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	WorkflowId      *int64  `json:"WorkflowId,omitempty" xml:"WorkflowId,omitempty"`
+	// The ID of the region.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the workflow.
+	WorkflowId *int64 `json:"WorkflowId,omitempty" xml:"WorkflowId,omitempty"`
 }
 
 func (s DisableWorkflowRequest) String() string {
@@ -1553,10 +1936,17 @@ func (s *DisableWorkflowRequest) SetWorkflowId(v int64) *DisableWorkflowRequest 
 }
 
 type DisableWorkflowResponseBody struct {
-	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The HTTP status code that is returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The error message that is returned only if the error occurs.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the workflow is disabled. Valid values:
+	//
+	// *   **true**: The workflow is disabled.
+	// *   **false**: Failed to disable the workflow.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DisableWorkflowResponseBody) String() string {
@@ -1617,11 +2007,16 @@ func (s *DisableWorkflowResponse) SetBody(v *DisableWorkflowResponseBody) *Disab
 }
 
 type EnableJobRequest struct {
-	GroupId         *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	JobId           *int64  `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	Namespace       *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The ID of the application. You can obtain the ID of the application on the Application Management page in the SchedulerX console.
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The ID of the job. You can obtain the ID of the job on the Task Management page in the SchedulerX console.
+	JobId *int64 `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The ID of the namespace. You can obtain the ID of the namespace on the Namespace page in the SchedulerX console.
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// Required only for a special third party.
 	NamespaceSource *string `json:"NamespaceSource,omitempty" xml:"NamespaceSource,omitempty"`
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the region.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s EnableJobRequest) String() string {
@@ -1658,10 +2053,17 @@ func (s *EnableJobRequest) SetRegionId(v string) *EnableJobRequest {
 }
 
 type EnableJobResponseBody struct {
-	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The status code.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The error message. The error message is returned only when an error occurs.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the call is successful. Valid values:
+	//
+	// *   **true**: The call is successful.
+	// *   **false**: The call fails.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s EnableJobResponseBody) String() string {
@@ -1722,11 +2124,16 @@ func (s *EnableJobResponse) SetBody(v *EnableJobResponseBody) *EnableJobResponse
 }
 
 type EnableWorkflowRequest struct {
-	GroupId         *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	Namespace       *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The ID of the application. You can obtain the application ID on the Application Management page in Distributed Task Scheduling Platform.
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The ID of the namespace. You can obtain the ID of the namespace on the Namespace page in Distributed Task Scheduling Platform.
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// This parameter is required only for a special third party.
 	NamespaceSource *string `json:"NamespaceSource,omitempty" xml:"NamespaceSource,omitempty"`
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	WorkflowId      *int64  `json:"WorkflowId,omitempty" xml:"WorkflowId,omitempty"`
+	// The ID of the region.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the workflow.
+	WorkflowId *int64 `json:"WorkflowId,omitempty" xml:"WorkflowId,omitempty"`
 }
 
 func (s EnableWorkflowRequest) String() string {
@@ -1763,10 +2170,17 @@ func (s *EnableWorkflowRequest) SetWorkflowId(v int64) *EnableWorkflowRequest {
 }
 
 type EnableWorkflowResponseBody struct {
-	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The HTTP status code that is returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The error message that is returned only if the error occurs.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the workflow is enabled. Valid values:
+	//
+	// *   **true**: The workflow is enabled.
+	// *   **false**: Failed to enable the workflow.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s EnableWorkflowResponseBody) String() string {
@@ -1827,16 +2241,26 @@ func (s *EnableWorkflowResponse) SetBody(v *EnableWorkflowResponseBody) *EnableW
 }
 
 type ExecuteJobRequest struct {
-	CheckJobStatus     *bool   `json:"CheckJobStatus,omitempty" xml:"CheckJobStatus,omitempty"`
-	DesignateType      *int32  `json:"DesignateType,omitempty" xml:"DesignateType,omitempty"`
-	GroupId            *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// Specifies whether to check the job status. Valid values: -**true**: The job can be run only if the job is enabled. -**false**: The job can be run even if the job is disabled.
+	CheckJobStatus *bool `json:"CheckJobStatus,omitempty" xml:"CheckJobStatus,omitempty"`
+	// The type of the designated machine. Valid values: -**1**: worker. -**2**: label.
+	DesignateType *int32 `json:"DesignateType,omitempty" xml:"DesignateType,omitempty"`
+	// The ID of the application. You can obtain the application ID on the Application Management page in the SchedulerX console.
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The parameters that are passed to trigger the job to run. The input value can be any string. The parameters that are passed are obtained by calling the `context.getInstanceParameters()` class in the `processor` code. The parameters are different from custom parameters for creating jobs.
 	InstanceParameters *string `json:"InstanceParameters,omitempty" xml:"InstanceParameters,omitempty"`
-	JobId              *int64  `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	Label              *string `json:"Label,omitempty" xml:"Label,omitempty"`
-	Namespace          *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	NamespaceSource    *string `json:"NamespaceSource,omitempty" xml:"NamespaceSource,omitempty"`
-	RegionId           *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Worker             *string `json:"Worker,omitempty" xml:"Worker,omitempty"`
+	// The ID of the job. You can obtain the job ID on the Task Management page in the SchedulerX console.
+	JobId *int64 `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The label of the worker.
+	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
+	// The ID of the namespace. You can obtain the namespace ID on the Namespace page in the SchedulerX console.
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The source of the namespace. This parameter is required only for a special third party.
+	NamespaceSource *string `json:"NamespaceSource,omitempty" xml:"NamespaceSource,omitempty"`
+	// The ID of the region.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The worker address of the application. To query the worker address, call the GetWokerList operation.
+	Worker *string `json:"Worker,omitempty" xml:"Worker,omitempty"`
 }
 
 func (s ExecuteJobRequest) String() string {
@@ -1898,11 +2322,19 @@ func (s *ExecuteJobRequest) SetWorker(v string) *ExecuteJobRequest {
 }
 
 type ExecuteJobResponseBody struct {
-	Code      *int32                      `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *ExecuteJobResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                     `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                       `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The HTTP status code that is returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The ID of the job instance that is returned if the call is successful.
+	Data *ExecuteJobResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error message that is returned if an error occurs.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the call is successful. Valid values:
+	//
+	// *   `true`: The call is successful.
+	// *   `false`: The call fails.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ExecuteJobResponseBody) String() string {
@@ -1939,6 +2371,7 @@ func (s *ExecuteJobResponseBody) SetSuccess(v bool) *ExecuteJobResponseBody {
 }
 
 type ExecuteJobResponseBodyData struct {
+	// The ID of the job instance.
 	JobInstanceId *int64 `json:"JobInstanceId,omitempty" xml:"JobInstanceId,omitempty"`
 }
 
@@ -1985,11 +2418,17 @@ func (s *ExecuteJobResponse) SetBody(v *ExecuteJobResponseBody) *ExecuteJobRespo
 }
 
 type ExecuteWorkflowRequest struct {
-	GroupId            *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The ID of the application. You can obtain the application ID on the Application Management page in Distributed Task Scheduling Platform.
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The dynamic parameter of the workflow instance. The parameter must be 1 to 1,000 bytes in length.
 	InstanceParameters *string `json:"InstanceParameters,omitempty" xml:"InstanceParameters,omitempty"`
-	Namespace          *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	NamespaceSource    *string `json:"NamespaceSource,omitempty" xml:"NamespaceSource,omitempty"`
-	WorkflowId         *int64  `json:"WorkflowId,omitempty" xml:"WorkflowId,omitempty"`
+	// The ID of the namespace. You can obtain the ID of the namespace on the Namespace page in Distributed Task Scheduling Platform.
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// This parameter is required only for a special third party.
+	NamespaceSource *string `json:"NamespaceSource,omitempty" xml:"NamespaceSource,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the workflow.
+	WorkflowId *int64 `json:"WorkflowId,omitempty" xml:"WorkflowId,omitempty"`
 }
 
 func (s ExecuteWorkflowRequest) String() string {
@@ -2020,17 +2459,27 @@ func (s *ExecuteWorkflowRequest) SetNamespaceSource(v string) *ExecuteWorkflowRe
 	return s
 }
 
+func (s *ExecuteWorkflowRequest) SetRegionId(v string) *ExecuteWorkflowRequest {
+	s.RegionId = &v
+	return s
+}
+
 func (s *ExecuteWorkflowRequest) SetWorkflowId(v int64) *ExecuteWorkflowRequest {
 	s.WorkflowId = &v
 	return s
 }
 
 type ExecuteWorkflowResponseBody struct {
-	Code      *int32                           `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *ExecuteWorkflowResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                          `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                            `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The HTTP status code that is returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// If the call is successful, the ID of the workflow instance is returned.
+	Data *ExecuteWorkflowResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error message that is returned only if the error occurs.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the API call is successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ExecuteWorkflowResponseBody) String() string {
@@ -2067,6 +2516,7 @@ func (s *ExecuteWorkflowResponseBody) SetSuccess(v bool) *ExecuteWorkflowRespons
 }
 
 type ExecuteWorkflowResponseBodyData struct {
+	// The ID of the workflow instance.
 	WfInstanceId *int64 `json:"WfInstanceId,omitempty" xml:"WfInstanceId,omitempty"`
 }
 
@@ -2113,12 +2563,18 @@ func (s *ExecuteWorkflowResponse) SetBody(v *ExecuteWorkflowResponseBody) *Execu
 }
 
 type GetJobInfoRequest struct {
-	GroupId         *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	JobId           *int64  `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	JobName         *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
-	Namespace       *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The ID of the application. You can obtain the ID of the application on the Application Management page in the SchedulerX console.
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The ID of the job. You can obtain the ID of the job on the Task Management page in the SchedulerX console.
+	JobId *int64 `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The name of the job.
+	JobName *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
+	// The ID of the namespace. You can obtain the ID of the namespace on the Namespace page in the SchedulerX console.
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The source of the namespace. This parameter is required only for a special third party.
 	NamespaceSource *string `json:"NamespaceSource,omitempty" xml:"NamespaceSource,omitempty"`
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the region in which the job resides.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s GetJobInfoRequest) String() string {
@@ -2160,11 +2616,19 @@ func (s *GetJobInfoRequest) SetRegionId(v string) *GetJobInfoRequest {
 }
 
 type GetJobInfoResponseBody struct {
-	Code      *int32                      `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *GetJobInfoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                     `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                       `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The HTTP status code that is returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The details of the job.
+	Data *GetJobInfoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error message that is returned only when an error occurs.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the job details are obtained. Valid values:
+	//
+	// *   **true**: The job details are obtained.
+	// *   **false**: Failed to obtain the job details.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetJobInfoResponseBody) String() string {
@@ -2201,6 +2665,7 @@ func (s *GetJobInfoResponseBody) SetSuccess(v bool) *GetJobInfoResponseBody {
 }
 
 type GetJobInfoResponseBodyData struct {
+	// The configurations of the job.
 	JobConfigInfo *GetJobInfoResponseBodyDataJobConfigInfo `json:"JobConfigInfo,omitempty" xml:"JobConfigInfo,omitempty" type:"Struct"`
 }
 
@@ -2218,23 +2683,52 @@ func (s *GetJobInfoResponseBodyData) SetJobConfigInfo(v *GetJobInfoResponseBodyD
 }
 
 type GetJobInfoResponseBodyDataJobConfigInfo struct {
-	AttemptInterval *int32                                                 `json:"AttemptInterval,omitempty" xml:"AttemptInterval,omitempty"`
-	ClassName       *string                                                `json:"ClassName,omitempty" xml:"ClassName,omitempty"`
-	Content         *string                                                `json:"Content,omitempty" xml:"Content,omitempty"`
-	Description     *string                                                `json:"Description,omitempty" xml:"Description,omitempty"`
-	ExecuteMode     *string                                                `json:"ExecuteMode,omitempty" xml:"ExecuteMode,omitempty"`
-	JarUrl          *string                                                `json:"JarUrl,omitempty" xml:"JarUrl,omitempty"`
-	JobId           *int64                                                 `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	JobMonitorInfo  *GetJobInfoResponseBodyDataJobConfigInfoJobMonitorInfo `json:"JobMonitorInfo,omitempty" xml:"JobMonitorInfo,omitempty" type:"Struct"`
-	JobType         *string                                                `json:"JobType,omitempty" xml:"JobType,omitempty"`
-	MapTaskXAttrs   *GetJobInfoResponseBodyDataJobConfigInfoMapTaskXAttrs  `json:"MapTaskXAttrs,omitempty" xml:"MapTaskXAttrs,omitempty" type:"Struct"`
-	MaxAttempt      *int32                                                 `json:"MaxAttempt,omitempty" xml:"MaxAttempt,omitempty"`
-	MaxConcurrency  *string                                                `json:"MaxConcurrency,omitempty" xml:"MaxConcurrency,omitempty"`
-	Name            *string                                                `json:"Name,omitempty" xml:"Name,omitempty"`
-	Parameters      *string                                                `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
-	Status          *int32                                                 `json:"Status,omitempty" xml:"Status,omitempty"`
-	TimeConfig      *GetJobInfoResponseBodyDataJobConfigInfoTimeConfig     `json:"TimeConfig,omitempty" xml:"TimeConfig,omitempty" type:"Struct"`
-	XAttrs          *string                                                `json:"XAttrs,omitempty" xml:"XAttrs,omitempty"`
+	// The interval at which the system retries to run the job after a job failure. Unit: seconds. Default value: 30.
+	AttemptInterval *int32 `json:"AttemptInterval,omitempty" xml:"AttemptInterval,omitempty"`
+	// The full path of the job interface class. This parameter is returned only for jobs whose job type is Java.
+	ClassName *string `json:"ClassName,omitempty" xml:"ClassName,omitempty"`
+	// The script of a script job.
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The description of the job.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The execution mode of the job. Valid values:
+	//
+	// *   **standalone**
+	// *   **broadcast**
+	// *   **parallel**
+	// *   **grid**
+	// *   **batch**
+	// *   **shard**
+	ExecuteMode *string `json:"ExecuteMode,omitempty" xml:"ExecuteMode,omitempty"`
+	// The full path that is used to upload files to Object Storage Service (OSS).
+	//
+	// If you use a JAR package, you can upload the JAR package to this OSS path.
+	JarUrl *string `json:"JarUrl,omitempty" xml:"JarUrl,omitempty"`
+	// The ID of the job.
+	JobId *int64 `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The monitoring information of the job.
+	JobMonitorInfo *GetJobInfoResponseBodyDataJobConfigInfoJobMonitorInfo `json:"JobMonitorInfo,omitempty" xml:"JobMonitorInfo,omitempty" type:"Struct"`
+	// The type of the job.
+	JobType *string `json:"JobType,omitempty" xml:"JobType,omitempty"`
+	// The advanced configurations of the job. The parameters are returned only if the execution mode of the job is parallel, grid, or batch.
+	MapTaskXAttrs *GetJobInfoResponseBodyDataJobConfigInfoMapTaskXAttrs `json:"MapTaskXAttrs,omitempty" xml:"MapTaskXAttrs,omitempty" type:"Struct"`
+	// The maximum number of retries after a job failure. This parameter is specified based on your business requirements. Default value: 0.
+	MaxAttempt *int32 `json:"MaxAttempt,omitempty" xml:"MaxAttempt,omitempty"`
+	// The maximum number of concurrent instances. Default value: 1. A value of 1 indicates that if the last triggered instance is running, the next instance is not triggered even if the scheduled point in time for running the next instance is reached.
+	MaxConcurrency *string `json:"MaxConcurrency,omitempty" xml:"MaxConcurrency,omitempty"`
+	// The name of the job.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The user-defined parameters. These parameters can be obtained when the job is running.
+	Parameters *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
+	// The status of the job. Valid values:
+	//
+	// *   **1**: The job is enabled and can be triggered.
+	// *   **0**: The job is disabled and cannot be triggered.
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The time configurations.
+	TimeConfig *GetJobInfoResponseBodyDataJobConfigInfoTimeConfig `json:"TimeConfig,omitempty" xml:"TimeConfig,omitempty" type:"Struct"`
+	// The extended fields.
+	XAttrs *string `json:"XAttrs,omitempty" xml:"XAttrs,omitempty"`
 }
 
 func (s GetJobInfoResponseBodyDataJobConfigInfo) String() string {
@@ -2331,7 +2825,9 @@ func (s *GetJobInfoResponseBodyDataJobConfigInfo) SetXAttrs(v string) *GetJobInf
 }
 
 type GetJobInfoResponseBodyDataJobConfigInfoJobMonitorInfo struct {
-	ContactInfo   []*GetJobInfoResponseBodyDataJobConfigInfoJobMonitorInfoContactInfo `json:"ContactInfo,omitempty" xml:"ContactInfo,omitempty" type:"Repeated"`
+	// The contact Information.
+	ContactInfo []*GetJobInfoResponseBodyDataJobConfigInfoJobMonitorInfoContactInfo `json:"ContactInfo,omitempty" xml:"ContactInfo,omitempty" type:"Repeated"`
+	// The configurations of the alerting feature and alert thresholds.
 	MonitorConfig *GetJobInfoResponseBodyDataJobConfigInfoJobMonitorInfoMonitorConfig `json:"MonitorConfig,omitempty" xml:"MonitorConfig,omitempty" type:"Struct"`
 }
 
@@ -2354,9 +2850,13 @@ func (s *GetJobInfoResponseBodyDataJobConfigInfoJobMonitorInfo) SetMonitorConfig
 }
 
 type GetJobInfoResponseBodyDataJobConfigInfoJobMonitorInfoContactInfo struct {
-	Ding      *string `json:"Ding,omitempty" xml:"Ding,omitempty"`
-	UserMail  *string `json:"UserMail,omitempty" xml:"UserMail,omitempty"`
-	UserName  *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	// The webhook URL of the DingTalk chatbot.
+	Ding *string `json:"Ding,omitempty" xml:"Ding,omitempty"`
+	// The email address of the user.
+	UserMail *string `json:"UserMail,omitempty" xml:"UserMail,omitempty"`
+	// The name of the user.
+	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	// The mobile number of the user.
 	UserPhone *string `json:"UserPhone,omitempty" xml:"UserPhone,omitempty"`
 }
 
@@ -2389,12 +2889,24 @@ func (s *GetJobInfoResponseBodyDataJobConfigInfoJobMonitorInfoContactInfo) SetUs
 }
 
 type GetJobInfoResponseBodyDataJobConfigInfoJobMonitorInfoMonitorConfig struct {
-	FailEnable        *bool   `json:"FailEnable,omitempty" xml:"FailEnable,omitempty"`
-	MissWorkerEnable  *bool   `json:"MissWorkerEnable,omitempty" xml:"MissWorkerEnable,omitempty"`
-	SendChannel       *string `json:"SendChannel,omitempty" xml:"SendChannel,omitempty"`
-	Timeout           *int64  `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
-	TimeoutEnable     *bool   `json:"TimeoutEnable,omitempty" xml:"TimeoutEnable,omitempty"`
-	TimeoutKillEnable *bool   `json:"TimeoutKillEnable,omitempty" xml:"TimeoutKillEnable,omitempty"`
+	// Indicates whether an alert is generated upon a failure. Valid values:
+	//
+	// *   **true**: The feature is enabled.
+	// *   **false**: The feature is disabled.
+	FailEnable *bool `json:"FailEnable,omitempty" xml:"FailEnable,omitempty"`
+	// Indicates whether an alert is generated if no worker is available.
+	MissWorkerEnable *bool `json:"MissWorkerEnable,omitempty" xml:"MissWorkerEnable,omitempty"`
+	// The notification method. Only Short Message Service (SMS) is supported.
+	SendChannel *string `json:"SendChannel,omitempty" xml:"SendChannel,omitempty"`
+	// The timeout threshold. Unit: seconds. Default value: 7200.
+	Timeout *int64 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+	// Indicates whether an alert is generated upon a timeout. Valid values:
+	//
+	// *   **true**: The feature is enabled.
+	// *   **false**: The feature is disabled.
+	TimeoutEnable *bool `json:"TimeoutEnable,omitempty" xml:"TimeoutEnable,omitempty"`
+	// Indicates whether the job is terminated upon a timeout. By default, this feature is disabled.
+	TimeoutKillEnable *bool `json:"TimeoutKillEnable,omitempty" xml:"TimeoutKillEnable,omitempty"`
 }
 
 func (s GetJobInfoResponseBodyDataJobConfigInfoJobMonitorInfoMonitorConfig) String() string {
@@ -2436,12 +2948,18 @@ func (s *GetJobInfoResponseBodyDataJobConfigInfoJobMonitorInfoMonitorConfig) Set
 }
 
 type GetJobInfoResponseBodyDataJobConfigInfoMapTaskXAttrs struct {
-	ConsumerSize        *int32 `json:"ConsumerSize,omitempty" xml:"ConsumerSize,omitempty"`
-	DispatcherSize      *int32 `json:"DispatcherSize,omitempty" xml:"DispatcherSize,omitempty"`
-	PageSize            *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	QueueSize           *int32 `json:"QueueSize,omitempty" xml:"QueueSize,omitempty"`
+	// The number of threads that are triggered by an instance. Default value: 5.
+	ConsumerSize *int32 `json:"ConsumerSize,omitempty" xml:"ConsumerSize,omitempty"`
+	// The number of task distribution threads. Default value: 5.
+	DispatcherSize *int32 `json:"DispatcherSize,omitempty" xml:"DispatcherSize,omitempty"`
+	// The number of tasks that are returned for a parallel job at a time. Default value: 100.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The maximum number of tasks that can be queued. Default value: 10000.
+	QueueSize *int32 `json:"QueueSize,omitempty" xml:"QueueSize,omitempty"`
+	// The retry interval of the task after a task failure.
 	TaskAttemptInterval *int32 `json:"TaskAttemptInterval,omitempty" xml:"TaskAttemptInterval,omitempty"`
-	TaskMaxAttempt      *int32 `json:"TaskMaxAttempt,omitempty" xml:"TaskMaxAttempt,omitempty"`
+	// The number of retries after a task failure.
+	TaskMaxAttempt *int32 `json:"TaskMaxAttempt,omitempty" xml:"TaskMaxAttempt,omitempty"`
 }
 
 func (s GetJobInfoResponseBodyDataJobConfigInfoMapTaskXAttrs) String() string {
@@ -2483,10 +3001,24 @@ func (s *GetJobInfoResponseBodyDataJobConfigInfoMapTaskXAttrs) SetTaskMaxAttempt
 }
 
 type GetJobInfoResponseBodyDataJobConfigInfoTimeConfig struct {
-	Calendar       *string `json:"Calendar,omitempty" xml:"Calendar,omitempty"`
-	DataOffset     *int32  `json:"DataOffset,omitempty" xml:"DataOffset,omitempty"`
+	// If the TimeType parameter is set to **1** (cron), you can customize the calendar.
+	Calendar *string `json:"Calendar,omitempty" xml:"Calendar,omitempty"`
+	// If the TimeType parameter is set to **1** (cron), you can configure the time offset. Unit: seconds.
+	DataOffset *int32 `json:"DataOffset,omitempty" xml:"DataOffset,omitempty"`
+	// The time expression. The time expression varies with the time type:
+	//
+	// *   **api**: No time expression exists.
+	// *   **fix_rate**: a specific fixed frequency. For example, a value of 30 indicates that the job is triggered every 30 seconds.
+	// *   **cron**: a standard Cron expression.
+	// *   **second_delay**: a fixed delay after which the job is triggered. Valid values: 1 to 60. Unit: seconds.
 	TimeExpression *string `json:"TimeExpression,omitempty" xml:"TimeExpression,omitempty"`
-	TimeType       *int32  `json:"TimeType,omitempty" xml:"TimeType,omitempty"`
+	// The time type. Valid values:
+	//
+	// *   **1**: cron
+	// *   **3**: fix_rate
+	// *   **4**: second_delay
+	// *   **100**: api
+	TimeType *int32 `json:"TimeType,omitempty" xml:"TimeType,omitempty"`
 }
 
 func (s GetJobInfoResponseBodyDataJobConfigInfoTimeConfig) String() string {
@@ -2547,10 +3079,15 @@ func (s *GetJobInfoResponse) SetBody(v *GetJobInfoResponseBody) *GetJobInfoRespo
 }
 
 type GetJobInstanceRequest struct {
-	GroupId         *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	JobId           *int64  `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	JobInstanceId   *int64  `json:"JobInstanceId,omitempty" xml:"JobInstanceId,omitempty"`
-	Namespace       *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The ID of the application. You can obtain the application ID on the Application Management page in the SchedulerX console.
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The ID of the job.
+	JobId *int64 `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The ID of the job instance.
+	JobInstanceId *int64 `json:"JobInstanceId,omitempty" xml:"JobInstanceId,omitempty"`
+	// The ID of the namespace. You can obtain the namespace ID on the Namespace page in the SchedulerX console.
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The source of the namespace. This parameter is required only for a special third party.
 	NamespaceSource *string `json:"NamespaceSource,omitempty" xml:"NamespaceSource,omitempty"`
 }
 
@@ -2588,11 +3125,19 @@ func (s *GetJobInstanceRequest) SetNamespaceSource(v string) *GetJobInstanceRequ
 }
 
 type GetJobInstanceResponseBody struct {
-	Code      *int32                          `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *GetJobInstanceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                         `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                           `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The HTTP status code that is returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The information about the job instance.
+	Data *GetJobInstanceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error message that is returned if an error occurs.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the call is successful. Valid values:
+	//
+	// *   **true**: The call is successful.
+	// *   **false**: The call fails.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetJobInstanceResponseBody) String() string {
@@ -2629,6 +3174,7 @@ func (s *GetJobInstanceResponseBody) SetSuccess(v bool) *GetJobInstanceResponseB
 }
 
 type GetJobInstanceResponseBodyData struct {
+	// The details of the job instance.
 	JobInstanceDetail *GetJobInstanceResponseBodyDataJobInstanceDetail `json:"JobInstanceDetail,omitempty" xml:"JobInstanceDetail,omitempty" type:"Struct"`
 }
 
@@ -2646,19 +3192,55 @@ func (s *GetJobInstanceResponseBodyData) SetJobInstanceDetail(v *GetJobInstanceR
 }
 
 type GetJobInstanceResponseBodyDataJobInstanceDetail struct {
-	DataTime     *string `json:"DataTime,omitempty" xml:"DataTime,omitempty"`
-	EndTime      *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	Executor     *string `json:"Executor,omitempty" xml:"Executor,omitempty"`
-	InstanceId   *int64  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	JobId        *int64  `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	Progress     *string `json:"Progress,omitempty" xml:"Progress,omitempty"`
-	Result       *string `json:"Result,omitempty" xml:"Result,omitempty"`
+	// The data time.
+	DataTime *string `json:"DataTime,omitempty" xml:"DataTime,omitempty"`
+	// The end time of the job execution.
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The user who executes the job.
+	Executor *string `json:"Executor,omitempty" xml:"Executor,omitempty"`
+	// The ID of the job instance.
+	InstanceId *int64 `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ID of the job.
+	JobId *int64 `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The progress of the job instance.
+	Progress *string `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	// The execution results of the job instance.
+	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
+	// The scheduled time of the job.
 	ScheduleTime *string `json:"ScheduleTime,omitempty" xml:"ScheduleTime,omitempty"`
-	StartTime    *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Status       *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
-	TimeType     *int32  `json:"TimeType,omitempty" xml:"TimeType,omitempty"`
-	TriggerType  *int32  `json:"TriggerType,omitempty" xml:"TriggerType,omitempty"`
-	WorkAddr     *string `json:"WorkAddr,omitempty" xml:"WorkAddr,omitempty"`
+	// The start time of the job execution.
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The status of the job instance. Valid values:
+	//
+	// *   **1**: The job instance is waiting for execution.
+	// *   **3**: The job instance is running.
+	// *   **4**: The job instance is successful.
+	// *   **5**: The job instance fails.
+	// *   **9**: The job instance is rejected.
+	//
+	// Enumeration class: com.alibaba.schedulerx.common.domain.InstanceStatus
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The method that is used to specify the time when to schedule the job instance. Valid values:
+	//
+	// *   **1**: cron
+	// *   **3**: fix_rate
+	// *   **4**: second_delay
+	// *   **100**: api
+	//
+	// Enumeration class: com.alibaba.schedulerx.common.domain.TimeType
+	TimeType *int32 `json:"TimeType,omitempty" xml:"TimeType,omitempty"`
+	// The trigger type of the job instance. Valid values:
+	//
+	// *   **1**: The job instance is triggered at the scheduled time.
+	// *   **2**: The job instance is triggered due to data update.
+	// *   **3**: The job instance is triggered by an API call.
+	// *   **4**: The job instance is triggered because it is manually rerun.
+	// *   **5**: The job instance is triggered because the system automatically reruns the job instance upon a system exception, such as a database exception.
+	//
+	// Enumeration class: com.alibaba.schedulerx.common.domain.TriggerType
+	TriggerType *int32 `json:"TriggerType,omitempty" xml:"TriggerType,omitempty"`
+	// The endpoint of the triggered client. The value is in the IP address:Port number format.
+	WorkAddr *string `json:"WorkAddr,omitempty" xml:"WorkAddr,omitempty"`
 }
 
 func (s GetJobInstanceResponseBodyDataJobInstanceDetail) String() string {
@@ -2764,11 +3346,19 @@ func (s *GetJobInstanceResponse) SetBody(v *GetJobInstanceResponseBody) *GetJobI
 }
 
 type GetJobInstanceListRequest struct {
-	GroupId         *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	JobId           *int64  `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	Namespace       *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	EndTimestamp *int64 `json:"EndTimestamp,omitempty" xml:"EndTimestamp,omitempty"`
+	// The ID of the application. You can obtain the application ID on the Application Management page in the SchedulerX console.
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The ID of the job. You can obtain the job ID on the Task Management page in the SchedulerX console.
+	JobId *int64 `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The ID of the namespace. You can obtain the namespace ID on the Namespace page in the SchedulerX console.
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The source of the namespace. This parameter is required only for a special third party.
 	NamespaceSource *string `json:"NamespaceSource,omitempty" xml:"NamespaceSource,omitempty"`
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the region in which the application resides.
+	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	StartTimestamp *int64  `json:"StartTimestamp,omitempty" xml:"StartTimestamp,omitempty"`
+	Status         *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s GetJobInstanceListRequest) String() string {
@@ -2777,6 +3367,11 @@ func (s GetJobInstanceListRequest) String() string {
 
 func (s GetJobInstanceListRequest) GoString() string {
 	return s.String()
+}
+
+func (s *GetJobInstanceListRequest) SetEndTimestamp(v int64) *GetJobInstanceListRequest {
+	s.EndTimestamp = &v
+	return s
 }
 
 func (s *GetJobInstanceListRequest) SetGroupId(v string) *GetJobInstanceListRequest {
@@ -2804,12 +3399,30 @@ func (s *GetJobInstanceListRequest) SetRegionId(v string) *GetJobInstanceListReq
 	return s
 }
 
+func (s *GetJobInstanceListRequest) SetStartTimestamp(v int64) *GetJobInstanceListRequest {
+	s.StartTimestamp = &v
+	return s
+}
+
+func (s *GetJobInstanceListRequest) SetStatus(v int32) *GetJobInstanceListRequest {
+	s.Status = &v
+	return s
+}
+
 type GetJobInstanceListResponseBody struct {
-	Code      *int32                              `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *GetJobInstanceListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                             `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                               `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The HTTP status code that is returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The information about the job instances.
+	Data *GetJobInstanceListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error message that is returned if an error occurs.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the call is successful. Valid values:
+	//
+	// *   **true**: The call is successful.
+	// *   **false**: The call fails.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetJobInstanceListResponseBody) String() string {
@@ -2846,6 +3459,7 @@ func (s *GetJobInstanceListResponseBody) SetSuccess(v bool) *GetJobInstanceListR
 }
 
 type GetJobInstanceListResponseBodyData struct {
+	// The details of the job instance.
 	JobInstanceDetails []*GetJobInstanceListResponseBodyDataJobInstanceDetails `json:"JobInstanceDetails,omitempty" xml:"JobInstanceDetails,omitempty" type:"Repeated"`
 }
 
@@ -2863,19 +3477,55 @@ func (s *GetJobInstanceListResponseBodyData) SetJobInstanceDetails(v []*GetJobIn
 }
 
 type GetJobInstanceListResponseBodyDataJobInstanceDetails struct {
-	DataTime     *string `json:"DataTime,omitempty" xml:"DataTime,omitempty"`
-	EndTime      *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	Executor     *string `json:"Executor,omitempty" xml:"Executor,omitempty"`
-	InstanceId   *int64  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	JobId        *int64  `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	Progress     *string `json:"Progress,omitempty" xml:"Progress,omitempty"`
-	Result       *string `json:"Result,omitempty" xml:"Result,omitempty"`
+	// The data time.
+	DataTime *string `json:"DataTime,omitempty" xml:"DataTime,omitempty"`
+	// The end time of the job execution.
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The user who executes the job.
+	Executor *string `json:"Executor,omitempty" xml:"Executor,omitempty"`
+	// The ID of the job instance.
+	InstanceId *int64 `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ID of the job.
+	JobId *int64 `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The progress of the job instance.
+	Progress *string `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	// The execution results of the job instance.
+	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
+	// The scheduled time of the job.
 	ScheduleTime *string `json:"ScheduleTime,omitempty" xml:"ScheduleTime,omitempty"`
-	StartTime    *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Status       *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
-	TimeType     *int32  `json:"TimeType,omitempty" xml:"TimeType,omitempty"`
-	TriggerType  *int32  `json:"TriggerType,omitempty" xml:"TriggerType,omitempty"`
-	WorkAddr     *string `json:"WorkAddr,omitempty" xml:"WorkAddr,omitempty"`
+	// The start time of the job execution.
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The status of the job instance. Valid values:
+	//
+	// *   **1**: The job instance is waiting for execution.
+	// *   **3**: The job instance is running.
+	// *   **4**: The job instance is successful.
+	// *   **5**: The job instance fails.
+	// *   **9**: The job instance is rejected.
+	//
+	// Enumeration class: com.alibaba.schedulerx.common.domain.InstanceStatus
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The method that is used to specify the time when to schedule the job instance. Valid values:
+	//
+	// *   **1**: cron
+	// *   **3**: fix_rate
+	// *   **4**: second_delay
+	// *   **100**: api
+	//
+	// Enumeration class: com.alibaba.schedulerx.common.domain.TimeType
+	TimeType *int32 `json:"TimeType,omitempty" xml:"TimeType,omitempty"`
+	// The trigger type of the job instance. Valid values:
+	//
+	// *   **1**: The job instance is triggered at the scheduled time.
+	// *   **2**: The job instance is triggered due to data update.
+	// *   **3**: The job instance is triggered by an API call.
+	// *   **4**: The job instance is triggered because it is manually rerun.
+	// *   **5**: The job instance is triggered because the system automatically reruns the job instance upon a system exception, such as a database exception.
+	//
+	// Enumeration class: com.alibaba.schedulerx.common.domain.TriggerType
+	TriggerType *int32 `json:"TriggerType,omitempty" xml:"TriggerType,omitempty"`
+	// The endpoint of the triggered client. The value is in the IP address:Port number format.
+	WorkAddr *string `json:"WorkAddr,omitempty" xml:"WorkAddr,omitempty"`
 }
 
 func (s GetJobInstanceListResponseBodyDataJobInstanceDetails) String() string {
@@ -2980,12 +3630,187 @@ func (s *GetJobInstanceListResponse) SetBody(v *GetJobInstanceListResponseBody) 
 	return s
 }
 
-type GetWorkFlowRequest struct {
+type GetLogRequest struct {
+	EndTimestamp    *int64  `json:"EndTimestamp,omitempty" xml:"EndTimestamp,omitempty"`
 	GroupId         *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	JobId           *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	JobInstanceId   *string `json:"JobInstanceId,omitempty" xml:"JobInstanceId,omitempty"`
+	Keyword         *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	Line            *int32  `json:"Line,omitempty" xml:"Line,omitempty"`
 	Namespace       *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	NamespaceSource *string `json:"NamespaceSource,omitempty" xml:"NamespaceSource,omitempty"`
+	Offset          *int32  `json:"Offset,omitempty" xml:"Offset,omitempty"`
 	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	WorkflowId      *int64  `json:"WorkflowId,omitempty" xml:"WorkflowId,omitempty"`
+	Reverse         *bool   `json:"Reverse,omitempty" xml:"Reverse,omitempty"`
+	StartTimestamp  *int64  `json:"StartTimestamp,omitempty" xml:"StartTimestamp,omitempty"`
+}
+
+func (s GetLogRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLogRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetLogRequest) SetEndTimestamp(v int64) *GetLogRequest {
+	s.EndTimestamp = &v
+	return s
+}
+
+func (s *GetLogRequest) SetGroupId(v string) *GetLogRequest {
+	s.GroupId = &v
+	return s
+}
+
+func (s *GetLogRequest) SetJobId(v string) *GetLogRequest {
+	s.JobId = &v
+	return s
+}
+
+func (s *GetLogRequest) SetJobInstanceId(v string) *GetLogRequest {
+	s.JobInstanceId = &v
+	return s
+}
+
+func (s *GetLogRequest) SetKeyword(v string) *GetLogRequest {
+	s.Keyword = &v
+	return s
+}
+
+func (s *GetLogRequest) SetLine(v int32) *GetLogRequest {
+	s.Line = &v
+	return s
+}
+
+func (s *GetLogRequest) SetNamespace(v string) *GetLogRequest {
+	s.Namespace = &v
+	return s
+}
+
+func (s *GetLogRequest) SetNamespaceSource(v string) *GetLogRequest {
+	s.NamespaceSource = &v
+	return s
+}
+
+func (s *GetLogRequest) SetOffset(v int32) *GetLogRequest {
+	s.Offset = &v
+	return s
+}
+
+func (s *GetLogRequest) SetRegionId(v string) *GetLogRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *GetLogRequest) SetReverse(v bool) *GetLogRequest {
+	s.Reverse = &v
+	return s
+}
+
+func (s *GetLogRequest) SetStartTimestamp(v int64) *GetLogRequest {
+	s.StartTimestamp = &v
+	return s
+}
+
+type GetLogResponseBody struct {
+	Code      *int32                  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *GetLogResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                 `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetLogResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLogResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetLogResponseBody) SetCode(v int32) *GetLogResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetLogResponseBody) SetData(v *GetLogResponseBodyData) *GetLogResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetLogResponseBody) SetMessage(v string) *GetLogResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetLogResponseBody) SetRequestId(v string) *GetLogResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetLogResponseBody) SetSuccess(v bool) *GetLogResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetLogResponseBodyData struct {
+	Logs []*string `json:"Logs,omitempty" xml:"Logs,omitempty" type:"Repeated"`
+}
+
+func (s GetLogResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLogResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetLogResponseBodyData) SetLogs(v []*string) *GetLogResponseBodyData {
+	s.Logs = v
+	return s
+}
+
+type GetLogResponse struct {
+	Headers    map[string]*string  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetLogResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetLogResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLogResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetLogResponse) SetHeaders(v map[string]*string) *GetLogResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetLogResponse) SetStatusCode(v int32) *GetLogResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetLogResponse) SetBody(v *GetLogResponseBody) *GetLogResponse {
+	s.Body = v
+	return s
+}
+
+type GetWorkFlowRequest struct {
+	// The ID of the application group.
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The ID of the namespace.
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The source of the namespcae.
+	NamespaceSource *string `json:"NamespaceSource,omitempty" xml:"NamespaceSource,omitempty"`
+	// The region information.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the workflow.
+	WorkflowId *int64 `json:"WorkflowId,omitempty" xml:"WorkflowId,omitempty"`
 }
 
 func (s GetWorkFlowRequest) String() string {
@@ -3022,11 +3847,16 @@ func (s *GetWorkFlowRequest) SetWorkflowId(v int64) *GetWorkFlowRequest {
 }
 
 type GetWorkFlowResponseBody struct {
-	Code      *int32                       `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *GetWorkFlowResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                      `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                        `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The error code that is returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data of the workflow.
+	Data *GetWorkFlowResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error message that is returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The result of the API call.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetWorkFlowResponseBody) String() string {
@@ -3063,7 +3893,9 @@ func (s *GetWorkFlowResponseBody) SetSuccess(v bool) *GetWorkFlowResponseBody {
 }
 
 type GetWorkFlowResponseBodyData struct {
-	WorkFlowInfo     *GetWorkFlowResponseBodyDataWorkFlowInfo     `json:"WorkFlowInfo,omitempty" xml:"WorkFlowInfo,omitempty" type:"Struct"`
+	// The basic information of the workflow.
+	WorkFlowInfo *GetWorkFlowResponseBodyDataWorkFlowInfo `json:"WorkFlowInfo,omitempty" xml:"WorkFlowInfo,omitempty" type:"Struct"`
+	// The node information of the workflow.
 	WorkFlowNodeInfo *GetWorkFlowResponseBodyDataWorkFlowNodeInfo `json:"WorkFlowNodeInfo,omitempty" xml:"WorkFlowNodeInfo,omitempty" type:"Struct"`
 }
 
@@ -3086,12 +3918,18 @@ func (s *GetWorkFlowResponseBodyData) SetWorkFlowNodeInfo(v *GetWorkFlowResponse
 }
 
 type GetWorkFlowResponseBodyDataWorkFlowInfo struct {
-	Description    *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name           *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Status         *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The description of the workflow.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the workflow.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The status of the workflow.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The time expression of the workflow.
 	TimeExpression *string `json:"TimeExpression,omitempty" xml:"TimeExpression,omitempty"`
-	TimeType       *string `json:"TimeType,omitempty" xml:"TimeType,omitempty"`
-	WorkflowId     *int64  `json:"WorkflowId,omitempty" xml:"WorkflowId,omitempty"`
+	// The time type of the workflow.
+	TimeType *string `json:"TimeType,omitempty" xml:"TimeType,omitempty"`
+	// The ID of the workflow.
+	WorkflowId *int64 `json:"WorkflowId,omitempty" xml:"WorkflowId,omitempty"`
 }
 
 func (s GetWorkFlowResponseBodyDataWorkFlowInfo) String() string {
@@ -3133,7 +3971,9 @@ func (s *GetWorkFlowResponseBodyDataWorkFlowInfo) SetWorkflowId(v int64) *GetWor
 }
 
 type GetWorkFlowResponseBodyDataWorkFlowNodeInfo struct {
+	// The workflow edges.
 	Edges []*GetWorkFlowResponseBodyDataWorkFlowNodeInfoEdges `json:"Edges,omitempty" xml:"Edges,omitempty" type:"Repeated"`
+	// The list of workflow nodes.
 	Nodes []*GetWorkFlowResponseBodyDataWorkFlowNodeInfoNodes `json:"Nodes,omitempty" xml:"Nodes,omitempty" type:"Repeated"`
 }
 
@@ -3156,7 +3996,9 @@ func (s *GetWorkFlowResponseBodyDataWorkFlowNodeInfo) SetNodes(v []*GetWorkFlowR
 }
 
 type GetWorkFlowResponseBodyDataWorkFlowNodeInfoEdges struct {
+	// The ID of the source job.
 	Source *int64 `json:"Source,omitempty" xml:"Source,omitempty"`
+	// The ID of the target job.
 	Target *int64 `json:"Target,omitempty" xml:"Target,omitempty"`
 }
 
@@ -3179,9 +4021,12 @@ func (s *GetWorkFlowResponseBodyDataWorkFlowNodeInfoEdges) SetTarget(v int64) *G
 }
 
 type GetWorkFlowResponseBodyDataWorkFlowNodeInfoNodes struct {
-	Id     *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
-	Label  *string `json:"Label,omitempty" xml:"Label,omitempty"`
-	Status *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The ID of the job.
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The name of the job.
+	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
+	// The status of the job.
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s GetWorkFlowResponseBodyDataWorkFlowNodeInfoNodes) String() string {
@@ -3237,10 +4082,14 @@ func (s *GetWorkFlowResponse) SetBody(v *GetWorkFlowResponseBody) *GetWorkFlowRe
 }
 
 type GetWorkerListRequest struct {
-	GroupId         *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	Namespace       *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The ID of the permission group.
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The ID of the namespace. You can obtain the ID of the namespace on the Namespace page in Distributed Task Scheduling Platform.
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// This parameter is required only for a special third party.
 	NamespaceSource *string `json:"NamespaceSource,omitempty" xml:"NamespaceSource,omitempty"`
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the region.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s GetWorkerListRequest) String() string {
@@ -3272,11 +4121,19 @@ func (s *GetWorkerListRequest) SetRegionId(v string) *GetWorkerListRequest {
 }
 
 type GetWorkerListResponseBody struct {
-	Code      *int32                         `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *GetWorkerListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                        `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                          `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The HTTP status code that is returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The job information.
+	Data *GetWorkerListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The additional information that is returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the call is successful. Valid values:
+	//
+	// *   **true**: The call is successful.
+	// *   **false**: The call fails.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetWorkerListResponseBody) String() string {
@@ -3313,6 +4170,7 @@ func (s *GetWorkerListResponseBody) SetSuccess(v bool) *GetWorkerListResponseBod
 }
 
 type GetWorkerListResponseBodyData struct {
+	// The worker information.
 	WorkerInfos []*GetWorkerListResponseBodyDataWorkerInfos `json:"WorkerInfos,omitempty" xml:"WorkerInfos,omitempty" type:"Repeated"`
 }
 
@@ -3330,11 +4188,17 @@ func (s *GetWorkerListResponseBodyData) SetWorkerInfos(v []*GetWorkerListRespons
 }
 
 type GetWorkerListResponseBodyDataWorkerInfos struct {
-	Ip            *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	Label         *string `json:"Label,omitempty" xml:"Label,omitempty"`
-	Port          *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
-	Starter       *string `json:"Starter,omitempty" xml:"Starter,omitempty"`
-	Version       *string `json:"Version,omitempty" xml:"Version,omitempty"`
+	// The IP address of the worker.
+	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	// The label of the worker.
+	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
+	// The port number of the worker.
+	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The startup method of the worker.
+	Starter *string `json:"Starter,omitempty" xml:"Starter,omitempty"`
+	// The version of the worker.
+	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
+	// The address of the worker. The address is in the format of ${worker_id}@${worker_ip}:${worker_port}.
 	WorkerAddress *string `json:"WorkerAddress,omitempty" xml:"WorkerAddress,omitempty"`
 }
 
@@ -3405,14 +4269,313 @@ func (s *GetWorkerListResponse) SetBody(v *GetWorkerListResponseBody) *GetWorker
 	return s
 }
 
-type GrantPermissionRequest struct {
-	GrantOption     *bool   `json:"GrantOption,omitempty" xml:"GrantOption,omitempty"`
+type GetWorkflowInstanceRequest struct {
 	GroupId         *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	Namespace       *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	NamespaceSource *string `json:"NamespaceSource,omitempty" xml:"NamespaceSource,omitempty"`
 	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	UserId          *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	UserName        *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	WfInstanceId    *int64  `json:"WfInstanceId,omitempty" xml:"WfInstanceId,omitempty"`
+	WorkflowId      *int64  `json:"WorkflowId,omitempty" xml:"WorkflowId,omitempty"`
+}
+
+func (s GetWorkflowInstanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetWorkflowInstanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetWorkflowInstanceRequest) SetGroupId(v string) *GetWorkflowInstanceRequest {
+	s.GroupId = &v
+	return s
+}
+
+func (s *GetWorkflowInstanceRequest) SetNamespace(v string) *GetWorkflowInstanceRequest {
+	s.Namespace = &v
+	return s
+}
+
+func (s *GetWorkflowInstanceRequest) SetNamespaceSource(v string) *GetWorkflowInstanceRequest {
+	s.NamespaceSource = &v
+	return s
+}
+
+func (s *GetWorkflowInstanceRequest) SetRegionId(v string) *GetWorkflowInstanceRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *GetWorkflowInstanceRequest) SetWfInstanceId(v int64) *GetWorkflowInstanceRequest {
+	s.WfInstanceId = &v
+	return s
+}
+
+func (s *GetWorkflowInstanceRequest) SetWorkflowId(v int64) *GetWorkflowInstanceRequest {
+	s.WorkflowId = &v
+	return s
+}
+
+type GetWorkflowInstanceResponseBody struct {
+	Code      *int32                               `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *GetWorkflowInstanceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                              `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                                `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetWorkflowInstanceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetWorkflowInstanceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetWorkflowInstanceResponseBody) SetCode(v int32) *GetWorkflowInstanceResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetWorkflowInstanceResponseBody) SetData(v *GetWorkflowInstanceResponseBodyData) *GetWorkflowInstanceResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetWorkflowInstanceResponseBody) SetMessage(v string) *GetWorkflowInstanceResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetWorkflowInstanceResponseBody) SetRequestId(v string) *GetWorkflowInstanceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetWorkflowInstanceResponseBody) SetSuccess(v bool) *GetWorkflowInstanceResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetWorkflowInstanceResponseBodyData struct {
+	WfInstanceDag  *GetWorkflowInstanceResponseBodyDataWfInstanceDag  `json:"WfInstanceDag,omitempty" xml:"WfInstanceDag,omitempty" type:"Struct"`
+	WfInstanceInfo *GetWorkflowInstanceResponseBodyDataWfInstanceInfo `json:"WfInstanceInfo,omitempty" xml:"WfInstanceInfo,omitempty" type:"Struct"`
+}
+
+func (s GetWorkflowInstanceResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetWorkflowInstanceResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetWorkflowInstanceResponseBodyData) SetWfInstanceDag(v *GetWorkflowInstanceResponseBodyDataWfInstanceDag) *GetWorkflowInstanceResponseBodyData {
+	s.WfInstanceDag = v
+	return s
+}
+
+func (s *GetWorkflowInstanceResponseBodyData) SetWfInstanceInfo(v *GetWorkflowInstanceResponseBodyDataWfInstanceInfo) *GetWorkflowInstanceResponseBodyData {
+	s.WfInstanceInfo = v
+	return s
+}
+
+type GetWorkflowInstanceResponseBodyDataWfInstanceDag struct {
+	Edges []*GetWorkflowInstanceResponseBodyDataWfInstanceDagEdges `json:"Edges,omitempty" xml:"Edges,omitempty" type:"Repeated"`
+	Nodes []*GetWorkflowInstanceResponseBodyDataWfInstanceDagNodes `json:"Nodes,omitempty" xml:"Nodes,omitempty" type:"Repeated"`
+}
+
+func (s GetWorkflowInstanceResponseBodyDataWfInstanceDag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetWorkflowInstanceResponseBodyDataWfInstanceDag) GoString() string {
+	return s.String()
+}
+
+func (s *GetWorkflowInstanceResponseBodyDataWfInstanceDag) SetEdges(v []*GetWorkflowInstanceResponseBodyDataWfInstanceDagEdges) *GetWorkflowInstanceResponseBodyDataWfInstanceDag {
+	s.Edges = v
+	return s
+}
+
+func (s *GetWorkflowInstanceResponseBodyDataWfInstanceDag) SetNodes(v []*GetWorkflowInstanceResponseBodyDataWfInstanceDagNodes) *GetWorkflowInstanceResponseBodyDataWfInstanceDag {
+	s.Nodes = v
+	return s
+}
+
+type GetWorkflowInstanceResponseBodyDataWfInstanceDagEdges struct {
+	Source *int64 `json:"Source,omitempty" xml:"Source,omitempty"`
+	Target *int64 `json:"Target,omitempty" xml:"Target,omitempty"`
+}
+
+func (s GetWorkflowInstanceResponseBodyDataWfInstanceDagEdges) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetWorkflowInstanceResponseBodyDataWfInstanceDagEdges) GoString() string {
+	return s.String()
+}
+
+func (s *GetWorkflowInstanceResponseBodyDataWfInstanceDagEdges) SetSource(v int64) *GetWorkflowInstanceResponseBodyDataWfInstanceDagEdges {
+	s.Source = &v
+	return s
+}
+
+func (s *GetWorkflowInstanceResponseBodyDataWfInstanceDagEdges) SetTarget(v int64) *GetWorkflowInstanceResponseBodyDataWfInstanceDagEdges {
+	s.Target = &v
+	return s
+}
+
+type GetWorkflowInstanceResponseBodyDataWfInstanceDagNodes struct {
+	Attempt       *int32  `json:"Attempt,omitempty" xml:"Attempt,omitempty"`
+	DataTime      *string `json:"DataTime,omitempty" xml:"DataTime,omitempty"`
+	EndTime       *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	JobId         *int64  `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	JobInstanceId *int64  `json:"JobInstanceId,omitempty" xml:"JobInstanceId,omitempty"`
+	Result        *string `json:"Result,omitempty" xml:"Result,omitempty"`
+	ScheduleTime  *string `json:"ScheduleTime,omitempty" xml:"ScheduleTime,omitempty"`
+	StartTime     *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	WorkAddr      *string `json:"WorkAddr,omitempty" xml:"WorkAddr,omitempty"`
+}
+
+func (s GetWorkflowInstanceResponseBodyDataWfInstanceDagNodes) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetWorkflowInstanceResponseBodyDataWfInstanceDagNodes) GoString() string {
+	return s.String()
+}
+
+func (s *GetWorkflowInstanceResponseBodyDataWfInstanceDagNodes) SetAttempt(v int32) *GetWorkflowInstanceResponseBodyDataWfInstanceDagNodes {
+	s.Attempt = &v
+	return s
+}
+
+func (s *GetWorkflowInstanceResponseBodyDataWfInstanceDagNodes) SetDataTime(v string) *GetWorkflowInstanceResponseBodyDataWfInstanceDagNodes {
+	s.DataTime = &v
+	return s
+}
+
+func (s *GetWorkflowInstanceResponseBodyDataWfInstanceDagNodes) SetEndTime(v string) *GetWorkflowInstanceResponseBodyDataWfInstanceDagNodes {
+	s.EndTime = &v
+	return s
+}
+
+func (s *GetWorkflowInstanceResponseBodyDataWfInstanceDagNodes) SetJobId(v int64) *GetWorkflowInstanceResponseBodyDataWfInstanceDagNodes {
+	s.JobId = &v
+	return s
+}
+
+func (s *GetWorkflowInstanceResponseBodyDataWfInstanceDagNodes) SetJobInstanceId(v int64) *GetWorkflowInstanceResponseBodyDataWfInstanceDagNodes {
+	s.JobInstanceId = &v
+	return s
+}
+
+func (s *GetWorkflowInstanceResponseBodyDataWfInstanceDagNodes) SetResult(v string) *GetWorkflowInstanceResponseBodyDataWfInstanceDagNodes {
+	s.Result = &v
+	return s
+}
+
+func (s *GetWorkflowInstanceResponseBodyDataWfInstanceDagNodes) SetScheduleTime(v string) *GetWorkflowInstanceResponseBodyDataWfInstanceDagNodes {
+	s.ScheduleTime = &v
+	return s
+}
+
+func (s *GetWorkflowInstanceResponseBodyDataWfInstanceDagNodes) SetStartTime(v string) *GetWorkflowInstanceResponseBodyDataWfInstanceDagNodes {
+	s.StartTime = &v
+	return s
+}
+
+func (s *GetWorkflowInstanceResponseBodyDataWfInstanceDagNodes) SetWorkAddr(v string) *GetWorkflowInstanceResponseBodyDataWfInstanceDagNodes {
+	s.WorkAddr = &v
+	return s
+}
+
+type GetWorkflowInstanceResponseBodyDataWfInstanceInfo struct {
+	DataTime     *string `json:"DataTime,omitempty" xml:"DataTime,omitempty"`
+	EndTime      *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	ScheduleTime *string `json:"ScheduleTime,omitempty" xml:"ScheduleTime,omitempty"`
+	StartTime    *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Status       *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s GetWorkflowInstanceResponseBodyDataWfInstanceInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetWorkflowInstanceResponseBodyDataWfInstanceInfo) GoString() string {
+	return s.String()
+}
+
+func (s *GetWorkflowInstanceResponseBodyDataWfInstanceInfo) SetDataTime(v string) *GetWorkflowInstanceResponseBodyDataWfInstanceInfo {
+	s.DataTime = &v
+	return s
+}
+
+func (s *GetWorkflowInstanceResponseBodyDataWfInstanceInfo) SetEndTime(v string) *GetWorkflowInstanceResponseBodyDataWfInstanceInfo {
+	s.EndTime = &v
+	return s
+}
+
+func (s *GetWorkflowInstanceResponseBodyDataWfInstanceInfo) SetScheduleTime(v string) *GetWorkflowInstanceResponseBodyDataWfInstanceInfo {
+	s.ScheduleTime = &v
+	return s
+}
+
+func (s *GetWorkflowInstanceResponseBodyDataWfInstanceInfo) SetStartTime(v string) *GetWorkflowInstanceResponseBodyDataWfInstanceInfo {
+	s.StartTime = &v
+	return s
+}
+
+func (s *GetWorkflowInstanceResponseBodyDataWfInstanceInfo) SetStatus(v int32) *GetWorkflowInstanceResponseBodyDataWfInstanceInfo {
+	s.Status = &v
+	return s
+}
+
+type GetWorkflowInstanceResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetWorkflowInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetWorkflowInstanceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetWorkflowInstanceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetWorkflowInstanceResponse) SetHeaders(v map[string]*string) *GetWorkflowInstanceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetWorkflowInstanceResponse) SetStatusCode(v int32) *GetWorkflowInstanceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetWorkflowInstanceResponse) SetBody(v *GetWorkflowInstanceResponseBody) *GetWorkflowInstanceResponse {
+	s.Body = v
+	return s
+}
+
+type GrantPermissionRequest struct {
+	// Specifies whether to grant the permissions with the GRANT option. Valid values: -**true**: grants the permissions with the GRANT option. -**false**: does not grant the permissions with the GRANT option.
+	GrantOption *bool `json:"GrantOption,omitempty" xml:"GrantOption,omitempty"`
+	// The ID of the application group.
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The ID of the namespace.
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// This parameter is required only for a special third party.
+	NamespaceSource *string `json:"NamespaceSource,omitempty" xml:"NamespaceSource,omitempty"`
+	// The ID of the region.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The user ID.
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The username.
+	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
 
 func (s GrantPermissionRequest) String() string {
@@ -3459,10 +4622,17 @@ func (s *GrantPermissionRequest) SetUserName(v string) *GrantPermissionRequest {
 }
 
 type GrantPermissionResponseBody struct {
-	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The HTTP status code that is returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The error message that is returned if an error occurs.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the call is successful. Valid values:
+	//
+	// *   **true**: The call is successful.
+	// *   **false**: The call fails.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GrantPermissionResponseBody) String() string {
@@ -3523,9 +4693,12 @@ func (s *GrantPermissionResponse) SetBody(v *GrantPermissionResponseBody) *Grant
 }
 
 type ListGroupsRequest struct {
-	Namespace       *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The namespace. You can obtain the namespace on the **Namespace** page in Distributed Task Scheduling Platform.
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// Required only for a special third party.
 	NamespaceSource *string `json:"NamespaceSource,omitempty" xml:"NamespaceSource,omitempty"`
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the region in which the application is located.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s ListGroupsRequest) String() string {
@@ -3552,11 +4725,19 @@ func (s *ListGroupsRequest) SetRegionId(v string) *ListGroupsRequest {
 }
 
 type ListGroupsResponseBody struct {
-	Code      *int32                      `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *ListGroupsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                     `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                       `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The HTTP status code returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The information about the list of applications.
+	Data *ListGroupsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The additional information returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the call is successful. Valid values:
+	//
+	// *   **true**: The call is successful.
+	// *   **false**: The call fails.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ListGroupsResponseBody) String() string {
@@ -3593,6 +4774,7 @@ func (s *ListGroupsResponseBody) SetSuccess(v bool) *ListGroupsResponseBody {
 }
 
 type ListGroupsResponseBodyData struct {
+	// The list of applications and details of applications.
 	AppGroups []*ListGroupsResponseBodyDataAppGroups `json:"AppGroups,omitempty" xml:"AppGroups,omitempty" type:"Repeated"`
 }
 
@@ -3610,10 +4792,16 @@ func (s *ListGroupsResponseBodyData) SetAppGroups(v []*ListGroupsResponseBodyDat
 }
 
 type ListGroupsResponseBodyDataAppGroups struct {
-	AppKey      *string `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
-	AppName     *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// 应用分组ID
+	AppGroupId *int64 `json:"AppGroupId,omitempty" xml:"AppGroupId,omitempty"`
+	// The key for the application.
+	AppKey *string `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	// The name of the application.
+	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// The application description.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	GroupId     *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The application ID.
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 }
 
 func (s ListGroupsResponseBodyDataAppGroups) String() string {
@@ -3622,6 +4810,11 @@ func (s ListGroupsResponseBodyDataAppGroups) String() string {
 
 func (s ListGroupsResponseBodyDataAppGroups) GoString() string {
 	return s.String()
+}
+
+func (s *ListGroupsResponseBodyDataAppGroups) SetAppGroupId(v int64) *ListGroupsResponseBodyDataAppGroups {
+	s.AppGroupId = &v
+	return s
 }
 
 func (s *ListGroupsResponseBodyDataAppGroups) SetAppKey(v string) *ListGroupsResponseBodyDataAppGroups {
@@ -3674,12 +4867,21 @@ func (s *ListGroupsResponse) SetBody(v *ListGroupsResponseBody) *ListGroupsRespo
 }
 
 type ListJobsRequest struct {
-	GroupId         *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	JobName         *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
-	Namespace       *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The ID of the application. You can obtain the application ID on the **Application Management** page in the SchedulerX console.
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The name of the job.
+	JobName *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
+	// The ID of the namespace. You can obtain the namespace ID on the **Namespace** page in the SchedulerX console.
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The source of the namespace. This parameter is required only for a special third party.
 	NamespaceSource *string `json:"NamespaceSource,omitempty" xml:"NamespaceSource,omitempty"`
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Status          *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The ID of the region in which the job resides.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Specifies whether to enable the job. Valid values:
+	//
+	// *   **0**: disables the job.
+	// *   **1**: enables the job.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ListJobsRequest) String() string {
@@ -3721,11 +4923,19 @@ func (s *ListJobsRequest) SetStatus(v string) *ListJobsRequest {
 }
 
 type ListJobsResponseBody struct {
-	Code      *int32                    `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *ListJobsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                   `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                     `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The HTTP status code that is returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The information about the jobs.
+	Data *ListJobsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error message that is returned if an error occurs.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the call is successful. Valid values:
+	//
+	// *   **true**: The call is successful.
+	// *   **false**: The call fails.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ListJobsResponseBody) String() string {
@@ -3762,6 +4972,7 @@ func (s *ListJobsResponseBody) SetSuccess(v bool) *ListJobsResponseBody {
 }
 
 type ListJobsResponseBodyData struct {
+	// The jobs and their details.
 	Jobs []*ListJobsResponseBodyDataJobs `json:"Jobs,omitempty" xml:"Jobs,omitempty" type:"Repeated"`
 }
 
@@ -3779,23 +4990,50 @@ func (s *ListJobsResponseBodyData) SetJobs(v []*ListJobsResponseBodyDataJobs) *L
 }
 
 type ListJobsResponseBodyDataJobs struct {
-	AttemptInterval *int32                                      `json:"AttemptInterval,omitempty" xml:"AttemptInterval,omitempty"`
-	ClassName       *string                                     `json:"ClassName,omitempty" xml:"ClassName,omitempty"`
-	Content         *string                                     `json:"Content,omitempty" xml:"Content,omitempty"`
-	Description     *string                                     `json:"Description,omitempty" xml:"Description,omitempty"`
-	ExecuteMode     *string                                     `json:"ExecuteMode,omitempty" xml:"ExecuteMode,omitempty"`
-	JarUrl          *string                                     `json:"JarUrl,omitempty" xml:"JarUrl,omitempty"`
-	JobId           *int64                                      `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	JobMonitorInfo  *ListJobsResponseBodyDataJobsJobMonitorInfo `json:"JobMonitorInfo,omitempty" xml:"JobMonitorInfo,omitempty" type:"Struct"`
-	JobType         *string                                     `json:"JobType,omitempty" xml:"JobType,omitempty"`
-	MapTaskXAttrs   *ListJobsResponseBodyDataJobsMapTaskXAttrs  `json:"MapTaskXAttrs,omitempty" xml:"MapTaskXAttrs,omitempty" type:"Struct"`
-	MaxAttempt      *int32                                      `json:"MaxAttempt,omitempty" xml:"MaxAttempt,omitempty"`
-	MaxConcurrency  *string                                     `json:"MaxConcurrency,omitempty" xml:"MaxConcurrency,omitempty"`
-	Name            *string                                     `json:"Name,omitempty" xml:"Name,omitempty"`
-	Parameters      *string                                     `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
-	Status          *int32                                      `json:"Status,omitempty" xml:"Status,omitempty"`
-	TimeConfig      *ListJobsResponseBodyDataJobsTimeConfig     `json:"TimeConfig,omitempty" xml:"TimeConfig,omitempty" type:"Struct"`
-	XAttrs          *string                                     `json:"XAttrs,omitempty" xml:"XAttrs,omitempty"`
+	// The interval at which the system retries to run the job after a job failure. Unit: seconds. Default value: 30.
+	AttemptInterval *int32 `json:"AttemptInterval,omitempty" xml:"AttemptInterval,omitempty"`
+	// The full path of the job interface class. This parameter is returned only for a Java job.
+	ClassName *string `json:"ClassName,omitempty" xml:"ClassName,omitempty"`
+	// The script of the job. This parameter is returned only for a Python, Shell, or Go job.
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The description of the job.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The execution mode of the job. Valid values:
+	//
+	// *   **standalone**: The job runs in standalone mode.
+	// *   **broadcast**: The job runs in broadcast mode.
+	// *   **parallel**: The job runs in parallel computing mode.
+	// *   **grid**: The job runs in memory grid mode.
+	// *   **batch**: The job runs in grid computing mode.
+	// *   **shard**: The job runs in multipart mode.
+	ExecuteMode *string `json:"ExecuteMode,omitempty" xml:"ExecuteMode,omitempty"`
+	// The full path to which a JAR package is uploaded in Object Storage Service (OSS).
+	JarUrl *string `json:"JarUrl,omitempty" xml:"JarUrl,omitempty"`
+	// The ID of the job.
+	JobId *int64 `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The monitoring information of the job.
+	JobMonitorInfo *ListJobsResponseBodyDataJobsJobMonitorInfo `json:"JobMonitorInfo,omitempty" xml:"JobMonitorInfo,omitempty" type:"Struct"`
+	// The type of the job.
+	JobType *string `json:"JobType,omitempty" xml:"JobType,omitempty"`
+	// The advanced configurations of the job. The parameters are returned only if the value of the ExecuteMode parameter is parallel, grid, or batch.
+	MapTaskXAttrs *ListJobsResponseBodyDataJobsMapTaskXAttrs `json:"MapTaskXAttrs,omitempty" xml:"MapTaskXAttrs,omitempty" type:"Struct"`
+	// The maximum number of retries after a job failure. This parameter is specified based on your business requirements. Default value: 0.
+	MaxAttempt *int32 `json:"MaxAttempt,omitempty" xml:"MaxAttempt,omitempty"`
+	// The maximum number of instances that can concurrently run for the job. Default value: 1. A value of 1 indicates that if the last triggered instance is running, the next instance is not triggered even if the scheduled point in time for running the instance is reached.
+	MaxConcurrency *string `json:"MaxConcurrency,omitempty" xml:"MaxConcurrency,omitempty"`
+	// The name of the job.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The user-defined parameters. These parameters can be obtained when the job is running.
+	Parameters *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
+	// The status of the job. Valid values:
+	//
+	// *   **1**: The job is enabled and can be triggered.
+	// *   **0**: The job is disabled and cannot be triggered.
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The time configurations.
+	TimeConfig *ListJobsResponseBodyDataJobsTimeConfig `json:"TimeConfig,omitempty" xml:"TimeConfig,omitempty" type:"Struct"`
+	// The extended fields.
+	XAttrs *string `json:"XAttrs,omitempty" xml:"XAttrs,omitempty"`
 }
 
 func (s ListJobsResponseBodyDataJobs) String() string {
@@ -3892,7 +5130,9 @@ func (s *ListJobsResponseBodyDataJobs) SetXAttrs(v string) *ListJobsResponseBody
 }
 
 type ListJobsResponseBodyDataJobsJobMonitorInfo struct {
-	ContactInfo   []*ListJobsResponseBodyDataJobsJobMonitorInfoContactInfo `json:"ContactInfo,omitempty" xml:"ContactInfo,omitempty" type:"Repeated"`
+	// The contact information.
+	ContactInfo []*ListJobsResponseBodyDataJobsJobMonitorInfoContactInfo `json:"ContactInfo,omitempty" xml:"ContactInfo,omitempty" type:"Repeated"`
+	// The configurations of the alerting feature and the alert threshold.
 	MonitorConfig *ListJobsResponseBodyDataJobsJobMonitorInfoMonitorConfig `json:"MonitorConfig,omitempty" xml:"MonitorConfig,omitempty" type:"Struct"`
 }
 
@@ -3915,9 +5155,13 @@ func (s *ListJobsResponseBodyDataJobsJobMonitorInfo) SetMonitorConfig(v *ListJob
 }
 
 type ListJobsResponseBodyDataJobsJobMonitorInfoContactInfo struct {
-	Ding      *string `json:"Ding,omitempty" xml:"Ding,omitempty"`
-	UserMail  *string `json:"UserMail,omitempty" xml:"UserMail,omitempty"`
-	UserName  *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	// The webhook URL of the DingTalk chatbot.
+	Ding *string `json:"Ding,omitempty" xml:"Ding,omitempty"`
+	// The email address of the user.
+	UserMail *string `json:"UserMail,omitempty" xml:"UserMail,omitempty"`
+	// The name of the user.
+	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	// The mobile number of the user.
 	UserPhone *string `json:"UserPhone,omitempty" xml:"UserPhone,omitempty"`
 }
 
@@ -3950,12 +5194,27 @@ func (s *ListJobsResponseBodyDataJobsJobMonitorInfoContactInfo) SetUserPhone(v s
 }
 
 type ListJobsResponseBodyDataJobsJobMonitorInfoMonitorConfig struct {
-	FailEnable        *bool   `json:"FailEnable,omitempty" xml:"FailEnable,omitempty"`
-	MissWorkerEnable  *bool   `json:"MissWorkerEnable,omitempty" xml:"MissWorkerEnable,omitempty"`
-	SendChannel       *string `json:"SendChannel,omitempty" xml:"SendChannel,omitempty"`
-	Timeout           *int64  `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
-	TimeoutEnable     *bool   `json:"TimeoutEnable,omitempty" xml:"TimeoutEnable,omitempty"`
-	TimeoutKillEnable *bool   `json:"TimeoutKillEnable,omitempty" xml:"TimeoutKillEnable,omitempty"`
+	// Indicates whether the feature of generating an alert upon a failure is enabled. Valid values:
+	//
+	// *   **true**: The feature is enabled.
+	// *   **false**: The feature is disabled.
+	FailEnable *bool `json:"FailEnable,omitempty" xml:"FailEnable,omitempty"`
+	// Indicates whether the feature of generating an alert when no machine is available for running the job is enabled.
+	MissWorkerEnable *bool `json:"MissWorkerEnable,omitempty" xml:"MissWorkerEnable,omitempty"`
+	// The method that is used to send an alert notification. Only Short Message Service (SMS) is supported.
+	SendChannel *string `json:"SendChannel,omitempty" xml:"SendChannel,omitempty"`
+	// The timeout threshold. Unit: seconds. Default value: 7200.
+	Timeout *int64 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+	// Indicates whether the feature of generating an alert upon a timeout is enabled. Valid values:
+	//
+	// *   **true**: The feature is enabled.
+	// *   **false**: The feature is disabled.
+	TimeoutEnable *bool `json:"TimeoutEnable,omitempty" xml:"TimeoutEnable,omitempty"`
+	// Indicates whether the feature of stopping job triggering upon a timeout is enabled. By default, the feature is disabled.
+	//
+	// *   **true**: The feature is enabled.
+	// *   **false**: The feature is disabled.
+	TimeoutKillEnable *bool `json:"TimeoutKillEnable,omitempty" xml:"TimeoutKillEnable,omitempty"`
 }
 
 func (s ListJobsResponseBodyDataJobsJobMonitorInfoMonitorConfig) String() string {
@@ -3997,12 +5256,18 @@ func (s *ListJobsResponseBodyDataJobsJobMonitorInfoMonitorConfig) SetTimeoutKill
 }
 
 type ListJobsResponseBodyDataJobsMapTaskXAttrs struct {
-	ConsumerSize        *int32 `json:"ConsumerSize,omitempty" xml:"ConsumerSize,omitempty"`
-	DispatcherSize      *int32 `json:"DispatcherSize,omitempty" xml:"DispatcherSize,omitempty"`
-	PageSize            *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	QueueSize           *int32 `json:"QueueSize,omitempty" xml:"QueueSize,omitempty"`
+	// The number of threads that are triggered by a standalone job at a time. Default value: 5.
+	ConsumerSize *int32 `json:"ConsumerSize,omitempty" xml:"ConsumerSize,omitempty"`
+	// The number of task distribution threads. Default value: 5.
+	DispatcherSize *int32 `json:"DispatcherSize,omitempty" xml:"DispatcherSize,omitempty"`
+	// The number of tasks that are pulled by a parallel job at a time. Default value: 100.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The maximum number of task queues that can be cached. Default value: 10000.
+	QueueSize *int32 `json:"QueueSize,omitempty" xml:"QueueSize,omitempty"`
+	// The interval at which the system retries to run the task after a task failure.
 	TaskAttemptInterval *int32 `json:"TaskAttemptInterval,omitempty" xml:"TaskAttemptInterval,omitempty"`
-	TaskMaxAttempt      *int32 `json:"TaskMaxAttempt,omitempty" xml:"TaskMaxAttempt,omitempty"`
+	// The number of retries after a task failure.
+	TaskMaxAttempt *int32 `json:"TaskMaxAttempt,omitempty" xml:"TaskMaxAttempt,omitempty"`
 }
 
 func (s ListJobsResponseBodyDataJobsMapTaskXAttrs) String() string {
@@ -4044,10 +5309,24 @@ func (s *ListJobsResponseBodyDataJobsMapTaskXAttrs) SetTaskMaxAttempt(v int32) *
 }
 
 type ListJobsResponseBodyDataJobsTimeConfig struct {
-	Calendar       *string `json:"Calendar,omitempty" xml:"Calendar,omitempty"`
-	DataOffset     *int32  `json:"DataOffset,omitempty" xml:"DataOffset,omitempty"`
+	// If the TimeType parameter is set to cron, you can specify custom calendar days.
+	Calendar *string `json:"Calendar,omitempty" xml:"Calendar,omitempty"`
+	// The time offset if the TimeType parameter is set to cron. Unit: seconds.
+	DataOffset *int32 `json:"DataOffset,omitempty" xml:"DataOffset,omitempty"`
+	// The time expression. Valid values:
+	//
+	// *   **api**: indicates that no time expression is used to specify the time when to schedule the job.
+	// *   **fix_rate**: indicates that the job is triggered at a fixed frequency. For example, a value of 30 indicates that the job is triggered every 30 seconds.
+	// *   **cron**: indicates that a standard CRON expression is used to specify the time when to schedule the job.
+	// *   **second_delay**: indicates that the job is triggered after a fixed delay. Valid values: 1 to 60. Unit: seconds.
 	TimeExpression *string `json:"TimeExpression,omitempty" xml:"TimeExpression,omitempty"`
-	TimeType       *int32  `json:"TimeType,omitempty" xml:"TimeType,omitempty"`
+	// The method that is used to specify the time when to schedule the job. Valid values:
+	//
+	// *   **1**: cron
+	// *   **3**: fix_rate
+	// *   **4**: second_delay
+	// *   **100**: api
+	TimeType *int32 `json:"TimeType,omitempty" xml:"TimeType,omitempty"`
 }
 
 func (s ListJobsResponseBodyDataJobsTimeConfig) String() string {
@@ -4108,6 +5387,7 @@ func (s *ListJobsResponse) SetBody(v *ListJobsResponseBody) *ListJobsResponse {
 }
 
 type ListNamespacesRequest struct {
+	// The ID of the region.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -4125,11 +5405,19 @@ func (s *ListNamespacesRequest) SetRegionId(v string) *ListNamespacesRequest {
 }
 
 type ListNamespacesResponseBody struct {
-	Code      *int32                          `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *ListNamespacesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                         `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                           `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The HTTP status code that is returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The list of namespaces.
+	Data *ListNamespacesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The additional information that is returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the call is successful. Valid values:
+	//
+	// *   **true**: The call is successful.
+	// *   **false**: The call fails.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ListNamespacesResponseBody) String() string {
@@ -4166,6 +5454,7 @@ func (s *ListNamespacesResponseBody) SetSuccess(v bool) *ListNamespacesResponseB
 }
 
 type ListNamespacesResponseBodyData struct {
+	// The list and details of the namespaces.
 	Namespaces []*ListNamespacesResponseBodyDataNamespaces `json:"Namespaces,omitempty" xml:"Namespaces,omitempty" type:"Repeated"`
 }
 
@@ -4183,9 +5472,12 @@ func (s *ListNamespacesResponseBodyData) SetNamespaces(v []*ListNamespacesRespon
 }
 
 type ListNamespacesResponseBodyDataNamespaces struct {
+	// The description of the namespace.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	UId         *string `json:"UId,omitempty" xml:"UId,omitempty"`
+	// The name of the namespace.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The ID of the namespace.
+	UId *string `json:"UId,omitempty" xml:"UId,omitempty"`
 }
 
 func (s ListNamespacesResponseBodyDataNamespaces) String() string {
@@ -4240,12 +5532,432 @@ func (s *ListNamespacesResponse) SetBody(v *ListNamespacesResponseBody) *ListNam
 	return s
 }
 
-type RevokePermissionRequest struct {
+type ListWorkflowInstanceRequest struct {
 	GroupId         *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	Namespace       *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	NamespaceSource *string `json:"NamespaceSource,omitempty" xml:"NamespaceSource,omitempty"`
 	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	UserId          *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	WorkflowId      *string `json:"WorkflowId,omitempty" xml:"WorkflowId,omitempty"`
+}
+
+func (s ListWorkflowInstanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListWorkflowInstanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListWorkflowInstanceRequest) SetGroupId(v string) *ListWorkflowInstanceRequest {
+	s.GroupId = &v
+	return s
+}
+
+func (s *ListWorkflowInstanceRequest) SetNamespace(v string) *ListWorkflowInstanceRequest {
+	s.Namespace = &v
+	return s
+}
+
+func (s *ListWorkflowInstanceRequest) SetNamespaceSource(v string) *ListWorkflowInstanceRequest {
+	s.NamespaceSource = &v
+	return s
+}
+
+func (s *ListWorkflowInstanceRequest) SetRegionId(v string) *ListWorkflowInstanceRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ListWorkflowInstanceRequest) SetWorkflowId(v string) *ListWorkflowInstanceRequest {
+	s.WorkflowId = &v
+	return s
+}
+
+type ListWorkflowInstanceResponseBody struct {
+	Code      *int32                                `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *ListWorkflowInstanceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                               `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                                 `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ListWorkflowInstanceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListWorkflowInstanceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListWorkflowInstanceResponseBody) SetCode(v int32) *ListWorkflowInstanceResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListWorkflowInstanceResponseBody) SetData(v *ListWorkflowInstanceResponseBodyData) *ListWorkflowInstanceResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListWorkflowInstanceResponseBody) SetMessage(v string) *ListWorkflowInstanceResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListWorkflowInstanceResponseBody) SetRequestId(v string) *ListWorkflowInstanceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListWorkflowInstanceResponseBody) SetSuccess(v bool) *ListWorkflowInstanceResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListWorkflowInstanceResponseBodyData struct {
+	WfInstanceInfos []*ListWorkflowInstanceResponseBodyDataWfInstanceInfos `json:"WfInstanceInfos,omitempty" xml:"WfInstanceInfos,omitempty" type:"Repeated"`
+}
+
+func (s ListWorkflowInstanceResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListWorkflowInstanceResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListWorkflowInstanceResponseBodyData) SetWfInstanceInfos(v []*ListWorkflowInstanceResponseBodyDataWfInstanceInfos) *ListWorkflowInstanceResponseBodyData {
+	s.WfInstanceInfos = v
+	return s
+}
+
+type ListWorkflowInstanceResponseBodyDataWfInstanceInfos struct {
+	DataTime     *string `json:"DataTime,omitempty" xml:"DataTime,omitempty"`
+	EndTime      *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	ScheduleTime *string `json:"ScheduleTime,omitempty" xml:"ScheduleTime,omitempty"`
+	StartTime    *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Status       *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+	WfInstanceId *int64  `json:"WfInstanceId,omitempty" xml:"WfInstanceId,omitempty"`
+	WorkflowId   *int64  `json:"WorkflowId,omitempty" xml:"WorkflowId,omitempty"`
+}
+
+func (s ListWorkflowInstanceResponseBodyDataWfInstanceInfos) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListWorkflowInstanceResponseBodyDataWfInstanceInfos) GoString() string {
+	return s.String()
+}
+
+func (s *ListWorkflowInstanceResponseBodyDataWfInstanceInfos) SetDataTime(v string) *ListWorkflowInstanceResponseBodyDataWfInstanceInfos {
+	s.DataTime = &v
+	return s
+}
+
+func (s *ListWorkflowInstanceResponseBodyDataWfInstanceInfos) SetEndTime(v string) *ListWorkflowInstanceResponseBodyDataWfInstanceInfos {
+	s.EndTime = &v
+	return s
+}
+
+func (s *ListWorkflowInstanceResponseBodyDataWfInstanceInfos) SetScheduleTime(v string) *ListWorkflowInstanceResponseBodyDataWfInstanceInfos {
+	s.ScheduleTime = &v
+	return s
+}
+
+func (s *ListWorkflowInstanceResponseBodyDataWfInstanceInfos) SetStartTime(v string) *ListWorkflowInstanceResponseBodyDataWfInstanceInfos {
+	s.StartTime = &v
+	return s
+}
+
+func (s *ListWorkflowInstanceResponseBodyDataWfInstanceInfos) SetStatus(v int32) *ListWorkflowInstanceResponseBodyDataWfInstanceInfos {
+	s.Status = &v
+	return s
+}
+
+func (s *ListWorkflowInstanceResponseBodyDataWfInstanceInfos) SetWfInstanceId(v int64) *ListWorkflowInstanceResponseBodyDataWfInstanceInfos {
+	s.WfInstanceId = &v
+	return s
+}
+
+func (s *ListWorkflowInstanceResponseBodyDataWfInstanceInfos) SetWorkflowId(v int64) *ListWorkflowInstanceResponseBodyDataWfInstanceInfos {
+	s.WorkflowId = &v
+	return s
+}
+
+type ListWorkflowInstanceResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListWorkflowInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListWorkflowInstanceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListWorkflowInstanceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListWorkflowInstanceResponse) SetHeaders(v map[string]*string) *ListWorkflowInstanceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListWorkflowInstanceResponse) SetStatusCode(v int32) *ListWorkflowInstanceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListWorkflowInstanceResponse) SetBody(v *ListWorkflowInstanceResponseBody) *ListWorkflowInstanceResponse {
+	s.Body = v
+	return s
+}
+
+type RerunJobRequest struct {
+	DataTime        *string `json:"DataTime,omitempty" xml:"DataTime,omitempty"`
+	EndDate         *int64  `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	GroupId         *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	JobId           *int64  `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	Namespace       *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	NamespaceSource *string `json:"NamespaceSource,omitempty" xml:"NamespaceSource,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	StartDate       *int64  `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+}
+
+func (s RerunJobRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RerunJobRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RerunJobRequest) SetDataTime(v string) *RerunJobRequest {
+	s.DataTime = &v
+	return s
+}
+
+func (s *RerunJobRequest) SetEndDate(v int64) *RerunJobRequest {
+	s.EndDate = &v
+	return s
+}
+
+func (s *RerunJobRequest) SetGroupId(v string) *RerunJobRequest {
+	s.GroupId = &v
+	return s
+}
+
+func (s *RerunJobRequest) SetJobId(v int64) *RerunJobRequest {
+	s.JobId = &v
+	return s
+}
+
+func (s *RerunJobRequest) SetNamespace(v string) *RerunJobRequest {
+	s.Namespace = &v
+	return s
+}
+
+func (s *RerunJobRequest) SetNamespaceSource(v string) *RerunJobRequest {
+	s.NamespaceSource = &v
+	return s
+}
+
+func (s *RerunJobRequest) SetRegionId(v string) *RerunJobRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *RerunJobRequest) SetStartDate(v int64) *RerunJobRequest {
+	s.StartDate = &v
+	return s
+}
+
+type RerunJobResponseBody struct {
+	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s RerunJobResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RerunJobResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RerunJobResponseBody) SetCode(v int32) *RerunJobResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *RerunJobResponseBody) SetMessage(v string) *RerunJobResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *RerunJobResponseBody) SetRequestId(v string) *RerunJobResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *RerunJobResponseBody) SetSuccess(v bool) *RerunJobResponseBody {
+	s.Success = &v
+	return s
+}
+
+type RerunJobResponse struct {
+	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *RerunJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s RerunJobResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RerunJobResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RerunJobResponse) SetHeaders(v map[string]*string) *RerunJobResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RerunJobResponse) SetStatusCode(v int32) *RerunJobResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RerunJobResponse) SetBody(v *RerunJobResponseBody) *RerunJobResponse {
+	s.Body = v
+	return s
+}
+
+type RetryJobInstanceRequest struct {
+	GroupId         *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	JobId           *int64  `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	JobInstanceId   *int64  `json:"JobInstanceId,omitempty" xml:"JobInstanceId,omitempty"`
+	Namespace       *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	NamespaceSource *string `json:"NamespaceSource,omitempty" xml:"NamespaceSource,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s RetryJobInstanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RetryJobInstanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RetryJobInstanceRequest) SetGroupId(v string) *RetryJobInstanceRequest {
+	s.GroupId = &v
+	return s
+}
+
+func (s *RetryJobInstanceRequest) SetJobId(v int64) *RetryJobInstanceRequest {
+	s.JobId = &v
+	return s
+}
+
+func (s *RetryJobInstanceRequest) SetJobInstanceId(v int64) *RetryJobInstanceRequest {
+	s.JobInstanceId = &v
+	return s
+}
+
+func (s *RetryJobInstanceRequest) SetNamespace(v string) *RetryJobInstanceRequest {
+	s.Namespace = &v
+	return s
+}
+
+func (s *RetryJobInstanceRequest) SetNamespaceSource(v string) *RetryJobInstanceRequest {
+	s.NamespaceSource = &v
+	return s
+}
+
+func (s *RetryJobInstanceRequest) SetRegionId(v string) *RetryJobInstanceRequest {
+	s.RegionId = &v
+	return s
+}
+
+type RetryJobInstanceResponseBody struct {
+	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s RetryJobInstanceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RetryJobInstanceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RetryJobInstanceResponseBody) SetCode(v int32) *RetryJobInstanceResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *RetryJobInstanceResponseBody) SetMessage(v string) *RetryJobInstanceResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *RetryJobInstanceResponseBody) SetRequestId(v string) *RetryJobInstanceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *RetryJobInstanceResponseBody) SetSuccess(v bool) *RetryJobInstanceResponseBody {
+	s.Success = &v
+	return s
+}
+
+type RetryJobInstanceResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *RetryJobInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s RetryJobInstanceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RetryJobInstanceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RetryJobInstanceResponse) SetHeaders(v map[string]*string) *RetryJobInstanceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RetryJobInstanceResponse) SetStatusCode(v int32) *RetryJobInstanceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RetryJobInstanceResponse) SetBody(v *RetryJobInstanceResponseBody) *RetryJobInstanceResponse {
+	s.Body = v
+	return s
+}
+
+type RevokePermissionRequest struct {
+	// The ID of the application. You can obtain the application ID on the Application Management page in the SchedulerX console.
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The ID of the namespace. You can obtain the namespace ID on the Namespace page in the SchedulerX console.
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// This parameter is required only for a special third party.
+	NamespaceSource *string `json:"NamespaceSource,omitempty" xml:"NamespaceSource,omitempty"`
+	// The ID of the region.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The unique ID (UID) of the RAM user.
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s RevokePermissionRequest) String() string {
@@ -4282,10 +5994,17 @@ func (s *RevokePermissionRequest) SetUserId(v string) *RevokePermissionRequest {
 }
 
 type RevokePermissionResponseBody struct {
-	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The HTTP status code that is returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The error message that is returned if an error occurs.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the call is successful. Valid values:
+	//
+	// *   **true**: The call is successful.
+	// *   **false**: The call fails.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s RevokePermissionResponseBody) String() string {
@@ -4345,13 +6064,241 @@ func (s *RevokePermissionResponse) SetBody(v *RevokePermissionResponseBody) *Rev
 	return s
 }
 
-type StopInstanceRequest struct {
+type SetJobInstanceSuccessRequest struct {
 	GroupId         *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	InstanceId      *int64  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	JobId           *int64  `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	JobInstanceId   *int64  `json:"JobInstanceId,omitempty" xml:"JobInstanceId,omitempty"`
 	Namespace       *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	NamespaceSource *string `json:"NamespaceSource,omitempty" xml:"NamespaceSource,omitempty"`
 	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s SetJobInstanceSuccessRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetJobInstanceSuccessRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SetJobInstanceSuccessRequest) SetGroupId(v string) *SetJobInstanceSuccessRequest {
+	s.GroupId = &v
+	return s
+}
+
+func (s *SetJobInstanceSuccessRequest) SetJobId(v int64) *SetJobInstanceSuccessRequest {
+	s.JobId = &v
+	return s
+}
+
+func (s *SetJobInstanceSuccessRequest) SetJobInstanceId(v int64) *SetJobInstanceSuccessRequest {
+	s.JobInstanceId = &v
+	return s
+}
+
+func (s *SetJobInstanceSuccessRequest) SetNamespace(v string) *SetJobInstanceSuccessRequest {
+	s.Namespace = &v
+	return s
+}
+
+func (s *SetJobInstanceSuccessRequest) SetNamespaceSource(v string) *SetJobInstanceSuccessRequest {
+	s.NamespaceSource = &v
+	return s
+}
+
+func (s *SetJobInstanceSuccessRequest) SetRegionId(v string) *SetJobInstanceSuccessRequest {
+	s.RegionId = &v
+	return s
+}
+
+type SetJobInstanceSuccessResponseBody struct {
+	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s SetJobInstanceSuccessResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetJobInstanceSuccessResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SetJobInstanceSuccessResponseBody) SetCode(v int32) *SetJobInstanceSuccessResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *SetJobInstanceSuccessResponseBody) SetMessage(v string) *SetJobInstanceSuccessResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *SetJobInstanceSuccessResponseBody) SetRequestId(v string) *SetJobInstanceSuccessResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SetJobInstanceSuccessResponseBody) SetSuccess(v bool) *SetJobInstanceSuccessResponseBody {
+	s.Success = &v
+	return s
+}
+
+type SetJobInstanceSuccessResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SetJobInstanceSuccessResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SetJobInstanceSuccessResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetJobInstanceSuccessResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SetJobInstanceSuccessResponse) SetHeaders(v map[string]*string) *SetJobInstanceSuccessResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SetJobInstanceSuccessResponse) SetStatusCode(v int32) *SetJobInstanceSuccessResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SetJobInstanceSuccessResponse) SetBody(v *SetJobInstanceSuccessResponseBody) *SetJobInstanceSuccessResponse {
+	s.Body = v
+	return s
+}
+
+type SetWfInstanceSuccessRequest struct {
+	GroupId         *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	Namespace       *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	NamespaceSource *string `json:"NamespaceSource,omitempty" xml:"NamespaceSource,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	WfInstanceId    *int64  `json:"WfInstanceId,omitempty" xml:"WfInstanceId,omitempty"`
+	WorkflowId      *int64  `json:"WorkflowId,omitempty" xml:"WorkflowId,omitempty"`
+}
+
+func (s SetWfInstanceSuccessRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetWfInstanceSuccessRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SetWfInstanceSuccessRequest) SetGroupId(v string) *SetWfInstanceSuccessRequest {
+	s.GroupId = &v
+	return s
+}
+
+func (s *SetWfInstanceSuccessRequest) SetNamespace(v string) *SetWfInstanceSuccessRequest {
+	s.Namespace = &v
+	return s
+}
+
+func (s *SetWfInstanceSuccessRequest) SetNamespaceSource(v string) *SetWfInstanceSuccessRequest {
+	s.NamespaceSource = &v
+	return s
+}
+
+func (s *SetWfInstanceSuccessRequest) SetRegionId(v string) *SetWfInstanceSuccessRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *SetWfInstanceSuccessRequest) SetWfInstanceId(v int64) *SetWfInstanceSuccessRequest {
+	s.WfInstanceId = &v
+	return s
+}
+
+func (s *SetWfInstanceSuccessRequest) SetWorkflowId(v int64) *SetWfInstanceSuccessRequest {
+	s.WorkflowId = &v
+	return s
+}
+
+type SetWfInstanceSuccessResponseBody struct {
+	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s SetWfInstanceSuccessResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetWfInstanceSuccessResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SetWfInstanceSuccessResponseBody) SetCode(v int32) *SetWfInstanceSuccessResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *SetWfInstanceSuccessResponseBody) SetMessage(v string) *SetWfInstanceSuccessResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *SetWfInstanceSuccessResponseBody) SetRequestId(v string) *SetWfInstanceSuccessResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SetWfInstanceSuccessResponseBody) SetSuccess(v bool) *SetWfInstanceSuccessResponseBody {
+	s.Success = &v
+	return s
+}
+
+type SetWfInstanceSuccessResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SetWfInstanceSuccessResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SetWfInstanceSuccessResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetWfInstanceSuccessResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SetWfInstanceSuccessResponse) SetHeaders(v map[string]*string) *SetWfInstanceSuccessResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SetWfInstanceSuccessResponse) SetStatusCode(v int32) *SetWfInstanceSuccessResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SetWfInstanceSuccessResponse) SetBody(v *SetWfInstanceSuccessResponseBody) *SetWfInstanceSuccessResponse {
+	s.Body = v
+	return s
+}
+
+type StopInstanceRequest struct {
+	// The ID of the application. You can obtain the application ID on the Application Management page in the SchedulerX console.
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The ID of the job instance in the running state.
+	InstanceId *int64 `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ID of the job. You can obtain the job ID on the Task Management page in the SchedulerX console.
+	JobId *int64 `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The ID of the namespace. You can obtain the namespace ID on the Namespace page in the SchedulerX console.
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The source of the namespace. This parameter is required only for a special third party.
+	NamespaceSource *string `json:"NamespaceSource,omitempty" xml:"NamespaceSource,omitempty"`
+	// The ID of the region in which the application resides.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s StopInstanceRequest) String() string {
@@ -4393,10 +6340,17 @@ func (s *StopInstanceRequest) SetRegionId(v string) *StopInstanceRequest {
 }
 
 type StopInstanceResponseBody struct {
-	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The HTTP status code that is returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The error message that is returned if an error occurs.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the call is successful. Valid values:
+	//
+	// *   **true**: The call is successful.
+	// *   **false**: The call fails.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s StopInstanceResponseBody) String() string {
@@ -4457,38 +6411,101 @@ func (s *StopInstanceResponse) SetBody(v *StopInstanceResponseBody) *StopInstanc
 }
 
 type UpdateJobRequest struct {
-	AttemptInterval     *int32                         `json:"AttemptInterval,omitempty" xml:"AttemptInterval,omitempty"`
-	Calendar            *string                        `json:"Calendar,omitempty" xml:"Calendar,omitempty"`
-	ClassName           *string                        `json:"ClassName,omitempty" xml:"ClassName,omitempty"`
-	ConsumerSize        *int32                         `json:"ConsumerSize,omitempty" xml:"ConsumerSize,omitempty"`
-	ContactInfo         []*UpdateJobRequestContactInfo `json:"ContactInfo,omitempty" xml:"ContactInfo,omitempty" type:"Repeated"`
-	Content             *string                        `json:"Content,omitempty" xml:"Content,omitempty"`
-	DataOffset          *int32                         `json:"DataOffset,omitempty" xml:"DataOffset,omitempty"`
-	Description         *string                        `json:"Description,omitempty" xml:"Description,omitempty"`
-	DispatcherSize      *int32                         `json:"DispatcherSize,omitempty" xml:"DispatcherSize,omitempty"`
-	ExecuteMode         *string                        `json:"ExecuteMode,omitempty" xml:"ExecuteMode,omitempty"`
-	FailEnable          *bool                          `json:"FailEnable,omitempty" xml:"FailEnable,omitempty"`
-	GroupId             *string                        `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	JarUrl              *string                        `json:"JarUrl,omitempty" xml:"JarUrl,omitempty"`
-	JobId               *int64                         `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	MaxAttempt          *int32                         `json:"MaxAttempt,omitempty" xml:"MaxAttempt,omitempty"`
-	MaxConcurrency      *int32                         `json:"MaxConcurrency,omitempty" xml:"MaxConcurrency,omitempty"`
-	MissWorkerEnable    *bool                          `json:"MissWorkerEnable,omitempty" xml:"MissWorkerEnable,omitempty"`
-	Name                *string                        `json:"Name,omitempty" xml:"Name,omitempty"`
-	Namespace           *string                        `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	NamespaceSource     *string                        `json:"NamespaceSource,omitempty" xml:"NamespaceSource,omitempty"`
-	PageSize            *int32                         `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Parameters          *string                        `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
-	QueueSize           *int32                         `json:"QueueSize,omitempty" xml:"QueueSize,omitempty"`
-	RegionId            *string                        `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	SendChannel         *string                        `json:"SendChannel,omitempty" xml:"SendChannel,omitempty"`
-	TaskAttemptInterval *int32                         `json:"TaskAttemptInterval,omitempty" xml:"TaskAttemptInterval,omitempty"`
-	TaskMaxAttempt      *int32                         `json:"TaskMaxAttempt,omitempty" xml:"TaskMaxAttempt,omitempty"`
-	TimeExpression      *string                        `json:"TimeExpression,omitempty" xml:"TimeExpression,omitempty"`
-	TimeType            *int32                         `json:"TimeType,omitempty" xml:"TimeType,omitempty"`
-	Timeout             *int64                         `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
-	TimeoutEnable       *bool                          `json:"TimeoutEnable,omitempty" xml:"TimeoutEnable,omitempty"`
-	TimeoutKillEnable   *bool                          `json:"TimeoutKillEnable,omitempty" xml:"TimeoutKillEnable,omitempty"`
+	// The interval at which the system attempts to rerun a job. Default value: 30. Unit: seconds.
+	AttemptInterval *int32 `json:"AttemptInterval,omitempty" xml:"AttemptInterval,omitempty"`
+	// When the Time type parameter is set to cron, you can specify a custom calendar.
+	Calendar *string `json:"Calendar,omitempty" xml:"Calendar,omitempty"`
+	// The full path of the job interface class.
+	//
+	// This field is available only when you select a java job. In this case, you must enter a full path.
+	ClassName *string `json:"ClassName,omitempty" xml:"ClassName,omitempty"`
+	// The number of threads that are triggered by a single worker at a time. Default value: 5. This parameter is an advanced configuration item of the MapReduce job.
+	ConsumerSize *int32 `json:"ConsumerSize,omitempty" xml:"ConsumerSize,omitempty"`
+	// The information of the job contact.
+	ContactInfo []*UpdateJobRequestContactInfo `json:"ContactInfo,omitempty" xml:"ContactInfo,omitempty" type:"Repeated"`
+	// The script code content that is required when you set the job type to **python**, **shell**, or **go**.
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// When the Time type parameter is set to cron, you can specify a time offset. Unit: seconds.
+	DataOffset *int32 `json:"DataOffset,omitempty" xml:"DataOffset,omitempty"`
+	// The description of the job.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Default value: 5. This parameter is an advanced configuration item of the MapReduce job.
+	DispatcherSize *int32 `json:"DispatcherSize,omitempty" xml:"DispatcherSize,omitempty"`
+	// The execution mode of the job. The following execution modes are supported:
+	//
+	// *   **standalone**: The job runs in standalone mode.
+	// *   **broadcast**: The job runs in broadcast mode.
+	// *   **parallel**: The job runs in parallel computing mode.
+	// *   **grid**: The job runs in memory grid mode.
+	// *   **batch**: The job runs in grid computing mode.
+	// *   **sharding**: The job runs in sharding mode.
+	ExecuteMode *string `json:"ExecuteMode,omitempty" xml:"ExecuteMode,omitempty"`
+	// Specifies whether to turn on Failure alarm. Valid values:
+	//
+	// *   **true**: Turn on Failure alarm.
+	// *   **false**: Turn off Failure alarm.
+	FailEnable *bool  `json:"FailEnable,omitempty" xml:"FailEnable,omitempty"`
+	FailTimes  *int32 `json:"FailTimes,omitempty" xml:"FailTimes,omitempty"`
+	// The ID of the application. You can obtain the application ID on the Application Management page in Distributed Task Scheduling Platform.
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The ID of the job. You can obtain the job ID on the Task Management page in Distributed Task Scheduling Platform.
+	JobId *int64 `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The maximum number of attempts that the system can make when an error occurs on a job. You can specify this parameter based on your business requirements.
+	MaxAttempt *int32 `json:"MaxAttempt,omitempty" xml:"MaxAttempt,omitempty"`
+	// The maximum number of instances that the system can run at the same time. Default value: 1. When you set this parameter to 1, if the current job does not end, the system will not run the next job even if the runtime is reached.
+	MaxConcurrency *int32 `json:"MaxConcurrency,omitempty" xml:"MaxConcurrency,omitempty"`
+	// Specifies whether to turn on No machine alarm available when no worker is available.
+	//
+	// *   **true**: Turn on No machine alarm available when no worker is available.
+	// *   **false**: Turn off No machine alarm available when no worker is available.
+	MissWorkerEnable *bool `json:"MissWorkerEnable,omitempty" xml:"MissWorkerEnable,omitempty"`
+	// The name of the job.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The ID of the namespace. You can obtain the ID of the namespace on the Namespace page in Distributed Task Scheduling Platform.
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// This parameter is required only for a special third party.
+	NamespaceSource *string `json:"NamespaceSource,omitempty" xml:"NamespaceSource,omitempty"`
+	// The number of subtasks that can be pulled at a time. Default value: 100. This parameter is an advanced configuration item of the MapReduce job.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The user-defined parameters that you can obtain when you run the job.
+	Parameters *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
+	// The maximum number of subtask queues that you can cache. Default value: 10000. This parameter is an advanced configuration item of the MapReduce job.
+	QueueSize *int32 `json:"QueueSize,omitempty" xml:"QueueSize,omitempty"`
+	// The ID of the region.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The channel for sending alerts. Only SMS messages are supported.
+	SendChannel         *string `json:"SendChannel,omitempty" xml:"SendChannel,omitempty"`
+	SuccessNoticeEnable *bool   `json:"SuccessNoticeEnable,omitempty" xml:"SuccessNoticeEnable,omitempty"`
+	// The interval at which the system can rerun the subtask when the subtask fails. This parameter is an advanced configuration item of the MapReduce job.
+	TaskAttemptInterval *int32 `json:"TaskAttemptInterval,omitempty" xml:"TaskAttemptInterval,omitempty"`
+	// The number of retries that the system can perform when the subtask fails. This parameter is an advanced configuration item of the MapReduce job.
+	TaskMaxAttempt *int32 `json:"TaskMaxAttempt,omitempty" xml:"TaskMaxAttempt,omitempty"`
+	// The time expression. You can set the time expression according to the selected time type.
+	//
+	// *   **cron**: Specify a standard Cron expression. You can verify the expression online after you specify the expression.
+	// *   **api**: No time expression is available.
+	// *   **fixed_rate**: Specify a fixed frequency value. Unit: seconds. For example, if you set this parameter to 30, the system triggers a job every 30 seconds.
+	// *   **second_delay**: Specify a delay after which you can run a job. You can specify a value from 1 to 60. Unit: seconds.
+	TimeExpression *string `json:"TimeExpression,omitempty" xml:"TimeExpression,omitempty"`
+	// The type of time. The following time types are supported:
+	//
+	// *   **cron**: 1
+	// *   **fix_rate**: 3
+	// *   **second_delay**: 4
+	// *   **api**: 100
+	TimeType *int32 `json:"TimeType,omitempty" xml:"TimeType,omitempty"`
+	// The timeout threshold. Default value: 7200. Unit: seconds.
+	Timeout *int64 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+	// Specifies whether to turn on Timeout alarm. Valid values:
+	//
+	// *   **true**: Turn on Timeout alarm.
+	// *   **false**: Turn off Timeout alarm.
+	TimeoutEnable *bool `json:"TimeoutEnable,omitempty" xml:"TimeoutEnable,omitempty"`
+	// Specifies whether to turn on Timeout termination. Valid values:
+	//
+	// *   **true**: Turn on Timeout termination.
+	// *   **false**: Turn off Timeout termination.
+	TimeoutKillEnable *bool `json:"TimeoutKillEnable,omitempty" xml:"TimeoutKillEnable,omitempty"`
 }
 
 func (s UpdateJobRequest) String() string {
@@ -4554,13 +6571,13 @@ func (s *UpdateJobRequest) SetFailEnable(v bool) *UpdateJobRequest {
 	return s
 }
 
-func (s *UpdateJobRequest) SetGroupId(v string) *UpdateJobRequest {
-	s.GroupId = &v
+func (s *UpdateJobRequest) SetFailTimes(v int32) *UpdateJobRequest {
+	s.FailTimes = &v
 	return s
 }
 
-func (s *UpdateJobRequest) SetJarUrl(v string) *UpdateJobRequest {
-	s.JarUrl = &v
+func (s *UpdateJobRequest) SetGroupId(v string) *UpdateJobRequest {
+	s.GroupId = &v
 	return s
 }
 
@@ -4624,6 +6641,11 @@ func (s *UpdateJobRequest) SetSendChannel(v string) *UpdateJobRequest {
 	return s
 }
 
+func (s *UpdateJobRequest) SetSuccessNoticeEnable(v bool) *UpdateJobRequest {
+	s.SuccessNoticeEnable = &v
+	return s
+}
+
 func (s *UpdateJobRequest) SetTaskAttemptInterval(v int32) *UpdateJobRequest {
 	s.TaskAttemptInterval = &v
 	return s
@@ -4660,9 +6682,13 @@ func (s *UpdateJobRequest) SetTimeoutKillEnable(v bool) *UpdateJobRequest {
 }
 
 type UpdateJobRequestContactInfo struct {
-	Ding      *string `json:"Ding,omitempty" xml:"Ding,omitempty"`
-	UserMail  *string `json:"UserMail,omitempty" xml:"UserMail,omitempty"`
-	UserName  *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	// The webhook URL of the DingTalk chatbot. For more information, see [DingTalk development documentation](https://open.dingtalk.com/document/org/application-types).
+	Ding *string `json:"Ding,omitempty" xml:"Ding,omitempty"`
+	// The email address of the contact.
+	UserMail *string `json:"UserMail,omitempty" xml:"UserMail,omitempty"`
+	// The name of the contact.
+	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	// The mobile phone number of the contact.
 	UserPhone *string `json:"UserPhone,omitempty" xml:"UserPhone,omitempty"`
 }
 
@@ -4695,10 +6721,14 @@ func (s *UpdateJobRequestContactInfo) SetUserPhone(v string) *UpdateJobRequestCo
 }
 
 type UpdateJobResponseBody struct {
-	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The HTTP status code that is returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The additional information that is returned only if the error occurs.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request was successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s UpdateJobResponseBody) String() string {
@@ -4758,6 +6788,246 @@ func (s *UpdateJobResponse) SetBody(v *UpdateJobResponseBody) *UpdateJobResponse
 	return s
 }
 
+type UpdateWorkflowRequest struct {
+	Description     *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	GroupId         *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	Name            *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Namespace       *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	NamespaceSource *string `json:"NamespaceSource,omitempty" xml:"NamespaceSource,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	TimeExpression  *string `json:"TimeExpression,omitempty" xml:"TimeExpression,omitempty"`
+	TimeType        *int32  `json:"TimeType,omitempty" xml:"TimeType,omitempty"`
+	WorkflowId      *string `json:"WorkflowId,omitempty" xml:"WorkflowId,omitempty"`
+}
+
+func (s UpdateWorkflowRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateWorkflowRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateWorkflowRequest) SetDescription(v string) *UpdateWorkflowRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *UpdateWorkflowRequest) SetGroupId(v string) *UpdateWorkflowRequest {
+	s.GroupId = &v
+	return s
+}
+
+func (s *UpdateWorkflowRequest) SetName(v string) *UpdateWorkflowRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *UpdateWorkflowRequest) SetNamespace(v string) *UpdateWorkflowRequest {
+	s.Namespace = &v
+	return s
+}
+
+func (s *UpdateWorkflowRequest) SetNamespaceSource(v string) *UpdateWorkflowRequest {
+	s.NamespaceSource = &v
+	return s
+}
+
+func (s *UpdateWorkflowRequest) SetRegionId(v string) *UpdateWorkflowRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *UpdateWorkflowRequest) SetTimeExpression(v string) *UpdateWorkflowRequest {
+	s.TimeExpression = &v
+	return s
+}
+
+func (s *UpdateWorkflowRequest) SetTimeType(v int32) *UpdateWorkflowRequest {
+	s.TimeType = &v
+	return s
+}
+
+func (s *UpdateWorkflowRequest) SetWorkflowId(v string) *UpdateWorkflowRequest {
+	s.WorkflowId = &v
+	return s
+}
+
+type UpdateWorkflowResponseBody struct {
+	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UpdateWorkflowResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateWorkflowResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateWorkflowResponseBody) SetCode(v int32) *UpdateWorkflowResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UpdateWorkflowResponseBody) SetMessage(v string) *UpdateWorkflowResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UpdateWorkflowResponseBody) SetRequestId(v string) *UpdateWorkflowResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateWorkflowResponseBody) SetSuccess(v bool) *UpdateWorkflowResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateWorkflowResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateWorkflowResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateWorkflowResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateWorkflowResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateWorkflowResponse) SetHeaders(v map[string]*string) *UpdateWorkflowResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateWorkflowResponse) SetStatusCode(v int32) *UpdateWorkflowResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateWorkflowResponse) SetBody(v *UpdateWorkflowResponseBody) *UpdateWorkflowResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateWorkflowDagRequest struct {
+	DagJson         *string `json:"DagJson,omitempty" xml:"DagJson,omitempty"`
+	GroupId         *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	Namespace       *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	NamespaceSource *string `json:"NamespaceSource,omitempty" xml:"NamespaceSource,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	WorkflowId      *string `json:"WorkflowId,omitempty" xml:"WorkflowId,omitempty"`
+}
+
+func (s UpdateWorkflowDagRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateWorkflowDagRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateWorkflowDagRequest) SetDagJson(v string) *UpdateWorkflowDagRequest {
+	s.DagJson = &v
+	return s
+}
+
+func (s *UpdateWorkflowDagRequest) SetGroupId(v string) *UpdateWorkflowDagRequest {
+	s.GroupId = &v
+	return s
+}
+
+func (s *UpdateWorkflowDagRequest) SetNamespace(v string) *UpdateWorkflowDagRequest {
+	s.Namespace = &v
+	return s
+}
+
+func (s *UpdateWorkflowDagRequest) SetNamespaceSource(v string) *UpdateWorkflowDagRequest {
+	s.NamespaceSource = &v
+	return s
+}
+
+func (s *UpdateWorkflowDagRequest) SetRegionId(v string) *UpdateWorkflowDagRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *UpdateWorkflowDagRequest) SetWorkflowId(v string) *UpdateWorkflowDagRequest {
+	s.WorkflowId = &v
+	return s
+}
+
+type UpdateWorkflowDagResponseBody struct {
+	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UpdateWorkflowDagResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateWorkflowDagResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateWorkflowDagResponseBody) SetCode(v int32) *UpdateWorkflowDagResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UpdateWorkflowDagResponseBody) SetMessage(v string) *UpdateWorkflowDagResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UpdateWorkflowDagResponseBody) SetRequestId(v string) *UpdateWorkflowDagResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateWorkflowDagResponseBody) SetSuccess(v bool) *UpdateWorkflowDagResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateWorkflowDagResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateWorkflowDagResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateWorkflowDagResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateWorkflowDagResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateWorkflowDagResponse) SetHeaders(v map[string]*string) *UpdateWorkflowDagResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateWorkflowDagResponse) SetStatusCode(v int32) *UpdateWorkflowDagResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateWorkflowDagResponse) SetBody(v *UpdateWorkflowDagResponseBody) *UpdateWorkflowDagResponse {
+	s.Body = v
+	return s
+}
+
 type Client struct {
 	openapi.Client
 }
@@ -4811,6 +7081,20 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+/**
+ * Before you call this operation, you must add the following dependency to the pom.xml file:
+ * ```xml
+ * <dependency>
+ *     <groupId>com.aliyun</groupId>
+ *     <artifactId>aliyun-java-sdk-schedulerx2</artifactId>
+ *     <version>1.0.4</version>
+ * </dependency>
+ * ```
+ *
+ * @param request BatchDeleteJobsRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return BatchDeleteJobsResponse
+ */
 func (client *Client) BatchDeleteJobsWithOptions(request *BatchDeleteJobsRequest, runtime *util.RuntimeOptions) (_result *BatchDeleteJobsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4862,6 +7146,19 @@ func (client *Client) BatchDeleteJobsWithOptions(request *BatchDeleteJobsRequest
 	return _result, _err
 }
 
+/**
+ * Before you call this operation, you must add the following dependency to the pom.xml file:
+ * ```xml
+ * <dependency>
+ *     <groupId>com.aliyun</groupId>
+ *     <artifactId>aliyun-java-sdk-schedulerx2</artifactId>
+ *     <version>1.0.4</version>
+ * </dependency>
+ * ```
+ *
+ * @param request BatchDeleteJobsRequest
+ * @return BatchDeleteJobsResponse
+ */
 func (client *Client) BatchDeleteJobs(request *BatchDeleteJobsRequest) (_result *BatchDeleteJobsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &BatchDeleteJobsResponse{}
@@ -4873,6 +7170,20 @@ func (client *Client) BatchDeleteJobs(request *BatchDeleteJobsRequest) (_result 
 	return _result, _err
 }
 
+/**
+ * Before you call this operation, you must add the following dependency to the pom.xml file:
+ * ```xml
+ * <dependency>
+ *     <groupId>com.aliyun</groupId>
+ *     <artifactId>aliyun-java-sdk-schedulerx2</artifactId>
+ *     <version>1.0.4</version>
+ * </dependency>
+ * ```
+ *
+ * @param request BatchDisableJobsRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return BatchDisableJobsResponse
+ */
 func (client *Client) BatchDisableJobsWithOptions(request *BatchDisableJobsRequest, runtime *util.RuntimeOptions) (_result *BatchDisableJobsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4924,6 +7235,19 @@ func (client *Client) BatchDisableJobsWithOptions(request *BatchDisableJobsReque
 	return _result, _err
 }
 
+/**
+ * Before you call this operation, you must add the following dependency to the pom.xml file:
+ * ```xml
+ * <dependency>
+ *     <groupId>com.aliyun</groupId>
+ *     <artifactId>aliyun-java-sdk-schedulerx2</artifactId>
+ *     <version>1.0.4</version>
+ * </dependency>
+ * ```
+ *
+ * @param request BatchDisableJobsRequest
+ * @return BatchDisableJobsResponse
+ */
 func (client *Client) BatchDisableJobs(request *BatchDisableJobsRequest) (_result *BatchDisableJobsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &BatchDisableJobsResponse{}
@@ -4935,6 +7259,20 @@ func (client *Client) BatchDisableJobs(request *BatchDisableJobsRequest) (_resul
 	return _result, _err
 }
 
+/**
+ * Before you call this operation, you must add the following dependency to the pom.xml file:
+ * ```xml
+ * <dependency>
+ *     <groupId>com.aliyun</groupId>
+ *     <artifactId>aliyun-java-sdk-schedulerx2</artifactId>
+ *     <version>1.0.4</version>
+ * </dependency>
+ * ```
+ *
+ * @param request BatchEnableJobsRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return BatchEnableJobsResponse
+ */
 func (client *Client) BatchEnableJobsWithOptions(request *BatchEnableJobsRequest, runtime *util.RuntimeOptions) (_result *BatchEnableJobsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4986,6 +7324,19 @@ func (client *Client) BatchEnableJobsWithOptions(request *BatchEnableJobsRequest
 	return _result, _err
 }
 
+/**
+ * Before you call this operation, you must add the following dependency to the pom.xml file:
+ * ```xml
+ * <dependency>
+ *     <groupId>com.aliyun</groupId>
+ *     <artifactId>aliyun-java-sdk-schedulerx2</artifactId>
+ *     <version>1.0.4</version>
+ * </dependency>
+ * ```
+ *
+ * @param request BatchEnableJobsRequest
+ * @return BatchEnableJobsResponse
+ */
 func (client *Client) BatchEnableJobs(request *BatchEnableJobsRequest) (_result *BatchEnableJobsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &BatchEnableJobsResponse{}
@@ -5092,12 +7443,12 @@ func (client *Client) CreateJobWithOptions(request *CreateJobRequest, runtime *u
 		body["FailEnable"] = request.FailEnable
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
-		body["GroupId"] = request.GroupId
+	if !tea.BoolValue(util.IsUnset(request.FailTimes)) {
+		body["FailTimes"] = request.FailTimes
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.JarUrl)) {
-		body["JarUrl"] = request.JarUrl
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		body["GroupId"] = request.GroupId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.JobType)) {
@@ -5146,6 +7497,10 @@ func (client *Client) CreateJobWithOptions(request *CreateJobRequest, runtime *u
 
 	if !tea.BoolValue(util.IsUnset(request.Status)) {
 		body["Status"] = request.Status
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SuccessNoticeEnable)) {
+		body["SuccessNoticeEnable"] = request.SuccessNoticeEnable
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.TaskAttemptInterval)) {
@@ -5264,6 +7619,86 @@ func (client *Client) CreateNamespace(request *CreateNamespaceRequest) (_result 
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateNamespaceResponse{}
 	_body, _err := client.CreateNamespaceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateWorkflowWithOptions(request *CreateWorkflowRequest, runtime *util.RuntimeOptions) (_result *CreateWorkflowResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		body["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		body["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxConcurrency)) {
+		body["MaxConcurrency"] = request.MaxConcurrency
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		body["Namespace"] = request.Namespace
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NamespaceSource)) {
+		body["NamespaceSource"] = request.NamespaceSource
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		body["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TimeExpression)) {
+		body["TimeExpression"] = request.TimeExpression
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TimeType)) {
+		body["TimeType"] = request.TimeType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Timezone)) {
+		body["Timezone"] = request.Timezone
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateWorkflow"),
+		Version:     tea.String("2019-04-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateWorkflowResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateWorkflow(request *CreateWorkflowRequest) (_result *CreateWorkflowResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateWorkflowResponse{}
+	_body, _err := client.CreateWorkflowWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5584,6 +8019,13 @@ func (client *Client) EnableWorkflow(request *EnableWorkflowRequest) (_result *E
 	return _result, _err
 }
 
+/**
+ * > : The combination of the `JobID` and `ScheduleTime` parameters serves as a unique index. Therefore, after the ExecuteJob operation is called to run a job once, a sleep for one second is required before the ExecuteJob operation is called to run the job again. Otherwise, the job may fail.
+ *
+ * @param request ExecuteJobRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ExecuteJobResponse
+ */
 func (client *Client) ExecuteJobWithOptions(request *ExecuteJobRequest, runtime *util.RuntimeOptions) (_result *ExecuteJobResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5613,6 +8055,12 @@ func (client *Client) ExecuteJobWithOptions(request *ExecuteJobRequest, runtime 
 	return _result, _err
 }
 
+/**
+ * > : The combination of the `JobID` and `ScheduleTime` parameters serves as a unique index. Therefore, after the ExecuteJob operation is called to run a job once, a sleep for one second is required before the ExecuteJob operation is called to run the job again. Otherwise, the job may fail.
+ *
+ * @param request ExecuteJobRequest
+ * @return ExecuteJobResponse
+ */
 func (client *Client) ExecuteJob(request *ExecuteJobRequest) (_result *ExecuteJobResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ExecuteJobResponse{}
@@ -5784,6 +8232,46 @@ func (client *Client) GetJobInstanceList(request *GetJobInstanceListRequest) (_r
 	return _result, _err
 }
 
+func (client *Client) GetLogWithOptions(request *GetLogRequest, runtime *util.RuntimeOptions) (_result *GetLogResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetLog"),
+		Version:     tea.String("2019-04-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetLogResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetLog(request *GetLogRequest) (_result *GetLogResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetLogResponse{}
+	_body, _err := client.GetLogWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) GetWorkFlowWithOptions(request *GetWorkFlowRequest, runtime *util.RuntimeOptions) (_result *GetWorkFlowResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5864,6 +8352,46 @@ func (client *Client) GetWorkerList(request *GetWorkerListRequest) (_result *Get
 	return _result, _err
 }
 
+func (client *Client) GetWorkflowInstanceWithOptions(request *GetWorkflowInstanceRequest, runtime *util.RuntimeOptions) (_result *GetWorkflowInstanceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetWorkflowInstance"),
+		Version:     tea.String("2019-04-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetWorkflowInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetWorkflowInstance(request *GetWorkflowInstanceRequest) (_result *GetWorkflowInstanceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetWorkflowInstanceResponse{}
+	_body, _err := client.GetWorkflowInstanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) GrantPermissionWithOptions(request *GrantPermissionRequest, runtime *util.RuntimeOptions) (_result *GrantPermissionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5932,6 +8460,16 @@ func (client *Client) GrantPermission(request *GrantPermissionRequest) (_result 
 	return _result, _err
 }
 
+/**
+ * >  Before you call this operation, you must add the following dependency to the pom.xml file:
+ *       <groupId>com.aliyun</groupId>
+ *       <artifactId>aliyun-java-sdk-schedulerx2</artifactId>
+ *       <version>1.0.5</version>
+ *
+ * @param request ListGroupsRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ListGroupsResponse
+ */
 func (client *Client) ListGroupsWithOptions(request *ListGroupsRequest, runtime *util.RuntimeOptions) (_result *ListGroupsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5961,6 +8499,15 @@ func (client *Client) ListGroupsWithOptions(request *ListGroupsRequest, runtime 
 	return _result, _err
 }
 
+/**
+ * >  Before you call this operation, you must add the following dependency to the pom.xml file:
+ *       <groupId>com.aliyun</groupId>
+ *       <artifactId>aliyun-java-sdk-schedulerx2</artifactId>
+ *       <version>1.0.5</version>
+ *
+ * @param request ListGroupsRequest
+ * @return ListGroupsResponse
+ */
 func (client *Client) ListGroups(request *ListGroupsRequest) (_result *ListGroupsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListGroupsResponse{}
@@ -5972,6 +8519,18 @@ func (client *Client) ListGroups(request *ListGroupsRequest) (_result *ListGroup
 	return _result, _err
 }
 
+/**
+ * Before you call this operation, you must add the following dependency to the pom.xml file:
+ *     <dependency>
+ *           <groupId>com.aliyun</groupId>
+ *           <artifactId>aliyun-java-sdk-schedulerx2</artifactId>
+ *           <version>1.0.5</version>
+ *     </dependency>
+ *
+ * @param request ListJobsRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ListJobsResponse
+ */
 func (client *Client) ListJobsWithOptions(request *ListJobsRequest, runtime *util.RuntimeOptions) (_result *ListJobsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6001,6 +8560,17 @@ func (client *Client) ListJobsWithOptions(request *ListJobsRequest, runtime *uti
 	return _result, _err
 }
 
+/**
+ * Before you call this operation, you must add the following dependency to the pom.xml file:
+ *     <dependency>
+ *           <groupId>com.aliyun</groupId>
+ *           <artifactId>aliyun-java-sdk-schedulerx2</artifactId>
+ *           <version>1.0.5</version>
+ *     </dependency>
+ *
+ * @param request ListJobsRequest
+ * @return ListJobsResponse
+ */
 func (client *Client) ListJobs(request *ListJobsRequest) (_result *ListJobsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListJobsResponse{}
@@ -6012,6 +8582,18 @@ func (client *Client) ListJobs(request *ListJobsRequest) (_result *ListJobsRespo
 	return _result, _err
 }
 
+/**
+ * Before you call this operation, you must add the following dependency to the pom.xml file:
+ *     <dependency>
+ *         <groupId>com.aliyun</groupId>
+ *         <artifactId>aliyun-java-sdk-schedulerx2</artifactId>
+ *         <version>1.0.5</version>
+ *     </dependency>
+ *
+ * @param request ListNamespacesRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ListNamespacesResponse
+ */
 func (client *Client) ListNamespacesWithOptions(request *ListNamespacesRequest, runtime *util.RuntimeOptions) (_result *ListNamespacesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6041,10 +8623,197 @@ func (client *Client) ListNamespacesWithOptions(request *ListNamespacesRequest, 
 	return _result, _err
 }
 
+/**
+ * Before you call this operation, you must add the following dependency to the pom.xml file:
+ *     <dependency>
+ *         <groupId>com.aliyun</groupId>
+ *         <artifactId>aliyun-java-sdk-schedulerx2</artifactId>
+ *         <version>1.0.5</version>
+ *     </dependency>
+ *
+ * @param request ListNamespacesRequest
+ * @return ListNamespacesResponse
+ */
 func (client *Client) ListNamespaces(request *ListNamespacesRequest) (_result *ListNamespacesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListNamespacesResponse{}
 	_body, _err := client.ListNamespacesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListWorkflowInstanceWithOptions(request *ListWorkflowInstanceRequest, runtime *util.RuntimeOptions) (_result *ListWorkflowInstanceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListWorkflowInstance"),
+		Version:     tea.String("2019-04-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListWorkflowInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListWorkflowInstance(request *ListWorkflowInstanceRequest) (_result *ListWorkflowInstanceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListWorkflowInstanceResponse{}
+	_body, _err := client.ListWorkflowInstanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) RerunJobWithOptions(request *RerunJobRequest, runtime *util.RuntimeOptions) (_result *RerunJobResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DataTime)) {
+		body["DataTime"] = request.DataTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndDate)) {
+		body["EndDate"] = request.EndDate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		body["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JobId)) {
+		body["JobId"] = request.JobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		body["Namespace"] = request.Namespace
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NamespaceSource)) {
+		body["NamespaceSource"] = request.NamespaceSource
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		body["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartDate)) {
+		body["StartDate"] = request.StartDate
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RerunJob"),
+		Version:     tea.String("2019-04-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RerunJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) RerunJob(request *RerunJobRequest) (_result *RerunJobResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RerunJobResponse{}
+	_body, _err := client.RerunJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) RetryJobInstanceWithOptions(request *RetryJobInstanceRequest, runtime *util.RuntimeOptions) (_result *RetryJobInstanceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JobId)) {
+		query["JobId"] = request.JobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JobInstanceId)) {
+		query["JobInstanceId"] = request.JobInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		query["Namespace"] = request.Namespace
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NamespaceSource)) {
+		query["NamespaceSource"] = request.NamespaceSource
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RetryJobInstance"),
+		Version:     tea.String("2019-04-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RetryJobInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) RetryJobInstance(request *RetryJobInstanceRequest) (_result *RetryJobInstanceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RetryJobInstanceResponse{}
+	_body, _err := client.RetryJobInstanceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6105,6 +8874,134 @@ func (client *Client) RevokePermission(request *RevokePermissionRequest) (_resul
 	runtime := &util.RuntimeOptions{}
 	_result = &RevokePermissionResponse{}
 	_body, _err := client.RevokePermissionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SetJobInstanceSuccessWithOptions(request *SetJobInstanceSuccessRequest, runtime *util.RuntimeOptions) (_result *SetJobInstanceSuccessResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JobId)) {
+		query["JobId"] = request.JobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JobInstanceId)) {
+		query["JobInstanceId"] = request.JobInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		query["Namespace"] = request.Namespace
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NamespaceSource)) {
+		query["NamespaceSource"] = request.NamespaceSource
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SetJobInstanceSuccess"),
+		Version:     tea.String("2019-04-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SetJobInstanceSuccessResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SetJobInstanceSuccess(request *SetJobInstanceSuccessRequest) (_result *SetJobInstanceSuccessResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SetJobInstanceSuccessResponse{}
+	_body, _err := client.SetJobInstanceSuccessWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SetWfInstanceSuccessWithOptions(request *SetWfInstanceSuccessRequest, runtime *util.RuntimeOptions) (_result *SetWfInstanceSuccessResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		query["Namespace"] = request.Namespace
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NamespaceSource)) {
+		query["NamespaceSource"] = request.NamespaceSource
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WfInstanceId)) {
+		query["WfInstanceId"] = request.WfInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkflowId)) {
+		query["WorkflowId"] = request.WorkflowId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SetWfInstanceSuccess"),
+		Version:     tea.String("2019-04-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SetWfInstanceSuccessResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SetWfInstanceSuccess(request *SetWfInstanceSuccessRequest) (_result *SetWfInstanceSuccessResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SetWfInstanceSuccessResponse{}
+	_body, _err := client.SetWfInstanceSuccessWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6207,12 +9104,12 @@ func (client *Client) UpdateJobWithOptions(request *UpdateJobRequest, runtime *u
 		body["FailEnable"] = request.FailEnable
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
-		body["GroupId"] = request.GroupId
+	if !tea.BoolValue(util.IsUnset(request.FailTimes)) {
+		body["FailTimes"] = request.FailTimes
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.JarUrl)) {
-		body["JarUrl"] = request.JarUrl
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		body["GroupId"] = request.GroupId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.JobId)) {
@@ -6257,6 +9154,10 @@ func (client *Client) UpdateJobWithOptions(request *UpdateJobRequest, runtime *u
 
 	if !tea.BoolValue(util.IsUnset(request.SendChannel)) {
 		body["SendChannel"] = request.SendChannel
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SuccessNoticeEnable)) {
+		body["SuccessNoticeEnable"] = request.SuccessNoticeEnable
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.TaskAttemptInterval)) {
@@ -6315,6 +9216,150 @@ func (client *Client) UpdateJob(request *UpdateJobRequest) (_result *UpdateJobRe
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateJobResponse{}
 	_body, _err := client.UpdateJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateWorkflowWithOptions(request *UpdateWorkflowRequest, runtime *util.RuntimeOptions) (_result *UpdateWorkflowResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		body["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		body["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		body["Namespace"] = request.Namespace
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NamespaceSource)) {
+		body["NamespaceSource"] = request.NamespaceSource
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TimeExpression)) {
+		body["TimeExpression"] = request.TimeExpression
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TimeType)) {
+		body["TimeType"] = request.TimeType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkflowId)) {
+		body["WorkflowId"] = request.WorkflowId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateWorkflow"),
+		Version:     tea.String("2019-04-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateWorkflowResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateWorkflow(request *UpdateWorkflowRequest) (_result *UpdateWorkflowResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateWorkflowResponse{}
+	_body, _err := client.UpdateWorkflowWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateWorkflowDagWithOptions(request *UpdateWorkflowDagRequest, runtime *util.RuntimeOptions) (_result *UpdateWorkflowDagResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DagJson)) {
+		body["DagJson"] = request.DagJson
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		body["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		body["Namespace"] = request.Namespace
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NamespaceSource)) {
+		body["NamespaceSource"] = request.NamespaceSource
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkflowId)) {
+		body["WorkflowId"] = request.WorkflowId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateWorkflowDag"),
+		Version:     tea.String("2019-04-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateWorkflowDagResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateWorkflowDag(request *UpdateWorkflowDagRequest) (_result *UpdateWorkflowDagResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateWorkflowDagResponse{}
+	_body, _err := client.UpdateWorkflowDagWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
