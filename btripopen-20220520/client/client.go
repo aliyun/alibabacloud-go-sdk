@@ -9218,6 +9218,7 @@ func (s *EstimatedPriceQueryResponseBody) SetTraceId(v string) *EstimatedPriceQu
 
 type EstimatedPriceQueryResponseBodyModule struct {
 	HotelFeeDetail []*EstimatedPriceQueryResponseBodyModuleHotelFeeDetail `json:"hotel_fee_detail,omitempty" xml:"hotel_fee_detail,omitempty" type:"Repeated"`
+	TotalHotelFee  *int64                                                 `json:"total_hotel_fee,omitempty" xml:"total_hotel_fee,omitempty"`
 	TrafficFee     *EstimatedPriceQueryResponseBodyModuleTrafficFee       `json:"traffic_fee,omitempty" xml:"traffic_fee,omitempty" type:"Struct"`
 }
 
@@ -9231,6 +9232,11 @@ func (s EstimatedPriceQueryResponseBodyModule) GoString() string {
 
 func (s *EstimatedPriceQueryResponseBodyModule) SetHotelFeeDetail(v []*EstimatedPriceQueryResponseBodyModuleHotelFeeDetail) *EstimatedPriceQueryResponseBodyModule {
 	s.HotelFeeDetail = v
+	return s
+}
+
+func (s *EstimatedPriceQueryResponseBodyModule) SetTotalHotelFee(v int64) *EstimatedPriceQueryResponseBodyModule {
+	s.TotalHotelFee = &v
 	return s
 }
 
