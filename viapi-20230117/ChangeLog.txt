@@ -1,3 +1,6 @@
+2023-02-17 Version: v2.0.1
+- Support for deploy.
+
 2023-02-16 Version: v2.0.0
 - Support for deploy.
 
