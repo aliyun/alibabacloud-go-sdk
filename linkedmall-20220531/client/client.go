@@ -2169,6 +2169,605 @@ func (s *ListDistributionItemResponse) SetBody(v *ListDistributionItemResponseBo
 	return s
 }
 
+type ListDistributionItemWithoutCacheRequest struct {
+	DistributionMallId *string `json:"DistributionMallId,omitempty" xml:"DistributionMallId,omitempty"`
+	DistributorId      *string `json:"DistributorId,omitempty" xml:"DistributorId,omitempty"`
+	ItemStatus         *int32  `json:"ItemStatus,omitempty" xml:"ItemStatus,omitempty"`
+	LmItemId           *string `json:"LmItemId,omitempty" xml:"LmItemId,omitempty"`
+	PageNumber         *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize           *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	TenantId           *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+}
+
+func (s ListDistributionItemWithoutCacheRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDistributionItemWithoutCacheRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListDistributionItemWithoutCacheRequest) SetDistributionMallId(v string) *ListDistributionItemWithoutCacheRequest {
+	s.DistributionMallId = &v
+	return s
+}
+
+func (s *ListDistributionItemWithoutCacheRequest) SetDistributorId(v string) *ListDistributionItemWithoutCacheRequest {
+	s.DistributorId = &v
+	return s
+}
+
+func (s *ListDistributionItemWithoutCacheRequest) SetItemStatus(v int32) *ListDistributionItemWithoutCacheRequest {
+	s.ItemStatus = &v
+	return s
+}
+
+func (s *ListDistributionItemWithoutCacheRequest) SetLmItemId(v string) *ListDistributionItemWithoutCacheRequest {
+	s.LmItemId = &v
+	return s
+}
+
+func (s *ListDistributionItemWithoutCacheRequest) SetPageNumber(v int32) *ListDistributionItemWithoutCacheRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListDistributionItemWithoutCacheRequest) SetPageSize(v int32) *ListDistributionItemWithoutCacheRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListDistributionItemWithoutCacheRequest) SetTenantId(v string) *ListDistributionItemWithoutCacheRequest {
+	s.TenantId = &v
+	return s
+}
+
+type ListDistributionItemWithoutCacheResponseBody struct {
+	Code       *string                                              `json:"Code,omitempty" xml:"Code,omitempty"`
+	LogsId     *string                                              `json:"LogsId,omitempty" xml:"LogsId,omitempty"`
+	Message    *string                                              `json:"Message,omitempty" xml:"Message,omitempty"`
+	Model      []*ListDistributionItemWithoutCacheResponseBodyModel `json:"Model,omitempty" xml:"Model,omitempty" type:"Repeated"`
+	PageNumber *int64                                               `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int64                                               `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId  *string                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SubCode    *string                                              `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
+	SubMessage *string                                              `json:"SubMessage,omitempty" xml:"SubMessage,omitempty"`
+	Success    *bool                                                `json:"Success,omitempty" xml:"Success,omitempty"`
+	TotalCount *int64                                               `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListDistributionItemWithoutCacheResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDistributionItemWithoutCacheResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListDistributionItemWithoutCacheResponseBody) SetCode(v string) *ListDistributionItemWithoutCacheResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListDistributionItemWithoutCacheResponseBody) SetLogsId(v string) *ListDistributionItemWithoutCacheResponseBody {
+	s.LogsId = &v
+	return s
+}
+
+func (s *ListDistributionItemWithoutCacheResponseBody) SetMessage(v string) *ListDistributionItemWithoutCacheResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListDistributionItemWithoutCacheResponseBody) SetModel(v []*ListDistributionItemWithoutCacheResponseBodyModel) *ListDistributionItemWithoutCacheResponseBody {
+	s.Model = v
+	return s
+}
+
+func (s *ListDistributionItemWithoutCacheResponseBody) SetPageNumber(v int64) *ListDistributionItemWithoutCacheResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListDistributionItemWithoutCacheResponseBody) SetPageSize(v int64) *ListDistributionItemWithoutCacheResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListDistributionItemWithoutCacheResponseBody) SetRequestId(v string) *ListDistributionItemWithoutCacheResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListDistributionItemWithoutCacheResponseBody) SetSubCode(v string) *ListDistributionItemWithoutCacheResponseBody {
+	s.SubCode = &v
+	return s
+}
+
+func (s *ListDistributionItemWithoutCacheResponseBody) SetSubMessage(v string) *ListDistributionItemWithoutCacheResponseBody {
+	s.SubMessage = &v
+	return s
+}
+
+func (s *ListDistributionItemWithoutCacheResponseBody) SetSuccess(v bool) *ListDistributionItemWithoutCacheResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *ListDistributionItemWithoutCacheResponseBody) SetTotalCount(v int64) *ListDistributionItemWithoutCacheResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListDistributionItemWithoutCacheResponseBodyModel struct {
+	CategoryId             *int64                                                           `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	CategoryIds            []*int64                                                         `json:"CategoryIds,omitempty" xml:"CategoryIds,omitempty" type:"Repeated"`
+	City                   *string                                                          `json:"City,omitempty" xml:"City,omitempty"`
+	Current                *string                                                          `json:"Current,omitempty" xml:"Current,omitempty"`
+	CustomizedAttributeMap map[string]*string                                               `json:"CustomizedAttributeMap,omitempty" xml:"CustomizedAttributeMap,omitempty"`
+	DescOption             *string                                                          `json:"DescOption,omitempty" xml:"DescOption,omitempty"`
+	DescPath               *string                                                          `json:"DescPath,omitempty" xml:"DescPath,omitempty"`
+	DistributionMallId     *string                                                          `json:"DistributionMallId,omitempty" xml:"DistributionMallId,omitempty"`
+	Features               map[string]*string                                               `json:"Features,omitempty" xml:"Features,omitempty"`
+	FirstPicUrl            *string                                                          `json:"FirstPicUrl,omitempty" xml:"FirstPicUrl,omitempty"`
+	HasQuantity            *bool                                                            `json:"HasQuantity,omitempty" xml:"HasQuantity,omitempty"`
+	IforestProps           []map[string]*string                                             `json:"IforestProps,omitempty" xml:"IforestProps,omitempty" type:"Repeated"`
+	InvoiceType            *int32                                                           `json:"InvoiceType,omitempty" xml:"InvoiceType,omitempty"`
+	IsCanNotBeSoldCode     *string                                                          `json:"IsCanNotBeSoldCode,omitempty" xml:"IsCanNotBeSoldCode,omitempty"`
+	IsCanNotBeSoldMessage  *string                                                          `json:"IsCanNotBeSoldMessage,omitempty" xml:"IsCanNotBeSoldMessage,omitempty"`
+	IsCanSell              *bool                                                            `json:"IsCanSell,omitempty" xml:"IsCanSell,omitempty"`
+	IsSellerPayPostfee     *bool                                                            `json:"IsSellerPayPostfee,omitempty" xml:"IsSellerPayPostfee,omitempty"`
+	ItemId                 *int64                                                           `json:"ItemId,omitempty" xml:"ItemId,omitempty"`
+	ItemImages             []*string                                                        `json:"ItemImages,omitempty" xml:"ItemImages,omitempty" type:"Repeated"`
+	ItemTitle              *string                                                          `json:"ItemTitle,omitempty" xml:"ItemTitle,omitempty"`
+	ItemTotalSimpleValue   *string                                                          `json:"ItemTotalSimpleValue,omitempty" xml:"ItemTotalSimpleValue,omitempty"`
+	ItemTotalValue         *int32                                                           `json:"ItemTotalValue,omitempty" xml:"ItemTotalValue,omitempty"`
+	LmItemAttributeMap     map[string]*string                                               `json:"LmItemAttributeMap,omitempty" xml:"LmItemAttributeMap,omitempty"`
+	LmItemCategory         *string                                                          `json:"LmItemCategory,omitempty" xml:"LmItemCategory,omitempty"`
+	LmItemId               *string                                                          `json:"LmItemId,omitempty" xml:"LmItemId,omitempty"`
+	MainPicUrl             *string                                                          `json:"MainPicUrl,omitempty" xml:"MainPicUrl,omitempty"`
+	MinPrice               *int64                                                           `json:"MinPrice,omitempty" xml:"MinPrice,omitempty"`
+	Properties             map[string][]*string                                             `json:"Properties,omitempty" xml:"Properties,omitempty"`
+	Prov                   *string                                                          `json:"Prov,omitempty" xml:"Prov,omitempty"`
+	Quantity               *int32                                                           `json:"Quantity,omitempty" xml:"Quantity,omitempty"`
+	ReservedPrice          *int64                                                           `json:"ReservedPrice,omitempty" xml:"ReservedPrice,omitempty"`
+	SecuredTransactions    *int32                                                           `json:"SecuredTransactions,omitempty" xml:"SecuredTransactions,omitempty"`
+	SimpleQuantity         *string                                                          `json:"SimpleQuantity,omitempty" xml:"SimpleQuantity,omitempty"`
+	SkuModels              []*ListDistributionItemWithoutCacheResponseBodyModelSkuModels    `json:"SkuModels,omitempty" xml:"SkuModels,omitempty" type:"Repeated"`
+	SkuPropertys           []*ListDistributionItemWithoutCacheResponseBodyModelSkuPropertys `json:"SkuPropertys,omitempty" xml:"SkuPropertys,omitempty" type:"Repeated"`
+	ThirdPartyItemId       *string                                                          `json:"ThirdPartyItemId,omitempty" xml:"ThirdPartyItemId,omitempty"`
+	ThirdPartyName         *string                                                          `json:"ThirdPartyName,omitempty" xml:"ThirdPartyName,omitempty"`
+	UserType               *int32                                                           `json:"UserType,omitempty" xml:"UserType,omitempty"`
+	VideoPicUrl            *string                                                          `json:"VideoPicUrl,omitempty" xml:"VideoPicUrl,omitempty"`
+	VideoUrl               *string                                                          `json:"VideoUrl,omitempty" xml:"VideoUrl,omitempty"`
+	VirtualItemType        *string                                                          `json:"VirtualItemType,omitempty" xml:"VirtualItemType,omitempty"`
+}
+
+func (s ListDistributionItemWithoutCacheResponseBodyModel) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDistributionItemWithoutCacheResponseBodyModel) GoString() string {
+	return s.String()
+}
+
+func (s *ListDistributionItemWithoutCacheResponseBodyModel) SetCategoryId(v int64) *ListDistributionItemWithoutCacheResponseBodyModel {
+	s.CategoryId = &v
+	return s
+}
+
+func (s *ListDistributionItemWithoutCacheResponseBodyModel) SetCategoryIds(v []*int64) *ListDistributionItemWithoutCacheResponseBodyModel {
+	s.CategoryIds = v
+	return s
+}
+
+func (s *ListDistributionItemWithoutCacheResponseBodyModel) SetCity(v string) *ListDistributionItemWithoutCacheResponseBodyModel {
+	s.City = &v
+	return s
+}
+
+func (s *ListDistributionItemWithoutCacheResponseBodyModel) SetCurrent(v string) *ListDistributionItemWithoutCacheResponseBodyModel {
+	s.Current = &v
+	return s
+}
+
+func (s *ListDistributionItemWithoutCacheResponseBodyModel) SetCustomizedAttributeMap(v map[string]*string) *ListDistributionItemWithoutCacheResponseBodyModel {
+	s.CustomizedAttributeMap = v
+	return s
+}
+
+func (s *ListDistributionItemWithoutCacheResponseBodyModel) SetDescOption(v string) *ListDistributionItemWithoutCacheResponseBodyModel {
+	s.DescOption = &v
+	return s
+}
+
+func (s *ListDistributionItemWithoutCacheResponseBodyModel) SetDescPath(v string) *ListDistributionItemWithoutCacheResponseBodyModel {
+	s.DescPath = &v
+	return s
+}
+
+func (s *ListDistributionItemWithoutCacheResponseBodyModel) SetDistributionMallId(v string) *ListDistributionItemWithoutCacheResponseBodyModel {
+	s.DistributionMallId = &v
+	return s
+}
+
+func (s *ListDistributionItemWithoutCacheResponseBodyModel) SetFeatures(v map[string]*string) *ListDistributionItemWithoutCacheResponseBodyModel {
+	s.Features = v
+	return s
+}
+
+func (s *ListDistributionItemWithoutCacheResponseBodyModel) SetFirstPicUrl(v string) *ListDistributionItemWithoutCacheResponseBodyModel {
+	s.FirstPicUrl = &v
+	return s
+}
+
+func (s *ListDistributionItemWithoutCacheResponseBodyModel) SetHasQuantity(v bool) *ListDistributionItemWithoutCacheResponseBodyModel {
+	s.HasQuantity = &v
+	return s
+}
+
+func (s *ListDistributionItemWithoutCacheResponseBodyModel) SetIforestProps(v []map[string]*string) *ListDistributionItemWithoutCacheResponseBodyModel {
+	s.IforestProps = v
+	return s
+}
+
+func (s *ListDistributionItemWithoutCacheResponseBodyModel) SetInvoiceType(v int32) *ListDistributionItemWithoutCacheResponseBodyModel {
+	s.InvoiceType = &v
+	return s
+}
+
+func (s *ListDistributionItemWithoutCacheResponseBodyModel) SetIsCanNotBeSoldCode(v string) *ListDistributionItemWithoutCacheResponseBodyModel {
+	s.IsCanNotBeSoldCode = &v
+	return s
+}
+
+func (s *ListDistributionItemWithoutCacheResponseBodyModel) SetIsCanNotBeSoldMessage(v string) *ListDistributionItemWithoutCacheResponseBodyModel {
+	s.IsCanNotBeSoldMessage = &v
+	return s
+}
+
+func (s *ListDistributionItemWithoutCacheResponseBodyModel) SetIsCanSell(v bool) *ListDistributionItemWithoutCacheResponseBodyModel {
+	s.IsCanSell = &v
+	return s
+}
+
+func (s *ListDistributionItemWithoutCacheResponseBodyModel) SetIsSellerPayPostfee(v bool) *ListDistributionItemWithoutCacheResponseBodyModel {
+	s.IsSellerPayPostfee = &v
+	return s
+}
+
+func (s *ListDistributionItemWithoutCacheResponseBodyModel) SetItemId(v int64) *ListDistributionItemWithoutCacheResponseBodyModel {
+	s.ItemId = &v
+	return s
+}
+
+func (s *ListDistributionItemWithoutCacheResponseBodyModel) SetItemImages(v []*string) *ListDistributionItemWithoutCacheResponseBodyModel {
+	s.ItemImages = v
+	return s
+}
+
+func (s *ListDistributionItemWithoutCacheResponseBodyModel) SetItemTitle(v string) *ListDistributionItemWithoutCacheResponseBodyModel {
+	s.ItemTitle = &v
+	return s
+}
+
+func (s *ListDistributionItemWithoutCacheResponseBodyModel) SetItemTotalSimpleValue(v string) *ListDistributionItemWithoutCacheResponseBodyModel {
+	s.ItemTotalSimpleValue = &v
+	return s
+}
+
+func (s *ListDistributionItemWithoutCacheResponseBodyModel) SetItemTotalValue(v int32) *ListDistributionItemWithoutCacheResponseBodyModel {
+	s.ItemTotalValue = &v
+	return s
+}
+
+func (s *ListDistributionItemWithoutCacheResponseBodyModel) SetLmItemAttributeMap(v map[string]*string) *ListDistributionItemWithoutCacheResponseBodyModel {
+	s.LmItemAttributeMap = v
+	return s
+}
+
+func (s *ListDistributionItemWithoutCacheResponseBodyModel) SetLmItemCategory(v string) *ListDistributionItemWithoutCacheResponseBodyModel {
+	s.LmItemCategory = &v
+	return s
+}
+
+func (s *ListDistributionItemWithoutCacheResponseBodyModel) SetLmItemId(v string) *ListDistributionItemWithoutCacheResponseBodyModel {
+	s.LmItemId = &v
+	return s
+}
+
+func (s *ListDistributionItemWithoutCacheResponseBodyModel) SetMainPicUrl(v string) *ListDistributionItemWithoutCacheResponseBodyModel {
+	s.MainPicUrl = &v
+	return s
+}
+
+func (s *ListDistributionItemWithoutCacheResponseBodyModel) SetMinPrice(v int64) *ListDistributionItemWithoutCacheResponseBodyModel {
+	s.MinPrice = &v
+	return s
+}
+
+func (s *ListDistributionItemWithoutCacheResponseBodyModel) SetProperties(v map[string][]*string) *ListDistributionItemWithoutCacheResponseBodyModel {
+	s.Properties = v
+	return s
+}
+
+func (s *ListDistributionItemWithoutCacheResponseBodyModel) SetProv(v string) *ListDistributionItemWithoutCacheResponseBodyModel {
+	s.Prov = &v
+	return s
+}
+
+func (s *ListDistributionItemWithoutCacheResponseBodyModel) SetQuantity(v int32) *ListDistributionItemWithoutCacheResponseBodyModel {
+	s.Quantity = &v
+	return s
+}
+
+func (s *ListDistributionItemWithoutCacheResponseBodyModel) SetReservedPrice(v int64) *ListDistributionItemWithoutCacheResponseBodyModel {
+	s.ReservedPrice = &v
+	return s
+}
+
+func (s *ListDistributionItemWithoutCacheResponseBodyModel) SetSecuredTransactions(v int32) *ListDistributionItemWithoutCacheResponseBodyModel {
+	s.SecuredTransactions = &v
+	return s
+}
+
+func (s *ListDistributionItemWithoutCacheResponseBodyModel) SetSimpleQuantity(v string) *ListDistributionItemWithoutCacheResponseBodyModel {
+	s.SimpleQuantity = &v
+	return s
+}
+
+func (s *ListDistributionItemWithoutCacheResponseBodyModel) SetSkuModels(v []*ListDistributionItemWithoutCacheResponseBodyModelSkuModels) *ListDistributionItemWithoutCacheResponseBodyModel {
+	s.SkuModels = v
+	return s
+}
+
+func (s *ListDistributionItemWithoutCacheResponseBodyModel) SetSkuPropertys(v []*ListDistributionItemWithoutCacheResponseBodyModelSkuPropertys) *ListDistributionItemWithoutCacheResponseBodyModel {
+	s.SkuPropertys = v
+	return s
+}
+
+func (s *ListDistributionItemWithoutCacheResponseBodyModel) SetThirdPartyItemId(v string) *ListDistributionItemWithoutCacheResponseBodyModel {
+	s.ThirdPartyItemId = &v
+	return s
+}
+
+func (s *ListDistributionItemWithoutCacheResponseBodyModel) SetThirdPartyName(v string) *ListDistributionItemWithoutCacheResponseBodyModel {
+	s.ThirdPartyName = &v
+	return s
+}
+
+func (s *ListDistributionItemWithoutCacheResponseBodyModel) SetUserType(v int32) *ListDistributionItemWithoutCacheResponseBodyModel {
+	s.UserType = &v
+	return s
+}
+
+func (s *ListDistributionItemWithoutCacheResponseBodyModel) SetVideoPicUrl(v string) *ListDistributionItemWithoutCacheResponseBodyModel {
+	s.VideoPicUrl = &v
+	return s
+}
+
+func (s *ListDistributionItemWithoutCacheResponseBodyModel) SetVideoUrl(v string) *ListDistributionItemWithoutCacheResponseBodyModel {
+	s.VideoUrl = &v
+	return s
+}
+
+func (s *ListDistributionItemWithoutCacheResponseBodyModel) SetVirtualItemType(v string) *ListDistributionItemWithoutCacheResponseBodyModel {
+	s.VirtualItemType = &v
+	return s
+}
+
+type ListDistributionItemWithoutCacheResponseBodyModelSkuModels struct {
+	CustomizedAttributeMap map[string]*string `json:"CustomizedAttributeMap,omitempty" xml:"CustomizedAttributeMap,omitempty"`
+	DistributionMallId     *string            `json:"DistributionMallId,omitempty" xml:"DistributionMallId,omitempty"`
+	ExtJson                *string            `json:"ExtJson,omitempty" xml:"ExtJson,omitempty"`
+	HasQuantity            *bool              `json:"HasQuantity,omitempty" xml:"HasQuantity,omitempty"`
+	InvoiceType            *int32             `json:"InvoiceType,omitempty" xml:"InvoiceType,omitempty"`
+	IsCanNotBeSoldCode     *string            `json:"IsCanNotBeSoldCode,omitempty" xml:"IsCanNotBeSoldCode,omitempty"`
+	IsCanNotBeSoldMessage  *string            `json:"IsCanNotBeSoldMessage,omitempty" xml:"IsCanNotBeSoldMessage,omitempty"`
+	ItemId                 *int64             `json:"ItemId,omitempty" xml:"ItemId,omitempty"`
+	LmItemId               *string            `json:"LmItemId,omitempty" xml:"LmItemId,omitempty"`
+	LmSkuAttributeMap      map[string]*string `json:"LmSkuAttributeMap,omitempty" xml:"LmSkuAttributeMap,omitempty"`
+	PriceCent              *int64             `json:"PriceCent,omitempty" xml:"PriceCent,omitempty"`
+	Quantity               *int32             `json:"Quantity,omitempty" xml:"Quantity,omitempty"`
+	ReservedPrice          *int64             `json:"ReservedPrice,omitempty" xml:"ReservedPrice,omitempty"`
+	SimpleQuantity         *string            `json:"SimpleQuantity,omitempty" xml:"SimpleQuantity,omitempty"`
+	SkuId                  *int64             `json:"SkuId,omitempty" xml:"SkuId,omitempty"`
+	SkuPicUrl              *string            `json:"SkuPicUrl,omitempty" xml:"SkuPicUrl,omitempty"`
+	SkuPvs                 *string            `json:"SkuPvs,omitempty" xml:"SkuPvs,omitempty"`
+	SkuTitle               *string            `json:"SkuTitle,omitempty" xml:"SkuTitle,omitempty"`
+	Status                 *int32             `json:"Status,omitempty" xml:"Status,omitempty"`
+	SupplierPrice          *int64             `json:"SupplierPrice,omitempty" xml:"SupplierPrice,omitempty"`
+}
+
+func (s ListDistributionItemWithoutCacheResponseBodyModelSkuModels) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDistributionItemWithoutCacheResponseBodyModelSkuModels) GoString() string {
+	return s.String()
+}
+
+func (s *ListDistributionItemWithoutCacheResponseBodyModelSkuModels) SetCustomizedAttributeMap(v map[string]*string) *ListDistributionItemWithoutCacheResponseBodyModelSkuModels {
+	s.CustomizedAttributeMap = v
+	return s
+}
+
+func (s *ListDistributionItemWithoutCacheResponseBodyModelSkuModels) SetDistributionMallId(v string) *ListDistributionItemWithoutCacheResponseBodyModelSkuModels {
+	s.DistributionMallId = &v
+	return s
+}
+
+func (s *ListDistributionItemWithoutCacheResponseBodyModelSkuModels) SetExtJson(v string) *ListDistributionItemWithoutCacheResponseBodyModelSkuModels {
+	s.ExtJson = &v
+	return s
+}
+
+func (s *ListDistributionItemWithoutCacheResponseBodyModelSkuModels) SetHasQuantity(v bool) *ListDistributionItemWithoutCacheResponseBodyModelSkuModels {
+	s.HasQuantity = &v
+	return s
+}
+
+func (s *ListDistributionItemWithoutCacheResponseBodyModelSkuModels) SetInvoiceType(v int32) *ListDistributionItemWithoutCacheResponseBodyModelSkuModels {
+	s.InvoiceType = &v
+	return s
+}
+
+func (s *ListDistributionItemWithoutCacheResponseBodyModelSkuModels) SetIsCanNotBeSoldCode(v string) *ListDistributionItemWithoutCacheResponseBodyModelSkuModels {
+	s.IsCanNotBeSoldCode = &v
+	return s
+}
+
+func (s *ListDistributionItemWithoutCacheResponseBodyModelSkuModels) SetIsCanNotBeSoldMessage(v string) *ListDistributionItemWithoutCacheResponseBodyModelSkuModels {
+	s.IsCanNotBeSoldMessage = &v
+	return s
+}
+
+func (s *ListDistributionItemWithoutCacheResponseBodyModelSkuModels) SetItemId(v int64) *ListDistributionItemWithoutCacheResponseBodyModelSkuModels {
+	s.ItemId = &v
+	return s
+}
+
+func (s *ListDistributionItemWithoutCacheResponseBodyModelSkuModels) SetLmItemId(v string) *ListDistributionItemWithoutCacheResponseBodyModelSkuModels {
+	s.LmItemId = &v
+	return s
+}
+
+func (s *ListDistributionItemWithoutCacheResponseBodyModelSkuModels) SetLmSkuAttributeMap(v map[string]*string) *ListDistributionItemWithoutCacheResponseBodyModelSkuModels {
+	s.LmSkuAttributeMap = v
+	return s
+}
+
+func (s *ListDistributionItemWithoutCacheResponseBodyModelSkuModels) SetPriceCent(v int64) *ListDistributionItemWithoutCacheResponseBodyModelSkuModels {
+	s.PriceCent = &v
+	return s
+}
+
+func (s *ListDistributionItemWithoutCacheResponseBodyModelSkuModels) SetQuantity(v int32) *ListDistributionItemWithoutCacheResponseBodyModelSkuModels {
+	s.Quantity = &v
+	return s
+}
+
+func (s *ListDistributionItemWithoutCacheResponseBodyModelSkuModels) SetReservedPrice(v int64) *ListDistributionItemWithoutCacheResponseBodyModelSkuModels {
+	s.ReservedPrice = &v
+	return s
+}
+
+func (s *ListDistributionItemWithoutCacheResponseBodyModelSkuModels) SetSimpleQuantity(v string) *ListDistributionItemWithoutCacheResponseBodyModelSkuModels {
+	s.SimpleQuantity = &v
+	return s
+}
+
+func (s *ListDistributionItemWithoutCacheResponseBodyModelSkuModels) SetSkuId(v int64) *ListDistributionItemWithoutCacheResponseBodyModelSkuModels {
+	s.SkuId = &v
+	return s
+}
+
+func (s *ListDistributionItemWithoutCacheResponseBodyModelSkuModels) SetSkuPicUrl(v string) *ListDistributionItemWithoutCacheResponseBodyModelSkuModels {
+	s.SkuPicUrl = &v
+	return s
+}
+
+func (s *ListDistributionItemWithoutCacheResponseBodyModelSkuModels) SetSkuPvs(v string) *ListDistributionItemWithoutCacheResponseBodyModelSkuModels {
+	s.SkuPvs = &v
+	return s
+}
+
+func (s *ListDistributionItemWithoutCacheResponseBodyModelSkuModels) SetSkuTitle(v string) *ListDistributionItemWithoutCacheResponseBodyModelSkuModels {
+	s.SkuTitle = &v
+	return s
+}
+
+func (s *ListDistributionItemWithoutCacheResponseBodyModelSkuModels) SetStatus(v int32) *ListDistributionItemWithoutCacheResponseBodyModelSkuModels {
+	s.Status = &v
+	return s
+}
+
+func (s *ListDistributionItemWithoutCacheResponseBodyModelSkuModels) SetSupplierPrice(v int64) *ListDistributionItemWithoutCacheResponseBodyModelSkuModels {
+	s.SupplierPrice = &v
+	return s
+}
+
+type ListDistributionItemWithoutCacheResponseBodyModelSkuPropertys struct {
+	Id     *int64                                                                 `json:"Id,omitempty" xml:"Id,omitempty"`
+	Text   *string                                                                `json:"Text,omitempty" xml:"Text,omitempty"`
+	Values []*ListDistributionItemWithoutCacheResponseBodyModelSkuPropertysValues `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
+}
+
+func (s ListDistributionItemWithoutCacheResponseBodyModelSkuPropertys) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDistributionItemWithoutCacheResponseBodyModelSkuPropertys) GoString() string {
+	return s.String()
+}
+
+func (s *ListDistributionItemWithoutCacheResponseBodyModelSkuPropertys) SetId(v int64) *ListDistributionItemWithoutCacheResponseBodyModelSkuPropertys {
+	s.Id = &v
+	return s
+}
+
+func (s *ListDistributionItemWithoutCacheResponseBodyModelSkuPropertys) SetText(v string) *ListDistributionItemWithoutCacheResponseBodyModelSkuPropertys {
+	s.Text = &v
+	return s
+}
+
+func (s *ListDistributionItemWithoutCacheResponseBodyModelSkuPropertys) SetValues(v []*ListDistributionItemWithoutCacheResponseBodyModelSkuPropertysValues) *ListDistributionItemWithoutCacheResponseBodyModelSkuPropertys {
+	s.Values = v
+	return s
+}
+
+type ListDistributionItemWithoutCacheResponseBodyModelSkuPropertysValues struct {
+	Id   *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
+}
+
+func (s ListDistributionItemWithoutCacheResponseBodyModelSkuPropertysValues) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDistributionItemWithoutCacheResponseBodyModelSkuPropertysValues) GoString() string {
+	return s.String()
+}
+
+func (s *ListDistributionItemWithoutCacheResponseBodyModelSkuPropertysValues) SetId(v int64) *ListDistributionItemWithoutCacheResponseBodyModelSkuPropertysValues {
+	s.Id = &v
+	return s
+}
+
+func (s *ListDistributionItemWithoutCacheResponseBodyModelSkuPropertysValues) SetText(v string) *ListDistributionItemWithoutCacheResponseBodyModelSkuPropertysValues {
+	s.Text = &v
+	return s
+}
+
+type ListDistributionItemWithoutCacheResponse struct {
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListDistributionItemWithoutCacheResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListDistributionItemWithoutCacheResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDistributionItemWithoutCacheResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListDistributionItemWithoutCacheResponse) SetHeaders(v map[string]*string) *ListDistributionItemWithoutCacheResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListDistributionItemWithoutCacheResponse) SetStatusCode(v int32) *ListDistributionItemWithoutCacheResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListDistributionItemWithoutCacheResponse) SetBody(v *ListDistributionItemWithoutCacheResponseBody) *ListDistributionItemWithoutCacheResponse {
+	s.Body = v
+	return s
+}
+
 type ListDistributionMallRequest struct {
 	ChannelSupplierId    *string `json:"ChannelSupplierId,omitempty" xml:"ChannelSupplierId,omitempty"`
 	DistributionMallId   *string `json:"DistributionMallId,omitempty" xml:"DistributionMallId,omitempty"`
@@ -8527,6 +9126,74 @@ func (client *Client) ListDistributionItem(request *ListDistributionItemRequest)
 	runtime := &util.RuntimeOptions{}
 	_result = &ListDistributionItemResponse{}
 	_body, _err := client.ListDistributionItemWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListDistributionItemWithoutCacheWithOptions(request *ListDistributionItemWithoutCacheRequest, runtime *util.RuntimeOptions) (_result *ListDistributionItemWithoutCacheResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DistributionMallId)) {
+		body["DistributionMallId"] = request.DistributionMallId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DistributorId)) {
+		body["DistributorId"] = request.DistributorId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ItemStatus)) {
+		body["ItemStatus"] = request.ItemStatus
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LmItemId)) {
+		body["LmItemId"] = request.LmItemId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		body["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TenantId)) {
+		body["TenantId"] = request.TenantId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListDistributionItemWithoutCache"),
+		Version:     tea.String("2022-05-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListDistributionItemWithoutCacheResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListDistributionItemWithoutCache(request *ListDistributionItemWithoutCacheRequest) (_result *ListDistributionItemWithoutCacheResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListDistributionItemWithoutCacheResponse{}
+	_body, _err := client.ListDistributionItemWithoutCacheWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
