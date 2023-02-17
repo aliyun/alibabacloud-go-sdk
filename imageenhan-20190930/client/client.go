@@ -1481,6 +1481,163 @@ func (s *GenerateImageWithTextAndImageResponse) SetBody(v *GenerateImageWithText
 	return s
 }
 
+type GenerateSuperResolutionImageRequest struct {
+	ImageUrl      *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
+	OutputFormat  *string `json:"OutputFormat,omitempty" xml:"OutputFormat,omitempty"`
+	OutputQuality *int32  `json:"OutputQuality,omitempty" xml:"OutputQuality,omitempty"`
+	Scale         *int32  `json:"Scale,omitempty" xml:"Scale,omitempty"`
+	UserData      *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+}
+
+func (s GenerateSuperResolutionImageRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GenerateSuperResolutionImageRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GenerateSuperResolutionImageRequest) SetImageUrl(v string) *GenerateSuperResolutionImageRequest {
+	s.ImageUrl = &v
+	return s
+}
+
+func (s *GenerateSuperResolutionImageRequest) SetOutputFormat(v string) *GenerateSuperResolutionImageRequest {
+	s.OutputFormat = &v
+	return s
+}
+
+func (s *GenerateSuperResolutionImageRequest) SetOutputQuality(v int32) *GenerateSuperResolutionImageRequest {
+	s.OutputQuality = &v
+	return s
+}
+
+func (s *GenerateSuperResolutionImageRequest) SetScale(v int32) *GenerateSuperResolutionImageRequest {
+	s.Scale = &v
+	return s
+}
+
+func (s *GenerateSuperResolutionImageRequest) SetUserData(v string) *GenerateSuperResolutionImageRequest {
+	s.UserData = &v
+	return s
+}
+
+type GenerateSuperResolutionImageAdvanceRequest struct {
+	ImageUrlObject io.Reader `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
+	OutputFormat   *string   `json:"OutputFormat,omitempty" xml:"OutputFormat,omitempty"`
+	OutputQuality  *int32    `json:"OutputQuality,omitempty" xml:"OutputQuality,omitempty"`
+	Scale          *int32    `json:"Scale,omitempty" xml:"Scale,omitempty"`
+	UserData       *string   `json:"UserData,omitempty" xml:"UserData,omitempty"`
+}
+
+func (s GenerateSuperResolutionImageAdvanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GenerateSuperResolutionImageAdvanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GenerateSuperResolutionImageAdvanceRequest) SetImageUrlObject(v io.Reader) *GenerateSuperResolutionImageAdvanceRequest {
+	s.ImageUrlObject = v
+	return s
+}
+
+func (s *GenerateSuperResolutionImageAdvanceRequest) SetOutputFormat(v string) *GenerateSuperResolutionImageAdvanceRequest {
+	s.OutputFormat = &v
+	return s
+}
+
+func (s *GenerateSuperResolutionImageAdvanceRequest) SetOutputQuality(v int32) *GenerateSuperResolutionImageAdvanceRequest {
+	s.OutputQuality = &v
+	return s
+}
+
+func (s *GenerateSuperResolutionImageAdvanceRequest) SetScale(v int32) *GenerateSuperResolutionImageAdvanceRequest {
+	s.Scale = &v
+	return s
+}
+
+func (s *GenerateSuperResolutionImageAdvanceRequest) SetUserData(v string) *GenerateSuperResolutionImageAdvanceRequest {
+	s.UserData = &v
+	return s
+}
+
+type GenerateSuperResolutionImageResponseBody struct {
+	Data      *GenerateSuperResolutionImageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                                       `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GenerateSuperResolutionImageResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GenerateSuperResolutionImageResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GenerateSuperResolutionImageResponseBody) SetData(v *GenerateSuperResolutionImageResponseBodyData) *GenerateSuperResolutionImageResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GenerateSuperResolutionImageResponseBody) SetMessage(v string) *GenerateSuperResolutionImageResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GenerateSuperResolutionImageResponseBody) SetRequestId(v string) *GenerateSuperResolutionImageResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GenerateSuperResolutionImageResponseBodyData struct {
+	ResultUrl *string `json:"ResultUrl,omitempty" xml:"ResultUrl,omitempty"`
+}
+
+func (s GenerateSuperResolutionImageResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GenerateSuperResolutionImageResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GenerateSuperResolutionImageResponseBodyData) SetResultUrl(v string) *GenerateSuperResolutionImageResponseBodyData {
+	s.ResultUrl = &v
+	return s
+}
+
+type GenerateSuperResolutionImageResponse struct {
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GenerateSuperResolutionImageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GenerateSuperResolutionImageResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GenerateSuperResolutionImageResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GenerateSuperResolutionImageResponse) SetHeaders(v map[string]*string) *GenerateSuperResolutionImageResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GenerateSuperResolutionImageResponse) SetStatusCode(v int32) *GenerateSuperResolutionImageResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GenerateSuperResolutionImageResponse) SetBody(v *GenerateSuperResolutionImageResponseBody) *GenerateSuperResolutionImageResponse {
+	s.Body = v
+	return s
+}
+
 type GetAsyncJobResultRequest struct {
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 }
@@ -4875,6 +5032,172 @@ func (client *Client) GenerateImageWithTextAndImageAdvance(request *GenerateImag
 	}
 
 	_result = generateImageWithTextAndImageResp
+	return _result, _err
+}
+
+func (client *Client) GenerateSuperResolutionImageWithOptions(request *GenerateSuperResolutionImageRequest, runtime *util.RuntimeOptions) (_result *GenerateSuperResolutionImageResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ImageUrl)) {
+		body["ImageUrl"] = request.ImageUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OutputFormat)) {
+		body["OutputFormat"] = request.OutputFormat
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OutputQuality)) {
+		body["OutputQuality"] = request.OutputQuality
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Scale)) {
+		body["Scale"] = request.Scale
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserData)) {
+		body["UserData"] = request.UserData
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GenerateSuperResolutionImage"),
+		Version:     tea.String("2019-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GenerateSuperResolutionImageResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GenerateSuperResolutionImage(request *GenerateSuperResolutionImageRequest) (_result *GenerateSuperResolutionImageResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GenerateSuperResolutionImageResponse{}
+	_body, _err := client.GenerateSuperResolutionImageWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GenerateSuperResolutionImageAdvance(request *GenerateSuperResolutionImageAdvanceRequest, runtime *util.RuntimeOptions) (_result *GenerateSuperResolutionImageResponse, _err error) {
+	// Step 0: init client
+	accessKeyId, _err := client.Credential.GetAccessKeyId()
+	if _err != nil {
+		return _result, _err
+	}
+
+	accessKeySecret, _err := client.Credential.GetAccessKeySecret()
+	if _err != nil {
+		return _result, _err
+	}
+
+	securityToken, _err := client.Credential.GetSecurityToken()
+	if _err != nil {
+		return _result, _err
+	}
+
+	credentialType := client.Credential.GetType()
+	openPlatformEndpoint := client.OpenPlatformEndpoint
+	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
+	}
+
+	if tea.BoolValue(util.IsUnset(credentialType)) {
+		credentialType = tea.String("access_key")
+	}
+
+	authConfig := &openapi.Config{
+		AccessKeyId:     accessKeyId,
+		AccessKeySecret: accessKeySecret,
+		SecurityToken:   securityToken,
+		Type:            credentialType,
+		Endpoint:        openPlatformEndpoint,
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	authClient, _err := openplatform.NewClient(authConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
+	authRequest := &openplatform.AuthorizeFileUploadRequest{
+		Product:  tea.String("imageenhan"),
+		RegionId: client.RegionId,
+	}
+	authResponse := &openplatform.AuthorizeFileUploadResponse{}
+	ossConfig := &oss.Config{
+		AccessKeySecret: accessKeySecret,
+		Type:            tea.String("access_key"),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	var ossClient *oss.Client
+	fileObj := &fileform.FileField{}
+	ossHeader := &oss.PostObjectRequestHeader{}
+	uploadRequest := &oss.PostObjectRequest{}
+	ossRuntime := &ossutil.RuntimeOptions{}
+	openapiutil.Convert(runtime, ossRuntime)
+	generateSuperResolutionImageReq := &GenerateSuperResolutionImageRequest{}
+	openapiutil.Convert(request, generateSuperResolutionImageReq)
+	if !tea.BoolValue(util.IsUnset(request.ImageUrlObject)) {
+		authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+
+		ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
+		ossClient, _err = oss.NewClient(ossConfig)
+		if _err != nil {
+			return _result, _err
+		}
+
+		fileObj = &fileform.FileField{
+			Filename:    authResponse.Body.ObjectKey,
+			Content:     request.ImageUrlObject,
+			ContentType: tea.String(""),
+		}
+		ossHeader = &oss.PostObjectRequestHeader{
+			AccessKeyId:         authResponse.Body.AccessKeyId,
+			Policy:              authResponse.Body.EncodedPolicy,
+			Signature:           authResponse.Body.Signature,
+			Key:                 authResponse.Body.ObjectKey,
+			File:                fileObj,
+			SuccessActionStatus: tea.String("201"),
+		}
+		uploadRequest = &oss.PostObjectRequest{
+			BucketName: authResponse.Body.Bucket,
+			Header:     ossHeader,
+		}
+		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+		if _err != nil {
+			return _result, _err
+		}
+		generateSuperResolutionImageReq.ImageUrl = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
+	}
+
+	generateSuperResolutionImageResp, _err := client.GenerateSuperResolutionImageWithOptions(generateSuperResolutionImageReq, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+
+	_result = generateSuperResolutionImageResp
 	return _result, _err
 }
 
