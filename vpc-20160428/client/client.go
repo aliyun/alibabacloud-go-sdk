@@ -4844,17 +4844,18 @@ func (s *CreateCommonBandwidthPackageResponse) SetBody(v *CreateCommonBandwidthP
 }
 
 type CreateCustomerGatewayRequest struct {
-	Asn                  *string `json:"Asn,omitempty" xml:"Asn,omitempty"`
-	AuthKey              *string `json:"AuthKey,omitempty" xml:"AuthKey,omitempty"`
-	ClientToken          *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	Description          *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	IpAddress            *string `json:"IpAddress,omitempty" xml:"IpAddress,omitempty"`
-	Name                 *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	Asn                  *string                             `json:"Asn,omitempty" xml:"Asn,omitempty"`
+	AuthKey              *string                             `json:"AuthKey,omitempty" xml:"AuthKey,omitempty"`
+	ClientToken          *string                             `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	Description          *string                             `json:"Description,omitempty" xml:"Description,omitempty"`
+	IpAddress            *string                             `json:"IpAddress,omitempty" xml:"IpAddress,omitempty"`
+	Name                 *string                             `json:"Name,omitempty" xml:"Name,omitempty"`
+	OwnerAccount         *string                             `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64                              `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId             *string                             `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string                             `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64                              `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	Tags                 []*CreateCustomerGatewayRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
 func (s CreateCustomerGatewayRequest) String() string {
@@ -4917,6 +4918,34 @@ func (s *CreateCustomerGatewayRequest) SetResourceOwnerAccount(v string) *Create
 
 func (s *CreateCustomerGatewayRequest) SetResourceOwnerId(v int64) *CreateCustomerGatewayRequest {
 	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *CreateCustomerGatewayRequest) SetTags(v []*CreateCustomerGatewayRequestTags) *CreateCustomerGatewayRequest {
+	s.Tags = v
+	return s
+}
+
+type CreateCustomerGatewayRequestTags struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateCustomerGatewayRequestTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCustomerGatewayRequestTags) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCustomerGatewayRequestTags) SetKey(v string) *CreateCustomerGatewayRequestTags {
+	s.Key = &v
+	return s
+}
+
+func (s *CreateCustomerGatewayRequestTags) SetValue(v string) *CreateCustomerGatewayRequestTags {
+	s.Value = &v
 	return s
 }
 
@@ -5305,6 +5334,7 @@ type CreateFlowLogRequest struct {
 	OwnerId              *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ProjectName          *string   `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
 	RegionId             *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId      *string   `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceId           *string   `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -5361,6 +5391,11 @@ func (s *CreateFlowLogRequest) SetRegionId(v string) *CreateFlowLogRequest {
 	return s
 }
 
+func (s *CreateFlowLogRequest) SetResourceGroupId(v string) *CreateFlowLogRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
 func (s *CreateFlowLogRequest) SetResourceId(v string) *CreateFlowLogRequest {
 	s.ResourceId = &v
 	return s
@@ -5392,9 +5427,10 @@ func (s *CreateFlowLogRequest) SetTrafficType(v string) *CreateFlowLogRequest {
 }
 
 type CreateFlowLogResponseBody struct {
-	FlowLogId *string `json:"FlowLogId,omitempty" xml:"FlowLogId,omitempty"`
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *string `json:"Success,omitempty" xml:"Success,omitempty"`
+	FlowLogId       *string `json:"FlowLogId,omitempty" xml:"FlowLogId,omitempty"`
+	RequestId       *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	Success         *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CreateFlowLogResponseBody) String() string {
@@ -5412,6 +5448,11 @@ func (s *CreateFlowLogResponseBody) SetFlowLogId(v string) *CreateFlowLogRespons
 
 func (s *CreateFlowLogResponseBody) SetRequestId(v string) *CreateFlowLogResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *CreateFlowLogResponseBody) SetResourceGroupId(v string) *CreateFlowLogResponseBody {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -5898,6 +5939,7 @@ type CreateHaVipRequest struct {
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	VSwitchId            *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
@@ -5943,6 +5985,11 @@ func (s *CreateHaVipRequest) SetOwnerId(v int64) *CreateHaVipRequest {
 
 func (s *CreateHaVipRequest) SetRegionId(v string) *CreateHaVipRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *CreateHaVipRequest) SetResourceGroupId(v string) *CreateHaVipRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -6609,6 +6656,7 @@ type CreateIpv4GatewayRequest struct {
 	OwnerAccount           *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId                *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	RegionId               *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId        *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount   *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId        *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	VpcId                  *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
@@ -6657,6 +6705,11 @@ func (s *CreateIpv4GatewayRequest) SetRegionId(v string) *CreateIpv4GatewayReque
 	return s
 }
 
+func (s *CreateIpv4GatewayRequest) SetResourceGroupId(v string) *CreateIpv4GatewayRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
 func (s *CreateIpv4GatewayRequest) SetResourceOwnerAccount(v string) *CreateIpv4GatewayRequest {
 	s.ResourceOwnerAccount = &v
 	return s
@@ -6673,8 +6726,9 @@ func (s *CreateIpv4GatewayRequest) SetVpcId(v string) *CreateIpv4GatewayRequest 
 }
 
 type CreateIpv4GatewayResponseBody struct {
-	Ipv4GatewayId *string `json:"Ipv4GatewayId,omitempty" xml:"Ipv4GatewayId,omitempty"`
-	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Ipv4GatewayId   *string `json:"Ipv4GatewayId,omitempty" xml:"Ipv4GatewayId,omitempty"`
+	RequestId       *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
 func (s CreateIpv4GatewayResponseBody) String() string {
@@ -6692,6 +6746,11 @@ func (s *CreateIpv4GatewayResponseBody) SetIpv4GatewayId(v string) *CreateIpv4Ga
 
 func (s *CreateIpv4GatewayResponseBody) SetRequestId(v string) *CreateIpv4GatewayResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *CreateIpv4GatewayResponseBody) SetResourceGroupId(v string) *CreateIpv4GatewayResponseBody {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -6860,6 +6919,7 @@ type CreateIpv6GatewayRequest struct {
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	VpcId                *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
@@ -6903,6 +6963,11 @@ func (s *CreateIpv6GatewayRequest) SetRegionId(v string) *CreateIpv6GatewayReque
 	return s
 }
 
+func (s *CreateIpv6GatewayRequest) SetResourceGroupId(v string) *CreateIpv6GatewayRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
 func (s *CreateIpv6GatewayRequest) SetResourceOwnerAccount(v string) *CreateIpv6GatewayRequest {
 	s.ResourceOwnerAccount = &v
 	return s
@@ -6919,8 +6984,9 @@ func (s *CreateIpv6GatewayRequest) SetVpcId(v string) *CreateIpv6GatewayRequest 
 }
 
 type CreateIpv6GatewayResponseBody struct {
-	Ipv6GatewayId *string `json:"Ipv6GatewayId,omitempty" xml:"Ipv6GatewayId,omitempty"`
-	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Ipv6GatewayId   *string `json:"Ipv6GatewayId,omitempty" xml:"Ipv6GatewayId,omitempty"`
+	RequestId       *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
 func (s CreateIpv6GatewayResponseBody) String() string {
@@ -6938,6 +7004,11 @@ func (s *CreateIpv6GatewayResponseBody) SetIpv6GatewayId(v string) *CreateIpv6Ga
 
 func (s *CreateIpv6GatewayResponseBody) SetRequestId(v string) *CreateIpv6GatewayResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *CreateIpv6GatewayResponseBody) SetResourceGroupId(v string) *CreateIpv6GatewayResponseBody {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -9648,6 +9719,7 @@ type CreateTrafficMirrorFilterRequest struct {
 	OwnerAccount                   *string                                         `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId                        *int64                                          `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	RegionId                       *string                                         `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId                *string                                         `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount           *string                                         `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId                *int64                                          `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	TrafficMirrorFilterDescription *string                                         `json:"TrafficMirrorFilterDescription,omitempty" xml:"TrafficMirrorFilterDescription,omitempty"`
@@ -9694,6 +9766,11 @@ func (s *CreateTrafficMirrorFilterRequest) SetOwnerId(v int64) *CreateTrafficMir
 
 func (s *CreateTrafficMirrorFilterRequest) SetRegionId(v string) *CreateTrafficMirrorFilterRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *CreateTrafficMirrorFilterRequest) SetResourceGroupId(v string) *CreateTrafficMirrorFilterRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -9825,6 +9902,7 @@ func (s *CreateTrafficMirrorFilterRequestIngressRules) SetSourcePortRange(v stri
 
 type CreateTrafficMirrorFilterResponseBody struct {
 	RequestId             *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResourceGroupId       *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	TrafficMirrorFilterId *string `json:"TrafficMirrorFilterId,omitempty" xml:"TrafficMirrorFilterId,omitempty"`
 }
 
@@ -9838,6 +9916,11 @@ func (s CreateTrafficMirrorFilterResponseBody) GoString() string {
 
 func (s *CreateTrafficMirrorFilterResponseBody) SetRequestId(v string) *CreateTrafficMirrorFilterResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *CreateTrafficMirrorFilterResponseBody) SetResourceGroupId(v string) *CreateTrafficMirrorFilterResponseBody {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -10153,6 +10236,7 @@ type CreateTrafficMirrorSessionRequest struct {
 	PacketLength                    *int32    `json:"PacketLength,omitempty" xml:"PacketLength,omitempty"`
 	Priority                        *int32    `json:"Priority,omitempty" xml:"Priority,omitempty"`
 	RegionId                        *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId                 *string   `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount            *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId                 *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	TrafficMirrorFilterId           *string   `json:"TrafficMirrorFilterId,omitempty" xml:"TrafficMirrorFilterId,omitempty"`
@@ -10212,6 +10296,11 @@ func (s *CreateTrafficMirrorSessionRequest) SetRegionId(v string) *CreateTraffic
 	return s
 }
 
+func (s *CreateTrafficMirrorSessionRequest) SetResourceGroupId(v string) *CreateTrafficMirrorSessionRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
 func (s *CreateTrafficMirrorSessionRequest) SetResourceOwnerAccount(v string) *CreateTrafficMirrorSessionRequest {
 	s.ResourceOwnerAccount = &v
 	return s
@@ -10259,6 +10348,7 @@ func (s *CreateTrafficMirrorSessionRequest) SetVirtualNetworkId(v int32) *Create
 
 type CreateTrafficMirrorSessionResponseBody struct {
 	RequestId              *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResourceGroupId        *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	TrafficMirrorSessionId *string `json:"TrafficMirrorSessionId,omitempty" xml:"TrafficMirrorSessionId,omitempty"`
 }
 
@@ -10272,6 +10362,11 @@ func (s CreateTrafficMirrorSessionResponseBody) GoString() string {
 
 func (s *CreateTrafficMirrorSessionResponseBody) SetRequestId(v string) *CreateTrafficMirrorSessionResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *CreateTrafficMirrorSessionResponseBody) SetResourceGroupId(v string) *CreateTrafficMirrorSessionResponseBody {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -11650,25 +11745,26 @@ func (s *CreateVpconnFromVbrResponse) SetBody(v *CreateVpconnFromVbrResponseBody
 }
 
 type CreateVpnAttachmentRequest struct {
-	AutoConfigRoute      *bool   `json:"AutoConfigRoute,omitempty" xml:"AutoConfigRoute,omitempty"`
-	BgpConfig            *string `json:"BgpConfig,omitempty" xml:"BgpConfig,omitempty"`
-	ClientToken          *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	CustomerGatewayId    *string `json:"CustomerGatewayId,omitempty" xml:"CustomerGatewayId,omitempty"`
-	EffectImmediately    *bool   `json:"EffectImmediately,omitempty" xml:"EffectImmediately,omitempty"`
-	EnableDpd            *bool   `json:"EnableDpd,omitempty" xml:"EnableDpd,omitempty"`
-	EnableNatTraversal   *bool   `json:"EnableNatTraversal,omitempty" xml:"EnableNatTraversal,omitempty"`
-	HealthCheckConfig    *string `json:"HealthCheckConfig,omitempty" xml:"HealthCheckConfig,omitempty"`
-	IkeConfig            *string `json:"IkeConfig,omitempty" xml:"IkeConfig,omitempty"`
-	IpsecConfig          *string `json:"IpsecConfig,omitempty" xml:"IpsecConfig,omitempty"`
-	LocalSubnet          *string `json:"LocalSubnet,omitempty" xml:"LocalSubnet,omitempty"`
-	Name                 *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	NetworkType          *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
-	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RemoteCaCert         *string `json:"RemoteCaCert,omitempty" xml:"RemoteCaCert,omitempty"`
-	RemoteSubnet         *string `json:"RemoteSubnet,omitempty" xml:"RemoteSubnet,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	AutoConfigRoute      *bool                             `json:"AutoConfigRoute,omitempty" xml:"AutoConfigRoute,omitempty"`
+	BgpConfig            *string                           `json:"BgpConfig,omitempty" xml:"BgpConfig,omitempty"`
+	ClientToken          *string                           `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	CustomerGatewayId    *string                           `json:"CustomerGatewayId,omitempty" xml:"CustomerGatewayId,omitempty"`
+	EffectImmediately    *bool                             `json:"EffectImmediately,omitempty" xml:"EffectImmediately,omitempty"`
+	EnableDpd            *bool                             `json:"EnableDpd,omitempty" xml:"EnableDpd,omitempty"`
+	EnableNatTraversal   *bool                             `json:"EnableNatTraversal,omitempty" xml:"EnableNatTraversal,omitempty"`
+	HealthCheckConfig    *string                           `json:"HealthCheckConfig,omitempty" xml:"HealthCheckConfig,omitempty"`
+	IkeConfig            *string                           `json:"IkeConfig,omitempty" xml:"IkeConfig,omitempty"`
+	IpsecConfig          *string                           `json:"IpsecConfig,omitempty" xml:"IpsecConfig,omitempty"`
+	LocalSubnet          *string                           `json:"LocalSubnet,omitempty" xml:"LocalSubnet,omitempty"`
+	Name                 *string                           `json:"Name,omitempty" xml:"Name,omitempty"`
+	NetworkType          *string                           `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
+	OwnerAccount         *string                           `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	RegionId             *string                           `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RemoteCaCert         *string                           `json:"RemoteCaCert,omitempty" xml:"RemoteCaCert,omitempty"`
+	RemoteSubnet         *string                           `json:"RemoteSubnet,omitempty" xml:"RemoteSubnet,omitempty"`
+	ResourceOwnerAccount *string                           `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64                            `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	Tags                 []*CreateVpnAttachmentRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
 func (s CreateVpnAttachmentRequest) String() string {
@@ -11774,6 +11870,34 @@ func (s *CreateVpnAttachmentRequest) SetResourceOwnerId(v int64) *CreateVpnAttac
 	return s
 }
 
+func (s *CreateVpnAttachmentRequest) SetTags(v []*CreateVpnAttachmentRequestTags) *CreateVpnAttachmentRequest {
+	s.Tags = v
+	return s
+}
+
+type CreateVpnAttachmentRequestTags struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateVpnAttachmentRequestTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateVpnAttachmentRequestTags) GoString() string {
+	return s.String()
+}
+
+func (s *CreateVpnAttachmentRequestTags) SetKey(v string) *CreateVpnAttachmentRequestTags {
+	s.Key = &v
+	return s
+}
+
+func (s *CreateVpnAttachmentRequestTags) SetValue(v string) *CreateVpnAttachmentRequestTags {
+	s.Value = &v
+	return s
+}
+
 type CreateVpnAttachmentResponseBody struct {
 	Code            *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	CreateTime      *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
@@ -11857,26 +11981,27 @@ func (s *CreateVpnAttachmentResponse) SetBody(v *CreateVpnAttachmentResponseBody
 }
 
 type CreateVpnConnectionRequest struct {
-	AutoConfigRoute      *bool   `json:"AutoConfigRoute,omitempty" xml:"AutoConfigRoute,omitempty"`
-	BgpConfig            *string `json:"BgpConfig,omitempty" xml:"BgpConfig,omitempty"`
-	ClientToken          *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	CustomerGatewayId    *string `json:"CustomerGatewayId,omitempty" xml:"CustomerGatewayId,omitempty"`
-	EffectImmediately    *bool   `json:"EffectImmediately,omitempty" xml:"EffectImmediately,omitempty"`
-	EnableDpd            *bool   `json:"EnableDpd,omitempty" xml:"EnableDpd,omitempty"`
-	EnableNatTraversal   *bool   `json:"EnableNatTraversal,omitempty" xml:"EnableNatTraversal,omitempty"`
-	HealthCheckConfig    *string `json:"HealthCheckConfig,omitempty" xml:"HealthCheckConfig,omitempty"`
-	IkeConfig            *string `json:"IkeConfig,omitempty" xml:"IkeConfig,omitempty"`
-	IpsecConfig          *string `json:"IpsecConfig,omitempty" xml:"IpsecConfig,omitempty"`
-	LocalSubnet          *string `json:"LocalSubnet,omitempty" xml:"LocalSubnet,omitempty"`
-	Name                 *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RemoteCaCertificate  *string `json:"RemoteCaCertificate,omitempty" xml:"RemoteCaCertificate,omitempty"`
-	RemoteSubnet         *string `json:"RemoteSubnet,omitempty" xml:"RemoteSubnet,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	VpnGatewayId         *string `json:"VpnGatewayId,omitempty" xml:"VpnGatewayId,omitempty"`
+	AutoConfigRoute      *bool                             `json:"AutoConfigRoute,omitempty" xml:"AutoConfigRoute,omitempty"`
+	BgpConfig            *string                           `json:"BgpConfig,omitempty" xml:"BgpConfig,omitempty"`
+	ClientToken          *string                           `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	CustomerGatewayId    *string                           `json:"CustomerGatewayId,omitempty" xml:"CustomerGatewayId,omitempty"`
+	EffectImmediately    *bool                             `json:"EffectImmediately,omitempty" xml:"EffectImmediately,omitempty"`
+	EnableDpd            *bool                             `json:"EnableDpd,omitempty" xml:"EnableDpd,omitempty"`
+	EnableNatTraversal   *bool                             `json:"EnableNatTraversal,omitempty" xml:"EnableNatTraversal,omitempty"`
+	HealthCheckConfig    *string                           `json:"HealthCheckConfig,omitempty" xml:"HealthCheckConfig,omitempty"`
+	IkeConfig            *string                           `json:"IkeConfig,omitempty" xml:"IkeConfig,omitempty"`
+	IpsecConfig          *string                           `json:"IpsecConfig,omitempty" xml:"IpsecConfig,omitempty"`
+	LocalSubnet          *string                           `json:"LocalSubnet,omitempty" xml:"LocalSubnet,omitempty"`
+	Name                 *string                           `json:"Name,omitempty" xml:"Name,omitempty"`
+	OwnerAccount         *string                           `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64                            `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId             *string                           `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RemoteCaCertificate  *string                           `json:"RemoteCaCertificate,omitempty" xml:"RemoteCaCertificate,omitempty"`
+	RemoteSubnet         *string                           `json:"RemoteSubnet,omitempty" xml:"RemoteSubnet,omitempty"`
+	ResourceOwnerAccount *string                           `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64                            `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	Tags                 []*CreateVpnConnectionRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	VpnGatewayId         *string                           `json:"VpnGatewayId,omitempty" xml:"VpnGatewayId,omitempty"`
 }
 
 func (s CreateVpnConnectionRequest) String() string {
@@ -11982,8 +12107,36 @@ func (s *CreateVpnConnectionRequest) SetResourceOwnerId(v int64) *CreateVpnConne
 	return s
 }
 
+func (s *CreateVpnConnectionRequest) SetTags(v []*CreateVpnConnectionRequestTags) *CreateVpnConnectionRequest {
+	s.Tags = v
+	return s
+}
+
 func (s *CreateVpnConnectionRequest) SetVpnGatewayId(v string) *CreateVpnConnectionRequest {
 	s.VpnGatewayId = &v
+	return s
+}
+
+type CreateVpnConnectionRequestTags struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateVpnConnectionRequestTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateVpnConnectionRequestTags) GoString() string {
+	return s.String()
+}
+
+func (s *CreateVpnConnectionRequestTags) SetKey(v string) *CreateVpnConnectionRequestTags {
+	s.Key = &v
+	return s
+}
+
+func (s *CreateVpnConnectionRequestTags) SetValue(v string) *CreateVpnConnectionRequestTags {
+	s.Value = &v
 	return s
 }
 
@@ -19368,14 +19521,15 @@ func (s *DescribeCustomerGatewayRequest) SetResourceOwnerId(v int64) *DescribeCu
 }
 
 type DescribeCustomerGatewayResponseBody struct {
-	Asn               *int64  `json:"Asn,omitempty" xml:"Asn,omitempty"`
-	AuthKey           *string `json:"AuthKey,omitempty" xml:"AuthKey,omitempty"`
-	CreateTime        *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	CustomerGatewayId *string `json:"CustomerGatewayId,omitempty" xml:"CustomerGatewayId,omitempty"`
-	Description       *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	IpAddress         *string `json:"IpAddress,omitempty" xml:"IpAddress,omitempty"`
-	Name              *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	RequestId         *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Asn               *int64                                   `json:"Asn,omitempty" xml:"Asn,omitempty"`
+	AuthKey           *string                                  `json:"AuthKey,omitempty" xml:"AuthKey,omitempty"`
+	CreateTime        *int64                                   `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CustomerGatewayId *string                                  `json:"CustomerGatewayId,omitempty" xml:"CustomerGatewayId,omitempty"`
+	Description       *string                                  `json:"Description,omitempty" xml:"Description,omitempty"`
+	IpAddress         *string                                  `json:"IpAddress,omitempty" xml:"IpAddress,omitempty"`
+	Name              *string                                  `json:"Name,omitempty" xml:"Name,omitempty"`
+	RequestId         *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Tags              *DescribeCustomerGatewayResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
 }
 
 func (s DescribeCustomerGatewayResponseBody) String() string {
@@ -19426,6 +19580,51 @@ func (s *DescribeCustomerGatewayResponseBody) SetRequestId(v string) *DescribeCu
 	return s
 }
 
+func (s *DescribeCustomerGatewayResponseBody) SetTags(v *DescribeCustomerGatewayResponseBodyTags) *DescribeCustomerGatewayResponseBody {
+	s.Tags = v
+	return s
+}
+
+type DescribeCustomerGatewayResponseBodyTags struct {
+	Tag []*DescribeCustomerGatewayResponseBodyTagsTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+}
+
+func (s DescribeCustomerGatewayResponseBodyTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCustomerGatewayResponseBodyTags) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCustomerGatewayResponseBodyTags) SetTag(v []*DescribeCustomerGatewayResponseBodyTagsTag) *DescribeCustomerGatewayResponseBodyTags {
+	s.Tag = v
+	return s
+}
+
+type DescribeCustomerGatewayResponseBodyTagsTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DescribeCustomerGatewayResponseBodyTagsTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCustomerGatewayResponseBodyTagsTag) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCustomerGatewayResponseBodyTagsTag) SetKey(v string) *DescribeCustomerGatewayResponseBodyTagsTag {
+	s.Key = &v
+	return s
+}
+
+func (s *DescribeCustomerGatewayResponseBodyTagsTag) SetValue(v string) *DescribeCustomerGatewayResponseBodyTagsTag {
+	s.Value = &v
+	return s
+}
+
 type DescribeCustomerGatewayResponse struct {
 	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
 	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
@@ -19456,14 +19655,15 @@ func (s *DescribeCustomerGatewayResponse) SetBody(v *DescribeCustomerGatewayResp
 }
 
 type DescribeCustomerGatewaysRequest struct {
-	CustomerGatewayId    *string `json:"CustomerGatewayId,omitempty" xml:"CustomerGatewayId,omitempty"`
-	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	PageNumber           *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	CustomerGatewayId    *string                               `json:"CustomerGatewayId,omitempty" xml:"CustomerGatewayId,omitempty"`
+	OwnerAccount         *string                               `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64                                `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	PageNumber           *int32                                `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize             *int32                                `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RegionId             *string                               `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string                               `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64                                `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	Tag                  []*DescribeCustomerGatewaysRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s DescribeCustomerGatewaysRequest) String() string {
@@ -19511,6 +19711,34 @@ func (s *DescribeCustomerGatewaysRequest) SetResourceOwnerAccount(v string) *Des
 
 func (s *DescribeCustomerGatewaysRequest) SetResourceOwnerId(v int64) *DescribeCustomerGatewaysRequest {
 	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *DescribeCustomerGatewaysRequest) SetTag(v []*DescribeCustomerGatewaysRequestTag) *DescribeCustomerGatewaysRequest {
+	s.Tag = v
+	return s
+}
+
+type DescribeCustomerGatewaysRequestTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DescribeCustomerGatewaysRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCustomerGatewaysRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCustomerGatewaysRequestTag) SetKey(v string) *DescribeCustomerGatewaysRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *DescribeCustomerGatewaysRequestTag) SetValue(v string) *DescribeCustomerGatewaysRequestTag {
+	s.Value = &v
 	return s
 }
 
@@ -19573,13 +19801,14 @@ func (s *DescribeCustomerGatewaysResponseBodyCustomerGateways) SetCustomerGatewa
 }
 
 type DescribeCustomerGatewaysResponseBodyCustomerGatewaysCustomerGateway struct {
-	Asn               *int64  `json:"Asn,omitempty" xml:"Asn,omitempty"`
-	AuthKey           *string `json:"AuthKey,omitempty" xml:"AuthKey,omitempty"`
-	CreateTime        *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	CustomerGatewayId *string `json:"CustomerGatewayId,omitempty" xml:"CustomerGatewayId,omitempty"`
-	Description       *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	IpAddress         *string `json:"IpAddress,omitempty" xml:"IpAddress,omitempty"`
-	Name              *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Asn               *int64                                                                   `json:"Asn,omitempty" xml:"Asn,omitempty"`
+	AuthKey           *string                                                                  `json:"AuthKey,omitempty" xml:"AuthKey,omitempty"`
+	CreateTime        *int64                                                                   `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CustomerGatewayId *string                                                                  `json:"CustomerGatewayId,omitempty" xml:"CustomerGatewayId,omitempty"`
+	Description       *string                                                                  `json:"Description,omitempty" xml:"Description,omitempty"`
+	IpAddress         *string                                                                  `json:"IpAddress,omitempty" xml:"IpAddress,omitempty"`
+	Name              *string                                                                  `json:"Name,omitempty" xml:"Name,omitempty"`
+	Tags              *DescribeCustomerGatewaysResponseBodyCustomerGatewaysCustomerGatewayTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
 }
 
 func (s DescribeCustomerGatewaysResponseBodyCustomerGatewaysCustomerGateway) String() string {
@@ -19622,6 +19851,51 @@ func (s *DescribeCustomerGatewaysResponseBodyCustomerGatewaysCustomerGateway) Se
 
 func (s *DescribeCustomerGatewaysResponseBodyCustomerGatewaysCustomerGateway) SetName(v string) *DescribeCustomerGatewaysResponseBodyCustomerGatewaysCustomerGateway {
 	s.Name = &v
+	return s
+}
+
+func (s *DescribeCustomerGatewaysResponseBodyCustomerGatewaysCustomerGateway) SetTags(v *DescribeCustomerGatewaysResponseBodyCustomerGatewaysCustomerGatewayTags) *DescribeCustomerGatewaysResponseBodyCustomerGatewaysCustomerGateway {
+	s.Tags = v
+	return s
+}
+
+type DescribeCustomerGatewaysResponseBodyCustomerGatewaysCustomerGatewayTags struct {
+	Tag []*DescribeCustomerGatewaysResponseBodyCustomerGatewaysCustomerGatewayTagsTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+}
+
+func (s DescribeCustomerGatewaysResponseBodyCustomerGatewaysCustomerGatewayTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCustomerGatewaysResponseBodyCustomerGatewaysCustomerGatewayTags) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCustomerGatewaysResponseBodyCustomerGatewaysCustomerGatewayTags) SetTag(v []*DescribeCustomerGatewaysResponseBodyCustomerGatewaysCustomerGatewayTagsTag) *DescribeCustomerGatewaysResponseBodyCustomerGatewaysCustomerGatewayTags {
+	s.Tag = v
+	return s
+}
+
+type DescribeCustomerGatewaysResponseBodyCustomerGatewaysCustomerGatewayTagsTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DescribeCustomerGatewaysResponseBodyCustomerGatewaysCustomerGatewayTagsTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCustomerGatewaysResponseBodyCustomerGatewaysCustomerGatewayTagsTag) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCustomerGatewaysResponseBodyCustomerGatewaysCustomerGatewayTagsTag) SetKey(v string) *DescribeCustomerGatewaysResponseBodyCustomerGatewaysCustomerGatewayTagsTag {
+	s.Key = &v
+	return s
+}
+
+func (s *DescribeCustomerGatewaysResponseBodyCustomerGatewaysCustomerGatewayTagsTag) SetValue(v string) *DescribeCustomerGatewaysResponseBodyCustomerGatewaysCustomerGatewayTagsTag {
+	s.Value = &v
 	return s
 }
 
@@ -19745,6 +20019,7 @@ func (s *DescribeEcGrantRelationResponseBody) SetTotalCount(v int32) *DescribeEc
 type DescribeEcGrantRelationResponseBodyEcGrantRelations struct {
 	AliUid           *int64  `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
 	GmtCreate        *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	GrantType        *string `json:"GrantType,omitempty" xml:"GrantType,omitempty"`
 	InstanceId       *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	InstanceName     *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
 	InstanceRouterId *string `json:"InstanceRouterId,omitempty" xml:"InstanceRouterId,omitempty"`
@@ -19770,6 +20045,11 @@ func (s *DescribeEcGrantRelationResponseBodyEcGrantRelations) SetAliUid(v int64)
 
 func (s *DescribeEcGrantRelationResponseBodyEcGrantRelations) SetGmtCreate(v string) *DescribeEcGrantRelationResponseBodyEcGrantRelations {
 	s.GmtCreate = &v
+	return s
+}
+
+func (s *DescribeEcGrantRelationResponseBodyEcGrantRelations) SetGrantType(v string) *DescribeEcGrantRelationResponseBodyEcGrantRelations {
+	s.GrantType = &v
 	return s
 }
 
@@ -20981,23 +21261,25 @@ func (s *DescribeEipSegmentResponse) SetBody(v *DescribeEipSegmentResponseBody) 
 }
 
 type DescribeFlowLogsRequest struct {
-	Description          *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	FlowLogId            *string `json:"FlowLogId,omitempty" xml:"FlowLogId,omitempty"`
-	FlowLogName          *string `json:"FlowLogName,omitempty" xml:"FlowLogName,omitempty"`
-	LogStoreName         *string `json:"LogStoreName,omitempty" xml:"LogStoreName,omitempty"`
-	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	PageNumber           *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	ProjectName          *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceId           *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	ResourceType         *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	Status               *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	TrafficType          *string `json:"TrafficType,omitempty" xml:"TrafficType,omitempty"`
-	VpcId                *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	Description          *string                        `json:"Description,omitempty" xml:"Description,omitempty"`
+	FlowLogId            *string                        `json:"FlowLogId,omitempty" xml:"FlowLogId,omitempty"`
+	FlowLogName          *string                        `json:"FlowLogName,omitempty" xml:"FlowLogName,omitempty"`
+	LogStoreName         *string                        `json:"LogStoreName,omitempty" xml:"LogStoreName,omitempty"`
+	OwnerAccount         *string                        `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64                         `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	PageNumber           *int32                         `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize             *int32                         `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ProjectName          *string                        `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	RegionId             *string                        `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId      *string                        `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ResourceId           *string                        `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	ResourceOwnerAccount *string                        `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64                         `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	ResourceType         *string                        `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	Status               *string                        `json:"Status,omitempty" xml:"Status,omitempty"`
+	Tags                 []*DescribeFlowLogsRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	TrafficType          *string                        `json:"TrafficType,omitempty" xml:"TrafficType,omitempty"`
+	VpcId                *string                        `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s DescribeFlowLogsRequest) String() string {
@@ -21058,6 +21340,11 @@ func (s *DescribeFlowLogsRequest) SetRegionId(v string) *DescribeFlowLogsRequest
 	return s
 }
 
+func (s *DescribeFlowLogsRequest) SetResourceGroupId(v string) *DescribeFlowLogsRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
 func (s *DescribeFlowLogsRequest) SetResourceId(v string) *DescribeFlowLogsRequest {
 	s.ResourceId = &v
 	return s
@@ -21083,6 +21370,11 @@ func (s *DescribeFlowLogsRequest) SetStatus(v string) *DescribeFlowLogsRequest {
 	return s
 }
 
+func (s *DescribeFlowLogsRequest) SetTags(v []*DescribeFlowLogsRequestTags) *DescribeFlowLogsRequest {
+	s.Tags = v
+	return s
+}
+
 func (s *DescribeFlowLogsRequest) SetTrafficType(v string) *DescribeFlowLogsRequest {
 	s.TrafficType = &v
 	return s
@@ -21090,6 +21382,29 @@ func (s *DescribeFlowLogsRequest) SetTrafficType(v string) *DescribeFlowLogsRequ
 
 func (s *DescribeFlowLogsRequest) SetVpcId(v string) *DescribeFlowLogsRequest {
 	s.VpcId = &v
+	return s
+}
+
+type DescribeFlowLogsRequestTags struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DescribeFlowLogsRequestTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeFlowLogsRequestTags) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeFlowLogsRequestTags) SetKey(v string) *DescribeFlowLogsRequestTags {
+	s.Key = &v
+	return s
+}
+
+func (s *DescribeFlowLogsRequestTags) SetValue(v string) *DescribeFlowLogsRequestTags {
+	s.Value = &v
 	return s
 }
 
@@ -21167,10 +21482,12 @@ type DescribeFlowLogsResponseBodyFlowLogsFlowLog struct {
 	LogStoreName        *string                                                 `json:"LogStoreName,omitempty" xml:"LogStoreName,omitempty"`
 	ProjectName         *string                                                 `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
 	RegionId            *string                                                 `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId     *string                                                 `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceId          *string                                                 `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	ResourceType        *string                                                 `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	ServiceType         *string                                                 `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
 	Status              *string                                                 `json:"Status,omitempty" xml:"Status,omitempty"`
+	Tags                *DescribeFlowLogsResponseBodyFlowLogsFlowLogTags        `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
 	TrafficPath         *DescribeFlowLogsResponseBodyFlowLogsFlowLogTrafficPath `json:"TrafficPath,omitempty" xml:"TrafficPath,omitempty" type:"Struct"`
 	TrafficType         *string                                                 `json:"TrafficType,omitempty" xml:"TrafficType,omitempty"`
 }
@@ -21228,6 +21545,11 @@ func (s *DescribeFlowLogsResponseBodyFlowLogsFlowLog) SetRegionId(v string) *Des
 	return s
 }
 
+func (s *DescribeFlowLogsResponseBodyFlowLogsFlowLog) SetResourceGroupId(v string) *DescribeFlowLogsResponseBodyFlowLogsFlowLog {
+	s.ResourceGroupId = &v
+	return s
+}
+
 func (s *DescribeFlowLogsResponseBodyFlowLogsFlowLog) SetResourceId(v string) *DescribeFlowLogsResponseBodyFlowLogsFlowLog {
 	s.ResourceId = &v
 	return s
@@ -21248,6 +21570,11 @@ func (s *DescribeFlowLogsResponseBodyFlowLogsFlowLog) SetStatus(v string) *Descr
 	return s
 }
 
+func (s *DescribeFlowLogsResponseBodyFlowLogsFlowLog) SetTags(v *DescribeFlowLogsResponseBodyFlowLogsFlowLogTags) *DescribeFlowLogsResponseBodyFlowLogsFlowLog {
+	s.Tags = v
+	return s
+}
+
 func (s *DescribeFlowLogsResponseBodyFlowLogsFlowLog) SetTrafficPath(v *DescribeFlowLogsResponseBodyFlowLogsFlowLogTrafficPath) *DescribeFlowLogsResponseBodyFlowLogsFlowLog {
 	s.TrafficPath = v
 	return s
@@ -21255,6 +21582,46 @@ func (s *DescribeFlowLogsResponseBodyFlowLogsFlowLog) SetTrafficPath(v *Describe
 
 func (s *DescribeFlowLogsResponseBodyFlowLogsFlowLog) SetTrafficType(v string) *DescribeFlowLogsResponseBodyFlowLogsFlowLog {
 	s.TrafficType = &v
+	return s
+}
+
+type DescribeFlowLogsResponseBodyFlowLogsFlowLogTags struct {
+	Tag []*DescribeFlowLogsResponseBodyFlowLogsFlowLogTagsTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+}
+
+func (s DescribeFlowLogsResponseBodyFlowLogsFlowLogTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeFlowLogsResponseBodyFlowLogsFlowLogTags) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeFlowLogsResponseBodyFlowLogsFlowLogTags) SetTag(v []*DescribeFlowLogsResponseBodyFlowLogsFlowLogTagsTag) *DescribeFlowLogsResponseBodyFlowLogsFlowLogTags {
+	s.Tag = v
+	return s
+}
+
+type DescribeFlowLogsResponseBodyFlowLogsFlowLogTagsTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DescribeFlowLogsResponseBodyFlowLogsFlowLogTagsTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeFlowLogsResponseBodyFlowLogsFlowLogTagsTag) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeFlowLogsResponseBodyFlowLogsFlowLogTagsTag) SetKey(v string) *DescribeFlowLogsResponseBodyFlowLogsFlowLogTagsTag {
+	s.Key = &v
+	return s
+}
+
+func (s *DescribeFlowLogsResponseBodyFlowLogsFlowLogTagsTag) SetValue(v string) *DescribeFlowLogsResponseBodyFlowLogsFlowLogTagsTag {
+	s.Value = &v
 	return s
 }
 
@@ -22150,8 +22517,10 @@ type DescribeHaVipsRequest struct {
 	PageNumber           *int32                         `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize             *int32                         `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	RegionId             *string                        `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId      *string                        `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string                        `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64                         `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	Tags                 []*DescribeHaVipsRequestTags   `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
 func (s DescribeHaVipsRequest) String() string {
@@ -22192,6 +22561,11 @@ func (s *DescribeHaVipsRequest) SetRegionId(v string) *DescribeHaVipsRequest {
 	return s
 }
 
+func (s *DescribeHaVipsRequest) SetResourceGroupId(v string) *DescribeHaVipsRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
 func (s *DescribeHaVipsRequest) SetResourceOwnerAccount(v string) *DescribeHaVipsRequest {
 	s.ResourceOwnerAccount = &v
 	return s
@@ -22199,6 +22573,11 @@ func (s *DescribeHaVipsRequest) SetResourceOwnerAccount(v string) *DescribeHaVip
 
 func (s *DescribeHaVipsRequest) SetResourceOwnerId(v int64) *DescribeHaVipsRequest {
 	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *DescribeHaVipsRequest) SetTags(v []*DescribeHaVipsRequestTags) *DescribeHaVipsRequest {
+	s.Tags = v
 	return s
 }
 
@@ -22222,6 +22601,29 @@ func (s *DescribeHaVipsRequestFilter) SetKey(v string) *DescribeHaVipsRequestFil
 
 func (s *DescribeHaVipsRequestFilter) SetValue(v []*string) *DescribeHaVipsRequestFilter {
 	s.Value = v
+	return s
+}
+
+type DescribeHaVipsRequestTags struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DescribeHaVipsRequestTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeHaVipsRequestTags) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeHaVipsRequestTags) SetKey(v string) *DescribeHaVipsRequestTags {
+	s.Key = &v
+	return s
+}
+
+func (s *DescribeHaVipsRequestTags) SetValue(v string) *DescribeHaVipsRequestTags {
+	s.Value = &v
 	return s
 }
 
@@ -22295,7 +22697,9 @@ type DescribeHaVipsResponseBodyHaVipsHaVip struct {
 	MasterInstanceId       *string                                                      `json:"MasterInstanceId,omitempty" xml:"MasterInstanceId,omitempty"`
 	Name                   *string                                                      `json:"Name,omitempty" xml:"Name,omitempty"`
 	RegionId               *string                                                      `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId        *string                                                      `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	Status                 *string                                                      `json:"Status,omitempty" xml:"Status,omitempty"`
+	Tags                   *DescribeHaVipsResponseBodyHaVipsHaVipTags                   `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
 	VSwitchId              *string                                                      `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 	VpcId                  *string                                                      `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
@@ -22363,8 +22767,18 @@ func (s *DescribeHaVipsResponseBodyHaVipsHaVip) SetRegionId(v string) *DescribeH
 	return s
 }
 
+func (s *DescribeHaVipsResponseBodyHaVipsHaVip) SetResourceGroupId(v string) *DescribeHaVipsResponseBodyHaVipsHaVip {
+	s.ResourceGroupId = &v
+	return s
+}
+
 func (s *DescribeHaVipsResponseBodyHaVipsHaVip) SetStatus(v string) *DescribeHaVipsResponseBodyHaVipsHaVip {
 	s.Status = &v
+	return s
+}
+
+func (s *DescribeHaVipsResponseBodyHaVipsHaVip) SetTags(v *DescribeHaVipsResponseBodyHaVipsHaVipTags) *DescribeHaVipsResponseBodyHaVipsHaVip {
+	s.Tags = v
 	return s
 }
 
@@ -22409,6 +22823,46 @@ func (s DescribeHaVipsResponseBodyHaVipsHaVipAssociatedInstances) GoString() str
 
 func (s *DescribeHaVipsResponseBodyHaVipsHaVipAssociatedInstances) SetAssociatedInstance(v []*string) *DescribeHaVipsResponseBodyHaVipsHaVipAssociatedInstances {
 	s.AssociatedInstance = v
+	return s
+}
+
+type DescribeHaVipsResponseBodyHaVipsHaVipTags struct {
+	Tag []*DescribeHaVipsResponseBodyHaVipsHaVipTagsTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+}
+
+func (s DescribeHaVipsResponseBodyHaVipsHaVipTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeHaVipsResponseBodyHaVipsHaVipTags) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeHaVipsResponseBodyHaVipsHaVipTags) SetTag(v []*DescribeHaVipsResponseBodyHaVipsHaVipTagsTag) *DescribeHaVipsResponseBodyHaVipsHaVipTags {
+	s.Tag = v
+	return s
+}
+
+type DescribeHaVipsResponseBodyHaVipsHaVipTagsTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DescribeHaVipsResponseBodyHaVipsHaVipTagsTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeHaVipsResponseBodyHaVipsHaVipTagsTag) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeHaVipsResponseBodyHaVipsHaVipTagsTag) SetKey(v string) *DescribeHaVipsResponseBodyHaVipsHaVipTagsTag {
+	s.Key = &v
+	return s
+}
+
+func (s *DescribeHaVipsResponseBodyHaVipsHaVipTagsTag) SetValue(v string) *DescribeHaVipsResponseBodyHaVipsHaVipTagsTag {
+	s.Value = &v
 	return s
 }
 
@@ -24146,17 +24600,19 @@ func (s *DescribeIpv6GatewayAttributeRequest) SetResourceOwnerId(v int64) *Descr
 }
 
 type DescribeIpv6GatewayAttributeResponseBody struct {
-	BusinessStatus     *string `json:"BusinessStatus,omitempty" xml:"BusinessStatus,omitempty"`
-	CreationTime       *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	Description        *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	ExpiredTime        *string `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
-	InstanceChargeType *string `json:"InstanceChargeType,omitempty" xml:"InstanceChargeType,omitempty"`
-	Ipv6GatewayId      *string `json:"Ipv6GatewayId,omitempty" xml:"Ipv6GatewayId,omitempty"`
-	Name               *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	RegionId           *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RequestId          *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Status             *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	VpcId              *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	BusinessStatus     *string                                       `json:"BusinessStatus,omitempty" xml:"BusinessStatus,omitempty"`
+	CreationTime       *string                                       `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	Description        *string                                       `json:"Description,omitempty" xml:"Description,omitempty"`
+	ExpiredTime        *string                                       `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
+	InstanceChargeType *string                                       `json:"InstanceChargeType,omitempty" xml:"InstanceChargeType,omitempty"`
+	Ipv6GatewayId      *string                                       `json:"Ipv6GatewayId,omitempty" xml:"Ipv6GatewayId,omitempty"`
+	Name               *string                                       `json:"Name,omitempty" xml:"Name,omitempty"`
+	RegionId           *string                                       `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RequestId          *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResourceGroupId    *string                                       `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	Status             *string                                       `json:"Status,omitempty" xml:"Status,omitempty"`
+	Tags               *DescribeIpv6GatewayAttributeResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
+	VpcId              *string                                       `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s DescribeIpv6GatewayAttributeResponseBody) String() string {
@@ -24212,13 +24668,63 @@ func (s *DescribeIpv6GatewayAttributeResponseBody) SetRequestId(v string) *Descr
 	return s
 }
 
+func (s *DescribeIpv6GatewayAttributeResponseBody) SetResourceGroupId(v string) *DescribeIpv6GatewayAttributeResponseBody {
+	s.ResourceGroupId = &v
+	return s
+}
+
 func (s *DescribeIpv6GatewayAttributeResponseBody) SetStatus(v string) *DescribeIpv6GatewayAttributeResponseBody {
 	s.Status = &v
 	return s
 }
 
+func (s *DescribeIpv6GatewayAttributeResponseBody) SetTags(v *DescribeIpv6GatewayAttributeResponseBodyTags) *DescribeIpv6GatewayAttributeResponseBody {
+	s.Tags = v
+	return s
+}
+
 func (s *DescribeIpv6GatewayAttributeResponseBody) SetVpcId(v string) *DescribeIpv6GatewayAttributeResponseBody {
 	s.VpcId = &v
+	return s
+}
+
+type DescribeIpv6GatewayAttributeResponseBodyTags struct {
+	Tag []*DescribeIpv6GatewayAttributeResponseBodyTagsTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+}
+
+func (s DescribeIpv6GatewayAttributeResponseBodyTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeIpv6GatewayAttributeResponseBodyTags) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeIpv6GatewayAttributeResponseBodyTags) SetTag(v []*DescribeIpv6GatewayAttributeResponseBodyTagsTag) *DescribeIpv6GatewayAttributeResponseBodyTags {
+	s.Tag = v
+	return s
+}
+
+type DescribeIpv6GatewayAttributeResponseBodyTagsTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DescribeIpv6GatewayAttributeResponseBodyTagsTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeIpv6GatewayAttributeResponseBodyTagsTag) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeIpv6GatewayAttributeResponseBodyTagsTag) SetKey(v string) *DescribeIpv6GatewayAttributeResponseBodyTagsTag {
+	s.Key = &v
+	return s
+}
+
+func (s *DescribeIpv6GatewayAttributeResponseBodyTagsTag) SetValue(v string) *DescribeIpv6GatewayAttributeResponseBodyTagsTag {
+	s.Value = &v
 	return s
 }
 
@@ -24252,16 +24758,18 @@ func (s *DescribeIpv6GatewayAttributeResponse) SetBody(v *DescribeIpv6GatewayAtt
 }
 
 type DescribeIpv6GatewaysRequest struct {
-	Ipv6GatewayId        *string `json:"Ipv6GatewayId,omitempty" xml:"Ipv6GatewayId,omitempty"`
-	Name                 *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	PageNumber           *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	VpcId                *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	Ipv6GatewayId        *string                            `json:"Ipv6GatewayId,omitempty" xml:"Ipv6GatewayId,omitempty"`
+	Name                 *string                            `json:"Name,omitempty" xml:"Name,omitempty"`
+	OwnerAccount         *string                            `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64                             `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	PageNumber           *int32                             `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize             *int32                             `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RegionId             *string                            `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId      *string                            `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ResourceOwnerAccount *string                            `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64                             `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	Tags                 []*DescribeIpv6GatewaysRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	VpcId                *string                            `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s DescribeIpv6GatewaysRequest) String() string {
@@ -24307,6 +24815,11 @@ func (s *DescribeIpv6GatewaysRequest) SetRegionId(v string) *DescribeIpv6Gateway
 	return s
 }
 
+func (s *DescribeIpv6GatewaysRequest) SetResourceGroupId(v string) *DescribeIpv6GatewaysRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
 func (s *DescribeIpv6GatewaysRequest) SetResourceOwnerAccount(v string) *DescribeIpv6GatewaysRequest {
 	s.ResourceOwnerAccount = &v
 	return s
@@ -24317,8 +24830,36 @@ func (s *DescribeIpv6GatewaysRequest) SetResourceOwnerId(v int64) *DescribeIpv6G
 	return s
 }
 
+func (s *DescribeIpv6GatewaysRequest) SetTags(v []*DescribeIpv6GatewaysRequestTags) *DescribeIpv6GatewaysRequest {
+	s.Tags = v
+	return s
+}
+
 func (s *DescribeIpv6GatewaysRequest) SetVpcId(v string) *DescribeIpv6GatewaysRequest {
 	s.VpcId = &v
+	return s
+}
+
+type DescribeIpv6GatewaysRequestTags struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DescribeIpv6GatewaysRequestTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeIpv6GatewaysRequestTags) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeIpv6GatewaysRequestTags) SetKey(v string) *DescribeIpv6GatewaysRequestTags {
+	s.Key = &v
+	return s
+}
+
+func (s *DescribeIpv6GatewaysRequestTags) SetValue(v string) *DescribeIpv6GatewaysRequestTags {
+	s.Value = &v
 	return s
 }
 
@@ -24381,16 +24922,18 @@ func (s *DescribeIpv6GatewaysResponseBodyIpv6Gateways) SetIpv6Gateway(v []*Descr
 }
 
 type DescribeIpv6GatewaysResponseBodyIpv6GatewaysIpv6Gateway struct {
-	BusinessStatus     *string `json:"BusinessStatus,omitempty" xml:"BusinessStatus,omitempty"`
-	CreationTime       *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	Description        *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	ExpiredTime        *string `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
-	InstanceChargeType *string `json:"InstanceChargeType,omitempty" xml:"InstanceChargeType,omitempty"`
-	Ipv6GatewayId      *string `json:"Ipv6GatewayId,omitempty" xml:"Ipv6GatewayId,omitempty"`
-	Name               *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	RegionId           *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Status             *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	VpcId              *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	BusinessStatus     *string                                                      `json:"BusinessStatus,omitempty" xml:"BusinessStatus,omitempty"`
+	CreationTime       *string                                                      `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	Description        *string                                                      `json:"Description,omitempty" xml:"Description,omitempty"`
+	ExpiredTime        *string                                                      `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
+	InstanceChargeType *string                                                      `json:"InstanceChargeType,omitempty" xml:"InstanceChargeType,omitempty"`
+	Ipv6GatewayId      *string                                                      `json:"Ipv6GatewayId,omitempty" xml:"Ipv6GatewayId,omitempty"`
+	Name               *string                                                      `json:"Name,omitempty" xml:"Name,omitempty"`
+	RegionId           *string                                                      `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId    *string                                                      `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	Status             *string                                                      `json:"Status,omitempty" xml:"Status,omitempty"`
+	Tags               *DescribeIpv6GatewaysResponseBodyIpv6GatewaysIpv6GatewayTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
+	VpcId              *string                                                      `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s DescribeIpv6GatewaysResponseBodyIpv6GatewaysIpv6Gateway) String() string {
@@ -24441,13 +24984,63 @@ func (s *DescribeIpv6GatewaysResponseBodyIpv6GatewaysIpv6Gateway) SetRegionId(v 
 	return s
 }
 
+func (s *DescribeIpv6GatewaysResponseBodyIpv6GatewaysIpv6Gateway) SetResourceGroupId(v string) *DescribeIpv6GatewaysResponseBodyIpv6GatewaysIpv6Gateway {
+	s.ResourceGroupId = &v
+	return s
+}
+
 func (s *DescribeIpv6GatewaysResponseBodyIpv6GatewaysIpv6Gateway) SetStatus(v string) *DescribeIpv6GatewaysResponseBodyIpv6GatewaysIpv6Gateway {
 	s.Status = &v
 	return s
 }
 
+func (s *DescribeIpv6GatewaysResponseBodyIpv6GatewaysIpv6Gateway) SetTags(v *DescribeIpv6GatewaysResponseBodyIpv6GatewaysIpv6GatewayTags) *DescribeIpv6GatewaysResponseBodyIpv6GatewaysIpv6Gateway {
+	s.Tags = v
+	return s
+}
+
 func (s *DescribeIpv6GatewaysResponseBodyIpv6GatewaysIpv6Gateway) SetVpcId(v string) *DescribeIpv6GatewaysResponseBodyIpv6GatewaysIpv6Gateway {
 	s.VpcId = &v
+	return s
+}
+
+type DescribeIpv6GatewaysResponseBodyIpv6GatewaysIpv6GatewayTags struct {
+	Tag []*DescribeIpv6GatewaysResponseBodyIpv6GatewaysIpv6GatewayTagsTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+}
+
+func (s DescribeIpv6GatewaysResponseBodyIpv6GatewaysIpv6GatewayTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeIpv6GatewaysResponseBodyIpv6GatewaysIpv6GatewayTags) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeIpv6GatewaysResponseBodyIpv6GatewaysIpv6GatewayTags) SetTag(v []*DescribeIpv6GatewaysResponseBodyIpv6GatewaysIpv6GatewayTagsTag) *DescribeIpv6GatewaysResponseBodyIpv6GatewaysIpv6GatewayTags {
+	s.Tag = v
+	return s
+}
+
+type DescribeIpv6GatewaysResponseBodyIpv6GatewaysIpv6GatewayTagsTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DescribeIpv6GatewaysResponseBodyIpv6GatewaysIpv6GatewayTagsTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeIpv6GatewaysResponseBodyIpv6GatewaysIpv6GatewayTagsTag) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeIpv6GatewaysResponseBodyIpv6GatewaysIpv6GatewayTagsTag) SetKey(v string) *DescribeIpv6GatewaysResponseBodyIpv6GatewaysIpv6GatewayTagsTag {
+	s.Key = &v
+	return s
+}
+
+func (s *DescribeIpv6GatewaysResponseBodyIpv6GatewaysIpv6GatewayTagsTag) SetValue(v string) *DescribeIpv6GatewaysResponseBodyIpv6GatewaysIpv6GatewayTagsTag {
+	s.Value = &v
 	return s
 }
 
@@ -25189,6 +25782,7 @@ type DescribeNetworkAclAttributesResponseBodyNetworkAclAttribute struct {
 	RegionId          *string                                                                       `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	Resources         *DescribeNetworkAclAttributesResponseBodyNetworkAclAttributeResources         `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Struct"`
 	Status            *string                                                                       `json:"Status,omitempty" xml:"Status,omitempty"`
+	Tags              *DescribeNetworkAclAttributesResponseBodyNetworkAclAttributeTags              `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
 	VpcId             *string                                                                       `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
@@ -25247,6 +25841,11 @@ func (s *DescribeNetworkAclAttributesResponseBodyNetworkAclAttribute) SetResourc
 
 func (s *DescribeNetworkAclAttributesResponseBodyNetworkAclAttribute) SetStatus(v string) *DescribeNetworkAclAttributesResponseBodyNetworkAclAttribute {
 	s.Status = &v
+	return s
+}
+
+func (s *DescribeNetworkAclAttributesResponseBodyNetworkAclAttribute) SetTags(v *DescribeNetworkAclAttributesResponseBodyNetworkAclAttributeTags) *DescribeNetworkAclAttributesResponseBodyNetworkAclAttribute {
+	s.Tags = v
 	return s
 }
 
@@ -25441,6 +26040,46 @@ func (s *DescribeNetworkAclAttributesResponseBodyNetworkAclAttributeResourcesRes
 	return s
 }
 
+type DescribeNetworkAclAttributesResponseBodyNetworkAclAttributeTags struct {
+	Tag []*DescribeNetworkAclAttributesResponseBodyNetworkAclAttributeTagsTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+}
+
+func (s DescribeNetworkAclAttributesResponseBodyNetworkAclAttributeTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeNetworkAclAttributesResponseBodyNetworkAclAttributeTags) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeNetworkAclAttributesResponseBodyNetworkAclAttributeTags) SetTag(v []*DescribeNetworkAclAttributesResponseBodyNetworkAclAttributeTagsTag) *DescribeNetworkAclAttributesResponseBodyNetworkAclAttributeTags {
+	s.Tag = v
+	return s
+}
+
+type DescribeNetworkAclAttributesResponseBodyNetworkAclAttributeTagsTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DescribeNetworkAclAttributesResponseBodyNetworkAclAttributeTagsTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeNetworkAclAttributesResponseBodyNetworkAclAttributeTagsTag) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeNetworkAclAttributesResponseBodyNetworkAclAttributeTagsTag) SetKey(v string) *DescribeNetworkAclAttributesResponseBodyNetworkAclAttributeTagsTag {
+	s.Key = &v
+	return s
+}
+
+func (s *DescribeNetworkAclAttributesResponseBodyNetworkAclAttributeTagsTag) SetValue(v string) *DescribeNetworkAclAttributesResponseBodyNetworkAclAttributeTagsTag {
+	s.Value = &v
+	return s
+}
+
 type DescribeNetworkAclAttributesResponse struct {
 	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
 	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
@@ -25471,18 +26110,19 @@ func (s *DescribeNetworkAclAttributesResponse) SetBody(v *DescribeNetworkAclAttr
 }
 
 type DescribeNetworkAclsRequest struct {
-	ClientToken          *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	NetworkAclId         *string `json:"NetworkAclId,omitempty" xml:"NetworkAclId,omitempty"`
-	NetworkAclName       *string `json:"NetworkAclName,omitempty" xml:"NetworkAclName,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	PageNumber           *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceId           *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	ResourceType         *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	VpcId                *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	ClientToken          *string                           `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	NetworkAclId         *string                           `json:"NetworkAclId,omitempty" xml:"NetworkAclId,omitempty"`
+	NetworkAclName       *string                           `json:"NetworkAclName,omitempty" xml:"NetworkAclName,omitempty"`
+	OwnerId              *int64                            `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	PageNumber           *int32                            `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize             *int32                            `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RegionId             *string                           `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceId           *string                           `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	ResourceOwnerAccount *string                           `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64                            `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	ResourceType         *string                           `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	Tags                 []*DescribeNetworkAclsRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	VpcId                *string                           `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s DescribeNetworkAclsRequest) String() string {
@@ -25548,8 +26188,36 @@ func (s *DescribeNetworkAclsRequest) SetResourceType(v string) *DescribeNetworkA
 	return s
 }
 
+func (s *DescribeNetworkAclsRequest) SetTags(v []*DescribeNetworkAclsRequestTags) *DescribeNetworkAclsRequest {
+	s.Tags = v
+	return s
+}
+
 func (s *DescribeNetworkAclsRequest) SetVpcId(v string) *DescribeNetworkAclsRequest {
 	s.VpcId = &v
+	return s
+}
+
+type DescribeNetworkAclsRequestTags struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DescribeNetworkAclsRequestTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeNetworkAclsRequestTags) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeNetworkAclsRequestTags) SetKey(v string) *DescribeNetworkAclsRequestTags {
+	s.Key = &v
+	return s
+}
+
+func (s *DescribeNetworkAclsRequestTags) SetValue(v string) *DescribeNetworkAclsRequestTags {
+	s.Value = &v
 	return s
 }
 
@@ -25622,6 +26290,7 @@ type DescribeNetworkAclsResponseBodyNetworkAclsNetworkAcl struct {
 	RegionId          *string                                                                `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	Resources         *DescribeNetworkAclsResponseBodyNetworkAclsNetworkAclResources         `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Struct"`
 	Status            *string                                                                `json:"Status,omitempty" xml:"Status,omitempty"`
+	Tags              *DescribeNetworkAclsResponseBodyNetworkAclsNetworkAclTags              `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
 	VpcId             *string                                                                `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
@@ -25680,6 +26349,11 @@ func (s *DescribeNetworkAclsResponseBodyNetworkAclsNetworkAcl) SetResources(v *D
 
 func (s *DescribeNetworkAclsResponseBodyNetworkAclsNetworkAcl) SetStatus(v string) *DescribeNetworkAclsResponseBodyNetworkAclsNetworkAcl {
 	s.Status = &v
+	return s
+}
+
+func (s *DescribeNetworkAclsResponseBodyNetworkAclsNetworkAcl) SetTags(v *DescribeNetworkAclsResponseBodyNetworkAclsNetworkAclTags) *DescribeNetworkAclsResponseBodyNetworkAclsNetworkAcl {
+	s.Tags = v
 	return s
 }
 
@@ -25871,6 +26545,46 @@ func (s *DescribeNetworkAclsResponseBodyNetworkAclsNetworkAclResourcesResource) 
 
 func (s *DescribeNetworkAclsResponseBodyNetworkAclsNetworkAclResourcesResource) SetStatus(v string) *DescribeNetworkAclsResponseBodyNetworkAclsNetworkAclResourcesResource {
 	s.Status = &v
+	return s
+}
+
+type DescribeNetworkAclsResponseBodyNetworkAclsNetworkAclTags struct {
+	Tag []*DescribeNetworkAclsResponseBodyNetworkAclsNetworkAclTagsTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+}
+
+func (s DescribeNetworkAclsResponseBodyNetworkAclsNetworkAclTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeNetworkAclsResponseBodyNetworkAclsNetworkAclTags) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeNetworkAclsResponseBodyNetworkAclsNetworkAclTags) SetTag(v []*DescribeNetworkAclsResponseBodyNetworkAclsNetworkAclTagsTag) *DescribeNetworkAclsResponseBodyNetworkAclsNetworkAclTags {
+	s.Tag = v
+	return s
+}
+
+type DescribeNetworkAclsResponseBodyNetworkAclsNetworkAclTagsTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DescribeNetworkAclsResponseBodyNetworkAclsNetworkAclTagsTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeNetworkAclsResponseBodyNetworkAclsNetworkAclTagsTag) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeNetworkAclsResponseBodyNetworkAclsNetworkAclTagsTag) SetKey(v string) *DescribeNetworkAclsResponseBodyNetworkAclsNetworkAclTagsTag {
+	s.Key = &v
+	return s
+}
+
+func (s *DescribeNetworkAclsResponseBodyNetworkAclsNetworkAclTagsTag) SetValue(v string) *DescribeNetworkAclsResponseBodyNetworkAclsNetworkAclTagsTag {
+	s.Value = &v
 	return s
 }
 
@@ -30577,6 +31291,7 @@ type DescribeVSwitchAttributesResponseBody struct {
 	ResourceGroupId         *string                                          `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	RouteTable              *DescribeVSwitchAttributesResponseBodyRouteTable `json:"RouteTable,omitempty" xml:"RouteTable,omitempty" type:"Struct"`
 	Status                  *string                                          `json:"Status,omitempty" xml:"Status,omitempty"`
+	Tags                    *DescribeVSwitchAttributesResponseBodyTags       `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
 	VSwitchId               *string                                          `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 	VSwitchName             *string                                          `json:"VSwitchName,omitempty" xml:"VSwitchName,omitempty"`
 	VpcId                   *string                                          `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
@@ -30651,6 +31366,11 @@ func (s *DescribeVSwitchAttributesResponseBody) SetStatus(v string) *DescribeVSw
 	return s
 }
 
+func (s *DescribeVSwitchAttributesResponseBody) SetTags(v *DescribeVSwitchAttributesResponseBodyTags) *DescribeVSwitchAttributesResponseBody {
+	s.Tags = v
+	return s
+}
+
 func (s *DescribeVSwitchAttributesResponseBody) SetVSwitchId(v string) *DescribeVSwitchAttributesResponseBody {
 	s.VSwitchId = &v
 	return s
@@ -30691,6 +31411,46 @@ func (s *DescribeVSwitchAttributesResponseBodyRouteTable) SetRouteTableId(v stri
 
 func (s *DescribeVSwitchAttributesResponseBodyRouteTable) SetRouteTableType(v string) *DescribeVSwitchAttributesResponseBodyRouteTable {
 	s.RouteTableType = &v
+	return s
+}
+
+type DescribeVSwitchAttributesResponseBodyTags struct {
+	Tag []*DescribeVSwitchAttributesResponseBodyTagsTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+}
+
+func (s DescribeVSwitchAttributesResponseBodyTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVSwitchAttributesResponseBodyTags) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVSwitchAttributesResponseBodyTags) SetTag(v []*DescribeVSwitchAttributesResponseBodyTagsTag) *DescribeVSwitchAttributesResponseBodyTags {
+	s.Tag = v
+	return s
+}
+
+type DescribeVSwitchAttributesResponseBodyTagsTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DescribeVSwitchAttributesResponseBodyTagsTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVSwitchAttributesResponseBodyTagsTag) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVSwitchAttributesResponseBodyTagsTag) SetKey(v string) *DescribeVSwitchAttributesResponseBodyTagsTag {
+	s.Key = &v
+	return s
+}
+
+func (s *DescribeVSwitchAttributesResponseBodyTagsTag) SetValue(v string) *DescribeVSwitchAttributesResponseBodyTagsTag {
+	s.Value = &v
 	return s
 }
 
@@ -33491,6 +34251,7 @@ type DescribeVpnConnectionResponseBody struct {
 	Spec                   *string                                          `json:"Spec,omitempty" xml:"Spec,omitempty"`
 	State                  *string                                          `json:"State,omitempty" xml:"State,omitempty"`
 	Status                 *string                                          `json:"Status,omitempty" xml:"Status,omitempty"`
+	Tags                   *DescribeVpnConnectionResponseBodyTags           `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
 	TransitRouterId        *string                                          `json:"TransitRouterId,omitempty" xml:"TransitRouterId,omitempty"`
 	TransitRouterName      *string                                          `json:"TransitRouterName,omitempty" xml:"TransitRouterName,omitempty"`
 	VcoHealthCheck         *DescribeVpnConnectionResponseBodyVcoHealthCheck `json:"VcoHealthCheck,omitempty" xml:"VcoHealthCheck,omitempty" type:"Struct"`
@@ -33605,6 +34366,11 @@ func (s *DescribeVpnConnectionResponseBody) SetState(v string) *DescribeVpnConne
 
 func (s *DescribeVpnConnectionResponseBody) SetStatus(v string) *DescribeVpnConnectionResponseBody {
 	s.Status = &v
+	return s
+}
+
+func (s *DescribeVpnConnectionResponseBody) SetTags(v *DescribeVpnConnectionResponseBodyTags) *DescribeVpnConnectionResponseBody {
+	s.Tags = v
 	return s
 }
 
@@ -33740,6 +34506,46 @@ func (s *DescribeVpnConnectionResponseBodyIpsecConfig) SetIpsecLifetime(v int64)
 
 func (s *DescribeVpnConnectionResponseBodyIpsecConfig) SetIpsecPfs(v string) *DescribeVpnConnectionResponseBodyIpsecConfig {
 	s.IpsecPfs = &v
+	return s
+}
+
+type DescribeVpnConnectionResponseBodyTags struct {
+	Tag []*DescribeVpnConnectionResponseBodyTagsTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+}
+
+func (s DescribeVpnConnectionResponseBodyTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVpnConnectionResponseBodyTags) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVpnConnectionResponseBodyTags) SetTag(v []*DescribeVpnConnectionResponseBodyTagsTag) *DescribeVpnConnectionResponseBodyTags {
+	s.Tag = v
+	return s
+}
+
+type DescribeVpnConnectionResponseBodyTagsTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DescribeVpnConnectionResponseBodyTagsTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVpnConnectionResponseBodyTagsTag) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVpnConnectionResponseBodyTagsTag) SetKey(v string) *DescribeVpnConnectionResponseBodyTagsTag {
+	s.Key = &v
+	return s
+}
+
+func (s *DescribeVpnConnectionResponseBodyTagsTag) SetValue(v string) *DescribeVpnConnectionResponseBodyTagsTag {
+	s.Value = &v
 	return s
 }
 
@@ -34055,16 +34861,17 @@ func (s *DescribeVpnConnectionLogsResponse) SetBody(v *DescribeVpnConnectionLogs
 }
 
 type DescribeVpnConnectionsRequest struct {
-	CustomerGatewayId    *string `json:"CustomerGatewayId,omitempty" xml:"CustomerGatewayId,omitempty"`
-	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	PageNumber           *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	VpnConnectionId      *string `json:"VpnConnectionId,omitempty" xml:"VpnConnectionId,omitempty"`
-	VpnGatewayId         *string `json:"VpnGatewayId,omitempty" xml:"VpnGatewayId,omitempty"`
+	CustomerGatewayId    *string                             `json:"CustomerGatewayId,omitempty" xml:"CustomerGatewayId,omitempty"`
+	OwnerAccount         *string                             `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64                              `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	PageNumber           *int32                              `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize             *int32                              `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RegionId             *string                             `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string                             `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64                              `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	Tag                  []*DescribeVpnConnectionsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	VpnConnectionId      *string                             `json:"VpnConnectionId,omitempty" xml:"VpnConnectionId,omitempty"`
+	VpnGatewayId         *string                             `json:"VpnGatewayId,omitempty" xml:"VpnGatewayId,omitempty"`
 }
 
 func (s DescribeVpnConnectionsRequest) String() string {
@@ -34115,6 +34922,11 @@ func (s *DescribeVpnConnectionsRequest) SetResourceOwnerId(v int64) *DescribeVpn
 	return s
 }
 
+func (s *DescribeVpnConnectionsRequest) SetTag(v []*DescribeVpnConnectionsRequestTag) *DescribeVpnConnectionsRequest {
+	s.Tag = v
+	return s
+}
+
 func (s *DescribeVpnConnectionsRequest) SetVpnConnectionId(v string) *DescribeVpnConnectionsRequest {
 	s.VpnConnectionId = &v
 	return s
@@ -34122,6 +34934,29 @@ func (s *DescribeVpnConnectionsRequest) SetVpnConnectionId(v string) *DescribeVp
 
 func (s *DescribeVpnConnectionsRequest) SetVpnGatewayId(v string) *DescribeVpnConnectionsRequest {
 	s.VpnGatewayId = &v
+	return s
+}
+
+type DescribeVpnConnectionsRequestTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DescribeVpnConnectionsRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVpnConnectionsRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVpnConnectionsRequestTag) SetKey(v string) *DescribeVpnConnectionsRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *DescribeVpnConnectionsRequestTag) SetValue(v string) *DescribeVpnConnectionsRequestTag {
+	s.Value = &v
 	return s
 }
 
@@ -34203,6 +35038,7 @@ type DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnection struct {
 	Spec                   *string                                                                      `json:"Spec,omitempty" xml:"Spec,omitempty"`
 	State                  *string                                                                      `json:"State,omitempty" xml:"State,omitempty"`
 	Status                 *string                                                                      `json:"Status,omitempty" xml:"Status,omitempty"`
+	Tag                    *DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTag            `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Struct"`
 	TransitRouterId        *string                                                                      `json:"TransitRouterId,omitempty" xml:"TransitRouterId,omitempty"`
 	TransitRouterName      *string                                                                      `json:"TransitRouterName,omitempty" xml:"TransitRouterName,omitempty"`
 	VcoHealthCheck         *DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionVcoHealthCheck `json:"VcoHealthCheck,omitempty" xml:"VcoHealthCheck,omitempty" type:"Struct"`
@@ -34311,6 +35147,11 @@ func (s *DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnection) SetState
 
 func (s *DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnection) SetStatus(v string) *DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnection {
 	s.Status = &v
+	return s
+}
+
+func (s *DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnection) SetTag(v *DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTag) *DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnection {
+	s.Tag = v
 	return s
 }
 
@@ -34441,6 +35282,46 @@ func (s *DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionIpsecConfi
 
 func (s *DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionIpsecConfig) SetIpsecPfs(v string) *DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionIpsecConfig {
 	s.IpsecPfs = &v
+	return s
+}
+
+type DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTag struct {
+	Tag []*DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTagTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+}
+
+func (s DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTag) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTag) SetTag(v []*DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTagTag) *DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTag {
+	s.Tag = v
+	return s
+}
+
+type DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTagTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTagTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTagTag) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTagTag) SetKey(v string) *DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTagTag {
+	s.Key = &v
+	return s
+}
+
+func (s *DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTagTag) SetValue(v string) *DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTagTag {
+	s.Value = &v
 	return s
 }
 
@@ -37938,15 +38819,17 @@ func (s *GetIpv4GatewayAttributeRequest) SetResourceOwnerId(v int64) *GetIpv4Gat
 }
 
 type GetIpv4GatewayAttributeResponseBody struct {
-	CreateTime              *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Enabled                 *bool   `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
-	Ipv4GatewayDescription  *string `json:"Ipv4GatewayDescription,omitempty" xml:"Ipv4GatewayDescription,omitempty"`
-	Ipv4GatewayId           *string `json:"Ipv4GatewayId,omitempty" xml:"Ipv4GatewayId,omitempty"`
-	Ipv4GatewayName         *string `json:"Ipv4GatewayName,omitempty" xml:"Ipv4GatewayName,omitempty"`
-	Ipv4GatewayRouteTableId *string `json:"Ipv4GatewayRouteTableId,omitempty" xml:"Ipv4GatewayRouteTableId,omitempty"`
-	RequestId               *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Status                  *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	VpcId                   *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	CreateTime              *string                                    `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Enabled                 *bool                                      `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	Ipv4GatewayDescription  *string                                    `json:"Ipv4GatewayDescription,omitempty" xml:"Ipv4GatewayDescription,omitempty"`
+	Ipv4GatewayId           *string                                    `json:"Ipv4GatewayId,omitempty" xml:"Ipv4GatewayId,omitempty"`
+	Ipv4GatewayName         *string                                    `json:"Ipv4GatewayName,omitempty" xml:"Ipv4GatewayName,omitempty"`
+	Ipv4GatewayRouteTableId *string                                    `json:"Ipv4GatewayRouteTableId,omitempty" xml:"Ipv4GatewayRouteTableId,omitempty"`
+	RequestId               *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResourceGroupId         *string                                    `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	Status                  *string                                    `json:"Status,omitempty" xml:"Status,omitempty"`
+	Tags                    []*GetIpv4GatewayAttributeResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	VpcId                   *string                                    `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s GetIpv4GatewayAttributeResponseBody) String() string {
@@ -37992,13 +38875,46 @@ func (s *GetIpv4GatewayAttributeResponseBody) SetRequestId(v string) *GetIpv4Gat
 	return s
 }
 
+func (s *GetIpv4GatewayAttributeResponseBody) SetResourceGroupId(v string) *GetIpv4GatewayAttributeResponseBody {
+	s.ResourceGroupId = &v
+	return s
+}
+
 func (s *GetIpv4GatewayAttributeResponseBody) SetStatus(v string) *GetIpv4GatewayAttributeResponseBody {
 	s.Status = &v
 	return s
 }
 
+func (s *GetIpv4GatewayAttributeResponseBody) SetTags(v []*GetIpv4GatewayAttributeResponseBodyTags) *GetIpv4GatewayAttributeResponseBody {
+	s.Tags = v
+	return s
+}
+
 func (s *GetIpv4GatewayAttributeResponseBody) SetVpcId(v string) *GetIpv4GatewayAttributeResponseBody {
 	s.VpcId = &v
+	return s
+}
+
+type GetIpv4GatewayAttributeResponseBodyTags struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s GetIpv4GatewayAttributeResponseBodyTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetIpv4GatewayAttributeResponseBodyTags) GoString() string {
+	return s.String()
+}
+
+func (s *GetIpv4GatewayAttributeResponseBodyTags) SetKey(v string) *GetIpv4GatewayAttributeResponseBodyTags {
+	s.Key = &v
+	return s
+}
+
+func (s *GetIpv4GatewayAttributeResponseBodyTags) SetValue(v string) *GetIpv4GatewayAttributeResponseBodyTags {
+	s.Value = &v
 	return s
 }
 
@@ -41282,16 +42198,18 @@ func (s *ListIpsecServersResponse) SetBody(v *ListIpsecServersResponseBody) *Lis
 }
 
 type ListIpv4GatewaysRequest struct {
-	Ipv4GatewayId        *string `json:"Ipv4GatewayId,omitempty" xml:"Ipv4GatewayId,omitempty"`
-	Ipv4GatewayName      *string `json:"Ipv4GatewayName,omitempty" xml:"Ipv4GatewayName,omitempty"`
-	MaxResults           *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken            *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	VpcId                *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	Ipv4GatewayId        *string                        `json:"Ipv4GatewayId,omitempty" xml:"Ipv4GatewayId,omitempty"`
+	Ipv4GatewayName      *string                        `json:"Ipv4GatewayName,omitempty" xml:"Ipv4GatewayName,omitempty"`
+	MaxResults           *int32                         `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken            *string                        `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	OwnerAccount         *string                        `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64                         `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId             *string                        `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId      *string                        `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ResourceOwnerAccount *string                        `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64                         `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	Tags                 []*ListIpv4GatewaysRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	VpcId                *string                        `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s ListIpv4GatewaysRequest) String() string {
@@ -41337,6 +42255,11 @@ func (s *ListIpv4GatewaysRequest) SetRegionId(v string) *ListIpv4GatewaysRequest
 	return s
 }
 
+func (s *ListIpv4GatewaysRequest) SetResourceGroupId(v string) *ListIpv4GatewaysRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
 func (s *ListIpv4GatewaysRequest) SetResourceOwnerAccount(v string) *ListIpv4GatewaysRequest {
 	s.ResourceOwnerAccount = &v
 	return s
@@ -41347,8 +42270,36 @@ func (s *ListIpv4GatewaysRequest) SetResourceOwnerId(v int64) *ListIpv4GatewaysR
 	return s
 }
 
+func (s *ListIpv4GatewaysRequest) SetTags(v []*ListIpv4GatewaysRequestTags) *ListIpv4GatewaysRequest {
+	s.Tags = v
+	return s
+}
+
 func (s *ListIpv4GatewaysRequest) SetVpcId(v string) *ListIpv4GatewaysRequest {
 	s.VpcId = &v
+	return s
+}
+
+type ListIpv4GatewaysRequestTags struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListIpv4GatewaysRequestTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListIpv4GatewaysRequestTags) GoString() string {
+	return s.String()
+}
+
+func (s *ListIpv4GatewaysRequestTags) SetKey(v string) *ListIpv4GatewaysRequestTags {
+	s.Key = &v
+	return s
+}
+
+func (s *ListIpv4GatewaysRequestTags) SetValue(v string) *ListIpv4GatewaysRequestTags {
+	s.Value = &v
 	return s
 }
 
@@ -41388,14 +42339,16 @@ func (s *ListIpv4GatewaysResponseBody) SetTotalCount(v string) *ListIpv4Gateways
 }
 
 type ListIpv4GatewaysResponseBodyIpv4GatewayModels struct {
-	Enabled                 *bool   `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
-	GmtCreate               *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	Ipv4GatewayDescription  *string `json:"Ipv4GatewayDescription,omitempty" xml:"Ipv4GatewayDescription,omitempty"`
-	Ipv4GatewayId           *string `json:"Ipv4GatewayId,omitempty" xml:"Ipv4GatewayId,omitempty"`
-	Ipv4GatewayName         *string `json:"Ipv4GatewayName,omitempty" xml:"Ipv4GatewayName,omitempty"`
-	Ipv4GatewayRouteTableId *string `json:"Ipv4GatewayRouteTableId,omitempty" xml:"Ipv4GatewayRouteTableId,omitempty"`
-	Status                  *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	VpcId                   *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	Enabled                 *bool                                                `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	GmtCreate               *string                                              `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	Ipv4GatewayDescription  *string                                              `json:"Ipv4GatewayDescription,omitempty" xml:"Ipv4GatewayDescription,omitempty"`
+	Ipv4GatewayId           *string                                              `json:"Ipv4GatewayId,omitempty" xml:"Ipv4GatewayId,omitempty"`
+	Ipv4GatewayName         *string                                              `json:"Ipv4GatewayName,omitempty" xml:"Ipv4GatewayName,omitempty"`
+	Ipv4GatewayRouteTableId *string                                              `json:"Ipv4GatewayRouteTableId,omitempty" xml:"Ipv4GatewayRouteTableId,omitempty"`
+	ResourceGroupId         *string                                              `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	Status                  *string                                              `json:"Status,omitempty" xml:"Status,omitempty"`
+	Tags                    []*ListIpv4GatewaysResponseBodyIpv4GatewayModelsTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	VpcId                   *string                                              `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s ListIpv4GatewaysResponseBodyIpv4GatewayModels) String() string {
@@ -41436,13 +42389,46 @@ func (s *ListIpv4GatewaysResponseBodyIpv4GatewayModels) SetIpv4GatewayRouteTable
 	return s
 }
 
+func (s *ListIpv4GatewaysResponseBodyIpv4GatewayModels) SetResourceGroupId(v string) *ListIpv4GatewaysResponseBodyIpv4GatewayModels {
+	s.ResourceGroupId = &v
+	return s
+}
+
 func (s *ListIpv4GatewaysResponseBodyIpv4GatewayModels) SetStatus(v string) *ListIpv4GatewaysResponseBodyIpv4GatewayModels {
 	s.Status = &v
 	return s
 }
 
+func (s *ListIpv4GatewaysResponseBodyIpv4GatewayModels) SetTags(v []*ListIpv4GatewaysResponseBodyIpv4GatewayModelsTags) *ListIpv4GatewaysResponseBodyIpv4GatewayModels {
+	s.Tags = v
+	return s
+}
+
 func (s *ListIpv4GatewaysResponseBodyIpv4GatewayModels) SetVpcId(v string) *ListIpv4GatewaysResponseBodyIpv4GatewayModels {
 	s.VpcId = &v
+	return s
+}
+
+type ListIpv4GatewaysResponseBodyIpv4GatewayModelsTags struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListIpv4GatewaysResponseBodyIpv4GatewayModelsTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListIpv4GatewaysResponseBodyIpv4GatewayModelsTags) GoString() string {
+	return s.String()
+}
+
+func (s *ListIpv4GatewaysResponseBodyIpv4GatewayModelsTags) SetKey(v string) *ListIpv4GatewaysResponseBodyIpv4GatewayModelsTags {
+	s.Key = &v
+	return s
+}
+
+func (s *ListIpv4GatewaysResponseBodyIpv4GatewayModelsTags) SetValue(v string) *ListIpv4GatewaysResponseBodyIpv4GatewayModelsTags {
+	s.Value = &v
 	return s
 }
 
@@ -43102,15 +44088,17 @@ func (s *ListTagResourcesForExpressConnectResponse) SetBody(v *ListTagResourcesF
 }
 
 type ListTrafficMirrorFiltersRequest struct {
-	MaxResults              *int32    `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken               *string   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	OwnerAccount            *string   `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId                 *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId                *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceOwnerAccount    *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId         *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	TrafficMirrorFilterIds  []*string `json:"TrafficMirrorFilterIds,omitempty" xml:"TrafficMirrorFilterIds,omitempty" type:"Repeated"`
-	TrafficMirrorFilterName *string   `json:"TrafficMirrorFilterName,omitempty" xml:"TrafficMirrorFilterName,omitempty"`
+	MaxResults              *int32                                 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken               *string                                `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	OwnerAccount            *string                                `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId                 *int64                                 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId                *string                                `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId         *string                                `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ResourceOwnerAccount    *string                                `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId         *int64                                 `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	Tags                    []*ListTrafficMirrorFiltersRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	TrafficMirrorFilterIds  []*string                              `json:"TrafficMirrorFilterIds,omitempty" xml:"TrafficMirrorFilterIds,omitempty" type:"Repeated"`
+	TrafficMirrorFilterName *string                                `json:"TrafficMirrorFilterName,omitempty" xml:"TrafficMirrorFilterName,omitempty"`
 }
 
 func (s ListTrafficMirrorFiltersRequest) String() string {
@@ -43146,6 +44134,11 @@ func (s *ListTrafficMirrorFiltersRequest) SetRegionId(v string) *ListTrafficMirr
 	return s
 }
 
+func (s *ListTrafficMirrorFiltersRequest) SetResourceGroupId(v string) *ListTrafficMirrorFiltersRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
 func (s *ListTrafficMirrorFiltersRequest) SetResourceOwnerAccount(v string) *ListTrafficMirrorFiltersRequest {
 	s.ResourceOwnerAccount = &v
 	return s
@@ -43156,6 +44149,11 @@ func (s *ListTrafficMirrorFiltersRequest) SetResourceOwnerId(v int64) *ListTraff
 	return s
 }
 
+func (s *ListTrafficMirrorFiltersRequest) SetTags(v []*ListTrafficMirrorFiltersRequestTags) *ListTrafficMirrorFiltersRequest {
+	s.Tags = v
+	return s
+}
+
 func (s *ListTrafficMirrorFiltersRequest) SetTrafficMirrorFilterIds(v []*string) *ListTrafficMirrorFiltersRequest {
 	s.TrafficMirrorFilterIds = v
 	return s
@@ -43163,6 +44161,29 @@ func (s *ListTrafficMirrorFiltersRequest) SetTrafficMirrorFilterIds(v []*string)
 
 func (s *ListTrafficMirrorFiltersRequest) SetTrafficMirrorFilterName(v string) *ListTrafficMirrorFiltersRequest {
 	s.TrafficMirrorFilterName = &v
+	return s
+}
+
+type ListTrafficMirrorFiltersRequestTags struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListTrafficMirrorFiltersRequestTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTrafficMirrorFiltersRequestTags) GoString() string {
+	return s.String()
+}
+
+func (s *ListTrafficMirrorFiltersRequestTags) SetKey(v string) *ListTrafficMirrorFiltersRequestTags {
+	s.Key = &v
+	return s
+}
+
+func (s *ListTrafficMirrorFiltersRequestTags) SetValue(v string) *ListTrafficMirrorFiltersRequestTags {
+	s.Value = &v
 	return s
 }
 
@@ -43204,6 +44225,8 @@ func (s *ListTrafficMirrorFiltersResponseBody) SetTrafficMirrorFilters(v []*List
 type ListTrafficMirrorFiltersResponseBodyTrafficMirrorFilters struct {
 	EgressRules                    []*ListTrafficMirrorFiltersResponseBodyTrafficMirrorFiltersEgressRules  `json:"EgressRules,omitempty" xml:"EgressRules,omitempty" type:"Repeated"`
 	IngressRules                   []*ListTrafficMirrorFiltersResponseBodyTrafficMirrorFiltersIngressRules `json:"IngressRules,omitempty" xml:"IngressRules,omitempty" type:"Repeated"`
+	ResourceGroupId                *string                                                                 `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	Tags                           []*ListTrafficMirrorFiltersResponseBodyTrafficMirrorFiltersTags         `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	TrafficMirrorFilterDescription *string                                                                 `json:"TrafficMirrorFilterDescription,omitempty" xml:"TrafficMirrorFilterDescription,omitempty"`
 	TrafficMirrorFilterId          *string                                                                 `json:"TrafficMirrorFilterId,omitempty" xml:"TrafficMirrorFilterId,omitempty"`
 	TrafficMirrorFilterName        *string                                                                 `json:"TrafficMirrorFilterName,omitempty" xml:"TrafficMirrorFilterName,omitempty"`
@@ -43225,6 +44248,16 @@ func (s *ListTrafficMirrorFiltersResponseBodyTrafficMirrorFilters) SetEgressRule
 
 func (s *ListTrafficMirrorFiltersResponseBodyTrafficMirrorFilters) SetIngressRules(v []*ListTrafficMirrorFiltersResponseBodyTrafficMirrorFiltersIngressRules) *ListTrafficMirrorFiltersResponseBodyTrafficMirrorFilters {
 	s.IngressRules = v
+	return s
+}
+
+func (s *ListTrafficMirrorFiltersResponseBodyTrafficMirrorFilters) SetResourceGroupId(v string) *ListTrafficMirrorFiltersResponseBodyTrafficMirrorFilters {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *ListTrafficMirrorFiltersResponseBodyTrafficMirrorFilters) SetTags(v []*ListTrafficMirrorFiltersResponseBodyTrafficMirrorFiltersTags) *ListTrafficMirrorFiltersResponseBodyTrafficMirrorFilters {
+	s.Tags = v
 	return s
 }
 
@@ -43402,6 +44435,29 @@ func (s *ListTrafficMirrorFiltersResponseBodyTrafficMirrorFiltersIngressRules) S
 	return s
 }
 
+type ListTrafficMirrorFiltersResponseBodyTrafficMirrorFiltersTags struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListTrafficMirrorFiltersResponseBodyTrafficMirrorFiltersTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTrafficMirrorFiltersResponseBodyTrafficMirrorFiltersTags) GoString() string {
+	return s.String()
+}
+
+func (s *ListTrafficMirrorFiltersResponseBodyTrafficMirrorFiltersTags) SetKey(v string) *ListTrafficMirrorFiltersResponseBodyTrafficMirrorFiltersTags {
+	s.Key = &v
+	return s
+}
+
+func (s *ListTrafficMirrorFiltersResponseBodyTrafficMirrorFiltersTags) SetValue(v string) *ListTrafficMirrorFiltersResponseBodyTrafficMirrorFiltersTags {
+	s.Value = &v
+	return s
+}
+
 type ListTrafficMirrorFiltersResponse struct {
 	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
 	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
@@ -43432,21 +44488,23 @@ func (s *ListTrafficMirrorFiltersResponse) SetBody(v *ListTrafficMirrorFiltersRe
 }
 
 type ListTrafficMirrorSessionsRequest struct {
-	Enabled                  *bool     `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
-	MaxResults               *int32    `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken                *string   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	OwnerAccount             *string   `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId                  *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	Priority                 *int32    `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	RegionId                 *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceOwnerAccount     *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId          *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	TrafficMirrorFilterId    *string   `json:"TrafficMirrorFilterId,omitempty" xml:"TrafficMirrorFilterId,omitempty"`
-	TrafficMirrorSessionIds  []*string `json:"TrafficMirrorSessionIds,omitempty" xml:"TrafficMirrorSessionIds,omitempty" type:"Repeated"`
-	TrafficMirrorSessionName *string   `json:"TrafficMirrorSessionName,omitempty" xml:"TrafficMirrorSessionName,omitempty"`
-	TrafficMirrorSourceId    *string   `json:"TrafficMirrorSourceId,omitempty" xml:"TrafficMirrorSourceId,omitempty"`
-	TrafficMirrorTargetId    *string   `json:"TrafficMirrorTargetId,omitempty" xml:"TrafficMirrorTargetId,omitempty"`
-	VirtualNetworkId         *int32    `json:"VirtualNetworkId,omitempty" xml:"VirtualNetworkId,omitempty"`
+	Enabled                  *bool                                   `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	MaxResults               *int32                                  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken                *string                                 `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	OwnerAccount             *string                                 `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId                  *int64                                  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	Priority                 *int32                                  `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	RegionId                 *string                                 `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId          *string                                 `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ResourceOwnerAccount     *string                                 `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId          *int64                                  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	Tags                     []*ListTrafficMirrorSessionsRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	TrafficMirrorFilterId    *string                                 `json:"TrafficMirrorFilterId,omitempty" xml:"TrafficMirrorFilterId,omitempty"`
+	TrafficMirrorSessionIds  []*string                               `json:"TrafficMirrorSessionIds,omitempty" xml:"TrafficMirrorSessionIds,omitempty" type:"Repeated"`
+	TrafficMirrorSessionName *string                                 `json:"TrafficMirrorSessionName,omitempty" xml:"TrafficMirrorSessionName,omitempty"`
+	TrafficMirrorSourceId    *string                                 `json:"TrafficMirrorSourceId,omitempty" xml:"TrafficMirrorSourceId,omitempty"`
+	TrafficMirrorTargetId    *string                                 `json:"TrafficMirrorTargetId,omitempty" xml:"TrafficMirrorTargetId,omitempty"`
+	VirtualNetworkId         *int32                                  `json:"VirtualNetworkId,omitempty" xml:"VirtualNetworkId,omitempty"`
 }
 
 func (s ListTrafficMirrorSessionsRequest) String() string {
@@ -43492,6 +44550,11 @@ func (s *ListTrafficMirrorSessionsRequest) SetRegionId(v string) *ListTrafficMir
 	return s
 }
 
+func (s *ListTrafficMirrorSessionsRequest) SetResourceGroupId(v string) *ListTrafficMirrorSessionsRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
 func (s *ListTrafficMirrorSessionsRequest) SetResourceOwnerAccount(v string) *ListTrafficMirrorSessionsRequest {
 	s.ResourceOwnerAccount = &v
 	return s
@@ -43499,6 +44562,11 @@ func (s *ListTrafficMirrorSessionsRequest) SetResourceOwnerAccount(v string) *Li
 
 func (s *ListTrafficMirrorSessionsRequest) SetResourceOwnerId(v int64) *ListTrafficMirrorSessionsRequest {
 	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *ListTrafficMirrorSessionsRequest) SetTags(v []*ListTrafficMirrorSessionsRequestTags) *ListTrafficMirrorSessionsRequest {
+	s.Tags = v
 	return s
 }
 
@@ -43529,6 +44597,29 @@ func (s *ListTrafficMirrorSessionsRequest) SetTrafficMirrorTargetId(v string) *L
 
 func (s *ListTrafficMirrorSessionsRequest) SetVirtualNetworkId(v int32) *ListTrafficMirrorSessionsRequest {
 	s.VirtualNetworkId = &v
+	return s
+}
+
+type ListTrafficMirrorSessionsRequestTags struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListTrafficMirrorSessionsRequestTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTrafficMirrorSessionsRequestTags) GoString() string {
+	return s.String()
+}
+
+func (s *ListTrafficMirrorSessionsRequestTags) SetKey(v string) *ListTrafficMirrorSessionsRequestTags {
+	s.Key = &v
+	return s
+}
+
+func (s *ListTrafficMirrorSessionsRequestTags) SetValue(v string) *ListTrafficMirrorSessionsRequestTags {
+	s.Value = &v
 	return s
 }
 
@@ -43568,19 +44659,21 @@ func (s *ListTrafficMirrorSessionsResponseBody) SetTrafficMirrorSessions(v []*Li
 }
 
 type ListTrafficMirrorSessionsResponseBodyTrafficMirrorSessions struct {
-	Enabled                            *bool     `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
-	PacketLength                       *int32    `json:"PacketLength,omitempty" xml:"PacketLength,omitempty"`
-	Priority                           *int32    `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	TrafficMirrorFilterId              *string   `json:"TrafficMirrorFilterId,omitempty" xml:"TrafficMirrorFilterId,omitempty"`
-	TrafficMirrorSessionBusinessStatus *string   `json:"TrafficMirrorSessionBusinessStatus,omitempty" xml:"TrafficMirrorSessionBusinessStatus,omitempty"`
-	TrafficMirrorSessionDescription    *string   `json:"TrafficMirrorSessionDescription,omitempty" xml:"TrafficMirrorSessionDescription,omitempty"`
-	TrafficMirrorSessionId             *string   `json:"TrafficMirrorSessionId,omitempty" xml:"TrafficMirrorSessionId,omitempty"`
-	TrafficMirrorSessionName           *string   `json:"TrafficMirrorSessionName,omitempty" xml:"TrafficMirrorSessionName,omitempty"`
-	TrafficMirrorSessionStatus         *string   `json:"TrafficMirrorSessionStatus,omitempty" xml:"TrafficMirrorSessionStatus,omitempty"`
-	TrafficMirrorSourceIds             []*string `json:"TrafficMirrorSourceIds,omitempty" xml:"TrafficMirrorSourceIds,omitempty" type:"Repeated"`
-	TrafficMirrorTargetId              *string   `json:"TrafficMirrorTargetId,omitempty" xml:"TrafficMirrorTargetId,omitempty"`
-	TrafficMirrorTargetType            *string   `json:"TrafficMirrorTargetType,omitempty" xml:"TrafficMirrorTargetType,omitempty"`
-	VirtualNetworkId                   *int32    `json:"VirtualNetworkId,omitempty" xml:"VirtualNetworkId,omitempty"`
+	Enabled                            *bool                                                             `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	PacketLength                       *int32                                                            `json:"PacketLength,omitempty" xml:"PacketLength,omitempty"`
+	Priority                           *int32                                                            `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	ResourceGroupId                    *string                                                           `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	Tags                               []*ListTrafficMirrorSessionsResponseBodyTrafficMirrorSessionsTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	TrafficMirrorFilterId              *string                                                           `json:"TrafficMirrorFilterId,omitempty" xml:"TrafficMirrorFilterId,omitempty"`
+	TrafficMirrorSessionBusinessStatus *string                                                           `json:"TrafficMirrorSessionBusinessStatus,omitempty" xml:"TrafficMirrorSessionBusinessStatus,omitempty"`
+	TrafficMirrorSessionDescription    *string                                                           `json:"TrafficMirrorSessionDescription,omitempty" xml:"TrafficMirrorSessionDescription,omitempty"`
+	TrafficMirrorSessionId             *string                                                           `json:"TrafficMirrorSessionId,omitempty" xml:"TrafficMirrorSessionId,omitempty"`
+	TrafficMirrorSessionName           *string                                                           `json:"TrafficMirrorSessionName,omitempty" xml:"TrafficMirrorSessionName,omitempty"`
+	TrafficMirrorSessionStatus         *string                                                           `json:"TrafficMirrorSessionStatus,omitempty" xml:"TrafficMirrorSessionStatus,omitempty"`
+	TrafficMirrorSourceIds             []*string                                                         `json:"TrafficMirrorSourceIds,omitempty" xml:"TrafficMirrorSourceIds,omitempty" type:"Repeated"`
+	TrafficMirrorTargetId              *string                                                           `json:"TrafficMirrorTargetId,omitempty" xml:"TrafficMirrorTargetId,omitempty"`
+	TrafficMirrorTargetType            *string                                                           `json:"TrafficMirrorTargetType,omitempty" xml:"TrafficMirrorTargetType,omitempty"`
+	VirtualNetworkId                   *int32                                                            `json:"VirtualNetworkId,omitempty" xml:"VirtualNetworkId,omitempty"`
 }
 
 func (s ListTrafficMirrorSessionsResponseBodyTrafficMirrorSessions) String() string {
@@ -43603,6 +44696,16 @@ func (s *ListTrafficMirrorSessionsResponseBodyTrafficMirrorSessions) SetPacketLe
 
 func (s *ListTrafficMirrorSessionsResponseBodyTrafficMirrorSessions) SetPriority(v int32) *ListTrafficMirrorSessionsResponseBodyTrafficMirrorSessions {
 	s.Priority = &v
+	return s
+}
+
+func (s *ListTrafficMirrorSessionsResponseBodyTrafficMirrorSessions) SetResourceGroupId(v string) *ListTrafficMirrorSessionsResponseBodyTrafficMirrorSessions {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *ListTrafficMirrorSessionsResponseBodyTrafficMirrorSessions) SetTags(v []*ListTrafficMirrorSessionsResponseBodyTrafficMirrorSessionsTags) *ListTrafficMirrorSessionsResponseBodyTrafficMirrorSessions {
+	s.Tags = v
 	return s
 }
 
@@ -43653,6 +44756,29 @@ func (s *ListTrafficMirrorSessionsResponseBodyTrafficMirrorSessions) SetTrafficM
 
 func (s *ListTrafficMirrorSessionsResponseBodyTrafficMirrorSessions) SetVirtualNetworkId(v int32) *ListTrafficMirrorSessionsResponseBodyTrafficMirrorSessions {
 	s.VirtualNetworkId = &v
+	return s
+}
+
+type ListTrafficMirrorSessionsResponseBodyTrafficMirrorSessionsTags struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListTrafficMirrorSessionsResponseBodyTrafficMirrorSessionsTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTrafficMirrorSessionsResponseBodyTrafficMirrorSessionsTags) GoString() string {
+	return s.String()
+}
+
+func (s *ListTrafficMirrorSessionsResponseBodyTrafficMirrorSessionsTags) SetKey(v string) *ListTrafficMirrorSessionsResponseBodyTrafficMirrorSessionsTags {
+	s.Key = &v
+	return s
+}
+
+func (s *ListTrafficMirrorSessionsResponseBodyTrafficMirrorSessionsTags) SetValue(v string) *ListTrafficMirrorSessionsResponseBodyTrafficMirrorSessionsTags {
+	s.Value = &v
 	return s
 }
 
@@ -60204,6 +61330,10 @@ func (client *Client) CreateCustomerGatewayWithOptions(request *CreateCustomerGa
 		query["ResourceOwnerId"] = request.ResourceOwnerId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Tags)) {
+		query["Tags"] = request.Tags
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -60470,6 +61600,10 @@ func (client *Client) CreateFlowLogWithOptions(request *CreateFlowLogRequest, ru
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
@@ -60846,6 +61980,10 @@ func (client *Client) CreateHaVipWithOptions(request *CreateHaVipRequest, runtim
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
@@ -61284,6 +62422,10 @@ func (client *Client) CreateIpv4GatewayWithOptions(request *CreateIpv4GatewayReq
 		query["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
 		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
 	}
@@ -61450,6 +62592,10 @@ func (client *Client) CreateIpv6GatewayWithOptions(request *CreateIpv6GatewayReq
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
@@ -62948,6 +64094,10 @@ func (client *Client) CreateTrafficMirrorFilterWithOptions(request *CreateTraffi
 		query["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
 		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
 	}
@@ -63114,6 +64264,10 @@ func (client *Client) CreateTrafficMirrorSessionWithOptions(request *CreateTraff
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
@@ -64076,6 +65230,10 @@ func (client *Client) CreateVpnAttachmentWithOptions(request *CreateVpnAttachmen
 		query["ResourceOwnerId"] = request.ResourceOwnerId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Tags)) {
+		query["Tags"] = request.Tags
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -64190,6 +65348,10 @@ func (client *Client) CreateVpnConnectionWithOptions(request *CreateVpnConnectio
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
 		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tags)) {
+		query["Tags"] = request.Tags
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.VpnGatewayId)) {
@@ -68624,6 +69786,10 @@ func (client *Client) DescribeCustomerGatewaysWithOptions(request *DescribeCusto
 		query["ResourceOwnerId"] = request.ResourceOwnerId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -69116,6 +70282,10 @@ func (client *Client) DescribeFlowLogsWithOptions(request *DescribeFlowLogsReque
 		query["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
 		query["ResourceId"] = request.ResourceId
 	}
@@ -69134,6 +70304,10 @@ func (client *Client) DescribeFlowLogsWithOptions(request *DescribeFlowLogsReque
 
 	if !tea.BoolValue(util.IsUnset(request.Status)) {
 		query["Status"] = request.Status
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tags)) {
+		query["Tags"] = request.Tags
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.TrafficType)) {
@@ -69496,12 +70670,20 @@ func (client *Client) DescribeHaVipsWithOptions(request *DescribeHaVipsRequest, 
 		query["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
 		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
 		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tags)) {
+		query["Tags"] = request.Tags
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -70276,12 +71458,20 @@ func (client *Client) DescribeIpv6GatewaysWithOptions(request *DescribeIpv6Gatew
 		query["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
 		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
 		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tags)) {
+		query["Tags"] = request.Tags
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.VpcId)) {
@@ -70558,6 +71748,10 @@ func (client *Client) DescribeNetworkAclsWithOptions(request *DescribeNetworkAcl
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
 		query["ResourceType"] = request.ResourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tags)) {
+		query["Tags"] = request.Tags
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.VpcId)) {
@@ -72918,6 +74112,10 @@ func (client *Client) DescribeVpnConnectionsWithOptions(request *DescribeVpnConn
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
 		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.VpnConnectionId)) {
@@ -75845,12 +77043,20 @@ func (client *Client) ListIpv4GatewaysWithOptions(request *ListIpv4GatewaysReque
 		query["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
 		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
 		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tags)) {
+		query["Tags"] = request.Tags
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.VpcId)) {
@@ -76550,12 +77756,20 @@ func (client *Client) ListTrafficMirrorFiltersWithOptions(request *ListTrafficMi
 		query["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
 		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
 		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tags)) {
+		query["Tags"] = request.Tags
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.TrafficMirrorFilterIds)) {
@@ -76634,12 +77848,20 @@ func (client *Client) ListTrafficMirrorSessionsWithOptions(request *ListTrafficM
 		query["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
 		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
 		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tags)) {
+		query["Tags"] = request.Tags
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.TrafficMirrorFilterId)) {
