@@ -625,6 +625,147 @@ func (s *ExtraPodSpec) SetSideCarContainers(v []*ContainerSpec) *ExtraPodSpec {
 	return s
 }
 
+type FreeResourceClusterControlItem struct {
+	ClusterID                    *string `json:"ClusterID,omitempty" xml:"ClusterID,omitempty"`
+	ClusterName                  *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
+	CrossClusters                *bool   `json:"CrossClusters,omitempty" xml:"CrossClusters,omitempty"`
+	EnableFreeResource           *bool   `json:"EnableFreeResource,omitempty" xml:"EnableFreeResource,omitempty"`
+	FreeResourceClusterControlId *string `json:"FreeResourceClusterControlId,omitempty" xml:"FreeResourceClusterControlId,omitempty"`
+	GmtCreateTime                *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	GmtModifyTime                *string `json:"GmtModifyTime,omitempty" xml:"GmtModifyTime,omitempty"`
+	RegionID                     *string `json:"RegionID,omitempty" xml:"RegionID,omitempty"`
+}
+
+func (s FreeResourceClusterControlItem) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FreeResourceClusterControlItem) GoString() string {
+	return s.String()
+}
+
+func (s *FreeResourceClusterControlItem) SetClusterID(v string) *FreeResourceClusterControlItem {
+	s.ClusterID = &v
+	return s
+}
+
+func (s *FreeResourceClusterControlItem) SetClusterName(v string) *FreeResourceClusterControlItem {
+	s.ClusterName = &v
+	return s
+}
+
+func (s *FreeResourceClusterControlItem) SetCrossClusters(v bool) *FreeResourceClusterControlItem {
+	s.CrossClusters = &v
+	return s
+}
+
+func (s *FreeResourceClusterControlItem) SetEnableFreeResource(v bool) *FreeResourceClusterControlItem {
+	s.EnableFreeResource = &v
+	return s
+}
+
+func (s *FreeResourceClusterControlItem) SetFreeResourceClusterControlId(v string) *FreeResourceClusterControlItem {
+	s.FreeResourceClusterControlId = &v
+	return s
+}
+
+func (s *FreeResourceClusterControlItem) SetGmtCreateTime(v string) *FreeResourceClusterControlItem {
+	s.GmtCreateTime = &v
+	return s
+}
+
+func (s *FreeResourceClusterControlItem) SetGmtModifyTime(v string) *FreeResourceClusterControlItem {
+	s.GmtModifyTime = &v
+	return s
+}
+
+func (s *FreeResourceClusterControlItem) SetRegionID(v string) *FreeResourceClusterControlItem {
+	s.RegionID = &v
+	return s
+}
+
+type FreeResourceDetail struct {
+	Amount       *int32  `json:"Amount,omitempty" xml:"Amount,omitempty"`
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+}
+
+func (s FreeResourceDetail) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FreeResourceDetail) GoString() string {
+	return s.String()
+}
+
+func (s *FreeResourceDetail) SetAmount(v int32) *FreeResourceDetail {
+	s.Amount = &v
+	return s
+}
+
+func (s *FreeResourceDetail) SetResourceType(v string) *FreeResourceDetail {
+	s.ResourceType = &v
+	return s
+}
+
+type FreeResourceItem struct {
+	AvailableNumber *int64  `json:"AvailableNumber,omitempty" xml:"AvailableNumber,omitempty"`
+	ClusterID       *string `json:"ClusterID,omitempty" xml:"ClusterID,omitempty"`
+	ClusterName     *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
+	FreeResourceId  *string `json:"FreeResourceId,omitempty" xml:"FreeResourceId,omitempty"`
+	GmtCreateTime   *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	GmtModifyTime   *string `json:"GmtModifyTime,omitempty" xml:"GmtModifyTime,omitempty"`
+	RegionID        *string `json:"RegionID,omitempty" xml:"RegionID,omitempty"`
+	ResourceType    *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+}
+
+func (s FreeResourceItem) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FreeResourceItem) GoString() string {
+	return s.String()
+}
+
+func (s *FreeResourceItem) SetAvailableNumber(v int64) *FreeResourceItem {
+	s.AvailableNumber = &v
+	return s
+}
+
+func (s *FreeResourceItem) SetClusterID(v string) *FreeResourceItem {
+	s.ClusterID = &v
+	return s
+}
+
+func (s *FreeResourceItem) SetClusterName(v string) *FreeResourceItem {
+	s.ClusterName = &v
+	return s
+}
+
+func (s *FreeResourceItem) SetFreeResourceId(v string) *FreeResourceItem {
+	s.FreeResourceId = &v
+	return s
+}
+
+func (s *FreeResourceItem) SetGmtCreateTime(v string) *FreeResourceItem {
+	s.GmtCreateTime = &v
+	return s
+}
+
+func (s *FreeResourceItem) SetGmtModifyTime(v string) *FreeResourceItem {
+	s.GmtModifyTime = &v
+	return s
+}
+
+func (s *FreeResourceItem) SetRegionID(v string) *FreeResourceItem {
+	s.RegionID = &v
+	return s
+}
+
+func (s *FreeResourceItem) SetResourceType(v string) *FreeResourceItem {
+	s.ResourceType = &v
+	return s
+}
+
 type GPUDetail struct {
 	GPU             *string `json:"GPU,omitempty" xml:"GPU,omitempty"`
 	GPUType         *string `json:"GPUType,omitempty" xml:"GPUType,omitempty"`
@@ -655,6 +796,7 @@ func (s *GPUDetail) SetGPUTypeFullName(v string) *GPUDetail {
 }
 
 type ImageConfig struct {
+	Auth           *string `json:"Auth,omitempty" xml:"Auth,omitempty"`
 	DockerRegistry *string `json:"DockerRegistry,omitempty" xml:"DockerRegistry,omitempty"`
 	Password       *string `json:"Password,omitempty" xml:"Password,omitempty"`
 	Username       *string `json:"Username,omitempty" xml:"Username,omitempty"`
@@ -666,6 +808,11 @@ func (s ImageConfig) String() string {
 
 func (s ImageConfig) GoString() string {
 	return s.String()
+}
+
+func (s *ImageConfig) SetAuth(v string) *ImageConfig {
+	s.Auth = &v
+	return s
 }
 
 func (s *ImageConfig) SetDockerRegistry(v string) *ImageConfig {
@@ -831,6 +978,7 @@ type JobItem struct {
 	ResourceName     *string               `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
 	Settings         *JobSettings          `json:"Settings,omitempty" xml:"Settings,omitempty"`
 	Status           *string               `json:"Status,omitempty" xml:"Status,omitempty"`
+	SubStatus        *string               `json:"SubStatus,omitempty" xml:"SubStatus,omitempty"`
 	ThirdpartyLibDir *string               `json:"ThirdpartyLibDir,omitempty" xml:"ThirdpartyLibDir,omitempty"`
 	ThirdpartyLibs   []*string             `json:"ThirdpartyLibs,omitempty" xml:"ThirdpartyLibs,omitempty" type:"Repeated"`
 	UserCommand      *string               `json:"UserCommand,omitempty" xml:"UserCommand,omitempty"`
@@ -967,6 +1115,11 @@ func (s *JobItem) SetStatus(v string) *JobItem {
 	return s
 }
 
+func (s *JobItem) SetSubStatus(v string) *JobItem {
+	s.SubStatus = &v
+	return s
+}
+
 func (s *JobItem) SetThirdpartyLibDir(v string) *JobItem {
 	s.ThirdpartyLibDir = &v
 	return s
@@ -1056,16 +1209,17 @@ func (s *JobItemDataSources) SetMountPath(v string) *JobItemDataSources {
 }
 
 type JobSettings struct {
-	AdvancedSettings                map[string]*string `json:"AdvancedSettings,omitempty" xml:"AdvancedSettings,omitempty"`
-	BusinessUserId                  *string            `json:"BusinessUserId,omitempty" xml:"BusinessUserId,omitempty"`
-	Caller                          *string            `json:"Caller,omitempty" xml:"Caller,omitempty"`
-	EnableErrorMonitoringInAIMaster *bool              `json:"EnableErrorMonitoringInAIMaster,omitempty" xml:"EnableErrorMonitoringInAIMaster,omitempty"`
-	EnableOssAppend                 *bool              `json:"EnableOssAppend,omitempty" xml:"EnableOssAppend,omitempty"`
-	EnableRDMA                      *bool              `json:"EnableRDMA,omitempty" xml:"EnableRDMA,omitempty"`
-	EnableTideResource              *bool              `json:"EnableTideResource,omitempty" xml:"EnableTideResource,omitempty"`
-	ErrorMonitoringArgs             *string            `json:"ErrorMonitoringArgs,omitempty" xml:"ErrorMonitoringArgs,omitempty"`
-	PipelineId                      *string            `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
-	Tags                            map[string]*string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	AdvancedSettings                map[string]interface{} `json:"AdvancedSettings,omitempty" xml:"AdvancedSettings,omitempty"`
+	BusinessUserId                  *string                `json:"BusinessUserId,omitempty" xml:"BusinessUserId,omitempty"`
+	Caller                          *string                `json:"Caller,omitempty" xml:"Caller,omitempty"`
+	EnableErrorMonitoringInAIMaster *bool                  `json:"EnableErrorMonitoringInAIMaster,omitempty" xml:"EnableErrorMonitoringInAIMaster,omitempty"`
+	EnableOssAppend                 *bool                  `json:"EnableOssAppend,omitempty" xml:"EnableOssAppend,omitempty"`
+	EnableRDMA                      *bool                  `json:"EnableRDMA,omitempty" xml:"EnableRDMA,omitempty"`
+	EnableTideResource              *bool                  `json:"EnableTideResource,omitempty" xml:"EnableTideResource,omitempty"`
+	ErrorMonitoringArgs             *string                `json:"ErrorMonitoringArgs,omitempty" xml:"ErrorMonitoringArgs,omitempty"`
+	OversoldType                    *string                `json:"OversoldType,omitempty" xml:"OversoldType,omitempty"`
+	PipelineId                      *string                `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
+	Tags                            map[string]*string     `json:"Tags,omitempty" xml:"Tags,omitempty"`
 }
 
 func (s JobSettings) String() string {
@@ -1076,7 +1230,7 @@ func (s JobSettings) GoString() string {
 	return s.String()
 }
 
-func (s *JobSettings) SetAdvancedSettings(v map[string]*string) *JobSettings {
+func (s *JobSettings) SetAdvancedSettings(v map[string]interface{}) *JobSettings {
 	s.AdvancedSettings = v
 	return s
 }
@@ -1113,6 +1267,11 @@ func (s *JobSettings) SetEnableTideResource(v bool) *JobSettings {
 
 func (s *JobSettings) SetErrorMonitoringArgs(v string) *JobSettings {
 	s.ErrorMonitoringArgs = &v
+	return s
+}
+
+func (s *JobSettings) SetOversoldType(v string) *JobSettings {
+	s.OversoldType = &v
 	return s
 }
 
@@ -1796,6 +1955,186 @@ func (s *Workspace) SetWorkspaceName(v string) *Workspace {
 	return s
 }
 
+type CreateFreeResourceRequest struct {
+	ClusterId          *string             `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	ClusterName        *string             `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
+	FreeResourceDetail *FreeResourceDetail `json:"FreeResourceDetail,omitempty" xml:"FreeResourceDetail,omitempty"`
+	RegionId           *string             `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s CreateFreeResourceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateFreeResourceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateFreeResourceRequest) SetClusterId(v string) *CreateFreeResourceRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *CreateFreeResourceRequest) SetClusterName(v string) *CreateFreeResourceRequest {
+	s.ClusterName = &v
+	return s
+}
+
+func (s *CreateFreeResourceRequest) SetFreeResourceDetail(v *FreeResourceDetail) *CreateFreeResourceRequest {
+	s.FreeResourceDetail = v
+	return s
+}
+
+func (s *CreateFreeResourceRequest) SetRegionId(v string) *CreateFreeResourceRequest {
+	s.RegionId = &v
+	return s
+}
+
+type CreateFreeResourceResponseBody struct {
+	FreeResourceId *string `json:"FreeResourceId,omitempty" xml:"FreeResourceId,omitempty"`
+	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateFreeResourceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateFreeResourceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateFreeResourceResponseBody) SetFreeResourceId(v string) *CreateFreeResourceResponseBody {
+	s.FreeResourceId = &v
+	return s
+}
+
+func (s *CreateFreeResourceResponseBody) SetRequestId(v string) *CreateFreeResourceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateFreeResourceResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateFreeResourceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateFreeResourceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateFreeResourceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateFreeResourceResponse) SetHeaders(v map[string]*string) *CreateFreeResourceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateFreeResourceResponse) SetStatusCode(v int32) *CreateFreeResourceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateFreeResourceResponse) SetBody(v *CreateFreeResourceResponseBody) *CreateFreeResourceResponse {
+	s.Body = v
+	return s
+}
+
+type CreateFreeResourceClusterControlRequest struct {
+	ClusterId          *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	ClusterName        *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
+	CrossClusters      *bool   `json:"CrossClusters,omitempty" xml:"CrossClusters,omitempty"`
+	EnableFreeResource *bool   `json:"EnableFreeResource,omitempty" xml:"EnableFreeResource,omitempty"`
+	RegionId           *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s CreateFreeResourceClusterControlRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateFreeResourceClusterControlRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateFreeResourceClusterControlRequest) SetClusterId(v string) *CreateFreeResourceClusterControlRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *CreateFreeResourceClusterControlRequest) SetClusterName(v string) *CreateFreeResourceClusterControlRequest {
+	s.ClusterName = &v
+	return s
+}
+
+func (s *CreateFreeResourceClusterControlRequest) SetCrossClusters(v bool) *CreateFreeResourceClusterControlRequest {
+	s.CrossClusters = &v
+	return s
+}
+
+func (s *CreateFreeResourceClusterControlRequest) SetEnableFreeResource(v bool) *CreateFreeResourceClusterControlRequest {
+	s.EnableFreeResource = &v
+	return s
+}
+
+func (s *CreateFreeResourceClusterControlRequest) SetRegionId(v string) *CreateFreeResourceClusterControlRequest {
+	s.RegionId = &v
+	return s
+}
+
+type CreateFreeResourceClusterControlResponseBody struct {
+	FreeResourceClusterControlId *string `json:"FreeResourceClusterControlId,omitempty" xml:"FreeResourceClusterControlId,omitempty"`
+	RequestId                    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateFreeResourceClusterControlResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateFreeResourceClusterControlResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateFreeResourceClusterControlResponseBody) SetFreeResourceClusterControlId(v string) *CreateFreeResourceClusterControlResponseBody {
+	s.FreeResourceClusterControlId = &v
+	return s
+}
+
+func (s *CreateFreeResourceClusterControlResponseBody) SetRequestId(v string) *CreateFreeResourceClusterControlResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateFreeResourceClusterControlResponse struct {
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateFreeResourceClusterControlResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateFreeResourceClusterControlResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateFreeResourceClusterControlResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateFreeResourceClusterControlResponse) SetHeaders(v map[string]*string) *CreateFreeResourceClusterControlResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateFreeResourceClusterControlResponse) SetStatusCode(v int32) *CreateFreeResourceClusterControlResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateFreeResourceClusterControlResponse) SetBody(v *CreateFreeResourceClusterControlResponseBody) *CreateFreeResourceClusterControlResponse {
+	s.Body = v
+	return s
+}
+
 type CreateJobRequest struct {
 	CodeSource               *CreateJobRequestCodeSource    `json:"CodeSource,omitempty" xml:"CodeSource,omitempty" type:"Struct"`
 	DataSources              []*CreateJobRequestDataSources `json:"DataSources,omitempty" xml:"DataSources,omitempty" type:"Repeated"`
@@ -2067,12 +2406,14 @@ func (s *CreateJobResponse) SetBody(v *CreateJobResponseBody) *CreateJobResponse
 }
 
 type CreateTensorboardRequest struct {
+	Cpu                   *int64            `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
 	DataSourceId          *string           `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
 	DataSourceType        *string           `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
 	DataSources           []*DataSourceItem `json:"DataSources,omitempty" xml:"DataSources,omitempty" type:"Repeated"`
 	DisplayName           *string           `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
 	JobId                 *string           `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	MaxRunningTimeMinutes *int64            `json:"MaxRunningTimeMinutes,omitempty" xml:"MaxRunningTimeMinutes,omitempty"`
+	Memory                *int64            `json:"Memory,omitempty" xml:"Memory,omitempty"`
 	Options               *string           `json:"Options,omitempty" xml:"Options,omitempty"`
 	SourceId              *string           `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
 	SourceType            *string           `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
@@ -2088,6 +2429,11 @@ func (s CreateTensorboardRequest) String() string {
 
 func (s CreateTensorboardRequest) GoString() string {
 	return s.String()
+}
+
+func (s *CreateTensorboardRequest) SetCpu(v int64) *CreateTensorboardRequest {
+	s.Cpu = &v
+	return s
 }
 
 func (s *CreateTensorboardRequest) SetDataSourceId(v string) *CreateTensorboardRequest {
@@ -2117,6 +2463,11 @@ func (s *CreateTensorboardRequest) SetJobId(v string) *CreateTensorboardRequest 
 
 func (s *CreateTensorboardRequest) SetMaxRunningTimeMinutes(v int64) *CreateTensorboardRequest {
 	s.MaxRunningTimeMinutes = &v
+	return s
+}
+
+func (s *CreateTensorboardRequest) SetMemory(v int64) *CreateTensorboardRequest {
+	s.Memory = &v
 	return s
 }
 
@@ -2217,6 +2568,110 @@ func (s *CreateTensorboardResponse) SetStatusCode(v int32) *CreateTensorboardRes
 }
 
 func (s *CreateTensorboardResponse) SetBody(v *CreateTensorboardResponseBody) *CreateTensorboardResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteFreeResourceResponseBody struct {
+	FreeResourceId *string `json:"FreeResourceId,omitempty" xml:"FreeResourceId,omitempty"`
+	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteFreeResourceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteFreeResourceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteFreeResourceResponseBody) SetFreeResourceId(v string) *DeleteFreeResourceResponseBody {
+	s.FreeResourceId = &v
+	return s
+}
+
+func (s *DeleteFreeResourceResponseBody) SetRequestId(v string) *DeleteFreeResourceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteFreeResourceResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteFreeResourceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteFreeResourceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteFreeResourceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteFreeResourceResponse) SetHeaders(v map[string]*string) *DeleteFreeResourceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteFreeResourceResponse) SetStatusCode(v int32) *DeleteFreeResourceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteFreeResourceResponse) SetBody(v *DeleteFreeResourceResponseBody) *DeleteFreeResourceResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteFreeResourceClusterControlResponseBody struct {
+	FreeResourceClusterControlId *string `json:"FreeResourceClusterControlId,omitempty" xml:"FreeResourceClusterControlId,omitempty"`
+	RequestId                    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteFreeResourceClusterControlResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteFreeResourceClusterControlResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteFreeResourceClusterControlResponseBody) SetFreeResourceClusterControlId(v string) *DeleteFreeResourceClusterControlResponseBody {
+	s.FreeResourceClusterControlId = &v
+	return s
+}
+
+func (s *DeleteFreeResourceClusterControlResponseBody) SetRequestId(v string) *DeleteFreeResourceClusterControlResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteFreeResourceClusterControlResponse struct {
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteFreeResourceClusterControlResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteFreeResourceClusterControlResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteFreeResourceClusterControlResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteFreeResourceClusterControlResponse) SetHeaders(v map[string]*string) *DeleteFreeResourceClusterControlResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteFreeResourceClusterControlResponse) SetStatusCode(v int32) *DeleteFreeResourceClusterControlResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteFreeResourceClusterControlResponse) SetBody(v *DeleteFreeResourceClusterControlResponseBody) *DeleteFreeResourceClusterControlResponse {
 	s.Body = v
 	return s
 }
@@ -2343,6 +2798,133 @@ func (s *DeleteTensorboardResponse) SetBody(v *DeleteTensorboardResponseBody) *D
 	return s
 }
 
+type DescribeFreeResourcesRequest struct {
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+}
+
+func (s DescribeFreeResourcesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeFreeResourcesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeFreeResourcesRequest) SetWorkspaceId(v string) *DescribeFreeResourcesRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+type DescribeFreeResourcesResponseBody struct {
+	FreeResources map[string]interface{} `json:"FreeResources,omitempty" xml:"FreeResources,omitempty"`
+	RequestId     *string                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount    *int64                 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeFreeResourcesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeFreeResourcesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeFreeResourcesResponseBody) SetFreeResources(v map[string]interface{}) *DescribeFreeResourcesResponseBody {
+	s.FreeResources = v
+	return s
+}
+
+func (s *DescribeFreeResourcesResponseBody) SetRequestId(v string) *DescribeFreeResourcesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeFreeResourcesResponseBody) SetTotalCount(v int64) *DescribeFreeResourcesResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeFreeResourcesResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeFreeResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeFreeResourcesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeFreeResourcesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeFreeResourcesResponse) SetHeaders(v map[string]*string) *DescribeFreeResourcesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeFreeResourcesResponse) SetStatusCode(v int32) *DescribeFreeResourcesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeFreeResourcesResponse) SetBody(v *DescribeFreeResourcesResponseBody) *DescribeFreeResourcesResponse {
+	s.Body = v
+	return s
+}
+
+type GetFreeResourceClusterControlResponseBody struct {
+	FreeResourceClusterControl *FreeResourceClusterControlItem `json:"FreeResourceClusterControl,omitempty" xml:"FreeResourceClusterControl,omitempty"`
+	RequestId                  *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetFreeResourceClusterControlResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFreeResourceClusterControlResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetFreeResourceClusterControlResponseBody) SetFreeResourceClusterControl(v *FreeResourceClusterControlItem) *GetFreeResourceClusterControlResponseBody {
+	s.FreeResourceClusterControl = v
+	return s
+}
+
+func (s *GetFreeResourceClusterControlResponseBody) SetRequestId(v string) *GetFreeResourceClusterControlResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetFreeResourceClusterControlResponse struct {
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetFreeResourceClusterControlResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetFreeResourceClusterControlResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFreeResourceClusterControlResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetFreeResourceClusterControlResponse) SetHeaders(v map[string]*string) *GetFreeResourceClusterControlResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetFreeResourceClusterControlResponse) SetStatusCode(v int32) *GetFreeResourceClusterControlResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetFreeResourceClusterControlResponse) SetBody(v *GetFreeResourceClusterControlResponseBody) *GetFreeResourceClusterControlResponse {
+	s.Body = v
+	return s
+}
+
 type GetJobResponseBody struct {
 	ClusterId        *string                          `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	CodeSource       *GetJobResponseBodyCodeSource    `json:"CodeSource,omitempty" xml:"CodeSource,omitempty" type:"Struct"`
@@ -2369,8 +2951,10 @@ type GetJobResponseBody struct {
 	RequestId        *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ResourceId       *string                          `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	ResourceLevel    *string                          `json:"ResourceLevel,omitempty" xml:"ResourceLevel,omitempty"`
+	RestartTimes     *string                          `json:"RestartTimes,omitempty" xml:"RestartTimes,omitempty"`
 	Settings         *JobSettings                     `json:"Settings,omitempty" xml:"Settings,omitempty"`
 	Status           *string                          `json:"Status,omitempty" xml:"Status,omitempty"`
+	SubStatus        *string                          `json:"SubStatus,omitempty" xml:"SubStatus,omitempty"`
 	ThirdpartyLibDir *string                          `json:"ThirdpartyLibDir,omitempty" xml:"ThirdpartyLibDir,omitempty"`
 	ThirdpartyLibs   []*string                        `json:"ThirdpartyLibs,omitempty" xml:"ThirdpartyLibs,omitempty" type:"Repeated"`
 	UserCommand      *string                          `json:"UserCommand,omitempty" xml:"UserCommand,omitempty"`
@@ -2512,6 +3096,11 @@ func (s *GetJobResponseBody) SetResourceLevel(v string) *GetJobResponseBody {
 	return s
 }
 
+func (s *GetJobResponseBody) SetRestartTimes(v string) *GetJobResponseBody {
+	s.RestartTimes = &v
+	return s
+}
+
 func (s *GetJobResponseBody) SetSettings(v *JobSettings) *GetJobResponseBody {
 	s.Settings = v
 	return s
@@ -2519,6 +3108,11 @@ func (s *GetJobResponseBody) SetSettings(v *JobSettings) *GetJobResponseBody {
 
 func (s *GetJobResponseBody) SetStatus(v string) *GetJobResponseBody {
 	s.Status = &v
+	return s
+}
+
+func (s *GetJobResponseBody) SetSubStatus(v string) *GetJobResponseBody {
+	s.SubStatus = &v
 	return s
 }
 
@@ -2618,9 +3212,11 @@ type GetJobResponseBodyPods struct {
 	Ip            *string                              `json:"Ip,omitempty" xml:"Ip,omitempty"`
 	PodId         *string                              `json:"PodId,omitempty" xml:"PodId,omitempty"`
 	// Pod UId
-	PodUid *string `json:"PodUid,omitempty" xml:"PodUid,omitempty"`
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	Type   *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	PodUid       *string `json:"PodUid,omitempty" xml:"PodUid,omitempty"`
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	SubStatus    *string `json:"SubStatus,omitempty" xml:"SubStatus,omitempty"`
+	Type         *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s GetJobResponseBodyPods) String() string {
@@ -2666,8 +3262,18 @@ func (s *GetJobResponseBodyPods) SetPodUid(v string) *GetJobResponseBodyPods {
 	return s
 }
 
+func (s *GetJobResponseBodyPods) SetResourceType(v string) *GetJobResponseBodyPods {
+	s.ResourceType = &v
+	return s
+}
+
 func (s *GetJobResponseBodyPods) SetStatus(v string) *GetJobResponseBodyPods {
 	s.Status = &v
+	return s
+}
+
+func (s *GetJobResponseBodyPods) SetSubStatus(v string) *GetJobResponseBodyPods {
+	s.SubStatus = &v
 	return s
 }
 
@@ -2685,9 +3291,11 @@ type GetJobResponseBodyPodsHistoryPods struct {
 	// Pod Id
 	PodId *string `json:"PodId,omitempty" xml:"PodId,omitempty"`
 	// Pod UId
-	PodUid *string `json:"PodUid,omitempty" xml:"PodUid,omitempty"`
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	Type   *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	PodUid       *string `json:"PodUid,omitempty" xml:"PodUid,omitempty"`
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	SubStatus    *string `json:"SubStatus,omitempty" xml:"SubStatus,omitempty"`
+	Type         *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s GetJobResponseBodyPodsHistoryPods) String() string {
@@ -2728,8 +3336,18 @@ func (s *GetJobResponseBodyPodsHistoryPods) SetPodUid(v string) *GetJobResponseB
 	return s
 }
 
+func (s *GetJobResponseBodyPodsHistoryPods) SetResourceType(v string) *GetJobResponseBodyPodsHistoryPods {
+	s.ResourceType = &v
+	return s
+}
+
 func (s *GetJobResponseBodyPodsHistoryPods) SetStatus(v string) *GetJobResponseBodyPodsHistoryPods {
 	s.Status = &v
+	return s
+}
+
+func (s *GetJobResponseBodyPodsHistoryPods) SetSubStatus(v string) *GetJobResponseBodyPodsHistoryPods {
+	s.SubStatus = &v
 	return s
 }
 
@@ -3317,6 +3935,192 @@ func (s *ListEcsSpecsResponse) SetStatusCode(v int32) *ListEcsSpecsResponse {
 }
 
 func (s *ListEcsSpecsResponse) SetBody(v *ListEcsSpecsResponseBody) *ListEcsSpecsResponse {
+	s.Body = v
+	return s
+}
+
+type ListFreeResourceClusterControlsRequest struct {
+	Order      *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	SortBy     *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+}
+
+func (s ListFreeResourceClusterControlsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListFreeResourceClusterControlsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListFreeResourceClusterControlsRequest) SetOrder(v string) *ListFreeResourceClusterControlsRequest {
+	s.Order = &v
+	return s
+}
+
+func (s *ListFreeResourceClusterControlsRequest) SetPageNumber(v int32) *ListFreeResourceClusterControlsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListFreeResourceClusterControlsRequest) SetPageSize(v int32) *ListFreeResourceClusterControlsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListFreeResourceClusterControlsRequest) SetSortBy(v string) *ListFreeResourceClusterControlsRequest {
+	s.SortBy = &v
+	return s
+}
+
+type ListFreeResourceClusterControlsResponseBody struct {
+	FreeResourceClusterControls []*FreeResourceClusterControlItem `json:"FreeResourceClusterControls,omitempty" xml:"FreeResourceClusterControls,omitempty" type:"Repeated"`
+	RequestId                   *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount                  *int64                            `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListFreeResourceClusterControlsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListFreeResourceClusterControlsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListFreeResourceClusterControlsResponseBody) SetFreeResourceClusterControls(v []*FreeResourceClusterControlItem) *ListFreeResourceClusterControlsResponseBody {
+	s.FreeResourceClusterControls = v
+	return s
+}
+
+func (s *ListFreeResourceClusterControlsResponseBody) SetRequestId(v string) *ListFreeResourceClusterControlsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListFreeResourceClusterControlsResponseBody) SetTotalCount(v int64) *ListFreeResourceClusterControlsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListFreeResourceClusterControlsResponse struct {
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListFreeResourceClusterControlsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListFreeResourceClusterControlsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListFreeResourceClusterControlsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListFreeResourceClusterControlsResponse) SetHeaders(v map[string]*string) *ListFreeResourceClusterControlsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListFreeResourceClusterControlsResponse) SetStatusCode(v int32) *ListFreeResourceClusterControlsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListFreeResourceClusterControlsResponse) SetBody(v *ListFreeResourceClusterControlsResponseBody) *ListFreeResourceClusterControlsResponse {
+	s.Body = v
+	return s
+}
+
+type ListFreeResourcesRequest struct {
+	Order      *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	SortBy     *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+}
+
+func (s ListFreeResourcesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListFreeResourcesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListFreeResourcesRequest) SetOrder(v string) *ListFreeResourcesRequest {
+	s.Order = &v
+	return s
+}
+
+func (s *ListFreeResourcesRequest) SetPageNumber(v int32) *ListFreeResourcesRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListFreeResourcesRequest) SetPageSize(v int32) *ListFreeResourcesRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListFreeResourcesRequest) SetSortBy(v string) *ListFreeResourcesRequest {
+	s.SortBy = &v
+	return s
+}
+
+type ListFreeResourcesResponseBody struct {
+	FreeResources []*FreeResourceItem `json:"FreeResources,omitempty" xml:"FreeResources,omitempty" type:"Repeated"`
+	RequestId     *string             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount    *int64              `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListFreeResourcesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListFreeResourcesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListFreeResourcesResponseBody) SetFreeResources(v []*FreeResourceItem) *ListFreeResourcesResponseBody {
+	s.FreeResources = v
+	return s
+}
+
+func (s *ListFreeResourcesResponseBody) SetRequestId(v string) *ListFreeResourcesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListFreeResourcesResponseBody) SetTotalCount(v int64) *ListFreeResourcesResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListFreeResourcesResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListFreeResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListFreeResourcesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListFreeResourcesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListFreeResourcesResponse) SetHeaders(v map[string]*string) *ListFreeResourcesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListFreeResourcesResponse) SetStatusCode(v int32) *ListFreeResourcesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListFreeResourcesResponse) SetBody(v *ListFreeResourcesResponseBody) *ListFreeResourcesResponse {
 	s.Body = v
 	return s
 }
@@ -3964,6 +4768,150 @@ func (s *StopTensorboardResponse) SetBody(v *StopTensorboardResponseBody) *StopT
 	return s
 }
 
+type UpdateFreeResourceRequest struct {
+	Amount *int64 `json:"Amount,omitempty" xml:"Amount,omitempty"`
+}
+
+func (s UpdateFreeResourceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateFreeResourceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateFreeResourceRequest) SetAmount(v int64) *UpdateFreeResourceRequest {
+	s.Amount = &v
+	return s
+}
+
+type UpdateFreeResourceResponseBody struct {
+	FreeResourceId *string `json:"FreeResourceId,omitempty" xml:"FreeResourceId,omitempty"`
+	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateFreeResourceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateFreeResourceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateFreeResourceResponseBody) SetFreeResourceId(v string) *UpdateFreeResourceResponseBody {
+	s.FreeResourceId = &v
+	return s
+}
+
+func (s *UpdateFreeResourceResponseBody) SetRequestId(v string) *UpdateFreeResourceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateFreeResourceResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateFreeResourceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateFreeResourceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateFreeResourceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateFreeResourceResponse) SetHeaders(v map[string]*string) *UpdateFreeResourceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateFreeResourceResponse) SetStatusCode(v int32) *UpdateFreeResourceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateFreeResourceResponse) SetBody(v *UpdateFreeResourceResponseBody) *UpdateFreeResourceResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateFreeResourceClusterControlRequest struct {
+	CrossClusters      *bool `json:"CrossClusters,omitempty" xml:"CrossClusters,omitempty"`
+	EnableFreeResource *bool `json:"EnableFreeResource,omitempty" xml:"EnableFreeResource,omitempty"`
+}
+
+func (s UpdateFreeResourceClusterControlRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateFreeResourceClusterControlRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateFreeResourceClusterControlRequest) SetCrossClusters(v bool) *UpdateFreeResourceClusterControlRequest {
+	s.CrossClusters = &v
+	return s
+}
+
+func (s *UpdateFreeResourceClusterControlRequest) SetEnableFreeResource(v bool) *UpdateFreeResourceClusterControlRequest {
+	s.EnableFreeResource = &v
+	return s
+}
+
+type UpdateFreeResourceClusterControlResponseBody struct {
+	FreeResourceClusterControlId *string `json:"FreeResourceClusterControlId,omitempty" xml:"FreeResourceClusterControlId,omitempty"`
+	RequestId                    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateFreeResourceClusterControlResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateFreeResourceClusterControlResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateFreeResourceClusterControlResponseBody) SetFreeResourceClusterControlId(v string) *UpdateFreeResourceClusterControlResponseBody {
+	s.FreeResourceClusterControlId = &v
+	return s
+}
+
+func (s *UpdateFreeResourceClusterControlResponseBody) SetRequestId(v string) *UpdateFreeResourceClusterControlResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateFreeResourceClusterControlResponse struct {
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateFreeResourceClusterControlResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateFreeResourceClusterControlResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateFreeResourceClusterControlResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateFreeResourceClusterControlResponse) SetHeaders(v map[string]*string) *UpdateFreeResourceClusterControlResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateFreeResourceClusterControlResponse) SetStatusCode(v int32) *UpdateFreeResourceClusterControlResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateFreeResourceClusterControlResponse) SetBody(v *UpdateFreeResourceClusterControlResponseBody) *UpdateFreeResourceClusterControlResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateJobRequest struct {
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
 }
@@ -4208,6 +5156,126 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+func (client *Client) CreateFreeResourceWithOptions(request *CreateFreeResourceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateFreeResourceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		body["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClusterName)) {
+		body["ClusterName"] = request.ClusterName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FreeResourceDetail)) {
+		body["FreeResourceDetail"] = request.FreeResourceDetail
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		body["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateFreeResource"),
+		Version:     tea.String("2020-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/freeresources"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateFreeResourceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateFreeResource(request *CreateFreeResourceRequest) (_result *CreateFreeResourceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateFreeResourceResponse{}
+	_body, _err := client.CreateFreeResourceWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateFreeResourceClusterControlWithOptions(request *CreateFreeResourceClusterControlRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateFreeResourceClusterControlResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		body["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClusterName)) {
+		body["ClusterName"] = request.ClusterName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CrossClusters)) {
+		body["CrossClusters"] = request.CrossClusters
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnableFreeResource)) {
+		body["EnableFreeResource"] = request.EnableFreeResource
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		body["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateFreeResourceClusterControl"),
+		Version:     tea.String("2020-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/freeresourceclustercontrols"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateFreeResourceClusterControlResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateFreeResourceClusterControl(request *CreateFreeResourceClusterControlRequest) (_result *CreateFreeResourceClusterControlResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateFreeResourceClusterControlResponse{}
+	_body, _err := client.CreateFreeResourceClusterControlWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) CreateJobWithOptions(request *CreateJobRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateJobResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4332,6 +5400,10 @@ func (client *Client) CreateTensorboardWithOptions(request *CreateTensorboardReq
 		return _result, _err
 	}
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Cpu)) {
+		body["Cpu"] = request.Cpu
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.DataSourceId)) {
 		body["DataSourceId"] = request.DataSourceId
 	}
@@ -4354,6 +5426,10 @@ func (client *Client) CreateTensorboardWithOptions(request *CreateTensorboardReq
 
 	if !tea.BoolValue(util.IsUnset(request.MaxRunningTimeMinutes)) {
 		body["MaxRunningTimeMinutes"] = request.MaxRunningTimeMinutes
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Memory)) {
+		body["Memory"] = request.Memory
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Options)) {
@@ -4413,6 +5489,78 @@ func (client *Client) CreateTensorboard(request *CreateTensorboardRequest) (_res
 	headers := make(map[string]*string)
 	_result = &CreateTensorboardResponse{}
 	_body, _err := client.CreateTensorboardWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteFreeResourceWithOptions(FreeResourceId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteFreeResourceResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteFreeResource"),
+		Version:     tea.String("2020-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/freeresources/" + tea.StringValue(openapiutil.GetEncodeParam(FreeResourceId))),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteFreeResourceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteFreeResource(FreeResourceId *string) (_result *DeleteFreeResourceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteFreeResourceResponse{}
+	_body, _err := client.DeleteFreeResourceWithOptions(FreeResourceId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteFreeResourceClusterControlWithOptions(FreeResourceClusterControlId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteFreeResourceClusterControlResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteFreeResourceClusterControl"),
+		Version:     tea.String("2020-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/freeresourceclustercontrols/" + tea.StringValue(openapiutil.GetEncodeParam(FreeResourceClusterControlId))),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteFreeResourceClusterControlResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteFreeResourceClusterControl(FreeResourceClusterControlId *string) (_result *DeleteFreeResourceClusterControlResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteFreeResourceClusterControlResponse{}
+	_body, _err := client.DeleteFreeResourceClusterControlWithOptions(FreeResourceClusterControlId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4495,6 +5643,88 @@ func (client *Client) DeleteTensorboard(TensorboardId *string, request *DeleteTe
 	headers := make(map[string]*string)
 	_result = &DeleteTensorboardResponse{}
 	_body, _err := client.DeleteTensorboardWithOptions(TensorboardId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeFreeResourcesWithOptions(QuotaId *string, request *DescribeFreeResourcesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DescribeFreeResourcesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeFreeResources"),
+		Version:     tea.String("2020-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/freeresources/" + tea.StringValue(openapiutil.GetEncodeParam(QuotaId))),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeFreeResourcesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeFreeResources(QuotaId *string, request *DescribeFreeResourcesRequest) (_result *DescribeFreeResourcesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DescribeFreeResourcesResponse{}
+	_body, _err := client.DescribeFreeResourcesWithOptions(QuotaId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetFreeResourceClusterControlWithOptions(FreeResourceClusterControlId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetFreeResourceClusterControlResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetFreeResourceClusterControl"),
+		Version:     tea.String("2020-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/freeresourceclustercontrols/" + tea.StringValue(openapiutil.GetEncodeParam(FreeResourceClusterControlId))),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetFreeResourceClusterControlResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetFreeResourceClusterControl(FreeResourceClusterControlId *string) (_result *GetFreeResourceClusterControlResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetFreeResourceClusterControlResponse{}
+	_body, _err := client.GetFreeResourceClusterControlWithOptions(FreeResourceClusterControlId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4886,6 +6116,122 @@ func (client *Client) ListEcsSpecs(request *ListEcsSpecsRequest) (_result *ListE
 	return _result, _err
 }
 
+func (client *Client) ListFreeResourceClusterControlsWithOptions(request *ListFreeResourceClusterControlsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListFreeResourceClusterControlsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Order)) {
+		query["Order"] = request.Order
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SortBy)) {
+		query["SortBy"] = request.SortBy
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListFreeResourceClusterControls"),
+		Version:     tea.String("2020-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/freeresourceclustercontrols"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListFreeResourceClusterControlsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListFreeResourceClusterControls(request *ListFreeResourceClusterControlsRequest) (_result *ListFreeResourceClusterControlsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListFreeResourceClusterControlsResponse{}
+	_body, _err := client.ListFreeResourceClusterControlsWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListFreeResourcesWithOptions(request *ListFreeResourcesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListFreeResourcesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Order)) {
+		query["Order"] = request.Order
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SortBy)) {
+		query["SortBy"] = request.SortBy
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListFreeResources"),
+		Version:     tea.String("2020-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/freeresources"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListFreeResourcesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListFreeResources(request *ListFreeResourcesRequest) (_result *ListFreeResourcesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListFreeResourcesResponse{}
+	_body, _err := client.ListFreeResourcesWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ListJobsWithOptions(tmpReq *ListJobsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListJobsResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -5225,6 +6571,102 @@ func (client *Client) StopTensorboard(TensorboardId *string, request *StopTensor
 	headers := make(map[string]*string)
 	_result = &StopTensorboardResponse{}
 	_body, _err := client.StopTensorboardWithOptions(TensorboardId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateFreeResourceWithOptions(FreeResourceId *string, request *UpdateFreeResourceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateFreeResourceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Amount)) {
+		body["Amount"] = request.Amount
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateFreeResource"),
+		Version:     tea.String("2020-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/freeresources/" + tea.StringValue(openapiutil.GetEncodeParam(FreeResourceId))),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateFreeResourceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateFreeResource(FreeResourceId *string, request *UpdateFreeResourceRequest) (_result *UpdateFreeResourceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateFreeResourceResponse{}
+	_body, _err := client.UpdateFreeResourceWithOptions(FreeResourceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateFreeResourceClusterControlWithOptions(FreeResourceClusterControlId *string, request *UpdateFreeResourceClusterControlRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateFreeResourceClusterControlResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CrossClusters)) {
+		body["CrossClusters"] = request.CrossClusters
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnableFreeResource)) {
+		body["EnableFreeResource"] = request.EnableFreeResource
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateFreeResourceClusterControl"),
+		Version:     tea.String("2020-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/freeresourceclustercontrols/" + tea.StringValue(openapiutil.GetEncodeParam(FreeResourceClusterControlId))),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateFreeResourceClusterControlResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateFreeResourceClusterControl(FreeResourceClusterControlId *string, request *UpdateFreeResourceClusterControlRequest) (_result *UpdateFreeResourceClusterControlResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateFreeResourceClusterControlResponse{}
+	_body, _err := client.UpdateFreeResourceClusterControlWithOptions(FreeResourceClusterControlId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
