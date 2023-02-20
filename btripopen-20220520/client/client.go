@@ -21750,9 +21750,10 @@ func (s *MonthBillGetResponseBody) SetTraceId(v string) *MonthBillGetResponseBod
 }
 
 type MonthBillGetResponseBodyModule struct {
-	EndDate   *string `json:"end_date,omitempty" xml:"end_date,omitempty"`
-	StartDate *string `json:"start_date,omitempty" xml:"start_date,omitempty"`
-	Url       *string `json:"url,omitempty" xml:"url,omitempty"`
+	EndDate                *string                                               `json:"end_date,omitempty" xml:"end_date,omitempty"`
+	MonthAccountBillDetail *MonthBillGetResponseBodyModuleMonthAccountBillDetail `json:"monthAccountBillDetail,omitempty" xml:"monthAccountBillDetail,omitempty" type:"Struct"`
+	StartDate              *string                                               `json:"start_date,omitempty" xml:"start_date,omitempty"`
+	Url                    *string                                               `json:"url,omitempty" xml:"url,omitempty"`
 }
 
 func (s MonthBillGetResponseBodyModule) String() string {
@@ -21768,6 +21769,11 @@ func (s *MonthBillGetResponseBodyModule) SetEndDate(v string) *MonthBillGetRespo
 	return s
 }
 
+func (s *MonthBillGetResponseBodyModule) SetMonthAccountBillDetail(v *MonthBillGetResponseBodyModuleMonthAccountBillDetail) *MonthBillGetResponseBodyModule {
+	s.MonthAccountBillDetail = v
+	return s
+}
+
 func (s *MonthBillGetResponseBodyModule) SetStartDate(v string) *MonthBillGetResponseBodyModule {
 	s.StartDate = &v
 	return s
@@ -21775,6 +21781,71 @@ func (s *MonthBillGetResponseBodyModule) SetStartDate(v string) *MonthBillGetRes
 
 func (s *MonthBillGetResponseBodyModule) SetUrl(v string) *MonthBillGetResponseBodyModule {
 	s.Url = &v
+	return s
+}
+
+type MonthBillGetResponseBodyModuleMonthAccountBillDetail struct {
+	CarAmount      *float64 `json:"carAmount,omitempty" xml:"carAmount,omitempty"`
+	DamageAmount   *float64 `json:"damageAmount,omitempty" xml:"damageAmount,omitempty"`
+	FlightAmount   *float64 `json:"flightAmount,omitempty" xml:"flightAmount,omitempty"`
+	FuPoint        *float64 `json:"fuPoint,omitempty" xml:"fuPoint,omitempty"`
+	HotelAmount    *float64 `json:"hotelAmount,omitempty" xml:"hotelAmount,omitempty"`
+	IeFlightAmount *float64 `json:"ieFlightAmount,omitempty" xml:"ieFlightAmount,omitempty"`
+	MailBillDate   *int64   `json:"mailBillDate,omitempty" xml:"mailBillDate,omitempty"`
+	ServiceAmount  *float64 `json:"serviceAmount,omitempty" xml:"serviceAmount,omitempty"`
+	TrainAmount    *float64 `json:"trainAmount,omitempty" xml:"trainAmount,omitempty"`
+}
+
+func (s MonthBillGetResponseBodyModuleMonthAccountBillDetail) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MonthBillGetResponseBodyModuleMonthAccountBillDetail) GoString() string {
+	return s.String()
+}
+
+func (s *MonthBillGetResponseBodyModuleMonthAccountBillDetail) SetCarAmount(v float64) *MonthBillGetResponseBodyModuleMonthAccountBillDetail {
+	s.CarAmount = &v
+	return s
+}
+
+func (s *MonthBillGetResponseBodyModuleMonthAccountBillDetail) SetDamageAmount(v float64) *MonthBillGetResponseBodyModuleMonthAccountBillDetail {
+	s.DamageAmount = &v
+	return s
+}
+
+func (s *MonthBillGetResponseBodyModuleMonthAccountBillDetail) SetFlightAmount(v float64) *MonthBillGetResponseBodyModuleMonthAccountBillDetail {
+	s.FlightAmount = &v
+	return s
+}
+
+func (s *MonthBillGetResponseBodyModuleMonthAccountBillDetail) SetFuPoint(v float64) *MonthBillGetResponseBodyModuleMonthAccountBillDetail {
+	s.FuPoint = &v
+	return s
+}
+
+func (s *MonthBillGetResponseBodyModuleMonthAccountBillDetail) SetHotelAmount(v float64) *MonthBillGetResponseBodyModuleMonthAccountBillDetail {
+	s.HotelAmount = &v
+	return s
+}
+
+func (s *MonthBillGetResponseBodyModuleMonthAccountBillDetail) SetIeFlightAmount(v float64) *MonthBillGetResponseBodyModuleMonthAccountBillDetail {
+	s.IeFlightAmount = &v
+	return s
+}
+
+func (s *MonthBillGetResponseBodyModuleMonthAccountBillDetail) SetMailBillDate(v int64) *MonthBillGetResponseBodyModuleMonthAccountBillDetail {
+	s.MailBillDate = &v
+	return s
+}
+
+func (s *MonthBillGetResponseBodyModuleMonthAccountBillDetail) SetServiceAmount(v float64) *MonthBillGetResponseBodyModuleMonthAccountBillDetail {
+	s.ServiceAmount = &v
+	return s
+}
+
+func (s *MonthBillGetResponseBodyModuleMonthAccountBillDetail) SetTrainAmount(v float64) *MonthBillGetResponseBodyModuleMonthAccountBillDetail {
+	s.TrainAmount = &v
 	return s
 }
 
