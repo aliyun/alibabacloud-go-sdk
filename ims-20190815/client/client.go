@@ -2644,6 +2644,7 @@ func (s *GetAccessKeyLastUsedResponseBody) SetRequestId(v string) *GetAccessKeyL
 
 type GetAccessKeyLastUsedResponseBodyAccessKeyLastUsed struct {
 	LastUsedDate *string `json:"LastUsedDate,omitempty" xml:"LastUsedDate,omitempty"`
+	ServiceName  *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
 }
 
 func (s GetAccessKeyLastUsedResponseBodyAccessKeyLastUsed) String() string {
@@ -2656,6 +2657,11 @@ func (s GetAccessKeyLastUsedResponseBodyAccessKeyLastUsed) GoString() string {
 
 func (s *GetAccessKeyLastUsedResponseBodyAccessKeyLastUsed) SetLastUsedDate(v string) *GetAccessKeyLastUsedResponseBodyAccessKeyLastUsed {
 	s.LastUsedDate = &v
+	return s
+}
+
+func (s *GetAccessKeyLastUsedResponseBodyAccessKeyLastUsed) SetServiceName(v string) *GetAccessKeyLastUsedResponseBodyAccessKeyLastUsed {
+	s.ServiceName = &v
 	return s
 }
 
