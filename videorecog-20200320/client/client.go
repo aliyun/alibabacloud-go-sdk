@@ -81,6 +81,7 @@ func (s *DetectVideoShotResponseBody) SetRequestId(v string) *DetectVideoShotRes
 }
 
 type DetectVideoShotResponseBodyData struct {
+	// 1
 	ShotFrameIds []*int32 `json:"ShotFrameIds,omitempty" xml:"ShotFrameIds,omitempty" type:"Repeated"`
 }
 
@@ -381,9 +382,8 @@ func (s *GetAsyncJobResultResponse) SetBody(v *GetAsyncJobResultResponseBody) *G
 }
 
 type RecognizeVideoCastCrewListRequest struct {
-	Params      []*RecognizeVideoCastCrewListRequestParams `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
-	RegisterUrl *string                                    `json:"RegisterUrl,omitempty" xml:"RegisterUrl,omitempty"`
-	VideoUrl    *string                                    `json:"VideoUrl,omitempty" xml:"VideoUrl,omitempty"`
+	Params   []*RecognizeVideoCastCrewListRequestParams `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	VideoUrl *string                                    `json:"VideoUrl,omitempty" xml:"VideoUrl,omitempty"`
 }
 
 func (s RecognizeVideoCastCrewListRequest) String() string {
@@ -396,11 +396,6 @@ func (s RecognizeVideoCastCrewListRequest) GoString() string {
 
 func (s *RecognizeVideoCastCrewListRequest) SetParams(v []*RecognizeVideoCastCrewListRequestParams) *RecognizeVideoCastCrewListRequest {
 	s.Params = v
-	return s
-}
-
-func (s *RecognizeVideoCastCrewListRequest) SetRegisterUrl(v string) *RecognizeVideoCastCrewListRequest {
-	s.RegisterUrl = &v
 	return s
 }
 
@@ -427,9 +422,8 @@ func (s *RecognizeVideoCastCrewListRequestParams) SetType(v string) *RecognizeVi
 }
 
 type RecognizeVideoCastCrewListAdvanceRequest struct {
-	Params            []*RecognizeVideoCastCrewListAdvanceRequestParams `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
-	RegisterUrlObject io.Reader                                         `json:"RegisterUrl,omitempty" xml:"RegisterUrl,omitempty"`
-	VideoUrlObject    io.Reader                                         `json:"VideoUrl,omitempty" xml:"VideoUrl,omitempty"`
+	Params         []*RecognizeVideoCastCrewListAdvanceRequestParams `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	VideoUrlObject io.Reader                                         `json:"VideoUrl,omitempty" xml:"VideoUrl,omitempty"`
 }
 
 func (s RecognizeVideoCastCrewListAdvanceRequest) String() string {
@@ -442,11 +436,6 @@ func (s RecognizeVideoCastCrewListAdvanceRequest) GoString() string {
 
 func (s *RecognizeVideoCastCrewListAdvanceRequest) SetParams(v []*RecognizeVideoCastCrewListAdvanceRequestParams) *RecognizeVideoCastCrewListAdvanceRequest {
 	s.Params = v
-	return s
-}
-
-func (s *RecognizeVideoCastCrewListAdvanceRequest) SetRegisterUrlObject(v io.Reader) *RecognizeVideoCastCrewListAdvanceRequest {
-	s.RegisterUrlObject = v
 	return s
 }
 
@@ -474,7 +463,6 @@ func (s *RecognizeVideoCastCrewListAdvanceRequestParams) SetType(v string) *Reco
 
 type RecognizeVideoCastCrewListShrinkRequest struct {
 	ParamsShrink *string `json:"Params,omitempty" xml:"Params,omitempty"`
-	RegisterUrl  *string `json:"RegisterUrl,omitempty" xml:"RegisterUrl,omitempty"`
 	VideoUrl     *string `json:"VideoUrl,omitempty" xml:"VideoUrl,omitempty"`
 }
 
@@ -488,11 +476,6 @@ func (s RecognizeVideoCastCrewListShrinkRequest) GoString() string {
 
 func (s *RecognizeVideoCastCrewListShrinkRequest) SetParamsShrink(v string) *RecognizeVideoCastCrewListShrinkRequest {
 	s.ParamsShrink = &v
-	return s
-}
-
-func (s *RecognizeVideoCastCrewListShrinkRequest) SetRegisterUrl(v string) *RecognizeVideoCastCrewListShrinkRequest {
-	s.RegisterUrl = &v
 	return s
 }
 
@@ -893,6 +876,7 @@ func (s *RecognizeVideoCastCrewListResponse) SetBody(v *RecognizeVideoCastCrewLi
 }
 
 type SplitVideoPartsRequest struct {
+	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
 	VideoUrl *string `json:"VideoUrl,omitempty" xml:"VideoUrl,omitempty"`
 }
 
@@ -904,12 +888,18 @@ func (s SplitVideoPartsRequest) GoString() string {
 	return s.String()
 }
 
+func (s *SplitVideoPartsRequest) SetTemplate(v string) *SplitVideoPartsRequest {
+	s.Template = &v
+	return s
+}
+
 func (s *SplitVideoPartsRequest) SetVideoUrl(v string) *SplitVideoPartsRequest {
 	s.VideoUrl = &v
 	return s
 }
 
 type SplitVideoPartsAdvanceRequest struct {
+	Template       *string   `json:"Template,omitempty" xml:"Template,omitempty"`
 	VideoUrlObject io.Reader `json:"VideoUrl,omitempty" xml:"VideoUrl,omitempty"`
 }
 
@@ -919,6 +909,11 @@ func (s SplitVideoPartsAdvanceRequest) String() string {
 
 func (s SplitVideoPartsAdvanceRequest) GoString() string {
 	return s.String()
+}
+
+func (s *SplitVideoPartsAdvanceRequest) SetTemplate(v string) *SplitVideoPartsAdvanceRequest {
+	s.Template = &v
+	return s
 }
 
 func (s *SplitVideoPartsAdvanceRequest) SetVideoUrlObject(v io.Reader) *SplitVideoPartsAdvanceRequest {
@@ -956,7 +951,8 @@ func (s *SplitVideoPartsResponseBody) SetRequestId(v string) *SplitVideoPartsRes
 }
 
 type SplitVideoPartsResponseBodyData struct {
-	Elements []*SplitVideoPartsResponseBodyDataElements `json:"Elements,omitempty" xml:"Elements,omitempty" type:"Repeated"`
+	Elements              []*SplitVideoPartsResponseBodyDataElements              `json:"Elements,omitempty" xml:"Elements,omitempty" type:"Repeated"`
+	SplitVideoPartResults []*SplitVideoPartsResponseBodyDataSplitVideoPartResults `json:"SplitVideoPartResults,omitempty" xml:"SplitVideoPartResults,omitempty" type:"Repeated"`
 }
 
 func (s SplitVideoPartsResponseBodyData) String() string {
@@ -969,6 +965,11 @@ func (s SplitVideoPartsResponseBodyData) GoString() string {
 
 func (s *SplitVideoPartsResponseBodyData) SetElements(v []*SplitVideoPartsResponseBodyDataElements) *SplitVideoPartsResponseBodyData {
 	s.Elements = v
+	return s
+}
+
+func (s *SplitVideoPartsResponseBodyData) SetSplitVideoPartResults(v []*SplitVideoPartsResponseBodyDataSplitVideoPartResults) *SplitVideoPartsResponseBodyData {
+	s.SplitVideoPartResults = v
 	return s
 }
 
@@ -998,6 +999,47 @@ func (s *SplitVideoPartsResponseBodyDataElements) SetEndTime(v float32) *SplitVi
 
 func (s *SplitVideoPartsResponseBodyDataElements) SetIndex(v int64) *SplitVideoPartsResponseBodyDataElements {
 	s.Index = &v
+	return s
+}
+
+type SplitVideoPartsResponseBodyDataSplitVideoPartResults struct {
+	BeginTime *float32 `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
+	By        *string  `json:"By,omitempty" xml:"By,omitempty"`
+	EndTime   *float32 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	Theme     *string  `json:"Theme,omitempty" xml:"Theme,omitempty"`
+	Type      *string  `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s SplitVideoPartsResponseBodyDataSplitVideoPartResults) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SplitVideoPartsResponseBodyDataSplitVideoPartResults) GoString() string {
+	return s.String()
+}
+
+func (s *SplitVideoPartsResponseBodyDataSplitVideoPartResults) SetBeginTime(v float32) *SplitVideoPartsResponseBodyDataSplitVideoPartResults {
+	s.BeginTime = &v
+	return s
+}
+
+func (s *SplitVideoPartsResponseBodyDataSplitVideoPartResults) SetBy(v string) *SplitVideoPartsResponseBodyDataSplitVideoPartResults {
+	s.By = &v
+	return s
+}
+
+func (s *SplitVideoPartsResponseBodyDataSplitVideoPartResults) SetEndTime(v float32) *SplitVideoPartsResponseBodyDataSplitVideoPartResults {
+	s.EndTime = &v
+	return s
+}
+
+func (s *SplitVideoPartsResponseBodyDataSplitVideoPartResults) SetTheme(v string) *SplitVideoPartsResponseBodyDataSplitVideoPartResults {
+	s.Theme = &v
+	return s
+}
+
+func (s *SplitVideoPartsResponseBodyDataSplitVideoPartResults) SetType(v string) *SplitVideoPartsResponseBodyDataSplitVideoPartResults {
+	s.Type = &v
 	return s
 }
 
@@ -1591,10 +1633,6 @@ func (client *Client) RecognizeVideoCastCrewListWithOptions(tmpReq *RecognizeVid
 		body["Params"] = request.ParamsShrink
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.RegisterUrl)) {
-		body["RegisterUrl"] = request.RegisterUrl
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.VideoUrl)) {
 		body["VideoUrl"] = request.VideoUrl
 	}
@@ -1693,43 +1731,6 @@ func (client *Client) RecognizeVideoCastCrewListAdvance(request *RecognizeVideoC
 	openapiutil.Convert(runtime, ossRuntime)
 	recognizeVideoCastCrewListReq := &RecognizeVideoCastCrewListRequest{}
 	openapiutil.Convert(request, recognizeVideoCastCrewListReq)
-	if !tea.BoolValue(util.IsUnset(request.RegisterUrlObject)) {
-		authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-
-		ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
-		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
-		ossClient, _err = oss.NewClient(ossConfig)
-		if _err != nil {
-			return _result, _err
-		}
-
-		fileObj = &fileform.FileField{
-			Filename:    authResponse.Body.ObjectKey,
-			Content:     request.RegisterUrlObject,
-			ContentType: tea.String(""),
-		}
-		ossHeader = &oss.PostObjectRequestHeader{
-			AccessKeyId:         authResponse.Body.AccessKeyId,
-			Policy:              authResponse.Body.EncodedPolicy,
-			Signature:           authResponse.Body.Signature,
-			Key:                 authResponse.Body.ObjectKey,
-			File:                fileObj,
-			SuccessActionStatus: tea.String("201"),
-		}
-		uploadRequest = &oss.PostObjectRequest{
-			BucketName: authResponse.Body.Bucket,
-			Header:     ossHeader,
-		}
-		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
-		if _err != nil {
-			return _result, _err
-		}
-		recognizeVideoCastCrewListReq.RegisterUrl = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.VideoUrlObject)) {
 		authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
 		if _err != nil {
@@ -1782,6 +1783,10 @@ func (client *Client) SplitVideoPartsWithOptions(request *SplitVideoPartsRequest
 		return _result, _err
 	}
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Template)) {
+		body["Template"] = request.Template
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.VideoUrl)) {
 		body["VideoUrl"] = request.VideoUrl
 	}
