@@ -129,6 +129,106 @@ func (s *BatchDeleteJobsResponse) SetBody(v *BatchDeleteJobsResponseBody) *Batch
 	return s
 }
 
+type BatchDeleteRouteStrategyRequest struct {
+	GroupId   *string  `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	JobIdList []*int64 `json:"JobIdList,omitempty" xml:"JobIdList,omitempty" type:"Repeated"`
+	Namespace *string  `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	RegionId  *string  `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s BatchDeleteRouteStrategyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchDeleteRouteStrategyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *BatchDeleteRouteStrategyRequest) SetGroupId(v string) *BatchDeleteRouteStrategyRequest {
+	s.GroupId = &v
+	return s
+}
+
+func (s *BatchDeleteRouteStrategyRequest) SetJobIdList(v []*int64) *BatchDeleteRouteStrategyRequest {
+	s.JobIdList = v
+	return s
+}
+
+func (s *BatchDeleteRouteStrategyRequest) SetNamespace(v string) *BatchDeleteRouteStrategyRequest {
+	s.Namespace = &v
+	return s
+}
+
+func (s *BatchDeleteRouteStrategyRequest) SetRegionId(v string) *BatchDeleteRouteStrategyRequest {
+	s.RegionId = &v
+	return s
+}
+
+type BatchDeleteRouteStrategyResponseBody struct {
+	Code    *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s BatchDeleteRouteStrategyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchDeleteRouteStrategyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *BatchDeleteRouteStrategyResponseBody) SetCode(v int32) *BatchDeleteRouteStrategyResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *BatchDeleteRouteStrategyResponseBody) SetMessage(v string) *BatchDeleteRouteStrategyResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *BatchDeleteRouteStrategyResponseBody) SetRequestId(v string) *BatchDeleteRouteStrategyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *BatchDeleteRouteStrategyResponseBody) SetSuccess(v bool) *BatchDeleteRouteStrategyResponseBody {
+	s.Success = &v
+	return s
+}
+
+type BatchDeleteRouteStrategyResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *BatchDeleteRouteStrategyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s BatchDeleteRouteStrategyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchDeleteRouteStrategyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *BatchDeleteRouteStrategyResponse) SetHeaders(v map[string]*string) *BatchDeleteRouteStrategyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *BatchDeleteRouteStrategyResponse) SetStatusCode(v int32) *BatchDeleteRouteStrategyResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *BatchDeleteRouteStrategyResponse) SetBody(v *BatchDeleteRouteStrategyResponseBody) *BatchDeleteRouteStrategyResponse {
+	s.Body = v
+	return s
+}
+
 type BatchDisableJobsRequest struct {
 	// The ID of the application. You can obtain the ID of the application on the **Application Management** page in the SchedulerX console.
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
@@ -368,8 +468,10 @@ type CreateAppGroupRequest struct {
 	AppKey *string `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
 	// The name of the application.
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	AppType *int32  `json:"AppType,omitempty" xml:"AppType,omitempty"`
 	// The description of the application.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	EnableLog   *bool   `json:"EnableLog,omitempty" xml:"EnableLog,omitempty"`
 	// The ID of the application. You can obtain the application ID on the Application Management page in Distributed Task Scheduling Platform.
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	// The maximum number of jobs.
@@ -408,8 +510,18 @@ func (s *CreateAppGroupRequest) SetAppName(v string) *CreateAppGroupRequest {
 	return s
 }
 
+func (s *CreateAppGroupRequest) SetAppType(v int32) *CreateAppGroupRequest {
+	s.AppType = &v
+	return s
+}
+
 func (s *CreateAppGroupRequest) SetDescription(v string) *CreateAppGroupRequest {
 	s.Description = &v
+	return s
+}
+
+func (s *CreateAppGroupRequest) SetEnableLog(v bool) *CreateAppGroupRequest {
+	s.EnableLog = &v
 	return s
 }
 
@@ -1128,6 +1240,146 @@ func (s *CreateNamespaceResponse) SetBody(v *CreateNamespaceResponseBody) *Creat
 	return s
 }
 
+type CreateRouteStrategyRequest struct {
+	GroupId         *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	JobId           *int64  `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	Name            *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Namespace       *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Status          *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+	StrategyContent *string `json:"StrategyContent,omitempty" xml:"StrategyContent,omitempty"`
+	Type            *int32  `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s CreateRouteStrategyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRouteStrategyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRouteStrategyRequest) SetGroupId(v string) *CreateRouteStrategyRequest {
+	s.GroupId = &v
+	return s
+}
+
+func (s *CreateRouteStrategyRequest) SetJobId(v int64) *CreateRouteStrategyRequest {
+	s.JobId = &v
+	return s
+}
+
+func (s *CreateRouteStrategyRequest) SetName(v string) *CreateRouteStrategyRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateRouteStrategyRequest) SetNamespace(v string) *CreateRouteStrategyRequest {
+	s.Namespace = &v
+	return s
+}
+
+func (s *CreateRouteStrategyRequest) SetRegionId(v string) *CreateRouteStrategyRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *CreateRouteStrategyRequest) SetStatus(v int32) *CreateRouteStrategyRequest {
+	s.Status = &v
+	return s
+}
+
+func (s *CreateRouteStrategyRequest) SetStrategyContent(v string) *CreateRouteStrategyRequest {
+	s.StrategyContent = &v
+	return s
+}
+
+func (s *CreateRouteStrategyRequest) SetType(v int32) *CreateRouteStrategyRequest {
+	s.Type = &v
+	return s
+}
+
+type CreateRouteStrategyResponseBody struct {
+	Code      *int32                               `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *CreateRouteStrategyResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                              `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                                `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s CreateRouteStrategyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRouteStrategyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRouteStrategyResponseBody) SetCode(v int32) *CreateRouteStrategyResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CreateRouteStrategyResponseBody) SetData(v *CreateRouteStrategyResponseBodyData) *CreateRouteStrategyResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *CreateRouteStrategyResponseBody) SetMessage(v string) *CreateRouteStrategyResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CreateRouteStrategyResponseBody) SetRequestId(v string) *CreateRouteStrategyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateRouteStrategyResponseBody) SetSuccess(v bool) *CreateRouteStrategyResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreateRouteStrategyResponseBodyData struct {
+}
+
+func (s CreateRouteStrategyResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRouteStrategyResponseBodyData) GoString() string {
+	return s.String()
+}
+
+type CreateRouteStrategyResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateRouteStrategyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateRouteStrategyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRouteStrategyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRouteStrategyResponse) SetHeaders(v map[string]*string) *CreateRouteStrategyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateRouteStrategyResponse) SetStatusCode(v int32) *CreateRouteStrategyResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateRouteStrategyResponse) SetBody(v *CreateRouteStrategyResponseBody) *CreateRouteStrategyResponse {
+	s.Body = v
+	return s
+}
+
 type CreateWorkflowRequest struct {
 	Description     *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	GroupId         *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
@@ -1286,6 +1538,106 @@ func (s *CreateWorkflowResponse) SetBody(v *CreateWorkflowResponseBody) *CreateW
 	return s
 }
 
+type DeleteAppGroupRequest struct {
+	DeleteJobs *bool   `json:"DeleteJobs,omitempty" xml:"DeleteJobs,omitempty"`
+	GroupId    *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	Namespace  *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s DeleteAppGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAppGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAppGroupRequest) SetDeleteJobs(v bool) *DeleteAppGroupRequest {
+	s.DeleteJobs = &v
+	return s
+}
+
+func (s *DeleteAppGroupRequest) SetGroupId(v string) *DeleteAppGroupRequest {
+	s.GroupId = &v
+	return s
+}
+
+func (s *DeleteAppGroupRequest) SetNamespace(v string) *DeleteAppGroupRequest {
+	s.Namespace = &v
+	return s
+}
+
+func (s *DeleteAppGroupRequest) SetRegionId(v string) *DeleteAppGroupRequest {
+	s.RegionId = &v
+	return s
+}
+
+type DeleteAppGroupResponseBody struct {
+	Code    *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DeleteAppGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAppGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAppGroupResponseBody) SetCode(v int32) *DeleteAppGroupResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DeleteAppGroupResponseBody) SetMessage(v string) *DeleteAppGroupResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DeleteAppGroupResponseBody) SetRequestId(v string) *DeleteAppGroupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteAppGroupResponseBody) SetSuccess(v bool) *DeleteAppGroupResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeleteAppGroupResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteAppGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteAppGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAppGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAppGroupResponse) SetHeaders(v map[string]*string) *DeleteAppGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteAppGroupResponse) SetStatusCode(v int32) *DeleteAppGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteAppGroupResponse) SetBody(v *DeleteAppGroupResponseBody) *DeleteAppGroupResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteJobRequest struct {
 	// The ID of the application. You can obtain the application ID on the **Application Management** page in Distributed Task Scheduling Platform.
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
@@ -1399,6 +1751,105 @@ func (s *DeleteJobResponse) SetStatusCode(v int32) *DeleteJobResponse {
 }
 
 func (s *DeleteJobResponse) SetBody(v *DeleteJobResponseBody) *DeleteJobResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteRouteStrategyRequest struct {
+	GroupId   *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	JobId     *int64  `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s DeleteRouteStrategyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteRouteStrategyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteRouteStrategyRequest) SetGroupId(v string) *DeleteRouteStrategyRequest {
+	s.GroupId = &v
+	return s
+}
+
+func (s *DeleteRouteStrategyRequest) SetJobId(v int64) *DeleteRouteStrategyRequest {
+	s.JobId = &v
+	return s
+}
+
+func (s *DeleteRouteStrategyRequest) SetNamespace(v string) *DeleteRouteStrategyRequest {
+	s.Namespace = &v
+	return s
+}
+
+func (s *DeleteRouteStrategyRequest) SetRegionId(v string) *DeleteRouteStrategyRequest {
+	s.RegionId = &v
+	return s
+}
+
+type DeleteRouteStrategyResponseBody struct {
+	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DeleteRouteStrategyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteRouteStrategyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteRouteStrategyResponseBody) SetCode(v int32) *DeleteRouteStrategyResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DeleteRouteStrategyResponseBody) SetMessage(v string) *DeleteRouteStrategyResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DeleteRouteStrategyResponseBody) SetRequestId(v string) *DeleteRouteStrategyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteRouteStrategyResponseBody) SetSuccess(v bool) *DeleteRouteStrategyResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeleteRouteStrategyResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteRouteStrategyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteRouteStrategyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteRouteStrategyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteRouteStrategyResponse) SetHeaders(v map[string]*string) *DeleteRouteStrategyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteRouteStrategyResponse) SetStatusCode(v int32) *DeleteRouteStrategyResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteRouteStrategyResponse) SetBody(v *DeleteRouteStrategyResponseBody) *DeleteRouteStrategyResponse {
 	s.Body = v
 	return s
 }
@@ -2558,6 +3009,159 @@ func (s *ExecuteWorkflowResponse) SetStatusCode(v int32) *ExecuteWorkflowRespons
 }
 
 func (s *ExecuteWorkflowResponse) SetBody(v *ExecuteWorkflowResponseBody) *ExecuteWorkflowResponse {
+	s.Body = v
+	return s
+}
+
+type GetAppGroupRequest struct {
+	GroupId   *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s GetAppGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAppGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetAppGroupRequest) SetGroupId(v string) *GetAppGroupRequest {
+	s.GroupId = &v
+	return s
+}
+
+func (s *GetAppGroupRequest) SetNamespace(v string) *GetAppGroupRequest {
+	s.Namespace = &v
+	return s
+}
+
+func (s *GetAppGroupRequest) SetRegionId(v string) *GetAppGroupRequest {
+	s.RegionId = &v
+	return s
+}
+
+type GetAppGroupResponseBody struct {
+	Code    *int32                       `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data    *GetAppGroupResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message *string                      `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetAppGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAppGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetAppGroupResponseBody) SetCode(v int32) *GetAppGroupResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetAppGroupResponseBody) SetData(v *GetAppGroupResponseBodyData) *GetAppGroupResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetAppGroupResponseBody) SetMessage(v string) *GetAppGroupResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetAppGroupResponseBody) SetRequestId(v string) *GetAppGroupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetAppGroupResponseBody) SetSuccess(v bool) *GetAppGroupResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetAppGroupResponseBodyData struct {
+	AppKey            *string `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	AppName           *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	CurJobs           *int32  `json:"CurJobs,omitempty" xml:"CurJobs,omitempty"`
+	Description       *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	GroupId           *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	MaxJobs           *int32  `json:"MaxJobs,omitempty" xml:"MaxJobs,omitempty"`
+	MonitorConfigJson *string `json:"MonitorConfigJson,omitempty" xml:"MonitorConfigJson,omitempty"`
+}
+
+func (s GetAppGroupResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAppGroupResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetAppGroupResponseBodyData) SetAppKey(v string) *GetAppGroupResponseBodyData {
+	s.AppKey = &v
+	return s
+}
+
+func (s *GetAppGroupResponseBodyData) SetAppName(v string) *GetAppGroupResponseBodyData {
+	s.AppName = &v
+	return s
+}
+
+func (s *GetAppGroupResponseBodyData) SetCurJobs(v int32) *GetAppGroupResponseBodyData {
+	s.CurJobs = &v
+	return s
+}
+
+func (s *GetAppGroupResponseBodyData) SetDescription(v string) *GetAppGroupResponseBodyData {
+	s.Description = &v
+	return s
+}
+
+func (s *GetAppGroupResponseBodyData) SetGroupId(v string) *GetAppGroupResponseBodyData {
+	s.GroupId = &v
+	return s
+}
+
+func (s *GetAppGroupResponseBodyData) SetMaxJobs(v int32) *GetAppGroupResponseBodyData {
+	s.MaxJobs = &v
+	return s
+}
+
+func (s *GetAppGroupResponseBodyData) SetMonitorConfigJson(v string) *GetAppGroupResponseBodyData {
+	s.MonitorConfigJson = &v
+	return s
+}
+
+type GetAppGroupResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetAppGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetAppGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAppGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetAppGroupResponse) SetHeaders(v map[string]*string) *GetAppGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetAppGroupResponse) SetStatusCode(v int32) *GetAppGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetAppGroupResponse) SetBody(v *GetAppGroupResponseBody) *GetAppGroupResponse {
 	s.Body = v
 	return s
 }
@@ -6410,6 +7014,112 @@ func (s *StopInstanceResponse) SetBody(v *StopInstanceResponseBody) *StopInstanc
 	return s
 }
 
+type UpdateAppGroupRequest struct {
+	Description    *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	GroupId        *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	MaxConcurrency *int32  `json:"MaxConcurrency,omitempty" xml:"MaxConcurrency,omitempty"`
+	Namespace      *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s UpdateAppGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAppGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAppGroupRequest) SetDescription(v string) *UpdateAppGroupRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *UpdateAppGroupRequest) SetGroupId(v string) *UpdateAppGroupRequest {
+	s.GroupId = &v
+	return s
+}
+
+func (s *UpdateAppGroupRequest) SetMaxConcurrency(v int32) *UpdateAppGroupRequest {
+	s.MaxConcurrency = &v
+	return s
+}
+
+func (s *UpdateAppGroupRequest) SetNamespace(v string) *UpdateAppGroupRequest {
+	s.Namespace = &v
+	return s
+}
+
+func (s *UpdateAppGroupRequest) SetRegionId(v string) *UpdateAppGroupRequest {
+	s.RegionId = &v
+	return s
+}
+
+type UpdateAppGroupResponseBody struct {
+	Code    *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UpdateAppGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAppGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAppGroupResponseBody) SetCode(v int32) *UpdateAppGroupResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UpdateAppGroupResponseBody) SetMessage(v string) *UpdateAppGroupResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UpdateAppGroupResponseBody) SetRequestId(v string) *UpdateAppGroupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateAppGroupResponseBody) SetSuccess(v bool) *UpdateAppGroupResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateAppGroupResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateAppGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateAppGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAppGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAppGroupResponse) SetHeaders(v map[string]*string) *UpdateAppGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateAppGroupResponse) SetStatusCode(v int32) *UpdateAppGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateAppGroupResponse) SetBody(v *UpdateAppGroupResponseBody) *UpdateAppGroupResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateJobRequest struct {
 	// The interval at which the system attempts to rerun a job. Default value: 30. Unit: seconds.
 	AttemptInterval *int32 `json:"AttemptInterval,omitempty" xml:"AttemptInterval,omitempty"`
@@ -6477,7 +7187,8 @@ type UpdateJobRequest struct {
 	SendChannel         *string `json:"SendChannel,omitempty" xml:"SendChannel,omitempty"`
 	SuccessNoticeEnable *bool   `json:"SuccessNoticeEnable,omitempty" xml:"SuccessNoticeEnable,omitempty"`
 	// The interval at which the system can rerun the subtask when the subtask fails. This parameter is an advanced configuration item of the MapReduce job.
-	TaskAttemptInterval *int32 `json:"TaskAttemptInterval,omitempty" xml:"TaskAttemptInterval,omitempty"`
+	TaskAttemptInterval *int32  `json:"TaskAttemptInterval,omitempty" xml:"TaskAttemptInterval,omitempty"`
+	TaskDispatchMode    *string `json:"TaskDispatchMode,omitempty" xml:"TaskDispatchMode,omitempty"`
 	// The number of retries that the system can perform when the subtask fails. This parameter is an advanced configuration item of the MapReduce job.
 	TaskMaxAttempt *int32 `json:"TaskMaxAttempt,omitempty" xml:"TaskMaxAttempt,omitempty"`
 	// The time expression. You can set the time expression according to the selected time type.
@@ -6648,6 +7359,11 @@ func (s *UpdateJobRequest) SetSuccessNoticeEnable(v bool) *UpdateJobRequest {
 
 func (s *UpdateJobRequest) SetTaskAttemptInterval(v int32) *UpdateJobRequest {
 	s.TaskAttemptInterval = &v
+	return s
+}
+
+func (s *UpdateJobRequest) SetTaskDispatchMode(v string) *UpdateJobRequest {
+	s.TaskDispatchMode = &v
 	return s
 }
 
@@ -7170,6 +7886,64 @@ func (client *Client) BatchDeleteJobs(request *BatchDeleteJobsRequest) (_result 
 	return _result, _err
 }
 
+func (client *Client) BatchDeleteRouteStrategyWithOptions(request *BatchDeleteRouteStrategyRequest, runtime *util.RuntimeOptions) (_result *BatchDeleteRouteStrategyResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		query["Namespace"] = request.Namespace
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.JobIdList)) {
+		body["JobIdList"] = request.JobIdList
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("BatchDeleteRouteStrategy"),
+		Version:     tea.String("2019-04-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &BatchDeleteRouteStrategyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) BatchDeleteRouteStrategy(request *BatchDeleteRouteStrategyRequest) (_result *BatchDeleteRouteStrategyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &BatchDeleteRouteStrategyResponse{}
+	_body, _err := client.BatchDeleteRouteStrategyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 /**
  * Before you call this operation, you must add the following dependency to the pom.xml file:
  * ```xml
@@ -7626,6 +8400,78 @@ func (client *Client) CreateNamespace(request *CreateNamespaceRequest) (_result 
 	return _result, _err
 }
 
+func (client *Client) CreateRouteStrategyWithOptions(request *CreateRouteStrategyRequest, runtime *util.RuntimeOptions) (_result *CreateRouteStrategyResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JobId)) {
+		query["JobId"] = request.JobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		query["Namespace"] = request.Namespace
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		query["Status"] = request.Status
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StrategyContent)) {
+		query["StrategyContent"] = request.StrategyContent
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateRouteStrategy"),
+		Version:     tea.String("2019-04-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateRouteStrategyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateRouteStrategy(request *CreateRouteStrategyRequest) (_result *CreateRouteStrategyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateRouteStrategyResponse{}
+	_body, _err := client.CreateRouteStrategyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) CreateWorkflowWithOptions(request *CreateWorkflowRequest, runtime *util.RuntimeOptions) (_result *CreateWorkflowResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7706,6 +8552,62 @@ func (client *Client) CreateWorkflow(request *CreateWorkflowRequest) (_result *C
 	return _result, _err
 }
 
+func (client *Client) DeleteAppGroupWithOptions(request *DeleteAppGroupRequest, runtime *util.RuntimeOptions) (_result *DeleteAppGroupResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DeleteJobs)) {
+		query["DeleteJobs"] = request.DeleteJobs
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		query["Namespace"] = request.Namespace
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteAppGroup"),
+		Version:     tea.String("2019-04-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteAppGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteAppGroup(request *DeleteAppGroupRequest) (_result *DeleteAppGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteAppGroupResponse{}
+	_body, _err := client.DeleteAppGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DeleteJobWithOptions(request *DeleteJobRequest, runtime *util.RuntimeOptions) (_result *DeleteJobResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7739,6 +8641,62 @@ func (client *Client) DeleteJob(request *DeleteJobRequest) (_result *DeleteJobRe
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteJobResponse{}
 	_body, _err := client.DeleteJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteRouteStrategyWithOptions(request *DeleteRouteStrategyRequest, runtime *util.RuntimeOptions) (_result *DeleteRouteStrategyResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JobId)) {
+		query["JobId"] = request.JobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		query["Namespace"] = request.Namespace
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteRouteStrategy"),
+		Version:     tea.String("2019-04-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteRouteStrategyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteRouteStrategy(request *DeleteRouteStrategyRequest) (_result *DeleteRouteStrategyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteRouteStrategyResponse{}
+	_body, _err := client.DeleteRouteStrategyWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8105,6 +9063,58 @@ func (client *Client) ExecuteWorkflow(request *ExecuteWorkflowRequest) (_result 
 	runtime := &util.RuntimeOptions{}
 	_result = &ExecuteWorkflowResponse{}
 	_body, _err := client.ExecuteWorkflowWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetAppGroupWithOptions(request *GetAppGroupRequest, runtime *util.RuntimeOptions) (_result *GetAppGroupResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		query["Namespace"] = request.Namespace
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetAppGroup"),
+		Version:     tea.String("2019-04-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetAppGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetAppGroup(request *GetAppGroupRequest) (_result *GetAppGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetAppGroupResponse{}
+	_body, _err := client.GetAppGroupWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9049,6 +10059,66 @@ func (client *Client) StopInstance(request *StopInstanceRequest) (_result *StopI
 	return _result, _err
 }
 
+func (client *Client) UpdateAppGroupWithOptions(request *UpdateAppGroupRequest, runtime *util.RuntimeOptions) (_result *UpdateAppGroupResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxConcurrency)) {
+		query["MaxConcurrency"] = request.MaxConcurrency
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		query["Namespace"] = request.Namespace
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateAppGroup"),
+		Version:     tea.String("2019-04-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateAppGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateAppGroup(request *UpdateAppGroupRequest) (_result *UpdateAppGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateAppGroupResponse{}
+	_body, _err := client.UpdateAppGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) UpdateJobWithOptions(request *UpdateJobRequest, runtime *util.RuntimeOptions) (_result *UpdateJobResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9162,6 +10232,10 @@ func (client *Client) UpdateJobWithOptions(request *UpdateJobRequest, runtime *u
 
 	if !tea.BoolValue(util.IsUnset(request.TaskAttemptInterval)) {
 		body["TaskAttemptInterval"] = request.TaskAttemptInterval
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskDispatchMode)) {
+		body["TaskDispatchMode"] = request.TaskDispatchMode
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.TaskMaxAttempt)) {
