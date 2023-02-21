@@ -2215,8 +2215,9 @@ func (s *GetDiagnoseResultForSingleCardResponseBody) SetWirelessCloudConnectorId
 }
 
 type GetDiagnoseResultForSingleCardResponseBodyDiagnoseItem struct {
-	Part   *string `json:"Part,omitempty" xml:"Part,omitempty"`
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Part     *string                                                           `json:"Part,omitempty" xml:"Part,omitempty"`
+	Status   *string                                                           `json:"Status,omitempty" xml:"Status,omitempty"`
+	SubItems []*GetDiagnoseResultForSingleCardResponseBodyDiagnoseItemSubItems `json:"SubItems,omitempty" xml:"SubItems,omitempty" type:"Repeated"`
 }
 
 func (s GetDiagnoseResultForSingleCardResponseBodyDiagnoseItem) String() string {
@@ -2237,8 +2238,43 @@ func (s *GetDiagnoseResultForSingleCardResponseBodyDiagnoseItem) SetStatus(v str
 	return s
 }
 
+func (s *GetDiagnoseResultForSingleCardResponseBodyDiagnoseItem) SetSubItems(v []*GetDiagnoseResultForSingleCardResponseBodyDiagnoseItemSubItems) *GetDiagnoseResultForSingleCardResponseBodyDiagnoseItem {
+	s.SubItems = v
+	return s
+}
+
+type GetDiagnoseResultForSingleCardResponseBodyDiagnoseItemSubItems struct {
+	SubItem       *string `json:"SubItem,omitempty" xml:"SubItem,omitempty"`
+	SubItemInfo   *string `json:"SubItemInfo,omitempty" xml:"SubItemInfo,omitempty"`
+	SubItemStatus *string `json:"SubItemStatus,omitempty" xml:"SubItemStatus,omitempty"`
+}
+
+func (s GetDiagnoseResultForSingleCardResponseBodyDiagnoseItemSubItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDiagnoseResultForSingleCardResponseBodyDiagnoseItemSubItems) GoString() string {
+	return s.String()
+}
+
+func (s *GetDiagnoseResultForSingleCardResponseBodyDiagnoseItemSubItems) SetSubItem(v string) *GetDiagnoseResultForSingleCardResponseBodyDiagnoseItemSubItems {
+	s.SubItem = &v
+	return s
+}
+
+func (s *GetDiagnoseResultForSingleCardResponseBodyDiagnoseItemSubItems) SetSubItemInfo(v string) *GetDiagnoseResultForSingleCardResponseBodyDiagnoseItemSubItems {
+	s.SubItemInfo = &v
+	return s
+}
+
+func (s *GetDiagnoseResultForSingleCardResponseBodyDiagnoseItemSubItems) SetSubItemStatus(v string) *GetDiagnoseResultForSingleCardResponseBodyDiagnoseItemSubItems {
+	s.SubItemStatus = &v
+	return s
+}
+
 type GetDiagnoseResultForSingleCardResponseBodyErrorResult struct {
 	ErrorDesc       *string `json:"ErrorDesc,omitempty" xml:"ErrorDesc,omitempty"`
+	ErrorItem       *string `json:"ErrorItem,omitempty" xml:"ErrorItem,omitempty"`
 	ErrorLevel      *string `json:"ErrorLevel,omitempty" xml:"ErrorLevel,omitempty"`
 	ErrorPart       *string `json:"ErrorPart,omitempty" xml:"ErrorPart,omitempty"`
 	ErrorSuggestion *string `json:"ErrorSuggestion,omitempty" xml:"ErrorSuggestion,omitempty"`
@@ -2254,6 +2290,11 @@ func (s GetDiagnoseResultForSingleCardResponseBodyErrorResult) GoString() string
 
 func (s *GetDiagnoseResultForSingleCardResponseBodyErrorResult) SetErrorDesc(v string) *GetDiagnoseResultForSingleCardResponseBodyErrorResult {
 	s.ErrorDesc = &v
+	return s
+}
+
+func (s *GetDiagnoseResultForSingleCardResponseBodyErrorResult) SetErrorItem(v string) *GetDiagnoseResultForSingleCardResponseBodyErrorResult {
+	s.ErrorItem = &v
 	return s
 }
 
@@ -2432,17 +2473,19 @@ func (s *GetWirelessCloudConnectorResponseBody) SetWirelessCloudConnectorId(v st
 }
 
 type GetWirelessCloudConnectorResponseBodyNetLinks struct {
-	APN         *string   `json:"APN,omitempty" xml:"APN,omitempty"`
-	CreateTime  *string   `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Description *string   `json:"Description,omitempty" xml:"Description,omitempty"`
-	GrantAliUid *string   `json:"GrantAliUid,omitempty" xml:"GrantAliUid,omitempty"`
-	ISP         *string   `json:"ISP,omitempty" xml:"ISP,omitempty"`
-	Name        *string   `json:"Name,omitempty" xml:"Name,omitempty"`
-	NetLinkId   *string   `json:"NetLinkId,omitempty" xml:"NetLinkId,omitempty"`
-	RegionId    *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Status      *string   `json:"Status,omitempty" xml:"Status,omitempty"`
-	VSwitchs    []*string `json:"VSwitchs,omitempty" xml:"VSwitchs,omitempty" type:"Repeated"`
-	VpcId       *string   `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	APN         *string `json:"APN,omitempty" xml:"APN,omitempty"`
+	CreateTime  *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	GrantAliUid *string `json:"GrantAliUid,omitempty" xml:"GrantAliUid,omitempty"`
+	ISP         *string `json:"ISP,omitempty" xml:"ISP,omitempty"`
+	// 代表创建时间的资源属性字段
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// 代表资源名称的资源属性字段
+	NetLinkId *string   `json:"NetLinkId,omitempty" xml:"NetLinkId,omitempty"`
+	RegionId  *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Status    *string   `json:"Status,omitempty" xml:"Status,omitempty"`
+	VSwitchs  []*string `json:"VSwitchs,omitempty" xml:"VSwitchs,omitempty" type:"Repeated"`
+	VpcId     *string   `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s GetWirelessCloudConnectorResponseBodyNetLinks) String() string {
@@ -2669,8 +2712,9 @@ type ListAPNsResponseBody struct {
 	APNs       []*ListAPNsResponseBodyAPNs `json:"APNs,omitempty" xml:"APNs,omitempty" type:"Repeated"`
 	MaxResults *string                     `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	NextToken  *string                     `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	RequestId  *string                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *string                     `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// Id of the request
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *string `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListAPNsResponseBody) String() string {
@@ -2707,11 +2751,14 @@ func (s *ListAPNsResponseBody) SetTotalCount(v string) *ListAPNsResponseBody {
 }
 
 type ListAPNsResponseBodyAPNs struct {
-	APN         *string   `json:"APN,omitempty" xml:"APN,omitempty"`
-	Description *string   `json:"Description,omitempty" xml:"Description,omitempty"`
-	ISP         *string   `json:"ISP,omitempty" xml:"ISP,omitempty"`
-	Name        *string   `json:"Name,omitempty" xml:"Name,omitempty"`
-	Zones       []*string `json:"Zones,omitempty" xml:"Zones,omitempty" type:"Repeated"`
+	// apn
+	APN         *string `json:"APN,omitempty" xml:"APN,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// 代表资源一级ID的资源属性字段
+	ISP *string `json:"ISP,omitempty" xml:"ISP,omitempty"`
+	// 代表创建时间的资源属性字段
+	Name  *string   `json:"Name,omitempty" xml:"Name,omitempty"`
+	Zones []*string `json:"Zones,omitempty" xml:"Zones,omitempty" type:"Repeated"`
 }
 
 func (s ListAPNsResponseBodyAPNs) String() string {
@@ -2907,6 +2954,7 @@ func (s *ListAuthorizationRulesResponseBody) SetTotalCount(v string) *ListAuthor
 }
 
 type ListAuthorizationRulesResponseBodyAuthorizationRules struct {
+	// 代表资源一级ID的资源属性字段
 	AuthorizationRuleId *string `json:"AuthorizationRuleId,omitempty" xml:"AuthorizationRuleId,omitempty"`
 	CreateTime          *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	Description         *string `json:"Description,omitempty" xml:"Description,omitempty"`
@@ -2914,12 +2962,14 @@ type ListAuthorizationRulesResponseBodyAuthorizationRules struct {
 	DestinationPort     *string `json:"DestinationPort,omitempty" xml:"DestinationPort,omitempty"`
 	DestinationType     *string `json:"DestinationType,omitempty" xml:"DestinationType,omitempty"`
 	Dns                 *bool   `json:"Dns,omitempty" xml:"Dns,omitempty"`
-	Name                *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Policy              *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
-	Protocol            *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
-	SourceCidr          *string `json:"SourceCidr,omitempty" xml:"SourceCidr,omitempty"`
-	Status              *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	Type                *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// 代表创建时间的资源属性字段
+	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Policy     *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
+	Protocol   *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	SourceCidr *string `json:"SourceCidr,omitempty" xml:"SourceCidr,omitempty"`
+	// 代表资源名称的资源属性字段
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Type   *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s ListAuthorizationRulesResponseBodyAuthorizationRules) String() string {
@@ -3113,17 +3163,19 @@ func (s *ListBatchOperateCardsTasksResponseBody) SetTotalCount(v string) *ListBa
 }
 
 type ListBatchOperateCardsTasksResponseBodyBatchOperateCardsTasks struct {
-	BatchOperateCardsTaskId  *string                                                                                `json:"BatchOperateCardsTaskId,omitempty" xml:"BatchOperateCardsTaskId,omitempty"`
-	CreateTime               *string                                                                                `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Description              *string                                                                                `json:"Description,omitempty" xml:"Description,omitempty"`
-	EffectType               *string                                                                                `json:"EffectType,omitempty" xml:"EffectType,omitempty"`
-	IccidsOssFilePath        *string                                                                                `json:"IccidsOssFilePath,omitempty" xml:"IccidsOssFilePath,omitempty"`
-	Name                     *string                                                                                `json:"Name,omitempty" xml:"Name,omitempty"`
-	OperateResultOssFilePath *string                                                                                `json:"OperateResultOssFilePath,omitempty" xml:"OperateResultOssFilePath,omitempty"`
-	OperateType              *string                                                                                `json:"OperateType,omitempty" xml:"OperateType,omitempty"`
-	Status                   *string                                                                                `json:"Status,omitempty" xml:"Status,omitempty"`
-	Threshold                *string                                                                                `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
-	WirelessCloudConnectors  []*ListBatchOperateCardsTasksResponseBodyBatchOperateCardsTasksWirelessCloudConnectors `json:"WirelessCloudConnectors,omitempty" xml:"WirelessCloudConnectors,omitempty" type:"Repeated"`
+	// 代表资源一级ID的资源属性字段
+	BatchOperateCardsTaskId  *string `json:"BatchOperateCardsTaskId,omitempty" xml:"BatchOperateCardsTaskId,omitempty"`
+	CreateTime               *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Description              *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	EffectType               *string `json:"EffectType,omitempty" xml:"EffectType,omitempty"`
+	IccidsOssFilePath        *string `json:"IccidsOssFilePath,omitempty" xml:"IccidsOssFilePath,omitempty"`
+	Name                     *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	OperateResultOssFilePath *string `json:"OperateResultOssFilePath,omitempty" xml:"OperateResultOssFilePath,omitempty"`
+	// 代表创建时间的资源属性字段
+	OperateType             *string                                                                                `json:"OperateType,omitempty" xml:"OperateType,omitempty"`
+	Status                  *string                                                                                `json:"Status,omitempty" xml:"Status,omitempty"`
+	Threshold               *string                                                                                `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
+	WirelessCloudConnectors []*ListBatchOperateCardsTasksResponseBodyBatchOperateCardsTasksWirelessCloudConnectors `json:"WirelessCloudConnectors,omitempty" xml:"WirelessCloudConnectors,omitempty" type:"Repeated"`
 }
 
 func (s ListBatchOperateCardsTasksResponseBodyBatchOperateCardsTasks) String() string {
@@ -3237,6 +3289,111 @@ func (s *ListBatchOperateCardsTasksResponse) SetStatusCode(v int32) *ListBatchOp
 }
 
 func (s *ListBatchOperateCardsTasksResponse) SetBody(v *ListBatchOperateCardsTasksResponseBody) *ListBatchOperateCardsTasksResponse {
+	s.Body = v
+	return s
+}
+
+type ListCardUsagesRequest struct {
+	Iccids                   []*string `json:"Iccids,omitempty" xml:"Iccids,omitempty" type:"Repeated"`
+	WirelessCloudConnectorId *string   `json:"WirelessCloudConnectorId,omitempty" xml:"WirelessCloudConnectorId,omitempty"`
+}
+
+func (s ListCardUsagesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCardUsagesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListCardUsagesRequest) SetIccids(v []*string) *ListCardUsagesRequest {
+	s.Iccids = v
+	return s
+}
+
+func (s *ListCardUsagesRequest) SetWirelessCloudConnectorId(v string) *ListCardUsagesRequest {
+	s.WirelessCloudConnectorId = &v
+	return s
+}
+
+type ListCardUsagesResponseBody struct {
+	Cards      []*ListCardUsagesResponseBodyCards `json:"Cards,omitempty" xml:"Cards,omitempty" type:"Repeated"`
+	RequestId  *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *string                            `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListCardUsagesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCardUsagesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListCardUsagesResponseBody) SetCards(v []*ListCardUsagesResponseBodyCards) *ListCardUsagesResponseBody {
+	s.Cards = v
+	return s
+}
+
+func (s *ListCardUsagesResponseBody) SetRequestId(v string) *ListCardUsagesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListCardUsagesResponseBody) SetTotalCount(v string) *ListCardUsagesResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListCardUsagesResponseBodyCards struct {
+	// 代表资源一级ID的资源属性字段
+	Iccid          *string `json:"Iccid,omitempty" xml:"Iccid,omitempty"`
+	UsageDataMonth *int64  `json:"UsageDataMonth,omitempty" xml:"UsageDataMonth,omitempty"`
+}
+
+func (s ListCardUsagesResponseBodyCards) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCardUsagesResponseBodyCards) GoString() string {
+	return s.String()
+}
+
+func (s *ListCardUsagesResponseBodyCards) SetIccid(v string) *ListCardUsagesResponseBodyCards {
+	s.Iccid = &v
+	return s
+}
+
+func (s *ListCardUsagesResponseBodyCards) SetUsageDataMonth(v int64) *ListCardUsagesResponseBodyCards {
+	s.UsageDataMonth = &v
+	return s
+}
+
+type ListCardUsagesResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListCardUsagesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListCardUsagesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCardUsagesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListCardUsagesResponse) SetHeaders(v map[string]*string) *ListCardUsagesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListCardUsagesResponse) SetStatusCode(v int32) *ListCardUsagesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListCardUsagesResponse) SetBody(v *ListCardUsagesResponseBody) *ListCardUsagesResponse {
 	s.Body = v
 	return s
 }
@@ -3366,18 +3523,21 @@ func (s *ListCardsResponseBody) SetTotalCount(v string) *ListCardsResponseBody {
 }
 
 type ListCardsResponseBodyCards struct {
+	// 代表创建时间的资源属性字段
 	APN            *string `json:"APN,omitempty" xml:"APN,omitempty"`
 	ActivatedTime  *string `json:"ActivatedTime,omitempty" xml:"ActivatedTime,omitempty"`
 	BusinessStatus *string `json:"BusinessStatus,omitempty" xml:"BusinessStatus,omitempty"`
 	Description    *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	ISP            *string `json:"ISP,omitempty" xml:"ISP,omitempty"`
-	Iccid          *string `json:"Iccid,omitempty" xml:"Iccid,omitempty"`
-	Imei           *string `json:"Imei,omitempty" xml:"Imei,omitempty"`
-	Imsi           *string `json:"Imsi,omitempty" xml:"Imsi,omitempty"`
-	IpAddress      *string `json:"IpAddress,omitempty" xml:"IpAddress,omitempty"`
-	Lock           *bool   `json:"Lock,omitempty" xml:"Lock,omitempty"`
-	Msisdn         *string `json:"Msisdn,omitempty" xml:"Msisdn,omitempty"`
-	Name           *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// 代表资源一级ID的资源属性字段
+	Iccid     *string `json:"Iccid,omitempty" xml:"Iccid,omitempty"`
+	Imei      *string `json:"Imei,omitempty" xml:"Imei,omitempty"`
+	Imsi      *string `json:"Imsi,omitempty" xml:"Imsi,omitempty"`
+	IpAddress *string `json:"IpAddress,omitempty" xml:"IpAddress,omitempty"`
+	Lock      *bool   `json:"Lock,omitempty" xml:"Lock,omitempty"`
+	Msisdn    *string `json:"Msisdn,omitempty" xml:"Msisdn,omitempty"`
+	Name      *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// 代表资源名称的资源属性字段
 	NetType        *string `json:"NetType,omitempty" xml:"NetType,omitempty"`
 	OrderId        *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
 	Spec           *string `json:"Spec,omitempty" xml:"Spec,omitempty"`
@@ -3607,9 +3767,11 @@ type ListDataPackagesResponseBodyDataPackages struct {
 	DataPackageId *string `json:"DataPackageId,omitempty" xml:"DataPackageId,omitempty"`
 	ExpiredTime   *string `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
 	ISP           *string `json:"ISP,omitempty" xml:"ISP,omitempty"`
-	Name          *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Size          *string `json:"Size,omitempty" xml:"Size,omitempty"`
-	Status        *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// 代表创建时间的资源属性字段
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Size *string `json:"Size,omitempty" xml:"Size,omitempty"`
+	// 代表资源名称的资源属性字段
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ListDataPackagesResponseBodyDataPackages) String() string {
@@ -4026,6 +4188,7 @@ func (s *ListGroupAuthorizationRulesResponseBody) SetTotalCount(v string) *ListG
 }
 
 type ListGroupAuthorizationRulesResponseBodyGroupAuthorizationRules struct {
+	// 代表资源一级ID的资源属性字段
 	AuthorizationRuleId *string `json:"AuthorizationRuleId,omitempty" xml:"AuthorizationRuleId,omitempty"`
 	CreateTime          *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	Description         *string `json:"Description,omitempty" xml:"Description,omitempty"`
@@ -4033,12 +4196,14 @@ type ListGroupAuthorizationRulesResponseBodyGroupAuthorizationRules struct {
 	DestinationPort     *string `json:"DestinationPort,omitempty" xml:"DestinationPort,omitempty"`
 	DestinationType     *string `json:"DestinationType,omitempty" xml:"DestinationType,omitempty"`
 	Dns                 *bool   `json:"Dns,omitempty" xml:"Dns,omitempty"`
-	Name                *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Policy              *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
-	Protocol            *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
-	SourceCidr          *string `json:"SourceCidr,omitempty" xml:"SourceCidr,omitempty"`
-	Status              *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	Type                *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// 代表创建时间的资源属性字段
+	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Policy     *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
+	Protocol   *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	SourceCidr *string `json:"SourceCidr,omitempty" xml:"SourceCidr,omitempty"`
+	// 代表资源名称的资源属性字段
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Type   *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s ListGroupAuthorizationRulesResponseBodyGroupAuthorizationRules) String() string {
@@ -4202,11 +4367,16 @@ func (s *ListIoTCloudConnectorBackhaulRouteResponseBody) SetRoutes(v []*ListIoTC
 }
 
 type ListIoTCloudConnectorBackhaulRouteResponseBodyRoutes struct {
-	Description          *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// 代表创建时间的资源属性字段
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// 代表资源名称的资源属性字段
 	DestinationCidrBlock *string `json:"DestinationCidrBlock,omitempty" xml:"DestinationCidrBlock,omitempty"`
-	NextHopId            *string `json:"NextHopId,omitempty" xml:"NextHopId,omitempty"`
-	NextHopType          *string `json:"NextHopType,omitempty" xml:"NextHopType,omitempty"`
-	Status               *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// 代表创建时间的资源属性字段
+	NextHopId *string `json:"NextHopId,omitempty" xml:"NextHopId,omitempty"`
+	// 代表创建时间的资源属性字段
+	NextHopType *string `json:"NextHopType,omitempty" xml:"NextHopType,omitempty"`
+	// 代表创建时间的资源属性字段
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ListIoTCloudConnectorBackhaulRouteResponseBodyRoutes) String() string {
@@ -4360,6 +4530,7 @@ func (s *ListOrdersResponseBody) SetTotalCount(v string) *ListOrdersResponseBody
 }
 
 type ListOrdersResponseBodyOrders struct {
+	// 代表创建时间的资源属性字段
 	Action              *string `json:"Action,omitempty" xml:"Action,omitempty"`
 	CardCount           *string `json:"CardCount,omitempty" xml:"CardCount,omitempty"`
 	CardNetType         *string `json:"CardNetType,omitempty" xml:"CardNetType,omitempty"`
@@ -4376,7 +4547,8 @@ type ListOrdersResponseBodyOrders struct {
 	PayTime             *string `json:"PayTime,omitempty" xml:"PayTime,omitempty"`
 	PostAddress         *string `json:"PostAddress,omitempty" xml:"PostAddress,omitempty"`
 	RegionId            *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Status              *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// 代表资源名称的资源属性字段
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ListOrdersResponseBodyOrders) String() string {
@@ -4548,9 +4720,10 @@ func (s *ListRegionsResponseBody) SetRequestId(v string) *ListRegionsResponseBod
 }
 
 type ListRegionsResponseBodyRegions struct {
-	LocalName      *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
-	RegionEndpoint *string `json:"RegionEndpoint,omitempty" xml:"RegionEndpoint,omitempty"`
-	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// 代表资源名称的资源属性字段
+	LocalName *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
+	// 代表资源一级ID的资源属性字段
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s ListRegionsResponseBodyRegions) String() string {
@@ -4563,11 +4736,6 @@ func (s ListRegionsResponseBodyRegions) GoString() string {
 
 func (s *ListRegionsResponseBodyRegions) SetLocalName(v string) *ListRegionsResponseBodyRegions {
 	s.LocalName = &v
-	return s
-}
-
-func (s *ListRegionsResponseBodyRegions) SetRegionEndpoint(v string) *ListRegionsResponseBodyRegions {
-	s.RegionEndpoint = &v
 	return s
 }
 
@@ -4694,11 +4862,14 @@ func (s *ListWirelessCloudConnectorGroupsResponseBody) SetWirelessCloudConnector
 }
 
 type ListWirelessCloudConnectorGroupsResponseBodyWirelessCloudConnectorGroups struct {
-	CreateTime                    *string                                                                                            `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Description                   *string                                                                                            `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name                          *string                                                                                            `json:"Name,omitempty" xml:"Name,omitempty"`
-	RegionId                      *string                                                                                            `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Status                        *string                                                                                            `json:"Status,omitempty" xml:"Status,omitempty"`
+	CreateTime  *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// 代表创建时间的资源属性字段
+	Name     *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// 代表资源名称的资源属性字段
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// 代表资源一级ID的资源属性字段
 	WirelessCloudConnectorGroupId *string                                                                                            `json:"WirelessCloudConnectorGroupId,omitempty" xml:"WirelessCloudConnectorGroupId,omitempty"`
 	WirelessCloudConnectors       []*ListWirelessCloudConnectorGroupsResponseBodyWirelessCloudConnectorGroupsWirelessCloudConnectors `json:"WirelessCloudConnectors,omitempty" xml:"WirelessCloudConnectors,omitempty" type:"Repeated"`
 }
@@ -4965,19 +5136,22 @@ func (s *ListWirelessCloudConnectorsResponseBody) SetWirelessCloudConnectors(v [
 }
 
 type ListWirelessCloudConnectorsResponseBodyWirelessCloudConnectors struct {
-	BusinessType                  *string `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
-	CardCount                     *string `json:"CardCount,omitempty" xml:"CardCount,omitempty"`
-	CreateTime                    *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	DataPackageId                 *string `json:"DataPackageId,omitempty" xml:"DataPackageId,omitempty"`
-	DataPackageType               *string `json:"DataPackageType,omitempty" xml:"DataPackageType,omitempty"`
-	Description                   *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name                          *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	RegionId                      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ServiceType                   *string `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
+	BusinessType    *string `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
+	CardCount       *string `json:"CardCount,omitempty" xml:"CardCount,omitempty"`
+	CreateTime      *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	DataPackageId   *string `json:"DataPackageId,omitempty" xml:"DataPackageId,omitempty"`
+	DataPackageType *string `json:"DataPackageType,omitempty" xml:"DataPackageType,omitempty"`
+	Description     *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// 代表创建时间的资源属性字段
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ServiceType *string `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
+	// 代表资源名称的资源属性字段
 	Status                        *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	UseCase                       *string `json:"UseCase,omitempty" xml:"UseCase,omitempty"`
 	WirelessCloudConnectorGroupId *string `json:"WirelessCloudConnectorGroupId,omitempty" xml:"WirelessCloudConnectorGroupId,omitempty"`
-	WirelessCloudConnectorId      *string `json:"WirelessCloudConnectorId,omitempty" xml:"WirelessCloudConnectorId,omitempty"`
+	// 代表资源一级ID的资源属性字段
+	WirelessCloudConnectorId *string `json:"WirelessCloudConnectorId,omitempty" xml:"WirelessCloudConnectorId,omitempty"`
 }
 
 func (s ListWirelessCloudConnectorsResponseBodyWirelessCloudConnectors) String() string {
@@ -5123,8 +5297,10 @@ func (s *ListZonesResponseBody) SetZones(v []*ListZonesResponseBodyZones) *ListZ
 }
 
 type ListZonesResponseBodyZones struct {
+	// 代表创建时间的资源属性字段
 	LocalName *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
-	ZoneId    *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// 代表资源名称的资源属性字段
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s ListZonesResponseBodyZones) String() string {
@@ -5870,6 +6046,7 @@ func (s *SwitchWirelessCloudConnectorToBusinessRequest) SetWirelessCloudConnecto
 }
 
 type SwitchWirelessCloudConnectorToBusinessResponseBody struct {
+	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -8424,6 +8601,46 @@ func (client *Client) ListBatchOperateCardsTasks(request *ListBatchOperateCardsT
 	runtime := &util.RuntimeOptions{}
 	_result = &ListBatchOperateCardsTasksResponse{}
 	_body, _err := client.ListBatchOperateCardsTasksWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListCardUsagesWithOptions(request *ListCardUsagesRequest, runtime *util.RuntimeOptions) (_result *ListCardUsagesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListCardUsages"),
+		Version:     tea.String("2022-03-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListCardUsagesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListCardUsages(request *ListCardUsagesRequest) (_result *ListCardUsagesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListCardUsagesResponse{}
+	_body, _err := client.ListCardUsagesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
