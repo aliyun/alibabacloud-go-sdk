@@ -22280,6 +22280,372 @@ func (s *ProjectModifyResponse) SetBody(v *ProjectModifyResponseBody) *ProjectMo
 	return s
 }
 
+type QueryReimbursementOrderHeaders struct {
+	CommonHeaders      map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsBtripCorpToken *string            `json:"x-acs-btrip-corp-token,omitempty" xml:"x-acs-btrip-corp-token,omitempty"`
+}
+
+func (s QueryReimbursementOrderHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryReimbursementOrderHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *QueryReimbursementOrderHeaders) SetCommonHeaders(v map[string]*string) *QueryReimbursementOrderHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *QueryReimbursementOrderHeaders) SetXAcsBtripCorpToken(v string) *QueryReimbursementOrderHeaders {
+	s.XAcsBtripCorpToken = &v
+	return s
+}
+
+type QueryReimbursementOrderRequest struct {
+	ReimbOrderNo *string `json:"reimb_order_no,omitempty" xml:"reimb_order_no,omitempty"`
+	SubCorpId    *string `json:"sub_corp_id,omitempty" xml:"sub_corp_id,omitempty"`
+}
+
+func (s QueryReimbursementOrderRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryReimbursementOrderRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryReimbursementOrderRequest) SetReimbOrderNo(v string) *QueryReimbursementOrderRequest {
+	s.ReimbOrderNo = &v
+	return s
+}
+
+func (s *QueryReimbursementOrderRequest) SetSubCorpId(v string) *QueryReimbursementOrderRequest {
+	s.SubCorpId = &v
+	return s
+}
+
+type QueryReimbursementOrderResponseBody struct {
+	Code    *string                                    `json:"code,omitempty" xml:"code,omitempty"`
+	Message *string                                    `json:"message,omitempty" xml:"message,omitempty"`
+	Module  *QueryReimbursementOrderResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
+	// requestId
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success   *bool   `json:"success,omitempty" xml:"success,omitempty"`
+	// traceId
+	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
+}
+
+func (s QueryReimbursementOrderResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryReimbursementOrderResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryReimbursementOrderResponseBody) SetCode(v string) *QueryReimbursementOrderResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *QueryReimbursementOrderResponseBody) SetMessage(v string) *QueryReimbursementOrderResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *QueryReimbursementOrderResponseBody) SetModule(v *QueryReimbursementOrderResponseBodyModule) *QueryReimbursementOrderResponseBody {
+	s.Module = v
+	return s
+}
+
+func (s *QueryReimbursementOrderResponseBody) SetRequestId(v string) *QueryReimbursementOrderResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QueryReimbursementOrderResponseBody) SetSuccess(v bool) *QueryReimbursementOrderResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *QueryReimbursementOrderResponseBody) SetTraceId(v string) *QueryReimbursementOrderResponseBody {
+	s.TraceId = &v
+	return s
+}
+
+type QueryReimbursementOrderResponseBodyModule struct {
+	CompanyAmount      *string                                                  `json:"company_amount,omitempty" xml:"company_amount,omitempty"`
+	CompanyPayAmount   *string                                                  `json:"company_pay_amount,omitempty" xml:"company_pay_amount,omitempty"`
+	CorpId             *string                                                  `json:"corp_id,omitempty" xml:"corp_id,omitempty"`
+	Expenses           []*QueryReimbursementOrderResponseBodyModuleExpenses     `json:"expenses,omitempty" xml:"expenses,omitempty" type:"Repeated"`
+	GmtCreate          *string                                                  `json:"gmt_create,omitempty" xml:"gmt_create,omitempty"`
+	GmtModified        *string                                                  `json:"gmt_modified,omitempty" xml:"gmt_modified,omitempty"`
+	Itineraries        []*QueryReimbursementOrderResponseBodyModuleItineraries  `json:"itineraries,omitempty" xml:"itineraries,omitempty" type:"Repeated"`
+	PaymentInfos       []*QueryReimbursementOrderResponseBodyModulePaymentInfos `json:"payment_infos,omitempty" xml:"payment_infos,omitempty" type:"Repeated"`
+	PersonalAmount     *string                                                  `json:"personal_amount,omitempty" xml:"personal_amount,omitempty"`
+	Reason             *string                                                  `json:"reason,omitempty" xml:"reason,omitempty"`
+	ReimbursementNo    *string                                                  `json:"reimbursement_no,omitempty" xml:"reimbursement_no,omitempty"`
+	Remark             *string                                                  `json:"remark,omitempty" xml:"remark,omitempty"`
+	Status             *string                                                  `json:"status,omitempty" xml:"status,omitempty"`
+	TravelThirdApplyId *string                                                  `json:"travel_third_apply_id,omitempty" xml:"travel_third_apply_id,omitempty"`
+	UserId             *string                                                  `json:"user_id,omitempty" xml:"user_id,omitempty"`
+	UserName           *string                                                  `json:"user_name,omitempty" xml:"user_name,omitempty"`
+}
+
+func (s QueryReimbursementOrderResponseBodyModule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryReimbursementOrderResponseBodyModule) GoString() string {
+	return s.String()
+}
+
+func (s *QueryReimbursementOrderResponseBodyModule) SetCompanyAmount(v string) *QueryReimbursementOrderResponseBodyModule {
+	s.CompanyAmount = &v
+	return s
+}
+
+func (s *QueryReimbursementOrderResponseBodyModule) SetCompanyPayAmount(v string) *QueryReimbursementOrderResponseBodyModule {
+	s.CompanyPayAmount = &v
+	return s
+}
+
+func (s *QueryReimbursementOrderResponseBodyModule) SetCorpId(v string) *QueryReimbursementOrderResponseBodyModule {
+	s.CorpId = &v
+	return s
+}
+
+func (s *QueryReimbursementOrderResponseBodyModule) SetExpenses(v []*QueryReimbursementOrderResponseBodyModuleExpenses) *QueryReimbursementOrderResponseBodyModule {
+	s.Expenses = v
+	return s
+}
+
+func (s *QueryReimbursementOrderResponseBodyModule) SetGmtCreate(v string) *QueryReimbursementOrderResponseBodyModule {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *QueryReimbursementOrderResponseBodyModule) SetGmtModified(v string) *QueryReimbursementOrderResponseBodyModule {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *QueryReimbursementOrderResponseBodyModule) SetItineraries(v []*QueryReimbursementOrderResponseBodyModuleItineraries) *QueryReimbursementOrderResponseBodyModule {
+	s.Itineraries = v
+	return s
+}
+
+func (s *QueryReimbursementOrderResponseBodyModule) SetPaymentInfos(v []*QueryReimbursementOrderResponseBodyModulePaymentInfos) *QueryReimbursementOrderResponseBodyModule {
+	s.PaymentInfos = v
+	return s
+}
+
+func (s *QueryReimbursementOrderResponseBodyModule) SetPersonalAmount(v string) *QueryReimbursementOrderResponseBodyModule {
+	s.PersonalAmount = &v
+	return s
+}
+
+func (s *QueryReimbursementOrderResponseBodyModule) SetReason(v string) *QueryReimbursementOrderResponseBodyModule {
+	s.Reason = &v
+	return s
+}
+
+func (s *QueryReimbursementOrderResponseBodyModule) SetReimbursementNo(v string) *QueryReimbursementOrderResponseBodyModule {
+	s.ReimbursementNo = &v
+	return s
+}
+
+func (s *QueryReimbursementOrderResponseBodyModule) SetRemark(v string) *QueryReimbursementOrderResponseBodyModule {
+	s.Remark = &v
+	return s
+}
+
+func (s *QueryReimbursementOrderResponseBodyModule) SetStatus(v string) *QueryReimbursementOrderResponseBodyModule {
+	s.Status = &v
+	return s
+}
+
+func (s *QueryReimbursementOrderResponseBodyModule) SetTravelThirdApplyId(v string) *QueryReimbursementOrderResponseBodyModule {
+	s.TravelThirdApplyId = &v
+	return s
+}
+
+func (s *QueryReimbursementOrderResponseBodyModule) SetUserId(v string) *QueryReimbursementOrderResponseBodyModule {
+	s.UserId = &v
+	return s
+}
+
+func (s *QueryReimbursementOrderResponseBodyModule) SetUserName(v string) *QueryReimbursementOrderResponseBodyModule {
+	s.UserName = &v
+	return s
+}
+
+type QueryReimbursementOrderResponseBodyModuleExpenses struct {
+	Amount          *string `json:"amount,omitempty" xml:"amount,omitempty"`
+	Currency        *string `json:"currency,omitempty" xml:"currency,omitempty"`
+	ExpenseCity     *string `json:"expense_city,omitempty" xml:"expense_city,omitempty"`
+	ExpenseTime     *string `json:"expense_time,omitempty" xml:"expense_time,omitempty"`
+	ExpenseType     *string `json:"expense_type,omitempty" xml:"expense_type,omitempty"`
+	ExpenseTypeCode *string `json:"expense_type_code,omitempty" xml:"expense_type_code,omitempty"`
+	ReimbExpenseId  *int64  `json:"reimb_expense_id,omitempty" xml:"reimb_expense_id,omitempty"`
+	Remark          *string `json:"remark,omitempty" xml:"remark,omitempty"`
+	SettlementType  *string `json:"settlement_type,omitempty" xml:"settlement_type,omitempty"`
+}
+
+func (s QueryReimbursementOrderResponseBodyModuleExpenses) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryReimbursementOrderResponseBodyModuleExpenses) GoString() string {
+	return s.String()
+}
+
+func (s *QueryReimbursementOrderResponseBodyModuleExpenses) SetAmount(v string) *QueryReimbursementOrderResponseBodyModuleExpenses {
+	s.Amount = &v
+	return s
+}
+
+func (s *QueryReimbursementOrderResponseBodyModuleExpenses) SetCurrency(v string) *QueryReimbursementOrderResponseBodyModuleExpenses {
+	s.Currency = &v
+	return s
+}
+
+func (s *QueryReimbursementOrderResponseBodyModuleExpenses) SetExpenseCity(v string) *QueryReimbursementOrderResponseBodyModuleExpenses {
+	s.ExpenseCity = &v
+	return s
+}
+
+func (s *QueryReimbursementOrderResponseBodyModuleExpenses) SetExpenseTime(v string) *QueryReimbursementOrderResponseBodyModuleExpenses {
+	s.ExpenseTime = &v
+	return s
+}
+
+func (s *QueryReimbursementOrderResponseBodyModuleExpenses) SetExpenseType(v string) *QueryReimbursementOrderResponseBodyModuleExpenses {
+	s.ExpenseType = &v
+	return s
+}
+
+func (s *QueryReimbursementOrderResponseBodyModuleExpenses) SetExpenseTypeCode(v string) *QueryReimbursementOrderResponseBodyModuleExpenses {
+	s.ExpenseTypeCode = &v
+	return s
+}
+
+func (s *QueryReimbursementOrderResponseBodyModuleExpenses) SetReimbExpenseId(v int64) *QueryReimbursementOrderResponseBodyModuleExpenses {
+	s.ReimbExpenseId = &v
+	return s
+}
+
+func (s *QueryReimbursementOrderResponseBodyModuleExpenses) SetRemark(v string) *QueryReimbursementOrderResponseBodyModuleExpenses {
+	s.Remark = &v
+	return s
+}
+
+func (s *QueryReimbursementOrderResponseBodyModuleExpenses) SetSettlementType(v string) *QueryReimbursementOrderResponseBodyModuleExpenses {
+	s.SettlementType = &v
+	return s
+}
+
+type QueryReimbursementOrderResponseBodyModuleItineraries struct {
+	ArrCity    *string `json:"arr_city,omitempty" xml:"arr_city,omitempty"`
+	ArrDate    *string `json:"arr_date,omitempty" xml:"arr_date,omitempty"`
+	DepCity    *string `json:"dep_city,omitempty" xml:"dep_city,omitempty"`
+	DepDate    *string `json:"dep_date,omitempty" xml:"dep_date,omitempty"`
+	TrafficWay *string `json:"traffic_way,omitempty" xml:"traffic_way,omitempty"`
+	TripWay    *string `json:"trip_way,omitempty" xml:"trip_way,omitempty"`
+}
+
+func (s QueryReimbursementOrderResponseBodyModuleItineraries) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryReimbursementOrderResponseBodyModuleItineraries) GoString() string {
+	return s.String()
+}
+
+func (s *QueryReimbursementOrderResponseBodyModuleItineraries) SetArrCity(v string) *QueryReimbursementOrderResponseBodyModuleItineraries {
+	s.ArrCity = &v
+	return s
+}
+
+func (s *QueryReimbursementOrderResponseBodyModuleItineraries) SetArrDate(v string) *QueryReimbursementOrderResponseBodyModuleItineraries {
+	s.ArrDate = &v
+	return s
+}
+
+func (s *QueryReimbursementOrderResponseBodyModuleItineraries) SetDepCity(v string) *QueryReimbursementOrderResponseBodyModuleItineraries {
+	s.DepCity = &v
+	return s
+}
+
+func (s *QueryReimbursementOrderResponseBodyModuleItineraries) SetDepDate(v string) *QueryReimbursementOrderResponseBodyModuleItineraries {
+	s.DepDate = &v
+	return s
+}
+
+func (s *QueryReimbursementOrderResponseBodyModuleItineraries) SetTrafficWay(v string) *QueryReimbursementOrderResponseBodyModuleItineraries {
+	s.TrafficWay = &v
+	return s
+}
+
+func (s *QueryReimbursementOrderResponseBodyModuleItineraries) SetTripWay(v string) *QueryReimbursementOrderResponseBodyModuleItineraries {
+	s.TripWay = &v
+	return s
+}
+
+type QueryReimbursementOrderResponseBodyModulePaymentInfos struct {
+	Amount      *string `json:"amount,omitempty" xml:"amount,omitempty"`
+	PayeeUserId *string `json:"payee_user_id,omitempty" xml:"payee_user_id,omitempty"`
+}
+
+func (s QueryReimbursementOrderResponseBodyModulePaymentInfos) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryReimbursementOrderResponseBodyModulePaymentInfos) GoString() string {
+	return s.String()
+}
+
+func (s *QueryReimbursementOrderResponseBodyModulePaymentInfos) SetAmount(v string) *QueryReimbursementOrderResponseBodyModulePaymentInfos {
+	s.Amount = &v
+	return s
+}
+
+func (s *QueryReimbursementOrderResponseBodyModulePaymentInfos) SetPayeeUserId(v string) *QueryReimbursementOrderResponseBodyModulePaymentInfos {
+	s.PayeeUserId = &v
+	return s
+}
+
+type QueryReimbursementOrderResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *QueryReimbursementOrderResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s QueryReimbursementOrderResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryReimbursementOrderResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryReimbursementOrderResponse) SetHeaders(v map[string]*string) *QueryReimbursementOrderResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryReimbursementOrderResponse) SetStatusCode(v int32) *QueryReimbursementOrderResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QueryReimbursementOrderResponse) SetBody(v *QueryReimbursementOrderResponseBody) *QueryReimbursementOrderResponse {
+	s.Body = v
+	return s
+}
+
 type SyncSingleUserHeaders struct {
 	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	XAcsBtripSoCorpToken *string            `json:"x-acs-btrip-so-corp-token,omitempty" xml:"x-acs-btrip-so-corp-token,omitempty"`
@@ -34428,6 +34794,65 @@ func (client *Client) ProjectModify(request *ProjectModifyRequest) (_result *Pro
 	headers := &ProjectModifyHeaders{}
 	_result = &ProjectModifyResponse{}
 	_body, _err := client.ProjectModifyWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) QueryReimbursementOrderWithOptions(request *QueryReimbursementOrderRequest, headers *QueryReimbursementOrderHeaders, runtime *util.RuntimeOptions) (_result *QueryReimbursementOrderResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ReimbOrderNo)) {
+		query["reimb_order_no"] = request.ReimbOrderNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SubCorpId)) {
+		query["sub_corp_id"] = request.SubCorpId
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsBtripCorpToken)) {
+		realHeaders["x-acs-btrip-corp-token"] = util.ToJSONString(headers.XAcsBtripCorpToken)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryReimbursementOrder"),
+		Version:     tea.String("2022-05-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/reimbursement/v1/order"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QueryReimbursementOrderResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) QueryReimbursementOrder(request *QueryReimbursementOrderRequest) (_result *QueryReimbursementOrderResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &QueryReimbursementOrderHeaders{}
+	_result = &QueryReimbursementOrderResponse{}
+	_body, _err := client.QueryReimbursementOrderWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
