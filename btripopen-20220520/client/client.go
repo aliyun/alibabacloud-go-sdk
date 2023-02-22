@@ -4346,6 +4346,146 @@ func (s *ApplyQueryResponse) SetBody(v *ApplyQueryResponseBody) *ApplyQueryRespo
 	return s
 }
 
+type BtripBillInfoAdjustHeaders struct {
+	CommonHeaders      map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsBtripCorpToken *string            `json:"x-acs-btrip-corp-token,omitempty" xml:"x-acs-btrip-corp-token,omitempty"`
+}
+
+func (s BtripBillInfoAdjustHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BtripBillInfoAdjustHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *BtripBillInfoAdjustHeaders) SetCommonHeaders(v map[string]*string) *BtripBillInfoAdjustHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *BtripBillInfoAdjustHeaders) SetXAcsBtripCorpToken(v string) *BtripBillInfoAdjustHeaders {
+	s.XAcsBtripCorpToken = &v
+	return s
+}
+
+type BtripBillInfoAdjustRequest struct {
+	PrimaryId             *int64  `json:"primary_id,omitempty" xml:"primary_id,omitempty"`
+	ThirdPartCostCenterId *string `json:"third_part_cost_center_id,omitempty" xml:"third_part_cost_center_id,omitempty"`
+	ThirdPartDepartmentId *string `json:"third_part_department_id,omitempty" xml:"third_part_department_id,omitempty"`
+	ThirdPartInvoiceId    *string `json:"third_part_invoice_id,omitempty" xml:"third_part_invoice_id,omitempty"`
+	ThirdPartProjectId    *string `json:"third_part_project_id,omitempty" xml:"third_part_project_id,omitempty"`
+	UserId                *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
+}
+
+func (s BtripBillInfoAdjustRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BtripBillInfoAdjustRequest) GoString() string {
+	return s.String()
+}
+
+func (s *BtripBillInfoAdjustRequest) SetPrimaryId(v int64) *BtripBillInfoAdjustRequest {
+	s.PrimaryId = &v
+	return s
+}
+
+func (s *BtripBillInfoAdjustRequest) SetThirdPartCostCenterId(v string) *BtripBillInfoAdjustRequest {
+	s.ThirdPartCostCenterId = &v
+	return s
+}
+
+func (s *BtripBillInfoAdjustRequest) SetThirdPartDepartmentId(v string) *BtripBillInfoAdjustRequest {
+	s.ThirdPartDepartmentId = &v
+	return s
+}
+
+func (s *BtripBillInfoAdjustRequest) SetThirdPartInvoiceId(v string) *BtripBillInfoAdjustRequest {
+	s.ThirdPartInvoiceId = &v
+	return s
+}
+
+func (s *BtripBillInfoAdjustRequest) SetThirdPartProjectId(v string) *BtripBillInfoAdjustRequest {
+	s.ThirdPartProjectId = &v
+	return s
+}
+
+func (s *BtripBillInfoAdjustRequest) SetUserId(v string) *BtripBillInfoAdjustRequest {
+	s.UserId = &v
+	return s
+}
+
+type BtripBillInfoAdjustResponseBody struct {
+	Code      *string `json:"code,omitempty" xml:"code,omitempty"`
+	Message   *string `json:"message,omitempty" xml:"message,omitempty"`
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success   *bool   `json:"success,omitempty" xml:"success,omitempty"`
+	TraceId   *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
+}
+
+func (s BtripBillInfoAdjustResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BtripBillInfoAdjustResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *BtripBillInfoAdjustResponseBody) SetCode(v string) *BtripBillInfoAdjustResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *BtripBillInfoAdjustResponseBody) SetMessage(v string) *BtripBillInfoAdjustResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *BtripBillInfoAdjustResponseBody) SetRequestId(v string) *BtripBillInfoAdjustResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *BtripBillInfoAdjustResponseBody) SetSuccess(v bool) *BtripBillInfoAdjustResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *BtripBillInfoAdjustResponseBody) SetTraceId(v string) *BtripBillInfoAdjustResponseBody {
+	s.TraceId = &v
+	return s
+}
+
+type BtripBillInfoAdjustResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *BtripBillInfoAdjustResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s BtripBillInfoAdjustResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BtripBillInfoAdjustResponse) GoString() string {
+	return s.String()
+}
+
+func (s *BtripBillInfoAdjustResponse) SetHeaders(v map[string]*string) *BtripBillInfoAdjustResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *BtripBillInfoAdjustResponse) SetStatusCode(v int32) *BtripBillInfoAdjustResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *BtripBillInfoAdjustResponse) SetBody(v *BtripBillInfoAdjustResponseBody) *BtripBillInfoAdjustResponse {
+	s.Body = v
+	return s
+}
+
 type CarApplyAddHeaders struct {
 	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	XAcsBtripSoCorpToken *string            `json:"x-acs-btrip-so-corp-token,omitempty" xml:"x-acs-btrip-so-corp-token,omitempty"`
@@ -21662,6 +21802,122 @@ func (s *IsvUserSaveResponse) SetBody(v *IsvUserSaveResponseBody) *IsvUserSaveRe
 	return s
 }
 
+type MonthBillConfirmHeaders struct {
+	CommonHeaders      map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsBtripCorpToken *string            `json:"x-acs-btrip-corp-token,omitempty" xml:"x-acs-btrip-corp-token,omitempty"`
+}
+
+func (s MonthBillConfirmHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MonthBillConfirmHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *MonthBillConfirmHeaders) SetCommonHeaders(v map[string]*string) *MonthBillConfirmHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *MonthBillConfirmHeaders) SetXAcsBtripCorpToken(v string) *MonthBillConfirmHeaders {
+	s.XAcsBtripCorpToken = &v
+	return s
+}
+
+type MonthBillConfirmRequest struct {
+	MailBillDate *int32  `json:"mail_bill_date,omitempty" xml:"mail_bill_date,omitempty"`
+	UserId       *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
+}
+
+func (s MonthBillConfirmRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MonthBillConfirmRequest) GoString() string {
+	return s.String()
+}
+
+func (s *MonthBillConfirmRequest) SetMailBillDate(v int32) *MonthBillConfirmRequest {
+	s.MailBillDate = &v
+	return s
+}
+
+func (s *MonthBillConfirmRequest) SetUserId(v string) *MonthBillConfirmRequest {
+	s.UserId = &v
+	return s
+}
+
+type MonthBillConfirmResponseBody struct {
+	Code      *string `json:"code,omitempty" xml:"code,omitempty"`
+	Message   *string `json:"message,omitempty" xml:"message,omitempty"`
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success   *bool   `json:"success,omitempty" xml:"success,omitempty"`
+	TraceId   *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
+}
+
+func (s MonthBillConfirmResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MonthBillConfirmResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *MonthBillConfirmResponseBody) SetCode(v string) *MonthBillConfirmResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *MonthBillConfirmResponseBody) SetMessage(v string) *MonthBillConfirmResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *MonthBillConfirmResponseBody) SetRequestId(v string) *MonthBillConfirmResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *MonthBillConfirmResponseBody) SetSuccess(v bool) *MonthBillConfirmResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *MonthBillConfirmResponseBody) SetTraceId(v string) *MonthBillConfirmResponseBody {
+	s.TraceId = &v
+	return s
+}
+
+type MonthBillConfirmResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *MonthBillConfirmResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s MonthBillConfirmResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MonthBillConfirmResponse) GoString() string {
+	return s.String()
+}
+
+func (s *MonthBillConfirmResponse) SetHeaders(v map[string]*string) *MonthBillConfirmResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *MonthBillConfirmResponse) SetStatusCode(v int32) *MonthBillConfirmResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *MonthBillConfirmResponse) SetBody(v *MonthBillConfirmResponseBody) *MonthBillConfirmResponse {
+	s.Body = v
+	return s
+}
+
 type MonthBillGetHeaders struct {
 	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	XAcsBtripSoCorpToken *string            `json:"x-acs-btrip-so-corp-token,omitempty" xml:"x-acs-btrip-so-corp-token,omitempty"`
@@ -31319,6 +31575,81 @@ func (client *Client) ApplyQuery(request *ApplyQueryRequest) (_result *ApplyQuer
 	return _result, _err
 }
 
+func (client *Client) BtripBillInfoAdjustWithOptions(request *BtripBillInfoAdjustRequest, headers *BtripBillInfoAdjustHeaders, runtime *util.RuntimeOptions) (_result *BtripBillInfoAdjustResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.PrimaryId)) {
+		body["primary_id"] = request.PrimaryId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ThirdPartCostCenterId)) {
+		body["third_part_cost_center_id"] = request.ThirdPartCostCenterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ThirdPartDepartmentId)) {
+		body["third_part_department_id"] = request.ThirdPartDepartmentId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ThirdPartInvoiceId)) {
+		body["third_part_invoice_id"] = request.ThirdPartInvoiceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ThirdPartProjectId)) {
+		body["third_part_project_id"] = request.ThirdPartProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		body["user_id"] = request.UserId
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsBtripCorpToken)) {
+		realHeaders["x-acs-btrip-corp-token"] = util.ToJSONString(headers.XAcsBtripCorpToken)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("BtripBillInfoAdjust"),
+		Version:     tea.String("2022-05-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/bill/v1/info/action/adjust"),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &BtripBillInfoAdjustResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) BtripBillInfoAdjust(request *BtripBillInfoAdjustRequest) (_result *BtripBillInfoAdjustResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &BtripBillInfoAdjustHeaders{}
+	_result = &BtripBillInfoAdjustResponse{}
+	_body, _err := client.BtripBillInfoAdjustWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) CarApplyAddWithOptions(request *CarApplyAddRequest, headers *CarApplyAddHeaders, runtime *util.RuntimeOptions) (_result *CarApplyAddResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -34542,6 +34873,65 @@ func (client *Client) IsvUserSave(request *IsvUserSaveRequest) (_result *IsvUser
 	headers := &IsvUserSaveHeaders{}
 	_result = &IsvUserSaveResponse{}
 	_body, _err := client.IsvUserSaveWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) MonthBillConfirmWithOptions(request *MonthBillConfirmRequest, headers *MonthBillConfirmHeaders, runtime *util.RuntimeOptions) (_result *MonthBillConfirmResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.MailBillDate)) {
+		body["mail_bill_date"] = request.MailBillDate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		body["user_id"] = request.UserId
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsBtripCorpToken)) {
+		realHeaders["x-acs-btrip-corp-token"] = util.ToJSONString(headers.XAcsBtripCorpToken)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("MonthBillConfirm"),
+		Version:     tea.String("2022-05-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/bill/v1/status/action/confirm"),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &MonthBillConfirmResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) MonthBillConfirm(request *MonthBillConfirmRequest) (_result *MonthBillConfirmResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &MonthBillConfirmHeaders{}
+	_result = &MonthBillConfirmResponse{}
+	_body, _err := client.MonthBillConfirmWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
