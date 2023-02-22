@@ -127,6 +127,198 @@ func (s *DetectVideoShotResponse) SetBody(v *DetectVideoShotResponseBody) *Detec
 	return s
 }
 
+type EvaluateVideoQualityRequest struct {
+	Mode     *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	VideoUrl *string `json:"VideoUrl,omitempty" xml:"VideoUrl,omitempty"`
+}
+
+func (s EvaluateVideoQualityRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EvaluateVideoQualityRequest) GoString() string {
+	return s.String()
+}
+
+func (s *EvaluateVideoQualityRequest) SetMode(v string) *EvaluateVideoQualityRequest {
+	s.Mode = &v
+	return s
+}
+
+func (s *EvaluateVideoQualityRequest) SetVideoUrl(v string) *EvaluateVideoQualityRequest {
+	s.VideoUrl = &v
+	return s
+}
+
+type EvaluateVideoQualityAdvanceRequest struct {
+	Mode           *string   `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	VideoUrlObject io.Reader `json:"VideoUrl,omitempty" xml:"VideoUrl,omitempty"`
+}
+
+func (s EvaluateVideoQualityAdvanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EvaluateVideoQualityAdvanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *EvaluateVideoQualityAdvanceRequest) SetMode(v string) *EvaluateVideoQualityAdvanceRequest {
+	s.Mode = &v
+	return s
+}
+
+func (s *EvaluateVideoQualityAdvanceRequest) SetVideoUrlObject(v io.Reader) *EvaluateVideoQualityAdvanceRequest {
+	s.VideoUrlObject = v
+	return s
+}
+
+type EvaluateVideoQualityResponseBody struct {
+	Data      *EvaluateVideoQualityResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                               `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s EvaluateVideoQualityResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EvaluateVideoQualityResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *EvaluateVideoQualityResponseBody) SetData(v *EvaluateVideoQualityResponseBodyData) *EvaluateVideoQualityResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *EvaluateVideoQualityResponseBody) SetMessage(v string) *EvaluateVideoQualityResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *EvaluateVideoQualityResponseBody) SetRequestId(v string) *EvaluateVideoQualityResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type EvaluateVideoQualityResponseBodyData struct {
+	JsonUrl          *string                                               `json:"JsonUrl,omitempty" xml:"JsonUrl,omitempty"`
+	PdfUrl           *string                                               `json:"PdfUrl,omitempty" xml:"PdfUrl,omitempty"`
+	VideoQualityInfo *EvaluateVideoQualityResponseBodyDataVideoQualityInfo `json:"VideoQualityInfo,omitempty" xml:"VideoQualityInfo,omitempty" type:"Struct"`
+}
+
+func (s EvaluateVideoQualityResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EvaluateVideoQualityResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *EvaluateVideoQualityResponseBodyData) SetJsonUrl(v string) *EvaluateVideoQualityResponseBodyData {
+	s.JsonUrl = &v
+	return s
+}
+
+func (s *EvaluateVideoQualityResponseBodyData) SetPdfUrl(v string) *EvaluateVideoQualityResponseBodyData {
+	s.PdfUrl = &v
+	return s
+}
+
+func (s *EvaluateVideoQualityResponseBodyData) SetVideoQualityInfo(v *EvaluateVideoQualityResponseBodyDataVideoQualityInfo) *EvaluateVideoQualityResponseBodyData {
+	s.VideoQualityInfo = v
+	return s
+}
+
+type EvaluateVideoQualityResponseBodyDataVideoQualityInfo struct {
+	Blurriness          *float32 `json:"Blurriness,omitempty" xml:"Blurriness,omitempty"`
+	ColorContrast       *float32 `json:"ColorContrast,omitempty" xml:"ColorContrast,omitempty"`
+	ColorSaturation     *float32 `json:"ColorSaturation,omitempty" xml:"ColorSaturation,omitempty"`
+	Colorfulness        *float32 `json:"Colorfulness,omitempty" xml:"Colorfulness,omitempty"`
+	CompressiveStrength *float32 `json:"CompressiveStrength,omitempty" xml:"CompressiveStrength,omitempty"`
+	Luminance           *float32 `json:"Luminance,omitempty" xml:"Luminance,omitempty"`
+	MosScore            *float32 `json:"MosScore,omitempty" xml:"MosScore,omitempty"`
+	NoiseIntensity      *float32 `json:"NoiseIntensity,omitempty" xml:"NoiseIntensity,omitempty"`
+}
+
+func (s EvaluateVideoQualityResponseBodyDataVideoQualityInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EvaluateVideoQualityResponseBodyDataVideoQualityInfo) GoString() string {
+	return s.String()
+}
+
+func (s *EvaluateVideoQualityResponseBodyDataVideoQualityInfo) SetBlurriness(v float32) *EvaluateVideoQualityResponseBodyDataVideoQualityInfo {
+	s.Blurriness = &v
+	return s
+}
+
+func (s *EvaluateVideoQualityResponseBodyDataVideoQualityInfo) SetColorContrast(v float32) *EvaluateVideoQualityResponseBodyDataVideoQualityInfo {
+	s.ColorContrast = &v
+	return s
+}
+
+func (s *EvaluateVideoQualityResponseBodyDataVideoQualityInfo) SetColorSaturation(v float32) *EvaluateVideoQualityResponseBodyDataVideoQualityInfo {
+	s.ColorSaturation = &v
+	return s
+}
+
+func (s *EvaluateVideoQualityResponseBodyDataVideoQualityInfo) SetColorfulness(v float32) *EvaluateVideoQualityResponseBodyDataVideoQualityInfo {
+	s.Colorfulness = &v
+	return s
+}
+
+func (s *EvaluateVideoQualityResponseBodyDataVideoQualityInfo) SetCompressiveStrength(v float32) *EvaluateVideoQualityResponseBodyDataVideoQualityInfo {
+	s.CompressiveStrength = &v
+	return s
+}
+
+func (s *EvaluateVideoQualityResponseBodyDataVideoQualityInfo) SetLuminance(v float32) *EvaluateVideoQualityResponseBodyDataVideoQualityInfo {
+	s.Luminance = &v
+	return s
+}
+
+func (s *EvaluateVideoQualityResponseBodyDataVideoQualityInfo) SetMosScore(v float32) *EvaluateVideoQualityResponseBodyDataVideoQualityInfo {
+	s.MosScore = &v
+	return s
+}
+
+func (s *EvaluateVideoQualityResponseBodyDataVideoQualityInfo) SetNoiseIntensity(v float32) *EvaluateVideoQualityResponseBodyDataVideoQualityInfo {
+	s.NoiseIntensity = &v
+	return s
+}
+
+type EvaluateVideoQualityResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *EvaluateVideoQualityResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s EvaluateVideoQualityResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EvaluateVideoQualityResponse) GoString() string {
+	return s.String()
+}
+
+func (s *EvaluateVideoQualityResponse) SetHeaders(v map[string]*string) *EvaluateVideoQualityResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *EvaluateVideoQualityResponse) SetStatusCode(v int32) *EvaluateVideoQualityResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *EvaluateVideoQualityResponse) SetBody(v *EvaluateVideoQualityResponseBody) *EvaluateVideoQualityResponse {
+	s.Body = v
+	return s
+}
+
 type GenerateVideoCoverRequest struct {
 	IsGif    *bool   `json:"IsGif,omitempty" xml:"IsGif,omitempty"`
 	VideoUrl *string `json:"VideoUrl,omitempty" xml:"VideoUrl,omitempty"`
@@ -1416,6 +1608,160 @@ func (client *Client) DetectVideoShotAdvance(request *DetectVideoShotAdvanceRequ
 	}
 
 	_result = detectVideoShotResp
+	return _result, _err
+}
+
+func (client *Client) EvaluateVideoQualityWithOptions(request *EvaluateVideoQualityRequest, runtime *util.RuntimeOptions) (_result *EvaluateVideoQualityResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Mode)) {
+		body["Mode"] = request.Mode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VideoUrl)) {
+		body["VideoUrl"] = request.VideoUrl
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("EvaluateVideoQuality"),
+		Version:     tea.String("2020-03-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &EvaluateVideoQualityResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) EvaluateVideoQuality(request *EvaluateVideoQualityRequest) (_result *EvaluateVideoQualityResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &EvaluateVideoQualityResponse{}
+	_body, _err := client.EvaluateVideoQualityWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) EvaluateVideoQualityAdvance(request *EvaluateVideoQualityAdvanceRequest, runtime *util.RuntimeOptions) (_result *EvaluateVideoQualityResponse, _err error) {
+	// Step 0: init client
+	accessKeyId, _err := client.Credential.GetAccessKeyId()
+	if _err != nil {
+		return _result, _err
+	}
+
+	accessKeySecret, _err := client.Credential.GetAccessKeySecret()
+	if _err != nil {
+		return _result, _err
+	}
+
+	securityToken, _err := client.Credential.GetSecurityToken()
+	if _err != nil {
+		return _result, _err
+	}
+
+	credentialType := client.Credential.GetType()
+	openPlatformEndpoint := client.OpenPlatformEndpoint
+	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
+	}
+
+	if tea.BoolValue(util.IsUnset(credentialType)) {
+		credentialType = tea.String("access_key")
+	}
+
+	authConfig := &openapi.Config{
+		AccessKeyId:     accessKeyId,
+		AccessKeySecret: accessKeySecret,
+		SecurityToken:   securityToken,
+		Type:            credentialType,
+		Endpoint:        openPlatformEndpoint,
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	authClient, _err := openplatform.NewClient(authConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
+	authRequest := &openplatform.AuthorizeFileUploadRequest{
+		Product:  tea.String("videorecog"),
+		RegionId: client.RegionId,
+	}
+	authResponse := &openplatform.AuthorizeFileUploadResponse{}
+	ossConfig := &oss.Config{
+		AccessKeySecret: accessKeySecret,
+		Type:            tea.String("access_key"),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	var ossClient *oss.Client
+	fileObj := &fileform.FileField{}
+	ossHeader := &oss.PostObjectRequestHeader{}
+	uploadRequest := &oss.PostObjectRequest{}
+	ossRuntime := &ossutil.RuntimeOptions{}
+	openapiutil.Convert(runtime, ossRuntime)
+	evaluateVideoQualityReq := &EvaluateVideoQualityRequest{}
+	openapiutil.Convert(request, evaluateVideoQualityReq)
+	if !tea.BoolValue(util.IsUnset(request.VideoUrlObject)) {
+		authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+
+		ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
+		ossClient, _err = oss.NewClient(ossConfig)
+		if _err != nil {
+			return _result, _err
+		}
+
+		fileObj = &fileform.FileField{
+			Filename:    authResponse.Body.ObjectKey,
+			Content:     request.VideoUrlObject,
+			ContentType: tea.String(""),
+		}
+		ossHeader = &oss.PostObjectRequestHeader{
+			AccessKeyId:         authResponse.Body.AccessKeyId,
+			Policy:              authResponse.Body.EncodedPolicy,
+			Signature:           authResponse.Body.Signature,
+			Key:                 authResponse.Body.ObjectKey,
+			File:                fileObj,
+			SuccessActionStatus: tea.String("201"),
+		}
+		uploadRequest = &oss.PostObjectRequest{
+			BucketName: authResponse.Body.Bucket,
+			Header:     ossHeader,
+		}
+		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+		if _err != nil {
+			return _result, _err
+		}
+		evaluateVideoQualityReq.VideoUrl = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
+	}
+
+	evaluateVideoQualityResp, _err := client.EvaluateVideoQualityWithOptions(evaluateVideoQualityReq, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+
+	_result = evaluateVideoQualityResp
 	return _result, _err
 }
 
