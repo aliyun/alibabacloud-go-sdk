@@ -389,6 +389,69 @@ func (s *BindSecureMobilePhoneResponse) SetBody(v *BindSecureMobilePhoneResponse
 	return s
 }
 
+type CancelChangeAccountEmailRequest struct {
+	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+}
+
+func (s CancelChangeAccountEmailRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CancelChangeAccountEmailRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CancelChangeAccountEmailRequest) SetAccountId(v string) *CancelChangeAccountEmailRequest {
+	s.AccountId = &v
+	return s
+}
+
+type CancelChangeAccountEmailResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CancelChangeAccountEmailResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CancelChangeAccountEmailResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CancelChangeAccountEmailResponseBody) SetRequestId(v string) *CancelChangeAccountEmailResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CancelChangeAccountEmailResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CancelChangeAccountEmailResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CancelChangeAccountEmailResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CancelChangeAccountEmailResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CancelChangeAccountEmailResponse) SetHeaders(v map[string]*string) *CancelChangeAccountEmailResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CancelChangeAccountEmailResponse) SetStatusCode(v int32) *CancelChangeAccountEmailResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CancelChangeAccountEmailResponse) SetBody(v *CancelChangeAccountEmailResponseBody) *CancelChangeAccountEmailResponse {
+	s.Body = v
+	return s
+}
+
 type CancelCreateCloudAccountRequest struct {
 	RecordId *string `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
 }
@@ -657,6 +720,75 @@ func (s *CancelPromoteResourceAccountResponse) SetStatusCode(v int32) *CancelPro
 }
 
 func (s *CancelPromoteResourceAccountResponse) SetBody(v *CancelPromoteResourceAccountResponseBody) *CancelPromoteResourceAccountResponse {
+	s.Body = v
+	return s
+}
+
+type ChangeAccountEmailRequest struct {
+	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	Email     *string `json:"Email,omitempty" xml:"Email,omitempty"`
+}
+
+func (s ChangeAccountEmailRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ChangeAccountEmailRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ChangeAccountEmailRequest) SetAccountId(v string) *ChangeAccountEmailRequest {
+	s.AccountId = &v
+	return s
+}
+
+func (s *ChangeAccountEmailRequest) SetEmail(v string) *ChangeAccountEmailRequest {
+	s.Email = &v
+	return s
+}
+
+type ChangeAccountEmailResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ChangeAccountEmailResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ChangeAccountEmailResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ChangeAccountEmailResponseBody) SetRequestId(v string) *ChangeAccountEmailResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ChangeAccountEmailResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ChangeAccountEmailResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ChangeAccountEmailResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ChangeAccountEmailResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ChangeAccountEmailResponse) SetHeaders(v map[string]*string) *ChangeAccountEmailResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ChangeAccountEmailResponse) SetStatusCode(v int32) *ChangeAccountEmailResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ChangeAccountEmailResponse) SetBody(v *ChangeAccountEmailResponseBody) *ChangeAccountEmailResponse {
 	s.Body = v
 	return s
 }
@@ -1375,6 +1507,7 @@ type CreateResourceAccountRequest struct {
 	DisplayName       *string                            `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
 	ParentFolderId    *string                            `json:"ParentFolderId,omitempty" xml:"ParentFolderId,omitempty"`
 	PayerAccountId    *string                            `json:"PayerAccountId,omitempty" xml:"PayerAccountId,omitempty"`
+	ResellAccountType *string                            `json:"ResellAccountType,omitempty" xml:"ResellAccountType,omitempty"`
 	Tag               []*CreateResourceAccountRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
@@ -1403,6 +1536,11 @@ func (s *CreateResourceAccountRequest) SetParentFolderId(v string) *CreateResour
 
 func (s *CreateResourceAccountRequest) SetPayerAccountId(v string) *CreateResourceAccountRequest {
 	s.PayerAccountId = &v
+	return s
+}
+
+func (s *CreateResourceAccountRequest) SetResellAccountType(v string) *CreateResourceAccountRequest {
+	s.ResellAccountType = &v
 	return s
 }
 
@@ -3360,6 +3498,7 @@ type GetAccountResponseBodyAccount struct {
 	AccountId             *string                              `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
 	AccountName           *string                              `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
 	DisplayName           *string                              `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	EmailStatus           *string                              `json:"EmailStatus,omitempty" xml:"EmailStatus,omitempty"`
 	FolderId              *string                              `json:"FolderId,omitempty" xml:"FolderId,omitempty"`
 	IdentityInformation   *string                              `json:"IdentityInformation,omitempty" xml:"IdentityInformation,omitempty"`
 	JoinMethod            *string                              `json:"JoinMethod,omitempty" xml:"JoinMethod,omitempty"`
@@ -3393,6 +3532,11 @@ func (s *GetAccountResponseBodyAccount) SetAccountName(v string) *GetAccountResp
 
 func (s *GetAccountResponseBodyAccount) SetDisplayName(v string) *GetAccountResponseBodyAccount {
 	s.DisplayName = &v
+	return s
+}
+
+func (s *GetAccountResponseBodyAccount) SetEmailStatus(v string) *GetAccountResponseBodyAccount {
+	s.EmailStatus = &v
 	return s
 }
 
@@ -9991,6 +10135,69 @@ func (s *ResendPromoteResourceAccountEmailResponse) SetBody(v *ResendPromoteReso
 	return s
 }
 
+type RetryChangeAccountEmailRequest struct {
+	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+}
+
+func (s RetryChangeAccountEmailRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RetryChangeAccountEmailRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RetryChangeAccountEmailRequest) SetAccountId(v string) *RetryChangeAccountEmailRequest {
+	s.AccountId = &v
+	return s
+}
+
+type RetryChangeAccountEmailResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s RetryChangeAccountEmailResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RetryChangeAccountEmailResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RetryChangeAccountEmailResponseBody) SetRequestId(v string) *RetryChangeAccountEmailResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type RetryChangeAccountEmailResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *RetryChangeAccountEmailResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s RetryChangeAccountEmailResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RetryChangeAccountEmailResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RetryChangeAccountEmailResponse) SetHeaders(v map[string]*string) *RetryChangeAccountEmailResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RetryChangeAccountEmailResponse) SetStatusCode(v int32) *RetryChangeAccountEmailResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RetryChangeAccountEmailResponse) SetBody(v *RetryChangeAccountEmailResponseBody) *RetryChangeAccountEmailResponse {
+	s.Body = v
+	return s
+}
+
 type SendVerificationCodeForBindSecureMobilePhoneRequest struct {
 	AccountId         *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
 	SecureMobilePhone *string `json:"SecureMobilePhone,omitempty" xml:"SecureMobilePhone,omitempty"`
@@ -11410,6 +11617,50 @@ func (client *Client) BindSecureMobilePhone(request *BindSecureMobilePhoneReques
 	return _result, _err
 }
 
+func (client *Client) CancelChangeAccountEmailWithOptions(request *CancelChangeAccountEmailRequest, runtime *util.RuntimeOptions) (_result *CancelChangeAccountEmailResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccountId)) {
+		query["AccountId"] = request.AccountId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CancelChangeAccountEmail"),
+		Version:     tea.String("2020-03-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CancelChangeAccountEmailResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CancelChangeAccountEmail(request *CancelChangeAccountEmailRequest) (_result *CancelChangeAccountEmailResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CancelChangeAccountEmailResponse{}
+	_body, _err := client.CancelChangeAccountEmailWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) CancelCreateCloudAccountWithOptions(request *CancelCreateCloudAccountRequest, runtime *util.RuntimeOptions) (_result *CancelCreateCloudAccountResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -11535,6 +11786,54 @@ func (client *Client) CancelPromoteResourceAccount(request *CancelPromoteResourc
 	runtime := &util.RuntimeOptions{}
 	_result = &CancelPromoteResourceAccountResponse{}
 	_body, _err := client.CancelPromoteResourceAccountWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ChangeAccountEmailWithOptions(request *ChangeAccountEmailRequest, runtime *util.RuntimeOptions) (_result *ChangeAccountEmailResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccountId)) {
+		query["AccountId"] = request.AccountId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Email)) {
+		query["Email"] = request.Email
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ChangeAccountEmail"),
+		Version:     tea.String("2020-03-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ChangeAccountEmailResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ChangeAccountEmail(request *ChangeAccountEmailRequest) (_result *ChangeAccountEmailResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ChangeAccountEmailResponse{}
+	_body, _err := client.ChangeAccountEmailWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11870,6 +12169,10 @@ func (client *Client) CreateResourceAccountWithOptions(request *CreateResourceAc
 
 	if !tea.BoolValue(util.IsUnset(request.PayerAccountId)) {
 		query["PayerAccountId"] = request.PayerAccountId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResellAccountType)) {
+		query["ResellAccountType"] = request.ResellAccountType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Tag)) {
@@ -15020,6 +15323,50 @@ func (client *Client) ResendPromoteResourceAccountEmail(request *ResendPromoteRe
 	runtime := &util.RuntimeOptions{}
 	_result = &ResendPromoteResourceAccountEmailResponse{}
 	_body, _err := client.ResendPromoteResourceAccountEmailWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) RetryChangeAccountEmailWithOptions(request *RetryChangeAccountEmailRequest, runtime *util.RuntimeOptions) (_result *RetryChangeAccountEmailResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccountId)) {
+		query["AccountId"] = request.AccountId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RetryChangeAccountEmail"),
+		Version:     tea.String("2020-03-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RetryChangeAccountEmailResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) RetryChangeAccountEmail(request *RetryChangeAccountEmailRequest) (_result *RetryChangeAccountEmailResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RetryChangeAccountEmailResponse{}
+	_body, _err := client.RetryChangeAccountEmailWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
