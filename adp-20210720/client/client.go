@@ -687,9 +687,10 @@ func (s *FoundationVersionClusterEnginesPackageToolsInstallToolPackages) SetUrl(
 }
 
 type FoundationVersionClusterEnginesPackages struct {
-	Architecture *string `json:"architecture,omitempty" xml:"architecture,omitempty"`
-	Os           *string `json:"os,omitempty" xml:"os,omitempty"`
-	Url          *string `json:"url,omitempty" xml:"url,omitempty"`
+	Architecture *string     `json:"architecture,omitempty" xml:"architecture,omitempty"`
+	Os           *string     `json:"os,omitempty" xml:"os,omitempty"`
+	Platforms    []*Platform `json:"platforms,omitempty" xml:"platforms,omitempty" type:"Repeated"`
+	Url          *string     `json:"url,omitempty" xml:"url,omitempty"`
 }
 
 func (s FoundationVersionClusterEnginesPackages) String() string {
@@ -707,6 +708,11 @@ func (s *FoundationVersionClusterEnginesPackages) SetArchitecture(v string) *Fou
 
 func (s *FoundationVersionClusterEnginesPackages) SetOs(v string) *FoundationVersionClusterEnginesPackages {
 	s.Os = &v
+	return s
+}
+
+func (s *FoundationVersionClusterEnginesPackages) SetPlatforms(v []*Platform) *FoundationVersionClusterEnginesPackages {
+	s.Platforms = v
 	return s
 }
 
@@ -2157,7 +2163,9 @@ func (s *AddEnvironmentProductVersionsResponse) SetBody(v *AddEnvironmentProduct
 }
 
 type AddProductComponentVersionRequest struct {
-	ReleaseName *string `json:"releaseName,omitempty" xml:"releaseName,omitempty"`
+	ComponentVersionSpecUID    *string `json:"componentVersionSpecUID,omitempty" xml:"componentVersionSpecUID,omitempty"`
+	ComponentVersionSpecValues *string `json:"componentVersionSpecValues,omitempty" xml:"componentVersionSpecValues,omitempty"`
+	ReleaseName                *string `json:"releaseName,omitempty" xml:"releaseName,omitempty"`
 }
 
 func (s AddProductComponentVersionRequest) String() string {
@@ -2166,6 +2174,16 @@ func (s AddProductComponentVersionRequest) String() string {
 
 func (s AddProductComponentVersionRequest) GoString() string {
 	return s.String()
+}
+
+func (s *AddProductComponentVersionRequest) SetComponentVersionSpecUID(v string) *AddProductComponentVersionRequest {
+	s.ComponentVersionSpecUID = &v
+	return s
+}
+
+func (s *AddProductComponentVersionRequest) SetComponentVersionSpecValues(v string) *AddProductComponentVersionRequest {
+	s.ComponentVersionSpecValues = &v
+	return s
 }
 
 func (s *AddProductComponentVersionRequest) SetReleaseName(v string) *AddProductComponentVersionRequest {
@@ -2994,6 +3012,7 @@ func (s *CreateDeliveryInstanceResponse) SetBody(v *CreateDeliveryInstanceRespon
 
 type CreateDeliveryPackageRequest struct {
 	DeliverableUID       *string `json:"deliverableUID,omitempty" xml:"deliverableUID,omitempty"`
+	DeliveryInstanceUID  *string `json:"deliveryInstanceUID,omitempty" xml:"deliveryInstanceUID,omitempty"`
 	OriginDeliverableUID *string `json:"originDeliverableUID,omitempty" xml:"originDeliverableUID,omitempty"`
 	PackageContentType   *string `json:"packageContentType,omitempty" xml:"packageContentType,omitempty"`
 	PackageType          *string `json:"packageType,omitempty" xml:"packageType,omitempty"`
@@ -3010,6 +3029,11 @@ func (s CreateDeliveryPackageRequest) GoString() string {
 
 func (s *CreateDeliveryPackageRequest) SetDeliverableUID(v string) *CreateDeliveryPackageRequest {
 	s.DeliverableUID = &v
+	return s
+}
+
+func (s *CreateDeliveryPackageRequest) SetDeliveryInstanceUID(v string) *CreateDeliveryPackageRequest {
+	s.DeliveryInstanceUID = &v
 	return s
 }
 
@@ -3310,6 +3334,7 @@ type CreateEnvironmentLicenseRequest struct {
 	CompanyName        *string                                      `json:"companyName,omitempty" xml:"companyName,omitempty"`
 	Contact            *string                                      `json:"contact,omitempty" xml:"contact,omitempty"`
 	Description        *string                                      `json:"description,omitempty" xml:"description,omitempty"`
+	ExpireTime         *string                                      `json:"expireTime,omitempty" xml:"expireTime,omitempty"`
 	LicenseQuota       *CreateEnvironmentLicenseRequestLicenseQuota `json:"licenseQuota,omitempty" xml:"licenseQuota,omitempty" type:"Struct"`
 	MachineFingerprint *string                                      `json:"machineFingerprint,omitempty" xml:"machineFingerprint,omitempty"`
 	Name               *string                                      `json:"name,omitempty" xml:"name,omitempty"`
@@ -3339,6 +3364,11 @@ func (s *CreateEnvironmentLicenseRequest) SetContact(v string) *CreateEnvironmen
 
 func (s *CreateEnvironmentLicenseRequest) SetDescription(v string) *CreateEnvironmentLicenseRequest {
 	s.Description = &v
+	return s
+}
+
+func (s *CreateEnvironmentLicenseRequest) SetExpireTime(v string) *CreateEnvironmentLicenseRequest {
+	s.ExpireTime = &v
 	return s
 }
 
@@ -3522,10 +3552,11 @@ func (s *CreateEnvironmentLicenseResponse) SetBody(v *CreateEnvironmentLicenseRe
 }
 
 type CreateFoundationReferenceRequest struct {
-	ClusterConfig                *string                                             `json:"clusterConfig,omitempty" xml:"clusterConfig,omitempty"`
-	ComponentConfigs             []*CreateFoundationReferenceRequestComponentConfigs `json:"componentConfigs,omitempty" xml:"componentConfigs,omitempty" type:"Repeated"`
-	FoundationVersionUID         *string                                             `json:"foundationVersionUID,omitempty" xml:"foundationVersionUID,omitempty"`
-	OriginFoundationReferenceUID *string                                             `json:"originFoundationReferenceUID,omitempty" xml:"originFoundationReferenceUID,omitempty"`
+	ClusterConfig                *string                                                       `json:"clusterConfig,omitempty" xml:"clusterConfig,omitempty"`
+	ComponentConfigs             []*CreateFoundationReferenceRequestComponentConfigs           `json:"componentConfigs,omitempty" xml:"componentConfigs,omitempty" type:"Repeated"`
+	FoundationReferenceConfigs   []*CreateFoundationReferenceRequestFoundationReferenceConfigs `json:"foundationReferenceConfigs,omitempty" xml:"foundationReferenceConfigs,omitempty" type:"Repeated"`
+	FoundationVersionUID         *string                                                       `json:"foundationVersionUID,omitempty" xml:"foundationVersionUID,omitempty"`
+	OriginFoundationReferenceUID *string                                                       `json:"originFoundationReferenceUID,omitempty" xml:"originFoundationReferenceUID,omitempty"`
 }
 
 func (s CreateFoundationReferenceRequest) String() string {
@@ -3543,6 +3574,11 @@ func (s *CreateFoundationReferenceRequest) SetClusterConfig(v string) *CreateFou
 
 func (s *CreateFoundationReferenceRequest) SetComponentConfigs(v []*CreateFoundationReferenceRequestComponentConfigs) *CreateFoundationReferenceRequest {
 	s.ComponentConfigs = v
+	return s
+}
+
+func (s *CreateFoundationReferenceRequest) SetFoundationReferenceConfigs(v []*CreateFoundationReferenceRequestFoundationReferenceConfigs) *CreateFoundationReferenceRequest {
+	s.FoundationReferenceConfigs = v
 	return s
 }
 
@@ -3576,6 +3612,41 @@ func (s *CreateFoundationReferenceRequestComponentConfigs) SetComponentVersionUI
 
 func (s *CreateFoundationReferenceRequestComponentConfigs) SetOrchestrationValues(v string) *CreateFoundationReferenceRequestComponentConfigs {
 	s.OrchestrationValues = &v
+	return s
+}
+
+type CreateFoundationReferenceRequestFoundationReferenceConfigs struct {
+	ComponentReleaseName *string `json:"componentReleaseName,omitempty" xml:"componentReleaseName,omitempty"`
+	ConfigType           *string `json:"configType,omitempty" xml:"configType,omitempty"`
+	Name                 *string `json:"name,omitempty" xml:"name,omitempty"`
+	Value                *string `json:"value,omitempty" xml:"value,omitempty"`
+}
+
+func (s CreateFoundationReferenceRequestFoundationReferenceConfigs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateFoundationReferenceRequestFoundationReferenceConfigs) GoString() string {
+	return s.String()
+}
+
+func (s *CreateFoundationReferenceRequestFoundationReferenceConfigs) SetComponentReleaseName(v string) *CreateFoundationReferenceRequestFoundationReferenceConfigs {
+	s.ComponentReleaseName = &v
+	return s
+}
+
+func (s *CreateFoundationReferenceRequestFoundationReferenceConfigs) SetConfigType(v string) *CreateFoundationReferenceRequestFoundationReferenceConfigs {
+	s.ConfigType = &v
+	return s
+}
+
+func (s *CreateFoundationReferenceRequestFoundationReferenceConfigs) SetName(v string) *CreateFoundationReferenceRequestFoundationReferenceConfigs {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateFoundationReferenceRequestFoundationReferenceConfigs) SetValue(v string) *CreateFoundationReferenceRequestFoundationReferenceConfigs {
+	s.Value = &v
 	return s
 }
 
@@ -3678,12 +3749,13 @@ func (s *CreateProductHeaders) SetClientToken(v string) *CreateProductHeaders {
 }
 
 type CreateProductRequest struct {
-	Categories           []*string `json:"categories,omitempty" xml:"categories,omitempty" type:"Repeated"`
-	Description          *string   `json:"description,omitempty" xml:"description,omitempty"`
-	DisplayName          *string   `json:"displayName,omitempty" xml:"displayName,omitempty"`
-	FoundationVersionUID *string   `json:"foundationVersionUID,omitempty" xml:"foundationVersionUID,omitempty"`
-	ProductName          *string   `json:"productName,omitempty" xml:"productName,omitempty"`
-	Vendor               *string   `json:"vendor,omitempty" xml:"vendor,omitempty"`
+	Categories            []*string `json:"categories,omitempty" xml:"categories,omitempty" type:"Repeated"`
+	Description           *string   `json:"description,omitempty" xml:"description,omitempty"`
+	DisplayName           *string   `json:"displayName,omitempty" xml:"displayName,omitempty"`
+	FoundationVersionUID  *string   `json:"foundationVersionUID,omitempty" xml:"foundationVersionUID,omitempty"`
+	ProductName           *string   `json:"productName,omitempty" xml:"productName,omitempty"`
+	Vendor                *string   `json:"vendor,omitempty" xml:"vendor,omitempty"`
+	WithoutProductVersion *bool     `json:"withoutProductVersion,omitempty" xml:"withoutProductVersion,omitempty"`
 }
 
 func (s CreateProductRequest) String() string {
@@ -3721,6 +3793,11 @@ func (s *CreateProductRequest) SetProductName(v string) *CreateProductRequest {
 
 func (s *CreateProductRequest) SetVendor(v string) *CreateProductRequest {
 	s.Vendor = &v
+	return s
+}
+
+func (s *CreateProductRequest) SetWithoutProductVersion(v bool) *CreateProductRequest {
+	s.WithoutProductVersion = &v
 	return s
 }
 
@@ -3806,6 +3883,7 @@ type CreateProductDeploymentRequest struct {
 	PackageConfig        *string `json:"packageConfig,omitempty" xml:"packageConfig,omitempty"`
 	PackageUID           *string `json:"packageUID,omitempty" xml:"packageUID,omitempty"`
 	ProductVersionUID    *string `json:"productVersionUID,omitempty" xml:"productVersionUID,omitempty"`
+	Timeout              *int64  `json:"timeout,omitempty" xml:"timeout,omitempty"`
 }
 
 func (s CreateProductDeploymentRequest) String() string {
@@ -3843,6 +3921,11 @@ func (s *CreateProductDeploymentRequest) SetPackageUID(v string) *CreateProductD
 
 func (s *CreateProductDeploymentRequest) SetProductVersionUID(v string) *CreateProductDeploymentRequest {
 	s.ProductVersionUID = &v
+	return s
+}
+
+func (s *CreateProductDeploymentRequest) SetTimeout(v int64) *CreateProductDeploymentRequest {
+	s.Timeout = &v
 	return s
 }
 
@@ -3923,6 +4006,7 @@ func (s *CreateProductDeploymentResponse) SetBody(v *CreateProductDeploymentResp
 
 type CreateProductVersionRequest struct {
 	BaseProductVersionUID *string `json:"baseProductVersionUID,omitempty" xml:"baseProductVersionUID,omitempty"`
+	Version               *string `json:"version,omitempty" xml:"version,omitempty"`
 }
 
 func (s CreateProductVersionRequest) String() string {
@@ -3935,6 +4019,11 @@ func (s CreateProductVersionRequest) GoString() string {
 
 func (s *CreateProductVersionRequest) SetBaseProductVersionUID(v string) *CreateProductVersionRequest {
 	s.BaseProductVersionUID = &v
+	return s
+}
+
+func (s *CreateProductVersionRequest) SetVersion(v string) *CreateProductVersionRequest {
+	s.Version = &v
 	return s
 }
 
@@ -4681,6 +4770,7 @@ func (s *DeleteProductVersionConfigResponse) SetBody(v *DeleteProductVersionConf
 
 type GenerateProductInstanceDeploymentConfigRequest struct {
 	EnvironmentUID        *string   `json:"environmentUID,omitempty" xml:"environmentUID,omitempty"`
+	PackageContentType    *string   `json:"packageContentType,omitempty" xml:"packageContentType,omitempty"`
 	PackageUID            *string   `json:"packageUID,omitempty" xml:"packageUID,omitempty"`
 	ProductVersionUID     *string   `json:"productVersionUID,omitempty" xml:"productVersionUID,omitempty"`
 	ProductVersionUIDList []*string `json:"productVersionUIDList,omitempty" xml:"productVersionUIDList,omitempty" type:"Repeated"`
@@ -4696,6 +4786,11 @@ func (s GenerateProductInstanceDeploymentConfigRequest) GoString() string {
 
 func (s *GenerateProductInstanceDeploymentConfigRequest) SetEnvironmentUID(v string) *GenerateProductInstanceDeploymentConfigRequest {
 	s.EnvironmentUID = &v
+	return s
+}
+
+func (s *GenerateProductInstanceDeploymentConfigRequest) SetPackageContentType(v string) *GenerateProductInstanceDeploymentConfigRequest {
+	s.PackageContentType = &v
 	return s
 }
 
@@ -5985,10 +6080,11 @@ type GetEnvironmentLicenseResponseBodyData struct {
 	ProductVersionUID *string                                            `json:"productVersionUID,omitempty" xml:"productVersionUID,omitempty"`
 	RejectReason      *string                                            `json:"rejectReason,omitempty" xml:"rejectReason,omitempty"`
 	Scope             *string                                            `json:"scope,omitempty" xml:"scope,omitempty"`
-	SecretYAML        *string                                            `json:"secretYAML,omitempty" xml:"secretYAML,omitempty"`
-	Status            *string                                            `json:"status,omitempty" xml:"status,omitempty"`
-	Type              *string                                            `json:"type,omitempty" xml:"type,omitempty"`
-	Uid               *string                                            `json:"uid,omitempty" xml:"uid,omitempty"`
+	// kubernetes secret yaml。
+	SecretYAML *string `json:"secretYAML,omitempty" xml:"secretYAML,omitempty"`
+	Status     *string `json:"status,omitempty" xml:"status,omitempty"`
+	Type       *string `json:"type,omitempty" xml:"type,omitempty"`
+	Uid        *string `json:"uid,omitempty" xml:"uid,omitempty"`
 }
 
 func (s GetEnvironmentLicenseResponseBodyData) String() string {
@@ -6441,7 +6537,8 @@ type GetFoundationVersionResponseBodyData struct {
 	Status         *string                                             `json:"status,omitempty" xml:"status,omitempty"`
 	Type           *string                                             `json:"type,omitempty" xml:"type,omitempty"`
 	Uid            *string                                             `json:"uid,omitempty" xml:"uid,omitempty"`
-	Version        *string                                             `json:"version,omitempty" xml:"version,omitempty"`
+	// version
+	Version *string `json:"version,omitempty" xml:"version,omitempty"`
 }
 
 func (s GetFoundationVersionResponseBodyData) String() string {
@@ -7079,6 +7176,7 @@ type GetProductVersionResponseBodyData struct {
 	ProductName           *string                                               `json:"productName,omitempty" xml:"productName,omitempty"`
 	ProductUID            *string                                               `json:"productUID,omitempty" xml:"productUID,omitempty"`
 	Provider              *string                                               `json:"provider,omitempty" xml:"provider,omitempty"`
+	Timeout               *int64                                                `json:"timeout,omitempty" xml:"timeout,omitempty"`
 	Uid                   *string                                               `json:"uid,omitempty" xml:"uid,omitempty"`
 	Version               *string                                               `json:"version,omitempty" xml:"version,omitempty"`
 }
@@ -7138,6 +7236,11 @@ func (s *GetProductVersionResponseBodyData) SetProductUID(v string) *GetProductV
 
 func (s *GetProductVersionResponseBodyData) SetProvider(v string) *GetProductVersionResponseBodyData {
 	s.Provider = &v
+	return s
+}
+
+func (s *GetProductVersionResponseBodyData) SetTimeout(v int64) *GetProductVersionResponseBodyData {
+	s.Timeout = &v
 	return s
 }
 
@@ -8248,6 +8351,7 @@ type ListComponentVersionsRequest struct {
 	PageNum   *int32                                   `json:"pageNum,omitempty" xml:"pageNum,omitempty"`
 	PageSize  *int32                                   `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
 	Platforms []*ListComponentVersionsRequestPlatforms `json:"platforms,omitempty" xml:"platforms,omitempty" type:"Repeated"`
+	Version   *string                                  `json:"version,omitempty" xml:"version,omitempty"`
 }
 
 func (s ListComponentVersionsRequest) String() string {
@@ -8270,6 +8374,11 @@ func (s *ListComponentVersionsRequest) SetPageSize(v int32) *ListComponentVersio
 
 func (s *ListComponentVersionsRequest) SetPlatforms(v []*ListComponentVersionsRequestPlatforms) *ListComponentVersionsRequest {
 	s.Platforms = v
+	return s
+}
+
+func (s *ListComponentVersionsRequest) SetVersion(v string) *ListComponentVersionsRequest {
+	s.Version = &v
 	return s
 }
 
@@ -8300,6 +8409,7 @@ type ListComponentVersionsShrinkRequest struct {
 	PageNum         *int32  `json:"pageNum,omitempty" xml:"pageNum,omitempty"`
 	PageSize        *int32  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
 	PlatformsShrink *string `json:"platforms,omitempty" xml:"platforms,omitempty"`
+	Version         *string `json:"version,omitempty" xml:"version,omitempty"`
 }
 
 func (s ListComponentVersionsShrinkRequest) String() string {
@@ -8322,6 +8432,11 @@ func (s *ListComponentVersionsShrinkRequest) SetPageSize(v int32) *ListComponent
 
 func (s *ListComponentVersionsShrinkRequest) SetPlatformsShrink(v string) *ListComponentVersionsShrinkRequest {
 	s.PlatformsShrink = &v
+	return s
+}
+
+func (s *ListComponentVersionsShrinkRequest) SetVersion(v string) *ListComponentVersionsShrinkRequest {
+	s.Version = &v
 	return s
 }
 
@@ -9861,6 +9976,23 @@ func (s *ListEnvironmentsResponse) SetBody(v *ListEnvironmentsResponseBody) *Lis
 	return s
 }
 
+type ListFoundationComponentVersionsRequest struct {
+	ParentComponentRelationUID *string `json:"parentComponentRelationUID,omitempty" xml:"parentComponentRelationUID,omitempty"`
+}
+
+func (s ListFoundationComponentVersionsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListFoundationComponentVersionsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListFoundationComponentVersionsRequest) SetParentComponentRelationUID(v string) *ListFoundationComponentVersionsRequest {
+	s.ParentComponentRelationUID = &v
+	return s
+}
+
 type ListFoundationComponentVersionsResponseBody struct {
 	Code *string                                          `json:"code,omitempty" xml:"code,omitempty"`
 	Data *ListFoundationComponentVersionsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
@@ -9955,10 +10087,11 @@ func (s *ListFoundationComponentVersionsResponse) SetBody(v *ListFoundationCompo
 }
 
 type ListFoundationReferenceComponentsRequest struct {
-	FoundationReferenceUID *string `json:"foundationReferenceUID,omitempty" xml:"foundationReferenceUID,omitempty"`
-	FoundationVersionUID   *string `json:"foundationVersionUID,omitempty" xml:"foundationVersionUID,omitempty"`
-	OnlyEnabled            *bool   `json:"onlyEnabled,omitempty" xml:"onlyEnabled,omitempty"`
-	ProductVersionUID      *string `json:"productVersionUID,omitempty" xml:"productVersionUID,omitempty"`
+	FoundationReferenceUID      *string `json:"foundationReferenceUID,omitempty" xml:"foundationReferenceUID,omitempty"`
+	FoundationVersionUID        *string `json:"foundationVersionUID,omitempty" xml:"foundationVersionUID,omitempty"`
+	OnlyEnabled                 *bool   `json:"onlyEnabled,omitempty" xml:"onlyEnabled,omitempty"`
+	ParentComponentReferenceUID *string `json:"parentComponentReferenceUID,omitempty" xml:"parentComponentReferenceUID,omitempty"`
+	ProductVersionUID           *string `json:"productVersionUID,omitempty" xml:"productVersionUID,omitempty"`
 }
 
 func (s ListFoundationReferenceComponentsRequest) String() string {
@@ -9981,6 +10114,11 @@ func (s *ListFoundationReferenceComponentsRequest) SetFoundationVersionUID(v str
 
 func (s *ListFoundationReferenceComponentsRequest) SetOnlyEnabled(v bool) *ListFoundationReferenceComponentsRequest {
 	s.OnlyEnabled = &v
+	return s
+}
+
+func (s *ListFoundationReferenceComponentsRequest) SetParentComponentReferenceUID(v string) *ListFoundationReferenceComponentsRequest {
+	s.ParentComponentReferenceUID = &v
 	return s
 }
 
@@ -10048,9 +10186,12 @@ func (s *ListFoundationReferenceComponentsResponse) SetBody(v *ListFoundationRef
 }
 
 type ListFoundationVersionsRequest struct {
+	PageNum    *int32  `json:"pageNum,omitempty" xml:"pageNum,omitempty"`
+	PageSize   *int32  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
 	SortDirect *string `json:"sortDirect,omitempty" xml:"sortDirect,omitempty"`
 	SortKey    *string `json:"sortKey,omitempty" xml:"sortKey,omitempty"`
 	Type       *string `json:"type,omitempty" xml:"type,omitempty"`
+	Version    *string `json:"version,omitempty" xml:"version,omitempty"`
 }
 
 func (s ListFoundationVersionsRequest) String() string {
@@ -10059,6 +10200,16 @@ func (s ListFoundationVersionsRequest) String() string {
 
 func (s ListFoundationVersionsRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ListFoundationVersionsRequest) SetPageNum(v int32) *ListFoundationVersionsRequest {
+	s.PageNum = &v
+	return s
+}
+
+func (s *ListFoundationVersionsRequest) SetPageSize(v int32) *ListFoundationVersionsRequest {
+	s.PageSize = &v
+	return s
 }
 
 func (s *ListFoundationVersionsRequest) SetSortDirect(v string) *ListFoundationVersionsRequest {
@@ -10073,6 +10224,11 @@ func (s *ListFoundationVersionsRequest) SetSortKey(v string) *ListFoundationVers
 
 func (s *ListFoundationVersionsRequest) SetType(v string) *ListFoundationVersionsRequest {
 	s.Type = &v
+	return s
+}
+
+func (s *ListFoundationVersionsRequest) SetVersion(v string) *ListFoundationVersionsRequest {
+	s.Version = &v
 	return s
 }
 
@@ -10152,11 +10308,12 @@ func (s *ListFoundationVersionsResponse) SetBody(v *ListFoundationVersionsRespon
 }
 
 type ListProductComponentVersionsRequest struct {
-	Category   *string `json:"category,omitempty" xml:"category,omitempty"`
-	PageNum    *string `json:"pageNum,omitempty" xml:"pageNum,omitempty"`
-	PageSize   *string `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	SortDirect *string `json:"sortDirect,omitempty" xml:"sortDirect,omitempty"`
-	SortKey    *string `json:"sortKey,omitempty" xml:"sortKey,omitempty"`
+	Category    *string `json:"category,omitempty" xml:"category,omitempty"`
+	PageNum     *string `json:"pageNum,omitempty" xml:"pageNum,omitempty"`
+	PageSize    *string `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	ReleaseName *string `json:"releaseName,omitempty" xml:"releaseName,omitempty"`
+	SortDirect  *string `json:"sortDirect,omitempty" xml:"sortDirect,omitempty"`
+	SortKey     *string `json:"sortKey,omitempty" xml:"sortKey,omitempty"`
 }
 
 func (s ListProductComponentVersionsRequest) String() string {
@@ -10179,6 +10336,11 @@ func (s *ListProductComponentVersionsRequest) SetPageNum(v string) *ListProductC
 
 func (s *ListProductComponentVersionsRequest) SetPageSize(v string) *ListProductComponentVersionsRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *ListProductComponentVersionsRequest) SetReleaseName(v string) *ListProductComponentVersionsRequest {
+	s.ReleaseName = &v
 	return s
 }
 
@@ -11144,8 +11306,8 @@ func (s *ListProductInstanceConfigsResponse) SetBody(v *ListProductInstanceConfi
 type ListProductInstancesRequest struct {
 	EnvUID            *string                             `json:"envUID,omitempty" xml:"envUID,omitempty"`
 	Options           *ListProductInstancesRequestOptions `json:"options,omitempty" xml:"options,omitempty" type:"Struct"`
-	PageNum           *string                             `json:"pageNum,omitempty" xml:"pageNum,omitempty"`
-	PageSize          *string                             `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	PageNum           *int32                              `json:"pageNum,omitempty" xml:"pageNum,omitempty"`
+	PageSize          *int32                              `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
 	ProductVersionUID *string                             `json:"productVersionUID,omitempty" xml:"productVersionUID,omitempty"`
 }
 
@@ -11167,12 +11329,12 @@ func (s *ListProductInstancesRequest) SetOptions(v *ListProductInstancesRequestO
 	return s
 }
 
-func (s *ListProductInstancesRequest) SetPageNum(v string) *ListProductInstancesRequest {
+func (s *ListProductInstancesRequest) SetPageNum(v int32) *ListProductInstancesRequest {
 	s.PageNum = &v
 	return s
 }
 
-func (s *ListProductInstancesRequest) SetPageSize(v string) *ListProductInstancesRequest {
+func (s *ListProductInstancesRequest) SetPageSize(v int32) *ListProductInstancesRequest {
 	s.PageSize = &v
 	return s
 }
@@ -11208,8 +11370,8 @@ func (s *ListProductInstancesRequestOptions) SetSpecUID(v string) *ListProductIn
 type ListProductInstancesShrinkRequest struct {
 	EnvUID            *string `json:"envUID,omitempty" xml:"envUID,omitempty"`
 	OptionsShrink     *string `json:"options,omitempty" xml:"options,omitempty"`
-	PageNum           *string `json:"pageNum,omitempty" xml:"pageNum,omitempty"`
-	PageSize          *string `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	PageNum           *int32  `json:"pageNum,omitempty" xml:"pageNum,omitempty"`
+	PageSize          *int32  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
 	ProductVersionUID *string `json:"productVersionUID,omitempty" xml:"productVersionUID,omitempty"`
 }
 
@@ -11231,12 +11393,12 @@ func (s *ListProductInstancesShrinkRequest) SetOptionsShrink(v string) *ListProd
 	return s
 }
 
-func (s *ListProductInstancesShrinkRequest) SetPageNum(v string) *ListProductInstancesShrinkRequest {
+func (s *ListProductInstancesShrinkRequest) SetPageNum(v int32) *ListProductInstancesShrinkRequest {
 	s.PageNum = &v
 	return s
 }
 
-func (s *ListProductInstancesShrinkRequest) SetPageSize(v string) *ListProductInstancesShrinkRequest {
+func (s *ListProductInstancesShrinkRequest) SetPageSize(v int32) *ListProductInstancesShrinkRequest {
 	s.PageSize = &v
 	return s
 }
@@ -11247,7 +11409,9 @@ func (s *ListProductInstancesShrinkRequest) SetProductVersionUID(v string) *List
 }
 
 type ListProductInstancesResponseBody struct {
+	Code *string                               `json:"code,omitempty" xml:"code,omitempty"`
 	Data *ListProductInstancesResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	Msg  *string                               `json:"msg,omitempty" xml:"msg,omitempty"`
 }
 
 func (s ListProductInstancesResponseBody) String() string {
@@ -11258,8 +11422,18 @@ func (s ListProductInstancesResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *ListProductInstancesResponseBody) SetCode(v string) *ListProductInstancesResponseBody {
+	s.Code = &v
+	return s
+}
+
 func (s *ListProductInstancesResponseBody) SetData(v *ListProductInstancesResponseBodyData) *ListProductInstancesResponseBody {
 	s.Data = v
+	return s
+}
+
+func (s *ListProductInstancesResponseBody) SetMsg(v string) *ListProductInstancesResponseBody {
+	s.Msg = &v
 	return s
 }
 
@@ -11283,9 +11457,11 @@ func (s *ListProductInstancesResponseBodyData) SetList(v []*ListProductInstances
 type ListProductInstancesResponseBodyDataList struct {
 	ContinuousDeployment *bool   `json:"continuousDeployment,omitempty" xml:"continuousDeployment,omitempty"`
 	ProductName          *string `json:"productName,omitempty" xml:"productName,omitempty"`
+	ProductUID           *string `json:"productUID,omitempty" xml:"productUID,omitempty"`
 	ProductVersion       *string `json:"productVersion,omitempty" xml:"productVersion,omitempty"`
 	ProductVersionUID    *string `json:"productVersionUID,omitempty" xml:"productVersionUID,omitempty"`
 	Status               *string `json:"status,omitempty" xml:"status,omitempty"`
+	Timeout              *int64  `json:"timeout,omitempty" xml:"timeout,omitempty"`
 	Uid                  *string `json:"uid,omitempty" xml:"uid,omitempty"`
 }
 
@@ -11307,6 +11483,11 @@ func (s *ListProductInstancesResponseBodyDataList) SetProductName(v string) *Lis
 	return s
 }
 
+func (s *ListProductInstancesResponseBodyDataList) SetProductUID(v string) *ListProductInstancesResponseBodyDataList {
+	s.ProductUID = &v
+	return s
+}
+
 func (s *ListProductInstancesResponseBodyDataList) SetProductVersion(v string) *ListProductInstancesResponseBodyDataList {
 	s.ProductVersion = &v
 	return s
@@ -11319,6 +11500,11 @@ func (s *ListProductInstancesResponseBodyDataList) SetProductVersionUID(v string
 
 func (s *ListProductInstancesResponseBodyDataList) SetStatus(v string) *ListProductInstancesResponseBodyDataList {
 	s.Status = &v
+	return s
+}
+
+func (s *ListProductInstancesResponseBodyDataList) SetTimeout(v int64) *ListProductInstancesResponseBodyDataList {
+	s.Timeout = &v
 	return s
 }
 
@@ -11890,10 +12076,11 @@ func (s *ListProductVersionsResponse) SetBody(v *ListProductVersionsResponseBody
 }
 
 type ListProductsRequest struct {
-	Fuzzy    *string `json:"fuzzy,omitempty" xml:"fuzzy,omitempty"`
-	Name     *string `json:"name,omitempty" xml:"name,omitempty"`
-	PageNum  *int32  `json:"pageNum,omitempty" xml:"pageNum,omitempty"`
-	PageSize *int32  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	Fuzzy       *string `json:"fuzzy,omitempty" xml:"fuzzy,omitempty"`
+	Name        *string `json:"name,omitempty" xml:"name,omitempty"`
+	PageNum     *int32  `json:"pageNum,omitempty" xml:"pageNum,omitempty"`
+	PageSize    *int32  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
 }
 
 func (s ListProductsRequest) String() string {
@@ -11902,6 +12089,11 @@ func (s ListProductsRequest) String() string {
 
 func (s ListProductsRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ListProductsRequest) SetDescription(v string) *ListProductsRequest {
+	s.Description = &v
+	return s
 }
 
 func (s *ListProductsRequest) SetFuzzy(v string) *ListProductsRequest {
@@ -12597,6 +12789,7 @@ func (s *SetEnvironmentFoundationReferenceResponse) SetBody(v *SetEnvironmentFou
 type UpdateDeliverableRequest struct {
 	Foundation *UpdateDeliverableRequestFoundation `json:"foundation,omitempty" xml:"foundation,omitempty" type:"Struct"`
 	Products   []*UpdateDeliverableRequestProducts `json:"products,omitempty" xml:"products,omitempty" type:"Repeated"`
+	Status     *string                             `json:"status,omitempty" xml:"status,omitempty"`
 }
 
 func (s UpdateDeliverableRequest) String() string {
@@ -12614,6 +12807,11 @@ func (s *UpdateDeliverableRequest) SetFoundation(v *UpdateDeliverableRequestFoun
 
 func (s *UpdateDeliverableRequest) SetProducts(v []*UpdateDeliverableRequestProducts) *UpdateDeliverableRequest {
 	s.Products = v
+	return s
+}
+
+func (s *UpdateDeliverableRequest) SetStatus(v string) *UpdateDeliverableRequest {
+	s.Status = &v
 	return s
 }
 
@@ -12772,6 +12970,7 @@ func (s *UpdateDeliverableResponse) SetBody(v *UpdateDeliverableResponseBody) *U
 type UpdateDeliveryInstanceRequest struct {
 	DeliverableConfigUID *string `json:"deliverableConfigUID,omitempty" xml:"deliverableConfigUID,omitempty"`
 	DeliverableUID       *string `json:"deliverableUID,omitempty" xml:"deliverableUID,omitempty"`
+	Desc                 *string `json:"desc,omitempty" xml:"desc,omitempty"`
 }
 
 func (s UpdateDeliveryInstanceRequest) String() string {
@@ -12789,6 +12988,11 @@ func (s *UpdateDeliveryInstanceRequest) SetDeliverableConfigUID(v string) *Updat
 
 func (s *UpdateDeliveryInstanceRequest) SetDeliverableUID(v string) *UpdateDeliveryInstanceRequest {
 	s.DeliverableUID = &v
+	return s
+}
+
+func (s *UpdateDeliveryInstanceRequest) SetDesc(v string) *UpdateDeliveryInstanceRequest {
+	s.Desc = &v
 	return s
 }
 
@@ -13408,10 +13612,13 @@ func (s *UpdateProductResponse) SetBody(v *UpdateProductResponseBody) *UpdatePro
 
 type UpdateProductComponentVersionRequest struct {
 	ComponentOrchestrationValues *string                                     `json:"componentOrchestrationValues,omitempty" xml:"componentOrchestrationValues,omitempty"`
+	ComponentSpecificationUid    *string                                     `json:"componentSpecificationUid,omitempty" xml:"componentSpecificationUid,omitempty"`
+	ComponentSpecificationValues *string                                     `json:"componentSpecificationValues,omitempty" xml:"componentSpecificationValues,omitempty"`
 	Enable                       *bool                                       `json:"enable,omitempty" xml:"enable,omitempty"`
 	NewComponentVersionUID       *string                                     `json:"newComponentVersionUID,omitempty" xml:"newComponentVersionUID,omitempty"`
 	Policy                       *UpdateProductComponentVersionRequestPolicy `json:"policy,omitempty" xml:"policy,omitempty" type:"Struct"`
 	ReleaseName                  *string                                     `json:"releaseName,omitempty" xml:"releaseName,omitempty"`
+	UnsetComponentVersionSpec    *bool                                       `json:"unsetComponentVersionSpec,omitempty" xml:"unsetComponentVersionSpec,omitempty"`
 }
 
 func (s UpdateProductComponentVersionRequest) String() string {
@@ -13424,6 +13631,16 @@ func (s UpdateProductComponentVersionRequest) GoString() string {
 
 func (s *UpdateProductComponentVersionRequest) SetComponentOrchestrationValues(v string) *UpdateProductComponentVersionRequest {
 	s.ComponentOrchestrationValues = &v
+	return s
+}
+
+func (s *UpdateProductComponentVersionRequest) SetComponentSpecificationUid(v string) *UpdateProductComponentVersionRequest {
+	s.ComponentSpecificationUid = &v
+	return s
+}
+
+func (s *UpdateProductComponentVersionRequest) SetComponentSpecificationValues(v string) *UpdateProductComponentVersionRequest {
+	s.ComponentSpecificationValues = &v
 	return s
 }
 
@@ -13444,6 +13661,11 @@ func (s *UpdateProductComponentVersionRequest) SetPolicy(v *UpdateProductCompone
 
 func (s *UpdateProductComponentVersionRequest) SetReleaseName(v string) *UpdateProductComponentVersionRequest {
 	s.ReleaseName = &v
+	return s
+}
+
+func (s *UpdateProductComponentVersionRequest) SetUnsetComponentVersionSpec(v bool) *UpdateProductComponentVersionRequest {
+	s.UnsetComponentVersionSpec = &v
 	return s
 }
 
@@ -13632,9 +13854,11 @@ func (s *UpdateProductFoundationVersionResponse) SetBody(v *UpdateProductFoundat
 }
 
 type UpdateProductVersionRequest struct {
+	Action                *string `json:"action,omitempty" xml:"action,omitempty"`
 	ContinuousIntegration *bool   `json:"continuousIntegration,omitempty" xml:"continuousIntegration,omitempty"`
 	Description           *string `json:"description,omitempty" xml:"description,omitempty"`
 	Entry                 *string `json:"entry,omitempty" xml:"entry,omitempty"`
+	Timeout               *int64  `json:"timeout,omitempty" xml:"timeout,omitempty"`
 	Version               *string `json:"version,omitempty" xml:"version,omitempty"`
 }
 
@@ -13644,6 +13868,11 @@ func (s UpdateProductVersionRequest) String() string {
 
 func (s UpdateProductVersionRequest) GoString() string {
 	return s.String()
+}
+
+func (s *UpdateProductVersionRequest) SetAction(v string) *UpdateProductVersionRequest {
+	s.Action = &v
+	return s
 }
 
 func (s *UpdateProductVersionRequest) SetContinuousIntegration(v bool) *UpdateProductVersionRequest {
@@ -13658,6 +13887,11 @@ func (s *UpdateProductVersionRequest) SetDescription(v string) *UpdateProductVer
 
 func (s *UpdateProductVersionRequest) SetEntry(v string) *UpdateProductVersionRequest {
 	s.Entry = &v
+	return s
+}
+
+func (s *UpdateProductVersionRequest) SetTimeout(v int64) *UpdateProductVersionRequest {
+	s.Timeout = &v
 	return s
 }
 
@@ -13992,18 +14226,6 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
-func (client *Client) AddEnvironmentNodes(uid *string, request *AddEnvironmentNodesRequest) (_result *AddEnvironmentNodesResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &AddEnvironmentNodesResponse{}
-	_body, _err := client.AddEnvironmentNodesWithOptions(uid, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) AddEnvironmentNodesWithOptions(uid *string, request *AddEnvironmentNodesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *AddEnvironmentNodesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14094,11 +14316,11 @@ func (client *Client) AddEnvironmentNodesWithOptions(uid *string, request *AddEn
 	return _result, _err
 }
 
-func (client *Client) AddEnvironmentProductVersions(uid *string, request *AddEnvironmentProductVersionsRequest) (_result *AddEnvironmentProductVersionsResponse, _err error) {
+func (client *Client) AddEnvironmentNodes(uid *string, request *AddEnvironmentNodesRequest) (_result *AddEnvironmentNodesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &AddEnvironmentProductVersionsResponse{}
-	_body, _err := client.AddEnvironmentProductVersionsWithOptions(uid, request, headers, runtime)
+	_result = &AddEnvironmentNodesResponse{}
+	_body, _err := client.AddEnvironmentNodesWithOptions(uid, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -14144,11 +14366,11 @@ func (client *Client) AddEnvironmentProductVersionsWithOptions(uid *string, requ
 	return _result, _err
 }
 
-func (client *Client) AddProductComponentVersion(uid *string, componentVersionUID *string, request *AddProductComponentVersionRequest) (_result *AddProductComponentVersionResponse, _err error) {
+func (client *Client) AddEnvironmentProductVersions(uid *string, request *AddEnvironmentProductVersionsRequest) (_result *AddEnvironmentProductVersionsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &AddProductComponentVersionResponse{}
-	_body, _err := client.AddProductComponentVersionWithOptions(uid, componentVersionUID, request, headers, runtime)
+	_result = &AddEnvironmentProductVersionsResponse{}
+	_body, _err := client.AddEnvironmentProductVersionsWithOptions(uid, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -14162,6 +14384,14 @@ func (client *Client) AddProductComponentVersionWithOptions(uid *string, compone
 		return _result, _err
 	}
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ComponentVersionSpecUID)) {
+		body["componentVersionSpecUID"] = request.ComponentVersionSpecUID
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ComponentVersionSpecValues)) {
+		body["componentVersionSpecValues"] = request.ComponentVersionSpecValues
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ReleaseName)) {
 		body["releaseName"] = request.ReleaseName
 	}
@@ -14190,11 +14420,11 @@ func (client *Client) AddProductComponentVersionWithOptions(uid *string, compone
 	return _result, _err
 }
 
-func (client *Client) AddProductVersionConfig(uid *string, request *AddProductVersionConfigRequest) (_result *AddProductVersionConfigResponse, _err error) {
+func (client *Client) AddProductComponentVersion(uid *string, componentVersionUID *string, request *AddProductComponentVersionRequest) (_result *AddProductComponentVersionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &AddProductVersionConfigResponse{}
-	_body, _err := client.AddProductVersionConfigWithOptions(uid, request, headers, runtime)
+	_result = &AddProductComponentVersionResponse{}
+	_body, _err := client.AddProductComponentVersionWithOptions(uid, componentVersionUID, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -14268,11 +14498,11 @@ func (client *Client) AddProductVersionConfigWithOptions(uid *string, request *A
 	return _result, _err
 }
 
-func (client *Client) AddResourceSnapshot(request *AddResourceSnapshotRequest) (_result *AddResourceSnapshotResponse, _err error) {
+func (client *Client) AddProductVersionConfig(uid *string, request *AddProductVersionConfigRequest) (_result *AddProductVersionConfigResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &AddResourceSnapshotResponse{}
-	_body, _err := client.AddResourceSnapshotWithOptions(request, headers, runtime)
+	_result = &AddProductVersionConfigResponse{}
+	_body, _err := client.AddProductVersionConfigWithOptions(uid, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -14324,11 +14554,11 @@ func (client *Client) AddResourceSnapshotWithOptions(request *AddResourceSnapsho
 	return _result, _err
 }
 
-func (client *Client) BatchAddEnvironmentNodes(uid *string, request *BatchAddEnvironmentNodesRequest) (_result *BatchAddEnvironmentNodesResponse, _err error) {
+func (client *Client) AddResourceSnapshot(request *AddResourceSnapshotRequest) (_result *AddResourceSnapshotResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &BatchAddEnvironmentNodesResponse{}
-	_body, _err := client.BatchAddEnvironmentNodesWithOptions(uid, request, headers, runtime)
+	_result = &AddResourceSnapshotResponse{}
+	_body, _err := client.AddResourceSnapshotWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -14374,11 +14604,11 @@ func (client *Client) BatchAddEnvironmentNodesWithOptions(uid *string, request *
 	return _result, _err
 }
 
-func (client *Client) BatchAddProductVersionConfig(uid *string, request *BatchAddProductVersionConfigRequest) (_result *BatchAddProductVersionConfigResponse, _err error) {
+func (client *Client) BatchAddEnvironmentNodes(uid *string, request *BatchAddEnvironmentNodesRequest) (_result *BatchAddEnvironmentNodesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &BatchAddProductVersionConfigResponse{}
-	_body, _err := client.BatchAddProductVersionConfigWithOptions(uid, request, headers, runtime)
+	_result = &BatchAddEnvironmentNodesResponse{}
+	_body, _err := client.BatchAddEnvironmentNodesWithOptions(uid, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -14420,11 +14650,11 @@ func (client *Client) BatchAddProductVersionConfigWithOptions(uid *string, reque
 	return _result, _err
 }
 
-func (client *Client) CreateDeliverable(request *CreateDeliverableRequest) (_result *CreateDeliverableResponse, _err error) {
+func (client *Client) BatchAddProductVersionConfig(uid *string, request *BatchAddProductVersionConfigRequest) (_result *BatchAddProductVersionConfigResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &CreateDeliverableResponse{}
-	_body, _err := client.CreateDeliverableWithOptions(request, headers, runtime)
+	_result = &BatchAddProductVersionConfigResponse{}
+	_body, _err := client.BatchAddProductVersionConfigWithOptions(uid, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -14470,11 +14700,11 @@ func (client *Client) CreateDeliverableWithOptions(request *CreateDeliverableReq
 	return _result, _err
 }
 
-func (client *Client) CreateDeliveryInstance(request *CreateDeliveryInstanceRequest) (_result *CreateDeliveryInstanceResponse, _err error) {
+func (client *Client) CreateDeliverable(request *CreateDeliverableRequest) (_result *CreateDeliverableResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &CreateDeliveryInstanceResponse{}
-	_body, _err := client.CreateDeliveryInstanceWithOptions(request, headers, runtime)
+	_result = &CreateDeliverableResponse{}
+	_body, _err := client.CreateDeliverableWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -14528,11 +14758,11 @@ func (client *Client) CreateDeliveryInstanceWithOptions(request *CreateDeliveryI
 	return _result, _err
 }
 
-func (client *Client) CreateDeliveryPackage(request *CreateDeliveryPackageRequest) (_result *CreateDeliveryPackageResponse, _err error) {
+func (client *Client) CreateDeliveryInstance(request *CreateDeliveryInstanceRequest) (_result *CreateDeliveryInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &CreateDeliveryPackageResponse{}
-	_body, _err := client.CreateDeliveryPackageWithOptions(request, headers, runtime)
+	_result = &CreateDeliveryInstanceResponse{}
+	_body, _err := client.CreateDeliveryInstanceWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -14548,6 +14778,10 @@ func (client *Client) CreateDeliveryPackageWithOptions(request *CreateDeliveryPa
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.DeliverableUID)) {
 		body["deliverableUID"] = request.DeliverableUID
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DeliveryInstanceUID)) {
+		body["deliveryInstanceUID"] = request.DeliveryInstanceUID
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.OriginDeliverableUID)) {
@@ -14590,11 +14824,11 @@ func (client *Client) CreateDeliveryPackageWithOptions(request *CreateDeliveryPa
 	return _result, _err
 }
 
-func (client *Client) CreateEnvironment(request *CreateEnvironmentRequest) (_result *CreateEnvironmentResponse, _err error) {
+func (client *Client) CreateDeliveryPackage(request *CreateDeliveryPackageRequest) (_result *CreateDeliveryPackageResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &CreateEnvironmentHeaders{}
-	_result = &CreateEnvironmentResponse{}
-	_body, _err := client.CreateEnvironmentWithOptions(request, headers, runtime)
+	headers := make(map[string]*string)
+	_result = &CreateDeliveryPackageResponse{}
+	_body, _err := client.CreateDeliveryPackageWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -14681,11 +14915,11 @@ func (client *Client) CreateEnvironmentWithOptions(request *CreateEnvironmentReq
 	return _result, _err
 }
 
-func (client *Client) CreateEnvironmentLicense(uid *string, request *CreateEnvironmentLicenseRequest) (_result *CreateEnvironmentLicenseResponse, _err error) {
+func (client *Client) CreateEnvironment(request *CreateEnvironmentRequest) (_result *CreateEnvironmentResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &CreateEnvironmentLicenseResponse{}
-	_body, _err := client.CreateEnvironmentLicenseWithOptions(uid, request, headers, runtime)
+	headers := &CreateEnvironmentHeaders{}
+	_result = &CreateEnvironmentResponse{}
+	_body, _err := client.CreateEnvironmentWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -14709,6 +14943,10 @@ func (client *Client) CreateEnvironmentLicenseWithOptions(uid *string, request *
 
 	if !tea.BoolValue(util.IsUnset(request.Description)) {
 		body["description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExpireTime)) {
+		body["expireTime"] = request.ExpireTime
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.LicenseQuota)) {
@@ -14763,11 +15001,11 @@ func (client *Client) CreateEnvironmentLicenseWithOptions(uid *string, request *
 	return _result, _err
 }
 
-func (client *Client) CreateFoundationReference(request *CreateFoundationReferenceRequest) (_result *CreateFoundationReferenceResponse, _err error) {
+func (client *Client) CreateEnvironmentLicense(uid *string, request *CreateEnvironmentLicenseRequest) (_result *CreateEnvironmentLicenseResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &CreateFoundationReferenceResponse{}
-	_body, _err := client.CreateFoundationReferenceWithOptions(request, headers, runtime)
+	_result = &CreateEnvironmentLicenseResponse{}
+	_body, _err := client.CreateEnvironmentLicenseWithOptions(uid, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -14787,6 +15025,10 @@ func (client *Client) CreateFoundationReferenceWithOptions(request *CreateFounda
 
 	if !tea.BoolValue(util.IsUnset(request.ComponentConfigs)) {
 		body["componentConfigs"] = request.ComponentConfigs
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FoundationReferenceConfigs)) {
+		body["foundationReferenceConfigs"] = request.FoundationReferenceConfigs
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.FoundationVersionUID)) {
@@ -14821,11 +15063,11 @@ func (client *Client) CreateFoundationReferenceWithOptions(request *CreateFounda
 	return _result, _err
 }
 
-func (client *Client) CreateProduct(request *CreateProductRequest) (_result *CreateProductResponse, _err error) {
+func (client *Client) CreateFoundationReference(request *CreateFoundationReferenceRequest) (_result *CreateFoundationReferenceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &CreateProductHeaders{}
-	_result = &CreateProductResponse{}
-	_body, _err := client.CreateProductWithOptions(request, headers, runtime)
+	headers := make(map[string]*string)
+	_result = &CreateFoundationReferenceResponse{}
+	_body, _err := client.CreateFoundationReferenceWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -14863,6 +15105,10 @@ func (client *Client) CreateProductWithOptions(request *CreateProductRequest, he
 		body["vendor"] = request.Vendor
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.WithoutProductVersion)) {
+		body["withoutProductVersion"] = request.WithoutProductVersion
+	}
+
 	realHeaders := make(map[string]*string)
 	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
 		realHeaders = headers.CommonHeaders
@@ -14896,11 +15142,11 @@ func (client *Client) CreateProductWithOptions(request *CreateProductRequest, he
 	return _result, _err
 }
 
-func (client *Client) CreateProductDeployment(request *CreateProductDeploymentRequest) (_result *CreateProductDeploymentResponse, _err error) {
+func (client *Client) CreateProduct(request *CreateProductRequest) (_result *CreateProductResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &CreateProductDeploymentResponse{}
-	_body, _err := client.CreateProductDeploymentWithOptions(request, headers, runtime)
+	headers := &CreateProductHeaders{}
+	_result = &CreateProductResponse{}
+	_body, _err := client.CreateProductWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -14938,6 +15184,10 @@ func (client *Client) CreateProductDeploymentWithOptions(request *CreateProductD
 		body["productVersionUID"] = request.ProductVersionUID
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Timeout)) {
+		body["timeout"] = request.Timeout
+	}
+
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
@@ -14962,11 +15212,11 @@ func (client *Client) CreateProductDeploymentWithOptions(request *CreateProductD
 	return _result, _err
 }
 
-func (client *Client) CreateProductVersion(uid *string, request *CreateProductVersionRequest) (_result *CreateProductVersionResponse, _err error) {
+func (client *Client) CreateProductDeployment(request *CreateProductDeploymentRequest) (_result *CreateProductDeploymentResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &CreateProductVersionResponse{}
-	_body, _err := client.CreateProductVersionWithOptions(uid, request, headers, runtime)
+	_result = &CreateProductDeploymentResponse{}
+	_body, _err := client.CreateProductDeploymentWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -14984,9 +15234,15 @@ func (client *Client) CreateProductVersionWithOptions(uid *string, request *Crea
 		query["baseProductVersionUID"] = request.BaseProductVersionUID
 	}
 
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Version)) {
+		body["version"] = request.Version
+	}
+
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateProductVersion"),
@@ -15008,11 +15264,11 @@ func (client *Client) CreateProductVersionWithOptions(uid *string, request *Crea
 	return _result, _err
 }
 
-func (client *Client) CreateProductVersionPackage(uid *string, request *CreateProductVersionPackageRequest) (_result *CreateProductVersionPackageResponse, _err error) {
+func (client *Client) CreateProductVersion(uid *string, request *CreateProductVersionRequest) (_result *CreateProductVersionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &CreateProductVersionPackageHeaders{}
-	_result = &CreateProductVersionPackageResponse{}
-	_body, _err := client.CreateProductVersionPackageWithOptions(uid, request, headers, runtime)
+	headers := make(map[string]*string)
+	_result = &CreateProductVersionResponse{}
+	_body, _err := client.CreateProductVersionWithOptions(uid, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -15020,6 +15276,15 @@ func (client *Client) CreateProductVersionPackage(uid *string, request *CreatePr
 	return _result, _err
 }
 
+/**
+ * @deprecated
+ *
+ * @param request CreateProductVersionPackageRequest
+ * @param headers CreateProductVersionPackageHeaders
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return CreateProductVersionPackageResponse
+ */
+// Deprecated
 func (client *Client) CreateProductVersionPackageWithOptions(uid *string, request *CreateProductVersionPackageRequest, headers *CreateProductVersionPackageHeaders, runtime *util.RuntimeOptions) (_result *CreateProductVersionPackageResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15091,11 +15356,18 @@ func (client *Client) CreateProductVersionPackageWithOptions(uid *string, reques
 	return _result, _err
 }
 
-func (client *Client) DeleteEnvironment(uid *string) (_result *DeleteEnvironmentResponse, _err error) {
+/**
+ * @deprecated
+ *
+ * @param request CreateProductVersionPackageRequest
+ * @return CreateProductVersionPackageResponse
+ */
+// Deprecated
+func (client *Client) CreateProductVersionPackage(uid *string, request *CreateProductVersionPackageRequest) (_result *CreateProductVersionPackageResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &DeleteEnvironmentResponse{}
-	_body, _err := client.DeleteEnvironmentWithOptions(uid, headers, runtime)
+	headers := &CreateProductVersionPackageHeaders{}
+	_result = &CreateProductVersionPackageResponse{}
+	_body, _err := client.CreateProductVersionPackageWithOptions(uid, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -15127,11 +15399,11 @@ func (client *Client) DeleteEnvironmentWithOptions(uid *string, headers map[stri
 	return _result, _err
 }
 
-func (client *Client) DeleteEnvironmentLicense(uid *string, licenseUID *string) (_result *DeleteEnvironmentLicenseResponse, _err error) {
+func (client *Client) DeleteEnvironment(uid *string) (_result *DeleteEnvironmentResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DeleteEnvironmentLicenseResponse{}
-	_body, _err := client.DeleteEnvironmentLicenseWithOptions(uid, licenseUID, headers, runtime)
+	_result = &DeleteEnvironmentResponse{}
+	_body, _err := client.DeleteEnvironmentWithOptions(uid, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -15163,11 +15435,11 @@ func (client *Client) DeleteEnvironmentLicenseWithOptions(uid *string, licenseUI
 	return _result, _err
 }
 
-func (client *Client) DeleteEnvironmentNode(uid *string, nodeUID *string) (_result *DeleteEnvironmentNodeResponse, _err error) {
+func (client *Client) DeleteEnvironmentLicense(uid *string, licenseUID *string) (_result *DeleteEnvironmentLicenseResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DeleteEnvironmentNodeResponse{}
-	_body, _err := client.DeleteEnvironmentNodeWithOptions(uid, nodeUID, headers, runtime)
+	_result = &DeleteEnvironmentLicenseResponse{}
+	_body, _err := client.DeleteEnvironmentLicenseWithOptions(uid, licenseUID, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -15199,11 +15471,11 @@ func (client *Client) DeleteEnvironmentNodeWithOptions(uid *string, nodeUID *str
 	return _result, _err
 }
 
-func (client *Client) DeleteEnvironmentProductVersion(uid *string, productVersionUID *string) (_result *DeleteEnvironmentProductVersionResponse, _err error) {
+func (client *Client) DeleteEnvironmentNode(uid *string, nodeUID *string) (_result *DeleteEnvironmentNodeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DeleteEnvironmentProductVersionResponse{}
-	_body, _err := client.DeleteEnvironmentProductVersionWithOptions(uid, productVersionUID, headers, runtime)
+	_result = &DeleteEnvironmentNodeResponse{}
+	_body, _err := client.DeleteEnvironmentNodeWithOptions(uid, nodeUID, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -15235,11 +15507,11 @@ func (client *Client) DeleteEnvironmentProductVersionWithOptions(uid *string, pr
 	return _result, _err
 }
 
-func (client *Client) DeleteProduct(uid *string) (_result *DeleteProductResponse, _err error) {
+func (client *Client) DeleteEnvironmentProductVersion(uid *string, productVersionUID *string) (_result *DeleteEnvironmentProductVersionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DeleteProductResponse{}
-	_body, _err := client.DeleteProductWithOptions(uid, headers, runtime)
+	_result = &DeleteEnvironmentProductVersionResponse{}
+	_body, _err := client.DeleteEnvironmentProductVersionWithOptions(uid, productVersionUID, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -15271,11 +15543,11 @@ func (client *Client) DeleteProductWithOptions(uid *string, headers map[string]*
 	return _result, _err
 }
 
-func (client *Client) DeleteProductComponentVersion(uid *string, relationUID *string) (_result *DeleteProductComponentVersionResponse, _err error) {
+func (client *Client) DeleteProduct(uid *string) (_result *DeleteProductResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DeleteProductComponentVersionResponse{}
-	_body, _err := client.DeleteProductComponentVersionWithOptions(uid, relationUID, headers, runtime)
+	_result = &DeleteProductResponse{}
+	_body, _err := client.DeleteProductWithOptions(uid, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -15307,11 +15579,11 @@ func (client *Client) DeleteProductComponentVersionWithOptions(uid *string, rela
 	return _result, _err
 }
 
-func (client *Client) DeleteProductInstanceConfig(configUID *string, request *DeleteProductInstanceConfigRequest) (_result *DeleteProductInstanceConfigResponse, _err error) {
+func (client *Client) DeleteProductComponentVersion(uid *string, relationUID *string) (_result *DeleteProductComponentVersionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DeleteProductInstanceConfigResponse{}
-	_body, _err := client.DeleteProductInstanceConfigWithOptions(configUID, request, headers, runtime)
+	_result = &DeleteProductComponentVersionResponse{}
+	_body, _err := client.DeleteProductComponentVersionWithOptions(uid, relationUID, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -15357,11 +15629,11 @@ func (client *Client) DeleteProductInstanceConfigWithOptions(configUID *string, 
 	return _result, _err
 }
 
-func (client *Client) DeleteProductVersion(uid *string) (_result *DeleteProductVersionResponse, _err error) {
+func (client *Client) DeleteProductInstanceConfig(configUID *string, request *DeleteProductInstanceConfigRequest) (_result *DeleteProductInstanceConfigResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DeleteProductVersionResponse{}
-	_body, _err := client.DeleteProductVersionWithOptions(uid, headers, runtime)
+	_result = &DeleteProductInstanceConfigResponse{}
+	_body, _err := client.DeleteProductInstanceConfigWithOptions(configUID, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -15393,11 +15665,11 @@ func (client *Client) DeleteProductVersionWithOptions(uid *string, headers map[s
 	return _result, _err
 }
 
-func (client *Client) DeleteProductVersionConfig(uid *string, configUID *string) (_result *DeleteProductVersionConfigResponse, _err error) {
+func (client *Client) DeleteProductVersion(uid *string) (_result *DeleteProductVersionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DeleteProductVersionConfigResponse{}
-	_body, _err := client.DeleteProductVersionConfigWithOptions(uid, configUID, headers, runtime)
+	_result = &DeleteProductVersionResponse{}
+	_body, _err := client.DeleteProductVersionWithOptions(uid, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -15429,11 +15701,11 @@ func (client *Client) DeleteProductVersionConfigWithOptions(uid *string, configU
 	return _result, _err
 }
 
-func (client *Client) GenerateProductInstanceDeploymentConfig(request *GenerateProductInstanceDeploymentConfigRequest) (_result *GenerateProductInstanceDeploymentConfigResponse, _err error) {
+func (client *Client) DeleteProductVersionConfig(uid *string, configUID *string) (_result *DeleteProductVersionConfigResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GenerateProductInstanceDeploymentConfigResponse{}
-	_body, _err := client.GenerateProductInstanceDeploymentConfigWithOptions(request, headers, runtime)
+	_result = &DeleteProductVersionConfigResponse{}
+	_body, _err := client.DeleteProductVersionConfigWithOptions(uid, configUID, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -15449,6 +15721,10 @@ func (client *Client) GenerateProductInstanceDeploymentConfigWithOptions(request
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.EnvironmentUID)) {
 		body["environmentUID"] = request.EnvironmentUID
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PackageContentType)) {
+		body["packageContentType"] = request.PackageContentType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.PackageUID)) {
@@ -15487,11 +15763,11 @@ func (client *Client) GenerateProductInstanceDeploymentConfigWithOptions(request
 	return _result, _err
 }
 
-func (client *Client) GetComponent(uid *string) (_result *GetComponentResponse, _err error) {
+func (client *Client) GenerateProductInstanceDeploymentConfig(request *GenerateProductInstanceDeploymentConfigRequest) (_result *GenerateProductInstanceDeploymentConfigResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetComponentResponse{}
-	_body, _err := client.GetComponentWithOptions(uid, headers, runtime)
+	_result = &GenerateProductInstanceDeploymentConfigResponse{}
+	_body, _err := client.GenerateProductInstanceDeploymentConfigWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -15523,11 +15799,11 @@ func (client *Client) GetComponentWithOptions(uid *string, headers map[string]*s
 	return _result, _err
 }
 
-func (client *Client) GetComponentVersion(uid *string, versionUID *string, request *GetComponentVersionRequest) (_result *GetComponentVersionResponse, _err error) {
+func (client *Client) GetComponent(uid *string) (_result *GetComponentResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetComponentVersionResponse{}
-	_body, _err := client.GetComponentVersionWithOptions(uid, versionUID, request, headers, runtime)
+	_result = &GetComponentResponse{}
+	_body, _err := client.GetComponentWithOptions(uid, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -15569,11 +15845,11 @@ func (client *Client) GetComponentVersionWithOptions(uid *string, versionUID *st
 	return _result, _err
 }
 
-func (client *Client) GetDeliverable(uid *string) (_result *GetDeliverableResponse, _err error) {
+func (client *Client) GetComponentVersion(uid *string, versionUID *string, request *GetComponentVersionRequest) (_result *GetComponentVersionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetDeliverableResponse{}
-	_body, _err := client.GetDeliverableWithOptions(uid, headers, runtime)
+	_result = &GetComponentVersionResponse{}
+	_body, _err := client.GetComponentVersionWithOptions(uid, versionUID, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -15605,11 +15881,11 @@ func (client *Client) GetDeliverableWithOptions(uid *string, headers map[string]
 	return _result, _err
 }
 
-func (client *Client) GetDeliveryPackage(uid *string) (_result *GetDeliveryPackageResponse, _err error) {
+func (client *Client) GetDeliverable(uid *string) (_result *GetDeliverableResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetDeliveryPackageResponse{}
-	_body, _err := client.GetDeliveryPackageWithOptions(uid, headers, runtime)
+	_result = &GetDeliverableResponse{}
+	_body, _err := client.GetDeliverableWithOptions(uid, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -15641,11 +15917,11 @@ func (client *Client) GetDeliveryPackageWithOptions(uid *string, headers map[str
 	return _result, _err
 }
 
-func (client *Client) GetEnvironment(uid *string, request *GetEnvironmentRequest) (_result *GetEnvironmentResponse, _err error) {
+func (client *Client) GetDeliveryPackage(uid *string) (_result *GetDeliveryPackageResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetEnvironmentResponse{}
-	_body, _err := client.GetEnvironmentWithOptions(uid, request, headers, runtime)
+	_result = &GetDeliveryPackageResponse{}
+	_body, _err := client.GetDeliveryPackageWithOptions(uid, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -15693,11 +15969,11 @@ func (client *Client) GetEnvironmentWithOptions(uid *string, tmpReq *GetEnvironm
 	return _result, _err
 }
 
-func (client *Client) GetEnvironmentDeliveryInstance(request *GetEnvironmentDeliveryInstanceRequest) (_result *GetEnvironmentDeliveryInstanceResponse, _err error) {
+func (client *Client) GetEnvironment(uid *string, request *GetEnvironmentRequest) (_result *GetEnvironmentResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetEnvironmentDeliveryInstanceResponse{}
-	_body, _err := client.GetEnvironmentDeliveryInstanceWithOptions(request, headers, runtime)
+	_result = &GetEnvironmentResponse{}
+	_body, _err := client.GetEnvironmentWithOptions(uid, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -15743,11 +16019,11 @@ func (client *Client) GetEnvironmentDeliveryInstanceWithOptions(request *GetEnvi
 	return _result, _err
 }
 
-func (client *Client) GetEnvironmentLicense(uid *string, licenseUID *string, request *GetEnvironmentLicenseRequest) (_result *GetEnvironmentLicenseResponse, _err error) {
+func (client *Client) GetEnvironmentDeliveryInstance(request *GetEnvironmentDeliveryInstanceRequest) (_result *GetEnvironmentDeliveryInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetEnvironmentLicenseResponse{}
-	_body, _err := client.GetEnvironmentLicenseWithOptions(uid, licenseUID, request, headers, runtime)
+	_result = &GetEnvironmentDeliveryInstanceResponse{}
+	_body, _err := client.GetEnvironmentDeliveryInstanceWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -15795,11 +16071,11 @@ func (client *Client) GetEnvironmentLicenseWithOptions(uid *string, licenseUID *
 	return _result, _err
 }
 
-func (client *Client) GetEnvironmentNode(uid *string, nodeUID *string) (_result *GetEnvironmentNodeResponse, _err error) {
+func (client *Client) GetEnvironmentLicense(uid *string, licenseUID *string, request *GetEnvironmentLicenseRequest) (_result *GetEnvironmentLicenseResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetEnvironmentNodeResponse{}
-	_body, _err := client.GetEnvironmentNodeWithOptions(uid, nodeUID, headers, runtime)
+	_result = &GetEnvironmentLicenseResponse{}
+	_body, _err := client.GetEnvironmentLicenseWithOptions(uid, licenseUID, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -15831,11 +16107,11 @@ func (client *Client) GetEnvironmentNodeWithOptions(uid *string, nodeUID *string
 	return _result, _err
 }
 
-func (client *Client) GetFoundationComponentReference(componentReferenceUID *string, uid *string) (_result *GetFoundationComponentReferenceResponse, _err error) {
+func (client *Client) GetEnvironmentNode(uid *string, nodeUID *string) (_result *GetEnvironmentNodeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetFoundationComponentReferenceResponse{}
-	_body, _err := client.GetFoundationComponentReferenceWithOptions(componentReferenceUID, uid, headers, runtime)
+	_result = &GetEnvironmentNodeResponse{}
+	_body, _err := client.GetEnvironmentNodeWithOptions(uid, nodeUID, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -15867,11 +16143,11 @@ func (client *Client) GetFoundationComponentReferenceWithOptions(componentRefere
 	return _result, _err
 }
 
-func (client *Client) GetFoundationReference(uid *string) (_result *GetFoundationReferenceResponse, _err error) {
+func (client *Client) GetFoundationComponentReference(componentReferenceUID *string, uid *string) (_result *GetFoundationComponentReferenceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetFoundationReferenceResponse{}
-	_body, _err := client.GetFoundationReferenceWithOptions(uid, headers, runtime)
+	_result = &GetFoundationComponentReferenceResponse{}
+	_body, _err := client.GetFoundationComponentReferenceWithOptions(componentReferenceUID, uid, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -15903,11 +16179,11 @@ func (client *Client) GetFoundationReferenceWithOptions(uid *string, headers map
 	return _result, _err
 }
 
-func (client *Client) GetFoundationVersion(uid *string) (_result *GetFoundationVersionResponse, _err error) {
+func (client *Client) GetFoundationReference(uid *string) (_result *GetFoundationReferenceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetFoundationVersionResponse{}
-	_body, _err := client.GetFoundationVersionWithOptions(uid, headers, runtime)
+	_result = &GetFoundationReferenceResponse{}
+	_body, _err := client.GetFoundationReferenceWithOptions(uid, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -15939,11 +16215,11 @@ func (client *Client) GetFoundationVersionWithOptions(uid *string, headers map[s
 	return _result, _err
 }
 
-func (client *Client) GetProduct(uid *string, request *GetProductRequest) (_result *GetProductResponse, _err error) {
+func (client *Client) GetFoundationVersion(uid *string) (_result *GetFoundationVersionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetProductResponse{}
-	_body, _err := client.GetProductWithOptions(uid, request, headers, runtime)
+	_result = &GetFoundationVersionResponse{}
+	_body, _err := client.GetFoundationVersionWithOptions(uid, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -15985,11 +16261,11 @@ func (client *Client) GetProductWithOptions(uid *string, request *GetProductRequ
 	return _result, _err
 }
 
-func (client *Client) GetProductComponentVersion(relationUID *string, uid *string) (_result *GetProductComponentVersionResponse, _err error) {
+func (client *Client) GetProduct(uid *string, request *GetProductRequest) (_result *GetProductResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetProductComponentVersionResponse{}
-	_body, _err := client.GetProductComponentVersionWithOptions(relationUID, uid, headers, runtime)
+	_result = &GetProductResponse{}
+	_body, _err := client.GetProductWithOptions(uid, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -16021,11 +16297,11 @@ func (client *Client) GetProductComponentVersionWithOptions(relationUID *string,
 	return _result, _err
 }
 
-func (client *Client) GetProductDeployment(deploymentUID *string, request *GetProductDeploymentRequest) (_result *GetProductDeploymentResponse, _err error) {
+func (client *Client) GetProductComponentVersion(relationUID *string, uid *string) (_result *GetProductComponentVersionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetProductDeploymentResponse{}
-	_body, _err := client.GetProductDeploymentWithOptions(deploymentUID, request, headers, runtime)
+	_result = &GetProductComponentVersionResponse{}
+	_body, _err := client.GetProductComponentVersionWithOptions(relationUID, uid, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -16075,11 +16351,11 @@ func (client *Client) GetProductDeploymentWithOptions(deploymentUID *string, req
 	return _result, _err
 }
 
-func (client *Client) GetProductVersion(uid *string, request *GetProductVersionRequest) (_result *GetProductVersionResponse, _err error) {
+func (client *Client) GetProductDeployment(deploymentUID *string, request *GetProductDeploymentRequest) (_result *GetProductDeploymentResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetProductVersionResponse{}
-	_body, _err := client.GetProductVersionWithOptions(uid, request, headers, runtime)
+	_result = &GetProductDeploymentResponse{}
+	_body, _err := client.GetProductDeploymentWithOptions(deploymentUID, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -16125,11 +16401,11 @@ func (client *Client) GetProductVersionWithOptions(uid *string, request *GetProd
 	return _result, _err
 }
 
-func (client *Client) GetProductVersionDifferences(uid *string, versionUID *string, request *GetProductVersionDifferencesRequest) (_result *GetProductVersionDifferencesResponse, _err error) {
+func (client *Client) GetProductVersion(uid *string, request *GetProductVersionRequest) (_result *GetProductVersionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetProductVersionDifferencesResponse{}
-	_body, _err := client.GetProductVersionDifferencesWithOptions(uid, versionUID, request, headers, runtime)
+	_result = &GetProductVersionResponse{}
+	_body, _err := client.GetProductVersionWithOptions(uid, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -16171,11 +16447,11 @@ func (client *Client) GetProductVersionDifferencesWithOptions(uid *string, versi
 	return _result, _err
 }
 
-func (client *Client) GetProductVersionPackage(uid *string, request *GetProductVersionPackageRequest) (_result *GetProductVersionPackageResponse, _err error) {
+func (client *Client) GetProductVersionDifferences(uid *string, versionUID *string, request *GetProductVersionDifferencesRequest) (_result *GetProductVersionDifferencesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetProductVersionPackageResponse{}
-	_body, _err := client.GetProductVersionPackageWithOptions(uid, request, headers, runtime)
+	_result = &GetProductVersionDifferencesResponse{}
+	_body, _err := client.GetProductVersionDifferencesWithOptions(uid, versionUID, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -16245,11 +16521,11 @@ func (client *Client) GetProductVersionPackageWithOptions(uid *string, request *
 	return _result, _err
 }
 
-func (client *Client) GetResourceSnapshot(request *GetResourceSnapshotRequest) (_result *GetResourceSnapshotResponse, _err error) {
+func (client *Client) GetProductVersionPackage(uid *string, request *GetProductVersionPackageRequest) (_result *GetProductVersionPackageResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetResourceSnapshotResponse{}
-	_body, _err := client.GetResourceSnapshotWithOptions(request, headers, runtime)
+	_result = &GetProductVersionPackageResponse{}
+	_body, _err := client.GetProductVersionPackageWithOptions(uid, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -16295,11 +16571,11 @@ func (client *Client) GetResourceSnapshotWithOptions(request *GetResourceSnapsho
 	return _result, _err
 }
 
-func (client *Client) GetWorkflowStatus(request *GetWorkflowStatusRequest) (_result *GetWorkflowStatusResponse, _err error) {
+func (client *Client) GetResourceSnapshot(request *GetResourceSnapshotRequest) (_result *GetResourceSnapshotResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetWorkflowStatusResponse{}
-	_body, _err := client.GetWorkflowStatusWithOptions(request, headers, runtime)
+	_result = &GetResourceSnapshotResponse{}
+	_body, _err := client.GetResourceSnapshotWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -16345,11 +16621,11 @@ func (client *Client) GetWorkflowStatusWithOptions(request *GetWorkflowStatusReq
 	return _result, _err
 }
 
-func (client *Client) InitEnvironmentResource(uid *string, request *InitEnvironmentResourceRequest) (_result *InitEnvironmentResourceResponse, _err error) {
+func (client *Client) GetWorkflowStatus(request *GetWorkflowStatusRequest) (_result *GetWorkflowStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &InitEnvironmentResourceResponse{}
-	_body, _err := client.InitEnvironmentResourceWithOptions(uid, request, headers, runtime)
+	_result = &GetWorkflowStatusResponse{}
+	_body, _err := client.GetWorkflowStatusWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -16399,11 +16675,11 @@ func (client *Client) InitEnvironmentResourceWithOptions(uid *string, request *I
 	return _result, _err
 }
 
-func (client *Client) ListComponentVersions(uid *string, request *ListComponentVersionsRequest) (_result *ListComponentVersionsResponse, _err error) {
+func (client *Client) InitEnvironmentResource(uid *string, request *InitEnvironmentResourceRequest) (_result *InitEnvironmentResourceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListComponentVersionsResponse{}
-	_body, _err := client.ListComponentVersionsWithOptions(uid, request, headers, runtime)
+	_result = &InitEnvironmentResourceResponse{}
+	_body, _err := client.InitEnvironmentResourceWithOptions(uid, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -16435,6 +16711,10 @@ func (client *Client) ListComponentVersionsWithOptions(uid *string, tmpReq *List
 		query["platforms"] = request.PlatformsShrink
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Version)) {
+		query["version"] = request.Version
+	}
+
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),
@@ -16459,11 +16739,11 @@ func (client *Client) ListComponentVersionsWithOptions(uid *string, tmpReq *List
 	return _result, _err
 }
 
-func (client *Client) ListComponents(request *ListComponentsRequest) (_result *ListComponentsResponse, _err error) {
+func (client *Client) ListComponentVersions(uid *string, request *ListComponentVersionsRequest) (_result *ListComponentVersionsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListComponentsResponse{}
-	_body, _err := client.ListComponentsWithOptions(request, headers, runtime)
+	_result = &ListComponentVersionsResponse{}
+	_body, _err := client.ListComponentVersionsWithOptions(uid, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -16525,11 +16805,11 @@ func (client *Client) ListComponentsWithOptions(request *ListComponentsRequest, 
 	return _result, _err
 }
 
-func (client *Client) ListDeliveryInstanceChangeRecords(uid *string) (_result *ListDeliveryInstanceChangeRecordsResponse, _err error) {
+func (client *Client) ListComponents(request *ListComponentsRequest) (_result *ListComponentsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListDeliveryInstanceChangeRecordsResponse{}
-	_body, _err := client.ListDeliveryInstanceChangeRecordsWithOptions(uid, headers, runtime)
+	_result = &ListComponentsResponse{}
+	_body, _err := client.ListComponentsWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -16561,11 +16841,11 @@ func (client *Client) ListDeliveryInstanceChangeRecordsWithOptions(uid *string, 
 	return _result, _err
 }
 
-func (client *Client) ListDeliveryPackage(request *ListDeliveryPackageRequest) (_result *ListDeliveryPackageResponse, _err error) {
+func (client *Client) ListDeliveryInstanceChangeRecords(uid *string) (_result *ListDeliveryInstanceChangeRecordsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListDeliveryPackageResponse{}
-	_body, _err := client.ListDeliveryPackageWithOptions(request, headers, runtime)
+	_result = &ListDeliveryInstanceChangeRecordsResponse{}
+	_body, _err := client.ListDeliveryInstanceChangeRecordsWithOptions(uid, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -16607,11 +16887,11 @@ func (client *Client) ListDeliveryPackageWithOptions(request *ListDeliveryPackag
 	return _result, _err
 }
 
-func (client *Client) ListEnvironmentLicenses(uid *string, request *ListEnvironmentLicensesRequest) (_result *ListEnvironmentLicensesResponse, _err error) {
+func (client *Client) ListDeliveryPackage(request *ListDeliveryPackageRequest) (_result *ListDeliveryPackageResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListEnvironmentLicensesResponse{}
-	_body, _err := client.ListEnvironmentLicensesWithOptions(uid, request, headers, runtime)
+	_result = &ListDeliveryPackageResponse{}
+	_body, _err := client.ListDeliveryPackageWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -16665,11 +16945,11 @@ func (client *Client) ListEnvironmentLicensesWithOptions(uid *string, request *L
 	return _result, _err
 }
 
-func (client *Client) ListEnvironmentNodes(uid *string, request *ListEnvironmentNodesRequest) (_result *ListEnvironmentNodesResponse, _err error) {
+func (client *Client) ListEnvironmentLicenses(uid *string, request *ListEnvironmentLicensesRequest) (_result *ListEnvironmentLicensesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListEnvironmentNodesResponse{}
-	_body, _err := client.ListEnvironmentNodesWithOptions(uid, request, headers, runtime)
+	_result = &ListEnvironmentLicensesResponse{}
+	_body, _err := client.ListEnvironmentLicensesWithOptions(uid, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -16715,11 +16995,11 @@ func (client *Client) ListEnvironmentNodesWithOptions(uid *string, request *List
 	return _result, _err
 }
 
-func (client *Client) ListEnvironmentTunnels(uid *string) (_result *ListEnvironmentTunnelsResponse, _err error) {
+func (client *Client) ListEnvironmentNodes(uid *string, request *ListEnvironmentNodesRequest) (_result *ListEnvironmentNodesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListEnvironmentTunnelsResponse{}
-	_body, _err := client.ListEnvironmentTunnelsWithOptions(uid, headers, runtime)
+	_result = &ListEnvironmentNodesResponse{}
+	_body, _err := client.ListEnvironmentNodesWithOptions(uid, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -16751,11 +17031,11 @@ func (client *Client) ListEnvironmentTunnelsWithOptions(uid *string, headers map
 	return _result, _err
 }
 
-func (client *Client) ListEnvironments(request *ListEnvironmentsRequest) (_result *ListEnvironmentsResponse, _err error) {
+func (client *Client) ListEnvironmentTunnels(uid *string) (_result *ListEnvironmentTunnelsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListEnvironmentsResponse{}
-	_body, _err := client.ListEnvironmentsWithOptions(request, headers, runtime)
+	_result = &ListEnvironmentTunnelsResponse{}
+	_body, _err := client.ListEnvironmentTunnelsWithOptions(uid, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -16829,11 +17109,11 @@ func (client *Client) ListEnvironmentsWithOptions(request *ListEnvironmentsReque
 	return _result, _err
 }
 
-func (client *Client) ListFoundationComponentVersions(uid *string) (_result *ListFoundationComponentVersionsResponse, _err error) {
+func (client *Client) ListEnvironments(request *ListEnvironmentsRequest) (_result *ListEnvironmentsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListFoundationComponentVersionsResponse{}
-	_body, _err := client.ListFoundationComponentVersionsWithOptions(uid, headers, runtime)
+	_result = &ListEnvironmentsResponse{}
+	_body, _err := client.ListEnvironmentsWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -16841,9 +17121,19 @@ func (client *Client) ListFoundationComponentVersions(uid *string) (_result *Lis
 	return _result, _err
 }
 
-func (client *Client) ListFoundationComponentVersionsWithOptions(uid *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListFoundationComponentVersionsResponse, _err error) {
+func (client *Client) ListFoundationComponentVersionsWithOptions(uid *string, request *ListFoundationComponentVersionsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListFoundationComponentVersionsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ParentComponentRelationUID)) {
+		query["parentComponentRelationUID"] = request.ParentComponentRelationUID
+	}
+
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
+		Query:   openapiutil.Query(query),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListFoundationComponentVersions"),
@@ -16865,11 +17155,11 @@ func (client *Client) ListFoundationComponentVersionsWithOptions(uid *string, he
 	return _result, _err
 }
 
-func (client *Client) ListFoundationReferenceComponents(request *ListFoundationReferenceComponentsRequest) (_result *ListFoundationReferenceComponentsResponse, _err error) {
+func (client *Client) ListFoundationComponentVersions(uid *string, request *ListFoundationComponentVersionsRequest) (_result *ListFoundationComponentVersionsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListFoundationReferenceComponentsResponse{}
-	_body, _err := client.ListFoundationReferenceComponentsWithOptions(request, headers, runtime)
+	_result = &ListFoundationComponentVersionsResponse{}
+	_body, _err := client.ListFoundationComponentVersionsWithOptions(uid, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -16893,6 +17183,10 @@ func (client *Client) ListFoundationReferenceComponentsWithOptions(request *List
 
 	if !tea.BoolValue(util.IsUnset(request.OnlyEnabled)) {
 		query["onlyEnabled"] = request.OnlyEnabled
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ParentComponentReferenceUID)) {
+		query["parentComponentReferenceUID"] = request.ParentComponentReferenceUID
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ProductVersionUID)) {
@@ -16923,11 +17217,11 @@ func (client *Client) ListFoundationReferenceComponentsWithOptions(request *List
 	return _result, _err
 }
 
-func (client *Client) ListFoundationVersions(request *ListFoundationVersionsRequest) (_result *ListFoundationVersionsResponse, _err error) {
+func (client *Client) ListFoundationReferenceComponents(request *ListFoundationReferenceComponentsRequest) (_result *ListFoundationReferenceComponentsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListFoundationVersionsResponse{}
-	_body, _err := client.ListFoundationVersionsWithOptions(request, headers, runtime)
+	_result = &ListFoundationReferenceComponentsResponse{}
+	_body, _err := client.ListFoundationReferenceComponentsWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -16941,6 +17235,14 @@ func (client *Client) ListFoundationVersionsWithOptions(request *ListFoundationV
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.PageNum)) {
+		query["pageNum"] = request.PageNum
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["pageSize"] = request.PageSize
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.SortDirect)) {
 		query["sortDirect"] = request.SortDirect
 	}
@@ -16951,6 +17253,10 @@ func (client *Client) ListFoundationVersionsWithOptions(request *ListFoundationV
 
 	if !tea.BoolValue(util.IsUnset(request.Type)) {
 		query["type"] = request.Type
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Version)) {
+		query["version"] = request.Version
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -16977,11 +17283,11 @@ func (client *Client) ListFoundationVersionsWithOptions(request *ListFoundationV
 	return _result, _err
 }
 
-func (client *Client) ListProductComponentVersions(uid *string, request *ListProductComponentVersionsRequest) (_result *ListProductComponentVersionsResponse, _err error) {
+func (client *Client) ListFoundationVersions(request *ListFoundationVersionsRequest) (_result *ListFoundationVersionsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListProductComponentVersionsResponse{}
-	_body, _err := client.ListProductComponentVersionsWithOptions(uid, request, headers, runtime)
+	_result = &ListFoundationVersionsResponse{}
+	_body, _err := client.ListFoundationVersionsWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -17005,6 +17311,10 @@ func (client *Client) ListProductComponentVersionsWithOptions(uid *string, reque
 
 	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
 		query["pageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ReleaseName)) {
+		query["releaseName"] = request.ReleaseName
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SortDirect)) {
@@ -17039,11 +17349,11 @@ func (client *Client) ListProductComponentVersionsWithOptions(uid *string, reque
 	return _result, _err
 }
 
-func (client *Client) ListProductDeployments(request *ListProductDeploymentsRequest) (_result *ListProductDeploymentsResponse, _err error) {
+func (client *Client) ListProductComponentVersions(uid *string, request *ListProductComponentVersionsRequest) (_result *ListProductComponentVersionsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListProductDeploymentsResponse{}
-	_body, _err := client.ListProductDeploymentsWithOptions(request, headers, runtime)
+	_result = &ListProductComponentVersionsResponse{}
+	_body, _err := client.ListProductComponentVersionsWithOptions(uid, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -17097,11 +17407,11 @@ func (client *Client) ListProductDeploymentsWithOptions(request *ListProductDepl
 	return _result, _err
 }
 
-func (client *Client) ListProductEnvironments(uid *string, request *ListProductEnvironmentsRequest) (_result *ListProductEnvironmentsResponse, _err error) {
+func (client *Client) ListProductDeployments(request *ListProductDeploymentsRequest) (_result *ListProductDeploymentsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListProductEnvironmentsResponse{}
-	_body, _err := client.ListProductEnvironmentsWithOptions(uid, request, headers, runtime)
+	_result = &ListProductDeploymentsResponse{}
+	_body, _err := client.ListProductDeploymentsWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -17173,11 +17483,11 @@ func (client *Client) ListProductEnvironmentsWithOptions(uid *string, tmpReq *Li
 	return _result, _err
 }
 
-func (client *Client) ListProductFoundationReferences(uid *string) (_result *ListProductFoundationReferencesResponse, _err error) {
+func (client *Client) ListProductEnvironments(uid *string, request *ListProductEnvironmentsRequest) (_result *ListProductEnvironmentsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListProductFoundationReferencesResponse{}
-	_body, _err := client.ListProductFoundationReferencesWithOptions(uid, headers, runtime)
+	_result = &ListProductEnvironmentsResponse{}
+	_body, _err := client.ListProductEnvironmentsWithOptions(uid, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -17185,6 +17495,14 @@ func (client *Client) ListProductFoundationReferences(uid *string) (_result *Lis
 	return _result, _err
 }
 
+/**
+ * @deprecated
+ *
+ * @param headers map
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ListProductFoundationReferencesResponse
+ */
+// Deprecated
 func (client *Client) ListProductFoundationReferencesWithOptions(uid *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListProductFoundationReferencesResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -17209,11 +17527,17 @@ func (client *Client) ListProductFoundationReferencesWithOptions(uid *string, he
 	return _result, _err
 }
 
-func (client *Client) ListProductInstanceConfigs(request *ListProductInstanceConfigsRequest) (_result *ListProductInstanceConfigsResponse, _err error) {
+/**
+ * @deprecated
+ *
+ * @return ListProductFoundationReferencesResponse
+ */
+// Deprecated
+func (client *Client) ListProductFoundationReferences(uid *string) (_result *ListProductFoundationReferencesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListProductInstanceConfigsResponse{}
-	_body, _err := client.ListProductInstanceConfigsWithOptions(request, headers, runtime)
+	_result = &ListProductFoundationReferencesResponse{}
+	_body, _err := client.ListProductFoundationReferencesWithOptions(uid, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -17271,11 +17595,11 @@ func (client *Client) ListProductInstanceConfigsWithOptions(request *ListProduct
 	return _result, _err
 }
 
-func (client *Client) ListProductInstances(request *ListProductInstancesRequest) (_result *ListProductInstancesResponse, _err error) {
+func (client *Client) ListProductInstanceConfigs(request *ListProductInstanceConfigsRequest) (_result *ListProductInstanceConfigsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListProductInstancesResponse{}
-	_body, _err := client.ListProductInstancesWithOptions(request, headers, runtime)
+	_result = &ListProductInstanceConfigsResponse{}
+	_body, _err := client.ListProductInstanceConfigsWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -17339,11 +17663,11 @@ func (client *Client) ListProductInstancesWithOptions(tmpReq *ListProductInstanc
 	return _result, _err
 }
 
-func (client *Client) ListProductVersionConfigs(uid *string, request *ListProductVersionConfigsRequest) (_result *ListProductVersionConfigsResponse, _err error) {
+func (client *Client) ListProductInstances(request *ListProductInstancesRequest) (_result *ListProductInstancesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListProductVersionConfigsResponse{}
-	_body, _err := client.ListProductVersionConfigsWithOptions(uid, request, headers, runtime)
+	_result = &ListProductInstancesResponse{}
+	_body, _err := client.ListProductInstancesWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -17401,11 +17725,11 @@ func (client *Client) ListProductVersionConfigsWithOptions(uid *string, request 
 	return _result, _err
 }
 
-func (client *Client) ListProductVersions(request *ListProductVersionsRequest) (_result *ListProductVersionsResponse, _err error) {
+func (client *Client) ListProductVersionConfigs(uid *string, request *ListProductVersionConfigsRequest) (_result *ListProductVersionConfigsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListProductVersionsResponse{}
-	_body, _err := client.ListProductVersionsWithOptions(request, headers, runtime)
+	_result = &ListProductVersionConfigsResponse{}
+	_body, _err := client.ListProductVersionConfigsWithOptions(uid, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -17485,11 +17809,11 @@ func (client *Client) ListProductVersionsWithOptions(tmpReq *ListProductVersions
 	return _result, _err
 }
 
-func (client *Client) ListProducts(request *ListProductsRequest) (_result *ListProductsResponse, _err error) {
+func (client *Client) ListProductVersions(request *ListProductVersionsRequest) (_result *ListProductVersionsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListProductsResponse{}
-	_body, _err := client.ListProductsWithOptions(request, headers, runtime)
+	_result = &ListProductVersionsResponse{}
+	_body, _err := client.ListProductVersionsWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -17503,6 +17827,10 @@ func (client *Client) ListProductsWithOptions(request *ListProductsRequest, head
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["description"] = request.Description
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Fuzzy)) {
 		query["fuzzy"] = request.Fuzzy
 	}
@@ -17543,11 +17871,11 @@ func (client *Client) ListProductsWithOptions(request *ListProductsRequest, head
 	return _result, _err
 }
 
-func (client *Client) ListWorkflowTaskLogs(stepName *string, taskName *string, request *ListWorkflowTaskLogsRequest) (_result *ListWorkflowTaskLogsResponse, _err error) {
+func (client *Client) ListProducts(request *ListProductsRequest) (_result *ListProductsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListWorkflowTaskLogsResponse{}
-	_body, _err := client.ListWorkflowTaskLogsWithOptions(stepName, taskName, request, headers, runtime)
+	_result = &ListProductsResponse{}
+	_body, _err := client.ListProductsWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -17615,11 +17943,11 @@ func (client *Client) ListWorkflowTaskLogsWithOptions(stepName *string, taskName
 	return _result, _err
 }
 
-func (client *Client) PutEnvironmentTunnel(uid *string, request *PutEnvironmentTunnelRequest) (_result *PutEnvironmentTunnelResponse, _err error) {
+func (client *Client) ListWorkflowTaskLogs(stepName *string, taskName *string, request *ListWorkflowTaskLogsRequest) (_result *ListWorkflowTaskLogsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &PutEnvironmentTunnelResponse{}
-	_body, _err := client.PutEnvironmentTunnelWithOptions(uid, request, headers, runtime)
+	_result = &ListWorkflowTaskLogsResponse{}
+	_body, _err := client.ListWorkflowTaskLogsWithOptions(stepName, taskName, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -17665,11 +17993,11 @@ func (client *Client) PutEnvironmentTunnelWithOptions(uid *string, request *PutE
 	return _result, _err
 }
 
-func (client *Client) PutProductInstanceConfig(request *PutProductInstanceConfigRequest) (_result *PutProductInstanceConfigResponse, _err error) {
+func (client *Client) PutEnvironmentTunnel(uid *string, request *PutEnvironmentTunnelRequest) (_result *PutEnvironmentTunnelResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &PutProductInstanceConfigResponse{}
-	_body, _err := client.PutProductInstanceConfigWithOptions(request, headers, runtime)
+	_result = &PutEnvironmentTunnelResponse{}
+	_body, _err := client.PutEnvironmentTunnelWithOptions(uid, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -17759,11 +18087,11 @@ func (client *Client) PutProductInstanceConfigWithOptions(request *PutProductIns
 	return _result, _err
 }
 
-func (client *Client) SetEnvironmentFoundationReference(uid *string, foundationReferenceUID *string) (_result *SetEnvironmentFoundationReferenceResponse, _err error) {
+func (client *Client) PutProductInstanceConfig(request *PutProductInstanceConfigRequest) (_result *PutProductInstanceConfigResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &SetEnvironmentFoundationReferenceResponse{}
-	_body, _err := client.SetEnvironmentFoundationReferenceWithOptions(uid, foundationReferenceUID, headers, runtime)
+	_result = &PutProductInstanceConfigResponse{}
+	_body, _err := client.PutProductInstanceConfigWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -17795,11 +18123,11 @@ func (client *Client) SetEnvironmentFoundationReferenceWithOptions(uid *string, 
 	return _result, _err
 }
 
-func (client *Client) UpdateDeliverable(uid *string, request *UpdateDeliverableRequest) (_result *UpdateDeliverableResponse, _err error) {
+func (client *Client) SetEnvironmentFoundationReference(uid *string, foundationReferenceUID *string) (_result *SetEnvironmentFoundationReferenceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &UpdateDeliverableResponse{}
-	_body, _err := client.UpdateDeliverableWithOptions(uid, request, headers, runtime)
+	_result = &SetEnvironmentFoundationReferenceResponse{}
+	_body, _err := client.SetEnvironmentFoundationReferenceWithOptions(uid, foundationReferenceUID, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -17819,6 +18147,10 @@ func (client *Client) UpdateDeliverableWithOptions(uid *string, request *UpdateD
 
 	if !tea.BoolValue(util.IsUnset(request.Products)) {
 		body["products"] = request.Products
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		body["status"] = request.Status
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -17845,11 +18177,11 @@ func (client *Client) UpdateDeliverableWithOptions(uid *string, request *UpdateD
 	return _result, _err
 }
 
-func (client *Client) UpdateDeliveryInstance(uid *string, request *UpdateDeliveryInstanceRequest) (_result *UpdateDeliveryInstanceResponse, _err error) {
+func (client *Client) UpdateDeliverable(uid *string, request *UpdateDeliverableRequest) (_result *UpdateDeliverableResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &UpdateDeliveryInstanceResponse{}
-	_body, _err := client.UpdateDeliveryInstanceWithOptions(uid, request, headers, runtime)
+	_result = &UpdateDeliverableResponse{}
+	_body, _err := client.UpdateDeliverableWithOptions(uid, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -17869,6 +18201,10 @@ func (client *Client) UpdateDeliveryInstanceWithOptions(uid *string, request *Up
 
 	if !tea.BoolValue(util.IsUnset(request.DeliverableUID)) {
 		body["deliverableUID"] = request.DeliverableUID
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Desc)) {
+		body["desc"] = request.Desc
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -17895,11 +18231,11 @@ func (client *Client) UpdateDeliveryInstanceWithOptions(uid *string, request *Up
 	return _result, _err
 }
 
-func (client *Client) UpdateEnvironment(uid *string, request *UpdateEnvironmentRequest) (_result *UpdateEnvironmentResponse, _err error) {
+func (client *Client) UpdateDeliveryInstance(uid *string, request *UpdateDeliveryInstanceRequest) (_result *UpdateDeliveryInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &UpdateEnvironmentResponse{}
-	_body, _err := client.UpdateEnvironmentWithOptions(uid, request, headers, runtime)
+	_result = &UpdateDeliveryInstanceResponse{}
+	_body, _err := client.UpdateDeliveryInstanceWithOptions(uid, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -17953,11 +18289,11 @@ func (client *Client) UpdateEnvironmentWithOptions(uid *string, request *UpdateE
 	return _result, _err
 }
 
-func (client *Client) UpdateEnvironmentNode(uid *string, nodeUID *string, request *UpdateEnvironmentNodeRequest) (_result *UpdateEnvironmentNodeResponse, _err error) {
+func (client *Client) UpdateEnvironment(uid *string, request *UpdateEnvironmentRequest) (_result *UpdateEnvironmentResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &UpdateEnvironmentNodeResponse{}
-	_body, _err := client.UpdateEnvironmentNodeWithOptions(uid, nodeUID, request, headers, runtime)
+	_result = &UpdateEnvironmentResponse{}
+	_body, _err := client.UpdateEnvironmentWithOptions(uid, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -18023,11 +18359,11 @@ func (client *Client) UpdateEnvironmentNodeWithOptions(uid *string, nodeUID *str
 	return _result, _err
 }
 
-func (client *Client) UpdateEnvironmentProductVersion(uid *string, request *UpdateEnvironmentProductVersionRequest) (_result *UpdateEnvironmentProductVersionResponse, _err error) {
+func (client *Client) UpdateEnvironmentNode(uid *string, nodeUID *string, request *UpdateEnvironmentNodeRequest) (_result *UpdateEnvironmentNodeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &UpdateEnvironmentProductVersionResponse{}
-	_body, _err := client.UpdateEnvironmentProductVersionWithOptions(uid, request, headers, runtime)
+	_result = &UpdateEnvironmentNodeResponse{}
+	_body, _err := client.UpdateEnvironmentNodeWithOptions(uid, nodeUID, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -18081,11 +18417,11 @@ func (client *Client) UpdateEnvironmentProductVersionWithOptions(uid *string, re
 	return _result, _err
 }
 
-func (client *Client) UpdateFoundationComponentReference(uid *string, componentReferenceUID *string, request *UpdateFoundationComponentReferenceRequest) (_result *UpdateFoundationComponentReferenceResponse, _err error) {
+func (client *Client) UpdateEnvironmentProductVersion(uid *string, request *UpdateEnvironmentProductVersionRequest) (_result *UpdateEnvironmentProductVersionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &UpdateFoundationComponentReferenceResponse{}
-	_body, _err := client.UpdateFoundationComponentReferenceWithOptions(uid, componentReferenceUID, request, headers, runtime)
+	_result = &UpdateEnvironmentProductVersionResponse{}
+	_body, _err := client.UpdateEnvironmentProductVersionWithOptions(uid, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -18131,11 +18467,11 @@ func (client *Client) UpdateFoundationComponentReferenceWithOptions(uid *string,
 	return _result, _err
 }
 
-func (client *Client) UpdateFoundationReference(uid *string, request *UpdateFoundationReferenceRequest) (_result *UpdateFoundationReferenceResponse, _err error) {
+func (client *Client) UpdateFoundationComponentReference(uid *string, componentReferenceUID *string, request *UpdateFoundationComponentReferenceRequest) (_result *UpdateFoundationComponentReferenceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &UpdateFoundationReferenceResponse{}
-	_body, _err := client.UpdateFoundationReferenceWithOptions(uid, request, headers, runtime)
+	_result = &UpdateFoundationComponentReferenceResponse{}
+	_body, _err := client.UpdateFoundationComponentReferenceWithOptions(uid, componentReferenceUID, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -18177,11 +18513,11 @@ func (client *Client) UpdateFoundationReferenceWithOptions(uid *string, request 
 	return _result, _err
 }
 
-func (client *Client) UpdateProduct(uid *string, request *UpdateProductRequest) (_result *UpdateProductResponse, _err error) {
+func (client *Client) UpdateFoundationReference(uid *string, request *UpdateFoundationReferenceRequest) (_result *UpdateFoundationReferenceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &UpdateProductResponse{}
-	_body, _err := client.UpdateProductWithOptions(uid, request, headers, runtime)
+	_result = &UpdateFoundationReferenceResponse{}
+	_body, _err := client.UpdateFoundationReferenceWithOptions(uid, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -18235,11 +18571,11 @@ func (client *Client) UpdateProductWithOptions(uid *string, request *UpdateProdu
 	return _result, _err
 }
 
-func (client *Client) UpdateProductComponentVersion(uid *string, relationUID *string, request *UpdateProductComponentVersionRequest) (_result *UpdateProductComponentVersionResponse, _err error) {
+func (client *Client) UpdateProduct(uid *string, request *UpdateProductRequest) (_result *UpdateProductResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &UpdateProductComponentVersionResponse{}
-	_body, _err := client.UpdateProductComponentVersionWithOptions(uid, relationUID, request, headers, runtime)
+	_result = &UpdateProductResponse{}
+	_body, _err := client.UpdateProductWithOptions(uid, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -18257,6 +18593,14 @@ func (client *Client) UpdateProductComponentVersionWithOptions(uid *string, rela
 		body["componentOrchestrationValues"] = request.ComponentOrchestrationValues
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ComponentSpecificationUid)) {
+		body["componentSpecificationUid"] = request.ComponentSpecificationUid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ComponentSpecificationValues)) {
+		body["componentSpecificationValues"] = request.ComponentSpecificationValues
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Enable)) {
 		body["enable"] = request.Enable
 	}
@@ -18271,6 +18615,10 @@ func (client *Client) UpdateProductComponentVersionWithOptions(uid *string, rela
 
 	if !tea.BoolValue(util.IsUnset(request.ReleaseName)) {
 		body["releaseName"] = request.ReleaseName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UnsetComponentVersionSpec)) {
+		body["unsetComponentVersionSpec"] = request.UnsetComponentVersionSpec
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -18297,11 +18645,11 @@ func (client *Client) UpdateProductComponentVersionWithOptions(uid *string, rela
 	return _result, _err
 }
 
-func (client *Client) UpdateProductFoundationVersion(uid *string, request *UpdateProductFoundationVersionRequest) (_result *UpdateProductFoundationVersionResponse, _err error) {
+func (client *Client) UpdateProductComponentVersion(uid *string, relationUID *string, request *UpdateProductComponentVersionRequest) (_result *UpdateProductComponentVersionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &UpdateProductFoundationVersionResponse{}
-	_body, _err := client.UpdateProductFoundationVersionWithOptions(uid, request, headers, runtime)
+	_result = &UpdateProductComponentVersionResponse{}
+	_body, _err := client.UpdateProductComponentVersionWithOptions(uid, relationUID, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -18309,6 +18657,15 @@ func (client *Client) UpdateProductFoundationVersion(uid *string, request *Updat
 	return _result, _err
 }
 
+/**
+ * @deprecated
+ *
+ * @param request UpdateProductFoundationVersionRequest
+ * @param headers map
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return UpdateProductFoundationVersionResponse
+ */
+// Deprecated
 func (client *Client) UpdateProductFoundationVersionWithOptions(uid *string, request *UpdateProductFoundationVersionRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateProductFoundationVersionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18343,11 +18700,18 @@ func (client *Client) UpdateProductFoundationVersionWithOptions(uid *string, req
 	return _result, _err
 }
 
-func (client *Client) UpdateProductVersion(uid *string, request *UpdateProductVersionRequest) (_result *UpdateProductVersionResponse, _err error) {
+/**
+ * @deprecated
+ *
+ * @param request UpdateProductFoundationVersionRequest
+ * @return UpdateProductFoundationVersionResponse
+ */
+// Deprecated
+func (client *Client) UpdateProductFoundationVersion(uid *string, request *UpdateProductFoundationVersionRequest) (_result *UpdateProductFoundationVersionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &UpdateProductVersionResponse{}
-	_body, _err := client.UpdateProductVersionWithOptions(uid, request, headers, runtime)
+	_result = &UpdateProductFoundationVersionResponse{}
+	_body, _err := client.UpdateProductFoundationVersionWithOptions(uid, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -18360,6 +18724,11 @@ func (client *Client) UpdateProductVersionWithOptions(uid *string, request *Upda
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Action)) {
+		query["action"] = request.Action
+	}
+
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ContinuousIntegration)) {
 		body["continuousIntegration"] = request.ContinuousIntegration
@@ -18373,12 +18742,17 @@ func (client *Client) UpdateProductVersionWithOptions(uid *string, request *Upda
 		body["entry"] = request.Entry
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Timeout)) {
+		body["timeout"] = request.Timeout
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Version)) {
 		body["version"] = request.Version
 	}
 
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
+		Query:   openapiutil.Query(query),
 		Body:    openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
@@ -18401,11 +18775,11 @@ func (client *Client) UpdateProductVersionWithOptions(uid *string, request *Upda
 	return _result, _err
 }
 
-func (client *Client) UpdateProductVersionConfig(uid *string, configUID *string, request *UpdateProductVersionConfigRequest) (_result *UpdateProductVersionConfigResponse, _err error) {
+func (client *Client) UpdateProductVersion(uid *string, request *UpdateProductVersionRequest) (_result *UpdateProductVersionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &UpdateProductVersionConfigResponse{}
-	_body, _err := client.UpdateProductVersionConfigWithOptions(uid, configUID, request, headers, runtime)
+	_result = &UpdateProductVersionResponse{}
+	_body, _err := client.UpdateProductVersionWithOptions(uid, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -18467,11 +18841,11 @@ func (client *Client) UpdateProductVersionConfigWithOptions(uid *string, configU
 	return _result, _err
 }
 
-func (client *Client) ValidateEnvironmentTunnel(uid *string, request *ValidateEnvironmentTunnelRequest) (_result *ValidateEnvironmentTunnelResponse, _err error) {
+func (client *Client) UpdateProductVersionConfig(uid *string, configUID *string, request *UpdateProductVersionConfigRequest) (_result *UpdateProductVersionConfigResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ValidateEnvironmentTunnelResponse{}
-	_body, _err := client.ValidateEnvironmentTunnelWithOptions(uid, request, headers, runtime)
+	_result = &UpdateProductVersionConfigResponse{}
+	_body, _err := client.UpdateProductVersionConfigWithOptions(uid, configUID, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -18514,5 +18888,17 @@ func (client *Client) ValidateEnvironmentTunnelWithOptions(uid *string, request 
 		return _result, _err
 	}
 	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ValidateEnvironmentTunnel(uid *string, request *ValidateEnvironmentTunnelRequest) (_result *ValidateEnvironmentTunnelResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ValidateEnvironmentTunnelResponse{}
+	_body, _err := client.ValidateEnvironmentTunnelWithOptions(uid, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
 	return _result, _err
 }

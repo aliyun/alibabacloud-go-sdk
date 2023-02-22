@@ -1,4 +1,4 @@
-module github.com/alibabacloud-go/adp-20210720/v2
+module github.com/alibabacloud-go/adp-20210720
 
 go 1.15
 
