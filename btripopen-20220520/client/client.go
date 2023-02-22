@@ -9262,6 +9262,7 @@ type EstimatedPriceQueryRequest struct {
 	EndTime     *int64  `json:"end_time,omitempty" xml:"end_time,omitempty"`
 	ItineraryId *string `json:"itinerary_id,omitempty" xml:"itinerary_id,omitempty"`
 	StartTime   *int64  `json:"start_time,omitempty" xml:"start_time,omitempty"`
+	SubCorpId   *string `json:"sub_corp_id,omitempty" xml:"sub_corp_id,omitempty"`
 	UserId      *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
 }
 
@@ -9300,6 +9301,11 @@ func (s *EstimatedPriceQueryRequest) SetItineraryId(v string) *EstimatedPriceQue
 
 func (s *EstimatedPriceQueryRequest) SetStartTime(v int64) *EstimatedPriceQueryRequest {
 	s.StartTime = &v
+	return s
+}
+
+func (s *EstimatedPriceQueryRequest) SetSubCorpId(v string) *EstimatedPriceQueryRequest {
+	s.SubCorpId = &v
 	return s
 }
 
@@ -32974,6 +32980,10 @@ func (client *Client) EstimatedPriceQueryWithOptions(request *EstimatedPriceQuer
 
 	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
 		query["start_time"] = request.StartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SubCorpId)) {
+		query["sub_corp_id"] = request.SubCorpId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.UserId)) {
