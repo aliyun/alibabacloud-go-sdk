@@ -1504,6 +1504,127 @@ func (s *EraseVideoSubtitlesResponse) SetBody(v *EraseVideoSubtitlesResponseBody
 	return s
 }
 
+type GenerateHumanAnimeStyleVideoRequest struct {
+	CartoonStyle *string `json:"CartoonStyle,omitempty" xml:"CartoonStyle,omitempty"`
+	VideoUrl     *string `json:"VideoUrl,omitempty" xml:"VideoUrl,omitempty"`
+}
+
+func (s GenerateHumanAnimeStyleVideoRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GenerateHumanAnimeStyleVideoRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GenerateHumanAnimeStyleVideoRequest) SetCartoonStyle(v string) *GenerateHumanAnimeStyleVideoRequest {
+	s.CartoonStyle = &v
+	return s
+}
+
+func (s *GenerateHumanAnimeStyleVideoRequest) SetVideoUrl(v string) *GenerateHumanAnimeStyleVideoRequest {
+	s.VideoUrl = &v
+	return s
+}
+
+type GenerateHumanAnimeStyleVideoAdvanceRequest struct {
+	CartoonStyle   *string   `json:"CartoonStyle,omitempty" xml:"CartoonStyle,omitempty"`
+	VideoUrlObject io.Reader `json:"VideoUrl,omitempty" xml:"VideoUrl,omitempty"`
+}
+
+func (s GenerateHumanAnimeStyleVideoAdvanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GenerateHumanAnimeStyleVideoAdvanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GenerateHumanAnimeStyleVideoAdvanceRequest) SetCartoonStyle(v string) *GenerateHumanAnimeStyleVideoAdvanceRequest {
+	s.CartoonStyle = &v
+	return s
+}
+
+func (s *GenerateHumanAnimeStyleVideoAdvanceRequest) SetVideoUrlObject(v io.Reader) *GenerateHumanAnimeStyleVideoAdvanceRequest {
+	s.VideoUrlObject = v
+	return s
+}
+
+type GenerateHumanAnimeStyleVideoResponseBody struct {
+	Data      *GenerateHumanAnimeStyleVideoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                                       `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GenerateHumanAnimeStyleVideoResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GenerateHumanAnimeStyleVideoResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GenerateHumanAnimeStyleVideoResponseBody) SetData(v *GenerateHumanAnimeStyleVideoResponseBodyData) *GenerateHumanAnimeStyleVideoResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GenerateHumanAnimeStyleVideoResponseBody) SetMessage(v string) *GenerateHumanAnimeStyleVideoResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GenerateHumanAnimeStyleVideoResponseBody) SetRequestId(v string) *GenerateHumanAnimeStyleVideoResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GenerateHumanAnimeStyleVideoResponseBodyData struct {
+	VideoUrl *string `json:"VideoUrl,omitempty" xml:"VideoUrl,omitempty"`
+}
+
+func (s GenerateHumanAnimeStyleVideoResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GenerateHumanAnimeStyleVideoResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GenerateHumanAnimeStyleVideoResponseBodyData) SetVideoUrl(v string) *GenerateHumanAnimeStyleVideoResponseBodyData {
+	s.VideoUrl = &v
+	return s
+}
+
+type GenerateHumanAnimeStyleVideoResponse struct {
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GenerateHumanAnimeStyleVideoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GenerateHumanAnimeStyleVideoResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GenerateHumanAnimeStyleVideoResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GenerateHumanAnimeStyleVideoResponse) SetHeaders(v map[string]*string) *GenerateHumanAnimeStyleVideoResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GenerateHumanAnimeStyleVideoResponse) SetStatusCode(v int32) *GenerateHumanAnimeStyleVideoResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GenerateHumanAnimeStyleVideoResponse) SetBody(v *GenerateHumanAnimeStyleVideoResponseBody) *GenerateHumanAnimeStyleVideoResponse {
+	s.Body = v
+	return s
+}
+
 type GenerateVideoRequest struct {
 	Duration         *float32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
 	DurationAdaption *bool    `json:"DurationAdaption,omitempty" xml:"DurationAdaption,omitempty"`
@@ -4223,6 +4344,160 @@ func (client *Client) EraseVideoSubtitlesAdvance(request *EraseVideoSubtitlesAdv
 	}
 
 	_result = eraseVideoSubtitlesResp
+	return _result, _err
+}
+
+func (client *Client) GenerateHumanAnimeStyleVideoWithOptions(request *GenerateHumanAnimeStyleVideoRequest, runtime *util.RuntimeOptions) (_result *GenerateHumanAnimeStyleVideoResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CartoonStyle)) {
+		body["CartoonStyle"] = request.CartoonStyle
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VideoUrl)) {
+		body["VideoUrl"] = request.VideoUrl
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GenerateHumanAnimeStyleVideo"),
+		Version:     tea.String("2020-03-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GenerateHumanAnimeStyleVideoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GenerateHumanAnimeStyleVideo(request *GenerateHumanAnimeStyleVideoRequest) (_result *GenerateHumanAnimeStyleVideoResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GenerateHumanAnimeStyleVideoResponse{}
+	_body, _err := client.GenerateHumanAnimeStyleVideoWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GenerateHumanAnimeStyleVideoAdvance(request *GenerateHumanAnimeStyleVideoAdvanceRequest, runtime *util.RuntimeOptions) (_result *GenerateHumanAnimeStyleVideoResponse, _err error) {
+	// Step 0: init client
+	accessKeyId, _err := client.Credential.GetAccessKeyId()
+	if _err != nil {
+		return _result, _err
+	}
+
+	accessKeySecret, _err := client.Credential.GetAccessKeySecret()
+	if _err != nil {
+		return _result, _err
+	}
+
+	securityToken, _err := client.Credential.GetSecurityToken()
+	if _err != nil {
+		return _result, _err
+	}
+
+	credentialType := client.Credential.GetType()
+	openPlatformEndpoint := client.OpenPlatformEndpoint
+	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
+	}
+
+	if tea.BoolValue(util.IsUnset(credentialType)) {
+		credentialType = tea.String("access_key")
+	}
+
+	authConfig := &openapi.Config{
+		AccessKeyId:     accessKeyId,
+		AccessKeySecret: accessKeySecret,
+		SecurityToken:   securityToken,
+		Type:            credentialType,
+		Endpoint:        openPlatformEndpoint,
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	authClient, _err := openplatform.NewClient(authConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
+	authRequest := &openplatform.AuthorizeFileUploadRequest{
+		Product:  tea.String("videoenhan"),
+		RegionId: client.RegionId,
+	}
+	authResponse := &openplatform.AuthorizeFileUploadResponse{}
+	ossConfig := &oss.Config{
+		AccessKeySecret: accessKeySecret,
+		Type:            tea.String("access_key"),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	var ossClient *oss.Client
+	fileObj := &fileform.FileField{}
+	ossHeader := &oss.PostObjectRequestHeader{}
+	uploadRequest := &oss.PostObjectRequest{}
+	ossRuntime := &ossutil.RuntimeOptions{}
+	openapiutil.Convert(runtime, ossRuntime)
+	generateHumanAnimeStyleVideoReq := &GenerateHumanAnimeStyleVideoRequest{}
+	openapiutil.Convert(request, generateHumanAnimeStyleVideoReq)
+	if !tea.BoolValue(util.IsUnset(request.VideoUrlObject)) {
+		authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+
+		ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
+		ossClient, _err = oss.NewClient(ossConfig)
+		if _err != nil {
+			return _result, _err
+		}
+
+		fileObj = &fileform.FileField{
+			Filename:    authResponse.Body.ObjectKey,
+			Content:     request.VideoUrlObject,
+			ContentType: tea.String(""),
+		}
+		ossHeader = &oss.PostObjectRequestHeader{
+			AccessKeyId:         authResponse.Body.AccessKeyId,
+			Policy:              authResponse.Body.EncodedPolicy,
+			Signature:           authResponse.Body.Signature,
+			Key:                 authResponse.Body.ObjectKey,
+			File:                fileObj,
+			SuccessActionStatus: tea.String("201"),
+		}
+		uploadRequest = &oss.PostObjectRequest{
+			BucketName: authResponse.Body.Bucket,
+			Header:     ossHeader,
+		}
+		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+		if _err != nil {
+			return _result, _err
+		}
+		generateHumanAnimeStyleVideoReq.VideoUrl = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
+	}
+
+	generateHumanAnimeStyleVideoResp, _err := client.GenerateHumanAnimeStyleVideoWithOptions(generateHumanAnimeStyleVideoReq, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+
+	_result = generateHumanAnimeStyleVideoResp
 	return _result, _err
 }
 
