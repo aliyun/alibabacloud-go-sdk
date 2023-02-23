@@ -3693,6 +3693,7 @@ type GetJobInstanceRequest struct {
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	// The source of the namespace. This parameter is required only for a special third party.
 	NamespaceSource *string `json:"NamespaceSource,omitempty" xml:"NamespaceSource,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s GetJobInstanceRequest) String() string {
@@ -3725,6 +3726,11 @@ func (s *GetJobInstanceRequest) SetNamespace(v string) *GetJobInstanceRequest {
 
 func (s *GetJobInstanceRequest) SetNamespaceSource(v string) *GetJobInstanceRequest {
 	s.NamespaceSource = &v
+	return s
+}
+
+func (s *GetJobInstanceRequest) SetRegionId(v string) *GetJobInstanceRequest {
+	s.RegionId = &v
 	return s
 }
 
