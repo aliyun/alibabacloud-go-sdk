@@ -1959,7 +1959,8 @@ type DescribeAssetListRequest struct {
 	// *   **en**: English
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	// The UID of the member that is added in Cloud Firewall.
-	MemberUid *int64 `json:"MemberUid,omitempty" xml:"MemberUid,omitempty"`
+	MemberUid      *int64  `json:"MemberUid,omitempty" xml:"MemberUid,omitempty"`
+	NewResourceTag *string `json:"NewResourceTag,omitempty" xml:"NewResourceTag,omitempty"`
 	// The number of entries to return on each page.
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The ID of the region in which Cloud Firewall is supported.
@@ -2035,6 +2036,11 @@ func (s *DescribeAssetListRequest) SetLang(v string) *DescribeAssetListRequest {
 
 func (s *DescribeAssetListRequest) SetMemberUid(v int64) *DescribeAssetListRequest {
 	s.MemberUid = &v
+	return s
+}
+
+func (s *DescribeAssetListRequest) SetNewResourceTag(v string) *DescribeAssetListRequest {
+	s.NewResourceTag = &v
 	return s
 }
 
@@ -2119,6 +2125,7 @@ type DescribeAssetListResponseBodyAssets struct {
 	BindInstanceId *string `json:"BindInstanceId,omitempty" xml:"BindInstanceId,omitempty"`
 	// The instance name of the asset that is bound to Cloud Firewall.
 	BindInstanceName *string `json:"BindInstanceName,omitempty" xml:"BindInstanceName,omitempty"`
+	CreateTimeStamp  *string `json:"CreateTimeStamp,omitempty" xml:"CreateTimeStamp,omitempty"`
 	// The public IP address of the server.
 	InternetAddress *string `json:"InternetAddress,omitempty" xml:"InternetAddress,omitempty"`
 	// The internal IP address of the server.
@@ -2133,7 +2140,8 @@ type DescribeAssetListResponseBodyAssets struct {
 	// The UID of the member that is added in Cloud Firewall.
 	MemberUid *int64 `json:"MemberUid,omitempty" xml:"MemberUid,omitempty"`
 	// The instance name of the asset that is protected by Cloud Firewall.
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name           *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	NewResourceTag *string `json:"NewResourceTag,omitempty" xml:"NewResourceTag,omitempty"`
 	// The remarks of the asset. Valid values:
 	//
 	// *   **REGION\_NOT\_SUPPORT**: The region is not supported.
@@ -2217,6 +2225,11 @@ func (s *DescribeAssetListResponseBodyAssets) SetBindInstanceName(v string) *Des
 	return s
 }
 
+func (s *DescribeAssetListResponseBodyAssets) SetCreateTimeStamp(v string) *DescribeAssetListResponseBodyAssets {
+	s.CreateTimeStamp = &v
+	return s
+}
+
 func (s *DescribeAssetListResponseBodyAssets) SetInternetAddress(v string) *DescribeAssetListResponseBodyAssets {
 	s.InternetAddress = &v
 	return s
@@ -2239,6 +2252,11 @@ func (s *DescribeAssetListResponseBodyAssets) SetMemberUid(v int64) *DescribeAss
 
 func (s *DescribeAssetListResponseBodyAssets) SetName(v string) *DescribeAssetListResponseBodyAssets {
 	s.Name = &v
+	return s
+}
+
+func (s *DescribeAssetListResponseBodyAssets) SetNewResourceTag(v string) *DescribeAssetListResponseBodyAssets {
+	s.NewResourceTag = &v
 	return s
 }
 
@@ -4130,17 +4148,17 @@ func (s *DescribeOutgoingDestinationIPResponse) SetBody(v *DescribeOutgoingDesti
 }
 
 type DescribeOutgoingDomainRequest struct {
-	// The ID of the product category. Default value: empty. Valid values:
+	// The type of the service. This parameter is empty by default. Valid values:
 	//
-	// -  **All**: All categories.
-	// - **RiskDomain**: Risk domain name category.
-	// - **RiskIP**: Risk IP category.
-	// - **AliYun**: Cloud product category.
-	// - **NotAliYun**: Non-Cloud products.
+	// *   **All**: all services
+	// *   **RiskDomain**: risky domain names
+	// *   **RiskIP**: risky IP addresses
+	// *   **AliYun**: Alibaba Cloud services
+	// *   **NotAliYun**: third-party services
 	CategoryId *string `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
 	// The number of the page to return.
 	//
-	// Pages start from page 1. Default value: 1.
+	// Default value: 1.
 	CurrentPage *string `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	// The domain name in outbound connections.
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
@@ -4151,18 +4169,18 @@ type DescribeOutgoingDomainRequest struct {
 	// *   **zh**: Chinese (default)
 	// *   **en**: English
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The order in which you want to sort the queried information. Valid values:
+	// The order in which you want to sort the query results. Valid values:
 	//
-	// *   **asc**: the ascending order
+	// *   **asc**: the ascending order.
 	// *   **desc**: the descending order. This is the default value.
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
 	// The number of entries to return on each page.
 	//
 	// Default value: 6. Maximum value: 100.
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The public IP address of the Elastic Compute Service (ECS) instance that initiates the outbound connection.
+	// The public IP address of the Elastic Compute Service (ECS) instance that initiates outbound connections.
 	PublicIP *string `json:"PublicIP,omitempty" xml:"PublicIP,omitempty"`
-	// The field based on which you want to sort the queried information. Valid values:
+	// The field based on which you want to sort the query results. Valid values:
 	//
 	// *   **SessionCount**: the number of requests. This is the default value.
 	// *   **TotalBytes**: the total volume of traffic.
@@ -4189,7 +4207,7 @@ type DescribeOutgoingDomainRequest struct {
 	// *   **Taobao**: Taobao
 	// *   **Google**: Google
 	// *   **ThirdPartyService**: third-party service
-	// *   **FirstFlow**: the first time
+	// *   **FirstFlow**: the first time when an outbound connection is initiated
 	// *   **Downloader**: malicious download
 	// *   **Alexa Top1M**: popular website
 	// *   **Miner**: mining pool
@@ -4200,7 +4218,7 @@ type DescribeOutgoingDomainRequest struct {
 	// *   **Rogue**: rogue software
 	// *   **Botnet**: botnet
 	// *   **Suspicious**: suspicious website
-	// *   **C&C**: command and control (C&C)
+	// *   **C\&C**: command and control (C\&C)
 	// *   **Gang**: gang
 	// *   **CVE**: Common Vulnerabilities and Exposures (CVE)
 	// *   **Backdoor**: webshell
@@ -4309,8 +4327,8 @@ func (s *DescribeOutgoingDomainResponseBody) SetTotalCount(v int32) *DescribeOut
 type DescribeOutgoingDomainResponseBodyDomainList struct {
 	// Indicates whether an access control policy is configured. Valid values:
 	//
-	// *   **Uncovered**: No access control policies are configured.
-	// *   **FullCoverage**: An access control policy is configured.
+	// *   **Uncovered**: no
+	// *   **FullCoverage**: yes
 	AclCoverage *string `json:"AclCoverage,omitempty" xml:"AclCoverage,omitempty"`
 	// The suggestion in an access control policy.
 	AclRecommendDetail *string `json:"AclRecommendDetail,omitempty" xml:"AclRecommendDetail,omitempty"`
@@ -4331,7 +4349,7 @@ type DescribeOutgoingDomainResponseBodyDomainList struct {
 	// *   **Malicious**
 	// *   **Trusted**
 	CategoryClassId *string `json:"CategoryClassId,omitempty" xml:"CategoryClassId,omitempty"`
-	// The ID of the service to which the destination IP address belongs. Valid values:
+	// The type ID of the service to which the domain name belongs. Valid values:
 	//
 	// *   **Aliyun**: Alibaba Cloud services
 	// *   **NotAliyun**: third-party services
@@ -4339,7 +4357,7 @@ type DescribeOutgoingDomainResponseBodyDomainList struct {
 	// The type of the service to which the domain name belongs. Valid values:
 	//
 	// *   **Alibaba Cloud services**
-	// *   **third-party services**
+	// *   **Third-party services**
 	CategoryName *string `json:"CategoryName,omitempty" xml:"CategoryName,omitempty"`
 	// The domain name in outbound connections.
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
@@ -4355,7 +4373,7 @@ type DescribeOutgoingDomainResponseBodyDomainList struct {
 	// *   **true**: yes
 	// *   **false**: no
 	HasAclRecommend *bool `json:"HasAclRecommend,omitempty" xml:"HasAclRecommend,omitempty"`
-	// The inbound traffic.
+	// The volume of inbound traffic.
 	InBytes *int64 `json:"InBytes,omitempty" xml:"InBytes,omitempty"`
 	// Indicates whether the domain name is marked as normal. Valid values:
 	//
@@ -4364,7 +4382,7 @@ type DescribeOutgoingDomainResponseBodyDomainList struct {
 	IsMarkNormal *bool `json:"IsMarkNormal,omitempty" xml:"IsMarkNormal,omitempty"`
 	// The name of the organization.
 	Organization *string `json:"Organization,omitempty" xml:"Organization,omitempty"`
-	// The outbound traffic.
+	// The volume of outbound traffic.
 	OutBytes *int64 `json:"OutBytes,omitempty" xml:"OutBytes,omitempty"`
 	// The ID of the access control policy.
 	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
@@ -4802,74 +4820,71 @@ func (s *DescribePolicyPriorUsedResponse) SetBody(v *DescribePolicyPriorUsedResp
 }
 
 type DescribeRiskEventGroupRequest struct {
-	// The name list of the attacked application.
+	// The names of attacked applications. Set the value in the `["AttackApp1","AttackApp2"]` format.
 	AttackApp []*string `json:"AttackApp,omitempty" xml:"AttackApp,omitempty" type:"Repeated"`
 	// The attack type of the intrusion events. Valid values:
 	//
-	// * **1**: suspicious connection
-	// * **2**: command execution
-	// * **3**: brute-force attack
-	// * **4**: scanning
-	// * **5**: others
-	// * **6**: information leak
-	// * **7**: DoS attack
-	// * **8**: buffer overflow attack
-	// * **9**: web attack
-	// * **10**: trojan backdoor
-	// * **11**: computer worm
-	// * **12**: mining
-	// * **13**: reverse shell
+	// *   **1**: suspicious connection
+	// *   **2**: command execution
+	// *   **3**: brute-force attack
+	// *   **4**: scanning
+	// *   **5**: others
+	// *   **6**: information leak
+	// *   **7**: DoS attack
+	// *   **8**: buffer overflow attack
+	// *   **9**: web attack
+	// *   **10**: trojan backdoor
+	// *   **11**: computer worm
+	// *   **12**: mining
+	// *   **13**: reverse shell
 	//
 	// > If you do not specify this parameter, the intrusion events of all attack types are queried.
 	AttackType *string `json:"AttackType,omitempty" xml:"AttackType,omitempty"`
 	// The edition of Cloud Firewall that you purchase. Valid values:
 	//
-	// * **2**: Premium Edition
-	// * **3**: Enterprise Edition
-	// * **4**: Ultimate Edition
-	// * **10**: pay-as-you-go edition
+	// *   **2**: Premium Edition
+	// *   **3**: Enterprise Edition
+	// *   **4**: Ultimate Edition
+	// *   **10**: Cloud Firewall that uses the pay-as-you-go billing method
 	BuyVersion *int64 `json:"BuyVersion,omitempty" xml:"BuyVersion,omitempty"`
-	// The number of the page to return.
-	//
-	// Default value: **1**.
+	// The number of the page to return. Default value: **1**.
 	CurrentPage *string `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The type of the risk events.
-	//
+	// The type of the risk events.\
 	// Set the value to **session**, which indicates intrusion events.
 	DataType *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
 	// The direction of the traffic for the intrusion events. Valid values:
 	//
-	// * **in**: inbound
-	// * **out**: outbound
+	// *   **in**: inbound
+	// *   **out**: outbound
 	//
-	// >  If you do not specify this parameter, the intrusion events in both inbound and outbound directions are queried.
+	// > If you do not specify this parameter, the intrusion events in both inbound and outbound directions are queried.
 	Direction *string `json:"Direction,omitempty" xml:"Direction,omitempty"`
 	// The destination IP address to query. If you specify this parameter, all intrusion events with the specified destination IP address are queried.
 	DstIP *string `json:"DstIP,omitempty" xml:"DstIP,omitempty"`
 	// The ID of the destination VPC.
 	//
-	// >  You must specify this parameter when the FirewallType parameter is set to VpcFirewall.
+	// > If the FirewallType parameter is set to VpcFirewall, you must specify this parameter.
 	DstNetworkInstanceId *string `json:"DstNetworkInstanceId,omitempty" xml:"DstNetworkInstanceId,omitempty"`
 	// The end of the time range to query. The value is a UNIX timestamp. Unit: seconds.
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The type of the firewall. Valid values:
 	//
-	// * **VpcFirewall**: virtual private cloud (VPC) firewall
-	// * **InternetFirewall**: Internet firewall (default)
+	// *   **VpcFirewall**: virtual private cloud (VPC) firewall
+	// *   **InternetFirewall**: Internet firewall (default)
 	FirewallType *string `json:"FirewallType,omitempty" xml:"FirewallType,omitempty"`
-	// The language of the content within the request and the response. Valid values:
+	// The language of the content within the request and response. Valid values:
 	//
-	// * **zh**: Chinese (default)
-	// * **en**: English
+	// *   **zh**: Chinese (default)
+	// *   **en**: English
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	// Specifies whether to query the information about the geographical locations of IP addresses.
 	//
-	// * **true**: does not query the information about the geographical locations of IP addresses.
-	// * **false**: queries the information about the geographical locations of IP addresses. This is the default value.
+	// *   **true**: does not query the information about the geographical locations of IP addresses.
+	// *   **false**: queries the information about the geographical locations of IP addresses. This is the default value.
 	NoLocation *string `json:"NoLocation,omitempty" xml:"NoLocation,omitempty"`
-	// The method that is used to sort the results. Valid values:
+	// The order in which you want to sort the query results. Valid values:
 	//
-	// *   **asc**: the ascending order
+	// *   **asc**: the ascending order.
 	// *   **desc**: the descending order. This is the default value.
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
 	// The number of entries to return on each page.
@@ -4878,16 +4893,16 @@ type DescribeRiskEventGroupRequest struct {
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The status of the firewall. Valid values:
 	//
-	// * **1**: alerting
-	// * **2**: blocking
+	// *   **1**: alerting
+	// *   **2**: blocking
 	//
-	// > If you do not specify this parameter, the intrusion events that are detected by all firewalls are queried.
+	// > If you do not specify this parameter, the intrusion events that are detected by firewalls in both states are queried.
 	RuleResult *string `json:"RuleResult,omitempty" xml:"RuleResult,omitempty"`
 	// The module of the rule that is used to detect the intrusion events. Valid values:
 	//
-	// * **1**: basic protection
-	// * **2**: virtual patching
-	// * **4**: threat intelligence
+	// *   **1**: basic protection
+	// *   **2**: virtual patching
+	// *   **4**: threat intelligence
 	//
 	// > If you do not specify this parameter, the intrusion events that are detected by using all rules are queried.
 	RuleSource *string `json:"RuleSource,omitempty" xml:"RuleSource,omitempty"`
@@ -4896,19 +4911,19 @@ type DescribeRiskEventGroupRequest struct {
 	// *   **VulLevel**: The results are sorted based on the risk level field. This is the default value.
 	// *   **LastTime**: The results are sorted based on the most recent occurrence time.
 	Sort *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
-	// The source IP address to query. If you specify this parameter, all intrusion events from the specified source IP address are queried.
+	// The source IP address to query. If you specify this parameter, all intrusion events with the specified source IP address are queried.
 	SrcIP *string `json:"SrcIP,omitempty" xml:"SrcIP,omitempty"`
 	// The ID of the source VPC.
 	//
-	// >  You must specify this parameter when the FirewallType parameter is set to VpcFirewall.
+	// > If the FirewallType parameter is set to VpcFirewall, you must specify this parameter.
 	SrcNetworkInstanceId *string `json:"SrcNetworkInstanceId,omitempty" xml:"SrcNetworkInstanceId,omitempty"`
 	// The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds.
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The risk level of the intrusion events. Valid values:
 	//
-	// * **1**: low
-	// * **2**: medium
-	// * **3**: high
+	// *   **1**: low
+	// *   **2**: medium
+	// *   **3**: high
 	//
 	// > If you do not specify this parameter, the intrusion events that are at all risk levels are queried.
 	VulLevel *string `json:"VulLevel,omitempty" xml:"VulLevel,omitempty"`
@@ -5032,7 +5047,7 @@ type DescribeRiskEventGroupResponseBody struct {
 	DataList []*DescribeRiskEventGroupResponseBodyDataList `json:"DataList,omitempty" xml:"DataList,omitempty" type:"Repeated"`
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of risk events.
+	// The total number of intrusion events.
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -5064,19 +5079,19 @@ type DescribeRiskEventGroupResponseBodyDataList struct {
 	AttackApp *string `json:"AttackApp,omitempty" xml:"AttackApp,omitempty"`
 	// The attack type of the intrusion event. Valid values:
 	//
-	// * **1**: suspicious connection
-	// * **2**: command execution
-	// * **3**: brute-force attack
-	// * **4**: scanning
-	// * **5**: others
-	// * **6**: information leak
-	// * **7**: DoS attack
-	// * **8**: buffer overflow attack
-	// * **9**: web attack
-	// * **10**: trojan backdoor
-	// * **11**: computer worm
-	// * **12**: mining
-	// * **13**: reverse shell
+	// *   **1**: suspicious connection
+	// *   **2**: command execution
+	// *   **3**: brute-force attack
+	// *   **4**: scanning
+	// *   **5**: others
+	// *   **6**: information leak
+	// *   **7**: DoS attack
+	// *   **8**: buffer overflow attack
+	// *   **9**: web attack
+	// *   **10**: trojan backdoor
+	// *   **11**: computer worm
+	// *   **12**: mining
+	// *   **13**: reverse shell
 	AttackType *int32 `json:"AttackType,omitempty" xml:"AttackType,omitempty"`
 	// The description of the intrusion event.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
@@ -5095,11 +5110,13 @@ type DescribeRiskEventGroupResponseBodyDataList struct {
 	EventName *string `json:"EventName,omitempty" xml:"EventName,omitempty"`
 	// The time when the intrusion event was first detected. The value is a UNIX timestamp. Unit: seconds.
 	FirstEventTime *int32 `json:"FirstEventTime,omitempty" xml:"FirstEventTime,omitempty"`
-	// The information about the geographical location of the IP address. The value is a struct that contains the following parameters: **CityId**, **CityName**, **CountryId**, and **CountryName**.
+	// The information about the geographical location of the IP address. The value is a struct that contains the following parameters: **CityId**, **CityName**, **CountryId**, and **CountryName**.\
+	// ****************
 	IPLocationInfo *DescribeRiskEventGroupResponseBodyDataListIPLocationInfo `json:"IPLocationInfo,omitempty" xml:"IPLocationInfo,omitempty" type:"Struct"`
 	// The time when the intrusion event was last detected. The value is a UNIX timestamp. Unit: seconds.
 	LastEventTime *int32 `json:"LastEventTime,omitempty" xml:"LastEventTime,omitempty"`
-	// The information about the private IP address of the intrusion event. The value is an array that contains the following parameters: **RegionNo**, **ResourceInstanceId**, **ResourceInstanceName**, and **ResourcePrivateIP**.
+	// The information about the private IP address of the intrusion event. The value is an array that contains the following parameters: **RegionNo**, **ResourceInstanceId**, **ResourceInstanceName**, and **ResourcePrivateIP**.\
+	// ****************
 	ResourcePrivateIPList []*DescribeRiskEventGroupResponseBodyDataListResourcePrivateIPList `json:"ResourcePrivateIPList,omitempty" xml:"ResourcePrivateIPList,omitempty" type:"Repeated"`
 	// The type of the public IP address in the intrusion event. Valid values:
 	//
@@ -5124,17 +5141,17 @@ type DescribeRiskEventGroupResponseBodyDataList struct {
 	RuleSource *int32 `json:"RuleSource,omitempty" xml:"RuleSource,omitempty"`
 	// The source IP address that is included in the intrusion event.
 	SrcIP *string `json:"SrcIP,omitempty" xml:"SrcIP,omitempty"`
-	// The source IP tag. It is used to identify whether it is the cloud product back to the source IP.
+	// The tag added to the source IP address. The tag helps identify whether the source IP address is a back-to-origin IP address for a cloud service.
 	SrcIPTag *string `json:"SrcIPTag,omitempty" xml:"SrcIPTag,omitempty"`
 	// The source private IP addresses of the intrusion event.
-	//
-	// >  The value of this parameter is returned only when you set Direction to out.
 	SrcPrivateIPList []*string `json:"SrcPrivateIPList,omitempty" xml:"SrcPrivateIPList,omitempty" type:"Repeated"`
 	// The tag added to the threat intelligence that is provided for major events.
 	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
-	// The information about the destination VPC of the intrusion event. The value is a struct that contains the following parameters: **EcsInstanceId**, **EcsInstanceName**, **NetworkInstanceId**, **NetworkInstanceName**, and **RegionNo**.
+	// The information about the destination VPC of the intrusion event. The value is a struct that contains the following parameters: **EcsInstanceId**, **EcsInstanceName**, **NetworkInstanceId**, **NetworkInstanceName**, and **RegionNo**.\
+	// ********************
 	VpcDstInfo *DescribeRiskEventGroupResponseBodyDataListVpcDstInfo `json:"VpcDstInfo,omitempty" xml:"VpcDstInfo,omitempty" type:"Struct"`
-	// The information about the source VPC of the intrusion event. The value is a struct that contains the following parameters: **EcsInstanceId**, **EcsInstanceName**, **NetworkInstanceId**, **NetworkInstanceName**, and **RegionNo**.
+	// The information about the source VPC of the intrusion event. The value is a struct that contains the following parameters: **EcsInstanceId**, **EcsInstanceName**, **NetworkInstanceId**, **NetworkInstanceName**, and **RegionNo**.\
+	// ********************
 	VpcSrcInfo *DescribeRiskEventGroupResponseBodyDataListVpcSrcInfo `json:"VpcSrcInfo,omitempty" xml:"VpcSrcInfo,omitempty" type:"Struct"`
 	// The risk level of the intrusion event. Valid values:
 	//
@@ -8139,7 +8156,8 @@ type DescribeVulnerabilityProtectedListRequest struct {
 	//
 	// *   **zh**: Chinese (default)
 	// *   **en**: English
-	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	Lang      *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	MemberUid *string `json:"MemberUid,omitempty" xml:"MemberUid,omitempty"`
 	// The order in which you want to sort the queried information. Valid values:
 	//
 	// *   **asc**: the ascending order.
@@ -8209,6 +8227,11 @@ func (s *DescribeVulnerabilityProtectedListRequest) SetEndTime(v string) *Descri
 
 func (s *DescribeVulnerabilityProtectedListRequest) SetLang(v string) *DescribeVulnerabilityProtectedListRequest {
 	s.Lang = &v
+	return s
+}
+
+func (s *DescribeVulnerabilityProtectedListRequest) SetMemberUid(v string) *DescribeVulnerabilityProtectedListRequest {
+	s.MemberUid = &v
 	return s
 }
 
@@ -8339,7 +8362,8 @@ type DescribeVulnerabilityProtectedListResponseBodyVulnList struct {
 	// *   **1**: yes
 	HighlightTag *int32 `json:"HighlightTag,omitempty" xml:"HighlightTag,omitempty"`
 	// The time when the last attack was launched.
-	LastTime *int64 `json:"LastTime,omitempty" xml:"LastTime,omitempty"`
+	LastTime  *int64  `json:"LastTime,omitempty" xml:"LastTime,omitempty"`
+	MemberUid *string `json:"MemberUid,omitempty" xml:"MemberUid,omitempty"`
 	// The status of basic protection. Valid values:
 	//
 	// *   **true**: enabled
@@ -8439,6 +8463,11 @@ func (s *DescribeVulnerabilityProtectedListResponseBodyVulnList) SetHighlightTag
 
 func (s *DescribeVulnerabilityProtectedListResponseBodyVulnList) SetLastTime(v int64) *DescribeVulnerabilityProtectedListResponseBodyVulnList {
 	s.LastTime = &v
+	return s
+}
+
+func (s *DescribeVulnerabilityProtectedListResponseBodyVulnList) SetMemberUid(v string) *DescribeVulnerabilityProtectedListResponseBodyVulnList {
+	s.MemberUid = &v
 	return s
 }
 
@@ -9395,7 +9424,7 @@ type ModifyVpcFirewallCenSwitchStatusRequest struct {
 	MemberUid *string `json:"MemberUid,omitempty" xml:"MemberUid,omitempty"`
 	// The instance ID of the VPC firewall.
 	//
-	// >  You can call the [DescribeVpcFirewallCenList](~~345777~~) operation to query the instance IDs of VPC firewalls.
+	// > You can call the [DescribeVpcFirewallCenList](~~345777~~) operation to query the instance IDs of VPC firewalls.
 	VpcFirewallId *string `json:"VpcFirewallId,omitempty" xml:"VpcFirewallId,omitempty"`
 }
 
@@ -11840,6 +11869,10 @@ func (client *Client) DescribeAssetListWithOptions(request *DescribeAssetListReq
 		query["MemberUid"] = request.MemberUid
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.NewResourceTag)) {
+		query["NewResourceTag"] = request.NewResourceTag
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
 		query["PageSize"] = request.PageSize
 	}
@@ -13496,6 +13529,10 @@ func (client *Client) DescribeVulnerabilityProtectedListWithOptions(request *Des
 		query["Lang"] = request.Lang
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.MemberUid)) {
+		query["MemberUid"] = request.MemberUid
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Order)) {
 		query["Order"] = request.Order
 	}
@@ -14071,8 +14108,8 @@ func (client *Client) ModifyVpcFirewallCenConfigure(request *ModifyVpcFirewallCe
 }
 
 /**
- * You can call the ModifyVpcFirewallCenSwitchStatus operation to enable or disable a VPC firewall. The VPC firewall protects mutual access traffic between a VPC and a specified network instance that is attached to a CEN instance. The network instance can be a VPC, a virtual border router (VBR), or a Cloud Connect Network (CCN) instance. After you enable the VPC firewall, the VPC firewall protects mutual access traffic between a VPC and a specified network instance that is attached to a CEN instance. After you disable the VPC firewall, the VPC firewall no longer protects mutual access traffic between a VPC and a specified network instance that is attached to a CEN instance.
- * Before you call this operation, make sure that you have created a VPC firewall by calling the [CreateVpcFirewallCenConfigure](~~CreateVpcFirewallCenConfigure~~) operation.
+ * You can call the ModifyVpcFirewallCenSwitchStatus operation to enable or disable a VPC firewall. A VPC firewall protects mutual access traffic between a specified VPC and a network instance that is attached to a CEN instance. The network instance can be a VPC, a virtual border router (VBR), or a Cloud Connect Network (CCN) instance. After you enable the VPC firewall, the VPC firewall protects mutual access traffic between a VPC and a specified network instance that is attached to a CEN instance. After you disable the VPC firewall, the VPC firewall no longer protect mutual access traffic between a VPC and a specified network instance that is attached to a CEN instance.
+ * Before you call this operation, make sure that you have created a VPC firewall by calling the [CreateVpcFirewallCenConfigure](~~345772~~) operation.
  * ## Limits
  * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
  *
@@ -14126,8 +14163,8 @@ func (client *Client) ModifyVpcFirewallCenSwitchStatusWithOptions(request *Modif
 }
 
 /**
- * You can call the ModifyVpcFirewallCenSwitchStatus operation to enable or disable a VPC firewall. The VPC firewall protects mutual access traffic between a VPC and a specified network instance that is attached to a CEN instance. The network instance can be a VPC, a virtual border router (VBR), or a Cloud Connect Network (CCN) instance. After you enable the VPC firewall, the VPC firewall protects mutual access traffic between a VPC and a specified network instance that is attached to a CEN instance. After you disable the VPC firewall, the VPC firewall no longer protects mutual access traffic between a VPC and a specified network instance that is attached to a CEN instance.
- * Before you call this operation, make sure that you have created a VPC firewall by calling the [CreateVpcFirewallCenConfigure](~~CreateVpcFirewallCenConfigure~~) operation.
+ * You can call the ModifyVpcFirewallCenSwitchStatus operation to enable or disable a VPC firewall. A VPC firewall protects mutual access traffic between a specified VPC and a network instance that is attached to a CEN instance. The network instance can be a VPC, a virtual border router (VBR), or a Cloud Connect Network (CCN) instance. After you enable the VPC firewall, the VPC firewall protects mutual access traffic between a VPC and a specified network instance that is attached to a CEN instance. After you disable the VPC firewall, the VPC firewall no longer protect mutual access traffic between a VPC and a specified network instance that is attached to a CEN instance.
+ * Before you call this operation, make sure that you have created a VPC firewall by calling the [CreateVpcFirewallCenConfigure](~~345772~~) operation.
  * ## Limits
  * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
  *
