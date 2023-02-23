@@ -8904,8 +8904,8 @@ func (s *GetFileLastCommitResponseBodyResult) SetTitle(v string) *GetFileLastCom
 }
 
 type GetFileLastCommitResponseBodyResultSignature struct {
-	GpgKeyId           *string `json:"GpgKeyId,omitempty" xml:"GpgKeyId,omitempty"`
-	VerificationStatus *string `json:"VerificationStatus,omitempty" xml:"VerificationStatus,omitempty"`
+	GpgKeyId           *string `json:"gpgKeyId,omitempty" xml:"gpgKeyId,omitempty"`
+	VerificationStatus *string `json:"verificationStatus,omitempty" xml:"verificationStatus,omitempty"`
 }
 
 func (s GetFileLastCommitResponseBodyResultSignature) String() string {
@@ -12262,18 +12262,19 @@ func (s *GetSprintInfoResponseBody) SetSuccess(v bool) *GetSprintInfoResponseBod
 }
 
 type GetSprintInfoResponseBodySprint struct {
-	Creator         *string `json:"creator,omitempty" xml:"creator,omitempty"`
-	Description     *string `json:"description,omitempty" xml:"description,omitempty"`
-	EndDate         *int64  `json:"endDate,omitempty" xml:"endDate,omitempty"`
-	GmtCreate       *int64  `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
-	GmtModified     *int64  `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
-	Identifier      *string `json:"identifier,omitempty" xml:"identifier,omitempty"`
-	Modifier        *string `json:"modifier,omitempty" xml:"modifier,omitempty"`
-	Name            *string `json:"name,omitempty" xml:"name,omitempty"`
-	Scope           *string `json:"scope,omitempty" xml:"scope,omitempty"`
-	SpaceIdentifier *string `json:"spaceIdentifier,omitempty" xml:"spaceIdentifier,omitempty"`
-	StartDate       *int64  `json:"startDate,omitempty" xml:"startDate,omitempty"`
-	Status          *string `json:"status,omitempty" xml:"status,omitempty"`
+	Creator         *string   `json:"creator,omitempty" xml:"creator,omitempty"`
+	Description     *string   `json:"description,omitempty" xml:"description,omitempty"`
+	EndDate         *int64    `json:"endDate,omitempty" xml:"endDate,omitempty"`
+	GmtCreate       *int64    `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
+	GmtModified     *int64    `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
+	Identifier      *string   `json:"identifier,omitempty" xml:"identifier,omitempty"`
+	Modifier        *string   `json:"modifier,omitempty" xml:"modifier,omitempty"`
+	Name            *string   `json:"name,omitempty" xml:"name,omitempty"`
+	Owners          []*string `json:"owners,omitempty" xml:"owners,omitempty" type:"Repeated"`
+	Scope           *string   `json:"scope,omitempty" xml:"scope,omitempty"`
+	SpaceIdentifier *string   `json:"spaceIdentifier,omitempty" xml:"spaceIdentifier,omitempty"`
+	StartDate       *int64    `json:"startDate,omitempty" xml:"startDate,omitempty"`
+	Status          *string   `json:"status,omitempty" xml:"status,omitempty"`
 }
 
 func (s GetSprintInfoResponseBodySprint) String() string {
@@ -12321,6 +12322,11 @@ func (s *GetSprintInfoResponseBodySprint) SetModifier(v string) *GetSprintInfoRe
 
 func (s *GetSprintInfoResponseBodySprint) SetName(v string) *GetSprintInfoResponseBodySprint {
 	s.Name = &v
+	return s
+}
+
+func (s *GetSprintInfoResponseBodySprint) SetOwners(v []*string) *GetSprintInfoResponseBodySprint {
+	s.Owners = v
 	return s
 }
 
@@ -16834,6 +16840,7 @@ type ListProjectMembersResponseBodyMembers struct {
 	OrganizationUserInfo *ListProjectMembersResponseBodyMembersOrganizationUserInfo `json:"organizationUserInfo,omitempty" xml:"organizationUserInfo,omitempty" type:"Struct"`
 	RealName             *string                                                    `json:"realName,omitempty" xml:"realName,omitempty"`
 	RealNamePinyin       *string                                                    `json:"realNamePinyin,omitempty" xml:"realNamePinyin,omitempty"`
+	RoleName             *string                                                    `json:"roleName,omitempty" xml:"roleName,omitempty"`
 	Stamp                *string                                                    `json:"stamp,omitempty" xml:"stamp,omitempty"`
 	TbRoleId             *string                                                    `json:"tbRoleId,omitempty" xml:"tbRoleId,omitempty"`
 }
@@ -16928,6 +16935,11 @@ func (s *ListProjectMembersResponseBodyMembers) SetRealName(v string) *ListProje
 
 func (s *ListProjectMembersResponseBodyMembers) SetRealNamePinyin(v string) *ListProjectMembersResponseBodyMembers {
 	s.RealNamePinyin = &v
+	return s
+}
+
+func (s *ListProjectMembersResponseBodyMembers) SetRoleName(v string) *ListProjectMembersResponseBodyMembers {
+	s.RoleName = &v
 	return s
 }
 
