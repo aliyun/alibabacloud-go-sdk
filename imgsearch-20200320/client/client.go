@@ -5,24 +5,23 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/client"
+	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
 	openapiutil "github.com/alibabacloud-go/openapi-util/service"
-	openplatform "github.com/alibabacloud-go/openplatform-20191219/client"
+	openplatform "github.com/alibabacloud-go/openplatform-20191219/v2/client"
 	fileform "github.com/alibabacloud-go/tea-fileform/service"
 	oss "github.com/alibabacloud-go/tea-oss-sdk/client"
 	ossutil "github.com/alibabacloud-go/tea-oss-utils/service"
-	rpc "github.com/alibabacloud-go/tea-rpc/client"
-	util "github.com/alibabacloud-go/tea-utils/service"
+	util "github.com/alibabacloud-go/tea-utils/v2/service"
 	"github.com/alibabacloud-go/tea/tea"
 	"io"
 )
 
 type AddImageRequest struct {
 	DbName    *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
-	ImageUrl  *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
-	ExtraData *string `json:"ExtraData,omitempty" xml:"ExtraData,omitempty"`
 	EntityId  *string `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
+	ExtraData *string `json:"ExtraData,omitempty" xml:"ExtraData,omitempty"`
+	ImageUrl  *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
 }
 
 func (s AddImageRequest) String() string {
@@ -38,8 +37,8 @@ func (s *AddImageRequest) SetDbName(v string) *AddImageRequest {
 	return s
 }
 
-func (s *AddImageRequest) SetImageUrl(v string) *AddImageRequest {
-	s.ImageUrl = &v
+func (s *AddImageRequest) SetEntityId(v string) *AddImageRequest {
+	s.EntityId = &v
 	return s
 }
 
@@ -48,16 +47,16 @@ func (s *AddImageRequest) SetExtraData(v string) *AddImageRequest {
 	return s
 }
 
-func (s *AddImageRequest) SetEntityId(v string) *AddImageRequest {
-	s.EntityId = &v
+func (s *AddImageRequest) SetImageUrl(v string) *AddImageRequest {
+	s.ImageUrl = &v
 	return s
 }
 
 type AddImageAdvanceRequest struct {
-	ImageUrlObject io.Reader `json:"ImageUrlObject,omitempty" xml:"ImageUrlObject,omitempty" require:"true"`
 	DbName         *string   `json:"DbName,omitempty" xml:"DbName,omitempty"`
-	ExtraData      *string   `json:"ExtraData,omitempty" xml:"ExtraData,omitempty"`
 	EntityId       *string   `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
+	ExtraData      *string   `json:"ExtraData,omitempty" xml:"ExtraData,omitempty"`
+	ImageUrlObject io.Reader `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
 }
 
 func (s AddImageAdvanceRequest) String() string {
@@ -68,18 +67,8 @@ func (s AddImageAdvanceRequest) GoString() string {
 	return s.String()
 }
 
-func (s *AddImageAdvanceRequest) SetImageUrlObject(v io.Reader) *AddImageAdvanceRequest {
-	s.ImageUrlObject = v
-	return s
-}
-
 func (s *AddImageAdvanceRequest) SetDbName(v string) *AddImageAdvanceRequest {
 	s.DbName = &v
-	return s
-}
-
-func (s *AddImageAdvanceRequest) SetExtraData(v string) *AddImageAdvanceRequest {
-	s.ExtraData = &v
 	return s
 }
 
@@ -88,9 +77,19 @@ func (s *AddImageAdvanceRequest) SetEntityId(v string) *AddImageAdvanceRequest {
 	return s
 }
 
+func (s *AddImageAdvanceRequest) SetExtraData(v string) *AddImageAdvanceRequest {
+	s.ExtraData = &v
+	return s
+}
+
+func (s *AddImageAdvanceRequest) SetImageUrlObject(v io.Reader) *AddImageAdvanceRequest {
+	s.ImageUrlObject = v
+	return s
+}
+
 type AddImageResponseBody struct {
-	RequestId *string                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Data      *AddImageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s AddImageResponseBody) String() string {
@@ -101,13 +100,13 @@ func (s AddImageResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *AddImageResponseBody) SetRequestId(v string) *AddImageResponseBody {
-	s.RequestId = &v
+func (s *AddImageResponseBody) SetData(v *AddImageResponseBodyData) *AddImageResponseBody {
+	s.Data = v
 	return s
 }
 
-func (s *AddImageResponseBody) SetData(v *AddImageResponseBodyData) *AddImageResponseBody {
-	s.Data = v
+func (s *AddImageResponseBody) SetRequestId(v string) *AddImageResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -129,8 +128,9 @@ func (s *AddImageResponseBodyData) SetDataId(v string) *AddImageResponseBodyData
 }
 
 type AddImageResponse struct {
-	Headers map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *AddImageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *AddImageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s AddImageResponse) String() string {
@@ -143,6 +143,11 @@ func (s AddImageResponse) GoString() string {
 
 func (s *AddImageResponse) SetHeaders(v map[string]*string) *AddImageResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *AddImageResponse) SetStatusCode(v int32) *AddImageResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -186,8 +191,9 @@ func (s *CreateImageDbResponseBody) SetRequestId(v string) *CreateImageDbRespons
 }
 
 type CreateImageDbResponse struct {
-	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateImageDbResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateImageDbResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateImageDbResponse) String() string {
@@ -200,6 +206,11 @@ func (s CreateImageDbResponse) GoString() string {
 
 func (s *CreateImageDbResponse) SetHeaders(v map[string]*string) *CreateImageDbResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *CreateImageDbResponse) SetStatusCode(v int32) *CreateImageDbResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -249,8 +260,9 @@ func (s *DeleteImageResponseBody) SetRequestId(v string) *DeleteImageResponseBod
 }
 
 type DeleteImageResponse struct {
-	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteImageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteImageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteImageResponse) String() string {
@@ -263,6 +275,11 @@ func (s DeleteImageResponse) GoString() string {
 
 func (s *DeleteImageResponse) SetHeaders(v map[string]*string) *DeleteImageResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DeleteImageResponse) SetStatusCode(v int32) *DeleteImageResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -306,8 +323,9 @@ func (s *DeleteImageDbResponseBody) SetRequestId(v string) *DeleteImageDbRespons
 }
 
 type DeleteImageDbResponse struct {
-	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteImageDbResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteImageDbResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteImageDbResponse) String() string {
@@ -323,14 +341,19 @@ func (s *DeleteImageDbResponse) SetHeaders(v map[string]*string) *DeleteImageDbR
 	return s
 }
 
+func (s *DeleteImageDbResponse) SetStatusCode(v int32) *DeleteImageDbResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DeleteImageDbResponse) SetBody(v *DeleteImageDbResponseBody) *DeleteImageDbResponse {
 	s.Body = v
 	return s
 }
 
 type ListImageDbsResponseBody struct {
-	RequestId *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Data      *ListImageDbsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListImageDbsResponseBody) String() string {
@@ -341,13 +364,13 @@ func (s ListImageDbsResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ListImageDbsResponseBody) SetRequestId(v string) *ListImageDbsResponseBody {
-	s.RequestId = &v
+func (s *ListImageDbsResponseBody) SetData(v *ListImageDbsResponseBodyData) *ListImageDbsResponseBody {
+	s.Data = v
 	return s
 }
 
-func (s *ListImageDbsResponseBody) SetData(v *ListImageDbsResponseBodyData) *ListImageDbsResponseBody {
-	s.Data = v
+func (s *ListImageDbsResponseBody) SetRequestId(v string) *ListImageDbsResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -386,8 +409,9 @@ func (s *ListImageDbsResponseBodyDataDbList) SetName(v string) *ListImageDbsResp
 }
 
 type ListImageDbsResponse struct {
-	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListImageDbsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListImageDbsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListImageDbsResponse) String() string {
@@ -403,6 +427,11 @@ func (s *ListImageDbsResponse) SetHeaders(v map[string]*string) *ListImageDbsRes
 	return s
 }
 
+func (s *ListImageDbsResponse) SetStatusCode(v int32) *ListImageDbsResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ListImageDbsResponse) SetBody(v *ListImageDbsResponseBody) *ListImageDbsResponse {
 	s.Body = v
 	return s
@@ -410,11 +439,11 @@ func (s *ListImageDbsResponse) SetBody(v *ListImageDbsResponseBody) *ListImageDb
 
 type ListImagesRequest struct {
 	DbName         *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
-	Token          *string `json:"Token,omitempty" xml:"Token,omitempty"`
-	Offset         *int32  `json:"Offset,omitempty" xml:"Offset,omitempty"`
-	Limit          *int32  `json:"Limit,omitempty" xml:"Limit,omitempty"`
-	Order          *string `json:"Order,omitempty" xml:"Order,omitempty"`
 	EntityIdPrefix *string `json:"EntityIdPrefix,omitempty" xml:"EntityIdPrefix,omitempty"`
+	Limit          *int32  `json:"Limit,omitempty" xml:"Limit,omitempty"`
+	Offset         *int32  `json:"Offset,omitempty" xml:"Offset,omitempty"`
+	Order          *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	Token          *string `json:"Token,omitempty" xml:"Token,omitempty"`
 }
 
 func (s ListImagesRequest) String() string {
@@ -430,13 +459,8 @@ func (s *ListImagesRequest) SetDbName(v string) *ListImagesRequest {
 	return s
 }
 
-func (s *ListImagesRequest) SetToken(v string) *ListImagesRequest {
-	s.Token = &v
-	return s
-}
-
-func (s *ListImagesRequest) SetOffset(v int32) *ListImagesRequest {
-	s.Offset = &v
+func (s *ListImagesRequest) SetEntityIdPrefix(v string) *ListImagesRequest {
+	s.EntityIdPrefix = &v
 	return s
 }
 
@@ -445,19 +469,24 @@ func (s *ListImagesRequest) SetLimit(v int32) *ListImagesRequest {
 	return s
 }
 
+func (s *ListImagesRequest) SetOffset(v int32) *ListImagesRequest {
+	s.Offset = &v
+	return s
+}
+
 func (s *ListImagesRequest) SetOrder(v string) *ListImagesRequest {
 	s.Order = &v
 	return s
 }
 
-func (s *ListImagesRequest) SetEntityIdPrefix(v string) *ListImagesRequest {
-	s.EntityIdPrefix = &v
+func (s *ListImagesRequest) SetToken(v string) *ListImagesRequest {
+	s.Token = &v
 	return s
 }
 
 type ListImagesResponseBody struct {
-	RequestId *string                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Data      *ListImagesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListImagesResponseBody) String() string {
@@ -468,13 +497,13 @@ func (s ListImagesResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ListImagesResponseBody) SetRequestId(v string) *ListImagesResponseBody {
-	s.RequestId = &v
+func (s *ListImagesResponseBody) SetData(v *ListImagesResponseBodyData) *ListImagesResponseBody {
+	s.Data = v
 	return s
 }
 
-func (s *ListImagesResponseBody) SetData(v *ListImagesResponseBodyData) *ListImagesResponseBody {
-	s.Data = v
+func (s *ListImagesResponseBody) SetRequestId(v string) *ListImagesResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -508,11 +537,11 @@ func (s *ListImagesResponseBodyData) SetTotalCount(v int32) *ListImagesResponseB
 }
 
 type ListImagesResponseBodyDataImageList struct {
-	EntityId  *string `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
 	CreatedAt *int64  `json:"CreatedAt,omitempty" xml:"CreatedAt,omitempty"`
-	UpdatedAt *int64  `json:"UpdatedAt,omitempty" xml:"UpdatedAt,omitempty"`
 	DataId    *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
+	EntityId  *string `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
 	ExtraData *string `json:"ExtraData,omitempty" xml:"ExtraData,omitempty"`
+	UpdatedAt *int64  `json:"UpdatedAt,omitempty" xml:"UpdatedAt,omitempty"`
 }
 
 func (s ListImagesResponseBodyDataImageList) String() string {
@@ -523,18 +552,8 @@ func (s ListImagesResponseBodyDataImageList) GoString() string {
 	return s.String()
 }
 
-func (s *ListImagesResponseBodyDataImageList) SetEntityId(v string) *ListImagesResponseBodyDataImageList {
-	s.EntityId = &v
-	return s
-}
-
 func (s *ListImagesResponseBodyDataImageList) SetCreatedAt(v int64) *ListImagesResponseBodyDataImageList {
 	s.CreatedAt = &v
-	return s
-}
-
-func (s *ListImagesResponseBodyDataImageList) SetUpdatedAt(v int64) *ListImagesResponseBodyDataImageList {
-	s.UpdatedAt = &v
 	return s
 }
 
@@ -543,14 +562,25 @@ func (s *ListImagesResponseBodyDataImageList) SetDataId(v string) *ListImagesRes
 	return s
 }
 
+func (s *ListImagesResponseBodyDataImageList) SetEntityId(v string) *ListImagesResponseBodyDataImageList {
+	s.EntityId = &v
+	return s
+}
+
 func (s *ListImagesResponseBodyDataImageList) SetExtraData(v string) *ListImagesResponseBodyDataImageList {
 	s.ExtraData = &v
 	return s
 }
 
+func (s *ListImagesResponseBodyDataImageList) SetUpdatedAt(v int64) *ListImagesResponseBodyDataImageList {
+	s.UpdatedAt = &v
+	return s
+}
+
 type ListImagesResponse struct {
-	Headers map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListImagesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListImagesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListImagesResponse) String() string {
@@ -563,6 +593,11 @@ func (s ListImagesResponse) GoString() string {
 
 func (s *ListImagesResponse) SetHeaders(v map[string]*string) *ListImagesResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ListImagesResponse) SetStatusCode(v int32) *ListImagesResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -601,8 +636,8 @@ func (s *SearchImageRequest) SetLimit(v int32) *SearchImageRequest {
 }
 
 type SearchImageAdvanceRequest struct {
-	ImageUrlObject io.Reader `json:"ImageUrlObject,omitempty" xml:"ImageUrlObject,omitempty" require:"true"`
 	DbName         *string   `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	ImageUrlObject io.Reader `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
 	Limit          *int32    `json:"Limit,omitempty" xml:"Limit,omitempty"`
 }
 
@@ -614,13 +649,13 @@ func (s SearchImageAdvanceRequest) GoString() string {
 	return s.String()
 }
 
-func (s *SearchImageAdvanceRequest) SetImageUrlObject(v io.Reader) *SearchImageAdvanceRequest {
-	s.ImageUrlObject = v
+func (s *SearchImageAdvanceRequest) SetDbName(v string) *SearchImageAdvanceRequest {
+	s.DbName = &v
 	return s
 }
 
-func (s *SearchImageAdvanceRequest) SetDbName(v string) *SearchImageAdvanceRequest {
-	s.DbName = &v
+func (s *SearchImageAdvanceRequest) SetImageUrlObject(v io.Reader) *SearchImageAdvanceRequest {
+	s.ImageUrlObject = v
 	return s
 }
 
@@ -630,8 +665,8 @@ func (s *SearchImageAdvanceRequest) SetLimit(v int32) *SearchImageAdvanceRequest
 }
 
 type SearchImageResponseBody struct {
-	RequestId *string                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Data      *SearchImageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s SearchImageResponseBody) String() string {
@@ -642,13 +677,13 @@ func (s SearchImageResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *SearchImageResponseBody) SetRequestId(v string) *SearchImageResponseBody {
-	s.RequestId = &v
+func (s *SearchImageResponseBody) SetData(v *SearchImageResponseBodyData) *SearchImageResponseBody {
+	s.Data = v
 	return s
 }
 
-func (s *SearchImageResponseBody) SetData(v *SearchImageResponseBodyData) *SearchImageResponseBody {
-	s.Data = v
+func (s *SearchImageResponseBody) SetRequestId(v string) *SearchImageResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -670,11 +705,11 @@ func (s *SearchImageResponseBodyData) SetMatchList(v []*SearchImageResponseBodyD
 }
 
 type SearchImageResponseBodyDataMatchList struct {
-	ImageUrl  *string  `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
-	EntityId  *string  `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
-	Score     *float32 `json:"Score,omitempty" xml:"Score,omitempty"`
 	DataId    *string  `json:"DataId,omitempty" xml:"DataId,omitempty"`
+	EntityId  *string  `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
 	ExtraData *string  `json:"ExtraData,omitempty" xml:"ExtraData,omitempty"`
+	ImageUrl  *string  `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
+	Score     *float32 `json:"Score,omitempty" xml:"Score,omitempty"`
 }
 
 func (s SearchImageResponseBodyDataMatchList) String() string {
@@ -685,8 +720,8 @@ func (s SearchImageResponseBodyDataMatchList) GoString() string {
 	return s.String()
 }
 
-func (s *SearchImageResponseBodyDataMatchList) SetImageUrl(v string) *SearchImageResponseBodyDataMatchList {
-	s.ImageUrl = &v
+func (s *SearchImageResponseBodyDataMatchList) SetDataId(v string) *SearchImageResponseBodyDataMatchList {
+	s.DataId = &v
 	return s
 }
 
@@ -695,24 +730,25 @@ func (s *SearchImageResponseBodyDataMatchList) SetEntityId(v string) *SearchImag
 	return s
 }
 
-func (s *SearchImageResponseBodyDataMatchList) SetScore(v float32) *SearchImageResponseBodyDataMatchList {
-	s.Score = &v
-	return s
-}
-
-func (s *SearchImageResponseBodyDataMatchList) SetDataId(v string) *SearchImageResponseBodyDataMatchList {
-	s.DataId = &v
-	return s
-}
-
 func (s *SearchImageResponseBodyDataMatchList) SetExtraData(v string) *SearchImageResponseBodyDataMatchList {
 	s.ExtraData = &v
 	return s
 }
 
+func (s *SearchImageResponseBodyDataMatchList) SetImageUrl(v string) *SearchImageResponseBodyDataMatchList {
+	s.ImageUrl = &v
+	return s
+}
+
+func (s *SearchImageResponseBodyDataMatchList) SetScore(v float32) *SearchImageResponseBodyDataMatchList {
+	s.Score = &v
+	return s
+}
+
 type SearchImageResponse struct {
-	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *SearchImageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SearchImageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s SearchImageResponse) String() string {
@@ -725,6 +761,11 @@ func (s SearchImageResponse) GoString() string {
 
 func (s *SearchImageResponse) SetHeaders(v map[string]*string) *SearchImageResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *SearchImageResponse) SetStatusCode(v int32) *SearchImageResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -785,11 +826,39 @@ func (client *Client) AddImageWithOptions(request *AddImageRequest, runtime *uti
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DbName)) {
+		body["DbName"] = request.DbName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EntityId)) {
+		body["EntityId"] = request.EntityId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExtraData)) {
+		body["ExtraData"] = request.ExtraData
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ImageUrl)) {
+		body["ImageUrl"] = request.ImageUrl
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AddImage"),
+		Version:     tea.String("2020-03-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &AddImageResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("AddImage"), tea.String("2020-03-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -820,11 +889,27 @@ func (client *Client) AddImageAdvance(request *AddImageAdvanceRequest, runtime *
 		return _result, _err
 	}
 
-	authConfig := &rpc.Config{
+	securityToken, _err := client.Credential.GetSecurityToken()
+	if _err != nil {
+		return _result, _err
+	}
+
+	credentialType := client.Credential.GetType()
+	openPlatformEndpoint := client.OpenPlatformEndpoint
+	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
+	}
+
+	if tea.BoolValue(util.IsUnset(credentialType)) {
+		credentialType = tea.String("access_key")
+	}
+
+	authConfig := &openapi.Config{
 		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
-		Type:            tea.String("access_key"),
-		Endpoint:        tea.String("openplatform.aliyuncs.com"),
+		SecurityToken:   securityToken,
+		Type:            credentialType,
+		Endpoint:        openPlatformEndpoint,
 		Protocol:        client.Protocol,
 		RegionId:        client.RegionId,
 	}
@@ -852,40 +937,43 @@ func (client *Client) AddImageAdvance(request *AddImageAdvanceRequest, runtime *
 	openapiutil.Convert(runtime, ossRuntime)
 	addImageReq := &AddImageRequest{}
 	openapiutil.Convert(request, addImageReq)
-	authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
-	if _err != nil {
-		return _result, _err
+	if !tea.BoolValue(util.IsUnset(request.ImageUrlObject)) {
+		authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+
+		ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
+		ossClient, _err = oss.NewClient(ossConfig)
+		if _err != nil {
+			return _result, _err
+		}
+
+		fileObj = &fileform.FileField{
+			Filename:    authResponse.Body.ObjectKey,
+			Content:     request.ImageUrlObject,
+			ContentType: tea.String(""),
+		}
+		ossHeader = &oss.PostObjectRequestHeader{
+			AccessKeyId:         authResponse.Body.AccessKeyId,
+			Policy:              authResponse.Body.EncodedPolicy,
+			Signature:           authResponse.Body.Signature,
+			Key:                 authResponse.Body.ObjectKey,
+			File:                fileObj,
+			SuccessActionStatus: tea.String("201"),
+		}
+		uploadRequest = &oss.PostObjectRequest{
+			BucketName: authResponse.Body.Bucket,
+			Header:     ossHeader,
+		}
+		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+		if _err != nil {
+			return _result, _err
+		}
+		addImageReq.ImageUrl = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
 	}
 
-	ossConfig.AccessKeyId = authResponse.AccessKeyId
-	ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
-	ossClient, _err = oss.NewClient(ossConfig)
-	if _err != nil {
-		return _result, _err
-	}
-
-	fileObj = &fileform.FileField{
-		Filename:    authResponse.ObjectKey,
-		Content:     request.ImageUrlObject,
-		ContentType: tea.String(""),
-	}
-	ossHeader = &oss.PostObjectRequestHeader{
-		AccessKeyId:         authResponse.AccessKeyId,
-		Policy:              authResponse.EncodedPolicy,
-		Signature:           authResponse.Signature,
-		Key:                 authResponse.ObjectKey,
-		File:                fileObj,
-		SuccessActionStatus: tea.String("201"),
-	}
-	uploadRequest = &oss.PostObjectRequest{
-		BucketName: authResponse.Bucket,
-		Header:     ossHeader,
-	}
-	_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
-	if _err != nil {
-		return _result, _err
-	}
-	addImageReq.ImageUrl = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
 	addImageResp, _err := client.AddImageWithOptions(addImageReq, runtime)
 	if _err != nil {
 		return _result, _err
@@ -900,11 +988,27 @@ func (client *Client) CreateImageDbWithOptions(request *CreateImageDbRequest, ru
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["Name"] = request.Name
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateImageDb"),
+		Version:     tea.String("2020-03-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CreateImageDbResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateImageDb"), tea.String("2020-03-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -928,11 +1032,31 @@ func (client *Client) DeleteImageWithOptions(request *DeleteImageRequest, runtim
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DbName)) {
+		body["DbName"] = request.DbName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EntityId)) {
+		body["EntityId"] = request.EntityId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteImage"),
+		Version:     tea.String("2020-03-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteImageResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteImage"), tea.String("2020-03-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -956,11 +1080,27 @@ func (client *Client) DeleteImageDbWithOptions(request *DeleteImageDbRequest, ru
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["Name"] = request.Name
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteImageDb"),
+		Version:     tea.String("2020-03-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteImageDbResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteImageDb"), tea.String("2020-03-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -981,8 +1121,19 @@ func (client *Client) DeleteImageDb(request *DeleteImageDbRequest) (_result *Del
 
 func (client *Client) ListImageDbsWithOptions(runtime *util.RuntimeOptions) (_result *ListImageDbsResponse, _err error) {
 	req := &openapi.OpenApiRequest{}
+	params := &openapi.Params{
+		Action:      tea.String("ListImageDbs"),
+		Version:     tea.String("2020-03-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &ListImageDbsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListImageDbs"), tea.String("2020-03-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1006,11 +1157,47 @@ func (client *Client) ListImagesWithOptions(request *ListImagesRequest, runtime 
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DbName)) {
+		body["DbName"] = request.DbName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EntityIdPrefix)) {
+		body["EntityIdPrefix"] = request.EntityIdPrefix
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Limit)) {
+		body["Limit"] = request.Limit
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Offset)) {
+		body["Offset"] = request.Offset
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Order)) {
+		body["Order"] = request.Order
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Token)) {
+		body["Token"] = request.Token
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListImages"),
+		Version:     tea.String("2020-03-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListImagesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListImages"), tea.String("2020-03-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1034,11 +1221,35 @@ func (client *Client) SearchImageWithOptions(request *SearchImageRequest, runtim
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DbName)) {
+		body["DbName"] = request.DbName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ImageUrl)) {
+		body["ImageUrl"] = request.ImageUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Limit)) {
+		body["Limit"] = request.Limit
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SearchImage"),
+		Version:     tea.String("2020-03-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &SearchImageResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("SearchImage"), tea.String("2020-03-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1069,11 +1280,27 @@ func (client *Client) SearchImageAdvance(request *SearchImageAdvanceRequest, run
 		return _result, _err
 	}
 
-	authConfig := &rpc.Config{
+	securityToken, _err := client.Credential.GetSecurityToken()
+	if _err != nil {
+		return _result, _err
+	}
+
+	credentialType := client.Credential.GetType()
+	openPlatformEndpoint := client.OpenPlatformEndpoint
+	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
+	}
+
+	if tea.BoolValue(util.IsUnset(credentialType)) {
+		credentialType = tea.String("access_key")
+	}
+
+	authConfig := &openapi.Config{
 		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
-		Type:            tea.String("access_key"),
-		Endpoint:        tea.String("openplatform.aliyuncs.com"),
+		SecurityToken:   securityToken,
+		Type:            credentialType,
+		Endpoint:        openPlatformEndpoint,
 		Protocol:        client.Protocol,
 		RegionId:        client.RegionId,
 	}
@@ -1101,40 +1328,43 @@ func (client *Client) SearchImageAdvance(request *SearchImageAdvanceRequest, run
 	openapiutil.Convert(runtime, ossRuntime)
 	searchImageReq := &SearchImageRequest{}
 	openapiutil.Convert(request, searchImageReq)
-	authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
-	if _err != nil {
-		return _result, _err
+	if !tea.BoolValue(util.IsUnset(request.ImageUrlObject)) {
+		authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+
+		ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
+		ossClient, _err = oss.NewClient(ossConfig)
+		if _err != nil {
+			return _result, _err
+		}
+
+		fileObj = &fileform.FileField{
+			Filename:    authResponse.Body.ObjectKey,
+			Content:     request.ImageUrlObject,
+			ContentType: tea.String(""),
+		}
+		ossHeader = &oss.PostObjectRequestHeader{
+			AccessKeyId:         authResponse.Body.AccessKeyId,
+			Policy:              authResponse.Body.EncodedPolicy,
+			Signature:           authResponse.Body.Signature,
+			Key:                 authResponse.Body.ObjectKey,
+			File:                fileObj,
+			SuccessActionStatus: tea.String("201"),
+		}
+		uploadRequest = &oss.PostObjectRequest{
+			BucketName: authResponse.Body.Bucket,
+			Header:     ossHeader,
+		}
+		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+		if _err != nil {
+			return _result, _err
+		}
+		searchImageReq.ImageUrl = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
 	}
 
-	ossConfig.AccessKeyId = authResponse.AccessKeyId
-	ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
-	ossClient, _err = oss.NewClient(ossConfig)
-	if _err != nil {
-		return _result, _err
-	}
-
-	fileObj = &fileform.FileField{
-		Filename:    authResponse.ObjectKey,
-		Content:     request.ImageUrlObject,
-		ContentType: tea.String(""),
-	}
-	ossHeader = &oss.PostObjectRequestHeader{
-		AccessKeyId:         authResponse.AccessKeyId,
-		Policy:              authResponse.EncodedPolicy,
-		Signature:           authResponse.Signature,
-		Key:                 authResponse.ObjectKey,
-		File:                fileObj,
-		SuccessActionStatus: tea.String("201"),
-	}
-	uploadRequest = &oss.PostObjectRequest{
-		BucketName: authResponse.Bucket,
-		Header:     ossHeader,
-	}
-	_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
-	if _err != nil {
-		return _result, _err
-	}
-	searchImageReq.ImageUrl = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
 	searchImageResp, _err := client.SearchImageWithOptions(searchImageReq, runtime)
 	if _err != nil {
 		return _result, _err
