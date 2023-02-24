@@ -1,3 +1,6 @@
+2023-02-24 Version: v3.0.1
+- Support create keys and secrets API with DKMS.
+
 2022-09-23 Version: v3.0.0
 - Generated golang 2016-01-20 for Kms.
 
