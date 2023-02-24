@@ -2353,6 +2353,7 @@ type ThreeElementsVerificationRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	RouteName            *string `json:"RouteName,omitempty" xml:"RouteName,omitempty"`
 }
 
 func (s ThreeElementsVerificationRequest) String() string {
@@ -2400,6 +2401,11 @@ func (s *ThreeElementsVerificationRequest) SetResourceOwnerAccount(v string) *Th
 
 func (s *ThreeElementsVerificationRequest) SetResourceOwnerId(v int64) *ThreeElementsVerificationRequest {
 	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *ThreeElementsVerificationRequest) SetRouteName(v string) *ThreeElementsVerificationRequest {
+	s.RouteName = &v
 	return s
 }
 
@@ -3793,6 +3799,10 @@ func (client *Client) ThreeElementsVerificationWithOptions(request *ThreeElement
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
 		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RouteName)) {
+		query["RouteName"] = request.RouteName
 	}
 
 	req := &openapi.OpenApiRequest{
