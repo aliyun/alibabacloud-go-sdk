@@ -7113,6 +7113,95 @@ func (s *DeleteVariableGroupResponse) SetBody(v *DeleteVariableGroupResponseBody
 	return s
 }
 
+type DeleteWorkitemRequest struct {
+	Identifier *string `json:"identifier,omitempty" xml:"identifier,omitempty"`
+}
+
+func (s DeleteWorkitemRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteWorkitemRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteWorkitemRequest) SetIdentifier(v string) *DeleteWorkitemRequest {
+	s.Identifier = &v
+	return s
+}
+
+type DeleteWorkitemResponseBody struct {
+	DeleteFlag *bool   `json:"deleteFlag,omitempty" xml:"deleteFlag,omitempty"`
+	ErrorCode  *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMsg   *string `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
+	// Id of the request
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// true/false
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s DeleteWorkitemResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteWorkitemResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteWorkitemResponseBody) SetDeleteFlag(v bool) *DeleteWorkitemResponseBody {
+	s.DeleteFlag = &v
+	return s
+}
+
+func (s *DeleteWorkitemResponseBody) SetErrorCode(v string) *DeleteWorkitemResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *DeleteWorkitemResponseBody) SetErrorMsg(v string) *DeleteWorkitemResponseBody {
+	s.ErrorMsg = &v
+	return s
+}
+
+func (s *DeleteWorkitemResponseBody) SetRequestId(v string) *DeleteWorkitemResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteWorkitemResponseBody) SetSuccess(v bool) *DeleteWorkitemResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeleteWorkitemResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteWorkitemResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteWorkitemResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteWorkitemResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteWorkitemResponse) SetHeaders(v map[string]*string) *DeleteWorkitemResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteWorkitemResponse) SetStatusCode(v int32) *DeleteWorkitemResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteWorkitemResponse) SetBody(v *DeleteWorkitemResponseBody) *DeleteWorkitemResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteWorkitemAllCommentRequest struct {
 	Identifier *string `json:"identifier,omitempty" xml:"identifier,omitempty"`
 }
@@ -13913,16 +14002,17 @@ func (s *GetWorkitemCommentListResponseBody) SetSuccess(v string) *GetWorkitemCo
 }
 
 type GetWorkitemCommentListResponseBodyCommentList struct {
-	Content          *string `json:"content,omitempty" xml:"content,omitempty"`
-	CreateTime       *int64  `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	FormatType       *string `json:"formatType,omitempty" xml:"formatType,omitempty"`
-	Id               *int64  `json:"id,omitempty" xml:"id,omitempty"`
-	IsTop            *bool   `json:"isTop,omitempty" xml:"isTop,omitempty"`
-	ModifiedTime     *int64  `json:"modifiedTime,omitempty" xml:"modifiedTime,omitempty"`
-	ParentId         *int64  `json:"parentId,omitempty" xml:"parentId,omitempty"`
-	TargetIdentifier *string `json:"targetIdentifier,omitempty" xml:"targetIdentifier,omitempty"`
-	TargetType       *string `json:"targetType,omitempty" xml:"targetType,omitempty"`
-	TopTime          *int64  `json:"topTime,omitempty" xml:"topTime,omitempty"`
+	Content          *string                                            `json:"content,omitempty" xml:"content,omitempty"`
+	CreateTime       *int64                                             `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	FormatType       *string                                            `json:"formatType,omitempty" xml:"formatType,omitempty"`
+	Id               *int64                                             `json:"id,omitempty" xml:"id,omitempty"`
+	IsTop            *bool                                              `json:"isTop,omitempty" xml:"isTop,omitempty"`
+	ModifiedTime     *int64                                             `json:"modifiedTime,omitempty" xml:"modifiedTime,omitempty"`
+	ParentId         *int64                                             `json:"parentId,omitempty" xml:"parentId,omitempty"`
+	TargetIdentifier *string                                            `json:"targetIdentifier,omitempty" xml:"targetIdentifier,omitempty"`
+	TargetType       *string                                            `json:"targetType,omitempty" xml:"targetType,omitempty"`
+	TopTime          *int64                                             `json:"topTime,omitempty" xml:"topTime,omitempty"`
+	User             *GetWorkitemCommentListResponseBodyCommentListUser `json:"user,omitempty" xml:"user,omitempty" type:"Struct"`
 }
 
 func (s GetWorkitemCommentListResponseBodyCommentList) String() string {
@@ -13980,6 +14070,52 @@ func (s *GetWorkitemCommentListResponseBodyCommentList) SetTargetType(v string) 
 
 func (s *GetWorkitemCommentListResponseBodyCommentList) SetTopTime(v int64) *GetWorkitemCommentListResponseBodyCommentList {
 	s.TopTime = &v
+	return s
+}
+
+func (s *GetWorkitemCommentListResponseBodyCommentList) SetUser(v *GetWorkitemCommentListResponseBodyCommentListUser) *GetWorkitemCommentListResponseBodyCommentList {
+	s.User = v
+	return s
+}
+
+type GetWorkitemCommentListResponseBodyCommentListUser struct {
+	Account    *string `json:"account,omitempty" xml:"account,omitempty"`
+	Avatar     *string `json:"avatar,omitempty" xml:"avatar,omitempty"`
+	Identifier *string `json:"identifier,omitempty" xml:"identifier,omitempty"`
+	NickName   *string `json:"nickName,omitempty" xml:"nickName,omitempty"`
+	RealName   *string `json:"realName,omitempty" xml:"realName,omitempty"`
+}
+
+func (s GetWorkitemCommentListResponseBodyCommentListUser) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetWorkitemCommentListResponseBodyCommentListUser) GoString() string {
+	return s.String()
+}
+
+func (s *GetWorkitemCommentListResponseBodyCommentListUser) SetAccount(v string) *GetWorkitemCommentListResponseBodyCommentListUser {
+	s.Account = &v
+	return s
+}
+
+func (s *GetWorkitemCommentListResponseBodyCommentListUser) SetAvatar(v string) *GetWorkitemCommentListResponseBodyCommentListUser {
+	s.Avatar = &v
+	return s
+}
+
+func (s *GetWorkitemCommentListResponseBodyCommentListUser) SetIdentifier(v string) *GetWorkitemCommentListResponseBodyCommentListUser {
+	s.Identifier = &v
+	return s
+}
+
+func (s *GetWorkitemCommentListResponseBodyCommentListUser) SetNickName(v string) *GetWorkitemCommentListResponseBodyCommentListUser {
+	s.NickName = &v
+	return s
+}
+
+func (s *GetWorkitemCommentListResponseBodyCommentListUser) SetRealName(v string) *GetWorkitemCommentListResponseBodyCommentListUser {
+	s.RealName = &v
 	return s
 }
 
@@ -27369,6 +27505,259 @@ func (s *UpdateWorkitemCommentResponse) SetBody(v *UpdateWorkitemCommentResponse
 	return s
 }
 
+type UpdateWorkitemFieldRequest struct {
+	UpdateWorkitemPropertyRequest []*UpdateWorkitemFieldRequestUpdateWorkitemPropertyRequest `json:"updateWorkitemPropertyRequest,omitempty" xml:"updateWorkitemPropertyRequest,omitempty" type:"Repeated"`
+	WorkitemIdentifier            *string                                                    `json:"workitemIdentifier,omitempty" xml:"workitemIdentifier,omitempty"`
+}
+
+func (s UpdateWorkitemFieldRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateWorkitemFieldRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateWorkitemFieldRequest) SetUpdateWorkitemPropertyRequest(v []*UpdateWorkitemFieldRequestUpdateWorkitemPropertyRequest) *UpdateWorkitemFieldRequest {
+	s.UpdateWorkitemPropertyRequest = v
+	return s
+}
+
+func (s *UpdateWorkitemFieldRequest) SetWorkitemIdentifier(v string) *UpdateWorkitemFieldRequest {
+	s.WorkitemIdentifier = &v
+	return s
+}
+
+type UpdateWorkitemFieldRequestUpdateWorkitemPropertyRequest struct {
+	FieldIdentifier *string `json:"fieldIdentifier,omitempty" xml:"fieldIdentifier,omitempty"`
+	FieldValue      *string `json:"fieldValue,omitempty" xml:"fieldValue,omitempty"`
+}
+
+func (s UpdateWorkitemFieldRequestUpdateWorkitemPropertyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateWorkitemFieldRequestUpdateWorkitemPropertyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateWorkitemFieldRequestUpdateWorkitemPropertyRequest) SetFieldIdentifier(v string) *UpdateWorkitemFieldRequestUpdateWorkitemPropertyRequest {
+	s.FieldIdentifier = &v
+	return s
+}
+
+func (s *UpdateWorkitemFieldRequestUpdateWorkitemPropertyRequest) SetFieldValue(v string) *UpdateWorkitemFieldRequestUpdateWorkitemPropertyRequest {
+	s.FieldValue = &v
+	return s
+}
+
+type UpdateWorkitemFieldResponseBody struct {
+	ErrorCode *string                                  `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMsg  *string                                  `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
+	RequestId *string                                  `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success   *bool                                    `json:"success,omitempty" xml:"success,omitempty"`
+	Workitem  *UpdateWorkitemFieldResponseBodyWorkitem `json:"workitem,omitempty" xml:"workitem,omitempty" type:"Struct"`
+}
+
+func (s UpdateWorkitemFieldResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateWorkitemFieldResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateWorkitemFieldResponseBody) SetErrorCode(v string) *UpdateWorkitemFieldResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *UpdateWorkitemFieldResponseBody) SetErrorMsg(v string) *UpdateWorkitemFieldResponseBody {
+	s.ErrorMsg = &v
+	return s
+}
+
+func (s *UpdateWorkitemFieldResponseBody) SetRequestId(v string) *UpdateWorkitemFieldResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateWorkitemFieldResponseBody) SetSuccess(v bool) *UpdateWorkitemFieldResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *UpdateWorkitemFieldResponseBody) SetWorkitem(v *UpdateWorkitemFieldResponseBodyWorkitem) *UpdateWorkitemFieldResponseBody {
+	s.Workitem = v
+	return s
+}
+
+type UpdateWorkitemFieldResponseBodyWorkitem struct {
+	AssignedTo             *string `json:"assignedTo,omitempty" xml:"assignedTo,omitempty"`
+	CategoryIdentifier     *string `json:"categoryIdentifier,omitempty" xml:"categoryIdentifier,omitempty"`
+	Creator                *string `json:"creator,omitempty" xml:"creator,omitempty"`
+	Document               *string `json:"document,omitempty" xml:"document,omitempty"`
+	GmtCreate              *int64  `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
+	GmtModified            *int64  `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
+	Identifier             *string `json:"identifier,omitempty" xml:"identifier,omitempty"`
+	LogicalStatus          *string `json:"logicalStatus,omitempty" xml:"logicalStatus,omitempty"`
+	Modifier               *string `json:"modifier,omitempty" xml:"modifier,omitempty"`
+	ParentIdentifier       *string `json:"parentIdentifier,omitempty" xml:"parentIdentifier,omitempty"`
+	SerialNumber           *string `json:"serialNumber,omitempty" xml:"serialNumber,omitempty"`
+	SpaceIdentifier        *string `json:"spaceIdentifier,omitempty" xml:"spaceIdentifier,omitempty"`
+	SpaceName              *string `json:"spaceName,omitempty" xml:"spaceName,omitempty"`
+	SpaceType              *string `json:"spaceType,omitempty" xml:"spaceType,omitempty"`
+	SprintIdentifier       *string `json:"sprintIdentifier,omitempty" xml:"sprintIdentifier,omitempty"`
+	Status                 *string `json:"status,omitempty" xml:"status,omitempty"`
+	StatusIdentifier       *string `json:"statusIdentifier,omitempty" xml:"statusIdentifier,omitempty"`
+	StatusStageIdentifier  *string `json:"statusStageIdentifier,omitempty" xml:"statusStageIdentifier,omitempty"`
+	Subject                *string `json:"subject,omitempty" xml:"subject,omitempty"`
+	UpdateStatusAt         *int64  `json:"updateStatusAt,omitempty" xml:"updateStatusAt,omitempty"`
+	WorkitemTypeIdentifier *string `json:"workitemTypeIdentifier,omitempty" xml:"workitemTypeIdentifier,omitempty"`
+}
+
+func (s UpdateWorkitemFieldResponseBodyWorkitem) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateWorkitemFieldResponseBodyWorkitem) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateWorkitemFieldResponseBodyWorkitem) SetAssignedTo(v string) *UpdateWorkitemFieldResponseBodyWorkitem {
+	s.AssignedTo = &v
+	return s
+}
+
+func (s *UpdateWorkitemFieldResponseBodyWorkitem) SetCategoryIdentifier(v string) *UpdateWorkitemFieldResponseBodyWorkitem {
+	s.CategoryIdentifier = &v
+	return s
+}
+
+func (s *UpdateWorkitemFieldResponseBodyWorkitem) SetCreator(v string) *UpdateWorkitemFieldResponseBodyWorkitem {
+	s.Creator = &v
+	return s
+}
+
+func (s *UpdateWorkitemFieldResponseBodyWorkitem) SetDocument(v string) *UpdateWorkitemFieldResponseBodyWorkitem {
+	s.Document = &v
+	return s
+}
+
+func (s *UpdateWorkitemFieldResponseBodyWorkitem) SetGmtCreate(v int64) *UpdateWorkitemFieldResponseBodyWorkitem {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *UpdateWorkitemFieldResponseBodyWorkitem) SetGmtModified(v int64) *UpdateWorkitemFieldResponseBodyWorkitem {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *UpdateWorkitemFieldResponseBodyWorkitem) SetIdentifier(v string) *UpdateWorkitemFieldResponseBodyWorkitem {
+	s.Identifier = &v
+	return s
+}
+
+func (s *UpdateWorkitemFieldResponseBodyWorkitem) SetLogicalStatus(v string) *UpdateWorkitemFieldResponseBodyWorkitem {
+	s.LogicalStatus = &v
+	return s
+}
+
+func (s *UpdateWorkitemFieldResponseBodyWorkitem) SetModifier(v string) *UpdateWorkitemFieldResponseBodyWorkitem {
+	s.Modifier = &v
+	return s
+}
+
+func (s *UpdateWorkitemFieldResponseBodyWorkitem) SetParentIdentifier(v string) *UpdateWorkitemFieldResponseBodyWorkitem {
+	s.ParentIdentifier = &v
+	return s
+}
+
+func (s *UpdateWorkitemFieldResponseBodyWorkitem) SetSerialNumber(v string) *UpdateWorkitemFieldResponseBodyWorkitem {
+	s.SerialNumber = &v
+	return s
+}
+
+func (s *UpdateWorkitemFieldResponseBodyWorkitem) SetSpaceIdentifier(v string) *UpdateWorkitemFieldResponseBodyWorkitem {
+	s.SpaceIdentifier = &v
+	return s
+}
+
+func (s *UpdateWorkitemFieldResponseBodyWorkitem) SetSpaceName(v string) *UpdateWorkitemFieldResponseBodyWorkitem {
+	s.SpaceName = &v
+	return s
+}
+
+func (s *UpdateWorkitemFieldResponseBodyWorkitem) SetSpaceType(v string) *UpdateWorkitemFieldResponseBodyWorkitem {
+	s.SpaceType = &v
+	return s
+}
+
+func (s *UpdateWorkitemFieldResponseBodyWorkitem) SetSprintIdentifier(v string) *UpdateWorkitemFieldResponseBodyWorkitem {
+	s.SprintIdentifier = &v
+	return s
+}
+
+func (s *UpdateWorkitemFieldResponseBodyWorkitem) SetStatus(v string) *UpdateWorkitemFieldResponseBodyWorkitem {
+	s.Status = &v
+	return s
+}
+
+func (s *UpdateWorkitemFieldResponseBodyWorkitem) SetStatusIdentifier(v string) *UpdateWorkitemFieldResponseBodyWorkitem {
+	s.StatusIdentifier = &v
+	return s
+}
+
+func (s *UpdateWorkitemFieldResponseBodyWorkitem) SetStatusStageIdentifier(v string) *UpdateWorkitemFieldResponseBodyWorkitem {
+	s.StatusStageIdentifier = &v
+	return s
+}
+
+func (s *UpdateWorkitemFieldResponseBodyWorkitem) SetSubject(v string) *UpdateWorkitemFieldResponseBodyWorkitem {
+	s.Subject = &v
+	return s
+}
+
+func (s *UpdateWorkitemFieldResponseBodyWorkitem) SetUpdateStatusAt(v int64) *UpdateWorkitemFieldResponseBodyWorkitem {
+	s.UpdateStatusAt = &v
+	return s
+}
+
+func (s *UpdateWorkitemFieldResponseBodyWorkitem) SetWorkitemTypeIdentifier(v string) *UpdateWorkitemFieldResponseBodyWorkitem {
+	s.WorkitemTypeIdentifier = &v
+	return s
+}
+
+type UpdateWorkitemFieldResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateWorkitemFieldResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateWorkitemFieldResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateWorkitemFieldResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateWorkitemFieldResponse) SetHeaders(v map[string]*string) *UpdateWorkitemFieldResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateWorkitemFieldResponse) SetStatusCode(v int32) *UpdateWorkitemFieldResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateWorkitemFieldResponse) SetBody(v *UpdateWorkitemFieldResponseBody) *UpdateWorkitemFieldResponse {
+	s.Body = v
+	return s
+}
+
 type Client struct {
 	openapi.Client
 }
@@ -29973,6 +30362,52 @@ func (client *Client) DeleteVariableGroup(organizationId *string, id *string) (_
 	headers := make(map[string]*string)
 	_result = &DeleteVariableGroupResponse{}
 	_body, _err := client.DeleteVariableGroupWithOptions(organizationId, id, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteWorkitemWithOptions(organizationId *string, request *DeleteWorkitemRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteWorkitemResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Identifier)) {
+		query["identifier"] = request.Identifier
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteWorkitem"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/organization/" + tea.StringValue(openapiutil.GetEncodeParam(organizationId)) + "/workitem/delete"),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteWorkitemResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteWorkitem(organizationId *string, request *DeleteWorkitemRequest) (_result *DeleteWorkitemResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteWorkitemResponse{}
+	_body, _err := client.DeleteWorkitemWithOptions(organizationId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -35699,6 +36134,56 @@ func (client *Client) UpdateWorkitemComment(organizationId *string, request *Upd
 	headers := make(map[string]*string)
 	_result = &UpdateWorkitemCommentResponse{}
 	_body, _err := client.UpdateWorkitemCommentWithOptions(organizationId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateWorkitemFieldWithOptions(organizationId *string, request *UpdateWorkitemFieldRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateWorkitemFieldResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.UpdateWorkitemPropertyRequest)) {
+		body["updateWorkitemPropertyRequest"] = request.UpdateWorkitemPropertyRequest
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkitemIdentifier)) {
+		body["workitemIdentifier"] = request.WorkitemIdentifier
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateWorkitemField"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/organization/" + tea.StringValue(openapiutil.GetEncodeParam(organizationId)) + "/workitems/updateWorkitemField"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateWorkitemFieldResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateWorkitemField(organizationId *string, request *UpdateWorkitemFieldRequest) (_result *UpdateWorkitemFieldResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateWorkitemFieldResponse{}
+	_body, _err := client.UpdateWorkitemFieldWithOptions(organizationId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
