@@ -1,3 +1,6 @@
+2023-02-24 Version: v2.0.1
+- VpcPeer Support Tag.
+
 2022-09-23 Version: v2.0.0
 - Generated golang 2022-01-01 for VpcPeer.
 

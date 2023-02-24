@@ -330,6 +330,7 @@ type GetVpcPeerConnectionAttributeResponseBody struct {
 	RegionId          *string                                                `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	RequestId         *string                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Status            *string                                                `json:"Status,omitempty" xml:"Status,omitempty"`
+	Tags              []*GetVpcPeerConnectionAttributeResponseBodyTags       `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	Vpc               *GetVpcPeerConnectionAttributeResponseBodyVpc          `json:"Vpc,omitempty" xml:"Vpc,omitempty" type:"Struct"`
 }
 
@@ -416,6 +417,11 @@ func (s *GetVpcPeerConnectionAttributeResponseBody) SetStatus(v string) *GetVpcP
 	return s
 }
 
+func (s *GetVpcPeerConnectionAttributeResponseBody) SetTags(v []*GetVpcPeerConnectionAttributeResponseBodyTags) *GetVpcPeerConnectionAttributeResponseBody {
+	s.Tags = v
+	return s
+}
+
 func (s *GetVpcPeerConnectionAttributeResponseBody) SetVpc(v *GetVpcPeerConnectionAttributeResponseBodyVpc) *GetVpcPeerConnectionAttributeResponseBody {
 	s.Vpc = v
 	return s
@@ -447,6 +453,29 @@ func (s *GetVpcPeerConnectionAttributeResponseBodyAcceptingVpc) SetIpv6Cidrs(v [
 
 func (s *GetVpcPeerConnectionAttributeResponseBodyAcceptingVpc) SetVpcId(v string) *GetVpcPeerConnectionAttributeResponseBodyAcceptingVpc {
 	s.VpcId = &v
+	return s
+}
+
+type GetVpcPeerConnectionAttributeResponseBodyTags struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s GetVpcPeerConnectionAttributeResponseBodyTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetVpcPeerConnectionAttributeResponseBodyTags) GoString() string {
+	return s.String()
+}
+
+func (s *GetVpcPeerConnectionAttributeResponseBodyTags) SetKey(v string) *GetVpcPeerConnectionAttributeResponseBodyTags {
+	s.Key = &v
+	return s
+}
+
+func (s *GetVpcPeerConnectionAttributeResponseBodyTags) SetValue(v string) *GetVpcPeerConnectionAttributeResponseBodyTags {
+	s.Value = &v
 	return s
 }
 
@@ -509,12 +538,13 @@ func (s *GetVpcPeerConnectionAttributeResponse) SetBody(v *GetVpcPeerConnectionA
 }
 
 type ListVpcPeerConnectionsRequest struct {
-	InstanceId *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	MaxResults *int32    `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	Name       *string   `json:"Name,omitempty" xml:"Name,omitempty"`
-	NextToken  *string   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	RegionId   *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	VpcId      []*string `json:"VpcId,omitempty" xml:"VpcId,omitempty" type:"Repeated"`
+	InstanceId *string                              `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	MaxResults *int32                               `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	Name       *string                              `json:"Name,omitempty" xml:"Name,omitempty"`
+	NextToken  *string                              `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RegionId   *string                              `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Tags       []*ListVpcPeerConnectionsRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	VpcId      []*string                            `json:"VpcId,omitempty" xml:"VpcId,omitempty" type:"Repeated"`
 }
 
 func (s ListVpcPeerConnectionsRequest) String() string {
@@ -550,18 +580,47 @@ func (s *ListVpcPeerConnectionsRequest) SetRegionId(v string) *ListVpcPeerConnec
 	return s
 }
 
+func (s *ListVpcPeerConnectionsRequest) SetTags(v []*ListVpcPeerConnectionsRequestTags) *ListVpcPeerConnectionsRequest {
+	s.Tags = v
+	return s
+}
+
 func (s *ListVpcPeerConnectionsRequest) SetVpcId(v []*string) *ListVpcPeerConnectionsRequest {
 	s.VpcId = v
 	return s
 }
 
+type ListVpcPeerConnectionsRequestTags struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListVpcPeerConnectionsRequestTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListVpcPeerConnectionsRequestTags) GoString() string {
+	return s.String()
+}
+
+func (s *ListVpcPeerConnectionsRequestTags) SetKey(v string) *ListVpcPeerConnectionsRequestTags {
+	s.Key = &v
+	return s
+}
+
+func (s *ListVpcPeerConnectionsRequestTags) SetValue(v string) *ListVpcPeerConnectionsRequestTags {
+	s.Value = &v
+	return s
+}
+
 type ListVpcPeerConnectionsShrinkRequest struct {
-	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	MaxResults  *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	NextToken   *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	VpcIdShrink *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	InstanceId  *string                                    `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	MaxResults  *int32                                     `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	Name        *string                                    `json:"Name,omitempty" xml:"Name,omitempty"`
+	NextToken   *string                                    `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RegionId    *string                                    `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Tags        []*ListVpcPeerConnectionsShrinkRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	VpcIdShrink *string                                    `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s ListVpcPeerConnectionsShrinkRequest) String() string {
@@ -597,8 +656,36 @@ func (s *ListVpcPeerConnectionsShrinkRequest) SetRegionId(v string) *ListVpcPeer
 	return s
 }
 
+func (s *ListVpcPeerConnectionsShrinkRequest) SetTags(v []*ListVpcPeerConnectionsShrinkRequestTags) *ListVpcPeerConnectionsShrinkRequest {
+	s.Tags = v
+	return s
+}
+
 func (s *ListVpcPeerConnectionsShrinkRequest) SetVpcIdShrink(v string) *ListVpcPeerConnectionsShrinkRequest {
 	s.VpcIdShrink = &v
+	return s
+}
+
+type ListVpcPeerConnectionsShrinkRequestTags struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListVpcPeerConnectionsShrinkRequestTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListVpcPeerConnectionsShrinkRequestTags) GoString() string {
+	return s.String()
+}
+
+func (s *ListVpcPeerConnectionsShrinkRequestTags) SetKey(v string) *ListVpcPeerConnectionsShrinkRequestTags {
+	s.Key = &v
+	return s
+}
+
+func (s *ListVpcPeerConnectionsShrinkRequestTags) SetValue(v string) *ListVpcPeerConnectionsShrinkRequestTags {
+	s.Value = &v
 	return s
 }
 
@@ -658,6 +745,7 @@ type ListVpcPeerConnectionsResponseBodyVpcPeerConnects struct {
 	OwnerId           *int32                                                         `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	RegionId          *string                                                        `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	Status            *string                                                        `json:"Status,omitempty" xml:"Status,omitempty"`
+	Tags              []*ListVpcPeerConnectionsResponseBodyVpcPeerConnectsTags       `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	Vpc               *ListVpcPeerConnectionsResponseBodyVpcPeerConnectsVpc          `json:"Vpc,omitempty" xml:"Vpc,omitempty" type:"Struct"`
 }
 
@@ -739,6 +827,11 @@ func (s *ListVpcPeerConnectionsResponseBodyVpcPeerConnects) SetStatus(v string) 
 	return s
 }
 
+func (s *ListVpcPeerConnectionsResponseBodyVpcPeerConnects) SetTags(v []*ListVpcPeerConnectionsResponseBodyVpcPeerConnectsTags) *ListVpcPeerConnectionsResponseBodyVpcPeerConnects {
+	s.Tags = v
+	return s
+}
+
 func (s *ListVpcPeerConnectionsResponseBodyVpcPeerConnects) SetVpc(v *ListVpcPeerConnectionsResponseBodyVpcPeerConnectsVpc) *ListVpcPeerConnectionsResponseBodyVpcPeerConnects {
 	s.Vpc = v
 	return s
@@ -770,6 +863,29 @@ func (s *ListVpcPeerConnectionsResponseBodyVpcPeerConnectsAcceptingVpc) SetIpv6C
 
 func (s *ListVpcPeerConnectionsResponseBodyVpcPeerConnectsAcceptingVpc) SetVpcId(v string) *ListVpcPeerConnectionsResponseBodyVpcPeerConnectsAcceptingVpc {
 	s.VpcId = &v
+	return s
+}
+
+type ListVpcPeerConnectionsResponseBodyVpcPeerConnectsTags struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListVpcPeerConnectionsResponseBodyVpcPeerConnectsTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListVpcPeerConnectionsResponseBodyVpcPeerConnectsTags) GoString() string {
+	return s.String()
+}
+
+func (s *ListVpcPeerConnectionsResponseBodyVpcPeerConnectsTags) SetKey(v string) *ListVpcPeerConnectionsResponseBodyVpcPeerConnectsTags {
+	s.Key = &v
+	return s
+}
+
+func (s *ListVpcPeerConnectionsResponseBodyVpcPeerConnectsTags) SetValue(v string) *ListVpcPeerConnectionsResponseBodyVpcPeerConnectsTags {
+	s.Value = &v
 	return s
 }
 
@@ -1299,6 +1415,11 @@ func (client *Client) ListVpcPeerConnectionsWithOptions(tmpReq *ListVpcPeerConne
 		request.VpcIdShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.VpcId, tea.String("VpcId"), tea.String("simple"))
 	}
 
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Tags)) {
+		query["Tags"] = request.Tags
+	}
+
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
 		body["InstanceId"] = request.InstanceId
@@ -1325,7 +1446,8 @@ func (client *Client) ListVpcPeerConnectionsWithOptions(tmpReq *ListVpcPeerConne
 	}
 
 	req := &openapi.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListVpcPeerConnections"),
