@@ -228,6 +228,7 @@ type BindAxbRequest struct {
 	CallDisplayType      *int32  `json:"CallDisplayType,omitempty" xml:"CallDisplayType,omitempty"`
 	CallRestrict         *string `json:"CallRestrict,omitempty" xml:"CallRestrict,omitempty"`
 	CallTimeout          *int32  `json:"CallTimeout,omitempty" xml:"CallTimeout,omitempty"`
+	DtmfConfig           *string `json:"DtmfConfig,omitempty" xml:"DtmfConfig,omitempty"`
 	ExpectCity           *string `json:"ExpectCity,omitempty" xml:"ExpectCity,omitempty"`
 	Expiration           *string `json:"Expiration,omitempty" xml:"Expiration,omitempty"`
 	IsRecordingEnabled   *bool   `json:"IsRecordingEnabled,omitempty" xml:"IsRecordingEnabled,omitempty"`
@@ -273,6 +274,11 @@ func (s *BindAxbRequest) SetCallRestrict(v string) *BindAxbRequest {
 
 func (s *BindAxbRequest) SetCallTimeout(v int32) *BindAxbRequest {
 	s.CallTimeout = &v
+	return s
+}
+
+func (s *BindAxbRequest) SetDtmfConfig(v string) *BindAxbRequest {
+	s.DtmfConfig = &v
 	return s
 }
 
@@ -1352,117 +1358,6 @@ func (s *CancelPickUpWaybillResponse) SetStatusCode(v int32) *CancelPickUpWaybil
 }
 
 func (s *CancelPickUpWaybillResponse) SetBody(v *CancelPickUpWaybillResponseBody) *CancelPickUpWaybillResponse {
-	s.Body = v
-	return s
-}
-
-type ConfirmSendSmsRequest struct {
-	CallId               *string `json:"CallId,omitempty" xml:"CallId,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	PoolKey              *string `json:"PoolKey,omitempty" xml:"PoolKey,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	SecretNo             *string `json:"SecretNo,omitempty" xml:"SecretNo,omitempty"`
-}
-
-func (s ConfirmSendSmsRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ConfirmSendSmsRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ConfirmSendSmsRequest) SetCallId(v string) *ConfirmSendSmsRequest {
-	s.CallId = &v
-	return s
-}
-
-func (s *ConfirmSendSmsRequest) SetOwnerId(v int64) *ConfirmSendSmsRequest {
-	s.OwnerId = &v
-	return s
-}
-
-func (s *ConfirmSendSmsRequest) SetPoolKey(v string) *ConfirmSendSmsRequest {
-	s.PoolKey = &v
-	return s
-}
-
-func (s *ConfirmSendSmsRequest) SetResourceOwnerAccount(v string) *ConfirmSendSmsRequest {
-	s.ResourceOwnerAccount = &v
-	return s
-}
-
-func (s *ConfirmSendSmsRequest) SetResourceOwnerId(v int64) *ConfirmSendSmsRequest {
-	s.ResourceOwnerId = &v
-	return s
-}
-
-func (s *ConfirmSendSmsRequest) SetSecretNo(v string) *ConfirmSendSmsRequest {
-	s.SecretNo = &v
-	return s
-}
-
-type ConfirmSendSmsResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s ConfirmSendSmsResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ConfirmSendSmsResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ConfirmSendSmsResponseBody) SetCode(v string) *ConfirmSendSmsResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *ConfirmSendSmsResponseBody) SetData(v string) *ConfirmSendSmsResponseBody {
-	s.Data = &v
-	return s
-}
-
-func (s *ConfirmSendSmsResponseBody) SetMessage(v string) *ConfirmSendSmsResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *ConfirmSendSmsResponseBody) SetRequestId(v string) *ConfirmSendSmsResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type ConfirmSendSmsResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ConfirmSendSmsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ConfirmSendSmsResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ConfirmSendSmsResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ConfirmSendSmsResponse) SetHeaders(v map[string]*string) *ConfirmSendSmsResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ConfirmSendSmsResponse) SetStatusCode(v int32) *ConfirmSendSmsResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *ConfirmSendSmsResponse) SetBody(v *ConfirmSendSmsResponseBody) *ConfirmSendSmsResponse {
 	s.Body = v
 	return s
 }
@@ -4852,6 +4747,10 @@ func (client *Client) BindAxbWithOptions(request *BindAxbRequest, runtime *util.
 		query["CallTimeout"] = request.CallTimeout
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.DtmfConfig)) {
+		query["DtmfConfig"] = request.DtmfConfig
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ExpectCity)) {
 		query["ExpectCity"] = request.ExpectCity
 	}
@@ -5410,70 +5309,6 @@ func (client *Client) CancelPickUpWaybill(request *CancelPickUpWaybillRequest) (
 	return _result, _err
 }
 
-func (client *Client) ConfirmSendSmsWithOptions(request *ConfirmSendSmsRequest, runtime *util.RuntimeOptions) (_result *ConfirmSendSmsResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.CallId)) {
-		query["CallId"] = request.CallId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PoolKey)) {
-		query["PoolKey"] = request.PoolKey
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
-		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
-		query["ResourceOwnerId"] = request.ResourceOwnerId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.SecretNo)) {
-		query["SecretNo"] = request.SecretNo
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("ConfirmSendSms"),
-		Version:     tea.String("2017-05-25"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &ConfirmSendSmsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ConfirmSendSms(request *ConfirmSendSmsRequest) (_result *ConfirmSendSmsResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ConfirmSendSmsResponse{}
-	_body, _err := client.ConfirmSendSmsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) CreateAxgGroupWithOptions(request *CreateAxgGroupRequest, runtime *util.RuntimeOptions) (_result *CreateAxgGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5549,16 +5384,16 @@ func (client *Client) CreatePickUpWaybillWithOptions(tmpReq *CreatePickUpWaybill
 	}
 	request := &CreatePickUpWaybillShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.ConsigneeAddress))) {
-		request.ConsigneeAddressShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.ConsigneeAddress), tea.String("ConsigneeAddress"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.ConsigneeAddress)) {
+		request.ConsigneeAddressShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ConsigneeAddress, tea.String("ConsigneeAddress"), tea.String("json"))
 	}
 
 	if !tea.BoolValue(util.IsUnset(tmpReq.GoodsInfos)) {
 		request.GoodsInfosShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.GoodsInfos, tea.String("GoodsInfos"), tea.String("json"))
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.SendAddress))) {
-		request.SendAddressShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.SendAddress), tea.String("SendAddress"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.SendAddress)) {
+		request.SendAddressShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SendAddress, tea.String("SendAddress"), tea.String("json"))
 	}
 
 	query := map[string]interface{}{}
@@ -5667,12 +5502,12 @@ func (client *Client) CreatePickUpWaybillPreQueryWithOptions(tmpReq *CreatePickU
 	}
 	request := &CreatePickUpWaybillPreQueryShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.ConsigneeInfo))) {
-		request.ConsigneeInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.ConsigneeInfo), tea.String("ConsigneeInfo"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.ConsigneeInfo)) {
+		request.ConsigneeInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ConsigneeInfo, tea.String("ConsigneeInfo"), tea.String("json"))
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.SenderInfo))) {
-		request.SenderInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.SenderInfo), tea.String("SenderInfo"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.SenderInfo)) {
+		request.SenderInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SenderInfo, tea.String("SenderInfo"), tea.String("json"))
 	}
 
 	query := map[string]interface{}{}
