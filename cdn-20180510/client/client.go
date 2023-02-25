@@ -5366,7 +5366,7 @@ func (s *DescribeCdnServiceResponse) SetBody(v *DescribeCdnServiceResponseBody) 
 }
 
 type DescribeCdnSubListResponseBody struct {
-	// The information about the tracking task.
+	// The information about the custom report.
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -6102,7 +6102,7 @@ type DescribeCdnUserDomainsByFuncRequest struct {
 	//
 	// Valid values: **1** to **100000**.
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of domain names to return on each page. Default value: **20**.
+	// The number of entries to return on each page. Default value: **20**.
 	//
 	// Valid values: **1** to **50**.
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
@@ -6143,7 +6143,7 @@ type DescribeCdnUserDomainsByFuncResponseBody struct {
 	Domains *DescribeCdnUserDomainsByFuncResponseBodyDomains `json:"Domains,omitempty" xml:"Domains,omitempty" type:"Struct"`
 	// The page number of the returned page.
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of domain names returned per page.
+	// The number of entries returned per page.
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -6204,37 +6204,37 @@ func (s *DescribeCdnUserDomainsByFuncResponseBodyDomains) SetPageData(v []*Descr
 type DescribeCdnUserDomainsByFuncResponseBodyDomainsPageData struct {
 	// The type of the workload accelerated by Alibaba Cloud CDN. Valid values:
 	//
-	// *   **web:** image and small file distribution
-	// *   **download:** large file distribution
-	// *   **video:** on-demand video and audio streaming
-	// *   **liveStream:** live streaming
+	// *   **web**: image and small file distribution
+	// *   **download**: large file distribution
+	// *   **video**: on-demand video and audio streaming
+	// *   **liveStream**: live streaming
 	CdnType *string `json:"CdnType,omitempty" xml:"CdnType,omitempty"`
 	// The CNAME assigned to the accelerated domain name.
 	Cname *string `json:"Cname,omitempty" xml:"Cname,omitempty"`
-	// The description of the status.
+	// The description of the accelerated domain name.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The accelerated domain name.
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	// The status of the accelerated domain name. Valid values:
 	//
-	// *   **online**: enabled
-	// *   **offline**: disabled
-	// *   **configuring**: configuring
-	// *   **configure_failed**: configuration failed
-	// *   **checking**: reviewing
+	// *   **online:** enabled
+	// *   **offline:** disabled
+	// *   **configuring:** configuring
+	// *   **configure_failed:** configuration failed
+	// *   **checking:** reviewing
 	// *   **check_failed**: failed the review
 	// *   **stopping**: being disabled
 	// *   **deleting**: deleting
 	DomainStatus *string `json:"DomainStatus,omitempty" xml:"DomainStatus,omitempty"`
-	// The time when the accelerated domain name was added to Alibaba Cloud CDN.
+	// The time when the accelerated domain name was added.
 	GmtCreated *string `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
 	// The time when the accelerated domain name was modified.
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
 	// The ID of the resource group.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// Information about the origin server.
+	// The information about the origin server.
 	Sources *DescribeCdnUserDomainsByFuncResponseBodyDomainsPageDataSources `json:"Sources,omitempty" xml:"Sources,omitempty" type:"Struct"`
-	// The status of HTTPS. Valid values:
+	// Indicates whether HTTPS is enabled. Valid values:
 	//
 	// *   **on**
 	// *   **off**
@@ -6326,9 +6326,9 @@ type DescribeCdnUserDomainsByFuncResponseBodyDomainsPageDataSourcesSource struct
 	// The type of the origin server. Valid values:
 	//
 	// *   **ipaddr**: an origin IP address
-	// *   **domain**: an origin domain name
-	// *   **oss**: the domain name of an Object Storage Service (OSS) bucket
-	// *   **fc_domain**: a Function Compute domain name
+	// *   **domain:** a domain name
+	// *   **oss:** the OSS domain of an Object Storage Service (OSS) bucket
+	// *   **fc_domain:** a Function Compute domain name
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	// The weight of the origin server if multiple origin servers have been specified.
 	Weight *string `json:"Weight,omitempty" xml:"Weight,omitempty"`
@@ -8163,6 +8163,7 @@ type DescribeDomainCertificateInfoResponseBodyCertInfosCertInfo struct {
 	CertDomainName *string `json:"CertDomainName,omitempty" xml:"CertDomainName,omitempty"`
 	// The time when the SSL certificate expires.
 	CertExpireTime *string `json:"CertExpireTime,omitempty" xml:"CertExpireTime,omitempty"`
+	CertId         *string `json:"CertId,omitempty" xml:"CertId,omitempty"`
 	// The unit of the validity period of the SSL certificate.
 	//
 	// *   **months**: The validity period is measured in months.
@@ -8171,7 +8172,8 @@ type DescribeDomainCertificateInfoResponseBodyCertInfosCertInfo struct {
 	// The name of the SSL certificate.
 	CertName *string `json:"CertName,omitempty" xml:"CertName,omitempty"`
 	// The name of the certificate authority (CA) that issued the SSL certificate.
-	CertOrg *string `json:"CertOrg,omitempty" xml:"CertOrg,omitempty"`
+	CertOrg    *string `json:"CertOrg,omitempty" xml:"CertOrg,omitempty"`
+	CertRegion *string `json:"CertRegion,omitempty" xml:"CertRegion,omitempty"`
 	// The time when the SSL certificate became effective.
 	CertStartTime *string `json:"CertStartTime,omitempty" xml:"CertStartTime,omitempty"`
 	// The type of the SSL certificate. Valid values:
@@ -8232,6 +8234,11 @@ func (s *DescribeDomainCertificateInfoResponseBodyCertInfosCertInfo) SetCertExpi
 	return s
 }
 
+func (s *DescribeDomainCertificateInfoResponseBodyCertInfosCertInfo) SetCertId(v string) *DescribeDomainCertificateInfoResponseBodyCertInfosCertInfo {
+	s.CertId = &v
+	return s
+}
+
 func (s *DescribeDomainCertificateInfoResponseBodyCertInfosCertInfo) SetCertLife(v string) *DescribeDomainCertificateInfoResponseBodyCertInfosCertInfo {
 	s.CertLife = &v
 	return s
@@ -8244,6 +8251,11 @@ func (s *DescribeDomainCertificateInfoResponseBodyCertInfosCertInfo) SetCertName
 
 func (s *DescribeDomainCertificateInfoResponseBodyCertInfosCertInfo) SetCertOrg(v string) *DescribeDomainCertificateInfoResponseBodyCertInfosCertInfo {
 	s.CertOrg = &v
+	return s
+}
+
+func (s *DescribeDomainCertificateInfoResponseBodyCertInfosCertInfo) SetCertRegion(v string) *DescribeDomainCertificateInfoResponseBodyCertInfosCertInfo {
+	s.CertRegion = &v
 	return s
 }
 
@@ -12474,7 +12486,7 @@ func (s *DescribeDomainRealTimeTrafficDataResponse) SetBody(v *DescribeDomainRea
 }
 
 type DescribeDomainRealtimeLogDeliveryRequest struct {
-	// The accelerated domain name for which real-time log delivery is enabled. Only one domain name is supported.
+	// The accelerated domain name for which real-time log delivery is enabled. You can specify only one domain name.
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 }
 
@@ -12500,7 +12512,7 @@ type DescribeDomainRealtimeLogDeliveryResponseBody struct {
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The status of the real-time log delivery feature. Valid values:
+	// The status of real-time log delivery. Valid values:
 	//
 	// *   **online**
 	// *   **offline**
@@ -16820,7 +16832,7 @@ func (s *DescribeIpStatusResponse) SetBody(v *DescribeIpStatusResponseBody) *Des
 }
 
 type DescribeL2VipsByDomainRequest struct {
-	// The accelerated domain name. You can specify only one domain name.
+	// The accelerated domain name. You can specify only one domain name in each request.
 	DomainName    *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
@@ -16850,11 +16862,11 @@ func (s *DescribeL2VipsByDomainRequest) SetSecurityToken(v string) *DescribeL2Vi
 }
 
 type DescribeL2VipsByDomainResponseBody struct {
-	// The accelerated domain name.
+	// The domain name.
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// A list of virtual IP addresses.
+	// The list of VIPs.
 	Vips *DescribeL2VipsByDomainResponseBodyVips `json:"Vips,omitempty" xml:"Vips,omitempty" type:"Struct"`
 }
 
@@ -18011,11 +18023,11 @@ func (s *DescribeStagingIpResponse) SetBody(v *DescribeStagingIpResponseBody) *D
 }
 
 type DescribeTagResourcesRequest struct {
-	// A list of resource IDs. Maximum number of elements: 50.
+	// The IDs of the resources. You can specify up to 50 IDs in each request.
 	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
-	// The resource type. Set this value to **DOMAIN**.
+	// The type of the resource. Set this value to **DOMAIN**.
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// A list of tag combinations. Maximum number of elements: 20.
+	// The tags. You can specify up to 20 tags in each request.
 	Tag []*DescribeTagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
@@ -18043,9 +18055,9 @@ func (s *DescribeTagResourcesRequest) SetTag(v []*DescribeTagResourcesRequestTag
 }
 
 type DescribeTagResourcesRequestTag struct {
-	// The key of a tag.
+	// The key of the tag.
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of a tag.
+	// The value of the tag.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -18070,7 +18082,7 @@ func (s *DescribeTagResourcesRequestTag) SetValue(v string) *DescribeTagResource
 type DescribeTagResourcesResponseBody struct {
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The details about the tag.
+	// Details about the tag.
 	TagResources []*DescribeTagResourcesResponseBodyTagResources `json:"TagResources,omitempty" xml:"TagResources,omitempty" type:"Repeated"`
 }
 
@@ -18095,7 +18107,7 @@ func (s *DescribeTagResourcesResponseBody) SetTagResources(v []*DescribeTagResou
 type DescribeTagResourcesResponseBodyTagResources struct {
 	// The ID of the resource.
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// A list of tags.
+	// The tags.
 	Tag []*DescribeTagResourcesResponseBodyTagResourcesTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
@@ -18118,9 +18130,9 @@ func (s *DescribeTagResourcesResponseBodyTagResources) SetTag(v []*DescribeTagRe
 }
 
 type DescribeTagResourcesResponseBodyTagResourcesTag struct {
-	// The key of a tag.
+	// The key of the tag.
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of a tag.
+	// The value of the tag.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -18367,7 +18379,7 @@ func (s *DescribeTopDomainsByFlowResponse) SetBody(v *DescribeTopDomainsByFlowRe
 }
 
 type DescribeUserCertificateExpireCountResponseBody struct {
-	// The number of domain names whose SSL certificates are about to expires within 30 days.
+	// The number of domain names whose SSL certificates are about to expire within 30 days.
 	ExpireWithin30DaysCount *int32 `json:"ExpireWithin30DaysCount,omitempty" xml:"ExpireWithin30DaysCount,omitempty"`
 	// The number of domain names whose SSL certificates have already expired.
 	ExpiredCount *int32 `json:"ExpiredCount,omitempty" xml:"ExpiredCount,omitempty"`
@@ -19665,7 +19677,7 @@ func (s *DescribeUserVipsByDomainResponse) SetBody(v *DescribeUserVipsByDomainRe
 }
 
 type DescribeVerifyContentRequest struct {
-	// The domain name of which the ownership was verified. You can specify only one domain name.
+	// The domain name of which you want to verify the ownership. You can specify only one domain name.
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 }
 
@@ -19683,7 +19695,7 @@ func (s *DescribeVerifyContentRequest) SetDomainName(v string) *DescribeVerifyCo
 }
 
 type DescribeVerifyContentResponseBody struct {
-	// The verification content.
+	// The verification result.
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -22382,7 +22394,7 @@ func (s *VerifyDomainOwnerRequest) SetVerifyType(v string) *VerifyDomainOwnerReq
 type VerifyDomainOwnerResponseBody struct {
 	// The verification result.
 	//
-	// >  This parameter is returned if the operation fails. The verification result is returned if the operation succeeds.
+	// > This parameter is returned only if the operation fails.
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -25453,8 +25465,8 @@ func (client *Client) DescribeCdnService(request *DescribeCdnServiceRequest) (_r
 }
 
 /**
- * > - By default, this operation queries all tracking tasks. However, only one tracking task can be displayed. Therefore, only one tracking task is returned.
- * - You can call this API operation up to three times per second per account.
+ * *   By default, this operation queries all custom operations reports. However, only one operations report can be displayed. Therefore, only one operations report is returned.
+ * *   You can call this operation up to three times per second per account.
  *
  * @param request DescribeCdnSubListRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -25483,8 +25495,8 @@ func (client *Client) DescribeCdnSubListWithOptions(runtime *util.RuntimeOptions
 }
 
 /**
- * > - By default, this operation queries all tracking tasks. However, only one tracking task can be displayed. Therefore, only one tracking task is returned.
- * - You can call this API operation up to three times per second per account.
+ * *   By default, this operation queries all custom operations reports. However, only one operations report can be displayed. Therefore, only one operations report is returned.
+ * *   You can call this operation up to three times per second per account.
  *
  * @return DescribeCdnSubListResponse
  */
@@ -28343,7 +28355,7 @@ func (client *Client) DescribeDomainRealTimeTrafficData(request *DescribeDomainR
 }
 
 /**
- * >  You can call this API operation up to 100 times per second per account.
+ * > You can call this operation up to 100 times per second per account.
  *
  * @param request DescribeDomainRealtimeLogDeliveryRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -28379,7 +28391,7 @@ func (client *Client) DescribeDomainRealtimeLogDeliveryWithOptions(request *Desc
 }
 
 /**
- * >  You can call this API operation up to 100 times per second per account.
+ * > You can call this operation up to 100 times per second per account.
  *
  * @param request DescribeDomainRealtimeLogDeliveryRequest
  * @return DescribeDomainRealtimeLogDeliveryResponse
@@ -29934,8 +29946,8 @@ func (client *Client) DescribeIpStatus(request *DescribeIpStatusRequest) (_resul
 }
 
 /**
- * > *   This operation is available only to users whose daily peak bandwidth value is higher than 1 Gbit/s. If you meet this requirement, you can [submit a ticket](https://workorder-intl.console.aliyun.com/?spm=5176.2020520001.aliyun_topbar.18.dbd44bd3e4f845#/ticket/createIndex) to apply for permissions to use this operation.
- * *   The maximum number of times that each user can call this operation per second is 40.
+ * *   This operation is available only to users whose daily peak bandwidth value is higher than 1 Gbit/s. If you meet this requirement, you can [submit a ticket](https://workorder-intl.console.aliyun.com/?spm=5176.2020520001.aliyun_topbar.18.dbd44bd3e4f845#/ticket/createIndex) to apply for permissions to use this operation.
+ * *   You can call this operation up to 40 times per second per account.
  *
  * @param request DescribeL2VipsByDomainRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -29983,8 +29995,8 @@ func (client *Client) DescribeL2VipsByDomainWithOptions(request *DescribeL2VipsB
 }
 
 /**
- * > *   This operation is available only to users whose daily peak bandwidth value is higher than 1 Gbit/s. If you meet this requirement, you can [submit a ticket](https://workorder-intl.console.aliyun.com/?spm=5176.2020520001.aliyun_topbar.18.dbd44bd3e4f845#/ticket/createIndex) to apply for permissions to use this operation.
- * *   The maximum number of times that each user can call this operation per second is 40.
+ * *   This operation is available only to users whose daily peak bandwidth value is higher than 1 Gbit/s. If you meet this requirement, you can [submit a ticket](https://workorder-intl.console.aliyun.com/?spm=5176.2020520001.aliyun_topbar.18.dbd44bd3e4f845#/ticket/createIndex) to apply for permissions to use this operation.
+ * *   You can call this operation up to 40 times per second per account.
  *
  * @param request DescribeL2VipsByDomainRequest
  * @return DescribeL2VipsByDomainResponse
@@ -30603,7 +30615,7 @@ func (client *Client) DescribeTopDomainsByFlow(request *DescribeTopDomainsByFlow
 }
 
 /**
- * >  The maximum number of times that each user can call this operation per second is 100.
+ * > You can call this operation up to 100 times per second per account.
  *
  * @param request DescribeUserCertificateExpireCountRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -30632,7 +30644,7 @@ func (client *Client) DescribeUserCertificateExpireCountWithOptions(runtime *uti
 }
 
 /**
- * >  The maximum number of times that each user can call this operation per second is 100.
+ * > You can call this operation up to 100 times per second per account.
  *
  * @return DescribeUserCertificateExpireCountResponse
  */
@@ -31052,7 +31064,7 @@ func (client *Client) DescribeUserVipsByDomain(request *DescribeUserVipsByDomain
 }
 
 /**
- * > The maximum number of times that each user can call this operation per second is 100.
+ * > You can call this operation up to 100 times per second per account.
  *
  * @param request DescribeVerifyContentRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -31092,7 +31104,7 @@ func (client *Client) DescribeVerifyContentWithOptions(request *DescribeVerifyCo
 }
 
 /**
- * > The maximum number of times that each user can call this operation per second is 100.
+ * > You can call this operation up to 100 times per second per account.
  *
  * @param request DescribeVerifyContentRequest
  * @return DescribeVerifyContentResponse
@@ -32927,7 +32939,7 @@ func (client *Client) UpdateFCTrigger(request *UpdateFCTriggerRequest) (_result 
 }
 
 /**
- * >  The maximum number of times that each user can call this operation per second is 100.
+ * > You can call this operation up to 100 times per second per account.
  *
  * @param request VerifyDomainOwnerRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -32971,7 +32983,7 @@ func (client *Client) VerifyDomainOwnerWithOptions(request *VerifyDomainOwnerReq
 }
 
 /**
- * >  The maximum number of times that each user can call this operation per second is 100.
+ * > You can call this operation up to 100 times per second per account.
  *
  * @param request VerifyDomainOwnerRequest
  * @return VerifyDomainOwnerResponse
