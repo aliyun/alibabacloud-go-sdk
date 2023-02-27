@@ -162,6 +162,156 @@ func (s *ADMMUResponse) SetBody(v *ADMMUResponseBody) *ADMMUResponse {
 	return s
 }
 
+type ADMiniCogRequest struct {
+	Params      *string `json:"Params,omitempty" xml:"Params,omitempty"`
+	ServiceCode *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
+}
+
+func (s ADMiniCogRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ADMiniCogRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ADMiniCogRequest) SetParams(v string) *ADMiniCogRequest {
+	s.Params = &v
+	return s
+}
+
+func (s *ADMiniCogRequest) SetServiceCode(v string) *ADMiniCogRequest {
+	s.ServiceCode = &v
+	return s
+}
+
+type ADMiniCogResponseBody struct {
+	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ADMiniCogResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ADMiniCogResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ADMiniCogResponseBody) SetData(v string) *ADMiniCogResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *ADMiniCogResponseBody) SetRequestId(v string) *ADMiniCogResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ADMiniCogResponse struct {
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ADMiniCogResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ADMiniCogResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ADMiniCogResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ADMiniCogResponse) SetHeaders(v map[string]*string) *ADMiniCogResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ADMiniCogResponse) SetStatusCode(v int32) *ADMiniCogResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ADMiniCogResponse) SetBody(v *ADMiniCogResponseBody) *ADMiniCogResponse {
+	s.Body = v
+	return s
+}
+
+type ADMiniCogResultRequest struct {
+	Params      *string `json:"Params,omitempty" xml:"Params,omitempty"`
+	ServiceCode *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
+}
+
+func (s ADMiniCogResultRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ADMiniCogResultRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ADMiniCogResultRequest) SetParams(v string) *ADMiniCogResultRequest {
+	s.Params = &v
+	return s
+}
+
+func (s *ADMiniCogResultRequest) SetServiceCode(v string) *ADMiniCogResultRequest {
+	s.ServiceCode = &v
+	return s
+}
+
+type ADMiniCogResultResponseBody struct {
+	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ADMiniCogResultResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ADMiniCogResultResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ADMiniCogResultResponseBody) SetData(v string) *ADMiniCogResultResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *ADMiniCogResultResponseBody) SetRequestId(v string) *ADMiniCogResultResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ADMiniCogResultResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ADMiniCogResultResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ADMiniCogResultResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ADMiniCogResultResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ADMiniCogResultResponse) SetHeaders(v map[string]*string) *ADMiniCogResultResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ADMiniCogResultResponse) SetStatusCode(v int32) *ADMiniCogResultResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ADMiniCogResultResponse) SetBody(v *ADMiniCogResultResponseBody) *ADMiniCogResultResponse {
+	s.Body = v
+	return s
+}
+
 type GetBrandChEcomRequest struct {
 	ImageUrl    *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
 	ServiceCode *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
@@ -2139,6 +2289,81 @@ func (s *GetSummaryChEcomResponse) SetBody(v *GetSummaryChEcomResponseBody) *Get
 	return s
 }
 
+type GetTableQAServiceInfoByIdRequest struct {
+	ServiceCode *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
+	ServiceId   *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+}
+
+func (s GetTableQAServiceInfoByIdRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTableQAServiceInfoByIdRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetTableQAServiceInfoByIdRequest) SetServiceCode(v string) *GetTableQAServiceInfoByIdRequest {
+	s.ServiceCode = &v
+	return s
+}
+
+func (s *GetTableQAServiceInfoByIdRequest) SetServiceId(v string) *GetTableQAServiceInfoByIdRequest {
+	s.ServiceId = &v
+	return s
+}
+
+type GetTableQAServiceInfoByIdResponseBody struct {
+	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetTableQAServiceInfoByIdResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTableQAServiceInfoByIdResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetTableQAServiceInfoByIdResponseBody) SetData(v string) *GetTableQAServiceInfoByIdResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *GetTableQAServiceInfoByIdResponseBody) SetRequestId(v string) *GetTableQAServiceInfoByIdResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetTableQAServiceInfoByIdResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetTableQAServiceInfoByIdResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetTableQAServiceInfoByIdResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTableQAServiceInfoByIdResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetTableQAServiceInfoByIdResponse) SetHeaders(v map[string]*string) *GetTableQAServiceInfoByIdResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetTableQAServiceInfoByIdResponse) SetStatusCode(v int32) *GetTableQAServiceInfoByIdResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetTableQAServiceInfoByIdResponse) SetBody(v *GetTableQAServiceInfoByIdResponseBody) *GetTableQAServiceInfoByIdResponse {
+	s.Body = v
+	return s
+}
+
 type GetTcChEcomRequest struct {
 	ServiceCode *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
 	Text        *string `json:"Text,omitempty" xml:"Text,omitempty"`
@@ -3636,105 +3861,6 @@ func (s *GetWsCustomizedSeaGeneralResponse) SetBody(v *GetWsCustomizedSeaGeneral
 	return s
 }
 
-type InsertCustomRequest struct {
-	ApiId          *int32  `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
-	CustomFileName *string `json:"CustomFileName,omitempty" xml:"CustomFileName,omitempty"`
-	CustomUrl      *string `json:"CustomUrl,omitempty" xml:"CustomUrl,omitempty"`
-	RegFileName    *string `json:"RegFileName,omitempty" xml:"RegFileName,omitempty"`
-	RegUrl         *string `json:"RegUrl,omitempty" xml:"RegUrl,omitempty"`
-	ServiceCode    *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
-}
-
-func (s InsertCustomRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s InsertCustomRequest) GoString() string {
-	return s.String()
-}
-
-func (s *InsertCustomRequest) SetApiId(v int32) *InsertCustomRequest {
-	s.ApiId = &v
-	return s
-}
-
-func (s *InsertCustomRequest) SetCustomFileName(v string) *InsertCustomRequest {
-	s.CustomFileName = &v
-	return s
-}
-
-func (s *InsertCustomRequest) SetCustomUrl(v string) *InsertCustomRequest {
-	s.CustomUrl = &v
-	return s
-}
-
-func (s *InsertCustomRequest) SetRegFileName(v string) *InsertCustomRequest {
-	s.RegFileName = &v
-	return s
-}
-
-func (s *InsertCustomRequest) SetRegUrl(v string) *InsertCustomRequest {
-	s.RegUrl = &v
-	return s
-}
-
-func (s *InsertCustomRequest) SetServiceCode(v string) *InsertCustomRequest {
-	s.ServiceCode = &v
-	return s
-}
-
-type InsertCustomResponseBody struct {
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s InsertCustomResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s InsertCustomResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *InsertCustomResponseBody) SetData(v string) *InsertCustomResponseBody {
-	s.Data = &v
-	return s
-}
-
-func (s *InsertCustomResponseBody) SetRequestId(v string) *InsertCustomResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type InsertCustomResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *InsertCustomResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s InsertCustomResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s InsertCustomResponse) GoString() string {
-	return s.String()
-}
-
-func (s *InsertCustomResponse) SetHeaders(v map[string]*string) *InsertCustomResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *InsertCustomResponse) SetStatusCode(v int32) *InsertCustomResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *InsertCustomResponse) SetBody(v *InsertCustomResponseBody) *InsertCustomResponse {
-	s.Body = v
-	return s
-}
-
 type OpenAlinlpServiceResponseBody struct {
 	OrderId   *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -3787,101 +3913,164 @@ func (s *OpenAlinlpServiceResponse) SetBody(v *OpenAlinlpServiceResponseBody) *O
 	return s
 }
 
-type UpdateCustomRequest struct {
-	CustomFileName *string `json:"CustomFileName,omitempty" xml:"CustomFileName,omitempty"`
-	CustomId       *int32  `json:"CustomId,omitempty" xml:"CustomId,omitempty"`
-	CustomUrl      *string `json:"CustomUrl,omitempty" xml:"CustomUrl,omitempty"`
-	RegFileName    *string `json:"RegFileName,omitempty" xml:"RegFileName,omitempty"`
-	RegUrl         *string `json:"RegUrl,omitempty" xml:"RegUrl,omitempty"`
-	ServiceCode    *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
+type RequestTableQARequest struct {
+	Params      *string `json:"Params,omitempty" xml:"Params,omitempty"`
+	ServiceCode *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
 }
 
-func (s UpdateCustomRequest) String() string {
+func (s RequestTableQARequest) String() string {
 	return tea.Prettify(s)
 }
 
-func (s UpdateCustomRequest) GoString() string {
+func (s RequestTableQARequest) GoString() string {
 	return s.String()
 }
 
-func (s *UpdateCustomRequest) SetCustomFileName(v string) *UpdateCustomRequest {
-	s.CustomFileName = &v
+func (s *RequestTableQARequest) SetParams(v string) *RequestTableQARequest {
+	s.Params = &v
 	return s
 }
 
-func (s *UpdateCustomRequest) SetCustomId(v int32) *UpdateCustomRequest {
-	s.CustomId = &v
-	return s
-}
-
-func (s *UpdateCustomRequest) SetCustomUrl(v string) *UpdateCustomRequest {
-	s.CustomUrl = &v
-	return s
-}
-
-func (s *UpdateCustomRequest) SetRegFileName(v string) *UpdateCustomRequest {
-	s.RegFileName = &v
-	return s
-}
-
-func (s *UpdateCustomRequest) SetRegUrl(v string) *UpdateCustomRequest {
-	s.RegUrl = &v
-	return s
-}
-
-func (s *UpdateCustomRequest) SetServiceCode(v string) *UpdateCustomRequest {
+func (s *RequestTableQARequest) SetServiceCode(v string) *RequestTableQARequest {
 	s.ServiceCode = &v
 	return s
 }
 
-type UpdateCustomResponseBody struct {
+type RequestTableQAResponseBody struct {
 	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
-func (s UpdateCustomResponseBody) String() string {
+func (s RequestTableQAResponseBody) String() string {
 	return tea.Prettify(s)
 }
 
-func (s UpdateCustomResponseBody) GoString() string {
+func (s RequestTableQAResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *UpdateCustomResponseBody) SetData(v string) *UpdateCustomResponseBody {
+func (s *RequestTableQAResponseBody) SetData(v string) *RequestTableQAResponseBody {
 	s.Data = &v
 	return s
 }
 
-func (s *UpdateCustomResponseBody) SetRequestId(v string) *UpdateCustomResponseBody {
+func (s *RequestTableQAResponseBody) SetRequestId(v string) *RequestTableQAResponseBody {
 	s.RequestId = &v
 	return s
 }
 
-type UpdateCustomResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateCustomResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+type RequestTableQAResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *RequestTableQAResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
-func (s UpdateCustomResponse) String() string {
+func (s RequestTableQAResponse) String() string {
 	return tea.Prettify(s)
 }
 
-func (s UpdateCustomResponse) GoString() string {
+func (s RequestTableQAResponse) GoString() string {
 	return s.String()
 }
 
-func (s *UpdateCustomResponse) SetHeaders(v map[string]*string) *UpdateCustomResponse {
+func (s *RequestTableQAResponse) SetHeaders(v map[string]*string) *RequestTableQAResponse {
 	s.Headers = v
 	return s
 }
 
-func (s *UpdateCustomResponse) SetStatusCode(v int32) *UpdateCustomResponse {
+func (s *RequestTableQAResponse) SetStatusCode(v int32) *RequestTableQAResponse {
 	s.StatusCode = &v
 	return s
 }
 
-func (s *UpdateCustomResponse) SetBody(v *UpdateCustomResponseBody) *UpdateCustomResponse {
+func (s *RequestTableQAResponse) SetBody(v *RequestTableQAResponseBody) *RequestTableQAResponse {
+	s.Body = v
+	return s
+}
+
+type RequestTableQAOnlineRequest struct {
+	BotId       *string `json:"BotId,omitempty" xml:"BotId,omitempty"`
+	Params      *string `json:"Params,omitempty" xml:"Params,omitempty"`
+	Question    *string `json:"Question,omitempty" xml:"Question,omitempty"`
+	ServiceCode *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
+}
+
+func (s RequestTableQAOnlineRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RequestTableQAOnlineRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RequestTableQAOnlineRequest) SetBotId(v string) *RequestTableQAOnlineRequest {
+	s.BotId = &v
+	return s
+}
+
+func (s *RequestTableQAOnlineRequest) SetParams(v string) *RequestTableQAOnlineRequest {
+	s.Params = &v
+	return s
+}
+
+func (s *RequestTableQAOnlineRequest) SetQuestion(v string) *RequestTableQAOnlineRequest {
+	s.Question = &v
+	return s
+}
+
+func (s *RequestTableQAOnlineRequest) SetServiceCode(v string) *RequestTableQAOnlineRequest {
+	s.ServiceCode = &v
+	return s
+}
+
+type RequestTableQAOnlineResponseBody struct {
+	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s RequestTableQAOnlineResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RequestTableQAOnlineResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RequestTableQAOnlineResponseBody) SetData(v string) *RequestTableQAOnlineResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *RequestTableQAOnlineResponseBody) SetRequestId(v string) *RequestTableQAOnlineResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type RequestTableQAOnlineResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *RequestTableQAOnlineResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s RequestTableQAOnlineResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RequestTableQAOnlineResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RequestTableQAOnlineResponse) SetHeaders(v map[string]*string) *RequestTableQAOnlineResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RequestTableQAOnlineResponse) SetStatusCode(v int32) *RequestTableQAOnlineResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RequestTableQAOnlineResponse) SetBody(v *RequestTableQAOnlineResponseBody) *RequestTableQAOnlineResponse {
 	s.Body = v
 	return s
 }
@@ -4022,6 +4211,102 @@ func (client *Client) ADMMU(request *ADMMURequest) (_result *ADMMUResponse, _err
 	runtime := &util.RuntimeOptions{}
 	_result = &ADMMUResponse{}
 	_body, _err := client.ADMMUWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ADMiniCogWithOptions(request *ADMiniCogRequest, runtime *util.RuntimeOptions) (_result *ADMiniCogResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Params)) {
+		body["Params"] = request.Params
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceCode)) {
+		body["ServiceCode"] = request.ServiceCode
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ADMiniCog"),
+		Version:     tea.String("2020-06-29"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ADMiniCogResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ADMiniCog(request *ADMiniCogRequest) (_result *ADMiniCogResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ADMiniCogResponse{}
+	_body, _err := client.ADMiniCogWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ADMiniCogResultWithOptions(request *ADMiniCogResultRequest, runtime *util.RuntimeOptions) (_result *ADMiniCogResultResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Params)) {
+		body["Params"] = request.Params
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceCode)) {
+		body["ServiceCode"] = request.ServiceCode
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ADMiniCogResult"),
+		Version:     tea.String("2020-06-29"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ADMiniCogResultResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ADMiniCogResult(request *ADMiniCogResultRequest) (_result *ADMiniCogResultResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ADMiniCogResultResponse{}
+	_body, _err := client.ADMiniCogResultWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5297,6 +5582,54 @@ func (client *Client) GetSummaryChEcom(request *GetSummaryChEcomRequest) (_resul
 	return _result, _err
 }
 
+func (client *Client) GetTableQAServiceInfoByIdWithOptions(request *GetTableQAServiceInfoByIdRequest, runtime *util.RuntimeOptions) (_result *GetTableQAServiceInfoByIdResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ServiceCode)) {
+		body["ServiceCode"] = request.ServiceCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceId)) {
+		body["ServiceId"] = request.ServiceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetTableQAServiceInfoById"),
+		Version:     tea.String("2020-06-29"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetTableQAServiceInfoByIdResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetTableQAServiceInfoById(request *GetTableQAServiceInfoByIdRequest) (_result *GetTableQAServiceInfoByIdResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetTableQAServiceInfoByIdResponse{}
+	_body, _err := client.GetTableQAServiceInfoByIdWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) GetTcChEcomWithOptions(request *GetTcChEcomRequest, runtime *util.RuntimeOptions) (_result *GetTcChEcomResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6261,70 +6594,6 @@ func (client *Client) GetWsCustomizedSeaGeneral(request *GetWsCustomizedSeaGener
 	return _result, _err
 }
 
-func (client *Client) InsertCustomWithOptions(request *InsertCustomRequest, runtime *util.RuntimeOptions) (_result *InsertCustomResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ApiId)) {
-		body["ApiId"] = request.ApiId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.CustomFileName)) {
-		body["CustomFileName"] = request.CustomFileName
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.CustomUrl)) {
-		body["CustomUrl"] = request.CustomUrl
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.RegFileName)) {
-		body["RegFileName"] = request.RegFileName
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.RegUrl)) {
-		body["RegUrl"] = request.RegUrl
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ServiceCode)) {
-		body["ServiceCode"] = request.ServiceCode
-	}
-
-	req := &openapi.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("InsertCustom"),
-		Version:     tea.String("2020-06-29"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &InsertCustomResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) InsertCustom(request *InsertCustomRequest) (_result *InsertCustomResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &InsertCustomResponse{}
-	_body, _err := client.InsertCustomWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) OpenAlinlpServiceWithOptions(runtime *util.RuntimeOptions) (_result *OpenAlinlpServiceResponse, _err error) {
 	req := &openapi.OpenApiRequest{}
 	params := &openapi.Params{
@@ -6358,30 +6627,14 @@ func (client *Client) OpenAlinlpService() (_result *OpenAlinlpServiceResponse, _
 	return _result, _err
 }
 
-func (client *Client) UpdateCustomWithOptions(request *UpdateCustomRequest, runtime *util.RuntimeOptions) (_result *UpdateCustomResponse, _err error) {
+func (client *Client) RequestTableQAWithOptions(request *RequestTableQARequest, runtime *util.RuntimeOptions) (_result *RequestTableQAResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.CustomFileName)) {
-		body["CustomFileName"] = request.CustomFileName
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.CustomId)) {
-		body["CustomId"] = request.CustomId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.CustomUrl)) {
-		body["CustomUrl"] = request.CustomUrl
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.RegFileName)) {
-		body["RegFileName"] = request.RegFileName
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.RegUrl)) {
-		body["RegUrl"] = request.RegUrl
+	if !tea.BoolValue(util.IsUnset(request.Params)) {
+		body["Params"] = request.Params
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ServiceCode)) {
@@ -6392,7 +6645,7 @@ func (client *Client) UpdateCustomWithOptions(request *UpdateCustomRequest, runt
 		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
-		Action:      tea.String("UpdateCustom"),
+		Action:      tea.String("RequestTableQA"),
 		Version:     tea.String("2020-06-29"),
 		Protocol:    tea.String("HTTPS"),
 		Pathname:    tea.String("/"),
@@ -6402,7 +6655,7 @@ func (client *Client) UpdateCustomWithOptions(request *UpdateCustomRequest, runt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateCustomResponse{}
+	_result = &RequestTableQAResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -6411,10 +6664,66 @@ func (client *Client) UpdateCustomWithOptions(request *UpdateCustomRequest, runt
 	return _result, _err
 }
 
-func (client *Client) UpdateCustom(request *UpdateCustomRequest) (_result *UpdateCustomResponse, _err error) {
+func (client *Client) RequestTableQA(request *RequestTableQARequest) (_result *RequestTableQAResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	_result = &UpdateCustomResponse{}
-	_body, _err := client.UpdateCustomWithOptions(request, runtime)
+	_result = &RequestTableQAResponse{}
+	_body, _err := client.RequestTableQAWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) RequestTableQAOnlineWithOptions(request *RequestTableQAOnlineRequest, runtime *util.RuntimeOptions) (_result *RequestTableQAOnlineResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BotId)) {
+		body["BotId"] = request.BotId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Params)) {
+		body["Params"] = request.Params
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Question)) {
+		body["Question"] = request.Question
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceCode)) {
+		body["ServiceCode"] = request.ServiceCode
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RequestTableQAOnline"),
+		Version:     tea.String("2020-06-29"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RequestTableQAOnlineResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) RequestTableQAOnline(request *RequestTableQAOnlineRequest) (_result *RequestTableQAOnlineResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RequestTableQAOnlineResponse{}
+	_body, _err := client.RequestTableQAOnlineWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
