@@ -782,7 +782,8 @@ type CreateJobRequest struct {
 	//
 	// *   **true**: Turn on Timeout termination.
 	// *   **false**: Turn off Timeout termination.
-	TimeoutKillEnable *bool `json:"TimeoutKillEnable,omitempty" xml:"TimeoutKillEnable,omitempty"`
+	TimeoutKillEnable *bool   `json:"TimeoutKillEnable,omitempty" xml:"TimeoutKillEnable,omitempty"`
+	Timezone          *string `json:"Timezone,omitempty" xml:"Timezone,omitempty"`
 	// If the Task type parameter is set to k8s, this parameter is required. xxljob task: {"resource":"job"} shell task: {"image":"busybox","resource":"shell"}
 	XAttrs *string `json:"XAttrs,omitempty" xml:"XAttrs,omitempty"`
 }
@@ -962,6 +963,11 @@ func (s *CreateJobRequest) SetTimeoutEnable(v bool) *CreateJobRequest {
 
 func (s *CreateJobRequest) SetTimeoutKillEnable(v bool) *CreateJobRequest {
 	s.TimeoutKillEnable = &v
+	return s
+}
+
+func (s *CreateJobRequest) SetTimezone(v string) *CreateJobRequest {
+	s.Timezone = &v
 	return s
 }
 
@@ -7222,7 +7228,8 @@ type UpdateJobRequest struct {
 	//
 	// *   **true**: Turn on Timeout termination.
 	// *   **false**: Turn off Timeout termination.
-	TimeoutKillEnable *bool `json:"TimeoutKillEnable,omitempty" xml:"TimeoutKillEnable,omitempty"`
+	TimeoutKillEnable *bool   `json:"TimeoutKillEnable,omitempty" xml:"TimeoutKillEnable,omitempty"`
+	Timezone          *string `json:"Timezone,omitempty" xml:"Timezone,omitempty"`
 }
 
 func (s UpdateJobRequest) String() string {
@@ -7400,6 +7407,11 @@ func (s *UpdateJobRequest) SetTimeoutEnable(v bool) *UpdateJobRequest {
 
 func (s *UpdateJobRequest) SetTimeoutKillEnable(v bool) *UpdateJobRequest {
 	s.TimeoutKillEnable = &v
+	return s
+}
+
+func (s *UpdateJobRequest) SetTimezone(v string) *UpdateJobRequest {
+	s.Timezone = &v
 	return s
 }
 
@@ -8309,6 +8321,10 @@ func (client *Client) CreateJobWithOptions(request *CreateJobRequest, runtime *u
 
 	if !tea.BoolValue(util.IsUnset(request.TimeoutKillEnable)) {
 		body["TimeoutKillEnable"] = request.TimeoutKillEnable
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Timezone)) {
+		body["Timezone"] = request.Timezone
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.XAttrs)) {
@@ -10266,6 +10282,10 @@ func (client *Client) UpdateJobWithOptions(request *UpdateJobRequest, runtime *u
 
 	if !tea.BoolValue(util.IsUnset(request.TimeoutKillEnable)) {
 		body["TimeoutKillEnable"] = request.TimeoutKillEnable
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Timezone)) {
+		body["Timezone"] = request.Timezone
 	}
 
 	req := &openapi.OpenApiRequest{
