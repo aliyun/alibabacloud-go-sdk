@@ -11898,6 +11898,643 @@ func (s *PauseEventStreamingResponse) SetBody(v *PauseEventStreamingResponseBody
 	return s
 }
 
+type QueryEventRequest struct {
+	EventBusName *string `json:"EventBusName,omitempty" xml:"EventBusName,omitempty"`
+	EventId      *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
+}
+
+func (s QueryEventRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryEventRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryEventRequest) SetEventBusName(v string) *QueryEventRequest {
+	s.EventBusName = &v
+	return s
+}
+
+func (s *QueryEventRequest) SetEventId(v string) *QueryEventRequest {
+	s.EventId = &v
+	return s
+}
+
+type QueryEventResponseBody struct {
+	Code      *string                `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      map[string]interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
+	Message   *string                `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                  `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s QueryEventResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryEventResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryEventResponseBody) SetCode(v string) *QueryEventResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *QueryEventResponseBody) SetData(v map[string]interface{}) *QueryEventResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *QueryEventResponseBody) SetMessage(v string) *QueryEventResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *QueryEventResponseBody) SetRequestId(v string) *QueryEventResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QueryEventResponseBody) SetSuccess(v bool) *QueryEventResponseBody {
+	s.Success = &v
+	return s
+}
+
+type QueryEventResponse struct {
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *QueryEventResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s QueryEventResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryEventResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryEventResponse) SetHeaders(v map[string]*string) *QueryEventResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryEventResponse) SetStatusCode(v int32) *QueryEventResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QueryEventResponse) SetBody(v *QueryEventResponseBody) *QueryEventResponse {
+	s.Body = v
+	return s
+}
+
+type QueryEventTracesRequest struct {
+	EventBusName *string `json:"EventBusName,omitempty" xml:"EventBusName,omitempty"`
+	EventId      *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
+}
+
+func (s QueryEventTracesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryEventTracesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryEventTracesRequest) SetEventBusName(v string) *QueryEventTracesRequest {
+	s.EventBusName = &v
+	return s
+}
+
+func (s *QueryEventTracesRequest) SetEventId(v string) *QueryEventTracesRequest {
+	s.EventId = &v
+	return s
+}
+
+type QueryEventTracesResponseBody struct {
+	Code      *string                             `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      []*QueryEventTracesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	Message   *string                             `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                               `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s QueryEventTracesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryEventTracesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryEventTracesResponseBody) SetCode(v string) *QueryEventTracesResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *QueryEventTracesResponseBody) SetData(v []*QueryEventTracesResponseBodyData) *QueryEventTracesResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *QueryEventTracesResponseBody) SetMessage(v string) *QueryEventTracesResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *QueryEventTracesResponseBody) SetRequestId(v string) *QueryEventTracesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QueryEventTracesResponseBody) SetSuccess(v bool) *QueryEventTracesResponseBody {
+	s.Success = &v
+	return s
+}
+
+type QueryEventTracesResponseBodyData struct {
+	Action           *string `json:"Action,omitempty" xml:"Action,omitempty"`
+	ActionTime       *int64  `json:"ActionTime,omitempty" xml:"ActionTime,omitempty"`
+	Endpoint         *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
+	EventBusName     *string `json:"EventBusName,omitempty" xml:"EventBusName,omitempty"`
+	EventId          *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	EventSource      *string `json:"EventSource,omitempty" xml:"EventSource,omitempty"`
+	NotifyLatency    *string `json:"NotifyLatency,omitempty" xml:"NotifyLatency,omitempty"`
+	NotifyStatus     *string `json:"NotifyStatus,omitempty" xml:"NotifyStatus,omitempty"`
+	NotifyTime       *int64  `json:"NotifyTime,omitempty" xml:"NotifyTime,omitempty"`
+	ReceivedTime     *int64  `json:"ReceivedTime,omitempty" xml:"ReceivedTime,omitempty"`
+	RuleMatchingTime *string `json:"RuleMatchingTime,omitempty" xml:"RuleMatchingTime,omitempty"`
+	RuleName         *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+}
+
+func (s QueryEventTracesResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryEventTracesResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *QueryEventTracesResponseBodyData) SetAction(v string) *QueryEventTracesResponseBodyData {
+	s.Action = &v
+	return s
+}
+
+func (s *QueryEventTracesResponseBodyData) SetActionTime(v int64) *QueryEventTracesResponseBodyData {
+	s.ActionTime = &v
+	return s
+}
+
+func (s *QueryEventTracesResponseBodyData) SetEndpoint(v string) *QueryEventTracesResponseBodyData {
+	s.Endpoint = &v
+	return s
+}
+
+func (s *QueryEventTracesResponseBodyData) SetEventBusName(v string) *QueryEventTracesResponseBodyData {
+	s.EventBusName = &v
+	return s
+}
+
+func (s *QueryEventTracesResponseBodyData) SetEventId(v string) *QueryEventTracesResponseBodyData {
+	s.EventId = &v
+	return s
+}
+
+func (s *QueryEventTracesResponseBodyData) SetEventSource(v string) *QueryEventTracesResponseBodyData {
+	s.EventSource = &v
+	return s
+}
+
+func (s *QueryEventTracesResponseBodyData) SetNotifyLatency(v string) *QueryEventTracesResponseBodyData {
+	s.NotifyLatency = &v
+	return s
+}
+
+func (s *QueryEventTracesResponseBodyData) SetNotifyStatus(v string) *QueryEventTracesResponseBodyData {
+	s.NotifyStatus = &v
+	return s
+}
+
+func (s *QueryEventTracesResponseBodyData) SetNotifyTime(v int64) *QueryEventTracesResponseBodyData {
+	s.NotifyTime = &v
+	return s
+}
+
+func (s *QueryEventTracesResponseBodyData) SetReceivedTime(v int64) *QueryEventTracesResponseBodyData {
+	s.ReceivedTime = &v
+	return s
+}
+
+func (s *QueryEventTracesResponseBodyData) SetRuleMatchingTime(v string) *QueryEventTracesResponseBodyData {
+	s.RuleMatchingTime = &v
+	return s
+}
+
+func (s *QueryEventTracesResponseBodyData) SetRuleName(v string) *QueryEventTracesResponseBodyData {
+	s.RuleName = &v
+	return s
+}
+
+type QueryEventTracesResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *QueryEventTracesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s QueryEventTracesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryEventTracesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryEventTracesResponse) SetHeaders(v map[string]*string) *QueryEventTracesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryEventTracesResponse) SetStatusCode(v int32) *QueryEventTracesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QueryEventTracesResponse) SetBody(v *QueryEventTracesResponseBody) *QueryEventTracesResponse {
+	s.Body = v
+	return s
+}
+
+type QueryTracedEventByEventIdRequest struct {
+	EventBusName *string `json:"EventBusName,omitempty" xml:"EventBusName,omitempty"`
+	EventId      *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	EventSource  *string `json:"EventSource,omitempty" xml:"EventSource,omitempty"`
+}
+
+func (s QueryTracedEventByEventIdRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryTracedEventByEventIdRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryTracedEventByEventIdRequest) SetEventBusName(v string) *QueryTracedEventByEventIdRequest {
+	s.EventBusName = &v
+	return s
+}
+
+func (s *QueryTracedEventByEventIdRequest) SetEventId(v string) *QueryTracedEventByEventIdRequest {
+	s.EventId = &v
+	return s
+}
+
+func (s *QueryTracedEventByEventIdRequest) SetEventSource(v string) *QueryTracedEventByEventIdRequest {
+	s.EventSource = &v
+	return s
+}
+
+type QueryTracedEventByEventIdResponseBody struct {
+	Code      *string                                      `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      []*QueryTracedEventByEventIdResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	Message   *string                                      `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                                        `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s QueryTracedEventByEventIdResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryTracedEventByEventIdResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryTracedEventByEventIdResponseBody) SetCode(v string) *QueryTracedEventByEventIdResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *QueryTracedEventByEventIdResponseBody) SetData(v []*QueryTracedEventByEventIdResponseBodyData) *QueryTracedEventByEventIdResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *QueryTracedEventByEventIdResponseBody) SetMessage(v string) *QueryTracedEventByEventIdResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *QueryTracedEventByEventIdResponseBody) SetRequestId(v string) *QueryTracedEventByEventIdResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QueryTracedEventByEventIdResponseBody) SetSuccess(v bool) *QueryTracedEventByEventIdResponseBody {
+	s.Success = &v
+	return s
+}
+
+type QueryTracedEventByEventIdResponseBodyData struct {
+	Events    []*QueryTracedEventByEventIdResponseBodyDataEvents `json:"Events,omitempty" xml:"Events,omitempty" type:"Repeated"`
+	NextToken *string                                            `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	Total     *int32                                             `json:"Total,omitempty" xml:"Total,omitempty"`
+}
+
+func (s QueryTracedEventByEventIdResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryTracedEventByEventIdResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *QueryTracedEventByEventIdResponseBodyData) SetEvents(v []*QueryTracedEventByEventIdResponseBodyDataEvents) *QueryTracedEventByEventIdResponseBodyData {
+	s.Events = v
+	return s
+}
+
+func (s *QueryTracedEventByEventIdResponseBodyData) SetNextToken(v string) *QueryTracedEventByEventIdResponseBodyData {
+	s.NextToken = &v
+	return s
+}
+
+func (s *QueryTracedEventByEventIdResponseBodyData) SetTotal(v int32) *QueryTracedEventByEventIdResponseBodyData {
+	s.Total = &v
+	return s
+}
+
+type QueryTracedEventByEventIdResponseBodyDataEvents struct {
+	EventBusName      *string `json:"EventBusName,omitempty" xml:"EventBusName,omitempty"`
+	EventId           *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	EventReceivedTime *int64  `json:"EventReceivedTime,omitempty" xml:"EventReceivedTime,omitempty"`
+	EventSource       *string `json:"EventSource,omitempty" xml:"EventSource,omitempty"`
+	EventType         *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
+}
+
+func (s QueryTracedEventByEventIdResponseBodyDataEvents) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryTracedEventByEventIdResponseBodyDataEvents) GoString() string {
+	return s.String()
+}
+
+func (s *QueryTracedEventByEventIdResponseBodyDataEvents) SetEventBusName(v string) *QueryTracedEventByEventIdResponseBodyDataEvents {
+	s.EventBusName = &v
+	return s
+}
+
+func (s *QueryTracedEventByEventIdResponseBodyDataEvents) SetEventId(v string) *QueryTracedEventByEventIdResponseBodyDataEvents {
+	s.EventId = &v
+	return s
+}
+
+func (s *QueryTracedEventByEventIdResponseBodyDataEvents) SetEventReceivedTime(v int64) *QueryTracedEventByEventIdResponseBodyDataEvents {
+	s.EventReceivedTime = &v
+	return s
+}
+
+func (s *QueryTracedEventByEventIdResponseBodyDataEvents) SetEventSource(v string) *QueryTracedEventByEventIdResponseBodyDataEvents {
+	s.EventSource = &v
+	return s
+}
+
+func (s *QueryTracedEventByEventIdResponseBodyDataEvents) SetEventType(v string) *QueryTracedEventByEventIdResponseBodyDataEvents {
+	s.EventType = &v
+	return s
+}
+
+type QueryTracedEventByEventIdResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *QueryTracedEventByEventIdResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s QueryTracedEventByEventIdResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryTracedEventByEventIdResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryTracedEventByEventIdResponse) SetHeaders(v map[string]*string) *QueryTracedEventByEventIdResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryTracedEventByEventIdResponse) SetStatusCode(v int32) *QueryTracedEventByEventIdResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QueryTracedEventByEventIdResponse) SetBody(v *QueryTracedEventByEventIdResponseBody) *QueryTracedEventByEventIdResponse {
+	s.Body = v
+	return s
+}
+
+type QueryTracedEventsRequest struct {
+	EndTime      *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	EventBusName *string `json:"EventBusName,omitempty" xml:"EventBusName,omitempty"`
+	EventSource  *string `json:"EventSource,omitempty" xml:"EventSource,omitempty"`
+	EventType    *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
+	Limit        *int32  `json:"Limit,omitempty" xml:"Limit,omitempty"`
+	MatchedRule  *string `json:"MatchedRule,omitempty" xml:"MatchedRule,omitempty"`
+	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	StartTime    *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s QueryTracedEventsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryTracedEventsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryTracedEventsRequest) SetEndTime(v int64) *QueryTracedEventsRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *QueryTracedEventsRequest) SetEventBusName(v string) *QueryTracedEventsRequest {
+	s.EventBusName = &v
+	return s
+}
+
+func (s *QueryTracedEventsRequest) SetEventSource(v string) *QueryTracedEventsRequest {
+	s.EventSource = &v
+	return s
+}
+
+func (s *QueryTracedEventsRequest) SetEventType(v string) *QueryTracedEventsRequest {
+	s.EventType = &v
+	return s
+}
+
+func (s *QueryTracedEventsRequest) SetLimit(v int32) *QueryTracedEventsRequest {
+	s.Limit = &v
+	return s
+}
+
+func (s *QueryTracedEventsRequest) SetMatchedRule(v string) *QueryTracedEventsRequest {
+	s.MatchedRule = &v
+	return s
+}
+
+func (s *QueryTracedEventsRequest) SetNextToken(v string) *QueryTracedEventsRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *QueryTracedEventsRequest) SetStartTime(v int64) *QueryTracedEventsRequest {
+	s.StartTime = &v
+	return s
+}
+
+type QueryTracedEventsResponseBody struct {
+	Code      *string                            `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *QueryTracedEventsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                            `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                              `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s QueryTracedEventsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryTracedEventsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryTracedEventsResponseBody) SetCode(v string) *QueryTracedEventsResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *QueryTracedEventsResponseBody) SetData(v *QueryTracedEventsResponseBodyData) *QueryTracedEventsResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *QueryTracedEventsResponseBody) SetMessage(v string) *QueryTracedEventsResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *QueryTracedEventsResponseBody) SetRequestId(v string) *QueryTracedEventsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QueryTracedEventsResponseBody) SetSuccess(v bool) *QueryTracedEventsResponseBody {
+	s.Success = &v
+	return s
+}
+
+type QueryTracedEventsResponseBodyData struct {
+	Events    []*QueryTracedEventsResponseBodyDataEvents `json:"Events,omitempty" xml:"Events,omitempty" type:"Repeated"`
+	NextToken *string                                    `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	Total     *int32                                     `json:"Total,omitempty" xml:"Total,omitempty"`
+}
+
+func (s QueryTracedEventsResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryTracedEventsResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *QueryTracedEventsResponseBodyData) SetEvents(v []*QueryTracedEventsResponseBodyDataEvents) *QueryTracedEventsResponseBodyData {
+	s.Events = v
+	return s
+}
+
+func (s *QueryTracedEventsResponseBodyData) SetNextToken(v string) *QueryTracedEventsResponseBodyData {
+	s.NextToken = &v
+	return s
+}
+
+func (s *QueryTracedEventsResponseBodyData) SetTotal(v int32) *QueryTracedEventsResponseBodyData {
+	s.Total = &v
+	return s
+}
+
+type QueryTracedEventsResponseBodyDataEvents struct {
+	EventBusName      *string `json:"EventBusName,omitempty" xml:"EventBusName,omitempty"`
+	EventId           *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	EventReceivedTime *int64  `json:"EventReceivedTime,omitempty" xml:"EventReceivedTime,omitempty"`
+	EventSource       *string `json:"EventSource,omitempty" xml:"EventSource,omitempty"`
+	EventType         *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
+}
+
+func (s QueryTracedEventsResponseBodyDataEvents) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryTracedEventsResponseBodyDataEvents) GoString() string {
+	return s.String()
+}
+
+func (s *QueryTracedEventsResponseBodyDataEvents) SetEventBusName(v string) *QueryTracedEventsResponseBodyDataEvents {
+	s.EventBusName = &v
+	return s
+}
+
+func (s *QueryTracedEventsResponseBodyDataEvents) SetEventId(v string) *QueryTracedEventsResponseBodyDataEvents {
+	s.EventId = &v
+	return s
+}
+
+func (s *QueryTracedEventsResponseBodyDataEvents) SetEventReceivedTime(v int64) *QueryTracedEventsResponseBodyDataEvents {
+	s.EventReceivedTime = &v
+	return s
+}
+
+func (s *QueryTracedEventsResponseBodyDataEvents) SetEventSource(v string) *QueryTracedEventsResponseBodyDataEvents {
+	s.EventSource = &v
+	return s
+}
+
+func (s *QueryTracedEventsResponseBodyDataEvents) SetEventType(v string) *QueryTracedEventsResponseBodyDataEvents {
+	s.EventType = &v
+	return s
+}
+
+type QueryTracedEventsResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *QueryTracedEventsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s QueryTracedEventsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryTracedEventsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryTracedEventsResponse) SetHeaders(v map[string]*string) *QueryTracedEventsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryTracedEventsResponse) SetStatusCode(v int32) *QueryTracedEventsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QueryTracedEventsResponse) SetBody(v *QueryTracedEventsResponseBody) *QueryTracedEventsResponse {
+	s.Body = v
+	return s
+}
+
 type StartEventStreamingRequest struct {
 	EventStreamingName *string `json:"EventStreamingName,omitempty" xml:"EventStreamingName,omitempty"`
 }
@@ -16728,6 +17365,226 @@ func (client *Client) PauseEventStreaming(request *PauseEventStreamingRequest) (
 	runtime := &util.RuntimeOptions{}
 	_result = &PauseEventStreamingResponse{}
 	_body, _err := client.PauseEventStreamingWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) QueryEventWithOptions(request *QueryEventRequest, runtime *util.RuntimeOptions) (_result *QueryEventResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EventBusName)) {
+		query["EventBusName"] = request.EventBusName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EventId)) {
+		query["EventId"] = request.EventId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryEvent"),
+		Version:     tea.String("2020-04-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QueryEventResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) QueryEvent(request *QueryEventRequest) (_result *QueryEventResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QueryEventResponse{}
+	_body, _err := client.QueryEventWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) QueryEventTracesWithOptions(request *QueryEventTracesRequest, runtime *util.RuntimeOptions) (_result *QueryEventTracesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EventBusName)) {
+		query["EventBusName"] = request.EventBusName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EventId)) {
+		query["EventId"] = request.EventId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryEventTraces"),
+		Version:     tea.String("2020-04-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QueryEventTracesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) QueryEventTraces(request *QueryEventTracesRequest) (_result *QueryEventTracesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QueryEventTracesResponse{}
+	_body, _err := client.QueryEventTracesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) QueryTracedEventByEventIdWithOptions(request *QueryTracedEventByEventIdRequest, runtime *util.RuntimeOptions) (_result *QueryTracedEventByEventIdResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EventBusName)) {
+		query["EventBusName"] = request.EventBusName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EventId)) {
+		query["EventId"] = request.EventId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EventSource)) {
+		query["EventSource"] = request.EventSource
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryTracedEventByEventId"),
+		Version:     tea.String("2020-04-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QueryTracedEventByEventIdResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) QueryTracedEventByEventId(request *QueryTracedEventByEventIdRequest) (_result *QueryTracedEventByEventIdResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QueryTracedEventByEventIdResponse{}
+	_body, _err := client.QueryTracedEventByEventIdWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) QueryTracedEventsWithOptions(request *QueryTracedEventsRequest, runtime *util.RuntimeOptions) (_result *QueryTracedEventsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EventBusName)) {
+		query["EventBusName"] = request.EventBusName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EventSource)) {
+		query["EventSource"] = request.EventSource
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EventType)) {
+		query["EventType"] = request.EventType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Limit)) {
+		query["Limit"] = request.Limit
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MatchedRule)) {
+		query["MatchedRule"] = request.MatchedRule
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryTracedEvents"),
+		Version:     tea.String("2020-04-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QueryTracedEventsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) QueryTracedEvents(request *QueryTracedEventsRequest) (_result *QueryTracedEventsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QueryTracedEventsResponse{}
+	_body, _err := client.QueryTracedEventsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
