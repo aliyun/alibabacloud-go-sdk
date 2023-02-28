@@ -13,16 +13,22 @@ import (
 )
 
 type CommitContainerRequest struct {
-	AcrRegistryInfo      *CommitContainerRequestAcrRegistryInfo `json:"AcrRegistryInfo,omitempty" xml:"AcrRegistryInfo,omitempty" type:"Struct"`
-	Arn                  *CommitContainerRequestArn             `json:"Arn,omitempty" xml:"Arn,omitempty" type:"Struct"`
-	ContainerGroupId     *string                                `json:"ContainerGroupId,omitempty" xml:"ContainerGroupId,omitempty"`
-	ContainerName        *string                                `json:"ContainerName,omitempty" xml:"ContainerName,omitempty"`
-	Image                *CommitContainerRequestImage           `json:"Image,omitempty" xml:"Image,omitempty" type:"Struct"`
-	OwnerAccount         *string                                `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64                                 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId             *string                                `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceOwnerAccount *string                                `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64                                 `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The configurations of the access credential for the Container Registry Enterprise Edition instance.
+	AcrRegistryInfo *CommitContainerRequestAcrRegistryInfo `json:"AcrRegistryInfo,omitempty" xml:"AcrRegistryInfo,omitempty" type:"Struct"`
+	// The ARN that is required for authorization.
+	Arn *CommitContainerRequestArn `json:"Arn,omitempty" xml:"Arn,omitempty" type:"Struct"`
+	// The ID of the container group.
+	ContainerGroupId *string `json:"ContainerGroupId,omitempty" xml:"ContainerGroupId,omitempty"`
+	// The name of the container.
+	ContainerName *string `json:"ContainerName,omitempty" xml:"ContainerName,omitempty"`
+	// The image of the container.
+	Image        *CommitContainerRequestImage `json:"Image,omitempty" xml:"Image,omitempty" type:"Struct"`
+	OwnerAccount *string                      `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64                       `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID of the instance.
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 }
 
 func (s CommitContainerRequest) String() string {
@@ -84,8 +90,10 @@ func (s *CommitContainerRequest) SetResourceOwnerId(v int64) *CommitContainerReq
 }
 
 type CommitContainerRequestAcrRegistryInfo struct {
+	// The configurations of the access credential for the Container Registry Enterprise Edition instance: the ID of the Enterprise Edition instance. This is a required parameter.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The region ID of the instance.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s CommitContainerRequestAcrRegistryInfo) String() string {
@@ -107,9 +115,10 @@ func (s *CommitContainerRequestAcrRegistryInfo) SetRegionId(v string) *CommitCon
 }
 
 type CommitContainerRequestArn struct {
-	AssumeRoleFor *string `json:"AssumeRoleFor,omitempty" xml:"AssumeRoleFor,omitempty"`
-	RoleArn       *string `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
-	RoleType      *string `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
+	// The ARN of the RAM role.
+	RoleArn *string `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
+	// The type of the authorization.
+	RoleType *string `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
 }
 
 func (s CommitContainerRequestArn) String() string {
@@ -118,11 +127,6 @@ func (s CommitContainerRequestArn) String() string {
 
 func (s CommitContainerRequestArn) GoString() string {
 	return s.String()
-}
-
-func (s *CommitContainerRequestArn) SetAssumeRoleFor(v string) *CommitContainerRequestArn {
-	s.AssumeRoleFor = &v
-	return s
 }
 
 func (s *CommitContainerRequestArn) SetRoleArn(v string) *CommitContainerRequestArn {
@@ -136,10 +140,14 @@ func (s *CommitContainerRequestArn) SetRoleType(v string) *CommitContainerReques
 }
 
 type CommitContainerRequestImage struct {
-	Author     *string `json:"Author,omitempty" xml:"Author,omitempty"`
-	Message    *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The authorization of the image.
+	Author *string `json:"Author,omitempty" xml:"Author,omitempty"`
+	// The message about the image.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The image repository.
 	Repository *string `json:"Repository,omitempty" xml:"Repository,omitempty"`
-	Tag        *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	// The tag of the image. This parameter is empty by default, which indicates that the tag is not modified.
+	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
 }
 
 func (s CommitContainerRequestImage) String() string {
@@ -171,8 +179,10 @@ func (s *CommitContainerRequestImage) SetTag(v string) *CommitContainerRequestIm
 }
 
 type CommitContainerResponseBody struct {
+	// The unique ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The ID of the task.
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s CommitContainerResponseBody) String() string {
@@ -223,69 +233,173 @@ func (s *CommitContainerResponse) SetBody(v *CommitContainerResponseBody) *Commi
 }
 
 type CreateContainerGroupRequest struct {
-	DnsConfig                     *CreateContainerGroupRequestDnsConfig                 `json:"DnsConfig,omitempty" xml:"DnsConfig,omitempty" type:"Struct"`
-	HostSecurityContext           *CreateContainerGroupRequestHostSecurityContext       `json:"HostSecurityContext,omitempty" xml:"HostSecurityContext,omitempty" type:"Struct"`
-	SecurityContext               *CreateContainerGroupRequestSecurityContext           `json:"SecurityContext,omitempty" xml:"SecurityContext,omitempty" type:"Struct"`
-	AcrRegistryInfo               []*CreateContainerGroupRequestAcrRegistryInfo         `json:"AcrRegistryInfo,omitempty" xml:"AcrRegistryInfo,omitempty" type:"Repeated"`
-	ActiveDeadlineSeconds         *int64                                                `json:"ActiveDeadlineSeconds,omitempty" xml:"ActiveDeadlineSeconds,omitempty"`
-	Arn                           []*CreateContainerGroupRequestArn                     `json:"Arn,omitempty" xml:"Arn,omitempty" type:"Repeated"`
-	AutoCreateEip                 *bool                                                 `json:"AutoCreateEip,omitempty" xml:"AutoCreateEip,omitempty"`
-	AutoMatchImageCache           *bool                                                 `json:"AutoMatchImageCache,omitempty" xml:"AutoMatchImageCache,omitempty"`
-	ClientToken                   *string                                               `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	Container                     []*CreateContainerGroupRequestContainer               `json:"Container,omitempty" xml:"Container,omitempty" type:"Repeated"`
-	ContainerGroupName            *string                                               `json:"ContainerGroupName,omitempty" xml:"ContainerGroupName,omitempty"`
-	ContainerResourceView         *bool                                                 `json:"ContainerResourceView,omitempty" xml:"ContainerResourceView,omitempty"`
-	CorePattern                   *string                                               `json:"CorePattern,omitempty" xml:"CorePattern,omitempty"`
-	Cpu                           *float32                                              `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
-	CpuOptionsCore                *int32                                                `json:"CpuOptionsCore,omitempty" xml:"CpuOptionsCore,omitempty"`
-	CpuOptionsNuma                *string                                               `json:"CpuOptionsNuma,omitempty" xml:"CpuOptionsNuma,omitempty"`
-	CpuOptionsThreadsPerCore      *int32                                                `json:"CpuOptionsThreadsPerCore,omitempty" xml:"CpuOptionsThreadsPerCore,omitempty"`
-	DnsPolicy                     *string                                               `json:"DnsPolicy,omitempty" xml:"DnsPolicy,omitempty"`
-	EgressBandwidth               *int64                                                `json:"EgressBandwidth,omitempty" xml:"EgressBandwidth,omitempty"`
-	EipBandwidth                  *int32                                                `json:"EipBandwidth,omitempty" xml:"EipBandwidth,omitempty"`
-	EipCommonBandwidthPackage     *string                                               `json:"EipCommonBandwidthPackage,omitempty" xml:"EipCommonBandwidthPackage,omitempty"`
-	EipISP                        *string                                               `json:"EipISP,omitempty" xml:"EipISP,omitempty"`
-	EipInstanceId                 *string                                               `json:"EipInstanceId,omitempty" xml:"EipInstanceId,omitempty"`
-	EphemeralStorage              *int32                                                `json:"EphemeralStorage,omitempty" xml:"EphemeralStorage,omitempty"`
-	HostAliase                    []*CreateContainerGroupRequestHostAliase              `json:"HostAliase,omitempty" xml:"HostAliase,omitempty" type:"Repeated"`
-	HostName                      *string                                               `json:"HostName,omitempty" xml:"HostName,omitempty"`
-	ImageAccelerateMode           *string                                               `json:"ImageAccelerateMode,omitempty" xml:"ImageAccelerateMode,omitempty"`
-	ImageRegistryCredential       []*CreateContainerGroupRequestImageRegistryCredential `json:"ImageRegistryCredential,omitempty" xml:"ImageRegistryCredential,omitempty" type:"Repeated"`
-	ImageSnapshotId               *string                                               `json:"ImageSnapshotId,omitempty" xml:"ImageSnapshotId,omitempty"`
-	IngressBandwidth              *int64                                                `json:"IngressBandwidth,omitempty" xml:"IngressBandwidth,omitempty"`
-	InitContainer                 []*CreateContainerGroupRequestInitContainer           `json:"InitContainer,omitempty" xml:"InitContainer,omitempty" type:"Repeated"`
-	InsecureRegistry              *string                                               `json:"InsecureRegistry,omitempty" xml:"InsecureRegistry,omitempty"`
-	InstanceType                  *string                                               `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	Ipv6AddressCount              *int32                                                `json:"Ipv6AddressCount,omitempty" xml:"Ipv6AddressCount,omitempty"`
-	Ipv6GatewayBandwidth          *string                                               `json:"Ipv6GatewayBandwidth,omitempty" xml:"Ipv6GatewayBandwidth,omitempty"`
-	Ipv6GatewayBandwidthEnable    *bool                                                 `json:"Ipv6GatewayBandwidthEnable,omitempty" xml:"Ipv6GatewayBandwidthEnable,omitempty"`
-	Memory                        *float32                                              `json:"Memory,omitempty" xml:"Memory,omitempty"`
-	NtpServer                     []*string                                             `json:"NtpServer,omitempty" xml:"NtpServer,omitempty" type:"Repeated"`
-	OwnerAccount                  *string                                               `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId                       *int64                                                `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	PlainHttpRegistry             *string                                               `json:"PlainHttpRegistry,omitempty" xml:"PlainHttpRegistry,omitempty"`
-	ProductOnEciMode              *string                                               `json:"ProductOnEciMode,omitempty" xml:"ProductOnEciMode,omitempty"`
-	RamRoleName                   *string                                               `json:"RamRoleName,omitempty" xml:"RamRoleName,omitempty"`
-	RegionId                      *string                                               `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceGroupId               *string                                               `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	ResourceOwnerAccount          *string                                               `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId               *int64                                                `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	RestartPolicy                 *string                                               `json:"RestartPolicy,omitempty" xml:"RestartPolicy,omitempty"`
-	ScheduleStrategy              *string                                               `json:"ScheduleStrategy,omitempty" xml:"ScheduleStrategy,omitempty"`
-	SecondaryENIPolicy            *string                                               `json:"SecondaryENIPolicy,omitempty" xml:"SecondaryENIPolicy,omitempty"`
-	SecurityGroupId               *string                                               `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	ShareProcessNamespace         *bool                                                 `json:"ShareProcessNamespace,omitempty" xml:"ShareProcessNamespace,omitempty"`
-	SpotDuration                  *int64                                                `json:"SpotDuration,omitempty" xml:"SpotDuration,omitempty"`
-	SpotPriceLimit                *float32                                              `json:"SpotPriceLimit,omitempty" xml:"SpotPriceLimit,omitempty"`
-	SpotStrategy                  *string                                               `json:"SpotStrategy,omitempty" xml:"SpotStrategy,omitempty"`
-	StrictSpot                    *bool                                                 `json:"StrictSpot,omitempty" xml:"StrictSpot,omitempty"`
-	Tag                           []*CreateContainerGroupRequestTag                     `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	TenantSecurityGroupId         *string                                               `json:"TenantSecurityGroupId,omitempty" xml:"TenantSecurityGroupId,omitempty"`
-	TenantVSwitchId               *string                                               `json:"TenantVSwitchId,omitempty" xml:"TenantVSwitchId,omitempty"`
-	TerminationGracePeriodSeconds *int64                                                `json:"TerminationGracePeriodSeconds,omitempty" xml:"TerminationGracePeriodSeconds,omitempty"`
-	VSwitchId                     *string                                               `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	Volume                        []*CreateContainerGroupRequestVolume                  `json:"Volume,omitempty" xml:"Volume,omitempty" type:"Repeated"`
-	ZoneId                        *string                                               `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	DnsConfig           *CreateContainerGroupRequestDnsConfig           `json:"DnsConfig,omitempty" xml:"DnsConfig,omitempty" type:"Struct"`
+	HostSecurityContext *CreateContainerGroupRequestHostSecurityContext `json:"HostSecurityContext,omitempty" xml:"HostSecurityContext,omitempty" type:"Struct"`
+	SecurityContext     *CreateContainerGroupRequestSecurityContext     `json:"SecurityContext,omitempty" xml:"SecurityContext,omitempty" type:"Struct"`
+	// Details of the Container Registry Enterprise Edition instances.
+	AcrRegistryInfo []*CreateContainerGroupRequestAcrRegistryInfo `json:"AcrRegistryInfo,omitempty" xml:"AcrRegistryInfo,omitempty" type:"Repeated"`
+	// The validity period of the elastic container instance. When this period expires, the instance is forced to exit. Unit: seconds.
+	ActiveDeadlineSeconds *int64 `json:"ActiveDeadlineSeconds,omitempty" xml:"ActiveDeadlineSeconds,omitempty"`
+	// Specifies whether to automatically create an EIP and associate it with the elastic container instance.
+	AutoCreateEip *bool `json:"AutoCreateEip,omitempty" xml:"AutoCreateEip,omitempty"`
+	// Specifies whether to automatically match image caches. Default value: false.
+	AutoMatchImageCache *bool `json:"AutoMatchImageCache,omitempty" xml:"AutoMatchImageCache,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that the value is unique among different requests. The token can only contain ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotency of requests?](~~25693~~)
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The information about containers.
+	Container []*CreateContainerGroupRequestContainer `json:"Container,omitempty" xml:"Container,omitempty" type:"Repeated"`
+	// The name of the elastic container instance. Format requirements:
+	//
+	// *   The name must be 2 to 128 characters in length
+	// *   The name can contain lowercase letters, digits, and hyphens (-). It cannot start or end with a hyphen (-).
+	ContainerGroupName *string `json:"ContainerGroupName,omitempty" xml:"ContainerGroupName,omitempty"`
+	// Specifies whether to enable container resource view. Container resource view displays the actual container resource data instead of data of the host. If the specifications of the generated elastic container instance are larger than the specifications that you request for when you create the instance, you can enable the ContainerResourceView feature to ensure that the resources that you view in the container are the same as the resources that you request for.
+	ContainerResourceView *bool `json:"ContainerResourceView,omitempty" xml:"ContainerResourceView,omitempty"`
+	// The path to store core dump files. For more information, see [Save core files to volumes](~~167801~~).
+	//
+	// > The path cannot start with a vertical bar (`|`). You cannot use core dump files to configure executable programs.
+	CorePattern *string `json:"CorePattern,omitempty" xml:"CorePattern,omitempty"`
+	// The number of vCPUs that you want to allocate to the elastic container instance.
+	Cpu *float32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	// The number of physical CPU cores. You can specify this parameter only for specific instance types. For more information, see [Specify custom CPU options](~~197781~~).
+	CpuOptionsCore *int32 `json:"CpuOptionsCore,omitempty" xml:"CpuOptionsCore,omitempty"`
+	// This parameter is not available.
+	CpuOptionsNuma *string `json:"CpuOptionsNuma,omitempty" xml:"CpuOptionsNuma,omitempty"`
+	// The number of threads per core. You can specify this parameter only for specific instance types. If you set this parameter to 1, Hyper-Threading is disabled. For more information, see [Specify custom CPU options](~~197781~~).
+	CpuOptionsThreadsPerCore *int32 `json:"CpuOptionsThreadsPerCore,omitempty" xml:"CpuOptionsThreadsPerCore,omitempty"`
+	// The Domain Name System (DNS) policy. Valid values:
+	//
+	// *   None: uses the DNS that is specified for DnsConfig-related parameters.
+	// *   Default: uses the DNS that is specified for the runtime environment.
+	DnsPolicy *string `json:"DnsPolicy,omitempty" xml:"DnsPolicy,omitempty"`
+	// The maximum outbound bandwidth. Unit: bytes.
+	EgressBandwidth *int64 `json:"EgressBandwidth,omitempty" xml:"EgressBandwidth,omitempty"`
+	// The bandwidth of the EIP. Unit: Mbit/s. Default value: 5.\
+	// You can specify this parameter when you set AutoCreateEip to true.
+	EipBandwidth *int32 `json:"EipBandwidth,omitempty" xml:"EipBandwidth,omitempty"`
+	// Specifies the EIP bandwidth plan that you want to use.
+	EipCommonBandwidthPackage *string `json:"EipCommonBandwidthPackage,omitempty" xml:"EipCommonBandwidthPackage,omitempty"`
+	// Specifies the line type of the EIP. Valid values:
+	//
+	// *   BPG: BGP (Multi-ISP) line
+	// *   BGP_PRO: BGP (Multi-ISP) Pro line
+	EipISP *string `json:"EipISP,omitempty" xml:"EipISP,omitempty"`
+	// The ID of the elastic IP address (EIP).
+	EipInstanceId *string `json:"EipInstanceId,omitempty" xml:"EipInstanceId,omitempty"`
+	// The increased storage capacity of the temporary storage space. Unit: GiB.\
+	// For more information, see [Increase the storage capacity of the temporary storage space](~~204066~~).
+	EphemeralStorage *int32 `json:"EphemeralStorage,omitempty" xml:"EphemeralStorage,omitempty"`
+	// The alias of the elastic container instance.
+	HostAliase []*CreateContainerGroupRequestHostAliase `json:"HostAliase,omitempty" xml:"HostAliase,omitempty" type:"Repeated"`
+	// The hostname of the instance.
+	HostName *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
+	// The image acceleration mode. Valid values:
+	//
+	// *   nydus: Nydus is used to accelerate image pulling. The images must support Nydus.
+	// *   dadi: DADI is used to accelerate image pulling. The images must support DADI.
+	// *   p2p: P2P is used to accelerate image pulling. The images must support P2P.
+	// *   imc: Image caches are used to accelerate image pulling.
+	ImageAccelerateMode *string `json:"ImageAccelerateMode,omitempty" xml:"ImageAccelerateMode,omitempty"`
+	// The information about the image repository.
+	ImageRegistryCredential []*CreateContainerGroupRequestImageRegistryCredential `json:"ImageRegistryCredential,omitempty" xml:"ImageRegistryCredential,omitempty" type:"Repeated"`
+	// The ID of the image cache. For more information, see [Use image caches to accelerate the creation of instances](~~141281~~).
+	ImageSnapshotId *string `json:"ImageSnapshotId,omitempty" xml:"ImageSnapshotId,omitempty"`
+	// The maximum inbound bandwidth. Unit: bytes.
+	IngressBandwidth *int64 `json:"IngressBandwidth,omitempty" xml:"IngressBandwidth,omitempty"`
+	// The init containers.
+	InitContainer []*CreateContainerGroupRequestInitContainer `json:"InitContainer,omitempty" xml:"InitContainer,omitempty" type:"Repeated"`
+	// The address of the self-managed image repository. When you create an elastic container instance by using an image in a self-managed image repository that uses a self-signed certificate, you must specify this parameter to skip the certificate authentication. This prevents image pull failures caused by certificate authentication failures.
+	InsecureRegistry *string `json:"InsecureRegistry,omitempty" xml:"InsecureRegistry,omitempty"`
+	// The ECS instance type. Different instance types are supported. For more information, see [Specify an ECS instance type to create an elastic container instance](~~114664~~).
+	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	// The number of IPv6 addresses. Set the value to 1. You can assign only one IPv6 address to an elastic container instance.
+	Ipv6AddressCount *int32 `json:"Ipv6AddressCount,omitempty" xml:"Ipv6AddressCount,omitempty"`
+	// The peak Internet bandwidth of the IPv6 address when the Ipv6GatewayBandwidthEnable parameter is set to true. Valid values:
+	//
+	// *   If the billing method for the Internet bandwidth of the IPv6 gateway is pay-by-bandwidth, the Internet bandwidth of the IPv6 address ranges from 1 to 2,000 Mbit/s.
+	//
+	// *   If the billing method for the Internet bandwidth of the IPv6 gateway is pay-by-traffic, the Internet bandwidth range of the IPv6 address is based on the edition of the IPv6 gateway.
+	//
+	//     *   If the IPv6 gateway is of Free Edition, the Internet bandwidth of the IPv6 address ranges from 1 to 200 Mbit/s.
+	//     *   If the IPv6 gateway is of Enterprise Edition, the Internet bandwidth of the IPv6 address ranges from 1 to 500 Mbit/s.
+	//     *   If the IPv6 gateway is of Enhanced Enterprise Edition, the Internet bandwidth of the IPv6 address ranges from 1 to 1,000 Mbit/s.
+	//
+	// The default value is the maximum value in the Internet bandwidth range of the IPv6 gateway.
+	Ipv6GatewayBandwidth *string `json:"Ipv6GatewayBandwidth,omitempty" xml:"Ipv6GatewayBandwidth,omitempty"`
+	// Specifies whether to enable IPv6 Internet access for the elastic container instance.
+	Ipv6GatewayBandwidthEnable *bool `json:"Ipv6GatewayBandwidthEnable,omitempty" xml:"Ipv6GatewayBandwidthEnable,omitempty"`
+	// The memory size that you want to allocate to the elastic container instance. Unit: GiB.
+	Memory *float32 `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	// The domain names of the NTP server.
+	NtpServer    []*string `json:"NtpServer,omitempty" xml:"NtpServer,omitempty" type:"Repeated"`
+	OwnerAccount *string   `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The address of the self-managed image repository. When you create an elastic container instance by using an image in a self-managed image repository that uses the HTTP protocol, you must specify this parameter. This allows Elastic Container Instance to pull the image over the HTTP protocol instead over the default HTTPS protocol. This prevents image pull failures caused by different protocols.
+	PlainHttpRegistry *string `json:"PlainHttpRegistry,omitempty" xml:"PlainHttpRegistry,omitempty"`
+	// The name of the RAM role that you want to associate with the elastic container instance. You can use the RAM role to access elastic container instances and ECS instances. For more information, see [Use an instance RAM role by calling API operations](~~61178~~).
+	RamRoleName *string `json:"RamRoleName,omitempty" xml:"RamRoleName,omitempty"`
+	// The region ID of the instance.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the resource group to which the instance belongs.
+	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The restart policy of the elastic container instance. Valid values:
+	//
+	// *   Always: Always restarts the instance.
+	// *   Never: Never restarts the instance.
+	// *   OnFailure: Restarts the instance when the last start failed.
+	//
+	// Default value: Always.
+	RestartPolicy *string `json:"RestartPolicy,omitempty" xml:"RestartPolicy,omitempty"`
+	// The resource scheduling policy when you specify multiple zones to create an elastic container instance. To specify multiple zones, you can use the VSwitchId to specify multiple vSwitches. Valid values:
+	//
+	// *   VSwitchOrdered: The system schedules resources in the sequence of the vSwitches.
+	// *   VSwitchRandom: The system schedules resources at random.
+	//
+	// For more information, see [Specify multiple zones to create an elastic container instance](~~157290~~).
+	ScheduleStrategy *string `json:"ScheduleStrategy,omitempty" xml:"ScheduleStrategy,omitempty"`
+	// The ID of the security group to which the instance is assigned. Instances within the same security group can access each other.
+	//
+	// If you do not specify a security group, the system automatically uses the default security group in the region that you selected. Make sure that the inbound rules of the security group contain the container protocols and port numbers that you want to expose. If you do not have a default security group in the region, the system creates a default security group, and then adds the container protocols and port numbers that you specified to the inbound rules of the security group.
+	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	// Specifies whether to use a shared namespace. Default value: false.
+	ShareProcessNamespace *bool `json:"ShareProcessNamespace,omitempty" xml:"ShareProcessNamespace,omitempty"`
+	// The protection period of the preemptible instance. Unit: hours. Default value: 1. Valid values: 0 to 6.
+	SpotDuration *int64 `json:"SpotDuration,omitempty" xml:"SpotDuration,omitempty"`
+	// The maximum hourly price of the preemptible elastic container instance. The value can contain up to three decimal places.
+	//
+	// If you set SpotStrategy to SpotWithPriceLimit, you must specify SpotPriceLimit.
+	SpotPriceLimit *float32 `json:"SpotPriceLimit,omitempty" xml:"SpotPriceLimit,omitempty"`
+	// The bidding policy for the elastic container instance. Valid values:
+	//
+	// *   NoSpot: The instance is created as a regular pay-as-you-go instance.
+	// *   SpotWithPriceLimit: The instance is created as a preemptible instance with a user-defined maximum hourly price.
+	// *   SpotAsPriceGo: The instance is created as a preemptible instance for which the market price at the time of purchase is automatically used as the bid price.
+	//
+	// Default value: NoSpot.
+	SpotStrategy *string `json:"SpotStrategy,omitempty" xml:"SpotStrategy,omitempty"`
+	// Specifies whether to enable periodical execution.
+	//
+	// *   true: enables periodical execution.
+	// *   false: disables periodical execution.
+	StrictSpot *bool `json:"StrictSpot,omitempty" xml:"StrictSpot,omitempty"`
+	// The tags that you want to bind with the instance. You can bind a maximum of 20 tags. For more information, see [Use tags to manage elastic container instances](~~146608~~).
+	Tag []*CreateContainerGroupRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	// The buffer time during which the program handles operations before the program stops.
+	TerminationGracePeriodSeconds *int64 `json:"TerminationGracePeriodSeconds,omitempty" xml:"TerminationGracePeriodSeconds,omitempty"`
+	// The ID of the vSwitch to which the instance is connected. You can specify up to 10 vSwitch IDs. Separate multiple vSwitch IDs with commas (,). Example: `vsw-***,vsw-***`.
+	//
+	// If no vSwitch is specified, the system automatically uses the default vSwitch in the default VPC in the region that you selected. If you do not have a default VPC or a default vSwitch in the region, the system automatically creates a default VPC and a default vSwitch.
+	//
+	// > The number of IP addresses in the vSwitch CIDR block determines the maximum number of elastic container instances that can be created for the vSwitch. Before you create elastic container instances, plan the CIDR block of the vSwitch.
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// Details about the volumes.
+	Volume []*CreateContainerGroupRequestVolume `json:"Volume,omitempty" xml:"Volume,omitempty" type:"Repeated"`
+	// The ID of the zone in which the elastic container instance is deployed. If you do not specify this parameter, the system selects a zone.
+	//
+	// This parameter is empty by default.
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s CreateContainerGroupRequest) String() string {
@@ -318,11 +432,6 @@ func (s *CreateContainerGroupRequest) SetAcrRegistryInfo(v []*CreateContainerGro
 
 func (s *CreateContainerGroupRequest) SetActiveDeadlineSeconds(v int64) *CreateContainerGroupRequest {
 	s.ActiveDeadlineSeconds = &v
-	return s
-}
-
-func (s *CreateContainerGroupRequest) SetArn(v []*CreateContainerGroupRequestArn) *CreateContainerGroupRequest {
-	s.Arn = v
 	return s
 }
 
@@ -501,11 +610,6 @@ func (s *CreateContainerGroupRequest) SetPlainHttpRegistry(v string) *CreateCont
 	return s
 }
 
-func (s *CreateContainerGroupRequest) SetProductOnEciMode(v string) *CreateContainerGroupRequest {
-	s.ProductOnEciMode = &v
-	return s
-}
-
 func (s *CreateContainerGroupRequest) SetRamRoleName(v string) *CreateContainerGroupRequest {
 	s.RamRoleName = &v
 	return s
@@ -538,11 +642,6 @@ func (s *CreateContainerGroupRequest) SetRestartPolicy(v string) *CreateContaine
 
 func (s *CreateContainerGroupRequest) SetScheduleStrategy(v string) *CreateContainerGroupRequest {
 	s.ScheduleStrategy = &v
-	return s
-}
-
-func (s *CreateContainerGroupRequest) SetSecondaryENIPolicy(v string) *CreateContainerGroupRequest {
-	s.SecondaryENIPolicy = &v
 	return s
 }
 
@@ -581,16 +680,6 @@ func (s *CreateContainerGroupRequest) SetTag(v []*CreateContainerGroupRequestTag
 	return s
 }
 
-func (s *CreateContainerGroupRequest) SetTenantSecurityGroupId(v string) *CreateContainerGroupRequest {
-	s.TenantSecurityGroupId = &v
-	return s
-}
-
-func (s *CreateContainerGroupRequest) SetTenantVSwitchId(v string) *CreateContainerGroupRequest {
-	s.TenantVSwitchId = &v
-	return s
-}
-
 func (s *CreateContainerGroupRequest) SetTerminationGracePeriodSeconds(v int64) *CreateContainerGroupRequest {
 	s.TerminationGracePeriodSeconds = &v
 	return s
@@ -612,9 +701,12 @@ func (s *CreateContainerGroupRequest) SetZoneId(v string) *CreateContainerGroupR
 }
 
 type CreateContainerGroupRequestDnsConfig struct {
-	NameServer []*string                                     `json:"NameServer,omitempty" xml:"NameServer,omitempty" type:"Repeated"`
-	Option     []*CreateContainerGroupRequestDnsConfigOption `json:"Option,omitempty" xml:"Option,omitempty" type:"Repeated"`
-	Search     []*string                                     `json:"Search,omitempty" xml:"Search,omitempty" type:"Repeated"`
+	// The IP addresses of the DNS servers.
+	NameServer []*string `json:"NameServer,omitempty" xml:"NameServer,omitempty" type:"Repeated"`
+	// Configuration options of the DNS server.
+	Option []*CreateContainerGroupRequestDnsConfigOption `json:"Option,omitempty" xml:"Option,omitempty" type:"Repeated"`
+	// The search domains of the DNS server.
+	Search []*string `json:"Search,omitempty" xml:"Search,omitempty" type:"Repeated"`
 }
 
 func (s CreateContainerGroupRequestDnsConfig) String() string {
@@ -641,7 +733,9 @@ func (s *CreateContainerGroupRequestDnsConfig) SetSearch(v []*string) *CreateCon
 }
 
 type CreateContainerGroupRequestDnsConfigOption struct {
-	Name  *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The name of the option.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The value of the option.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -664,6 +758,7 @@ func (s *CreateContainerGroupRequestDnsConfigOption) SetValue(v string) *CreateC
 }
 
 type CreateContainerGroupRequestHostSecurityContext struct {
+	// Configure a security context to modify unsafe sysctls. For more information, see [Configure a security context](~~462313~~).
 	Sysctl []*CreateContainerGroupRequestHostSecurityContextSysctl `json:"Sysctl,omitempty" xml:"Sysctl,omitempty" type:"Repeated"`
 }
 
@@ -681,7 +776,14 @@ func (s *CreateContainerGroupRequestHostSecurityContext) SetSysctl(v []*CreateCo
 }
 
 type CreateContainerGroupRequestHostSecurityContextSysctl struct {
-	Name  *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The name of the unsafe sysctl when you configure a security context to modify sysctls. Valid values:
+	//
+	// *   kernel.shm \* (except for kernel.shm_rmid_forced)
+	// *   kernel.msg\*kernel.sem
+	// *   fs.mqueue.\*
+	// *   net.\* (except for net.ipv4.ip_local_port_range, net.ipv4.tcp_syncookies, net.ipv4.ping_group_range, and net.ipv4.ip_unprivileged_port_start)
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The value of the unsafe sysctl when you configure a security context to modify sysctls.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -704,6 +806,7 @@ func (s *CreateContainerGroupRequestHostSecurityContextSysctl) SetValue(v string
 }
 
 type CreateContainerGroupRequestSecurityContext struct {
+	// Configure a security context to modify sysctls. For more information, see [Configure a security context](~~462313~~)
 	Sysctl []*CreateContainerGroupRequestSecurityContextSysctl `json:"Sysctl,omitempty" xml:"Sysctl,omitempty" type:"Repeated"`
 }
 
@@ -721,7 +824,12 @@ func (s *CreateContainerGroupRequestSecurityContext) SetSysctl(v []*CreateContai
 }
 
 type CreateContainerGroupRequestSecurityContextSysctl struct {
-	Name  *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The name of the safe sysctl when you configure a security context to modify sysctls. Valid values:
+	//
+	// *   net.ipv4.ping_group_range
+	// *   net.ipv4.ip_unprivileged_port_start
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The value of the safe sysctl when you configure a security context to modify sysctls.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -744,10 +852,14 @@ func (s *CreateContainerGroupRequestSecurityContextSysctl) SetValue(v string) *C
 }
 
 type CreateContainerGroupRequestAcrRegistryInfo struct {
-	Domain       []*string `json:"Domain,omitempty" xml:"Domain,omitempty" type:"Repeated"`
-	InstanceId   *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	InstanceName *string   `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	RegionId     *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The domain names of the Container Registry Enterprise Edition instance. By default, all domain names of the instance are displayed. You can specify one or more domain names. Separate multiple domain names with commas (,).
+	Domain []*string `json:"Domain,omitempty" xml:"Domain,omitempty" type:"Repeated"`
+	// The ID of the Container Registry Enterprise Edition instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The name of the Container Registry Enterprise Edition instance.
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The region ID of the Container Registry Enterprise Edition instance.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s CreateContainerGroupRequestAcrRegistryInfo) String() string {
@@ -778,72 +890,89 @@ func (s *CreateContainerGroupRequestAcrRegistryInfo) SetRegionId(v string) *Crea
 	return s
 }
 
-type CreateContainerGroupRequestArn struct {
-	AssumeRoleFor *string `json:"AssumeRoleFor,omitempty" xml:"AssumeRoleFor,omitempty"`
-	RoleArn       *string `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
-	RoleType      *string `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
-}
-
-func (s CreateContainerGroupRequestArn) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateContainerGroupRequestArn) GoString() string {
-	return s.String()
-}
-
-func (s *CreateContainerGroupRequestArn) SetAssumeRoleFor(v string) *CreateContainerGroupRequestArn {
-	s.AssumeRoleFor = &v
-	return s
-}
-
-func (s *CreateContainerGroupRequestArn) SetRoleArn(v string) *CreateContainerGroupRequestArn {
-	s.RoleArn = &v
-	return s
-}
-
-func (s *CreateContainerGroupRequestArn) SetRoleType(v string) *CreateContainerGroupRequestArn {
-	s.RoleType = &v
-	return s
-}
-
 type CreateContainerGroupRequestContainer struct {
-	LivenessProbe                              *CreateContainerGroupRequestContainerLivenessProbe                                `json:"LivenessProbe,omitempty" xml:"LivenessProbe,omitempty" require:"true" type:"Struct"`
-	ReadinessProbe                             *CreateContainerGroupRequestContainerReadinessProbe                               `json:"ReadinessProbe,omitempty" xml:"ReadinessProbe,omitempty" require:"true" type:"Struct"`
-	SecurityContext                            *CreateContainerGroupRequestContainerSecurityContext                              `json:"SecurityContext,omitempty" xml:"SecurityContext,omitempty" require:"true" type:"Struct"`
-	Arg                                        []*string                                                                         `json:"Arg,omitempty" xml:"Arg,omitempty" type:"Repeated"`
-	Command                                    []*string                                                                         `json:"Command,omitempty" xml:"Command,omitempty" type:"Repeated"`
-	Cpu                                        *float32                                                                          `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
-	EnvironmentVar                             []*CreateContainerGroupRequestContainerEnvironmentVar                             `json:"EnvironmentVar,omitempty" xml:"EnvironmentVar,omitempty" type:"Repeated"`
-	Gpu                                        *int32                                                                            `json:"Gpu,omitempty" xml:"Gpu,omitempty"`
-	Image                                      *string                                                                           `json:"Image,omitempty" xml:"Image,omitempty"`
-	ImagePullPolicy                            *string                                                                           `json:"ImagePullPolicy,omitempty" xml:"ImagePullPolicy,omitempty"`
-	LifecyclePostStartHandlerExec              []*string                                                                         `json:"LifecyclePostStartHandlerExec,omitempty" xml:"LifecyclePostStartHandlerExec,omitempty" type:"Repeated"`
-	LifecyclePostStartHandlerHttpGetHost       *string                                                                           `json:"LifecyclePostStartHandlerHttpGetHost,omitempty" xml:"LifecyclePostStartHandlerHttpGetHost,omitempty"`
+	LivenessProbe   *CreateContainerGroupRequestContainerLivenessProbe   `json:"LivenessProbe,omitempty" xml:"LivenessProbe,omitempty" require:"true" type:"Struct"`
+	ReadinessProbe  *CreateContainerGroupRequestContainerReadinessProbe  `json:"ReadinessProbe,omitempty" xml:"ReadinessProbe,omitempty" require:"true" type:"Struct"`
+	SecurityContext *CreateContainerGroupRequestContainerSecurityContext `json:"SecurityContext,omitempty" xml:"SecurityContext,omitempty" require:"true" type:"Struct"`
+	// The arguments that are passed to the startup command of the container. You can specify up to 10 arguments.
+	Arg []*string `json:"Arg,omitempty" xml:"Arg,omitempty" type:"Repeated"`
+	// The command that is to run in the container.
+	Command []*string `json:"Command,omitempty" xml:"Command,omitempty" type:"Repeated"`
+	// The number of vCPUs that you want to allocate to the container.
+	Cpu *float32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	// The value of the environment variable for the container.
+	EnvironmentVar []*CreateContainerGroupRequestContainerEnvironmentVar `json:"EnvironmentVar,omitempty" xml:"EnvironmentVar,omitempty" type:"Repeated"`
+	// The number of GPUs to be allocated to the container.
+	Gpu *int32 `json:"Gpu,omitempty" xml:"Gpu,omitempty"`
+	// The image of the container.
+	Image *string `json:"Image,omitempty" xml:"Image,omitempty"`
+	// The policy that you want to use to pull an image. Valid values:
+	//
+	// *   Always: Each time instances are created, image pulling is performed.
+	// *   IfNotPresent: Image pulling is performed as needed. On-premises images are preferentially used. If no on-premises images are available, image pulling is performed.
+	// *   Never: On-premises images are always used. Image pulling is not performed.
+	ImagePullPolicy *string `json:"ImagePullPolicy,omitempty" xml:"ImagePullPolicy,omitempty"`
+	// The command that you want to run in the container when you use a CLI to specify the postStart callback function.
+	LifecyclePostStartHandlerExec []*string `json:"LifecyclePostStartHandlerExec,omitempty" xml:"LifecyclePostStartHandlerExec,omitempty" type:"Repeated"`
+	// The IP address of the host that receives HTTP GET requests when you use HTTP requests to specify the postStart callback function.
+	LifecyclePostStartHandlerHttpGetHost *string `json:"LifecyclePostStartHandlerHttpGetHost,omitempty" xml:"LifecyclePostStartHandlerHttpGetHost,omitempty"`
+	// The HTTP GET request header.
 	LifecyclePostStartHandlerHttpGetHttpHeader []*CreateContainerGroupRequestContainerLifecyclePostStartHandlerHttpGetHttpHeader `json:"LifecyclePostStartHandlerHttpGetHttpHeader,omitempty" xml:"LifecyclePostStartHandlerHttpGetHttpHeader,omitempty" type:"Repeated"`
-	LifecyclePostStartHandlerHttpGetPath       *string                                                                           `json:"LifecyclePostStartHandlerHttpGetPath,omitempty" xml:"LifecyclePostStartHandlerHttpGetPath,omitempty"`
-	LifecyclePostStartHandlerHttpGetPort       *int32                                                                            `json:"LifecyclePostStartHandlerHttpGetPort,omitempty" xml:"LifecyclePostStartHandlerHttpGetPort,omitempty"`
-	LifecyclePostStartHandlerHttpGetScheme     *string                                                                           `json:"LifecyclePostStartHandlerHttpGetScheme,omitempty" xml:"LifecyclePostStartHandlerHttpGetScheme,omitempty"`
-	LifecyclePostStartHandlerTcpSocketHost     *string                                                                           `json:"LifecyclePostStartHandlerTcpSocketHost,omitempty" xml:"LifecyclePostStartHandlerTcpSocketHost,omitempty"`
-	LifecyclePostStartHandlerTcpSocketPort     *int32                                                                            `json:"LifecyclePostStartHandlerTcpSocketPort,omitempty" xml:"LifecyclePostStartHandlerTcpSocketPort,omitempty"`
-	LifecyclePreStopHandlerExec                []*string                                                                         `json:"LifecyclePreStopHandlerExec,omitempty" xml:"LifecyclePreStopHandlerExec,omitempty" type:"Repeated"`
-	LifecyclePreStopHandlerHttpGetHost         *string                                                                           `json:"LifecyclePreStopHandlerHttpGetHost,omitempty" xml:"LifecyclePreStopHandlerHttpGetHost,omitempty"`
-	LifecyclePreStopHandlerHttpGetHttpHeader   []*CreateContainerGroupRequestContainerLifecyclePreStopHandlerHttpGetHttpHeader   `json:"LifecyclePreStopHandlerHttpGetHttpHeader,omitempty" xml:"LifecyclePreStopHandlerHttpGetHttpHeader,omitempty" type:"Repeated"`
-	LifecyclePreStopHandlerHttpGetPath         *string                                                                           `json:"LifecyclePreStopHandlerHttpGetPath,omitempty" xml:"LifecyclePreStopHandlerHttpGetPath,omitempty"`
-	LifecyclePreStopHandlerHttpGetPort         *int32                                                                            `json:"LifecyclePreStopHandlerHttpGetPort,omitempty" xml:"LifecyclePreStopHandlerHttpGetPort,omitempty"`
-	LifecyclePreStopHandlerHttpGetScheme       *string                                                                           `json:"LifecyclePreStopHandlerHttpGetScheme,omitempty" xml:"LifecyclePreStopHandlerHttpGetScheme,omitempty"`
-	LifecyclePreStopHandlerTcpSocketHost       *string                                                                           `json:"LifecyclePreStopHandlerTcpSocketHost,omitempty" xml:"LifecyclePreStopHandlerTcpSocketHost,omitempty"`
-	LifecyclePreStopHandlerTcpSocketPort       *int32                                                                            `json:"LifecyclePreStopHandlerTcpSocketPort,omitempty" xml:"LifecyclePreStopHandlerTcpSocketPort,omitempty"`
-	Memory                                     *float32                                                                          `json:"Memory,omitempty" xml:"Memory,omitempty"`
-	Name                                       *string                                                                           `json:"Name,omitempty" xml:"Name,omitempty"`
-	Port                                       []*CreateContainerGroupRequestContainerPort                                       `json:"Port,omitempty" xml:"Port,omitempty" type:"Repeated"`
-	Stdin                                      *bool                                                                             `json:"Stdin,omitempty" xml:"Stdin,omitempty"`
-	StdinOnce                                  *bool                                                                             `json:"StdinOnce,omitempty" xml:"StdinOnce,omitempty"`
-	TerminationMessagePath                     *string                                                                           `json:"TerminationMessagePath,omitempty" xml:"TerminationMessagePath,omitempty"`
-	TerminationMessagePolicy                   *string                                                                           `json:"TerminationMessagePolicy,omitempty" xml:"TerminationMessagePolicy,omitempty"`
-	Tty                                        *bool                                                                             `json:"Tty,omitempty" xml:"Tty,omitempty"`
-	VolumeMount                                []*CreateContainerGroupRequestContainerVolumeMount                                `json:"VolumeMount,omitempty" xml:"VolumeMount,omitempty" type:"Repeated"`
-	WorkingDir                                 *string                                                                           `json:"WorkingDir,omitempty" xml:"WorkingDir,omitempty"`
+	// The path to which HTTP GET requests are sent when you use HTTP requests to specify the postStart callback function.
+	LifecyclePostStartHandlerHttpGetPath *string `json:"LifecyclePostStartHandlerHttpGetPath,omitempty" xml:"LifecyclePostStartHandlerHttpGetPath,omitempty"`
+	// The port to which HTTP GET requests are sent when you use HTTP requests to specify the postStart callback function.
+	LifecyclePostStartHandlerHttpGetPort *int32 `json:"LifecyclePostStartHandlerHttpGetPort,omitempty" xml:"LifecyclePostStartHandlerHttpGetPort,omitempty"`
+	// The protocol type of HTTP GET requests when you use HTTP requests to specify the postStart callback function. Valid values:
+	//
+	// *   HTTP
+	// *   HTTPS
+	LifecyclePostStartHandlerHttpGetScheme *string `json:"LifecyclePostStartHandlerHttpGetScheme,omitempty" xml:"LifecyclePostStartHandlerHttpGetScheme,omitempty"`
+	// The port that is detected by TCP sockets when you use TCP sockets to specify the postStart callback function.
+	LifecyclePostStartHandlerTcpSocketHost *string `json:"LifecyclePostStartHandlerTcpSocketHost,omitempty" xml:"LifecyclePostStartHandlerTcpSocketHost,omitempty"`
+	// The port that is detected by TCP sockets when you use TCP sockets to specify the postStart callback function.
+	LifecyclePostStartHandlerTcpSocketPort *int32 `json:"LifecyclePostStartHandlerTcpSocketPort,omitempty" xml:"LifecyclePostStartHandlerTcpSocketPort,omitempty"`
+	// The command that you want to run in the container when you use a CLI to specify the preStop callback function.
+	LifecyclePreStopHandlerExec []*string `json:"LifecyclePreStopHandlerExec,omitempty" xml:"LifecyclePreStopHandlerExec,omitempty" type:"Repeated"`
+	// The IP address of the host that receives HTTP GET requests when you use HTTP requests to specify the preStop callback function.
+	LifecyclePreStopHandlerHttpGetHost *string `json:"LifecyclePreStopHandlerHttpGetHost,omitempty" xml:"LifecyclePreStopHandlerHttpGetHost,omitempty"`
+	// The HTTP GET request header.
+	LifecyclePreStopHandlerHttpGetHttpHeader []*CreateContainerGroupRequestContainerLifecyclePreStopHandlerHttpGetHttpHeader `json:"LifecyclePreStopHandlerHttpGetHttpHeader,omitempty" xml:"LifecyclePreStopHandlerHttpGetHttpHeader,omitempty" type:"Repeated"`
+	// The path to which HTTP GET requests are sent when you use HTTP requests to specify the preStop callback function.
+	LifecyclePreStopHandlerHttpGetPath *string `json:"LifecyclePreStopHandlerHttpGetPath,omitempty" xml:"LifecyclePreStopHandlerHttpGetPath,omitempty"`
+	// The port to which HTTP GET requests are sent when you use HTTP requests to specify the preStop callback function.
+	LifecyclePreStopHandlerHttpGetPort *int32 `json:"LifecyclePreStopHandlerHttpGetPort,omitempty" xml:"LifecyclePreStopHandlerHttpGetPort,omitempty"`
+	// The protocol type of HTTP GET requests when you use HTTP requests to specify the preStop callback function. Valid values:
+	//
+	// *   HTTP
+	// *   HTTPS
+	LifecyclePreStopHandlerHttpGetScheme *string `json:"LifecyclePreStopHandlerHttpGetScheme,omitempty" xml:"LifecyclePreStopHandlerHttpGetScheme,omitempty"`
+	// The host IP address that is detected by TCP sockets when you use TCP sockets to specify the preStop callback function.
+	LifecyclePreStopHandlerTcpSocketHost *string `json:"LifecyclePreStopHandlerTcpSocketHost,omitempty" xml:"LifecyclePreStopHandlerTcpSocketHost,omitempty"`
+	// The port that is detected by TCP sockets when you use TCP sockets to specify the preStop callback function.
+	LifecyclePreStopHandlerTcpSocketPort *int32 `json:"LifecyclePreStopHandlerTcpSocketPort,omitempty" xml:"LifecyclePreStopHandlerTcpSocketPort,omitempty"`
+	// The memory size of the container. Unit: GiB.
+	Memory *float32 `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	// The name of the container.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The port to which HTTP GET requests are sent when you use HTTP requests to perform health checks.
+	Port []*CreateContainerGroupRequestContainerPort `json:"Port,omitempty" xml:"Port,omitempty" type:"Repeated"`
+	// Specifies whether the container allocates buffer resources to standard input streams when the container is running. If you do not specify this parameter, an end-of-file (EOF) error may occur when standard input streams in the container are read. Default value: false.
+	Stdin *bool `json:"Stdin,omitempty" xml:"Stdin,omitempty"`
+	// Specifies whether the container runtime closes the stdin channel after the stdin channel has been opened by a single attach session. If stdin is true, the stdin stream remains open across multiple attach sessions.\
+	// If StdinOnce is set to true, stdin is opened on container start, is empty until the first client attaches to stdin, and then remains open and receive data until the client disconnects. When the client disconnects, stdin is closed and remains closed until the container is restarted.
+	StdinOnce *bool `json:"StdinOnce,omitempty" xml:"StdinOnce,omitempty"`
+	// The path of the file from which the system retrieves termination messages of the container when the container exits.
+	TerminationMessagePath *string `json:"TerminationMessagePath,omitempty" xml:"TerminationMessagePath,omitempty"`
+	// The message notification policy. This parameter is empty by default. You can configure only Message Service (MNS) queues to receive notifications.
+	TerminationMessagePolicy *string `json:"TerminationMessagePolicy,omitempty" xml:"TerminationMessagePolicy,omitempty"`
+	// Specifies whether to enable interaction. Default value: false.
+	//
+	// If the command is a /bin/bash command, set the value to true.
+	Tty *bool `json:"Tty,omitempty" xml:"Tty,omitempty"`
+	// Details about the volumes.
+	VolumeMount []*CreateContainerGroupRequestContainerVolumeMount `json:"VolumeMount,omitempty" xml:"VolumeMount,omitempty" type:"Repeated"`
+	// The working directory of the container.
+	WorkingDir *string `json:"WorkingDir,omitempty" xml:"WorkingDir,omitempty"`
 }
 
 func (s CreateContainerGroupRequestContainer) String() string {
@@ -1326,8 +1455,10 @@ func (s *CreateContainerGroupRequestContainerSecurityContextCapability) SetAdd(v
 
 type CreateContainerGroupRequestContainerEnvironmentVar struct {
 	FieldRef *CreateContainerGroupRequestContainerEnvironmentVarFieldRef `json:"FieldRef,omitempty" xml:"FieldRef,omitempty" require:"true" type:"Struct"`
-	Key      *string                                                     `json:"Key,omitempty" xml:"Key,omitempty"`
-	Value    *string                                                     `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the environment variable for the container. The name must be 1 to 128 characters in length. The name can contain letters, digits, and underscores (\_), and cannot start with a digit.``
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of the environment variable for the container. The value must be 0 to 256 characters in length.
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s CreateContainerGroupRequestContainerEnvironmentVar) String() string {
@@ -1371,7 +1502,9 @@ func (s *CreateContainerGroupRequestContainerEnvironmentVarFieldRef) SetFieldPat
 }
 
 type CreateContainerGroupRequestContainerLifecyclePostStartHandlerHttpGetHttpHeader struct {
-	Name  *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The custom field name in the HTTP GET request header when you use HTTP requests to specify the postStart callback function.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The custom field value in the HTTP GET request header when you use HTTP requests to specify the postStart callback function.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -1394,7 +1527,9 @@ func (s *CreateContainerGroupRequestContainerLifecyclePostStartHandlerHttpGetHtt
 }
 
 type CreateContainerGroupRequestContainerLifecyclePreStopHandlerHttpGetHttpHeader struct {
-	Name  *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The custom field value in the HTTP GET request header when you use HTTP requests to specify the preStop callback function.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The custom field value in the HTTP GET request header when you use HTTP requests to specify the preStop callback function.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -1417,7 +1552,12 @@ func (s *CreateContainerGroupRequestContainerLifecyclePreStopHandlerHttpGetHttpH
 }
 
 type CreateContainerGroupRequestContainerPort struct {
-	Port     *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The port number. Valid values: 1 to 65535.
+	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The type of the protocol. Valid values:
+	//
+	// *   TCP
+	// *   UDP
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
 }
 
@@ -1440,11 +1580,24 @@ func (s *CreateContainerGroupRequestContainerPort) SetProtocol(v string) *Create
 }
 
 type CreateContainerGroupRequestContainerVolumeMount struct {
-	MountPath        *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
+	// The directory to which the volume is mounted.
+	//
+	// > The data stored in this directory is overwritten by the data on the volume. Specify this parameter with caution.
+	MountPath *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
+	// The mount propagation setting of the volume. Mount propagation allows volumes that are mounted on one container to be shared with other containers in the same pod, or even with other pods on the same node. Valid values:
+	//
+	// *   None: This volume mount does not receive subsequent mounts that are mounted to this volume or subdirectories of this volume by the host.
+	// *   HostToCotainer: This volume mount receives all subsequent mounts that are mounted to this volume or subdirectories of this volume.
+	// *   Bidirectional: The volume mount behaves the same as the HostToCotainer mount. The volume mount receives all subsequent mounts that are mounted to this volume or subdirectories of this volume. In addition, all volume mounts created by the container are propagated back to the host and to all containers of all pods that use the same volume.
+	//
+	// Default value: None.
 	MountPropagation *string `json:"MountPropagation,omitempty" xml:"MountPropagation,omitempty"`
-	Name             *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	ReadOnly         *bool   `json:"ReadOnly,omitempty" xml:"ReadOnly,omitempty"`
-	SubPath          *string `json:"SubPath,omitempty" xml:"SubPath,omitempty"`
+	// The name of the volume. The value of this parameter must be the same as the value of the Name parameter in the volume.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Specifies whether the volume is read-only. Default value: false.
+	ReadOnly *bool `json:"ReadOnly,omitempty" xml:"ReadOnly,omitempty"`
+	// The subdirectory of the volume.
+	SubPath *string `json:"SubPath,omitempty" xml:"SubPath,omitempty"`
 }
 
 func (s CreateContainerGroupRequestContainerVolumeMount) String() string {
@@ -1481,8 +1634,10 @@ func (s *CreateContainerGroupRequestContainerVolumeMount) SetSubPath(v string) *
 }
 
 type CreateContainerGroupRequestHostAliase struct {
+	// The hostname of the elastic container instance.
 	Hostname []*string `json:"Hostname,omitempty" xml:"Hostname,omitempty" type:"Repeated"`
-	Ip       *string   `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	// The IP address of the host.
+	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
 }
 
 func (s CreateContainerGroupRequestHostAliase) String() string {
@@ -1504,8 +1659,11 @@ func (s *CreateContainerGroupRequestHostAliase) SetIp(v string) *CreateContainer
 }
 
 type CreateContainerGroupRequestImageRegistryCredential struct {
+	// The password that is used to access the image repository.
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
-	Server   *string `json:"Server,omitempty" xml:"Server,omitempty"`
+	// The address of the image repository.
+	Server *string `json:"Server,omitempty" xml:"Server,omitempty"`
+	// The username that is used to access the image repository.
 	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
 
@@ -1533,21 +1691,39 @@ func (s *CreateContainerGroupRequestImageRegistryCredential) SetUserName(v strin
 }
 
 type CreateContainerGroupRequestInitContainer struct {
-	SecurityContext          *CreateContainerGroupRequestInitContainerSecurityContext  `json:"SecurityContext,omitempty" xml:"SecurityContext,omitempty" require:"true" type:"Struct"`
-	Arg                      []*string                                                 `json:"Arg,omitempty" xml:"Arg,omitempty" type:"Repeated"`
-	Command                  []*string                                                 `json:"Command,omitempty" xml:"Command,omitempty" type:"Repeated"`
-	Cpu                      *float32                                                  `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
-	EnvironmentVar           []*CreateContainerGroupRequestInitContainerEnvironmentVar `json:"EnvironmentVar,omitempty" xml:"EnvironmentVar,omitempty" type:"Repeated"`
-	Gpu                      *int32                                                    `json:"Gpu,omitempty" xml:"Gpu,omitempty"`
-	Image                    *string                                                   `json:"Image,omitempty" xml:"Image,omitempty"`
-	ImagePullPolicy          *string                                                   `json:"ImagePullPolicy,omitempty" xml:"ImagePullPolicy,omitempty"`
-	Memory                   *float32                                                  `json:"Memory,omitempty" xml:"Memory,omitempty"`
-	Name                     *string                                                   `json:"Name,omitempty" xml:"Name,omitempty"`
-	Port                     []*CreateContainerGroupRequestInitContainerPort           `json:"Port,omitempty" xml:"Port,omitempty" type:"Repeated"`
-	TerminationMessagePath   *string                                                   `json:"TerminationMessagePath,omitempty" xml:"TerminationMessagePath,omitempty"`
-	TerminationMessagePolicy *string                                                   `json:"TerminationMessagePolicy,omitempty" xml:"TerminationMessagePolicy,omitempty"`
-	VolumeMount              []*CreateContainerGroupRequestInitContainerVolumeMount    `json:"VolumeMount,omitempty" xml:"VolumeMount,omitempty" type:"Repeated"`
-	WorkingDir               *string                                                   `json:"WorkingDir,omitempty" xml:"WorkingDir,omitempty"`
+	SecurityContext *CreateContainerGroupRequestInitContainerSecurityContext `json:"SecurityContext,omitempty" xml:"SecurityContext,omitempty" require:"true" type:"Struct"`
+	// The arguments that are passed to the container startup command.
+	Arg []*string `json:"Arg,omitempty" xml:"Arg,omitempty" type:"Repeated"`
+	// The command that you want to run to start the container.
+	Command []*string `json:"Command,omitempty" xml:"Command,omitempty" type:"Repeated"`
+	// The number of vCPUs that you want to allocate to the container.
+	Cpu *float32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	// The environment variables for the container.
+	EnvironmentVar []*CreateContainerGroupRequestInitContainerEnvironmentVar `json:"EnvironmentVar,omitempty" xml:"EnvironmentVar,omitempty" type:"Repeated"`
+	// The number of GPUs that you want to allocate to the container.
+	Gpu *int32 `json:"Gpu,omitempty" xml:"Gpu,omitempty"`
+	// The container image.
+	Image *string `json:"Image,omitempty" xml:"Image,omitempty"`
+	// The image pulling policy. Valid values:
+	//
+	// *   Always: Image pulling is always performed.
+	// *   IfNotPresent: Image pulling is performed as needed. On-premises images are preferentially used. If no on-premises images are available, image pulling is performed.
+	// *   Never: On-premises images are always used.
+	ImagePullPolicy *string `json:"ImagePullPolicy,omitempty" xml:"ImagePullPolicy,omitempty"`
+	// The memory size of the container. Unit: GiB.
+	Memory *float32 `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	// The name of the container.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The port number of the init container.
+	Port []*CreateContainerGroupRequestInitContainerPort `json:"Port,omitempty" xml:"Port,omitempty" type:"Repeated"`
+	// The path of the file from which the system retrieves termination messages of the container when the container exits.
+	TerminationMessagePath *string `json:"TerminationMessagePath,omitempty" xml:"TerminationMessagePath,omitempty"`
+	// The message notification policy. This parameter is empty by default.
+	TerminationMessagePolicy *string `json:"TerminationMessagePolicy,omitempty" xml:"TerminationMessagePolicy,omitempty"`
+	// The details about the volume mount.
+	VolumeMount []*CreateContainerGroupRequestInitContainerVolumeMount `json:"VolumeMount,omitempty" xml:"VolumeMount,omitempty" type:"Repeated"`
+	// The working directory of the container.
+	WorkingDir *string `json:"WorkingDir,omitempty" xml:"WorkingDir,omitempty"`
 }
 
 func (s CreateContainerGroupRequestInitContainer) String() string {
@@ -1681,8 +1857,10 @@ func (s *CreateContainerGroupRequestInitContainerSecurityContextCapability) SetA
 
 type CreateContainerGroupRequestInitContainerEnvironmentVar struct {
 	FieldRef *CreateContainerGroupRequestInitContainerEnvironmentVarFieldRef `json:"FieldRef,omitempty" xml:"FieldRef,omitempty" require:"true" type:"Struct"`
-	Key      *string                                                         `json:"Key,omitempty" xml:"Key,omitempty"`
-	Value    *string                                                         `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the environment variable. The name must be 1 to 128 characters in length. The name can contain letters, digits, and underscores (\_), and cannot start with a digit.``
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of the environment variable. The value must be 0 to 256 characters in length.
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s CreateContainerGroupRequestInitContainerEnvironmentVar) String() string {
@@ -1726,7 +1904,12 @@ func (s *CreateContainerGroupRequestInitContainerEnvironmentVarFieldRef) SetFiel
 }
 
 type CreateContainerGroupRequestInitContainerPort struct {
-	Port     *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The port number. Valid values: 1 to 65535.
+	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The type of the protocol. Valid values:
+	//
+	// *   TCP
+	// *   UDP
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
 }
 
@@ -1749,11 +1932,22 @@ func (s *CreateContainerGroupRequestInitContainerPort) SetProtocol(v string) *Cr
 }
 
 type CreateContainerGroupRequestInitContainerVolumeMount struct {
-	MountPath        *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
+	// The data stored in this directory is overwritten by the data on the volume. Specify this parameter with caution.
+	MountPath *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
+	// The mount propagation setting of the volume. Mount propagation allows volumes that are mounted on one container to be shared with other containers in the same pod, or even with other pods on the same node. Valid values:
+	//
+	// *   None: This volume mount does not receive subsequent mounts that are mounted to this volume or subdirectories of this volume by the host.
+	// *   HostToCotainer: This volume mount receives all subsequent mounts that are mounted to this volume or subdirectories of this volume.
+	// *   Bidirectional: The volume mount behaves the same as the HostToCotainer mount. The volume mount receives all subsequent mounts that are mounted to this volume or subdirectories of this volume. In addition, all volume mounts created by the container are propagated back to the host and to all containers of all pods that use the same volume.
+	//
+	// Default value: None.
 	MountPropagation *string `json:"MountPropagation,omitempty" xml:"MountPropagation,omitempty"`
-	Name             *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	ReadOnly         *bool   `json:"ReadOnly,omitempty" xml:"ReadOnly,omitempty"`
-	SubPath          *string `json:"SubPath,omitempty" xml:"SubPath,omitempty"`
+	// The name of the volume that you want to mount.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Specifies whether the mount path is read-only. Default value: false.
+	ReadOnly *bool `json:"ReadOnly,omitempty" xml:"ReadOnly,omitempty"`
+	// The subdirectory of the volume. The elastic container instance can mount different directories of the same volume to different subdirectories of containers.
+	SubPath *string `json:"SubPath,omitempty" xml:"SubPath,omitempty"`
 }
 
 func (s CreateContainerGroupRequestInitContainerVolumeMount) String() string {
@@ -1790,7 +1984,9 @@ func (s *CreateContainerGroupRequestInitContainerVolumeMount) SetSubPath(v strin
 }
 
 type CreateContainerGroupRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The key of a tag. The tag key cannot be an empty string and must be unique. The tag key can be up to 64 characters in length and cannot contain `http://` or `https://`. The tag key cannot start with `acs:` or `aliyun`.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of a tag. The tag value can be an empty string. The tag value can be up to 128 characters in length and cannot contain `http://` or `https://`. The tag value cannot start with `acs:`.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -1819,8 +2015,13 @@ type CreateContainerGroupRequestVolume struct {
 	FlexVolume       *CreateContainerGroupRequestVolumeFlexVolume       `json:"FlexVolume,omitempty" xml:"FlexVolume,omitempty" require:"true" type:"Struct"`
 	HostPathVolume   *CreateContainerGroupRequestVolumeHostPathVolume   `json:"HostPathVolume,omitempty" xml:"HostPathVolume,omitempty" require:"true" type:"Struct"`
 	NFSVolume        *CreateContainerGroupRequestVolumeNFSVolume        `json:"NFSVolume,omitempty" xml:"NFSVolume,omitempty" require:"true" type:"Struct"`
-	Name             *string                                            `json:"Name,omitempty" xml:"Name,omitempty"`
-	Type             *string                                            `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The name of the volume.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The category of the HostPath volume. Valid values:
+	//
+	// *   Directory
+	// *   File
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s CreateContainerGroupRequestVolume) String() string {
@@ -2057,8 +2258,10 @@ func (s *CreateContainerGroupRequestVolumeNFSVolume) SetServer(v string) *Create
 }
 
 type CreateContainerGroupResponseBody struct {
+	// The ID of the elastic container instance.
 	ContainerGroupId *string `json:"ContainerGroupId,omitempty" xml:"ContainerGroupId,omitempty"`
-	RequestId        *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateContainerGroupResponseBody) String() string {
@@ -2109,32 +2312,72 @@ func (s *CreateContainerGroupResponse) SetBody(v *CreateContainerGroupResponseBo
 }
 
 type CreateImageCacheRequest struct {
-	AcrRegistryInfo         []*CreateImageCacheRequestAcrRegistryInfo         `json:"AcrRegistryInfo,omitempty" xml:"AcrRegistryInfo,omitempty" type:"Repeated"`
-	Annotations             *string                                           `json:"Annotations,omitempty" xml:"Annotations,omitempty"`
-	AutoMatchImageCache     *bool                                             `json:"AutoMatchImageCache,omitempty" xml:"AutoMatchImageCache,omitempty"`
-	ClientToken             *string                                           `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	EipInstanceId           *string                                           `json:"EipInstanceId,omitempty" xml:"EipInstanceId,omitempty"`
-	EliminationStrategy     *string                                           `json:"EliminationStrategy,omitempty" xml:"EliminationStrategy,omitempty"`
-	Flash                   *bool                                             `json:"Flash,omitempty" xml:"Flash,omitempty"`
-	FlashCopyCount          *int32                                            `json:"FlashCopyCount,omitempty" xml:"FlashCopyCount,omitempty"`
-	Image                   []*string                                         `json:"Image,omitempty" xml:"Image,omitempty" type:"Repeated"`
-	ImageCacheName          *string                                           `json:"ImageCacheName,omitempty" xml:"ImageCacheName,omitempty"`
+	AcrRegistryInfo []*CreateImageCacheRequestAcrRegistryInfo `json:"AcrRegistryInfo,omitempty" xml:"AcrRegistryInfo,omitempty" type:"Repeated"`
+	// Comments.
+	Annotations *string `json:"Annotations,omitempty" xml:"Annotations,omitempty"`
+	// Specifies whether to enable reuse of image cache layers. If you enable this feature, and the image cache that you want to create and an existing image cache contain duplicate image layers, the system reuses the duplicate image layers to create the new image cache. This accelerates the creation of the image cache. Valid values:
+	//
+	// *   true: enables reuse of image cache layers.
+	// *   false: disables reuse of image cache layers.
+	//
+	// Default value: false.
+	AutoMatchImageCache *bool `json:"AutoMatchImageCache,omitempty" xml:"AutoMatchImageCache,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that the value is unique among different requests. The token can only contain ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The ID of the elastic IP address (EIP). If you want to pull images over the Internet, make sure that the elastic container instance can access the Internet. You can configure an EIP or a NAT gateway for the elastic container instance to access the Internet.
+	EipInstanceId *string `json:"EipInstanceId,omitempty" xml:"EipInstanceId,omitempty"`
+	// The elimination policy of the image cache. This parameter is empty by default, which indicates that the image cache is always retained.
+	//
+	// You can set this parameter to LRU, which indicates that the image cache can be automatically deleted. When the number of image caches reaches the specified quota, the system automatically deletes the image caches whose EliminationStrategy parameter is set to LRU and that are least commonly used.
+	EliminationStrategy *string `json:"EliminationStrategy,omitempty" xml:"EliminationStrategy,omitempty"`
+	// Specifies whether to enable instant image cache. After you enable the feature, image caches can be created in an accelerated manner. Valid values:
+	//
+	// *   true: enables instant image cache.
+	// *   false: disables instant image cache.
+	//
+	// Default value: false.
+	//
+	// >  The system automatically generates a temporary local snapshot for the image cache during the use of the instant image cache feature. You are charged for the instant use of the snapshot.
+	Flash *bool `json:"Flash,omitempty" xml:"Flash,omitempty"`
+	// The number of temporary local snapshots. By default, the system creates one snapshot for each image cache. If an image cache is used to create multiple elastic container instances at a time, we recommend that you set this parameter to create multiple snapshots for the image cache. We recommend that you create one snapshot for creation of every 1,000 elastic container instances.
+	//
+	// >  If you set the Flash parameter to true, instant image cache is enabled. During the creation of the image cache, the system first creates a temporary local snapshot for you to instantly use the snapshot. After the temporary local snapshot is created, the system begins to create a regular snapshot. After the regular snapshot is created, the temporary local snapshot is automatically deleted.
+	FlashCopyCount *int32    `json:"FlashCopyCount,omitempty" xml:"FlashCopyCount,omitempty"`
+	Image          []*string `json:"Image,omitempty" xml:"Image,omitempty" type:"Repeated"`
+	// The name of the image cache.
+	ImageCacheName *string `json:"ImageCacheName,omitempty" xml:"ImageCacheName,omitempty"`
+	// The size of the image cache. Unit: GiB. Default value: 20.
 	ImageCacheSize          *int32                                            `json:"ImageCacheSize,omitempty" xml:"ImageCacheSize,omitempty"`
 	ImageRegistryCredential []*CreateImageCacheRequestImageRegistryCredential `json:"ImageRegistryCredential,omitempty" xml:"ImageRegistryCredential,omitempty" type:"Repeated"`
-	InsecureRegistry        *string                                           `json:"InsecureRegistry,omitempty" xml:"InsecureRegistry,omitempty"`
-	OwnerAccount            *string                                           `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId                 *int64                                            `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	PlainHttpRegistry       *string                                           `json:"PlainHttpRegistry,omitempty" xml:"PlainHttpRegistry,omitempty"`
-	RegionId                *string                                           `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceGroupId         *string                                           `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	ResourceOwnerAccount    *string                                           `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId         *int64                                            `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	RetentionDays           *int32                                            `json:"RetentionDays,omitempty" xml:"RetentionDays,omitempty"`
-	SecurityGroupId         *string                                           `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	StandardCopyCount       *int32                                            `json:"StandardCopyCount,omitempty" xml:"StandardCopyCount,omitempty"`
-	Tag                     []*CreateImageCacheRequestTag                     `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	VSwitchId               *string                                           `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	ZoneId                  *string                                           `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// The domain name of the self-managed image repository.
+	//
+	// When you create an image cache by using an image in a self-managed image repository that uses a self-signed certificate, you must specify this parameter to skip the certificate authentication. This can prevent the image from failing to pull due to certificate authentication failures.
+	InsecureRegistry *string `json:"InsecureRegistry,omitempty" xml:"InsecureRegistry,omitempty"`
+	OwnerAccount     *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId          *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The domain name of the self-managed image repository. When you create an image cache by using an image in a self-managed image repository that uses the HTTP Protocol, you must specify this parameter. This way, Elastic Container Instance uses the HTTP protocol to pull the image. This can prevent the image from failing to pull due to different protocols.
+	PlainHttpRegistry *string `json:"PlainHttpRegistry,omitempty" xml:"PlainHttpRegistry,omitempty"`
+	// The region ID of the image cache.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the resource group.
+	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The retention period of the image cache. Unit: days. When the retention period ends, the image cache expires and is deleted. By default, image caches never expire.
+	//
+	// >  The image caches that fail to be created are only retained for one day.
+	RetentionDays *int32 `json:"RetentionDays,omitempty" xml:"RetentionDays,omitempty"`
+	// The ID of the security group.
+	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	// The number of regular snapshots. By default, the system creates one snapshot for each image cache. If an image cache is used to create multiple elastic container instances at a time, we recommend that you set this parameter to create multiple snapshots for the image cache. We recommend that you create one snapshot for creation of every 1,000 elastic container instances.
+	//
+	// >  If you set the Flash parameter to false, instant image cache is disabled. In this case, only regular snapshots are generated during the creation of the image cache.
+	StandardCopyCount *int32                        `json:"StandardCopyCount,omitempty" xml:"StandardCopyCount,omitempty"`
+	Tag               []*CreateImageCacheRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	// The ID of the vSwitch. You can specify up to 10 vSwitch IDs. Separate multiple vSwitch IDs with commas (,). Example: `vsw-***,vsw-***`.
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// The zone ID of the image cache.
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s CreateImageCacheRequest) String() string {
@@ -2276,10 +2519,13 @@ func (s *CreateImageCacheRequest) SetZoneId(v string) *CreateImageCacheRequest {
 }
 
 type CreateImageCacheRequestAcrRegistryInfo struct {
-	Domain       []*string `json:"Domain,omitempty" xml:"Domain,omitempty" type:"Repeated"`
-	InstanceId   *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	InstanceName *string   `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	RegionId     *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Domain []*string `json:"Domain,omitempty" xml:"Domain,omitempty" type:"Repeated"`
+	// The ID of Container Registry Enterprise Edition instance N.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The name of Container Registry Enterprise Edition instance N.
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The region ID of Container Registry Enterprise Edition instance N.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s CreateImageCacheRequestAcrRegistryInfo) String() string {
@@ -2311,8 +2557,11 @@ func (s *CreateImageCacheRequestAcrRegistryInfo) SetRegionId(v string) *CreateIm
 }
 
 type CreateImageCacheRequestImageRegistryCredential struct {
+	// The password that is used to log on to image repository N.
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
-	Server   *string `json:"Server,omitempty" xml:"Server,omitempty"`
+	// The endpoint of the image repository without the `http://` or `https://` prefix.
+	Server *string `json:"Server,omitempty" xml:"Server,omitempty"`
+	// The username that is used to log on to image repository N.
 	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
 
@@ -2340,7 +2589,9 @@ func (s *CreateImageCacheRequestImageRegistryCredential) SetUserName(v string) *
 }
 
 type CreateImageCacheRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The key of tag N of the image cache. Valid values of N: 1 to 20.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of tag N of the image cache. Valid values of N: 1 to 20.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -2363,9 +2614,12 @@ func (s *CreateImageCacheRequestTag) SetValue(v string) *CreateImageCacheRequest
 }
 
 type CreateImageCacheResponseBody struct {
+	// The ID of the intermediate elastic container instance that is used to create the image cache.
 	ContainerGroupId *string `json:"ContainerGroupId,omitempty" xml:"ContainerGroupId,omitempty"`
-	ImageCacheId     *string `json:"ImageCacheId,omitempty" xml:"ImageCacheId,omitempty"`
-	RequestId        *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the image cache.
+	ImageCacheId *string `json:"ImageCacheId,omitempty" xml:"ImageCacheId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateImageCacheResponseBody) String() string {
@@ -2421,11 +2675,39 @@ func (s *CreateImageCacheResponse) SetBody(v *CreateImageCacheResponseBody) *Cre
 }
 
 type CreateInstanceOpsTaskRequest struct {
-	ContainerGroupId     *string `json:"ContainerGroupId,omitempty" xml:"ContainerGroupId,omitempty"`
-	OpsType              *string `json:"OpsType,omitempty" xml:"OpsType,omitempty"`
-	OpsValue             *string `json:"OpsValue,omitempty" xml:"OpsValue,omitempty"`
-	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The ID of the container group.
+	ContainerGroupId *string `json:"ContainerGroupId,omitempty" xml:"ContainerGroupId,omitempty"`
+	// The type of the O&M task. Valid values:
+	//
+	// *   coredump
+	// *   tcpdump
+	OpsType *string `json:"OpsType,omitempty" xml:"OpsType,omitempty"`
+	// The value of the O\&M task. You can set this parameter based on the value of OpsType.
+	//
+	// *   If OpsType is set to coredump, the valid values of OpsValue are:
+	//
+	//     *   enable: enables coredump.
+	//     *   disable: disables coredump.
+	//
+	// *   If OpsType is set to tcpdump, the value of OpsValue is a JSON-formatted parameter string. Example: `{"Enable":true, "IfDeviceName":"eth0"}`. The value may contain the following parameters:
+	//
+	//     *   Enable: specifies whether to enable tcpdump. You must specify this parameter. Valid values: true and false.
+	//     *   Protocol: the network protocol. Valid values: tcp, udp, and icmpv4.
+	//     *   SourceIp: the source IP address.
+	//     *   SourceCidr: the source CIDR block. If you specify both an IP address and a CIDR block, the IP address is ignored if the CIDR block is valid.
+	//     *   SourcePort: the source port. Valid values: 1 to 65535.
+	//     *   DestIp: the destination IP address.
+	//     *   DestCidr: the destination CIDR block. If you specify both an IP address and a CIDR block, the IP address is ignored if the CIDR block is valid.
+	//     *   DestPort: the destination port. Valid values: 1 to 65535.
+	//     *   IfDeviceName: the destination network interface controller. Default value: eth0.
+	//     *   Snaplen: the length to be captured. Default value: 65535. Unit: bytes.
+	//     *   Duration: the captured period. Unit: seconds.
+	//     *   PacketNum: the number of packets to be captured.
+	//     *   FileSize: the size of the destination files on packets. Unit: bytes. Maximum value: 1073741824. 1073741824 bytes is equal to 1 GB.
+	OpsValue     *string `json:"OpsValue,omitempty" xml:"OpsValue,omitempty"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID of the O&M task.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -2480,8 +2762,10 @@ func (s *CreateInstanceOpsTaskRequest) SetResourceOwnerId(v int64) *CreateInstan
 }
 
 type CreateInstanceOpsTaskResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *string `json:"Result,omitempty" xml:"Result,omitempty"`
+	// The creation result of the O&M task.
+	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
 }
 
 func (s CreateInstanceOpsTaskResponseBody) String() string {
@@ -2532,24 +2816,53 @@ func (s *CreateInstanceOpsTaskResponse) SetBody(v *CreateInstanceOpsTaskResponse
 }
 
 type CreateVirtualNodeRequest struct {
-	ClientToken              *string                          `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	EipInstanceId            *string                          `json:"EipInstanceId,omitempty" xml:"EipInstanceId,omitempty"`
-	EnablePublicNetwork      *bool                            `json:"EnablePublicNetwork,omitempty" xml:"EnablePublicNetwork,omitempty"`
-	KubeConfig               *string                          `json:"KubeConfig,omitempty" xml:"KubeConfig,omitempty"`
-	OwnerAccount             *string                          `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId                  *int64                           `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId                 *string                          `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceGroupId          *string                          `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	ResourceOwnerAccount     *string                          `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId          *int64                           `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	RotateCertificateEnabled *bool                            `json:"RotateCertificateEnabled,omitempty" xml:"RotateCertificateEnabled,omitempty"`
-	SecurityGroupId          *string                          `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	Tag                      []*CreateVirtualNodeRequestTag   `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	Taint                    []*CreateVirtualNodeRequestTaint `json:"Taint,omitempty" xml:"Taint,omitempty" type:"Repeated"`
-	TlsBootstrapEnabled      *bool                            `json:"TlsBootstrapEnabled,omitempty" xml:"TlsBootstrapEnabled,omitempty"`
-	VSwitchId                *string                          `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	VirtualNodeName          *string                          `json:"VirtualNodeName,omitempty" xml:"VirtualNodeName,omitempty"`
-	ZoneId                   *string                          `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that the value is unique among different requests. The token can only contain ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
+	ClientToken     *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	ClusterDNS      *string `json:"ClusterDNS,omitempty" xml:"ClusterDNS,omitempty"`
+	ClusterDomain   *string `json:"ClusterDomain,omitempty" xml:"ClusterDomain,omitempty"`
+	CustomResources *string `json:"CustomResources,omitempty" xml:"CustomResources,omitempty"`
+	// The ID of the elastic IP address (EIP).
+	EipInstanceId *string `json:"EipInstanceId,omitempty" xml:"EipInstanceId,omitempty"`
+	// Specifies whether to enable Internet access for the VNode. Default value: false.
+	//
+	// If the value of this parameter is true, the VNode exposes a public IP address to external services.
+	EnablePublicNetwork *bool `json:"EnablePublicNetwork,omitempty" xml:"EnablePublicNetwork,omitempty"`
+	// KubeConfig of the Kubernetes cluster to which the VNode is to be connected. The value must be Base64-encoded.
+	KubeConfig   *string `json:"KubeConfig,omitempty" xml:"KubeConfig,omitempty"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID of the VNode.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the resource group.
+	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// Specifies whether to enable certificate rotation. If you set the value to true, the system automatically applies for a new certificate for the VNode when the current certificate is about to expire. Valid values:
+	//
+	// *   true
+	// *   false
+	//
+	// Default value: false.
+	RotateCertificateEnabled *bool `json:"RotateCertificateEnabled,omitempty" xml:"RotateCertificateEnabled,omitempty"`
+	// The ID of the security group. The VNode and the elastic container instances in the VNode are added to the security group.
+	SecurityGroupId *string                          `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	Tag             []*CreateVirtualNodeRequestTag   `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	Taint           []*CreateVirtualNodeRequestTaint `json:"Taint,omitempty" xml:"Taint,omitempty" type:"Repeated"`
+	// Specifies whether to enable TLS bootstrapping. If you set this parameter to true, use the KubeConfig certificate for TLS bootstrapping. Valid values:
+	//
+	// *   true
+	// *   false
+	//
+	// Default value: false.
+	TlsBootstrapEnabled *bool `json:"TlsBootstrapEnabled,omitempty" xml:"TlsBootstrapEnabled,omitempty"`
+	// The ID of the vSwitch. The vSwitch is connected to the VNode and the elastic container instances in the VNode.
+	//
+	// You can specify 1 to 10 vSwitches for a VPC.
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// The name of the VNode. The name must be 2 to 128 characters in length, and can contain lowercase letters, digits, periods (.), and hyphens (-).
+	VirtualNodeName *string `json:"VirtualNodeName,omitempty" xml:"VirtualNodeName,omitempty"`
+	// The zone ID of the VNode.
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s CreateVirtualNodeRequest) String() string {
@@ -2562,6 +2875,21 @@ func (s CreateVirtualNodeRequest) GoString() string {
 
 func (s *CreateVirtualNodeRequest) SetClientToken(v string) *CreateVirtualNodeRequest {
 	s.ClientToken = &v
+	return s
+}
+
+func (s *CreateVirtualNodeRequest) SetClusterDNS(v string) *CreateVirtualNodeRequest {
+	s.ClusterDNS = &v
+	return s
+}
+
+func (s *CreateVirtualNodeRequest) SetClusterDomain(v string) *CreateVirtualNodeRequest {
+	s.ClusterDomain = &v
+	return s
+}
+
+func (s *CreateVirtualNodeRequest) SetCustomResources(v string) *CreateVirtualNodeRequest {
+	s.CustomResources = &v
 	return s
 }
 
@@ -2651,7 +2979,9 @@ func (s *CreateVirtualNodeRequest) SetZoneId(v string) *CreateVirtualNodeRequest
 }
 
 type CreateVirtualNodeRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The key of the tag. Valid values of N: 1 to 20.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of tag N. Valid values of N: 1 to 20.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -2674,9 +3004,16 @@ func (s *CreateVirtualNodeRequestTag) SetValue(v string) *CreateVirtualNodeReque
 }
 
 type CreateVirtualNodeRequestTaint struct {
+	// The effect of taint N. Valid values of N: 1 to 20. Valid values:
+	//
+	// *   NoSchedule: No pods are scheduled to the nodes that have the taint.
+	// *   NoExecute: Existing pods in the node are evicted while no pods are scheduled to the nodes that have the taint.
+	// *   PreferNoSchedule: Pods are preferentially not scheduled to the nodes that have the taint.
 	Effect *string `json:"Effect,omitempty" xml:"Effect,omitempty"`
-	Key    *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	Value  *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The key of taint N. Valid values of N: 1 to 20.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of taint N. Valid values of N: 1 to 20.
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s CreateVirtualNodeRequestTaint) String() string {
@@ -2703,7 +3040,9 @@ func (s *CreateVirtualNodeRequestTaint) SetValue(v string) *CreateVirtualNodeReq
 }
 
 type CreateVirtualNodeResponseBody struct {
-	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the VNode.
 	VirtualNodeId *string `json:"VirtualNodeId,omitempty" xml:"VirtualNodeId,omitempty"`
 }
 
@@ -2755,10 +3094,13 @@ func (s *CreateVirtualNodeResponse) SetBody(v *CreateVirtualNodeResponseBody) *C
 }
 
 type DeleteContainerGroupRequest struct {
-	ClientToken          *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	ContainerGroupId     *string `json:"ContainerGroupId,omitempty" xml:"ContainerGroupId,omitempty"`
-	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can only contain ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The ID of the elastic container instance.
+	ContainerGroupId *string `json:"ContainerGroupId,omitempty" xml:"ContainerGroupId,omitempty"`
+	OwnerAccount     *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId          *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID of the elastic container instance.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -2808,6 +3150,7 @@ func (s *DeleteContainerGroupRequest) SetResourceOwnerId(v int64) *DeleteContain
 }
 
 type DeleteContainerGroupResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2854,10 +3197,13 @@ func (s *DeleteContainerGroupResponse) SetBody(v *DeleteContainerGroupResponseBo
 }
 
 type DeleteImageCacheRequest struct {
-	ClientToken          *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	ImageCacheId         *string `json:"ImageCacheId,omitempty" xml:"ImageCacheId,omitempty"`
-	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The client token that is used to guarantee the idempotence of the request. You can use the client to generate the value, but you must make sure that the value is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The ID of the image cache.
+	ImageCacheId *string `json:"ImageCacheId,omitempty" xml:"ImageCacheId,omitempty"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID of the image cache.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -2907,6 +3253,7 @@ func (s *DeleteImageCacheRequest) SetResourceOwnerId(v int64) *DeleteImageCacheR
 }
 
 type DeleteImageCacheResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2953,13 +3300,16 @@ func (s *DeleteImageCacheResponse) SetBody(v *DeleteImageCacheResponseBody) *Del
 }
 
 type DeleteVirtualNodeRequest struct {
-	ClientToken          *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that the value is unique among different requests. The token can only contain ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotency of requests?](~~25693~~)
+	ClientToken  *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID of the virtual node.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	VirtualNodeId        *string `json:"VirtualNodeId,omitempty" xml:"VirtualNodeId,omitempty"`
+	// The ID of the virtual node.
+	VirtualNodeId *string `json:"VirtualNodeId,omitempty" xml:"VirtualNodeId,omitempty"`
 }
 
 func (s DeleteVirtualNodeRequest) String() string {
@@ -3006,6 +3356,7 @@ func (s *DeleteVirtualNodeRequest) SetVirtualNodeId(v string) *DeleteVirtualNode
 }
 
 type DeleteVirtualNodeResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3052,14 +3403,22 @@ func (s *DeleteVirtualNodeResponse) SetBody(v *DeleteVirtualNodeResponseBody) *D
 }
 
 type DescribeAvailableResourceRequest struct {
-	DestinationResource  *DescribeAvailableResourceRequestDestinationResource `json:"DestinationResource,omitempty" xml:"DestinationResource,omitempty" type:"Struct"`
-	OwnerAccount         *string                                              `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64                                               `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId             *string                                              `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceOwnerAccount *string                                              `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64                                               `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	SpotResource         *DescribeAvailableResourceRequestSpotResource        `json:"SpotResource,omitempty" xml:"SpotResource,omitempty" type:"Struct"`
-	ZoneId               *string                                              `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// The information about the resource that you want to query.
+	DestinationResource *DescribeAvailableResourceRequestDestinationResource `json:"DestinationResource,omitempty" xml:"DestinationResource,omitempty" type:"Struct"`
+	OwnerAccount        *string                                              `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId             *int64                                               `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The ID of the region where the instance resides.
+	//
+	// You can call the [DescribeRegions](~~146965~~) operation to query the most recent region list.
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The information about the preemptible instances that you want to query.
+	SpotResource *DescribeAvailableResourceRequestSpotResource `json:"SpotResource,omitempty" xml:"SpotResource,omitempty" type:"Struct"`
+	// The ID of the zone to which the instance belongs.
+	//
+	// This parameter is empty by default, which indicates that ECS instance families available in all zones in the specified region are queried.
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s DescribeAvailableResourceRequest) String() string {
@@ -3111,10 +3470,20 @@ func (s *DescribeAvailableResourceRequest) SetZoneId(v string) *DescribeAvailabl
 }
 
 type DescribeAvailableResourceRequestDestinationResource struct {
-	Category *string  `json:"Category,omitempty" xml:"Category,omitempty"`
-	Cores    *float32 `json:"Cores,omitempty" xml:"Cores,omitempty"`
-	Memory   *float32 `json:"Memory,omitempty" xml:"Memory,omitempty"`
-	Value    *string  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The type of the resource. Valid values:
+	//
+	// *   InstanceTypeFamily: queries instance families. If you use this parameter value, you must also specify the Value parameter.
+	// *   InstanceType: queries instance types. If you use this parameter value, you must also specify the Value, Cores, and Memory parameters.
+	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// The number of vCPUs. This parameter is available only when the Category parameter is set to InstanceType.
+	Cores *float32 `json:"Cores,omitempty" xml:"Cores,omitempty"`
+	// The size of the memory. Unit: GiB. This parameter is available only when the Category parameter is set to InstanceType.
+	Memory *float32 `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	// Instance families or instance types.
+	//
+	// *   If you set Category to InstanceTypeFamily, you must set this parameter to instance families such as ecs.c5.
+	// *   If you set Category to InstanceType, you must set this parameter to instance types such as ecs.c5.large.
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s DescribeAvailableResourceRequestDestinationResource) String() string {
@@ -3146,9 +3515,20 @@ func (s *DescribeAvailableResourceRequestDestinationResource) SetValue(v string)
 }
 
 type DescribeAvailableResourceRequestSpotResource struct {
-	SpotDuration   *int32   `json:"SpotDuration,omitempty" xml:"SpotDuration,omitempty"`
+	// The protection period of the preemptible instance. Unit: hours. Default value: 1. Valid values: 0 to 6.
+	SpotDuration *int32 `json:"SpotDuration,omitempty" xml:"SpotDuration,omitempty"`
+	// The maximum hourly price of the preemptible elastic container instance. The value can be accurate to three decimal places. If you set SpotStrategy to SpotWithPriceLimit, you must specify the SpotPriceLimit parameter.
 	SpotPriceLimit *float64 `json:"SpotPriceLimit,omitempty" xml:"SpotPriceLimit,omitempty"`
-	SpotStrategy   *string  `json:"SpotStrategy,omitempty" xml:"SpotStrategy,omitempty"`
+	// The bidding policy for the elastic container instance. Valid values:
+	//
+	// *   NoSpot: The instance is a pay-as-you-go instance.
+	// *   SpotWithPriceLimit: The instance is a preemptible instance with a user-defined maximum hourly price.
+	// *   SpotAsPriceGo: The instance is a preemptible instance for which the market price at the time of purchase is automatically used as the bid price.
+	//
+	// Default value: NoSpot.
+	//
+	// >  If you set this parameter to SpotWithPriceLimit or SpotAsPriceGo to query preemptible instances, you must set Category to InstanceType. In addition, you must use the Value parameter to specify instance types, or use the Cores and Memory parameters to specify the number of vCPUs and memory size.
+	SpotStrategy *string `json:"SpotStrategy,omitempty" xml:"SpotStrategy,omitempty"`
 }
 
 func (s DescribeAvailableResourceRequestSpotResource) String() string {
@@ -3175,8 +3555,10 @@ func (s *DescribeAvailableResourceRequestSpotResource) SetSpotStrategy(v string)
 }
 
 type DescribeAvailableResourceResponseBody struct {
+	// An array of zones in which the specified resources are available.
 	AvailableZones *DescribeAvailableResourceResponseBodyAvailableZones `json:"AvailableZones,omitempty" xml:"AvailableZones,omitempty" type:"Struct"`
-	RequestId      *string                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeAvailableResourceResponseBody) String() string {
@@ -3215,9 +3597,12 @@ func (s *DescribeAvailableResourceResponseBodyAvailableZones) SetAvailableZone(v
 }
 
 type DescribeAvailableResourceResponseBodyAvailableZonesAvailableZone struct {
+	// An array of resources available in the specified zone.
 	AvailableResources *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneAvailableResources `json:"AvailableResources,omitempty" xml:"AvailableResources,omitempty" type:"Struct"`
-	RegionId           *string                                                                             `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ZoneId             *string                                                                             `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// The ID of the region where the instance resides.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the zone to which the instance belongs.
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s DescribeAvailableResourceResponseBodyAvailableZonesAvailableZone) String() string {
@@ -3261,8 +3646,13 @@ func (s *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneAvailab
 }
 
 type DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneAvailableResourcesAvailableResource struct {
+	// An array of resources available in the zones.
 	SupportedResources *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneAvailableResourcesAvailableResourceSupportedResources `json:"SupportedResources,omitempty" xml:"SupportedResources,omitempty" type:"Struct"`
-	Type               *string                                                                                                                `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The resource type. Valid values:
+	//
+	// *   InstanceTypeFamily: instance families.
+	// *   InstanceType: instance types.
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneAvailableResourcesAvailableResource) String() string {
@@ -3301,8 +3691,18 @@ func (s *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneAvailab
 }
 
 type DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneAvailableResourcesAvailableResourceSupportedResourcesSupportedResource struct {
+	// The resource category based on the stock. Valid values:
+	//
+	// *   WithStock: Resources are in sufficient stock.
+	// *   ClosedWithStock: Resources are insufficient. We recommend that you use other instance types that are in sufficient stock.
+	// *   WithoutStock: Resources are sold out and will be replenished. We recommend that you use other instance types that are in sufficient stock.
+	// *   ClosedWithoutStock: Resources are sold out and will not be replenished. We recommend that you use other instance types that are in sufficient stock.
 	StatusCategory *string `json:"StatusCategory,omitempty" xml:"StatusCategory,omitempty"`
-	Value          *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The ECS instance types or instance families that are supported in the zones.
+	//
+	// *   If the return value of the Type parameter is InstanceTypeFamily, this parameter indicates instance families that are returned.
+	// *   If the return value of the Type parameter is InstanceType, this parameter indicates instance types that are returned.
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneAvailableResourcesAvailableResourceSupportedResourcesSupportedResource) String() string {
@@ -3353,16 +3753,29 @@ func (s *DescribeAvailableResourceResponse) SetBody(v *DescribeAvailableResource
 }
 
 type DescribeCommitContainerTaskRequest struct {
-	ContainerGroupId     *string   `json:"ContainerGroupId,omitempty" xml:"ContainerGroupId,omitempty"`
-	MaxResults           *int32    `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken            *string   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	OwnerAccount         *string   `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId             *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	TaskId               []*string `json:"TaskId,omitempty" xml:"TaskId,omitempty" type:"Repeated"`
-	TaskStatus           *string   `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
+	// The ID of the elastic container instance on which the CommitContainer task is executed.\
+	// You must enter the instance ID, the task ID, or both for the request.
+	ContainerGroupId *string `json:"ContainerGroupId,omitempty" xml:"ContainerGroupId,omitempty"`
+	// The number of entries to return on each page.\
+	// Maximum value: 50.\
+	// Default value: 10.
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token that determines the start point of the query. Set the value to the value of NextToken that is returned from the last call.
+	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID of the instance.
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The ID of the task.
+	TaskId []*string `json:"TaskId,omitempty" xml:"TaskId,omitempty" type:"Repeated"`
+	// The status of the task. Valid values:
+	//
+	// *   Running: The task is being executed.
+	// *   Succeeded: The task is successfully executed.
+	// *   Failed
+	TaskStatus *string `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
 }
 
 func (s DescribeCommitContainerTaskRequest) String() string {
@@ -3424,11 +3837,16 @@ func (s *DescribeCommitContainerTaskRequest) SetTaskStatus(v string) *DescribeCo
 }
 
 type DescribeCommitContainerTaskResponseBody struct {
+	// The details of the task.
 	CommitTasks []*DescribeCommitContainerTaskResponseBodyCommitTasks `json:"CommitTasks,omitempty" xml:"CommitTasks,omitempty" type:"Repeated"`
-	MaxResults  *string                                               `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken   *string                                               `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	RequestId   *string                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount  *int32                                                `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The number of entries returned per page.
+	MaxResults *string `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The query token that is returned in this request.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The number of entries returned.
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeCommitContainerTaskResponseBody) String() string {
@@ -3465,14 +3883,26 @@ func (s *DescribeCommitContainerTaskResponseBody) SetTotalCount(v int32) *Descri
 }
 
 type DescribeCommitContainerTaskResponseBodyCommitTasks struct {
+	// The stage of the CommitContainer task.
 	CommitPhaseInfos []*DescribeCommitContainerTaskResponseBodyCommitTasksCommitPhaseInfos `json:"CommitPhaseInfos,omitempty" xml:"CommitPhaseInfos,omitempty" type:"Repeated"`
-	ContainerName    *string                                                               `json:"ContainerName,omitempty" xml:"ContainerName,omitempty"`
-	CreationTime     *string                                                               `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	FinishedTime     *string                                                               `json:"FinishedTime,omitempty" xml:"FinishedTime,omitempty"`
-	StatusMessage    *string                                                               `json:"StatusMessage,omitempty" xml:"StatusMessage,omitempty"`
-	TaskId           *string                                                               `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	TaskProgress     *string                                                               `json:"TaskProgress,omitempty" xml:"TaskProgress,omitempty"`
-	TaskStatus       *string                                                               `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
+	// The name of the container.
+	ContainerName *string `json:"ContainerName,omitempty" xml:"ContainerName,omitempty"`
+	// The time when the task was created.
+	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	// The time when the task ended.
+	FinishedTime *string `json:"FinishedTime,omitempty" xml:"FinishedTime,omitempty"`
+	// The message about the status of the task.
+	StatusMessage *string `json:"StatusMessage,omitempty" xml:"StatusMessage,omitempty"`
+	// The ID of the task.
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The progress of the task in percentage.
+	TaskProgress *string `json:"TaskProgress,omitempty" xml:"TaskProgress,omitempty"`
+	// The status of the task. Valid values:
+	//
+	// *   Running: The task is being executed.
+	// *   Succeeded: The task is successfully executed.
+	// *   Failed
+	TaskStatus *string `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
 }
 
 func (s DescribeCommitContainerTaskResponseBodyCommitTasks) String() string {
@@ -3524,10 +3954,14 @@ func (s *DescribeCommitContainerTaskResponseBodyCommitTasks) SetTaskStatus(v str
 }
 
 type DescribeCommitContainerTaskResponseBodyCommitTasksCommitPhaseInfos struct {
-	Message    *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	Phase      *string `json:"Phase,omitempty" xml:"Phase,omitempty"`
+	// The information about the stage.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The name of the stage.
+	Phase *string `json:"Phase,omitempty" xml:"Phase,omitempty"`
+	// The time of the stage.
 	RecordTime *string `json:"RecordTime,omitempty" xml:"RecordTime,omitempty"`
-	Status     *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The status of the stage. Valid values:
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeCommitContainerTaskResponseBodyCommitTasksCommitPhaseInfos) String() string {
@@ -3588,16 +4022,34 @@ func (s *DescribeCommitContainerTaskResponse) SetBody(v *DescribeCommitContainer
 }
 
 type DescribeContainerGroupEventsRequest struct {
-	ContainerGroupIds *string                                   `json:"ContainerGroupIds,omitempty" xml:"ContainerGroupIds,omitempty"`
-	EventSource       *string                                   `json:"EventSource,omitempty" xml:"EventSource,omitempty"`
-	Limit             *int32                                    `json:"Limit,omitempty" xml:"Limit,omitempty"`
-	NextToken         *string                                   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	RegionId          *string                                   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceGroupId   *string                                   `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	SinceSecond       *int32                                    `json:"SinceSecond,omitempty" xml:"SinceSecond,omitempty"`
-	Tag               []*DescribeContainerGroupEventsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	VSwitchId         *string                                   `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	ZoneId            *string                                   `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// The IDs of the container groups. You can specify up to 20 IDs. Each ID must be a string in JSON format.
+	ContainerGroupIds *string `json:"ContainerGroupIds,omitempty" xml:"ContainerGroupIds,omitempty"`
+	// The component reporting this event. Valid values:
+	//
+	// *   EciService
+	// *   K8sAgent
+	//
+	// This parameter is empty by default, which indicates that events reported by all types of components are queried.
+	EventSource *string `json:"EventSource,omitempty" xml:"EventSource,omitempty"`
+	// Specifies the maximum number of container groups to be returned for this request. Default value: 200.
+	//
+	// >  The number of container groups to be returned is no greater than this parameter value.
+	Limit *int32 `json:"Limit,omitempty" xml:"Limit,omitempty"`
+	// The token that is used for the next query. If this parameter is empty, all results have been returned.
+	//
+	// You do not need to specify this parameter in the first request. You can obtain the token from the result returned by the previous request.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The region ID of the container groups.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the resource group.
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// A relative time in seconds before the current time from which to show event information. This parameter is used to poll incremental events.
+	SinceSecond *int32                                    `json:"SinceSecond,omitempty" xml:"SinceSecond,omitempty"`
+	Tag         []*DescribeContainerGroupEventsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	// The ID of the vSwitch.
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// The zone ID of the container groups.
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s DescribeContainerGroupEventsRequest) String() string {
@@ -3659,7 +4111,9 @@ func (s *DescribeContainerGroupEventsRequest) SetZoneId(v string) *DescribeConta
 }
 
 type DescribeContainerGroupEventsRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The key of tag N.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of tag N.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -3682,9 +4136,12 @@ func (s *DescribeContainerGroupEventsRequestTag) SetValue(v string) *DescribeCon
 }
 
 type DescribeContainerGroupEventsResponseBody struct {
-	Data       []*DescribeContainerGroupEventsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	RequestId  *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *int32                                          `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// An array of event details.
+	Data []*DescribeContainerGroupEventsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The number of entries of returned events.
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeContainerGroupEventsResponseBody) String() string {
@@ -3711,8 +4168,10 @@ func (s *DescribeContainerGroupEventsResponseBody) SetTotalCount(v int32) *Descr
 }
 
 type DescribeContainerGroupEventsResponseBodyData struct {
-	ContainerGroupId *string                                               `json:"ContainerGroupId,omitempty" xml:"ContainerGroupId,omitempty"`
-	Events           []*DescribeContainerGroupEventsResponseBodyDataEvents `json:"Events,omitempty" xml:"Events,omitempty" type:"Repeated"`
+	// The ID of the container group.
+	ContainerGroupId *string `json:"ContainerGroupId,omitempty" xml:"ContainerGroupId,omitempty"`
+	// An array of events.
+	Events []*DescribeContainerGroupEventsResponseBodyDataEvents `json:"Events,omitempty" xml:"Events,omitempty" type:"Repeated"`
 }
 
 func (s DescribeContainerGroupEventsResponseBodyData) String() string {
@@ -3734,17 +4193,31 @@ func (s *DescribeContainerGroupEventsResponseBodyData) SetEvents(v []*DescribeCo
 }
 
 type DescribeContainerGroupEventsResponseBodyDataEvents struct {
-	Count              *int32                                                            `json:"Count,omitempty" xml:"Count,omitempty"`
-	FirstTimestamp     *string                                                           `json:"FirstTimestamp,omitempty" xml:"FirstTimestamp,omitempty"`
-	LastTimestamp      *string                                                           `json:"LastTimestamp,omitempty" xml:"LastTimestamp,omitempty"`
-	Message            *string                                                           `json:"Message,omitempty" xml:"Message,omitempty"`
-	Metadata           *DescribeContainerGroupEventsResponseBodyDataEventsMetadata       `json:"Metadata,omitempty" xml:"Metadata,omitempty" type:"Struct"`
-	Reason             *string                                                           `json:"Reason,omitempty" xml:"Reason,omitempty"`
-	ReportingComponent *string                                                           `json:"ReportingComponent,omitempty" xml:"ReportingComponent,omitempty"`
-	ReportingInstance  *string                                                           `json:"ReportingInstance,omitempty" xml:"ReportingInstance,omitempty"`
-	Source             *DescribeContainerGroupEventsResponseBodyDataEventsSource         `json:"Source,omitempty" xml:"Source,omitempty" type:"Struct"`
-	Type               *string                                                           `json:"Type,omitempty" xml:"Type,omitempty"`
-	InvolvedObject     *DescribeContainerGroupEventsResponseBodyDataEventsInvolvedObject `json:"involvedObject,omitempty" xml:"involvedObject,omitempty" type:"Struct"`
+	// The number of events.
+	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The time at which the event was first recorded.
+	FirstTimestamp *string `json:"FirstTimestamp,omitempty" xml:"FirstTimestamp,omitempty"`
+	// The time at which the most recent occurrence of this event was recorded.
+	LastTimestamp *string `json:"LastTimestamp,omitempty" xml:"LastTimestamp,omitempty"`
+	// A description of the status of this operation.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The metadata of the event.
+	Metadata *DescribeContainerGroupEventsResponseBodyDataEventsMetadata `json:"Metadata,omitempty" xml:"Metadata,omitempty" type:"Struct"`
+	// The reason for the transition into the current status of the event.
+	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	// Name of the controller that emitted the event.
+	ReportingComponent *string `json:"ReportingComponent,omitempty" xml:"ReportingComponent,omitempty"`
+	// ID of the controller instance.
+	ReportingInstance *string `json:"ReportingInstance,omitempty" xml:"ReportingInstance,omitempty"`
+	// The component reporting this event.
+	Source *DescribeContainerGroupEventsResponseBodyDataEventsSource `json:"Source,omitempty" xml:"Source,omitempty" type:"Struct"`
+	// The type of the event. Valid values:
+	//
+	// *   Normal
+	// *   Warning
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The object that this event is about.
+	InvolvedObject *DescribeContainerGroupEventsResponseBodyDataEventsInvolvedObject `json:"involvedObject,omitempty" xml:"involvedObject,omitempty" type:"Struct"`
 }
 
 func (s DescribeContainerGroupEventsResponseBodyDataEvents) String() string {
@@ -3811,7 +4284,9 @@ func (s *DescribeContainerGroupEventsResponseBodyDataEvents) SetInvolvedObject(v
 }
 
 type DescribeContainerGroupEventsResponseBodyDataEventsMetadata struct {
-	Name      *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The name of the event.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The namespace.
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 }
 
@@ -3834,8 +4309,10 @@ func (s *DescribeContainerGroupEventsResponseBodyDataEventsMetadata) SetNamespac
 }
 
 type DescribeContainerGroupEventsResponseBodyDataEventsSource struct {
+	// The component for the operation.
 	Component *string `json:"Component,omitempty" xml:"Component,omitempty"`
-	Host      *string `json:"Host,omitempty" xml:"Host,omitempty"`
+	// The type of the host.
+	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
 }
 
 func (s DescribeContainerGroupEventsResponseBodyDataEventsSource) String() string {
@@ -3857,11 +4334,16 @@ func (s *DescribeContainerGroupEventsResponseBodyDataEventsSource) SetHost(v str
 }
 
 type DescribeContainerGroupEventsResponseBodyDataEventsInvolvedObject struct {
+	// The version of Kubernetes.
 	ApiVersion *string `json:"ApiVersion,omitempty" xml:"ApiVersion,omitempty"`
-	Kind       *string `json:"Kind,omitempty" xml:"Kind,omitempty"`
-	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Namespace  *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	Uid        *string `json:"Uid,omitempty" xml:"Uid,omitempty"`
+	// The type of the resource.
+	Kind *string `json:"Kind,omitempty" xml:"Kind,omitempty"`
+	// The name of the resource.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The namespace where the resource resides.
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The ID of the resource.
+	Uid *string `json:"Uid,omitempty" xml:"Uid,omitempty"`
 }
 
 func (s DescribeContainerGroupEventsResponseBodyDataEventsInvolvedObject) String() string {
@@ -3927,15 +4409,26 @@ func (s *DescribeContainerGroupEventsResponse) SetBody(v *DescribeContainerGroup
 }
 
 type DescribeContainerGroupMetricRequest struct {
-	ContainerGroupId     *string `json:"ContainerGroupId,omitempty" xml:"ContainerGroupId,omitempty"`
-	EndTime              *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	Period               *string `json:"Period,omitempty" xml:"Period,omitempty"`
+	// The ID of the elastic container instance.
+	ContainerGroupId *string `json:"ContainerGroupId,omitempty" xml:"ContainerGroupId,omitempty"`
+	// The end of the time range to query. The default value is the current time.
+	//
+	// Specify the time in RFC 3339 format.
+	EndTime      *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The data aggregation period. Unit: seconds. Valid values: 15, 30, 60, and 600. Default value: 60.
+	//
+	// >  If StartTime and EndTime are not specified, the system returns the monitoring data generated in the last 5 minutes with a data aggregation period of 15s. The Period parameter is ignored.
+	Period *string `json:"Period,omitempty" xml:"Period,omitempty"`
+	// The ID of the region.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	StartTime            *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The beginning of the time range to query. The beginning of the time range must be a time point in the past 30 days. The default value is 5 minutes before the value of EndTime.
+	//
+	// Specify the time in RFC 3339 format. To query the data starting from March 12, 2019 09:00 UTC+8, you can set the parameter to 2019-03-12T09:00:00.000+08:00 or 2019-03-12T01:00:00.000Z.
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s DescribeContainerGroupMetricRequest) String() string {
@@ -3992,9 +4485,12 @@ func (s *DescribeContainerGroupMetricRequest) SetStartTime(v string) *DescribeCo
 }
 
 type DescribeContainerGroupMetricResponseBody struct {
-	ContainerGroupId *string                                            `json:"ContainerGroupId,omitempty" xml:"ContainerGroupId,omitempty"`
-	Records          []*DescribeContainerGroupMetricResponseBodyRecords `json:"Records,omitempty" xml:"Records,omitempty" type:"Repeated"`
-	RequestId        *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the elastic container instance.
+	ContainerGroupId *string `json:"ContainerGroupId,omitempty" xml:"ContainerGroupId,omitempty"`
+	// The monitoring data of the elastic container instance.
+	Records []*DescribeContainerGroupMetricResponseBodyRecords `json:"Records,omitempty" xml:"Records,omitempty" type:"Repeated"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeContainerGroupMetricResponseBody) String() string {
@@ -4021,13 +4517,20 @@ func (s *DescribeContainerGroupMetricResponseBody) SetRequestId(v string) *Descr
 }
 
 type DescribeContainerGroupMetricResponseBodyRecords struct {
-	CPU        *DescribeContainerGroupMetricResponseBodyRecordsCPU          `json:"CPU,omitempty" xml:"CPU,omitempty" type:"Struct"`
+	// The monitoring data of vCPUs.
+	CPU *DescribeContainerGroupMetricResponseBodyRecordsCPU `json:"CPU,omitempty" xml:"CPU,omitempty" type:"Struct"`
+	// The monitoring data of containers.
 	Containers []*DescribeContainerGroupMetricResponseBodyRecordsContainers `json:"Containers,omitempty" xml:"Containers,omitempty" type:"Repeated"`
-	Disk       []*DescribeContainerGroupMetricResponseBodyRecordsDisk       `json:"Disk,omitempty" xml:"Disk,omitempty" type:"Repeated"`
+	// The monitoring data of disks.
+	Disk []*DescribeContainerGroupMetricResponseBodyRecordsDisk `json:"Disk,omitempty" xml:"Disk,omitempty" type:"Repeated"`
+	// The monitoring data of file system partitions.
 	Filesystem []*DescribeContainerGroupMetricResponseBodyRecordsFilesystem `json:"Filesystem,omitempty" xml:"Filesystem,omitempty" type:"Repeated"`
-	Memory     *DescribeContainerGroupMetricResponseBodyRecordsMemory       `json:"Memory,omitempty" xml:"Memory,omitempty" type:"Struct"`
-	Network    *DescribeContainerGroupMetricResponseBodyRecordsNetwork      `json:"Network,omitempty" xml:"Network,omitempty" type:"Struct"`
-	Timestamp  *string                                                      `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
+	// The monitoring data of the memory.
+	Memory *DescribeContainerGroupMetricResponseBodyRecordsMemory `json:"Memory,omitempty" xml:"Memory,omitempty" type:"Struct"`
+	// The monitoring data of the network.
+	Network *DescribeContainerGroupMetricResponseBodyRecordsNetwork `json:"Network,omitempty" xml:"Network,omitempty" type:"Struct"`
+	// The time when the monitoring data entry was collected. The time is indicated in RFC 3339 format.
+	Timestamp *string `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
 }
 
 func (s DescribeContainerGroupMetricResponseBodyRecords) String() string {
@@ -4074,10 +4577,14 @@ func (s *DescribeContainerGroupMetricResponseBodyRecords) SetTimestamp(v string)
 }
 
 type DescribeContainerGroupMetricResponseBodyRecordsCPU struct {
-	Limit                *int64 `json:"Limit,omitempty" xml:"Limit,omitempty"`
-	Load                 *int64 `json:"Load,omitempty" xml:"Load,omitempty"`
+	// The upper limit of vCPU usage (the maximum number of vCPUs × 1000).
+	Limit *int64 `json:"Limit,omitempty" xml:"Limit,omitempty"`
+	// The average load in the last 10 seconds.
+	Load *int64 `json:"Load,omitempty" xml:"Load,omitempty"`
+	// The cumulative usage of vCPUs.
 	UsageCoreNanoSeconds *int64 `json:"UsageCoreNanoSeconds,omitempty" xml:"UsageCoreNanoSeconds,omitempty"`
-	UsageNanoCores       *int64 `json:"UsageNanoCores,omitempty" xml:"UsageNanoCores,omitempty"`
+	// The vCPU usage in the sampling window. Unit for the sampling window: nanoseconds.
+	UsageNanoCores *int64 `json:"UsageNanoCores,omitempty" xml:"UsageNanoCores,omitempty"`
 }
 
 func (s DescribeContainerGroupMetricResponseBodyRecordsCPU) String() string {
@@ -4109,9 +4616,12 @@ func (s *DescribeContainerGroupMetricResponseBodyRecordsCPU) SetUsageNanoCores(v
 }
 
 type DescribeContainerGroupMetricResponseBodyRecordsContainers struct {
-	CPU    *DescribeContainerGroupMetricResponseBodyRecordsContainersCPU    `json:"CPU,omitempty" xml:"CPU,omitempty" type:"Struct"`
+	// The vCPU monitoring data of the container.
+	CPU *DescribeContainerGroupMetricResponseBodyRecordsContainersCPU `json:"CPU,omitempty" xml:"CPU,omitempty" type:"Struct"`
+	// The memory monitoring data of the container.
 	Memory *DescribeContainerGroupMetricResponseBodyRecordsContainersMemory `json:"Memory,omitempty" xml:"Memory,omitempty" type:"Struct"`
-	Name   *string                                                          `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The name of the container.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
 func (s DescribeContainerGroupMetricResponseBodyRecordsContainers) String() string {
@@ -4138,10 +4648,14 @@ func (s *DescribeContainerGroupMetricResponseBodyRecordsContainers) SetName(v st
 }
 
 type DescribeContainerGroupMetricResponseBodyRecordsContainersCPU struct {
-	Limit                *int64 `json:"Limit,omitempty" xml:"Limit,omitempty"`
-	Load                 *int64 `json:"Load,omitempty" xml:"Load,omitempty"`
+	// The upper limit of vCPU usage (the maximum number of vCPUs × 1000).
+	Limit *int64 `json:"Limit,omitempty" xml:"Limit,omitempty"`
+	// The average load in the last 10 seconds.
+	Load *int64 `json:"Load,omitempty" xml:"Load,omitempty"`
+	// The cumulative usage of vCPUs.
 	UsageCoreNanoSeconds *int64 `json:"UsageCoreNanoSeconds,omitempty" xml:"UsageCoreNanoSeconds,omitempty"`
-	UsageNanoCores       *int64 `json:"UsageNanoCores,omitempty" xml:"UsageNanoCores,omitempty"`
+	// The vCPU usage in the sampling window. Unit for the sampling window: nanoseconds.
+	UsageNanoCores *int64 `json:"UsageNanoCores,omitempty" xml:"UsageNanoCores,omitempty"`
 }
 
 func (s DescribeContainerGroupMetricResponseBodyRecordsContainersCPU) String() string {
@@ -4173,11 +4687,16 @@ func (s *DescribeContainerGroupMetricResponseBodyRecordsContainersCPU) SetUsageN
 }
 
 type DescribeContainerGroupMetricResponseBodyRecordsContainersMemory struct {
+	// The amount of available memory.
 	AvailableBytes *int64 `json:"AvailableBytes,omitempty" xml:"AvailableBytes,omitempty"`
-	Cache          *int64 `json:"Cache,omitempty" xml:"Cache,omitempty"`
-	Rss            *int64 `json:"Rss,omitempty" xml:"Rss,omitempty"`
-	UsageBytes     *int64 `json:"UsageBytes,omitempty" xml:"UsageBytes,omitempty"`
-	WorkingSet     *int64 `json:"WorkingSet,omitempty" xml:"WorkingSet,omitempty"`
+	// The size of the cache.
+	Cache *int64 `json:"Cache,omitempty" xml:"Cache,omitempty"`
+	// The resident set size, which indicates the amount of physical memory that is actually used.
+	Rss *int64 `json:"Rss,omitempty" xml:"Rss,omitempty"`
+	// The amount of used memory.
+	UsageBytes *int64 `json:"UsageBytes,omitempty" xml:"UsageBytes,omitempty"`
+	// The usage of the working set.
+	WorkingSet *int64 `json:"WorkingSet,omitempty" xml:"WorkingSet,omitempty"`
 }
 
 func (s DescribeContainerGroupMetricResponseBodyRecordsContainersMemory) String() string {
@@ -4214,11 +4733,16 @@ func (s *DescribeContainerGroupMetricResponseBodyRecordsContainersMemory) SetWor
 }
 
 type DescribeContainerGroupMetricResponseBodyRecordsDisk struct {
-	Device     *string `json:"Device,omitempty" xml:"Device,omitempty"`
-	ReadBytes  *int64  `json:"ReadBytes,omitempty" xml:"ReadBytes,omitempty"`
-	ReadIO     *int64  `json:"ReadIO,omitempty" xml:"ReadIO,omitempty"`
-	WriteBytes *int64  `json:"WriteBytes,omitempty" xml:"WriteBytes,omitempty"`
-	WriteIO    *int64  `json:"WriteIO,omitempty" xml:"WriteIO,omitempty"`
+	// The name of the disk.
+	Device *string `json:"Device,omitempty" xml:"Device,omitempty"`
+	// The amount of data that was read from the disk. Unit: bytes.
+	ReadBytes *int64 `json:"ReadBytes,omitempty" xml:"ReadBytes,omitempty"`
+	// This parameter is unavailable.
+	ReadIO *int64 `json:"ReadIO,omitempty" xml:"ReadIO,omitempty"`
+	// The amount of data that was written to the disk. Unit: bytes.
+	WriteBytes *int64 `json:"WriteBytes,omitempty" xml:"WriteBytes,omitempty"`
+	// This parameter is unavailable.
+	WriteIO *int64 `json:"WriteIO,omitempty" xml:"WriteIO,omitempty"`
 }
 
 func (s DescribeContainerGroupMetricResponseBodyRecordsDisk) String() string {
@@ -4255,11 +4779,20 @@ func (s *DescribeContainerGroupMetricResponseBodyRecordsDisk) SetWriteIO(v int64
 }
 
 type DescribeContainerGroupMetricResponseBodyRecordsFilesystem struct {
-	Available *int64  `json:"Available,omitempty" xml:"Available,omitempty"`
-	Capacity  *int64  `json:"Capacity,omitempty" xml:"Capacity,omitempty"`
-	Category  *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	FsName    *string `json:"FsName,omitempty" xml:"FsName,omitempty"`
-	Usage     *int64  `json:"Usage,omitempty" xml:"Usage,omitempty"`
+	// The size of the available space.
+	Available *int64 `json:"Available,omitempty" xml:"Available,omitempty"`
+	// The total size of space.
+	Capacity *int64 `json:"Capacity,omitempty" xml:"Capacity,omitempty"`
+	// The type of the partition. Valid values:
+	//
+	// *   System
+	// *   Volume
+	// *   Other
+	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// The name of the partition.
+	FsName *string `json:"FsName,omitempty" xml:"FsName,omitempty"`
+	// The size of used space.
+	Usage *int64 `json:"Usage,omitempty" xml:"Usage,omitempty"`
 }
 
 func (s DescribeContainerGroupMetricResponseBodyRecordsFilesystem) String() string {
@@ -4296,11 +4829,16 @@ func (s *DescribeContainerGroupMetricResponseBodyRecordsFilesystem) SetUsage(v i
 }
 
 type DescribeContainerGroupMetricResponseBodyRecordsMemory struct {
+	// The amount of available memory.
 	AvailableBytes *int64 `json:"AvailableBytes,omitempty" xml:"AvailableBytes,omitempty"`
-	Cache          *int64 `json:"Cache,omitempty" xml:"Cache,omitempty"`
-	Rss            *int64 `json:"Rss,omitempty" xml:"Rss,omitempty"`
-	UsageBytes     *int64 `json:"UsageBytes,omitempty" xml:"UsageBytes,omitempty"`
-	WorkingSet     *int64 `json:"WorkingSet,omitempty" xml:"WorkingSet,omitempty"`
+	// The size of the cache.
+	Cache *int64 `json:"Cache,omitempty" xml:"Cache,omitempty"`
+	// The resident set size, which indicates the amount of physical memory that is actually used.
+	Rss *int64 `json:"Rss,omitempty" xml:"Rss,omitempty"`
+	// The amount of used memory.
+	UsageBytes *int64 `json:"UsageBytes,omitempty" xml:"UsageBytes,omitempty"`
+	// The usage of the working set.
+	WorkingSet *int64 `json:"WorkingSet,omitempty" xml:"WorkingSet,omitempty"`
 }
 
 func (s DescribeContainerGroupMetricResponseBodyRecordsMemory) String() string {
@@ -4337,6 +4875,7 @@ func (s *DescribeContainerGroupMetricResponseBodyRecordsMemory) SetWorkingSet(v 
 }
 
 type DescribeContainerGroupMetricResponseBodyRecordsNetwork struct {
+	// The monitoring data of network interface controllers (NICs).
 	Interfaces []*DescribeContainerGroupMetricResponseBodyRecordsNetworkInterfaces `json:"Interfaces,omitempty" xml:"Interfaces,omitempty" type:"Repeated"`
 }
 
@@ -4354,15 +4893,24 @@ func (s *DescribeContainerGroupMetricResponseBodyRecordsNetwork) SetInterfaces(v
 }
 
 type DescribeContainerGroupMetricResponseBodyRecordsNetworkInterfaces struct {
-	Name      *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	RxBytes   *int64  `json:"RxBytes,omitempty" xml:"RxBytes,omitempty"`
-	RxDrops   *int64  `json:"RxDrops,omitempty" xml:"RxDrops,omitempty"`
-	RxErrors  *int64  `json:"RxErrors,omitempty" xml:"RxErrors,omitempty"`
-	RxPackets *int64  `json:"RxPackets,omitempty" xml:"RxPackets,omitempty"`
-	TxBytes   *int64  `json:"TxBytes,omitempty" xml:"TxBytes,omitempty"`
-	TxDrops   *int64  `json:"TxDrops,omitempty" xml:"TxDrops,omitempty"`
-	TxErrors  *int64  `json:"TxErrors,omitempty" xml:"TxErrors,omitempty"`
-	TxPackets *int64  `json:"TxPackets,omitempty" xml:"TxPackets,omitempty"`
+	// The name of the NIC.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The number of bytes received by the NIC.
+	RxBytes *int64 `json:"RxBytes,omitempty" xml:"RxBytes,omitempty"`
+	// The number of packets that the NIC failed to receive.
+	RxDrops *int64 `json:"RxDrops,omitempty" xml:"RxDrops,omitempty"`
+	// The number of bytes that the NIC failed to receive.
+	RxErrors *int64 `json:"RxErrors,omitempty" xml:"RxErrors,omitempty"`
+	// The number of packets received by the NIC.
+	RxPackets *int64 `json:"RxPackets,omitempty" xml:"RxPackets,omitempty"`
+	// The number of bytes sent by the NIC.
+	TxBytes *int64 `json:"TxBytes,omitempty" xml:"TxBytes,omitempty"`
+	// The number of packets that the NIC failed to send.
+	TxDrops *int64 `json:"TxDrops,omitempty" xml:"TxDrops,omitempty"`
+	// The number of bytes that the NIC failed to send.
+	TxErrors *int64 `json:"TxErrors,omitempty" xml:"TxErrors,omitempty"`
+	// The number of packets sent by the NIC.
+	TxPackets *int64 `json:"TxPackets,omitempty" xml:"TxPackets,omitempty"`
 }
 
 func (s DescribeContainerGroupMetricResponseBodyRecordsNetworkInterfaces) String() string {
@@ -4448,18 +4996,33 @@ func (s *DescribeContainerGroupMetricResponse) SetBody(v *DescribeContainerGroup
 }
 
 type DescribeContainerGroupPriceRequest struct {
-	Cpu                  *float32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
-	EphemeralStorage     *int32   `json:"EphemeralStorage,omitempty" xml:"EphemeralStorage,omitempty"`
-	InstanceType         *string  `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	Memory               *float32 `json:"Memory,omitempty" xml:"Memory,omitempty"`
-	OwnerAccount         *string  `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64   `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId             *string  `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceOwnerAccount *string  `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64   `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	SpotPriceLimit       *float32 `json:"SpotPriceLimit,omitempty" xml:"SpotPriceLimit,omitempty"`
-	SpotStrategy         *string  `json:"SpotStrategy,omitempty" xml:"SpotStrategy,omitempty"`
-	ZoneId               *string  `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// The number of vCPUs.
+	Cpu *float32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	// The storage size of the temporary storage space. Unit: GiB.
+	EphemeralStorage *int32 `json:"EphemeralStorage,omitempty" xml:"EphemeralStorage,omitempty"`
+	// The instance type of the Elastic Compute Service (ECS) instance used to create the elastic container instance. For more information about ECS instance types that can be used to create elastic container instances, see [Instance types](~~114664~~).
+	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	// The size of the memory. Unit: GiB.
+	Memory       *float32 `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	OwnerAccount *string  `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64   `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The ID of the region where the instance resides. You can call the [DescribeRegions](~~146965~~) operation to query the most recent region and zone list.
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	SpotDuration         *int32  `json:"SpotDuration,omitempty" xml:"SpotDuration,omitempty"`
+	// The maximum hourly price of the preemptible elastic container instance. The value can contain up to three decimal places. If you set the SpotStrategy parameter to SpotWithPriceLimit, you must specify the SpotPriceLimit parameter.
+	SpotPriceLimit *float32 `json:"SpotPriceLimit,omitempty" xml:"SpotPriceLimit,omitempty"`
+	// The bidding policy for the elastic container instance. Valid values:
+	//
+	// *   NoSpot: The instance is a regular pay-as-you-go instance.
+	// *   SpotWithPriceLimit: The instance is a preemptible instance with a user-defined maximum hourly price.
+	// *   SpotAsPriceGo: The instance is a preemptible instance for which the market price at the time of purchase is automatically used as the bid price.
+	//
+	// Default value: NoSpot.
+	SpotStrategy *string `json:"SpotStrategy,omitempty" xml:"SpotStrategy,omitempty"`
+	// The zone ID of the instance. You can call the [DescribeRegions](~~146965~~) operation to query the most recent region and zone list.
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s DescribeContainerGroupPriceRequest) String() string {
@@ -4515,6 +5078,11 @@ func (s *DescribeContainerGroupPriceRequest) SetResourceOwnerId(v int64) *Descri
 	return s
 }
 
+func (s *DescribeContainerGroupPriceRequest) SetSpotDuration(v int32) *DescribeContainerGroupPriceRequest {
+	s.SpotDuration = &v
+	return s
+}
+
 func (s *DescribeContainerGroupPriceRequest) SetSpotPriceLimit(v float32) *DescribeContainerGroupPriceRequest {
 	s.SpotPriceLimit = &v
 	return s
@@ -4531,8 +5099,10 @@ func (s *DescribeContainerGroupPriceRequest) SetZoneId(v string) *DescribeContai
 }
 
 type DescribeContainerGroupPriceResponseBody struct {
+	// The information about the price and discount rule.
 	PriceInfo *DescribeContainerGroupPriceResponseBodyPriceInfo `json:"PriceInfo,omitempty" xml:"PriceInfo,omitempty" type:"Struct"`
-	RequestId *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeContainerGroupPriceResponseBody) String() string {
@@ -4554,8 +5124,11 @@ func (s *DescribeContainerGroupPriceResponseBody) SetRequestId(v string) *Descri
 }
 
 type DescribeContainerGroupPriceResponseBodyPriceInfo struct {
-	Price      *DescribeContainerGroupPriceResponseBodyPriceInfoPrice      `json:"Price,omitempty" xml:"Price,omitempty" type:"Struct"`
-	Rules      *DescribeContainerGroupPriceResponseBodyPriceInfoRules      `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Struct"`
+	// The price.
+	Price *DescribeContainerGroupPriceResponseBodyPriceInfoPrice `json:"Price,omitempty" xml:"Price,omitempty" type:"Struct"`
+	// Details about the promotion rules.
+	Rules *DescribeContainerGroupPriceResponseBodyPriceInfoRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Struct"`
+	// The details about the price of the preemptible elastic container instance.
 	SpotPrices *DescribeContainerGroupPriceResponseBodyPriceInfoSpotPrices `json:"SpotPrices,omitempty" xml:"SpotPrices,omitempty" type:"Struct"`
 }
 
@@ -4583,11 +5156,19 @@ func (s *DescribeContainerGroupPriceResponseBodyPriceInfo) SetSpotPrices(v *Desc
 }
 
 type DescribeContainerGroupPriceResponseBodyPriceInfoPrice struct {
-	Currency      *string                                                           `json:"Currency,omitempty" xml:"Currency,omitempty"`
-	DetailInfos   *DescribeContainerGroupPriceResponseBodyPriceInfoPriceDetailInfos `json:"DetailInfos,omitempty" xml:"DetailInfos,omitempty" type:"Struct"`
-	DiscountPrice *float32                                                          `json:"DiscountPrice,omitempty" xml:"DiscountPrice,omitempty"`
-	OriginalPrice *float32                                                          `json:"OriginalPrice,omitempty" xml:"OriginalPrice,omitempty"`
-	TradePrice    *float32                                                          `json:"TradePrice,omitempty" xml:"TradePrice,omitempty"`
+	// The currency unit. Valid values:
+	//
+	// - CNY: The value is available only on the China site (aliyun.com).
+	// - USD: The value is available only on the international site (alibabacloud.com).
+	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
+	// The details about the price.
+	DetailInfos *DescribeContainerGroupPriceResponseBodyPriceInfoPriceDetailInfos `json:"DetailInfos,omitempty" xml:"DetailInfos,omitempty" type:"Struct"`
+	// The discount.
+	DiscountPrice *float32 `json:"DiscountPrice,omitempty" xml:"DiscountPrice,omitempty"`
+	// The original price.
+	OriginalPrice *float32 `json:"OriginalPrice,omitempty" xml:"OriginalPrice,omitempty"`
+	// The transaction price, which is equal to the original price minus the discount.
+	TradePrice *float32 `json:"TradePrice,omitempty" xml:"TradePrice,omitempty"`
 }
 
 func (s DescribeContainerGroupPriceResponseBodyPriceInfoPrice) String() string {
@@ -4641,11 +5222,16 @@ func (s *DescribeContainerGroupPriceResponseBodyPriceInfoPriceDetailInfos) SetDe
 }
 
 type DescribeContainerGroupPriceResponseBodyPriceInfoPriceDetailInfosDetailInfo struct {
-	DiscountPrice *float32                                                                         `json:"DiscountPrice,omitempty" xml:"DiscountPrice,omitempty"`
-	OriginalPrice *float32                                                                         `json:"OriginalPrice,omitempty" xml:"OriginalPrice,omitempty"`
-	Resource      *string                                                                          `json:"Resource,omitempty" xml:"Resource,omitempty"`
-	Rules         *DescribeContainerGroupPriceResponseBodyPriceInfoPriceDetailInfosDetailInfoRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Struct"`
-	TradePrice    *float32                                                                         `json:"TradePrice,omitempty" xml:"TradePrice,omitempty"`
+	// The discount.
+	DiscountPrice *float32 `json:"DiscountPrice,omitempty" xml:"DiscountPrice,omitempty"`
+	// The original price.
+	OriginalPrice *float32 `json:"OriginalPrice,omitempty" xml:"OriginalPrice,omitempty"`
+	// The name of the resource.
+	Resource *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
+	// Details about the pricing rules.
+	Rules *DescribeContainerGroupPriceResponseBodyPriceInfoPriceDetailInfosDetailInfoRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Struct"`
+	// The transaction price.
+	TradePrice *float32 `json:"TradePrice,omitempty" xml:"TradePrice,omitempty"`
 }
 
 func (s DescribeContainerGroupPriceResponseBodyPriceInfoPriceDetailInfosDetailInfo) String() string {
@@ -4699,8 +5285,10 @@ func (s *DescribeContainerGroupPriceResponseBodyPriceInfoPriceDetailInfosDetailI
 }
 
 type DescribeContainerGroupPriceResponseBodyPriceInfoPriceDetailInfosDetailInfoRulesRule struct {
+	// The description of the promotion rule.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	RuleId      *int64  `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	// The ID of the promotion rule.
+	RuleId *int64 `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
 }
 
 func (s DescribeContainerGroupPriceResponseBodyPriceInfoPriceDetailInfosDetailInfoRulesRule) String() string {
@@ -4739,8 +5327,10 @@ func (s *DescribeContainerGroupPriceResponseBodyPriceInfoRules) SetRule(v []*Des
 }
 
 type DescribeContainerGroupPriceResponseBodyPriceInfoRulesRule struct {
+	// The description of the promotion rule.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	RuleId      *int64  `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	// The ID of the promotion rule.
+	RuleId *int64 `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
 }
 
 func (s DescribeContainerGroupPriceResponseBodyPriceInfoRulesRule) String() string {
@@ -4779,10 +5369,14 @@ func (s *DescribeContainerGroupPriceResponseBodyPriceInfoSpotPrices) SetSpotPric
 }
 
 type DescribeContainerGroupPriceResponseBodyPriceInfoSpotPricesSpotPrice struct {
-	InstanceType *string  `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	OriginPrice  *float32 `json:"OriginPrice,omitempty" xml:"OriginPrice,omitempty"`
-	SpotPrice    *float32 `json:"SpotPrice,omitempty" xml:"SpotPrice,omitempty"`
-	ZoneId       *string  `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// The instance type of the ECS instance.
+	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	// The original price.
+	OriginPrice *float32 `json:"OriginPrice,omitempty" xml:"OriginPrice,omitempty"`
+	// The price of the preemptible elastic container instance.
+	SpotPrice *float32 `json:"SpotPrice,omitempty" xml:"SpotPrice,omitempty"`
+	// The zone ID of the instance.
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s DescribeContainerGroupPriceResponseBodyPriceInfoSpotPricesSpotPrice) String() string {
@@ -4843,15 +5437,27 @@ func (s *DescribeContainerGroupPriceResponse) SetBody(v *DescribeContainerGroupP
 }
 
 type DescribeContainerGroupStatusRequest struct {
-	ContainerGroupIds *string                                   `json:"ContainerGroupIds,omitempty" xml:"ContainerGroupIds,omitempty"`
-	Limit             *int32                                    `json:"Limit,omitempty" xml:"Limit,omitempty"`
-	NextToken         *string                                   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	RegionId          *string                                   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceGroupId   *string                                   `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	SinceSecond       *int32                                    `json:"SinceSecond,omitempty" xml:"SinceSecond,omitempty"`
-	Tag               []*DescribeContainerGroupStatusRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	VSwitchId         *string                                   `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	ZoneId            *string                                   `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// The IDs of the container groups. You can specify up to 20 IDs. Each ID must be a string in the JSON format.
+	ContainerGroupIds *string `json:"ContainerGroupIds,omitempty" xml:"ContainerGroupIds,omitempty"`
+	// Specifies the maximum number of container groups to be returned for this request. Default value: 200.
+	//
+	// >  The number of container groups to be returned is no greater than this parameter value.
+	Limit *int32 `json:"Limit,omitempty" xml:"Limit,omitempty"`
+	// The token that is used for the next query. If this parameter is empty, all results have been returned.
+	//
+	// You do not need to specify this parameter in the first request. You can obtain the token from the result returned by the previous request.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The region ID of the container groups.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the resource group to which the container groups belong.
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// A relative time in seconds before the current time from which to show container groups whose status changes. This parameter is used to poll status of container groups.
+	SinceSecond *int32                                    `json:"SinceSecond,omitempty" xml:"SinceSecond,omitempty"`
+	Tag         []*DescribeContainerGroupStatusRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	// The ID of the vSwitch
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// The ID of the zone to which the container groups belong.
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s DescribeContainerGroupStatusRequest) String() string {
@@ -4908,7 +5514,9 @@ func (s *DescribeContainerGroupStatusRequest) SetZoneId(v string) *DescribeConta
 }
 
 type DescribeContainerGroupStatusRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The key of tag N.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of tag N.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -4931,10 +5539,14 @@ func (s *DescribeContainerGroupStatusRequestTag) SetValue(v string) *DescribeCon
 }
 
 type DescribeContainerGroupStatusResponseBody struct {
-	Data       []*DescribeContainerGroupStatusResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	NextToken  *string                                         `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	RequestId  *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *int32                                          `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The collection of the status of the container groups.
+	Data []*DescribeContainerGroupStatusResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The token that was returned for the next query.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeContainerGroupStatusResponseBody) String() string {
@@ -4966,12 +5578,18 @@ func (s *DescribeContainerGroupStatusResponseBody) SetTotalCount(v int32) *Descr
 }
 
 type DescribeContainerGroupStatusResponseBodyData struct {
-	ContainerGroupId *string                                                `json:"ContainerGroupId,omitempty" xml:"ContainerGroupId,omitempty"`
-	Name             *string                                                `json:"Name,omitempty" xml:"Name,omitempty"`
-	Namespace        *string                                                `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	PodStatus        *DescribeContainerGroupStatusResponseBodyDataPodStatus `json:"PodStatus,omitempty" xml:"PodStatus,omitempty" type:"Struct"`
-	Status           *string                                                `json:"Status,omitempty" xml:"Status,omitempty"`
-	Uuid             *string                                                `json:"uuid,omitempty" xml:"uuid,omitempty"`
+	// The ID of the container group.
+	ContainerGroupId *string `json:"ContainerGroupId,omitempty" xml:"ContainerGroupId,omitempty"`
+	// The name of the container group.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The namespace in which the container group resides.
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The status of the pod.
+	PodStatus *DescribeContainerGroupStatusResponseBodyDataPodStatus `json:"PodStatus,omitempty" xml:"PodStatus,omitempty" type:"Struct"`
+	// The status of the container group.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The universally unique identifier (UUID) of the container group, which is similar to the unique identifier (UID) of the Kubernetes pod in terms of the concept and usage.
+	Uuid *string `json:"uuid,omitempty" xml:"uuid,omitempty"`
 }
 
 func (s DescribeContainerGroupStatusResponseBodyData) String() string {
@@ -5013,14 +5631,21 @@ func (s *DescribeContainerGroupStatusResponseBodyData) SetUuid(v string) *Descri
 }
 
 type DescribeContainerGroupStatusResponseBodyDataPodStatus struct {
-	Conditions        []*DescribeContainerGroupStatusResponseBodyDataPodStatusConditions        `json:"Conditions,omitempty" xml:"Conditions,omitempty" type:"Repeated"`
+	// The conditions of the pod.
+	Conditions []*DescribeContainerGroupStatusResponseBodyDataPodStatusConditions `json:"Conditions,omitempty" xml:"Conditions,omitempty" type:"Repeated"`
+	// The collection of the status about the container groups.
 	ContainerStatuses []*DescribeContainerGroupStatusResponseBodyDataPodStatusContainerStatuses `json:"ContainerStatuses,omitempty" xml:"ContainerStatuses,omitempty" type:"Repeated"`
-	HostIp            *string                                                                   `json:"HostIp,omitempty" xml:"HostIp,omitempty"`
-	Phase             *string                                                                   `json:"Phase,omitempty" xml:"Phase,omitempty"`
-	PodIp             *string                                                                   `json:"PodIp,omitempty" xml:"PodIp,omitempty"`
-	PodIps            []*DescribeContainerGroupStatusResponseBodyDataPodStatusPodIps            `json:"PodIps,omitempty" xml:"PodIps,omitempty" type:"Repeated"`
-	// Pod Qos。
-	QosClass  *string `json:"QosClass,omitempty" xml:"QosClass,omitempty"`
+	// The IP address of the server.
+	HostIp *string `json:"HostIp,omitempty" xml:"HostIp,omitempty"`
+	// The lifecycle phase of the pod.
+	Phase *string `json:"Phase,omitempty" xml:"Phase,omitempty"`
+	// The IP address of the pod.
+	PodIp *string `json:"PodIp,omitempty" xml:"PodIp,omitempty"`
+	// The collection of pod IP addresses.
+	PodIps []*DescribeContainerGroupStatusResponseBodyDataPodStatusPodIps `json:"PodIps,omitempty" xml:"PodIps,omitempty" type:"Repeated"`
+	// The quality of service (QoS) of the pod.
+	QosClass *string `json:"QosClass,omitempty" xml:"QosClass,omitempty"`
+	// The time when the container began to run.
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -5073,11 +5698,21 @@ func (s *DescribeContainerGroupStatusResponseBodyDataPodStatus) SetStartTime(v s
 }
 
 type DescribeContainerGroupStatusResponseBodyDataPodStatusConditions struct {
-	Message            *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	Reason             *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	// The event message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The reason for the transition into the current status of the event.
+	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	// The time when the status last changed.
 	LastTransitionTime *string `json:"lastTransitionTime,omitempty" xml:"lastTransitionTime,omitempty"`
-	Status             *string `json:"status,omitempty" xml:"status,omitempty"`
-	Type               *string `json:"type,omitempty" xml:"type,omitempty"`
+	// The status of the pod condition.
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// The type of the pod condition. Valid values:
+	//
+	// *   PodScheduled
+	// *   Ready
+	// *   Initialized
+	// *   Unschedulable
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s DescribeContainerGroupStatusResponseBodyDataPodStatusConditions) String() string {
@@ -5114,14 +5749,26 @@ func (s *DescribeContainerGroupStatusResponseBodyDataPodStatusConditions) SetTyp
 }
 
 type DescribeContainerGroupStatusResponseBodyDataPodStatusContainerStatuses struct {
-	Image        *string                                                                          `json:"Image,omitempty" xml:"Image,omitempty"`
-	ImageID      *string                                                                          `json:"ImageID,omitempty" xml:"ImageID,omitempty"`
-	LastState    *DescribeContainerGroupStatusResponseBodyDataPodStatusContainerStatusesLastState `json:"LastState,omitempty" xml:"LastState,omitempty" type:"Struct"`
-	Name         *string                                                                          `json:"Name,omitempty" xml:"Name,omitempty"`
-	Ready        *bool                                                                            `json:"Ready,omitempty" xml:"Ready,omitempty"`
-	RestartCount *int32                                                                           `json:"RestartCount,omitempty" xml:"RestartCount,omitempty"`
-	Started      *bool                                                                            `json:"Started,omitempty" xml:"Started,omitempty"`
-	State        *DescribeContainerGroupStatusResponseBodyDataPodStatusContainerStatusesState     `json:"State,omitempty" xml:"State,omitempty" type:"Struct"`
+	// The image of the container.
+	Image *string `json:"Image,omitempty" xml:"Image,omitempty"`
+	// The ID of the image.
+	ImageID *string `json:"ImageID,omitempty" xml:"ImageID,omitempty"`
+	// The latest status of the container.
+	LastState *DescribeContainerGroupStatusResponseBodyDataPodStatusContainerStatusesLastState `json:"LastState,omitempty" xml:"LastState,omitempty" type:"Struct"`
+	// The name of the container.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Indicates whether the container is ready for use.
+	Ready *bool `json:"Ready,omitempty" xml:"Ready,omitempty"`
+	// The number of times that the container restarted.
+	RestartCount *int32 `json:"RestartCount,omitempty" xml:"RestartCount,omitempty"`
+	// Indicates whether the container is started.
+	Started *bool `json:"Started,omitempty" xml:"Started,omitempty"`
+	// The state of the container. Valid values:
+	//
+	// *   Waiting
+	// *   Running
+	// *   Terminated
+	State *DescribeContainerGroupStatusResponseBodyDataPodStatusContainerStatusesState `json:"State,omitempty" xml:"State,omitempty" type:"Struct"`
 }
 
 func (s DescribeContainerGroupStatusResponseBodyDataPodStatusContainerStatuses) String() string {
@@ -5173,9 +5820,12 @@ func (s *DescribeContainerGroupStatusResponseBodyDataPodStatusContainerStatuses)
 }
 
 type DescribeContainerGroupStatusResponseBodyDataPodStatusContainerStatusesLastState struct {
-	Running    *DescribeContainerGroupStatusResponseBodyDataPodStatusContainerStatusesLastStateRunning    `json:"Running,omitempty" xml:"Running,omitempty" type:"Struct"`
+	// The container is created and running.
+	Running *DescribeContainerGroupStatusResponseBodyDataPodStatusContainerStatusesLastStateRunning `json:"Running,omitempty" xml:"Running,omitempty" type:"Struct"`
+	// The container is terminated and exits after a successful or failed run.
 	Terminated *DescribeContainerGroupStatusResponseBodyDataPodStatusContainerStatusesLastStateTerminated `json:"Terminated,omitempty" xml:"Terminated,omitempty" type:"Struct"`
-	Waiting    *DescribeContainerGroupStatusResponseBodyDataPodStatusContainerStatusesLastStateWaiting    `json:"Waiting,omitempty" xml:"Waiting,omitempty" type:"Struct"`
+	// The container is waiting for being created.
+	Waiting *DescribeContainerGroupStatusResponseBodyDataPodStatusContainerStatusesLastStateWaiting `json:"Waiting,omitempty" xml:"Waiting,omitempty" type:"Struct"`
 }
 
 func (s DescribeContainerGroupStatusResponseBodyDataPodStatusContainerStatusesLastState) String() string {
@@ -5202,6 +5852,7 @@ func (s *DescribeContainerGroupStatusResponseBodyDataPodStatusContainerStatusesL
 }
 
 type DescribeContainerGroupStatusResponseBodyDataPodStatusContainerStatusesLastStateRunning struct {
+	// The beginning of the time range that was queried.
 	StartedAtstartedAt *string `json:"StartedAtstartedAt,omitempty" xml:"StartedAtstartedAt,omitempty"`
 }
 
@@ -5219,13 +5870,20 @@ func (s *DescribeContainerGroupStatusResponseBodyDataPodStatusContainerStatusesL
 }
 
 type DescribeContainerGroupStatusResponseBodyDataPodStatusContainerStatusesLastStateTerminated struct {
+	// The ID of the container.
 	ContainerID *string `json:"ContainerID,omitempty" xml:"ContainerID,omitempty"`
-	ExitCode    *int32  `json:"ExitCode,omitempty" xml:"ExitCode,omitempty"`
-	FinishedAt  *string `json:"FinishedAt,omitempty" xml:"FinishedAt,omitempty"`
-	Message     *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	Reason      *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
-	Signal      *int32  `json:"Signal,omitempty" xml:"Signal,omitempty"`
-	StartedAt   *string `json:"StartedAt,omitempty" xml:"StartedAt,omitempty"`
+	// The exit code.
+	ExitCode *int32 `json:"ExitCode,omitempty" xml:"ExitCode,omitempty"`
+	// The end of the time range that was queried.
+	FinishedAt *string `json:"FinishedAt,omitempty" xml:"FinishedAt,omitempty"`
+	// The event message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The reason for the transition into the current status of the event.
+	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	// The signal code.
+	Signal *int32 `json:"Signal,omitempty" xml:"Signal,omitempty"`
+	// The beginning of the time range that was queried.
+	StartedAt *string `json:"StartedAt,omitempty" xml:"StartedAt,omitempty"`
 }
 
 func (s DescribeContainerGroupStatusResponseBodyDataPodStatusContainerStatusesLastStateTerminated) String() string {
@@ -5272,8 +5930,10 @@ func (s *DescribeContainerGroupStatusResponseBodyDataPodStatusContainerStatusesL
 }
 
 type DescribeContainerGroupStatusResponseBodyDataPodStatusContainerStatusesLastStateWaiting struct {
+	// The event message.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	Reason  *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	// The reason for the transition into the current status of the event.
+	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
 }
 
 func (s DescribeContainerGroupStatusResponseBodyDataPodStatusContainerStatusesLastStateWaiting) String() string {
@@ -5295,9 +5955,12 @@ func (s *DescribeContainerGroupStatusResponseBodyDataPodStatusContainerStatusesL
 }
 
 type DescribeContainerGroupStatusResponseBodyDataPodStatusContainerStatusesState struct {
-	Running    *DescribeContainerGroupStatusResponseBodyDataPodStatusContainerStatusesStateRunning    `json:"Running,omitempty" xml:"Running,omitempty" type:"Struct"`
+	// The container is created and running.
+	Running *DescribeContainerGroupStatusResponseBodyDataPodStatusContainerStatusesStateRunning `json:"Running,omitempty" xml:"Running,omitempty" type:"Struct"`
+	// The container is terminated and exits after a successful or failed run.
 	Terminated *DescribeContainerGroupStatusResponseBodyDataPodStatusContainerStatusesStateTerminated `json:"Terminated,omitempty" xml:"Terminated,omitempty" type:"Struct"`
-	Waiting    *DescribeContainerGroupStatusResponseBodyDataPodStatusContainerStatusesStateWaiting    `json:"Waiting,omitempty" xml:"Waiting,omitempty" type:"Struct"`
+	// The container is waiting for being created.
+	Waiting *DescribeContainerGroupStatusResponseBodyDataPodStatusContainerStatusesStateWaiting `json:"Waiting,omitempty" xml:"Waiting,omitempty" type:"Struct"`
 }
 
 func (s DescribeContainerGroupStatusResponseBodyDataPodStatusContainerStatusesState) String() string {
@@ -5324,6 +5987,7 @@ func (s *DescribeContainerGroupStatusResponseBodyDataPodStatusContainerStatusesS
 }
 
 type DescribeContainerGroupStatusResponseBodyDataPodStatusContainerStatusesStateRunning struct {
+	// The beginning of the time range that was queried.
 	StartedAtstartedAt *string `json:"StartedAtstartedAt,omitempty" xml:"StartedAtstartedAt,omitempty"`
 }
 
@@ -5341,13 +6005,20 @@ func (s *DescribeContainerGroupStatusResponseBodyDataPodStatusContainerStatusesS
 }
 
 type DescribeContainerGroupStatusResponseBodyDataPodStatusContainerStatusesStateTerminated struct {
+	// The ID of the container.
 	ContainerID *string `json:"ContainerID,omitempty" xml:"ContainerID,omitempty"`
-	ExitCode    *int32  `json:"ExitCode,omitempty" xml:"ExitCode,omitempty"`
-	FinishedAt  *string `json:"FinishedAt,omitempty" xml:"FinishedAt,omitempty"`
-	Message     *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	Reason      *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
-	Signal      *int32  `json:"Signal,omitempty" xml:"Signal,omitempty"`
-	StartedAt   *string `json:"StartedAt,omitempty" xml:"StartedAt,omitempty"`
+	// The exit code.
+	ExitCode *int32 `json:"ExitCode,omitempty" xml:"ExitCode,omitempty"`
+	// The end of the time range that was queried.
+	FinishedAt *string `json:"FinishedAt,omitempty" xml:"FinishedAt,omitempty"`
+	// The event message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The reason for the transition into the current status of the event.
+	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	// The signal code.
+	Signal *int32 `json:"Signal,omitempty" xml:"Signal,omitempty"`
+	// The beginning of the time range that was queried.
+	StartedAt *string `json:"StartedAt,omitempty" xml:"StartedAt,omitempty"`
 }
 
 func (s DescribeContainerGroupStatusResponseBodyDataPodStatusContainerStatusesStateTerminated) String() string {
@@ -5394,8 +6065,10 @@ func (s *DescribeContainerGroupStatusResponseBodyDataPodStatusContainerStatusesS
 }
 
 type DescribeContainerGroupStatusResponseBodyDataPodStatusContainerStatusesStateWaiting struct {
+	// The event message.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	Reason  *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	// The reason for the transition into the current status of the event.
+	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
 }
 
 func (s DescribeContainerGroupStatusResponseBodyDataPodStatusContainerStatusesStateWaiting) String() string {
@@ -5417,6 +6090,7 @@ func (s *DescribeContainerGroupStatusResponseBodyDataPodStatusContainerStatusesS
 }
 
 type DescribeContainerGroupStatusResponseBodyDataPodStatusPodIps struct {
+	// The IP address of the pod.
 	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
 }
 
@@ -5463,21 +6137,49 @@ func (s *DescribeContainerGroupStatusResponse) SetBody(v *DescribeContainerGroup
 }
 
 type DescribeContainerGroupsRequest struct {
-	ContainerGroupIds    *string                              `json:"ContainerGroupIds,omitempty" xml:"ContainerGroupIds,omitempty"`
-	ContainerGroupName   *string                              `json:"ContainerGroupName,omitempty" xml:"ContainerGroupName,omitempty"`
-	Limit                *int32                               `json:"Limit,omitempty" xml:"Limit,omitempty"`
-	NextToken            *string                              `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	OwnerAccount         *string                              `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64                               `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId             *string                              `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceGroupId      *string                              `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	ResourceOwnerAccount *string                              `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64                               `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	Status               *string                              `json:"Status,omitempty" xml:"Status,omitempty"`
-	Tag                  []*DescribeContainerGroupsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	VSwitchId            *string                              `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	WithEvent            *bool                                `json:"WithEvent,omitempty" xml:"WithEvent,omitempty"`
-	ZoneId               *string                              `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// The IDs of the elastic container instances in JSON format. You can specify up to 20 IDs.
+	ContainerGroupIds *string `json:"ContainerGroupIds,omitempty" xml:"ContainerGroupIds,omitempty"`
+	// The name of the elastic container instance.
+	ContainerGroupName *string `json:"ContainerGroupName,omitempty" xml:"ContainerGroupName,omitempty"`
+	// The maximum number of resources to return. Default value: 20. Maximum value: 20.
+	//
+	// >  The number of returned resources is less than or equal to the specified number.
+	Limit *int32 `json:"Limit,omitempty" xml:"Limit,omitempty"`
+	// The token that determines the start point of the query. If this parameter is left empty, all results have been returned.
+	//
+	// > You do not need to specify this parameter in the first request. Starting from the second request, you can obtain the token from the result returned by the previous request.
+	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID of the instance.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the resource group to which the elastic container instances belong. If you do not specify a resource group when you create an elastic container instance, the system automatically adds the instance to the default resource group in your account.
+	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The status of the elastic container instance. Valid values:
+	//
+	// *   Pending: The instance is being started.
+	// *   Running: The instance is running.
+	// *   Succeeded: The instance runs successfully.
+	// *   Failed: The instance fails to run.
+	// *   Scheduling: The instance is being created.
+	// *   ScheduleFailed: The instance fails to be created.
+	// *   Restarting: The instance is being restarted.
+	// *   Updating: The instance is being updated.
+	// *   Terminating: The instance is being terminated.
+	// *   Expired: The instance expires.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The tag of the instances.
+	Tag []*DescribeContainerGroupsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	// The ID of the vSwitch to which the elastic container instances are connected.
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// Specifies whether to return event information.
+	WithEvent *bool `json:"WithEvent,omitempty" xml:"WithEvent,omitempty"`
+	// The ID of the zone in which the elastic container instances are deployed. If you do not specify this parameter, the system selects a zone.
+	//
+	// This parameter is empty by default.
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s DescribeContainerGroupsRequest) String() string {
@@ -5564,7 +6266,9 @@ func (s *DescribeContainerGroupsRequest) SetZoneId(v string) *DescribeContainerG
 }
 
 type DescribeContainerGroupsRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag key of the instances.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value of the instances.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -5587,10 +6291,14 @@ func (s *DescribeContainerGroupsRequestTag) SetValue(v string) *DescribeContaine
 }
 
 type DescribeContainerGroupsResponseBody struct {
+	// Details of the instances.
 	ContainerGroups []*DescribeContainerGroupsResponseBodyContainerGroups `json:"ContainerGroups,omitempty" xml:"ContainerGroups,omitempty" type:"Repeated"`
-	NextToken       *string                                               `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	RequestId       *string                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount      *int32                                                `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The token that determines the start point of the next query.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The ID of the request. The value is unique.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The number of queried instances.
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeContainerGroupsResponseBody) String() string {
@@ -5622,44 +6330,103 @@ func (s *DescribeContainerGroupsResponseBody) SetTotalCount(v int32) *DescribeCo
 }
 
 type DescribeContainerGroupsResponseBodyContainerGroups struct {
-	ContainerGroupId      *string                                                               `json:"ContainerGroupId,omitempty" xml:"ContainerGroupId,omitempty"`
-	ContainerGroupName    *string                                                               `json:"ContainerGroupName,omitempty" xml:"ContainerGroupName,omitempty"`
-	Containers            []*DescribeContainerGroupsResponseBodyContainerGroupsContainers       `json:"Containers,omitempty" xml:"Containers,omitempty" type:"Repeated"`
-	Cpu                   *float32                                                              `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
-	CreationTime          *string                                                               `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	Discount              *int32                                                                `json:"Discount,omitempty" xml:"Discount,omitempty"`
-	DnsConfig             *DescribeContainerGroupsResponseBodyContainerGroupsDnsConfig          `json:"DnsConfig,omitempty" xml:"DnsConfig,omitempty" type:"Struct"`
-	EciSecurityContext    *DescribeContainerGroupsResponseBodyContainerGroupsEciSecurityContext `json:"EciSecurityContext,omitempty" xml:"EciSecurityContext,omitempty" type:"Struct"`
-	EniInstanceId         *string                                                               `json:"EniInstanceId,omitempty" xml:"EniInstanceId,omitempty"`
-	EphemeralStorage      *int32                                                                `json:"EphemeralStorage,omitempty" xml:"EphemeralStorage,omitempty"`
-	Events                []*DescribeContainerGroupsResponseBodyContainerGroupsEvents           `json:"Events,omitempty" xml:"Events,omitempty" type:"Repeated"`
-	ExpiredTime           *string                                                               `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
-	FailedTime            *string                                                               `json:"FailedTime,omitempty" xml:"FailedTime,omitempty"`
-	HostAliases           []*DescribeContainerGroupsResponseBodyContainerGroupsHostAliases      `json:"HostAliases,omitempty" xml:"HostAliases,omitempty" type:"Repeated"`
-	InitContainers        []*DescribeContainerGroupsResponseBodyContainerGroupsInitContainers   `json:"InitContainers,omitempty" xml:"InitContainers,omitempty" type:"Repeated"`
-	InstanceType          *string                                                               `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	InternetIp            *string                                                               `json:"InternetIp,omitempty" xml:"InternetIp,omitempty"`
-	IntranetIp            *string                                                               `json:"IntranetIp,omitempty" xml:"IntranetIp,omitempty"`
-	Ipv6Address           *string                                                               `json:"Ipv6Address,omitempty" xml:"Ipv6Address,omitempty"`
-	Memory                *float32                                                              `json:"Memory,omitempty" xml:"Memory,omitempty"`
-	RamRoleName           *string                                                               `json:"RamRoleName,omitempty" xml:"RamRoleName,omitempty"`
-	RegionId              *string                                                               `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceGroupId       *string                                                               `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	RestartPolicy         *string                                                               `json:"RestartPolicy,omitempty" xml:"RestartPolicy,omitempty"`
-	SecurityGroupId       *string                                                               `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	SpotPriceLimit        *float64                                                              `json:"SpotPriceLimit,omitempty" xml:"SpotPriceLimit,omitempty"`
-	SpotStrategy          *string                                                               `json:"SpotStrategy,omitempty" xml:"SpotStrategy,omitempty"`
-	Status                *string                                                               `json:"Status,omitempty" xml:"Status,omitempty"`
-	SucceededTime         *string                                                               `json:"SucceededTime,omitempty" xml:"SucceededTime,omitempty"`
-	Tags                  []*DescribeContainerGroupsResponseBodyContainerGroupsTags             `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	TenantEniInstanceId   *string                                                               `json:"TenantEniInstanceId,omitempty" xml:"TenantEniInstanceId,omitempty"`
-	TenantEniIp           *string                                                               `json:"TenantEniIp,omitempty" xml:"TenantEniIp,omitempty"`
-	TenantSecurityGroupId *string                                                               `json:"TenantSecurityGroupId,omitempty" xml:"TenantSecurityGroupId,omitempty"`
-	TenantVSwitchId       *string                                                               `json:"TenantVSwitchId,omitempty" xml:"TenantVSwitchId,omitempty"`
-	VSwitchId             *string                                                               `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	Volumes               []*DescribeContainerGroupsResponseBodyContainerGroupsVolumes          `json:"Volumes,omitempty" xml:"Volumes,omitempty" type:"Repeated"`
-	VpcId                 *string                                                               `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	ZoneId                *string                                                               `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// The ID of the instance.
+	ContainerGroupId *string `json:"ContainerGroupId,omitempty" xml:"ContainerGroupId,omitempty"`
+	// The name of the instance.
+	ContainerGroupName *string `json:"ContainerGroupName,omitempty" xml:"ContainerGroupName,omitempty"`
+	// The containers in the elastic container instance.
+	Containers []*DescribeContainerGroupsResponseBodyContainerGroupsContainers `json:"Containers,omitempty" xml:"Containers,omitempty" type:"Repeated"`
+	// The number of vCPUs that are allocated to the elastic container instance.
+	Cpu *float32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	// The time when the instance was created. The time follows the RFC 3339 standard and must be in UTC.
+	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	// The discount.
+	Discount *int32 `json:"Discount,omitempty" xml:"Discount,omitempty"`
+	// The Domain Name System (DNS) settings.
+	DnsConfig *DescribeContainerGroupsResponseBodyContainerGroupsDnsConfig `json:"DnsConfig,omitempty" xml:"DnsConfig,omitempty" type:"Struct"`
+	// The security context of the elastic container instance.
+	EciSecurityContext *DescribeContainerGroupsResponseBodyContainerGroupsEciSecurityContext `json:"EciSecurityContext,omitempty" xml:"EciSecurityContext,omitempty" type:"Struct"`
+	// The ID of the elastic network interface (ENI).
+	EniInstanceId *string `json:"EniInstanceId,omitempty" xml:"EniInstanceId,omitempty"`
+	// The size of the temporary storage space. Unit: GiB.
+	EphemeralStorage *int32 `json:"EphemeralStorage,omitempty" xml:"EphemeralStorage,omitempty"`
+	// The events of the elastic container instance. A maximum of 50 events can be returned.
+	Events []*DescribeContainerGroupsResponseBodyContainerGroupsEvents `json:"Events,omitempty" xml:"Events,omitempty" type:"Repeated"`
+	// The time when the elastic container instance failed to run due to overdue payments. The time follows the RFC 3339 standard and must be in UTC.
+	ExpiredTime *string `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
+	// The time when the instance failed to run. The time follows the RFC 3339 standard and must be in UTC.
+	FailedTime *string `json:"FailedTime,omitempty" xml:"FailedTime,omitempty"`
+	// The hostnames and IP addresses of a container that are added to the hosts file of the elastic container instance.
+	HostAliases []*DescribeContainerGroupsResponseBodyContainerGroupsHostAliases `json:"HostAliases,omitempty" xml:"HostAliases,omitempty" type:"Repeated"`
+	// The init containers.
+	InitContainers []*DescribeContainerGroupsResponseBodyContainerGroupsInitContainers `json:"InitContainers,omitempty" xml:"InitContainers,omitempty" type:"Repeated"`
+	// The instance type of the Elastic Compute Service (ECS) instance used to create the elastic container instance.
+	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	// The public IP address.
+	InternetIp *string `json:"InternetIp,omitempty" xml:"InternetIp,omitempty"`
+	// The private IP address.
+	IntranetIp *string `json:"IntranetIp,omitempty" xml:"IntranetIp,omitempty"`
+	// The IPv6 address of the instance.
+	Ipv6Address *string `json:"Ipv6Address,omitempty" xml:"Ipv6Address,omitempty"`
+	// The memory size of the elastic container instance. Unit: GiB.
+	Memory *float32 `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	// The name of the instance RAM role. You can use an instance RAM role to access both elastic container instances and ECS instances. For more information, see [Use the instance RAM role by calling APIs](~~61178~~).
+	RamRoleName *string `json:"RamRoleName,omitempty" xml:"RamRoleName,omitempty"`
+	// The region ID of the instance.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the resource group to which the instance belongs.
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The restart policy of the elastic container instance. Valid values:
+	//
+	// *   Never: The instance never restarts.
+	// *   Always: The instance always restarts.
+	// *   OnFailure: The instance restarts if it fails to run.
+	RestartPolicy *string `json:"RestartPolicy,omitempty" xml:"RestartPolicy,omitempty"`
+	// The ID of the security group to which the instances belong.
+	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	// The maximum hourly price for the preemptible instance.
+	//
+	// This parameter is returned only if you set the SpotStrategy parameter to SpotWithPriceLimit.
+	SpotPriceLimit *float64 `json:"SpotPriceLimit,omitempty" xml:"SpotPriceLimit,omitempty"`
+	// The bidding policy of the elastic container instance. Default value: NoSpot. Valid values:
+	//
+	// *   NoSpot: The instance is a regular pay-as-you-go instance.
+	// *   SpotWithPriceLimit: The instance is a preemptible instance with a user-defined maximum hourly price.
+	// *   SpotAsPriceGo: The instance is a preemptible instance for which the market price at the time of purchase is automatically used as the bid price.
+	SpotStrategy *string `json:"SpotStrategy,omitempty" xml:"SpotStrategy,omitempty"`
+	// The status of the instance. Valid values:
+	//
+	// *   Pending: The instance is being started.
+	// *   Running: The instance is running.
+	// *   Succeeded: The instance runs successfully.
+	// *   Failed: The instance fails to run.
+	// *   Scheduling: The instance is being created.
+	// *   ScheduleFailed: The instance fails to be created.
+	// *   Restarting: The instance is being restarted.
+	// *   Updating: The instance is being updated.
+	// *   Terminating: The instance is being terminated.
+	// *   Expired: The instance expires.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The time when all containers in the elastic container instance exited on success. The time follows the RFC 3339 standard and must be in UTC.
+	SucceededTime *string `json:"SucceededTime,omitempty" xml:"SucceededTime,omitempty"`
+	// The tags of the instances.
+	Tags []*DescribeContainerGroupsResponseBodyContainerGroupsTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// This parameter is unavailable.
+	TenantEniInstanceId *string `json:"TenantEniInstanceId,omitempty" xml:"TenantEniInstanceId,omitempty"`
+	// This parameter is unavailable.
+	TenantEniIp *string `json:"TenantEniIp,omitempty" xml:"TenantEniIp,omitempty"`
+	// This parameter is unavailable.
+	TenantSecurityGroupId *string `json:"TenantSecurityGroupId,omitempty" xml:"TenantSecurityGroupId,omitempty"`
+	// This parameter is unavailable.
+	TenantVSwitchId *string `json:"TenantVSwitchId,omitempty" xml:"TenantVSwitchId,omitempty"`
+	// The ID of the vSwitch to which the instance is connected.
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// Information about the volumes.
+	Volumes []*DescribeContainerGroupsResponseBodyContainerGroupsVolumes `json:"Volumes,omitempty" xml:"Volumes,omitempty" type:"Repeated"`
+	// The ID of the virtual private cloud (VPC) to which the elastic container instances belong.
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The ID of the zone in which the elastic container instances are deployed.
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s DescribeContainerGroupsResponseBodyContainerGroups) String() string {
@@ -5861,28 +6628,54 @@ func (s *DescribeContainerGroupsResponseBodyContainerGroups) SetZoneId(v string)
 }
 
 type DescribeContainerGroupsResponseBodyContainerGroupsContainers struct {
-	Args            []*string                                                                      `json:"Args,omitempty" xml:"Args,omitempty" type:"Repeated"`
-	Commands        []*string                                                                      `json:"Commands,omitempty" xml:"Commands,omitempty" type:"Repeated"`
-	Cpu             *float32                                                                       `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
-	CurrentState    *DescribeContainerGroupsResponseBodyContainerGroupsContainersCurrentState      `json:"CurrentState,omitempty" xml:"CurrentState,omitempty" type:"Struct"`
+	// Arguments that are used to start the container.
+	Args []*string `json:"Args,omitempty" xml:"Args,omitempty" type:"Repeated"`
+	// The command that is used to start the container.
+	Commands []*string `json:"Commands,omitempty" xml:"Commands,omitempty" type:"Repeated"`
+	// The number of vCPUs.
+	Cpu *float32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	// The current status of the container.
+	CurrentState *DescribeContainerGroupsResponseBodyContainerGroupsContainersCurrentState `json:"CurrentState,omitempty" xml:"CurrentState,omitempty" type:"Struct"`
+	// The environment variables of the container.
 	EnvironmentVars []*DescribeContainerGroupsResponseBodyContainerGroupsContainersEnvironmentVars `json:"EnvironmentVars,omitempty" xml:"EnvironmentVars,omitempty" type:"Repeated"`
-	Gpu             *int32                                                                         `json:"Gpu,omitempty" xml:"Gpu,omitempty"`
-	Image           *string                                                                        `json:"Image,omitempty" xml:"Image,omitempty"`
-	ImagePullPolicy *string                                                                        `json:"ImagePullPolicy,omitempty" xml:"ImagePullPolicy,omitempty"`
-	LivenessProbe   *DescribeContainerGroupsResponseBodyContainerGroupsContainersLivenessProbe     `json:"LivenessProbe,omitempty" xml:"LivenessProbe,omitempty" type:"Struct"`
-	Memory          *float32                                                                       `json:"Memory,omitempty" xml:"Memory,omitempty"`
-	Name            *string                                                                        `json:"Name,omitempty" xml:"Name,omitempty"`
-	Ports           []*DescribeContainerGroupsResponseBodyContainerGroupsContainersPorts           `json:"Ports,omitempty" xml:"Ports,omitempty" type:"Repeated"`
-	PreviousState   *DescribeContainerGroupsResponseBodyContainerGroupsContainersPreviousState     `json:"PreviousState,omitempty" xml:"PreviousState,omitempty" type:"Struct"`
-	ReadinessProbe  *DescribeContainerGroupsResponseBodyContainerGroupsContainersReadinessProbe    `json:"ReadinessProbe,omitempty" xml:"ReadinessProbe,omitempty" type:"Struct"`
-	Ready           *bool                                                                          `json:"Ready,omitempty" xml:"Ready,omitempty"`
-	RestartCount    *int32                                                                         `json:"RestartCount,omitempty" xml:"RestartCount,omitempty"`
-	SecurityContext *DescribeContainerGroupsResponseBodyContainerGroupsContainersSecurityContext   `json:"SecurityContext,omitempty" xml:"SecurityContext,omitempty" type:"Struct"`
-	Stdin           *bool                                                                          `json:"Stdin,omitempty" xml:"Stdin,omitempty"`
-	StdinOnce       *bool                                                                          `json:"StdinOnce,omitempty" xml:"StdinOnce,omitempty"`
-	Tty             *bool                                                                          `json:"Tty,omitempty" xml:"Tty,omitempty"`
-	VolumeMounts    []*DescribeContainerGroupsResponseBodyContainerGroupsContainersVolumeMounts    `json:"VolumeMounts,omitempty" xml:"VolumeMounts,omitempty" type:"Repeated"`
-	WorkingDir      *string                                                                        `json:"WorkingDir,omitempty" xml:"WorkingDir,omitempty"`
+	// The number of GPUs.
+	Gpu *int32 `json:"Gpu,omitempty" xml:"Gpu,omitempty"`
+	// The image of the container.
+	Image *string `json:"Image,omitempty" xml:"Image,omitempty"`
+	// The policy to pull images. Valid values:
+	//
+	// *   Always: Each time instances are created, image pulling is performed.
+	// *   IfNotPresent: Image pulling is performed as needed. On-premises images are preferentially used. If no on-premises images are available, image pulling is performed.
+	// *   Never: On-premises images are always used. Image pulling is not performed.
+	ImagePullPolicy *string `json:"ImagePullPolicy,omitempty" xml:"ImagePullPolicy,omitempty"`
+	// The liveness probe of the container.
+	LivenessProbe *DescribeContainerGroupsResponseBodyContainerGroupsContainersLivenessProbe `json:"LivenessProbe,omitempty" xml:"LivenessProbe,omitempty" type:"Struct"`
+	// The memory size of the container. Unit: GiB.
+	Memory *float32 `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	// The name of the container.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The exposed ports and protocols of the container.
+	Ports []*DescribeContainerGroupsResponseBodyContainerGroupsContainersPorts `json:"Ports,omitempty" xml:"Ports,omitempty" type:"Repeated"`
+	// The previous status of the container.
+	PreviousState *DescribeContainerGroupsResponseBodyContainerGroupsContainersPreviousState `json:"PreviousState,omitempty" xml:"PreviousState,omitempty" type:"Struct"`
+	// The readiness probe that is used to check whether the container is ready to serve a request.
+	ReadinessProbe *DescribeContainerGroupsResponseBodyContainerGroupsContainersReadinessProbe `json:"ReadinessProbe,omitempty" xml:"ReadinessProbe,omitempty" type:"Struct"`
+	// Indicates whether the container passed the readiness probe.
+	Ready *bool `json:"Ready,omitempty" xml:"Ready,omitempty"`
+	// The number of times that the container restarted.
+	RestartCount *int32 `json:"RestartCount,omitempty" xml:"RestartCount,omitempty"`
+	// The security context of the elastic container instance.
+	SecurityContext *DescribeContainerGroupsResponseBodyContainerGroupsContainersSecurityContext `json:"SecurityContext,omitempty" xml:"SecurityContext,omitempty" type:"Struct"`
+	// Indicates whether the container allocates buffer resources to stdin when the container runs. If this parameter is not configured, an EOF error may occur. Default value: false.
+	Stdin *bool `json:"Stdin,omitempty" xml:"Stdin,omitempty"`
+	// Indicates whether the container runtime closes the stdin channel after the stdin channel has been opened by a single attach session. If stdin is true, the stdin stream remains open across multiple attach sessions. If StdinOnce is set to true, stdin is opened on container start, is empty until the first client attaches to stdin, and then remains open and receive data until the client disconnects. When the client disconnects, stdin is closed and remains closed until the container is restarted.
+	StdinOnce *bool `json:"StdinOnce,omitempty" xml:"StdinOnce,omitempty"`
+	// Indicates whether interaction was enabled. Default value: false. If the Command parameter is a `/bin/bash` command, set this parameter to true.
+	Tty *bool `json:"Tty,omitempty" xml:"Tty,omitempty"`
+	// Information about the mounted volumes.
+	VolumeMounts []*DescribeContainerGroupsResponseBodyContainerGroupsContainersVolumeMounts `json:"VolumeMounts,omitempty" xml:"VolumeMounts,omitempty" type:"Repeated"`
+	// The working directory of the container.
+	WorkingDir *string `json:"WorkingDir,omitempty" xml:"WorkingDir,omitempty"`
 }
 
 func (s DescribeContainerGroupsResponseBodyContainerGroupsContainers) String() string {
@@ -6004,14 +6797,26 @@ func (s *DescribeContainerGroupsResponseBodyContainerGroupsContainers) SetWorkin
 }
 
 type DescribeContainerGroupsResponseBodyContainerGroupsContainersCurrentState struct {
+	// The details of the container status.
 	DetailStatus *string `json:"DetailStatus,omitempty" xml:"DetailStatus,omitempty"`
-	ExitCode     *int32  `json:"ExitCode,omitempty" xml:"ExitCode,omitempty"`
-	FinishTime   *string `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
-	Message      *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	Reason       *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
-	Signal       *int32  `json:"Signal,omitempty" xml:"Signal,omitempty"`
-	StartTime    *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	State        *string `json:"State,omitempty" xml:"State,omitempty"`
+	// The exit code of the container.
+	ExitCode *int32 `json:"ExitCode,omitempty" xml:"ExitCode,omitempty"`
+	// The time when the container stopped running.
+	FinishTime *string `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
+	// The message about the container status.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The reason why the container is in this state.
+	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	// The code of the container status.
+	Signal *int32 `json:"Signal,omitempty" xml:"Signal,omitempty"`
+	// The time when the container started to run.
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The status of the container. Valid values:
+	//
+	// *   Waiting
+	// *   Running
+	// *   Terminated
+	State *string `json:"State,omitempty" xml:"State,omitempty"`
 }
 
 func (s DescribeContainerGroupsResponseBodyContainerGroupsContainersCurrentState) String() string {
@@ -6063,8 +6868,11 @@ func (s *DescribeContainerGroupsResponseBodyContainerGroupsContainersCurrentStat
 }
 
 type DescribeContainerGroupsResponseBodyContainerGroupsContainersEnvironmentVars struct {
-	Key       *string                                                                               `json:"Key,omitempty" xml:"Key,omitempty"`
-	Value     *string                                                                               `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the environment variable.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of the environment variable.
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The source of the environment variable value. This parameter has a value only when the Value parameter is not empty.
 	ValueFrom *DescribeContainerGroupsResponseBodyContainerGroupsContainersEnvironmentVarsValueFrom `json:"ValueFrom,omitempty" xml:"ValueFrom,omitempty" type:"Struct"`
 }
 
@@ -6092,6 +6900,7 @@ func (s *DescribeContainerGroupsResponseBodyContainerGroupsContainersEnvironment
 }
 
 type DescribeContainerGroupsResponseBodyContainerGroupsContainersEnvironmentVarsValueFrom struct {
+	// The specified field.
 	FieldRef *DescribeContainerGroupsResponseBodyContainerGroupsContainersEnvironmentVarsValueFromFieldRef `json:"FieldRef,omitempty" xml:"FieldRef,omitempty" type:"Struct"`
 }
 
@@ -6109,6 +6918,7 @@ func (s *DescribeContainerGroupsResponseBodyContainerGroupsContainersEnvironment
 }
 
 type DescribeContainerGroupsResponseBodyContainerGroupsContainersEnvironmentVarsValueFromFieldRef struct {
+	// The path of the field.
 	FieldPath *string `json:"FieldPath,omitempty" xml:"FieldPath,omitempty"`
 }
 
@@ -6126,16 +6936,22 @@ func (s *DescribeContainerGroupsResponseBodyContainerGroupsContainersEnvironment
 }
 
 type DescribeContainerGroupsResponseBodyContainerGroupsContainersLivenessProbe struct {
-	Execs            []*string `json:"Execs,omitempty" xml:"Execs,omitempty" type:"Repeated"`
-	FailureThreshold *int32    `json:"FailureThreshold,omitempty" xml:"FailureThreshold,omitempty"`
-	// HttpGet。
-	HttpGet             *DescribeContainerGroupsResponseBodyContainerGroupsContainersLivenessProbeHttpGet `json:"HttpGet,omitempty" xml:"HttpGet,omitempty" type:"Struct"`
-	InitialDelaySeconds *int32                                                                            `json:"InitialDelaySeconds,omitempty" xml:"InitialDelaySeconds,omitempty"`
-	PeriodSeconds       *int32                                                                            `json:"PeriodSeconds,omitempty" xml:"PeriodSeconds,omitempty"`
-	SuccessThreshold    *int32                                                                            `json:"SuccessThreshold,omitempty" xml:"SuccessThreshold,omitempty"`
-	// TcpSocket。
-	TcpSocket      *DescribeContainerGroupsResponseBodyContainerGroupsContainersLivenessProbeTcpSocket `json:"TcpSocket,omitempty" xml:"TcpSocket,omitempty" type:"Struct"`
-	TimeoutSeconds *int32                                                                              `json:"TimeoutSeconds,omitempty" xml:"TimeoutSeconds,omitempty"`
+	// The commands that were run.
+	Execs []*string `json:"Execs,omitempty" xml:"Execs,omitempty" type:"Repeated"`
+	// The minimum number of consecutive failures that must occur for the check to be considered failure. Default value: 3.
+	FailureThreshold *int32 `json:"FailureThreshold,omitempty" xml:"FailureThreshold,omitempty"`
+	// The HTTP GET method that is used to check the container.
+	HttpGet *DescribeContainerGroupsResponseBodyContainerGroupsContainersLivenessProbeHttpGet `json:"HttpGet,omitempty" xml:"HttpGet,omitempty" type:"Struct"`
+	// The number of seconds between the time when the startup of the container ends and the time when the check starts.
+	InitialDelaySeconds *int32 `json:"InitialDelaySeconds,omitempty" xml:"InitialDelaySeconds,omitempty"`
+	// The interval at which the check is performed. Unit: seconds. Default value: 10. Minimum value: 1.
+	PeriodSeconds *int32 `json:"PeriodSeconds,omitempty" xml:"PeriodSeconds,omitempty"`
+	// The minimum number of consecutive successes that must occur for the check to be considered successful. Default value: 1. Set the value to 1.
+	SuccessThreshold *int32 `json:"SuccessThreshold,omitempty" xml:"SuccessThreshold,omitempty"`
+	// The TCP socket method that is used to check the container.
+	TcpSocket *DescribeContainerGroupsResponseBodyContainerGroupsContainersLivenessProbeTcpSocket `json:"TcpSocket,omitempty" xml:"TcpSocket,omitempty" type:"Struct"`
+	// The timeout period of the health check. Unit: seconds. Default value: 1. Minimum value: 1.
+	TimeoutSeconds *int32 `json:"TimeoutSeconds,omitempty" xml:"TimeoutSeconds,omitempty"`
 }
 
 func (s DescribeContainerGroupsResponseBodyContainerGroupsContainersLivenessProbe) String() string {
@@ -6187,8 +7003,11 @@ func (s *DescribeContainerGroupsResponseBodyContainerGroupsContainersLivenessPro
 }
 
 type DescribeContainerGroupsResponseBodyContainerGroupsContainersLivenessProbeHttpGet struct {
-	Path   *string `json:"Path,omitempty" xml:"Path,omitempty"`
-	Port   *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The path to which HTTP GET requests were sent.
+	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	// The port to which HTTP GET requests were sent.
+	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The protocol type of the HTTP GET requests.
 	Scheme *string `json:"Scheme,omitempty" xml:"Scheme,omitempty"`
 }
 
@@ -6216,8 +7035,10 @@ func (s *DescribeContainerGroupsResponseBodyContainerGroupsContainersLivenessPro
 }
 
 type DescribeContainerGroupsResponseBodyContainerGroupsContainersLivenessProbeTcpSocket struct {
+	// The hostname.
 	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
-	Port *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The port number.
+	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
 }
 
 func (s DescribeContainerGroupsResponseBodyContainerGroupsContainersLivenessProbeTcpSocket) String() string {
@@ -6239,7 +7060,9 @@ func (s *DescribeContainerGroupsResponseBodyContainerGroupsContainersLivenessPro
 }
 
 type DescribeContainerGroupsResponseBodyContainerGroupsContainersPorts struct {
-	Port     *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The port number. Valid values: 1 to 65535.
+	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The type of the protocol.
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
 }
 
@@ -6262,14 +7085,26 @@ func (s *DescribeContainerGroupsResponseBodyContainerGroupsContainersPorts) SetP
 }
 
 type DescribeContainerGroupsResponseBodyContainerGroupsContainersPreviousState struct {
+	// The details of the container status.
 	DetailStatus *string `json:"DetailStatus,omitempty" xml:"DetailStatus,omitempty"`
-	ExitCode     *int32  `json:"ExitCode,omitempty" xml:"ExitCode,omitempty"`
-	FinishTime   *string `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
-	Message      *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	Reason       *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
-	Signal       *int32  `json:"Signal,omitempty" xml:"Signal,omitempty"`
-	StartTime    *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	State        *string `json:"State,omitempty" xml:"State,omitempty"`
+	// The exit code of the container.
+	ExitCode *int32 `json:"ExitCode,omitempty" xml:"ExitCode,omitempty"`
+	// The time when the container stopped running.
+	FinishTime *string `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
+	// The message about the container status.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The reason why the container is in this state.
+	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	// The code of the container status.
+	Signal *int32 `json:"Signal,omitempty" xml:"Signal,omitempty"`
+	// The time when the container started to run.
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The status of the container. Valid values:
+	//
+	// *   Waiting: The container is being started.
+	// *   Running: The container is running.
+	// *   Terminated: The container terminates running.
+	State *string `json:"State,omitempty" xml:"State,omitempty"`
 }
 
 func (s DescribeContainerGroupsResponseBodyContainerGroupsContainersPreviousState) String() string {
@@ -6321,16 +7156,22 @@ func (s *DescribeContainerGroupsResponseBodyContainerGroupsContainersPreviousSta
 }
 
 type DescribeContainerGroupsResponseBodyContainerGroupsContainersReadinessProbe struct {
-	Execs            []*string `json:"Execs,omitempty" xml:"Execs,omitempty" type:"Repeated"`
-	FailureThreshold *int32    `json:"FailureThreshold,omitempty" xml:"FailureThreshold,omitempty"`
-	// HttpGet。
-	HttpGet             *DescribeContainerGroupsResponseBodyContainerGroupsContainersReadinessProbeHttpGet `json:"HttpGet,omitempty" xml:"HttpGet,omitempty" type:"Struct"`
-	InitialDelaySeconds *int32                                                                             `json:"InitialDelaySeconds,omitempty" xml:"InitialDelaySeconds,omitempty"`
-	PeriodSeconds       *int32                                                                             `json:"PeriodSeconds,omitempty" xml:"PeriodSeconds,omitempty"`
-	SuccessThreshold    *int32                                                                             `json:"SuccessThreshold,omitempty" xml:"SuccessThreshold,omitempty"`
-	// TcpSocket。
-	TcpSocket      *DescribeContainerGroupsResponseBodyContainerGroupsContainersReadinessProbeTcpSocket `json:"TcpSocket,omitempty" xml:"TcpSocket,omitempty" type:"Struct"`
-	TimeoutSeconds *int32                                                                               `json:"TimeoutSeconds,omitempty" xml:"TimeoutSeconds,omitempty"`
+	// The commands that are run in the container when you use the command line interface (CLI) to perform health checks.
+	Execs []*string `json:"Execs,omitempty" xml:"Execs,omitempty" type:"Repeated"`
+	// The minimum number of consecutive failures that must occur for the check to be considered failure. Default value: 3.
+	FailureThreshold *int32 `json:"FailureThreshold,omitempty" xml:"FailureThreshold,omitempty"`
+	// The HTTP GET method that is used to check the container.
+	HttpGet *DescribeContainerGroupsResponseBodyContainerGroupsContainersReadinessProbeHttpGet `json:"HttpGet,omitempty" xml:"HttpGet,omitempty" type:"Struct"`
+	// The number of seconds between the time when the startup of the container ends and the time when the check starts.
+	InitialDelaySeconds *int32 `json:"InitialDelaySeconds,omitempty" xml:"InitialDelaySeconds,omitempty"`
+	// The interval at which the check is performed. Unit: seconds. Default value: 10. Minimum value: 1.
+	PeriodSeconds *int32 `json:"PeriodSeconds,omitempty" xml:"PeriodSeconds,omitempty"`
+	// The minimum number of consecutive successes that must occur for the check to be considered successful. Default value: 1. Set the value to 1.
+	SuccessThreshold *int32 `json:"SuccessThreshold,omitempty" xml:"SuccessThreshold,omitempty"`
+	// The TCP socket method that is used to check the container.
+	TcpSocket *DescribeContainerGroupsResponseBodyContainerGroupsContainersReadinessProbeTcpSocket `json:"TcpSocket,omitempty" xml:"TcpSocket,omitempty" type:"Struct"`
+	// The timeout period of the health check. Unit: seconds. Default value: 1. Minimum value: 1.
+	TimeoutSeconds *int32 `json:"TimeoutSeconds,omitempty" xml:"TimeoutSeconds,omitempty"`
 }
 
 func (s DescribeContainerGroupsResponseBodyContainerGroupsContainersReadinessProbe) String() string {
@@ -6382,9 +7223,11 @@ func (s *DescribeContainerGroupsResponseBodyContainerGroupsContainersReadinessPr
 }
 
 type DescribeContainerGroupsResponseBodyContainerGroupsContainersReadinessProbeHttpGet struct {
+	// The path to which HTTP GET requests were sent.
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
-	Port *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
-	// HTTP／HTTPS。
+	// The port to which the system sends an HTTP GET request for a health check.
+	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The protocol type of the HTTP GET requests.
 	Scheme *string `json:"Scheme,omitempty" xml:"Scheme,omitempty"`
 }
 
@@ -6412,9 +7255,10 @@ func (s *DescribeContainerGroupsResponseBodyContainerGroupsContainersReadinessPr
 }
 
 type DescribeContainerGroupsResponseBodyContainerGroupsContainersReadinessProbeTcpSocket struct {
-	// Host。
+	// The IP address of the host.
 	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
-	Port *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The port number.
+	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
 }
 
 func (s DescribeContainerGroupsResponseBodyContainerGroupsContainersReadinessProbeTcpSocket) String() string {
@@ -6436,9 +7280,12 @@ func (s *DescribeContainerGroupsResponseBodyContainerGroupsContainersReadinessPr
 }
 
 type DescribeContainerGroupsResponseBodyContainerGroupsContainersSecurityContext struct {
-	Capability             *DescribeContainerGroupsResponseBodyContainerGroupsContainersSecurityContextCapability `json:"Capability,omitempty" xml:"Capability,omitempty" type:"Struct"`
-	ReadOnlyRootFilesystem *bool                                                                                  `json:"ReadOnlyRootFilesystem,omitempty" xml:"ReadOnlyRootFilesystem,omitempty"`
-	RunAsUser              *int64                                                                                 `json:"RunAsUser,omitempty" xml:"RunAsUser,omitempty"`
+	// The permissions specific to the processes in the container.
+	Capability *DescribeContainerGroupsResponseBodyContainerGroupsContainersSecurityContextCapability `json:"Capability,omitempty" xml:"Capability,omitempty" type:"Struct"`
+	// Indicates whether the root file system is set to the read-only mode. The only valid value is true.
+	ReadOnlyRootFilesystem *bool `json:"ReadOnlyRootFilesystem,omitempty" xml:"ReadOnlyRootFilesystem,omitempty"`
+	// The ID of the user that runs the container.
+	RunAsUser *int64 `json:"RunAsUser,omitempty" xml:"RunAsUser,omitempty"`
 }
 
 func (s DescribeContainerGroupsResponseBodyContainerGroupsContainersSecurityContext) String() string {
@@ -6465,6 +7312,7 @@ func (s *DescribeContainerGroupsResponseBodyContainerGroupsContainersSecurityCon
 }
 
 type DescribeContainerGroupsResponseBodyContainerGroupsContainersSecurityContextCapability struct {
+	// The permissions specific to the processes in the container.
 	Adds []*string `json:"Adds,omitempty" xml:"Adds,omitempty" type:"Repeated"`
 }
 
@@ -6482,10 +7330,18 @@ func (s *DescribeContainerGroupsResponseBodyContainerGroupsContainersSecurityCon
 }
 
 type DescribeContainerGroupsResponseBodyContainerGroupsContainersVolumeMounts struct {
-	MountPath        *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
+	// The directory to which the volume is mounted. Data under this directory is overwritten by the data on the volume.
+	MountPath *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
+	// The mount propagation setting of the volume. Mount propagation allows you to share volumes that are mounted on a container to other containers in the same pod, or even to other pods on the same node. Valid values:
+	//
+	// *   None: The volume mount does not receive subsequent mounts that are mounted to this volume or its subdirectories.
+	// *   HostToCotainer: The volume mount receives all subsequent mounts that are mounted to this volume or its subdirectories.
+	// *   Bidirectional: This value has a similar effect as HostToContainer. The volume mount receives all subsequent mounts that are mounted to this volume or its subdirectories. In addition, all volume mounts created by the container are propagated back to the host and to all containers of all pods that use the same volume.
 	MountPropagation *string `json:"MountPropagation,omitempty" xml:"MountPropagation,omitempty"`
-	Name             *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	ReadOnly         *bool   `json:"ReadOnly,omitempty" xml:"ReadOnly,omitempty"`
+	// The name of the volume.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Indicates whether the volumes are read-only.
+	ReadOnly *bool `json:"ReadOnly,omitempty" xml:"ReadOnly,omitempty"`
 }
 
 func (s DescribeContainerGroupsResponseBodyContainerGroupsContainersVolumeMounts) String() string {
@@ -6517,9 +7373,12 @@ func (s *DescribeContainerGroupsResponseBodyContainerGroupsContainersVolumeMount
 }
 
 type DescribeContainerGroupsResponseBodyContainerGroupsDnsConfig struct {
-	NameServers []*string                                                             `json:"NameServers,omitempty" xml:"NameServers,omitempty" type:"Repeated"`
-	Options     []*DescribeContainerGroupsResponseBodyContainerGroupsDnsConfigOptions `json:"Options,omitempty" xml:"Options,omitempty" type:"Repeated"`
-	Searches    []*string                                                             `json:"Searches,omitempty" xml:"Searches,omitempty" type:"Repeated"`
+	// The IP addresses of DNS servers.
+	NameServers []*string `json:"NameServers,omitempty" xml:"NameServers,omitempty" type:"Repeated"`
+	// The options. Each option is a name-value pair. The value in the name-value pair is optional.
+	Options []*DescribeContainerGroupsResponseBodyContainerGroupsDnsConfigOptions `json:"Options,omitempty" xml:"Options,omitempty" type:"Repeated"`
+	// The search domains of the DNS server.
+	Searches []*string `json:"Searches,omitempty" xml:"Searches,omitempty" type:"Repeated"`
 }
 
 func (s DescribeContainerGroupsResponseBodyContainerGroupsDnsConfig) String() string {
@@ -6546,7 +7405,9 @@ func (s *DescribeContainerGroupsResponseBodyContainerGroupsDnsConfig) SetSearche
 }
 
 type DescribeContainerGroupsResponseBodyContainerGroupsDnsConfigOptions struct {
-	Name  *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The variable name of the option.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The variable value of the option.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -6569,6 +7430,7 @@ func (s *DescribeContainerGroupsResponseBodyContainerGroupsDnsConfigOptions) Set
 }
 
 type DescribeContainerGroupsResponseBodyContainerGroupsEciSecurityContext struct {
+	// Sysctls hold a list of namespaced sysctls used for the pod. Pods with unsupported sysctls (by the container runtime) might fail to launch.
 	Sysctls []*DescribeContainerGroupsResponseBodyContainerGroupsEciSecurityContextSysctls `json:"Sysctls,omitempty" xml:"Sysctls,omitempty" type:"Repeated"`
 }
 
@@ -6586,7 +7448,9 @@ func (s *DescribeContainerGroupsResponseBodyContainerGroupsEciSecurityContext) S
 }
 
 type DescribeContainerGroupsResponseBodyContainerGroupsEciSecurityContextSysctls struct {
-	Name  *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The name of the Sysctl parameter.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The value of the Sysctl parameter.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -6609,13 +7473,23 @@ func (s *DescribeContainerGroupsResponseBodyContainerGroupsEciSecurityContextSys
 }
 
 type DescribeContainerGroupsResponseBodyContainerGroupsEvents struct {
-	Count          *int32  `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The number of the events.
+	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The time when the event started.
 	FirstTimestamp *string `json:"FirstTimestamp,omitempty" xml:"FirstTimestamp,omitempty"`
-	LastTimestamp  *string `json:"LastTimestamp,omitempty" xml:"LastTimestamp,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	Name           *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Reason         *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
-	Type           *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The time when the event ended.
+	LastTimestamp *string `json:"LastTimestamp,omitempty" xml:"LastTimestamp,omitempty"`
+	// The message about the event.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The name of the category to which the event belongs.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The name of the event.
+	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	// The type of the event. Valid values:
+	//
+	// *   Normal
+	// *   Warning
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s DescribeContainerGroupsResponseBodyContainerGroupsEvents) String() string {
@@ -6662,8 +7536,10 @@ func (s *DescribeContainerGroupsResponseBodyContainerGroupsEvents) SetType(v str
 }
 
 type DescribeContainerGroupsResponseBodyContainerGroupsHostAliases struct {
+	// The information about the host.
 	Hostnames []*string `json:"Hostnames,omitempty" xml:"Hostnames,omitempty" type:"Repeated"`
-	Ip        *string   `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	// The IP address of the host.
+	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
 }
 
 func (s DescribeContainerGroupsResponseBodyContainerGroupsHostAliases) String() string {
@@ -6685,23 +7561,40 @@ func (s *DescribeContainerGroupsResponseBodyContainerGroupsHostAliases) SetIp(v 
 }
 
 type DescribeContainerGroupsResponseBodyContainerGroupsInitContainers struct {
-	Args            []*string                                                                          `json:"Args,omitempty" xml:"Args,omitempty" type:"Repeated"`
-	Command         []*string                                                                          `json:"Command,omitempty" xml:"Command,omitempty" type:"Repeated"`
-	Cpu             *float32                                                                           `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
-	CurrentState    *DescribeContainerGroupsResponseBodyContainerGroupsInitContainersCurrentState      `json:"CurrentState,omitempty" xml:"CurrentState,omitempty" type:"Struct"`
+	// The arguments that are used to start the container.
+	Args []*string `json:"Args,omitempty" xml:"Args,omitempty" type:"Repeated"`
+	// The command that is used to start the container.
+	Command []*string `json:"Command,omitempty" xml:"Command,omitempty" type:"Repeated"`
+	// The number of vCPUs.
+	Cpu *float32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	// The current status of the container.
+	CurrentState *DescribeContainerGroupsResponseBodyContainerGroupsInitContainersCurrentState `json:"CurrentState,omitempty" xml:"CurrentState,omitempty" type:"Struct"`
+	// The environment variables of the container.
 	EnvironmentVars []*DescribeContainerGroupsResponseBodyContainerGroupsInitContainersEnvironmentVars `json:"EnvironmentVars,omitempty" xml:"EnvironmentVars,omitempty" type:"Repeated"`
-	Gpu             *int32                                                                             `json:"Gpu,omitempty" xml:"Gpu,omitempty"`
-	Image           *string                                                                            `json:"Image,omitempty" xml:"Image,omitempty"`
-	ImagePullPolicy *string                                                                            `json:"ImagePullPolicy,omitempty" xml:"ImagePullPolicy,omitempty"`
-	Memory          *float32                                                                           `json:"Memory,omitempty" xml:"Memory,omitempty"`
-	Name            *string                                                                            `json:"Name,omitempty" xml:"Name,omitempty"`
-	Ports           []*DescribeContainerGroupsResponseBodyContainerGroupsInitContainersPorts           `json:"Ports,omitempty" xml:"Ports,omitempty" type:"Repeated"`
-	PreviousState   *DescribeContainerGroupsResponseBodyContainerGroupsInitContainersPreviousState     `json:"PreviousState,omitempty" xml:"PreviousState,omitempty" type:"Struct"`
-	Ready           *bool                                                                              `json:"Ready,omitempty" xml:"Ready,omitempty"`
-	RestartCount    *int32                                                                             `json:"RestartCount,omitempty" xml:"RestartCount,omitempty"`
-	SecurityContext *DescribeContainerGroupsResponseBodyContainerGroupsInitContainersSecurityContext   `json:"SecurityContext,omitempty" xml:"SecurityContext,omitempty" type:"Struct"`
-	VolumeMounts    []*DescribeContainerGroupsResponseBodyContainerGroupsInitContainersVolumeMounts    `json:"VolumeMounts,omitempty" xml:"VolumeMounts,omitempty" type:"Repeated"`
-	WorkingDir      *string                                                                            `json:"WorkingDir,omitempty" xml:"WorkingDir,omitempty"`
+	// The number of GPUs.
+	Gpu *int32 `json:"Gpu,omitempty" xml:"Gpu,omitempty"`
+	// The image of the container.
+	Image *string `json:"Image,omitempty" xml:"Image,omitempty"`
+	// The policy to pull an image.
+	ImagePullPolicy *string `json:"ImagePullPolicy,omitempty" xml:"ImagePullPolicy,omitempty"`
+	// The size of memory that is allocated to the init container. Unit: GiB.
+	Memory *float32 `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	// The name of the init container.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The exposed ports and protocols of the container.
+	Ports []*DescribeContainerGroupsResponseBodyContainerGroupsInitContainersPorts `json:"Ports,omitempty" xml:"Ports,omitempty" type:"Repeated"`
+	// The previous status of the container.
+	PreviousState *DescribeContainerGroupsResponseBodyContainerGroupsInitContainersPreviousState `json:"PreviousState,omitempty" xml:"PreviousState,omitempty" type:"Struct"`
+	// Indicates whether the container passed the readiness probe.
+	Ready *bool `json:"Ready,omitempty" xml:"Ready,omitempty"`
+	// The number of times that the container restarted.
+	RestartCount *int32 `json:"RestartCount,omitempty" xml:"RestartCount,omitempty"`
+	// The security context of the container.
+	SecurityContext *DescribeContainerGroupsResponseBodyContainerGroupsInitContainersSecurityContext `json:"SecurityContext,omitempty" xml:"SecurityContext,omitempty" type:"Struct"`
+	// The information about the volumes that are mounted to the init container.
+	VolumeMounts []*DescribeContainerGroupsResponseBodyContainerGroupsInitContainersVolumeMounts `json:"VolumeMounts,omitempty" xml:"VolumeMounts,omitempty" type:"Repeated"`
+	// The working directory of the container.
+	WorkingDir *string `json:"WorkingDir,omitempty" xml:"WorkingDir,omitempty"`
 }
 
 func (s DescribeContainerGroupsResponseBodyContainerGroupsInitContainers) String() string {
@@ -6798,14 +7691,26 @@ func (s *DescribeContainerGroupsResponseBodyContainerGroupsInitContainers) SetWo
 }
 
 type DescribeContainerGroupsResponseBodyContainerGroupsInitContainersCurrentState struct {
+	// The details of the container status.
 	DetailStatus *string `json:"DetailStatus,omitempty" xml:"DetailStatus,omitempty"`
-	ExitCode     *int32  `json:"ExitCode,omitempty" xml:"ExitCode,omitempty"`
-	FinishTime   *string `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
-	Message      *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	Reason       *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
-	Signal       *int32  `json:"Signal,omitempty" xml:"Signal,omitempty"`
-	StartTime    *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	State        *string `json:"State,omitempty" xml:"State,omitempty"`
+	// The exit code of the container.
+	ExitCode *int32 `json:"ExitCode,omitempty" xml:"ExitCode,omitempty"`
+	// The time when the container stopped running.
+	FinishTime *string `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
+	// The message of the event.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The reason why the container is in this state.
+	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	// The code of the container status.
+	Signal *int32 `json:"Signal,omitempty" xml:"Signal,omitempty"`
+	// The time when the container started to run.
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The status of the container. Valid values:
+	//
+	// *   Waiting
+	// *   Running
+	// *   Terminated
+	State *string `json:"State,omitempty" xml:"State,omitempty"`
 }
 
 func (s DescribeContainerGroupsResponseBodyContainerGroupsInitContainersCurrentState) String() string {
@@ -6857,8 +7762,11 @@ func (s *DescribeContainerGroupsResponseBodyContainerGroupsInitContainersCurrent
 }
 
 type DescribeContainerGroupsResponseBodyContainerGroupsInitContainersEnvironmentVars struct {
-	Key       *string                                                                                   `json:"Key,omitempty" xml:"Key,omitempty"`
-	Value     *string                                                                                   `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the environment variable.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of the environment variable.
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The source of the environment variable value. This parameter has a value only when the Value parameter is not empty.
 	ValueFrom *DescribeContainerGroupsResponseBodyContainerGroupsInitContainersEnvironmentVarsValueFrom `json:"ValueFrom,omitempty" xml:"ValueFrom,omitempty" type:"Struct"`
 }
 
@@ -6886,6 +7794,7 @@ func (s *DescribeContainerGroupsResponseBodyContainerGroupsInitContainersEnviron
 }
 
 type DescribeContainerGroupsResponseBodyContainerGroupsInitContainersEnvironmentVarsValueFrom struct {
+	// The specified field.
 	FieldRef *DescribeContainerGroupsResponseBodyContainerGroupsInitContainersEnvironmentVarsValueFromFieldRef `json:"FieldRef,omitempty" xml:"FieldRef,omitempty" type:"Struct"`
 }
 
@@ -6903,6 +7812,7 @@ func (s *DescribeContainerGroupsResponseBodyContainerGroupsInitContainersEnviron
 }
 
 type DescribeContainerGroupsResponseBodyContainerGroupsInitContainersEnvironmentVarsValueFromFieldRef struct {
+	// The path from which the field is selected in the specified version. Only `status.podIP` is supported.
 	FieldPath *string `json:"FieldPath,omitempty" xml:"FieldPath,omitempty"`
 }
 
@@ -6920,7 +7830,9 @@ func (s *DescribeContainerGroupsResponseBodyContainerGroupsInitContainersEnviron
 }
 
 type DescribeContainerGroupsResponseBodyContainerGroupsInitContainersPorts struct {
-	Port     *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The port number. Valid values: 1 to 65535.
+	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The type of the protocol.
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
 }
 
@@ -6943,14 +7855,22 @@ func (s *DescribeContainerGroupsResponseBodyContainerGroupsInitContainersPorts) 
 }
 
 type DescribeContainerGroupsResponseBodyContainerGroupsInitContainersPreviousState struct {
+	// The details of the container status.
 	DetailStatus *string `json:"DetailStatus,omitempty" xml:"DetailStatus,omitempty"`
-	ExitCode     *int32  `json:"ExitCode,omitempty" xml:"ExitCode,omitempty"`
-	FinishTime   *string `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
-	Message      *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	Reason       *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
-	Signal       *int32  `json:"Signal,omitempty" xml:"Signal,omitempty"`
-	StartTime    *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	State        *string `json:"State,omitempty" xml:"State,omitempty"`
+	// The exit code of the container.
+	ExitCode *int32 `json:"ExitCode,omitempty" xml:"ExitCode,omitempty"`
+	// The time when the container stopped running.
+	FinishTime *string `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
+	// The message about the container status.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The reason why the container is in this state.
+	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	// The code of the container status.
+	Signal *int32 `json:"Signal,omitempty" xml:"Signal,omitempty"`
+	// The time when the container started to run.
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The status of the container. Valid values: Waiting, Running, and Terminated.
+	State *string `json:"State,omitempty" xml:"State,omitempty"`
 }
 
 func (s DescribeContainerGroupsResponseBodyContainerGroupsInitContainersPreviousState) String() string {
@@ -7002,9 +7922,12 @@ func (s *DescribeContainerGroupsResponseBodyContainerGroupsInitContainersPreviou
 }
 
 type DescribeContainerGroupsResponseBodyContainerGroupsInitContainersSecurityContext struct {
-	Capability             *DescribeContainerGroupsResponseBodyContainerGroupsInitContainersSecurityContextCapability `json:"Capability,omitempty" xml:"Capability,omitempty" type:"Struct"`
-	ReadOnlyRootFilesystem *bool                                                                                      `json:"ReadOnlyRootFilesystem,omitempty" xml:"ReadOnlyRootFilesystem,omitempty"`
-	RunAsUser              *int64                                                                                     `json:"RunAsUser,omitempty" xml:"RunAsUser,omitempty"`
+	// The permissions specific to the processes in the container.
+	Capability *DescribeContainerGroupsResponseBodyContainerGroupsInitContainersSecurityContextCapability `json:"Capability,omitempty" xml:"Capability,omitempty" type:"Struct"`
+	// Indicates whether the root file system is set to the read-only mode. The only valid value is true.
+	ReadOnlyRootFilesystem *bool `json:"ReadOnlyRootFilesystem,omitempty" xml:"ReadOnlyRootFilesystem,omitempty"`
+	// The UID that is used to run the entry point of the container process.
+	RunAsUser *int64 `json:"RunAsUser,omitempty" xml:"RunAsUser,omitempty"`
 }
 
 func (s DescribeContainerGroupsResponseBodyContainerGroupsInitContainersSecurityContext) String() string {
@@ -7031,6 +7954,7 @@ func (s *DescribeContainerGroupsResponseBodyContainerGroupsInitContainersSecurit
 }
 
 type DescribeContainerGroupsResponseBodyContainerGroupsInitContainersSecurityContextCapability struct {
+	// The permissions specific to the processes in the container.
 	Adds []*string `json:"Adds,omitempty" xml:"Adds,omitempty" type:"Repeated"`
 }
 
@@ -7048,10 +7972,18 @@ func (s *DescribeContainerGroupsResponseBodyContainerGroupsInitContainersSecurit
 }
 
 type DescribeContainerGroupsResponseBodyContainerGroupsInitContainersVolumeMounts struct {
-	MountPath        *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
+	// The directory to which the volume is mounted. Data under this directory is overwritten by the data on the volume.
+	MountPath *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
+	// The mount propagation setting of the volume. Mount propagation allows you to share volumes that are mounted on a container to other containers in the same pod, or even to other pods on the same node. Valid values:
+	//
+	// *   None: The volume mount does not receive subsequent mounts that are mounted to this volume or its subdirectories.
+	// *   HostToCotainer: The volume mount receives all subsequent mounts that are mounted to this volume or its subdirectories.
+	// *   Bidirectional: This value has a similar effect as HostToContainer. The volume mount receives all subsequent mounts that are mounted to this volume or its subdirectories. In addition, all volume mounts created by the container are propagated back to the host and to all containers of all pods that use the same volume.
 	MountPropagation *string `json:"MountPropagation,omitempty" xml:"MountPropagation,omitempty"`
-	Name             *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	ReadOnly         *bool   `json:"ReadOnly,omitempty" xml:"ReadOnly,omitempty"`
+	// The name of the volume. The name is the same as the volume you selected when you purchased the container.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Default value: False.
+	ReadOnly *bool `json:"ReadOnly,omitempty" xml:"ReadOnly,omitempty"`
 }
 
 func (s DescribeContainerGroupsResponseBodyContainerGroupsInitContainersVolumeMounts) String() string {
@@ -7083,7 +8015,9 @@ func (s *DescribeContainerGroupsResponseBodyContainerGroupsInitContainersVolumeM
 }
 
 type DescribeContainerGroupsResponseBodyContainerGroupsTags struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag key.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -7106,17 +8040,33 @@ func (s *DescribeContainerGroupsResponseBodyContainerGroupsTags) SetValue(v stri
 }
 
 type DescribeContainerGroupsResponseBodyContainerGroupsVolumes struct {
+	// The paths of the ConfigFile volume.
 	ConfigFileVolumeConfigFileToPaths []*DescribeContainerGroupsResponseBodyContainerGroupsVolumesConfigFileVolumeConfigFileToPaths `json:"ConfigFileVolumeConfigFileToPaths,omitempty" xml:"ConfigFileVolumeConfigFileToPaths,omitempty" type:"Repeated"`
-	DiskVolumeDiskId                  *string                                                                                       `json:"DiskVolumeDiskId,omitempty" xml:"DiskVolumeDiskId,omitempty"`
-	DiskVolumeFsType                  *string                                                                                       `json:"DiskVolumeFsType,omitempty" xml:"DiskVolumeFsType,omitempty"`
-	FlexVolumeDriver                  *string                                                                                       `json:"FlexVolumeDriver,omitempty" xml:"FlexVolumeDriver,omitempty"`
-	FlexVolumeFsType                  *string                                                                                       `json:"FlexVolumeFsType,omitempty" xml:"FlexVolumeFsType,omitempty"`
-	FlexVolumeOptions                 *string                                                                                       `json:"FlexVolumeOptions,omitempty" xml:"FlexVolumeOptions,omitempty"`
-	NFSVolumePath                     *string                                                                                       `json:"NFSVolumePath,omitempty" xml:"NFSVolumePath,omitempty"`
-	NFSVolumeReadOnly                 *bool                                                                                         `json:"NFSVolumeReadOnly,omitempty" xml:"NFSVolumeReadOnly,omitempty"`
-	NFSVolumeServer                   *string                                                                                       `json:"NFSVolumeServer,omitempty" xml:"NFSVolumeServer,omitempty"`
-	Name                              *string                                                                                       `json:"Name,omitempty" xml:"Name,omitempty"`
-	Type                              *string                                                                                       `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The ID of the disk volume.
+	DiskVolumeDiskId *string `json:"DiskVolumeDiskId,omitempty" xml:"DiskVolumeDiskId,omitempty"`
+	// The file system type of the disk volume.
+	DiskVolumeFsType *string `json:"DiskVolumeFsType,omitempty" xml:"DiskVolumeFsType,omitempty"`
+	// The name of the driver when you set the Type parameter to FlexVolume.
+	FlexVolumeDriver *string `json:"FlexVolumeDriver,omitempty" xml:"FlexVolumeDriver,omitempty"`
+	// The file system type when you set the Type parameter to FlexVolume. The default value is determined by the script of the FlexVolume plug-in.
+	FlexVolumeFsType *string `json:"FlexVolumeFsType,omitempty" xml:"FlexVolumeFsType,omitempty"`
+	// The options when you set the Type parameter to FlexVolume.
+	FlexVolumeOptions *string `json:"FlexVolumeOptions,omitempty" xml:"FlexVolumeOptions,omitempty"`
+	// The path of the NFS volume.
+	NFSVolumePath *string `json:"NFSVolumePath,omitempty" xml:"NFSVolumePath,omitempty"`
+	// Indicates whether the NFS volume is read-only.
+	NFSVolumeReadOnly *bool `json:"NFSVolumeReadOnly,omitempty" xml:"NFSVolumeReadOnly,omitempty"`
+	// The endpoint of the server when you set the Type parameter to NFSVolume.
+	NFSVolumeServer *string `json:"NFSVolumeServer,omitempty" xml:"NFSVolumeServer,omitempty"`
+	// The name of the volume.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The type of the volume. Valid values:
+	//
+	// *   EmptyDirVolume
+	// *   NFSVolume
+	// *   ConfigFileVolume
+	// *   FlexVolume
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s DescribeContainerGroupsResponseBodyContainerGroupsVolumes) String() string {
@@ -7183,8 +8133,10 @@ func (s *DescribeContainerGroupsResponseBodyContainerGroupsVolumes) SetType(v st
 }
 
 type DescribeContainerGroupsResponseBodyContainerGroupsVolumesConfigFileVolumeConfigFileToPaths struct {
+	// The content of the ConfigFile volume. Maximum size: 32 KB.
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	Path    *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	// The relative path of the ConfigFile volume.
+	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
 }
 
 func (s DescribeContainerGroupsResponseBodyContainerGroupsVolumesConfigFileVolumeConfigFileToPaths) String() string {
@@ -7235,19 +8187,38 @@ func (s *DescribeContainerGroupsResponse) SetBody(v *DescribeContainerGroupsResp
 }
 
 type DescribeContainerLogRequest struct {
-	ContainerGroupId     *string `json:"ContainerGroupId,omitempty" xml:"ContainerGroupId,omitempty"`
-	ContainerName        *string `json:"ContainerName,omitempty" xml:"ContainerName,omitempty"`
-	LastTime             *bool   `json:"LastTime,omitempty" xml:"LastTime,omitempty"`
-	LimitBytes           *int64  `json:"LimitBytes,omitempty" xml:"LimitBytes,omitempty"`
-	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The ID of the elastic container instance.
+	ContainerGroupId *string `json:"ContainerGroupId,omitempty" xml:"ContainerGroupId,omitempty"`
+	// The name of the container.
+	ContainerName *string `json:"ContainerName,omitempty" xml:"ContainerName,omitempty"`
+	// Specifies whether to query the previous container if the container exits and restarts. Valid values:
+	//
+	// *   true: queries the previous container.
+	// *   false: does not query the previous container.
+	//
+	// Default value: false.
+	LastTime *bool `json:"LastTime,omitempty" xml:"LastTime,omitempty"`
+	// The limit on the total size of logs.
+	LimitBytes   *int64  `json:"LimitBytes,omitempty" xml:"LimitBytes,omitempty"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The ID of the region where the elastic container instance is deployed.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	SinceSeconds         *int32  `json:"SinceSeconds,omitempty" xml:"SinceSeconds,omitempty"`
-	StartTime            *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Tail                 *int32  `json:"Tail,omitempty" xml:"Tail,omitempty"`
-	Timestamps           *bool   `json:"Timestamps,omitempty" xml:"Timestamps,omitempty"`
+	// A relative time in seconds before the current time from which to show logs. Example: 10, 20, and 30.
+	SinceSeconds *int32 `json:"SinceSeconds,omitempty" xml:"SinceSeconds,omitempty"`
+	// The beginning of the time range to query. Specify the time in the RFC 3339 standard. The time must be in UTC.
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The number of log entries that you want to query. Default value: 500. Maximum value: 2000. A maximum of 1 MB of logs can be returned.
+	Tail *int32 `json:"Tail,omitempty" xml:"Tail,omitempty"`
+	// Specifies whether to return the timestamps of logs. Valid values:
+	//
+	// *   true: returns the timestamps of logs.
+	// *   false: does not return the timestamps of logs.
+	//
+	// Default value: false.
+	Timestamps *bool `json:"Timestamps,omitempty" xml:"Timestamps,omitempty"`
 }
 
 func (s DescribeContainerLogRequest) String() string {
@@ -7324,9 +8295,12 @@ func (s *DescribeContainerLogRequest) SetTimestamps(v bool) *DescribeContainerLo
 }
 
 type DescribeContainerLogResponseBody struct {
+	// The name of the container.
 	ContainerName *string `json:"ContainerName,omitempty" xml:"ContainerName,omitempty"`
-	Content       *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The content of the log.
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeContainerLogResponseBody) String() string {
@@ -7382,20 +8356,28 @@ func (s *DescribeContainerLogResponse) SetBody(v *DescribeContainerLogResponseBo
 }
 
 type DescribeImageCachesRequest struct {
-	Image                *string                          `json:"Image,omitempty" xml:"Image,omitempty"`
-	ImageCacheId         *string                          `json:"ImageCacheId,omitempty" xml:"ImageCacheId,omitempty"`
-	ImageCacheName       *string                          `json:"ImageCacheName,omitempty" xml:"ImageCacheName,omitempty"`
-	Limit                *int32                           `json:"Limit,omitempty" xml:"Limit,omitempty"`
-	MatchImage           []*string                        `json:"MatchImage,omitempty" xml:"MatchImage,omitempty" type:"Repeated"`
-	NextToken            *string                          `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	OwnerAccount         *string                          `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64                           `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId             *string                          `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceGroupId      *string                          `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	ResourceOwnerAccount *string                          `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64                           `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	SnapshotId           *string                          `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
-	Tag                  []*DescribeImageCachesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	// The image of the container.
+	Image *string `json:"Image,omitempty" xml:"Image,omitempty"`
+	// The ID of the image cache.
+	ImageCacheId *string `json:"ImageCacheId,omitempty" xml:"ImageCacheId,omitempty"`
+	// The name of the image cache.
+	ImageCacheName *string `json:"ImageCacheName,omitempty" xml:"ImageCacheName,omitempty"`
+	// The maximum number of query results that you want to be displayed.
+	Limit      *int32    `json:"Limit,omitempty" xml:"Limit,omitempty"`
+	MatchImage []*string `json:"MatchImage,omitempty" xml:"MatchImage,omitempty" type:"Repeated"`
+	// The token that determines the start point of the query. Set the value to the NextToken value that is returned from the last query.
+	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID of the image cache.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the resource group.
+	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The ID of the snapshot that is used to create the image cache.
+	SnapshotId *string                          `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
+	Tag        []*DescribeImageCachesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s DescribeImageCachesRequest) String() string {
@@ -7477,7 +8459,9 @@ func (s *DescribeImageCachesRequest) SetTag(v []*DescribeImageCachesRequestTag) 
 }
 
 type DescribeImageCachesRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The key of tag N of the image cache. Valid values of N: 1 to 20.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of tag N of the image cache. Valid values of N: 1 to 20.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -7500,10 +8484,14 @@ func (s *DescribeImageCachesRequestTag) SetValue(v string) *DescribeImageCachesR
 }
 
 type DescribeImageCachesResponseBody struct {
+	// The image caches.
 	ImageCaches []*DescribeImageCachesResponseBodyImageCaches `json:"ImageCaches,omitempty" xml:"ImageCaches,omitempty" type:"Repeated"`
-	NextToken   *string                                       `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	RequestId   *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount  *int32                                        `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The query token that is returned in this query.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeImageCachesResponseBody) String() string {
@@ -7535,23 +8523,53 @@ func (s *DescribeImageCachesResponseBody) SetTotalCount(v int32) *DescribeImageC
 }
 
 type DescribeImageCachesResponseBodyImageCaches struct {
-	ContainerGroupId    *string                                             `json:"ContainerGroupId,omitempty" xml:"ContainerGroupId,omitempty"`
-	CreationTime        *string                                             `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	EliminationStrategy *string                                             `json:"EliminationStrategy,omitempty" xml:"EliminationStrategy,omitempty"`
-	Events              []*DescribeImageCachesResponseBodyImageCachesEvents `json:"Events,omitempty" xml:"Events,omitempty" type:"Repeated"`
-	ExpireDateTime      *string                                             `json:"ExpireDateTime,omitempty" xml:"ExpireDateTime,omitempty"`
-	FlashSnapshotId     *string                                             `json:"FlashSnapshotId,omitempty" xml:"FlashSnapshotId,omitempty"`
-	ImageCacheId        *string                                             `json:"ImageCacheId,omitempty" xml:"ImageCacheId,omitempty"`
-	ImageCacheName      *string                                             `json:"ImageCacheName,omitempty" xml:"ImageCacheName,omitempty"`
-	ImageCacheSize      *int32                                              `json:"ImageCacheSize,omitempty" xml:"ImageCacheSize,omitempty"`
-	Images              []*string                                           `json:"Images,omitempty" xml:"Images,omitempty" type:"Repeated"`
-	LastMatchedTime     *string                                             `json:"LastMatchedTime,omitempty" xml:"LastMatchedTime,omitempty"`
-	Progress            *string                                             `json:"Progress,omitempty" xml:"Progress,omitempty"`
-	RegionId            *string                                             `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceGroupId     *string                                             `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	SnapshotId          *string                                             `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
-	Status              *string                                             `json:"Status,omitempty" xml:"Status,omitempty"`
-	Tags                []*DescribeImageCachesResponseBodyImageCachesTags   `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// The ID of the container group.
+	ContainerGroupId *string `json:"ContainerGroupId,omitempty" xml:"ContainerGroupId,omitempty"`
+	// The time when the image cache was created.
+	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	// The elimination policy of the image cache. This parameter is empty by default, which indicates that the image cache is always retained.
+	//
+	// You can set this parameter to LRU, which indicates that the image cache can be automatically deleted. When the number of image caches reaches the quota, the system automatically deletes the image caches whose EliminationStrategy parameter is set to LRU and that are least commonly used.
+	EliminationStrategy *string `json:"EliminationStrategy,omitempty" xml:"EliminationStrategy,omitempty"`
+	// Details about the events of pulling images to create the image cache.
+	Events []*DescribeImageCachesResponseBodyImageCachesEvents `json:"Events,omitempty" xml:"Events,omitempty" type:"Repeated"`
+	// The time when the image cache expires.
+	ExpireDateTime *string `json:"ExpireDateTime,omitempty" xml:"ExpireDateTime,omitempty"`
+	// The ID of the local snapshot. A temporary local snapshot is created after the instant image cache feature is enabled.
+	FlashSnapshotId *string `json:"FlashSnapshotId,omitempty" xml:"FlashSnapshotId,omitempty"`
+	// The ID of the image cache.
+	ImageCacheId *string `json:"ImageCacheId,omitempty" xml:"ImageCacheId,omitempty"`
+	// The name of the image cache.
+	ImageCacheName *string `json:"ImageCacheName,omitempty" xml:"ImageCacheName,omitempty"`
+	// The size of the image cache. Unit: GiB.
+	ImageCacheSize *int32 `json:"ImageCacheSize,omitempty" xml:"ImageCacheSize,omitempty"`
+	// The images that are contained in the image cache.
+	Images []*string `json:"Images,omitempty" xml:"Images,omitempty" type:"Repeated"`
+	// The time when the image cache was last matched.
+	LastMatchedTime *string `json:"LastMatchedTime,omitempty" xml:"LastMatchedTime,omitempty"`
+	// The progress of creating the snapshot that is used to create the image cache.
+	//
+	// >  If the instant image cache feature is enabled, the system creates a temporary local snapshot and then a regular snapshot. This parameter indicates the progress of creating the regular snapshot.
+	Progress *string `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	// The region ID of the image cache.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the resource group.
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The ID of the snapshot that is used to create the image cache.
+	SnapshotId *string `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
+	// The status of the image cache. Valid values:
+	//
+	// *   Preparing: The image cache is being prepared.
+	// *   Creating: The image is being created.
+	// *   Ready: The image cache is ready for use.
+	// *   Failed: The image cache failed to be created.
+	// *   Updating: The image cache is being updated.
+	// *   UpdateFailed: The image cache failed to be updated.
+	//
+	// The image cache is ready for use when it is in the Ready state.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The tags of the image cache.
+	Tags []*DescribeImageCachesResponseBodyImageCachesTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
 func (s DescribeImageCachesResponseBodyImageCaches) String() string {
@@ -7648,12 +8666,18 @@ func (s *DescribeImageCachesResponseBodyImageCaches) SetTags(v []*DescribeImageC
 }
 
 type DescribeImageCachesResponseBodyImageCachesEvents struct {
-	Count          *int32  `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The number of events.
+	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The time when the event started.
 	FirstTimestamp *string `json:"FirstTimestamp,omitempty" xml:"FirstTimestamp,omitempty"`
-	LastTimestamp  *string `json:"LastTimestamp,omitempty" xml:"LastTimestamp,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	Name           *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Type           *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The time when the event ended.
+	LastTimestamp *string `json:"LastTimestamp,omitempty" xml:"LastTimestamp,omitempty"`
+	// The message of the event.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The name of the event.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The type of the event.
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s DescribeImageCachesResponseBodyImageCachesEvents) String() string {
@@ -7695,7 +8719,9 @@ func (s *DescribeImageCachesResponseBodyImageCachesEvents) SetType(v string) *De
 }
 
 type DescribeImageCachesResponseBodyImageCachesTags struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag key of the image cache.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value of the image cache.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -7747,10 +8773,16 @@ func (s *DescribeImageCachesResponse) SetBody(v *DescribeImageCachesResponseBody
 }
 
 type DescribeInstanceOpsRecordsRequest struct {
-	ContainerGroupId     *string `json:"ContainerGroupId,omitempty" xml:"ContainerGroupId,omitempty"`
-	OpsType              *string `json:"OpsType,omitempty" xml:"OpsType,omitempty"`
-	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The ID of the container group.
+	ContainerGroupId *string `json:"ContainerGroupId,omitempty" xml:"ContainerGroupId,omitempty"`
+	// The type of the O\&M task. Valid values:
+	//
+	// *   coredump
+	// *   tcpdump
+	OpsType      *string `json:"OpsType,omitempty" xml:"OpsType,omitempty"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID of the O\&M task.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -7800,8 +8832,10 @@ func (s *DescribeInstanceOpsRecordsRequest) SetResourceOwnerId(v int64) *Describ
 }
 
 type DescribeInstanceOpsRecordsResponseBody struct {
-	Records   []*DescribeInstanceOpsRecordsResponseBodyRecords `json:"Records,omitempty" xml:"Records,omitempty" type:"Repeated"`
-	RequestId *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The details of the O\&M task.
+	Records []*DescribeInstanceOpsRecordsResponseBodyRecords `json:"Records,omitempty" xml:"Records,omitempty" type:"Repeated"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeInstanceOpsRecordsResponseBody) String() string {
@@ -7823,12 +8857,18 @@ func (s *DescribeInstanceOpsRecordsResponseBody) SetRequestId(v string) *Describ
 }
 
 type DescribeInstanceOpsRecordsResponseBodyRecords struct {
-	CreateTime    *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	ExpireTime    *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	OpsStatus     *string `json:"OpsStatus,omitempty" xml:"OpsStatus,omitempty"`
-	OpsType       *string `json:"OpsType,omitempty" xml:"OpsType,omitempty"`
+	// The time when the O\&M task was created.
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The time when the O\&M task expires.
+	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	// The status of the O\&M task.
+	OpsStatus *string `json:"OpsStatus,omitempty" xml:"OpsStatus,omitempty"`
+	// The type of the O\&M task.
+	OpsType *string `json:"OpsType,omitempty" xml:"OpsType,omitempty"`
+	// The content of the O\&M result. The content is the download URL of the files that are generated for the O\&M task.
 	ResultContent *string `json:"ResultContent,omitempty" xml:"ResultContent,omitempty"`
-	ResultType    *string `json:"ResultType,omitempty" xml:"ResultType,omitempty"`
+	// The type of the O\&M result. Valid value: OSS. This value indicates that the files generated for the O\&M task are saved to Object Storage Service (OSS) buckets.
+	ResultType *string `json:"ResultType,omitempty" xml:"ResultType,omitempty"`
 }
 
 func (s DescribeInstanceOpsRecordsResponseBodyRecords) String() string {
@@ -7899,11 +8939,15 @@ func (s *DescribeInstanceOpsRecordsResponse) SetBody(v *DescribeInstanceOpsRecor
 }
 
 type DescribeMultiContainerGroupMetricRequest struct {
-	ContainerGroupIds    *string `json:"ContainerGroupIds,omitempty" xml:"ContainerGroupIds,omitempty"`
-	MetricType           *string `json:"MetricType,omitempty" xml:"MetricType,omitempty"`
-	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// A JSON array that consists of the IDs of the elastic container instances. A maximum of 20 IDs are supported.
+	ContainerGroupIds *string `json:"ContainerGroupIds,omitempty" xml:"ContainerGroupIds,omitempty"`
+	// The type of the monitoring data. Set the value to summary, which indicates that records are returned.
+	MetricType   *string `json:"MetricType,omitempty" xml:"MetricType,omitempty"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID of the elastic container instances.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the resource group to which the instances belong.
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -7958,8 +9002,10 @@ func (s *DescribeMultiContainerGroupMetricRequest) SetResourceOwnerId(v int64) *
 }
 
 type DescribeMultiContainerGroupMetricResponseBody struct {
+	// The collection of monitoring data of the elastic container instances.
 	MonitorDatas []*DescribeMultiContainerGroupMetricResponseBodyMonitorDatas `json:"MonitorDatas,omitempty" xml:"MonitorDatas,omitempty" type:"Repeated"`
-	RequestId    *string                                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeMultiContainerGroupMetricResponseBody) String() string {
@@ -7981,8 +9027,10 @@ func (s *DescribeMultiContainerGroupMetricResponseBody) SetRequestId(v string) *
 }
 
 type DescribeMultiContainerGroupMetricResponseBodyMonitorDatas struct {
-	ContainerGroupId *string                                                             `json:"ContainerGroupId,omitempty" xml:"ContainerGroupId,omitempty"`
-	Records          []*DescribeMultiContainerGroupMetricResponseBodyMonitorDatasRecords `json:"Records,omitempty" xml:"Records,omitempty" type:"Repeated"`
+	// The ID of the elastic container instance.
+	ContainerGroupId *string `json:"ContainerGroupId,omitempty" xml:"ContainerGroupId,omitempty"`
+	// The details about monitoring data.
+	Records []*DescribeMultiContainerGroupMetricResponseBodyMonitorDatasRecords `json:"Records,omitempty" xml:"Records,omitempty" type:"Repeated"`
 }
 
 func (s DescribeMultiContainerGroupMetricResponseBodyMonitorDatas) String() string {
@@ -8004,13 +9052,20 @@ func (s *DescribeMultiContainerGroupMetricResponseBodyMonitorDatas) SetRecords(v
 }
 
 type DescribeMultiContainerGroupMetricResponseBodyMonitorDatasRecords struct {
-	CPU        *DescribeMultiContainerGroupMetricResponseBodyMonitorDatasRecordsCPU          `json:"CPU,omitempty" xml:"CPU,omitempty" type:"Struct"`
+	// The monitoring data of vCPUs.
+	CPU *DescribeMultiContainerGroupMetricResponseBodyMonitorDatasRecordsCPU `json:"CPU,omitempty" xml:"CPU,omitempty" type:"Struct"`
+	// The monitoring data of containers.
 	Containers []*DescribeMultiContainerGroupMetricResponseBodyMonitorDatasRecordsContainers `json:"Containers,omitempty" xml:"Containers,omitempty" type:"Repeated"`
-	Disk       []*DescribeMultiContainerGroupMetricResponseBodyMonitorDatasRecordsDisk       `json:"Disk,omitempty" xml:"Disk,omitempty" type:"Repeated"`
+	// The monitoring data of disks.
+	Disk []*DescribeMultiContainerGroupMetricResponseBodyMonitorDatasRecordsDisk `json:"Disk,omitempty" xml:"Disk,omitempty" type:"Repeated"`
+	// The monitoring data of file system partitions.
 	Filesystem []*DescribeMultiContainerGroupMetricResponseBodyMonitorDatasRecordsFilesystem `json:"Filesystem,omitempty" xml:"Filesystem,omitempty" type:"Repeated"`
-	Memory     *DescribeMultiContainerGroupMetricResponseBodyMonitorDatasRecordsMemory       `json:"Memory,omitempty" xml:"Memory,omitempty" type:"Struct"`
-	Network    *DescribeMultiContainerGroupMetricResponseBodyMonitorDatasRecordsNetwork      `json:"Network,omitempty" xml:"Network,omitempty" type:"Struct"`
-	Timestamp  *string                                                                       `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
+	// The monitoring data of the memory.
+	Memory *DescribeMultiContainerGroupMetricResponseBodyMonitorDatasRecordsMemory `json:"Memory,omitempty" xml:"Memory,omitempty" type:"Struct"`
+	// The monitoring data of the network.
+	Network *DescribeMultiContainerGroupMetricResponseBodyMonitorDatasRecordsNetwork `json:"Network,omitempty" xml:"Network,omitempty" type:"Struct"`
+	// The time when the entry of monitoring data was collected. The time follows the RFC 3339 format.
+	Timestamp *string `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
 }
 
 func (s DescribeMultiContainerGroupMetricResponseBodyMonitorDatasRecords) String() string {
@@ -8057,10 +9112,14 @@ func (s *DescribeMultiContainerGroupMetricResponseBodyMonitorDatasRecords) SetTi
 }
 
 type DescribeMultiContainerGroupMetricResponseBodyMonitorDatasRecordsCPU struct {
-	Limit                *int64 `json:"Limit,omitempty" xml:"Limit,omitempty"`
-	Load                 *int64 `json:"Load,omitempty" xml:"Load,omitempty"`
+	// The upper limit of vCPU usage. The calculation formula for this parameter: The number of vCPUs × 1000.
+	Limit *int64 `json:"Limit,omitempty" xml:"Limit,omitempty"`
+	// The average load in the last 10 seconds.
+	Load *int64 `json:"Load,omitempty" xml:"Load,omitempty"`
+	// The cumulative usage of vCPUs.
 	UsageCoreNanoSeconds *int64 `json:"UsageCoreNanoSeconds,omitempty" xml:"UsageCoreNanoSeconds,omitempty"`
-	UsageNanoCores       *int64 `json:"UsageNanoCores,omitempty" xml:"UsageNanoCores,omitempty"`
+	// The vCPU usage in the sampling window. Unit for the sampling window: nanoseconds.
+	UsageNanoCores *int64 `json:"UsageNanoCores,omitempty" xml:"UsageNanoCores,omitempty"`
 }
 
 func (s DescribeMultiContainerGroupMetricResponseBodyMonitorDatasRecordsCPU) String() string {
@@ -8092,9 +9151,12 @@ func (s *DescribeMultiContainerGroupMetricResponseBodyMonitorDatasRecordsCPU) Se
 }
 
 type DescribeMultiContainerGroupMetricResponseBodyMonitorDatasRecordsContainers struct {
-	CPU    *DescribeMultiContainerGroupMetricResponseBodyMonitorDatasRecordsContainersCPU    `json:"CPU,omitempty" xml:"CPU,omitempty" type:"Struct"`
+	// The vCPU monitoring data of the container.
+	CPU *DescribeMultiContainerGroupMetricResponseBodyMonitorDatasRecordsContainersCPU `json:"CPU,omitempty" xml:"CPU,omitempty" type:"Struct"`
+	// The memory monitoring data of the container.
 	Memory *DescribeMultiContainerGroupMetricResponseBodyMonitorDatasRecordsContainersMemory `json:"Memory,omitempty" xml:"Memory,omitempty" type:"Struct"`
-	Name   *string                                                                           `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The name of the container.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
 func (s DescribeMultiContainerGroupMetricResponseBodyMonitorDatasRecordsContainers) String() string {
@@ -8121,10 +9183,14 @@ func (s *DescribeMultiContainerGroupMetricResponseBodyMonitorDatasRecordsContain
 }
 
 type DescribeMultiContainerGroupMetricResponseBodyMonitorDatasRecordsContainersCPU struct {
-	Limit                *int64 `json:"Limit,omitempty" xml:"Limit,omitempty"`
-	Load                 *int64 `json:"Load,omitempty" xml:"Load,omitempty"`
+	// The upper limit of vCPU usage. The calculation formula for this parameter: The number of vCPUs × 1000.
+	Limit *int64 `json:"Limit,omitempty" xml:"Limit,omitempty"`
+	// The average load in the last 10 seconds.
+	Load *int64 `json:"Load,omitempty" xml:"Load,omitempty"`
+	// The cumulative usage of vCPUs.
 	UsageCoreNanoSeconds *int64 `json:"UsageCoreNanoSeconds,omitempty" xml:"UsageCoreNanoSeconds,omitempty"`
-	UsageNanoCores       *int64 `json:"UsageNanoCores,omitempty" xml:"UsageNanoCores,omitempty"`
+	// The vCPU usage in the sampling window. Unit for the sampling window: nanoseconds.
+	UsageNanoCores *int64 `json:"UsageNanoCores,omitempty" xml:"UsageNanoCores,omitempty"`
 }
 
 func (s DescribeMultiContainerGroupMetricResponseBodyMonitorDatasRecordsContainersCPU) String() string {
@@ -8156,11 +9222,16 @@ func (s *DescribeMultiContainerGroupMetricResponseBodyMonitorDatasRecordsContain
 }
 
 type DescribeMultiContainerGroupMetricResponseBodyMonitorDatasRecordsContainersMemory struct {
+	// The size of the available memory. Unit: bytes.
 	AvailableBytes *int64 `json:"AvailableBytes,omitempty" xml:"AvailableBytes,omitempty"`
-	Cache          *int64 `json:"Cache,omitempty" xml:"Cache,omitempty"`
-	Rss            *int64 `json:"Rss,omitempty" xml:"Rss,omitempty"`
-	UsageBytes     *int64 `json:"UsageBytes,omitempty" xml:"UsageBytes,omitempty"`
-	WorkingSet     *int64 `json:"WorkingSet,omitempty" xml:"WorkingSet,omitempty"`
+	// The size of the cache. Unit: bytes.
+	Cache *int64 `json:"Cache,omitempty" xml:"Cache,omitempty"`
+	// The size of the resident memory set, which indicates the size of the physical memory that is actually used. Unit: bytes.
+	Rss *int64 `json:"Rss,omitempty" xml:"Rss,omitempty"`
+	// The size of the used memory. Unit: bytes.
+	UsageBytes *int64 `json:"UsageBytes,omitempty" xml:"UsageBytes,omitempty"`
+	// The usage of the working set. Unit: bytes.
+	WorkingSet *int64 `json:"WorkingSet,omitempty" xml:"WorkingSet,omitempty"`
 }
 
 func (s DescribeMultiContainerGroupMetricResponseBodyMonitorDatasRecordsContainersMemory) String() string {
@@ -8197,11 +9268,16 @@ func (s *DescribeMultiContainerGroupMetricResponseBodyMonitorDatasRecordsContain
 }
 
 type DescribeMultiContainerGroupMetricResponseBodyMonitorDatasRecordsDisk struct {
-	Device     *string `json:"Device,omitempty" xml:"Device,omitempty"`
-	ReadBytes  *int64  `json:"ReadBytes,omitempty" xml:"ReadBytes,omitempty"`
-	ReadIo     *int64  `json:"ReadIo,omitempty" xml:"ReadIo,omitempty"`
-	WriteBytes *int64  `json:"WriteBytes,omitempty" xml:"WriteBytes,omitempty"`
-	WriteIo    *int64  `json:"WriteIo,omitempty" xml:"WriteIo,omitempty"`
+	// The name of the disk.
+	Device *string `json:"Device,omitempty" xml:"Device,omitempty"`
+	// The amount of data that was read from the disk. Unit: bytes.
+	ReadBytes *int64 `json:"ReadBytes,omitempty" xml:"ReadBytes,omitempty"`
+	// This parameter is unavailable.
+	ReadIo *int64 `json:"ReadIo,omitempty" xml:"ReadIo,omitempty"`
+	// The amount of data that was written to the disk. Unit: bytes.
+	WriteBytes *int64 `json:"WriteBytes,omitempty" xml:"WriteBytes,omitempty"`
+	// This parameter is unavailable.
+	WriteIo *int64 `json:"WriteIo,omitempty" xml:"WriteIo,omitempty"`
 }
 
 func (s DescribeMultiContainerGroupMetricResponseBodyMonitorDatasRecordsDisk) String() string {
@@ -8238,10 +9314,14 @@ func (s *DescribeMultiContainerGroupMetricResponseBodyMonitorDatasRecordsDisk) S
 }
 
 type DescribeMultiContainerGroupMetricResponseBodyMonitorDatasRecordsFilesystem struct {
-	Available *int64  `json:"Available,omitempty" xml:"Available,omitempty"`
-	Capacity  *int64  `json:"Capacity,omitempty" xml:"Capacity,omitempty"`
-	FsName    *string `json:"FsName,omitempty" xml:"FsName,omitempty"`
-	Usage     *int64  `json:"Usage,omitempty" xml:"Usage,omitempty"`
+	// The size of the available space.
+	Available *int64 `json:"Available,omitempty" xml:"Available,omitempty"`
+	// The total size of space.
+	Capacity *int64 `json:"Capacity,omitempty" xml:"Capacity,omitempty"`
+	// The name of the partition.
+	FsName *string `json:"FsName,omitempty" xml:"FsName,omitempty"`
+	// The size of used space.
+	Usage *int64 `json:"Usage,omitempty" xml:"Usage,omitempty"`
 }
 
 func (s DescribeMultiContainerGroupMetricResponseBodyMonitorDatasRecordsFilesystem) String() string {
@@ -8273,11 +9353,16 @@ func (s *DescribeMultiContainerGroupMetricResponseBodyMonitorDatasRecordsFilesys
 }
 
 type DescribeMultiContainerGroupMetricResponseBodyMonitorDatasRecordsMemory struct {
+	// The size of the available memory. Unit: bytes.
 	AvailableBytes *int64 `json:"AvailableBytes,omitempty" xml:"AvailableBytes,omitempty"`
-	Cache          *int64 `json:"Cache,omitempty" xml:"Cache,omitempty"`
-	Rss            *int64 `json:"Rss,omitempty" xml:"Rss,omitempty"`
-	UsageBytes     *int64 `json:"UsageBytes,omitempty" xml:"UsageBytes,omitempty"`
-	WorkingSet     *int64 `json:"WorkingSet,omitempty" xml:"WorkingSet,omitempty"`
+	// The size of the cache. Unit: bytes.
+	Cache *int64 `json:"Cache,omitempty" xml:"Cache,omitempty"`
+	// The size of the resident memory set, which indicates the size of the physical memory that is actually used. Unit: bytes.
+	Rss *int64 `json:"Rss,omitempty" xml:"Rss,omitempty"`
+	// The size of the used memory. Unit: bytes.
+	UsageBytes *int64 `json:"UsageBytes,omitempty" xml:"UsageBytes,omitempty"`
+	// The usage of the working set. Unit: bytes.
+	WorkingSet *int64 `json:"WorkingSet,omitempty" xml:"WorkingSet,omitempty"`
 }
 
 func (s DescribeMultiContainerGroupMetricResponseBodyMonitorDatasRecordsMemory) String() string {
@@ -8314,6 +9399,7 @@ func (s *DescribeMultiContainerGroupMetricResponseBodyMonitorDatasRecordsMemory)
 }
 
 type DescribeMultiContainerGroupMetricResponseBodyMonitorDatasRecordsNetwork struct {
+	// The monitoring data of network interface controllers (NICs).
 	Interfaces []*DescribeMultiContainerGroupMetricResponseBodyMonitorDatasRecordsNetworkInterfaces `json:"Interfaces,omitempty" xml:"Interfaces,omitempty" type:"Repeated"`
 }
 
@@ -8331,15 +9417,24 @@ func (s *DescribeMultiContainerGroupMetricResponseBodyMonitorDatasRecordsNetwork
 }
 
 type DescribeMultiContainerGroupMetricResponseBodyMonitorDatasRecordsNetworkInterfaces struct {
-	Name      *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	RxBytes   *int64  `json:"RxBytes,omitempty" xml:"RxBytes,omitempty"`
-	RxDrops   *int64  `json:"RxDrops,omitempty" xml:"RxDrops,omitempty"`
-	RxErrors  *int64  `json:"RxErrors,omitempty" xml:"RxErrors,omitempty"`
-	RxPackets *int64  `json:"RxPackets,omitempty" xml:"RxPackets,omitempty"`
-	TxBytes   *int64  `json:"TxBytes,omitempty" xml:"TxBytes,omitempty"`
-	TxDrops   *int64  `json:"TxDrops,omitempty" xml:"TxDrops,omitempty"`
-	TxErrors  *int64  `json:"TxErrors,omitempty" xml:"TxErrors,omitempty"`
-	TxPackets *int64  `json:"TxPackets,omitempty" xml:"TxPackets,omitempty"`
+	// The name of the NIC.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The total number of bytes received.
+	RxBytes *int64 `json:"RxBytes,omitempty" xml:"RxBytes,omitempty"`
+	// The number of packets that fail to be received.
+	RxDrops *int64 `json:"RxDrops,omitempty" xml:"RxDrops,omitempty"`
+	// The number of receipt errors.
+	RxErrors *int64 `json:"RxErrors,omitempty" xml:"RxErrors,omitempty"`
+	// The total number of packets received.
+	RxPackets *int64 `json:"RxPackets,omitempty" xml:"RxPackets,omitempty"`
+	// The total number of bytes sent.
+	TxBytes *int64 `json:"TxBytes,omitempty" xml:"TxBytes,omitempty"`
+	// The number of packets that fail to arrive at their destination.
+	TxDrops *int64 `json:"TxDrops,omitempty" xml:"TxDrops,omitempty"`
+	// The total number of sending errors.
+	TxErrors *int64 `json:"TxErrors,omitempty" xml:"TxErrors,omitempty"`
+	// The total number of packets sent.
+	TxPackets *int64 `json:"TxPackets,omitempty" xml:"TxPackets,omitempty"`
 }
 
 func (s DescribeMultiContainerGroupMetricResponseBodyMonitorDatasRecordsNetworkInterfaces) String() string {
@@ -8425,8 +9520,9 @@ func (s *DescribeMultiContainerGroupMetricResponse) SetBody(v *DescribeMultiCont
 }
 
 type DescribeRegionsRequest struct {
-	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The ID of the region.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -8466,8 +9562,10 @@ func (s *DescribeRegionsRequest) SetResourceOwnerId(v int64) *DescribeRegionsReq
 }
 
 type DescribeRegionsResponseBody struct {
-	Regions   []*DescribeRegionsResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Repeated"`
-	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The details about the regions.
+	Regions []*DescribeRegionsResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Repeated"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeRegionsResponseBody) String() string {
@@ -8489,10 +9587,14 @@ func (s *DescribeRegionsResponseBody) SetRequestId(v string) *DescribeRegionsRes
 }
 
 type DescribeRegionsResponseBodyRegions struct {
+	// The recommended zones. Recommended zones are zones that have relatively sufficient resources in the current region.
 	RecommendZones []*string `json:"RecommendZones,omitempty" xml:"RecommendZones,omitempty" type:"Repeated"`
-	RegionEndpoint *string   `json:"RegionEndpoint,omitempty" xml:"RegionEndpoint,omitempty"`
-	RegionId       *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Zones          []*string `json:"Zones,omitempty" xml:"Zones,omitempty" type:"Repeated"`
+	// The endpoint of the region.
+	RegionEndpoint *string `json:"RegionEndpoint,omitempty" xml:"RegionEndpoint,omitempty"`
+	// The ID of the region.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The IDs of the zones.
+	Zones []*string `json:"Zones,omitempty" xml:"Zones,omitempty" type:"Repeated"`
 }
 
 func (s DescribeRegionsResponseBodyRegions) String() string {
@@ -8553,22 +9655,35 @@ func (s *DescribeRegionsResponse) SetBody(v *DescribeRegionsResponseBody) *Descr
 }
 
 type DescribeVirtualNodesRequest struct {
-	ClientToken          *string                           `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	Limit                *int64                            `json:"Limit,omitempty" xml:"Limit,omitempty"`
-	NextToken            *string                           `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	OwnerAccount         *string                           `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64                            `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId             *string                           `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceGroupId      *string                           `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	ResourceOwnerAccount *string                           `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64                            `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	SecurityGroupId      *string                           `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	Status               *string                           `json:"Status,omitempty" xml:"Status,omitempty"`
-	Tag                  []*DescribeVirtualNodesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	VSwitchId            *string                           `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	VirtualNodeIds       *string                           `json:"VirtualNodeIds,omitempty" xml:"VirtualNodeIds,omitempty"`
-	VirtualNodeName      *string                           `json:"VirtualNodeName,omitempty" xml:"VirtualNodeName,omitempty"`
-	ZoneId               *string                           `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can only contain ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotency](~~25693~~).
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The maximum number of resources that are allowed to return for this request. Default value: 20. Maximum value: 20.
+	//
+	// >  The number of resources to be returned is no greater than this parameter value.
+	Limit *int64 `json:"Limit,omitempty" xml:"Limit,omitempty"`
+	// The token that is used for the next query. If this parameter is empty, all results have been returned.
+	//
+	// You do not need to specify this parameter in the first request. You can obtain the token from the result returned by the previous request.
+	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID of the virtual nodes.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the resource group.
+	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The status of the virtual node. Valid values:
+	//
+	// *   Pending
+	// *   Ready
+	// *   Failed
+	Status *string                           `json:"Status,omitempty" xml:"Status,omitempty"`
+	Tag    []*DescribeVirtualNodesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	// The IDs of the virtual nodes. You can specify up to 20 IDs. Each ID must be a string in JSON format.
+	VirtualNodeIds *string `json:"VirtualNodeIds,omitempty" xml:"VirtualNodeIds,omitempty"`
+	// The name of the virtual node.
+	VirtualNodeName *string `json:"VirtualNodeName,omitempty" xml:"VirtualNodeName,omitempty"`
 }
 
 func (s DescribeVirtualNodesRequest) String() string {
@@ -8624,11 +9739,6 @@ func (s *DescribeVirtualNodesRequest) SetResourceOwnerId(v int64) *DescribeVirtu
 	return s
 }
 
-func (s *DescribeVirtualNodesRequest) SetSecurityGroupId(v string) *DescribeVirtualNodesRequest {
-	s.SecurityGroupId = &v
-	return s
-}
-
 func (s *DescribeVirtualNodesRequest) SetStatus(v string) *DescribeVirtualNodesRequest {
 	s.Status = &v
 	return s
@@ -8636,11 +9746,6 @@ func (s *DescribeVirtualNodesRequest) SetStatus(v string) *DescribeVirtualNodesR
 
 func (s *DescribeVirtualNodesRequest) SetTag(v []*DescribeVirtualNodesRequestTag) *DescribeVirtualNodesRequest {
 	s.Tag = v
-	return s
-}
-
-func (s *DescribeVirtualNodesRequest) SetVSwitchId(v string) *DescribeVirtualNodesRequest {
-	s.VSwitchId = &v
 	return s
 }
 
@@ -8654,13 +9759,10 @@ func (s *DescribeVirtualNodesRequest) SetVirtualNodeName(v string) *DescribeVirt
 	return s
 }
 
-func (s *DescribeVirtualNodesRequest) SetZoneId(v string) *DescribeVirtualNodesRequest {
-	s.ZoneId = &v
-	return s
-}
-
 type DescribeVirtualNodesRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The key of tag N.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of tag N.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -8683,9 +9785,13 @@ func (s *DescribeVirtualNodesRequestTag) SetValue(v string) *DescribeVirtualNode
 }
 
 type DescribeVirtualNodesResponseBody struct {
-	NextToken    *string                                         `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	RequestId    *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount   *int32                                          `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The token that was returned for the next query.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The number of virtual nodes that were queried.
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The virtual nodes that were queried.
 	VirtualNodes []*DescribeVirtualNodesResponseBodyVirtualNodes `json:"VirtualNodes,omitempty" xml:"VirtualNodes,omitempty" type:"Repeated"`
 }
 
@@ -8718,26 +9824,46 @@ func (s *DescribeVirtualNodesResponseBody) SetVirtualNodes(v []*DescribeVirtualN
 }
 
 type DescribeVirtualNodesResponseBodyVirtualNodes struct {
-	ClusterId       *string                                               `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	Cpu             *float32                                              `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
-	CreationTime    *string                                               `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	EniInstanceId   *string                                               `json:"EniInstanceId,omitempty" xml:"EniInstanceId,omitempty"`
-	Events          []*DescribeVirtualNodesResponseBodyVirtualNodesEvents `json:"Events,omitempty" xml:"Events,omitempty" type:"Repeated"`
-	InternetIp      *string                                               `json:"InternetIp,omitempty" xml:"InternetIp,omitempty"`
-	IntranetIp      *string                                               `json:"IntranetIp,omitempty" xml:"IntranetIp,omitempty"`
-	Memory          *float32                                              `json:"Memory,omitempty" xml:"Memory,omitempty"`
-	RamRoleName     *string                                               `json:"RamRoleName,omitempty" xml:"RamRoleName,omitempty"`
-	RegionId        *string                                               `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceGroupId *string                                               `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	SecurityGroupId *string                                               `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	Status          *string                                               `json:"Status,omitempty" xml:"Status,omitempty"`
-	Tags            []*DescribeVirtualNodesResponseBodyVirtualNodesTags   `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	VSwitchId       *string                                               `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	VirtualNodeId   *string                                               `json:"VirtualNodeId,omitempty" xml:"VirtualNodeId,omitempty"`
-	VirtualNodeName *string                                               `json:"VirtualNodeName,omitempty" xml:"VirtualNodeName,omitempty"`
-	// VPC ID。
-	VpcId  *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// The ID of the Kubernetes cluster.
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The number of vCPUs. This parameter is unavailable.
+	Cpu *float32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	// The time when the virtual node was created. The time follows the RFC 3339 standard and is displayed in UTC.
+	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	// An array of the events.
+	Events []*DescribeVirtualNodesResponseBodyVirtualNodesEvents `json:"Events,omitempty" xml:"Events,omitempty" type:"Repeated"`
+	// The public IP address.
+	InternetIp *string `json:"InternetIp,omitempty" xml:"InternetIp,omitempty"`
+	// The internal IP address.
+	IntranetIp *string `json:"IntranetIp,omitempty" xml:"IntranetIp,omitempty"`
+	// The memory size. This parameter is unavailable.
+	Memory *float32 `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	// The region ID of the virtual node.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the resource group.
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The ID of the security group.
+	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	// The status of the virtual node. Valid values:
+	//
+	// *   Pending
+	// *   Ready
+	// *   Failed
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// An array of tags.
+	Tags       []*DescribeVirtualNodesResponseBodyVirtualNodesTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	VSwitchIds []*string                                           `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Repeated"`
+	// The ID of the virtual node.
+	VirtualNodeId *string `json:"VirtualNodeId,omitempty" xml:"VirtualNodeId,omitempty"`
+	// The name of the virtual node.
+	VirtualNodeName            *string `json:"VirtualNodeName,omitempty" xml:"VirtualNodeName,omitempty"`
+	VirtualNodeSecurityGroupId *string `json:"VirtualNodeSecurityGroupId,omitempty" xml:"VirtualNodeSecurityGroupId,omitempty"`
+	VirtualNodeVSwitchId       *string `json:"VirtualNodeVSwitchId,omitempty" xml:"VirtualNodeVSwitchId,omitempty"`
+	// The ID of the virtual private cloud (VPC).
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The ID of the zone.
+	ZoneId  *string   `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	ZoneIds []*string `json:"ZoneIds,omitempty" xml:"ZoneIds,omitempty" type:"Repeated"`
 }
 
 func (s DescribeVirtualNodesResponseBodyVirtualNodes) String() string {
@@ -8763,11 +9889,6 @@ func (s *DescribeVirtualNodesResponseBodyVirtualNodes) SetCreationTime(v string)
 	return s
 }
 
-func (s *DescribeVirtualNodesResponseBodyVirtualNodes) SetEniInstanceId(v string) *DescribeVirtualNodesResponseBodyVirtualNodes {
-	s.EniInstanceId = &v
-	return s
-}
-
 func (s *DescribeVirtualNodesResponseBodyVirtualNodes) SetEvents(v []*DescribeVirtualNodesResponseBodyVirtualNodesEvents) *DescribeVirtualNodesResponseBodyVirtualNodes {
 	s.Events = v
 	return s
@@ -8785,11 +9906,6 @@ func (s *DescribeVirtualNodesResponseBodyVirtualNodes) SetIntranetIp(v string) *
 
 func (s *DescribeVirtualNodesResponseBodyVirtualNodes) SetMemory(v float32) *DescribeVirtualNodesResponseBodyVirtualNodes {
 	s.Memory = &v
-	return s
-}
-
-func (s *DescribeVirtualNodesResponseBodyVirtualNodes) SetRamRoleName(v string) *DescribeVirtualNodesResponseBodyVirtualNodes {
-	s.RamRoleName = &v
 	return s
 }
 
@@ -8818,8 +9934,8 @@ func (s *DescribeVirtualNodesResponseBodyVirtualNodes) SetTags(v []*DescribeVirt
 	return s
 }
 
-func (s *DescribeVirtualNodesResponseBodyVirtualNodes) SetVSwitchId(v string) *DescribeVirtualNodesResponseBodyVirtualNodes {
-	s.VSwitchId = &v
+func (s *DescribeVirtualNodesResponseBodyVirtualNodes) SetVSwitchIds(v []*string) *DescribeVirtualNodesResponseBodyVirtualNodes {
+	s.VSwitchIds = v
 	return s
 }
 
@@ -8833,6 +9949,16 @@ func (s *DescribeVirtualNodesResponseBodyVirtualNodes) SetVirtualNodeName(v stri
 	return s
 }
 
+func (s *DescribeVirtualNodesResponseBodyVirtualNodes) SetVirtualNodeSecurityGroupId(v string) *DescribeVirtualNodesResponseBodyVirtualNodes {
+	s.VirtualNodeSecurityGroupId = &v
+	return s
+}
+
+func (s *DescribeVirtualNodesResponseBodyVirtualNodes) SetVirtualNodeVSwitchId(v string) *DescribeVirtualNodesResponseBodyVirtualNodes {
+	s.VirtualNodeVSwitchId = &v
+	return s
+}
+
 func (s *DescribeVirtualNodesResponseBodyVirtualNodes) SetVpcId(v string) *DescribeVirtualNodesResponseBodyVirtualNodes {
 	s.VpcId = &v
 	return s
@@ -8843,14 +9969,29 @@ func (s *DescribeVirtualNodesResponseBodyVirtualNodes) SetZoneId(v string) *Desc
 	return s
 }
 
+func (s *DescribeVirtualNodesResponseBodyVirtualNodes) SetZoneIds(v []*string) *DescribeVirtualNodesResponseBodyVirtualNodes {
+	s.ZoneIds = v
+	return s
+}
+
 type DescribeVirtualNodesResponseBodyVirtualNodesEvents struct {
-	Count          *int32  `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The number of events.
+	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The time when the event started.
 	FirstTimestamp *string `json:"FirstTimestamp,omitempty" xml:"FirstTimestamp,omitempty"`
-	LastTimestamp  *string `json:"LastTimestamp,omitempty" xml:"LastTimestamp,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	Name           *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Reason         *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
-	Type           *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The time when the event ended.
+	LastTimestamp *string `json:"LastTimestamp,omitempty" xml:"LastTimestamp,omitempty"`
+	// The message of the event.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The name of the object to which the event belongs.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The name of the event.
+	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	// The type of the event. Valid values:
+	//
+	// *   Normal
+	// *   Warning
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s DescribeVirtualNodesResponseBodyVirtualNodesEvents) String() string {
@@ -8897,7 +10038,9 @@ func (s *DescribeVirtualNodesResponseBodyVirtualNodesEvents) SetType(v string) *
 }
 
 type DescribeVirtualNodesResponseBodyVirtualNodesTags struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag key of the virtual node.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value of the virtual node.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -8949,17 +10092,30 @@ func (s *DescribeVirtualNodesResponse) SetBody(v *DescribeVirtualNodesResponseBo
 }
 
 type ExecContainerCommandRequest struct {
-	Command              *string `json:"Command,omitempty" xml:"Command,omitempty"`
-	ContainerGroupId     *string `json:"ContainerGroupId,omitempty" xml:"ContainerGroupId,omitempty"`
-	ContainerName        *string `json:"ContainerName,omitempty" xml:"ContainerName,omitempty"`
-	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The commands to run in the container. You can specify up to 20 commands. Each command can be up to 256 characters in length.
+	//
+	// The strings must be in the JSON format. Example: `["/bin/sh", "-c", "ls -a"]`.
+	Command *string `json:"Command,omitempty" xml:"Command,omitempty"`
+	// The ID of the elastic container instance.
+	ContainerGroupId *string `json:"ContainerGroupId,omitempty" xml:"ContainerGroupId,omitempty"`
+	// The name of the container.
+	ContainerName *string `json:"ContainerName,omitempty" xml:"ContainerName,omitempty"`
+	OwnerAccount  *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The ID of the region where an elastic container instance is created.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	Stdin                *bool   `json:"Stdin,omitempty" xml:"Stdin,omitempty"`
-	Sync                 *bool   `json:"Sync,omitempty" xml:"Sync,omitempty"`
-	TTY                  *bool   `json:"TTY,omitempty" xml:"TTY,omitempty"`
+	// Specifies whether to read the commands from standard input (stdin). Default value: true.
+	Stdin *bool `json:"Stdin,omitempty" xml:"Stdin,omitempty"`
+	// Specifies whether to run the command immediately and return the result. Default value: false.
+	//
+	// If you set this parameter to true, set the value of TTY to false.
+	Sync *bool `json:"Sync,omitempty" xml:"Sync,omitempty"`
+	// Specifies whether to enable interaction. Default value: false.
+	//
+	// If the command is a /bin/bash command, set the value to true.
+	TTY *bool `json:"TTY,omitempty" xml:"TTY,omitempty"`
 }
 
 func (s ExecContainerCommandRequest) String() string {
@@ -9026,9 +10182,13 @@ func (s *ExecContainerCommandRequest) SetTTY(v bool) *ExecContainerCommandReques
 }
 
 type ExecContainerCommandResponseBody struct {
-	HttpUrl      *string `json:"HttpUrl,omitempty" xml:"HttpUrl,omitempty"`
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The HTTP URL. You can use this URL to enter the container within 30 seconds after this operation is called. For more information, see [Use and integrate the Elastic Container Instance terminal](~~202846~~).
+	HttpUrl *string `json:"HttpUrl,omitempty" xml:"HttpUrl,omitempty"`
+	// The unique ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The output of the command. This parameter is returned when Sync is set to true.
 	SyncResponse *string `json:"SyncResponse,omitempty" xml:"SyncResponse,omitempty"`
+	// The WebSocket URL. You can use this URL to establish a WebSocket connection with the container.
 	WebSocketUri *string `json:"WebSocketUri,omitempty" xml:"WebSocketUri,omitempty"`
 }
 
@@ -9090,8 +10250,9 @@ func (s *ExecContainerCommandResponse) SetBody(v *ExecContainerCommandResponseBo
 }
 
 type ListUsageRequest struct {
-	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The ID of the region.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -9131,8 +10292,15 @@ func (s *ListUsageRequest) SetResourceOwnerId(v int64) *ListUsageRequest {
 }
 
 type ListUsageResponseBody struct {
+	// The information about the used amounts and upper limits of privileges and quotas that you have in a specified region. The information contains the following items:
+	//
+	// *   UsedCpu: the number of existing vCPUs.
+	// *   MaxCpu: the maximum number of vCPUs.
+	// *   UsedImageCacheCount: the number of existing image caches.
+	// *   MaxImageCacheCount: the maximum number of image caches.
 	Attributes map[string]interface{} `json:"Attributes,omitempty" xml:"Attributes,omitempty"`
-	RequestId  *string                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListUsageResponseBody) String() string {
@@ -9183,15 +10351,27 @@ func (s *ListUsageResponse) SetBody(v *ListUsageResponseBody) *ListUsageResponse
 }
 
 type ResizeContainerGroupVolumeRequest struct {
-	ClientToken          *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	ContainerGroupId     *string `json:"ContainerGroupId,omitempty" xml:"ContainerGroupId,omitempty"`
-	NewSize              *int64  `json:"NewSize,omitempty" xml:"NewSize,omitempty"`
-	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can only contain ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure the idempotence of a request](~~25693~~).
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The ID of the elastic container instance for which you want to scale out the volume.
+	ContainerGroupId *string `json:"ContainerGroupId,omitempty" xml:"ContainerGroupId,omitempty"`
+	// The size of the disk after the scale-out activity is complete. Unit: GiB. Valid values:
+	//
+	// *   20 to 32768 for ultra disks (cloud_efficiency)
+	// *   20 to 32768 for standard SSD (cloud_ssd)
+	// *   20 to 32768 for enhanced SSD (cloud_essd)
+	// *   5 to 2000 for basic disk (cloud)
+	//
+	// >  The size of the disk after the scale-out activity is complete must be greater than the size of the disk before the scale-out activity is complete. If the size that you specify for the disk after the scale-out activity is complete is equal to the size of the disk before the scale-out activity is complete, only the file system is scaled out.
+	NewSize      *int64  `json:"NewSize,omitempty" xml:"NewSize,omitempty"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID of the elastic container instance.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	VolumeName           *string `json:"VolumeName,omitempty" xml:"VolumeName,omitempty"`
+	// The name of the volume. Only volumes of Alibaba Cloud disk type can be scaled out.
+	VolumeName *string `json:"VolumeName,omitempty" xml:"VolumeName,omitempty"`
 }
 
 func (s ResizeContainerGroupVolumeRequest) String() string {
@@ -9248,6 +10428,7 @@ func (s *ResizeContainerGroupVolumeRequest) SetVolumeName(v string) *ResizeConta
 }
 
 type ResizeContainerGroupVolumeResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -9294,10 +10475,13 @@ func (s *ResizeContainerGroupVolumeResponse) SetBody(v *ResizeContainerGroupVolu
 }
 
 type RestartContainerGroupRequest struct {
-	ClientToken          *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	ContainerGroupId     *string `json:"ContainerGroupId,omitempty" xml:"ContainerGroupId,omitempty"`
-	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that the value is unique among different requests. The token can only contain ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure the idempotence of a request?](~~25693~~)
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The ID of the elastic container instance.
+	ContainerGroupId *string `json:"ContainerGroupId,omitempty" xml:"ContainerGroupId,omitempty"`
+	OwnerAccount     *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId          *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID of the instance.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -9347,6 +10531,7 @@ func (s *RestartContainerGroupRequest) SetResourceOwnerId(v int64) *RestartConta
 }
 
 type RestartContainerGroupResponseBody struct {
+	// The ID of the request. The value is unique.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -9393,25 +10578,44 @@ func (s *RestartContainerGroupResponse) SetBody(v *RestartContainerGroupResponse
 }
 
 type UpdateContainerGroupRequest struct {
-	DnsConfig               *UpdateContainerGroupRequestDnsConfig                 `json:"DnsConfig,omitempty" xml:"DnsConfig,omitempty" type:"Struct"`
-	AcrRegistryInfo         []*UpdateContainerGroupRequestAcrRegistryInfo         `json:"AcrRegistryInfo,omitempty" xml:"AcrRegistryInfo,omitempty" type:"Repeated"`
-	ClientToken             *string                                               `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	Container               []*UpdateContainerGroupRequestContainer               `json:"Container,omitempty" xml:"Container,omitempty" type:"Repeated"`
-	ContainerGroupId        *string                                               `json:"ContainerGroupId,omitempty" xml:"ContainerGroupId,omitempty"`
+	DnsConfig       *UpdateContainerGroupRequestDnsConfig         `json:"DnsConfig,omitempty" xml:"DnsConfig,omitempty" type:"Struct"`
+	AcrRegistryInfo []*UpdateContainerGroupRequestAcrRegistryInfo `json:"AcrRegistryInfo,omitempty" xml:"AcrRegistryInfo,omitempty" type:"Repeated"`
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that the value is unique among different requests. The token can only contain ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotency](~~25693~~).
+	ClientToken *string                                 `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	Container   []*UpdateContainerGroupRequestContainer `json:"Container,omitempty" xml:"Container,omitempty" type:"Repeated"`
+	// The ID of the elastic container instance that you want to update.
+	ContainerGroupId *string `json:"ContainerGroupId,omitempty" xml:"ContainerGroupId,omitempty"`
+	// The number of vCPUs allocated to the elastic container instance.
 	Cpu                     *float32                                              `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
 	ImageRegistryCredential []*UpdateContainerGroupRequestImageRegistryCredential `json:"ImageRegistryCredential,omitempty" xml:"ImageRegistryCredential,omitempty" type:"Repeated"`
 	InitContainer           []*UpdateContainerGroupRequestInitContainer           `json:"InitContainer,omitempty" xml:"InitContainer,omitempty" type:"Repeated"`
-	Memory                  *float32                                              `json:"Memory,omitempty" xml:"Memory,omitempty"`
-	OwnerAccount            *string                                               `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId                 *int64                                                `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId                *string                                               `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceGroupId         *string                                               `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	ResourceOwnerAccount    *string                                               `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId         *int64                                                `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	RestartPolicy           *string                                               `json:"RestartPolicy,omitempty" xml:"RestartPolicy,omitempty"`
-	Tag                     []*UpdateContainerGroupRequestTag                     `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	UpdateType              *string                                               `json:"UpdateType,omitempty" xml:"UpdateType,omitempty"`
-	Volume                  []*UpdateContainerGroupRequestVolume                  `json:"Volume,omitempty" xml:"Volume,omitempty" type:"Repeated"`
+	// The memory size allocated to the elastic container instance. Unit: GiB.
+	Memory       *float32 `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	OwnerAccount *string  `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64   `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID of the instance.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the resource group.
+	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The restart policy of the elastic container instance. Valid values:
+	//
+	// *   Always: Always restarts the instance.
+	// *   Never: Never restarts the instance.
+	// *   OnFailure: Restarts the instance when the last start of the instance failed.
+	RestartPolicy *string `json:"RestartPolicy,omitempty" xml:"RestartPolicy,omitempty"`
+	// The list of tags that bound to the instance.
+	Tag []*UpdateContainerGroupRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	// The update type. Valid values:
+	//
+	// - RenewUpdate: full update. You must specify all relevant parameters to update the instance. For a parameter of the List type, you must specify all the items contained in the parameter even if you want to update only some of the items. For a parameter of the struct type, you must specify all the members if you want to update only some of the members.
+	// - IncrementalUpdate: incremental update. You can specify only the parameter that needs to be updated. Other related parameters remain unchanged.
+	//
+	//  Default value: RenewUpdate.
+	UpdateType *string `json:"UpdateType,omitempty" xml:"UpdateType,omitempty"`
+	// The list of data volumes.
+	Volume []*UpdateContainerGroupRequestVolume `json:"Volume,omitempty" xml:"Volume,omitempty" type:"Repeated"`
 }
 
 func (s UpdateContainerGroupRequest) String() string {
@@ -9518,9 +10722,11 @@ func (s *UpdateContainerGroupRequest) SetVolume(v []*UpdateContainerGroupRequest
 }
 
 type UpdateContainerGroupRequestDnsConfig struct {
+	// The list of IP addresses of DNS servers.
 	NameServer []*string                                     `json:"NameServer,omitempty" xml:"NameServer,omitempty" type:"Repeated"`
 	Option     []*UpdateContainerGroupRequestDnsConfigOption `json:"Option,omitempty" xml:"Option,omitempty" type:"Repeated"`
-	Search     []*string                                     `json:"Search,omitempty" xml:"Search,omitempty" type:"Repeated"`
+	// The list of DNS search domains.
+	Search []*string `json:"Search,omitempty" xml:"Search,omitempty" type:"Repeated"`
 }
 
 func (s UpdateContainerGroupRequestDnsConfig) String() string {
@@ -9547,7 +10753,9 @@ func (s *UpdateContainerGroupRequestDnsConfig) SetSearch(v []*string) *UpdateCon
 }
 
 type UpdateContainerGroupRequestDnsConfigOption struct {
-	Name  *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The option name of DNS configurations.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The option value of DNS configurations.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -9570,10 +10778,13 @@ func (s *UpdateContainerGroupRequestDnsConfigOption) SetValue(v string) *UpdateC
 }
 
 type UpdateContainerGroupRequestAcrRegistryInfo struct {
-	Domain       []*string `json:"Domain,omitempty" xml:"Domain,omitempty" type:"Repeated"`
-	InstanceId   *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	InstanceName *string   `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	RegionId     *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Domain []*string `json:"Domain,omitempty" xml:"Domain,omitempty" type:"Repeated"`
+	// The ID of Container Registry Enterprise Edition instance N.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The name of Container Registry Enterprise Edition instance N.
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The region ID of Container Registry Enterprise Edition instance N.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s UpdateContainerGroupRequestAcrRegistryInfo) String() string {
@@ -9605,40 +10816,65 @@ func (s *UpdateContainerGroupRequestAcrRegistryInfo) SetRegionId(v string) *Upda
 }
 
 type UpdateContainerGroupRequestContainer struct {
-	LivenessProbe                               *UpdateContainerGroupRequestContainerLivenessProbe                                 `json:"LivenessProbe,omitempty" xml:"LivenessProbe,omitempty" require:"true" type:"Struct"`
-	ReadinessProbe                              *UpdateContainerGroupRequestContainerReadinessProbe                                `json:"ReadinessProbe,omitempty" xml:"ReadinessProbe,omitempty" require:"true" type:"Struct"`
-	SecurityContext                             *UpdateContainerGroupRequestContainerSecurityContext                               `json:"SecurityContext,omitempty" xml:"SecurityContext,omitempty" require:"true" type:"Struct"`
-	Arg                                         []*string                                                                          `json:"Arg,omitempty" xml:"Arg,omitempty" type:"Repeated"`
-	Command                                     []*string                                                                          `json:"Command,omitempty" xml:"Command,omitempty" type:"Repeated"`
-	Cpu                                         *float32                                                                           `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
-	EnvironmentVar                              []*UpdateContainerGroupRequestContainerEnvironmentVar                              `json:"EnvironmentVar,omitempty" xml:"EnvironmentVar,omitempty" type:"Repeated"`
-	Gpu                                         *int32                                                                             `json:"Gpu,omitempty" xml:"Gpu,omitempty"`
-	Image                                       *string                                                                            `json:"Image,omitempty" xml:"Image,omitempty"`
-	ImagePullPolicy                             *string                                                                            `json:"ImagePullPolicy,omitempty" xml:"ImagePullPolicy,omitempty"`
-	LifecyclePostStartHandlerExec               []*string                                                                          `json:"LifecyclePostStartHandlerExec,omitempty" xml:"LifecyclePostStartHandlerExec,omitempty" type:"Repeated"`
+	LivenessProbe   *UpdateContainerGroupRequestContainerLivenessProbe   `json:"LivenessProbe,omitempty" xml:"LivenessProbe,omitempty" require:"true" type:"Struct"`
+	ReadinessProbe  *UpdateContainerGroupRequestContainerReadinessProbe  `json:"ReadinessProbe,omitempty" xml:"ReadinessProbe,omitempty" require:"true" type:"Struct"`
+	SecurityContext *UpdateContainerGroupRequestContainerSecurityContext `json:"SecurityContext,omitempty" xml:"SecurityContext,omitempty" require:"true" type:"Struct"`
+	Arg             []*string                                            `json:"Arg,omitempty" xml:"Arg,omitempty" type:"Repeated"`
+	Command         []*string                                            `json:"Command,omitempty" xml:"Command,omitempty" type:"Repeated"`
+	// The number of vCPUs that you want to allocate to container N.
+	Cpu            *float32                                              `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	EnvironmentVar []*UpdateContainerGroupRequestContainerEnvironmentVar `json:"EnvironmentVar,omitempty" xml:"EnvironmentVar,omitempty" type:"Repeated"`
+	// The number of GPUs that you want to allocate to container N.
+	Gpu *int32 `json:"Gpu,omitempty" xml:"Gpu,omitempty"`
+	// The image of container N.
+	Image *string `json:"Image,omitempty" xml:"Image,omitempty"`
+	// The image pull policy of container N.
+	ImagePullPolicy               *string   `json:"ImagePullPolicy,omitempty" xml:"ImagePullPolicy,omitempty"`
+	LifecyclePostStartHandlerExec []*string `json:"LifecyclePostStartHandlerExec,omitempty" xml:"LifecyclePostStartHandlerExec,omitempty" type:"Repeated"`
+	// The IP address of the host that receives HTTP GET requests when you use HTTP requests to specify the postStart callback function.
 	LifecyclePostStartHandlerHttpGetHost        *string                                                                            `json:"LifecyclePostStartHandlerHttpGetHost,omitempty" xml:"LifecyclePostStartHandlerHttpGetHost,omitempty"`
 	LifecyclePostStartHandlerHttpGetHttpHeaders []*UpdateContainerGroupRequestContainerLifecyclePostStartHandlerHttpGetHttpHeaders `json:"LifecyclePostStartHandlerHttpGetHttpHeaders,omitempty" xml:"LifecyclePostStartHandlerHttpGetHttpHeaders,omitempty" type:"Repeated"`
-	LifecyclePostStartHandlerHttpGetPath        *string                                                                            `json:"LifecyclePostStartHandlerHttpGetPath,omitempty" xml:"LifecyclePostStartHandlerHttpGetPath,omitempty"`
-	LifecyclePostStartHandlerHttpGetPort        *int32                                                                             `json:"LifecyclePostStartHandlerHttpGetPort,omitempty" xml:"LifecyclePostStartHandlerHttpGetPort,omitempty"`
-	LifecyclePostStartHandlerHttpGetScheme      *string                                                                            `json:"LifecyclePostStartHandlerHttpGetScheme,omitempty" xml:"LifecyclePostStartHandlerHttpGetScheme,omitempty"`
-	LifecyclePostStartHandlerTcpSocketHost      *string                                                                            `json:"LifecyclePostStartHandlerTcpSocketHost,omitempty" xml:"LifecyclePostStartHandlerTcpSocketHost,omitempty"`
-	LifecyclePostStartHandlerTcpSocketPort      *int32                                                                             `json:"LifecyclePostStartHandlerTcpSocketPort,omitempty" xml:"LifecyclePostStartHandlerTcpSocketPort,omitempty"`
-	LifecyclePreStopHandlerExec                 []*string                                                                          `json:"LifecyclePreStopHandlerExec,omitempty" xml:"LifecyclePreStopHandlerExec,omitempty" type:"Repeated"`
-	LifecyclePreStopHandlerHttpGetHost          *string                                                                            `json:"LifecyclePreStopHandlerHttpGetHost,omitempty" xml:"LifecyclePreStopHandlerHttpGetHost,omitempty"`
-	LifecyclePreStopHandlerHttpGetHttpHeader    []*UpdateContainerGroupRequestContainerLifecyclePreStopHandlerHttpGetHttpHeader    `json:"LifecyclePreStopHandlerHttpGetHttpHeader,omitempty" xml:"LifecyclePreStopHandlerHttpGetHttpHeader,omitempty" type:"Repeated"`
-	LifecyclePreStopHandlerHttpGetPath          *string                                                                            `json:"LifecyclePreStopHandlerHttpGetPath,omitempty" xml:"LifecyclePreStopHandlerHttpGetPath,omitempty"`
-	LifecyclePreStopHandlerHttpGetPort          *int32                                                                             `json:"LifecyclePreStopHandlerHttpGetPort,omitempty" xml:"LifecyclePreStopHandlerHttpGetPort,omitempty"`
-	LifecyclePreStopHandlerHttpGetScheme        *string                                                                            `json:"LifecyclePreStopHandlerHttpGetScheme,omitempty" xml:"LifecyclePreStopHandlerHttpGetScheme,omitempty"`
-	LifecyclePreStopHandlerTcpSocketHost        *string                                                                            `json:"LifecyclePreStopHandlerTcpSocketHost,omitempty" xml:"LifecyclePreStopHandlerTcpSocketHost,omitempty"`
-	LifecyclePreStopHandlerTcpSocketPort        *int32                                                                             `json:"LifecyclePreStopHandlerTcpSocketPort,omitempty" xml:"LifecyclePreStopHandlerTcpSocketPort,omitempty"`
-	Memory                                      *float32                                                                           `json:"Memory,omitempty" xml:"Memory,omitempty"`
-	Name                                        *string                                                                            `json:"Name,omitempty" xml:"Name,omitempty"`
-	Port                                        []*UpdateContainerGroupRequestContainerPort                                        `json:"Port,omitempty" xml:"Port,omitempty" type:"Repeated"`
-	Stdin                                       *bool                                                                              `json:"Stdin,omitempty" xml:"Stdin,omitempty"`
-	StdinOnce                                   *bool                                                                              `json:"StdinOnce,omitempty" xml:"StdinOnce,omitempty"`
-	Tty                                         *bool                                                                              `json:"Tty,omitempty" xml:"Tty,omitempty"`
-	VolumeMount                                 []*UpdateContainerGroupRequestContainerVolumeMount                                 `json:"VolumeMount,omitempty" xml:"VolumeMount,omitempty" type:"Repeated"`
-	WorkingDir                                  *string                                                                            `json:"WorkingDir,omitempty" xml:"WorkingDir,omitempty"`
+	// The port to which HTTP GET requests are sent when you use HTTP requests to specify the postStart callback function.
+	LifecyclePostStartHandlerHttpGetPath *string `json:"LifecyclePostStartHandlerHttpGetPath,omitempty" xml:"LifecyclePostStartHandlerHttpGetPath,omitempty"`
+	// The port to which HTTP GET requests are sent when you use HTTP requests to specify the postStart callback function.
+	LifecyclePostStartHandlerHttpGetPort *int32 `json:"LifecyclePostStartHandlerHttpGetPort,omitempty" xml:"LifecyclePostStartHandlerHttpGetPort,omitempty"`
+	// The path to which HTTP GET requests are sent when you use HTTP requests to specify the postStart callback function.
+	LifecyclePostStartHandlerHttpGetScheme *string `json:"LifecyclePostStartHandlerHttpGetScheme,omitempty" xml:"LifecyclePostStartHandlerHttpGetScheme,omitempty"`
+	// The host IP address of TCP socket probes when you use TCP sockets to specify the postStart callback function.
+	LifecyclePostStartHandlerTcpSocketHost *string `json:"LifecyclePostStartHandlerTcpSocketHost,omitempty" xml:"LifecyclePostStartHandlerTcpSocketHost,omitempty"`
+	// The port of TCP socket probes when you use TCP sockets to specify the postStart callback function.
+	LifecyclePostStartHandlerTcpSocketPort *int32    `json:"LifecyclePostStartHandlerTcpSocketPort,omitempty" xml:"LifecyclePostStartHandlerTcpSocketPort,omitempty"`
+	LifecyclePreStopHandlerExec            []*string `json:"LifecyclePreStopHandlerExec,omitempty" xml:"LifecyclePreStopHandlerExec,omitempty" type:"Repeated"`
+	// The IP address of the host that receives HTTP GET requests when you use HTTP requests to specify the preStop callback function.
+	LifecyclePreStopHandlerHttpGetHost       *string                                                                         `json:"LifecyclePreStopHandlerHttpGetHost,omitempty" xml:"LifecyclePreStopHandlerHttpGetHost,omitempty"`
+	LifecyclePreStopHandlerHttpGetHttpHeader []*UpdateContainerGroupRequestContainerLifecyclePreStopHandlerHttpGetHttpHeader `json:"LifecyclePreStopHandlerHttpGetHttpHeader,omitempty" xml:"LifecyclePreStopHandlerHttpGetHttpHeader,omitempty" type:"Repeated"`
+	// The path to which HTTP GET requests are sent when you use HTTP requests to specify the preStop callback function.
+	LifecyclePreStopHandlerHttpGetPath *string `json:"LifecyclePreStopHandlerHttpGetPath,omitempty" xml:"LifecyclePreStopHandlerHttpGetPath,omitempty"`
+	// The port to which HTTP GET requests are sent when you use HTTP requests to specify the preStop callback function.
+	LifecyclePreStopHandlerHttpGetPort *int32 `json:"LifecyclePreStopHandlerHttpGetPort,omitempty" xml:"LifecyclePreStopHandlerHttpGetPort,omitempty"`
+	// The protocol type of HTTP GET requests when you use HTTP requests to specify the preStop callback function. Valid values:
+	//
+	// - HTTP
+	// - HTTPS
+	LifecyclePreStopHandlerHttpGetScheme *string `json:"LifecyclePreStopHandlerHttpGetScheme,omitempty" xml:"LifecyclePreStopHandlerHttpGetScheme,omitempty"`
+	// The host IP address of TCP socket probes when you use TCP sockets to specify the preStop callback function.
+	LifecyclePreStopHandlerTcpSocketHost *string `json:"LifecyclePreStopHandlerTcpSocketHost,omitempty" xml:"LifecyclePreStopHandlerTcpSocketHost,omitempty"`
+	// The port of TCP socket probes when you use TCP sockets to specify the preStop callback function.
+	LifecyclePreStopHandlerTcpSocketPort *int32 `json:"LifecyclePreStopHandlerTcpSocketPort,omitempty" xml:"LifecyclePreStopHandlerTcpSocketPort,omitempty"`
+	// The memory size of container N.
+	Memory *float32 `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	// The name of container N.
+	Name *string                                     `json:"Name,omitempty" xml:"Name,omitempty"`
+	Port []*UpdateContainerGroupRequestContainerPort `json:"Port,omitempty" xml:"Port,omitempty" type:"Repeated"`
+	// Specifies whether container N allocates buffer resources to standard input streams when the container runs. If you do not specify this parameter, an end-of-file (EOF) error may occur. Default value: false.
+	Stdin *bool `json:"Stdin,omitempty" xml:"Stdin,omitempty"`
+	// Specifies whether to maintain standard input streams connected after a client is disconnected. If Stdin is set to true, standard input streams remain connected during multiple sessions. If Container.N.StdinOnce is set to true, standard input streams are connected after the container is started and remain idle until a client is connected to receive data. After the client is disconnected, streams are also disconnected and remain in the disconnected state until the container is started again.
+	StdinOnce *bool `json:"StdinOnce,omitempty" xml:"StdinOnce,omitempty"`
+	// Specifies whether to enable interaction. Default value: false. If the command is a /bin/bash command, set the value to true.
+	Tty         *bool                                              `json:"Tty,omitempty" xml:"Tty,omitempty"`
+	VolumeMount []*UpdateContainerGroupRequestContainerVolumeMount `json:"VolumeMount,omitempty" xml:"VolumeMount,omitempty" type:"Repeated"`
+	// The working directory of container N.
+	WorkingDir *string `json:"WorkingDir,omitempty" xml:"WorkingDir,omitempty"`
 }
 
 func (s UpdateContainerGroupRequestContainer) String() string {
@@ -10111,8 +11347,10 @@ func (s *UpdateContainerGroupRequestContainerSecurityContextCapability) SetAdd(v
 
 type UpdateContainerGroupRequestContainerEnvironmentVar struct {
 	FieldRef *UpdateContainerGroupRequestContainerEnvironmentVarFieldRef `json:"FieldRef,omitempty" xml:"FieldRef,omitempty" require:"true" type:"Struct"`
-	Key      *string                                                     `json:"Key,omitempty" xml:"Key,omitempty"`
-	Value    *string                                                     `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the environment variable for container N.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of the environment variable for container N.
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s UpdateContainerGroupRequestContainerEnvironmentVar) String() string {
@@ -10156,7 +11394,9 @@ func (s *UpdateContainerGroupRequestContainerEnvironmentVarFieldRef) SetFieldPat
 }
 
 type UpdateContainerGroupRequestContainerLifecyclePostStartHandlerHttpGetHttpHeaders struct {
-	Name  *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The quest parameter of HTTP GET requests when you use HTTP requests to specify the postStart callback function.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The quest parameter value of HTTP GET requests when you use HTTP requests to specify the postStart callback function.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -10179,7 +11419,9 @@ func (s *UpdateContainerGroupRequestContainerLifecyclePostStartHandlerHttpGetHtt
 }
 
 type UpdateContainerGroupRequestContainerLifecyclePreStopHandlerHttpGetHttpHeader struct {
-	Name  *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The quest parameter of HTTP GET requests when you use HTTP requests to specify the preStop callback function.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The quest parameter value of HTTP GET requests when you use HTTP requests to specify the preStop callback function.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -10202,8 +11444,9 @@ func (s *UpdateContainerGroupRequestContainerLifecyclePreStopHandlerHttpGetHttpH
 }
 
 type UpdateContainerGroupRequestContainerPort struct {
+	// The port number. Valid values: 1 to 65535.
 	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
-	// TCP/UDP。
+	// The protocol of container N. Valid values: TCP and UDP.
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
 }
 
@@ -10226,11 +11469,22 @@ func (s *UpdateContainerGroupRequestContainerPort) SetProtocol(v string) *Update
 }
 
 type UpdateContainerGroupRequestContainerVolumeMount struct {
-	MountPath        *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
+	// The directory of the volume mounted to container N. The data in this directory is overwritten by the data on the volume. Specify this parameter with caution.
+	MountPath *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
+	// The mount propagation settings of volume N. Mount propagation allows volumes that are mounted on one container to be shared with other containers in the same pod, or even with other pods on the same node. Valid values:
+	//
+	// - None: The volume mount does not receive subsequent mounts that are mounted to this volume or its subdirectories.
+	// - HostToContainer: The volume mount receives all subsequent mounts that are mounted to this volume or its subdirectories.
+	// - Bidirectional: This value is similar to HostToContainer. The volume mount receives all subsequent mounts that are mounted to this volume or its subdirectories. In addition, all volume mounts created by the container are propagated back to the host and to all containers of all pods that use the same volume.
+	//
+	//  Default value: None.
 	MountPropagation *string `json:"MountPropagation,omitempty" xml:"MountPropagation,omitempty"`
-	Name             *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	ReadOnly         *bool   `json:"ReadOnly,omitempty" xml:"ReadOnly,omitempty"`
-	SubPath          *string `json:"SubPath,omitempty" xml:"SubPath,omitempty"`
+	// The name of the volume mounted to container N. Valid values: the values of Volume.N.Name, which are the names of volumes mounted to the elastic container instance.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Specifies whether the volume is read-only. Default value: false
+	ReadOnly *bool `json:"ReadOnly,omitempty" xml:"ReadOnly,omitempty"`
+	// The subdirectory of the volume mounted to container N. The pod can mount different directories of the same volume to different subdirectories of containers.
+	SubPath *string `json:"SubPath,omitempty" xml:"SubPath,omitempty"`
 }
 
 func (s UpdateContainerGroupRequestContainerVolumeMount) String() string {
@@ -10267,8 +11521,11 @@ func (s *UpdateContainerGroupRequestContainerVolumeMount) SetSubPath(v string) *
 }
 
 type UpdateContainerGroupRequestImageRegistryCredential struct {
+	// The password that is used to log on to the image repository.
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
-	Server   *string `json:"Server,omitempty" xml:"Server,omitempty"`
+	// The endpoint of the image repository. This endpoint does not contain `http://` or `https://`.
+	Server *string `json:"Server,omitempty" xml:"Server,omitempty"`
+	// The username that is used to log on to the image repository.
 	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
 
@@ -10296,22 +11553,32 @@ func (s *UpdateContainerGroupRequestImageRegistryCredential) SetUserName(v strin
 }
 
 type UpdateContainerGroupRequestInitContainer struct {
-	SecurityContext *UpdateContainerGroupRequestInitContainerSecurityContext  `json:"SecurityContext,omitempty" xml:"SecurityContext,omitempty" require:"true" type:"Struct"`
-	Arg             []*string                                                 `json:"Arg,omitempty" xml:"Arg,omitempty" type:"Repeated"`
-	Command         []*string                                                 `json:"Command,omitempty" xml:"Command,omitempty" type:"Repeated"`
-	Cpu             *float32                                                  `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
-	EnvironmentVar  []*UpdateContainerGroupRequestInitContainerEnvironmentVar `json:"EnvironmentVar,omitempty" xml:"EnvironmentVar,omitempty" type:"Repeated"`
-	Gpu             *int32                                                    `json:"Gpu,omitempty" xml:"Gpu,omitempty"`
-	Image           *string                                                   `json:"Image,omitempty" xml:"Image,omitempty"`
-	ImagePullPolicy *string                                                   `json:"ImagePullPolicy,omitempty" xml:"ImagePullPolicy,omitempty"`
-	Memory          *float32                                                  `json:"Memory,omitempty" xml:"Memory,omitempty"`
-	Name            *string                                                   `json:"Name,omitempty" xml:"Name,omitempty"`
-	Port            []*UpdateContainerGroupRequestInitContainerPort           `json:"Port,omitempty" xml:"Port,omitempty" type:"Repeated"`
-	Stdin           *bool                                                     `json:"Stdin,omitempty" xml:"Stdin,omitempty"`
-	StdinOnce       *bool                                                     `json:"StdinOnce,omitempty" xml:"StdinOnce,omitempty"`
-	Tty             *bool                                                     `json:"Tty,omitempty" xml:"Tty,omitempty"`
-	VolumeMount     []*UpdateContainerGroupRequestInitContainerVolumeMount    `json:"VolumeMount,omitempty" xml:"VolumeMount,omitempty" type:"Repeated"`
-	WorkingDir      *string                                                   `json:"WorkingDir,omitempty" xml:"WorkingDir,omitempty"`
+	SecurityContext *UpdateContainerGroupRequestInitContainerSecurityContext `json:"SecurityContext,omitempty" xml:"SecurityContext,omitempty" require:"true" type:"Struct"`
+	Arg             []*string                                                `json:"Arg,omitempty" xml:"Arg,omitempty" type:"Repeated"`
+	Command         []*string                                                `json:"Command,omitempty" xml:"Command,omitempty" type:"Repeated"`
+	// The number of vCPUs that you want to allocate to init container N.
+	Cpu            *float32                                                  `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	EnvironmentVar []*UpdateContainerGroupRequestInitContainerEnvironmentVar `json:"EnvironmentVar,omitempty" xml:"EnvironmentVar,omitempty" type:"Repeated"`
+	// The number of GPUs that you want to allocate to init container N.
+	Gpu *int32 `json:"Gpu,omitempty" xml:"Gpu,omitempty"`
+	// The image of init container N.
+	Image *string `json:"Image,omitempty" xml:"Image,omitempty"`
+	// The image pull policy of init container N.
+	ImagePullPolicy *string `json:"ImagePullPolicy,omitempty" xml:"ImagePullPolicy,omitempty"`
+	// The size of memory that you want to allocate to init container N.
+	Memory *float32 `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	// The name of init container N.
+	Name *string                                         `json:"Name,omitempty" xml:"Name,omitempty"`
+	Port []*UpdateContainerGroupRequestInitContainerPort `json:"Port,omitempty" xml:"Port,omitempty" type:"Repeated"`
+	// Specifies whether init container N allocates buffer resources to standard input streams when the container runs. If you do not specify this parameter, an EOF error may occur. Default value: false.
+	Stdin *bool `json:"Stdin,omitempty" xml:"Stdin,omitempty"`
+	// Specifies whether to maintain standard input streams connected after a client is disconnected. If Stdin is set to true, standard input streams remain connected during multiple sessions. If InitContainer.N.StdinOnce is set to true, standard input streams are connected after the container is started and remain idle until a client is connected to receive data. After the client is disconnected, streams are also disconnected and remain in the disconnected state until the container is started again.
+	StdinOnce *bool `json:"StdinOnce,omitempty" xml:"StdinOnce,omitempty"`
+	// Specifies whether to enable interaction. Default value: false. If the command is a /bin/bash command, set the value to true.
+	Tty         *bool                                                  `json:"Tty,omitempty" xml:"Tty,omitempty"`
+	VolumeMount []*UpdateContainerGroupRequestInitContainerVolumeMount `json:"VolumeMount,omitempty" xml:"VolumeMount,omitempty" type:"Repeated"`
+	// The working directory of init container N.
+	WorkingDir *string `json:"WorkingDir,omitempty" xml:"WorkingDir,omitempty"`
 }
 
 func (s UpdateContainerGroupRequestInitContainer) String() string {
@@ -10450,8 +11717,10 @@ func (s *UpdateContainerGroupRequestInitContainerSecurityContextCapability) SetA
 
 type UpdateContainerGroupRequestInitContainerEnvironmentVar struct {
 	FieldRef *UpdateContainerGroupRequestInitContainerEnvironmentVarFieldRef `json:"FieldRef,omitempty" xml:"FieldRef,omitempty" require:"true" type:"Struct"`
-	Key      *string                                                         `json:"Key,omitempty" xml:"Key,omitempty"`
-	Value    *string                                                         `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the environment variable for init container N.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of the environment variable for init container N.
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s UpdateContainerGroupRequestInitContainerEnvironmentVar) String() string {
@@ -10495,8 +11764,9 @@ func (s *UpdateContainerGroupRequestInitContainerEnvironmentVarFieldRef) SetFiel
 }
 
 type UpdateContainerGroupRequestInitContainerPort struct {
+	// The port number of init container N. Valid values: 1 to 65535.
 	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
-	// TCP/UDP。
+	// The protocol of init container N. Valid values: TCP and UDP.
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
 }
 
@@ -10519,11 +11789,22 @@ func (s *UpdateContainerGroupRequestInitContainerPort) SetProtocol(v string) *Up
 }
 
 type UpdateContainerGroupRequestInitContainerVolumeMount struct {
-	MountPath        *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
+	// The directory of the volume mounted to init container N. The data in this directory is overwritten by the data on the volume. Specify this parameter with caution.
+	MountPath *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
+	// The mount propagation setting of the volume. Mount propagation allows volumes that are mounted on one init container to be shared with other init containers in the same pod, or even with other pods on the same node. Valid values:
+	//
+	// - None: The volume mount does not receive subsequent mounts that are mounted to this volume or its subdirectories.
+	// - HostToContainer: The volume mount receives all subsequent mounts that are mounted to this volume or its subdirectories.
+	// - Bidirectional: This value is similar to HostToContainer. The volume mount receives all subsequent mounts that are mounted to this volume or its subdirectories. In addition, all volume mounts created by the container are propagated back to the host and to all containers of all pods that use the same volume.
+	//
+	//  Default value: None.
 	MountPropagation *string `json:"MountPropagation,omitempty" xml:"MountPropagation,omitempty"`
-	Name             *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	ReadOnly         *bool   `json:"ReadOnly,omitempty" xml:"ReadOnly,omitempty"`
-	SubPath          *string `json:"SubPath,omitempty" xml:"SubPath,omitempty"`
+	// The name of the volume mounted to init container N. Valid values: the values of Volume.N.Name, which are the names of volumes mounted to the elastic container instance.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Specifies whether the volume is read-only. Default value: false
+	ReadOnly *bool `json:"ReadOnly,omitempty" xml:"ReadOnly,omitempty"`
+	// The subdirectory of the volume mounted to init container N. The pod can mount different directories of the same volume to different subdirectories of containers.
+	SubPath *string `json:"SubPath,omitempty" xml:"SubPath,omitempty"`
 }
 
 func (s UpdateContainerGroupRequestInitContainerVolumeMount) String() string {
@@ -10560,7 +11841,9 @@ func (s *UpdateContainerGroupRequestInitContainerVolumeMount) SetSubPath(v strin
 }
 
 type UpdateContainerGroupRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The key of tag N.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of tag N.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -10588,8 +11871,16 @@ type UpdateContainerGroupRequestVolume struct {
 	FlexVolume       *UpdateContainerGroupRequestVolumeFlexVolume       `json:"FlexVolume,omitempty" xml:"FlexVolume,omitempty" require:"true" type:"Struct"`
 	HostPathVolume   *UpdateContainerGroupRequestVolumeHostPathVolume   `json:"HostPathVolume,omitempty" xml:"HostPathVolume,omitempty" require:"true" type:"Struct"`
 	NFSVolume        *UpdateContainerGroupRequestVolumeNFSVolume        `json:"NFSVolume,omitempty" xml:"NFSVolume,omitempty" require:"true" type:"Struct"`
-	Name             *string                                            `json:"Name,omitempty" xml:"Name,omitempty"`
-	Type             *string                                            `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The name of volume N.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The type of volume N. Valid values:
+	//
+	// *   EmptyDirVolume: an emptyDir volume, which indicates a temporary directory.
+	// *   ConfigFileVolume: a ConfigFile volume, which indicates a configuration file.
+	// *   NFSVolume: an NFS volume, which indicates a network file system, such as a NAS file system.
+	// *   FlexVolume: a volume that is mounted by using the FlexVolume plug-in. These volumes include disks, NAS file systems, and OSS buckets.
+	// *   HostPathVolume: a HostPath volume, which indicates a file or directory on the host. This value is unavailable.
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s UpdateContainerGroupRequestVolume) String() string {
@@ -10780,6 +12071,7 @@ func (s *UpdateContainerGroupRequestVolumeNFSVolume) SetServer(v string) *Update
 }
 
 type UpdateContainerGroupResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -10826,29 +12118,61 @@ func (s *UpdateContainerGroupResponse) SetBody(v *UpdateContainerGroupResponseBo
 }
 
 type UpdateImageCacheRequest struct {
-	AcrRegistryInfo         []*UpdateImageCacheRequestAcrRegistryInfo         `json:"AcrRegistryInfo,omitempty" xml:"AcrRegistryInfo,omitempty" type:"Repeated"`
-	AutoMatchImageCache     *bool                                             `json:"AutoMatchImageCache,omitempty" xml:"AutoMatchImageCache,omitempty"`
-	ClientToken             *string                                           `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	EipInstanceId           *string                                           `json:"EipInstanceId,omitempty" xml:"EipInstanceId,omitempty"`
-	EliminationStrategy     *string                                           `json:"EliminationStrategy,omitempty" xml:"EliminationStrategy,omitempty"`
-	Flash                   *bool                                             `json:"Flash,omitempty" xml:"Flash,omitempty"`
-	FlashCopyCount          *int32                                            `json:"FlashCopyCount,omitempty" xml:"FlashCopyCount,omitempty"`
-	Image                   []*string                                         `json:"Image,omitempty" xml:"Image,omitempty" type:"Repeated"`
-	ImageCacheId            *string                                           `json:"ImageCacheId,omitempty" xml:"ImageCacheId,omitempty"`
-	ImageCacheName          *string                                           `json:"ImageCacheName,omitempty" xml:"ImageCacheName,omitempty"`
+	AcrRegistryInfo []*UpdateImageCacheRequestAcrRegistryInfo `json:"AcrRegistryInfo,omitempty" xml:"AcrRegistryInfo,omitempty" type:"Repeated"`
+	// Specifies whether to enable reuse of image cache layers. If you enable this feature, and the image cache that you want to create and an existing image cache contain duplicate image layers, the system reuses the duplicate image layers to create the new image cache. This accelerates the creation of the image cache. Valid values:
+	//
+	// *   true: enables reuse of image cache layers.
+	// *   false: does not enable reuse of image cache layers.
+	//
+	// Default value: false.
+	AutoMatchImageCache *bool `json:"AutoMatchImageCache,omitempty" xml:"AutoMatchImageCache,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can only contain ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The ID of the elastic IP address (EIP). If you want to pull images over the Internet, make sure that the elastic container instance can access the Internet. You can configure an EIP or a NAT gateway for the elastic container instance to access the Internet.
+	EipInstanceId       *string `json:"EipInstanceId,omitempty" xml:"EipInstanceId,omitempty"`
+	EliminationStrategy *string `json:"EliminationStrategy,omitempty" xml:"EliminationStrategy,omitempty"`
+	// Specifies whether to enable instant image cache. After you enable the feature, image caches can be created in an accelerated manner. Valid values:
+	//
+	// *   true: enables instant image cache.
+	// *   false: does not enable instant image cache.
+	//
+	// Default value: false.
+	//
+	// >  The system automatically generates a temporary local snapshot for the image cache during the use of the instant image cache feature. You are charged for the instant use of the snapshot.
+	Flash *bool `json:"Flash,omitempty" xml:"Flash,omitempty"`
+	// The number of temporary local snapshots. By default, the system creates one snapshot for each image cache. If an image cache is used to create multiple elastic container instances at a time, we recommend that you set this parameter to create multiple snapshots for the image cache. We recommend that you create one snapshot for creation of every 1,000 elastic container instances.
+	//
+	// >  If you set the Flash parameter to true, instant image cache is enabled. During the creation of the image cache, the system first creates a temporary local snapshot for you to instantly use the snapshot. After the temporary local snapshot is created, the system begins to create a regular snapshot. After the regular snapshot is created, the temporary local snapshot is automatically deleted.
+	FlashCopyCount *int32    `json:"FlashCopyCount,omitempty" xml:"FlashCopyCount,omitempty"`
+	Image          []*string `json:"Image,omitempty" xml:"Image,omitempty" type:"Repeated"`
+	// The ID of the image cache.
+	ImageCacheId *string `json:"ImageCacheId,omitempty" xml:"ImageCacheId,omitempty"`
+	// The name of the image cache.
+	ImageCacheName *string `json:"ImageCacheName,omitempty" xml:"ImageCacheName,omitempty"`
+	// The size of the image cache. Unit: GiB. Default value: 20.
 	ImageCacheSize          *int32                                            `json:"ImageCacheSize,omitempty" xml:"ImageCacheSize,omitempty"`
 	ImageRegistryCredential []*UpdateImageCacheRequestImageRegistryCredential `json:"ImageRegistryCredential,omitempty" xml:"ImageRegistryCredential,omitempty" type:"Repeated"`
 	OwnerAccount            *string                                           `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId                 *int64                                            `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId                *string                                           `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceGroupId         *string                                           `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	ResourceOwnerAccount    *string                                           `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId         *int64                                            `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	RetentionDays           *int32                                            `json:"RetentionDays,omitempty" xml:"RetentionDays,omitempty"`
-	SecurityGroupId         *string                                           `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	StandardCopyCount       *int32                                            `json:"StandardCopyCount,omitempty" xml:"StandardCopyCount,omitempty"`
-	Tag                     []*UpdateImageCacheRequestTag                     `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	VSwitchId               *string                                           `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// The region ID of the image cache.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the resource group.
+	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The retention period of the image cache. Unit: days. When the retention period ends, the image cache expires and is deleted. By default, image caches do not expire.
+	//
+	// >  The image caches that fail to be created are only retained for one day.
+	RetentionDays *int32 `json:"RetentionDays,omitempty" xml:"RetentionDays,omitempty"`
+	// The ID of the security group.
+	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	// The number of regular snapshots. By default, the system creates one snapshot for each image cache. If an image cache is used to create multiple elastic container instances at a time, we recommend that you set this parameter to create multiple snapshots for the image cache. We recommend that you create one snapshot for creation of every 1,000 elastic container instances.
+	//
+	// >  If you set the Flash parameter to false, instant image cache is disabled. In this case, only regular snapshots are generated during the creation of the image cache.
+	StandardCopyCount *int32                        `json:"StandardCopyCount,omitempty" xml:"StandardCopyCount,omitempty"`
+	Tag               []*UpdateImageCacheRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	// The ID of the vSwitch.
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 }
 
 func (s UpdateImageCacheRequest) String() string {
@@ -10975,10 +12299,13 @@ func (s *UpdateImageCacheRequest) SetVSwitchId(v string) *UpdateImageCacheReques
 }
 
 type UpdateImageCacheRequestAcrRegistryInfo struct {
-	Domain       []*string `json:"Domain,omitempty" xml:"Domain,omitempty" type:"Repeated"`
-	InstanceId   *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	InstanceName *string   `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	RegionId     *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Domain []*string `json:"Domain,omitempty" xml:"Domain,omitempty" type:"Repeated"`
+	// The ID of the Container Registry Enterprise Edition instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The name of the Container Registry Enterprise Edition instance.
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The region ID of Container Registry Enterprise Edition instance N.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s UpdateImageCacheRequestAcrRegistryInfo) String() string {
@@ -11010,8 +12337,11 @@ func (s *UpdateImageCacheRequestAcrRegistryInfo) SetRegionId(v string) *UpdateIm
 }
 
 type UpdateImageCacheRequestImageRegistryCredential struct {
+	// The password that is used to log on to image repository N.
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
-	Server   *string `json:"Server,omitempty" xml:"Server,omitempty"`
+	// The endpoint of the image repository.
+	Server *string `json:"Server,omitempty" xml:"Server,omitempty"`
+	// The username that is used to log on to image repository N.
 	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
 
@@ -11039,7 +12369,9 @@ func (s *UpdateImageCacheRequestImageRegistryCredential) SetUserName(v string) *
 }
 
 type UpdateImageCacheRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The key of tag N of the image cache. Valid values of N: 1 to 20.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of tag N of the image cache. Valid values of N: 1 to 20.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -11062,6 +12394,7 @@ func (s *UpdateImageCacheRequestTag) SetValue(v string) *UpdateImageCacheRequest
 }
 
 type UpdateImageCacheResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -11108,18 +12441,28 @@ func (s *UpdateImageCacheResponse) SetBody(v *UpdateImageCacheResponseBody) *Upd
 }
 
 type UpdateVirtualNodeRequest struct {
-	ClientToken          *string                        `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	OwnerAccount         *string                        `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64                         `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId             *string                        `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceGroupId      *string                        `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	ResourceOwnerAccount *string                        `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64                         `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	SecurityGroupId      *string                        `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	Tag                  []*UpdateVirtualNodeRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	VSwitchId            *string                        `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	VirtualNodeId        *string                        `json:"VirtualNodeId,omitempty" xml:"VirtualNodeId,omitempty"`
-	VirtualNodeName      *string                        `json:"VirtualNodeName,omitempty" xml:"VirtualNodeName,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate this value, but you must ensure that it is unique among different requests. The token can only contain ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotency](~~25693~~).
+	ClientToken     *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	ClusterDNS      *string `json:"ClusterDNS,omitempty" xml:"ClusterDNS,omitempty"`
+	ClusterDomain   *string `json:"ClusterDomain,omitempty" xml:"ClusterDomain,omitempty"`
+	CustomResources *string `json:"CustomResources,omitempty" xml:"CustomResources,omitempty"`
+	OwnerAccount    *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId         *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID of the virtual node.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the resource group to which the virtual node belongs.
+	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The ID of the security group.
+	SecurityGroupId *string                        `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	Tag             []*UpdateVirtualNodeRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	// The ID of the vSwitch.
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// The ID of the virtual node.
+	VirtualNodeId *string `json:"VirtualNodeId,omitempty" xml:"VirtualNodeId,omitempty"`
+	// The name of the virtual node.
+	VirtualNodeName *string `json:"VirtualNodeName,omitempty" xml:"VirtualNodeName,omitempty"`
 }
 
 func (s UpdateVirtualNodeRequest) String() string {
@@ -11132,6 +12475,21 @@ func (s UpdateVirtualNodeRequest) GoString() string {
 
 func (s *UpdateVirtualNodeRequest) SetClientToken(v string) *UpdateVirtualNodeRequest {
 	s.ClientToken = &v
+	return s
+}
+
+func (s *UpdateVirtualNodeRequest) SetClusterDNS(v string) *UpdateVirtualNodeRequest {
+	s.ClusterDNS = &v
+	return s
+}
+
+func (s *UpdateVirtualNodeRequest) SetClusterDomain(v string) *UpdateVirtualNodeRequest {
+	s.ClusterDomain = &v
+	return s
+}
+
+func (s *UpdateVirtualNodeRequest) SetCustomResources(v string) *UpdateVirtualNodeRequest {
+	s.CustomResources = &v
 	return s
 }
 
@@ -11191,7 +12549,9 @@ func (s *UpdateVirtualNodeRequest) SetVirtualNodeName(v string) *UpdateVirtualNo
 }
 
 type UpdateVirtualNodeRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The key of Tag N.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of Tag N.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -11214,6 +12574,7 @@ func (s *UpdateVirtualNodeRequestTag) SetValue(v string) *UpdateVirtualNodeReque
 }
 
 type UpdateVirtualNodeResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -11306,6 +12667,13 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+/**
+ * You must enter the Alibaba Cloud Resource Name (ARN) to obtain the permissions to push images.
+ *
+ * @param request CommitContainerRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return CommitContainerResponse
+ */
 func (client *Client) CommitContainerWithOptions(request *CommitContainerRequest, runtime *util.RuntimeOptions) (_result *CommitContainerResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -11379,6 +12747,12 @@ func (client *Client) CommitContainerWithOptions(request *CommitContainerRequest
 	return _result, _err
 }
 
+/**
+ * You must enter the Alibaba Cloud Resource Name (ARN) to obtain the permissions to push images.
+ *
+ * @param request CommitContainerRequest
+ * @return CommitContainerResponse
+ */
 func (client *Client) CommitContainer(request *CommitContainerRequest) (_result *CommitContainerResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CommitContainerResponse{}
@@ -11390,6 +12764,55 @@ func (client *Client) CommitContainer(request *CommitContainerRequest) (_result 
 	return _result, _err
 }
 
+/**
+ * ## Usage description
+ * When you call the CreateContainerGroup operation to create an elastic container instance, the system creates a service-linked role named AliyunServiceRoleForECI. This role is used to access other Alibaba Cloud services such as Elastic Compute Service (ECS) and Virtual Private Cloud (VPC). For more information, see [Elastic Container Instance service-linked role](~~212914~~).
+ * ## Parameters configured for features
+ * When you create an elastic container instance, you can configure features such as instances, images, and storage based on your requirements. For information about parameters configured for the features and the description of the parameters, see the following documents: **Instances** You can use one of the following methods to create an elastic container instance:
+ * *   [Specify the number of vCPUs and memory size to create an elastic container instance](~~114662~~)
+ *     *   [Create job-optimized elastic container instances](~~324246~~)
+ *     *   [Ignore special containers during resource adjustment](~~446853~~)
+ * *   [Specify ECS instance types to create an elastic container instance](~~114664~~)
+ *     *   [Specify GPU-accelerated ECS instance types](~~114581~~)
+ *     *   [Specify ECS instance types with local disks](~~164011~~)
+ *     *   [Specify AMD-based ECS instance types](~~187411~~)
+ * Both the preceding creation methods support the following features:
+ * *   [Specify custom CPU options](~~197781~~)
+ * *   [Create a preemptible elastic container instance](~~157759~~)
+ * *   [Configure multiple zones](~~157290~~)
+ * *   [Configure multiple specifications](~~146468~~)
+ * *   [Use tags to manage elastic container instances](~~146608~~)
+ * **Images**
+ * *   [Configure a container image](~~461311~~)
+ * *   [Use the image cache feature to accelerate the creation of an elastic container instance](~~141281~~)
+ * *   [Specify a Container Registry Enterprise Edition instance](~~194250.~~)
+ * *   [Use self-managed image repositories](~~378059~~)
+ * **Networking**
+ * *   [Create and Associate an EIP](~~99146~~)
+ * *   [Assign a security group](~~176237~~)
+ * *   [Assign an IPv6 address to an elastic container instance](~~451282~~)
+ * *   [Configure maximum bandwidth](~~190635~~)
+ * **Storage**
+ * *   [Mount a disk volume](~~144571~~)
+ * *   [Mount a NAS volume](~~464075~~)
+ * *   [Mount an OSS bucket to an elastic container instance as a volume](~~464076~~)
+ * *   [Mount an emptyDir volume](~~464078~~)
+ * *   [Mount a ConfigFile volume](~~464080~~)
+ * *   [Increase the storage capacity of the temporary storage space](~~204066~~)
+ * **Container configuration**
+ * *   [Configure startup commands and arguments for a container](~~94593~~)
+ * *   [Use probes to perform health checks on a container](~~99053~~)
+ * *   [Obtain metadata by using environment variables](~~141788~~)
+ * *   [Configure a security context](~~462313~~)
+ * *   [Configure the NTP service](~~462768~~)
+ * **Logging and O\\&M**
+ * *   [Use environment variables to configure log collection](~~121973~~)
+ * *   [Save core files to volumes](~~167801~~)
+ *
+ * @param request CreateContainerGroupRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return CreateContainerGroupResponse
+ */
 func (client *Client) CreateContainerGroupWithOptions(request *CreateContainerGroupRequest, runtime *util.RuntimeOptions) (_result *CreateContainerGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -11402,10 +12825,6 @@ func (client *Client) CreateContainerGroupWithOptions(request *CreateContainerGr
 
 	if !tea.BoolValue(util.IsUnset(request.ActiveDeadlineSeconds)) {
 		query["ActiveDeadlineSeconds"] = request.ActiveDeadlineSeconds
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Arn)) {
-		query["Arn"] = request.Arn
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.AutoCreateEip)) {
@@ -11548,10 +12967,6 @@ func (client *Client) CreateContainerGroupWithOptions(request *CreateContainerGr
 		query["PlainHttpRegistry"] = request.PlainHttpRegistry
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.ProductOnEciMode)) {
-		query["ProductOnEciMode"] = request.ProductOnEciMode
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.RamRoleName)) {
 		query["RamRoleName"] = request.RamRoleName
 	}
@@ -11584,10 +12999,6 @@ func (client *Client) CreateContainerGroupWithOptions(request *CreateContainerGr
 		query["ScheduleStrategy"] = request.ScheduleStrategy
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.SecondaryENIPolicy)) {
-		query["SecondaryENIPolicy"] = request.SecondaryENIPolicy
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.SecurityGroupId)) {
 		query["SecurityGroupId"] = request.SecurityGroupId
 	}
@@ -11614,14 +13025,6 @@ func (client *Client) CreateContainerGroupWithOptions(request *CreateContainerGr
 
 	if !tea.BoolValue(util.IsUnset(request.Tag)) {
 		query["Tag"] = request.Tag
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.TenantSecurityGroupId)) {
-		query["TenantSecurityGroupId"] = request.TenantSecurityGroupId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.TenantVSwitchId)) {
-		query["TenantVSwitchId"] = request.TenantVSwitchId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.TerminationGracePeriodSeconds)) {
@@ -11675,6 +13078,54 @@ func (client *Client) CreateContainerGroupWithOptions(request *CreateContainerGr
 	return _result, _err
 }
 
+/**
+ * ## Usage description
+ * When you call the CreateContainerGroup operation to create an elastic container instance, the system creates a service-linked role named AliyunServiceRoleForECI. This role is used to access other Alibaba Cloud services such as Elastic Compute Service (ECS) and Virtual Private Cloud (VPC). For more information, see [Elastic Container Instance service-linked role](~~212914~~).
+ * ## Parameters configured for features
+ * When you create an elastic container instance, you can configure features such as instances, images, and storage based on your requirements. For information about parameters configured for the features and the description of the parameters, see the following documents: **Instances** You can use one of the following methods to create an elastic container instance:
+ * *   [Specify the number of vCPUs and memory size to create an elastic container instance](~~114662~~)
+ *     *   [Create job-optimized elastic container instances](~~324246~~)
+ *     *   [Ignore special containers during resource adjustment](~~446853~~)
+ * *   [Specify ECS instance types to create an elastic container instance](~~114664~~)
+ *     *   [Specify GPU-accelerated ECS instance types](~~114581~~)
+ *     *   [Specify ECS instance types with local disks](~~164011~~)
+ *     *   [Specify AMD-based ECS instance types](~~187411~~)
+ * Both the preceding creation methods support the following features:
+ * *   [Specify custom CPU options](~~197781~~)
+ * *   [Create a preemptible elastic container instance](~~157759~~)
+ * *   [Configure multiple zones](~~157290~~)
+ * *   [Configure multiple specifications](~~146468~~)
+ * *   [Use tags to manage elastic container instances](~~146608~~)
+ * **Images**
+ * *   [Configure a container image](~~461311~~)
+ * *   [Use the image cache feature to accelerate the creation of an elastic container instance](~~141281~~)
+ * *   [Specify a Container Registry Enterprise Edition instance](~~194250.~~)
+ * *   [Use self-managed image repositories](~~378059~~)
+ * **Networking**
+ * *   [Create and Associate an EIP](~~99146~~)
+ * *   [Assign a security group](~~176237~~)
+ * *   [Assign an IPv6 address to an elastic container instance](~~451282~~)
+ * *   [Configure maximum bandwidth](~~190635~~)
+ * **Storage**
+ * *   [Mount a disk volume](~~144571~~)
+ * *   [Mount a NAS volume](~~464075~~)
+ * *   [Mount an OSS bucket to an elastic container instance as a volume](~~464076~~)
+ * *   [Mount an emptyDir volume](~~464078~~)
+ * *   [Mount a ConfigFile volume](~~464080~~)
+ * *   [Increase the storage capacity of the temporary storage space](~~204066~~)
+ * **Container configuration**
+ * *   [Configure startup commands and arguments for a container](~~94593~~)
+ * *   [Use probes to perform health checks on a container](~~99053~~)
+ * *   [Obtain metadata by using environment variables](~~141788~~)
+ * *   [Configure a security context](~~462313~~)
+ * *   [Configure the NTP service](~~462768~~)
+ * **Logging and O\\&M**
+ * *   [Use environment variables to configure log collection](~~121973~~)
+ * *   [Save core files to volumes](~~167801~~)
+ *
+ * @param request CreateContainerGroupRequest
+ * @return CreateContainerGroupResponse
+ */
 func (client *Client) CreateContainerGroup(request *CreateContainerGroupRequest) (_result *CreateContainerGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateContainerGroupResponse{}
@@ -11686,6 +13137,22 @@ func (client *Client) CreateContainerGroup(request *CreateContainerGroupRequest)
 	return _result, _err
 }
 
+/**
+ * ### Precautions
+ * - You are charged for creation of image caches. We recommend that you learn the relevant billing information in advance. For more information, see [Billing](~~89142~~).
+ * - Before you create an image cache, you must estimate the total size of the images that you want to cache. If the total size of the images exceeds the specified cache size, the image cache cannot be created.
+ * - When an image cache is being created, the system creates an intermediate elastic container instance and an intermediate enhanced SSD (ESSD) at performance level 1 (PL1). Do not delete the intermediate instance and the ESSD while the image cache is being created. If you delete the intermediate instance or the ESSD, the image cache cannot be created.
+ * - A temporary local snapshot and a specific number of regular snapshots are generated during the creation of the image cache. Do not delete these snapshots. If you delete these snapshots, the image cache becomes invalid.
+ * - If you use SDKs, SDK for Java 1.0.10 or later and SDK for Python 1.0.7 or later are supported.
+ * ### Usage notes
+ * - You can configure AcrRegistryInfo-related parameters to pull images from Container Registry Enterprise Edition instances without using a password. When you use AcrRegistryInfo-related parameters to pull images from a Container Registry Enterprise Edition instance without using a password, you must specify the AcrRegistryInfo.N.InstanceId parameter.
+ * - If the image cache that you created will be used to create more than 1,000 elastic container instances at a time, we recommend that you use the StandardCopyCount and FlashCopyCount parameters to create multiple temporary local snapshots and regular snapshots for the image cache. The multiple snapshots are billed based on incremental data. If no incremental data exists on the multiple snapshots, you are not charged for the multiple snapshots.
+ * >  When you call the CreateImageCache operation to create an image cache, the system automatically creates a service-linked role named AliyunServiceRoleForECI. The role is used to access other Alibaba Cloud services such as Elastic Compute Service (ECS) and Virtual Private Cloud (VPC). For more information, see [Elastic Container Instance service-linked role](~~212914~~).
+ *
+ * @param request CreateImageCacheRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return CreateImageCacheResponse
+ */
 func (client *Client) CreateImageCacheWithOptions(request *CreateImageCacheRequest, runtime *util.RuntimeOptions) (_result *CreateImageCacheResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -11823,6 +13290,21 @@ func (client *Client) CreateImageCacheWithOptions(request *CreateImageCacheReque
 	return _result, _err
 }
 
+/**
+ * ### Precautions
+ * - You are charged for creation of image caches. We recommend that you learn the relevant billing information in advance. For more information, see [Billing](~~89142~~).
+ * - Before you create an image cache, you must estimate the total size of the images that you want to cache. If the total size of the images exceeds the specified cache size, the image cache cannot be created.
+ * - When an image cache is being created, the system creates an intermediate elastic container instance and an intermediate enhanced SSD (ESSD) at performance level 1 (PL1). Do not delete the intermediate instance and the ESSD while the image cache is being created. If you delete the intermediate instance or the ESSD, the image cache cannot be created.
+ * - A temporary local snapshot and a specific number of regular snapshots are generated during the creation of the image cache. Do not delete these snapshots. If you delete these snapshots, the image cache becomes invalid.
+ * - If you use SDKs, SDK for Java 1.0.10 or later and SDK for Python 1.0.7 or later are supported.
+ * ### Usage notes
+ * - You can configure AcrRegistryInfo-related parameters to pull images from Container Registry Enterprise Edition instances without using a password. When you use AcrRegistryInfo-related parameters to pull images from a Container Registry Enterprise Edition instance without using a password, you must specify the AcrRegistryInfo.N.InstanceId parameter.
+ * - If the image cache that you created will be used to create more than 1,000 elastic container instances at a time, we recommend that you use the StandardCopyCount and FlashCopyCount parameters to create multiple temporary local snapshots and regular snapshots for the image cache. The multiple snapshots are billed based on incremental data. If no incremental data exists on the multiple snapshots, you are not charged for the multiple snapshots.
+ * >  When you call the CreateImageCache operation to create an image cache, the system automatically creates a service-linked role named AliyunServiceRoleForECI. The role is used to access other Alibaba Cloud services such as Elastic Compute Service (ECS) and Virtual Private Cloud (VPC). For more information, see [Elastic Container Instance service-linked role](~~212914~~).
+ *
+ * @param request CreateImageCacheRequest
+ * @return CreateImageCacheResponse
+ */
 func (client *Client) CreateImageCache(request *CreateImageCacheRequest) (_result *CreateImageCacheResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateImageCacheResponse{}
@@ -11834,6 +13316,15 @@ func (client *Client) CreateImageCache(request *CreateImageCacheRequest) (_resul
 	return _result, _err
 }
 
+/**
+ * O&M tasks are classified into:
+ * *   coredump: After you enable coredump, the system generates a core dump file when a container unexpectedly stops. You can use the core dump file to analyze the exception and find out the cause of the problem. For more information, see [Enable coredump](~~167801~~).
+ * *   tcpdump: After you enable tcpdump, the system captures network packets when a container unexpectedly stops. You can analyze the packets and locate network problems. For more information, see Enable [tcpdump](~~429749~~).
+ *
+ * @param request CreateInstanceOpsTaskRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return CreateInstanceOpsTaskResponse
+ */
 func (client *Client) CreateInstanceOpsTaskWithOptions(request *CreateInstanceOpsTaskRequest, runtime *util.RuntimeOptions) (_result *CreateInstanceOpsTaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -11899,6 +13390,14 @@ func (client *Client) CreateInstanceOpsTaskWithOptions(request *CreateInstanceOp
 	return _result, _err
 }
 
+/**
+ * O&M tasks are classified into:
+ * *   coredump: After you enable coredump, the system generates a core dump file when a container unexpectedly stops. You can use the core dump file to analyze the exception and find out the cause of the problem. For more information, see [Enable coredump](~~167801~~).
+ * *   tcpdump: After you enable tcpdump, the system captures network packets when a container unexpectedly stops. You can analyze the packets and locate network problems. For more information, see Enable [tcpdump](~~429749~~).
+ *
+ * @param request CreateInstanceOpsTaskRequest
+ * @return CreateInstanceOpsTaskResponse
+ */
 func (client *Client) CreateInstanceOpsTask(request *CreateInstanceOpsTaskRequest) (_result *CreateInstanceOpsTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateInstanceOpsTaskResponse{}
@@ -11910,6 +13409,13 @@ func (client *Client) CreateInstanceOpsTask(request *CreateInstanceOpsTaskReques
 	return _result, _err
 }
 
+/**
+ * When you call this operation to create a VNode, the system automatically creates a service-linked role AliyunServiceRoleForECIVnode for you to access relevant cloud services such as Elastic Container Instance, Elastic Compute Service (ECS), and Virtual Private Cloud (VPC). For more information, see [Virtual Node Service-linked role](~~311014~~).
+ *
+ * @param request CreateVirtualNodeRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return CreateVirtualNodeResponse
+ */
 func (client *Client) CreateVirtualNodeWithOptions(request *CreateVirtualNodeRequest, runtime *util.RuntimeOptions) (_result *CreateVirtualNodeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -11918,6 +13424,18 @@ func (client *Client) CreateVirtualNodeWithOptions(request *CreateVirtualNodeReq
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
 		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClusterDNS)) {
+		query["ClusterDNS"] = request.ClusterDNS
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClusterDomain)) {
+		query["ClusterDomain"] = request.ClusterDomain
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CustomResources)) {
+		query["CustomResources"] = request.CustomResources
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.EipInstanceId)) {
@@ -12015,6 +13533,12 @@ func (client *Client) CreateVirtualNodeWithOptions(request *CreateVirtualNodeReq
 	return _result, _err
 }
 
+/**
+ * When you call this operation to create a VNode, the system automatically creates a service-linked role AliyunServiceRoleForECIVnode for you to access relevant cloud services such as Elastic Container Instance, Elastic Compute Service (ECS), and Virtual Private Cloud (VPC). For more information, see [Virtual Node Service-linked role](~~311014~~).
+ *
+ * @param request CreateVirtualNodeRequest
+ * @return CreateVirtualNodeResponse
+ */
 func (client *Client) CreateVirtualNode(request *CreateVirtualNodeRequest) (_result *CreateVirtualNodeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateVirtualNodeResponse{}
@@ -12170,6 +13694,13 @@ func (client *Client) DeleteImageCache(request *DeleteImageCacheRequest) (_resul
 	return _result, _err
 }
 
+/**
+ * Make sure that no elastic container instance exists on the virtual node before you call this operation to delete a virtual node.
+ *
+ * @param request DeleteVirtualNodeRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DeleteVirtualNodeResponse
+ */
 func (client *Client) DeleteVirtualNodeWithOptions(request *DeleteVirtualNodeRequest, runtime *util.RuntimeOptions) (_result *DeleteVirtualNodeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12231,6 +13762,12 @@ func (client *Client) DeleteVirtualNodeWithOptions(request *DeleteVirtualNodeReq
 	return _result, _err
 }
 
+/**
+ * Make sure that no elastic container instance exists on the virtual node before you call this operation to delete a virtual node.
+ *
+ * @param request DeleteVirtualNodeRequest
+ * @return DeleteVirtualNodeResponse
+ */
 func (client *Client) DeleteVirtualNode(request *DeleteVirtualNodeRequest) (_result *DeleteVirtualNodeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteVirtualNodeResponse{}
@@ -12242,6 +13779,13 @@ func (client *Client) DeleteVirtualNode(request *DeleteVirtualNodeRequest) (_res
 	return _result, _err
 }
 
+/**
+ * When you call the CreateContainerGroup operation to create an elastic container instance, you can use the InstanceType parameter to specify one or more ECS instance types that fit your specific needs. To ensure that the elastic container instance can be created, you can call the DescribeAvailableResource operation to query which ECS instance types and instance families are available in the specified region and zone before you create the elastic container instance.
+ *
+ * @param request DescribeAvailableResourceRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DescribeAvailableResourceResponse
+ */
 func (client *Client) DescribeAvailableResourceWithOptions(request *DescribeAvailableResourceRequest, runtime *util.RuntimeOptions) (_result *DescribeAvailableResourceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12307,6 +13851,12 @@ func (client *Client) DescribeAvailableResourceWithOptions(request *DescribeAvai
 	return _result, _err
 }
 
+/**
+ * When you call the CreateContainerGroup operation to create an elastic container instance, you can use the InstanceType parameter to specify one or more ECS instance types that fit your specific needs. To ensure that the elastic container instance can be created, you can call the DescribeAvailableResource operation to query which ECS instance types and instance families are available in the specified region and zone before you create the elastic container instance.
+ *
+ * @param request DescribeAvailableResourceRequest
+ * @return DescribeAvailableResourceResponse
+ */
 func (client *Client) DescribeAvailableResource(request *DescribeAvailableResourceRequest) (_result *DescribeAvailableResourceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeAvailableResourceResponse{}
@@ -12402,6 +13952,13 @@ func (client *Client) DescribeCommitContainerTask(request *DescribeCommitContain
 	return _result, _err
 }
 
+/**
+ * You can call this operation to query the event information of multiple container groups at a time. By default, the latest 50 entries of events of each container group are returned.
+ *
+ * @param request DescribeContainerGroupEventsRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DescribeContainerGroupEventsResponse
+ */
 func (client *Client) DescribeContainerGroupEventsWithOptions(request *DescribeContainerGroupEventsRequest, runtime *util.RuntimeOptions) (_result *DescribeContainerGroupEventsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12471,6 +14028,12 @@ func (client *Client) DescribeContainerGroupEventsWithOptions(request *DescribeC
 	return _result, _err
 }
 
+/**
+ * You can call this operation to query the event information of multiple container groups at a time. By default, the latest 50 entries of events of each container group are returned.
+ *
+ * @param request DescribeContainerGroupEventsRequest
+ * @return DescribeContainerGroupEventsResponse
+ */
 func (client *Client) DescribeContainerGroupEvents(request *DescribeContainerGroupEventsRequest) (_result *DescribeContainerGroupEventsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeContainerGroupEventsResponse{}
@@ -12482,6 +14045,15 @@ func (client *Client) DescribeContainerGroupEvents(request *DescribeContainerGro
 	return _result, _err
 }
 
+/**
+ * *   A maximum of 50 monitoring data entries can be returned. If the number of monitoring data entries exceeds this limit, an error message is returned.
+ * *   You can query real-time monitoring data (data generated within the last 5 minutes) and historical data (data generated more than 5 minutes ago). If the time range to query starts or ends later than the current time, historical monitoring data generated more than 5 minutes ago is returned.
+ * *   You can query only the monitoring data of elastic container instances that are created after April 3, 2019 15:00 UTC+8.
+ *
+ * @param request DescribeContainerGroupMetricRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DescribeContainerGroupMetricResponse
+ */
 func (client *Client) DescribeContainerGroupMetricWithOptions(request *DescribeContainerGroupMetricRequest, runtime *util.RuntimeOptions) (_result *DescribeContainerGroupMetricResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12547,6 +14119,14 @@ func (client *Client) DescribeContainerGroupMetricWithOptions(request *DescribeC
 	return _result, _err
 }
 
+/**
+ * *   A maximum of 50 monitoring data entries can be returned. If the number of monitoring data entries exceeds this limit, an error message is returned.
+ * *   You can query real-time monitoring data (data generated within the last 5 minutes) and historical data (data generated more than 5 minutes ago). If the time range to query starts or ends later than the current time, historical monitoring data generated more than 5 minutes ago is returned.
+ * *   You can query only the monitoring data of elastic container instances that are created after April 3, 2019 15:00 UTC+8.
+ *
+ * @param request DescribeContainerGroupMetricRequest
+ * @return DescribeContainerGroupMetricResponse
+ */
 func (client *Client) DescribeContainerGroupMetric(request *DescribeContainerGroupMetricRequest) (_result *DescribeContainerGroupMetricResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeContainerGroupMetricResponse{}
@@ -12558,6 +14138,13 @@ func (client *Client) DescribeContainerGroupMetric(request *DescribeContainerGro
 	return _result, _err
 }
 
+/**
+ * This operation does not support resource group authentication.
+ *
+ * @param request DescribeContainerGroupPriceRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DescribeContainerGroupPriceResponse
+ */
 func (client *Client) DescribeContainerGroupPriceWithOptions(request *DescribeContainerGroupPriceRequest, runtime *util.RuntimeOptions) (_result *DescribeContainerGroupPriceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12604,6 +14191,10 @@ func (client *Client) DescribeContainerGroupPriceWithOptions(request *DescribeCo
 		query["ResourceOwnerId"] = request.ResourceOwnerId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.SpotDuration)) {
+		query["SpotDuration"] = request.SpotDuration
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.SpotPriceLimit)) {
 		query["SpotPriceLimit"] = request.SpotPriceLimit
 	}
@@ -12639,6 +14230,12 @@ func (client *Client) DescribeContainerGroupPriceWithOptions(request *DescribeCo
 	return _result, _err
 }
 
+/**
+ * This operation does not support resource group authentication.
+ *
+ * @param request DescribeContainerGroupPriceRequest
+ * @return DescribeContainerGroupPriceResponse
+ */
 func (client *Client) DescribeContainerGroupPrice(request *DescribeContainerGroupPriceRequest) (_result *DescribeContainerGroupPriceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeContainerGroupPriceResponse{}
@@ -12726,6 +14323,15 @@ func (client *Client) DescribeContainerGroupStatus(request *DescribeContainerGro
 	return _result, _err
 }
 
+/**
+ * After elastic container instances stop running, the underlying computing resources are reclaimed. The instance information is retained based on the following rules:
+ * *   For elastic container instances that stop on success, only the latest 100 entries of success information about instances in all regions is retained.
+ * *   For elastic container instances that stop on failure, the instance information is retained for only 24 hours.
+ *
+ * @param request DescribeContainerGroupsRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DescribeContainerGroupsResponse
+ */
 func (client *Client) DescribeContainerGroupsWithOptions(request *DescribeContainerGroupsRequest, runtime *util.RuntimeOptions) (_result *DescribeContainerGroupsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12819,6 +14425,14 @@ func (client *Client) DescribeContainerGroupsWithOptions(request *DescribeContai
 	return _result, _err
 }
 
+/**
+ * After elastic container instances stop running, the underlying computing resources are reclaimed. The instance information is retained based on the following rules:
+ * *   For elastic container instances that stop on success, only the latest 100 entries of success information about instances in all regions is retained.
+ * *   For elastic container instances that stop on failure, the instance information is retained for only 24 hours.
+ *
+ * @param request DescribeContainerGroupsRequest
+ * @return DescribeContainerGroupsResponse
+ */
 func (client *Client) DescribeContainerGroups(request *DescribeContainerGroupsRequest) (_result *DescribeContainerGroupsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeContainerGroupsResponse{}
@@ -13094,6 +14708,14 @@ func (client *Client) DescribeInstanceOpsRecords(request *DescribeInstanceOpsRec
 	return _result, _err
 }
 
+/**
+ * - Only the latest entry of monitoring data of each elastic container instance is returned.
+ * - You can query only the monitoring data of elastic container instances that are created after April 3, 2019 15:00:00 UTC+8.
+ *
+ * @param request DescribeMultiContainerGroupMetricRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DescribeMultiContainerGroupMetricResponse
+ */
 func (client *Client) DescribeMultiContainerGroupMetricWithOptions(request *DescribeMultiContainerGroupMetricRequest, runtime *util.RuntimeOptions) (_result *DescribeMultiContainerGroupMetricResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13155,6 +14777,13 @@ func (client *Client) DescribeMultiContainerGroupMetricWithOptions(request *Desc
 	return _result, _err
 }
 
+/**
+ * - Only the latest entry of monitoring data of each elastic container instance is returned.
+ * - You can query only the monitoring data of elastic container instances that are created after April 3, 2019 15:00:00 UTC+8.
+ *
+ * @param request DescribeMultiContainerGroupMetricRequest
+ * @return DescribeMultiContainerGroupMetricResponse
+ */
 func (client *Client) DescribeMultiContainerGroupMetric(request *DescribeMultiContainerGroupMetricRequest) (_result *DescribeMultiContainerGroupMetricResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeMultiContainerGroupMetricResponse{}
@@ -13276,10 +14905,6 @@ func (client *Client) DescribeVirtualNodesWithOptions(request *DescribeVirtualNo
 		query["ResourceOwnerId"] = request.ResourceOwnerId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.SecurityGroupId)) {
-		query["SecurityGroupId"] = request.SecurityGroupId
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.Status)) {
 		query["Status"] = request.Status
 	}
@@ -13288,20 +14913,12 @@ func (client *Client) DescribeVirtualNodesWithOptions(request *DescribeVirtualNo
 		query["Tag"] = request.Tag
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.VSwitchId)) {
-		query["VSwitchId"] = request.VSwitchId
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.VirtualNodeIds)) {
 		query["VirtualNodeIds"] = request.VirtualNodeIds
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.VirtualNodeName)) {
 		query["VirtualNodeName"] = request.VirtualNodeName
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ZoneId)) {
-		query["ZoneId"] = request.ZoneId
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -13426,6 +15043,13 @@ func (client *Client) ExecContainerCommand(request *ExecContainerCommandRequest)
 	return _result, _err
 }
 
+/**
+ * This operation cannot be used for resource group authentication.
+ *
+ * @param request ListUsageRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ListUsageResponse
+ */
 func (client *Client) ListUsageWithOptions(request *ListUsageRequest, runtime *util.RuntimeOptions) (_result *ListUsageResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13479,6 +15103,12 @@ func (client *Client) ListUsageWithOptions(request *ListUsageRequest, runtime *u
 	return _result, _err
 }
 
+/**
+ * This operation cannot be used for resource group authentication.
+ *
+ * @param request ListUsageRequest
+ * @return ListUsageResponse
+ */
 func (client *Client) ListUsage(request *ListUsageRequest) (_result *ListUsageResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListUsageResponse{}
@@ -13490,6 +15120,13 @@ func (client *Client) ListUsage(request *ListUsageRequest) (_result *ListUsageRe
 	return _result, _err
 }
 
+/**
+ * You can call this operation only to scale out volumes, not to scale in volumes. You can scale out only volumes of the Alibaba Cloud disk type. Volumes of other types cannot be scaled out.
+ *
+ * @param request ResizeContainerGroupVolumeRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ResizeContainerGroupVolumeResponse
+ */
 func (client *Client) ResizeContainerGroupVolumeWithOptions(request *ResizeContainerGroupVolumeRequest, runtime *util.RuntimeOptions) (_result *ResizeContainerGroupVolumeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13559,6 +15196,12 @@ func (client *Client) ResizeContainerGroupVolumeWithOptions(request *ResizeConta
 	return _result, _err
 }
 
+/**
+ * You can call this operation only to scale out volumes, not to scale in volumes. You can scale out only volumes of the Alibaba Cloud disk type. Volumes of other types cannot be scaled out.
+ *
+ * @param request ResizeContainerGroupVolumeRequest
+ * @return ResizeContainerGroupVolumeResponse
+ */
 func (client *Client) ResizeContainerGroupVolume(request *ResizeContainerGroupVolumeRequest) (_result *ResizeContainerGroupVolumeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ResizeContainerGroupVolumeResponse{}
@@ -13570,6 +15213,15 @@ func (client *Client) ResizeContainerGroupVolume(request *ResizeContainerGroupVo
 	return _result, _err
 }
 
+/**
+ * *   Only elastic container instances that are in the Pending or Running state can be restarted. Instances that are in the Succeeded or Failed state cannot be restarted.
+ * *   Elastic container instances that were created before 15:00:00 on March 7, 2019 cannot be restarted.
+ * *   When an elastic container instance is being restarted, its status changes into Restarting.
+ *
+ * @param request RestartContainerGroupRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return RestartContainerGroupResponse
+ */
 func (client *Client) RestartContainerGroupWithOptions(request *RestartContainerGroupRequest, runtime *util.RuntimeOptions) (_result *RestartContainerGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13631,6 +15283,14 @@ func (client *Client) RestartContainerGroupWithOptions(request *RestartContainer
 	return _result, _err
 }
 
+/**
+ * *   Only elastic container instances that are in the Pending or Running state can be restarted. Instances that are in the Succeeded or Failed state cannot be restarted.
+ * *   Elastic container instances that were created before 15:00:00 on March 7, 2019 cannot be restarted.
+ * *   When an elastic container instance is being restarted, its status changes into Restarting.
+ *
+ * @param request RestartContainerGroupRequest
+ * @return RestartContainerGroupResponse
+ */
 func (client *Client) RestartContainerGroup(request *RestartContainerGroupRequest) (_result *RestartContainerGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RestartContainerGroupResponse{}
@@ -13642,6 +15302,14 @@ func (client *Client) RestartContainerGroup(request *RestartContainerGroupReques
 	return _result, _err
 }
 
+/**
+ * * You can update only elastic container instances that are in the Pending or Running state. After you call this operation to update an elastic container instance, the instance enters the Updating state.
+ * * You cannot update elastic container instances that were created before 15:00:00 March 7, 2019.
+ *
+ * @param request UpdateContainerGroupRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return UpdateContainerGroupResponse
+ */
 func (client *Client) UpdateContainerGroupWithOptions(request *UpdateContainerGroupRequest, runtime *util.RuntimeOptions) (_result *UpdateContainerGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13751,6 +15419,13 @@ func (client *Client) UpdateContainerGroupWithOptions(request *UpdateContainerGr
 	return _result, _err
 }
 
+/**
+ * * You can update only elastic container instances that are in the Pending or Running state. After you call this operation to update an elastic container instance, the instance enters the Updating state.
+ * * You cannot update elastic container instances that were created before 15:00:00 March 7, 2019.
+ *
+ * @param request UpdateContainerGroupRequest
+ * @return UpdateContainerGroupResponse
+ */
 func (client *Client) UpdateContainerGroup(request *UpdateContainerGroupRequest) (_result *UpdateContainerGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateContainerGroupResponse{}
@@ -13762,6 +15437,13 @@ func (client *Client) UpdateContainerGroup(request *UpdateContainerGroupRequest)
 	return _result, _err
 }
 
+/**
+ * Only image caches that are in the Ready or UpdateFailed state can be updated.
+ *
+ * @param request UpdateImageCacheRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return UpdateImageCacheResponse
+ */
 func (client *Client) UpdateImageCacheWithOptions(request *UpdateImageCacheRequest, runtime *util.RuntimeOptions) (_result *UpdateImageCacheResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13887,6 +15569,12 @@ func (client *Client) UpdateImageCacheWithOptions(request *UpdateImageCacheReque
 	return _result, _err
 }
 
+/**
+ * Only image caches that are in the Ready or UpdateFailed state can be updated.
+ *
+ * @param request UpdateImageCacheRequest
+ * @return UpdateImageCacheResponse
+ */
 func (client *Client) UpdateImageCache(request *UpdateImageCacheRequest) (_result *UpdateImageCacheResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateImageCacheResponse{}
@@ -13898,6 +15586,13 @@ func (client *Client) UpdateImageCache(request *UpdateImageCacheRequest) (_resul
 	return _result, _err
 }
 
+/**
+ * Only virtual nodes that are in the Ready state can be updated.
+ *
+ * @param request UpdateVirtualNodeRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return UpdateVirtualNodeResponse
+ */
 func (client *Client) UpdateVirtualNodeWithOptions(request *UpdateVirtualNodeRequest, runtime *util.RuntimeOptions) (_result *UpdateVirtualNodeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13906,6 +15601,18 @@ func (client *Client) UpdateVirtualNodeWithOptions(request *UpdateVirtualNodeReq
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
 		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClusterDNS)) {
+		query["ClusterDNS"] = request.ClusterDNS
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClusterDomain)) {
+		query["ClusterDomain"] = request.ClusterDomain
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CustomResources)) {
+		query["CustomResources"] = request.CustomResources
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
@@ -13979,6 +15686,12 @@ func (client *Client) UpdateVirtualNodeWithOptions(request *UpdateVirtualNodeReq
 	return _result, _err
 }
 
+/**
+ * Only virtual nodes that are in the Ready state can be updated.
+ *
+ * @param request UpdateVirtualNodeRequest
+ * @return UpdateVirtualNodeResponse
+ */
 func (client *Client) UpdateVirtualNode(request *UpdateVirtualNodeRequest) (_result *UpdateVirtualNodeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateVirtualNodeResponse{}
