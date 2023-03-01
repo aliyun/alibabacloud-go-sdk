@@ -1,3 +1,6 @@
+2023-03-01 Version: v2.0.5
+- Add jobResults params in GetSmartHandleJob API.
+
 2023-02-03 Version: v2.0.4
 - Add GetTemplateParams API.
 

@@ -13247,6 +13247,7 @@ func (s *GetSmartHandleJobRequest) SetJobId(v string) *GetSmartHandleJobRequest 
 
 type GetSmartHandleJobResponseBody struct {
 	JobId        *string                                    `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	JobResult    *GetSmartHandleJobResponseBodyJobResult    `json:"JobResult,omitempty" xml:"JobResult,omitempty" type:"Struct"`
 	Output       *string                                    `json:"Output,omitempty" xml:"Output,omitempty"`
 	RequestId    *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	SmartJobInfo *GetSmartHandleJobResponseBodySmartJobInfo `json:"SmartJobInfo,omitempty" xml:"SmartJobInfo,omitempty" type:"Struct"`
@@ -13264,6 +13265,11 @@ func (s GetSmartHandleJobResponseBody) GoString() string {
 
 func (s *GetSmartHandleJobResponseBody) SetJobId(v string) *GetSmartHandleJobResponseBody {
 	s.JobId = &v
+	return s
+}
+
+func (s *GetSmartHandleJobResponseBody) SetJobResult(v *GetSmartHandleJobResponseBodyJobResult) *GetSmartHandleJobResponseBody {
+	s.JobResult = v
 	return s
 }
 
@@ -13289,6 +13295,29 @@ func (s *GetSmartHandleJobResponseBody) SetState(v string) *GetSmartHandleJobRes
 
 func (s *GetSmartHandleJobResponseBody) SetUserData(v string) *GetSmartHandleJobResponseBody {
 	s.UserData = &v
+	return s
+}
+
+type GetSmartHandleJobResponseBodyJobResult struct {
+	AiResult *string `json:"AiResult,omitempty" xml:"AiResult,omitempty"`
+	MediaId  *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+}
+
+func (s GetSmartHandleJobResponseBodyJobResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSmartHandleJobResponseBodyJobResult) GoString() string {
+	return s.String()
+}
+
+func (s *GetSmartHandleJobResponseBodyJobResult) SetAiResult(v string) *GetSmartHandleJobResponseBodyJobResult {
+	s.AiResult = &v
+	return s
+}
+
+func (s *GetSmartHandleJobResponseBodyJobResult) SetMediaId(v string) *GetSmartHandleJobResponseBodyJobResult {
+	s.MediaId = &v
 	return s
 }
 
@@ -16808,12 +16837,14 @@ func (s *GetWorkflowTaskResponseBody) SetWorkflowTask(v *GetWorkflowTaskResponse
 }
 
 type GetWorkflowTaskResponseBodyWorkflowTask struct {
-	CreateTime *string                                          `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	FinishTime *string                                          `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
-	Status     *string                                          `json:"Status,omitempty" xml:"Status,omitempty"`
-	TaskId     *string                                          `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	TaskInput  *string                                          `json:"TaskInput,omitempty" xml:"TaskInput,omitempty"`
-	Workflow   *GetWorkflowTaskResponseBodyWorkflowTaskWorkflow `json:"Workflow,omitempty" xml:"Workflow,omitempty" type:"Struct"`
+	ActivityResults *string                                          `json:"ActivityResults,omitempty" xml:"ActivityResults,omitempty"`
+	CreateTime      *string                                          `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	FinishTime      *string                                          `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
+	Status          *string                                          `json:"Status,omitempty" xml:"Status,omitempty"`
+	TaskId          *string                                          `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	TaskInput       *string                                          `json:"TaskInput,omitempty" xml:"TaskInput,omitempty"`
+	UserData        *string                                          `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	Workflow        *GetWorkflowTaskResponseBodyWorkflowTaskWorkflow `json:"Workflow,omitempty" xml:"Workflow,omitempty" type:"Struct"`
 }
 
 func (s GetWorkflowTaskResponseBodyWorkflowTask) String() string {
@@ -16822,6 +16853,11 @@ func (s GetWorkflowTaskResponseBodyWorkflowTask) String() string {
 
 func (s GetWorkflowTaskResponseBodyWorkflowTask) GoString() string {
 	return s.String()
+}
+
+func (s *GetWorkflowTaskResponseBodyWorkflowTask) SetActivityResults(v string) *GetWorkflowTaskResponseBodyWorkflowTask {
+	s.ActivityResults = &v
+	return s
 }
 
 func (s *GetWorkflowTaskResponseBodyWorkflowTask) SetCreateTime(v string) *GetWorkflowTaskResponseBodyWorkflowTask {
@@ -16846,6 +16882,11 @@ func (s *GetWorkflowTaskResponseBodyWorkflowTask) SetTaskId(v string) *GetWorkfl
 
 func (s *GetWorkflowTaskResponseBodyWorkflowTask) SetTaskInput(v string) *GetWorkflowTaskResponseBodyWorkflowTask {
 	s.TaskInput = &v
+	return s
+}
+
+func (s *GetWorkflowTaskResponseBodyWorkflowTask) SetUserData(v string) *GetWorkflowTaskResponseBodyWorkflowTask {
+	s.UserData = &v
 	return s
 }
 
@@ -40433,7 +40474,23 @@ func (client *Client) GetLiveEditingIndexFileWithOptions(request *GetLiveEditing
 	if _err != nil {
 		return _result, _err
 	}
-	query := openapiutil.Query(util.ToMap(request))
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppName)) {
+		query["AppName"] = request.AppName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StreamName)) {
+		query["StreamName"] = request.StreamName
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -40442,7 +40499,7 @@ func (client *Client) GetLiveEditingIndexFileWithOptions(request *GetLiveEditing
 		Version:     tea.String("2020-11-09"),
 		Protocol:    tea.String("HTTPS"),
 		Pathname:    tea.String("/"),
-		Method:      tea.String("GET"),
+		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
 		ReqBodyType: tea.String("formData"),
