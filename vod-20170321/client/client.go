@@ -1914,60 +1914,61 @@ func (s *CreateUploadImageResponse) SetBody(v *CreateUploadImageResponseBody) *C
 type CreateUploadVideoRequest struct {
 	// The ID of the application. Default value: **app-1000000**. For more information, see [Overview](~~113600~~).
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The category ID of the audio or video file. You can use one of the following methods to obtain the category ID:
+	// The category ID of the media file. You can use one of the following methods to obtain the category ID:
 	//
-	// * Log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com). In the left-side navigation pane, choose **Configuration Management** > **Media Management** > **Categories**. On the Categories page, you can view the category ID.
-	// * View the value of the CateId parameter returned by the [AddCategory](~~56401~~) operation that you called to create a category.
-	// * View the value of the CateId parameter returned by the [GetCategories](~~56406~~) operation that you called to query a category.
+	// *   Log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com). In the left-side navigation pane, choose **Configuration Management** > **Media Management** > **Categories** to view the category ID of the media file.
+	// *   Obtain the value of CateId from the response to the [AddCategory](~~56401~~) operation.
+	// *   Obtain the value of CateId from the response to the [GetCategories](~~56406~~) operation.
 	CateId *int64 `json:"CateId,omitempty" xml:"CateId,omitempty"`
 	// The URL of the custom video thumbnail.
 	CoverURL *string `json:"CoverURL,omitempty" xml:"CoverURL,omitempty"`
 	// The description of the audio or video file.
 	//
-	// * The description can be up to 1,024 characters in length.
-	// * The value must be encoded in UTF-8.
+	// *   The value can be up to 1,024 characters in length.
+	// *   The value must be encoded in UTF-8.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The name of the audio or video file.
 	//
-	// * The name must contain a file name extension, which is not case-sensitive.
-	// * For more information about file name extensions supported by ApsaraVideo VOD, see [Overview](~~55396~~).
+	// *   The name must contain a file name extension, which is not case-sensitive.
+	// *   For more information about file name extensions supported by ApsaraVideo VOD, see [Overview](~~55396~~).
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	// The size of the audio or video file. Unit: byte.
+	// The size of the audio or video file. Unit: bytes.
 	FileSize *int64 `json:"FileSize,omitempty" xml:"FileSize,omitempty"`
-	// The storage location. You can use one of the following methods to obtain the storage location:
+	// The storage address. To obtain the storage address, log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com). In the left-side navigation pane, choose **Configuration Management** > **Media Management** > **Storage**.
 	//
-	// Log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com). In the left-side navigation pane, choose **Configuration Management** > **Media Management** > **Storage**. On the Storage page, you can view the storage location.
-	//
-	// > If this parameter is set to a specific value, the audio or video file is uploaded to the specified storage location.
+	// > If you specify a storage address, media files are uploaded to the specified address.
 	StorageLocation *string `json:"StorageLocation,omitempty" xml:"StorageLocation,omitempty"`
-	// The one or more tags of the audio or video file.
+	// The tags of the audio or video file.
 	//
-	// * You can specify a maximum of 16 tags.
-	// * If you need to specify multiple tags, separate the tags with commas (,).
-	// * Each tag can be up to 32 characters in length.
-	// * The value must be encoded in UTF-8.
+	// *   You can specify a maximum of 16 tags.
+	// *   If you want to specify multiple tags, separate the tags with commas (,).
+	// *   Each tag can be up to 32 characters in length.
+	// *   The value must be encoded in UTF-8.
 	Tags *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 	// The ID of the transcoding template group. You can use one of the following methods to obtain the ID of the transcoding template group:
 	//
-	// * Log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com). In the left-side navigation pane, choose **Configuration Management** > **Media Processing** > **Transcoding Template Groups**. On the Transcoding Template Groups page, you can view the ID of the transcoding template group.
-	// * View the value of the TranscodeTemplateGroupId parameter returned by the [AddTranscodeTemplateGroup](~~102665~~) operation that you called to create a transcoding template group.
-	// * View the value of the TranscodeTemplateGroupId parameter returned by the [ListTranscodeTemplateGroup](~~102669~~) operation that you called to query a transcoding template group.
+	// *   Log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com). In the left-side navigation pane, choose **Configuration Management** > **Media Processing** > **Transcoding Template Groups** to view the ID of the transcoding template group.
+	// *   Obtain the value of TranscodeTemplateGroupId in the response to the [AddTranscodeTemplateGroup](~~102665~~) operation.
+	// *   Obtain the value of TranscodeTemplateGroupId in the response to the [ListTranscodeTemplateGroup](~~102669~~) operation.
 	//
-	// > If you leave this parameter empty, the default transcoding template group is used for transcoding. If you set this parameter to the ID of a specific transcoding template group, the specified transcoding template group is used for transcoding.
+	// > If you leave this parameter empty, the default transcoding template group is used. If you specify this parameter, the specified transcoding template group is used for transcoding.
 	TemplateGroupId *string `json:"TemplateGroupId,omitempty" xml:"TemplateGroupId,omitempty"`
 	// The title of the audio or video file.
 	//
-	// * The title can be up to 128 characters in length.
-	// * The value must be encoded in UTF-8.
+	// *   The title can be up to 128 characters in length.
+	// *   The value must be encoded in UTF-8.
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
-	// The custom configurations, including callback configurations and upload acceleration configurations. The value is a JSON string. For more information, see the "UserData: specifies the custom configurations for media upload" section of the [Request parameters](~~86952~~) topic.
+	// The custom configurations such as callback configurations and upload acceleration configurations. The value must be a JSON string. For more information, see [Request parameters](~~86952~~).
 	//
-	// > * The callback configurations take effect only after you specify the HTTP callback URL and select the specific callback events in the ApsaraVideo VOD console. For more information about how to configure an HTTP callback in the ApsaraVideo VOD console, see [Configure callback settings](~~86071~~).
-	// > * To use the upload acceleration feature, submit a [ticket](https://ticket-intl.console.aliyun.com/#/ticket/createIndex) to enable this feature. For more information, see [Overview](~~55396~~).
+	// >
+	//
+	// *   The callback configurations take effect only after you specify the HTTP callback URL and select specific callback events in the ApsaraVideo VOD console. For more information about how to configure HTTP callback settings in the ApsaraVideo VOD console, see [Configure callback settings](~~86071~~).
+	//
+	// *   If you want to enable the upload acceleration feature, [submit a request on Yida](https://yida.alibaba-inc.com/o/ticketapply). For more information, see [Overview](~~55396~~).
 	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 	// The ID of the workflow. To view the ID of the workflow, log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com). In the left-side navigation pane, choose **Configuration Management** > **Media Processing** > **Workflows**.
 	//
-	// > If both the WorkflowId and TemplateGroupId parameters are set, the value of the WorkflowId parameter takes effect. For more information, see [Workflows](~~115347~~).
+	// > If you specify the WorkflowId and TemplateGroupId parameters, the value of the WorkflowId parameter takes effect. For more information, see [Workflows](~~115347~~).
 	WorkflowId *string `json:"WorkflowId,omitempty" xml:"WorkflowId,omitempty"`
 }
 
@@ -2044,13 +2045,13 @@ type CreateUploadVideoResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The upload URL.
 	//
-	// > The upload URL returned by this operation is Base64-encoded. Before you can use an SDK or an API operation to upload a media asset based on the upload URL, you must decode the upload URL by using the Base64 algorithm. You must parse the upload URL only if you use native OSS SDKs or OSS API for uploads.
+	// > The returned upload URL is a Base64-encoded URL. You must decode the Base64-encoded URL before you use an SDK or call an API operation to upload media files. You need to parse UploadAddress only if you use the Object Storage Service (OSS) SDK or call an OSS API operation to upload media files.
 	UploadAddress *string `json:"UploadAddress,omitempty" xml:"UploadAddress,omitempty"`
 	// The upload credential.
 	//
-	// > The upload credential returned by this operation is Base64-encoded. Before you can use an SDK or an API operation to upload a media asset based on the upload credential, you must decode the upload credential by using the Base64 algorithm. You must parse the upload credential only if you use native OSS SDKs or OSS API for uploads.
+	// > The returned upload credential is a Base64-encoded value. You must decode the Base64-encoded credential before you use an SDK or call an API operation to upload media files. You need to parse UploadAuth only if you use the OSS SDK or call an OSS API operation to upload media files.
 	UploadAuth *string `json:"UploadAuth,omitempty" xml:"UploadAuth,omitempty"`
-	// The ID of the audio or video file. You can set the request parameter VideoId to this ID when you call an operation for media asset management, media processing, or media review.
+	// The ID of the audio or video file. VideoId can be used as a request parameter when you call an operation for media asset management, media processing, or media review.
 	VideoId *string `json:"VideoId,omitempty" xml:"VideoId,omitempty"`
 }
 
@@ -5857,11 +5858,25 @@ func (s *DescribeVodDomainLogResponse) SetBody(v *DescribeVodDomainLogResponseBo
 }
 
 type DescribeVodDomainSrcBpsDataRequest struct {
+	// The accelerated domain name. You can specify a maximum of 500 domain names in a request. Separate multiple domain names with commas (,). If you specify multiple domain names in a request, aggregation results are returned.
+	//
+	// If you leave this parameter empty, the origin bandwidth data for all accelerated domain names is queried by default.
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	EndTime    *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	Interval   *string `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	StartTime  *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The end of the time range to query. The end time must be later than the start time. Specify the time in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The time interval between the data entries to return. Unit: seconds. Valid values:
+	//
+	// *   **300**: 5 minutes
+	// *   **3600**: 1 hour
+	// *   **86400**: 1 day
+	//
+	// > The time granularity supported by the Interval parameter varies based on the time range per query specified by using `StartTime` and `EndTime`. For more information, see the **Time granularity** section of this topic.
+	Interval *string `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	OwnerId  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The beginning of the time range to query. Specify the time in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	//
+	// If you leave this parameter empty, the origin bandwidth data that is generated in the last 24 hours is queried by default.
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s DescribeVodDomainSrcBpsDataRequest) String() string {
@@ -5898,12 +5913,18 @@ func (s *DescribeVodDomainSrcBpsDataRequest) SetStartTime(v string) *DescribeVod
 }
 
 type DescribeVodDomainSrcBpsDataResponseBody struct {
-	DataInterval          *string                                                       `json:"DataInterval,omitempty" xml:"DataInterval,omitempty"`
-	DomainName            *string                                                       `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	EndTime               *string                                                       `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	RequestId             *string                                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The time interval between the entries returned. Unit: seconds.
+	DataInterval *string `json:"DataInterval,omitempty" xml:"DataInterval,omitempty"`
+	// The accelerated domain name.
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// The end of the time range during which data was queried.
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Details about the origin bandwidth data returned at each time interval. Unit: bit/s.
 	SrcBpsDataPerInterval *DescribeVodDomainSrcBpsDataResponseBodySrcBpsDataPerInterval `json:"SrcBpsDataPerInterval,omitempty" xml:"SrcBpsDataPerInterval,omitempty" type:"Struct"`
-	StartTime             *string                                                       `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The start of the time range during which data was queried.
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s DescribeVodDomainSrcBpsDataResponseBody) String() string {
@@ -5962,9 +5983,12 @@ func (s *DescribeVodDomainSrcBpsDataResponseBodySrcBpsDataPerInterval) SetDataMo
 }
 
 type DescribeVodDomainSrcBpsDataResponseBodySrcBpsDataPerIntervalDataModule struct {
+	// The bandwidth values of origin HTTPS requests.
 	HttpsValue *string `json:"HttpsValue,omitempty" xml:"HttpsValue,omitempty"`
-	TimeStamp  *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
-	Value      *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The timestamp of the returned data. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	TimeStamp *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
+	// The bandwidth value at each time interval.
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s DescribeVodDomainSrcBpsDataResponseBodySrcBpsDataPerIntervalDataModule) String() string {
@@ -6020,11 +6044,25 @@ func (s *DescribeVodDomainSrcBpsDataResponse) SetBody(v *DescribeVodDomainSrcBps
 }
 
 type DescribeVodDomainSrcTrafficDataRequest struct {
+	// The accelerated domain name. You can specify a maximum of 500 domain names in a request. Separate multiple domain names with commas (,). If you specify multiple domain names in a request, aggregation results are returned.
+	//
+	// If you leave this parameter empty, the origin traffic data for all accelerated domain names is queried by default.
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	EndTime    *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	Interval   *string `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	StartTime  *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The end of the time range to query. The end time must be later than the start time. Specify the time in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The time interval between the data entries to return. Unit: seconds. Valid values:
+	//
+	// *   **300**: 5 minutes
+	// *   **3600**: 1 hour
+	// *   **86400**: 1 day
+	//
+	// > The time granularity supported by the Interval parameter varies based on the time range per query specified by using `StartTime` and `EndTime`. For more information, see the **Time granularity** section of this topic.
+	Interval *string `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	OwnerId  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The beginning of the time range to query. Specify the time in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	//
+	// If you leave this parameter empty, the origin traffic data that is generated in the last 24 hours is queried by default.
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s DescribeVodDomainSrcTrafficDataRequest) String() string {
@@ -6061,13 +6099,20 @@ func (s *DescribeVodDomainSrcTrafficDataRequest) SetStartTime(v string) *Describ
 }
 
 type DescribeVodDomainSrcTrafficDataResponseBody struct {
-	DataInterval              *string                                                               `json:"DataInterval,omitempty" xml:"DataInterval,omitempty"`
-	DomainName                *string                                                               `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	EndTime                   *string                                                               `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	RequestId                 *string                                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The time interval between the entries returned. Unit: seconds.
+	DataInterval *string `json:"DataInterval,omitempty" xml:"DataInterval,omitempty"`
+	// The accelerated domain name.
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// The end of the time range during which data was queried. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Details about the origin traffic returned at each time interval. Unit: bytes.
 	SrcTrafficDataPerInterval *DescribeVodDomainSrcTrafficDataResponseBodySrcTrafficDataPerInterval `json:"SrcTrafficDataPerInterval,omitempty" xml:"SrcTrafficDataPerInterval,omitempty" type:"Struct"`
-	StartTime                 *string                                                               `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	TotalTraffic              *string                                                               `json:"TotalTraffic,omitempty" xml:"TotalTraffic,omitempty"`
+	// The start of the time range during which data was queried. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The total traffic. Unit: bytes.
+	TotalTraffic *string `json:"TotalTraffic,omitempty" xml:"TotalTraffic,omitempty"`
 }
 
 func (s DescribeVodDomainSrcTrafficDataResponseBody) String() string {
@@ -6131,9 +6176,12 @@ func (s *DescribeVodDomainSrcTrafficDataResponseBodySrcTrafficDataPerInterval) S
 }
 
 type DescribeVodDomainSrcTrafficDataResponseBodySrcTrafficDataPerIntervalDataModule struct {
+	// The amount of traffic generated by origin HTTPS requests.
 	HttpsValue *string `json:"HttpsValue,omitempty" xml:"HttpsValue,omitempty"`
-	TimeStamp  *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
-	Value      *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The timestamp of the returned data. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+	TimeStamp *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
+	// The traffic value at each time interval.
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s DescribeVodDomainSrcTrafficDataResponseBodySrcTrafficDataPerIntervalDataModule) String() string {
@@ -6433,8 +6481,9 @@ type DescribeVodDomainUsageDataRequest struct {
 	//
 	// *   **bps**: bandwidth.
 	// *   **traf**: traffic.
-	Field   *string `json:"Field,omitempty" xml:"Field,omitempty"`
-	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	Field    *string `json:"Field,omitempty" xml:"Field,omitempty"`
+	Interval *string `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	OwnerId  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The type of the content based on which the data is generated. Valid values:
@@ -6470,6 +6519,11 @@ func (s *DescribeVodDomainUsageDataRequest) SetEndTime(v string) *DescribeVodDom
 
 func (s *DescribeVodDomainUsageDataRequest) SetField(v string) *DescribeVodDomainUsageDataRequest {
 	s.Field = &v
+	return s
+}
+
+func (s *DescribeVodDomainUsageDataRequest) SetInterval(v string) *DescribeVodDomainUsageDataRequest {
+	s.Interval = &v
 	return s
 }
 
@@ -9486,10 +9540,10 @@ func (s *GetAIMediaAuditJobResponse) SetBody(v *GetAIMediaAuditJobResponseBody) 
 }
 
 type GetAITemplateRequest struct {
-	// The ID of the AI template. You can use one of the following methods to obtain the ID of the AI template:
+	// The ID of the AI template. You can use one of the following methods to obtain the ID:
 	//
-	// *   Call the [AddAITemplate](~~102930~~) operation to add an AI template if no AI template exists. The value of TemplateId from the response is the ID of the AI template.
-	// *   Call the [ListAITemplate](~~102936~~) operation if the template already exists. The value of TemplateId from the response is the ID of the AI template.
+	// *   Call the [AddAITemplate](~~102930~~) operation to add an AI template if no AI template exists. The value of TemplateId in the response is the ID of the AI template.
+	// *   Call the [ListAITemplate](~~102936~~) operation if the template already exists. The value of TemplateId in the response is the ID of the AI template.
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 }
 
@@ -10711,7 +10765,7 @@ func (s *GetCategoriesResponse) SetBody(v *GetCategoriesResponseBody) *GetCatego
 }
 
 type GetDefaultAITemplateRequest struct {
-	// The type of the AI template. Set the value to **AIMediaAudit**, which specifies intelligent review.
+	// The type of the AI template. Set the value to **AIMediaAudit**, which specifies the automated review.
 	TemplateType *string `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
 }
 
@@ -10756,7 +10810,7 @@ func (s *GetDefaultAITemplateResponseBody) SetTemplateInfo(v *GetDefaultAITempla
 type GetDefaultAITemplateResponseBodyTemplateInfo struct {
 	// The time when the AI template was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// Indicates whether the template is the default template. Valid values:
+	// Indicates whether the template is the default AI template. Valid values:
 	//
 	// *   **Default**
 	// *   **NotDefault**
@@ -10774,7 +10828,7 @@ type GetDefaultAITemplateResponseBodyTemplateInfo struct {
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 	// The name of the AI template.
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
-	// The type of the AI template. The value is **AIMediaAudit**, which indicates intelligent review.
+	// The type of the AI template. The value is **AIMediaAudit**, which indicates automated review.
 	TemplateType *string `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
 }
 
@@ -16587,7 +16641,11 @@ func (s *GetUploadDetailsResponse) SetBody(v *GetUploadDetailsResponseBody) *Get
 }
 
 type GetVideoInfoRequest struct {
-	// The ID of the video.
+	// The ID of the media file. You can use one of the following methods to obtain the ID of the file:
+	//
+	// *   Log on to the [ApsaraVideo VOD](https://vod.console.aliyun.com) console. In the left-side navigation pane, choose **Media Files** > **Audio/Video**. On the Video and Audio page, view the ID of the audio or video file. This method is applicable to files that are uploaded by using the ApsaraVideo VOD console.
+	// *   Obtain the value of VideoId from the response to the [CreateUploadVideo](~~55407~~) operation that you called to obtain an upload URL and credential.
+	// *   Obtain the value of VideoId from the response to the [SearchMedia](~~86044~~) operation that you called to query the media ID after the media file is uploaded.
 	VideoId *string `json:"VideoId,omitempty" xml:"VideoId,omitempty"`
 }
 
@@ -16607,7 +16665,7 @@ func (s *GetVideoInfoRequest) SetVideoId(v string) *GetVideoInfoRequest {
 type GetVideoInfoResponseBody struct {
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The information about the video.
+	// The information about the media file.
 	Video *GetVideoInfoResponseBodyVideo `json:"Video,omitempty" xml:"Video,omitempty" type:"Struct"`
 }
 
@@ -16637,47 +16695,49 @@ type GetVideoInfoResponseBodyVideo struct {
 	// *   **Normal**: pass
 	// *   **Blocked**: failed
 	AuditStatus *string `json:"AuditStatus,omitempty" xml:"AuditStatus,omitempty"`
-	// The category ID of the video.
+	// The category ID of the media file.
 	CateId *int64 `json:"CateId,omitempty" xml:"CateId,omitempty"`
-	// The category of the video.
+	// The name of the category.
 	CateName *string `json:"CateName,omitempty" xml:"CateName,omitempty"`
-	// The thumbnail URL of the video.
+	// The thumbnail URL of the media file.
 	CoverURL *string `json:"CoverURL,omitempty" xml:"CoverURL,omitempty"`
-	// The time when the video was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+	// The time when the media file was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The information about the custom media asset.
-	// > This parameter has been deprecated. This parameter is no longer returned when you call the API.
+	// The custom information about the media file.
+	//
+	// > This parameter has been deprecated. This parameter is no longer returned after you call the operation.
 	CustomMediaInfo *string `json:"CustomMediaInfo,omitempty" xml:"CustomMediaInfo,omitempty"`
-	// The description of the video.
+	// The description of the media file.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The duration of the video. Unit: seconds.
+	// The duration of the media file. Unit: seconds.
 	Duration *float32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// The time when the video was updated. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+	// The time when the media file was updated. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
 	ModificationTime *string `json:"ModificationTime,omitempty" xml:"ModificationTime,omitempty"`
-	// The region ID of the Object Storage Service (OSS) bucket.
+	// The region where the media file is stored.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The size of the source video file. Unit: byte.
+	// The size of the source file. Unit: bytes.
 	Size *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
-	// The URL array of video snapshots.
+	// The video snapshot URLs.
 	Snapshots *GetVideoInfoResponseBodyVideoSnapshots `json:"Snapshots,omitempty" xml:"Snapshots,omitempty" type:"Struct"`
-	// The video status. Valid values:
+	// The status of the video. For information about the operations that can be performed on videos in different statuses and limits, see the Status: the status of a video section of the [Basic data types](~~52839~~) topic. Valid values:
+	//
 	// *   **Uploading**: The video is being uploaded.
 	// *   **UploadFail**: The video failed to be uploaded.
 	// *   **UploadSucc**: The video has been uploaded.
 	// *   **Transcoding**: The video is being transcoded.
 	// *   **TranscodeFail**: The video failed to be transcoded.
-	// *   **Blocked**: The video failed the review.
-	// *   **Normal**: The video passed the review.
+	// *   **Blocked**: The video is blocked.
+	// *   **Normal**: The video is normal.
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The OSS bucket where the video is stored.
+	// The storage address of the media file.
 	StorageLocation *string `json:"StorageLocation,omitempty" xml:"StorageLocation,omitempty"`
-	// The tags of the video. Separate multiple tags with commas (,).
+	// The tags of the media file. Multiple tags are separated by commas (,).
 	Tags *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	// The ID of the template group.
+	// The ID of the transcoding template group.
 	TemplateGroupId *string `json:"TemplateGroupId,omitempty" xml:"TemplateGroupId,omitempty"`
-	// The title of the video.
+	// The title of the media file.
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
-	// The ID of the video.
+	// The ID of the media file.
 	VideoId *string `json:"VideoId,omitempty" xml:"VideoId,omitempty"`
 }
 
@@ -18190,6 +18250,7 @@ type ListAITemplateResponseBodyTemplateInfoList struct {
 	// *   **Custom**
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
 	// The detailed configurations of the AI template. The value is a JSON string.
+	// <props="china">For more information, see [AITemplateConfig](~~89863~~#title-vd3-499-o36).</props>
 	TemplateConfig *string `json:"TemplateConfig,omitempty" xml:"TemplateConfig,omitempty"`
 	// The ID of the AI template.
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
@@ -19888,7 +19949,7 @@ func (s *ListWatermarkRequest) SetAppId(v string) *ListWatermarkRequest {
 type ListWatermarkResponseBody struct {
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The watermarks.
+	// Details about the watermarks.
 	WatermarkInfos []*ListWatermarkResponseBodyWatermarkInfos `json:"WatermarkInfos,omitempty" xml:"WatermarkInfos,omitempty" type:"Repeated"`
 }
 
@@ -19913,21 +19974,23 @@ func (s *ListWatermarkResponseBody) SetWatermarkInfos(v []*ListWatermarkResponse
 type ListWatermarkResponseBodyWatermarkInfos struct {
 	// The ID of the application.
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The time when the watermark was added. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+	// The time when the watermark was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The Object Storage Service (OSS) URL or Content Delivery Network (CDN) URL of the watermark file. A text watermark does not have a file URL.
+	// The Object Storage Service (OSS) URL or CDN URL of the watermark file. A text watermark does not have a file URL.
 	FileUrl *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
-	// Indicates whether the watermark is the default one. Valid values:
-	// *   **Default**: The watermark is the default one.
-	// *   **NotDefault**: The watermark is not the default one.
+	// Indicates whether the default watermark was used. Valid values:
+	//
+	// *   **Default**
+	// *   **NotDefault**
 	IsDefault *string `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
 	// The name of the watermark.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The type of the watermark. Valid values:
+	//
 	// *   **Image**
 	// *   **Text**
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The configurations such as the position and effect of the text watermark or image watermark. The value is a JSON-formatted string. For more information about the data structure, see the "WatermarkConfig" section of the [Media processing parameters](~~98618~~) topic.
+	// The configuration information such as the position and effect about the text watermark or image watermark. The value is a JSON string. For more information about the data structure, see the "WatermarkConfig: specifies the watermark configurations" section of the [Parameters for media processing](~~98618~~) topic.
 	WatermarkConfig *string `json:"WatermarkConfig,omitempty" xml:"WatermarkConfig,omitempty"`
 	// The ID of the watermark.
 	WatermarkId *string `json:"WatermarkId,omitempty" xml:"WatermarkId,omitempty"`
@@ -22538,15 +22601,15 @@ func (s *SetMessageCallbackResponse) SetBody(v *SetMessageCallbackResponseBody) 
 type SetVodDomainCertificateRequest struct {
 	// The name of the certificate.
 	CertName *string `json:"CertName,omitempty" xml:"CertName,omitempty"`
-	// The domain name that is secured by the certificate. The domain name uses HTTPS acceleration.
+	// The domain name that is secured by the certificate. The domain name must use HTTPS acceleration.
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The private key. This parameter is required only if you enable the SSL certificate.
 	SSLPri *string `json:"SSLPri,omitempty" xml:"SSLPri,omitempty"`
 	// Specifies whether to enable the SSL certificate. Valid values:
 	//
-	// *   **on**: enables the SSL certificate.
-	// *   **off**: disables the SSL certificate. Default value: off.
+	// *   **on**
+	// *   **off**
 	SSLProtocol *string `json:"SSLProtocol,omitempty" xml:"SSLProtocol,omitempty"`
 	// The content of the certificate. This parameter is required only if you enable the SSL certificate.
 	SSLPub        *string `json:"SSLPub,omitempty" xml:"SSLPub,omitempty"`
@@ -23832,9 +23895,9 @@ func (s *SubmitTranscodeJobsResponse) SetBody(v *SubmitTranscodeJobsResponseBody
 type SubmitWorkflowJobRequest struct {
 	// The ID of the media file. You can use one of the following methods to obtain the ID:
 	//
-	// *   Log on to the [ApsaraVideo VOD](https://vod.console.aliyun.com) console. In the left-side navigation pane, choose **Media Files** > **Audio/Video**. On the Video and Audio page, view the ID of the audio or video file. This method is applicable to files that are uploaded by using the ApsaraVideo VOD console.
-	// *   Obtain the value of the VideoId parameter when you call the [CreateUploadVideo](~~55407~~) operation to upload media files.
-	// *   Obtain the value of the VideoId parameter when you call the [SearchMedia](~~86044~~) operation after you upload media files.
+	// *   Log on to the [ApsaraVideo VOD](https://vod.console.aliyun.com) console. In the left-side navigation pane, choose **Media Files** > **Audio/Video**. On the Video and Audio page, view the ID of the media file. This method is applicable to files that are uploaded by using the ApsaraVideo VOD console.
+	// *   Obtain the value of VideoId from the response to the [CreateUploadVideo](~~55407~~) operation that you call to upload media files.
+	// *   Obtain the value of VideoId from the response to the [SearchMedia](~~86044~~) operation after you upload media files.
 	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
 	// The ID of the workflow. To view the ID of the workflow, log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com). In the left-side navigation pane, choose **Configuration Management** > **Media Processing** > **Workflows**.
 	WorkflowId *string `json:"WorkflowId,omitempty" xml:"WorkflowId,omitempty"`
@@ -23908,10 +23971,10 @@ func (s *SubmitWorkflowJobResponse) SetBody(v *SubmitWorkflowJobResponseBody) *S
 type UpdateAITemplateRequest struct {
 	// The detailed configurations of the AI template. The value is a JSON string.
 	TemplateConfig *string `json:"TemplateConfig,omitempty" xml:"TemplateConfig,omitempty"`
-	// The ID of the AI template. You can use one of the following methods to obtain the ID of the AI template:
+	// The ID of the AI template. You can use one of the following methods to obtain the ID:
 	//
-	// *   Call the [AddAITemplate](~~102930~~) operation to add an AI template if no AI template exists. The value of TemplateId from the response is the ID of the AI template.
-	// *   Call the [ListAITemplate](~~102936~~) operation if the template already exists. The value of TemplateId from the response is the ID of the AI template.
+	// *   Call the [AddAITemplate](~~102930~~) operation to add an AI template if no AI template exists. The value of TemplateId in the response is the ID of the AI template.
+	// *   Call the [ListAITemplate](~~102936~~) operation if the template already exists. The value of TemplateId in the response is the ID of the AI template.
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 	// The name of the AI template. The name can be up to 128 bytes in length.
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
@@ -26725,11 +26788,13 @@ func (client *Client) CreateUploadImage(request *CreateUploadImageRequest) (_res
 }
 
 /**
- * * You can call this operation to obtain upload URLs and credentials for both video and audio files. For more information, see [Upload URLs and credentials](~~55397~~).
- * * The process of obtaining upload URLs and credentials is a core process in ApsaraVideo VOD and is required for each upload operation. ApsaraVideo VOD provides multiple upload methods. You can upload media files by using SDKs for upload from servers, SDKs for upload from clients, file URLs, Object Storage Service (OSS) API, or OSS SDKs. Each upload method has different requirements for obtaining upload URLs and credentials. For more information, see the "Usage notes" section of the [Upload URLs and credentials](~~55397~~) topic.
- * * If the upload credential expires, you can call the [RefreshUploadVideo](~~55408~~) operation to obtain a new upload credential. The default validity period of an upload credential is 3,000 seconds.
- * * You can configure a callback to receive an [event notification](~~55396~~) when an audio or video file is uploaded. Alternatively, after you upload an audio or video file, you can call the [GetMezzanineInfo](~~59624~~) operation to determine whether the upload is successful based on the value of the Status response parameter.
- * * The value of the VideoId parameter that is returned after you call this operation can be used for media processing or the lifecycle management of media assets.
+ * *   You can call this operation to obtain upload URLs and credentials for video and audio files. For more information, see [Upload URLs and credentials](~~55397~~).
+ * *   You can call this operation only to obtain the upload URLs and credentials for media files and create media assets in ApsaraVideo VOD. You cannot call this operation to upload media files. For more information about how to upload media files by calling API operations, see [Upload media files by calling API operations](~~476208~~).
+ * *   If the upload credential expires, call the [RefreshUploadVideo](~~55408~~) operation to obtain a new upload credential. The default validity period of an upload credential is 3,000 seconds.
+ * *   You can configure a callback to receive an [event notification](~~55396~~) when an audio or video file is uploaded. Alternatively, after you upload an audio or video file, you can call the [GetMezzanineInfo](~~59624~~) operation to determine whether the upload is successful based on the file status in the response.
+ * *   The VideoId parameter that is returned after you call this operation can be used for media processing or lifecycle management of media assets.
+ * *   You must obtain a URL and a credential before you upload a media file to ApsaraVideo VOD. ApsaraVideo VOD supports multiple upload methods. Each method has different requirements on upload URLs and credentials. For more information, see [Upload URLs and credentials](~~55397~~).
+ * > If you have more questions about the ApsaraVideo VOD API, join the DingTalk group 2720012141 for consultation.
  *
  * @param request CreateUploadVideoRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -26813,11 +26878,13 @@ func (client *Client) CreateUploadVideoWithOptions(request *CreateUploadVideoReq
 }
 
 /**
- * * You can call this operation to obtain upload URLs and credentials for both video and audio files. For more information, see [Upload URLs and credentials](~~55397~~).
- * * The process of obtaining upload URLs and credentials is a core process in ApsaraVideo VOD and is required for each upload operation. ApsaraVideo VOD provides multiple upload methods. You can upload media files by using SDKs for upload from servers, SDKs for upload from clients, file URLs, Object Storage Service (OSS) API, or OSS SDKs. Each upload method has different requirements for obtaining upload URLs and credentials. For more information, see the "Usage notes" section of the [Upload URLs and credentials](~~55397~~) topic.
- * * If the upload credential expires, you can call the [RefreshUploadVideo](~~55408~~) operation to obtain a new upload credential. The default validity period of an upload credential is 3,000 seconds.
- * * You can configure a callback to receive an [event notification](~~55396~~) when an audio or video file is uploaded. Alternatively, after you upload an audio or video file, you can call the [GetMezzanineInfo](~~59624~~) operation to determine whether the upload is successful based on the value of the Status response parameter.
- * * The value of the VideoId parameter that is returned after you call this operation can be used for media processing or the lifecycle management of media assets.
+ * *   You can call this operation to obtain upload URLs and credentials for video and audio files. For more information, see [Upload URLs and credentials](~~55397~~).
+ * *   You can call this operation only to obtain the upload URLs and credentials for media files and create media assets in ApsaraVideo VOD. You cannot call this operation to upload media files. For more information about how to upload media files by calling API operations, see [Upload media files by calling API operations](~~476208~~).
+ * *   If the upload credential expires, call the [RefreshUploadVideo](~~55408~~) operation to obtain a new upload credential. The default validity period of an upload credential is 3,000 seconds.
+ * *   You can configure a callback to receive an [event notification](~~55396~~) when an audio or video file is uploaded. Alternatively, after you upload an audio or video file, you can call the [GetMezzanineInfo](~~59624~~) operation to determine whether the upload is successful based on the file status in the response.
+ * *   The VideoId parameter that is returned after you call this operation can be used for media processing or lifecycle management of media assets.
+ * *   You must obtain a URL and a credential before you upload a media file to ApsaraVideo VOD. ApsaraVideo VOD supports multiple upload methods. Each method has different requirements on upload URLs and credentials. For more information, see [Upload URLs and credentials](~~55397~~).
+ * > If you have more questions about the ApsaraVideo VOD API, join the DingTalk group 2720012141 for consultation.
  *
  * @param request CreateUploadVideoRequest
  * @return CreateUploadVideoResponse
@@ -28795,6 +28862,23 @@ func (client *Client) DescribeVodDomainLog(request *DescribeVodDomainLogRequest)
 	return _result, _err
 }
 
+/**
+ * * This operation is available only in the **China (Shanghai)** region.
+ * * ApsaraVideo VOD stores the origin bandwidth data for 90 days before the data is deleted.
+ * * If you do not set the `StartTime` or `EndTime` parameter, the request returns the data collected in the last 24 hours. If you set both the `StartTime` and `EndTime` parameters, the request returns the data collected within the specified time range.
+ * * You can specify a maximum of 500 domain names in a request. Separate multiple domain names with commas (,). If you specify multiple domain names in a request, aggregation results are returned.
+ * ### Time granularity
+ * The time granularity supported by the Interval parameter varies based on the time range per query specified by using `StartTime` and `EndTime`. The following table describes the time period within which historical data is available and the data delay.
+ * |Time granularity|Time range per query (days)|Historical data available (days)|Data delay|
+ * |---|---|---|---|
+ * |5 minutes|(0, 3\\]|93|15 minutes|
+ * |1 hour|(3, 31\\]|186|4 hours|
+ * |1 day|(31, 366\\]|366|04:00 on the next day|
+ *
+ * @param request DescribeVodDomainSrcBpsDataRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DescribeVodDomainSrcBpsDataResponse
+ */
 func (client *Client) DescribeVodDomainSrcBpsDataWithOptions(request *DescribeVodDomainSrcBpsDataRequest, runtime *util.RuntimeOptions) (_result *DescribeVodDomainSrcBpsDataResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -28844,6 +28928,22 @@ func (client *Client) DescribeVodDomainSrcBpsDataWithOptions(request *DescribeVo
 	return _result, _err
 }
 
+/**
+ * * This operation is available only in the **China (Shanghai)** region.
+ * * ApsaraVideo VOD stores the origin bandwidth data for 90 days before the data is deleted.
+ * * If you do not set the `StartTime` or `EndTime` parameter, the request returns the data collected in the last 24 hours. If you set both the `StartTime` and `EndTime` parameters, the request returns the data collected within the specified time range.
+ * * You can specify a maximum of 500 domain names in a request. Separate multiple domain names with commas (,). If you specify multiple domain names in a request, aggregation results are returned.
+ * ### Time granularity
+ * The time granularity supported by the Interval parameter varies based on the time range per query specified by using `StartTime` and `EndTime`. The following table describes the time period within which historical data is available and the data delay.
+ * |Time granularity|Time range per query (days)|Historical data available (days)|Data delay|
+ * |---|---|---|---|
+ * |5 minutes|(0, 3\\]|93|15 minutes|
+ * |1 hour|(3, 31\\]|186|4 hours|
+ * |1 day|(31, 366\\]|366|04:00 on the next day|
+ *
+ * @param request DescribeVodDomainSrcBpsDataRequest
+ * @return DescribeVodDomainSrcBpsDataResponse
+ */
 func (client *Client) DescribeVodDomainSrcBpsData(request *DescribeVodDomainSrcBpsDataRequest) (_result *DescribeVodDomainSrcBpsDataResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeVodDomainSrcBpsDataResponse{}
@@ -28855,6 +28955,23 @@ func (client *Client) DescribeVodDomainSrcBpsData(request *DescribeVodDomainSrcB
 	return _result, _err
 }
 
+/**
+ * * This operation is available only in the **China (Shanghai)** region.
+ * * ApsaraVideo VOD stores the origin traffic data for 90 days before the data is deleted.
+ * * If you do not set the `StartTime` or `EndTime` parameter, the request returns the data collected in the last 24 hours. If you set both the `StartTime` and `EndTime` parameters, the request returns the data collected within the specified time range.
+ * * You can specify a maximum of 500 domain names in a request. Separate multiple domain names with commas (,). If you specify multiple domain names in a request, aggregation results are returned.
+ * ### Time granularity
+ * The time granularity supported by the Interval parameter varies based on the time range per query specified by using `StartTime` and `EndTime`. The following table describes the time period within which historical data is available and the data delay.
+ * |Time granularity|Time range per query (days)|Historical data available (days)|Data delay|
+ * |---|---|---|---|
+ * |5 minutes|(0, 3\\]|93|15 minutes|
+ * |1 hour|(3, 31\\]|186|4 hours|
+ * |1 day|(31, 366\\]|366|04:00 on the next day|
+ *
+ * @param request DescribeVodDomainSrcTrafficDataRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DescribeVodDomainSrcTrafficDataResponse
+ */
 func (client *Client) DescribeVodDomainSrcTrafficDataWithOptions(request *DescribeVodDomainSrcTrafficDataRequest, runtime *util.RuntimeOptions) (_result *DescribeVodDomainSrcTrafficDataResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -28904,6 +29021,22 @@ func (client *Client) DescribeVodDomainSrcTrafficDataWithOptions(request *Descri
 	return _result, _err
 }
 
+/**
+ * * This operation is available only in the **China (Shanghai)** region.
+ * * ApsaraVideo VOD stores the origin traffic data for 90 days before the data is deleted.
+ * * If you do not set the `StartTime` or `EndTime` parameter, the request returns the data collected in the last 24 hours. If you set both the `StartTime` and `EndTime` parameters, the request returns the data collected within the specified time range.
+ * * You can specify a maximum of 500 domain names in a request. Separate multiple domain names with commas (,). If you specify multiple domain names in a request, aggregation results are returned.
+ * ### Time granularity
+ * The time granularity supported by the Interval parameter varies based on the time range per query specified by using `StartTime` and `EndTime`. The following table describes the time period within which historical data is available and the data delay.
+ * |Time granularity|Time range per query (days)|Historical data available (days)|Data delay|
+ * |---|---|---|---|
+ * |5 minutes|(0, 3\\]|93|15 minutes|
+ * |1 hour|(3, 31\\]|186|4 hours|
+ * |1 day|(31, 366\\]|366|04:00 on the next day|
+ *
+ * @param request DescribeVodDomainSrcTrafficDataRequest
+ * @return DescribeVodDomainSrcTrafficDataResponse
+ */
 func (client *Client) DescribeVodDomainSrcTrafficData(request *DescribeVodDomainSrcTrafficDataRequest) (_result *DescribeVodDomainSrcTrafficDataResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeVodDomainSrcTrafficDataResponse{}
@@ -29025,6 +29158,10 @@ func (client *Client) DescribeVodDomainUsageDataWithOptions(request *DescribeVod
 
 	if !tea.BoolValue(util.IsUnset(request.Field)) {
 		query["Field"] = request.Field
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Interval)) {
+		query["Interval"] = request.Interval
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
@@ -29790,6 +29927,8 @@ func (client *Client) GetAIMediaAuditJob(request *GetAIMediaAuditJobRequest) (_r
 
 /**
  * Before you call this operation to query the details of an AI template, you must obtain the ID of the AI template.
+ * ### QPS limit
+ * You can call this operation up to five times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit on API operations](~~342790~~).
  *
  * @param request GetAITemplateRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -29830,6 +29969,8 @@ func (client *Client) GetAITemplateWithOptions(request *GetAITemplateRequest, ru
 
 /**
  * Before you call this operation to query the details of an AI template, you must obtain the ID of the AI template.
+ * ### QPS limit
+ * You can call this operation up to five times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit on API operations](~~342790~~).
  *
  * @param request GetAITemplateRequest
  * @return GetAITemplateResponse
@@ -30150,7 +30291,9 @@ func (client *Client) GetCategories(request *GetCategoriesRequest) (_result *Get
 }
 
 /**
- * You can query only the default AI template for intelligent review.
+ * You can query information only about the default AI template for automated review.
+ * ### QPS limit
+ * You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit on API operations](~~342790~~).
  *
  * @param request GetDefaultAITemplateRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -30190,7 +30333,9 @@ func (client *Client) GetDefaultAITemplateWithOptions(request *GetDefaultAITempl
 }
 
 /**
- * You can query only the default AI template for intelligent review.
+ * You can query information only about the default AI template for automated review.
+ * ### QPS limit
+ * You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit on API operations](~~342790~~).
  *
  * @param request GetDefaultAITemplateRequest
  * @return GetDefaultAITemplateResponse
@@ -31378,6 +31523,16 @@ func (client *Client) GetUploadDetails(request *GetUploadDetailsRequest) (_resul
 	return _result, _err
 }
 
+/**
+ * *   You can call this operation to obtain the title, description, duration, thumbnail URL, status, creation time, size, snapshots, category, and tags of a media file based on the file ID.
+ * *   After a media file is uploaded, ApsaraVideo VOD processes the source file. Then, information about the media file is asynchronously generated. You can configure notifications for the **VideoAnalysisComplete** event and call this operation to query information about a media file after you receive the **VideoAnalysisComplete** callback. For more information, see [Overview](~~55627~~).
+ * ### QPS limits
+ * You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit on API operations](~~342790~~).
+ *
+ * @param request GetVideoInfoRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return GetVideoInfoResponse
+ */
 func (client *Client) GetVideoInfoWithOptions(request *GetVideoInfoRequest, runtime *util.RuntimeOptions) (_result *GetVideoInfoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -31411,6 +31566,15 @@ func (client *Client) GetVideoInfoWithOptions(request *GetVideoInfoRequest, runt
 	return _result, _err
 }
 
+/**
+ * *   You can call this operation to obtain the title, description, duration, thumbnail URL, status, creation time, size, snapshots, category, and tags of a media file based on the file ID.
+ * *   After a media file is uploaded, ApsaraVideo VOD processes the source file. Then, information about the media file is asynchronously generated. You can configure notifications for the **VideoAnalysisComplete** event and call this operation to query information about a media file after you receive the **VideoAnalysisComplete** callback. For more information, see [Overview](~~55627~~).
+ * ### QPS limits
+ * You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit on API operations](~~342790~~).
+ *
+ * @param request GetVideoInfoRequest
+ * @return GetVideoInfoResponse
+ */
 func (client *Client) GetVideoInfo(request *GetVideoInfoRequest) (_result *GetVideoInfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetVideoInfoResponse{}
@@ -31858,8 +32022,9 @@ func (client *Client) ListAIJob(request *ListAIJobRequest) (_result *ListAIJobRe
 }
 
 /**
- * ## Description
  * You can call this operation to query AI templates of a specified type.
+ * ### QPS limit
+ * You can call this operation up to five times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit on API operations](~~342790~~).
  *
  * @param request ListAITemplateRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -31899,8 +32064,9 @@ func (client *Client) ListAITemplateWithOptions(request *ListAITemplateRequest, 
 }
 
 /**
- * ## Description
  * You can call this operation to query AI templates of a specified type.
+ * ### QPS limit
+ * You can call this operation up to five times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit on API operations](~~342790~~).
  *
  * @param request ListAITemplateRequest
  * @return ListAITemplateResponse
@@ -34463,6 +34629,8 @@ func (client *Client) SubmitTranscodeJobs(request *SubmitTranscodeJobsRequest) (
 
 /**
  * You can call this operation to initiate a VOD workflow to process media files. For more information, see [Workflows](~~115347~~).
+ * ### QPS limits
+ * You can call this operation up to 20 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit on API operations](~~342790~~).
  *
  * @param request SubmitWorkflowJobRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -34507,6 +34675,8 @@ func (client *Client) SubmitWorkflowJobWithOptions(request *SubmitWorkflowJobReq
 
 /**
  * You can call this operation to initiate a VOD workflow to process media files. For more information, see [Workflows](~~115347~~).
+ * ### QPS limits
+ * You can call this operation up to 20 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit on API operations](~~342790~~).
  *
  * @param request SubmitWorkflowJobRequest
  * @return SubmitWorkflowJobResponse
@@ -34523,7 +34693,9 @@ func (client *Client) SubmitWorkflowJob(request *SubmitWorkflowJobRequest) (_res
 }
 
 /**
- * After you call the [AddAITemplate](~~102930~~) to add an AI template, you can call the UpdateAITemplate operation to modify the AI template.
+ * After you call the [AddAITemplate](~~102930~~) to add an AI template, you can call this operation to modify the AI template.
+ * ### QPS limit
+ * You can call this operation up to five times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit on API operations](~~342790~~).
  *
  * @param request UpdateAITemplateRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -34571,7 +34743,9 @@ func (client *Client) UpdateAITemplateWithOptions(request *UpdateAITemplateReque
 }
 
 /**
- * After you call the [AddAITemplate](~~102930~~) to add an AI template, you can call the UpdateAITemplate operation to modify the AI template.
+ * After you call the [AddAITemplate](~~102930~~) to add an AI template, you can call this operation to modify the AI template.
+ * ### QPS limit
+ * You can call this operation up to five times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit on API operations](~~342790~~).
  *
  * @param request UpdateAITemplateRequest
  * @return UpdateAITemplateResponse

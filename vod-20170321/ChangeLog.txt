@@ -1,3 +1,6 @@
+2023-03-02 Version: v3.0.3
+- Api DescribeVodDomainUsageData add parameter Interval.
+
 2022-12-23 Version: v3.0.2
 - Support resourcegroup.
 
