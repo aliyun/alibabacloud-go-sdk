@@ -1480,6 +1480,87 @@ func (s *AuthorizeSecurityGroupEgressResponse) SetBody(v *AuthorizeSecurityGroup
 	return s
 }
 
+type CleanDistDataRequest struct {
+	AppId       *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	DataName    *string `json:"DataName,omitempty" xml:"DataName,omitempty"`
+	DataVersion *string `json:"DataVersion,omitempty" xml:"DataVersion,omitempty"`
+	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+}
+
+func (s CleanDistDataRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CleanDistDataRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CleanDistDataRequest) SetAppId(v string) *CleanDistDataRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *CleanDistDataRequest) SetDataName(v string) *CleanDistDataRequest {
+	s.DataName = &v
+	return s
+}
+
+func (s *CleanDistDataRequest) SetDataVersion(v string) *CleanDistDataRequest {
+	s.DataVersion = &v
+	return s
+}
+
+func (s *CleanDistDataRequest) SetEnsRegionId(v string) *CleanDistDataRequest {
+	s.EnsRegionId = &v
+	return s
+}
+
+type CleanDistDataResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CleanDistDataResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CleanDistDataResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CleanDistDataResponseBody) SetRequestId(v string) *CleanDistDataResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CleanDistDataResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CleanDistDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CleanDistDataResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CleanDistDataResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CleanDistDataResponse) SetHeaders(v map[string]*string) *CleanDistDataResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CleanDistDataResponse) SetStatusCode(v int32) *CleanDistDataResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CleanDistDataResponse) SetBody(v *CleanDistDataResponseBody) *CleanDistDataResponse {
+	s.Body = v
+	return s
+}
+
 type CreateARMServerInstancesRequest struct {
 	Amount       *int32  `json:"Amount,omitempty" xml:"Amount,omitempty"`
 	AutoRenew    *bool   `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
@@ -1789,6 +1870,7 @@ type CreateDiskRequest struct {
 	EnsRegionId        *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
 	InstanceChargeType *string `json:"InstanceChargeType,omitempty" xml:"InstanceChargeType,omitempty"`
 	Size               *string `json:"Size,omitempty" xml:"Size,omitempty"`
+	SnapshotId         *string `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
 }
 
 func (s CreateDiskRequest) String() string {
@@ -1816,6 +1898,11 @@ func (s *CreateDiskRequest) SetInstanceChargeType(v string) *CreateDiskRequest {
 
 func (s *CreateDiskRequest) SetSize(v string) *CreateDiskRequest {
 	s.Size = &v
+	return s
+}
+
+func (s *CreateDiskRequest) SetSnapshotId(v string) *CreateDiskRequest {
+	s.SnapshotId = &v
 	return s
 }
 
@@ -7272,14 +7359,15 @@ func (s *DescribeCreatePrePaidInstanceResultResponse) SetBody(v *DescribeCreateP
 }
 
 type DescribeDataDistResultRequest struct {
-	AppId        *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	DataNames    *string `json:"DataNames,omitempty" xml:"DataNames,omitempty"`
-	DataVersions *string `json:"DataVersions,omitempty" xml:"DataVersions,omitempty"`
-	InstanceIds  *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
-	MaxDate      *string `json:"MaxDate,omitempty" xml:"MaxDate,omitempty"`
-	MinDate      *string `json:"MinDate,omitempty" xml:"MinDate,omitempty"`
-	PageNumber   *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize     *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	AppId        *string   `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	DataNames    *string   `json:"DataNames,omitempty" xml:"DataNames,omitempty"`
+	DataVersions *string   `json:"DataVersions,omitempty" xml:"DataVersions,omitempty"`
+	EnsRegionIds []*string `json:"EnsRegionIds,omitempty" xml:"EnsRegionIds,omitempty" type:"Repeated"`
+	InstanceIds  *string   `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
+	MaxDate      *string   `json:"MaxDate,omitempty" xml:"MaxDate,omitempty"`
+	MinDate      *string   `json:"MinDate,omitempty" xml:"MinDate,omitempty"`
+	PageNumber   *int32    `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize     *int32    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
 func (s DescribeDataDistResultRequest) String() string {
@@ -7305,6 +7393,11 @@ func (s *DescribeDataDistResultRequest) SetDataVersions(v string) *DescribeDataD
 	return s
 }
 
+func (s *DescribeDataDistResultRequest) SetEnsRegionIds(v []*string) *DescribeDataDistResultRequest {
+	s.EnsRegionIds = v
+	return s
+}
+
 func (s *DescribeDataDistResultRequest) SetInstanceIds(v string) *DescribeDataDistResultRequest {
 	s.InstanceIds = &v
 	return s
@@ -7326,6 +7419,71 @@ func (s *DescribeDataDistResultRequest) SetPageNumber(v int32) *DescribeDataDist
 }
 
 func (s *DescribeDataDistResultRequest) SetPageSize(v int32) *DescribeDataDistResultRequest {
+	s.PageSize = &v
+	return s
+}
+
+type DescribeDataDistResultShrinkRequest struct {
+	AppId              *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	DataNames          *string `json:"DataNames,omitempty" xml:"DataNames,omitempty"`
+	DataVersions       *string `json:"DataVersions,omitempty" xml:"DataVersions,omitempty"`
+	EnsRegionIdsShrink *string `json:"EnsRegionIds,omitempty" xml:"EnsRegionIds,omitempty"`
+	InstanceIds        *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
+	MaxDate            *string `json:"MaxDate,omitempty" xml:"MaxDate,omitempty"`
+	MinDate            *string `json:"MinDate,omitempty" xml:"MinDate,omitempty"`
+	PageNumber         *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize           *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+}
+
+func (s DescribeDataDistResultShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDataDistResultShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDataDistResultShrinkRequest) SetAppId(v string) *DescribeDataDistResultShrinkRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *DescribeDataDistResultShrinkRequest) SetDataNames(v string) *DescribeDataDistResultShrinkRequest {
+	s.DataNames = &v
+	return s
+}
+
+func (s *DescribeDataDistResultShrinkRequest) SetDataVersions(v string) *DescribeDataDistResultShrinkRequest {
+	s.DataVersions = &v
+	return s
+}
+
+func (s *DescribeDataDistResultShrinkRequest) SetEnsRegionIdsShrink(v string) *DescribeDataDistResultShrinkRequest {
+	s.EnsRegionIdsShrink = &v
+	return s
+}
+
+func (s *DescribeDataDistResultShrinkRequest) SetInstanceIds(v string) *DescribeDataDistResultShrinkRequest {
+	s.InstanceIds = &v
+	return s
+}
+
+func (s *DescribeDataDistResultShrinkRequest) SetMaxDate(v string) *DescribeDataDistResultShrinkRequest {
+	s.MaxDate = &v
+	return s
+}
+
+func (s *DescribeDataDistResultShrinkRequest) SetMinDate(v string) *DescribeDataDistResultShrinkRequest {
+	s.MinDate = &v
+	return s
+}
+
+func (s *DescribeDataDistResultShrinkRequest) SetPageNumber(v int32) *DescribeDataDistResultShrinkRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeDataDistResultShrinkRequest) SetPageSize(v int32) *DescribeDataDistResultShrinkRequest {
 	s.PageSize = &v
 	return s
 }
@@ -8436,9 +8594,11 @@ type DescribeDisksRequest struct {
 	DiskType       *string `json:"DiskType,omitempty" xml:"DiskType,omitempty"`
 	EnsRegionId    *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
 	EnsRegionIds   *string `json:"EnsRegionIds,omitempty" xml:"EnsRegionIds,omitempty"`
+	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	OrderByParams  *string `json:"OrderByParams,omitempty" xml:"OrderByParams,omitempty"`
 	PageNumber     *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize       *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	SnapshotId     *string `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
 	Status         *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	Type           *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
@@ -8491,6 +8651,11 @@ func (s *DescribeDisksRequest) SetEnsRegionIds(v string) *DescribeDisksRequest {
 	return s
 }
 
+func (s *DescribeDisksRequest) SetInstanceId(v string) *DescribeDisksRequest {
+	s.InstanceId = &v
+	return s
+}
+
 func (s *DescribeDisksRequest) SetOrderByParams(v string) *DescribeDisksRequest {
 	s.OrderByParams = &v
 	return s
@@ -8503,6 +8668,11 @@ func (s *DescribeDisksRequest) SetPageNumber(v string) *DescribeDisksRequest {
 
 func (s *DescribeDisksRequest) SetPageSize(v string) *DescribeDisksRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeDisksRequest) SetSnapshotId(v string) *DescribeDisksRequest {
+	s.SnapshotId = &v
 	return s
 }
 
@@ -8591,6 +8761,7 @@ type DescribeDisksResponseBodyDisksDisks struct {
 	InstanceName   *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
 	Portable       *bool   `json:"Portable,omitempty" xml:"Portable,omitempty"`
 	Size           *int32  `json:"Size,omitempty" xml:"Size,omitempty"`
+	SnapshotId     *string `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
 	Status         *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	Type           *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
@@ -8650,6 +8821,11 @@ func (s *DescribeDisksResponseBodyDisksDisks) SetPortable(v bool) *DescribeDisks
 
 func (s *DescribeDisksResponseBodyDisksDisks) SetSize(v int32) *DescribeDisksResponseBodyDisksDisks {
 	s.Size = &v
+	return s
+}
+
+func (s *DescribeDisksResponseBodyDisksDisks) SetSnapshotId(v string) *DescribeDisksResponseBodyDisksDisks {
+	s.SnapshotId = &v
 	return s
 }
 
@@ -8923,6 +9099,7 @@ type DescribeEnsEipAddressesRequest struct {
 	AssociatedInstanceId   *string `json:"AssociatedInstanceId,omitempty" xml:"AssociatedInstanceId,omitempty"`
 	AssociatedInstanceType *string `json:"AssociatedInstanceType,omitempty" xml:"AssociatedInstanceType,omitempty"`
 	EipAddress             *string `json:"EipAddress,omitempty" xml:"EipAddress,omitempty"`
+	EipName                *string `json:"EipName,omitempty" xml:"EipName,omitempty"`
 	EnsRegionId            *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
 	PageNumber             *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize               *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
@@ -8953,6 +9130,11 @@ func (s *DescribeEnsEipAddressesRequest) SetAssociatedInstanceType(v string) *De
 
 func (s *DescribeEnsEipAddressesRequest) SetEipAddress(v string) *DescribeEnsEipAddressesRequest {
 	s.EipAddress = &v
+	return s
+}
+
+func (s *DescribeEnsEipAddressesRequest) SetEipName(v string) *DescribeEnsEipAddressesRequest {
+	s.EipName = &v
 	return s
 }
 
@@ -11943,8 +12125,7 @@ func (s *DescribeForwardTableEntriesResponse) SetBody(v *DescribeForwardTableEnt
 }
 
 type DescribeImageInfosRequest struct {
-	OsType  *string `json:"OsType,omitempty" xml:"OsType,omitempty"`
-	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
+	OsType *string `json:"OsType,omitempty" xml:"OsType,omitempty"`
 }
 
 func (s DescribeImageInfosRequest) String() string {
@@ -11957,11 +12138,6 @@ func (s DescribeImageInfosRequest) GoString() string {
 
 func (s *DescribeImageInfosRequest) SetOsType(v string) *DescribeImageInfosRequest {
 	s.OsType = &v
-	return s
-}
-
-func (s *DescribeImageInfosRequest) SetVersion(v string) *DescribeImageInfosRequest {
-	s.Version = &v
 	return s
 }
 
@@ -12012,6 +12188,7 @@ func (s *DescribeImageInfosResponseBodyImages) SetImage(v []*DescribeImageInfosR
 }
 
 type DescribeImageInfosResponseBodyImagesImage struct {
+	ComputeType  *string `json:"ComputeType,omitempty" xml:"ComputeType,omitempty"`
 	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	ImageId      *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
 	ImageSize    *string `json:"ImageSize,omitempty" xml:"ImageSize,omitempty"`
@@ -12026,6 +12203,11 @@ func (s DescribeImageInfosResponseBodyImagesImage) String() string {
 
 func (s DescribeImageInfosResponseBodyImagesImage) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeImageInfosResponseBodyImagesImage) SetComputeType(v string) *DescribeImageInfosResponseBodyImagesImage {
+	s.ComputeType = &v
+	return s
 }
 
 func (s *DescribeImageInfosResponseBodyImagesImage) SetDescription(v string) *DescribeImageInfosResponseBodyImagesImage {
@@ -12221,9 +12403,8 @@ type DescribeImagesRequest struct {
 	ImageName   *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
 	PageNumber  *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize    *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	SnapshotId  *string `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
 	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	Version     *string `json:"Version,omitempty" xml:"Version,omitempty"`
-	Product     *string `json:"product,omitempty" xml:"product,omitempty"`
 }
 
 func (s DescribeImagesRequest) String() string {
@@ -12259,18 +12440,13 @@ func (s *DescribeImagesRequest) SetPageSize(v string) *DescribeImagesRequest {
 	return s
 }
 
+func (s *DescribeImagesRequest) SetSnapshotId(v string) *DescribeImagesRequest {
+	s.SnapshotId = &v
+	return s
+}
+
 func (s *DescribeImagesRequest) SetStatus(v string) *DescribeImagesRequest {
 	s.Status = &v
-	return s
-}
-
-func (s *DescribeImagesRequest) SetVersion(v string) *DescribeImagesRequest {
-	s.Version = &v
-	return s
-}
-
-func (s *DescribeImagesRequest) SetProduct(v string) *DescribeImagesRequest {
-	s.Product = &v
 	return s
 }
 
@@ -12346,6 +12522,7 @@ type DescribeImagesResponseBodyImagesImage struct {
 	ImageOwnerAlias *string `json:"ImageOwnerAlias,omitempty" xml:"ImageOwnerAlias,omitempty"`
 	ImageSize       *string `json:"ImageSize,omitempty" xml:"ImageSize,omitempty"`
 	Platform        *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
+	SnapshotId      *string `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
 }
 
 func (s DescribeImagesResponseBodyImagesImage) String() string {
@@ -12388,6 +12565,11 @@ func (s *DescribeImagesResponseBodyImagesImage) SetImageSize(v string) *Describe
 
 func (s *DescribeImagesResponseBodyImagesImage) SetPlatform(v string) *DescribeImagesResponseBodyImagesImage {
 	s.Platform = &v
+	return s
+}
+
+func (s *DescribeImagesResponseBodyImagesImage) SetSnapshotId(v string) *DescribeImagesResponseBodyImagesImage {
+	s.SnapshotId = &v
 	return s
 }
 
@@ -20395,6 +20577,7 @@ type DescribeSelfImagesRequest struct {
 	ImageName  *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
 	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	SnapshotId *string `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
 }
 
 func (s DescribeSelfImagesRequest) String() string {
@@ -20422,6 +20605,11 @@ func (s *DescribeSelfImagesRequest) SetPageNumber(v int32) *DescribeSelfImagesRe
 
 func (s *DescribeSelfImagesRequest) SetPageSize(v int32) *DescribeSelfImagesRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeSelfImagesRequest) SetSnapshotId(v string) *DescribeSelfImagesRequest {
+	s.SnapshotId = &v
 	return s
 }
 
@@ -20473,6 +20661,7 @@ func (s *DescribeSelfImagesResponseBodyImages) SetImage(v []*DescribeSelfImagesR
 
 type DescribeSelfImagesResponseBodyImagesImage struct {
 	Architecture    *string `json:"Architecture,omitempty" xml:"Architecture,omitempty"`
+	ComputeType     *string `json:"ComputeType,omitempty" xml:"ComputeType,omitempty"`
 	CreationTime    *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
 	ImageId         *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
 	ImageName       *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
@@ -20481,6 +20670,7 @@ type DescribeSelfImagesResponseBodyImagesImage struct {
 	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	OsVersion       *string `json:"OsVersion,omitempty" xml:"OsVersion,omitempty"`
 	Platform        *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
+	SnapshotId      *string `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
 	Status          *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -20494,6 +20684,11 @@ func (s DescribeSelfImagesResponseBodyImagesImage) GoString() string {
 
 func (s *DescribeSelfImagesResponseBodyImagesImage) SetArchitecture(v string) *DescribeSelfImagesResponseBodyImagesImage {
 	s.Architecture = &v
+	return s
+}
+
+func (s *DescribeSelfImagesResponseBodyImagesImage) SetComputeType(v string) *DescribeSelfImagesResponseBodyImagesImage {
+	s.ComputeType = &v
 	return s
 }
 
@@ -20534,6 +20729,11 @@ func (s *DescribeSelfImagesResponseBodyImagesImage) SetOsVersion(v string) *Desc
 
 func (s *DescribeSelfImagesResponseBodyImagesImage) SetPlatform(v string) *DescribeSelfImagesResponseBodyImagesImage {
 	s.Platform = &v
+	return s
+}
+
+func (s *DescribeSelfImagesResponseBodyImagesImage) SetSnapshotId(v string) *DescribeSelfImagesResponseBodyImagesImage {
+	s.SnapshotId = &v
 	return s
 }
 
@@ -23645,171 +23845,6 @@ func (s *ModifyVSwitchAttributeResponse) SetBody(v *ModifyVSwitchAttributeRespon
 	return s
 }
 
-type PreCreateEnsServiceRequest struct {
-	BandwidthType           *string `json:"BandwidthType,omitempty" xml:"BandwidthType,omitempty"`
-	BuyResourcesDetail      *string `json:"BuyResourcesDetail,omitempty" xml:"BuyResourcesDetail,omitempty"`
-	DataDiskSize            *string `json:"DataDiskSize,omitempty" xml:"DataDiskSize,omitempty"`
-	EnsServiceName          *string `json:"EnsServiceName,omitempty" xml:"EnsServiceName,omitempty"`
-	ImageId                 *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	InstanceBandwithdLimit  *string `json:"InstanceBandwithdLimit,omitempty" xml:"InstanceBandwithdLimit,omitempty"`
-	InstanceSpec            *string `json:"InstanceSpec,omitempty" xml:"InstanceSpec,omitempty"`
-	KeyPairName             *string `json:"KeyPairName,omitempty" xml:"KeyPairName,omitempty"`
-	NetLevel                *string `json:"NetLevel,omitempty" xml:"NetLevel,omitempty"`
-	Password                *string `json:"Password,omitempty" xml:"Password,omitempty"`
-	SchedulingPriceStrategy *string `json:"SchedulingPriceStrategy,omitempty" xml:"SchedulingPriceStrategy,omitempty"`
-	SchedulingStrategy      *string `json:"SchedulingStrategy,omitempty" xml:"SchedulingStrategy,omitempty"`
-	SystemDiskSize          *string `json:"SystemDiskSize,omitempty" xml:"SystemDiskSize,omitempty"`
-	UserData                *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
-}
-
-func (s PreCreateEnsServiceRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s PreCreateEnsServiceRequest) GoString() string {
-	return s.String()
-}
-
-func (s *PreCreateEnsServiceRequest) SetBandwidthType(v string) *PreCreateEnsServiceRequest {
-	s.BandwidthType = &v
-	return s
-}
-
-func (s *PreCreateEnsServiceRequest) SetBuyResourcesDetail(v string) *PreCreateEnsServiceRequest {
-	s.BuyResourcesDetail = &v
-	return s
-}
-
-func (s *PreCreateEnsServiceRequest) SetDataDiskSize(v string) *PreCreateEnsServiceRequest {
-	s.DataDiskSize = &v
-	return s
-}
-
-func (s *PreCreateEnsServiceRequest) SetEnsServiceName(v string) *PreCreateEnsServiceRequest {
-	s.EnsServiceName = &v
-	return s
-}
-
-func (s *PreCreateEnsServiceRequest) SetImageId(v string) *PreCreateEnsServiceRequest {
-	s.ImageId = &v
-	return s
-}
-
-func (s *PreCreateEnsServiceRequest) SetInstanceBandwithdLimit(v string) *PreCreateEnsServiceRequest {
-	s.InstanceBandwithdLimit = &v
-	return s
-}
-
-func (s *PreCreateEnsServiceRequest) SetInstanceSpec(v string) *PreCreateEnsServiceRequest {
-	s.InstanceSpec = &v
-	return s
-}
-
-func (s *PreCreateEnsServiceRequest) SetKeyPairName(v string) *PreCreateEnsServiceRequest {
-	s.KeyPairName = &v
-	return s
-}
-
-func (s *PreCreateEnsServiceRequest) SetNetLevel(v string) *PreCreateEnsServiceRequest {
-	s.NetLevel = &v
-	return s
-}
-
-func (s *PreCreateEnsServiceRequest) SetPassword(v string) *PreCreateEnsServiceRequest {
-	s.Password = &v
-	return s
-}
-
-func (s *PreCreateEnsServiceRequest) SetSchedulingPriceStrategy(v string) *PreCreateEnsServiceRequest {
-	s.SchedulingPriceStrategy = &v
-	return s
-}
-
-func (s *PreCreateEnsServiceRequest) SetSchedulingStrategy(v string) *PreCreateEnsServiceRequest {
-	s.SchedulingStrategy = &v
-	return s
-}
-
-func (s *PreCreateEnsServiceRequest) SetSystemDiskSize(v string) *PreCreateEnsServiceRequest {
-	s.SystemDiskSize = &v
-	return s
-}
-
-func (s *PreCreateEnsServiceRequest) SetUserData(v string) *PreCreateEnsServiceRequest {
-	s.UserData = &v
-	return s
-}
-
-type PreCreateEnsServiceResponseBody struct {
-	BuyResourcesDetail *string `json:"BuyResourcesDetail,omitempty" xml:"BuyResourcesDetail,omitempty"`
-	Code               *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	EnsServiceId       *string `json:"EnsServiceId,omitempty" xml:"EnsServiceId,omitempty"`
-	NetLevel           *string `json:"NetLevel,omitempty" xml:"NetLevel,omitempty"`
-	RequestId          *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s PreCreateEnsServiceResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s PreCreateEnsServiceResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *PreCreateEnsServiceResponseBody) SetBuyResourcesDetail(v string) *PreCreateEnsServiceResponseBody {
-	s.BuyResourcesDetail = &v
-	return s
-}
-
-func (s *PreCreateEnsServiceResponseBody) SetCode(v int32) *PreCreateEnsServiceResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *PreCreateEnsServiceResponseBody) SetEnsServiceId(v string) *PreCreateEnsServiceResponseBody {
-	s.EnsServiceId = &v
-	return s
-}
-
-func (s *PreCreateEnsServiceResponseBody) SetNetLevel(v string) *PreCreateEnsServiceResponseBody {
-	s.NetLevel = &v
-	return s
-}
-
-func (s *PreCreateEnsServiceResponseBody) SetRequestId(v string) *PreCreateEnsServiceResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type PreCreateEnsServiceResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *PreCreateEnsServiceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s PreCreateEnsServiceResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s PreCreateEnsServiceResponse) GoString() string {
-	return s.String()
-}
-
-func (s *PreCreateEnsServiceResponse) SetHeaders(v map[string]*string) *PreCreateEnsServiceResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *PreCreateEnsServiceResponse) SetStatusCode(v int32) *PreCreateEnsServiceResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *PreCreateEnsServiceResponse) SetBody(v *PreCreateEnsServiceResponseBody) *PreCreateEnsServiceResponse {
-	s.Body = v
-	return s
-}
-
 type PushApplicationDataRequest struct {
 	AppId        *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	Data         *string `json:"Data,omitempty" xml:"Data,omitempty"`
@@ -24324,6 +24359,69 @@ func (s *RebootInstancesResponse) SetBody(v *RebootInstancesResponseBody) *Reboo
 	return s
 }
 
+type RecoverAICInstanceRequest struct {
+	ServerId *string `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
+}
+
+func (s RecoverAICInstanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecoverAICInstanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RecoverAICInstanceRequest) SetServerId(v string) *RecoverAICInstanceRequest {
+	s.ServerId = &v
+	return s
+}
+
+type RecoverAICInstanceResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s RecoverAICInstanceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecoverAICInstanceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RecoverAICInstanceResponseBody) SetRequestId(v string) *RecoverAICInstanceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type RecoverAICInstanceResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *RecoverAICInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s RecoverAICInstanceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecoverAICInstanceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RecoverAICInstanceResponse) SetHeaders(v map[string]*string) *RecoverAICInstanceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RecoverAICInstanceResponse) SetStatusCode(v int32) *RecoverAICInstanceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RecoverAICInstanceResponse) SetBody(v *RecoverAICInstanceResponseBody) *RecoverAICInstanceResponse {
+	s.Body = v
+	return s
+}
+
 type ReinitInstanceRequest struct {
 	ImageId    *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
@@ -24505,6 +24603,69 @@ func (s *ReinitInstancesResponse) SetStatusCode(v int32) *ReinitInstancesRespons
 }
 
 func (s *ReinitInstancesResponse) SetBody(v *ReinitInstancesResponseBody) *ReinitInstancesResponse {
+	s.Body = v
+	return s
+}
+
+type ReleaseAICInstanceRequest struct {
+	ServerId *string `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
+}
+
+func (s ReleaseAICInstanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ReleaseAICInstanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ReleaseAICInstanceRequest) SetServerId(v string) *ReleaseAICInstanceRequest {
+	s.ServerId = &v
+	return s
+}
+
+type ReleaseAICInstanceResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ReleaseAICInstanceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ReleaseAICInstanceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ReleaseAICInstanceResponseBody) SetRequestId(v string) *ReleaseAICInstanceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ReleaseAICInstanceResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ReleaseAICInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ReleaseAICInstanceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ReleaseAICInstanceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ReleaseAICInstanceResponse) SetHeaders(v map[string]*string) *ReleaseAICInstanceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ReleaseAICInstanceResponse) SetStatusCode(v int32) *ReleaseAICInstanceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ReleaseAICInstanceResponse) SetBody(v *ReleaseAICInstanceResponseBody) *ReleaseAICInstanceResponse {
 	s.Body = v
 	return s
 }
@@ -25672,6 +25833,75 @@ func (s *ResetDeviceInstanceResponse) SetBody(v *ResetDeviceInstanceResponseBody
 	return s
 }
 
+type ResetDiskRequest struct {
+	DiskId     *string `json:"DiskId,omitempty" xml:"DiskId,omitempty"`
+	SnapshotId *string `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
+}
+
+func (s ResetDiskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ResetDiskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ResetDiskRequest) SetDiskId(v string) *ResetDiskRequest {
+	s.DiskId = &v
+	return s
+}
+
+func (s *ResetDiskRequest) SetSnapshotId(v string) *ResetDiskRequest {
+	s.SnapshotId = &v
+	return s
+}
+
+type ResetDiskResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ResetDiskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ResetDiskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ResetDiskResponseBody) SetRequestId(v string) *ResetDiskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ResetDiskResponse struct {
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ResetDiskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ResetDiskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ResetDiskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ResetDiskResponse) SetHeaders(v map[string]*string) *ResetDiskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ResetDiskResponse) SetStatusCode(v int32) *ResetDiskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ResetDiskResponse) SetBody(v *ResetDiskResponseBody) *ResetDiskResponse {
+	s.Body = v
+	return s
+}
+
 type ResizeDiskRequest struct {
 	DiskId  *string `json:"DiskId,omitempty" xml:"DiskId,omitempty"`
 	NewSize *string `json:"NewSize,omitempty" xml:"NewSize,omitempty"`
@@ -26125,6 +26355,7 @@ type RunInstancesRequest struct {
 	NetDistrictCode         *string                        `json:"NetDistrictCode,omitempty" xml:"NetDistrictCode,omitempty"`
 	NetWorkId               *string                        `json:"NetWorkId,omitempty" xml:"NetWorkId,omitempty"`
 	Password                *string                        `json:"Password,omitempty" xml:"Password,omitempty"`
+	PasswordInherit         *bool                          `json:"PasswordInherit,omitempty" xml:"PasswordInherit,omitempty"`
 	Period                  *int64                         `json:"Period,omitempty" xml:"Period,omitempty"`
 	PeriodUnit              *string                        `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
 	PrivateIpAddress        *string                        `json:"PrivateIpAddress,omitempty" xml:"PrivateIpAddress,omitempty"`
@@ -26224,6 +26455,11 @@ func (s *RunInstancesRequest) SetNetWorkId(v string) *RunInstancesRequest {
 
 func (s *RunInstancesRequest) SetPassword(v string) *RunInstancesRequest {
 	s.Password = &v
+	return s
+}
+
+func (s *RunInstancesRequest) SetPasswordInherit(v bool) *RunInstancesRequest {
+	s.PasswordInherit = &v
 	return s
 }
 
@@ -26344,6 +26580,7 @@ type RunInstancesShrinkRequest struct {
 	NetDistrictCode         *string `json:"NetDistrictCode,omitempty" xml:"NetDistrictCode,omitempty"`
 	NetWorkId               *string `json:"NetWorkId,omitempty" xml:"NetWorkId,omitempty"`
 	Password                *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	PasswordInherit         *bool   `json:"PasswordInherit,omitempty" xml:"PasswordInherit,omitempty"`
 	Period                  *int64  `json:"Period,omitempty" xml:"Period,omitempty"`
 	PeriodUnit              *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
 	PrivateIpAddress        *string `json:"PrivateIpAddress,omitempty" xml:"PrivateIpAddress,omitempty"`
@@ -26443,6 +26680,11 @@ func (s *RunInstancesShrinkRequest) SetNetWorkId(v string) *RunInstancesShrinkRe
 
 func (s *RunInstancesShrinkRequest) SetPassword(v string) *RunInstancesShrinkRequest {
 	s.Password = &v
+	return s
+}
+
+func (s *RunInstancesShrinkRequest) SetPasswordInherit(v bool) *RunInstancesShrinkRequest {
+	s.PasswordInherit = &v
 	return s
 }
 
@@ -29198,6 +29440,62 @@ func (client *Client) AuthorizeSecurityGroupEgress(request *AuthorizeSecurityGro
 	return _result, _err
 }
 
+func (client *Client) CleanDistDataWithOptions(request *CleanDistDataRequest, runtime *util.RuntimeOptions) (_result *CleanDistDataResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DataName)) {
+		query["DataName"] = request.DataName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DataVersion)) {
+		query["DataVersion"] = request.DataVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnsRegionId)) {
+		query["EnsRegionId"] = request.EnsRegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CleanDistData"),
+		Version:     tea.String("2017-11-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CleanDistDataResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CleanDistData(request *CleanDistDataRequest) (_result *CleanDistDataResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CleanDistDataResponse{}
+	_body, _err := client.CleanDistDataWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) CreateARMServerInstancesWithOptions(request *CreateARMServerInstancesRequest, runtime *util.RuntimeOptions) (_result *CreateARMServerInstancesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -29410,6 +29708,10 @@ func (client *Client) CreateDiskWithOptions(request *CreateDiskRequest, runtime 
 
 	if !tea.BoolValue(util.IsUnset(request.Size)) {
 		query["Size"] = request.Size
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SnapshotId)) {
+		query["SnapshotId"] = request.SnapshotId
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -32354,11 +32656,17 @@ func (client *Client) DescribeCreatePrePaidInstanceResult(request *DescribeCreat
 	return _result, _err
 }
 
-func (client *Client) DescribeDataDistResultWithOptions(request *DescribeDataDistResultRequest, runtime *util.RuntimeOptions) (_result *DescribeDataDistResultResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) DescribeDataDistResultWithOptions(tmpReq *DescribeDataDistResultRequest, runtime *util.RuntimeOptions) (_result *DescribeDataDistResultResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
+	request := &DescribeDataDistResultShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.EnsRegionIds)) {
+		request.EnsRegionIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.EnsRegionIds, tea.String("EnsRegionIds"), tea.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AppId)) {
 		query["AppId"] = request.AppId
@@ -32370,6 +32678,10 @@ func (client *Client) DescribeDataDistResultWithOptions(request *DescribeDataDis
 
 	if !tea.BoolValue(util.IsUnset(request.DataVersions)) {
 		query["DataVersions"] = request.DataVersions
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnsRegionIdsShrink)) {
+		query["EnsRegionIds"] = request.EnsRegionIdsShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.InstanceIds)) {
@@ -32616,6 +32928,10 @@ func (client *Client) DescribeDisksWithOptions(request *DescribeDisksRequest, ru
 		query["EnsRegionIds"] = request.EnsRegionIds
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.OrderByParams)) {
 		query["OrderByParams"] = request.OrderByParams
 	}
@@ -32626,6 +32942,10 @@ func (client *Client) DescribeDisksWithOptions(request *DescribeDisksRequest, ru
 
 	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
 		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SnapshotId)) {
+		query["SnapshotId"] = request.SnapshotId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Status)) {
@@ -32775,6 +33095,10 @@ func (client *Client) DescribeEnsEipAddressesWithOptions(request *DescribeEnsEip
 
 	if !tea.BoolValue(util.IsUnset(request.EipAddress)) {
 		query["EipAddress"] = request.EipAddress
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EipName)) {
+		query["EipName"] = request.EipName
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.EnsRegionId)) {
@@ -33774,10 +34098,6 @@ func (client *Client) DescribeImageInfosWithOptions(request *DescribeImageInfosR
 		query["OsType"] = request.OsType
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.Version)) {
-		query["Version"] = request.Version
-	}
-
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -33894,16 +34214,12 @@ func (client *Client) DescribeImagesWithOptions(request *DescribeImagesRequest, 
 		query["PageSize"] = request.PageSize
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.SnapshotId)) {
+		query["SnapshotId"] = request.SnapshotId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Status)) {
 		query["Status"] = request.Status
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Version)) {
-		query["Version"] = request.Version
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Product)) {
-		query["product"] = request.Product
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -35490,6 +35806,10 @@ func (client *Client) DescribeSelfImagesWithOptions(request *DescribeSelfImagesR
 
 	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
 		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SnapshotId)) {
+		query["SnapshotId"] = request.SnapshotId
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -37106,102 +37426,6 @@ func (client *Client) ModifyVSwitchAttribute(request *ModifyVSwitchAttributeRequ
 	return _result, _err
 }
 
-func (client *Client) PreCreateEnsServiceWithOptions(request *PreCreateEnsServiceRequest, runtime *util.RuntimeOptions) (_result *PreCreateEnsServiceResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.BandwidthType)) {
-		query["BandwidthType"] = request.BandwidthType
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.BuyResourcesDetail)) {
-		query["BuyResourcesDetail"] = request.BuyResourcesDetail
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.DataDiskSize)) {
-		query["DataDiskSize"] = request.DataDiskSize
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.EnsServiceName)) {
-		query["EnsServiceName"] = request.EnsServiceName
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ImageId)) {
-		query["ImageId"] = request.ImageId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.InstanceBandwithdLimit)) {
-		query["InstanceBandwithdLimit"] = request.InstanceBandwithdLimit
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.InstanceSpec)) {
-		query["InstanceSpec"] = request.InstanceSpec
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.KeyPairName)) {
-		query["KeyPairName"] = request.KeyPairName
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.NetLevel)) {
-		query["NetLevel"] = request.NetLevel
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Password)) {
-		query["Password"] = request.Password
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.SchedulingPriceStrategy)) {
-		query["SchedulingPriceStrategy"] = request.SchedulingPriceStrategy
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.SchedulingStrategy)) {
-		query["SchedulingStrategy"] = request.SchedulingStrategy
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.SystemDiskSize)) {
-		query["SystemDiskSize"] = request.SystemDiskSize
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.UserData)) {
-		query["UserData"] = request.UserData
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("PreCreateEnsService"),
-		Version:     tea.String("2017-11-10"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &PreCreateEnsServiceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) PreCreateEnsService(request *PreCreateEnsServiceRequest) (_result *PreCreateEnsServiceResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &PreCreateEnsServiceResponse{}
-	_body, _err := client.PreCreateEnsServiceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) PushApplicationDataWithOptions(request *PushApplicationDataRequest, runtime *util.RuntimeOptions) (_result *PushApplicationDataResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -37488,6 +37712,46 @@ func (client *Client) RebootInstances(request *RebootInstancesRequest) (_result 
 	return _result, _err
 }
 
+func (client *Client) RecoverAICInstanceWithOptions(request *RecoverAICInstanceRequest, runtime *util.RuntimeOptions) (_result *RecoverAICInstanceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RecoverAICInstance"),
+		Version:     tea.String("2017-11-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RecoverAICInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) RecoverAICInstance(request *RecoverAICInstanceRequest) (_result *RecoverAICInstanceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RecoverAICInstanceResponse{}
+	_body, _err := client.RecoverAICInstanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ReinitInstanceWithOptions(request *ReinitInstanceRequest, runtime *util.RuntimeOptions) (_result *ReinitInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -37591,6 +37855,50 @@ func (client *Client) ReinitInstances(request *ReinitInstancesRequest) (_result 
 	runtime := &util.RuntimeOptions{}
 	_result = &ReinitInstancesResponse{}
 	_body, _err := client.ReinitInstancesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ReleaseAICInstanceWithOptions(request *ReleaseAICInstanceRequest, runtime *util.RuntimeOptions) (_result *ReleaseAICInstanceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ServerId)) {
+		query["ServerId"] = request.ServerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ReleaseAICInstance"),
+		Version:     tea.String("2017-11-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ReleaseAICInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ReleaseAICInstance(request *ReleaseAICInstanceRequest) (_result *ReleaseAICInstanceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ReleaseAICInstanceResponse{}
+	_body, _err := client.ReleaseAICInstanceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -38242,6 +38550,54 @@ func (client *Client) ResetDeviceInstance(request *ResetDeviceInstanceRequest) (
 	return _result, _err
 }
 
+func (client *Client) ResetDiskWithOptions(request *ResetDiskRequest, runtime *util.RuntimeOptions) (_result *ResetDiskResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DiskId)) {
+		query["DiskId"] = request.DiskId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SnapshotId)) {
+		query["SnapshotId"] = request.SnapshotId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ResetDisk"),
+		Version:     tea.String("2017-11-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ResetDiskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ResetDisk(request *ResetDiskRequest) (_result *ResetDiskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ResetDiskResponse{}
+	_body, _err := client.ResetDiskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ResizeDiskWithOptions(request *ResizeDiskRequest, runtime *util.RuntimeOptions) (_result *ResizeDiskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -38608,6 +38964,10 @@ func (client *Client) RunInstancesWithOptions(tmpReq *RunInstancesRequest, runti
 
 	if !tea.BoolValue(util.IsUnset(request.Password)) {
 		query["Password"] = request.Password
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PasswordInherit)) {
+		query["PasswordInherit"] = request.PasswordInherit
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Period)) {
