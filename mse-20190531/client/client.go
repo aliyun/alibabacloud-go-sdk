@@ -1274,9 +1274,9 @@ type AddGatewayRouteRequest struct {
 	DirectResponseJSON *AddGatewayRouteRequestDirectResponseJSON `json:"DirectResponseJSON,omitempty" xml:"DirectResponseJSON,omitempty" type:"Struct"`
 	// The domain ID.
 	DomainId *int64 `json:"DomainId,omitempty" xml:"DomainId,omitempty"`
-	// The list of domain names.
+	// The IDs of domains.
 	DomainIdListJSON *string `json:"DomainIdListJSON,omitempty" xml:"DomainIdListJSON,omitempty"`
-	// Specifies whether to enable Web Application Firewall (WAF).
+	// Specifies whether to activate Web Application Firewall (WAF).
 	EnableWaf *bool `json:"EnableWaf,omitempty" xml:"EnableWaf,omitempty"`
 	// Specifies whether to enable the Fallback service.
 	Fallback *bool `json:"Fallback,omitempty" xml:"Fallback,omitempty"`
@@ -1287,13 +1287,15 @@ type AddGatewayRouteRequest struct {
 	// The unique ID of the gateway.
 	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
 	// The name of the route.
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name     *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Policies *string `json:"Policies,omitempty" xml:"Policies,omitempty"`
 	// The matching rule.
 	Predicates *AddGatewayRouteRequestPredicates `json:"Predicates,omitempty" xml:"Predicates,omitempty" type:"Struct"`
 	// The configuration of the redirection.
 	RedirectJSON *AddGatewayRouteRequestRedirectJSON `json:"RedirectJSON,omitempty" xml:"RedirectJSON,omitempty" type:"Struct"`
 	// The sequence number of the route. (A small value indicates a high priority.)
-	RouteOrder *int32 `json:"RouteOrder,omitempty" xml:"RouteOrder,omitempty"`
+	RouteOrder *int32  `json:"RouteOrder,omitempty" xml:"RouteOrder,omitempty"`
+	RouteType  *string `json:"RouteType,omitempty" xml:"RouteType,omitempty"`
 	// The information about services.
 	Services []*AddGatewayRouteRequestServices `json:"Services,omitempty" xml:"Services,omitempty" type:"Repeated"`
 }
@@ -1361,6 +1363,11 @@ func (s *AddGatewayRouteRequest) SetName(v string) *AddGatewayRouteRequest {
 	return s
 }
 
+func (s *AddGatewayRouteRequest) SetPolicies(v string) *AddGatewayRouteRequest {
+	s.Policies = &v
+	return s
+}
+
 func (s *AddGatewayRouteRequest) SetPredicates(v *AddGatewayRouteRequestPredicates) *AddGatewayRouteRequest {
 	s.Predicates = v
 	return s
@@ -1373,6 +1380,11 @@ func (s *AddGatewayRouteRequest) SetRedirectJSON(v *AddGatewayRouteRequestRedire
 
 func (s *AddGatewayRouteRequest) SetRouteOrder(v int32) *AddGatewayRouteRequest {
 	s.RouteOrder = &v
+	return s
+}
+
+func (s *AddGatewayRouteRequest) SetRouteType(v string) *AddGatewayRouteRequest {
+	s.RouteType = &v
 	return s
 }
 
@@ -1407,7 +1419,7 @@ func (s *AddGatewayRouteRequestDirectResponseJSON) SetCode(v int64) *AddGatewayR
 }
 
 type AddGatewayRouteRequestFallbackServices struct {
-	// The type of the protocol. Valid values:
+	// The type of the protocol.
 	AgreementType *string `json:"AgreementType,omitempty" xml:"AgreementType,omitempty"`
 	// The name of the group to which the service belongs.
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
@@ -1552,7 +1564,7 @@ func (s *AddGatewayRouteRequestPredicatesHeaderPredicates) SetValue(v string) *A
 }
 
 type AddGatewayRouteRequestPredicatesPathPredicates struct {
-	// Specifies whether to perform case-insensitive matching.
+	// Specifies whether to ignore case sensitivity.
 	IgnoreCase *bool `json:"IgnoreCase,omitempty" xml:"IgnoreCase,omitempty"`
 	// The path.
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
@@ -1620,7 +1632,7 @@ func (s *AddGatewayRouteRequestPredicatesQueryPredicates) SetValue(v string) *Ad
 }
 
 type AddGatewayRouteRequestRedirectJSON struct {
-	// The HTTP status code.
+	// The status code returned.
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The hostname to be redirected to.
 	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
@@ -1652,7 +1664,7 @@ func (s *AddGatewayRouteRequestRedirectJSON) SetPath(v string) *AddGatewayRouteR
 }
 
 type AddGatewayRouteRequestServices struct {
-	// The type of the protocol. Valid values:
+	// The type of the protocol.
 	AgreementType *string `json:"AgreementType,omitempty" xml:"AgreementType,omitempty"`
 	// The name of the group to which the service belongs.
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
@@ -1733,7 +1745,7 @@ func (s *AddGatewayRouteRequestServices) SetVersion(v string) *AddGatewayRouteRe
 }
 
 type AddGatewayRouteRequestServicesHttpDubboTranscoder struct {
-	// The service group.
+	// The name of the service group.
 	DubboServiceGroup *string `json:"DubboServiceGroup,omitempty" xml:"DubboServiceGroup,omitempty"`
 	// The name of the Dubbo service.
 	DubboServiceName *string `json:"DubboServiceName,omitempty" xml:"DubboServiceName,omitempty"`
@@ -1896,9 +1908,9 @@ type AddGatewayRouteShrinkRequest struct {
 	DirectResponseJSONShrink *string `json:"DirectResponseJSON,omitempty" xml:"DirectResponseJSON,omitempty"`
 	// The domain ID.
 	DomainId *int64 `json:"DomainId,omitempty" xml:"DomainId,omitempty"`
-	// The list of domain names.
+	// The IDs of domains.
 	DomainIdListJSON *string `json:"DomainIdListJSON,omitempty" xml:"DomainIdListJSON,omitempty"`
-	// Specifies whether to enable Web Application Firewall (WAF).
+	// Specifies whether to activate Web Application Firewall (WAF).
 	EnableWaf *bool `json:"EnableWaf,omitempty" xml:"EnableWaf,omitempty"`
 	// Specifies whether to enable the Fallback service.
 	Fallback *bool `json:"Fallback,omitempty" xml:"Fallback,omitempty"`
@@ -1909,13 +1921,15 @@ type AddGatewayRouteShrinkRequest struct {
 	// The unique ID of the gateway.
 	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
 	// The name of the route.
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name     *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Policies *string `json:"Policies,omitempty" xml:"Policies,omitempty"`
 	// The matching rule.
 	PredicatesShrink *string `json:"Predicates,omitempty" xml:"Predicates,omitempty"`
 	// The configuration of the redirection.
 	RedirectJSONShrink *string `json:"RedirectJSON,omitempty" xml:"RedirectJSON,omitempty"`
 	// The sequence number of the route. (A small value indicates a high priority.)
-	RouteOrder *int32 `json:"RouteOrder,omitempty" xml:"RouteOrder,omitempty"`
+	RouteOrder *int32  `json:"RouteOrder,omitempty" xml:"RouteOrder,omitempty"`
+	RouteType  *string `json:"RouteType,omitempty" xml:"RouteType,omitempty"`
 	// The information about services.
 	ServicesShrink *string `json:"Services,omitempty" xml:"Services,omitempty"`
 }
@@ -1983,6 +1997,11 @@ func (s *AddGatewayRouteShrinkRequest) SetName(v string) *AddGatewayRouteShrinkR
 	return s
 }
 
+func (s *AddGatewayRouteShrinkRequest) SetPolicies(v string) *AddGatewayRouteShrinkRequest {
+	s.Policies = &v
+	return s
+}
+
 func (s *AddGatewayRouteShrinkRequest) SetPredicatesShrink(v string) *AddGatewayRouteShrinkRequest {
 	s.PredicatesShrink = &v
 	return s
@@ -1995,6 +2014,11 @@ func (s *AddGatewayRouteShrinkRequest) SetRedirectJSONShrink(v string) *AddGatew
 
 func (s *AddGatewayRouteShrinkRequest) SetRouteOrder(v int32) *AddGatewayRouteShrinkRequest {
 	s.RouteOrder = &v
+	return s
+}
+
+func (s *AddGatewayRouteShrinkRequest) SetRouteType(v string) *AddGatewayRouteShrinkRequest {
+	s.RouteType = &v
 	return s
 }
 
@@ -10222,14 +10246,26 @@ func (s *ExportZookeeperDataResponse) SetBody(v *ExportZookeeperDataResponseBody
 }
 
 type FetchLosslessRuleListRequest struct {
+	// The language of the response. In compliance with [RFC 7231](https://tools.ietf.org/html/rfc7231), the backend service must return a response based on the language used by the user.
+	//
+	// *   By default, this parameter is left empty.
+	// *   zh-CN: Chinese
+	// *   en-US: English
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	AppId          *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	AppName        *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	Namespace      *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	PageNumber     *int64  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize       *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Source         *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// The ID of the application.
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The name of the application.
+	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// The namespace.
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The number of the page to return.
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to return on each page. Default value: 10
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the region.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The service source that the application accesses.
+	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
 }
 
 func (s FetchLosslessRuleListRequest) String() string {
@@ -10281,12 +10317,21 @@ func (s *FetchLosslessRuleListRequest) SetSource(v string) *FetchLosslessRuleLis
 }
 
 type FetchLosslessRuleListResponseBody struct {
-	Code      *string                                `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *FetchLosslessRuleListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	HttpCode  *string                                `json:"HttpCode,omitempty" xml:"HttpCode,omitempty"`
-	Message   *string                                `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                                  `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The response code returned.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response.
+	Data *FetchLosslessRuleListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The HTTP status code returned.
+	HttpCode *string `json:"HttpCode,omitempty" xml:"HttpCode,omitempty"`
+	// The message returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// *   `true`: The request was successful.
+	// *   `false`: The request failed.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s FetchLosslessRuleListResponseBody) String() string {
@@ -10328,10 +10373,14 @@ func (s *FetchLosslessRuleListResponseBody) SetSuccess(v bool) *FetchLosslessRul
 }
 
 type FetchLosslessRuleListResponseBodyData struct {
-	PageNumber *int64                                          `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int64                                          `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Results    []*FetchLosslessRuleListResponseBodyDataResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Repeated"`
-	TotalSize  *int64                                          `json:"TotalSize,omitempty" xml:"TotalSize,omitempty"`
+	// The number of the returned page.
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries returned per page.
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The data returned.
+	Results []*FetchLosslessRuleListResponseBodyDataResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Repeated"`
+	// The total number of entries returned.
+	TotalSize *int64 `json:"TotalSize,omitempty" xml:"TotalSize,omitempty"`
 }
 
 func (s FetchLosslessRuleListResponseBodyData) String() string {
@@ -10363,18 +10412,33 @@ func (s *FetchLosslessRuleListResponseBodyData) SetTotalSize(v int64) *FetchLoss
 }
 
 type FetchLosslessRuleListResponseBodyDataResults struct {
-	Aligned             *bool   `json:"Aligned,omitempty" xml:"Aligned,omitempty"`
-	AppId               *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	AppName             *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	Count               *int64  `json:"Count,omitempty" xml:"Count,omitempty"`
-	DelayTime           *int64  `json:"DelayTime,omitempty" xml:"DelayTime,omitempty"`
-	Enable              *bool   `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	FuncType            *int64  `json:"FuncType,omitempty" xml:"FuncType,omitempty"`
-	LossLessDetail      *bool   `json:"LossLessDetail,omitempty" xml:"LossLessDetail,omitempty"`
-	Notice              *bool   `json:"Notice,omitempty" xml:"Notice,omitempty"`
-	Related             *bool   `json:"Related,omitempty" xml:"Related,omitempty"`
-	ShutdownWaitSeconds *int32  `json:"ShutdownWaitSeconds,omitempty" xml:"ShutdownWaitSeconds,omitempty"`
-	WarmupTime          *int64  `json:"WarmupTime,omitempty" xml:"WarmupTime,omitempty"`
+	// Indicates whether delayed registration is enabled.
+	Aligned *bool `json:"Aligned,omitempty" xml:"Aligned,omitempty"`
+	// The ID of the application.
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The name of the application.
+	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// The number of instances.
+	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The registration latency.
+	DelayTime *int64 `json:"DelayTime,omitempty" xml:"DelayTime,omitempty"`
+	// The status. Valid values:
+	//
+	// *   `true`: enabled.
+	// *   `false`: disabled.
+	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// The slope of the prefetching curve.
+	FuncType *int64 `json:"FuncType,omitempty" xml:"FuncType,omitempty"`
+	// Indicates whether the graceful start and shutdown feature is enabled.
+	LossLessDetail *bool `json:"LossLessDetail,omitempty" xml:"LossLessDetail,omitempty"`
+	// Indicates whether notification is enabled.
+	Notice *bool `json:"Notice,omitempty" xml:"Notice,omitempty"`
+	// Indicates whether service prefetching is associated.
+	Related *bool `json:"Related,omitempty" xml:"Related,omitempty"`
+	// The wait time for application shutdown.
+	ShutdownWaitSeconds *int32 `json:"ShutdownWaitSeconds,omitempty" xml:"ShutdownWaitSeconds,omitempty"`
+	// The prefetching duration.
+	WarmupTime *int64 `json:"WarmupTime,omitempty" xml:"WarmupTime,omitempty"`
 }
 
 func (s FetchLosslessRuleListResponseBodyDataResults) String() string {
@@ -12645,7 +12709,8 @@ type GetGatewayRouteDetailResponseBodyData struct {
 	// The ID.
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The name.
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name     *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Policies *string `json:"Policies,omitempty" xml:"Policies,omitempty"`
 	// The matching conditions.
 	Predicates *string `json:"Predicates,omitempty" xml:"Predicates,omitempty"`
 	// The configuration of the redirection.
@@ -12783,6 +12848,11 @@ func (s *GetGatewayRouteDetailResponseBodyData) SetId(v int64) *GetGatewayRouteD
 
 func (s *GetGatewayRouteDetailResponseBodyData) SetName(v string) *GetGatewayRouteDetailResponseBodyData {
 	s.Name = &v
+	return s
+}
+
+func (s *GetGatewayRouteDetailResponseBodyData) SetPolicies(v string) *GetGatewayRouteDetailResponseBodyData {
+	s.Policies = &v
 	return s
 }
 
@@ -15312,9 +15382,9 @@ type GetOverviewRequest struct {
 	// *   zh: Chinese
 	// *   en: English
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	// The subscription period of the instance. Unit: months. Valid values: 1, 2, 3, 6, and 12.
+	// The time range for the query. Unit: days. For example, if you set this parameter to 30, the governance rules within the last 30 days are queried.
 	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
-	// The region ID.
+	// The ID of the region.
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
 }
 
@@ -15342,7 +15412,7 @@ func (s *GetOverviewRequest) SetRegion(v string) *GetOverviewRequest {
 }
 
 type GetOverviewResponseBody struct {
-	// The status code returned.
+	// The response code returned.
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The details of the data.
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
@@ -26202,9 +26272,9 @@ type ListSecurityGroupResponseBody struct {
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The data structure.
 	Data []*ListSecurityGroupResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The HTTP status code returned.
+	// The HTTP status code.
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The message returned.
+	// The returned message.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -26261,7 +26331,7 @@ type ListSecurityGroupResponseBodyData struct {
 	// The type of the security group. Valid values:
 	//
 	// *   normal: basic security group
-	// *   enterprise: advanced security group. For more information, see [Advanced security groups](~~120621~~).
+	// *   enterprise: advanced security group For more information, see [Advanced security groups](~~120621~~).
 	SecurityGroupType *string `json:"SecurityGroupType,omitempty" xml:"SecurityGroupType,omitempty"`
 	// The ID of the virtual private cloud (VPC).
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
@@ -30303,6 +30373,7 @@ type QueryConfigResponseBodyData struct {
 	// *   `true`: supported
 	// *   `false`: not supported
 	ConfigSecretSupported *bool `json:"ConfigSecretSupported,omitempty" xml:"ConfigSecretSupported,omitempty"`
+	EurekaSupported       *bool `json:"EurekaSupported,omitempty" xml:"EurekaSupported,omitempty"`
 	// Indicates whether the time to live (TTL) configuration is enabled. This parameter is valid for ZooKeeper instances.
 	ExtendedTypesEnable *bool `json:"ExtendedTypesEnable,omitempty" xml:"ExtendedTypesEnable,omitempty"`
 	// The maximum connection duration of the instance. Unit: seconds. This parameter is valid for ZooKeeper instances.
@@ -30412,6 +30483,11 @@ func (s *QueryConfigResponseBodyData) SetConfigSecretEnabled(v bool) *QueryConfi
 
 func (s *QueryConfigResponseBodyData) SetConfigSecretSupported(v bool) *QueryConfigResponseBodyData {
 	s.ConfigSecretSupported = &v
+	return s
+}
+
+func (s *QueryConfigResponseBodyData) SetEurekaSupported(v bool) *QueryConfigResponseBodyData {
+	s.EurekaSupported = &v
 	return s
 }
 
@@ -39731,6 +39807,10 @@ func (client *Client) AddGatewayRouteWithOptions(tmpReq *AddGatewayRouteRequest,
 		query["Name"] = request.Name
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Policies)) {
+		query["Policies"] = request.Policies
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.PredicatesShrink)) {
 		query["Predicates"] = request.PredicatesShrink
 	}
@@ -39741,6 +39821,10 @@ func (client *Client) AddGatewayRouteWithOptions(tmpReq *AddGatewayRouteRequest,
 
 	if !tea.BoolValue(util.IsUnset(request.RouteOrder)) {
 		query["RouteOrder"] = request.RouteOrder
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RouteType)) {
+		query["RouteType"] = request.RouteType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ServicesShrink)) {
@@ -42661,6 +42745,13 @@ func (client *Client) ExportZookeeperData(request *ExportZookeeperDataRequest) (
 	return _result, _err
 }
 
+/**
+ * You can call this operation to query the rules for graceful start and shutdown.
+ *
+ * @param request FetchLosslessRuleListRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return FetchLosslessRuleListResponse
+ */
 func (client *Client) FetchLosslessRuleListWithOptions(request *FetchLosslessRuleListRequest, runtime *util.RuntimeOptions) (_result *FetchLosslessRuleListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -42690,6 +42781,12 @@ func (client *Client) FetchLosslessRuleListWithOptions(request *FetchLosslessRul
 	return _result, _err
 }
 
+/**
+ * You can call this operation to query the rules for graceful start and shutdown.
+ *
+ * @param request FetchLosslessRuleListRequest
+ * @return FetchLosslessRuleListResponse
+ */
 func (client *Client) FetchLosslessRuleList(request *FetchLosslessRuleListRequest) (_result *FetchLosslessRuleListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &FetchLosslessRuleListResponse{}
@@ -43752,6 +43849,13 @@ func (client *Client) GetNacosHistoryConfig(request *GetNacosHistoryConfigReques
 	return _result, _err
 }
 
+/**
+ * You can call the GetOverview operation to query overview information about service governance.
+ *
+ * @param request GetOverviewRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return GetOverviewResponse
+ */
 func (client *Client) GetOverviewWithOptions(request *GetOverviewRequest, runtime *util.RuntimeOptions) (_result *GetOverviewResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -43793,6 +43897,12 @@ func (client *Client) GetOverviewWithOptions(request *GetOverviewRequest, runtim
 	return _result, _err
 }
 
+/**
+ * You can call the GetOverview operation to query overview information about service governance.
+ *
+ * @param request GetOverviewRequest
+ * @return GetOverviewResponse
+ */
 func (client *Client) GetOverview(request *GetOverviewRequest) (_result *GetOverviewResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetOverviewResponse{}
