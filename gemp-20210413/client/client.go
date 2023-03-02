@@ -2099,6 +2099,8 @@ type CreateRouteRuleRequest struct {
 	AssignObjectType         *string                                  `json:"assignObjectType,omitempty" xml:"assignObjectType,omitempty"`
 	ChildRuleRelation        *string                                  `json:"childRuleRelation,omitempty" xml:"childRuleRelation,omitempty"`
 	ClientToken              *string                                  `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	ConvergenceFields        []*string                                `json:"convergenceFields,omitempty" xml:"convergenceFields,omitempty" type:"Repeated"`
+	ConvergenceType          *int32                                   `json:"convergenceType,omitempty" xml:"convergenceType,omitempty"`
 	CoverageProblemLevels    []*string                                `json:"coverageProblemLevels,omitempty" xml:"coverageProblemLevels,omitempty" type:"Repeated"`
 	Effection                *string                                  `json:"effection,omitempty" xml:"effection,omitempty"`
 	EnableStatus             *string                                  `json:"enableStatus,omitempty" xml:"enableStatus,omitempty"`
@@ -2140,6 +2142,16 @@ func (s *CreateRouteRuleRequest) SetChildRuleRelation(v string) *CreateRouteRule
 
 func (s *CreateRouteRuleRequest) SetClientToken(v string) *CreateRouteRuleRequest {
 	s.ClientToken = &v
+	return s
+}
+
+func (s *CreateRouteRuleRequest) SetConvergenceFields(v []*string) *CreateRouteRuleRequest {
+	s.ConvergenceFields = v
+	return s
+}
+
+func (s *CreateRouteRuleRequest) SetConvergenceType(v int32) *CreateRouteRuleRequest {
+	s.ConvergenceType = &v
 	return s
 }
 
@@ -2687,8 +2699,10 @@ func (s *CreateServiceGroupSchedulingRequestFastScheduling) SetSingleDurationUni
 }
 
 type CreateServiceGroupSchedulingRequestFastSchedulingSchedulingUsers struct {
-	SchedulingOrder  *int64 `json:"schedulingOrder,omitempty" xml:"schedulingOrder,omitempty"`
-	SchedulingUserId *int64 `json:"schedulingUserId,omitempty" xml:"schedulingUserId,omitempty"`
+	SchedulingObjectType *string  `json:"schedulingObjectType,omitempty" xml:"schedulingObjectType,omitempty"`
+	SchedulingOrder      *int64   `json:"schedulingOrder,omitempty" xml:"schedulingOrder,omitempty"`
+	SchedulingUserId     *int64   `json:"schedulingUserId,omitempty" xml:"schedulingUserId,omitempty"`
+	SchedulingUserIdList []*int64 `json:"schedulingUserIdList,omitempty" xml:"schedulingUserIdList,omitempty" type:"Repeated"`
 }
 
 func (s CreateServiceGroupSchedulingRequestFastSchedulingSchedulingUsers) String() string {
@@ -2699,6 +2713,11 @@ func (s CreateServiceGroupSchedulingRequestFastSchedulingSchedulingUsers) GoStri
 	return s.String()
 }
 
+func (s *CreateServiceGroupSchedulingRequestFastSchedulingSchedulingUsers) SetSchedulingObjectType(v string) *CreateServiceGroupSchedulingRequestFastSchedulingSchedulingUsers {
+	s.SchedulingObjectType = &v
+	return s
+}
+
 func (s *CreateServiceGroupSchedulingRequestFastSchedulingSchedulingUsers) SetSchedulingOrder(v int64) *CreateServiceGroupSchedulingRequestFastSchedulingSchedulingUsers {
 	s.SchedulingOrder = &v
 	return s
@@ -2706,6 +2725,11 @@ func (s *CreateServiceGroupSchedulingRequestFastSchedulingSchedulingUsers) SetSc
 
 func (s *CreateServiceGroupSchedulingRequestFastSchedulingSchedulingUsers) SetSchedulingUserId(v int64) *CreateServiceGroupSchedulingRequestFastSchedulingSchedulingUsers {
 	s.SchedulingUserId = &v
+	return s
+}
+
+func (s *CreateServiceGroupSchedulingRequestFastSchedulingSchedulingUsers) SetSchedulingUserIdList(v []*int64) *CreateServiceGroupSchedulingRequestFastSchedulingSchedulingUsers {
+	s.SchedulingUserIdList = v
 	return s
 }
 
@@ -2751,13 +2775,15 @@ func (s *CreateServiceGroupSchedulingRequestFineScheduling) SetShiftType(v strin
 }
 
 type CreateServiceGroupSchedulingRequestFineSchedulingSchedulingFineShifts struct {
-	CycleOrder          *int32  `json:"cycleOrder,omitempty" xml:"cycleOrder,omitempty"`
-	SchedulingEndTime   *string `json:"schedulingEndTime,omitempty" xml:"schedulingEndTime,omitempty"`
-	SchedulingOrder     *int32  `json:"schedulingOrder,omitempty" xml:"schedulingOrder,omitempty"`
-	SchedulingStartTime *string `json:"schedulingStartTime,omitempty" xml:"schedulingStartTime,omitempty"`
-	SchedulingUserId    *int64  `json:"schedulingUserId,omitempty" xml:"schedulingUserId,omitempty"`
-	ShiftName           *string `json:"shiftName,omitempty" xml:"shiftName,omitempty"`
-	SkipOneDay          *bool   `json:"skipOneDay,omitempty" xml:"skipOneDay,omitempty"`
+	CycleOrder           *int32   `json:"cycleOrder,omitempty" xml:"cycleOrder,omitempty"`
+	SchedulingEndTime    *string  `json:"schedulingEndTime,omitempty" xml:"schedulingEndTime,omitempty"`
+	SchedulingObjectType *string  `json:"schedulingObjectType,omitempty" xml:"schedulingObjectType,omitempty"`
+	SchedulingOrder      *int32   `json:"schedulingOrder,omitempty" xml:"schedulingOrder,omitempty"`
+	SchedulingStartTime  *string  `json:"schedulingStartTime,omitempty" xml:"schedulingStartTime,omitempty"`
+	SchedulingUserId     *int64   `json:"schedulingUserId,omitempty" xml:"schedulingUserId,omitempty"`
+	SchedulingUserIdList []*int64 `json:"schedulingUserIdList,omitempty" xml:"schedulingUserIdList,omitempty" type:"Repeated"`
+	ShiftName            *string  `json:"shiftName,omitempty" xml:"shiftName,omitempty"`
+	SkipOneDay           *bool    `json:"skipOneDay,omitempty" xml:"skipOneDay,omitempty"`
 }
 
 func (s CreateServiceGroupSchedulingRequestFineSchedulingSchedulingFineShifts) String() string {
@@ -2778,6 +2804,11 @@ func (s *CreateServiceGroupSchedulingRequestFineSchedulingSchedulingFineShifts) 
 	return s
 }
 
+func (s *CreateServiceGroupSchedulingRequestFineSchedulingSchedulingFineShifts) SetSchedulingObjectType(v string) *CreateServiceGroupSchedulingRequestFineSchedulingSchedulingFineShifts {
+	s.SchedulingObjectType = &v
+	return s
+}
+
 func (s *CreateServiceGroupSchedulingRequestFineSchedulingSchedulingFineShifts) SetSchedulingOrder(v int32) *CreateServiceGroupSchedulingRequestFineSchedulingSchedulingFineShifts {
 	s.SchedulingOrder = &v
 	return s
@@ -2793,6 +2824,11 @@ func (s *CreateServiceGroupSchedulingRequestFineSchedulingSchedulingFineShifts) 
 	return s
 }
 
+func (s *CreateServiceGroupSchedulingRequestFineSchedulingSchedulingFineShifts) SetSchedulingUserIdList(v []*int64) *CreateServiceGroupSchedulingRequestFineSchedulingSchedulingFineShifts {
+	s.SchedulingUserIdList = v
+	return s
+}
+
 func (s *CreateServiceGroupSchedulingRequestFineSchedulingSchedulingFineShifts) SetShiftName(v string) *CreateServiceGroupSchedulingRequestFineSchedulingSchedulingFineShifts {
 	s.ShiftName = &v
 	return s
@@ -2804,12 +2840,14 @@ func (s *CreateServiceGroupSchedulingRequestFineSchedulingSchedulingFineShifts) 
 }
 
 type CreateServiceGroupSchedulingRequestFineSchedulingSchedulingTemplateFineShifts struct {
-	SchedulingEndTime   *string `json:"schedulingEndTime,omitempty" xml:"schedulingEndTime,omitempty"`
-	SchedulingOrder     *int64  `json:"schedulingOrder,omitempty" xml:"schedulingOrder,omitempty"`
-	SchedulingStartTime *string `json:"schedulingStartTime,omitempty" xml:"schedulingStartTime,omitempty"`
-	SchedulingUserId    *int64  `json:"schedulingUserId,omitempty" xml:"schedulingUserId,omitempty"`
-	SchedulingUserName  *string `json:"schedulingUserName,omitempty" xml:"schedulingUserName,omitempty"`
-	SkipOneDay          *bool   `json:"skipOneDay,omitempty" xml:"skipOneDay,omitempty"`
+	SchedulingEndTime    *string  `json:"schedulingEndTime,omitempty" xml:"schedulingEndTime,omitempty"`
+	SchedulingObjectType *string  `json:"schedulingObjectType,omitempty" xml:"schedulingObjectType,omitempty"`
+	SchedulingOrder      *int64   `json:"schedulingOrder,omitempty" xml:"schedulingOrder,omitempty"`
+	SchedulingStartTime  *string  `json:"schedulingStartTime,omitempty" xml:"schedulingStartTime,omitempty"`
+	SchedulingUserId     *int64   `json:"schedulingUserId,omitempty" xml:"schedulingUserId,omitempty"`
+	SchedulingUserIdList []*int64 `json:"schedulingUserIdList,omitempty" xml:"schedulingUserIdList,omitempty" type:"Repeated"`
+	SchedulingUserName   *string  `json:"schedulingUserName,omitempty" xml:"schedulingUserName,omitempty"`
+	SkipOneDay           *bool    `json:"skipOneDay,omitempty" xml:"skipOneDay,omitempty"`
 }
 
 func (s CreateServiceGroupSchedulingRequestFineSchedulingSchedulingTemplateFineShifts) String() string {
@@ -2825,6 +2863,11 @@ func (s *CreateServiceGroupSchedulingRequestFineSchedulingSchedulingTemplateFine
 	return s
 }
 
+func (s *CreateServiceGroupSchedulingRequestFineSchedulingSchedulingTemplateFineShifts) SetSchedulingObjectType(v string) *CreateServiceGroupSchedulingRequestFineSchedulingSchedulingTemplateFineShifts {
+	s.SchedulingObjectType = &v
+	return s
+}
+
 func (s *CreateServiceGroupSchedulingRequestFineSchedulingSchedulingTemplateFineShifts) SetSchedulingOrder(v int64) *CreateServiceGroupSchedulingRequestFineSchedulingSchedulingTemplateFineShifts {
 	s.SchedulingOrder = &v
 	return s
@@ -2837,6 +2880,11 @@ func (s *CreateServiceGroupSchedulingRequestFineSchedulingSchedulingTemplateFine
 
 func (s *CreateServiceGroupSchedulingRequestFineSchedulingSchedulingTemplateFineShifts) SetSchedulingUserId(v int64) *CreateServiceGroupSchedulingRequestFineSchedulingSchedulingTemplateFineShifts {
 	s.SchedulingUserId = &v
+	return s
+}
+
+func (s *CreateServiceGroupSchedulingRequestFineSchedulingSchedulingTemplateFineShifts) SetSchedulingUserIdList(v []*int64) *CreateServiceGroupSchedulingRequestFineSchedulingSchedulingTemplateFineShifts {
+	s.SchedulingUserIdList = v
 	return s
 }
 
@@ -6703,6 +6751,280 @@ func (s *GetIncidentResponse) SetBody(v *GetIncidentResponseBody) *GetIncidentRe
 	return s
 }
 
+type GetIncidentListByIdListRequest struct {
+	ClientToken    *string  `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	IncidentIdList []*int64 `json:"incidentIdList,omitempty" xml:"incidentIdList,omitempty" type:"Repeated"`
+}
+
+func (s GetIncidentListByIdListRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetIncidentListByIdListRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetIncidentListByIdListRequest) SetClientToken(v string) *GetIncidentListByIdListRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *GetIncidentListByIdListRequest) SetIncidentIdList(v []*int64) *GetIncidentListByIdListRequest {
+	s.IncidentIdList = v
+	return s
+}
+
+type GetIncidentListByIdListResponseBody struct {
+	// data
+	Data []*GetIncidentListByIdListResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	// Id of the request
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s GetIncidentListByIdListResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetIncidentListByIdListResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetIncidentListByIdListResponseBody) SetData(v []*GetIncidentListByIdListResponseBodyData) *GetIncidentListByIdListResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetIncidentListByIdListResponseBody) SetRequestId(v string) *GetIncidentListByIdListResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetIncidentListByIdListResponseBodyData struct {
+	AssignToWhoIsValid        *int32    `json:"assignToWhoIsValid,omitempty" xml:"assignToWhoIsValid,omitempty"`
+	AssignUserId              *int64    `json:"assignUserId,omitempty" xml:"assignUserId,omitempty"`
+	AssignUserName            *string   `json:"assignUserName,omitempty" xml:"assignUserName,omitempty"`
+	AssignUserPhone           *string   `json:"assignUserPhone,omitempty" xml:"assignUserPhone,omitempty"`
+	CreateTime                *string   `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	DefaultAssignToWho        *int32    `json:"defaultAssignToWho,omitempty" xml:"defaultAssignToWho,omitempty"`
+	DefaultAssignToWhoIsValid *int32    `json:"defaultAssignToWhoIsValid,omitempty" xml:"defaultAssignToWhoIsValid,omitempty"`
+	DefaultAssignToWhoName    *string   `json:"defaultAssignToWhoName,omitempty" xml:"defaultAssignToWhoName,omitempty"`
+	DurationTime              *string   `json:"durationTime,omitempty" xml:"durationTime,omitempty"`
+	Effect                    *string   `json:"effect,omitempty" xml:"effect,omitempty"`
+	IncidentDescription       *string   `json:"incidentDescription,omitempty" xml:"incidentDescription,omitempty"`
+	IncidentId                *int64    `json:"incidentId,omitempty" xml:"incidentId,omitempty"`
+	IncidentLevel             *string   `json:"incidentLevel,omitempty" xml:"incidentLevel,omitempty"`
+	IncidentNumber            *string   `json:"incidentNumber,omitempty" xml:"incidentNumber,omitempty"`
+	IncidentStatus            *string   `json:"incidentStatus,omitempty" xml:"incidentStatus,omitempty"`
+	IncidentTitle             *string   `json:"incidentTitle,omitempty" xml:"incidentTitle,omitempty"`
+	IsManual                  *bool     `json:"isManual,omitempty" xml:"isManual,omitempty"`
+	IsUpgrade                 *bool     `json:"isUpgrade,omitempty" xml:"isUpgrade,omitempty"`
+	NotifyChannels            []*string `json:"notifyChannels,omitempty" xml:"notifyChannels,omitempty" type:"Repeated"`
+	ProblemId                 *int64    `json:"problemId,omitempty" xml:"problemId,omitempty"`
+	ProblemNumber             *string   `json:"problemNumber,omitempty" xml:"problemNumber,omitempty"`
+	RelRouteRuleDeleteType    *int32    `json:"relRouteRuleDeleteType,omitempty" xml:"relRouteRuleDeleteType,omitempty"`
+	RelServiceDeleteType      *int32    `json:"relServiceDeleteType,omitempty" xml:"relServiceDeleteType,omitempty"`
+	RelServiceGroupIsValid    *int32    `json:"relServiceGroupIsValid,omitempty" xml:"relServiceGroupIsValid,omitempty"`
+	RelatedServiceDescription *string   `json:"relatedServiceDescription,omitempty" xml:"relatedServiceDescription,omitempty"`
+	RelatedServiceGroupId     *int64    `json:"relatedServiceGroupId,omitempty" xml:"relatedServiceGroupId,omitempty"`
+	RelatedServiceGroupName   *string   `json:"relatedServiceGroupName,omitempty" xml:"relatedServiceGroupName,omitempty"`
+	RelatedServiceId          *int64    `json:"relatedServiceId,omitempty" xml:"relatedServiceId,omitempty"`
+	RelatedServiceName        *string   `json:"relatedServiceName,omitempty" xml:"relatedServiceName,omitempty"`
+	RouteRuleId               *int64    `json:"routeRuleId,omitempty" xml:"routeRuleId,omitempty"`
+	RouteRuleName             *string   `json:"routeRuleName,omitempty" xml:"routeRuleName,omitempty"`
+}
+
+func (s GetIncidentListByIdListResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetIncidentListByIdListResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetIncidentListByIdListResponseBodyData) SetAssignToWhoIsValid(v int32) *GetIncidentListByIdListResponseBodyData {
+	s.AssignToWhoIsValid = &v
+	return s
+}
+
+func (s *GetIncidentListByIdListResponseBodyData) SetAssignUserId(v int64) *GetIncidentListByIdListResponseBodyData {
+	s.AssignUserId = &v
+	return s
+}
+
+func (s *GetIncidentListByIdListResponseBodyData) SetAssignUserName(v string) *GetIncidentListByIdListResponseBodyData {
+	s.AssignUserName = &v
+	return s
+}
+
+func (s *GetIncidentListByIdListResponseBodyData) SetAssignUserPhone(v string) *GetIncidentListByIdListResponseBodyData {
+	s.AssignUserPhone = &v
+	return s
+}
+
+func (s *GetIncidentListByIdListResponseBodyData) SetCreateTime(v string) *GetIncidentListByIdListResponseBodyData {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *GetIncidentListByIdListResponseBodyData) SetDefaultAssignToWho(v int32) *GetIncidentListByIdListResponseBodyData {
+	s.DefaultAssignToWho = &v
+	return s
+}
+
+func (s *GetIncidentListByIdListResponseBodyData) SetDefaultAssignToWhoIsValid(v int32) *GetIncidentListByIdListResponseBodyData {
+	s.DefaultAssignToWhoIsValid = &v
+	return s
+}
+
+func (s *GetIncidentListByIdListResponseBodyData) SetDefaultAssignToWhoName(v string) *GetIncidentListByIdListResponseBodyData {
+	s.DefaultAssignToWhoName = &v
+	return s
+}
+
+func (s *GetIncidentListByIdListResponseBodyData) SetDurationTime(v string) *GetIncidentListByIdListResponseBodyData {
+	s.DurationTime = &v
+	return s
+}
+
+func (s *GetIncidentListByIdListResponseBodyData) SetEffect(v string) *GetIncidentListByIdListResponseBodyData {
+	s.Effect = &v
+	return s
+}
+
+func (s *GetIncidentListByIdListResponseBodyData) SetIncidentDescription(v string) *GetIncidentListByIdListResponseBodyData {
+	s.IncidentDescription = &v
+	return s
+}
+
+func (s *GetIncidentListByIdListResponseBodyData) SetIncidentId(v int64) *GetIncidentListByIdListResponseBodyData {
+	s.IncidentId = &v
+	return s
+}
+
+func (s *GetIncidentListByIdListResponseBodyData) SetIncidentLevel(v string) *GetIncidentListByIdListResponseBodyData {
+	s.IncidentLevel = &v
+	return s
+}
+
+func (s *GetIncidentListByIdListResponseBodyData) SetIncidentNumber(v string) *GetIncidentListByIdListResponseBodyData {
+	s.IncidentNumber = &v
+	return s
+}
+
+func (s *GetIncidentListByIdListResponseBodyData) SetIncidentStatus(v string) *GetIncidentListByIdListResponseBodyData {
+	s.IncidentStatus = &v
+	return s
+}
+
+func (s *GetIncidentListByIdListResponseBodyData) SetIncidentTitle(v string) *GetIncidentListByIdListResponseBodyData {
+	s.IncidentTitle = &v
+	return s
+}
+
+func (s *GetIncidentListByIdListResponseBodyData) SetIsManual(v bool) *GetIncidentListByIdListResponseBodyData {
+	s.IsManual = &v
+	return s
+}
+
+func (s *GetIncidentListByIdListResponseBodyData) SetIsUpgrade(v bool) *GetIncidentListByIdListResponseBodyData {
+	s.IsUpgrade = &v
+	return s
+}
+
+func (s *GetIncidentListByIdListResponseBodyData) SetNotifyChannels(v []*string) *GetIncidentListByIdListResponseBodyData {
+	s.NotifyChannels = v
+	return s
+}
+
+func (s *GetIncidentListByIdListResponseBodyData) SetProblemId(v int64) *GetIncidentListByIdListResponseBodyData {
+	s.ProblemId = &v
+	return s
+}
+
+func (s *GetIncidentListByIdListResponseBodyData) SetProblemNumber(v string) *GetIncidentListByIdListResponseBodyData {
+	s.ProblemNumber = &v
+	return s
+}
+
+func (s *GetIncidentListByIdListResponseBodyData) SetRelRouteRuleDeleteType(v int32) *GetIncidentListByIdListResponseBodyData {
+	s.RelRouteRuleDeleteType = &v
+	return s
+}
+
+func (s *GetIncidentListByIdListResponseBodyData) SetRelServiceDeleteType(v int32) *GetIncidentListByIdListResponseBodyData {
+	s.RelServiceDeleteType = &v
+	return s
+}
+
+func (s *GetIncidentListByIdListResponseBodyData) SetRelServiceGroupIsValid(v int32) *GetIncidentListByIdListResponseBodyData {
+	s.RelServiceGroupIsValid = &v
+	return s
+}
+
+func (s *GetIncidentListByIdListResponseBodyData) SetRelatedServiceDescription(v string) *GetIncidentListByIdListResponseBodyData {
+	s.RelatedServiceDescription = &v
+	return s
+}
+
+func (s *GetIncidentListByIdListResponseBodyData) SetRelatedServiceGroupId(v int64) *GetIncidentListByIdListResponseBodyData {
+	s.RelatedServiceGroupId = &v
+	return s
+}
+
+func (s *GetIncidentListByIdListResponseBodyData) SetRelatedServiceGroupName(v string) *GetIncidentListByIdListResponseBodyData {
+	s.RelatedServiceGroupName = &v
+	return s
+}
+
+func (s *GetIncidentListByIdListResponseBodyData) SetRelatedServiceId(v int64) *GetIncidentListByIdListResponseBodyData {
+	s.RelatedServiceId = &v
+	return s
+}
+
+func (s *GetIncidentListByIdListResponseBodyData) SetRelatedServiceName(v string) *GetIncidentListByIdListResponseBodyData {
+	s.RelatedServiceName = &v
+	return s
+}
+
+func (s *GetIncidentListByIdListResponseBodyData) SetRouteRuleId(v int64) *GetIncidentListByIdListResponseBodyData {
+	s.RouteRuleId = &v
+	return s
+}
+
+func (s *GetIncidentListByIdListResponseBodyData) SetRouteRuleName(v string) *GetIncidentListByIdListResponseBodyData {
+	s.RouteRuleName = &v
+	return s
+}
+
+type GetIncidentListByIdListResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetIncidentListByIdListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetIncidentListByIdListResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetIncidentListByIdListResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetIncidentListByIdListResponse) SetHeaders(v map[string]*string) *GetIncidentListByIdListResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetIncidentListByIdListResponse) SetStatusCode(v int32) *GetIncidentListByIdListResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetIncidentListByIdListResponse) SetBody(v *GetIncidentListByIdListResponseBody) *GetIncidentListByIdListResponse {
+	s.Body = v
+	return s
+}
+
 type GetIncidentStatisticsRequest struct {
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
 }
@@ -7093,6 +7415,7 @@ type GetProblemResponseBodyData struct {
 	HandingProblemOperateLogs []*GetProblemResponseBodyDataHandingProblemOperateLogs `json:"handingProblemOperateLogs,omitempty" xml:"handingProblemOperateLogs,omitempty" type:"Repeated"`
 	IncidentId                *int64                                                 `json:"incidentId,omitempty" xml:"incidentId,omitempty"`
 	IncidentNumber            *string                                                `json:"incidentNumber,omitempty" xml:"incidentNumber,omitempty"`
+	IsRuleTrigger             *bool                                                  `json:"isRuleTrigger,omitempty" xml:"isRuleTrigger,omitempty"`
 	MainHandler               *int64                                                 `json:"mainHandler,omitempty" xml:"mainHandler,omitempty"`
 	MainHandlerId             *int64                                                 `json:"mainHandlerId,omitempty" xml:"mainHandlerId,omitempty"`
 	MainHandlerIsValid        *int64                                                 `json:"mainHandlerIsValid,omitempty" xml:"mainHandlerIsValid,omitempty"`
@@ -7182,6 +7505,11 @@ func (s *GetProblemResponseBodyData) SetIncidentId(v int64) *GetProblemResponseB
 
 func (s *GetProblemResponseBodyData) SetIncidentNumber(v string) *GetProblemResponseBodyData {
 	s.IncidentNumber = &v
+	return s
+}
+
+func (s *GetProblemResponseBodyData) SetIsRuleTrigger(v bool) *GetProblemResponseBodyData {
+	s.IsRuleTrigger = &v
 	return s
 }
 
@@ -8850,6 +9178,8 @@ type GetRouteRuleResponseBodyData struct {
 	AssignObjectName         *string                                             `json:"assignObjectName,omitempty" xml:"assignObjectName,omitempty"`
 	AssignObjectType         *string                                             `json:"assignObjectType,omitempty" xml:"assignObjectType,omitempty"`
 	ChildRuleRelation        *string                                             `json:"childRuleRelation,omitempty" xml:"childRuleRelation,omitempty"`
+	ConvergenceFields        []*string                                           `json:"convergenceFields,omitempty" xml:"convergenceFields,omitempty" type:"Repeated"`
+	ConvergenceType          *int32                                              `json:"convergenceType,omitempty" xml:"convergenceType,omitempty"`
 	CoverageProblemLevels    []*string                                           `json:"coverageProblemLevels,omitempty" xml:"coverageProblemLevels,omitempty" type:"Repeated"`
 	CreateTime               *string                                             `json:"createTime,omitempty" xml:"createTime,omitempty"`
 	Effection                *string                                             `json:"effection,omitempty" xml:"effection,omitempty"`
@@ -8896,6 +9226,16 @@ func (s *GetRouteRuleResponseBodyData) SetAssignObjectType(v string) *GetRouteRu
 
 func (s *GetRouteRuleResponseBodyData) SetChildRuleRelation(v string) *GetRouteRuleResponseBodyData {
 	s.ChildRuleRelation = &v
+	return s
+}
+
+func (s *GetRouteRuleResponseBodyData) SetConvergenceFields(v []*string) *GetRouteRuleResponseBodyData {
+	s.ConvergenceFields = v
+	return s
+}
+
+func (s *GetRouteRuleResponseBodyData) SetConvergenceType(v int32) *GetRouteRuleResponseBodyData {
+	s.ConvergenceType = &v
 	return s
 }
 
@@ -9627,9 +9967,11 @@ func (s *GetServiceGroupSchedulingResponseBodyDataFastScheduling) SetSingleDurat
 }
 
 type GetServiceGroupSchedulingResponseBodyDataFastSchedulingSchedulingUsers struct {
-	SchedulingOrder    *int32  `json:"schedulingOrder,omitempty" xml:"schedulingOrder,omitempty"`
-	SchedulingUserId   *int64  `json:"schedulingUserId,omitempty" xml:"schedulingUserId,omitempty"`
-	SchedulingUserName *string `json:"schedulingUserName,omitempty" xml:"schedulingUserName,omitempty"`
+	SchedulingObjectType *string  `json:"schedulingObjectType,omitempty" xml:"schedulingObjectType,omitempty"`
+	SchedulingOrder      *int32   `json:"schedulingOrder,omitempty" xml:"schedulingOrder,omitempty"`
+	SchedulingUserId     *int64   `json:"schedulingUserId,omitempty" xml:"schedulingUserId,omitempty"`
+	SchedulingUserIdList []*int64 `json:"schedulingUserIdList,omitempty" xml:"schedulingUserIdList,omitempty" type:"Repeated"`
+	SchedulingUserName   *string  `json:"schedulingUserName,omitempty" xml:"schedulingUserName,omitempty"`
 }
 
 func (s GetServiceGroupSchedulingResponseBodyDataFastSchedulingSchedulingUsers) String() string {
@@ -9640,6 +9982,11 @@ func (s GetServiceGroupSchedulingResponseBodyDataFastSchedulingSchedulingUsers) 
 	return s.String()
 }
 
+func (s *GetServiceGroupSchedulingResponseBodyDataFastSchedulingSchedulingUsers) SetSchedulingObjectType(v string) *GetServiceGroupSchedulingResponseBodyDataFastSchedulingSchedulingUsers {
+	s.SchedulingObjectType = &v
+	return s
+}
+
 func (s *GetServiceGroupSchedulingResponseBodyDataFastSchedulingSchedulingUsers) SetSchedulingOrder(v int32) *GetServiceGroupSchedulingResponseBodyDataFastSchedulingSchedulingUsers {
 	s.SchedulingOrder = &v
 	return s
@@ -9647,6 +9994,11 @@ func (s *GetServiceGroupSchedulingResponseBodyDataFastSchedulingSchedulingUsers)
 
 func (s *GetServiceGroupSchedulingResponseBodyDataFastSchedulingSchedulingUsers) SetSchedulingUserId(v int64) *GetServiceGroupSchedulingResponseBodyDataFastSchedulingSchedulingUsers {
 	s.SchedulingUserId = &v
+	return s
+}
+
+func (s *GetServiceGroupSchedulingResponseBodyDataFastSchedulingSchedulingUsers) SetSchedulingUserIdList(v []*int64) *GetServiceGroupSchedulingResponseBodyDataFastSchedulingSchedulingUsers {
+	s.SchedulingUserIdList = v
 	return s
 }
 
@@ -9705,14 +10057,16 @@ func (s *GetServiceGroupSchedulingResponseBodyDataFineScheduling) SetShiftType(v
 }
 
 type GetServiceGroupSchedulingResponseBodyDataFineSchedulingSchedulingFineShifts struct {
-	CycleOrder          *int64  `json:"cycleOrder,omitempty" xml:"cycleOrder,omitempty"`
-	SchedulingEndTime   *string `json:"schedulingEndTime,omitempty" xml:"schedulingEndTime,omitempty"`
-	SchedulingOrder     *int32  `json:"schedulingOrder,omitempty" xml:"schedulingOrder,omitempty"`
-	SchedulingStartTime *string `json:"schedulingStartTime,omitempty" xml:"schedulingStartTime,omitempty"`
-	SchedulingUserId    *int64  `json:"schedulingUserId,omitempty" xml:"schedulingUserId,omitempty"`
-	SchedulingUserName  *string `json:"schedulingUserName,omitempty" xml:"schedulingUserName,omitempty"`
-	ShiftName           *string `json:"shiftName,omitempty" xml:"shiftName,omitempty"`
-	SkipOneDay          *bool   `json:"skipOneDay,omitempty" xml:"skipOneDay,omitempty"`
+	CycleOrder           *int64   `json:"cycleOrder,omitempty" xml:"cycleOrder,omitempty"`
+	SchedulingEndTime    *string  `json:"schedulingEndTime,omitempty" xml:"schedulingEndTime,omitempty"`
+	SchedulingObjectType *string  `json:"schedulingObjectType,omitempty" xml:"schedulingObjectType,omitempty"`
+	SchedulingOrder      *int32   `json:"schedulingOrder,omitempty" xml:"schedulingOrder,omitempty"`
+	SchedulingStartTime  *string  `json:"schedulingStartTime,omitempty" xml:"schedulingStartTime,omitempty"`
+	SchedulingUserId     *int64   `json:"schedulingUserId,omitempty" xml:"schedulingUserId,omitempty"`
+	SchedulingUserIdList []*int64 `json:"schedulingUserIdList,omitempty" xml:"schedulingUserIdList,omitempty" type:"Repeated"`
+	SchedulingUserName   *string  `json:"schedulingUserName,omitempty" xml:"schedulingUserName,omitempty"`
+	ShiftName            *string  `json:"shiftName,omitempty" xml:"shiftName,omitempty"`
+	SkipOneDay           *bool    `json:"skipOneDay,omitempty" xml:"skipOneDay,omitempty"`
 }
 
 func (s GetServiceGroupSchedulingResponseBodyDataFineSchedulingSchedulingFineShifts) String() string {
@@ -9733,6 +10087,11 @@ func (s *GetServiceGroupSchedulingResponseBodyDataFineSchedulingSchedulingFineSh
 	return s
 }
 
+func (s *GetServiceGroupSchedulingResponseBodyDataFineSchedulingSchedulingFineShifts) SetSchedulingObjectType(v string) *GetServiceGroupSchedulingResponseBodyDataFineSchedulingSchedulingFineShifts {
+	s.SchedulingObjectType = &v
+	return s
+}
+
 func (s *GetServiceGroupSchedulingResponseBodyDataFineSchedulingSchedulingFineShifts) SetSchedulingOrder(v int32) *GetServiceGroupSchedulingResponseBodyDataFineSchedulingSchedulingFineShifts {
 	s.SchedulingOrder = &v
 	return s
@@ -9745,6 +10104,11 @@ func (s *GetServiceGroupSchedulingResponseBodyDataFineSchedulingSchedulingFineSh
 
 func (s *GetServiceGroupSchedulingResponseBodyDataFineSchedulingSchedulingFineShifts) SetSchedulingUserId(v int64) *GetServiceGroupSchedulingResponseBodyDataFineSchedulingSchedulingFineShifts {
 	s.SchedulingUserId = &v
+	return s
+}
+
+func (s *GetServiceGroupSchedulingResponseBodyDataFineSchedulingSchedulingFineShifts) SetSchedulingUserIdList(v []*int64) *GetServiceGroupSchedulingResponseBodyDataFineSchedulingSchedulingFineShifts {
+	s.SchedulingUserIdList = v
 	return s
 }
 
@@ -9764,13 +10128,15 @@ func (s *GetServiceGroupSchedulingResponseBodyDataFineSchedulingSchedulingFineSh
 }
 
 type GetServiceGroupSchedulingResponseBodyDataFineSchedulingSchedulingTemplateFineShifts struct {
-	SchedulingEndTime   *string `json:"schedulingEndTime,omitempty" xml:"schedulingEndTime,omitempty"`
-	SchedulingOrder     *int64  `json:"schedulingOrder,omitempty" xml:"schedulingOrder,omitempty"`
-	SchedulingStartTime *string `json:"schedulingStartTime,omitempty" xml:"schedulingStartTime,omitempty"`
-	SchedulingUserId    *string `json:"schedulingUserId,omitempty" xml:"schedulingUserId,omitempty"`
-	SchedulingUserName  *string `json:"schedulingUserName,omitempty" xml:"schedulingUserName,omitempty"`
-	ShiftName           *string `json:"shiftName,omitempty" xml:"shiftName,omitempty"`
-	SkipOneDay          *bool   `json:"skipOneDay,omitempty" xml:"skipOneDay,omitempty"`
+	SchedulingEndTime    *string  `json:"schedulingEndTime,omitempty" xml:"schedulingEndTime,omitempty"`
+	SchedulingObjectType *string  `json:"schedulingObjectType,omitempty" xml:"schedulingObjectType,omitempty"`
+	SchedulingOrder      *int64   `json:"schedulingOrder,omitempty" xml:"schedulingOrder,omitempty"`
+	SchedulingStartTime  *string  `json:"schedulingStartTime,omitempty" xml:"schedulingStartTime,omitempty"`
+	SchedulingUserId     *string  `json:"schedulingUserId,omitempty" xml:"schedulingUserId,omitempty"`
+	SchedulingUserIdList []*int64 `json:"schedulingUserIdList,omitempty" xml:"schedulingUserIdList,omitempty" type:"Repeated"`
+	SchedulingUserName   *string  `json:"schedulingUserName,omitempty" xml:"schedulingUserName,omitempty"`
+	ShiftName            *string  `json:"shiftName,omitempty" xml:"shiftName,omitempty"`
+	SkipOneDay           *bool    `json:"skipOneDay,omitempty" xml:"skipOneDay,omitempty"`
 }
 
 func (s GetServiceGroupSchedulingResponseBodyDataFineSchedulingSchedulingTemplateFineShifts) String() string {
@@ -9786,6 +10152,11 @@ func (s *GetServiceGroupSchedulingResponseBodyDataFineSchedulingSchedulingTempla
 	return s
 }
 
+func (s *GetServiceGroupSchedulingResponseBodyDataFineSchedulingSchedulingTemplateFineShifts) SetSchedulingObjectType(v string) *GetServiceGroupSchedulingResponseBodyDataFineSchedulingSchedulingTemplateFineShifts {
+	s.SchedulingObjectType = &v
+	return s
+}
+
 func (s *GetServiceGroupSchedulingResponseBodyDataFineSchedulingSchedulingTemplateFineShifts) SetSchedulingOrder(v int64) *GetServiceGroupSchedulingResponseBodyDataFineSchedulingSchedulingTemplateFineShifts {
 	s.SchedulingOrder = &v
 	return s
@@ -9798,6 +10169,11 @@ func (s *GetServiceGroupSchedulingResponseBodyDataFineSchedulingSchedulingTempla
 
 func (s *GetServiceGroupSchedulingResponseBodyDataFineSchedulingSchedulingTemplateFineShifts) SetSchedulingUserId(v string) *GetServiceGroupSchedulingResponseBodyDataFineSchedulingSchedulingTemplateFineShifts {
 	s.SchedulingUserId = &v
+	return s
+}
+
+func (s *GetServiceGroupSchedulingResponseBodyDataFineSchedulingSchedulingTemplateFineShifts) SetSchedulingUserIdList(v []*int64) *GetServiceGroupSchedulingResponseBodyDataFineSchedulingSchedulingTemplateFineShifts {
+	s.SchedulingUserIdList = v
 	return s
 }
 
@@ -17724,6 +18100,75 @@ func (s *ListUsersResponse) SetBody(v *ListUsersResponseBody) *ListUsersResponse
 	return s
 }
 
+type PushMonitorRequest struct {
+	Body *string `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s PushMonitorRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PushMonitorRequest) GoString() string {
+	return s.String()
+}
+
+func (s *PushMonitorRequest) SetBody(v string) *PushMonitorRequest {
+	s.Body = &v
+	return s
+}
+
+type PushMonitorResponseBody struct {
+	Data      interface{} `json:"data,omitempty" xml:"data,omitempty"`
+	RequestId *string     `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s PushMonitorResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PushMonitorResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *PushMonitorResponseBody) SetData(v interface{}) *PushMonitorResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *PushMonitorResponseBody) SetRequestId(v string) *PushMonitorResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type PushMonitorResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *PushMonitorResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s PushMonitorResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PushMonitorResponse) GoString() string {
+	return s.String()
+}
+
+func (s *PushMonitorResponse) SetHeaders(v map[string]*string) *PushMonitorResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *PushMonitorResponse) SetStatusCode(v int32) *PushMonitorResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *PushMonitorResponse) SetBody(v *PushMonitorResponseBody) *PushMonitorResponse {
+	s.Body = v
+	return s
+}
+
 type RecoverProblemRequest struct {
 	ProblemId         *int64  `json:"problemId,omitempty" xml:"problemId,omitempty"`
 	ProblemNotifyType *string `json:"problemNotifyType,omitempty" xml:"problemNotifyType,omitempty"`
@@ -19500,6 +19945,8 @@ type UpdateRouteRuleRequest struct {
 	AssignObjectType         *string                                  `json:"assignObjectType,omitempty" xml:"assignObjectType,omitempty"`
 	ChildRuleRelation        *string                                  `json:"childRuleRelation,omitempty" xml:"childRuleRelation,omitempty"`
 	ClientToken              *string                                  `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	ConvergenceFields        []*string                                `json:"convergenceFields,omitempty" xml:"convergenceFields,omitempty" type:"Repeated"`
+	ConvergenceType          *int32                                   `json:"convergenceType,omitempty" xml:"convergenceType,omitempty"`
 	CoverageProblemLevels    []*string                                `json:"coverageProblemLevels,omitempty" xml:"coverageProblemLevels,omitempty" type:"Repeated"`
 	Effection                *string                                  `json:"effection,omitempty" xml:"effection,omitempty"`
 	IncidentLevel            *string                                  `json:"incidentLevel,omitempty" xml:"incidentLevel,omitempty"`
@@ -19541,6 +19988,16 @@ func (s *UpdateRouteRuleRequest) SetChildRuleRelation(v string) *UpdateRouteRule
 
 func (s *UpdateRouteRuleRequest) SetClientToken(v string) *UpdateRouteRuleRequest {
 	s.ClientToken = &v
+	return s
+}
+
+func (s *UpdateRouteRuleRequest) SetConvergenceFields(v []*string) *UpdateRouteRuleRequest {
+	s.ConvergenceFields = v
+	return s
+}
+
+func (s *UpdateRouteRuleRequest) SetConvergenceType(v int32) *UpdateRouteRuleRequest {
+	s.ConvergenceType = &v
 	return s
 }
 
@@ -20060,8 +20517,10 @@ func (s *UpdateServiceGroupSchedulingRequestFastScheduling) SetSingleDurationUni
 }
 
 type UpdateServiceGroupSchedulingRequestFastSchedulingSchedulingUsers struct {
-	SchedulingOrder  *int32 `json:"schedulingOrder,omitempty" xml:"schedulingOrder,omitempty"`
-	SchedulingUserId *int64 `json:"schedulingUserId,omitempty" xml:"schedulingUserId,omitempty"`
+	SchedulingObjectType *string  `json:"schedulingObjectType,omitempty" xml:"schedulingObjectType,omitempty"`
+	SchedulingOrder      *int32   `json:"schedulingOrder,omitempty" xml:"schedulingOrder,omitempty"`
+	SchedulingUserId     *int64   `json:"schedulingUserId,omitempty" xml:"schedulingUserId,omitempty"`
+	SchedulingUserIdList []*int64 `json:"schedulingUserIdList,omitempty" xml:"schedulingUserIdList,omitempty" type:"Repeated"`
 }
 
 func (s UpdateServiceGroupSchedulingRequestFastSchedulingSchedulingUsers) String() string {
@@ -20072,6 +20531,11 @@ func (s UpdateServiceGroupSchedulingRequestFastSchedulingSchedulingUsers) GoStri
 	return s.String()
 }
 
+func (s *UpdateServiceGroupSchedulingRequestFastSchedulingSchedulingUsers) SetSchedulingObjectType(v string) *UpdateServiceGroupSchedulingRequestFastSchedulingSchedulingUsers {
+	s.SchedulingObjectType = &v
+	return s
+}
+
 func (s *UpdateServiceGroupSchedulingRequestFastSchedulingSchedulingUsers) SetSchedulingOrder(v int32) *UpdateServiceGroupSchedulingRequestFastSchedulingSchedulingUsers {
 	s.SchedulingOrder = &v
 	return s
@@ -20079,6 +20543,11 @@ func (s *UpdateServiceGroupSchedulingRequestFastSchedulingSchedulingUsers) SetSc
 
 func (s *UpdateServiceGroupSchedulingRequestFastSchedulingSchedulingUsers) SetSchedulingUserId(v int64) *UpdateServiceGroupSchedulingRequestFastSchedulingSchedulingUsers {
 	s.SchedulingUserId = &v
+	return s
+}
+
+func (s *UpdateServiceGroupSchedulingRequestFastSchedulingSchedulingUsers) SetSchedulingUserIdList(v []*int64) *UpdateServiceGroupSchedulingRequestFastSchedulingSchedulingUsers {
+	s.SchedulingUserIdList = v
 	return s
 }
 
@@ -20130,13 +20599,15 @@ func (s *UpdateServiceGroupSchedulingRequestFineScheduling) SetShiftType(v strin
 }
 
 type UpdateServiceGroupSchedulingRequestFineSchedulingSchedulingFineShifts struct {
-	CycleOrder          *int32  `json:"cycleOrder,omitempty" xml:"cycleOrder,omitempty"`
-	SchedulingEndTime   *string `json:"schedulingEndTime,omitempty" xml:"schedulingEndTime,omitempty"`
-	SchedulingOrder     *int64  `json:"schedulingOrder,omitempty" xml:"schedulingOrder,omitempty"`
-	SchedulingStartTime *string `json:"schedulingStartTime,omitempty" xml:"schedulingStartTime,omitempty"`
-	SchedulingUserId    *int64  `json:"schedulingUserId,omitempty" xml:"schedulingUserId,omitempty"`
-	ShiftName           *string `json:"shiftName,omitempty" xml:"shiftName,omitempty"`
-	SkipOneDay          *bool   `json:"skipOneDay,omitempty" xml:"skipOneDay,omitempty"`
+	CycleOrder           *int32   `json:"cycleOrder,omitempty" xml:"cycleOrder,omitempty"`
+	SchedulingEndTime    *string  `json:"schedulingEndTime,omitempty" xml:"schedulingEndTime,omitempty"`
+	SchedulingObjectType *string  `json:"schedulingObjectType,omitempty" xml:"schedulingObjectType,omitempty"`
+	SchedulingOrder      *int64   `json:"schedulingOrder,omitempty" xml:"schedulingOrder,omitempty"`
+	SchedulingStartTime  *string  `json:"schedulingStartTime,omitempty" xml:"schedulingStartTime,omitempty"`
+	SchedulingUserId     *int64   `json:"schedulingUserId,omitempty" xml:"schedulingUserId,omitempty"`
+	SchedulingUserIdList []*int64 `json:"schedulingUserIdList,omitempty" xml:"schedulingUserIdList,omitempty" type:"Repeated"`
+	ShiftName            *string  `json:"shiftName,omitempty" xml:"shiftName,omitempty"`
+	SkipOneDay           *bool    `json:"skipOneDay,omitempty" xml:"skipOneDay,omitempty"`
 }
 
 func (s UpdateServiceGroupSchedulingRequestFineSchedulingSchedulingFineShifts) String() string {
@@ -20157,6 +20628,11 @@ func (s *UpdateServiceGroupSchedulingRequestFineSchedulingSchedulingFineShifts) 
 	return s
 }
 
+func (s *UpdateServiceGroupSchedulingRequestFineSchedulingSchedulingFineShifts) SetSchedulingObjectType(v string) *UpdateServiceGroupSchedulingRequestFineSchedulingSchedulingFineShifts {
+	s.SchedulingObjectType = &v
+	return s
+}
+
 func (s *UpdateServiceGroupSchedulingRequestFineSchedulingSchedulingFineShifts) SetSchedulingOrder(v int64) *UpdateServiceGroupSchedulingRequestFineSchedulingSchedulingFineShifts {
 	s.SchedulingOrder = &v
 	return s
@@ -20172,6 +20648,11 @@ func (s *UpdateServiceGroupSchedulingRequestFineSchedulingSchedulingFineShifts) 
 	return s
 }
 
+func (s *UpdateServiceGroupSchedulingRequestFineSchedulingSchedulingFineShifts) SetSchedulingUserIdList(v []*int64) *UpdateServiceGroupSchedulingRequestFineSchedulingSchedulingFineShifts {
+	s.SchedulingUserIdList = v
+	return s
+}
+
 func (s *UpdateServiceGroupSchedulingRequestFineSchedulingSchedulingFineShifts) SetShiftName(v string) *UpdateServiceGroupSchedulingRequestFineSchedulingSchedulingFineShifts {
 	s.ShiftName = &v
 	return s
@@ -20183,12 +20664,14 @@ func (s *UpdateServiceGroupSchedulingRequestFineSchedulingSchedulingFineShifts) 
 }
 
 type UpdateServiceGroupSchedulingRequestFineSchedulingSchedulingTemplateFineShifts struct {
-	SchedulingEndTime   *string `json:"schedulingEndTime,omitempty" xml:"schedulingEndTime,omitempty"`
-	SchedulingOrder     *int32  `json:"schedulingOrder,omitempty" xml:"schedulingOrder,omitempty"`
-	SchedulingStartTime *string `json:"schedulingStartTime,omitempty" xml:"schedulingStartTime,omitempty"`
-	SchedulingUserId    *int64  `json:"schedulingUserId,omitempty" xml:"schedulingUserId,omitempty"`
-	ShiftName           *string `json:"shiftName,omitempty" xml:"shiftName,omitempty"`
-	SkipOneDay          *bool   `json:"skipOneDay,omitempty" xml:"skipOneDay,omitempty"`
+	SchedulingEndTime    *string  `json:"schedulingEndTime,omitempty" xml:"schedulingEndTime,omitempty"`
+	SchedulingObjectType *string  `json:"schedulingObjectType,omitempty" xml:"schedulingObjectType,omitempty"`
+	SchedulingOrder      *int32   `json:"schedulingOrder,omitempty" xml:"schedulingOrder,omitempty"`
+	SchedulingStartTime  *string  `json:"schedulingStartTime,omitempty" xml:"schedulingStartTime,omitempty"`
+	SchedulingUserId     *int64   `json:"schedulingUserId,omitempty" xml:"schedulingUserId,omitempty"`
+	SchedulingUserIdList []*int64 `json:"schedulingUserIdList,omitempty" xml:"schedulingUserIdList,omitempty" type:"Repeated"`
+	ShiftName            *string  `json:"shiftName,omitempty" xml:"shiftName,omitempty"`
+	SkipOneDay           *bool    `json:"skipOneDay,omitempty" xml:"skipOneDay,omitempty"`
 }
 
 func (s UpdateServiceGroupSchedulingRequestFineSchedulingSchedulingTemplateFineShifts) String() string {
@@ -20204,6 +20687,11 @@ func (s *UpdateServiceGroupSchedulingRequestFineSchedulingSchedulingTemplateFine
 	return s
 }
 
+func (s *UpdateServiceGroupSchedulingRequestFineSchedulingSchedulingTemplateFineShifts) SetSchedulingObjectType(v string) *UpdateServiceGroupSchedulingRequestFineSchedulingSchedulingTemplateFineShifts {
+	s.SchedulingObjectType = &v
+	return s
+}
+
 func (s *UpdateServiceGroupSchedulingRequestFineSchedulingSchedulingTemplateFineShifts) SetSchedulingOrder(v int32) *UpdateServiceGroupSchedulingRequestFineSchedulingSchedulingTemplateFineShifts {
 	s.SchedulingOrder = &v
 	return s
@@ -20216,6 +20704,11 @@ func (s *UpdateServiceGroupSchedulingRequestFineSchedulingSchedulingTemplateFine
 
 func (s *UpdateServiceGroupSchedulingRequestFineSchedulingSchedulingTemplateFineShifts) SetSchedulingUserId(v int64) *UpdateServiceGroupSchedulingRequestFineSchedulingSchedulingTemplateFineShifts {
 	s.SchedulingUserId = &v
+	return s
+}
+
+func (s *UpdateServiceGroupSchedulingRequestFineSchedulingSchedulingTemplateFineShifts) SetSchedulingUserIdList(v []*int64) *UpdateServiceGroupSchedulingRequestFineSchedulingSchedulingTemplateFineShifts {
+	s.SchedulingUserIdList = v
 	return s
 }
 
@@ -20312,10 +20805,12 @@ func (s *UpdateServiceGroupSpecialDaySchedulingRequest) SetServiceGroupId(v int6
 }
 
 type UpdateServiceGroupSpecialDaySchedulingRequestSchedulingSpecialDays struct {
-	SchedulingEndTime   *string `json:"schedulingEndTime,omitempty" xml:"schedulingEndTime,omitempty"`
-	SchedulingOrder     *int32  `json:"schedulingOrder,omitempty" xml:"schedulingOrder,omitempty"`
-	SchedulingStartTime *string `json:"schedulingStartTime,omitempty" xml:"schedulingStartTime,omitempty"`
-	SchedulingUserId    *int64  `json:"schedulingUserId,omitempty" xml:"schedulingUserId,omitempty"`
+	SchedulingEndTime    *string  `json:"schedulingEndTime,omitempty" xml:"schedulingEndTime,omitempty"`
+	SchedulingObjectType *string  `json:"schedulingObjectType,omitempty" xml:"schedulingObjectType,omitempty"`
+	SchedulingOrder      *int32   `json:"schedulingOrder,omitempty" xml:"schedulingOrder,omitempty"`
+	SchedulingStartTime  *string  `json:"schedulingStartTime,omitempty" xml:"schedulingStartTime,omitempty"`
+	SchedulingUserId     *int64   `json:"schedulingUserId,omitempty" xml:"schedulingUserId,omitempty"`
+	SchedulingUserIdList []*int64 `json:"schedulingUserIdList,omitempty" xml:"schedulingUserIdList,omitempty" type:"Repeated"`
 }
 
 func (s UpdateServiceGroupSpecialDaySchedulingRequestSchedulingSpecialDays) String() string {
@@ -20331,6 +20826,11 @@ func (s *UpdateServiceGroupSpecialDaySchedulingRequestSchedulingSpecialDays) Set
 	return s
 }
 
+func (s *UpdateServiceGroupSpecialDaySchedulingRequestSchedulingSpecialDays) SetSchedulingObjectType(v string) *UpdateServiceGroupSpecialDaySchedulingRequestSchedulingSpecialDays {
+	s.SchedulingObjectType = &v
+	return s
+}
+
 func (s *UpdateServiceGroupSpecialDaySchedulingRequestSchedulingSpecialDays) SetSchedulingOrder(v int32) *UpdateServiceGroupSpecialDaySchedulingRequestSchedulingSpecialDays {
 	s.SchedulingOrder = &v
 	return s
@@ -20343,6 +20843,11 @@ func (s *UpdateServiceGroupSpecialDaySchedulingRequestSchedulingSpecialDays) Set
 
 func (s *UpdateServiceGroupSpecialDaySchedulingRequestSchedulingSpecialDays) SetSchedulingUserId(v int64) *UpdateServiceGroupSpecialDaySchedulingRequestSchedulingSpecialDays {
 	s.SchedulingUserId = &v
+	return s
+}
+
+func (s *UpdateServiceGroupSpecialDaySchedulingRequestSchedulingSpecialDays) SetSchedulingUserIdList(v []*int64) *UpdateServiceGroupSpecialDaySchedulingRequestSchedulingSpecialDays {
+	s.SchedulingUserIdList = v
 	return s
 }
 
@@ -21062,6 +21567,7 @@ func (client *Client) Init(config *openapi.Config) (_err error) {
 	if _err != nil {
 		return _err
 	}
+	client.SignatureAlgorithm = tea.String("v2")
 	client.EndpointRule = tea.String("regional")
 	_err = client.CheckConfig(config)
 	if _err != nil {
@@ -22088,6 +22594,14 @@ func (client *Client) CreateRouteRuleWithOptions(request *CreateRouteRuleRequest
 
 	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
 		body["clientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConvergenceFields)) {
+		body["convergenceFields"] = request.ConvergenceFields
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConvergenceType)) {
+		body["convergenceType"] = request.ConvergenceType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.CoverageProblemLevels)) {
@@ -24335,6 +24849,56 @@ func (client *Client) GetIncident(request *GetIncidentRequest) (_result *GetInci
 	headers := make(map[string]*string)
 	_result = &GetIncidentResponse{}
 	_body, _err := client.GetIncidentWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetIncidentListByIdListWithOptions(request *GetIncidentListByIdListRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetIncidentListByIdListResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		body["clientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IncidentIdList)) {
+		body["incidentIdList"] = request.IncidentIdList
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetIncidentListByIdList"),
+		Version:     tea.String("2021-04-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/incident/getIncidentListByIdList"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetIncidentListByIdListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetIncidentListByIdList(request *GetIncidentListByIdListRequest) (_result *GetIncidentListByIdListResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetIncidentListByIdListResponse{}
+	_body, _err := client.GetIncidentListByIdListWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -27694,6 +28258,47 @@ func (client *Client) ListUsers(request *ListUsersRequest) (_result *ListUsersRe
 	return _result, _err
 }
 
+func (client *Client) PushMonitorWithOptions(apiKey *string, request *PushMonitorRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *PushMonitorResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    request.Body,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("PushMonitor"),
+		Version:     tea.String("2021-04-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/monitor/push/" + tea.StringValue(openapiutil.GetEncodeParam(apiKey))),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("Anonymous"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &PushMonitorResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) PushMonitor(apiKey *string, request *PushMonitorRequest) (_result *PushMonitorResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &PushMonitorResponse{}
+	_body, _err := client.PushMonitorWithOptions(apiKey, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) RecoverProblemWithOptions(request *RecoverProblemRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *RecoverProblemResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -28820,6 +29425,14 @@ func (client *Client) UpdateRouteRuleWithOptions(request *UpdateRouteRuleRequest
 
 	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
 		body["clientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConvergenceFields)) {
+		body["convergenceFields"] = request.ConvergenceFields
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConvergenceType)) {
+		body["convergenceType"] = request.ConvergenceType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.CoverageProblemLevels)) {
