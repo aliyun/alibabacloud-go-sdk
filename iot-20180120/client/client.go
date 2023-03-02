@@ -8350,7 +8350,6 @@ func (s *CreateDeviceTunnelResponse) SetBody(v *CreateDeviceTunnelResponseBody) 
 }
 
 type CreateDownloadDataJobRequest struct {
-	Context          map[string]interface{} `json:"Context,omitempty" xml:"Context,omitempty"`
 	DownloadDataType *string                `json:"DownloadDataType,omitempty" xml:"DownloadDataType,omitempty"`
 	EndTime          *int64                 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	FileConfig       map[string]interface{} `json:"FileConfig,omitempty" xml:"FileConfig,omitempty"`
@@ -8365,11 +8364,6 @@ func (s CreateDownloadDataJobRequest) String() string {
 
 func (s CreateDownloadDataJobRequest) GoString() string {
 	return s.String()
-}
-
-func (s *CreateDownloadDataJobRequest) SetContext(v map[string]interface{}) *CreateDownloadDataJobRequest {
-	s.Context = v
-	return s
 }
 
 func (s *CreateDownloadDataJobRequest) SetDownloadDataType(v string) *CreateDownloadDataJobRequest {
@@ -8403,7 +8397,6 @@ func (s *CreateDownloadDataJobRequest) SetTableName(v string) *CreateDownloadDat
 }
 
 type CreateDownloadDataJobShrinkRequest struct {
-	ContextShrink    *string `json:"Context,omitempty" xml:"Context,omitempty"`
 	DownloadDataType *string `json:"DownloadDataType,omitempty" xml:"DownloadDataType,omitempty"`
 	EndTime          *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	FileConfigShrink *string `json:"FileConfig,omitempty" xml:"FileConfig,omitempty"`
@@ -8418,11 +8411,6 @@ func (s CreateDownloadDataJobShrinkRequest) String() string {
 
 func (s CreateDownloadDataJobShrinkRequest) GoString() string {
 	return s.String()
-}
-
-func (s *CreateDownloadDataJobShrinkRequest) SetContextShrink(v string) *CreateDownloadDataJobShrinkRequest {
-	s.ContextShrink = &v
-	return s
 }
 
 func (s *CreateDownloadDataJobShrinkRequest) SetDownloadDataType(v string) *CreateDownloadDataJobShrinkRequest {
@@ -8497,21 +8485,11 @@ func (s *CreateDownloadDataJobResponseBody) SetSuccess(v bool) *CreateDownloadDa
 }
 
 type CreateDownloadDataJobResponseBodyData struct {
-	AsyncExecute       *bool                                              `json:"AsyncExecute,omitempty" xml:"AsyncExecute,omitempty"`
-	BeginTime          *int64                                             `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
-	CsvFileName        *string                                            `json:"CsvFileName,omitempty" xml:"CsvFileName,omitempty"`
-	CsvUrl             *string                                            `json:"CsvUrl,omitempty" xml:"CsvUrl,omitempty"`
-	DatasetId          *string                                            `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
-	EndTime            *int64                                             `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	Header             []*CreateDownloadDataJobResponseBodyDataHeader     `json:"Header,omitempty" xml:"Header,omitempty" type:"Repeated"`
-	LongJobId          *string                                            `json:"LongJobId,omitempty" xml:"LongJobId,omitempty"`
-	PageNo             *int32                                             `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	PageSize           *int32                                             `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	PreviewSize        *int32                                             `json:"PreviewSize,omitempty" xml:"PreviewSize,omitempty"`
-	QuerySetting       *CreateDownloadDataJobResponseBodyDataQuerySetting `json:"QuerySetting,omitempty" xml:"QuerySetting,omitempty" type:"Struct"`
-	ResultDataInString *string                                            `json:"ResultDataInString,omitempty" xml:"ResultDataInString,omitempty"`
-	Status             *int32                                             `json:"Status,omitempty" xml:"Status,omitempty"`
-	TotalCount         *int64                                             `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	AsyncExecute *bool   `json:"AsyncExecute,omitempty" xml:"AsyncExecute,omitempty"`
+	CsvFileName  *string `json:"CsvFileName,omitempty" xml:"CsvFileName,omitempty"`
+	CsvUrl       *string `json:"CsvUrl,omitempty" xml:"CsvUrl,omitempty"`
+	LongJobId    *string `json:"LongJobId,omitempty" xml:"LongJobId,omitempty"`
+	Status       *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s CreateDownloadDataJobResponseBodyData) String() string {
@@ -8527,11 +8505,6 @@ func (s *CreateDownloadDataJobResponseBodyData) SetAsyncExecute(v bool) *CreateD
 	return s
 }
 
-func (s *CreateDownloadDataJobResponseBodyData) SetBeginTime(v int64) *CreateDownloadDataJobResponseBodyData {
-	s.BeginTime = &v
-	return s
-}
-
 func (s *CreateDownloadDataJobResponseBodyData) SetCsvFileName(v string) *CreateDownloadDataJobResponseBodyData {
 	s.CsvFileName = &v
 	return s
@@ -8542,210 +8515,13 @@ func (s *CreateDownloadDataJobResponseBodyData) SetCsvUrl(v string) *CreateDownl
 	return s
 }
 
-func (s *CreateDownloadDataJobResponseBodyData) SetDatasetId(v string) *CreateDownloadDataJobResponseBodyData {
-	s.DatasetId = &v
-	return s
-}
-
-func (s *CreateDownloadDataJobResponseBodyData) SetEndTime(v int64) *CreateDownloadDataJobResponseBodyData {
-	s.EndTime = &v
-	return s
-}
-
-func (s *CreateDownloadDataJobResponseBodyData) SetHeader(v []*CreateDownloadDataJobResponseBodyDataHeader) *CreateDownloadDataJobResponseBodyData {
-	s.Header = v
-	return s
-}
-
 func (s *CreateDownloadDataJobResponseBodyData) SetLongJobId(v string) *CreateDownloadDataJobResponseBodyData {
 	s.LongJobId = &v
 	return s
 }
 
-func (s *CreateDownloadDataJobResponseBodyData) SetPageNo(v int32) *CreateDownloadDataJobResponseBodyData {
-	s.PageNo = &v
-	return s
-}
-
-func (s *CreateDownloadDataJobResponseBodyData) SetPageSize(v int32) *CreateDownloadDataJobResponseBodyData {
-	s.PageSize = &v
-	return s
-}
-
-func (s *CreateDownloadDataJobResponseBodyData) SetPreviewSize(v int32) *CreateDownloadDataJobResponseBodyData {
-	s.PreviewSize = &v
-	return s
-}
-
-func (s *CreateDownloadDataJobResponseBodyData) SetQuerySetting(v *CreateDownloadDataJobResponseBodyDataQuerySetting) *CreateDownloadDataJobResponseBodyData {
-	s.QuerySetting = v
-	return s
-}
-
-func (s *CreateDownloadDataJobResponseBodyData) SetResultDataInString(v string) *CreateDownloadDataJobResponseBodyData {
-	s.ResultDataInString = &v
-	return s
-}
-
 func (s *CreateDownloadDataJobResponseBodyData) SetStatus(v int32) *CreateDownloadDataJobResponseBodyData {
 	s.Status = &v
-	return s
-}
-
-func (s *CreateDownloadDataJobResponseBodyData) SetTotalCount(v int64) *CreateDownloadDataJobResponseBodyData {
-	s.TotalCount = &v
-	return s
-}
-
-type CreateDownloadDataJobResponseBodyDataHeader struct {
-	Alias         *string `json:"Alias,omitempty" xml:"Alias,omitempty"`
-	DataPrecision *string `json:"DataPrecision,omitempty" xml:"DataPrecision,omitempty"`
-	DimDateClass  *string `json:"DimDateClass,omitempty" xml:"DimDateClass,omitempty"`
-	FieldName     *string `json:"FieldName,omitempty" xml:"FieldName,omitempty"`
-	FieldType     *string `json:"FieldType,omitempty" xml:"FieldType,omitempty"`
-	GeoClass      *string `json:"GeoClass,omitempty" xml:"GeoClass,omitempty"`
-	TimeClass     *string `json:"TimeClass,omitempty" xml:"TimeClass,omitempty"`
-	TypeClass     *string `json:"TypeClass,omitempty" xml:"TypeClass,omitempty"`
-}
-
-func (s CreateDownloadDataJobResponseBodyDataHeader) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateDownloadDataJobResponseBodyDataHeader) GoString() string {
-	return s.String()
-}
-
-func (s *CreateDownloadDataJobResponseBodyDataHeader) SetAlias(v string) *CreateDownloadDataJobResponseBodyDataHeader {
-	s.Alias = &v
-	return s
-}
-
-func (s *CreateDownloadDataJobResponseBodyDataHeader) SetDataPrecision(v string) *CreateDownloadDataJobResponseBodyDataHeader {
-	s.DataPrecision = &v
-	return s
-}
-
-func (s *CreateDownloadDataJobResponseBodyDataHeader) SetDimDateClass(v string) *CreateDownloadDataJobResponseBodyDataHeader {
-	s.DimDateClass = &v
-	return s
-}
-
-func (s *CreateDownloadDataJobResponseBodyDataHeader) SetFieldName(v string) *CreateDownloadDataJobResponseBodyDataHeader {
-	s.FieldName = &v
-	return s
-}
-
-func (s *CreateDownloadDataJobResponseBodyDataHeader) SetFieldType(v string) *CreateDownloadDataJobResponseBodyDataHeader {
-	s.FieldType = &v
-	return s
-}
-
-func (s *CreateDownloadDataJobResponseBodyDataHeader) SetGeoClass(v string) *CreateDownloadDataJobResponseBodyDataHeader {
-	s.GeoClass = &v
-	return s
-}
-
-func (s *CreateDownloadDataJobResponseBodyDataHeader) SetTimeClass(v string) *CreateDownloadDataJobResponseBodyDataHeader {
-	s.TimeClass = &v
-	return s
-}
-
-func (s *CreateDownloadDataJobResponseBodyDataHeader) SetTypeClass(v string) *CreateDownloadDataJobResponseBodyDataHeader {
-	s.TypeClass = &v
-	return s
-}
-
-type CreateDownloadDataJobResponseBodyDataQuerySetting struct {
-	AstExpr         []*CreateDownloadDataJobResponseBodyDataQuerySettingAstExpr         `json:"AstExpr,omitempty" xml:"AstExpr,omitempty" type:"Repeated"`
-	SelectedHeaders []*CreateDownloadDataJobResponseBodyDataQuerySettingSelectedHeaders `json:"SelectedHeaders,omitempty" xml:"SelectedHeaders,omitempty" type:"Repeated"`
-}
-
-func (s CreateDownloadDataJobResponseBodyDataQuerySetting) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateDownloadDataJobResponseBodyDataQuerySetting) GoString() string {
-	return s.String()
-}
-
-func (s *CreateDownloadDataJobResponseBodyDataQuerySetting) SetAstExpr(v []*CreateDownloadDataJobResponseBodyDataQuerySettingAstExpr) *CreateDownloadDataJobResponseBodyDataQuerySetting {
-	s.AstExpr = v
-	return s
-}
-
-func (s *CreateDownloadDataJobResponseBodyDataQuerySetting) SetSelectedHeaders(v []*CreateDownloadDataJobResponseBodyDataQuerySettingSelectedHeaders) *CreateDownloadDataJobResponseBodyDataQuerySetting {
-	s.SelectedHeaders = v
-	return s
-}
-
-type CreateDownloadDataJobResponseBodyDataQuerySettingAstExpr struct {
-	Expr     *string `json:"Expr,omitempty" xml:"Expr,omitempty"`
-	ExprType *string `json:"ExprType,omitempty" xml:"ExprType,omitempty"`
-}
-
-func (s CreateDownloadDataJobResponseBodyDataQuerySettingAstExpr) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateDownloadDataJobResponseBodyDataQuerySettingAstExpr) GoString() string {
-	return s.String()
-}
-
-func (s *CreateDownloadDataJobResponseBodyDataQuerySettingAstExpr) SetExpr(v string) *CreateDownloadDataJobResponseBodyDataQuerySettingAstExpr {
-	s.Expr = &v
-	return s
-}
-
-func (s *CreateDownloadDataJobResponseBodyDataQuerySettingAstExpr) SetExprType(v string) *CreateDownloadDataJobResponseBodyDataQuerySettingAstExpr {
-	s.ExprType = &v
-	return s
-}
-
-type CreateDownloadDataJobResponseBodyDataQuerySettingSelectedHeaders struct {
-	Alias        *string `json:"Alias,omitempty" xml:"Alias,omitempty"`
-	DimDateClass *string `json:"DimDateClass,omitempty" xml:"DimDateClass,omitempty"`
-	FieldName    *string `json:"FieldName,omitempty" xml:"FieldName,omitempty"`
-	FieldType    *string `json:"FieldType,omitempty" xml:"FieldType,omitempty"`
-	GeoClass     *string `json:"GeoClass,omitempty" xml:"GeoClass,omitempty"`
-	TimeClass    *string `json:"TimeClass,omitempty" xml:"TimeClass,omitempty"`
-}
-
-func (s CreateDownloadDataJobResponseBodyDataQuerySettingSelectedHeaders) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateDownloadDataJobResponseBodyDataQuerySettingSelectedHeaders) GoString() string {
-	return s.String()
-}
-
-func (s *CreateDownloadDataJobResponseBodyDataQuerySettingSelectedHeaders) SetAlias(v string) *CreateDownloadDataJobResponseBodyDataQuerySettingSelectedHeaders {
-	s.Alias = &v
-	return s
-}
-
-func (s *CreateDownloadDataJobResponseBodyDataQuerySettingSelectedHeaders) SetDimDateClass(v string) *CreateDownloadDataJobResponseBodyDataQuerySettingSelectedHeaders {
-	s.DimDateClass = &v
-	return s
-}
-
-func (s *CreateDownloadDataJobResponseBodyDataQuerySettingSelectedHeaders) SetFieldName(v string) *CreateDownloadDataJobResponseBodyDataQuerySettingSelectedHeaders {
-	s.FieldName = &v
-	return s
-}
-
-func (s *CreateDownloadDataJobResponseBodyDataQuerySettingSelectedHeaders) SetFieldType(v string) *CreateDownloadDataJobResponseBodyDataQuerySettingSelectedHeaders {
-	s.FieldType = &v
-	return s
-}
-
-func (s *CreateDownloadDataJobResponseBodyDataQuerySettingSelectedHeaders) SetGeoClass(v string) *CreateDownloadDataJobResponseBodyDataQuerySettingSelectedHeaders {
-	s.GeoClass = &v
-	return s
-}
-
-func (s *CreateDownloadDataJobResponseBodyDataQuerySettingSelectedHeaders) SetTimeClass(v string) *CreateDownloadDataJobResponseBodyDataQuerySettingSelectedHeaders {
-	s.TimeClass = &v
 	return s
 }
 
@@ -37420,6 +37196,164 @@ func (s *QueryDevicePropertyStatusResponse) SetBody(v *QueryDevicePropertyStatus
 	return s
 }
 
+type QueryDeviceProvisioningRequest struct {
+	DeviceName *string `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
+	ProductKey *string `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
+}
+
+func (s QueryDeviceProvisioningRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryDeviceProvisioningRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryDeviceProvisioningRequest) SetDeviceName(v string) *QueryDeviceProvisioningRequest {
+	s.DeviceName = &v
+	return s
+}
+
+func (s *QueryDeviceProvisioningRequest) SetProductKey(v string) *QueryDeviceProvisioningRequest {
+	s.ProductKey = &v
+	return s
+}
+
+type QueryDeviceProvisioningResponseBody struct {
+	Code         *string                                  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data         *QueryDeviceProvisioningResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	ErrorMessage *string                                  `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool                                    `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s QueryDeviceProvisioningResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryDeviceProvisioningResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryDeviceProvisioningResponseBody) SetCode(v string) *QueryDeviceProvisioningResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *QueryDeviceProvisioningResponseBody) SetData(v *QueryDeviceProvisioningResponseBodyData) *QueryDeviceProvisioningResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *QueryDeviceProvisioningResponseBody) SetErrorMessage(v string) *QueryDeviceProvisioningResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *QueryDeviceProvisioningResponseBody) SetRequestId(v string) *QueryDeviceProvisioningResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QueryDeviceProvisioningResponseBody) SetSuccess(v bool) *QueryDeviceProvisioningResponseBody {
+	s.Success = &v
+	return s
+}
+
+type QueryDeviceProvisioningResponseBodyData struct {
+	AliyunUid           *string `json:"AliyunUid,omitempty" xml:"AliyunUid,omitempty"`
+	DeviceName          *string `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
+	GmtCreate           *int64  `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	GmtModified         *int64  `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	ProductKey          *string `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
+	SourceIotInstanceId *string `json:"SourceIotInstanceId,omitempty" xml:"SourceIotInstanceId,omitempty"`
+	SourceRegion        *string `json:"SourceRegion,omitempty" xml:"SourceRegion,omitempty"`
+	TargetIotInstanceId *string `json:"TargetIotInstanceId,omitempty" xml:"TargetIotInstanceId,omitempty"`
+	TargetRegion        *string `json:"TargetRegion,omitempty" xml:"TargetRegion,omitempty"`
+}
+
+func (s QueryDeviceProvisioningResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryDeviceProvisioningResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *QueryDeviceProvisioningResponseBodyData) SetAliyunUid(v string) *QueryDeviceProvisioningResponseBodyData {
+	s.AliyunUid = &v
+	return s
+}
+
+func (s *QueryDeviceProvisioningResponseBodyData) SetDeviceName(v string) *QueryDeviceProvisioningResponseBodyData {
+	s.DeviceName = &v
+	return s
+}
+
+func (s *QueryDeviceProvisioningResponseBodyData) SetGmtCreate(v int64) *QueryDeviceProvisioningResponseBodyData {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *QueryDeviceProvisioningResponseBodyData) SetGmtModified(v int64) *QueryDeviceProvisioningResponseBodyData {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *QueryDeviceProvisioningResponseBodyData) SetProductKey(v string) *QueryDeviceProvisioningResponseBodyData {
+	s.ProductKey = &v
+	return s
+}
+
+func (s *QueryDeviceProvisioningResponseBodyData) SetSourceIotInstanceId(v string) *QueryDeviceProvisioningResponseBodyData {
+	s.SourceIotInstanceId = &v
+	return s
+}
+
+func (s *QueryDeviceProvisioningResponseBodyData) SetSourceRegion(v string) *QueryDeviceProvisioningResponseBodyData {
+	s.SourceRegion = &v
+	return s
+}
+
+func (s *QueryDeviceProvisioningResponseBodyData) SetTargetIotInstanceId(v string) *QueryDeviceProvisioningResponseBodyData {
+	s.TargetIotInstanceId = &v
+	return s
+}
+
+func (s *QueryDeviceProvisioningResponseBodyData) SetTargetRegion(v string) *QueryDeviceProvisioningResponseBodyData {
+	s.TargetRegion = &v
+	return s
+}
+
+type QueryDeviceProvisioningResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *QueryDeviceProvisioningResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s QueryDeviceProvisioningResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryDeviceProvisioningResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryDeviceProvisioningResponse) SetHeaders(v map[string]*string) *QueryDeviceProvisioningResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryDeviceProvisioningResponse) SetStatusCode(v int32) *QueryDeviceProvisioningResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QueryDeviceProvisioningResponse) SetBody(v *QueryDeviceProvisioningResponseBody) *QueryDeviceProvisioningResponse {
+	s.Body = v
+	return s
+}
+
 type QueryDeviceServiceDataRequest struct {
 	Asc           *int32  `json:"Asc,omitempty" xml:"Asc,omitempty"`
 	DeviceName    *string `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
@@ -62014,10 +61948,6 @@ func (client *Client) CreateDownloadDataJobWithOptions(tmpReq *CreateDownloadDat
 	}
 	request := &CreateDownloadDataJobShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tmpReq.Context)) {
-		request.ContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Context, tea.String("Context"), tea.String("json"))
-	}
-
 	if !tea.BoolValue(util.IsUnset(tmpReq.FileConfig)) {
 		request.FileConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.FileConfig, tea.String("FileConfig"), tea.String("json"))
 	}
@@ -62044,10 +61974,6 @@ func (client *Client) CreateDownloadDataJobWithOptions(tmpReq *CreateDownloadDat
 	}
 
 	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ContextShrink)) {
-		body["Context"] = request.ContextShrink
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.IotInstanceId)) {
 		body["IotInstanceId"] = request.IotInstanceId
 	}
@@ -73131,6 +73057,56 @@ func (client *Client) QueryDevicePropertyStatus(request *QueryDevicePropertyStat
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryDevicePropertyStatusResponse{}
 	_body, _err := client.QueryDevicePropertyStatusWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) QueryDeviceProvisioningWithOptions(request *QueryDeviceProvisioningRequest, runtime *util.RuntimeOptions) (_result *QueryDeviceProvisioningResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DeviceName)) {
+		query["DeviceName"] = request.DeviceName
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ProductKey)) {
+		body["ProductKey"] = request.ProductKey
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryDeviceProvisioning"),
+		Version:     tea.String("2018-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QueryDeviceProvisioningResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) QueryDeviceProvisioning(request *QueryDeviceProvisioningRequest) (_result *QueryDeviceProvisioningResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QueryDeviceProvisioningResponse{}
+	_body, _err := client.QueryDeviceProvisioningWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
