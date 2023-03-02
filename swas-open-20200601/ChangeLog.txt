@@ -1,3 +1,18 @@
+2023-03-02 Version: v1.0.3
+- Add new apis.
+- DescribeDatabaseInstances.
+- StartDatabaseInstance.
+- StopDatabaseInstance.
+- RetartDatabaseInstance.
+- ResetDatabaseAccountPassword.
+- AllocatePublicConnection.
+- ReleasePublicConnection.
+- DescribeDatabaseInstanceMetricData.
+- DescribeDatabaseSlowLogRecords.
+- DescribeDatabaseErrorLogs.
+- DescribeDatabaseInstanceParameters.
+- ModifyDatabaseInstanceParameter.
+
 2022-09-23 Version: v2.0.0
 - Generated golang 2020-06-01 for SWAS-OPEN.
 
