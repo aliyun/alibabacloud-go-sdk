@@ -518,6 +518,7 @@ func (s *GetTableUnderstandingResultResponse) SetBody(v *GetTableUnderstandingRe
 }
 
 type SubmitConvertImageToExcelJobRequest struct {
+	ForceMergeExcel    *bool     `json:"ForceMergeExcel,omitempty" xml:"ForceMergeExcel,omitempty"`
 	ImageNameExtension *string   `json:"ImageNameExtension,omitempty" xml:"ImageNameExtension,omitempty"`
 	ImageNames         []*string `json:"ImageNames,omitempty" xml:"ImageNames,omitempty" type:"Repeated"`
 	ImageUrls          []*string `json:"ImageUrls,omitempty" xml:"ImageUrls,omitempty" type:"Repeated"`
@@ -529,6 +530,11 @@ func (s SubmitConvertImageToExcelJobRequest) String() string {
 
 func (s SubmitConvertImageToExcelJobRequest) GoString() string {
 	return s.String()
+}
+
+func (s *SubmitConvertImageToExcelJobRequest) SetForceMergeExcel(v bool) *SubmitConvertImageToExcelJobRequest {
+	s.ForceMergeExcel = &v
+	return s
 }
 
 func (s *SubmitConvertImageToExcelJobRequest) SetImageNameExtension(v string) *SubmitConvertImageToExcelJobRequest {
@@ -547,6 +553,7 @@ func (s *SubmitConvertImageToExcelJobRequest) SetImageUrls(v []*string) *SubmitC
 }
 
 type SubmitConvertImageToExcelJobShrinkRequest struct {
+	ForceMergeExcel    *bool   `json:"ForceMergeExcel,omitempty" xml:"ForceMergeExcel,omitempty"`
 	ImageNameExtension *string `json:"ImageNameExtension,omitempty" xml:"ImageNameExtension,omitempty"`
 	ImageNamesShrink   *string `json:"ImageNames,omitempty" xml:"ImageNames,omitempty"`
 	ImageUrlsShrink    *string `json:"ImageUrls,omitempty" xml:"ImageUrls,omitempty"`
@@ -558,6 +565,11 @@ func (s SubmitConvertImageToExcelJobShrinkRequest) String() string {
 
 func (s SubmitConvertImageToExcelJobShrinkRequest) GoString() string {
 	return s.String()
+}
+
+func (s *SubmitConvertImageToExcelJobShrinkRequest) SetForceMergeExcel(v bool) *SubmitConvertImageToExcelJobShrinkRequest {
+	s.ForceMergeExcel = &v
+	return s
 }
 
 func (s *SubmitConvertImageToExcelJobShrinkRequest) SetImageNameExtension(v string) *SubmitConvertImageToExcelJobShrinkRequest {
@@ -935,8 +947,9 @@ func (s *SubmitConvertImageToWordJobResponse) SetBody(v *SubmitConvertImageToWor
 }
 
 type SubmitConvertPdfToExcelJobRequest struct {
-	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	FileUrl  *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	FileName        *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	FileUrl         *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	ForceMergeExcel *bool   `json:"ForceMergeExcel,omitempty" xml:"ForceMergeExcel,omitempty"`
 }
 
 func (s SubmitConvertPdfToExcelJobRequest) String() string {
@@ -957,9 +970,15 @@ func (s *SubmitConvertPdfToExcelJobRequest) SetFileUrl(v string) *SubmitConvertP
 	return s
 }
 
+func (s *SubmitConvertPdfToExcelJobRequest) SetForceMergeExcel(v bool) *SubmitConvertPdfToExcelJobRequest {
+	s.ForceMergeExcel = &v
+	return s
+}
+
 type SubmitConvertPdfToExcelJobAdvanceRequest struct {
-	FileName      *string   `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	FileUrlObject io.Reader `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	FileName        *string   `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	FileUrlObject   io.Reader `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	ForceMergeExcel *bool     `json:"ForceMergeExcel,omitempty" xml:"ForceMergeExcel,omitempty"`
 }
 
 func (s SubmitConvertPdfToExcelJobAdvanceRequest) String() string {
@@ -977,6 +996,11 @@ func (s *SubmitConvertPdfToExcelJobAdvanceRequest) SetFileName(v string) *Submit
 
 func (s *SubmitConvertPdfToExcelJobAdvanceRequest) SetFileUrlObject(v io.Reader) *SubmitConvertPdfToExcelJobAdvanceRequest {
 	s.FileUrlObject = v
+	return s
+}
+
+func (s *SubmitConvertPdfToExcelJobAdvanceRequest) SetForceMergeExcel(v bool) *SubmitConvertPdfToExcelJobAdvanceRequest {
+	s.ForceMergeExcel = &v
 	return s
 }
 
@@ -2189,6 +2213,10 @@ func (client *Client) SubmitConvertImageToExcelJobWithOptions(tmpReq *SubmitConv
 	}
 
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ForceMergeExcel)) {
+		query["ForceMergeExcel"] = request.ForceMergeExcel
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ImageNameExtension)) {
 		query["ImageNameExtension"] = request.ImageNameExtension
 	}
@@ -2371,6 +2399,10 @@ func (client *Client) SubmitConvertPdfToExcelJobWithOptions(request *SubmitConve
 
 	if !tea.BoolValue(util.IsUnset(request.FileUrl)) {
 		query["FileUrl"] = request.FileUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ForceMergeExcel)) {
+		query["ForceMergeExcel"] = request.ForceMergeExcel
 	}
 
 	req := &openapi.OpenApiRequest{
