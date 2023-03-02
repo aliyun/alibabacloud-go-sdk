@@ -191,6 +191,7 @@ type AddressGetRequest struct {
 	ActionType  *int32  `json:"action_type,omitempty" xml:"action_type,omitempty"`
 	ItineraryId *string `json:"itinerary_id,omitempty" xml:"itinerary_id,omitempty"`
 	Phone       *string `json:"phone,omitempty" xml:"phone,omitempty"`
+	SubCorpId   *string `json:"sub_corp_id,omitempty" xml:"sub_corp_id,omitempty"`
 	Type        *int32  `json:"type,omitempty" xml:"type,omitempty"`
 	UserId      *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
 }
@@ -215,6 +216,11 @@ func (s *AddressGetRequest) SetItineraryId(v string) *AddressGetRequest {
 
 func (s *AddressGetRequest) SetPhone(v string) *AddressGetRequest {
 	s.Phone = &v
+	return s
+}
+
+func (s *AddressGetRequest) SetSubCorpId(v string) *AddressGetRequest {
+	s.SubCorpId = &v
 	return s
 }
 
@@ -30716,6 +30722,10 @@ func (client *Client) AddressGetWithOptions(request *AddressGetRequest, headers 
 
 	if !tea.BoolValue(util.IsUnset(request.Phone)) {
 		query["phone"] = request.Phone
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SubCorpId)) {
+		query["sub_corp_id"] = request.SubCorpId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Type)) {
