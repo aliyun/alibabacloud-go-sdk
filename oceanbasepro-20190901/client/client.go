@@ -18,7 +18,8 @@ type CreateDatabaseRequest struct {
 	//
 	// > <br>ClientToken can contain only ASCII characters, and cannot exceed 64 characters in length.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	Collation   *string `json:"Collation,omitempty" xml:"Collation,omitempty"`
+	// The collation.
+	Collation *string `json:"Collation,omitempty" xml:"Collation,omitempty"`
 	// The name of the database.
 	// You cannot use reserved keywords, such as test and mysql.
 	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
@@ -3639,12 +3640,14 @@ type DescribeInstanceResponseBodyInstance struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The name of the OceanBase cluster.
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	InstanceRole *string `json:"InstanceRole,omitempty" xml:"InstanceRole,omitempty"`
 	// Indicates whether the OBServer version is the latest.
 	IsLatestObVersion *bool `json:"IsLatestObVersion,omitempty" xml:"IsLatestObVersion,omitempty"`
 	// Indicates whether trusted ECS instances are used.
 	IsTrustEcs *bool `json:"IsTrustEcs,omitempty" xml:"IsTrustEcs,omitempty"`
 	// The time period in UTC for the daily routine maintenance of the cluster.
 	MaintainTime *string `json:"MaintainTime,omitempty" xml:"MaintainTime,omitempty"`
+	NodeNum      *string `json:"NodeNum,omitempty" xml:"NodeNum,omitempty"`
 	// The detailed information of the OBServer version.
 	ObRpmVersion *string `json:"ObRpmVersion,omitempty" xml:"ObRpmVersion,omitempty"`
 	// The billing method of the OceanBase cluster. Valid values:
@@ -3675,7 +3678,8 @@ type DescribeInstanceResponseBodyInstance struct {
 	// Generally, the cluster is in the ONLINE state.
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The OBServer version.
-	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
+	Version *string   `json:"Version,omitempty" xml:"Version,omitempty"`
+	Zones   []*string `json:"Zones,omitempty" xml:"Zones,omitempty" type:"Repeated"`
 }
 
 func (s DescribeInstanceResponseBodyInstance) String() string {
@@ -3751,6 +3755,11 @@ func (s *DescribeInstanceResponseBodyInstance) SetInstanceName(v string) *Descri
 	return s
 }
 
+func (s *DescribeInstanceResponseBodyInstance) SetInstanceRole(v string) *DescribeInstanceResponseBodyInstance {
+	s.InstanceRole = &v
+	return s
+}
+
 func (s *DescribeInstanceResponseBodyInstance) SetIsLatestObVersion(v bool) *DescribeInstanceResponseBodyInstance {
 	s.IsLatestObVersion = &v
 	return s
@@ -3763,6 +3772,11 @@ func (s *DescribeInstanceResponseBodyInstance) SetIsTrustEcs(v bool) *DescribeIn
 
 func (s *DescribeInstanceResponseBodyInstance) SetMaintainTime(v string) *DescribeInstanceResponseBodyInstance {
 	s.MaintainTime = &v
+	return s
+}
+
+func (s *DescribeInstanceResponseBodyInstance) SetNodeNum(v string) *DescribeInstanceResponseBodyInstance {
+	s.NodeNum = &v
 	return s
 }
 
@@ -3793,6 +3807,11 @@ func (s *DescribeInstanceResponseBodyInstance) SetStatus(v string) *DescribeInst
 
 func (s *DescribeInstanceResponseBodyInstance) SetVersion(v string) *DescribeInstanceResponseBodyInstance {
 	s.Version = &v
+	return s
+}
+
+func (s *DescribeInstanceResponseBodyInstance) SetZones(v []*string) *DescribeInstanceResponseBodyInstance {
+	s.Zones = v
 	return s
 }
 
@@ -4110,9 +4129,150 @@ func (s *DescribeInstanceCreatableZoneResponse) SetBody(v *DescribeInstanceCreat
 	return s
 }
 
+type DescribeInstanceSecurityConfigsRequest struct {
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+}
+
+func (s DescribeInstanceSecurityConfigsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstanceSecurityConfigsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstanceSecurityConfigsRequest) SetInstanceId(v string) *DescribeInstanceSecurityConfigsRequest {
+	s.InstanceId = &v
+	return s
+}
+
+type DescribeInstanceSecurityConfigsResponseBody struct {
+	InstanceSecurityConfigs *DescribeInstanceSecurityConfigsResponseBodyInstanceSecurityConfigs `json:"InstanceSecurityConfigs,omitempty" xml:"InstanceSecurityConfigs,omitempty" type:"Struct"`
+	RequestId               *string                                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeInstanceSecurityConfigsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstanceSecurityConfigsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstanceSecurityConfigsResponseBody) SetInstanceSecurityConfigs(v *DescribeInstanceSecurityConfigsResponseBodyInstanceSecurityConfigs) *DescribeInstanceSecurityConfigsResponseBody {
+	s.InstanceSecurityConfigs = v
+	return s
+}
+
+func (s *DescribeInstanceSecurityConfigsResponseBody) SetRequestId(v string) *DescribeInstanceSecurityConfigsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeInstanceSecurityConfigsResponseBodyInstanceSecurityConfigs struct {
+	SecurityConfigs []*DescribeInstanceSecurityConfigsResponseBodyInstanceSecurityConfigsSecurityConfigs `json:"SecurityConfigs,omitempty" xml:"SecurityConfigs,omitempty" type:"Repeated"`
+	TotalCheckCount *int32                                                                               `json:"TotalCheckCount,omitempty" xml:"TotalCheckCount,omitempty"`
+	TotalRiskCount  *int32                                                                               `json:"TotalRiskCount,omitempty" xml:"TotalRiskCount,omitempty"`
+}
+
+func (s DescribeInstanceSecurityConfigsResponseBodyInstanceSecurityConfigs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstanceSecurityConfigsResponseBodyInstanceSecurityConfigs) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstanceSecurityConfigsResponseBodyInstanceSecurityConfigs) SetSecurityConfigs(v []*DescribeInstanceSecurityConfigsResponseBodyInstanceSecurityConfigsSecurityConfigs) *DescribeInstanceSecurityConfigsResponseBodyInstanceSecurityConfigs {
+	s.SecurityConfigs = v
+	return s
+}
+
+func (s *DescribeInstanceSecurityConfigsResponseBodyInstanceSecurityConfigs) SetTotalCheckCount(v int32) *DescribeInstanceSecurityConfigsResponseBodyInstanceSecurityConfigs {
+	s.TotalCheckCount = &v
+	return s
+}
+
+func (s *DescribeInstanceSecurityConfigsResponseBodyInstanceSecurityConfigs) SetTotalRiskCount(v int32) *DescribeInstanceSecurityConfigsResponseBodyInstanceSecurityConfigs {
+	s.TotalRiskCount = &v
+	return s
+}
+
+type DescribeInstanceSecurityConfigsResponseBodyInstanceSecurityConfigsSecurityConfigs struct {
+	ConfigDescription *string `json:"ConfigDescription,omitempty" xml:"ConfigDescription,omitempty"`
+	ConfigGroup       *string `json:"ConfigGroup,omitempty" xml:"ConfigGroup,omitempty"`
+	ConfigName        *string `json:"ConfigName,omitempty" xml:"ConfigName,omitempty"`
+	Risk              *bool   `json:"Risk,omitempty" xml:"Risk,omitempty"`
+	RiskDescription   *string `json:"RiskDescription,omitempty" xml:"RiskDescription,omitempty"`
+}
+
+func (s DescribeInstanceSecurityConfigsResponseBodyInstanceSecurityConfigsSecurityConfigs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstanceSecurityConfigsResponseBodyInstanceSecurityConfigsSecurityConfigs) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstanceSecurityConfigsResponseBodyInstanceSecurityConfigsSecurityConfigs) SetConfigDescription(v string) *DescribeInstanceSecurityConfigsResponseBodyInstanceSecurityConfigsSecurityConfigs {
+	s.ConfigDescription = &v
+	return s
+}
+
+func (s *DescribeInstanceSecurityConfigsResponseBodyInstanceSecurityConfigsSecurityConfigs) SetConfigGroup(v string) *DescribeInstanceSecurityConfigsResponseBodyInstanceSecurityConfigsSecurityConfigs {
+	s.ConfigGroup = &v
+	return s
+}
+
+func (s *DescribeInstanceSecurityConfigsResponseBodyInstanceSecurityConfigsSecurityConfigs) SetConfigName(v string) *DescribeInstanceSecurityConfigsResponseBodyInstanceSecurityConfigsSecurityConfigs {
+	s.ConfigName = &v
+	return s
+}
+
+func (s *DescribeInstanceSecurityConfigsResponseBodyInstanceSecurityConfigsSecurityConfigs) SetRisk(v bool) *DescribeInstanceSecurityConfigsResponseBodyInstanceSecurityConfigsSecurityConfigs {
+	s.Risk = &v
+	return s
+}
+
+func (s *DescribeInstanceSecurityConfigsResponseBodyInstanceSecurityConfigsSecurityConfigs) SetRiskDescription(v string) *DescribeInstanceSecurityConfigsResponseBodyInstanceSecurityConfigsSecurityConfigs {
+	s.RiskDescription = &v
+	return s
+}
+
+type DescribeInstanceSecurityConfigsResponse struct {
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeInstanceSecurityConfigsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeInstanceSecurityConfigsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstanceSecurityConfigsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstanceSecurityConfigsResponse) SetHeaders(v map[string]*string) *DescribeInstanceSecurityConfigsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeInstanceSecurityConfigsResponse) SetStatusCode(v int32) *DescribeInstanceSecurityConfigsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeInstanceSecurityConfigsResponse) SetBody(v *DescribeInstanceSecurityConfigsResponseBody) *DescribeInstanceSecurityConfigsResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeInstanceTagsRequest struct {
+	// The list of cluster IDs.
 	InstanceIds *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
-	Tags        *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// The tags.
+	Tags *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 }
 
 func (s DescribeInstanceTagsRequest) String() string {
@@ -4134,7 +4294,9 @@ func (s *DescribeInstanceTagsRequest) SetTags(v string) *DescribeInstanceTagsReq
 }
 
 type DescribeInstanceTagsResponseBody struct {
-	RequestId    *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The list of tags.
 	TagResources []*DescribeInstanceTagsResponseBodyTagResources `json:"TagResources,omitempty" xml:"TagResources,omitempty" type:"Repeated"`
 }
 
@@ -4157,9 +4319,12 @@ func (s *DescribeInstanceTagsResponseBody) SetTagResources(v []*DescribeInstance
 }
 
 type DescribeInstanceTagsResponseBodyTagResources struct {
-	ResourceId   *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The resource ID.
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The type of the resource.
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	Tag          *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	// The tag of the resource.
+	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
 }
 
 func (s DescribeInstanceTagsResponseBodyTagResources) String() string {
@@ -4355,7 +4520,7 @@ func (s *DescribeInstanceTopologyResponseBodyInstanceTopology) SetZones(v []*Des
 }
 
 type DescribeInstanceTopologyResponseBodyInstanceTopologyTenants struct {
-	// The primary zone deployment mode.
+	// The deployment type of the primary zone.
 	PrimaryZoneDeployType *string `json:"PrimaryZoneDeployType,omitempty" xml:"PrimaryZoneDeployType,omitempty"`
 	// The number of CPU cores of the tenant.
 	TenantCpu *float32 `json:"TenantCpu,omitempty" xml:"TenantCpu,omitempty"`
@@ -4973,6 +5138,7 @@ type DescribeInstancesResponseBodyInstances struct {
 	// The name of the OceanBase cluster.
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
 	InstanceRole *string `json:"InstanceRole,omitempty" xml:"InstanceRole,omitempty"`
+	// The instance type.
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
 	// The time period in UTC for the daily routine maintenance of the cluster.
 	MaintainTime *string `json:"MaintainTime,omitempty" xml:"MaintainTime,omitempty"`
@@ -9744,13 +9910,16 @@ func (s *DescribeTenantResponseBody) SetTenant(v *DescribeTenantResponseBodyTena
 }
 
 type DescribeTenantResponseBodyTenant struct {
+	// The list of zones.
 	AvailableZones []*string `json:"AvailableZones,omitempty" xml:"AvailableZones,omitempty" type:"Repeated"`
-	Charset        *string   `json:"Charset,omitempty" xml:"Charset,omitempty"`
-	// The enabling status of the Clog service.
-	// CLOSED: The Clog service is disabled.
-	// - ONLINE: The Clog service is running.
+	// The character set.
+	Charset *string `json:"Charset,omitempty" xml:"Charset,omitempty"`
+	// The enabling status of the clog service.
+	// - CLOSED: The clog service is disabled.
+	// - ONLINE: The clog service is running.
 	ClogServiceStatus *string `json:"ClogServiceStatus,omitempty" xml:"ClogServiceStatus,omitempty"`
-	Collation         *string `json:"Collation,omitempty" xml:"Collation,omitempty"`
+	// The collation.
+	Collation *string `json:"Collation,omitempty" xml:"Collation,omitempty"`
 	// The time when the tenant was created.
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The data replica distribution mode of the tenant.
@@ -9767,19 +9936,26 @@ type DescribeTenantResponseBodyTenant struct {
 	DeployType *string `json:"DeployType,omitempty" xml:"DeployType,omitempty"`
 	// The description of the tenant.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	DiskType    *string `json:"DiskType,omitempty" xml:"DiskType,omitempty"`
-	// Indicates whether the Clog service is available. To enable the Clog service, submit a ticket.
+	// The type of the disk.
+	DiskType *string `json:"DiskType,omitempty" xml:"DiskType,omitempty"`
+	// Indicates whether the clog service is available. To enable the clog service, submit a ticket.
 	EnableClogService *bool `json:"EnableClogService,omitempty" xml:"EnableClogService,omitempty"`
 	// Indicates whether the Internet address can be enabled for the tenant.
-	EnableInternetAddressService *bool   `json:"EnableInternetAddressService,omitempty" xml:"EnableInternetAddressService,omitempty"`
-	EnableReadWriteSplit         *bool   `json:"EnableReadWriteSplit,omitempty" xml:"EnableReadWriteSplit,omitempty"`
-	InstanceType                 *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	MasterIntranetAddressZone    *string `json:"MasterIntranetAddressZone,omitempty" xml:"MasterIntranetAddressZone,omitempty"`
-	PayType                      *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	EnableInternetAddressService *bool `json:"EnableInternetAddressService,omitempty" xml:"EnableInternetAddressService,omitempty"`
+	// Indicates whether to enable read/write splitting endpoint.
+	EnableReadWriteSplit *bool `json:"EnableReadWriteSplit,omitempty" xml:"EnableReadWriteSplit,omitempty"`
+	// The type of the instance.
+	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	// The zone where the primary node is located.
+	MasterIntranetAddressZone *string `json:"MasterIntranetAddressZone,omitempty" xml:"MasterIntranetAddressZone,omitempty"`
+	// The type of the payment.
+	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
 	// The primary zone of the tenant.
-	PrimaryZone           *string `json:"PrimaryZone,omitempty" xml:"PrimaryZone,omitempty"`
+	PrimaryZone *string `json:"PrimaryZone,omitempty" xml:"PrimaryZone,omitempty"`
+	// The deployment type of the primary zone.
 	PrimaryZoneDeployType *string `json:"PrimaryZoneDeployType,omitempty" xml:"PrimaryZoneDeployType,omitempty"`
-	Series                *string `json:"Series,omitempty" xml:"Series,omitempty"`
+	// The series of the instance.
+	Series *string `json:"Series,omitempty" xml:"Series,omitempty"`
 	// The status of the tenant.
 	// - PENDING_CREATE: The tenant is being created.
 	// - RESTORE: The tenant is being recovered.
@@ -9791,14 +9967,14 @@ type DescribeTenantResponseBodyTenant struct {
 	// - PARAMETER_MODIFYING: Parameters are being modified.
 	// - WHITE_LIST_MODIFYING: The whitelist is being modified.
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The connection access information of the tenant.
+	// The connection information of the tenant.
 	TenantConnections []*DescribeTenantResponseBodyTenantTenantConnections `json:"TenantConnections,omitempty" xml:"TenantConnections,omitempty" type:"Repeated"`
 	// The ID of the tenant.
 	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
 	// The tenant mode.
 	// Valid values:
-	// Oracle
-	// MySQL
+	// - Oracle
+	// - MySQL
 	TenantMode *string `json:"TenantMode,omitempty" xml:"TenantMode,omitempty"`
 	// The name of the tenant.
 	TenantName *string `json:"TenantName,omitempty" xml:"TenantName,omitempty"`
@@ -9950,18 +10126,19 @@ func (s *DescribeTenantResponseBodyTenant) SetVpcId(v string) *DescribeTenantRes
 }
 
 type DescribeTenantResponseBodyTenantTenantConnections struct {
+	// The type of the address.
 	AddressType *string `json:"AddressType,omitempty" xml:"AddressType,omitempty"`
 	// The service mode of the connection address. Valid values:
-	// ReadWrite: provides strong-consistency read and write services.
-	// ReadOnly: provides the read-only service to ensure ultimate consistency of data.
-	// Clog: provides transaction log services.
+	// - ReadWrite: provides strong-consistency read and write services.
+	// - ReadOnly: provides the read-only service to ensure ultimate consistency of data.
+	// - Clog: provides transaction log services.
 	ConnectionRole *string `json:"ConnectionRole,omitempty" xml:"ConnectionRole,omitempty"`
 	// The list of zones corresponding to the tenant connection.
 	ConnectionZones []*string `json:"ConnectionZones,omitempty" xml:"ConnectionZones,omitempty" type:"Repeated"`
 	// The Internet address for accessing the tenant.
 	InternetAddress *string `json:"InternetAddress,omitempty" xml:"InternetAddress,omitempty"`
 	// The status of the Internet address for accessing the tenant. Valid values:
-	// Closed: The address is disabled.
+	// - CLOSED: The address is disabled.
 	// - ALLOCATING_INTERNET_ADDRESS: An address is being applied for.
 	// - PENDING_OFFLINE_INTERNET_ADDRESS: The address is being disabled.
 	// - ONLINE: The address is in service.
@@ -9978,8 +10155,9 @@ type DescribeTenantResponseBodyTenantTenantConnections struct {
 	// The value ONLINE indicates that the address is in service.
 	IntranetAddressStatus *string `json:"IntranetAddressStatus,omitempty" xml:"IntranetAddressStatus,omitempty"`
 	// The intranet port for accessing the tenant.
-	IntranetPort     *int32 `json:"IntranetPort,omitempty" xml:"IntranetPort,omitempty"`
-	TransactionSplit *bool  `json:"TransactionSplit,omitempty" xml:"TransactionSplit,omitempty"`
+	IntranetPort *int32 `json:"IntranetPort,omitempty" xml:"IntranetPort,omitempty"`
+	// Indicates whether to enable transaction splitting.
+	TransactionSplit *bool `json:"TransactionSplit,omitempty" xml:"TransactionSplit,omitempty"`
 	// The ID of the vSwitch.
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 	// The ID of the VPC.
@@ -10389,6 +10567,186 @@ func (s *DescribeTenantMetricsResponse) SetStatusCode(v int32) *DescribeTenantMe
 }
 
 func (s *DescribeTenantMetricsResponse) SetBody(v *DescribeTenantMetricsResponseBody) *DescribeTenantMetricsResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeTenantSecurityConfigsRequest struct {
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	TenantId   *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+}
+
+func (s DescribeTenantSecurityConfigsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeTenantSecurityConfigsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeTenantSecurityConfigsRequest) SetInstanceId(v string) *DescribeTenantSecurityConfigsRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeTenantSecurityConfigsRequest) SetTenantId(v string) *DescribeTenantSecurityConfigsRequest {
+	s.TenantId = &v
+	return s
+}
+
+type DescribeTenantSecurityConfigsResponseBody struct {
+	Configs   *DescribeTenantSecurityConfigsResponseBodyConfigs `json:"Configs,omitempty" xml:"Configs,omitempty" type:"Struct"`
+	RequestId *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeTenantSecurityConfigsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeTenantSecurityConfigsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeTenantSecurityConfigsResponseBody) SetConfigs(v *DescribeTenantSecurityConfigsResponseBodyConfigs) *DescribeTenantSecurityConfigsResponseBody {
+	s.Configs = v
+	return s
+}
+
+func (s *DescribeTenantSecurityConfigsResponseBody) SetRequestId(v string) *DescribeTenantSecurityConfigsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeTenantSecurityConfigsResponseBodyConfigs struct {
+	TenantSecurityConfigs []*DescribeTenantSecurityConfigsResponseBodyConfigsTenantSecurityConfigs `json:"TenantSecurityConfigs,omitempty" xml:"TenantSecurityConfigs,omitempty" type:"Repeated"`
+	TotalCheckCount       *int32                                                                   `json:"TotalCheckCount,omitempty" xml:"TotalCheckCount,omitempty"`
+	TotalRiskCount        *int32                                                                   `json:"TotalRiskCount,omitempty" xml:"TotalRiskCount,omitempty"`
+}
+
+func (s DescribeTenantSecurityConfigsResponseBodyConfigs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeTenantSecurityConfigsResponseBodyConfigs) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeTenantSecurityConfigsResponseBodyConfigs) SetTenantSecurityConfigs(v []*DescribeTenantSecurityConfigsResponseBodyConfigsTenantSecurityConfigs) *DescribeTenantSecurityConfigsResponseBodyConfigs {
+	s.TenantSecurityConfigs = v
+	return s
+}
+
+func (s *DescribeTenantSecurityConfigsResponseBodyConfigs) SetTotalCheckCount(v int32) *DescribeTenantSecurityConfigsResponseBodyConfigs {
+	s.TotalCheckCount = &v
+	return s
+}
+
+func (s *DescribeTenantSecurityConfigsResponseBodyConfigs) SetTotalRiskCount(v int32) *DescribeTenantSecurityConfigsResponseBodyConfigs {
+	s.TotalRiskCount = &v
+	return s
+}
+
+type DescribeTenantSecurityConfigsResponseBodyConfigsTenantSecurityConfigs struct {
+	RiskCount       *int32                                                                                  `json:"RiskCount,omitempty" xml:"RiskCount,omitempty"`
+	SecurityConfigs []*DescribeTenantSecurityConfigsResponseBodyConfigsTenantSecurityConfigsSecurityConfigs `json:"SecurityConfigs,omitempty" xml:"SecurityConfigs,omitempty" type:"Repeated"`
+	TenantId        *string                                                                                 `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	TenantName      *string                                                                                 `json:"TenantName,omitempty" xml:"TenantName,omitempty"`
+}
+
+func (s DescribeTenantSecurityConfigsResponseBodyConfigsTenantSecurityConfigs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeTenantSecurityConfigsResponseBodyConfigsTenantSecurityConfigs) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeTenantSecurityConfigsResponseBodyConfigsTenantSecurityConfigs) SetRiskCount(v int32) *DescribeTenantSecurityConfigsResponseBodyConfigsTenantSecurityConfigs {
+	s.RiskCount = &v
+	return s
+}
+
+func (s *DescribeTenantSecurityConfigsResponseBodyConfigsTenantSecurityConfigs) SetSecurityConfigs(v []*DescribeTenantSecurityConfigsResponseBodyConfigsTenantSecurityConfigsSecurityConfigs) *DescribeTenantSecurityConfigsResponseBodyConfigsTenantSecurityConfigs {
+	s.SecurityConfigs = v
+	return s
+}
+
+func (s *DescribeTenantSecurityConfigsResponseBodyConfigsTenantSecurityConfigs) SetTenantId(v string) *DescribeTenantSecurityConfigsResponseBodyConfigsTenantSecurityConfigs {
+	s.TenantId = &v
+	return s
+}
+
+func (s *DescribeTenantSecurityConfigsResponseBodyConfigsTenantSecurityConfigs) SetTenantName(v string) *DescribeTenantSecurityConfigsResponseBodyConfigsTenantSecurityConfigs {
+	s.TenantName = &v
+	return s
+}
+
+type DescribeTenantSecurityConfigsResponseBodyConfigsTenantSecurityConfigsSecurityConfigs struct {
+	ConfigDescription *string `json:"ConfigDescription,omitempty" xml:"ConfigDescription,omitempty"`
+	ConfigGroup       *string `json:"ConfigGroup,omitempty" xml:"ConfigGroup,omitempty"`
+	ConfigName        *string `json:"ConfigName,omitempty" xml:"ConfigName,omitempty"`
+	Risk              *bool   `json:"Risk,omitempty" xml:"Risk,omitempty"`
+	RiskDescription   *string `json:"RiskDescription,omitempty" xml:"RiskDescription,omitempty"`
+}
+
+func (s DescribeTenantSecurityConfigsResponseBodyConfigsTenantSecurityConfigsSecurityConfigs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeTenantSecurityConfigsResponseBodyConfigsTenantSecurityConfigsSecurityConfigs) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeTenantSecurityConfigsResponseBodyConfigsTenantSecurityConfigsSecurityConfigs) SetConfigDescription(v string) *DescribeTenantSecurityConfigsResponseBodyConfigsTenantSecurityConfigsSecurityConfigs {
+	s.ConfigDescription = &v
+	return s
+}
+
+func (s *DescribeTenantSecurityConfigsResponseBodyConfigsTenantSecurityConfigsSecurityConfigs) SetConfigGroup(v string) *DescribeTenantSecurityConfigsResponseBodyConfigsTenantSecurityConfigsSecurityConfigs {
+	s.ConfigGroup = &v
+	return s
+}
+
+func (s *DescribeTenantSecurityConfigsResponseBodyConfigsTenantSecurityConfigsSecurityConfigs) SetConfigName(v string) *DescribeTenantSecurityConfigsResponseBodyConfigsTenantSecurityConfigsSecurityConfigs {
+	s.ConfigName = &v
+	return s
+}
+
+func (s *DescribeTenantSecurityConfigsResponseBodyConfigsTenantSecurityConfigsSecurityConfigs) SetRisk(v bool) *DescribeTenantSecurityConfigsResponseBodyConfigsTenantSecurityConfigsSecurityConfigs {
+	s.Risk = &v
+	return s
+}
+
+func (s *DescribeTenantSecurityConfigsResponseBodyConfigsTenantSecurityConfigsSecurityConfigs) SetRiskDescription(v string) *DescribeTenantSecurityConfigsResponseBodyConfigsTenantSecurityConfigsSecurityConfigs {
+	s.RiskDescription = &v
+	return s
+}
+
+type DescribeTenantSecurityConfigsResponse struct {
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeTenantSecurityConfigsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeTenantSecurityConfigsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeTenantSecurityConfigsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeTenantSecurityConfigsResponse) SetHeaders(v map[string]*string) *DescribeTenantSecurityConfigsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeTenantSecurityConfigsResponse) SetStatusCode(v int32) *DescribeTenantSecurityConfigsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeTenantSecurityConfigsResponse) SetBody(v *DescribeTenantSecurityConfigsResponseBody) *DescribeTenantSecurityConfigsResponse {
 	s.Body = v
 	return s
 }
@@ -12327,8 +12685,10 @@ func (s *ModifyInstanceNameResponse) SetBody(v *ModifyInstanceNameResponseBody) 
 }
 
 type ModifyInstanceTagsRequest struct {
+	// The ID of the OceanBase cluster.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Tags       *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// The tags.
+	Tags *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 }
 
 func (s ModifyInstanceTagsRequest) String() string {
@@ -12350,7 +12710,9 @@ func (s *ModifyInstanceTagsRequest) SetTags(v string) *ModifyInstanceTagsRequest
 }
 
 type ModifyInstanceTagsResponseBody struct {
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The update status of the tags.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -12649,13 +13011,15 @@ func (s *ModifySecurityIpsResponse) SetBody(v *ModifySecurityIpsResponseBody) *M
 
 type ModifyTenantPrimaryZoneRequest struct {
 	// The ID of the OceanBase cluster.
-	InstanceId                *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The availability zone where the primary node is located.
 	MasterIntranetAddressZone *string `json:"MasterIntranetAddressZone,omitempty" xml:"MasterIntranetAddressZone,omitempty"`
 	// The switching mode.
 	ModifyType *string `json:"ModifyType,omitempty" xml:"ModifyType,omitempty"`
 	// The primary zone of the tenant.
 	// It is one of the zones in which the cluster is deployed.
-	PrimaryZone           *string `json:"PrimaryZone,omitempty" xml:"PrimaryZone,omitempty"`
+	PrimaryZone *string `json:"PrimaryZone,omitempty" xml:"PrimaryZone,omitempty"`
+	// The deployment type of the primary zone.
 	PrimaryZoneDeployType *string `json:"PrimaryZoneDeployType,omitempty" xml:"PrimaryZoneDeployType,omitempty"`
 	// The ID of the tenant.
 	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
@@ -17320,6 +17684,50 @@ func (client *Client) DescribeInstanceCreatableZone(request *DescribeInstanceCre
 	return _result, _err
 }
 
+func (client *Client) DescribeInstanceSecurityConfigsWithOptions(request *DescribeInstanceSecurityConfigsRequest, runtime *util.RuntimeOptions) (_result *DescribeInstanceSecurityConfigsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeInstanceSecurityConfigs"),
+		Version:     tea.String("2019-09-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeInstanceSecurityConfigsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeInstanceSecurityConfigs(request *DescribeInstanceSecurityConfigsRequest) (_result *DescribeInstanceSecurityConfigsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeInstanceSecurityConfigsResponse{}
+	_body, _err := client.DescribeInstanceSecurityConfigsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DescribeInstanceTagsWithOptions(request *DescribeInstanceTagsRequest, runtime *util.RuntimeOptions) (_result *DescribeInstanceTagsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18435,6 +18843,54 @@ func (client *Client) DescribeTenantMetrics(request *DescribeTenantMetricsReques
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeTenantMetricsResponse{}
 	_body, _err := client.DescribeTenantMetricsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeTenantSecurityConfigsWithOptions(request *DescribeTenantSecurityConfigsRequest, runtime *util.RuntimeOptions) (_result *DescribeTenantSecurityConfigsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TenantId)) {
+		body["TenantId"] = request.TenantId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeTenantSecurityConfigs"),
+		Version:     tea.String("2019-09-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeTenantSecurityConfigsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeTenantSecurityConfigs(request *DescribeTenantSecurityConfigsRequest) (_result *DescribeTenantSecurityConfigsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeTenantSecurityConfigsResponse{}
+	_body, _err := client.DescribeTenantSecurityConfigsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
