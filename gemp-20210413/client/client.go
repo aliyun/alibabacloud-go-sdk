@@ -765,11 +765,12 @@ func (s *CreateEscalationPlanRequestEscalationPlanRulesEscalationPlanConditions)
 }
 
 type CreateEscalationPlanRequestEscalationPlanRulesEscalationPlanStrategies struct {
-	EnableWebhook   *bool     `json:"enableWebhook,omitempty" xml:"enableWebhook,omitempty"`
-	NoticeChannels  []*string `json:"noticeChannels,omitempty" xml:"noticeChannels,omitempty" type:"Repeated"`
-	NoticeObjects   []*int64  `json:"noticeObjects,omitempty" xml:"noticeObjects,omitempty" type:"Repeated"`
-	NoticeTime      *string   `json:"noticeTime,omitempty" xml:"noticeTime,omitempty"`
-	ServiceGroupIds []*int64  `json:"serviceGroupIds,omitempty" xml:"serviceGroupIds,omitempty" type:"Repeated"`
+	EnableWebhook      *bool     `json:"enableWebhook,omitempty" xml:"enableWebhook,omitempty"`
+	EscalationPlanType *string   `json:"escalationPlanType,omitempty" xml:"escalationPlanType,omitempty"`
+	NoticeChannels     []*string `json:"noticeChannels,omitempty" xml:"noticeChannels,omitempty" type:"Repeated"`
+	NoticeObjects      []*int64  `json:"noticeObjects,omitempty" xml:"noticeObjects,omitempty" type:"Repeated"`
+	NoticeTime         *string   `json:"noticeTime,omitempty" xml:"noticeTime,omitempty"`
+	ServiceGroupIds    []*int64  `json:"serviceGroupIds,omitempty" xml:"serviceGroupIds,omitempty" type:"Repeated"`
 }
 
 func (s CreateEscalationPlanRequestEscalationPlanRulesEscalationPlanStrategies) String() string {
@@ -782,6 +783,11 @@ func (s CreateEscalationPlanRequestEscalationPlanRulesEscalationPlanStrategies) 
 
 func (s *CreateEscalationPlanRequestEscalationPlanRulesEscalationPlanStrategies) SetEnableWebhook(v bool) *CreateEscalationPlanRequestEscalationPlanRulesEscalationPlanStrategies {
 	s.EnableWebhook = &v
+	return s
+}
+
+func (s *CreateEscalationPlanRequestEscalationPlanRulesEscalationPlanStrategies) SetEscalationPlanType(v string) *CreateEscalationPlanRequestEscalationPlanRulesEscalationPlanStrategies {
+	s.EscalationPlanType = &v
 	return s
 }
 
