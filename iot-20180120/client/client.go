@@ -188,8 +188,11 @@ func (s *AddShareTaskDeviceResponseBody) SetSuccess(v bool) *AddShareTaskDeviceR
 }
 
 type AddShareTaskDeviceResponseBodyData struct {
-	Progress   *int32  `json:"Progress,omitempty" xml:"Progress,omitempty"`
-	ProgressId *string `json:"ProgressId,omitempty" xml:"ProgressId,omitempty"`
+	FailSum             *int32  `json:"FailSum,omitempty" xml:"FailSum,omitempty"`
+	FailedResultCsvFile *string `json:"FailedResultCsvFile,omitempty" xml:"FailedResultCsvFile,omitempty"`
+	Progress            *int32  `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	ProgressId          *string `json:"ProgressId,omitempty" xml:"ProgressId,omitempty"`
+	SuccessSum          *int32  `json:"SuccessSum,omitempty" xml:"SuccessSum,omitempty"`
 }
 
 func (s AddShareTaskDeviceResponseBodyData) String() string {
@@ -200,6 +203,16 @@ func (s AddShareTaskDeviceResponseBodyData) GoString() string {
 	return s.String()
 }
 
+func (s *AddShareTaskDeviceResponseBodyData) SetFailSum(v int32) *AddShareTaskDeviceResponseBodyData {
+	s.FailSum = &v
+	return s
+}
+
+func (s *AddShareTaskDeviceResponseBodyData) SetFailedResultCsvFile(v string) *AddShareTaskDeviceResponseBodyData {
+	s.FailedResultCsvFile = &v
+	return s
+}
+
 func (s *AddShareTaskDeviceResponseBodyData) SetProgress(v int32) *AddShareTaskDeviceResponseBodyData {
 	s.Progress = &v
 	return s
@@ -207,6 +220,11 @@ func (s *AddShareTaskDeviceResponseBodyData) SetProgress(v int32) *AddShareTaskD
 
 func (s *AddShareTaskDeviceResponseBodyData) SetProgressId(v string) *AddShareTaskDeviceResponseBodyData {
 	s.ProgressId = &v
+	return s
+}
+
+func (s *AddShareTaskDeviceResponseBodyData) SetSuccessSum(v int32) *AddShareTaskDeviceResponseBodyData {
+	s.SuccessSum = &v
 	return s
 }
 
@@ -21617,6 +21635,122 @@ func (s *GetSceneRuleResponse) SetStatusCode(v int32) *GetSceneRuleResponse {
 }
 
 func (s *GetSceneRuleResponse) SetBody(v *GetSceneRuleResponseBody) *GetSceneRuleResponse {
+	s.Body = v
+	return s
+}
+
+type GetShareSpeechModelAudioRequest struct {
+	IotInstanceId       *string   `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
+	ShareTaskId         *string   `json:"ShareTaskId,omitempty" xml:"ShareTaskId,omitempty"`
+	SpeechModelCodeList []*string `json:"SpeechModelCodeList,omitempty" xml:"SpeechModelCodeList,omitempty" type:"Repeated"`
+}
+
+func (s GetShareSpeechModelAudioRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetShareSpeechModelAudioRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetShareSpeechModelAudioRequest) SetIotInstanceId(v string) *GetShareSpeechModelAudioRequest {
+	s.IotInstanceId = &v
+	return s
+}
+
+func (s *GetShareSpeechModelAudioRequest) SetShareTaskId(v string) *GetShareSpeechModelAudioRequest {
+	s.ShareTaskId = &v
+	return s
+}
+
+func (s *GetShareSpeechModelAudioRequest) SetSpeechModelCodeList(v []*string) *GetShareSpeechModelAudioRequest {
+	s.SpeechModelCodeList = v
+	return s
+}
+
+type GetShareSpeechModelAudioResponseBody struct {
+	Code         *string                                   `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data         *GetShareSpeechModelAudioResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	ErrorMessage *string                                   `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool                                     `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetShareSpeechModelAudioResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetShareSpeechModelAudioResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetShareSpeechModelAudioResponseBody) SetCode(v string) *GetShareSpeechModelAudioResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetShareSpeechModelAudioResponseBody) SetData(v *GetShareSpeechModelAudioResponseBodyData) *GetShareSpeechModelAudioResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetShareSpeechModelAudioResponseBody) SetErrorMessage(v string) *GetShareSpeechModelAudioResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetShareSpeechModelAudioResponseBody) SetRequestId(v string) *GetShareSpeechModelAudioResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetShareSpeechModelAudioResponseBody) SetSuccess(v bool) *GetShareSpeechModelAudioResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetShareSpeechModelAudioResponseBodyData struct {
+	Data []*string `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+}
+
+func (s GetShareSpeechModelAudioResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetShareSpeechModelAudioResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetShareSpeechModelAudioResponseBodyData) SetData(v []*string) *GetShareSpeechModelAudioResponseBodyData {
+	s.Data = v
+	return s
+}
+
+type GetShareSpeechModelAudioResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetShareSpeechModelAudioResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetShareSpeechModelAudioResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetShareSpeechModelAudioResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetShareSpeechModelAudioResponse) SetHeaders(v map[string]*string) *GetShareSpeechModelAudioResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetShareSpeechModelAudioResponse) SetStatusCode(v int32) *GetShareSpeechModelAudioResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetShareSpeechModelAudioResponse) SetBody(v *GetShareSpeechModelAudioResponseBody) *GetShareSpeechModelAudioResponse {
 	s.Body = v
 	return s
 }
@@ -46228,6 +46362,93 @@ func (s *QuerySpeechDeviceResponse) SetBody(v *QuerySpeechDeviceResponseBody) *Q
 	return s
 }
 
+type QuerySpeechLicenseAvailableQuotaRequest struct {
+	IotInstanceId *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
+}
+
+func (s QuerySpeechLicenseAvailableQuotaRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QuerySpeechLicenseAvailableQuotaRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QuerySpeechLicenseAvailableQuotaRequest) SetIotInstanceId(v string) *QuerySpeechLicenseAvailableQuotaRequest {
+	s.IotInstanceId = &v
+	return s
+}
+
+type QuerySpeechLicenseAvailableQuotaResponseBody struct {
+	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data         *int64  `json:"Data,omitempty" xml:"Data,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s QuerySpeechLicenseAvailableQuotaResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QuerySpeechLicenseAvailableQuotaResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QuerySpeechLicenseAvailableQuotaResponseBody) SetCode(v string) *QuerySpeechLicenseAvailableQuotaResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *QuerySpeechLicenseAvailableQuotaResponseBody) SetData(v int64) *QuerySpeechLicenseAvailableQuotaResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *QuerySpeechLicenseAvailableQuotaResponseBody) SetErrorMessage(v string) *QuerySpeechLicenseAvailableQuotaResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *QuerySpeechLicenseAvailableQuotaResponseBody) SetRequestId(v string) *QuerySpeechLicenseAvailableQuotaResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QuerySpeechLicenseAvailableQuotaResponseBody) SetSuccess(v bool) *QuerySpeechLicenseAvailableQuotaResponseBody {
+	s.Success = &v
+	return s
+}
+
+type QuerySpeechLicenseAvailableQuotaResponse struct {
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *QuerySpeechLicenseAvailableQuotaResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s QuerySpeechLicenseAvailableQuotaResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QuerySpeechLicenseAvailableQuotaResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QuerySpeechLicenseAvailableQuotaResponse) SetHeaders(v map[string]*string) *QuerySpeechLicenseAvailableQuotaResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QuerySpeechLicenseAvailableQuotaResponse) SetStatusCode(v int32) *QuerySpeechLicenseAvailableQuotaResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QuerySpeechLicenseAvailableQuotaResponse) SetBody(v *QuerySpeechLicenseAvailableQuotaResponseBody) *QuerySpeechLicenseAvailableQuotaResponse {
+	s.Body = v
+	return s
+}
+
 type QuerySpeechLicenseDeviceListRequest struct {
 	CheckGroupId      *string   `json:"CheckGroupId,omitempty" xml:"CheckGroupId,omitempty"`
 	DeviceName        *string   `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
@@ -67829,6 +68050,58 @@ func (client *Client) GetSceneRule(request *GetSceneRuleRequest) (_result *GetSc
 	return _result, _err
 }
 
+func (client *Client) GetShareSpeechModelAudioWithOptions(request *GetShareSpeechModelAudioRequest, runtime *util.RuntimeOptions) (_result *GetShareSpeechModelAudioResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.IotInstanceId)) {
+		body["IotInstanceId"] = request.IotInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ShareTaskId)) {
+		body["ShareTaskId"] = request.ShareTaskId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SpeechModelCodeList)) {
+		body["SpeechModelCodeList"] = request.SpeechModelCodeList
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetShareSpeechModelAudio"),
+		Version:     tea.String("2018-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetShareSpeechModelAudioResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetShareSpeechModelAudio(request *GetShareSpeechModelAudioRequest) (_result *GetShareSpeechModelAudioResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetShareSpeechModelAudioResponse{}
+	_body, _err := client.GetShareSpeechModelAudioWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) GetShareTaskByDeviceOpenWithOptions(request *GetShareTaskByDeviceOpenRequest, runtime *util.RuntimeOptions) (_result *GetShareTaskByDeviceOpenResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -75603,6 +75876,50 @@ func (client *Client) QuerySpeechDevice(request *QuerySpeechDeviceRequest) (_res
 	runtime := &util.RuntimeOptions{}
 	_result = &QuerySpeechDeviceResponse{}
 	_body, _err := client.QuerySpeechDeviceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) QuerySpeechLicenseAvailableQuotaWithOptions(request *QuerySpeechLicenseAvailableQuotaRequest, runtime *util.RuntimeOptions) (_result *QuerySpeechLicenseAvailableQuotaResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.IotInstanceId)) {
+		body["IotInstanceId"] = request.IotInstanceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QuerySpeechLicenseAvailableQuota"),
+		Version:     tea.String("2018-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QuerySpeechLicenseAvailableQuotaResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) QuerySpeechLicenseAvailableQuota(request *QuerySpeechLicenseAvailableQuotaRequest) (_result *QuerySpeechLicenseAvailableQuotaResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QuerySpeechLicenseAvailableQuotaResponse{}
+	_body, _err := client.QuerySpeechLicenseAvailableQuotaWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
