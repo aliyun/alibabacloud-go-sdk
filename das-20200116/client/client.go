@@ -1030,7 +1030,7 @@ type CreateKillInstanceSessionTaskRequest struct {
 	DbUserPassword  *string `json:"DbUserPassword,omitempty" xml:"DbUserPassword,omitempty"`
 	IgnoredUsers    *string `json:"IgnoredUsers,omitempty" xml:"IgnoredUsers,omitempty"`
 	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	KillAllSessions *string `json:"KillAllSessions,omitempty" xml:"KillAllSessions,omitempty"`
+	KillAllSessions *bool   `json:"KillAllSessions,omitempty" xml:"KillAllSessions,omitempty"`
 	NodeId          *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
 	SessionIds      *string `json:"SessionIds,omitempty" xml:"SessionIds,omitempty"`
 }
@@ -1063,7 +1063,7 @@ func (s *CreateKillInstanceSessionTaskRequest) SetInstanceId(v string) *CreateKi
 	return s
 }
 
-func (s *CreateKillInstanceSessionTaskRequest) SetKillAllSessions(v string) *CreateKillInstanceSessionTaskRequest {
+func (s *CreateKillInstanceSessionTaskRequest) SetKillAllSessions(v bool) *CreateKillInstanceSessionTaskRequest {
 	s.KillAllSessions = &v
 	return s
 }
